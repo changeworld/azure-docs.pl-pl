@@ -3,19 +3,19 @@ title: 'Samouczek: Tworzenie jednostronicowej aplikacji wyszukiwania wideo Bing'
 titlesuffix: Azure Cognitive Services
 description: Objaśnia sposób użycia interfejsu API wyszukiwania wideo Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: 182783576c8b47db8dd1c60ed2d5c5948fb98672
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: 6ba777754990560526d7981ef497ea7f0441e1b0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431977"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798474"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Samouczek: Jednostronicowa aplikacja wyszukiwania wideo
 Interfejs API wyszukiwania wideo Bing umożliwia wyszukiwanie w Internecie i uzyskiwanie wyników wideo odpowiadających zapytaniu wyszukiwania. W tym samouczku utworzymy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania na stronie przy użyciu interfejsu API wyszukiwania Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript.

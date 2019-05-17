@@ -3,8 +3,8 @@ title: Informacje o wyrażenie zgody aplikacji usługi Azure AD, wystąpi | Doku
 description: Dowiedz się więcej na temat usługi Azure AD zgody środowiska, aby zobaczyć, jak można ją podczas zarządzania i programowania aplikacji w usłudze Azure AD
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d71bfd5e560bb1509337ac371fbe101b4c6d63b5
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300286"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540644"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis środowisk zgody dla aplikacji usługi Azure AD
 
@@ -47,7 +47,7 @@ Poniższy diagram i tabeli, podaj informacje na temat bloków konstrukcyjnych mo
 | # | Składnik | Przeznaczenie |
 | ----- | ----- | ----- |
 | 1 | Identyfikator użytkownika | Ten identyfikator reprezentuje użytkownika, który aplikacja kliencka żąda dostępu do chronionych zasobów w imieniu osób. |
-| 2 | Tytuł | Tytuł zmienia się zależnie od tego, czy użytkownicy są poddawane przepływu wyrażania zgody użytkownika lub administratora. W usłudze flow zgody użytkownika tytuł będzie "Żądane uprawnienia" podczas przepływu wyrażania zgody administratora tytuł będzie miał dodatkowy wiersz "Akceptuj dla Twojej organizacji". |
+| 2 | Stanowisko | Tytuł zmienia się zależnie od tego, czy użytkownicy są poddawane przepływu wyrażania zgody użytkownika lub administratora. W usłudze flow zgody użytkownika tytuł będzie "Żądane uprawnienia" podczas przepływu wyrażania zgody administratora tytuł będzie miał dodatkowy wiersz "Akceptuj dla Twojej organizacji". |
 | 3 | Logo aplikacji | Ten obraz Ci użytkownicy wizualną od tego, czy ta aplikacja jest aplikacją ma dostęp. Ten obraz jest dostarczany przez deweloperów aplikacji i własność ten obraz nie jest zweryfikowany. |
 | 4 | Nazwa aplikacji | Tę wartość należy poinformować użytkowników, która aplikacja żąda dostępu do swoich danych. Należy pamiętać, ta nazwa jest świadczona przez deweloperów i własności to nazwa aplikacji nie jest zweryfikowany. |
 | 5 | Domena wydawcy | Ta wartość powinna udostępniają użytkownikom domeny, które mogą być w stanie oceniająca wiarygodności. Ta domena jest świadczona przez deweloperów i zweryfikowaniu własności tej domeny wydawcy. |

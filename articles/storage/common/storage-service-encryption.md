@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 05/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e95adbd1a564fb34d3f0506ac1cc25bc5a63c62
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153084"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790051"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
 
@@ -51,6 +51,9 @@ Aby dowiedzieć się, jak używać kluczy zarządzanych przez klienta z usługą
 - [Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage w witrynie Azure portal](storage-encryption-keys-portal.md)
 - [Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage za pomocą programu PowerShell](storage-encryption-keys-powershell.md)
 - [Użyj kluczy zarządzanych przez klienta za pomocą szyfrowania usługi Azure Storage z wiersza polecenia platformy Azure](storage-encryption-keys-cli.md)
+
+> [!IMPORTANT]
+> Kluczy zarządzanych przez klienta zależy od zarządzanych tożsamości dla zasobów platformy Azure, funkcja usługi Azure Active Directory (Azure AD). Gdy przeniesiesz subskrypcję z jednego katalogu usługi Azure AD do innego, zarządzanych tożsamości nie są aktualizowane i kluczy zarządzanych przez klienta mogą przestać działać. Aby uzyskać więcej informacji, zobacz **transferowania subskrypcji między katalogami usługi Azure AD** w [— często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).  
 
 > [!NOTE]  
 > Klucze zarządzane przez klienta nie są obsługiwane dla [usługi Azure managed disks](../../virtual-machines/windows/managed-disks-overview.md).

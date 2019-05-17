@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2893960c3351b1f8a5caf0c69ca961851528007d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510838"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555948"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -300,6 +300,17 @@ Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z 
 | **Wymagana korekta** | Nie |
 
 Brak akcji jest wymagana; Serwer ponowi próbę. Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz żądanie pomocy technicznej.
+
+<a id="-2134364043"></a>**Synchronizacja jest zablokowany, ukończenie przywracania wpis wykrywania zmian**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83075 |
+| **HRESULT (dziesiętna)** | -2134364043 |
+| **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **Wymagana korekta** | Nie |
+
+Nie jest wymagana żadna akcja. W przypadku pliku lub udziału plikowego (punkt końcowy w chmurze) jest przywracany za pośrednictwem usługi Azure Backup, synchronizacji jest zablokowany do momentu ukończenia wykrywania zmian w udziale plików platformy Azure. Wykrywanie zmian jest uruchamiany natychmiast po zakończeniu przywracania i czas trwania zależy od liczby plików w udziale plików.
 
 <a id="-2134364065"></a>**Synchronizacja nie może uzyskać dostępu z udziału plików platformy Azure, określonego przez punkt końcowy w chmurze.**  
 

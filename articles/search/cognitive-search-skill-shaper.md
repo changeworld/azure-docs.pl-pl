@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023713"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540829"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper umiejętności cognitive
 
@@ -29,7 +29,7 @@ Wersja interfejsu API Określa głębokość kształtowania można osiągnąć.
 | 2019-05-06-preview wersję interfejsu API REST (zestaw SDK platformy .NET nie jest obsługiwany) | Złożone obiekty, wiele poziomy głębokich, w jednym **Shaper** definicji umiejętności. |
 | 2019-05-06 ** 2017-11-11-Preview (dostępne ogólnie)| Złożone obiekty głębokości jeden poziom. Wielopoziomowe kształt wymaga podjęcia kilku czynności shaper Łączenie łańcuchowe.|
 
-Podgląd **Shaper** umiejętności, przedstawione w [Scenariusz 3](#nested-complex-types), dodaje nowy opcjonalne *sourceContext* właściwości do danych wejściowych. *Źródła* i *sourceContext* właściwości wzajemnie się wykluczają. W przypadku danych wejściowych w kontekście umiejętności, po prostu użyć *źródła*. Jeśli dane wejściowe znajduje się na *różnych* kontekście niż kontekst umiejętności, użyj *sourceContext*. *SourceContext* wymaga zdefiniowania zagnieżdżone dane wejściowe z określonego elementu traktowane jako źródło. 
+Zgodnie z informacjami od `api-version=2019-05-06-Preview`, **Shaper** przedstawionych umiejętności [Scenariusz 3](#nested-complex-types) dodaje nowy opcjonalne *sourceContext* właściwości do danych wejściowych. *Źródła* i *sourceContext* właściwości wzajemnie się wykluczają. W przypadku danych wejściowych w kontekście umiejętności, po prostu użyć *źródła*. Jeśli dane wejściowe znajduje się na *różnych* kontekście niż kontekst umiejętności, użyj *sourceContext*. *SourceContext* wymaga zdefiniowania zagnieżdżone dane wejściowe z określonego elementu traktowane jako źródło. 
 
 W odpowiedzi dla wszystkich wersji interfejsu API Nazwa wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować innej nazwy, takie jak "analyzedText", jak pokazano w poniższych przykładach, ale **Shaper** umiejętności, sama zwraca "Wyjście" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedzi samodzielnie.
 
@@ -196,7 +196,7 @@ W tym przypadku **Shaper** Spłaszcza wszystkie tytuły rozdział, aby utworzyć
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scenariusz 3: konsolidacji danych wejściowych z kontekstów zagnieżdżonych
 
 > [!NOTE]
-> Zagnieżdżone konstrukcje obsługiwane w wersji api-version = 2019-05-06-Preview mogą być używane w [magazynu wiedzy](knowledge-store-concept-intro.md) lub w ramach indeksu usługi Azure Search.
+> Zagnieżdżone konstrukcje obsługiwane w [wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) mogą być używane w [magazynu wiedzy](knowledge-store-concept-intro.md) lub w ramach indeksu usługi Azure Search.
 
 Wyobraź sobie, tytuł, rozdziały i zawartość książki i uruchomiono jednostki wyrażeń rozpoznawanie i klucz zawartości i konieczność agregowanie wyników z różnych umiejętności do pojedynczego kształtu z nazwą działu, jednostek i fraz kluczowych.
 
@@ -265,4 +265,4 @@ W tym przypadku **Shaper** tworzy typu złożonego. Ta struktura istnieje w pami
 + [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Jak używać typów złożonych](search-howto-complex-data-types.md)
 + [Omówienie magazynu wiedzy](knowledge-store-concept-intro.md)
-+ [Jak rozpocząć pracę z wiedzy Store](knowledge-store-howto.md)
++ [Jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md)

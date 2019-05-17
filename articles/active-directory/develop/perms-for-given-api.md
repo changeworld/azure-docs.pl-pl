@@ -3,8 +3,8 @@ title: Jak wybrać uprawnienia dla danego interfejsu API | Dokumentacja firmy Mi
 description: Dowiedz się więcej o działaniu żądania dotyczące uprawnień dla aplikacji klienckich i zasobów dla aplikacji, które tworzysz
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af7206b94342a4844cf272784aff4e4dc5a35f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42d5ce8a890f6f02e03a16b60f358d9430a09f88
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443538"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545832"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak wybrać uprawnienia dla danego interfejsu API 
 

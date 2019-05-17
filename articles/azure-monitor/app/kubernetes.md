@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor — Zero instrumentacji aplikacji, monitorowanie usługi Kubernetes aplikacji hostowanych | Dokumentacja firmy Microsoft
-description: Zero instrumentacji aplikacji, monitorowanie dla aplikacji hostowanej platformy Kubernetes jest rozwiązania do monitorowania, która pozwala na zbieranie danych telemetrycznych usługi Application Insights odnoszących się do żądań przychodzących i wychodzących do i z zasobników działającym w klastrze Kubernetes Korzystanie z technologii siatki usługi o nazwie Istio.
+title: Korzystanie z usługi Application Insights do monitorowania usługi Azure Kubernetes Service (AKS) lub inne rozwiązania Kubernetes obsługiwanych aplikacji — usługa Azure Monitor | Dokumentacja firmy Microsoft
+description: Usługa Azure Monitor korzysta z technologii sieci usługi, Istio, w klastrze usługi Kubernetes, aby zapewnić monitorowanie aplikacji dla dowolnej aplikacji hostowanej platformy Kubernetes. Umożliwia to zbieranie danych telemetrycznych usługi Application Insights odnoszących się do żądań przychodzących i wychodzących do i z zasobników działającym w klastrze.
 services: application-insights
 author: tokaplan
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
-ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408206"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555830"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Aplikacji hostowanych w monitorowania zero instrumentacji aplikacji dla rozwiązania Kubernetes
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Monitorowanie zero instrumentacji aplikacji dla rozwiązania Kubernetes obsługiwanych aplikacji
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie w publicznej wersji zapoznawczej.

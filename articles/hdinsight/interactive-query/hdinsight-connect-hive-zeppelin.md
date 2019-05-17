@@ -11,10 +11,10 @@ ms.date: 05/06/2019
 ms.author: hrasheed
 ms.openlocfilehash: f4b8495646e83005dc48e8a729a0e5987b832721
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761450"
+ms.locfileid: "65801039"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Szybki start: Wykonywanie zapytania usługi Apache Hive w usłudze Azure HDInsight przy użyciu rozwiązania Apache Zeppelin
 

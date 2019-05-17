@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9eedf0be6089764c8111ae81d558f7e65af0a66d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 010880304c5011bd5a767650aa0ae6b6103bdde2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021783"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540857"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Tworzenie zestawu umiejętności w wzbogacony potok
 
@@ -249,7 +249,7 @@ Do tej pory ta struktura została wewnętrznych, tylko do pamięci i używane ty
 
 ## <a name="add-a-knowledge-store"></a>Dodaj magazyn wiedzy
 
-[Store wiedzy](knowledge-store-concept-intro.md) funkcja w wersji zapoznawczej w usłudze Azure Search do zapisywania wzbogaconego dokumentu. Magazyn wiedzy, który tworzysz, wspierany przez konto usługi Azure storage jest repozytorium, gdzie dane wzbogaconego umieszczać swoje dokumenty. 
+[Magazyn wiedzy](knowledge-store-concept-intro.md) funkcja w wersji zapoznawczej w usłudze Azure Search do zapisywania wzbogaconego dokumentu. Magazyn wiedzy, który tworzysz, wspierany przez konto usługi Azure storage jest repozytorium, gdzie dane wzbogaconego umieszczać swoje dokumenty. 
 
 Definicja magazynu wiedzy jest dodawany do zestawu umiejętności. Aby uzyskać wskazówki dotyczące całego procesu, zobacz [jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md).
 

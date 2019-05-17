@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/26/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 767f087910136ce558d71602a1c4c632090168cd
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925515"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540624"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -251,13 +251,13 @@ W magazynie usługi Recovery Services kliknij **serwery konfiguracji** w **infra
 
 ## <a name="process-server"></a>Serwer Process Server
 
-### <a name="unable-to-select-process-server-during-enable-replication"></a>Nie można wybrać serwer przetwarzania podczas. Włączanie replikacji
+### <a name="why-am-i-unable-to-select-process-server-during-enable-replication"></a>Dlaczego mam nie można wybrać serwer przetwarzania podczas włączyć replikacji?
 
-Od wersji 9.24 ulepszenia zostały wprowadzone w zapewnienie [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts) o tym, kiedy do skonfigurowania serwera przetwarzania skalowalnego w poziomie. To, aby uniknąć ograniczania serwera przetwarzania i uniknąć użycia serwera przetwarzania w złej kondycji.
+Od wersji 9.24 ulepszenia zostały wprowadzone do wyświetlenia [kondycję serwera przetwarzania podczas. Włączanie replikacji](vmware-azure-enable-replication.md#enable-replication). To uniknąć ograniczania serwera przetwarzania i zminimalizować użycie serwerów przetwarzania w złej kondycji.
 
-### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Co należy zrobić, aby uzyskać dokładne Kondycja serwera przetwarzania?
+### <a name="what-is-meant-by-upgrading-process-server-to-924-or-higher-versions-for-accurate-health"></a>Jakie jest przeznaczenie po uaktualnieniu serwera przetwarzania do 9.24 lub nowszej wersje dokładny health?
 
-Uaktualnij składniki usługi Site Recovery do [najnowsze wersje](service-updates-how-to.md#links-to-currently-supported-update-rollups) (co najmniej 9.24 lub nowszej).
+Z [9.24 wersji](service-updates-how-to.md#links-to-currently-supported-update-rollups), dodatkowe alerty są wprowadzane do ulepszenia alertów dotyczących kondycji serwera przetwarzania. Uaktualnij składniki usługi Site Recovery do wersji 9.24 lub nowszej dla wszystkich alertów do wygenerowania.
 
 ## <a name="failover-and-failback"></a>Praca w trybie failover i powrót po awarii
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Czy za pomocą serwera przetwarzania w lokalnych uzyskać powrotu po awarii

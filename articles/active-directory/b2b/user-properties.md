@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355577"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768170"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Właściwości użytkownika współpracy B2B usługi Azure Active Directory
 
@@ -68,7 +68,7 @@ Ta właściwość określa relację użytkownika do dzierżawy hosta. Ta właśc
   > [!NOTE]
   > UserType nie ma związku jak użytkownik się zaloguje, rola katalogu użytkowników i tak dalej. Właściwość ta po prostu wskazuje relację użytkownika z organizacji hosta i umożliwia organizacji wymusić zasady, które są zależne od tej właściwości.
 
-### <a name="source"></a>Element źródłowy
+### <a name="source"></a>Source
 Ta właściwość wskazuje, jak użytkownik się zaloguje.
 
 - Zaproszono użytkownika: Ten użytkownik został zaproszony, ale nie ma jeszcze zrealizować zaproszenia.

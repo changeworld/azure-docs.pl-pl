@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e7ab2eba54aafda6bb00696939bf9bc32bb627ca
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722428"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797006"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -41,11 +41,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być <code>3.0</code>.</td>
   </tr>
   <tr>
-    <td>z</td>
+    <td>from</td>
     <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
   </tr>
   <tr>
-    <td>na</td>
+    <td>do</td>
     <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z <a href="./v3-0-languages.md">obsługiwane języki</a> objęte <code>translation</code> zakresu. Na przykład użyć <code>to=de</code> do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć <code>to=de&to=it</code> do translacji niemieckim i włoskim.</td>
   </tr>
   <tr>
@@ -213,7 +213,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
   </tr>
   <tr>
     <td>429</td>
-    <td>Obiekt wywołujący wysyła zbyt wiele żądań.</td>
+    <td>Serwer odrzucił żądanie, ponieważ klienta przekroczyła limity żądań.</td>
   </tr>
   <tr>
     <td>500</td>
@@ -374,7 +374,7 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Akcja</th>
+  <th>action</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>To zachowanie domyślne. Wulgaryzmów zostaną spełnione ze źródła do docelowego.<br/><br/>

@@ -10,10 +10,10 @@ manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: b9215cac6fe4e4ec8bac3fac773c919c6e13cf05
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752640"
+ms.locfileid: "65790026"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Szybki start: Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu programu Azure PowerShell
 

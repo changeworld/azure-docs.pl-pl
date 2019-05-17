@@ -10,10 +10,10 @@ ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65759320"
+ms.locfileid: "65793739"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Przenoszenie maszyn wirtualnych platformy Azure do stref dostępności
 Strefy dostępności na platformie Azure chronić aplikacje i dane przed awariami centrum danych. Każda strefa dostępności obejmuje co najmniej jedno centrum danych wyposażone w niezależne zasilanie i chłodzenie oraz niezależną sieć. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczne rozdzielenie stref dostępności w obrębie regionu pomaga chronić aplikacje i dane przed awariami centrum danych. Dzięki strefom dostępności platforma Azure oferuje umowy poziomu usług (SLA) 99,99% dla przestojów maszyn wirtualnych (VM). Strefy dostępności są obsługiwane w wybranych regionach, jak wspomniano w [co to są strefy dostępności na platformie Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).

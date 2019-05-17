@@ -5,21 +5,25 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 69f91949347eadcffb3c0d3ff833a40b5e483e24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035752"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792805"
 ---
 # <a name="what-is-azure-cost-management"></a>Co to jest usługa Azure Cost Management?
 
 Usługa Cost management jest proces efektywnego planowania i kontrolując koszty związane z Twojej firmy. Zadania zarządzania kosztami są zazwyczaj wykonywane przez zespoły ds. finansów, zarządzania i aplikacji. Usługa Azure Cost Management pomaga organizacjom planowanie kosztów na uwadze. Pozwala ona również skutecznie analizując koszty i podjąć działania w celu optymalizacji chmury wydatków. Aby dowiedzieć się więcej na temat podejścia do zarządzania kosztami w organizacji, zapoznaj się z artykułem [Azure Cost Management best practices](cost-mgt-best-practices.md) (Najlepsze rozwiązania w usłudze Azure Cost Management).
+
+Obejrzyj [klip wideo z omówieniem usługi Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) uzyskać szybki przegląd dotyczące jak usługi Azure Cost Management może pomóc Ci zaoszczędzić pieniądze na platformie Azure.
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Mimo że te czynności są powiązane, rozliczanie różni się od zarządzania kosztami. Rozliczanie jest procesem fakturowania klientów za towary lub usługi oraz zarządzania relacjami komercyjnymi.  Zadania związane z rozliczeniami są zwykle wykonywane przez zespoły ds. zamówień i finansów.
 
@@ -42,6 +46,10 @@ Jeśli używasz systemów zewnętrznych do uzyskiwania dostępu do danych zarzą
 ## <a name="consider-cloudyn"></a>Korzyści z użycia usługi Cloudyn
 
 [Cloudyn](overview.md) to usługa platformy Azure związana z usługą Cost Management. Usługa Cloudyn pozwala na śledzenie użycia chmury i związanych z nią wydatków dla zasobów platformy Azure. Obsługuje ona również innych dostawców chmury, w tym usługi AWS i Google. Łatwe do zrozumienia raporty pulpitu nawigacyjnego ułatwiają alokację kosztów oraz obsługę przewidywanych kosztów i obciążeń zwrotnych. Obecnie usługa Cost Management nie obsługuje przewidywanych kosztów/obciążeń zwrotnych ani innych dostawców usług w chmurze. Usługa Cloudyn to opcja, która _obsługuje_ te elementy. Obecnie Cost Management nie obsługuje konta dostawcy usług firmy Microsoft w chmurze (CSP), ale jest Cloudyn. Jeśli masz konta programu CSP lub jeśli chcesz używać raportów przewidywanych kosztów i obciążeń zwrotnych, można użyć Cloudyn pomagające w zarządzaniu kosztami.
+
+Obejrzyj [wideo usługi Azure Cost Management i Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) pozwalają zobaczyć zalecenia, kiedy należy używać usługi Azure Cost Management lub Cloudyn, na podstawie potrzeb biznesowych.
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="additional-azure-tools"></a>Dodatkowe narzędzia platformy Azure
 

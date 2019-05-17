@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec62639988dca4b216087e8235be6053140644ee
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406353"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790426"
 ---
-# <a name="understand-data-retention-in-time-series-insights"></a>Omówienie przechowywania danych w usłudze Time Series Insights
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>Omówienie przechowywania danych w usłudze Azure Time Series Insights
 
-W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku usługi Time Series Insights (TSI).
+W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku usługi Azure Time Series Insights.
 
 ## <a name="video"></a>Wideo
 
@@ -36,7 +36,7 @@ Ponadto w środowisku Azure Time Series zawierającym **zachowanie przekroczony 
 - **Wstrzymaj transferu danych przychodzących**
 
 > [!NOTE]
-> Domyślnie podczas tworzenia nowego środowiska, przechowywania jest skonfigurowany do **wyczyścić stare dane**. To ustawienie może być przełączane w razie potrzeby po przy użyciu witryny Azure portal w czasie jego tworzenia **Konfiguruj** strony środowiska TSI.
+> Domyślnie podczas tworzenia nowego środowiska, przechowywania jest skonfigurowany do **wyczyścić stare dane**. To ustawienie może być przełączane w razie potrzeby po przy użyciu witryny Azure portal w czasie jego tworzenia **Konfiguruj** strony środowiska usługi Time Series Insights.
 
 Informacje na temat przechowywania zachowania przełączania można przejrzeć [konfigurowania przechowywania w usłudze Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
@@ -44,8 +44,8 @@ Porównaj zachowania w zakresie przechowywania danych:
 
 ## <a name="purge-old-data"></a>Przeczyść stare dane
 
-- To zachowanie jest zachowaniem domyślnym dla środowisk usługi TSI i wystawach wykazywał tego samego środowiska usługi TSI zachowanie, ponieważ uruchomiona w publicznej wersji zapoznawczej.  
-- To zachowanie jest preferowane w przypadku, gdy użytkownicy chcą zobaczyć zawsze ich *najbardziej aktualne dane* w swoim środowisku TSI. 
+- To zachowanie jest zachowaniem domyślnym dla środowiska usługi Time Series Insights.  
+- To zachowanie jest preferowane w przypadku, gdy użytkownicy chcą zobaczyć zawsze ich *najbardziej aktualne dane* w swoim środowisku usługi Time Series Insights.
 - To zachowanie *Przeczyszcza* danych środowiska po osiągnięciu limitu (czas przechowywania, rozmiar lub count, osiągnięta jako pierwsza). Przechowywanie jest domyślnie do 30 dni.
 - Najstarszy pozyskiwanych danych są przeczyszczane pierwszy (podejście FIFO).
 
@@ -75,7 +75,7 @@ Zawsze, gdy to środowisko dzienny transfer przychodzący przekroczy 0.166 GB dz
 
 ### <a name="example-three"></a>Przykład 3
 
-Należy wziąć pod uwagę środowisko, z zachowaniem przechowywania skonfigurowane do **wstrzymać ruch przychodzący**. W tym przykładzie **okres przechowywania danych** jest skonfigurowany do 60 dni. **Pojemność** jest równa 3 jednostki S1. Załóżmy, że w tym środowisku obowiązują transferu danych przychodzących, 2GB danych dziennie. W tym środowisku ruch przychodzący jest wstrzymany, po osiągnięciu maksymalnej pojemności.
+Należy wziąć pod uwagę środowisko, z zachowaniem przechowywania skonfigurowane do **wstrzymać ruch przychodzący**. W tym przykładzie **okres przechowywania danych** jest skonfigurowany do 60 dni. **Pojemność** jest ustawiona na trzy (3) jednostek S1. Załóżmy, że w tym środowisku obowiązują transferu danych przychodzących, 2GB danych dziennie. W tym środowisku ruch przychodzący jest wstrzymany, po osiągnięciu maksymalnej pojemności.
 
 W tym czasie środowiska pokazuje tego samego zestawu danych do transferu danych przychodzących wznawia lub do chwili **nadal ruch przychodzący** jest włączona (który będzie przeczyścić starszych danych, aby zwolnić miejsce dla nowych danych).
 
@@ -91,7 +91,7 @@ W których to dotyczy usługi Event Hubs, należy wziąć pod uwagę dostosowywa
 
 [![Przechowywanie komunikatów Centrum zdarzeń.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Jeśli skonfigurowano żadnych właściwości źródła zdarzeń (`timeStampPropertyName`), usługa TSI Przesyła wartość domyślna to sygnatura czasowa odebrania w Centrum zdarzeń jako osi x. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanych `timeStampPropertyName` w pakiecie danych, gdy zdarzenia są analizowane.
+Jeśli skonfigurowano żadnych właściwości źródła zdarzeń (`timeStampPropertyName`), usługi Time Series Insights, wartość domyślna to sygnatura czasowa odebrania w Centrum zdarzeń jako osi x. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanych `timeStampPropertyName` w pakiecie danych, gdy zdarzenia są analizowane.
 
 Jeśli chcesz skalować środowiska do uwzględnienia dodatkowej pojemności lub zwiększyć okres przechowywania, zobacz [sposób skalowania środowiska usługi Time Series Insights](time-series-insights-how-to-scale-your-environment.md) Aby uzyskać więcej informacji.  
 

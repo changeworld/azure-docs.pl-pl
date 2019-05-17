@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: d3502219f03d4ad076a693ab990f2fadb0b5d558
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510508"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800828"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Tworzenie i rejestrowanie usługi Azure Machine Learning z zestawami danych (wersja zapoznawcza)
 
@@ -33,6 +33,9 @@ Aby utworzyć i zarejestrować zestawy danych potrzebne są:
 * Obszar roboczy usługi Azure Machine Learning. Zobacz [Utwórz obszar roboczy usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
 
 * Aplikację Azure Machine Learning zestawu SDK dla języka Python. Aby zainstalować lub aktualizacji do najnowszej wersji zestawu SDK, zobacz [Zainstaluj lub zaktualizuj zestaw SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+
+> [!Note]
+> Niektóre klasy zestawu danych (wersja zapoznawcza) być zależny od [przygotowania danych usługi Azure ml](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) pakietu (GA). Użytkownicy systemu Linux w ramach tych zajęć są obsługiwane tylko na poniższe dystrybucje:  Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
 
 ## <a name="create-datasets-from-local-files"></a>Tworzenie zestawów danych z plików lokalnych
 

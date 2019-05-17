@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/06/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 892b9bc63f9f2d9abc7108587a7bf929473e4648
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464806"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779432"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -24,6 +24,12 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 + Usługi Azure Machine Learning [ **przygotowania danych zestawu SDK**](https://aka.ms/data-prep-sdk)
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
+
+## <a name="2019-05-14"></a>2019-05-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.39
++ **Changes**
+  + Opcja auto_prepare_environment konfiguracji uruchamiania jest wycofywany, dzięki funkcji autoskalowania przygotowanie staje się domyślnie.
 
 ## <a name="2019-05-06"></a>2019-05-06
 

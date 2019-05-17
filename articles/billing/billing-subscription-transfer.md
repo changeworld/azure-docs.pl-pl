@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ffebdd5b88603113dd7624e97dcf7353ab5d1ba
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371159"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605571"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Przenieść własność subskrypcji platformy Azure do innego konta
 
@@ -64,7 +64,7 @@ Przeniesienie subskrypcji do innego użytkownika w Centrum konta, aby zmienić a
    ![Pierwsza strona sieci web przeniesienia subskrypcji](./media/billing-subscription-transfer/image4.png)
 
    ![Drugiej strony sieci web przeniesienia subskrypcji](./media/billing-subscription-transfer/image5.png)
-1. To wszystko! Subskrypcja jest obecnie przenoszona.
+1. Powodzenie Subskrypcja jest obecnie przenoszona.
 
 <a id="EA"></a>
 
@@ -119,7 +119,7 @@ Wszystkie zasoby, takie jak maszyny wirtualne, dyski i witryn sieci Web przesył
 
 ### <a id="no-button"></a> Dlaczego nie widać przycisku "Przeniesienia subskrypcji"?
 
-Niestety przenoszenie Samoobsługa subskrypcji nie jest dostępna dla oferty lub kraju. Aby przenieść swoją subskrypcję [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Niestety przenoszenie Samoobsługa subskrypcji nie jest dostępna dla oferty lub kraj/region. Aby przenieść swoją subskrypcję [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Przeniesienie subskrypcji powoduje żadnych przestojów?
 
@@ -156,9 +156,9 @@ Nadawca jest odpowiedzialny za zapłaty za dotychczasowe użycie, który został
 
 Oferta musi być taka sama. Aby zmienić ofertę, zobacz [Przełącz subskrypcji platformy Azure na inną ofertę](billing-how-to-switch-azure-offer.md).
 
-### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>Czy mogę przenieść subskrypcję do konta użytkownika w innym kraju?
+### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-countryregion"></a>Czy mogę przenieść subskrypcję do konta użytkownika w innym kraju/regionie?
 
-Nie, przeniesienie subskrypcji do konta użytkownika w innym kraju nie jest obsługiwane. Adresata, konto użytkownika musi być w tym samym kraju.
+Nie, przeniesienie subskrypcji do konta użytkownika w innym kraju/regionie nie jest obsługiwana. Adresata, konto użytkownika musi być w tym samym kraju/regionu.
 
 ### <a name="can-the-recipient-use-a-different-payment-method"></a>Odbiorca, można użyć innej metody płatności?
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e4ae9b7c96677ce494bea31a49b8db83d6bcb3c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890547"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793799"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -222,7 +222,7 @@ Usługa Azure Cosmos DB wymusza ścisłymi zasadami kontrolnymi zabezpieczeń wy
 
 Aby uzyskać więcej informacji, zobacz [Połącz z bazą danych Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](connect-mongodb-account.md).
 
-Czy istnieją dodatkowe kody, wymagających radzenia sobie z podczas korzystania z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB?
+### <a name="are-there-additional-error-codes-that-i-need-to-deal-with-while-using-azure-cosmos-dbs-api-for-mongodb"></a>Czy istnieją dodatkowe kody, wymagających radzenia sobie z podczas korzystania z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB?
 
 Wraz z typowe kody błędów bazy danych MongoDB API usługi Azure Cosmos DB dla bazy danych MongoDB ma swój własny konkretnych kodach błędów:
 

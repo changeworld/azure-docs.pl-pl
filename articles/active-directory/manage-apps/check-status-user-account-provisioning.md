@@ -3,8 +3,8 @@ title: Raporty dotyczące usługi Azure Active Directory użytkownika automatycz
 description: Dowiedz się, jak sprawdzić stan inicjowania obsługi zadań konta użytkowników i jak rozwiązywać problemy z aprowizacji poszczególnych użytkowników.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 71816c8c7e4213ddea4f08e046dc9224eb52b5fd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721064"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780993"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
 
@@ -135,7 +135,7 @@ Inicjowania obsługi administracyjnej podsumowania raport i dzienniki inspekcji 
 Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatycznej aprowizacji użytkowników w temacie [problemy z konfigurowaniem i aprowizowaniem użytkowników z aplikacją](application-provisioning-config-problem.md).
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](what-is-single-sign-on.md)

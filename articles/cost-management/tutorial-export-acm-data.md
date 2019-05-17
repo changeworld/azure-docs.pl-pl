@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 6975bb872e67650b8b5729a4ac66f0825fb9a80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 521a5f2543b9a4a84d50f8f0e53a6ae5108f760b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021559"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792888"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: Eksportowanie danych i zarządzanie nimi
 
 Jeśli znasz samouczek Analiza kosztów, już wiesz, jak ręcznie pobierać dane usługi Cost Management. Jednak możesz utworzyć cykliczne zadanie, które będzie automatycznie eksportowało dane usługi Cost Management do magazynu platformy Azure — codziennie, co tydzień lub co miesiąc. Dane są eksportowane w formacie CSV i zawierają wszystkie informacje zebrane przez usługę Cost Management. Wyeksportowanych danych znajdujących się w magazynie platformy Azure możesz następnie używać z systemami zewnętrznymi, łącząc je z własnymi danymi niestandardowymi. Możesz również użyć ich w systemie zewnętrznym, takim jak pulpit nawigacyjny lub inny system finansowy.
+
+Obejrzyj [sposób tworzenia harmonogramu eksportuje do magazynu przy użyciu usługi Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) wideo o tworzeniu zaplanowanego eksportu platformy Azure koszt danych do usługi Azure Storage.
 
 Przykłady w tym samouczku przeprowadzą Cię przez proces eksportowania danych zarządzania kosztami i sprawdzania, czy dane zostały pomyślnie wyeksportowane.
 
@@ -49,8 +51,8 @@ Do tworzenia lub wyświetlania Eksport danych lub zaplanować eksportu, otwórz 
 
 > [!NOTE]
 > Oprócz subskrypcji można tworzyć eksporty na grupy zasobów, konta, działów i rejestracji. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
-> 
-> 
+>
+>
 
 
 Kliknij przycisk **Dodaj**, wpisz nazwę eksportu, a następnie wybierz **eksportu dziennych kosztów od początku miesiąca** opcji. Kliknij przycisk **Dalej**.

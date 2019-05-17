@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 49f971fb50d0a8a6a0dab09158f780206a4d32f1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1871fee2734d347ff54d6aa70d90d1c28bd1f6f1
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024847"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597282"
 ---
 # <a name="filters-in-azure-search"></a>Filtry w usłudze Azure Search 
 
@@ -50,24 +50,24 @@ Chcąc zawężające efekt w wynikach wyszukiwania, filtry nie są tylko opcja. 
 
  + `searchFields` parametr zapytania przywiązuje wyszukiwanie określonych pól. Na przykład Indeks udostępnia oddzielne pola opisy w języku angielskim i hiszpańskim, można użyć searchFields pod kątem pola, które można użyć w celu wyszukiwania pełnotekstowego. 
 
-+ `$select` parametr jest używany do określenia ustawić pola do uwzględnienia w wyniku, efektywnie przycinania odpowiedzi przed wysłaniem ich do aplikacji wywołującej. Ten parametr nie jest w stanie Uściślij zapytanie, lub zmniejszyć kolekcji dokumentów, ale jeśli szczegółowe odpowiedzi był Twój cel, ten parametr jest opcją do rozważenia. 
++ `$select` parametr jest używany do określenia ustawić pola do uwzględnienia w wyniku, efektywnie przycinania odpowiedzi przed wysłaniem ich do aplikacji wywołującej. Ten parametr nie jest w stanie Uściślij zapytanie, lub zmniejszyć kolekcji dokumentów, ale w przypadku mniejszych odpowiedzi był Twój cel, ten parametr jest opcją do rozważenia. 
 
 Aby uzyskać więcej informacji na temat albo parametr zobacz [wyszukiwania dokumentów > żądanie > Parametry zapytania](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
 
-## <a name="filters-in-the-query-pipeline"></a>Filtry w potoku zapytania
+## <a name="how-filters-are-executed"></a>Jak są wykonywane filtry
 
-Podczas przeszukiwania analizator Filtr akceptuje kryteria jako dane wejściowe, konwertuje wyrażenie na niepodzielne wyrażeń logicznych i tworzy drzewo filtru, który jest następnie oceniany przez filtrowanie pól w indeksie.  
+Podczas przeszukiwania analizator Filtr akceptuje kryteria jako dane wejściowe, konwertuje wyrażenie na niepodzielne wyrażeń logicznych w postaci drzewa i ocenia następnie drzewo filtru za pośrednictwem filtrowanie pól w indeksie.
 
-Filtrowanie odbywa się przed wyszukiwania, kwalifikujących się które dokumenty, które mają zostać objęte przetwarzania transmisji dla klientów na potrzeby pobierania dokumentów i oceny istotności. W połączeniu z ciągu wyszukiwania, filtr skutecznie zmniejsza obszar powierzchni operacji wyszukiwania kolejnych. Gdy jest używana samodzielnie (na przykład, gdy ciąg zapytania jest puste miejsce `search=*`), kryteria filtru są wyłącznie dane wejściowe. 
+Filtrowanie odbywa się wraz z wyszukiwania, kwalifikujących się które dokumenty, które mają zostać objęte przetwarzania transmisji dla klientów na potrzeby pobierania dokumentów i oceny istotności. W połączeniu z ciągu wyszukiwania, filtr skutecznie zmniejsza zestaw odwołania operacji wyszukiwania kolejnych. Gdy jest używana samodzielnie (na przykład, gdy ciąg zapytania jest puste miejsce `search=*`), kryteria filtru są wyłącznie dane wejściowe. 
 
-## <a name="filter-definition"></a>Definicja filtru
+## <a name="defining-filters"></a>Definiowanie filtrów
 
 Filtry są wyrażeniami OData, przegubowe przy użyciu [podzestawu składnią protokołu OData V4 obsługiwane w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
-Można określić jeden filtr dla każdej **wyszukiwania** operacja, ale sam filtr może zawierać wiele pól, wiele kryteriów, a gdy używasz **ismatch** funkcji, wiele wyrażeń. W wyrażeniu filtru wieloczęściowy można określić predykaty w dowolnej kolejności. Brak żadnych istotnych korzyści w wydajności, Jeśli spróbujesz zmienić układ predykatów w określonej kolejności.
+Można określić jeden filtr dla każdej **wyszukiwania** operacja, ale sam filtr może zawierać wiele pól, wiele kryteriów, a gdy używasz **ismatch** funkcji, wiele wyrażeń wyszukiwania pełnotekstowego. W wyrażeniu filtru wieloczęściowy można określić predykaty w dowolnej kolejności (zgodnie z regułami kolejność wykonywania działań). Brak żadnych istotnych korzyści w wydajności, Jeśli spróbujesz zmienić układ predykatów w określonej kolejności.
 
-Stały limit na wyrażenie filtru jest maksymalny limit dla żądania. Całego żądania, z uwzględnieniem filtru, może zawierać maksymalnie 16 MB POST lub 8 KB GET. Limity zmienne odnoszą się do liczby klauzul w wyrażeniu filtru. Regułą jest, że w przypadku setek klauzule jest ryzyka limit. Firma Microsoft zaleca, projektowania aplikacji w taki sposób, czy nie generuje filtry niepowiązane rozmiar.
+Jednym z ograniczeń na wyrażenie filtru jest limit maksymalnego rozmiaru żądania. Całego żądania, z uwzględnieniem filtru, może zawierać maksymalnie 16 MB POST lub 8 KB GET. Istnieje również limit liczby klauzul w wyrażeniu filtru. Regułą jest, że w przypadku setek klauzule jest ryzyka limit. Firma Microsoft zaleca, projektowania aplikacji w taki sposób, czy nie generuje filtry niepowiązane rozmiar.
 
 Poniższe przykłady reprezentują definicje prototypowe filtrów w kilku interfejsów API.
 
@@ -75,7 +75,7 @@ Poniższe przykłady reprezentują definicje prototypowe filtrów w kilku interf
 # Option 1:  Use $filter for GET
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
 
-# Option 2: Use filter for POST and pass it in the header
+# Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
@@ -92,25 +92,26 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
             Select = new[] { "hotelId", "description" }
         };
 
+    var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-design-patterns"></a>Wzorce projektowe filtru
+## <a name="filter-usage-patterns"></a>Filtruj wzorców użycia
 
-Poniższe przykłady ilustrują kilka wzorców projektowych dla scenariuszy filtru. Aby uzyskać więcej pomysłów, zobacz [składnia wyrażenia OData > przykłady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+Poniższe przykłady ilustrują kilka wzorców użycia dla scenariuszy filtru. Aby uzyskać więcej pomysłów, zobacz [składnia wyrażenia OData > przykłady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
 
-+ Autonomiczny **$filter**, bez ciągu zapytania, przydatne, gdy wyrażenie filtru jest w stanie do pełnej kwalifikacji dokumentów zainteresowania. Bez ciąg zapytania ma żadnej analizy leksykalne lub językową, nie oceniania i nie klasyfikacji. Należy zauważyć, że ciąg wyszukiwania jest pusty.
++ Autonomiczny **$filter**, bez ciągu zapytania, przydatne, gdy wyrażenie filtru jest w stanie do pełnej kwalifikacji dokumentów zainteresowania. Bez ciąg zapytania ma żadnej analizy leksykalne lub językową, nie oceniania i nie klasyfikacji. Należy zauważyć, że ciąg wyszukiwania jest po prostu gwiazdkę, co oznacza "odpowiada wszystkie dokumenty".
 
    ```
    search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
    ```
 
-+ Kombinacja ciągu zapytania i **$filter**, gdzie filtru tworzy podzbiór i ciągu zapytania udostępnia dane wejściowe termin w celu wyszukiwania pełnotekstowego w porównaniu z podzbioru filtrowane. Korzystanie z filtra za pomocą ciągu zapytania jest najczęstszym wzorcem kodu.
++ Kombinacja ciągu zapytania i **$filter**, gdzie filtru tworzy podzbiór i ciągu zapytania udostępnia dane wejściowe termin w celu wyszukiwania pełnotekstowego w porównaniu z podzbioru filtrowane. Korzystanie z filtra za pomocą ciągu zapytania jest najczęstszym wzorcem użycia.
 
    ```
    search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
    ```
 
-+ Złożone kwerendy, oddzielone "lub", każdy z własną kryteria filtrowania (na przykład "beagles" w "dog") lub "siamese" w "cat". LUB miał wyrażenia są obliczane osobno, przy użyciu odpowiedzi z każdym z nich połączone w jedną odpowiedź wysyłanych z powrotem do aplikacji wywołującej. Ten wzorzec projektowy odbywa się za pośrednictwem funkcji search.ismatch. Można użyć wersji oceniania (search.ismatch) lub wersji oceniania (search.ismatchscoring).
++ Złożone kwerendy, oddzielone "lub", każdy z własną kryteria filtrowania (na przykład "beagles" w "dog") lub "siamese" w "cat". Wyrażenia w połączeniu z `or` są oceniane oddzielnie, z Unią, każde wyrażenie w odpowiedzi pasujących dokumentów. Ten wzorzec użycia odbywa się za pośrednictwem `search.ismatchscoring` funkcji. Można również użyć wersji oceniania `search.ismatch`.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -120,6 +121,14 @@ Poniższe przykłady ilustrują kilka wzorców projektowych dla scenariuszy filt
    $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
    ```
 
+  Istnieje również możliwość wyszukiwania pełnotekstowego, za pośrednictwem połączenia `search.ismatchscoring` z filtrami, za pomocą `and` zamiast `or`, ale są funkcjonalnie równoważne użyciu `search` i `$filter` parametrów w żądaniu wyszukiwania. Na przykład następujące dwa zapytania generuje ten sam wynik:
+
+  ```
+  $filter=search.ismatchscoring('pool') and rating ge 4
+
+  search=pool&$filter=rating ge 4
+  ```
+
 Monitowanie następujące artykuły, aby uzyskać kompleksowe wskazówki na wybrane przypadki użycia:
 
 + [Filtry aspektów](search-filters-facets.md)
@@ -128,36 +137,32 @@ Monitowanie następujące artykuły, aby uzyskać kompleksowe wskazówki na wybr
 
 ## <a name="field-requirements-for-filtering"></a>Wymagania pola do filtrowania
 
-W interfejsie API REST można filtrować jest *na* domyślnie. Pól z możliwością filtrowania zwiększyć rozmiar indeksu. Pamiętaj ustawić `filterable=FALSE` dla pól, które są rzeczywiście używane w filtrze nie jest planowane. Aby uzyskać więcej informacji na temat ustawień dotyczących definicje pól, zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+W interfejsie API REST można filtrować jest *na* domyślnie dla prostego pola. Pól z możliwością filtrowania zwiększyć rozmiar indeksu. Pamiętaj ustawić `"filterable": false` dla pól, które są rzeczywiście używane w filtrze nie jest planowane. Aby uzyskać więcej informacji na temat ustawień dotyczących definicje pól, zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-W zestawie SDK platformy .NET jest filtrowanie *poza* domyślnie. Interfejs API do ustawiania właściwości filtrowania [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). W przykładzie poniżej swój zestaw na BaseRate definicji pola.
+W zestawie SDK platformy .NET jest filtrowanie *poza* domyślnie. Możesz zmienić pole na do filtrowania, ustawiając [właściwość IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) odpowiadającego [pola](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) obiekt `true`. Także zrobić to deklaratywne, przy użyciu [atrybut IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). W poniższym przykładzie atrybut jest ustawiony na `BaseRate` właściwość klasy modelu, który jest mapowany do definicji indeksu.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="reindexing-requirements"></a>Ponowne indeksowanie wymagania
+### <a name="making-an-existing-field-filterable"></a>Co można filtrować istniejącego pola
 
-Jeśli pole jest inne niż można filtrować i ma być filtrowania, należy dodać nowe pola lub ponownie skompiluj istniejącego pola. Zmiana definicji pola zmienia Struktura fizyczna indeksu. W usłudze Azure Search wszystkich ścieżek dostępu dozwolone są indeksowane w celu szybkość szybkie zapytania wymaga ponownej kompilacji struktur danych, gdy zmienią się definicje pól. 
-
-Ponowne tworzenie poszczególnych pól może być operacją mały wpływ wymagające tylko operację scalania, która wysyła do indeksu, pozostawiając bez zmian w pozostałej części dokumentu, każdy istniejący klucz dokumentu i skojarzone wartości. Jeśli wystąpią wymagania ponowną kompilację, zobacz [akcji indeksowania (przekazanie, scalenie, mergeOrUpload, Usuń)](search-what-is-data-import.md#indexing-actions) listę opcji.
-
+Nie można modyfikować istniejące pola, aby były one można filtrować. Zamiast tego należy dodać nowe pola lub odbudowanie indeksu. Aby uzyskać więcej informacji na temat odbudowanie indeksu lub uważnie pola zobacz [sposobie odbudowania indeksu usługi Azure Search](search-howto-reindex.md).
 
 ## <a name="text-filter-fundamentals"></a>Podstawowe informacje dotyczące tekstu filtru
 
-Filtry tekstu obowiązują w przypadku pól ciągów, z których chcesz ściągnąć niektóre kolekcji dokumentów na podstawie wartości w ramach indeksu wyszukiwania.
+Filtry tekstu dopasowania pól ciągów literałów ciągów, które należy podać w filtrze. W przeciwieństwie do wyszukiwania pełnotekstowego nie ma poddawać analizie leksykalnej ani wyrazów Filtry tekstu, więc porównania dotyczą tylko dokładne dopasowania. Załóżmy na przykład, pole *f* zawiera "sunny day" `$filter=f eq 'Sunny'` nie jest zgodny, ale `$filter=f eq 'sunny day'` będzie. 
 
-Filtry tekstu składa się z ciągów nie ma poddawać analizie leksykalnej ani wyrazów, więc porównania dotyczą tylko dokładne dopasowania. Załóżmy na przykład, pole *f* zawiera "sunny day" `$filter=f eq 'Sunny'`nie jest zgodny, ale `$filter=f eq 'Sunny day'` będzie. 
+Ciągi tekstowe jest rozróżniana wielkość liter. Istnieje nie małe-wielkość liter w wyrazie pisane słowa: `$filter=f eq 'Sunny day'` nie zostaną znalezione "sunny day".
 
-Ciągi tekstowe jest rozróżniana wielkość liter. Istnieje nie małe-wielkość liter w wyrazie pisane słowa: `$filter=f eq 'Sunny day'` nie zostaną znalezione "słoneczny dzień".
+### <a name="approaches-for-filtering-on-text"></a>Podejścia do filtrowania według tekstu
 
-
-| Podejście | Opis | 
-|----------|-------------|
-| [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkcja, zapewniając rozdzielana przecinkami lista ciągów dla danego pola. Ciągi obejmują kryteria filtrowania, które są stosowane do wszystkich pól w zakresie dla zapytania. <br/><br/>`search.in(f, ‘a, b, c’)` są semantycznie równoważne `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, z tą różnicą, że znacznie szybciej wykonuje po duże listy wartości.<br/><br/>Firma Microsoft zaleca **search.in** działać w ramach [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i w polu wszelkie filtry składa się z nieprzetworzony tekst do dopasowania wartości w danym polu. Ta metoda jest przeznaczona dla danej szybkości. Można oczekiwać, że czas odpowiedzi subsecond setki tysięcy wartości. W trakcie nie jawnego limit liczby elementów, które można przekazać do funkcji opóźnienie zwiększa się proporcjonalnie do liczby parametrów, których udzielasz. | 
-| [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkcja, która pozwala łączyć operacji wyszukiwania pełnotekstowego przy użyciu operacji ściśle logiczna filtrów w tym samym wyrażeniu filtru. Dzięki temu wiele kombinacji filtr zapytania w jednym żądaniu. Można również użyć go do *zawiera* filtr do filtru na częściowe ciągu w dłuższym ciągu. |  
-| [$filter = ciąg operator pola](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Wyrażenie zdefiniowanych przez użytkownika, składa się z pola, operatory i wartości. | 
+| Podejście | Opis | Kiedy stosować | 
+|----------|-------------|-------------|
+| [search.in](query-odata-filter-orderby-syntax.md) | Funkcja, która pasuje do pola względem przecinkami lista ciągów. | Zalecane w przypadku [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i wszelkie filtry, w których wielu wartości w tekście nieprzetworzonym muszą zostać dopasowane do pola ciągu. **Search.in** funkcji zaprojektowano pod kątem szybkości i jest znacznie wyższa niż jawne porównanie pola względem każdego ciągu przy użyciu `eq` i `or`. | 
+| [search.ismatch](query-odata-filter-orderby-syntax.md) | Funkcja, która pozwala łączyć operacji wyszukiwania pełnotekstowego przy użyciu operacji ściśle logiczna filtrów w tym samym wyrażeniu filtru. | Użyj **search.ismatch** (lub równoważnym oceniania **search.ismatchscoring**), aby wiele kombinacji filtr wyszukiwania w jednym żądaniu. Można również użyć go do *zawiera* filtr do filtru na częściowe ciągu w dłuższym ciągu. |
+| [$filter = ciąg operator pola](query-odata-filter-orderby-syntax.md) | Wyrażenie zdefiniowanych przez użytkownika, składa się z pola, operatory i wartości. | Użyj go, jeśli chcesz znaleźć dokładnie takie same pola ciągu i wartość ciągu. |
 
 ## <a name="numeric-filter-fundamentals"></a>Podstawowe informacje dotyczące filtru liczbowego
 

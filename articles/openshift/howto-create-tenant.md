@@ -6,13 +6,13 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 3c7f0b263cc775b7f9fec62e4d5388250e5124fb
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/13/2019
+ms.openlocfilehash: 04d710f4d60b776f8059d87ea4d009bed6f7f8ba
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079123"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551704"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Tworzenie dzierżawy usługi Azure AD dla usługi Azure Red Hat OpenShift
 
@@ -34,7 +34,7 @@ Aby utworzyć dzierżawę:
 
     ![Zrzut ekranu przedstawiający portal przedstawiający nazwę dzierżawy w prawym górnym rogu][tenantcallout]  
 
-8. Zanotuj *identyfikator dzierżawy* Aby później można określić miejsce utworzyć klaster usługi Azure Red Hat OpenShift. W portalu powinien zostać wyświetlony blok Przegląd usługi Azure Active Directory dla nowej dzierżawy. Wybierz **właściwości** i skopiuj wartość dla Twojego **identyfikator katalogu**. Firma Microsoft będzie odnosił się do tej wartości jako `tenant id` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
+8. Zanotuj *identyfikator dzierżawy* Aby później można określić miejsce utworzyć klaster usługi Azure Red Hat OpenShift. W portalu powinien zostać wyświetlony blok Przegląd usługi Azure Active Directory dla nowej dzierżawy. Wybierz **właściwości** i skopiuj wartość dla Twojego **identyfikator katalogu**. Firma Microsoft będzie odnosił się do tej wartości jako `TENANT` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

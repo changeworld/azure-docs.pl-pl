@@ -3,18 +3,18 @@ title: Odwołanie w wersji 7 interfejs API wyszukiwania Bing w lokalnych firmach
 description: W tym artykule opisano elementy programowania lokalnych firm interfejsu API wyszukiwania Bing.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866358"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796743"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
@@ -74,8 +74,8 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 |----------|-----------|----------|--------------|
 |<a name="count" />Liczba|Liczba wyników do zwrócenia, począwszy od indeksu określonego przez `offset` parametru.|String|Nie|   
 |<a name="localCategories" />localCategories|Lista opcji, które definiują wyszukiwania według kategorii biznesowych.  Zobacz [wyszukiwania lokalnych firm kategorii](local-categories.md)|String|Nie|  
-|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Interfejsu API wyszukiwania w lokalnych firm aktualnie obsługuje tylko en-us rynku i język.<br /><br />|String|Yes|
-|<a name="offset"/>offset|Indeks, aby uruchomić wyników określony przez `count` parametru.|Liczba całkowita|Nie|  
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Interfejsu API wyszukiwania w lokalnych firm aktualnie obsługuje tylko en-us rynku i język.<br /><br />|String|Tak|
+|<a name="offset"/>offset|Indeks, aby uruchomić wyników określony przez `count` parametru.|Integer|Nie|  
 |<a name="query" />q|Termin wyszukiwania przez użytkownika.|String|Nie|  
 |<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />  Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](https://json-ld.org/).|String|Nie|  
 |<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracają stron internetowych z treści dla dorosłych tekst, obrazy lub filmy wideo.<br /><br/></li><li>Umiarkowany&mdash;zwracają stron internetowych z treści dla dorosłych tekstu, ale niepełnoletni obrazy lub filmy wideo.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z treści dla dorosłych tekst, obrazy lub filmy wideo.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi z rynku zasad treści dla dorosłych tego Bing wymaga `safeSearch` jest ustawiony na Strict, ignoruje Bing `safeSearch` wartość i używa Strict.<br/><br/>**UWAGA:** Jeśli używasz `site:` — operator zapytań, istnieje prawdopodobieństwo, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, co `safeSearch` ustawiono parametr zapytania. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |String|Nie|  
@@ -123,7 +123,7 @@ Definiuje licencji w ramach której można użyć typu text lub zdjęć.
 |url|Adres URL witryny sieci Web, gdzie użytkownik może uzyskać więcej informacji o licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|String|  
 
 
-### <a name="link"></a>Link  
+### <a name="link"></a>Łącze  
 Określa składniki hiperłącza.  
   
 |Name (Nazwa)|Wartość|Type|  
@@ -176,21 +176,21 @@ Definiuje kontekst zapytania, które Bing użyta dla żądania.
 
 |Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
-|id|Identyfikator zasobu|String|
+|identyfikator|Identyfikator zasobu|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupy w wynikach wyszukiwania, takie jak mainline.
 
 |Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
-|pozycje|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
+|items|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania, aby wyświetlić.
 
 |Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
-|resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Liczba całkowita|
+|resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Integer|
 |answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|String|
 |textualIndex|Indeks odpowiedzi w textualAnswers do wyświetlenia.| Liczba całkowita bez znaku|
 |value|Identyfikatora, który identyfikuje odpowiedzi, aby wyświetlić lub element odpowiedź do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedzi, wyświetlanie wszystkich elementów w odpowiedzi.|Do zidentyfikowania|

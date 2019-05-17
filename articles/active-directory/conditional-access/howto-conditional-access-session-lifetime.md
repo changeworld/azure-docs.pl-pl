@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190220"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65766871"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesji uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -80,7 +80,7 @@ Skonfigurowanie częstotliwość różnych logowania dla aplikacji internetowej 
 1. Wybierz wszystkie wymagane warunki.
 
    > [!NOTE]
-   > Należy pamiętać, że ta kontrolka wymaga, aby wybierz pozycję "Wszystkie aplikacje w chmurze" jako warunek
+   > Należy pamiętać, że ta kontrolka wymaga, aby wybierz pozycję "Wszystkie aplikacje w chmurze" jako warunek. Przeglądarki trwałość sesji jest kontrolowana przez tokenu sesji uwierzytelniania. Wszystkie karty w sesji przeglądarki Udostępnij token jednej sesji i w związku z tym wszystkie one muszą mieć stan trwałości.
 
 1. Przejdź do **kontroli dostępu** > **sesji** i kliknij przycisk **sesji przeglądarki trwałego**
 1. Wybierz wartość z listy rozwijanej
@@ -91,7 +91,7 @@ Skonfigurowanie częstotliwość różnych logowania dla aplikacji internetowej 
 > [!NOTE]
 > Spowoduje to zastąpienie trwałego konfiguracji sesji przeglądarki w funkcji dostępu warunkowego usługi Azure AD "pobytu zalogowany?" ustawienie w firmie znakowania okienku w portalu Azure dla tego samego użytkownika, jeśli obie zasady zostały skonfigurowane.
 
-## <a name="validation"></a>Walidacja
+## <a name="validation"></a>Weryfikacja
 
 Narzędzie warunkowej do symulowania logowania użytkownika do aplikacji docelowej i innych warunków, oparte na konfiguracji zasad. Kontrolki zarządzania sesji uwierzytelniania wyświetlany w wyniku tego narzędzia.
 

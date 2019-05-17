@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 55106f855d1f2cab82b751b306a3a289bd740e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525413"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551892"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -80,6 +80,9 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+
+### <a name="storage-size"></a>Rozmiar magazynu
+- Zapoznaj się [warstw cenowych](concepts-pricing-tiers.md) limitów rozmiaru magazynu na warstwy cenowej.
 
 ## <a name="current-known-issues"></a>Obecnie znane problemy
 - Wystąpienia serwera MySQL Wyświetla wersja serwera problem, po nawiązaniu połączenia. Aby uzyskać z właściwym serwerem w wystąpieniu aparatu wersji, użyj `select version();` polecenia.

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466194"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551739"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift — często zadawane pytania
 
@@ -66,3 +66,7 @@ Nie. Wszystkie węzły w klastrze Azure Red Hat OpenShift muszą pochodzić z te
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Węzły główne i infrastruktury wyodrębnione natychmiast są one za pomocą usługi Azure Kubernetes Service (AKS)?
 
 Nie. Uruchom wszystkie zasoby, w tym wzorcu klastra w ramach subskrypcji klienta. Te typy zasobów są umieszczane w grupie zasobów tylko do odczytu.
+
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>Czy usługi Open Service Broker for Azure (OSBA) obsługiwane?
+
+Tak. Za pomocą OSBA Azure Red Hat OpenShift. Zobacz [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) Aby uzyskać więcej informacji.

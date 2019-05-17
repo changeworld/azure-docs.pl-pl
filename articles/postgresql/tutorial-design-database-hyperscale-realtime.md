@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65757551"
+ms.locfileid: "65791329"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie pulpit nawigacyjny analizy w czasie rzeczywistym za pomocą usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
 

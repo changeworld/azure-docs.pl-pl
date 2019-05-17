@@ -3,8 +3,8 @@ title: Microsoft identity platformy Identyfikator odwołania do tokenu | Dokumen
 description: Dowiedz się, jak używać id_tokens wyemitowane przez usługę Azure AD w wersji 1.0 i punktów końcowych platformy (w wersji 2.0) tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c296f14fd9fdc3a7555412555ea1a851f9a7b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2c99caa46522f9b1e5d6334da8f10a0f4039899
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410046"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540319"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny Identyfikatora platforma tożsamości firmy Microsoft
 
@@ -55,7 +55,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 
 ### <a name="header-claims"></a>Nagłówek oświadczeń
 
-|Claim | Format | Opis |
+|Oświadczenie | Format | Opis |
 |-----|--------|-------------|
 |`typ` | Ciąg — zawsze "JWT" | Wskazuje, czy token jest token JWT.|
 |`alg` | String | Określa algorytm, który był używany do podpisywania tokenu. Przykład: "RS256" |
@@ -66,7 +66,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 
 Ta lista zawiera oświadczenia, które są w większości id_tokens domyślnie (z wyjątkiem sytuacji, gdy podane).  Jednak Twoja aplikacja może używać [opcjonalnych oświadczeń](active-directory-optional-claims.md) dodatkowe oświadczenia w id_token żądania.  Te można dostosować w zakresie `groups` oświadczenia do informacji o nazwę użytkownika.
 
-|Claim | Format | Opis |
+|Oświadczenie | Format | Opis |
 |-----|--------|-------------|
 |`aud` |  Ciąg, identyfikator URI Identyfikatora aplikacji | Identyfikuje zamierzonym odbiorcą tokenu. W `id_tokens`, odbiorców jest identyfikator aplikacji, przypisany do aplikacji w witrynie Azure portal. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodny. |
 |`iss` |  Ciąg identyfikatora URI usługi STS | Określa usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token i dzierżawy usługi Azure AD, w którym użytkownik został uwierzytelniony. Jeśli token został wystawiony przez punkt końcowy v2.0, identyfikator URI zakończy się w `/v2.0`.  Identyfikator GUID, który wskazuje, czy użytkownik jest użytkownikiem odbiorcy z konta Microsoft jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikację należy użyć część stanowiącą identyfikator GUID oświadczenia, aby ograniczyć zestaw dzierżawców, którzy mogą zalogować do aplikacji, jeśli ma to zastosowanie. |

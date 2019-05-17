@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.openlocfilehash: 7b80394fbad403be93413069b8f88be6041743d4
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65758902"
+ms.locfileid: "65797736"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Szybki start: Tworzenie kolejki w usłudze Azure Storage przy użyciu platformy .NET
 

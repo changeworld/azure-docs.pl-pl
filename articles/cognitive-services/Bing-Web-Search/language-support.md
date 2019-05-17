@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430923"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798244"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu API wyszukiwania w Internecie Bing
 
@@ -34,7 +34,7 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Austria|AT|
 |Belgia|BE|
 |Brazylia|BR|
-|Kanada|CA|
+|Kanada|Urząd certyfikacji|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
@@ -43,40 +43,40 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |SRA Hongkong|HK|
 |Indie|IN|
 |Indonezja|ID|
-|Włochy|IT|
+|Włochy|it|
 |Japonia|JP|
-|Korea|KR|
+|Korea Południowa|KR|
 |Malezja|MY|
 |Meksyk|MX|
 |Holandia|NL|
 |Nowa Zelandia|NZ|
-|Norwegia|NO|
+|Norwegia|NIE|
 |Chiny|CN|
 |Polska|PL|
 |Portugalia|PT|
 |Filipiny|PH|
 |Rosja|RU|
 |Arabia Saudyjska|SA|
-|Republika Południowej Afryki|ZA|
+|RPA|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
 |Zjednoczone Królestwo|GB|
-|Stany Zjednoczone|USA|
+|Stany Zjednoczone Ameryki|USA|
 
 ## <a name="markets"></a>Rynki
 
 |Kraj/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
-|Australia|Polski|EN-AU|
+|Australia|Angielski|EN-AU|
 |Austria|Niemiecki|de-AT|
 |Belgia|Holenderski|nl-BE|
 |Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
-|Kanada|Polski|EN-CA|
+|Kanada|Angielski|EN-CA|
 |Kanada|Francuski|fr-CA|
 |Chile|Hiszpański|ES-CL|
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
@@ -84,29 +84,33 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Francja|Francuski|fr-FR|
 |Niemcy|Niemiecki|de-DE.|
 |SRA Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Polski|EN-IN|
-|Indonezja|Polski|EN-ID|
+|Indie|Angielski|EN-IN|
+|Indonezja|Angielski|EN-ID|
 |Włochy|Włoski|IT-IT|
 |Japonia|Japoński|ja-JP|
-|Korea|Koreański|ko-KR|
-|Malezja|Polski|Moje en|
+|Korea Południowa|Koreański|ko-KR|
+|Malezja|Angielski|Moje en|
 |Meksyk|Hiszpański|es-MX|
 |Holandia|Holenderski|NL-NL|
-|Nowa Zelandia|Polski|EN NZ|
+|Nowa Zelandia|Angielski|EN NZ|
 |Norwegia|Norweski|no-NO|
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|en-PH|
+|Filipiny|Angielski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|en-ZA|
+|RPA|Angielski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
 |Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Zjednoczone Królestwo|Polski|en-GB|
-|Stany Zjednoczone|Polski|en-US|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Zjednoczone Królestwo|Angielski|en-GB|
+|Stany Zjednoczone Ameryki|Angielski|en-US|
+|Stany Zjednoczone Ameryki|Hiszpański|es-US|
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

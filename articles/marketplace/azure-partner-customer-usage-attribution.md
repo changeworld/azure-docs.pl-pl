@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: cfe9b469cfac848c9e57f1fc10193208722be109
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935702"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800971"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -245,9 +245,9 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>Raport
+## <a name="report"></a>Zgłoś
 
-Raport jest dostępny dla klienta użycie: uznanie autorstwa na pulpicie nawigacyjnym analizy Centrum partnerskiego. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)).
+Raport jest dostępny dla klienta użycie: uznanie autorstwa na pulpicie nawigacyjnym analizy Centrum partnerskiego. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Aby wyświetlić raport, musisz Zaloguj się przy użyciu poświadczeń Centrum partnerskiego. Jeśli występują problemy z raportem lub zaloguj się, Utwórz żądanie pomocy technicznej zgodnie z instrukcjami w sekcji pomocy technicznej Get.
 
 Wybierz szablon śledzone, na liście rozwijanej Typ skojarzenia partnera, aby wyświetlić raport.
 
@@ -267,6 +267,10 @@ Podczas wdrażania \<partnera > oprogramowania firmy Microsoft jest w stanie zid
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
+Jeśli napotkasz jakiekolwiek problemy dotyczące raportu lub zaloguj się do Centrum partnerskiego, Utwórz żądanie obsługi z zespołem pomocy technicznej Centrum partnerskie w tym miejscu: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+
+![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+
 Jeśli potrzebujesz pomocy dla dołączania do witryny Marketplace i/lub autorstwa użycia klienta, wykonaj następujące kroki.
 
 1. Przejdź do [stronę pomocy technicznej](https://go.microsoft.com/fwlink/?linkid=844975).
@@ -282,7 +286,7 @@ Jeśli potrzebujesz pomocy dla dołączania do witryny Marketplace i/lub autorst
 
 1. Wybierz **żądanie uruchomienia**.
 
-1. Na następnej stronie wprowadź wymagane wartości. Wybierz przycisk **Kontynuuj**.
+1. Na następnej stronie wprowadź wymagane wartości. Wybierz **nadal**.
 
 1. Na następnej stronie wprowadź wymagane wartości.
 

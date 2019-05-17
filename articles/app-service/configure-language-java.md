@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: efeab014c7d92a6c19d516a121fbc4436925be75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82e8936a888cbc99088ab18423e55dd57a3c2e77
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850992"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604150"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurowanie Windows aplikację w języku Java dla usługi Azure App Service
 
@@ -27,7 +27,7 @@ Usługa Azure App Service umożliwia deweloperom szybkie tworzenie, wdrażanie i
 Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka Java przy użyciu usługi aplikacji. Jeśli nie znasz usługi Azure App Service, należy przeczytać za pośrednictwem [Szybki Start Java](app-service-web-get-started-java.md) pierwszy. W odpowiedzi są ogólne pytania dotyczące korzystania z usługi App Service, które nie są specyficzne dla rozwoju języka Java [często zadawane pytania dotyczące aplikacji usługi Windows](faq-configuration-and-management.md).
 
 > [!NOTE]
-> Nie możesz znaleźć, czego szukasz? Zobacz [— często zadawane pytania dla usługi OSS Windows](faq-configuration-and-management.md) lub [Przewodnik po konfiguracji Java systemu Linux](containers/app-service-linux-java.md) informacji na temat wdrażania i zabezpieczania aplikacji Java.
+> Nie możesz znaleźć, czego szukasz? Zobacz [— często zadawane pytania dla usługi OSS Windows](faq-configuration-and-management.md) lub [Przewodnik po konfiguracji Java systemu Linux](containers/configure-language-java.md) informacji na temat wdrażania i zabezpieczania aplikacji Java.
 
 ## <a name="configuring-tomcat"></a>Konfigurowanie serwera Tomcat
 

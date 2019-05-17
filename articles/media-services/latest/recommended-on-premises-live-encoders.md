@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405362"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550049"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
@@ -59,6 +59,9 @@ Usługa Media Services zaleca się przy użyciu jednej z następujących koderó
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live i Hero 4K (UHD/HEVC)
+
+> [!TIP]
+>  Jeśli są przesyłania strumieniowego wydarzeń na żywo w wielu językach, (na przykład jedną ścieżkę audio angielskiej i jedną ścieżkę audio hiszpańskim), można to zrobić za pomocą nośników w programie Excel koder na żywo, skonfigurować do wysyłania Kanał informacyjny na żywo do przekazywania zdarzenia na żywo.
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurowanie lokalnych ustawień kodera na żywo
 

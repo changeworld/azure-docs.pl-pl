@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121796"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790901"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Dodać analizatory języka do indeksu usługi Azure Search
 
@@ -45,9 +45,6 @@ Analizator domyślny jest Lucene Standard, co sprawdza się dobrze sprawdza się
 + Angielski analizator Lucene firmy rozszerza standardowe analizatora. Jego wycofanie Zaimki dzierżawcze (końcowe firmy) z słów, ma zastosowanie, analiza słowotwórcza zgodnie z algorytmu Porter wynikające oraz usunięcie słowa ignorowane w języku angielskim.  
 
 + Firmy Microsoft w języku angielskim analizatora wykonuje Lematyzacja zamiast wynikające. Oznacza to, że może obsługiwać formularze odmienione i nieregularne słów znacznie lepiej co powoduje bardziej odpowiednie wyniki wyszukiwania 
-
-  > [!Tip]
-  > [Wersja demonstracyjna analizatora wyszukiwania](https://alice.unearth.ai/) zapewnia porównania side-by-side wyników generowanych przez standardowy analizator Lucene, Lucene w języku angielskim analizator i procesora angielskiej języka naturalnego firmy Microsoft. Dla każdego dane wejściowe zostaną podane, wyniki z każdego analizatora są wyświetlane w sąsiadujących okienka.
 
 ## <a name="configuring-analyzers"></a>Konfigurowanie analizatorów
 
@@ -76,7 +73,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Create 
 |Czeski|cs.microsoft|cs.lucene|  
 |Duński|da.microsoft|da.lucene|  
 |Holenderski|nl.microsoft|nl.lucene|  
-|Polski|en.microsoft|EN.lucene|  
+|Angielski|en.microsoft|EN.lucene|  
 |Estoński|et.microsoft||  
 |Fiński|fi.microsoft|fi.lucene|  
 |Francuski|fr.microsoft|fr.lucene|  

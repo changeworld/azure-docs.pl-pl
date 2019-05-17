@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
-ms.openlocfilehash: 1006cc902cf4b6f763d86165a039a1fec5dc97a1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467081"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796256"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Wprowadzenie do usługi Azure Deployment Manager (publiczna wersja zapoznawcza) wdrożenia integracji kondycji
 
@@ -32,7 +32,7 @@ W celu integracji kondycji tak proste, jak to możliwe, Microsoft pracował nad 
 
 ## <a name="how-service-health-is-determined"></a>Sposób ustalania kondycji usługi
 
-[Dostawcy monitorowania kondycji](#health-monitoring-providers) oferuje kilka mechanizmów monitorowania usługi i wysyłać alerty o wszelkich problemów dotyczących kondycji usługi. [Usługa Azure Monitor](/services/monitor/) znajduje się przykład jednego ofertą. Usługa Azure Monitor może służyć do tworzenia alertów, po przekroczeniu określonych wartości progowych. Na przykład Twoje pamięci i Procesora CPU Skacze powyżej oczekiwanego poziomu podczas wdrażania nowej aktualizacji do usługi. Po wyświetleniu powiadomienia, można wykonać akcje naprawcze.
+[Dostawcy monitorowania kondycji](#health-monitoring-providers) oferuje kilka mechanizmów monitorowania usługi i wysyłać alerty o wszelkich problemów dotyczących kondycji usługi. [Usługa Azure Monitor](../azure-monitor/overview.md) znajduje się przykład jednego ofertą. Usługa Azure Monitor może służyć do tworzenia alertów, po przekroczeniu określonych wartości progowych. Na przykład Twoje pamięci i Procesora CPU Skacze powyżej oczekiwanego poziomu podczas wdrażania nowej aktualizacji do usługi. Po wyświetleniu powiadomienia, można wykonać akcje naprawcze.
 
 Te opiekę zdrowotną oferują zazwyczaj interfejsów API REST, dzięki czemu można programowo zbadać stan monitorów z usługą. Interfejsy API REST można albo wróć za pomocą prostego sygnału dobrej kondycji/złej kondycji (według kodu odpowiedzi HTTP) i/lub szczegółowe informacje o sygnały, że odbiera.
 

@@ -4,7 +4,7 @@ description: Dowiedz się więcej o publicznych klienta i poufne klienta aplikac
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21aa62bae7599cf586ccf6f885ad9f58c148d1f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9e0300ec0ef4ee67b06acb85514ae898bbd0a830
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077143"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544292"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Publicznych klienta i poufne klienta aplikacji
 Microsoft Authentication Library (MSAL) definiuje dwa typy klientów: publiczny klientów i poufne. Typy dwóch klientów są rozróżniane na podstawie zdolności do bezpiecznego uwierzytelniania za pomocą serwera autoryzacji i zachowania poufności ich poświadczeń klienta.  Z kolei usługa Azure AD Authentication Library (ADAL) korzysta z koncepcji kontekstu uwierzytelniania, (czyli połączenia z usługą Azure AD).

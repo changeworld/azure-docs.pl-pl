@@ -7,19 +7,19 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507836"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790398"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
+# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeniach wirtualnych
 
 Ten artykuł zawiera limity zasobów szczegółowe dla pojedynczych baz danych Azure SQL Database przy użyciu modelu zakupu opartego na rdzeniach wirtualnych.
 
@@ -129,7 +129,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 
 ### <a name="serverless-compute-tier"></a>Warstwa bezserwerowych usług obliczeniowych
 
-[Warstwy bezserwerowe środowisko obliczeniowe](sql-database-serverless.md) jest w publicznej wersji zapoznawczej i jest tylko w przypadku modelu pojedynczych baz danych przy użyciu zakup (rdzeń wirtualny).
+[Warstwy bezserwerowe środowisko obliczeniowe](sql-database-serverless.md) jest w wersji zapoznawczej i jest tylko w przypadku modelu pojedynczych baz danych przy użyciu zakup (rdzeń wirtualny).
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
 

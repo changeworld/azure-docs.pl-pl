@@ -3,8 +3,8 @@ title: Można skonfigurować okresów istnienia tokenu w usłudze Azure Active D
 description: Dowiedz się, jak ustawić okresy istnienia tokenów wystawionych przez usługę Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: celested
-ms.custom: aaddev
+ms.date: 04/13/2019
+ms.author: ryanwi
+ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b0242a8e3745a0014e5c2a1289ca2bc8c85c75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411372"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545383"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (wersja zapoznawcza)
 
 Można określić okres istnienia tokenu wystawionego przez usługę Azure Active Directory (Azure AD). Możesz ustawić okresów istnienia tokenu dla wszystkich aplikacji w Twojej organizacji, dla aplikacji wielodostępnych (dla wielu organizacji) lub dla określonej jednostki usługi w Twojej organizacji.
 
 > [!IMPORTANT]
-> Po czekamy na informacje od klientów w trakcie okresu zapoznawczego, planujemy Zastąp tę funkcję z nową funkcją w usłudze Azure Active Directory dostępu warunkowego.  Po zakończeniu nowa funkcja tej funkcji po pewnym czasie zostaną wycofane po upływie powiadomień.  Jeśli używasz zasad można skonfigurować okres istnienia tokenu, można przygotować, aby przełączyć się do nowej funkcji dostępu warunkowego, gdy jest ona dostępna. 
+> Po czekamy na informacje od klientów w trakcie okresu zapoznawczego, możemy zastąpić funkcji można konfigurować okresów istnienia tokenu przy użyciu [możliwości zarządzania sesji uwierzytelniania](https://go.microsoft.com/fwlink/?linkid=2083106) w funkcji dostępu warunkowego usługi Azure AD. Ta funkcja zostaną wycofane 1 listopada 2019 r. Jeśli używasz zasad można skonfigurować okres istnienia tokenu, przełącz się do nowej funkcji dostępu warunkowego. 
 
 W usłudze Azure AD obiekt zasad reprezentuje zestaw reguł, które są wymuszane na poszczególne aplikacje lub wszystkie aplikacje w organizacji. Każdego typu zasad ma unikatowy struktury, zestaw właściwości, które są stosowane do obiektów, które są przypisane.
 
@@ -77,7 +77,7 @@ Zasady można użyć, aby ustawić czas, po pierwszym tokenu sesji został wysta
 Zasady okres istnienia tokenu jest typem obiektu zasad, który zawiera reguły okres istnienia tokenu. Właściwości zasady umożliwiają kontrolowanie określonego okresów istnienia tokenu. Jeśli żadna zasada jest ustawiona, system wymusza domyślną wartość okresu istnienia.
 
 ### <a name="configurable-token-lifetime-properties"></a>Właściwości można skonfigurować okres istnienia tokenu
-| Właściwość | Ciąg właściwości zasad | Dotyczy | Domyślne | Minimalne | Maksimum |
+| Właściwość | Ciąg właściwości zasad | Dotyczy | Domyślne | Minimum | Maksimum |
 | --- | --- | --- | --- | --- | --- |
 | Okres istnienia tokenu dostępu |AccessTokenLifetime |Tokeny dostępu, tokeny Identyfikatora, SAML2 tokenów |1 godzina |10 minut |1 dzień |
 | Odświeżanie tokenu maksymalny czas nieaktywny |MaxInactiveTime |Tokenów odświeżania |90 dni |10 minut |90 dni |

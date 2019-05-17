@@ -3,15 +3,15 @@ title: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odz
 description: W tym artykule opisano sposób włączania maszyn wirtualnych VMware replikacji do platformy Azure na potrzeby odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 4/18/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60922818"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540756"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -24,7 +24,7 @@ W tym artykule założono, że masz:
 - [Konfigurowanie środowiska źródłowego w środowisku lokalnym](vmware-azure-set-up-source.md).
 - [Konfigurowanie środowiska docelowego, na platformie Azure](vmware-azure-set-up-target.md).
 
-## <a name="before-you-start"></a>Przed rozpoczęciem
+## <a name="before-you-start"></a>Zanim rozpoczniesz
 Jeśli replikujesz maszyny wirtualne VMware pamiętać o tych informacji:
 
 * Twoje konto platformy Azure użytkownika musi mieć pewne [uprawnienia](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) Aby włączyć replikację nowej maszyny wirtualnej na platformie Azure.
@@ -43,16 +43,17 @@ Przed wykonaniem kroków opisanych w tej sekcji, należy zwrócić uwagę na nas
 * Replikacja do konta magazynu dla nowej maszyny wirtualnej jest dostępna tylko za pośrednictwem REST Representational State Transfer () interfejsu API i programu Powershell. Replikacja do konta magazynu, należy użyć interfejsu API REST platformy Azure w wersji 2016-08-10 lub 2018-01-10.
 
 1. Przejdź do **krok 2: Replikowanie aplikacji** > **źródła**. Po włączeniu replikacji po raz pierwszy, wybierz **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn wirtualnych.
-1. W **źródła** strony > **źródła**, wybierz serwer konfiguracji.
-1. Aby uzyskać **typ maszyny**, wybierz opcję **maszyn wirtualnych** lub **maszyn fizycznych**.
-1. W obszarze **vCenter/vSphere Hypervisor** wybierz serwer vCenter zarządzający hostem vSphere lub wybierz tego hosta. To ustawienie nie jest istotne, Jeśli replikujesz komputerów fizycznych.
-1. Wybierz serwer przetwarzania, który będzie serwerem konfiguracji, jeśli nie utworzono żadnych dodatkowych serwerów przetwarzania. Następnie wybierz przycisk **OK**.
+2. W **źródła** strony > **źródła**, wybierz serwer konfiguracji.
+3. Aby uzyskać **typ maszyny**, wybierz opcję **maszyn wirtualnych** lub **maszyn fizycznych**.
+4. W obszarze **vCenter/vSphere Hypervisor** wybierz serwer vCenter zarządzający hostem vSphere lub wybierz tego hosta. To ustawienie nie jest istotne, Jeśli replikujesz komputerów fizycznych.
+5. Wybierz serwer przetwarzania. Jeśli nie ma żadnych dodatkowych serwerów przetwarzania utworzone, serwer przetwarzania wbudowanych serwera konfiguracji będą dostępne na liście rozwijanej. Stan kondycji wszystkich serwerów procesu jest wskazywany zgodnie z zalecaną limity i inne parametry. Wybierz serwer przetwarzania działa prawidłowo. A [krytyczne](vmware-physical-azure-monitor-process-server.md#process-server-alerts) serwera przetwarzania nie może zostać wybrany. Możesz albo [Rozwiązywanie problemów i eliminowanie](vmware-physical-azure-troubleshoot-process-server.md) błędy **lub** Konfigurowanie [serwera przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md).
+    ![Włącz okno źródła replikacji](media/vmware-azure-enable-replication/ps-selection.png)
 
-    ![Włącz okno źródła replikacji](./media/vmware-azure-enable-replication/enable-replication2.png)
+> [!NOTE]
+> Z [9.24 wersji](service-updates-how-to.md#links-to-currently-supported-update-rollups), dodatkowe alerty są wprowadzane do ulepszenia alertów dotyczących kondycji serwera przetwarzania. Uaktualnij składniki usługi Site Recovery do wersji 9.24 lub nowszej dla wszystkich alertów do wygenerowania.
 
-1. Aby uzyskać **docelowej**, wybierz grupę subskrypcji i zasobów, której chcesz utworzyć maszyny wirtualne w trybie failed-over. Wybierz model wdrażania, który chcesz użyć na platformie Azure dla maszyn wirtualnych w trybie failed-over.
-
-1. Wybierz sieć platformy Azure i podsieć, którą maszyny wirtualne Azure będą nawiązywać połączenie po włączeniu trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn usługi Site Recovery.
+6. Aby uzyskać **docelowej**, wybierz grupę subskrypcji i zasobów, której chcesz utworzyć maszyny wirtualne w trybie failed-over. Wybierz model wdrażania, który chcesz użyć na platformie Azure dla maszyn wirtualnych w trybie failed-over.
+2. Wybierz sieć platformy Azure i podsieć, którą maszyny wirtualne Azure będą nawiązywać połączenie po włączeniu trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn usługi Site Recovery.
 
    Wybierz **Konfiguruj teraz dla wybranych maszyn** Aby zastosować ustawienia sieci do wszystkich maszyn wirtualnych, które wybrany do ochrony. Wybierz **później skonfigurować** wybrać sieć platformy Azure na maszynę wirtualną. Jeśli nie masz sieci, należy ją utworzyć. Aby utworzyć sieć przy użyciu usługi Azure Resource Manager, wybierz pozycję **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie wybierz **OK**.
    
@@ -110,7 +111,7 @@ Liczba kart sieciowych jest zależna od rozmiaru określonego w następujący sp
 - Jeśli liczba kart sieciowych dla źródłowej maszyny wirtualnej przekracza liczbę, która jest dozwolona dla rozmiaru docelowej maszyny Wirtualnej, używana jest maksymalny rozmiar docelowy. Na przykład jeśli źródłowa maszyna wirtualna ma dwie karty sieciowe, a rozmiar maszyny docelowej obsługuje cztery, docelowej maszyny wirtualnej ma dwie karty. Jeśli źródłowa maszyna wirtualna ma dwie karty sieciowe, ale rozmiar docelowej obsługuje tylko jedną, docelowa maszyna wirtualna ma tylko jedną kartę sieciową.
 - Jeśli maszyna wirtualna ma wiele kart sieciowych, wszystkie łączą się z tą samą siecią. Ponadto staje się pierwsza karta, która jest wyświetlana na liście *domyślne* karty sieciowej na maszynie wirtualnej platformy Azure. 
 
-### <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
+### <a name="azure-hybrid-benefit"></a>Korzyści użycia hybrydowego platformy Azure
 
 Microsoft Software Assurance klienci mogą używać korzyści użycia hybrydowego platformy Azure, aby zmniejszyć koszty licencjonowania dla komputerów z systemu Windows Server, które są migrowane na platformie Azure. Dotyczy również korzyści odzyskiwania po awarii platformy Azure. Jeśli masz uprawnienia, korzyści można przypisać do maszyny wirtualnej, która usługa Site Recovery tworzy w przypadku przejścia w tryb failover. W tym celu wykonaj następujące kroki:
 1. Przejdź do **właściwości komputera i sieci** zreplikowanej maszyny wirtualnej.

@@ -3,18 +3,18 @@ title: Wysyłanie i przy użyciu lokalnych firm interfejsu API wyszukiwania Bing
 titleSuffix: Azure Cognitive Services
 description: Aby dowiedzieć się, jak wysyłać i zapytania wyszukiwania za pomocą lokalnych firm interfejsu API wyszukiwania Bing, należy użyć w tym artykule.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: 79219de775be96f35bd11ac85640efcc4a04a93b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582454"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796791"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Wysyłanie i przy użyciu lokalnych firm interfejsu API wyszukiwania Bing, zapytań i odpowiedzi
 
@@ -57,7 +57,7 @@ Zwrócone przez interfejs API wyniki JSON zawierają następujące atrybuty:
 * adres
 * entityPresentationInfo
 * Geograficzna
-* id
+* identyfikator
 * name
 * routeablePoint
 * Telefon

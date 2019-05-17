@@ -3,19 +3,19 @@ title: Obsługa języków — interfejs API wyszukiwania niestandardowego Bing
 titleSuffix: Azure Cognitive Services
 description: Lista obsługiwanych językach i regionach interfejsu API wyszukiwania niestandardowego Bing.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1f53dc60a74f0b558525897bef97bf2500442b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: aahi
+ms.openlocfilehash: 56870a63f42c10b48cc2d8f0ae2995862be46d8f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867834"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790239"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania niestandardowego Bing
 
@@ -36,7 +36,7 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Austria|AT|
 |Belgia|BE|
 |Brazylia|BR|
-|Kanada|CA|
+|Kanada|Urząd certyfikacji|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
@@ -45,28 +45,28 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |SRA Hongkong|HK|
 |Indie|IN|
 |Indonezja|ID|
-|Włochy|IT|
+|Włochy|it|
 |Japonia|JP|
-|Korea|KR|
+|Korea Południowa|KR|
 |Malezja|MY|
 |Meksyk|MX|
 |Holandia|NL|
 |Nowa Zelandia|NZ|
-|Norwegia|NO|
+|Norwegia|NIE|
 |Chiny|CN|
 |Polska|PL|
 |Portugalia|PT|
 |Filipiny|PH|
 |Rosja|RU|
 |Arabia Saudyjska|SA|
-|Republika Południowej Afryki|ZA|
+|RPA|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
 |Zjednoczone Królestwo|GB|
-|Stany Zjednoczone|USA|
+|Stany Zjednoczone Ameryki|USA|
 
 
 ## <a name="markets"></a>Rynki
@@ -74,12 +74,12 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Kraj/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
-|Australia|Polski|EN-AU|
+|Australia|Angielski|EN-AU|
 |Austria|Niemiecki|de-AT|
 |Belgia|Holenderski|nl-BE|
 |Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
-|Kanada|Polski|EN-CA|
+|Kanada|Angielski|EN-CA|
 |Kanada|Francuski|fr-CA|
 |Chile|Hiszpański|ES-CL|
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
@@ -87,29 +87,29 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Francja|Francuski|fr-FR|
 |Niemcy|Niemiecki|de-DE.|
 |SRA Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Polski|EN-IN|
-|Indonezja|Polski|EN-ID|
+|Indie|Angielski|EN-IN|
+|Indonezja|Angielski|EN-ID|
 |Włochy|Włoski|IT-IT|
 |Japonia|Japoński|ja-JP|
-|Korea|Koreański|ko-KR|
-|Malezja|Polski|Moje en|
+|Korea Południowa|Koreański|ko-KR|
+|Malezja|Angielski|Moje en|
 |Meksyk|Hiszpański|es-MX|
 |Holandia|Holenderski|NL-NL|
-|Nowa Zelandia|Polski|EN NZ|
+|Nowa Zelandia|Angielski|EN NZ|
 |Norwegia|Norweski|no-NO|
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|en-PH|
+|Filipiny|Angielski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|en-ZA|
+|RPA|Angielski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
 |Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Zjednoczone Królestwo|Polski|en-GB|
-|Stany Zjednoczone|Polski|en-US|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Zjednoczone Królestwo|Angielski|en-GB|
+|Stany Zjednoczone Ameryki|Angielski|en-US|
+|Stany Zjednoczone Ameryki|Hiszpański|es-US|

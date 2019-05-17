@@ -3,8 +3,8 @@ title: Jak używać interfejsu API programu Graph usługi Azure AD
 description: Interfejs API programu Graph usługi Azure Active Directory (Azure AD) zapewnia dostęp programistyczny do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST protokołu OData. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonywania tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje na danych i obiektów katalogu.
 services: active-directory
 documentationcenter: n/a
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 tags: ''
 ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dfbf920a0e1fc002f3bcbe90164e1fd13a0b978
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411512"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544668"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Instrukcje: Korzystanie z interfejsu API Graph usługi Azure AD
 

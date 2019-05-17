@@ -2,22 +2,22 @@
 title: Dostęp zdalny do lokalnych aplikacji — serwer Proxy usługi Azure Active Directory Application | Docx firmy Microsoft
 description: Serwer Proxy aplikacji usługi Azure Active Directory zapewnia bezpieczny dostęp zdalny do aplikacji sieci web w środowisku lokalnym. Po logowanie jednokrotne do usługi Azure AD użytkownicy mogą korzystać zarówno z chmury i lokalnych aplikacji za pomocą zewnętrznego adresu URL lub portalu wewnętrznych aplikacji. Na przykład serwera Proxy aplikacji, może zapewnić dostępu zdalnego i logowania jednokrotnego do usług pulpitu zdalnego, programu SharePoint, Teams, Tableau, Qlik i aplikacje biznesowe (LOB).
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: eb3a3d85c9cac85b6658167806cea59b6d5163de
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506653"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782847"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji usługi Azure Active Directory 
 

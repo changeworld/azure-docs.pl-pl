@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/12/2019
+ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db397ae43d1c134823abfc7004f1f3490addeb06
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731774"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550613"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Projektowanie PolyBase ładowaniem strategię dla usługi Azure SQL Data Warehouse
 
@@ -49,8 +49,32 @@ Pobieranie danych z systemu źródłowego, zależy od lokalizacji magazynu.  Cel
 
 ### <a name="polybase-external-file-formats"></a>Formaty plików zewnętrznych technologii PolyBase
 
-Program PolyBase ładowania danych z UTF-8 i UTF-16 zakodowane rozdzielanych plików tekstowych. Oprócz rozdzielanych plików tekstowych ładuje z formatów plików usługi Hadoop RC pliku ORC i Parquet. Program PolyBase również mogą ładować dane z Snappy plików skompresowanych i Gzip. Program PolyBase aktualnie nie obsługuje rozszerzonych ASCII, format stałej szerokości i zagnieżdżone formatów, takich jak WinZip, JSON i XML. Jeśli eksportujesz z programu SQL Server, możesz użyć [narzędzia wiersza polecenia bcp](/sql/tools/bcp-utility) do eksportowania danych do rozdzielanych plików tekstowych.
+Program PolyBase ładowania danych z UTF-8 i UTF-16 zakodowane rozdzielanych plików tekstowych. Oprócz rozdzielanych plików tekstowych ładuje z formatów plików usługi Hadoop RC pliku ORC i Parquet. Program PolyBase również mogą ładować dane z Snappy plików skompresowanych i Gzip. Program PolyBase aktualnie nie obsługuje rozszerzonych ASCII, format stałej szerokości i zagnieżdżone formatów, takich jak WinZip, JSON i XML. Jeśli eksportujesz z programu SQL Server, możesz użyć [narzędzia wiersza polecenia bcp](/sql/tools/bcp-utility) do eksportowania danych do rozdzielanych plików tekstowych. Parquet, do mapowania typów danych usługi SQL DW jest następująca:
 
+| **Typ danych parquet** |                      **SQL Data Type**                       |
+| :-------------------: | :----------------------------------------------------------: |
+|        tinyint        |                           tinyint                            |
+|       smallint        |                           smallint                           |
+|          int          |                             int                              |
+|        bigint         |                            bigint                            |
+|        wartość logiczna        |                             bit                              |
+|        double         |                            liczba zmiennoprzecinkowa                             |
+|         liczba zmiennoprzecinkowa         |                             real                             |
+|        double         |                            money                             |
+|        double         |                          smallmoney                          |
+|        string         |                            nchar                             |
+|        string         |                           nvarchar                           |
+|        string         |                             char                             |
+|        string         |                           varchar                            |
+|        binary         |                            binary                            |
+|        binary         |                          Varbinary                           |
+|       timestamp       |                             date                             |
+|       timestamp       |                        smalldatetime                         |
+|       timestamp       |                          datetime2                           |
+|       timestamp       |                           datetime                           |
+|       timestamp       |                             time                             |
+|       date        | ((1) obciążenia jako int i rzutowania na datę </br> (2) [korzystania z łącznika usługi Azure Databricks SQL DW](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) z </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**aktualizacji wkrótce**) |
+|        decimal        | [Używanie łącznika usługi Azure Databricks SQL DW](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) z </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**aktualizacji wkrótce**) |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Przejście dane do usługi Azure Blob storage lub Azure Data Lake Store
 

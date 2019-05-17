@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: fc95ce4aad4e8597b02b9c862be33bfcf6185541
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 12565d2b8004a5119add25473e5b088c9162035f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073806"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780495"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 W krokach szczegółowo opisanych w tym artykule przyjęto założenie, że utworzono klaster usługi AKS (Kubernetes `1.11` i nowszych, przy użyciu RBAC włączone), a `kubectl` połączenia z klastrem. Jeśli potrzebujesz pomocy przy użyciu dowolnego z tych elementów, zobacz [szybkiego startu usługi AKS][aks-quickstart].
 
-Będziesz potrzebować [Helm] [ helm] wykonaj te instrukcje i zainstalować Istio. Zaleca się, że została zainstalowana wersja `2.12.2` lub później poprawnie zainstalowany i skonfigurowany w klastrze. Jeśli potrzebujesz pomocy przy instalowaniu narzędzia Helm, zobacz [wskazówki dotyczące instalacji narzędzia Helm AKS][helm-install]. Wszystkie zasobników Istio również musi być zaplanowane do uruchomienia w węzłach systemu Linux.
+Będziesz potrzebować [Helm] [ helm] wykonaj te instrukcje i zainstalować Istio. Zaleca się, że została zainstalowana wersja `2.12.2` lub później poprawnie zainstalowany i skonfigurowany w klastrze. Jeśli potrzebujesz pomocy przy instalowaniu narzędzia Helm, zobacz [wskazówki dotyczące instalacji narzędzia Helm AKS][helm-install].
 
 W tym artykule oddziela wskazówki dotyczące instalacji Istio na kilka kroków dyskretnych. Efekt jest taki sam sposób, w strukturze jako oficjalna instalację Istio [wskazówki][istio-install-helm].
 
@@ -337,9 +337,6 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 
 `istio` Narzędzia Helm wdraża dużą liczbę obiektów. Zobaczysz listę z danych wyjściowych usługi `helm install` polecenia powyżej. Wdrażanie składników Istio może potrwać od 4 do 5 minut, w zależności od środowiska klastra.
 
-> [!NOTE]
-> Wszystkie zasobników Istio musi być zaplanowane do uruchomienia w węzłach systemu Linux. Oprócz pule węzłów systemu Linux w klastrze istnieją pule węzłów systemu Windows Server, sprawdź, czy wszystkie zasobników Istio zostały zaplanowane do uruchomienia w węzłach systemu Linux.
-
 W tym momencie wdrożono Istio do klastra usługi AKS. Aby upewnić się, że mamy pomyślne wdrożenie Istio, przejdźmy do następnej sekcji, aby [sprawdzić poprawność instalacji Istio](#validate-the-istio-installation).
 
 ## <a name="validate-the-istio-installation"></a>Zweryfikuj instalację Istio
@@ -536,6 +533,9 @@ Aby poznać więcej opcji instalacji i konfiguracji Istio, zobacz następujące 
 
 Można również wykonać dodatkowe scenariusze za pomocą [Przykładowa aplikacja Bookinfo Istio][istio-bookinfo-example].
 
+Aby dowiedzieć się, jak monitorować aplikację usługi AKS przy użyciu usługi Application Insights i Istio, znajduje się poniższej dokumentacji usługi Azure Monitor:
+- [Monitorowanie zero instrumentacji aplikacji dla rozwiązania Kubernetes obsługiwanych aplikacji][app-insights]
+
 <!-- LINKS - external -->
 [istio]: https://istio.io
 [helm]: https://helm.sh
@@ -561,6 +561,8 @@ Można również wykonać dodatkowe scenariusze za pomocą [Przykładowa aplikac
 [prometheus]: https://prometheus.io/
 [jaeger]: https://www.jaegertracing.io/
 [kiali]: https://www.kiali.io/
+
+[app-insights]: https://docs.microsoft.com/azure/azure-monitor/app/kubernetes
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

@@ -4,17 +4,17 @@ description: Podsumowanie funkcji żądania danych klienta usługi Azure Time Se
 author: ashannon7
 ms.author: anshan
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880712"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546391"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
@@ -65,3 +65,11 @@ Aby uzyskać więcej informacji, zobacz [Eksploratora usługi Azure Time Series 
 Obecnie usługa Time Series Insights nie obsługuje usuwania szczegółowych danych. Jednak usługa Time Series Insights zapewnia możliwość usunięcia danych klienta przechowywanych w ramach usługi Time Series Insights, konfigurując zasady przechowywania. Możesz dostosować okres przechowywania całego środowiska usługi Time Series Insights do dowolnej liczby dni do obsługi wymagań dotyczących usuwania.
 
 Aby uzyskać więcej informacji, zobacz [konfigurowania przechowywania w usłudze Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Przeczytaj więcej na temat [udzielanie dostępu do danych do środowiska usługi TSI](./time-series-insights-data-access.md).
+
+* Widok [Eksploratora usługi Azure Time Series Insights](time-series-insights-explorer.md).
+
+* Dowiedz się więcej o [konfigurowania przechowywania w usłudze Time Series Insights](time-series-insights-how-to-configure-retention.md).

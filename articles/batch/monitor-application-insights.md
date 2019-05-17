@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c527b0b10a2b9a351b242d0858fdbe64687970a7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618594"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595291"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorowania i debugowania aplikacji usługi Azure Batch dla środowiska .NET za pomocą usługi Application Insights
 
@@ -31,7 +31,7 @@ Przykładowe języka C# rozwiązanie z kodem, która ma towarzyszyć w tym artyk
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* [Visual Studio 2017](https://www.visualstudio.com/vs)
+* [Program Visual Studio 2017 lub nowszego](https://www.visualstudio.com/vs)
 
 * [Konto usługi Batch i połączone konto magazynu](batch-account-create-portal.md)
 

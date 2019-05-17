@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pullabhk
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 3a424335a1e7d7775f6be0980e7009669e354ea7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6d17d5c2c0eaebc694abe820318f6ac0c70b0be8
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717905"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544606"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie bazy danych SQL w maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -31,7 +31,7 @@ W tym samouczku wyjaśniono:
 > * Przywracanie kopii zapasowej bazy danych SQL.
 > * Monitorowanie kopii zapasowych i przywracania zadania.
 
-## <a name="before-you-start"></a>Przed rozpoczęciem
+## <a name="before-you-start"></a>Zanim rozpoczniesz
 
 * [Dowiedz się więcej](backup-azure-recovery-services-vault-overview.md) dotyczących magazynów usługi Recovery Services.
 * Przeczytaj o możliwości funkcji [tworzenia kopii zapasowych baz danych SQL w ramach maszyn wirtualnych platformy Azure](backup-azure-sql-database.md#before-you-start).
@@ -110,7 +110,7 @@ Magazyn usługi Recovery Services jest zasobem usługi Resource Manager, należy
 3. Określenie typu nadmiarowości magazynu magazynu.
 
     * Możesz użyć [magazyn lokalnie nadmiarowy](../storage/common/storage-redundancy-lrs.md) lub [magazyn geograficznie nadmiarowy](../storage/common/storage-redundancy-grs.md).
-    * Poniższy przykład ustawia **- BackupStorageRedundancy** opcja dla[AzRecoveryServicesBackupProperties zestaw](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperties?view=azps-1.4.0) cmd dla **testvault** równa  **GeoRedundant**.
+    * Poniższy przykład ustawia **- BackupStorageRedundancy** opcja dla[AzRecoveryServicesBackupProperty zestaw](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd dla **testvault** równa  **GeoRedundant**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -530,7 +530,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Należy zauważyć, że kopia zapasowa Azure tylko śledzi zadania użytkownika wyzwalane w kopii zapasowej programu SQL. Zaplanowane kopie zapasowe (w tym kopie zapasowe dziennika) nie są widoczne w portalu/programu powershell. Jednakże, jeśli zaplanowane zadania kończą się niepowodzeniem, [alert kopii zapasowej](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jest wygenerowany i wyświetlana w portalu. [Korzystanie z usługi Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) śledzić wszystkie zaplanowane zadania i inne istotne informacje.
 
-Użytkownicy mogą śledzić operacji ad hoc/użytkownika wyzwalane za pomocą identyfikatora JobID, które są zwracane w [dane wyjściowe](#on-demand-backup) zadań asynchronicznych, takie jak Kopia zapasowa. Użyj [Get AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetails?view=azps-1.5.0) PS polecenia cmdlet, aby śledzić zadania i jego szczegóły.
+Użytkownicy mogą śledzić operacji ad hoc/użytkownika wyzwalane za pomocą identyfikatora JobID, które są zwracane w [dane wyjściowe](#on-demand-backup) zadań asynchronicznych, takie jak Kopia zapasowa. Użyj [Get AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS polecenia cmdlet, aby śledzić zadania i jego szczegóły.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

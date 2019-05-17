@@ -5,15 +5,15 @@ metadata:
   title: 'Dokumentacja interfejsu API wyszukiwania wideo Bing — samouczki, przewodniki Szybki start, dokumentacja interfejsu API | Microsoft Docs'
   description: 'Dowiedz się, jak wyszukiwać za pomocą interfejsu API wyszukiwania wideo Bing i znajdować wideo w całym Internecie.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/31/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: 'Interfejs API wyszukiwania wideo Bing umożliwia integrowanie możliwości wyszukiwania wideo Bing z aplikacjami. Wysyłając zapytania wyszukiwania do interfejsu API, możesz pobierać i wyświetlać odpowiednie wideo wysokiej jakości, podobnie jak w witrynie bing.com/videos.'
 sections:

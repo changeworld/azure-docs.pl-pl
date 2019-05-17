@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f773cd298c8faaac90b30d88a74e8ddcb51c3afa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a73c7e381cb6001b773251a1812466b3c82373f2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021950"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541728"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
 
@@ -37,7 +37,7 @@ W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przest
 
 15 lutego 2019 r.
 
-### <a name="recommendations"></a>Zalecenia 
+### <a name="recommendations"></a>Rekomendacje 
 
 Use [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) instead. Zapewnia większość funkcjonalności NamedEntityRecognitionSkill wyższej jakości. Zawiera również bogatsze informacje w jej pola złożone dane wyjściowe.
 

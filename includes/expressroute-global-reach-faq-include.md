@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305132"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "65753936"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co to jest usługa ExpressRoute zasięgu globalnym?
 
@@ -29,19 +29,19 @@ Jeśli obwodów usługi ExpressRoute znajdują się w tym samym regionie geograf
 
 ### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>Jak mogę opłata zasięgu globalnym usługi ExpressRoute?
 
-Usługa ExpressRoute zapewnia łączność z sieci lokalnych usług chmurowych firmy Microsoft. Zasięgu globalnym usługi ExpressRoute zapewnia łączność między własne sieciami lokalnymi za pośrednictwem istniejących obwodów usługi ExpressRoute, korzystając z globalnej sieci firmy Microsoft. Zasięgu globalnym usługi ExpressRoute jest rozliczana osobno z istniejącej usługi ExpressRoute. Istnieje dodatkowa opłata włączenie tej funkcji na każdy obwód usługi ExpressRoute. Ruch między sieci lokalnej włączane przez zasięgu globalnym usługi ExpressRoute jest naliczana dla szybkość ruchu wychodzącego w miejscu źródłowym i szybkość transferu danych przychodzących w miejscu docelowym. Kursy są oparte na strefy, w którym znajdują się obwody. Zobacz <pricing page>
+Usługa ExpressRoute zapewnia łączność z sieci lokalnych usług chmurowych firmy Microsoft. Zasięgu globalnym usługi ExpressRoute zapewnia łączność między własne sieciami lokalnymi za pośrednictwem istniejących obwodów usługi ExpressRoute, korzystając z globalnej sieci firmy Microsoft. Zasięgu globalnym usługi ExpressRoute jest rozliczana osobno z istniejącej usługi ExpressRoute. Istnieje dodatkowa opłata włączenie tej funkcji na każdy obwód usługi ExpressRoute. Ruch między sieci lokalnej włączane przez zasięgu globalnym usługi ExpressRoute jest naliczana dla szybkość ruchu wychodzącego w miejscu źródłowym i szybkość transferu danych przychodzących w miejscu docelowym. Kursy są oparte na strefy, w którym znajdują się obwody.
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>Gdzie jest zasięgu globalnym ExpressRoute obsługiwane?
 
-Zasięgu globalnym usługi ExpressRoute jest obsługiwana w [Wybierz kraje lub miejsca](../articles/expressroute/expressroute-global-reach.md). Obwody usługi ExpressRoute musi zostać utworzony w lokalizacji komunikacji równorzędnej w tych krajach lub miejsca.
+Zasięgu globalnym usługi ExpressRoute jest obsługiwana w [Wybierz kraje/regiony lub miejsca](../articles/expressroute/expressroute-global-reach.md). Obwody usługi ExpressRoute musi zostać utworzony w lokalizacji komunikacji równorzędnej w tych krajach/regionach lub miejsca.
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Czy mogę mieć więcej niż dwie sieci lokalne, każda jest połączona z obwodem usługi ExpressRoute. Można włączyć usługi ExpressRoute zasięgu globalnym do łączenia wszystkich moich sieci w środowisku lokalnym?
 
-Tak, można tak długo, jak obwodów znajdują się w obsługiwanych krajów. Należy się połączyć dwa obwody usługi ExpressRoute w danym momencie. Do utworzenia w pełni stopniu sieci, należy wyliczyć wszystkie parach obwodów i bezpiecznego powtórzenia konfiguracji. 
+Tak, można tak długo, jak obwodów są obsługiwane kraje/regiony. Należy się połączyć dwa obwody usługi ExpressRoute w danym momencie. Do utworzenia w pełni stopniu sieci, należy wyliczyć wszystkie parach obwodów i bezpiecznego powtórzenia konfiguracji. 
 
 ### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Można włączyć zasięgu globalnym usługi ExpressRoute między dwa obwody usługi ExpressRoute w tej samej lokalizacji komunikacji równorzędnej?
 
-Nie. Dwa obwody muszą pochodzić z różnych lokalizacji komunikacji równorzędnej. Jeśli metro w kraju obsługiwanych ma więcej niż jednej lokalizacji komunikacji równorzędnej usługi ExpressRoute, możesz połączyć ze sobą obwodów usługi ExpressRoute tworzone w różnych lokalizacjach komunikacji równorzędnej w tym metro. 
+Nie. Dwa obwody muszą pochodzić z różnych lokalizacji komunikacji równorzędnej. Jeśli metro w obsługiwanych kraju/regionu ma więcej niż jednej lokalizacji komunikacji równorzędnej usługi ExpressRoute, możesz połączyć ze sobą obwodów usługi ExpressRoute tworzone w różnych lokalizacjach komunikacji równorzędnej w tym metro. 
 
 ### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Włączenie zasięgu globalnym usługi ExpressRoute między obwodu X i Y obwodu oraz między obwodu Y i obwodu Z będzie Moje sieciami lokalnymi połączone z obwodem X i obwodu Z komunikować się ze sobą za pośrednictwem sieci firmy Microsoft?
 

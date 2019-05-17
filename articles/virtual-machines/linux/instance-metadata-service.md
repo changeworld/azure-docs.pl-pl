@@ -1,6 +1,6 @@
 ---
 title: Wystąpienie usługi Azure Metadata Service | Dokumentacja firmy Microsoft
-description: Interfejsu rESTful, aby uzyskać informacje dotyczące systemu Linux VM obliczeniowych, sieci i zdarzeń o zbliżającej się konserwacji.
+description: Interfejsu rESTful, aby uzyskać informacje na temat obliczeń, sieci i zdarzenia zbliżającej się konserwacji maszyny Wirtualnej systemu Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: KumariSupriya
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 84821a24ceb8624a1a7033c43c44548fe5eff315
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 88de601caf984d2511229cd68190554086c3da38
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993141"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779562"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -128,11 +128,11 @@ Instance Metadata Service punkt końcowy jest dostępny tylko w obrębie uruchom
 
 Jeśli istnieje, nie znaleziono elementu danych lub źle sformułowane żądanie, Instance Metadata Service zwraca standardowy błędy HTTP. Na przykład:
 
-Kod stanu HTTP | Przyczyna
+Kod stanu HTTP | Reason
 ----------------|-------
 200 OK |
 400 Niewłaściwe żądanie | Brak `Metadata: true` nagłówek lub Brak formatu podczas wykonywania zapytań dotyczących węzeł liścia
-404 — Nie odnaleziono | Żądany element nie istnieje.
+404 Nie znaleziono | Żądany element nie istnieje.
 Metoda 405 nie jest dozwolona | Tylko `GET` i `POST` żądania są obsługiwane
 429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę
 Błąd usługi 500     | Spróbuj ponownie po pewnym czasie
@@ -357,19 +357,19 @@ Dane | Opis | Wprowadzona w wersji
 -----|-------------|-----------------------
 azEnvironment | Gdy maszyna wirtualna jest uruchomiona w środowisku platformy Azure | 2018-10-01
 customData | Zobacz [danych niestandardowych](#custom-data) | 2019-02-01
-location | Region platformy Azure maszyna wirtualna jest uruchomiona w | 2017-04-02
+lokalizacja | Region platformy Azure maszyna wirtualna jest uruchomiona w | 2017-04-02
 name | Nazwa maszyny Wirtualnej | 2017-04-02
-oferty | Oferuje informacje dotyczące obrazu maszyny Wirtualnej. Ta wartość dotyczy tylko obrazy wdrożone z galerii obrazów systemu Azure. | 2017-04-02
+oferty | Oferuje informacje dotyczące obrazu maszyny Wirtualnej i jest obecna tylko w przypadku obrazów jest wdrażany z galerii obrazów systemu Azure | 2017-04-02
 osType | System Linux lub Windows | 2017-04-02
 placementGroupId | [Grupy umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
-Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w jej obraz Azure Marketplace zawiera nazwę, produktu i wydawcy | 2018-04-02
+Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierający nazwę produktu i wydawcy dla maszyny Wirtualnej, jeśli jego obrazu portalu Marketplace platformy Azure | 2018-04-02
 platformUpdateDomain |  [Domena aktualizacji](manage-availability.md) maszyna wirtualna jest uruchomiona | 2017-04-02
 platformFaultDomain | [Domena błędów](manage-availability.md) maszyna wirtualna jest uruchomiona | 2017-04-02
 dostawca | Dostawca maszyny wirtualnej | 2018-10-01
 publicKeys | [Kolekcja kluczy publicznych](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) przypisane do maszyny Wirtualnej i ścieżek | 2018-04-02
 Wydawcy | Wydawca obrazu maszyny Wirtualnej | 2017-04-02
 resourceGroupName | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) dla maszyny wirtualnej | 2017-08-01
-sku | Określone jednostki SKU dla obrazu maszyny Wirtualnej | 2017-04-02
+jednostka SKU | Określone jednostki SKU dla obrazu maszyny Wirtualnej | 2017-04-02
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
 tags | [Tagi](../../azure-resource-manager/resource-group-using-tags.md) dla maszyny wirtualnej  | 2017-08-01
 version | Wersja obrazu maszyny Wirtualnej | 2017-04-02
@@ -688,9 +688,17 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>Dane niestandardowe
-Instance Metadata Service umożliwia dla maszyny Wirtualnej, aby mieć dostęp do swoich danych niestandardowych. Dane binarne muszą być mniej niż 64 KB i jest dostarczany do maszyny Wirtualnej w postaci zakodowane w formacie base64. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia maszyny Wirtualnej przy użyciu niestandardowych danych, zobacz [wdrożyć maszynę wirtualną za pomocą funkcji CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Instance Metadata Service umożliwia dla maszyny Wirtualnej, aby mieć dostęp do swoich danych niestandardowych. Dane binarne muszą być mniej niż 64 KB i jest dostarczany do maszyny Wirtualnej w postaci zakodowane w formacie base64.
+
+Dane niestandardowe platformy Azure mogą być wstawiane do maszyny Wirtualnej za pośrednictwem interfejsów API REST, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia platformy Azure (CLI) lub szablonu usługi ARM.
+
+Przykład interfejsu wiersza polecenia platformy Azure, zobacz [danych niestandardowych i pakietu Cloud-Init w systemie Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+
+Aby uzyskać przykład szablonu ARM, zobacz [wdrożyć maszynę wirtualną za pomocą funkcji CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
 
 Niestandardowe dane są dostępne dla wszystkich procesów uruchomionych w maszynie Wirtualnej. Zaleca się, że klienci nie Wstawianie tajnych informacji danych niestandardowych.
+
+Obecnie dane niestandardowe jest gwarantowane była dostępna podczas uruchamiania maszyny Wirtualnej. W przypadku uaktualnienia odnoszą się do maszyny Wirtualnej, takie jak dodawanie dysków lub zmianę rozmiaru maszyny Wirtualnej, Instance Metadata Service, nie będą umożliwiać danych niestandardowych. Dostarczanie danych niestandardowych stale za pośrednictwem Instance Metadata Service jest obecnie w toku.
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>Trwa pobieranie danych niestandardowych na maszynie wirtualnej
 Instance Metadata Service udostępnia danych niestandardowych do maszyny Wirtualnej w postaci zakodowane w formacie base64. Poniższy przykład Dekoduje ciąg zakodowany w formacie base64.

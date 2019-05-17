@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192387"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546789"
 ---
 Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Podaj udostępnionego galerie obrazów:
 
@@ -49,7 +49,7 @@ Definicje obrazu to logiczne grupowanie wersji obrazu. Definicję obrazu przecho
 
 Istnieją trzy parametry definicję każdego obrazu, które są używane w połączeniu - **wydawcy**, **oferują** i **jednostki SKU**. Są one używane, aby znaleźć definicję określonego obrazu. Może mieć wersji obrazu, które współużytkują jeden lub dwa, ale nie wszystkie trzy wartości.  Na przykład poniżej przedstawiono trzy definicje, które obrazu i ich wartości:
 
-|Definicja obrazu|Wydawca|Oferta|SKU|
+|Definicja obrazu|Wydawca|Oferta|Numer SKU|
 |---|---|---|---|
 |myImage1|Contoso|Finanse|Zaplecze|
 |myImage2|Contoso|Finanse|Fronton|
@@ -77,15 +77,15 @@ W poniższej tabeli wymieniono regionów źródłowych. We wszystkich regionach 
 
 | Regionów źródłowych |
 |---------------------|-----------------|------------------|-----------------|
-| Australia Środkowa   | Central US EUAP | Korea Środkowa    | Południowe Zjednoczone Królestwo 2      |
-| Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Zachodnie Zjednoczone Królestwo         |
-| Australia Wschodnia      | Wschodnie stany USA         | Środkowo-północne stany USA | Środkowo-zachodnie stany USA |
+| Australia Środkowa   | Central US EUAP | Korea Środkowa    | Zjednoczone Królestwo (południe) 2      |
+| Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Zjednoczone Królestwo (zachód)         |
+| Australia Wschodnia      | Wschodnie stany USA         | Północno-środkowe stany USA | Zachodnio-środkowe stany USA |
 | Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Europa Zachodnia     |
-| Brazylia Południowa        | East US 2 EUAP  | Środkowo-południowe stany USA | Indie Zachodnie      |
+| Brazylia Południowa        | East US 2 EUAP  | Południowo-środkowe stany USA | Indie Zachodnie      |
 | Kanada Środkowa      | Francja Środkowa  | Indie Południowe      | Zachodnie stany USA         |
 | Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   | Zachodnie stany USA         |
-| Indie Środkowe       | Japonia Wschodnia      | Północne Zjednoczone Królestwo         | Zachodnie stany USA 2       |
-| Środkowe stany USA          | Japonia Zachodnia      | Południowe Zjednoczone Królestwo         |                 |
+| Indie Środkowe       | Japonia Wschodnia      | Zjednoczone Królestwo (północ)         | Zachodnie stany USA 2       |
+| Środkowe stany USA          | Japonia Zachodnia      | Zjednoczone Królestwo (południe)         |                 |
 
 
 
@@ -119,15 +119,15 @@ Galeria obrazów udostępnione, udostępnionego obrazu i wersję udostępnionego
 
 | Udostępnione użytkownikowi     | Galeria obrazów udostępnionych | Udostępnionego obrazu | Udostępniona wersja obrazu |
 |----------------------|----------------------|--------------|----------------------|
-| Galeria obrazów udostępnionych | Yes                  | Yes          | Yes                  |
-| Udostępnionego obrazu         | Nie                   | Yes          | Yes                  |
-| Udostępniona wersja obrazu | Nie                   | Nie           | Yes                  |
+| Galeria obrazów udostępnionych | Tak                  | Yes          | Tak                  |
+| Udostępnionego obrazu         | Nie                   | Yes          | Tak                  |
+| Udostępniona wersja obrazu | Nie                   | Nie           | Tak                  |
 
 Zaleca się udostępniania na poziomie galerii, aby uzyskać najlepsze wyniki. Aby uzyskać więcej informacji o ROLACH, zobacz [zarządzanie dostępem do zasobów platformy Azure przy użyciu funkcji RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
 Obrazy mogą również być współużytkowane, na dużą skalę, przez dzierżaw przy użyciu rejestracji aplikacji wielodostępnej. Aby uzyskać więcej informacji na temat udostępniania obrazów dla dzierżaw, zobacz [udostępnianie galerii obrazów maszyn wirtualnych w dzierżawach usługi Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 Brak bez dodatkowych opłat za korzystanie z usługi Shared galerii obrazów. Opłata wyniesie dla następujących zasobów:
 - Koszty magazynowania, przechowywania wersji udostępnionego obrazu. Koszt zależy od liczby replik wersję obrazu i liczbie regionów, wersja jest replikowana do. Na przykład jeśli oba są replikowane do 3 regiony mają 2 obrazów, następnie użytkownik zmieni się za 6 dyski zarządzane na podstawie jego rozmiaru. Aby uzyskać więcej informacji, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Opłaty za ruch wychodzący sieci dla replikacji pierwszej wersji obrazu z regionu źródłowego w replikowanych regionach. Kolejne repliki są obsługiwane w regionie, dzięki czemu nie będą naliczane dodatkowe opłaty. 
@@ -266,4 +266,4 @@ Aby określić typowe liczba replik w interfejsie wiersza polecenia, użyj **—
 
 **PYTANIE** Jakiej wersji interfejsu API używać do tworzenia galerii obrazów udostępnione, definicję obrazu, wersja obrazu i VM/VMSS poza wersję obrazu
 
- A. W przypadku wdrożeń maszyn wirtualnych i zestawu skalowania maszyn wirtualnych przy użyciu wersji obrazu, zalecane jest użycie interfejsu API w wersji 2018-04-01 lub nowszej. Chcesz pracować, galerie obrazów udostępnionych, definicje obrazu i wersje obrazów, zaleca się, że używasz wersji 2018-06-01 interfejsu API. 
+ A. W przypadku wdrożeń maszyn wirtualnych i zestawu skalowania maszyn wirtualnych przy użyciu wersji obrazu, zalecane jest użycie interfejsu API w wersji 2018-04-01 lub nowszej. Chcesz pracować, galerie obrazów udostępnionych, definicje obrazu i wersje obrazów, zaleca się, że używasz wersji 2018-06-01 interfejsu API. Magazyn strefowo nadmiarowy (ZRS) wymaga wersji 2019-03-01 lub nowszej.

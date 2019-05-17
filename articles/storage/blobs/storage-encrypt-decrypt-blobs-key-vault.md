@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 05/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 758eeedb89b3cef6766cf195a2cada50fbe63042
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d7c740133911689c6d3f8e29c2cb20aa8873f0c7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148416"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788010"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Samouczek: Szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault
 
@@ -48,7 +48,7 @@ Poniżej przedstawiono krótki opis sposobu działania szyfrowania po stronie kl
 
 ## <a name="set-up-your-azure-key-vault"></a>Konfigurowanie usługi Azure Key Vault
 
-Aby kontynuować z tego samouczka, należy wykonać następujące kroki, które są opisane w tym samouczku [co to jest usługa Azure Key Vault?](../../key-vault/key-vault-overview.md):
+Aby kontynuować z tego samouczka, należy wykonać następujące kroki, które są opisane w tym samouczku [Szybki Start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault za pomocą aplikacji internetowej platformy .NET](../../key-vault/quick-create-net.md):
 
 * Tworzenie magazynu kluczy.
 * Dodawanie klucza lub wpisu tajnego do magazynu kluczy.
@@ -66,7 +66,9 @@ W programie Visual Studio Utwórz nową aplikację konsoli.
 Dodaj pakiety nuget niezbędne w konsoli Menedżera pakietów.
 
 ```powershell
-Install-Package WindowsAzure.Storage
+Install-Package Microsoft.Azure.ConfigurationManager
+Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Azure.Storage.Blob
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 Install-Package Microsoft.Azure.KeyVault
@@ -90,11 +92,12 @@ Dodaj następujący kod `using` dyrektywy i upewnij się, że można dodać odwo
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.KeyVault;
-using System.Threading;        
+using System.Threading;
 using System.IO;
 ```
 
@@ -107,8 +110,8 @@ private async static Task<string> GetToken(string authority, string resource, st
 {
     var authContext = new AuthenticationContext(authority);
     ClientCredential clientCred = new ClientCredential(
-        ConfigurationManager.AppSettings["clientId"],
-        ConfigurationManager.AppSettings["clientSecret"]);
+        CloudConfigurationManager.GetSetting("clientId"),
+        CloudConfigurationManager.GetSetting("clientSecret"));
     AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
 
     if (result == null)
@@ -120,16 +123,16 @@ private async static Task<string> GetToken(string authority, string resource, st
 
 ## <a name="access-storage-and-key-vault-in-your-program"></a>Dostęp do magazynu oraz usługi Key Vault w programie
 
-W funkcji Main Dodaj następujący kod.
+W przypadku metody Main() Dodaj następujący kod.
 
 ```csharp
 // This is standard code to interact with Blob storage.
 StorageCredentials creds = new StorageCredentials(
-    ConfigurationManager.AppSettings["accountName"],
-       ConfigurationManager.AppSettings["accountKey"]);
+    CloudConfigurationManager.GetSetting("accountName"),
+    CloudConfigurationManager.GetSetting("accountKey");
 CloudStorageAccount account = new CloudStorageAccount(creds, useHttps: true);
 CloudBlobClient client = account.CreateCloudBlobClient();
-CloudBlobContainer contain = client.GetContainerReference(ConfigurationManager.AppSettings["container"]);
+CloudBlobContainer contain = client.GetContainerReference(CloudConfigurationManager.GetSetting("container"));
 contain.CreateIfNotExists();
 
 // The Resolver object is used to interact with Key Vault for Azure Storage.
@@ -155,8 +158,9 @@ Dodaj następujący kod do szyfrowania obiektów blob i przekaż go do konta us�
 ```csharp
 // Retrieve the key that you created previously.
 // The IKey that is returned here is an RsaKey.
-// Remember that we used the names contosokeyvault and testrsakey1.
-var rsa = cloudResolver.ResolveKeyAsync("https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", CancellationToken.None).GetAwaiter().GetResult();
+var rsa = cloudResolver.ResolveKeyAsync(
+            "https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", 
+            CancellationToken.None).GetAwaiter().GetResult();
 
 // Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy.
 BlobEncryptionPolicy policy = new BlobEncryptionPolicy(rsa, null);
@@ -166,14 +170,12 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 
 // Upload using the UploadFromStream method.
-using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
+using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
 
 > [!NOTE]
 > Jeśli przyjrzymy się Konstruktor BlobEncryptionPolicy, pojawi się akceptowało klucza i/lub program rozpoznawania nazw. Należy pamiętać, obecnie nie można użyć program rozpoznawania nazw dla celów szyfrowania, ponieważ aktualnie nie robi obsługujące domyślnego klucza.
-> 
-> 
 
 ## <a name="decrypt-blob-and-download"></a>Odszyfrowywanie obiektów blob i pobieranie
 
@@ -195,8 +197,6 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 
 > [!NOTE]
 > Istnieje kilka innych rodzajów rozpoznawania nazw, aby ułatwić zarządzanie kluczami, w tym: AggregateKeyResolver i CachingKeyResolver.
-> 
-> 
 
 ## <a name="use-key-vault-secrets"></a>Użyj wpisy tajne usługi Key Vault
 

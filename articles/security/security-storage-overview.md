@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 74c24e05d974c4b3bb15a242185b645231f74580
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872041"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792779"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
@@ -34,11 +34,11 @@ Ten artykuł zawiera omówienie funkcji zabezpieczeń platformy Azure, korzystaj
 
 Aby uzyskać bardziej szczegółowy widok zabezpieczeń w usłudze Azure Storage, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md). Ten przewodnik zawiera szczegółowe informacje na funkcje zabezpieczeń usługi Azure Storage. Funkcje te obejmują klucze konta magazynu, szyfrowanie danych podczas przesyłania i nieużywanych danych i usługa storage analytics.
 
-## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
+## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
 
 Możesz pomóc zabezpieczyć swoje konto magazynu przy użyciu kontroli dostępu opartej na rolach. Ograniczanie dostępu na podstawie [trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które chcesz wymuszać zasady zabezpieczeń dostępu do danych. Te prawa dostępu są przyznawane, przypisując odpowiednie role RBAC do grup i aplikacji w określonym zakresie. Możesz użyć [wbudowane role kontroli RBAC](../role-based-access-control/built-in-roles.md), np. Współautor konta magazynu, aby przypisać uprawnienia do użytkowników.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Kontrola dostępu oparta na rolach usługi Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
 
@@ -48,10 +48,10 @@ Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na 
 
 Sygnatura dostępu Współdzielonego to identyfikator URI, który obejmuje jego parametry zapytań, wszystkie informacje niezbędne do uwierzytelnionego dostępu do zasobu magazynu. Aby uzyskać dostęp do zasobów magazynu przy użyciu sygnatury dostępu Współdzielonego, klient musi tylko zapewniają sygnatury dostępu Współdzielonego do odpowiedniego konstruktora lub metody.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Opis modelu sygnatur dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
-* [Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 ## <a name="encryption-in-transit"></a>Szyfrowanie podczas transferu
 
@@ -79,7 +79,7 @@ Dowiedz się więcej o funkcji szyfrowanie usługi Storage:
 * [Szyfrowanie usługi Azure Storage](https://azure.microsoft.com/services/storage/) jest dostępna dla [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/). Aby uzyskać szczegółowe informacje dotyczące innych typów magazynu platformy Azure, zobacz [usługi Azure Files](https://azure.microsoft.com/services/storage/files/), [Table storage](https://azure.microsoft.com/services/storage/tables/), i [Queue storage](https://azure.microsoft.com/services/storage/queues/).
 * [Szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md)
 
-## <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
+## <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Usługa Azure Disk Encryption dla maszyn wirtualnych ułatwia zaspakajanie organizacyjnych bezpieczeństwa i zgodności z wymaganiami. Szyfrowanie dysków maszyn wirtualnych (w tym dysków rozruchowych i danych) przy użyciu kluczy i zasad objętych kontrolą w [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
@@ -103,7 +103,7 @@ Urządzenia Data Box, Data Box Disk i Data Box Heavy pomagają w przesyłaniu du
 
 Usługi Data Box Edge i Data Box Gateway to produkty transferu danych online, które działają jak bramy magazynu sieciowego, aby zarządzać danymi między Twoją witryną a platformą Azure. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na platformę Azure i z niej oraz przetwarza dane przy użyciu funkcji obliczeniowej na brzegu sieci z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
 * [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
@@ -115,11 +115,11 @@ Usługa Azure Storage udostępnia zaawansowaną ochronę przed zagrożeniami dod
 
 Zaawansowana ochrona przed zagrożeniami alerty mogą być wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Usługa Azure Security Center zapewnia szczegółowe informacje na temat wszelkich podejrzanych działań wykryte i zaleca działania mające na celu badanie i korygowanie potencjalnych zagrożeń.
 
-Więcej informacji:
+Dowiedz się więcej:
 
 * [Usługa Azure Storage, zaawansowane Omówienie ochrony przed zagrożeniami](../storage/common/storage-advanced-threat-protection.md)
 
-## <a name="azure-key-vault"></a>W usłudze Azure Key Vault
+## <a name="azure-key-vault"></a>Azure Key Vault
 
 Usługa Azure Disk Encryption korzysta [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ułatwiają kontrolowanie i zarządzaniu wpisami tajnymi w ramach subskrypcji usługi key vault i kluczami szyfrowania dysku. Gwarantuje również, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane, gdy w usłudze Azure Storage. Należy używać usługi Key Vault do inspekcji kluczy i zasad użycia.
 

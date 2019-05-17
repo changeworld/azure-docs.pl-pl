@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304184"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546270"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Łączenie ze źródłami danych lokalnych z usługi Azure Logic Apps
 
@@ -36,7 +36,7 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
 
 * Instalację bramy nie jest już skojarzona z zasobem bramy na platformie Azure. Instalację bramy można połączyć tylko do jednego zasobu bramy, które odbywa się podczas tworzenia zasobu bramy i wybierz opcję instalacji bramy. To połączenie powoduje, że instalacja bramy dla innych zasobów.
 
-* Gdy Zaloguj się do witryny Azure portal i utworzenia zasobu bramy, należy upewnić się, logowania konta, które zostało wcześniej używanych do [zainstalować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md#requirements) oraz takie same [subskrypcji platformy Azure ](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) użytą do zainstalowania bramy. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
+* Gdy Zaloguj się do witryny Azure portal i utworzenia zasobu bramy, należy upewnić się, logowania konta, które zostało wcześniej używanych do [zainstalować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md#requirements) oraz takie same [subskrypcji platformy Azure ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access) użytą do zainstalowania bramy. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
 
 * Do tworzenia i obsługi zasobów bramy w witrynie Azure portal usługi [konta usługi Windows](../logic-apps/logic-apps-gateway-install.md#windows-service-account) wymaga co najmniej **Współautor** uprawnienia. Lokalna brama danych działa jako usługa Windows i jest skonfigurowany do użycia `NT SERVICE\PBIEgwService` Windows poświadczeń logowania usługi. 
 

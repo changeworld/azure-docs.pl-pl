@@ -3,8 +3,8 @@ title: Platforma tożsamości firmy Microsoft i OAuth 2.0 w imieniu z przepływe
 description: W tym artykule opisano, jak używać wiadomości HTTP do zaimplementowania uwierzytelniania usług za pomocą OAuth 2.0 w imieniu użytkownika z usługi flow.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce0c1c4dcf7e4ff0c82157af83aa15544cf092e2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60296888"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544747"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i przepływ OAuth 2.0 "w imieniu"
 
@@ -205,7 +205,7 @@ W tej chwili system osobistych kont Microsoft nie obsługuje połączonych zgody
 
 Funkcja portalu aplikacji jest "wstępnie autoryzowane aplikacje". W ten sposób zasobu może wskazywać, że zawsze danej aplikacji ma uprawnienia do odbierania określonych zakresów. Jest to głównie przydatne nawiązywanie połączeń między klientem frontonu i zaplecza zasób bezproblemowa. Zasób może zadeklarować wiele wstępnie autoryzowanych aplikacjach — takich aplikacji mogą żądać tych uprawnień w OBO przepływu i odbierać je bez użytkownika zgodę.
 
-#### <a name="admin-consent"></a>zgoda administratora
+#### <a name="admin-consent"></a>Zgoda administratora
 
 Administrator dzierżawy może zagwarantować, że aplikacje mają uprawnienia do wywołania ich wymaganych interfejsów API, zapewniając zgody administratora dla aplikacji warstwy środkowej. Aby to zrobić, administrator może znaleźć aplikacji warstwy środkowej w ramach ich dzierżawy, otwórz stronę wymaganych uprawnień, a następnie wybierz udzielić uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat zgody administratora, zobacz [dokumentacji uprawnienia i zgody](v2-permissions-and-consent.md).
 

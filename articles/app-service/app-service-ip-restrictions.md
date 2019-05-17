@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/22/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 558b67b5b0e1ce4f452ce2ca2e97dd7e785c80b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728703"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541687"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Ograniczenia dostępu do usługi Azure App Service #
 
@@ -32,7 +32,7 @@ Po wysłaniu żądania do aplikacji, adres nadawcy zostaną ocenione względem z
 
 Możliwość ograniczenia dostępu jest zaimplementowana w ról frontonu usługi App Service, które są nadrzędne hostów procesu roboczego, w której kod jest wykonywany. W związku z tym ograniczenia dostępu są faktycznymi list ACL w sieci.
 
-Możliwość ograniczenia dostępu do aplikacji sieci web z usługą Azure Virtual Network (VNet) jest nazywany [punkty końcowe usługi][serviceendpoints]. Punkty końcowe usługi pozwalają ograniczyć dostęp do usługi wielodostępne z wybranej podsieci. Musi być włączona na zarówno sieci po stronie, a także usługa, która jest włączane przy użyciu. 
+Możliwość ograniczenia dostępu do aplikacji sieci web z usługą Azure Virtual Network (VNet) jest nazywany [punkty końcowe usługi][serviceendpoints]. Punkty końcowe usługi pozwalają ograniczyć dostęp do usługi wielodostępne z wybranej podsieci. Musi być włączona na zarówno sieci po stronie, a także usługa, która jest włączane przy użyciu. Nie działa do ograniczania ruchu do aplikacji, które są hostowane w środowisku usługi App Service.  Jeśli jesteś w środowisku usługi App Service umożliwia kontrolę dostępu do aplikacji przy użyciu reguły dotyczące adresów IP.
 
 ![Przepływ ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -59,6 +59,8 @@ Aby ustawić adres IP na podstawie reguły, wybierz typ protokołu IPv4 lub IPv6
 ![Dodaj regułę ograniczeń dostępu do sieci wirtualnej](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
 Aby ograniczyć dostęp do wybranej podsieci, wybierz typ sieci wirtualnej. Poniżej można wybrać subskrypcję, sieć wirtualną i podsieć, którą chcesz udzielić lub odmówić dostępu za pomocą. Jeśli punkty końcowe usługi nie są już włączone za pomocą Microsoft.Web dla podsieci, które wybrano, jego zostaną automatycznie włączone dla Ciebie, jeśli nie zaznaczysz pole zapytaniem w tym celu. Sytuacja, w którym chcesz ją włączyć w aplikacji, ale nie podsieci jest powiązana z dużym stopniu, jeśli masz uprawnienia, aby włączyć punkty końcowe usługi w podsieci, czy nie. Jeśli potrzebujesz uzyskać osoby, aby włączyć punkty końcowe usługi w podsieci można zaznacz pole wyboru i aplikacji skonfigurowany dla punktów końcowych usługi w oczekiwaniu go później włączane w podsieci. 
+
+Punkty końcowe usługi nie można ograniczyć dostęp do aplikacji działających w środowisku usługi App Service. Jeśli aplikacja znajduje się w środowisku usługi App Service, umożliwia kontrolę dostępu do aplikacji przy użyciu reguły dostępu do adresów IP. 
 
 Kliknięcie dowolnego wiersza, aby edytować istniejącą regułę ograniczeń dostępu. Zmiany zaczynają obowiązywać, natychmiast łącznie ze zmianami w kolejności priorytetu.
 

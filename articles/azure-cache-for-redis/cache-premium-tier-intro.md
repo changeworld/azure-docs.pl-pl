@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829824"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786076"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Wprowadzenie do platformy Azure pamięci podręcznej Redis w warstwie Premium
 Pamięć podręczna systemu Azure dla usługi Redis jest rozproszona, zarządzana pamięć podręczna, która umożliwia tworzenie szybko reagujących aplikacji przy zapewnieniu superszybkiego dostępu do danych. 
@@ -33,7 +33,7 @@ Nowa warstwa Premium jest warstwa przeznaczona dla przedsiębiorstw, która obej
 
 Aby uzyskać więcej informacji na temat rozmiaru, przepływności i przepustowości w pamięciach podręcznych premium, zobacz [pamięci podręcznej Azure redis Cache — często zadawane pytania](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
-## <a name="redis-data-persistence"></a>Trwałość danych Redis
+## <a name="redis-data-persistence"></a>Stan trwały danych pamięci podręcznej Redis
 Warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej Podstawowa/standardowa wszystkie dane są przechowywane tylko w pamięci. W przypadku podstawowej infrastruktury problemów może być możliwej utracie danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce), opcje w [trwałość Redis](https://redis.io/topics/persistence). 
 
 Aby uzyskać instrukcje na temat konfigurowania trwałości, zobacz [Konfigurowanie trwałości dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
@@ -50,7 +50,7 @@ Pamięci podręczne utworzone w warstwie podstawowa lub standardowa są dostępn
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie obsługi sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-vnet.md).
 
-## <a name="importexport"></a>Import/Export
+## <a name="importexport"></a>Importuj/eksportuj
 Import/Export jest usługa Azure Cache dla operacji zarządzania danych Redis, która umożliwia importowanie danych do pamięci podręcznej Azure redis Cache lub eksportowanie danych z pamięci podręcznej Azure redis cache, importowanie i eksportowanie usługi Azure Cache dla migawki bazy danych Redis (RDB) z pamięci podręcznej — wersja premium, aby stronicowych obiektów blob na koncie usługi Azure Storage. Dzięki temu można dokonać migracji między różne usługi Azure Cache dla wystąpień pamięci podręcznej Redis ani wypełnienie pamięci podręcznej z danymi, przed użyciem.
 
 Import może służyć do dostosowania zgodne pliki RDB pamięci podręcznej Redis z dowolnego serwera Redis, działające w dowolnej chmurze lub środowisku, w tym Redis działających w systemie Linux, Windows lub wśród dostawców chmury, takich jak usługi Amazon Web Services i inne. Importowanie danych jest łatwe tworzenie pamięci podręcznej z wstępnie wypełniony danymi. Podczas procesu importowania pamięci podręcznej Redis Azure ładuje pliki RDB z usługi Azure storage do pamięci i wstawianie kluczy do pamięci podręcznej.
@@ -59,13 +59,13 @@ Eksport umożliwia eksportowanie danych przechowywanych w pamięci podręcznej A
 
 Aby uzyskać więcej informacji, zobacz [sposób importowania danych do i eksportować dane z usługi Azure Cache dla usługi Redis](cache-how-to-import-export-data.md).
 
-## <a name="reboot"></a>Ponowne uruchamianie
+## <a name="reboot"></a>Uruchom ponownie
 Warstwa premium umożliwia ponowne uruchomienie jednego lub więcej węzłów pamięci podręcznej na żądanie. Dzięki temu można testować swoją aplikację pod kątem odporności w przypadku awarii. Użytkownik może uruchomić następujących węzłów.
 
 * Węzeł główny pamięci podręcznej
-* Węzeł podrzędny w pamięci podręcznej
-* Zarówno węzła głównego i podrzędnego węzłów pamięci podręcznej
-* Korzystając z klastrowaniem cache w warstwie premium, użytkownik może uruchomić wzorzec, element podrzędny lub oba węzły dla poszczególnych fragmentów w pamięci podręcznej
+* Węzła pomocniczego w pamięci podręcznej
+* Węzły podstawowych i pomocniczych w pamięci podręcznej
+* Korzystając z klastrowaniem cache w warstwie premium, użytkownik może uruchomić podstawowego, pomocniczego lub oba węzły dla poszczególnych fragmentów w pamięci podręcznej
 
 Aby uzyskać więcej informacji, zobacz [ponowny rozruch](cache-administration.md#reboot) i [ponowny rozruch — często zadawane pytania](cache-administration.md#reboot-faq).
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji, zobacz [ponowny rozruch](cache-administration.m
 >
 >
 
-## <a name="schedule-updates"></a>Aktualizacje harmonogramu
+## <a name="schedule-updates"></a>Zaplanuj aktualizacje
 Funkcja zaplanowanych aktualizacji służy do wyznaczenia okno obsługi pamięci podręcznej. Jeśli okna obsługi jest określony, wszystkie aktualizacje serwera Redis są wprowadzane podczas tego okna. Aby wyznaczyć oknem konserwacji, wybierz żądane dni i określ konserwacji okna Uruchom godzinę każdego dnia. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 
 Aby uzyskać więcej informacji, zobacz [Lizacje](cache-administration.md#schedule-updates) i [Zaplanuj aktualizacje — często zadawane pytania](cache-administration.md#schedule-updates-faq).

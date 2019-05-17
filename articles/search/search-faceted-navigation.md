@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023956"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793621"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
 
- ![Usługa Azure Search zadania portalu w wersji demonstracyjnej][1]
+ ![Usługa Azure Search zadania portalu w wersji demonstracyjnej](media/search-faceted-navigation/azure-search-faceting-example.png "pokaz portalu zadania usługi Azure Search")
 
 Nawigacja aspektowa jest punktem wejścia alternatywne do wyszukiwania. Oferuje ona jest wygodną alternatywą dla ręcznego wpisywania wyrażeń złożonych wyszukiwań. Aspektami może pomóc Ci znaleźć, czego szukasz, przy jednoczesnym zapewnieniu, że nie otrzymasz wyników, zerowego. Jako deweloper aspektami umożliwiają udostępnianie najbardziej przydatne kryteria wyszukiwania do nawigowania między indeksu wyszukiwania. W aplikacjach detalicznego handlu online nawigacji aspektowej, często bazuje na marki, działów (Kącik buty), rozmiar, ceny, popularność i oceny. 
 
@@ -308,7 +308,7 @@ Zwróć uwagę rozróżnienie między aspekt wyniki i wyniki wyszukiwania. Wynik
   W kodzie prezentacji parametru liczba powinny być widoczne na zestawu reguł, używany do wyświetlania liczby wyników aspekt. W wynikach aspekt licznik wskazuje liczbę dokumentów, które odpowiadają na okres zestaw reguł lub zakresu.
 * `&facet=City,count:12`<br/>
   W zapytaniu zestawu reguł można ustawić liczbę na wartość.  Wartość domyślna wynosi 10, ale można ją ustawić wyższą lub niższą. Ustawienie `count:12` pobiera pierwszych 12 jest zgodna w wynikach aspekt, liczby dokumentów.
-* „`@odata.count`”<br/>
+* "`@odata.count`"<br/>
   W odpowiedzi na zapytanie ta wartość wskazuje liczbę pasujących elementów w wynikach wyszukiwania. Średnio jest większa niż suma wszystkich wyników aspekt połączone z powodu obecności elementy, które pasują do szukanego terminu, ale mieć żadnych dopasowań wartość zestawu reguł.
 
 **Pobieranie liczby w wynikach zestawu reguł**
@@ -341,7 +341,7 @@ Aby ustawić cenę aspekty w przyrostach co 10 USD, należy określić: `&facet=
 **Podejście 2: Użyj listy wartości**  
 Dla danych liczbowych używając listy wartości.  Należy wziąć pod uwagę zakres aspekt `listPrice` pola renderowany w następujący sposób:
 
-  ![Przykładowe wartości listy][5]
+  ![Lista wartości przykładów](media/search-faceted-navigation/Facet-5-Prices.PNG "przykładowej wartości listy")
 
 Aby określić zakres aspekt, podobne do pokazanego na poprzednim zrzucie ekranu, użyj listy wartości:
 
@@ -352,7 +352,7 @@ Każdy z zakresów powstała przy użyciu 0 jako punktu wyjścia wartość z lis
 ### <a name="build-a-filter-for-a-range"></a>Filtr zakresu kompilacji
 Aby filtrować na podstawie zakresu z wybraniu dokumentów, można użyć `"ge"` i `"lt"` operatorów w wyrażeniu legalną dwuczęściową, który definiuje punkty końcowe zakresu filtru. Na przykład, jeśli wybierzesz zakres 10-25 dla `listPrice` polu Filtr byłby `$filter=listPrice ge 10 and listPrice lt 25`. W przykładowym kodzie używa wyrażenia filtru **priceFrom** i **priceTo** parametrów umożliwiających ustawianie punktów końcowych. 
 
-  ![Zapytanie o zakres wartości][6]
+  ![Zapytanie o zakres wartości](media/search-faceted-navigation/Facet-6-buildfilter.PNG "zapytania dla zakresu wartości")
 
 <a name="geofacets"></a> 
 
@@ -385,11 +385,11 @@ Podczas pracy z wyników wyszukiwania, obejrzyj adres URL dla zmian w budowa zap
    
    Strukturę nawigacji aspektowej jest także zwracany w wynikach wyszukiwania. Na stronie wyników wyszukiwania strukturę nawigacji aspektowej obejmuje liczniki dla każdego aspektu wyniku. Nie zestawu reguł są zaznaczone, dzięki czemu zwracane są wszystkie pasujących wyników.
    
-   ![Wyniki wyszukiwania, przed wybraniem zestawów reguł][11]
+   ![Wyniki wyszukiwania przed wybraniem aspektami](media/search-faceted-navigation/faceted-search-before-facets.png "wyniki wyszukiwania przed wybraniem zestawów reguł")
 
 4. Kliknij tytuł biznesowych, lokalizacji lub minimalna wynagrodzenia. Aspekty zostały null początkowa wyszukiwania, ale jak przyjmują wartości wyniki wyszukiwania są usuwane z elementów, które nie odpowiadają.
    
-   ![Wyniki wyszukiwania, po wybraniu zestawu reguł][12]
+   ![Wyniki wyszukiwania, po wybraniu aspektami](media/search-faceted-navigation/faceted-search-after-facets.png "wyniki wyszukiwania, po wybraniu zestawu reguł")
 
 5. Aby wyczyścić aspektowa zapytanie tak, aby spróbować zachowania inne zapytanie, kliknij `[X]` po wybranych zestawów reguł do wyczyszczenia aspektami.
    
@@ -400,42 +400,6 @@ Obejrzyj [szczegółowe dane w usłudze Azure Search](https://channel9.msdn.com/
 
 Aby uzyskać więcej szczegółowych informacji w zasadach projektowania nawigacji aspektowej zaleca się następujące łącza:
 
-* [Projektowanie pod kątem wyszukiwanie Aspektowe](http://www.uie.com/articles/faceted_search/)
 * [Wzorce projektowe: Nawigacja aspektowa](https://alistapart.com/article/design-patterns-faceted-navigation)
-
-
-<!--Anchors-->
-[How to build it]: #howtobuildit
-[Build the presentation layer]: #presentationlayer
-[Build the index]: #buildindex
-[Check for data quality]: #checkdata
-[Build the query]: #buildquery
-[Tips on how to control faceted navigation]: #tips
-[Faceted navigation based on range values]: #rangefacets
-[Faceted navigation based on GeoPoints]: #geofacets
-[Try it out]: #tryitout
-
-<!--Image references-->
-[1]: ./media/search-faceted-navigation/azure-search-faceting-example.PNG
-[2]: ./media/search-faceted-navigation/Facet-2-CSHTML.PNG
-[3]: ./media/search-faceted-navigation/Facet-3-schema.PNG
-[4]: ./media/search-faceted-navigation/Facet-4-SearchMethod.PNG
-[5]: ./media/search-faceted-navigation/Facet-5-Prices.PNG
-[6]: ./media/search-faceted-navigation/Facet-6-buildfilter.PNG
-[7]: ./media/search-faceted-navigation/Facet-7-appstart.png
-[8]: ./media/search-faceted-navigation/Facet-8-appbike.png
-[9]: ./media/search-faceted-navigation/Facet-9-appbikefaceted.png
-[10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
-[11]: ./media/search-faceted-navigation/faceted-search-before-facets.png
-[12]: ./media/search-faceted-navigation/faceted-search-after-facets.png
-
-<!--Link references-->
-[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
-[Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
+* [Fronton kwestie podczas implementowania wyszukiwanie Aspektowe — część 1 ](https://articles.uie.com/faceted_search2/)
 

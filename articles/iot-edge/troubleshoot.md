@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142860"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797625"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -351,7 +351,7 @@ Usługa Azure IoT Edge umożliwia komunikację z serwera lokalnego do chmury pla
 
 Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania środowiska uruchomieniowego usługi Azure IoT Edge i wdrożone moduły, jest nadal zależne od podstawowej konfiguracji komputera i sieci. Dlatego konieczne jest zapewnienie odpowiedniego sieci i reguły zapory są skonfigurowane do krawędzi bezpiecznej komunikacji w chmurze. Poniższa tabela może służyć jako wytyczne podczas konfiguracji zapory reguły dla podstawowych serwerów hostujące środowisko uruchomieniowe usługi Azure IoT Edge:
 
-|Protokół|Port|przychodzące|Wychodzące|Wskazówki|
+|Protocol|Port|przychodzące|Wychodzące|Wskazówki|
 |--|--|--|--|--|
 |MQTT|8883|ZABLOKOWANE (ustawienie domyślne)|ZABLOKOWANE (ustawienie domyślne)|<ul> <li>Skonfiguruj wychodzące (wychodzące) jest otwarte, gdy jako protokół komunikacji przy użyciu protokołu MQTT.<li>1883 dla protokołu MQTT nie jest obsługiwany przez usługi IoT Edge. <li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul>|
 |AMQP|5671|ZABLOKOWANE (ustawienie domyślne)|Otwórz (ustawienie domyślne)|<ul> <li>Protokół komunikacji domyślnego dla usługi IoT Edge. <li> Musi być skonfigurowany jako Otwórz, czy usługi Azure IoT Edge nie jest skonfigurowany dla innych obsługiwanych protokołów AMQP jest protokół komunikacyjny żądaną.<li>5672 dla protokołu AMQP nie jest obsługiwany przez usługi IoT Edge.<li>Zablokować tego portu, w przypadku usługi Azure IoT Edge, używa innej usługi IoT Hub z obsługiwanych protokołów.<li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul></ul>|
@@ -383,7 +383,7 @@ Miejsce `daemon.json` we właściwym miejscu dla danej platformy:
 | Platforma | Lokalizacja |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| Host Windows za pomocą kontenerów Windows | `C:\ProgramData\iotedge-moby-data\config` |
+| Host Windows za pomocą kontenerów Windows | `C:\ProgramData\iotedge-moby\config` |
 
 Jeśli lokalizacja zawiera już `daemon.json` Dodaj **dns** klawisz, aby go, a następnie zapisz plik.
 

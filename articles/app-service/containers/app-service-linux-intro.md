@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d40b28103e24214ef00864b032266cc95889eff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850421"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780331"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -33,16 +33,16 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 
 | Język | Obsługiwane wersje |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1, 10.10 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10, 10.14 |
 | Java * | Tomcat 8.5, 9.0, Java SE, WildFly 14 (z uruchomionym środowiskiem JRE 8) |
 | PHP | 5.6, 7.0, 7.2 |
-| Python (wersja zapoznawcza) | 2.7, 3.6, 3.7 |
-| .NET Core | 1.0, 1.1, 2.0, 2.1 |
-| Ruby | 2.3 |
+| Python | 2.7, 3.6, 3.7 |
+| .NET Core | 1.0, 1.1, 2.0, 2.1, 2.2 |
+| Ruby | 2.3, 2.4 |
 
 ## <a name="deployments"></a>Wdrożenia
 
-* FTP
+* Protokół FTP
 * Lokalna usługa Git
 * GitHub
 * Bitbucket
@@ -57,7 +57,7 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 * Środowiska
 * Wdrożenia
 * Podstawowa konsola
-* Protokół SSH
+* SSH
 
 ## <a name="scaling"></a>Skalowanie
 
@@ -71,9 +71,9 @@ Sprawdź [Pulpit nawigacyjny stanu platformy Azure](https://azure.microsoft.com/
 
 Witryna Azure Portal wyświetla tylko te funkcje, które obecnie działają dla usługi Web App for Containers. Kiedy włączymy więcej funkcji, będą one widoczne w portalu.
 
-Usługa App Service w systemie Linux jest obsługiwana tylko w planach usługi App Service [Podstawowa, Standardowa oraz Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [Bezpłatna lub Współdzielona](https://azure.microsoft.com/pricing/details/app-service/plans/). Nie można utworzyć usługi Web App for Containers w planie usługi App Service już hostującym usługę Web Apps w systemie innym niż Linux.  
+App Service w systemie Linux jest obsługiwana tylko z [bezpłatna, podstawowa, standardowa i Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) planów usługi app service, a nie ma [Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) warstwy. Nie można utworzyć aplikację internetową systemu Linux w ramach planu usługi App Service już hostującym usługę Web Apps innego niż Linux.  
 
-Oparte na bieżące ograniczenia, nie można łączyć aplikacje Windows i Linux w tej samej grupie zasobów.
+Oparte na bieżące ograniczenie dla tej samej grupie zasobów nie można mieszać aplikacji Windows i Linux, w tym samym regionie.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

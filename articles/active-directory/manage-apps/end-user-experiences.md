@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/09/2018
+ms.date: 05/03/2019
 ms.author: celested
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e00ecde5550b5ef4f1698fa879a039dee8aad12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3880a62d58b15ef07e524d69c38ba723ea56178f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441737"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781065"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Środowiska użytkownika końcowego dla aplikacji w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) oferuje kilka sposobów dostosowania do wdrażania aplikacji dla użytkowników końcowych w organizacji:
@@ -53,7 +53,9 @@ Większość aplikacji federacyjnych obsługuje SAML 2.0, WS-Federation i OpenID
 ## <a name="direct-sign-on-links"></a>Łącza bezpośrednie logowanie jednokrotne
 Usługa Azure AD obsługuje również pojedynczego logowania jednokrotnego łączy bezpośrednich dla poszczególnych aplikacji, które obsługują opartego na hasłach logowanie jednokrotne połączonej logowania jednokrotnego i jakiejkolwiek formy federacyjnego logowania jednokrotnego.
 
-Te łącza są specjalnie przygotowane adresów URL, które wysyłają użytkownika przez proces logowania w usłudze Azure AD dla określonej aplikacji bez konieczności uruchamiania użytkownik je z usługi Azure AD dostęp do panelu lub usługi Office 365. Te **adresy URL dostępu użytkownika do** można znaleźć w obszarze właściwości aplikacje dla przedsiębiorstw dostępna w ramach usługi Azure Active Directory w witrynie Azure portal.
+Te łącza są specjalnie przygotowane adresów URL, które wysyłają użytkownika przez proces logowania w usłudze Azure AD dla określonej aplikacji bez konieczności uruchamiania użytkownik je z usługi Azure AD dostęp do panelu lub usługi Office 365. Te **adresy URL dostępu użytkownika do** można znaleźć we właściwościach aplikacji przeznaczonych dla przedsiębiorstw dostępna. W witrynie Azure portal wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw**. Wybierz aplikację, a następnie wybierz **właściwości**.
+
+![Przykład adresu URL dostępu użytkownika we właściwościach usługi Twitter](media/end-user-experiences/direct-sign-on-link.png)
 
 Te linki można kopiować i wkleić z dowolnego miejsca, chcesz udostępnić Link umożliwiający zalogowanie się do wybranej aplikacji. Może to być w wiadomości e-mail lub w dowolnym opartych na sieci web portalu niestandardowym skonfigurowanej dla dostępu aplikacji użytkownika. Oto przykład z usługi Azure AD bezpośrednie pojedynczy adres URL logowania do usługi Twitter:
 

@@ -3,8 +3,8 @@ title: Platforma tożsamości firmy Microsoft i protokołu OpenID Connect | Azur
 description: Tworzenie aplikacji sieci web przy użyciu protokołu uwierzytelniania OpenID Connect implementacja platformy tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfac577d7582caa5b538f05273a02e4c3baf71ff
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918458"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544813"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma tożsamości firmy Microsoft i protokołu OpenID Connect
 
@@ -34,11 +34,11 @@ OpenID Connect to protokół uwierzytelniania, oparte na protokołu OAuth 2.0, k
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu, dzięki czemu możesz zrobić pojedynczego logowania jednokrotnego przy użyciu protokołu OAuth. OpenID Connect wprowadzono pojęcie *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika. Identyfikator tokenu zapewnia również podstawowych informacji o profilu użytkownika. Ponieważ OpenID Connect rozszerza OAuth 2.0, aplikacje mogą bezpiecznie uzyskiwać *tokeny dostępu*, której można uzyskać dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-v2-protocols.md#the-basics). Punkt końcowy platforma tożsamości firmy Microsoft umożliwia także aplikacji innych firm, które są zarejestrowane w usłudze Azure AD, aby wystawiać tokeny dostępu do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Aby uzyskać więcej informacji o tym, jak skonfigurować aplikację do wystawiania tokenów dostępu, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego platformy tożsamości firmy Microsoft](quickstart-register-app.md). Zaleca się, że używasz uwierzytelniania OpenID Connect, jeśli tworzysz [aplikacji sieci web](v2-app-types.md#web-apps) który jest hostowany na serwerze i dostępne za pośrednictwem przeglądarki.
 
-## <a name="protocol-diagram-sign-in"></a>Diagram protokołu: Zaloguj się
+## <a name="protocol-diagram-sign-in"></a>Diagram protokołu: Logowanie
 
 Najbardziej podstawowa przepływ logowania ma kroki opisane w następnej diagramu. Każdy krok jest szczegółowo opisane w tym artykule.
 
-![Protokół OpenID Connect: Zaloguj się](./media/v2-protocols-oidc/convergence-scenarios-webapp.svg)
+![Protokół OpenID Connect: Logowanie](./media/v2-protocols-oidc/convergence-scenarios-webapp.svg)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Pobierz dokument metadanych OpenID Connect
 
@@ -120,9 +120,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Wymagane | Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej wartości id_token jako oświadczenia. Aplikację można sprawdzić tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
 | `response_mode` | Zalecane | Określa metodę, które mają być używane do odesłania wynikowy kod autoryzacji do aplikacji. Możliwe wartości to `form_post` i `fragment`. Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post`, aby zapewnić najbardziej bezpieczny transfer tokenów do aplikacji. |
 | `state` | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, którą chcesz. Losowo generowany unikatową wartość jest zazwyczaj używany do [fałszerstwo żądania międzywitrynowego atakami](https://tools.ietf.org/html/rfc6749#section-10.12). Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widok, który użytkownik był na. |
-| `prompt` | Optional (Opcjonalność) | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`. `prompt=login` Oświadczenia wymusza użytkownika o wprowadzenie poświadczeń na żądanie i neguje logowania jednokrotnego. `prompt=none` Oświadczeń jest przeciwieństwem. To oświadczenie gwarantuje, że użytkownik nie jest wyświetlone wszystkie interaktywne monity o. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, Microsoft platformy tożsamości z punktu końcowego zwraca błąd. `prompt=consent` Oświadczenia wyzwala okno dialogowe ze zgodą OAuth po użytkownik loguje się. Okno dialogowe z monitem o przyznanie uprawnień do aplikacji. |
-| `login_hint` | Optional (Opcjonalność) | Ten parametr umożliwia wstępnie wypełnić pole nazwy użytkownika i adres e-mail adres strony logowania dla użytkownika, jeśli znasz nazwę użytkownika, wcześniej. Często aplikacje tego parametru należy użyć podczas ponownego uwierzytelniania po już wyodrębniania nazwy użytkownika z wcześniejszych logowania za pomocą `preferred_username` oświadczenia. |
-| `domain_hint` | Optional (Opcjonalność) | Obszar użytkownika w katalogu federacyjnego.  Pomija to proces odnajdywania bazujące na poczcie e-mail, który użytkownik przechodzi na stronę logowania w nieco bardziej usprawnione środowisko użytkownika. Dla dzierżawy, które są Sfederowane za pośrednictwem katalogu lokalnego, takich jak usługi AD FS często skutkuje to bezproblemowe logowania z powodu istniejących sesji logowania. |
+| `prompt` | Opcjonalne | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`. `prompt=login` Oświadczenia wymusza użytkownika o wprowadzenie poświadczeń na żądanie i neguje logowania jednokrotnego. `prompt=none` Oświadczeń jest przeciwieństwem. To oświadczenie gwarantuje, że użytkownik nie jest wyświetlone wszystkie interaktywne monity o. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, Microsoft platformy tożsamości z punktu końcowego zwraca błąd. `prompt=consent` Oświadczenia wyzwala okno dialogowe ze zgodą OAuth po użytkownik loguje się. Okno dialogowe z monitem o przyznanie uprawnień do aplikacji. |
+| `login_hint` | Opcjonalne | Ten parametr umożliwia wstępnie wypełnić pole nazwy użytkownika i adres e-mail adres strony logowania dla użytkownika, jeśli znasz nazwę użytkownika, wcześniej. Często aplikacje tego parametru należy użyć podczas ponownego uwierzytelniania po już wyodrębniania nazwy użytkownika z wcześniejszych logowania za pomocą `preferred_username` oświadczenia. |
+| `domain_hint` | Opcjonalne | Obszar użytkownika w katalogu federacyjnego.  Pomija to proces odnajdywania bazujące na poczcie e-mail, który użytkownik przechodzi na stronę logowania w nieco bardziej usprawnione środowisko użytkownika. Dla dzierżawy, które są Sfederowane za pośrednictwem katalogu lokalnego, takich jak usługi AD FS często skutkuje to bezproblemowe logowania z powodu istniejących sesji logowania. |
 
 W tym momencie użytkownik jest monitowany, aby wprowadzić swoje poświadczenia i wykonania uwierzytelnienia. Punkt końcowy platforma tożsamości firmy Microsoft sprawdza, czy użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgodę, do dowolnego z tych uprawnień, Microsoft platformy tożsamości z punktu końcowego monituje użytkownika o zgodę na uprawnienia wymagane. Przeczytaj więcej o [uprawnienia, wyrażania zgody i aplikacje z wieloma dzierżawami](v2-permissions-and-consent.md).
 

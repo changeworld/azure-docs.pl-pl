@@ -9,12 +9,12 @@ ms.date: 09/14/2017
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: dbaaade278073613a62eaf350146360651350244
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fdb05adaf6a4b039ef288ac8b4464f62930e3f9c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510224"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797768"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
 
-Operacje, które mają wpływ na rzeczywistych wiadomości w kolejce za pomocą biblioteki klienta .NET magazynu jako dostępne w programie PowerShell. Aby dodać komunikat do kolejki, Utwórz nowe wystąpienie obiektu komunikat [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) klasy. Następnie wywołaj metodę [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). CloudQueueMessage mogą być tworzone z ciągu (w formacie UTF-8) lub tablicą bajtów.
+Operacje, które mają wpływ na rzeczywistych wiadomości w kolejce za pomocą biblioteki klienta .NET magazynu jako dostępne w programie PowerShell. Aby dodać komunikat do kolejki, Utwórz nowe wystąpienie obiektu komunikat [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) klasy. Następnie wywołaj metodę [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). CloudQueueMessage mogą być tworzone z ciągu (w formacie UTF-8) lub tablicą bajtów.
 
 Poniższy przykład pokazuje, jak dodać komunikat do kolejki.
 
@@ -131,7 +131,7 @@ Komunikaty są odczytywane w kolejności pierwszy wejściu — pierwszy na wyjś
 
 To **limitu czasu niewidoczności** definiuje, jak długo komunikat pozostaje niewidoczna, zanim stanie się znów dostępne do przetwarzania. Wartość domyślna to 30 sekund. 
 
-Kod odczytuje komunikat z kolejki w dwóch etapach. Gdy wywołujesz [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metody, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z funkcji **GetMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metody. 
+Kod odczytuje komunikat z kolejki w dwóch etapach. Gdy wywołujesz [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metody, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z funkcji **GetMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metody. 
 
 W poniższym przykładzie możesz zapoznaj się z trzech kolejka komunikatów, a następnie poczekaj 10 sekund (limit czasu niewidoczności). A następnie przeczytaj ponownie trzy komunikaty usuwanie komunikatów po ich przeczytaniu przez wywołanie metody **DeleteMessage**. Jeśli zostanie podjęta próba odczytu kolejki po usunięciu komunikaty, $queueMessage zostaną zwrócone jako wartości NULL.
 

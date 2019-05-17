@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 286d8bbc01b5916e842c196aed5a49ef1c76bc3c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025203"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540690"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search
 Jeśli używasz poprzedniej wersji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/), ten artykuł pomoże Ci uaktualnienia aplikacji w taki sposób, aby używać najnowszych jest ogólnie dostępna wersja interfejsu API 2019-05-06.
@@ -35,7 +35,7 @@ Wersja 2019-05-06 jest ogólnie dostępna najnowszą wersję interfejsu API REST
 
 * [Podczas analizowania tryby JsonLines](search-howto-index-json-blobs.md)częścią usługi Azure Blob indeksowania, tworzy jeden wyszukiwania dokumentów na jednostkę JSON, oddzielonych znakami nowego wiersza.
 
-* [Usługa cognitive Search](cognitive-search-concept-intro.md) zapewnia indeksowania wykorzystującego aparatów wzbogacania sztucznej Inteligencji usług Cognitive Services.
+* [Usługa cognitive search](cognitive-search-concept-intro.md) zapewnia indeksowania wykorzystującego aparatów wzbogacania sztucznej Inteligencji usług Cognitive Services.
 
 Kilka wersji zapoznawczych funkcji pokrywają się z tą aktualizacją jest ogólnie dostępna. Aby przejrzeć listę nowych funkcji zapoznawczych, zobacz [wersji interfejsu api REST wyszukiwania 2019-05-06-Preview](search-api-preview.md).
 
@@ -72,7 +72,9 @@ Jeśli jedno z tych sytuacji odnoszą się do Ciebie, następnie konieczne może
 
 Uaktualniania z wersji interfejsu API w wersji zapoznawczej powyższych ma również zastosowanie, ale należy również pamiętać, że niektóre funkcje w wersji zapoznawczej nie są dostępne w wersji 2019-05-06:
 
-* [Zapytania "Więcej następująco"](search-more-like-this.md) w dalszym ciągu być funkcją tylko do wersji zapoznawczej.
+* [Zapytania "Więcej następująco"](search-more-like-this.md)
+* [Indeksowanie obiektów blob CSV](search-howto-index-csv-blobs.md)
+* [Obsługa interfejsu API usługi MongoDB dla indeksatorów usługi Cosmos DB](search-howto-index-cosmosdb.md)
 
 Jeśli Twój kod korzysta z tych funkcji, nie można uaktualnić do interfejsu API w wersji 2019-05-06 bez usuwania swojej użytkowania.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6eaace7589488a9466e78597e0091c84dabb5155
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685287"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768009"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie oświadczenia i dostosowywanie danych wejściowych za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C użytkownika
 
@@ -29,12 +29,12 @@ Wykonaj kroki opisane w artykule [wprowadzenie do zasad niestandardowych](active
 
 ## <a name="add-claims"></a>Dodawanie oświadczeń
 
-Gromadzenia danych początkowych użytkowników odbywa się przy użyciu podróży użytkownika rejestracji lub logowania. Dodatkowe oświadczenia, które można później gromadzić przy użyciu podróży użytkownika edycji profilu. W dowolnym momencie usługi Azure AD B2C interaktywnie zbiera informacje bezpośrednio od użytkownika, struktura środowiska tożsamości używa dostawcy selfasserted.
+Gromadzenia danych początkowych użytkowników odbywa się przy użyciu podróży użytkownika rejestracji lub logowania. Dodatkowe oświadczenia, które można później gromadzić przy użyciu podróży użytkownika edycji profilu. W dowolnym momencie usługi Azure AD B2C interaktywnie zbiera informacje bezpośrednio od użytkownika, struktura środowiska tożsamości używa dostawcy samodzielnie.
 
 
 ### <a name="define-the-claim"></a>Zdefiniuj oświadczenia
 
-Umożliwia, poproś użytkownika o ich miasta. Dodaj następujący element do **ClaimsSchema** elementu w pliku zasad TrustFrameworkBase:
+Możemy poprosić użytkownika dla ich miasta. Dodaj następujący element do **ClaimsSchema** elementu w pliku zasad TrustFrameworkBase:
 
 ```xml
 <ClaimType Id="city">

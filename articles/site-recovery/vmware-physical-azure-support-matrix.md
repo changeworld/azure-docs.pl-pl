@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 8be028d11d0778c2b67788029aa400ffd3b98cb4
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872919"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540587"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -64,7 +64,7 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 --- | ---
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
 Obciążenie maszyny | Usługa Site Recovery obsługuje replikację z dowolnego obciążenia (np. usługi Active Directory, programu SQL server itp.,) uruchomione na obsługiwanej maszynie. [Dowiedz się więcej](https://aka.ms/asr_workload).
-System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1. </br></br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> Windows 2016 Nano Server nie jest obsługiwane.
+System operacyjny Windows | 2019 r Server systemu Windows (z [9.22 wersji](service-updates-how-to.md#links-to-currently-supported-update-rollups)), 64-bitowe systemu Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 za pomocą w co najmniej z dodatkiem SP1. </br> Od [9.24 wersji](https://support.microsoft.com/en-in/help/4503156)64- bitowe systemu Windows 10, Windows 8.1 64-bitowym, 64-bitowego systemu Windows 8, 64-bitowych Windows 7 (Windows 7 RTM nie jest obsługiwany)</br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> Windows 2016 Nano Server nie jest obsługiwane.
 Architektura systemu operacyjnego Linux | Obsługiwane jest tylko 64-bitowym systemie. 32-bitowy system nie jest obsługiwana.
 System operacyjny Linux | Red Hat Enterprise Linux: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.6 <br/><br/>CentOS: 5.2 i 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.6 <br/><br/>Ubuntu 14.04 LTS server [(obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS [(obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3, z dodatkiem SP4 [(obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6,9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra w wersji 3, 4 i 5 (UEK3, UEK4, UEK5) <br/><br/></br>— Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.</br></br> - [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure. Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> -W dystrybucjach systemu Linux obsługiwane są tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> — Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> — Serwerach z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
 
@@ -148,15 +148,15 @@ Wiele kart sieciowych sieci gościa/serwera | Tak.
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Usługa ExpressRoute systemu Azure | Yes
-Wewnętrzny moduł równoważenia obciążenia | Yes
-ELB | Yes
-Azure Traffic Manager | Yes
-Multi-NIC | Yes
-Zastrzeżony adres IP | Yes
-Protokół IPv4 | Yes
-Zachowaj źródłowy adres IP | Yes
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> | Yes
+Azure ExpressRoute | Tak
+Wewnętrzny moduł równoważenia obciążenia | Tak
+ELB | Tak
+Azure Traffic Manager | Tak
+Multi-NIC | Tak
+Zastrzeżony adres IP | Tak
+Protokół IPv4 | Tak
+Zachowaj źródłowy adres IP | Tak
+Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> | Tak
 Accelerated Networking | Nie
 
 ## <a name="storage"></a>Magazyn
@@ -165,23 +165,24 @@ Accelerated Networking | Nie
 Dysk dynamiczny | Operacja dysku systemowego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
 Konfiguracja dysku platformy docker | Nie
 Host NFS | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
-Sieć SAN (iSCSI/FC) hosta | Yes
+Sieć SAN (iSCSI/FC) hosta | Tak
 Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Host wielościeżkowego (MPIO) | Tak, przetestowane za pomocą DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualnego hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera VMDK | Yes
+Gość/serwera VMDK | Tak
 Dysku udostępnionego klastra gościa/serwera | Nie
 Gość/serwera zaszyfrowanego dysku | Nie
 Gość/serwer systemu plików NFS | Nie
+Gość/serwer iSCSI | Nie
 Guest/server SMB 3.0 | Nie
-Gość/serwera RDM | Yes<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
-Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Yes
-Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Yes
-Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Yes
+Gość/serwera RDM | Tak<br/><br/> N/d dla serwerów fizycznych
+Gość/serwera dysku > 1 TB | Tak<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
+Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Tak
+Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Tak
+Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Tak
 Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
-Gość/server - wykluczyć dysk | Yes
+Gość/server - wykluczyć dysk | Tak
 Gość/serwera wielościeżkowego (MPIO) | Nie
 Rozruchu interfejsu EFI/UEFI gościa/serwera | Obsługiwane podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszego na platformie Azure.<br/><br/> Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/><br/> Serwer nie może mieć więcej niż cztery partycje na dysku systemu operacyjnego.<br/><br/> Wymagana wersja usługi mobilności 9.13 lub nowszej.<br/><br/> Obsługiwane jest tylko systemu plików NTFS.
 
@@ -194,30 +195,30 @@ Rozruchu interfejsu EFI/UEFI gościa/serwera | Obsługiwane podczas migracji mas
 | Azure Data Box | Nie
 
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Magazyn Azure
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Magazyn lokalnie nadmiarowy | Yes
-Magazyn geograficznie nadmiarowy | Yes
-Magazyn geograficznie nadmiarowy z dostępem do odczytu | Yes
+Magazyn lokalnie nadmiarowy | Tak
+Magazyn geograficznie nadmiarowy | Tak
+Magazyn geograficznie nadmiarowy z dostępem do odczytu | Tak
 Chłodny Magazyn | Nie
 Magazynu gorącego| Nie
-Blokowe obiekty blob | Nie
-Szyfrowanie danych magazynowanych (szyfrowanie usługi Storage)| Yes
-Premium Storage | Yes
+Obiekty BLOB typu Block | Nie
+Szyfrowanie danych magazynowanych (szyfrowanie usługi Storage)| Tak
+Premium Storage | Tak
 Usługa import/export | Nie
-Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Yes
+Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Tak
 Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorące i chłodne warstwy) | Nie
 
 ## <a name="azure-compute"></a>Usługa Azure compute
 
 **Funkcja** | **Obsługiwane**
 --- | ---
-Zestawy dostępności | Yes
+Zestawy dostępności | Tak
 Strefy dostępności | Nie
-HUB | Yes
-Dyski zarządzane | Yes
+HUB | Tak
+Dyski zarządzane | Tak
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny Wirtualnej platformy Azure
 

@@ -1,5 +1,5 @@
 ---
-title: Praca z projekcji w magazynie wiedzy — usługa Azure Search
+title: Praca z projekcji w magazynie wiedzy (wersja zapoznawcza) — usługa Azure Search
 description: Zapisz i kształtować wzbogaconego danych z potokiem indeksowania sztucznej Inteligencji do użytku w scenariuszach niż wyszukiwania
 manager: eladz
 author: vkurpad
@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.custom: seomay2019
-ms.openlocfilehash: 3ab5ffafd1b20eb0e3e453d3e730840baf9233e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028368"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540809"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Praca z projekcji w magazynie wiedzę w usłudze Azure Search
 
+> [!Note]
+> Magazyn wiedzy jest w wersji zapoznawczej i nie przeznaczonych do użycia w środowisku produkcyjnym. [Wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) zapewnia tę funkcję. Brak obsługi zestawu SDK platformy .NET w tej chwili.
+>
+
 Usługa Azure Search umożliwia zawartości wzbogacania umiejętności poznawcze sztucznej Inteligencji i umiejętności niestandardowe jako część indeksowania. Wzbogacenia dodawania struktury do dokumentów i wprowadzić bardziej skuteczne wyszukiwanie. W wielu przypadkach wzbogaconego dokumenty są przydatne w przypadku scenariuszy innych niż wyszukiwania, takie jak w przypadku wyszukiwania wiedzy.
 
-Projekcje, składnik [wiedzy magazynu (wersja zapoznawcza)](knowledge-store-concept-intro.md), widoków dokumentów wzbogacony, które można zapisywać do pamięci fizycznej do celów wyszukiwania wiedzy. Rzutowanie umożliwia "Projekt" dane do kształtu, który zgodnie z Twoimi potrzebami zachowaniu relacji, dzięki czemu narzędzi, takich jak usługa Power BI mogą odczytać dane za pomocą nie dodatkowego nakładu pracy. 
+Projekcje, składnik [magazynu wiedzy](knowledge-store-concept-intro.md), widoków wzbogaconego dokumentów, które można zapisywać do pamięci fizycznej do celów wyszukiwania wiedzy. Rzutowanie umożliwia "Projekt" dane do kształtu, który zgodnie z Twoimi potrzebami zachowaniu relacji, dzięki czemu narzędzi, takich jak usługa Power BI mogą odczytać dane za pomocą nie dodatkowego nakładu pracy. 
 
 Projekcje może być tabelarycznych, z danych przechowywanych w wiersze i kolumny w usłudze Azure Table storage lub obiektami JSON przechowywane w usłudze Azure Blob storage. Można zdefiniować wiele projekcji danych, ponieważ są wzbogacane. Jest to przydatne, jeśli chcesz, aby te same dane ukształtowane w różny sposób dla poszczególnych zastosowań. 
 

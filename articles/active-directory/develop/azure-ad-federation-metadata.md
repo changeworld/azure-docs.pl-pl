@@ -3,8 +3,8 @@ title: Metadane Federacji usługi Azure AD | Dokumentacja firmy Microsoft
 description: W tym artykule opisano dokumentu metadanych Federacji usługi Azure Active Directory publikującym dla usług, które akceptują tokenów usługi Azure Active Directory.
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcabf51b3a368841f7f135a32c4824eb3db571ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32f105c0d4f8807b53d400a1c198edd504c0aef3
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299825"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544501"
 ---
 # <a name="federation-metadata"></a>Metadane federacji
 Azure Active Directory (Azure AD) publikuje Federacji dokumentu metadanych usług, który jest skonfigurowany do akceptowania tokenów zabezpieczających wystawianych przez urząd usługi Azure AD. Format dokumentu metadanych federacji jest opisany w [Web Services Federation Language (WS-Federation) w wersji 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), która rozszerza [metadane języka OASIS Security Assertion Markup języka (SAML) 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).

@@ -11,18 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 87620cb0c7aafb78b2c8fe610f42ad092313d305
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153480"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550959"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
-Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, należy zrozumieć kwestie omówione w tym artykule. <br/>Lista sekcjach znajduje się w prawej części strony.
+Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, należy zrozumieć kwestie omówione w tym artykule.
+
+> [!TIP]
+> Dla klientów migrację z interfejsów API usługi Media Services v2 **wydarzenie na żywo** zastępuje jednostki **kanału** w wersji 2 i **na żywo dane wyjściowe** zastępuje **Program**.
+
 
 ## <a name="live-events"></a>Wydarzenia na żywo
 

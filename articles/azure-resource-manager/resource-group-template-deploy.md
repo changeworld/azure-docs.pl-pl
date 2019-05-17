@@ -1,23 +1,17 @@
 ---
 title: Wdrażanie zasobów przy użyciu programu PowerShell i szablonu | Dokumentacja firmy Microsoft
 description: Użyj usługi Azure Resource Manager i programu Azure PowerShell do wdrażania zasobów platformy Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 55903f35-6c16-4c6d-bf52-dbf365605c3f
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/28/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ef5cc702bd5035c958a8feb9b6f5051781cd3cc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 5203519b1553de54d4e3cd1fafe6fb3d1c18ebd6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649798"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779955"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)
 
@@ -103,11 +97,11 @@ Aby wkleić kod w powłoce, kliknij prawym przyciskiem myszy wewnątrz powłoki,
 
 ## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
 
-Ta funkcja jest nazywana *wycofywania w przypadku błędu*. Jeśli wdrożenie zakończy się niepowodzeniem, można automatycznie wdrożyć ponownie wcześniej pomyślnego wdrażania z historii wdrożenia. Aby określić ponownego wdrożenia, należy użyć `-RollbackToLastDeployment` lub `-RollBackDeploymentName` parametr w poleceniu wdrożenia. Ta funkcja jest przydatna, jeśli zawierają wszystko, znanego, dobrego stanu dla danego wdrożenia infrastruktury i chcesz to przywrócenie. Kilka ograniczeń i ostrzeżenia:
+Ta funkcja jest nazywana *wycofywania w przypadku błędu*. Jeśli wdrożenie zakończy się niepowodzeniem, można automatycznie wdrożyć ponownie wcześniej pomyślnego wdrażania z historii wdrożenia. Aby określić ponownego wdrożenia, należy użyć `-RollbackToLastDeployment` lub `-RollBackDeploymentName` parametr w poleceniu wdrożenia. Ta funkcja jest przydatna, jeśli coś znanego, dobrego stanu dla danego wdrożenia infrastruktury, a chcesz przywrócić ten stan. Kilka ograniczeń i ostrzeżenia:
 
 - Ponownego wdrożenia komputera jest uruchamiany, dokładnie tak, jak została poprzednio uruchomiona z tymi samymi parametrami. Nie można zmienić parametry.
 - Poprzedniego wdrożenia zostanie uruchomiony z użyciem [w trybie](./deployment-modes.md#complete-mode). Zostaną usunięte wszystkie zasoby, które nie są uwzględnione w poprzednim wdrożeniu, a wszystkie konfiguracje zasobów są ustawione do poprzedniego stanu. Upewnij się, w pełni rozumiesz [tryby wdrażania](./deployment-modes.md).
-- Ponownego wdrożenia komputera ma wpływ tylko na zasoby, nie wpływają na zmiany danych.
+- Ponownego wdrożenia komputera ma wpływ tylko na zasoby, nie ma wpływu na wszelkie zmiany danych.
 - Ta funkcja jest obsługiwana tylko we wdrożeniach grupy zasobów, nie wdrożeń poziomu subskrypcji. Aby uzyskać więcej informacji na temat wdrażania poziomu subskrypcji zobacz [tworzenia grupy zasobów i zasobów na poziomie subskrypcji](./deploy-to-subscription.md).
 
 Aby użyć tej opcji, wdrożeń muszą mieć unikatowe nazwy, dzięki czemu można je zidentyfikować w historii. Jeśli nie masz unikatowe nazwy bieżącego wdrożenia nie powiodło się może spowodować zastąpienie wcześniej pomyślnego wdrożenia w historii. Tej opcji można używać tylko w przypadku wdrożeń poziomu głównego. Wdrożenia z szablonów zagnieżdżonych nie są dostępne dla ponownego wdrażania.
@@ -159,6 +153,18 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 ```
 
 Wprowadzenie wartości parametru z pliku jest przydatne, gdy trzeba określić wartości konfiguracji. Na przykład można podać [wartości pakietu cloud-init dla maszyny wirtualnej Linux](../virtual-machines/linux/using-cloud-init.md).
+
+Jeśli musisz przekazać tablicę obiektów, tworzenie tabel skrótów w programie PowerShell, a następnie dodać je do tablicy. Podczas wdrażania, należy przekazać tę tablicę jako parametr.
+
+```powershell
+$hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
+$hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
+$subnetArray = $hash1, $hash2
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
+  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -exampleArray $subnetArray
+```
+
 
 ### <a name="parameter-files"></a>Pliki parametrów
 

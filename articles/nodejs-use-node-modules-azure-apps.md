@@ -3,8 +3,8 @@ title: Praca z modułami środowiska Node.js
 description: Dowiedz się, jak pracować z modułów Node.js w przypadku korzystania z usługi Azure App Service lub usług w chmurze.
 services: ''
 documentationcenter: nodejs
-author: TomArcher
-manager: routlaw
+author: rloutlaw
+manager: rloutlaw
 editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: tarcher
-ms.openlocfilehash: 08f3a2dcf9d36eb76b2f657232a426b078066273
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rloutlaw
+ms.openlocfilehash: 67ae9eec4e6cd4fc7697e54dfd74c5e0c8f1f59c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60634925"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540953"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Using Node.js Modules with Azure applications (Używanie modułów Node.js z aplikacjami platformy Azure)
 Ten dokument zawiera wskazówki na temat używania modułów Node.js w aplikacjach hostowanych na platformie Azure. Zapewnia wskazówki na zapewnienie, że aplikacja używa określonej wersji modułu, a także korzystanie z modułów natywnych przy użyciu platformy Azure.
