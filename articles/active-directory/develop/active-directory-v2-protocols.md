@@ -3,8 +3,8 @@ title: Dowiedz się więcej o protokoły autoryzacji, obsługiwane przez platfor
 description: Przewodnik dotyczący protokołu OAuth 2.0 i OpenID Connect protokołów, które są obsługiwane przez punkt końcowy platforma tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d509e9f3cabcd588d539d42b8cce022e17a1222
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139210"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546113"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoły platforma tożsamości firmy Microsoft
 

@@ -3,8 +3,8 @@ title: Usługa Azure funkcji logowania jednokrotnego protokołu SAML | Dokumenta
 description: W tym artykule opisano protokołu pojedynczy znak na SAML w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033740d1ae75bb6f6fe8509d9ad123d55d9c6770
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704993"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545279"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokół SAML logowania jednokrotnego
 
@@ -52,9 +52,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID | Wymagane | Usługa Azure AD używa tego atrybutu, aby wypełnić `InResponseTo` atrybut zwrócona odpowiedź. Identyfikator musi zaczyna się od liczby, więc typowych strategii jest dołączana ciągów, takich jak "id" na reprezentację ciągu identyfikatora GUID. Na przykład `id6c1c178c166d486687be4aaf5e482730` jest poprawnym identyfikatorem. |
 | Wersja | Wymagane | Ten parametr powinien być ustawiony na **2.0**. |
 | IssueInstant | Wymagane | Jest to ciąg daty/godziny z wartości UTC i [obustronne formatu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługa Azure AD oczekuje wartości daty/godziny tego typu, ale nie oceny lub użyj wartości. |
-| AssertionConsumerServiceUrl | Optional (Opcjonalność) | Jeśli nie dostarczono, ten parametr musi być zgodna `RedirectUri` usługi w chmurze w usłudze Azure AD. |
-| ForceAuthn | Optional (Opcjonalność) | Jest to wartość typu boolean. W przypadku opcji true oznacza, że użytkownik będzie zmuszany konieczność ponownego uwierzytelnienia, nawet jeśli mają prawidłowy sesji z usługą Azure AD. |
-| IsPassive | Optional (Opcjonalność) | Jest to wartość logiczna określająca, czy usługi Azure AD powinien uwierzytelnić użytkownika w trybie dyskretnym, bez interakcji z użytkownikiem przy użyciu pliku cookie sesji, jeśli taka istnieje. Jeśli to PRAWDA, usługi Azure AD będzie podejmować próby uwierzytelnienia użytkownika za pomocą pliku cookie sesji. |
+| AssertionConsumerServiceUrl | Opcjonalne | Jeśli nie dostarczono, ten parametr musi być zgodna `RedirectUri` usługi w chmurze w usłudze Azure AD. |
+| ForceAuthn | Opcjonalne | Jest to wartość typu boolean. W przypadku opcji true oznacza, że użytkownik będzie zmuszany konieczność ponownego uwierzytelnienia, nawet jeśli mają prawidłowy sesji z usługą Azure AD. |
+| IsPassive | Opcjonalne | Jest to wartość logiczna określająca, czy usługi Azure AD powinien uwierzytelnić użytkownika w trybie dyskretnym, bez interakcji z użytkownikiem przy użyciu pliku cookie sesji, jeśli taka istnieje. Jeśli to PRAWDA, usługi Azure AD będzie podejmować próby uwierzytelnienia użytkownika za pomocą pliku cookie sesji. |
 
 Wszystkie inne `AuthnRequest` atrybutów, takich jak zgody, miejsce docelowe, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex i ProviderName są **ignorowane**.
 
@@ -243,7 +243,7 @@ Ten element określa warunki, które definiują dopuszczalnych potwierdzeń SAML
 * Wartość `NotBefore` atrybutu jest równoważna lub nieco (niecałej sekundy) później niż wartość `IssueInstant` atrybutu `Assertion` elementu. Usługi Azure AD nie uwzględniać żadnych różnica czasu między sobą i usługi w chmurze (dostawca usług), a nie dodaje żadnych buforu do tego czasu.
 * Wartość `NotOnOrAfter` atrybut jest nowszy niż wartość 70 minut `NotBefore` atrybutu.
 
-#### <a name="audience"></a>Grupy odbiorców
+#### <a name="audience"></a>Odbiorcy
 
 Zawiera identyfikator URI, który identyfikuje określonej grupy odbiorców. Usługa Azure AD ustawia wartość tego elementu na wartość `Issuer` elementu `AuthnRequest` zainicjowane, logowania jednokrotnego. Aby ocenić `Audience` wartość, należy użyć wartości `App ID URI` podany podczas rejestracji aplikacji.
 

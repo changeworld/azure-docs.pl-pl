@@ -3,8 +3,8 @@ title: Jednym i wieloma dzierżawami aplikacji w usłudze Azure Active Directory
 description: Dowiedz się więcej o funkcjach i różnice między jedną dzierżawą i wielodostępne aplikacje w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec1939dd1f5445583200776e489f7596f572f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8db590c8c79db9bc47edbbef69a11d3b0e4b51f6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250323"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540345"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Dzierżawy w usłudze Azure Active Directory
 
@@ -36,7 +36,7 @@ Jeśli chodzi o tworzenie aplikacji, deweloperom możliwość konfigurowania apl
 
 W witrynie Azure portal można skonfigurować aplikację na pojedynczej dzierżawy lub wielodostępne, ustawiając odbiorców w następujący sposób.
 
-| Grupy odbiorców | Jednym/wielu-tenant | Kto może się zarejestrować | 
+| Odbiorcy | Jednym/wielu-tenant | Kto może się zarejestrować | 
 |----------|--------| ---------|
 | Konta, w tym katalogu tylko | Pojedyncza dzierżawa | Wszystkie konta użytkowników i gości w tym katalogu mogą korzystać z aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest wewnętrzną aplikacją organizacji.* |
 | Konta w dowolnym katalogu usługi Azure AD | Wiele dzierżaw | Wszyscy użytkownicy i gości za pomocą konta służbowego lub szkolnego, od firmy Microsoft, można użyć do aplikacji lub interfejsu API. Obejmuje to szkół i firm, które korzysta z usługi Office 365.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest firm i klientów edukacyjnych.* |

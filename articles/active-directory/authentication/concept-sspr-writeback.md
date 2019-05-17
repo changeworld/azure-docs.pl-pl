@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190729"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823293"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
 
@@ -42,9 +42,8 @@ Oferuje funkcję zapisywania zwrotnego haseł:
 * **Obsługuje funkcję zapisywania zwrotnego haseł, gdy administrator resetuje je w witrynie Azure portal**: Zawsze, gdy administrator resetuje hasło użytkownika w [witryny Azure portal](https://portal.azure.com), czy ten użytkownik jest Sfederowane synchronizację skrótów haseł, hasło jest zapisywane z powrotem do środowiska lokalnego. Ta funkcja nie jest obecnie obsługiwana w portalu administracyjnym pakietu Office.
 * **Nie wymaga żadnych reguł zapory dla ruchu przychodzącego**: Zapisywanie zwrotne haseł używa usługi Azure Service Bus relay jako podstawowy kanał komunikacyjny. Cała komunikacja jest wychodzących za pośrednictwem portu 443.
 
-> [!Note]
+> [!NOTE]
 > Nie można użyć kont użytkowników, które istnieją w ramach grup ochrony w usłudze Active Directory w środowisku lokalnym za pomocą funkcji zapisywania zwrotnego haseł. Konto administratora, które istnieją w ramach chronione grup w lokalnej usługi AD mogą być używane z zapisywaniem zwrotnym haseł. Aby uzyskać więcej informacji na temat grup ochrony, zobacz [chronione kont i grup w usłudze Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
->
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Wymagania licencyjne dla funkcji zapisywania zwrotnego haseł
 
@@ -63,7 +62,6 @@ Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jeden z następując
 
 > [!WARNING]
 > Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają jednego z poprzednich planów dla tej funkcji do pracy.
->
 
 ## <a name="how-password-writeback-works"></a>Sposób działania funkcji zapisywania zwrotnego haseł
 
@@ -90,7 +88,6 @@ Skrót federacyjnego lub hasło są synchronizowane użytkownik próbuje Resetow
 1. W przypadku powodzenia operacji Ustaw hasło użytkownika jest informację, że ich hasło zostało zmienione.
    > [!NOTE]
    > Jeśli skrót hasła użytkownika jest zsynchronizowany z usługą Azure AD za pomocą synchronizacji skrótów haseł, istnieje prawdopodobieństwo, że w lokalnych zasadach haseł jest mniejsze niż zasady haseł w chmurze. W tym przypadku są wymuszane w lokalnych zasadach. Te zasady zapewniają, że zasady lokalne jest wymuszone w chmurze, niezależnie od tego w celu zapewnienia logowania jednokrotnego za pomocą synchronizacji skrótów haseł lub federacji.
-   >
 
 1. Jeśli hasło ustawione operacja kończy się niepowodzeniem, błąd monituje użytkownika, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
     * Usługa nie działał.
@@ -155,6 +152,7 @@ Hasła są zapisywane z powrotem w następujących sytuacjach:
    * Wszelkie życie samoobsługi administratora Zmień operacji hasła, na przykład, datę wygaśnięcia hasła
    * Wszelkie administratora samoobsługowego resetowania haseł pochodzący z [portal resetowania haseł](https://passwordreset.microsoftonline.com)
    * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [witryny Azure portal](https://portal.azure.com)
+   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>Operacje zapisywania zwrotnego nieobsługiwany
 
@@ -163,11 +161,10 @@ Hasła są *nie* zapisywane z powrotem w następujących sytuacjach:
 * **Operacje nieobsługiwane przez użytkownika końcowego**
    * Każdy użytkownik końcowy resetowania ich własnych haseł przy użyciu programu PowerShell w wersji 1, wersja 2 lub interfejsu API programu Graph usługi Azure AD
 * **Nieobsługiwana administrator operacji**
-   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [portalu zarządzania usługi Office](https://portal.office.com)
    * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła programu PowerShell w wersji 1, wersja 2 lub interfejsu API programu Graph usługi Azure AD
 
 > [!WARNING]
-> Użyj pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w narzędziach administracyjnych lokalnej usługi Active Directory użytkownicy usługi Active Directory i komputerów lub Centrum administracyjne usługi Active Directory nie jest obsługiwana. Podczas zmiany hasła w środowisku lokalnym nie należy zaznaczać tej opcji. 
+> Użyj pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w narzędziach administracyjnych lokalnej usługi Active Directory użytkownicy usługi Active Directory i komputerów lub Centrum administracyjne usługi Active Directory nie jest obsługiwana. Podczas zmiany hasła w środowisku lokalnym nie należy zaznaczać tej opcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
