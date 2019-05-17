@@ -43,9 +43,9 @@ Następujące właściwości są obsługiwane dla usługi ServiceNow, połączon
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **ServiceNow** | Yes |
 | endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Yes |
-| Element authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Podstawowe**, **OAuth2** | Yes |
-| nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow dla uwierzytelniania Basic i protokołu OAuth2.  | Yes |
-| hasło | Hasło odpowiadający nazwie użytkownika dla uwierzytelniania Basic i protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Podstawowe**, **OAuth2** | Yes |
+| username | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow dla uwierzytelniania Basic i protokołu OAuth2.  | Yes |
+| password | Hasło odpowiadający nazwie użytkownika dla uwierzytelniania Basic i protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | clientId | Identyfikator klienta do uwierzytelniania protokołu OAuth2.  | Nie |
 | clientSecret | Klucz tajny klienta do uwierzytelniania protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
