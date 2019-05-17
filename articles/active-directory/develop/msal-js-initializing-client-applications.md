@@ -4,7 +4,7 @@ description: Więcej informacji na temat inicjowania aplikacji klienckich za pom
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7990566ca9cd93e79b8356cfd15fda03a7469695
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cd26f36356affbc8c272bd093757a8482773baf2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138296"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544022"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicjowanie aplikacji klienckich za pomocą MSAL.js
 W tym artykule opisano inicjowanie Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js) przy użyciu wystąpienia aplikacji agenta użytkownika. Aplikacja użytkownika agenta jest formularz aplikacji publicznych klienta, w którym kod klienta jest wykonywane w agenta użytkownika, takie jak przeglądarki sieci web. Tacy klienci nie należy przechowywać klucze tajne, ponieważ kontekst przeglądarki jest dostępna w sposób jawny. Aby dowiedzieć się więcej na temat typów aplikacji klienckich i opcje konfiguracji aplikacji, przeczytaj [Przegląd](msal-client-applications.md).

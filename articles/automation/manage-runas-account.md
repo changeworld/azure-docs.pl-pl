@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/26/2019
+ms.date: 05/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a104c9e41ef1843c377b0406b499ffae504db97
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61301141"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595680"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -37,6 +37,9 @@ Istnieją dwa typy kont Uruchom jako:
   
   > [!NOTE]
   > Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Korzystając z subskrypcją dostawcy CSP Azure klasycznego konta Uruchom jako nie utworzyć. Azure konta Uruchom jako nadal tworzona. Aby dowiedzieć się więcej na temat subskrypcji dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+
+  > [!NOTE]
+  > Jednostka usługi dla konta Uruchom jako nie ma uprawnień do odczytu usługi Azure Active Directory domyślnie. Jeśli chcesz dodać uprawnienia do odczytu lub zarządzać usługą Azure Active directory, należy udzielić tego uprawnienia podmiotu zabezpieczeń w usłudze **uprawnienia do interfejsu API**. Aby dowiedzieć się więcej, zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci web](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 ## <a name="permissions"></a>Uprawnienia do konfigurowania konta Uruchom jako
 

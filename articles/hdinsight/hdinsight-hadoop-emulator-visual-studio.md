@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8172da3f573f78365cbe76f435a4817e64bc136c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700353"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605458"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools for Visual Studio z Piaskownicą Hortonworks
 
@@ -25,7 +25,7 @@ Korzystanie z Piaskownicą Hortonworks umożliwia lokalnie pracować z usługą 
 
 * Piaskownica Hortonworks działający na maszynie wirtualnej w środowisku deweloperskim. Ten dokument został napisany i przetestowane z piaskownicą działające w Oracle VirtualBox. Aby uzyskać informacje na temat konfigurowania piaskownicy, zobacz [Rozpoczynanie pracy z piaskownicą Hortonworks.](hadoop/apache-hadoop-emulator-get-started.md) dokument.
 
-* Visual Studio 2013, Visual Studio 2015 lub Visual Studio 2017 (w każdej wersji).
+* Program Visual Studio.
 
 * [Zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/) 2.7.1 lub nowszej.
 

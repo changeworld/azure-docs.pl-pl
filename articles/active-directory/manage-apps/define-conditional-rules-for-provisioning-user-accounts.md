@@ -3,8 +3,8 @@ title: Aprowizowanie aplikacji z filtrami zakresu | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać filtrów określania zakresu, aby zapobiec obiektów w aplikacji, które obsługują aprowizacji użytkowników zautomatyzowanych z aprowizowane, jeśli obiekt nie spełniają Twoje wymagania biznesowe.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c831fc7ab1a646d41c0dc08d0e1a66380fe1232
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442861"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824718"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Aprowizacja aplikacji opartych na atrybutach z filtrami zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów określania zakresu do zdefiniowania reguł opartych na atrybutach, określające, którzy użytkownicy są udostępnione do aplikacji.

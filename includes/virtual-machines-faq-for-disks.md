@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199310"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65607054"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -365,7 +365,7 @@ Można zatrzymać i uruchomić maszynę Wirtualną, która dysk jest podłączon
 
 **Jakie regiony są rozmiary dysków zarządzanych, 8 TiB, 16 TiB i 32 TiB obsługiwane w?**
 
-8 TiB 16 TiB, 32 TiB dysków jednostek SKU i są obsługiwane we wszystkich regionach w ramach globalnej platformy Azure. Obsługa platformy Microsoft Azure Government i platformy Azure China 21Vianet nie jest jeszcze dostępna.
+8 TiB 16 TiB, 32 TiB dysków jednostek SKU i są obsługiwane we wszystkich regionach w ramach globalnej platformy Azure, Microsoft Azure dla instytucji rządowych i platformy Azure China 21Vianet.
 
 **Czy firma Microsoft obsługuje włączenie buforowania hosta na wszystkie rozmiary dysków**
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 22db43413b5c752decf6785a75dff22ff4a68039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057ec69db300c3ec95cbc63bd5056a78c24d5660
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596676"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601663"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczania PaaS baz danych, na platformie Azure
 
@@ -78,7 +78,7 @@ Usługi Azure SQL zarządza kluczowych problemów powiązanych dla funkcji TDE. 
 
 Usługi Azure SQL zawiera szyfrowania dla kolumn za pomocą [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Dzięki temu tylko autoryzowane aplikacje dostępu do poufnych kolumn. Za pomocą tego rodzaju szyfrowania ogranicza zapytania SQL dla zaszyfrowanych kolumn na podstawie równości wartości.
 
-Szyfrowanie na poziomie aplikacji powinien również dla wybranych danych. Dotyczy niezależność danych czasami może być ograniczona przez szyfrowanie danych za pomocą klucza, który jest przechowywany w prawidłowy kraj. Transfer danych nawet przypadkowym zapobiega przyczyną problemu, ponieważ nie jest możliwe do odszyfrowania danych bez klucza, przy założeniu, że używany jest algorytm silne (na przykład AES 256).
+Szyfrowanie na poziomie aplikacji powinien również dla wybranych danych. Dotyczy niezależność danych czasami może być ograniczona przez szyfrowanie danych za pomocą klucza, który jest przechowywany w poprawny kraj/region. Transfer danych nawet przypadkowym zapobiega przyczyną problemu, ponieważ nie jest możliwe do odszyfrowania danych bez klucza, przy założeniu, że używany jest algorytm silne (na przykład AES 256).
 
 Dodatkowe środki ostrożności służy do zabezpieczania bazy danych, takich jak projektowanie bezpieczny system szyfrowania poufnych zasobów i tworzenie zapory wokół serwerów bazy danych.
 

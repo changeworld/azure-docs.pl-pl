@@ -7,15 +7,13 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 886bd96b78edc704e53d5b7a3460bfa0f522e05e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937816"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779808"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Preferowane rozwiązania w portalu Azure Marketplace i AppSource
 
-Microsoft preferowane, że rozwiązanie jest wybrany do jego jakości, wydajności i możliwości w celu zaspokojenia potrzeb klientów niektórych branży w pionie rozwiązania obszaru lub aplikacji w chmurze. Zespół ekspertów z branży i sprzedaży firmy Microsoft wybierana jest opcja rozwiązań partnerów udostępniających [kompetencji gold](https://partner.microsoft.com/membership/competencies) w sieci Microsoft Partner Network. Te rozwiązania są umieszczane w naszej chmurze witryny sklepów: Portal Azure Marketplace i AppSource. Preferowane rozwiązania w usłudze AppSource być odnajdowane przez branżowych branży, podczas gdy w portalu Azure Marketplace można kliknąć w kategoriach obszar rozwiązania.
-
-Firma Microsoft skontaktuje się dostawców rozwiązań, jeśli jeden lub więcej rozwiązań został wybrany jako preferowane rozwiązanie.
+Microsoft preferowane, że rozwiązanie jest wybrany do jego jakości, wydajności i możliwości w celu zaspokojenia potrzeb klientów niektórych branży w pionie rozwiązania obszaru lub aplikacji w chmurze. Zespół ekspertów z firmy Microsoft sprawdza poprawność rozwiązań partnerów przy użyciu określonych kwalifikacji sprawdzonej i możliwości. Te rozwiązania są umieszczane w naszym cloud witryny sklepów, witryny Azure Marketplace i AppSource, a także w witrynie Azure portal. Preferowane rozwiązania w usłudze AppSource, może być rozpoznana przez branżowych branży. Preferowane rozwiązania w portalu Azure Marketplace i portalu Azure można znaleźć w kategoriach poziomie rozwiązania.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425966"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560847"
 ---
 # <a name="azure-monitor-log-queries"></a>Usługa Azure Monitor dziennika zapytań
 Dzienniki monitora platformy Azure są oparte na Eksploratora danych usługi Azure i usługi Azure Monitor dziennika zapytań Użyj wersji tego samego języka zapytania Kusto. [Dokumentacji języka zapytania Kusto](/azure/kusto/query) zawiera wszystkie szczegółowe informacje dotyczące języka i powinien być podstawowy zasoby umożliwiające korzystanie z Pisanie zapytań dzienników w usłudze Azure Monitor. Ta strona zawiera linki do innych zasobów do nauki, jak pisać zapytania i niedostępne w przypadku wdrożenia usługi Azure Monitor języka.
@@ -34,7 +34,7 @@ Dzienniki monitora platformy Azure są oparte na Eksploratora danych usługi Azu
 - [Analizuj dane dzienników w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) zawiera krótkie omówienie dziennika zapytania i opisuje strukturę danych dzienników usługi Azure Monitor.
 - [Wyświetlanie i analizowanie danych dzienników w usłudze Azure Monitor](../../azure-monitor/log-query/portals.md) wyjaśnia portali, gdzie tworzenie i uruchamianie zapytań log.
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Odwołanie
 
 - [Dokumentacja języka zapytań](/azure/kusto/query) jest kompletny Skorowidz języka zapytania Kusto.
 - [Różnice języka zapytań usługi Azure Monitor dziennika](data-explorer-difference.md) w tym artykule opisano różnice między wersjami języka zapytania Kusto.
@@ -61,7 +61,7 @@ Dzienniki monitora platformy Azure są oparte na Eksploratora danych usługi Azu
 ## <a name="cheatsheets"></a>Ściągawki
 
 -  [SQL do wykonywania zapytań w usłudze Azure Monitor dziennika](sql-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z programu SQL.
--  [Splunk do wykonywania zapytań w usłudze Azure Monitor dziennika](sql-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z Splunk.
+-  [Splunk do wykonywania zapytań w usłudze Azure Monitor dziennika](splunk-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z Splunk.
  
 ## <a name="next-steps"></a>Kolejne kroki
 

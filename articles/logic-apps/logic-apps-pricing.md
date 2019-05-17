@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598492"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544547"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
@@ -25,7 +25,7 @@ ms.locfileid: "60598492"
 
 ## <a name="consumption-pricing-model"></a>Użycie modelu cen
 
-W przypadku nowych aplikacji logiki, działających w usłudze Azure Logic Apps publicznej lub "global" płacisz tylko za rzeczywiste użycie. Te aplikacje logiki, użyj planu na podstawie użycia i modelu cenowego. W definicji aplikacji logiki każdy krok jest akcji. Na przykład akcje obejmują: 
+W przypadku nowych aplikacji logiki, działających w usłudze Azure Logic Apps publicznej lub "global" płacisz tylko za rzeczywiste użycie. Te aplikacje logiki, użyj planu na podstawie użycia i modelu cenowego. W definicji aplikacji logiki każdy krok jest akcji. Na przykład akcje obejmują:
 
 * Wyzwalacze, które są stosowanie specjalnych działań. Wszystkie aplikacje logiki wymagają wyzwalacza w pierwszym kroku.
 * "Wbudowane" lub macierzystym akcje, takie jak HTTP, wywołania do usługi Azure Functions i usługi API Management itd.
@@ -38,12 +38,16 @@ Usługa Azure Logic Apps liczniki — wszystkie akcje, które są uruchamiane w 
 
 ## <a name="fixed-pricing-model"></a>Naprawiono modelu cen
 
-[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) umożliwia prywatne, izolowane i dedykowane można tworzyć i uruchamiać aplikacje logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane wewnątrz środowiska ISE płatność stałą cenę miesięczną wbudowanych akcji i łączników standardowych. Twoje ISE obejmuje także jeden łącznik przedsiębiorstwa bezpłatne, w tym tyle połączeń. Użycie dodatkowe łączniki dla przedsiębiorstw jest obciążany cena za użycie przedsiębiorstwa. 
+[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) umożliwia prywatne, izolowane i dedykowane można tworzyć i uruchamiać aplikacje logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane wewnątrz środowiska ISE płacisz stałą cenę miesięczną dla wbudowanych akcji i wyzwalaczy, a także dla łączników standardowych.
 
-Jednostkę podstawową ISE ma ustaloną pojemność, jeśli potrzebujesz więcej przepływności, można więc [dodawać kolejne jednostki skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), albo podczas tworzenia lub później.
+Twoje ISE obejmuje także jeden łącznik przedsiębiorstwa bezpłatne, w tym tyle połączeń. Użycie dodatkowe łączniki dla przedsiębiorstw jest obciążany cena za użycie przedsiębiorstwa.
 
 > [!NOTE]
-> Trwa środowiska ISE [ *publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [Azure Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps).
+> W środowisku ISE, wbudowane wyzwalacze i akcje wyświetlenia **Core** etykietowanie i uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Standard i łączniki dla przedsiębiorstw, które wyświetlają **ISE** etykiety uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Łączniki, które nie są wyświetlane etykiety ISE Uruchom w usłudze Logic Apps globalnego.
+
+Jednostkę podstawową ISE ma ustaloną pojemność, jeśli potrzebujesz więcej przepływności, można więc [dodawać kolejne jednostki skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), albo podczas tworzenia lub później. 
+
+Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [Azure Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="connectors"></a>
 

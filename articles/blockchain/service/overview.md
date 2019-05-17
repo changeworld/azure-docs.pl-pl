@@ -10,19 +10,19 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e370916d420a7bc4cd16d021c69a2f8609093d30
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406404"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544699"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co to jest usługa Azure Service łańcuch bloków?
 
 Usługa Azure Service łańcuch bloków to usługa Rejestr w pełni zarządzana, która umożliwia użytkownikom możliwość rozwoju i obsługiwanie sieci łańcucha bloków na dużą skalę na platformie Azure. Zapewniając ujednolicone kontroli zarówno zarządzania infrastrukturą, a także zarządzanie sieć łańcucha bloków, Azure Blockchain Service zapewnia:
 
 * Prosta sieć wdrożeniowe i operacyjne
-* Zarządzanie konsorcjum wbudowane
+* Wbudowane zarządzanie konsorcjum
 * Twórz kontraktów inteligentnych ze znanych Ci narzędzi programistycznych
 
 Usługa Azure Blockchain jest przeznaczony do obsługi wielu protokołów rejestr. Obecnie zapewnia obsługę Ethereum [kworum](https://www.jpmorgan.com/Quorum) rejestr przy użyciu [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) mechanizm zgodne.
@@ -55,7 +55,7 @@ Dodatkowo Azure Blockchain Service generuje dane pomiarowe sformatowanego przy u
 
 Za pomocą usługi Azure Log Analytics użytkownicy mogą wyświetlać dzienniki związane z księgi kworum lub inne połączenia ważne informacje, takie jak próby w węzłach transakcji.
 
-## <a name="built-in-consortium-management"></a>Zarządzanie konsorcjum wbudowane
+## <a name="built-in-consortium-management"></a>Wbudowane zarządzanie konsorcjum
 
 Podczas wdrażania Twojego pierwszego elementu członkowskiego łańcucha bloków, możesz dołączyć albo utworzyć nowe konsorcjum.  Konsorcjum to logiczna Grupa używana do zarządzania nadzoru i łączność między członków łańcucha bloków, którzy transact wieloosobowa procesu.  Usługa Azure Service łańcuch bloków umożliwia sterowanie wbudowane zarządzanie przy użyciu wstępnie zdefiniowanych kontraktów inteligentnych, które określają, jakie akcje członków konsorcjum może potrwać.  Te kontrolki nadzoru można dostosować przez administratora konsorcjum zgodnie z potrzebami. Podczas tworzenia nowego konsorcjum elementów członkowskich łańcuch bloków to domyślnego administratora consortium, włączenie możliwości można zaprosić innych stron, aby dołączyć swoje konsorcjum.  Możesz dołączyć konsorcjum tylko wtedy, gdy wcześniej zaproszono Cię.  Podczas przyłączania konsorcjum, elementu członkowskiego z łańcucha bloków podlega kontrole nadzoru wprowadzone przez konsorcjum administratora.
 
@@ -77,7 +77,7 @@ Potrzebujesz pomocy lub masz opinię?
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby rozpocząć pracę, wypróbuj Szybki Start lub uzyskać więcej szczegółowych informacji z tych zasobów.
-* [Utwórz element członkowski łańcucha bloków w witrynie Azure portal](create-member.md) lub [utworzyć element członkowski łańcucha bloków przy użyciu wiersza polecenia platformy Azure]()
+* [Utwórz element członkowski łańcucha bloków w witrynie Azure portal](create-member.md) lub [utworzyć element członkowski łańcucha bloków przy użyciu wiersza polecenia platformy Azure](create-member-cli.md)
 * Dla porównania i kalkulatory kosztów, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/blockchain-service).
 * Tworzenie pierwszej aplikacji przy użyciu [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit)
 * Rozszerzenie programu VSCode Azure Blockchain [Podręcznik użytkownika](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

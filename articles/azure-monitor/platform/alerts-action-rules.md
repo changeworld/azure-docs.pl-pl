@@ -8,25 +8,28 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227963"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620002"
 ---
 # <a name="action-rules-preview"></a>Akcja reguły (wersja zapoznawcza)
 
-W tym artykule opisano, co to są zasady działania i sposób konfigurowania i zarządzania nimi.
-
-## <a name="what-are-action-rules"></a>Co to są zasady działania?
-
 Akcja reguły umożliwiają definiowanie akcji (lub pomijanie akcji) w dowolnym zakresie Menedżera zasobów (subskrypcja, grupa zasobów, lub zasobu). Mają one różne filtry, które umożliwiają zawężenie konkretnego podzestawu wystąpień alertów, które działają na. 
 
-Za pomocą akcji reguł można wykonywać następujące czynności:
+## <a name="why-and-when-should-you-use-action-rules"></a>Kiedy i dlaczego należy użyć akcji reguły?
 
-* Pomiń akcje i powiadomień w przypadku planowanej konserwacji systemu windows lub for weekend/dni wolnych od pracy, zamiast konieczności całkowitego wyłączania każda reguła alertu o indywidualnie.
-* Zdefiniuj akcje i powiadomień w dużej skali: Nie trzeba zdefiniować grupy akcji osobno dla każdej reguły alertu, można zdefiniować grupę akcji do wyzwalacza dla alertów generowanych w dowolnym zakresie. Na przykład czy można mieć wyzwalacz "ContosoActionGroup" grupy akcji dla każdego alertu generowany w ramach mojej subskrypcji.
+### <a name="suppression-of-alerts"></a>Pomijanie alertów
+
+Często istnieje wiele scenariuszy, w którym powinien być przydatny dla Pomiń powiadomienia wygenerowane alerty, których może należeć do zakresu od pomijania podczas okna zaplanowanej konserwacji do pomijania podczas poza godzinami. Na przykład zespół odpowiedzialny za "ContosoVM" chce, aby pominąć powiadomień o alertach for weekend nadchodzących, ponieważ "ContosoVM" jest w trakcie planowanej konserwacji. Chociaż mogą wyłączyć każdego alertu zasada ręcznie skonfigurowane na "ContosoVM" (i ponownie włącz wpis w konserwacji), nie jest to proste środowisko. Akcja reguły umożliwiają definiowanie pomijania alertów na dużą skalę z możliwością elastycznie przedział pomijania. Wracając do poprzedniego przykładu, zespół może teraz zdefiniować jedną regułę akcji na ContosoVM, która blokuje wyświetlanie wszystkich powiadomień o alertach for weekend.
+
+
+### <a name="actions-at-scale"></a>Akcje na dużą skalę
+
+Mimo że reguły alertów umożliwiają definiowanie grupy akcji, która uruchamia, gdy alert jest generowany, klienci często mają wspólnej grupy akcji w ich zakresie operacji. Na przykład zespół odpowiedzialny za grupy zasobów "ContosoRG" prawdopodobnie będą definiować tej samej grupy akcji dla wszystkich reguł alertów zdefiniowanych w "ContosoRG". Zasady działania pozwalają uprościć ten proces, umożliwiając definiowanie akcji na dużą skalę, dzięki czemu grupy akcji mogą być wyzwalane na dowolny alert, wygenerowany w skonfigurowanym zakresie. Wracając do poprzedniego przykładu, zespół może teraz zdefiniować jedną regułę akcji na ContosoRG, która wyzwoli tej samej grupy akcji dla wszystkich alertów generowanych w nim.
+
 
 ## <a name="configuring-an-action-rule"></a>Konfigurowanie reguły akcji
 

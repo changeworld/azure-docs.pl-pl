@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631893"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606924"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Przedstawiono dane techniczne i zgodności dla urządzenia StorSimple
 
@@ -44,7 +44,7 @@ Obudowa EBOD używa 580 W PCM i obudowy głównej używa 764 W PCM. W poniższej
 | Dane wyjściowe |Napięcie wstrzymania 5V \@ A w wersji 2.0 |Napięcie wstrzymania 5V \@ A w wersji 2.7 |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | + 12 V \@ 38 A |+ 12 V \@ 38 A | |
-| Hot plug |Yes |Yes |
+| Hot plug |Tak |Tak |
 | Przełączniki i diody LED |Przełącznik/wyłączenie AC i stan czterech diod LED |Przełącznik/wyłączenie AC i stan sześć diod LED |
 | Obudowa chłodzenia |Osiowa chłodzenie fanów kontrolką szybkość wentylator zmiennej |Osiowa chłodzenie fanów kontrolką szybkość wentylator zmiennej |
 
@@ -173,7 +173,7 @@ Urządzenie jest zgodna z EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>Zgodność przewód zasilania programu AC
 
-Wtyczka i pełny zestaw przewód muszą spełniać normy odpowiednich dla kraju, w którym urządzenie jest używane, i mieć zatwierdzenia bezpieczeństwa, które są akceptowane w tym kraju. W poniższej tabeli wymieniono standardów dla USA i Europy.
+Wtyczka i pełny zestaw przewód muszą spełniać normy odpowiednich dla kraju/regionu, w którym urządzenie jest używane, i mieć pozwolenia związane z bezpieczeństwem, które są akceptowane w tym kraju/regionu. W poniższej tabeli wymieniono standardów dla USA i Europy.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Kable AC — Stany Zjednoczone (musi być NRTL na liście)
 

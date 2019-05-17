@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 7ed675e4c6988cf4c1340613323440de55a36843
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024466"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595985"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
@@ -122,7 +122,7 @@ Usługa Azure Search obsługuje szeroką gamę typów zapytań.
 | Wyszukiwanie filtrowane | [Wyrażenie filtru OData](query-odata-filter-orderby-syntax.md) i albo analizatora | Zapytania filtru oceny wyrażenia logicznego wszystkich *filtrowanie* pól w indeksie. W przeciwieństwie do wyszukiwania zapytanie filtru dopasowuje dokładnie zawartość pola, w tym uwzględnianie wielkości liter w polach ciągu. Inna różnica polega na tym, że filtr zapytania są wyrażone w składnia OData. <br/>[Przykładowe wyrażenie filtru](search-query-simple-examples.md#example-3-filter-queries) |
 | Wyszukiwanie geograficzne | [Typ Edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) na pole, wyrażenie filtru i albo analizatora | Współrzędne przechowywane w polu o Edm.GeographyPoint są używane do "Znajdź w pobliżu" lub opartą na mapie Wyszukaj kontrolki. <br/>[Wyszukiwanie geograficzne przykład](search-query-simple-examples.md#example-5-geo-search)|
 | Zakres wyszukiwania | Wyrażenie filtru i prosty analizator składni | W usłudze Azure Search zapytania są tworzone za pomocą parametru filtru. <br/>[Przykład filtru zakresu](search-query-simple-examples.md#example-4-range-filters) | 
-| [Filtrowanie w obrębie pola](query-lucene-syntax.md#bkmk_fields) | Parametr wyszukiwania i pełnego analizatora | Zbuduj wyrażenie złożonego zapytania, przeznaczone dla jednego pola. <br/>[Wewnątrz pola filtrowanie przykład](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [Fielded wyszukiwania](query-lucene-syntax.md#bkmk_fields) | Parametr wyszukiwania i pełnego analizatora | Zbuduj wyrażenie złożonego zapytania, przeznaczone dla jednego pola. <br/>[Przykład fielded wyszukiwania](search-query-lucene-examples.md#example-2-fielded-search) |
 | [Wyszukiwanie rozmyte](query-lucene-syntax.md#bkmk_fuzzy) | Parametr wyszukiwania i pełnego analizatora | Dopasowań na warunkach o podobnych konstrukcja lub pisowni. <br/>[Przykład wyszukiwania rozmytego](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [Wyszukiwanie w sąsiedztwie](query-lucene-syntax.md#bkmk_proximity) | Parametr wyszukiwania i pełnego analizatora | Warunki znajduje znajdujące się blisko siebie nawzajem w dokumencie. <br/>[Przykładowe wyszukiwanie w sąsiedztwie](search-query-lucene-examples.md#example-4-proximity-search) |
 | [promowanie](query-lucene-syntax.md#bkmk_termboost) | Parametr wyszukiwania i pełnego analizatora | Szereguje wyższe dokumentu, jeśli zawiera on wzmocnione termin względem innych użytkowników, które nie. <br/>[Przykład zwiększenie termin](search-query-lucene-examples.md#example-5-term-boosting) |

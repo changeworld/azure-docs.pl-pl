@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 3cd22b89852706ed129373fd24ca9a9d9a27d25b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153378"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556223"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -33,7 +33,7 @@ Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klie
 Ten artykuł zawiera omówienie i wskazówki dotyczące transmisji strumieniowych na żywo za pomocą usługi Media Services i linki do innych odpowiednich artykułów.
 
 > [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -67,9 +67,9 @@ W przypadku korzystania z kodowania na żywo za pomocą usługi Media Services n
 
 Aby zrozumieć przepływ pracy transmisji strumieniowej na żywo w wersji 3 usługa Media Services, musisz pierwszy przegląd i zrozumieć następujące pojęcia: 
 
-- [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)
-- [Wydarzenia i dane wyjściowe na żywo](live-events-outputs-concept.md)
-- [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)
+- [Punkty końcowe interfejsu API przesyłania strumieniowego](streaming-endpoint-concept.md)
+- [Aktywne zdarzenia i dane wyjściowe na żywo interfejsu API](live-events-outputs-concept.md)
+- [Interfejs API Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Ogólne kroki
 

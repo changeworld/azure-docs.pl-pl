@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak używać wiadomości HTTP do zaimplemen
 services: active-directory
 documentationcenter: .net
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2983980786fc706d103c0147a0776f2ff8c2d4f
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250878"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545467"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service to service wywołania tej tożsamości użytkownika użycia delegowanego przepływu w imieniu z
 
@@ -116,7 +116,7 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 | client_secret |wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
 | zasób |wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
 | requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| scope |wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
+| zakres |wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
 
 #### <a name="example"></a>Przykład
 
@@ -151,7 +151,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | client_assertion |wymagane | JSON Web Token, tworzenie i zalogować się przy użyciu certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Zobacz [certyfikatu poświadczeń](active-directory-certificate-credentials.md) Aby dowiedzieć się więcej o formacie potwierdzenia i o tym jak zarejestrować certyfikat.|
 | zasób |wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
 | requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| scope |wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
+| zakres |wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
 
 Te parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, chyba że `client_secret parameter` zostaje zastąpiona przez dwa parametry: `client_assertion_type` i `client_assertion`.
 
@@ -183,7 +183,7 @@ Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0, z następującymi parametrami
 | Parametr | Opis |
 | --- | --- |
 | token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| scope |Zakres dostępu przyznane w tokenie. |
+| zakres |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
 | zasób |Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). |
@@ -274,7 +274,7 @@ Odpowiedź zawiera token SAML zakodowane w UTF8 i Base64url.
 | Parametr | Opis |
 | --- | --- |
 | token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| scope |Zakres dostępu przyznane w tokenie. |
+| zakres |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
 | zasób |Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). |

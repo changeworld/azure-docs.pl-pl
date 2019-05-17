@@ -7,12 +7,12 @@ ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880950"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541740"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Potoki usługi Azure umożliwia tworzenie i wdrażanie rozwiązań HPC
 
@@ -26,7 +26,7 @@ W tym przykładzie firma Microsoft będzie tworzenie kompilacji potoku wydania i
 
 ![Diagram przedstawiający przepływu wdrożenia w nasz potok](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Konfigurowanie
+### <a name="setup"></a>Konfiguracja
 
 Wykonaj kroki opisane w tym artykule, musisz organizacji DevOps platformy Azure oraz projektu zespołowego.
 
@@ -363,7 +363,7 @@ W tym przykładzie skupimy się na **aplikację hpc** folderu. **Aplikację hpc*
 
 ## <a name="continuous-deployment"></a>Ciągłe wdrażanie
 
-Potoki usługi Azure, która jest również używane do wdrażania aplikacji i bazowej infrastruktury. [Potoki wersji](https://docs.microsoft.com/azure/devops/pipelines/release/what-is-release-management?view=azure-devops) jest składnikiem, który umożliwia ciągłe wdrażanie i automatyzuje proces tworzenia wydań.
+Potoki usługi Azure, która jest również używane do wdrażania aplikacji i bazowej infrastruktury. [Potoki wersji](https://docs.microsoft.com/azure/devops/pipelines/release) jest składnikiem, który umożliwia ciągłe wdrażanie i automatyzuje proces tworzenia wydań.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Wdrażanie aplikacji i podstawową infrastrukturę
 
@@ -427,7 +427,7 @@ Istnieje szereg kroków związanych z wdrażaniem infrastruktury. Jak użyliśmy
     * **Źródło:** $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates /
     * **Typ połączenia usługi Azure**: Azure Resource Manager
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
-    * **Typ docelowy**: Obiekt bob Azure
+    * **Typ docelowy**: Obiekt blob platformy Azure
     * **Konto magazynu RM**: $(storageAccountName)
     * **Nazwa kontenera**: szablony
     * **Identyfikator URI kontenera magazynu**: templateContainerUri

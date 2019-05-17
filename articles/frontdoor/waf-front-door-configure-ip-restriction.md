@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 514c034c23eed3a87111331724f3a33104651a43
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: b129579916330a34a2a78d98f2c7653f129d3319
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514907"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523708"
 ---
 # <a name="configure-an-ip-restriction-rule-with-web-application-firewall-for-azure-front-door-preview"></a>Skonfiguruj regułę ograniczeń adresów IP przy użyciu zapory aplikacji sieci web dla platformy Azure drzwiami frontowymi (wersja zapoznawcza)
  W tym artykule pokazano, jak skonfigurować zasady ograniczeń adresów IP w zapory aplikacji sieci web platformy Azure (WAF) dla drzwiami frontowymi przy użyciu szablonu z wiersza polecenia platformy Azure, programu Azure PowerShell lub usługi Azure Resource Manager.
@@ -137,24 +137,24 @@ Install-Module -Name Az.FrontDoor
 Utwórz profil drzwiami frontowymi, wykonując instrukcje opisane w [Szybki Start: Utwórz profil drzwi](quickstart-create-front-door.md)
 
 ### <a name="define-ip-match-condition"></a>Zdefiniuj warunek dopasowania adresów IP
-Użyj [New AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) polecenie, aby zdefiniować warunek dopasowania adresów IP. W poniższym przykładzie Zastąp *zakresu 1, ip adresu w-*, *ip adres zakresu-2* przy użyciu własnego zakresu.
+Użyj [New AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) polecenie, aby zdefiniować warunek dopasowania adresów IP. W poniższym przykładzie Zastąp *zakresu 1, ip adresu w-*, *ip adres zakresu-2* przy użyciu własnego zakresu.
 
 ```powershell
-  $IPMatchCondition = New-AzFrontDoorMatchConditionObject `
+  $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
     -MatchVariable  RemoteAddr `
     -OperatorProperty IPMatch `
     -MatchValue ["ip-address-range-1", "ip-address-range-2"]
 ```
 Utwórz wszystkie reguły warunku dopasowania adresów IP
 ```powershell
-  $IPMatchALlCondition = New-AzFrontDoorMatchConditionObject `
+  $IPMatchALlCondition = New-AzFrontDoorWafMatchConditionObject `
     -MatchVariable  RemoteAddr `
     -OperatorProperty Any
     
 ```
 
 ### <a name="create-a-custom-ip-allow-rule"></a>Utwórz niestandardową regułę Zezwalaj adresu IP
-   Użyj [New AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject) polecenie, aby zdefiniować akcję i ustaw priorytet. W poniższym przykładzie będą dozwolone żądania z adresów IP klientów, które pasują do listy. 
+   Użyj [New AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) polecenie, aby zdefiniować akcję i ustaw priorytet. W poniższym przykładzie będą dozwolone żądania z adresów IP klientów, które pasują do listy. 
 
 ```powershell
   $IPAllowRule = New-AzFrontDoorCustomRuleObject `
@@ -175,10 +175,10 @@ Tworzenie bloku wszystkich adresów IP reguły z niższym priorytetem niż poprz
    ```
 
 ### <a name="configure-waf-policy"></a>Konfigurowanie zasad zapory aplikacji sieci Web
-Znajdowanie nazwy grupy zasobów, która zawiera, przy użyciu profilu drzwiami frontowymi `Get-AzResourceGroup`. Następnie skonfiguruj zasady zapory aplikacji sieci Web przy użyciu reguły bloku adresów IP [New AzFrontDoorFireWallPolicy](/powershell/module/Az.FrontDoor/New-AzFrontDoorFireWallPolicy).
+Znajdowanie nazwy grupy zasobów, która zawiera, przy użyciu profilu drzwiami frontowymi `Get-AzResourceGroup`. Następnie skonfiguruj zasady zapory aplikacji sieci Web przy użyciu reguły bloku adresów IP [New AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell
-  $IPAllowPolicyExamplePS = New-AzFrontDoorFireWallPolicy `
+  $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `
     -Name "IPRestrictionExamplePS" `
     -resourceGroupName <resource-group-name> `
     -Customrule $IPAllowRule $IPBlockAll `

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301318"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764722"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -33,7 +33,7 @@ Jeśli nie jest to informacje, których szukasz, pozostaw komentarz na końcu te
 
 ## <a name="cloud-apps-assignments"></a>Przypisania aplikacji w chmurze
 
-Za pomocą zasad dostępu warunkowego, możesz kontrolować dostęp użytkowników Twojej [aplikacje w chmurze](conditions.md#cloud-apps). Po skonfigurowaniu zasad dostępu warunkowego, musisz wybrać co najmniej jedną aplikację w chmurze. 
+Za pomocą zasad dostępu warunkowego, możesz kontrolować dostęp użytkowników Twojej [aplikacje w chmurze](conditions.md#cloud-apps-and-actions). Po skonfigurowaniu zasad dostępu warunkowego, musisz wybrać co najmniej jedną aplikację w chmurze. 
 
 ![Wybierz aplikacje w chmurze dla zasad](./media/technical-reference/09.png)
 
@@ -141,7 +141,7 @@ Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz nastę
 
 |    |    |
 | --- | --- |
-| Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name (Nazwa) | 1 |
 | Type | REG_SZ (ciąg) |
 | Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
@@ -150,7 +150,7 @@ Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następuj�
 
 |    |    |
 | --- | --- |
-| Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name (Nazwa) | 1 |
 | Type | REG_SZ (ciąg) |
 | Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
@@ -203,8 +203,9 @@ W zasadach dostępu warunkowego można wymagać, że dostęp jest próba aplikac
 To ustawienie dotyczy następujących aplikacji klienta:
 
 - Microsoft Azure Information Protection
+- Microsoft Bookings
 - Microsoft Edge
-- Microsoft Excel
+- Program Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
 - Microsoft Invoicing
@@ -212,7 +213,7 @@ To ustawienie dotyczy następujących aplikacji klienta:
 - Microsoft Launcher
 - Microsoft OneDrive
 - Microsoft OneNote
-- Microsoft Outlook
+- Program Microsoft Outlook
 - Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Power BI
@@ -242,7 +243,7 @@ W zasadach dostępu warunkowego można wymagać, że zasady ochrony aplikacji zn
 To ustawienie dotyczy następujących aplikacji klienta:
 
 - Microsoft OneDrive
-- Microsoft Outlook
+- Program Microsoft Outlook
 
 **Uwagi**
 

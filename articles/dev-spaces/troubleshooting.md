@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d5b08a22aa3896fb7158ef3535b115e3e0189142
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728812"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596982"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -236,7 +236,7 @@ Aktualizacja `launch.json` plik `.vscode` podkatalogu w folderze projektu. Zmian
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Nie można odnaleźć nazwy typu lub przestrzeni nazw "MojaBiblioteka"
 
-### <a name="reason"></a>Przyczyna 
+### <a name="reason"></a>Reason 
 Kontekst kompilacji jest domyślnie na poziomie projektu/usługi, w związku z tym projektu biblioteki, którego używasz nie można odnaleźć.
 
 ### <a name="try"></a>Wypróbuj:
@@ -251,7 +251,7 @@ Na przykład można znaleźć https://github.com/sgreenmsft/buildcontextsample
 Potrzebujesz *właściciela* lub *Współautor* dostępu w Twojej subskrypcji platformy Azure do zarządzania usługi Azure Dev miejsca do magazynowania. Może zostać wyświetlony ten błąd, jeśli próbujesz Zarządzanie Dev miejsca do magazynowania, a nie masz *właściciela* lub *Współautor* dostęp do skojarzonej subskrypcji platformy Azure.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
-### <a name="reason"></a>Przyczyna
+### <a name="reason"></a>Reason
 Wybranej subskrypcji platformy Azure nie został zarejestrowany `Microsoft.DevSpaces` przestrzeni nazw.
 
 ### <a name="try"></a>Wypróbuj:
@@ -263,7 +263,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Limit czasu tworzenia miejsca do magazynowania w *oczekiwania na kompilację obrazu kontenera...*  kroku przy użyciu wirtualnych węzłów AKS
 
-### <a name="reason"></a>Przyczyna
+### <a name="reason"></a>Reason
 Limit czasu występuje, gdy próbują użyć standardowego miejsca do magazynowania, aby uruchomić to usługa, która jest skonfigurowana do uruchamiania [AKS wirtualnego węzła](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Miejsca do magazynowania dev aktualnie nie obsługuje kompilowania lub debugowania usług wirtualnych węzłów.
 
 Jeśli uruchamiasz `azds up` z `--verbose` przełącznika lub Włącz pełne rejestrowanie w programie Visual Studio, zobacz dodatkowe szczegóły:
@@ -295,7 +295,7 @@ Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
 
 ## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Błąd: wersji azds -\<identyfikator\>-\<spacename\>-\<servicename\> nie powiodło się: usług\<servicename\>"już istnieje" lub "odmowa dostępu do ściągnięcia \<servicename\>, repozytorium nie istnieje lub mogą wymagać"docker login""
 
-### <a name="reason"></a>Przyczyna
+### <a name="reason"></a>Reason
 Te błędy mogą występować po przemieszaniu uruchamianie direct poleceń narzędzia Helm (takie jak `helm install`, `helm upgrade`, lub `helm delete`) za pomocą poleceń Dev miejsca do magazynowania (takich jak `azds up` i `azds down`) w tej samej przestrzeni deweloperów. Występują, ponieważ Dev miejsca do magazynowania ma własne wystąpienie Tiller, który powoduje konflikt z własnego wystąpienia Tiller w tej samej przestrzeni deweloperów.
 
 ### <a name="try"></a>Wypróbuj:
@@ -329,7 +329,7 @@ configurations:
 
 ## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Błąd "wewnętrzny Obejrzyj nie powiodło się: Obejrzyj ENOSPC" podczas dołączania, debugowania aplikacji Node.js
 
-### <a name="reason"></a>Przyczyna
+### <a name="reason"></a>Reason
 
 Węzeł uruchomiony zasobnik z aplikacją Node.js próbujesz połączyć się za pomocą debugera przekroczyła *fs.inotify.max_user_watches* wartości. W niektórych przypadkach [wartość domyślną *fs.inotify.max_user_watches* może być zbyt mała, aby obsłużyć dołączanie debugera bezpośrednio do zasobnika](https://github.com/Azure/AKS/issues/772).
 
@@ -338,7 +338,7 @@ Tymczasowe obejście tego problemu jest zwiększenie wartości *fs.inotify.max_u
 
 ## <a name="new-pods-are-not-starting"></a>Nowych zasobników nie jest uruchamiany.
 
-### <a name="reason"></a>Przyczyna
+### <a name="reason"></a>Reason
 
 Inicjator Kubernetes nie można zastosować PodSpec dla nowych zasobników z powodu zmiany uprawnień RBAC do *administratora klastra* rolę w klastrze. Nowych zasobników może być również nieprawidłowa PodSpec, na przykład konto usługi, skojarzone z zasobnik już nie istnieje. Aby wyświetlić zasobników, które znajdują się w *oczekujące* stanów spowodowanych przez problem inicjatora, użyj `kubectl get pods` polecenia:
 
@@ -370,7 +370,7 @@ Po ponownym zainstalowaniu kontrolera sieci, należy ponownie wdrożyć zasobnik
 
 ## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Niepoprawne uprawnień RBAC do wywoływania kontrolera Dev miejsca do magazynowania i interfejsów API
 
-### <a name="reason"></a>Przyczyna
+### <a name="reason"></a>Reason
 Użytkowników, uzyskiwanie dostępu do kontrolera Azure Dev miejsca do magazynowania musi mieć dostęp do odczytu administratora *plik kubeconfig* w klastrze AKS. Na przykład, to uprawnienie jest dostępne w [wbudowanej roli administratora klastra usługi Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Użytkownik, uzyskiwanie dostępu do kontrolera Azure Dev miejsca do magazynowania musi mieć również *Współautor* lub *właściciela* rolę RBAC dla kontrolera.
 
 ### <a name="try"></a>Spróbuj
@@ -389,3 +389,18 @@ Aby zaktualizować rolę RBAC użytkownika dla kontrolera:
     * Aby uzyskać *Przypisz dostęp do* wybierz *użytkownika, grupy lub jednostki usługi Azure AD*.
     * Aby uzyskać *wybierz* Wyszukaj użytkownika, którą chcesz nadać uprawnienia.
 1. Kliknij pozycję *Zapisz*.
+
+## <a name="controller-create-failing-due-to-controller-name-length"></a>Tworzenie kontrolera kończy się niepowodzeniem ze względu na długość nazwy kontrolera
+
+### <a name="reason"></a>Reason
+Nazwa kontrolera usługi Azure Dev miejsca do magazynowania nie może być dłuższa niż 31 znaków. Jeśli nazwa Twojego kontrolera przekracza 31 znaków, po włączeniu Dev miejsca do magazynowania w klastrze AKS lub utworzyć kontroler, zostanie wyświetlony błąd taki jak:
+
+*Nie można utworzyć kontroler Dev miejsca do magazynowania dla klastra "a-controller-name-that-is-way-too-long-aks-east-us": Usługa Azure Dev spacje nazwa kontrolera "a-controller-name-that-is-way-too-long-aks-east-us" jest nieprawidłowa. Naruszenie elementem: Azure nazwy kontrolerów miejsca do magazynowania deweloperów może składać się maksymalnie 31 znaków.*
+
+### <a name="try"></a>Spróbuj
+
+Utwórz kontroler z alternatywną nazwę:
+
+```cmd
+azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
+```

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150544"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544540"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
   > [!IMPORTANT]
-  > Logic apps, wbudowanych akcji i łączników, działających w Twojej platformy ISE przy użyciu innego planu cen nie na podstawie użycia planu cenowego zawiera. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md).
+  > Logic apps, wbudowane wyzwalaczy, wbudowanych akcji i łączników, działających w użytkowanie ISE planu cenowego różni się od planu cenowego na podstawie użycia. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md).
 
 * [Sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [tworzenie sieci wirtualnej platformy Azure](../virtual-network/quick-create-portal.md). 
 
@@ -112,13 +112,13 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku |
-   | **Grupa zasobów** | Yes | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
-   | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
-   | **Lokalizacja** | Yes | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
-   | **Dodatkowe możliwości obliczeniowe** | Yes | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
-   | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
-   | **Podsieci** | Yes | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet).  |
+   | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku |
+   | **Grupa zasobów** | Tak | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
+   | **Nazwa środowiska usługi integracji** | Tak | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
+   | **Lokalizacja** | Tak | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
+   | **Dodatkowe możliwości obliczeniowe** | Tak | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
+   | **Sieć wirtualna** | Tak | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
+   | **Podsieci** | Tak | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet).  |
    |||||
 
    <a name="create-subnet"></a>
@@ -199,33 +199,19 @@ Aby uzyskać więcej informacji na temat tworzenia podsieci, zobacz [Dodaj podsi
 
 ## <a name="create-logic-app---ise"></a>Tworzenie aplikacji logiki — środowiska ISE
 
-Aby tworzyć aplikacje logiki, które używają środowiska integration service environment (ISE), wykonaj kroki opisane w [jak utworzyć aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) jednak z następującymi ograniczeniami: 
-
-* Podczas tworzenia aplikacji logiki, w obszarze **lokalizacji** właściwości, wybierz swoje ISE z **środowiska usług integracji** sekcji, na przykład:
+Do tworzenia aplikacji logiki, które są uruchamiane w danym środowisku usługi integracji (ISE) [tworzenia aplikacji logiki w zwykły sposób](../logic-apps/quickstart-create-first-logic-app-workflow.md) z wyjątkiem sytuacji, gdy ustawisz **lokalizacji** właściwości, wybierz swoje ISE z  **Środowiska usług integracji** sekcji, na przykład:
 
   ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
-* Można użyć tych samych wbudowanych wyzwalacze i akcje, takie jak HTTP, które działają w tej samej platformy ISE jako aplikację logiki. Łączniki z usługą **ISE** również etykietę uruchomienia w tym samym środowisku ISE jako aplikację logiki. Łączniki bez **ISE** uruchamianych w usłudze Logic Apps globalne etykiety.
-
-  ![Wybieranie łączników środowiska ISE](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
-
-* Po należy wstrzyknąć Twojego środowiska ISE w sieci wirtualnej platformy Azure, logic apps w swoje środowiska ISE można uzyskać dostęp do zasobów w tej sieci wirtualnej. Dla systemów lokalnych, które są podłączone do sieci wirtualnej należy wstrzyknąć środowiska ISE do tej sieci, dzięki czemu aplikacje logiki można uzyskać dostęp do tych systemów przy użyciu dowolnego z tych elementów: 
-
-  * Łącznik platformy ISE dla tego systemu, na przykład SQL Server
-  
-  * Akcja HTTP 
-  
-  * Łącznik niestandardowy
-
-  Dla systemów lokalnych, które nie znajdują się w sieci wirtualnej lub nie masz łączniki ISE, najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md).
+Pod względem różnic w jaki sposób wyzwalaczy i akcji pracy oraz jak w przypadku etykietą, gdy używasz środowiska ISE w porównaniu do globalnej usługi Logic Apps, zobacz [odizolowane w porównaniu z globalnej w omówieniu ISE](connect-virtual-network-vnet-isolated-environment-overview.md#difference).
 
 <a name="create-integration-account-environment"></a>
 
 ## <a name="create-integration-account---ise"></a>Utwórz konto integracji — środowiska ISE
 
-Aby użyć konta integracji z usługą logic apps w środowisku usługi integracji (ISE), należy użyć tego konta integracji *tym samym środowisku* co usługa logic apps. Logic apps w środowisku ISE można odwoływać się tylko konta integracji w tym samym środowisku ISE. 
+Jeśli chcesz użyć konta integracji z usługą logic apps w środowisku usługi integracji (ISE), należy użyć tego konta integracji *tym samym środowisku* co usługa logic apps. Logic apps w środowisku ISE można odwoływać się tylko konta integracji w tym samym środowisku ISE.
 
-Aby utworzyć konto integracji, która używa środowiska ISE, wykonaj kroki opisane w [sposób tworzenia kont integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) z wyjątkiem **lokalizacji** właściwość gdzie **środowiska usług integracji**  pojawi się w sekcji. Zamiast tego wybierz swoje ISE, a nie region, na przykład:
+Aby utworzyć konto integracji, która używa ISE [Tworzenie konta integracji w zwykły sposób](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) z wyjątkiem sytuacji, gdy ustawisz **lokalizacji** właściwości, wybierz swoje ISE z **integracji Usługa środowiska** sekcji, na przykład:
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 

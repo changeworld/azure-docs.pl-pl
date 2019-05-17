@@ -3,8 +3,8 @@ title: Zarządzanie certyfikatami federacji w usłudze Azure AD | Dokumentacja f
 description: Dowiedz się, jak dostosować datę wygaśnięcia certyfikatów Federacji i odnawianie certyfikatów, które wkrótce wygasną.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64c2d14a2aa6fc6b53260912b5bead2bd7c01e8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440602"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824742"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
 
@@ -127,7 +127,7 @@ Jeśli certyfikat wygaśnie, można odnowić go za pomocą procedury, która pow
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
-* [Samouczki dotyczące integrowania aplikacji SaaS z usługą Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Zarządzanie aplikacjami w usłudze Azure Active Directory](what-is-application-management.md)
 * [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](what-is-single-sign-on.md)
 * [Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)

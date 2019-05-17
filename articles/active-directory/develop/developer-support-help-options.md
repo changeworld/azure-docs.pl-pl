@@ -3,8 +3,8 @@ title: Opcje pomocy technicznej i pomocy dla deweloperów aplikacji usługi Azur
 description: Wiesz, jak uzyskać pomoc i obsługa techniczna dla problemów i pytania dotyczące projektowania, podczas tworzenia aplikacji, które integrują się z tożsamości firmy Microsoft (konto usługi Azure Active Directory i Microsoft)
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c4882e991045b4a79c0ea0a19ad8fedc2fb8892
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299740"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540363"
 ---
 # <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów
 
@@ -36,7 +36,7 @@ Jeśli dopiero zaczynasz do integracji z usługą Azure Active Directory (Azure 
 > * Jeśli znajdziesz problem z jednym z naszych bibliotek uwierzytelniania, podnieść *GitHub* problem
 > * Na koniec Jeśli potrzebujesz, możesz chcieć Otwórz żądanie obsługi
 
-## <a name="search"></a>Wyszukiwanie
+## <a name="search"></a>wyszukaj
 
 Jeśli masz pytania dotyczące programowania, można znaleźć w dokumentacji, [przykłady dla usługi GitHub](https://github.com/azure-samples), lub odpowiedzi na [Stack Overflow](https://www.stackoverflow.com) pytania.
 
@@ -63,7 +63,7 @@ Przepełnienie stosu jest preferowany kanał w przypadku pytań związanych z op
 
 Jeśli nie możesz znaleźć odpowiedź na Twoje pytanie za pomocą funkcji wyszukiwania, Prześlij nowe pytanie do przepełnienia stosu. Zadawanie pytań, aby pomóc zidentyfikować i szybciej uzyskać odpowiedzi na swoje pytanie społeczności, należy użyć jednej z następujących tagów:
 
-|Składnik/obszaru  | Tagi |
+|Składnik/obszaru  | `Tags` |
 |---------|---------|
 | Biblioteka ADAL | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | Biblioteka MSAL     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |

@@ -11,22 +11,21 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/07/2019
-ms.openlocfilehash: 7f850f309034d128efef89ea842db41d35b8491e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.date: 05/11/2019
+ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235742"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620152"
 ---
 # <a name="sql-database-serverless-preview"></a>Bazy danych SQL Database bez użycia serwera (wersja zapoznawcza)
 
 ## <a name="what-is-the-serverless-compute-tier"></a>Co to jest warstwa bezserwerowe środowisko obliczeniowe
 
-Bez użycia serwera bazy danych SQL Database (wersja zapoznawcza) jest warstwa wystąpień obliczeniowych, w tym BOM dla kwotę obliczeń, używane przez pojedynczą bazę danych na podstawie sekundę. Aplikacje niewymagające użycia serwera jest cena wydajności zoptymalizowana pod kątem pojedyncze bazy danych z wzorcami intensywnego użycia, które akceptowalny pewne opóźnienie w rozgrzewania obliczeń po bezczynności użycie kropki.
-Z kolei publicznie dostępnych ofert w bazy danych SQL dziś rachunek na kwotę z obliczeniowej aprowizowanej w systemie godzinowym. Ta warstwa zainicjowanych zasobów obliczeniowych jest cena wydajności zoptymalizowana pod kątem pojedynczych baz danych lub elastycznej pule z wyższym średniego użycia, który niedopuszczalna wszelkich opóźnień rozgrzewania obliczeń.
+Bez użycia serwera bazy danych SQL Database (wersja zapoznawcza) jest warstwa wystąpień obliczeniowych, w tym BOM dla kwotę obliczeń, używane przez pojedynczą bazę danych na podstawie sekundę. Aplikacje niewymagające użycia serwera jest ceny do wydajności zoptymalizowana pod kątem pojedynczych baz danych o wzorcach użycia sporadycznie, nieprzewidywalne, które akceptowalny pewne opóźnienie w rozgrzewania obliczeń po okresów bezczynności użycia.
 
-Baza danych w warstwie komputerów bez użycia serwera jest sparametryzowany przez zakres obliczeniowe, których można używać i opóźnienie autopause.
+Bazy danych w warstwie bezserwerowe środowisko obliczeniowe jest sparametryzowany przez zakres obliczeniowe, których można używać i opóźnienie autopause.
 
 ![rozliczenia bez użycia serwera](./media/sql-database-serverless/serverless-billing.png)
 
@@ -44,22 +43,11 @@ Opłaty za obliczenia zależy od liczby rdzeni wirtualnych, używane i pamięć 
 
 ## <a name="scenarios"></a>Scenariusze
 
-Aplikacje niewymagające użycia serwera jest ceny do wydajności zoptymalizowana pod kątem pojedyncze bazy danych z wzorcami intensywnego użycia, które akceptowalny pewne opóźnienie w rozgrzewania obliczeń po bezczynności użycie kropki. Warstwa zainicjowanych zasobów obliczeniowych jest ceny do wydajności zoptymalizowana pod kątem jednego lub puli baz danych z wyższym średniego użycia, który niedopuszczalna wszelkich opóźnień rozgrzewania obliczeń.
-
-W poniższej tabeli porównano warstwy bezserwerowe środowisko obliczeniowe z warstwą zainicjowanych zasobów obliczeniowych:
-
-||Bezserwerowe usługi obliczeniowe|Zaaprowizowane zasoby obliczeniowe|
-|---|---|---|
-|**Typowy scenariusz**|Oraz baz danych z użyciem intensywnego, nieprzewidywalne okresy nieaktywne|Bazy danych lub elastycznymi pulami za pomocą bardziej normalne użycie|
-|**Wysiłek związany z zarządzaniem wydajnością**|Niższy|Wyższa|
-|**Obliczenia, skalowanie**|Automatyczny|Ręczne|
-|**Obliczenia czasu odpowiedzi**|Niższe po okresach nieaktywne|Natychmiast|
-|**Poziom szczegółowości rozliczeń**|Na sekundę|Za godzinę|
-|
+Aplikacje niewymagające użycia serwera jest ceny do wydajności zoptymalizowana pod kątem pojedynczych baz danych o wzorcach użycia sporadycznie, nieprzewidywalne, które akceptowalny pewne opóźnienie w rozgrzewania obliczeń po okresów bezczynności użycia. Z kolei warstwa zainicjowanych zasobów obliczeniowych jest ceny do wydajności zoptymalizowana pod kątem jednego lub puli baz danych z wyższym średniego użycia, który niedopuszczalna wszelkich opóźnień rozgrzewania obliczeń.
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Scenariusze nadają się do bezserwerowe środowisko obliczeniowe
 
-- Pojedyncze bazy danych z wzorcami intensywnego użycia grupową nieaktywności może skorzystać z oszczędności ceny, oparte na rozliczanie na sekundę ilości użytych zasobów obliczeniowych.
+- Pojedyncze bazy danych z użycia sporadycznie, nieprzewidywalne wzorce grupową nieaktywności może skorzystać z oszczędności ceny, oparte na rozliczanie na sekundę ilości użytych zasobów obliczeniowych.
 - Pojedyncze bazy danych z zapotrzebowanie na zasoby, które trudno jest przewidzieć i klientów, którzy wolą delegować obliczenia rozmiaru w usłudze.
 - Pojedyncze bazy danych w warstwie zainicjowanych zasobów obliczeniowych często zmieniać poziomy wydajności.
 
@@ -67,8 +55,19 @@ W poniższej tabeli porównano warstwy bezserwerowe środowisko obliczeniowe z w
 
 - Pojedyncze bazy danych z więcej zwykłych, znaczny więcej zasobów obliczeniowych użycia wraz z upływem czasu.
 - Bazy danych, które nie tolerują wydajności wad i zalet wynikające z kilku częste odzyskiwanie pamięci przycinanie lub opóźnienie w autoresuming ze stanu wstrzymania.
-- Wiele baz danych z wzorcami intensywnego użycia danych, które można skonsolidować na jednym serwerze i użyć pul elastycznych w celu uzyskania lepszej optymalizacji ceny.
+- Wiele baz danych z tymczasowymi, nieprzewidywalnych wzorców, które mogą być konsolidowane do jednego serwera i użyć pul elastycznych w celu uzyskania lepszej optymalizacji ceny.
 
+## <a name="comparison-with-provisioned-compute-tier"></a>Porównanie z warstwą zainicjowanych zasobów obliczeniowych
+
+W poniższej tabeli przedstawiono różnice między warstwami bezserwerowe środowisko obliczeniowe i zainicjowanych zasobów obliczeniowych:
+
+| | **Bezserwerowe środowisko obliczeniowe** | **Zainicjowanych zasobów obliczeniowych** |
+|:---|:---|:---|
+|**Typowy scenariusz**| Bazy danych z użyciem sporadycznie, nieprzewidywalne grupową nieaktywne okresów. | Bazy danych lub elastycznymi pulami za pomocą bardziej normalne użycie.|
+| **Wysiłek związany z zarządzaniem wydajnością** |Niższy|Wyższa|
+|**Obliczenia, skalowanie**|Automatyczny|Ręczne|
+|**Obliczenia czasu odpowiedzi**|Niższe po okresach nieaktywne|Natychmiast|
+|**Poziom szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 
 ## <a name="purchasing-model-and-service-tier"></a>Zakup modelu i warstwy usług
 
@@ -116,7 +115,7 @@ Autoresume jest wyzwalana w przypadku spełnienia dowolnego z następujących wa
 
 ### <a name="connectivity"></a>Łączność
 
-Jeśli bez użycia serwera bazy danych jest wstrzymany, to pierwszy identyfikator logowania będzie wznowić bazy danych i zwrócić komunikat o błędzie informujący, że baza danych jest niedostępna. Po wznowieniu bazy danych logowania musi zostać powtórzone, można ustanowić łączności. Klienty baz danych przy użyciu logikę ponawiania próby połączenia nie powinni być modyfikowane.
+Jeśli bez użycia serwera bazy danych jest wstrzymany, to pierwszy identyfikator logowania będzie wznowić bazy danych i zwrócić komunikat o błędzie informujący, że baza danych jest niedostępna z kodem błędu 40613. Po wznowieniu bazy danych logowania musi zostać powtórzone, można ustanowić łączności. Klienty baz danych przy użyciu logikę ponawiania próby połączenia nie powinni być modyfikowane.
 
 ### <a name="latency"></a>Opóźnienie
 
@@ -135,13 +134,13 @@ Następujące funkcje, które nie obsługują autopausing i autoresuming. Oznacz
 
 Tworzenie nowej bazy danych lub przenoszenie że istniejącą bazę danych w warstwie bezserwerowe środowisko obliczeniowe zgodna z tym samym wzorcem używanym podczas tworzenia nowej bazy danych w aprowizowane warstwa wystąpień obliczeniowych i obejmuje następujące dwa kroki:
 
-1. Określona nazwa celu usługi. W poniższej tabeli przedstawiono warstwa usług dostępne i rozmiarów wystąpień obliczeniowych jest obecnie dostępna w publicznej wersji zapoznawczej.
+1. Określona nazwa celu usługi. Cel usługi określa warstwę usługi, generacja sprzętu i maksymalna rdzeni wirtualnych. W poniższej tabeli przedstawiono opcje celu usługi:
 
-   |Warstwa usług|Obliczenia rozmiaru|
-   |---|---|
-   |Ogólne zastosowanie|GP_S_Gen5_1|
-   |Ogólne zastosowanie|GP_S_Gen5_2|
-   |Ogólne zastosowanie|GP_S_Gen5_4|
+   |Nazwa celu usługi|Warstwa usług|Generacja sprzętu|Maksymalna liczba rdzeni wirtualnych|
+   |---|---|---|---|
+   |GP_S_Gen5_1|Ogólne zastosowanie|5. generacji|1|
+   |GP_S_Gen5_2|Ogólne zastosowanie|5. generacji|2|
+   |GP_S_Gen5_4|Ogólne zastosowanie|5. generacji|4|
 
 2. Opcjonalnie można określić minimalną rdzeni wirtualnych i autopause opóźnienia, aby zmienić wartości domyślne. W poniższej tabeli przedstawiono dostępne wartości dla tych parametrów.
 
@@ -178,7 +177,7 @@ New-AzSqlDatabase `
 
 ### <a name="move-existing-database-into-the-serverless-compute-tier"></a>Przenieś istniejącą bazę danych w warstwie bezserwerowe środowisko obliczeniowe
 
-Poniższy przykład przenosi istniejących pojedynczej bazy danych z warstwy zainicjowanych zasobów obliczeniowych w warstwie bezserwerowe środowisko obliczeniowe. W tym przykładzie używa wartości domyślnych dla rdzeni wirtualnych min, max rdzeni wirtualnych i autopause opóźnienia.
+Poniższy przykład przenosi istniejących pojedynczej bazy danych z warstwy zainicjowanych zasobów obliczeniowych w warstwie bezserwerowe środowisko obliczeniowe. Ten przykład jawnie określa rdzeni wirtualnych min, max rdzeni wirtualnych i autopause opóźnienia.
 
 ```powershell
 Set-AzSqlDatabase
@@ -205,11 +204,11 @@ Modyfikowanie maksymalna rdzeni wirtualnych odbywa się za pomocą [AzSqlDatabas
 
 ### <a name="minimum-vcores"></a>Minimalna liczba rdzeni wirtualnych
 
-Modyfikowanie maksymalna rdzeni wirtualnych odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `MinVcore` argumentu.
+Modyfikowanie minimalne rdzeni wirtualnych odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `MinVcore` argumentu.
 
 ### <a name="autopause-delay"></a>Autopause opóźnienia
 
-Modyfikowanie maksymalna rdzeni wirtualnych odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `AutoPauseDelay` argumentu.
+Modyfikowanie opóźnienie autopause odbywa się za pomocą [AzSqlDatabase zestaw](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) polecenia przy użyciu programu PowerShell `AutoPauseDelay` argumentu.
 
 ## <a name="monitor-serverless-database"></a>Monitorowanie bez użycia serwera bazy danych
 
@@ -230,7 +229,7 @@ Pula zasobów użytkownika jest wewnętrzny większość granic zarządzania zas
 |Jednostka|Metryka|Opis|Jednostki|
 |---|---|---|---|
 |Pakiet aplikacji|app_cpu_percent|Procent rdzeni wirtualnych używanych przez aplikację względem rdzeni maksymalny dozwolony dla aplikacji.|Wartość procentowa|
-|Pakiet aplikacji|app_cpu_billed|Ilość obliczeń naliczane dla aplikacji w tym okresie raportowania. Kwoty zapłacone w tym okresie jest wynikiem tej metryki i cenę jednostkową (rdzeń wirtualny).<br>Wartości tej metryki są określane przez agregowanie wraz z upływem czasu używana maksymalnie procesora CPU i pamięć używana w każdej sekundzie.<br>Jeśli kwota, używany jest mniejsza niż minimalna ilość zapewniona według stawki ustalonej przez minimalny rdzeni wirtualnych i minimalna ilość pamięci, minimalna ilość aprowizowane jest rozliczane.  Aby można było porównać procesora CPU z pamięci na potrzeby rozliczeń, pamięć jest znormalizować na jednostki rdzeni wirtualnych przez ponowne skalowanie ilość pamięci w GB, 3 GB na rdzeń wirtualny.|Rdzeń wirtualny w sekundach|
+|Pakiet aplikacji|app_cpu_billed|Ilość obliczeń naliczane dla aplikacji w tym okresie raportowania. Kwoty zapłacone w tym okresie jest wynikiem tej metryki i cenę jednostkową (rdzeń wirtualny). <br><br>Wartości tej metryki są określane przez agregowanie wraz z upływem czasu używana maksymalnie procesora CPU i pamięć używana w każdej sekundzie. Jeśli kwota, używany jest mniejsza niż minimalna ilość zapewniona według stawki ustalonej przez minimalny rdzeni wirtualnych i minimalna ilość pamięci, minimalna ilość aprowizowane jest rozliczane. Aby można było porównać procesora CPU z pamięci na potrzeby rozliczeń, pamięć jest znormalizować na jednostki rdzeni wirtualnych przez ponowne skalowanie ilość pamięci w GB, 3 GB na rdzeń wirtualny.|Rdzeń wirtualny w sekundach|
 |Pakiet aplikacji|app_memory_percent|Procent pamięci używane przez aplikację względem pamięci maksymalny dozwolony dla aplikacji.|Wartość procentowa|
 |Puli użytkownika|cpu_percent|Procent rdzeni wirtualnych, używane przez obciążenie użytkownikami względem rdzeni maksymalny dozwolony dla obciążenia użytkownikami.|Wartość procentowa|
 |Puli użytkownika|data_IO_percent|Wartość procentowa danych używane przez obciążenie użytkownikami względem danych max operacje We/Wy na SEKUNDĘ jest dozwolone dla obciążenia użytkownikami.|Wartość procentowa|
@@ -262,20 +261,21 @@ Limity zasobów, zobacz [warstwa wystąpień obliczeniowych bez użycia serwera]
 
 ## <a name="billing"></a>Informacje billingowe
 
-Ilość zasobów obliczeniowych, naliczane co sekundę jest maksymalnie użycie Procesora i pamięci używanej co sekundę. Jeśli używany moc procesora CPU i używanej pamięci jest mniejsza niż minimalna ilość aprowizowaną dla każdego, elastycznie kwoty jest naliczana. Aby można było porównać procesora CPU z pamięci na potrzeby rozliczeń, pamięć jest znormalizować na jednostki rdzeni wirtualnych przez ponowne skalowanie ilość pamięci w GB, 3 GB na rdzeń wirtualny.
+Ilość zasobów obliczeniowych, naliczana jest maksymalnie użycie Procesora i pamięci używanej co sekundę. Jeśli używany moc procesora CPU i używanej pamięci jest mniejsza niż minimalna ilość aprowizowaną dla każdego, elastycznie kwoty jest naliczana. Aby można było porównać procesora CPU z pamięci na potrzeby rozliczeń, pamięć jest znormalizować na jednostki rdzeni wirtualnych przez ponowne skalowanie ilość pamięci w GB, 3 GB na rdzeń wirtualny.
 
 - **Zasób rozliczane**: Procesor i pamięć
 - **Kwota rozliczane ($)**: cena jednostkowa (rdzeń wirtualny) * max (min rdzeni wirtualnych, rdzenie wirtualne używane, minimalna ilość pamięci GB * pamięci 1/3 GB używane * 1/3) 
 - **Częstotliwość rozliczeń**: Na sekundę
 
+Cena jednostkowa — rdzeń wirtualny w koszt na sekundę (rdzeń wirtualny). Zapoznaj się [usługi Azure SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/single/) dla określonej jednostki ceny w danym regionie.
+
 Ilość zasobów obliczeniowych, naliczana jest uwidaczniany przez następujące metryki:
 
 - **Metryka**: app_cpu_billed (rdzeń wirtualny w sekundach)
-- **Definicja**: maksymalny (min rdzeni wirtualnych, rdzenie wirtualne używane, minimalna ilość pamięci GB * pamięci 1/3 GB używane * 1/3) *
+- **Definicja**: maksymalny (min rdzeni wirtualnych, rdzenie wirtualne używane, minimalna ilość pamięci GB * pamięci 1/3 GB używane * 1/3)
 - **Częstotliwość raportowania**: Za minutę
 
-> [!NOTE]
-> \* Ta ilość jest obliczane co sekundę i zagregowane ponad 1 minutę.
+Ta ilość jest obliczane co sekundę i zagregowane ponad 1 minutę.
 
 **Przykład**: Należy wziąć pod uwagę bazę danych w okresie jednej godziny przy użyciu GP_S_Gen5_4 za pomocą następującego użycia:
 
@@ -289,7 +289,7 @@ Ilość zasobów obliczeniowych, naliczana jest uwidaczniany przez następujące
 |0:06 - 1:00|1255|
 ||Łącznie: 1631|
 
-Załóżmy, że cena jednostki obliczeniowej jest $0.2609/vCore/hour. A następnie zasoby obliczeniowe naliczane w tym okresie jednej godziny jest określany za pomocą następującej formuły: **$0.2609/vCore/hour * sekund (rdzeń wirtualny) 1631 * 1 godzinę/3600 sekund = 0.1232 $**
+Załóżmy, że cena jednostki obliczeniowej jest $0.000073/vCore/second. Następnie zasoby obliczeniowe naliczane w tym okresie jednej godziny jest określana, korzystając z następującego wzoru: **$0.000073/vCore/second * 1631 — rdzeń wirtualny sekundy = 0.1191 $**
 
 ## <a name="available-regions"></a>Dostępne regiony
 
@@ -297,4 +297,5 @@ Warstwa bezserwerowe środowisko obliczeniowe jest dostępna we wszystkich regio
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Limity zasobów, zobacz [aplikacje niewymagające użycia serwera obliczenia limity zasobów warstwy](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier).
+- Aby rozpocząć pracę, zobacz [Szybki Start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu witryny Azure portal](sql-database-single-database-get-started.md).
+- Limity zasobów, zobacz [aplikacje niewymagające użycia serwera obliczenia limity zasobów warstwy](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier).

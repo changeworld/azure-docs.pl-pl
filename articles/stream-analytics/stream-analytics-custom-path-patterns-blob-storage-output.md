@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771859"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789424"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Usługa Azure Stream Analytics niestandardowych obiektów blob, partycjonowanie danych wyjściowych
 
@@ -26,7 +26,7 @@ Pole niestandardowe lub atrybutów wejściowych poprawić podrzędnych przetwarz
 
 ### <a name="partition-key-options"></a>Opcje klucza partycji
 
-Klucz partycji lub nazwa kolumny, użyty do partycjonowania danych wejściowych może zawierać znaki alfanumeryczne, łączniki, podkreślenia i spacji. Nie jest możliwe użycie zagnieżdżonych pól jako klucza partycji, chyba że używana w połączeniu z użyciem aliasów.
+Klucz partycji lub nazwa kolumny, użyty do partycjonowania danych wejściowych może zawierać znaki alfanumeryczne, łączniki, podkreślenia i spacji. Nie jest możliwe użycie zagnieżdżonych pól jako klucza partycji, chyba że używana w połączeniu z użyciem aliasów. Klucz partycji musi być typu NVARCHAR(MAX).
 
 ### <a name="example"></a>Przykład
 
@@ -58,11 +58,11 @@ Należy zauważyć, że każdy rekord w obiekcie blob ma **client_id** kolumny d
    * Klaster1 / {date} / {aFieldInMyData}  
    * Klaster1 / {time} / {aFieldInMyData}  
    * Klaster1 / {aFieldInMyData}  
-   * Klaster1 / {date} / {time} / {aFieldInMyData}  
-
+   * Klaster1 / {date} / {time} / {aFieldInMyData} 
+   
 2. Klucze partycji są bez uwzględniania wielkości liter, dlatego klucze partycji, takich jak "John" i "john" są równoważne. Ponadto wyrażenia nie może służyć jako klucze partycji. Na przykład **{columnA + columnB}** nie działa.  
 
-3. Gdy strumień wejściowy składa się z rekordów z kardynalnością klucza partycji w obszarze 8000, rekordy zostaną dołączone do istniejących obiektów blob i tylko tworzyć nowe obiekty BLOB, gdy jest to konieczne. Jeśli kardynalność jest za pośrednictwem 8000 ma żadnej gwarancji, istniejące obiekty BLOB zostaną zapisane i nowe obiekty BLOB nie będzie można utworzyć dowolną liczbę rekordów z tym samym kluczem partycji.  
+3. Gdy strumień wejściowy składa się z rekordów z kardynalnością klucza partycji w obszarze 8000, rekordy zostaną dołączone do istniejących obiektów blob i tylko tworzyć nowe obiekty BLOB, gdy jest to konieczne. Jeśli kardynalność jest za pośrednictwem 8000 ma żadnej gwarancji, istniejące obiekty BLOB zostaną zapisane i nowe obiekty BLOB nie będzie można utworzyć dowolną liczbę rekordów z tym samym kluczem partycji.
 
 ## <a name="custom-datetime-path-patterns"></a>Niestandardowe wzorców ścieżki daty/godziny
 

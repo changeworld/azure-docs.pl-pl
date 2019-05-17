@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04163d1fa2a46a2de877702d479f439a5e8711d7
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589073"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603133"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrona danych klientów platformy Azure   
 Odmowa dostępu do danych klienta przez Microsoft operations i obsługą techniczną domyślnie. Po nadaniu prawa dostępu do danych klienta kierownicze zatwierdzenie jest wymagane, a następnie dostęp jest dokładnie zarządzane i zarejestrowane. Wymagania dotyczące kontroli dostępu są wyznaczane przez następujące zasady zabezpieczeń platformy Azure:
@@ -48,8 +48,8 @@ Platforma Azure zapewnia klientom zabezpieczeń typu danych domyślnie oraz jak 
 
 **Nadmiarowość danych**: Microsoft pomaga zapewnić, że dane są chronione w przypadku cyberattack lub uszkodzeniem fizycznym centrum danych. Klienci mogą wybrać:
 
-- Magazyn w kraju zagadnienia dotyczące zgodności lub opóźnienia.
-- Magazyn poza krajowej celach recovery zabezpieczeń lub po awarii.
+- Magazyn w w kraju zagadnienia dotyczące zgodności lub opóźnienia.
+- Magazyn poza z limit z kraju celach recovery zabezpieczeń lub po awarii.
 
 Dane mogą być replikowane w obrębie zaznaczonego obszaru geograficznego w celu zapewnienia nadmiarowości, ale nie mogą być przekazywane poza nim. Klienci mają wiele opcji w celu replikowania danych, takie jak liczba kopii i liczby i lokalizacji centrów danych replikacji.
 

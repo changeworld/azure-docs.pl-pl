@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 842201ee20ef2e13c5179ccb5992a1ed98d36a3e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 56545b02c35d68455497c93582073c73d6c75da5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237870"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815489"
 ---
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure Portal, wykonaj następujące kroki:
 
@@ -33,7 +33,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
    |Model wdrażania     |Resource Manager         |
    |Wydajność     |Standardowa (Standard)         |
    |Rodzaj konta     |StorageV2 (ogólnego przeznaczenia wersja 2)         |
-   |Replikacja     |Magazyn geograficznie nadmiarowy geograficznie nadmiarowy (LRS)         |
+   |Replikacja     |Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)         |
    |Warstwa dostępu     |Gorąca         |
 
 1. Wybierz pozycję **Przejrzyj i utwórz**, aby przejrzeć ustawienia konta magazynu i utworzyć konto.

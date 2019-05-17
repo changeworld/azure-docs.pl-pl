@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f87667516d6c76bc1c21ba5e175b3b2a7ebc3f39
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869509"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556331"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparat reguł w usłudze Azure CDN 
 W tym artykule przedstawiono szczegółowy opis warunków dopasowania dostępne dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -101,8 +101,11 @@ Name (Nazwa) | Przeznaczenie
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>Dokumentacja dotycząca warunki dopasowań aparatu reguł
+
 <a name="main"></a>
+
 ---
+
 ### <a name="always"></a>Zawsze
 
 Warunek dopasowania zawsze stosuje się domyślny zestaw funkcji do wszystkich żądań.
@@ -758,7 +761,7 @@ Wartość                   | Względem    | Wynik
 / 80ABCD/źródła/tekst / *   | Główny           | Ten wzorzec jest dopasowywany gdy żądany zasób spełnia następujące kryteria: <br />-Musi znajdować się w źródle klienta, o nazwie "origin". <br />— Ścieżka względna musi rozpoczynać się folder o nazwie "text". Oznacza to, że żądany zasób może się znajdować albo w folderze "text" lub jednej z jego podfolderów cykliczne.
 */CSS/* */js/*          | Katalog główny lub punkt początkowy | Ten wzorzec jest takie samo przez wszystkie sieci CDN lub Microsoft edge adresy URL CNAME, który zawiera folder css i js.
 *.jpg *.gif *.png       | Katalog główny lub punkt początkowy | Ten wzorzec jest takie samo przez wszystkie sieci CDN lub Microsoft edge CNAME adresy URL kończą się ciągiem jpg, GIF lub PNG. Alternatywny sposób, aby określić ten wzorzec jest [rozszerzenie ścieżki adresu URL dopasować stan](#url-path-extension).
-/ obrazy / * / media / *      | Origin         | Ten wzorzec jest takie samo przez sieć CDN lub Microsoft edge CNAME adresy URL, którego ścieżka względna zaczyna się od "obrazy" lub "nośnika" folder. <br />-Adres URL usługi CDN: http:\//wpc.0001.&lt; domeny&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/ obrazy / * / media / *      | Źródło         | Ten wzorzec jest takie samo przez sieć CDN lub Microsoft edge CNAME adresy URL, którego ścieżka względna zaczyna się od "obrazy" lub "nośnika" folder. <br />-Adres URL usługi CDN: http:\//wpc.0001.&lt; domeny&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Powrót do początku](#main)
 
@@ -784,7 +787,7 @@ Informacje o kluczu:
 
    Znak | Kodowanie adresu URL
    ----------|---------
-   Przestrzeń kosmiczna     | %20
+   Spacja     | %20
    &         | %25
 
 - Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone ten warunek dopasowania jest niezgodny z następującymi funkcjami:
@@ -820,7 +823,7 @@ Informacje o kluczu:
 
        Znak | Kodowanie adresu URL
        ----------|---------
-       Przestrzeń kosmiczna     | %20
+       Spacja     | %20
        &         | %25
 
 - Aby określić wiele wartości parametru ciągu zapytania, rozdzielający każdej z nich z jednego miejsca. Ten warunek dopasowania jest spełniony, gdy żądanie zawiera jedną z kombinacji określona nazwa/wartość.
@@ -872,7 +875,7 @@ Name (Nazwa)  | Wartość |  Wynik
 ------|-------|--------
 Użytkownik  | Joe   | Ten wzorzec jest dopasowywany gdy ciąg zapytania dla żądanego adresu URL jest "? użytkownika = Jan."
 Użytkownik  | *     | Ten wzorzec jest dopasowywany gdy ciąg zapytania dla żądanego adresu URL zawiera parametr użytkownika.
-Email | Joe\* | Ten wzorzec jest dopasowywany gdy ciąg zapytania dla żądanego adresu URL zawiera parametr poczty E-mail, który rozpoczyna się od "Jan".
+Poczta e-mail | Joe\* | Ten wzorzec jest dopasowywany gdy ciąg zapytania dla żądanego adresu URL zawiera parametr poczty E-mail, który rozpoczyna się od "Jan".
 
 [Powrót do początku](#main)
 
@@ -897,7 +900,7 @@ Informacje o kluczu:
 
    Znak | Kodowanie adresu URL | Wartość
    ----------|--------------|------
-   Przestrzeń kosmiczna     | %20          | \%20
+   Spacja     | %20          | \%20
    &         | %25          | \%25
 
    Należy zwrócić uwagę na to, czy symbole procentu należy użyć znaków ucieczki.
@@ -939,7 +942,7 @@ Informacje o kluczu:
 
      Znak | Kodowanie adresu URL
      ----------|---------
-     Przestrzeń kosmiczna     | %20
+     Spacja     | %20
      &         | %25
 
 - Rozdzielający każdej z nich z jednego miejsca, aby określić wiele wartości.

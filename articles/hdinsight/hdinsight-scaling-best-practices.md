@@ -1,19 +1,18 @@
 ---
 title: Skalowanie klastrów rozmiarów — Azure HDInsight
-description: Skalowanie klastra usługi HDInsight do obciążenia.
+description: Skalowanie klastra usługi Azure HDInsight, elastyczne, aby dopasować obciążenia.
 author: ashishthaps
+ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: ashish
-ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/13/2019
+ms.openlocfilehash: 59b9c2bf6e17dadc0d084d3e3f257f8ad91073ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698244"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595851"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skaluj klastry HDInsight
 
@@ -21,6 +20,7 @@ HDInsight zapewnia elastyczność, oferując możliwość skalowania w górę i 
 
 Na przykład jeśli masz jakieś operacje przetwarzania wsadowego tak się stanie, raz dziennie lub raz w miesiącu, klaster HDInsight może być skalowany za kilka minut przed tym zaplanowane zdarzenie będzie odpowiedniej ilości pamięci i mocy obliczeniowej procesora CPU.  Później po zakończeniu przetwarzania i użycie pogarsza, możesz skalować w dół do mniejszej liczby węzłów procesu roboczego klastra HDInsight.
 
+Skalowanie klastra ręcznie przy użyciu jednej z metod opisanych poniżej, lub użyj [skalowania automatycznego](hdinsight-autoscale-clusters.md) opcje, aby system automatycznie skalować w górę i w dół w odpowiedzi na procesor CPU, pamięci i innych metryk.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,11 +32,11 @@ Firma Microsoft udostępnia następujące narzędzia, które skalowanie klastró
 |---|---|
 |[Az programu PowerShell](https://docs.microsoft.com/powershell/azure)|[Zestaw AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) - ClusterName \<nazwa klastra > - TargetInstanceCount \<NewSize >|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Zestaw AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) - ClusterName \<nazwa klastra > - TargetInstanceCount \<NewSize >|
-|[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
-|[Klasyczny interfejs wiersza polecenia Azure](hdinsight-administer-use-command-line.md)|zmiany rozmiaru klastra usługi Azure hdinsight \<Nazwa_klastra > \<liczba wystąpień docelowy >|
+|[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
+|[Klasyczny interfejs wiersza polecenia Azure](hdinsight-administer-use-command-line.md)|zmiany rozmiaru klastra usługi Azure hdinsight \<Nazwa_klastra > \<liczba wystąpień docelowy > |
 |[Azure Portal](https://portal.azure.com)|Otwórz okienko klastra usługi HDInsight, wybierz opcję **rozmiar klastra** w menu po lewej stronie, a następnie w okienku rozmiaru klastra, wpisz liczbę węzłów procesu roboczego i wybierz przycisk Zapisz.|  
 
-![Skalowanie klastra](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Skaluj klaster](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
 Przy użyciu dowolnej z tych metod, można skalować klastra usługi HDInsight w górę lub w dół w ciągu kilku minut.
 
@@ -326,6 +326,6 @@ Ostatnia opcja polega na obserwowanie rzadkich przypadkach, w którym system pli
     
 ## <a name="next-steps"></a>Kolejne kroki
 
+* [Automatyczne skalowanie klastrów Azure HDInsight](hdinsight-autoscale-clusters.md)
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Skalowanie klastrów](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Zarządzanie klastrami HDInsight przy użyciu internetowego interfejsu użytkownika systemu Apache Ambari](hdinsight-hadoop-manage-ambari.md)

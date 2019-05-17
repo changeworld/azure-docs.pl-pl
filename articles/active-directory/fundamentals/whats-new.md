@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50dadb7ae401a5655745a799e6e9fcebb8bb886
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 455be9ba95975ba5c3bd870cbe01ca916d85ef41
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935924"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544420"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -44,8 +44,8 @@ Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie. Jeśli szuk
 ### <a name="azure-active-directory-azure-ad-entitlement-management-is-now-available-public-preview"></a>Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest teraz dostępny (publiczna wersja zapoznawcza)
 
 **Typ:** Nowa funkcja  
-**Kategoria usług:** Zarządzanie tożsamościami  
-**Możliwości produktu:** Zarządzanie tożsamościami
+**Kategoria usług:** Nadzór nad tożsamościami  
+**Możliwości produktu:** Nadzór nad tożsamościami
 
 Zarządzanie uprawnieniami w usłudze Azure AD, teraz w publicznej wersji zapoznawczej, ułatwia klientom delegować Zarządzanie pakietów dostępu, który definiuje sposób pracownikom i partnerom biznesowym zażądać dostępu, który musi zatwierdzić i jak długo mają dostęp. Dostęp do pakietów można zarządzać, członkostwo w usłudze Azure AD i Office 365 grupy przypisań ról w aplikacjach dla przedsiębiorstw i przypisania roli dla witryn usługi SharePoint Online. Dowiedz się więcej o zarządzanie uprawnieniami w [Omówienie usługi Azure AD, zarządzanie uprawnieniami](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Aby dowiedzieć się więcej na temat zakresu funkcji zarządzania usługi Azure AD Identity, w tym Privileged Identity Management, przeglądy dostępu i użytkowania, zobacz [co to jest zarządzanie usługi Azure AD Identity?](../governance/identity-governance-overview.md).
 
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji, zobacz [jak używać usługi Azure Monitor skor
 
 W kwietniu 2019 r Dodaliśmy obsługę tych 21 nowe aplikacje z Federacją w galerii aplikacji:
 
-[Rozwiązaniu SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks jednokrotnej](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [przesączyć](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol--tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [ Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), [Benchling](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial), [EduBrite LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial), [programu RStudio Połącz](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [połączyć Mitel](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [firmę Alibaba w chmurze (Role-based SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Certent kapitałowych, zarządzania](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Menedżera certyfikatów Sectigo](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [ Enterprise usługę SurveyMonkey](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
+[Rozwiązaniu SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks jednokrotnej](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [przesączyć](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol-tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [ Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), [Benchling](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial), [EduBrite LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial), [programu RStudio Połącz](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [połączyć Mitel](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [firmę Alibaba w chmurze (Role-based SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Certent kapitałowych, zarządzania](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Menedżera certyfikatów Sectigo](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [ Enterprise usługę SurveyMonkey](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
 
 Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS w usłudze Azure Active Directory](https://aka.ms/appstutorial). Aby uzyskać więcej informacji o ofercie swoją aplikację w galerii aplikacji Azure AD, zobacz [umieść swoją aplikację w galerii aplikacji usługi Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -106,8 +106,8 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 ### <a name="new-access-reviews-frequency-option-and-multiple-role-selection"></a>Przeglądy dostępu w nowej opcji częstotliwości i wielokrotnego wyboru roli
 
 **Typ:** Nowa funkcja  
-**Kategoria usług:** Przeglądy dostępu  
-**Możliwości produktu:** Zarządzanie tożsamościami
+**Kategoria usług:** Kontrole uprawnień dostępu  
+**Możliwości produktu:** Nadzór nad tożsamościami
 
 Nowe aktualizacje w usłudze Azure AD przeglądów dostępu pozwala na:
 
@@ -241,7 +241,7 @@ Aby uzyskać więcej informacji, zobacz [przywracania wygasła lub usunąć grup
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Serwer proxy aplikacji  
-**Możliwości produktu:** Kontrola dostępu
+**Możliwości produktu:** Access Control
 
 Teraz możesz podać środowisko logowania jednokrotnego (SSO), uwierzytelnianie SAML aplikacji lokalnych, wraz z zdalny dostęp do tych aplikacji za pośrednictwem serwera Proxy aplikacji. Aby uzyskać więcej informacji na temat sposobu konfigurowania logowania jednokrotnego SAML za pomocą aplikacji ze środowiska lokalnego, zobacz [SAML logowania jednokrotnego dla aplikacji w środowisku lokalnym dzięki serwerowi Proxy aplikacji (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-on-premises-apps).
 
@@ -251,7 +251,7 @@ Teraz możesz podać środowisko logowania jednokrotnego (SSO), uwierzytelnianie
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Uwierzytelnienia (logowania)  
-**Możliwości produktu:** Uwierzytelnianie użytkowników
+**Możliwości produktu:** Uwierzytelnianie użytkownika
 
 Aplikacje klienckie mogą niepoprawnie wydać kilkuset żądań logowania w krótkim okresie. Te żądania czy zakończą się one pomyślnie lub nie, wszystkie udział niską komfortu i podwyższonym obciążeń dla dostawcy tożsamości, poprawia czas oczekiwania dla wszystkich użytkowników i zmniejsza dostępności przez dostawcę tożsamości.
 
@@ -287,7 +287,7 @@ Aby zapobiec Administratorzy przed zablokowaniem sobie przypadkowo poza dzierża
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Warunki użytkowania  
-**Możliwości produktu:** Nadzór
+**Możliwości produktu:** Ład
 
 Zaktualizowaliśmy nasze istniejące warunki użycia środowiska do ulepszania sposobu przeglądu i wyrazić zgodę na warunki użytkowania na urządzeniu przenośnym. Teraz można powiększać i pomniejszać, przejdź wstecz, pobrać informacje i wybierz hiperłącza. Aby uzyskać więcej informacji na temat Zaktualizowano warunki użytkowania, zobacz [Azure Active Directory — warunki dotyczące użycia funkcji](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users).
 
@@ -317,7 +317,7 @@ Aby uzyskać więcej informacji na temat tej funkcji, zobacz [Szybki Start: Pobi
 
 **Typ:** Plan zmiany  
 **Kategoria usług:** Dostęp warunkowy  
-**Możliwości produktu:** Kontrola dostępu
+**Możliwości produktu:** Access Control
 
 Jesteśmy w trakcie aktualizowania, jak program Exchange ActiveSync (EAS) ocenia następujące warunki:
 
@@ -348,8 +348,8 @@ Aby uzyskać więcej informacji o konfigurowaniu szyfrowania tokenu SAML, zobacz
 ### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu dla grup i aplikacji za pomocą przeglądów dostępu usługi Azure AD
 
 **Typ:** Nowa funkcja  
-**Kategoria usług:** Przeglądy dostępu  
-**Możliwości produktu:** Nadzór
+**Kategoria usług:** Kontrole uprawnień dostępu  
+**Możliwości produktu:** Ład
 
 Teraz możesz uwzględnić wiele grup lub aplikacji w pojedynczej usłudze Azure AD dostęp Przegląd dla członkostwa w grupie lub przypisaniem aplikacji. Przeglądy dostępu dotyczące dostępu z wieloma grupami lub aplikacje są konfigurowane przy użyciu tych samych ustawień i wszyscy recenzenci uwzględniane są powiadamiani, w tym samym czasie.
 
@@ -375,7 +375,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Samodzielne resetowanie hasła  
-**Możliwości produktu:** Uwierzytelnianie użytkowników
+**Możliwości produktu:** Uwierzytelnianie użytkownika
  
 W odpowiedzi na opinie klientów ulepszyliśmy połączone środowisko podglądu rejestracji MFA/samoobsługowego resetowania HASEŁ, pomaganie użytkownikom w taki sposób, aby szybciej zarejestrować swoje informacje zabezpieczające dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ. 
 
@@ -465,7 +465,7 @@ Aby uzyskać więcej informacji, zobacz [uwierzytelniania jednorazowy kod dostę
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Serwer proxy aplikacji  
-**Możliwości produktu:** Kontrola dostępu
+**Możliwości produktu:** Access Control
 
 Wprowadziliśmy trzy nowe ustawienia plików cookie, dostępne dla Twoich aplikacji, które są publikowane za pośrednictwem serwera Proxy aplikacji:
 
@@ -583,9 +583,9 @@ Następujące pola są zmiany w schemacie inspekcji:
 |Nazwa pola|Co się zmieniło|Stare wartości|Nowe wartości|
 |----------|------------|----------|----------|
 |Category|To była **nazwa usługi** pola. Jest teraz **kategorie inspekcji** pola. **Nazwa usługi** została zmieniona na **loggedByService** pola.|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe Resetowanie hasła</li></ul>|<ul><li>Zarządzanie użytkownikami</li><li>Zarządzanie grupami</li><li>Zarządzanie aplikacjami</li></ul>|
-|targetResources|Obejmuje **TargetResourceType** na najwyższym poziomie.|&nbsp;|<ul><li>Zasady</li><li>aplikacja</li><li>Użytkownik</li><li>Grupa</li></ul>|
-|loggedByService|Zawiera nazwę usługi, która wygenerowała dziennika inspekcji.|Null|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe resetowanie haseł</li></ul>|
-|Wynik|Zwraca wynik funkcji dzienników inspekcji. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li></ul>|
+|targetResources|Obejmuje **TargetResourceType** na najwyższym poziomie.|&nbsp;|<ul><li>Zasady</li><li>Aplikacja</li><li>Użytkownik</li><li>Grupa</li></ul>|
+|loggedByService|Zawiera nazwę usługi, która wygenerowała dziennika inspekcji.|Null|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe resetowanie hasła</li></ul>|
+|Wynik|Zwraca wynik funkcji dzienników inspekcji. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li></ul>|<ul><li>Sukces</li><li>Niepowodzenie</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>Zmienione pola w schemacie logowania
 Następujące pola są zmiany w schemacie logowania:
@@ -593,8 +593,8 @@ Następujące pola są zmiany w schemacie logowania:
 |Nazwa pola|Co się zmieniło|Stare wartości|Nowe wartości|
 |----------|------------|----------|----------|
 |appliedConditionalAccessPolicies|To była **conditionalaccessPolicies** pola. Jest teraz **appliedConditionalAccessPolicies** pola.|Bez zmian|Bez zmian|
-|conditionalAccessStatus|Zwraca wynik funkcji o stanie zasad dostępu warunkowego przy logowaniu. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Disabled (Wyłączony)</li></ul>|
-|appliedConditionalAccessPolicies: result|Zwraca wynik funkcji poszczególnych stan zasady warunkowego dostępu w podczas logowania. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Disabled (Wyłączony)</li></ul>|
+|conditionalAccessStatus|Zwraca wynik funkcji o stanie zasad dostępu warunkowego przy logowaniu. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Sukces</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Wyłączono</li></ul>|
+|appliedConditionalAccessPolicies: result|Zwraca wynik funkcji poszczególnych stan zasady warunkowego dostępu w podczas logowania. Wcześniej był to wyliczenia, ale teraz pokazujemy wartości rzeczywistej.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Sukces</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Wyłączono</li></ul>|
 
 Aby uzyskać więcej informacji na temat schematu, zobacz [inspekcji usługi Azure AD interpretację rejestruje schematu w usłudze Azure Monitor (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
 
@@ -616,7 +616,7 @@ Wykrywanie ryzyka, teraz są oceniane przez nadzorowanych modelu, który oblicza
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Samodzielne resetowanie hasła  
-**Możliwości produktu:** Uwierzytelnianie użytkowników
+**Możliwości produktu:** Uwierzytelnianie użytkownika
 
 Administratorzy usługi Azure AD, mogą teraz zresetować swoje hasła przy użyciu powiadomienia w aplikacji Microsoft Authenticator lub kod z aplikacji mobilnej wystawcy uwierzytelnienia lub sprzęt tokenu. Aby zresetować własne hasło, Administratorzy teraz będą mogli korzystać z dwóch z następujących metod:
 
@@ -624,7 +624,7 @@ Administratorzy usługi Azure AD, mogą teraz zresetować swoje hasła przy uży
 
 - Innych aplikacji mobilnej wystawcy uwierzytelnienia / sprzętu token kodu
 
-- Email
+- Poczta e-mail
 
 - Połączenie telefoniczne
 
@@ -662,7 +662,7 @@ Aby uzyskać więcej informacji na temat i korzystaj z tą sygnaturą czasową z
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Warunki użytkowania  
-**Możliwości produktu:** Nadzór
+**Możliwości produktu:** Ład
  
 Administratorzy mogą włączyć **wymagać od użytkowników akceptacji na każdym urządzeniu** opcję użytkownikom zaakceptować warunki użytkowania na każdym urządzeniu używanych w dzierżawie.
 
@@ -674,7 +674,7 @@ Aby uzyskać więcej informacji, zobacz [warunków na poziomie urządzenia użyj
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Warunki użytkowania  
-**Możliwości produktu:** Nadzór
+**Możliwości produktu:** Ład
  
 
 Administratorzy mogą włączyć **wygaśnie zgody** opcję warunki użytkowania wygaśnie dla wszystkich użytkowników na podstawie zgodnie z określonym harmonogramem cyklicznym. Harmonogram może być rocznie, bi rocznie, co kwartał i co miesiąc. Po wygaśnięciu warunki użytkowania, użytkownicy muszą akceptować.
@@ -687,7 +687,7 @@ Aby uzyskać więcej informacji, zobacz [warunki Użyj postanowień dotyczących
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Warunki użytkowania  
-**Możliwości produktu:** Nadzór
+**Możliwości produktu:** Ład
 
 Administratorzy mogą teraz określić czas trwania ten użytkownik musi ponownie zaakceptowali warunki użytkowania. Na przykład Administratorzy mogą określić, czy użytkownicy muszą ponownie zaakceptowali warunki użytkowania co 90 dni.
 
@@ -720,7 +720,7 @@ Aby uzyskać więcej informacji na temat PIM i powiadomienia e-mail dostępne zo
 ### <a name="group-based-licensing-is-now-generally-available"></a>Licencjonowanie oparte na grupach jest teraz ogólnie dostępne
 
 **Typ:** Zmieniona funkcja  
-**Kategoria usług:** Inne  
+**Kategoria usług:** Inny  
 **Możliwości produktu:** Katalog
 
 Licencjonowanie na podstawie grupy jest poza publicznej wersji zapoznawczej i jest teraz ogólnie dostępna. W ramach tej wersji głównej ta funkcja została wprowadziliśmy bardziej skalowalna i dodano możliwość ponownego przetworzenia oparte na grupach przypisania licencji dla pojedynczego użytkownika i możliwość używania oparte na grupach licencji z licencjami pakietu Office 365 E3/A3.
@@ -786,7 +786,7 @@ Aby uzyskać więcej informacji, zobacz [ustawienia powiadomień w usługach dom
 ### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Portal usługi Azure AD obsługuje usuwanie domen niestandardowych przy użyciu interfejsu API domeny ForceDelete 
 
 **Typ:** Zmieniona funkcja  
-**Kategoria usług:** Zarządzanie katalogami  
+**Kategoria usług:** Zarządzanie katalogiem  
 **Możliwości produktu:** Katalog
 
 Mamy przyjemność ogłosić, że teraz można użyć domeny ForceDelete interfejsu API można usunąć nazwy domeny niestandardowej, asynchronicznie zmieniając nazwę odwołania, takich jak użytkownicy, grupy i aplikacje z niestandardowej nazwy domeny (contoso.com) do (nazwa domeny początkowej domyślnej contoso.onmicrosoft.com).

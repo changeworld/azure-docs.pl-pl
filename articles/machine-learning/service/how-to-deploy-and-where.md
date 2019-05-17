@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f38f9889ca057f2981774edfb8a67bb986fdd8d7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507004"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619870"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -63,6 +63,9 @@ print(model.name, model.id, model.version, sep='\t')
 ```
 
 ### <a name="register-an-externally-created-model"></a>Zarejestruj model utworzone zewnętrznie
+
+[!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
+
 Możesz zarejestrować model utworzone zewnętrznie, zapewniając **ścieżkę lokalną** do modelu. Możesz podać folder lub pojedynczy plik.
 
 **Przykład ONNX za pomocą zestawu SDK języka Python:**
@@ -123,7 +126,7 @@ dependencies:
   - python=3.6.2
   - pip:
     - azureml-defaults
-    - scikit-learn
+    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
 

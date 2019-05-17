@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 05/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 58c4f42859f735a81a3e3edc801daff5d26194a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a90475cfd1d166b8fae1c2b872cbbb9d48b50392
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60757978"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785812"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Zarządzanie obliczeniami na krawędzi sieci Azure Data Box
 
 W tym artykule opisano sposób zarządzania Obliczanie na krawędzi sieci Azure Data Box. Można zarządzać zasobami obliczeniowymi za pomocą witryny Azure portal lub za pomocą lokalnego interfejsu użytkownika sieci web. Używać witryny Azure portal do zarządzania modułami, wyzwalacze, obliczeniowych i konfiguracji i lokalnego internetowego interfejsu użytkownika do zarządzania ustawieniami obliczeń.
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -80,7 +76,7 @@ Wykonaj następujące kroki w witrynie Azure portal, można usunąć wyzwalacza.
 
 3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**.
 
-    ![Potwierdzenie usunięcia](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Potwierdź usuwanie](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 Lista aktualizacji wyzwalaczy w celu odzwierciedlenia usunięcia.
 

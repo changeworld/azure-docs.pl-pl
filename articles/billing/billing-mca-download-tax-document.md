@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 82b568d5a6abae1f061166afc1c80ef639df036c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 245e5ca6e2d7d1f48951d63ba6539180a35f1358
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371550"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604134"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Wyświetlanie dokumentów podatku dla umowy klienta firmy Microsoft
 
@@ -31,12 +31,12 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 Musi być właścicielem, współautorem, Czytelnik lub faktury Menedżera profil rozliczeniowy można wyświetlać i pobierać dokumenty podatku. Aby dowiedzieć się więcej o rolach rozliczeń dla umowy klienta firmy Microsoft, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 <!-- TO DO: add link to manage access doc for MCA -->
 
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 2. Wybierz profil rozliczeniowy.
 3. Wybierz pozycję **Faktury**.
 4. W siatce faktury Znajdź wiersz faktury odpowiadający dokument podatek, który chcesz pobrać.
 5. Kliknij wielokropek (`...`) na końcu wiersza.
-6. Wybierz **dokument podatku**. W zależności od kraju rozliczeń profilu możesz zobaczyć więcej niż jeden dokument podatek za pomocą faktury.
+6. Wybierz **dokument podatku**. W zależności od kraju/regionie rozliczeniowym profilu możesz zobaczyć więcej niż jeden dokument podatek za pomocą faktury.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528496"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65751513"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Magazyn Premium wydajności block blob storage
 
@@ -23,11 +23,11 @@ Wydajność blokowych obiektów blob konta magazynu premium storage jest zoptyma
 
 Files w warstwie Premium należy użyć konta magazynu unikatowy o nazwie **FileStorage (wersja zapoznawcza)**. Ten typ konta jest przeznaczona dla obciążeń o wysokiej operacje We/Wy, wysokiej przepływności, zapewniając spójny o małych opóźnieniach. Magazyn plików w warstwie Premium można skalować z aprowizowanego rozmiaru udziału.
 
-|Obszar  |Środowisko docelowe  |
+|Obszar  |Obiekt docelowy  |
 |---------|---------|
-|Maksymalny rozmiar zainicjowano obsługę administracyjną     |Wynosi 5 TiB (publiczna wersja zapoznawcza), 100 TiB (ograniczonej publicznej wersji zapoznawczej)     |
-|Udziały   |Nieograniczona liczba  |
-|Operacje wejścia/wyjścia     |100 000 (ograniczonej publicznej wersji zapoznawczej)    |
+|Maksymalny rozmiar zainicjowano obsługę administracyjną     |100 TiB     |
+|Udziały   |Nieograniczone  |
+|Operacje wejścia/wyjścia     |100,000    |
 |Ruch przychodzący|4,136 MiB/s     |
 |Ruch wychodzący|6,204 MiB/s |
 

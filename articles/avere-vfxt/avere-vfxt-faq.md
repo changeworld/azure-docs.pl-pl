@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409963"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595412"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure — często zadawane pytania
 
@@ -204,7 +204,7 @@ Nie, Avere vFXT ma działać w środowisku sieciowym zabezpieczony za pomocą na
 
 Ogólnie rzecz biorąc można skonfigurować dodatkowe zabezpieczenia w Twojej sieci wirtualnej, zgodnie z potrzebami, ale pewne ograniczenia może zakłócać działanie klastra.
 
-Na przykład ograniczając ruch wychodzący do Internetu z sieci wirtualnej powoduje występowanie problemów dla klastra, chyba że dodasz reguł, które jawnie zezwolić na dostęp do AzureConnectors i AzureCloud. Ta sytuacja jest opisana w [uzupełniające dokumentacji w serwisie GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+Na przykład ograniczając ruch wychodzący do Internetu z sieci wirtualnej powoduje problemy, dla klastra, chyba że dodasz regułę, która wyraźnie zezwala na dostęp do AzureCloud. Ta sytuacja jest opisana w [uzupełniające dokumentacji w serwisie GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
 
 Aby uzyskać pomoc dotyczącą zabezpieczeń dostosowane, skontaktuj się z działem pomocy technicznej zgodnie z opisem w [Uzyskaj pomoc dotyczącą systemu](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
 

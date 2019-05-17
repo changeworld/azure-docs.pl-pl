@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61273084"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619722"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
-Domeny usługi App Service (wersja zapoznawcza) to domeny najwyższego poziomu, które są zarządzane bezpośrednio na platformie Azure. Ułatwiają one Zarządzanie domenami niestandardowymi dla [usługi Azure App Service](overview.md). W tym samouczku dowiesz się, jak kupić domenę usługi App Service i przypisać nazwy DNS w usłudze Azure App Service.
+Domeny usługi App Service są domeny najwyższego poziomu, które są zarządzane bezpośrednio na platformie Azure. Ułatwiają one Zarządzanie domenami niestandardowymi dla [usługi Azure App Service](overview.md). W tym samouczku dowiesz się, jak kupić domenę usługi App Service i przypisać nazwy DNS w usłudze Azure App Service.
 
 Dla maszyny Wirtualnej platformy Azure lub usługi Azure Storage, zobacz [domeny Przypisz usługi App Service do maszyny Wirtualnej platformy Azure lub usługi Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Dla usług w chmurze, zobacz [Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
@@ -80,7 +80,7 @@ Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalow
 ## <a name="buy-the-domain"></a>Kupowanie domeny
 
 ### <a name="pricing-information"></a>Informacje o cenach
-Aby poznać ceny informacji na temat domen usługi Azure App Service, odwiedź [stronie cennika usługi App Service](https://azure.microsoft.com/pricing/details/app-service/windows/) i przewiń w dół do domeny usługi App Service.
+Informacji na temat domen usługi Azure App Service o cenach znajdziesz [stronie cennika usługi App Service](https://azure.microsoft.com/pricing/details/app-service/windows/) i przewiń w dół do domeny usługi App Service.
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Otwórz witrynę [Azure Portal](https://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
@@ -118,7 +118,7 @@ Następnie wybierz odpowiednie opcje dla swojej domeny. Zobacz poniższą tabel�
 
 | Ustawienie | Sugerowana wartość | Opis |
 |-|-|-|
-|Ochrona prywatności | Włączanie | Zgódź się na "Ochrona prywatności", która jest ujęta w cenie zakupu _za darmo_. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratorów, które nie obsługują ochrony prywatności i są one wyświetlane na **ochrony prywatności** strony. |
+|Ochrona prywatności | Włącz | Zgódź się na "Ochrona prywatności", która jest ujęta w cenie zakupu _za darmo_. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratorów, które nie obsługują ochrony prywatności i są one wyświetlane na **ochrony prywatności** strony. |
 | Przypisz domyślne nazwy hostów | **www** i **\@** | Wybierz żądaną nazwą hosta powiązania, w razie potrzeby. Po zakończeniu operacji zakupu domeny aplikacji są dostępne w wybranej nazwy hostów. Jeśli aplikacja znajduje się za zaporą [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), widzisz opcję, aby przypisać domeny katalogu głównego (@), ponieważ usługa Traffic Manager jest nie rekordów A pomocy technicznej. Można zmienić przypisania nazwy hosta, po zakończeniu zakupu domen. |
 
 ### <a name="accept-terms-and-purchase"></a>Zaakceptuj warunki i zakupu
@@ -150,7 +150,7 @@ Aby przetestować nazwy hostów, przejdź do listy nazw hostów w przeglądarce.
 
 ## <a name="assign-hostnames-to-app"></a>Przypisywanie nazw hostów do aplikacji
 
-Jeśli nie chcesz przypisać jeden lub więcej domyślne nazwy hostów do swojej aplikacji w procesie zakupu lub musisz przypisać nazwy hosta nie jest wyświetlane, można przypisać nazwy hosta w dowolnym czasie.
+Jeśli nie chcesz przypisać jeden lub więcej domyślne nazwy hostów do swojej aplikacji w procesie zakupu lub musisz przypisać nazwy hosta nie jest wyświetlane, można przypisać nazwy hosta dowolnym czasie.
 
 Można także przypisać nazwy hostów w domeny usługi App Service do innych aplikacji. Kroki zależą od tego, czy domeny usługi App Service i aplikację należą do tej samej subskrypcji.
 
@@ -278,7 +278,3 @@ Po zakończeniu operacji domena jest wydanej z subskrypcji i dostępne dla każd
 ## <a name="direct-default-url-to-a-custom-directory"></a>Kierowanie domyślnego adresu URL do katalogu niestandardowego
 
 Domyślnie usługa App Service kieruje żądania internetowe do katalogu głównego w kodzie aplikacji. Aby kierować do podkatalogu, takich jak `public`, zobacz [kierowanie domyślnego adresu URL do katalogu niestandardowego](app-service-web-tutorial-custom-domain.md#virtualdir).
-
-## <a name="more-resources"></a>Więcej zasobów
-
-[FAQ: Domeny usługi App Service (wersja zapoznawcza) i domen niestandardowych](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

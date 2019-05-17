@@ -3,8 +3,8 @@ title: Automatyzowanie aprowizacji w aplikacjach przy użyciu Standard SCIM w us
 description: Usługa Azure Active Directory automatycznie aprowizować użytkowników i grup do aplikacji lub tożsamość magazynu, który fronted przez usługę sieci web, za pomocą interfejsu zdefiniowane w specyfikacji protokołu Standard SCIM
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 5/06/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04dde608f5885cdafe18b49a388de8dbb596cbfe
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 143919cb804be771d547e2913818d486c7f8adda
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65539352"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824479"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 

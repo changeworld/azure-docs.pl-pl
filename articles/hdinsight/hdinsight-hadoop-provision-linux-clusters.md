@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 01/28/2019
-ms.openlocfilehash: 3ccff4409dde92a23ccdbb1c31af687449bf9d48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2f8c3aa0a5d37327ba49aebb1def94e90751b7cc
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700799"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597574"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i więcej
 
@@ -34,7 +34,7 @@ W poniższej tabeli przedstawiono różne metody, których można użyć do skon
 | --- |:---:|:---:|:---:|:---:|
 | [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
-| [Klasyczny interfejs wiersza polecenia Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Interfejs wiersza polecenia platformy Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Zestaw SDK platformy .NET](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |
@@ -66,7 +66,7 @@ Usługa Azure HDInsight aktualnie obsługuje następujące typy klastrów, każd
 > [!IMPORTANT]  
 > Klastry HDInsight są dostępne w różnych typów, z których każdy pojedyncze obciążenie lub technologii. Nie istnieje obsługiwana metoda do tworzenia klastra, który łączy wiele typów, takich jak Storm i bazy danych HBase w jednym klastrze. Jeśli rozwiązanie wymaga technologii, które są dystrybuowane między wieloma typy klastrów HDInsight, [sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network) można połączyć typy wymagane klastra. 
 
-| Typ klastra | Funkcjonalność |
+| Typ klastra | Funkcja |
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |Zapytanie usługi Batch i analizy przechowywanych danych |
 | [HBase](hbase/apache-hbase-overview.md) |Przetwarzanie dużych ilości danych NoSQL ze schematów, |
@@ -161,9 +161,9 @@ Każdy typ klastra ma swój własny liczbę węzłów, terminologii dla węzłó
 | Type | Węzły | Diagram |
 | --- | --- | --- |
 | Hadoop |Węzeł główny (2), węzeł danych (1 +) |![Węzły klastra usługi HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| HBase |Główny serwer (2), region (1 +), węzeł główne/dozorcy (3) |![Węzły klastra HDInsight HBase](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
+| Hbase |Główny serwer (2), region (1 +), węzeł główne/dozorcy (3) |![Węzły klastra HDInsight HBase](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Węzeł nimbus (2), serwer nadzorcy (1 +), węzłem dozorcy (3) |![Węzły klastra HDInsight Storm](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| platforma Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzłem dozorcy (3) (wersja bezpłatna dla rozmiaru maszyny Wirtualnej dozorcy A1) |![Węzły klastra HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzłem dozorcy (3) (wersja bezpłatna dla rozmiaru maszyny Wirtualnej dozorcy A1) |![Węzły klastra HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 Aby uzyskać więcej informacji, zobacz [domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) w "Co to są składniki i wersje w HDInsight?"
 

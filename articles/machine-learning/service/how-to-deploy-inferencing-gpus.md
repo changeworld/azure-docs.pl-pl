@@ -1,5 +1,5 @@
 ---
-title: Jak wdrożyć model uczenia głębokiego dla wnioskowania przy użyciu procesora GPU
+title: Wdrażanie modelu potrzeby wnioskowania przy użyciu procesora GPU
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak wdrożyć model uczenia głębokiego jako usługę sieci web, który używa procesora GPU do wnioskowania. W tym artykule modelu Tensorflow zostanie wdrożony do klastra usługi Azure Kubernetes Service. Klaster używa włączonymi procesorami GPU maszyny Wirtualnej do hosta usługi sieci web i wnioskowania wynik żądania.
 services: machine-learning
@@ -10,33 +10,30 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 5cc0fe0526937245d3ca913afc477f0259e2afd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7796e8dc07889c9816e4227f3b38904d91a24da3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515177"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595671"
 ---
-# <a name="how-to-do-gpu-inferencing"></a>Jak przeprowadzić wnioskowania procesora GPU
+# <a name="deploy-a-deep-learning-model-for-inferencing-with-gpu"></a>Wdrażanie modelu uczenia głębokiego, na potrzeby wnioskowania przy użyciu procesora GPU
 
 Dowiedz się, jak używać wnioskowania procesora GPU dla usługi machine learning model wdrożyć jako usługę sieci web. W tym artykule dowiesz się, jak wdrożyć przykładowy Tensorflow głębokie uczenie modelu przy użyciu usługi Azure Machine Learning. Model jest wdrożony do klastra Azure Kubernetes Service (AKS), korzystającą z włączonymi procesorami GPU maszyny Wirtualnej w celu obsługi usługi. Gdy żądania są wysyłane do usługi, model używa procesora GPU do wykonania wnioskowania.
 
 Procesory GPU oferują za pośrednictwem procesorów korzyści związanych z wydajnością na obliczeń o wysokiej równoległego. Szkolenia oraz wnioskowania głębokiego uczenia modeli (szczególnie w przypadku dużych partii żądań) sprawdzają się doskonale dla procesorów GPU.  
 
-W tym przykładzie opisano, jak wdrożyć model TensorFlow zapisywane do usługi Azure Machine Learning. 
-
-## <a name="goals-and-prerequisites"></a>Cele i wymagania wstępne
-
-Postępuj zgodnie z instrukcjami, aby:
-* Utwórz procesora GPU klastra AKS
+W tym przykładzie opisano, jak wdrożyć model TensorFlow zapisywane do usługi Azure Machine Learning przez:
+* Tworzenie klastra AKS z włączonymi procesorami GPU
 * Wdrażanie modelu z procesorem GPU Tensorflow
 
-Wymagania wstępne:
+## <a name="prerequisites"></a>Wymagania wstępne
+
 * Obszar roboczy usługi Azure Machine Learning
 * Python
 * Zarejestrowany Tensorflow SavedModel. Aby dowiedzieć się, jak zarejestrować Zobacz modeli [wdrażanie modeli](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#registermodel)
 
-Ten artykuł jest oparty na [wdrażanie modeli Tensorflow AKS](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow, zapisane, który używa modeli i wdraża klaster AKS. Jednak z niewielkie zmiany w pliku oceniania i plikiem środowiska jest zastosowanie na dowolną platformę nauczania maszyny, które obsługują procesorów GPU.  
+Ten artykuł jest oparty na notesu programu Jupyter [wdrażanie modeli Tensorflow AKS](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow, zapisane, który używa modeli i wdraża klaster AKS. Jednak z niewielkie zmiany w pliku oceniania i plikiem środowiska jest zastosowanie na dowolną platformę nauczania maszyny, które obsługują procesorów GPU.  
 
 ## <a name="provision-aks-cluster-with-gpus"></a>Aprowizowanie klastra AKS za pomocą procesorów GPU
 Platforma Azure oferuje wiele różnych opcji procesora GPU, które mogą służyć do wnioskowania. Zobacz [listy seria N](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) pełną podziale kosztów i możliwości. 

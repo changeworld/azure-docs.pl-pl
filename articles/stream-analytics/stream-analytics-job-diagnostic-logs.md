@@ -7,18 +7,17 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480237"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826575"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych
 
-Od czasu do czasu zadania usługi Azure Stream Analytics nieoczekiwanie zatrzymuje przetwarzanie. Ważne jest, aby było możliwe rozwiązanie problemu z tego rodzaju zdarzeniem. Mogą one być spowodowane przez nieoczekiwany wynik zapytania, problemy z łącznością z urządzeniami lub nieoczekiwaną awarię usługi. Dzienniki diagnostyczne w usłudze Stream Analytics może pomóc w zidentyfikowaniu przyczyny problemów, gdy wystąpi i skrócić czas odzyskiwania.
+Od czasu do czasu zadania usługi Azure Stream Analytics nieoczekiwanie zatrzymuje przetwarzanie. Jest ważne można było rozwiązać tego rodzaju zdarzenia. Mogą one być spowodowane przez nieoczekiwany wynik zapytania, problemy z łącznością z urządzeniami lub nieoczekiwaną awarię usługi. Dzienniki diagnostyczne w usłudze Stream Analytics może pomóc w zidentyfikowaniu przyczyny problemów, gdy wystąpi i skrócić czas odzyskiwania.
 
 ## <a name="log-types"></a>Typy dziennika
 
@@ -83,7 +82,7 @@ Zdecydowanie zaleca się włączenie dzienników diagnostycznych i wysyła je do
 
 ## <a name="diagnostics-log-categories"></a>Kategorie dziennika diagnostycznego
 
-Obecnie przechwytujemy dwie kategorie dzienników diagnostycznych:
+Usługa Azure Stream Analytics przechwytuje dwie kategorie dzienników diagnostycznych:
 
 * **Tworzenie**: Przechwytuje zdarzenia dziennika, that are related to zadania tworzenia operacje, takie jak tworzenie zadania, dodając i usuwając dane wejściowe i wyjściowe, dodawanie i aktualizowania zapytania i uruchamiania lub zatrzymywania zadania.
 
@@ -104,13 +103,13 @@ time | Sygnatura czasowa (w formacie UTC) dziennika.
 resourceId | Identyfikator zasobu, że operacja miało miejsce, napisane wielkimi literami. Zawiera identyfikator subskrypcji, grupy zasobów i nazwę zadania. Na przykład   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategoria, zaloguj się albo **wykonywania** lub **tworzenie**.
 operationName | Nazwa operacji, który jest zalogowany. Na przykład **wysyłać zdarzenia: Błąd zapisu danych wyjściowych SQL do mysqloutput**.
-status | Stan operacji. Na przykład **niepowodzenie** lub **Powodzenie**.
+stan | Stan operacji. Na przykład **niepowodzenie** lub **Powodzenie**.
 poziom | Poziom dziennika. Na przykład **błąd**, **ostrzeżenie**, lub **komunikat o charakterze informacyjnym**.
 properties | Szczegóły konkretnego wpisu dziennika, zserializowanym w formacie ciągu JSON. Aby uzyskać więcej informacji zobacz następujące sekcje w tym artykule.
 
 ### <a name="execution-log-properties-schema"></a>Schemat właściwości dziennika wykonywania
 
-Dzienniki wykonywania ma informacje o zdarzeniach, które wystąpiły podczas wykonywania zadania usługi Stream Analytics. Schemat właściwości różni się w zależności od typu zdarzenia. Obecnie firma Microsoft ma następujące dzienniki wykonywania:
+Dzienniki wykonywania ma informacje o zdarzeniach, które wystąpiły podczas wykonywania zadania usługi Stream Analytics. Schemat właściwości różni się w zależności od tego, czy zdarzenie jest błąd danych, czy zdarzenie generyczne.
 
 ### <a name="data-errors"></a>Błędy danych
 
@@ -124,10 +123,14 @@ Typ | Typ błędu. Na przykład **DataConversionError**, **CsvParserError**, lub
 Dane | Zawiera dane, które są przydatne do dokładnie zlokalizować źródła błędu. Z zastrzeżeniem obcięcie, w zależności od rozmiaru.
 
 W zależności od **operationName** wartości błędów danych mają zgodny z następującym schematem:
-* **Serializacja zdarzeń**. Serializowanie zdarzenia występują w trakcie zdarzenia, operacje odczytu. Występują, gdy dane na dane wejściowe nie spełnia schematu zapytania dla jednego z następujących powodów:
-    * *Niezgodność typów podczas zdarzenia (de) serializacji*: Określa pole, które powoduje błąd.
-    * *Nie można odczytać zdarzenie, nieprawidłowe serializacja*: Wyświetla informacje o lokalizacji danych wejściowych, w którym wystąpił błąd. Zawiera nazwę obiektu blob dla obiektu blob danych wejściowych, przesunięcie i przykładowych danych.
-* **Wysyłanie zdarzeń**. Wysyłanie zdarzenia występują podczas operacji zapisu. Identyfikują one wydarzenia przesyłania strumieniowego, które spowodowały błąd.
+
+* **Serializacja zdarzeń** odbywały się zdarzenia, operacje odczytu. Występują, gdy dane na dane wejściowe nie spełnia schematu zapytania dla jednego z następujących powodów:
+
+   * *Niezgodność typów podczas zdarzenia (de) serializacji*: Określa pole, które powoduje błąd.
+
+   * *Nie można odczytać zdarzenie, nieprawidłowe serializacja*: Wyświetla informacje o lokalizacji danych wejściowych, w którym wystąpił błąd. Zawiera nazwę obiektu blob dla obiektu blob danych wejściowych, przesunięcie i przykładowych danych.
+
+* **Wysyłanie zdarzeń** wystąpić podczas operacji zapisu. Identyfikują one wydarzenia przesyłania strumieniowego, które spowodowały błąd.
 
 ### <a name="generic-events"></a>Zdarzenia ogólne
 
@@ -136,7 +139,7 @@ Zdarzenia ogólne obejmuje wszystkie inne elementy.
 Name (Nazwa) | Opis
 -------- | --------
 Błąd | (opcjonalnie) Informacje o błędzie. Zazwyczaj jest to informacje o wyjątku, jeśli jest ona dostępna.
-Komunikat| Komunikat dziennika.
+Message| Komunikat dziennika.
 Typ | Typ komunikatu. Mapuje do wewnętrznego Kategoryzacja błędów. Na przykład **JobValidationError** lub **BlobOutputAdapterInitializationFailure**.
 Identyfikator korelacji | [Identyfikator GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , który jednoznacznie identyfikuje wykonywania zadania. Wszystkie wpisy dziennika wykonywania od momentu zadanie zostało uruchomione, dopóki zadanie zostanie zatrzymane, mające taką samą **identyfikator korelacji** wartość.
 

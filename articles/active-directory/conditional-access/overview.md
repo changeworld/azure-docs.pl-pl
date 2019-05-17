@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1289ba615fea6e6c43b256da6978534d9edc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23c88857c877440be724ddea0bdb239768621c8c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354606"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764801"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co to jest dostęp warunkowy w usłudze Azure Active Directory?
 
@@ -64,7 +64,7 @@ Element **W takiej sytuacji:** w zasadach określa przyczynę uaktywnienia zasad
 
 - **[Użytkownicy](conditions.md#users-and-groups)**: użytkownicy podejmujący próbę uzyskania dostępu (**„kto”**).
 
-- **[Aplikacje w chmurze](conditions.md#cloud-apps)**: docelowe elementy, do których użytkownicy próbują uzyskać dostęp (**„co”**).
+- **[Aplikacje w chmurze](conditions.md#cloud-apps-and-actions)**: docelowe elementy, do których użytkownicy próbują uzyskać dostęp (**„co”**).
 
 Te dwa warunki są obowiązkowe w zasadach dostępu warunkowego. Oprócz dwóch warunków obowiązkowych można zastosować dodatkowe warunki określające sposób uzyskiwania dostępu. Typowe przykłady to użycie urządzenia mobilnego lub próba dostępu z lokalizacji poza siecią firmową. Aby uzyskać więcej informacji, zobacz [Conditions in Azure Active Directory conditional access (Warunki w funkcji dostępu warunkowego usługi Azure Active Directory)](conditions.md).
 

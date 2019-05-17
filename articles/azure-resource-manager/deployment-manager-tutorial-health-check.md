@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/06/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4f3f43ba063ed25389860183576c4dbd94e2bfcd
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466325"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790124"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -59,7 +59,7 @@ W środowisku produkcyjnym zazwyczaj używa się co najmniej jeden dostawców mo
 Następujące dwa pliki są używane do wdrażania funkcji platformy Azure. Nie trzeba pobierać te pliki do wykonywania kroków samouczka.
 
 * Szablon usługi Resource Manager znajduje się w [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Możesz wdrożyć ten szablon służy do tworzenia funkcji platformy Azure.  
-* Plik zip kodu źródłowego funkcji platformy Azure, [ https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](https://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). Tego pliku zip o nazwie jest wywoływana przez szablon usługi Resource Manager.
+* Plik zip kodu źródłowego funkcji platformy Azure, [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). Tego pliku zip o nazwie jest wywoływana przez szablon usługi Resource Manager.
 
 Aby wdrożyć funkcję platformy Azure, wybierz **wypróbuj** aby otworzyć usługa Azure Cloud shell, a następnie wklej poniższy skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy w oknie shell, a następnie wybierz pozycję **Wklej**. 
 

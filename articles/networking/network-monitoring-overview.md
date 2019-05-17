@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564819"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620420"
 ---
 # <a name="network-monitoring-solutions"></a>Rozwiązania do monitorowania sieci 
 
@@ -37,7 +37,7 @@ Network Performance Monitor (NPM) to zestaw funkcji, z których każdy jest skie
 
 Monitor wydajności, Monitor usługi ExpressRoute i Monitor łączności usługi monitorowanymi możliwości w ramach NPM i są opisane poniżej.
 
-## <a name="performance-monitor"></a>Monitorowanie wydajności
+## <a name="performance-monitor"></a>Monitor wydajności
 
 Monitor wydajności jest częścią NPM i jest monitorowania sieci w chmurze, hybrydowych i dla środowisk lokalnych. Można monitorować łączność sieciową w oddziałach zdalnych i biurach terenowych, lokalizacji magazynu, centrach danych i chmury. Można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi. Dostępne są następujące kluczowe korzyści:
 
@@ -53,7 +53,9 @@ Aby uzyskać więcej informacji Wyświetl następujące artykuły:
 
 * [Konfigurowanie rozwiązania monitora wydajności sieci w dziennikach w usłudze Azure Monitor](../azure-monitor/insights/network-performance-monitor.md) 
 * [Przypadki użycia](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
-*  Aktualizacje produktów: [Luty 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [sierpnia 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+* Aktualizacje produktów:
+  * [Lutego 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [Sierpnia 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
 
@@ -120,6 +122,6 @@ Wbudowane administratorów DNS, to rozwiązanie zbiera, analizuje i koreluje dzi
 Linki pokrewne:
 * [wpis w blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentacja](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>Różne postanowienia
+## <a name="miscellaneous"></a>Różne
 
 * [Nowy cennik](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

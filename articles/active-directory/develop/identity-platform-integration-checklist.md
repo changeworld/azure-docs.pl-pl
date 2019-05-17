@@ -3,8 +3,8 @@ title: Integracja z platformą Microsoft identity | Azure
 description: Dowiedz się więcej o najlepszych rozwiązań i wspólne przeoczeń podczas integracji z platformą tożsamości Microsoft (w wersji 2.0).
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 1f5a6d7501fd387548b111fcb0888515c8f8db25
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076408"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540149"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Lista kontrolna dotycząca programu Microsoft tożsamości platformy integracji
 
@@ -33,7 +33,7 @@ Jeśli po prostu rozpoczynasz pracę, zapoznaj się z [dokumentacji](index.yml) 
 
 Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja efektywnie jest zintegrowana z usługą [platforma tożsamości usługi Microsoft](https://docs.microsoft.com/legal/mdsa).
 
-### <a name="basics"></a>Podstawy
+### <a name="basics"></a>Ustawienia podstawowe
 
 |   |   |
 |---|---|
@@ -52,7 +52,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja efektywnie j
 | ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przestrzegać [znakowania wskazówki dotyczące aplikacji](howto-add-branding-in-azure-ad-apps.md). |
 | ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Podaj nazwę opisową i logo aplikacji. Te informacje są wyświetlane na monit o wyrażenie zgody aplikacji. Upewnij się, że nazwy i logo są przedstawiciel firmy/product tak, aby użytkownicy mogą wprowadzać świadomych decyzji. Upewnij się, masz wszystkie znaki towarowe bez naruszania. |
 
-### <a name="privacy"></a>Ochrona prywatności
+### <a name="privacy"></a>Prywatność
 
 |   |   |
 |---|---|

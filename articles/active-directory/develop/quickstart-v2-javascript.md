@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23003186aa413e313578c57616ae03c435f140e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9deaf610696f676610f589168426ac24be692c99
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785396"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823519"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Szybki start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji jednostronicowej JavaScript (SPA)
 
@@ -183,7 +183,7 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |`cacheLocation`  | (Opcjonalnie) Spowoduje to ustawienie przeglądarki magazynu stanu uwierzytelniania. Wartość domyślna to sessionStorage.   |
 > |`storeAuthStateInCookie`  | (Opcjonalnie) Biblioteka będzie przechowywać stan żądania uwierzytelniania, które są wymagane do weryfikacji przepływów uwierzytelniania w plikach cookie przeglądarki. Jest ono ustawione dla przeglądarek programu Internet Explorer i urządzeniami brzegowymi w celu ograniczenia pewnych [znane problemy dotyczące](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
 
- Zobacz [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options) więcej informacji na temat konfigurowalne opcje dostępne.
+ Aby uzyskać szczegółowe informacje na temat konfigurowalne opcje dostępne, przeczytaj [zainicjować aplikacje klienckie](msal-js-initializing-client-applications.md).
 
 ### <a name="sign-in-users"></a>Logowanie użytkowników
 
@@ -256,6 +256,7 @@ myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
     console.log(error);
 });
 ```
+
 > [!NOTE]
 > Ten przewodnik Szybki Start używa `loginRedirect` i `acquireTokenRedirect` metody, gdy okno przeglądarki, używany jest program Internet Explorer ze względu na [znany problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) związane z obsługi okna podręcznego przez przeglądarkę Internet Explorer.
 

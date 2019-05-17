@@ -3,8 +3,8 @@ title: Przeprowadź uaktualnienie do serwera Proxy aplikacji usługi Azure AD | 
 description: Wybierz, które rozwiązanie serwera proxy jest przydatna, jeśli wykonujesz uaktualnienie z programu Microsoft Forefront lub ujednoliconej bramy dostępu.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/27/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa143aac52fe0024620047eb67f24cc79e55c9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a98a0394ff2a74aa256637d3c12007374200ef22
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292796"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783462"
 ---
 # <a name="compare-remote-access-solutions"></a>Porównanie rozwiązań dostępu zdalnego
 
@@ -34,21 +34,21 @@ Aby dowiedzieć się, jak Threat Management Gateway (TMG), Unified dostępu do b
 
 | Cecha | TMG | UAG | WAP | Interfejs API |
 | ------- | --- | --- | --- | --- |
-| Uwierzytelnianie certyfikatów | Yes | Yes | - | - |
-| Selektywne publikowanie aplikacji przeglądarki | Yes | Yes | Yes | Yes |
-| Wstępnego uwierzytelniania i pojedynczego logowania jednokrotnego | Yes | Yes | Yes | Yes | 
-| Warstwy 2/3 zapory | Yes | Yes | - | - |
-| Funkcje serwera proxy do przodu | Yes | - | - | - |
-| Funkcje sieci VPN | Yes | Yes | - | - |
-| Obsługa protokołu zaawansowane | - | Yes | Tak, jeśli uruchomiony za pośrednictwem protokołu HTTP | Tak, jeśli uruchomiony za pośrednictwem protokołu HTTP lub za pośrednictwem bramy usług pulpitu zdalnego |
-| Służy jako serwer proxy usług AD FS | - | Yes | Yes | - |
-| Jednego portalu, aby uzyskać dostęp do aplikacji | - | Yes | - | Yes |
-| Tłumaczenie łącze treści odpowiedzi | Yes | Yes | - | Yes | 
-| Uwierzytelnianie przy użyciu nagłówków | - | Yes | - | Tak, z usługą PingAccess | 
-| Zabezpieczenia w skali chmury | - | - | - | Yes | 
-| Dostęp warunkowy | - | Yes | - | Yes |
-| Brak składników w sieci obwodowej | - | - | - | Yes |
-| Nie połączeń przychodzących | - | - | - | Yes |
+| Uwierzytelnianie certyfikatów | Tak | Tak | - | - |
+| Selektywne publikowanie aplikacji przeglądarki | Tak | Yes | Yes | Tak |
+| Wstępnego uwierzytelniania i pojedynczego logowania jednokrotnego | Tak | Yes | Yes | Tak | 
+| Warstwy 2/3 zapory | Tak | Tak | - | - |
+| Funkcje serwera proxy do przodu | Tak | - | - | - |
+| Funkcje sieci VPN | Tak | Tak | - | - |
+| Obsługa protokołu zaawansowane | - | Tak | Tak, jeśli uruchomiony za pośrednictwem protokołu HTTP | Tak, jeśli uruchomiony za pośrednictwem protokołu HTTP lub za pośrednictwem bramy usług pulpitu zdalnego |
+| Służy jako serwer proxy usług AD FS | - | Tak | Tak | - |
+| Jednego portalu, aby uzyskać dostęp do aplikacji | - | Tak | - | Tak |
+| Tłumaczenie łącze treści odpowiedzi | Tak | Yes | - | Tak | 
+| Uwierzytelnianie przy użyciu nagłówków | - | Tak | - | Tak, z usługą PingAccess | 
+| Zabezpieczenia w skali chmury | - | - | - | Tak | 
+| Dostęp warunkowy | - | Tak | - | Tak |
+| Brak składników w sieci obwodowej | - | - | - | Tak |
+| Nie połączeń przychodzących | - | - | - | Tak |
 
 W przypadku większości scenariuszy zaleca się serwera Proxy aplikacji usługi Azure AD jako nowoczesnych rozwiązań. Serwer Proxy aplikacji sieci Web jest tylko preferowane w scenariuszach, które wymagają serwera proxy usług AD FS i nie można użyć domenom niestandardowym w usłudze Azure Active Directory. 
 

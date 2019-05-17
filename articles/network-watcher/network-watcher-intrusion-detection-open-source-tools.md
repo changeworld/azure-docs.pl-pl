@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: e1b0e49dcc69a7458c22b859df1a4721342f0728
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730142"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605705"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Wykrywanie włamań w sieci przy użyciu usługi Network Watcher i narzędzi typu open source
 
@@ -255,7 +255,7 @@ Można również utworzyć własne wizualizacje i pulpity nawigacyjne, dostosowa
 
 Przykładowy pulpit nawigacyjny zawiera kilka wizualizacji Suricata alertu dzienników:
 
-1. Alerty według GeoIP — mapa przedstawiająca dystrybucji alerty według kraju pochodzenia na podstawie lokalizacji geograficznej (według adresu IP)
+1. Alerty według GeoIP — mapa przedstawiająca dystrybucji alertów według ich kraju/regionu origin na podstawie lokalizacji geograficznej (według adresu IP)
 
     ![geograficzna ip][3]
 

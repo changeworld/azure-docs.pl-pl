@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ef3891ac2b0423688f49ae034331935b1b0cd6c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192486"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786161"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
 
@@ -30,7 +30,7 @@ ms.locfileid: "65192486"
 Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center (ASC) usługi IoT (wersja zapoznawcza) w usłudze IoT Hub.  
 
 > [!NOTE]
-> Centrum zabezpieczeń Azure dla IoT aktualnie obsługuje tylko w warstwie standardowa i wyższych centra IoT Hub.
+> Centrum zabezpieczeń Azure dla IoT aktualnie obsługuje tylko centrów iot Hub w warstwie standardowa.
 > Centrum zabezpieczeń Azure dla IoT jest rozwiązaniem jednym Centrum. Jeśli potrzebujesz wielu centrach, wiele rozwiązań są wymagane. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Wymagania wstępne dotyczące włączania usługi
@@ -38,8 +38,12 @@ Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center 
 - Obszar roboczy usługi Log Analytics
   - Dwa typy informacji są domyślnie przechowywane w obszarze roboczym usługi Log Analytics przez usługę ASC dla IoT; **alerty zabezpieczeń** i **zalecenia**. 
   - Można wybrać dodać magazyn typu dodatkowe informacje, **nieprzetworzonych zdarzeń**. Należy pamiętać, że przechowywanie **nieprzetworzonych zdarzeń** w usłudze Log Analytics niesie ze sobą dodatkowe koszty. 
-- Usługa IoT Hub (w warstwie standardowa lub wyższa)
-- Spełnisz [usługi prerequities](service-prerequisites.md) 
+- Usługa IoT Hub (warstwa standardowa)
+- Spełnisz [usługi wymagań wstępnych](service-prerequisites.md) 
+- Usługi obsługiwane regiony
+  - Środkowe stany USA
+  - Europa Północna
+  - Azja Południowo-Wschodnia
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Włączanie usługi ASC dla Internetu rzeczy na Twoim Centrum IoT Hub 
 

@@ -13,14 +13,14 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712439"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596508"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych z Windows na platformie Azure
 
@@ -106,6 +106,8 @@ Aby utworzyć wystąpienie maszyny wirtualnej DSVM:
 
 Po maszyny Wirtualnej jest tworzony i zainicjowano obsługę administracyjną, można pulpitu zdalnego do niej przy użyciu poświadczeń konta administratora, które skonfigurowano w poprzednim **podstawy** sekcji. Możesz rozpocząć korzystanie z narzędzia, które są zainstalowane i skonfigurowane na maszynie Wirtualnej. Wiele narzędzi jest możliwy za pośrednictwem kafelków menu start i ikony pulpitu.
 
+Maszyna wirtualna do nauki o danych można także dołączyć do notesów usługi Azure do uruchamiania aplikacji Jupyter notebooks na maszynie Wirtualnej i obejścia ograniczeń w warstwie bezpłatnej usługi. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesów — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Narzędzi zainstalowanych w programie Microsoft maszyny wirtualnej analizy danych
 
 Dowiedz się więcej o narzędziach, które pochodzą zainstalowanym maszyny DSVM:
@@ -157,7 +159,7 @@ Istnieje również wtyczki, wywoływana **usługi Azure Machine Learning dla pro
 > [!NOTE]
 > Możesz otrzymać komunikat, okres próbny wygasł. Wprowadź poświadczenia konta Microsoft. Lub Utwórz nowe bezpłatne konto, aby uzyskać dostęp do programu Visual Studio Community.
 
-### <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer
+### <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer edition
 
 Maszyny DSVM jest powiązana z deweloperskiej wersji programu SQL Server 2017 przy użyciu usług Machine Learning. Ta wersja programu SQL Server jest dostępna w języku R lub Python i może uruchamiać funkcje analityczne w bazie danych. Usługi Machine Learning zapewnia platformę do tworzenia i wdrażania inteligentnych aplikacji. Języki te i wiele pakietów przez społeczność służy do tworzenia modeli i generować prognozy dla danych programu SQL Server. Umożliwia zachowanie analytics blisko danych, ponieważ usługi Machine Learning, w bazie danych, integruje się języków R i Python w programie SQL Server. Ta integracja pozwala wyeliminować koszty i zagrożenia bezpieczeństwa związane z przenoszeniem danych.
 

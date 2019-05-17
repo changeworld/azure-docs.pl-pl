@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 512c3245407fd33aa1d67025df25ba9b667f84b4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 6f73756373a145375aa2b3d0bcb1c8fa0ede5cdb
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545343"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823488"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma tożsamości firmy Microsoft i niejawne udzielić przepływu
 
@@ -243,4 +243,4 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przejdź przez [przykłady MSAL JS](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) można rozpocząć kodowanie.
+* Przejdź przez [przykłady MSAL JS](sample-v2-code.md#single-page-applications-spa) można rozpocząć kodowanie.

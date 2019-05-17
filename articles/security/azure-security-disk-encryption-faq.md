@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926281"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761916"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -59,12 +59,7 @@ Dystrybucje systemu Linux server, które nie zalecane dla platformy Azure nie ob
 | CentOS | 7.4 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.3 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.2n | Dysk systemu operacyjnego i danych |
-| CentOS | 6.8 | Dysk systemu operacyjnego i danych |
-| CentOS | 7.1 | Dysk z danymi |
-| CentOS | 7.0 | Dysk z danymi |
-| CentOS | 6.7 | Dysk z danymi |
-| CentOS | 6.6 | Dysk z danymi |
-| CentOS | 6.5 | Dysk z danymi |
+| CentOS | 6.8 | Dysk z danymi |
 | openSUSE | 42.3 | Dysk z danymi |
 | SLES | 12-SP4 | Dysk z danymi |
 | SLES | 12-SP3 | Dysk z danymi |
@@ -158,7 +153,7 @@ W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256Wit
 Nie, dane nie będą usuwane z dysków danych, które już są szyfrowane przy użyciu usługi Azure Disk Encryption. Podobnie jak EncryptFormatAll nie został ponownie zaszyfrować dysk systemu operacyjnego, go nie będzie ponownie zaszyfrować dysk już zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS systemu plików jest obsługiwana?
-Woluminy XFS są obsługiwane w przypadku szyfrowania dysku danych tylko z EncryptFormalAll. Ponownie sformatować wolumin wymazywanie wszystkich danych wcześniej istnieje. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
+Woluminy XFS są obsługiwane w przypadku szyfrowania dysku danych tylko z EncryptFormatAll. Ponownie sformatować wolumin wymazywanie wszystkich danych wcześniej istnieje. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Czy mogę utworzyć kopię zapasową i przywrócić zaszyfrowanej maszyny Wirtualnej? 
 

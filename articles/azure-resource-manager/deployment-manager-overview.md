@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/13/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466557"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595782"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -38,15 +38,11 @@ Szablon topologii wdrażania przed wdrożeniem szablon wprowadzania.
 
 Dokumentację interfejsu REST API usługi Azure Deployment Manager można znaleźć [tutaj](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
-## <a name="supported-locations"></a>Obsługiwane lokalizacje
-
-Dla wersji zapoznawczej zasoby Deployment Manager są obsługiwane w środkowe stany USA i wschodnie stany USA 2. Definiowanie zasobów w szablonach topologii i wdrożenia, takich jak jednostki usługi, źródeł artefaktów i wdrożeniach opisanych w tym artykule, należy określić jedną z tych regionów dla lokalizacji. Jednak zasoby, które wdrażasz utworzenie usługi, takie jak maszyny wirtualne, konta magazynu i aplikacji sieci web, są obsługiwane we wszystkich ich [lokalizacjach](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
-
 ## <a name="identity-and-access"></a>Tożsamość i dostęp
 
 Za pomocą programu Deployment Manager [przypisanych przez użytkownika z tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) wykonuje operacje wdrażania. Ta tożsamość jest utworzyć przed rozpoczęciem wdrażania. Musi mieć dostęp do subskrypcji, które wdrażasz usługi i wystarczających uprawnień do ukończenia wdrażania. Aby uzyskać informacje o akcjach udzielone za pośrednictwem ról, zobacz [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md).
 
-Tożsamość musi znajdować się w jednym z obsługiwanych lokalizacji Deployment Manager i musi znajdować się w tej samej lokalizacji co wdrożenia.
+Tożsamość musi znajdować się w tej samej lokalizacji co wdrożenia.
 
 ## <a name="topology-template"></a>Szablon topologii
 
@@ -221,7 +217,9 @@ Krok oczekiwania wstrzymuje wdrożenia przed kontynuowaniem. Umożliwia zweryfik
 
 Właściwość czasu trwania używa [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Poprzedni przykład określa oczekiwania jednej minuty.
 
-Aby uzyskać więcej informacji o kroku sprawdzenia kondycji, zobacz [ ]() i [ ]() Aby uzyskać więcej informacji, zobacz [kroki odwołanie do szablonu](/azure/templates/Microsoft.DeploymentManager/steps).
+Aby uzyskać więcej informacji o kroku sprawdzenia kondycji, zobacz [wprowadzenie do usługi Azure Deployment Manager wdrożenie integracji kondycji](./deployment-manager-health-check.md) i [samouczka: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+
+Aby uzyskać więcej informacji, zobacz [kroki odwołanie do szablonu](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Wprowadzanie
 

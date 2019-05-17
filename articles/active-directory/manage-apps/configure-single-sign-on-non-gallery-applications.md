@@ -1,6 +1,6 @@
 ---
-title: Single - aplikacje spoza galerii logowania jednokrotnego usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Konfigurowanie logowania jednokrotnego (SSO) do aplikacji spoza galerii w usłudze Azure Active Directory (Azure AD)
+title: Logowanie jednokrotne — aplikacje spoza galerii — platforma tożsamości firmy Microsoft | Dokumentacja firmy Microsoft
+description: Konfigurowanie logowania jednokrotnego (SSO) do aplikacji spoza galerii w platformie tożsamości firmy Microsoft (Azure AD)
 services: active-directory
 author: CelesteDG
 manager: mtillman
@@ -12,46 +12,58 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8459f9704a15614f2c3edaff5758fa534f78cbd9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292083"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781121"
 ---
-# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w usłudze Azure Active Directory
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w platformie tożsamości firmy Microsoft
 
-Ten artykuł dotyczy funkcja, która umożliwia administratorom skonfigurowanie logowania jednokrotnego do aplikacji, które nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez konieczności pisania kodu*. Jeśli zamiast tego szukasz wskazówki dla deweloperów o tym, jak zintegrować aplikacje niestandardowe z usługą Azure AD za pomocą kodu, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
+Ten artykuł dotyczy funkcji, która umożliwia administratorom skonfigurowanie logowania jednokrotnego dla aplikacji są wyświetlane w galerii aplikacji platformy tożsamości firmy Microsoft *bez konieczności pisania kodu*.
 
-Galeria aplikacji usługi Azure Active Directory zawiera listę aplikacji, które są znane formularz logowania jednokrotnego przy użyciu usługi Azure Active Directory, pomocy technicznej zgodnie z opisem w [w tym artykule](what-is-single-sign-on.md). Po (jako IT specjalista lub system integratora w swojej organizacji) znalezieniu aplikacji, którą chcesz się połączyć, możesz rozpocząć zgodnie z instrukcjami krok po kroku przedstawiony w witrynie Azure portal umożliwia logowanie jednokrotne.
+Jeśli zamiast tego szukasz wskazówki dla deweloperów o tym, jak zintegrować aplikacje niestandardowe z usługą Azure AD za pomocą kodu, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
 
-Te funkcje są również dostępne, zgodnie z umowy licencyjnej. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/active-directory/). 
+Galerii aplikacji platformy tożsamości firmy Microsoft zawiera listę aplikacji, które są znane formularz logowania jednokrotnego z platformą Microsoft identity, pomocy technicznej zgodnie z opisem w [w tym artykule](what-is-single-sign-on.md). Po (jako IT specjalista lub system integratora w swojej organizacji) znalezieniu aplikacji, którą chcesz się połączyć, możesz rozpocząć zgodnie z instrukcjami krok po kroku przedstawiony w witrynie Azure portal umożliwia logowanie jednokrotne.
 
+Te funkcje są również dostępne, zgodnie z umowy licencyjnej. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/active-directory/).
+
+- Samoobsługowej integracji aplikacji, które używają nowoczesnego protokołu, takich jak [OpenId Connect/OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) do uwierzytelniania użytkowników i uzyskiwanie tokenów dla [programu Microsoft Graph](https://graph.microsoft.com).
 - Samoobsługowa integracja dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjowanego przez dostawcę usług lub inicjowane przez dostawcę tożsamości)
 - Samoobsługowa integracja dowolnej aplikacji sieci web, który jest oparty na języku HTML strony logowania za pomocą [SSO oparte na hasłach](what-is-single-sign-on.md#password-based-sso)
 - Samoobsługowe połączenia aplikacji, które używają protokołu Standard SCIM do inicjowania obsługi użytkowników ([opisane w tym miejscu](use-scim-to-provision-users-and-groups.md))
-- Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sso)
+- Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sign-on)
 
 Może to obejmować nie tylko aplikacje SaaS, które używają, ale ma nie jeszcze została uruchomiona w galerii aplikacji usługi Azure AD, ale aplikacje sieci web innych firm, które Twoja organizacja została wdrożona do serwerów, które możesz kontrolować, zarówno w chmurze lub lokalnie.
 
-Te funkcje, nazywane również *szablony integracji aplikacji*, punkty połączeń opartych na standardach dla aplikacji, które obsługują SAML, Standard SCIM lub uwierzytelnianie oparte na formularzach i obejmują elastyczne opcje i ustawienia zgodność z szerokim liczby aplikacji. 
+Te funkcje, nazywane również *szablony integracji aplikacji*, punkty połączeń opartych na standardach dla aplikacji, które obsługują SAML, Standard SCIM lub uwierzytelnianie oparte na formularzach i obejmują elastyczne opcje i ustawienia zgodność z szerokim liczby aplikacji.
 
 ## <a name="adding-an-unlisted-application"></a>Dodawanie aplikacji nieznajdujących się na liście
-Aby połączyć aplikację przy użyciu szablonu usługi integracji aplikacji, zaloguj się do witryny Azure portal przy użyciu konta administratora usługi Azure Active Directory. Przejdź do **usługi Active Directory > aplikacje dla przedsiębiorstw > Nowa aplikacja > Aplikacja spoza galerii** zaznacz **Dodaj**, a następnie **Dodawanie aplikacji z galerii** .
 
-  ![Dodawanie aplikacji](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+Platforma Microsoft Identity zapewnia dwa mechanizmy do rejestrowania aplikacji.
 
-W galerii aplikacji nieznajdujących się na liście aplikacji można dodawać przez zaznaczenie **aplikacji spoza galerii** Kafelek, który jest wyświetlany w wynikach wyszukiwania, jeśli nie można znaleźć żądanej aplikacji. Po wpisaniu nazwy aplikacji, można skonfigurować opcje logowania jednokrotnego i zachowania. 
+Aplikacja, która korzysta z nowoczesnego protokołu, takich jak [OpenId Connect/OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) uwierzytelniać swoich użytkowników jest zarejestrowana przy użyciu [Rejestracja aplikacji Portal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-register-an-app).
 
-**Szybkie porady**:  Najlepszym rozwiązaniem należy użyć funkcji wyszukiwania, aby sprawdzić, czy aplikacja już istnieje w galerii aplikacji. Jeśli aplikacja zostanie znaleziony, i jego opis wymienia logowanie jednokrotne, aplikacja jest już obsługiwane dla federacyjnego logowania jednokrotnego.
+Rejestracji aplikacji przy użyciu wszystkich innych typów [obsługiwanych mechanizmów uwierzytelniania](what-is-single-sign-on.md) takich jak [SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol) Użyj protokołu **aplikacje dla przedsiębiorstw** bloku Połącz się z platformą Microsoft Identity.
 
-  ![Wyszukiwanie](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
+Aby połączyć aplikację przy użyciu szablonu usługi integracji aplikacji, zaloguj się do witryny Azure portal przy użyciu konta administratora usługi Microsoft platformy tożsamości. Przejdź do **usługi Active Directory > aplikacje dla przedsiębiorstw > Nowa aplikacja > Aplikacja spoza galerii** zaznacz **Dodaj**, a następnie **Dodawanie aplikacji z galerii** .
+
+![Dodawanie aplikacji](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+
+W galerii aplikacji nieznajdujących się na liście aplikacji można dodawać przez zaznaczenie **aplikacji spoza galerii** Kafelek, który jest wyświetlany w wynikach wyszukiwania, jeśli nie można znaleźć żądanej aplikacji. Po wpisaniu nazwy aplikacji, można skonfigurować opcje logowania jednokrotnego i zachowania.
+
+> [!TIP]
+> Najlepszym rozwiązaniem należy użyć funkcji wyszukiwania, aby sprawdzić, czy aplikacja już istnieje w galerii aplikacji. Jeśli aplikacja zostanie znaleziony, i jego opis wymienia logowanie jednokrotne, aplikacja jest już obsługiwane dla federacyjnego logowania jednokrotnego.
+
+![wyszukaj](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
 Dodawanie aplikacji w ten sposób zapewnia podobne do tego dostępne dla wstępnie zintegrowanych aplikacji. Aby rozpocząć, wybierz opcję **skonfigurować logowanie jednokrotne** lub kliknąć **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji. Następny ekran przedstawia opcje konfigurowania logowania jednokrotnego. Opcje są opisane w kolejnych sekcjach tego artykułu.
   
 ![Opcje konfiguracji](./media/configure-single-sign-on-non-gallery-applications/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>Logowanie jednokrotne oparte na języku SAML
+
 Wybierz tę opcję, aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji. Wymaga to, że aplikacja obsługuje SAML 2.0. Należy zbierać informacje dotyczące sposobu używania funkcji SAML aplikacji przed kontynuowaniem. Wykonaj poniższe sekcje, aby skonfigurować logowanie jednokrotne między aplikacją i usługi Azure AD.
 
 ### <a name="enter-basic-saml-configuration"></a>Wprowadź podstawową konfigurację protokołu SAML
@@ -60,12 +72,12 @@ Aby skonfigurować usługę Azure AD, wprowadź podstawową konfigurację protok
 
   ![Firma litware, domena i adresy URL](./media/configure-single-sign-on-non-gallery-applications/customapp4.png)
 
-- **Na adres URL logowania (zainicjowanego przez dostawcę usług tylko)** — w przypadku, gdy użytkownik przechodzi do logowania się w tej aplikacji. Jeśli aplikacja jest skonfigurowany do wykonania usługi zainicjowane z dostawcą logowania jednokrotnego, gdy użytkownik przechodzi do tego adresu URL, dostawca usług będzie wykonywać niezbędne przekierowanie do usługi Azure AD do uwierzytelniania i logowania użytkownika w. Jeśli to pole zostanie wypełnione, usługi Azure AD będzie używać tego adresu URL można uruchomić aplikacji z usługi Office 365 i stronie panelu dostępu usługi Azure AD. Jeśli to pole zostanie pominięte, a następnie usługi Azure AD zamiast tego będzie wykonywać dostawcy tożsamości — inicjowane logowania jednokrotnego, gdy aplikacja jest uruchamiana z panelu dostępu usługi Azure AD, Office 365 lub Azure AD pojedynczy adres URL logowania (można skopiować z karty Pulpit nawigacyjny).
+- **Na adres URL logowania (zainicjowanego przez dostawcę usług tylko)** — w przypadku, gdy użytkownik przechodzi do logowania się do tej aplikacji. Jeśli aplikacja jest skonfigurowany do wykonywania usługi zainicjowane z dostawcą logowania jednokrotnego, gdy użytkownik przechodzi do tego adresu URL, dostawca usług będzie wykonywać niezbędne przekierowanie do usługi Azure AD do uwierzytelniania i zalogować użytkownika. Jeśli to pole zostanie wypełnione, usługi Azure AD będzie używać tego adresu URL można uruchomić aplikacji z usługi Office 365 i stronie panelu dostępu usługi Azure AD. Jeśli to pole zostanie pominięte, a następnie usługi Azure AD zamiast tego będzie wykonywać dostawcy tożsamości — inicjowane logowania jednokrotnego, gdy aplikacja jest uruchamiana z panelu dostępu usługi Azure AD, Office 365 lub Azure AD pojedynczy adres URL logowania (można skopiować z karty Pulpit nawigacyjny).
 - **Identyfikator** -musi jednoznacznie wskazywać na aplikację, dla których logowanie jednokrotne jest konfigurowane. Możesz znaleźć tę wartość jako element wystawcy w AuthRequest (żądaniu SAML) wysłana przez aplikację. Ta wartość pojawia się również jako **identyfikator jednostki** w żadnych metadanych SAML udostępniany przez aplikację. W dokumentacji aplikacji SAML szczegółowe informacje na temat co to jest wartość Identyfikatora jednostki lub grupy odbiorców. 
 
     Oto przykład sposobu wyświetlania identyfikatora lub wystawcy żądania języka SAML wysłanego przez aplikację do usługi Azure AD:
 
-    ```
+    ```XML
     <samlp:AuthnRequest
     xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
     ID="id6c1c178c166d486687be4aaf5e482730"
@@ -86,7 +98,7 @@ Aby skonfigurować usługę Azure AD, wprowadź podstawową konfigurację protok
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-Aby uzyskać więcej informacji, zobacz [żądania uwierzytelniania SAML 2.0 i odpowiedzi, które obsługuje usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
+Aby uzyskać więcej informacji, zobacz [żądania uwierzytelniania SAML 2.0 i odpowiedzi, które obsługuje platforma tożsamości firmy Microsoft (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Przeglądanie lub dostosowywanie oświadczeń wystawionych w tokenie języka SAML
@@ -100,11 +112,9 @@ Umożliwia wyświetlenie i edytowanie oświadczenia wysyłane w tokenie SAML do 
 Istnieją dwie przyczyny, dlaczego może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
 
 - Aplikacja została zapisana wymaga innego zestawu oświadczeń identyfikatorów URI lub wartości oświadczeń.
-- Twoja aplikacja została wdrożona w sposób, który wymaga NameIdentifier roszczenia inne niż nazwa użytkownika (zwane również główną nazwę użytkownika) przechowywanych w usłudze Azure Active Directory. 
+- Twoja aplikacja została wdrożona w sposób, który wymaga NameIdentifier roszczenia inne niż nazwa użytkownika (oznacza to, że główna nazwa użytkownika) przechowywane w platformie tożsamości firmy Microsoft.
 
 Aby uzyskać więcej informacji, zobacz [Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji korporacyjnych](./../develop/../develop/active-directory-saml-claims-customization.md). 
-
-
 
 ### <a name="review-certificate-expiration-data-status-and-email-notification"></a>Data wygaśnięcia certyfikatu przeglądu, stan i powiadomienia e-mail
 
@@ -120,7 +130,7 @@ Sprawdź, czy certyfikat ma:
 - Stan aktywny. Jeśli stan jest nieaktywny, Zmień stan na aktywny. Aby zmienić stan, zapoznaj się z **Active** , a następnie Zapisz konfigurację. 
 - Wiadomość e-mail z powiadomieniem poprawne. Gdy aktywnego certyfikatu zbliża się data wygaśnięcia, usługi Azure AD będzie wysyłał powiadomienie na adres e-mail skonfigurowany w tym polu.  
 
-Aby uzyskać więcej informacji, zobacz [zarządzać certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory](manage-certificates-for-federated-single-sign-on.md).
+Aby uzyskać więcej informacji, zobacz [zarządzać certyfikatami federacyjnego logowania jednokrotnego w platforma tożsamości usługi Microsoft](manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="set-up-target-application"></a>Konfigurowanie aplikacji docelowej
 
@@ -145,7 +155,7 @@ Przypisanie użytkownika umożliwi usłudze Azure AD wystawić token dla użytko
 
 ### <a name="test-the-saml-application"></a>Testowanie aplikacji SAML
 
-Przed testowaniem aplikacji SAML, konieczne jest posiadanie Konfigurowanie aplikacji z usługą Azure AD oraz przypisać użytkowników lub grup do aplikacji. Aby przetestować aplikację SAML, zobacz [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
+Przed testowaniem aplikacji SAML, konieczne jest posiadanie Konfigurowanie aplikacji z usługą Azure AD oraz przypisać użytkowników lub grup do aplikacji. Aby przetestować aplikację SAML, zobacz [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w platforma tożsamości usługi Microsoft](../develop/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="password-single-sign-on"></a>Hasło logowania jednokrotnego
 
@@ -169,6 +179,7 @@ Po wybraniu **dalej**, użytkownik jest monitowany o podanie adresu URL aplikacj
 >
 
 ## <a name="related-articles"></a>Powiązane artykuły
+
 - [Dostosowywanie oświadczeń wystawionych w tokenie SAML wstępnie zintegrowanych aplikacji](../develop/active-directory-saml-claims-customization.md)
 - [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)
-
+- [Platforma tożsamości firmy Microsoft (Azure Active Directory dla deweloperów](https://aka.ms/aaddev)

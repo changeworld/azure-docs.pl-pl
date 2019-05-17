@@ -10,23 +10,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: ece6a6efa2f4424fb1c9d7f5a7e12a4e707faf45
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 82ee9d04785fc0f6ac534428bf411ca0fe3204ad
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649309"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601510"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Tworzenie, zmienianie i usuwanie publicznej prefiksu adresu IP
 
 Informacje na temat publicznych prefiksu adresu IP i sposobu tworzenia, Zmień i Usuń jeden. Publiczny prefiks adresu IP jest ciągły zakres adresów, na podstawie liczby publicznych adresów IP, które określisz. Te adresy są przypisane do Twojej subskrypcji. Podczas tworzenia zasobu publicznego adresu IP można przypisać statyczny publiczny adres IP z prefiksu i skojarzyć adres do maszyn wirtualnych, usługi równoważenia obciążenia lub inne zasoby, aby włączyć łączność z Internetem. Jeśli nie znasz prefiksy publicznych adresów IP, zobacz [Przegląd prefiksu adresu publicznego adresu IP](public-ip-address-prefix.md)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-> [!IMPORTANT]
-> Prefiks publicznego adresu IP jest w publicznej wersji zapoznawczej w niektórych regionach. Możesz [Dowiedz się, co oznacza w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Publiczny prefiks adresu IP jest obecnie dostępna w: Zachód środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia. Aby uzyskać zaktualizowaną listę regionów, zobacz [aktualizacje platformy Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,17 +45,17 @@ Prefiksy publicznych adresów IP mają opłaty. Aby uzyskać więcej informacji,
 3. W obszarze **publiczny adres IP prefiksu adresu**, wybierz opcję **Utwórz**.
 4. Wprowadź lub wybierz wartości dla następujących ustawień w obszarze **Utwórz publiczny prefiks adresu IP**, a następnie wybierz **Utwórz**:
 
-   |Ustawienie|Wymagana?|Szczegóły|
+   |Ustawienie|Wymagane?|Szczegóły|
    |---|---|---|
-   |Subskrypcja|Yes|Musi istnieć w tym samym [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako zasób, którą chcesz skojarzyć publiczny adres IP.|
-   |Grupa zasobów|Yes|Może znajdować się w tej samej lub różnych [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako zasób, którą chcesz skojarzyć publiczny adres IP.|
-   |Name (Nazwa)|Yes|Nazwa musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
-   |Region|Yes|Musi istnieć w tym samym [region](https://azure.microsoft.com/regions)jako publiczne adresy IP można przypisywać adresów z zakresu. Prefiks jest obecnie dotyczy wersji zapoznawczej w zachodnio-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia.|
-   |Rozmiar prefiksu|Yes| Rozmiar prefiksu, których potrzebujesz. A/28 lub 16 adresów IP jest ustawieniem domyślnym.
+   |Subskrypcja|Tak|Musi istnieć w tym samym [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako zasób, którą chcesz skojarzyć publiczny adres IP.|
+   |Grupa zasobów|Tak|Może znajdować się w tej samej lub różnych [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako zasób, którą chcesz skojarzyć publiczny adres IP.|
+   |Name (Nazwa)|Tak|Nazwa musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
+   |Obszar|Tak|Musi istnieć w tym samym [region](https://azure.microsoft.com/regions)jako publiczne adresy IP można przypisywać adresów z zakresu. Prefiks jest obecnie dotyczy wersji zapoznawczej w zachodnio-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia.|
+   |Rozmiar prefiksu|Tak| Rozmiar prefiksu, których potrzebujesz. A/28 lub 16 adresów IP jest ustawieniem domyślnym.
 
 **Polecenia**
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Utwórz prefiks public-ip sieci az](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
@@ -68,12 +65,12 @@ Po utworzeniu prefiks, musisz utworzyć statyczne adresy IP z prefiksu. Aby to z
 
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *publiczny adres ip prefiksu adresu*. Gdy **prefiksy adresów publiczny adres IP** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz prefiks, aby utworzyć publiczne adresy IP z.
-3. Gdy się pojawi się w wynikach wyszukiwania, zaznacz go i kliknij pozycję **+ Dodaj adres IP** w sekcji Przegląd. W przypadku, gdy nie jest widoczna, upewnij się, że używasz prawo łącze w wersji zapoznawczej: https://aka.ms/publicipprefixportal
+3. Gdy się pojawi się w wynikach wyszukiwania, zaznacz go i kliknij pozycję **+ Dodaj adres IP** w sekcji Przegląd.
 4. Wprowadź lub wybierz wartości dla następujących ustawień w obszarze **tworzenie publicznego adresu IP**. Ponieważ prefiks jest dla standardowej jednostki SKU, protokołów IPv4 i statyczne, wystarczy podać następujące informacje:
 
-   |Ustawienie|Wymagana?|Szczegóły|
+   |Ustawienie|Wymagane?|Szczegóły|
    |---|---|---|
-   |Name (Nazwa)|Yes|Nazwa publicznego adresu IP musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
+   |Name (Nazwa)|Tak|Nazwa publicznego adresu IP musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
    |Limit czasu bezczynności (minuty)|Nie|Ile minut nie zamykaj połączenie TCP lub HTTP bez polegania na klientach, aby wysyłać komunikaty utrzymywania aktywności. |
    |Etykieta nazwy DNS|Nie|Musi być unikatowa w obrębie regionu świadczenia usługi Azure, Utwórz nazwę w (za pośrednictwem wszystkich subskrypcji i wszystkich klientów). Azure powoduje automatyczne zarejestrowanie nazwy i adresu IP w jej systemie DNS, dzięki czemu możesz nawiązać połączenie zasób o nazwie. Azure dołącza podsieć domyślna, takich jak *location.cloudapp.azure.com* (tam, gdzie lokalizacja to lokalizacja, możesz wybrać) do nazwy zostaną podane, można utworzyć w pełni kwalifikowana nazwa DNS. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure DNS z publicznym adresem IP platformy Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -87,7 +84,7 @@ Po utworzeniu prefiks, musisz utworzyć statyczne adresy IP z prefiksu. Aby to z
 
 **Polecenia**
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[listę prefiksów public-ip sieci az](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) publiczne adresy IP, [az sieci public-ip prefiksu show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) wyświetlanie ustawień; [az sieci public-ip prefiksu aktualizacji](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) można zaktualizować; [az sieci public-ip prefiksu delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) do usunięcia|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) pobierania obiektu publicznego adresu IP i wyświetlić jej ustawienia [AzPublicIpPrefix zestaw](/powershell/module/az.network/set-azpublicipprefix) można zaktualizować ustawień; [AzPublicIpPrefix Usuń](/powershell/module/az.network/remove-azpublicipprefix) do usunięcia|
@@ -96,7 +93,7 @@ Po utworzeniu prefiks, musisz utworzyć statyczne adresy IP z prefiksu. Aby to z
 
 Do wykonywania zadań na prefiksy publicznych adresów IP, Twoje konto musi mieć przypisaną do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowe](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, którą przypisano odpowiednie działania wymienione w poniższej tabeli:
 
-| Akcja                                                            | Name (Nazwa)                                                           |
+| action                                                            | Name (Nazwa)                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | Przeczytaj publiczny prefiks adresu IP                                |
 | Microsoft.Network/publicIPPrefixes/write                          | Utwórz lub zaktualizuj publiczny prefiks adresu IP                    |

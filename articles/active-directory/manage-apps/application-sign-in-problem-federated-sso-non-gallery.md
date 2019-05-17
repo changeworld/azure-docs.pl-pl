@@ -3,8 +3,8 @@ title: Problemy z logowaniem do aplikacji spoza galerii, skonfigurowanej dla fed
 description: Wskazówki dotyczące określonych problemów, które mogą występować podczas logowania się do aplikacji, skonfigurowanej do obsługi opartej na SAML federacyjne logowanie jednokrotne z usługą Azure AD
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0139227012be610977df3240f74a03f53be7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440202"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825435"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji spoza galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
 
@@ -58,7 +58,7 @@ Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość
 
 7. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8. Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. Sprawdź, czy wartość w polu tekstowym Identyfikator zgodna wartość identyfikatora wyświetlane w błędzie.
+8. Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. Sprawdź, czy wartość w polu tekstowym Identyfikator zgodna wartość identyfikatora wyświetlane w błędzie.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres, który jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji. 
 
@@ -88,7 +88,7 @@ Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość
 
 7. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8. Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. Sprawdź lub zaktualizuj tę wartość w polu tekstowym adres URL odpowiedzi, aby dopasować `AssertionConsumerServiceURL` wartość w żądaniu języka SAML.    
+8. Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. Sprawdź lub zaktualizuj tę wartość w polu tekstowym adres URL odpowiedzi, aby dopasować `AssertionConsumerServiceURL` wartość w żądaniu języka SAML.    
     
 Po zaktualizowaniu wartość adresu URL odpowiedzi w usłudze Azure AD i odpowiada wartości wysyłane przez aplikację w żądaniu języka SAML, należy zalogować się do aplikacji.
 
@@ -188,7 +188,7 @@ Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość
 
 1.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-1.  Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. Sprawdź, czy wartość w polu tekstowym Identyfikator zgodna wartość identyfikatora wyświetlane w błędzie.
+1.  Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. Sprawdź, czy wartość w polu tekstowym Identyfikator zgodna wartość identyfikatora wyświetlane w błędzie.
 
 ## <a name="certificate-or-key-not-configured"></a>Certyfikatu lub klucza nieskonfigurowane
 
@@ -222,7 +222,7 @@ Aby usunąć i utworzyć nowy certyfikat, wykonaj następujące czynności:
 
 9. Wybierz datę wygaśnięcia. Następnie kliknij przycisk **Zapisz.**
 
-10. Sprawdź **Ustaw nowy certyfikat jako aktywny** przesłonić aktywny certyfikat. Następnie kliknij przycisk **Zapisz** u góry okienka i zaakceptuj, aby uaktywnić certyfikat przerzucania.
+10. Sprawdź **Ustaw nowy certyfikat jako aktywny** przesłonić aktywny certyfikat. Następnie kliknij przycisk **Zapisz** w górnej części okienka i zaakceptuj, aby aktywować certyfikat przerzucania.
 
 11. W obszarze **certyfikat podpisywania SAML** kliknij **Usuń** do usunięcia **nieużywane** certyfikatu.
 
@@ -236,7 +236,7 @@ Usługa Azure AD nie był w stanie zidentyfikować żądanie języka SAML, w ram
 
 **Rozdzielczość**
 
-Aplikacja musi wysyłać żądania języka SAML, kodowane do Nagłówek lokalizacji przy użyciu protokołu HTTP przekierowanie powiązania. Aby dowiedzieć się więcej o sposobie implementacji, zapoznaj się z sekcją przekierować powiązanie HTTP w [dokument specyfikacji protokołu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+Aplikacja musi wysyłać żądania języka SAML, kodowane do Nagłówek lokalizacji przy użyciu protokołu HTTP przekierowanie powiązania. Aby dowiedzieć się więcej o sposobie implementacji tego rozwiązania, zapoznaj się z sekcją powiązania przekierowania HTTP w [dokumencie specyfikacji protokołu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
 ## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Usługa Azure AD wysyła ten token nieprawidłowy punkt końcowy
 
@@ -264,7 +264,7 @@ Usuń adresy URL odpowiedzi nieużywane, skonfigurowane dla aplikacji.
 
 6.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7.  Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)**, Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)**, Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
 
 
 

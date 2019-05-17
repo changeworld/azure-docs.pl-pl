@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2019
 ms.author: magoedte
-ms.openlocfilehash: f2a0d64da5a88e82c0ae1fd893af52f2070268f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402244"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522190"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Poznanie kondycji usługi Azure virtual machines
 
@@ -28,7 +28,7 @@ Wyświetlanie ogólną kondycję maszyn wirtualnych platformy Azure i bazowych s
 
 Ten artykuł pomoże Ci zrozumieć, jak można szybko ocenić, badania i rozwiązywania wykrytych problemów kondycji.
 
-Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md).
+Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
 
 ## <a name="monitoring-configuration-details"></a>Szczegóły konfiguracji monitorowania
 
@@ -98,7 +98,7 @@ Stany kondycji zdefiniowane dla maszyny Wirtualnej zostały opisane w poniższej
 |Ikona |Stan kondycji |Znaczenie |
 |-----|-------------|------------|
 | |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się on w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej problemów i działa zgodnie z potrzebami. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
-| |Krytyczny |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
+| |Krytyczne |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
 | |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy wartości progowe stanu kondycji może można skonfigurować), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. Z listą nadrzędny monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
 | |Nieznana |Stan kondycji jest *nieznany* stan, gdy stan kondycji nie można obliczyć z kilku powodów, takich jak nie może zbierać dane, usługa niezainicjowana itp. Ten stan kondycji jest niemożliwe.| 
 
@@ -249,17 +249,17 @@ Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnieni
 
 Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej części strony.
 
-|Kolumna |Opis | 
+|Kolumnowy |Opis | 
 |-------|------------| 
-|Subskrypcja |Wybierz subskrypcję platformy Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
+|Subskrypcja |Wybierz subskrypcję Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
 |Grupa zasobów |Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. | 
 |Typ zasobu |Wybierz jeden lub więcej typów zasobów. Domyślnie tylko alerty docelowej **maszyn wirtualnych** jest zaznaczone, a następnie zawarte w tym widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. | 
 |Resource |Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. | 
-|Ważność |Wybiera alert o ważności lub wybierz *wszystkich* obejmujący alerty wszystkie poziomy ważności. | 
+|Severity |Wybiera alert o ważności lub wybierz *wszystkich* obejmujący alerty wszystkie poziomy ważności. | 
 |Stan monitora |Wybierz warunek monitora, aby filtrować alerty, jeśli zostały one *Fired* przez system lub *rozwiązane* przez system, jeśli warunek nie jest już aktywna. Lub wybierz *wszystkich* obejmujący alerty wszystkie warunki. | 
 |Stan alertu |Wybierz stan alertu *New*, *potwierdzonym*, *zamknięte*, lub wybierz *wszystkich* obejmujący alerty wszystkich stanów. | 
 |Monitorowanie usługi |Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Tylko alerty *Insights maszyny Wirtualnej* są obsługiwane w przypadku tej funkcji.| 
-|Przedział czasu| Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. | 
+|Zakres czasu| Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. | 
 
 **Alert szczegółów** zostanie wyświetlona strona, po wybraniu alertu, który udostępnia szczegółowe informacje o alercie, dzięki czemu można zmienić jego stan. Aby dowiedzieć się więcej na temat zarządzania alertami, zobacz [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](../../azure-monitor/platform/alerts-metric.md).  
 

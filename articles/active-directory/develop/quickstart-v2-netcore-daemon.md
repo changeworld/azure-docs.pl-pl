@@ -17,16 +17,14 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44161e689645c3feb2efbd80b825b9285c1bdfc9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3851e53bb648811b46ec69d9c4fc91b920ce80fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918591"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784956"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji konsolowej za pomocą tożsamości aplikacji
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 W tym przewodniku Szybki start dowiesz się, jak napisać aplikację .NET Core, która może uzyskać token dostępu przy użyciu własnej tożsamości aplikacji, a następnie wywołać interfejs API programu Microsoft Graph w celu wyświetlenia [listy użytkowników](https://docs.microsoft.com/graph/api/user-list) w katalogu. Ten scenariusz przydaje się w sytuacjach, które wymagają uruchamiania bezobsługowego, nienadzorowanego zadania lub usługi systemu Windows przy użyciu tożsamości aplikacji, a nie tożsamości użytkownika.
 
@@ -54,7 +52,7 @@ Ten przewodnik Szybki Start wymaga [platformy .NET Core 2.2](https://www.microso
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 > Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
@@ -108,7 +106,7 @@ Ten przewodnik Szybki Start wymaga [platformy .NET Core 2.2](https://www.microso
     > > [!TIP]
     > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)**, przejdź do strony **Przegląd** aplikacji w witrynie Azure Portal. Aby wygenerować nowy klucz, przejdź do strony **Certyfikaty i klucze tajne**.
     
-#### <a name="step-4-admin-consent"></a>Krok 4: zgoda administratora
+#### <a name="step-4-admin-consent"></a>Krok 4: Zgoda administratora
 
 Jeśli na tym etapie zostanie podjęta próba uruchomienia aplikacji, subskrybent zobaczy komunikat *HTTP 403 — Dostęp zabroniony* błąd: `Insufficient privileges to complete the operation`. Wynika to z faktu wszelkie *uprawnienia tylko do aplikacji* wymagające zgody administratora, co oznacza, że tylko administrator globalny katalogu wyrazić zgodę na aplikację. Wybierz jedną z poniższych opcji, w zależności od Twojej roli:
 

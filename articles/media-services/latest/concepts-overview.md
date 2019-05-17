@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8a4ffdc09cb12f7a16173c86bd3d0e3aee78d46d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152643"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762305"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
 
@@ -26,7 +26,7 @@ Ten temat zawiera krótkie omówienie pojęcia i terminologia dotycząca usługi
 Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.
 
 > [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="terminology"></a>Terminologia
 
@@ -62,7 +62,7 @@ Kodowanie za pomocą usługi Media Services v3, musisz utworzyć **przekształca
 - [Transformacje i zadania](transforms-jobs-concept.md)
 - [Kodowanie za pomocą usługi Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Analiza multimediów
+## <a name="media-analytics"></a>Media Analytics
 
 Do analizowania plików audio i wideo, należy również utworzyć **przekształca** i **zadań**.
 
@@ -76,7 +76,7 @@ Podczas tworzenia **lokalizatora przesyłania strumieniowego**, oprócz nazwy za
 
 Funkcję dynamicznego tworzenia pakietów jest używany, czy strumieniowo zawartość na żywo lub na żądanie. Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
 
-![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 Usługa Media Services umożliwia dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128) lub / i systemów zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
 
@@ -114,7 +114,7 @@ Na poniższym obrazie przedstawiono przepływu pracy typu przekazywania:
 
 ## <a name="monitoring"></a>Monitorowanie
 
-### <a name="event-grid"></a>Event Grid
+### <a name="event-grid"></a>Siatka zdarzeń
 
 Aby wyświetlić postęp zadania, należy użyć **usługi Event Grid**. Usługa Media Services emituje również typy zdarzeń na żywo. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f29625ed8ddd6eabf8b75380d84d7a7b64396d7a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696518"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597076"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -110,7 +110,7 @@ Aby wyświetlić wyniki w formacie CSV:
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Wymagania systemu
+### <a name="system-requirements"></a>Wymagania systemowe
 - Serwer z systemem Windows Server 2012 R2, Windows Server 2016 lub Windows Server 2019:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
@@ -230,13 +230,13 @@ Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdzia
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania zarządzania magazynu hierarchicznych (HSM)
 Inne rozwiązania sprzętowego modułu zabezpieczeń należy używać usługi Azure File Sync.
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność regionalna
 Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 
-| Region | Lokalizacja centrum danych |
+| Obszar | Lokalizacja centrum danych |
 |--------|---------------------|
-| Australia Wschodnia | Stan Nowa Południowa Walia |
-| Australia Południowo-Wschodnia | Stan Wiktoria |
+| Australia Wschodnia | Nowa Południowa Walia |
+| Australia Południowo-Wschodnia | Wiktoria |
 | Brazylia Południowa | Sao Paolo stanu |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Miasto Quebec |
@@ -246,20 +246,28 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Korea Środkowa| Seul |
-| Korea Południowa| Pusan |
+| Korea Południowa| Busan |
 | Japonia Wschodnia | Tokyo, Saitama |
 | Japonia Zachodnia | Osaka |
-| Środkowo-północne stany USA | Illinois |
+| Północno-środkowe stany USA | Illinois |
 | Europa Północna | Irlandia |
-| Środkowo-południowe stany USA | Teksas |
+| Południowo-środkowe stany USA | Teksas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
-| Południowe Zjednoczone Królestwo | Londyn |
-| Zachodnie Zjednoczone Królestwo | Cardiff |
+| Zjednoczone Królestwo (południe) | Londyn |
+| Zjednoczone Królestwo (zachód) | Cardiff |
+| Administracja USA — Arizona (wersja zapoznawcza) | Arizona |
+| Administracja USA — Teksas (wersja zapoznawcza) | Teksas |
+| Administracja USA — Wirginia (wersja zapoznawcza) | Wirginia |
 | Europa Zachodnia | Holandia |
+| Zachodnio-środkowe stany USA | Wyoming |
 | Zachodnie stany USA | Kalifornia |
+| Zachodnie stany USA 2 | Waszyngton |
 
 Usługa Azure File Sync obsługuje synchronizowanie tylko z udziału plików platformy Azure, która znajduje się w tym samym regionie co usługa synchronizacji magazynu.
+
+> [!Note]  
+> Usługa Azure File Sync jest obecnie dostępna tylko w prywatnej wersji zapoznawczej na regiony dla instytucji rządowych. Zobacz nasze [informacje o wersji](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020) instrukcje dotyczące rejestrowania w programie wersji zapoznawczej.
 
 ### <a name="azure-disaster-recovery"></a>Odzyskiwanie po awarii platformy Azure
 Aby chronić przed utratą w regionie platformy Azure, usługi Azure File Sync integruje się z [nadmiarowości magazynu geograficznie nadmiarowego](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) opcji (GRS). Magazyn GRS działa przy użyciu replikacji asynchronicznej bloku między magazynu i magazynu w regionie podstawowym, za pomocą którego można normalnie wchodzić w interakcje, w sparowanym regionie pomocniczym. W przypadku awarii, co powoduje, że region platformy Azure tymczasowo lub trwale w trybie offline firma Microsoft będzie magazynu trybu failover do regionu sparowanego. 
@@ -271,8 +279,9 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 
 | Region podstawowy      | Region sparowany      |
 |---------------------|--------------------|
-| Australia Wschodnia      | Australia Południowo-Wschodnia |
+| Australia Wschodnia      | Australia Południowo-Wschodnia|
 | Australia Południowo-Wschodnia | Australia Wschodnia     |
+| Brazylia Południowa        | Południowo-środkowe stany USA   |
 | Kanada Środkowa      | Kanada Wschodnia        |
 | Kanada Wschodnia         | Kanada Środkowa     |
 | Indie Środkowe       | Indie Południowe        |
@@ -280,16 +289,24 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Azja Wschodnia           | Azja Południowo-Wschodnia     |
 | Wschodnie stany USA             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
+| Japonia Wschodnia          | Japonia Zachodnia         |
+| Japonia Zachodnia          | Japonia Wschodnia         |
 | Korea Środkowa       | Korea Południowa        |
 | Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
-| Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
+| Północno-środkowe stany USA    | Południowo-środkowe stany USA   |
+| Południowo-środkowe stany USA    | Północno-środkowe stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |
-| Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
-| Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
+| Zjednoczone Królestwo (południe)            | Zjednoczone Królestwo (zachód)            |
+| Zjednoczone Królestwo (zachód)             | Zjednoczone Królestwo (południe)           |
+| US Gov Arizona      | US Gov Teksas       |
+| US Gov Iowa         | US Gov Wirginia    |
+| US Gov Virgini      | US Gov Teksas       |
 | Europa Zachodnia         | Europa Północna       |
+| Zachodnio-środkowe stany USA     | Zachodnie stany USA 2          |
 | Zachodnie stany USA             | Wschodnie stany USA            |
+| Zachodnie stany USA 2           | Zachodnio-środkowe stany USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394408"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540717"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 
@@ -30,7 +30,7 @@ Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca 
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Czas projektowania: typ aplikacji, typ usługi, pakiet aplikacji i manifest pakietu usługi i manifestu
 Typ aplikacji jest nazwa/wersja przypisane do kolekcji typów usług. To jest zdefiniowany w *ApplicationManifest.xml* pliku, który jest osadzony w katalogu pakietu aplikacji. Pakiet aplikacji jest następnie kopiowany do magazynu obrazów klastra usługi Service Fabric. Będzie można utworzyć aplikacji o nazwie tego typu aplikacji i następnie uruchamia w klastrze. 
 
-Typ usługi jest nazwa/wersja przypisane pakiety kodu, pakiety danych oraz pakiety konfiguracji usługi. To jest zdefiniowany w pliku ServiceManifest.xml, który jest osadzony w katalogu pakietu usługi. Katalog pakietu usługi odwołuje się do następnie pakietu aplikacji *ApplicationManifest.xml* pliku. W ramach klastra po utworzeniu aplikacji o nazwie, można utworzyć nazwanej usługi z jednego z typów usług typu aplikacji. Typ usługi jest opisana przez jego *ServiceManifest.xml* pliku. Typ usługi składa się z kodu wykonywalnego typowe dla usługi konfiguracji ustawienia, które są ładowane w czasie wykonywania, i dane statyczne, które jest używane przez usługę.
+Typ usługi jest nazwa/wersja przypisane pakiety kodu, pakiety danych oraz pakiety konfiguracji usługi. To jest zdefiniowany w pliku ServiceManifest.xml, który jest osadzony w katalogu pakietu usługi. Katalog pakietu usługi odwołuje się do następnie pakietu aplikacji *ApplicationManifest.xml* pliku. W ramach klastra po utworzeniu aplikacji o nazwie, można utworzyć nazwanej usługi z jednego z typów usług typu aplikacji. Typ usługi jest opisana przez jego *ServiceManifest.xml* pliku. Typ usługi składa się z kodu wykonywalnego i ustawienia konfiguracji usługi, które są ładowane w czasie wykonywania, oraz dane statyczne, które jest używane przez usługę.
 
 ![Typy aplikacji usługi Service Fabric i usługi][cluster-imagestore-apptypes]
 

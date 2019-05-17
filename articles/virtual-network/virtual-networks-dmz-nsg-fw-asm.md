@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: e0271c9212b093bd803518ebeaa4b7d9682cc773
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1c64945aaa0bc4cd83cc769dab1c2a755896c01
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60868352"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603424"
 ---
 # <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>Przykład 2: Tworzenie sieci obwodowej do ochrony aplikacji z zaporą i sieciowymi grupami zabezpieczeń
 [Wróć do usług chmurowych firmy Microsoft i Strona zabezpieczeń sieci][HOME]
@@ -64,7 +64,7 @@ Po pomyślnym uruchomieniu skryptu możesz wykonać następujące czynności:
 
 W następnej sekcji objaśniono większość instrukcji skryptu, które odnoszą się do sieciowych grup zabezpieczeń.
 
-## <a name="nsgs"></a>Sieciowe grupy zabezpieczeń
+## <a name="nsgs"></a>sieciowych grup zabezpieczeń
 W tym przykładzie grupa sieciowej grupy zabezpieczeń jest utworzone i następnie ładowany za pomocą sześciu reguł.
 
 > [!TIP]
@@ -233,7 +233,7 @@ Ten przykład przedstawia stosunkowo prosty sposób ochrony aplikacji z zaporą 
 
 Możesz znaleźć więcej przykładów i Przegląd sieci granic zabezpieczeń [tutaj][HOME].
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Odwołania
 ### <a name="full-script-and-network-config"></a>Pełna Konfiguracja skryptu i sieci
 Pełny skrypt należy zapisać w pliku skryptu programu PowerShell. Zapisz skrypt konfiguracji sieci w pliku o nazwie NetworkConf2.xml.
 Zmień zdefiniowane — zmienne użytkownika, zgodnie z potrzebami. Uruchom skrypt, a następnie postępuj zgodnie z instrukcjami w sekcji "Reguły zapory" tego artykułu.
@@ -242,7 +242,7 @@ Zmień zdefiniowane — zmienne użytkownika, zgodnie z potrzebami. Uruchom skry
 Ten skrypt na podstawie zmiennych zdefiniowanych przez użytkownika będzie wykonaj następujące czynności:
 
 1. Połącz z subskrypcją platformy Azure.
-2. Tworzenie konta magazynu
+2. Utwórz konto magazynu.
 3. Utwórz sieć wirtualną i dwie podsieci, zgodnie z definicją w pliku konfiguracji sieci.
 4. Twórz cztery maszyny wirtualne bramy Windows Server.
 5. Konfigurowanie sieciowej grupy zabezpieczeń. Konfiguracja zostanie ukończona następujące kroki:
@@ -550,7 +550,7 @@ Ten skrypt programu PowerShell należy uruchamiać lokalnie na serwerze lub komp
 Zapisz ten plik XML przy użyciu zaktualizowanych lokalizacji, a następnie dodać łącze do tego pliku w zmiennej $NetworkConfigFile w poprzednim skrypcie.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

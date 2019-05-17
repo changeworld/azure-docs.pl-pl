@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699076"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796423"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -232,10 +232,10 @@ Można albo do ochrony dysków lub zignorować to ostrzeżenie, aby umożliwić 
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. Aby zignorować to ostrzeżenie. Przejdź do zreplikowany elementy > Maszyna wirtualna > kliknij pozycję Odrzuć alert w sekcji Przegląd.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Nie można wyświetlić maszyny Wirtualnej platformy Azure do wyboru w "Włącz replikację"
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Nie można wyświetlić grupy maszyn wirtualnych platformy Azure lub zasobów, do wyboru w "Włącz replikację"
 
  **Przyczyny 1:  Grupa zasobów i źródłowa maszyna wirtualna znajdują się w innej lokalizacji** <br>
-Usługa Azure Site Recovery obecnie które, że źródłowa grupa zasobów region i maszyny wirtualne powinny być w tej samej lokalizacji. Jeśli nie jest to użytkownik nie będzie mogła znaleźć maszyny wirtualnej w czasie ochrony.
+Usługa Azure Site Recovery obecnie oczekuje się, źródłowej grupy zasobów w regionie i maszyn wirtualnych, które powinny być w tej samej lokalizacji. Jeśli nie jest to użytkownik nie będzie mogła znaleźć maszyny wirtualnej w czasie ochrony. Jako obejście można włączyć replikację z maszyny Wirtualnej, a nie magazyn usługi Recovery services. Przejdź do maszyny Wirtualnej Sourece > Właściwości > odzyskiwania po awarii i Włącz replikację.
 
 **Przyczyny 2: Grupa zasobów nie jest częścią wybranej subskrypcji** <br>
 Nie można odnaleźć grupy zasobów w czasie ochrony, jeśli nie jest częścią danej subskrypcji. Upewnij się, że grupa zasobów należy do subskrypcji, która jest używana.
@@ -252,7 +252,7 @@ Jeśli chcesz włączyć replikację maszyny Wirtualnej nie jest widoczny, jego 
 >
 >Upewnij się, że aktualizacja modułu azurerm.resources "" wprowadzono"" przed rozpoczęciem korzystania z poniższego skryptu.
 
-Możesz użyć [usuwanie starych skryptu konfiguracji usługi ASR](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) i usunąć nieaktualną konfigurację Site Recovery na maszynie Wirtualnej platformy Azure. Powinien być widoczny po usunięciu nieaktualną konfigurację maszyny Wirtualnej.
+Możesz użyć [usuwanie starych skryptu konfiguracji usługi ASR](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) i usunąć nieaktualną konfigurację Site Recovery na maszynie Wirtualnej platformy Azure. Powinien być widoczny po usunięciu nieaktualną konfigurację maszyny Wirtualnej.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Nie można wybrać maszynę wirtualną do ochrony
  **Przyczyny 1:  Maszyna wirtualna ma pewne rozszerzenia instalowana w stanie nie powiodło się lub nie odpowiada** <br>

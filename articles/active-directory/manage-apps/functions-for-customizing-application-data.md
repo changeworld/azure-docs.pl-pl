@@ -3,8 +3,8 @@ title: Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directo
 description: Dowiedz się, jak używać mapowań wyrażenia do przekształcania wartości atrybutów akceptowalny format podczas automatycznego inicjowania obsługi obiektów aplikacji SaaS w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
-ms.author: chmutali
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291436"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824639"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -121,7 +121,7 @@ Jeśli jedna z wartości źródłowej jest atrybutu wielowartościowego, każda 
 | **source** |Wymagane |Wartości logicznych |Oczekiwano **źródła** wartości to "True" lub "False". |
 
 - - -
-### <a name="replace"></a>Replace
+### <a name="replace"></a>Zamień
 **Funkcja:**<br> Zastąp (źródło oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, szablon)
 
 **Opis:**<br>
@@ -234,7 +234,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
-| **Kultury** |Optional (Opcjonalność) |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
+| **Kultury** |Opcjonalne |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
 
 - - -
 ### <a name="toupper"></a>toUpper
@@ -247,7 +247,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
-| **Kultury** |Optional (Opcjonalność) |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
+| **Kultury** |Opcjonalne |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
 
 ## <a name="examples"></a>Przykłady
 ### <a name="strip-known-domain-name"></a>Nazwa domeny znanych paska

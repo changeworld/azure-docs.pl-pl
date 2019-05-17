@@ -4,7 +4,7 @@ description: Dowiedz się więcej o tu konkretne uwagi przy użyciu usługi Azur
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c608518a9eb80d807297f010778ae452c0f61f5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6c26a5007c2dcaa5d41be46f685f0f259866ca2c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075778"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544074"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Umożliwia logowanie użytkowników mających tożsamości społecznościowych platformy MSAL.NET
 

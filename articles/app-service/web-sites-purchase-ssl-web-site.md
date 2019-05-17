@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 15441f70052950748f07b96ff234557462f268cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202927"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786319"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -163,7 +163,7 @@ Po zakończeniu operacji Odnów kliknij **synchronizacji**. Operacja synchroniza
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-* [Wymuszanie protokołu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
+* [Enforce HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [Enforce TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md)
-* [FAQ: Certyfikaty usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [FAQ: Certyfikaty usługi App Service](https://docs.microsoft.com/en-us/azure/app-service/faq-configuration-and-management/)

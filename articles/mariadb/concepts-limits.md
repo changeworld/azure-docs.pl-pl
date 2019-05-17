@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b78671cc61a4fe755b908ed9f71052cbd0a70b38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61041279"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550506"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Ograniczenia dotyczące usługi Azure Database dla serwera MariaDB
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych.
@@ -82,6 +82,9 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+
+### <a name="storage-size"></a>Rozmiar magazynu
+- Zapoznaj się [warstw cenowych](concepts-pricing-tiers.md) limitów rozmiaru magazynu na warstwy cenowej.
 
 ## <a name="current-known-issues"></a>Obecnie znane problemy
 - Wystąpienie serwera MariaDB Wyświetla wersję serwerem nieprawidłowego po nawiązaniu połączenia. Aby uzyskać z właściwym serwerem w wystąpieniu aparatu wersji, użyj `select version();` polecenia.

@@ -9,31 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472452"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761884"
 ---
 # <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
-Usługa Azure Media Services umożliwia kodowanie do plików MP4 wysokiej jakości multimedialnych plików, więc zawartość może być odtwarzany na podstawie różnych przeglądarek i urządzeń. Pomyślne zadania kodowania usługi Media Services tworzy dane wyjściowe zasobów ze zbiorem każdego pliku MP4 z adaptacyjną szybkością transmisji bitów i przesyłanie strumieniowe plików konfiguracyjnych. Pliki konfiguracji zawierają ISM, .ismc, .mpi i innych plików, których nie należy modyfikować. Po zakończeniu zadania kodowania, możesz korzystać z zalet [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i rozpocząć przesyłanie strumieniowe.
+Kodowanie termin w usłudze Media Services dotyczy proces konwersji plików zawierających wideo lub audio z jednego standardowego formatu do innego, mający na celu ułatwienie () zmniejszenie rozmiaru plików i/lub (b) produkujących formatu, który jest zgodny z szerokiej gamy urządzeń i aplikacji. Ten proces jest zwaną także kompresji wideo lub transkodowania. Zobacz [kompresji danych](https://en.wikipedia.org/wiki/Data_compression) i [nowości, kodowanie i Transkodowanie?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) dalsze omówienie pojęć.
 
-Aby wprowadzić filmów wideo w danych wyjściowych dostępne dla klientów do odtwarzania elementu zawartości, należy utworzyć **lokalizatora przesyłania strumieniowego** i tworzenie adresów URL przesyłania strumieniowego. Następnie na podstawie określonego formatu w manifeście, klientom strumień jest dostarczany za protokół, które wybrali.
+Filmy wideo zwykle są dostarczane do urządzeń i aplikacji przez [pobierania progresywnego](https://en.wikipedia.org/wiki/Progressive_download) lub za pomocą [streaming z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
 
-Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
+* Do świadczenia przez pobierania progresywnego, można użyć usługi Azure Media Services można przekonwertować plik multimedia cyfrowe (plik) do [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) pliku, który zawiera wideo, który został zakodowany za pomocą [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodera-dekodera, i dźwięk, który został zakodowany za pomocą [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) kodera-dekodera. Ten plik w formacie MP4, są zapisywane do elementu zawartości w ramach konta magazynu. Możesz użyć interfejsów API usługi Azure Storage lub zestawów SDK (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md), [zestawu JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), lub [zestawu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) do bezpośredniego pobrania plików. Jeśli utworzono dane wyjściowe zasobów o nazwie określonego kontenera w magazynie, na podstawie tej lokalizacji. W przeciwnym razie można użyć usługi Media Services do [listy adresów URL kontenera zasobów](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Aby przygotować zawartość do dostarczania, streaming z adaptacyjną szybkością transmisji bitów, plik mezzanine musi być zakodowany na wielokrotnych (wysoko lub nisko). Aby zapewnić płynne przejście jakości, zgodnie z szybkości transmisji bitów jest obniżony, więc rozdzielczości wideo. Skutkuje to tak zwane drabiny kodowania — spis rozdzielczości i szybkości transmisji (zobacz [drabiny szybkości transmisji bitów adaptacyjnego automatycznie generowanej](autogen-bitrate-ladder.md)). Usługa Media Services umożliwia kodowanie Twoich plików mezzanine wielokrotnych — w ten sposób, zostanie wyświetlony zestaw plików MP4 i skojarzone przesyłania strumieniowego pliki konfiguracyjne, zapisywane do elementu zawartości w ramach konta magazynu. Następnie można użyć [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) zdolności w usłudze Media Services do dostarczania wideo za pośrednictwem przesyłania strumieniowego protokołów, takich jak [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) i [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To wymaga utworzenia [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md) i tworzenie adresów URL odpowiadający obsługiwanych protokołów, które następnie mogą być przekazywane do urządzenia/aplikacje oparte na ich możliwości przesyłania strumieniowego.
 
-![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+Na poniższym diagramie przedstawiono przepływ pracy na żądanie kodowania za pomocą funkcji dynamicznego tworzenia pakietów.
+
+![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
 
 ## <a name="transforms-and-jobs"></a>Transformacje i zadania
 
-Kodowanie za pomocą usługi Media Services v3, musisz utworzyć [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) i [zadania](https://docs.microsoft.com/rest/api/media/jobs). Przekształcenie definiuje przepis na kodowania ustawień i danych wyjściowych, a zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [transformacje i zadania](transforms-jobs-concept.md)
+Kodowanie za pomocą usługi Media Services v3, musisz utworzyć [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) i [zadania](https://docs.microsoft.com/rest/api/media/jobs). Transformacja definiuje przepis na kodowania ustawienia i dane wyjściowe; zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [transformacje i zadania](transforms-jobs-concept.md)
 
 Podczas kodowania za pomocą usługi Media Services, umożliwia wstępne Poinformuj kodera w przetwarzaniu multimedialnych plików wejściowych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, który ma w zakodowanej zawartości. 
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472485"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780538"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory
 
@@ -37,7 +37,7 @@ Podczas procesu przejęcia przez administratora możesz udowodnić własność w
 
 Niektóre produkty, które zawierają SharePoint i OneDrive, takich jak Office 365 nie obsługuje zewnętrzne przejęcie. Przypadku danego scenariusza, czy jesteś administratorem i chcesz przejąć niezarządzanych, lub dzierżawy "cienia" Utwórz przez użytkowników, którzy użył rejestracji samoobsługowej, można to zrobić za pomocą przejęcia przez administratora wewnętrznego.
 
-1. Utwórz kontekst użytkownika w niezarządzanej dzierżawy za pośrednictwem rejestracja za pomocą, takie jak Power BI. Dla wygody przykładowy procedura zakłada, że tej ścieżki.
+1. Utwórz kontekst użytkownika w niezarządzanej dzierżawy za pośrednictwem rejestrację w usłudze Power BI. Dla wygody przykładowy procedura zakłada, że tej ścieżki.
 
 2. Otwórz [witrynie usługi Power BI](https://powerbi.com) i wybierz **Rozpocznij za darmo**. Wprowadź konto użytkownika, który używa nazwy domeny organizacji; na przykład `admin@fourthcoffee.xyz`. Po wprowadzeniu w kod weryfikacyjny sprawdzenie poczty e-mail dla kodu potwierdzenia.
 

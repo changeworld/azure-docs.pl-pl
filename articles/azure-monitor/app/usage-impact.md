@@ -13,12 +13,12 @@ ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 8efab173f464b67c0c88c87ee28ea7fa19980501
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1ff700bece2d64451294e72ebdf3c771ee644f8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373220"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604195"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analiza wpływu za pomocą usługi Application Insights
 
@@ -63,7 +63,7 @@ Wpływ obsługuje standardowe i niestandardowe właściwości i pomiarów. Uży�
 2. Wybierz "Kraj lub region" **analizować sposób jego** listy rozwijanej
 3. Aby uzyskać **ma wpływ na użycie** listy rozwijanej wybierz niestandardowe zdarzenia, które odnosi się do elementu interfejsu użytkownika widoku strony wybrana w kroku 1.
 
-W tym przypadku wyniki nie pasuje do modelu ciągłą osią x tak samo, jak w pierwszym przykładzie. Zamiast tego są prezentowane wizualizacji, które są podobne do posegmentowanych lejka. Sortuj według **użycia** Aby wyświetlić zmiany konwersji, aby Twoje niestandardowe zdarzenia na podstawie kraju.
+W tym przypadku wyniki nie pasuje do modelu ciągłą osią x tak samo, jak w pierwszym przykładzie. Zamiast tego są prezentowane wizualizacji, które są podobne do posegmentowanych lejka. Sortuj według **użycia** Aby wyświetlić zmiany konwersji, aby Twoje niestandardowe zdarzenia na podstawie kraju/regionu.
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Jak narzędzie wpływ obliczyć te współczynniki konwersji?

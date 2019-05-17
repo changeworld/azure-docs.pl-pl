@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b3b4e0886f561cc66e2c02e4ea354c86b34453c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61044488"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606470"
 ---
 # <a name="heading"></a>Przetwarzanie danych w maszyną wirtualną programu SQL Server na platformie Azure
 W tym dokumencie opisano, jak eksplorować dane i generować funkcji dla danych przechowywanych na maszynę Wirtualną programu SQL Server na platformie Azure. Można to zrobić za dane inteligencji przy użyciu języka SQL lub przy użyciu języka programowania, takich jak Python.
@@ -87,7 +87,7 @@ Poniżej przedstawiono krótki Podręcznik szerokości/długości geograficznej 
 * Znak informuje NAS, czy możemy się północ lub południe, wschód lub zachodnie na całym świecie.
 * Wartość różną od zera setki cyfrę informuje NAS, że firma Microsoft korzysta długość geograficzna, szerokość nie!
 * Dziesiątki cyfrę daje możliwość około 1000 kilometrów. Daje nam przydatnych informacji o jakie kontynent lub ocean jesteśmy na.
-* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Można powiedzieć nam około jakie dużych stanu lub kraju, w którym jesteśmy w stanie.
+* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Można powiedzieć nam około jakie dużych stanu lub kraju/regionu, w których jesteśmy w stanie.
 * Pierwsze miejsce dziesiętne, warto maksymalnie 11.1 km: można odróżnić, pozycja jeden duży kolumny city z sąsiednich Miasto dużych.
 * Drugie miejsce dziesiętne, warto maksymalnie 1.1 km: je oddzielić wieś jednego z następnej.
 * Warto do 110 m: można zidentyfikować, duże pole rolnicze lub campus instytucjonalnych jest trzeciego miejsca dziesiętnego.

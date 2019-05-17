@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65757626"
+ms.locfileid: "65792268"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie wielodostępną bazą danych przy użyciu usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
 

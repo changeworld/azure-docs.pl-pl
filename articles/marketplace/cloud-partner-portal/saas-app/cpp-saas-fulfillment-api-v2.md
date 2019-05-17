@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: e1715c2cb66398ff7ca55c0ccdbfe50685fae76e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941978"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762270"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS realizacji interfejsy API wersji 2 
 
@@ -36,7 +36,7 @@ Gdy klient inicjuje zakupu, niezależny dostawca oprogramowania odbiera tych inf
 
 ![Wywołania interfejsu API do inicjowania obsługi usługi SaaS.](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>Zaaprowizowane
+#### <a name="provisioned"></a>Przeprowadzono aprowizację
 
 Ten stan jest w stanie stabilności aprowizowanej usługi.
 
@@ -176,7 +176,7 @@ Wyświetla listę wszystkich subskrypcji SaaS dla wydawcy.
 
 *Kody odpowiedzi:*
 
-Kod: 200<br>
+Kod: 200 <br/>
 Oparte na token uwierzytelniania, Uzyskaj wydawcy i odpowiednich subskrypcji dla wszystkich wydawcy, oferty.<br> Ładunek odpowiedzi:<br>
 
 ```json
@@ -208,11 +208,10 @@ Oparte na token uwierzytelniania, Uzyskaj wydawcy i odpowiednich subskrypcji dla
 
 Token kontynuacji jest dostępne tylko w przypadku dodatkowych "strony" planów do pobrania. 
 
-
 Kod: 403 <br>
 Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy. 
 
-Kod: 500 — wewnętrzny błąd serwera
+Kod: 500 Wewnętrzny błąd serwera
 
 ```json
 {
@@ -374,7 +373,7 @@ Wewnętrzny błąd serwera<br>
 
 *Kody odpowiedzi:*
 
-Kod: 202<br>
+Kod: 200<br>
 Aktywuje subskrypcji.<br>
 
 Kod: 404<br>
@@ -554,7 +553,7 @@ Anulowanie subskrypcji, a następnie usuń określonej subskrypcji.
 
 *Kody odpowiedzi:*
 
-Kod: 200<br>
+Kod: 202<br>
 Niezależny dostawca oprogramowania zainicjował wywołanie do wskazania anulować subskrypcję SaaS.<br>
 
 Kod: 404<br>
@@ -786,25 +785,29 @@ Wydawca musi implementować element webhook w tej usłudze SaaS w celu proaktywn
     "action": "Subscribe",
     "timeStamp": "2018-12-01T00:00:00"
 }
-
-Where action can be one of these: 
-       Subscribe, (When the resource has been activated)
-       Unsubscribe, (When the resource has been deleted)
-       ChangePlan, (When the change plan operation has completed)
-       ChangeQuantity, (When the change quantity operation has completed),
-       Suspend, (When resource has been suspended)
-       Reinstate, (When resource has been reinstated after suspension)
 ```
+
+Gdy akcja może być jeden z nich: 
+- `Subscribe`  (Jeśli zasób został aktywowany)
+- `Unsubscribe` (Jeśli zasób został usunięty)
+- `ChangePlan` (Podczas operacji zmiany w planie została ukończona)
+- `ChangeQuantity` (Podczas operacji ilość zmian została ukończona)
+- `Suspend` (Jeśli zasób jest wstrzymane)
+- `Reinstate` (Gdy zasobów zostały przywrócone po zawieszeniu)
 
 
 ## <a name="mock-api"></a>Testowanie interfejsu API
 
 Makiety interfejsów API umożliwia pomóc Ci rozpocząć pracę z programowaniem, szczególnie tworzenia prototypów i testowania projektów. 
 
-Punkt końcowy hosta: `https://marketplaceapi.microsoft.com/api` Wersja interfejsu API: `2018-09-15` Bez uwierzytelniania wymagany identyfikator Uri próbki: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
+Punkt końcowy hosta: `https://marketplaceapi.microsoft.com/api` <br/>
+Wersja interfejsu API: `2018-09-15` <br/>
+Uwierzytelnienie niewymagane <br/>
+Przykładowy identyfikator Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-Dowolne wywołania interfejsu API, w tym artykule jest możliwe do endpoint makiety hosta. Można oczekiwać, że można pobrać danych testowych jako odpowiedź.
+Ścieżki punktu końcowego interfejsu API są takie same, zarówno projekt, jak i rzeczywistych interfejsów API, ale różnią się wersji interfejsu API. Wersja jest 2018-09-15 dla pozorny i 2018-08-31 wersji produkcyjnej. 
 
+Dowolne wywołania interfejsu API, w tym artykule jest możliwe do endpoint makiety hosta. Można oczekiwać, że można pobrać danych testowych jako odpowiedź. Ogólnie rzecz biorąc można oczekiwać, że można pobrać danych testowych jako odpowiedź. Wywołania metod subskrypcji aktualizacji w interfejsie API makiety zawsze zwracają 500. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

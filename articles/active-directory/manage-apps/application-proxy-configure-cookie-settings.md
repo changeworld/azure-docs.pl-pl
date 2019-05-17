@@ -2,22 +2,22 @@
 title: Ustawienia plików cookie serwera Proxy aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
 description: Azure Active Directory (Azure AD) ma pliki cookie dostępu i sesji do uzyskiwania dostępu do lokalnych aplikacji za pośrednictwem serwera Proxy aplikacji. W tym artykule znajdziesz informacje dotyczące sposobu użycia, a następnie skonfiguruj ustawienia plików cookie.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/16/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fd83ee815e9e207c1fa5a1c6767280122c4d0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440534"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825741"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Ustawienia plików cookie na potrzeby uzyskiwania dostępu do aplikacji lokalnych w usłudze Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) ma pliki cookie dostępu i sesji do uzyskiwani
 
 [Serwer Proxy aplikacji](application-proxy.md) następujące ustawienia pliku cookie dostępu i sesji.
 
-| Ustawienie pliku cookie | Domyślne | Opis | Zalecenia |
+| Ustawienie pliku cookie | Domyślne | Opis | Rekomendacje |
 | -------------- | ------- | ----------- | --------------- |
 | Użyj pliku cookie tylko HTTP | **Nie** | **Tak** umożliwia serwera Proxy aplikacji, które mają zostać objęte flagi HTTPOnly nagłówków odpowiedzi HTTP. Ta flaga zapewnia dodatkowe zabezpieczenia korzyści, na przykład zapobiega po stronie klienta skryptów (CSS) kopiowanie i modyfikowanie plików cookie.<br></br><br></br>Zanim obsługiwane ustawienie tylko do protokołu HTTP, serwer Proxy aplikacji zaszyfrowany i przekazywanych plików cookie za pośrednictwem bezpiecznego kanału SSL do ochrony przed zmianami. | Użyj **tak** ze względu na korzyści dodatkowe zabezpieczenia.<br></br><br></br>Użyj **nie** dla klientów lub agentów użytkownika, które wymagają dostępu do pliku cookie sesji. Na przykład użyć **nie** dla protokołu RDP lub MTSC klienta, który nawiązuje połączenie z serwerem bramy usług pulpitu zdalnego za pośrednictwem serwera Proxy aplikacji.|
 | Użyj bezpiecznego pliku cookie | **Nie** | **Tak** umożliwia serwera Proxy aplikacji uwzględnić Zabezpiecz Flaga nagłówków odpowiedzi HTTP. Bezpiecznych plików cookie zwiększa bezpieczeństwo poprzez przekazanie plików cookie za pośrednictwem bezpiecznego kanału TLS, taki jak HTTPS. Zapobiega to pliki cookie z czym muszą być spełnione przez osoby nieupoważnione ze względu na przekazywanie pliku cookie w postaci zwykłego tekstu. | Użyj **tak** ze względu na korzyści dodatkowe zabezpieczenia.|

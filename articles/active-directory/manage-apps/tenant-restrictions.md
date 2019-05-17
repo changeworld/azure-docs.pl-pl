@@ -3,8 +3,8 @@ title: Ograniczenia dzierżawy do zarządzania dostępem do aplikacji SaaS w chm
 description: Jak używać ograniczenia dotyczące dzierżawy do zarządzania użytkowników, którzy mają dostęp do aplikacji, w oparciu o ich dzierżawy usługi Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa4eeb0a21525d636c7c1193c125d525774fa3fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707172"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824381"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Zarządzanie dostępem do aplikacji SaaS w chmurze za pomocą ograniczenia dotyczące dzierżawy
 
@@ -93,7 +93,7 @@ W tej sekcji opisano środowisko dla administratorów i użytkowników końcowyc
 
 Przykładowy użytkownik znajduje się w sieci firmy Contoso, ale próbuje uzyskać dostęp Fabrikam wystąpienie udostępnione aplikacji SaaS takich jak program Outlook online. Jeśli firma Fabrikam jest dzierżawy nie jest dozwolone dla tego wystąpienia firmy Contoso, użytkownik zobaczy komunikat Odmowa dostępu, mówi, że próbujesz uzyskać dostęp do zasobu, który należy do organizacji niezatwierdzonych przez dział IT.
 
-### <a name="admin-experience"></a>Środowisko administratora
+### <a name="admin-experience"></a>Środowisko pracy administratora
 
 Podczas konfiguracji ograniczenia dotyczące dzierżawy odbywa się na infrastrukturze firmowym serwerem proxy, Administratorzy mogą bezpośrednio dostępu do raportów ograniczenia dzierżawy w witrynie Azure portal. Aby wyświetlić raporty:
 

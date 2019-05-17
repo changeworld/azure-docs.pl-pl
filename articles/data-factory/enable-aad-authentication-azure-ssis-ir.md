@@ -8,16 +8,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 3/11/2019
+ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 58bdc0e698fc28929c2080b1737770275b1164ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848732"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593804"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
@@ -60,7 +60,7 @@ Można użyć istniejącej grupy usługi Azure AD lub utworzyć nowe konto, przy
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Dodaj zarządzaną tożsamością dla usługi ADF do grupy. Można wykonać tego artykułu [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) można pobrać identyfikator podmiotu zabezpieczeń tożsamości usługi (np. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nie należy używać identyfikator aplikacji tożsamości usługi w tym celu).
+3.  Dodaj zarządzaną tożsamością dla usługi ADF do grupy. Można wykonać tego artykułu [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) można pobrać identyfikator podmiotu zabezpieczeń zarządzana tożsamość obiektu (np. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale w tym celu nie należy używać zarządzanych identyfikator aplikacji tożsamości).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -170,12 +170,12 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
 
 4.  Kliknij prawym przyciskiem myszy **wzorca** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
 
-5.  Pobierz tożsamości zarządzanej dla usługi ADF. Można wykonać tego artykułu [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) Aby pobrać identyfikator podmiotu zabezpieczeń aplikacji tożsamości usługi (ale nie należy używać identyfikator tożsamości usługi w tym celu).
+5.  Pobierz tożsamości zarządzanej dla usługi ADF. Można wykonać tego artykułu [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) Aby pobrać identyfikator podmiotu zabezpieczeń zarządzanych tożsamości aplikacji (ale nie należy używać zarządzanych tożsamości obiektu o identyfikatorze, w tym celu).
 
 6.  W oknie zapytania Uruchom następujący skrypt języka T-SQL można przekonwertować tożsamości zarządzanej dla usługi ADF do typu binary:
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = '{your SERVICE IDENTITY APPLICATION ID}'
+    DECLARE @applicationId uniqueidentifier = '{your Managed Identity Application ID}'
     select CAST(@applicationId AS varbinary)
     ```
     
@@ -184,7 +184,7 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
 7.  Wyczyść okno zapytania i uruchom następujący skrypt języka T-SQL, aby dodać tożsamość zarządzaną dla usługi ADF jako użytkownik
 
     ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
+    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your Managed Identity Application ID as binary}, TYPE = E
     ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
     ```

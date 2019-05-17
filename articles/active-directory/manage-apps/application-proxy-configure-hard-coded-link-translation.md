@@ -3,8 +3,8 @@ title: Tłumaczenie linków i serwera Proxy aplikacji adresów URL usługi Azure
 description: Zawiera podstawowe informacje dotyczące łączników serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdfd8fd642120f4e829de8fbb013f85aea2a9484
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437739"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825557"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe linki do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -59,13 +59,14 @@ Przy użyciu rozszerzenia przeglądarki MyApps wszystkie adresy URL wewnętrznej
 
 Aby użyć tej funkcji, użytkownik musi pobrać rozszerzenie i zalogować się. Brak innych konfiguracji potrzebne do administratorów lub użytkowników. 
 
- 
+Aby uzyskać więcej informacji, w tym sposób konfigurowania tej opcji, zobacz [rozszerzenia przeglądarki MyApps](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentacji.
 
 ### <a name="option-3-link-translation-setting"></a>Opcja 3: Ustawienie tłumaczenia łącze 
 
-Podczas tłumaczenia łącze jest włączone, usługa serwera Proxy aplikacji wyszukuje przy użyciu języków HTML i CSS opublikowanych łączy wewnętrznych i tłumaczy je tak, aby użytkownicy pobierają nieprzerwaną środowisko. 
+Podczas tłumaczenia łącze jest włączone, usługa serwera Proxy aplikacji wyszukuje przy użyciu języków HTML i CSS opublikowanych łączy wewnętrznych i tłumaczy je tak, aby użytkownicy pobierają nieprzerwaną środowisko. Przy użyciu rozszerzenia przeglądarki MyApps jest preferowane ustawienia tłumaczenia łącza, ponieważ daje więcej sprawne środowisko dla użytkowników.
 
-
+> [!NOTE]
+> Jeśli używasz opcji 2 lub 3, tylko jeden z nich powinna być włączona w danym momencie.
 
 ## <a name="how-link-translation-works"></a>Jak połączyć działa tłumaczenia
 

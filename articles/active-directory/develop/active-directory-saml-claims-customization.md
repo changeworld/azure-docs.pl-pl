@@ -3,8 +3,8 @@ title: Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplik
 description: Dowiedz się, jak dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji korporacyjnych w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231349"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764668"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -121,7 +121,7 @@ Można również użyć funkcji przekształcenia oświadczeń.
 | **Extract() — przed dopasowania** | Zwraca podciąg, dopóki nie odpowiada określonej wartości.<br/>Na przykład, jeśli wartość wejściowa jest "BSimon_US", wartość jest "_US", a następnie oświadczeń danych wyjściowych jest "BSimon". |
 | **Extract() - między dopasowania** | Zwraca podciąg, dopóki nie odpowiada określonej wartości.<br/>Na przykład jeśli wartość wejściowa jest "Finance_BSimon_US", pierwsza wartość dopasowania jest "Finance_", druga wartość dopasowania jest "_US", a następnie oświadczeń danych wyjściowych jest "BSimon". |
 | **ExtractAlpha() — prefiks** | Zwraca część alfabetycznej prefiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "BSimon_123", następnie zwraca "BSimon". |
-| **ExtractAlpha() - sufiks** | Zwraca część alfabetycznej sufiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "123_Simon", następnie zwraca "BSimon". |
+| **ExtractAlpha() - sufiks** | Zwraca część alfabetycznej sufiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "123_Simon", następnie zwraca "Simon". |
 | **ExtractNumeric() — prefiks** | Zwraca wartości liczbowych prefiks część ciągu.<br/>Na przykład jeśli wartość wejściowa jest "123_BSimon", następnie zwraca "123". |
 | **ExtractNumeric() - sufiks** | Zwraca część wartości liczbowych sufiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "BSimon_123", następnie zwraca "123". |
 | **IfEmpty()** | Generuje atrybut lub stała, jeśli dane wejściowe są wartości null ani być pusta.<br/>Na przykład, aby dane wyjściowe przechowywane w extensionattribute, jeśli employeeid dla danego użytkownika jest pusty atrybut. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>Parametr 1(input): user.employeeid<br/>Parametr 2 (dane wyjściowe): user.extensionattribute1<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.employeeid |

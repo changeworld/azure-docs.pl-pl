@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/03/2019
+ms.date: 05/15/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8659ecab649216650403f3a992cc6e356e5de5d0
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357124"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823581"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -262,8 +262,8 @@ Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Inne |
 > | --- | --- | --- | --- | --- |
-> | **Aplikacja natywna** | Yes | Yes | Yes |  |
-> | **Microsoft Edge** | Yes | Yes | Yes |  |
+> | **Aplikacja natywna** | Yes | Yes | Tak |  |
+> | **Microsoft Edge** | Tak | Yes | Yes |  |
 > | **Program Internet Explorer** | Yes | Yes | Yes |  |
 > | **Chrome (z rozszerzeniem)** | Yes | Yes | Yes |  |
 
@@ -383,6 +383,9 @@ Odp.: Możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-us
 
 **Pyt.: Co się stanie, jeśli również używam warunków i postanowień usługi Intune?**<br />
 Odp.: Jeśli skonfigurowano zarówno usługi Azure AD z warunkami użytkowania i [Intune warunki i postanowienia](/intune/terms-and-conditions-create), użytkownik będzie musiał zaakceptować oba te elementy. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego warunki rozwiązanie dla Twojej organizacji wpis w blogu](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+
+**Pyt.: Jakie punkty końcowe warunków użytkowania usługi użycia używa uwierzytelniania?**<br />
+Odp.: Warunki użytkowania korzysta z następujących punktów końcowych do uwierzytelniania: https://tokenprovider.termsofuse.identitygovernance.azure.com i https://account.activedirectory.windowsazure.com. Jeśli Twoja organizacja ma listę dozwolonych adresów URL rejestracji, należy dodać, zaloguj się do niego tych punktów końcowych do listy dozwolonych, wraz z punktów końcowych usługi Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

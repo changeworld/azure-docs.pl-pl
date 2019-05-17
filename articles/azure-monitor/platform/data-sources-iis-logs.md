@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614510"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604363"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Zbieraj dzienniki usług IIS w usłudze Azure Monitor
 Aktywności użytkownika w Internet Information Services (IIS) są przechowywane w plikach dziennika, które mogą być zbierane przez usługi Azure Monitor i przechowywane jako [dane dziennika](data-platform.md).
@@ -51,7 +51,7 @@ Rekordy dziennika usług IIS mają typ **W3CIISLog** i mają właściwości poda
 | csUriStem |Obiekt docelowy żądaniem, takiego jak strony sieci web. |
 | csUriQuery |Zapytania, jeśli istnieje, czy klient próbował wykonać. |
 | ManagementGroupName |Nazwa grupy zarządzania agentów programu Operations Manager.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
-| RemoteIPCountry |Kraj adres IP klienta. |
+| RemoteIPCountry |Kraj/region adresu IP klienta. |
 | RemoteIPLatitude |Szerokość adresu IP klienta. |
 | RemoteIPLongitude |Długość geograficzna adresu IP klienta. |
 | scStatus |Kod stanu HTTP. |

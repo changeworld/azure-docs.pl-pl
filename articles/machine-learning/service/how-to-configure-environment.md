@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471608"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606413"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ Jedynymi wymogami dla swojego środowiska programowania są 3 języka Python, An
 
 Ten artykuł koncentruje się na następujących środowisk i narzędzia:
 
-* Własne [serwer opartych na chmurze](#notebookvm): Użyj zasobów obliczeniowych w swojej stacji roboczej, aby uruchomić notesów programu Jupyter. Jest najprostszym sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
+* Własne [oparte na chmurze notesu maszyny Wirtualnej](#notebookvm): Użyj zasobów obliczeniowych w swojej stacji roboczej, aby uruchomić notesów programu Jupyter. Jest najprostszym sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
 
 * [Maszyna wirtualna do nauki o danych (DSVM)](#dsvm): Wstępnie skonfigurowane rozwoju lub eksperymentowania środowisku w chmurze platformy Azure, który jest przeznaczony do pracy nauki o danych i którą można wdrożyć tylko wystąpienia maszyn wirtualnych procesora CPU lub wystąpienia oparte na procesorze GPU. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest powiązana z popularnych uczenia maszynowego i głębokiego uczenia struktur, narzędzi i edytory do tworzenia rozwiązania uczenia maszynowego. Prawdopodobnie jest najbardziej zaawansowane środowiska programistycznego, Machine learning na platformie Azure.
 
@@ -42,9 +42,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md).
-
-Obszar roboczy to wszystko, czego potrzebujesz, aby zacząć korzystać z własnych [serwer opartych na chmurze](#notebookvm), [DSVM](#dsvm), [usługi Azure Databricks](#aml-databricks), lub [notesów usługi Azure](#aznotebooks).
+Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md). Obszar roboczy to wszystko, czego potrzebujesz, aby zacząć korzystać z własnych [serwer opartych na chmurze](#notebookvm), [DSVM](#dsvm), [usługi Azure Databricks](#aml-databricks), lub [notesów usługi Azure](#aznotebooks).
 
 Aby zainstalować zestaw SDK środowiska usługi [komputera lokalnego](#local), [serwer notesu programu Jupyter](#jupyter) lub [programu Visual Studio Code](#vscode) należy również:
 
@@ -57,16 +55,30 @@ Aby zainstalować zestaw SDK środowiska usługi [komputera lokalnego](#local), 
 
 - W Windows należy wiersz polecenia lub wiersz Anaconda (zainstalowanych w ramach pakietu Anaconda i Miniconda).
 
-## <a id="notebookvm"></a>Serwer opartych na chmurze notesu
+## <a id="notebookvm"></a>Własne notesu oparte na chmurze maszyny Wirtualnej
 
-Tworzenie serwera Notes w obszarze roboczym usługi Azure Machine Learning dla Najprostszym sposobem rozpoczęcia pracy za pomocą usługi Azure Machine Learning.
+Maszyna wirtualna Notes (wersja zapoznawcza) jest bezpieczne i oparte na chmurze platformy Azure stacja robocza, która umożliwia analitykom danych serwer notesu Jupyter, JupyterLab i w pełni przygotowany środowiska ML. 
 
-* Zestaw SDK usługi Azure Machine Learning jest już zainstalowana.
-* Środowisko notesu maszyny Wirtualnej jest automatycznie konfigurowana do pracy z obszarem roboczym.
-* Zasób jest tworzony w Twoim obszarze roboczym i mogą być tam zarządzane
+Ten notes jest maszyny Wirtualnej: 
 
-Aby rozpocząć tworzenie aplikacji za pomocą serwer opartych na chmurze Notes, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md).
++ **Zabezpieczanie**. Ponieważ dostęp do maszyny Wirtualnej i Notes jest zabezpieczony za pomocą protokołu HTTPS i Azure Active Directory domyślnie, informatyków łatwo można wymusić, logowania jednokrotnego i inne funkcje zabezpieczeń, takie jak uwierzytelnianie wieloskładnikowe.
 
++ **Wstępnie skonfigurowane**. To w pełni przygotowany środowisko Python ML pobiera jego rodowodowe z popularnych maszyn wirtualnych do nauki o danych IaaS i obejmuje:
+  + Usługa Azure ML zestawu SDK języka Python (Najnowsza wersja)
+  + Automatycznej konfiguracji do pracy z obszarem roboczym
+  + Serwer notesu Jupyter
+  + JupyterLab notesu IDE
+  + Wstępnie skonfigurowane sterowników procesora GPU 
+  + Wybór platformy uczenia głębokiego
+ 
+
+  Jeśli do kodu, maszyna wirtualna zawiera samouczki i przykłady ułatwiające poznawanie i Dowiedz się, jak używać usługi Azure Machine Learning. Notesy próbki są przechowywane na koncie usługi Azure Blob Storage, obszaru roboczego, dzięki czemu możliwe do udostępnienia na maszynach wirtualnych. Po uruchomieniu one również mieć dostęp do magazynów danych i zasoby obliczeniowe z obszaru roboczego. 
+
++ **Prosta konfiguracja**: Utworzyć dowolnym z obszaru roboczego usługi Azure Machine Learning. Podaj tylko nazwę, a następnie określ typ maszyny Wirtualnej platformy Azure. Wypróbuj teraz z tym [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md).
+
++ **Można dostosować**. Podczas zarządzaną i bezpieczną maszyny Wirtualnej oferty Zachowaj pełny dostęp do możliwości sprzętu i dostosuj go do Twojego serce wymaganą. Na przykład szybko utworzyć najnowszy procesory GPU NVidia V100 zasilania maszyny Wirtualnej, aby korzystać z funkcji debugowania krok po kroku nowej architektury sieci neuronowych.
+
+Aby zatrzymać naliczane notesu maszyny Wirtualnej, [zatrzymać notesu maszyny Wirtualnej](quickstart-run-cloud-notebook.md#stop-the-notebook-vm). 
 
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
@@ -397,4 +409,3 @@ Można utworzyć pliku konfiguracji na trzy sposoby:
 - [Uczenie modelu](tutorial-train-models-with-aml.md) w usłudze Azure Machine Learning z zestawem danych mnist ręcznie ZAPISANYCH
 - Widok [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) odwołania
 - Dowiedz się więcej o [pakiecie przygotowania danych do usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
-- 

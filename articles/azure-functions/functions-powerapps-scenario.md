@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61026003"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786111"
 ---
 # <a name="call-a-function-from-powerapps"></a>Wywoływanie funkcji z usługi PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy zaprojektowano pod kątem eksperci biznesowi tworzyć aplikacje bez konieczności pisania tradycyjnego kodu. Profesjonalni deweloperzy umożliwia rozszerzanie możliwości usługi PowerApps podczas osłaniania twórcy aplikacji usługi PowerApps z szczegóły techniczne usługi Azure Functions.
@@ -39,8 +39,7 @@ W tym temacie dowiesz się, jak:
 > * Dodawanie formantów do wywołania funkcji i wyświetlania danych.
 > * Uruchom aplikację, aby określić, czy naprawy jest opłacalna.
 
-> [!IMPORTANT]
-> Interfejs OpenAPI znajduje się obecnie w wersji zapoznawczej i jest dostępny tylko dla wersji 1.x środowiska uruchomieniowego usługi Azure Functions.
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -137,7 +136,7 @@ Skoro źródeł danych są dostępne w aplikacji, aby można było wyświetlić 
 
 1. W **danych** panelu wybierz **turbiny** z listy.
 
-    ![Wybieranie źródła danych](media/functions-powerapps-scenario/select-data-source.png)
+    ![Wybierz źródło danych](media/functions-powerapps-scenario/select-data-source.png)
 
     Zestaw danych nie zawiera obrazu, tak aby następnie zmienisz układ, aby lepiej dopasować się dane. 
 

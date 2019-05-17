@@ -1,34 +1,34 @@
 ---
 title: Konfigurowanie kończenia żądań SSL z certyfikatami usługi Key Vault przy użyciu programu Azure PowerShell
-description: Dowiedz się, jak zintegrować bramy aplikacji platformy Azure z usługą Key Vault dla certyfikatów serwera, które są dołączone do odbiorników obsługujące protokół HTTPS.
+description: Dowiedz się więcej na temat integracji usługi Azure Application Gateway z usługą Key Vault dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: 06930171552843a5620d9a2bfb379a60e91a3915
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e011caa8c7a0c7383d16c81f4bff29d3c1c99f99
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946747"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827607"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurowanie kończenia żądań SSL z certyfikatami usługi Key Vault przy użyciu programu Azure PowerShell
+# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurowanie kończenia żądań SSL z certyfikatami usługi Key Vault przy użyciu programu Azure PowerShell
 
-[Usługa Azure Key Vault](../key-vault/key-vault-whatis.md) jest zarządzane przez platformę magazynu wpisów tajnych można użyć do ochrony kluczy tajnych, klucze i certyfikaty SSL. Usługa Application Gateway obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Ta obsługa jest ograniczona do 2 jednostki SKU bramy Application Gateway.
+[Usługa Azure Key Vault](../key-vault/key-vault-whatis.md) jest wpis tajny zarządzane platformy przechowywania, można użyć do ochrony kluczy tajnych, klucze i certyfikaty SSL. Usługa Azure Application Gateway obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS. Ta obsługa jest ograniczona do 2 jednostki SKU bramy Application Gateway.
 
 Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).
 
-Ten artykuł zawiera skrypt programu Azure PowerShell do usługi Key Vault można zintegrować z usługą Application Gateway, aby certyfikaty kończenia żądań SSL.
+W tym artykule pokazano, jak za pomocą skryptu programu Azure PowerShell integracji magazynu kluczy za pomocą usługi application gateway certyfikatów kończenia żądań SSL.
+
+Ten artykuł wymaga Azure modułu PowerShell w wersji 1.0.0 lub nowszym. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby uruchamiać polecenia w tym artykule, należy również utworzyć połączenie z platformą Azure, uruchamiając `Connect-AzAccount`.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Ten artykuł wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby uruchamiać polecenia w tym artykule, należy również uruchomić `Connect-AzAccount` do utworzenia połączenia z platformą Azure.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć zainstalowany przed przystąpieniem do wykonywania moduł ManagedServiceIdentity.
+Przed rozpoczęciem wykonywania tej procedury, musisz mieć zainstalowany moduł ManagedServiceIdentity:
 
 ```azurepowershell
 Install-Module -Name Az.ManagedServiceIdentity
@@ -47,7 +47,7 @@ $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
 ```
 
-### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Utwórz grupę zasobów i tożsamość zarządzane przez użytkownika
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Utwórz grupę zasobów i tożsamość usługi zarządzane przez użytkownika
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -55,7 +55,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-key-vault-policy-and-certificate-to-be-used-by-application-gateway"></a>Tworzenie usługi Key Vault, zasadami i certyfikatem, który będzie używany przez bramę aplikacji
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Tworzenie usługi key vault, zasad i certyfikat do użycia przez usługę application gateway
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -69,7 +69,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 
-### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
+### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -78,14 +78,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-static-public-vip"></a>Tworzenie statycznego publicznego adresu VIP
+### <a name="create-a-static-public-virtual-ip-vip-address"></a>Utwórz statyczny publiczny wirtualny adres IP (VIP)
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-ports"></a>Tworzenie puli i frontonu portów
+### <a name="create-pool-and-front-end-ports"></a>Tworzenie puli i porty frontonu
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -98,7 +98,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-ssl-certificate-to-key-vault"></a>Punkt certyfikat do magazynu kluczy
+### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Punkt certyfikatu SSL do magazynu kluczy
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -121,7 +121,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-user-managed-identity-to-the-application-gateway"></a>Przypisz tożsamość użytkownika zarządzanych do usługi application gateway
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>Przypisz tożsamość zarządzana przez użytkownika do usługi application gateway
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się więcej o kończenia żądań SSL](ssl-overview.md).
+[Dowiedz się więcej o kończenia żądań SSL](ssl-overview.md)

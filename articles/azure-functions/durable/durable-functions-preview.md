@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3b49049ea1ed36a08fad9619183017b0f07d99
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077743"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596080"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Trwałe funkcje w wersji 2.0 (wersja zapoznawcza) (usługi Azure Functions)
 
@@ -36,7 +36,7 @@ Obsługa programu .NET Framework (i w związku z tym funkcje w wersji 1.0) zosta
 
 ### <a name="hostjson-schema"></a>Host.json schema
 
-Poniższy fragment kodu przedstawia nowy schemat host.json. Zmiany głównego należy pamiętać o nas nowe `"storageProvider"` sekcji i `"azureStorage"` sekcji podrzędne. Ta zmiana została wykonana w celu obsługi [alternatywny dostawców magazynu](durable-functions-preview.md#alternate-storage-providers).
+Poniższy fragment kodu przedstawia nowy schemat host.json. Zmiana głównego należy pamiętać o jest nowym `"storageProvider"` sekcji i `"azureStorage"` sekcji podrzędne. Ta zmiana została wykonana w celu obsługi [alternatywny dostawców magazynu](durable-functions-preview.md#alternate-storage-providers).
 
 ```json
 {
@@ -93,11 +93,12 @@ W przypadku, gdy abstrakcyjna klasa bazowa zawiera metod wirtualnych, te metody 
 
 Funkcje jednostki zdefiniować operacje odczytywania i aktualizowania małych fragmentów stanu, znane jako *trwałe jednostek*. Podobnie jak funkcje programu orchestrator, funkcje jednostki mają funkcje z typem wyzwalacza specjalne *wyzwalacza jednostki*. W przeciwieństwie do funkcji programu orchestrator funkcje jednostki nie ma żadnych ograniczeń określonego kodu. Funkcje jednostki również zarządzanie stanem jawnie zamiast niejawnie reprezentujący stan za pośrednictwem przepływu sterowania.
 
-Poniższy kod jest przykładem funkcja proste jednostki, która definiuje *licznika* jednostki. Funkcja definiuje trzy operacje `add`, `remove`, i `reset`, każdy z aktualizacji, którą wartość całkowitą `currentValue`.
+Poniższy kod jest przykładem funkcja proste jednostki, która definiuje *licznika* jednostki. Funkcja definiuje trzy operacje `add`, `subtract`, i `reset`, każdy z aktualizacji, którą wartość całkowitą `currentValue`.
 
 ```csharp
+[FunctionName("Counter")]
 public static async Task Counter(
-    [EntityTrigger(EntityName = "Counter")] IDurableEntityContext ctx)
+    [EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
     int operand = ctx.GetInput<int>();
@@ -200,21 +201,25 @@ Sekcja krytycznego kończy się i wszystkie blokady są zwalniane, a po zakończ
 Na przykład należy wziąć pod uwagę aranżacji, który wymaga, aby sprawdzić, czy dostępne są dwie gracze, a następnie przypisz im zarówno do gier. To zadanie można zaimplementować przy użyciu sekcję krytyczną, w następujący sposób:
 
 ```csharp
-
-EntityId player1 = /* ... */;
-EntityId player2 = /* ... */;
-
-using (await ctx.LockAsync(player1, player2))
+[FunctionName("Orchestrator")]
+public static async Task RunOrchestrator(
+    [OrchestrationTrigger] IDurableOrchestrationContext ctx)
 {
-    bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
-    bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
+    EntityId player1 = /* ... */;
+    EntityId player2 = /* ... */;
 
-    if (available1 && available2)
+    using (await ctx.LockAsync(player1, player2))
     {
-        Guid gameId = ctx.NewGuid();
+        bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
+        bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
 
-        await ctx.CallEntityAsync(player1, "assign-game", gameId);
-        await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        if (available1 && available2)
+        {
+            Guid gameId = ctx.NewGuid();
+
+            await ctx.CallEntityAsync(player1, "assign-game", gameId);
+            await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        }
     }
 }
 ```

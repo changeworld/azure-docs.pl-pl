@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 04760ab570ffc213950c28c22c499d8e9252d574
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690184"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606190"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu zestawu .NET SDK
 
@@ -33,11 +33,11 @@ Dowiedz się, jak utworzyć [Apache Hadoop](https://hadoop.apache.org/) klastra 
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Konto usługi Azure storage**. Zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
-* **Visual Studio 2013, Visual Studio 2015 lub Visual Studio 2017**.
+* Program **Visual Studio**.
 
 ## <a name="create-clusters"></a>Tworzenie klastrów
 
-1. Otwórz program Visual Studio 2017.
+1. Otwórz program Visual Studio.
 2. Utwórz nową aplikację konsoli języka Visual C#.
 3. Z **narzędzia** menu, kliknij przycisk **Menedżera pakietów NuGet**, a następnie kliknij przycisk **Konsola Menedżera pakietów**.
 4. Uruchom następujące polecenie w konsoli, aby zainstalować pakiety:

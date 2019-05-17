@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4f4f22628d2c2a6beb7974aa9b776a2148a3fee0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65238065"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761992"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Wzorców rozwiązań w usłudze Azure Stream Analytics
 
@@ -58,7 +58,7 @@ Można utworzyć niestandardowych wizualizacji w czasie rzeczywistym, takich jak
 
 Większość usług sieci web i aplikacji sieci web obecnie za pomocą wzorca żądania/odpowiedzi do obsługi warstwy prezentacji. Wzorzec żądań/odpowiedzi jest proste tworzenie i może być łatwo skalowany z czasem odpowiedzi niski przy użyciu bezstanowej frontonu i skalowalnych sklepów, takich jak usługi Cosmos DB.
 
-Dużego woluminu danych często tworzy wąskich gardeł wydajności w systemie opartych na podejściu CRUD. [Rozwiązaniu wzorzec określania źródła zdarzeń](/azure/architecture/patterns/event-sourcing.md) jest wykorzystywana do adresowania wąskich gardeł wydajności. Wzorce danych czasowych i szczegółowe informacje są również trudne i nieefektywna można wyodrębnić z magazynu danych tradycyjnych. Nowoczesne dużej liczby aplikacji opartych na danych często przyjęcie architektury opartej na przepływ danych. Usługi Azure Stream Analytics jako aparat obliczeń na danych w ruchu jest filarem w danej architekturze.
+Dużego woluminu danych często tworzy wąskich gardeł wydajności w systemie opartych na podejściu CRUD. [Rozwiązaniu wzorzec określania źródła zdarzeń](/azure/architecture/patterns/event-sourcing) jest wykorzystywana do adresowania wąskich gardeł wydajności. Wzorce danych czasowych i szczegółowe informacje są również trudne i nieefektywna można wyodrębnić z magazynu danych tradycyjnych. Nowoczesne dużej liczby aplikacji opartych na danych często przyjęcie architektury opartej na przepływ danych. Usługi Azure Stream Analytics jako aparat obliczeń na danych w ruchu jest filarem w danej architekturze.
 
 ![Aplikacja określania źródła zdarzeń ASA](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 

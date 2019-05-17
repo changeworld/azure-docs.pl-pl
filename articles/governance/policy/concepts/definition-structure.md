@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b9fe723ca13cbee0e31b14e60a6bd740d2a282df
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506706"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779290"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -238,7 +238,7 @@ Wynikiem warunku jest czy **pola** lub **wartość** akcesor spełnia określone
 Korzystając z **takich jak** i **notLike** warunki, należy podać symbol wieloznaczny `*` wartości.
 Wartość nie powinna zawierać więcej niż jeden symbol wieloznaczny `*`.
 
-Korzystając z **dopasowania** i **notMatch** warunki `#` do dopasowania cyfrę, `?` literę `.` spełnić wszystkie znaki i innych znaków, aby dopasować rzeczywiste znaku.
+Korzystając z **dopasowania** i **notMatch** warunki `#` do dopasowania cyfrę, `?` literę `.` aby dopasować dowolny znak i innych znaków, aby dopasować rzeczywiste znaku.
 **odpowiada** i **notMatch** jest rozróżniana wielkość liter. Bez uwzględniania wielkości liter alternatywy są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby uzyskać przykłady, zobacz [Zezwalaj na kilka wzorców nazwy](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola

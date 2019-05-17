@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462389"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604442"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Otwórz bilet pomocy technicznej urządzenia Azure Data Box 
 
@@ -22,13 +22,13 @@ Ten artykuł dotyczy usługi Azure Data Box i dysku Azure Data Box, które są z
 * Jak utworzyć żądanie pomocy technicznej.
 * Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
 
-## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
+## <a name="create-a-support-request"></a>Utwórz żądanie obsługi
 
 Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
 1. Przejdź do Twoje zamówienie urządzenia Data Box lub dysku Data Box. Przejdź do **pomoc techniczna i rozwiązywanie problemów** sekcji, a następnie kliknij przycisk **nowe żądanie obsługi**.
      
-    ![Nowe żądanie pomocy technicznej](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
+    ![Nowe żądanie obsługi](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
    
 2. W **nowe żądanie obsługi**, wybierz opcję **podstawy**. W **podstawy**, wykonaj następujące czynności:
     
@@ -38,7 +38,7 @@ Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
     4. Określ swoje **plan pomocy technicznej**.
     5. Kliknij przycisk **Dalej**.
 
-        ![Podstawy](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
+        ![Ustawienia podstawowe](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
 3. W **nowe żądanie obsługi**, wybierz opcję **kroku 2 Problem**. W **Problem**, wykonaj następujące czynności:
     
@@ -56,7 +56,7 @@ Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 4. W **nowe żądanie obsługi**, kliknij przycisk **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe**, wykonaj następujące czynności:
 
    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-   2. W **informacje kontaktowe**, podaj nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi**.
+   2. W **informacje kontaktowe**, podaj nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi**.
    3. Kliknij pozycję **Utwórz**.
    
        ![Informacje kontaktowe](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   

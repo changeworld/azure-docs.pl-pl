@@ -3,8 +3,8 @@ title: Rozumienie przepływu kodu autoryzacji OAuth 2.0 w usłudze Azure AD
 description: W tym artykule opisano, jak używać wiadomości HTTP do autoryzacji dostępu do aplikacji internetowych i internetowych interfejsów API w dzierżawie za pomocą usługi Azure Active Directory i OAuth 2.0.
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/5/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e9177f91f016ffc64d542b9fad89d147b96f6d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297053"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545146"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływie przyznawania kodu OAuth 2.0
 
@@ -61,9 +61,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |wymagane |Musi zawierać `code` dla przepływ kodu autoryzacji. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `urn:ietf:wg:oauth:2.0:oob`. |
 | response_mode |opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może być `query`, `fragment`, lub `form_post`. `query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. Wartość domyślna to `query` przepływu kodu.  |
-| state |Zalecane |Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
+| stan |Zalecane |Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | zasób | Zalecane |Identyfikator URI Identyfikatora aplikacji docelowej internetowego interfejsu API (zabezpieczono zasób). Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takie jak `https://graph.microsoft.com`. Jest to wymagane w jedno autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieść go w żądaniu autoryzacji, aby upewnić się, że otrzymaniu zgody przez użytkownika. |
-| scope | **ignorowane** | W przypadku aplikacji usługi Azure AD w wersji 1, zakresy muszą być skonfigurowane statycznie w witrynie Azure Portal w obszarze aplikacje **ustawienia**, **wymagane uprawnienia**. |
+| zakres | **ignorowane** | W przypadku aplikacji usługi Azure AD w wersji 1, zakresy muszą być skonfigurowane statycznie w witrynie Azure Portal w obszarze aplikacje **ustawienia**, **wymagane uprawnienia**. |
 | wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *Zaloguj się*: Użytkownik powinien monitowany ponownego uwierzytelnienia. <p> *select_account*: Użytkownik jest monitowany o wybranie konta, przerywania logowania jednokrotnego na. Użytkownik może wybrać istniejące konto zalogowanego, wprowadź swoje poświadczenia dla konta zapamiętanych lub chce użyć całkowicie innego konta. <p> *Zgoda*: Zgoda użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: Administrator powinien być monitowany o zgody w imieniu wszystkich użytkowników w organizacji |
 | login_hint |opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwy użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, mających już wyodrębnione nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia. |
 | Element domain_hint |opcjonalne |Zawiera wskazówki dotyczące dzierżawy lub domeny, które użytkownik powinien używać do logowania. Element domain_hint wartość zarejestrowanej domeny dla dzierżawy. Jeśli dzierżawa jest sfederowana do katalogu lokalnego, AAD przekierowuje do określonej dzierżawy serwera federacyjnego. |
@@ -90,7 +90,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | admin_consent |Ma wartość True, jeśli administrator wyraził zgodę na monit o wyrażenie zgody żądania. |
 | kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kod autoryzacji do żądania tokenu dostępu dla zasobu docelowego. |
 | session_state |Unikatowa wartość, która identyfikuje bieżącą sesję użytkownika. Ta wartość jest identyfikatorem GUID, ale powinien być traktowany jako nieprzezroczysta wartość przekazywaną bez badania. |
-| state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Jest dobrym rozwiązaniem dla aplikacji, aby zweryfikować, że wartości stanu żądania i odpowiedzi są identyczne, przed rozpoczęciem korzystania z odpowiedzi. Ułatwia to wykrywanie [ataki fałszerstwo żądania Międzywitrynowego Międzywitrynowych](https://tools.ietf.org/html/rfc6749#section-10.12) względem klienta. |
+| stan |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Jest dobrym rozwiązaniem dla aplikacji, aby zweryfikować, że wartości stanu żądania i odpowiedzi są identyczne, przed rozpoczęciem korzystania z odpowiedzi. Ułatwia to wykrywanie [ataki fałszerstwo żądania Międzywitrynowego Międzywitrynowych](https://tools.ietf.org/html/rfc6749#section-10.12) względem klienta. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
 Odpowiedzi na błędy mogą być również wysyłane do `redirect_uri` tak, aby aplikacja może je odpowiednio obsługiwać.
@@ -103,9 +103,9 @@ error=access_denied
 
 | Parametr | Opis |
 | --- | --- |
-| error |Wartość kodu błędu, zdefiniowane w sekcji 5.2 [OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). W następnej tabeli opisano kody błędów, które zwraca usługi Azure AD. |
+| błąd |Wartość kodu błędu, zdefiniowane w sekcji 5.2 [OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). W następnej tabeli opisano kody błędów, które zwraca usługi Azure AD. |
 | error_description |Bardziej szczegółowy opis błędu. Ten komunikat nie ma być przyjazne dla użytkownika końcowego. |
-| state |Wartość stanu jest generowany losowo-ponownie wartość, która jest wysyłane w żądaniu i zwracany w odpowiedzi na fałszerstwo żądania międzywitrynowego (CSRF) atakami. |
+| stan |Wartość stanu jest generowany losowo-ponownie wartość, która jest wysyłane w żądaniu i zwracany w odpowiedzi na fałszerstwo żądania międzywitrynowego (CSRF) atakami. |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Kody błędów dla błędów punktu końcowego autoryzacji
 W poniższej tabeli opisano różne kody błędów, które mogą być zwracane w `error` parametru odpowiedzi na błąd.
@@ -180,7 +180,7 @@ Odpowiedź oznaczająca Powodzenie może wyglądać następująco:
 | expires_in |Jak długo token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
 | zasób |Identyfikator URI Identyfikatora aplikacji internetowego interfejsu API (zabezpieczono zasób). |
-| scope |Personifikacja uprawnienia do aplikacji klienckiej. Domyślne uprawnienia `user_impersonation`. Właściciel zabezpieczono zasób można zarejestrować dodatkowych wartości w usłudze Azure AD. |
+| zakres |Personifikacja uprawnienia do aplikacji klienckiej. Domyślne uprawnienia `user_impersonation`. Właściciel zabezpieczono zasób można zarejestrować dodatkowych wartości w usłudze Azure AD. |
 | refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu, można uzyskać tokenów dodatkowych dostępu po wygaśnięciu bieżącego tokenu dostępu. Odśwież tokeny są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. |
 | id_token |Niepodpisane reprezentujący tokenu Web JSON (JWT) [tokenu Identyfikacyjnego](id-tokens.md). Aplikacji base64Url może zdekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. |
 
@@ -206,7 +206,7 @@ Przykładowa odpowiedź błędu może wyglądać następująco:
 ```
 | Parametr | Opis |
 | --- | --- |
-| error |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
+| błąd |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
 | error_description |Określony komunikat o błędzie ułatwiający Deweloper Identyfikuj główne przyczyny błędu uwierzytelniania. |
 | error_codes |Lista kodów błędów specyficznych dla usługi STS, które mogą pomóc w diagnostyce. |
 | timestamp |Czas, w którym wystąpił błąd. |
@@ -259,7 +259,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | Parametr | Opis |
 | --- | --- |
 | authorization_uri |Identyfikator URI (fizycznym punktem końcowym) serwera autoryzacji. Ta wartość jest również używana jako klucz wyszukiwania, aby uzyskać więcej informacji na temat serwera z punktu końcowego wykrywania. <p><p> Klient musi sprawdzić, czy serwer autoryzacji jest zaufany. Jeśli zasób jest chroniony przez usługę Azure AD, jest wystarczające, aby sprawdzić, czy adres URL zaczyna się od https://login.microsoftonline.com lub inną nazwę hosta, który obsługuje usługi Azure AD. Zasób specyficznym dla dzierżawy zawsze powinien zwrócić tymczasową autoryzację specyficznym dla dzierżawy, identyfikatora URI. |
-| error |Wartość kodu błędu, zdefiniowane w sekcji 5.2 [OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). |
+| błąd |Wartość kodu błędu, zdefiniowane w sekcji 5.2 [OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). |
 | error_description |Bardziej szczegółowy opis błędu. Ten komunikat nie ma być przyjazne dla użytkownika końcowego. |
 | resource_id |Zwraca unikatowy identyfikator zasobu. Aplikacja kliencka może użyć tego identyfikatora, jako wartość `resource` parametru podczas żądania tokenu do zasobu. <p><p> Ważne jest, aby aplikacja kliencka sprawdzić tę wartość, w przeciwnym razie złośliwe usługi mogą być możliwe do wywołania **podniesienia uprawnień dla uprawnień** ataku <p><p> Zalecaną strategią w celu zapobiegania ataku jest sprawdzenie, czy `resource_id` podstawą adresu URL interfejsu API sieci web jest zgodna z którego uzyskiwany jest dostęp. Na przykład jeśli https://service.contoso.com/data jest dostępny, `resource_id` może być htttps://service.contoso.com/. Aplikacja kliencka musi odrzucać `resource_id` , nie rozpoczyna się od podstawowego adresu URL, chyba że istnieje niezawodny sposób alternatywne, Sprawdź identyfikator. |
 
@@ -316,7 +316,7 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 | expires_in |Pozostały czas istnienia tokenu w ciągu kilku sekund. Typowa wartość to 3600 (jedna godzina). |
 | expires_on |Data i godzina wygaśnięcia tokenu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. |
 | zasób |Identyfikuje zabezpieczono zasób, który token dostępu mogą być używane do dostępu. |
-| scope |Uprawnień personifikacji aplikacja kliencka macierzystego. Domyślne uprawnienia **user_impersonation**. Właściciel zasobu docelowego można zarejestrować alternatywne wartości w usłudze Azure AD. |
+| zakres |Uprawnień personifikacji aplikacja kliencka macierzystego. Domyślne uprawnienia **user_impersonation**. Właściciel zasobu docelowego można zarejestrować alternatywne wartości w usłudze Azure AD. |
 | access_token |Nowy token dostępu, którego zażądano. |
 | refresh_token |Nowe refresh_token OAuth 2.0, który może służyć do żądania nowych tokenów dostępu, gdy wygaśnie stary w tej odpowiedzi. |
 
@@ -338,7 +338,7 @@ Przykładowa odpowiedź błędu może wyglądać następująco:
 
 | Parametr | Opis |
 | --- | --- |
-| error |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
+| błąd |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
 | error_description |Określony komunikat o błędzie ułatwiający Deweloper Identyfikuj główne przyczyny błędu uwierzytelniania. |
 | error_codes |Lista kodów błędów specyficznych dla usługi STS, które mogą pomóc w diagnostyce. |
 | timestamp |Czas, w którym wystąpił błąd. |

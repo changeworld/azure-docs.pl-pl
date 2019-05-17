@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74afb98387172f6c58398673862274c7b1880d86
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6280068303e66ca9a930f94d9a754afe1f88f4f2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922951"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604253"
 ---
 # <a name="change-your-azure-account-profile-information"></a>Zmiana informacji o Twoim profilu konta platformy Azure
 
@@ -51,9 +51,9 @@ Aktualizowanie adresu e-mail w profilu nie powoduje aktualizacji adresu e-mail l
 
 Aby dowiedzieć się, jak zaktualizować swoje informacje rozliczeniowe, zobacz [zmienić karty kredytowej użytej do zapłacenia za subskrypcję platformy Azure](billing-how-to-change-credit-card.md).
 
-### <a name="you-cant-update-your-country"></a>Nie można zaktualizować Twojego kraju
+### <a name="you-cant-update-your-countryregion"></a>Nie można zaktualizować swój kraj/region
 
-Ze względu na ograniczenia techniczne nie możemy teraz zmienić kraj dla istniejącego konta. Można jednak utworzyć konto w żądany kraj i następnie skontaktuj się z działem pomocy technicznej platformy Azure, aby przeprowadzić migrację usług do tego konta.
+Ze względu na ograniczenia techniczne firma Microsoft nie można zmienić kraj/region dla istniejącego konta. Można jednak utworzyć konto w żądany kraj/region i następnie skontaktuj się z działem pomocy technicznej platformy Azure, aby przeprowadzić migrację usług do tego konta.
 
 ## <a name="service-and-marketing-emails"></a>Usługi i marketingowych wiadomości e-mail
 
@@ -61,7 +61,7 @@ Zespół Microsoft Azure wysyła wiadomości e-mail związane z usługą, inform
 
 Zostanie wyświetlony monit w [witryny Azure portal](https://portal.azure.com) można sprawdzić ani zaktualizować swój adres e-mail co 90 dni. Powiadomienie ma na celu upewnij się, że Microsoft został zaktualizowany informacji kontaktowych w razie nagłych powiadomienia związane z usługą. Firma Microsoft wysyła wiadomości e-mail na adres e-mail profilu za pomocą usługi Azure information związanych z kontem dla:
 
-- Powiadomienia dotyczące usług
+- Powiadomienia usługi
 - Alerty zabezpieczeń
 - Do celów rozliczeń
 - Pomoc techniczna

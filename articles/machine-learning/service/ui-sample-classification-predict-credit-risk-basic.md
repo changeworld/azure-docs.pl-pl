@@ -1,7 +1,7 @@
 ---
 title: 'Klasyfikacja: Przewidywanie ryzyka kredytowego'
 titleSuffix: Azure Machine Learning service
-description: Ten interfejs graficzny przykładowy eksperyment pokazuje sposób wykonania binarnej klasyfikacji przewidzieć ryzyko kredytowe, oparte na informacjach dostarczonych w kredytowym.
+description: Dowiedz się, jak tworzyć usługi machine learning klasyfikatora bez napisania choćby jednego wiersza kodu za pomocą interfejsu wizualnego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d4ec3c71aaed6bddb012fb17ee5bb96da00cd76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028533"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789400"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Próba 3 — klasyfikacji: Przewidywanie ryzyka kredytowego
 
-Ten interfejs graficzny przykładowy eksperyment pokazuje sposób wykonania binarnej klasyfikacji przewidzieć ryzyko kredytowe, oparte na informacjach dostarczonych w kredytowym. Pokazuje, jak można wykonywać podstawowe klasyfikacji, w tym operacji przetwarzania danych, Podziel zestaw danych w zestawach szkolenie i testowanie, uczenie modelu, ocena zestawu danych testowych i ocenić prognozy.
+Dowiedz się, jak tworzyć usługi machine learning klasyfikatora bez napisania choćby jednego wiersza kodu za pomocą interfejsu wizualnego. W tym przykładzie szkolenie modeli **dwuklasowych wzmocnione drzewo decyzyjnego** do prognozowania środki ryzyko oceniane (wysokiej lub niskiej) na podstawie informacji o aplikacji środków, takich jak Historia kredytów, wiek i liczba kart kredytowych.
+
+Ponieważ którą próbujemy znaleźć odpowiedź na pytanie "Która opcja?" jest to problem klasyfikacji. Jednakże można zastosować ten sam proces podstawowych do dowolnego typu maszyny nauczanym problemem czy jest to regresji, klasyfikacji, klastrowania i tak dalej.
+
+Oto wykres zakończone, w tym eksperymencie:
+
+![Wykres eksperymentu](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,7 +46,6 @@ Zestaw danych zawiera 1000 próbek z funkcjami 20 i 1 etykiety. Poszczególne pr
 
 ## <a name="experiment-summary"></a>Podsumowanie eksperymentu
 
-
 Firma Microsoft, wykonaj następujące kroki, aby utworzyć eksperyment:
 
 1. Przeciągnij Moduł niemiecki karty kredytowej na danych zestawu danych do obszaru roboczego eksperymentu.
@@ -50,11 +55,10 @@ Firma Microsoft, wykonaj następujące kroki, aby utworzyć eksperyment:
 1. Dodaj **Train Model** modułu. Klasyfikator z poprzedniego kroku połączyć się z lewym portem wejściowym **Train Model**. Dodaj zestaw treningowy (po lewej stronie danych wyjściowych port **podziału danych**) z prawym portem wejściowym z **Train Model**. **Uczenie modelu** będzie uczyć klasyfikatora.
 1. Dodaj **Score Model** modułu i połącz **Train Model** modułu do niego. Następnie dodaj zestaw testów (prawy port **podziału danych**) do **Score Model**. **Score Model** będzie prognozowania. Możesz wybrać jego port wyjściowy prognoz i prawdopodobieństwa dodatnią klasy.
 1. Dodaj **Evaluate Model** modułu i połącz się jego lewy port wejściowy z z ocenami zestawu danych. Aby wyświetlić wyniki oceny, wybierz port wyjściowy **Evaluate Model** modułu, a następnie wybierz pozycję **Visualize**.
-    
+
 Oto wykres eksperymentu ukończone:
 
 ![Wykres eksperymentu](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
-
 
 ## <a name="results"></a>Wyniki
 

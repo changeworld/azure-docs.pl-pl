@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071912"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825347"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Szybki start: Tworzenie zadania usługi Azure Stream Analytics w chmurze w programie Visual Studio Code (wersja zapoznawcza)
 
@@ -62,7 +62,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
    |---------|---------|---------|
    |Subskrypcja  | \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, której chcesz użyć. |
    |Grupa zasobów   |   asaquickstart-resourcegroup  |   Wybierz pozycję **Utwórz nową** i wprowadź nazwę nowej grupy zasobów dla swojego konta. |
-   |Region  |  \<Wybierz region, który jest najbliżej Twoich użytkowników\> | Wybierz lokalizację geograficzną, w której możesz hostować swoje centrum IoT Hub. Użyj lokalizacji znajdującej się najbliżej użytkowników. |
+   |Obszar  |  \<Wybierz region, który jest najbliżej Twoich użytkowników\> | Wybierz lokalizację geograficzną, w której możesz hostować swoje centrum IoT Hub. Użyj lokalizacji znajdującej się najbliżej użytkowników. |
    |Nazwa centrum IoT Hub  | MyASAIoTHub  |   Wybierz nazwę swojego centrum IoT Hub.   |
 
    ![Tworzenie centrum IoT Hub](./media/quick-create-vs-code/create-iot-hub.png)
@@ -89,7 +89,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
 
 2. W okienku **Utwórz konto magazynu** wprowadź nazwę konta magazynu, lokalizację i grupę zasobów. Wybierz tę samą lokalizację i grupę zasobów, co w przypadku utworzonego centrum IoT Hub. Następnie kliknij pozycję **Przeglądanie + tworzenie**, aby utworzyć konto.
 
-   ![Tworzenie konta magazynu](./media/quick-create-vs-code/create-storage-account.png)
+   ![Utwórz konto magazynu](./media/quick-create-vs-code/create-storage-account.png)
 
 3. Po utworzeniu konta magazynu wybierz kafalek **Obiekty blob** w okienku **Przegląd**.
 
@@ -103,7 +103,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
 
 1. W programie Visual Studio Code, naciśnij klawisz **Ctrl + Shift + P** aby otworzyć paletę poleceń. Następnie wpisz **ASA** i wybierz **ASA: Utwórz nowy projekt**.
 
-   ![Tworzenie nowego projektu](./media/quick-create-vs-code/create-new-project.png)
+   ![Utwórz nowy projekt](./media/quick-create-vs-code/create-new-project.png)
 
 2. Wprowadź nazwę projektu, takie jak **myASAproj** i wybierz folder dla projektu.
 
@@ -164,7 +164,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
    |Name (Nazwa)|Dane wyjściowe| Wprowadź nazwę identyfikującą dane wyjściowe zadania.|
    |Konto magazynu|asaquickstartstorage|Wybierz lub wprowadź nazwę konta magazynu. Nazwy kont magazynu są wykrywane automatycznie, jeśli są one tworzone w tej samej subskrypcji.|
    |Kontener|container1|Wybierz istniejący kontener utworzony na koncie magazynu.|
-   |Wzorzec ścieżki|output|Wprowadź nazwę ścieżki pliku, który ma zostać utworzony w kontenerze.|
+   |Wzorzec ścieżki|wyjście|Wprowadź nazwę ścieżki pliku, który ma zostać utworzony w kontenerze.|
 
 ## <a name="define-the-transformation-query"></a>Definiowanie zapytania przekształcenia
 
@@ -229,7 +229,7 @@ Istnieją dwa sposoby, aby wyzwolić skryptu kompilacji:
 
 2. Kliknij prawym przyciskiem myszy nazwę zadania. Następnie wybierz **Start** z menu kontekstowego.
 
-![Uruchamianie zadania usługi Stream Analytics w programie VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![Uruchamianie zadania usługi Stream Analytics w programie VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. Wybierz **teraz** w oknie podręcznym, aby uruchomić zadanie.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d99169fc38f3976b35a0ebbdd6605450fbd3e2e9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: MT
+ms.openlocfilehash: 728d961961250aad1d06067e0264c6b90aca4915
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412877"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593836"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -81,9 +81,9 @@ W poniższej tabeli opisano ustawienia zasad haseł, które są stosowane do kon
 
 | Właściwość | Wymagania |
 | --- | --- |
-| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
+| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> puste miejsce |
 | Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li>Miejsca do magazynowania.</li><li> Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symbol".</li></ul> |
-| Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 16 znaków.</li><li>Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
+| Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 256 znaków.</li><li>Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
 | Okres wygasania haseł |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet usługi Azure Active Directory modułu dla Windows PowerShell.</li></ul> |
 | Powiadomienie o wygaśnięciu hasła |<ul><li>Wartość domyślna: **14** dni (po których wygasa hasło).</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet.</li></ul> |
 | Wygaśnięcia hasła |<ul><li>Wartość domyślna: **false** dni (wskazuje, że wygaśnięcie hasła jest włączona).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu `Set-MsolUser` polecenia cmdlet.</li></ul> |

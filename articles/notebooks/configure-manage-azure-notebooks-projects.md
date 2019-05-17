@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234774"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596740"
 ---
 # <a name="manage-and-configure-projects"></a>Konfigurowanie projektów i zarządzanie nimi
 
@@ -37,38 +37,7 @@ Notesy platformy Azure rozpoczyna się maszyny wirtualnej stanowiącej podstawę
 
 ## <a name="compute-tier"></a>Warstwa wystąpień obliczeniowych
 
-**Uruchom** listy rozwijanej na pulpicie nawigacyjnym projekt jest wybierania warstwa wystąpień obliczeniowych, w którym uruchamiany jest projekt. Domyślnie projekty są uruchamiane **bezpłatne obliczenia** warstwę, która jest ograniczony do 4 GB pamięci i 1 GB danych, aby zapobiec nadużyciu:
-
-![Obliczenia z listy rozwijanej warstwy na pulpicie nawigacyjnym projekt](media/project-compute-tier-list.png)
-
-Ograniczenia te można pominąć przy użyciu innej maszyny wirtualnej, które zostały aprowizowane w subskrypcji platformy Azure. Należy zainstalować i uruchomić JupyterHub na tej maszynie wirtualnej. Obrazy maszyny wirtualnej do nauki o danych (dowolnego systemu operacyjnego) są dobrych wyborów, ponieważ zawierają one JupyterHub domyślnie.
-
-Po utworzeniu odpowiednio skonfigurowanych maszyn wirtualnych platformy Azure, wybierz **bezpośrednie obliczenia** opcji na liście rozwijanej wyświetli monit o podanie nazwy (w celu wyświetlenia na liście), adres IP maszyny Wirtualnej i port (zazwyczaj 8000, domyślny port, do którego JupyterHub nasłuchuje), a poświadczenia maszyny Wirtualnej:
-
-![Wiersz do zbierania informacji z opcji usługi obliczenia bezpośrednie serwera](media/project-compute-tier-direct.png)
-
-Jeśli następujące warunki są spełnione, listy rozwijanej również pokazuje [maszyny wirtualnej do nauki o danych (DSVM)](/azure/machine-learning/data-science-virtual-machine) wystąpień. (Jeśli którykolwiek z tych warunków nie są spełnione, można nadal połączyć się DSVM przy użyciu opcji obliczeniowych bezpośrednie i wprowadzając wartości uzyskane z portalu Azure.)
-
-- Po zarejestrowaniu się w notesach Azure przy użyciu konta, który używa usługi Azure Active Directory (AAD), takie jak konto firmy.
-- Twoje konto jest połączone z subskrypcją platformy Azure.
-- Masz co najmniej jednej maszyny wirtualnej w tej subskrypcji z co najmniej dostęp czytnika, używanego przez maszynę wirtualną do nauki o danych do obrazu systemu Linux (Ubuntu).)
-
-![Wystąpienia maszyny wirtualnej do nauki o danych na liście rozwijanej na pulpicie nawigacyjnym projekt](media/project-compute-tier-dsvm.png)
-
-Po wybraniu wystąpienia maszyny wirtualnej DSVM, notesy platformy Azure może monit o poświadczenia określonej maszyny używane podczas tworzenia maszyny Wirtualnej.
-
-Aby utworzyć nowe wystąpienie maszyny wirtualnej DSVM, postępuj zgodnie z instrukcjami [tworzenia maszyny Wirtualnej do nauki o danych Ubuntu](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Użyj **maszyna wirtualna do nauki o danych dla systemu Linux (Ubuntu)** obrazu, jeśli chcesz, aby znajdujący się w rozwijanej liście notesów usługi Azure.  Jeśli z innych przyczyn, należy użyć obrazu Windows lub CentOS, można użyć **bezpośrednie obliczenia** opcję, aby połączyć się z maszyny DSVM ręcznie.
-
-> [!IMPORTANT]
-> Korzystając z bezpośredniego obliczeniowych lub do nauki o danych maszyn wirtualnych, notesów, uruchomione na nich musi być całkowicie niezależna. W chwili obecnej, notesy platformy Azure, kopiuje tylko *.ipynb* plików do maszyny Wirtualnej, ale nie kopiuje wszystkie inne pliki w projekcie. W rezultacie notesów działające na innych maszynach wirtualnych nie udało się znaleźć innych plików projektów.
->
-> Można obejść ten problem, na dwa sposoby:
->
-> 1. Ręcznie skopiuj pliki projektu do maszyny Wirtualnej.
->
-> 2. Osadzanie plików w notesie ustawienia uruchamiania przed głównej notesu. W notesie Instalator Utwórz komórce kodu dla każdego pliku, w którym komórka zawiera zawartość pliku. Następnie w górnej części każda komórka Wstaw polecenie `%%writefile <filename>`, gdzie `<filename>` to nazwa pliku do odbierania zawartości. Podczas uruchamiania notesu tworzy tych plików na maszynie Wirtualnej. Aby uzyskać przykład, zobacz [setup.ipynb pliku pokaz wykrywacz Pet Microsoft](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
->
->     ![Za pomocą %% writefile polecenia na początku komórkę kodu](media/setup-notebook-writefile-command.png)
+Domyślnie projekty są uruchamiane **bezpłatne obliczenia** warstwę, która jest ograniczony do 4 GB pamięci i 1 GB danych, aby zapobiec nadużyciu. Można pominąć te ograniczenia i zwiększyć moc obliczeniową przy użyciu innej maszyny wirtualnej, które zostały aprowizowane w subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [sposób użycia maszyn wirtualnych do nauki o danych](use-data-science-virtual-machine.md).
 
 ## <a name="edit-project-metadata"></a>Edytowanie metadanych projektu
 

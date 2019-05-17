@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920493"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823567"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -163,10 +163,15 @@ Dostępne są następujące role administratora:
   * Administratorzy w innych usługach poza usługi Azure AD, takich jak Exchange Online, zabezpieczenia pakietu Office i Centrum zgodności i zarządzania zasobami ludzkimi systemów.
   * Kierownicy doradcą prawnym i pracownicy działu kadr, którzy mogą uzyskiwać dostęp do poufne lub prywatne informacje, takie jak użytkownicy niebędący administratorami.
 
+
+  > [!NOTE]
+  > Delegowanie uprawnień administracyjnych za pośrednictwem podzbiór użytkowników i stosowanie zasad do podzbioru użytkowników jest możliwe dzięki [jednostki administracyjne (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units).
+
+
   > [!NOTE]
   > Tej roli był wcześniej nazywany "Administrator haseł" [witryny Azure portal](https://portal.azure.com/). Zmieniamy jej nazwę na "Administrator pomocy technicznej", aby dopasować jej nazwę w Azure AD PowerShell, interfejsu API usługi Azure AD Graph i interfejsu API Microsoft Graph. Przez krótki czas zmienimy nazwę na "Administrator pomocy technicznej (hasło)" w witrynie Azure portal, zanim zmiany "Administrator pomocy technicznej".
-  >
-  
+
+
 * **[Power BI Administrator](#power-bi-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Power BI, jeśli ta usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [opis roli administratora usługi Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Power BI". Jest on "Administrator usługi Power BI" [witryny Azure portal](https://portal.azure.com).

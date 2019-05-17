@@ -3,8 +3,8 @@ title: Użyj platforma tożsamości usługi Microsoft dostęp do bezpiecznych za
 description: Tworzenie aplikacji sieci web za pomocą implementacja firmy Microsoft platformy tożsamości protokołu uwierzytelniania OAuth 2.0.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df75d692bc61d155b35f5ce4e2bf08da6e4cbcc3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507101"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545094"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma tożsamości firmy Microsoft i przepływ poświadczeń klienta OAuth 2.0
 

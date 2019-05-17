@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/18/2019
-ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511928"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597197"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testowanie aplikacji logiki za pomocą danych testowych, konfigurując wyniki statycznej
 
@@ -49,7 +49,7 @@ Na przykład jeśli skonfigurowano statyczne wyniki dla usługi Outlook 365 wys�
       | Właściwość | Opis |
       |----------|-------------|
       | **Stan** | Stan akcji do zwrócenia |
-      | **Kod stanu:** | Kod stanu określonego do zwrócenia |
+      | **Kod stanu** | Kod stanu określonego do zwrócenia |
       | **Nagłówki** | Zawartość nagłówka, aby zwrócić |
       |||
 
@@ -137,11 +137,9 @@ Wyłączenie wyniki statycznej nie Pozbywać się wartości z ostatniej konfigur
 
    ![Wyłącz wyniki statycznej](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="reference"></a>Odwołanie
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+Aby uzyskać więcej informacji na temat tego ustawienia w podstawowej definicji przepływu pracy, zobacz [wyniki statycznej — odwołanie do schematu dla języka definicji programu Workflow](../logic-apps/logic-apps-workflow-definition-language.md#static-results) i [runtimeConfiguration.staticResult — środowisko uruchomieniowe ustawienia konfiguracji](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

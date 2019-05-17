@@ -4,7 +4,7 @@ description: Odwołanie do pełnej składni Lucene, które jest używane z usłu
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/13/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024219"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596574"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Składnia zapytań Lucene w usłudze Azure Search
 Można napisać zapytań względem usługi Azure Search oparte na zaawansowanych [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) składnia wyspecjalizowane kwerendy forms: symbole wieloznaczne, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie wyrażeń regularnych przedstawiono kilka przykładów. Jest wiele składni analizatora zapytań Lucene [zaimplementowane opublikowane w usłudze Azure Search](search-lucene-query-architecture.md), z wyjątkiem produktów *zakresu wyszukiwania* zbudowanych w usłudze Azure Search przy użyciu `$filter` wyrażenia. 
@@ -121,16 +121,19 @@ Za pomocą `searchMode=all` zwiększa dokładność zapytań, umieszczając mnie
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> Ocenianie zapytań symboli wieloznacznych i wyrażeń regularnych
  Usługa Azure Search korzysta z oceniania na podstawie częstotliwości ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) dla tekstu zapytania. Jednak dla symboli wieloznacznych i wyrażeń regularnych zapytań, gdzie zakres warunków potencjalnie może być szerokie, współczynnik częstotliwości jest ignorowany, aby zapobiec klasyfikacji z odchylenia opóźnienia kierunku zgodne z warunkami rzadkich. Wszystkie dopasowania są traktowane identycznie do symboli wieloznacznych i wyrażeń regularnych wyszukiwania.
 
-##  <a name="bkmk_fields"></a> Zapytania należące do pola  
- Można określić `fieldname:searchterm` konstrukcji, aby zdefiniować operacji fielded zapytania, gdzie pole jest pojedynczego wyrazu, a termin wyszukiwania jest również pojedynczego wyrazu lub frazy, opcjonalnie wraz z operatorami logicznymi. Oto kilka przykładów:  
+##  <a name="bkmk_fields"></a> Fielded wyszukiwania  
+Można zdefiniować operacji wyszukiwania fielded z `fieldName:searchExpression` składnię, w którym wyrażenie wyszukiwania może być pojedynczego wyrazu lub frazy lub bardziej złożone wyrażenie w nawiasach, opcjonalnie wraz z operatorami logicznymi. Oto kilka przykładów:  
 
 - gatunku: jazz nie historii  
 
 - artists:("Miles Davis" "John Coltrane")
 
-  Pamiętaj umieścić wielu ciągów w cudzysłowach, chcąc obu ciągów, które ma zostać obliczone jako pojedyncza jednostka, w tym przypadku wyszukiwanie dwa odrębne artystów w `artists` pola.  
+Pamiętaj umieścić wielu ciągów w cudzysłowach, chcąc obu ciągów, które ma zostać obliczone jako pojedyncza jednostka, w tym przypadku wyszukiwanie dwa odrębne artystów w `artists` pola.  
 
-  Pole określone w `fieldname:searchterm` musi być `searchable` pola.  Zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) szczegółowe informacje na temat używania atrybuty indeksu w definicji pola.  
+Pole określone w `fieldName:searchExpression` musi być `searchable` pola.  Zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) szczegółowe informacje na temat używania atrybuty indeksu w definicji pola.  
+
+> [!NOTE]
+> Przy użyciu fielded wyrażeniach wyszukiwania, nie trzeba używać `searchFields` parametru, ponieważ każda fielded wyrażenia wyszukiwania ma nazwę pola jawnie określony. Jednak nadal można użyć `searchFields` parametru, jeśli chcesz uruchomić zapytanie, gdzie niektóre elementy są ograniczone do określonego pola, a pozostałe można zastosować do kilku pól. Na przykład, zapytanie `search=genre:jazz NOT history&searchFields=description` będzie odpowiadać `jazz` wyłącznie `genre` pola, gdy byłby on zgodny z `NOT history` z `description` pola. Nazwa pola w `fieldName:searchExpression` zawsze pierwszeństwo przed `searchFields` parametr, który jest, dlaczego w tym przykładzie, nie musimy uwzględnić `genre` w `searchFields` parametru.
 
 ##  <a name="bkmk_fuzzy"></a> Wyszukiwanie rozmyte  
  Wyszukiwanie rozmyte znajduje dopasowań w warunkach, które mają podobne konstrukcji. Na [dokumentacji Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), Wyszukiwanie rozmyte opierają się na [odległość Damerau Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Wyszukiwanie rozmyte można rozwinąć termin maksymalnie 50 warunki, które spełniają kryteria odległości. 

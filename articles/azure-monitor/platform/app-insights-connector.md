@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346806"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606747"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (przestarzałe)
 
@@ -192,7 +192,7 @@ Rekord z *typu* z *ApplicationInsights* jest tworzony dla każdego typu danych w
 | Typ urządzenia | Urządzenie klienckie |
 | ScreenResolution |   |
 | Kontynent | Kontynent, skąd pochodzi żądanie |
-| Kraj | Kraj, skąd pochodzi żądanie |
+| Kraj | Kraj/region, skąd pochodzi żądanie |
 | Województwo | Prowincja, stanu lub ustawień regionalnych, skąd pochodzi żądanie |
 | Miasto | Miasto lub miejscowość, skąd pochodzi żądanie |
 | isSynthetic | Wskazuje, czy żądanie zostało utworzone przez użytkownika lub zautomatyzowanej metody. TRUE = wygenerowane przez użytkowników, lub FAŁSZ = zautomatyzowanej metody |

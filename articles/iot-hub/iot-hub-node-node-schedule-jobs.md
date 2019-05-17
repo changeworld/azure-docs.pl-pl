@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: 1f357ed60e9d9f020d5a80ac9349eb65577521e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1a42b590fc83b89cd9f90998f835fc58f84ea960
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442753"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597399"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Planowanie i emitowanie zadań (Node)
 
@@ -50,7 +50,7 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje Node.js:
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Środowisko node.js w wersji 4.0.x lub nowszej [przygotowywanie środowiska projektowego](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) opisano, jak zainstalować środowisko Node.js na potrzeby tego samouczka w systemie Windows lub Linux.
+* Środowisko node.js w wersji 10.0.x lub nowszej [przygotowywanie środowiska projektowego](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) opisano, jak zainstalować środowisko Node.js na potrzeby tego samouczka w systemie Windows lub Linux.
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
 

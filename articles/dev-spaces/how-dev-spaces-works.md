@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687194"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605412"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -29,7 +29,7 @@ W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowan
 
 * [Java za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](quickstart-java.md)
 * [.NET core za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](quickstart-netcore.md)
-* [.NET core w programie Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core z programem Visual Studio](quickstart-netcore-visualstudio.md)
 * [Node.js przy użyciu interfejsu wiersza polecenia i programu Visual Studio Code](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Sposób działania usługi Azure Dev miejsca do magazynowania
@@ -66,7 +66,7 @@ Gdy aplikacja jest uruchomiona, klienta również narzędzia:
 Możesz użyć klienta narzędzia z wiersza polecenia jako część `azds` polecenia. Można również użyć klienta narzędzi za pomocą:
 
 * Za pomocą programu Visual Studio Code [rozszerzenia usługi Azure Dev miejsca do magazynowania](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio 2017 z [Visual Studio Tools dla platformy Kubernetes](https://aka.ms/get-vsk8stools).
+* Program Visual Studio z [Visual Studio Tools dla platformy Kubernetes](https://aka.ms/get-vsk8stools).
 
 Poniżej przedstawiono podstawowy przepływ do konfigurowania i korzystania z usługi Azure Dev miejsca do magazynowania:
 1. Przygotuj klastra usługi AKS do usługi Azure Dev miejsca do magazynowania
@@ -337,7 +337,7 @@ Za pomocą *install.values* właściwości, możesz wyświetlić listę jednego 
 
 W powyższym przykładzie *install.set.replicaCount* właściwość zawiera informacje kontrolera, ile wystąpień aplikację do uruchamiania w obszarze deweloperów. Zależnie od scenariusza można zwiększyć tę wartość, ale jej wpływ na dołączanie debugera do zasobnika Twojej aplikacji. Aby uzyskać więcej informacji, zobacz [artykule dotyczącym rozwiązywania problemów](troubleshooting.md).
 
-W wygenerowanym wykresu Helm obraz kontenera jest ustawiona na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}*. `azds.yaml` Plik definiuje *install.set.image.tag* właściwość jako *$(tag)* domyślnie używany jako wartość pozycji *{{. VALUES.Image.tag}}*. Ustawiając *install.set.image.tag* właściwości w ten sposób umożliwia obrazu kontenera dla swojej aplikacji, które ma zostać oznaczony w odrębnych sposób podczas uruchamiania usługi Azure Dev miejsca do magazynowania. W tym konkretnym przypadku obraz, który jest oznaczony jako  *<value from image.repository>: $(tag)*. Należy użyć *$(tag)* zmiennej jako wartości *install.set.image.tag* w kolejności dla miejsca do magazynowania Dev rozpoznaje i odszukaj kontener w klastrze AKS.
+W wygenerowanym wykresu Helm obraz kontenera jest ustawiona na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}*. `azds.yaml` Plik definiuje *install.set.image.tag* właściwość jako *$(tag)* domyślnie używany jako wartość pozycji *{{. VALUES.Image.tag}}*. Ustawiając *install.set.image.tag* właściwości w ten sposób umożliwia obrazu kontenera dla swojej aplikacji, które ma zostać oznaczony w odrębnych sposób podczas uruchamiania usługi Azure Dev miejsca do magazynowania. W tym konkretnym przypadku obraz, który jest oznaczony jako  *\<wartość image.repository >: $(tag)*. Należy użyć *$(tag)* zmiennej jako wartości *install.set.image.tag* w kolejności dla miejsca do magazynowania Dev rozpoznaje i odszukaj kontener w klastrze AKS.
 
 W powyższym przykładzie `azds.yaml` definiuje *install.set.ingress.hosts*. *Install.set.ingress.hosts* właściwość definiuje format nazwy hosta, dla publicznych punktów końcowych. Ta właściwość używa również *$(spacePrefix)*, *$(rootSpacePrefix)*, i *$(hostSuffix)*, które są dostarczone przez kontroler. 
 
@@ -404,11 +404,11 @@ ingress:
 
 ## <a name="debug-your-code"></a>Debugowanie kodu
 
-W przypadku aplikacji Java, .NET i Node.js można debugować aplikacji uruchamiającej bezpośrednio w obszarze deweloperów przy użyciu programu Visual Studio Code lub Visual Studio 2017. Visual Studio Code i Visual Studio 2017 zapewnia narzędzia, aby nawiązać połączenie z obszaru dev, uruchamiają twoją aplikację i dołączyć debuger. Po uruchomieniu `azds prep`, można otworzyć projektu w programie Visual Studio Code lub Visual Studio 2017. Visual Studio Code lub Visual Studio 2017, spowoduje wygenerowanie własnych plików konfiguracyjnych łączenia, które są oddzielne od uruchamiania `azds prep`. Z w ramach programu Visual Studio Code lub Visual Studio 2017, można ustawić punkty przerwania i uruchamiają twoją aplikację do obszaru deweloperów.
+W przypadku aplikacji Java, .NET i Node.js można debugować aplikacji uruchamiającej bezpośrednio w obszarze deweloperów przy użyciu programu Visual Studio Code lub Visual Studio. Visual Studio Code i Visual Studio zapewnia narzędzia, aby nawiązać połączenie z obszaru dev, uruchamiają twoją aplikację i dołączyć debuger. Po uruchomieniu `azds prep`, można otworzyć projektu w programie Visual Studio Code lub Visual Studio. Visual Studio Code lub Visual Studio wygeneruje własnych plików konfiguracyjnych łączenia, które są oddzielne od uruchamiania `azds prep`. Z w ramach programu Visual Studio Code lub Visual Studio, można ustawić punkty przerwania i uruchamiają twoją aplikację do obszaru deweloperów.
 
 ![Debugowanie kodu](media/get-started-node/debug-configuration-nodejs2.png)
 
-Po uruchomieniu aplikacji za pomocą programu Visual Studio Code lub Visual Studio 2017 do debugowania, obsługę uruchamiania i łączenia przestrzeni dev w taki sam sposób, jak działa `azds up`. Narzędzi po stronie klienta w programie Visual Studio Code i Visual Studio 2017, udostępniają dodatkowy parametr przy użyciu określonych informacji dotyczących debugowania. Parametr zawiera nazwy obrazu debugera, lokalizacja debugera w obrazie debugera i lokalizacji docelowej w kontenerze aplikacji do zainstalowania folder debugera. 
+Po uruchomieniu aplikacji za pomocą programu Visual Studio Code lub Visual Studio do debugowania, obsługę uruchamiania i łączenia przestrzeni dev w taki sam sposób, jak działa `azds up`. Narzędzia po stronie klienta w programie Visual Studio Code i Visual Studio oferują również dodatkowy parametr przy użyciu określonych informacji dotyczących debugowania. Parametr zawiera nazwy obrazu debugera, lokalizacja debugera w obrazie debugera i lokalizacji docelowej w kontenerze aplikacji do zainstalowania folder debugera. 
 
 Obraz debugera jest ustalany automatycznie narzędzia po stronie klienta. Używa metody podobnej do komentarzowi użytemu w pliku Dockerfile i wygenerować planu Helm, podczas uruchamiania `azds prep`. Po debuger jest zainstalowany w aplikacji, obrazów, jest uruchamiane przy użyciu `azds exec`.
 
@@ -433,12 +433,12 @@ Aby rozpocząć pracę, przy użyciu usługi Azure Dev miejsca do magazynowania,
 
 * [Java za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](quickstart-java.md)
 * [.NET core za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](quickstart-netcore.md)
-* [.NET core w programie Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core z programem Visual Studio](quickstart-netcore-visualstudio.md)
 * [Node.js przy użyciu interfejsu wiersza polecenia i programu Visual Studio Code](quickstart-nodejs.md)
 
 Aby rozpocząć projektowanie zespołowe, zobacz następujące artykuły z poradami:
 
 * [Programowanie zespołowe — Java za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](team-development-java.md)
 * [Programowanie zespołowe — .NET Core za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](team-development-netcore.md)
-* [Programowanie zespołowe — .NET Core w programie Visual Studio 2017](team-development-netcore-visualstudio.md)
+* [Programowanie zespołowe — .NET Core z programem Visual Studio](team-development-netcore-visualstudio.md)
 * [Programowanie zespołowe — Node.js przy użyciu interfejsu wiersza polecenia i programu Visual Studio Code](team-development-nodejs.md)

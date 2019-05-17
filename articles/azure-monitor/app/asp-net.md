@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472036"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595559"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET.
 
@@ -28,7 +28,7 @@ Konfiguracja wymaga tylko kilku kliknięć w programie Visual Studio. Masz możl
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby dodać usługę Application Insights do witryny internetowej:
 
-- Zainstaluj [program Visual Studio 2017 dla systemu Windows](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+- Zainstaluj [Visual Studio 2019 r dla Windows](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
     - ASP.NET i tworzenie aplikacji internetowych (nie Usuń zaznaczenie pola wyboru składniki opcjonalne)
     - Programowanie na platformie Azure
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="ide"></a> Krok 1: Dodawanie zestawu SDK usługi Application Insights
 
 > [!IMPORTANT]
-> Zrzuty ekranu, w tym przykładzie są oparte na wersji 15.9.9 Visual Studio 2017. Środowisko Aby dodać usługę Application Insights różni się w różnych wersjach programu Visual Studio 2017, a także typu szablonu platformy ASP.NET. Starsze wersje mogą mieć tekst alternatywny, taki jak "Konfiguruj usługę Application Insights".
+> Zrzuty ekranu, w tym przykładzie są oparte na programie Visual Studio 2017 w wersji 15.9.9 lub nowszy. Środowisko Aby dodać usługę Application Insights różni się w różnych wersjach programu Visual Studio, a także typu szablonu platformy ASP.NET. Starsze wersje mogą mieć tekst alternatywny, taki jak "Konfiguruj usługę Application Insights".
 
 Kliknij prawym przyciskiem myszy nazwę aplikacji sieci web w Eksploratorze rozwiązań, a następnie wybierz **Dodaj** > **Telemetria usługi Application Insights**
 

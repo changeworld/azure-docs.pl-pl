@@ -4,7 +4,7 @@ description: Ten artykuł zawiera listę wszystkich wersji serwera Proxy aplikac
 services: active-directory
 documentationcenter: ''
 author: msmimart
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441665"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783284"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Serwer Proxy aplikacji usługi Azure AD: Historia wersji
 W tym artykule wymieniono wersje i funkcje serwera Proxy aplikacji usługi Azure Active Directory (Azure AD), które zostały zwolnione. Zespół usługi Azure AD regularnie aktualizuje serwera Proxy aplikacji za pomocą nowych funkcji. Łączników serwera Proxy aplikacji są aktualizowane automatycznie po udostępnieniu nowej wersji.

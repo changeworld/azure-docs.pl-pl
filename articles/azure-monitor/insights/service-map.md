@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404643"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606508"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa ta pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja z wyjątkiem zainstalowania agenta.
@@ -91,7 +91,7 @@ Użytkownicy wybierają serwerów, które należą do grupy ze sobą i wybierz n
 ### <a name="creating-a-machine-group"></a>Tworzenie grupy maszyn
 Aby utworzyć grupę, wybierz maszynie lub maszynach, na liście komputerów, a następnie kliknij pozycję **Dodaj do grupy**.
 
-![Tworzenie grupy](media/service-map/machine-groups-create.png)
+![Utwórz grupę](media/service-map/machine-groups-create.png)
 
 Tam możesz wybrać **Utwórz nową** i nadaj nazwę grupie.
 
@@ -348,7 +348,7 @@ Dla wygody adres IP zdalnego punktu końcowego połączenia znajduje się we wł
 
 | Właściwość | Opis |
 |:--|:--|
-| `RemoteCountry` |Nazwa kraju RemoteIp hostingu.  Na przykład *Stanów Zjednoczonych* |
+| `RemoteCountry` |Nazwa kraju/regionu, hostingu RemoteIp.  Na przykład *Stanów Zjednoczonych* |
 | `RemoteLatitude` |Szerokość geograficzną.  Na przykład *47.68* |
 | `RemoteLongitude` |Długość geograficzna geolokalizacji.  Na przykład *-122.12* |
 
@@ -510,5 +510,5 @@ Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-ove
 Zobacz [Rozwiązywanie problemów z części dokumentu konfigurowania rozwiązania Service Map]( service-map-configure.md#troubleshooting).
 
 
-## <a name="feedback"></a>Opinia
+## <a name="feedback"></a>Opinie
 Masz opinię dla nas o rozwiązania Service Map lub tej dokumentacji?  Odwiedź nasze [stronę z opiniami użytkowników](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), gdzie możesz proponować funkcje lub głosować się sugestie istniejących.

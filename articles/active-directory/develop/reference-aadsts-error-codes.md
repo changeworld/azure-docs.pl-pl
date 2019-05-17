@@ -3,8 +3,8 @@ title: Azure Active Directory uwierzytelnianie i autoryzacja kodów do błędów
 description: Dowiedz się więcej o kodach błędów AADSTS, które zostaną zwrócone z usługi tokenu zabezpieczającego (STS) usługi Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 02/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 287e4ee53a108d1e2b83d4a8b11a98a2c7727721
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298312"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545585"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 

@@ -2,22 +2,22 @@
 title: Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory | Microsoft Docs
 description: W tym artykule przedstawiono korzyści wynikające z integracji usługi Azure Active Directory z aplikacji lokalnymi, w chmurze i SaaS.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 10/30/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a65c42ff2d03946c021497e350836623a408ce7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 657527272ccf8b5f69764052a2385ceec57ddc03
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291057"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826036"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory
 
@@ -40,6 +40,6 @@ Logowanie jednokrotne zwiększa bezpieczeństwo. *Bez logowania jednokrotnego* a
 ## <a name="address-governance-and-compliance"></a>Obsługa zarządzania i zgodności
 Dzięki usłudze Azure AD można monitorować logowania do aplikacji za pomocą raportów korzystających z narzędzi do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM). Raporty są dostępne z poziomu portalu lub interfejsów API. Można również programowo przeprowadzać inspekcję użytkowników z dostępem do aplikacji i usuwać prawa dostępu do nieaktywnych użytkowników za pośrednictwem przeglądów dostępu.
 
-## <a name="manage-costs"></a>Zarządzanie kosztami
+## <a name="manage-costs"></a>Zarządzaj kosztami
 Dzięki migracji do usługi Azure AD można obniżyć koszty i rozwiązać problemy związane z zarządzaniem infrastrukturą lokalną. Usługa Azure AD oferuje również samoobsługowy dostęp do aplikacji, co pozwala zaoszczędzić czas pracy administratorów i użytkowników. Logowanie jednokrotne eliminuje hasła specyficzne dla aplikacji. Możliwość zalogowania się tylko raz pozwala zmniejszyć koszty związane z resetowaniem haseł aplikacji oraz utratą produktywności podczas pobierania haseł.
 

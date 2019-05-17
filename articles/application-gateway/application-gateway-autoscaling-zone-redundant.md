@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 5/16/2019
 ms.author: victorh
-ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510818"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827426"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
 
@@ -62,7 +62,7 @@ Obliczenia wskazówki jednostki:
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[Stronę z cennikiem](https://azure.microsoft.com/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
+Aby uzyskać więcej informacji o cenach, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/application-gateway/). Rozliczenia jest zaplanowane do uruchomienia w dniu 1 lipca 2019 r.
 
 **Przykład 1**
 
@@ -100,7 +100,7 @@ Cena jednostki pojemności = 744(hours) * Max (Max(25/50 for connections/sec, 80
 Usługa Application Gateway i zapory aplikacji sieci Web można skonfigurować do skalowania w dwóch trybach:
 
 - **Skalowanie automatyczne** — z włączonym skalowaniem automatycznym, usługa Application Gateway i zapory aplikacji sieci Web w wersji 2, jednostki SKU skalować w górę lub w dół w zależności od wymagań ruchu aplikacji. W tym trybie oferuje lepsze elastyczność aplikacji i eliminuje potrzebę odgadnięcia licznik rozmiaru lub wystąpienia bramy aplikacji. Ten tryb umożliwia obniżenie kosztów przez nie wymaga, by było uruchamiane bram szczytu aprowizowana pojemność dla przewidywanego ruchu maksymalnego obciążenia. Klienci muszą określać minimalną i opcjonalnie maksymalną liczbą wystąpień. Pojemności minimalnej gwarantuje, że usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 nie spadnie poniżej minimalnej liczby wystąpień określony, nawet przy braku ruchu sieciowego. Opłata jest naliczana dla tej minimalnej pojemności, nawet w przypadku braku dowolnego ruchu. Możesz również opcjonalnie określić maksymalną liczbę wystąpień, który zapewnia, że Application Gateway nie skalować poza określoną liczbę wystąpień. Nadal będzie naliczana ilości ruch przez bramę. Liczbę wystąpień może należeć do zakresu od 0 do 125. Domyślna wartość maksymalna liczba wystąpień to 20, jeśli nie określono.
-- **Ręczne** — może też ręcznego trybu, w których brama nie będzie skalowania automatycznego. W tym trybie Jeśli istnieje więcej ruchu niż jakie Application Gateway i zapory aplikacji sieci Web jest zdolny do obsługi go może spowodować utratę ruchu. W trybie ręczne określenie liczby wystąpień jest obowiązkowy. Liczba wystąpień może się różnić od 1 do 125 wystąpień.
+- **Ręczne** — może też ręcznego trybu, w których brama nie będzie skalowania automatycznego. W tym trybie Jeśli istnieje więcej ruchu niż co usługa Application Gateway i zapory aplikacji sieci Web może obsługiwać, jego może spowodować utratę ruchu. W trybie ręczne określenie liczby wystąpień jest obowiązkowy. Liczba wystąpień może się różnić od 1 do 125 wystąpień.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji jednostki SKU v1 i v2 jednostki SKU
 

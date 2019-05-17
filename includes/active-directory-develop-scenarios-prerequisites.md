@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 192e3d4b0fee350b5e736aba423990874d8fd5f4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c2769282a2e9afda22d2e03c653b0f62b05b98bc
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075088"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550377"
 ---
-W tym artykule założono, że znasz następujące pojęcia lub po ich przeczytaniu następujących artykułach:
+Przed przeczytaniem tego artykułu, należy znać następujące pojęcia lub przeczytaj następujące artykuły:
 
 - [Omówienie platformy tożsamości firmy Microsoft](../articles/active-directory/develop/v2-overview.md)
 - [Informacje podstawowe o uwierzytelnianiu](../articles/active-directory/develop/authentication-scenarios.md)

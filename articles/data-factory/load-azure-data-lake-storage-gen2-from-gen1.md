@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6e09ec1f070f9ee0f4162524e4bd80d1f81adc3
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546272"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560651"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 do Gen2 za pomocą usługi Azure Data Factory
 
@@ -130,14 +130,49 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
 
 16. Upewnij się, że dane zostały skopiowane na konto usługi Data Lake Storage Gen2.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Podczas kopiowania dużych woluminów danych z magazynu danych oparte na plikach, sugerowane do:
+Aby ocenić, uaktualniania z usługi Azure Data Lake Storage (ADLS) Gen1 do Gen2 ogólnie rzecz biorąc, zapoznaj się [uaktualniania rozwiązań do analizy danych big data z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md). Poniższe sekcje wprowadzenie najlepsze rozwiązania w celu uaktualnienia dane z Gen1 Gen2 za pomocą usługi ADF.
 
-- Podzielić pliki na 10TB do użycia pojemności 30TB każdy.
-- Nie wyzwalają zbyt wiele przebiegów współbieżnych kopiowania, aby uniknąć ograniczania z magazynów danych źródła lub ujścia. Możesz uruchomić za pomocą jednej kopii, uruchom i monitor przepływności, a następnie stopniowo dodawać więcej zgodnie z potrzebami.
+### <a name="data-partition-for-historical-data-copy"></a>Partycja danych związanym z kopiowaniem danych historycznych
+
+- Jeśli rozmiar całkowitej ilości danych w usłudze ADLS Gen1 mniej niż **pojemności 30TB** i liczba plików jest mniejsza niż **1 milion**, możesz skopiować wszystkie dane w ramach pojedynczego uruchomienia działania kopiowania.
+- Jeśli masz większy rozmiar dane do skopiowania lub mają możliwość zarządzania migracją danych w partiach i upewnij się, każdy z nich zakończył w obrębie określonego czasu systemu windows są sugerowane podzielenia danych, w którym to przypadku może obniżyć ryzyko wszelkie nieoczekiwane iss UE.
+
+Zdecydowanie zaleca się PoC (weryfikacja koncepcji) w celu zweryfikowania kompleksowe rozwiązania i przetestowania przepływności kopiowania w danym środowisku. Główne kroki weryfikacji koncepcji działania: 
+
+1. Utwórz jeden potok ADF za pomocą działania kopiowania pojedynczego skopiować kilka TB danych z usługi ADLS Gen1 do Gen2 usługi ADLS, aby uzyskać punkt odniesienia wydajności kopiowania, począwszy od [jednostek integracji danych (DIUs)](copy-activity-performance.md#data-integration-units) jako 128. 
+2. Na podstawie kopii przepływności pobranego w kroku #1, Oblicz szacowany czas wymagany do migracji danych. 
+3. (Opcjonalnie) Utwórz tabelę kontroli i zdefiniuj filtr pliku do partycjonowania plików przeznaczonych do migracji. Sposób partycji pliki jako następujących tematach: 
+
+    - Partycje według nazwy folderu lub nazwa folderu za pomocą filtr z symbolami wieloznacznymi (zalecane) 
+    - Podzielona na partycje godzina ostatniej modyfikacji pliku 
+
+### <a name="network-bandwidth-and-storage-io"></a>Przepustowości i magazynu we/wy sieci 
+
+Współbieżność zadań kopiowania usługi ADF, których dane z usługi ADLS Gen1 do odczytu i zapisu danych ADLS Gen2 można kontrolować, tak, aby można było zarządzać użycie na we/wy magazynu w celu nie miało wpływu na zwykłą działalnością pracy na ADLS Gen1 podczas migracji.
+
+### <a name="permissions"></a>Uprawnienia 
+
+W usłudze Data Factory [łącznika usługi ADLS Gen1](connector-azure-data-lake-store.md) obsługuje nazwy głównej usługi i tożsamości zarządzanej uwierzytelnień zasobów platformy Azure; [Łącznika usługi ADLS Gen2](connector-azure-data-lake-storage.md) obsługuje konta klucz jednostki usługi i tożsamości zarządzanej dla usługi Azure resource uwierzytelnień. Fabryka danych mogła przejść i kopiowania, które wszystkie pliki/list ACL według potrzeb, upewnij się, że możesz wysokiego przyznane wystarczające uprawnienia do konta zapewnienie dostępu/Odczyt/zapis wszystkich plików i ustawić list ACL, jeśli zdecydujesz się. Zaproponuj przyznania jako rola super użytkowników/właściciela w okresie migracji. 
+
+### <a name="preserve-acls-from-data-lake-storage-gen1"></a>Zachowaj listy ACL z Gen1 Lake magazynu danych
+
+Jeśli chcesz replikować list ACL wraz z plikami danych podczas uaktualniania z programu Data Lake Storage Gen1 do Gen2, zapoznaj się [zachować listy ACL z Data Lake Storage Gen1](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1). 
+
+### <a name="incremental-copy"></a>Przyrostowa kopia 
+
+Kilka metod może służyć do załadowania tylko nowe lub zaktualizowane pliki z usługi ADLS Gen1:
+
+- Ładowanie nowych lub zaktualizowanych plików przez czas podzielonym na partycje katalogu ani nazwie pliku, np. / 2019 r/05/13 / *;
+- Ładowanie nowych lub zaktualizowanych plików, Data ostatniej modyfikacji;
+- Identyfikowanie nowych lub zaktualizowanych plików przez wszystkie 3 rozwiązanie innej firmy narzędzia /, a następnie przekaż nazwę pliku lub folderu do potoku usługi ADF za pośrednictwem parametru lub tabeli/pliku.  
+
+Częstotliwość odpowiedniego celu przyrostowego ładowania zależy od tego, całkowita liczba plików w usłudze ADLS Gen1 i liczby nowych lub zaktualizowanych plików, które mają zostać załadowane, każdym razem, gdy.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Omówienie działania kopiowania](copy-activity-overview.md)
-* [Łącznik usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+> [!div class="nextstepaction"]
+> [Omówienie działania kopiowania](copy-activity-overview.md)
+> [łącznika usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+> [łącznika usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)

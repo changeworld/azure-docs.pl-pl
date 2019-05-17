@@ -3,8 +3,8 @@ title: Przykłady kodu platformy tożsamości firmy Microsoft | Dokumentacja fir
 description: Dostarcza indeks tożsamości firmy Microsoft dostępne przykłady kodu platformy (punkt końcowy w wersji 2), uporządkowane według scenariusza.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/26/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09c5bd217f852f7130888d03e3368278af8abce5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: e3dc8bda4e3ffb667d12342cf451591113ea9dc0
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190874"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545424"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Przykłady kodu platformy tożsamości firmy Microsoft (punktu końcowego v2.0)
 

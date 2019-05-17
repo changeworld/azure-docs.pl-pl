@@ -5,19 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 05/13/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 39c64b9fe4e03bb0b7216a8d1ba607bec10b4708
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744414"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561280"
 ---
 Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest najlepszy w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
-* Seria M oferuje największą liczbę procesorów vCPU (maksymalnie 128 procesorów wirtualnych) i największą ilość pamięci (aż do 3,8 TiB) dowolnej maszyny Wirtualnej w chmurze.  Jest to idealne rozwiązanie dla bardzo dużych baz danych lub innych aplikacji, które korzystają z dużej liczby procesorów wirtualnych vCPU i dużych ilości pamięci.
+* Seria Mv2 oferuje największą liczbę procesorów wirtualnych (Vcpu do 208) i największą ilość pamięci (do wersji 5.7 TiB) dowolnej maszyny Wirtualnej w chmurze. Jest to idealne rozwiązanie dla bardzo dużych baz danych lub innych aplikacji, które korzystają z dużej liczby procesorów wirtualnych vCPU i dużych ilości pamięci.
+ 
+* Seria M oferuje większą ilość pamięci (aż do 3,8 TiB) i liczba procesorów wirtualnych o wysokiej (maksymalnie 128 procesorów wirtualnych). To również idealne rozwiązanie dla bardzo dużych baz danych lub innych aplikacji, które korzystają z procesorów wirtualnych o wysokiej liczbie i dużej ilości pamięci.
 
 * Seria Dv2 serii G i ich odpowiedniki DSv2/GS są idealne dla aplikacji wymagających szybszych procesorów wirtualnych vcpu, lepszej wydajności magazynu tymczasowego lub większych ilości pamięci. Oferują one kombinację opcji o dużych możliwościach dla wielu aplikacji klasy korporacyjnej.
 
@@ -86,6 +88,24 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 <sup>2</sup> ograniczonego dostępnych rozmiarów core.
 
 <sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
+
+
+## <a name="mv2-series"></a>Mv2 serii
+
+Magazyn w warstwie Premium: Obsługiwane
+
+Buforowanie Premium Storage: Obsługiwane
+
+Akcelerator zapisu: [Obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+|Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+|-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
+| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+
+Maszyny Wirtualne serii Mv2 są wyposażone w technologię Intel® Hyper-Threading  
+
+<sup>1</sup> te dużych procesory wirtualne wymagają jednego z tych systemów operacyjnych gościa: Windows Server 2016, Windows Server 2019 r, SLES 12 z dodatkiem SP4 i SLES 15 RHEL 7.6
 
 
 ## <a name="m-series"></a>Seria M 

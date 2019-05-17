@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444359"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596629"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -46,7 +46,7 @@ Na końcu tego samouczka, możesz uruchomić dwie aplikacje konsolowe środowisk
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Środowisko Node.js w wersji 4.0.x lub nowszej.
+* Środowisko node.js w wersji 10.0.x lub nowszej.
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
 

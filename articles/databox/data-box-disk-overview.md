@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 05/15/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 20b8d7a6a7d6da639481045d9462c484b820a4df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 194f2b80e9cbf3a69fef6ce382e6755934f1d5bd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575843"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787437"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -87,24 +87,9 @@ Aby uzyskać więcej informacji, przejdź do tematu [Zabezpieczenia i ochrona da
 |Zarządzanie                                               | Azure Portal |
 
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność regionalna
 
-Obecnie usługa Data Box Disk może przesyłać dane do następujących regionów świadczenia usługi Azure:
-
-
-|Region platformy Azure  |Region platformy Azure  |
-|---------|---------|
-|Środkowo-zachodnie stany USA     |Kanada Środkowa       |        
-|Zachodnie stany USA 2     |Kanada Wschodnia         |     
-|Zachodnie stany USA     | Europa Zachodnia        |      
-|Środkowo-południowe stany USA   |Europa Północna     |         
-|Środkowe stany USA     |Australia Wschodnia|
-|Środkowo-północne stany USA  |Australia Południowo-Wschodnia   |
-|Wschodnie stany USA      |Australia Środkowa |
-|Wschodnie stany USA 2     |Australia Środkowa 2|
-|Japonia Wschodnia     |Korea Środkowa |
-|Japonia Zachodnia     |Korea Południowa |
-|Azja Południowo-Wschodnia |
+Aby uzyskać informacje na temat dostępności regionu, przejdź do [Azure dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
 
 ## <a name="pricing"></a>Cennik

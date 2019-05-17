@@ -1,19 +1,18 @@
 ---
 title: Użyj unikatowe klucze w usłudze Azure Cosmos DB
 description: Dowiedz się, jak za pomocą unikatowych kluczy bazy danych Azure Cosmos
-author: rockboyfor
-ms.author: v-yeche
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 04/08/2019
-ms.date: 04/15/2019
+ms.date: 04/08/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3c5e8a2c85898175772dc353258e77fc8e0a74f2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c3524f27cc14050647c457fdb5e87b2b83dbdfc0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115727"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595878"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Unikatowe ograniczenia klucza w usłudze Azure Cosmos DB
 
@@ -27,14 +26,14 @@ Tworzenie elementów przy użyciu tego samego adresu e-mail adres, ale nie sam i
 
 Na przykład kontener może zawierać elementy z następującymi wartościami, gdzie każdy element honoruje ograniczenia unique dla klucza.
 
-| CompanyID | Imię | Nazwisko |   Adres e-mail    |
-|-----------|------------|-----------|--------------------|
-|  Contoso  |    Gaby    |  Duperre  |  gaby@contoso.com  |
-|  Contoso  |    Gaby    |  Duperre  | gaby@fabrikam.com  |
-| Fabrikam  |    Gaby    |  Duperre  | gaby@fabrikam.com  |
-| Fabrikam  |    Ivan    |  Duperre  | gaby@fabrikam.com  |
-|  Fabrkam  |            |  Duperre  | gaby@fabraikam.com |
-|  Fabrkam  |            |           | gaby@fabraikam.com |
+|CompanyID|Imię|Nazwisko|Adres e-mail|
+|---|---|---|---|
+|Contoso|Gaby|Duperre|gaby@contoso.com |
+|Contoso|Gaby|Duperre|gaby@fabrikam.com|
+|Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
+|Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
+|Fabrkam|   |Duperre|gaby@fabraikam.com|
+|Fabrkam|   |   |gaby@fabraikam.com|
 
 Jeśli użytkownik podejmie próbę Wstaw element innego za pomocą kombinacji wymienionych w powyższej tabeli, otrzymasz komunikat o błędzie. Błąd wskazuje, czy unikatowe ograniczenie klucza nie został spełniony. Pojawi się jeden `Resource with specified ID or name already exists` lub `Resource with specified ID, name, or unique index already exists` jako zwracany komunikat. 
 
@@ -56,6 +55,5 @@ Unikatowe klucze można zdefiniować tylko wtedy, gdy należy utworzyć kontener
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [partycjami logicznymi](partition-data.md).
-
-<!-- Update_Description: update meta propreties, wording update -->
+* Dowiedz się więcej o [partycjami logicznymi](partition-data.md)
+* Zapoznaj się z [sposób definiowania unikatowe klucze](how-to-define-unique-keys.md) podczas tworzenia kontenera
