@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w chmurze SAP dla klientów, poł�
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SapCloudForCustomer**. | Yes |
 | url | Adres URL usługi SAP C4C OData. | Yes |
-| nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie SAP C4C. | Yes |
+| username | Określ nazwę użytkownika, aby nawiązać połączenie SAP C4C. | Yes |
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Brak źródła tak dla ujścia |
 
@@ -83,7 +83,7 @@ Aby skopiować dane z rozwiązaniem SAP Cloud klienta, należy ustawić właści
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **SapCloudForCustomerResource** |Yes |
-| ścieżka | Określ ścieżkę jednostką SAP C4C OData. |Yes |
+| path | Określ ścieżkę jednostką SAP C4C OData. |Yes |
 
 **Przykład:**
 
