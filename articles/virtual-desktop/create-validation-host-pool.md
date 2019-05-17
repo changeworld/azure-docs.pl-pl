@@ -7,20 +7,20 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: b654c177accb92d5b9a861f14874e795f4525a43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 91dd716a595dd56c14b3be0bf11a7b69eeb470d6
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793824"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834117"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Samouczek: Utwórz pulę hosta do sprawdzania poprawności aktualizacje usług
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Samouczek: Tworzenie puli hostów na potrzeby weryfikacji aktualizacji usług
 
 Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Przed wdrożeniem pule hostów do środowiska produkcyjnego, zdecydowanie zalecamy utworzenie puli hosta sprawdzania poprawności. Aktualizacje są stosowane najpierw do pul hosta sprawdzania poprawności, co pozwala na monitorowanie aktualizacji usługi przed zarządzeniem do środowiska produkcyjnego. Bez pulę hosta sprawdzania poprawności może nie wykryć zmiany, które wprowadzają błędy, które może skutkować przestojem dla użytkowników w środowisku produkcyjnym.
 
 Aby zapewnić działanie Twojej aplikacji z najnowszymi aktualizacjami, puli hosta weryfikacji powinny być podobne do hosta pul w środowisku produkcyjnym, jak to możliwe. Użytkownicy należy tak często, łączyć się z puli hosta sprawdzania poprawności do puli hosta produkcji. Jeśli zautomatyzowano testowania w puli hosta powinien być dołączany do automatycznego testowania w puli hosta sprawdzania poprawności.
 
-Możesz debugować błędy w puli hosta weryfikacji przy użyciu usługi Diagnostyka lub [pulpitu wirtualnego Windows artykuły dotyczące rozwiązywania problemów](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
+Możesz debugować błędy w puli hosta sprawdzania poprawności z oboma [funkcji diagnostyki](diagnostics-role-service.md) lub [pulpitu wirtualnego Windows artykuły dotyczące rozwiązywania problemów](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
 
 >[!NOTE]
 > Zaleca się pozostawienie puli hosta sprawdzania poprawności w miejscu, aby przetestować wszystkie przyszłe aktualizacje.

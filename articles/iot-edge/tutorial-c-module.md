@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f5f6b6473a3cbe078ae2357e1f908788e54af25d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 63169423e757f3e1e73a95a1523d74c8fc59b2b2
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573423"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835127"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: Tworzenie modułu C IoT Edge dla urządzeń z systemem Linux
 
@@ -38,10 +38,10 @@ Ten samouczek przedstawia sposób tworzenia modułu w **C** przy użyciu **progr
 
 Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów języka C z systemem Linux: 
 
-| C | Visual Studio Code | Visual Studio 2017 | 
-| - | ------------------ | ------------------ |
-| **AMD64 systemu Linux** | ![Używanie programu VS Code dla modułów języka C w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Na użytek programu VS 2017 modułów języka C w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |
-| **ARM32 systemu Linux** | ![Używanie programu VS Code dla modułów języka C w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Na użytek programu VS 2017 C modułów na ARM32 systemu Linux](./media/tutorial-c-module/green-check.png) |
+| C | Visual Studio Code | Visual Studio | 
+| - | ------------------ | ------------- |
+| **AMD64 systemu Linux** | ![Używanie programu VS Code dla modułów języka C w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Użyj programu VS dla modułów języka C w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |
+| **ARM32 systemu Linux** | ![Używanie programu VS Code dla modułów języka C w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Użyj programu VS dla modułów języka C w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 366a5512179136987a8fc984136c3c039a5b079d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61058354"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827273"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrowanie danych do usługi Azure Cosmos DB za pomocą narzędzia do migracji danych
 
@@ -63,7 +63,7 @@ Kod źródłowy narzędzia do migracji jest dostępny w witrynie GitHub w [tym r
 * **Dtui.exe**: Wersja narzędzia z interfejsem graficznym
 * **DT.exe**: Wersja narzędzia dla wiersza polecenia
 
-## <a name="select-data-source"></a>Wybieranie źródła danych
+## <a name="select-data-source"></a>Wybierz źródło danych
 
 Po zainstalowaniu narzędzia można rozpocząć importowanie danych. Jakiego rodzaju dane chcesz importować?
 
@@ -85,6 +85,19 @@ Po zainstalowaniu narzędzia można rozpocząć importowanie danych. Jakiego rod
 Opcja importera źródła dla plików JSON umożliwia importowanie plików JSON z co najmniej jednym dokumentem lub plików JSON, z których każdy zawiera tablicę dokumentów JSON. W przypadku dodawania folderów zawierających pliki JSON do zaimportowania możesz wybrać opcję cyklicznego wyszukiwania plików w podfolderach.
 
 ![Zrzut ekranu przedstawiający opcje źródła dla plików JSON — narzędzia do migracji bazy danych](./media/import-data/jsonsource.png)
+
+Parametry połączenia są w następującym formacie:
+
+`AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
+
+* `<CosmosDB Endpoint>` Jest identyfikator URI punktu końcowego. Tę wartość można uzyskać w witrynie Azure portal. Przejdź do konta usługi Azure Cosmos. Otwórz **Przegląd** okienka i skopiuj **URI** wartość.
+* `<AccountKey>` Jest "Password" lub **klucz podstawowy**. Tę wartość można uzyskać w witrynie Azure portal. Przejdź do konta usługi Azure Cosmos. Otwórz **parametry połączenia** lub **klucze** okienka, a następnie skopiuj "Password" lub **klucz podstawowy** wartość.
+* `<CosmosDB Database>` Jest nazwą bazy danych CosmosDB.
+
+Przykład: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
+
+> [!NOTE]
+> Użyj polecenia upewnij się, aby upewnić się, że konto usługi Cosmos DB określonego w polu Parametry połączenia są dostępne.
 
 Oto niektóre przykłady wiersza polecenia dotyczące importowania plików JSON:
 

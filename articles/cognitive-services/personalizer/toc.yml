@@ -49,14 +49,6 @@
       items:
         - name: Ocena w trybie offline
           href: how-to-offline-evaluation.md
-    - name: Korzystanie z kontenerów
-      items:
-        - name: Instalowanie i uruchamianie kontenerów
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
-          href: personalizer-container-howto.md
-        - name: Konfigurowanie kontenerów
-          href: personalizer-container-configuration.md
-          displayName: 'docker, run, apikey'
 - name: Dokumentacja
   items:
     - name: Przykłady

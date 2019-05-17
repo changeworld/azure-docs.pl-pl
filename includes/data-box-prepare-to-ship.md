@@ -2,21 +2,21 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a8070d25e2606d8ad72ac231a0a208072c612c5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1d52117440028c75b249f469f2b3576c2ab1c5c5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463152"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815584"
 ---
 Ostatnim krokiem jest przygotowanie urządzenia do wysłania. W tym kroku wszystkie udziały urządzenia zostają przeniesione do trybu offline. Po rozpoczęciu tego procesu dostęp do udziałów nie jest już możliwy.
 
 > [!IMPORTANT]
 > Przygotowywanie do wysłania jest wymagane, ponieważ umożliwia oflagowanie danych, które nie są zgodne z konwencjami nazewnictwa platformy Azure. Ten krok zostanie pominięty, można wynik w danych potencjalne błędy przekazywania z powodu niezgodnych danych.
 
-1. Przejdź do pozycji **Przygotowanie do wysłania** i kliknij przycisk **Rozpocznij przygotowywanie**. Domyślnie sumy kontrolne są obliczane podczas przygotowania do wysłania. Obliczanie sum kontrolnych może potrwać klika godzin a nawet dni — w zależności od rozmiaru danych. 
+1. Przejdź do pozycji **Przygotowanie do wysłania** i kliknij przycisk **Rozpocznij przygotowywanie**. Domyślnie sumy kontrolne są obliczane, podczas gdy dane są kopiowane. Przygotowywanie do wysłania kończy obliczanie sum kontrolnych i tworzy listę plików ( *plików - BOM*). Obliczanie sum kontrolnych może potrwać klika godzin a nawet dni — w zależności od rozmiaru danych. 
    
     ![Przygotowanie do wysłania 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -36,7 +36,7 @@ Ostatnim krokiem jest przygotowanie urządzenia do wysłania. W tym kroku wszyst
 
     Jeśli w tym kroku wystąpią błędy, konieczne będzie pobranie dziennika błędów i rozwiązanie problemów. Po usunięciu błędów uruchom **przygotowywanie do wysłania**.
 
-4. Po pomyślnym (bezbłędnym) zakończeniu przygotowywania do wysłania pobierz listę plików (tzw. manifest) skopiowanych w ramach tego procesu. Później możesz użyć tej listy, aby zweryfikować pliki przekazane na platformę Azure.
+4. Po pomyślnym (bezbłędnym) zakończeniu przygotowywania do wysłania pobierz listę plików (tzw. manifest) skopiowanych w ramach tego procesu. Później możesz użyć tej listy, aby zweryfikować pliki przekazane na platformę Azure. Aby uzyskać więcej informacji, zobacz [BOM sprawdzanie plików podczas przygotowywania do wysłania](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
     ![Przygotowanie do wysłania 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 

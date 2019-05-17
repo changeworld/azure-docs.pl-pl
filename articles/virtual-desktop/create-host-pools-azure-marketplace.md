@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 8e6991201b3cda5699849ac00cc92217c6b7bf72
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: e19523834c0ddb517fa9d15853411c1b58024b43
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524010"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834004"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace
 
@@ -58,6 +58,9 @@ Konfiguruj bloku maszyn wirtualnych:
 ### <a name="virtual-machine-settings"></a>Ustawienia maszyny wirtualnej
 
 Do bloku ustawienia maszyny wirtualnej:
+
+>[!NOTE]
+> Jeśli dołączasz maszyn wirtualnych w środowisku usług domenowych Azure AD, upewnij się, że użytkowników przyłączanie do domeny również członkiem [grupy Administratorzy usługi AAD DC](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
 
 1. Wybierz **źródło obrazu** i wprowadź odpowiednie informacje dotyczące sposobu znaleźć go i zapisz go. Jeśli zrezygnujesz z używania dysków zarządzanych, wybierz konto magazynu zawierające plik VHD.
 2. Wprowadź główną nazwę użytkownika i hasło dla konta domeny, do której zostaną dołączone maszyny wirtualne do domeny usługi Active Directory. Tej samej nazwy użytkownika i hasło zostaną utworzone na maszynach wirtualnych, jako konto lokalne. Później możesz zresetować te konta lokalnego.

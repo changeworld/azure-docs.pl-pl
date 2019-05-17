@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 64183ea09203ea965bb889fe4741fdaf4dbd1e02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42b7b6fac8f99d78e4a7460ad8753f48b0a3c0ba
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709941"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823438"
 ---
 # <a name="tutorial-anomaly-detection-with-c-application"></a>Samouczek: wykrywanie anomalii przy użyciu aplikacji języka C#
 
@@ -27,7 +27,7 @@ Poznaj podstawową aplikację systemu Windows, która używa interfejsu API wykr
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Przykład został opracowany dla programu .NET Framework za pomocą [programu Visual Studio 2017 w wersji Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
+Przykład został opracowany dla programu .NET Framework za pomocą [2019 usługi Visual Studio, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Subskrybowanie wykrywania anomalii i uzyskiwanie klucza subskrypcji 
 

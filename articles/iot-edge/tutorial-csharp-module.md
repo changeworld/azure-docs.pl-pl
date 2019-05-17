@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cec146382f0b64a38bf2d954b81051ba109b27
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: d98fd0c3417d54321c492b1e47679ec63f8c1603
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876045"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835167"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: Twórz C# moduł usługi IoT Edge dla urządzeń z systemem Linux
 
@@ -38,8 +38,8 @@ Ten samouczek przedstawia sposób tworzenia modułu w **C#** przy użyciu **prog
 
 Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów języka C z systemem Linux: 
 
-| C# | Visual Studio Code | Visual Studio 2017 | 
-| -- | ------------------ | ------------------ |
+| C# | Visual Studio Code | Visual Studio | 
+| -- | ------------------ | ------------- |
 | **AMD64 systemu Linux** | ![C#Moduły LinuxAMD64 w programie VS Code](./media/tutorial-c-module/green-check.png) | ![C#Moduły LinuxAMD64 w programie Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **ARM32 systemu Linux** | ![C#Moduły LinuxARM32 w programie VS Code](./media/tutorial-c-module/green-check.png) | ![C#Moduły LinuxARM64 w programie Visual Studio](./media/tutorial-c-module/green-check.png) |
 

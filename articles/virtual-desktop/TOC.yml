@@ -32,8 +32,6 @@
       href: create-host-pools-user-profile.md
     - name: Konfigurowanie metody równoważenia obciążenia usługi Windows Virtual Desktop
       href: configure-host-pool-load-balancing.md
-    - name: Identyfikowanie problemów za pomocą funkcji diagnostyki
-      href: diagnostics-role-service.md
     - name: Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
       href: set-up-customize-master-image.md
     - name: Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
@@ -54,6 +52,8 @@
   items:
     - name: 'Rozwiązywania problemów — omówienie, opinie i obsługa techniczna'
       href: troubleshoot-set-up-overview.md
+    - name: Identyfikowanie problemów za pomocą funkcji diagnostyki
+      href: diagnostics-role-service.md
     - name: Tworzenie dzierżawy i puli hosta
       href: troubleshoot-set-up-issues.md
     - name: Konfiguracja maszyny wirtualnej hosta sesji
