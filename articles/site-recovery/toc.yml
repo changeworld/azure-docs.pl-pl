@@ -187,6 +187,8 @@
               href: delete-vault.md
     - name: Odzyskiwanie po awarii VMware–Azure
       items:
+        - name: Konfigurowanie odzyskiwania po awarii w skali
+          href: vmware-physical-large-deployment.md
         - name: Konfigurowanie zasobów sieciowych
           items:
             - name: Zarządzanie interfejsami sieciowymi na potrzeby replikacji ze środowiska lokalnego na platformę Azure
@@ -269,6 +271,8 @@
               href: delete-vault.md
     - name: Odzyskiwanie po awarii maszyna fizyczna–Azure
       items:
+        - name: Konfigurowanie odzyskiwania po awarii w skali
+          href: vmware-physical-large-deployment.md
         - name: Konfigurowanie zasobów sieciowych
           items:
             - name: Zarządzanie interfejsami sieciowymi na potrzeby replikacji ze środowiska lokalnego na platformę Azure

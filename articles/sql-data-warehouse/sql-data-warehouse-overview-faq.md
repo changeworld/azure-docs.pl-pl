@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse — często zadawane pytania | Dokumentacja firmy Microsoft
 description: W tym artykule wymieniono się często zadawane pytania dotyczące usługi Azure SQL Data Warehouse, klientów i deweloperów
 services: sql-data-warehouse
-author: acomet
+author: happynicolle
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: acomet
+ms.author: nicw
 ms.reviewer: igorstan
-ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c16d95ea15fc358cb81b17b42570cb35f2e8c52d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747612"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795563"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse często zadawane pytania
 
@@ -23,7 +23,7 @@ ms.locfileid: "60747612"
 
 PYTANIE: Co oferuje magazyn danych SQL dla danych zabezpieczeń?
 
-A. SQL data Warehouse oferuje kilka rozwiązań do ochrony danych, takich jak funkcja TDE i inspekcji. Aby uzyskać więcej informacji, zobacz [Bezpieczeństwo].
+A. SQL data Warehouse oferuje kilka rozwiązań do ochrony danych, takich jak funkcja TDE i inspekcji. Aby uzyskać więcej informacji, zobacz [Zabezpieczenia].
 
 PYTANIE: Gdzie mogę znaleźć się, jakie normy prawnych lub biznesowych SQL DW zgodne z?
 
@@ -107,7 +107,7 @@ Aby uzyskać więcej informacji w usłudze SQL Data Warehouse jako całości, zo
 [Parametry połączeń]: ./sql-data-warehouse-connection-strings.md
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Biletami pomocy technicznej]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Bezpieczeństwo]: ./sql-data-warehouse-overview-manage-security.md
+[Zabezpieczenia]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
 [limitów pojemności]: ./sql-data-warehouse-service-capacity-limits.md
 [typy danych]: ./sql-data-warehouse-tables-data-types.md

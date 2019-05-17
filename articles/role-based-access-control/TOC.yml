@@ -17,6 +17,9 @@
       href: quickstart-assign-role-user-portal.md
     - name: Udzielanie dostępu użytkownikowi — PowerShell
       href: tutorial-role-assignments-user-powershell.md
+    - name: Udzielanie dostępu użytkownikom — szablon usługi Resource Manager
+      displayName: 'ARM, resource manager template'
+      href: tutorial-role-assignments-user-template.md
     - name: Udzielanie dostępu grupie — PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: Tworzenie roli niestandardowej — PowerShell
@@ -88,6 +91,7 @@
     - name: Interfejs API REST
       href: /rest/api/authorization/
     - name: Szablony usługi Resource Manager
+      displayName: ARM
       items:
         - name: Przypisania ról
           href: /azure/templates/microsoft.authorization/roleassignments

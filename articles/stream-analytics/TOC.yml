@@ -34,6 +34,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Pojęcia
   items:
+    - name: Wybieranie technologii analizy przesyłania strumieniowego
+      href: streaming-technologies.md
     - name: Typy wejść zadania
       items:
         - name: Przegląd danych wejściowych

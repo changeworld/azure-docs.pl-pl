@@ -50,6 +50,8 @@
       href: app-protection-based-conditional-access.md
     - name: Wymaganie urządzeń zarządzanych
       href: require-managed-devices.md
+    - name: Wymaganie zaufanych sieci na potrzeby rejestracji usługi MFA
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Wymaganie uwierzytelniania MFA w przypadku prób dostępu z niezaufanych sieci
       href: untrusted-networks.md
     - name: Wymaganie warunków użytkowania

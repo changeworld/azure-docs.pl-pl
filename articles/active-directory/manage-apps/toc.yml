@@ -167,6 +167,8 @@
           href: application-provisioning-config-problem.md
         - name: Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aplikacji z galerii do aprowizacji użytkowników
           href: application-provisioning-config-problem-storage-limit.md
+        - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
+          href: user-provisioning-sync-attributes-for-mapping.md
         - name: Użytkownicy nie są aprowizowani — aplikacja z galerii
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: Aprowizowano niewłaściwych użytkowników — aplikacja z galerii

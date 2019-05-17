@@ -7,7 +7,7 @@ metadata:
   description: 'Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.'
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 12/04/2018
+  ms.date: 5/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na
@@ -34,20 +34,28 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">Przeprowadzanie eksperymentu w chmurze</a> (nie jest wymagana instalacja)
           - html: <a href="service/quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
+          - html: <a href="service/ui-quickstart-run-experiment">Uruchamianie eksperymentu w interfejsie wizualnym</a> (bez użycia kodu)
         style: unordered
         type: list
-      - text: '<b>Samouczek dotyczący klasyfikacji obrazów, korzystający z danych MNIST:</b>'
+      - text: '<b>Samouczek: Klasyfikacja obrazów (dane MNIST) za pomocą zestawu SDK:</b>'
         type: paragraph
       - items:
           - html: 'Część 1: <a href="service/tutorial-train-models-with-aml">Trenowanie własnego modelu</a>'
           - html: 'Część 2: <a href="service/tutorial-deploy-models-with-aml">Wdrażanie tego modelu</a>'
         style: unordered
         type: list
-      - text: '<b>Samouczek modelowania regresji z danymi nowojorskich taksówek:</b>'
+      - text: '<b>Samouczek: Przewidywanie opłaty za przejazd taksówką za pomocą zestawu SDK:</b>'
         type: paragraph
       - items:
           - html: 'Część 1: <a href="service/tutorial-data-prep">Przygotowywanie danych do modelowania</a>'
           - html: 'Część 2: <a href="service/tutorial-auto-train-models">Trenowanie modeli przy użyciu zautomatyzowanego uczenia maszynowego</a>'
+        style: unordered
+        type: list
+      - text: '<b>Samouczek: Przewidywanie ceny samochodu za pomocą interfejsu wizualnego:</b>'
+        type: paragraph
+      - items:
+          - html: 'Część 1: <a href="service/ui-tutorial-automobile-price-train-score">Przewidywanie ceny samochodu</a>'
+          - html: 'Część 2: <a href="service/ui-tutorial-automobile-price-deploy">Wdrażanie modelu regresji</a>'
         style: unordered
         type: list
       - text: '<b>Używanie modeli:</b>'

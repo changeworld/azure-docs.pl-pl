@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4db99f23019b34e7361e3ead4096939b9499320d
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657754"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518088"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować użytkownika rejestracji i subskrypcji produktów
 
@@ -130,7 +130,7 @@ Następnie upewnij się, że punkt końcowy delegowania zapewnia następujące f
      > 
    * Porównaj skrótu powyżej obliczona wartość **sig** parametr zapytania. Jeśli dwa skróty są zgodne, przejdź do następnego kroku, w przeciwnym razie odrzucić żądanie.
 3. Przetwarzanie subskrypcji produktu, na podstawie typu operacji żądanej w **operacji** — na przykład, rozliczenia, w razie dalszych pytań itp.
-4. Na ten pomyślnie użytkownikowi produktu po swojej stronie, subskrypcja użytkownika do produktu API Management przez [wywołanie interfejsu API REST dla subskrypcji produktu].
+4. Na ten pomyślnie użytkownikowi produktu po swojej stronie, subskrypcja użytkownika do produktu API Management przez [wywoływanie interfejsu API REST dla subskrypcji].
 
 ## <a name="delegate-example-code"> </a> Przykładowy kod
 
@@ -186,7 +186,7 @@ Aby uzyskać więcej informacji na temat delegowania zobacz poniższy film wideo
 [Delegating product subscription]: #delegate-product-subscription
 [żądania tokenu logowanie jednokrotne (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Tworzenie użytkownika]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[wywołanie interfejsu API REST dla subskrypcji produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[wywoływanie interfejsu API REST dla subskrypcji]: https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate
 [Next steps]: #next-steps
 [przykładowego kodu podanego poniżej]: #delegate-example-code
 

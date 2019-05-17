@@ -463,3 +463,25 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Uzyskiwanie pomocy technicznej
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: Portal witryny Marketplace dla zastosowań komercyjnych w Centrum partnerskim
+  items:
+    - name: Omówienie
+      items:
+        - name: Co to jest witryna Marketplace dla zastosowań komercyjnych?
+          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Zarządzanie kontami
+      items:
+        - name: Tworzenie nowego konta w Centrum partnerskim
+          href: ./partner-center-portal/create-account.md
+        - name: Zarządzanie kontem w Centrum partnerskim
+          href: ./partner-center-portal/manage-account.md
+        - name: Znajdowanie lub tworzenie firmowego konta służbowego
+          href: ./partner-center-portal/company-work-accounts.md
+    - name: Tworzenie nowej oferty
+      items:
+        - name: Tworzenie oferty SaaS
+          href: ./partner-center-portal/create-new-saas-offer.md
+    - name: Stan publikowania
+      href: ./partner-center-portal/publishing-status.md
+    - name: Aktualizowanie istniejących ofert
+      href: ./partner-center-portal/update-existing-offer.md

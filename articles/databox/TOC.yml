@@ -36,6 +36,8 @@
           items:
             - name: Przeczytaj wytyczne dotyczące bezpieczeństwa
               href: data-box-safety.md
+            - name: Śledzenie i rejestrowanie
+              href: data-box-logs.md
             - name: Sprawdzanie wymagań
               items:
                 - name: Usługa Data Box

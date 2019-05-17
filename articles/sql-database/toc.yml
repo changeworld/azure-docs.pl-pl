@@ -368,7 +368,7 @@
   items:
     - name: Omówienie
       href: sql-database-howto.md
-    - name: Pojedyncza baza danych
+    - name: Pojedyncze bazy danych i elastyczne pule
       items:
         - name: Omówienie
           href: sql-database-howto-single-database.md
@@ -448,7 +448,7 @@
               href: elastic-jobs-tsql.md
             - name: Migracja (ze starego zadania elastycznego)
               href: elastic-jobs-migrate.md
-    - name: Wystąpienie zarządzane
+    - name: Wystąpienia zarządzane
       items:
         - name: Omówienie
           href: sql-database-howto-managed-instance.md
@@ -720,6 +720,10 @@
       href: sql-database-glossary-terms.md
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
       href: /learn/browse/?products=azure-sql-database
+    - name: Blog programu SQL Server
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Blog platformy Microsoft Azure
+      href: 'https://azure.microsoft.com/blog/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Publiczne zestawy danych

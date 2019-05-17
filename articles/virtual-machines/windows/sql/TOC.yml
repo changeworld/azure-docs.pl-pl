@@ -34,6 +34,8 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: Zarządzanie
       items:
+        - name: Rozszerzona obsługa programu SQL 2008 i R2
+          href: virtual-machines-windows-sql-server-2008-eos-extend-support.md
         - name: Łączenie z maszyną wirtualną
           href: virtual-machines-windows-sql-connect.md
         - name: Konfigurowanie magazynu

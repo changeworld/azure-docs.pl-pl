@@ -67,8 +67,10 @@
           href: data-box-edge-deploy-connect-setup-activate.md
         - name: '4 — Dodawanie, łączenie się w celu udostępniania'
           href: data-box-edge-deploy-add-shares.md
-        - name: 5 — Konfigurowanie zasobów obliczeniowych
+        - name: 5A — Konfigurowanie zasobów obliczeniowych (proste)
           href: data-box-edge-deploy-configure-compute.md
+        - name: 5B — Konfigurowanie zasobów obliczeniowych (zaawansowane)
+          href: data-box-edge-deploy-configure-compute-advanced.md
     - name: Pojęcia
       items:
         - name: Sprawdzanie wymagań

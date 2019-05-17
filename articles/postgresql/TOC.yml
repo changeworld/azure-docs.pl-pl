@@ -7,115 +7,147 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie bazy danych — portal
-      href: quickstart-create-server-database-portal.md
-    - name: Tworzenie bazy danych — interfejs wiersza polecenia platformy Azure
-      href: quickstart-create-server-database-azure-cli.md
-    - name: Tworzenie bazy danych — polecenie up interfejsu wiersza polecenia platformy Azure
-      href: quickstart-create-server-up-azure-cli.md
-    - name: Nawiązywanie połączeń i wykonywanie zapytań
+    - name: Pojedynczy serwer
       items:
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Java
-          href: connect-java.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: PHP
-          href: connect-php.md
-        - name: .NET
-          href: connect-csharp.md
-        - name: Przejdź
-          href: connect-go.md
+        - name: Tworzenie bazy danych — portal
+          href: quickstart-create-server-database-portal.md
+        - name: Tworzenie bazy danych — interfejs wiersza polecenia platformy Azure
+          href: quickstart-create-server-database-azure-cli.md
+        - name: Tworzenie bazy danych — polecenie up interfejsu wiersza polecenia platformy Azure
+          href: quickstart-create-server-up-azure-cli.md
+        - name: Nawiązywanie połączeń i wykonywanie zapytań
+          items:
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Java
+              href: connect-java.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: PHP
+              href: connect-php.md
+            - name: .NET
+              href: connect-csharp.md
+            - name: Przejdź
+              href: connect-go.md
+    - name: Hiperskala (Citus)
+      items:
+        - name: Tworzenie bazy danych — portal
+          href: quickstart-create-hyperscale-portal.md
 - name: Samouczki
   items:
-    - name: 1 — Projektowanie bazy danych
+    - name: Pojedynczy serwer
       items:
-        - name: Azure Portal
-          href: tutorial-design-database-using-azure-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: tutorial-design-database-using-azure-cli.md
-    - name: 2 — Projektowanie aplikacji internetowej — Python
-      href: ../app-service/containers/tutorial-python-postgresql-app.md
-      maintainContext: true
-    - name: 3 — Monitorowanie i dostrajanie
-      href: tutorial-monitor-and-tune.md
+        - name: 1 — Projektowanie bazy danych
+          items:
+            - name: Azure Portal
+              href: tutorial-design-database-using-azure-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: tutorial-design-database-using-azure-cli.md
+        - name: 2 — Projektowanie aplikacji internetowej — Python
+          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          maintainContext: true
+        - name: 3 — Monitorowanie i dostrajanie
+          href: tutorial-monitor-and-tune.md
+    - name: Hiperskala (Citus)
+      items:
+        - name: Projektowanie wielodostępnej bazy danych
+          href: tutorial-design-database-hyperscale-multi-tenant.md
+        - name: Projektowanie pulpitu nawigacyjnego w czasie rzeczywistym
+          href: tutorial-design-database-hyperscale-realtime.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: sample-scripts-azure-cli.md
 - name: Pojęcia
   items:
-    - name: Bazy danych i serwery
+    - name: Pojedynczy serwer
       items:
-        - name: Serwery
-          href: concepts-servers.md
-        - name: Obsługiwane wersje
-          href: concepts-supported-versions.md
-        - name: Rozszerzenia PostgreSQL
-          href: concepts-extensions.md
-        - name: Wysoka dostępność
-          href: concepts-high-availability.md
-    - name: Zasoby
-      items:
-        - name: Warstwy cenowe
-          href: concepts-pricing-tiers.md
-        - name: Limity
-          href: concepts-limits.md
-    - name: Bezpieczeństwo i dostęp do danych
-      items:
-        - name: Reguły zapory
-          href: concepts-firewall-rules.md
-        - name: Konfigurowanie protokołu SSL
-          href: concepts-ssl-connection-security.md
-        - name: Zaawansowana ochrona przed zagrożeniami
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: Ciągłość działalności biznesowej
-      items:
-        - name: Omówienie
-          href: concepts-business-continuity.md
-        - name: Tworzenie kopii zapasowej i przywracanie
-          href: concepts-backup.md
-    - name: Monitorowanie i dostrajanie
-      items:
+        - name: Bazy danych i serwery
+          items:
+            - name: Serwery
+              href: concepts-servers.md
+            - name: Obsługiwane wersje
+              href: concepts-supported-versions.md
+            - name: Rozszerzenia PostgreSQL
+              href: concepts-extensions.md
+            - name: Wysoka dostępność
+              href: concepts-high-availability.md
+        - name: Zasoby
+          items:
+            - name: Warstwy cenowe
+              href: concepts-pricing-tiers.md
+            - name: Limity
+              href: concepts-limits.md
+        - name: Dostęp do danych i zabezpieczenia
+          items:
+            - name: Reguły zapory
+              href: concepts-firewall-rules.md
+            - name: Konfigurowanie protokołu SSL
+              href: concepts-ssl-connection-security.md
+            - name: Zaawansowana ochrona przed zagrożeniami
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Sieć wirtualna
+              href: concepts-data-access-and-security-vnet.md
+        - name: Ciągłość działalności biznesowej
+          items:
+            - name: Omówienie
+              href: concepts-business-continuity.md
+            - name: Tworzenie kopii zapasowej i przywracanie
+              href: concepts-backup.md
         - name: Monitorowanie i dostrajanie
-          href: concepts-monitoring.md
-        - name: Dzienniki serwera
-          href: concepts-server-logs.md
-        - name: Magazyn zapytań
           items:
+            - name: Monitorowanie i dostrajanie
+              href: concepts-monitoring.md
+            - name: Dzienniki serwera
+              href: concepts-server-logs.md
             - name: Magazyn zapytań
-              href: concepts-query-store.md
-            - name: Scenariusze użycia magazynu zapytań
-              href: concepts-query-store-scenarios.md
-            - name: Najlepsze rozwiązania dotyczące magazynu zapytań
-              href: concepts-query-store-best-practices.md
-        - name: Szczegółowe informacje o wydajności zapytań
-          href: concepts-query-performance-insight.md
-        - name: Zalecenia dotyczące wydajności
-          href: concepts-performance-recommendations.md
-    - name: Opracowywanie zawartości
-      items:
-        - name: Biblioteki połączeń
-          href: concepts-connection-libraries.md
-        - name: Elastyczność połączenia
-          href: concepts-connectivity.md
-        - name: Tworzenie za pomocą usługi Azure Kubernetes Service (AKS)
-          href: concepts-aks.md
-        - name: Java
+              items:
+                - name: Magazyn zapytań
+                  href: concepts-query-store.md
+                - name: Scenariusze użycia magazynu zapytań
+                  href: concepts-query-store-scenarios.md
+                - name: Najlepsze rozwiązania dotyczące magazynu zapytań
+                  href: concepts-query-store-best-practices.md
+            - name: Szczegółowe informacje o wydajności zapytań
+              href: concepts-query-performance-insight.md
+            - name: Zalecenia dotyczące wydajności
+              href: concepts-performance-recommendations.md
+        - name: Opracowywanie zawartości
           items:
-            - name: Konfigurowanie modułu Spring Data JDBC
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
-            - name: Konfigurowanie modułu Spring Data JPA
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
-    - name: Replikacja
+            - name: Biblioteki połączeń
+              href: concepts-connection-libraries.md
+            - name: Elastyczność połączenia
+              href: concepts-connectivity.md
+            - name: Tworzenie za pomocą usługi Azure Kubernetes Service (AKS)
+              href: concepts-aks.md
+            - name: Java
+              items:
+                - name: Konfigurowanie modułu Spring Data JDBC
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                - name: Konfigurowanie modułu Spring Data JPA
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+        - name: Replikacja
+          items:
+            - name: Repliki do odczytu
+              href: concepts-read-replicas.md
+    - name: Hiperskala (Citus)
       items:
-        - name: Repliki do odczytu
-          href: concepts-read-replicas.md
+        - name: Węzły
+          href: concepts-hyperscale-nodes.md
+        - name: Rozproszone dane
+          href: concepts-hyperscale-distributed-data.md
+        - name: Wybieranie kolumny dystrybucji
+          href: concepts-hyperscale-choose-distribution-column.md
+        - name: Kolokacja tabeli
+          href: concepts-hyperscale-colocation.md
+        - name: Rozszerzenia PostgreSQL
+          href: concepts-hyperscale-extensions.md
+        - name: Zasoby
+          items:
+            - name: Opcje konfiguracji
+              href: concepts-hyperscale-configuration-options.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie użytkowników

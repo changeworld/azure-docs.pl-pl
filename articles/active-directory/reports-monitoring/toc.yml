@@ -31,6 +31,8 @@
       href: concept-audit-logs.md
     - name: Dzienniki logowania
       href: concept-sign-ins.md
+    - name: Raport użycia i szczegółowych informacji
+      href: concept-usage-insights-report.md
     - name: Ryzykowne logowania
       href: concept-risky-sign-ins.md
     - name: Zdarzenia o podwyższonym ryzyku
