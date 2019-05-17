@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589629"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602731"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregacje w zapytaniach dzienników usługi Azure Monitor
 
@@ -31,7 +31,7 @@ W tym artykule opisano funkcje agregacji w zapytaniach dzienników usługi Azure
 
 ## <a name="counts"></a>Liczniki
 
-### <a name="count"></a>count
+### <a name="count"></a>liczba
 Liczbę wierszy w zestawie, po zastosowaniu wszystkie filtry wyników. Poniższy przykład zwraca łączną liczbę wierszy w _wydajności_ tabelę z ostatnich 30 minut. Wynik jest zwracany w kolumnie o nazwie *count_* , chyba że przypisać określonej nazwy:
 
 
@@ -79,7 +79,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Ocena podgrupy
-Aby przeprowadzić liczbą lub inne agregacje podgrup w Twoich danych, należy użyć `by` — słowo kluczowe. Na przykład, aby określić liczbę unikatowych komputerów z systemem Linux, wysyłające pulsy w każdym kraju:
+Aby przeprowadzić liczbą lub inne agregacje podgrup w Twoich danych, należy użyć `by` — słowo kluczowe. Na przykład, aby określić liczbę unikatowych komputerów z systemem Linux, wysyłające pulsy w każdym kraju/regionu:
 
 ```Kusto
 Heartbeat 
@@ -89,14 +89,14 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|Stany Zjednoczone    | 19                  |
+|Stany Zjednoczone Ameryki    | 19                  |
 |Kanada           | 3                   |
 |Irlandia          | 0                   |
 |Zjednoczone Królestwo   | 0                   |
 |Holandia      | 2                   |
 
 
-W celu przeanalizowania mniejszych podgrupy danych, należy dodać dodatkową kolumnę nazwy `by` sekcji. Na przykład możesz chcieć liczba unikatowych komputerów, z każdego kraju na OSType:
+W celu przeanalizowania mniejszych podgrupy danych, należy dodać dodatkową kolumnę nazwy `by` sekcji. Na przykład możesz chcieć liczba unikatowych komputerów, z każdego kraju/regionu na OSType:
 
 ```Kusto
 Heartbeat 

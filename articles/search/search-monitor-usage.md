@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bf78cd9b70aa4a82ef96fdd529d3ee5b1641038c
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035353"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797381"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitoruj aktywność zużycia i kwerendy zasobów w usłudze Azure Search
 
@@ -77,13 +77,15 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów Blob do przechowywani
 
 1. [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) Jeśli nie masz jeszcze jeden. Należy je umieścić w tej samej grupie zasobów usługi Azure Search, aby uprościć czyszczenie później, jeśli chcesz usunąć wszystkie zasoby używane w tym ćwiczeniu.
 
+   Konta magazynu musi istnieć w tym samym regionie co usługa Azure Search.
+
 2. Otwórz stronę przeglądu usługi wyszukiwania w sieci. W okienku nawigacji po lewej stronie, przewiń w dół do **monitorowanie** i kliknij przycisk **Włącz monitorowanie**.
 
    ![Aby włączyć monitorowanie](./media/search-monitor-usage/enable-monitoring.png "Włącz monitorowanie")
 
 3. Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do dzienników usługi Azure Monitor.
 
-   Aby uzyskać dane archiwalne do magazynu obiektów Blob na koncie magazynu, musi istnieć. Kontenery i obiekty BLOB zostaną utworzone podczas eksportowania danych dziennika.
+   Aby uzyskać dane archiwalne do magazynu obiektów Blob na koncie magazynu, musi istnieć. Kontenery i obiekty BLOB zostaną utworzone jako wymagane podczas eksportowania danych dziennika.
 
    ![Konfigurowanie obiektu blob magazynu archiwum](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurowanie obiektu blob magazynu w warstwie archiwum")
 

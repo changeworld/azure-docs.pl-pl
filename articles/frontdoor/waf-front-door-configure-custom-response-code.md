@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 2d16893420f27caf4f8b00dc32069e3296d7c236
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a167deb511347798fa609e2aca2a19f8bf12d21
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459780"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523720"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Skonfiguruj niestandardowe odpowiedzi dla zapory aplikacji sieci web platformy Azure
 
@@ -52,11 +52,11 @@ New-AzResourceGroup -Name myResourceGroupWAF
 
 ## <a name="create-a-new-waf-policy-with-custom-response"></a>Utwórz nowe zasady zapory aplikacji sieci Web przy użyciu niestandardowych odpowiedzi 
 
-Poniżej znajduje się przykład tworzenia nowych zasad zapory aplikacji sieci Web z kodem stanu odpowiedzi niestandardowej równa 405 i komunikat **są zablokowane.** za pomocą [New AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy).
+Poniżej znajduje się przykład tworzenia nowych zasad zapory aplikacji sieci Web z kodem stanu odpowiedzi niestandardowej równa 405 i komunikat **są zablokowane.** za pomocą [New AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```azurepowershell
 # WAF policy setting
-New-AzFrontDoorFireWallPolicy `
+New-AzFrontDoorWafPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
 -EnabledState enabled `

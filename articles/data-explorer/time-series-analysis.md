@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: cb5e41feb9be978592a1c1708ade0188ba20d504
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873149"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604055"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analiza serii czasu w Eksploratorze danych platformy Azure
 
@@ -34,7 +34,7 @@ Tabela wynikowa zawiera kolumnę sygnatur czasowych, trzy kolumny kontekstowych 
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Sygnatura czasowa | BrowserVer | OsVer | Kraj |
+|   | Sygnatura czasowa | BrowserVer | OsVer | Kraj/region |
 |   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Zjednoczone Królestwo |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
 |   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Zjednoczone Królestwo |
@@ -180,7 +180,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | SYGNATURA CZASOWA | Lokalizacja | anonOp | DB | Odczyt danych |
+|   | TIMESTAMP | Lokalizacja | anonOp | DB | Odczyt danych |
 |   | 2016-09-11 21:00:00.0000000 | Lokalizacja 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Lokalizacja 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Lokalizacja 9 | -865998331941149874 | 262 | 279862 |
@@ -222,7 +222,7 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Licznik |
+|   | Count |
 |   | 18339 |
 
 Teraz zamierzamy utworzyć zestaw 18339 szeregów czasowych metryki liczba odczytu. Dodamy `by` klauzula instrukcji serii upewnij zastosować regresji liniowej i wybierz pierwszych dwóch szeregów czasowych, których najbardziej znaczące zmniejszenie trendów:

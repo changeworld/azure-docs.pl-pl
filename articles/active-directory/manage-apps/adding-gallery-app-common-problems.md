@@ -3,8 +3,8 @@ title: Problem podczas dodawania aplikacji galerii usługi Azure AD | Dokumentac
 description: Zrozumienie typowych twarzy osób problemy podczas dodawania aplikacji galerii usługi Azure AD i sposoby ich rozwiązywania
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60438799"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784424"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji galerii usługi Azure AD
 
@@ -40,7 +40,7 @@ Jeśli wystąpi błąd, podczas klikania **Dodaj** przycisk, zobaczysz **powiado
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nie wiem, jak skonfigurować aplikację, gdy został dodany
 
-Jeśli potrzebujesz pomocy, informacje o aplikacji, [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) artykuł jest dobrym miejscem do rozpoczęcia.
+Jeśli potrzebujesz pomocy przy zapoznaniu się z aplikacjami, [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) artykuł jest dobrym miejscem do rozpoczęcia.
 
 Oprócz tego [biblioteki dokumentów aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomoże Ci dowiedzieć się więcej o logowanie jednokrotne z usługą Azure AD i jak działa.
 
@@ -48,7 +48,7 @@ Oprócz tego [biblioteki dokumentów aplikacji w usłudze Azure AD](https://docs
 
 Możesz zobaczyć szczegółowe informacje o wszystkich powiadomień portalu, wykonując poniższe kroki:
 
-1.  Wybierz **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure Portal
+1.  Wybierz **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal
 
 2.  Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
 
@@ -93,7 +93,7 @@ Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomie�
 
   -   Przykład — **2017-03-23T19:50:43.7583681Z**
 
-- **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator możemy użyć, aby wyszukać błąd w naszych systemach
+- **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator, możemy użyć, aby wyszukać błąd w naszych systemach
 
   -   Przykład — **71a2f329-ca29-402f-aa72-bc00a7aca603**
 

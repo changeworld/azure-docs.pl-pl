@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: 424396c7b92fb58993c74e672c4c3ea9c8f814c7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e2ed29bb61f553f68b9f9802884169361d5d983f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026223"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797924"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurowanie kontenery usługi mowy
 
@@ -62,6 +62,10 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
+## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy HTTP
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-settings"></a>Ustawienia rejestrowania
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
@@ -74,10 +78,10 @@ Kontenery mowy nie używaj danych wejściowych lub danych wyjściowych instaluje
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](speech-container-howto.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi docker i hosta instalacji uprawnienia do lokalizacji. 
 
-|Optional (Opcjonalność)| Name (Nazwa) | Typ danych | Opis |
+|Opcjonalne| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Niedozwolone| `Input` | String | Kontenery mowy nie należy używać tego.|
-|Optional (Opcjonalność)| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. W tym dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Opcjonalne| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. W tym dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia 
 

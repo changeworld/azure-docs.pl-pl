@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362635"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606869"
 ---
-# <a name="contact-microsoft-support"></a>Kontakt z pomocą techniczną firmy Microsoft
+# <a name="contact-microsoft-support"></a>Skontaktuj się z działem pomocy technicznej firmy Microsoft
 
 Menedżer urządzeń StorSimple zapewnia możliwość **rejestrować nowe żądanie pomocy technicznej** w bloku podsumowania usługi. Jeśli napotkasz jakiekolwiek problemy z rozwiązaniem StorSimple można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. W ramach sesji online ze specjalistą pomocy technicznej może również należy rozpocząć sesję pomocy technicznej na urządzeniu StorSimple. Ten artykuł przeprowadzi Cię przez:
 
@@ -31,7 +31,7 @@ Menedżer urządzeń StorSimple zapewnia możliwość **rejestrować nowe żąda
 
 Przegląd [warunków umów SLA usługi StorSimple 8000 Series pomocy technicznej i informacje o](https://msdn.microsoft.com/library/mt433077.aspx) przed przystąpieniem do tworzenia żądania pomocy technicznej.
 
-## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
+## <a name="create-a-support-request"></a>Utwórz żądanie obsługi
 
 W zależności od Twojego [plan pomocy technicznej](https://azure.microsoft.com/support/plans/), tworzenia biletów pomocy technicznej dotyczącej problemu na urządzeniu StorSimple bezpośrednio z poziomu bloku podsumowania usługi Menedżer urządzeń StorSimple. Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
@@ -64,7 +64,7 @@ W zależności od Twojego [plan pomocy technicznej](https://azure.microsoft.com/
 4. W **nowe żądanie obsługi** bloku kliknij **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe** blok, wykonaj następujące czynności:
 
    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pole wyboru.
+   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pole wyboru.
    3. Kliknij pozycję **Utwórz**.
    
        ![MS skontaktuj się z pomocą techniczną za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   

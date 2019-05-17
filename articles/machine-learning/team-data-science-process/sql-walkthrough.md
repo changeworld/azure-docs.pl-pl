@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61045784"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606519"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
@@ -515,7 +515,7 @@ W tym przykładzie przekształca ciągłego pola liczbowego w zakresach wstępni
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Inżynieria funkcji: Wyodrębnianie funkcji z lokalizacji z dziesiętna szerokości/długości geograficznej
-W tym przykładzie dzieli pola szerokości i/lub długość geograficzną w formie dziesiętnej na wielu pól region inny poziom szczegółowości, takich jak kraju, miasta, miejscowości, blok itp. Należy zwrócić uwagę na to, czy nowe pola geograficzne nie są zamapowane do rzeczywistej lokalizacji. Informacje na temat mapowania geocode lokalizacji można zobaczyć [usług REST mapy usługi Bing](https://msdn.microsoft.com/library/ff701710.aspx).
+W tym przykładzie dzieli pola szerokości i/lub długość geograficzną w formie dziesiętnej na wielu pól region inny poziom szczegółowości, takich jak kraju/regionu, miasta, miejscowości, blok itp. Należy zwrócić uwagę na to, czy nowe pola geograficzne nie są zamapowane do rzeczywistej lokalizacji. Informacje na temat mapowania geocode lokalizacji można zobaczyć [usług REST mapy usługi Bing](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent

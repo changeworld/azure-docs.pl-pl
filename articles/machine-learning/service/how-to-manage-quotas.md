@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 12/04/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: f9734a5d8f34536558fbf0c861889f3c7d6719da
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765850"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523999"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Zarządzanie i zażądać przydziały dla zasobów platformy Azure
 
@@ -52,9 +52,9 @@ Listę bardziej szczegółowe i aktualne limity przydziału można znaleźć w a
 Azure obliczeniowego usługi Machine Learning ma domyślny limit przydziału liczby zasobów obliczeniowych unikatowy dozwolone na region w ramach subskrypcji i liczby rdzeni. Ten limit przydziału jest wykonywane niezależnie od powyższych przydział rdzeni maszyny Wirtualnej i limity podstawowych nie są obecnie współdzielone między typami dwóch zasobów.
 
 Dostępne zasoby:
-+ Liczba rdzeni dedykowanych na region ma domyślny limit 10-24.  Można zwiększyć liczbę dedykowanych rdzeni na subskrypcję. Skontaktuj się z działem pomocy technicznej platformy Azure w celu omówienia możliwości zwiększenia.
++ Liczba rdzeni dedykowanych na region ma domyślny limit 24-300 w zależności od typu oferty subskrypcji.  Można zwiększyć liczbę dedykowanych rdzeni na subskrypcję. Skontaktuj się z działem pomocy technicznej platformy Azure w celu omówienia możliwości zwiększenia.
 
-+ Liczba rdzeni o niskim priorytecie, na region ma domyślny limit 10-24.  Można zwiększyć liczbę rdzeni o niskim priorytecie na subskrypcję. Skontaktuj się z działem pomocy technicznej platformy Azure w celu omówienia możliwości zwiększenia.
++ Liczba rdzeni o niskim priorytecie, na region ma domyślny limit maksymalnej wysokości 24-300, w zależności od typu oferty subskrypcji.  Można zwiększyć liczbę rdzeni o niskim priorytecie na subskrypcję. Skontaktuj się z działem pomocy technicznej platformy Azure w celu omówienia możliwości zwiększenia.
 
 + Klastry na region mają domyślny limit 100 i maksymalny limit 200. Jeśli chcesz poprosić o zwiększenie wykraczające poza ten limit, skontaktuj się z działem pomocy technicznej platformy Azure.
 
@@ -66,10 +66,12 @@ Dostępne zasoby:
 | Maksymalna liczba węzłów w pojedynczym zasobie Azure obliczeniowego usługi Machine Learning (AmlCompute) | 100 węzłów |
 | Maksymalna MPI GPU przetwarza każdy węzeł | 1 – 4 |
 | Maksymalna pracowników procesora GPU na węzeł | 1 – 4 |
-| Maksymalny okres istnienia | 7 dni<sup>1</sup> |
+| Maksymalny okres istnienia | 90 dni<sup>1</sup> |
+| Maksymalny okres istnienia, w węźle niski priorytet | 1 dzień<sup>2</sup> |
 | Parametr maksymalnego serwerów na węzeł | 1 |
 
 <sup>1</sup> maksymalny okres istnienia odwołuje się do czasu rozpoczęcia przebiegu, a po zakończeniu. Zakończone przebiegi utrwalić przez czas nieokreślony; dane dotyczące uruchomienia nieukończonych w ciągu maksymalnego okresu istnienia nie jest dostępny.
+<sup>2</sup> zadań na węzeł o niskim priorytecie może pre-empted ilekroć istnieje ograniczenie pojemności. Zalecane jest implementowanie punkty kontrolne w zadaniu.
 
 ### <a name="container-instances"></a>Wystąpienia kontenerów
 
@@ -80,20 +82,20 @@ Istnieje również limit na liczbę wystąpień kontenera, które można zawsze 
 Listę bardziej szczegółowe i aktualne limity przydziału można znaleźć w artykule przydziału platformy Azure na poziomie [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Magazyn
-Istnieje limit liczby kont magazynu na region, jak również w ramach danej subskrypcji. Domyślny limit wynosi 200 i obejmuje konta Standard i Premium Storage. Jeśli potrzebujesz więcej niż 200 kont magazynu w danym regionie, należy wykonać żądanie za pośrednictwem [pomocy technicznej systemu Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Zespół usługi Azure Storage przejrzy Twój przypadek biznesowy i może zatwierdzić do 250 kont magazynu dla danego regionu.
+Istnieje limit liczby kont magazynu na region, jak również w ramach danej subskrypcji. Domyślny limit wynosi 200 i obejmuje konta Standard i Premium Storage. Jeśli potrzebujesz więcej niż 200 kont magazynu w danym regionie, należy wykonać żądanie za pośrednictwem [pomocy technicznej systemu Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Zespół usługi Azure Storage przejrzy Twój przypadek biznesowy i może zatwierdzić do 250 kont magazynu dla danego regionu.
 
 
 ## <a name="find-your-quotas"></a>Znajdź limity przydziału
 
 Przeglądanie przydziału dla różnych zasobów, takich jak maszyny wirtualne, Magazyn, sieć, jest łatwa w witrynie Azure portal.
 
-1. W okienku po lewej stronie wybierz **wszystkich usług** , a następnie wybierz **subskrypcje** kategorii Ogólne.
+1. W okienku po lewej stronie wybierz **wszystkich usług** , a następnie wybierz **subskrypcje** kategorii Ogólne.
 
 1. Z listy subskrypcji Wybierz subskrypcję, którego limit przydziału, którego szukasz.
 
    **Istnieje ostrzeżenie**, specjalnie do wyświetlania limitu przydziału obliczeniowego usługi Azure Machine Learning. Jak wspomniano powyżej, ten limit przydziału jest niezależna od limitu przydziału obliczeniowego w ramach Twojej subskrypcji.
 
-1. W okienku po lewej stronie wybierz **usługi Machine Learning** a następnie z wyświetlonej listy wybierz pozycję dowolnym obszarze roboczym
+1. W okienku po lewej stronie wybierz **usługi Machine Learning** a następnie z wyświetlonej listy wybierz pozycję dowolnym obszarze roboczym
 
 1. W następnym bloku w obszarze **pomoc techniczna i rozwiązywanie problemów z sekcji** wybierz **użycie i przydziały** Aby wyświetlić bieżące limity przydziału i użycia.
 
@@ -102,7 +104,7 @@ Przeglądanie przydziału dla różnych zasobów, takich jak maszyny wirtualne, 
 
 ## <a name="request-quota-increases"></a>Zażądać zwiększenia limitu przydziału
 
-Jeśli chcesz zwiększyć limit lub limitu przydziału powyżej domyślny limit [Otwórz żądanie obsługi klienta online](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) bez dodatkowych opłat.
+Jeśli chcesz zwiększyć limit lub limitu przydziału powyżej domyślny limit [Otwórz żądanie obsługi klienta online](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) bez dodatkowych opłat.
 
 Nie można zwiększyć limity powyżej maksymalny limit pokazanymi w tabelach. Jeśli nie ma żadnego limitu maksymalnej, zasób nie ma limitów dostosowywalnych. [To](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) artykule opisano proces zwiększenia limitu przydziału bardziej szczegółowo.
 

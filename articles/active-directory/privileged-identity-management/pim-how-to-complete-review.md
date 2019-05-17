@@ -14,12 +14,12 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: decba8f46432891a44a2b231890da4214bd5b1bb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0a7fa3bfe159620130bc0962b470cea8e7422646
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140992"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602172"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Kończenie przeglądu dostępu ról usługi Azure AD w usłudze PIM
 Administratorzy ról uprzywilejowanych mogą raz Sprawdź dostęp uprzywilejowany [przeglądu dostępu została uruchomiona](pim-how-to-start-security-review.md). Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail monitowaniu użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie pobrały wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
@@ -33,12 +33,12 @@ Po zakończeniu okresu przeglądu dostępu lub wszystkich użytkowników został
 
 W bloku szczegółów przeglądu dostępu istnieją opcje liczb do zarządzania przeglądu.
 
-![Przyciski PIM do przeglądu dostępu — zrzut ekranu](./media/pim-how-to-complete-review/PIM_review_buttons.png)
+![Przyciski PIM do przeglądu dostępu — zrzut ekranu](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>Przypomnij
 Jeśli przeglądu dostępu jest skonfigurowana tak, aby użytkownicy Przejrzyj, **Przypomnij** przycisk wysyła powiadomienie. 
 
-### <a name="stop"></a>Stop
+### <a name="stop"></a>Zatrzymaj
 Wszystkie przeglądy dostępu mają datę końcową, ale można użyć **zatrzymać** przycisk, aby zakończyć jej początku. Jeśli jeszcze nie zostały sprawdzone wszyscy użytkownicy w tej chwili, będą mogli po zatrzymaniu przeglądu. Nie można ponownie uruchomić przeglądu, po jest zatrzymana.
 
 ### <a name="apply"></a>Zastosuj
@@ -47,7 +47,7 @@ Po zakończeniu przeglądu dostępu, ponieważ osiągnięto datę zakończenia l
 ### <a name="export"></a>Eksportowanie
 Jeśli użytkownik chce ręcznie zastosowania wyników przeglądu dostępu, możesz wyeksportować przeglądu. **Wyeksportować** przycisk rozpocznie się pobieranie pliku CSV. Wyniki w programie Excel lub inne programy, które otwierają pliki CSV można zarządzać.
 
-### <a name="delete"></a>Usuwanie
+### <a name="delete"></a>Usuń
 Jeśli nie jesteś zainteresowany przeglądu w bardziej, należy go usunąć. **Usuń** przycisk usuwa przeglądu z poziomu aplikacji PIM.
 
 > [!IMPORTANT]

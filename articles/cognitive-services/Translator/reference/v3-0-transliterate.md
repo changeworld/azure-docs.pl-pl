@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd7fee34f020f16d1511bc57b4ad86dbd5eb168d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605105"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796961"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>language</td>
+    <td>język</td>
     <td>*Wymagany parametr*.<br/>Określa język tekstu, aby przekonwertować z jednego skryptu. Języki możliwe są wymienione w `transliteration` zakres uzyskać, badając usługę dla jego [obsługiwane języki](./v3-0-languages.md).</td>
   </tr>
   <tr>
@@ -147,7 +147,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
   </tr>
   <tr>
     <td>429</td>
-    <td>Obiekt wywołujący wysyła zbyt wiele żądań.</td>
+    <td>Serwer odrzucił żądanie, ponieważ klienta przekroczyła limity żądań.</td>
   </tr>
   <tr>
     <td>500</td>

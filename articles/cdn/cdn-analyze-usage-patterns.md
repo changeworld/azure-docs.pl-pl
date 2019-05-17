@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6eb0fe592196466f7f49c21ce38afdf13b254d86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88cbd942413757388278d69d728d407271e4c4a3
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61061539"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606370"
 ---
 # <a name="core-reports-from-verizon"></a>Raporty podstawowe z usługi Verizon
 
@@ -119,7 +119,7 @@ Raport zawiera następujące informacje:
 
 Raport nie zawiera:
 
-* Żądania, które zostaną odrzucone z powodu opcji filtrowania kraju.
+* Żądania, które zostaną odrzucone z powodu opcji filtrowania kraj/region.
 * Żądania zasobów, w których nagłówki wskazują, że nie powinny one zapisywane. Na przykład `Cache-Control: private`, `Cache-Control: no-cache`, lub `Pragma: no-cache` nagłówki zabrania buforowania zasobów.
 * Żądania zakresu bajtów dla częściowo buforowanej zawartości.
 
