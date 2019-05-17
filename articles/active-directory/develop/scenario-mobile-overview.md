@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb0acd1534bab11eb57a7aa0e695f192b5999ed2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: d9978905f8ae0719f6a77ca2351f2c43bbf94ee0
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076498"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550368"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: Wywołuje interfejsy API sieci web aplikacji mobilnej
 
@@ -43,23 +43,23 @@ Utwórz swoją pierwszą aplikację mobilną i wypróbuj Szybki Start!
 
 ## <a name="overview"></a>Omówienie
 
-Podczas kompilowania aplikacji mobilnej, spersonalizowane, bezproblemowe użytkownika końcowego jest niezbędne.  Platforma tożsamości firmy Microsoft umożliwia deweloperów aplikacji mobilnych, w tym celu dokładnie dla systemów iOS i Android użytkowników. Zarejestrować aplikację w usłudze Azure AD, osobiste konto Microsoft i użytkowników usługi Azure AD B2C i uzyskać tokeny do wywołania internetowego interfejsu API w ich imieniu. Aby zaimplementować te przepływy, użyjemy Microsoft Authentication Library (MSAL), który implementuje będące standardami branżowymi [przepływ kodu autoryzacji OAuth2.0](v2-oauth2-auth-code-flow.md).
+Środowisko spersonalizowane bezproblemowy interfejs użytkownika ma zasadnicze znaczenie dla aplikacji mobilnych.  Platforma tożsamości firmy Microsoft umożliwia deweloperów aplikacji mobilnych utworzyć środowiska dla systemów iOS i Android użytkowników. Aplikacji do logowania użytkowników usługi Azure Active Directory (Azure AD), osobiste użytkowników kont Microsoft i użytkowników usługi Azure AD B2C i uzyskać tokeny do wywołania internetowego interfejsu API w ich imieniu. Aby zaimplementować te przepływy, użyjemy Microsoft Authentication Library (MSAL), która implementuje będące standardami branżowymi [przepływ kodu autoryzacji OAuth2.0](v2-oauth2-auth-code-flow.md).
 
 ![Aplikacje demona](./media/scenarios/mobile-app.svg)
 
-Zagadnienia dotyczące aplikacji mobilnej:
+Zagadnienia dotyczące aplikacji mobilnych:
 
-- ***Środowisko użytkownika jest klucz***: Użytkownicy mogą zobaczyć wartość aplikacji przed monitem logowania i żądać tylko wymagane uprawnienia.
-- ***Obsługuje wszystkie konfiguracje użytkownika***: Wielu użytkowników biznesowych przenośnych znajdują się pod dostępu warunkowego i zasad zgodności urządzeń. Pamiętaj obsługiwać te kluczowych scenariuszy.
-- ***Implementowanie logowania jednokrotnego (SSO)***: Biblioteka MSAL i platformą Microsoft identity się włączanie logowania jednokrotnego łatwo kupić za pośrednictwem przeglądarki na urządzeniu lub Microsoft Authenticator (i Portal firmy usługi Intune w systemie Android).
+- **Środowisko użytkownika jest klucz**: Użytkownicy mogą zobaczyć wartość aplikacji przed monitem logowania i zażądać wymaganych uprawnień.
+- **Obsługuje wszystkie konfiguracje użytkownika**: Wielu użytkowników biznesowych przenośnych znajdują się pod dostępu warunkowego i zasad zgodności urządzeń. Pamiętaj obsługiwać te kluczowych scenariuszy.
+- **Implementowanie logowania jednokrotnego (SSO)**: Biblioteka MSAL i platformą Microsoft identity się włączanie logowania jednokrotnego łatwo kupić za pośrednictwem przeglądarki na urządzeniu lub Microsoft Authenticator (i Portal firmy usługi Intune w systemie Android).
 
 ## <a name="specifics"></a>Szczegółowe informacje
 
-Podczas kompilowania aplikacji mobilnej na platformie tożsamości firmy Microsoft, środowisko end-to-end ma kilka istotnych kwestii:
+Podczas kompilowania aplikacji mobilnej na platformie tożsamości firmy Microsoft, należy pamiętać o tych zagadnień:
 
-- W zależności od platformy logowanie bez interakcji może nie być możliwe podczas pierwszego logowania. systemy iOS, na przykład wymaga aplikacji, aby pokazać interakcji użytkownika podczas pobierania czas pierwszego logowania jednokrotnego przy użyciu Microsoft Authenticator (i Portal firmy usługi Intune w systemie Android).
-- W systemach iOS i Android MSAL może używać zewnętrznej przeglądarki, (które mogą być wyświetlane na podstawie aplikacji) w celu logowania użytkowników. To można dostosować, aby zamiast tego użyj elementów Webview w aplikacji.
-- Nigdy nie używać hasła w aplikacji mobilnej, będzie on dostępny dla wszystkich użytkowników.
+- W zależności od platformy interakcji z użytkownikiem może być wymagane, gdy użytkownicy logują się po raz pierwszy. Na przykład dla systemu iOS wymaga od aplikacji, aby wyświetlać interakcji z użytkownikiem, gdy przy użyciu logowania jednokrotnego po raz pierwszy przy użyciu Microsoft Authenticator (i Portal firmy usługi Intune w systemie Android).
+- W systemach iOS i Android MSAL użyć zewnętrznej przeglądarce (która może pojawić się na podstawie aplikacji) do logowania użytkowników. Można dostosować konfigurację, aby zamiast tego użyj elementów Webview w aplikacji.
+- Nigdy nie używać hasła w aplikacji mobilnej. Będzie ona dostępna dla wszystkich użytkowników.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

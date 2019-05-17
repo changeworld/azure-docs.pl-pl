@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8af34207eddb613f7a59bd3e3d300555e10f985
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60547666"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560732"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Ładowanie danych do usługi Azure Data Lake Storage Gen2 za pomocą usługi Azure Data Factory
 
 Platformy Azure Data Lake Storage Gen2 to zbiór funkcji przeznaczonych do analizy danych big data, wbudowane [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Umożliwia łączenie się z danych za pomocą obu paradygmatów magazynu plików, jak systemu i obiekt.
 
-Usługa Azure Data Factory to usługa integracji danych w pełni zarządzane w chmurze. Korzystać z niej, aby wypełnić usługi Data lake z danymi z bogatego zestawu w środowisku lokalnym i magazyny danych opartych na chmurze i zaoszczędzić czas podczas tworzenia rozwiązań do analizy. Aby uzyskać szczegółową listę obsługiwanych łączników, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Usługa Azure Data Factory (ADF) jest to w pełni zarządzane dane oparte na chmurze Usługa integracji. Korzystać z niej, aby wypełnić usługi Data lake z danymi z bogatego zestawu w środowisku lokalnym i magazyny danych opartych na chmurze i zaoszczędzić czas podczas tworzenia rozwiązań do analizy. Aby uzyskać szczegółową listę obsługiwanych łączników, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Usługa Azure Data Factory oferuje rozwiązanie do przenoszenia danych skalowalne, zarządzane. Z uwagi na architekturę skalowalnego w poziomie ADF jego pozyskiwać dane przy wysokiej przepływności. Aby uzyskać więcej informacji, zobacz [wydajności działania kopiowania](copy-activity-performance.md).
 
@@ -130,13 +130,6 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
     ![Szczegóły uruchamiania działania monitora](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
 
 16. Upewnij się, że dane zostały skopiowane na konto usługi Data Lake Storage Gen2.
-
-## <a name="best-practices"></a>Najlepsze praktyki
-
-Podczas kopiowania dużych woluminów danych z magazynu danych oparte na plikach, sugerowane do:
-
-- Podzielić pliki na 10TB do użycia pojemności 30TB każdy.
-- Nie wyzwalają zbyt wiele przebiegów współbieżnych kopiowania, aby uniknąć ograniczania z magazynów danych źródła lub ujścia. Możesz uruchomić za pomocą jednej kopii, uruchom i monitor przepływności, a następnie stopniowo dodawać więcej zgodnie z potrzebami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

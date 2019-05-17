@@ -3,8 +3,8 @@ title: Zarządzanie dostępem do aplikacji przy użyciu usługi Azure AD | Dokum
 description: W tym artykule opisano, jak usługi Azure Active Directory umożliwia organizacjom określić aplikacje, do których każdy użytkownik ma dostęp.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70513675d09a663c65c6f5b3e18059467a8ba388
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 851b9ab3604e851bcaf4f22d031c51558b15e0e6
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440734"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826001"
 ---
 # <a name="managing-access-to-apps"></a>Zarządzanie dostępem do aplikacji
 Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępem do aplikacji. Czasami przydziału jest wykonywane przez zespół IT ogólne lub działów. Często decyzja przydziału jest przeznaczona do należy delegować domenę do osoba podejmująca decyzje biznesowe, wymaganie zatwierdzenia przed IT sprawia, że przypisanie.  Innym organizacjom inwestowanie w integracji z istniejących automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub atrybutu-Based Access Control (ABAC). Integracji i programowania reguły zwykle wyspecjalizowanych i drogich. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne kosztownych i złożonych.

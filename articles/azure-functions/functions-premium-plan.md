@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031244"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544764"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plan usługi Azure Functions — wersja Premium (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Jeśli nie zdarzenia i wykonania występują obecnie planu zużycie, aplikacja m
 
 Plan w warstwie Premium mogą mieć aplikację wstępnie przygotowaniu na określoną liczbę wystąpień, z maksymalnie rozmiar minimalny planu.  Wstępnie przygotowaniu wystąpień pozwalają również wstępnie skalować aplikację przed dużym obciążeniem. Ponieważ aplikacja jest skalowana w poziomie, najpierw skaluje do wstępnie warmed wystąpień. Dodatkowe wystąpienia w dalszym ciągu buforu na zewnątrz i do dostępu do ciepłych bezpośrednio w ramach przygotowania do następnej operacji skalowania. Dzięki bufor o przygotowaniu wstępnie wystąpień, można skutecznie uniknąć opóźnienia zimny start.  Przygotowaniu wstępnie wystąpień jest funkcją plan w warstwie Premium i należy zachować co najmniej jedno wystąpienie, uruchomione i dostępne pod adresem cały czas plan jest aktywny.
 
-Liczba wystąpień przygotowaniu wstępnie można skonfigurować w witrynie Azure portal, wybierając **skalowanie w poziomie** w **funkcje platformy** kartę.
+Liczba wystąpień przygotowaniu wstępnie można skonfigurować w witrynie Azure portal przez wybrany usługi **aplikacji funkcji**, które trafiają na **funkcji platformy** kartę, a następnie wybierając **skalowanie w poziomie**opcje. W oknie edycji aplikacji funkcji przygotowaniu wstępnie wystąpień jest specyficzne dla danej aplikacji, ale minimalne i maksymalne wystąpień dotyczą całego planu.
 
 ![Ustawienia elastycznego skalowania](./media/functions-premium-plan/scale-out.png)
 
@@ -93,7 +93,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia, nasz plan skalowania, można wybrać trzy rozmiarów wystąpień.  Użytkownik jest naliczana dla całkowitej liczby rdzeni i pamięci, użycie na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień zgodnie z potrzebami.  
 
-|SKU|Rdzenie|Memory (Pamięć)|Magazyn|
+|Jednostka SKU|Rdzenie|Memory (Pamięć)|Magazyn|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -103,7 +103,7 @@ Podczas tworzenia, nasz plan skalowania, można wybrać trzy rozmiarów wystąpi
 
 Poniżej są obecnie obsługiwane regiony, w publicznej wersji zapoznawczej.
 
-|Region|
+|Obszar|
 |--|
 |Australia Wschodnia|
 |Australia Południowo-Wschodnia|
@@ -114,11 +114,12 @@ Poniżej są obecnie obsługiwane regiony, w publicznej wersji zapoznawczej.
 |Francja Środkowa|
 |Japonia Zachodnia|
 |Korea Środkowa|
+|Północno-środkowe stany USA|
 |Europa Północna|
-|Środkowo-południowe stany USA|
+|Południowo-środkowe stany USA|
 |Indie Południowe|
 |Azja Południowo-Wschodnia|
-|Zachodnie Zjednoczone Królestwo|
+|Zjednoczone Królestwo (zachód)|
 |Europa Zachodnia|
 |Indie Zachodnie|
 |Zachodnie stany USA|

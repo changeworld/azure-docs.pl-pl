@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: a8c29f015b6b3652361a886585cb4ccc3f3b7293
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4344be1ef13daa85477b22aa0434347873aec40
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563455"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826130"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie usługi Key Vault dla maszyn wirtualnych w usłudze Azure Resource Manager
 
@@ -50,7 +50,7 @@ Aby utworzyć magazyn kluczy przy użyciu interfejsu wiersza polecenia (CLI), zo
 
 Dla interfejsu wiersza polecenia należy utworzyć magazyn kluczy przed przypisaniem zasady wdrażania. Możesz to zrobić za pomocą następującego polecenia:
 
-    az keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+    az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Konfigurowanie usługi Key Vault przy użyciu szablonów
 Gdy używasz szablonu, musisz ustawić `enabledForDeployment` właściwość `true` dla zasobu usługi Key Vault.

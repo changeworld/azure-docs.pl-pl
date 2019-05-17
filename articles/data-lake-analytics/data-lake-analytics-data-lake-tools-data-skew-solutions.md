@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61399900"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606712"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Rozwiązywanie problemów niesymetryczność danych przy użyciu narzędzi Azure Data Lake Tools for Visual Studio
 
@@ -36,7 +36,7 @@ Jeśli nie ma wpływu na logice biznesowej, można filtrować wartości wyższa 
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Opcja 2: Wybierz inny klucz partycji lub dystrybucji
 
-W poprzednim przykładzie Jeśli chcesz tylko sprawdzić obciążenia inspekcji podatku w całym kraju, możesz poprawić dystrybucji danych, wybierając numer identyfikacyjny jako klucz. Pobieranie różnych partycji i klucza dystrybucji może czasami równomierne rozłożenie danych bardziej, ale należy upewnić się, że ten wybór nie ma wpływu na logice biznesowej. Na przykład, aby obliczyć sumę podatku dla każdego stanu, możesz chcieć określić _stanu_ jako klucza partycji. Jeśli nadal występuje ten problem, spróbuj użyć opcji 3.
+W poprzednim przykładzie Jeśli chcesz tylko sprawdzić obciążenia inspekcji podatku w całym kraju/regionu, możesz poprawić dystrybucji danych, wybierając numer identyfikacyjny jako klucz. Pobieranie różnych partycji i klucza dystrybucji może czasami równomierne rozłożenie danych bardziej, ale należy upewnić się, że ten wybór nie ma wpływu na logice biznesowej. Na przykład, aby obliczyć sumę podatku dla każdego stanu, możesz chcieć określić _stanu_ jako klucza partycji. Jeśli nadal występuje ten problem, spróbuj użyć opcji 3.
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>Opcja 3: Dodaj więcej klucze partycji lub dystrybucji
 

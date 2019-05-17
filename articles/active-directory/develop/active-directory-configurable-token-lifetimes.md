@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2019
+ms.date: 05/15/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cc81f0a5c75d9aeee39f0633521d692c8d30c474
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545383"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823469"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -65,11 +65,11 @@ Klienci nie mogą bezpiecznie przechowywać hasła klienta (klucz tajny). Na prz
 Identyfikator tokeny są przekazywane do witryny sieci Web i klientów natywnych. Tokeny Identyfikatora zawierają informacje o profilu użytkownika. Identyfikator tokenu jest powiązany z kombinacją określonego użytkownika i klienta. Identyfikator tokeny są uznawane za prawidłowe aż do ich wygaśnięcia. Zazwyczaj pasuje do aplikacji sieci web przez użytkownika okres istnienia sesji w aplikacji z okresem istnienia tokenu Identyfikacyjnego wydanych dla użytkownika. Możesz dostosować okres istnienia tokenu Identyfikacyjnego do kontrolowania, jak często aplikacja sieci web wygaśnie sesja aplikacji i jak często wymaga użytkownika być ponownie uwierzytelniany przy użyciu usługi Azure AD (dyskretnie lub interaktywnego).
 
 ### <a name="single-sign-on-session-tokens"></a>Tokeny sesji rejestracji jednokrotnej
-Gdy użytkownik uwierzytelnia się za pomocą usługi Azure AD, sesji rejestracji jednokrotnej (SSO) jest nawiązywane z przeglądarki użytkownika a usługą Azure AD. Token logowania jednokrotnego, w postaci pliku cookie, reprezentuje tej sesji. Należy pamiętać, że tokenu sesji logowania jednokrotnego nie jest powiązany z aplikacją określonego zasobu/klienta. Można odwołać tokenów sesji logowania jednokrotnego, a ich ważności jest zaznaczone, za każdym razem, gdy są one używane.
+Gdy użytkownik uwierzytelnia się za pomocą usługi Azure AD, sesji rejestracji jednokrotnej (SSO) jest nawiązywane z przeglądarki użytkownika a usługą Azure AD. Token logowania jednokrotnego, w postaci pliku cookie, reprezentuje tej sesji. Token sesji logowania jednokrotnego nie jest powiązany z aplikacją określonego zasobu/klienta. Można odwołać tokenów sesji logowania jednokrotnego, a ich ważności jest zaznaczone, za każdym razem, gdy są one używane.
 
 Usługa Azure AD używa dwóch rodzajów tokenów sesji logowania jednokrotnego: stałe i nietrwałe. Tokeny trwałych sesji są przechowywane jako trwałe pliki cookie przez przeglądarkę. Tokeny nietrwałych sesji są przechowywane jako pliki cookie z sesji. (Pliki cookie dotyczące sesji są niszczone, gdy przeglądarka jest zamknięta.) Zazwyczaj token nietrwałych sesji jest przechowywany. Jednak gdy użytkownik wybierze **nie wylogowuj mnie** znajduje się pole wyboru podczas uwierzytelniania tokenów trwałych sesji.
 
-Sesja nietrwałych tokeny mają okres istnienia 24 godzin. Trwałe tokeny mają okres istnienia 180 dni. Zawsze, gdy token sesji rejestracji Jednokrotnej jest używana w okresie ważności, okres ważności jest dłuższy innego 24 godzin lub 180 dni, w zależności od typu tokenu. Jeśli token sesji logowania jednokrotnego nie jest używana w okresie ważności, uważa się wygasła i nie jest akceptowane.
+Sesja nietrwałych tokeny mają okres istnienia 24 godzin. Trwałe tokeny mają okres istnienia 180 dni. W dowolnym momencie tokenu sesji rejestracji Jednokrotnej jest używana w okresie ważności, okres ważności jest rozszerzany innego 24 godzin lub 180 dni, w zależności od typu tokenu. Jeśli token sesji logowania jednokrotnego nie jest używana w okresie ważności, uważa się wygasła i nie jest akceptowane.
 
 Zasady można użyć, aby ustawić czas, po pierwszym tokenu sesji został wystawiony po przekroczeniu którego już nie jest akceptowana tokenu sesji. (W tym celu należy użyć właściwości sesji tokenu maksymalny wiek). Możesz dostosować okres istnienia tokenu sesji w celu kontrolowania, kiedy i jak często użytkownik będzie musiał ponownie wprowadzić poświadczenia, zamiast dyskretnie uwierzytelniane, korzystając z aplikacji sieci web.
 
@@ -109,7 +109,7 @@ Aby uzyskać więcej informacji na temat relacji między obiektami aplikacji i o
 
 Ważność tokenu jest obliczane w czasie, token jest używana. Zasady o najwyższym priorytecie w aplikacji, który jest dostępny w życie.
 
-Wszystkie timespans używane w tym miejscu są sformatowane zgodnie z języka C# [TimeSpan](https://msdn.microsoft.com/library/system.timespan) obiekt - D.HH:MM:SS.  Więc 80 dni i 30 minut będzie `80.00:30:00`.  Wiodące można było porzucić D, jeśli zero, więc 90 minut będzie `00:90:00`.  
+Wszystkie timespans używane w tym miejscu są sformatowane zgodnie z języka C# [TimeSpan](/dotnet/api/system.timespan) obiekt - D.HH:MM:SS.  Więc 80 dni i 30 minut będzie `80.00:30:00`.  Wiodące można było porzucić D, jeśli zero, więc 90 minut będzie `00:90:00`.  
 
 > [!NOTE]
 > Poniżej przedstawiono przykładowy scenariusz.
@@ -220,11 +220,11 @@ Aby rozpocząć pracę, wykonaj następujące czynności:
     ```
 
 ### <a name="example-manage-an-organizations-default-policy"></a>Przykład: Zarządzanie zasadami domyślne w organizacji
-W tym przykładzie utworzysz zasadę, która pozwala użytkownikom rzadziej Zaloguj się w całej organizacji. Aby to zrobić, należy utworzyć zasadę okres istnienia tokenu Jednoskładnikowego odświeżanie tokenów, która jest stosowana w całej organizacji. Zasady są stosowane do każdej aplikacji w Twojej organizacji i każdej jednostki usługi, która nie ma jeszcze zestaw zasad.
+W tym przykładzie utworzysz zasadę, która umożliwia logowanie użytkowników rzadziej w całej organizacji. Aby to zrobić, należy utworzyć zasadę okres istnienia tokenu Jednoskładnikowego odświeżanie tokenów, która jest stosowana w całej organizacji. Zasady są stosowane do każdej aplikacji w Twojej organizacji i każdej jednostki usługi, która nie ma jeszcze zestaw zasad.
 
 1. Utwórz zasady okres istnienia tokenu.
 
-    1.  Ustaw Token odświeżania Jednoskładnikowego "do momentu-odwołane." Token nie wygasa, dopóki nie został odwołany dostęp. Utwórz następującą definicję zasad:
+    1. Ustaw Token odświeżania Jednoskładnikowego "do momentu-odwołane." Token nie wygasa, dopóki nie został odwołany dostęp. Utwórz następującą definicję zasad:
 
         ```powershell
         @('{
@@ -236,16 +236,16 @@ W tym przykładzie utworzysz zasadę, która pozwala użytkownikom rzadziej Zalo
         }')
         ```
 
-    2.  Aby utworzyć zasady, uruchom następujące polecenie:
+    2. Aby utworzyć zasady, uruchom następujące polecenie:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3.  Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane **ObjectId**, uruchom następujące polecenie:
+    3. Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane **ObjectId**, uruchom następujące polecenie:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
 2. Aktualizacja zasad.
@@ -253,7 +253,7 @@ W tym przykładzie utworzysz zasadę, która pozwala użytkownikom rzadziej Zalo
     Można zdecydować, pierwszego zasad ustawionych w tym przykładzie nie jest tak rygorystycznych wymaga Twoja usługa. Aby ustawić swoje Jednoskładnikowego Odśwież Token wygaśnie w ciągu dwóch dni, uruchom następujące polecenie:
 
     ```powershell
-    Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
+    Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
 ### <a name="example-create-a-policy-for-web-sign-in"></a>Przykład: Tworzenie zasad dla rejestracji w sieci web
@@ -264,88 +264,98 @@ W tym przykładzie utworzysz zasadę, która wymaga od użytkowników uwierzytel
 
     Te zasady, logowanie w sieci web, Ustawia/identyfikator dostępu okres istnienia tokenu i okres ważności tokenu max sesji jednoskładnikowego do dwóch godzin.
 
-    1.  Aby utworzyć zasady, uruchom następujące polecenie:
+    1. Aby utworzyć zasady, uruchom następujące polecenie:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane **ObjectId**, uruchom następujące polecenie:
+    2. Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane **ObjectId**, uruchom następujące polecenie:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
-2.  Przypisz zasady do jednostki usługi. Musisz również pobrać **ObjectId** jednostki usługi. 
+2. Przypisz zasady do jednostki usługi. Musisz również pobrać **ObjectId** jednostki usługi.
 
-    1.  Aby wyświetlić nazwy główne usług wszystkich w organizacji, można tworzyć zapytania albo [programu Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) lub [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ponadto można je przetestować w [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) przy użyciu swojego konta usługi Azure AD.
-
-    2.  Jeśli masz **ObjectId** jednostki usługi, uruchom następujące polecenie:
-
+    1. Użyj [polecenia Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) polecenia cmdlet, aby wyświetlić nazwy główne usług wszystkich w organizacji lub ta jednostka jednej usługi.
         ```powershell
-        Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
+    2. Jeśli masz nazwę główną usługi, uruchom następujące polecenie:
+        ```powershell
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
 
 ### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Przykład: Tworzenie zasad dla natywnych aplikacji, która wywołuje interfejs API sieci web
 W tym przykładzie utworzysz zasadę, która wymaga od użytkowników uwierzytelniania się rzadziej. Zasady powoduje nieznaczne również wydłużenie czasu, który użytkownik może być nieaktywne, zanim użytkownik musi ponownie uwierzytelniać. Zasady są stosowane do internetowego interfejsu API. Ta zasada jest stosowana, gdy aplikacji natywnej zażąda internetowy interfejs API jako zasób.
 
 1. Utwórz zasady okres istnienia tokenu.
 
-    1.  Aby utworzyć ścisłe zasady dla interfejsu API sieci web, uruchom następujące polecenie:
+    1. Aby utworzyć ścisłe zasady dla interfejsu API sieci web, uruchom następujące polecenie:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane **ObjectId**, uruchom następujące polecenie:
+    2. Aby wyświetlić nowe zasady, uruchom następujące polecenie:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Przypisz zasady do interfejsu API sieci web. Musisz również pobrać **ObjectId** aplikacji. Najlepszym sposobem na znalezienie Twojej aplikacji **ObjectId** jest użycie [witryny Azure portal](https://portal.azure.com/).
+2. Przypisz zasady do interfejsu API sieci web. Musisz również pobrać **ObjectId** aplikacji. Użyj [Get AzureADApplication](/powershell/module/azuread/get-azureadapplication) polecenia cmdlet użytkownikom znalezienie Twojej aplikacji **ObjectId**, lub użyj [witryny Azure portal](https://portal.azure.com/).
 
-   Jeśli masz **ObjectId** aplikacji, uruchom następujące polecenie:
+    Pobierz **ObjectId** swojej aplikacji i przypisz zasady:
 
-        ```powershell
-        Add-AzureADApplicationPolicy -Id <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
-        ```
+    ```powershell
+    # Get the application
+    $app = Get-AzureADApplication -Filter "DisplayName eq 'Fourth Coffee Web API'"
 
+    # Assign the policy to your web API.
+    Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
+    ```
 
 ### <a name="example-manage-an-advanced-policy"></a>Przykład: Zarządzanie zaawansowane zasady
-W tym przykładzie utworzysz kilka zasad, aby dowiedzieć się, jak działa system priorytetu. Możesz także dowiedzieć się, jak zarządzać wiele zasad, które są stosowane do wielu obiektów.
+W tym przykładzie utworzysz kilka zasad, aby dowiedzieć się, jak działa system priorytetu. Poznasz również sposób zarządzania wiele zasad, które są stosowane do wielu obiektów.
 
 1. Utwórz zasady okres istnienia tokenu.
 
-    1.  Aby utworzyć zasady domyślne organizacji, która ustawia okres istnienia tokenu odświeżania Jednoskładnikowego do 30 dni, uruchom następujące polecenie:
+    1. Aby utworzyć zasady domyślne organizacji, która ustawia okres istnienia tokenu odświeżania Jednoskładnikowego do 30 dni, uruchom następujące polecenie:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2.  Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane **ObjectId**, uruchom następujące polecenie:
+    2. Aby wyświetlić nowe zasady, uruchom następujące polecenie:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
 2. Przypisz zasady do nazwy głównej usługi.
 
     Masz teraz zasady, które mają zastosowanie do całej organizacji. Możesz chcieć zachować te zasady 30-dniowej dla określonej jednostki usługi, ale Zmień domyślne zasady organizacji do górnego limitu "do momentu odwołane."
 
-    1.  Aby wyświetlić nazwy główne usług wszystkich w organizacji, można tworzyć zapytania albo [programu Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) lub [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ponadto można je przetestować w [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) przy użyciu swojego konta usługi Azure AD.
+    1. Aby wyświetlić nazwy główne usług wszystkich w organizacji, należy użyć [polecenia Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) polecenia cmdlet.
 
-    2.  Jeśli masz **ObjectId** jednostki usługi, uruchom następujące polecenie:
+    2. Jeśli masz nazwę główną usługi, uruchom następujące polecenie:
 
-            ```powershell
-            Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
-            ```
-        
+        ```powershell
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
+
 3. Ustaw `IsOrganizationDefault` flagi na wartość false:
 
     ```powershell
-    Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
+    Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
 4. Utwórz nowe zasady domyślne dla organizacji:

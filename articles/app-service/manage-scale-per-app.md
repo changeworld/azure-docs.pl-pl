@@ -12,27 +12,31 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 824abbdfd1b3980b419e6d6c46814bb0318adf13
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104573"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602334"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosting o dużej gęstości w usłudze Azure App Service przy użyciu skalowania dla aplikacji
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Domyślnie, skalować aplikacje usługi App Service, skalując [planu usługi App Service](overview-hosting-plans.md) działają one na. Gdy wiele aplikacji są uruchamiane w tym samym planie usługi App Service, każdego wystąpienia skalowanego uruchamia wszystkie aplikacje w planie.
+Korzystając z usługi App Service, możesz skalować swoje aplikacje przy użyciu skalowania [planu usługi App Service](overview-hosting-plans.md) działają one na. Gdy wiele aplikacji są uruchamiane w tym samym planie usługi App Service, każdego wystąpienia skalowanego uruchamia wszystkie aplikacje w planie.
 
-Aby umożliwić *skalowania dla aplikacji* na usługi App Service plan poziom. Zostanie przeprowadzone skalowanie aplikacji niezależnie od planu usługi App Service, który ją obsługuje. W ten sposób można skalować do 10 wystąpień planu usługi App Service, ale można ustawić aplikację do używania tylko pięciu.
+*Skalowanie aplikacji* można włączyć na poziomie plan usługi App Service umożliwia skalowanie aplikacji niezależnie od planu usługi App Service, który ją obsługuje. W ten sposób można skalować do 10 wystąpień planu usługi App Service, ale można ustawić aplikację do używania tylko pięciu.
 
 > [!NOTE]
 > Skalowanie aplikacji jest dostępna tylko w przypadku **standardowa**, **Premium**, **warstwa Premium V2** i **izolowany** warstw cenowych.
 >
+
+Aplikacje są przydzielane do dostępnych planu usługi App Service przy użyciu najlepszym rozwiązaniem nakład pracy równe rozproszenie w wystąpieniach. Podczas dystrybucji nie ma żadnej gwarancji, platformy będzie upewnij się, że dwa wystąpienia tej samej aplikacji nie będą obsługiwane przez to samo wystąpienie planu usługi App Service.
+
+Platforma nie zależą od metryki, aby decyzję w sprawie alokacji procesu roboczego. Aplikacje są ponownie zbilansowana tylko wtedy, gdy wystąpienia są dodawane lub usuwane z planu usługi App Service.
 
 ## <a name="per-app-scaling-using-powershell"></a>Dla aplikacji, skalowanie przy użyciu programu PowerShell
 
@@ -60,10 +64,10 @@ W poniższym przykładzie aplikacja jest ograniczona do dwóch wystąpień, niez
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
 $newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
-    
+
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
-    
+
 # Post updated app back to azure
 Set-AzWebApp $newapp
 ```
@@ -128,19 +132,20 @@ Plan usługi App Service jest ustawienie **PerSiteScaling** właściwości na wa
 ```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>Zalecana konfiguracja hosting o dużej gęstości
-Na skalowanie aplikacji to funkcja, która jest włączona w obu globalnych regionów platformy Azure i [środowisk usługi App Service](environment/app-service-app-service-environment-intro.md). Jednak zalecaną strategią jest użycie środowisk usługi App Service, aby móc korzystać z ich zaawansowane funkcje i większe pule o pojemności.  
 
-Wykonaj następujące kroki, aby skonfigurować o wysokiej gęstości hosting dla aplikacji:
+Na skalowanie aplikacji to funkcja, która jest włączona w obu globalnych regionów platformy Azure i [środowisk usługi App Service](environment/app-service-app-service-environment-intro.md). Jednak zalecaną strategią jest korzystanie z zalet ich zaawansowane funkcje i większą pojemność planu usługi App Service przy użyciu środowisk usługi App Service.  
 
-1. Skonfiguruj środowisko usługi App Service i wybierz pulę procesów roboczych przeznaczonych do scenariusza hostingu w sieci o wysokiej gęstości.
-2. Utwórz jeden plan usługi App Service i skalować ją na korzystanie z całej dostępnej pojemności puli procesów roboczych.
-3. Ustaw `PerSiteScaling` flagi na wartość true w planie usługi App Service.
-4. Nowe aplikacje zostały utworzone i przypisane do tego planu usługi App Service przy użyciu **numberOfWorkers** właściwością **1**. Za pomocą tej konfiguracji daje najwyższy gęstość można w tej puli procesów roboczych.
-5. Liczba procesów roboczych, które można niezależnie konfigurować na aplikację, aby udzielić dodatkowych zasobów, zgodnie z potrzebami. Na przykład:
-    - Można ustawić aplikacji obciążonym **numberOfWorkers** do **3** zapewnienie większej pojemności przetwarzania dla danej aplikacji. 
-    - Ustawiał niskiego użycia aplikacje **numberOfWorkers** do **1**.
+Wykonaj następujące kroki, aby skonfigurować hosting o dużej gęstości dla aplikacji:
 
-## <a name="next-steps"></a>Następne kroki
+1. Wyznaczanie plan usługi App Service o wysokiej gęstości planu i skalować ją na żądaną wydajność.
+1. Ustaw `PerSiteScaling` flagi na wartość true w planie usługi App Service.
+1. Nowe aplikacje zostały utworzone i przypisane do tego planu usługi App Service przy użyciu **numberOfWorkers** właściwością **1**.
+   - Za pomocą tej konfiguracji daje najwyższy gęstość możliwe.
+1. Liczba procesów roboczych, które można niezależnie konfigurować na aplikację, aby udzielić dodatkowych zasobów, zgodnie z potrzebami. Na przykład:
+   - Można ustawić aplikacji obciążonym **numberOfWorkers** do **3** zapewnienie większej pojemności przetwarzania dla danej aplikacji.
+   - Ustawiał niskiego użycia aplikacje **numberOfWorkers** do **1**.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Szczegółowe omówienie planów usługi Azure App Service](overview-hosting-plans.md)
 - [Wprowadzenie do usługi App Service Environment](environment/app-service-app-service-environment-intro.md)

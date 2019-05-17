@@ -2,23 +2,23 @@
 title: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie usługi Azure AD (publiczna wersja zapoznawcza)
 description: Ta strona zawiera opis Mapowanie oświadczeń w usłudze Azure Active Directory.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300482"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546205"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -105,7 +105,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | grant_type |
 | wykres |
 | group_sids |
-| grupy |
+| Grupy |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -157,9 +157,9 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | refreshtoken |
 | request_nonce |
 | zasób |
-| role (rola) |
+| rola |
 | role |
-| scope |
+| zakres |
 | scp |
 | Identyfikator SID |
 | Podpis |
@@ -177,7 +177,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| nazwa użytkownika |
+| username |
 | uti |
 | VER |
 | verified_primary_email |
@@ -284,15 +284,15 @@ Elementu Identyfikatora Określa, która właściwość na "source" zawiera wart
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: Prawidłowe wartości Identyfikatora dla każdego źródła
 
-| Element źródłowy | ID | Opis |
+| Source | ID | Opis |
 |-----|-----|-----|
-| Użytkownik | surname | Nazwa rodziny |
-| Użytkownik | givenname | Imię |
-| Użytkownik | displayname | Nazwa wyświetlana |
+| Użytkownik | nazwisko | Nazwa rodziny |
+| Użytkownik | Imię | Imię |
+| Użytkownik | Nazwa wyświetlana | Nazwa wyświetlana |
 | Użytkownik | Identyfikator obiektu | ObjectID |
-| Użytkownik | mail (poczta) | Adres e-mail |
+| Użytkownik | poczta | Adres e-mail |
 | Użytkownik | userprincipalname | Nazwa główna użytkownika |
-| Użytkownik | department|Dział|
+| Użytkownik | Dział|Dział|
 | Użytkownik | onpremisessamaccountname | Nazwa konta SAM w środowisku lokalnym |
 | Użytkownik | netbiosname| NetBios Name |
 | Użytkownik | dnsdomainname | Nazwa domeny DNS |
@@ -320,12 +320,12 @@ Elementu Identyfikatora Określa, która właściwość na "source" zawiera wart
 | Użytkownik | extensionattribute15 | Atrybut rozszerzenia 15 |
 | Użytkownik | othermail | Inne wiadomości E-mail |
 | Użytkownik | Kraj | Kraj |
-| Użytkownik | city | Miasto |
-| Użytkownik | state | Stan |
+| Użytkownik | city | Miejscowość |
+| Użytkownik | stan | Stan |
 | Użytkownik | stanowisko | Stanowisko |
-| Użytkownik | employeeid | Identyfikator pracownika |
+| Użytkownik | EmployeeID | Identyfikator pracownika |
 | Użytkownik | facsimiletelephonenumber | Numer faksu |
-| Aplikacja zasobu, grupy odbiorców | displayname | Nazwa wyświetlana |
+| Aplikacja zasobu, grupy odbiorców | Nazwa wyświetlana | Nazwa wyświetlana |
 | Aplikacja zasobu, grupy odbiorców | obiekty | ObjectID |
 | Aplikacja zasobu, grupy odbiorców | tags | Tag jednostki usługi |
 | Firma | tenantcountry | Kraju dzierżawy |
@@ -360,8 +360,8 @@ Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjścio
 
 |TransformationMethod|Oczekiwanych danych wejściowych|Oczekiwane dane wyjściowe|Opis|
 |-----|-----|-----|-----|
-|Join|ciąg1, ciąg2, separatora|oświadczenie outputClaim|Sprzężenia wejściowe ciągi przy użyciu separatora między. Na przykład: ciąg1: "foo@bar.com", ciąg2: "piaskownicy", separatora: "." skutkuje oświadczenie outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail (poczta)|oświadczenie outputClaim|Wyodrębnia lokalnym składniku adresu e-mail. Na przykład: wiadomości e-mail: "foo@bar.com" skutkuje oświadczenie outputClaim: "foo". Jeśli nie \@ logowania jest obecny, a następnie oryginalnego ciągu wejściowego jest zwracany, ponieważ jest.|
+|Dołączanie|ciąg1, ciąg2, separatora|oświadczenie outputClaim|Sprzężenia wejściowe ciągi przy użyciu separatora między. Na przykład: ciąg1: "foo@bar.com", ciąg2: "piaskownicy", separatora: "." skutkuje oświadczenie outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|poczta|oświadczenie outputClaim|Wyodrębnia lokalnym składniku adresu e-mail. Na przykład: wiadomości e-mail: "foo@bar.com" skutkuje oświadczenie outputClaim: "foo". Jeśli nie \@ logowania jest obecny, a następnie oryginalnego ciągu wejściowego jest zwracany, ponieważ jest.|
 
 **InputClaims:** Użyj elementu InputClaims do przekazania danych z wpisu schematu oświadczenia do przekształcenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
 
@@ -384,12 +384,12 @@ Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjścio
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: Atrybuty można użyć jako źródła danych dla identyfikatora SAML NameID
 
-|Element źródłowy|ID|Opis|
+|Source|ID|Opis|
 |-----|-----|-----|
-| Użytkownik | mail (poczta)|Adres e-mail|
+| Użytkownik | poczta|Adres e-mail|
 | Użytkownik | userprincipalname|Nazwa główna użytkownika|
 | Użytkownik | onpremisessamaccountname|Nazwy konta Sam lokalnie|
-| Użytkownik | employeeid|Identyfikator pracownika|
+| Użytkownik | EmployeeID|Identyfikator pracownika|
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |
@@ -411,7 +411,7 @@ Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjścio
 | TransformationMethod | Ograniczenia |
 | ----- | ----- |
 | ExtractMailPrefix | Brak |
-| Join | Sufiks jest przyłączone do musi być zweryfikowaną domenę dzierżawy zasobów. |
+| Dołączanie | Sufiks jest przyłączone do musi być zweryfikowaną domenę dzierżawy zasobów. |
 
 ### <a name="custom-signing-key"></a>Niestandardowy klucz podpisywania
 

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: a5d93a77652f540fde44b33963b13df04b45ecee
-ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64987939"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596111"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -39,9 +39,9 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Kanada Wschodnia |\* |\* |
 | Środkowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Chiny Wschodnie |\* |\* |
-| Chiny Wschodnie 2 |\* |\* |
+| Chiny Wschodnie 2 |\* |Gen2 tylko |
 | Chiny Północne |\* |\* |
-| Chiny Północne 2 |\* |\* |
+| Chiny Północne 2 |Dostępne |Gen2 tylko |
 | Azja Wschodnia |Dostępne |1 czerwca 2019 r. |
 | Wschodnie stany USA |Dostępne |1 czerwca 2019 r. |
 | Wschodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |
@@ -54,13 +54,13 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Japonia Zachodnia |Dostępne |1 maja 2019 r. |
 | Korea Środkowa |Dostępne |1 czerwca 2019 r. |
 | Korea Południowa |Dostępne |1 maja 2019 r. |
-| Środkowo-północne stany USA |Dostępne |1 maja 2019 r. |
+| Północno-środkowe stany USA |Dostępne |1 maja 2019 r. |
 | Europa Północna |Dostępne |1 czerwca 2019 r. |
-| Środkowo-południowe stany USA |Dostępne |1 czerwca 2019 r. |
+| Południowo-środkowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Azja Południowo-Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Południowe Zjednoczone Królestwo |Dostępne, 2019 r |1 czerwca 2019 r. |
-| Zachodnie Zjednoczone Królestwo |\*|\* |
-| Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
+| Zjednoczone Królestwo (południe) |Dostępne, 2019 r |1 czerwca 2019 r. |
+| Zjednoczone Królestwo (zachód) |\*|\* |
+| Zachodnio-środkowe stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
 | Europa Zachodnia |Dostępne |1 czerwca 2019 r. |
 | Zachodnie stany USA |Dostępne |1 czerwca 2019 r. |
 | Zachodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |

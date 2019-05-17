@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: baefd05b562d688b662bf988c7b36a0e9cd154b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2c3c3988193242cd0afe0135b019c7e6f73b59c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61441852"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596727"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -44,7 +44,7 @@ Na końcu tego samouczka możesz uruchomić dwie aplikacje konsolowe środowiska
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Środowisko Node.js w wersji 4.0.x lub nowszej.
+* Środowisko node.js w wersji 10.0.x lub nowszej.
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial) w zaledwie kilka minut.)
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Odbieranie wiadomości w aplikacji symulowanego urządzenia

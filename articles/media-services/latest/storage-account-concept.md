@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 96c3a3eb5e4c07ad9cad8ea5060a27c0c33eec5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466820"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550143"
 ---
 # <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
 
@@ -51,6 +51,17 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 |[Szyfrowanie po stronie klienta magazynu](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Szyfrowanie po stronie klienta, oferowane przez usługę Azure storage, klucz zarządzany przez klienta w usłudze Key Vault|Nieobsługiwane|
 
 <sup>1</sup> Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Co oznacza v3 współpracuje z istniejącym magazynie zaszyfrowane zasoby, ale nie pozwoli na tworzenie nowych.
+
+## <a name="storage-account-errors"></a>Błędy konta magazynu
+
+Stan "Disconnected" dla konta usługi Media Services wskazuje, że konto ma już dostęp do jednego lub większej liczby kont dołączonego magazynu z powodu zmiany kluczy dostępu do magazynu. Klucze dostępu do magazynu aktualne są wymagane przez usługę Media Services do wykonywania wielu zadań w ramach konta.
+
+Poniżej przedstawiono podstawowe scenariusze, które mogłyby spowodować konto usługi Media Services nie mają dostępu do kont magazynu dołączone. 
+
+|Problem|Rozwiązanie|
+|---|---|
+|Konto usługi Media Services lub kont magazynu dołączone zostały poddane migracji do oddzielania subskrypcji. |Migrowanie kont magazynu lub konta usługi Media Services, aby były one w tej samej subskrypcji. |
+|Konto usługi Media Services używa dołączone konto magazynu w innej subskrypcji, jak konto usługi Media Services wczesne gdzie to obsługiwane. Wszystkie wcześniejsze konta usługi Media Services zostały przekonwertowane na nowoczesnych konta platformy Azure zasoby Manager (ARM) na podstawie, zostanie rozłączony. |Migruj konto magazynu lub konta usługi Media Services, aby były one w tej samej subskrypcji.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

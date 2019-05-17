@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/06/2019
-ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/13/2019
+ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136597"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596945"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Dokumentacja dla typów akcji i wyzwalaczy w język definicji przepływów pracy dla usługi Azure Logic Apps
 
@@ -56,7 +56,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 | <*trigger-type*> | String | Typ wyzwalacza, takiego jak "Http" lub "ApiConnection" | 
 | <*dane wejściowe wyzwalacza*> | Obiekt JSON | Dane wejściowe, które określają zachowanie tego wyzwalacza | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -137,7 +137,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 | <*method-type*> | String | Metoda HTTP do komunikacji z zarządzany interfejs API: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*Operacja interfejsu API*> | String | Operacja wywołania interfejsu API | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -146,8 +146,8 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 |-------|------|-------------| 
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | Obiekt JSON | Wywołaj żadnych parametrów zapytania do uwzględnienia przy użyciu interfejsu API. Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` wywołania. | 
-| <*max-runs*> | Liczba całkowita | Domyślnie, wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Liczba całkowita | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Domyślnie, wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
 | <*splitOn-expression*> | String | Wyzwalacze, które zwracają tablice to wyrażenie odwołuje się do tablicy, dzięki czemu można utworzyć i uruchomić wystąpienia przepływu pracy dla każdego elementu tablicy, zamiast pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracanej w zawartości treści wyzwalacza: `@triggerbody()?['value']` |
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). |
 ||||
@@ -158,7 +158,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 |---------|------|-------------|
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi |
 | treść | Obiekt JSON | Jednostka z odpowiedzi |
-| Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi |
+| Kod stanu: | Integer | Kod stanu z odpowiedzi |
 |||| 
 
 *Przykład*
@@ -236,8 +236,8 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego usługi za pomo
 |-------|------|-------------| 
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | Obiekt JSON | Wszelkie parametry zapytania do uwzględnienia przy użyciu wywołania interfejsu API <p>Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` wywołania. | 
-| <*max-runs*> | Liczba całkowita | Domyślnie, wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Liczba całkowita | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Domyślnie, wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
 | <*splitOn-expression*> | String | Wyzwalacze, które zwracają tablice to wyrażenie odwołuje się do tablicy, dzięki czemu można utworzyć i uruchomić wystąpienia przepływu pracy dla każdego elementu tablicy, zamiast pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracanej w zawartości treści wyzwalacza: `@triggerbody()?['value']` |
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). | 
 |||| 
@@ -308,7 +308,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 | <*method-type*> | String | Metoda HTTP na potrzeby sondowania określony punkt końcowy: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*endpoint-URL*> | String | HTTP lub HTTPS URL punktu końcowego, sondowanie <p>Maksymalny rozmiar ciągu: 2 KB | 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
@@ -320,8 +320,8 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 | <*authentication-method*> | Obiekt JSON | Metoda żądania używa do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie połączeń wychodzących usługi Scheduler](../scheduler/scheduler-outbound-authentication.md). Poza harmonogramem `authority` właściwość jest obsługiwana. Jeśli nie zostanie określony, wartością domyślną jest `https://login.windows.net`, ale można użyć innej wartości, takich jak`https://login.windows\-ppe.net`. |
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
  <*query-parameters*> | Obiekt JSON | Wszelkie parametry zapytania do uwzględnienia w żądaniu <p>Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` na żądanie. | 
-| <*max-runs*> | Liczba całkowita | Domyślnie, wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Liczba całkowita | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Domyślnie, wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). | 
 |||| 
 
@@ -331,7 +331,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 |---------|------|-------------| 
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
-| Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
+| Kod stanu: | Integer | Kod stanu z odpowiedzi | 
 |||| 
 
 *Wymagania dla żądań przychodzących*
@@ -340,7 +340,7 @@ Do pracy ze swoją aplikację logiki, punkt końcowy musi są zgodne ze wzorcem 
   
 | Odpowiedź | Wymagane | Opis | 
 |----------|----------|-------------| 
-| Kod stanu | Yes | "200 OK" Kod stanu: uruchamia przebieg. Każdy inny kod stanu nie zaczyna się przebiegu. | 
+| Kod stanu | Tak | "200 OK" Kod stanu: uruchamia przebieg. Każdy inny kod stanu nie zaczyna się przebiegu. | 
 | Nagłówek retry-after | Nie | Liczba sekund, aż aplikacja logiki sonduje punkt końcowy ponownie | 
 | Nagłówek lokalizacji | Nie | Adres URL do wywołania na kolejnego interwału sondowania. Jeśli nie zostanie określony, oryginalnym adresie URL jest używany. | 
 |||| 
@@ -415,8 +415,8 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 | <*body-content*> | String | Każdy komunikat zawartości do wysłania w subskrypcji lub anulowania żądania | 
 | <*authentication-method*> | Obiekt JSON | Metoda żądania używa do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie połączeń wychodzących usługi Scheduler](../scheduler/scheduler-outbound-authentication.md). |
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*max-runs*> | Liczba całkowita | Domyślnie, wszystkie wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Liczba całkowita | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Domyślnie, wszystkie wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). | 
 |||| 
 
@@ -426,7 +426,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 |---------|------|-------------| 
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
-| Kod stanu: | Liczba całkowita | Kod stanu z odpowiedzi | 
+| Kod stanu: | Integer | Kod stanu z odpowiedzi | 
 |||| 
 
 *Przykład*
@@ -497,20 +497,20 @@ Ten wyzwalacz jest uruchamiany na podstawie na harmonogramie cyklu określonego 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
-| <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
+| <*Liczba z godziny jednostek*> | Integer | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Opcjonalne*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
-| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | Data i godzina rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i określić strefę czasową, np. "Pacyfik (czas standardowy)" lub podaj "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [Utwórz i harmonogram, regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
+| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | Data i godzina rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>—lub— <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i określić strefę czasową, np. "Pacyfik (czas standardowy)" lub podaj "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [Utwórz i harmonogram, regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
 | <*Strefa czasowa*> | String | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, który chcesz zastosować. | 
 | <*one-or-more-hour-marks*> | Liczba całkowita lub tablicy liczb całkowitych | Jeśli określisz "Day" lub "Week" dla `frequency`, można określić co najmniej jeden liczby całkowite z zakresu od 0 do 23, oddzielone przecinkami, w formacie godziny, dnia, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład jeśli określisz "10", "12" i "14", możesz uzyskać 10 AM, 12 PM i 14: 00 jako znaki godzinę. | 
 | <*one-or-more-minute-marks*> | Liczba całkowita lub tablicy liczb całkowitych | Jeśli określisz "Day" lub "Week" dla `frequency`, można określić co najmniej jeden liczby całkowite z zakresu od 0 do 59, oddzielając je średnikami, jako minuty, godziny, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład "30" można określić jako znacznik minutę i godziny, dnia, korzystając z poprzedniego przykładu, możesz uzyskać 10:30:00, 12:30:00 i 14:30:00. | 
 | weekDays | Ciąg lub tablicę ciągów | Jeśli określisz "Week" dla `frequency`, można określić co najmniej jeden dzień, oddzielając je średnikami, jeśli chcesz uruchomić przepływ pracy: "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota" i "Niedziela" | 
-| <*max-runs*> | Liczba całkowita | Domyślnie, wszystkie wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Liczba całkowita | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Domyślnie, wszystkie wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). | 
 |||| 
 
@@ -616,8 +616,8 @@ Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, kt
 | <*method-type*> | String | Metoda żądania przychodzące, należy użyć do wywoływania aplikacji logiki: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | Ścieżka względna dla parametru, który może zaakceptować adresu URL usługi punktu końcowego | 
 | <*wymagane właściwości*> | Tablica | Jedną lub więcej właściwości, które wymagają wartości | 
-| <*max-runs*> | Liczba całkowita | Domyślnie, wszystkie wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Liczba całkowita | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Domyślnie, wszystkie wystąpienia przepływu pracy jest uruchamiany w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Gdy przepływ pracy jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | 
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). | 
 |||| 
 
@@ -1461,7 +1461,7 @@ Ta akcja powoduje utworzenie ładunek odpowiedzi na żądania HTTP.
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
-| <*response-status-code*> | Liczba całkowita | Kod stanu HTTP są wysyłane do żądania przychodzącego. Domyślny kod to "200 OK", ale kod może być prawidłowym stanem kodu, który rozpoczyna się za pomocą 2xx, 4xx lub 5xx, ale nie z 3xxx. | 
+| <*response-status-code*> | Integer | Kod stanu HTTP są wysyłane do żądania przychodzącego. Domyślny kod to "200 OK", ale kod może być prawidłowym stanem kodu, który rozpoczyna się za pomocą 2xx, 4xx lub 5xx, ale nie z 3xxx. | 
 |||| 
 
 *Opcjonalne*
@@ -1817,7 +1817,7 @@ Ta akcja wstrzymuje wykonywanie przepływu pracy przez określony interwał lub 
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
-| <*Liczba jednostek*> | Liczba całkowita | Aby uzyskać **opóźnienie** akcji, liczba oczekiwania | 
+| <*Liczba jednostek*> | Integer | Aby uzyskać **opóźnienie** akcji, liczba oczekiwania | 
 | <*interval*> | String | Aby uzyskać **opóźnienie** akcji, interwał oczekiwania: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
 | <*date-time-stamp*> | String | Aby uzyskać **opóźnienie do momentu** akcji, datę i godzinę wznowić wykonywanie. Ta wartość musi mieć [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
 |||| 
@@ -1976,7 +1976,7 @@ Ta akcja pętli wykonuje iterację przez tablicę i wykonuje akcje dla każdego 
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
-| <*count*> | Liczba całkowita | Domyślnie pętla "for each" iteracji wykonywać w tym samym czasie lub w sposób równoległy maksymalnie [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [zmienić pętli "for each" współbieżności](#change-for-each-concurrency). | 
+| <*count*> | Integer | Domyślnie pętla "for each" iteracji wykonywać w tym samym czasie lub w sposób równoległy maksymalnie [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [zmienić pętli "for each" współbieżności](#change-for-each-concurrency). | 
 | <*Opcja operacji*> | String | Aby uruchomić pętlę "for each", po kolei, a nie w sposób równoległy, ustaw <*opcji operacji*> do `Sequential` lub <*liczba*> do `1`, ale nie oba. Aby uzyskać więcej informacji, zobacz [Uruchom "for each" w pętli sekwencyjnie](#sequential-for-each). | 
 |||| 
 
@@ -2301,7 +2301,7 @@ Ta akcja pętla zawiera akcje, które uruchamiane aż określony warunek ma wart
 | <*action-type*> | String | Typ akcji, którą chcesz uruchomić | 
 | <*dane wejściowe akcji*> | Różne | Dane wejściowe akcji uruchomienia | 
 | <*Warunek*> | String | Warunek lub wyrażenie do oceny, gdy wszystkie działania w pętli zakończenie działania | 
-| <*loop-count*> | Liczba całkowita | Limit na największą liczbę pętli, które można uruchomić akcji. Wartość domyślna `count` wartość 60. | 
+| <*loop-count*> | Integer | Limit na największą liczbę pętli, które można uruchomić akcji. Wartość domyślna `count` wartość 60. | 
 | <*loop-timeout*> | String | Limit przez najdłuższy okres czasu, która może działać w pętli. Wartość domyślna `timeout` wartość `PT1H`, co jest wymagane [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
@@ -2376,10 +2376,11 @@ Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy
 
 | Właściwość | Typ | Opis | Wyzwalacza lub akcji | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Liczba całkowita | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na liczbę wystąpień przepływu pracy, które można uruchomić w tym samym czasie lub w sposób równoległy. Ta wartość może pomóc ograniczyć liczbę żądań, które odbierają systemów zaplecza. <p>Ustawienie `runs` właściwości `1` działa tak samo jak ustawienie `operationOptions` właściwość `SingleInstance`. Możesz ustawić wartość właściwości, ale nie oba. <p>Aby zmienić domyślny limit, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](#sequential-trigger). | Wszystkie wyzwalacze | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Liczba całkowita | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na liczbę wystąpień przepływu pracy, które można poczekać i uruchamiany, gdy przepływ pracy jest już uruchomiona maksymalna liczba współbieżnych wystąpień. Limit współbieżności w można zmienić `concurrency.runs` właściwości. <p>Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | Wszystkie wyzwalacze | 
-| `runtimeConfiguration.concurrency.repetitions` | Liczba całkowita | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) "for each" liczby iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p>Ustawienie `repetitions` właściwości `1` działa tak samo jak ustawienie `operationOptions` właściwość `SingleInstance`. Możesz ustawić wartość właściwości, ale nie oba. <p>Aby zmienić domyślny limit, zobacz [zmienić "for each" współbieżności](#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](#sequential-for-each). | Akcja: <p>[Instrukcja foreach](#foreach-action) | 
-| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Liczba całkowita | Konkretne akcje, które obsługują i mieć włączone stronicowanie, ta wartość Określa *minimalne* liczba wyników do pobrania. <p>Aby włączyć funkcję podziału na strony, zobacz [uzyskać dane zbiorcze, elementy lub wyniki za pomocą dzielenia na strony](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akcja: Zróżnicowane |
+| `runtimeConfiguration.concurrency.runs` | Integer | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na liczbę wystąpień przepływu pracy, które można uruchomić w tym samym czasie lub w sposób równoległy. Ta wartość może pomóc ograniczyć liczbę żądań, które odbierają systemów zaplecza. <p>Ustawienie `runs` właściwości `1` działa tak samo jak ustawienie `operationOptions` właściwość `SingleInstance`. Możesz ustawić wartość właściwości, ale nie oba. <p>Aby zmienić domyślny limit, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](#sequential-trigger). | Wszystkie wyzwalacze | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na liczbę wystąpień przepływu pracy, które można poczekać i uruchamiany, gdy przepływ pracy jest już uruchomiona maksymalna liczba współbieżnych wystąpień. Limit współbieżności w można zmienić `concurrency.runs` właściwości. <p>Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | Wszystkie wyzwalacze | 
+| `runtimeConfiguration.concurrency.repetitions` | Integer | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) "for each" liczby iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p>Ustawienie `repetitions` właściwości `1` działa tak samo jak ustawienie `operationOptions` właściwość `SingleInstance`. Możesz ustawić wartość właściwości, ale nie oba. <p>Aby zmienić domyślny limit, zobacz [zmienić "for each" współbieżności](#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](#sequential-for-each). | Akcja: <p>[Instrukcja foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Konkretne akcje, które obsługują i mieć włączone stronicowanie, ta wartość Określa *minimalne* liczba wyników do pobrania. <p>Aby włączyć funkcję podziału na strony, zobacz [uzyskać dane zbiorcze, elementy lub wyniki za pomocą dzielenia na strony](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akcja: Zróżnicowane |
+| `runtimeConfiguration.staticResult` | Obiekt JSON | Dla akcji, które obsługuje i ma [statyczny wynik](../logic-apps/test-logic-apps-mock-data-static-results.md) ustawienie włączony, `staticResult` obiekt ma następujące atrybuty: <p>- `name`, które odwołują się do nazwy definicji statyczny wynik bieżącej akcji, która pojawia się wewnątrz `staticResults` atrybutu w przepływie pracy aplikacji logiki `definition` atrybutu. Aby uzyskać więcej informacji, zobacz [wyniki statycznej — odwołanie do schematu dla języka definicji programu Workflow](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, która określa, czy statyczne wyniki są `Enabled` lub nie dla bieżącej akcji. <p>Aby włączyć statycznego wyników, zobacz [testowanie aplikacji logiki za pomocą danych testowych, konfigurując wyniki statycznej](../logic-apps/test-logic-apps-mock-data-static-results.md) | Akcja: Zróżnicowane |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2664,9 +2665,9 @@ Aby uzyskać [uwierzytelnianie podstawowe](../active-directory-b2c/active-direct
 
 | Właściwość | Wymagany | Value | Opis | 
 |----------|----------|-------|-------------| 
-| **type** | Yes | "Podstawowa" | Typ uwierzytelniania do użycia, która jest tutaj "Basic" | 
-| **Nazwa użytkownika** | Yes | "@parameters('userNameParam')" | Nazwa użytkownika do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
-| **Hasło** | Yes | "@parameters(passwordParam)" | Hasło do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
+| **type** | Tak | "Podstawowa" | Typ uwierzytelniania do użycia, która jest tutaj "Basic" | 
+| **Nazwa użytkownika** | Tak | "@parameters('userNameParam')" | Nazwa użytkownika do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
+| **Hasło** | Tak | "@parameters(passwordParam)" | Hasło do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
 ||||| 
 
 W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `Basic` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczanie parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
@@ -2698,9 +2699,9 @@ Aby uzyskać [uwierzytelniania opartego na certyfikatach](../active-directory/au
 
 | Właściwość | Wymagany | Value | Opis |
 |----------|----------|-------|-------------|
-| **type** | Yes | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL). Certyfikaty z podpisem własnym są obsługiwane, nie są obsługiwane certyfikaty z podpisem własnym dla protokołu SSL. |
-| **pfx** | Yes | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **Hasło** | Yes | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
+| **type** | Tak | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL). Certyfikaty z podpisem własnym są obsługiwane, nie są obsługiwane certyfikaty z podpisem własnym dla protokołu SSL. |
+| **pfx** | Tak | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
+| **Hasło** | Tak | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
 ||||| 
 
 W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `ClientCertificate` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczanie parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
@@ -2732,12 +2733,12 @@ Dla [uwierzytelniania OAuth usługi AD Azure](../active-directory/develop/authen
 
 | Właściwość | Wymagany | Value | Opis |
 |----------|----------|-------|-------------|
-| **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
+| **type** | Tak | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
 | **Urząd** | Nie | <*URL-for-authority-token-issuer*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |
-| **dzierżawy** | Yes | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **audience** | Yes | <*resource-to-authorize*> | Zasób, którego chcesz użyć do autoryzacji, na przykład `https://management.core.windows.net/` |
-| **clientId** | Yes | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji |
-| **credentialType** | Yes | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. |
+| **dzierżawy** | Tak | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **audience** | Tak | <*resource-to-authorize*> | Zasób, którego chcesz użyć do autoryzacji, na przykład `https://management.core.windows.net/` |
+| **clientId** | Tak | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji |
+| **credentialType** | Tak | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. |
 | **pfx** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
 | **Hasło** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
 | **Klucz tajny** | Tak, tylko w przypadku "Wpis tajny" typ poświadczeń | "@parameters(secretParam)" | Klucz tajny klienta do żądania autoryzacji |

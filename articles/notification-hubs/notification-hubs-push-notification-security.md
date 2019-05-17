@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 2ca3c69178dde830e226812da34917246781c1ee
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 22494984ca45cde7255fb5e1a30548c859bfad68
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762155"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826520"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Model zabezpieczeń usługi Azure Notification hubs
 
@@ -51,4 +51,5 @@ Podobnie jak inne podmioty, operacje Centrum powiadomień są dozwolone dla trze
 
 Usługa Notification Hubs akceptować oświadczeń przyznane przez Microsoft Azure Access Control tokenów i tokenów sygnatur wygenerowane z klucze współużytkowane są konfigurowane bezpośrednio w Centrum powiadomień.
 
-Nie jest możliwe wysłanie powiadomienia do więcej niż jednej przestrzeni nazw. Przestrzenie nazw to kontener logiczny dla usługi notification hubs i nie są związane z wysyłaniem powiadomień. Zasady dostępu na poziomie przestrzeni nazw (poświadczenia) może służyć do operacji na poziomie przestrzeni nazw, na przykład: wyświetlanie listy usługi notification hubs, tworzenie lub usuwanie usługi notification hubs, itp. Tylko zasady dostępu na poziomie koncentratora będzie można wysyłać powiadomienia.
+Nie jest możliwe wysłanie powiadomienia do więcej niż jednej przestrzeni nazw. Przestrzenie nazw to kontener logiczny dla usługi notification hubs i nie są związane z wysyłaniem powiadomień.
+Zasady dostępu na poziomie przestrzeni nazw (poświadczenia) może służyć do operacji na poziomie przestrzeni nazw, na przykład: wyświetlanie listy usługi notification hubs, tworzenie lub usuwanie usługi notification hubs, itp. Tylko zasady dostępu na poziomie koncentratora będzie można wysyłać powiadomienia.

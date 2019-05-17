@@ -3,8 +3,8 @@ title: Dostosowywanie mapowań atrybutów usługi Azure AD | Dokumentacja firmy 
 description: Dowiedz się, jakie mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory są, jak możesz modyfikować je w celu zaradzenia potrzeb firmy.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9db6babff3ae0c91f730e6ec2e6e2a41d55b0bf
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: bc3aea059b6ac4244ea440d26717562e83fdbd09
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191515"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824908"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
 Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, usługi G Suite i inne. Jeśli zostanie włączone, aprowizacja użytkowników dla aplikacji SaaS innych firm, witryny Azure portal steruje jego wartości atrybutu za pomocą mapowania atrybutów.
@@ -43,17 +43,17 @@ Wykonaj następujące kroki, aby uzyskać dostęp do **mapowania** funkcji aprow
 
 1. Rozwiń **mapowania** możesz wyświetlać i edytować atrybuty użytkownika, które przepływ między usługą Azure AD a aplikacją docelową. Jeśli aplikacja docelowa obsługuje tę funkcję, ta sekcja umożliwia opcjonalnie skonfigurować aprowizacji grup i kont użytkowników.
 
-   ![SalesForce](./media/customize-application-attributes/21.png) 
+   ![Salesforce](./media/customize-application-attributes/21.png) 
 
 1. Wybierz **mapowania** konfigurację, aby otworzyć powiązane **mapowanie atrybutu** ekranu. Niektóre mapowania atrybutów są wymagane przez aplikację SaaS, aby działo poprawnie. W przypadku wymaganych atrybutów **Usuń** funkcja jest niedostępna.
 
-   ![SalesForce](./media/customize-application-attributes/22.png)
+   ![Salesforce](./media/customize-application-attributes/22.png)
 
    W tym zrzucie ekranu widać **Username** atrybut zarządzanego obiektu w usłudze Salesforce jest wypełniana przy użyciu **userPrincipalName** wartość połączonej Azure obiektu usługi Active Directory.
 
 1. Wybierz istniejącą **mapowanie atrybutu** otworzyć **Edytuj atrybut** ekranu. W tym miejscu można edytować atrybuty użytkownika, które przepływ między usługą Azure AD a aplikacją docelową.
 
-   ![SalesForce](./media/customize-application-attributes/23.png)
+   ![Salesforce](./media/customize-application-attributes/23.png)
 
 
 ### <a name="understanding-attribute-mapping-types"></a>Opis typów Mapowanie atrybutów
@@ -104,7 +104,7 @@ Jednak niektóre aplikacje obsługują atrybutów niestandardowych i usługi apr
 
 Aplikacje i systemy, które obsługują dostosowania listy atrybutów to:
 
-* SalesForce
+* Salesforce
 * ServiceNow
 * Dzień roboczy
 * Usługa Azure Active Directory ([atrybutów domyślnych interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) i rozszerzenia katalogów niestandardowych są obsługiwane)

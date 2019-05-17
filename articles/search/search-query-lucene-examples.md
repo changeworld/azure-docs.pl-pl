@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024451"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595902"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Przykłady zapytań przy użyciu składni wyszukiwania w usłudze "pełnej" Lucene (zaawansowanych zapytań w usłudze Azure Search)
 
@@ -81,11 +81,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 Wszystkie przykłady w niniejszym artykule określ **queryType = full** wyszukiwania parametr, wskazujący, że pełnej składni jest obsługiwane przez analizator składni zapytań Lucene. 
 
-## <a name="example-1-field-scoped-query"></a>Przykład 1: Zakres pola zapytania
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Przykład 1: Zapytanie zakresu do listy pól
 
-W pierwszym przykładzie nie jest specyficzne dla Lucene, ale możemy prowadzić z nim wprowadzenie pojęcia pierwsze zapytanie podstawowe: zawierania. W tym przykładzie zakresów, wykonywania zapytań i odpowiedzi na kilka konkretnych pól. Ważne jest wiedza, jak i struktury można odczytać odpowiedź w formacie JSON, po narzędzie Postman lub wyszukiwania Eksploratora. 
+W pierwszym przykładzie nie jest specyficzne dla Lucene, ale możemy prowadzić z nim wprowadzenie pojęcia pierwsze zapytanie podstawowe: pole zakresu. W tym przykładzie zakres całego zapytania i odpowiedzi na kilka konkretnych pól. Ważne jest wiedza, jak i struktury można odczytać odpowiedź w formacie JSON, po narzędzie Postman lub wyszukiwania Eksploratora. 
 
-Celu skrócenia programu, zapytanie jest przeznaczona tylko *business_title* pola, a następnie określa tylko tytuły biznesowe są zwracane. Składnia jest **searchFields** ograniczyć wykonywanie zapytania do tylko pola business_title i **wybierz** można określić pola, które mają zostać uwzględnione w odpowiedzi.
+Celu skrócenia programu, zapytanie jest przeznaczona tylko *business_title* pola, a następnie określa tylko tytuły biznesowe są zwracane. **SearchFields** parametr ogranicza wykonywanie zapytania do tylko pola business_title i **wybierz** określa pola, które znajdują się w odpowiedzi.
 
 ### <a name="partial-query-string"></a>Ciąg zapytania częściowego
 
@@ -99,6 +99,11 @@ W tym miejscu jest tego samego zapytania przy użyciu wielu pól na liście rozd
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
+Miejsca do magazynowania po przecinkach są opcjonalne.
+
+> [!Tip]
+> Korzystając z interfejsu API REST, od kodu aplikacji, nie zapomnij kodowanie adresu URL parametrów, takich jak `$select` i `searchFields`.
+
 ### <a name="full-url"></a>Pełny adres URL
 
 ```http
@@ -109,41 +114,44 @@ Odpowiedź dla tego zapytania powinien wyglądać podobnie do poniższej zrzut e
 
   ![Postman przykładowa odpowiedź](media/search-query-lucene-examples/postman-sample-results.png)
 
-Być może Zauważyłeś, wynik wyszukiwania w odpowiedzi. Jednolite wyniki 1 wystąpić, gdy jest nie rangę, albo ponieważ wyszukiwanie pełnotekstowe nie jest wyszukiwanie lub ponieważ żadne kryteria nie została zastosowana. Dla wartości null wyszukiwania przy użyciu kryteriów wiersze wrócić w dowolnej kolejności. Umieszczonego rzeczywiste kryteria zobaczysz wyniki ewoluować w istotne wartości wyszukiwania.
+Być może Zauważyłeś, wynik wyszukiwania w odpowiedzi. Jednolite wyniki 1 wystąpić, gdy jest nie rangę, albo ponieważ wyszukiwanie pełnotekstowe nie jest wyszukiwanie lub ponieważ żadne kryteria nie została zastosowana. Dla wartości null wyszukiwania przy użyciu kryteriów wiersze wrócić w dowolnej kolejności. Umieszczonego kryteria wyszukiwania rzeczywiste zobaczysz wyniki ewoluować w istotne wartości wyszukiwania.
 
-## <a name="example-2-intra-field-filtering"></a>Przykład 2: Filtrowanie w obrębie pola
+## <a name="example-2-fielded-search"></a>Przykład 2: Fielded wyszukiwania
 
-Pełna składnia Lucene obsługuje wyrażenia w obrębie pola. W tym przykładzie wyszukuje tytuły firm z starszy termin w nich, ale nie młodszych.
+Pełnej składni Lucene obsługuje zakresu wyrażeń poszczególnych wyszukiwania z określonym polem. W tym przykładzie wyszukuje tytuły firm z starszy termin w nich, ale nie młodszych.
 
 ### <a name="partial-query-string"></a>Ciąg zapytania częściowego
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+$select=business_title&search=business_title:(senior NOT junior)
 ```
 
 W tym miejscu jest tego samego zapytania przy użyciu wielu pól.
 
 ```http
-searchFields=business_title, posting_type&$select=business_title, posting_type&search=business_title:senior+NOT+junior AND posting_type:external
+$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
 ```
 
 ### <a name="full-url"></a>Pełny adres URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Postman przykładowa odpowiedź](media/search-query-lucene-examples/intrafieldfilter.png)
 
-Określając **fieldname:searchterm** konstrukcji, można zdefiniować operacji fielded zapytania, gdzie pole jest pojedynczego wyrazu, a termin wyszukiwania jest również pojedynczego wyrazu lub frazy, opcjonalnie wraz z operatorami logicznymi. Oto kilka przykładów:
+Można zdefiniować operacji wyszukiwania fielded z **fieldName:searchExpression** składnię, w którym wyrażenie wyszukiwania może być pojedynczego wyrazu lub frazy lub bardziej złożone wyrażenie w nawiasach, opcjonalnie wraz z operatorami logicznymi. Oto kilka przykładów:
 
-* business_title:(senior NOT junior)
-* Stan: ("New York" i "Nowe Jersey")
-* business_title:(senior NOT junior) AND posting_type:external
+- `business_title:(senior NOT junior)`
+- `state:("New York" OR "New Jersey")`
+- `business_title:(senior NOT junior) AND posting_type:external`
 
-Pamiętaj umieścić wielu ciągów w cudzysłowach, jeśli chcesz, aby oba ciągi, które ma zostać obliczone jako pojedynczą jednostkę, jak w tym przypadku wyszukiwania dla dwóch różnych miast w polu lokalizacji. Upewnij się również, operator jest wielką literą, jak widać, z użyciem NOT i AND.
+Pamiętaj umieścić wielu ciągów w cudzysłowach, jeśli chcesz, aby mogło zostać ocenione jako pojedynczą jednostkę, jak w tym przypadku przeszukiwanie dla dwóch różnych lokalizacjach w obu ciągów `state` pola. Upewnij się również, operator jest wielką literą, jak widać, z użyciem NOT i AND.
 
-Pole określone w **fieldname:searchterm** musi być polu możliwym do przeszukania. Zobacz [Create Index (Azure Search Service interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) szczegółowe informacje na temat używania atrybuty indeksu w definicji pola.
+Pole określone w **fieldName:searchExpression** musi być polu możliwym do przeszukania. Zobacz [Create Index (Azure Search Service interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) szczegółowe informacje na temat używania atrybuty indeksu w definicji pola.
+
+> [!NOTE]
+> W powyższym przykładzie firma Microsoft nie musiał użyć `searchFields` parametru ponieważ każda część zapytania ma nazwę pola jawnie określony. Jednak nadal można użyć `searchFields` parametru, jeśli chcesz uruchomić zapytanie, gdzie niektóre elementy są ograniczone do określonego pola, a pozostałe można zastosować do kilku pól. Na przykład, zapytanie `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` będzie pasował `senior NOT junior` wyłącznie `business_title` pola, gdy byłby on zgodny z "external" `posting_type` pola. Nazwa pola w **fieldName:searchExpression** zawsze pierwszeństwo przed `searchFields` parametr, który jest, dlaczego w tym przykładzie, nie musimy uwzględnić `business_title` w `searchFields` parametru.
 
 ## <a name="example-3-fuzzy-search"></a>Przykład 3: Wyszukiwanie rozmyte
 

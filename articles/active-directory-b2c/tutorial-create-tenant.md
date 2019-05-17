@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12ce37579a6f93ba600c39416c7566ac673e9560
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6bcb8e8d5b8b6ef1ebac8141dd13964ecf62af6f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723332"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601688"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Samouczek: Tworzenie dzierżawy usługi Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 3. Wybierz **Utwórz zasób** w lewym górnym rogu witryny Azure portal.
 4. Wyszukaj i wybierz pozycję **Active Directory B2C**, a następnie kliknij przycisk **Utwórz**.
-5. Wybierz **utworzyć nową dzierżawę usługi Azure AD B2C**, wprowadź nazwę organizacji i początkowa nazwa domeny, który jest używany w nazwie dzierżawy, wybierz kraj (nie można zmienić później), a następnie kliknij **Utwórz**.
+5. Wybierz **utworzyć nową dzierżawę usługi Azure AD B2C**, wprowadź nazwę organizacji i początkowa nazwa domeny, który jest używany w nazwie dzierżawy, wybierz kraj/region (nie można zmienić później), a następnie kliknij przycisk **Utwórz** .
 
     ![Tworzenie dzierżawy](./media/tutorial-create-tenant/create-tenant.png)
 

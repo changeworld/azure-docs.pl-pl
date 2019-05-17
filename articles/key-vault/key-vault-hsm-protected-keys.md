@@ -9,18 +9,18 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: a013e0091e1a955672c1f16a4ac6300281d277b3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573014"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556201"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Dodano bezpieczeństwa korzystając z usługi Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Ten scenariusz jest często nazywany *Użyj własnego klucza*, byok. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Usługa Azure Key Vault używa rodziny nShield firmy Thales sprzętowych modułów zabezpieczeń do ochrony kluczy.
+Dodano bezpieczeństwa korzystając z usługi Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Ten scenariusz jest często nazywany *Użyj własnego klucza*, byok. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Usługa Azure Key Vault używa rodziny nShield nCipher sprzętowych modułów zabezpieczeń do ochrony kluczy.
 
 Skorzystaj z informacji w tym temacie, aby ułatwić planowanie, generowanie i następnie przenoszenie własnych kluczy chronionych modułem HSM za pomocą usługi Azure Key Vault.
 
@@ -34,16 +34,16 @@ Więcej informacji na temat Generowanie i przenoszenie klucza chronionego przez 
 
 * Możesz wygenerować klucz w trybie offline stację roboczą, co zmniejsza możliwości ataku.
 * Klucz jest zaszyfrowany przy użyciu klucza wymiany klucza (KEK), który pozostaje zaszyfrowany, dopóki nie zostanie przesłany do HSM usługi Azure Key Vault. Wyłącznie zaszyfrowana wersja klucza opuszcza pierwotną stację roboczą.
-* Zestaw narzędzi ustawia właściwości klucz dzierżawy, który wiąże klucz zabezpieczeń security world usługi Azure Key Vault. Dlatego po HSM usługi Azure Key Vault odbiorą i odszyfrują klucz, tylko te sprzętowych modułów zabezpieczeń można użyć go. Nie można wyeksportować klucza. To powiązanie jest wymuszone przez sprzętowe moduły zabezpieczeń firmy Thales.
-* Klucz wymiany klucza (KEK), który jest używany do szyfrowania klucza jest generowany wewnątrz HSM usługi Azure Key Vault i nie jest możliwy do eksportu. Moduły HSM wymusić, że może być brak wyczyść wersji KEK poza sprzętowe moduły zabezpieczeń. Ponadto zestaw narzędzi zawiera zaświadczenie od firmy Thales potwierdzające, że klucza KEK nie można wyeksportować i został on wygenerowany wewnątrz oryginalnego sprzętowego modułu zabezpieczeń, która została wyprodukowanego przez firmę Thales.
-* Zestaw narzędzi zawiera zaświadczenie od firmy Thales potwierdzające, że środowiska zabezpieczeń security world usługi Azure Key Vault zostało także wygenerowane w oryginalnym sprzętowym module zabezpieczeń wyprodukowanym przez firmę Thales. To poświadczenie potwierdza, że firma Microsoft korzysta z oryginalnego sprzętu.
+* Zestaw narzędzi ustawia właściwości klucz dzierżawy, który wiąże klucz zabezpieczeń security world usługi Azure Key Vault. Dlatego po HSM usługi Azure Key Vault odbiorą i odszyfrują klucz, tylko te sprzętowych modułów zabezpieczeń można użyć go. Nie można wyeksportować klucza. To powiązanie jest wymuszone przez nCipher sprzętowych modułów zabezpieczeń.
+* Klucz wymiany klucza (KEK), który jest używany do szyfrowania klucza jest generowany wewnątrz HSM usługi Azure Key Vault i nie jest możliwy do eksportu. Moduły HSM wymusić, że może być brak wyczyść wersji KEK poza sprzętowe moduły zabezpieczeń. Ponadto zestaw narzędzi zawiera zaświadczenie od nCipher, że klucza KEK nie można wyeksportować i został on wygenerowany wewnątrz oryginalnego sprzętowego modułu zabezpieczeń, który został wyprodukowany przez nCipher.
+* Zestaw narzędzi zawiera zaświadczenie od nCipher środowiska zabezpieczeń security world usługi Azure Key Vault zostało także wygenerowane w oryginalnym sprzętowym module zabezpieczeń wyprodukowanym przez nCipher. To poświadczenie potwierdza, że firma Microsoft korzysta z oryginalnego sprzętu.
 * Firma Microsoft używa oddzielnych kluczy Kek oraz oddzielne środowiska Security World w każdym regionie geograficznym. Ten rozdział zapewnia, że klucz może służyć tylko w centrach danych w regionie, w którym został zaszyfrowany. Na przykład klucz Europejskiego klienta nie może służyć w centrach danych w Ameryce Północnej ani Azji.
 
-## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Więcej informacji na temat sprzętowych modułów zabezpieczeń firmy Thales i usług firmy Microsoft
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Więcej informacji na temat sprzętowych modułów zabezpieczeń nCipher i usług firmy Microsoft
 
-Firmy Thales e-Security jest wiodącym globalnym dostawcą szyfrowania danych i cybernetycznymi zabezpieczeń rozwiązania usług finansowych, nowoczesnych, produkcji, instytucji rządowych i sektorów technologii. 40 lat poświadczać ochrony firmowych i informacje dla instytucji rządowych rozwiązania firmy Thales są używane przez pięć największych firm lotnictwa i kosmonautyki i energii. Swoje rozwiązania są również używane przez 22 kraje/regiony NATO, a secure ponad 80 procent transakcji płatniczych na świecie.
+nCipher Security jest wiodącym globalnym dostawcą szyfrowania danych i cybernetycznymi zabezpieczeń rozwiązania usług finansowych, nowoczesnych, produkcji, instytucji rządowych i sektorów technologii. 40 lat poświadczać ochrony firmowych i informacje dla instytucji rządowych nCipher kryptograficznych rozwiązania w zakresie zabezpieczeń są używane przez pięć największych firm lotnictwa i kosmonautyki i energii. Swoje rozwiązania są również używane przez 22 kraje/regiony NATO, a secure ponad 80 procent transakcji płatniczych na świecie.
 
-Firma Microsoft podjęła współpracę z firmą Thales, które zwiększają pogłębić sprzętowych modułów zabezpieczeń. Opracowane udoskonalenia pozwalają uzyskać typowych zalet usług hostowanych bez potrzeby rezygnacji z kontroli nad kluczami. W szczególności ulepszenia te umożliwiają firmie Microsoft Zarządzanie sprzętowe moduły zabezpieczeń, tak aby nie trzeba. Jako usługa w chmurze usługi Azure Key Vault jest skalowany w górę w krótkim terminie w celu spełnienia nagłego zwiększenia zapotrzebowania organizacji. W tym samym czasie klucz jest chroniony wewnątrz sprzętowych modułów zabezpieczeń firmy Microsoft: Zachowuje się kontrolę nad cyklem życia klucza, ponieważ Wygeneruj klucz i przeniesienie go do sprzętowych modułów zabezpieczeń firmy Microsoft.
+Firma Microsoft podjęła współpracę z nCipher zabezpieczeń, które zwiększają pogłębić sprzętowych modułów zabezpieczeń. Opracowane udoskonalenia pozwalają uzyskać typowych zalet usług hostowanych bez potrzeby rezygnacji z kontroli nad kluczami. W szczególności ulepszenia te umożliwiają firmie Microsoft Zarządzanie sprzętowe moduły zabezpieczeń, tak aby nie trzeba. Jako usługa w chmurze usługi Azure Key Vault jest skalowany w górę w krótkim terminie w celu spełnienia nagłego zwiększenia zapotrzebowania organizacji. W tym samym czasie klucz jest chroniony wewnątrz sprzętowych modułów zabezpieczeń firmy Microsoft: Zachowuje się kontrolę nad cyklem życia klucza, ponieważ Wygeneruj klucz i przeniesienie go do sprzętowych modułów zabezpieczeń firmy Microsoft.
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementowanie Użyj własnego klucza (BYOK) dla usługi Azure Key Vault
 
@@ -57,8 +57,8 @@ Znajdują się w następujących tabeli, aby uzyskać listę wymagań wstępnych
 | --- | --- |
 | Subskrypcja platformy Azure |Do utworzenia usługi Azure Key Vault, musisz mieć subskrypcję platformy Azure: [Zamów bezpłatną wersję próbną](https://azure.microsoft.com/pricing/free-trial/) |
 | Warstwy usługi Azure Key Vault — wersja Premium do obsługi kluczy chronionych przez moduł HSM |Aby uzyskać więcej informacji na temat warstw usługi i możliwości usługi Azure Key Vault, zobacz [cenami usługi Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) witryny sieci Web. |
-| Modułu HSM firmy Thales, karty inteligentne i oprogramowanie |Musi mieć dostęp do sprzętowego modułu zabezpieczeń firmy Thales i podstawowe wiedzę na temat działania sprzętowych modułów zabezpieczeń firmy Thales. Zobacz [sprzętowego modułu zabezpieczeń firmy Thales](https://www.thales-esecurity.com/msrms/buy) lista zgodnych modeli lub kupić modułu HSM, jeśli nie masz. |
-| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 oraz oprogramowaniem Thales nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>W instrukcji tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej, aby pobrać zestaw narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>W instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
+| nShield nCipher sprzętowych modułów zabezpieczeń, karty inteligentne i oprogramowanie |Musi mieć dostęp do nCipher sprzętowego modułu zabezpieczeń i podstawowe wiedzę na temat działania nShield nCipher sprzętowych modułów zabezpieczeń. Zobacz [nShield nCipher sprzętowego modułu zabezpieczeń](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) lista zgodnych modeli lub kupić modułu HSM, jeśli nie masz. |
+| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 i nCipher oprogramowaniem nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>W instrukcji tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej, aby pobrać zestaw narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>W instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generowanie i przeniesienia klucza usługi Azure Key Vault
 
@@ -74,7 +74,7 @@ Użyjesz następujące pięć kroków, aby wygenerować i przenieść swój kluc
 
 To pierwszy krok wykonaj następujące procedury na stacji roboczej podłączonej do Internetu.
 
-### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalowanie programu Azure PowerShell
+### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Zainstaluj program Azure PowerShell
 
 Ze stacji roboczej podłączonej do Internetu należy pobrać i zainstalować moduł programu Azure PowerShell, który zawiera polecenia cmdlet do zarządzania usługi Azure Key Vault. Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
@@ -232,17 +232,17 @@ Skopiuj pakiet na dysku USB lub innego przenośnego urządzenia pamięci masowej
 
 Ten drugi krok wykonaj następujące procedury na stacji roboczej, który nie jest podłączony do sieci (Internetu lub sieci wewnętrznej).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>Krok 2.1. Przygotowanie odłączonej stacji roboczej za pomocą modułu HSM firmy Thales
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>Krok 2.1. Przygotowanie odłączonej stacji roboczej z nShield nCipher przez moduł HSM
 
-Zainstaluj oprogramowanie wspomagające nCipher (firmy Thales) na komputerze Windows, a następnie dołącz HSM firmy Thales do tego komputera.
+Zainstaluj oprogramowanie wspomagające nCipher na komputerze Windows, a następnie dołącz nShield nCipher przez moduł HSM do tego komputera.
 
-Upewnij się, że narzędzia firmy Thales znajdują się w ścieżce (**%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
+Upewnij się, że narzędzia nCipher znajdują się w ścieżce (**%nfast_home%\bin**). Na przykład wpisz następujące polecenie:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-Aby uzyskać więcej informacji zobacz w podręczniku użytkownika dołączonym do modułu HSM firmy Thales.
+Aby uzyskać więcej informacji zobacz w podręczniku użytkownika dołączonym nShield sprzętowego modułu zabezpieczeń.
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2. Zainstaluj zestaw narzędzi BYOK na odłączonej stacji roboczej
 
@@ -258,11 +258,11 @@ To trzeci krok wykonaj następujące procedury na rozłączonej stacji roboczej.
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1. Zmień tryb sprzętowego modułu zabezpieczeń na wartość "I"
 
-Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
+Jeśli używasz nShield nCipher Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
 
 ### <a name="step-32-create-a-security-world"></a>Krok 3.2 Tworzenie środowiska zabezpieczeń security world
 
-Uruchom wiersz polecenia, a następnie uruchom program nowym świecie firmy Thales.
+Uruchom wiersz polecenia, a następnie uruchom program nowym świecie nCipher.
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
@@ -279,14 +279,14 @@ Następnie wykonaj poniższe czynności:
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>Krok 3.3. Zmień tryb przez moduł HSM, aby ' O'
 
-Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
+Jeśli używasz nShield nCipher Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
 
 ### <a name="step-34-validate-the-downloaded-package"></a>Krok 3.4: Zweryfikować pobrany pakiet
 
 Ten krok jest opcjonalny, ale też zalecany, dzięki czemu można sprawdzić poprawność następujących:
 
-* Klucz wymiany klucza, który znajduje się w zestawie narzędzi został wygenerowany w oryginalnym module HSM firmy Thales.
-* Skrót środowiska zabezpieczeń Security World, który znajduje się w zestawie narzędzi został wygenerowany w oryginalnym module HSM firmy Thales.
+* Klucz wymiany klucza, który znajduje się w zestawie narzędzi został wygenerowany z nShield nCipher oryginalnego sprzętowego modułu zabezpieczeń.
+* Skrót środowiska zabezpieczeń Security World, który znajduje się w zestawie narzędzi został wygenerowany w nShield nCipher oryginalnego sprzętowego modułu zabezpieczeń.
 * Nie można eksportować jest klucz wymiany klucza.
 
 > [!NOTE]
@@ -346,18 +346,18 @@ Aby zweryfikować pobrany pakiet:
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
 
      > [!TIP]
-     > Oprogramowanie firmy Thales obejmuje języka python w %NFAST_HOME%\python\bin
+     > Oprogramowaniem nShield nCipher obejmuje języka python w %NFAST_HOME%\python\bin
      >
      >
 2. Upewnij się, że zobaczysz następujący widok, co oznacza pomyślnej weryfikacji: **Wynik: SUCCESS**
 
-Ten skrypt sprawdza łańcuch osoby podpisującej aż klucza głównego firmy Thales. Skrót klucza głównego jest osadzony w skrypcie i jej wartość powinna być **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Można również potwierdzić tę wartość osobno, odwiedzając [witryny sieci Web firmy Thales](http://www.thalesesec.com/).
+Ten skrypt sprawdza łańcuch osoby podpisującej aż nShield klucza głównego. Skrót klucza głównego jest osadzony w skrypcie i jej wartość powinna być **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Można również potwierdzić tę wartość osobno, odwiedzając [nCipher witryny sieci Web](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
 
 Teraz możesz przystąpić do tworzenia nowego klucza.
 
 ### <a name="step-35-create-a-new-key"></a>Krok 3.5. Utwórz nowy klucz
 
-Generowanie klucza za pomocą firmy Thales **do generowania kluczy** program.
+Generowanie klucza za pomocą nCipher nShield **do generowania kluczy** program.
 
 Uruchom następujące polecenie, aby wygenerować klucz:
 
@@ -367,14 +367,14 @@ Po uruchomieniu tego polecenia, użyj tych instrukcji:
 
 * Parametr *chronić* musi być ustawione na wartość **modułu**, jak pokazano. Spowoduje to utworzenie klucza chronionego przez moduł. Zestaw narzędzi BYOK nie obsługuje kluczy chronionych przez serwer OCS.
 * Zastąp wartość *contosokey* dla **ident** i **plainname** z dowolną wartością ciągu. Aby zminimalizować ogólne koszty administracyjne i zmniejszyć ryzyko błędów, zaleca się używać tej samej wartości dla obu. **Ident** wartość musi zawierać tylko cyfry, łączniki i małe litery.
-* Parametr pubexp został pozostawiony pusty (ustawienie domyślne), w tym przykładzie, ale można określić konkretne jego wartości. Aby uzyskać więcej informacji zobacz dokumentację firmy Thales.
+* Parametr pubexp został pozostawiony pusty (ustawienie domyślne), w tym przykładzie, ale można określić konkretne jego wartości. Aby uzyskać więcej informacji, zobacz [nCipher dokumentacji.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
 To polecenie tworzy plik Stokenizowanego klucza w folderze %NFAST_KMDATA%\local za pomocą nazwę zaczynającą się od **key_simple_**, a następnie **ident** podany w poleceniu. Na przykład: **key_simple_contosokey**. Ten plik zawiera zaszyfrowany klucz.
 
 Utwórz kopię zapasową tego pliku Stokenizowanego klucza w bezpiecznym miejscu.
 
 > [!IMPORTANT]
-> Po późniejszym przesłaniu klucza do usługi Azure Key Vault, Microsoft nie może wyeksportować tego klucza do Ciebie, staje się ona bardzo ważne, bezpieczne przechowywanie kopii zapasowej Twojego klucza oraz środowiska zabezpieczeń. Aby uzyskać wskazówki i najlepsze rozwiązania dotyczące tworzenia kopii zapasowej klucza, skontaktuj się z pomocą firmy Thales.
+> Po późniejszym przesłaniu klucza do usługi Azure Key Vault, Microsoft nie może wyeksportować tego klucza do Ciebie, staje się ona bardzo ważne, bezpieczne przechowywanie kopii zapasowej Twojego klucza oraz środowiska zabezpieczeń. Skontaktuj się z pomocą [nCipher](https://www.ncipher.com/about-us/contact-us) wskazówki i najlepsze rozwiązania dotyczące tworzenia kopii zapasowej klucza.
 >
 
 
@@ -443,7 +443,7 @@ Zostanie wyświetlony monit monit o podłączenie kart administratora zabezpiecz
 
 Po zakończeniu wykonywania polecenia zostanie wyświetlony **wynik: Powodzenie** a kopia klucza z ograniczonymi uprawnieniami znajdują się w pliku o nazwie key_xferacId_\<contosokey >.
 
-Może być bada, listy ACL za pomocą następującego polecenia, używając narzędzi firmy Thales:
+Może być bada, listy kontroli dostępu przy użyciu poniższych poleceń za pomocą narzędzi nShield nCipher:
 
 * aclprint.py:
 

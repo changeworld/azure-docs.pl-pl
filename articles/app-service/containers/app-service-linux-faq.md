@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919978"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594283"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -39,13 +39,15 @@ Możesz znaleźć wszystkie pliki Docker na [GitHub](https://github.com/azure-ap
 
 **Jakie są oczekiwane wartości dla sekcji plik startowy podczas konfigurowania stosu środowiska uruchomieniowego?**
 
-| Stos     | Oczekiwana wartość                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | polecenie, aby uruchomić usługi `.jar` aplikacji                                    |
-| Tomcat    | Lokalizacja skryptu, aby wykonać wszystkie konfiguracje dla aplikacji          |
-| Node.js   | pliku konfiguracji PM2 lub pliku skryptu                                |
-| .Net Core | nazwę skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`                                 |
-| Ruby      | Skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu                     |
+| Stos           | Oczekiwana wartość                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | polecenie, aby uruchomić aplikację JAR (na przykład `java -jar my-app.jar --server.port=80`) |
+| Serwer Tomcat będący Wildfly | Lokalizacja skryptu, aby wykonać wszystkie konfiguracje niezbędne (na przykład `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | pliku konfiguracji PM2 lub pliku skryptu                                |
+| .Net Core       | nazwę skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`                                 |
+| Ruby            | Skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu                     |
+
+Tych poleceń lub skryptów są wykonywane po wbudowanych kontenerów platformy Docker jest uruchomiona, ale przed aplikacją kodu została uruchomiona.
 
 ## <a name="management"></a>Zarządzanie
 
@@ -93,7 +95,7 @@ W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w sys
 
    Jeśli wystąpi błąd, który `curl` polecenia nie zostanie znaleziony, upewnij się, zainstaluj narzędzie curl, używając `apt-get install curl` przed uruchomieniem poprzedniego `curl` polecenia.
 
-## <a name="language-support"></a>Obsługa języków
+## <a name="language-support"></a>Obsługa języka
 
 **Chcę użyć gniazda sieci web w mojej aplikacji Node.js, wszystkie ustawienia specjalne lub konfiguracje, aby ustawić?**
 

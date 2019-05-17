@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/19/2019
+ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 267b6afd7cd3131dcd138dfb631335f58cec833a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 31cf1f6da515aa9b453987383e78f466c5ba4fb9
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407923"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827288"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest ukazują kroki, które należy wykonać, aby zaimportować profile procesu roboczego z produktu Workday do usługi Active Directory i Azure Active Directory, za pomocą opcjonalnych zapisywania zwrotnego adresu e-mail w produkcie Workday.
+Celem tego samouczka jest ukazują kroki, które należy wykonać, aby zaimportować profile procesu roboczego z produktu Workday do usługi Active Directory i Azure Active Directory, za pomocą opcjonalnych zapisu adres e-mail i nazwę użytkownika w produkcie Workday.
 
 ## <a name="overview"></a>Omówienie
 
@@ -34,7 +34,7 @@ Celem tego samouczka jest ukazują kroki, które należy wykonać, aby zaimporto
 
 * **Inicjowanie obsługi administracyjnej użytkowników tylko w chmurze, usługą Azure Active Directory** — w scenariuszach, gdzie lokalnej usługi Active Directory nie jest używana, użytkownicy mogą być udostępniane bezpośrednio z produktu Workday do usługi Azure Active Directory za pomocą użytkownika usługi Azure AD, do usługi aprowizacji.
 
-* **Zapisu tylnej stronie adresy e-mail w produkcie Workday** — usługa aprowizowania użytkowników w usłudze Azure AD można zapisywać adresy e-mail użytkowników usługi Azure AD w produkcie Workday.
+* **Zapisywania zwrotnego adresu e-mail i nazwę użytkownika w produkcie Workday** — usługa aprowizowania użytkowników w usłudze Azure AD można zapisywać adresy e-mail i nazwy użytkownika z usługi Azure AD w produkcie Workday.
 
 ### <a name="what-human-resources-scenarios-does-it-cover"></a>Jakie scenariuszy zarządzania zasobami ludzkimi dotyczy?
 
@@ -67,7 +67,7 @@ Doskonale nadają się dla tego użytkownika z produktu Workday aprowizacji rozw
 W tej sekcji opisano użytkownika end-to-end, inicjowanie obsługi administracyjnej architekturę rozwiązania dla typowych środowisk hybrydowych. Istnieją dwa z procedurami:
 
 * **Przepływ danych HR autorytatywne — z produktu Workday do usługi Active Directory w środowisku lokalnym:** W tym przepływie, zdarzeń procesu roboczego (na przykład nowi pracownicy w przypadku transferów zakończeń) najpierw występują w chmurze dzierżawy produktu Workday HR, a następnie przepływu danych zdarzeń do środowiska lokalnego usługi Active Directory za pomocą usługi Azure AD i aprowizacji agenta. W zależności od zdarzenia może prowadzić do operacji tworzenia/aktualizacji/Włączanie/wyłączanie w AD.
-* **Przepływ zapis zwrotny wiadomości e-mail — z lokalnej usługi Active Directory w produkcie Workday:** Po zakończeniu tworzenia konta w usłudze Active Directory jest synchronizowana z usługą Azure AD za pomocą usługi Azure AD Connect, a atrybut poczty e-mail, skąd pochodzi z usługi Active Directory można zapisać zwrotnie w produkcie Workday.
+* **Wiadomości e-mail i nazwy użytkownika funkcji zapisywania zwrotnego przepływu — z lokalnej usługi Active Directory w produkcie Workday:** Po zakończeniu tworzenia konta w usłudze Active Directory jest synchronizowana z usługą Azure AD za pomocą usługi Azure AD Connect, a atrybut poczty e-mail i nazwę użytkownika można zapisać zwrotnie w produkcie Workday.
 
 ![Omówienie](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -79,7 +79,7 @@ W tej sekcji opisano użytkownika end-to-end, inicjowanie obsługi administracyj
 4. Agent programu Azure AD Connect inicjowania obsługi używa konta usługi można dodać/zaktualizować dane konta usługi Active Directory.
 5. Program Azure AD Connect / synchronizacja różnicowa w celu ściągania aktualizacji w AD działa aparat synchronizacji usługi AD.
 6. Aktualizacje usługi Active Directory są synchronizowane z usługą Azure Active Directory.
-7. Jeśli skonfigurowano łącznik produktu Workday funkcji zapisywania zwrotnego, go zapisywanie zwrotne atrybut poczty e-mail w produkcie Workday, na podstawie atrybutu zgodnego używane.
+7. Jeśli skonfigurowano łącznik produktu Workday funkcji zapisywania zwrotnego, zapisuje ponownie atrybut poczty e-mail i nazwy użytkownika w produkcie Workday, na podstawie atrybutu zgodnego, używane.
 
 ## <a name="planning-your-deployment"></a>Planowanie wdrożenia
 
@@ -285,7 +285,8 @@ W tym kroku będziesz udzielić "zabezpieczenia domeny" uprawnienia zasad dla da
    * *Dane procesu roboczego: Wszystkie stanowiska*
    * *Dane procesu roboczego: Bieżące informacje kadrowe*
    * *Dane procesu roboczego: Tytuł biznesowych na profil pracownika*
-
+   * *WORKDAY kont*
+   
      ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_07.png "zasady zabezpieczeń domeny")  
 
      ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_08.png "zasady zabezpieczeń domeny") 
@@ -313,6 +314,7 @@ W tym kroku będziesz udzielić "zabezpieczenia domeny" uprawnienia zasad dla da
    | Pobierz | Dane procesu roboczego: Wszystkie stanowiska |
    | Pobierz | Dane procesu roboczego: Bieżące informacje kadrowe |
    | Pobierz | Dane procesu roboczego: Tytuł biznesowych na profil pracownika |
+   | Operacje GET i Put | WORKDAY kont |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurowanie uprawnień zasad zabezpieczeń procesów biznesowych
 
@@ -369,18 +371,21 @@ Aby zainicjować obsługę do usługi Active Directory w środowisku lokalnym, n
 Wdrożenie .NET 4.7.1+ można pobrać **[tutaj agenta inicjowania obsługi administracyjnej lokalnych](https://go.microsoft.com/fwlink/?linkid=847801)** i wykonaj czynności podane poniżej, aby ukończyć konfiguracji agenta.
 
 1. Zaloguj się do systemu Windows Server, w którym chcesz zainstalować nowego agenta.
-2. Uruchom Instalatora agenta inicjowania obsługi administracyjnej, zaakceptuj warunki i kliknij **zainstalować** przycisku.
+
+1. Uruchom Instalatora agenta inicjowania obsługi administracyjnej, zaakceptuj warunki, a następnie kliknij **zainstalować** przycisku.
 
    ![Zainstaluj ekranu](./media/workday-inbound-tutorial/pa_install_screen_1.png "zainstalować ekranu")
-3. Po zakończeniu instalacji, zostanie uruchomiony Kreator i zostanie wyświetlony **usługi Azure AD Connect** ekranu. Kliknij pozycję **Uwierzytelnij** przycisk, aby nawiązać połączenie z wystąpieniem usługi Azure AD.
+   
+1. Po zakończeniu instalacji, zostanie uruchomiony Kreator i zostanie wyświetlony **usługi Azure AD Connect** ekranu. Kliknij pozycję **Uwierzytelnij** przycisk, aby nawiązać połączenie z wystąpieniem usługi Azure AD.
 
    ![Łączenie usługi Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "usługi Azure AD Connect")
+   
 1. Uwierzytelnianie do swojego wystąpienia usługi Azure AD przy użyciu poświadczeń administratora globalnego.
 
    ![Uwierzytelnianie administratora](./media/workday-inbound-tutorial/pa_install_screen_3.png "uwierzytelniania administratora")
 
-> [!NOTE]
-> Poświadczenia administratora usługi Azure AD jest używana tylko połączyć się z dzierżawą usługi Azure AD. Agent nie przechowuje poświadczenia lokalnie, jeśli na serwerze.
+   > [!NOTE]
+   > Poświadczenia administratora usługi Azure AD jest używana tylko połączyć się z dzierżawą usługi Azure AD. Agent nie przechowuje poświadczenia lokalnie, jeśli na serwerze.
 
 1. Po pomyślnym uwierzytelnieniu przy użyciu usługi Azure AD, zobaczysz **łączenie usługi Active Directory** ekranu. W tym kroku, wpisz nazwę domeny usługi AD, a następnie kliknij przycisk na **Dodaj katalog** przycisku.
 
@@ -389,21 +394,27 @@ Wdrożenie .NET 4.7.1+ można pobrać **[tutaj agenta inicjowania obsługi admin
 1. Możesz teraz jest monitowany o podanie poświadczeń, trzeba połączyć się z domeną usługi AD. Na jednym ekranie, można użyć **wybierz priorytet kontrolera domeny** do określenia kontrolerów domeny, które powinny być używane przez agenta wysyłania żądania alokacji.
 
    ![Poświadczenia domeny](./media/workday-inbound-tutorial/pa_install_screen_5.png)
+   
 1. Po skonfigurowaniu domeny, Instalator wyświetla listę skonfigurowanych domen. Na tym ekranie można powtórzyć krok #5 i 6 #, aby dodać więcej domen lub kliknąć **dalej** aby przejść do rejestracji agenta.
 
    ![Skonfigurowane domen](./media/workday-inbound-tutorial/pa_install_screen_6.png "skonfigurowane domen")
 
    > [!NOTE]
-   > Jeśli masz wiele domen AD (np. na.contoso.com, emea.contoso.com), Dodaj każdej domeny indywidualnie do listy. Tylko Dodawanie domeny nadrzędnej (np. contoso.com) jest niewystarczająca. Każda domena podrzędna należy zarejestrować przy użyciu agenta.
+   > Jeśli masz wiele domen AD (np. na.contoso.com, emea.contoso.com), Dodaj każdej domeny indywidualnie do listy.
+   > Tylko Dodawanie domeny nadrzędnej (np. contoso.com) jest niewystarczająca. Każda domena podrzędna należy zarejestrować przy użyciu agenta.
+   
 1. Przejrzyj szczegóły konfiguracji, a następnie kliknij pozycję **Potwierdź** można zarejestrować agenta.
   
    ![Upewnij się, ekran](./media/workday-inbound-tutorial/pa_install_screen_7.png "potwierdzić ekranu")
+   
 1. Kreator konfiguracji Wyświetla postęp rejestracji agenta.
   
    ![Rejestracja agenta](./media/workday-inbound-tutorial/pa_install_screen_8.png "rejestracji agenta")
+   
 1. Gdy rejestracja agenta zakończy się pomyślnie, możesz kliknąć **wyjść** aby zakończyć pracę kreatora.
   
    ![Zamknąć ekran](./media/workday-inbound-tutorial/pa_install_screen_9.png "zamknąć ekran")
+   
 1. Zweryfikuj instalację agenta i upewnij się, że jest uruchomiona przez otwarcie przystawki "Usługi" i Wyszukaj usługę o nazwie "Microsoft Azure AD Connect Agent aprowizacji"
   
    ![Usługi](./media/workday-inbound-tutorial/services.png)
@@ -438,13 +449,14 @@ Wdrożenie .NET 4.7.1+ można pobrać **[tutaj agenta inicjowania obsługi admin
 
    * **Kontener usługi Active Directory —** wprowadź nazwa Wyróżniająca kontenera, w którym tworzenia kont użytkowników domyślnie agenta.
         Przykład: *OU = użytkownicy standardowi, OU = Users, DC = contoso, DC = test*
+        
      > [!NOTE]
      > To ustawienie pochodzi wyłącznie do gry dla podczas tworzenia kont użytkowników Jeśli *parentDistinguishedName* atrybutu nie skonfigurowano mapowania atrybutów. To ustawienie nie jest używane dla wyszukiwanie użytkowników lub aktualizacji operacji. Drzewo podrzędne całej domeny znajduje się w zakresie operacji wyszukiwania.
 
    * **Wiadomość E-mail z powiadomieniem —** wprowadź swój adres e-mail, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail, jeśli wystąpi błąd".
 
-> [!NOTE]
-> Usługa Azure AD aprowizacji wysyła powiadomienie e-mail, jeśli zadanie inicjowania obsługi administracyjnej przechodzi w stan [kwarantanny](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) stanu.
+     > [!NOTE]
+     > Usługa Azure AD aprowizacji wysyła powiadomienie e-mail, jeśli zadanie inicjowania obsługi administracyjnej przechodzi w stan [kwarantanny](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) stanu.
 
    * Kliknij przycisk **Testuj połączenie** przycisku. Jeśli test połączenia powiedzie się, kliknij przycisk **Zapisz** znajdujący się u góry. Jeśli nie powiedzie się, należy się zapoznać, że poświadczenia dla produktu Workday i poświadczeń usługi AD skonfigurowane na temat instalacji agenta są prawidłowe.
 
@@ -458,7 +470,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
 1. Na karcie Udostępnianie w obszarze **mapowania**, kliknij przycisk **zsynchronizować Workday pracownikom w lokalnej usłudze Active Directory**.
 
-2. W **zakres obiektów źródłowych** pola, można wybrać, który konfiguruje użytkowników w usłudze WORKDAY aplikacja musi należeć do zakresu, aby aprowizacja w usłudze AD, definiując zestaw opartych na atrybutach filtrów. Domyślny zakres jest "wszyscy użytkownicy w produkcie Workday". Przykładowe filtry:
+1. W **zakres obiektów źródłowych** pola, można wybrać, który konfiguruje użytkowników w usłudze WORKDAY aplikacja musi należeć do zakresu, aby aprowizacja w usłudze AD, definiując zestaw opartych na atrybutach filtrów. Domyślny zakres jest "wszyscy użytkownicy w produkcie Workday". Przykładowe filtry:
 
    * Przykład: Zakres do użytkowników z identyfikatorami procesów roboczych 1000000 i 2000000 (z wyjątkiem 2000000)
 
@@ -474,8 +486,8 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
       * Operator: NIE MA WARTOŚCI NULL
 
-> [!TIP]
-> Podczas konfigurowania aprowizacji aplikacji po raz pierwszy, należy przetestować i zweryfikować mapowań atrybutów i wyrażenia, aby upewnić się, że go udostępnia Ci oczekiwany rezultat. Firma Microsoft zaleca przy użyciu zakresu filtry w obszarze **zakres obiektów źródłowych** do testowania mapowania przy użyciu kilku użytkowników testowych z produktu Workday. Po upewnieniu się, że mapowania działają, a następnie możesz usunąć filtr lub stopniowo rozwinąć, aby zawierała więcej użytkowników.
+   > [!TIP]
+   > Podczas konfigurowania aprowizacji aplikacji po raz pierwszy, należy przetestować i zweryfikować mapowań atrybutów i wyrażenia, aby upewnić się, że go udostępnia Ci oczekiwany rezultat. Firma Microsoft zaleca przy użyciu zakresu filtry w obszarze **zakres obiektów źródłowych** do testowania mapowania przy użyciu kilku użytkowników testowych z produktu Workday. Po upewnieniu się, że mapowania działają, a następnie możesz usunąć filtr lub stopniowo rozwinąć, aby zawierała więcej użytkowników.
 
 1. W **Akcje obiektu docelowego** pole globalnie filtrowania, jakie akcje są wykonywane na usłudze Active Directory. **Tworzenie** i **aktualizacji** występują najczęściej.
 
@@ -649,9 +661,9 @@ W tej sekcji skonfigurujesz, jak użytkownik przepływu danych z produktu Workda
 
 Po zakończeniu konfiguracji mapowania atrybutów, możesz teraz [Włącz i uruchom usługa aprowizowania użytkowników](#enable-and-launch-user-provisioning).
 
-## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Konfigurowanie funkcji zapisywania zwrotnego adresów e-mail w produkcie Workday
+## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>Konfigurowanie usługi Azure AD atrybut funkcji zapisywania zwrotnego w produkcie Workday
 
-Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresy e-mail użytkowników z usługi Azure Active Directory w produkcie Workday.
+Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresy e-mail użytkowników i nazwy użytkownika odebranej z usługi Azure Active Directory w produkcie Workday.
 
 * [Dodawanie funkcji zapisywania zwrotnego aplikacji łącznika i tworzenia połączenia z produktem Workday](#part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday)
 * [Konfigurowanie funkcji zapisywania zwrotnego mapowania atrybutów](#part-2-configure-writeback-attribute-mappings)
@@ -689,7 +701,7 @@ Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresy e-mail uży
 
 ### <a name="part-2-configure-writeback-attribute-mappings"></a>Część 2: Konfigurowanie funkcji zapisywania zwrotnego mapowania atrybutów
 
-W tej sekcji skonfigurujesz przepływ atrybutów funkcji zapisywania zwrotnego z usługi Azure AD w produkcie Workday.
+W tej sekcji skonfigurujesz przepływ atrybutów funkcji zapisywania zwrotnego z usługi Azure AD w produkcie Workday. W chwili obecnej łącznik obsługuje tylko zapis zwrotny adres e-mail i nazwę użytkownika w produkcie Workday.
 
 1. Na karcie Udostępnianie w obszarze **mapowania**, kliknij przycisk **synchronizacji Azure użytkownicy usługi Active Directory w produkcie Workday**.
 
@@ -697,9 +709,9 @@ W tej sekcji skonfigurujesz przepływ atrybutów funkcji zapisywania zwrotnego z
 
 3. W **mapowania atrybutów** sekcji, zaktualizuj identyfikator pasującego do wskazania to atrybut usługi Azure Active Directory, gdzie jest przechowywany identyfikator procesu roboczego Workday lub identyfikator pracownika. Popularne metody dopasowania jest synchronizowane z produktem Workday, identyfikator procesu roboczego lub identyfikator pracownika do extensionAttribute1 15 w usłudze Azure AD, a następnie użyć tego atrybutu w usłudze Azure AD, aby dopasować użytkowników z powrotem w produkcie Workday.
 
-4. Aby zapisać mapowania, kliknij przycisk **Zapisz** w górnej części mapowanie atrybutu.
+4. Zazwyczaj mapy usługi Azure AD *userPrincipalName* atrybutu w produkcie Workday *UserID* atrybutu i mapy usługi Azure AD *poczty* atrybutu w produkcie Workday  *EmailAddress* atrybutu. Aby zapisać mapowania, kliknij przycisk **Zapisz** w górnej części mapowanie atrybutu.
 
-Po zakończeniu konfiguracji mapowania atrybutów, możesz teraz [Włącz i uruchom usługa aprowizowania użytkowników](#enable-and-launch-user-provisioning). 
+Po zakończeniu konfiguracji mapowania atrybutów, możesz teraz [Włącz i uruchom usługa aprowizowania użytkowników](#enable-and-launch-user-provisioning).
 
 ## <a name="enable-and-launch-user-provisioning"></a>Włącz i uruchom aprowizacji użytkowników
 
@@ -782,6 +794,7 @@ Rozwiązanie używa obecnie następujące interfejsy API z produktu Workday:
 
 * Get_Workers (v21.1) do pobierania informacji procesu roboczego
 * Maintain_Contact_Information (v26.1) dla funkcji zapisywania zwrotnego E-mail pracy
+* Update_Workday_Account (v31.2) dla funkcji zapisywania zwrotnego nazwy użytkownika
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Czy można skonfigurować mojej dzierżawy produktu Workday HCM, za pomocą dwóch dzierżaw usługi Azure AD?
 
@@ -952,7 +965,6 @@ Oto jak można obsługiwać takie wymagania do konstruowania *CN* lub *displayNa
 
 * Każdy atrybut produktu Workday są pobierane przy użyciu podstawowego wyrażenia XPATH interfejsu API, które można skonfigurować w **mapowanie atrybutu -> Zaawansowane sekcji -> Edytuj listę atrybutów dla produktu Workday**. Oto domyślne wyrażenie XPATH interfejsu API dla produktu Workday *PreferredFirstName*, *PreferredLastName*, *firmy* i *SupervisoryOrganization* atrybutów.
 
-     [!div class="mx-tdCol2BreakAll"]
      | Atrybut WORKDAY | Wyrażenie XPATH interfejsu API |
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
@@ -1008,7 +1020,7 @@ Załóżmy, że chcesz wygenerować unikatowe wartości *samAccountName* atrybut
 SelectUniqueValue(
     Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,1), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , ),
     Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,2), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , ),
-    Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,3), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , ),
+    Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,3), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , )
 )
 ```
 
@@ -1236,7 +1248,7 @@ Aby wykonać tę zmianę, należy użyć [Workday Studio](https://community.work
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">

@@ -1,26 +1,26 @@
 ---
-title: Wykonuj ciągłe integrowanie i tworzyć aplikacje za pomocą narzędzia Stream Analytics
-description: W tym artykule opisano jak skonfigurować ciągłą integrację i procesu wdrażania za pomocą Visual Studio tools dla usługi Azure Stream Analytics.
+title: Wykonuj ciągłe integrowanie i tworzenie przy użyciu pakietu NuGet ciągłej integracji/ciągłego wdrażania usługi Azure Stream Analytics
+description: W tym artykule opisano jak skonfigurować ciągłą integrację i procesu wdrażania za pomocą pakietu NuGet ciągłej integracji/ciągłego wdrażania usługi Azure Stream Analytics.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761509"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827309"
 ---
-# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Wykonuj ciągłe integrowanie i tworzyć aplikacje za pomocą narzędzia Stream Analytics
-W tym artykule opisano sposób użycia Konfigurowanie procesu ciągłej integracji i ciągłego wdrażania przy użyciu narzędzia Azure Stream Analytics dla programu Visual Studio.
+# <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>Wykonuj ciągłe integrowanie i tworzenie przy użyciu pakietu NuGet ciągłej integracji/ciągłego wdrażania usługi Azure Stream Analytics
+W tym artykule opisano jak skonfigurować ciągłą integrację i procesu wdrażania za pomocą pakietu NuGet ciągłej integracji/ciągłego wdrażania usługi Azure Stream Analytics.
 
 Użyj wersji 2.3.0000.0 lub nowszy z [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) uzyskać pomoc techniczną dotyczącą programu MSBuild.
 
-Pakiet NuGet jest dostępna: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Zapewnia on program MSBuild, uruchamianie lokalne oraz narzędzia wdrażania, które obsługują proces ciągłej integracji i ciągłego wdrażania projektów programu Visual Studio dla usługi Stream Analytics. 
+Pakiet NuGet jest dostępna: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Oferuje MSBuild, lokalne uruchomienie i narzędzia wdrażania, które obsługują ciągłą integrację i ciągłe wdrażanie proces [projektów programu Visual Studio Stream Analytics](stream-analytics-vs-tools.md). 
 > [!NOTE]
 > Pakiet NuGet może służyć tylko w przypadku 2.3.0000.0 lub nowszej wersji narzędzia Stream Analytics Tools for Visual Studio. W przypadku projektów utworzonych w poprzednich wersjach programu Visual Studio tools po prostu otwórz je za pomocą 2.3.0000.0 lub nowszej wersji, a następnie zapisz. Następnie nowe możliwości są włączone. 
 
@@ -46,7 +46,7 @@ Gdy projekt programu Visual Studio Stream Analytics pomyślnie skompilowana, gen
 Domyślne parametry w pliku parameters.json pochodzą z ustawień w projekcie programu Visual Studio. Jeśli chcesz wdrożyć do innego środowiska, w związku z tym Zastąp parametry.
 
 > [!NOTE]
-> Za pomocą poświadczeń domyślnych wartości są ustawione na wartość null. Jesteś *wymagane* można ustawić wartości przed wdrożeniem w chmurze.
+> Za pomocą poświadczeń domyślnych wartości są ustawione na wartość null. Jesteś **wymagane** można ustawić wartości przed wdrożeniem w chmurze.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -60,7 +60,7 @@ Aby używać tożsamości zarządzanej dla usługi Azure Data Lake Store Gen1 ja
 
 ## <a name="command-line-tool"></a>Narzędzie wiersza polecenia
 
-### <a name="build-the-project"></a>Kompilowanie projektu
+### <a name="build-the-project"></a>Skompiluj projekt
 Pakiet NuGet jest narzędziem wiersza polecenia o nazwie **SA.exe**. Obsługuje ona kompilacja projektu i lokalnego testowania na dowolne maszyny, które można użyć w ciągłej integracji i ciągłego dostarczania procesu. 
 
 Domyślnie pliki wdrożenia znajdują się w bieżącym katalogu. Można określić ścieżkę wyjściową przy użyciu następującego parametru - OutputPath:
@@ -90,3 +90,9 @@ Przykład:
 ```
 
 
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Szybki start: Tworzenie zadania usługi Azure Stream Analytics w chmurze w programie Visual Studio](stream-analytics-quick-create-vs.md)
+* [Testowanie zapytań usługi Stream Analytics lokalnie z programem Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Zapoznaj się z zadań usługi Azure Stream Analytics w programie Visual Studio](stream-analytics-vs-tools.md)

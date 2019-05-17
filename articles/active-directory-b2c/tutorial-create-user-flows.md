@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e12b3cbcb8f7a433b37c450c84bd34745f68a22d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9c08b5b5278045341ed86d987557d03cb46754e6
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711511"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601585"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Samouczek: Tworzenie przepływów użytkownika w usłudze Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Przepływ rejestracji i logowania użytkownika obsługuje środowiska rejestracji i logowania za pomocą jednej konfiguracji. Użytkownicy twojej aplikacji są prowadzone w dół prawidłową ścieżkę, w zależności od kontekstu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 
     ![Przejdź do katalogu subskrypcji](./media/tutorial-create-user-flows/switch-directories.png)
 
@@ -76,7 +76,7 @@ Przepływ rejestracji i logowania użytkownika obsługuje środowiska rejestracj
 4. Wprowadź prawidłowy adres e-mail, kliknij przycisk **Wyślij kod weryfikacyjny**, a następnie wprowadź kod weryfikacyjny, z którą zostanie wyświetlony.
 5. Wprowadź nowe hasło i Potwierdź hasło.
 6. Wprowadź nazwę, która ma zostać wyświetlona, wybierz region i kraj, wprowadź kod pocztowy, a następnie kliknij **Utwórz**. Token jest zwracany do `https://jwt.ms` i powinna być wyświetlana użytkownikowi.
-7. Teraz możesz uruchamiać przepływ użytkownika ponownie i powinno być możliwe zalogować się przy użyciu konta, który został utworzony. Zwrócony token zawiera oświadczenia, które wybrane nazwy, kraju i kod pocztowy.
+7. Teraz możesz uruchamiać przepływ użytkownika ponownie i powinno być możliwe zalogować się przy użyciu konta, który został utworzony. Zwrócony token zawiera oświadczenia, które wybrane nazwy, kraj/region i kod pocztowy.
 
 ## <a name="create-a-profile-editing-user-flow"></a>Tworzenie przepływu użytkownika dotyczącego edytowania profilu
 

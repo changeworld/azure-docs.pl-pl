@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: HT
+ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540149"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823348"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Lista kontrolna dotycząca programu Microsoft tożsamości platformy integracji
 
@@ -31,13 +31,13 @@ Jeśli po prostu rozpoczynasz pracę, zapoznaj się z [dokumentacji](index.yml) 
 
 ## <a name="testing-your-integration"></a>Testowanie integracji usługi
 
-Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja efektywnie jest zintegrowana z usługą [platforma tożsamości usługi Microsoft](https://docs.microsoft.com/legal/mdsa).
+Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja efektywnie jest zintegrowana z usługą [platforma tożsamości usługi Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
 
 ### <a name="basics"></a>Ustawienia podstawowe
 
 |   |   |
 |---|---|
-| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Dokładnie zapoznaj się [zasady platformy firmy Microsoft](https://docs.microsoft.com/legal/mdsa). Upewnij się, że aplikacja działa zgodnie z warunki opisane, ponieważ służą one do ochrony użytkowników i platformy. |
+| ![Zaznacz pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Dokładnie zapoznaj się [zasady platformy firmy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Upewnij się, że aplikacja działa zgodnie z warunki opisane, ponieważ służą one do ochrony użytkowników i platformy. |
 
 ### <a name="ownership"></a>Własność
 

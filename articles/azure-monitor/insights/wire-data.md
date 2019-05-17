@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61387577"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601570"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Połączenie rozwiązań danych w wersji 2.0 (wersja zapoznawcza) w usłudze Azure Monitor
 
@@ -400,7 +400,7 @@ Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. R
 | Direction | Ruch przychodzący lub wychodzący |
 | MaliciousIP | Adres IP znanego złośliwego źródła |
 | Severity | Ważność podejrzanego złośliwego oprogramowania |
-| RemoteIPCountry | Kraj zdalnego adresu IP |
+| RemoteIPCountry | Kraj/region dla zdalnego adresu IP |
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager |
 | SourceSystem | Źródło, gdzie zostały zebrane dane |
 | SessionStartTime | Godzina rozpoczęcia sesji |

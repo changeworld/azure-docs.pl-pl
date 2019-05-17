@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413903"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603109"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 
@@ -74,9 +74,9 @@ Na wysokim poziomie zadania importu obejmuje następujące czynności:
 8. Dyski są dostarczane za pomocą konta operatora adres zwrotny dostarczane w ramach zadania importu.
 
 > [!NOTE]
-> Wydania lokalnego (w ramach kraj centrum danych) udostępnianie konto przewoźnika wywiad krajowy 
+> Lokalne (w ramach danych Centrum kraj/region) wydania udostępnianie konto przewoźnika wywiad krajowy 
 >
-> Dla wydań za granicą (poza krajem centrum danych) udostępnianie konto przewoźnika międzynarodowych
+> Dla wydań za granicą (poza data center kraj/region) udostępnianie konto przewoźnika międzynarodowych
 
  ![Rysunek 1:Import zadania przepływu](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Na wysokim poziomie zadania eksportu obejmuje następujące czynności:
 10. Dyski są dostarczane za pomocą konta operatora adres zwrotny dostarczane w ramach zadania importu.
 
 > [!NOTE]
-> Wydania lokalnego (w ramach kraj centrum danych) udostępnianie konto przewoźnika wywiad krajowy 
+> Lokalne (w ramach danych Centrum kraj/region) wydania udostępnianie konto przewoźnika wywiad krajowy 
 >
-> Dla wydań za granicą (poza krajem centrum danych) udostępnianie konto przewoźnika międzynarodowych
+> Dla wydań za granicą (poza data center kraj/region) udostępnianie konto przewoźnika międzynarodowych
   
  ![Rysunek 2:Export zadania przepływu](./media/storage-import-export-service/exportjob.png)
 
@@ -119,7 +119,7 @@ Usługa Azure Import/Export obsługuje kopiowanie danych do i z wszystkich kont 
 ### <a name="supported-shipping-locations"></a>Obsługiwane lokalizacji wysyłki
 
 
-|Kraj  |Kraj  |Kraj  |Kraj  |
+|Kraj/region  |Kraj/region  |Kraj/region  |Kraj/region  |
 |---------|---------|---------|---------|
 |Wschodnie stany USA    | Europa Północna        | Indie Środkowe        |US Gov Iowa         |
 |Zachodnie stany USA     |Europa Zachodnia         | Indie Południowe        | Wschodnie stany USA — DoD        |

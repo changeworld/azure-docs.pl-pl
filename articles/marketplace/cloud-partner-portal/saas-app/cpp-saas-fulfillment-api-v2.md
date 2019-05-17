@@ -1,23 +1,22 @@
 ---
 title: SaaS realizacji interfejsu API w wersji 2 | Portal Azure Marketplace
-description: Wyjaśnia sposób tworzenia oferty SaaS w portalu Azure Marketplace, za pomocą realizacji skojarzone interfejsy API w wersji 2.
+description: Wyjaśnia sposób tworzenia oferty SaaS w usłudze AppSource i portalu Azure Marketplace przy użyciu realizacji skojarzone interfejsy API w wersji 2.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 551f3be2ca23bc18224d28faeea6a6df80eba1db
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762270"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823537"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS realizacji interfejsy API wersji 2 
 
-Ten artykuł szczegółowo opisuje interfejs API, który pozwala niezależnym dostawcom oprogramowania (ISV), aby zintegrować swoje aplikacje SaaS przy użyciu portalu Azure Marketplace. Ten interfejs API umożliwia aplikacji niezależnych dostawców oprogramowania do wzięcia udziału w wszystkie kanały commerce włączone: bezpośrednie, prowadzonej przez partnera (odsprzedawcy) i doprowadziło do pola.  Ten interfejs API jest wymagana dla list transactable SaaS oferty w portalu Azure Marketplace.
-
+Ten artykuł zawiera interfejs API, który pozwala niezależnym dostawcom oprogramowania (ISV) i sprzedawać swoje aplikacje SaaS w portalu Azure Marketplace i AppSource. Ten interfejs API jest wymagane do wyświetlania listy SaaS oferują usługi AppSource i portalu Azure Marketplace.
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Zarządzanie cyklem życia subskrypcji SaaS
 

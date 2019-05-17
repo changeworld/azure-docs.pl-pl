@@ -2,22 +2,22 @@
 title: Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Zasoby pomagające w migracji do usługi Azure Active Directory (Azure AD) dostęp do aplikacji i uwierzytelniania.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92ce62d745bfb0299dc8f3eb401f5a66e38580f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12370d54500dbc1fcd6f812206fdfea3e5298112
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440666"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826090"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory
 

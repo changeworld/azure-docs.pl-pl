@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d9f1cbff0dd79d6c2932428708eb1d097b6d9d63
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ab705b6131bd43a7ab70bab16cef81d33f07c055
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601489"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827413"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
 
@@ -89,8 +89,8 @@ public class Function {
      * 2. curl {your host}/api/hello?name=HTTP%20Query
      */
     @FunctionName("hello")
-    public HttpResponseMessage<String> hello(
-            @HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
@@ -99,9 +99,9 @@ public class Function {
         String name = request.getBody().orElse(query);
 
         if (name == null) {
-            return request.createResponse(400, "Please pass a name on the query string or in the request body");
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
         } else {
-            return request.createResponse(200, "Hello, " + name);
+            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
         }
     }
 }
@@ -139,7 +139,7 @@ Http Functions:
 Wyzwól funkcję z poziomu wiersza polecenia, używając programu curl w nowym oknie terminalu:
 
 ```
-curl -w '\n' -d LocalFunction http://localhost:7071/api/hello
+curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
 ```Output
@@ -181,7 +181,7 @@ Przetestuj działanie aplikacji funkcji na platformie Azure, używając programu
 > Upewnij się, możesz ustawić **prawa dostępu** do `Anonymous`. Po wybraniu domyślnego poziomu `Function`, są wymagane, aby przedstawić [funkcyjne](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) w żądaniach wysyłanych do uzyskania dostępu do punktu końcowego funkcji.
 
 ```
-curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
+curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
 ```Output

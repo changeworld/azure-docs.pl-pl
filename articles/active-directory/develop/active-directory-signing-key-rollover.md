@@ -3,8 +3,8 @@ title: Przerzucanie klucza podpisywania w usłudze Azure AD
 description: W tym artykule omówiono najlepsze rozwiązania przerzucania klucza podpisywania usługi Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e9941a6c468a3b0ed9d1f22a2970cfa6584617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b47430b4bd2f7fa6811785247ae6cd4f6df6f8f5
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411236"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546128"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
 W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy zauważyć, że te przerzucania kluczy w regularnych odstępach czasu, a w nagłych wypadkach można od razu przenoszone. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e64b18cef44a5fa6d63137f57fcada27adcd0299
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: da8d1000ebe2695dbc95d475027722962a3305d9
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205485"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555878"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -29,14 +29,14 @@ W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Medi
 Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej wersji usługi Media Services v2 API](../previous/media-services-overview.md), należy przejrzeć następujące wskazówki i uwagi dotyczące przed przeprowadzeniem migracji do interfejsów API w wersji 3. Istnieje wiele korzyści i nowe funkcje w wersji 3 interfejsu API, które zwiększają Środowisko deweloperskie i możliwości usługi Media Services. Jednak jako o nazwie w [znane problemy](#known-issues) sekcji tego artykułu, również istnieją pewne ograniczenia z powodu zmian między wersjami interfejsu API. Ta strona zostanie zachowana, jak zespół usługi Media Services umożliwia dalsze ulepszenia do interfejsów API w wersji 3 i luki między wersjami. 
 
 > [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="benefits-of-media-services-v3"></a>Zalety Media Services v3
   
 ### <a name="api-is-more-approachable"></a>Interfejs API jest bardziej przystępne.
 
 *  Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, zdarzenia na żywo i nie tylko.
-* [Otwórz interfejs API (zwane również struktury Swagger) specyfikacji](https://aka.ms/ams-v3-rest-sdk) dokumentu.
+* [Specyfikacja interfejsu OpenAPI (dawniej nazywanych struktury Swagger)](https://aka.ms/ams-v3-rest-sdk) dokumentu.
     Przedstawia schematu dla wszystkich składników usługi, w tym kodowanie oparte na plikach.
 * Zestawy SDK dostępne dla [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Przejdź](https://aka.ms/ams-v3-go-ref)i Ruby.
 * [Interfejs wiersza polecenia Azure](https://aka.ms/ams-v3-cli-ref) integracji na potrzeby prostą obsługę skryptów.

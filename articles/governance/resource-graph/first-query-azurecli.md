@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d51eaf71e449301415195e409bec9e944d16e0b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800475"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823163"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Szybki start: Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu wiersza polecenia platformy Azure
 
@@ -81,7 +81,7 @@ Teraz, gdy rozszerzenie interfejsu wiersza polecenia platformy Azure zostało do
 
 Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
-## <a name="cleanup-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli chcesz usunąć rozszerzenie usługi Resource Graph ze środowiska interfejsu wiersza polecenia platformy Azure, możesz to zrobić za pomocą następującego polecenia:
 

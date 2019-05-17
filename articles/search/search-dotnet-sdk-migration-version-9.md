@@ -7,17 +7,17 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f540bc304920073bcd823adcf6c9dd47cb2cf93b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a59deed4ac0cec669ddc5e0335f7274586c702e8
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159753"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541759"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-9"></a>Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 9
+# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Uaktualnienie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 9
 
 Jeśli używasz wersji 7.0 preview lub starszy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację do używania w wersji 9.
 
@@ -38,7 +38,7 @@ Zestaw .NET SDK usługi Azure Search w wersji 9 zawiera wiele zmian z wcześniej
 ## <a name="whats-new-in-version-9"></a>Co nowego w wersji 9
 R jest przeznaczony dla zestawu .NET SDK usługi Azure Search w wersji 9 ogólnie dostępnej wersji Azure Search REST API, w szczególności 2019-05-06. Dzięki temu można korzystać z nowych funkcji usługi Azure Search z poziomu aplikacji .NET, w tym następujące:
 
-* [Usługa cognitive Search](cognitive-search-concept-intro.md) jest funkcją sztucznej Inteligencji w usłudze Azure Search, używany do wyodrębniania tekstu z obrazów, obiekty BLOB i innych źródeł danych bez struktury — wzbogaca zawartość, aby wprowadzić więcej można wyszukiwać w indeksie usługi Azure Search.
+* [Usługa cognitive search](cognitive-search-concept-intro.md) jest funkcją sztucznej Inteligencji w usłudze Azure Search, używany do wyodrębniania tekstu z obrazów, obiekty BLOB i innych źródeł danych bez struktury — wzbogaca zawartość, aby wprowadzić więcej można wyszukiwać w indeksie usługi Azure Search.
 * Obsługa [typy złożone](search-howto-complex-data-types.md) pozwala użytkownikom na modelowanie niemal wszystkich zagnieżdżonych strukturę JSON do indeksu usługi Azure Search.
 * [Autouzupełnianie](search-autocomplete-tutorial.md) stanowi alternatywę dla **sugerowanej** API wykonywania wyszukiwania jako użytkownik typ-zachowanie. Autouzupełnianie "zakończy się" wyraz lub frazę, która obecnie wpisywany przez użytkownika.
 * [Tryb analizy JsonLines](search-howto-index-json-blobs.md)częścią usługi Azure Blob indeksowania, tworzy jeden wyszukiwania dokumentów na jednostkę JSON, oddzielonych znakami nowego wiersza.
@@ -70,7 +70,7 @@ Istnieje kilka istotne zmiany w wersji 9, które mogą wymagać zmian w kodzie o
 > [!NOTE]
 > Lista zmian poniżej nie jest wyczerpująca. Niektóre zmiany prawdopodobnie nie powoduje błędy kompilacji, ale z technicznego punktu widzenia są istotne, ponieważ dzielą się one zgodność binarną za pomocą zestawów, które są zależne od wcześniejszej wersje zestawów zestawu .NET SDK usługi Azure Search. Takie zmiany nie zostały wymienione poniżej. Skompiluj aplikację ponownie po uaktualnieniu do wersji 9, aby uniknąć jakichkolwiek problemów zgodność binarną.
 
-### <a name="making-properties-immutable"></a>Tworzenie niezmienialnych właściwości
+### <a name="immutable-properties"></a>Niezmienialnych właściwości
 
 Właściwości publicznych z kilku klas modelu teraz są niezmienne. Jeśli potrzebujesz do tworzenia niestandardowych wystąpień tych klas na potrzeby testowania, można użyć nowego konstruktory sparametryzowane:
 
@@ -103,7 +103,7 @@ Jest to spowodowane właściwości te muszą być teraz `null` w przypadku zło�
 
 Konstruktor bez parametrów `Field` dokonano `internal`. Od teraz każdy `Field` wymaga jawną nazwę i typ danych w czasie produkcji.
 
-### <a name="simplification-of-batch-and-results-types"></a>Uproszczenie typów usługi batch i wyniki
+### <a name="simplified-batch-and-results-types"></a>Uproszczone typy przetwarzania wsadowego i wyniki
 
 W wersji 7.0 preview i starszych różnymi klasami, które hermetyzują grup dokumentów zostały strukturę w hierarchii klas równoległych:
 
@@ -118,7 +118,7 @@ Typy pochodne, parametr typu generycznego nie były przeznaczone do użycia w sc
 
 Począwszy od wersji 8.0-preview klasy podstawowe i pochodne nieogólnego wszystkie zostały usunięte. W przypadku scenariuszy dynamiczne typowanie, można użyć `IndexBatch<Document>`, `DocumentSearchResult<Document>`i tak dalej.
  
-### <a name="removal-of-extensibleenum"></a>Usuwanie ExtensibleEnum
+### <a name="removed-extensibleenum"></a>Usunięto ExtensibleEnum
 
 `ExtensibleEnum` Klasy bazowej został usunięty. Wszystkie klasy, które od niego pochodzi są teraz struktur, takich jak `AnalyzerName`, `DataType`, i `DataSourceType` na przykład. Ich `Create` metody również zostały usunięte. Możesz po prostu usunąć wywołania `Create` ponieważ te typy są niejawnej konwersji z ciągów znaków. Które powoduje błędy kompilatora, możesz jawnie wywołać operatora konwersji za pośrednictwem rzutowanie do rozróżniania typów. Na przykład można zmienić kod w następujący sposób:
 
@@ -134,7 +134,7 @@ var index = new Index()
 }
 ```
 
-na taki:
+Następujące zmiany:
 
 ```csharp
 var index = new Index()
@@ -150,7 +150,7 @@ var index = new Index()
 
 Właściwości, które są przechowywane wartości opcjonalne typy teraz są jawnie wpisane jako dopuszczającego wartość null, aby nadal być opcjonalny.
 
-### <a name="removal-of-facetresults-and-hithighlights"></a>Usuwanie FacetResults i HitHighlights
+### <a name="removed-facetresults-and-hithighlights"></a>Usunięto FacetResults i HitHighlights
 
 `FacetResults` i `HitHighlights` klasy zostały usunięte. Wyniki aspekt teraz o typach `IDictionary<string, IList<FacetResult>>` i naciśnij klawisz jako `IDictionary<string, IList<string>>`. Szybkie rozwiązywanie błędów kompilacji, wynikające z tej zmiany jest dodanie `using` aliasów w górnej części każdego pliku, który korzysta z usuniętych typów. Na przykład:
 

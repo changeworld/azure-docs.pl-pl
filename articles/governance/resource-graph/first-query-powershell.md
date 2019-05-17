@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b9215cac6fe4e4ec8bac3fac773c919c6e13cf05
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 17003864c7bcc5f8be6acf17d40ce2039f031313
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790026"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823247"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Szybki start: Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu programu Azure PowerShell
 
@@ -90,7 +90,7 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
 
 Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
-## <a name="cleanup-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli chcesz usunąć moduł usługi Resource Graph ze środowiska programu Azure PowerShell, możesz to zrobić za pomocą następującego polecenia:
 

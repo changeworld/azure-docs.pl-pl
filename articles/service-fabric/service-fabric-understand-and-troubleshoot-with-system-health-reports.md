@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716272"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561378"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Używanie raportów kondycji systemu do rozwiązywania problemów
 Składniki usługi Service Fabric platformy Azure udostępniają raportów kondycji systemu na wszystkich jednostek w klastrze, gotową do. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) tworzy i usuwa jednostki na podstawie raportów systemu. On również organizuje ich w hierarchii, która przechwytuje interakcje jednostki.
@@ -57,7 +57,7 @@ Raport określa limit czasu globalnego dzierżawy jako czas wygaśnięcia (TTL).
 * **Właściwość**: Rozpoczyna się od **otoczenie** i zawiera informacje o węźle.
 * **Następne kroki**: Należy zbadać, dlaczego klubu zostaną utracone. Na przykład sprawdzić komunikacji między węzłami klastra.
 
-### <a name="rebuild"></a>Ponowne kompilowanie
+### <a name="rebuild"></a>Kompiluj ponownie
 
 Usługa Menedżer trybu Failover (FM) zarządza informacjami o węzłach klastra. Gdy FM traci swoje dane i przechodzi do utraty danych, nie może zagwarantować, że ma najnowsze informacje o węzłach klastra. W takim przypadku system przechodzi przez ponowną kompilację i System.FM zbiera dane z wszystkich węzłów w klastrze, aby ponownie skompilować jego stan. Czasami z powodu sieci lub problemy z węzła ponownej kompilacji można uzyskać zatrzymane lub wstrzymane. Taka sama sytuacja może wystąpić w usłudze główny menedżer trybu Failover (FMM). FMM jest usługa bezstanowa systemowa, która śledzi gdzie wszystkie FMs znajdują się w klastrze. Podstawowy FMM jest zawsze węzła o identyfikatorze najbardziej zbliżony do 0. Jeśli pobiera tego węzła, ponownej kompilacji, zostanie wywołany.
 Jedną z powyższych warunków sytuacji **System.FM** lub **System.FMM** oznacza go za pomocą raportu o błędach. Ponowna kompilacja mogła zostać zablokowana na jeden z dwóch etapów:
@@ -632,7 +632,7 @@ Właściwości i tekstu wskazują, którego interfejs API został zablokowany. N
 
 - **IStatefulServiceReplica.Close** i **IStatefulServiceReplica.Abort**: Najbardziej często zdarza się nie zapewniane token anulowania, przekazany do usługi `RunAsync`. Być może, `ICommunicationListener.CloseAsync`, lub jeśli je przesłonięto, `OnCloseAsync` jest zablokowany.
 
-- **IStatefulServiceReplica.ChangeRole (S)** i **IStatefulServiceReplica.ChangeRole(N)**: Najbardziej często zdarza się nie zapewniane token anulowania, przekazany do usługi `RunAsync`.
+- **IStatefulServiceReplica.ChangeRole (S)** i **IStatefulServiceReplica.ChangeRole(N)**: Najbardziej często zdarza się nie zapewniane token anulowania, przekazany do usługi `RunAsync`. W tym scenariuszu najlepszym rozwiązaniem jest ponowne uruchomienie repliki.
 
 - **IStatefulServiceReplica.ChangeRole(P)**: Najbardziej często zdarza się, że usługi nie zwrócił zadanie z `RunAsync`.
 
@@ -727,7 +727,7 @@ HealthEvents          :
 ## <a name="deployedapplication-system-health-reports"></a>DeployedApplication raportów o kondycji systemu
 **System.Hosting** urzędu na jednostkach wdrożone.
 
-### <a name="activation"></a>Aktywacja
+### <a name="activation"></a>Uaktywnienie
 System.Hosting raporty jako OK po pomyślnym aktywowaniu aplikacji w węźle. W przeciwnym razie zgłasza błąd.
 
 * **SourceId**: System.Hosting
@@ -762,7 +762,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Do pobrania
+### <a name="download"></a>Pobierz
 System.Hosting zgłasza błąd, jeśli pobieranie pakietu aplikacji nie powiedzie się.
 
 * **SourceId**: System.Hosting
@@ -840,7 +840,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Do pobrania
+### <a name="download"></a>Pobierz
 System.Hosting zgłasza błąd, jeśli pobieranie pakietu usługi nie powiedzie się.
 
 * **SourceId**: System.Hosting

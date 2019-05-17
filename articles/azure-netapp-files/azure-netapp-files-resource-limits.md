@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
-ms.openlocfilehash: d55e11ace4ca306c3d3ec8c0094a751966289db6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523061"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826377"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -36,6 +36,7 @@ W poniższej tabeli opisano limity zasobów dla usługi Azure Files NetApp:
 |  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
 |  Liczba migawek na każdym woluminie       |    255     |    Nie        |
 |  Liczba podsieci delegować domenę do usługi Azure Files NetApp (Microsoft.NetApp/volumes) na sieć wirtualną platformy Azure    |   1   |    Nie    |
+|  Maksymalna liczba maszyn wirtualnych (w tym wirtualne sieci równorzędne) który może nawiązać woluminu     |    1000   |    Nie   |
 |  Minimalny rozmiar puli jednej pojemności   |  4 TiB     |    Nie  |
 |  Maksymalny rozmiar puli jednej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczego woluminu    |    100 GiB    |    Nie    |

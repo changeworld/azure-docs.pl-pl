@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195711"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603208"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analizowanie danych w usłudze Azure Data Lake magazynu Gen1 przy użyciu usługi Power BI
 W tym artykule dowiesz się, jak analizować i wizualizować dane przechowywane w usłudze Azure Data Lake magazynu Gen1 za pomocą programu Power BI Desktop.
@@ -74,23 +74,23 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 14. Po zaktualizowaniu zapytanie **pola** kartę wyświetli nowe pola, dostępny dla wizualizacji.
     
     ![Zaktualizowane pola](./media/data-lake-store-power-bi/updated-query-fields.png "zaktualizowane pola")
-15. Daj nam utworzyć wykres kołowy do reprezentowania sterowników w każde Miasto dla danego kraju. Aby to zrobić, należy wybrać następujące opcje.
+15. Daj nam utworzyć wykres kołowy do reprezentowania sterowników w każde Miasto dla danego kraju/regionu. Aby to zrobić, należy wybrać następujące opcje.
     
     1. Na karcie wizualizacje kliknij symbol dla wykresu kołowego.
        
         ![Utwórz wykres kołowy](./media/data-lake-store-power-bi/create-pie-chart.png "utworzyć wykres kołowy")
-    2. Kolumny, których będziemy używać są **kolumny 4** (nazwa miasta) i **7 kolumn** (nazwa kraju). Przeciągnij te kolumny z **pola** kartę **wizualizacje** karty, jak pokazano poniżej.
+    2. Kolumny, których będziemy używać są **kolumny 4** (nazwa miasta) i **7 kolumn** (nazwa kraju/regionu). Przeciągnij te kolumny z **pola** kartę **wizualizacje** karty, jak pokazano poniżej.
        
         ![Tworzenie wizualizacji](./media/data-lake-store-power-bi/create-visualizations.png "tworzenie wizualizacji")
     3. Wykres kołowy powinien teraz przypominać podobny do przedstawionego poniżej.
        
         ![Wykres kołowy](./media/data-lake-store-power-bi/pie-chart.png "tworzenie wizualizacji")
-16. Wybierając określonego kraju z filtrów na poziomie strony, będą teraz widoczne liczbę sterowników w każde Miasto wybranego kraju. Na przykład w obszarze **wizualizacje** , w obszarze **filtry na poziomie strony**, wybierz opcję **Brazylii**.
+16. Wybierając określonego kraju/regionu z filtrów na poziomie strony, będą teraz widoczne liczbę sterowników w każde Miasto wybranego kraju/regionu. Na przykład w obszarze **wizualizacje** , w obszarze **filtry na poziomie strony**, wybierz opcję **Brazylii**.
     
-    ![Wybierz kraj](./media/data-lake-store-power-bi/select-country.png "wybierz kraj")
+    ![Wybierz kraj](./media/data-lake-store-power-bi/select-country.png "wybierz kraj/region")
 17. Wykres kołowy zostanie automatycznie zaktualizowany do wyświetlenia sterowniki w miastach Brazylii.
     
-    ![Sterowniki w kraju](./media/data-lake-store-power-bi/driver-per-country.png "sterowniki dla każdego kraju")
+    ![Sterowniki w kraju](./media/data-lake-store-power-bi/driver-per-country.png "sterowników na kraj/region")
 18. Z **pliku** menu, kliknij przycisk **Zapisz** Aby zapisać wizualizację jako plik programu Power BI Desktop.
 
 ## <a name="publish-report-to-power-bi-service"></a>Opublikuj raport w usłudze Power BI

@@ -2,8 +2,8 @@
 title: Jak włączyć logowanie Jednokrotne dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL | Dokumentacja firmy Microsoft
 description: Jak włączyć logowanie jednokrotne w aplikacji za pomocą funkcji zestawu SDK biblioteki ADAL.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d3c2846ed97b725d745cc76714738ac34ed1a0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d543df842464f1b69fa287c89e777a7e1512ae09
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190206"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540235"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
 
@@ -240,7 +240,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > Podczas udostępniania łańcucha kluczy w aplikacjach dowolnej aplikacji można usunąć użytkowników lub co gorsza Usuń wszystkie tokeny wglądem w aplikację. Jest to szczególnie katastrofalne, jeśli masz aplikacje, które zależą od tokenów do pracy w tle. Udostępnianie łańcucha kluczy oznacza, że użytkownik musi być dużą ostrożność podczas wszystkie Usuń operacji za pomocą tożsamości zestawów SDK.
 
-Gotowe. Zestaw SDK będzie teraz udostępnić poświadczeń we wszystkich aplikacjach. Lista użytkowników będzie również udostępniane między wystąpieniami aplikacji.
+To wszystko! Zestaw SDK będzie teraz udostępnić poświadczeń we wszystkich aplikacjach. Lista użytkowników będzie również udostępniane między wystąpieniami aplikacji.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Włączanie logowania jednokrotnego dla brokera korzystającej z logowania jednokrotnego
 

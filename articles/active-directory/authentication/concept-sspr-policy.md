@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 05/16/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728d961961250aad1d06067e0264c6b90aca4915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: HT
+ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593836"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823406"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -81,8 +81,8 @@ W poniższej tabeli opisano ustawienia zasad haseł, które są stosowane do kon
 
 | Właściwość | Wymagania |
 | --- | --- |
-| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> puste miejsce |
-| Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li>Miejsca do magazynowania.</li><li> Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symbol".</li></ul> |
+| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>puste miejsce</li></ul> |
+| Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li> Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symbol".</li></ul> |
 | Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 256 znaków.</li><li>Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
 | Okres wygasania haseł |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet usługi Azure Active Directory modułu dla Windows PowerShell.</li></ul> |
 | Powiadomienie o wygaśnięciu hasła |<ul><li>Wartość domyślna: **14** dni (po których wygasa hasło).</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet.</li></ul> |
@@ -99,7 +99,6 @@ Niniejsze wytyczne mają zastosowanie do innych dostawców, takich jak usługi I
 
 > [!NOTE]
 > Tylko hasła dla kont użytkowników, które nie są synchronizowane za pomocą synchronizacji katalogów można skonfigurować nie wygaśnie. Aby uzyskać więcej informacji na temat synchronizacji katalogów, zobacz [AD z usługą Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Ustaw lub sprawdź zasady haseł za pomocą programu PowerShell
 
@@ -157,7 +156,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
    ```
 
    > [!WARNING]
-   > Wartość hasła `-PasswordPolicies DisablePasswordExpiration` nadal wieku na podstawie `pwdLastSet` atrybutu. Jeśli zostały ustawione haseł użytkowników, nigdy nie wygasa, a następnie Przejdź ponad 90 dni, wygaśnięcia hasła. Na podstawie `pwdLastSet` atrybutu, jeśli zmienisz wygaśnięcia do `-PasswordPolicies None`, wszystkie hasła, które mają `pwdLastSet` starsze niż 90 dni, aby użytkownik musiał je zmienić przy następnym zalogowaniu. Ta zmiana może wpływać na dużą liczbę użytkowników. 
+   > Wartość hasła `-PasswordPolicies DisablePasswordExpiration` nadal wieku na podstawie `pwdLastSet` atrybutu. Jeśli zostały ustawione haseł użytkowników, nigdy nie wygasa, a następnie Przejdź ponad 90 dni, wygaśnięcia hasła. Na podstawie `pwdLastSet` atrybutu, jeśli zmienisz wygaśnięcia do `-PasswordPolicies None`, wszystkie hasła, które mają `pwdLastSet` starsze niż 90 dni, aby użytkownik musiał je zmienić przy następnym zalogowaniu. Ta zmiana może wpływać na dużą liczbę użytkowników.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

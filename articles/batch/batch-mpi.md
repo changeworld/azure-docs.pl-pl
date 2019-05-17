@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a4184fa361ba863cdaf916ef4853eda8b6e8188
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775328"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595948"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Zadania obejmujące wiele wystąpień umożliwiają uruchamianie aplikacji interfejsu przekazywania komunikatów (MPI) w usłudze Batch
 
@@ -279,9 +279,9 @@ await subtasks.ForEachAsync(async (subtask) =>
 >
 >
 
-### <a name="execution"></a>Wykonanie
+### <a name="execution"></a>Wykonywanie
 1. Pobierz [azure-batch-samples] [ github_samples_zip] z usługi GitHub.
-2. Otwórz MultiInstanceTasks **rozwiązania** w programie Visual Studio 2017. `MultiInstanceTasks.sln` Plik rozwiązania znajduje się w:
+2. Otwórz MultiInstanceTasks **rozwiązania** w Visual Studio 2019 r. `MultiInstanceTasks.sln` Plik rozwiązania znajduje się w:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Wprowadź poświadczenia konta usługi Batch i Storage w `AccountSettings.settings` w **Microsoft.Azure.Batch.Samples.Common** projektu.

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 84446090da2feaee3005b4ef90ace77b468a3f1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792594"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827781"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (.NET)
 
@@ -29,7 +29,7 @@ Usługi Azure Resource Manager służy do tworzenia i zarządzania usługi Azure
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Program Visual Studio 2015 lub Visual Studio 2017.
+* Program Visual Studio.
 * Aktywne konto platformy Azure. <br/>Jeśli go nie masz, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut.
 * [Konta usługi Azure Storage] [ lnk-storage-account] której możesz przechowywać pliki szablonu usługi Azure Resource Manager.
 * [Azure PowerShell 1.0] [ lnk-powershell-install] lub nowszej.

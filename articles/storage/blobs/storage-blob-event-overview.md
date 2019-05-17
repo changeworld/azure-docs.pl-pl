@@ -9,18 +9,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: b03d7d98fe43eacab63f45ccacd7d8dea9598c8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142161"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826493"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
 Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagować na tworzenie i usuwanie obiektów blob za pomocą nowoczesnych architektur bez użycia serwera. Robi to bez konieczności skomplikowanego kodu lub sondowania kosztowne i nieefektywna usług.  Zamiast tego zdarzenia są przekazywane za pośrednictwem [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) dla subskrybentów, takie jak [usługi Azure Functions](https://azure.microsoft.com/services/functions/), [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), lub nawet własne odbiornika http niestandardowego, a tylko płatność za rzeczywiste użycie.
 
-Zdarzenia usługi blob storage niezawodnie są wysyłane do usługi siatki zdarzeń, która zapewnia niezawodne dostarczanie usług do aplikacji za pośrednictwem zasad ponawiania rozbudowane i dostarczania wiadomości utraconych.
+Zdarzenia usługi blob storage niezawodnie są wysyłane do usługi siatki zdarzeń, która zapewnia niezawodne dostarczanie usług do aplikacji za pośrednictwem zasad ponawiania rozbudowane i dostarczania wiadomości utraconych. Aby dowiedzieć się więcej, zobacz [dostarczanie komunikatów usługi Event Grid i ponów próbę](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
 Typowe scenariusze zdarzenia magazynu obiektów Blob obejmują przetwarzanie obrazu lub filmu wideo, indeksowanie wyszukiwania lub przepływ pracy korzystający z pliku.  Przekazywanie plików asynchroniczne są doskonałe rozwiązanie dla zdarzenia.  Gdy zmiany są rzadkie, ale dany scenariusz wymaga natychmiastowej reakcji, oparte na zdarzeniach architektury może być szczególnie wydajne.
 
@@ -39,7 +39,7 @@ Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.m
 > |`Microsoft.Storage.BlobCreated`|Wywoływane, gdy obiekt blob zostanie utworzony lub zastąpiony przez `PutBlob`, `PutBlockList`, lub `CopyBlob` operacji|
 > |`Microsoft.Storage.BlobDeleted`|Wywoływane, gdy obiekt blob jest usuwane przez `DeleteBlob` operacji|
 
-## <a name="event-schema"></a>Schemat zdarzeń
+## <a name="event-schema"></a>Schemat zdarzenia
 Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowania na zmiany w danych.  Można zidentyfikować zdarzenia magazynu obiektów Blob, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Storage". Dodatkowe informacje na temat użycia właściwości zdarzeń usługi Event Grid jest udokumentowany w [schematu zdarzeń usługi Event Grid](../../event-grid/event-schema.md).  
 
 > |Właściwość|Typ|Opis|
@@ -48,7 +48,7 @@ Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowa
 > |temat|string|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
 > |eventTime|string|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
 > |eventType|string|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
-> |Identyfikator|string|Unikatowy identyfikator, jeśli to zdarzenie|
+> |Id|string|Unikatowy identyfikator, jeśli to zdarzenie|
 > |dataVersion|string|Wersja schematu dla obiektu danych.|
 > |metadataVersion|string|Wersja schematu właściwości najwyższego poziomu.|
 > |dane|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|

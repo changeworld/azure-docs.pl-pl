@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/11/2019
-ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
-ms.translationtype: HT
+ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620152"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823314"
 ---
 # <a name="sql-database-serverless-preview"></a>Bazy danych SQL Database bez użycia serwera (wersja zapoznawcza)
 
@@ -277,19 +277,21 @@ Ilość zasobów obliczeniowych, naliczana jest uwidaczniany przez następujące
 
 Ta ilość jest obliczane co sekundę i zagregowane ponad 1 minutę.
 
-**Przykład**: Należy wziąć pod uwagę bazę danych w okresie jednej godziny przy użyciu GP_S_Gen5_4 za pomocą następującego użycia:
+Należy wziąć pod uwagę bez użycia serwera bazy danych skonfigurowano wartość elementów vcore 1 min i 4 rdzenie wirtualne max.  Odpowiada to około 3 GB, minimalna ilość pamięci do 12 GB pamięci RAM max.  Załóżmy, że opóźnienie automatycznego wstrzymywania jest ustawiona na 6 godzin, a obciążenie bazy danych jest 2 godzinach pierwszym okresie 24 godzin i w przeciwnym razie nieaktywnych.    
 
-|Czas (godziny: minuty)|app_cpu_billed (rdzeń wirtualny w sekundach)|
-|---|---|
-|0:01|63|
-|0:02|123|
-|0:03|95|
-|0:04|54|
-|0:05|41|
-|0:06 - 1:00|1255|
-||Łącznie: 1631|
+W takim przypadku baza danych jest naliczana za zasoby obliczeniowe i Magazyn podczas pierwszego 8 godzin.  Mimo, że baza danych jest nieaktywny, zaczynając od 2 godziny, nadal jest rozliczana za obliczenia w kolejnych 6 godzin, oparte na obliczenia minimalne zainicjowano obsługę administracyjną, gdy baza danych jest w trybie online.  Tylko magazyn jest rozliczana w pozostałej części 24-godzinnego okresu, gdy baza danych jest wstrzymany.
 
-Załóżmy, że cena jednostki obliczeniowej jest $0.000073/vCore/second. Następnie zasoby obliczeniowe naliczane w tym okresie jednej godziny jest określana, korzystając z następującego wzoru: **$0.000073/vCore/second * 1631 — rdzeń wirtualny sekundy = 0.1191 $**
+Mówiąc ściślej na rachunku obliczeniowych, w tym przykładzie jest obliczana w następujący sposób:
+
+|Interwał czasu|rdzenie wirtualne używane w każdej sekundzie|Używane w każdej sekundzie GB|Obliczenia wymiarów rozliczane|rozliczane przedziałach czasu w sekundach (rdzeń wirtualny)|
+|---|---|---|---|---|
+|0:00-1:00|4|9|rdzenie wirtualne używane|4 rdzenie wirtualne * 3600 sekund = 14400 (rdzeń wirtualny) sekund|
+|1:00-2:00|1|12|Pamięć użyta|12 Gb * 1/3 * 3600 sekund = 14400 sekund (rdzeń wirtualny)|
+|2:00-8:00|0|0|Minimalna ilość pamięci aprowizacji|3 Gb * 1/3 * 21600 sekundy = 21600 sekund (rdzeń wirtualny)|
+|8:00-24:00|0|0|Nie obliczeniowe naliczane podczas wstrzymania|0 — rdzeń wirtualny w sekundach|
+|Łączna liczba (rdzeń wirtualny) sekund naliczane przez 24 godziny||||50400 — rdzeń wirtualny w sekundach|
+
+Załóżmy, że cena jednostki obliczeniowej jest $0.000073/vCore/second.  Zasoby obliczeniowe naliczane w tym okresie 24-godzinnym jest wynikiem sekund ceny i rdzeń wirtualny jednostki obliczeniowe naliczane: $0.000073/vCore/second * 50400 sekund — rdzeń wirtualny = 3.68 $
 
 ## <a name="available-regions"></a>Dostępne regiony
 

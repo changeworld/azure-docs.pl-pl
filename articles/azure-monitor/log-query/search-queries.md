@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 2df4cf994e118fef9048504daf40fabc1625c375
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425915"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560841"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Zapytania wyszukiwania w dziennikach w usłudze Azure Monitor
 
@@ -64,7 +64,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Jeśli używasz `==` zamiast `:`, wyniki będą uwzględniać rekordy, w którym *źródła* kolumna zawiera dokładną wartość "error", a w tym dokładne dopasowanie wielkości liter. Za pomocą ":" nie będzie zawierać rekordy gdzie *źródła* zawiera wartości, takie jak "Kod błędu 404" lub "Error".
+> Jeśli używasz `==` zamiast `:`, wyniki będą uwzględniać rekordy, w którym *źródła* kolumna zawiera dokładną wartość "error", a w tym dokładne dopasowanie wielkości liter. Za pomocą ":" będzie zawierać rekordy gdzie *źródła* zawiera wartości, takie jak "Kod błędu 404" lub "Error".
 
 ## <a name="case-sensitivity"></a>Uwzględnianie wielkości liter
 Domyślnie termin wyszukiwania jest bez uwzględniania wielkości liter, dzięki czemu wyszukiwanie "dns" wygeneruje wyniki, takie jak "DNS", "dns" lub "Dns". Aby wprowadzić wyszukiwania jest uwzględniana wielkość liter, należy użyć `kind` opcji:

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: d99e3661fd51b481a20404cfeb55157ac803c220
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706147"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556267"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 — często zadawane pytania
 
@@ -30,7 +30,7 @@ Zobacz [kontrola dostępu oparta na rolach (RBAC) dla konta usługi Media Servic
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>Jak skonfigurować jednostki zarezerwowane multimediów?
 
-Zdecydowanie zaleca się, aby w przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez usługi Media Services wersji 3 lub Video Indexer, aby przeprowadzać aprowizację konta przy użyciu 10 jednostek MRU typu S3. Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
+Analiza Audio i wideo zadania analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer, aby uzyskać zaleca aprowizację swojego konta za pomocą 10 S3 lokalizacje MRU. Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
 
 Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów z użyciem interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
 
@@ -81,7 +81,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Czy można użyć witryny Azure portal w celu zarządzania zasobami v3?
 
-Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
+Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>W wersji 3 jest pojęciem AssetFile?
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cb7cf932433927d4ead853952ff74d55c55b9cf7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160023"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546801"
 ---
 Udostępnione galerie obrazów pozwalają udostępniania obrazów przy użyciu funkcji RBAC. RBAC można użyć do udostępniania obrazów w ramach dzierżawy, a nawet do osób spoza Twojej dzierżawy. Ale jeśli chcesz udostępnić obrazów spoza Twojej dzierżawy platformy Azure na dużą skalę, należy utworzyć rejestrację aplikacji w taki sposób, aby usprawnić udostępnianie.  Korzystanie z rejestracji aplikacji można włączyć bardziej złożonych scenariuszy do udostępniania, takie jak: 
 
@@ -44,7 +44,9 @@ Nadaj uprawnienia rejestracji aplikacji na korzystanie z galerii obrazów udost�
 1. W obszarze **wybierz**, typ *myGalleryApp* i zaznacz je, gdy zostanie ona wyświetlona na liście. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
 
 
-Tworzenie jednostki usługi dla 2 dzierżawy na potrzeby uzyskiwania dostępu do aplikacji, wysyłając żądanie logowania za pomocą przeglądarki. Zastąp *<Tenant2 ID>* dla dzierżawy, który chcesz udostępnić galerii obrazów z identyfikatorem dzierżawy. Zastąp *< identyfikator aplikacji (klienta) >* z Identyfikatorem aplikacji w rejestracji aplikacji utworzony. Po zakończeniu wprowadzania zamiany Wklej adres URL do przeglądarki i postępuj zgodnie z instrukcjami logowania, aby zalogować się do 2 dzierżawy.
+## <a name="give-tenant-2-access"></a>Udostępnij 2 dzierżawy
+
+Udostępnij 2 dzierżawy do aplikacji, wysyłając żądanie logowania za pomocą przeglądarki. Zastąp *<Tenant2 ID>* dla dzierżawy, który chcesz udostępnić galerii obrazów z identyfikatorem dzierżawy. Zastąp *< identyfikator aplikacji (klienta) >* z Identyfikatorem aplikacji w rejestracji aplikacji utworzony. Po zakończeniu wprowadzania zamiany Wklej adres URL do przeglądarki i postępuj zgodnie z instrukcjami logowania, aby zalogować się do 2 dzierżawy.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

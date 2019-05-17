@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 05/01/2019
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: 1144115ad349879d097062e44226dd2ffcf9b48e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5bab83c2cb3874ad662ad54a9646cc3fc406046e
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154168"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561353"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Instrukcje T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse
 Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse.
@@ -52,6 +52,7 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [WIDOK LISTY](https://msdn.microsoft.com/library/ms173492.aspx)
 * [UPUŚĆ KLASYFIKATORA OBCIĄŻENIA](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
 * [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
+* [ZESTAW RESULT_SET_CACHING](/sql/t-sql/statements/set-statements-transact-sql) (wersja zapoznawcza)
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 

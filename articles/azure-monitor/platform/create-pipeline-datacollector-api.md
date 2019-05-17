@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 961ce4427c509142077c95a6569ad2c444ec0a52
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205959"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603234"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane
 
@@ -27,7 +27,7 @@ ms.locfileid: "65205959"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Przykład problem
-W pozostałej części tego artykułu będziemy sprawdzać dane dotyczące wyświetleń stron w usłudze Application Insights. W naszym scenariuszu hipotetyczny chcemy skorelować zbierane domyślnie zestaw SDK usługi Application Insights do danych niestandardowych, zawierających populacji każdego kraju w świecie, w celu określenia, gdzie firma powinna spędzać większość informacji geograficznych Marketing dolarów. 
+W pozostałej części tego artykułu będziemy sprawdzać dane dotyczące wyświetleń stron w usłudze Application Insights. W naszym scenariuszu hipotetyczny chcemy korelowanie informacji geograficznych zbierane domyślnie zestaw SDK usługi Application Insights do danych niestandardowych, zawierających populacji każdego kraju/regionie na świecie, w celu określenia, gdzie się firma Microsoft wydatków najbardziej marketingu dolarów. 
 
 Używamy publiczne źródło danych takich jak [ONZ World populacji perspektyw](https://esa.un.org/unpd/wpp/) do tego celu. Dane będą mieć poniższy prosty schemat:
 

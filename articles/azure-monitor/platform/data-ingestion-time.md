@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d508ce217e3a97b3399435cb63295eb28965359a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093968"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605605"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Czas pozyskiwanie danych dziennika w usłudze Azure Monitor
 Usługa Azure Monitor to usługa danych dużej skali, która obsługuje tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje za dane dziennika staną się dostępne po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
@@ -104,7 +104,7 @@ Heartbeat
 | render timechart  
 ```
  
-Użyj następującego zapytania, aby wyświetlić czas wprowadzania na komputerze według kraju, że znajdują się one w opartym na adresy IP: 
+Użyj następującego zapytania, aby wyświetlić czas wprowadzania na komputerze według kraju/regionu, że znajdują się one w opartym na adresy IP: 
 
 ``` Kusto
 Heartbeat 

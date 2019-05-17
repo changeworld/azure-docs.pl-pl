@@ -5,23 +5,23 @@ services: openshift
 keywords: Red hat openshift Konfiguracja
 author: TylerMSFT
 ms.author: twhitney
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 3c265d6695af7ba1bc5833db59966a626cb29cb9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6e859f57f9b5f24ea2f0172f5aa35a60d9769f19
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416065"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551697"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Konfigurowanie środowiska deweloperskiego Azure Red Hat OpenShift
 
 Aby skompilować i uruchomić aplikacje Microsoft Azure Red Hat OpenShift, musisz:
 
 * Kup wystąpienia zarezerwowane maszyn wirtualnych platformy Azure.
-* Zainstaluj wersję 2.0.64 (lub nowszej) z wiersza polecenia platformy Azure (lub użyj usługi Azure Cloud Shell).
+* Zainstaluj wersję 2.0.65 (lub nowszej) z wiersza polecenia platformy Azure (lub użyj usługi Azure Cloud Shell).
 * Zarejestruj się, aby `openshiftmanagedcluster` funkcji i dostawcy skojarzonego zasobu.
 * Tworzenie dzierżawy usługi Azure Active Directory (Azure AD).
 * Utwórz obiekt aplikacji usługi Azure AD.
@@ -39,13 +39,13 @@ Jeśli nie jesteś klientem Azure [kontakt ze sprzedażą](https://aka.ms/opensh
 
 ## <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
-Azure Red Hat OpenShift wymaga wersji 2.0.64 lub nowszej interfejsu wiersza polecenia platformy Azure. Jeśli masz już zainstalowaną wiersza polecenia platformy Azure, możesz sprawdzić posiadaną wersję, uruchamiając:
+Azure Red Hat OpenShift wymaga wersji 2.0.65 lub nowszej interfejsu wiersza polecenia platformy Azure. Jeśli masz już zainstalowaną wiersza polecenia platformy Azure, możesz sprawdzić posiadaną wersję, uruchamiając:
 
 ```bash
 az --version
 ```
 
-Pierwszy wiersz danych wyjściowych będzie mieć wersję interfejsu wiersza polecenia, na przykład `azure-cli (2.0.64)`.
+Pierwszy wiersz danych wyjściowych będzie mieć wersję interfejsu wiersza polecenia, na przykład `azure-cli (2.0.65)`.
 
 Poniżej przedstawiono instrukcje dotyczące [instalowanie interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) w razie potrzeby nowych instalacji lub uaktualnienia.
 
@@ -55,7 +55,8 @@ Alternatywnie możesz użyć [usługi Azure Cloud Shell](https://docs.microsoft.
 
 `Microsoft.ContainerService openshiftmanagedcluster` Funkcji `Microsoft.Solutions`, i `Microsoft.Network` dostawcy musi być zarejestrowana do subskrypcji ręcznie, przed wdrożeniem swój pierwszy klaster Azure Red Hat OpenShift.
 
-Aby ręcznie zarejestrować tych dostawców i funkcje, użyj poniższych instrukcji, z poziomu powłoki Bash, jeśli po zainstalowaniu interfejsu wiersza polecenia lub z sesji usługi Azure Cloud Shell (powłoka Bash), w portalu Azure:.
+Aby ręcznie zarejestrować tych dostawców i funkcje, użyj poniższych instrukcji z poziomu powłoki Bash, jeśli po zainstalowaniu interfejsu wiersza polecenia lub z sesji usługi Azure Cloud Shell (powłoka Bash), w portalu Azure:
+
 1. Jeśli masz wiele subskrypcji platformy Azure, należy określić identyfikator subskrypcji istotne:
 
     ```bash
@@ -98,11 +99,11 @@ Usługa Azure Red Hat OpenShift wymaga skojarzonych dzierżawę usługi Azure Ac
 
 Jeśli nie masz usługi Azure AD do użycia jako dzierżawy dla klastra usługi Azure Red Hat OpenShift lub chcesz utworzyć dzierżawę do testowania, postępuj zgodnie z instrukcjami [utworzyć dzierżawę usługi Azure AD dla klastra usługi Azure Red Hat OpenShift](howto-create-tenant.md) przed Kontynuowanie z tego przewodnika.
 
-## <a name="create-an-azure-ad-application-object-and-user"></a>Utwórz obiekt aplikacji usługi Azure AD i użytkownika
+## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Utwórz użytkownika usługi Azure AD, grupy zabezpieczeń i aplikacji obiektu
 
-Azure Red Hat OpenShift musi mieć uprawnienia do wykonywania zadań w klastrze, takich jak Konfigurowanie magazynu. Te uprawnienia są reprezentowane przez [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) i są tworzone podczas rejestrowania aplikacji usługi Azure AD reprezentująca obciążenia ma być hostem na platformie Azure Red Hat OpenShift. Należy także utworzyć nowego użytkownika usługi Active Directory do testowania aplikacji działających w klastrze Azure Red Hat OpenShift.
+Azure Red Hat OpenShift musi mieć uprawnienia do wykonywania zadań w klastrze, takich jak Konfigurowanie magazynu. Te uprawnienia są reprezentowane przez [nazwy głównej usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Należy także utworzyć nowego użytkownika usługi Active Directory do testowania aplikacji działających w klastrze Azure Red Hat OpenShift.
 
-Postępuj zgodnie z instrukcjami w [utworzyć obiekt aplikacji usługi Azure AD i użytkownika](howto-aad-app-configuration.md) Dowiedz się, jak utworzyć jednostkę usługi, generowanie klienta wpisu tajnego i uwierzytelniania adres URL wywołania zwrotnego dla aplikacji i Utwórz nowego użytkownika usługi Active Directory do testowania.
+Postępuj zgodnie z instrukcjami w [utworzyć obiekt aplikacji usługi Azure AD i użytkownika](howto-aad-app-configuration.md) Aby utworzyć nazwę główną usługi, generowanie klienta wpisu tajnego i uwierzytelniania adres URL wywołania zwrotnego dla aplikacji i Utwórz nową grupę zabezpieczeń usługi Azure AD i użytkownika, aby uzyskać dostęp do klaster.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

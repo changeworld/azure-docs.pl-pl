@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: ca893670e01f4bccc211cd08064b6638e9224a9a
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 6d91f5e61dfd7c3cb4d1869edf0c6cb8c2c85190
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606790"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827499"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Tworzenie Centrum IoT przy użyciu dostawcy zasobów interfejsu API REST (.NET)
 
@@ -26,7 +26,7 @@ Możesz użyć [interfejs API REST dostawcy zasobów usługi IoT Hub](https://do
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Program Visual Studio 2015 lub Visual Studio 2017.
+* Program Visual Studio.
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2d01b74e7db275f4b2e3933415bbae40911b114b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399309"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602942"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Tworzenie funkcji dla danych w programie SQL Server przy użyciu języka SQL i Python
 W tym dokumencie przedstawiono sposób generowania funkcji dla danych przechowywanych w maszynę Wirtualną programu SQL Server na platformie Azure, ułatwiającą algorytmy wydajniej informacje z danych. Można użyć bazy danych SQL lub języka programowania, takich jak Python, aby wykonać to zadanie. Oba podejścia są przedstawione w tym artykule.
@@ -68,7 +68,7 @@ Poniżej przedstawiono krótki Podręcznik szerokości/długości geograficznej 
 * Znak wskazuje, czy możemy się północ lub południe, wschód lub zachód na całym świecie.
 * Wartość różną od zera setki cyfra wskazuje długość geograficzna, szerokość nie jest on używany.
 * Dziesiątki cyfrę daje możliwość około 1000 kilometrów. Daje ona przydatnych informacji o jakie kontynent lub ocean jesteśmy na.
-* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Wskazuje, około, jakie dużych stanu lub kraju, jesteśmy w stanie.
+* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Wskazuje, około, jakie dużych stanu lub kraju/regionu, jesteśmy w stanie.
 * Pierwsze miejsce dziesiętne, warto maksymalnie 11.1 km: można odróżnić, pozycja jeden duży kolumny city z sąsiednich Miasto dużych.
 * Drugie miejsce dziesiętne, warto maksymalnie 1.1 km: je oddzielić wieś jednego z następnej.
 * Warto do 110 m: można zidentyfikować, duże pole rolnicze lub campus instytucjonalnych jest trzeciego miejsca dziesiętnego.

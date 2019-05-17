@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924761"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827769"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -110,10 +110,11 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 10. Jeśli chcesz dostosować zdarzenia poddawane inspekcji, to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
 11. Po skonfigurowaniu ustawień inspekcji można włączyć funkcji wykrywania zagrożeń i skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń. Korzystając z wykrywania zagrożeń, otrzymujesz alerty proaktywne na nietypowe działania bazy danych, które mogą wskazywać potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
 
-
 > [!IMPORTANT]
->Włączanie inspekcji usługi Azure SQL Data Warehouse, lub na serwerze usługi Azure SQL Data Warehouse, **spowoduje w magazynie danych wznawiane**, nawet w przypadku, gdy wcześniej został wstrzymany. **Upewnij się, na wstrzymanie magazynu danych ponownie, po włączeniu inspekcji**. "
+> Włączenie inspekcji na wstrzymanie usługi Azure SQL Data Warehouse nie jest możliwe. Aby ją włączyć, anulować wstrzymanie magazynu danych.
 
+> [!WARNING]
+> Włączenie inspekcji na serwerze usługi Azure SQL Data Warehouse na nim **spowoduje on hurtowni danych wznowić i ponownie wstrzymane ponownie** który może być naliczane opłaty.
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
 

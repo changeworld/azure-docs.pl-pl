@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 78402d3e388f08eae6652859a71c93ff408a5b0d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f36658d57fb514ff279c39e9cb1644cf56341ec4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152989"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761833"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa sieci Azure
 W tym artykule omówiono zbiór najlepsze rozwiązania platformy Azure, aby zwiększyć bezpieczeństwo sieci. Następujące najlepsze rozwiązania są uzyskiwane z naszych doświadczeniach z sieci platformy Azure i procesy, przez klientów, takie jak samodzielnie.
@@ -129,7 +129,7 @@ W wielu organizacjach wybrana opcja hybrydowa trasy IT. Za pomocą hybrydowej IT
 
 W hybrydowych scenariuszy IT jest zazwyczaj pewien rodzaj łączności między środowiskami lokalnymi. Łączność między wieloma lokalizacjami umożliwia firmy do łączenia z jego sieciami lokalnymi sieciami wirtualnymi platformy Azure. Dostępne są dwa rozwiązania w zakresie połączeń obejmujących wiele lokalizacji:
 
-* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Jest to technologia zaufanej, niezawodnej i ustanowionych, ale połączenie odbywa się za pośrednictwem Internetu. Przepustowość jest ograniczone do maksymalnie około 200 MB/s. Sieci VPN typu lokacja lokacja to opcja pożądana w niektórych scenariuszach.
+* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Jest to technologia zaufanej, niezawodnej i ustanowionych, ale połączenie odbywa się za pośrednictwem Internetu. Przepustowość jest ograniczone do maksymalnie o 1,25 GB/s. Sieci VPN typu lokacja lokacja to opcja pożądana w niektórych scenariuszach.
 * **Azure ExpressRoute**. Firma Microsoft zaleca użycie [ExpressRoute](../expressroute/expressroute-introduction.md) dla łączności między środowiskami lokalnymi. Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami chmurowymi firmy Microsoft, takich jak Azure, usługi Office 365 i Dynamics 365. Usługa ExpressRoute jest dedykowany sieci WAN łącze między Twojej lokalizacji lokalnej lub dostawcy usług hostingowych programu Microsoft Exchange. Ponieważ jest to połączenie telco, dane nie są przesyłane przez internet, tak nie jest widoczne potencjalnych zagrożeń komunikację z Internetem.
 
 Lokalizacja połączenie usługi ExpressRoute może mieć wpływ na zapory wydajności, skalowalności, niezawodności i widoczność ruchu sieciowego. Należy wskazać, gdzie można zakończyć usługi ExpressRoute w istniejących sieci (lokalnej). Możesz:

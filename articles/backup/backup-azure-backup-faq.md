@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646748"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551377"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
 
-## <a name="recovery-services-vault"></a>Magazyn usługi Recovery Services
+## <a name="recovery-services-vault"></a>Magazyn usług Recovery Services
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Czy istnieje ograniczenie liczby magazynów, które można utworzyć w poszczególnych subskrypcjach platformy Azure?
 Tak. Możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na obsługiwany region usługi Azure Backup na subskrypcję. Jeśli potrzebna jest większa liczba magazynów, należy utworzyć dodatkową subskrypcję.
@@ -174,8 +174,8 @@ Nie. Czas odzyskania najstarszego i najnowszego punktu jest taki sam. Każdy pun
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Skoro każdy punkt odzyskiwania jest traktowany jak pełny punkt, czy ma to wpływ na całkowitą fakturowaną przestrzeń dyskową dla kopii zapasowych?
 Typowe produkty punktów długoterminowego przechowywania przechowują dane kopii zapasowych jako pełne punkty.
 
-    - Pełne punkty są *nieefektywne* z punktu widzenia magazynu, ale są łatwiejsze i szybsze do przywrócenia.
-    - Przyrostowe kopie są magazynu *wydajne* , ale wymagają przywrócenia łańcucha danych, co ma wpływ na czas odzyskiwania
+- Pełne punkty są *nieefektywne* z punktu widzenia magazynu, ale są łatwiejsze i szybsze do przywrócenia.
+- Przyrostowe kopie są magazynu *wydajne* , ale wymagają przywrócenia łańcucha danych, co ma wpływ na czas odzyskiwania
 
 Architektura magazynu usługi Azure Backup oferuje zalety obu rozwiązań dzięki optymalnemu przechowywaniu danych, umożliwiającemu szybkie ich przywrócenie, oraz niskim kosztom magazynowania. Zapewnia to efektywne wykorzystanie przepustowości ruchu przychodzącego i wychodzącego. Ilość pamięci masowej i czas potrzebny do odzyskania danych jest ograniczone do minimum. Dowiedz się więcej o [przyrostowe kopie zapasowe](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
 

@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/13/2018
+ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460063"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561338"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
-Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+
+Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje zarówno generacji 1 i generacji 2 maszyn wirtualnych w formacie pliku wirtualnego dysku twardego i ma stały rozmiar dysku. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) i [na platformie Azure, maszyny wirtualne 2 generacji](generation-2.md).
 
 Aby uzyskać więcej informacji o zasady pomocy technicznej dla maszyn wirtualnych platformy Azure, zobacz [pomocy technicznej oprogramowanie serwera firmy Microsoft dla maszyn wirtualnych platformy Microsoft](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -338,7 +339,7 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla poł
 ### <a name="install-windows-updates"></a>Instalowanie aktualizacji Windows
 Jest optymalną konfigurację **ma poziom poprawki maszyny r**. Jeśli nie jest to możliwe, upewnij się, że zainstalowano następujące aktualizacje:
 
-| Składnik               | Binarny         | Windows 7 z dodatkiem SP1, Windows Server 2008 R2 z dodatkiem SP1 | Windows 8,Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Wersja systemu Windows 10 w wersji 1607 systemu Windows Server 2016 1607 | Windows 10 w wersji 1703    | Windows Server 2016 systemu Windows 10 1709 w wersji 1709 | Windows Server 2016 systemu Windows 10 w wersji 1803 w wersji 1803 |
+| Składnik               | Binary         | Windows 7 z dodatkiem SP1, Windows Server 2008 R2 z dodatkiem SP1 | Windows 8,Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Wersja systemu Windows 10 w wersji 1607 systemu Windows Server 2016 1607 | Windows 10 w wersji 1703    | Windows Server 2016 systemu Windows 10 1709 w wersji 1709 | Windows Server 2016 systemu Windows 10 w wersji 1803 w wersji 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Magazyn                 | Disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -362,7 +363,7 @@ Jest optymalną konfigurację **ma poziom poprawki maszyny r**. Jeśli nie jest 
 |                         | tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Podstawowe                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| Rdzeń                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Usługi pulpitu zdalnego | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |

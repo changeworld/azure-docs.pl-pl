@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764722"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823547"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -48,7 +48,6 @@ Zasady dostępu warunkowego można przypisać do następujących aplikacji w chm
 - Microsoft Application Insights — analiza
 - Microsoft Azure Information Protection — [Dowiedz się więcej](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Interfejs Microsoft Azure Management - [Dowiedz się więcej](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
-- Microsoft Azure RemoteApp
 - Zarządzanie subskrypcją platformy Microsoft Azure
 - Microsoft Cloud App Security
 - Microsoft Commerce narzędzi portalu kontroli dostępu
@@ -167,7 +166,6 @@ To ustawienie ma wpływ na dostęp podjętych następujące aplikacje mobilne i 
 
 | Aplikacje klienckie | Usługa docelowa | Platforma |
 | --- | --- | --- |
-| Usługa Azure RemoteApp | Usługa Azure RemoteApp | Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
 | Aplikacja CRM Dynamics | Dynamics CRM | Windows 10, Windows 8.1, iOS i Android |
 | Poczta/kalendarz/osób aplikacji Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online | Windows 10 |
 | Zasady uwierzytelniania Wieloskładnikowego i lokalizacji dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane.| Wszystkie usługi Moje aplikacje usługi app service| Android i iOS |

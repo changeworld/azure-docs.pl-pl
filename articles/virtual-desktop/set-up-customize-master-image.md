@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 58471dc539f72c49b041638e928dda751f4bf5a2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: 9df4be5534a1cbe6aa4ffb9c60bb180fd4587d32
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410591"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551030"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
-W tym artykule poinformuje sposób przygotowania głównego obrazu wirtualnego dysku twardego (VHD) w celu przekazania na platformę Azure, w tym sposobu tworzenia maszyn wirtualnych (VM) i zainstalowanie i skonfigurowanie oprogramowania na nich. Te instrukcje dotyczą konfiguracji specyficznych dla Windows pulpitu wirtualnego (wersja zapoznawcza), który może być używany z istniejącymi procesami w Twojej organizacji.
+W tym artykule wyjaśniono, jak przygotować głównego obrazu wirtualnego dysku twardego (VHD) w celu przekazania na platformę Azure, w tym sposobu tworzenia maszyn wirtualnych (VM) i instalować oprogramowanie na nich. Te instrukcje dotyczą konfiguracji specyficznych dla Windows pulpitu wirtualnego (wersja zapoznawcza), który może być używany z istniejącymi procesami w Twojej organizacji.
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
@@ -24,11 +24,11 @@ Wiele sesji systemu Windows 10 Enterprise jest dostępna w galerii obrazów syst
 
 Pierwsza opcja jest aprowizowanie maszyny wirtualnej (VM) na platformie Azure, postępując zgodnie z instrukcjami w [Utwórz Maszynę wirtualną z obrazu zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed), a następnie przejdź do sekcji [przygotowania oprogramowania i instalacji](set-up-customize-master-image.md#software-preparation-and-installation).
 
-Drugą opcją jest do utworzenia obrazu lokalnie przez pobieranie obrazu, inicjowanie obsługi administracyjnej maszyny Wirtualnej funkcji Hyper-V i dostosowania jej do swoich potrzeb, które omówimy w poniższej sekcji.
+Drugą opcją jest do utworzenia obrazu lokalnie przez pobieranie obrazu, inicjowanie obsługi administracyjnej maszyny Wirtualnej funkcji Hyper-V i dostosowania jej do swoich potrzeb, które zostaną przedstawione w poniższej sekcji.
 
 ### <a name="local-image-creation"></a>Tworzenie obrazu lokalnego
 
-Po pobraniu obrazu w lokalizacji lokalnej, należy otworzyć **Menedżera funkcji Hyper-V** utworzyć maszynę Wirtualną z dyskiem VHD został skopiowany. Oto prosta wersja, ale można znaleźć bardziej szczegółowe instrukcje w [Utwórz maszynę wirtualną funkcji Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Po pobraniu obrazu w lokalizacji lokalnej, należy otworzyć **Menedżera funkcji Hyper-V** utworzyć maszynę Wirtualną z dyskiem VHD został skopiowany. Poniższe instrukcje dotyczą wersji proste, ale można znaleźć bardziej szczegółowe instrukcje w [Utwórz maszynę wirtualną funkcji Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
 
 Aby utworzyć Maszynę wirtualną za pomocą skopiowanego wirtualnego dysku twardego:
 
@@ -62,101 +62,11 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Przygotowanie oprogramowania i instalacji
 
-W tej sekcji opisano, jak przygotować i instalowanie usługi Office 365 ProPlus, OneDrive, FSLogix, usługa Windows Defender i innymi aplikacjami. Jeśli użytkownicy potrzebują dostępu do niektórych aplikacji biznesowych, zalecamy instalowanie po wykonaniu instrukcji w tej sekcji.
+W tej sekcji opisano, jak przygotować i zainstaluj FSLogix, usługa Windows Defender i innymi aplikacjami. 
 
-W tej sekcji założono, że mają podwyższony poziom dostępu na maszynie Wirtualnej, czy jest zainicjowany na platformie Azure lub Menedżera funkcji Hyper-V.
+Jeśli instalujesz Office 365 ProPlus oraz usługi OneDrive na maszynie Wirtualnej, zobacz [instalacji pakietu Office dla głównego obrazu wirtualnego dysku twardego](install-office-on-wvd-master-image.md). Skorzystaj z linku w następnych krokach tego artykułu, aby wrócić do tego artykułu i ukończyć wzorca procesu wirtualnego dysku twardego.
 
-### <a name="install-office-in-shared-computer-activation-mode"></a>Instalowanie pakietu Office w trybie Aktywacja współużytkowanego komputera
-
-Użyj [narzędzia wdrażania pakietu Office](https://www.microsoft.com/download/details.aspx?id=49117) do zainstalowania pakietu Office. Wiele sesji systemu Windows 10 Enterprise obsługuje tylko usługi Office 365 ProPlus, nie Perpetual 2019 pakietu Office.
-
-Narzędzia wdrażania pakietu Office wymaga pliku XML konfiguracji. Aby dostosować poniższego przykładu, zobacz [opcji konfiguracji dla narzędzia wdrażania pakietu Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
-
-Tej przykładowej konfiguracji XML udostępniliśmy będzie wykonywać następujące czynności:
-
-- Instalowanie pakietu Office z kanału dla niejawnych testerów i dostarczać aktualizacje z kanału dla niejawnych testerów, gdy są one wykonywane.
-- Architektura użycia x64.
-- Wyłącz Aktualizacje automatyczne.
-- Instalowanie programu Visio i projektu.
-- Usuń wszystkie istniejące instalacje pakietu Office, a następnie przeprowadzić migrację ustawień.
-- Włącz komputer współużytkowany licencjonowania dla operacji w środowisku serwera terminali.
-
-Oto, co nie zrobi tej przykładowej konfiguracji XML:
-
-- Instalację programu Skype dla firm
-- Instalowanie usługi OneDrive w trybie użytkownika. Aby dowiedzieć się więcej, zobacz [zainstalować usługi OneDrive w trybie poszczególnych komputerów](#install-onedrive-in-per-machine-mode).
-
->[!NOTE]
->Licencjonowanie komputerów udostępnione można skonfigurować za pomocą obiektów zasad grupy (GPO) lub ustawienia rejestru. Obiekt zasad grupy znajduje się w **konfiguracji komputera\\zasady\\Szablony administracyjne\\Microsoft Office 2016 (komputer)\\ustawienia licencjonowania**
-
-Narzędzia wdrażania pakietu Office zawiera setup.exe. Aby zainstalować pakiet Office, uruchom następujące polecenie w wierszu polecenia:
-
-```batch
-Setup.exe /configure configuration.xml
-```
-
-#### <a name="sample-configurationxml"></a>Przykładowy konfiguracja.XML
-
-Poniższy przykładowy plik XML zainstaluje wydania dla niejawnych testerów, znana także jako testerom szybkie lub dla niejawnych testerów Main.
-
-```xml
-<Configuration>
-    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
-        <Product ID="O365ProPlusRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Groove" />
-            <ExcludeApp ID="Lync" />
-            <ExcludeApp ID="OneDrive" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-        <Product ID="VisioProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" /> 
-        </Product>
-        <Product ID="ProjectProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-    </Add>
-    <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
-    <Display Level="None" AcceptEULA="TRUE" />
-    <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
-    <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
-    <Property Value="1" Name="SharedComputerLicensing"/>
-    <Property Value="TRUE" Name="PinIconsToTaskbar"/>
-</Configuration>
-```
-
->[!NOTE]
->Zespół usługi Office zaleca się za pomocą 64-bitowej instalacji dla **OfficeClientEdition** parametru.
-
-Po zainstalowaniu pakietu Office, należy zaktualizować domyślne zachowanie pakietu Office. Uruchom następujące polecenia, pojedynczo lub w pliku wsadowym, aby zaktualizować zachowanie.
-
-```batch
-rem Mount the default user registry hive
-reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
-rem Must be executed with default registry hive mounted.
-reg add HKU\TempDefault\SOFTWARE\Policies\Microsoft\office\16.0\common /v InsiderSlabBehavior /t REG_DWORD /d 2 /f
-rem Set Outlook's Cached Exchange Mode behavior
-rem Must be executed with default registry hive mounted.
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v enable /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v syncwindowsetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSettingMonths  /t REG_DWORD /d 1 /f
-rem Unmount the default user registry hive
-reg unload HKU\TempDefault
-
-rem Set the Office Update UI behavior.
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideupdatenotifications /t REG_DWORD /d 1 /f
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
-```
+Jeśli użytkownicy potrzebują dostępu do niektórych aplikacji biznesowych, zalecamy instalowanie po wykonaniu instrukcji w tej sekcji.
 
 ### <a name="disable-automatic-updates"></a>Wyłącz Aktualizacje automatyczne
 
@@ -179,63 +89,13 @@ Uruchom następujące polecenie, aby określić układ Start dla komputerów z s
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
-### <a name="install-onedrive-in-per-machine-mode"></a>Instalowanie usługi OneDrive w trybie poszczególnych komputerów
-
-OneDrive jest zazwyczaj instalowana dla poszczególnych użytkowników. W tym środowisku, należy go zainstalować na maszynie.
-
-Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie poszczególnych komputerów:
-
-1. Najpierw utwórz lokalizację w której etap Instalatora usługi OneDrive. Folder na dysku lokalnym lub [\\\\unc] (file://unc) znajduje się w dobrym stanie.
-
-2. Pobierz OneDriveSetup.exe do lokalizacji przygotowanych za pomocą tego łącza: <https://aka.ms/OneDriveWVD-Installer>
-
-3. Po zainstalowaniu pakietu office z usługą OneDrive, pomijając  **\<ExcludeApp ID = "OneDrive" /\>**, odinstaluj wszelkie istniejące instalacje na użytkownika OneDrive z wiersza polecenia z podwyższonym poziomem uprawnień, uruchamiając następujące polecenie:
-    
-    ```batch
-    "[staged location]\OneDriveSetup.exe" /uninstall
-    ```
-
-4. Uruchom następujące polecenie z wiersza polecenia z podwyższonym poziomem uprawnień, aby ustawić **AllUsersInstall** wartości rejestru:
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
-    ```
-
-5. Uruchom następujące polecenie, aby zainstalować usługi OneDrive w trybie poszczególnych komputerów:
-
-    ```batch
-    Run "[staged location]\OneDriveSetup.exe" /allusers
-    ```
-
-6. Uruchom następujące polecenie, aby skonfigurować usługi OneDrive do uruchomienia podczas logowania dla wszystkich użytkowników:
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
-    ```
-
-7. Włącz **dyskretnie skonfigurować konto użytkownika** , uruchamiając następujące polecenie.
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
-    ```
-
-8. Przekierowywanie i Przenieś Windows znanych folderów w usłudze OneDrive, uruchamiając następujące polecenie.
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
-    ```
-
-### <a name="teams-and-skype"></a>Zespoły i Skype
-
-Windows pulpitu wirtualnego nie obsługuje oficjalnie programu Skype dla firm i zespołów.
-
 ### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profil użytkownika (FSLogix)
 
 Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami [skonfiguruj udział profilu użytkownika dla puli hosta](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Możesz przetestować funkcje FSLogix kontener za pomocą [ten przewodnik Szybki Start](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
 
 ### <a name="configure-windows-defender"></a>Konfigurowanie usługi Windows Defender
 
-Jeśli usługa Windows Defender jest skonfigurowana w maszynie Wirtualnej, upewnij się, że jej została skonfigurowana do skanowania nie całą zawartość plików VHD i VHDX podczas dołączania takie same.
+Jeśli usługa Windows Defender jest skonfigurowana w maszynie Wirtualnej, upewnij się, że jej została skonfigurowana do skanowania nie całą zawartość plików VHD i VHDX podczas załącznika.
 
 Ta konfiguracja tylko usuwa skanowanie plików VHD i VHDX podczas załącznik, ale nie mają wpływu na skanowanie w czasie rzeczywistym.
 
@@ -308,7 +168,7 @@ W tym artykule nie opisano, jak skonfigurować język i wsparcie regionalne. Aby
 W tej sekcji omówiono aplikacji i konfiguracji systemu operacyjnego. Wszystkie konfiguracje w tej sekcji odbywa się za pośrednictwem wpisów rejestru, które mogą być wykonywane przez wiersza polecenia i narzędzia regedit.
 
 >[!NOTE]
->Najlepsze rozwiązania można wdrożyć w konfiguracji za pomocą obiektów zasad ogólnych (GPO) lub importuje rejestru. Administrator może wybrać jedną z opcji na podstawie wymagań swojej organizacji.
+>Najlepsze rozwiązania można wdrożyć w konfiguracji za pomocą obiektów zasad grupy (GPO) lub importuje rejestru. Administrator może wybrać jedną z opcji na podstawie wymagań swojej organizacji.
 
 W przypadku opinii centrum zbierania danych telemetrycznych na wiele sesji systemu Windows 10 Enterprise uruchom następujące polecenie:
 

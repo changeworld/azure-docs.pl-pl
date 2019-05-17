@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 5/10/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919093"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544474"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Omówienie ##
@@ -26,8 +26,8 @@ W tym artykule przedstawiono sposób tworzenia grup i zarządzanie nimi akcji w 
 Każda akcja składa się z następującymi właściwościami:
 
 * **Nazwa**: Unikatowy identyfikator w obrębie grupy akcji.  
-* **Typ akcji**: Akcja została wykonana. Przykłady obejmują wysyłanie pocztą e-mail wywołanie, wiadomość SMS, głos; lub różnego rodzaju akcje automatyczne wyzwalanie. Zobacz typy w dalszej części tego artykułu. 
-* **Szczegóły**: Odpowiednimi szczegółami, które różnią się zależnie od *typ akcji*. 
+* **Typ akcji**: Akcja została wykonana. Przykłady obejmują wysyłanie pocztą e-mail wywołanie, wiadomość SMS, głos; lub różnego rodzaju akcje automatyczne wyzwalanie. Zobacz typy w dalszej części tego artykułu.
+* **Szczegóły**: Odpowiednimi szczegółami, które różnią się zależnie od *typ akcji*.
 
 Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager grupy akcji](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
@@ -69,7 +69,7 @@ Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monito
 > [!NOTE]
 > Zobacz [limity usług subskrypcji do monitorowania](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) dla ograniczeń numerycznych na każdym z poniższych elementów.  
 
-**Aplikacja platformy Azure wypychania** — mogą mieć ograniczoną liczbę akcji aplikacji platformy Azure w grupy akcji. W tej chwili akcji aplikacji platformy Azure obsługuje tylko ServiceHealth alertów. Inne typu alertu zostaną zignorowane. Zobacz [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+**Aplikacja platformy Azure wypychania** — może być ograniczona liczba akcji aplikacji platformy Azure w grupy akcji.
 
 **Adres e-mail** — wiadomości E-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie wiadomości e-mail jest prawidłowo skonfigurowany
 - azure-noreply@microsoft.com
@@ -101,6 +101,7 @@ Zakresy adresów IP źródła
  - 13.106.38.148
  - 13.106.57.196
  - 52.244.68.117
+ - 52.244.65.137
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

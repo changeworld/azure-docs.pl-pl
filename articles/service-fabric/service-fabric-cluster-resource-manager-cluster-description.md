@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ff291bda87ca4b2b4055e36989b035cf410b3b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 082abd89cd84fc34180f333b54664d7dddfa0ccf
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744310"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561209"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klaster usługi Service fabric
 Menedżer zasobów klastra usługi Service Fabric udostępnia kilka mechanizmów do opisywania klastra. Podczas wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usług uruchomionych w klastrze. Wymuszając te reguły istotne, również próbuje zoptymalizować zużycie zasobów w klastrze.
@@ -33,7 +33,7 @@ Menedżer zasobów klastra obsługuje kilka funkcji, które opisują klastra:
 * Węzeł pojemności
 
 ## <a name="fault-domains"></a>Domeny błędów
-Domena błędów to dowolny obszar skoordynowanego awarii. Jedna maszyna jest domena błędów (ponieważ jest ona może zakończyć się niepowodzeniem na swój własny dla różnych przyczyn, na wypadek awarii zasilania na awarie dysku zły oprogramowania układowego kart Sieciowych). Maszyny podłączone do tego samego przełącznika Ethernet znajdują się w tej samej domenie błędów, jak maszyn udostępniania jednego źródła zasilania lub w obrębie jednej lokalizacji. Ponieważ fizycznych dla błędów sprzętu nakładają się na siebie, oraz domen błędów są z natury hierarchiczna i są reprezentowane jako identyfikatory URI w usłudze Service Fabric.
+Domena błędów to dowolny obszar skoordynowanego awarii. Jedna maszyna jest domena błędów (ponieważ jest ona może zakończyć się niepowodzeniem na swój własny dla różnych przyczyn, na wypadek awarii zasilania na awarie dysku zły oprogramowania układowego kart Sieciowych). Maszyny podłączone do tego samego przełącznika Ethernet znajdują się w tej samej domenie błędów, jak maszyn udostępniania jednego źródła zasilania lub w obrębie jednej lokalizacji. Ponieważ fizycznych dla błędów sprzętu nakładają się na siebie, oraz domen błędów są hierarchiczne założenia i są reprezentowane jako identyfikatory URI w usłudze Service Fabric.
 
 Należy pamiętać, że domen błędów są prawidłowo skonfigurowane, ponieważ usługa Service Fabric używa tych informacji do bezpiecznego umieść usług. Usługa Service Fabric nie chcesz umieścić usług w taki sposób, że utraty domenę błędów (przyczyną niepowodzenia niektórych składników) powoduje, że usługi przejść w dół. Na platformie Azure środowisko usługi Service Fabric używa informacji o domenie błędów oferowanych przez środowisko poprawnie skonfigurować węzły w klastrze w Twoim imieniu. Dla usługi Service Fabric autonomicznej domeny błędów są definiowane w czasie, że klaster jest skonfigurowany 
 
@@ -95,13 +95,17 @@ Nie ma żadnych rzeczywistych limitu całkowitą liczbę błędów i domenach ua
 ![Błędów i domeny uaktualnień układów][Image4]
 </center>
 
-Ma nie najlepsze odpowiedzi którego układu, aby wybrać, każdy z nich ma kilka zalet i wad. Na przykład 1FD:1UD model jest prosta konfiguracja. Wartość 1 na model węzła do domeny uaktualnienia jest najbardziej przypomina osób, które są używane do. Podczas uaktualniania każdego węzła jest aktualizowany niezależnie. Jest to podobne do jak małe zestawy maszyn zostały uaktualnione ręcznie w przeszłości. 
+Ma nie najlepsze odpowiedzi którego układu, aby wybrać, każdy z nich ma kilka zalet i wad. Na przykład 1FD:1UD model jest prosta konfiguracja. Wartość 1 na model węzła do domeny uaktualnienia jest najbardziej przypomina osób, które są używane do. Podczas uaktualniania każdego węzła jest aktualizowany niezależnie. Jest to podobne do jak małe zestawy maszyn zostały uaktualnione ręcznie w przeszłości.
 
 Najbardziej typowe model jest sama macierzy, gdzie domenami błędów i domenach uaktualniania tworzą tabelę, a węzły są umieszczane uruchamianie wzdłuż przekątnej. Jest to model używany domyślnie w klastrach usługi Service Fabric na platformie Azure. W przypadku klastrów z wieloma węzłami wszystko, co kończy się wyglądająca jak powyższy wzorzec gęstą macierzy.
 
+> [!NOTE]
+> Klastry usługi Service Fabric hostowane na platformie Azure nie obsługują zmiany strategii domyślnej. Tylko klastry autonomiczne oferują tego dostosowania.
+>
+
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Ograniczenia w domenach błędów i domeny uaktualnienia i wynikowe zachowania
 ### <a name="default-approach"></a>*Metody domyślne*
-Domyślnie Menedżer zasobów klastra temu usługi są równoważone w domenach błędów i domenach uaktualniania. Jest to modelowane jako [ograniczenie](service-fabric-cluster-resource-manager-management-integration.md). Stany ograniczenie domenach błędów i domeny uaktualnienia: "Partycja danej usługi, nigdy nie należy różnica większa niż jeden liczby obiektów usługi (repliki usługi stanowej lub wystąpień o bezstanowa usługa) między dwiema domenami, w tym samym poziomie hierarchii". Załóżmy, że to ograniczenie daje gwarancję "maksymalną różnicę". Ograniczenie domenach błędów i domeny uaktualnienia zapobiega niektórych przenosi lub ustalenia, które naruszają reguły podanej powyżej. 
+Domyślnie Menedżer zasobów klastra temu usługi są równoważone w domenach błędów i domenach uaktualniania. Jest to modelowane jako [ograniczenie](service-fabric-cluster-resource-manager-management-integration.md). Stany ograniczenie domenach błędów i domeny uaktualnienia: "Partycja danej usługi, nigdy nie należy różnica większa niż jeden liczby obiektów usługi (repliki usługi stanowej lub wystąpień o bezstanowa usługa) między dwiema domenami, w tym samym poziomie hierarchii". Załóżmy, że to ograniczenie daje gwarancję "maksymalną różnicę". Ograniczenie domenach błędów i domeny uaktualnienia zapobiega niektórych przenosi lub ustalenia, które naruszają reguły podanej powyżej.
 
 Przyjrzyjmy się jednym z przykładów. Załóżmy, że istnieje klastra z sześciu węzłów, skonfigurowany z pięcioma domenami błędów i 5 domenami uaktualnienia.
 

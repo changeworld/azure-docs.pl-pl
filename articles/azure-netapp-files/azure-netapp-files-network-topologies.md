@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 2afd5f0a574fd15c4327b141901d2651dbe2b9e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524238"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826445"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -42,7 +42,7 @@ Poniższe funkcje są obecnie obsługiwane dla usługi Azure Files NetApp:
 
 Następujące ograniczenia sieciowe dotyczące usługi Azure Files NetApp:
 
-* Liczba adresów IP z sieci wirtualnej (w tym wirtualne sieci równorzędne) nawiązywania połączenia z woluminu w sieci wirtualnej nie przekracza 1000.
+* Liczba maszyn wirtualnych, które można nawiązać połączenia z woluminów (z sieci wirtualnej lub w wirtualnych sieciach równorzędnych) nie może przekraczać 1000.
 * W każdej sieci wirtualnej Azure Virtual Network (VNet) można delegować tylko jedną podsieć do usługi Azure NetApp Files.
 
 

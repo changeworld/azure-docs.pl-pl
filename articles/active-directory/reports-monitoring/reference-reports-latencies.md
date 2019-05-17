@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285180"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594019"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Usługa Azure Active Directory reporting opóźnienia
 
@@ -41,10 +41,10 @@ W poniższej tabeli wymieniono opóźnienie dotycząca raporty aktywności.
 > **Czas oczekiwania (95. percentyl)** odnosi się do czasu za pomocą którego 95% dzienników jest informowany, i **opóźnienie (99. percentyl)** odnosi się do czasu raportowane 99% dzienniki. 
 >
 
-| Raport | Czas oczekiwania (95. percentyl) |Opóźnienie (99. percentyl)|Zakres czasu, w którym będą raportowane dzienników|
-| :-- | --- | --- | --- |
-| Dzienniki inspekcji | 2 min  | 5 min  | 2 do 60 minut. |
-| Logowania | 2 min  | 5 min | 2 – 120 minut. |
+| Zgłoś | Czas oczekiwania (95. percentyl) |Opóźnienie (99. percentyl)|
+| :-- | --- | --- |
+| Dzienniki inspekcji | 2 min  | 5 min  |
+| Logowania | 2 min  | 5 min |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Termin może wyświetlać danych działania po otrzymaniu licencji premium?
 
@@ -59,7 +59,7 @@ Istnieją dwa typy raportów dotyczących zabezpieczeń:
 
 W poniższej tabeli wymieniono opóźnienie dotycząca raporty dotyczące zabezpieczeń.
 
-| Raport | Minimalne | Średnia | Maksimum |
+| Zgłoś | Minimum | Średnia | Maksimum |
 | :-- | --- | --- | --- |
 | Narażeni użytkownicy          | 5 minut   | 15 minut  | 2 godziny  |
 | Ryzykowne logowania         | 5 minut   | 15 minut  | 2 godziny  |
@@ -70,14 +70,14 @@ Usługa Azure AD używa adaptacyjnych algorytmów uczenia maszynowego i algorytm
 
 Poniższa tabela zawiera informacje opóźnienie dla zdarzeń o podwyższonym ryzyku.
 
-| Raport | Minimalne | Średnia | Maksimum |
+| Zgłoś | Minimum | Średnia | Maksimum |
 | :-- | --- | --- | --- |
 | Logowania z anonimowych adresów IP |5 minut |15 minut |2 godziny |
 | Logowania z nieznanych lokalizacji |5 minut |15 minut |2 godziny |
 | Użytkownicy z ujawnionymi poświadczeniami |2 godziny |4 godziny |8 godzin |
 | Niemożliwa podróż do nietypowych lokalizacji |5 minut |1 godzina |8 godzin  |
 | Logowania z zainfekowanych urządzeń |2 godziny |4 godziny |8 godzin  |
-| Logowania z adresów IP związanych z podejrzanymi działaniami |2 godziny |4 godziny |8 godzin  |
+| Logowania z adresów IP z podejrzaną aktywnością |2 godziny |4 godziny |8 godzin  |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

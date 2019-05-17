@@ -5,20 +5,17 @@ services: ''
 author: KumudD
 ms.service: ''
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/09/2019
 ms.author: ''
 ms.custom: include file
-ms.openlocfilehash: 301ea649f127be1650b0d2236421d9110f19b50e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 37748258b1e9b7f922934edd715202cacbb793e0
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554257"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65754066"
 ---
-| Zasób | Limit domyślny |
+| Resource | Domyślne/maksymalny limit |
 | --- | --- |
-| Profilów na subskrypcję |200<sup>1</sup> |
+| Profilów na subskrypcję |200 |
 | Punktów końcowych dla profilu |200 |
-
-<sup>1</sup>Jeśli trzeba zwiększyć te limity, skontaktuj się z działem pomocy technicznej systemu Azure.
-

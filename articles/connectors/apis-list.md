@@ -8,26 +8,33 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
-ms.date: 08/23/2018
-ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/08/2019
+ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722989"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551862"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Łączniki dla usługi Azure Logic Apps
 
 Łączniki udostępniają szybki dostęp z usługi Azure Logic Apps do zdarzeń, danych i akcje w innych aplikacjach, usług, systemów, protokołów i platform. Za pomocą łączników w aplikacjach logiki, możesz rozszerzyć możliwości dla aplikacji w chmurze i lokalnych do wykonywania zadań z danymi, które tworzysz i masz już.
 
-Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft.com/connectors), w tym artykule opisano popularnych i najczęściej używanych łączników tysiące aplikacji i milionach wykonań pomyślnie są używane do przetwarzania danych i informacji. Aby znaleźć pełną listę łączników i informacje referencyjne poszczególnych łączników, takich jak wyzwalacze, akcje i ograniczeń, zapoznaj się z strony podręcznika łącznika, w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). Ponadto Dowiedz się więcej o [wyzwalacze i akcje](#triggers-actions).
+Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft.com/connectors), w tym artykule opisano popularnych i najczęściej używanych łączników tysiące aplikacji i milionach wykonań pomyślnie są używane do przetwarzania danych i informacji. Aby znaleźć pełną listę łączników i informacje referencyjne poszczególnych łączników, takich jak wyzwalacze, akcje i ograniczeń, zapoznaj się z strony podręcznika łącznika, w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). Ponadto Dowiedz się więcej o [wyzwalacze i akcje](#triggers-actions), [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md), i [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 > [!NOTE]
 > Aby zintegrować z usługą lub interfejsu API, który nie ma łącznika, można bezpośrednio wywołać usługę za pośrednictwem protokołu, takich jak HTTP lub utworzyć [łącznika niestandardowego](#custom).
 
 Łączniki są dostępne jako wbudowane wyzwalaczy i akcji lub zarządzanych łączników:
 
-* [**Elementy wbudowane**](#built-ins): Te wbudowane akcje i wyzwalacze są "natywnego" do usługi Azure Logic Apps oraz pomagają Ci tworzyć aplikacje logiki, które systemem niestandardowe harmonogramy, komunikować się z innych punktów końcowych, otrzymywanie i odpowiadanie na żądania i wywoływać funkcje platformy Azure, usługi Azure API Apps (aplikacje sieci Web), z własnymi interfejsami API zarządzane i opublikowanych przy użyciu usługi Azure API Management i zagnieżdżone logic apps, które mogą odbierać żądania. Możesz również użyć wbudowane akcje, które pomagają organizować kontrolowania przepływu pracy aplikacji logiki i także pracować z danymi.
+* [**Elementy wbudowane**](#built-ins): Te wbudowane wyzwalacze i akcje są "natywnego" do usługi Azure Logic Apps oraz pomagają Ci tworzyć aplikacje logiki, które systemem niestandardowe harmonogramy, komunikować się z innych punktów końcowych, otrzymywanie i odpowiadanie na żądania i wywoływać funkcje platformy Azure, usługi Azure API Apps (aplikacje sieci Web), z własnymi interfejsami API zarządzane i opublikowanych przy użyciu usługi Azure API Management i zagnieżdżone logic apps, które mogą odbierać żądania. Możesz również użyć wbudowane akcje, które pomagają organizować kontrolowania przepływu pracy aplikacji logiki i także pracować z danymi.
+
+  > [!NOTE]
+  > Aplikacje Logic apps w ramach [środowiska integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) można uzyskać dostęp do zasobów w sieci wirtualnej platformy Azure.
+  > Użycie opcji ISE, wbudowane wyzwalacze i akcje wyświetlający **Core** etykiety uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Logic apps, wbudowane wyzwalaczy i wbudowane akcje, które są uruchamiane w użytkowanie ISE planu cenowego różni się od planu cenowego na podstawie użycia.
+  >
+  > Aby uzyskać więcej informacji na temat tworzenia ISEs zobacz [Połącz z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
+  > Aby uzyskać więcej informacji o cenach, zobacz [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md).
 
 * **Zarządzane łączniki**: Wdrożone i zarządzane przez firmę Microsoft, te łączniki udostępniają wyzwalacze i akcje do uzyskiwania dostępu do usług w chmurze, w systemach lokalnych lub obydwu, w tym usługi Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint i więcej. Niektóre łączniki specjalnie obsługują scenariusze komunikacji programu business-to-business (B2B) i wymagają [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) połączony do aplikacji logiki. Przed użyciem niektórych łączników, być może trzeba najpierw utworzyć połączenia, które są zarządzane przez usługę Azure Logic Apps. 
 
@@ -36,7 +43,7 @@ Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft
 
   Łączniki są klasyfikowane jako Standard lub Enterprise. 
   [Łączniki dla przedsiębiorstw](#enterprise-connectors) zapewniają dostęp do systemów przedsiębiorstwa, takich jak SAP, IBM MQ i IBM 3270 za dodatkową opłatą. Aby ustalić, czy łącznik jest wersja Standard lub Enterprise, zobacz szczegóły techniczne w stronie referencyjnej każdy łącznik w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). 
-  
+
   Łączników można również zidentyfikować za pomocą tych kategorii, mimo że niektóre łączniki mogą przechodzić przez wiele kategorii. 
   Na przykład SAP jest łącznik przedsiębiorstwa i lokalny łącznik:
 
@@ -47,8 +54,15 @@ Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft
   | [**Łączniki konta integracji**](#integration-account-connectors) | Dostępne w przypadku tworzenia i opłaty za konto integracji, przekształcenie tych łączników i Walidacja danych XML, kodować i dekodować pliki proste i przetwarzania business-to-business (B2B) komunikatów AS2, EDIFACT i X12 protokołów. |
   |||
 
-> [!NOTE]
-> Aby uzyskać pełną listę łączników i informacje referencyjne poszczególnych łączników, np. wszelkie wyzwalacze i akcje, które są definiowane przez interfejs OpenAPI (dawniej Swagger) opis, a także żadnych limitów można znaleźć pełną listę w obszarze [omówienie łączników ](/connectors/). Aby uzyskać informacje o cenach, zobacz [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/) i [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md). 
+  > [!NOTE]
+  > Aplikacje Logic apps w ramach [środowiska integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) można uzyskać dostęp do zasobów w sieci wirtualnej platformy Azure. Użycie opcji ISE, Standard i Enterprise łączników wyświetlający **ISE** etykiety uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Łączniki, które nie są wyświetlane etykiety ISE Uruchom w usłudze Logic Apps globalnego.
+  >
+  > Dla systemów lokalnych, które są połączone z siecią wirtualną platformy Azure wstrzyknąć Twojego środowiska ISE do tej sieci, dzięki czemu aplikacje logiki można uzyskać dostęp do tych systemów za pomocą łącznika, który ma **ISE** etykietę, akcji HTTP lub [łącznika niestandardowego](#custom). Logic apps i łączników, działających w użytkowanie ISE cenową planu różni się od planu cenowego na podstawie użycia. 
+  >
+  > Aby uzyskać więcej informacji na temat tworzenia ISEs zobacz [Połącz z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+  > Aby uzyskać więcej informacji o cenach, zobacz [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md).
+
+  Aby uzyskać pełną listę łączników i informacje referencyjne poszczególnych łączników, np. wszelkie wyzwalacze i akcje, które są definiowane przez interfejs OpenAPI (dawniej Swagger) opis, a także żadnych limitów można znaleźć pełną listę w obszarze [omówienie łączników ](/connectors/). Aby uzyskać informacje o cenach, zobacz [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md), i [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 <a name="built-ins"></a>
 
@@ -66,7 +80,7 @@ Usługa Logic Apps oferuje wbudowane wyzwalaczy i akcji, aby można było utworz
 
 ### <a name="control-workflow"></a>Kontroli przepływu pracy
 
-Poniżej przedstawiono wbudowane akcje umożliwiające tworzenie struktury i kontrolowanie akcji w przepływie pracy aplikacji logiki:
+Usługa Logic Apps udostępnia wbudowane akcje umożliwiające tworzenie struktury i kontrolowanie akcji w przepływie pracy aplikacji logiki:
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -77,7 +91,7 @@ Poniżej przedstawiono wbudowane akcje umożliwiające tworzenie struktury i kon
 
 ### <a name="manage-or-manipulate-data"></a>Zarządzanie i manipulowanie danymi
 
-Poniżej przedstawiono wbudowane akcje umożliwiające pracę z danych wyjściowych danych i ich formatów:  
+Usługa Logic Apps udostępnia wbudowane akcje umożliwiające pracę z danych wyjściowych danych i ich formatów:  
 
 |   |   | 
 |---|---| 
@@ -90,7 +104,7 @@ Poniżej przedstawiono wbudowane akcje umożliwiające pracę z danych wyjściow
 
 ## <a name="managed-api-connectors"></a>Zarządzane łączniki interfejsu API
 
-Poniżej przedstawiono więcej popularnych łączników do automatyzowania zadań, procesy i przepływy pracy za pomocą tych usług lub systemy:
+Usługa Logic Apps oferuje te popularne łączniki standardowe do automatyzowania zadań, procesy i przepływy pracy za pomocą tych usług lub systemów.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -100,25 +114,25 @@ Poniżej przedstawiono więcej popularnych łączników do automatyzowania zada�
 | [![Ikona interfejsu API][dynamics-365-icon]<br/>**Dynamics 365<br/>CRM Online**][dynamics-365-doc] | Łączenie się ze swoim kontem Dynamics 365, dzięki czemu można tworzyć i zarządzać rekordami, elementy i inne. | [![Ikona interfejsu API][ftp-icon]<br/>**FTP**][ftp-doc] | Łączenie z serwerami FTP, w której będziesz mieć dostęp z Internetu, aby można było pracować z plikami i folderami. | 
 | [![Ikona interfejsu API][salesforce-icon]<br/>**Salesforce**][salesforce-doc] | Nawiąż połączenie z kontem usługi Salesforce, dzięki czemu można tworzyć i zarządzać elementy, takie jak rekordy, zadania, obiektów i. | [![Ikona interfejsu API][twitter-icon]<br/>**w usłudze Twitter**][twitter-doc] | Nawiąż połączenie z kontem usługi Twitter, więc można zarządzać tweetów, obserwatorów, osi czasu i nie tylko. Zapisz swoje tweety SQL, program Excel i programu SharePoint. | 
 | [![Ikona interfejsu API][azure-event-hubs-icon]<br/>**usługi Azure Event Hubs**][azure-event-hubs-doc] | Używanie i publikowania zdarzeń za pośrednictwem Centrum zdarzeń. Na przykład pobierać dane wyjściowe z aplikacji logiki z usługą Event Hubs, a następnie wysyłać dane wyjściowe do dostawcy analiz w czasie rzeczywistym. | [![Ikona interfejsu API][azure-event-grid-icon]<br/>**usługi Azure Event**</br>**siatki**][azure-event-grid-doc] | Monitorowanie zdarzeń publikowanych przez usługę Event Grid, na przykład, gdy zmienią się zasoby platformy Azure lub innych firm. | 
-||||| 
+|||||
 
 <a name="on-premises-connectors"></a>
 
 ## <a name="on-premises-connectors"></a>Łączniki lokalne 
 
-Poniżej przedstawiono niektóre powszechnie używane łączniki, które zapewniają dostęp do danych i zasobów w systemach lokalnych. Przed utworzeniem połączenia do systemu lokalnego, musisz najpierw [pobrać, zainstalować i skonfigurować lokalną bramę danych][gateway-doc]. Ta brama zapewnia bezpieczny kanał komunikacyjny bez konieczności konfigurowania infrastruktury sieciowej to konieczne. 
+Poniżej przedstawiono niektóre powszechnie używane łączników standardowych, które Logic Apps zapewnia dostęp do danych i zasobów, w systemach lokalnych. Przed utworzeniem połączenia do systemu lokalnego, musisz najpierw [pobrać, zainstalować i skonfigurować lokalną bramę danych][gateway-doc]. Ta brama zapewnia bezpieczny kanał komunikacyjny bez konieczności konfigurowania infrastruktury sieciowej to konieczne. 
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
 | ![Ikona interfejsu API][biztalk-server-icon]<br/>**BizTalk**</br> **Serwer** | [![Ikona interfejsu API][file-system-icon]<br/>**pliku</br> systemu**][file-system-doc] | [![Ikona interfejsu API][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![Ikona interfejsu API][ibm-informix-icon]<br/>**IBM** </br> **Informix**][ibm-informix-doc] | ![Ikona interfejsu API][mysql-icon]<br/>**MySQL** | 
 | [![Ikona interfejsu API][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![Ikona interfejsu API][postgre-sql-icon]<br/>**PostgreSQL** | [![Ikona interfejsu API][sharepoint-server-icon]<br/>**SharePoint</br> serwera**][sharepoint-server-doc] | [![Ikona interfejsu API][sql-server-icon]<br/>**SQL</br> serwera**][sql-server-doc] | ![Ikona interfejsu API][teradata-icon]<br/>**Teradata** | 
-||||| 
+|||||
 
 <a name="integration-account-connectors"></a>
 
-## <a name="integration-account-connectors"></a>Łączniki konta integracji 
+## <a name="integration-account-connectors"></a>Łączniki konta integracji
 
-Poniżej przedstawiono łączniki do tworzenia rozwiązań biznesowych (B2B) za pomocą aplikacji logiki, podczas tworzenia i płacić za [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), który jest dostępny za pośrednictwem pakietu integracji przedsiębiorstw (EIP) na platformie Azure. Przy użyciu tego konta można tworzyć i przechowywanie artefaktów B2B, takich jak handlowymi partnerów, umów, mapy, schematów, certyfikaty i tak dalej. Aby użyć tych artefaktów, należy skojarzyć aplikacji logiki przy użyciu konta integracji. Jeśli używasz obecnie programu BizTalk Server, te łączniki mogą wydawać się dobrze znanych już.
+Usługa Logic Apps udostępnia łączniki standardowe do tworzenia rozwiązań biznesowych (B2B) za pomocą aplikacji logiki, podczas tworzenia i płacić za [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), który jest dostępny za pośrednictwem pakietu integracji przedsiębiorstw (EIP) na platformie Azure. Przy użyciu tego konta można tworzyć i przechowywanie artefaktów B2B, takich jak handlowymi partnerów, umów, mapy, schematów, certyfikaty i tak dalej. Aby użyć tych artefaktów, należy skojarzyć aplikacji logiki przy użyciu konta integracji. Jeśli używasz obecnie programu BizTalk Server, te łączniki mogą wydawać się dobrze znanych już.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -131,7 +145,7 @@ Poniżej przedstawiono łączniki do tworzenia rozwiązań biznesowych (B2B) za 
 
 ## <a name="enterprise-connectors"></a>Łączniki dla przedsiębiorstw
 
-Aplikacje logiki mieli dostęp do systemów dla przedsiębiorstw, takimi jak SAP i IBM MQ:
+Usługa Logic Apps oferuje te łączniki dla przedsiębiorstw do uzyskiwania dostępu do systemów dla przedsiębiorstw, takimi jak SAP i IBM MQ:
 
 |   |   |   | 
 |---|---|---| 
@@ -172,11 +186,13 @@ Połączenia można uzyskać dostęp do Usługa docelowa lub system tak długo, 
 Aby wywoływać interfejsy API, który jest uruchomiony niestandardowy kod lub które nie są dostępne jako łączniki, można rozszerzyć platformę usługi Logic Apps przez [tworząc niestandardowe aplikacje interfejsu API](../logic-apps/logic-apps-create-api-app.md). Możesz również [Tworzenie łączników niestandardowych](../logic-apps/custom-connector-overview.md) dla *wszelkie* opartego na protokole SOAP API, który udostępnienia tych interfejsów API w dowolnej aplikacji logiki w ramach subskrypcji platformy Azure lub REST.
 Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki dla każdego, kto do użytku na platformie Azure, możesz [przesyłanie łączników do certyfikacji firmy Microsoft](../logic-apps/custom-connector-submit-certification.md).
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Aby przesłać lub głosować na pomysły dotyczące usługi Azure Logic Apps i łączników, odwiedź stronę [witrynie opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> Aplikacje Logic apps w ramach [środowiska integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) można uzyskać dostęp do zasobów w sieci wirtualnej platformy Azure.
+> Jeśli masz łączników niestandardowych, które wymagają lokalnej bramy danych, a utworzone łączniki poza ISE, logic apps w środowisku ISE łączników można również używać tych.
+>
+> Łączników niestandardowych utworzonych w środowisku ISE nie działają z lokalną bramą danych. Jednak te łączniki można uzyskać dostęp do lokalnych źródeł danych, które są połączone z siecią wirtualną platformy Azure w środowisku ISE hostingu. Tak logic apps w środowisku ISE najprawdopodobniej nie ma potrzeby bramy danych podczas komunikacji z tymi zasobami.
+>
+> Aby uzyskać więcej informacji na temat tworzenia ISEs zobacz [Połącz z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

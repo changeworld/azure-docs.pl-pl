@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d067f1af3d5479aef28ddf2290cebe3fe45726b0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c025c431d826d3a2951a9eb5c09308695e172887
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733794"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551231"
 ---
 | Resource | Domyślne/maksymalny limit |
 | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "64733794"
 | Maksymalna liczba tras do komunikacji równorzędnej, Microsoft Azure ze standardem usługi ExpressRoute |200 |
 | Maksymalna liczba tras do komunikacji równorzędnej Microsoft Azure, dzięki dodatkowi ExpressRoute Premium |200 |
 | Maksymalna liczba obwodów usługi ExpressRoute, połączone z tej samej sieci wirtualnej w tej samej lokalizacji komunikacji równorzędnej |4 |
-| Maksymalna liczba obwodów usługi ExpressRoute, połączone z tej samej sieci wirtualnej w innej lokalizacji komunikacji równorzędnej |> 4, zależy od rozmiaru GatewaySubnet|
+| Maksymalna liczba obwodów usługi ExpressRoute, połączone z tej samej sieci wirtualnej w innej lokalizacji komunikacji równorzędnej |4 |
 | Liczba łączy sieci wirtualnej może istnieć obwód usługi ExpressRoute |Zobacz poniższą tabelę. |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Liczba sieci wirtualnych na obwód usługi ExpressRoute
@@ -39,4 +39,7 @@ ms.locfileid: "64733794"
 | 2 Gb/s |10 |60 |
 | 5 Gb/s |10 |75 |
 | 10 Gb/s |10 |100 |
+| 40 GB/s * |10 |100 |
+| 100 GB/s * |10 |100 |
 
+* Tylko bezpośrednio usługi ExpressRoute

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254130"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595455"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Wprowadzenie do Eksploratora metryk platformy Azure
 
@@ -24,7 +24,7 @@ Eksplorator metryk usługi Azure Monitor to składnik systemu Microsoft Azure po
 
 1. Spróbuj [stosowanie filtrów wymiaru i dzielenia](#apply-dimension-filters-and-splitting). Filtry i dzielenia pozwalają analizować, jakie segmenty metryki przyczyniają się do wartości ogólne metryki i zidentyfikować elementy odstające możliwe.
 
-1. Użyj [Zaawansowane ustawienia](#advanced-chart-settings-and-next-steps) dostosować wykres przed przypięciem do pulpitów nawigacyjnych. [Konfigurowanie alertów](alerts-metric-overview.md) Aby otrzymywać powiadomienia, gdy wartość metryki przekracza lub spadnie poniżej wartości progowej.
+1. Użyj [Zaawansowane ustawienia](#advanced-chart-settings) dostosować wykres przed przypięciem do pulpitów nawigacyjnych. [Konfigurowanie alertów](alerts-metric-overview.md) Aby otrzymywać powiadomienia, gdy wartość metryki przekracza lub spadnie poniżej wartości progowej.
 
 ## <a name="create-your-first-metric-chart"></a>Tworzenie pierwszego wykresu metryki
 
@@ -32,7 +32,7 @@ Aby utworzyć wykres metryk z zasobu, grupy zasobów, subskrypcji lub widok usł
 
 1. Za pomocą selektora zasobów, wybierz zasób, dla którego chcesz wyświetlać metryki. (Zasób jest wstępnie wybrane, jeśli otworzysz **metryki** w kontekście określonego zasobu).
 
-    > ![Wybieranie zasobu](./media/metrics-getting-started/resource-picker.png)
+    > ![Wybierz zasób](./media/metrics-getting-started/resource-picker.png)
 
 2. Dla niektórych zasobów należy wybrać przestrzeni nazw. Przestrzeń nazw jest po prostu sposób organizowania metryk, aby można je łatwo odnaleźć. Na przykład konta magazynu mają oddzielne przestrzenie nazw do przechowywania plików, tabel, obiektów blob i kolejek metryki. Wiele typów zasobów mieć tylko jedną przestrzeń nazw.
 
@@ -61,12 +61,13 @@ Domyślnie wykres przedstawia w ostatnich 24 godzin dane metryk. Użyj **selekto
 
 Zobacz [przykładów wykresów](metric-chart-samples.md) , filtrowania i dzielenia zastosowano. W tym artykule opisano kroki zostały służące do konfigurowania na wykresach.
 
-## <a name="advanced-chart-settings-and-next-steps"></a>Ustawienia zaawansowane wykresu i następne kroki
+## <a name="advanced-chart-settings"></a>Ustawienia zaawansowane wykresu
 
 Można dostosować styl wykresu, tytuł i zmodyfikuj ustawienia zaawansowane wykresu. Po zakończeniu wprowadzania dostosowań, należy ją przypiąć do pulpitu nawigacyjnego, aby zapisać swoją pracę. Można również skonfigurować alerty metryki. Postępuj zgodnie z [dokumentacji produktu](metrics-charts.md) Aby dowiedzieć się więcej na temat tych i innych zaawansowanych funkcji Eksploratora metryk usługi Azure Monitor.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wyświetlenie listy dostępnych metryk dla usług platformy Azure](metrics-supported.md)
 * [Dowiedz się więcej o zaawansowanych funkcji Eksploratora metryk](metrics-charts.md)
+* [Rozwiązywanie problemów z Eksploratora metryk](metrics-troubleshoot.md)
+* [Wyświetlenie listy dostępnych metryk dla usług platformy Azure](metrics-supported.md)
 * [Zobacz przykłady, skonfigurowanego wykresów](metric-chart-samples.md)

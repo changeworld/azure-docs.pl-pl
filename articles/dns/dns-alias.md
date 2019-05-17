@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/21/2019
+ms.date: 5/13/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 847ad271dac4afc8c8baa2faa8702b3a3ab6cefa
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790542"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596704"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -25,7 +25,7 @@ Zestaw rekordów aliasów jest obsługiwana dla następujących typów rekordów
 - CNAME
 
 > [!NOTE]
-> Jeśli zamierzasz użyć rekordu aliasu dla typów rekordów A lub AAAA, aby wskazywał [profilu usługi Azure Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md) należy się upewnić, że profil usługi Traffic Manager ma tylko [zewnętrzne punkty końcowe](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Musisz podać adres IPv4 lub IPv6 dla zewnętrznych punktów końcowych w usłudze Traffic Manager. W idealnym przypadku używania statycznych adresów IP.
+> Jeśli zamierzasz użyć rekordu aliasu dla typów rekordów A lub AAAA, aby wskazywał [profilu usługi Azure Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md) należy się upewnić, że profil usługi Traffic Manager ma tylko [zewnętrzne punkty końcowe](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Musisz podać adres IPv4 lub IPv6 dla zewnętrznych punktów końcowych w usłudze Traffic Manager. Nie można używać w pełni kwalifikowanych nazw domen (FQDN) punktów końcowych. W idealnym przypadku używania statycznych adresów IP.
 
 ## <a name="capabilities"></a>Możliwości
 
