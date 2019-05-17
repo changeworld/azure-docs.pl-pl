@@ -56,7 +56,7 @@ Następujące właściwości są obsługiwane w przypadku SAP ECC połączone us
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SapEcc** | Yes |
 | url | Adres url usługi SAP ECC OData. | Yes |
-| nazwa użytkownika | Nazwa użytkownika, używany do łączenia z SAP ECC. | Nie |
+| username | Nazwa użytkownika, używany do łączenia z SAP ECC. | Nie |
 | password | Hasło zwykłego tekstu, używany do łączenia z SAP ECC. | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
@@ -91,7 +91,7 @@ Aby skopiować dane z SAP ECC, należy ustawić właściwość typu zestawu dany
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| ścieżka | Ścieżka jednostki SAP ECC OData. | Yes |
+| path | Ścieżka jednostki SAP ECC OData. | Yes |
 
 **Przykład**
 
