@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/24/2019
-ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b39279e560cb1738ff9b33ec587562efd2ed4e8d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706999"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800953"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrowanie obciążeń usługi Azure HDInsight 3.6 Hive HDInsight 4.0
 
@@ -29,8 +29,8 @@ W tym artykule omówiono następujące zagadnienia:
 
 Jedną z zalet programu Hive jest możliwość eksportowania metadanych do zewnętrznej bazy danych (określone jako magazyn metadanych Hive). **Hive magazynu metadanych** jest odpowiedzialny za przechowywanie statystyk tabeli, m.in. Lokalizacja magazynu tabeli nazwy kolumn i informacji o indeksu tabeli. Schemat bazy danych magazynu metadanych różni się między wersjami programu Hive. Wykonaj następujące czynności, aby uaktualnić metadanych programu Hive HDInsight 3.6 tak, aby była ona zgodna z HDInsight 4.0.
 
-1. Utwórz nową kopię swojej zewnętrzny Magazyn metadanych. HDInsight 3.6 HDInsight 4.0 wymagane schematy innego magazynu metadanych i nie może udostępniać pojedynczy Magazyn metadanych.
-1. Dołącz tę nową kopię magazynu metadanych) do istniejącego klastra HDInsight 4.0 lub (b) klastra, który tworzysz po raz pierwszy. Zobacz [używać zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md) Aby dowiedzieć się więcej na temat dołączania zewnętrzny Magazyn metadanych do klastra usługi HDInsight. Po dołączeniu magazynu metadanych automatycznie zostaną przekonwertowane do metadanych zgodnego z 4.0.
+1. Utwórz nową kopię swojej zewnętrzny Magazyn metadanych. HDInsight 3.6 HDInsight 4.0 wymagane schematy innego magazynu metadanych i nie może udostępniać pojedynczy Magazyn metadanych. Zobacz [używać zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md) Aby dowiedzieć się więcej na temat dołączania zewnętrzny Magazyn metadanych do klastra usługi HDInsight. 
+2. Uruchamianie akcji skryptu względem klastra HDI 3.6, za pomocą "Węzły główne" jako typ węzła do wykonania. Wklej następujący identyfikator URI w polu tekstowym oznaczone jako "URI skryptu powłoki systemowej": https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. W polu tekstowym, oznaczone jako "Arguments", wprowadź servername, bazy danych, nazwę użytkownika i hasło dla **skopiowane** Hive Magazyn metadanych, rozdzielone spacjami. Nie dołączaj ". database.windows.net" podczas określania servername.
 
 > [!Warning]
 > Nie można wycofać uaktualnienie, które konwertuje schematu metadanych HDInsight 3.6 schematu HDInsight 4.0.

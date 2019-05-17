@@ -12,10 +12,10 @@ ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65758522"
+ms.locfileid: "65793537"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Szybki start: Zapoznaj się z wyszukiwania interfejsów API REST Azure przy użyciu narzędzia Postman
 > [!div class="op_single_selector"]

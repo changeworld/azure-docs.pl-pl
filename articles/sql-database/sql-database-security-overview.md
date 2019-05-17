@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 584f30cc12aee722aed1079d5cefaee06d403cba
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867663"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790156"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -125,17 +125,11 @@ Na platformie Azure domyślnie szyfrowane są wszystkie nowo utworzone bazy dany
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) jest funkcją zaprojektowanych w celu ochrony danych poufnych przechowywanych w kolumnach konkretnej bazy danych z programu access (na przykład numerów kart kredytowych, narodowe numery identyfikacyjne lub dane na _trzeba znać_ podstawy). W tym administratorzy baz danych lub innych uprzywilejowanych użytkowników, którzy są upoważnione do dostępu do bazy danych, aby wykonywać zadania zarządzania, jednak musi nie działalność wymaga dostępu do danych określonego w zaszyfrowanych kolumn. Dane są zawsze szyfrowane, co oznacza, że zaszyfrowane dane zostaną odszyfrowane tylko w przypadku przetwarzania przez aplikacje klienckie przy użyciu dostępu do klucza szyfrowania.  Klucz szyfrowania nigdy nie jest ujawniany do bazy danych SQL i mogą być przechowywane w [Store certyfikatu Windows](sql-database-always-encrypted.md) lub [usługi Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
 
-### <a name="masking"></a>Maskowania
+### <a name="dynamic-data-masking"></a>Dynamiczne maskowanie danych
 
 ![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-#### <a name="dynamic-data-masking"></a>Dynamiczne maskowanie danych
-
 Baza danych SQL dynamiczne maskowanie danych ogranicza ujawnianie poufnych danych przez ich maskowanie dla nieuprzywilejowanych użytkowników. Dane dynamiczne maskowanie automatycznie wykrywa potencjalnie poufne dane w bazie danych SQL Azure i zapewnia wiarygodne zalecenia z tych pól, z minimalnym wpływem na warstwę aplikacji. Jego działanie polega na zaciemnianiu poufnych danych w wyznaczonych polach bazy danych w zestawie wyników zapytania, przy czym dane w bazie danych pozostają bez zmian. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą SQL Database dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started.md).
-
-#### <a name="static-data-masking"></a>Maskowanie danych statycznych
-
-[Maskowanie danych statycznych](/sql/relational-databases/security/static-data-masking) to narzędzie klienta dostępne w [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 18,0 wersji zapoznawczej 5 lub nowszy.  Maskowanie danych statycznych umożliwia użytkownikom tworzenie kopię bazy danych, których dane w wybranych kolumnach zostało trwale maskowane. Dostępne funkcje maskowania: o wartości NULL maskowania, maskowanie pojedynczej wartości, losowa i shuffle grupy maskowania oraz ciągu złożonego maskowania. Maskowane kopią bazy danych organizacje mogą oddzielić produkcji i środowisk testowych, udostępniając maskowanego kopiowania. Danych poufnych jest dostatecznie chroniony i utrzymują się inne właściwości bazy danych. Maskowanie baz danych jest zalecane, gdzie firm dostęp do bazy danych jest wymagany.
 
 ## <a name="security-management"></a>Zarządzanie zabezpieczeniami
 

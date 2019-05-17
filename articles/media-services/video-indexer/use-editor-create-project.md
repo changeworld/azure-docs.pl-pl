@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: a9d6396cab560a201b98497e787af4b6c7c2dabb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560934"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518150"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Tworzenie projektów za pomocą edytora indeksatora wideo
 
@@ -95,7 +96,7 @@ Po kliknięciu strzałki w dół po prawej stronie każdego filmu wideo będzie 
 > [!TIP]
 > Jak zaznaczania i kolejność klipów, możesz wyświetlić podgląd wideo w odtwarzaczu w prawej części strony. 
 
-![Wersja zapoznawcza](./media/video-indexer-view-edit/preview.png)
+![Preview](./media/video-indexer-view-edit/preview.png)
 
 Pamiętaj, aby zapisać projekt, wprowadzając zmiany, wybierając **Zapisz projekt**. 
 

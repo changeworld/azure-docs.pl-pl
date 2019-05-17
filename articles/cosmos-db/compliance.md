@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128825"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606288"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Zgodności w usłudze Azure Cosmos DB 
 
@@ -28,7 +28,7 @@ Usługa Azure Cosmos DB jest dostępna we wszystkich regionach platformy Azure. 
 
 * **Platforma Azure Government dla departamentu tajności** jest dostępna w dwóch regionach w Stanach Zjednoczonych, aby Departamentu Obrony USA.
 
-Aby pomóc klientom w ich własnych zobowiązań zgodność w przypadku regulowanych prawnie branż i rynków na całym świecie, Azure obsługuje największemu zakresowi zgodności w branży pod względem szerokości (liczba ofert) i głębi (liczba przeznaczonych dla klientów usługi w zakresie oceny).  Oferty zgodności platformy Azure są pogrupowane w cztery segmentów - stosowane globalnie, dla instytucji rządowych USA, szczegółowym, branżowych i kraj lub region określone.  Ofert zgodności są oparte na różnego rodzaju gwarancje, m.in. posiadanie certyfikaty atestacji, sprawdzanie poprawności, autoryzacji i ocen produkowane przez niezależnie od innych firm z branży inspekcji, a także umownych zmiany samooceny i dokumenty wskazówek dotyczących klienta generowany przez firmę Microsoft.
+Aby pomóc klientom w ich własnych zobowiązań zgodność w przypadku regulowanych prawnie branż i rynków na całym świecie, Azure obsługuje największemu zakresowi zgodności w branży pod względem szerokości (liczba ofert) i głębi (liczba przeznaczonych dla klientów usługi w zakresie oceny).  Oferty zgodności platformy Azure są pogrupowane w cztery segmentów - stosowane globalnie, dla instytucji rządowych USA, szczegółowym, branżowych i regionu lub określonego kraju/regionu.  Ofert zgodności są oparte na różnego rodzaju gwarancje, m.in. posiadanie certyfikaty atestacji, sprawdzanie poprawności, autoryzacji i ocen produkowane przez niezależnie od innych firm z branży inspekcji, a także umownych zmiany samooceny i dokumenty wskazówek dotyczących klienta generowany przez firmę Microsoft.
 
 ## <a name="azure-cosmos-db-certifications"></a>Certyfikaty platformy Azure Cosmos DB  
 

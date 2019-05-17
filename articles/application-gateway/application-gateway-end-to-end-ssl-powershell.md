@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: a4ce1ad347742886e7d89a32bbeb60c2e0281409
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8c715cb84dff6e2e739de59aba33041ec1b8db52
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198559"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786281"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
@@ -231,6 +231,69 @@ Korzystając z powyższych kroków, Tworzenie bramy aplikacji. Tworzenie bramy t
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Zastosowania nowego certyfikatu, jeśli certyfikat zaplecza wygasł
+
+Użyj tej procedury do zastosowania nowego certyfikatu, jeśli serwer zaplecza certyfikat wygasł.
+
+1. Pobierz bramy aplikacji w celu zaktualizowania.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. Dodaj nowy zasób, certyfikat z pliku .cer, który zawiera klucz publiczny certyfikatu i mogą być tego samego certyfikatu, które są dodawane do odbiornika dla kończenia żądań SSL na bramie aplikacji.
+
+   ```powershell
+   Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
+   ```
+    
+3. Pobierz nowy obiekt certyfikatu uwierzytelniania do zmiennej (nazwa typu: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+
+   ```powershell
+   $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
+   ```
+ 
+ 4. Przypisz nowy certyfikat do **BackendHttp** ustawienia można znaleźć go ze zmienną $AuthCert. (Należy określić nazwę ustawienia protokołu HTTP, który chcesz zmienić.)
+ 
+   ```powershell
+   $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
+   ```
+    
+ 5. Zatwierdź zmianę do bramy aplikacji i przekazać nową konfigurację, które są zawarte w zmiennej $out.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw  
+   ```
+
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Usuń nieużywane wygasły certyfikat z ustawienia HTTP
+
+Użyj tej procedury można usunąć nieużywane wygasły certyfikat z ustawienia protokołu HTTP.
+
+1. Pobierz bramy aplikacji w celu zaktualizowania.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. Podaj nazwy certyfikatu uwierzytelniania, który chcesz usunąć.
+
+   ```powershell
+   Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
+   ```
+    
+3. Usuń certyfikat uwierzytelniania z bramy aplikacji.
+
+   ```powershell
+   $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
+   ```
+ 
+ 4. Zatwierdź zmiany.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw
+   ```
+
+   
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Ograniczenie wersji protokołu SSL w istniejącej bramie aplikacji
 
 Poprzednie kroki trwało Cię przez proces tworzenia aplikacji przy użyciu protokołu SSL end-to-end i wyłączenie niektórych wersji protokołu SSL. Poniższy przykład wyłącza określone zasady protokołu SSL w istniejącej bramie aplikacji.

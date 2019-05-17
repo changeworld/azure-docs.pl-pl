@@ -3,25 +3,25 @@ title: Tworzenie tożsamości dla aplikacji platformy Azure w portalu | Dokument
 description: W tym artykule opisano, jak utworzyć nową aplikację usługi Azure Active Directory i jednostki usługi, który może służyć przy użyciu kontroli dostępu opartej na rolach w usłudze Azure Resource Manager do zarządzania dostępem do zasobów.
 services: active-directory
 documentationcenter: na
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: celested
+ms.date: 05/14/2019
+ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300991"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764849"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: Aby utworzyć aplikację usługi Azure AD i jednostkę usługi, które mogą uzyskiwać dostęp do zasobów, użyj portalu
 
@@ -66,14 +66,14 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
    Jeśli nie widzisz subskrypcji, czego szukasz, wybierz opcję **filtr globalny subskrypcji**. Upewnij się, subskrypcji, którą chcesz, aby wybrano dla portalu. 
 
-1. Wybierz pozycję **Kontrola dostępu (IAM)**.
+1. Wybierz **kontrola dostępu (IAM)**.
 1. Wybierz **Dodaj przypisanie roli**.
 
    ![Wybierz opcję Dodaj przypisanie roli](./media/howto-create-service-principal-portal/select-add.png)
 
 1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji, które można wykonać akcji, takich jak **ponowny rozruch**, **start** i **zatrzymać** wystąpień, wybierz opcję **Współautor** roli. Domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj nazwę i zaznacz go.
 
-   ![Wybór roli](./media/howto-create-service-principal-portal/select-role.png)
+   ![Wybieranie roli](./media/howto-create-service-principal-portal/select-role.png)
 
 1. Wybierz **Zapisz** zakończenie przypisanie roli. Zostanie wyświetlona aplikacja na liście Użytkownicy przypisani do roli dla tego zakresu.
 
@@ -106,18 +106,18 @@ Należy również identyfikator swojej aplikacji i klucza uwierzytelniania. Aby 
 
    ![Identyfikator klienta](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-1. Wybierz **ustawienia**.
+1. Wybierz **certyfikaty i klucze tajne**.
 
-   ![Wybierz ustawienia](./media/howto-create-service-principal-portal/select-settings.png)
+   ![Wybierz ustawienia](./media/howto-create-service-principal-portal/select-certs-secrets.png)
 
-1. Wybierz pozycję **Klucze**.
-1. Podaj opis i czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
+1. Wybierz **wpisów tajnych klienta -> Nowy wpis tajny klienta**.
+1. Podaj opis wpisu tajnego i czas trwania. Po zakończeniu wybierz pozycję **Dodaj**.
 
-   ![Zapisz klucz](./media/howto-create-service-principal-portal/save-key.png)
+   ![Zapisz klucz tajny](./media/howto-create-service-principal-portal/save-secret.png)
 
-   Po zapisaniu klucza zostanie wyświetlona jego wartość. Skopiuj tę wartość, ponieważ nie można pobrać klucza później. Możesz podać wartość klucza z Identyfikatorem aplikacji do logowania w aplikacji. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
+   Po zapisaniu klucza tajnego klienta, wyświetlana jest wartość klucza tajnego klienta. Skopiuj tę wartość, ponieważ nie można pobrać klucza później. Możesz podać wartość klucza z Identyfikatorem aplikacji do logowania w aplikacji. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
-   ![zapisany klucz](./media/howto-create-service-principal-portal/copy-key.png)
+   ![Skopiować klucza tajnego](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
@@ -146,7 +146,7 @@ W ramach subskrypcji platformy Azure, Twoje konto musi mieć `Microsoft.Authoriz
 
 Aby sprawdzić swoje uprawnienia subskrypcji:
 
-1. Wybierz swoje konto w prawym górnym rogu, a następnie wybierz pozycję **Moje uprawnienia**.
+1. Wybierz swoje konto w prawym górnym rogu, a następnie wybierz pozycję **... -> Moje uprawnienia**.
 
    ![Wybierz uprawnienia użytkownika](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
@@ -154,7 +154,7 @@ Aby sprawdzić swoje uprawnienia subskrypcji:
 
    ![Znajdź użytkownika](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Wyświetl przypisane role i określić, czy istnieją odpowiednie uprawnienia do przypisywania aplikacji usługi AD do roli. Jeśli nie, poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników. Na poniższej ilustracji użytkownik jest przypisany do roli właściciel, co oznacza, że dany użytkownik ma odpowiednie uprawnienia.
+1. Wybierz **przypisań ról** można wyświetlić przypisane role oraz określić, czy istnieją odpowiednie uprawnienia do przypisywania aplikacji usługi AD do roli. Jeśli nie, poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników. Na poniższej ilustracji użytkownik jest przypisany do roli właściciel, co oznacza, że dany użytkownik ma odpowiednie uprawnienia.
 
    ![Pokaż uprawnienia](./media/howto-create-service-principal-portal/view-user-role.png)
 

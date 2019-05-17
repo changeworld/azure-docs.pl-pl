@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 9ef11eb2099ff617fb4da4b9a924dc3f0550f226
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/14/2019
+ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160548"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602119"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Dodawanie i uruchamianie fragmenty kodu przy użyciu kodu wbudowanego w usłudze Azure Logic Apps
 
@@ -23,7 +23,10 @@ Gdy użytkownik chce uruchomić fragment kodu wewnątrz aplikacji logiki, możes
 * Uruchamiany w języku JavaScript. Już wkrótce więcej języków.
 * Zostanie zakończone w ciągu pięciu sekund lub mniej.
 * Służy do obsługi danych maksymalnie 50 MB.
-* Używa środowiska Node.js w wersji 8.11.1. Aby uzyskać więcej informacji, zobacz [standardowe wbudowane obiekty](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
+* Używa środowiska Node.js w wersji 8.11.1. Aby uzyskać więcej informacji, zobacz [standardowe wbudowane obiekty](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+  > [!NOTE]
+  > Funkcja require() nie jest obsługiwany przez **kodu wbudowanego** akcji dla uruchamianie kodu języka JavaScript.
 
 Ta akcja uruchamia fragment kodu i zwraca dane wyjściowe z tej wstawki jako token o nazwie **wynik**, którego można użyć w kolejnych akcjach w aplikacji logiki. W innych sytuacjach, w którym chcesz utworzyć funkcję w kodzie, spróbuj [tworzenie i wywoływanie funkcji platformy Azure](../logic-apps/logic-apps-azure-functions.md) w aplikacji logiki.
 
@@ -201,7 +204,7 @@ W przykładzie w tym temacie `workflowContext` obiekt ma następujące właściw
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Dodawanie parametrów
+## <a name="add-parameters"></a>Dodaj parametry
 
 W niektórych przypadkach może być jawnie wymagającą **kodu wbudowanego** akcji zawiera wyniki z wyzwalacza lub konkretne akcje, których kod odwołuje się jako zależności, dodając **wyzwalacza** lub **Akcje** parametrów. Ta opcja jest przydatne w scenariuszach, gdzie odwołania wyniki nie zostaną znalezione w czasie wykonywania.
 
@@ -212,7 +215,7 @@ Załóżmy, że masz kod, który odwołuje się do **SelectedOption** wynikiem *
 
 Aby dodać te parametry, otwórz **dodano nowy parametr** listy i wybierz parametry mają:
 
-   ![Dodawanie parametrów](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Dodaj parametry](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametr | Opis |
    |-----------|-------------|
@@ -256,7 +259,7 @@ Jeśli wybierzesz **akcje**, zostanie wyświetlony monit dla akcji, które chces
 
 1. Aby dodać kolejną akcję, wybierz **Dodaj nowy element**.
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Odwołanie
 
 Aby uzyskać więcej informacji na temat **wykonywanie kodu JavaScript** akcji struktury i składni w podstawowej definicji przepływu pracy aplikacji logiki, za pomocą języka definicji przepływu pracy, zobacz tę akcję [w sekcji ](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code).
 

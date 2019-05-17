@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409821"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603155"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Eksploruj i przygotować dane za pomocą klasy zestawu danych (wersja zapoznawcza)
 
 Dowiedz się, jak eksplorować i przygotować dane za pomocą [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) klasy (wersja zapoznawcza) umożliwia Eksplorowanie i przygotuj dane, udostępniając funkcje takie jak: próbkowania, statystyki podsumowujące i inteligentne przekształcenia. Kroki przekształcania są zapisywane w [definicji zestawu danych](how-to-manage-dataset-definitions.md) z możliwością obsługi wielu dużych plików z różnymi schematami w sposób o wysokim stopniu skalowalności.
 
 > [!Important]
-> Niektóre klasy zestawu danych (wersja zapoznawcza) mają zależności w zestawie SDK przygotowania bazy danych (GA). Gdy funkcji transformacji może odbywać się bezpośrednio z GA'ed [funkcje zestawu SDK usługi Data Prep](how-to-transform-data.md), firma Microsoft zaleca otoki pakiet zestawu danych, które są opisane w tym artykule, jeśli tworzysz nowe rozwiązanie. Zestawy Azure Machine Learning danych (wersja zapoznawcza) umożliwiają nie tylko przekształcać dane, ale także [migawki danych](how-to-create-dataset-snapshots.md) i przechowywać [definicje wersji zestawów danych](how-to-manage-dataset-definitions.md). Zestawy danych jest następnej wersji zestawu SDK przygotowania bazy danych, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
+> Niektóre klasy zestawu danych (wersja zapoznawcza) być zależny od [przygotowania danych usługi Azure ml](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) pakietu (GA). Gdy funkcji transformacji może odbywać się bezpośrednio z GA'ed [funkcji Data Prep](how-to-transform-data.md), firma Microsoft zaleca otoki pakiet zestawu danych, które są opisane w tym artykule, jeśli tworzysz nowe rozwiązanie. Zestawy Azure Machine Learning danych (wersja zapoznawcza) umożliwiają nie tylko przekształcać dane, ale także [migawki danych](how-to-create-dataset-snapshots.md) i przechowywać [definicje wersji zestawów danych](how-to-manage-dataset-definitions.md). Zestawy danych jest następnej wersji zestawu SDK przygotowania bazy danych, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

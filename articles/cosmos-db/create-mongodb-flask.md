@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3a95ee065b25f936f08e1c775dc9c42e75a0f67e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890649"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793852"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: Tworzenie aplikacji w języku Python za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -104,7 +104,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.py i używają parametr
 
 2. Otwórz okno terminalu i za pomocą polecenia `cd` przejdź do katalogu, w którym jest zapisana aplikacja.
 
-3. Następnie ustaw zmienną środowiskową dla aplikacji Flask za pomocą polecenia `set FLASK_APP=app.py` lub `export FLASK_APP=app.py`, jeśli używasz komputera Mac.
+3. Następnie ustaw zmienną środowiskową dla aplikacji Flask za pomocą `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` dla edytorów programu PowerShell lub `export FLASK_APP=app.py` korzystania z komputerów Mac. 
 
 4. Uruchom aplikację za pomocą polecenia `flask run` i przejdź do adresu [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 

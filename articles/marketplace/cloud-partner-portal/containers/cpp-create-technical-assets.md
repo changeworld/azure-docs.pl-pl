@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 32002f8b88a2fbeba29f15b3b9289ecf3d7560d0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942730"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794341"
 ---
 # <a name="prepare-your-container-technical-assets"></a>Przygotowanie kontenera zasoby techniczne
 
@@ -53,9 +53,10 @@ Także podpowiedzieć dostępne narzędzia w [narzędzi deweloperskich platformy
 
 ## <a name="create-the-container-image"></a>Tworzenie obrazu kontenera
 
-- Tworzenie i konfigurowanie wirtualnego dysku twardego (VHD) dla kontenera maszyny wirtualnej (VM). Ten wirtualny dysk twardy zawiera system operacyjny (Windows, Linux i Ubuntu) dla kontenera. Dodatkowego dysku z danymi mogą być wymagane.
-- Skonfiguruj system operacyjny maszyny Wirtualnej, rozmiar maszyny Wirtualnej, portów, otwieranych i wszelkich dołączonych dysków danych.
-- Zainstaluj aplikację i innego oprogramowania, które jest potrzebne do swojej oferty. Na przykład: oprogramowanie bazy danych, oprogramowania innych firm lub niestandardowych aplikacji.
+Zapoznaj się z poniższymi, aby uzyskać więcej informacji:
+
+* [Samouczek: Tworzenie obrazu kontenera do wdrożenia w usłudze Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [Samouczek: Tworzenie i wdrażanie obrazów kontenerów w chmurze za pomocą zadań rejestru kontenera platformy Azure](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 21505da414b29f2ae9eeea7f9fcad9db2e57c4fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702827"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796581"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertuj maszynę wirtualną Windows z dysków niezarządzanych do usługi managed disks
 
@@ -99,7 +99,6 @@ Jeśli maszyny wirtualne, które chcesz przekonwertować zarządzane dyski znajd
 Jeśli wystąpi błąd podczas konwersji lub maszyny Wirtualnej jest w stanie niepowodzenia ze względu na problemy z konwersją poprzedniej, uruchom `ConvertTo-AzVMManagedDisk` ponownie polecenie cmdlet. Proste ponownych prób zwykle odblokowuje sytuacji.
 Przed przekonwertowaniem, upewnij się, wszystkie rozszerzenia maszyny Wirtualnej są w stanie pomyślnie aprowizacji lub konwersja zakończy się niepowodzeniem z kodem błędu 409.
 
-
 ## <a name="convert-using-the-azure-portal"></a>Konwertowanie za pomocą witryny Azure portal
 
 Można również przeprowadzić konwersję dysków niezarządzanych do dysków zarządzanych przy użyciu witryny Azure portal.
@@ -108,7 +107,7 @@ Można również przeprowadzić konwersję dysków niezarządzanych do dysków z
 2. Wybierz maszynę Wirtualną z listy maszyn wirtualnych w portalu.
 3. W bloku maszyny wirtualnej, wybierz **dysków** z menu.
 4. W górnej części **dysków** bloku wybierz **migracji do usługi managed disks**.
-5. Jeśli maszyna wirtualna znajduje się w zestawie dostępności, będzie ostrzeżenie na **migracji do usługi managed disks** bloku, który należy przekonwertować najpierw zestawu dostępności. Ostrzeżenie powinien mieć łącze, można kliknąć w celu konwersji zestawu dostępności. Po konwersji zestawu dostępności lub maszyna wirtualna nie znajduje się w zestawie dostępności, kliknij przycisk **migracji** można uruchomić procesu migracji dysków do usługi managed disks. 
+5. Jeśli maszyna wirtualna znajduje się w zestawie dostępności, będzie ostrzeżenie na **migracji do usługi managed disks** bloku, który należy przekonwertować najpierw zestawu dostępności. Ostrzeżenie powinien mieć łącze, można kliknąć w celu konwersji zestawu dostępności. Po konwersji zestawu dostępności lub maszyna wirtualna nie znajduje się w zestawie dostępności, kliknij przycisk **migracji** można uruchomić procesu migracji dysków do usługi managed disks.
 
 Maszyny Wirtualnej zostanie zatrzymana i uruchomiona ponownie po zakończeniu migracji.
 

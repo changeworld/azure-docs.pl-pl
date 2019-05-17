@@ -8,12 +8,12 @@ ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
 ms.date: 04/29/2019
-ms.openlocfilehash: cf07d19966c08a63b9aa50475622aa0a1e5e1600
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e87a82e985ed1d1794f9da00546f167ef01e1779
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236521"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815523"
 ---
 ## <a name="business-disaster-recovery"></a>Odzyskiwanie po awarii biznesowych
 
@@ -48,10 +48,10 @@ Integrowanie usługi Time Series Insights za pomocą tych innych usług zapewnia
 
 Istnieje kilka sposobów, aby zachować dane usługi Time Series Insights, aplikacje i usługi działające nawet wtedy, gdy są one przerwane. Należy także określić, że kopię środowiska Azure Time Series pełną, duplikatów kopii zapasowej jest wymagane:
 
-1. Jako usługa TSI Przesyła specyficznych **wystąpienia trybu failover** można przekierować danych, a ruch do.
+1. Jako szeregów czasowych szczegółowych informacji specyficznych dla **wystąpienia trybu failover** można przekierować danych, a ruch do.
 1. Na potrzeby inspekcji i dane zachowanie.
 
-Ogólnie rzecz biorąc najlepszym sposobem zduplikowane w środowisku usługi TSI jest utworzenie drugiej środowiska TSI w regionie świadczenia usługi Azure backup. Zdarzenia również są wysyłane do tego środowiska dodatkowej ze źródła zdarzenia podstawowego. Upewnij się, aby używają grupy odbiorców drugi, dedykowanym i postępuj zgodnie z tego źródła biznesowe awarii odzyskiwania wskazówki (powyżej).
+Ogólnie rzecz biorąc najlepszym sposobem zduplikowane środowiska usługi Time Series Insights jest utworzenie drugiej środowiska usługi Time Series Insights w regionie świadczenia usługi Azure backup. Zdarzenia również są wysyłane do tego środowiska dodatkowej ze źródła zdarzenia podstawowego. Upewnij się, aby używają grupy odbiorców drugi, dedykowanym i postępuj zgodnie z tego źródła biznesowe awarii odzyskiwania wskazówki (powyżej).
 
 W szczególności do utworzenia zduplikowanych środowiska:
 
@@ -63,7 +63,7 @@ W szczególności do utworzenia zduplikowanych środowiska:
 Na koniec:
 
 * Jeśli swój region podstawowy jest wpływu zdarzenia po awarii, należy przekierować operacje tworzenia kopii zapasowej środowiska usługi Time Series Insights.
-* Użyj drugiego regionu, do tworzenia kopii zapasowych i odzyskiwania wszystkie dane telemetryczne i zapytania TSI.
+* Tworzenie kopii zapasowych i odzyskiwania wszystkie dane telemetryczne i zapytania usługi Time Series Insights, użyj drugiego regionu.
 
 > [!IMPORTANT]
 > * Należy zauważyć, że opóźnienie może się pojawić w przypadku przejścia w tryb failover.

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 881abf48a1dda3b008e5946096cdcadb1f157d25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b4302713188237b97ffbe8473f6a37edd6741b36
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682624"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793088"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: Poznawanie i analizowanie kosztów za pomocą funkcji Analiza kosztów
 
@@ -36,7 +36,7 @@ Analiza kosztów obsługuje różne rodzaje typów kont platformy Azure. Aby wy�
 
 Dla klientów [Umowy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) musisz mieć przynajmniej dostęp do odczytu do co najmniej jednego z poniższych zakresów, aby wyświetlić dane kosztów.
 
-- Konto billingowe
+- Konto rozliczeniowe
 - Dział
 - Konto rejestracji
 - Grupa zarządzania
@@ -69,7 +69,7 @@ Początkowy widok analizy kosztów zawiera następujące obszary:
 
 ## <a name="customize-cost-views"></a>Dostosowywanie widoków kosztów
 
-Analiza kosztów zawiera cztery widoki wbudowanych, zoptymalizowane pod kątem najbardziej typowe cele: 
+Analiza kosztów zawiera cztery widoki wbudowanych, zoptymalizowane pod kątem najbardziej typowe cele:
 
 Widok | Odpowiedz na pytania, takie jak...
 --- | ---
@@ -96,7 +96,7 @@ Ogólnie rzecz biorąc może pojawić się dane lub powiadomienia o wykorzystany
 
 **Grupuj według** wspólne właściwości do podziału kosztów i identyfikowania najlepszych współautorów. Aby zgrupować według tagów zasobów, na przykład wybierz klucz tagu, które mają zostać zgrupowane według. Koszty są podzielone według każdej wartości tagu z segmentem dodatkowych zasobów, które nie mają ten tag zastosowany.
 
-Większość [zasobów platformy Azure obsługuje tagowanie](../azure-resource-manager/tag-support.md), jednak niektóre tagi nie są dostępne na stronie Zarządzanie kosztami i rozliczenia. Ponadto nie są obsługiwane tagi grup zasobów. Rozwiązanie Cost Management obsługuje tylko tagi zasobów od daty bezpośredniego zastosowania tagów do zasobu.
+Większość [zasobów platformy Azure obsługuje tagowanie](../azure-resource-manager/tag-support.md), jednak niektóre tagi nie są dostępne na stronie Zarządzanie kosztami i rozliczenia. Ponadto nie są obsługiwane tagi grup zasobów. Rozwiązanie Cost Management obsługuje tylko tagi zasobów od daty bezpośredniego zastosowania tagów do zasobu. Obejrzyj [jak przeglądać zasad tagów w usłudze Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) wideo, aby dowiedzieć się więcej o korzystaniu z zasad platformy Azure tag do poprawy widoczności danych kosztów.
 
 Oto widok kosztów platformy Azure w ostatnim miesiącu.
 

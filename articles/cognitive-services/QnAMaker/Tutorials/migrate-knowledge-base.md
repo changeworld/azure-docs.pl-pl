@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ff3c497372a761bd8a02ae81bc897c8ee297bd0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431246"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794871"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrowanie bazy wiedzy przy użyciu eksportu / importu
 
@@ -56,7 +56,7 @@ Migrowanie bazy wiedzy wymaga eksportowanie z jednej bazy wiedzy knowledge base,
     W tym momencie całą wiedzy zawartość — pytania i odpowiedzi metadanych, wraz z nazwy plików źródłowych oraz w adresach URL, zostaną zaimportowane do nowej bazy wiedzy. 
 
 ## <a name="chat-logs-and-alterations"></a>Dzienniki czatu i zmiany
-Zmiany bez uwzględniania wielkości liter (synonimy) nie są importowane automatycznie. Użyj [interfejsów API w wersji 2](https://aka.ms/qnamaker-v2-apis) Eksportowanie zmiany ze starego wiedzy i [interfejsów API w wersji 4](https://aka.ms/qnamaker-v4-apis) Aby przenieść zmiany w nowej bazie wiedzy knowledge base.
+Zmiany bez uwzględniania wielkości liter (synonimy) nie są importowane automatycznie. Użyj [interfejsów API w wersji 4](https://go.microsoft.com/fwlink/?linkid=2092179) Aby przenieść zmiany w nowej bazie wiedzy knowledge base.
 
 Nie ma możliwości migracji dzienniki czatu, ponieważ nowe bazy wiedzy przy użyciu usługi Application Insights dzienniki czatu. 
 

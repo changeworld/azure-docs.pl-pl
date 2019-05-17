@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26eb43060a0a2b564a7274bb1579151e66b2bfee
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888673"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604216"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Dane lokalizacji geograficznych i GeoJSON za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Jeśli nie ma informacji o długości i szerokości geograficznej, ale mają adresy fizyczne lub nazwa lokalizacji, takich jak miasta lub kraju, możesz wyszukać rzeczywiste współrzędne, za pomocą usługi geokodowania, takich jak usług REST mapy usługi Bing. Dowiedz się więcej o geokodowanie map Bing [tutaj](https://msdn.microsoft.com/library/ff701713.aspx).
+Jeśli nie ma informacji o długości i szerokości geograficznej, ale mają adresy fizyczne lub nazwa lokalizacji, takich jak miasta lub kraju/regionu, możesz wyszukać rzeczywiste współrzędne, za pomocą usługi geokodowania, takich jak usług REST mapy usługi Bing. Dowiedz się więcej o geokodowanie map Bing [tutaj](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="querying-spatial-types"></a>Wykonywanie zapytania dotyczącego typów przestrzennych
 Teraz, że zrobiliśmy przyjrzeć się jak wstawić dane geoprzestrzenne, Spójrzmy na sposób tworzenia zapytań względem tych danych za pomocą usługi Azure Cosmos DB przy użyciu języków SQL i LINQ.

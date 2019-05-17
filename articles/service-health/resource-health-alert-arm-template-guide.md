@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700160"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788469"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -43,7 +43,7 @@ Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurowa
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Utwórz i Zapisz szablon usługi Resource Manager dla alertów dotyczących kondycji zasobu jako `resourcehealthalert.json` ([Zobacz szczegóły poniżej](#resource-manager-template-for-resource-health-alerts))
+3. Utwórz i Zapisz szablon usługi Resource Manager dla alertów dotyczących kondycji zasobu jako `resourcehealthalert.json` ([Zobacz szczegóły poniżej](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Utwórz nowe wdrożenie usługi Azure Resource Manager przy użyciu tego szablonu
 
@@ -76,7 +76,7 @@ Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurowa
 
 Należy pamiętać, że jeśli planowane jest w pełni automatyzując ten proces, po prostu musisz edytować szablon usługi Resource Manager, nie monit o podanie wartości w kroku 5.
 
-## <a name="resource-manager-template-for-resource-health-alerts"></a>Szablon usługi Resource Manager alertów dotyczących kondycji zasobu
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Opcje szablonu usługi Resource Manager dla alertów dotyczących kondycji zasobu
 
 Tego podstawowego szablonu jako punktu wyjścia służy do tworzenia alertów dotyczących kondycji zasobu. Ten szablon będzie działać zgodnie z zapisane i będą Zarejestruj możesz otrzymywać alerty dla zdarzenia dotyczące kondycji wszystkich zasobów nowo aktywowanego wszystkich zasobów w ramach subskrypcji.
 
@@ -284,7 +284,9 @@ Jednak gdy zasób zgłosi "Nieznana", jest prawdopodobne, że jej stan kondycji 
 },
 ```
 
-W tym przykładzie są możemy tylko powiadomienia dotyczące zdarzeń, gdy stan kondycji bieżących i wcześniejszych nie ma "Nieznane". Ta zmiana może być dodanie przydatne, gdy alerty są wysyłane bezpośrednio na telefon komórkowy lub adres e-mail.
+W tym przykładzie są możemy tylko powiadomienia dotyczące zdarzeń, gdy stan kondycji bieżących i wcześniejszych nie ma "Nieznane". Ta zmiana może być dodanie przydatne, gdy alerty są wysyłane bezpośrednio na telefon komórkowy lub adres e-mail. 
+
+Należy zauważyć, że możliwe jest właściwości currentHealthStatus i previousHealthStatus mieć wartości null w niektóre zdarzenia. Na przykład, gdy zaktualizowano wystąpi zdarzenie jest prawdopodobne, że stan kondycji zasobu nie zmienił się od ostatniego raportu tylko tego dodatkowe informacje dotyczące zdarzenia są dostępne (np. Przyczyna główna). W związku z tym, za pomocą klauzuli powyżej może spowodować niektóre alerty nie są wyzwalane, ponieważ wartości properties.currentHealthStatus i properties.previousHealthStatus zostanie ustawiona na wartość null.
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Dostosowywanie alert, aby uniknąć użytkownik zainicjował zdarzenia
 
@@ -304,12 +306,12 @@ Jest łatwa do skonfigurowania alertu w taki sposób, aby filtrować pod kątem 
     ]
 }
 ```
+Należy pamiętać, że jest możliwe dla pola Przyczyna, aby mieć wartości null w niektóre zdarzenia. Oznacza to przejścia kondycji odbywa się (np. dostępne na niedostępne), a zdarzenie jest rejestrowane, natychmiast, aby zapobiec powiadomień opóźnienia. W związku z tym, za pomocą klauzuli powyżej może spowodować wywołaniu alertu nie, ponieważ wartość właściwości properties.clause zostanie ustawiona na wartość null.
 
-## <a name="recommended-resource-health-alert-template"></a>Zalecane szablon alertu kondycji zasobu
+## <a name="complete-resource-health-alert-template"></a>Pełny szablon alertu kondycji zasobu
 
-Przy użyciu różnych dostosowania opisane w poprzedniej sekcji, możemy utworzyć kompleksowe szablon alertu, który jest skonfigurowany w celu zmaksymalizowania sygnału szum.
+Przy użyciu różnych dostosowania opisane w poprzedniej sekcji, poniżej przedstawiono przykładowy szablon, który jest skonfigurowany w celu zmaksymalizowania sygnału szum. Należy pamiętać zastrzeżenia, o których wspomniano powyżej, gdzie currentHealthStatus previousHealthStatus i wartości właściwości Przyczyna może być wartość null. w niektórych zdarzeń.
 
-Oto, co Sugerujemy, możesz użyć:
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cb8e42400847ba9fb13568d05dffac86d9cec85f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024617"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797484"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search
 
@@ -270,7 +270,7 @@ Aby uzyskać **opis** pola, indeksu jest następująca:
 | Termin | Lista dokumentów |
 |------|---------------|
 | AIR | 3
-| i | 4
+| oraz | 4
 | Beach | 1
 | należy przygotować | 3
 | comfortable | 3
@@ -288,7 +288,7 @@ Aby uzyskać **opis** pola, indeksu jest następująca:
 | lądzie | 2
 | obszerne | 1
 | W | 1, 2
-| na | 1
+| do | 1
 | wyświetl | 1, 2, 3
 | zalet | 1
 | z | 3
@@ -392,8 +392,6 @@ W tym artykule zbadano wyszukiwanie pełnotekstowe w kontekście usługi Azure S
 + Dowiedz się, jak zastosować [analizatory leksykalne specyficzny dla języka](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Skonfiguruj niestandardowe analizatory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimalnego przetwarzania lub wyspecjalizowanych przetwarzanie w określonych polach.
-
-+ [Porównaj analizatory standardowych i angielskim](https://alice.unearth.ai/)) obok siebie w tej wersji demonstracyjnej witryny sieci web. 
 
 ## <a name="see-also"></a>Zobacz także
 

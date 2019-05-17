@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 1e689d7ce65fda43e5657383ed44890c90c095cd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025885"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785772"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotowuje dane do Custom Speech
 
@@ -27,9 +27,9 @@ Poniższa tabela zawiera listę akceptowane typy danych, podczas każdego typu d
 
 | Typ danych | Używane do testowania | Ilość | Używany na potrzeby szkolenia | Ilość |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Yes<br>Używane do inspekcji wizualnego | pliki audio 5 + | Nie | n/d |
-| [Transkrypcje audio i oznaczone przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Używane do oceny dokładności | 0,5 - 5 godzin audio | Yes | 1 – 1000 godzin danych audio |
-| [Dowolny tekst związany z](##related-text-data-for-training) | Nie | n/d | Yes | 1 – 200 MB dowolny tekst związany z |
+| [Audio](#audio-data-for-testing) | Tak<br>Używane do inspekcji wizualnego | pliki audio 5 + | Nie | n/d |
+| [Transkrypcje audio i oznaczone przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Używane do oceny dokładności | 0,5 - 5 godzin audio | Tak | 1 – 1000 godzin danych audio |
+| [Dowolny tekst związany z](##related-text-data-for-training) | Nie | n/d | Tak | 1 – 200 MB dowolny tekst związany z |
 
 Pliki powinny pogrupowane według typu do zestawu danych i przekazać w formie pliku zip. Każdy zestaw danych może zawierać tylko jednego typu danych.
 
@@ -59,7 +59,7 @@ Upewnij się, czy plików audio są prawidłowo sformatowane do użycia z usług
 | Kanały | 1 (mono) |
 | Maksymalna długość dla audio | 2 godziny |
 | Przykładowy format | PCM, 16-bitowych |
-| Format archiwum | zip |
+| Format archiwum | .zip |
 | Rozmiar maksymalny archiwum | 2 GB |
 
 Jeśli chcesz sprawdzić, jeśli nie audio nie spełniają tych właściwości, zalecamy pobranie [sox](http://sox.sourceforge.net) Sprawdź lub konwertowanie dźwięku. Poniżej przedstawiono przykłady jak każdy z tych działań może odbywać się za pośrednictwem wiersza polecenia:
@@ -80,7 +80,7 @@ Do mierzenia dokładności dokładność mowy na tekst firmy Microsoft, podczas 
 | Kanały | 1 (mono) |
 | Maksymalna długość dla audio | 60 s |
 | Przykładowy format | PCM, 16-bitowych |
-| Format archiwum | zip |
+| Format archiwum | .zip |
 | Rozmiar maksymalny zip | 2 GB |
 
 Aby rozwiązać problemy z, takie jak word usunięcie lub zastąpienie, znacznej ilości danych jest wymagana w celu rozpoznawania. Ogólnie rzecz biorąc zaleca się podanie transkrypcje programu word, wyraz około 10 do 1000 godzin audio. Transkrypcje dla wszystkich plików WAV powinny znajdować się w jednym pliku tekstowym (zwykły tekst). Każdy wiersz pliku z transkrypcją powinien zawierać nazwę jednego z plików dźwiękowych, a następnie odpowiednią transkrypcję. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t).
@@ -142,7 +142,7 @@ Obejmuje to przykłady prowadzone wypowiedź i Wymowa niestandardowe dla każdeg
 |--------------|--------------------------|
 | o trzy p c | 3CPO |  
 | k k, n t | CNTK |
-| mogę potrójne e | IEE |
+| mogę potrójne e | IEEE |
 
 Mówionej formy jest sekwencja fonetycznych województw. Mogą się składać list, słów, sylab lub kombinacji tych trzech miejsc.
 
@@ -150,7 +150,7 @@ Wymowa dostosowane jest dostępna w języku angielskim (en US) i niemiecki (de-D
 
 | Język | Ustawienia regionalne | Znaki |
 |----------|--------|------------|
-| Polski | en-US | , b, c, d, e, f, g, h, i, "j", k, l, m, n, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
+| Angielski | en-US | , b, c, d, e, f, g, h, i, "j", k, l, m, n, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
 | Niemiecki | de-DE. | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Upewnij się, jest poprawnie sformatowany plik powiązanych danych dla wymowy przy użyciu tej tabeli. Wymowa pliki są małe i nie powinna przekraczać kilka artykułów bazy wiedzy.

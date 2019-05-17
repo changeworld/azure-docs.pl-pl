@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605238"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796874"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -41,7 +41,7 @@ Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów dany
 
 Aby wymusić żądania, które mają być obsługiwane przez określone centrum danych, zmienić globalny punkt końcowy w żądaniu interfejsu API do żądanego punktu końcowego regionalne:
 
-|Opis|Region|Podstawowy adres URL|
+|Opis|Obszar|Podstawowy adres URL|
 |:--|:--|:--|
 |Azure|Globalny|  api.cognitive.microsofttranslator.com|
 |Azure|Ameryka Północna|   api-nam.cognitive.microsofttranslator.com|
@@ -161,7 +161,7 @@ Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 
 | 405000| Metoda żądania nie jest obsługiwana dla żądanego zasobu.|
 | 408001| Żądanego systemu tłumaczenia niestandardowych nie jest jeszcze dostępna. Spróbuj ponownie za kilka minut.|
 | 415000| Nagłówek Content-Type jest brakujący lub nieprawidłowy.|
-| 429000, 429001, 429002| Serwer odrzucił żądanie, ponieważ klient wysyła zbyt wiele żądań. Zmniejsz częstotliwość żądań, aby uniknąć ograniczenia przepustowości.|
+| 429000, 429001, 429002| Serwer odrzucił żądanie, ponieważ klienta przekroczyła limity żądań.|
 | 500000| Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś to za pomocą daty/godziny wystąpienia błędu, poproś identyfikator odpowiedzi nagłówek X-RequestId i identyfikator klienta z nagłówek żądania X-ClientTraceId.|
 | 503000| Usługa jest tymczasowo niedostępna. Spróbuj ponownie. Jeśli błąd będzie się powtarzać, zgłoś to za pomocą daty/godziny wystąpienia błędu, poproś identyfikator odpowiedzi nagłówek X-RequestId i identyfikator klienta z nagłówek żądania X-ClientTraceId.|
 

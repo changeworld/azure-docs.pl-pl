@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 9b779021eca11638e8ee52ec11d082e5b0e89cd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506684"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786457"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zasady pomocy technicznej dla usługi Azure Kubernetes Service
 
@@ -146,7 +146,7 @@ Wersja zapoznawcza funkcji lub flagi funkcji nie są przeznaczone dla środowisk
 
 Funkcje w wersji zapoznawczej są "starań" pomocy technicznej, należą te funkcje są w wersji zapoznawczej i nie przeznaczone dla środowiska produkcyjnego i są obsługiwane przez zespoły pomocy technicznej usługi AKS tylko w godzinach roboczych. Aby uzyskać więcej informacji zobacz:
 
-* [Pomoc techniczna platformy Azure — często zadawane pytania](https://azure.microsoft.com/en-us/support/faq/)
+* [Pomoc techniczna platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
 > Funkcje w wersji zapoznawczej obowiązywać Azure *subskrypcji* poziom. Nie instaluj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. W przypadku subskrypcji produkcyjnych funkcji w wersji zapoznawczej można zmienić domyślne zachowanie interfejsu API i wpływających na funkcjonowanie regularne.

@@ -16,12 +16,12 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e49f0077444f86eabeed22cc7cecf5e0ac7f8b5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ede412292caf682c3078002d23e1956bd68d1378
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141198"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602202"
 ---
 # <a name="review-access-to-azure-resource-roles-in-pim"></a>Przegląd dostępu wszystkich użytkowników do ról zasobów platformy Azure w usłudze PIM
 Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 
@@ -45,12 +45,12 @@ Wykonaj następujące kroki, aby znaleźć i zakończyć Przegląd dostępu:
 1. Przejdź do aplikacji Azure AD PIM.
 2. Wybierz **Przegląd dostępu wszystkich użytkowników** bloku.
 
-   ![Zrzut ekranu usługi PIM aplikacji, za pomocą bloku dostępu Przejrzyj wybrane](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+   ![Zrzut ekranu usługi PIM aplikacji, za pomocą bloku dostępu Przejrzyj wybrane](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 3. Wybierz pozycję Przegląd, który chcesz wykonać. 
 4. Wybierz opcję **zatwierdzić** lub **Odmów**. W **zapewnia Przyczyna pole**, może być konieczne w celu uwzględnienia przyczynę swojej decyzji.
 
-   ![Strona szczegółów zrzut ekranu Przegląd](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![Strona szczegółów zrzut ekranu Przegląd](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

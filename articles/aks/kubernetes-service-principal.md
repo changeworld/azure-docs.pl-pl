@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: a1fe8929b5ae39c82850aa08899c7b3e6bb98c7e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725310"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786394"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -23,6 +23,8 @@ W tym artykule przedstawiono sposób tworzenia jednostki usługi dla klastra us�
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Aby utworzyć jednostkę usługi Azure AD, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Jeśli nie masz niezbędnych uprawnień, może być konieczne zwrócenie się z prośbą do administratora usługi Azure AD lub subskrypcji o przyznanie niezbędnych uprawnień lub wstępne utworzenie jednostki usługi do użycia z klastrem usługi AKS.
+
+Jeśli używasz nazwy głównej usługi z różnymi usługami Azure AD dzierżawy, istnieją dodatkowe zagadnienia dotyczące uprawnienia dostępne w przypadku wdrażania klastra. Nie masz odpowiednich uprawnień do odczytywania i zapisywania informacji o katalogu. Aby uzyskać więcej informacji, zobacz [jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?][azure-ad-permissions]
 
 Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
@@ -89,7 +91,7 @@ Opcja `--scope` dla zasobu musi być pełnym identyfikatorem zasobu, takim jak *
 
 W poniższych sekcjach opisano typowe delegacje, które należy wykonać.
 
-### <a name="azure-container-registry"></a>Azure Container Registry
+### <a name="azure-container-registry"></a>Rejestr kontenerów platformy Azure
 
 Jeśli używasz usługi Azure Container Registry (ACR) jako magazynu obrazów kontenerów, należy udzielić uprawnień dla klastra usługi AKS do odczytywania i ściągania obrazów. Dla jednostki usługi klastra AKS należy delegować rolę *Czytelnik* w rejestrze. Aby uzyskać szczegółowe instrukcje, zobacz [Grant AKS access to ACR][aks-to-acr] (Udzielanie klastrowi AKS uprawnień do usługi ACR).
 
@@ -158,3 +160,4 @@ Aby uzyskać informacje o sposobie aktualizowania poświadczeń, zobacz [aktuali
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
 [update-credentials]: update-credentials.md
+[azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

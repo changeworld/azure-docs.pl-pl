@@ -16,12 +16,12 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37057e531ea8387fbed84c9b03bbfb9c14d160ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5404d1b85821458aedef64b72ae635ea49aa1ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287578"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602464"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Wykonywanie przeglądu dostępu w usłudze PIM przy użyciu pulpitu nawigacyjnego zasobu
 
@@ -31,9 +31,9 @@ Zasób pulpit nawigacyjny umożliwia wykonywanie przeglądu dostępu w usłudze 
 - Dwa wykresy, które wyświetlają rozkład przypisań ról, typ przypisania.
 - Obszar danych, odnoszące się do nowego przypisania roli.
 
-![Zrzut ekranu pulpitu nawigacyjnego widok administratora i wykresy](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![Zrzut ekranu pulpitu nawigacyjnego widok administratora i wykresy](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
-![Zrzut ekranu pulpitu nawigacyjnego widok administratora i listę danych](media/azure-pim-resource-rbac/role-settings.png)
+![Zrzut ekranu pulpitu nawigacyjnego widok administratora i listę danych](media/pim-resource-roles-overview-dashboards/role-settings.png)
 
 Graficzna reprezentacja zasobu aktywacji roli obejmuje ostatnich siedmiu dni. Te dane są ograniczone do wybranego zasobu i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, administrator dostępu użytkowników), a także dla wszystkich ról w połączeniu.
 

@@ -15,42 +15,42 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09e04e6b61d3387cb8c50c2af4eef2cfb4bec196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437833"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602448"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM
 Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generuje alerty w przypadku podejrzanej lub niebezpieczne działania w środowisku. Po wyzwoleniu alertu ona wyświetlona na stronie alertów. 
 
-![Strona alertów](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
+![Strona alertów](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
 ## <a name="review-alerts"></a>Przeglądanie alertów
 Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwolony alert, wraz z porad korygowania.
 
-![Raport o alertach](media/azure-pim-resource-rbac/rbac-alert-info.png)
+![Raport o alertach](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Alerty
-| Alerty | Ważność | Wyzwalacz | Zalecenie |
+| Alert | Severity | Wyzwalacz | Zalecenie |
 | --- | --- | --- | --- |
-| **Zbyt wielu właścicieli przypisanych do zasobu** |Medium |Zbyt wielu użytkowników korzysta z roli właściciela. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre mniej uprzywilejowanych ról. |
-| **Zbyt wiele trwałych właścicieli przypisanych do zasobu** |Medium |Zbyt wielu użytkowników są trwale przypisane do roli. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre do wymagana aktywacja w celu użycia roli. |
-| **Utworzono zduplikowaną rolę** |Medium |Wiele ról ma takich samych kryteriów. |Użyj tylko jednej z tych ról. |
+| **Zbyt wielu właścicieli przypisanych do zasobu** |Średnia |Zbyt wielu użytkowników korzysta z roli właściciela. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre mniej uprzywilejowanych ról. |
+| **Zbyt wiele trwałych właścicieli przypisanych do zasobu** |Średnia |Zbyt wielu użytkowników są trwale przypisane do roli. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre do wymagana aktywacja w celu użycia roli. |
+| **Utworzono zduplikowaną rolę** |Średnia |Wiele ról ma takich samych kryteriów. |Użyj tylko jednej z tych ról. |
 
 
-### <a name="severity"></a>Ważność
+### <a name="severity"></a>Severity
 * **Wysoka**: Wymaga natychmiastowego działania z powodu naruszenia zasad. 
 * **Średnia**: Nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
 * **Niska**: Nie wymagać natychmiastowego działania, ale sugeruje zmiana preferowanego zasad.
 
 ## <a name="configure-security-alert-settings"></a>Konfigurowanie ustawień alertów zabezpieczeń
 Na stronie alertów, przejdź do **ustawienia**.
-![Ustawienia](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
+![Ustawienia](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
 Dostosowywanie ustawień na różne alerty chcesz pracować w swoim środowisku i cele zabezpieczeń.
-![Dostosowywanie ustawień](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+![Dostosowywanie ustawień](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

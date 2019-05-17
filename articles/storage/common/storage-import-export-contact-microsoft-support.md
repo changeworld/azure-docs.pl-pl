@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
-ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42c8c9c89a69224b222aabe8e929d800d22162ce
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483297"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604224"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwórz bilet pomocy technicznej do zadania importu/eksportu
 
@@ -22,13 +22,13 @@ Jeśli napotkasz jakiekolwiek problemy przy użyciu usługi Import/Export można
 * Jak utworzyć żądanie pomocy technicznej.
 * Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
 
-## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
+## <a name="create-a-support-request"></a>Utwórz żądanie obsługi
 
 Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
 1. Przejdź do zadania importu/eksportu. Przejdź do **pomoc techniczna i rozwiązywanie problemów** sekcji, a następnie kliknij przycisk **nowe żądanie obsługi**.
      
-    ![Podstawy](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![Ustawienia podstawowe](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. W **nowe żądanie obsługi**, wybierz opcję **podstawy**. W **podstawy**, wykonaj następujące czynności:
     
@@ -58,7 +58,7 @@ Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 4. W **nowe żądanie obsługi**, kliknij przycisk **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe**, wykonaj następujące czynności:
 
    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pola wyboru.
+   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pola wyboru.
    3. Kliknij pozycję **Utwórz**.
    
        ![Informacje kontaktowe](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   

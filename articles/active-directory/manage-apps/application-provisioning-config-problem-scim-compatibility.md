@@ -3,8 +3,8 @@ title: Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard 
 description: Rozwiązywanie typowych problemów ze zgodnością protokołu zmierzyła się z zespołem podczas dodawania aplikacji spoza galerii, która obsługuje do usługi Azure AD w wersji 2.0 Standard SCIM
 services: active-directory
 documentationcenter: ''
-author: asmalser
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: asmalser
+ms.author: mimart
+ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 952853b32b5fadb980e9e96a7c56c05ac63d9931
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293760"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784608"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD
 
@@ -37,10 +38,10 @@ W tym artykule opisano bieżącej i wcześniejszych problemów z użytkownikiem 
 
 | **Problem ze zgodnością w wersji 2.0 Standard SCIM** |  **Naprawiono?** | **Napraw daty**  |  
 |---|---|---|
-| Usługa Azure AD wymaga "/ Standard scim" w katalogu głównym aplikacji przez adres URL punktu końcowego Standard SCIM  | Yes  |  18 grudnia 2018 r. | 
-| Atrybuty rozszerzenia używać znaku kropki "."notacji przed nazwami atrybutów zamiast średnikami":" notacji |  Yes  | 18 grudnia 2018 r.  | 
-|  Atrybuty wielowartościowe w żądaniach Patch zawiera nieprawidłową ścieżkę składnia filtru | Yes  |  18 grudnia 2018 r.  | 
-|  Żądania tworzenia grupy zawierają nieprawidłowy schemat identyfikatora URI | Yes  |  18 grudnia 2018 r.  |  
+| Usługa Azure AD wymaga "/ Standard scim" w katalogu głównym aplikacji przez adres URL punktu końcowego Standard SCIM  | Tak  |  18 grudnia 2018 r. | 
+| Atrybuty rozszerzenia używać znaku kropki "."notacji przed nazwami atrybutów zamiast średnikami":" notacji |  Tak  | 18 grudnia 2018 r.  | 
+|  Atrybuty wielowartościowe w żądaniach Patch zawiera nieprawidłową ścieżkę składnia filtru | Tak  |  18 grudnia 2018 r.  | 
+|  Żądania tworzenia grupy zawierają nieprawidłowy schemat identyfikatora URI | Tak  |  18 grudnia 2018 r.  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zostały poprawki usługi opisane, automatycznie stosowane do mojej istniejących aplikacji Standard SCIM?
 

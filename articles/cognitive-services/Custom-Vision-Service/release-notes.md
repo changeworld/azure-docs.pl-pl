@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816389"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787947"
 ---
 # <a name="custom-vision-service-release-notes"></a>Informacje o wersji usługi Custom Vision
+
+## <a name="may-2-2019-and-may-10-2019"></a>2 maja 2019 r i 10 maja 2019 r.
+
+- Ulepszenia poprawki błędów i wewnętrznej bazy danych
+
+## <a name="may-23-2019"></a>23 maja 2019 r.
+
+- Ulepszony portal środowisko środowiska użytkownika związane z subskrypcjami platformy Azure, co ułatwia wybieranie katalogów platformy Azure.
+
+## <a name="april-18-2019"></a>18 kwietnia 2019 r. 
+
+- Dodano wykrywanie obiektów eksportu sztucznej Inteligencji wizji deweloperski.
+- Ulepszenia interfejsu użytkownika, w tym projekcie wyszukiwania.
+
+## <a name="april-3-2019"></a>3 kwietnia 2019 r.
+
+- Zwiększono limit liczby obwiedni na obraz do 200. 
+- Poprawki błędów, w tym aktualizacja wydajności istotne dla modeli wyeksportowane do TensorFlow. 
 
 ## <a name="march-26-2019"></a>26 marca 2019 r.
 

@@ -11,10 +11,10 @@ ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9bc2bd50fda34b493463898d8ef47ed2c246b7d8
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65751156"
+ms.locfileid: "65790102"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Powrót po awarii maszyny Wirtualnej platformy Azure między regionami platformy Azure
 

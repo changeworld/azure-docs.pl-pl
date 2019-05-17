@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373321"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604283"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Często zadawane pytania
 
@@ -132,7 +132,7 @@ Tak, na serwerze można napisać:
 
 Dowiedz się więcej na [ASP.NET](api-filtering-sampling.md) lub [Java](java-filter-telemetry.md).
 
-## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Jak miasto, kraj i inne dane lokalizacji geograficznej obliczane są?
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Jak miasto, kraj/region i inne dane lokalizacji geograficznej obliczane są?
 
 Możemy wyszukać adres IP (IPv4 lub IPv6) klienta sieci web przy użyciu [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 

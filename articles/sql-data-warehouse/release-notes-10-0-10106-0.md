@@ -5,27 +5,48 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/10/2019
+ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 4c5279d1ddf3153493ebc01dc010114ff7e6b5e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917246"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792429"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
 Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersjach [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). Artykuł zawiera także listę istotnych aktualizacji zawartości, które nie są bezpośrednio związane z wydaniem opublikowane w tym samym przedziale czasu. Ulepszenia do innych usług platformy Azure, można zobaczyć [aktualizowaniem usługi](https://azure.microsoft.com/updates).
 
+## <a name="check-your-azure-sql-data-warehouse-version"></a>Sprawdź swoją wersję usługi Azure SQL Data Warehouse
+
+Łączenie z magazynem danych za pośrednictwem programu SQL Server Management Studio (SSMS), a następnie uruchom następującej składni, aby powrócić do bieżącej wersji usługi SQL Data Warehouse.
+
+```sql
+SELECT @@VERSION AS 'SQL Data Warehouse';
+```
+
+Przykładowe dane wyjściowe: ![Wersja SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
+
+Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone do usługi Azure SQL Data Warehouse.
+
+## <a name="may-2019"></a>Maja 2019 r
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+|**Dane dynamiczne maskowanie (wersja zapoznawcza)**|Dynamiczne maskowanie danych (DDM) pozwala zapobiegać nieautoryzowanemu dostępowi do danych poufnych w magazynie danych, polega na zaciemnianiu ją na bieżąco w wynikach kwerendy na podstawie reguł maskowania, jaką zdefiniujesz. Aby uzyskać więcej informacji, zobacz [bazy danych SQL dynamiczne maskowanie danych](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**Znaczenie obciążenie jest teraz ogólnie dostępna**|Obciążenie Zarządzanie klasyfikacji i znaczenie zapewniają możliwość wywierania wpływu na kolejność wykonywania zapytania. Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/> -[Obciążenie pojęć związanych z zarządzaniem](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**Dodatkową obsługę języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę: </br> - [W STREFIE CZASOWEJ](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**Funkcje JSON**|Analitycy biznesowi mogą teraz używać znanego języka T-SQL do wykonywania zapytań i manipulowania nimi dokumenty, które są sformatowane jako dane JSON w usłudze Azure Data Warehouse przy użyciu następujących nowych funkcji JSON:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
+|**Zestaw wyników buforowania (wersja zapoznawcza)**|Zestaw wyników z pamięci podręcznej umożliwia błyskawicznych zapytań czasy reakcji przy jednoczesnym zmniejszeniu czasu do wglądu dla analityków biznesowych i raportowania użytkowników. Aby uzyskać więcej informacji, zobacz:</br> - [Instrukcja ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE — opcje SET (języka Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Ustaw zestaw wyników BUFOROWANIA (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET — instrukcja (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+
 ## <a name="march-2019"></a>Marca 2019 r
 
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
-|**Teraz dostępna w wersji zapoznawczej Gen2 znaczenie obciążenia**|Znaczenie obciążenia zapewnia inżynierom danych możliwość używania znaczenie do klasyfikowania żądań. Żądania o wyższym ważności jest gwarantowana szybszego uzyskiwania dostępu do zasobów, która pomaga spełnić wymagania umów SLA.  Znaczenie obciążenia pozwala biznesowe wysoki wartość pracy, aby spełnić wymagania umów SLA w środowisku współdzielonym za pomocą mniejszej ilości zasobów.<br/><br/>Podgląd obciążenia zarządzania klasyfikacji i znaczenie jest dla kompilacji z datą 9 kwietnia 2019 lub nowszej wersji. Użytkownikom należy unikać kompilacje starszych niż ta data do testowania zarządzania obciążeniem. Aby ustalić, czy zarządzanie obciążeniami zdolne do kompilacji, uruchom `select @@version` po podłączeniu do wystąpienia usługi SQL Data Warehouse.</br></br>Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/>[Obciążenie pojęć związanych z zarządzaniem](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**Odnajdywanie i klasyfikacja danych**|Funkcja odnajdowania i klasyfikacji danych jest teraz dostępna w publicznej wersji zapoznawczej dla usługi Azure SQL Data Warehouse. Koniecznie Ochrona cennych danych i prywatności Twoich klientów. Gdy wzrosną biznesowych i zasobów danych klienta, staje się bezproblemowego zarządzania do odnajdywania, klasyfikowania i ochrony danych. Dane odnajdywanie i klasyfikacja funkcji, którą wprowadzamy natywnie przy użyciu usługi Azure SQL Data Warehouse ułatwia ochronę danych łatwiejsze w zarządzaniu. Oto ogólne korzyści związane z tą funkcją:<br/>&bull; &nbsp; Standardy ochrony prywatności danych spotkania i wymagania dotyczące zgodności z przepisami.<br/>&bull; &nbsp; Ograniczanie dostępu oraz wzmacniania ochrony bezpieczeństwa danych warehouses zawierających poufne dane.<br/>&bull; &nbsp; Monitorowania i alertów dla nietypowego dostępu do poufnych danych.<br/>&bull; &nbsp; Wizualizacja danych poufnych w centralnym pulpicie nawigacyjnym w witrynie Azure portal. </br></br>Odnajdywanie i klasyfikacja danych jest dostępna dla usługi Azure SQL Data Warehouse we wszystkich regionach platformy Azure, tego część zaawansowane zabezpieczenia danych łącznie z oceny luk w zabezpieczeniach i wykrywanie zagrożeń. Aby uzyskać więcej informacji na temat odnajdywanie i klasyfikacja danych zobacz [wpis w blogu](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/) i naszymi [dokumentacji](/azure/sql-database/sql-database-data-discovery-and-classification).|
 |**GRUPUJ WEDŁUG ZBIORCZEGO**|Pakiet ZBIORCZY jest teraz obsługiwaną opcją GROUP BY w usłudze Azure Data Warehouse.   Przedstawienie grupy przez tworzy grupę dla każdej kombinacji wyrażeń kolumny. GROUP BY również "rzutuje" wyniki do sumy częściowe i końcowe. Przetwarza funkcji GROUP BY od prawej do lewej, zmniejszając liczbę wyrażeń kolumny, które tworzy, grupy i aggregation(s).  Kolejność kolumn wpływa na dane wyjściowe ZBIORCZY i może wpłynąć na liczbę wierszy w zestawie wyników.<br/><br/>Aby uzyskać więcej informacji na przedstawienie według grupy, zobacz [GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**Polepszenia dokładności używane jednostki DWU i procesora CPU metrykami w portalu**|Usługa SQL Data Warehouse znacznie zwiększa dokładność metryki w witrynie Azure portal.  Ta wersja zawiera poprawkę do definicji metryk, procesora CPU i użyte jednostki DWU Aby poprawnie odzwierciedlają obciążenie we wszystkich węzłach obliczeniowych. Zanim ta poprawka wartości metryk zostały trwa undereported. Oczekują zobaczyć zwiększenie używane jednostki DWU i metryk użycia Procesora w witrynie Azure portal. |

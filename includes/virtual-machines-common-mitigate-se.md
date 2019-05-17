@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: be8c3d3be4410d15ba132a24a417e7a7b0418352
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: ba41f6cce5233491020a0b42f4fd40dac060be57
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620266"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815603"
 ---
 **Ostatnie dokumentowanie aktualizacji**: 14 maja 2019 10:00 czasu PST.
 
@@ -29,7 +29,7 @@ Więcej informacji na temat sposobu zabezpieczenia są zintegrowane w każdy asp
 > Ponieważ w tym dokumencie najpierw została opublikowana, wielu wariantów tej klasy luk w zabezpieczeniach zostały ujawnione. Firma Microsoft nadal można w dużym stopniu poświęcił w celu ochrony klientów i zapewnianie doradztwa w zakresie. Ta strona będzie aktualizowana w miarę dalszego poprawki wydania. 
 > 
 > Na 14 maja 2019 r [Intel ujawnione](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) nowego zestawu z wykonywaniem spekulatywnym po stronie kanału luki w zabezpieczeniach znane jako próbkowanie danych mikroarchitektury (MDS, zobacz wskazówki dotyczące zabezpieczeń firmy Microsoft [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), który przypisano wiele CVEs: 
-> - CVE-2018-11091 - mikroarchitektury dane próbkowania pamięci Uncacheable (MDSUM)
+> - CVE-2019-11091 - mikroarchitektury dane próbkowania pamięci Uncacheable (MDSUM)
 > - CVE-2018-12126 - Store mikroarchitektury buforowania danych próbkowania (MSBDS) 
 > - CVE-2018-12127 — Port obciążenia mikroarchitektury danych próbkowania (MLPDS)
 > - CVE-2018-12130 - wypełnienia mikroarchitektury buforowania danych próbkowania (MFBDS)
@@ -123,7 +123,7 @@ Jeśli dane wyjściowe pokazują `MDS mitigation is enabled: False`, [skontaktuj
 <a name="linux"></a>Włączanie zestaw dodatkowych funkcji zabezpieczeń wewnątrz wymaga docelowy system operacyjny aktualne. Niektóre środki zaradcze zostaną włączone domyślnie. W poniższej sekcji opisano funkcje, które są wyłączone, domyślnie i/lub na architekturze na pomoc techniczna dotycząca sprzętu (mikrokodu). Włączenie tych funkcji może spowodować negatywny wpływ na wydajność. Aby uzyskać dalsze instrukcje dokumentacji dostawcy systemu operacyjnego
 
 
-**Krok 1. Wyłącz wielowątkowość na maszynie Wirtualnej** — klienci korzystający z niezaufanego kodu na hyperthreaded z maszyny Wirtualnej będzie konieczne wyłączenie wielowątkowość lub przenieść do innego niż hyperthreaded maszyny Wirtualnej.  Aby sprawdzić, czy używasz hyperthreaded maszyny Wirtualnej, uruchom `lspcu` polecenia na maszynie Wirtualnej systemu Linux. 
+**Krok 1. Wyłącz wielowątkowość na maszynie Wirtualnej** — klienci korzystający z niezaufanego kodu na hyperthreaded z maszyny Wirtualnej będzie konieczne wyłączenie wielowątkowość lub przenieść do innego niż hyperthreaded maszyny Wirtualnej.  Aby sprawdzić, czy używasz hyperthreaded maszyny Wirtualnej, uruchom `lscpu` polecenia na maszynie Wirtualnej systemu Linux. 
 
 Jeśli `Thread(s) per core = 2`, wówczas wielowątkowość został włączony. 
 
@@ -146,7 +146,7 @@ NUMA node(s):          1
 
 ```
 
-Jeśli używasz hyperthreaded maszyny Wirtualnej, [skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) można pobrać wielowątkowość wyłączone.  Uwaga: Po wyłączeniu wielowątkowość **pomoc techniczna będzie wymagać pełne ponowne uruchomienie maszyny Wirtualnej**.
+Jeśli używasz hyperthreaded maszyny Wirtualnej, [skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) można pobrać wielowątkowość wyłączone.  Po wyłączeniu wielowątkowość **pomoc techniczna będzie wymagać pełne ponowne uruchomienie maszyny Wirtualnej**.
 
 
 **Krok 2**: Aby ograniczyć ryzyko ze znajdujących się poniżej związanego z wykonywaniem spekulatywnym kanału po stronie luk w zabezpieczeniach można znaleźć w dokumentacji dostawcy systemu operacyjnego:   
@@ -159,18 +159,18 @@ Jeśli używasz hyperthreaded maszyny Wirtualnej, [skontaktuj się z działem po
 
 Ten artykuł zawiera wskazówki dotyczące poniżej związanego z wykonywaniem spekulatywnym kanału po stronie ataków, które wpływają na wiele procesorów nowoczesnych:
 
-[Meltdown krokami zaradczymi dla luki](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180002):
+[Meltdown krokami zaradczymi dla luki](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002):
 - CVE-2017-5715 - gałęzi docelowej iniekcji (WIT)  
 - CVE-2017-5754 - izolacji tabeli stron jądra (KPTI)
 - CVE-2018-3639 — obejście spekulacyjnego Store (KPTI) 
  
-[L1 Terminalu błędów (L1TF)](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180018):
+[L1 Terminalu błędów (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
 - CVE-2018-3615 — rozszerzenia Guard oprogramowania firmy Intel (Intel SGX)
 - CVE-2018-3620 — systemy operacyjne (OS) i tryb zarządzania systemem (SMM)
 - CVE-2018-3646 — Virtual Machine Manager (VMM) na środowisko
 
-[Próbkowanie danych mikroarchitektury](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV190013): 
-- CVE-2018-11091 - mikroarchitektury dane próbkowania pamięci Uncacheable (MDSUM)
+[Próbkowanie danych mikroarchitektury](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190013): 
+- CVE-2019-11091 - mikroarchitektury dane próbkowania pamięci Uncacheable (MDSUM)
 - CVE-2018-12126 - Store mikroarchitektury buforowania danych próbkowania (MSBDS)
 - CVE-2018-12127 — Port obciążenia mikroarchitektury danych próbkowania (MLPDS)
 - CVE-2018-12130 - wypełnienia mikroarchitektury buforowania danych próbkowania (MFBDS)

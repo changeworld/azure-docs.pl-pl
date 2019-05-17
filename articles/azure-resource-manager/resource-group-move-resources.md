@@ -1,31 +1,25 @@
 ---
 title: Przenoszenie zasobów platformy Azure do nowej subskrypcji lub grupy zasobów | Dokumentacja firmy Microsoft
 description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji usługi Azure Resource Manager.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 076d120d9c02b15837e92b71bc2a015377f54594
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698486"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792701"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
 W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
 
-Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszenia. Operacje zapisu i usuwania na grupach zasobów są blokowane do momentu zakończenia przenoszenia. Ta blokada oznacza, że nie można dodawać, aktualizować ani usuwać zasobów w tych grupach zasobów, ale nie oznacza to, że zasoby są zamrożone. Jeśli na przykład przeniesiesz program SQL Server i jego bazę danych do nowej grupy zasobów, nie dojdzie do przestoju aplikacji korzystającej z tej bazy danych. Nadal będzie możliwe odczytywanie i zapisywanie danych w bazie danych.
+Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszenia. Pisanie i operacje usuwania są zablokowane na temat grup zasobów, dopiero po zakończeniu przenoszenia. Ta blokada oznacza, że nie Dodawanie, aktualizowanie lub usuwanie zasobów w grupach zasobów, ale nie oznacza, że zasoby są zablokowane. Na przykład jeśli zostanie przeniesiony do nowej grupy zasobów programu SQL Server i jego bazy danych, aplikacji korzystającej z bazy danych środowisk bez przestojów. Nadal może odczytywać i zapisywać w bazie danych.
 
-Przeniesienie zasobu powoduje jedynie przeniesienie go do nowej grupy zasobów. Operacja przenoszenia nie może zmienić lokalizacji zasobu. Nowa grupa zasobów może mieć inną lokalizację, ale to nie ulega zmianie lokalizacji zasobu.
+Przenoszenie zasobu tylko przenosi je do nowej grupy zasobów. Operacja przenoszenia nie może zmienić lokalizacji zasobu. Nowa grupa zasobów może mieć inną lokalizację, ale to nie ulega zmianie lokalizacji zasobu.
 
 > [!NOTE]
 > W tym artykule opisano sposób przenoszenia zasobów między istniejącymi subskrypcjami systemu Azure. Jeśli rzeczywiście chcesz uaktualnić swoją subskrypcję platformy Azure (np. przełączanie z bezpłatnej na płatność za rzeczywiste użycie), musisz przekonwertować subskrypcję.
@@ -60,8 +54,8 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Azure Cosmos DB
 * Azure Data Explorer
-* Azure Database for MariaDB
-* Azure Database for MySQL
+* Usługa Azure Database for MariaDB
+* Usługa Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Usługa Azure DevOps — wykonaj kroki, aby [zmienić subskrypcję platformy Azure używane na potrzeby rozliczeń](/azure/devops/organizations/billing/change-azure-subscription?view=azure-devops).
 * Azure Maps
@@ -74,7 +68,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * CDN
 * Cloud Services — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry
+* Rejestr kontenerów
 * Content Moderator
 * Cost Management
 * Customer Insights
@@ -95,7 +89,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
 * Usługa Managed Disks — Managed Disks w strefach dostępności nie można przenieść do innej subskrypcji
 * Tożsamość zarządzana — przypisanych przez użytkownika
-* Media Services
+* Usługa multimediów
 * Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#monitor-limits)
 * Notification Hubs
 * Operational Insights
@@ -104,19 +98,20 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
 * Usługi Recovery Services vault — Zarejestruj się w [Podgląd](#recovery-services-limitations).
-* Oprogramowanie SAP HANA na platformie Azure
+* Platforma SAP HANA na platformie Azure
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
-* Service Bus
+* Magistrala usług
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
 * Nie można przenieść magazyn — konta magazynu w różnych regionach, w tej samej operacji. Zamiast tego należy użyć oddzielnych operacji dla każdego regionu.
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
+* Usługa synchronizacji magazynu
 * Stream Analytics — Stream Analytics, zadania nie można przenieść uruchamianego w stanie.
 * Bazy danych programu SQL server — bazy danych i serwera musi być w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 * Time Series Insights
-* Traffic Manager
+* Menedżer ruchu
 * Virtual Machines — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Maszyny wirtualne (klasyczne) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Zestawy skalowania maszyn wirtualnych — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
@@ -138,7 +133,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Azure NetApp Files
 * Certyfikaty — certyfikaty usługi App Service można przenosić, ale zostały przekazane certyfikaty [ograniczenia](#app-service-limitations).
 * Aplikacje klasyczne
-* Container Instances
+* Wystąpienia kontenerów
 * Container Service
 * Data Box
 * Miejsca do magazynowania dev
@@ -236,7 +231,7 @@ Wybierz opcję, aby uzyskać zalecane kroki, aby przenieść aplikację sieci we
 
 Zostanie wyświetlony zalecane akcje, które należy wykonać przed przenoszenia zasobów. Informacje dotyczące oryginalnej grupy zasobów dla aplikacji sieci web.
 
-![Zalecenia](./media/resource-group-move-resources/recommendations.png)
+![Rekomendacje](./media/resource-group-move-resources/recommendations.png)
 
 ### <a name="app-service-certificate-limitations"></a>Ograniczenia dotyczące certyfikatu usługi aplikacji
 
@@ -353,7 +348,7 @@ Klastry HDInsight można przenieść do nowej subskrypcji lub grupy zasobów. Je
 
 Podczas przenoszenia klastra usługi HDInsight do nowej subskrypcji, należy najpierw przenieść innych zasobów (np. konta magazynu). Następnie przenieś klaster HDInsight samodzielnie.
 
-## <a name="checklist-before-moving-resources"></a>Sporządzenie listy kontrolnej przed przeniesieniem zasobów
+## <a name="checklist-before-moving-resources"></a>Listę kontrolną przed przenoszeniem zasobów
 
 Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki sprawdzeniu tych warunków można uniknąć błędów.
 

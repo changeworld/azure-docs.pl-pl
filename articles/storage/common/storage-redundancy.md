@@ -9,12 +9,12 @@ ms.date: 01/18/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 515081ca14d1c477f20d86e84ce302b5358bfaae
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7006e19616be51d79dc3e1319064d19024400bcc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150055"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789994"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
@@ -35,10 +35,10 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 
 | Scenariusz                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Niedostępność węzła w centrum danych                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                  |
-| Całego centrum danych (strefowych lub strefowych) staje się niedostępny                                           | Nie                              | Yes                              | Yes                                  | Yes                                  |
-| Awaria obejmujących cały region                                                                                     | Nie                              | Nie                               | Yes                                  | Yes                                  |
-| Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Yes                                  |
+| Niedostępność węzła w centrum danych                                                                 | Tak                             | Yes                              | Yes                                  | Tak                                  |
+| Całego centrum danych (strefowych lub strefowych) staje się niedostępny                                           | Nie                              | Yes                              | Yes                                  | Tak                                  |
+| Awaria obejmujących cały region                                                                                     | Nie                              | Nie                               | Yes                                  | Tak                                  |
+| Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Tak                                  |
 | Zaprojektowana w celu zapewnienia \_ \_ trwałości obiektów w danym roku                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99,99999999999999% (16 9) | co najmniej 99,99999999999999% (16 9) |
 | Typy kont magazynu obsługiwanych                                                                   | Konta GPv1, GPv2 obiektów Blob                | GPv2                             | Konta GPv1, GPv2 obiektów Blob                     | Konta GPv1, GPv2 obiektów Blob                     |
 | Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,99% (99,9% w przypadku warstwy dostępu chłodnego) |
@@ -52,7 +52,7 @@ Aby uzyskać informacje o usłudze Azure Storage gwarantuje potrzeby trwałości
 > Usługa Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS).
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategię replikacji
-Strategia replikacji konta magazynu można zmienić za pomocą [witryny Azure portal](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z [klient usługi Azure biblioteki](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie skutkuje czas przestoju.
+Strategia replikacji konta magazynu można zmienić za pomocą [witryny Azure portal](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z [klient usługi Azure biblioteki](https://docs.microsoft.com/azure/index#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie skutkuje czas przestoju.
 
    > [!NOTE]
    > Aby przekonwertować konta magazynu ZRS nie można obecnie używać interfejsu API lub portalu. Jeśli chcesz przekonwertować replikacji konta magazynu ZRS, zobacz [magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md) Aby uzyskać szczegółowe informacje.

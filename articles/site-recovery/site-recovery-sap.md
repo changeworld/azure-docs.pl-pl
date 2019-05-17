@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471603"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793669"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver
 
@@ -166,5 +166,5 @@ Aby uzyskać więcej informacji, zobacz [testowy tryb failover na platformie Azu
 Aby uzyskać więcej informacji, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: Tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](https://aka.ms/asr-sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
+* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: Tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](https://aka.ms/asr_sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
 * Dowiedz się więcej o [replikowanie innych obciążeń](site-recovery-workload.md) przy użyciu usługi Site Recovery.

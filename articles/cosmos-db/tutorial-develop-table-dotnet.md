@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: 0a329722b65e407f011016a1f55e86ef17b47d70
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce1af9c88bbdad96a22eb96abc26026abcad56cc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192399"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793039"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Wprowadzenie do interfejsu API tabeli usługi Azure Cosmos DB i Azure Table storage przy użyciu zestawu .NET SDK
 
@@ -63,7 +63,9 @@ Aby uzyskać pakiet NuGet, wykonaj następujące kroki:
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 
-1. Z [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **parametry połączenia**. Użyj przycisku kopiowania po prawej stronie okna, aby skopiować **PODSTAWOWE PARAMETRY POŁĄCZENIA**.
+1. Z [witryny Azure portal](https://portal.azure.com/), przejdź do swojego konta usługi Azure Cosmos lub konta usługi Table Storage. 
+
+1. Otwórz **parametry połączenia** lub **klucze dostępu** okienka. Użyj przycisku kopiowania po prawej stronie okna, aby skopiować **PODSTAWOWE PARAMETRY POŁĄCZENIA**.
 
    ![Wyświetlanie i kopiowanie PODSTAWOWYCH PARAMETRÓW POŁĄCZENIA w okienku parametrów połączenia](./media/create-table-dotnet/connection-string.png)
    

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: tulasim
-ms.openlocfilehash: 278040cb487df6731df1ad3e18435f6e12ca9d50
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65594057"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792231"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi wiedzy, za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -43,7 +43,7 @@ Zapytanie bazy wiedzy przy użyciu pytanie użytkownika, aby uzyskać najlepsze 
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>Publikować można pobrać punktu końcowego GenerateAnswer 
 
-Po opublikowaniu wiedzy, albo z [portalu narzędzia QnA Maker](https://www.qnamaker.ai), lub za pomocą [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff), możesz uzyskać szczegółowe informacje o punkcie końcowym usługi GenerateAnswer.
+Po opublikowaniu wiedzy, albo z [portalu narzędzia QnA Maker](https://www.qnamaker.ai), lub za pomocą [interfejsu API](https://go.microsoft.com/fwlink/?linkid=2092179), możesz uzyskać szczegółowe informacje o punkcie końcowym usługi GenerateAnswer.
 
 Aby uzyskać informacje dotyczące punktu końcowego:
 1. Zaloguj się do witryny [https://www.qnamaker.ai](https://www.qnamaker.ai).

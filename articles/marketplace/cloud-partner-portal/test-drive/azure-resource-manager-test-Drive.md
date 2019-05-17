@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 7665050dfc9a561f42fec00c40d0a40dfa5cc183
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941572"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606438"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Wersja testowa usługi Azure Resource Manager
+# <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
 
 Ten artykuł jest dla wydawców, którzy mają swoją ofertę w portalu Azure Marketplace lub korzystający z usługi AppSource, ale chcesz tworzyć ich wersji testowej przy użyciu tylko zasobów platformy Azure.
 
@@ -382,7 +382,7 @@ W przeciwnym razie należy utworzyć nową dzierżawę usługi Azure Active Dire
 
 ![Wykaz usługi Azure Active Directory dzierżawy](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Zdefiniuj organizacji, domeny i kraju dla dzierżawy usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Zdefiniuj organizacji, domeny i kraj/region dla dzierżawy usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![Potwierdź wybór](./media/azure-resource-manager-test-drive/subdetails6.png)
 

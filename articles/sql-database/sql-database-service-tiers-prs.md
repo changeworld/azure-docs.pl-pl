@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e12b89d0469587d7d7326bbee30f6467ada06bd5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574085"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790406"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Warstwy usług w usłudze Azure SQL Database Premium RS (wersja zapoznawcza) zostanie wycofana — opcje migracji
 
@@ -27,7 +27,7 @@ Poniżej przedstawiono miejsc docelowych migracji i opcje cenowe, które mogą b
 
 - warstwy usług (rdzeń wirtualny)
 
-  **Ogólnego przeznaczenia** i **krytyczne dla działania firmy** warstwach usługi [model zakupowy oparty na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Warstwy te dwie usługi są ogólnie dostępne. Oferuje również modelu zakupu opartego na rdzeniach wirtualnych **Hiperskali** warstwy usług (w publicznej wersji zapoznawczej), która dostosowuje się na żądanie do potrzeb Twojego obciążenia za pomocą automatycznego skalowania do 100 TB dla bazy danych. Warstwy usługi w Hiperskali zapewnia wydajność operacji We/Wy do warstwy Premium w [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) cenie bliżej do warstwy usług z warstwy Premium RS.
+  **Ogólnego przeznaczenia** i **krytyczne dla działania firmy** warstwach usługi [model zakupowy oparty na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Warstwy te dwie usługi są ogólnie dostępne. Oferuje również modelu zakupu opartego na rdzeniach wirtualnych **Hiperskali** warstwy usługi, która dostosowuje się na żądanie do potrzeb Twojego obciążenia za pomocą automatycznego skalowania do 100 TB dla bazy danych. Warstwy usługi w Hiperskali zapewnia wydajność operacji We/Wy do warstwy Premium w [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) cenie bliżej do warstwy usług z warstwy Premium RS.
 - Cennik dotyczący tworzenia i testowania
 
   [Ceny deweloperskie/testowe](https://azure.microsoft.com/pricing/dev-test/) zapewnia oszczędności 55% w stosunku do stawek oferowała objęte licencją w ramach subskrypcji programu Visual Studio.
@@ -70,10 +70,10 @@ Zalecamy przeprowadzenie migracji pojedynczej bazy danych intensywnie korzystaj�
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|
-|Premium RS 1|(Wersja zapoznawcza) 1 na dużą skalę — rdzeń wirtualny (4. generacji) lub Business krytyczne 1 rdzeń wirtualny (4. generacji)|W wersjach Premium 1|
-|Premium RS 2|(Wersja zapoznawcza) W Hiperskali 2 rdzenie wirtualne (4. generacji) lub biznesowe krytyczne 2 rdzenie wirtualne (4. generacji|Premium 2|
-|Premium RS 4|(Wersja zapoznawcza) W Hiperskali 4 rdzenie wirtualne (4. generacji) lub biznesowe krytyczne 4 rdzenie wirtualne (4. generacji)|Premium 4
-|Premium RS 6|(Wersja zapoznawcza) Rdzenie wirtualne w Hiperskali 6 (4. generacji) lub rdzeni wirtualnych 6 krytyczne biznesowych (4. generacji)|Premium 6|
+|Premium RS 1| 1 na dużą skalę — rdzeń wirtualny (4. generacji) lub Business krytyczne 1 rdzeń wirtualny (4. generacji)|W wersjach Premium 1|
+|Premium RS 2| W Hiperskali 2 rdzenie wirtualne (4. generacji) lub biznesowe krytyczne 2 rdzenie wirtualne (4. generacji|Premium 2|
+|Premium RS 4| W Hiperskali 4 rdzenie wirtualne (4. generacji) lub biznesowe krytyczne 4 rdzenie wirtualne (4. generacji)|Premium 4
+|Premium RS 6| Rdzenie wirtualne w Hiperskali 6 (4. generacji) lub rdzeni wirtualnych 6 krytyczne biznesowych (4. generacji)|Premium 6|
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d05cbd30565ced73352736508fc4bcc376985554
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b5a13dfd760f0c94343b151c9b4c1148c949e854
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149038"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790006"
 ---
 # <a name="transfer-data-with-azcopy-v10"></a>Transferowanie danych za pomocą narzędzia AzCopy w wersji 10
 
@@ -53,7 +53,7 @@ Narzędzie AzCopy nie wymaga instalacji. Otwórz preferowaną aplikacji wiersza 
 
 Podczas uwierzytelniania w usłudze Azure Storage, narzędzie AzCopy obsługuje następujące opcje:
 - **Usługa Azure Active Directory** (obsługiwane w przypadku **usług obiektów Blob i Data Lake Storage Gen2**). Użyj ```.\azcopy login``` zalogować się przy użyciu usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory. W przypadku uwierzytelniania za pomocą tożsamości zarządzanych zasobów platformy Azure, użyj `azcopy login --identity`.
-- **Udostępnione tokenów sygnatur dostępu [obsługiwane usługi obiektów Blob i plików]**. Dołącz token sygnatury (SAS) dostępu do ścieżki obiektu blob w wierszu polecenia z niego korzystać. Można generować tokeny sygnatur dostępu Współdzielonego za pomocą witryny Azure portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Udostępnione tokenów sygnatur dostępu [obsługiwane usługi obiektów Blob i plików]**. Dołącz token sygnatury (SAS) dostępu do ścieżki obiektu blob w wierszu polecenia z niego korzystać. Można generować tokeny sygnatur dostępu Współdzielonego za pomocą witryny Azure portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/common/storage-dotnet-shared-access-signature-part-1).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
