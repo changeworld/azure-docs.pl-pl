@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68457367987305b6926f8f885a226cfcedd23873
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537040"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860317"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Samouczek: Aplikacja z użyciem interfejsu API tłumaczenia mowy w usłudze Translator w języku C#
 
@@ -34,7 +34,7 @@ Plik rozwiązania Visual Studio dla tej aplikacji jest [dostępny w witrynie Git
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do celów tego samouczka potrzebna jest dowolna wersja programu Visual Studio 2017, na przykład wersja Community Edition.
+W tym samouczku należy dowolnej wersji programu Visual Studio 2019 r, w tym Community Edition.
 
 Rozwiązanie programu Visual Studio kompiluje również instalator aplikacji. Do obsługi tej funkcji potrzebne są również [zestaw narzędzi programu WiX](http://wixtoolset.org/) i [rozszerzenie programu Visual Studio zestawu narzędzi programu WiX](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 

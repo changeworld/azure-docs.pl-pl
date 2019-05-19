@@ -205,7 +205,7 @@
             - name: Korzystanie z programu Azure PowerShell
               href: ../hdinsight-administer-use-powershell.md
               maintainContext: true
-            - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
+            - name: Używanie interfejsu wiersza polecenia platformy Azure
               href: ../hdinsight-administer-use-command-line.md
               maintainContext: true
         - name: Zarządzanie klastrami za pomocą internetowego interfejsu użytkownika systemu Apache Ambari

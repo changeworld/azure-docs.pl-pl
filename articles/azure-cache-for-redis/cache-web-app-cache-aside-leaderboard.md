@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830963"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873032"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: Tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
 
@@ -41,8 +41,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Do ukończenia tego samouczka niezbędne są:
 
 * Ten samouczek jest kontynuacją [przewodnika Szybki start platformy ASP.NET dla usługi Azure Cache for Redis](cache-web-app-howto.md). Jeśli jeszcze nie został on przez Ciebie ukończony, ukończ go najpierw.
-* Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
+* Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+    * ASP.NET i tworzenie aplikacji internetowych
     * Programowanie na platformie Azure
     * Programowanie aplikacji klasycznych dla platformy .NET z użyciem programu SQL Server Express LocalDB lub [SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express).
 
@@ -156,7 +156,7 @@ Aby uzyskać więcej informacji dotyczących tego pakietu, zobacz stronę pakiet
 
 1. Dodaj następującą sekcję `connectionStrings` wewnątrz sekcji `configuration`. Nazwa parametrów połączenia musi być zgodna z nazwą klasy kontekstu bazy danych platformy Entity Framework, którą jest `TeamContext`.
 
-    W tych parametrach połączenia przyjęto założenie, że zostały spełnione [wymagania wstępne](#prerequisites) i zainstalowano program SQL Server Express LocalDB, który jest częścią pakietu roboczego *Programowanie aplikacji klasycznych dla platformy .NET* instalowanego z programem Visual Studio 2017 r.
+    Te parametry połączenia przyjęto założenie, że spełniasz [wymagania wstępne](#prerequisites) i zainstalować program SQL Server Express LocalDB, który jest częścią programu *programowanie aplikacji klasycznych dla platformy .NET* obciążenia instalowane z Visual Studio 2019 r.
 
     ```xml
     <connectionStrings>
@@ -699,7 +699,7 @@ W tym kroku samouczka opublikujesz aktualizacje aplikacji na platformie Azure w 
 
 1. Kliknij prawym przyciskiem myszy projekt **ContosoTeamStats** w programie Visual Studio i wybierz polecenie **Publikuj**.
 
-    ![Publikowanie](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Publikuj](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. Kliknij pozycję **Opublikuj**, aby użyć tego samego profilu publikowania, który został utworzony w ramach przewodnika Szybki start.
 
@@ -709,7 +709,7 @@ W tym kroku samouczka opublikujesz aktualizacje aplikacji na platformie Azure w 
 
     W poniższej tabeli opisano każdy link akcji z przykładowej aplikacji:
 
-    | Akcja | Opis |
+    | Działanie | Opis |
     | --- | --- |
     | Create New (Utwórz nowe) |Tworzenie nowego zespołu. |
     | Play Season (Odtwarzaj sezon) |Odtwarzanie sezonu gier, aktualizacja statystyk zespołu i czyszczenie nieaktualnych danych zespołu z pamięci podręcznej. |
@@ -735,7 +735,7 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 2. Wpisz nazwę grupy zasobów w polu tekstowym **Filtruj elementy...**.
 3. Kliknij pozycję **...** z prawej strony grupy zasobów i kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Usuwanie](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Usuń](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
 

@@ -127,7 +127,7 @@
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: Korzystanie z programu Azure PowerShell
               href: ../hdinsight-administer-use-powershell.md
-            - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
+            - name: Używanie interfejsu wiersza polecenia platformy Azure
               href: ../hdinsight-administer-use-command-line.md
         - name: Zarządzanie klastrami za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
           href: ../hdinsight-hadoop-manage-ambari.md

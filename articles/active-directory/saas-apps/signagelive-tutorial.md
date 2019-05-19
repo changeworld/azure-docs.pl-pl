@@ -16,11 +16,11 @@ ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bff57635c87b77270e1bd20e04834dec132b2df6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678348"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Samouczek: integracja usługi Azure Active Directory z platformą Signagelive
 
@@ -54,15 +54,15 @@ Aby dodać Signagelive z galerii, wykonaj następujące czynności:
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje** opcji.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **Signagelive**. 
 
@@ -70,7 +70,7 @@ Aby dodać Signagelive z galerii, wykonaj następujące czynności:
 
 5. Wybierz **Signagelive** w okienku wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z platformą Signagelive, korzystając z danych użytkownika testowego **Britta Simon**.
 Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w Signagelive.
@@ -84,7 +84,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 5. [Tworzenie użytkownika testowego Signagelive](#create-a-signagelive-test-user) mieć odpowiednikiem Britta Simon Signagelive połączonego z usługi Azure AD reprezentacja użytkownika.
 6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
@@ -92,7 +92,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Signagelive, wykona
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Signagelive** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** włączyć logowanie jednokrotne.
 
@@ -113,7 +113,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Signagelive, wykona
 
 5. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **certyfikatu (Raw)** z podanych opcji dla Twojego zapotrzebowania. Następnie zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificateraw.png)
+    ![Link pobierania certyfikatu](common/certificateraw.png)
 
 6. W **Konfigurowanie Signagelive** sekcji, skopiuj adresy URL, które są potrzebne.
 
@@ -137,15 +137,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
 3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
     b. W **nazwa_użytkownika** wprowadź "brittasimon@yourcompanydomain.extension". Na przykład, w tym przypadku możesz wprowadzić "BrittaSimon@contoso.com".
 
@@ -167,7 +167,7 @@ W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 4. Wybierz **Dodaj użytkownika** przycisku. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
 

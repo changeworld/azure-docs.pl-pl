@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578428"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Trello
 
@@ -57,15 +57,15 @@ Aby dodać usługi Trello z galerii, wykonaj następujące czynności:
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **Trello**, a następnie wybierz pozycję **Trello** w okienku wyników.
 
@@ -73,7 +73,7 @@ Aby dodać usługi Trello z galerii, wykonaj następujące czynności:
 
      ![Aplikacja Trello na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu usługi Trello w oparciu o użytkownika testu o nazwie **Britta Simon**.
 
@@ -88,7 +88,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy u�
 5. [Tworzenie użytkownika testowego usługi Trello](#create-a-trello-test-user) odpowiednikiem Britta Simon znajdują się w aplikacji Trello, połączonego z usługi Azure AD reprezentacja użytkownika.
 6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
@@ -99,7 +99,7 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu usług
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Trello** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** włączyć logowanie jednokrotne.
 
@@ -158,7 +158,7 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu usług
 
 8. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **certyfikat (Base64)**  z danymi opcjami zgodnie z wymaganiami. Następnie zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 9. Na **Konfigurowanie usługi Trello** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
@@ -182,15 +182,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
 3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
     b. W **nazwa_użytkownika** wprowadź "brittasimon@yourcompanydomain.extension". Na przykład, w tym przypadku możesz wprowadzić "BrittaSimon@contoso.com".
 
@@ -212,7 +212,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 4. Wybierz **Dodaj użytkownika** przycisku. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
 

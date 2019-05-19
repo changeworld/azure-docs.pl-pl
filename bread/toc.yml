@@ -142,9 +142,6 @@
     - name: Azure (Niemcy)
       tocHref: /azure/germany/
       topicHref: /azure/germany/
-    - name: Azure w Chinach — 21Vianet
-      tocHref: /azure/china/
-      topicHref: /azure/china/
     - name: Azure NetApp Files
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
