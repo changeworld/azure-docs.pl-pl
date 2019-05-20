@@ -44,11 +44,11 @@ Następujące właściwości są obsługiwane przez usługę Spark połączone:
 | type | Właściwość type musi być równa: **Spark** | Yes |
 | host | Nazwa hosta lub adres IP serwera usługi Spark  | Yes |
 | port | Port TCP używany serwer platformy Spark do nasłuchiwania połączeń klientów. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Yes |
-| wartością servertype ustawioną | Typ serwera platformy Spark. <br/>Dozwolone wartości to: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nie |
+| serverType | Typ serwera platformy Spark. <br/>Dozwolone wartości to: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nie |
 | thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
-| Element authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera platformy Spark. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
-| nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do serwera platformy Spark.  | Nie |
-| hasło | Hasło przypisana użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera platformy Spark. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| username | Nazwa użytkownika, który umożliwia dostęp do serwera platformy Spark.  | Nie |
+| password | Hasło przypisana użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | httpPath | Częściowe adres URL serwera platformy Spark.  | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
