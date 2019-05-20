@@ -46,6 +46,8 @@
           href: security-overview.md
         - name: Badanie ryzykownych użytkowników i logowań
           href: howto-investigate-risky-users-signins.md
+        - name: Udostępnianie informacji zwrotnych dotyczących zdarzeń o podwyższonym ryzyku
+          href: howto-provide-risk-event-feedback.md
         - name: Konfigurowanie zasad ryzyka
           href: howto-configure-risk-policies.md
         - name: Zwiększanie dokładności wykrywania

@@ -15,7 +15,7 @@ metadata:
   ms.date: 05/07/2019
   ms.author: celested
 abstract:
-  description: 'Platforma tożsamości firmy Microsoft to unowocześnienie platformy deweloperów i usługi tożsamości Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph, lub interfejsów API opracowanych przez deweloperów. Jest to w pełni wyposażona platforma, która obejmuje usługę uwierzytelniania zgodną ze standardami OAuth 2.0 i OpenID Connect, biblioteki typu open source, rejestrację i konfigurację aplikacji, niezawodną dokumentację koncepcyjną i referencyjną, przykłady szybkiego startu, przykłady kodu, samouczki oraz przewodniki.'
+  description: 'Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph, lub interfejsów API opracowanych przez deweloperów. Jest to w pełni wyposażona platforma, która obejmuje usługę uwierzytelniania zgodną ze standardami OAuth 2.0 i OpenID Connect, biblioteki typu open source, rejestrację i konfigurację aplikacji, niezawodną dokumentację koncepcyjną i referencyjną, przykłady szybkiego startu, przykłady kodu, samouczki oraz przewodniki.'
   aside:
     image:
       alt: null

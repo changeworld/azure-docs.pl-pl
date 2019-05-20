@@ -59,7 +59,7 @@
           href: quickstart-scale-compute-powershell.md
         - name: T-SQL
           href: quickstart-scale-compute-tsql.md
-    - name: Zarządzanie obciążeniami
+    - name: Zarządzanie obciążeniem
       items:
         - name: Tworzenie klasyfikatora obciążenia
           items:
