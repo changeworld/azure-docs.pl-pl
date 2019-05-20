@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730711"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787282"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -104,7 +104,7 @@ Kilka następnych sekcji obejmują określonych interfejsów API protokołu HTTP
 
 Pobiera stan wystąpienia określonego aranżacji.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -228,7 +228,7 @@ Możesz także zbadać stan wszystkich wystąpień, usuwając `instanceId` w ż�
 Jest to jedno należy pamiętać, że `connection` i `code` są opcjonalne. Jeśli uwierzytelnianie anonimowe dla funkcji, a następnie kod nie jest wymagane.
 Jeśli nie chcesz użyć parametrów połączenia innego magazynu innego niż zdefiniowane w ustawieniach aplikacji AzureWebJobsStorage, można bezpiecznie zignorować parametr ciągu zapytania połączenia.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -336,7 +336,7 @@ Jeśli ustawisz wartość tokenu kontynuacji w nagłówku żądania dalej, możn
 
 Usuwa historię i powiązanych artefaktów dla wystąpienia określonego aranżacji.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -387,7 +387,7 @@ Poniżej przedstawiono przykładowy ładunek odpowiedzi, (sformatowane, aby zwi�
 
 Można również usunąć przez usunięcie historii i powiązanych artefaktów dla wielu wystąpień w ramach Centrum zadań `{instanceId}` w żądaniu "Przeczyścić historię pojedyncze wystąpienie". Aby selektywnie Wyczyść historię wystąpienia, należy użyć tych samych filtrów, które są opisane w żądaniu "Pobierz stan dla wszystkich wystąpień".
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -417,11 +417,9 @@ DELETE /runtime/webhooks/durabletask/instances
 
 | Pole                 | Typ parametru  | Opis |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtrowanie listy przeczyszczone wystąpień, które zostały utworzone na lub po podanej sygnaturze czasowej ISO8601.|
+| **`createdTimeFrom`** | Ciąg zapytania    | Filtruje listę przeczyszczone wystąpień, które zostały utworzone na lub po podanej sygnaturze czasowej ISO8601.|
 | **`createdTimeTo`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtrowanie listy przeczyszczone wystąpień, które zostały utworzone w lub przed podaną sygnaturą czasową ISO8601.|
 | **`runtimeStatus`**   | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtry listy przeczyszczone wystąpień na podstawie ich stan czasu wykonywania. Aby wyświetlić listę wartości stanu środowiska uruchomieniowego możliwe, zobacz [zapytań wystąpień](durable-functions-instance-management.md) tematu. |
-
-Jeśli nie określono żadnych parametrów, zostaną wyczyszczone wszystkie wystąpienia w piaście zadania.
 
 > [!NOTE]
 > Ta operacja może być bardzo kosztowna pod względem operacji We/Wy do usługi Azure Storage, jeśli istnieje wiele wierszy w wystąpień i/lub historii tabel. Szczegółowe informacje na temat tych tabel można znaleźć w [wydajności i skali w funkcje trwałe (usługi Azure Functions)](durable-functions-perf-and-scale.md#instances-table) dokumentacji.
@@ -451,7 +449,7 @@ Poniżej przedstawiono przykładowy ładunek odpowiedzi, (sformatowane, aby zwi�
 
 Wysyła powiadomienie o zdarzeniu do uruchomionego wystąpienia aranżacji.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -504,7 +502,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Kończy uruchomionego wystąpienia aranżacji.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -553,7 +551,7 @@ Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
 Przywraca wystąpienia orchestration nie powiodło się, do stanu uruchomienia przez odtworzenie najnowszych operacje zakończone niepowodzeniem.
 
-### <a name="request"></a>Żądanie
+### <a name="request"></a>Zażądaj
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 

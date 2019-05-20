@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: df1b2cdd265b9cf48801174d1f0cd9936eae5f8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325403"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595400"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Szybki start: tworzenie pokoju rozmów za pomocą usług Azure Functions i SignalR Service oraz przy użyciu języka C\#
 
@@ -20,7 +20,7 @@ Usługa Azure SignalR Service umożliwia łatwe dodawanie funkcji czasu rzeczywi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+Jeśli nie masz jeszcze programu Visual Studio 2019 r zainstalowany, możesz pobrać i używać **bezpłatne** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 
 W tym samouczku mogą również uruchamiać w wierszu polecenia (z systemem macOS, Windows lub Linux) przy użyciu [podstawowych narzędzi (v2) dla usługi Azure Functions](https://github.com/Azure/azure-functions-core-tools#installing), [zestawu .NET Core SDK](https://dotnet.microsoft.com/download), a wybrany edytor kodu.
 
