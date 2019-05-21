@@ -1,27 +1,27 @@
 ---
-title: Samouczek — kierowanie ruchu internetowego na podstawie adresu URL — interfejs wiersza polecenia platformy Azure
-description: W tym samouczku dowiesz się, jak kierować ruch internetowy do określonych skalowalnych pul serwerów na podstawie adresu URL, korzystając z interfejsu wiersza polecenia platformy Azure.
+title: Kierowanie ruchu sieciowego na podstawie adresu URL — interfejs wiersza polecenia platformy Azure
+description: W tym artykule Dowiedz się, jak kierować ruchem w sieci web na podstawie adresu URL określonego skalowalne pul serwerów przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 10/25/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c0954d1010a6cf5ef6f8edab1470588df9fba559
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006478"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955542"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Samouczek: Kierowanie ruchu sieciowego na podstawie adresu URL przy użyciu wiersza polecenia platformy Azure
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Kierowanie ruchu sieciowego na podstawie adresu URL przy użyciu wiersza polecenia platformy Azure
 
-Jako administrator IT zarządzający ruchem internetowym chcesz pomóc swoim klientom lub użytkownikom w jak najszybszym uzyskaniu potrzebnych im informacji. Jednym ze sposobów zoptymalizowania ich środowiska jest skierowanie różnych rodzajów ruchu internetowego do różnych zasobów serwera. W tym samouczku dowiesz się, jak zainstalować i skonfigurować routing usługi Application Gateway dla różnych typów ruchu z aplikacji za pomocą interfejsu wiersza polecenia platformy Azure. Następnie, na podstawie adresu URL, routing kieruje ruch do różnych pul serwerów.
+Jako administrator IT zarządzający ruchem internetowym chcesz pomóc swoim klientom lub użytkownikom w jak najszybszym uzyskaniu potrzebnych im informacji. Jednym ze sposobów zoptymalizowania ich środowiska jest skierowanie różnych rodzajów ruchu internetowego do różnych zasobów serwera. W tym artykule pokazano, jak instalowanie i konfigurowanie bramy aplikacji routingu dla różnych typów ruchu z aplikacji za pomocą wiersza polecenia platformy Azure. Następnie, na podstawie adresu URL, routing kieruje ruch do różnych pul serwerów.
 
 ![Przykład routingu adresów URL](./media/tutorial-url-route-cli/scenario.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie grupy zasobów dla potrzebnych zasobów sieciowych
@@ -31,13 +31,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie zestawów skalowania dla poszczególnych pul umożliwiających ich automatycznie skalowanie
 > * Uruchamianie testu sprawdzającego, czy różne typy ruchu trafiają do poprawnych pul
 
-Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [programu Azure PowerShell](tutorial-url-route-powershell.md) lub [witryny Azure Portal](create-url-route-portal.md).
+Jeśli wolisz, możesz wykonać tej procedury przy użyciu [programu Azure PowerShell](tutorial-url-route-powershell.md) lub [witryny Azure portal](create-url-route-portal.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten artykuł wymaga uruchomienia wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -165,7 +165,7 @@ az network application-gateway url-path-map rule create \
   --address-pool videoBackendPool
 ```
 
-### <a name="add-a-routing-rule"></a>Dodawanie reguły rozsyłania
+### <a name="add-a-routing-rule"></a>Dodaj regułę routingu
 
 Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Dodaj regułę o nazwie *rule2* przy użyciu polecenia `az network application-gateway rule create`.
 
@@ -182,7 +182,7 @@ az network application-gateway rule create \
 
 ## <a name="create-vm-scale-sets"></a>Tworzenie zestawów skalowania maszyn wirtualnych
 
-W tym samouczku utworzysz trzy zestawy skalowania maszyn wirtualnych do obsługi trzech utworzonych pul zaplecza. Utworzysz zestawy skalowania o nazwach *myvmss1*, *myvmss2* i *myvmss3*. Każdy zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, na których instaluje się serwer NGINX.
+W tym artykule utworzysz trzy zestawy skalowania maszyn wirtualnych, które obsługują trzy pule zaplecza, który został utworzony. Utworzysz zestawy skalowania o nazwach *myvmss1*, *myvmss2* i *myvmss3*. Każdy zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, na których instaluje się serwer NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -264,5 +264,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Tworzenie bramy aplikacji z przekierowywaniem na podstawie ścieżki URL](./tutorial-url-redirect-cli.md)
+* [Tworzenie bramy aplikacji z przekierowywaniem na podstawie ścieżki URL](./tutorial-url-redirect-cli.md)

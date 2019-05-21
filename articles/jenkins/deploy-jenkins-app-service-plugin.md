@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 29a842f7dfcf720f29fcff80d2e736893c824f5a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641099"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949559"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
@@ -72,7 +72,7 @@ Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azu
 
 
 1. Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą następującego [polecenia interfejsu wiersza polecenia platformy Azure](/cli/azure/appservice/plan#az-appservice-plan-create): `az appservice plan create`. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby. Zasoby współdzielone pomagają zmniejszyć koszty w przypadku hostowania wielu aplikacji.
-2. Utwórz aplikację internetową. Możesz użyć [witryny Azure Portal](/azure/app-service-web/web-sites-configure) lub następującego `az` polecenia interfejsu wiersza polecenia platformy Azure:
+2. Utwórz aplikację internetową. Możesz użyć [witryny Azure Portal](/azure/app-service/configure-common) lub następującego `az` polecenia interfejsu wiersza polecenia platformy Azure:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```

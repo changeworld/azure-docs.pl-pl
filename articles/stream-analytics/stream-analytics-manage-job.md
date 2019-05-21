@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: e7bd97d6ab197a061a33620b590e41acb486d934
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 056e5a0f56e1a8998288e6a78f448f0f91777e1d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606843"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969300"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analizowanie danych połączeń telefonicznych za pomocą usługi Stream Analytics i wizualizowanie wyników na pulpicie nawigacyjnym usługi Power BI
 
@@ -99,7 +99,7 @@ Przed uruchomieniem aplikacji TelcoGenerator należy ją skonfigurować do przes
 3. Zaktualizuj element `<appSettings>` w pliku config przy użyciu następujących szczegółów:
 
    * Ustaw wartość klucza *EventHubName* na wartość EntityPath w parametrach połączenia.
-   * Ustaw wartość klucza *Microsoft.ServiceBus.ConnectionString* na wartość parametrów połączenia bez wartości EntityPath.
+   * Ustaw wartość *Microsoft.ServiceBus.ConnectionString* klucz do parametrów połączenia bez wartości EntityPath (nie zapomnij usunąć poprzedzającego ją średnika).
 
 4. Zapisz plik.
 5. Następnie otwórz okno polecenia i przejdź do folderu, w którym znajduje się wyodrębniona aplikacja TelcoGenerator. Wprowadź następujące polecenie:

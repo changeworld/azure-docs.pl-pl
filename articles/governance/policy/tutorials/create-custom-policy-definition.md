@@ -7,12 +7,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f9dc6e98e184e6eeeca3a56ff4a28739369a3d24
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800495"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979665"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Samouczek: Tworzenie niestandardowej definicji zasad
 
@@ -46,12 +46,11 @@ Ważne jest, aby przed utworzeniem definicji zasad poznać przeznaczenie zasad. 
 
 Wymagania powinny wyraźnie definiować zarówno „poprawne”, jak i „zakazane” stany zasobów.
 
-Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Zasady obsługują pewną liczbę [efektów](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
+Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Usługa Azure Policy obsługuje szereg [efekty](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
 
 ## <a name="determine-resource-properties"></a>Określanie właściwości zasobów
 
-Zgodnie z wymaganiem biznesowym zasobem platformy Azure objętym inspekcją w ramach zasad jest konto magazynu.
-Jednak nie znamy właściwości do użycia w definicji zasad. Zasady są oceniane względem reprezentacji JSON zasobu, więc musimy poznać właściwości dostępne dla tego zasobu.
+Oparte na wymaganie biznesowe, zasobów platformy Azure do inspekcji za pomocą usługi Azure Policy to konto magazynu. Jednak nie znamy właściwości do użycia w definicji zasad. Usługa Azure Policy ocenia na podstawie reprezentacji JSON zasobu, więc musimy zapoznaj się z właściwościami, które są dostępne dla tego zasobu.
 
 Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
@@ -121,8 +120,7 @@ W obszarze **properties** znajduje się właściwość o nazwie **supportsHttpsT
 
 #### <a name="create-a-resource-in-the-portal"></a>Tworzenie zasobu w portalu
 
-Innym sposobem użycia portalu jest środowisko tworzenia zasobu. Podczas tworzenia konta magazynu za pośrednictwem portalu na karcie **Zaawansowane** znajduje się pozycja **Wymagany transfer zabezpieczeń**.
-Ta właściwość ma opcje _Wyłączone_ i _Włączone_. Ikona informacji zawiera dodatkowy tekst, który potwierdza, że ta opcja jest prawdopodobnie odpowiednia. Jednak portal nie podaje nazwy właściwości na tym ekranie.
+Innym sposobem użycia portalu jest środowisko tworzenia zasobu. Podczas tworzenia konta magazynu za pośrednictwem portalu na karcie **Zaawansowane** znajduje się pozycja **Wymagany transfer zabezpieczeń**. Ta właściwość ma opcje _Wyłączone_ i _Włączone_. Ikona informacji zawiera dodatkowy tekst, który potwierdza, że ta opcja jest prawdopodobnie odpowiednia. Jednak portal nie podaje nazwy właściwości na tym ekranie.
 
 W dolnej części karty **Przeglądanie + tworzenie** znajduje się link **Pobierz szablon automatyzacji**. Wybranie linku otwiera szablon, który tworzy skonfigurowany zasób. W tym przypadku są widoczne dwie kluczowe informacje:
 
@@ -181,8 +179,7 @@ W wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwan
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobu.
-Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
+W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobu. Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -312,7 +309,8 @@ Usługi Azure Resource Graph (wersja zapoznawcza) można używać za pośrednict
 
 ## <a name="determine-the-effect-to-use"></a>Określanie efektu do użycia
 
-Określenie, co należy zrobić z niezgodnymi zasobami, jest niemal tak ważne, jak zdecydowanie, co należy ocenić w pierwszej kolejności. Każda możliwa odpowiedź na niezgodny zasób jest nazywana [efektem](../concepts/effects.md). Efekt kontroluje, czy niezgodny zasób jest rejestrowany, blokowany, czy są dołączane do niego dane lub czy jest z nim kojarzone wdrożenie przywracające zasób do stanu zgodności.
+Określenie, co należy zrobić z niezgodnymi zasobami, jest niemal tak ważne, jak zdecydowanie, co należy ocenić w pierwszej kolejności. Każda możliwa odpowiedź na niezgodny zasób jest nazywana [efektem](../concepts/effects.md).
+Efekt kontroluje, czy niezgodny zasób jest rejestrowany, blokowany, czy są dołączane do niego dane lub czy jest z nim kojarzone wdrożenie przywracające zasób do stanu zgodności.
 
 W naszym przykładzie efekt to Deny (Odmów), ponieważ nie chcemy tworzenia niezgodnych zasobów w naszym środowisku platformy Azure. Audit (Inspekcja) jest dobrym pierwszym wyborem dla efektu zasad, umożliwiając określenie wpływu zasad przed ustawieniem dla nich efektu Deny (Odmów). Jednym ze sposobów na ułatwienie modyfikowania efektu dla przypisania jest sparametryzowanie efektu. Zobacz [Parametry](#parameters) poniżej, aby uzyskać szczegółowe informacje na ten temat.
 

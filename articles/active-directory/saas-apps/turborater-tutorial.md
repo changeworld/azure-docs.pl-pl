@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c279a224a7692a64621e24cc8fe2213b78b54ce
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62735622"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TurboRater
 
@@ -68,20 +68,20 @@ Aby skonfigurować integrację TurboRater w usłudze Azure AD, należy dodać Tu
 
     ![TurboRater na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą TurboRater w oparciu o nazwie użytkownika testowego **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w TurboRater.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą TurboRater w oparciu o nazwie użytkownika testowego **B Simon**. Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w TurboRater.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TurboRater, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  aby umożliwić użytkownikom korzystać z tej funkcji.
 1. **[Konfigurowanie TurboRater logowania jednokrotnego](#configure-turborater-single-sign-on)**  do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Tworzenie użytkownika testowego TurboRater](#create-a-turborater-test-user)**  tak, że istnieje użytkownik o nazwie Britta Simon w TurboRater, który jest połączony z użytkownikiem usługi Azure AD o nazwie Britta Simon.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Tworzenie użytkownika testowego TurboRater](#create-a-turborater-test-user)**  tak, że istnieje użytkownik o nazwie Simon B. w TurboRater, który jest połączony z użytkownikiem usługi Azure AD o nazwie B. Simon.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
@@ -111,7 +111,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TurboRater, wykonaj
 
        | Środowisko | Adres URL |
        | ---------------| --------------- |
-       | Testowanie  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Testuj  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Na żywo  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
@@ -149,9 +149,9 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     ![W okienku użytkownika](common/user-properties.png)
 
-    1. W polu **Nazwa** wpisz **BrittaSimon**.
+    1. W **nazwa** wprowadź **BSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >**. Na przykład **BrittaSimon\@contoso.com**.
+    1. W **nazwa_użytkownika** wprowadź **BSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >**. Na przykład **BSimon\@contoso.com**.
 
     1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 
@@ -159,7 +159,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej TurboRater.
+W tej sekcji możesz włączyć Simon B. korzystać z platformy Azure logowania jednokrotnego przez przyznanie im dostępu do TurboRater.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **TurboRater**.
 
@@ -177,7 +177,7 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okienku wybierz **Britta Simon** w **użytkowników** , a następnie wybierz **wybierz** w dolnej części okienka.
+1. W **użytkowników i grup** okienku wybierz **B. Simon** w **użytkowników** , a następnie wybierz **wybierz** w dolnej części okienka.
 
 1. Jeśli oczekujesz wartość roli dla asercji SAML, następnie w **wybierz rolę** okienku, wybierz odpowiednią rolę dla użytkownika z listy. W dolnej części okienka wybierz **wybierz**.
 
@@ -185,7 +185,7 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
 ### <a name="create-a-turborater-test-user"></a>Tworzenie użytkownika testowego TurboRater
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w TurboRater. Praca z [zespołem pomocy technicznej TurboRater](https://www.getitc.com/support) dodać Britta Simon jako użytkownik w TurboRater. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w TurboRater. Praca z [zespołem pomocy technicznej TurboRater](https://www.getitc.com/support) do dodawania B. Simon jako użytkownik w TurboRater. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

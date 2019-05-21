@@ -7,12 +7,12 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1a00d237ef94f73ebf59070d8160a7e5144b0ac8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c12345791e62aa99bd07dde7fc44dd52d0989941
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800555"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979178"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
@@ -42,11 +42,11 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
    ![Przypisywanie definicji zasad ze strony przypisania](../media/create-and-manage/select-assign-policy.png)
 
-1. Na stronie **Przypisywanie zasad** wybierz **Zakres**, klikając wielokropek i wybierając grupę zarządzania lub subskrypcję. Opcjonalnie możesz wybrać grupę zasobów. Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad.  Następnie kliknij przycisk **Wybierz** w dolnej części strony **Zakres**.
+1. Na stronie **Przypisywanie zasad** wybierz **Zakres**, klikając wielokropek i wybierając grupę zarządzania lub subskrypcję. Opcjonalnie możesz wybrać grupę zasobów. Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Następnie kliknij przycisk **Wybierz** w dolnej części strony **Zakres**.
 
    W tym przykładzie użyto subskrypcji **Contoso**. Twoja subskrypcja będzie inna.
 
-1. Zasoby można wykluczyć na podstawie opcji **Zakres**.  **Wykluczenia** są uruchamiane o jeden poziom niżej od poziomu opcji **Zakres**. Pole **Wykluczenia** jest opcjonalne, więc na razie można je pozostawić puste.
+1. Zasoby można wykluczyć na podstawie opcji **Zakres**. **Wykluczenia** są uruchamiane o jeden poziom niżej od poziomu opcji **Zakres**. Pole **Wykluczenia** jest opcjonalne, więc na razie można je pozostawić puste.
 
 1. W polu **Definicja zasad** wybierz wielokropek, aby otworzyć listę dostępnych definicji. Definicje zasad możesz filtrować, wybierając w polu **Typ** wartość *Wbudowany*, aby wyświetlić wszystkie definicje i przeczytać ich opisy.
 
@@ -54,7 +54,8 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
    ![Filtr wyszukiwania umożliwia lokalizowanie zasad](../media/create-and-manage/select-available-definition.png)
 
-1. Pole **Nazwa przypisania** jest automatycznie wypełniane przy użyciu nazwy wybranych zasad, ale można ją zmienić. Na potrzeby tego przykładu pozostaw nazwę *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0). Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.  Pole **Przypisane przez** jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
+1. Pole **Nazwa przypisania** jest automatycznie wypełniane przy użyciu nazwy wybranych zasad, ale można ją zmienić. Na potrzeby tego przykładu pozostaw nazwę *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0). Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
+   Pole **Przypisane przez** jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
 
 1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. To pole _musi_ być zaznaczone, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
 
@@ -116,7 +117,7 @@ Teraz, gdy wbudowana definicja zasad została przypisana, możesz wykonywać dal
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>Tworzenie definicji zasad za pomocą interfejsu API REST
 
-Zasady można tworzyć przy użyciu interfejsu API REST dla definicji zasad. Interfejs API REST umożliwia tworzenie i usuwanie definicji zasad oraz uzyskiwanie informacji o istniejących definicjach. Aby utworzyć definicję zasad, skorzystaj z następującego przykładu:
+Zasady można utworzyć za pomocą interfejsu API REST dla definicji zasad platformy Azure. Interfejs API REST umożliwia tworzenie i usuwanie definicji zasad oraz uzyskiwanie informacji o istniejących definicjach. Aby utworzyć definicję zasad, skorzystaj z następującego przykładu:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
@@ -156,7 +157,7 @@ Dołącz treść żądania podobną do poniższego przykładu:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Tworzenie definicji zasad za pomocą programu PowerShell
 
-Przed przejściem do przykładu programu PowerShell, upewnij się, że zainstalowano najnowszą wersję modułu Azure PowerShell Az. 
+Przed przejściem do przykładu programu PowerShell, upewnij się, że zainstalowano najnowszą wersję modułu Azure PowerShell Az.
 
 Definicję zasad można utworzyć przy użyciu polecenia cmdlet `New-AzPolicyDefinition`.
 
@@ -369,13 +370,14 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
    ![Przypisywanie definicji ze strony definicji inicjatywy](../media/create-and-manage/assign-definition.png)
 
-   Możesz również kliknąć prawym przyciskiem myszy wybrany wiersz lub lewym przyciskiem myszy wielokropek na końcu wiersza, aby wyświetlić menu kontekstowe.  Następnie wybierz opcję **Przypisz**.
+   Możesz również kliknąć prawym przyciskiem myszy wybrany wiersz lub lewym przyciskiem myszy wielokropek na końcu wiersza, aby wyświetlić menu kontekstowe. Następnie wybierz opcję **Przypisz**.
 
    ![Alternatywne opcje inicjatywy](../media/create-and-manage/select-right-click.png)
 
 1. Wypełnij stronę **Uzyskiwanie bezpieczeństwa: Przypisz inicjatywę**, wprowadzając następujące przykładowe informacje. Możesz podać własne informacje.
 
-   - Zakres: grupa zarządzania lub subskrypcja, dla której wcześniej została zapisana inicjatywa, staje się wartością domyślną.  Można zmienić zakres, aby przypisać inicjatywę do subskrypcji lub grupy zasobów w lokalizacji zapisywania.
+   - Zakres: grupa zarządzania lub subskrypcja, dla której wcześniej została zapisana inicjatywa, staje się wartością domyślną.
+     Można zmienić zakres, aby przypisać inicjatywę do subskrypcji lub grupy zasobów w lokalizacji zapisywania.
    - Wyjątki: skonfiguruj wszystkie zasoby w zakresie, aby zapobiec zastosowaniu wobec nich przypisania inicjatywy.
    - Definicja inicjatywy i nazwa przypisania: Uzyskiwanie bezpieczeństwa (wstępnie wypełnione jako nazwa przypisywanej inicjatywy).
    - Opis: to przypisanie inicjatywy jest dostosowane w celu wymuszenia tej grupy definicji zasad.
@@ -389,7 +391,8 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
 1. Wybierz pozycję **Zgodność** w lewej części strony usługi Azure Policy.
 
-1. Znajdź inicjatywę **Uzyskiwanie bezpieczeństwa**. Jej _Stan zgodności_ prawdopodobnie nadal ma wartość **Nie uruchomiono**. Kliknij inicjatywę, aby uzyskać szczegółowe informacje na temat postępu przypisania.
+1. Znajdź inicjatywę **Uzyskiwanie bezpieczeństwa**. Jej _Stan zgodności_ prawdopodobnie nadal ma wartość **Nie uruchomiono**.
+   Kliknij inicjatywę, aby uzyskać szczegółowe informacje na temat postępu przypisania.
 
    ![Strona zgodność inicjatywy — Nierozpoczęte ocen](../media/create-and-manage/compliance-status-not-started.png)
 

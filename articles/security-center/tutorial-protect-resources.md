@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: monhaber
-ms.openlocfilehash: 6e8c10ecb85addf2ef6a995e3c0b8ac611343cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: 8fc287826d1a98b5d61229979544fdb3780455d4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612473"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967944"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Samouczek: Ochrona zasobów przy użyciu usługi Azure Security Center
 Usługa Security Center ogranicza narażenia na zagrożenia poprzez zastosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań. Dostęp typu „just in time” do maszyny wirtualnej redukuje narażenie na ataki, umożliwiając odmówienie trwałego dostępu do maszyn wirtualnych. Zamiast tego możesz zapewnić kontrolowany, monitorowany dostęp do maszyn wirtualnych tylko w razie potrzeby. Adaptacyjne kontrole aplikacji pomagają zabezpieczać maszyny wirtualne przed złośliwym oprogramowaniem poprzez kontrolowanie aplikacji, które mogą być uruchamiane na maszynach wirtualnych. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
@@ -43,7 +43,7 @@ Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte
 
 1. W menu głównym usługi Security Center wybierz pozycję **Dostęp just in time do maszyny wirtualnej** w obszarze **ZAAWANSOWANA OCHRONA W CHMURZE**.
 
-   ![Dostęp do maszyny wirtualnej dokładnie na czas][1]
+   ![Dostęp just in time do maszyny wirtualnej][1]
 
    Opcja **Dostęp just in time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.openlocfilehash: 2a14b251df0bedbcd27ab4e9bf1abe9a27ad50d6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900414"
+ms.locfileid: "65950921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją ClickUp Productivity Platform
 
@@ -203,7 +203,7 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
     ![Konfigurowanie aplikacji ClickUp Productivity](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
-    > Użytkownik otrzyma powiadomienie i będzie musiał zaakceptować zaproszenie, aby uaktywnić konto.
+    > Użytkownik otrzyma powiadomienie i będą musieli zaakceptować zaproszenie, aby aktywować konto.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

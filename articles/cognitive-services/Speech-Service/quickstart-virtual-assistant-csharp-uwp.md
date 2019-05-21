@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: e03cc45c5868f90dd1c2da0d7b4890fbf72c9899
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465644"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954813"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Utwórz Asystenta ustawień wirtualnego pierwszy głosu przy użyciu zestawu SDK mowy platformy uniwersalnej systemu Windows
 
@@ -353,7 +353,6 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     ![Zrzut ekranu żądania uprawnień](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uruchom aplikację do debugowania")
 
 1. Wybierz **komunikować się z botem**i Mów frazę w języku angielskim lub zdanie do mikrofonu na urządzeniu. Mowa jest przekazywane do kanału Direct mowy wiersza i przetłumaczone na tekst, który jest wyświetlany w oknie.
-quickstart-cs-uwp-bot-successful-turn
 
     ![Zrzut ekranu przedstawiający pomyślne bot Włącz](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Włącz bot pomyślne")
 

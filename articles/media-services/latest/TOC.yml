@@ -49,6 +49,7 @@
       items:
         - name: Magazyn
           href: storage-account-concept.md
+          displayName: Storage side encryption
         - name: Interfejs API elementów zawartości
           href: assets-concept.md
     - name: Kodowanie
@@ -169,6 +170,7 @@
       items:
         - name: Tworzenie konta — interfejs wiersza polecenia
           href: create-account-cli-how-to.md
+          displayName: storage
         - name: Resetowanie poświadczeń konta — interfejs wiersza polecenia
           href: cli-reset-account-credentials.md
         - name: Dostęp do interfejsów API — interfejs wiersza polecenia

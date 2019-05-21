@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 69e86e486a9cdb058b972bda5176c14e15f4630a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55fa42eb1c35025b1008b3b5d26f61c243ff2b97
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865665"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Uberflip
 
@@ -72,15 +72,15 @@ Aby skonfigurować integrację Uberflip w usłudze Azure AD, należy dodać Uber
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Uberflip w oparciu o nazwie użytkownika testowego **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w Uberflip.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Uberflip w oparciu o nazwie użytkownika testowego **B Simon**. Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w Uberflip.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Uberflip, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  aby umożliwić użytkownikom korzystać z tej funkcji.
 1. **[Konfigurowanie Uberflip logowania jednokrotnego](#configure-uberflip-single-sign-on)**  do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Tworzenie użytkownika testowego Uberflip](#create-an-uberflip-test-user)**  tak, że istnieje użytkownik o nazwie Britta Simon w Uberflip, który jest połączony z użytkownikiem usługi Azure AD o nazwie Britta Simon.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Tworzenie użytkownika testowego Uberflip](#create-an-uberflip-test-user)**  tak, że istnieje użytkownik o nazwie Simon B. w Uberflip, który jest połączony z użytkownikiem usługi Azure AD o nazwie B. Simon.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
@@ -136,7 +136,7 @@ Aby skonfigurować logowanie jednokrotne na stronie Uberflip, musisz wysłać po
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie Azure Portal.
+W tej sekcji utworzysz użytkownika testu o nazwie B. Simon w witrynie Azure portal.
 
 1. W witrynie Azure Portal w okienku po lewej wybierz kolejno pozycje **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 
@@ -150,9 +150,9 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     ![W okienku użytkownika](common/user-properties.png)
 
-    1. W polu **Nazwa** wpisz **BrittaSimon**.
+    1. W **nazwa** wprowadź **BSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >**. Na przykład **BrittaSimon\@contoso.com**.
+    1. W **nazwa_użytkownika** wprowadź **BSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >**. Na przykład **BSimon\@contoso.com**.
 
     1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 
@@ -160,7 +160,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej Uberflip.
+W tej sekcji możesz włączyć Simon B. korzystać z platformy Azure logowania jednokrotnego przez przyznanie im dostępu do Uberflip.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Uberflip**.
 
@@ -178,7 +178,7 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okienku wybierz **Britta Simon** w **użytkowników** , a następnie wybierz **wybierz** w dolnej części okienka.
+1. W **użytkowników i grup** okienku wybierz **B Simon** w **użytkowników** , a następnie wybierz **wybierz** w dolnej części okienka.
 
 1. Jeśli oczekujesz wartość roli dla asercji SAML, następnie w **wybierz rolę** okienku, wybierz odpowiednią rolę dla użytkownika z listy. W dolnej części okienka wybierz **wybierz**.
 
@@ -186,7 +186,7 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
 ### <a name="create-an-uberflip-test-user"></a>Tworzenie użytkownika testowego Uberflip
 
-Użytkownik o nazwie Britta Simon został utworzony w Uberflip. Nie trzeba podejmować żadnych działań do utworzenia tego użytkownika. Uberflip obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. Jeśli jeszcze nie istnieje użytkownik o nazwie Britta Simon w Uberflip, nowy katalog jest tworzony po uwierzytelnieniu.
+Użytkownik o nazwie B. Simon został utworzony w Uberflip. Nie trzeba podejmować żadnych działań do utworzenia tego użytkownika. Uberflip obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. Jeśli jeszcze nie istnieje użytkownik o nazwie B. Simon w Uberflip, nowy katalog jest tworzony po uwierzytelnieniu.
 
 > [!NOTE]
 > Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Uberflip](mailto:support@uberflip.com).

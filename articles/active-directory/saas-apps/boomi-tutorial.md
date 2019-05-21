@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8092724a8ebf04342e00d054cc78fe26b48d2f82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fe436632eee12157dde2b082a5c77e67e7977cc
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65864028"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Samouczek: Integracja usługi Azure Active Directory z platformą Boomi
 
@@ -251,12 +251,12 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do platformy Boomi
 
     d. Wprowadź **identyfikator federacyjny** użytkownika. Każdy użytkownik musi mieć identyfikator federacyjny, który w sposób unikatowy identyfikuje użytkownika w ramach konta.
 
-    e. Przypisz do użytkownika rolę **Standard User** (Użytkownik standardowy). Nie przypisuj roli Administrator, ponieważ spowodowałoby to przyznanie mu normalnego dostępu do aplikacji Atmosphere, a także dostępu do logowania jednokrotnego.
+    e. Przypisz do użytkownika rolę **Standard User** (Użytkownik standardowy). Nie należy przypisywać rolę administratora, ponieważ, spowodowałoby to nadanie im normalny dostęp atmosfery, a także dostępu rejestracji jednokrotnej.
 
     f. Kliknij przycisk **OK**.
 
     > [!NOTE]
-    > Użytkownik nie otrzyma wiadomości e-mail z powiadomieniem powitalnym zawierającej hasło, które może być używane do logowania się do konta AtomSphere, ponieważ jego hasło jest zarządzane za pośrednictwem dostawcy tożsamości. Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników platformy Boomi oferowanych przez tę platformę.
+    > Użytkownik nie otrzyma wiadomość e-mail z powiadomieniem powitalny zawierający hasła, który może służyć do logowania się do konta AtomSphere, ponieważ hasło jest zarządzana przez dostawcę tożsamości. Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników platformy Boomi oferowanych przez tę platformę.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

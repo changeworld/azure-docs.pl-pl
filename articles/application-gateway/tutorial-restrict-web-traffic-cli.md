@@ -3,33 +3,23 @@ title: Włączanie zapory aplikacji internetowej — interfejs wiersza polecenia
 description: Dowiedz się, jak ograniczać ruch internetowy za pomocą zapory aplikacji internetowej na bramie aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1387dc5bb2cabf9a3078474564aadc81b28fd9a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1822fe032a7c7a6382dbae2cb9f7095d1d076008
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407167"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955494"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>włączanie zapory aplikacji internetowej przy użyciu interfejsu wiersza polecenia platformy Azure
 
-> [!div class="op_single_selector"]
->
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [Program PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Interfejs wiersza polecenia platformy Azure](tutorial-restrict-web-traffic-cli.md)
->
-> 
+Ruch na [bramie aplikacji](overview.md) można ograniczyć za pomocą [zapory aplikacji internetowych](waf-overview.md). Zapora aplikacji internetowych chroni Twoje aplikacje, używając reguł [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Reguły te obejmują ochronę przed atakami, takimi jak iniekcja kodu SQL, działanie skryptów między witrynami i porywanie sesji.
 
-Ruch na [bramie aplikacji](overview.md) można ograniczyć za pomocą [zapory aplikacji internetowych](waf-overview.md). Zapora aplikacji internetowych chroni Twoje aplikacje, używając reguł [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Reguły te obejmują ochronę przed atakami, takimi jak iniekcja kodu SQL, działanie skryptów między witrynami i porywanie sesji. 
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
@@ -39,13 +29,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ![Przykład zapory aplikacji internetowych](./media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
-Jeśli chcesz, możesz wykonać kroki tego samouczka przy użyciu [programu Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
+Jeśli wolisz, możesz wykonać tej procedury przy użyciu [programu Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -148,7 +138,7 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Tworzenie konta magazynu i konfigurowanie diagnostyki
 
-W tym samouczku brama aplikacji używa konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Do rejestrowania danych można też użyć dzienników usługi Azure Monitor lub usługi Event Hub. 
+W tym artykule bramy application gateway korzysta z konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Do rejestrowania danych można też użyć dzienników usługi Azure Monitor lub usługi Event Hub. 
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -196,18 +186,9 @@ az network public-ip show \
 Gdy grupa zasobów, brama aplikacji i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Konfigurowanie sieci
-> * Tworzenie bramy aplikacji z włączoną zaporą aplikacji internetowych
-> * Tworzenie zestawu skalowania maszyn wirtualnych
-> * Tworzenie konta magazynu i konfigurowanie diagnostyki
-
-> [!div class="nextstepaction"]
-> [Tworzenie bramy aplikacji z terminacją SSL](./tutorial-ssl-cli.md)
+* [Tworzenie bramy aplikacji z terminacją SSL](./tutorial-ssl-cli.md)

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2b701e618bdcbd50709360c55cfb9ceb68781ebc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127314"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969088"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -111,7 +111,7 @@ W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczy
 
 Możesz również wybrać metrykę **Cost Percentage vs. Budget threshold** (Procent kosztów a próg budżetu), aby utworzyć alerty. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
 
-## <a name="export-data"></a>Eksportowanie danych
+## <a name="export-data"></a>Eksportuj dane
 
 Podobnie do sposobu tworzenia alertów na potrzeby raportów możesz też wyeksportować dane z dowolnego raportu. Na przykład możesz wyeksportować listę kont Cloudyn lub innych danych użytkowników. Aby wyeksportować dowolny raport, otwórz raport, a następnie w prawym górnym rogu raportu kliknij opcję **Akcje**. Jedną z akcji, które możesz wykonać, jest opcja **Eksportuj wszystkie dane raportów**, która umożliwia pobranie lub wydrukowanie informacji. Możesz też wybrać opcję **Zaplanuj raport**, aby zaplanować raport i wysłać go jako wiadomość e-mail.
 

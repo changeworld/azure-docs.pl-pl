@@ -75,9 +75,10 @@
       items:
         - name: Ograniczanie dostępu przy użyciu sieci wirtualnej (wersja zapoznawcza)
           href: container-registry-vnet.md
-        - name: Omówienie uwierzytelniania
-          href: container-registry-authentication.md
+        - name: Authentication
           items:
+            - name: Omówienie uwierzytelniania
+              href: container-registry-authentication.md
             - name: Uwierzytelnianie jednostki usługi
               href: container-registry-auth-service-principal.md
             - name: Uwierzytelnianie tożsamości zarządzanej
@@ -143,3 +144,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
+    - name: Często zadawane pytania
+      href: container-registry-faq.md

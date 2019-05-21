@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: b5c61ecb74c0fcdacc6024a74565f05b036e2ac6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65081396"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65954798"
 ---
 1. Uruchom program Visual Studio 2017.
 
@@ -23,7 +23,7 @@ ms.locfileid: "65081396"
 
     ![Zrzut ekranu przedstawiający okno dialogowe Nowy projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. Zestaw Speech SDK wymaga, by aplikacja została utworzona dla systemu Windows 10 Fall Creators Update lub jego nowszej wersji. W wyświetlonym oknie **Nowy projekt platformy uniwersalnej systemu Windows** wybierz pozycję **Windows 10 Fall Creators Update (10.0; kompilacja 16299)** dla opcji **Wersja minimalna**. W polu **Wersja docelowa** wybierz tę lub dowolną nowszą wersję, a następnie kliknij przycisk **OK**.
+1. Zestaw SDK rozpoznawania mowy wymaga, że utworzonych aplikacji dla systemu Windows 10 Fall Creators Update lub nowszej. W wyświetlonym oknie **Nowy projekt platformy uniwersalnej systemu Windows** wybierz pozycję **Windows 10 Fall Creators Update (10.0; kompilacja 16299)** dla opcji **Wersja minimalna**. W polu **Wersja docelowa** wybierz tę lub dowolną nowszą wersję, a następnie kliknij przycisk **OK**.
 
     ![Zrzut ekranu przedstawiający okno Nowy projekt platformy uniwersalnej systemu Windows](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 

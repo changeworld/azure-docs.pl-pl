@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145054"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949599"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Samouczek: Korzystanie z usługi Azure CDN w celu włączenia domeny niestandardowej dla statycznej witryny internetowej
 
@@ -44,8 +44,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/), aby rozpoczą
 1. W sekcji **Nowy punkt końcowy** wypełnij pola, aby utworzyć nowy punkt końcowy usługi CDN.
 1. Wprowadź nazwę punktu końcowego, na przykład *mystaticwebsiteCDN*.
 1. Wprowadź domenę witryny internetowej jako nazwę hosta dla punktu końcowego usługi CDN.
-1. Jako nazwę hosta źródła wprowadź punkt końcowy statycznej witryny internetowej. Aby odnaleźć punkt końcowy statycznej witryny internetowej, przejdź do sekcji **Statyczna witryna internetowa** na swoim koncie magazynu i skopiuj punkt końcowy. 
+1. Jako nazwę hosta źródła wprowadź punkt końcowy statycznej witryny internetowej. Aby znaleźć punkt końcowy statycznej witryny internetowej, przejdź do **statycznej witryny internetowej** sekcji konta magazynu i skopiuj punktu końcowego (usuwanie poprzedniej https://)
 1. Przetestuj punkt końcowy usługi CDN, przechodząc do adresu *mywebsitecdn.azureedge.net* w przeglądarce.
+1. Additionaly sprawdzić, przechodząc do **nowy punkt końcowy** w obszarze Ustawienia źródła, aby zobaczyć, jeśli typ źródła jest ustawiony na *Źródło niestandardowe* i *nazwa hosta źródła* Wyświetla statyczne Nazwa punktu końcowego webiste.
 
 ## <a name="enable-custom-domain-and-ssl"></a>Włączanie domeny niestandardowej oraz protokołu SSL
 

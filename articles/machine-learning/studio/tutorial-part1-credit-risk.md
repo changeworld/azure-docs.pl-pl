@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461195"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949796"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Samouczek 1. Przewidywanie ryzyka kredytowego — Azure Machine Learning Studio
 
@@ -57,12 +57,12 @@ Aby używać usługi Machine Learning Studio, musisz mieć obszar roboczy usług
 
 Aby utworzyć obszar roboczy, zobacz [Tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning Studio](create-workspace.md).
 
-Po utworzeniu obszaru roboczego otwórz usługę Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jeden obszar roboczy, możesz wybrać odpowiedni obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
+Po utworzeniu obszaru roboczego, należy otworzyć usługi Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jednego obszaru roboczego, można wybrać obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
 
 ![Wybieranie obszaru roboczego w usłudze Studio](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Jeśli jesteś właścicielem obszaru roboczego, możesz udostępniać eksperymenty, nad którymi pracujesz, zapraszając inne osoby do obszaru roboczego. Możesz to zrobić w usłudze Machine Learning Studio na stronie **SETTINGS** (USTAWIENIA). Wystarczy, że każdy użytkownik będzie miał konto Microsoft lub konto organizacji.
+> Jeśli jesteś właścicielem obszaru roboczego, możesz udostępniać eksperymenty, nad którymi pracujesz, zapraszając inne osoby do obszaru roboczego. Możesz to zrobić w usłudze Machine Learning Studio na stronie **SETTINGS** (USTAWIENIA). Wystarczy konto Microsoft lub konto organizacyjne dla każdego użytkownika.
 > 
 > Na stronie **SETTINGS** (USTAWIENIA) kliknij pozycję **USERS** (UŻYTKOWNICY), a następnie kliknij przycisk **INVITE MORE USERS** (ZAPROŚ UŻYTKOWNIKÓW) w dolnej części okna.
 > 
@@ -78,7 +78,7 @@ Zestaw danych **german.data** zawiera wiersze 20 zmiennych z 1000 złożonych w 
 
 Witryna internetowa UCI zawiera opis atrybutów wektora cech dla tych danych. Te dane obejmują informacje finansowe, historię kredytową, stan zatrudnienia i dane osobowe. Każdy wnioskodawca został poddany klasyfikacji binarnej, która wskazuje, czy jego ryzyko kredytowe jest wysokie, czy niskie. 
 
-Użyjesz tych danych, aby wytrenować model analizy predykcyjnej. Gdy wszystko będzie gotowe, model powinien być w stanie zaakceptować wektor cech dla nowej osoby i przewidzieć, czy jej ryzyko kredytowe jest niskie, czy wysokie.  
+Użyjesz tych danych, aby wytrenować model analizy predykcyjnej. Gdy wszystko będzie gotowe, model powinien móc zaakceptować wektor funkcji dla poszczególnych nowych i przewidywania, czy są one ryzyko kredytowe niskie lub wysokie.  
 
 Jest jeszcze pewien interesujący zwrot.
 

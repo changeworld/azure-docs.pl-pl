@@ -6,6 +6,9 @@
     - name: Co to jest usługa Azure Machine Learning?
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
+    - name: Jak działa usługa
+      displayName: architecture concepts definitions
+      href: concept-azure-machine-learning-architecture.md
 - name: Konfigurowanie
   items:
     - name: Tworzenie obszaru roboczego
@@ -77,9 +80,6 @@
           href: ui-sample-classification-predict-churn.md
 - name: Pojęcia
   items:
-    - name: Jak działa usługa
-      displayName: architecture concepts definitions
-      href: concept-azure-machine-learning-architecture.md
     - name: Obszar roboczy
       displayName: concept definitions architecture
       href: concept-workspace.md

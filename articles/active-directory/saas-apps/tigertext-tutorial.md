@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 7507e5d23898fd069797c14d0fa18419b8345d78
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.openlocfilehash: 840b1fe55556cfd853e0928164891d6b21b17cc2
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888270"
+ms.locfileid: "65956869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Samouczek: Integracja usługi Azure Active Directory programu TigerText Secure Messenger
 
@@ -156,7 +156,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowania jednokrotnego przez udostępnienie jej TigerText Secure Messenger.
+W tej sekcji możesz włączyć Britta Simon do nadawania im praw do TigerText Messenger zabezpieczyć za pomocą platformy Azure logowania jednokrotnego.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **TigerText Secure Messenger**.
 

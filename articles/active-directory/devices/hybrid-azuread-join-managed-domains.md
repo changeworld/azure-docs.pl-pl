@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190791"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962190"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych
 
@@ -178,12 +178,12 @@ Ponadto musisz włączyć opcję **Zezwalaj na aktualizacje na pasku stanu za po
 
 ### <a name="configure-seamless-sso"></a>Konfigurowanie bezproblemowego logowania jednokrotnego
 
-Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
+Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Jeśli masz problem ze skonfigurowaniem bezproblemowe logowanie Jednokrotne, zobacz artykuł [Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu 
 
-Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, kliknij [tutaj](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, zobacz artykuł [kontrolować dołączenie do hybrydowej usługi Azure AD urządzeń](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 
 ## <a name="verify-the-registration"></a>Weryfikacja rejestracji

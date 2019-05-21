@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e9bd7fb147f9789120776bc603768b4ace59e693
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b309d54fae63f16574bb3799d77adfd89f91a57
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003872"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967085"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: Przypisywanie dostępu do danych rozwiązania Cloudyn
 
@@ -28,7 +28,7 @@ Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworze
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
-> * Usuwanie użytkownika
+> * Usuń użytkownika
 > * Usuwanie lub eksportowanie danych osobowych
 > * Tworzenie jednostek i zarządzanie nimi
 
@@ -60,7 +60,7 @@ Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Clou
 
 Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do rozwiązania Cloudyn).
 
-## <a name="delete-a-user"></a>Usuwanie użytkownika
+## <a name="delete-a-user"></a>Usuń użytkownika
 
 Po usunięciu użytkownika wszelkie jednostki, do których użytkownik miał dostęp, pozostaną bez zmian. W przypadku usunięcia użytkownika zostaną usunięte zapisane raporty *osobiste*. Zapisane raporty *publiczne* utworzone przez użytkownika nie są usuwane.
 
@@ -125,7 +125,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
-> * Usuwanie użytkownika
+> * Usuń użytkownika
 > * Usuwanie lub eksportowanie danych osobowych
 > * Tworzenie jednostek i zarządzanie nimi
 
