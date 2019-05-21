@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 0afa1937b5122d7cdf890176b616c433a63b25a2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192219"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905189"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-connect"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Mitel Connect
 

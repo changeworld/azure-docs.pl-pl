@@ -2,20 +2,19 @@
 title: Konfigurowanie urządzenia na potrzeby usługi Azure IoT Hub Device Provisioning
 description: Konfigurowanie urządzenia na potrzeby aprowizacji za pośrednictwem usługi IoT Hub Device Provisioning w procesie jego produkcji
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61249092"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911684"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Konfigurowanie urządzenia na potrzeby aprowizacji przy użyciu usługi Azure IoT Hub Device Provisioning
 
@@ -28,7 +27,7 @@ W poprzednim samouczku przedstawiono sposób konfigurowania usługi Azure IoT Hu
 
 W tym samouczku przyjęto założenie, że utworzono już wystąpienie usługi Device Provisioning i centrum IoT, korzystając z instrukcji znajdujących się w poprzednim samouczku [Konfigurowanie zasobów w chmurze](tutorial-set-up-cloud.md).
 
-W tym samouczku używane jest [repozytorium zestawów Azure IoT SDK i bibliotek dla języka C](https://github.com/Azure/azure-iot-sdk-c), które zawiera zestaw SDK klienta usługi Device Provisioning dla języka C. Ten zestaw SDK aktualnie obsługuje implementacje systemów Windows i Ubuntu na urządzeniach z modułami TPM i X.509. Ten samouczek bazuje na kliencie deweloperskim systemu Windows. Przyjęto w nim również założenie, że masz podstawowe umiejętności obsługi programu Visual Studio 2017. 
+W tym samouczku używane jest [repozytorium zestawów Azure IoT SDK i bibliotek dla języka C](https://github.com/Azure/azure-iot-sdk-c), które zawiera zestaw SDK klienta usługi Device Provisioning dla języka C. Ten zestaw SDK aktualnie obsługuje implementacje systemów Windows i Ubuntu na urządzeniach z modułami TPM i X.509. Ten samouczek opiera się na korzystanie z klienta programowania Windows, który również założenie podstawowe umiejętności obsługi programu Visual Studio. 
 
 Jeśli nie znasz procesu automatycznego aprowizowania, przed kontynuowaniem zapoznaj się z tematem [Auto-provisioning concepts](concepts-auto-provisioning.md) (Pojęcia związane z automatycznym aprowizowaniem). 
 
@@ -37,14 +36,14 @@ Jeśli nie znasz procesu automatycznego aprowizowania, przed kontynuowaniem zapo
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program Visual Studio 2015 lub [Visual Studio 2017](https://www.visualstudio.com/vs/) z włączonym pakietem roboczym [„Programowanie aplikacji klasycznych w języku C++”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Kompilowanie specyficznej dla platformy wersji zestawu SDK
 
-Zestaw SDK klienta usługi Device Provisioning ułatwia zaimplementowanie oprogramowania do rejestracji urządzenia. Jednak zanim będzie można go użyć, należy skompilować wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego i mechanizmu zaświadczania. W tym samouczku skompilujesz zestaw SDK korzystający z programu Visual Studio 2017 na platformie deweloperskiej systemu Windows dla obsługiwanego typu zaświadczania:
+Zestaw SDK klienta usługi Device Provisioning ułatwia zaimplementowanie oprogramowania do rejestracji urządzenia. Jednak zanim będzie można go użyć, należy skompilować wersję zestawu SDK specyficzną dla platformy klienta deweloperskiego i mechanizmu zaświadczania. W tym samouczku kompilujesz zestaw SDK, który używa programu Visual Studio na platformie Windows rozwoju dla obsługiwanego typu zaświadczania:
 
 1. Pobierz [system kompilacji CMake](https://cmake.org/download/).
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: 05475dbfb7dc1ee3f5de1a9b858eaf212b674eac
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3dad2696332f57d9a0dc86927f91caa7352b1d7b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466388"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884942"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy Java
 
@@ -55,7 +55,7 @@ Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainsta
   ```
 
 Jeśli korzystasz z Windows (64-bitowy), upewnij się, został zainstalowany program Microsoft Visual C++ pakiet redystrybucyjny dla danej platformy.
-* [Pobierz pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [Pobierz program Microsoft Visual C++ Redistributable for Visual Studio 2019 r.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
 

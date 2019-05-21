@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: cc5d8e4791bc109f4a804aad33bfc258eed97a25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 724d47695c2878caf6ae18e2622f72dc59767ea0
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871261"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą NetDocuments
 
@@ -104,12 +104,12 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z NetDocuments, wykon
 
     ![NetDocuments domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-reply.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Rzeczywisty symbol dla adresu URL i adresu URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta NetDocuments](https://support.netdocuments.com/hc/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Rzeczywisty symbol dla adresu URL i adresu URL odpowiedzi, należy zaktualizować te wartości. Identyfikator repozytorium jest wartością rozpoczęcie od urzędu certyfikacji — następuje 8 kod znaku skojarzony z repozytorium NetDocuments przeczytania artykułu. Możesz sprawdzić [dokument pomocy technicznej tożsamości federacyjnych NetDocuments](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) Aby uzyskać więcej informacji. Alternatywnie możesz skontaktować się ze [zespołem pomocy technicznej klienta NetDocuments](https://support.netdocuments.com/hc/) do uzyskania tych wartości, w przypadku konfigurowania dificulties, korzystając z informacji podanych powyżej. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 

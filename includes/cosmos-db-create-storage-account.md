@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
-ms.openlocfilehash: 78210f955f9724153f49895f834ed4630ada5930
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
-ms.translationtype: HT
+ms.openlocfilehash: 692062b29bd22cb5b37cc6371f2908adcdb4b29d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40245806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65922056"
 ---
 Najprościej jest utworzyć pierwsze konto usługi Azure Storage przy użyciu witryny [Azure Portal](https://portal.azure.com). Więcej informacji można znaleźć w temacie [Tworzenie konta magazynu](../articles/storage/common/storage-quickstart-create-account.md).
 

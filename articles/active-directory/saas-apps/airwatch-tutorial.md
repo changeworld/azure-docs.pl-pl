@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec8b575157dcf2fe8430f554798af62b966c78d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406698"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją AirWatch
 
@@ -207,15 +207,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji AirWatch, 
 
     a. W polu tekstowym **Object Identifier** (Identyfikator obiektu) wpisz `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
-    b. W polu tekstowym **Username** (Nazwa użytkownika) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. W polu tekstowym **Username** (Nazwa użytkownika) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    c. W polu tekstowym **Display Name** (Nazwa wyświetlana) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. W polu tekstowym **Display Name** (Nazwa wyświetlana) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    d. W polu tekstowym **First Name** (Imię) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. W polu tekstowym **First Name** (Imię) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. W polu tekstowym **Last Name** (Nazwisko) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. W polu tekstowym **Last Name** (Nazwisko) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. W polu tekstowym **Email** (Adres e-mail) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. W polu tekstowym **Email** (Adres e-mail) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     g. Kliknij pozycję **Zapisz**.
 

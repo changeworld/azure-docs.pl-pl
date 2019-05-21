@@ -16,11 +16,11 @@ ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d0095a825f5582dc795f5bebdcf08be07a92946e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280751"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Samouczek: integracja usługi Azure Active Directory z platformą Coralogix
 
@@ -55,21 +55,21 @@ Aby dodać Coralogix z galerii, wykonaj następujące czynności:
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do pozycji **Aplikacje dla przedsiębiorstw** i wybierz pozycję **Wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **Coralogix**. Wybierz **Coralogix** w okienku wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
 
      ![Platforma Coralogix na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Coralogix w oparciu o użytkownika testu o nazwie Britta Simon.
 Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w Coralogix.
@@ -83,7 +83,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 5. [Tworzenie użytkownika testowego Coralogix](#create-a-coralogix-test-user) mieć odpowiednikiem Britta Simon Coralogix połączonego z usługi Azure AD reprezentacja użytkownika.
 6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
@@ -91,7 +91,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Coralogix, wykonaj 
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Coralogix** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** włączyć logowanie jednokrotne.
 
@@ -136,7 +136,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Coralogix, wykonaj 
 
 7. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **XML metadanych Federacji**  z danymi opcjami zgodnie z wymaganiami. Następnie zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 8. W **Konfigurowanie Coralogix** sekcji, skopiuj odpowiednie adresy URL.
 
@@ -158,7 +158,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. W górnej części ekranu wybierz **nowego użytkownika**.
 
@@ -166,9 +166,9 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
     b. W **nazwa_użytkownika** wprowadź "brittasimon@yourcompanydomain.extension." Na przykład, w tym przypadku możesz wprowadzić "brittasimon@contoso.com."
 
@@ -190,7 +190,7 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 4. Wybierz **Dodaj użytkownika** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
 

@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a23b024737f6af1f6361983045037b325783518a
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564904"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Yardi aktualne
 
@@ -30,7 +30,7 @@ Integrowanie Yardi aktualne z usługą Azure AD oferuje następujące korzyści:
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do szkoleń Yardi elektronicznych.
 * Aby umożliwić użytkownikom automatyczne logowanie do aktualne Yardi (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -64,15 +64,15 @@ Aby skonfigurować integrację Yardi aktualne w usłudze Azure AD, należy doda�
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **aktualne Yardi**, wybierz opcję **aktualne Yardi** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Aktualne Yardi na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą aktualne Yardi w oparciu o użytkownika testu o nazwie **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w aktualne Yardi musi zostać nawiązane.
@@ -81,10 +81,10 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie Yardi aktualne logowanie jednokrotne](#configure-yardi-elearning-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aktualne Yardi](#create-yardi-elearning-test-user)**  — aby mają odpowiednika w pozycji Britta simon w Yardi aktualne, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -94,7 +94,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Yardi aktualne, wyk
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **aktualne Yardi** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -117,7 +117,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Yardi aktualne, wyk
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 6. Na **Konfigurowanie aktualne Yardi** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
@@ -131,7 +131,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Yardi aktualne, wyk
 
 ### <a name="configure-yardi-elearning-single-sign-on"></a>Konfigurowanie Yardi aktualne logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **Yardi aktualne** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Yardi aktualne obsługi zespół](mailto:elearning@yardi.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Yardi aktualne** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Yardi aktualne obsługi zespół](mailto:elearning@yardi.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -198,7 +198,7 @@ Po kliknięciu kafelka aktualne Yardi w panelu dostępu, powinien zostać automa
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

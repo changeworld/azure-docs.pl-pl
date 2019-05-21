@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: chlandsi
-ms.openlocfilehash: 34af7544a7678dfd8c8f870369bf0b4b1083b96d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 30e25fa8ea9e49b3005badc3db8f6ada3c0aed50
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020719"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885166"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla języka Python
 
@@ -47,7 +47,7 @@ W tym artykule przedstawiono sposób korzystania z usług rozpoznawania mowy, mo
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
 
-* Na Windows, należy [programu Microsoft Visual C++ pakiet redystrybucyjny programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) dla danej platformy.
+* Na Windows, należy [programu Microsoft Visual C++ Redistributable dla programu Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) dla danej platformy.
 
 ## <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
 

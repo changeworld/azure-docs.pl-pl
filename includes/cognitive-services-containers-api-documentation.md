@@ -1,26 +1,24 @@
 ---
 author: diberry
-ms.author: v-junlch
+ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/25/2019
-ms.date: 04/23/2019
-ms.openlocfilehash: 94e95864d8bac2d6dc0ff690a2a8f53bd2db5a40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/25/2019
+ms.openlocfilehash: f4925401235aedb341a7e29ca36b079126647f7b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598894"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884987"
 ---
-## <a name="validate-container-is-running"></a>Sprawdź poprawność kontener jest uruchomiony 
+## <a name="validate-that-a-container-is-running"></a>Sprawdzić, czy kontener jest uruchomiona 
 
-Istnieje kilka sposobów, aby sprawdzić kontener jest uruchomiony: 
+Istnieje kilka sposobów, aby zweryfikować, że kontener został uruchomiony. 
 
-|Żądanie|Przeznaczenie|
+|Zażądaj|Przeznaczenie|
 |--|--|
-|`http://localhost:5000/`|Kontener zawiera stronę główną.|
-|`http://localhost:5000/status`|Zażądano za pomocą GET, można zweryfikować kontener jest uruchomiony bez powodowania kwerendę punktu końcowego. Może być używany dla rozwiązania Kubernetes [sondy żywotności i gotowość](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
-|`http://localhost:5000/swagger`|Kontener zawiera pełny zestaw dokumentacji dla punktów końcowych, a także `Try it now` funkcji. Ta funkcja umożliwia wprowadzanie ustawień do formularza HTML, oparte na sieci web i utworzyć zapytanie bez konieczności pisania kodu. Gdy zapytanie zwraca przykład polecenia CURL jest dostarczany w celu pokazują nagłówków HTTP i treści w formacie wymaganym. |
+|`http://localhost:5000/`|Kontener zawiera strony głównej.|
+|`http://localhost:5000/status`|Żądanie za pomocą GET, aby zweryfikować, że kontener został uruchomiony bez powodowania kwerendę punktu końcowego. To żądanie może służyć do rozwiązania Kubernetes [sondy żywotności i gotowość](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
+|`http://localhost:5000/swagger`|Kontener zawiera pełny zestaw dokumentacji dla punktów końcowych i `Try it now` funkcji. Za pomocą tej funkcji możesz wprowadzić ustawienia do formularza HTML opartych na sieci web i wprowadzić zapytania bez konieczności pisania kodu. Zapytanie zwraca, przykładowe polecenie programu CURL jest świadczona wykazanie, że format nagłówków HTTP i treści jest to wymagane. |
 
 ![Strona główna kontenera](./media/cognitive-services-containers-api-documentation/container-webpage.png)
-

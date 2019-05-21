@@ -7,18 +7,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 04/03/2019
-ms.openlocfilehash: f480aeb7e126cb6ab8286bbfbfb8441fefeb07ef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/16/2019
+ms.openlocfilehash: 09509b32320fb10b8ab3d563442b6d0fb44ad34e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716081"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909201"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
 W tym samouczku dowiesz się, jak utworzyć ramkę danych na podstawie pliku CSV i uruchamiać interakcyjne zapytania Spark SQL względem klastra [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight. Na platformie Spark ramka danych jest rozproszoną kolekcją danych zorganizowanych w nazwanych kolumnach. Jest równoważna tabeli w relacyjnej bazie danych lub ramce danych w języku R/Python.
- 
+
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie ramki danych z pliku csv
@@ -26,7 +26,22 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zapoznanie się z przewodnikiem [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+Klaster Apache Spark w usłudze HDInsight. Zobacz [utworzyć klaster platformy Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
+
+## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
+
+Jupyter Notebook to interakcyjne środowisko notesu, które obsługuje różne języki programowania. Notes pozwala na interakcję z danymi, łączenie kodu z tekstem markdown i wykonywanie prostych wizualizacji. 
+
+1. Edytuj adres URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` , zastępując `SPARKCLUSTER` nazwą klastra Spark. Następnie wprowadź edytowanych adresu URL w przeglądarce sieci web. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia logowania dla klastra.
+
+2. Na stronie sieci web programu Jupyter, wybierz **New** > **PySpark** do utworzenia notesu. 
+
+   ![Tworzenie notesu Jupyter w celu uruchomienia interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Tworzenie notesu Jupyter w celu uruchomienia interakcyjnego zapytania Spark SQL")
+
+   Nowy notes zostanie utworzony i otwarty o nazwie Untitled (`Untitled.ipynb`).
+
+    > [!NOTE]  
+    > Dzięki temu, że tworzenie notesu odbywa się przy użyciu jądra PySpark, po uruchomieniu pierwszej komórki kodu sesja `spark` jest tworzona automatycznie. Nie jest konieczne jawne tworzenie sesji.
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Tworzenie ramki danych z pliku csv
 
@@ -34,13 +49,7 @@ Aplikacje mogą tworzyć ramki danych bezpośrednio na podstawie plików lub fol
     
 ![Migawka danych używanych w interakcyjnym zapytaniu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Migawka danych używanych w interakcyjnym zapytaniu Spark SQL")
 
-
-1. Otwieranie notesu Jupyter, który został utworzony w sekcji wymagania wstępne i Utwórz nowy notes PySpark.
-
-    > [!NOTE]  
-    > Dzięki temu, że tworzenie notesu odbywa się przy użyciu jądra PySpark, po uruchomieniu pierwszej komórki kodu sesja `spark` jest tworzona automatycznie. Nie jest konieczne jawne tworzenie sesji.
-
-2. W notesie wklej następujący kod do pustej komórki, a następnie naciśnij klawisze **SHIFT+ENTER**, aby go uruchomić. Kod importuje typy wymagane w tym scenariuszu:
+1. Wklej następujący kod do pustej komórki notesu programu Jupyter, a następnie naciśnij klawisz **SHIFT + ENTER** do uruchomienia kodu. Kod importuje typy wymagane w tym scenariuszu:
 
     ```python
     from pyspark.sql import *
@@ -51,7 +60,7 @@ Aplikacje mogą tworzyć ramki danych bezpośrednio na podstawie plików lub fol
 
     ![Stan interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stan interakcyjnego zapytania Spark SQL")
 
-3. Uruchom następujący kod, aby utworzyć ramkę danych i tabelę tymczasową (**hvac**). 
+2. Uruchom następujący kod, aby utworzyć ramkę danych i tabelę tymczasową (**hvac**). 
 
     ```python
     # Create a dataframe and table from sample data
@@ -94,11 +103,7 @@ Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zas
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-> [!div class="checklist"]
-> * Tworzenie ramki danych na platformie Apache Spark.
-> * Uruchamianie zapytania Spark SQL względem ramki danych.
+W tym samouczku przedstawiono sposób Utwórz ramkę danych z pliku csv oraz do uruchamiania interakcyjnych zapytań Spark SQL klastra Apache Spark w usłudze Azure HDInsight. Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
 
-Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI. 
 > [!div class="nextstepaction"]
 > [Analyze data using BI tools (Analizowanie danych przy użyciu narzędzi do analizy biznesowej)](apache-spark-use-bi-tools.md)

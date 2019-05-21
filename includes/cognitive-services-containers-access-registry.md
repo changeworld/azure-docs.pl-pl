@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2019
 ms.openlocfilehash: 27c6b59a458fb79b86d7064d710a01593a1745dc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028878"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885054"
 ---
 ## <a name="use-docker-cli-to-authenticate-private-container-registry"></a>Uwierzytelniał prywatnego rejestru kontenera za pomocą interfejsu wiersza polecenia platformy Docker
 

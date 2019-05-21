@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62736430"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą PageDNA
 
@@ -73,7 +73,7 @@ Aby skonfigurować integrację PageDNA w usłudze Azure AD, należy dodać PageD
 
     ![PageDNA na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą PageDNA w oparciu o nazwie użytkownika testowego **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w PageDNA.
 
@@ -86,7 +86,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 1. **[Tworzenie użytkownika testowego PageDNA](#create-a-pagedna-test-user)**  tak, że istnieje użytkownik o nazwie Britta Simon w PageDNA, który jest połączony z użytkownikiem usługi Azure AD o nazwie Britta Simon.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
