@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b4360150064d2f42cc2dc2cc3ef9f7783a5cb175
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a4a8212906f384494a9e2e005eee8c4dbdfa14a3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866544"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954641"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -53,7 +53,7 @@ Wybieranie głosowe talent, którego naturalnego głosu możesz np. Istnieje mo�
 
 Najważniejszym czynnikiem dotyczące wybierania głosowego talent jest spójność. Nagrań powinny wszystkie dźwięku tak jak zostały wprowadzone w dniu, w tym samym pomieszczeniu. Można podejście to idealne rozwiązanie za pomocą nagrywania dobre praktyki i inżynierii.
 
-Talent Twojego głosu jest druga połowa równania. Użytkownik musi mieć możliwość Porozmawiaj z szybkości spójne, poziom głośności, skoku i sygnału. Wyczyść diction to. Talent musi być w stanie zachować ścisłą kontrolę własnego pomysłu odmiany, emocjonalnej wpływ i mannerisms mowy.
+Talent Twojego głosu jest druga połowa równania. Muszą być w stanie porozmawiać z szybkości spójne, poziom głośności, skoku i sygnału. Wyczyść diction to. Talent musi być w stanie zachować ścisłą kontrolę ich odmiany pomysłu, emocjonalnej wpływ i mannerisms mowy.
 
 Nagranie próbki głosu niestandardowego może być bardziej fatiguing niż inne rodzaje pracy głosu. Większość talent głosowych można rejestrować dla dwóch lub trzech godzin dziennie. Jeśli to możliwe ograniczyć sesje trzy lub cztery tygodnia, dzień, wyłączanie wewnętrzne.
 
@@ -117,7 +117,7 @@ Na szczęście istnieje możliwość całkowicie uniknąć tych problemów. Dost
 
 Zapisz skrypt w studio profesjonalnych nagrywania, który specjalizuje się w pracach głosu. Będą mieć stoisku nagrywania, odpowiednie urządzenia i odpowiednich osób do jej działania. Warto nie skimp na rejestrowanie.
 
-Omówienia projektu z programu studio nagrywanie inżynier i słuchać porad lub jej. Nagrywanie powinny mieć niewielkiego lub żadnego dynamicznym zakresie kompresji (maksymalnie 4:1). Koniecznie że audio mają spójne wolumin i wysoki współczynnik sygnał do szumu, będąc bezpłatnie niechciane dźwięki.
+Omówienia projektu z programu studio nagrywanie inżynier i nasłuchiwania rad. Nagrywanie powinny mieć niewielkiego lub żadnego dynamicznym zakresie kompresji (maksymalnie 4:1). Koniecznie że audio mają spójne wolumin i wysoki współczynnik sygnał do szumu, będąc bezpłatnie niechciane dźwięki.
 
 ### <a name="do-it-yourself"></a>Wykonaj samodzielnie
 
@@ -131,7 +131,7 @@ Można także użyć analogowy mikrofonu. Wiele domów wypożyczeń oferują wyp
 
 Na autonomicznych lub nagle zainstalować mikrofon i zainstaluj pop filtr przed mikrofonu w celu wyeliminowania hałas "plosive" Spółgłoski, takich jak "p" i "b". Niektóre mikrofon są dostarczane z instalacji zawieszenia, który izoluje ich od wibracje w autonomicznych, co jest przydatne.
 
-Talent głosu musi pozostać w odległości spójne z mikrofonu. W systemie taśmy Zaokrąglenie w dół do oznaczania, gdzie należy pozostawić wzorze. Preferuje talent siedzieć, należy zwrócić szczególną uwagę do monitorowania odległość sprawdzanie integralności komunikatu i uniknij szumu spowodowanego krzesło.
+Talent głosu musi pozostać w odległości spójne z mikrofonu. W systemie taśmy Zaokrąglenie w dół do oznaczania, gdzie powinna występować. Preferuje talent siedzieć, należy zwrócić szczególną uwagę do monitorowania odległość sprawdzanie integralności komunikatu i uniknij szumu spowodowanego krzesło.
 
 Użyj autonomicznej do przechowywania skryptu. Należy unikać łowienia rozszerzanej, dzięki czemu może odzwierciedlać, dźwięk w kierunku mikrofonu.
 
@@ -158,12 +158,12 @@ Najlepiej, jeśli mają różne osoby, które pełnią role dyrektora, inżynier
 
 ### <a name="before-the-session"></a>Przed sesji
 
-Aby uniknąć marnowania czasu studio, uruchom za pomocą skryptu z Twojego głosu talent przed sesji nagrywania. Gdy talent głosu staje się zapoznać się z tekstu, również uprościć Wymowa nieznanego słów.
+Aby uniknąć marnowania czasu studio, uruchom za pomocą skryptu z Twojego głosu talent przed sesji nagrywania. Podczas talent głosu staje się zapoznać się z tekstu, one objaśnienia wymowy wszelkich nieznanych wyrazów.
 
 > [!NOTE]
 > Większość studios nagrywanie oferują elektronicznego wyświetlanie skryptów w stoisku rejestrowania. W tym przypadku wpisz notatki run-through bezpośrednio do dokumentu przez skrypt. Nadal należy zanotować podczas sesji, jednak z kopią papieru. Większość inżynierowie będą chcieli zbyt kopię twardych. I będzie nadal potrzebujesz trzeciego drukowane kopiowania do przechowywania kopii zapasowych dla talent, w przypadku, gdy komputer znajduje się w dół.
 
-Talent Twojego głosu może poprosić które program word ma wyróżniono w wypowiedź ("word operacyjne"). Przekaż mu ma naturalny odczytu ze nie szczególnym. Nacisk można dodać, gdy jest syntezatora mowy; nie należy w ramach oryginalnym nagraniu.
+Talent Twojego głosu może poprosić które program word ma wyróżniono w wypowiedź ("word operacyjne"). Poinformuj ich, ma naturalny odczytu ze nie szczególnym. Nacisk można dodać, gdy jest syntezatora mowy; nie należy w ramach oryginalnym nagraniu.
 
 Bezpośrednie talent wyraźnie Wymowa słów. Każdy wyraz skrypt powinien występować podczas zapisywania. Dźwięki nie powinny zostać pominięty lub slurred ze sobą, co jest często spotykane w zwykłych mowy *, chyba że zostały one zapisane w ten sposób w skrypcie*.
 
@@ -196,7 +196,7 @@ Posłuchaj ściśle, użycie słuchawek wydajności talent głosu. Szukasz dicti
 
 Należy pamiętać, liczba take lub kod, nad skryptem czasu dla każdego wypowiedź. Poproś inżynier do oznaczania każdej wypowiedź w metadanych nagrywania lub także arkuszu wskaźnika.
 
-Podjąć podziały regularnych i zapewniają spożywczy ułatwiające Twojego głosu talent, utrzymania jej głosu w dobrym stanie.
+Podjąć podziały regularnych i zapewniają spożywczy ułatwiające Twojego głosu talent, utrzymania głosu w dobrym stanie.
 
 ### <a name="after-the-session"></a>Po zakończeniu
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: b2e956b099022751712f96ab0b15aa57c752b458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c989f1115bc5a85bf09270c553ac1cb51bb4f170
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405260"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954709"
 ---
 # <a name="analyzer-names"></a>Nazwy analizatorów
 
@@ -43,10 +43,10 @@ Obecnie istnieją trzy różne typy:
 W ramach danego typu jednak różnych ekspertami może nie zgadzają się na jak określonego zjawisko powinno być analizowane.
 W odróżnieniu od języków programowania Brak ma teraz bardziej czytelne i dokładne definicji jak to robić.
 
-Na przykład załóżmy, że próby znalezienia tokeny w języku angielskim zdaniu "On nie Przejdź."
+Na przykład załóżmy, że próby znalezienia tokeny w języku angielskim zdaniu "Nie przejdą."
 W szczególności należy wziąć pod uwagę ciąg "nie".
 Interpretacja możliwe jest, że to można podzielić na dwa tokeny: "czy" i "not".
-Wówczas alternatywnych zdania "on nie się" będzie miała ten sam zestaw tokenów.
+Wówczas alternatywnych zdania "one nie się" będzie miała ten sam zestaw tokenów.
 Inną możliwością jest powiedzieć, że powinna zostać podzielony na tokeny "czy" i "e".
 Ostatni token nie się na ogół za wyrazu, ale takie podejście zachowuje więcej informacji na temat powierzchni parametry, które czasami mogą być przydatne.
 Lub prawdopodobnie należy rozważyć zmniejszenie tego pojedynczego wyrazu.

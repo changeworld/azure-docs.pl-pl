@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1cbf1514ac5eba4e288ecb78944878217fc5ba3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60514981"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954522"
 ---
 # <a name="basic-concepts"></a>Podstawowe pojęcia
 
@@ -32,7 +32,7 @@ Jeśli po raz pierwszy tworzysz aplikację z funkcją mowy, czy jest po raz pier
 
 Przede wszystkim między podstawowe pojęcia mowy *strumienia audio*. Inaczej niż w przypadku naciśnięcia klawisza, który występuje w jednym punkcie w czasie i zawiera pojedynczy informacje, żądanie prowadzone jest rozłożona na setki milisekund i zawiera wiele kilobajtów informacji. Czas trwania prowadzone wypowiedzi przedstawia niektóre problemy, którzy chcą zapewnić środowisko prostsze i elegancki mowy w swojej aplikacji. Współczesnych komputerów i algorytmy wykonywania transkrypcja mowy w około połowę czas trwania wypowiedź, więc może być transkrybowanego wypowiedź 2-sekundowych w przybliżeniu 1 sekundę, ale są każdą aplikację, która napotyka 1-sekundowe opóźnienie przetwarzania użytkownika Usprawnione ani elegancki.
 
-Na szczęście istnieją sposoby "Ukrywanie" czas transkrypcji, wykonując transkrypcji w jednej części wypowiedź, gdy użytkownik mówiącego Prezydenta innej części. Na przykład, dzieląc wypowiedź 1 sekundę, do 10 fragmentów 100 milisekund i wykonując transkrypcji na każdy fragment z kolei ponad 450 z całkowitej 500 milisekund wymagany dla transkrypcji może być "ukryte", aby użytkownik nie rozpoznaje transkrypcji jest wykonywane, gdy jest on mówić. Gdy myśleć o tym przykładzie, pamiętaj o tym, czy usługa działa transkrypcji na poprzednim 100 milisekund audio, gdy użytkownik mówiącego Prezydenta następne 100, więc gdy użytkownik zatrzymuje rzecz biorąc, usługa będzie miał tylko także około 100 Liczba milisekund audio w celu utworzenia wyniku.
+Na szczęście istnieją sposoby "Ukrywanie" czas transkrypcji, wykonując transkrypcji w jednej części wypowiedź, gdy użytkownik mówiącego Prezydenta innej części. Na przykład, dzieląc wypowiedź 1 sekundę, do 10 fragmentów 100 milisekund i wykonując transkrypcji na każdy fragment z kolei ponad 450 z całkowitej 500 milisekund wymagany dla transkrypcji może być "ukryte", aby użytkownik nie rozpoznaje transkrypcji jest Trwa wykonywanie, gdy są one mówić. Gdy myśleć o tym przykładzie, pamiętaj o tym, czy usługa działa transkrypcji na poprzednim 100 milisekund audio, gdy użytkownik mówiącego Prezydenta następne 100, więc gdy użytkownik zatrzymuje rzecz biorąc, usługa będzie miał tylko także około 100 Liczba milisekund audio w celu utworzenia wyniku.
 
 Uzyskanie tego środowiska użytkownika, prowadzone informacje audio są zbierane we fragmentach i transkrybowanego jak mówi użytkownik. Te fragmenty audio, łącznie z *strumienia audio*, a proces wysyłania tych fragmentów audio z usługą jest nazywana *przesyłanie strumieniowe audio.* Przesyłanie strumieniowe audio jest ważną częścią dowolnej aplikacji z obsługą mowy; Dostosowywanie rozmiaru fragmentu i optymalizacja przesyłania strumieniowego implementacji kilka największy sposobów poprawy środowiska użytkownika aplikacji.
 
@@ -81,10 +81,10 @@ Usługa rozpoznawania mowy Microsoft udostępnia dwa sposoby deweloperzy mogą d
 
 | Przypadki zastosowań | [Interfejsy API REST](GetStarted/GetStartedREST.md) | [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Konwertuj krótko wypowiedzi audio, na przykład poleceń (audio długość < 15 s) bez wyników pośrednich | Yes | Yes |
-| Konwertuj długie audio (> 15 s) | Nie | Yes |
-| Dźwięk Stream z wyników pośrednich żądanego | Nie | Yes |
-| Zrozumienie tekstu skonwertowaniu dźwięku za pomocą usługi LUIS | Nie | Yes |
+| Konwertuj krótko wypowiedzi audio, na przykład poleceń (audio długość < 15 s) bez wyników pośrednich | Tak | Tak |
+| Konwertuj długie audio (> 15 s) | Nie | Tak |
+| Dźwięk Stream z wyników pośrednich żądanego | Nie | Tak |
+| Zrozumienie tekstu skonwertowaniu dźwięku za pomocą usługi LUIS | Nie | Tak |
 
  Jeśli potrzebnego języka lub platformy nie ma jeszcze zestawu SDK, możesz utworzyć Twojej własnej implementacji na podstawie [dokumentacji protokołu](API-Reference-REST/websocketprotocol.md).
 
@@ -162,7 +162,7 @@ Odpowiedzi transkrypcji Zwróć tekst skonwertowany audio do klientów. Tekst od
 
 | Stan | Opis |
 | ------------- | ---------------- |
-| Powodzenie | Rozpoznawanie zakończyło się pomyślnie i pola Wyświetlany_tekst jest obecny |
+| Sukces | Rozpoznawanie zakończyło się pomyślnie i pola Wyświetlany_tekst jest obecny |
 | NoMatch | Wykryto mowy strumienia audio, ale bez wyrazów z języka docelowego zostały dopasowane. Zobacz temat [NoMatch rozpoznawania Status(#nomatch-recognition-status) Aby uzyskać więcej informacji  |
 | InitialSilenceTimeout | Początek strumienia audio zawiera tylko wyciszenia, a usługa upłynął limit czasu oczekiwania podczas rozpoznawania mowy |
 | BabbleTimeout | Początek strumienia audio zawiera tylko hałasu i usługi, upłynął limit czasu oczekiwania podczas rozpoznawania mowy |

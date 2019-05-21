@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/14/2019
 ms.author: diberry
-ms.openlocfilehash: 24158d5949c0a31e5444c609cbfced970bdeca07
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f12b55e9b00e933e13f84832b8cc36267a1da05f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471961"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954864"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj kontynuacji monit o utworzenie wielu włącza konwersacji
 
@@ -52,7 +52,7 @@ Podczas importowania pliku PDF, narzędzie QnA Maker określa kolejnych monitów
 
 ![! [Podczas importowania pliku PDF, narzędzie QnA Maker określa kolejnych monitów ze struktury, aby utworzyć przepływ konwersacji. ](.. / media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-## <a name="filter-questions-and-answers-by-context"></a>Filtruj pytań i odpowiedzi od kontekstu
+## <a name="show-questions-and-answers-with-context"></a>Pokaż pytań i odpowiedzi z kontekstem
 
 1. Zmniejsz pary pytań i odpowiedzi, wyświetlane tylko dla osób z kontekstowych konwersacji. Wybierz **wyświetlić opcje**, a następnie wybierz **kontekstu Show (wersja ZAPOZNAWCZA)**. Lista jest pusta, do momentu dodania pierwszego pary pytań i odpowiedzi wraz z monitem o kolejnych. 
 
@@ -64,22 +64,36 @@ Podczas importowania pliku PDF, narzędzie QnA Maker określa kolejnych monitów
 1. Wprowadź nowy tekst pytania `Give feedback.` z odpowiedzi na pytanie `What kind of feedback do you have?`.
 
 1. W **odpowiedzi** kolumny na to pytanie, wybierz opcję **Dodaj wiersz monitowania**. 
-1. **Kontynuacji wiersza** wyskakujące okno dialogowe umożliwia wyszukiwanie istniejących pytanie lub wprowadź nowe pytanie. W tej procedurze, wprowadź tekst `Feedback on an QnA Maker service`, aby uzyskać **wyświetlania tekstu**. 
-1. Sprawdź **tylko do kontekstu**. **Tylko do kontekstu** opcja wskazuje tekst tego użytkownika będą rozumieć _tylko_ Jeśli podane w odpowiedzi na poprzednie pytanie. W tym scenariuszu tekst monitu nie ma sensu wszelkie jako autonomiczny pytanie, tylko sens w kontekście poprzedniego pytania.
-1. W **Link, aby odpowiedzieć** tekstu odpowiedzi, wprowadź `How would you rate QnA Maker?`.
-1. Wybierz **Utwórz nową** polecenie **Zapisz**. 
+1. **Kontynuacji wiersza (wersja ZAPOZNAWCZA)** okno podręczne umożliwia wyszukiwanie istniejących pytanie lub wprowadź nowe pytanie. Utwórz nowy wiersz, wprowadzając następujące wartości: 
+
+    |Pole tekstowe|Wartość|
+    |--|--|
+    |**Wyświetlanie tekstu**|`Feedback on an QnA Maker service`|
+    |**Link do odpowiedzi**|`How would you rate QnA Maker??`|
+    |||
 
     ![Tworzenie nowych pytań i odpowiedzi monitu](../media/conversational-context/create-child-prompt-from-parent.png)
 
-    Utworzyć nową parę pytań i odpowiedzi, a połączone wybranego pytania jako monitowania wiersza. **Kontekstu** kolumny na oba pytania wskazywać monitowania monitu. 
+1. Sprawdź **tylko do kontekstu**. **Tylko do kontekstu** opcja wskazuje tekst tego użytkownika będą rozumieć _tylko_ Jeśli podane w odpowiedzi na poprzednie pytanie. W tym scenariuszu tekst monitu nie ma sensu wszelkie jako autonomiczny pytanie, tylko sens w kontekście poprzedniego pytania.
+1. Wybierz **Utwórz nową** polecenie **Zapisz**. 
+
+    Utworzyć nową parę pytań i odpowiedzi, a połączone wybranego pytania jako monitowania wiersza. **Kontekstu** kolumny na oba pytania wskazuje monitowania relacji monitu. 
 
     ![! [Kolumnie kontekstu na oba pytania wskazuje relację monitu monitowania.] (.. / media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Wybierz **Dodaj wiersz monitowania** dla `Give feedback` pytanie, aby dodać innego wiersza monitowania. 
-1. Utwórz nowe pytanie, wprowadzając `Feedback on an existing feature`, z odpowiedzią `Which feature would you like to give feedback on?`.  
+1. Wybierz **Dodaj wiersz monitowania** dla `Give feedback` pytanie, aby dodać innego wiersza monitowania. Spowoduje to otwarcie **kontynuacji wiersza (wersja ZAPOZNAWCZA)** oknie podręcznym.
 
-1.  Sprawdź **tylko do kontekstu**. **Tylko do kontekstu** opcja wskazuje tekst tego użytkownika będą rozumieć _tylko_ Jeśli podane w odpowiedzi na poprzednie pytanie. W tym scenariuszu tekst monitu nie ma sensu wszelkie jako autonomiczny pytanie, tylko sens w kontekście poprzedniego pytania.
-1.  Wybierz pozycję **Zapisz**. 
+1. Utwórz nowy wiersz, wprowadzając następujące wartości:
+
+    |Pole tekstowe|Wartość|
+    |--|--|
+    |**Wyświetlanie tekstu**|`Feedback on an existing feature`|
+    |**Link do odpowiedzi**|`Which feature would you like to give feedback on?`|
+    |||
+
+1. Sprawdź **tylko do kontekstu**. **Tylko do kontekstu** opcja wskazuje tekst tego użytkownika będą rozumieć _tylko_ Jeśli podane w odpowiedzi na poprzednie pytanie. W tym scenariuszu tekst monitu nie ma sensu wszelkie jako autonomiczny pytanie, tylko sens w kontekście poprzedniego pytania.
+
+1. Wybierz pozycję **Zapisz**. 
 
     To utworzone nowe pytanie i połączone pytanie jako monitowania pytanie monitu `Give feedback` pytanie.
     
@@ -93,26 +107,34 @@ Podczas importowania pliku PDF, narzędzie QnA Maker określa kolejnych monitów
 
 1. Jeśli chcesz połączyć istniejącej pary pytań i odpowiedzi jako monitowania wiersz, wybierz wiersz dotyczący pary pytań i odpowiedzi.
 1. Wybierz **Dodaj wiersz monitowania** w tym wierszu.
-1. W wyskakującym oknie dialogowym wprowadź tekst pytania w polu wyszukiwania. Zwracane są wszystkie dopasowania. Wybierz pytanie, co poprawia komunikację i sprawdź **tylko do kontekstu**, a następnie wybierz **Zapisz**. 
+1. W **kontynuacji wiersza (wersja ZAPOZNAWCZA)** okno podręczne, w polu wyszukiwania wprowadź tekst odpowiedzi. Zwracane są wszystkie dopasowania. Wybierz odpowiedź, co poprawia komunikację i sprawdź **tylko do kontekstu**, a następnie wybierz **Zapisz**. 
 
-    Gdy jednostki organizacyjnej dodano kolejnego wiersza, należy pamiętać o zaznaczeniu **Zapisz i szkolenie**.
+    ![Wyszukaj wiersz monitowania łącza do okna dialogowego odpowiedzi, odpowiedź, za pomocą tekst odpowiedzi.](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+
+    Po dodaniu kolejnych wiersza, należy pamiętać o zaznaczeniu **Zapisz i szkolenie**.
   
-## <a name="add-metadata-to-follow-up-prompts"></a>Dodaj metadane do kolejnych monitów 
+<!--
 
-W bazie wiedzy knowledge base powiązane pary pytań i odpowiedzi wyświetli monitowania, filtrów metadanych są stosowane najpierw, a następnie przegapisz odpowiedzi członka są zwracane.
+## To find best prompt answer, add metadata to follow-up prompts 
 
-1. Dla dwóch kolejnych par pytań i odpowiedzi Dodaj metadane do każdego z nich:
+If you have several follow-up prompts for a given QnA pair, but you know as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base, then send the metadata from the client application as part of the GenerateAnswer request.
 
-    |Pytanie|Dodawanie metadanych|
+In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, then the follow-ups are returned.
+
+1. For the two follow-up QnA pairs, add metadata to each one:
+
+    |Question|Add metadata|
     |--|--|
-    |`Feedback on an QnA Maker service`|"Funkcja": "all"|
-    |`Feedback on an existing feature`|"Funkcja": "jeden"|
+    |`Feedback on an QnA Maker service`|"Feature":"all"|
+    |`Feedback on an existing feature`|"Feature":"one"|
     
-    ![Dodaj metadane do kolejnego wiersza, dzięki czemu można je filtrować w konwersacji odpowiedź z usługi](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
+    ![Add metadata to follow-up prompt so it can be filtered in conversation response from service](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
 
-1. Zapisz i szkolenie. 
+1. Save and train. 
 
-    Podczas wysyłania zapytania `Give feedback` z filtrem metadanych `Feature` o wartości `all`, zostaną zwrócone tylko pary pytań i odpowiedzi za pomocą tych metadanych. Pary pytań i odpowiedzi nie są zwracane, ponieważ oba te produkty nie są zgodne z filtrem. 
+    When you send the question `Give feedback` with the metadata filter `Feature` with a value of `all`, only the QnA pair with that metadata will be returned. Both QnA pairs are not returned because they both do not match the filter. 
+
+-->
 
 ## <a name="test-the-qna-set-to-get-all-the-follow-up-prompts"></a>Wyświetla monit o testów ustawione pytań i odpowiedzi w celu uzyskania wszystkich monitowania
 
@@ -145,7 +167,7 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o `Acco
             "questions": [
                 "Accounts and signing in"
             ],
-            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way he or she likes. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
+            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way they like. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
             "score": 86.96,
             "id": 37,
             "source": "surface-pro-4-user-guide-EN .pdf",
@@ -269,15 +291,11 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
 
 ## <a name="displaying-prompts-and-sending-context-in-the-client-application"></a>Wyświetlanie monitów, a następnie wysyłając kontekstu w aplikacji klienckiej 
 
-Aplikacja kliencka Wyświetla wszystkie pytania z opcją użytkownikowi monity są wyświetlane jako sugerowane akcje lub przyciski.
-Następnie aplikacja kliencka przechowuje bieżącego zapytania pary i użytkownika pytań i odpowiedzi jako kontekst, które mogą być przekazane następne zapytanie użytkownika. 
+Jeśli dodano monity w Twojej bazie wiedzy knowledge base i zostały przetestowane przepływu w okienko testowania, monity nie jest automatycznie uruchamiany pojawią się w aplikacjach klienckich. Możesz ukazywać monity jako sugerowane akcje lub przyciski jako część odpowiedzi na zapytania użytkownika w kliencie aplikacji umieszczając to [przykładowe platformy Bot Framework](https://aka.ms/qnamakermultiturnsample) w kodzie. Aplikacja kliencka przechowywania bieżący identyfikator pytań i odpowiedzi oraz kwerenda użytkownika i przekazywać je w [obiektu kontekstu interfejsu API GenerateAnswer](#json-request-to-return-non-initial-answer-and-follow-up-prompts) dalej zapytania użytkownika.
 
-Użyj tego [przykładowe platformy Bot Framework](https://aka.ms/qnamakermultiturnsample) Aby wyświetlić okno dialogowe Włączanie wielu pracy end-to-end w bot usługi QnA Maker.
+## <a name="display-order-supported-in-api"></a>Kolejność wyświetlania obsługiwane w interfejsie API
 
-
-## <a name="prompt-order-supported-in-api"></a>Porządek monitów, obsługiwane w interfejsie API
-
-Porządek monitów, zwrócona w odpowiedzi JSON jest obsługiwana przez interfejs API tylko do edycji. 
+Kolejność wyświetlania zwrócona w odpowiedzi JSON jest obsługiwane do edycji przez tylko interfejsu API. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
