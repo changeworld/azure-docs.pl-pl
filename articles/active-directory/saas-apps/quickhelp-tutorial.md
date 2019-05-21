@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33fd6b8b7423f8640910e02383bba8397d2f8336
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 45ffcaa1d5bccb0746ce86ec0f98342ce5e9bcc9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408076"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903984"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą QuickHelp
 
@@ -150,11 +150,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z QuickHelp, wykonaj 
    
     b. Aby przekazać plik pobrany metadanych platformy Azure, kliknij przycisk **Przeglądaj**, przejdź do pliku, następnie kliknij przycisk Zakończ **Przekazywanie metadanych**.
    
-    c. W polu tekstowym **Email** (Adres e-mail) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. W polu tekstowym **Email** (Adres e-mail) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
    
-    d. W **imię** polu tekstowym `type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. W **imię** polu tekstowym `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
    
-    e. W **nazwisko** polu tekstowym `type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. W **nazwisko** polu tekstowym `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
    
     f. W **pasek akcji**, kliknij przycisk **Zapisz**.
 

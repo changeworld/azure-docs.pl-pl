@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819f7d12f0554145295a0ec4f1eff7cb404d552d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c7d2920e84e0e1e61627afe1fe029e047e13ed02
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406976"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LCVista
 
@@ -140,13 +140,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z LCVista, wykonaj na
 
     c. Otwórz plik XML metadanych, który został pobrany z witryny Azure portal do Notatnika, skopiuj wartość **X509Certificate** i wklej go w **certyfikatu x509** sekcji.
 
-    d. W **atrybut imię** pola tekstowego, Wklej wartość `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. W **atrybut imię** pola tekstowego, Wklej wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. W **ostatniego atrybutu nazwy** pola tekstowego, Wklej wartość `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. W **ostatniego atrybutu nazwy** pola tekstowego, Wklej wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. W **atrybut E-mail** pola tekstowego, Wklej wartość `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. W **atrybut E-mail** pola tekstowego, Wklej wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    g. W **atrybut Username** pola tekstowego, Wklej wartość `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    g. W **atrybut Username** pola tekstowego, Wklej wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     e. Kliknij polecenie **Zapisz**, aby zapisać ustawienia.
 

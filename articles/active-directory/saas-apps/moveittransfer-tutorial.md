@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a491cd303cccd94cbb489654890d55c03912a63
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d7020299bbd52f5e7ba22809847815cb04048cb6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408040"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905093"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Samouczek: Integracja usługi Azure Active Directory transferu MOVEit — Integracja usługi Azure AD
 
@@ -174,7 +174,7 @@ Aby skonfigurować usługę Azure AD w logowanie jednokrotne za pomocą MOVEit T
     
     b. Wybierz **innych** jako **imię i nazwisko** i **nazwa atrybutu** textbox Umieść wartość: `http://schemas.microsoft.com/identity/claims/displayname`.
     
-    c. Wybierz **innych** jako **wiadomości E-mail** i **nazwa atrybutu** textbox Umieść wartość: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Wybierz **innych** jako **wiadomości E-mail** i **nazwa atrybutu** textbox Umieść wartość: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
     d. Wybierz **tak** jako **automatycznego tworzenia konta logowaniu**.
     

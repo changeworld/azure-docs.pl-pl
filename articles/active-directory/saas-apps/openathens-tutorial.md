@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbb1bc64d923add0b1fd38749299714a9093633
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3eca6fc3ab788ee7085c0df5f6c9770858af29ba
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408031"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891719"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z usługą OpenAthens
 
@@ -143,11 +143,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze OpenAthens,
 
     a. W obszarze **Display name mapping** (Mapowanie nazwy wyświetlanej) wybierz opcję **Use attribute** (Użyj atrybutu).
 
-    b. W polu tekstowym **Display name attribute** (Atrybut nazwy wyświetlanej) wprowadź wartość `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. W polu tekstowym **Display name attribute** (Atrybut nazwy wyświetlanej) wprowadź wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
     
     c. W obszarze **Unique user mapping** (Mapowanie unikatowego użytkownika) wybierz opcję **Use attribute** (Użyj atrybutu).
 
-    d. W polu tekstowym **Unique user attribute** (Atrybut unikatowego użytkownika) wprowadź wartość `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    d. W polu tekstowym **Unique user attribute** (Atrybut unikatowego użytkownika) wprowadź wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     e. W obszarze **Status** (Stan) zaznacz wszystkie trzy pola wyboru.
 

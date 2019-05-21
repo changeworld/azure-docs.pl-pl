@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: ce1af9c88bbdad96a22eb96abc26026abcad56cc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: cda9c4c914e4ec955d2009ce3f015bf7807027f6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793039"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922203"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Wprowadzenie do interfejsu API tabeli usługi Azure Cosmos DB i Azure Table storage przy użyciu zestawu .NET SDK
 
@@ -41,15 +41,15 @@ Do pomyślnego ukończenia pracy z przykładem wymagane są następujące elemen
 
 ## <a name="create-a-net-console-project"></a>Utwórz projekt konsoli .NET
 
-W programie Visual Studio Utwórz nową aplikację konsoli .NET. W poniższej procedurze pokazano, jak utworzyć aplikację konsolową w programie Visual Studio 2017. Procedura jest podobna w innych wersjach programu Visual Studio. Można użyć biblioteki tabeli usługi Azure Cosmos DB w rodzaju aplikacji .NET, w tym platformy Azure w chmurze usługi lub aplikacji sieci web, a aplikacje klasyczne i mobilne. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
+W programie Visual Studio Utwórz nową aplikację konsoli .NET. Poniższe kroki pokazują sposób tworzenia aplikacji konsoli w programie Visual Studio 2019 r. Można użyć biblioteki tabeli usługi Azure Cosmos DB w rodzaju aplikacji .NET, w tym platformy Azure w chmurze usługi lub aplikacji sieci web, a aplikacje klasyczne i mobilne. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
 
 1. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**.
 
-1. Wybierz **zainstalowane** > **Visual C#**   >  **konsoli aplikacji (.NET Core)**.
+1. Wybierz **Aplikacja konsoli (.NET Core)**, a następnie wybierz pozycję **dalej**.
 
-1. W **nazwa** wprowadź nazwę aplikacji, na przykład **CosmosTableSamples** (możesz podać inną nazwę zgodnie z potrzebami).
+1. W **Nazwa projektu** wprowadź nazwę aplikacji, takich jak **CosmosTableSamples**. (Możesz podać inną nazwę zgodnie z potrzebami.)
 
-1. Kliknij przycisk **OK**.
+1. Wybierz pozycję **Utwórz**.
 
 Wszystkie przykłady kodu, w tym przykładzie można dodać do metody Main() całej aplikacji konsolowej **Program.cs** pliku.
 

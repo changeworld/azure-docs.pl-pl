@@ -5,15 +5,15 @@ author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 04/26/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a37b0b1a804851268fad30038388c20d2e4fb6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894394"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912687"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Wykonywanie operacji zbiorczych w interfejsie API języka Gremlin dla usługi Azure Cosmos DB przy użyciu biblioteki grafów BulkExecutor .NET
 
@@ -114,7 +114,7 @@ e.AddProperty("customProperty", "value");
 ## <a name="sample-application"></a>Przykładowa aplikacja
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Program Visual Studio 2017 z pakietem roboczym Programowanie na platformie Azure. Pracę możesz rozpocząć bezpłatnie w programie [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/).
+* 2019 Visual Studio z obciążeniem programowanie na platformie Azure. Możesz rozpocząć pracę z [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) za darmo.
 * Subskrypcja platformy Azure. [Bezpłatne konto platformy Azure możesz utworzyć tutaj](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Możesz również utworzyć konto bazy danych Cosmos DB dzięki ofercie [Wypróbuj usługę Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure.
 * Baza danych interfejsu API języka Gremlin w usłudze Azure Cosmos DB z **nieograniczoną kolekcją**. W tym przewodniku pokazano, jak rozpocząć pracę z [interfejsem API języka Gremlin w usłudze Azure Cosmos DB na platformie .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Usługa Git. Aby uzyskać więcej informacji, zapoznaj się ze [stroną plików do pobrania usługi Git](https://git-scm.com/downloads).
