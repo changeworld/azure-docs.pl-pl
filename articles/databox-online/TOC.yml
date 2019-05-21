@@ -89,6 +89,8 @@
           items:
             - name: Funkcja obliczeniowa Edge
               href: data-box-edge-manage-compute.md
+            - name: Sieć funkcji obliczeniowej Edge
+              href: data-box-edge-extend-compute-access-modules.md
             - name: Udziały
               href: data-box-edge-manage-shares.md
             - name: Użytkownicy
