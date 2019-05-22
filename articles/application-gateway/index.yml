@@ -5,12 +5,11 @@ metadata:
   title: Dokumentacja usługi Azure Application Gateway — samouczki i dokumentacja interfejsu API
   meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: application-gateway
-  author: davidmu1
-  manager: jeconnocfte
+  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 02/01/2018
-  ms.author: davidmu
+  ms.date: 5/20/2019
+  ms.author: victorh
 abstract:
   description: 'Dowiedz się, jak wdrożyć usługę Application Gateway, kontrolera dostarczania aplikacji (ADC, Application Deliver Controller), jako usługę. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować usługi routingu i równoważenia obciążenia na poziomie aplikacji, które pozwalają tworzyć skalowalne frontony sieci Web o wysokiej dostępności.'
 sections:
@@ -40,12 +39,12 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">Zarządzanie ruchem internetowym przy użyciu bramy aplikacji.</a>
-          - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">Ograniczanie ruchu internetowego przy użyciu zapory aplikacji internetowej w bramie aplikacji.</a>
-          - html: <a href="/azure/application-gateway/tutorial-ssl-cli">Kończenie żądań protokołu SSL w bramie aplikacji.</a>
-          - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">Hostowanie wielu witryn internetowych przy użyciu bramy aplikacji.</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-route-cli">Kierowanie ruchu w oparciu o adres URL w bramie aplikacji.</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Przekierowywanie ruchu do określonych serwerów w puli bram aplikacji.</a>
+          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Tworzenie bramy aplikacji za pomocą zapory aplikacji internetowej</a>
+          - html: <a href="/azure/application-gateway/create-ssl-portal">Konfigurowanie bramy aplikacji z terminacją SSL</a>
+          - html: <a href="/azure/application-gateway/create-multiple-sites-portal">Tworzenie i konfigurowanie bramy aplikacji hostującej wiele witryn internetowych</a>
+          - html: <a href="/azure/application-gateway/create-url-route-portal">Tworzenie bramy aplikacji za pomocą reguł routingu bazujących na ścieżce</a>
+          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Tworzenie bramy aplikacji z przekierowywaniem na podstawie ścieżki URL</a>
+          - html: '<a href="/azure/application-gateway/tutorial-autoscale-ps">Tworzenie bramy aplikacji, która usprawnia dostęp do aplikacji internetowych</a>'
   - title: Przykłady
     items:
       - type: paragraph

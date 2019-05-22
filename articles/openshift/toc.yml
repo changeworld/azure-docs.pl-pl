@@ -1,21 +1,47 @@
-- name: Dokumentacja platformy OpenShift
-  href: index.md
-- name: Przewodniki Szybki start
-  expanded: true
+- name: Azure Red Hat OpenShift
+  href: index.yml
+- name: Omówienie
   items:
-    - name: 'OpenShift:  szablon społeczności'
-      href: 'https://azure.microsoft.com/resources/templates/openshift-origin-rhel/'
+    - name: Informacje o usłudze Azure Red Hat OpenShift
+      href: intro-openshift.md
 - name: Samouczki
   items:
-    - name: Wdrażanie na maszynach wirtualnych platformy Azure
-      href: /azure/virtual-machines/linux/openshift-get-started
+    - name: Tworzenie klastra usługi Azure Red Hat OpenShift i zarządzanie nim
+      items:
+        - name: 1. Tworzenie klastra usługi Azure Red Hat OpenShift
+          href: tutorial-create-cluster.md
+        - name: 2. Skalowanie klastra usługi Azure Red Hat OpenShift
+          href: tutorial-scale-cluster.md
+        - name: 3. Usuwanie klastra usługi Azure Red Hat OpenShift
+          href: tutorial-delete-cluster.md
+- name: Przewodniki z instrukcjami
+  expanded: true
+  items:
+    - name: Konfigurowanie środowiska deweloperskiego usługi Azure Red Hat OpenShift
+      href: howto-setup-environment.md
+      expanded: true
+      items:
+        - name: Tworzenie dzierżawy usługi Azure AD
+          href: howto-create-tenant.md
+        - name: Tworzenie użytkownika i obiektu aplikacji usługi Azure AD
+          href: howto-aad-app-configuration.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia usługi Azure Red Hat OpenShift
+      href: /cli/azure/openshift
+    - name: Interfejsy API REST usługi Azure Red Hat OpenShift
+      href: /rest/api/openshift
 - name: Zasoby
   items:
+    - name: Często zadawane pytania
+      href: openshift-faq.md
+    - name: Rozwiązywanie problemów
+      href: troubleshoot.md
+    - name: Obsługiwane zasoby
+      href: supported-resources.md
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Dokumentacja usługi Red Hat OpenShift
+      href: 'https://docs.openshift.com/aro/welcome/index.html'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Szablon kontenera OpenShift
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: Witryna platformy OpenShift
-      href: 'https://docs.openshift.org/latest/welcome/index.html'

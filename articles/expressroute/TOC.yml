@@ -21,13 +21,12 @@
     - name: Obwody i komunikacja równorzędna
       href: expressroute-circuit-peerings.md
     - name: Lokalizacje i partnerzy
-      href: expressroute-locations.md
       items:
         - name: Dostawcy według lokalizacji
           href: expressroute-locations-providers.md
         - name: Lokalizacje według dostawcy
           href: expressroute-locations.md
-    - name: Informacje o bramach sieci wirtualnej
+    - name: Brama sieci wirtualnej usługi ExpressRoute i rozwiązanie FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: Wymagania wstępne
       href: expressroute-prerequisites.md

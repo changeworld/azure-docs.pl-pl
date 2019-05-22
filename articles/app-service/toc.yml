@@ -92,11 +92,11 @@
   items:
     - name: Konfigurowanie aplikacji
       items:
-        - name: Używanie ustawień aplikacji
-          href: web-sites-configure.md
+        - name: Konfigurowanie wspólnych ustawień
+          href: configure-common.md
         - name: Konfigurowanie języka PHP
           href: web-sites-php-configure.md
-        - name: Przewodnik dla deweloperów języka Java
+        - name: Konfigurowanie środowiska Java
           href: configure-language-java.md
         - name: Nawiązywanie połączenia z zasobami lokalnymi
           href: web-sites-integrate-with-vnet.md

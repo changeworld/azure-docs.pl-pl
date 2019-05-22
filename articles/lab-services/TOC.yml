@@ -116,8 +116,9 @@
             - name: Ustawianie zasad przechowywania i uruchamianie skryptów do czyszczenia
               href: image-factory-set-retention-policy-cleanup.md
         - name: Laboratoria DevTest Lab w przedsiębiorstwie
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: Laboratoria DevTest Lab w skali przedsiębiorstwa
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Architektura referencyjna
               href: devtest-lab-reference-architecture.md
             - name: Skalowanie w górę wdrożenia usługi DevTest Labs
