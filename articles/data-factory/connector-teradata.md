@@ -55,9 +55,9 @@ Następujące właściwości są obsługiwane dla programu Teradata połączone 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Teradata** | Yes |
-| serwer | Nazwa serwera programu Teradata. | Yes |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows**. | Yes |
-| nazwa użytkownika | Określ nazwę użytkownika do łączenia z bazą danych programu Teradata. | Yes |
+| server | Nazwa serwera programu Teradata. | Yes |
+| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows**. | Yes |
+| username | Określ nazwę użytkownika do łączenia z bazą danych programu Teradata. | Yes |
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
@@ -164,40 +164,40 @@ Podczas kopiowania danych z programu Teradata, następujące mapowania są używ
 | Typ danych programu Teradata | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BigInt |Int64 |
-| Obiekt blob |Byte[] |
+| Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| char |String |
-| CLOB |String |
+| Char |String |
+| Clob |String |
 | Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
-| Grafika |String |
-| Liczba całkowita |Int32 |
-| Interwał dnia |TimeSpan |
-| Interwału dnia do godziny |TimeSpan |
-| Interwału dnia do minuty |TimeSpan |
-| Interwału dnia do sekundy |TimeSpan |
-| Interwał, godzinę |TimeSpan |
-| Godzina przedział na minutę |TimeSpan |
-| Godzina przedział na sekundę |TimeSpan |
-| Interwał minutę |TimeSpan |
-| Interwału minuty do sekundy |TimeSpan |
-| Interwał miesiąca |String |
-| Interwał drugiego |TimeSpan |
-| Interwał roku |String |
-| Interwału roku do miesiąca |String |
-| Liczba |Double |
+| Graphic |String |
+| Integer |Int32 |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Month |String |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Number |Double |
 | Period(Date) |String |
 | Period(Time) |String |
-| Okres (godzina ze strefą czasową) |String |
-| Period(TimeStamp) |String |
-| Okres (sygnatura czasowa ze strefą czasową) |String |
+| Period(Time With Time Zone) |String |
+| Period(Timestamp) |String |
+| Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Godzina ze strefą czasową |String |
-| Znacznik czasu |DateTime |
-| Sygnatura czasowa ze strefą czasową |DateTimeOffset |
+| Time With Time Zone |String |
+| Timestamp |DateTime |
+| Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
