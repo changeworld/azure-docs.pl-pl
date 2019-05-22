@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598403"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "65073154"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Zrozumienie, co dobre wypowiedzi związanych z aplikacją usługi LUIS
 
@@ -74,13 +74,47 @@ Usługa LUIS kompilacje skuteczne modeli z wypowiedzi dokładnie są wybierane p
 
 Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) poprawne intencji ekstrakcji prognoz i jednostek.
 
-## <a name="punctuation-marks"></a>Znaki interpunkcyjne
+## <a name="utterance-normalization"></a>Normalizacja wypowiedź
 
-Usługa LUIS nie Ignoruj znaków interpunkcyjnych, domyślnie, ponieważ niektóre aplikacje klienckie mogą umieścić istotności na te znaczniki. Upewnij się, że swoje wypowiedzi przykład używać zarówno znaki interpunkcyjne, jak i nie znaków interpunkcyjnych aby obu stylów do zwrócenia tej samej względnej wyniki. Jeśli znaki interpunkcyjne nie ma znaczenia określonych w aplikacji klienckiej, należy wziąć pod uwagę [ignoruje znaki interpunkcyjne](#ignoring-words-and-punctuation) przy użyciu wzorców. 
+Wypowiedź normalizacji jest proces ignorowania skutki Interpunkcja i znaki diakrytyczne podczas uczenia i przewidywania.
 
-## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaki interpunkcyjne
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Normalizacja wypowiedź znaki diakrytyczne i znaki interpunkcyjne
 
-Ignorowanie konkretnych słów lub znaki interpunkcyjne w wypowiedź przykładu, należy użyć [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
+Wypowiedź normalizacji jest definiowany podczas tworzenia lub importowania aplikacji, ponieważ jest on ustawienie w pliku JSON aplikacji. Ustawienia normalizacji wypowiedź są domyślnie wyłączone. 
+
+Znaki diakrytyczne są znaki lub znaków w tekście, takie jak: 
+
+```
+İ ı Ş Ğ ş ğ ö ü
+```
+
+Jeśli aplikacja włącza normalizacji, ocenia w **testu** okienka, testy usługi batch i zapytania punktu końcowego zmieni się dla wszystkich wypowiedzi przy użyciu znaków diakrytycznych lub znaki interpunkcyjne.
+
+Włącz normalizacji wypowiedź znaków diakrytycznych lub znaki interpunkcyjne do pliku JSON usługi LUIS aplikacji w `settings` parametru.
+
+```JSON
+"settings": [
+    {"name": "NormalizePunctuation", "value": "true"},
+    {"name": "NormalizeDiacritics", "value": "true"}
+] 
+```
+
+Normalizowanie **znaków interpunkcyjnych** oznacza, że przed swoje modele, skorzystaj ze szkoleń i przed punktu końcowego uzyskać przewidzieć zapytań, znaki interpunkcyjne zostaną usunięte z wypowiedzi. 
+
+Normalizowanie **znaków diakrytycznych** zastępuje znaki przy użyciu znaków diakrytycznych w wypowiedzi znakami regularne. Na przykład: `Je parle français` staje się `Je parle francais`. 
+
+Normalizacja nie oznacza, że wykonasz nie Zobacz interpunkcja i znaki diakrytyczne w przykładzie wypowiedzi lub odpowiedzi prognozowania jedynie, zostaną one zignorowane podczas uczenia i przewidywania.
+
+
+### <a name="punctuation-marks"></a>Znaki interpunkcyjne
+
+Jeśli nie jest znormalizowana znaków interpunkcyjnych, LUIS nie zignorować znaków interpunkcyjnych, domyślnie, ponieważ niektóre aplikacje klienckie mogą umieścić istotności na te znaczniki. Upewnij się, że swoje wypowiedzi przykład używać zarówno znaki interpunkcyjne, jak i nie znaków interpunkcyjnych aby obu stylów do zwrócenia tej samej względnej wyniki. 
+
+Jeśli znaki interpunkcyjne nie ma znaczenia określonych w aplikacji klienckiej, należy wziąć pod uwagę [ignoruje znaki interpunkcyjne](#utterance-normalization) przez normalizowanie znaki interpunkcyjne. 
+
+### <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaki interpunkcyjne
+
+Ignorowanie słów lub znaki interpunkcyjne we wzorcach, należy użyć [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni z nawiasami kwadratowymi `[]`. 
 
 ## <a name="training-utterances"></a>Szkolenie wypowiedzi
 
@@ -94,7 +128,7 @@ Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzecz
 
 Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](luis-how-to-review-endpoint-utterances.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Przegląd [najlepsze praktyki](luis-concept-best-practices.md) i zastosować je jako część regularnych cykl tworzenia pakietów administracyjnych.
 
