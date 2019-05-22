@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: e29e36807aff6c32f295c79c90d80c7d2b5b4bcc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510745"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002987"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -42,7 +42,9 @@ Te funkcje tworzą usługi mowy platformy Azure. Użyj linków w tej tabeli, aby
 Poznaj nowe funkcje usług mowy platformy Azure.
 
 * Maja 2019 - dokumentacji jest teraz dostępna dla [transkrypcji konwersacji](conversation-transcription-service.md), [wywołać transkrypcji Centrum](call-center-transcription.md), i [wirtualnego asystentów głosowych pierwszy](voice-first-virtual-assistants.md).
-* Maja 2019 - wydane mowy 1.5.0 zestawu SDK. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
+* Maja 2019 r
+    * Wydana mowy SDK 1.5.1. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
+    * Wydana mowy 1.5.0 zestawu SDK. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
 * Kwietnia 2019 - wydane mowy SDK 1.4.0 z obsługą tekstu na mowę (Beta) dla języka C++, C#i Java w systemach Windows i Linux. Ponadto zestaw SDK obsługuje teraz formaty audio MP3 i dziele/Ogg dla języka C++ i C# w systemie Linux. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
 * Marca 2019 - nowy punkt końcowy zamiany tekstu na mowę (TTS), która zwraca pełną listę dostępnych głosów w określonym regionie jest teraz dostępna. Ponadto nowe regiony są teraz obsługiwane dla TTS. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API zamiany tekstu na mowę (REST)](rest-text-to-speech.md).
 

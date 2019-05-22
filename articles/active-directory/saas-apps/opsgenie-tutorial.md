@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f395ae51d51e56668482ad6c8d446bdd31050fea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98e4d1870c57c9718e2d4293157b21ead8ea44e1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870667"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą OpsGenie
 
@@ -71,16 +71,16 @@ Aby skonfigurować integrację OpsGenie w usłudze Azure AD, należy dodać OpsG
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpsGenie w oparciu o użytkownika testu o nazwie **Britta Simon**.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpsGenie w oparciu o użytkownika testu o nazwie **B. Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w OpsGenie musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą OpsGenie, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie OpsGenie logowania jednokrotnego](#configure-opsgenie-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego OpsGenie](#create-opsgenie-test-user)**  — aby odpowiednikiem Britta Simon w OpsGenie połączonego z usługi Azure AD reprezentacja użytkownika.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego OpsGenie](#create-opsgenie-test-user)**  — aby odpowiednikiem B. Simon w OpsGenie połączonego z usługi Azure AD reprezentacja użytkownika.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -149,9 +149,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z OpsGenie, wykonaj n
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
@@ -163,10 +163,10 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** pola wprowadź **B. Simon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa użytkownika** wpisz **bsimon@yourcompanydomain.extension**  
+    Na przykład: BSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -174,7 +174,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do OpsGenie.
+W tej sekcji możesz włączyć Simon B. do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do OpsGenie.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **OpsGenie**.
 
@@ -192,7 +192,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okna dialogowego wybierz **B. Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
 6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
@@ -200,7 +200,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 ### <a name="create-opsgenie-test-user"></a>Tworzenie użytkownika testowego OpsGenie
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w OpsGenie. 
+Celem tej sekcji jest utworzyć użytkownika o nazwie B. Simon w OpsGenie. 
 
 1. W oknie przeglądarki sieci web Zaloguj się do dzierżawy OpsGenie jako administrator.
 
@@ -214,14 +214,14 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w OpsGen
    
     ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-    a. W **E-mail** pole tekstowe, wpisz adres e-mail BrittaSimon zostały omówione w usłudze Azure Active Directory.
+    a. W **E-mail** pole tekstowe, wpisz adres e-mail B. Simon zostały omówione w usłudze Azure Active Directory.
    
-    b. W **imię i nazwisko** polu tekstowym wpisz **Britta Simon**.
+    b. W **imię i nazwisko** polu tekstowym wpisz **B. Simon**.
    
     c. Kliknij pozycję **Zapisz**. 
 
 >[!NOTE]
->Britta otrzymuje wiadomość e-mail z instrukcjami konfigurowania jej profilu.
+>B. Simona otrzymuje wiadomość e-mail z instrukcjami konfigurowania swój profil.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

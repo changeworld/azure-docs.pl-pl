@@ -138,6 +138,18 @@
         - name: Dodawanie i rejestrowanie zestawów danych
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Eksplorowanie danych
+          displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
+          href: how-to-explore-prepare-data.md
+        - name: Obsługa wersji i zarządzanie definicjami danych
+          displayName: 'data, etl, dataset, data preparation, dataprep, version'
+          href: how-to-manage-dataset-definitions.md
+        - name: Tworzenie migawek danych
+          displayName: 'snapshots, profile, summary statistics, data copy'
+          href: how-to-create-dataset-snapshots.md
+        - name: Pobieranie danych z magazynu danych
+          displayName: blob get fileshare access storage
+          href: how-to-access-data.md
         - name: Przygotowywanie za pomocą elementu azureml.dataprep
           items:
             - name: Ładowanie danych
@@ -149,18 +161,6 @@
             - name: Zapisywanie danych
               displayName: 'data, etl, data prep, dataprep'
               href: how-to-write-data.md
-        - name: Przygotowywanie za pomocą zestawów danych (wersja zapoznawcza)
-          displayName: 'data, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
-          href: how-to-explore-prepare-data.md
-        - name: Obsługa wersji i zarządzanie definicjami danych
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: Tworzenie migawek danych
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
-        - name: Pobieranie danych z magazynu danych
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
     - name: Szkolenie modeli
       items:
         - name: Konfigurowanie środowisk szkoleniowych

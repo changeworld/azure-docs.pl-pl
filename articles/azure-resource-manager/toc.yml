@@ -54,7 +54,7 @@
 - name: Pojęcia
   items:
     - name: Struktura pliku szablonu
-      displayName: 'parameters,variables,resources,outputs'
+      displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
     - name: Najlepsze rozwiązania dotyczące szablonów
       href: template-best-practices.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 19c2ccab6685f53ba714298f66bc8e8821b4aa02
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898699"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Samouczek: Integracja usługi Azure Active Directory z pakietem przewiduje CX
 
@@ -194,7 +194,7 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do zestawu C
 
 ### <a name="create-foresee-cx-suite-test-user"></a>Tworzenie użytkownika testowego przewiduje Suite CX
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w zestawie CX przewidzieć. Praca z [przewiduje Suite CX zespołem pomocy technicznej](mailto:support@foresee.com) można dodać użytkowników lub domeny, który jest wymagany do listy dozwolonych na platformie przewiduje Suite CX. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę przewiduje Suite CX. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w zestawie CX przewidzieć. Praca z [zespołem pomocy technicznej przewiduje Suite CX](mailto:support@foresee.com) można dodać użytkowników lub domeny, która musi zostać dodany do listy dozwolonych dla platformy zestawu CX przewiduje się. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę przewiduje Suite CX. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

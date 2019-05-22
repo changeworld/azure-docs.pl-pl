@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a86e63f17230ed30bd5ae164d2d17d65b5cde745
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408055"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Meta Networks Connector
 
@@ -131,8 +131,8 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     | ---------------| --------------- | -------- |
     | firstname | user.givenname | |
     | lastname | user.surname | |
-    | emailaddress| user.mail| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | name | user.userprincipalname| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | telefon | user.telephonenumber | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
@@ -172,7 +172,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 1. Otwórz nową kartę w przeglądarce i zaloguj się na swoim koncie administratora aplikacji Meta Networks Connector.
     
     > [!NOTE]
-    > Aplikacja Meta Networks Connector to bezpieczny system. Dlatego przed uzyskaniem dostępu do portalu Twój publiczny adres IP musi znaleźć się na liście dozwolonych po stronie aplikacji. Aby uzyskać swój publiczny adres IP, skorzystaj z [tego](https://whatismyipaddress.com/) linku. Wyślij swój adres IP do [zespołu pomocy technicznej klienta aplikacji Meta Networks Connector](mailto:support@metanetworks.com), aby Twój adres IP znalazł się na liście dozwolonych.
+    > Aplikacja Meta Networks Connector to bezpieczny system. Dlatego przed uzyskaniem dostępu do ich portalu należy uzyskać swój publiczny adres IP, które są dodawane do listy dozwolonych na bok. Aby uzyskać swój publiczny adres IP, skorzystaj z [tego](https://whatismyipaddress.com/) linku. Wyślij swój adres IP, aby [zespołem pomocy technicznej klienta łącznika sieci Meta](mailto:support@metanetworks.com) można pobrać adresu IP, dodane do listy dozwolonych.
     
 2. Przejdź do obszaru **Administrator**, a następnie wybierz pozycję **Settings (Ustawienia)**.
     

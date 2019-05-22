@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0879f9026276eb7149ae44906377a7b369e05116
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3e457ca29ebe086c6097528af5a9253446b757c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865295"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990557"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Vodeclic
 
@@ -191,7 +191,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Vodeclic. Praca z [zespołem pomocy technicznej Vodeclic](mailto:hotline@vodeclic.com) Aby dodać użytkowników na platformie Vodeclic. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 > [!NOTE]
-> Zgodnie z wymaganiami aplikacji może być konieczne uzyskanie swojej maszyny, na liście dozwolonych. W tym stanie, musisz udostępnić swój publiczny adres IP z [zespołem pomocy technicznej Vodeclic](mailto:hotline@vodeclic.com).
+> Zgodnie z wymaganiami aplikacji może być konieczne uzyskanie na komputerze, który został dodany do listy dozwolonych. W tym stanie, musisz udostępnić swój publiczny adres IP z [zespołem pomocy technicznej Vodeclic](mailto:hotline@vodeclic.com).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

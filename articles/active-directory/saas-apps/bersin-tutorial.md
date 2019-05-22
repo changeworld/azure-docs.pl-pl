@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8ff026743ccda0a47ce176db51dbc7913376f46
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862405"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Bersin
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację Bersin w usłudze Azure AD, należy dodać Bersin z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Bersin z galerii, wykonaj następujące czynności:**
+**Aby dodać Bersin z galerii**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -100,7 +100,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bersin, wykonaj nas
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następującą czynność:
+4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, wykonaj poniższe czynności:
 
     ![Bersin domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-identifier-relay.png)
 
@@ -110,7 +110,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bersin, wykonaj nas
 
     c. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://www.bersin.com/secure/`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące czynności, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Bersin domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
 
@@ -132,7 +132,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bersin, wykonaj nas
 
 ### <a name="configure-bersin-single-sign-on"></a>Konfigurowanie Bersin logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **Bersin** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej Bersin](mailto:ramansabde@gmail.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne na **Bersin** po stronie, Wyślij pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Bersin zespołem pomocy technicznej](mailto:ramansabde@gmail.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -146,13 +146,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -179,15 +179,15 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML, następnie w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-bersin-test-user"></a>Tworzenie użytkownika testowego Bersin
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Bersin. Praca z [zespołem pomocy technicznej Bersin](mailto:USBersinServiceClient@deloitte.com) Aby dodać użytkowników w platformie Bersin lub domeny, który jest wymagany do listy dozwolonych na platformie Bersin. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę Bersin. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Bersin. Praca z [zespołem pomocy technicznej Bersin](mailto:USBersinServiceClient@deloitte.com) Aby dodać użytkowników w platformie Bersin lub domeny, które muszą zostać dodane do listy dozwolonych dla platformy Bersin. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę Bersin. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

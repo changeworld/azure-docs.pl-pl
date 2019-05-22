@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/29/2019
-ms.openlocfilehash: a4762f78b16b7798ff746770f1ea69ccebd30130
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b1b3572b9c485fb8d05c57649a304ff0f76fb1f6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919025"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990886"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
 
@@ -308,12 +308,18 @@ W notesie **AnalyzeTweetsFromEventHub** wklej następujący kod i zastąp symbol
 import org.apache.spark.eventhubs._
 
 // Build connection string with the above information
-val connectionString = ConnectionStringBuilder("<EVENT HUBS CONNECTION STRING>")
-  .setEventHubName("<EVENT HUB NAME>")
-  .build
+val namespaceName = "<EVENT HUBS NAMESPACE>"
+val eventHubName = "<EVENT HUB NAME>"
+val sasKeyName = "<POLICY NAME>"
+val sasKey = "<POLICY KEY>"
+val connectionString = ConnectionStringBuilder()
+            .setNamespaceName(namespaceName)
+            .setEventHubName(eventHubName)
+            .setSasKeyName(sasKeyName)
+            .setSasKey(sasKey)
 
 val customEventhubParameters =
-  EventHubsConf(connectionString)
+  EventHubsConf(connectionString.toString())
   .setMaxEventsPerTrigger(5)
 
 val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
@@ -574,7 +580,7 @@ Powinny pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
 
 Wartość bliższa **1** w kolumnie **Opinia** sugeruje zadowolenie z korzystania z platformy Azure. Wartość bliższa **0** sugeruje, że użytkownicy napotkali problemy podczas pracy z platformą Microsoft Azure.
 
-Gotowe. Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
+To wszystko! Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

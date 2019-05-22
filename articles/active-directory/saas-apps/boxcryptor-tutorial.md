@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc04a307779b47b50cd16a81c0566b72bafab95
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900709"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Boxcryptor
 
@@ -181,7 +181,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="create-boxcryptor-test-user"></a>Tworzenie użytkownika testowego aplikacji Boxcryptor
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Boxcryptor. Współpracuj z [zespołem pomocy technicznej aplikacji Boxcryptor](mailto:support@boxcryptor.com) , aby dodać użytkowników lub domenę, która musi znajdować się na liście dozwolonych domen na platformie Boxcryptor. Jeśli domena jest dodawana przez zespół, użytkownicy zostaną automatycznie zaaprowizowani na platformie Boxcryptor. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Boxcryptor. Praca z [zespołem pomocy technicznej Boxcryptor](mailto:support@boxcryptor.com) można dodać użytkowników lub domeny, która musi zostać dodany do listy dozwolonych dla platformy Boxcryptor. Jeśli domena jest dodawana przez zespół, użytkownicy zostaną automatycznie zaaprowizowani na platformie Boxcryptor. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

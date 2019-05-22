@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bf8c7e76aa6dd69cc505be237e47d8e10e7e8db5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8f8dc8219d65505952f35ad018ef19aeb68d64e9
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813323"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą iPass SmartConnect
 
@@ -215,7 +215,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-ipass-smartconnect-test-user"></a>Tworzenie użytkownika testowego SmartConnect iPass
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iPass SmartConnect. Praca z [zespołu pomocy technicznej iPass SmartConnect](mailto:help@ipass.com) można dodać użytkowników lub domeny, który jest wymagany do listy dozwolonych na platformie SmartConnect iPass. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę SmartConnect iPass. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iPass SmartConnect. Praca z [zespołu pomocy technicznej iPass SmartConnect](mailto:help@ipass.com) można dodać użytkowników lub domeny, która musi zostać dodany do listy dozwolonych dla platformy SmartConnect iPass. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę SmartConnect iPass. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
