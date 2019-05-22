@@ -91,10 +91,10 @@ Następujące właściwości są wspierane w ramach `translator`  ->  `mappings`
 | Właściwość | Opis                                                  | Wymagane |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Nazwa kolumny źródła lub ujścia.                           | Yes      |
-| Liczba porządkowa  | Indeks kolumny. Zacznij od 1. <br>Zastosuj i wymagany, gdy za pomocą rozdzielany tekst bez nagłówków wiersza. | Nie       |
-| ścieżka     | Wyrażenie ścieżki JSON dla każdego pola, do wyodrębnienia lub mapy. Mają zastosowanie dla danych hierarchicznych np. bazy danych MongoDB REST.<br>W przypadku pól w obiekcie głównym ścieżkę JSON zaczyna się od głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwości JSON ścieżka zaczyna się od elementu tablicy. | Nie       |
+| ordinal  | Indeks kolumny. Zacznij od 1. <br>Zastosuj i wymagany, gdy za pomocą rozdzielany tekst bez nagłówków wiersza. | Nie       |
+| path     | Wyrażenie ścieżki JSON dla każdego pola, do wyodrębnienia lub mapy. Mają zastosowanie dla danych hierarchicznych np. bazy danych MongoDB REST.<br>W przypadku pól w obiekcie głównym ścieżkę JSON zaczyna się od głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwości JSON ścieżka zaczyna się od elementu tablicy. | Nie       |
 | type     | Fabryka danych tymczasowych typ danych kolumny źródła lub ujścia. | Nie       |
-| Kultury  | Kultura kolumny źródła lub ujścia. <br>Są stosowane, gdy typ jest `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie       |
+| culture  | Kultura kolumny źródła lub ujścia. <br>Są stosowane, gdy typ jest `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie       |
 | format   | Format ciągu ma być używany, gdy typem jest `Datetime` lub `Datetimeoffset`. Zapoznaj się [Custom Date and Time Format Strings](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty/godziny. | Nie       |
 
 Następujące właściwości są wspierane w ramach `translator`  ->  `mappings` oprócz obiektu z `source` i `sink`:
@@ -287,7 +287,7 @@ Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz 
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double
@@ -297,7 +297,7 @@ Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz 
 * Int64
 * Single
 * String
-* Zakres czasu
+* Timespan
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne artykuły dotyczące działania kopiowania:
