@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: banders
-ms.openlocfilehash: 8dc5918ac539abde2586e29a1608e9dc496a5e37
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 7caa7df3817c51d63dfa2838e4223d3fba88e529
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794789"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827363"
 ---
 # <a name="pay-azure-subscription-by-invoice"></a>Płatności subskrypcji platformy Azure przy użyciu faktury
 
@@ -65,14 +65,14 @@ Jeśli przełącznik przy użyciu faktury, oznacza to, że płaci się w ciągu 
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-- **Nazwa firmy** i **firmy adres** powinien być zgodny z informacjami, które podano dla konta platformy Azure.  Aby wyświetlić lub zaktualizować informacje, zobacz [zmiany informacji o Twoim profilu konta platformy Azure](billing-how-to-change-azure-account-profile.md).
-- Zanim może zostać zatwierdzone limit środków, należy dodać przez osobę kontaktową rozliczeń w witrynie Azure portal. Szczegółowe dane kontaktowe powinny być związane z działu płatne konta lub finansów firmy. Aby zaktualizować rozliczeń kontaktu, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Profile).
+    - **Nazwa firmy** i **firmy adres** powinien być zgodny z informacjami, które podano dla konta platformy Azure.  Aby wyświetlić lub zaktualizować informacje, zobacz [zmiany informacji o Twoim profilu konta platformy Azure](billing-how-to-change-azure-account-profile.md).
+    - Zanim może zostać zatwierdzone limit środków, należy dodać przez osobę kontaktową rozliczeń w witrynie Azure portal. Szczegółowe dane kontaktowe powinny być związane z działu płatne konta lub finansów firmy. Aby zaktualizować rozliczeń kontaktu, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Profile).
 
 5. Zweryfikuj informacje kontaktowe i preferowaną metodę kontaktu, a następnie kliknij polecenie **Utwórz**.
 
 Jeśli będzie trzeba przeprowadzić kontrolę kredytową przez ze względu na ilość środków, które są potrzebne, wyślemy Ci środki sprawdzenie aplikacji.
 
-## <a name="switch-your-azure-subscription-to-invoice-payment"></a>Przełącz subskrypcji platformy Azure do faktury płatności
+## <a name="switch-to-invoice-pay"></a>Zmień na fakturę płatności
 
 Po zatwierdzeniu przy użyciu faktury można przełączyć subskrypcji platformy Azure do używania faktury jako formy płatności w [witryny Azure portal](https://portal.azure.com).
 
