@@ -131,11 +131,11 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa właściwości typu działania kopiowania: **Kopiuj** | Yes |
-| dane wejściowe | Określ zestaw danych utworzony wskazującą na źródło danych. Działanie kopiowania obsługuje tylko jednego danych wejściowych. | Yes |
-| wyjścia | Określ zestaw danych został utworzony, które punkty danych ujścia. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
+| inputs | Określ zestaw danych utworzony wskazującą na źródło danych. Działanie kopiowania obsługuje tylko jednego danych wejściowych. | Yes |
+| outputs | Określ zestaw danych został utworzony, które punkty danych ujścia. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
 | typeProperties | Grupa właściwości, aby skonfigurować działanie kopiowania. | Yes |
 | source | Określ typ źródła kopiowania i odpowiednie właściwości dotyczące sposobu pobierania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Właściwości działania kopiowania" w artykule łącznika na liście [obsługiwane magazyny danych i formatów](#supported-data-stores-and-formats). | Yes |
-| obiekt sink | Określ typ obiektu sink kopiowania i odpowiednie właściwości dotyczące sposobu zapisywania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Właściwości działania kopiowania" w artykule łącznika na liście [obsługiwane magazyny danych i formatów](#supported-data-stores-and-formats). | Yes |
+| sink | Określ typ obiektu sink kopiowania i odpowiednie właściwości dotyczące sposobu zapisywania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Właściwości działania kopiowania" w artykule łącznika na liście [obsługiwane magazyny danych i formatów](#supported-data-stores-and-formats). | Yes |
 | translator | Określ mapowania kolumn jawne ze źródła do ujścia. Ma zastosowanie, gdy domyślne zachowanie kopiowania nie może spełnić Twoje potrzeby.<br/><br/>Dowiedz się, szczegółowe informacje z [schemat i dane mapowania typów](copy-activity-schema-and-type-mapping.md). | Nie |
 | dataIntegrationUnits | Określ powerfulness z [Azure Integration Runtime](concepts-integration-runtime.md) umożliwiające kopiowanie danych. Wcześniej znane jako chmury jednostek przenoszenia danych (DMU). <br/><br/>Dowiedz się, szczegółowe informacje z [jednostek integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
 | parallelCopies | Określanie równoległości, który ma działanie kopiowania do użycia podczas odczytu danych ze źródła i zapisywania danych do ujścia.<br/><br/>Dowiedz się, szczegółowe informacje z [równoległych kopii](copy-activity-performance.md#parallel-copy). | Nie |
@@ -173,14 +173,14 @@ Szczegóły wykonania działania kopiowania i charakterystyk wydajności są tak
 
 | Nazwa właściwości  | Opis | Jednostka |
 |:--- |:--- |:--- |
-| DataRead | Rozmiar danych odczytu ze źródła | Wartość Int64 **bajtów** |
-| DataWritten | Rozmiar danych zapisany do ujścia | Wartość Int64 **bajtów** |
+| dataRead | Rozmiar danych odczytu ze źródła | Wartość Int64 **bajtów** |
+| dataWritten | Rozmiar danych zapisany do ujścia | Wartość Int64 **bajtów** |
 | filesRead | Liczba plików kopiowanych podczas kopiowania danych z usługi file storage. | Wartość Int64 (Brak jednostki) |
 | filesWritten | Liczba plików kopiowanych podczas kopiowania danych do usługi file storage. | Wartość Int64 (Brak jednostki) |
 | rowsRead | Liczba wierszy odczytu ze źródła (nie dotyczy kopia binarna). | Wartość Int64 (Brak jednostki) |
 | rowsCopied | Liczba wierszy, które są kopiowane do ujścia (nie dotyczy kopia binarna). | Wartość Int64 (Brak jednostki) |
 | rowsSkipped | Liczba niezgodnych wierszy jest pomijane. Tę funkcję można włączyć przez zestaw "enableSkipIncompatibleRow" na wartość true. | Wartość Int64 (Brak jednostki) |
-| Przepływność | Stosunek szybkości transferu danych. | W liczbę zmiennoprzecinkową **KB/s** |
+| throughput | Stosunek szybkości transferu danych. | W liczbę zmiennoprzecinkową **KB/s** |
 | copyDuration | Czas trwania kopiowania. | Wartość Int32 w ciągu kilku sekund |
 | sourcePeakConnections | Szczytową liczbę jednoczesnych połączeń ustanowionych z magazynem danych źródłowych podczas kopiowania. | Wartość Int32 |
 | sinkPeakConnections| Szczytową liczbę jednoczesnych połączeń ustanowionych z magazynem danych ujścia podczas kopiowania.| Wartość Int32 |
