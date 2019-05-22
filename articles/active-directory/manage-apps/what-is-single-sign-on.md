@@ -2,22 +2,22 @@
 title: Logowanie jednokrotne do aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wybrać jedną metodę logowania jednokrotnego, podczas konfigurowania aplikacji w usłudze Azure Active Directory (Azure AD). Użyj logowania jednokrotnego, dzięki czemu użytkownicy nie muszą zapamiętywać hasła do każdej aplikacji i uprościć administrowanie zarządzania kontami.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.author: celested
+ms.date: 05/15/2019
+ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75aa0f4755fe3d124094ace3c3e6b8e6ea3b65e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441506"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824167"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 
@@ -45,7 +45,7 @@ Poniższa tabela zawiera podsumowanie pojedynczej metody logowania jednokrotnego
 | [OpenID Connect i OAuth](#openid-connect-and-oauth) | Tylko w chmurze | Podczas tworzenia nowej aplikacji za pomocą protokołu OpenID Connect i OAuth. Ten protokół upraszcza konfigurację aplikacji, jest łatwy w użyciu zestawy SDK i pozwala aplikacji używać MS Graph.
 | [SAML](#saml-sso) | w chmurze i lokalnych | Wybierz SAML, w miarę możliwości istniejących aplikacji, które nie korzystają z protokołu OpenID Connect i OAuth. SAML działa w przypadku aplikacji, które przeprowadzają uwierzytelnianie przy użyciu jednej z protokołów języka SAML.|
 | [Oparte na hasłach](#password-based-sso) | w chmurze i lokalnych | Wybierz opartego na hasłach, gdy aplikacja uwierzytelnia się za pomocą nazwy użytkownika i hasła. Oparte na hasłach logowanie jednokrotne umożliwia bezpieczną aplikację przechowywanie i powtarzanie haseł przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Ta metoda wykorzystuje istniejący proces logowania udostępniany przez aplikację, ale umożliwia administratorowi Zarządzanie hasłami. |
-| [Połączone](#linked-sso) | w chmurze i lokalnych | Wybierz połączone logowanie jednokrotne, gdy aplikacja jest skonfigurowana na potrzeby logowania jednokrotnego w innej usłudze dostawcy tożsamości. Ta opcja nie powoduje dodania logowanie jednokrotne do aplikacji. Jednak aplikacja może już logowanie jednokrotne implementowane za pomocą innej usługi, takie jak Active Directory Federation Services.|
+| [Połączone](#linked-sign-on) | w chmurze i lokalnych | Wybierz połączone logowanie, gdy aplikacja jest skonfigurowana na potrzeby logowania jednokrotnego w innej usłudze dostawcy tożsamości. Ta opcja nie powoduje dodania logowanie jednokrotne do aplikacji. Jednak aplikacja może już logowanie jednokrotne implementowane za pomocą innej usługi, takie jak Active Directory Federation Services.|
 | [Disabled (Wyłączone)](#disabled-sso) | w chmurze i lokalnych | Wybierz wyłączone rejestracji jednokrotnej, jeśli aplikacja nie jest gotowe do skonfigurowania dla logowania jednokrotnego. Użytkownicy muszą wprowadzić swoją nazwę użytkownika i hasło, za każdym razem, gdy ich uruchomić tę aplikację.|
 | [Uwierzytelnianie zintegrowane Windows (IWA)](#integrated-windows-authentication-iwa-sso) | tylko lokalnie | Wybierz IWA logowania jednokrotnego dla aplikacji, które używają [zintegrowane Windows Authentication (Zintegrowane)](/aspnet/web-api/overview/security/integrated-windows-authentication), lub aplikacji obsługujących oświadczenia. IWA łączników serwera Proxy aplikacji usługi użytku delegowanie ograniczone protokołu Kerberos (KCD) do uwierzytelniania użytkowników w aplikacji. | 
 | [Na podstawie nagłówka](#header-based-sso) | tylko lokalnie | Jeśli aplikacja używa nagłówków do uwierzytelniania, należy użyć opartej na nagłówkach logowania jednokrotnego. Opartej na nagłówkach logowanie jednokrotne wymaga oprogramowanie PingAccess dla usługi Azure AD. Serwer Proxy aplikacji używa usługi Azure AD można uwierzytelnić użytkownika, a następnie przekazuje ruch za pośrednictwem usługi łącznika.  | 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji, zobacz:
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>Logowanie jednokrotne SAML
+## <a name="saml-sso"></a>LOGOWANIA JEDNOKROTNEGO SAML
 Za pomocą **SAML logowania jednokrotnego**, usługa Azure AD uwierzytelnia się do aplikacji przy użyciu konta usługi Azure AD. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Za pomocą opartej na SAML logowania jednokrotnego można mapować użytkowników do ról aplikacji, na podstawie reguł zdefiniowanych w swoje oświadczenia języka SAML.
 
 Wybierz opartej na SAML logowania jednokrotnego, jeśli aplikacja obsługuje tę funkcję.
@@ -122,12 +122,12 @@ Gdy użytkownik końcowy zarządza poświadczeniami:
 - Administratorzy mogą nadal Ustaw nowe poświadczenia dla aplikacji.
 
 
-## <a name="linked-sso"></a>Połączona usługa rejestracji Jednokrotnej
+## <a name="linked-sign-on"></a>Połączone logowanie
 Połączone logowanie umożliwia usłudze Azure AD w celu zapewnienia logowania jednokrotnego do aplikacji, która jest już skonfigurowane logowanie jednokrotne w innej usłudze. Połączonych aplikacji może znajdować się użytkownikom końcowym w portalu usługi Office 365 lub portalu usługi Azure AD MyApps. Na przykład użytkownik może uruchomić aplikację, która jest skonfigurowana na potrzeby logowania jednokrotnego w Active Directory Federation Services 2.0 (AD FS) z portalu usługi Office 365. Dodatkowe raportowania jest również dostępna dla połączonych aplikacji, które będą uruchamiane w portalu usługi Office 365 lub portalu usługi Azure AD MyApps. 
 
-### <a name="linked-sso-for-application-migration"></a>Połączone logowanie Jednokrotne do migracji aplikacji
+### <a name="linked-sign-on-for-application-migration"></a>Połączone logowanie do migracji aplikacji
 
-Połączone logowanie Jednokrotne może zapewnić spójne środowisko użytkownika podczas migrowania aplikacji w danym okresie czasu. W przypadku migrowania aplikacji do usługi Azure Active Directory, można użyć połączonego logowania jednokrotnego, szybkie publikowanie łączy do wszystkich aplikacji, które zamierzasz migrować.  Użytkownicy mogą znaleźć wszystkie linki w [portalu MyApps](../user-help/active-directory-saas-access-panel-introduction.md) lub [uruchamiania aplikacji usługi Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Użytkownicy nie będą o tym, że użyteczną połączonych aplikacji lub migrowanych aplikacji.  
+Połączone logowanie może zapewnić spójne środowisko użytkownika podczas migrowania aplikacji w danym okresie czasu. W przypadku migrowania aplikacji do usługi Azure Active Directory, można użyć połączonego logowania jednokrotnego, szybkie publikowanie łączy do wszystkich aplikacji, które zamierzasz migrować.  Użytkownicy mogą znaleźć wszystkie linki w [portalu MyApps](../user-help/active-directory-saas-access-panel-introduction.md) lub [uruchamiania aplikacji usługi Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Użytkownicy nie będą o tym, że użyteczną połączonych aplikacji lub migrowanych aplikacji.  
 
 Po użytkownik został uwierzytelniony przy użyciu połączonych aplikacji, rekord konta musi zostać utworzona przed użytkownika końcowego podano dostępu rejestracji jednokrotnej. Inicjowanie obsługi administracyjnej ten rekord konta można albo automatycznie są wykonywane lub może być wykonywane ręcznie przez administratora.
 
