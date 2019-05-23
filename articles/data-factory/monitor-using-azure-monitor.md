@@ -109,12 +109,12 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | serviceBusRuleId |String | Usługa Service bus reguły identyfikator przestrzeń nazw magistrali usług, w którym chcesz mieć utworzonych dla przesyłania strumieniowego dzienników diagnostycznych w usłudze Event Hubs. Reguły, identyfikator ma format: "{usługi Service bus identyfikator zasobu} /authorizationrules/ {nazwa klucza}".|
 | workspaceId | Typ złożony | Tablica ziarna czasu metryki i ich zasady przechowywania. Obecnie ta właściwość jest pusta. |
 |metrics| Wartości parametrów potoku, uruchomienia do przekazania do wywoływanej potoku| Obiekt JSON, mapowanie nazwy parametrów do wartości argumentów |
-| dzienniki| Typ złożony| Nazwa kategorii dziennik diagnostyczny dla typu zasobu. Aby uzyskać listę kategorii, dzienniki diagnostyczne dla zasobu, należy najpierw wykonać operację pobrania ustawień diagnostycznych. |
+| logs| Typ złożony| Nazwa kategorii dziennik diagnostyczny dla typu zasobu. Aby uzyskać listę kategorii, dzienniki diagnostyczne dla zasobu, należy najpierw wykonać operację pobrania ustawień diagnostycznych. |
 | category| String| Kategorie dzienników i ich zasady przechowywania |
 | timeGrain | String | Stopień szczegółowości metryki, które są przechwytywane format czasu ISO 8601. Musi być PT1M (jednej minuty)|
 | enabled| Boolean | Określa, czy zbiór kategorii metryk lub dzienników jest włączona dla tego zasobu|
-| zasadach retentionPolicy.| Typ złożony| W tym artykule opisano zasady przechowywania dla metryk lub dzienników kategorii. Używane dla tylko opcję konta magazynu.|
-| dni| Int| Liczba dni przechowywania metryk lub dzienników. Wartość 0 zachowuje dzienniki na czas nieokreślony. Używane dla tylko opcję konta magazynu. |
+| retentionPolicy| Typ złożony| W tym artykule opisano zasady przechowywania dla metryk lub dzienników kategorii. Używane dla tylko opcję konta magazynu.|
+| days| Int| Liczba dni przechowywania metryk lub dzienników. Wartość 0 zachowuje dzienniki na czas nieokreślony. Używane dla tylko opcję konta magazynu. |
 
 **Odpowiedź**
 
