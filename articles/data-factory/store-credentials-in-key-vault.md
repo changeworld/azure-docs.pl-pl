@@ -79,7 +79,7 @@ Następujące właściwości są obsługiwane w przypadku skonfigurowania pola w
 | type | Właściwość Typ pola musi być równa: **AzureKeyVaultSecret**. | Yes |
 | secretName | Nazwa wpisu tajnego w usłudze azure key vault. | Yes |
 | secretVersion | Wersja wpisu tajnego w usłudze azure key vault.<br/>Jeśli nie zostanie określony, zawsze używa najnowszej wersji klucza tajnego.<br/>Jeśli zostanie określony, następnie go pozostanie przypisane do danej wersji.| Nie |
-| Store | Odnosi się do usługi połączonej usługi Azure Key Vault, używanej do przechowywania poświadczeń. | Yes |
+| store | Odnosi się do usługi połączonej usługi Azure Key Vault, używanej do przechowywania poświadczeń. | Yes |
 
 **Korzystanie z tworzenia interfejsu użytkownika:**
 
