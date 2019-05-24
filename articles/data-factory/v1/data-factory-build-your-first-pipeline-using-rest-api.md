@@ -125,8 +125,8 @@ Poniższa tabela zawiera opis właściwości kodu JSON użytych w tym fragmencie
 
 | Właściwość | Opis |
 |:--- |:--- |
-| ClusterSize |Rozmiar klastra usługi HDInsight. |
-| TimeToLive |Określa czas bezczynności, po którym klaster usługi HDInsight zostanie usunięty. |
+| clusterSize |Rozmiar klastra usługi HDInsight. |
+| timeToLive |Określa czas bezczynności, po którym klaster usługi HDInsight zostanie usunięty. |
 | linkedServiceName |Określa konto magazynu używane do przechowywania dzienników generowanych w usłudze HDInsight. |
 
 Pamiętaj o następujących kwestiach:
