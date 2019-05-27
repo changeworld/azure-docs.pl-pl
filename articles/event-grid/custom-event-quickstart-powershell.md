@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66156023"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą programu PowerShell i usługi Event Grid
 
@@ -22,7 +22,7 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówio
 
 Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji sieci Web.
 
-![Wyświetlanie wyników](./media/custom-event-quickstart-powershell/view-result.png)
+![Wyświetl wyniki](./media/custom-event-quickstart-powershell/view-result.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

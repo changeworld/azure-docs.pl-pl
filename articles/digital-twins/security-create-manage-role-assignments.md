@@ -10,11 +10,11 @@ ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
 ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162110"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie i Zarządzanie przypisaniami ról w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -41,10 +41,10 @@ W poniższej tabeli opisano każdy atrybut:
 
 | Atrybut | Name (Nazwa) | Wymagane | Typ | Opis |
 | --- | --- | --- | --- | --- |
-| roleId | Identyfikator definicji roli | Yes | String | Unikatowy identyfikator przypisania roli żądaną. Aby znaleźć definicji ról i ich identyfikatora, wykonywania zapytań interfejsu API systemu lub przeglądania w poniższej tabeli. |
-| Identyfikator obiektu | Identyfikator obiektu | Yes | String | Identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwy domeny. Co lub których przypisanie roli jest przypisany do. Przypisanie roli musi być sformatowany zgodnie z jego skojarzonego typu. Aby uzyskać `DomainName` objectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
-| objectIdType | Typ identyfikatora obiektu | Yes | String | Typ identyfikatora obiektu używany. Zobacz **obsługiwane ObjectIdTypes** poniżej. |
-| ścieżka | Ścieżka miejsca | Yes | String | Ścieżka pełny dostęp do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, należy określić `"/"`. Ten znak wyznacza katalogu głównego, ale nie zaleca się jej użycie. Zawsze postępuj zgodnie z zasadą najniższych uprawnień. |
+| roleId | Identyfikator definicji roli | Tak | String | Unikatowy identyfikator przypisania roli żądaną. Aby znaleźć definicji ról i ich identyfikatora, wykonywania zapytań interfejsu API systemu lub przeglądania w poniższej tabeli. |
+| Identyfikator obiektu | Identyfikator obiektu | Tak | String | Identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwy domeny. Co lub których przypisanie roli jest przypisany do. Przypisanie roli musi być sformatowany zgodnie z jego skojarzonego typu. Aby uzyskać `DomainName` objectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
+| objectIdType | Typ identyfikatora obiektu | Tak | String | Typ identyfikatora obiektu używany. Zobacz **obsługiwane ObjectIdTypes** poniżej. |
+| path | Ścieżka miejsca | Tak | String | Ścieżka pełny dostęp do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, należy określić `"/"`. Ten znak wyznacza katalogu głównego, ale nie zaleca się jej użycie. Zawsze postępuj zgodnie z zasadą najniższych uprawnień. |
 | tenantId | Identyfikator dzierżawy | Różna | String | W większości przypadków identyfikator dzierżawy usługi Azure Active Directory. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalnie na potrzeby ObjectIdType nazwa_domeny. |
 
 ### <a name="supported-role-definition-identifiers"></a>Identyfikatorów definicji roli obsługiwanej

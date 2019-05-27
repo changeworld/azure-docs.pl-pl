@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449697"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147703"
 ---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -37,9 +37,9 @@ Urządzenie przykładowe również:
 * Odpowiada na działania wywoływane z poziomu **urządzeń** strony w rozwiązaniu.
 * Odpowiada na zmiany konfiguracji Wyślij z **urządzeń** strony w rozwiązaniu.
 
-Do wykonania kroków tego samouczka jest potrzebne aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Do wykonania kroków tego samouczka jest potrzebne aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="before-you-start"></a>Przed rozpoczęciem
+## <a name="before-you-start"></a>Zanim rozpoczniesz
 
 Przed przystąpieniem do napisania jakiegokolwiek kodu dla Twojego urządzenia, wdrożyć Twój akcelerator rozwiązań monitorowania zdalnego i dodać nowe rzeczywistego urządzenia z rozwiązaniem.
 

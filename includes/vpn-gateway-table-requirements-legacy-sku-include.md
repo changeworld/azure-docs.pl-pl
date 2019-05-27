@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d8091fdade9cd417af58755d8245c2fb091b86b3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b9e036816aa532d32b1b4305ef6ae646ae05bae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197189"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159263"
 ---
-Poniższej tabeli wymieniono wymagania dla bram PolicyBased i RouteBased sieci VPN. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym. W przypadku modelu klasycznego bramy sieci VPN PolicyBased są takie same, jak bramy statyczne, a bramy oparte na trasach są takie same, jak bramy dynamiczne.
+Poniższa lista zawiera wymagania dotyczące bramy oparte na zasadach i sieci VPN typu RouteBased. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym. W przypadku modelu klasycznego bramy sieci VPN oparte na zasadach są takie same, jak bramy statyczne, a bramy oparte na trasach są takie same, jak bramy dynamiczne.
 
-|  | **PolicyBased Basic bramy sieci VPN** | **RouteBased Basic bramy sieci VPN** | **RouteBased Standard bramy sieci VPN** | **Brama sieci VPN RouteBased wysokiej wydajności** |
+|  | **PolicyBased Basic VPN Gateway** | **RouteBased Basic VPN Gateway** | **RouteBased Standard VPN Gateway** | **Bramy sieci VPN usługi RouteBased o wysokiej wydajności** |
 | --- | --- | --- | --- | --- |
-| **Połączenie lokacja-lokacja (S2S)** |Konfiguracja sieci VPN PolicyBased |Konfiguracja sieci VPN z siecią typu RouteBased |Konfiguracja sieci VPN z siecią typu RouteBased |Konfiguracja sieci VPN z siecią typu RouteBased |
+| **Połączenie lokacja-lokacja (S2S)** |Konfiguracja sieci VPN typu PolicyBased |Konfiguracja sieci VPN typu RouteBased |Konfiguracja sieci VPN typu RouteBased |Konfiguracja sieci VPN typu RouteBased |
 | **Łączność typu „punkt do lokacji” (Point-to-Site, P2S**) |Nieobsługiwane |Obsługiwane (może współistnieć z S2S) |Obsługiwane (może współistnieć z S2S) |Obsługiwane (może współistnieć z S2S) |
 | **Metoda uwierzytelniania** |Klucz wstępny |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |
 | **Maksymalna liczba połączeń S2S** |1 |10 |10 |30 |

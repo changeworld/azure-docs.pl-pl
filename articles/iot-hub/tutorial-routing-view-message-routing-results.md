@@ -10,11 +10,11 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162764"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Samouczek: Część 2 — Wyświetl komunikaty trasowane
 
@@ -26,11 +26,11 @@ ms.locfileid: "59045837"
 
 Są to reguły do rozsyłania wiadomości; zostały one skonfigurowane w części 1 tego samouczka, a zobaczysz ich działania w drugiej części.
 
-|wartość |Wynik|
+|value |Wynik|
 |------|------|
 |level=„storage” |Zapis w usłudze Azure Storage.|
 |level=„critical” |Zapis w kolejce usługi Service Bus. Aplikacja logiki pobiera komunikat z kolejki i używa usługi Office 365 do wysłania go pocztą e-mail.|
-|default |Wyświetlanie tych danych przy użyciu usługi Power BI.|
+|domyślny |Wyświetlanie tych danych przy użyciu usługi Power BI.|
 
 Teraz możesz tworzyć zasoby, do których będą kierowane, uruchamiania aplikacji w celu wysyłania komunikatów do Centrum wiadomości i zobacz routing w działaniu.
 

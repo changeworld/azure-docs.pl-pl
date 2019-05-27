@@ -17,11 +17,11 @@ ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 1fce6292ffd7307ff0a294c6fa25412962acd1cc
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752844"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66161689"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -314,7 +314,7 @@ az network nic ip-config address-pool add \
 Aby sprawdzić, czy wirtualna karta sieciowa jest włączona do puli adresów zaplecza, ponownie użyj polecenia [az network lb address-pool show](/cli/azure/network/lb/address-pool) z poprzedniego kroku.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Podczas pracy z tym samouczkiem utworzono moduł równoważenia obciążenia i dołączono do niego maszyny wirtualne. W tym samouczku omówiono:
 
 > [!div class="checklist"]

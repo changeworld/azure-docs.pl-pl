@@ -1,10 +1,15 @@
 ---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
 ms.openlocfilehash: 9d4f7faa18ee7fae158afb42b8c42287e61dd103
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553858"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150355"
 ---
 ### <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 
@@ -15,6 +20,7 @@ Utwórz plik JavaScript o nazwie `sender.js`.
 Uruchom polecenie `npm install hyco-ws` w wierszu polecenia języka Node w folderze projektu.
 
 ### <a name="write-some-code-to-send-messages"></a>Pisanie kodu w celu wysyłania komunikatów
+
 1. Dodaj następujący element `constants` na początku pliku `sender.js`.
    
     ```js

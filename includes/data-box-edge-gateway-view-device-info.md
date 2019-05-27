@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58404084"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161184"
 ---
 1. [Nawiązać połączenie z interfejsu programu PowerShell](#connect-to-the-powershell-interface).
 2. Użyj `Get-HcsApplianceInfo` Aby uzyskać informacje o urządzeniu.
@@ -49,7 +49,7 @@ ms.locfileid: "58404084"
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | Przyjazna nazwa urządzenia, zgodnie z konfiguracją za pomocą lokalnego internetowego interfejsu użytkownika podczas wdrażania urządzenia. Przyjazna nazwa domyślna jest numer seryjny urządzenia.  |   |
     | numer seryjny                   | Numer seryjny urządzenia jest unikatowy numer przypisany na etapie produkcji.                                                                             |   |
-    | Modelowanie                          | Model urządzenia krawędzi pola danych lub bramy pola danych. Model jest wirtualne dla bramy pola danych i fizyczne do krawędzi ramki danych.                   |   |
+    | Model                          | Model urządzenia krawędzi pola danych lub bramy pola danych. Model jest wirtualne dla bramy pola danych i fizyczne do krawędzi ramki danych.                   |   |
     | FriendlySoftwareVersion        | Przyjazne ciąg, który odnosi się do wersji oprogramowania urządzenia. Na komputerze z systemem w wersji zapoznawczej wersja oprogramowania przyjazna byłoby 1902 krawędzi pola danych. |   |
     | HcsVersion                     | Wersja oprogramowania magazynu HCS uruchomiony na twoim urządzeniu. Na przykład wersja oprogramowania magazynu HCS odpowiadający 1902 krawędzi pola danych jest 1.4.771.324.            |   |
     | LocalCapacityInMb              | Całkowita pojemność lokalna urządzenia w megabitach.                                                                                                        |   |

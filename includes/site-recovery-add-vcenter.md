@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 926fb3e9a2c09d30da549330842d8b7e185674ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60600402"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171766"
 ---
 W oknie **Dodawanie serwera vCenter** podaj przyjazną nazwę dla hosta vSphere lub serwera vCenter, a następnie podaj adres IP lub nazwę FQDN serwera. Pozostaw port ustawiony na 443, chyba że Twoje serwery VMware są skonfigurowane do nasłuchiwania żądań na innym porcie. Wybierz konto, które ma się łączyć z serwerem VMware vCenter lub vSphere ESXi. Kliknij przycisk **OK**.
 

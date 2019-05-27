@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125201"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171144"
 ---
 #### <a name="to-download-hotfixes"></a>Aby pobrać poprawki
 
@@ -26,7 +26,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
    
     ![Przeszukiwanie wykazu](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. Kliknij pozycję **Pobierz**. Określ lokalizację lokalną, do której mają trafiać pobrane pliki, albo **przejdź** do takiej lokalizacji. Kliknij opcję pliki do pobrania do określonej lokalizacji i folderu. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
+4. Kliknij przycisk **Pobierz**. Określ lokalizację lokalną, do której mają trafiać pobrane pliki, albo **przejdź** do takiej lokalizacji. Kliknij opcję pliki do pobrania do określonej lokalizacji i folderu. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
 5. Wyszukaj wszystkie dodatkowe poprawki wymienione w powyższej tabeli (**4037266**) i pobrać odpowiadające im pliki do określonych folderów, zgodnie z opisem w powyższej tabeli.
 
 > [!NOTE]

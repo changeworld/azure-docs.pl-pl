@@ -1,7 +1,7 @@
 ---
 title: Tworzenie, uruchamianie i śledzić potokach uczenia Maszynowego
 titleSuffix: Azure Machine Learning service
-description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python. Potoki umożliwia tworzenie i zarządzanie nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML). Te etapy obejmują przygotowywania danych, szkolenie modelu, wdrożenie modelu i wnioskowania.
+description: Tworzenie i uruchamianie usługi machine learning potoku z zestawem Azure Machine Learning SDK dla języka Python. Potoki umożliwia tworzenie i zarządzanie nimi przepływy pracy tej fazy uczenia maszynowego razem Połącz (ML). Te etapy obejmują przygotowywania danych, szkolenie modelu, wdrożenie modelu i wnioskowania/oceniania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914889"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165880"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -251,6 +251,8 @@ trainStep = PythonScriptStep(
 )
 ```
 
+Ponowne użycie poprzednich wyników (`allow_reuse`) to klucz podczas korzystania z potoki w środowisku pracy zespołowej, ponieważ wyeliminowanie niepotrzebnych ponownych uruchomień oferuje elastyczność. Jest to domyślne zachowanie, gdy nazwa_sryptu, dane wejściowe i parametry kroku pozostają takie same. Gdy dane wyjściowe tego kroku zostanie ponownie użyty, zadanie nie jest przesyłany do obliczenia, zamiast tego wyników z poprzedniego uruchomienia natychmiast dostępny do uruchomienia w następnym kroku. Jeśli ma wartość false, uruchomienie nowego przebiegu będzie zawsze będą generowane dla tego kroku podczas wykonywania potoku. 
+
 Po zdefiniowaniu kroki, utworzysz potok za pomocą niektóre lub wszystkie z tych kroków.
 
 > [!NOTE]
@@ -315,6 +317,10 @@ Przy pierwszym uruchomieniu potoku usługi Azure Machine Learning:
 
 Aby uzyskać więcej informacji, zobacz [eksperymentować klasy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) odwołania.
 
+## <a name="github-tracking-and-integration"></a>Śledzenie usługi GitHub i integracja
+
+Po rozpoczęciu szkolenia, gdzie katalog źródłowy jest w nim program lokalnego repozytorium Git, informacje o repozytorium znajduje się w historii uruchamiania. Na przykład identyfikator bieżącego zatwierdzenia w repozytorium jest rejestrowany jako część historii.
+
 ## <a name="publish-a-pipeline"></a>Publikowanie potoku
 
 Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych danych wejściowych. Już opublikowaną potoku, aby akceptować parametry punktu końcowego REST należy zdefiniować parametry potoku przed opublikowaniem. 
@@ -360,7 +366,7 @@ response = requests.post(published_pipeline1.endpoint,
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
-## <a name="view-results"></a>Wyświetlanie wyników
+## <a name="view-results"></a>Wyświetl wyniki
 
 Zobacz listę wszystkich potoków i ich szczegóły przebiegu:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).  
@@ -373,11 +379,11 @@ Zobacz listę wszystkich potoków i ich szczegóły przebiegu:
 ## <a name="caching--reuse"></a>Buforowanie i ponowne użycie  
 
 Aby zoptymalizować i dostosować zachowanie potoków można wykonać kilka czynności wokół pamięci podręcznej i wielokrotnie używać. Na przykład możesz:
-+ **Wyłącz domyślne ponownemu krok dane wyjściowe przebiegu** , ustawiając `allow_reuse=False` podczas [krok definicji](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **Wyłącz domyślne ponownemu krok dane wyjściowe przebiegu** , ustawiając `allow_reuse=False` podczas [krok definicji](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Ponowne użycie jest klucz, podczas korzystania z potoki w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych przebiegów oferuje elastyczność. Można jednak zrezygnować z tego.
 + **Rozszerzanie mieszania poza skrypt**, aby dołączyć również ścieżki bezwzględnej lub względnej ścieżki, aby katalog_źródłowy do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
 + **Wymuszenie ponownego wygenerowania danych wyjściowych, wszystkie kroki w przebiegu** z `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-Domyślnie krok ponownego użycia jest włączona i mieszana jest tylko plik głównego skryptu. Więc, jeśli skrypt dla danego kroku pozostają takie same (`script_name`, dane wejściowe i parametrów), dane wyjściowe poprzedniego kroku uruchom zostanie ponownie użyty, zadanie nie jest przesyłany do obliczeń i wyników z poprzedniego uruchomienia są natychmiast dostępne do następnego kroku w zamian .  
+Domyślnie `allow-reuse` kroki jest włączona i jest wartość skrótu dla pliku głównego skryptu. Więc, jeśli skrypt dla danego kroku pozostają takie same (`script_name`, dane wejściowe i parametrów), dane wyjściowe poprzedniego kroku uruchom zostanie ponownie użyty, zadanie nie jest przesyłany do obliczeń i wyników z poprzedniego uruchomienia są natychmiast dostępne do następnego kroku w zamian .  
 
 ```python
 step = PythonScriptStep(name="Hello World", 

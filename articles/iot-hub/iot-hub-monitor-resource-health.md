@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
 ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66166203"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
 
@@ -345,7 +345,7 @@ W tym miejscu `durationMs` nie jest obliczana jako zegara usługi IoT Hub może 
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Liczba całkowita | Rozmiar komunikatu urządzenia do chmury, w bajtach |
+| **messageSize** | Integer | Rozmiar komunikatu urządzenia do chmury, w bajtach |
 | **deviceId** | Ciąg znaków alfanumerycznych ASCII 7-bitowego | Tożsamość urządzenia |
 | **callerLocalTimeUtc** | Sygnatura czasowa UTC | Godzina utworzenia komunikatu zgłoszonej zegara lokalnego urządzenia |
 | **calleeLocalTimeUtc** | Sygnatura czasowa UTC | Godzina nadejścia wiadomości w usłudze IoT Hub gateway zgłoszonej przez zegar po stronie usługi IoT Hub |

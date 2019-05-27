@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419224"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147492"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Instalowanie o wysokiej dostępności usługi Service Fabric Reliable dysku na podstawie woluminu w aplikacji usługi Service Fabric siatki 
 Typowe metody utrwalanie stanu przy użyciu aplikacji kontenera jest użycie magazynu zdalnego, takich jak usługi Azure File Storage lub bazy danych, takich jak usługi Azure Cosmos DB. To spowoduje naliczenie znaczących odczytu i zapisu opóźnienia sieci do zdalnego magazynu.
@@ -73,7 +73,7 @@ Zwróć uwagę na nazwę zasobu bramy, która ma typ zasobu `Microsoft.ServiceFa
 
 Po pomyślnym wdrożeniu aplikacji, Uzyskaj adres IP zasobu bramy aplikacji. Użyj nazwę bramy, którą można zauważyć, że w powyżej sekcji.
 ```azurecli-interactive
-az mesh gateway show --resource-group myResourceGroup --gateway-name counterGateway
+az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
 Dane wyjściowe powinny mieć właściwość `ipAddress` czyli publiczny adres IP punktu końcowego usługi. Otwórz go w przeglądarce. Wyświetli stronę sieci web za pomocą wartość licznika, aktualizowane co sekundę.

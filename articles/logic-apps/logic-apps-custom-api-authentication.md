@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167245"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Bezpieczne wywołania niestandardowych interfejsów API usługi Azure Logic Apps
 
@@ -190,11 +190,11 @@ Otwieranie definicji aplikacji logiki w widoku kodu, przejdź do **HTTP** sekcji
 
 | Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
-| dzierżawa | Yes | Identyfikator GUID dla dzierżawy usługi Azure AD | 
-| Grupy odbiorców | Yes | Identyfikator GUID zasobu docelowego, którą chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci web lub aplikacji interfejsu API | 
-| clientId | Yes | Identyfikator GUID dla klientów żądających dostępu, który jest identyfikator klienta z tożsamości aplikacji w aplikacji logiki | 
-| wpis tajny | Yes | Klucz lub hasło za pomocą tożsamości aplikacji klienta, który żąda tokenu dostępu | 
-| type | Yes | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. | 
+| tenant | Tak | Identyfikator GUID dla dzierżawy usługi Azure AD | 
+| Grupy odbiorców | Tak | Identyfikator GUID zasobu docelowego, którą chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci web lub aplikacji interfejsu API | 
+| clientId | Tak | Identyfikator GUID dla klientów żądających dostępu, który jest identyfikator klienta z tożsamości aplikacji w aplikacji logiki | 
+| wpis tajny | Tak | Klucz lub hasło za pomocą tożsamości aplikacji klienta, który żąda tokenu dostępu | 
+| typ | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. | 
 |||| 
 
 Na przykład:
@@ -236,9 +236,9 @@ W **autoryzacji** sekcji, podając ten wiersz:
 
 | Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
-| type | Yes | Typ uwierzytelniania. Dla certyfikatów klientów SSL, wartość musi być `ClientCertificate`. | 
-| hasło | Yes | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) | 
-| pfx | Yes | Zawartość algorytmem Base64 (plik PFX) certyfikatu klienta | 
+| typ | Tak | Typ uwierzytelniania. Dla certyfikatów klientów SSL, wartość musi być `ClientCertificate`. | 
+| password | Tak | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) | 
+| pfx | Tak | Zawartość algorytmem Base64 (plik PFX) certyfikatu klienta | 
 |||| 
 
 <a name="basic"></a>
@@ -253,9 +253,9 @@ W **autoryzacji** sekcji, podając ten wiersz:
 
 | Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
-| type | Yes | Typ uwierzytelniania, którego chcesz używać. Dla uwierzytelniania podstawowego, wartość musi być `Basic`. | 
-| nazwa użytkownika | Yes | Nazwa użytkownika, która ma być używany do uwierzytelniania | 
-| hasło | Yes | Hasło, które ma być używany do uwierzytelniania | 
+| typ | Tak | Typ uwierzytelniania, którego chcesz używać. Dla uwierzytelniania podstawowego, wartość musi być `Basic`. | 
+| username | Tak | Nazwa użytkownika, która ma być używany do uwierzytelniania | 
+| password | Tak | Hasło, które ma być używany do uwierzytelniania | 
 |||| 
 
 <a name="azure-ad-code"></a>

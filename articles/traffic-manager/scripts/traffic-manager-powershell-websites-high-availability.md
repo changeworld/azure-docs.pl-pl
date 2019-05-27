@@ -16,11 +16,11 @@ ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
 ms.openlocfilehash: db84de194832180b8e153cf6aa7e6c9fab5e6d61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66147433"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Kierowanie ruchem w celu zapewnienia wysokiej dostępności aplikacji przy użyciu programu Azure PowerShell
 

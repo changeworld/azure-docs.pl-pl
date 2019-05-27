@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: 2392d0ef9d6257b93b76f13a5354eeba57d78ddd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800294"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158713"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>Migrowanie aplikacji w języku Java enterprise edition (EE) na platformę Azure
 W tym artykule szczegółowo omówiono proces migrowania istniejących obciążeń Java EE na platformy Azure:
@@ -67,7 +67,7 @@ WildFly/JBoss przykładowych aplikacji będzie Migrowanie na platformę Azure. U
 Po zakończeniu migracji należy uruchomić aplikacje przy użyciu usługi Azure Service Bus.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wdrożenia aplikacji sieci web Java na platformie Azure, musisz mieć subskrypcję platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub założyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/en-us/free/).
+Do wdrożenia aplikacji sieci web Java na platformie Azure, musisz mieć subskrypcję platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub założyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 Ponadto niezbędne są następujące wymagania wstępne:
 
@@ -1070,7 +1070,7 @@ Zobacz następujące artykuły:
 
 - [Przewodnik dotyczący Enterprise Java dla usługi App Service w systemie Linux](../app-service/containers/app-service-java-enterprise.md)
 - [Wtyczka maven Plugin for Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)
-- [Deploying Generic JMS RA Adapter in JBoss/WildFly](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+- [Deploying Generic JMS RA Adapter in JBoss/WildFly](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
 - [WildFly/JBoss konfiguracji obsługi komunikatów](https://docs.jboss.org/author/display/WFLY/Messaging+configuration)
 - [JBoss/WildFly CLI Guide](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
 - [Otwieranie połączenia SSH z komputera deweloperskiego](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)

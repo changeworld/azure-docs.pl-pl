@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105925"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157320"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: Azure Portal
 
@@ -45,8 +45,8 @@ Następujących wartości możesz użyć do tworzenia środowiska testowego lub 
 * **GatewaySubnet:** 192.168.200.0/24<br>
 * **Serwer DNS:** (opcjonalny) adres IP serwera DNS, który ma być używany do rozpoznawania nazw.
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
-* **Typ bramy:** Sieć VPN
-* **Typ sieci VPN:** Oparte na trasach
+* **Typ bramy:** VPN
+* **Typ sieci VPN:** Oparte na trasie
 * **Nazwa publicznego adresu IP:** VNet1GWpip
 * **Typ połączenia:** Punkt-lokacja
 * **Pula adresów klienta:** 172.16.201.0/24<br>Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z puli adresów klientów.
@@ -76,7 +76,7 @@ Po utworzeniu sieci wirtualnej możesz dodać adres IP serwera DNS, aby umożliw
 >Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS. Jeśli planowane jest posiadanie Mac klienci łączą się z siecią wirtualną, nie należy używać podstawowej jednostki SKU.
 >
 
-## <a name="generatecert"></a>5. Generowanie certyfikatów klienta
+## <a name="generatecert"></a>5. Generowanie certyfikatów
 
 Certyfikaty są używane przez platformę Azure do uwierzytelniania klientów łączących się z siecią wirtualną za pośrednictwem połączenia sieci VPN typu punkt-lokacja. Po uzyskaniu certyfikatu głównego należy [przekazać](#uploadfile) informacje o kluczu publicznym do platformy Azure. Certyfikat główny jest następnie uznawany przez platformę Azure za zaufany dla połączeń typu punkt-lokacja z siecią wirtualną. Ponadto certyfikaty klienta są generowane na podstawie zaufanego certyfikatu głównego, a następnie instalowane na każdym komputerze klienckim. Certyfikat klienta jest używany do uwierzytelniania klienta, gdy inicjuje on połączenie z siecią wirtualną. 
 
@@ -108,7 +108,7 @@ Pula adresów klienta to określony przez Ciebie zakres prywatnych adresów IP. 
 
 ## <a name="tunneltype"></a>7. Konfigurowanie typu tunelu
 
-Można wybrać typ tunelu. Dwie opcje tuneli to SSTP i IKEv2. Klient strongSwan w systemach Android i Linux oraz natywny klient sieci VPN IKEv2 w systemach iOS i OSX będą używać do łączenia się tylko tuneli IKEv2. Klienci w systemie Windows będą najpierw próbowali użyć protokołu IKEv2, a jeśli połączenie nie zostanie nawiązane, użyją protokołu SSTP. Można włączyć jedną z nich lub obie. Zaznacz pola wyboru zgodnie z wymaganiami rozwiązania.
+Można wybrać typ tunelu. Opcje tuneli to OpenVPN, SSTP i IKEv2. Klient strongSwan w systemach Android i Linux oraz natywny klient sieci VPN IKEv2 w systemach iOS i OSX będą używać do łączenia się tylko tuneli IKEv2. Klienci w systemie Windows będą najpierw próbowali użyć protokołu IKEv2, a jeśli połączenie nie zostanie nawiązane, użyją protokołu SSTP. Klient OpenVPN służy do nawiązywania połączeń typu tunelu OpenVPN.
 
 ![Typ tunelu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 

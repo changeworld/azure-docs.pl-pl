@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: b4d9a469e46d964055d9459901ebdb9c6d04cf24
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078350"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66157489"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurowanie wymuszonego tunelowania przy użyciu modelu wdrażania usługi Azure Resource Manager
 
@@ -61,7 +61,7 @@ Wymuszone tunelowanie w systemie Azure jest skonfigurowany za pośrednictwem sie
 * Wymuszone tunelowanie muszą być skojarzone z siecią wirtualną, która ma bramę sieci VPN opartej na trasach. Należy ustawić "Domyślna witryna" wśród wielu lokacji lokalnych podłączone do sieci wirtualnej. Ponadto lokalnego urządzenia sieci VPN musi być skonfigurowany przy użyciu 0.0.0.0/0 jako selektorów ruchu. 
 * Usługa ExpressRoute wymuszonego tunelowania nie jest skonfigurowany za pomocą tego mechanizmu, ale zamiast tego można włączyć, konfigurując anonsuje trasę domyślną za pośrednictwem sesje komunikacji równorzędnej BGP usługi ExpressRoute. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 
-## <a name="configuration-overview"></a>Przegląd konfiguracji
+## <a name="configuration-overview"></a>Omówienie konfiguracji
 
 Poniższa procedura pomaga utworzyć grupę zasobów i sieci wirtualnej. Następnie utwórz bramę sieci VPN i konfigurowanie wymuszonego tunelowania. W tej procedurze "MultiTier wirtualna-sieć wirtualna" w sieci wirtualnej ma trzy podsieci: "Frontend", "Midtier" i "Zaplecze", z czterema połączeń obejmujących: "DefaultSiteHQ" i trzy gałęzie.
 

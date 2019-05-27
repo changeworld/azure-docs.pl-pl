@@ -17,18 +17,18 @@ ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155325"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Samouczek: tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
 W tym samouczku pokazano, jak zaimplementować stos MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure. Utworzony stos MEAN umożliwia dodawanie i usuwanie książek w bazie danych oraz wyświetlanie ich listy. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Tworzenie maszyny wirtualnej z systemem Linux
+> * Utwórz maszynę wirtualną z systemem Linux
 > * Instalowanie środowiska Node.js
 > * Instalowanie bazy danych MongoDB i konfigurowanie serwera
 > * Instalowanie platformy Express i konfigurowanie tras do serwera
@@ -40,7 +40,7 @@ W tym samouczku pokazano, jak zaimplementować stos MEAN (MongoDB, Express, Angu
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem Linux
+## <a name="create-a-linux-vm"></a>Utwórz maszynę wirtualną z systemem Linux
 
 Utwórz nową grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group) i utwórz maszynę wirtualną z systemem Linux za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -343,7 +343,7 @@ sudo apt-get install -y nodejs
 W ramach tego samouczka utworzono aplikację internetową, która śledzi rekordy książek przy użyciu stosu MEAN na maszynie wirtualnej z systemem Linux. W tym samouczku omówiono:
 
 > [!div class="checklist"]
-> * Tworzenie maszyny wirtualnej z systemem Linux
+> * Utwórz maszynę wirtualną z systemem Linux
 > * Instalowanie środowiska Node.js
 > * Instalowanie bazy danych MongoDB i konfigurowanie serwera
 > * Instalowanie platformy Express i konfigurowanie tras do serwera

@@ -9,11 +9,11 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57908692"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159268"
 ---
 Jeśli pracujesz z modelu wdrażania usługi Resource Manager, można zmienić do nowej jednostki SKU bramy. Po zmianie ze starszej wersji jednostki SKU bramy do nowej jednostki SKU, usuń istniejącą bramę sieci VPN i utworzyć nową bramę sieci VPN.
 

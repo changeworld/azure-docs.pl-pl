@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097697"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165475"
 ---
 W tym kroku należy utworzyć regułę zapory, aby otworzyć port sondy do endpoint ze zrównoważonym obciążeniem (jak określono wcześniej 59999), a innej reguły, aby otworzyć port odbiornika grupy dostępności. Ponieważ utworzono punkt końcowy z równoważeniem obciążenia na maszynach wirtualnych, które zawierają repliki grupy dostępności, musisz otworzyć port sondy i port odbiornika na odpowiednich maszyn wirtualnych.
 
@@ -30,4 +29,3 @@ W tym kroku należy utworzyć regułę zapory, aby otworzyć port sondy do endpo
 
 8. Powtórz te czynności na port odbiornika grupy dostępności (jak określono wcześniej w parametrze $EndpointPort skryptu), a następnie określ nazwę odpowiednią regułę, takich jak **zawsze na Port odbiornika**.
 
-<!-- Update_Description: update meta properties -->

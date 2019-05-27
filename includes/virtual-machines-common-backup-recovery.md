@@ -2,19 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 03/09/2018
-ms.date: 04/16/2018
-ms.author: v-yeche
+ms.date: 03/09/2018
+ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543725"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160049"
 ---
 ## <a name="azure-backup"></a>Azure Backup
 
@@ -23,6 +22,7 @@ Kopie zapasowe maszyn wirtualnych platformy Azure z obciążeń produkcyjnych, u
 Proste, praktyczne wprowadzenie do usługi Azure Backup dla maszyn wirtualnych platformy Azure, zapoznaj się z samouczkiem "kopie zapasowe maszyn wirtualnych platformy Azure", dla [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) lub [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
 
 Aby uzyskać więcej informacji na temat działania usługi Azure Backup, zobacz [Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej na platformie Azure](../articles/backup/backup-azure-vms-introduction.md)
+
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -40,6 +40,8 @@ Aby uzyskać więcej informacji na temat tworzenia migawek zobacz:
 
 * [Tworzenie kopii wirtualnego dysku twardego przechowywanej jako dysk zarządzany przy użyciu migawek w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Tworzenie kopii wirtualnego dysku twardego przechowywanej jako dysk zarządzany przy użyciu migawek w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Możesz wypróbować usługę Azure Backup, wykonując "Kopii zapasowych maszyn wirtualnych Windows w ramach samouczka" dla [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) lub [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).

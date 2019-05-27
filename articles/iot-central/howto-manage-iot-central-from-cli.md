@@ -9,11 +9,11 @@ ms.date: 02/07/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 9e5d842cece316bc9c53e1e8583f40a0f222b91d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808624"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66151954"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Zarządzanie IoT Central z wiersza polecenia platformy Azure
 
@@ -53,10 +53,10 @@ Te polecenia najpierw utworzyć grupę zasobów w regionie wschodnim regionie US
 | Parametr         | Opis |
 | ----------------- | ----------- |
 | resource-group    | Grupa zasobów, który zawiera aplikację. Ta grupa zasobów musi już istnieć w subskrypcji. |
-| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można tworzyć aplikację IoT Central w **wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**, lub **Europa Zachodnia** regionów. |
+| lokalizacja          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można tworzyć aplikację IoT Central w **wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**, lub **Europa Zachodnia** regionów. |
 | name              | Nazwa aplikacji w witrynie Azure portal. |
 | Poddomena         | Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji jest https://mysubdomain.azureiotcentral.com. |
-| sku               | Obecnie jest to jedyna wartość **S1** (warstwa standardowa). Zobacz [cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+| jednostka SKU               | Obecnie jest to jedyna wartość **S1** (warstwa standardowa). Zobacz [cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 | szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji zobacz w poniższej tabeli: |
 | display-name      | Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
 

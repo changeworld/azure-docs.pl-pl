@@ -11,11 +11,11 @@ ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: a5b6c22b3917784b20ad11bddf200d1546c48597
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66168230"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji
 
@@ -25,7 +25,7 @@ Część pierwsza serii zawiera informacje na temat wykonywania następujących 
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu
-> * Tworzenie maszyny wirtualnej
+> * Utwórz maszynę wirtualną
 > * Konfigurowanie rozszerzenia skryptu niestandardowego
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -58,7 +58,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
   -Kind Storage `
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 
 Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takie jak obraz maszyny wirtualnej, rozmiar i konfiguracja uwierzytelniania. Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
 
@@ -130,7 +130,7 @@ W części pierwszej serii opisano tworzenie konta magazynu, wdrażanie maszyny 
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu
-> * Tworzenie maszyny wirtualnej
+> * Utwórz maszynę wirtualną
 > * Konfigurowanie rozszerzenia skryptu niestandardowego
 
 Przejdź do drugiej części serii, która opisuje przekazywanie dużych ilości danych na konto magazynu przy użyciu ponawiania wykładniczego i funkcji równoległości.
