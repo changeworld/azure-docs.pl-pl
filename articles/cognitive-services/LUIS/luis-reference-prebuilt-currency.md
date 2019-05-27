@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 1dfa81ad7981578d4f296de1b421c7e064819718
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7e882a66ae5a090e1fd3a0850ff35281dc4e692d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867288"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072022"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Waluta wstępnie utworzone jednostki dla aplikacji usługi LUIS
 Jednostkę waluty wbudowanych wykrywa waluty w wielu nazw i kraje/regiony, niezależnie od kultury aplikacji usługi LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający Waluta intencji aplikacji. Jednostkę waluty jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
@@ -25,6 +25,9 @@ Jednostkę waluty wbudowanych wykrywa waluty w wielu nazw i kraje/regiony, nieza
 Waluta jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) repozytorium GitHub
 
 ## <a name="resolution-for-currency-entity"></a>Rozwiązania dla jednostki waluty
+
+### <a name="api-version-2x"></a>Wersja interfejsu API 2.x
+
 W poniższym przykładzie pokazano rozdzielczość **builtin.currency** jednostki.
 
 ```json
@@ -56,6 +59,72 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.currency** jednostk
       }
     }
   ]
+}
+```
+
+
+
+### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+
+Następujący kod JSON jest `verbose` parametr `false`:
+
+```json
+{
+    "query": "search for items under $10.99",
+    "prediction": {
+        "normalizedQuery": "search for items under $10.99",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.605889857
+            }
+        },
+        "entities": {
+            "money": [
+                {
+                    "number": 10.99,
+                    "unit": "Dollar"
+                }
+            ]
+        }
+    }
+}
+```
+
+Następujący kod JSON jest `verbose` parametr `true`:
+
+```json
+{
+    "query": "search for items under $10.99",
+    "prediction": {
+        "normalizedQuery": "search for items under $10.99",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.605889857
+            }
+        },
+        "entities": {
+            "money": [
+                {
+                    "number": 10.99,
+                    "unit": "Dollar"
+                }
+            ],
+            "$instance": {
+                "money": [
+                    {
+                        "type": "builtin.currency",
+                        "text": "$10.99",
+                        "startIndex": 23,
+                        "length": 6,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

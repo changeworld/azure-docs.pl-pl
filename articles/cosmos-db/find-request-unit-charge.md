@@ -4,20 +4,20 @@ description: Dowiedz się, jak można znaleźć jednostki żądań (RU) opłaty 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 730f0604d0c292764aaee6e0ffb8ef95d90be5f2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 8ccb7ae9869ec01b4f26009535af613ccb1d35d0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410290"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241120"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Znajdź opłata za jednostki żądań w usłudze Azure Cosmos DB
 
 W tym artykule przedstawiono różne sposoby, można znaleźć [jednostki żądań](request-units.md) zużycie (RU) dla każdej operacji wykonywane względem kontenera w usłudze Azure Cosmos DB. Obecnie można zmierzyć to użycie tylko przy użyciu witryny Azure portal lub sprawdzając odpowiedzi wysyłane z usługi Azure Cosmos DB za pomocą jednego z zestawów SDK.
 
-## <a name="sql-core-api"></a>(Rdzenie) interfejsu API SQL
+## <a name="sql-core-api"></a>Interfejs API SQL (podstawowy)
 
 Jeśli używasz interfejsu API SQL masz wiele opcji do znajdowania zużycia jednostek RU dla operacji na kontenerze usługi Azure Cosmos.
 

@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/13/2019
 ms.author: edjez
-ms.openlocfilehash: 536aad0fac4e833cd9a30bad2cfd10e25b0f1300
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607077"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244249"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Nagrody wyniki wskazują sukces personalizacji
 
-Wynik za wynagrodzeniem wskazuje, jak dobrze wybór personalizacji [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/rank#rankresponse), wynikowa dla użytkownika. Wartość wyniku nagradzania jest określana przez logikę biznesową, na podstawie obserwacji zachowania użytkowników.
+Wynik za wynagrodzeniem wskazuje, jak dobrze wybór personalizacji [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response), wynikowa dla użytkownika. Wartość wyniku nagradzania jest określana przez logikę biznesową, na podstawie obserwacji zachowania użytkowników.
 
 Personalizer szkolenie modeli uczenia modeli poprzez ocenę korzyści maszynowego. 
 

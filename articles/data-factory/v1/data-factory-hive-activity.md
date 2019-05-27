@@ -82,8 +82,8 @@ Działanie HDInsight Hive w usłudze Data Factory [potoku](data-factory-create-p
 | outputs |Dane wyjściowe generowane przez działanie programu Hive |Yes |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
 | script |Określ wbudowany skrypt programu Hive |Nie |
-| scriptPath |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
-| defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive przy użyciu "hiveconf" |Nie |
+| Ścieżka skryptu |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| Definiuje |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive przy użyciu "hiveconf" |Nie |
 
 ## <a name="example"></a>Przykład
 Rozważmy przykład dzienników gier, analizy, w której chcesz zidentyfikować czas spędzony przez użytkowników granie w gry uruchomiony przez Twoją firmę. 
@@ -216,7 +216,7 @@ Aby użyć sparametryzowanych skryptu programu Hive, wykonaj następujące czynn
       }
     }
     ```
-* W skrypcie programu Hive można znaleźć za pomocą parametru **${hiveconf:parameterName}**. 
+* W skrypcie programu Hive można znaleźć za pomocą parametru **${hiveconf:parameterName}** . 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 

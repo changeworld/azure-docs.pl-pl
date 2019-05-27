@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: diberry
-ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: b379ebeeec7d9309cdf150b8b90ddd006e3bcd9a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124275"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240210"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -36,7 +36,7 @@ Aby można było uruchomić kontener usługi LUIS, musisz mieć następujące cz
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
-|Azure `Cognitive Services` zasobów i LUIS [spakowanych aplikacji](luis-how-to-start-new-app.md#export-app-for-containers) pliku |Aby można było używać kontenera, musisz mieć:<br><br>* A _usług Cognitive Services_ zasobów platformy Azure i skojarzone opłaty klucz rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach przeglądu i klucze zasobu i wymagane do uruchomienia kontenera. Musisz dodać `luis/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br>* Uczonego opublikowanych aplikacją lub spakowany jako zainstalowanego dane wejściowe do kontenera z jego skojarzony identyfikator aplikacji. Pakowanego pliku można uzyskać z portalu usługi LUIS lub do tworzenia interfejsów API. Jeśli otrzymujesz spakowanych aplikacji usługi LUIS z [Tworzenie interfejsów API](#authoring-apis-for-package-file), należy również swoje _tworzenia klucza_.<br><br>Te wymagania są używane do przekazywania argumentów wiersza polecenia do następujących zmiennych:<br><br>**{AUTHORING_KEY}** : Ten klucz jest używany do pobrania spakowanych aplikacji z usługi LUIS w chmurze, a następnie przekaż dzienniki zapytań do chmury. Format jest `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}**: Ten identyfikator jest używany do wybierz aplikację. Format jest `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}**: Ten klucz jest używany do uruchomienia kontenera. Klucz punktu końcowego można znaleźć w dwóch miejscach. Pierwsza to witryny Azure portal w ramach _usług Cognitive Services_ listy kluczy zasobu. Klucz punktu końcowego jest również dostępna w portalu usługi LUIS na klucze i punktu końcowego strony ustawień. Nie należy używać klucza starter.<br><br>**{BILLING_ENDPOINT}**: Na przykład: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Tworzenia klucza i klucza punktu końcowego](luis-boundaries.md#key-limits) różnym przeznaczeniu. Nie należy używać ich zamiennie. |
+|Azure `Cognitive Services` zasobów i LUIS [spakowanych aplikacji](luis-how-to-start-new-app.md#export-app-for-containers) pliku |Aby można było używać kontenera, musisz mieć:<br><br>* A _usług Cognitive Services_ zasobów platformy Azure i skojarzone opłaty klucz rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach przeglądu i klucze zasobu i wymagane do uruchomienia kontenera. Musisz dodać `luis/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br>* Uczonego opublikowanych aplikacją lub spakowany jako zainstalowanego dane wejściowe do kontenera z jego skojarzony identyfikator aplikacji. Pakowanego pliku można uzyskać z portalu usługi LUIS lub do tworzenia interfejsów API. Jeśli otrzymujesz spakowanych aplikacji usługi LUIS z [Tworzenie interfejsów API](#authoring-apis-for-package-file), należy również swoje _tworzenia klucza_.<br><br>Te wymagania są używane do przekazywania argumentów wiersza polecenia do następujących zmiennych:<br><br>**{AUTHORING_KEY}** : Ten klucz jest używany do pobrania spakowanych aplikacji z usługi LUIS w chmurze, a następnie przekaż dzienniki zapytań do chmury. Format jest `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ten identyfikator jest używany do wybierz aplikację. Format jest `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Ten klucz jest używany do uruchomienia kontenera. Klucz punktu końcowego można znaleźć w dwóch miejscach. Pierwsza to witryny Azure portal w ramach _usług Cognitive Services_ listy kluczy zasobu. Klucz punktu końcowego jest również dostępna w portalu usługi LUIS na klucze i punktu końcowego strony ustawień. Nie należy używać klucza starter.<br><br>**{BILLING_ENDPOINT}** : Na przykład: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Tworzenia klucza i klucza punktu końcowego](luis-boundaries.md#key-limits) różnym przeznaczeniu. Nie należy używać ich zamiennie. |
 
 ### <a name="authoring-apis-for-package-file"></a>Tworzenie interfejsów API dla pliku pakietu
 
@@ -136,7 +136,7 @@ Pakiet opublikowanej aplikacji jest dostępny z **Moje aplikacje** stronie listy
 1. Zaloguj się do usługi LUIS [portal](https://www.luis.ai).
 1. Na liście, zaznacz pole wyboru po lewej stronie nazwy aplikacji. 
 1. Wybierz **wyeksportować** elementu z kontekstowych narzędzi powyżej listy.
-1. Wybierz **eksportu dla kontenera (GZIP)**.
+1. Wybierz **eksportu dla kontenera (GZIP)** .
 1. Wybierz środowisko z **miejscem produkcyjnym** lub **miejsce przejściowe**.
 1. Pakiet jest pobierana z przeglądarki.
 
@@ -152,7 +152,7 @@ Pakiet aplikacji uczonego jest dostępne z **wersji** stronie listy.
 1. Wybierz **wersji** na pasku nawigacyjnym po lewej stronie.
 1. Zaznacz pole wyboru po lewej stronie nazwy wersji na liście.
 1. Wybierz **wyeksportować** elementu z kontekstowych narzędzi powyżej listy.
-1. Wybierz **eksportu dla kontenera (GZIP)**.
+1. Wybierz **eksportu dla kontenera (GZIP)** .
 1. Pakiet jest pobierana z przeglądarki.
 
 ![Wyeksportuj pakiet uczonego w kontenerze menu eksportowania na stronie wersji](./media/luis-container-how-to/export-trained-package-for-container.png)
@@ -223,20 +223,24 @@ Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/comma
 |{ENDPOINT_KEY} | Ten klucz jest używany do uruchomienia kontenera. Nie należy używać klucza starter. |
 |{BILLING_ENDPOINT} | Rozliczeń wartość punktu końcowego jest dostępna w witrynie Azure portal `Cognitive Services` strona przeglądu. Należy dodać `luis/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.|
 
-Zastąp parametry te wartości w poniższym przykładzie `docker run` polecenia.
+Zastąp parametry te wartości w poniższym przykładzie `docker run` polecenia. Uruchom polecenie w konsoli programu Windows.
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
+```console
+docker run --rm -it -p 5000:5000 ^
+--memory 4g ^
+--cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output\,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-> [!Note] 
-> Poprzednie polecenie korzysta z katalogu, wyłącz `c:` dysku, aby uniknąć konfliktów uprawnień na Windows. Jeśli musisz użyć określonego katalogu jako katalog wejściowy może być konieczne przyznanie platformy docker usługi uprawnienia. Poprzednie polecenie docker używa ukośnik, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń na podstawie Twojej [komputerze-hoście](#the-host-computer) wymagania dotyczące systemu operacyjnego. Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
+* W tym przykładzie użyto katalogu poza `c:` dysku, aby uniknąć konfliktów uprawnień na Windows. Jeśli musisz użyć określonego katalogu jako katalog wejściowy może być konieczne przyznanie platformy docker usługi uprawnienia. 
+* Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
+* Jeśli używasz innego systemu operacyjnego na użytek poprawne konsoli/terminal, składnia folderu instalacji i wstawić znak kontynuacji wiersza w systemie. W poniższych przykładach założono konsoli Windows za pomocą znak kontynuacji wiersza `^`. Ponieważ kontener jest system operacyjny Linux, instalacji docelowy używa składni folderu stylu dla systemu Linux.
+
 
 
 To polecenie:
@@ -273,7 +277,7 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
-|Parametr zapytania|Type|Przeznaczenie|
+|Parametr zapytania|Typ|Przeznaczenie|
 |--|--|--|
 |`q`|string|Wypowiedź użytkownika.|
 |`timezoneOffset`|numer|TimezoneOffset umożliwia [Zmień strefę czasową](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) posługują się datetimeV2 wstępnie utworzone jednostki.|

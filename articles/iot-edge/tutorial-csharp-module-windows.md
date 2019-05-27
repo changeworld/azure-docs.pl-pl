@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 046398af8678e708784614dfdc231778454ed945
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ca321b8a073f709b55093fde6ff32ae876f3ef12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576600"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238072"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Twórz C# moduł usługi IoT Edge dla urządzeń Windows
 
@@ -65,7 +65,7 @@ Rozszerzenia Azure IoT Tools udostępnia szablony projektów dla wszystkich obs�
 
 2. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**. 
 
-3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania do opisu coś podobnego **CSharpTutorialApp**. Wybierz przycisk **OK**, aby utworzyć projekt. 
+3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania do opisu coś podobnego **CSharpTutorialApp**. Wybierz **OK** do tworzenia projektu. 
 
    ![Utwórz nowy projekt usługi Azure IoT Edge](./media/tutorial-csharp-module-windows/new-project.png)
 
@@ -322,7 +322,7 @@ Rozszerzenie IoT Edge narzędzia służy do wyświetlania wiadomości przychodz�
 
 1. W programie cloud explorer programu Visual Studio wybierz nazwę urządzenia usługi IoT Edge. 
 
-2. W **akcje** listy wybierz **Rozpocznij monitorowania komunikatu D2C**. 
+2. W **akcje** listy wybierz **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**. 
 
 3. Wyświetl wiadomości otrzymywanych z usługi IoT Hub. Może upłynąć trochę wiadomości zostanie dostarczona, ponieważ zmiany wprowadzone do kodu CSharpModule czekać do momentu temperatury maszyny osiągnięcia 25 stopni przed wysłaniem wiadomości. Typ komunikatu dodaje także **alertu** na wszystkie komunikaty, w których progu temperatury. 
 

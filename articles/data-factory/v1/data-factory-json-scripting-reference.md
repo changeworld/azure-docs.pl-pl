@@ -90,12 +90,12 @@ Następujących tabeli opisano właściwości w definicji JSON działania:
 | name |Nazwa działania. Określ nazwę, która reprezentuje akcję skonfigurowanego działania<br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description |Tekst opisujący przeznaczenie działania. |Nie |
 | type |Określa typ działania. Zobacz [MAGAZYNY danych](#data-stores) i [działania PRZEKSZTAŁCANIA danych](#data-transformation-activities) sekcje dla różnych typów działań. |Tak |
-| inputs |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Brak działań HDInsightStreaming i SqlServerStoredProcedure <br/> <br/> Tak dla wszystkich innych |
+| dane wejściowe |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Brak działań HDInsightStreaming i SqlServerStoredProcedure <br/> <br/> Tak dla wszystkich innych |
 | outputs |Dane wyjściowe tabele używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |Yes |
 | linkedServiceName |Nazwa połączonej usługi używana na potrzeby działania. <br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. |Tak dla działań HDInsight, Azure Machine Learning działań i działania dotyczącego procedury składowanej. <br/><br/>Nie dla wszystkich innych |
 | typeProperties |Właściwości w sekcji typeProperties zależą od typu działania. |Nie |
 | policy |Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Jeśli nie jest określona, używane są domyślne zasady. |Nie |
-| scheduler |Właściwość "harmonogram" jest używana do definiowania żądanego planowania dla działania. Właściwości podrzędnych są takie same, jak te w [właściwości availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
+| Harmonogram |Właściwość "harmonogram" jest używana do definiowania żądanego planowania dla działania. Właściwości podrzędnych są takie same, jak te w [właściwości availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
 
 ### <a name="policies"></a>Zasady
 Zasady wpływają na zachowania w czasie wykonywania działania, w szczególności, po przetworzeniu wycinka tabeli. Poniższa tabela zawiera szczegółowe informacje.
@@ -287,7 +287,7 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
 | name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Tak |Nie dotyczy |
-| typ | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Azure Data Factory (na przykład: AzureBlob, AzureSqlTable). Zobacz [MAGAZYNY danych](#data-stores) sekcji dla wszystkich magazynów danych i typy zestawów danych obsługiwane przez usługę Data Factory. |
+| type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Azure Data Factory (na przykład: AzureBlob, AzureSqlTable). Zobacz [MAGAZYNY danych](#data-stores) sekcji dla wszystkich magazynów danych i typy zestawów danych obsługiwane przez usługę Data Factory. |
 | Struktura | Schemat zestawu danych. Zawiera on kolumny, jak ich typy, itp. | Nie |Nie dotyczy |
 | typeProperties | Właściwości odpowiadający wybranego typu. Zobacz [MAGAZYNY danych](#data-stores) dotyczącej obsługiwanych typów i ich właściwości. |Tak |Nie dotyczy |
 | external | Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie. |Nie |false |
@@ -299,7 +299,7 @@ Każda kolumna w **struktury** sekcja zawiera następujące właściwości:
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa kolumny. |Tak |
-| typ |Typ danych kolumny.  |Nie |
+| type |Typ danych kolumny.  |Nie |
 | culture |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET oparte na platformie .NET `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. |Nie |
 | format |Format ciągu ma być używany, gdy typ jest określony, a typ architektury .NET `Datetime` lub `Datetimeoffset`. |Nie |
 
@@ -1313,7 +1313,7 @@ Aby zdefiniować zestaw danych usługi Azure Search, ustaw **typu** zestawu dany
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| typ | Właściwość type musi być równa **AzureSearchIndex**.| Tak |
+| type | Właściwość type musi być równa **AzureSearchIndex**.| Tak |
 | indexName | Nazwa indeksu usługi Azure Search. Fabryki danych nie powoduje utworzenia indeksu. Indeks musi istnieć w usłudze Azure Search. | Tak |
 
 #### <a name="example"></a>Przykład
@@ -2454,7 +2454,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Właściwość type powinna być równa: **OnPremisesSqlServer**. |Tak |
+| type |Właściwość type powinna być równa: **OnPremisesSqlServer**. |Tak |
 | connectionString |Określ informacje o parametry połączenia potrzebne do połączenia z bazą danych programu SQL Server w środowisku lokalnym przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. |Tak |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych programu SQL Server w środowisku lokalnym. |Tak |
 | username |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |
@@ -3317,7 +3317,7 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Tak |
+| type |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Tak |
 | host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady. |Tak |
 | userid |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
 | password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
@@ -4745,7 +4745,7 @@ Aby zdefiniować zestaw danych w sieci Web, ustaw **typu** zestawu danych na **W
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| typ |Typ zestawu danych. musi być równa **WebTable** |Tak |
+| type |Typ zestawu danych. musi być równa **WebTable** |Tak |
 | path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
 | index |Indeks tabeli w zasobie. Zobacz Get indeksu tabeli w sekcji strony HTML instrukcje pobierania indeksu tabeli na stronie HTML. |Tak |
 
@@ -4838,7 +4838,7 @@ Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi A
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Właściwość type powinna być równa **HDInsightOnDemand**. |Tak |
+| type |Właściwość type powinna być równa **HDInsightOnDemand**. |Tak |
 | clusterSize |Liczba węzłów procesu roboczego/danych w klastrze. Klaster HDInsight jest tworzony z 2 węzłami głównymi wraz z liczbą węzłów procesów roboczych, które określisz dla tej właściwości. Węzły są o rozmiarze maszyna wirtualna Standard_D3, który ma 4 rdzenie, dzięki czemu klaster z węzłami procesu roboczego 4 przyjmuje 24 rdzenie (4\*4 = 16 rdzeni dla węzłów procesu roboczego oraz 2\*4 = 8 rdzeni dla węzłów głównych). Zobacz [opartych na systemie Linux z Tworzenie klastrów usługi Hadoop w HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) szczegółowe informacje na temat warstwy maszyna wirtualna Standard_D3. |Tak |
 | timetolive |Dozwolony czas bezczynności, po dla klastra HDInsight na żądanie. Określa, jak długo klastra HDInsight na żądanie pozostanie aktywny po zakończeniu działania uruchamiania w przypadku żadnych aktywnych działań w klastrze.<br/><br/>Na przykład po uruchomienia działania trwa 6 minut i timetolive jest ustawiony na 5 minut, klaster pozostanie aktywny przez 5 minut po uruchomieniu 6 minut operacji przetwarzania działania. Jeśli uruchomienie innego działania jest wykonywane przy użyciu okna 6 minut, jest on przetwarzany przez tego samego klastra.<br/><br/>Tworzenie klastra usługi HDInsight na żądanie jest kosztowną operacją (może to trochę potrwać), użyj tak, to ustawienie jako potrzebnych do zwiększenia wydajności usługi data factory dzięki ponownemu wykorzystaniu klastra usługi HDInsight na żądanie.<br/><br/>Jeśli wartość timetolive jest ustawiona na wartość 0, klaster jest usuwany, jak działanie uruchamiane przetworzone. Z drugiej strony Jeśli ustawisz o wysokiej wartości, klaster może pozostać bezczynny, co niepotrzebnie wysokich kosztów. Dlatego ważne jest, ustaw odpowiednią wartość zgodnie z potrzebami.<br/><br/>Wiele potoków można udostępnić tego samego wystąpienia klastra HDInsight na żądanie, jeśli skonfigurowana wartość timetolive właściwości |Tak |
 | version |Wersja klastra HDInsight. Aby uzyskać więcej informacji, zobacz [obsługiwanych wersjach HDInsight w usłudze Azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). |Nie |
@@ -4876,7 +4876,7 @@ Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi A
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Właściwość type powinna być równa **HDInsight**. |Tak |
+| type |Właściwość type powinna być równa **HDInsight**. |Tak |
 | clusterUri |Identyfikator URI klastra HDInsight. |Tak |
 | username |Podaj nazwę użytkownika, który ma być używany do łączenia z do istniejącego klastra HDInsight. |Tak |
 | password |Określ hasło dla konta użytkownika. |Tak |
@@ -4909,7 +4909,7 @@ Poniższa tabela zawiera opis właściwości używane w definicji JSON usługi A
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Właściwość type powinna być równa **AzureBatch**. |Tak |
+| type |Właściwość type powinna być równa **AzureBatch**. |Tak |
 | accountName |Nazwa konta usługi Azure Batch. |Tak |
 | accessKey |Klucz dostępu dla konta usługi Azure Batch. |Tak |
 | poolName |Nazwa puli maszyn wirtualnych. |Tak |
@@ -5060,7 +5060,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Właściwość type powinna być równa: **OnPremisesSqlServer**. |Tak |
+| type |Właściwość type powinna być równa: **OnPremisesSqlServer**. |Tak |
 | connectionString |Określ informacje o parametry połączenia potrzebne do połączenia z bazą danych programu SQL Server w środowisku lokalnym przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. |Tak |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych programu SQL Server w środowisku lokalnym. |Tak |
 | username |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60198013"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072851"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Dodawanie jednostki do przykładu wypowiedzi 
 
@@ -89,25 +89,6 @@ Zakładając, że wypowiedź `Does John Smith work in Seattle?`, złożonego wyp
 
     ![Strona Szczegóły zrzut ekranu z opcjami, z jednostką złożone](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
 
-## <a name="add-hierarchical-entity"></a>Dodawanie jednostki hierarchicznej
-
-**Hierarchiczna jednostki po pewnym czasie zostaną wycofane. Użyj [ról jednostki](luis-concept-roles.md) Aby określić podtypy jednostki, zamiast hierarchiczne jednostek.**
-
-Hierarchiczna jednostka jest kategoria kontekstowe nauczony i pod względem koncepcyjnym powiązanych jednostek. W poniższym przykładzie jednostki zawiera początkowe i docelowe lokalizacje. 
-
-W polu wypowiedź `Move John Smith from Seattle to Cairo`, Seattle, jest to lokalizacja źródła i Kair jest lokalizacja docelowa. Każda lokalizacja jest kontekstowe różnych i nauczony kolejność słów i wybór o słowo w wypowiedź.
-
-1. Na stronie intencji wypowiedź, wybierz `Seattle`, wprowadź nazwę jednostki `Location`, a następnie naciśnij klawisz Enter na klawiaturze.
-
-1. W **jakiego typu jednostki, czy chcesz utworzyć?** podręcznym wybierz pozycję _hierarchiczne_ dla **typu jednostki**, następnie dodać `Origin` i `Destination` jako elementy podrzędne, a następnie wybierz **gotowe**.
-
-    ![Strona Szczegóły zrzut ekranu z opcjami, z jednostką ToLocation wyróżniony](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
-
-1. Wyraz wypowiedź został oznaczony za pomocą hierarchicznych obiektu nadrzędnego. Musisz przypisać słowo na jednostce podrzędnej. Wróć do wypowiedź na stronie szczegółów intencji. Zaznacz wyraz, a następnie z listy rozwijanej wybierz nazwę jednostki, utworzonej i postępuj zgodnie z menu po prawej stronie wybranie jednostki podrzędne poprawne.
-
-    >[!CAUTION]
-    >Nazwy jednostek podrzędny musi być unikatowa we wszystkich jednostek w jednej aplikacji. Dwoma obiektami hierarchiczne nie może zawierać jednostki podrzędne o takiej samej nazwie. 
-
 ## <a name="add-entitys-role-to-utterance"></a>Dodaj rolę jednostki wypowiedź
 
 Rola jest podtypem o nazwie podmiotu, który jest ustalany na podstawie kontekstu wypowiedź. Zaznacz jednostkę w ramach wypowiedź jako jednostki lub wybierz rolę w ramach tej jednostki. Każda jednostka może mieć ról w tym jednostek niestandardowych, które są przedstawiono maszyny (jednostek proste i złożone jednostek), nie omówiono maszyny (wstępnie utworzonych jednostek, jednostek wyrażenia regularnego listy jednostek). 
@@ -143,9 +124,6 @@ Następujące rozwiązania pomóc rozwiązać za pomocą jednostki prognozowania
 |Bez etykiety tekstowe|czerwonym podkreśleniem|Niepoprawne prognoz|Bieżący wypowiedzi korzystające z tej jednostki niepoprawne konieczne przeglądane we wszystkich intencji. Bieżącego wypowiedzi mają mistaught LUIS, czy ten tekst jest przewidywana jednostki.
 |Niepoprawnie oznaczone tekstu|Zaznacz jednostki niebieski, czerwoną linią|Niepoprawne prognoz|Podaj więcej wypowiedzi z jednostką poprawnie oznaczony w różnych miejscach i użycia. Bieżący wypowiedzi są nie są wystarczające do nauki LUIS, że to jest jednostka lub podobne jednostki są wyświetlane w tym samym kontekście. Podobne jednostki należy połączyć w pojedynczej jednostki, dzięki czemu usługa LUIS jest mylące. Innym rozwiązaniem jest dodanie listy frazę do poprawienia znaczenie słowa. |
 |Niepoprawnie oznaczone tekstu|Zaznacz jednostki niebieski, czerwoną linią|Poprawne prognoz| Podaj więcej wypowiedzi z jednostką poprawnie oznaczony w różnych miejscach i użycia. 
-
-> [!Note]
-> Po czerwoną otoczkę wokół etykietami zamiar w wierszu wypowiedź przykładu, [Błąd prognozowania intencji](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors) wystąpił. Należy go poprawić. 
 
 ## <a name="other-actions"></a>Inne akcje
 

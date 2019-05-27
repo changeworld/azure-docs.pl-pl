@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b4c1de8edf04e15b540adeac01bcbf0cb1d1b8af
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b114b1c3b1c421c6e6944666e3fd928d2aced966
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766943"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225879"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -49,7 +49,7 @@ Zobacz [Bing pisowni Sprawdź interfejsu API w wersji 7](luis-tutorial-bing-spel
 Aby edytować aplikacją usługi LUIS programowo, należy użyć [tworzenia interfejsu API](https://go.microsoft.com/fwlink/?linkid=2092087). Zobacz [wywołania tworzenia interfejsu API usługi LUIS](./luis-quickstart-node-add-utterance.md) i [tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js](./luis-tutorial-node-import-utterances-csv.md) przykładów dotyczących sposobów wywołać interfejs API tworzenia. Tworzenie interfejsu API wymaga użycia [tworzenia klucza](luis-concept-keys.md#authoring-key) zamiast klucza punktu końcowego. Programowe tworzenie pozwala maksymalnie 1 000 000 wywołań na miesiąc i 5 transakcji na sekundę. Aby uzyskać więcej informacji na kluczach, korzystać z użyciem usługi LUIS, zobacz [zarządzanie kluczami](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Gdy funkcja wzorca, który podane wyrażenie regularne jest zgodny
-Poprzedni **funkcja wzorca** jest obecnie przestarzałe, zastępuje  **[wzorców](luis-concept-patterns.md)**.
+Poprzedni **funkcja wzorca** jest obecnie przestarzałe, zastępuje  **[wzorców](luis-concept-patterns.md)** .
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Jak używać jednostki, aby wysunąć poprawnych danych?
 Zobacz [jednostek](luis-concept-entity-types.md) i [wyodrębnianie danych](luis-concept-data-extraction.md).
@@ -297,6 +297,10 @@ Następujące funkcje zostały wydane na konferencji 2019 kompilacji:
 * [Ulepszone ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md) 
 * [Dynamiczna lista jednostek](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Podmiotów zewnętrznych](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+
+Wideo:
+
+* [Jak Skaluj swoją działalność biznesową na następnej generacji za pomocą usługi Azure Conversational AI](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

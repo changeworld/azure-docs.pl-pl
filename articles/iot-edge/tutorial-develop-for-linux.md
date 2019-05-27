@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4ee3c0bf344520afee6b3a00eb49759ae1432949
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146698"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239774"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Samouczek: Twórz moduły usługi IoT Edge dla urządzeń z systemem Linux
 
@@ -190,7 +190,7 @@ Każdy moduł może mieć wiele *wejściowych* i *dane wyjściowe* kolejek zadek
 
 7. W dolnej części pliku Znajdź żądane właściwości dla **$edgeHub** modułu. 
 
-   Jedną z funkcji modułu Centrum IoT Edge jest do przesyłania wiadomości między wszystkie moduły w danym wdrożeniu. Sprawdź wartości w **trasy** właściwości. Pierwsza trasa **SampleModuleToIoTHub**, korzysta z symbolem wieloznacznym (**\***) do wskazania komunikaty pochodzące z dowolnym kolejki danych wyjściowych w SampleModule module. Te komunikaty są przekazywane do *$nadrzędne*, która jest nazwą zastrzeżoną, który wskazuje usługę IoT Hub. Druga trasa sensorToSampleModule, przyjmuje komunikaty pochodzące z modułu tempSensor i kieruje je do *wejście1* danych wejściowych w kolejce przedstawionego zainicjowane w kodzie SampleModule. 
+   Jedną z funkcji modułu Centrum IoT Edge jest do przesyłania wiadomości między wszystkie moduły w danym wdrożeniu. Sprawdź wartości w **trasy** właściwości. Pierwsza trasa **SampleModuleToIoTHub**, korzysta z symbolem wieloznacznym ( **\*** ) do wskazania komunikaty pochodzące z dowolnym kolejki danych wyjściowych w SampleModule module. Te komunikaty są przekazywane do *$nadrzędne*, która jest nazwą zastrzeżoną, który wskazuje usługę IoT Hub. Druga trasa sensorToSampleModule, przyjmuje komunikaty pochodzące z modułu tempSensor i kieruje je do *wejście1* danych wejściowych w kolejce przedstawionego zainicjowane w kodzie SampleModule. 
 
    ![Przejrzyj trasy w deployment.template.json](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -284,7 +284,7 @@ Możesz zweryfikować, że obrazy kontenera utworzone są przechowywane w usług
 
 Kod SampleModule odbiera komunikaty za pośrednictwem jego danych wejściowych w kolejce i przekazuje je za pośrednictwem swojej kolejki danych wyjściowych. Manifest wdrażania zadeklarowany trasy przekazanego z tempSensor SampleModule wiadomości, a następnie SampleModule przesyłane komunikaty do usługi IoT Hub. Narzędzia usługi Azure IoT dla programu Visual Studio Code, pozwalają wyświetlić komunikaty przychodzące w usłudze IoT Hub z poszczególnych urządzeń. 
 
-1. W Eksploratorze programu Visual Studio Code kliknij prawym przyciskiem myszy urządzenie usługi IoT Edge, który chcesz monitorować, a następnie wybierz **Rozpocznij monitorowania komunikatu D2C**. 
+1. W Eksploratorze programu Visual Studio Code kliknij prawym przyciskiem myszy urządzenie usługi IoT Edge, który chcesz monitorować, a następnie wybierz **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**. 
 
 2. Obejrzyj w oknie danych wyjściowych programu Visual Studio Code, aby wyświetlić komunikaty przychodzące w Twoim Centrum IoT hub. 
 

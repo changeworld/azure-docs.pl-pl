@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: e7ab2eba54aafda6bb00696939bf9bc32bb627ca
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5a2192c4555c2d84587ec8e39ce9ba94c985b541
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797006"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235835"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu <a href="../customization.md">niestandardowe w usłudze Translator</a>. Dodaj identyfikator kategorii z projektu niestandardowe w usłudze Translator do tego parametru, aby użyć wdrożonego systemu dostosowane. Wartość domyślna to: <code>general</code>.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu <a href="../customization.md">niestandardowe w usłudze Translator</a>. Dodaj identyfikator kategorii z niestandardowych w usłudze Translator <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projektu szczegóły</a> do tego parametru, aby używać Twojej wdrożonej dostosowane systemu. Wartość domyślna to: <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>

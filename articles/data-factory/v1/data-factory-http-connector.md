@@ -161,7 +161,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** zestawu danych musi być równa **Http**. | Yes |
-| relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ścieżka nie jest określona, używana jest tylko adres URL, który jest określony w definicji połączonej usługi. <br><br> Aby skonstruować dynamiczny adres URL, możesz użyć [funkcji usługi fabryka danych i zmiennych systemowych](data-factory-functions-variables.md). Przykład: **relativeUrl**: **$$Text.Format ("/ my/raportu? miesiąc = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nie |
+| relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ścieżka nie jest określona, używana jest tylko adres URL, który jest określony w definicji połączonej usługi. <br><br> Aby skonstruować dynamiczny adres URL, możesz użyć [funkcji usługi fabryka danych i zmiennych systemowych](data-factory-functions-variables.md). Przykład: **relativeUrl**: **$$Text.Format ("/ my/raportu? miesiąc = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)** . | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **UZYSKAĆ** i **WPIS**. | Nie <br />(wartość domyślna to **UZYSKAĆ**) |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
 | requestBody | Treść żądania HTTP. | Nie |

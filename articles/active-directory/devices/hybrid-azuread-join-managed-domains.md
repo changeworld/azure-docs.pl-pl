@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: e45b3b19821644142176c5c0cc7646c4643fe17c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962190"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235220"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych
 
@@ -178,7 +178,7 @@ Ponadto musisz włączyć opcję **Zezwalaj na aktualizacje na pasku stanu za po
 
 ### <a name="configure-seamless-sso"></a>Konfigurowanie bezproblemowego logowania jednokrotnego
 
-Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Jeśli masz problem ze skonfigurowaniem bezproblemowe logowanie Jednokrotne, zobacz artykuł [Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso).
+Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD urządzeń niższego poziomu z systemem Windows w domenie zarządzanej, w której jako metoda uwierzytelniania w chmurze używane jest uwierzytelnianie przekazywane lub synchronizacja skrótów haseł, należy również [skonfigurować bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Jeśli masz problem ze skonfigurowaniem bezproblemowe logowanie Jednokrotne, zobacz artykuł [Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu 
@@ -188,7 +188,7 @@ Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobr
 
 ## <a name="verify-the-registration"></a>Weryfikacja rejestracji
 
-Aby zweryfikować stan rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć polecenia cmdlet **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** w **[module Azure Active Directory programu PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Aby zweryfikować stan rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć polecenia cmdlet **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** w **[module Azure Active Directory programu PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0)** .
 
 W przypadku użycia polecenia cmdlet **Get-MSolDevice** w celu sprawdzenia szczegółów usługi:
 

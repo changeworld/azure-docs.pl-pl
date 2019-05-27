@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7b1e972b5516aa79d1754e32e487e17c9e68ac1d
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 437dc1fba2502602109483aa9d6f25b4265af26f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035425"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239893"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Wytyczne dotyczące implementacji odpowiada Personalizer
 
@@ -127,18 +127,14 @@ Dostępne są następujące obszary projektu odpowiada implementacji sztucznej I
 * Komunikują się wyraźnie użytkownikom jak używany Personalizer, do jakich celów i z jakich danych.
 * Archiwizowanie informacji i zasobów — takich jak modeli, zasady nauki i inne dane — Personalizer korzysta z funkcji, aby można było odtworzyć wyników.
 
-### <a name="transparency"></a>Jawność
-*Sztuczna Inteligencja systemów należy Understandable*. Za pomocą Personalizer
+### <a name="transparency"></a>Przezroczystości
+*Sztuczna Inteligencja systemów należy Understandable*. Za pomocą Personalizer:
 
-• Zapewniają użytkownikom dowiedzieć się, jak został spersonalizowany zawartości. Na przykład, możesz wyświetlić użytkowników przycisk o nazwie "Dlaczego te sugestie?" Wyświetlanie, które najważniejsze funkcje użytkownika i akcje odtwarzania roli w wynikach Personalizer.
-• Upewnij się, że warunków użytkowania upewnij Użyj wspomnieć, aby spersonalizować środowisko użyjesz informacje o użytkownikach i ich zachowania.
-
-
-* *Zapewnij użytkownikom dowiedzieć się, jak został spersonalizowany zawartości.* Na przykład, możesz wyświetlić użytkowników przycisku `Why These Suggestions?` przedstawiający, które najważniejsze funkcje użytkownika i działań numerach parzystych — roli personalizacji.
-* Upewnij się, że warunki użytkowania wspomnieć, aby spersonalizować środowisko użyjesz informacje o użytkownikach.
+* *Zapewnij użytkownikom dowiedzieć się, jak został spersonalizowany zawartości.* Na przykład, możesz wyświetlić użytkowników przycisku `Why These Suggestions?` przedstawiający, które najważniejsze funkcje użytkownika i akcje odtwarzania roli w wynikach Personalizer.
+* Upewnij się, warunków użytkowania upewnij Użyj wspomnieć, aby spersonalizować środowisko użyjesz informacje o użytkownikach i ich zachowania.
 
 ### <a name="fairness"></a>Sprawiedliwe
-* Systemy sztucznej Inteligencji powinien traktować wszystkie osoby uczciwą rywalizację.
+*Systemy sztucznej Inteligencji powinien traktować wszystkie osoby dość*.
 
 * Nie używaj Personalizer do zastosowań związanych wyniki długoterminowe, wtórne lub obejmują rzeczywistych uszkodzeń.
 * Nie korzystać z funkcji, które nie są odpowiednie do personalizacji zawartości przy użyciu lub, pomoc propagowane odchyleń niepożądane. Na przykład każda osoba mająca podobne sytuacji finansowej powinien zostać wyświetlony ten sam spersonalizowane zalecenia dotyczące produktów finansowych.

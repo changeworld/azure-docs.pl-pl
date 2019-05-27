@@ -1,19 +1,19 @@
 ---
-title: Samouczek dotyczący monitorowania i dostrajania w usłudze Azure Database for PostgreSQL
-description: W tym samouczku przedstawiono procedurę monitorowania i dostrajania w usłudze Azure Database for PostgreSQL.
+title: Samouczek dotyczący monitorowania i dostrajania w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym samouczku przedstawiono monitorowanie i dostrajanie w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: f05e0eef7680b08ce116cc0243d944f6a1db597c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091809"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073083"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Samouczek: monitorowanie i dostrajanie w usłudze Azure Database for PostgreSQL
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Samouczek: Monitorowania i dostrajania bazy danych Azure Database for PostgreSQL — pojedynczy serwer
 
 Usługa Azure Database for PostgreSQL zawiera funkcje, które pomagają zrozumieć i poprawić wydajność serwera. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -70,7 +70,7 @@ W widoku [Szczegółowe informacje o wydajności zapytań](concepts-query-perfor
 Uprawnienia **Właściciel** lub **Współautor** są wymagane do wyświetlania tekstu zapytań w widoku Szczegółowe informacje o wydajności zapytań. **Czytelnik** może wyświetlać wykresy i tabele, ale nie tekst zapytań.
 
 
-## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
+## <a name="performance-recommendations"></a>Zalecenie dotyczące wydajności
 Funkcja [Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) analizuje obciążenia na serwerze, aby zidentyfikować indeksy z potencjałem poprawy wydajności.
 
 1. Otwórz **Zalecenia dotyczące wydajności** w sekcji **Pomoc techniczna i rozwiązywanie problemów** paska menu na stronie serwera PostgreSQL w witrynie Azure Portal.

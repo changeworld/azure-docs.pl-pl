@@ -5,165 +5,140 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 5cfa07b1-a792-4f0a-8c6f-1a13142193d9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/14/2019
+ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: f39952c74006964155fd23920c85506cac13a878
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 34553c92f54992698a7e3930ac302ef970edd7c7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261942"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236724"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledge-anywhere-lms"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Knowledge Anywhere LMS
+# <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Samouczek: Integrowanie wiedzy dowolnym LMS za pomocą usługi Azure Active Directory
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację Knowledge Anywhere LMS z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji Knowledge Anywhere LMS z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować wiedzy gdziekolwiek LMS za pomocą usługi Azure Active Directory (Azure AD). W ramach wiedzy gdziekolwiek LMS integracji z usługą Azure AD, możesz wykonywać następujące czynności:
 
-* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Knowledge Anywhere LMS.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Knowledge Anywhere LMS (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do wiedzy gdziekolwiek systemu LMS.
+* Umożliwianie użytkownikom można automatycznie zalogowany wiedzy gdziekolwiek LMS za pomocą kont usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z aplikacją Knowledge Anywhere LMS, potrzebne są następujące elementy:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja aplikacji Knowledge Anywhere LMS z obsługą logowania jednokrotnego
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Wiedza gdziekolwiek LMS logowania jednokrotnego (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
-
-* Aplikacja Knowledge Anywhere LMS obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług i dostawcę tożsamości**
-* Aplikacja Knowledge Anywhere LMS obsługuje aprowizowanie użytkowników typu **Just In Time**
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje wiedzy gdziekolwiek LMS **SP** zainicjowane logowania jednokrotnego i obsługuje **Just In Time** Inicjowanie obsługi użytkowników.
 
 ## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>Dodawanie aplikacji Knowledge Anywhere LMS z galerii
 
 Aby skonfigurować integrację aplikacji Knowledge Anywhere LMS z usługą Azure AD, należy dodać aplikację Knowledge Anywhere LMS z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Knowledge Anywhere LMS z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **wiedzy gdziekolwiek LMS** w polu wyszukiwania.
+1. Wybierz **wiedzy gdziekolwiek LMS** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD z wiedzy gdziekolwiek LMS za pomocą użytkownika testu o nazwie **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w wiedzy gdziekolwiek LMS.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD z wiedzy gdziekolwiek LMS, wykonaj poniższe bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie wiedzy gdziekolwiek LMS](#configure-knowledge-anywhere-lms)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego wiedzy gdziekolwiek LMS](#create-knowledge-anywhere-lms-test-user)**  taki odpowiednik B. Simon w wiedzy gdziekolwiek LMS połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-4. W polu wyszukiwania wpisz ciąg **Knowledge Anywhere LMS**, wybierz pozycję **Knowledge Anywhere LMS** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+1. W [witryny Azure portal](https://portal.azure.com/)na **wiedzy gdziekolwiek LMS** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-     ![Aplikacja Knowledge Anywhere LMS na liście wyników](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w aplikacji Knowledge Anywhere LMS, korzystając z danych testowego użytkownika **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Knowledge Anywhere LMS.
+    1. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<CLIENTNAME>.knowledgeanywhere.com/`
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Knowledge Anywhere LMS, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
-
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Knowledge Anywhere LMS](#configure-knowledge-anywhere-lms-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji Knowledge Anywhere LMS](#create-knowledge-anywhere-lms-test-user)** — aby mieć w aplikacji Knowledge Anywhere LMS odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Knowledge Anywhere LMS, wykonaj następujące czynności:
-
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Knowledge Anywhere LMS** wybierz pozycję **Logowanie jednokrotne**.
-
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    ![Domena i adresy URL aplikacji Knowledge Anywhere LMS — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
-
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<CLIENTNAME>.knowledgeanywhere.com/`
-
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
+    1. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości, używając rzeczywistego identyfikatora i adresu URL odpowiedzi, co zostało opisane w dalszej części tego samouczka.
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    ![Domena i adresy URL aplikacji Knowledge Anywhere LMS — informacje dotyczące logowania jednokrotnego](common/metadata-upload-additional-signon.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<CLIENTNAME>.knowledgeanywhere.com/`
 
     > [!NOTE]
     > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Knowledge Anywhere LMS](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+   ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-7. W sekcji **Konfigurowanie aplikacji Knowledge Anywhere LMS** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+1. Na **Konfigurowanie wiedzy gdziekolwiek LMS** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="configure-knowledge-anywhere-lms"></a>Konfigurowanie wiedzy dowolnym LMS
 
-    b. Identyfikator usługi Azure AD
+1. Aby zautomatyzować konfigurację w ramach wiedzy gdziekolwiek LMS, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-    d. Adres URL wylogowywania
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
 
-### <a name="configure-knowledge-anywhere-lms-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Knowledge Anywhere LMS
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Instalatora wiedzy gdziekolwiek LMS** nastąpi bezpośrednie przekierowanie do aplikacji wiedzy gdziekolwiek systemu LMS. W tym miejscu podaj poświadczenia administratora do logowania się do wiedzy gdziekolwiek systemu LMS. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzuje kroki 3–7.
 
-1. W innym oknie przeglądarki otwórz portal administracyjny aplikacji Knowledge Anywhere LMS.
+    ![Konfiguracja instalacji](common/setup-sso.png)
 
-2. Wybierz kartę **Site** (Witryna).
+3. Jeśli chcesz ręcznie skonfigurować wiedzy gdziekolwiek LMS, Otwórz nowe okno przeglądarki sieci web i zaloguj się do witryny firmy wiedzy gdziekolwiek LMS jako administrator i wykonaj następujące czynności:
+
+4. Wybierz kartę **Site** (Witryna).
 
     ![Konfiguracja aplikacji Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
-3. Wybierz kartę **SAML Settings** (Ustawienia języka SAML).
+5. Wybierz kartę **SAML Settings** (Ustawienia języka SAML).
 
     ![Konfiguracja aplikacji Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
-4. Kliknij pozycję **Add New** (Dodaj nowe).
+6. Kliknij pozycję **Add New** (Dodaj nowe).
 
     ![Konfiguracja aplikacji Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
-5. Na stronie **Add/Update SAML Settings** (Dodawanie/aktualizowanie ustawień języka SAML), wykonaj następujące czynności:
+7. Na stronie **Add/Update SAML Settings** (Dodawanie/aktualizowanie ustawień języka SAML), wykonaj następujące czynności:
 
     ![Konfiguracja aplikacji Knowledge Anywhere LMS](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. Wprowadź nazwę dostawcy tożsamości zgodnie z wymaganiami organizacji. Na przykład:- `Azure`.
 
-    b. W polu tekstowym **IDP Entity ID** (Identyfikator jednostki dostawcy tożsamości) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+    b. W **identyfikator jednostki tożsamości** pola tekstowego, Wklej **usługi Azure AD identyfikator** wartości, które zostały skopiowane z witryny Azure portal.
 
-    c. W polu tekstowym **IDP URL** (Adres URL dostawcy tożsamości) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    c. W **adresu URL protokołu IDP** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
 
     d. Otwórz plik certyfikatu pobrany z witryny Azure Portal do Notatnika, skopiuj zawartość certyfikatu i wklej go w polu tekstowym **Certificate** (Certyfikat).
 
-    e. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość pola **Adres URL wylogowywania** skopiowaną z witryny Azure Portal.
+    e. W **adres URL wylogowania** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal.
 
     f. Wybierz pozycję **Main Site** (Witryna główna) z listy rozwijanej w polu **Domain** (Domena).
 
@@ -175,66 +150,43 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Knowledge 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Knowledge Anywhere LMS.
+W tej sekcji można udostępnić Simon B. do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do wiedzy gdziekolwiek systemu LMS.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Knowledge Anywhere LMS**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz pozycję **Knowledge Anywhere LMS**.
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz pozycję **Knowledge Anywhere LMS**.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Link do aplikacji Knowledge Anywhere LMS na liście aplikacji](common/all-applications.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-knowledge-anywhere-lms-test-user"></a>Tworzenie użytkownika testowego aplikacji Knowledge Anywhere LMS
 
-W tej sekcji w aplikacji Knowledge Anywhere LMS jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Knowledge Anywhere LMS obsługuje aprowizację użytkowników typu „just in time”, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Knowledge Anywhere LMS, zostanie utworzony po uwierzytelnieniu.
+W tej sekcji użytkownika o nazwie B. Simon jest tworzony w wiedzy gdziekolwiek systemu LMS. Aplikacja Knowledge Anywhere LMS obsługuje aprowizację użytkowników typu „just in time”, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Knowledge Anywhere LMS, zostanie utworzony po uwierzytelnieniu.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Test SSO
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Po wybraniu kafelka wiedzy gdziekolwiek LMS w panelu dostępu, możesz powinny być automatycznie zalogowany do wiedzy gdziekolwiek systemu LMS dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-Po kliknięciu kafelka Knowledge Anywhere LMS na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Knowledge Anywhere LMS, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
-
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

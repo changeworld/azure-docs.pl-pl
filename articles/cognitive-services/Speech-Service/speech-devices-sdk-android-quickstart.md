@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: d5af2bb61eeb986f02a31d45ff9236ecc0c8427e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026197"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234525"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Szybki start: Uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Android
 
-W tym przewodniku Szybki Start dowiesz się, jak używać zestawu Speech Devices SDK dla systemu Android do tworzenia produktu z funkcją mowy.
+W tym przewodniku Szybki Start dowiesz się, jak używać zestawu Speech Devices SDK dla systemu Android do tworzenia produktu z funkcją mowy, lub użyj go jako [transkrypcji konwersacji](conversation-transcription-service.md) urządzenia.
 
 Ten przewodnik wymaga [usług Azure Cognitive Services](get-started.md) konta z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
@@ -33,9 +33,11 @@ Przed rozpoczęciem przy użyciu zestawu Speech Devices SDK, musisz:
 
 * Pobierz najnowszą wersję [zestawu Speech Devices SDK](https://aka.ms/sdsdk-download)i Wyodrębnij plik zip do katalogu roboczego.
    > [!NOTE]
-   > Plik zip zawiera Android przykładową aplikację.
+   > Plik przykładowy-Android-Release.zip zawiera Android przykładową aplikację i ten przewodnik Szybki Start założono, że aplikacja jest wyodrębniany do C:\SDSDK\Android-Sample-Release
 
 * Aby uzyskać [klucz subskrypcji platformy Azure dla usług przetwarzania mowy](get-started.md)
+
+* Jeśli planujesz używać transkrypcji konwersacji należy użyć [cykliczne mikrofonu urządzenia](get-speech-devices-sdk.md) i usługa jest obecnie dostępna tylko dla "en US" i "zh-CN" w regionach, "centralus" i "Azja Wschodnia". Musi mieć klucz mowy w jednym z tych regionów, aby użyć transkrypcji konwersacji.
 
 * Jeśli planujesz używać usług przetwarzania mowy do identyfikowania intencji (lub akcji) z wypowiedzi użytkowników, musisz [usługa interpretacji języka (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subskrypcji. Aby dowiedzieć się więcej na temat usługi LUIS i rozpoznawanie intencji, zobacz [rozpoznać intencje mowy z użyciem usługi LUIS, C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
@@ -82,16 +84,23 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
 
 1. Dodaj klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
 
-   Kluczy i informacje o aplikacji przejdź w następujących wierszach w pliku źródłowym MainActivity.java:
+   Dla funkcji rozpoznawania mowy i LUIS informacji przechodzi do MainActivity.java:
 
    ```java
-   // Subscription
-   private static final String SpeechSubscriptionKey = "[your speech key]";
-   private static final String SpeechRegion = "westus";
-   private static final String LuisSubscriptionKey = "[your LUIS key]";
-   private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
-   private static final String LuisAppId = "[your LUIS app ID]"
+    // Subscription
+    private static String SpeechSubscriptionKey = "<enter your subscription info here>";
+    private static String SpeechRegion = "westus"; // You can change this if your speech region is different.
+    private static String LuisSubscriptionKey = "<enter your subscription info here>";
+    private static String LuisRegion = "westus2"; // you can change this, if you want to test the intent, and your LUIS region is different.
+    private static String LuisAppId = "<enter your LUIS AppId>";
    ```
+
+    Jeśli używasz konwersacji transkrypcja mowy informacji klucza i region są również potrzebne w conversation.java:
+
+   ```java
+    private static final String CTSKey = "<Conversation Transcription Service Key>";
+    private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
+    ```
 
 1. Aktywujące domyślne (słowo kluczowe) jest "Computer". Można też spróbować jednego z innych podane wake słów, takich jak "Maszyna" lub "Asystent". Pliki zasobów dla tych słów alternatywne wznawiania znajdują się w zestawu Speech Devices SDK, na w tym folderze — słowo kluczowe. Na przykład C:\SDSDK\Android-Sample-Release\keyword\Computer zawiera pliki, używany do wznawiania wyraz "Komputer".
 
@@ -126,7 +135,7 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
    |||Dla liniowych deweloperski, który używa mikrofonu wszystkich: `Linear4`|
    |||Dla zestawu SDK do dev liniowy, który używa dwóch mikrofonu: `Linear2`|
 
-1. Aby skompilować aplikację, na **Uruchom** menu, wybierz opcję **Uruchom "aplikację"**. **Wybierz cel wdrożenia** pojawi się okno dialogowe.
+1. Aby skompilować aplikację, na **Uruchom** menu, wybierz opcję **Uruchom "aplikację"** . **Wybierz cel wdrożenia** pojawi się okno dialogowe.
 
 1. Wybierz urządzenie, a następnie wybierz **OK** wdrożyć aplikację na urządzeniu.
 
@@ -135,6 +144,10 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
 1. Przykładowa aplikacja zestawu Speech Devices SDK rozpoczyna się i wyświetla następujące opcje:
 
    ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/qsg-8.png)
+
+1. Nowo dodane jest pokaz transkrypcji konwersacji. Rozpocznij przepisywania z Rozpoczynanie sesji. Domyślnie wszyscy jest Gość, jednak w przypadku podpisów głosu uczestnika one można umieścić w /video/participants.properties pliku na urządzeniu. Do generowania głosu podpisu przyjrzeć [transkrypcja rozmów (SDK)](how-to-use-conversation-transcription-service.md).
+
+   ![Pokaz transkrypcji konwersacji aplikacji](media/speech-devices-sdk/qsg-15.png)
 
 1. Eksperyment!
 

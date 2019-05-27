@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 31992a08c1b6c4fda4053032458879661fe2b740
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015420"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233762"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej na potrzeby dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure Active Directory
 
@@ -51,9 +51,9 @@ Aby zapewnić wysoką dostępność w środowisku produkcyjnym, zalecamy użycie
 
 2. Serwer łącznika i serwerów aplikacji sieci web powinna należeć do tej samej domeny usługi Active Directory lub span domenach ufających. Posiadających serwery w tej samej domenie lub domenach ufających jest wymaganie dotyczące korzystania z logowania jednokrotnego (SSO) przy użyciu zintegrowanego Windows Authentication (Zintegrowane) i delegowanie ograniczone protokołu Kerberos (KCD). Jeśli serwer łącznika znajduje się w innej domenie usługi Active Directory niż serwery aplikacji internetowych, korzystanie z logowania jednokrotnego wymaga użycia delegowania opartego na zasobach. Aby uzyskać więcej informacji, zobacz [KCD for single sign-on with Application Proxy (Ograniczone delegowanie Kerberos dla logowania jednokrotnego przy użyciu serwera proxy aplikacji)](application-proxy-configure-single-sign-on-with-kcd.md).
 
-#### <a name="software-requirements"></a>Wymagania dotyczące oprogramowania
+#### <a name="tls-requirements"></a>Wymaganiami dotyczącymi protokołu TLS
 
-Przed zainstalowaniem łącznika serwera proxy aplikacji na serwerze łącznika systemu Windows należy włączyć protokół TLS 1.2. Istniejące łączniki w wersjach starszych niż 1.5.612.0 aktualnie obsługują wcześniejsze wersje protokołu TLS. 
+Przed zainstalowaniem łącznika serwera proxy aplikacji na serwerze łącznika systemu Windows należy włączyć protokół TLS 1.2.
 
 Aby włączyć protokół TLS 1.2:
 
@@ -67,6 +67,9 @@ Aby włączyć protokół TLS 1.2:
     ```
 
 2. Uruchom ponownie serwer.
+
+>[!Important] 
+> Aby zapewnić najlepsze w swojej klasie szyfrowanie dla naszych klientów, firma Microsoft wprowadza aktualizacji do usługi serwera Proxy aplikacji, aby ograniczyć dostęp do tylko protokoły TLS 1.2. Oparte na gotowość klienta, które zmiany będzie stopniowo wdrażana do klientów, którzy są tylko przy użyciu protokołów TLS 1.2 i nie będą widzieć żadnego wpływu ta zmiana. Protokół TLS 1.0 i 1.1 wycofywania zakończy się na 31 sierpnia 2019 r, a klienci otrzymają wyprzedzeniem, aby przygotować się do tej zmiany. Aby przygotować się do tej zmiany upewnij się, że, wszystkie kombinacje klient serwer i serwer przeglądarki są aktualizowane zachować połączenie z usługą serwera Proxy aplikacji za pomocą protokołu TLS 1.2. Dotyczy to klientów, których użytkownicy korzystają z dostępu do aplikacji opublikowanych przez serwer Proxy aplikacji. Zobacz Przygotowanie do [protokołu TLS 1.2 w usłudze Office 365](https://docs.microsoft.com/en-us/office365/troubleshoot/prepare-tls-1.2-in-office-365) przydatne dane i zasoby.
 
 ## <a name="prepare-your-on-premises-environment"></a>Przygotowywanie środowiska lokalnego
 
@@ -89,7 +92,7 @@ Masz starszą wersję łącznika zainstalowane, jeśli już używasz serwera Pro
 
 Zezwól na dostęp do następujących adresów URL:
 
-| Adres URL | Zastosowanie |
+| URL | Zastosowanie |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Platforma Azure używa tych adresów URL, aby zweryfikować certyfikaty. |

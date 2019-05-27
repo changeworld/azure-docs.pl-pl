@@ -1,7 +1,7 @@
 ---
 title: Pulpit nawigacyjny — interpretacji języka
 titleSuffix: Azure Cognitive Services
-description: Napraw intencji za pomocą analizy pulpit nawigacyjny podsumowania, wizualizowany narzędziu do raportowania.
+description: Napraw intencji z pulpitem nawigacyjnym analizy wizualizowany narzędziu do raportowania.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a518a697369ff74689a0c4ac05af96453b6a5ca4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072459"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236943"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Jak korzystać z pulpitu nawigacyjnego na ulepszenie aplikacji
 
-Znajdowanie i rozwiązywanie problemów z opcjami aplikacji przeszkolonych, korzystając z wypowiedzi przykład. Pulpit nawigacyjny podsumowania przedstawia ogólne informacje o aplikacji, przy użyciu światła intencji, które powinny zostać usunięte. 
+Znajdowanie i rozwiązywanie problemów z opcjami aplikacji przeszkolonych, korzystając z wypowiedzi przykład. Pulpit nawigacyjny wyświetla ogólne informacje o aplikacji, przy użyciu światła intencji, które powinny zostać usunięte. 
 
 Przejrzyj pulpit nawigacyjny analizy jest procesem iteracyjnym, powtarzany zmiany i poprawy modelu.
 
@@ -33,16 +33,16 @@ Dostępne są następujące trzy problemy, które zostały rozwiązane w pulpici
 |Problem|Kolor wykresu|Wyjaśnienie|
 |--|--|--|
 |Brak równowagi danych|-|Dzieje się tak, gdy ilość wypowiedzi przykład różni się znacznie. Wszystkie opcje, które muszą mieć _około_ taką samą liczbę wypowiedzi przykład — z wyjątkiem sytuacji żadne intencji. 10-15% całkowitej ilości wypowiedzi powinien mieć tylko w aplikacji.<br><br> Jeśli dane są imbalanced, ale intencji dokładność przekracza określony próg, to nierównowagi nie został zgłoszony jako problem.<br><br>**Rozpocznij z tym problemem — może być przyczyny inne problemy.**|
-|Prognozy niejasny|Orange|Ten błąd występuje podczas najważniejsze intencji i dalej intencji wyniki są na tyle bliskie, że może Przerzuć na szkolenie dalej w ze względu na [ujemna próbkowania](luis-how-to-train.md#train-with-all-data) lub więcej wypowiedzi przykładzie dodano na intencje. |
+|Prognozy niejasny|Pomarańczowy|Ten błąd występuje podczas najważniejsze intencji i dalej intencji wyniki są na tyle bliskie, że może Przerzuć na szkolenie dalej w ze względu na [ujemna próbkowania](luis-how-to-train.md#train-with-all-data) lub więcej wypowiedzi przykładzie dodano na intencje. |
 |Niepoprawne prognozy|Czerwony|Dzieje się tak, gdy nie przewiduje się wypowiedź przykład dla oznaczonych intencji (przeznaczenie, w którym się).|
 
 Poprawne prognozy są reprezentowane przez kolor niebieski.
 
-Pulpit nawigacyjny podsumowania przedstawia te problemy i informujący o tym, intencji, które ma wpływ i sugeruje, co należy zrobić, aby udoskonalać aplikację. 
+Pulpit nawigacyjny przedstawia te problemy i informujący o tym, intencji, które ma wpływ i sugeruje, co należy zrobić, aby udoskonalać aplikację. 
 
 ## <a name="before-app-is-trained"></a>Zanim skonfigurowanych pod kątem aplikacji 
 
-Przed uczyć się aplikacja, pulpit nawigacyjny podsumowania nie zawiera żadnych sugestie dotyczące poprawki. Szkolenie aplikację, aby wyświetlić te sugestie.  
+Przed uczyć się aplikacja, pulpit nawigacyjny zawiera wszelkie sugestie dotyczące poprawki. Szkolenie aplikację, aby wyświetlić te sugestie.  
 
 ## <a name="check-your-publishing-status"></a>Sprawdź stan publikowania
 
@@ -50,7 +50,7 @@ Przed uczyć się aplikacja, pulpit nawigacyjny podsumowania nie zawiera żadnyc
 
 Sprawdź, czy wersja aktywna jest wersję, którą chcesz naprawić. 
 
-![Pulpit nawigacyjny podsumowania przedstawia aplikacji usług zewnętrznych, opublikowane regionów i zagregowane trafienia punktu końcowego.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![Aplikacja przedstawiono pulpitu nawigacyjnego usług zewnętrznych, opublikowane regionów i zagregowane trafienia punktu końcowego.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
 To również pokazuje wszelkie usług zewnętrznych, opublikowanych regionów i zagregowane trafienia punktu końcowego. 
 
@@ -96,7 +96,7 @@ Rozpocznij z tym problemem — może być przyczyny inne problemy.
 
 * Dodawanie wypowiedzi więcej do intencji, a następnie szkolenie ponownie. 
 
-Nie należy dodawać wypowiedzi intencji None, chyba że, jest zalecane na pulpicie nawigacyjnym podsumowania.
+Nie należy dodawać wypowiedzi intencji None, chyba że, jest zalecane na pulpicie nawigacyjnym.
 
 > [!Tip]
 > Użyj trzecia sekcja na stronie **wypowiedzi na intencje** z **wypowiedzi (numer)** ustawienie jako szybki przewodnik wizualny po których intencji potrzebujesz więcej wypowiedzi.  

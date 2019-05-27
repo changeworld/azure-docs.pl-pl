@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f712cc34a3d41ea9472bf9428606cb378eef8c18
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413673"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244261"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Samouczek: Używanie flag funkcji w aplikacji platformy .NET Core
 
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Jeśli używasz filtru flagi funkcji należy uwzględnić dodatkowe biblioteki i zarejestruj go. Poniższy przykład pokazuje, jak zastosować filtr wbudowanej funkcji o nazwie **PercentageFilter "**.
+Jeśli używasz filtru flagi funkcji należy uwzględnić dodatkowe biblioteki i zarejestruj go. Poniższy przykład pokazuje, jak zastosować filtr wbudowanej funkcji o nazwie **PercentageFilter "** .
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -262,6 +262,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 W tym samouczku przedstawiono sposób wdrożyć flagi funkcji w aplikacji ASP.NET Core przy użyciu `Microsoft.FeatureManagement` bibliotek. Zobacz następujące zasoby, aby uzyskać więcej informacji dotyczących obsługi różnych funkcji zarządzania w ASP.NET Core i konfiguracji aplikacji.
 
-* [Flagi funkcji platformy ASP.NET Core przykładowego kodu]()
-* [Dokumentacja Microsoft.FeatureManagement]()
+* [Flagi funkcji platformy ASP.NET Core przykładowego kodu](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Dokumentacja Microsoft.FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Zarządzanie flagami funkcji](./manage-feature-flags.md)

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 93910fd0baeace9da474073960dbdb83251a1a63
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee64e5a49bf2825c83c74167d7eb75aa3dc59387
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576558"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239815"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Tworzenie modułu C IoT Edge dla urządzeń Windows
 
@@ -65,7 +65,7 @@ Utwórz szablon rozwiązania języka C, który można dostosować przy użyciu w
 
 2. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**. 
 
-3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania do opisu coś podobnego **CTutorialApp**. Wybierz przycisk **OK**, aby utworzyć projekt. 
+3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania do opisu coś podobnego **CTutorialApp**. Wybierz **OK** do tworzenia projektu. 
 
    ![Utwórz nowy projekt usługi Azure IoT Edge](./media/tutorial-c-module-windows/new-project.png)
 
@@ -326,7 +326,7 @@ Rozszerzenie IoT Edge narzędzia służy do wyświetlania wiadomości przychodz�
 
 1. W programie cloud explorer programu Visual Studio wybierz nazwę urządzenia usługi IoT Edge. 
 
-2. W **akcje** listy wybierz **Rozpocznij monitorowania komunikatu D2C**. 
+2. W **akcje** listy wybierz **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**. 
 
 3. Wyświetl wiadomości otrzymywanych z usługi IoT Hub. Może potrwać trochę wiadomości zostanie dostarczona, ponieważ urządzenia usługi IoT Edge do odbierania jego nowego wdrożenia i uruchamiania wszystkich modułów. Następnie zmiany wprowadzone do kodu CModule poczekaj, aż temperatury maszyny osiągnie 25 stopni przed wysłaniem wiadomości. Typ komunikatu dodaje także **alertu** na wszystkie komunikaty, w których progu temperatury. 
 

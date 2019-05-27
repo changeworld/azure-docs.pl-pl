@@ -4,14 +4,14 @@ description: Dowiedz się, jak skonfigurować zasady kontroli dostępu IP obsłu
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 24ebc7eb4c9abc72a89419611e4b4b3fa2db88b4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068715"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241962"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurowanie zapory adresów IP w usłudze Azure Cosmos DB
 
@@ -36,11 +36,11 @@ Po włączeniu kontroli dostępu IP witryny Azure portal zapewnia możliwość o
 
 Po włączeniu zasady kontroli dostępu IP programowo, należy dodać adres IP dla portalu Azure w celu **ipRangeFilter** właściwości, aby zachować dostęp. Portal adresy IP są:
 
-|Region|Adres IP|
+|Obszar|Adres IP|
 |------|----------|
 |Niemcy|51.4.229.218|
 |Chiny|139.217.8.252|
-|Rząd USA|52.244.48.71|
+|US Gov|52.244.48.71|
 |Inne regiony|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Aby umożliwić dostęp do witryny Azure portal, wybierając **zezwolić na dostęp z witryny Azure portal** opcji, jak pokazano na poniższym zrzucie ekranu: 
@@ -176,7 +176,7 @@ Sposoby rozwiązywania problemów przy użyciu zasad kontroli dostępu IP, korzy
 ### <a name="azure-portal"></a>Azure Portal 
 Po włączeniu zasady kontroli dostępu IP dla swojego konta usługi Azure Cosmos DB możesz zablokować wszystkie żądania do Twojego konta z maszyn spoza listy dozwolonych zakresów adresów IP. Aby włączyć portal operacje płaszczyzny danych, takie jak przeglądanie kontenerów i wykonywanie zapytań względem dokumentów, musisz jawnie zezwolić na dostęp do portalu Azure za pomocą **zapory** okienku w portalu.
 
-### <a name="sdks"></a>Zestawy SDK 
+### <a name="sdks"></a>SDK 
 Jeśli uzyskujesz dostęp do zasobów usługi Azure Cosmos DB przy użyciu zestawów SDK z komputerów, które nie są na liście dozwolonych ogólnego **403 Zabroniony** odpowiedzi jest zwracany za pomocą dodatkowych szczegółów. Sprawdź listy dozwolonych adresów IP dla swojego konta, a następnie upewnij się, że konfiguracja prawidłowe zasady jest stosowana do swojego konta usługi Azure Cosmos DB. 
 
 ### <a name="source-ips-in-blocked-requests"></a>Źródłowe adresy IP w zablokowane żądania

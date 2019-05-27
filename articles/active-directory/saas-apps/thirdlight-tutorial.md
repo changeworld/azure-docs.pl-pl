@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą ThirdLight | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ThirdLight.
+description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ThirdLight.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,218 +15,219 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: caee6bad1b944b6d1396ea2e26f163629b3c444f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 67c8dcfffd78d4c0114a96622235d6548627fa92
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888769"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ThirdLight
 
-W tym samouczku dowiesz się, jak zintegrować ThirdLight w usłudze Azure Active Directory (Azure AD).
-Integrowanie ThirdLight z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować ThirdLight w usłudze Azure Active Directory (Azure AD). Ta integracja zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do ThirdLight.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do ThirdLight (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do ThirdLight.
+* Aby umożliwić użytkownikom automatyczne logowanie do ThirdLight (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli chcesz dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [logowanie jednokrotne do aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą ThirdLight, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą ThirdLight, musisz mieć:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* ThirdLight logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja ThirdLight, która ma logowanie jednokrotne włączone.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
 
-* Obsługuje ThirdLight **SP** jednokrotne logowanie inicjowane przez
+* ThirdLight obsługuje logowanie Jednokrotne zainicjowane przez SP.
 
-## <a name="adding-thirdlight-from-the-gallery"></a>Dodawanie ThirdLight z galerii
+## <a name="add-thirdlight-from-the-gallery"></a>Dodaj ThirdLight z galerii
 
 Aby skonfigurować integrację ThirdLight w usłudze Azure AD, należy dodać ThirdLight z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać ThirdLight z galerii, wykonaj następujące czynności:**
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+    ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Wybierz nową aplikację](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **ThirdLight**, wybierz opcję **ThirdLight** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź **ThirdLight**. Wybierz **ThirdLight** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
 
-     ![ThirdLight na liście wyników](common/search-new-app.png)
+     ![Wyniki wyszukiwania](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą ThirdLight w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w ThirdLight musi zostać ustanowione.
+W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne za pomocą ThirdLight przy użyciu użytkownika testu o nazwie Britta Simon.
+Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w ThirdLight.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą ThirdLight, należy wykonać poniższe bloki konstrukcyjne:
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą ThirdLight, należy wykonać następujące czynności:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie ThirdLight logowania jednokrotnego](#configure-thirdlight-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego ThirdLight](#create-thirdlight-test-user)**  — aby odpowiednikiem Britta Simon w ThirdLight połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
+2. **[Konfigurowanie ThirdLight logowania jednokrotnego](#configure-thirdlight-single-sign-on)**  na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
+5. **[Tworzenie użytkownika testowego ThirdLight](#create-a-thirdlight-test-user)**  połączony na reprezentację w postaci usługi Azure AD użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
 
 Aby skonfigurować usługę Azure AD logowanie jednokrotne z ThirdLight, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **ThirdLight** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/), na stronie ThirdLight integracji aplikacji wybierz **logowanie jednokrotne**:
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+    ![Ikona edycji](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+4. W **podstawową konfigurację protokołu SAML** okna dialogowego pole, wykonaj następujące czynności.
 
-    ![ThirdLight domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![Podstawowy plik konfiguracji SAML, okno dialogowe](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.thirdlight.com/`
+    1. W **adres URL logowania** wprowadź adres URL, w tym wzorcu:
+    
+          `https://<subdomain>.thirdlight.com/`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.thirdlight.com/saml/sp`
+    1. W **identyfikator jednostki** wprowadź adres URL, w tym wzorcu:
 
-    > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta ThirdLight](https://www.thirdlight.com/support) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+       `https://<subdomain>.thirdlight.com/saml/sp`
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+       > [!NOTE]
+       > Te wartości symboli zastępczych. Należy użyć rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej ThirdLight](https://www.thirdlight.com/support) można pobrać wartości. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okno dialogowe, w witrynie Azure portal.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+5. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **Pobierz** łącze obok **XML metadanych Federacji** , zgodnie z wymaganiami i Zapisz plik na komputerze:
 
-6. Na **Konfigurowanie ThirdLight** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+6. W **Konfigurowanie ThirdLight** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań:
 
-    a. Adres URL logowania
+    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
 
-    b. Identyfikator usługi Azure AD
+    1. **Adres URL logowania**.
 
-    c. Adres URL wylogowywania
+    1. **Usługa Azure AD identyfikator**.
 
-### <a name="configure-thirdlight-single-sign-on"></a>Konfigurowanie ThirdLight logowanie jednokrotne
+    1. **Adres URL wylogowania**.
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy ThirdLight jako administrator.
+### <a name="configure-thirdlight-single-sign-on"></a>Konfigurowanie ThirdLight logowania jednokrotnego
 
-1. Przejdź do **konfiguracji \> administrowania systemem**, a następnie kliknij przycisk **SAML2**.
+1. W nowym oknie przeglądarki internetowej Zaloguj się do witryny firmy ThirdLight jako administrator.
+
+1. Przejdź do **konfiguracji** > **administrowania systemem** > **SAML2**:
 
     ![Administrowanie systemem](./media/thirdlight-tutorial/ic805843.png "Administracja systemu")
 
-1. W sekcji konfiguracji SAML2 wykonaj następujące czynności:
+1. W sekcji konfiguracji SAML2 wykonaj następujące kroki.
   
-    ![SAML logowania jednokrotnego](./media/thirdlight-tutorial/ic805844.png "SAML logowania jednokrotnego")
+    ![Sekcja konfiguracji SAML2](./media/thirdlight-tutorial/ic805844.png "SAML2 sekcji konfiguracji")
 
-    a. Wybierz **Włącz SAML2 logowania jednokrotnego**.
+    1. Wybierz **Włącz SAML2 logowania jednokrotnego**.
 
-    b. Jako **źródło metadanych tożsamości**, wybierz opcję **Load Metadata dostawcy tożsamości z pliku XML**.
+    1. W obszarze **źródło metadanych tożsamości**, wybierz opcję **Load Metadata dostawcy tożsamości z pliku XML**.
 
-    c. Otwórz plik metadanych pobranych z witryny Azure portal, skopiuj zawartość, a następnie wklej go do **XML metadanych dostawcy tożsamości** pola tekstowego.
+    1. Otwórz plik metadanych, który został pobrany z witryny Azure portal w poprzedniej sekcji. Skopiuj zawartość pliku i wklej go do **XML metadanych dostawcy tożsamości** pole.
 
-    d. Kliknij przycisk **ustawień zapisywanie SAML2**.
+    1. Wybierz **ustawień zapisywanie SAML2**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części okna:
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
+    ![Wybierz nowego użytkownika](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład BrittaSimon@contoso.com.
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >** . (Na przykład BrittaSimon@contoso.com.)
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ThirdLight.
+W tej sekcji można udostępnić Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej ThirdLight.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **ThirdLight**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **ThirdLight**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **ThirdLight**.
 
-    ![Link ThirdLight na liście aplikacji](common/all-applications.png)
+    ![Lista aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+3. W okienku po lewej stronie wybierz **użytkowników i grup**:
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+    ![Wybieranie pozycji Dodaj użytkownika](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu okna.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu okna.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
-### <a name="create-thirdlight-test-user"></a>Tworzenie użytkownika testowego ThirdLight
+### <a name="create-a-thirdlight-test-user"></a>Tworzenie użytkownika testowego ThirdLight
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ThirdLight, musi być obsługiwana w ThirdLight.  
-W przypadku ThirdLight Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ThirdLight, należy dodać je do ThirdLight. Należy je dodać ręcznie.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+Aby utworzyć konto użytkownika, wykonaj następujące czynności:
 
-1. Zaloguj się do Twojej **ThirdLight** witryny firmy jako administrator.
+1. Zaloguj się do witryny firmy ThirdLight jako administrator.
 
 1. Przejdź do **użytkowników** kartę.
 
 1. Wybierz **użytkowników i grup**.
 
-1. Kliknij przycisk **Dodaj nowego użytkownika** przycisku.
+1. Wybierz **Dodaj nowego użytkownika**.
 
-1. Wprowadź **nazwy użytkownika, nazwa lub opis, adres E-mail, wybierz ustawienie wstępne lub grupy nowych członków** poprawnego konta usługi AAD do aprowizowania.
+1. Wprowadź nazwę użytkownika, nazwę i opis i adres e-mail prawidłowy, usługa Azure AD konta chcesz aprowizować. Wybierz ustawienie wstępne lub grupy nowych elementów członkowskich.
 
-1. Kliknij pozycję **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych Thirdlight użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Thirdlight do aprowizacji kont użytkowników usługi AAD.
+> Można użyć dowolnego narzędzia tworzenia konta użytkownika lub interfejsów API dostarczonych przez ThirdLight można uaktywniać ich konta usługi Azure AD.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
 
-Po kliknięciu kafelka ThirdLight w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze ThirdLight, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka ThirdLight w panelu dostępu użytkownik powinien automatyczne logowanie do wystąpienia ThirdLight, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2694d0f22acfb34c07220ad0145b933457961931
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575938"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239656"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Samouczek: Wdrażanie funkcji platformy Azure jako modułów usługi IoT Edge
 
@@ -71,7 +71,7 @@ Tworzenie C# szablon rozwiązania funkcji, który można dostosować przy użyci
    | ----- | ----- |
    | Wybierz folder | Wybierz lokalizację na maszynie deweloperskiej dla programu VS Code, aby utworzyć pliki rozwiązania. |
    | Podaj nazwę rozwiązania | Wprowadź opisową nazwę rozwiązania, na przykład **FunctionSolution**, lub zaakceptuj nazwę domyślną. |
-   | Wybierz szablon modułu | Wybierz pozycję **Azure Functions — C#**. |
+   | Wybierz szablon modułu | Wybierz pozycję **Azure Functions — C#** . |
    | Podaj nazwę modułu | Nadaj modułowi nazwę **CSharpFunction**. |
    | Podaj repozytorium obrazów platformy Docker dla modułu | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany w ostatnim kroku. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Serwer logowania możesz pobrać ze strony Przegląd rejestru kontenerów w witrynie Azure Portal. Ostateczny ciąg będzie wyglądał następująco: \<nazwa rejestru\>.azurecr.io/CSharpFunction. |
 
@@ -178,7 +178,7 @@ W poprzedniej sekcji utworzono rozwiązanie usługi IoT Edge i dodano kod do mod
 
 W tej sekcji dwa razy podasz poświadczenia dla rejestru kontenerów. Za pierwszym razem ma to na celu zalogowanie się lokalnie z maszyny deweloperskiej, aby program Visual Studio Code mógł wypchnąć obrazy do rejestru. Za drugim razem ma to miejsce w pliku **.env** rozwiązania usługi IoT Edge, co zapewnia urządzeniu usługi IoT Edge uprawnienia do ściągania obrazów z rejestru. 
 
-1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Terminal**. 
+1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)**  > **Terminal**. 
 
 2. Zaloguj się do rejestru kontenerów, wprowadzając następujące polecenie w zintegrowanym terminalu. Użyj nazwy użytkownika i serwera logowania skopiowanych wcześniej z rejestru kontenerów platformy Azure.
      
@@ -222,12 +222,11 @@ Do wdrożenia modułu funkcji na urządzeniu usługi IoT Edge możesz użyć wit
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-Aby wyświetlać wszystkie komunikaty otrzymywane przez centrum IoT Hub, uruchom polecenie **Azure IoT Hub: Start Monitoring D2C Message** (Azure IoT Hub: rozpocznij monitorowanie komunikatu D2C) w palecie poleceń.
+Aby wyświetlać wszystkie komunikaty otrzymywane przez centrum IoT Hub, uruchom polecenie **Azure IoT Hub: Rozpocznij monitorowanie wbudowany punkt końcowy w zdarzeń** w palecie poleceń.
 
-Możesz również filtrować widok, aby wyświetlać wszystkie komunikaty przychodzące do centrum IoT Hub z określonego urządzenia. Kliknij prawym przyciskiem myszy urządzenie w sekcji **Urządzenia usługi Azure IoT Hub** i wybierz polecenie **Rozpocznij monitorowanie komunikatów D2C**.
+Możesz również filtrować widok, aby wyświetlać wszystkie komunikaty przychodzące do centrum IoT Hub z określonego urządzenia. Kliknij prawym przyciskiem myszy urządzenie w **Azure IoT Hub Devices** i wybierz pozycję **rozpocząć monitorowanie wbudowany zdarzeń punkt końcowy**.
 
-Aby zatrzymać monitorowanie komunikatów, uruchom polecenie **Azure IoT Hub: Stop monitoring D2C message** (Azure IoT Hub: zatrzymaj monitorowanie komunikatu D2C) w palecie poleceń. 
-
+Aby zatrzymać monitorowanie komunikatów, uruchom polecenie **Azure IoT Hub: Zatrzymaj monitorowanie wbudowany punkt końcowy w zdarzeń** w palecie poleceń. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -245,4 +244,3 @@ Kontynuuj pracę z kolejnymi samouczkami, aby dowiedzieć się o innych metodach
 
 > [!div class="nextstepaction"]
 > [Znajdowanie średnich przy użyciu okna ruchomego w usłudze Azure Stream Analytics](tutorial-deploy-stream-analytics.md)
-

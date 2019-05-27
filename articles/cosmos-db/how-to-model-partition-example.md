@@ -1,18 +1,17 @@
 ---
 title: Jak model i partycji danych w usłudze Azure Cosmos DB przy użyciu przykładu rzeczywistych
 description: Dowiedz się, jak model i partycji stanowi przykład rzeczywistych za pomocą usługi Azure Cosmos DB podstawowy interfejs API
-author: rockboyfor
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 03/27/2019
-ms.date: 04/15/2019
-ms.author: v-yeche
-ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/23/2019
+ms.author: thweiss
+ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61057489"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241002"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model i partycji danych w usłudze Azure Cosmos DB przy użyciu przykładu rzeczywistych
 
@@ -141,7 +140,7 @@ Podczas pobierania użytkownika jest wykonywane, czytając odpowiedni element z 
 
 ### <a name="c2-createedit-a-post"></a>[C2] Utwórz/Edytuj wpis
 
-Podobnie jak **[C1]**, mamy po prostu zapisać `posts` kontenera.
+Podobnie jak **[C1]** , mamy po prostu zapisać `posts` kontenera.
 
 ![Zapisywanie pojedynczy element do kontenera wpisów](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -200,7 +199,7 @@ Mimo że główne zapytanie filtrować kontenera klucza partycji, agregowania na
 
 ### <a name="c4-like-a-post"></a>[C4] Podobnie jak wpis
 
-Podobnie jak w przypadku **[C3]**, utworzymy odpowiadający mu element w `posts` kontenera.
+Podobnie jak w przypadku **[C3]** , utworzymy odpowiadający mu element w `posts` kontenera.
 
 ![Zapisywanie pojedynczy element do kontenera wpisów](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -210,7 +209,7 @@ Podobnie jak w przypadku **[C3]**, utworzymy odpowiadający mu element w `posts`
 
 ### <a name="q5-list-a-posts-likes"></a>[Q5] Lista polubienia post
 
-Podobnie jak w przypadku **[kwartale 4]**, firma Microsoft zapytania polubienia dla tego wpisu, a następnie agregowanie ich nazw użytkowników.
+Podobnie jak w przypadku **[kwartale 4]** , firma Microsoft zapytania polubienia dla tego wpisu, a następnie agregowanie ich nazw użytkowników.
 
 ![Pobieranie wszystkich polubień wpis i agregowanie ich dodatkowe dane](./media/how-to-model-partition-example/V1-Q5.png)
 
@@ -283,7 +282,7 @@ Możemy również zmodyfikować komentarz i elementy do dodania nazwa użytkowni
 
 Co chcemy osiągnąć to, że za każdym razem, gdy możemy dodać polubienie lub komentarz, możemy też zwiększyć `commentCount` lub `likeCount` z odpowiedniego wpisu. Jako naszych `posts` kontenera jest podzielona na partycje według `postId`, nowy element (komentarze lub, takich jak) i jego odpowiedniego wpisu znajdują się w jednej partycji logicznej. W rezultacie, możemy użyć [procedury składowanej](stored-procedures-triggers-udfs.md) do wykonania tej operacji.
 
-Teraz podczas tworzenia komentarza (**[C3]**), zamiast po prostu dodać nowy element w `posts` kontenera nazywamy następującą procedurę składowaną w danym kontenerze:
+Teraz podczas tworzenia komentarza ( **[C3]** ), zamiast po prostu dodać nowy element w `posts` kontenera nazywamy następującą procedurę składowaną w danym kontenerze:
 
 ```javascript
 function createComment(postId, comment) {
@@ -334,7 +333,7 @@ W naszym przykładzie używamy zestawienia zmian `users` kontenera reagować w k
 ```javascript
 function updateUsernames(userId, username) {
   var collection = getContext().getCollection();
-
+  
   collection.queryDocuments(
     collection.getSelfLink(),
     `SELECT * FROM p WHERE p.userId = '${userId}'`,
@@ -397,7 +396,7 @@ Dokładnie tej samej sytuacji podczas wyświetlania polubień.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: Upewniając się, wszystkie żądania są skalowalne
 
-Patrząc naszych poprawy wydajności, nadal istnieją dwa żądania, które firma Microsoft nie zostały w pełni zoptymalizowana pod: **[K3]** i **[Q6]**. Są to żądania dotyczące zapytania, które nie filtrowanie według klucza partycji, kontenerów, docelowych.
+Patrząc naszych poprawy wydajności, nadal istnieją dwa żądania, które firma Microsoft nie zostały w pełni zoptymalizowana pod: **[K3]** i **[Q6]** . Są to żądania dotyczące zapytania, które nie filtrowanie według klucza partycji, kontenerów, docelowych.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[K3] Listy wpisów użytkownika w krótkich fragmentów
 
@@ -438,7 +437,7 @@ Dzięki wprowadzeniu drugiego poziomu denormalizacja duplikując całego wpisów
       "creationDate": "<post-creation-date>"
     }
 
-Należy pamiętać, że:
+Należy pamiętać o następujących kwestiach:
 
 - Firma Microsoft wprowadza `type` pole w elemencie użytkownika do rozróżniania użytkowników z wpisów,
 - dodaliśmy również `userId` pole w elemencie "użytkownik" jest nadmiarowy za pomocą `id` ale pole jest wymagane jako `users` kontenera jest teraz podzielona na partycje według `userId` (a nie `id` wcześniej)
@@ -577,6 +576,3 @@ Po wprowadzeniu do praktycznych modelowania i partycjonowanie danych którego ch
 - [Praca z bazami danych, kontenerów i elementów](databases-containers-items.md)
 - [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
 - [Zmiana źródła danych w usłudze Azure Cosmos DB](change-feed.md)
-
-<!--Update_Description: new articles on how to model partition example -->
-<!--ms.date: 04/15/2019-->

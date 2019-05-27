@@ -1,7 +1,7 @@
 ---
 title: Filtrowanie ruchu sieciowego — samouczek — Azure Portal
 titlesuffix: Azure Virtual Network
-description: W tym samouczku dowiesz się, jak filtrować ruch sieciowy do podsieci za pomocą sieciowej grupy zabezpieczeń i witryny Azure Portal.
+description: W tym samouczku dowiesz się, jak filtrować ruch sieciowy do podsieci z sieciową grupą zabezpieczeń, za pomocą witryny Azure portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: ad34c6a876ca21bc7ef32cce638240e0d23b3177
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723909"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242733"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń i witryny Azure Portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu sieciowego z sieciową grupą zabezpieczeń, za pomocą witryny Azure portal
 
 Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -111,18 +111,18 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
     | Ustawienie                 | Wartość                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Element docelowy             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
-    | Zakresy portów docelowych | Wprowadź wartości 80,443                                                                                                    |
-    | Protokół                | Wybierz pozycję TCP                                                                                                      |
+    | Lokalizacja docelowa             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
+    | Docelowe zakresy portów | Wprowadź wartości 80,443                                                                                                    |
+    | Protocol                | Wybierz pozycję TCP                                                                                                      |
     | Name (Nazwa)                    | Allow-Web-All                                                                                                   |
 
 3. Ponownie wykonaj krok 2, używając następujących wartości:
 
     | Ustawienie                 | Wartość                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Element docelowy             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
-    | Zakresy portów docelowych | Wprowadź 3389                                                                                                      |
-    | Protokół                | Wybierz pozycję TCP                                                                                                      |
+    | Lokalizacja docelowa             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
+    | Docelowe zakresy portów | Wprowadź 3389                                                                                                      |
+    | Protocol                | Wybierz pozycję TCP                                                                                                      |
     | Priorytet                | Wprowadź wartość 110                                                                                                       |
     | Name (Nazwa)                    | Allow-RDP-All                                                                                                   |
 

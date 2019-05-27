@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813828"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073025"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Role jednostki dla podtypów kontekstowych
 
@@ -79,12 +79,6 @@ Poniższy przykład wypowiedzi użyć jednostki i role:
 |--|--|
 |Jestem interesujące dowiedzieć więcej na temat **Seattle**|Interesuję się dodatkowe informacje o lokalizacji {Location}|
 |Kup biletu z Seattle w Nowym Jorku|Kup biletu pochodzenia {lokalizacji:} do {lokalizacji: Destination}|
-
-## <a name="how-are-roles-related-to-hierarchical-entities"></a>Jak role są powiązane z jednostkami hierarchiczne?
-
-Role są teraz dostępne dla wszystkich jednostek w przykładzie wypowiedzi oraz wcześniejsze użycie wzorców. Ponieważ są one dostępne wszędzie, zastępują one potrzebę hierarchiczne jednostek. Nowe jednostki powinny być tworzone przy użyciu ról, zamiast korzystać z jednostek hierarchicznej. 
-
-Hierarchiczna jednostki po pewnym czasie zostaną wycofane.
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?
 W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź: 

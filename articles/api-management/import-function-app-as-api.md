@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: fe6a008a6cbd2ca4e8aedeeca6d96cc00f6b29d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e5e8ffc18db902eeaa8484122e3844f35046191f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101408"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243113"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
@@ -107,7 +107,7 @@ Aby dołączyć aplikację funkcji platformy Azure do istniejącego interfejsu A
 
     ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-05.png)
 
-8. Kliknij przycisk **Importuj**.
+8. Kliknij przycisk **importu**.
 
     ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-04.png)
 
@@ -118,7 +118,7 @@ Zaimportowanie aplikacji funkcji platformy Azure powoduje automatyczne wygenerow
 * Klucz hosta w aplikacji funkcji przy użyciu nazwy usługi apim-{*nazwę wystąpienia usługi Azure API Management*},
 * Nazwanej wartości wewnątrz wystąpienia usługi Azure API Management o nazwie {*nazwą wystąpienia aplikacja funkcji platformy Azure*}-klucz, który zawiera klucz utworzono hosta.
 
-Interfejsy API utworzonych po 2019 4 kwietnia klucz hosta jest przekazywany w żądaniach HTTP z usługi API Management do aplikacji funkcji w nagłówku. Starszych interfejsów API przekazać klucz hosta jako [parametr zapytania](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). To zachowanie może zostać zmieniona przez `PATCH Backend` [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/backend/update#backendcredentialscontract) na *zaplecza* jednostki skojarzone z aplikacją funkcji.
+Interfejsy API utworzonych po 2019 4 kwietnia klucz hosta jest przekazywany w żądaniach HTTP z usługi API Management do aplikacji funkcji w nagłówku. Starszych interfejsów API przekazać klucz hosta jako [parametr zapytania](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). To zachowanie może zostać zmieniona przez `PATCH Backend` [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na *zaplecza* jednostki skojarzone z aplikacją funkcji.
 
 > [!WARNING]
 > Usunięcie lub zmiana wartości klucza hosta aplikacji funkcji platformy Azure lub nazwanej wartości usługi Azure API Management spowoduje przerwanie komunikacji między usługami. Wartości nie są synchronizowane automatycznie.

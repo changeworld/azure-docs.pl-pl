@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785772"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237952"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotowuje dane do Custom Speech
 
@@ -66,8 +66,8 @@ Jeśli chcesz sprawdzić, jeśli nie audio nie spełniają tych właściwości, 
 
 | Działanie | Opis | Polecenie SOx |
 |----------|-------------|-------------|
-| Sprawdź audio format | Użyj tego polecenia, aby sprawdzić format pliku audio. | `soxi <filename>.wav` |
-| Konwertuj audio format | Użyj tego polecenia, aby przekonwertować plik dźwiękowy pojedynczy kanał, 16-bitowych 48 KHz. | `sox <filename>.wav -b 16 -3 signed-integer -c l -r 48k -t wav <filename>.wav` |
+| Sprawdź audio format | Użyj tego polecenia, aby sprawdzić format pliku audio. | `sox --i <filename>` |
+| Konwertuj audio format | Użyj tego polecenia, aby przekonwertować plik dźwiękowy pojedynczy kanał, 16-bitowych 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Dane transkrypcji audio i oznaczone przez człowieka testowania szkolenia
 

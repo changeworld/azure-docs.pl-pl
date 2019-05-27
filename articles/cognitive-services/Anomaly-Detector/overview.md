@@ -1,5 +1,5 @@
 ---
-title: Co to jest interfejs API usługi Wykrywanie anomalii? | Microsoft Docs
+title: Co to jest interfejs API narzędzia do wykrywania anomalii? | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: Użyj zaawansowanych algorytmów API wykrywanie anomalii, aby identyfikować anomalie w danych szeregów czasowych.
 services: cognitive-services
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473282"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64415828"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Co to jest interfejs API usługi Wykrywanie anomalii?
+# <a name="what-is-the-anomaly-detector-api"></a>Co to jest interfejs API narzędzia do wykrywania anomalii?
 
 Interfejs API usługi Wykrywanie anomalii pozwala na monitorowanie i wykrywanie nieprawidłowości w danych szeregów czasowych z usługą machine learning. Interfejs API usługi Wykrywanie anomalii dostosowuje się automatycznie identyfikując i stosowanie najlepszego dopasowania modeli danych, niezależnie od branży, scenariusz i ilości danych. Przy użyciu danych szeregów czasowych, interfejs API określa granic na potrzeby wykrywania anomalii, oczekiwane wartości i punkty danych, które są anomalie.
 
@@ -35,7 +35,7 @@ Za pomocą wykrywania anomalii, mogą automatycznie wykrywać anomalie w danych 
 | Uzyskaj dodatkowe informacje na temat danych. | Uzyskaj przydatne szczegółowe informacje o danych i zaobserwowanego anomalii, w tym oczekiwanych wartości, granice anomalii i pozycji. |
 | Dostosuj granice wykrywania anomalii. | Interfejs API usługi Wykrywanie anomalii automatycznie tworzyć granice dla wykrywania anomalii. Dostosuj te granice, aby zwiększyć lub zmniejszyć wrażliwość interfejsu API na anomalie danych i lepszego dopasowania danych. |
 
-## <a name="demo"></a>Demonstracja
+## <a name="demo"></a>Pokaz
 
 Aby szybko rozpocząć korzystanie z interfejsu API wykrywanie anomalii, spróbuj [prezentację online](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) , mogą być uruchamiane w przeglądarce. Ten pokaz działa w notesu programu Jupyter hostowanych w sieci web i dowiesz się, jak wysyłać żądania interfejsu API i Wizualizuj wyniki.
 

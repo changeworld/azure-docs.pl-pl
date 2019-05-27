@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: aa62c06d0c12a42d34ef9b13b8b4533d197d8d19
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715817"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233891"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -77,7 +77,7 @@ Wykonaj ponownie kroki z sekcji [Tworzenie pierwszej maszyny wirtualnej](#create
 | 3 | Name (Nazwa)                                  | myVm2                                                                   |
 | 3 | Typ uwierzytelniania                   | Wklej klucz publiczny SSH lub wybierz opcję **Hasło** i wprowadź hasło. |
 | 3 | Grupa zasobów                        | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.                 |
-| 6 | Rozszerzenia                            | **Network Agent for Linux**                                             |
+| 6 | Rozszerzenia                            | **Agent usługi Network Watcher dla systemu Linux**                                             |
 
 Wdrożenie maszyny wirtualnej potrwa kilka minut. Zanim przejdziesz do pozostałych kroków, poczekaj na zakończenie wdrażania maszyny wirtualnej.
 
@@ -94,9 +94,9 @@ Utwórz monitor połączeń na potrzeby monitorowania komunikacji na porcie TCP 
     | Ustawienie                  | Wartość               |
     | ---------                | ---------           |
     | Name (Nazwa)                     | myVm1-myVm2(22)     |
-    | Element źródłowy                   |                     |
+    | Source                   |                     |
     | Maszyna wirtualna          | myVm1               |
-    | Element docelowy              |                     |
+    | Lokalizacja docelowa              |                     |
     | Wybierz maszynę wirtualną |                     |
     | Maszyna wirtualna          | myVm2               |
     | Port                     | 22                  |
@@ -149,12 +149,12 @@ Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między
 
     | Ustawienie                 | Wartość          |
     | ---                     | ---            |
-    | Zakresy portów docelowych | 22             |
-    | Akcja                  | Zablokuj           |
+    | Docelowe zakresy portów | 22             |
+    | action                  | Odrzuć           |
     | Priorytet                | 100            |
     | Name (Nazwa)                    | DenySshInbound |
 
-5. Ponieważ monitor połączeń sonduje co 60 sekund, zaczekaj kilka minut, po lewej stronie portalu wybierz kolejno pozycje **Network Watcher** i **Monitor połączeń**, a następnie ponownie wybierz monitor  **myVm1-myVm2(22)**. Teraz wyniki są inne, jak pokazano na poniższej ilustracji:
+5. Ponieważ monitor połączeń sonduje co 60 sekund, zaczekaj kilka minut, po lewej stronie portalu wybierz kolejno pozycje **Network Watcher** i **Monitor połączeń**, a następnie ponownie wybierz monitor  **myVm1-myVm2(22)** . Teraz wyniki są inne, jak pokazano na poniższej ilustracji:
 
     ![Błąd szczegółów monitora](./media/connection-monitor/vm-monitor-fault.png)
 

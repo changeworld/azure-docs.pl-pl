@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e811d1f7fb84e2539ba9daea3eea13f5e028f997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389563"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241378"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Samouczek: Tworzenie połączonych szablonów usługi Azure Resource Manager
 
@@ -62,13 +62,13 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
 * **Główny szablon**: tworzenie wszystkich zasobów, z wyjątkiem konta magazynu.
 * **Połączony szablon**: tworzenie konta magazynu.
 
-1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
+1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
-3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
+3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
 4. Istnieje pięć zasobów definiowanych przez szablon:
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
@@ -89,7 +89,7 @@ Połączony szablon tworzy konto magazynu. Połączony szablon może służyć j
 2. Wprowadź następujące zmiany:
 
     * Usuń wszystkie parametry innych niż **lokalizacji**.
-    * Dodaj parametr o nazwie **storageAccountName**. 
+    * Dodaj parametr o nazwie **storageAccountName**.
         ```json
         "storageAccountName":{
           "type": "string",
@@ -99,7 +99,7 @@ Połączony szablon tworzy konto magazynu. Połączony szablon może służyć j
         },
         ```
         Nazwa konta magazynu i lokalizacja są przekazywane z głównego szablonu do dołączonego szablonu jako parametry.
-        
+
     * Usuń element **variables** i wszystkie definicje zmiennych.
     * Usuwanie wszystkich zasobów innych niż konta magazynu. Łącznie należy usunąć cztery zasoby.
     * Zaktualizuj wartość elementu **name** zasobu konta magazynu na następującą wartość:
@@ -109,7 +109,7 @@ Połączony szablon tworzy konto magazynu. Połączony szablon może służyć j
         ```
 
     * Zaktualizuj element **outputs**, aby wyglądał następująco:
-    
+
         ```json
         "outputs": {
           "storageUri": {
@@ -272,7 +272,7 @@ Główny szablonu ma nazwę azuredeploy.json.
     Zwróć uwagę na następujące szczegóły:
 
     * Zasób `Microsoft.Resources/deployments` w głównym szablonie służy do łączenia się z innym szablonem.
-    * Zasób `deployments` ma nazwę `linkedTemplate`. Ta nazwa jest używana do [konfigurowania zależności](#configure-dependency).  
+    * Zasób `deployments` ma nazwę `linkedTemplate`. Ta nazwa jest używana do [konfigurowania zależności](#configure-dependency).
     * W przypadku wywoływania połączonych szablonów możesz używać tylko trybu wdrożenia [Incremental](./deployment-modes.md).
     * Parametr `templateLink/uri` zawiera identyfikator URI połączonego szablonu. Zaktualizuj tę wartość za pomocą identyfikatora URI uzyskanego podczas przekazywania połączonego szablonu (identyfikatora towarzyszącego tokenowi SAS).
     * Za pomocą właściwości `parameters` możesz przekazywać wartości z głównego szablonu do połączonego szablonu.
@@ -305,7 +305,7 @@ Ponieważ konto magazynu jest teraz zdefiniowane w połączonym szablonie, musis
 
     ![Konfigurowanie zależności połączonych szablonów usługi Azure Resource Manager](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
-    *linkedTemplate* to nazwa zasobu wdrożeń.  
+    *linkedTemplate* to nazwa zasobu wdrożeń.
 3. Zaktualizuj wartość **properties/diagnosticsProfile/bootDiagnostics/storageUri** w sposób pokazany na poprzednim zrzucie ekranu.
 4. Zapisz poprawiony szablon.
 
@@ -334,4 +334,4 @@ Aby poprawić projekt, po jego ukończeniu wprowadź w nim następujące dodatko
 W tym samouczku wydzielono z szablonu dwa moduły: szablon główny i szablon połączony. Aby dowiedzieć się, jak wykonać zadania po wdrożeniu przy użyciu rozszerzenia maszyny wirtualnej, zobacz:
 
 > [!div class="nextstepaction"]
-> [Wdrażanie rozszerzeń maszyny wirtualnej](./deployment-manager-tutorial.md)
+> [Wdrażanie rozszerzeń maszyny wirtualnej](./resource-manager-tutorial-deploy-vm-extensions.md)
