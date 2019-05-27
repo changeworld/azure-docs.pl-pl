@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7cdd185cddbd2403b72ff0e06530913af0b031de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233127"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833910"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Korzystania z usług Platform-as-a-Service (PaaS) w usłudze Azure DevTest Labs
 PaaS jest obsługiwane w usłudze DevTest Labs przy użyciu funkcji środowiska. Środowisk w usłudze DevTest Labs są obsługiwane przez wstępnie skonfigurowane szablony usługi Azure Resource Manager w repozytorium Git. Środowiska mogą zawierać zasoby usługi PaaS i IaaS. Umożliwiają one tworzenie złożonych systemów, które mogą obejmować zasoby platformy Azure, takich jak maszyny wirtualne, bazy danych, sieci wirtualnych i aplikacji sieci Web, które są dostosowane do współpracują ze sobą. Te szablony umożliwiają spójne wdrażanie i ulepszone Zarządzanie środowiskami przy użyciu kontroli kodu źródłowego. 
@@ -53,7 +53,7 @@ Brak niektórych informacji laboratorium niestandardowego, będzie znajdować si
 [Środowisk nawiązywania połączenia z sieci wirtualnej laboratorium](connect-environment-lab-virtual-network.md) artykuł opisuje sposób modyfikowania szablon usługi Resource Manager, aby użyć `$(LabSubnetId)` tokenu. Po utworzeniu środowiska `$(LabSubnetId)` token jest zastępowany przez pierwszy znak podsieci gdzie **maszynie wirtualnej Utwórz** ustawiono opcję **true**. Umożliwia ona naszego środowiska użyć wcześniej utworzone sieci. Jeśli chcesz użyć tego samego szablonów usługi Resource Manager w środowiskach w teście jako środowisk przejściowych i produkcyjnych, użyj `$(LabSubnetId)` jako wartość domyślna parametru szablonu usługi Resource Manager. 
 
 #### <a name="environment-storage-account"></a>Konto magazynu w środowisku
-DevTest Labs obsługuje korzystanie z [zagnieżdżonych szablonów usługi Resource Manager](../azure-resource-manager/resource-group-linked-templates.md). [Jak usługi Azure DevTest Labs ułatwia zagnieżdżonych usługi Resource Manager Szablon wdrożenia dla środowisk testowych](https://azure.microsoft.com/updates/azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments) artykule wyjaśniono, jak używać `_artifactsLocation` i `_artifactsLocationSasToken` tokenów do utworzenia identyfikatora URI do szablonu usługi Resource Manager w tym samym folderze co lub w zagnieżdżonej folderu głównego szablonu. Aby uzyskać więcej informacji na temat tych dwóch tokenów, zobacz **artefaktów wdrożenia** części [usługi Azure Resource Manager — Przewodnik dobre praktyki](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
+DevTest Labs obsługuje korzystanie z [zagnieżdżonych szablonów usługi Resource Manager](../azure-resource-manager/resource-group-linked-templates.md). [[Wdrażanie zagnieżdżonych szablonów usługi Azure Resource Manager w środowiskach testowych](deploy-nested-template-environments.md) artykule wyjaśniono, jak używać `_artifactsLocation` i `_artifactsLocationSasToken` tokenów do utworzenia identyfikatora URI do szablonu usługi Resource Manager, w tym samym folderze co lub zagnieżdżone folder główny szablonu. Aby uzyskać więcej informacji na temat tych dwóch tokenów, zobacz **artefaktów wdrożenia** części [usługi Azure Resource Manager — Przewodnik dobre praktyki](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
 
 ## <a name="user-experience"></a>Środowisko użytkownika
 

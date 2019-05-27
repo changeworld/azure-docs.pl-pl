@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c99125d1d17f85e9767dca6d108005e598561cc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 17aaff1a6da2c18e9b1d915f61844635b1ad130b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545675"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001441"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -199,14 +199,15 @@ W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń u
 
 ### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Zarejestruj swoją aplikację w witrynie Azure portal, a następnie dodaj informacje do *pliku web.config*
 
-1. Przejdź do witryny [Microsoft Azure Portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), aby zarejestrować aplikację.
-2. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
-3. Wprowadź nazwę aplikacji.
-4. Wklej *adresu SSL URL* projektu programu Visual Studio w pozycji**Adres URL logowania**. Ten adres URL również jest automatycznie dodawany do listy adresów URL odpowiedzi dla aplikacji, którą teraz rejestrowanie.
-5. Wybierz pozycję **Utwórz**, aby zarejestrować aplikację. Ta akcja spowoduje powrót do listy aplikacji.
-6. Następnie wyszukaj i/lub wybierz utworzoną aplikację, aby otworzyć jej właściwości.
-7. Skopiuj identyfikator GUID w obszarze **Identyfikator aplikacji** do schowka.
-8. Wróć do programu Visual Studio, a w `web.config`, Zastąp `Enter_the_Application_Id_here` identyfikatorem aplikacji z poziomu aplikacji została zarejestrowana.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) przy użyciu służbowego lub osobistego konta Microsoft.
+2. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
+3. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
+4. Wybierz **nowej rejestracji**.
+5. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
+6. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+7. Wybierz **Web** platformy w obszarze **identyfikator URI przekierowania** sekcji, a następnie ustaw wartość do projektu programu Visual Studio *adresu URL protokołu SSL* (lokalizacja, do którego usługa Azure AD będzie zwracać tokeny).
+78. Po zakończeniu wybierz pozycję **Rejestruj**. W aplikacji **Przegląd** stronie, skopiuj **identyfikator aplikacji (klienta)** wartość.
+9. Wróć do programu Visual Studio, a w `web.config`, Zastąp `Enter_the_Application_Id_here` identyfikatorem aplikacji z poziomu aplikacji została zarejestrowana.
 
 > [!TIP]
 > Jeśli Twoje konto jest skonfigurowane, aby uzyskiwać dostęp do wielu katalogów, upewnij się, że wybrano odpowiedni katalog dla organizacji, w której aplikacja ma być zarejestrowana, klikając prawym przyciskiem myszy nazwę konta w prawym górnym rogu witryny Azure Portal, a następnie sprawdzając wybrany katalog jak wskazano:<br/>![Wybór prawidłowego katalogu](./media/quickstart-v1-aspnet-webapp/tenantselector.png)

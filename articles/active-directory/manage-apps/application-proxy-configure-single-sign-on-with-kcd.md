@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 05/17/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214d984388869431453267ef18ebf6eb976bc496
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783536"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859623"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -59,7 +59,8 @@ Konfiguracja usługi Active Directory różni się w zależności od tego, czy T
 2. Wybierz serwer z uruchomionym łącznikiem usługi.
 3. Kliknij prawym przyciskiem myszy i wybierz **właściwości** > **delegowania**.
 4. Wybierz **Ufaj temu komputerowi w delegowaniu tylko do określonych usług**. 
-5. W obszarze **usług, do których to konto może przedstawiać delegowane poświadczenia** dodać wartość dla tożsamością SPN serwera aplikacji. Dzięki temu łącznika serwera Proxy aplikacji na personifikowanie użytkowników w AD dla aplikacji zdefiniowanej na liście.
+5. Wybierz **Użyj dowolnego protokołu uwierzytelniania**.
+6. W obszarze **usług, do których to konto może przedstawiać delegowane poświadczenia** dodać wartość dla tożsamością SPN serwera aplikacji. Dzięki temu łącznika serwera Proxy aplikacji na personifikowanie użytkowników w AD dla aplikacji zdefiniowanej na liście.
 
    ![Zrzut ekranu okna właściwości SVR łącznika](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 

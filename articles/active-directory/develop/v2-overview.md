@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3a1525d7b1f9c0a0b6516014ea83fb8abd0376
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 3d139efaa8e6de4861dc8e885bd22a426fde6c94
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544826"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833048"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Przegląd usługi Microsoft identity platformy (w wersji 2.0)
 
-Platforma tożsamości firmy Microsoft to unowocześnienie platformy deweloperów i usługi tożsamości Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które Zaloguj wszystkich tożsamości firmy Microsoft i uzyskać tokeny do wywołania APIs firmy Microsoft, takich jak program Microsoft Graph lub interfejsów API, które programiści. Platforma Microsoft identity składa się z:
+Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które Zaloguj wszystkich tożsamości firmy Microsoft i uzyskać tokeny do wywołania APIs firmy Microsoft, takich jak program Microsoft Graph lub interfejsów API, które programiści. Platforma Microsoft identity składa się z:
 
 - **Usługa CLS standard uwierzytelniania OAuth 2.0 i OpenID Connect** umożliwiającej deweloperom uwierzytelniania dowolnej tożsamości firmy Microsoft, w tym:
   - Konta służbowe (dostarczanymi za pośrednictwem usługi Azure AD)
@@ -79,4 +79,4 @@ Kiedy wszystko będzie gotowe uruchomić aplikację do **środowiska produkcyjne
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-Jeśli masz planowania tworzenia aplikacji przeznaczonych dla klientów, logujący się tożsamości społecznościowych i lokalnych, Przyjrzyj się [Omówienie usługi Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Jeśli planowane jest tworzenie aplikacji przeznaczonych dla klientów, który loguje się tożsamości społecznościowych i lokalnych, zobacz [Omówienie usługi Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

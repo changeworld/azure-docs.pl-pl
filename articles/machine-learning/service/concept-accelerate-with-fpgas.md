@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 648dc462477570a692eff588c558a18a3121e4e7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025247"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851026"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Co to jest brama programowalny tablic (FPGA)
 
@@ -33,13 +33,13 @@ Poniższy diagram i tabeli pokazano, jak układów FPGA wypadają w porównaniu 
 |Procesor||Opis|
 |---|:-------:|------|
 |Scalonych specyficzne dla aplikacji|ASICs|Obwody niestandardowe, takie jak Google TensorFlow procesora jednostki (TPU), zapewnia najwyższą efektywnością. Nie można ich skonfigurować stosownie do potrzeb.|
-|Tablice programowalny bramy|Układy FPGA|Układów FPGA, takie jak te, które są dostępne na platformie Azure zapewniają wydajność blisko ASICs. Są one również elastyczne i możliwych do ponownego skonfigurowania wraz z upływem czasu, aby zaimplementować logikę nowe.|
+|Tablice programowalny bramy|Układów FPGA|Układów FPGA, takie jak te, które są dostępne na platformie Azure zapewniają wydajność blisko ASICs. Są one również elastyczne i możliwych do ponownego skonfigurowania wraz z upływem czasu, aby zaimplementować logikę nowe.|
 |Procesory graficzne|Procesory GPU|Popularne wybór dla obliczeń sztucznej Inteligencji. Procesory GPU oferują możliwości przetwarzania równoległego, ułatwiając szybsze na renderowanie obrazu niż procesorów CPU.|
 |Jednostek centralnych|Procesory CPU|Ogólnego przeznaczenia procesorów, których wykonanie nie jest idealne rozwiązanie dla grafiki i przetwarzania plików wideo.|
 
 Układów FPGA na platformie Azure są oparte na urządzeniach FPGA firmy Intel, programistów i analityków danych, która umożliwia przyspieszanie w czasie rzeczywistym obliczeń sztucznej Inteligencji. Ta architektura włączone FPGA oferuje wydajność, elastyczność i skalowania i jest dostępna na platformie Azure.
 
-Układów FPGA umożliwiają uzyskanie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym. Żądań asynchronicznych (przetwarzanie wsadowe) nie są wymagane. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ wymaga przetworzenia większej ilości danych. Implementacje jednostkach przetwarzania neuronowych nie wymagają dzielenia na partie; w związku z tym opóźnienie może być niższa wiele razy w porównaniu do procesorów GPU i CPU.
+Układów FPGA umożliwiają uzyskanie żądań o małym opóźnieniu w przypadku wnioskowania w czasie rzeczywistym (lub oceniania modelu). Żądań asynchronicznych (przetwarzanie wsadowe) nie są wymagane. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ wymaga przetworzenia większej ilości danych. Implementacje jednostkach przetwarzania neuronowych nie wymagają dzielenia na partie; w związku z tym opóźnienie może być niższa wiele razy w porównaniu do procesorów GPU i CPU.
 
 ### <a name="reconfigurable-power"></a>Możliwych do ponownego skonfigurowania zasilania
 Można ponownie skonfigurować układów FPGA dla różnych typów modeli uczenia maszynowego. Ta elastyczność ułatwia przyspieszenie aplikacji na podstawie najbardziej optymalną precyzja wartości liczbowych i model pamięci używane. Ponieważ układów FPGA możliwych do ponownego skonfigurowania, możesz Pozostań na bieżąco z wymaganiami gwałtownie zmieniające się algorytmów sztucznej Inteligencji.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d7fd41657394e006957392f37ec1a258b33c8c6
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: beee76bdc443b3a66b4500b83d228075b84eed1e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413877"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864770"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wdrażania dla aplikacji sieci Web na platformie Azure
 
@@ -38,9 +38,9 @@ Poniżej przedstawiono niektóre opcje publikowania kodu aplikacji sieci web:
 
 Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji w usłudze App Service](deploy-local-git.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Widzę komunikat o błędzie podczas próby wdrożenia w programie Visual Studio. Jak rozwiązać ten problem?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Widzę komunikat o błędzie podczas próby wdrożenia w programie Visual Studio. Jak rozwiązać ten problem?
 
-Jeśli zobaczysz następujący komunikat, być może używasz starszej wersji zestawu SDK: "Wystąpił błąd podczas wdrażania zasobu"YourResourceName"w grupie zasobów"YourResourceGroup": MissingRegistrationForLocation: Subskrypcja nie jest zarejestrowana dla typu zasobu "składniki" w lokalizacji "Środkowe stany USA". Zarejestruj ponownie dla tego dostawcy. Aby uzyskać dostęp do tej lokalizacji." 
+Jeśli zobaczysz następujący komunikat, być może używasz starszej wersji zestawu SDK: "Wystąpił błąd podczas wdrażania zasobu"YourResourceName"w grupie zasobów"YourResourceGroup": MissingRegistrationForLocation: Subskrypcja nie jest zarejestrowana dla typu zasobu "składniki" w lokalizacji "Środkowe stany USA". Zarejestruj ponownie aplikację dla tego dostawcy. Aby uzyskać dostęp do tej lokalizacji." 
 
 Aby rozwiązać ten problem, przeprowadź uaktualnienie do [najnowszy zestaw SDK](https://azure.microsoft.com/downloads/). Jeśli widzisz ten komunikat i masz najnowszy zestaw SDK, Prześlij żądanie pomocy technicznej.
 
@@ -59,7 +59,7 @@ Aby uzyskać informacji na temat struktury plików aplikacji usługi app Service
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Jak rozwiązać, "Błąd FTP 550 - miejsca jest wystarczająca ilość miejsca na dysku" podczas próby FTP pliki?
 
-Jeśli widzisz ten komunikat, istnieje prawdopodobieństwo, że zostały przekroczone przydział dysku w ramach planu usługi dla aplikacji sieci web. Może być konieczne skalowanie w górę do wyższego poziomu usługi zgodnie z potrzebami miejsca na dysku. Aby uzyskać więcej informacji na temat cen, plany i limity zasobów zobacz [cennik usługi App Service](https://azure.microsoft.com/pricing/details/app-service/).
+Jeśli widzisz ten komunikat, istnieje prawdopodobieństwo, że używasz do przydział dysku w ramach planu usługi dla aplikacji sieci web. Może być konieczne skalowanie w górę do wyższego poziomu usługi zgodnie z potrzebami miejsca na dysku. Aby uzyskać więcej informacji na temat cen, plany i limity zasobów zobacz [cennik usługi App Service](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Jak skonfigurować ciągłe wdrażanie dla mojej aplikacji sieci web usługi App Service?
 
@@ -69,11 +69,11 @@ Można skonfigurować ciągłe wdrażanie z kilka zasobów, w tym DevOps platfor
 
 Aby uzyskać pomoc, badanie problemów z ciągłym wdrażaniem z usługi GitHub lub Bitbucket, zobacz [badanie ciągłe wdrażanie](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>Nie mogę FTP do mojej lokacji i publikowanie mój kod. Jak rozwiązać ten problem?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Nie mogę FTP do mojej lokacji i publikowanie mój kod. Jak rozwiązać ten problem?
 
 Aby rozwiązać problemy z FTP:
 
-1. Sprawdź, czy wprowadzasz poprawną nazwę hosta i poświadczenia. Aby uzyskać szczegółowe informacje o różnych typach poświadczeń i sposobu ich używania, zobacz [poświadczenia wdrożenia](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
+1. Upewnij się, że wprowadzasz poprawną nazwę hosta i poświadczenia. Aby uzyskać szczegółowe informacje o różnych typach poświadczeń i sposobu ich używania, zobacz [poświadczenia wdrożenia](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
 2. Upewnij się, że porty FTP nie są blokowane przez zaporę. Porty powinny mieć następujące ustawienia:
     * Port połączenia sterowania FTP: 21
     * Port połączenia danych FTP: 989, 10001-10300

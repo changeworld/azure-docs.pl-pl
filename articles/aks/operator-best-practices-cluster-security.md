@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0f24f7378ceb9266acf8988835b77cef80bd6f13
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a468c2f3b1b3034c817ac19988420b68e18deb83
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192194"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849846"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -50,7 +50,7 @@ Aby uzyskać więcej informacji na temat integracji z usługą Azure AD i RBAC z
 
 W ten sam sposób, że należy udzielić użytkownikom lub grupom najmniejszej liczby uprawnienia wymagane, kontenery również powinny być ograniczone tylko do akcji i procesów, które są im niezbędne. Aby zminimalizować ryzyko ataku, nie należy konfigurować aplikacje i kontenery, które wymagają z podniesionymi uprawnieniami lub głównych dostępu. Na przykład ustawić `allowPrivilegeEscalation: false` w manifeście zasobników. Te *zasobnika konteksty zabezpieczeń* są wbudowane w platformę Kubernetes, dzięki czemu można zdefiniować dodatkowe uprawnienia, takie jak użytkownika lub grupy, aby Uruchom jako, lub jakie funkcje systemu Linux do udostępnienia. Aby uzyskać więcej o najlepszych praktykach, zobacz [zasobnika bezpiecznego dostępu do zasobów][pod-security-contexts].
 
-Aby uzyskać większą kontrolę nad akcji kontenerów, umożliwia również wbudowane funkcje zabezpieczeń systemu Linux takie jak *AppArmor* i *funkcję seccomp*. Te funkcje są definiowane na poziomie węzła, a następnie wdrażane za pośrednictwem manifestu pod.
+Aby uzyskać większą kontrolę nad akcji kontenerów, umożliwia również wbudowane funkcje zabezpieczeń systemu Linux takie jak *AppArmor* i *funkcję seccomp*. Te funkcje są definiowane na poziomie węzła, a następnie wdrażane za pośrednictwem manifestu pod. Wbudowane funkcje zabezpieczeń systemu Linux są dostępne tylko na węzłów systemu Linux i zasobników.
 
 > [!NOTE]
 > Środowisk Kubernetes w usłudze AKS, lub w innych miejscach, nie są całkowicie bezpieczne dla szkodliwy użycie wielu obcych dzierżaw. Funkcje dodatkowe zabezpieczenia, takie jak *AppArmor*, *funkcję seccomp*, *zasad zabezpieczeń zasobnika*, lub więcej kontroli dostępu w zakresie opartej na rolach (RBAC) dla węzłów luki w zabezpieczeniach trudniejsze. Wartość true, zabezpieczeń przy uruchamianiu obciążeń liczonych w szkodliwy wielodostępne, funkcja hypervisor to tylko poziom zabezpieczeń, które należy ufać. Domeny zabezpieczeń dla rozwiązania Kubernetes staje się całego klastra, a nie oddzielnego węzła. Dla tych typów szkodliwy obciążenia z wieloma dzierżawami należy użyć fizycznie izolowane klastrów.
@@ -193,13 +193,13 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 Aby uzyskać więcej informacji na temat uaktualnienia w usłudze AKS, zobacz [obsługiwane wersje rozwiązania Kubernetes w usłudze AKS] [ aks-supported-versions] i [Uaktualnianie klastra usługi AKS][aks-upgrade].
 
-## <a name="process-node-updates-and-reboots-using-kured"></a>Węzeł procesu aktualizacji i wykonuje ponowny rozruch przy użyciu kured
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Węzeł Linux procesu aktualizacji i wykonuje ponowny rozruch przy użyciu kured
 
-**Najważniejsze wskazówki** — AKS automatycznie pobiera i instaluje zabezpieczeń naprawia na wszystkich węzłach procesu roboczego, ale nie automatyczny ponowny rozruch w razie potrzeby. Użyj `kured` poszukaj do czasu ponownego uruchomienia, a następnie bezpiecznie odizolowywanie i opróżnianie węzła, aby zezwolić na węzeł, aby ponownie uruchomić, należy zastosować aktualizacje i być tak samo bezpieczna, jak to możliwe w odniesieniu do systemu operacyjnego.
+**Najważniejsze wskazówki** — AKS automatycznie pobiera i instaluje zabezpieczeń naprawia na każdym z węzłów systemu Linux, ale nie automatyczny ponowny rozruch w razie potrzeby. Użyj `kured` poszukaj do czasu ponownego uruchomienia, a następnie bezpiecznie odizolowywanie i opróżnianie węzła, aby zezwolić na węzeł, aby ponownie uruchomić, należy zastosować aktualizacje i być tak samo bezpieczna, jak to możliwe w odniesieniu do systemu operacyjnego. W przypadku węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) regularnie w trakcie operacji AKS uaktualnienia bezpiecznie odizolowywanie i opróżnianie zasobników i wdrożyć zaktualizowanymi węzłami.
 
-Każdy wieczór węzłów AKS. Uzyskaj poprawek zabezpieczeń jest dostępne za pośrednictwem ich kanał aktualizacji dostępnych dla określonych dystrybucji. To zachowanie jest konfigurowana automatycznie podczas wdrażania węzłów w klastrze AKS. Aby zminimalizować przerwy w działaniu i potencjalnego wpływu na działające zadania, węzły są nie automatycznie ponownie uruchomiony, jeśli poprawka zabezpieczeń lub aktualizacji jądra go wymaga.
+Każdy wieczór węzłów systemu Linux w usłudze AKS pobrania poprawek zabezpieczeń jest dostępne za pośrednictwem ich kanał aktualizacji dostępnych dla określonych dystrybucji. To zachowanie jest konfigurowana automatycznie podczas wdrażania węzłów w klastrze AKS. Aby zminimalizować przerwy w działaniu i potencjalnego wpływu na działające zadania, węzły są nie automatycznie ponownie uruchomiony, jeśli poprawka zabezpieczeń lub aktualizacji jądra go wymaga.
 
-Open source [kured (KUbernetes ponownie uruchomić demona)] [ kured] projektu, Weaveworks obserwuje do czasu ponownego uruchomienia węzła. Gdy węzeł stosujący aktualizacje wymagające ponownego uruchomienia systemu, węzeł jest bezpiecznie odizolowywane i opróżniane można przenosić i zaplanować zasobników w innych węzłach w klastrze. Gdy węzeł jest uruchamiany ponownie, zostanie on dodany do klastra i wznawia Kubernetes planowania zasobników na nim. Aby zminimalizować zakłócenia, tylko jeden węzeł w danym momencie może zostać przeprowadzony ponowny rozruch `kured`.
+Open source [kured (KUbernetes ponownie uruchomić demona)] [ kured] projektu, Weaveworks obserwuje do czasu ponownego uruchomienia węzła. W przypadku węzłów systemu Linux stosujący aktualizacje wymagające ponownego uruchomienia systemu, węzeł jest bezpiecznie odizolowywane i opróżniane można przenosić i zaplanować zasobników w innych węzłach w klastrze. Gdy węzeł jest uruchamiany ponownie, zostanie on dodany do klastra i wznawia Kubernetes planowania zasobników na nim. Aby zminimalizować zakłócenia, tylko jeden węzeł w danym momencie może zostać przeprowadzony ponowny rozruch `kured`.
 
 ![Proces ponownego uruchomienia węzłów AKS, korzystając z kured](media/operator-best-practices-cluster-security/node-reboot-process.png)
 

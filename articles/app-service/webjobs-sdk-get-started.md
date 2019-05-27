@@ -13,34 +13,34 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198616"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864856"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
-W tym artykule pokazano, jak utworzyć projekt zestawu Azure WebJobs SDK, uruchomić je lokalnie i następnie wdrożysz go do programu Visual Studio 2017 [usługi Azure App Service](overview.md). Projekt, możesz utworzyć jest aplikację konsoli .NET Core, która korzysta z wersji 3.x zestawu WebJobs SDK. Jeśli interesuje Cię w wersji 2.x, która używa .NET Framework, zobacz [tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service](webjobs-dotnet-deploy-vs.md).
+W tym artykule pokazano, jak utworzyć projekt zestawu Azure WebJobs SDK, uruchomić je lokalnie i następnie wdrożysz go do programu Visual Studio 2019 [usługi Azure App Service](overview.md). Projekt, możesz utworzyć jest aplikację konsoli .NET Core, która korzysta z wersji 3.x zestawu WebJobs SDK. Jeśli interesuje Cię w wersji 2.x, która używa .NET Framework, zobacz [tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 Aby dowiedzieć się więcej na temat pracy z zestawem SDK WebJobs, zobacz [jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach](webjobs-sdk-how-to.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Instalowanie programu Visual Studio 2017](/visualstudio/install/) z **programowanie na platformie Azure** obciążenia. Jeśli masz już program Visual Studio, ale nie ma tego obciążenia, dodać obciążenie, wybierając **Narzędzia > Pobierz narzędzia i funkcje**.
+* [Instalowanie programu Visual Studio 2019](/visualstudio/install/) z **programowanie na platformie Azure** obciążenia. Jeśli masz już program Visual Studio, ale nie ma tego obciążenia, dodać obciążenie, wybierając **Narzędzia > Pobierz narzędzia i funkcje**.
 
 * Konieczne jest posiadanie [konta platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Aby opublikować projekt zestawu SDK zadań Webjob na platformie Azure.
 
-## <a name="create-a-project"></a>Tworzenie projektu
+## <a name="create-a-project"></a>Utwórz projekt
 
-1. W programie Visual Studio, wybierz **Plik > Nowy > Projekt**.
+1. W programie Visual Studio, wybierz **Utwórz nowy projekt**.
 
-2. Wybierz **platformy .NET Core > konsoli aplikacji (.NET Core)**.
+2. Wybierz **konsoli aplikacji (.NET Core)**.
 
-3. Nadaj projektowi nazwę *WebJobsSDKSample*, a następnie wybierz pozycję **OK**.
+3. Nadaj projektowi nazwę *WebJobsSDKSample*, a następnie wybierz pozycję **Utwórz**.
 
-   ![Okno dialogowe Nowy projekt](./media/webjobs-sdk-get-started/new-project.png)
+   ![Okno dialogowe nowego projektu](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="webjobs-nuget-packages"></a>Pakiety NuGet zadań Webjob
 
@@ -171,7 +171,7 @@ Począwszy od wersji 3.x, należy jawnie zainstalować rozszerzenie powiązania 
                     });
     ```
 
-## <a name="create-a-function"></a>Tworzenie funkcji
+## <a name="create-a-function"></a>Utwórz funkcję
 
 1. Kliknij prawym przyciskiem myszy projekt, wybierz **Dodaj** > **nowy element...** , wybierz **klasy**, nadaj nazwę nowej C# plik klasy *Functions.cs*i wybierz **Dodaj**.
 
@@ -340,7 +340,7 @@ W tej sekcji należy wykonać następujące zadania, aby skonfigurować rejestro
 
    |Name (Nazwa)  |Ciąg połączenia  |Typ bazy danych|
    |---------|---------|------|
-   |AzureWebJobsStorage | {Parametry połączenia magazynu, które wcześniej zostały skopiowane}|Niestandardowy|
+   |AzureWebJobsStorage | {Parametry połączenia magazynu, które wcześniej zostały skopiowane}|Niestandardowa|
 
 1. Jeśli **ustawienia aplikacji** okno nie ma instrumentacji usługi Application Insights klucza, należy dodać go, który został wcześniej skopiowany. (Klucz Instrumentacji może być już istnieje, w zależności od sposobu tworzenia aplikacji usługi app Service.)
 

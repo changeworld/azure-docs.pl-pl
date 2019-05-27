@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a4702ac0f70e3fc280501cd9524ccbfb528678
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 807045089f70e117d46754412d974be7fba5a77a
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546253"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832500"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Ewolucja platformy tożsamości firmy Microsoft
 
-Platforma tożsamości firmy Microsoft to unowocześnienie platformy deweloperów i usługi tożsamości Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logowania użytkowników, uzyskiwanie tokenów do wywoływania interfejsów API, takich jak program Microsoft Graph lub interfejsów API, które programiści. Składa się z usługą uwierzytelniania, bibliotek typu open source, rejestrowanie aplikacji i konfiguracji (za pośrednictwem portalu dla deweloperów i aplikacji interfejsu API), dokumentację dla deweloperów pełną, quickstart — przykłady, przykłady kodu, samouczki i przewodniki z instrukcjami i innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje standardowe protokoły branżowe, takie jak OAuth 2.0 i OpenID Connect.
+Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logowania użytkowników, uzyskiwanie tokenów do wywoływania interfejsów API, takich jak program Microsoft Graph lub interfejsów API, które programiści. Składa się z usługą uwierzytelniania, bibliotek typu open source, rejestrowanie aplikacji i konfiguracji (za pośrednictwem portalu dla deweloperów i aplikacji interfejsu API), dokumentację dla deweloperów pełną, quickstart — przykłady, przykłady kodu, samouczki i przewodniki z instrukcjami i innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje standardowe protokoły branżowe, takie jak OAuth 2.0 i OpenID Connect.
 
 Aż do chwili Większość programistów mający doświadczenie z platformy w wersji 1.0 usługi Azure AD do uwierzytelniania pracy i służbowego konta (zaprowizowane przez usługę Azure AD), żądając tokenów z punktu końcowego usługi Azure AD w wersji 1.0, za pomocą usługi Azure AD Authentication Library (ADAL) witrynie Azure portal. Rejestrowanie aplikacji i konfiguracji i interfejsu API programu Graph usługi Azure AD, dla konfiguracji aplikacji programowych.
 

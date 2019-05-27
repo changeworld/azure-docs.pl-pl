@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230147"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850527"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -70,9 +70,9 @@ Można uruchamiać aplikacje i usługi pomocnicze, potrzebujesz rozwiązania Kub
 
 Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę procesorów CPU, ilości pamięci i rozmiar i typ magazynu (takich jak SSD o wysokiej wydajności lub regularnych HDD). Jeśli przewidujesz potrzebę aplikacje, które wymagają dużej ilości procesora CPU i pamięci lub magazynu o wysokiej wydajności, należy odpowiednio zaplanować rozmiar węzła. Możesz również skalować w górę liczby węzłów w klastrze usługi AKS w taki sposób, aby zaspokajać zapotrzebowanie.
 
-W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze opiera się obecnie w systemie Ubuntu Linux. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
+Obraz maszyny Wirtualnej dla węzłów w klastrze w usłudze AKS, obecnie opiera się na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
 
-Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` wydania funkcji i udostępnia opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż Moby kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
+Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` wydania funkcji i udostępnia opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz użyć innego niż Moby kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
 
 ### <a name="resource-reservations"></a>Rezerwacji zasobu
 
@@ -104,6 +104,27 @@ Węzły o tej samej konfiguracji są grupowane w *pule węzłów*. Klaster usłu
 Podczas uaktualniania klastra usługi AKS lub skalować wykonywania akcji względem domyślnej puli węzeł. Istnieje również możliwość skalowania lub Uaktualnij puli określonego węzła. Dla operacji uaktualniania uruchomione kontenery są planowane w innych węzłach w puli węzeł, do momentu uaktualnienia wszystkich węzłów pomyślnie.
 
 Aby uzyskać więcej informacji na temat używania wielu pul węzłów w usłudze AKS, zobacz [tworzenie wielu pul węzłów klastra w usłudze AKS i zarządzanie nimi][use-multiple-node-pools].
+
+### <a name="node-selectors"></a>Selektory węzła
+
+W klastrze AKS, który zawiera wiele pul węzłów może być konieczne Poinformuj harmonogramu Kubernetes pulę węzłów, które do użycia dla danego zasobu. Na przykład kontrolery ruch przychodzący nie należy uruchamiać w węzłach systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS). Selektory węzła pozwalają zdefiniować różne parametry, takie jak węzeł systemu operacyjnego, do kontroli, gdzie powinna zostać zaplanowana zasobnik.
+
+Poniższy przykład podstawowy planuje wystąpienie serwera NGINX w węźle systemu Linux za pomocą selektora węzła *"beta.kubernetes.io/os": linux*:
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+Aby uzyskać więcej informacji na temat kontroli, gdzie są planowane zasobników, zobacz [najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze AKS][operator-best-practices-advanced-scheduler].
 
 ## <a name="pods"></a>Zasobników
 
@@ -248,3 +269,4 @@ W tym artykule omówiono niektóre z podstawowych składników platformy Kuberne
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

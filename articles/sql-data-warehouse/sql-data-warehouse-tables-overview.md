@@ -2,20 +2,20 @@
 title: Projektowanie tabel — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wprowadzenie do projektowania tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 03/15/2019
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1073e1b4ad38c4b05c9195cf4ea16ade7416fbce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474978"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851592"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w usłudze Azure SQL Data Warehouse
 
@@ -42,8 +42,8 @@ Aby wyświetlić organizacji tabel w usłudze SQL Data Warehouse, można użyć 
 
 | Tabela WideWorldImportersDW  | Typ tabeli | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Miasto | Wymiar | wwi.DimCity |
-| Zamówienie | Fakt | wwi.FactOrder |
+| Miejscowość | Wymiar | wwi.DimCity |
+| Kolejność | Fakt | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Tabela stanów trwałych 
@@ -92,7 +92,7 @@ Kategoria tabeli często określa, którą opcję wybrać do dystrybucji w tabel
 |:---------------|:--------------------|
 | Fakt           | Za pomocą dystrybucji skrótów klastrowanego indeksu magazynu kolumn. Dwie tabele skrótów są połączone w tej samej kolumnie dystrybucji zwiększa wydajność. |
 | Wymiar      | Użycie replikacji dla mniejszych tabel. Jeśli tabele są zbyt duże, aby przechowywać w każdym węźle obliczeniowym, należy użyć rozproszonego wyznaczania wartości skrótu. |
-| Przygotowanie        | Użyj działania okrężnego dla tabeli przemieszczania. Obciążenia za pomocą instrukcji CTAS jest szybkie. Gdy dane znajdują się w tabeli przemieszczania, użyj INSERT... Zaznacz, aby przenieść dane do tabel produkcyjnych. |
+| Przemieszczanie        | Użyj działania okrężnego dla tabeli przemieszczania. Obciążenia za pomocą instrukcji CTAS jest szybkie. Gdy dane znajdują się w tabeli przemieszczania, użyj INSERT... Zaznacz, aby przenieść dane do tabel produkcyjnych. |
 
 ## <a name="table-partitions"></a>Partycje tabel
 Tabeli partycjonowanej magazyny i wykonuje operacje na wiersze tabeli, zgodnie z zakresami danych. Na przykład tabela może być dzielone według dnia, miesiąca lub roku. Może poprawić wydajność zapytań przez usunięcie partycji, co ogranicza skanowania zapytań do danych w ramach partycji. Można również utrzymania danych poprzez przełączanie partycji. Ponieważ dane w usłudze SQL Data Warehouse została już wysłana, zbyt dużej liczby partycji może zmniejszyć wydajność zapytań. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Podczas przełączania do tabeli partycji partycje, które nie są puste, rozważ użycie opcji TRUNCATE_TARGET w swojej [instrukcji ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) instrukcji, jeśli istniejące dane zostaną obcięte. Poniżej przełączników kodu w przekształcone dane dziennego do SalesFact zastąpienie istniejących danych. 
@@ -106,7 +106,7 @@ Domyślnie usługa SQL Data Warehouse przechowuje tabelę jako klastrowany indek
 
 Aby uzyskać listę funkcji magazynu kolumn, zobacz [co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [maksymalizowania i jakości w indeksach magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
-## <a name="statistics"></a>Statystyki
+## <a name="statistics"></a>Statystyka
 Optymalizator zapytań używa statystyki na poziomie kolumny, podczas tworzenia planu wykonania zapytania. Aby poprawić wydajność zapytań, ważne jest musi mieć statystyki dotyczące poszczególnych kolumn, szczególnie kolumny używane w sprzężeniach zapytania. [Tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics) odbywa się automatycznie.  Jednak zaktualizowanie statystyk nie odbywa się automatycznie. Aktualizowanie statystyk po znacznej liczby wierszy są dodane lub zmienione. Na przykład aktualizowanie statystyk po załadowaniu. Aby uzyskać więcej informacji, zobacz [wskazówki statystyki](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="commands-for-creating-tables"></a>Polecenia do tworzenia tabel

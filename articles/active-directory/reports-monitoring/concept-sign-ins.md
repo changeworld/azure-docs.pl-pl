@@ -17,21 +17,21 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288092"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864464"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
 Architektura raportowania w usłudze Azure Active Directory (Azure AD) obejmuje następujące składniki:
 
-- **Działanie** 
+- **Aktywność** 
     - **Operacje logowania** — informacje na temat użycia zarządzanych aplikacji i działań logowania użytkownika.
     - **Dzienniki inspekcji** - [dzienniki inspekcji](concept-audit-logs.md) Podaj informacje o użytkowników i grupy zarządzania, zarządzane aplikacje i działania dotyczące katalogu aktywności systemu.
-- **Bezpieczeństwo** 
+- **Zabezpieczenia** 
     - **Ryzykowne logowania** — [ryzykowne logowania](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogły zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika.
     - **Użytkownicy oflagowani w związku z ryzykiem** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, który może być zabezpieczenia mogły zostać naruszone.
 
@@ -118,34 +118,41 @@ Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 
 - Wszyscy
 - Nie zastosowano
-- Powodzenie
+- Sukces
 - Niepowodzenie
 
 Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
-Możliwe wartości:
+Możliwe wartości to:
 
 - 1 miesiąc
 - 7 dni
-- 24 godziny
+- 24 godz.
 - Niestandardowy zakres czasu
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 
-Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie dodane do listy filtrów. Na przykład dodanie pola **Aplikacja kliencka** do listy powoduje udostępnienie kolejnej opcji filtru, która umożliwia ustawienie następujących filtrów:
-
-- Przeglądarka      
-- Exchange ActiveSync (obsługiwane)               
-- Exchange ActiveSync (nieobsługiwane)
-- Inni klienci               
-    - IMAP
-    - MAPI
-    - Starsi klienci pakietu Office
-    - POP
-    - SMTP
-
-
+Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie dodane do listy filtrów. Na przykład dodanie pola **Aplikacja kliencka** do listy powoduje udostępnienie kolejnej opcji filtru, która umożliwia ustawienie następujących filtrów:  
 ![Działania związane z logowaniem](./media/concept-sign-ins/12.png "Działania związane z logowaniem")
 
+- **Przeglądarka**  
+    Ten filtr wyświetlenie wszystkich zdarzeń, w której próby logowania zostały wykonane przy użyciu przeglądarki przepływów.
+- **Program Exchange ActiveSync (obsługiwany)**  
+    Ten filtr pokazuje wszystkie próby logowania, w których podjęto protokołu Exchange ActiveSync (EAS) z obsługiwanych platform, takich jak systemy iOS, Android i Windows Phone.
+- **Program Exchange ActiveSync (nieobsługiwane)**  
+    Ten filtr zawiera wszystkie próby logowania, gdzie protokołu EAS zostanie podjęta określona z nieobsługiwane platformy takie jak dystrybucje systemu Linux.
+- **Aplikacje mobilne i klienci Stacjonarni** ten filtr pokazuje wszystkich prób logowania, które nie były używane przepływy przeglądarki. Może to być aplikacje mobilne z dowolnej platformy przy użyciu dowolnego protokołu lub aplikacji klienta stacjonarnego, takich jak pakiet Office dla Windows lub MacOS.
+  
+- **Inni klienci**
+    - **IMAP**  
+        Klient poczty starszej wersji w celu pobrania poczty e-mail za pomocą protokołu IMAP.
+    - **MAPI**  
+        Pakiet Office 2013, w której włączono biblioteki ADAL i korzysta z interfejsu MAPI.
+    - **Starsi klienci pakietu Office**  
+        Pakiet Office 2013 w konfiguracji domyślnej gdzie ADAL nie jest włączone i korzysta z interfejsu MAPI lub Office 2016, w których wyłączono biblioteki ADAL.
+    - **POP**  
+        Klient poczty starszej wersji przy użyciu POP3 w celu pobrania poczty e-mail.
+    - **SMTP**  
+        Klient poczty starszej wersji za pomocą protokołu SMTP do wysyłania wiadomości e-mail.
 
 ## <a name="download-sign-in-activities"></a>Pobieranie działań związanych z logowaniem
 
@@ -192,7 +199,7 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Lokalizacja
 - Adres IP
 - Date
-- Wymagane uwierzytelnianie wieloskładnikowe
+- Wymagana usługa MFA
 - Stan logowania
 
 > [!NOTE]

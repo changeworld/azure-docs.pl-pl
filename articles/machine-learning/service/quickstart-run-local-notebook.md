@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753030"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864377"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu
 
-Użyj serwera Notes, aby uruchomić kod, który loguje się wartości [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie za pomocą usługi Machine Learning.
+Aby rozpocząć pracę z usługą Azure Machine Learning, należy użyć własnego środowiska Python i serwer notesu Jupyter.  Aby uzyskać szybki start z żadnej instalacji zestawu SDK, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md).
 
-Ten przewodnik Szybki Start korzysta z własnego środowiska Python i serwer notesu Jupyter. Aby uzyskać szybki start z żadnej instalacji zestawu SDK, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md) 
+Ten przewodnik Szybki Start pokazano, jak za pomocą [obszarze roboczym usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md) do śledzenia Twojej eksperymentów uczenia maszynowego. Będzie uruchamianie kodu języka Python wartości Zaloguj się do obszaru roboczego.
 
 Zobacz wersję wideo tego przewodnika Szybki start:
 

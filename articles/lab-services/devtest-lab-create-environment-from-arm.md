@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 96e3a24b0c9f9ab21652ffcd1b29deeb512581e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202708"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833983"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager
 
@@ -54,7 +54,7 @@ Istnieje kilka reguł, które trzeba wykonać, aby zorganizować szablonów usł
     ![Pliki szablonów klucza usługi Azure Resource Manager](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - Jeśli chcesz użyć wartości parametrów zdefiniowanych w pliku parametrów, musi mieć nazwę pliku parametrów `azuredeploy.parameters.json`.
-- Można używać parametrów `_artifactsLocation` i `_artifactsLocationSasToken` do konstruowania parametersLink wartość identyfikatora URI, dzięki czemu usługa DevTest Labs do automatycznego zarządzania zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [jak usługi Azure DevTest Labs ułatwia zagnieżdżonych usługi Resource Manager Szablon wdrożenia dla środowisk testowych](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/).
+- Można używać parametrów `_artifactsLocation` i `_artifactsLocationSasToken` do konstruowania parametersLink wartość identyfikatora URI, dzięki czemu usługa DevTest Labs do automatycznego zarządzania zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [wdrażanie zagnieżdżonych szablonów usługi Azure Resource Manager w środowiskach testowych](deploy-nested-template-environments.md).
 - Można zdefiniować metadane, aby określić nazwę wyświetlaną szablonu i opis. Te metadane musi znajdować się w pliku o nazwie `metadata.json`. Następujący przykład pliku metadanych przedstawia sposób określić nazwę wyświetlaną i opis: 
 
     ```json

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142449"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834014"
 ---
-# <a name="connect-from-a-web-browser"></a>Łączenie z przeglądarki sieci web
+# <a name="connect-from-a-web-browser"></a>Łączenie z przeglądarki internetowej
 
 Klient sieci web umożliwia dostęp do zasobów Windows wirtualnego pulpitu (wersja zapoznawcza) w przeglądarce sieci web bez proces długich instalacji.
 
@@ -38,6 +38,6 @@ Podczas każdej przeglądarce obsługą języka HTML5 powinna działać, firma M
 W przeglądarce przejdź do [klienta sieci web pulpitu wirtualnego Windows](https://rdweb.wvd.microsoft.com/webclient) i zaloguj się przy użyciu konta użytkownika.
 
 >[!NOTE]
->Jeśli już zalogowano Cię przy użyciu konta usługi Azure AD, który jest inny niż ten, którego chcesz użyć dla Windows pulpitu wirtualnego, konieczne może się wylogować lub użyj prywatnym oknie przeglądarki.
+>Już logujesz się przy użyciu innego konta usługi Azure Active Directory niż ten, którego chcesz użyć dla Windows pulpitu wirtualnego, należy się wylogować lub użyj prywatnym oknie przeglądarki.
 
 Po zarejestrowaniu się powinny teraz wyświetlić listę zasobów. Zasoby można uruchomić, wybierając je, podobnie jak zwykła aplikacja w **wszystkie zasoby** kartę.

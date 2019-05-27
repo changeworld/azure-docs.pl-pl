@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522943"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833570"
 ---
 # <a name="remote-desktop-client-connections"></a>Połączenia klienta pulpitu zdalnego
 
@@ -28,9 +28,9 @@ Upewnij się, że istnieje połączenie z Internetem, otwierając innej witryny 
 
 Użyj **nslookup** o potwierdzenie DNS mogą rozpoznać nazwę FQDN:
 
-    ```cmd
-    nslookup rdweb.wvd.microsoft.com
-    ```
+```cmd
+nslookup rdweb.wvd.microsoft.com
+```
 
 Spróbuj nawiązać połączenie z innym klientem, klient usług pulpitu zdalnego, Windows 7 lub systemu Windows 10 i wyboru zobaczyć, można otworzyć klienta sieci web.
 
@@ -54,7 +54,7 @@ Spróbuj nawiązać połączenie z innym klientem, klient usług pulpitu zdalneg
 
 1. Uruchom ponownie przeglądarkę.
 2. Wyczyść pliki cookie. Zobacz [sposobu usuwania plików cookie w przeglądarce Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Przeglądarka Wyczyść pamięć podręczną. Zobacz [Wyczyść pamięć podręczną przeglądarki w przeglądarce](https://binged.it/2RKyfdU).
+3. Wyczyść pamięć podręczną przeglądarki. Zobacz [Wyczyść pamięć podręczną przeglądarki w przeglądarce](https://binged.it/2RKyfdU).
 4. Otwórz przeglądarkę w trybie prywatnym.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Klient sieci Web przestaje odpowiadać lub odłącza
@@ -74,7 +74,7 @@ Jeśli klient sieci Web przechowuje monit o podanie poświadczeń, wykonaj te in
 1. Upewnij się, że adres URL sieci web klienta jest poprawny.
 2. Upewnij się, że poświadczenia są środowiska pulpitu wirtualnego Windows powiązane z adresu URL.
 3. Wyczyść pliki cookie. Zobacz [sposobu usuwania plików cookie w przeglądarce Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Przeglądarka Wyczyść pamięć podręczną. Zobacz [Wyczyść pamięć podręczną przeglądarki w przeglądarce](https://binged.it/2RKyfdU).
+4. Wyczyść pamięć podręczną przeglądarki. Zobacz [Wyczyść pamięć podręczną przeglądarki w przeglądarce](https://binged.it/2RKyfdU).
 5. Otwórz przeglądarkę w trybie prywatnym.
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient pulpitu zdalnego dla Windows 7 lub Windows 10 nie odpowiada lub nie można otworzyć
@@ -111,20 +111,20 @@ Wykonaj instrukcje dotyczące rozwiązywania problemów, te ogólne kody błęd�
 4. Za pomocą **Get RdsHostPool** i **Get RdsSessionHost** poleceń cmdlet, upewnij się, że rozwiązywania problemów jest wykonywana w puli właściwy host.
 5. Wykonaj poniższe polecenie, aby uzyskać listę wszystkich działań nie powiodło się z typu połączenia określone okno czasu:
 
-    ```cmd
+    ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
 6. Za pomocą **ActivityId** z poprzednich dane wyjściowe polecenia cmdlet, uruchom poniższe polecenie:
 
-    ```
+    ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
 7. Polecenie generuje dane wyjściowe podobne do danych wyjściowych poniżej. Użyj **ErrorCodeSymbolic** i **komunikat o błędzie** rozwiązywać problemy z główną przyczynę.
 
-    ```
+    ```PowerShell
     ErrorSource       : <Source>
     ErrorOperation    : <Operation>
     ErrorCode         : <Error code>
@@ -159,7 +159,7 @@ Użytkownik może uruchomić klientów usług pulpitu zdalnego i jest w stanie u
 
 Upewnij się, że użytkownik, zgłaszania problemów dotyczących przypisaniu do grupy aplikacji przy użyciu tego wiersza polecenia:
 
-```cmd
+```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 

@@ -9,12 +9,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686448"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851435"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 
@@ -24,7 +24,7 @@ Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywani
  
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: values.dev.yaml
 1. Otwórz program VS Code z projektem, który jest włączony dla usługi Azure Dev miejsca do magazynowania.
-2. Dodaj plik o nazwie _values.dev.yaml_ w tym samym folderze co istniejące _values.yaml_ i zdefiniuj klucz tajny i wartości, jak w poniższym przykładzie:
+2. Dodaj plik o nazwie _values.dev.yaml_ w tym samym folderze co istniejące _azds.yaml_ i zdefiniuj klucz tajny i wartości, jak w poniższym przykładzie:
 
     ```yaml
     secrets:
@@ -34,12 +34,13 @@ Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywani
         key: "secretkeyhere"
     ```
      
-3. Aktualizacja _azds.yaml_ mówić Azure Dev miejsca do magazynowania do użycia nowego _values.dev.yaml_ pliku. Aby to zrobić, należy dodać tę konfigurację w sekcji configurations.develop.container:
+3. _azds.yaml_ już odwołuje się _values.dev.yaml_ plik, jeśli taki istnieje. Jeśli wolisz inną nazwę pliku, zaktualizuj sekcję install.values:
 
     ```yaml
-           container:
-             values:
-             - "charts/webfrontend/values.dev.yaml"
+    install:
+      values:
+      - values.dev.yaml?
+      - secrets.dev.yaml?
     ```
  
 4. Zmodyfikuj kod usługi do odwoływania się do tych kluczy tajnych jako zmienne środowiskowe, jak w poniższym przykładzie:
@@ -76,17 +77,17 @@ Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywani
           set:
             secrets:
               redis:
-                port: "$REDIS_PORT_DEV"
-                host: "$REDIS_HOST_DEV"
-                key: "$REDIS_KEY_DEV"
+                port: "$REDIS_PORT"
+                host: "$REDIS_HOST"
+                key: "$REDIS_KEY"
     ```
      
 2.  Tworzenie _ENV_ pliku w tym samym folderze co _azds.yaml_. Wprowadź wpisami tajnymi za pomocą standardowych klucz = wartość notacji. Zatwierdź nie _ENV_ plików do kontroli źródła. (Aby pominąć z kontroli źródła w systemach kontroli wersji git, dodaj go do _.gitignore_ pliku.) W poniższym przykładzie przedstawiono _ENV_ pliku:
 
     ```
-    REDIS_PORT_DEV=3333
-    REDIS_HOST_DEV=myredishost
-    REDIS_KEY_DEV=myrediskey
+    REDIS_PORT=3333
+    REDIS_HOST=myredishost
+    REDIS_KEY=myrediskey
     ```
 2.  Zmodyfikuj kod źródłowy usługi, aby odwoływać się do tych kluczy tajnych w kodzie, jak w poniższym przykładzie:
 

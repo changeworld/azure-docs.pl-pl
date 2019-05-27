@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 0216a8c7d4e52e89098979223e9b792398e25038
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920180"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835183"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service przy użyciu wiersza polecenia platformy Azure
 
@@ -25,7 +25,6 @@ Aby uzyskać kompletny przykładowy skrypt używane w tym artykule, zobacz [przy
 Obowiązują następujące ograniczenia:
 
 - Usługa Azure AD można włączyć tylko podczas tworzenia klastra nowe, włączone RBAC. Nie można włączyć usługi Azure AD w istniejącym klastrze usługi AKS.
-- *Gość* użytkowników w usłudze Azure AD, takie jak, jeśli używasz federacyjnego logowania z innego katalogu, nie są obsługiwane.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -237,8 +236,9 @@ Jeśli po pomyślnym zalogowaniu przy użyciu przeglądarki sieci web, tak jak w
 error: You must be logged in to the server (Unauthorized)
 ```
 
-* Użytkownik zalogowany w w, ponieważ nie jest *gościa* w wystąpieniu usługi Azure AD (jest to często przypadek użycia logowania federacyjnego z innego katalogu).
+* Zdefiniowana jest odpowiedni obiekt o identyfikatorze lub główną nazwę użytkownika, w zależności od Jeśli konto użytkownika jest w tej samej dzierżawie usługi Azure AD, czy nie.
 * Użytkownik nie jest członkiem więcej niż 200 grup.
+* Klucz tajny zdefiniowane w rejestracji aplikacji dla serwera jest zgodna z wartości ustawionej za pomocą `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Kolejne kroki
 

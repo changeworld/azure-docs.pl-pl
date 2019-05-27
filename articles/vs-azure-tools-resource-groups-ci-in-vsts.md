@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458901"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019769"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
 Aby wdrożyć szablon platformy Azure, należy wykonać zadania w poszczególnych etapach: Kopiuj kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
@@ -93,7 +93,7 @@ Poniższe procedury opisują kroki niezbędne do skonfigurowania ciągłego wdra
       
       W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
       
-      `azure account show`
+      `az account show`
    8. Aby uzyskać identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy, postępuj zgodnie z procedurą w [aplikacji Utwórz usługi Active Directory i jednostki usługi przy użyciu portalu](active-directory/develop/howto-create-service-principal-portal.md) lub [uwierzytelniania jednostki usługi przy użyciu platformy Azure Menedżer zasobów](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Dodaj wartości identyfikator jednostki usługi, klucz jednostki usługi i identyfikator dzierżawy w **dodawania subskrypcji platformy Azure** okna dialogowego pole, a następnie wybierz **OK** przycisku.
       

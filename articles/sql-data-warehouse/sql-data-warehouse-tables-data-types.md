@@ -2,20 +2,20 @@
 title: Definiowanie typów danych — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Zalecenia dotyczące definiowania typów danych tabeli w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: aab51c3dc66a1486e8ad7ced55425a2b49c7dea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06a273d3bfd5d416039a992e36bd4b0f72a85f78
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401769"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851545"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Typy danych tabeli w usłudze Azure SQL Data Warehouse
 Zalecenia dotyczące definiowania typów danych tabeli w usłudze Azure SQL Data Warehouse. 
@@ -56,7 +56,7 @@ Na poniższej liście przedstawiono typy danych, SQL Data Warehouse nie obsługu
 | [Lokalizacja geograficzna](/sql/t-sql/spatial-geography/spatial-types-geography) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [Identyfikator hierarchii](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
 | [image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [Tekst](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
+| [text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [ntext](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) |
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql) |Podziel kolumnę na kilku silnie typizowanych kolumn. |
 | [table](/sql/t-sql/data-types/table-transact-sql) |Konwertuj do tabel tymczasowych. |

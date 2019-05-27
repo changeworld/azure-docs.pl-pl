@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890614"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860341"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: Tworzenie aplikacji Xamarin.Forms za pomocą zestawu SDK platformy .NET i interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -34,7 +34,7 @@ Ten przewodnik Szybki start przedstawia tworzenie [konta Cosmos skonfigurowanego
 
 Aby uruchomić przykład, musisz mieć program [Visual Studio](https://www.visualstudio.com/downloads/) lub [Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/) i ważne konto usługi Azure CosmosDB.
 
-Jeśli nie masz jeszcze programu Visual Studio, pobierz program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i podczas instalacji zainstaluj pakiet roboczy **Opracowywanie aplikacji mobilnych za pomocą środowiska .NET**.
+Jeśli nie masz jeszcze programu Visual Studio, Pobierz [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z **opracowywania aplikacji mobilnych przy użyciu platformy .NET** obciążenia zainstalowanym w ramach instalacji.
 
 Jeśli wolisz pracować na komputerze Mac, pobierz program [Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/) i uruchom instalację.
 
@@ -164,7 +164,7 @@ Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-### <a name="visual-studio-2017"></a>Visual Studio 2017
+### <a name="visual-studio-2019"></a>Visual Studio 2019
 
 1. W programie Visual Studio kliknij poszczególne projekty prawym przyciskiem myszy w **Eksploratorze rozwiązań** i kliknij polecenie **Zarządzaj pakietami NuGet**.
 2. Kliknij polecenie **Przywróć wszystkie pakiety NuGet**.

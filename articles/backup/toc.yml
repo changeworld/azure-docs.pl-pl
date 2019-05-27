@@ -21,6 +21,8 @@
       href: tutorial-restore-disk.md
     - name: Przywracanie pojedynczych plików
       href: tutorial-restore-files.md
+    - name: Tworzenie kopii zapasowej programu SQL Server na maszynie wirtualnej platformy Azure
+      href: tutorial-sql-backup.md
     - name: Tworzenie kopii zapasowych serwera z systemem Windows
       href: tutorial-backup-windows-server-to-azure.md
     - name: Przywracanie plików do systemu Windows Server

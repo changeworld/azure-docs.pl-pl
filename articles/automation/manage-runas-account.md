@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/03/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a104c9e41ef1843c377b0406b499ffae504db97
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595680"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002502"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -24,12 +24,12 @@ Podczas tworzenia konta Uruchom jako tworzy nowego użytkownika nazwy głównej 
 
 Istnieją dwa typy kont Uruchom jako:
 
-* **Konto platformy Azure Uruchom jako** — to konto jest używane do zarządzania zasobami modelu wdrażania usługi Resource Manager.
+* **Konto platformy Azure Uruchom jako** — to konto jest używane do zarządzania [modelu wdrażania usługi Resource Manager](../azure-resource-manager/resource-manager-deployment-model.md) zasobów.
   * Tworzy aplikację usługi Azure AD z certyfikatem z podpisem własnym, tworzy konto jednostki usługi dla aplikacji w usłudze Azure AD i przypisuje rolę Współautor dla konta w bieżącej subskrypcji. To ustawienie możesz zmienić na rolę Właściciel lub inną. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach w usłudze Azure Automation](automation-role-based-access-control.md).
   * Tworzy zasób certyfikatu usługi Automation o nazwie *AzureRunAsCertificate* na określonym koncie usługi Automation. Zasób certyfikatu zawiera klucz prywatny certyfikatu używany przez aplikację Azure AD.
   * Tworzy zasób połączenia usługi Automation o nazwie *AzureRunAsConnection* na określonym koncie usługi Automation. Zasób połączenia zawiera identyfikator aplikacji, identyfikator dzierżawy, identyfikator subskrypcji i odcisk palca certyfikatu.
 
-* **Usługa Azure klasycznego konta Uruchom jako** — to konto jest używane do zarządzania zasobami modelu wdrożenia klasycznego.
+* **Usługa Azure klasycznego konta Uruchom jako** — to konto jest używane do zarządzania [klasycznego modelu wdrażania](../azure-resource-manager/resource-manager-deployment-model.md) zasobów.
   * Tworzy certyfikat zarządzania w ramach subskrypcji
   * Tworzy zasób certyfikatu usługi Automation o nazwie *AzureClassicRunAsCertificate* na określonym koncie usługi Automation. Zasób certyfikatu zawiera klucz prywatny certyfikatu używany przez certyfikat zarządzania.
   * Tworzy zasób połączenia usługi Automation o nazwie *AzureClassicRunAsConnection* na określonym koncie usługi Automation. Zasób połączenia zawiera nazwę subskrypcji, identyfikator subskrypcji i nazwę zasobu certyfikatu.
@@ -43,20 +43,20 @@ Istnieją dwa typy kont Uruchom jako:
 
 ## <a name="permissions"></a>Uprawnienia do konfigurowania konta Uruchom jako
 
-Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć określone uprawnienia i uprawnienia. Globalnego/Współadministratora administratora może wykonać wszystkie zadania. W sytuacji, w którym masz rozdzielenia obowiązków w poniższej tabeli przedstawiono listę zadań, równoważne polecenia cmdlet i wymagane uprawnienia:
+Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć określone uprawnienia i uprawnienia. Administrator globalny usługi Azure Active Directory i właściciel subskrypcji może wykonanie wszystkich zadań. W sytuacji, w którym masz rozdzielenia obowiązków w poniższej tabeli przedstawiono listę zadań, równoważne polecenia cmdlet i wymagane uprawnienia:
 
 |Zadanie|Polecenie cmdlet  |Minimalny poziom uprawnień  |Gdzie można ustawić uprawnienia|
 |---|---------|---------|---|
 |Tworzenie aplikacji usługi Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rola dla deweloperów aplikacji<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji |
 |Dodawanie poświadczeń do aplikacji.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Administrator aplikacji lub administrator GLOBALNY<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji|
-|Utwórz i Pobierz jednostkę usługi Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub administrator GLOBALNY        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji|
-|Przypisz lub uzyskać rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Administrator dostępu użytkownika lub właściciela        | [Subskrypcja](../role-based-access-control/role-assignments-portal.md)</br>Strona główna > Subskrypcje > \<Nazwa subskrypcji\> — kontrola dostępu (IAM)|
+|Utwórz i Pobierz jednostkę usługi Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub administrator GLOBALNY<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji|
+|Przypisz lub uzyskać rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Musi mieć następujące uprawnienia:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Lub ODP.:</br></br>Administrator dostępu użytkownika lub właściciela        | [Subskrypcja](../role-based-access-control/role-assignments-portal.md)</br>Strona główna > Subskrypcje > \<Nazwa subskrypcji\> — kontrola dostępu (IAM)|
 |Tworzenie lub usuwanie certyfikatu usługi Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Współautor dla grupy zasobów         |Grupa zasobów konta usługi Automation|
 |Tworzenie lub usuwanie połączenia usługi Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Współautor dla grupy zasobów |Grupa zasobów konta usługi Automation|
 
-<sup>1</sup> użytkownicy inni niż administratorzy w dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Jeśli dzierżawy usługi Azure AD **użytkownicy mogą rejestrować aplikacje** opcji **ustawienia użytkownika**strona jest ustawiona na **tak**. Jeśli wartością ustawienia rejestracji aplikacji jest **Nie**, użytkownik wykonujący tę akcję musi być administratorem globalnym w usłudze Azure AD.
+<sup>1</sup> użytkownicy inni niż administratorzy w dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Jeśli dzierżawy usługi Azure AD **użytkownicy mogą rejestrować aplikacje** opcji **ustawienia użytkownika**strona jest ustawiona na **tak**. Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, użytkownik wykonujący tę akcję musi być **administratora globalnego** w usłudze Azure AD.
 
-Jeśli nie jesteś członkiem wystąpienia usługi Active Directory subskrypcji przed dodaniem do globalnego/współadministratora roli administratora subskrypcji, dodawane jako Gość. W takiej sytuacji pojawi się `You do not have permissions to create…` ostrzeżenia na **Dodawanie konta usługi Automation** strony. Użytkownicy, którzy najpierw zostali dodani do roli administratora globalnego/współadministratora, mogą zostać usunięci z wystąpienia usługi Active Directory dla subskrypcji i ponownie dodani, aby zostać pełnymi użytkownikami w usłudze Active Directory. Aby zweryfikować tę sytuację, w okienku **Azure Active Directory** w witrynie Azure Portal wybierz kolejno pozycje **Użytkownicy i grupy** i **Wszyscy użytkownicy**, a po wybraniu określonego użytkownika wybierz pozycję **Profil**. Wartość atrybutu **Typ użytkownika** na liście profilów użytkowników nie powinna być równa **Gość**.
+Jeśli nie jesteś członkiem wystąpienia usługi Active Directory subskrypcji przed dodaniem do **administratora globalnego** roli w subskrypcji dodawane jako Gość. W takiej sytuacji pojawi się `You do not have permissions to create…` ostrzeżenia na **Dodawanie konta usługi Automation** strony. Użytkownicy dodani do **administratora globalnego** roli najpierw może być usunięty z wystąpienia usługi Active Directory dla subskrypcji i ponownie dodani, aby zostali pełnymi użytkownikami w usłudze Active Directory. Aby zweryfikować tę sytuację, w okienku **Azure Active Directory** w witrynie Azure Portal wybierz kolejno pozycje **Użytkownicy i grupy** i **Wszyscy użytkownicy**, a po wybraniu określonego użytkownika wybierz pozycję **Profil**. Wartość atrybutu **Typ użytkownika** na liście profilów użytkowników nie powinna być równa **Gość**.
 
 ## <a name="permissions-classic"></a>Uprawnienia do konfigurowania konta klasycznego konta Uruchom jako
 

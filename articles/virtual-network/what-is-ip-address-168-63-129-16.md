@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 78d2392e32465b3091c49032dc5df5f3a5b6061a
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: acfd5230d1bd572ea5179651558e3f736a8570af
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416033"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833122"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co to jest adres IP 168.63.129.16?
 
@@ -38,7 +38,7 @@ Publiczny adres IP 168.63.129.16 jest używany we wszystkich regionach i wszystk
 
 [Sondy kondycji usługi Azure Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md) pochodzi z tego adresu IP. Blokowanie tego adresu IP sondy usługi zakończy się niepowodzeniem.
 
-W przypadku sieci niewirtualnej sondy kondycji pochodzi z prywatnym adresem IP i 168.63.129.16 nie jest używany.
+W scenariuszu sieci niewirtualnej (wersja klasyczna) sondy kondycji pochodzi z prywatnym adresem IP i nie zastosowano 168.63.129.16.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

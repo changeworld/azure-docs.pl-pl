@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 362df8cee163bcd2d1dac73c650e42ee4f0f7751
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920100"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864800"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Jak zarządzać kontami użytkowników w usłudze Azure API Management
 
@@ -69,7 +69,7 @@ Aby uniemożliwić użytkownikowi, wykonaj poniższe kroki.
 
 ## <a name="reset-a-user-password"></a>Resetowanie hasła użytkownika
 
-Aby programowo pracować z kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/user) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania. Aby zresetować hasło do konta użytkownika do określonej wartości, można użyć [zaktualizowania użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operację i określ odpowiednie hasło.
+Aby programowo pracować z kontami użytkowników, zobacz dokumentacja jednostki użytkownika w [interfejsu API REST zarządzania API](/rest/api/apimanagement/) odwołania. Aby zresetować hasło do konta użytkownika do określonej wartości, można użyć [zaktualizowania użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operację i określ odpowiednie hasło.
 
 ## <a name="next-steps"> </a>Następne kroki
 Po utworzeniu konta dewelopera możesz skojarzyć go z rolami i subskrybowania produktów i interfejsów API. Aby uzyskać więcej informacji, zobacz [sposób tworzenia i używania grup][How to create and use groups].

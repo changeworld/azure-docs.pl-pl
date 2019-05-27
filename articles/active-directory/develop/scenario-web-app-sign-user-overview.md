@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b46df5e4ec8352b47f744a507fad702c37aa5fba
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6ce534c6eeecba220fd829be829caa679df52055
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075103"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833101"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: Aplikacja sieci Web użytkownikom zalogowanie się
+# <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: Aplikacja internetowa z możliwością logowania użytkowników
 
 Dowiedz się, wszystko, czego potrzebujesz do tworzenia aplikacji sieci web przez użytkowników logowania z platformą Microsoft identity.
 
@@ -40,9 +40,9 @@ Jeśli chcesz utworzyć pierwszy przenośnego (platformy ASP.NET Core) aplikacji
 Jeśli chcesz pozostać przy użyciu platformy ASP.NET, wypróbuj następującego samouczka:
 
 > [!div class="nextstepaction"]
-> [Szybki start: Aplikacja internetowa platformy ASP.NET Core, przez logowania użytkowników](quickstart-v2-aspnet-webapp.md)
+> [Szybki start: Aplikacja sieci web platformy ASP.NET przez logowania użytkowników](quickstart-v2-aspnet-webapp.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Możesz dodać do uwierzytelniania aplikacji sieci web, dzięki czemu można logowania użytkowników. Dodawanie uwierzytelniania umożliwia aplikacji dostęp do informacji o profilu ograniczona, a, na przykład Dostosowywanie doświadczenia z oferowanych swoim użytkownikom w sieci web. Aplikacje sieci Web uwierzytelnienia użytkownika w przeglądarce sieci web. W tym scenariuszu aplikacji sieci web poleca przeglądarkę użytkownika do logowania do usługi Azure AD. Usługa Azure AD, zwraca odpowiedź logowania za pośrednictwem przeglądarki przez użytkownika, który zawiera oświadczenia dotyczące użytkownika w tokenie zabezpieczającym. Korzystać z logowania użytkowników [Open ID Connect](./v2-protocols-oidc.md) standardowego protokołu sam upraszczane przez użycie oprogramowania pośredniczącego [biblioteki](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps).
 

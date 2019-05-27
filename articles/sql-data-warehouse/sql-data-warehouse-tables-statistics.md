@@ -2,21 +2,21 @@
 title: Tworzenie, aktualizowanie statystyk — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Zalecenia i przykłady do tworzenia i aktualizowania statystyk optymalizacji zapytań dotyczących tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 05/09/2018
-ms.author: kevin
-ms.reviewer: jrasnick
+ms.author: xiaoyul
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 7ef5c0a4e6694e9babcb3054831e88d9edceae85
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937276"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851540"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statystyki tabeli w usłudze Azure SQL Data Warehouse
 

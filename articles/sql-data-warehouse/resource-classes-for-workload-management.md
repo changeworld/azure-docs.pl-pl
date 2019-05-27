@@ -2,21 +2,20 @@
 title: Klasy zasobów do zarządzania obciążeniem — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące używania klas zasobów do zarządzania współbieżności i zasoby obliczeniowe dla zapytań w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-origin.date: 03/15/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 05/22/2019
+ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75bd6e8071717ba755b71f51afcd884539049489
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475086"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165980"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w usłudze Azure SQL Data Warehouse
 
@@ -80,11 +79,12 @@ Klasy zasobów dynamicznych są implementowane za pomocą tych wstępnie zdefini
 
 Kiedy digging szczegółowych klas zasobów dynamicznych na Gen1, są kilka informacji, które zwiększają złożoność dodatkowe do zrozumienia ich zachowania:
 
-- Klasa zasobów smallrc działa przy użyciu modelu stały pamięci, takich jak klasy zasobów statycznych.  Dynamicznie Smallrc zapytań nie może korzystać więcej pamięci, jaką jest zwiększenie poziomu usługi.
+**Na Gen1**
+- Klasa zasobów smallrc działa przy użyciu modelu stały pamięci, takich jak klasy zasobów statycznych.  Dynamicznie Smallrc zapytań nie może korzystać więcej pamięci, jaką jest zwiększenie poziomu usługi. 
 - Jak zmienić poziomy usług, współbieżności dostępnych zapytań może przejść w górę lub w dół.
-- Skalowanie poziomy usług nie zapewnia zmiany proporcjonalny przydział do tej samej klasy zasobów pamięci.
+- Skalowanie poziomu usług nie zapewnia zmianę proporcjonalny przydział do tej samej klasy zasobów pamięci.
 
-Na **Gen2 tylko**, klasy zasobów dynamicznych są naprawdę dynamiczne adresowanie punktów wymienionych powyżej.  Nowa reguła jest 3-10-22 — 70 dla alokacji procent pamięci dla klas zasobów małych medium dużych xlarge **niezależnie od poziomu usługi**.  Poniższa tabela zawiera skonsolidowany szczegółowe informacje o wartości procentowych alokacji pamięci i minimalnej liczby równoczesnych zapytań działających niezależnie od poziomu usługi.
+**Na Gen2**, klasy zasobów dynamicznych są naprawdę dynamiczne adresowanie punktów wymienionych powyżej.  Nowa reguła jest 3-10-22 — 70 dla alokacji procent pamięci dla klas zasobów małych medium dużych xlarge **niezależnie od poziomu usługi**.  Poniższa tabela zawiera skonsolidowany szczegółowe informacje o wartości procentowych alokacji pamięci i minimalnej liczby równoczesnych zapytań działających niezależnie od poziomu usługi.
 
 | Klasa zasobów | Procent pamięci | Minimalna liczba jednoczesnych kwerend |
 |:--------------:|:-----------------:|:----------------------:|
@@ -116,7 +116,7 @@ Te operacje są regulowane przez klasy zasobów:
 - Wybierz (podczas wykonywania zapytania tabele użytkownika)
 - Polecenia ALTER INDEX - ponownej kompilacji lub z opcją REORGANIZE
 - ALTER TABLE REBUILD
-- TWORZENIE INDEKSU
+- CREATE INDEX
 - UTWÓRZ KLASTROWANY INDEKS MAGAZYNU KOLUMN
 - CREATE TABLE AS SELECT (CTAS)
 - Ładowanie danych
@@ -134,7 +134,7 @@ Poniższe instrukcje są wykluczone z klasami zasobów i są zawsze uruchamiane 
 - Utwórz lub DROP TABLE
 - INSTRUKCJA ALTER TABLE... PRZEŁĄCZNIK, dzielenia lub scalania PARTYCJI
 - INSTRUKCJA ALTER INDEX WYŁĄCZ
-- USUŃ INDEKS
+- DROP INDEX
 - TWORZENIA, aktualizacji i DROP STATISTICS
 - OBCINANIE TABELI
 - INSTRUKCJA ALTER AUTORYZACJI
@@ -196,7 +196,7 @@ Użytkownicy mogą należeć do wielu klas zasobów. Gdy użytkownik należy do 
 - Zasób dynamiczny klasy mają pierwszeństwo przed statycznych klas zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc(dynamic) i staticrc80 (statyczne), zapytania działały z mediumrc.
 - Większych klas zasobów mają pierwszeństwo przed mniejszej klasy zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc i largerc, zapytania działały z largerc. Podobnie jeśli użytkownik jest członkiem zarówno staticrc20, jak i statirc80, zapytania działały z staticrc80 alokacji zasobów.
 
-## <a name="recommendations"></a>Zalecenia
+## <a name="recommendations"></a>Rekomendacje
 
 Firma Microsoft zaleca się utworzenie użytkownika, który jest przeznaczony do obsługi określonego typu zapytania lub operacja ładowania. Nadaj tego użytkownika do klasy zasobów trwałe, zamiast Zmienianie klasy zasobów częste. Statycznych klas zasobów sobie większą ogólną kontrolę na obciążenie, dlatego zalecane jest używanie statycznych klas zasobów, zanim będzie można uznać klas dynamicznych zasobów.
 
@@ -942,7 +942,6 @@ Aby uzyskać więcej informacji o zarządzaniu bazy danych użytkowników i zabe
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:../sql-database/sql-database-manage-logins.md
+[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-<!-- Update_Description: update link, wording update-->

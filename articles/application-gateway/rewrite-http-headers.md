@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: 89df3a981ba3710e848f834c303772e94e10b139
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947177"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000969"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway
 
@@ -157,9 +157,7 @@ Możesz ocenić nagłówka żądania lub odpowiedzi HTTP na obecność zmiennej 
 
 - Nazwy nagłówków może zawierać żadnych znaków alfanumerycznych i określone symbole, zgodnie z definicją w [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Obecnie nie obsługujemy znaku podkreślenia (\_) znaków specjalnych w nazwy nagłówków.
 
-## <a name="need-help"></a>Potrzebujesz pomocy?
-
-Skontaktuj się z nami pod adresem [ AGHeaderRewriteHelp@microsoft.com ](mailto:AGHeaderRewriteHelp@microsoft.com) Jeśli potrzebujesz pomocy przy użyciu tej funkcji.
+- Jeśli odpowiedź ma wiele nagłówków o takiej samej nazwie, wpisz ponownie wartość jednej z tych nagłówków spowoduje usunięcie innych nagłówków odpowiedzi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

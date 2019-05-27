@@ -5,20 +5,24 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: pabutler
-ms.openlocfilehash: 81e33bf37750dd869c3b52be5b2bca49820f47d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941894"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835053"
 ---
 # <a name="azure-saas-application-offer"></a>Oferta Azure aplikacji SaaS
 
 W tej sekcji wyjaśniono, jak opublikować oprogramowanie jako usługa (SaaS) oferty aplikacji, aby <a href="https://azuremarketplace.microsoft.com">portalu Azure Marketplace</a>.
 
-Użyj aplikacji SaaS, gdy rozwiązanie zostanie wdrożony w ramach własnej subskrypcji platformy Azure i klienci będą logować się za pośrednictwem interfejsu, projektowania i zarządzania nimi przetestować aplikację. <a href="https://azure.microsoft.com/services/active-directory">Usługa Azure Active Directory (AAD)</a> umożliwia korzystanie z istniejącym środowiskiem wersji próbnej.
+> [!IMPORTANT] 
+> SaaS oferują funkcje jest przeprowadzana migracja do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+
+
+Użyj aplikacji SaaS, gdy rozwiązanie zostanie wdrożony w ramach własnej subskrypcji platformy Azure i klientów będzie zalogować się za pomocą interfejsu projektowania i zarządzania nimi przetestować aplikację. <a href="https://azure.microsoft.com/services/active-directory">Usługa Azure Active Directory (AAD)</a> umożliwia korzystanie z istniejącym środowiskiem wersji próbnej.
 
 ## <a name="benefits"></a>Korzyści
 

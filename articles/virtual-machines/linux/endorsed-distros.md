@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/16/2019
 ms.author: szark
-ms.openlocfilehash: db10c95c982132c41193ed1cccfdcdca6f60ba5e
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: a1be0b6870882d3c7b0281dec7933e87c50e49de
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993083"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834565"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Zatwierdzone dystrybucje systemu Linux na platformie Azure
 Etap to udostępnienie obrazów systemu Linux w witrynie Azure Marketplace. Współpracujemy z wieloma społecznościami systemu Linux, aby dodać jeszcze więcej pozycji do listy dystrybucyjnej zatwierdzone. W międzyczasie dystrybucji, które nie są dostępne w portalu Marketplace, zawsze Przenoszenie własnych Linux postępując zgodnie ze wskazówkami w temacie [tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -32,14 +32,14 @@ Sterowniki usługi LIS (Linux Integration) dla funkcji Hyper-V i platformą Azur
 
 Agent systemu Linux platformy Azure wstępnie zainstalowanym systemem obrazów portalu Azure Marketplace i są zazwyczaj dostępne z repozytorium pakietów dystrybucji. Kod źródłowy znajduje się na [GitHub](https://github.com/azure/walinuxagent).
 
-  
+
 | Dystrybucja | Wersja | Sterowniki | Agent |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Pobierz LIS](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: Jądra |Pakiet: W [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jądra |Kod źródłowy: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+, 8.2+ |Jądra |Pakiet: W repozytorium, w obszarze "waagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+, 8.0+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|Jądra |Pakiet:<p> 11 WE [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium<br>Aby uzyskać 12 zawartych w Module "Chmura publiczna" w obszarze "python-azure-agent"<br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |Jądra |Pakiet: W [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium w obszarze "python-azure-agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jądra |Pakiet: W repozytorium, w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -94,7 +94,7 @@ Na świecie wiodący dostawca rozwiązań typu open source, Red Hat ułatwia pon
 
 SUSE Linux Enterprise Server na platformie Azure jest sprawdzonej platformie, która zapewnia doskonałą niezawodność i bezpieczeństwo chmury obliczeniowej. Wszechstronna platforma systemu Linux firmy SUSE bezproblemowo integruje się z usług Azure cloud services w celu dostarczenia środowiska chmury łatwe w zarządzaniu. Z więcej niż 9,200 certyfikowanych aplikacji od ponad 1800 niezależnych dostawców oprogramowania dla systemu SUSE Linux Enterprise Server SUSE gwarantuje, że obciążeń obsługiwanych w centrum danych można bez obaw wdrożyć na platformie Azure.
 
-### <a name="canonical"></a>Canonical
+### <a name="canonical"></a>Kanoniczne
 [https://www.ubuntu.com/cloud/azure](https://www.ubuntu.com/cloud/azure)
 
 Canonical inżynierii i nadzór społeczności open dysku sukcesu firmy Ubuntu w klienta, serwera i chmury obliczeniowej, w tym lokacjach chmury osobistej usług dla konsumentów. Wizja firmy Canonical ujednolicone, bezpłatne platformy w systemie Ubuntu z telefonu w chmurze, zapewnia rodziny spójnych interfejsów telefon, tablet, takich jak Telewizor i pulpitu. Tę wizję sprawia, że Ubuntu pierwszy wybór różnych mogą odnieść instytucje od dostawców chmury publicznej twórcy elektronicznych i ulubionych między poszczególne technologists.

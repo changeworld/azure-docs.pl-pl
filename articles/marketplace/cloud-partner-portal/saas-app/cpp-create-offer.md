@@ -5,18 +5,22 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: pabutler
-ms.openlocfilehash: 246dd77c8e92a36e0601aba7d1b851efb7e7fb9a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 646e9bf844477b3d8e1c4c42fb5956e015805433
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943554"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833496"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Tworzenie nowej oferty aplikacji SaaS
 
 W tym artykule opisano, jak tworzyć i publikować wpis SaaS aplikacja (aplikacja) oferty w portalu Azure Marketplace.
+
+> [!IMPORTANT] 
+> SaaS oferują funkcje jest przeprowadzana migracja do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+
 
 ## <a name="offer-process"></a>Proces oferty
 
@@ -35,7 +39,7 @@ Oferty aplikacji SaaS składa się z pięciu sekcji opisane w poniższej tabeli:
 |  Informacje o kanale      |   Zawierają informacje kanału, takie jak GTM materiałów i kontakty.                |
 |  Wersja testowa        |   Sekcja opcjonalna usługa, która umożliwi klientom Definiowanie przetestować ofertę przed ich do zakupu.                |
 |  Szczegóły sklepu       | Zawiera marketingu, prawne i prowadzić zarządzania zasobami i specyfikacji.  <ul><li> Marketing zasoby obejmują oferty nazwę, opis i logo</li> <li> Zasoby prawne zawierają zasady zachowania poufności informacji, warunki użytkowania i inne dokumenty prawne</li>  <li> Włącza zasady zarządzania prowadzić można określić sposób obsługi potencjalnych klientów z poziomu portalu Azure Marketplace przez użytkownika końcowego.</li> </ul> |
-| Kontakty            | Zawiera informacje dotyczące kontaktu i zasady pomocy technicznej |
+| Osoby kontaktowe            | Zawiera informacje dotyczące kontaktu i zasady pomocy technicznej |
 
 ## <a name="new-offer-form"></a>Nowy formularz oferty
 

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 90b2dfdbec0d6dc81a05b845832fda92fe36d98c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8bd6e7c77faa54a8ebf0842cf140ef8aa73e953
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656595"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834544"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad usługi API Management
 W tym artykule omówiono wyrażenia zasad składnia jest C# 7. Każde wyrażenie ma dostęp do niejawnie podana [kontekstu](api-management-policy-expressions.md#ContextVariables) zmienną i dozwolonych [podzbioru](api-management-policy-expressions.md#CLRTypes) dla typów programu .NET Framework.
 
-Więcej informacji:
+Informacje dodatkowe:
 
 - Zobacz, jak Podaj informacje o kontekście do usługi zaplecza. Użyj [Ustaw parametr ciągu zapytania](api-management-transformation-policies.md#SetQueryStringParameter) i [nagłówka HTTP ustaw](api-management-transformation-policies.md#SetHTTPheader) zasady muszą podać tę informację.
 - Zobacz, jak używać [weryfikacji tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) zasad do wstępnej autoryzacji dostępu do operacji na podstawie tokenu oświadczeń.
@@ -192,7 +192,7 @@ Poniższa tabela zawiera listę typów programu .NET Framework i ich elementów 
 |System.Xml.Linq.XComment|Wszyscy|
 |System.Xml.Linq.XContainer|Wszyscy|
 |System.Xml.Linq.XDeclaration|Wszyscy|
-|System.Xml.Linq.XDocument|Wszystko, z wyjątkiem: Ładowanie|
+|System.Xml.Linq.XDocument|Wszystko, z wyjątkiem: Załaduj|
 |System.Xml.Linq.XDocumentType|Wszyscy|
 |System.Xml.Linq.XElement|Wszyscy|
 |System.Xml.Linq.XName|Wszyscy|
@@ -210,7 +210,7 @@ Zmiennej o nazwie `context` jest niejawnie dostępne we wszystkich zasadach [wyr
 
 |Zmiennej kontekstowej|Dozwolone metody, właściwości i wartości parametrów|
 |----------------------|-------------------------------------------------------|
-|Kontekst|Api: IApi<br /><br /> Wdrożenie<br /><br /> Który upłynął: TimeSpan — odstęp czasu między wartość sygnatury czasowej i bieżący czas<br /><br /> LastError<br /><br /> Operacja<br /><br /> Product (Produkt)<br /><br /> Żądanie<br /><br /> RequestId: Identyfikator GUID — identyfikator unikatowy żądania<br /><br /> Odpowiedź<br /><br /> Subskrypcja<br /><br /> Sygnatura czasowa: DateTime — punktu w czasie, gdy otrzymano żądanie<br /><br /> Śledzenie: bool — wskazuje, jeśli śledzenie jest włączone czy wyłączone <br /><br /> Użytkownik<br /><br /> Zmienne: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
+|Kontekst|Api: IApi<br /><br /> Wdrożenie<br /><br /> Który upłynął: TimeSpan — odstęp czasu między wartość sygnatury czasowej i bieżący czas<br /><br /> LastError<br /><br /> Operacja<br /><br /> Product (Produkt)<br /><br /> Zażądaj<br /><br /> RequestId: Identyfikator GUID — identyfikator unikatowy żądania<br /><br /> Odpowiedź<br /><br /> Subskrypcja<br /><br /> Sygnatura czasowa: DateTime — punktu w czasie, gdy otrzymano żądanie<br /><br /> Śledzenie: bool — wskazuje, jeśli śledzenie jest włączone czy wyłączone <br /><br /> Użytkownik<br /><br /> Zmienne: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
 |context.Api|Identyfikator: ciąg<br /><br /> IsCurrentRevision: bool<br /><br />  Nazwa: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Poprawka: ciąg<br /><br /> ServiceUrl: IUrl<br /><br /> Wersja: ciąg |
 |context.Deployment|Region: ciąg<br /><br /> ServiceName: ciąg<br /><br /> Certyfikaty: IReadOnlyDictionary<string, X509Certificate2>|
 |context.LastError|Źródło: ciąg<br /><br /> Przyczyna: ciąg<br /><br /> Komunikat: ciąg<br /><br /> Zakres: ciąg<br /><br /> Sekcja: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> PolicyId: ciąg<br /><br /> Aby uzyskać więcej informacji na temat kontekstu. LastError, zobacz [obsługi błędów](api-management-error-handling-policies.md).|
@@ -229,7 +229,7 @@ Zmiennej o nazwie `context` jest niejawnie dostępne we wszystkich zasadach [wyr
 |IUserIdentity|Identyfikator: ciąg<br /><br /> Dostawca: ciąg|
 |ISubscriptionKeyParameterNames|Nagłówek: ciąg<br /><br /> Zapytanie: ciąg|
 |ciąg IUrl.Query.GetValueOrDefault (queryParameterName: string, defaultValue: ciąg)|queryParameterName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości parametrów zapytania rozdzielonych przecinkami lub `defaultValue` Jeśli parametr nie zostanie znaleziony.|
-|Kontekst T. Variables.GetValueOrDefault < T\>(nazwa_zmiennej: string, defaultValue: T)|nazwa_zmiennej: ciąg<br /><br /> defaultValue: T<br /><br /> Zwraca wartość zmiennej rzutowane na typ `T` lub `defaultValue` Jeśli zmienna nie zostanie znaleziony.<br /><br /> Ta metoda zgłasza wyjątek, jeśli określony typ jest niezgodny z rzeczywisty typ zwracany zmiennej.|
+|Kontekst T. Variables.GetValueOrDefault < T\>(nazwa_zmiennej: string, defaultValue: T)|nazwa_zmiennej: ciąg<br /><br /> defaultValue: W<br /><br /> Zwraca wartość zmiennej rzutowane na typ `T` lub `defaultValue` Jeśli zmienna nie zostanie znaleziony.<br /><br /> Ta metoda zgłasza wyjątek, jeśli określony typ jest niezgodny z rzeczywisty typ zwracany zmiennej.|
 |BasicAuthCredentials AsBasic(input: this string)|wprowadzania: ciąg<br /><br /> Jeśli parametr wejściowy zawiera prawidłową wartość nagłówka żądania uwierzytelnienia podstawowe uwierzytelnianie HTTP, metoda zwraca obiekt typu `BasicAuthCredentials`; w przeciwnym razie metoda zwraca wartość null.|
 |wartość logiczna TryParseBasic (dane wejściowe: ten ciąg, wynik: się BasicAuthCredentials)|wprowadzania: ciąg<br /><br /> wynik: limit BasicAuthCredentials<br /><br /> Jeśli parametr wejściowy zawiera podstawowe uwierzytelnianie HTTP autoryzacji prawidłową w nagłówku żądania metoda zwraca `true` i parametr wynik zawiera wartość typu `BasicAuthCredentials`; w przeciwnym razie metoda zwraca `false`.|
 |BasicAuthCredentials|Hasło: ciąg<br /><br /> UserId: string|
@@ -242,7 +242,8 @@ Zmiennej o nazwie `context` jest niejawnie dostępne we wszystkich zasadach [wyr
 |byte [] Szyfruj (wejściowych: ten byte [], algorytmu podpisu: System.Security.Cryptography.SymmetricAlgorithm, klucz: byte [], iv:byte[])|dane wejściowe - zwykłego tekstu do zaszyfrowania<br /><br />algorytmu podpisu — algorytm szyfrowania<br /><br />klucz — klucz szyfrowania<br /><br />IV - wektor inicjowania<br /><br />Zwraca postaci zwykłego tekstu.|
 |byte [] / odszyfrowywania (wejściowych: ten byte [], algorytmu: string, klucz: byte [], iv:byte[])|dane wejściowe — tekst szyfrowania do odszyfrowania<br /><br />algorytmu podpisu — Nazwa algorytmu szyfrowania symetrycznego<br /><br />klucz — klucz szyfrowania<br /><br />IV - wektor inicjowania<br /><br />Zwraca zwykłego tekstu.|
 |byte [] / odszyfrowywania (wejściowych: ten byte [], algorytmu podpisu: System.Security.Cryptography.SymmetricAlgorithm)|dane wejściowe — tekst szyfrowania do odszyfrowania<br /><br />algorytmu podpisu — algorytm szyfrowania<br /><br />Zwraca zwykłego tekstu.|
-|byte [] / odszyfrowywania (wejściowych: ten byte [], algorytmu podpisu: System.Security.Cryptography.SymmetricAlgorithm, klucz: byte [], iv:byte[])|Tekst wejściowy szyfrowania - wejściowych — do odszyfrowania<br /><br />algorytmu podpisu — algorytm szyfrowania<br /><br />klucz — klucz szyfrowania<br /><br />IV - wektor inicjowania<br /><br />Zwraca zwykłego tekstu.|
+|byte [] / odszyfrowywania (wejściowych: ten byte [], algorytmu podpisu: System.Security.Cryptography.SymmetricAlgorithm, klucz: byte [], iv:byte[])|dane wejściowe — tekst szyfrowania do odszyfrowania<br /><br />algorytmu podpisu — algorytm szyfrowania<br /><br />klucz — klucz szyfrowania<br /><br />IV - wektor inicjowania<br /><br />Zwraca zwykłego tekstu.|
+|wartość logiczna VerifyNoRevocation (dane wejściowe: ten System.Security.Cryptography.X509Certificates.X509Certificate2)|Wykonuje weryfikacji łańcucha X.509 bez sprawdzania stanu odwołania certyfikatu.<br /><br />dane wejściowe — obiekt certyfikatu<br /><br />Zwraca `true` Jeśli weryfikacja zakończy się powodzeniem; `false` Jeśli weryfikacja zakończy się niepowodzeniem.|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

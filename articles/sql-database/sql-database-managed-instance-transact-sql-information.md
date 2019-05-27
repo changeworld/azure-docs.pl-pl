@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 08920a25fc7213a773ef0d76a5daddbab3f765c2
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866863"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852148"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -46,7 +46,7 @@ Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparat
 - [GRUPA DOSTĘPNOŚCI LISTY](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) klauzuli [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) — instrukcja
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Tworzenie kopii zapasowej
 
 Wystąpienia zarządzanego mają automatycznych kopii zapasowych, dzięki czemu użytkownicy mogą tworzyć pełne kopie `COPY_ONLY` kopii zapasowych. Różnicowe kopie zapasowe, log oraz kopii zapasowych migawki pliku nie są obsługiwane.
 
@@ -276,11 +276,11 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
 
 - Ustawienia programu SQL Server Agent jest tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym. 
-- Stanowiska
+- Zadania (job)
   - Kroki w zadaniu języka T-SQL są obsługiwane.
   - Obsługiwane są następujące zadania replikacji:
     - Czytnik dziennika transakcji
-    - Snapshot
+    - Migawka
     - Dystrybutor
   - Kroki zadania SSIS są obsługiwane.
   - Inne rodzaje kroków zadania nie są obecnie obsługiwane:
@@ -471,7 +471,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
 
-Maksymalny rozmiar pliku wynoszący `tempdb` nie może być większa niż 24 GB na każdy rdzeń w warstwie ogólnego przeznaczenia. Maksymalna `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` Bazy danych zawsze zostanie podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku, a nowe pliki, które można dodać do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24 GB na rdzeń procesora w `tempdb`.
+Maksymalny rozmiar pliku wynoszący `tempdb` nie może być większa niż 24 GB na każdy rdzeń w warstwie ogólnego przeznaczenia. Maksymalna `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` Bazy danych zawsze zostanie podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku i nie można dodać nowe pliki do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24 GB na rdzeń procesora w `tempdb`. `tempdb` jest zawsze ponownie tworzona jako pusta baza danych start wystąpienia lub pracy awaryjnej i wszystkie zmiany dokonane w `tempdb` nie zostaną zachowane. 
 
 ### <a name="cant-restore-contained-database"></a>Nie można przywrócić zawartej bazy danych
 

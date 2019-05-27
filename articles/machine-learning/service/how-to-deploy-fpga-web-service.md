@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 249a21bf9eeb3913826971fd1aae136197d264c4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8d667d45e1831e0fcc939d302a16f63d4a282963
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149605"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852044"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
 
-Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programowane (układów FPGA)](concept-accelerate-with-fpgas.md) przy użyciu modeli Accelerated sprzętu uczenia maszynowego Azure. Za pomocą układów FPGA zapewnia wnioskowania niezwykle małych opóźnień, nawet w przypadku rozmiar jednej partii.
+Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programowane (układów FPGA)](concept-accelerate-with-fpgas.md) przy użyciu modeli Accelerated sprzętu uczenia maszynowego Azure. Za pomocą układów FPGA zapewnia wnioskowania niezwykle małych opóźnień, nawet w przypadku rozmiar jednej partii. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych.
 
 Obecnie dostępne są następujące modele:
   - ResNet 50
@@ -162,7 +162,7 @@ print(output_tensors)
 > [!IMPORTANT]
 > Zapisz dane wejściowe i wyjściowe tensors, ponieważ będą one potrzebne w przypadku modelu żądań konwersji i wnioskowania.
 
-Dostępne modele odpowiedniego klasyfikatora domyślne wyjściowe i tensors są poniżej, czyli, co zostanie wykorzystany podczas wnioskowania Jeśli używany jest domyślny klasyfikatora.
+Dostępne modele odpowiedniego klasyfikatora domyślne wyjściowe i tensors są poniżej, czyli, co zostanie wykorzystany do wnioskowania Jeśli używany jest domyślny klasyfikatora.
 
 + Resnet50, QuantizedResnet50 ``
 output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"

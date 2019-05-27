@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 51f6fb8c0dc1450a39173fafb0d71efc9a59a536
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c07da0121b8e350c55b139901d56cfe2133386d
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60431294"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864496"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio
 
 Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.microsoft.com/solutions/serverless/) bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej.
 
-W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji „hello world”. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2017.
+W tym artykule dowiesz się, jak używać narzędzi Visual Studio 2019 r dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji "hello world". Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2019 r.
 
 ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -34,7 +34,7 @@ Ten temat zawiera [wideo](#watch-the-video) demonstrujące te same podstawowe kr
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj program [Visual Studio 2017](https://azure.microsoft.com/downloads/) i upewnij się, że jest również zainstalowane obciążenie **Programowanie na platformie Azure**.
+* Zainstaluj [Visual Studio 2019](https://azure.microsoft.com/downloads/) i upewnij się, że **programowanie na platformie Azure** obciążenia jest również instalowany.
 
 * Upewnij się, że masz [najnowsze narzędzia usługi Azure Functions](functions-develop-vs.md#check-your-tools-version).
 

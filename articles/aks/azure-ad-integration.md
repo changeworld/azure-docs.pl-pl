@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 026c0eefc0c4fe31e72ecad91a4a7b558f367487
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a6ed8ec37a3b20ccdbd2b013ba308518d8e3b97c
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192125"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849890"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
 
@@ -23,7 +23,6 @@ W tym artykule dowiesz się, jak wdrażanie wstępnie wymaganych składników dl
 Obowiązują następujące ograniczenia:
 
 - Usługa Azure AD można włączyć tylko podczas tworzenia klastra nowe, włączone RBAC. Nie można włączyć usługi Azure AD w istniejącym klastrze usługi AKS.
-- *Gość* użytkowników w usłudze Azure AD, takie jak, jeśli używasz federacyjnego logowania z innego katalogu, nie są obsługiwane.
 
 ## <a name="authentication-details"></a>Szczegóły uwierzytelniania
 
@@ -114,6 +113,10 @@ Druga aplikacja usługi Azure AD jest używany podczas logowania się przy użyc
         Po pomyślnym przyznano uprawnienia, w portalu zostanie wyświetlone następujące powiadomienie:
 
         ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
+
+1. W lewym obszarze nawigacji aplikacji usługi Azure AD, wybierz **uwierzytelniania**.
+
+    * W obszarze **domyślny typ klienta**, wybierz opcję **tak** do *traktować klienta jako publicznych klienta*.
 
 1. W okienku nawigacji po lewej stronie aplikacji usługi Azure AD, zwróć uwagę na **identyfikator aplikacji**. W przypadku wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Client application ID`.
 
@@ -242,13 +245,14 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.13.5
 Po zakończeniu jest buforowany token uwierzytelniania. Są tylko ponownie monitowany, aby zalogować się po token wygasł lub ponowne utworzenie pliku konfiguracji platformy Kubernetes.
 
 Jeśli widzisz komunikat o błędzie autoryzacji po zalogowaniu się pomyślnie, sprawdź, czy:
-1. Użytkownik logujesz się nie gościa w wystąpieniu usługi Azure AD (w tym scenariuszu jest często tak w przypadku używania kont federacyjnych z innego katalogu).
-2. Użytkownik nie jest członkiem więcej niż 200 grup.
-3. Klucz tajny zdefiniowane w rejestracji aplikacji dla serwera jest niezgodna z wartości ustawionej za pomocą usługi aad —-server--klucz tajny aplikacji
 
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
+
+1. Zdefiniowana jest odpowiedni obiekt o identyfikatorze lub główną nazwę użytkownika, w zależności od Jeśli konto użytkownika jest w tej samej dzierżawie usługi Azure AD, czy nie.
+2. Użytkownik nie jest członkiem więcej niż 200 grup.
+3. Klucz tajny zdefiniowane w rejestracji aplikacji dla serwera jest zgodna z wartości ustawionej za pomocą `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Kolejne kroki
 

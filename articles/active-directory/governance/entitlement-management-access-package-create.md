@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/24/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad6570a3f30e40e4074502a8ce85bf739f58d3f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866449"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832778"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Utwórz nowy pakiet dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ ms.locfileid: "64866449"
 
 Pakiet dostępu umożliwia wykonywanie jednorazowej konfiguracji zasobów i zasad, który automatycznie zarządza dostępu przez cały okres istnienia pakiet dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wszystkie pakiety dostępu muszą znajdować się w kontenerze o nazwie katalogu. Wykaz określa jakie zasoby można dodawać do dostępu do pakietu. Jeśli nie określisz katalogu pakietu dostępu będzie umieszczana w katalogu ogólne. Obecnie nie można przenieść istniejący pakiet dostęp do innego katalogu.
 
@@ -56,7 +56,7 @@ Na poniższym diagramie przedstawiono procedurę wysokiego poziomu służącą d
 
 1. Kliknij przycisk **nowy pakiet dostępu**.
 
-## <a name="basics"></a>Podstawy
+## <a name="basics"></a>Ustawienia podstawowe
 
 Na **podstawy** karcie należy nazwij pakiet dostępu i określić, którego katalogu, aby utworzyć pakiet dostępu w.
 
@@ -126,5 +126,5 @@ Na **Przejrzyj + Utwórz** karcie, można przejrzeć ustawienia i wyboru dla ka�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Edytowanie i zarządzanie nią istniejący pakiet dostępu](entitlement-management-access-package-edit.md)
+- [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)
 - [Tworzenie i zarządzanie nimi katalogu](entitlement-management-catalog-create.md)

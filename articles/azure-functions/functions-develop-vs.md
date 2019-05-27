@@ -1,6 +1,6 @@
 ---
 title: Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzyć i testować usługi Azure Functions przy użyciu narzędzi usługi Azure Functions dla programu Visual Studio 2017.
+description: Dowiedz się, jak tworzyć i testować usługi Azure Functions przy użyciu narzędzi usługi Azure Functions dla programu Visual Studio 2019 r.
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403897"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864531"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
-Narzędzia usługi Azure Functions dla programu Visual Studio 2017 to rozszerzenie dla programu Visual Studio, która umożliwia tworzenie, testowanie i wdrażanie funkcji języka C# na platformie Azure. To środowisko w przypadku pierwszej za pomocą usługi Azure Functions, można dowiedzieć się więcej o [wprowadzenie do usługi Azure Functions](functions-overview.md).
+Narzędzia usługi Azure Functions dla programu Visual Studio 2019 r to rozszerzenie dla programu Visual Studio, która umożliwia opracowywanie, testowanie i wdrażanie C# funkcji na platformie Azure. To środowisko w przypadku pierwszej za pomocą usługi Azure Functions, można dowiedzieć się więcej o [wprowadzenie do usługi Azure Functions](functions-overview.md).
 
 Narzędzia usługi Azure Functions zapewnia następujące korzyści: 
 
@@ -29,16 +29,16 @@ Narzędzia usługi Azure Functions zapewnia następujące korzyści:
 * Twórz i wdrażaj wstępnie skompilowanych funkcji języka C#. Wstępnie skompilowane funkcje zapewniają lepsze zimnego startu wydajność niż funkcji języka C# opartych na skryptach. 
 * Kod funkcji w języku C#, mając wszystkie korzyści wynikające z programowania Visual Studio. 
 
-Ten artykuł zawiera szczegółowe informacje o sposobie używania narzędzi usługi Azure Functions dla programu Visual Studio 2017 do tworzenia C# funkcje i opublikuj je na platformie Azure. Przed przeczytaniem tego artykułu, należy wykonać [szybkiego startu usługi Functions dla programu Visual Studio](functions-create-your-first-function-visual-studio.md). 
+Ten artykuł zawiera szczegółowe informacje na temat tworzenia przy użyciu narzędzi usługi Azure Functions dla programu Visual Studio 2019 C# funkcje i opublikuj je na platformie Azure. Przed przeczytaniem tego artykułu, należy wykonać [szybkiego startu usługi Functions dla programu Visual Studio](functions-create-your-first-function-visual-studio.md). 
 
 > [!IMPORTANT]
 > Nie można mieszać lokalnego opracowywania aplikacji za pomocą portalu w tej samej aplikacji funkcji. Podczas publikowania z poziomu lokalnego projektu aplikacji funkcji w procesie wdrażania zastępuje wszystkie funkcje, które opracowane w portalu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Narzędzia usługi Azure Functions są objęte obciążenie programistyczne platformy Azure z [programu Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/), lub nowszej wersji. Upewnij się, że dołączasz **programowanie na platformie Azure** obciążenie w instalacji programu Visual Studio 2017:
+Narzędzia usługi Azure Functions są objęte obciążenie programistyczne platformy Azure z [programu Visual Studio 2017](https://www.visualstudio.com/vs/), lub nowszej wersji. Upewnij się, że dołączasz **programowanie na platformie Azure** obciążenie w instalacji programu Visual Studio 2019 r.:
 
-![Instalowanie programu Visual Studio 2017 z obciążeniem Programowanie na platformie Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Instalowanie programu Visual Studio 2019 r z obciążeniem programowanie na platformie Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 Upewnij się, że programu Visual Studio jest aktualny i że używasz [najbardziej aktualną wersję](#check-your-tools-version) narzędzi usługi Azure Functions.
 
@@ -181,7 +181,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 Aby dowiedzieć się więcej na temat korzystania z podstawowych narzędzi usługi Azure Functions, zobacz [kodu i testowanie usługi Azure functions lokalnie](functions-run-local.md).
 
-## <a name="publish-to-azure"></a>Publikowanie na platformie Azure
+## <a name="publish-to-azure"></a>Opublikuj na platformie Azure
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 

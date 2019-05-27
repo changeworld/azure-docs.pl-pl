@@ -9,11 +9,11 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: fdd4e26839661ab9765b7d496e7f60c3686ba637
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553944"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66166176"
 ---
 ### <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 
@@ -37,7 +37,7 @@ Uruchom polecenie `npm install hyco-https` w wierszu polecenia języka Node w fo
    3. `const keyrule` — nazwa klucza sygnatury dostępu współdzielonego.
    4. `const key` — wartość klucza sygnatury dostępu współdzielonego.
 
-3. Dodaj następujący kod do pliku `listener.js`. :
+3. Dodaj następujący kod do pliku `listener.js`. : 
 
     Zauważysz, że kod nie różni się znacząco od kodu dowolnego prostego serwera HTTP, który możesz znaleźć w samouczkach oprogramowania Node.js dla początkujących, przy czym różnica polega na użyciu funkcji `createRelayedServer` zamiast typowej funkcji `createServer`.
 

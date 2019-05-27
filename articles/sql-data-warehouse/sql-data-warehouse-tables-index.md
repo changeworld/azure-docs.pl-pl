@@ -2,21 +2,21 @@
 title: Indeksowanie tabel w usłudze Azure SQL Data Warehouse | Microsoft Azure
 description: Zalecenia i przykłady dla indeksowania tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 03/18/2019
-ms.author: rortloff
-ms.reviewer: jrasnick
+ms.author: xiaoyul
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: eab64d9494ef2d2838e16c55eed6ecf0db9736e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 158b229c2c45a14ed0fd5433d1903eca92f32401
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309807"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851645"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w usłudze SQL Data Warehouse
 
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 Po uruchomieniu zapytania, które można rozpocząć Spójrz na dane i przeanalizować wyniki. W następującej tabeli opisano, gdzie jej szukać w analizy grupy wierszy.
 
-| Kolumna | Jak używać tych danych |
+| Kolumnowy | Jak używać tych danych |
 | --- | --- |
 | [table_partition_count] |Jeśli tabela jest podzielona na partycje, może oczekiwać zobaczyć, że liczba wyższej grupy Otwórz wiersz. Każda partycja w dystrybucji może teoretycznie istnieje grupa Otwórz wiersz skojarzonych z nim. Należy wziąć to do analizy. Małej tabeli, który jest podzielony na partycje można można zoptymalizować, usuwając całkowicie partycjonowania, ponieważ może to poprawić kompresji. |
 | [row_count_total] |Całkowita liczba wierszy w tabeli. Na przykład można użyć tej wartości do obliczania wartości procentowej wierszy w skompresowanym stanie. |

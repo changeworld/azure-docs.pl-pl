@@ -1,7 +1,7 @@
 ---
 title: Możliwość interpretowania modelu
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wyjaśnić, dlaczego modelu sprawia, że prognozy przy użyciu zestawu SDK usługi Azure Machine Learning. Może służyć podczas szkolenia oraz wnioskowania Aby zrozumieć, jak model wykonuje prognozy.
+description: Dowiedz się, jak wyjaśnić, dlaczego modelu sprawia, że prognozy przy użyciu zestawu SDK usługi Azure Machine Learning. Może służyć podczas szkoleń i wnioskowania Aby zrozumieć, jak model wykonuje prognozy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,25 +10,25 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/29/2019
-ms.openlocfilehash: 62d51a0075d8b6864e4b10fa6c1eb423a440d6d0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926478"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851993"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Model współdziałania z usługą Azure Machine Learning
 
 W tym artykule nauczysz wyjaśniający, dlaczego modelu wprowadzone prognozy są tym jak przy użyciu pakietu współdziałania z zestawu SDK języka Python usługi Azure Machine Learning.
 
 Za pomocą klasy i metody, w tym pakiecie, można uzyskać:
-+ Współdziałania na rzeczywistych zestawach danych, na dużą skalę, podczas czasu szkoleń i wnioskowania. 
++ Współdziałania na rzeczywistych zestawach danych, na dużą skalę, podczas szkoleń i wnioskowania. 
 + Interaktywne wizualizacje do odnajdywania wzorce w danych i wyjaśnienia w czasie szkolenia
 + Funkcja wartości ważności: funkcje pierwotne i odtworzone
 
 Podczas fazy szkolenia w cyklu rozwoju modelu projektantów i ewaluatory mogą używać do wyjaśnienia danych wyjściowych modelu do uczestników projektu do tworzenia relacji zaufania.  Wgląd w modelu są również używane do debugowania, sprawdzanie poprawności zachowania modelu odpowiada ich celów oraz sprawdzenia obecności odchylenie.
 
-W fazie wnioskowania analitycy danych mogą korzystać współdziałania, aby wyjaśnić, prognozy do osób, które korzystają z modelu. Na przykład, dlaczego modelu odmawianie pożyczki hipoteczny i przewidzieć, że portfelu inwestycji niesie ze sobą większe ryzyko?
+Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych. W tej fazie analityków danych może wyjaśnić wynikowy prognoz do osób, które korzystają z modelu. Na przykład, dlaczego modelu odmawianie pożyczki hipoteczny i przewidzieć, że portfelu inwestycji niesie ze sobą większe ryzyko?
 
 Korzystanie z tych oferty, może wyjaśnić modeli uczenia maszynowego **globalnie na wszystkie dane**, lub **lokalnie w punkcie danych specyficznych dla** przy użyciu technologii z najnowocześniejszych w sposób łatwy w użyciu i skalowalne.
 
@@ -287,7 +287,7 @@ clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
 tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x_train, features=dataset_feature_names, classes=dataset_classes, transformations=transformations)
 ```
 
-## <a name="interpretability-in-inferencing"></a>Współdziałania w wnioskowania
+## <a name="interpretability-in-inference"></a>Współdziałania w wnioskowania
 
 Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czasie oceniania podanie informacji o wyjaśnienie lokalnego. Proces wdrażania oceniania objaśnienie jest podobny do wdrażania modelu i obejmuje następujące kroki:
 

@@ -16,11 +16,11 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780018"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165676"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatyczne v2 kopii zapasowych maszyn wirtualnych platformy Azure (Resource Manager)
 
@@ -107,7 +107,7 @@ Masz maszynę Wirtualną serwera SQL, która zawiera szereg dużych baz danych.
 
 W poniedziałek należy włączyć automatyczne kopie zapasowe w wersji 2 z następującymi ustawieniami:
 
-- Harmonogram tworzenia kopii zapasowych: Ręcznie
+- Harmonogram tworzenia kopii zapasowych: Ręczne
 - Częstotliwość tworzenia pełnych kopii zapasowych: Codziennie
 - Godzina rozpoczęcia tworzenia pełnych kopii zapasowych: 22:00
 - Okno czasowe tworzenia pełnych kopii zapasowych: 6 godzin

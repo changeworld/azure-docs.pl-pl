@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450333"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835162"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>Wdrażanie magazynu OPC od podstaw
 
@@ -45,7 +45,7 @@ Plik konfiguracyjny w repozytorium odwołuje się do niektórych zmiennych środ
 
 Program Visual Studio pozwala szybko otworzyć aplikację bez przy użyciu wiersza polecenia, bez konieczności konfigurowania niczego poza IDE.
 
-Kroki przy użyciu programu Visual Studio 2017:
+Aby uruchomić i debugować aplikację za pomocą programu Visual Studio:
 
 1. Otwórz rozwiązanie za pomocą `iot-opc-gds-service.sln` pliku.
 
@@ -131,7 +131,7 @@ Firma Microsoft udostępnia również [wersji środowiska Java](https://github.c
 Oto niektóre środowiska IDE, którego można użyć do pracy na komputerach z systemem Azure IoT:
 
 - [Program Visual Studio](https://www.visualstudio.com)
-- [program Visual Studio dla komputerów Mac](https://www.visualstudio.com/vs/visual-studio-mac)
+- [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac)
 - [IntelliJ Rider](https://www.jetbrains.com/rider)
 - [Visual Studio Code](https://code.visualstudio.com)
 
