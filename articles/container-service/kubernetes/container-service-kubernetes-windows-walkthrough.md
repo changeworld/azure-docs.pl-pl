@@ -10,11 +10,11 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659392"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148818"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes dla kontenerów Windows
 
@@ -183,7 +183,7 @@ Możesz użyć wybranej przeglądarki internetowej, aby wyświetlić domyślną 
 ![Obraz przedstawiający przechodzenie do usług IIS](./media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
 
 
-## <a name="delete-cluster"></a>Usuwanie klastra
+## <a name="delete-cluster"></a>Usuń klaster
 Gdy klaster nie będzie już potrzebny, możesz usunąć grupę zasobów, usługę kontenera i wszystkie pokrewne zasoby za pomocą polecenia [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive 

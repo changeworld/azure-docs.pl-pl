@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: d135b89d2b053e5d8d98a1319ae21759f3ff5594
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462253"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66156056"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do internetowego punktu końcowego za pomocą interfejs wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -22,7 +22,7 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówio
 
 Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji sieci Web.
 
-![Wyświetlanie wyników](./media/custom-event-quickstart/view-result.png)
+![Wyświetl wyniki](./media/custom-event-quickstart/view-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -143,7 +143,7 @@ Jeśli zamierzasz kontynuować pracę z tym zdarzeniem lub aplikacją podglądu 
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wiesz już, jak tworzyć tematy i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 

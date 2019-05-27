@@ -13,17 +13,17 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6362084c11ce7aa9078823758700239694162765
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359155"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150766"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja interfejsu API zarządzanego w wystąpieniach zarządzanych bazy danych SQL Azure
 
 Można tworzyć i zarządzać usługi Azure SQL wystąpieniach zarządzanych bazy danych przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST i języka Transact-SQL. W tym artykule można znaleźć Przegląd funkcji i interfejsu API, który umożliwia tworzenie i konfigurowanie wystąpienia zarządzanego.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: Tworzenie wystąpienia zarządzanego
+## <a name="azure-portal-create-a-managed-instance"></a>Witryna Azure Portal: Tworzenie wystąpienia zarządzanego
 
 Aby uzyskać szybki start omawiający Tworzenie wystąpienia zarządzanego bazy danych SQL Azure, zobacz [Szybki Start: Tworzenie wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-get-started.md).
 

@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128670"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla szablonów usługi Azure Resource Manager 
 
@@ -167,7 +167,7 @@ Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowany w 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Tak |string |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -256,7 +256,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | stringOutput | String | Opcja 1 |
 | intOutput | Int | 1 |
-| objectOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
+| objectOutput | Object | {"jeden": "", "dwóch": "b"} |
 | arrayOutput | Tablica | [1, 2, 3] |
 | crossOutput | String | Opcja 1 |
 
@@ -283,7 +283,7 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowany w se
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| nazwa_zmiennej |Yes |String |Nazwa zmiennej, do zwrócenia. |
+| nazwa_zmiennej |Tak |String |Nazwa zmiennej, do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -360,7 +360,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | exampleOutput1 | String | Moja_zmienna |
 | exampleOutput2 | Tablica | [1, 2, 3, 4] |
 | exampleOutput3 | String | Moja_zmienna |
-| exampleOutput4 |  Obiekt | {"właściwość1": "wartość1", "property2": "wartość2"} |
+| exampleOutput4 |  Object | {"właściwość1": "wartość1", "property2": "wartość2"} |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 

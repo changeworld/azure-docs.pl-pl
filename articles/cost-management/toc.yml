@@ -46,6 +46,8 @@
           href: 'https://docs.microsoft.com/rest/api/consumption'
         - name: Szablon usługi Resource Manager
           href: /azure/templates/microsoft.consumption/budgets
+        - name: Przykłady interfejsu API REST usługi Cost Management
+          href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
     - name: Zasoby
       items:
         - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn

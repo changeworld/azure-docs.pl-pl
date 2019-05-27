@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 297f71cef41f91a2e9595a0ccca08e2803bd6201
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 033baa80eaa10581777061b40c64afe6331a2e92
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787311"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979078"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Usługa Azure Cosmos DB Tworzenie aplikacji w języku Python przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -26,7 +26,7 @@ ms.locfileid: "65787311"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Możesz szybko tworzyć i zapytania, dokumentów, klucz/wartość i grafowe bazy danych. Wszystkie te operacje skorzystać z dystrybucji i skali w usłudze Azure Cosmos DB.
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Możesz szybko tworzyć i zapytania, dokumenty, klucz/wartość, szerokości kolumn i grafowe bazy danych. Wszystkie te operacje skorzystać z dystrybucji i skali w usłudze Azure Cosmos DB.
 
 Ten przewodnik Szybki start przedstawia, jak utworzyć konto [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB, bazę danych dokumentów i kontener przy użyciu witryny Azure Portal. Następnie za pomocą [interfejsu API SQL](sql-api-sdk-python.md) i zestawu Python SDK skompilujesz i uruchomisz aplikację konsolową. Ten przewodnik Szybki Start używa wersji 3.0 [zestawu SDK języka Python](https://pypi.org/project/azure-cosmos).
 

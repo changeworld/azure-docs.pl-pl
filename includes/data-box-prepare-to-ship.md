@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 1d52117440028c75b249f469f2b3576c2ab1c5c5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65815584"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150474"
 ---
 Ostatnim krokiem jest przygotowanie urządzenia do wysłania. W tym kroku wszystkie udziały urządzenia zostają przeniesione do trybu offline. Po rozpoczęciu tego procesu dostęp do udziałów nie jest już możliwy.
 

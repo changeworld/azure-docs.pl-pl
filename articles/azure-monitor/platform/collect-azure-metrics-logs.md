@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006264"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129716"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Zbieranie dzienników usługi platformy Azure i metryk do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
 
@@ -129,7 +129,7 @@ Do zbierania dzienników z w ramach niektórych zasobów, jest to możliwe wysł
 
 Usługa Azure Monitor umożliwia zbieranie danych diagnostycznych z usługi Azure storage dla następujących zasobów i dzienników tego podejścia:
 
-| Zasób | Dzienniki |
+| Resource | Dzienniki |
 | --- | --- |
 | Service Fabric |ETWEvent <br> Zdarzeń operacyjnych <br> Zdarzenie Reliable Actors <br> Zdarzenia usługi Reliable Service |
 | Maszyny wirtualne |Dzienników Syslog systemu Linux <br> Zdarzenia Windows <br> Dziennik IIS <br> Windows ETWEvent |

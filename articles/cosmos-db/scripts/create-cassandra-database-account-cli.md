@@ -9,11 +9,11 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
 ms.openlocfilehash: 89d43d8fc956d747de885f69017ed79f49670858
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66154749"
 ---
 # <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Usługa Azure Cosmos DB tworzenie konta interfejsu API Cassandra przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -49,7 +49,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Tworzy bazę danych usługi Azure Cosmos DB. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

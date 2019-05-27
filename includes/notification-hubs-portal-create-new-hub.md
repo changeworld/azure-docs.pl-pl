@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: a5d29e77f6ba10ed3069cb3f5a3c8089f49c237d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423297"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140587"
 ---
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie i wybierz pozycję **Notification Hubs** w sekcji **Urządzenia przenośne**. Wybierz gwiazdkę (`*`) obok nazwy usługi, aby dodać ją do sekcji **ULUBIONE** w menu po lewej stronie. Po dodaniu usługi **Notification Hubs** do sekcji **ULUBIONE** wybierz ją z menu po lewej stronie. 

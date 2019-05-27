@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155177"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do działania w usłudze Azure Data Factory
 Działanie Until zapewnia taką samą funkcjonalność wykonuj — aż strukturę pętli zawiera w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until. 
@@ -54,11 +54,11 @@ Działanie Until zapewnia taką samą funkcjonalność wykonuj — aż struktur�
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa `Until` działania. | String | Yes
-type | Musi być równa **aż**. | String | Yes
-expression | Wyrażenie musi zwrócić wartość true lub false | wyrażenie.  | Yes
+name | Nazwa `Until` działania. | String | Tak
+typ | Musi być równa **aż**. | String | Tak
+expression | Wyrażenie musi zwrócić wartość true lub false | wyrażenie.  | Tak
 timeout | Nie — aż do limit czasu pętli po określonym czasie. | ciąg. `d.hh:mm:ss` (lub) `hh:mm:ss`. Wartość domyślna to 7 dni. Wartość maksymalna to: 90 dni. | Nie
-Działania | Zestaw działań, które są wykonywane, dopóki wyrażenie daje w wyniku `true`. | Tablica działań. |  Yes
+Działania | Zestaw działań, które są wykonywane, dopóki wyrażenie daje w wyniku `true`. | Tablica działań. |  Tak
 
 ## <a name="example-1"></a>Przykład 1
 

@@ -9,11 +9,11 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: 65958eb1e2d7cc4492e0437b24db77f00ebc7eba
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728337"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66154521"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Monitorowanie i skalowanie pojedynczego serwera PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia służy do skalowania pojedynczego serwera usługi Azure Database for PostgreSQL na inny poziom wydajności po wykonaniu zapytania względem metryk. 
@@ -40,7 +40,7 @@ Ten skrypt używa poleceń opisanych w poniższej tabeli:
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Zwraca wartość metryki dla zasobów. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej na temat interfejsu wiersza polecenia platformy Azure: [Dokumentacja interfejsu wiersza polecenia platformy Azure](/cli/azure)
 - Wypróbuj dodatkowe skrypty: [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
 - Dowiedz się więcej na temat skalowania: [warstwy usług](../concepts-service-tiers.md) oraz [jednostki obliczeniowe i jednostki magazynowe](../concepts-compute-unit-and-storage.md)

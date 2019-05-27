@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
 ms.openlocfilehash: 9469fd6a1ffc61e90948178b105abd9f83e55fde
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020679"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146036"
 ---
 1. Uruchom środowisko Eclipse.
 
@@ -21,7 +21,7 @@ ms.locfileid: "65020679"
 
 1. Na pasku menu programu Eclipse utwórz nowy projekt, wybierając kolejno pozycje **File** > **New** > **Project** (Plik > Nowy > Projekt).
 
-1. Zostanie wyświetlone okno dialogowe **Nowy projekt**. Wybierz pozycję **Java Project** (Projekt języka Java) i wybierz pozycję **Next** (Dalej).
+1. **Nowy projekt** pojawi się okno dialogowe. Wybierz pozycję **Java Project** (Projekt języka Java) i wybierz pozycję **Next** (Dalej).
 
    ![Zrzut ekranu dialogowego New Project (Nowy projekt) z wyróżnioną pozycją Java Project (Projekt języka Java)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 

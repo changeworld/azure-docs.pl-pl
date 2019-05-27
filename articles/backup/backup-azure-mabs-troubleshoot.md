@@ -6,18 +6,32 @@ author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 05/21/2019
 ms.author: kasinh
-ms.openlocfilehash: 22507a1b89c6a7d6867e9b669e1a2e70106a4e41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: aa039680be1e88d74cad63eba17d7f3aa89ea49f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228290"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000422"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
 Rozwiązywanie problemów, które występują podczas korzystania z usługi Azure Backup Server, skorzystaj z informacji w poniższych tabelach.
+
+## <a name="basic-troubleshooting"></a>Podstawowe rozwiązywanie problemów
+
+Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem rozwiązywania problemów z Microsoft Azure Backup Server (MABS):
+
+- [Upewnij się, że Agent usługi Microsoft Azure Recovery Services (MARS) jest aktualny](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Upewnij się, że istnieje połączenie sieciowe między agentem MARS i platformą Azure](https://aka.ms/AB-A4dp50)
+- Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). Jeśli to konieczne, uruchom ponownie i spróbuj ponownie wykonać operację
+- [Upewnij się, że 5–10% wolnego miejsca na woluminie jest dostępne na potrzeby lokalizacji folderu plików tymczasowych](https://aka.ms/AB-AA4dwtt)
+- Jeśli rejestracja kończy się niepowodzeniem, następnie upewnij się, że serwer, na którym chcesz zainstalować serwer usługi Azure Backup nie jest już zarejestrowany w innym magazynie
+- Jeśli instalacja wypychana zakończy się niepowodzeniem, sprawdź, czy agent programu DPM jest już obecny. Jeśli tak, odinstaluj agenta i ponów próbę instalacji
+- [Upewnij się, że żaden inny proces lub oprogramowanie antywirusowe nie zakłóca działania usługi Azure Backup](https://aka.ms/AA4nyr4).<br>
+- Upewnij się, że usługa SQL Agent jest uruchomiona i ustawiona w trybie automatycznym na serwerze usługi MAB<br>
+
 
 ## <a name="invalid-vault-credentials-provided"></a>Podano nieprawidłowe poświadczenia magazynu
 
@@ -29,25 +43,25 @@ Rozwiązywanie problemów, które występują podczas korzystania z usługi Azur
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Backup | Replika jest niespójna | Sprawdź, czy jest włączona opcja wyboru wykonywanie automatycznej kontroli spójności w Kreatorze grupy ochrony. Aby uzyskać więcej informacji o przyczynach niespójności repliki i odpowiednie sugestii, zobacz artykuł Microsoft TechNet [replika jest niespójna](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> W przypadku kopii zapasowej stanu systemu/BMR Sprawdź, czy kopia zapasowa systemu Windows Server jest zainstalowany na serwerze chronionym.</li><li> Sprawdź w przypadku problemów związanych z miejscem, w puli magazynów programu DPM na serwerze kopii zapasowej programu DPM/Microsoft Azure i przydzielanie magazynu zgodnie z potrzebami.</li><li> Sprawdź stan usługi kopiowania woluminów w tle na serwerze chronionym. Jeśli jest w stanie wyłączenia, należy ustawić go na uruchamianie ręczne. Uruchom usługę na serwerze. Następnie wróć do konsoli programu DPM/Microsoft Azure Backup Server i rozpoczynać synchronizacji zadanie sprawdzania spójności.</li></ol>|
+| Tworzenie kopii zapasowej | Replika jest niespójna | Sprawdź, czy jest włączona opcja wyboru wykonywanie automatycznej kontroli spójności w Kreatorze grupy ochrony. Aby uzyskać więcej informacji o przyczynach niespójności repliki i odpowiednie sugestii, zobacz artykuł Microsoft TechNet [replika jest niespójna](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> W przypadku kopii zapasowej stanu systemu/BMR Sprawdź, czy kopia zapasowa systemu Windows Server jest zainstalowany na serwerze chronionym.</li><li> Sprawdź w przypadku problemów związanych z miejscem, w puli magazynów programu DPM na serwerze kopii zapasowej programu DPM/Microsoft Azure i przydzielanie magazynu zgodnie z potrzebami.</li><li> Sprawdź stan usługi kopiowania woluminów w tle na serwerze chronionym. Jeśli jest w stanie wyłączenia, należy ustawić go na uruchamianie ręczne. Uruchom usługę na serwerze. Następnie wróć do konsoli programu DPM/Microsoft Azure Backup Server i rozpoczynać synchronizacji zadanie sprawdzania spójności.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Tworzenie punktu odzyskiwania w trybie online nie powiodło się
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Backup | Tworzenie punktu odzyskiwania w trybie online nie powiodło się | **Komunikat o błędzie**: Agent usługi Kopia zapasowa Windows Azure nie może utworzyć migawki wybranego woluminu. <br> **Obejście**: Spróbuj zwiększyć miejsce w woluminie punktu replikę i odzyskiwania.<br> <br> **Komunikat o błędzie**: Agenta usługi Windows Azure Backup nie może połączyć się z usługą OBEngine <br> **Obejście**: Sprawdź, czy OBEngine istnieje na liście uruchomionych usług na komputerze. Jeśli usługa OBEngine nie jest uruchomiona, użyj polecenia "net start OBEngine", aby uruchomić usługę OBEngine. <br> <br> **Komunikat o błędzie**: Nie ustawiono hasła szyfrowania dla tego serwera. Skonfiguruj hasło szyfrowania. <br> **Obejście**: Spróbuj skonfigurować hasło szyfrowania. Jeśli nie powiedzie się, wykonaj następujące czynności: <br> <ol><li>Sprawdź, czy istnieje lokalizację tymczasową. Jest to lokalizacja, który jest wymieniony w rejestrze **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, o nazwie **ScratchLocation** powinna istnieć.</li><li> Jeśli istnieje lokalizację tymczasową, spróbuj ponowne rejestrowanie przy użyciu starego hasła. *Zawsze, gdy hasło szyfrowania można skonfigurować, zapisz go w bezpiecznym miejscu.*</li><ol>|
+| Tworzenie kopii zapasowej | Tworzenie punktu odzyskiwania w trybie online nie powiodło się | **Komunikat o błędzie**: Agent usługi Kopia zapasowa Windows Azure nie może utworzyć migawki wybranego woluminu. <br> **Obejście**: Spróbuj zwiększyć miejsce w woluminie punktu replikę i odzyskiwania.<br> <br> **Komunikat o błędzie**: Agenta usługi Windows Azure Backup nie może połączyć się z usługą OBEngine <br> **Obejście**: Sprawdź, czy OBEngine istnieje na liście uruchomionych usług na komputerze. Jeśli usługa OBEngine nie jest uruchomiona, użyj polecenia "net start OBEngine", aby uruchomić usługę OBEngine. <br> <br> **Komunikat o błędzie**: Nie ustawiono hasła szyfrowania dla tego serwera. Skonfiguruj hasło szyfrowania. <br> **Obejście**: Spróbuj skonfigurować hasło szyfrowania. Jeśli nie powiedzie się, wykonaj następujące czynności: <br> <ol><li>Sprawdź, czy istnieje lokalizację tymczasową. Jest to lokalizacja, który jest wymieniony w rejestrze **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, o nazwie **ScratchLocation** powinna istnieć.</li><li> Jeśli istnieje lokalizację tymczasową, spróbuj ponowne rejestrowanie przy użyciu starego hasła. *Zawsze, gdy hasło szyfrowania można skonfigurować, zapisz go w bezpiecznym miejscu.*</li><ol>|
 
 ## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Podane poświadczenia magazynu różnią się od magazynu, który serwer jest zarejestrowany
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Przywracanie | **Kod błędu:**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Komunikat o błędzie**: Podane poświadczenia magazynu różnią się od magazynu, który serwer jest zarejestrowany | **Przyczyna**: Ten problem występuje, gdy próbujesz przywrócić pliki na inny serwer z oryginalnego serwera przy użyciu opcji odzyskiwania zewnętrzny program DPM, a serwer, który jest odzyskiwany i oryginalnego serwera, z którym dane są kopie zapasowe nie są skojarzone z tym samym Magazyn usługi odzyskiwania.<br/> <br/>**Obejście** Aby rozwiązać ten problem, upewnij się, zarówno oryginalnego i alternatywny serwer, które są zarejestrowane w tym samym magazynie.|
+| Przywróć | **Kod błędu:**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Komunikat o błędzie**: Podane poświadczenia magazynu różnią się od magazynu, który serwer jest zarejestrowany | **Przyczyna**: Ten problem występuje, gdy próbujesz przywrócić pliki na inny serwer z oryginalnego serwera przy użyciu opcji odzyskiwania zewnętrzny program DPM, a serwer, który jest odzyskiwany i oryginalnego serwera, z którym dane są kopie zapasowe nie są skojarzone z tym samym Magazyn usługi odzyskiwania.<br/> <br/>**Obejście** Aby rozwiązać ten problem, upewnij się, zarówno oryginalnego i alternatywny serwer jest zarejestrowany w tym samym magazynie.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Niepowodzenie zadania tworzenia punktu odzyskiwania w trybie online dla maszyn wirtualnych programu VMware
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Backup | Niepowodzenie zadania tworzenia punktu odzyskiwania w trybie online dla maszyny Wirtualnej VMware. Program DPM napotkał błąd z serwera VMware podczas próby pobrania informacji śledzenia zmian. Kod błędu - FileFaultFault (identyfikator 33621) |  <ol><li> Resetuj CTK w oprogramowaniu firmy VMware dla maszyn wirtualnych, których to dotyczy.</li> <li>Sprawdź, czy niezależnie od dysku nie jest w miejscu w oprogramowaniu firmy VMware.</li> <li>Zatrzymaj ochronę dla maszyn wirtualnych, których dotyczy problem i ponownie włączyć ochronę za pomocą **Odśwież** przycisku. </li><li>Uruchom DW dla maszyn wirtualnych, których to dotyczy.</li></ol>|
+| Tworzenie kopii zapasowej | Niepowodzenie zadania tworzenia punktu odzyskiwania w trybie online dla maszyny Wirtualnej VMware. Program DPM napotkał błąd z serwera VMware podczas próby pobrania informacji śledzenia zmian. Kod błędu - FileFaultFault (identyfikator 33621) |  <ol><li> Resetuj CTK w oprogramowaniu firmy VMware dla maszyn wirtualnych, których to dotyczy.</li> <li>Sprawdź, czy niezależnie od dysku nie jest w miejscu w oprogramowaniu firmy VMware.</li> <li>Zatrzymaj ochronę dla maszyn wirtualnych, których dotyczy problem i ponownie włączyć ochronę za pomocą **Odśwież** przycisku. </li><li>Uruchom DW dla maszyn wirtualnych, których to dotyczy.</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operacja agenta nie powiodła się z powodu błędu komunikacji z usługą koordynatora agenta programu DPM na serwerze
@@ -60,7 +74,7 @@ Rozwiązywanie problemów, które występują podczas korzystania z usługi Azur
 
 | Operacja | Szczegóły błędu | Obejście |
 |-----------|---------------|------------|
-|Instalacja | Instalator nie może zaktualizować metadanych rejestru. Ten błąd aktualizacji może prowadzić do overusage wykorzystania magazynu. Aby tego uniknąć, zaktualizuj wpis rejestru przycinania systemu plików ReFS. | Dostosuj klucza rejestru **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**. Ustaw wartość Dword na 1. |
+|Instalacja | Instalator nie może zaktualizować metadanych rejestru. Ten błąd aktualizacji może prowadzić do overusage wykorzystania magazynu. Aby uniknąć tej aktualizacji wpis rejestru przycinania systemu plików ReFS. | Dostosuj klucza rejestru **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**. Ustaw wartość Dword na 1. |
 |Instalacja | Instalator nie może zaktualizować metadanych rejestru. Ten błąd aktualizacji może prowadzić do overusage wykorzystania magazynu. Aby tego uniknąć, zaktualizuj wpis rejestru optymalizacji migawki woluminu. | Utwórz klucz rejestru **Manager\Configuration\VolSnapOptimization\WriteIds ochrony danych SOFTWARE\Microsoft** z wartością pustego ciągu. |
 
 ## <a name="registration-and-agent-related-issues"></a>Rejestracja i problemów związanych z agenta
@@ -81,15 +95,15 @@ Rozwiązywanie problemów, które występują podczas korzystania z usługi Azur
 | Konfigurowanie grup ochrony | Ma za mało wolnego miejsca w puli magazynów dla tej grupy ochrony. | Dyski, które są dodawane do puli magazynów [partycji nie powinna zawierać](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Usuń wszystkie woluminy istniejące na dyskach. Następnie dodaj je do puli magazynów.|
 | Zmiany zasad |Nie można modyfikować zasad tworzenia kopii zapasowej. Błąd: Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x29834]. Spróbuj ponownie wykonać operację po jakimś czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft. | **Przyczyna:**<br/>Ten błąd występuje w obszarze trzech warunków: po włączeniu ustawienia zabezpieczeń, gdy użytkownik próbuje zmniejszyć zakres przechowywania poniżej określonej wcześniej wartości minimalne i korzystasz z nieobsługiwanej wersji. (Nieobsługiwane wersje są te poniżej Microsoft Azure Backup Server w wersji 2.0.9052 i serwera usługi Azure Backup, aktualizacja 1). <br/>**Zalecana akcja:**<br/> Aby kontynuować aktualizacje związane z zasadami, należy ustawić okres przechowywania powyżej co najmniej określonego okresu. (Minimalny okres przechowywania jest siedem dni, codziennie, czterech tygodni, przez co tydzień, trzy tygodnie dla co miesiąc lub rok do roku). <br><br>Opcjonalnie inny preferowane podejście jest aktualizacja agenta usługi Kopia zapasowa i serwer usługi Azure Backup, które umożliwia wykorzystywanie wszystkie aktualizacje zabezpieczeń. |
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowej
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Backup | Gdy zadanie było uruchomione, wystąpił nieoczekiwany błąd. Urządzenie nie jest gotowa. | **Jeśli Zalecana akcja, która jest wyświetlana w ramach produktu nie rozwiąże problemu, wykonaj następujące czynności:** <br> <ul><li>Ustaw obszar magazynu kopii w tle nieograniczona liczba elementów w grupie ochrony, a następnie uruchom sprawdzanie spójności.<br></li> (OR) <li>Spróbuj usunąć istniejącą ochronę grupy i tworzenie wielu nowych grup. Każdej nowej grupy ochrony powinna mieć pojedynczy element w nim.</li></ul> |
-| Backup | W przypadku tworzenia kopii zapasowej tylko stanu systemu, należy sprawdzić, czy jest za mało wolnego miejsca na chronionym komputerze do przechowywania kopii zapasowej stanu systemu. | <ol><li>Sprawdź, czy kopia zapasowa systemu Windows Server jest zainstalowany na komputerze chronionym.</li><li>Sprawdź, czy jest za mało miejsca na komputerze chronionym, stanu systemu. Najprostszym sposobem, aby sprawdzić, czy to jest, aby przejść do komputera chronionego, Otwórz narzędzie Kopia zapasowa systemu Windows Server, przejrzeć wybrane opcje, a następnie wybierz odzyskiwania systemu od ZERA. Interfejs użytkownika następnie informuje, ile miejsca jest wymagana. Otwórz **WSB** > **lokalna kopia zapasowa** > **harmonogram tworzenia kopii zapasowych** > **wybierz konfigurację kopii zapasowej**  >  **Pełny serwer** (rozmiar jest wyświetlany). Ten rozmiar można skorzystać w celu weryfikacji.</li></ol>
-| Backup | Niepowodzenia wykonywania kopii zapasowej BMR | Jeśli rozmiar odzyskiwania systemu od ZERA jest duża, przenieść niektórych plików aplikacji do dysku systemu operacyjnego, a następnie spróbuj ponownie. |
-| Backup | Możliwość ponownego włączenia ochrony maszyny Wirtualnej VMware na nowym serwerze kopia zapasowa Microsoft Azure nie są wyświetlane jako dostępne do dodania. | Właściwości programu VMware są wskazany w starej, wycofane wystąpienia serwera usługi Microsoft Azure Backup. Aby rozwiązać ten problem:<br><ol><li>W programie VCenter (SC-VMM odpowiednik), przejdź do **Podsumowanie** kartę, a następnie **atrybuty niestandardowe**.</li>  <li>Usuń starą nazwę serwera usługi Microsoft Azure Backup z **DPMServer** wartości.</li>  <li>Wróć do nowego serwera kopia zapasowa Microsoft Azure i modyfikować strony  Po wybraniu **Odśwież** , maszyna wirtualna zostanie wyświetlony przycisk z polem wyboru jako dostępny, aby dodać do ochrony.</li></ol> |
-| Backup | Wystąpił błąd podczas uzyskiwania dostępu do folderów udostępnionych/plików | Spróbuj zmodyfikować ustawień programu antywirusowego zgodnie z sugestią podaną w artykule TechNet [uruchamianie oprogramowania antywirusowego na serwerze programu DPM](https://technet.microsoft.com/library/hh757911.aspx).|
+| Tworzenie kopii zapasowej | Gdy zadanie było uruchomione, wystąpił nieoczekiwany błąd. Urządzenie nie jest gotowa. | **Jeśli Zalecana akcja, która jest wyświetlana w ramach produktu nie rozwiąże problemu, wykonaj następujące czynności:** <br> <ul><li>Ustaw obszar magazynu kopii w tle nieograniczona liczba elementów w grupie ochrony, a następnie uruchom sprawdzanie spójności.<br></li> (OR) <li>Spróbuj usunąć istniejącą ochronę grupy i tworzenie wielu nowych grup. Każdej nowej grupy ochrony powinna mieć pojedynczy element w nim.</li></ul> |
+| Tworzenie kopii zapasowej | W przypadku tworzenia kopii zapasowej tylko stanu systemu, należy sprawdzić, czy jest za mało wolnego miejsca na chronionym komputerze do przechowywania kopii zapasowej stanu systemu. | <ol><li>Sprawdź, czy kopia zapasowa systemu Windows Server jest zainstalowany na komputerze chronionym.</li><li>Sprawdź, czy jest za mało miejsca na komputerze chronionym, stanu systemu. Najprostszym sposobem, aby sprawdzić, czy to jest, aby przejść do komputera chronionego, Otwórz narzędzie Kopia zapasowa systemu Windows Server, przejrzeć wybrane opcje, a następnie wybierz odzyskiwania systemu od ZERA. Interfejs użytkownika następnie informuje, ile miejsca jest wymagana. Otwórz **WSB** > **lokalna kopia zapasowa** > **harmonogram tworzenia kopii zapasowych** > **wybierz konfigurację kopii zapasowej**  >  **Pełny serwer** (rozmiar jest wyświetlany). Ten rozmiar można skorzystać w celu weryfikacji.</li></ol>
+| Tworzenie kopii zapasowej | Tworzenie kopii zapasowej awarii do odzyskiwania systemu od ZERA | Jeśli rozmiar odzyskiwania systemu od ZERA jest duża, przenieść niektórych plików aplikacji do dysku systemu operacyjnego, a następnie spróbuj ponownie. |
+| Tworzenie kopii zapasowej | Możliwość ponownego włączenia ochrony maszyny Wirtualnej VMware na nowym serwerze kopia zapasowa Microsoft Azure nie są wyświetlane jako dostępne do dodania. | Właściwości programu VMware są wskazany w starej, wycofane wystąpienia serwera usługi Microsoft Azure Backup. Aby rozwiązać ten problem:<br><ol><li>W programie VCenter (SC-VMM odpowiednik), przejdź do **Podsumowanie** kartę, a następnie **atrybuty niestandardowe**.</li>  <li>Usuń starą nazwę serwera usługi Microsoft Azure Backup z **DPMServer** wartości.</li>  <li>Wróć do nowego serwera kopia zapasowa Microsoft Azure i modyfikować strony  Po wybraniu **Odśwież** , maszyna wirtualna zostanie wyświetlony przycisk z polem wyboru jako dostępny, aby dodać do ochrony.</li></ol> |
+| Tworzenie kopii zapasowej | Wystąpił błąd podczas uzyskiwania dostępu do folderów udostępnionych/plików | Spróbuj zmodyfikować ustawień programu antywirusowego zgodnie z sugestią podaną w artykule TechNet [uruchamianie oprogramowania antywirusowego na serwerze programu DPM](https://technet.microsoft.com/library/hh757911.aspx).|
 
 
 ## <a name="change-passphrase"></a>Zmień hasło

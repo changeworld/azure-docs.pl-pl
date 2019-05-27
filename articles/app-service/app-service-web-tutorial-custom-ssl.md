@@ -16,11 +16,11 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138682"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Samouczek: Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service
 
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Uaktualnienie warstwy cenowej aplikacji
 > * Wiązanie niestandardowego certyfikatu z usługą App Service
 > * Odnawianie certyfikatów
-> * Wymuszanie protokołu HTTPS
+> * Wymuszaj HTTPS
 > * Wymuszanie protokołu TLS 1.1/1.2
 > * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
 
@@ -122,7 +122,7 @@ W pozycji **Plik PFX certyfikatu** wybierz swój plik PFX. W polu **Hasło certy
 
 Kliknij pozycję **Przekaż**.
 
-![Przekazywanie certyfikatu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
+![Przekaż certyfikat](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
 Po zakończeniu przekazywania certyfikatu przez usługę App Service zostanie on wyświetlony na stronie **Ustawienia protokołu SSL**.
 
@@ -185,13 +185,13 @@ Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania,
 2. Powiąż nowy certyfikat z wybraną domeną niestandardową bez usuwania starego certyfikatu. Ta akcja zastępuje powiązanie zamiast usuwania go.
 3. Usuń stary certyfikat. 
 
-## <a name="enforce-https"></a>Wymuszanie protokołu HTTPS
+## <a name="enforce-https"></a>Wymuszaj HTTPS
 
 Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
 
 Na stronie aplikacji w obszarze nawigacji po lewej stronie wybierz pozycję **Ustawienia protokołu SSL**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
 
-![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
+![Wymuszaj HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
 Po zakończeniu operacji przejdź do dowolnego adresu URL protokołu HTTP, który wskazuje Twoją aplikację. Na przykład:
 
@@ -266,7 +266,7 @@ Jeśli aplikacja wymaga dostępu do zasobów zdalnych jako klient, a zasób zdal
 
 Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md). Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów, należy skorzystać z aplikacji w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [Jak skonfigurować certyfikaty publiczne dla aplikacji usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
-![Przekazywanie certyfikatu publicznego](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
+![Przekaż certyfikat publiczny](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -276,7 +276,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Uaktualnienie warstwy cenowej aplikacji
 > * Wiązanie niestandardowego certyfikatu z usługą App Service
 > * Odnawianie certyfikatów
-> * Wymuszanie protokołu HTTPS
+> * Wymuszaj HTTPS
 > * Wymuszanie protokołu TLS 1.1/1.2
 > * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0587782cbfa31f7b397b950a752040cc678cf7d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0de4da5792553b8e61ce8116988dc0d0b2c55488
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576666"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130998"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentacja aplikacji sieci web w czasie wykonywania za pomocą Monitora stanu usługi Application Insights
 
@@ -149,6 +149,8 @@ Aby naprawić aktualizacji z pliku web.config:
 * W danych wyjściowych pełne dzienniki, zmodyfikuj plik konfiguracji: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` i Dodaj `<add key="TraceLevel" value="All" />` do `appsettings`.
 Następnie należy ponownie uruchomić monitor stanu.
 
+* Monitor stanu jest aplikacji .NET można również włączyć [śledzenia .net, dodając odpowiednie diagnostyki do pliku config](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Na przykład w niektórych scenariuszach może być przydatne zobaczyć, co dzieje się na poziomie sieci przez [Konfigurowanie śledzenia sieci](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+
 ### <a name="insufficient-permissions"></a>Niewystarczające uprawnienia
   
 * Jeśli na serwerze zostanie wyświetlony komunikat o „niewystarczających uprawnieniach”, spróbuj wykonać następujące kroki:
@@ -175,7 +177,7 @@ Usuń wszystkie te pliki w katalogu aplikacji:
 
 * Zobacz dodatkowe [Rozwiązywanie problemów z][qna].
 
-## <a name="system-requirements"></a>Wymagania systemu
+## <a name="system-requirements"></a>Wymagania systemowe
 Serwerowe systemy operacyjne obsługiwane przez monitor stanu usługi Application Insights:
 
 * Windows Server 2008
@@ -184,7 +186,7 @@ Serwerowe systemy operacyjne obsługiwane przez monitor stanu usługi Applicatio
 * Windows Server 2012 R2
 * Windows Server 2016
 
-z najnowszym dodatkiem SP oraz platformą .NET Framework 4.5
+z najnowszym dodatkiem SP oraz .NET Framework 4.5 (Monitora stanu jest wbudowany w ramach tej wersji)
 
 Po stronie klienta: Windows 7, 8, 8.1 i 10, ponownie przy użyciu programu .NET Framework 4.5
 
@@ -276,7 +278,9 @@ Po wybraniu aplikacji internetowej do instrumentacji za pomocą monitora stanu:
 
 ### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakie wersje zestawu SDK usługi Application Insights Zainstaluj Monitor stanu
 
-Aktualnie Monitora stanu można zainstalować tylko zestaw SDK usługi Application Insights w wersji 2.3 lub 2.4.
+Aktualnie Monitora stanu można zainstalować tylko zestaw SDK usługi Application Insights w wersji 2.3 lub 2.4. 
+
+Application Insights SDK wersji 2.4 jest [ostatniej wersji do działu pomocy technicznej programu .NET 4.0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) co było [EOL stycznia 2016 roku](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Dlatego teraz Monitor stanu może służyć do instrumentacji aplikacji .NET 4.0. 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Czy monitor stanu należy uruchamiać podczas każdej aktualizacji aplikacji?
 
@@ -301,7 +305,7 @@ W przypadku aplikacji już instrumentowanych w czasie kompilacji:
 
 [Dowiedz się więcej](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

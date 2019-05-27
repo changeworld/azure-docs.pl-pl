@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
 ms.openlocfilehash: fedab8cc45fff6d7830f67e7a23786b5952f83a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995969"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66170213"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu programu Azure PowerShell
 

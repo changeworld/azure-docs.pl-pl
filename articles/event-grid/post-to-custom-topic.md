@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: fc8877ed23b408ea041de67018a71cc203c5e8c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182408"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162038"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Wpis do tematu niestandardowego usługi Azure Event Grid
 
@@ -100,10 +100,10 @@ Po publikowanie do endpoint tematu, otrzymasz odpowiedź. Odpowiedź jest standa
 
 |Wynik  |Odpowiedź  |
 |---------|---------|
-|Powodzenie  | 200 OK  |
+|Sukces  | 200 OK  |
 |Dane zdarzenia mają niepoprawny format | 400 Niewłaściwe żądanie |
 |Nieprawidłowy klucz dostępu. | 401 Brak autoryzacji |
-|Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
+|Nieprawidłowy punkt końcowy | 404 Nie znaleziono |
 |Tablica lub zdarzeń przekracza limit rozmiaru | Ładunek 413 zbyt duży |
 
 Błędy treść wiadomości ma następujący format:

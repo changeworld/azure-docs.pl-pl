@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: c65ea038fc39702affae93cb68b8cf644393c62e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150218"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP w bramach sieci VPN Azure przy użyciu programu PowerShell
 W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między środowiskami lokalnymi i połączenia sieć wirtualna-sieć wirtualna za pomocą modelu wdrażania usługi Resource Manager i programu PowerShell.
@@ -28,7 +28,7 @@ W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączen
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-bgp"></a>BGP — informacje
-BGP to standardowy protokół routingu używany często w Internecie do wymiany informacji o routingu i osiągalności między dwiema lub wieloma sieciami. Protokół BGP umożliwia bram Azure VPN Gateway i lokalnych urządzeń sieci VPN, o nazwie elementów równorzędnych protokołu BGP lub sąsiednimi wymianę "tras" zawierających obu bram informacje na temat dostępności i osiągalności tych prefiksów za pośrednictwem bram lub routerów związane. Protokół BGP umożliwia również włączenie routingu tranzytowego między wieloma sieciami poprzez propagowanie tras, których brama BGP uczy się od jednego elementu równorzędnego BGP, we wszystkich innych elementach równorzędnych BGP.
+BGP to standardowy protokół routingu używany często w Internecie do wymiany informacji o routingu i osiągalności między dwiema lub wieloma sieciami. Protokół BGP umożliwia bramom sieci VPN na platformie Azure i lokalnym urządzeniom sieci VPN (nazywanym elementami równorzędnymi lub sąsiednimi BGP), przeprowadzaną za pośrednictwem bram lub routerów wymianę „tras” zawierających przeznaczone dla obu bram informacje na temat dostępności i osiągalności tych prefiksów. Protokół BGP umożliwia również włączenie routingu tranzytowego między wieloma sieciami poprzez propagowanie tras, których brama BGP uczy się od jednego elementu równorzędnego BGP, we wszystkich innych elementach równorzędnych BGP.
 
 Zobacz [Omówienie protokołu BGP z bramami sieci VPN Azure](vpn-gateway-bgp-overview.md) do więcej dyskusji na temat korzyści użycia protokołu BGP i zrozumienie wymagań technicznych oraz kwestii związanych z przy użyciu protokołu BGP.
 

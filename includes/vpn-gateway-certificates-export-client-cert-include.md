@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b657d54c3ebbe5afc20fc98c1348bb783410df60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764017"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150318"
 ---
 Możesz wygenerować certyfikat klienta, jest automatycznie instalowany na komputerze, którego użyto do jego wygenerowania. Jeśli chcesz zainstalować certyfikat klienta na innym komputerze klienckim, należy wyeksportować certyfikat klienta, który został wygenerowany.
 
@@ -22,7 +22,7 @@ Możesz wygenerować certyfikat klienta, jest automatycznie instalowany na kompu
    ![Eksportowanie](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. W Kreatorze eksportu certyfikatów kliknij **dalej** aby kontynuować.
 
-   ![Następne kroki](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
+   ![Następne](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
 3. Wybierz **tak, Eksportuj klucz prywatny**, a następnie kliknij przycisk **dalej**.
 
    ![Eksportowanie klucza prywatnego](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
@@ -31,7 +31,7 @@ Możesz wygenerować certyfikat klienta, jest automatycznie instalowany na kompu
    ![format pliku eksportu](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
 5. Na stronie **Zabezpieczenia** należy włączyć ochronę klucza prywatnego. Jeśli wybierzesz opcję użycia hasła, zapisz lub zapamiętaj hasło ustawione dla tego certyfikatu. Następnie kliknij przycisk **Dalej**.
 
-   ![security](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
+   ![zabezpieczenia](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
 6. W obszarze **Eksport pliku** wybierz pozycję **Przeglądaj**, aby przejść do lokalizacji, do której chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
 
    ![plik do wyeksportowania](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)

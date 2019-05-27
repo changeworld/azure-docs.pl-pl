@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: cf5713fecd354f1e1d2c0ce7d28439b5b8b785ec
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 6d2ed8ba13fac03a60d9a0730776bc8348876b62
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153421"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153569"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -149,7 +149,7 @@ Aby użyć uwierzytelniania tokenu aplikacji usługi oparte na jednostce usługi
 4. **Przyznaj nazwy głównej usługi potrzebnych uprawnień** , jak zwykle dla użytkowników SQL lub inne osoby. Uruchom poniższy kod lub odwoływać się do więcej opcji [tutaj](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    EXEC sp_addrolemember db_owner, [your application name];
     ```
 
 5. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w usłudze Azure Data Factory.
@@ -199,7 +199,7 @@ Aby użyć uwierzytelniania tożsamości zarządzanej, wykonaj następujące kro
 3. **Udzielanie tożsamości zarządzanej usługi Data Factory wymaganych uprawnień** , jak zwykle dla użytkowników SQL i innym osobom. Uruchom poniższy kod lub odwoływać się do więcej opcji [tutaj](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    EXEC sp_addrolemember db_owner, [your Data Factory name];
     ```
 
 5. **Konfigurowanie usługi Azure SQL Data Warehouse połączone** w usłudze Azure Data Factory.
@@ -375,7 +375,7 @@ Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ uj
 | rejectValue | Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej na temat opcji odrzucania w technologii PolyBase w sekcji argumenty [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Dozwolone wartości to 0 (domyślnie), 1, 2, itp. |Nie |
 | rejectType | Określa, czy **rejectValue** opcja jest wartością literałową lub wartości procentowej.<br/><br/>Dozwolone wartości to **wartość** (ustawienie domyślne) i **procent**. | Nie |
 | rejectSampleValue | Określa liczbę wierszy do pobrania, zanim program PolyBase ponownie oblicza odsetek odrzuconych wierszy.<br/><br/>Dozwolone wartości to 1, 2, itp. | Tak, jeśli **rejectType** jest **procent**. |
-| useTypeDefault | Określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej na temat tej właściwości z sekcji argumentów w [tworzenie EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne). | Nie |
+| useTypeDefault | Określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej na temat tej właściwości z sekcji argumentów w [tworzenie EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne).<br><br>**Zobacz [wskazówki dotyczące rozwiązywania problemów](#polybase-troubleshooting) związane z tego ustawienia.** | Nie |
 | writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL **na partię**. Ma zastosowanie tylko wtedy, gdy PolyBase nie jest używany.<br/><br/>Dozwolone wartości to **całkowitą** (liczba wierszy). Domyślnie Data Factory dynamiczne określanie rozmiar partii odpowiednie, w zależności od rozmiaru wiersza. | Nie |
 | writeBatchTimeout | Czas na zakończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. Ma zastosowanie tylko wtedy, gdy PolyBase nie jest używany.<br/><br/>Dozwolone wartości to **timespan**. Przykład: "00: 30:00" (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL, działanie kopiowania do uruchomienia przed zapisaniem danych do usługi Azure SQL Data Warehouse w każdym przebiegu. Ta właściwość służy do oczyszczania załadowanych danych. | Nie |
@@ -405,6 +405,9 @@ Za pomocą [PolyBase](https://docs.microsoft.com/sql/relational-databases/polyba
 * Jeśli źródło danych znajduje się w **obiektów Blob platformy Azure, Azure Data Lake Storage Gen1 lub Azure Data Lake Storage Gen2**i **format jest PolyBase zgodne**, działanie kopiowania umożliwia bezpośrednio wywołać program PolyBase, aby umożliwić platformie Azure Usługa SQL Data Warehouse ściągania danych ze źródła. Aby uzyskać więcej informacji, zobacz  **[bezpośrednie kopiowania przy użyciu programu PolyBase](#direct-copy-by-using-polybase)**.
 * Jeśli Twoje źródłowy magazyn danych i format pierwotnie nie jest obsługiwana przez program PolyBase, użyj **[kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase)** są wyposażone w zamian. Funkcja kopiowania przejściowego zapewnia także większą przepływność. Automatycznie konwertuje dane w formacie zgodnym z programu PolyBase. I przechowuje dane w usłudze Azure Blob storage. Następnie ładuje dane do usługi SQL Data Warehouse.
 
+>[!TIP]
+>Dowiedz się więcej o [najlepsze rozwiązania dotyczące przy użyciu technologii PolyBase](#best-practices-for-using-polybase).
+
 ### <a name="direct-copy-by-using-polybase"></a>Bezpośrednie kopiowania przy użyciu programu PolyBase
 
 Program PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob platformy Azure, Azure Data Lake Storage Gen1 i Azure Data Lake Storage Gen2. Jeśli źródło danych spełnia kryteria opisane w tej sekcji, skopiuj bezpośrednio z magazynu danych źródłowych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. W przeciwnym razie użyj [kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase).
@@ -418,9 +421,12 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
 
     | Typ magazynu danych obsługiwanego źródła | Obsługiwany typ uwierzytelniania źródła |
     |:--- |:--- |
-    | [Azure Blob](connector-azure-blob-storage.md) | Uwierzytelnianie za pomocą klucza konta |
+    | [Azure Blob](connector-azure-blob-storage.md) | Konto uwierzytelniania za pomocą klucza uwierzytelniania tożsamości zarządzanej |
     | [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | Uwierzytelnianie jednostki usługi |
-    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Uwierzytelnianie za pomocą klucza konta |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Konto uwierzytelniania za pomocą klucza uwierzytelniania tożsamości zarządzanej |
+
+    >[!IMPORTANT]
+    >Skonfigurowanie usługi Azure Storage przy użyciu punktu końcowego usługi sieci wirtualnej muszą używać uwierzytelniania tożsamości zarządzanej. Zapoznaj się [wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
 
 2. **Formatu danych źródłowych** jest **Parquet**, **ORC**, lub **tekst rozdzielany**, w następujący sposób:
 
@@ -515,9 +521,28 @@ Aby korzystać z technologii PolyBase, musi mieć użytkownik, który ładuje da
 
 ### <a name="row-size-and-data-type-limits"></a>Rozmiar wiersza i danych typ ograniczenia
 
-Obciążenia funkcji PolyBase są ograniczone do wierszy jest mniejszy niż 1 MB. Nie można ich załadować VARCHR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX). Aby uzyskać więcej informacji, zobacz [limitów pojemności usługi SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+Obciążenia funkcji PolyBase są ograniczone do wierszy jest mniejszy niż 1 MB. Nie można załadować VARCHR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX). Aby uzyskać więcej informacji, zobacz [limitów pojemności usługi SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
 Źródło danych zawiera wiersze przekracza 1 MB, można w pionie z kilku małych sieci podzielić tabel źródłowych. Upewnij się, że największy rozmiar dla każdego wiersza nie przekracza limit. Mniejsze tabel można następnie ładowane przy użyciu programu PolyBase i scalane w usłudze Azure SQL Data Warehouse.
+
+Alternatywnie w danych za pomocą takich szerokości kolumn, ładowanie danych za pomocą usługi ADF, wyłączając "Zezwalaj na aparat PolyBase" można użyć innych technologii PolyBase ustawienie.
+
+### <a name="polybase-troubleshooting"></a>Rozwiązywanie problemów z technologii PolyBase
+
+**Ładowanie do dziesiętną kolumny**
+
+Jeśli źródło danych jest w formacie tekstowym, i zawiera pustą wartość, należy załadować do kolumny SQL Data Warehouse dziesiętną, może wystąpić następujący błąd:
+
+```
+ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
+```
+
+Rozwiązaniem jest zaznaczenie "**domyślny typ użycia**" opcji ujścia działania kopiowania (jako FAŁSZ) -> Ustawienia połączenia programu PolyBase. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+)" jest Konfiguracja natywnych PolyBase, który określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego. 
+
+**Inne**
+
+Więcej problemów knonw PolyBase można znaleźć [obciążenie Rozwiązywanie problemów z PolyBase magazynu danych SQL Azure](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
 
 ### <a name="sql-data-warehouse-resource-class"></a>Klasa zasobów SQL Data Warehouse
 
@@ -558,6 +583,9 @@ Dowiedz się, szczegółowe informacje z [źródła przekształcenia](data-flow-
 
 Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następujące mapowania są używane do typów danych tymczasowych usługi Azure Data Factory z typów danych Azure SQL Data Warehouse. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby dowiedzieć się, jak działania kopiowania mapuje typ schematu i danych źródła do ujścia.
 
+>[!TIP]
+>Zapoznaj się [typy danych w usłudze Azure SQL Data Warehouse w tabelach](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md) artykuł dotyczący usługi SQL DW obsługiwane typy danych i rozwiązań dla te nieobsługiwane.
+
 | Typ danych w usłudze Azure SQL Data Warehouse | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | bigint | Int64 |
@@ -575,23 +603,18 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | int | Int32 |
 | money | Decimal |
 | nchar | String, Char[] |
-| ntext | String, Char[] |
-| Numeryczne | Decimal |
+| numeric | Decimal |
 | nvarchar | String, Char[] |
 | real | Single |
 | rowversion | Byte[] |
 | smalldatetime | DateTime |
 | smallint | Int16 |
 | smallmoney | Decimal |
-| sql_variant | Object |
-| tekst | String, Char[] |
 | time | TimeSpan |
-| timestamp | Byte[] |
 | tinyint | Byte |
 | uniqueidentifier | Guid |
-| Varbinary | Byte[] |
+| varbinary | Byte[] |
 | varchar | String, Char[] |
-| xml | Xml |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md##supported-data-stores-and-formats).

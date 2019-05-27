@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
 ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797538"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150666"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery dla udziałów plików w serwisie StorSimple
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Usługa Microsoft Azure StorSimple to hybrydowe rozwiązanie magazynu w chmurze odnoszący się do złożoności danych bez struktury, zwykle powiązanych ze udziałów plików. Usługa StorSimple używa magazynu w chmurze jako rozszerzenia rozwiązania lokalnego i automatycznie warstwy danych przez Magazyn lokalny oraz Magazyn w chmurze. Zintegrowana ochrona danych z lokalnego oraz migawki w chmurze, eliminuje potrzebę stosowania sprawling infrastruktury magazynu.
 
 [Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) to usługa oparta na platformie Azure, która oferuje możliwości odzyskiwania po awarii poprzez organizowanie replikacji, trybu failover i odzyskiwanie maszyn wirtualnych. Usługa Azure Site Recovery obsługuje wiele technologii replikacji stale replikować, ochronę i bezproblemowo w tryb failover maszyny wirtualne i aplikacje do publicznego i prywatnego lub hostowanej chmury.
@@ -184,7 +184,7 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
 
      Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
 
-      ![Elementy zawartości](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
+      ![Zasoby](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
 1. Przekazywanie modułu Runbook serii StorSimple 8000 na koncie usługi Automation. Użyj poniższych kroków, aby dodać moduł:
    

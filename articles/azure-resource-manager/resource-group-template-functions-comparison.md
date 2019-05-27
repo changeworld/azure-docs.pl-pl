@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128692"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funkcje porównania dla szablonów usługi Azure Resource Manager
 
@@ -42,8 +42,8 @@ Sprawdza, czy dwie wartości równe siebie nawzajem.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, string, tablicy lub obiektu |Pierwsza wartość do sprawdzenia pod kątem równości. |
-| argument2 |Yes |int, string, tablicy lub obiektu |Druga wartość do sprawdzenia pod kątem równości. |
+| arg1 |Tak |int, string, tablicy lub obiektu |Pierwsza wartość do sprawdzenia pod kątem równości. |
+| argument2 |Tak |int, string, tablicy lub obiektu |Druga wartość do sprawdzenia pod kątem równości. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -198,8 +198,8 @@ Sprawdza, czy pierwsza wartość jest większa niż wartość drugiego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int lub ciągu |Pierwsza wartość większy wynik porównania. |
-| argument2 |Yes |int lub ciągu |Druga wartość większy wynik porównania. |
+| arg1 |Tak |int lub ciągu |Pierwsza wartość większy wynik porównania. |
+| argument2 |Tak |int lub ciągu |Druga wartość większy wynik porównania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -250,7 +250,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | Fałsz |
 | checkStrings | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -274,8 +274,8 @@ Sprawdza, czy pierwsza wartość jest większa lub równa wartości drugiego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int lub ciągu |Pierwsza wartość do porównania większe lub równe. |
-| argument2 |Yes |int lub ciągu |Druga wartość do porównania większe lub równe. |
+| arg1 |Tak |int lub ciągu |Pierwsza wartość do porównania większe lub równe. |
+| argument2 |Tak |int lub ciągu |Druga wartość do porównania większe lub równe. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -326,7 +326,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | Fałsz |
 | checkStrings | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -341,7 +341,7 @@ Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>less
+## <a name="less"></a>mniej
 `less(arg1, arg2)`
 
 Sprawdza, czy pierwsza wartość jest mniejsza od drugiej wartości.
@@ -350,8 +350,8 @@ Sprawdza, czy pierwsza wartość jest mniejsza od drugiej wartości.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int lub ciągu |Pierwsza wartość do porównania mniej. |
-| argument2 |Yes |int lub ciągu |Druga wartość do porównania mniej. |
+| arg1 |Tak |int lub ciągu |Pierwsza wartość do porównania mniej. |
+| argument2 |Tak |int lub ciągu |Druga wartość do porównania mniej. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -403,7 +403,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | Fałsz |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -426,8 +426,8 @@ Sprawdza, czy pierwsza wartość jest mniejsza lub równa wartości drugiego.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int lub ciągu |Pierwsza wartość na mniej lub porównywania równości. |
-| argument2 |Yes |int lub ciągu |Druga wartość dla mniej lub porównywania równości. |
+| arg1 |Tak |int lub ciągu |Pierwsza wartość na mniej lub porównywania równości. |
+| argument2 |Tak |int lub ciągu |Druga wartość dla mniej lub porównywania równości. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -479,7 +479,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | Fałsz |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 

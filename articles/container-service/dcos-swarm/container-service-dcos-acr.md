@@ -10,11 +10,11 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148928"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(PRZESTARZAŁE) Wdrażanie aplikacji przy użyciu usługi ACR z klastrem DC/OS
 
@@ -193,7 +193,7 @@ Wdróż aplikację przy użyciu interfejsu wiersza polecenia DC/OC.
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku skonfigurowano rozwiązanie DC/OS do korzystania z usługi Azure Container Registry, w tym wykonano następujące zadania:
 

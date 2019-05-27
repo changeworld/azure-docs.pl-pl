@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405432"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145854"
 ---
 Należy chronić maszyny wirtualnej (VM) dla aplikacji, które zostanie uruchomione. Zabezpieczanie maszyn wirtualnych może zawierać jeden lub więcej usług platformy Azure, jak i funkcji, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczne przechowywanie danych. Ten artykuł zawiera informacje, która pozwala zapewnić bezpieczeństwo swoich maszyn wirtualnych i aplikacji.
 
@@ -47,7 +47,7 @@ Funkcja tożsamości zarządzanych dla platformy Azure w usłudze Azure Active D
 
 [Zasady usługi Azure](../articles/azure-policy/azure-policy-introduction.md) może służyć do definiowania żądane zachowanie dla Twojej organizacji [maszyn wirtualnych Windows](../articles/virtual-machines/windows/policy.md) i [maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/policy.md). Za pomocą zasad, organizacja może wymusić różnych konwencji i reguł w całym przedsiębiorstwie. Wymuszanie żądane zachowanie może pomóc w zmniejszeniu ryzyka, przyczyniając się do sukcesu organizacji.
 
-## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
+## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
 
 Za pomocą [kontroli dostępu opartej na rolach (RBAC)](../articles/role-based-access-control/overview.md), można segregować obowiązki w ramach zespołu i udzielać uprawnień dostępu użytkownikom na maszynie Wirtualnej, których potrzebują do wykonywania swoich zadań. Zamiast wszystkich nieograniczone uprawnienia na maszynie Wirtualnej, można zezwolić tylko określone akcje. Możesz skonfigurować kontrolę dostępu dla maszyny Wirtualnej w [witryny Azure portal](../articles/role-based-access-control/role-assignments-portal.md)przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/role), lub[programu Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 

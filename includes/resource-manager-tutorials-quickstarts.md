@@ -15,11 +15,11 @@ ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
 ms.openlocfilehash: 8c5347b412475b86222acabb76b88baaceb7645a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589334"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66129015"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki start i samouczki
 
@@ -27,7 +27,7 @@ Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj 
 
 - Przewodniki Szybki start
 
-    |Tytuł|Opis|
+    |Stanowisko|Opis|
     |------|-----|
     |[Korzystanie z witryny Azure Portal](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)|Generuj szablon przy użyciu portalu i zrozumieć proces edycji i wdrażania szablonu.|
     |[Korzystanie z programu Visual Studio Code](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Tworzenie i edytowanie szablonów przy użyciu programu Visual Studio Code oraz wdrażanie szablonów za pomocą usługi Azure Cloud Shell.|
@@ -35,7 +35,7 @@ Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj 
 
 - Samouczki
 
-    |Tytuł|Opis|
+    |Stanowisko|Opis|
     |------|-----|
     |[Korzystanie z dokumentacji szablonów](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|Opracowywanie szablonów przy użyciu dokumentacji szablonów. Ten samouczek obejmuje schemat konta magazynu i informacje dotyczące tworzenia zaszyfrowanego konta magazynu.|
     |[Tworzenie wielu wystąpień](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|Tworzenie wielu wystąpień zasobów platformy Azure. W tym samouczku utworzysz wiele wystąpień konta magazynu.|

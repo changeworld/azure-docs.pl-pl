@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133310"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132880"
 ---
 Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie parametrów, który zawiera wszystkie wartości parametrów.
 Należy zdefiniować parametr dla tych wartości, które będą się różnić, na podstawie projektu, który jest wdrażany lub opartych na środowisku, w których jest wdrażany z. Nie należy definiować parametrów dla wartości, które zawsze pozostają takie same. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby. 
@@ -18,7 +18,7 @@ Podczas definiowania parametrów należy użyć **allowedValues** pola, aby okre
 
 Opiszemy każdego parametru w szablonie.
 
-### <a name="sitename"></a>Nazwa witryny
+### <a name="sitename"></a>siteName
 Nazwa aplikacji sieci web, który chcesz utworzyć.
 
     "siteName":{
@@ -32,7 +32,7 @@ Nazwa planu usługi App Service na potrzeby hostowania aplikacji sieci web.
       "type":"string"
     }
 
-### <a name="sku"></a>sku
+### <a name="sku"></a>jednostka SKU
 Warstwę cenową dla planu hostingu.
 
     "sku": {

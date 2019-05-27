@@ -1,10 +1,15 @@
 ---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113551"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66139839"
 ---
 Domyślnie interfejsy API w zaplecze funkcji Mobile Apps może być wywoływany anonimowo. Następnie należy ograniczyć dostęp do tylko uwierzytelnionym klientom.  
 
@@ -15,17 +20,13 @@ Domyślnie interfejsy API w zaplecze funkcji Mobile Apps może być wywoływany 
 
     W programie project server, przejdź do **kontrolerów** > **TodoItemController.cs**. Dodaj `[Authorize]` atrybutu **TodoItemController** klasy w następujący sposób. Aby ograniczyć dostęp tylko do określonych metod, można także zastosować ten atrybut tylko do jednej z tych metod zamiast klasy. Ponownie opublikować projekt serwera.
 
-    ```
-    [Authorize]
-    public class TodoItemController : TableController<TodoItem>
-    ```
+        [Authorize]
+        public class TodoItemController : TableController<TodoItem>
 
 * **Zaplecze środowiska node.js (przy użyciu kodu w języku Node.js)** :  
 
     Aby wymagać uwierzytelniania w celu dostępu do tabel, Dodaj następujący wiersz do skryptu serwera Node.js:
 
-    ```
-    table.access = 'authenticated';
-    ```
+        table.access = 'authenticated';
 
     Aby uzyskać więcej informacji, zobacz [jak: Wymaganie uwierzytelniania na potrzeby dostępu do tabel](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). Aby dowiedzieć się, jak pobrać projekt kodu szybkiego startu z lokacji, zobacz [jak: Pobierz projekt kodu szybkiego startu zaplecza Node.js przy użyciu narzędzia Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).

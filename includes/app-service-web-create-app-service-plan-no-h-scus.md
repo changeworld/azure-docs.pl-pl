@@ -9,11 +9,11 @@ ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 89a97196f14332ec1812dc3e8a16905af1aa4407
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118772"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66139252"
 ---
 W usłudze Cloud Shell utwórz plan usługi App Service za pomocą polecenia [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create).
 

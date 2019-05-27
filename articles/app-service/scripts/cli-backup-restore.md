@@ -15,11 +15,11 @@ ms.date: 12/07/2017
 ms.author: msangapu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: affdf22a3c4cb496983da557b415773f4274db48
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53586778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136923"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Przywracanie aplikacji internetowej z kopii zapasowej przy użyciu interfejsu wiersza polecenia
 
@@ -46,7 +46,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Pobiera listę kopii zapasowych dla aplikacji internetowej. |
 | [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | Przywraca aplikację internetową z kopii zapasowej. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

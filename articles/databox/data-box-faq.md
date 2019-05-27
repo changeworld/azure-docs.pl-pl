@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
-ms.translationtype: MT
+ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473262"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150457"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -182,6 +182,9 @@ A. Jeśli urządzenie zostało dostarczone uszkodzone lub istnieje dowód manipu
 
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>PYTANIE: Czy mogę wysłać urządzenie Data Box za pośrednictwem własnej firmy przewozowej?
 A. W ramach usługi Data Box firma Microsoft obsługuje wysyłkę do i z centrum danych platformy Azure. Jeśli chcesz skorzystać z usług własnego przewoźnika, możesz skorzystać z usługi Azure Import/Export. Aby uzyskać więcej informacji, przejdź do tematu [Co to jest usługa Azure Import/Export?](../storage/common/storage-import-export-service.md)
+
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>PYTANIE: Będzie Moje urządzenia Data Box krzyżowe obramowania kraju podczas wysyłania?
+A. Wszystkie urządzenia Data Box są dostarczane z w obrębie tego samego kraju jako miejsca docelowego i nie przechodzi wszystkie międzynarodowej obramowania. Jedynym wyjątkiem jest zamówień w Unii Europejskiej (UE), których urządzeń można wysłać do i z jakiegokolwiek kraju UE.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>PYTANIE: Etykieta wysyłki zwrotnej nie jest widoczna na wyświetlaczu E-ink. Co mam zrobić?
 A. Jeśli na wyświetlaczu E-ink nie widać etykiety wysyłki zwrotnej, wykonaj następujące czynności:

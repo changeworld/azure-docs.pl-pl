@@ -9,11 +9,11 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448405"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143391"
 ---
 ## <a name="access-the-virtual-machine"></a>Dostęp do maszyny wirtualnej
 
@@ -23,7 +23,7 @@ Poniższe kroki pokazują, jak skonfigurować maszyny wirtualnej platformy Azure
 
 1. Wyświetl zawartość grupy zasobów, która zawiera zasoby akceleratora rozwiązań:
 
-    ```azurecli
+    ```azurecli-interactive
     az resource list -g contoso-simulation -o table
     ```
 
@@ -31,7 +31,7 @@ Poniższe kroki pokazują, jak skonfigurować maszyny wirtualnej platformy Azure
 
 1. Zaktualizuj sieciową grupę zabezpieczeń, aby zezwolić na dostęp SSH. Poniższego polecenia założono, Nazwa sieciowa grupa zabezpieczeń jest **contoso symulacji nsg** — Zastąp tę wartość na nazwę sieciową grupę zabezpieczeń:
 
-    ```azurecli
+    ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
@@ -39,13 +39,13 @@ Poniższe kroki pokazują, jak skonfigurować maszyny wirtualnej platformy Azure
 
 1. Zaktualizuj hasło **azureuser** konta na maszynie wirtualnej, aby hasła znasz. Wybierz swoje własne hasło po uruchomieniu następującego polecenia:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm user update --name vm-vikxv --username azureuser --password YOURSECRETPASSWORD  -g contoso-simulation
     ```
 
 1. Znajdź publiczny adres IP swojej maszyny wirtualnej. Poniższego polecenia założono, Nazwa maszyny wirtualnej jest **vikxv maszyny wirtualnej** — Zastąp tę wartość o nazwie maszyny wirtualnej, należy zanotować wcześniej:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm list-ip-addresses --name vm-vikxv -g contoso-simulation -o table
     ```
 

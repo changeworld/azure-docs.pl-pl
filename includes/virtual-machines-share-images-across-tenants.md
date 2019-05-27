@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546801"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145888"
 ---
 Udostępnione galerie obrazów pozwalają udostępniania obrazów przy użyciu funkcji RBAC. RBAC można użyć do udostępniania obrazów w ramach dzierżawy, a nawet do osób spoza Twojej dzierżawy. Ale jeśli chcesz udostępnić obrazów spoza Twojej dzierżawy platformy Azure na dużą skalę, należy utworzyć rejestrację aplikacji w taki sposób, aby usprawnić udostępnianie.  Korzystanie z rejestracji aplikacji można włączyć bardziej złożonych scenariuszy do udostępniania, takie jak: 
 

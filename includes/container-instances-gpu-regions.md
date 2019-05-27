@@ -4,19 +4,18 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: d5491784dd27843ebbb13f692d8426c2b7edeec5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48d25427d68f9da4cfe3f25b155f81d801e30fa2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537737"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149100"
 ---
 ### <a name="supported-regions"></a>Obsługiwane regiony
 
 * Wschodnie stany USA 
 * Zachodnie stany USA 2 
-* Środkowo-południowe stany USA 
+* Południowo-środkowe stany USA 
 * Europa Zachodnia 
-* Europa Północna 
-* Azja Wschodnia 
+* Europa Północna
 * Indie Środkowe 

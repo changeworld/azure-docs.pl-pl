@@ -16,11 +16,11 @@ ms.date: 02/21/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 237f498d1ebe2b402c86f1a4aed66a7ed443ccfa
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56653667"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66139234"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -72,7 +72,7 @@ Checking connectivity... done.
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Utwórz aplikację internetową
 
 W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
 
@@ -194,7 +194,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Środowisko Node.js z bazą danych MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

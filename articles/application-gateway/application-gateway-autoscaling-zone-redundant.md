@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/16/2019
+ms.date: 5/22/2019
 ms.author: victorh
-ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827426"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986869"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
 
@@ -93,8 +93,6 @@ Cena jednostki pojemności = 744(hours) * Max (Max(25/50 for connections/sec, 80
 
 Łączna cena = 267.84 $ + $85.71 = 353.55 $
 
-[Stronę z cennikiem](https://azure.microsoft.com/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
-
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Skalowanie usługa Application Gateway i zapory aplikacji sieci Web w wersji 2
 
 Usługa Application Gateway i zapory aplikacji sieci Web można skonfigurować do skalowania w dwóch trybach:
@@ -138,7 +136,7 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 |Zdefiniowaną przez użytkownika (UDR) w podsieci bramy aplikacji|Nieobsługiwane|
 |Sieciowa grupa zabezpieczeń dla zakresu portów dla ruchu przychodzącego| -65200 do 65535, aby uzyskać Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Metryki platformy Azure powinna być używana.|
-|Informacje billingowe|Rozliczenia zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.|
+|Informacje billingowe|Rozliczenia zaplanowane do uruchomienia w dniu 1 lipca 2019 r.|
 |Tryb FIPS|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
 |Sieć, obserwator integracji|Nieobsługiwane.|

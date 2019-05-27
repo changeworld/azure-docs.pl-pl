@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/13/2019
-ms.openlocfilehash: f244a67abab5c7f8cd14277f87f055ac6d48b8d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762432"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978011"
 ---
-# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters"></a>Skonfiguruj ograniczenia ruchu sieciowego ruchu wychodzącego w przypadku klastrów Azure HDInsight
+# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Skonfiguruj ograniczenia ruchu sieciowego ruchu wychodzącego w przypadku klastrów Azure HDInsight (wersja zapoznawcza)
 
 Ten artykuł zawiera instrukcje umożliwiające bezpieczny ruch wychodzący z klastra usługi HDInsight przy użyciu zapory platformy Azure. W poniższych krokach przyjęto, konfigurowania zapory platformy Azure do istniejącego klastra. Jeżeli wdrażasz nowy klaster za zaporą, najpierw Tworzenie klastra HDInsight i podsieci i następnie wykonaj kroki opisane w tym przewodniku.
 
@@ -27,7 +27,7 @@ Istnieją pewne zależności, które wymagają ruchu przychodzącego. Nie można
 
 Zależności ruch wychodzący HDInsight prawie całkowicie są definiowane przy użyciu nazw FQDN, które nie mają statyczne adresy IP spodem. Brak statycznych adresów oznacza, że sieciowe grupy zabezpieczeń (NSG) nie można zablokować ruch wychodzący z klastra. Zmianie adresów wystarczająco często nie jeden skonfigurować reguły oparte na bieżącym rozpoznawania nazw i używać go do skonfigurowania reguły sieciowej grupy zabezpieczeń.
 
-Rozwiązania do zabezpieczania adresy ruchu wychodzącego jest korzystanie z urządzenia zapory, który można kontrolować ruch wychodzący na podstawie nazw domen. Zaporę platformy Azure, można ograniczyć ruchu wychodzącego ruchu HTTP i HTTPS na podstawie nazwy FQDN miejsca docelowego.
+Rozwiązania do zabezpieczania adresy ruchu wychodzącego jest korzystanie z urządzenia zapory, który można kontrolować ruch wychodzący na podstawie nazw domen. Zaporę platformy Azure można ograniczyć ruchu wychodzącego ruchu HTTP i HTTPS na podstawie nazwy FQDN docelowego lub [tagów w pełni kwalifikowaną nazwę domeny](https://docs.microsoft.com/azure/firewall/fqdn-tags).
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurowanie zapory platformy Azure za pomocą HDInsight
 
@@ -80,7 +80,7 @@ Na **dodać kolekcję reguł aplikacji** ekranu, wykonaj następujące czynnośc
         1. Wprowadź `https:443` w obszarze **protokołu: Port** i `sqm.telemetry.microsoft.com` w obszarze **docelowej nazwy FQDN**.
     1. Jeśli nie używasz powyższe punkty końcowe usługi klastra jest wspierana przez WASB, Dodaj regułę dla WASB:
         1. W **nazw FQDN docelowego** sekcji, podaj **nazwa**i ustaw **źródłowych adresów** do `*`.
-        1. Wprowadź `wasb` w obszarze **protokołu: Port** i `*` w obszarze **docelowej nazwy FQDN**.
+        1. Wprowadź `http` lub [https] w zależności od Jeśli używasz wasb: / / lub wasbs: / / w obszarze **protokołu: Port** i adres url konta magazynu w ramach **nazw FQDN docelowego**.
 1. Kliknij pozycję **Add** (Dodaj).
 
 ![Tytuł: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)

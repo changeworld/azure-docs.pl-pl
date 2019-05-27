@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739234"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133181"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
@@ -32,27 +32,10 @@ Wybierz obszar roboczy usługi Log Analytics i konto usługi Automation, a nast�
 
 ![Dołączanie rozwiązania spisu](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
-
-W poniższej tabeli przedstawiono obsługiwane mapowania:
-
-|**Regionu obszaru roboczego usługi log Analytics**|**Region usługi Azure Automation**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP i EastUS mapowania obszarów roboczych usługi Log Analytics do kont usługi Automation nie są dokładnie mapowania regionu, ale poprawna mapowania.
-
-<sup>2</sup> ze względu na ograniczenia wydajności region nie jest dostępna podczas tworzenia nowych zasobów. Obejmuje to obszary robocze kont usługi Automation i Log Analytics. Jednak istniejących połączonych zasobów w regionie powinny nadal działać.
+> [!NOTE]
+> W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
+>
+> Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
 
 Rozwiązanie Change Tracking and Inventory umożliwia [śledzenie zmian](automation-vm-change-tracking.md) i tworzenie [spisu](automation-vm-inventory.md) na maszynach wirtualnych. W tym kroku włączysz rozwiązanie na maszynie wirtualnej.
 
@@ -161,6 +144,8 @@ Jeśli została użyta podczas szczytu rozwiązania początkowego i zatrzymywani
 * Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
 * Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
 * Zmienne
+
+Alternatywnie można również odłączyć obszaru roboczego z konta usługi Automation z obszaru roboczego usługi Log Analytics. W obszarze roboczym wybierz **konta usługi Automation** w obszarze **powiązane zasoby**. Na stronie konta automatyzacji wybierz **odłączyć konto**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

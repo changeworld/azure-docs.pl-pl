@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
 ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883415"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130943"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
 
@@ -200,8 +200,8 @@ Aby utworzyć zasób aplikacji usługi z planu cen w przedsiębiorstwie, przy u�
 
 |priceCode|Plan|
 |---|---|
-|1|Podstawowa|
-|2|Enterprise|
+|1|Podstawowy|
+|2|Przedsiębiorstwo|
 
 * Jeśli chcesz użyć domyślny plan cenowy podstawowa, można pominąć zasób CurrentBillingFeatures z szablonu.
 * Jeśli chcesz zmienić plan cenowy, po utworzeniu zasobu składnik, można użyć szablonu, które pomija zasobu "microsoft.insights/components". Ponadto, Pomiń `dependsOn` węzła z rozliczeń zasobów. 

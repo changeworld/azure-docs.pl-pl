@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236680"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153487"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Wykonywanie działań przepływu danych w usłudze Azure Data Factory
 Działanie przepływu danych wykonaj służy do uruchamiania przepływu danych ADF uruchomienia debugowania (piaskownicy) potoku i uruchomień potoków wyzwolone.
@@ -64,6 +64,10 @@ Korzystanie z warmed klastra do badania przepływów danych interaktywnie podcza
 Jest to wymagane pola, które definiuje, które środowisko IR do użycia dla wykonania działania przepływu danych w sieci. Domyślnie Data Factory użyje domyślnej automatyczne rozwiązanie Azure Integration runtime. Można jednak utworzyć własne Azure środowiska Integration Runtime, zdefiniuj konkretnych regionów, obliczeniowa to typ, liczby rdzeni i czas wygaśnięcia dla wykonywanie działań przepływu danych.
 
 Ustawieniem domyślnym dla wykonania przepływu danych jest 8 rdzeni obliczeniowych ogólnego z wartością TTL równą 60 minut.
+
+Masz kontrolę nad środowiska wykonawczego platformy Spark dla działań przepływu danych. W [Azure IR](concepts-integration-runtime.md) są ustawienia, aby ustawić typ obliczenia (ogólnego przeznaczenia, zoptymalizowanych pod kątem pamięci i zoptymalizowane pod kątem obliczeń), liczba rdzeni procesu roboczego, a time-to-live do dopasowania aparatu wykonywania za pomocą obliczeń przepływ danych wymagania. Ponadto ustawienie czasu wygaśnięcia pozwala zachować klaster bez wyłączania zasilania, są natychmiast dostępne dla Liczba wykonań zadań.
+
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 ### <a name="staging-area"></a>Obszar przejściowy
 

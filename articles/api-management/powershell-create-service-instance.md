@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: 475f558ee645be109a85a4344f82031fe4b0b01b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 7f316cd24bbb7b00c263566efdd81805c79f2e48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738440"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66141277"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Tworzenie nowego wystąpienia usługi Azure API Management
 
@@ -62,7 +62,7 @@ Gdy grupa zasobów i wszystkie pokrewne zasoby nie będą już potrzebne, można
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md)

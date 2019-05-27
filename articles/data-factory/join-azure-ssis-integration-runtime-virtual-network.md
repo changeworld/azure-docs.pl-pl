@@ -13,11 +13,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618145"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152895"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -110,7 +110,7 @@ Aby uzyskać więcej informacji, zobacz [nazwę rozwiązania, który używa wła
 ### <a name="nsg"></a> Sieciowa grupa zabezpieczeń
 Jeśli musisz wdrożyć sieciową grupę zabezpieczeń (NSG) dla podsieci używane przez środowisko Azure-SSIS integration runtime, Zezwalaj ruchu przychodzącego/wychodzącego, za pomocą następujących portów: 
 
-| Kierunek | Protokół transportowy | Element źródłowy | Zakres portów źródłowych | Element docelowy | Zakres portów docelowych | Komentarze |
+| Direction | Protokół transportowy | Source | Zakres portów źródłowych | Lokalizacja docelowa | Zakres portów docelowych | Komentarze |
 |---|---|---|---|---|---|---|
 | Przychodzący | TCP | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz środowiska IR do sieci wirtualnej usługi Azure Resource Manager) <br/><br/>10100, 20100, 30100 (jeśli Podczerwieni przyłączyć się do klasycznej sieci wirtualnej)| Usługa Data Factory używa tych portów do komunikacji z węzłami Twojego środowiska Azure-SSIS integration runtime w sieci wirtualnej. <br/><br/> Czy tworzysz sieciowa grupa zabezpieczeń poziomu podsieci, czy nie, Data Factory zawsze konfiguruje sieciowej grupy zabezpieczeń na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które hostują Azure-SSIS IR. Tylko dla ruchu przychodzącego ruchu z adresów IP fabryki danych w określonych portów jest dozwolone przy tym poziomie karty Sieciowej, sieciowej grupy zabezpieczeń. Nawet jeśli otworzysz te porty dla ruchu internetowego na poziomie podsieci, ruch z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
 | Wychodzący | TCP | VirtualNetwork | * | AzureCloud<br/>(lub większym zakresie, takich jak Internet) | 443 | Ten port jest używany przez węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej na dostęp do usług platformy Azure, takich jak Azure Storage i Azure Event Hubs. |

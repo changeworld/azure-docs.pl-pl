@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
 ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202249"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133065"
 ---
 1. Aby utworzyć nowy magazyn konfiguracji aplikacji, zaloguj się do [witryny Azure portal](https://aka.ms/azconfig/portal). W lewym górnym rogu strony wybierz **+ Utwórz zasób**. W **Przeszukaj witrynę Marketplace** wprowadź **konfiguracji aplikacji** i naciśnij klawisz Enter.
 

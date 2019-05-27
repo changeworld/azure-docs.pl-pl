@@ -4,14 +4,14 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 87514a139c097ebec3804c8c5ff82a1a21ccdd8c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811566"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140682"
 ---
-**Języka Objective-C**:
+**Objective-C**:
 
 1. W **QSAppDelegate.m**, zaimportować zestaw SDK systemu iOS i **QSTodoService.h**:
 

@@ -9,13 +9,13 @@ ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468406"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145919"
 ---
-Efemeryczne dyski systemu operacyjnego do tworzenia lokalnego magazynu maszyny wirtualnej (VM) i nie są zachowywane do zdalnej usługi Azure Storage. Efemeryczne dyski systemu operacyjnego działają dobrze w przypadku obciążeń bezstanowych, gdzie aplikacje są odporne na awariami pojedynczych maszyn wirtualnych, ale są bardziej zajmującym się ochroną czas, jaki zajmuje wdrożeń na dużą skalę lub czasu, aby odtworzyć poszczególnych wystąpień maszyn wirtualnych. Jest również odpowiedni w przypadku aplikacji wdrożonych za pomocą klasycznego modelu wdrażania, aby przejść do modelu wdrażania usługi Resource Manager. W przypadku dysków tymczasowych systemu operacyjnego będzie obserwować mniejsze opóźnienie odczytu/zapisu na dysku systemu operacyjnego i szybsze reimage maszyny Wirtualnej. Ponadto dysk systemu operacyjnego tymczasowych jest bezpłatny, pociągnąć za sobą żadnych kosztów magazynu dla dysku systemu operacyjnego. 
+Efemeryczne dyski systemu operacyjnego do tworzenia lokalnego magazynu maszyny wirtualnej (VM) i nie są zachowywane do zdalnej usługi Azure Storage. Efemeryczne dyski systemu operacyjnego działają dobrze w przypadku obciążeń bezstanowych, gdzie aplikacje są odporne na awariami pojedynczych maszyn wirtualnych, ale są bardziej zajmującym się ochroną czas, jaki zajmuje wdrożeń na dużą skalę lub czasu, aby odtworzyć poszczególnych wystąpień maszyn wirtualnych. Jest również odpowiedni w przypadku aplikacji wdrożonych za pomocą klasycznego modelu wdrażania, aby przejść do modelu wdrażania usługi Resource Manager. Dzięki efemerycznemu dyskowi systemu operacyjnego występują niższe opóźnienia odczytu/zapisu na dysku systemu operacyjnego, a odtwarzanie z obrazu maszyny wirtualnej jest szybsze. Ponadto dysk systemu operacyjnego tymczasowych jest bezpłatny, pociągnąć za sobą żadnych kosztów magazynu dla dysku systemu operacyjnego. 
  
 Najważniejsze funkcje efemeryczne dyski są: 
 - Można ich używać z niestandardowych obrazów i obrazów z witryny Marketplace.

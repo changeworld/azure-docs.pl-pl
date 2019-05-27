@@ -1,5 +1,5 @@
 ---
-title: Definicja zestawu danych i przechowywania wersji
+title: Definicja zestawu danych oraz zarządzanie ich wersjami z zestawami danych usługi Azure ml
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak aktualizacja definicji zestawu danych i zarządzanie cyklem życia definicji
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 7c861c8cdc9985caa42bd2beb5236a4f4e93e4c7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028683"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146202"
 ---
 # <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>Aktualizowanie i zarządzanie cyklem życia definicji zestawu danych
 
@@ -206,7 +206,7 @@ ds_def_old.head(5)
       <td>INNE</td>
       <td>WARTOŚĆ FALSE</td>
       <td>WARTOŚĆ FALSE</td>
-      <td>Przyciski ...</td>
+      <td>...</td>
       <td>9</td>
       <td>50</td>
       <td>11</td>
@@ -230,7 +230,7 @@ ds_def_old.head(5)
       <td>W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA</td>
       <td>WARTOŚĆ FALSE</td>
       <td>WARTOŚĆ FALSE</td>
-      <td>Przyciski ...</td>
+      <td>...</td>
       <td>21</td>
       <td>71</td>
       <td>6</td>
@@ -254,7 +254,7 @@ ds_def_old.head(5)
       <td>W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA</td>
       <td>WARTOŚĆ FALSE</td>
       <td>WARTOŚĆ FALSE</td>
-      <td>Przyciski ...</td>
+      <td>...</td>
       <td>19</td>
       <td>74</td>
       <td>11</td>
@@ -278,7 +278,7 @@ ds_def_old.head(5)
       <td>W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA</td>
       <td>WARTOŚĆ FALSE</td>
       <td>WARTOŚĆ FALSE</td>
-      <td>Przyciski ...</td>
+      <td>...</td>
       <td>9</td>
       <td>49</td>
       <td>10</td>
@@ -302,7 +302,7 @@ ds_def_old.head(5)
       <td>SZKOŁY, PUBLICZNEJ I TWORZENIE</td>
       <td>WARTOŚĆ FALSE</td>
       <td>WARTOŚĆ FALSE</td>
-      <td>Przyciski ...</td>
+      <td>...</td>
       <td>40</td>
       <td>13</td>
       <td>6</td>
@@ -362,7 +362,7 @@ ds_def = dataset.get_definition(version_id = 1)
 ds_def.deprecate(deprecate_by_dataset_id=dataset.id, deprecated_by_definition_version=2)
 ```
 
-### <a name="archive"></a>Archiwum
+### <a name="archive"></a>Archiwizuj
 
 Można je archiwizować definicji zestawu danych, gdy definicje nie powinien być używane dla jakiegokolwiek powodu (na przykład danych bazowych nie są już dostępne). Gdy zarchiwizowane definicji zestawu danych jest używana w potoków uczenia maszynowego, wykonywania zostanie zablokowana z powodu błędu.
 
@@ -372,7 +372,7 @@ ds_def = dataset.get_definition(version_id = 1)
 ds_def.archive()
 ```
 
-### <a name="reactivate"></a>Uaktywnij ponownie
+### <a name="reactivate"></a>Ponowne uaktywnianie
 
 Łatwo można ponownie aktywować przestarzałe lub zarchiwizowane definicji zestawu danych.
 

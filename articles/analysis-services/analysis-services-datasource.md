@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/22/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506817"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142559"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w usługach Azure Analysis Services
 
@@ -34,7 +34,7 @@ ms.locfileid: "65506817"
 ||||
 
 <a name="tab1400a">1</a> — tabelaryczny 1400 i wyższych modeli tylko.   
-<a name="azsqlmanaged">2</a> — wystąpienie zarządzane usługi azure SQL Database jest obsługiwana. Wystąpienie zarządzane jest uruchamiany w ramach sieci wirtualnej platformy Azure za pomocą prywatnego adresu IP, jest wymagany dla lokalnej bramy danych.   
+<a name="azsqlmanaged">2</a> — wystąpienie zarządzane usługi azure SQL Database jest obsługiwana. Wystąpienie zarządzane jest uruchamiany w ramach sieci wirtualnej platformy Azure za pomocą prywatnego adresu IP, jest wymagany dla lokalnej bramy danych. Usługa Azure wystąpienia zarządzanego SQL Database przy użyciu publicznego punktu końcowego nie jest obecnie obsługiwane.   
 <a name="databricks">3</a> — usługa azure Databricks przy użyciu platformy Spark, łącznik nie jest obecnie obsługiwane.   
 <a name="gen2">4</a> -ADLS Gen2 — nie jest obecnie obsługiwane.
 

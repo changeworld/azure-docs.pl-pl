@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 813b896c9a20e262752638ac26b57212929d8f27
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 6c390cc956540e9065ffe30092a2f33e552c33fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737012"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66141071"
 ---
 # <a name="secure-back-end"></a>Zabezpieczanie zaplecza
 
@@ -42,7 +42,7 @@ Gdy grupa zasobów i wszystkie pokrewne zasoby nie będą już potrzebne, można
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 

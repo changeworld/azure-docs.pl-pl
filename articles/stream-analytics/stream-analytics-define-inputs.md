@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480497"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159287"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -131,6 +131,8 @@ Stream Analytics nie obsługuje obecnie deserializacji komunikaty AVRO, generowa
 > [!NOTE]
 > Stream Analytics nie obsługuje dodawania zawartości do istniejącego pliku obiektu blob. Stream Analytics będzie wyświetlać każdy plik tylko raz, a wszelkie zmiany, które występują w pliku, gdy zadanie ma odczytywać dane nie są przetwarzane. Najlepszym rozwiązaniem jest przekazywanie wszystkich danych na potrzeby plik obiektów blob na raz, a następnie dodaj dodatkowe nowszych zdarzeń na plik obiektów blob innego, nowe.
 > 
+
+Przekazywanie dużej liczby obiektów blob na raz może spowodować pomijają odczytywanie kilka obiektów blob w rzadkich przypadkach w usłudze Stream Analytics. Zalecane jest przekazywanie obiektów blob co najmniej 2 sekundy od siebie do magazynu obiektów Blob. Jeśli ta opcja nie jest możliwe, można użyć usługi Event Hubs do dużych woluminów strumienia zdarzeń. 
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurowanie magazynu obiektów Blob jako dane wejściowe strumienia 
 

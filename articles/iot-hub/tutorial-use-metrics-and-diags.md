@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 12/15/2018
+ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8bcc72cf151b085c7f65b6c600a49642cd330bac
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
-ms.translationtype: HT
+ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162539"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze IoT Hub
 
@@ -274,7 +274,7 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 Wcześniej w sekcji konfigurowania skryptu skonfigurowano urządzenia do symulowania użycia urządzenia IoT. Ta sekcja zawiera instrukcje dotyczące pobierania aplikacji konsolowej .NET, która symuluje urządzenie wysyłające komunikaty z urządzenia do chmury do centrum IoT Hub.  
 
-Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Ten link spowoduje pobranie repozytorium zawierającego kilka aplikacji; szukane rozwiązanie znajduje się w lokalizacji iot-hub/Tutorials/Routing/SimulatedDevice/.
+Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Ten link powoduje pobranie repozytorium z kilku aplikacji rozwiązania, którego szukasz, jest w iot-hub/samouczki/Routing /.
 
 Kliknij dwukrotnie plik rozwiązania (SimulatedDevice.sln), aby otworzyć kod w programie Visual Studio, a następnie otwórz plik Program.cs. Zastąp element `{iot hub hostname}` nazwą hosta centrum IoT Hub. Format nazwy hosta centrum IoT Hub to **{nazwa-centrum-iot}.azure-devices.net**. W tym samouczku jest używana nazwa hosta centrum **ContosoTestHub.azure-devices.net**. Następnie zastąp ciąg `{device key}` kluczem urządzenia, który został wcześniej zapisany podczas konfigurowania urządzenia symulowanego. 
 
@@ -298,7 +298,7 @@ Uruchom aplikację konsolową. Zaczekaj kilka minut (10—15). Komunikaty wysył
 
 ### <a name="see-the-metrics-in-the-portal"></a>Wyświetlanie metryk w portalu
 
-Otwórz metryki na pulpicie nawigacyjnym. Zmień wartości czasu na *Ostatnie 30 minut* ze stopniem szczegółowości czasu *1 minuta*. Na wykresie zostaną wyświetlone wysłane komunikaty telemetryczne i łączna liczba użytych komunikatów, z najnowszymi liczbami u dołu wykresu. 
+Otwórz metryki na pulpicie nawigacyjnym. Zmień wartości czasu na *Ostatnie 30 minut* ze stopniem szczegółowości czasu *1 minuta*. Na wykresie zostaną wyświetlone wysłane komunikaty telemetryczne i łączna liczba użytych komunikatów, z najnowszymi liczbami u dołu wykresu.
 
    ![Zrzut ekranu przedstawiający metryki.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
@@ -369,7 +369,7 @@ Aby usunąć grupę zasobów, użyj polecenia [az group delete](https://docs.mic
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób korzystania z metryk i dzienników diagnostycznych przez wykonywanie następujących czynności:
 
@@ -385,4 +385,4 @@ W tym samouczku przedstawiono sposób korzystania z metryk i dzienników diagnos
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-[Konfigurowanie urządzeń z poziomu usługi zaplecza](tutorial-device-twins.md)
+> [Konfigurowanie urządzeń z poziomu usługi zaplecza](tutorial-device-twins.md)

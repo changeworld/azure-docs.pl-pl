@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146926"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Przenoszenie danych do i z usługi Azure Table przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -107,7 +107,7 @@ W przypadku kolumny tabeli platformy Azure typu Data/Godzina:
 | azureTableRowKeyName |Określ nazwę kolumny, których wartości kolumny są używane jako klucz wiersza. Jeśli nie zostanie określony, użyj identyfikatora GUID dla każdego wiersza. |Nazwa kolumny. |Nie |
 | azureTableInsertType |Tryb Aby wstawić dane do tabeli platformy Azure.<br/><br/>Ta właściwość określa, czy istniejące wiersze w tabeli danych wyjściowych ze zgodnymi kluczami partycji i wiersza mają wartości zastąpienia lub scalony. <br/><br/>Aby dowiedzieć się, jak działają te ustawienia (scalania i Zastąp), zobacz [Insert lub Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) i [Insert lub Zastąp jednostki](https://msdn.microsoft.com/library/azure/hh452242.aspx) tematów. <br/><br> To ustawienie jest stosowane na poziomie wiersza, a nie na poziomie tabeli, a żadna opcja usuwa wiersze w tabeli danych wyjściowych, które nie istnieją w danych wejściowych. |Scal (ustawienie domyślne)<br/>Zastąp |Nie |
 | writeBatchSize |Wstawia dane do tabeli platformy Azure, gdy writeBatchSize lub writeBatchTimeout tych limitów zostanie osiągnięty. |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
-| writeBatchTimeout |Wstawia dane do tabeli platformy Azure, po osiągnięciu writeBatchSize lub writeBatchTimeout |Przedział czasu<br/><br/>Przykład: "00:20:00" (20 minut) |Nie (domyślnie magazynu klienta domyślna wartość limitu czasu wartości 90 s) |
+| writeBatchTimeout |Wstawia dane do tabeli platformy Azure, po osiągnięciu writeBatchSize lub writeBatchTimeout |TimeSpan<br/><br/>Przykład: "00:20:00" (20 minut) |Nie (domyślnie magazynu klienta domyślna wartość limitu czasu wartości 90 s) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 Kolumny źródłowej są mapowane na kolumny docelowej, za pomocą właściwości JSON w usłudze translator, zanim będzie można użyć kolumny docelowej jako azureTablePartitionKeyName.

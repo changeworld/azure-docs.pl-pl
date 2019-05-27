@@ -9,11 +9,11 @@ ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192165"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146773"
 ---
 Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania kodu na urządzeniach usługi IoT Edge z poziomu chmury. **Moduły usługi IoT Edge** to pakiety plików wykonywalnych implementowane jako kontenery. W tej sekcji wdrożysz wstępnie skompilowany moduł z [sekcji Moduły usługi IoT Edge w portalu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). 
 

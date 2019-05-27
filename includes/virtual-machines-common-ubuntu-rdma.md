@@ -1,10 +1,15 @@
 ---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: 9a5a2d92f70c411c46ebb4efb35e17e9b0c477ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542351"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161591"
 ---
 1. Zainstaluj dapl, rdmacm, ibverbs i mlx4
 
@@ -12,10 +17,11 @@ ms.locfileid: "60542351"
    sudo apt-get update
 
    sudo apt-get install libdapl2 libmlx4-1
+
    ```
 
 2. W ścieżce/etc/waagent.conf należy włączyć funkcję RDMA, uncommenting następujące wiersze konfiguracji. Potrzebny jest dostęp głównego, aby edytować ten plik.
-
+  
    ```
    OS.EnableRDMA=y
 
@@ -29,20 +35,19 @@ ms.locfileid: "60542351"
 
    <User or group name> soft    memlock <memory required for your application in KB>
    ```
-
+  
 4. Zainstaluj Intel MPI biblioteki. Albo [kupić i pobrać](https://software.intel.com/intel-mpi-library/) biblioteki Intel lub pobierania [wersję bezpłatną wersją ewaluacyjną](https://registrationcenter.intel.com/en/forms/?productid=1740).
 
    ```bash
    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
-
+ 
    Obsługiwane są tylko runtimes 5.x Intel MPI.
-
+ 
    Aby uzyskać instrukcje instalacji, zobacz [Intel MPI biblioteki Installation Guide](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
 
 5. Włącz ptrace dla użytkowników innych niż root debugger innych procesów (wymagane dla najnowszej wersji Intel MPI).
-
+ 
    ```bash
    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
    ```
-   <!--ms.date: 07/30/2018-->

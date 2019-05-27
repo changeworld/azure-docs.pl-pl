@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546789"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145875"
 ---
 Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Podaj udostępnionego galerie obrazów:
 
@@ -128,7 +128,7 @@ Zaleca się udostępniania na poziomie galerii, aby uzyskać najlepsze wyniki. A
 Obrazy mogą również być współużytkowane, na dużą skalę, przez dzierżaw przy użyciu rejestracji aplikacji wielodostępnej. Aby uzyskać więcej informacji na temat udostępniania obrazów dla dzierżaw, zobacz [udostępnianie galerii obrazów maszyn wirtualnych w dzierżawach usługi Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Informacje billingowe
-Brak bez dodatkowych opłat za korzystanie z usługi Shared galerii obrazów. Opłata wyniesie dla następujących zasobów:
+korzystanie z usługi galerii obrazów udostępnionych nie wiąże się z żadnymi dodatkowymi opłatami. Opłata wyniesie dla następujących zasobów:
 - Koszty magazynowania, przechowywania wersji udostępnionego obrazu. Koszt zależy od liczby replik wersję obrazu i liczbie regionów, wersja jest replikowana do. Na przykład jeśli oba są replikowane do 3 regiony mają 2 obrazów, następnie użytkownik zmieni się za 6 dyski zarządzane na podstawie jego rozmiaru. Aby uzyskać więcej informacji, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Opłaty za ruch wychodzący sieci dla replikacji pierwszej wersji obrazu z regionu źródłowego w replikowanych regionach. Kolejne repliki są obsługiwane w regionie, dzięki czemu nie będą naliczane dodatkowe opłaty. 
 
