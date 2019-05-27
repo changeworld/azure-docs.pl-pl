@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2842a365cdf25a6b19f655f6397d62ecb9a723b0
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 48524020940149f6c67f4859f23c03eea140454b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406880"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991493"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą Centrum zdarzeń
 
@@ -28,7 +28,7 @@ W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń w us
 1. Aby dowiedzieć się, jak utworzyć Centrum zdarzeń, zobacz [dokumentacja usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 1. W polu wyszukiwania, wyszukaj **usługi Event Hubs**. W liście zwracanych wybierz **usługi Event Hubs**.
 1. Wybierz Centrum zdarzeń.
-1. Podczas tworzenia Centrum zdarzeń są naprawdę tworzenie przestrzeni nazw Centrum zdarzeń. Jeśli nie został jeszcze utworzony Centrum zdarzeń w przestrzeni nazw, w menu, w obszarze **jednostek**, utworzyć Centrum zdarzeń.  
+1. Podczas tworzenia Centrum zdarzeń, tworzysz przestrzeń nazw Centrum zdarzeń. Jeśli nie zostały jeszcze utworzone Centrum zdarzeń w przestrzeni nazw, w menu w obszarze **jednostek**, utworzyć Centrum zdarzeń.  
 
     [![Lista usługi event hubs](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
 
@@ -39,20 +39,20 @@ W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń w us
 
     [![Utwórz grupę odbiorców](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
 
-1. Upewnij się, że utworzona grupa odbiorców jest używana wyłącznie przez źródło zdarzeń usługi Time Series Insights.
+1. Upewnij się, że utworzono grupę konsumentów, która jest używana wyłącznie przez źródło zdarzeń usługi Time Series Insights.
 
     > [!IMPORTANT]
-    > Upewnij się, że ta grupa odbiorców nie jest używany przez żadną inną usługę (np. zadania usługi Azure Stream Analytics lub innego środowiska usługi Time Series Insights). Używanie grupy odbiorców przez inne usługi, operacje odczytu są negatywny wpływ dla tego środowiska oraz innych usług. Jeśli używasz **$Default** grupy odbiorców inne czytniki potencjalnie mogą ponownie używać grupy odbiorców.
+    > Upewnij się, że ta grupa odbiorców nie jest używany przez żadną inną usługę, takich jak zadania usługi Azure Stream Analytics lub innego środowiska usługi Time Series Insights. Używanie grupy odbiorców przez inne usługi, operacje odczytu są negatywny wpływ dla tego środowiska oraz innych usług. Jeśli używasz **$Default** grupy odbiorców inne czytniki potencjalnie mogą ponownie używać grupy odbiorców.
 
 1. W menu w obszarze **ustawienia**, wybierz opcję **zasady dostępu współdzielonego**, a następnie wybierz pozycję **Dodaj**.
 
     [![Wybierz zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
 
-1. W **Dodaj nowe zasady dostępu współdzielonego** okienku tworzenie dostępu współdzielonego, o nazwie **Moje_zasady_wysyłania**. Te zasady dostępu współdzielonego będzie używać do wysyłania zdarzeń w C# przykłady w dalszej części tego artykułu.
+1. W **Dodaj nowe zasady dostępu współdzielonego** okienku tworzenie dostępu współdzielonego, o nazwie **Moje_zasady_wysyłania**. Te zasady dostępu współdzielonego umożliwia wysyłanie zdarzeń w C# przykłady w dalszej części tego artykułu.
 
     [![W polu Nazwa zasad wprowadź Moje_zasady_wysyłania](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
 
-1. W obszarze **oświadczenia**, wybierz opcję **wysyłania** pola wyboru.
+1. W obszarze **oświadczenia**, wybierz opcję **wysyłania** pole wyboru.
 
 ## <a name="add-a-time-series-insights-instance"></a>Dodaj wystąpienie usługi Time Series Insights
 
@@ -70,7 +70,7 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 1. Wybierz Centrum zdarzeń.
 
-1. Przejdź do **współużytkowane zasady dostępu** > **RootManageSharedAccessKey**. Skopiuj wartość dla **połączenia klucz podstawowy stingu**.
+1. Przejdź do **współużytkowane zasady dostępu** > **RootManageSharedAccessKey**. Skopiuj wartość dla **parametry połączenia — klucz podstawowy**.
 
     [![Skopiuj wartość dla parametry połączenia klucza podstawowego](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
 
@@ -81,7 +81,7 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 1. Wybierz **kliknij, aby rozpocząć**. Symulator generuje wystąpienia JSON, który może bezpośrednio korzystać.
 
-1. Wróć do Centrum zdarzeń w witrynie Azure portal. Na **Przegląd** strony, powinny zostać wyświetlone nowe zdarzenia, które są odbierane przez Centrum zdarzeń.
+1. Wróć do Centrum zdarzeń w witrynie Azure portal. Na **Przegląd** stronie zobaczysz nowe zdarzenia, które są odbierane przez Centrum zdarzeń.
 
     [![Strony Przegląd Centrum zdarzeń, który zawiera metryki dla Centrum zdarzeń](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
 

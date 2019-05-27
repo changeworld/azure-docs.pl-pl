@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9878939a461f3ba35d2b6c270de2a965f66204cc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: db754adbe60acfa155400910c47de556db793eef
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077548"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968911"
 ---
-# <a name="create-azure-cosmos-db-cassandra-api-resources-from-a-resource-manager-template"></a>Tworzenie interfejsu API usługi Azure Cosmos DB Cassandra zasobów na podstawie szablonu usługi Resource Manager
+# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API usługi Azure Cosmos DB Cassandra przy użyciu szablonów usługi Azure Resource Manager
 
-Dowiedz się, jak utworzyć konto usługi Azure Cosmos dla interfejsu API rozwiązania Cassandra przy użyciu szablonu usługi Azure Resource Manager. Poniższy przykład tworzy konto interfejsu API usługi Azure Cosmos DB Cassandra od [szablonu szybkiego startu platformy Azure](https://aka.ms/cassandra-arm-qs). Ten szablon utworzy konta usługi Azure Cosmos dla interfejsu API rozwiązania Cassandra z dwóch tabel, które współużytkują 400 jednostek RU/s przepływności w poziomie przestrzeń kluczy. 
+## Tworzenie konta usługi Azure Cosmos, przestrzeni kluczy i tabeli <a id="create-resource"></a>
 
-Oto kopię szablonu:
+Tworzenie zasobów usługi Azure Cosmos DB przy użyciu szablonu usługi Azure Resource Manager. Ten szablon utworzy konta usługi Azure Cosmos dla interfejsu API rozwiązania Cassandra z dwóch tabel, które współużytkują 400 jednostek RU/s przepływności w poziomie przestrzeń kluczy. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
 
 [!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
 
@@ -47,7 +47,48 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 `az cosmosdb show` Polecenie wyświetla nowo utworzonego konta usługi Azure Cosmos po udostępnieniu mu. Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji wiersza polecenia platformy Azure zamiast CloudShell, zobacz [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/) artykułu.
 
-W poprzednim przykładzie ma odwołania do szablonu, który jest przechowywany w usłudze GitHub. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+## Aktualizuj przepływność (RU/s) na przestrzeń kluczy <a id="keyspace-ru-update"></a>
+
+Następujący szablon zaktualizuje przepływność przestrzeń kluczy. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-keyspace-ru-update/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+
+[!code-json[cosmosdb-cassandra-keyspace-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json)]
+
+### <a name="deploy-keyspace-template-via-azure-cli"></a>Wdrażanie szablonu przestrzeń kluczy przy użyciu wiersza polecenia platformy Azure
+
+Aby wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the keyspace name: ' keyspaceName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName keyspaceName=$keyspaceName throughput=$throughput
+```
+
+## Aktualizuj przepływność (RU/s) w tabeli <a id="table-ru-update"></a>
+
+Następujący szablon zaktualizuje przepływność tabeli. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-table-ru-update/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+
+[!code-json[cosmosdb-cassandra-table-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json)]
+
+### <a name="deploy-table-template-via-azure-cli"></a>Wdrażanie szablonu tabeli za pomocą wiersza polecenia platformy Azure
+
+Aby wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the keyspace name: ' keyspaceName
+read -p 'Enter the table name: ' tableName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName keyspaceName=$keyspaceName tableName=$tableName throughput=$throughput
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

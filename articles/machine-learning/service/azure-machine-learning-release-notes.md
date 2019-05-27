@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 892b9bc63f9f2d9abc7108587a7bf929473e4648
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779432"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989847"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -30,6 +30,24 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
 ### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.39
 + **Changes**
   + Opcja auto_prepare_environment konfiguracji uruchamiania jest wycofywany, dzięki funkcji autoskalowania przygotowanie staje się domyślnie.
+
+## <a name="2019-05-08"></a>2019-05-08
+
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Zestaw SDK v1.1.3 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Nowe funkcje**
+  + Dodano obsługę do odczytu z bazy danych PostgresSQL, przez wywołanie read_postgresql lub przy użyciu magazynu danych.
+    + Zobacz przykłady w przewodniki z instrukcjami:
+      + [Notes pozyskiwanie danych](https://aka.ms/aml-data-prep-ingestion-nb)
+      + [Notes magazynu danych](https://aka.ms/aml-data-prep-datastore-nb)
+
++ **Poprawki błędów i ulepszenia**
+  + Rozwiązano problemy z konwersją typu kolumny:
+  + Teraz poprawnie konwertuje kolumnę logiczną lub liczbowego kolumnę logiczną.
+  + Teraz nie kończy się niepowodzeniem podczas próby ustawienia Data kolumny na typ date.
+  + Typy JoinType i ulepszone towarzyszący dokumentację referencyjną. Podczas dołączania dwa przepływy danych, można teraz można określić jedną z tych typów sprzężenia:
+    + BRAK, ZGODNE, WEWNĘTRZNY UNMATCHLEFT, LEFTANTI, WARTOŚCI LEFTOUTER, UNMATCHRIGHT, RIGHTANTI, RIGHTOUTER, FULLANTI, PEŁNY.
+  + Ulepszone danych typu wnioskowania, rozpoznawał więcej formatów daty.
 
 ## <a name="2019-05-06"></a>2019-05-06
 
@@ -367,7 +385,7 @@ Usługa Azure Machine Learning jest teraz ogólnie dostępna.
 W tej wersji, Pragniemy zaprezentować nowe środowisko obliczeniowe zarządzane za pośrednictwem [obliczeniowego usługi Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute). Ten cel obliczenia zastępuje usługi Azure Batch AI zasoby obliczeniowe na potrzeby usługi Azure Machine Learning. 
 
 Ten element docelowy obliczeniowych:
-+ Służy do modelu wnioskowania szkolenie i usługi batch
++ Służy do modelu szkolenie i usługi batch wnioskowania/oceniania
 + Jest jednym — do wielu - node obliczeń
 + Obsługuje zarządzanie klastrowania i planowania zadań dla użytkownika
 + Skalowania domyślnie

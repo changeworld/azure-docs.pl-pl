@@ -1,23 +1,17 @@
 ---
 title: Funkcje szablonu usługi Resource Manager platformy Azure — zasoby | Dokumentacja firmy Microsoft
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/09/2019
+ms.date: 05/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783011"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990756"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -175,7 +169,7 @@ Inne funkcje listy mają różne formaty zwrotu. Aby wyświetlić format funkcji
 
 Określ zasób, używając nazwy zasobu lub [funkcja resourceId](#resourceid). Podczas korzystania z funkcji listy, w tym samym szablonie, który wdraża przywoływany zasób, należy użyć nazwy zasobu.
 
-Jeśli używasz **listy** w zasobie warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona. Jeśli wystąpi błąd **listy** funkcja odnosi się do zasobu, który nie istnieje. Użyj **Jeśli** funkcję, aby upewnić się, czy funkcja jest oceniane tylko, jeśli istnieje zasób. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i listę warunkowo wdrożony zasób.
+Jeśli używasz **listy** w zasobie warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona. Jeśli wystąpi błąd **listy** funkcja odnosi się do zasobu, który nie istnieje. Użyj **Jeśli** funkcję, aby upewnić się, czy funkcja jest oceniane tylko, gdy zasób jest wdrażany. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i listę warunkowo wdrożony zasób.
 
 ### <a name="example"></a>Przykład
 
@@ -343,11 +337,11 @@ Każdy typ zasobu zwraca różne właściwości odwołanie funkcji. Funkcja nie 
 
 Funkcja odwołanie pobiera stan środowiska uruchomieniowego wdrożonej wcześniej zasobów lub zasobu, wdrożonych w bieżącym szablonie. W tym artykule przedstawiono przykłady oba scenariusze. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. Podczas odwoływania się do wcześniej wdrożony zasób, należy podać wersję interfejsu API i identyfikator zasobu dla zasobu. Należy określić prawidłowe wersje interfejsu API dla zasobu w [odwołanie do szablonu](/azure/templates/).
 
-Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia.
+Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używane z [iteracji właściwość](resource-group-create-multiple.md#property-iteration), możesz użyć funkcji odwołania dla `input` ponieważ wyrażenie jest przypisany do właściwości zasobu. Nie można używać z `count` ponieważ musi zostać określona liczba, przed odwołanie funkcji nie zostanie rozwiązany.
 
 Za pomocą funkcji odwołania, niejawnie Deklarujesz, jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest obsługiwana w ramach tego samego szablonu i odwołania do zasobu według jego nazwy (a nie identyfikator zasobu). Nie musisz również użyć właściwości dependsOn. Funkcja nie jest obliczane, dopóki nie zakończy się przywoływany zasób wdrożenia.
 
-Jeśli używasz **odwołania** w zasobie warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona.  Jeśli wystąpi błąd **odwołania** funkcja odnosi się do zasobu, który nie istnieje. Użyj **Jeśli** funkcję, aby upewnić się, czy funkcja jest oceniane tylko, jeśli istnieje zasób. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i odwołania z warunkowo wdrożony zasób.
+Jeśli używasz **odwołania** w zasobie warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona.  Jeśli wystąpi błąd **odwołania** funkcja odnosi się do zasobu, który nie istnieje. Użyj **Jeśli** funkcję, aby upewnić się, czy funkcja jest oceniane tylko, gdy zasób jest wdrażany. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i odwołania z warunkowo wdrożony zasób.
 
 Aby wyświetlić nazwy właściwości i wartości dla typu zasobu, należy utworzyć szablon, który zwraca obiekt, w sekcji danych wyjściowych. W przypadku istniejącego zasobu tego typu szablonu zwraca obiekt bez wdrażania wszystkie nowe zasoby. 
 
@@ -725,7 +719,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | differentSubOutput | Ciąg | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>subskrypcja
+## <a name="subscription"></a>subskrypcji
 
 `subscription()`
 

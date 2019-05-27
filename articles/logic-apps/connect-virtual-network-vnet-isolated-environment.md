@@ -7,14 +7,14 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.topic: conceptual
+ms.date: 05/20/2019
+ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544540"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961454"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
@@ -24,7 +24,7 @@ W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont int
 
 W tym artykule przedstawiono sposób wykonania następujących zadań:
 
-* Konfigurowanie portów w sieci wirtualnej platformy Azure umożliwiające ruchu mogą być przesyłane za pośrednictwem środowiska integration service environment (ISE) między podsieciami w sieci wirtualnej.
+* Upewnij się, że wszystkie wymagane porty w sieci wirtualnej są otwarte, tak aby ruch mogą być przesyłane za pośrednictwem środowiska integration service environment (ISE) między podsieciami w tej sieci wirtualnej.
 
 * Tworzenie środowiska integration service environment (ISE).
 
@@ -60,11 +60,13 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 <a name="ports"></a>
 
-## <a name="set-up-network-ports"></a>Konfigurowanie portów sieciowych
+## <a name="check-network-ports"></a>Sprawdzanie portów sieciowych
 
-Aby działać poprawnie i pozostają dostępne, środowiska integration service environment (ISE) musi mieć określone porty dostępne w sieci wirtualnej. W przeciwnym razie jeśli którekolwiek z tych portów są niedostępne, mogą utracić dostęp do ISE może spowodować nieoczekiwane zatrzymanie. Gdy używasz środowiska ISE w sieci wirtualnej powszechny problem konfiguracji ma co najmniej jeden port blokowania. W przypadku połączeń między swoje ISE i systemu docelowego łącznik, którego używasz, że własne wymagania dotyczące portów. Na przykład jeśli komunikować się z systemem FTP za pomocą łącznika usługi FTP, upewnij się, port, z którego korzystasz na dostępnej systemu FTP, takich jak port 21 do wysyłania poleceń.
+Gdy używasz środowisku usługi integracji (ISE) z siecią wirtualną powszechny problem konfiguracji ma co najmniej jeden port blokowania. Łączniki, których używasz do tworzenia połączenia między swoje ISE i docelowy system może być również własne wymagania dotyczące portów. Na przykład jeśli komunikować się z systemem FTP za pomocą łącznika usługi FTP, upewnij się, port, z którego korzystasz na dostępnej systemu FTP, takich jak port 21 do wysyłania poleceń.
 
-Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) dla tych podsieci przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tagi usługi Resource Manager](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
+Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Jednak Twoja ISE musi mieć określone porty otworzyć w sieci wirtualnej, która używa grup zabezpieczeń sieci. W ten sposób Twoja ISE pozostaje dostępna i mogły działać prawidłowo, tak aby nie utracić dostępu do Twojego środowiska ISE. W przeciwnym razie jeśli wszystkie wymagane porty są niedostępne, Twojego środowiska ISE przestanie działać.
+
+Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tagi usługi Resource Manager](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
 
 > [!IMPORTANT]
 > Do wewnętrznej komunikacji wewnątrz podsieci ISE wymaga otwarcia wszystkich portów w ramach tych podsieci.

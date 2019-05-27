@@ -1,5 +1,5 @@
 ---
-title: Jak używać kolejek usługi Service Bus w środowisku Node.js | Dokumentacja firmy Microsoft
+title: Jak używać kolejek usługi Azure Service Bus w środowisku Node.js | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure z poziomu aplikacji Node.js.
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,22 +14,25 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1426b3d31159280ad9aac2dd240a5f083c40752d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60590011"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988303"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs"></a>Jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js i pakietu azure sb
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js | azure sb)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+W tym samouczku dowiesz się, jak tworzyć aplikacje Node.js do wysyłania komunikatów i odbiera komunikaty z kolejki usługi Service Bus przy użyciu [azure sb](https://www.npmjs.com/package/azure-sb) pakietu. Przykłady są napisane w języku JavaScript i za pomocą środowiska Node.js [moduł Azure](https://www.npmjs.com/package/azure) , który wewnętrznie używa `azure-sb` pakietu.
 
-W tym samouczku dowiesz się, jak tworzyć aplikacje Node.js do wysyłania komunikatów i odbiera komunikaty z kolejki usługi Service Bus. Przykłady są napisane w języku JavaScript i korzystać z modułu Node.js Azure. 
+[Azure sb](https://www.npmjs.com/package/azure-sb) pakietu używa [interfejsów API środowiska wykonawczego interfejsu REST usługi Service Bus](/rest/api/servicebus/service-bus-runtime-rest). Możesz uzyskać szybsze środowisko, za pomocą nowego [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) pakiet, który używa szybciej [protokołu AMQP 1.0](service-bus-amqp-overview.md). Aby dowiedzieć się więcej na temat nowego pakietu, zobacz [jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js i @azure/service-bus pakietu](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), w przeciwnym razie kontynuuj czytanie, aby zobaczyć, jak używać [azure](https://www.npmjs.com/package/azure) pakietu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Jeśli nie masz kolejki chcesz pracować, wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykuł, aby utworzyć kolejkę.
+- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Jeśli nie masz kolejki chcesz pracować, wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykuł, aby utworzyć kolejkę.
     1. Przeczytaj szybkiego **Przegląd** usługi Service Bus **kolejek**. 
     2. Tworzenie usługi Service Bus **przestrzeni nazw**. 
     3. Pobierz **parametry połączenia**. 
@@ -46,7 +49,7 @@ Aby korzystać z usługi Azure Service Bus, Pobierz i za pomocą pakietu Node.js
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Uzyskiwanie pakietu przy użyciu Node Package Manager (NPM)
 1. Użyj **programu Windows PowerShell dla platformy Node.js** okno polecenia, aby przejść do **c:\\węzła\\sbqueues\\WebRole1** folderu, w którym zostały utworzone przykładu aplikacja.
-2. Typ **npm zainstalować azure** w oknie wiersza polecenia, co powinno spowodować dane wyjściowe podobne do następujących:
+2. Typ **npm zainstalować azure** w oknie wiersza polecenia, co powinno spowodować dane wyjściowe podobne do poniższego przykładu:
 
     ```
     azure@0.7.5 node_modules\azure
@@ -71,7 +74,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Skonfigurować połączenie usługi Azure Service Bus
-Moduł Azure odczytuje zmiennej środowiskowej `AZURE_SERVICEBUS_CONNECTION_STRING` Aby uzyskać informacje wymagane do połączenia z usługą Service Bus. Jeśli nie ustawiono tej zmiennej środowiskowej, należy określić informacje o koncie podczas wywoływania `createServiceBusService`.
+Moduł Azure odczytuje zmiennej środowiskowej `AZURE_SERVICEBUS_CONNECTION_STRING` Aby uzyskać informacje wymagane do połączenia z usługą Service Bus. Jeśli ta zmienna środowiskowa nie jest ustawione, należy określić informacje o koncie podczas wywoływania `createServiceBusService`.
 
 Na przykład Ustawianie zmiennych środowiskowych [witryny Azure portal] [ Azure portal] dla witryny internetowej platformy Azure, zobacz [aplikację sieci Web Node.js za pomocą magazynu] [ Node.js Web Application with Storage].
 
@@ -152,7 +155,7 @@ Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
 Komunikaty są odbierane z kolejki za pomocą `receiveQueueMessage` metody **ServiceBusService** obiektu. Domyślnie komunikaty są usuwane z kolejki, ponieważ są odczytywane; można jednak odczytać (peek) i blokowanie wiadomość bez usuwania go z kolejki, ustawiając parametr opcjonalny `isPeekLock` do **true**.
 
-Domyślne zachowanie odczytywanie i usuwanie wiadomości jako część operacji odbierania jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ usługi Service Bus będą oznaczyła komunikat jako wykorzystany, a następnie, gdy aplikacja ponownie uruchamia i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
+Domyślne zachowanie odczytywanie i usuwanie wiadomości jako część operacji odbierania jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie niepowodzenia. Aby zrozumieć zachowania, Rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ usługi Service Bus będą oznaczyła komunikat jako wykorzystany, a następnie, gdy aplikacja ponownie uruchamia i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
 
 Jeśli `isPeekLock` parametr ma wartość **true**, odbieranie staje się operacją dwuetapowy, co umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Po skopiowaniu aplikacja zakończy przetwarzanie komunikatu (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez wywołanie metody `deleteMessage` metody i dostarczający komunikat do usunięcia jako parametr. `deleteMessage` Metoda oznacza komunikat jako wykorzystany i usuwa go z kolejki.
 
@@ -179,9 +182,12 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
 Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metody **ServiceBusService** obiektu. Spowoduje to odblokowanie komunikatu w kolejce i udostępnić go do ponownego odbioru, tę samą lub inną odbierającą aplikację usługę Service Bus.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed blokady upłynie limit czasu (na przykład jeśli wystąpiła awaria aplikacji), Usługa Service Bus zostanie automatycznie odblokować wiadomości i ułatwiają dostępne do ponownego odbioru.
+Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady wygaśnie (na przykład jeśli wystąpiła awaria aplikacji), a następnie usługi Service Bus zostanie automatycznie odblokować wiadomości i przypisz ją dostępne do ponownego odbioru.
 
-W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` metoda jest wywoływana, a następnie komunikat zostanie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, oznacza to, że każdy komunikat będzie przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu właściwości **MessageId** komunikatu, która pozostaje niezmienna między kolejnymi próbami dostarczenia.
+W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` metoda jest wywoływana, a następnie komunikat zostanie dostarczony do aplikacji po jej ponownym uruchomieniu. To podejście jest często określany mianem *przetwarzaniem co najmniej raz*, oznacza to, że każdy komunikat będzie przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie Toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest często osiągane przy użyciu **MessageId** właściwości wiadomości, która pozostaje niezmienna między kolejnymi próbami dostarczenia.
+
+> [!NOTE]
+> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat kolejek, zobacz następujące zasoby.

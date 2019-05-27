@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 9ef32273c007e7319b7f6df99f3d904f805c31f2
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 82678091c1d0b71e6209f6d03e9d1a0ca60fe03e
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550907"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992169"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Rozwiązywanie problemów dla platformy Azure, Red Hat OpenShift
 
@@ -23,10 +23,6 @@ Ten artykuł szczegółowo opisuje niektóre typowe problemy podczas tworzenia l
 
 Jeśli tworzenie Azure Red Hat OpenShift klaster przy użyciu `az` interfejsu wiersza polecenia nie powiedzie się, ponawianie próby tworzenia będą w dalszym się nie powieść.
 Użyj `az openshift delete` można usunąć klastra nie powiodło się, a następnie utwórz całkowicie nowego klastra.
-
-## <a name="untrusted-azure-red-hat-openshift-server-certificate"></a>Niezaufany certyfikat serwera usługi Azure Red Hat OpenShift
-
-Konsola OpenShift używa certyfikatu z podpisem własnym. Po wyświetleniu monitu w przeglądarce, należy pominąć to ostrzeżenie i zaakceptuj "niezaufany" certyfikat.
 
 ## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Ukryte grupa zasobów klastra Azure Red Hat OpenShift
 

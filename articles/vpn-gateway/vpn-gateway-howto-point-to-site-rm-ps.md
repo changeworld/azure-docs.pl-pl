@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3c02e80016e43bdd83218851de5ceb72be7f268
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 822cbc7401de90d63f9079561ced0dfbb911fa2c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320270"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989440"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: PowerShell
 
@@ -131,8 +131,8 @@ Zadeklaruj zmienne, których chcesz użyć. Użyj poniższego przykładu, podsta
 Skonfiguruj i utwórz bramę sieci wirtualnej dla sieci wirtualnej.
 
 * Zmienna -GatewayType musi mieć wartość **Vpn**, a zmienna **-VpnType** musi mieć wartość RouteBased.
-* Parametr -VpnClientProtocol służy do określania typów tuneli, które mają zostać włączone. Dostępne dwie opcje tuneli to **SSTP** i **IKEv2**. Można włączyć jedną z nich lub obie. Jeśli chcesz włączyć obie opcje, określ następnie obie nazwy rozdzielone przecinkiem. Klient strongSwan w systemach Android i Linux oraz natywny klient sieci VPN IKEv2 w systemach iOS i OSX będą używać do łączenia się tylko tuneli IKEv2. Klienci w systemie Windows będą najpierw próbowali użyć protokołu IKEv2, a jeśli połączenie nie zostanie nawiązane, użyją protokołu SSTP.
-* "Podstawowe" jednostki SKU bramy sieci wirtualnej nie obsługuje uwierzytelniania protokołu IKEv2 ani usługi RADIUS. Jeśli planowane jest posiadanie Mac klienci łączą się z siecią wirtualną, nie należy używać podstawowej jednostki SKU.
+* Parametr -VpnClientProtocol służy do określania typów tuneli, które mają zostać włączone. Opcje tuneli to **OpenVPN, SSTP** i **IKEv2**. Można włączyć jedną z nich lub dowolnej obsługiwanej kombinacji. Jeśli chcesz włączyć wiele typów, następnie określane są nazwy rozdzielone przecinkami. OpenVPN i SSTP nie można włączyć jednocześnie. Klient strongSwan w systemach Android i Linux oraz natywny klient sieci VPN IKEv2 w systemach iOS i OSX będą używać do łączenia się tylko tuneli IKEv2. Klienci w systemie Windows będą najpierw próbowali użyć protokołu IKEv2, a jeśli połączenie nie zostanie nawiązane, użyją protokołu SSTP. Klient OpenVPN służy do nawiązywania połączeń typu tunelu OpenVPN.
+* "Podstawowe" jednostki SKU bramy sieci wirtualnej nie obsługuje uwierzytelniania protokołu IKEv2, OpenVPN lub serwera RADIUS. Jeśli planowane jest posiadanie Mac klienci łączą się z siecią wirtualną, nie należy używać podstawowej jednostki SKU.
 * Tworzenie bramy sieci VPN może zająć do 45 minut, zależnie od wybranej [jednostki sku bramy](vpn-gateway-about-vpn-gateway-settings.md). W tym przykładzie użyto protokołu IKEv2.
 
 ```azurepowershell-interactive
@@ -150,7 +150,7 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="Certificates"></a>5. Generowanie certyfikatów klienta
+## <a name="Certificates"></a>5. Generowanie certyfikatów
 
 Certyfikaty są używane przez platformę Azure do uwierzytelniania klientów sieci VPN w obrębie sieci VPN typu punkt-lokacja. Informacje o kluczu publicznym certyfikatu głównego należy przekazać na platformę Azure. Klucz publiczny jest wtedy uważany za „zaufany”. Certyfikaty klienta muszą być generowane na podstawie zaufanego certyfikatu głównego, a następnie instalowane na każdym komputerze klienckim w magazynie certyfikatów Certificates-Current User/Personal. Certyfikat jest używany do uwierzytelniania klienta, gdy inicjuje on połączenie z siecią wirtualną. 
 
@@ -296,7 +296,7 @@ Ta metoda obejmuje więcej czynności niż metoda 1, ale daje ten sam wynik. Prz
 
 1. Utwórz i przygotuj nowy certyfikat główny, który ma zostać dodany do platformy Azure. Wyeksportuj klucz publiczny jako certyfikat x.509 (.CER) szyfrowany algorytmem Base-64 i otwórz go w edytorze tekstu. Skopiuj wartości, tak jak to pokazano w poniższym przykładzie:
 
-   ![certyfikat](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png)
+   ![Certyfikat](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png)
 
    > [!NOTE]
    > Podczas kopiowania danych dotyczących certyfikatu upewnij się, że kopiujesz tekst jako jeden ciągły wiersz bez znaków powrotu karetki i wysuwu wiersza. Może zajść potrzeba zmodyfikowania widoku w edytorze tekstu na potrzeby pokazywania symboli lub pokazywania wszystkich znaków, aby wyświetlić znaki powrotu karetki i wysuwu wiersza.

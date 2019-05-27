@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d345645337d070be15346b245bfaecd1cabc7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45ff198f55ff769667cfaef2dd8665d2c34314e9
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415475"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987757"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication do współdziałania z usługami AD FS 2.0
 
@@ -85,7 +85,7 @@ Uwierzytelnianie usług IIS zostało włączone, ale aby przeprowadzić uwierzyt
 3. Jeśli użytkownicy wprowadzają swoje nazwy użytkowników w formacie „domena\nazwa_użytkownika”, serwer musi być w stanie oddzielić domenę od nazwy użytkownika podczas tworzenia zapytania LDAP. Można to skonfigurować za pomocą ustawienia rejestru.
 4. W przypadku serwera 64-bitowego otwórz Edytor rejestru i przejdź do klucza HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. W przypadku serwera 32-bitowego klucz nie zawiera elementu „Wow6432Node”. Utwórz klucz rejestru typu DWORD o nazwie „UsernameCxz_stripPrefixDomain” i ustaw jego wartość na 1. Po wykonaniu tych czynności serwer proxy usług AD FS jest chroniony przez usługę Azure Multi-Factor Authentication.
 
-Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Jeśli chcesz umieścić wewnętrzne adresy IP na liście dozwolonych adresów, tak aby weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji, zobacz sekcję [Zaufane adresy IP](#trusted-ips).
+Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zobacz [sekcję zaufane adresy IP](#trusted-ips) Jeśli chcesz zezwolić na wewnętrzne adresy IP, tak aby Weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
 
 ![Edytor rejestru, aby skonfigurować ustawienia firmy](./media/howto-mfaserver-adfs-2/reg.png)
 
@@ -109,15 +109,17 @@ Jeśli serwer proxy usług AD FS nie jest używany, można zabezpieczyć usługi
 
 Po wykonaniu tych czynności usługi AD FS są chronione przez usługę Azure Multi-Factor Authentication.
 
-Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Jeśli chcesz umieścić wewnętrzne adresy IP na liście dozwolonych adresów, tak aby weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji, zobacz sekcję Zaufane adresy IP.
+Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zobacz sekcję zaufane adresy IP, jeśli chcesz zezwolić na wewnętrzne adresy IP, tak aby Weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
 
 ## <a name="trusted-ips"></a>Zaufane adresy IP
+
 Zaufane adresy IP pozwalają użytkownikom pominąć uwierzytelnianie za pomocą usługi Azure Multi-Factor Authentication w przypadku żądań witryn sieci Web pochodzących z określonych adresów IP lub podsieci. Można na przykład chcieć zwolnić użytkowników z konieczności przechodzenia weryfikacji dwuetapowej, jeśli logują się z biura. W tym celu należy określić podsieć biura jako wpis z zaufanymi adresami IP.
 
 ### <a name="to-configure-trusted-ips"></a>Aby skonfigurować zaufane adresy IP
+
 1. W sekcji Uwierzytelnianie usług IIS kliknij kartę **Zaufane adresy IP**.
 2. Kliknij przycisk **Dodaj...** Dodaj...
 3. Gdy pojawi się okno dialogowe Dodawanie zaufanych adresów IP, wybierz jeden z przycisków radiowych: **Pojedynczy adres IP**, **Zakres adresów IP** albo **Podsieć**.
-4. Wprowadź adres IP, zakres adresów IP lub podsieć, którą chcesz dodać do listy dozwolonych adresów. Jeśli wprowadzasz podsieć, wybierz odpowiednią maskę sieci i kliknij przycisk **OK**. Po wykonaniu tych czynności został dodany zaufany adres IP.
+4. Wprowadź adres IP lub zakres adresów IP albo podsieć, powinno być dozwolone. Jeśli wprowadzasz podsieć, wybierz odpowiednią maskę sieci i kliknij przycisk **OK**.
 
 ![Konfiguruj zaufane adresy IP do serwera MFA](./media/howto-mfaserver-adfs-2/trusted.png)

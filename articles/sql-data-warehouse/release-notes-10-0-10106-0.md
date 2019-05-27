@@ -4,18 +4,18 @@ description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792429"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988289"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
@@ -23,15 +23,11 @@ Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersj
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>Sprawdź swoją wersję usługi Azure SQL Data Warehouse
 
-Łączenie z magazynem danych za pośrednictwem programu SQL Server Management Studio (SSMS), a następnie uruchom następującej składni, aby powrócić do bieżącej wersji usługi SQL Data Warehouse.
-
-```sql
-SELECT @@VERSION AS 'SQL Data Warehouse';
-```
+Ponieważ nowe funkcje są wdrażane do wszystkich regionów, sprawdź, czy wersja wdrożone wystąpienie usługi i najnowsze informacje o wersji usługi Azure SQL data Warehouse dostępności funkcji. Aby sprawdzić swoją wersję usługi Azure SQL data Warehouse, należy nawiązać połączenie z magazynem danych za pośrednictwem programu SQL Server Management Studio (SSMS) i uruchom `SELECT @@VERSION AS 'SQL Data Warehouse';` zwracać bieżącą wersję usługi Azure SQL data Warehouse.
 
 Przykładowe dane wyjściowe: ![Wersja SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
-Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone do usługi Azure SQL Data Warehouse.
+Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone do usługi SQL data Warehouse platformy Azure.
 
 ## <a name="may-2019"></a>Maja 2019 r
 
@@ -39,7 +35,7 @@ Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone 
 | --- | --- |
 |**Dane dynamiczne maskowanie (wersja zapoznawcza)**|Dynamiczne maskowanie danych (DDM) pozwala zapobiegać nieautoryzowanemu dostępowi do danych poufnych w magazynie danych, polega na zaciemnianiu ją na bieżąco w wynikach kwerendy na podstawie reguł maskowania, jaką zdefiniujesz. Aby uzyskać więcej informacji, zobacz [bazy danych SQL dynamiczne maskowanie danych](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
 |**Znaczenie obciążenie jest teraz ogólnie dostępna**|Obciążenie Zarządzanie klasyfikacji i znaczenie zapewniają możliwość wywierania wpływu na kolejność wykonywania zapytania. Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/> -[Obciążenie pojęć związanych z zarządzaniem](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
-|**Dodatkową obsługę języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę: </br> - [W STREFIE CZASOWEJ](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**Dodatkową obsługę języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkcje JSON**|Analitycy biznesowi mogą teraz używać znanego języka T-SQL do wykonywania zapytań i manipulowania nimi dokumenty, które są sformatowane jako dane JSON w usłudze Azure Data Warehouse przy użyciu następujących nowych funkcji JSON:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Zestaw wyników buforowania (wersja zapoznawcza)**|Zestaw wyników z pamięci podręcznej umożliwia błyskawicznych zapytań czasy reakcji przy jednoczesnym zmniejszeniu czasu do wglądu dla analityków biznesowych i raportowania użytkowników. Aby uzyskać więcej informacji, zobacz:</br> - [Instrukcja ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE — opcje SET (języka Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Ustaw zestaw wyników BUFOROWANIA (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET — instrukcja (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
 

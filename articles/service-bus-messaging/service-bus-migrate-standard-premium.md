@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687080"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991414"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących standardowych przestrzeni nazw usługi Azure Service Bus w warstwie premium
 Azure Service Bus oferowane wcześniej, przestrzenie nazw tylko w warstwie standardowa. Przestrzenie nazw są konfiguracje wielodostępnych, które są zoptymalizowane pod kątem niskiej przepustowości i środowisk deweloperskich. Warstwa premium oferuje dedykowanych zasobów na przestrzeń nazw przewidywalne opóźnienie i zwiększać przepustowość w stałej cenie. Warstwa premium jest zoptymalizowany pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają funkcji przedsiębiorstwa.
 
-W tym artykule opisano sposób migrowania istniejącej przestrzeni nazw w warstwie standardowa do warstwy premium.
+W tym artykule opisano sposób migrowania istniejącej przestrzeni nazw w warstwie standardowa do warstwy premium.  
 
 >[!WARNING]
 > Migracji jest przeznaczony dla standardowych przestrzeni nazw usługi Service Bus ma zostać uaktualniony do warstwy premium. Narzędzie migracji nie obsługuje zmiany na starszą wersję.
@@ -33,6 +33,7 @@ Niektóre punkty, należy pamiętać:
 - **Premium** przestrzeń nazw powinna mieć **żadnych jednostek** w niej do migracji została wykonana pomyślnie. 
 - Wszystkie **jednostek** w standardowej przestrzeni nazw są **skopiowane** do przestrzeni nazw premium podczas procesu migracji. 
 - Obsługuje migrację **1000 jednostek na jednostkę obsługi komunikatów** w warstwie premium. Aby określić liczbę jednostek obsługi komunikatów, należy, rozpoczynać się liczby jednostek, które mają w ramach bieżącego standardowych przestrzeni nazw. 
+- Bezpośrednio nie można migrować z **warstwa podstawowa** do **warstwy premier**, ale możesz to zrobić tak pośrednio przy użyciu funkcji migracji z podstawowa na standardowa pierwszy, a następnie od planu standard do premium w następnym kroku.
 
 ## <a name="migration-steps"></a>Kroki migracji
 Niektóre warunki są skojarzone z procesu migracji. Zapoznaj się z następujące kroki, aby zmniejszyć prawdopodobieństwo wystąpienia błędów. Te kroki opisują proces migracji, a w kolejnych sekcjach znajdują się szczegółowe informacje krok po kroku.

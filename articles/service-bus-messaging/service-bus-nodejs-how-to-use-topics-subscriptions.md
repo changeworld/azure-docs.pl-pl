@@ -14,18 +14,23 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591810"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992090"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Sposób użycia usługi Service Bus tematów i subskrypcji przy użyciu środowiska Node.js
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Sposób użycia usługi Service Bus tematów i subskrypcji przy użyciu środowiska Node.js i pakietu azure sb
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js | azure sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+W tym samouczku dowiesz się, jak tworzyć aplikacje Node.js do wysyłania komunikatów do tematu usługi Service Bus oraz odbieranie komunikatów z subskrypcji usługi Service Bus za pomocą [azure sb](https://www.npmjs.com/package/azure-sb) pakietu. Przykłady są napisane w języku JavaScript i za pomocą środowiska Node.js [moduł Azure](https://www.npmjs.com/package/azure) , który wewnętrznie używa `azure-sb` pakietu.
 
-Ten przewodnik opisuje sposób używania tematów usługi Service Bus i subskrypcje, z poziomu aplikacji Node.js. Omówione scenariusze obejmują:
+[Azure sb](https://www.npmjs.com/package/azure-sb) pakietu używa [interfejsów API środowiska wykonawczego interfejsu REST usługi Service Bus](/rest/api/servicebus/service-bus-runtime-rest). Możesz uzyskać szybsze środowisko, za pomocą nowego [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) pakiet, który używa szybciej [protokołu AMQP 1.0](service-bus-amqp-overview.md). Aby dowiedzieć się więcej na temat nowego pakietu, zobacz [sposób korzystania z subskrypcji i tematów usługi Service Bus przy użyciu środowiska Node.js i @azure/service-bus pakietu](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), w przeciwnym razie kontynuuj czytanie, aby zobaczyć, jak używać [azure](https://www.npmjs.com/package/azure) pakietu.
+
+Tu omówione scenariusze obejmują:
 
 - Tworzenie tematów i subskrypcji 
 - Tworzenie filtrów subskrypcji 
@@ -36,8 +41,8 @@ Ten przewodnik opisuje sposób używania tematów usługi Service Bus i subskryp
 Aby uzyskać więcej informacji o tematach i subskrypcjach, zobacz [następne kroki](#next-steps) sekcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do utworzenia usługi Service Bus **przestrzeni nazw** i Uzyskaj **parametry połączenia**.
+- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do utworzenia usługi Service Bus **przestrzeni nazw** i Uzyskaj **parametry połączenia**.
 
     > [!NOTE]
     > Utworzysz **tematu** i **subskrypcji** do tematu przy użyciu **Node.js** w tym przewodniku Szybki Start. 
@@ -330,7 +335,10 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 });
 ```
 
-## <a name="next-steps"></a>Następne kroki
+> [!NOTE]
+> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz już podstawy tematów usługi Service Bus, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
 * Zobacz [kolejki, tematy i subskrypcje][Queues, topics, and subscriptions].

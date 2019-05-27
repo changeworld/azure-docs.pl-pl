@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: a320f584ff82f2b8a2b3d784e1995aa043004587
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 53f9f67397e1484559ee8243a52ad8339df930bc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597494"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990215"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -166,7 +166,7 @@ Poniżej przedstawiono limity łączników niestandardowych, które można utwor
 
 | Name (Nazwa) | Limit |
 | ---- | ----- |
-| Liczba aplikacji logiki za pomocą przypisany systemowo zarządzana tożsamości na subskrypcję platformy Azure | 10 |
+| Liczba aplikacji logiki za pomocą przypisany systemowo zarządzana tożsamości na subskrypcję platformy Azure | 100 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -241,7 +241,7 @@ Wszystkie aplikacje logiki, w tym samym regionie, użyj tych samych zakresów ad
 
 Do obsługi wywołania, [łączników zarządzanych przez firmę Microsoft](../connectors/apis-list.md) upewnij, skonfigurowania zapory za pomocą *wszystkich* [wychodzącego](#outbound) adresy IP używane przez te łączniki, na podstawie regionów Jeśli istnieją aplikacje Logic Apps. Te adresy są wyświetlane w obszarze **ruchu wychodzącego** nagłówka w tej sekcji i są sortowane według regionów.
 
-Aby uzyskać [Azure dla instytucji rządowych](../azure-government/documentation-government-overview.md) i [Azure China 21Vianet](/azure/china/china-welcome), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
+Aby uzyskać [Azure dla instytucji rządowych](../azure-government/documentation-government-overview.md) i [Azure China 21Vianet](https://docs.microsoft.com/azure/china/), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
 
 > [!IMPORTANT]
 >
