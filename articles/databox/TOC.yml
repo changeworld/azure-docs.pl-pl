@@ -121,6 +121,12 @@
           items:
             - name: Co to jest usługa Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Pojęcia
+          items:
+            - name: Sprawdzanie wymagań
+              href: data-box-heavy-system-requirements.md
+            - name: Poznawanie ograniczeń
+              href: data-box-heavy-limits.md
     - name: Zasoby
       items:
         - name: Produkt Data Box
