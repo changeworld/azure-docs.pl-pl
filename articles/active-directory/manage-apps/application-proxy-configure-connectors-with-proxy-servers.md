@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b8669e5ca2abe2d763d9bc14f27ed9c4460886
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825953"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015475"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Praca z istniejących serwerów proxy w środowisku lokalnym
 
@@ -106,13 +106,13 @@ Istnieją cztery aspektów do uwzględnienia w serwera proxy ruchu wychodzącego
 #### <a name="proxy-outbound-rules"></a>Reguły ruchu wychodzącego serwera proxy
 Zezwól na dostęp do następujących adresów URL:
 
-| Adres URL | Zastosowanie |
+| URL | Zastosowanie |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Platforma Azure używa tych adresów URL do weryfikacji certyfikatów |
 | login.windows.net<br>login.microsoftonline.com | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
-Jeśli zapora lub serwer proxy umożliwia umieszczanie nazw DNS na białej liście, możesz dodać do niej połączenia z adresami URL \*msappproxy.net i \*servicebus.windows.net. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Zakresy adresów IP są aktualizowane co tydzień.
+Jeśli zapora lub serwer proxy można skonfigurować DNS umożliwia list, można zezwolić na połączenia z \*. msappproxy.net i \*. servicebus.windows.net. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Zakresy adresów IP są aktualizowane co tydzień.
 
 
 Jeśli nie można zezwolić na połączenie z w pełni kwalifikowaną nazwę domeny, należy określić zakresy adresów IP zamiast tego należy użyć tych opcji:

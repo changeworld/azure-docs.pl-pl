@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1c84bf84f8ba28a98937b02a463003a900aefaa0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150380"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002915"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Szybki start: Tworzenie klasyfikatora obciążenia przy użyciu języka T-SQL
 
@@ -48,7 +48,7 @@ END
 ;
 ```
 
-## <a name="create-user"></a>Tworzenie użytkownika
+## <a name="create-user"></a>Utwórz użytkownika
 
 [Tworzenie użytkownika](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO" w mySampleDataWarehouse
 
@@ -107,6 +107,6 @@ Wykonaj następujące kroki, aby wyczyścić zasoby.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Klasyfikator obciążenia został już utworzony. Uruchom kilka zapytań jako TheCEO, aby sprawdzać ich działanie. Zobacz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) służy do wyświetlania kwerend i ważność przypisana.
-
-Aby uzyskać więcej informacji na temat zarządzania obciążenia usługa SQL Data Warehouse, zobacz [ważności obciążenia magazynu danych SQL](sql-data-warehouse-workload-importance.md) i [klasyfikacji obciążenia magazynu danych SQL](sql-data-warehouse-workload-classification.md).
+- Klasyfikator obciążenia został już utworzony. Uruchom kilka zapytań jako TheCEO, aby sprawdzać ich działanie. Zobacz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) służy do wyświetlania kwerend i ważność przypisana.
+- Aby uzyskać więcej informacji na temat usługi Azure SQL Data Warehouse Zarządzanie obciążeniami zobacz [znaczenie obciążenia](sql-data-warehouse-workload-importance.md) i [klasyfikacji obciążenia](sql-data-warehouse-workload-classification.md).
+- Zobacz artykuły z instrukcjami dotyczącymi [skonfigurować wagę obciążenia](sql-data-warehouse-how-to-configure-workload-importance.md) oraz sposób [zarządzania i monitorowania zarządzanie obciążeniami](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

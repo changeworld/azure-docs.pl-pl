@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/25/2019
-ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/22/2019
+ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866944"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016389"
 ---
-# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Strefy czasowe w bazie danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza)
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Strefy czasowe w wystąpieniu zarządzanym usługi Azure SQL Database
 
 Uniwersalny czas koordynowany (UTC) jest zalecane strefę czasową dla rozwiązań w chmurze w warstwie danych. Wystąpienie usługi Azure SQL Database Managed oferuje szeroki wybór stref czasowych do potrzeb istniejących aplikacji, które przechowują wartości daty i godziny i wywołania funkcji daty i godziny przy użyciu niejawnego kontekstu określonej strefy czasowej.
 
@@ -102,9 +102,9 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | --- | --- |
 | Czas standardowy linii zmiany czasu | (UTC-12:00) Międzynarodowa linia zmiany daty — Zachód |
 | UTC-11 | (UTC-11:00) Uniwersalny czas koordynowany-11 |
-| Aleuty (czas standardowy) | (UTC-10:00) Wyspy Aleuckie |
+| Aleuty (czas standardowy) | (UTC-10:00) Aleuty |
 | Hawaje (czas standardowy) | (UTC-10:00) Hawaje |
-| Markizy (czas standardowy) | (UTC-09:30) Wyspy Markizy |
+| Markizy (czas standardowy) | (UTC-09:30) Markizy |
 | Alaska (czas standardowy) | (UTC-09:00) Alaska |
 | UTC-09 | (UTC-09:00) Uniwersalny czas koordynowany-09 |
 | Meksyk (standardowy czas pacyficzny) | (UTC-08:00) Kalifornia Dolna |
@@ -147,7 +147,7 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Wyspy Zielonego Przylądka (czas standardowy) | (UTC-01:00) Wyspy Zielonego Przylądka |
 | UTC | (UTC) Uniwersalny czas koordynowany |
 | GMT (czas standardowy) | (UTC+00:00) Dublin, Edynburg, Lizbona, Londyn |
-| Greenwich (czas standardowy) | (UTC+00:00) Monrovia, Reykjavik |
+| Greenwich (czas standardowy) | (UTC+00:00) Monrowia, Reykjavik |
 | W. Europa (czas standardowy) | (UTC+01:00) Amsterdam, Berlin, Berno, Rzym, Sztokholm, Wiedeń |
 | Europa Środkowa (czas standardowy) | (UTC+01:00) Belgrad, Bratysława, Budapeszt, Lublana, Praga |
 | Romański czas standardowy | (UTC+01:00) Bruksela, Kopenhaga, Madryt, Paryż |
@@ -171,7 +171,7 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Namibia (czas standardowy) | (UTC+02:00) Windhoek |
 | Arabski czas standardowy | (UTC+03:00) Bagdad |
 | Turcja (czas standardowy) | (UTC+03:00) Stambuł |
-| Arabia Saud. (czas standardowy) | (UTC+03:00) Kuwejt, Rijad |
+| Arabia Saud. (czas standardowy) | (UTC+03:00) Kuwejt, Ar-Rijad |
 | Białoruś (czas standardowy) | (UTC+03:00) Mińsk |
 | Rosyjski (czas standardowy) | (UTC+03:00) Moskwa, Petersburg |
 | E. Afryki (czas standardowy) | (UTC+03:00) Nairobi |
@@ -182,7 +182,7 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Russia Time Zone 3 | (UTC+04:00) Iżewsk, Samara |
 | Mauritius (czas standardowy) | (UTC+04:00) Port Louis |
 | Czas standardowy (Saratów) | (UTC+04:00) Saratów |
-| Gruzja (czas standardowy) | (UTC+04:00) Tbilisi |
+| Gruzja (czas standardowy) | (UTC+04:00) Tibilisi |
 | Wołgograd (czas standardowy) | (UTC+04:00) Wołgograd |
 | Kaukaz (czas standardowy) | (UTC+04:00) Erywań |
 | Afganistan (czas standardowy) | (UTC+04:30) Kabul |
@@ -190,7 +190,7 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Jekaterynburg (czas standardowy) | (UTC+05:00) Jekaterynburg |
 | Pakistan (czas standardowy) | (UTC+05:00) Islamabad, Karaczi |
 | Indie (czas standardowy) | (UTC+05:30) Chennai, Kolkata (Kalkuta), Mumbaj (Bombaj), Nowe Delhi |
-| Sri Lanka (czas standardowy) | (UTC+05:30) Sri Jayawardenepura |
+| Sri Lanka (czas standardowy) | (UTC+05:30) Sri Dźajawardanapura Kotte |
 | Nepal (czas standardowy) | (UTC+05:45) Katmandu |
 | Azja Środkowa (czas standardowy) | (UTC+06:00) Astana |
 | Bangladesz (czas standardowy) | (UTC+06:00) Dakka |
@@ -202,11 +202,11 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Azja Północna (czas standardowy) | (UTC+07:00) Krasnojarsk |
 | N. Azja Środkowa (czas standardowy) | (UTC+07:00) Nowosybirsk |
 | Tomsk (czas standardowy) | (UTC+07:00) Tomsk |
-| Chiny (czas standardowy) | (UTC+08:00) Pekin, Chongqing, Hongkong SAR, Urumczi |
+| Chiny (czas standardowy) | (UTC+08:00) Pekin, Czungking, SRA Hongkong, Urumczi |
 | Wschodnia Azja Północna (czas standardowy) | (UTC+08:00) Irkuck |
 | Singapur (czas standardowy) | (UTC+08:00) Kuala Lumpur, Singapur |
 | W. Australia (czas standardowy) | (UTC+08:00) Perth |
-| Tajpej (czas standardowy) | (UTC+08:00) Taipei |
+| Tajpej (czas standardowy) | (UTC+08:00) Tajpej |
 | Ułan Bator (czas standardowy) | (UTC+08:00) Ułan Bator |
 | Australia Środkowo-Zachodnia (czas standardowy) | (UTC+08:45) Eucla |
 | Zabajkale (czas standardowy) | (UTC+09:00) Czyta |
@@ -221,18 +221,18 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Zachodni Pacyfik (czas standardowy) | (UTC+10:00) Guam, Port Moresby |
 | Tasmania (czas standardowy) | (UTC+10:00) Hobart |
 | Władywostok (czas standardowy) | (UTC+10:00) Władywostok |
-| Lord Howe (czas standardowy) | (UTC+10:30) Wyspa Lord Howe |
-| Bougainville (czas standardowy) | (UTC+11:00) Wyspa Bougainville |
+| Lord Howe (czas standardowy) | (UTC+10:30) Lord Howe |
+| Bougainville (czas standardowy) | (UTC+11:00) Wyspa Bougainville’a |
 | Russia Time Zone 10 | (UTC+11:00) Czokurdach |
 | Magadan (czas standardowy) | (UTC+11:00) Magadan |
-| Norfolk (czas standardowy) | (UTC+11:00) Wyspa Norfolk |
+| Norfolk (czas standardowy) | (UTC+11:00) Norfolk |
 | Sachalin (czas standardowy) | (UTC+11:00) Sachalin |
 | Środkowy Pacyfik (czas standardowy) | (UTC+11:00) Wyspy Salomona, Nowa Kaledonia |
 | Russia Time Zone 11 | (UTC+12:00) Anadyr, Pietropawłowsk Kamczacki |
 | Nowa Zelandia (czas standardowy) | (UTC+12:00) Auckland, Wellington |
 | UTC+12 | (UTC+12:00) Uniwersalny czas koordynowany+12 |
 | Fidżi (czas standardowy) | (UTC+12:00) Fidżi |
-| Kamczatka (czas standardowy) | (UTC+12:00) Pietropawłowsk Kamczacki — stare |
+| Kamczatka (czas standardowy) | (GMT+12:00) Pietropawłowsk Kamczacki — stare |
 | Wyspy Chatham (czas standardowy) | (UTC+12:45) Wyspy Chatham |
 | UTC+13 | (UTC+13:00) Uniwersalny czas koordynowany+13 |
 | Tonga (czas standardowy) | (UTC+13:00) Nuku'alofa |

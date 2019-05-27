@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111473"
 ---
 # <a name="azure-relay-faqs"></a>Usługa Azure Relay — często zadawane pytania
 
@@ -80,13 +80,13 @@ Wysyłanie wiadomości do przekaźnika usługi Service Bus jest traktowany jako 
 Przekaźniki, które są otwarte przy użyciu **netTCPRelay** wiązania WCF traktować wiadomości, nie jako pojedyncze wiadomości, ale jako strumień dane przepływają przez system. Korzystając z tego powiązania, tylko nadawcy i odbiornika widzą ramek poszczególne wiadomości wysłanych i odebranych. Dla przekazuje używające **netTCPRelay** powiązania, wszystkie dane jest traktowany jako strumień do obliczania płatnych komunikatów. W tym przypadku usługi Service Bus oblicza łączna ilość danych wysyłanych lub odbieranych przez wystąpienie usługi relay poszczególnych na podstawie 5-minutowych. Następnie dzieli tego łączna ilość danych, przez 64 KB, aby określić liczbę płatnych komunikatów dla tej usługi relay w tym okresie czasu.
 
 ## <a name="quotas"></a>Przydziały
-| Nazwa limitu przydziału | Zakres |  Uwagi | Wartość |
+| Nazwa limitu przydziału | Scope |  Uwagi | Wartość |
 | --- | --- | --- | --- |
 | Współbieżne odbiorniki przekaźnik |Jednostka |Kolejne żądania dla dodatkowych połączeń są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |25 |
-| Połączeń współbieżnych przekazywania na wszystkich punktem końcowym przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5000 |
+| Połączeń współbieżnych przekazywania na wszystkich punktem końcowym przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5,000 |
 | Punktów końcowych przestrzeni nazw usługi Relay |Przestrzeń nazw |- |10 000 |
 | Rozmiar komunikatu [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) i [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) przekazuje |Przestrzeń nazw |Wiadomości przychodzących, które wykraczają poza te przydziały są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |64 KB |
-| Rozmiar komunikatu [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru wiadomości. |Nieograniczona liczba |
+| Rozmiar komunikatu [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru wiadomości. |Nieograniczone |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Przekaźnik ma przydziały użycia?
 Domyślnie dla dowolnej usługi w chmurze firmy Microsoft ustawia łączny miesięczny przydział użycia, który jest obliczany dla wszystkich subskrypcji klientów. Rozumiemy, że czasami potrzeb może przekroczenia limitów. Dlatego firma Microsoft jest zrozumienie potrzeb i odpowiednio dostosować te limity można skontaktować się działem obsługi klienta w dowolnym momencie. Service Bus przydziały użycia agregacji są następujące:

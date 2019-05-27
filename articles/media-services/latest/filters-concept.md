@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 3a562f98635d581aa320fdbd59d05a0382f09606
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465541"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002378"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>Zdefiniuj filtry kont i zasobów filtry  
+# <a name="filters"></a>Filtry
 
 Podczas dostarczania zawartości do klientów (zdarzeń transmisji strumieniowej na żywo lub wideo na żądanie) klienta może wymagać większej elastyczności niż opisane w pliku manifestu zasobu domyślnego. Usługa Azure Media Services umożliwia definiowanie filtrów kont i zasobów filtry dla zawartości. 
 
@@ -36,7 +36,7 @@ Usługa Media Services oferuje [manifestów dynamicznych](filters-dynamic-manife
 
 W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
 
-|Protokół|Przykład|
+|Protocol|Przykład|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>Dla protokołu HLS w wersji 3, użyj: `format=m3u8-aapl-v3`.|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -88,11 +88,9 @@ Warunki właściwości śledzenie filtru opisano typy ścieżek, wartości (opis
 |**Nazwa**|Użyj nazwy ścieżki w celu filtrowania.|
 |**Typ**|Użyj typu ścieżki do filtrowania.<br/><br/>Dozwolone są następujące wartości: "wideo", "audio" lub "text".|
 
-## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
+### <a name="example"></a>Przykład
 
-Można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dynamiczne manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
-
-## <a name="definition-example"></a>Przykład definicji
+W poniższym przykładzie zdefiniowano filtr transmisji strumieniowej na żywo: 
 
 ```json
 {
@@ -146,6 +144,15 @@ Można określić listę filtrów zasobów lub konta, które będzie dotyczyć T
   }
 }
 ```
+
+## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
+
+Można określić listę [aktywów lub filtry](filters-concept.md), która będzie stosowana dla Twojego [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [manifestów dynamicznych](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
+
+Zobacz poniższe przykłady:
+
+* [Kojarzenie filtrów z lokalizatora przesyłania strumieniowego — .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Kojarzenie filtrów z lokalizatora przesyłania strumieniowego — interfejs wiersza polecenia](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

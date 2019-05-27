@@ -19,8 +19,8 @@
 - name: Pojęcia
   expanded: false
   items:
-    - name: Ochrona punktu odniesienia
-      href: baseline-protection.md
+    - name: Zasady ochrony punktu odniesienia
+      href: concept-baseline-protection.md
     - name: Warunki
       href: conditions.md
     - name: Warunki lokalizacji
@@ -38,6 +38,16 @@
       href: plan-conditional-access.md
     - name: Najlepsze praktyki
       href: best-practices.md
+    - name: Zasady punktu odniesienia
+      items:
+        - name: Wymaganie uwierzytelniania MFA dla administratorów
+          href: howto-baseline-protect-administrators.md
+        - name: Ochrona użytkowników końcowych
+          href: howto-baseline-protect-end-users.md
+        - name: Blokowanie starszego uwierzytelniania
+          href: howto-baseline-protect-legacy-auth.md
+        - name: Wymaganie uwierzytelniania MFA do zarządzania usługami
+          href: howto-baseline-protect-azure.md
     - name: Blokowanie starszego uwierzytelniania
       href: block-legacy-authentication.md
     - name: Migrowanie zasad klasycznych

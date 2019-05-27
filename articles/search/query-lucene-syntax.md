@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 26935b53d8f852289513a5a7b5d31e3befe3e3b2
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596574"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002248"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Składnia zapytań Lucene w usłudze Azure Search
 Można napisać zapytań względem usługi Azure Search oparte na zaawansowanych [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) składnia wyspecjalizowane kwerendy forms: symbole wieloznaczne, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie wyrażeń regularnych przedstawiono kilka przykładów. Jest wiele składni analizatora zapytań Lucene [zaimplementowane opublikowane w usłudze Azure Search](search-lucene-query-architecture.md), z wyjątkiem produktów *zakresu wyszukiwania* zbudowanych w usłudze Azure Search przy użyciu `$filter` wyrażenia. 
@@ -79,7 +79,7 @@ W powyższym przykładzie jest tyldy (~), ale ta sama zasada ma zastosowanie do 
  Znaki specjalne, należy użyć znaków ucieczki ma być używany jako część tekstu wyszukiwania. Można je pominąć dodając kreski ułamkowej odwróconej (\\). Następujące znaki specjalne, które muszą być poprzedzone znakiem zmiany znaczenia:  
 `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
- Na przykład jako znak ucieczki dla symbolu wieloznacznego, należy użyć \\*.
+ Na przykład jako znak ucieczki dla symbolu wieloznacznego, należy użyć \\ \*.
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Kodowanie znaków ryzykowne i zarezerwowane adresy URL
 

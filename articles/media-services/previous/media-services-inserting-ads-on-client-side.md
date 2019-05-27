@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8f5cdc33e48d647dba8caeb09b57e233d64712f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687742"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002971"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Wstawianie reklam po stronie klienta
 Ten artykuł zawiera informacje na temat sposobu Wstaw różnego rodzaju reklam po stronie klienta.
@@ -160,7 +160,7 @@ Reklamy nieliniowych są określone w `<Creative>` również element. W poniższ
     </Creative>
 ```
 
-<**NonLinearAds**> element może zawierać jeden lub więcej <**NonLinear**> elementy, z których każdy może opisywać nieliniowych ad. <**NonLinear**> element Określa zasób dla nieliniowych ad. Zasób może być <**staticresource —**>, <**IFrameResource**>, lub <**HTMLResource**>. <**Staticresource —**> w tym artykule opisano zasobów innych niż HTML i definiuje atrybut creativeType, który określa sposób wyświetlania zasobu:
+<**NonLinearAds**> element może zawierać jeden lub więcej <**NonLinear**> elementy, z których każdy może opisywać nieliniowych ad. <**NonLinear**> element Określa zasób dla nieliniowych ad. Zasób może być <**staticresource —**>, <**IFrameResource**>, lub <**HTMLResource**>. \<**Staticresource —**> w tym artykule opisano zasobów innych niż HTML i definiuje atrybut creativeType, który określa sposób wyświetlania zasobu:
 
 Image/gif, image/jpeg, image/png — zasób jest wyświetlana w formacie HTML <**img**> tag.
 
@@ -846,7 +846,7 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu ad środku roll nak�
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też

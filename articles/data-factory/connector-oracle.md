@@ -284,13 +284,13 @@ Podczas kopiowania danych z i do oprogramowania Oracle, następujące mapowania 
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Decimal, String (jeśli dokładności > 28) |
-| INTEGER |Decimal, String (jeśli dokładności > 28) |
+| FLOAT |Decimal, ciąg (jeśli dokładności > 28) |
+| INTEGER |Decimal, ciąg (jeśli dokładności > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Decimal, String (jeśli dokładności > 28) |
+| NUMER |Decimal, ciąg (jeśli dokładności > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
