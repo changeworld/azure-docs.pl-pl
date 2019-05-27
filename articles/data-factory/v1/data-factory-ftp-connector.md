@@ -67,8 +67,8 @@ W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JS
 | --- | --- | --- | --- |
 | type |Ustaw tę pozycję na SerwerFTP. |Yes |&nbsp; |
 | host |Określ nazwę lub adres IP serwera FTP. |Yes |&nbsp; |
-| Element authenticationType |Określ typ uwierzytelniania. |Yes |Podstawowe i anonimowe |
-| nazwa użytkownika |Określ użytkownika, który ma dostęp do serwera FTP. |Nie |&nbsp; |
+| authenticationType |Określ typ uwierzytelniania. |Yes |Podstawowe i anonimowe |
+| username |Określ użytkownika, który ma dostęp do serwera FTP. |Nie |&nbsp; |
 | password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie |&nbsp; |
 | encryptedCredential |Określ zaszyfrowane poświadczenia dostępu do serwera FTP. |Nie |&nbsp; |
 | gatewayName |Określ nazwę bramy w bramy zarządzania danymi, aby nawiązać połączenie z serwerem FTP w środowisku lokalnym. |Nie |&nbsp; |
@@ -160,7 +160,7 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zesta
 | fileFilter |Określ filtr, który ma być używany do Wybierz podzbiór plików w **folderPath**, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **obiektu fileFilter** jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu pliku System (HDFS, Hadoop Distributed). |Nie |
 | partitionedBy |Można określić dynamiczny **folderPath** i **fileName** danych szeregów czasowych. Na przykład można określić **folderPath** , jest sparametryzowane za każdą godzinę danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz skopiować pliki, ponieważ są one między magazynami oparte na plikach (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**, i są obsługiwane poziomy **optymalna** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**, i są obsługiwane poziomy **optymalna** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ, czy do używania trybu binarnego transferu. Wartości są względem niego spełnione w trybie binarnym (jest to wartość domyślna), a wartość false dla ASCII. Tej właściwości należy używać tylko przypadku typu skojarzonej połączonej usługi typu: FtpServer. |Nie |
 
 > [!NOTE]
@@ -206,7 +206,7 @@ W działaniu kopiowania, gdy źródłem jest typu **FileSystemSource**, następu
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| cykliczne |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
+| recursive |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z serwera FTP do obiektu Blob platformy Azure
 Ten przykład pokazuje, jak skopiować dane z serwera FTP do usługi Azure Blob storage. Jednak możesz skopiować dane bezpośrednio do ujścia, o których wspomniano w [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats), za pomocą działania kopiowania w fabryce danych.
