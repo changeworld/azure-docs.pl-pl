@@ -11,18 +11,18 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: f1eca5bdd81a384efe04f769ebd12be9d91fc78a
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442424"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849724"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX i usługi Azure Machine Learning: Tworzenie i przyspieszyć modeli uczenia Maszynowego
 
-Dowiedz się, jak przy użyciu [Otwórz Exchange sieci neuronowych](https://onnx.ai) (ONNX) może pomóc w optymalizacji modeli uczenia maszynowego.
+Dowiedz się, jak przy użyciu [Otwórz Exchange sieci neuronowych](https://onnx.ai) (ONNX) może pomóc zoptymalizować wnioskowania o model uczenia maszynowego. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych. 
 
-Optymalizacja usługi machine learning Modele wnioskowania jest trudne, ponieważ musisz dostosować model i biblioteki wnioskowania, aby maksymalnie wykorzystać możliwości sprzętu. Problem staje się niezmiernie utrudnić, jeśli chcesz uzyskać optymalną wydajność na różnych platformach (chmura/Microsoft edge, procesora CPU/GPU, itp.), ponieważ każda jedna ma różne możliwości i właściwości. Złożoność zwiększa się w przypadku modeli z poziomu wielu różnych platformach, które muszą zostać uruchomione na różnych platformach. Jest bardzo czasochłonne zoptymalizować różnych kombinacji platform i urządzeń. Rozwiązania do uczenia się jeden raz w preferowanej struktury preferowanych i uruchamianie w dowolnym miejscu w chmurze lub Microsoft edge jest wymagana. Jest to, gdzie ONNX jest oferowana w.
+Optymalizacja usługi machine learning modeli wnioskowania (lub modelu oceniania) jest trudne, ponieważ musisz dostosować model i biblioteki wnioskowania, aby maksymalnie wykorzystać możliwości sprzętu. Problem staje się niezmiernie utrudnić, jeśli chcesz uzyskać optymalną wydajność na różnych platformach (chmura/Microsoft edge, procesora CPU/GPU, itp.), ponieważ każda jedna ma różne możliwości i właściwości. Złożoność zwiększa się w przypadku modeli z poziomu wielu różnych platformach, które muszą zostać uruchomione na różnych platformach. Jest bardzo czasochłonne zoptymalizować różnych kombinacji platform i urządzeń. Rozwiązania do uczenia się jeden raz w preferowanej struktury preferowanych i uruchamianie w dowolnym miejscu w chmurze lub Microsoft edge jest wymagana. Jest to, gdzie ONNX jest oferowana w.
 
 Firma Microsoft i społeczności partnerów utworzony ONNX jako otwarty standard do reprezentowania modeli uczenia maszynowego. Modele z [wiele struktur](https://onnx.ai/supported-tools) tym TensorFlow, PyTorch, SciKit-Learn, Keras, Chainer, MXNet i MATLAB mogą być wyeksportowane lub konwersji do formatu ONNX standardowego. Po modele formatu ONNX, ich może działać na różnych platformach i urządzeniach.
 

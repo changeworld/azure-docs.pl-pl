@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: design
+ms.subservice: load data
 ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: db397ae43d1c134823abfc7004f1f3490addeb06
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 076a9c2cee5a976d1424a6c101822e374c20e83b
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550613"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850546"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Projektowanie PolyBase ładowaniem strategię dla usługi Azure SQL Data Warehouse
 
@@ -67,7 +67,7 @@ Program PolyBase ładowania danych z UTF-8 i UTF-16 zakodowane rozdzielanych pli
 |        string         |                             char                             |
 |        string         |                           varchar                            |
 |        binary         |                            binary                            |
-|        binary         |                          Varbinary                           |
+|        binary         |                          varbinary                           |
 |       timestamp       |                             date                             |
 |       timestamp       |                        smalldatetime                         |
 |       timestamp       |                          datetime2                           |

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02463ba47a48f5e86055b9ecb4e0edbdf9608769
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 11819730e05e425066e1f060769e14d5290f877d
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024569"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851979"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Szkolenie modeli PyTorch za pomocą usługi Azure Machine Learning
 
@@ -105,7 +105,7 @@ run = exp.submit(pt_est)
 
 ## <a name="export-to-onnx"></a>Eksportowanie do ONNX
 
-Można pobrać zoptymalizowane wnioskowania o [środowiska uruchomieniowego ONNX](concept-onnx.md), uczonego modelu PyTorch można przekonwertować do formatu ONNX. Zobacz [samouczek](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) przykład.
+Aby zoptymalizować wnioskowania o [środowiska uruchomieniowego ONNX](concept-onnx.md), przekonwertować uczonego modelu PyTorch do formatu ONNX. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych. Zobacz [samouczek](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) przykład.
 
 ## <a name="examples"></a>Przykłady
 

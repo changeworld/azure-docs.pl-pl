@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 2a7af59495966c76a47ea84311ab073eb594f82e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707570"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859654"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -251,7 +251,7 @@ Różne typy klastrów ma wpływ skalowania w następujący sposób:
 Aby uzyskać szczegółowe informacje na temat skalowania klastra usługi HDInsight zobacz:
 
 * [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-command-line.md#scale-clusters)
+* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md#scale-clusters)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Jak instalowanie aplikacji Hue (lub innych składników usługi Hadoop)
 

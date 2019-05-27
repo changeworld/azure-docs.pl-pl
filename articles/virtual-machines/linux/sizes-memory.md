@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/13/2019
+ms.date: 05/16/2019
 ms.author: jonbeck
-ms.openlocfilehash: 535103f875f479b2951b4cc5414e5b133bf6584d
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 3201183bbd012340575ee2c117b4b2083ceea711
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561256"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832141"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowanych pod kątem pamięci
 
@@ -29,6 +29,7 @@ ms.locfileid: "65561256"
 [!INCLUDE [virtual-machines-common-sizes-memory](../../../includes/virtual-machines-common-sizes-memory.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
+
 
 ## <a name="other-sizes"></a>O innych rozmiarach
 - [Zastosowania ogólne](sizes-general.md)
@@ -39,4 +40,7 @@ ms.locfileid: "65561256"
 - [Poprzednie generacje](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+
+* Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+
+* Dowiedz się, jak [tworzenia i zarządzania maszynami wirtualnymi z systemem Linux przy użyciu wiersza polecenia platformy Azure](tutorial-manage-vm.md)

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 5dc311538055d9ecb7aba21f95d819a914cd1db7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826566"
+ms.locfileid: "65849716"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace transakcji handlowych możliwości i zagadnienia
 
@@ -144,7 +144,7 @@ Ta opcja musi być skonfigurowany do sprzedaży firmy Microsoft i rozliczana prz
 |Microsoft płaci 80% kosztów licencji <br> \* Microsoft płaci możesz 90% firm z kosztami licencji dla aplikacji SaaS kwalifikowana   |   $80,00 na miesiąc <br> \* $90.00 na miesiąc    |
 |Firma Microsoft zachowuje 20% przychodów kosztami licencji <br> \* Firma Microsoft zachowuje 10% koszt licencji dla aplikacji SaaS kwalifikowaną.  |  20,00 USD za na miesiąc <br> \* $10.00     |
 
-* **Opłata za usługę Marketplace zmniejszenie:** Dla niektórych produktów SaaS publikowanej na rynku komercyjnych, Microsoft zmniejsza jego opłata za usługę portalu Marketplace z 20% (zgodnie z opisem w umowie wydawcy portalu Microsoft) 10%.  Aby produktu, aby zakwalifikować się, co najmniej jeden z Twoimi produktami musi zostać wyznaczona przez firmę Microsoft jako adresu IP gotowość do współpracy sprzedażowej lub IP sprzedażową uszeregowane według priorytetów. Aby otrzymać to zmniejszenie opłata za usługę portalu Marketplace na miesiąc, uprawnienia muszą być spełnione co najmniej pięciu (5) dni roboczych przed zakończeniem w danym miesiącu kalendarzowym. Zmniejszona usługę portalu Marketplace, opłata nie dotyczą maszyn wirtualnych, aplikacji zarządzanych przez lub innych produktów, udostępniane za pośrednictwem rynku komercyjnych.  To zmniejszyć Marketplace opłata za usługę będzie można kwalifikowaną oferty z opłaty za licencje na zbieranych przez firmę Microsoft, między 31 maja 2019 a 30 czerwca 2020 r.  Po upływie tego czasu opłaty za usługę portalu Marketplace powróci do jego normalnej kwoty.
+* **Opłata za usługę Marketplace zmniejszenie:** Dla niektórych produktów SaaS publikowanej na rynku komercyjnych, Microsoft zmniejsza jego opłata za usługę portalu Marketplace z 20% (zgodnie z opisem w umowie wydawcy portalu Microsoft) 10%.  Aby produktu, aby zakwalifikować się, co najmniej jeden z Twoimi produktami musi zostać wyznaczona przez firmę Microsoft jako adresu IP gotowość do współpracy sprzedażowej lub IP sprzedażową uszeregowane według priorytetów. Aby otrzymać to zmniejszenie opłata za usługę portalu Marketplace na miesiąc, uprawnienia muszą być spełnione co najmniej pięciu (5) dni roboczych przed zakończeniem w danym miesiącu kalendarzowym. Zmniejszona usługę portalu Marketplace, opłata nie dotyczą maszyn wirtualnych, aplikacji zarządzanych przez lub innych produktów, udostępniane za pośrednictwem rynku komercyjnych.  To zmniejszyć Marketplace opłata za usługę będzie można kwalifikowaną oferty z opłaty za licencje na zbieranych przez firmę Microsoft, między 1 maja 2019 a 30 czerwca 2020 r.  Po upływie tego czasu opłaty za usługę portalu Marketplace powróci do jego normalnej kwoty.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Faktury płatności, rozliczeń i kolekcje dla klientów
 
