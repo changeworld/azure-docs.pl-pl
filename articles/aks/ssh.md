@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: d421fad5f574b0d10b24453aca01adf574f493e8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407702"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956358"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu SSH do usługi Azure Kubernetes Service (AKS) węzłów klastra z powodu konserwacji lub rozwiązywania problemów
 
-W całym cyklu życia klastra Azure Kubernetes Service (AKS) może być konieczne do uzyskania dostępu do węzła usługi AKS. Dostęp może być konserwacji, zbieranie danych dziennika lub inne operacje dotyczące rozwiązywania problemów. Węzłów AKS są maszyny wirtualne systemu Linux, dzięki czemu można z nich korzystać przy użyciu protokołu SSH. Ze względów bezpieczeństwa węzłów AKS nie są połączone z Internetem.
+W całym cyklu życia klastra Azure Kubernetes Service (AKS) może być konieczne do uzyskania dostępu do węzła usługi AKS. Dostęp może być konserwacji, zbieranie danych dziennika lub inne operacje dotyczące rozwiązywania problemów. Możesz uzyskać dostęp do węzłów AKS przy użyciu protokołu SSH, w tym dla węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS). Możesz również [łączyć się z węzłami systemu Windows Server przy użyciu połączeń protokołu remote desktop protocol (RDP)][aks-windows-rdp]. Ze względów bezpieczeństwa węzłów AKS nie są połączone z Internetem.
 
 W tym artykule pokazano, jak utworzyć połączenie SSH z węzłem AKS za pomocą prywatnych adresów IP.
 
@@ -24,13 +24,16 @@ W tym artykule pokazano, jak utworzyć połączenie SSH z węzłem AKS za pomoc�
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.64 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="add-your-public-ssh-key"></a>Dodaj klucz publiczny SSH
 
-Domyślnie zostaną wygenerowane klucze SSH, podczas tworzenia klastra usługi AKS. Jeśli nie podano klucze SSH podczas tworzenia klastra usługi AKS, należy dodać publicznych kluczy SSH do węzłów AKS.
+Domyślnie klucze SSH są uzyskany, lub wygenerowane, a następnie dodane do węzłów, podczas tworzenia klastra usługi AKS. Jeśli potrzebujesz określić różne klucze SSH, niż te używane podczas tworzenia klastra usługi AKS, Dodaj klucz publiczny SSH do węzłów systemu Linux w usłudze AKS. Jeśli to konieczne, można utworzyć usługi SSH klucza za pomocą [z systemem macOS lub Linux] [ ssh-nix] lub [Windows][ssh-windows]. Jeśli używasz programu PuTTY ogólnego do tworzenia pary kluczy, Zapisz pary kluczy w OpenSSH formatu zamiast domyślnego programu PuTTy formatem klucza prywatnego (plik ppk).
 
-Aby dodać klucz SSH do węzłów AKS, wykonaj następujące czynności:
+> [!NOTE]
+> Może klucze SSH obecnie można dodawać tylko do węzłów systemu Linux przy użyciu wiersza polecenia platformy Azure. Jeśli używasz węzłów systemu Windows Server, używanie kluczy SSH, podane podczas tworzenia klastra AKS, a następnie przejdź do kroku na [jak uzyskać adres węzła AKS](#get-the-aks-node-address). Ewentualnie [łączyć się z węzłami systemu Windows Server przy użyciu połączeń protokołu remote desktop protocol (RDP)][aks-windows-rdp].
+
+Aby dodać klucz SSH do węzłów systemu Linux w usłudze AKS, wykonaj następujące czynności:
 
 1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Podaj własne podstawowej grupy zasobów i nazwę klastra AKS:
 
@@ -64,7 +67,12 @@ Aby dodać klucz SSH do węzłów AKS, wykonaj następujące czynności:
 
 ## <a name="get-the-aks-node-address"></a>Uzyskaj adres węzła usługi AKS
 
-Węzłów AKS nie są widoczne publicznie w Internecie. Aby SSH do węzłów AKS należy użyć prywatnego adresu IP. W następnym kroku utworzysz zasobnik pomocnika w klastra usługi AKS, która umożliwia SSH ten prywatny adres IP węzła.
+Węzłów AKS nie są widoczne publicznie w Internecie. Aby SSH do węzłów AKS należy użyć prywatnego adresu IP. W następnym kroku utworzysz zasobnik pomocnika w klastra usługi AKS, która umożliwia SSH ten prywatny adres IP węzła. Kroki, aby uzyskać prywatny adres IP węzłów AKS jest inny, na podstawie typu klastra AKS, po uruchomieniu:
+
+* W przypadku większości klastrów usługi AKS, wykonaj kroki, aby [uzyskać adres IP w przypadku regularnego klastrów AKS](#regular-aks-clusters).
+* Jeśli używasz funkcji w wersji zapoznawczej w usłudze AKS, używanego przez zestawy skalowania maszyn wirtualnych, takich jak wiele pule węzłów lub obsługa kontenerów systemu Windows Server, [postępuj zgodnie z instrukcjami dla klastrów AKS opartych na zestawie skali maszyny wirtualnej](#virtual-machine-scale-set-based-aks-clusters).
+
+### <a name="regular-aks-clusters"></a>Regularne klastrów usługi AKS
 
 Wyświetl prywatny adres IP w usłudze AKS klastra węzła przy użyciu [az vm-— adresy ip] [ az-vm-list-ip-addresses] polecenia. Podaj własny AKS klastra Nazwa grupy zasobów uzyskane w ramach poprzedniego [az-aks-show] [ az-aks-show] krok:
 
@@ -80,6 +88,26 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
+### <a name="virtual-machine-scale-set-based-aks-clusters"></a>Klastry AKS opartych na zestawie skali maszyny wirtualnej
+
+Wewnętrzny adres IP węzłów przy użyciu listy [kubectl get-polecenia][kubectl-get]:
+
+```console
+kubectl get nodes -o wide
+```
+
+Przykładowe dane wyjściowe poniżej pokazuje wewnętrznych adresów IP wszystkich węzłów w klastrze, w tym węzeł systemu Windows Server.
+
+```console
+$ kubectl get nodes -o wide
+
+NAME                                STATUS   ROLES   AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION      CONTAINER-RUNTIME
+aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS          4.15.0-1040-azure   docker://3.0.4
+aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
+```
+
+Rekord wewnętrzny adres IP węzła, do którego chcesz rozwiązać. Ten adres zostanie użyty w kolejnym kroku.
+
 ## <a name="create-the-ssh-connection"></a>Utwórz połączenie SSH
 
 Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w klastrze AKS. Pod tym pomocnika zapewnia dostęp protokołu SSH w klastrze i następnie dodatkowy dostęp do węzła SSH. Aby utworzyć i korzystać z tego zasobnika pomocnika, wykonaj następujące czynności:
@@ -89,6 +117,11 @@ Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w 
     ```console
     kubectl run -it --rm aks-ssh --image=debian
     ```
+
+    > [!TIP]
+    > Jeśli używasz węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy dodać selektora węzła do polecenia, aby zaplanować Debian kontenera w węźle systemu Linux w następujący sposób:
+    >
+    > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
 1. Podstawowego obrazu systemu Debian nie zawiera składników protokołu SSH. Po sesji terminalowej jest podłączony do kontenera, należy zainstalować klienta SSH za pomocą `apt-get` w następujący sposób:
 
@@ -163,3 +196,6 @@ Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, możes
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-windows-rdp]: rdp.md
+[ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
+[ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md

@@ -4,14 +4,14 @@ description: Użyj tego samouczka usługi Power BI, importować JSON, tworzyć r
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76531de279dfe6e9b73b3895f0ef63c4c88b63cd
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929827"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979007"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 
@@ -48,7 +48,7 @@ Przed wykonaniem instrukcji zawartych w tym samouczku usługa Power BI, upewnij 
 
 Udostępnianie raportów w witrynie PowerBI.com, musisz mieć konto w witrynie PowerBI.com.  Aby dowiedzieć się więcej na temat usługi Power BI i programie Power BI Pro, zobacz [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).
 
-## <a name="lets-get-started"></a>Zacznijmy
+## <a name="lets-get-started"></a>Zaczynajmy
 W tym samouczku Wyobraźmy sobie czy geologist, bada wulkany na całym świecie. Dane swe dzieła są przechowywane na koncie usługi Azure Cosmos DB i format dokumentu JSON jest następujący:
 
     {
@@ -168,7 +168,7 @@ Poniżej przedstawiono podstawowe kroki tworzenia prostego interaktywny widok ra
 Aby udostępnić raport, musisz mieć konto w witrynie PowerBI.com.
 
 1. W programie Power BI Desktop kliknij **Home** wstążki.
-2. Kliknij przycisk **Opublikuj**.  Monit o podanie nazwy użytkownika i hasła dla konta usługi PowerBI.com.
+2. Kliknij przycisk **publikowania**.  Monit o podanie nazwy użytkownika i hasła dla konta usługi PowerBI.com.
 3. Po uwierzytelnieniu poświadczeń raport został opublikowany do wybranej lokalizacji docelowej.
 4. Kliknij przycisk **Otwórz "PowerBITutorial.pbix" w usłudze Power BI** aby zobaczyć i udostępnianie Twojego raportu w witrynie PowerBI.com.
    

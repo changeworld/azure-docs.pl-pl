@@ -4,26 +4,57 @@ description: Szablony usługi Azure Resource Manager umożliwia tworzenie i konf
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: c907de019b64a6a9d03206514a1147fd43c78106
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4a32b0497d2457a740e9c082f990bb9112208bfd
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65078463"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969184"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Szablony usługi Azure Resource Manager dla usługi Azure Cosmos DB
 
-Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla usługi Azure Cosmos DB:
+Poniższe tabele zawierają linki do szablonów usługi Azure Resource Manager dla usługi Azure Cosmos DB:
 
-|**Typ interfejsu API** | **Link do przykładu**| **Opis** |
-|---|---| ---|
-|Interfejs API Core (SQL)| [Tworzenie konta usługi Azure Cosmos DB (Multi-master)](manage-sql-with-resource-manager.md) | Ten szablon tworzy konto interfejsu API SQL w dwóch regionach, z Multi-Master włączone. Konto usługi Cosmos Azure ma dwa kontenery, które współużytkują przepływności na poziomie bazy danych. |
-| Interfejs API usługi MongoDB | [Tworzenie konta usługi Azure Cosmos DB (Multi-master)](manage-mongodb-with-resource-manager.md) | Ten szablon tworzy konto usługi przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w dwóch regionach z Multi-Master włączone. Konto usługi Cosmos Azure ma dwa kontenery, które współużytkują przepływności na poziomie bazy danych. |
-| Interfejs API rozwiązania Cassandra | [Tworzenie konta usługi Azure Cosmos DB (Multi-master)](manage-cassandra-with-resource-manager.md) | Ten szablon tworzy konto interfejsu API rozwiązania Cassandra w dwóch regionach, z Multi-Master włączone. Konto usługi Cosmos Azure mają dwie tabele, które współużytkują przestrzeń kluczy poziom przepływności. |
-| Interfejs API języka Gremlin| [Tworzenie konta usługi Azure Cosmos DB (Multi-master)](manage-gremlin-with-resource-manager.md) | Ten szablon tworzy konto interfejsu API języka Gremlin w dwóch regionach, z Multi-Master włączone. Konto usługi Cosmos Azure będzie mieć dwa wykresy, które współużytkują przepływności na poziomie bazy danych. |
-| Interfejs API tabel | [Tworzenie konta usługi Azure Cosmos DB (Multi-master)](manage-table-with-resource-manager.md) | Ten szablon tworzy konto interfejsu API tabeli w dwóch regionach za pomocą Multi-Master włączone. Konto usługi Cosmos Azure ma jedną tabelę. |
+## <a name="sql-core-api"></a>Interfejs API SQL (podstawowy)
+
+|**Szablon**|**Opis**|
+|---| ---|
+|[Tworzenie konta usługi Azure Cosmos, bazy danych, kontenerów](manage-sql-with-resource-manager.md#create-resource) | Ten szablon tworzy konto interfejsu API SQL (rdzenie) w dwóch regionach, z Multi-Master włączone. Konto usługi Cosmos Azure ma dwa kontenery, które współużytkują przepływności na poziomie bazy danych. |
+|[Aktualizuj przepływność (RU/s) dla bazy danych](manage-sql-with-resource-manager.md#database-ru-update) | Ten szablon zaktualizuje przepływności bazy danych w ramach konta interfejsu API SQL (rdzenie). |
+|[Aktualizuj przepływność (RU/s) dla kontenera](manage-sql-with-resource-manager.md#container-ru-update) | Ten szablon zaktualizuje przepływność dla kontenera w ramach konta interfejsu API SQL (rdzeni). |
+
+## <a name="mongodb-api"></a>Interfejs API usługi MongoDB
+
+|**Szablon**|**Opis**|
+|---| ---|
+|[Tworzenie konta usługi Azure Cosmos, bazy danych, kolekcji](manage-mongodb-with-resource-manager.md#create-resource) | Ten szablon tworzy konto usługi przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w dwóch regionach z Multi-Master włączone. Konto usługi Cosmos Azure ma dwa kontenery, które współużytkują przepływności na poziomie bazy danych. |
+|[Aktualizuj przepływność (RU/s) dla bazy danych](manage-mongodb-with-resource-manager.md#database-ru-update) | Ten szablon zaktualizuje przepływności bazy danych w ramach konta interfejsu API usługi MongoDB. |
+|[Aktualizuj przepływność (RU/s) dla kolekcji](manage-mongodb-with-resource-manager.md#collection-ru-update) | Ten szablon zaktualizuje przepływność dla kontenera w ramach konta interfejsu API usługi MongoDB. |
+
+## <a name="cassandra-api"></a>Interfejs API rozwiązania Cassandra
+
+|**Szablon**|**Opis**|
+|---| ---|
+|[Tworzenie konta usługi Azure Cosmos, przestrzeń kluczy, tabeli](manage-cassandra-with-resource-manager.md#create-resource) | Ten szablon tworzy konto interfejsu API rozwiązania Cassandra w dwóch regionach, z Multi-Master włączone. Konto usługi Cosmos Azure mają dwie tabele, które współużytkują przestrzeń kluczy poziom przepływności. |
+|[Aktualizowanie przestrzeni kluczy przepływność (RU/s)](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | Ten szablon zaktualizuje przepływności na przestrzeń kluczy, w ramach konta interfejsu API rozwiązania Cassandra. |
+|[Aktualizuj tabelę przepływność (RU/s)](manage-cassandra-with-resource-manager.md#table-ru-update) | Ten szablon zaktualizuje przepływności dla tabeli w ramach konta interfejsu API rozwiązania Cassandra. |
+
+## <a name="gremlin-api"></a>Interfejs API języka Gremlin
+
+|**Szablon**|**Opis**|
+|---| ---|
+|[Tworzenie konta usługi Azure Cosmos, bazy danych, wykres](manage-gremlin-with-resource-manager.md#create-resource) | Ten szablon tworzy konto interfejsu API języka Gremlin w dwóch regionach, z Multi-Master włączone. Konto usługi Cosmos Azure będzie mieć dwa wykresy, które współużytkują przepływności na poziomie bazy danych. |
+|[Aktualizuj przepływność (RU/s) dla bazy danych](manage-gremlin-with-resource-manager.md#database-ru-update) | Ten szablon zaktualizuje przepływności bazy danych w ramach konta interfejsu API języka Gremlin. |
+|[Aktualizowanie wykresu przepływność (RU/s)](manage-gremlin-with-resource-manager.md#graph-ru-update) | Ten szablon zaktualizuje przepływność dla wykresu w ramach konta interfejsu API języka Gremlin. |
+
+## <a name="table-api"></a>Interfejs API tabel
+
+|**Szablon**|**Opis**|
+|---| ---|
+|[Tworzenie konta usługi Azure Cosmos w tabeli](manage-table-with-resource-manager.md#create-resource) | Ten szablon tworzy konto interfejsu API tabeli w dwóch regionach za pomocą Multi-Master włączone. Konto usługi Cosmos Azure ma jedną tabelę. |
+|[Aktualizuj tabelę przepływność (RU/s)](manage-table-with-resource-manager.md#table-ru-update) | Ten szablon zaktualizuje przepływności dla tabeli w ramach konta interfejsu API tabel. |
 
 > [!TIP]
 > Aby włączyć udostępnionej przepływności, korzystając z interfejsu API tabel, Włącz przepływności na poziomie konta w witrynie Azure Portal.

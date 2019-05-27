@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ceaf4d3db71d99c3e87157f9847312fdf4000026
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245275"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991786"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Analiza multimediów na platformie Media Services 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Więcej organizacji używasz wideo jako preferowany średni szkolenie pracowników, angażować swoich klientów i udokumentować funkcje biznesowe. Przetwarzanie zapewnia sposób przechowywania, przesyłanie strumieniowe i dostępu do tych duże pliki multimedialne w chmurze. Ale wraz z rozwojem firmy biblioteki zawartości filmu wideo muszą równie skutecznym sposobem przeprowadzanie analizy zawartości. 
 
 Aby zaspokoić te potrzeby rosnący, usługi Azure Media Services oferuje analizy multimediów Azure. Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają organizacjom i przedsiębiorstwom pozyskiwanie przydatnych informacji z posiadanych plików wideo. Utworzony za pomocą podstawowe składniki platformy Media Services, usługi Media Analytics może obsłużyć przetwarzanie na dużą skalę, od pierwszego dnia multimediów.
@@ -58,7 +58,6 @@ Analiza multimediów może pomóc organizacjom i przedsiębiorstwom gromadzić n
 
 * **Wywołaj centra**. Nawet w przypadku pojawienie się mediów społecznościowych centra wywołania klienta nadal ułatwić znaczną część transakcji obsługi klienta. Zakodowane w tym dane audio jest dużych ilości informacji klientów, które mogą być analizowane w celu osiągnięcia wyższej zadowolenie klientów. Za pomocą Media Indexer, organizacje mogą wyodrębniania tekstu i twórz indeksy wyszukiwania i pulpity nawigacyjne. Następnie mogli wyodrębnić analizy dotyczące typowych utrudnień, źródeł skarg i inne odpowiednie dane.
 * **Moderowanie zawartości wygenerowanej przez użytkowników**. Z mediami gniazda do działów policji, w wielu organizacjach portale publicznych, które zaakceptować wygenerowaną przez użytkowników nośników, takich jak filmy wideo i obrazy. Ilość zawartości można skacze z powodu nieoczekiwanych zdarzeń. W tych scenariuszach jest trudne do przeprowadzenia skuteczne przeglądy ręczne zawartości dla właściwości. Klienci mogą polegać na usługę moderowanie zawartości, aby skupić się na treści, która jest odpowiednia.
-* **Nadzór**. Za pomocą wzrost użycia kamer IP pochodzą rosnącą spisu nadzoru wideo. Ręcznie przeglądanie nadzoru wideo jest intensywnie i podatne na błędy człowieka. Usługa Media Analytics zapewnia usług, takich jak wykrywanie ruchu, wykrywanie twarzy i przyspieszone ujęcia Poklatkowe w celu uproszczenia procesu recenzowania, zarządzania i tworzenie pochodnych łatwiejsze.
 
 ## <a name="media-analytics-media-processors"></a>Procesory multimediów usługi analizy multimediów
 W tej sekcji wymieniono procesory multimediów usługi analizy multimediów i pokazuje, jak użyć .NET lub REST, aby uzyskać obiekt multimedialny procesora (MP).
@@ -66,7 +65,6 @@ W tej sekcji wymieniono procesory multimediów usługi analizy multimediów i po
 ### <a name="mp-names"></a>Nazwy pakietu administracyjnego
 * Azure Media Indexer 2 w wersji zapoznawczej
 * Azure Media Indexer
-* Azure Media Hyperlapse
 * Azure Media Face Detector
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
@@ -123,10 +121,10 @@ Odpowiedź:
        ]
     }
 
-## <a name="demos"></a>Wersje demonstracyjne
+## <a name="demos"></a>Pokazy
 Zobacz [pokazy analizy multimediów Azure](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Pokrewne artykuły:

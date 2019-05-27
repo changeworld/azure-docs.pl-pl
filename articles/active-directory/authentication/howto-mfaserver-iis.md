@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6404356edca606d78656011b9dec654e9f29edd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a019aaec270fe1beb3914e7ab388fce9a701bcc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415037"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988603"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication na potrzeby aplikacji internetowych usług IIS
 
@@ -63,7 +63,7 @@ Aby zabezpieczyć aplikację internetową usług IIS, która korzysta ze zintegr
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Włączanie wtyczek IIS dla serwera usługi Azure Multi-Factor Authentication
 
-Po skonfigurowaniu adresów URL i ustawień dla uwierzytelniania opartego na formularzach lub uwierzytelniania HTTP wybierz lokalizacje w usługach IIS, w których mają zostać załadowane i włączone wtyczki IIS usługi Azure Multi-Factor Authentication. Postępuj zgodnie z następującą procedurą:
+Po skonfigurowaniu adresów URL i ustawień dla uwierzytelniania opartego na formularzach lub uwierzytelniania HTTP wybierz lokalizacje w usługach IIS, w których mają zostać załadowane i włączone wtyczki IIS usługi Azure Multi-Factor Authentication. Użyj poniższej procedury:
 
 1. W przypadku korzystania z usług IIS 6 kliknij kartę **ISAPI**. Wybierz witrynę internetową, w ramach której działa aplikacja internetowa (np. Domyślna witryna internetowa), aby włączyć wtyczkę filtru ISAPI usługi Azure Multi-Factor Authentication dla tej witryny.
 2. W przypadku korzystania z usług IIS 7 lub nowszych kliknij kartę **Moduł macierzysty**. Wybierz serwer, witryny sieci Web lub aplikacje, aby włączyć wtyczkę IIS na odpowiednich poziomach.
@@ -76,4 +76,4 @@ Zaufane adresy IP pozwalają użytkownikom pominąć uwierzytelnianie za pomocą
 1. W sekcji Uwierzytelnianie usług IIS kliknij kartę **Zaufane adresy IP**.
 2. Kliknij pozycję **Add** (Dodaj).
 3. Gdy pojawi się okno dialogowe Dodawanie zaufanych adresów IP, wybierz przycisk radiowy **Pojedynczy adres IP**, **Zakres adresów IP** lub **Podsieć**.
-4. Wprowadź adres IP lub zakres adresów IP albo podsieć, którą chcesz dodać do listy dozwolonych adresów. Jeśli wprowadzasz podsieć, wybierz odpowiednią maskę sieci i kliknij przycisk **OK**. Po wykonaniu tych czynności została dodana lista zaufanych adresów.
+4. Wprowadź adres IP, zakresu adresów IP lub podsieci, które mają być dozwolone. Jeśli wprowadzasz podsieć, wybierz odpowiednią maskę sieci i kliknij przycisk **OK**.

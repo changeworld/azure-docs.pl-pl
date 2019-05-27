@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486148"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978526"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Wdrażanie i eksplorowanie aplikacji z wieloma dzierżawami podzielonej na fragmenty
 
@@ -58,7 +58,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 ### <a name="plan-the-names"></a>Planowanie nazwy
 
 W krokach w tej sekcji podaj *użytkownika* wartość, która służy do zapewnienia zasobów nazwy są globalnie unikatowe oraz nazwę *grupy zasobów* zawierającą wszystkie zasoby utworzone przez wdrożenie aplikacji. Dla osoby o nazwie *Finley pods*, sugerujemy:
-- *Użytkownik:* **af1**  *(jej inicjały i cyfry. Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
+- *Użytkownik:* **af1***(ich skróty, a także cyfry.   Użyj innej wartości (np. af2), gdy wdrożysz aplikację po raz drugi).*
 - *Grupa zasobów:* **wingtip-mt-af1** *(o nazwie wingtip-mt wskazuje to aplikacji wielodostępnych podzielonej na fragmenty. Dołączanie af1 nazwa użytkownika jest skorelowane z nazwami zasobów, które zawiera nazwy grupy zasobów.)*
 
 Teraz wybierz nazwy i zanotuj je. 

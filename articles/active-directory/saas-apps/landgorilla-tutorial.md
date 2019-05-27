@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2e1288885476aeeba01f966b615c23c5fe51081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261003"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą klienta Gorilla ziemi
 
@@ -47,7 +47,7 @@ Aby skonfigurować integrację usługi Azure AD za pomocą klienta Gorilla ziemi
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
+Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
@@ -67,7 +67,7 @@ Aby skonfigurować integrację ziemi Gorilla klienta w usłudze Azure AD, należ
 
 1. W  **[portalu zarządzania systemu Azure](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Usługa Active Directory][1]
+    ![Active Directory][1]
 
 1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
@@ -87,7 +87,7 @@ Aby skonfigurować integrację ziemi Gorilla klienta w usłudze Azure AD, należ
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą klienta Gorilla ziemi oparte na użytkownika testu o nazwie "Britta Simon".
+W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą klienta Gorilla ziemi oparte na użytkownika testu o nazwie "B. Simona".
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w kliencie Gorilla ziemi jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w kliencie Gorilla ziemi musi nawiązać.
 
@@ -97,8 +97,8 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne z ograniczonej grupy.
-1. **[Tworzenie użytkownika testowego Gorilla ziemi](#creating-a-land-gorilla-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Tworzenie użytkownika testowego Gorilla ziemi](#creating-a-land-gorilla-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
 1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
@@ -142,7 +142,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     ![Konfigurowanie logowania jednokrotnego](./media/landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/landgorilla-tutorial/tutorial_general_400.png) 
 
@@ -150,7 +150,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania platformy Azure o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania platformy Azure o nazwie B. Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -172,9 +172,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania pl
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/landgorilla-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **B. Simon**.
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z B. Simon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -186,11 +186,11 @@ Skontaktuj się z [zespołem pomocy technicznej Gorilla ziemi](https://www.landg
     
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowania jednokrotnego przez udostępnienie jej do klienta Gorilla ziemi.
+W tej sekcji możesz włączyć Simon B. do nadawania im praw do ziemi Gorilla klienta za pomocą usługi Azure logowania jednokrotnego.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Britta Simon klientowi Gorilla ziemi, wykonaj następujące czynności:**
+**Aby przypisać B. Simon klientowi Gorilla ziemi, wykonaj następujące czynności:**
 
 1. W portalu zarządzania platformy Azure powoduje ono otwarcie widoku aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
@@ -208,7 +208,7 @@ W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowani
 
     ![Przypisz użytkownika][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** na liście Użytkownicy.
 
 1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
@@ -225,7 +225,7 @@ Po kliknięciu kafelka ziemi Gorilla klienta w panelu dostępu, możesz należy 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

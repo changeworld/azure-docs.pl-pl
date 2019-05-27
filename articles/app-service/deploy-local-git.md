@@ -15,11 +15,11 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405032"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65956075"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Wdrażanie lokalnej usługi Git w usłudze Azure App Service
 
@@ -158,21 +158,21 @@ Poniżej przedstawiono typowe błędy lub problemy, gdy za pomocą narzędzia Gi
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli aplikacja nie będzie działać.
 
-**Rozwiązanie**: Uruchom aplikację w witrynie Azure portal. Wdrażanie usługi Git jest niedostępna, jeśli aplikacja sieci Web została zatrzymana.
+**Rozpoznawanie**: Uruchom aplikację w witrynie Azure portal. Wdrażanie usługi Git jest niedostępna, jeśli aplikacja sieci Web została zatrzymana.
 
 ---
 **Objaw**: `Couldn't resolve host 'hostname'`
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli adres wartości wprowadzonej podczas tworzenia zdalnego "azure" była nieprawidłowa.
 
-**Rozwiązanie**: Użyj `git remote -v` polecenie, aby wyświetlić listę wszystkich dostępów zdalnych, wraz z powiązanego adresu URL. Sprawdź, czy adres URL "Azure" zdalny jest poprawna. W razie potrzeby usuń i ponownie utwórz ten zdalnego przy użyciu prawidłowego adresu URL.
+**Rozpoznawanie**: Użyj `git remote -v` polecenie, aby wyświetlić listę wszystkich dostępów zdalnych, wraz z powiązanego adresu URL. Sprawdź, czy adres URL "Azure" zdalny jest poprawna. W razie potrzeby usuń i ponownie utwórz ten zdalnego przy użyciu prawidłowego adresu URL.
 
 ---
 **Objaw**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli nie określisz gałęzi podczas `git push`, lub jeśli nie został ustawiony `push.default` wartość w `.gitconfig`.
 
-**Rozwiązanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
+**Rozpoznawanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
 
 ```bash
 git push azure master
@@ -183,7 +183,7 @@ git push azure master
 
 **Przyczyna**: Ten błąd może wystąpić, Jeśli spróbujesz wypchnąć do rozgałęzienia innego niż główny "Azure" zdalnego.
 
-**Rozwiązanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
+**Rozpoznawanie**: Uruchom `git push` ponownie, określając gałęzi głównej. Na przykład:
 
 ```bash
 git push azure master
@@ -194,7 +194,7 @@ git push azure master
 
 **Przyczyna**: Ten błąd może wystąpić, Jeśli spróbujesz wypchnąć repozytorium git w dużej za pośrednictwem protokołu HTTPS.
 
-**Rozwiązanie**: Zmienianie konfiguracji usługi git na komputerze lokalnym, aby powiększyć postBuffer
+**Rozpoznawanie**: Zmienianie konfiguracji usługi git na komputerze lokalnym, aby powiększyć postBuffer
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -205,17 +205,17 @@ git config --global http.postBuffer 524288000
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli wdrożysz aplikację Node.js przy użyciu _package.json_ pliku, który określa dodatkowe wymagane moduły.
 
-**Rozwiązanie**: Dodatkowe wiadomości przy użyciu funkcji "npm błąd!" powinny być rejestrowane, zanim ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu, a odpowiedni "npm błąd!" Komunikat:
+**Rozpoznawanie**: Dodatkowe wiadomości przy użyciu funkcji "npm błąd!" powinny być rejestrowane, zanim ten błąd i może zapewnić dodatkowy kontekst błędu. Znane są następujące przyczyny tego błędu, a odpowiedni "npm błąd!" Komunikat:
 
 * **Plik package.json źle sformułowane**: npm błąd! Nie można odczytać zależności.
 * **Moduł macierzysty, który nie ma binarne dystrybucji dla Windows**:
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 
-      LUB
+      OR
   * `npm ERR! [modulename@version] preinstall: \make || gmake\`
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Projekt Kudu dokumentacji](https://github.com/projectkudu/kudu/wiki)
 * [Ciągłe wdrażanie w usłudze Azure App Service](deploy-continuous-deployment.md)

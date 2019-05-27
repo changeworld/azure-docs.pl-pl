@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: a90475cfd1d166b8fae1c2b872cbbb9d48b50392
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785812"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953124"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Zarządzanie obliczeniami na krawędzi sieci Azure Data Box
 
@@ -129,24 +129,6 @@ Wykonaj następujące kroki w witrynie Azure portal, aby zsynchronizować klucze
 
 3. Po zakończeniu synchronizacji zamknij okno dialogowe.
 
-## <a name="enable-a-network-interface-for-compute"></a>Włączanie interfejsu sieciowego dla środowiska obliczeniowego
-
-Może być konieczne dostępu modułu, uruchomione na urządzeniu usługi Edge pola danych. Aby uzyskać dostęp do modułu zewnętrznie, musisz przypisać adres IP do interfejsu sieciowego na urządzeniu z systemem. Możesz zarządzać te obliczenia ustawienia z Twojego lokalnego internetowego interfejsu użytkownika.
-
-Wykonaj następujące kroki w lokalnej sieci web UI, aby skonfigurować ustawienia obliczeń.
-
-1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konfiguracji > Compute ustawienia**.  
-
-2. **Włącz** interfejsu sieciowego, który ma być używana do łączenia z modułami obliczeń na urządzeniu. 
-
-    - Jeśli używasz statycznych adresów IP, wprowadź adres IP dla interfejsu sieciowego.
-    - Jeśli używasz protokołu DHCP, następnie adresów IP zostanie automatycznie przypisana.
-
-3. Wybierz **Zastosuj** mają zostać zastosowane ustawienia.
-
-    ![Włącz ustawienia obliczeń](media/data-box-edge-manage-compute/compute-settings-1.png)
-
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [Zarządzać użytkownikami w witrynie Azure Portal](data-box-edge-manage-users.md).
+- Dowiedz się, jak [Zarządzanie krawędzi obliczenia sieci za pośrednictwem witryny Azure portal](data-box-edge-extend-compute-access-modules.md).

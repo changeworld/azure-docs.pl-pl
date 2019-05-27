@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: b3192d848e77c59d0ff6950e647d1faf172484b5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606396"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965717"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
@@ -54,11 +54,6 @@ Można również przypisać i łączenia użytkowników z pulpitami wirtualnymi:
 
 Istnieje kilka rzeczy, które należy skonfigurować pulpitu wirtualnego Windows i pomyślnym nawiązaniu połączenia użytkownicy na swoich komputerach stacjonarnych Windows i aplikacji.
 
-Obecnie pulpit wirtualny w Windows obsługuje tylko następujące dwa systemy operacyjne:
-
-* Wiele sesji systemu Windows 10 Enterprise
-* Windows Server 2016
-
 Planujemy dodanie obsługi następujących systemów operacyjnych, dlatego upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacje, które planujesz wdrożyć:
 
 |System operacyjny|Wymagana licencja|
@@ -78,9 +73,7 @@ Infrastruktury musi mieć następujące elementy do obsługi Windows pulpitu wir
 Maszyny wirtualne Azure utworzonym dla Windows pulpitu wirtualnego musi być:
 
 * [Standardowa przyłączone do domeny](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) lub [hybrydowe przyłączone do usługi AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Maszyny wirtualne nie może być przyłączone do usługi AD platformy Azure.
-* Uruchomiony jeden z następujących obsługiwanych obrazów systemu operacyjnego:
-  * Wiele sesji systemu Windows 10 Enterprise
-  * Windows Server 2016
+* Działający pod kontrolą jednego z następujących [obsługiwanych obrazów systemu operacyjnego](#supported-virtual-machine-os-image).
 
 >[!NOTE]
 >Jeśli potrzebujesz subskrypcji platformy Azure, możesz to zrobić [Zarejestruj się w miesięcznej bezpłatnej wersji próbnej](https://azure.microsoft.com/free/). Jeśli używasz bezpłatnej wersji próbnej platformy Azure, należy używać usługi Azure AD Domain Services do synchronizowania usługi systemu Windows Server Active Directory z usługą Azure Active Directory.
@@ -92,6 +85,21 @@ Aby uzyskać optymalną wydajność upewnij się, że sieć spełnia następują
 * Opóźnienie Rundy (RTT) z sieci klienta do regionu platformy Azure, w której zostały wdrożone pule hosta powinien być mniej niż 150 ms.
 * Ruch sieciowy może przepływać obramowania poza kraj/region, gdy maszyny wirtualne, które hostują pulpity nawigacyjne i aplikacje, które łączą się z usługą zarządzania z.
 * Aby zoptymalizować wydajność sieci, zaleca się, że maszyny wirtualne hosta sesji jest zlokalizowana w tym samym regionie platformy Azure jako usługi zarządzania.
+
+## <a name="supported-remote-desktop-clients"></a>Obsługiwani klienci usług pulpitu zdalnego
+
+Następujący klienci usług pulpitu zdalnego obsługuje pulpitu wirtualnego Windows:
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+
+## <a name="supported-virtual-machine-os-image"></a>Obraz maszyny wirtualnej obsługiwanych systemów operacyjnych
+
+Pulpit wirtualny w Windows obsługuje następujące obrazy systemu operacyjnego:
+
+* Wiele sesji systemu Windows 10 Enterprise
+* Windows Server 2016
 
 ## <a name="provide-feedback"></a>Przesyłanie opinii
 

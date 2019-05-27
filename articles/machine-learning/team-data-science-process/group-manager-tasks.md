@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60305412"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950101"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Zadania dla menedżera grupy, w projekcie zespołowym do nauki o danych
 
-W tym temacie wymieniono, zadania, które Menedżer grupy oczekuje się, aby ukończyć w celu elementy / swojej organizacji do nauki o danych. Celem jest zapewnienie środowiska współpracy grupy, które standaryzuje na [zespołu danych dla celów naukowych](overview.md) (TDSP). Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
+W tym temacie wymieniono zadania, które jest kierownikiem oczekiwano w organizacji do nauki o danych. Celem jest zapewnienie środowiska współpracy grupy, które standaryzuje na [zespołu danych dla celów naukowych](overview.md) (TDSP). Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 
 **Menedżera grupy** jest kierownikiem jednostki do nauki o danych w przedsiębiorstwie. Jednostka analizy danych może mieć wielu zespołach, z których każdy działa w wielu projektach do nauki o danych w różnych firm branżowych. Menedżer grupy może przekazać swoje zadania, aby zastępczy, ale zadania związane z rolą są takie same. Istnieje sześć głównych zadań, jak pokazano na poniższym diagramie:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766871"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988572"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesji uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -50,7 +50,7 @@ Wartość domyślna usługi Azure AD dla trwałości sesji przeglądarki umożli
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurowanie kontrolki sesji uwierzytelniania
 
-Dostęp warunkowy jest możliwość usługi Azure AD Premium i wymaga licencji premium. Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md#license-requirements-for-using-conditional-access)
+Dostęp warunkowy jest możliwość usługi Azure AD Premium i wymaga licencji premium. Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
 > Jeśli używasz [można skonfigurować okres istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) są wyposażone w obecnie w publicznej wersji zapoznawczej, należy pamiętać, że firma Microsoft nie obsługuje tworzenia dwóch różnych zasad dla tej samej kombinacji aplikacji lub użytkownika: jeden z tej funkcji i inną z żądanymi funkcję można skonfigurować okres istnienia tokenu. Firma Microsoft planuje wycofanie funkcji można skonfigurować okres istnienia tokenu od 15 października i zastąp go za pomocą funkcji zarządzania sesji uwierzytelniania dostępu warunkowego.  
@@ -66,7 +66,7 @@ Dostęp warunkowy jest możliwość usługi Azure AD Premium i wymaga licencji p
 1. Przejdź do **kontroli dostępu** > **sesji** i kliknij przycisk **częstotliwość logowania**
 1. Wprowadź wymagane wartości dni i godziny w pierwszym polu tekstowym
 1. Wybierz wartość **godzin** lub **dni** z listy rozwijanej
-1. Zaoszczędzić zasad
+1. Zapisz zasady
 
 ![Zasady dostępu warunkowego skonfigurowane podczas logowania w obszarze częstotliwość](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 

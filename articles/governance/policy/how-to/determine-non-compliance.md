@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868711"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979346"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -85,7 +85,7 @@ Te informacje wyjaśniają, dlaczego zasób jest obecnie niezgodne, ale nie poka
 
 Następujące macierzy mapuje każdą możliwą _Przyczyna_ w odpowiedzialne [warunek](../concepts/definition-structure.md#conditions) w definicji zasad:
 
-|Przyczyna | Warunek |
+|Reason | Warunek |
 |-|-|
 |Bieżąca wartość musi zawierać wartość docelową jako klucz. |containsKey lub **nie** notContainsKey |
 |Bieżąca wartość musi zawierać wartość docelową. |zawiera lub **nie** notContains |
@@ -215,11 +215,11 @@ Jako część nowego **publicznej wersji zapoznawczej**, ostatnich 14 dni histor
 
 1. Wybierz **historię zmian (wersja zapoznawcza)** karcie **zgodność zasobów** strony. Lista Wykryto zmiany, jeśli nie są wyświetlane wszelkie istnieje.
 
-   ![Karta Historia zmian zasad na stronie zgodność zasobów](../media/determine-non-compliance/change-history-tab.png)
+   ![Azure karcie Historia zmian zasad zgodności zasobu strony](../media/determine-non-compliance/change-history-tab.png)
 
 1. Wybierz jeden z wykryte zmiany. _Visual diff_ dla zasobu są przedstawione na **historię zmian** strony.
 
-   ![Diff Visual historii zmian zasad na stronie Historia zmian](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Azure zasad zmian historii Visual różnicowego na stronie Historia zmian](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _Visual diff_ aides do identyfikowania zmiany w zasobie. Wykryto zmiany mogą być niepowiązane z bieżącego stanu zgodności zasobu.
 
@@ -228,7 +228,7 @@ Dane historii zmian są udostępniane przez [wykres zasobów Azure](../../resour
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
-- Przejrzyj [strukturę definicji usługi Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
 - Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
 - Dowiedz się, jak [Pobierz dane zgodności](getting-compliance-data.md).

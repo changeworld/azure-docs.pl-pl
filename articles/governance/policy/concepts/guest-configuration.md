@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277731"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979512"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -63,7 +63,7 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnego, używane we wszyst
 
 ### <a name="validation-frequency"></a>Częstotliwość sprawdzania poprawności
 
-Klient Configuration Gość sprawdza nowej zawartości co 5 minut. Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji. Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji. To powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager. Ocena zasad na żądanie pobiera najnowszą wartość z konfiguracji gościa dostawcy zasobów. Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
+Klient Configuration Gość sprawdza nowej zawartości co 5 minut. Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji. Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji. To powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager. Ocena zasad platformy Azure na żądanie pobiera najnowszą wartość z dostawcy zasobów gościa konfiguracji. Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
 
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
@@ -80,7 +80,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 |SUSE|SLES|12 Z DODATKIEM SP3|
 
 > [!IMPORTANT]
-> Konfiguracja gościa można przeprowadzać inspekcję węzły obsługiwanego systemu operacyjnego.  Jeśli chcesz przeprowadzić inspekcję maszyn wirtualnych korzystających z niestandardowego obrazu, należy zduplikować **DeployIfNotExists** definicji i modyfikować **Jeśli** sekcji, aby uwzględnić właściwości obrazu.
+> Konfiguracja gościa można przeprowadzać inspekcję węzły obsługiwanego systemu operacyjnego. Jeśli chcesz przeprowadzić inspekcję maszyn wirtualnych korzystających z niestandardowego obrazu, należy zduplikować **DeployIfNotExists** definicji i modyfikować **Jeśli** sekcji, aby uwzględnić właściwości obrazu.
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 
@@ -93,9 +93,7 @@ Aby komunikować się z dostawcą zasobów gościa konfiguracji na platformie Az
 Dla listy adresów IP, możesz pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i ma aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Musisz zezwolić na dostęp ruchu wychodzącego do adresów IP w regionach, w których maszyny wirtualne są wdrażane.
 
 > [!NOTE]
-> Plik XML adres IP centrum danych platformy Azure zawiera listę zakresów adresów IP, które są używane w centrach danych platformy Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i storage.
-> Tydzień jest publikowany zaktualizowany plik. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych, przez co najmniej jeden tydzień.
-> To dobry pomysł, aby pobrać nowy plik XML, co tydzień. Następnie należy zaktualizować lokację do prawidłowo identyfikować usługi uruchomione na platformie Azure. Użytkownicy usługi Azure ExpressRoute należy zauważyć, że ten plik jest używany do aktualizacji anonsu protokołu BGP (Border Gateway) miejsca platformy Azure w pierwszym tygodniu każdego miesiąca.
+> Plik XML adres IP centrum danych platformy Azure zawiera listę zakresów adresów IP, które są używane w centrach danych platformy Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i storage. Tydzień jest publikowany zaktualizowany plik. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych, przez co najmniej jeden tydzień. To dobry pomysł, aby pobrać nowy plik XML, co tydzień. Następnie należy zaktualizować lokację do prawidłowo identyfikować usługi uruchomione na platformie Azure. Użytkownicy usługi Azure ExpressRoute należy zauważyć, że ten plik jest używany do aktualizacji anonsu protokołu BGP (Border Gateway) miejsca platformy Azure w pierwszym tygodniu każdego miesiąca.
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 
@@ -140,7 +138,7 @@ Przykłady dla konfiguracji gościa zasad są dostępne w następujących lokali
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
-- Przejrzyj [strukturę definicji usługi Azure Policy](definition-structure.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](effects.md).
 - Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md).
 - Dowiedz się, jak [Pobierz dane zgodności](../how-to/getting-compliance-data.md).

@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746907"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978466"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Event Hubs
 
@@ -27,8 +27,28 @@ Za pomocą tożsamości zarządzanych platformy Azure zarządza tą tożsamości
 Gdy jest on skojarzony z tożsamości zarządzanej, klienta usługi Event Hubs można wykonywać operacje wszystkim uprawnionym. Upoważnienia skojarzenie tożsamości zarządzanej przy użyciu ról usługi Event Hubs. 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role i uprawnienia
+Możesz dodać zarządzanych tożsamości w celu **Event Hubs danych właściciela** roli przestrzeń nazw usługi Event Hubs. Ta rola przyznaje tożsamości, pełną kontrolę nad (Zarządzanie i operacje na danych) na wszystkich jednostek w przestrzeni nazw.
 
-Tożsamość zarządzana można dodać tylko do ról "Właściciel" lub "Współautor" w przestrzeni nazw usługi Event Hubs, która przyznaje pełną kontrolę tożsamości, na wszystkich jednostek w przestrzeni nazw. Jednak zarządzania, które operacje, aby zmienić topologii przestrzeni nazw są początkowo tylko jednak obsługiwane usługi Azure Resource Manager. Nie jest za pomocą natywnego interfejsu zarządzania REST centrów zdarzeń. Ta obsługa oznacza, że nie można użyć klienta programu .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) obiektu w tożsamość zarządzaną. 
+>[!IMPORTANT]
+> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **właściciela** lub **Współautor** roli. Jednak uprawnienia dostępu do danych **właściciela** i **Współautor** roli nie są już uznawane. Jeśli używasz **właściciela** lub **Współautor** roli, przełącz się do przy użyciu **Event Hubs danych właściciela** roli.
+
+Aby użyć nowej wbudowanej roli, wykonaj następujące kroki: 
+
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
+2. Przejdź do przestrzeni nazw usługi Event Hubs.
+3. Na **Event Hubs Namespace** wybierz opcję **Control(IAM) dostępu** menu po lewej stronie.
+4. Na **kontrola dostępu (IAM)** wybierz opcję **Dodaj** w **Dodaj przypisanie roli** sekcji. 
+
+    ![Dodawanie przycisku przypisania roli](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. Na **Dodaj przypisanie roli** wykonaj następujące czynności: 
+    1. Aby uzyskać **roli**, wybierz opcję **właścicielem danych centra zdarzeń Azure**. 
+    2. Wybierz **tożsamości** mają zostać dodane do roli.
+    3. Wybierz pozycję **Zapisz**. 
+
+        ![Rola właściciela danych centra zdarzeń](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. Przełącz się do **przypisań ról** strony i upewnij się, że użytkownik został dodany do **właścicielem danych centra zdarzeń Azure** roli. 
+
+    ![Upewnij się, że użytkownik zostanie dodany do roli](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Usługa Event Hubs z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -54,7 +74,7 @@ Po włączeniu funkcji nową tożsamość usługi jest tworzone w usłudze Azure
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Utwórz nową przestrzeń nazw usługi Event Hubs
 
-Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md) w jednym z regionów świadczenia usługi Azure, które obejmuje obsługę zarządzanych tożsamości dla zasobów platformy Azure w wersji zapoznawczej: **Wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia**. 
+Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md). 
 
 Przejdź do obszaru nazw **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj przypisanie roli** tożsamości zarządzanej, aby dodać **właściciela** roli. Aby to zrobić, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz). Tożsamość zarządzaną w aplikacji internetowej ma dostęp do przestrzeni nazw usługi Event Hubs i Centrum zdarzeń została wcześniej utworzona. 
 

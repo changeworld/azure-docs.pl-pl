@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: mimart
-ms.reviewer: asmalser
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71816c8c7e4213ddea4f08e046dc9224eb52b5fd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70ca1e2f4fd831619cc3cd443d98018a35f4e1ef
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780993"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963077"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
 
@@ -29,7 +29,7 @@ Usługa Azure Active Directory obejmuje [konta użytkownika usługi aprowizacji]
 
 W tym artykule opisano, jak sprawdzić stan zadań inicjowania obsługi administracyjnej po zostało skonfigurowane i jak rozwiązywać problemy z inicjowania obsługi poszczególnych użytkowników i grup.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Inicjowania obsługi administracyjnej łączniki są, konfigurowanie i skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), postępując zgodnie z [podano dokumentację](../saas-apps/tutorial-list.md) dla obsługiwanych aplikacji. Po skonfigurowaniu i uruchomiona, inicjowanie obsługi administracyjnej zadania mogą zostać zgłoszone przy użyciu jednej z dwóch metod:
 

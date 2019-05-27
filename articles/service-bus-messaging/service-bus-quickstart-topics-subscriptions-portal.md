@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: e943dbff71fdbd98773587c8ac5a62dd081b49a2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a392f8b11a7ab1ad72f4da289c54e34b022f1ea6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698854"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990308"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Szybki start: Tworzenie tematu usługi Service Bus i subskrypcji do tematu za pomocą witryny Azure portal
 W tym przewodniku Szybki Start używasz witryny Azure portal tworzenie tematu usługi Service Bus, a następnie utworzenie subskrypcji tego tematu. 
@@ -31,7 +31,8 @@ Subskrypcji i tematów usługi Service Bus umożliwiają skalowanie do przetwarz
 
 [!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-
+> [!NOTE]
+> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się, jak wysyłać komunikaty do tematu i odebrania tych komunikatów za pośrednictwem subskrypcji, zapoznaj się z następującym artykułem: Wybierz język programowania w spisie treści. 

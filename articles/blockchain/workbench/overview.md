@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 05/20/2019
 ms.topic: overview
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 58fd09726f05ba442c66387ecbd6cfad37f598e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16e2497f4e26d16c008161477fd7d573e59e84db
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60896162"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955205"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Czym jest usługa Azure Blockchain Workbench?
 
@@ -41,13 +41,13 @@ Usługa Workbench automatycznie dostarcza zdarzenia do usług Service Bus i Even
 
 Usługa Azure Blockchain Workbench, jako wstępnie skonfigurowane rozwiązanie z szablonem rozwiązania Azure Resource Manager, upraszcza konfigurację sieci łańcucha bloków konsorcjum. Ten szablon obejmuje uproszczone wdrażanie, które powoduje wdrożenie wszystkich składników potrzebnych do uruchomienia konsorcjum. Obecnie usługa Blockchain Workbench obsługuje platformę Ethereum.
 
-## <a name="use-active-directory-login"></a>Korzystanie z danych logowania usługi Active Directory
+## <a name="use-active-directory"></a>Użyj usługi Active Directory
 
 W przypadku istniejących protokołów łańcucha bloków tożsamości łańcucha bloków są reprezentowane jako adres w sieci. W usłudze Azure Blockchain Workbench nie trzeba troszczyć się o tożsamość łańcucha bloków, ponieważ jest ona skojarzona z tożsamością usługi Active Directory, co ułatwia tworzenie aplikacji przedsiębiorstwa za pomocą tożsamości usługi Active Directory.
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Synchronizowanie danych łańcucha z magazynem poza łańcuchem
 
-Usługa Azure Blockchain Workbench ułatwia analizowanie zdarzeń i danych łańcucha bloków dzięki automatycznemu synchronizowaniu danych łańcucha bloków z magazynem poza łańcuchem. Zamiast wyodrębniać dane bezpośrednio z łańcucha bloków, można wysyłać zapytania do systemów baz danych poza łańcuchem, takich jak SQL Server. Użytkownicy końcowi, którzy wykonują zadania związane z analizą danych, nie muszą mieć doświadczenia w zakresie łańcucha bloków. 
+Usługa Azure Blockchain Workbench ułatwia analizowanie zdarzeń i danych łańcucha bloków dzięki automatycznemu synchronizowaniu danych łańcucha bloków z magazynem poza łańcuchem. Zamiast wyodrębniać dane bezpośrednio z łańcucha bloków, można wysyłać zapytania do systemów baz danych poza łańcuchem, takich jak SQL Server. Doświadczenie łańcucha bloków nie jest wymagana dla użytkowników końcowych, którzy robią zadania analizy danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

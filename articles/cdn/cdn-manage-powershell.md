@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: 5dc05b08e84decf958481d19b9cfb820947fae78
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0ad3d1693e2dbf1c4f5329ec23265ea1b3469e2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66125454"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Zarządzać usługą CDN Azure przy użyciu programu PowerShell
 Program PowerShell udostępnia jedną z najbardziej elastyczny metod do zarządzania profilami usługi Azure CDN i punktów końcowych.  Można użyć programu PowerShell interaktywnie lub pisząc skrypty do automatyzacji zadań zarządzania.  W tym samouczku przedstawiono kilka typowych zadań można wykonać za pomocą programu PowerShell do zarządzania profilami usługi Azure CDN i punktów końcowych.

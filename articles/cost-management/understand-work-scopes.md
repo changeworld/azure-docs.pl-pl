@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003015"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991378"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -60,14 +60,14 @@ Usługa Cost Management obsługuje następujące wbudowane role dla każdego z n
 - [**Właściciel** ](../role-based-access-control/built-in-roles.md#owner) — można wyświetlić koszty i zarządzać nimi, wszystko w tym konfiguracją kosztów.
 - [**Współautor** ](../role-based-access-control/built-in-roles.md#contributor) — można wyświetlić koszty i zarządzać nimi, wszystko w tym konfiguracją kosztów, z wyłączeniem kontroli dostępu.
 - [**Czytnik** ](../role-based-access-control/built-in-roles.md#reader) — może przeglądać wszystko, włącznie z danymi kosztów i konfiguracji, ale nie może wprowadzać żadnych zmian.
-- [**Koszt Współautor zarządzania** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) — umożliwia wyświetlanie kosztów i zarządzać konfiguracją kosztów.
-- [**Koszt zarządzania czytnika** ](../role-based-access-control/built-in-roles.md#cost-management-reader) — mogą wyświetlać dane kosztów i konfiguracji.
+- [**Koszt Współautor zarządzania** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) — można wyświetlić koszty, zarządzanie konfiguracją kosztów oraz zalecenia.
+- [**Koszt zarządzania czytnika** ](../role-based-access-control/built-in-roles.md#cost-management-reader) — mogą wyświetlać dane kosztów, konfiguracja kosztów i Wyświetl zalecenia.
 
 Współautor zarządzania kosztami jest zalecaną najniższych rolą. Ona umożliwia użytkownikom dostęp do tworzenia i zarządzania nimi budżetów i eksportuje aby skutecznie, monitorowanie i raportowanie na kosztach. Współautorzy zarządzania kosztami może również wymagać dodatkowych ról do obsługi scenariuszy zarządzania kosztami end-to-end. Należy rozważyć następujące scenariusze:
 
 - **Działanie po przekroczeniu budżetu** — koszt zarządzania współautorzy potrzebują również dostępu do tworzenia i/lub Zarządzanie grup akcji w celu automatycznego reagowania na opłaty za dodatkowe transakcje. Należy rozważyć udzielenie [Współautor monitorowania](../role-based-access-control/built-in-roles.md#monitoring-contributor) do grupy zasobów, która zawiera grupy akcji do użycia podczas przekroczeniu progów budżetu. Automatyzowanie określonych akcji wymaga dodatkowych ról dla określonych usług, które są używane, takich jak usługi Automation i Azure Functions.
 - **Harmonogram koszt Eksport danych** — koszt zarządzania współautorzy potrzebują również dostępu do zarządzanie kontami magazynu, aby zaplanować eksportu do skopiowania danych na konto magazynu. Należy rozważyć udzielenie [Współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor) do grupy zasobów, który zawiera magazyn kont, których danych kosztów są eksportowane.
-- **Wyświetlanie zaleceń oszczędne** — czytelnicy Zarządzanie kosztami i współautorzy nie mają dostępu do zaleceń domyślnie. Dostęp do zaleceń wymaga dostęp do odczytu do poszczególnych zasobów. Należy rozważyć udzielenie [czytnika](../role-based-access-control/built-in-roles.md#reader) lub [specyficzne dla usługi roli](../role-based-access-control/built-in-roles.md#built-in-role-descriptions).
+- **Wyświetlanie zaleceń oszczędne** — czytelnicy Zarządzanie kosztami i kosztów zarządzania współautorzy mają dostęp do *widoku* koszt zalecenia domyślnie. Dostęp do działania w rekomendacji dotyczących kosztu wymaga jednak dostępu do poszczególnych zasobów. Należy rozważyć udzielenie [specyficzne dla usługi roli](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) chcącym zajmującym się zalecenia na podstawie kosztów.
 
 ## <a name="enterprise-agreement-scopes"></a>Zakresy umowy Enterprise Agreement
 

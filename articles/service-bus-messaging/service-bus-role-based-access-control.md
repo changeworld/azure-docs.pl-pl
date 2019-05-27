@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472254"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979640"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -31,11 +31,18 @@ Aplikacja, która korzysta z usługi Azure AD RBAC nie trzeba obsługiwać zasad
 
 ## <a name="service-bus-roles-and-permissions"></a>Uprawnienia i role usługi Service Bus
 
-Początkowej publicznej wersji zapoznawczej można tylko dodać konta usługi Azure AD i nazwy główne usług do ról "Właściciel" lub "Współautor" w przestrzeni nazw komunikatów usługi Service Bus. Ta operacja spowoduje przydzielenie tożsamości pełną kontrolę wszystkich jednostek w przestrzeni nazw. Operacje zarządzania, które zmienić topologii przestrzeni nazw są początkowo tylko obsługiwane do usługi Azure resource management i nie przy użyciu natywnego interfejsu zarządzania interfejsu REST usługi Service Bus. Ta obsługa również oznacza, że klienta .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) obiektu nie można używać z kontem usługi Azure AD.
+Platforma Azure udostępnia poniżej wbudowane role kontroli RBAC do autoryzowania dostępu do przestrzeni nazw usługi Service Bus:
+
+* [Właściciel aplikacji usługi Service Bus danych (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#service-bus-data-owner): Umożliwia dostęp do danych w przestrzeni nazw usługi Service Bus i jego jednostek (kolejki, tematy, subskrypcje i filtrów)
+
+>[!IMPORTANT]
+> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **"Owner"** lub **"Współautor"** roli.
+>
+> Jednak uprawnienia dostępu do danych **"Owner"** i **"Współautor"** roli będą już uznawane. Jeśli używano **"Owner"** lub **"Współautor"** roli, a następnie te muszą zostać dostosowane korzystanie z **""usługi Service Bus dane właściciela** roli.
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>Usługa Service Bus za pomocą konta użytkownika domeny usługi Azure AD
 
-W poniższej sekcji opisano kroki wymagane do tworzenia i uruchamiania przykładowej aplikacji, która wyświetla monit dotyczący interaktywnego usługi Azure AD użytkownik był zalogowany, jak udzielić dostępu usługi Service Bus z tym kontem użytkownika i jak dostęp do usługi Event Hubs za pomocą tej tożsamości.
+W poniższej sekcji opisano kroki wymagane do tworzenia i uruchamiania przykładowej aplikacji, która wyświetla monit dotyczący interaktywnego platformy Azure użytkownika AD, aby zalogować się, jak udzielić dostępu usługi Service Bus z tym kontem użytkownika i jak dostęp do usługi Event Hubs za pomocą tej tożsamości.
 
 Tego wprowadzenia opisano prostej aplikacji konsolowej, [kodu, dla którego znajduje się w witrynie GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl).
 
@@ -47,7 +54,7 @@ Jeśli nadal chcesz utworzyć konto określone w tym scenariuszu [wykonaj nastę
 
 ### <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
 
-Następnie [tworzenie przestrzeni nazw komunikatów usługi Service Bus](service-bus-create-namespace-portal.md) w jednym z regionów świadczenia usługi Azure, które mają wersję zapoznawczą obsługi kontroli RBAC: **Wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia**.
+Następnie [tworzenie przestrzeni nazw komunikatów usługi Service Bus](service-bus-create-namespace-portal.md).
 
 Po utworzeniu przestrzeni nazw, przejdź do jej **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj przypisanie roli** można dodać konto użytkownika usługi Azure AD do roli właściciel. Jeśli używasz konta użytkownika, a następnie utworzono przestrzeń nazw, użytkownik jest już w roli właściciela. Aby dodać innego konta do roli, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz).
 

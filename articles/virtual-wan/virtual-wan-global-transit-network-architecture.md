@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 8cda617ca60a17fceaaa818480ff9bbaef46c3fd
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414068"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965982"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektura sieci tranzytowej globalne oraz wirtualne sieci WAN
 
@@ -48,7 +48,7 @@ Rysunek 2 przedstawia widok logiczny globalnej sieci, gdzie użytkownicy geograf
 
 ## <a name="crossregion"></a>Łączność między regionami
 
-Dla przedsiębiorstw zużycie chmury zwykle następuje fizycznych śladu. Większość przedsiębiorstw dostęp do chmury z regionu najbliższego lokacji fizycznej i użytkownikami. Jeden z kluczy jednostek architektury globalnej sieci jest łączność między regionami między jednostki sieci i punktów końcowych. Zużycie chmury może obejmować wiele regionów. Oznacza to, że ruch z gałęzi, która jest połączone z chmurą w jednym regionie może osiągnąć w innej gałęzi lub sieci wirtualnej w innym regionie.
+Dla przedsiębiorstw zużycie chmury zwykle następuje fizycznych śladu. Większość przedsiębiorstw dostęp do chmury z regionu najbliższego lokacji fizycznej i użytkownikami. Jeden z kluczy jednostek architektury globalnej sieci jest łączność między regionami między jednostki sieci i punktów końcowych. Zużycie chmury może obejmować wiele regionów. Oznacza to, że ruch z gałęzi, która jest połączone z chmurą w jednym regionie może osiągnąć w innej gałęzi lub sieci wirtualnej w innym regionie przy użyciu połączenia koncentratora do koncentratora, która jest obecnie dostępna w wersji zapoznawczej.
 
 ## <a name="any"></a>Łączność dowolna dowolna
 
@@ -89,7 +89,7 @@ Można włączyć bezpośredniego bezpiecznego dostępu zdalnego na platformie A
 
 ### <a name="vnetvnet"></a>Sieć wirtualna-sieć wirtualna przesyłane za pomocą komunikacji równorzędnej sieci wirtualnych
 
-Łączenie sieci wirtualnych ze sobą w celu zapewnienia obsługi aplikacji wielowarstwowych, które są implementowane przez wiele sieci wirtualnych, użyj komunikacji równorzędnej sieci wirtualnych. Sieć wirtualna-sieć wirtualna scenariusz przesyłane za pośrednictwem sieci platformy Azure z wirtualnych WAN nie jest obecnie obsługiwane, ale znajduje się na plan usługi Azure. Łączenie sieci wirtualnych za pośrednictwem komunikacji równorzędnej sieci wirtualnej to rozwiązanie zaleca się dla sieci wirtualnych, które muszą być połączone ze sobą. Aby uzyskać więcej informacji na temat komunikacji równorzędnej sieci wirtualnych, zobacz [Omówienie wirtualnych sieci równorzędnych](../virtual-network/virtual-network-peering-overview.md).
+Łączenie sieci wirtualnych ze sobą w celu zapewnienia obsługi aplikacji wielowarstwowych, które są implementowane przez wiele sieci wirtualnych, użyj komunikacji równorzędnej sieci wirtualnych. Sieć wirtualna-sieć wirtualna scenariusz przesyłane za pośrednictwem sieci platformy Azure z wirtualnych WAN nie jest obecnie obsługiwane, ale znajduje się na plan usługi Azure. Łączenie sieci wirtualnych za pośrednictwem komunikacji równorzędnej sieci wirtualnej to rozwiązanie zaleca się dla sieci wirtualnych, które muszą być połączone ze sobą. [Tranzyt przez bramę](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (w ramach komunikacji równorzędnej sieci wirtualnych) nie jest wymagane dla wirtualnej sieci WAN, ponieważ wirtualne sieci WAN automatycznie włącza tranzyt przez bramę.
 
 ### <a name="globalreach"></a>Globalny zasięg usługi ExpressRoute
 

@@ -4,15 +4,15 @@ description: W tym artykule przedstawiono pojęć, takich jak procedur składowa
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 05/21/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d1960fbc9fc9e8c1d672b66d3cf1f41399842059
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60935573"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965706"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
@@ -79,7 +79,7 @@ W tej sekcji opisano dwa typy wyzwalaczy:
 
 ### <a name="pre-triggers"></a>Wstępne wyzwalaczy
 
-Usługa Azure Cosmos DB udostępnia wyzwalacze, które może być wywoływany przez wykonywania operacji na elemencie usługi Azure Cosmos DB. Na przykład można określić wstępne wyzwalacza, podczas tworzenia elementu. W takim przypadku wstępne wyzwalacz uruchomi przed utworzeniem elementu. Wyzwalacze wykonywane przed operacją nie mogą mieć żadnych parametrów wejściowych. Jeśli to konieczne, obiekt żądania może służyć do aktualizacji treści dokumentu z oryginalnego żądania. Jeśli zarejestrowano wyzwalaczami, użytkownicy mogą określić operacje, które można uruchomić z. Jeśli wyzwalacz został utworzony za pomocą `TriggerOperation.Create`, oznacza to, że przy użyciu wyzwalacza w operacji zamieniania nie otrzyma zezwolenia. Aby uzyskać przykłady, zobacz [sposobu pisania wyzwalaczy](how-to-write-stored-procedures-triggers-udfs.md#triggers) artykułu.
+Usługa Azure Cosmos DB udostępnia wyzwalacze, które może być wywoływany przez wykonywania operacji na elemencie usługi Azure Cosmos DB. Na przykład można określić wstępne wyzwalacza, podczas tworzenia elementu. W takim przypadku wstępne wyzwalacz uruchomi przed utworzeniem elementu. Wstępne wyzwalaczy nie może mieć parametrów wejściowych. Jeśli to konieczne, obiekt żądania może służyć do aktualizacji treści dokumentu z oryginalnego żądania. Jeśli zarejestrowano wyzwalaczami, użytkownicy mogą określić operacje, które można uruchomić z. Jeśli wyzwalacz został utworzony za pomocą `TriggerOperation.Create`, oznacza to, że przy użyciu wyzwalacza w operacji zamieniania nie otrzyma zezwolenia. Aby uzyskać przykłady, zobacz [sposobu pisania wyzwalaczy](how-to-write-stored-procedures-triggers-udfs.md#triggers) artykułu.
 
 ### <a name="post-triggers"></a>Po wprowadzeniu wyzwalaczy
 

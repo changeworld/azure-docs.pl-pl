@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: rezas
-ms.openlocfilehash: 703e2c842fb42bad8aa112d84c516a29c2327378
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f39f184bdc09677e347a2691351309dd6483f467
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473509"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965391"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-amqp-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu AMQP
 
@@ -65,7 +65,7 @@ Wymiana komunikatów z chmury do urządzeń między usługą i Centrum IoT, a ta
 | Utworzone przez | Typ linku | Ścieżka łącza | Opis |
 |------------|-----------|-----------|-------------|
 | Usługa | Link nadawcy | `/messages/devicebound` | Wiadomości C2D kierowany do urządzenia są wysyłane do tego łącza przez usługę. Komunikaty wysyłane za pośrednictwem tego łącza mają ich `To` właściwość, Ustaw ścieżkę łącza odbiorcy urządzenie docelowe: czyli `/devices/<deviceID>/messages/devicebound`. |
-| Usługa | Link odbiorcy | `/messages/serviceBound/feedback` | Uzupełnianie, odrzucenie i porzucania komunikatów zwrotnych pochodzące z urządzeń odebrane ten Link przez usługę. Zobacz [tutaj](./iot-hub-devguide-messages-c2d.md#message-feedback) Aby uzyskać więcej informacji na temat komunikatów zwrotnych. |
+| Usługa | Link odbiorcy | `/messages/serviceBound/feedback` | Uzupełnianie, odrzucenie i porzucania komunikatów zwrotnych pochodzące z urządzeń odebrane ten Link przez usługę. Aby uzyskać więcej informacji na temat komunikatów zwrotnych, zobacz [tutaj](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Poniższy fragment kodu pokazuje, jak utworzyć komunikat C2D oraz wysyłać je do urządzenia za pomocą [uAMQP biblioteki w języku Python](https://github.com/Azure/azure-uamqp-python).
 
@@ -127,11 +127,76 @@ Jak wspomniano powyżej, C2D wiadomość ma typ zawartości `application/vnd.mic
 * Klucz `originalMessageId` opinii treść ma identyfikator oryginalnego komunikatu C2D wysłanych przez usługę. To może służyć do skorelowania opinii C2D komunikatów.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Odbieranie danych telemetrycznych komunikatów (klient usługi)
+Domyślnie usługi IoT Hub są przechowywane komunikaty telemetryczne pozyskiwane urządzenia wbudowane Centrum zdarzeń. Klienta usługi można użyć protokołu AMQP do odbierania przechowywanych zdarzeń.
+
+W tym celu klienta usługi najpierw musi nawiązać połączenie z punktem końcowym usługi IoT Hub i odbieranie adresu przekierowania do wbudowanej usługi Event Hubs. Klient usługi następnie używa podany adres połączyć się z wbudowanych Centrum zdarzeń.
+
+W każdym kroku klient musi przedstawić następujących rodzajów informacji:
+* Prawidłowe poświadczenia (tokenu sygnatury dostępu Współdzielonego usługi).
+* Ścieżka prawidłowo sformatowaną partycję grupy konsumentów zamierza pobierać komunikaty z. Identyfikator grupy i partycja danego konsumenta, ścieżka ma następujący format: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (domyślna grupa odbiorców stanowi `$Default`).
+* Opcjonalny predykat filtrowania wyznaczyć punkt początkowy na partycji (może to być w postaci sygnatury czasowej numer, offset lub umieszczonych w kolejce sekwencji).
+
+Fragment kodu poniżej został użyty [uAMQP biblioteki w języku Python](https://github.com/Azure/azure-uamqp-python) aby zademonstrować w powyższych krokach.
+
+```python
+import json
+import uamqp
+import urllib
+import time
+
+# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+from helper import generate_sas_token
+
+iot_hub_name = '<iot-hub-name>'
+hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
+policy_name = 'service'
+access_key = '<primary-or-secondary-key>'
+operation = '/messages/events/ConsumerGroups/{consumer_group}/Partitions/{p_id}'.format(consumer_group='$Default', p_id=0)
+
+username = '{policy_name}@sas.root.{iot_hub_name}'.format(policy_name=policy_name, iot_hub_name=iot_hub_name)
+sas_token = generate_sas_token(hostname, access_key, policy_name)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+# Optional filtering predicates can be specified using endpiont_filter
+# Valid predicates include:
+# - amqp.annotation.x-opt-sequence-number
+# - amqp.annotation.x-opt-offset
+# - amqp.annotation.x-opt-enqueued-time
+# Set endpoint_filter variable to None if no filter is needed
+endpoint_filter = b'amqp.annotation.x-opt-sequence-number > 2995'
+
+# Helper function to set the filtering predicate on the source URI
+def set_endpoint_filter(uri, endpoint_filter=''):
+  source_uri = uamqp.address.Source(uri)
+  source_uri.set_filter(endpoint_filter)
+  return source_uri
+
+receive_client = uamqp.ReceiveClient(set_endpoint_filter(uri, endpoint_filter), debug=True)
+try:
+  batch = receive_client.receive_message_batch(max_batch_size=5)
+except uamqp.errors.LinkRedirect as redirect:
+  # Once a redirect error is received, close the original client and recreate a new one to the re-directed address
+  receive_client.close()
+
+  sas_auth = uamqp.authentication.SASTokenAuth.from_shared_access_key(redirect.address, policy_name, access_key)
+  receive_client = uamqp.ReceiveClient(set_endpoint_filter(redirect.address, endpoint_filter), auth=sas_auth, debug=True)
+
+# Start receiving messages in batches
+batch = receive_client.receive_message_batch(max_batch_size=5)
+for msg in batch:
+  print('*** received a message ***')
+  print(''.join(msg.get_data()))
+  print('\t: ' + str(msg.annotations['x-opt-sequence-number']))
+  print('\t: ' + str(msg.annotations['x-opt-offset']))
+  print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
+```
+
+Identyfikatora danego urządzenia usługi IoT Hub używa wartości skrótu Identyfikatora urządzenia do określenia partycji do przechowywania jego komunikatów. Powyższym fragmencie kodu pokazano odbieranie zdarzeń z jednej takiej partycji. Należy jednak pamiętać, że Typowa aplikacja często musi pobrać zdarzenia przechowywane w wszystkich partycji Centrum zdarzeń.
 
 
 ### <a name="additional-notes"></a>Uwagi dodatkowe
 * Połączenia AMQP może zostać przerwane ze względu na sieciowy, błąd lub wygaśnięcia tokenu uwierzytelniania (generowane w kodzie). Klient usługi musi obsługiwać te okoliczności i ponownego nawiązania połączenia i linki, jeśli to konieczne. W przypadku wygaśnięcia tokenu uwierzytelniania klienta może również proaktywnie odnawiania tokenu przed jego wygaśnięciem, aby uniknąć zrzutu połączenia.
-* W niektórych przypadkach Twój klient musi być w stanie prawidłowo obsłużyć przekierowań łącza. Zapoznaj się z dokumentacją klienta protokołu AMQP, jak to zrobić.
+* W niektórych przypadkach Twój klient musi być w stanie prawidłowo obsłużyć przekierowań łącza. Można znaleźć w dokumentacji klienta protokołu AMQP na temat sposobu obsługi tej operacji.
 
 ### <a name="receive-cloud-to-device-messages-device-and-module-client"></a>Odbieranie komunikatów z chmury do urządzenia (urządzenia i moduł klienta)
 Linki AMQP używane po stronie urządzenia są następujące:

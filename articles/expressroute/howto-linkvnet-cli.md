@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: anzaman,cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a6f16df4b827538c1f8bdb9b7382ed06d543b62
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883083"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991519"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą interfejsu wiersza polecenia
 
@@ -139,6 +139,32 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 **Aby zwolnić autoryzacji połączenia**
 
 Autoryzacji można zwolnić, usuwając połączenia prowadzący obwód usługi ExpressRoute w sieci wirtualnej.
+
+## <a name="modify-a-virtual-network-connection"></a>Modyfikowanie połączenia sieci wirtualnej
+Możesz zaktualizować niektóre właściwości połączenia sieci wirtualnej. 
+
+**Aby zaktualizować wagi połączenia**
+
+Sieci wirtualne mogą być połączone wieloma obwodami usługi ExpressRoute. Ten sam prefiks może pojawić się z więcej niż jeden obwód usługi ExpressRoute. Aby wybór połączenia do wysyłania ruchu przeznaczonego dla tego prefiksu, możesz zmienić *RoutingWeight* połączenia. Ruch będzie wysyłany w połączeniu z najwyższą *RoutingWeight*.
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
+```
+
+Zakres *RoutingWeight* 0 do 32 000. Wartość domyślna to 0.
+
+## <a name="configure-expressroute-fastpath"></a>Konfigurowanie usługi ExpressRoute FastPath 
+Możesz włączyć [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Jeśli obwód usługi ExpressRoute znajduje się na [ExpressRoute bezpośrednio](expressroute-erdirect-about.md) i bramy sieci wirtualnej newtork jest największa wydajność lub ErGw3AZ. FastPath zwiększa preformance ścieżki danych, takich jak pakietów na sekundę i połączeń na sekundę między siecią lokalną i siecią wirtualną. 
+
+> [!NOTE] 
+> Jeśli masz już połączenia sieci wirtualnej, ale nie zostały włączone FastPath musisz usunąć połączenie z siecią wirtualną i Utwórz nowe. 
+> 
+>  
+
+```azurecli
+az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
+```
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

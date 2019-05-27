@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406252"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953360"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Administrowanie usługą Data Box Disk w witrynie Azure Portal
 
@@ -71,12 +71,12 @@ Można usuwać tylko zamówienia, które zostały zakończone lub anulowane. Aby
 
     ![Usuwanie zamówienia w usłudze Data Box Disk — 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij polecenie **Usuń**.
+3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij przycisk **Usuń**.
 
      ![Usuwanie zamówienia w usłudze Data Box Disk — 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Pobieranie etykiety wysyłkowej
+## <a name="download-shipping-label"></a>Pobierz etykietę wysyłkową
 
 W przypadku zgubienia lub utraty zwrotnej etykiety wysyłkowej dostarczonej wraz z dyskami konieczne będzie pobranie etykiety wysyłkowej. 
 
@@ -105,7 +105,7 @@ Aby edytować zamówienie, wykonaj następujące czynności.
 
 ## <a name="edit-notification-details"></a>Edytowanie szczegółów powiadomienia
 
-Może być konieczna zmiana danych użytkowników, którzy mają otrzymywać wiadomości e-mail z powiadomieniami o stanie zamówienia. Na przykład określony użytkownik może potrzebować informacji o dostarczeniu lub odebraniu dysku. Inny użytkownik może potrzebować informacji o zakończeniu kopiowania danych, aby móc sprawdzić, czy dane znajdują się już na koncie usługi Azure Storage, a następnie usunąć je ze źródła. W takich przypadkach można edytować szczegóły powiadomień.
+Może być konieczna zmiana danych użytkowników, którzy mają otrzymywać wiadomości e-mail z powiadomieniami o stanie zamówienia. Na przykład określony użytkownik może potrzebować informacji o dostarczeniu lub odebraniu dysku. Inny użytkownik może być konieczne ogłaszano kopiowanie danych zostanie zakończone, aby mogli zweryfikować, że dane są w ramach konta usługi Azure storage przed jego usunięciem ze źródła. W takich przypadkach można edytować szczegóły powiadomień.
 
 Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
 
@@ -126,7 +126,7 @@ Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
 |Wysłane     | Zamówienie zostało wysłane. Powinno zostać dostarczone do Ciebie w ciągu 1–2 dni.        |
 |Dostarczono     | Zamówienie zostało dostarczone na adres wskazany w zamówieniu.        |
 |Pobrane     |Przesyłka zwrotna została pobrana. <br> Po odebraniu przesyłki w centrum danych Azure dane zostaną automatycznie przekazane na platformę Azure.         |
-|Odebrano     | Twoje dyski zostały odebrane w centrum danych Azure. Wkrótce rozpocznie się kopiowanie danych.        |
+|Odebrane     | Twoje dyski zostały odebrane w centrum danych Azure. Wkrótce rozpocznie się kopiowanie danych.        |
 |Skopiowane dane     |Kopiowanie danych jest w toku.<br> Poczekaj na zakończenie kopiowania danych.         |
 |Zakończone       |Zamówienie zostało pomyślnie zrealizowane.<br> Przed usunięciem danych lokalnych z serwerów upewnij się, że Twoje dane znajdują się na platformie Azure.         |
 |Zakończone z błędami| Kopiowanie danych zostało ukończone, ale wystąpiły błędy. <br> Przejrzyj dzienniki kopiowania, używając ścieżki wskazanej w sekcji **Przegląd**. Aby uzyskać więcej informacji, zobacz [Download diagnostic logs (Pobieranie dzienników diagnostycznych)](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |

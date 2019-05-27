@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
-ms.date: 03/25/2019
-ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.date: 05/22/2019
+ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544547"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990192"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
@@ -92,11 +92,15 @@ Po wyłączeniu aplikację logiki obecnie uruchomione wystąpienia może potrwa�
 Ceny za korzystanie z dotyczy [kont integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie możesz eksplorować, opracowywania i testowania [B2B i EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) funkcji w usłudze Azure Logic Apps, bez dodatkowych kosztów.
 W każdym regionie platformy Azure, możesz mieć jedno konto integracji. Każde konto integracji można przechowywać w do określonych [liczby artefaktów](../logic-apps/logic-apps-limits-and-config.md), które obejmują handlowymi partnerów, umów, mapy, schematów, zestawy, certyfikaty, konfiguracji partii i tak dalej.
 
-Usługa Azure Logic Apps oferuje również podstawowa i standardowa konta integracji z obsługiwanych SLA aplikacji logiki. Poniżej przedstawiono sposób wybrać, czy użyć podstawowa lub standardowa konta integracji:
+Usługa Azure Logic Apps oferuje bezpłatna, podstawowa i standardowa konta integracji. Warstwy Basic i Standard są obsługiwane przez Logic Apps umowy poziomu usług (SLA) w warstwie bezpłatna nie jest obsługiwana przez umowy SLA i ma limity przepływności i użycia.
 
-* Gdy po prostu chcesz Obsługa komunikatów lub działa jako partner małych firm, która ma relację partnerów handlowych z większych jednostkach biznesowych, należy użyć kont integracji w warstwie podstawowa.
+Aby wybrać adresowanie bezpłatnej, Basic lub Standard konta integracji:
 
-* Po bardziej złożone relacje B2B i chcesz zwiększyć liczbę jednostek, którymi można zarządzać, należy użyć kont integracji w warstwie standardowa.
+* **Bezpłatne**: Gdy chcesz spróbować eksploracyjnego przypadkach nie scenariuszy produkcyjnych.
+
+* **Podstawowe**: Gdy chcesz tylko obsługa komunikatów lub jako partner małych firm, która ma relację partnerów handlowych z większych jednostkach biznesowych.
+
+* **Standardowa**: Używane w przypadku bardziej złożonych relacji B2B i większej liczby jednostek, które należy zarządzać.
 
 Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [cennika usługi Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
 

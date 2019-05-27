@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/05/2019
-ms.author: monhaber
-ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: v-mohabe
+ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236304"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967856"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -94,7 +94,7 @@ Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
 > - Gdy można wyświetlić przypisane zasady, możesz zobaczyć przypisania wielu i możesz zobaczyć, jak każdego przypisania będzie konfigurowana na swój własny.
 
 ## <a name="edit-security-policies"></a>Edytowanie zasad zabezpieczeń
-Można edytować domyślnych zasad zabezpieczeń dla każdej subskrypcji platformy Azure i grup zarządzania w [usługi Azure Policy](../governance/policy/tutorials/create-and-manage.md). Aby zmodyfikować zasady zabezpieczeń, musisz być właścicielem, współautorem lub administratorem zabezpieczeń tej subskrypcji lub zawierającej ją grupy zarządzania.
+W usłudze [Azure Policy](../governance/policy/tutorials/create-and-manage.md) możesz edytować domyślne zasady zabezpieczeń dla każdej Twojej grupy zarządzania i subskrypcji platformy Azure. Aby zmodyfikować zasady zabezpieczeń, musisz być właścicielem, współautorem lub administratorem zabezpieczeń tej subskrypcji lub zawierającej ją grupy zarządzania.
 
 Aby uzyskać instrukcje, jak edytować zasady zabezpieczeń, usługa Azure Policy, zobacz i [Tworzenie zasad w celu wymuszania zgodności i zarządzania nimi](../governance/policy/tutorials/create-and-manage.md).
 

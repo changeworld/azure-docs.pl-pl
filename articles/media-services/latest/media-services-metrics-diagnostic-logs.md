@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728841"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964768"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Monitorowanie metryk usług Media Services i dzienników diagnostycznych
 
@@ -34,11 +34,11 @@ Metryki są zbierane w regularnych odstępach czasu, czy po zmianie wartości. S
 
 Obecnie następujące Media Services [punkty końcowe przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) metryki są emitowane przez platformę Azure:
 
-|Name (Nazwa)|Opis|
-|---|---|
-|Żądania|Zwraca szczegółowe informacje dotyczące łączna liczba żądań obsłużonych przez punkt końcowy przesyłania strumieniowego.|
-|Ruch wychodzący|Całkowita liczba bajtów ruchu wychodzącego. Na przykład bajtów przesyłane strumieniowo przez punkt końcowy przesyłania strumieniowego.|
-|Opóźnienie typu end to end powodzenia| Zawiera informacje na temat kompleksowe opóźnienie dla żądań zakończonych powodzeniem.|
+|Metryka|`Display name`|Opis|
+|---|---|---|
+|Żądania|Żądania|Zwraca szczegółowe informacje dotyczące łączna liczba żądań obsłużonych przez punkt końcowy przesyłania strumieniowego.|
+|Ruch wychodzący|Ruch wychodzący|Całkowita liczba bajtów ruchu wychodzącego. Na przykład bajtów przesyłane strumieniowo przez punkt końcowy przesyłania strumieniowego.|
+|SuccessE2ELatency|Opóźnienie typu end to end powodzenia| Zawiera informacje na temat kompleksowe opóźnienie dla żądań zakończonych powodzeniem.|
 
 Na przykład, aby uzyskać metryki "Wyjście" z interfejsem wiersza polecenia, należy uruchomić następujące `az monitor metrics` interfejsu wiersza polecenia:
 

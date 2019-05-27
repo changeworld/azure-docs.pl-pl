@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f9742d14fc14230f2424d005aa6aa8b1db3cece4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190167"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967740"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -34,7 +34,7 @@ Platforma Azure używa translatora adresów sieciowych źródła (SNAT), aby wyk
 Dostępnych jest wiele [scenariusze ruchu wychodzącego](#scenarios). Można połączyć te scenariusze, zgodnie z potrzebami. Zapoznaj się z nimi, aby zrozumieć możliwości, ograniczenia i wzorce, ponieważ mają one zastosowanie do modelu wdrażania i scenariusz aplikacji. Przejrzyj wskazówki dotyczące [Zarządzanie te scenariusze](#snatexhaust).
 
 >[!IMPORTANT] 
->Standardowy moduł równoważenia obciążenia i standardowego publicznego adresu IP wprowadzenia nowych możliwości i różne zachowania do łączności wychodzącej.  Nie są one takie same jak podstawowych wersji SKU.  Jeśli chcesz korzystać z łączności wychodzącej podczas pracy ze standardowej jednostki SKU, należy jawnie można zdefiniować ją przy użyciu standardowych publicznych adresów IP lub standardowego publicznego modułu równoważenia obciążenia.  Obejmuje to tworzenie łączności wychodzącej przy użyciu i wewnętrznego modułu równoważenia obciążenia standardowego.  Zaleca się, że zawsze używać reguł dla ruchu wychodzącego standardowego publicznego modułu równoważenia obciążenia.  [Scenariusz 3](#defaultsnat) nie jest dostępna za pomocą standardowej jednostki SKU.  To oznacza użycie wewnętrznego standardowego modułu równoważenia obciążenia, które należy wykonać kroki, aby utworzyć połączenia ruchu wychodzącego dla maszyn wirtualnych w puli zaplecza, jeśli łączność wychodząca jest pożądane.  W kontekście wychodzącym pojedynczą autonomiczną maszyną Wirtualną, wszystkie maszyny Wirtualnej w zestawie dostępności wszystkich wystąpień w VMSS zachowują się w grupie. Oznacza to, jeśli pojedyncza maszyna wirtualna w zestawie dostępności jest skojarzony z standardowej jednostki SKU, wszystkie wystąpienia maszyn wirtualnych w zestawie dostępności teraz zachowują się przez te same zasady tak, jakby są oni skojarzeni z standardowej jednostki SKU, nawet jeśli poszczególne wystąpienia nie jest bezpośrednio związane z nią.  Uważnie przeczytaj ten całego dokumentu, aby zapoznać się z pojęciami ogólną, przejrzyj [Balancer w warstwie standardowa](load-balancer-standard-overview.md) różnic między jednostkami SKU i przejrzyj [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md).  Za pomocą reguł ruchu wychodzącego umożliwia bardziej szczegółową kontrolę nad wszystkimi aspektami łączności wychodzącej.
+>Standardowy moduł równoważenia obciążenia i standardowego publicznego adresu IP wprowadzenia nowych możliwości i różne zachowania do łączności wychodzącej.  Nie są one takie same jak podstawowych wersji SKU.  Jeśli chcesz korzystać z łączności wychodzącej podczas pracy ze standardowej jednostki SKU, należy jawnie można zdefiniować ją przy użyciu standardowych publicznych adresów IP lub standardowego publicznego modułu równoważenia obciążenia.  Obejmuje to tworzenie łączności wychodzącej, korzystając z wewnętrznego standardowego modułu równoważenia obciążenia.  Zaleca się, że zawsze używać reguł dla ruchu wychodzącego standardowego publicznego modułu równoważenia obciążenia.  [Scenariusz 3](#defaultsnat) nie jest dostępna za pomocą standardowej jednostki SKU.  To oznacza użycie wewnętrznego standardowego modułu równoważenia obciążenia, które należy wykonać kroki, aby utworzyć połączenia ruchu wychodzącego dla maszyn wirtualnych w puli zaplecza, jeśli łączność wychodząca jest pożądane.  W kontekście wychodzącym pojedynczą autonomiczną maszyną Wirtualną, wszystkie maszyny Wirtualnej w zestawie dostępności wszystkich wystąpień w VMSS zachowują się w grupie. Oznacza to, jeśli pojedyncza maszyna wirtualna w zestawie dostępności jest skojarzony z standardowej jednostki SKU, wszystkie wystąpienia maszyn wirtualnych w zestawie dostępności teraz zachowują się przez te same zasady tak, jakby są oni skojarzeni z standardowej jednostki SKU, nawet jeśli poszczególne wystąpienia nie jest bezpośrednio związane z nią.  Uważnie przeczytaj ten całego dokumentu, aby zapoznać się z pojęciami ogólną, przejrzyj [Balancer w warstwie standardowa](load-balancer-standard-overview.md) różnic między jednostkami SKU i przejrzyj [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md).  Za pomocą reguł ruchu wychodzącego umożliwia bardziej szczegółową kontrolę nad wszystkimi aspektami łączności wychodzącej.
 
 ## <a name="scenarios"></a>Omówienie scenariusza
 

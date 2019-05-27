@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415717"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977306"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -75,7 +75,7 @@ Każdego z powyższych haseł jest specjalnie niezgodny zakazanych haseł "abcde
 
 Dopasowywanie podciągów jest używana na znormalizowaną hasła sprawdź imienia użytkownika i nazwisko oraz nazwę dzierżawy (Zwróć uwagę, że dopasowywanie nazw dzierżawy odbywa się podczas sprawdzania poprawności hasła na kontrolerze domeny usługi Active Directory).
 
-Przykład: Załóżmy, że mamy użytkownika John Doe, który chce, aby zresetować swoje hasło, aby "J0hn123fb". Po normalizacji to hasło będzie stają się "john123fb". Dopasowywanie podciągów wykryje, że hasło zawiera imię użytkownika "John". Mimo że "J0hn123fb" nie jest specjalnie na obu listy zakazanych haseł, dopasowywanie podciągów znaleziono "John" w haśle. W związku z tym to hasło będzie odrzucane.
+Przykład: Załóżmy, że mamy użytkownika, Pol, kto chce, aby zresetować swoje hasło, aby "P0l123fb". Po normalizacji to hasło będzie stają się "pol123fb". Dopasowywanie podciągów wykryje, że hasło zawiera imię użytkownika "Pol". Mimo że "P0l123fb" nie jest specjalnie na obu listy zakazanych haseł, dopasowywanie podciągów znaleziono "Pol" w haśle. W związku z tym to hasło będzie odrzucane.
 
 #### <a name="score-calculation"></a>Wynik obliczania
 

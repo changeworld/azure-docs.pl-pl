@@ -7,16 +7,16 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2dd31ab29479fade21d27b8e2c23952f905f530a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60953097"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979158"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Omówienie usługi Azure Policy
 
-Dzięki właściwemu zarządzanie organizacja może pewnie osiągać cele dzięki wydajnemu użyciu infrastruktury IT. W tym celu jest tworzone jasne połączenie między celami biznesowymi i projektami IT.
+Zarządzanie weryfikuje, czy Twoja organizacja może osiągnąć swoje cele skuteczny i wydajny za pośrednictwem IT. W tym celu jest tworzone jasne połączenie między celami biznesowymi i projektami IT.
 
 Czy w firmie występuje znacząca liczba problemów związanych z IT, które wydają się nie do rozwiązania?
 Dobre zarządzanie IT obejmuje planowanie inicjatyw i określanie priorytetów na poziomie strategicznym w celu ułatwienia zarządzania i rozwiązywania problemów. Ta strategiczna potrzeba jest realizowana przy użyciu usługi Azure Policy.
@@ -28,7 +28,7 @@ Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisyw
 
 ## <a name="how-is-it-different-from-rbac"></a>Czym się to różni od RBAC?
 
-Istnieje kilka podstawowych różnic między zasadami i kontrolą dostępu opartą na rolach (RBAC). RBAC koncentruje się na działaniach użytkownika w różnych zakresach. Użytkownik może zostać dodany do roli współautora dla grupy zasobów, aby mógł wprowadzać zmiany w tej grupie zasobów. Zasady skupiają się na właściwościach zasobów podczas ich wdrażania i dla już istniejących zasobów. Zasady służą do kontrolowania właściwości, takich jak typy lub lokalizacje zasobów. W odróżnieniu od RBAC, zasady to system z domyślnym zezwalaniem i wyraźnym zabranianiem.
+Istnieje kilka podstawowych różnic między zasadami usługi Azure i kontroli dostępu opartej na rolach (RBAC). RBAC koncentruje się na działaniach użytkownika w różnych zakresach. Użytkownik może zostać dodany do roli współautora dla grupy zasobów, aby mógł wprowadzać zmiany w tej grupie zasobów. Azure zasad koncentruje się na właściwościach zasobów podczas wdrażania oraz już istniejących zasobów. Usługa Azure Policy określa właściwości, takie jak typy i lokalizacje zasobów. W odróżnieniu od RBAC, usługi Azure Policy jest z domyślnym zezwalaniem i jawne Odmów systemu.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Uprawnienia RBAC w usłudze Azure Policy
 
@@ -37,7 +37,7 @@ Usługa Azure Policy ma kilka uprawnień, znanych jako operacje, w ramach dwóch
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. Rola **Współautor zasad zasobów (wersja zapoznawcza)** obejmuje większość operacji usługi Policy. **Właściciel** ma pełne uprawnienia. Zarówno **współautor**, jak i **czytelnik** mogą korzystać z wszystkich operacji odczytu w usłudze Policy, ale **współautor** może także wyzwolić korygowanie.
+Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. **Współautor zasad zasobów (wersja zapoznawcza)** Rola zawiera większość operacji usługi Azure Policy. **Właściciel** ma pełne uprawnienia. Zarówno **Współautor** i **czytnika** można użyć wszystkich odczytu operacji usługi Azure Policy, ale **Współautor** może także wyzwolić korygowania.
 
 Jeśli żadna z wbudowanych ról nie ma wymaganych uprawnień, należy utworzyć [rolę niestandardową](../../role-based-access-control/custom-roles.md).
 
@@ -62,13 +62,13 @@ Ocena zasad odbywa się przy użyciu kilku różnych akcji, takich jak przypisan
 
 Aby dowiedzieć się więcej o strukturach definicji zasad, zapoznaj się z tematem [Policy Definition Structure](./concepts/definition-structure.md) (Struktura definicji zasad).
 
-## <a name="policy-assignment"></a>Przypisywanie zasad
+## <a name="policy-assignment"></a>Przypisanie zasad
 
 Przypisywanie zasad to definicja zasad, która została przypisana do określonego zakresu. Zakresem tym może być zarówno [grupa zarządzania](../management-groups/overview.md), jak i grupa zasobów. Termin *zakres* odnosi się do wszystkich grup zasobów, subskrypcji i grup zarządzania, do których przypisano definicję zasad. Przypisania zasad są dziedziczone przez wszystkie zasoby podrzędne. To rozwiązanie oznacza, że zastosowanie zasad do grupy zasobów powoduje zastosowanie ich również do zasobów w tej grupie zasobów. Z przypisania zasad można jednak wyłączyć zakres podrzędny.
 
 Na przykład przy zakresie subskrypcji można określić zasady, które zapobiegają tworzeniu zasobów sieciowych. Można wyłączyć grupę zasobów w ramach subskrypcji, która jest przeznaczona dla infrastruktury sieciowej. Następnie dostęp do tej grupy zasobów sieciowych można przyznać użytkownikom, którym powierzono tworzenie zasobów sieciowych.
 
-W innym przykładzie można przypisać zasady listy dozwolonych typów zasobów na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady (zezwalające na większą liczbę typów zasobów) w podrzędnej grupie zarządzania lub nawet bezpośrednio w subskrypcji. Jednak ten przykład nie działa, ponieważ zasady to system z wyraźnym zabranianiem. Zamiast tego należy wykluczyć podrzędną grupę zarządzania lub subskrypcję z przypisania zasad na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady na poziomie podrzędnej grupy zarządzania lub subskrypcji. Jeśli w wyniku zasad następuje odmowa zasobu, jedynym sposobem na zezwolenie na zasób jest zmodyfikowanie zasad odmowy.
+W kolejnym przykładzie możesz chcieć przydzielić zasób typ zezwala na liście zasad na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady (zezwalające na większą liczbę typów zasobów) w podrzędnej grupie zarządzania lub nawet bezpośrednio w subskrypcji. Jednak ten przykład nie działa, ponieważ zasady to system z wyraźnym zabranianiem. Zamiast tego należy wykluczyć podrzędną grupę zarządzania lub subskrypcję z przypisania zasad na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady na poziomie podrzędnej grupy zarządzania lub subskrypcji. Jeśli w wyniku zasad następuje odmowa zasobu, jedynym sposobem na zezwolenie na zasób jest zmodyfikowanie zasad odmowy.
 
 Dodatkowe informacje na temat ustawiania definicji zasad i przypisań za pomocą portalu zamieszczono w artykule [Tworzenie przypisania zasad w celu identyfikowania niezgodnych zasobów w środowisku platformy Azure](assign-policy-portal.md). Dostępne są również instrukcje dotyczące korzystania z programu [PowerShell](assign-policy-powershell.md) i [interfejsu wiersza polecenia platformy Azure](assign-policy-azurecli.md).
 
@@ -115,7 +115,7 @@ W tym scenariuszu podczas definiowania parametrów inicjatywy **initiativeC** do
 
 W przypadku tworzenia opcji wartości w definicji inicjatywy nie można wprowadzić innej wartości w trakcie przypisywania inicjatywy, ponieważ nie jest ona częścią listy.
 
-## <a name="maximum-count-of-policy-objects"></a>Maksymalna liczba obiektów zasad
+## <a name="maximum-count-of-azure-policy-objects"></a>Maksymalna liczba obiektów usługi Azure Policy
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -144,8 +144,8 @@ Poniższe omówienie usługi Azure Policy dotyczy kompilacji 2018. Aby pobrać s
 
 Teraz, gdy masz już podstawowe informacje na temat usługi Azure Policy i kluczowych pojęć, oto zalecane kolejne kroki:
 
-- [Przypisywanie definicji zasad przy użyciu portalu](assign-policy-portal.md)
-- [Przypisywanie definicji zasad przy użyciu interfejsu wiersza polecenia platformy Azure](assign-policy-azurecli.md)
-- [Przypisywanie definicji zasad przy użyciu programu PowerShell](assign-policy-powershell.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](..//management-groups/overview.md)
-- Wyświetlanie klipu wideo [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) w witrynie Channel 9
+- [Przypisywanie definicji zasad przy użyciu portalu](assign-policy-portal.md).
+- [Przypisywanie definicji zasad przy użyciu wiersza polecenia platformy Azure](assign-policy-azurecli.md).
+- [Przypisywanie definicji zasad przy użyciu programu PowerShell](assign-policy-powershell.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](..//management-groups/overview.md).
+- Widok [określające środowisko platformy Azure za pomocą usługi Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) w witrynie Channel 9.

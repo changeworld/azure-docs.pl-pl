@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie zapory aplikacji sieci web (WAF) w 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 2/22/2019
+ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 830513a03bd65ca14cb0938ae599a676f1bb3bca
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518188"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991401"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Zapora aplikacji sieci Web dla usługi Azure Application Gateway
 
@@ -38,7 +38,7 @@ W tej sekcji opisano podstawowych korzyści, które zapewnia usługa Application
 
 * Ochrona aplikacji sieci web z sieci web luk w zabezpieczeniach oraz atakami niewymagającymi modyfikacji kodu zaplecza.
 
-* Ochrona wielu aplikacji sieci web, w tym samym czasie. Wystąpienie usługi Application Gateway może obsługiwać maksymalnie 20 witryn sieci Web, które są chronione przez zaporę aplikacji sieci web.
+* Ochrona wielu aplikacji sieci web, w tym samym czasie. Wystąpienie usługi Application Gateway może hostować do 100 witryn sieci Web, które są chronione przez zaporę aplikacji sieci web.
 
 ### <a name="monitoring"></a>Monitorowanie
 
@@ -121,12 +121,19 @@ Brama aplikacji zapory aplikacji internetowych można skonfigurować do uruchami
 * **Tryb zapobiegania**: Blokuje próby włamań i ataków, które wykrywają reguły. Osoba atakująca odbiera wyjątek "403 nieautoryzowanego dostępu", a następnie połączenie zostanie przerwane. Tryb zapobiegania rejestruje takich ataków w dziennikach zapory aplikacji sieci Web.
 
 ### <a name="anomaly-scoring-mode"></a>Tryb Punktacja anomalii
- 
+
 OWASP ma dwa tryby decydujące o tym, czy blokować ruch: Tradycyjne trybu ani oceniania anomalii.
 
 W trybie tradycyjnych ruchu, który pasuje do dowolnej reguły uznaje się niezależnie od innych dopasowań reguły. Ten tryb jest łatwa do zrozumienia. Ale brak informacji o jak wiele zasad pasuje do określonego żądania jest to ograniczenie. Dlatego oceniania anomalii trybu została wprowadzona. Jest ustawieniem domyślnym dla OWASP 3. *x*.
 
 W trybie oceniania anomalii ruchu, który pasuje do dowolnej reguły nie jest od razu blokowane Zapora jest w tym trybie. Reguły mają pewne ważności: *Krytyczne*, *błąd*, *ostrzeżenie*, lub *powiadomienie*. Czy ważność wpływa na wartość liczbową dla żądania, które jest wywoływane wyniku anomalii. Na przykład jeden *ostrzeżenie* reguły dopasowania przyczynia się 3 na wynik. Jeden *krytyczny* reguły dopasowania wspiera 5.
+
+|Severity  |Wartość  |
+|---------|---------|
+|Krytyczne     |5|
+|Błąd        |4|
+|Ostrzeżenie      |3|
+|Powiadomienie       |2|
 
 Jest równy 5 dla wyniku anomalii do blokuje ruch. Tak, jeden *krytyczny* reguły dopasowania jest wystarczająca dla aplikacji bramy zapory aplikacji sieci Web do blokowania żądania, nawet w tym trybie. Oprócz jednego *ostrzeżenie* reguły dopasowania jedynie zwiększa anomalii wynik przez 3, który nie jest wystarczająco dużo, aby blokowała ruch.
 

@@ -4,14 +4,14 @@ description: W tym artykule wyjaśniono, wyjaśnia, jak obniżyć koszty usługi
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: b6c5722d5e096300f76f60dfaf8bab1e07d0c61c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13ce5ee8b0e2a5d9cc84ea1a408ebba152b46050
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330207"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967408"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Optymalizacja operacji odczytu i zapisu kosztów w usłudze Azure Cosmos DB
 

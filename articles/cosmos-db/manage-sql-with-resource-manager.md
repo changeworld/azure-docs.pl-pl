@@ -1,27 +1,27 @@
 ---
-title: Szablony usługi Azure Resource Manager dla usługi Azure Cosmos DB
-description: Szablony usługi Azure Resource Manager umożliwia tworzenie i konfigurowanie usługi Azure Cosmos DB.
+title: Tworzenie i zarządzanie nimi w usłudze Azure Cosmos DB przy użyciu szablonów usługi Azure Resource Manager
+description: Szablony usługi Azure Resource Manager umożliwiają tworzenie i konfigurowanie usługi Azure Cosmos DB dla programu SQL (rdzenie) interfejsu API
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: f61a9246b1edc5ac10b64f32cc27fd51dcedde94
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: a3798ac0c73c7bc6c4012dbb089275254f4c3504
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077758"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968834"
 ---
-# <a name="create-azure-cosmos-db-core-sql-api-resources-from-a-resource-manager-template"></a>Tworzenie zasobów usługi Azure Cosmos DB Core (SQL) interfejsu API na podstawie szablonu usługi Resource Manager
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API SQL usługi Azure Cosmos DB (rdzenie) przy użyciu szablonów usługi Azure Resource Manager
 
-Dowiedz się, jak tworzyć zasoby usługi Azure Cosmos DB przy użyciu szablonu usługi Azure Resource Manager. Poniższy przykład tworzy konto usługi Azure Cosmos DB z [szablonu szybkiego startu platformy Azure](https://aka.ms/sql-arm-qs). Ten szablon utworzy konta usługi Azure Cosmos z dwóch kontenerów, które współużytkują 400 jednostek RU/s przepływności w poziomie bazy danych.
+## Tworzenie konta usługi Azure Cosmos, bazy danych i kontenerów <a id="create-resource"></a>
 
-Oto kopię szablonu:
+Tworzenie zasobów usługi Azure Cosmos DB przy użyciu szablonu usługi Azure Resource Manager. Ten szablon utworzy konta usługi Azure Cosmos z dwóch kontenerów, które współużytkują 400 jednostek RU/s przepływności w poziomie bazy danych. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 
-## <a name="deploy-via-powershell"></a>Wdrażanie przy użyciu programu PowerShell
+### <a name="deploy-via-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
 Aby wdrożyć szablon usługi Resource Manager przy użyciu programu PowerShell, **kopii** skrypt, a następnie wybierz pozycję **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
 
@@ -40,6 +40,8 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json" `
+    -accountName $accountName `
+    -location $location `
     -primaryRegion $primaryRegion `
     -secondaryRegion $secondaryRegion `
     -databaseName $databaseName `
@@ -49,11 +51,9 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
 ```
 
-Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji programu PowerShell, a nie usługa Azure Cloud shell, musisz [zainstalować](/powershell/azure/install-az-ps) modułu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. 
+Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji programu PowerShell, a nie usługa Azure Cloud shell, musisz [zainstalować](/powershell/azure/install-az-ps) modułu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana.
 
-W poprzednim przykładzie ma odwołania do szablonu, który jest przechowywany w usłudze GitHub. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
-
-## <a name="deploy-via-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
+### <a name="deploy-via-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
 
 Aby wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
 
@@ -78,7 +78,86 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 `az cosmosdb show` Polecenie wyświetla nowo utworzonego konta usługi Azure Cosmos po udostępnieniu mu. Jeśli zdecydujesz się używać lokalnie zainstalowanej wersji wiersza polecenia platformy Azure zamiast CloudShell, zobacz [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/) artykułu.
 
-W poprzednim przykładzie ma odwołania do szablonu, który jest przechowywany w usłudze GitHub. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+## Aktualizuj przepływność (RU/s) w bazie danych <a id="database-ru-update"></a>
+
+Następujący szablon zaktualizuje przepływności bazy danych. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-database-ru-update/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+
+[!code-json[cosmosdb-sql-database-ru-update](~/quickstart-templates/101-cosmosdb-sql-database-ru-update/azuredeploy.json)]
+
+### <a name="deploy-database-template-via-powershell"></a>Wdrażanie szablonu bazy danych za pomocą programu PowerShell
+
+Aby wdrożyć szablon usługi Resource Manager przy użyciu programu PowerShell, **kopii** skrypt, a następnie wybierz pozycję **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$accountName = Read-Host -Prompt "Enter the account name"
+$databaseName = Read-Host -Prompt "Enter the database name"
+$throughput = Read-Host -Prompt "Enter new throughput for database"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-database-ru-update/azuredeploy.json" `
+    -accountName $accountName `
+    -databaseName $databaseName `
+    -throughput $throughput
+```
+
+### <a name="deploy-database-template-via-azure-cli"></a>Wdrażanie szablonu bazy danych za pomocą wiersza polecenia platformy Azure
+
+Aby wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-database-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
+```
+
+## Aktualizuj przepływność (RU/s) w kontenerze <a id="container-ru-update"></a>
+
+Następujący szablon zaktualizuje przepływności kontenera. Kopiowanie szablonu i wdrażanie, jak pokazano poniżej lub odwiedź [galerii Szybki Start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-ru-update/) i wdrożyć w witrynie Azure portal. Możesz również pobrać szablon na komputerze lokalnym lub utworzyć nowy szablon i określ ścieżkę lokalną za pomocą `--template-file` parametru.
+
+[!code-json[cosmosdb-sql-container-ru-update](~/quickstart-templates/101-cosmosdb-sql-container-ru-update/azuredeploy.json)]
+
+### <a name="deploy-container-template-via-powershell"></a>Wdrażanie szablonu kontenera za pomocą programu PowerShell
+
+Aby wdrożyć szablon usługi Resource Manager przy użyciu programu PowerShell, **kopii** skrypt, a następnie wybierz pozycję **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$accountName = Read-Host -Prompt "Enter the account name"
+$databaseName = Read-Host -Prompt "Enter the database name"
+$containerName = Read-Host -Prompt "Enter the container name"
+$throughput = Read-Host -Prompt "Enter new throughput for container"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-ru-update/azuredeploy.json" `
+    -accountName $accountName `
+    -databaseName $databaseName `
+    -containerName $containerName `
+    -throughput $throughput
+```
+
+### <a name="deploy-container-template-via-azure-cli"></a>Wdrażanie szablonu kontenera za pomocą wiersza polecenia platformy Azure
+
+Aby wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, wybierz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the container name: ' containerName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName containerName=$containerName throughput=$throughput
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

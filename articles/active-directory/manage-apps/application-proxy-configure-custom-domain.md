@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e258670e863ff195190bae5cd50537e50d40d942
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4cc742a6b1a7f3fc78e8639206e06c2937f00c30
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825635"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956920"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
@@ -71,7 +71,9 @@ Jeśli masz te trzy wymagania gotowe, wykonaj następujące kroki, aby skonfigur
 ### <a name="certificate-format"></a>Format certyfikatu
 Nie ma żadnych ograniczeń w metodach podpisu certyfikatu. Obsługiwane są wszystkie kryptografii krzywej eliptycznej (ECC), alternatywnej nazwy podmiotu (SAN) i innych typowych typów certyfikatów. 
 
-Można użyć certyfikatu symboli wieloznacznych, tak długo, jak symbol wieloznaczny pasuje do żądanego zewnętrznego adresu URL. 
+Można użyć certyfikatu symboli wieloznacznych, tak długo, jak symbol wieloznaczny pasuje do żądanego zewnętrznego adresu URL.
+
+Nie można użyć certyfikatu wydanego przez własny infrastruktury kluczy publicznych (PKI) ze względu na zagadnienia związane z zabezpieczeniami.
 
 ### <a name="changing-the-domain"></a>Zmiana domeny
 Wszystkie zweryfikowanych domen są wyświetlane na liście rozwijanej zewnętrzny adres URL aplikacji. Aby zmienić domenę, wystarczy zaktualizować pola dla aplikacji. Jeśli domeny, nie ma na liście [dodać je jako zweryfikowane domeny](../fundamentals/add-custom-domain.md). Po wybraniu domeny, które nie mają certyfikatu skojarzonego jeszcze, wykonaj kroki 5 – 7, aby dodać certyfikat. Następnie upewnij się, że aktualizujesz rekord DNS, aby przekierować z nowego zewnętrznego adresu URL. 

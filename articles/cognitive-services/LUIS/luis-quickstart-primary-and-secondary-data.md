@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66124237"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -31,7 +31,7 @@ Prosta jednostka wykrywa pojedynczą koncepcję danych zawartą w wyrazach lub f
 > * Importowanie aplikacji przykładowej
 > * Dodawanie prostej jednostki 
 > * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów
-> * Szkolenie 
+> * Szkol 
 > * Publikowanie 
 > * Pobieranie intencji i jednostek z punktu końcowego
 

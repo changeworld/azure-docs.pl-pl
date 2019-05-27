@@ -6,43 +6,43 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848184"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966322"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowej maszyn wirtualnych platformy Azure
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure za pomocą [kopia zapasowa Azure](backup-introduction-to-azure-backup.md) usługi.
 
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowej
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Obrazy maszyn wirtualnych, które mogą być włączone dla kopii zapasowej, po ich utworzeniu?
 Podczas tworzenia maszyny Wirtualnej można włączyć kopii zapasowej dla maszyn wirtualnych uruchomionych [obsługiwane systemy operacyjne](backup-support-matrix-iaas.md#supported-backup-actions)
- 
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Jest koszt kopii zapasowej wliczane w koszt maszyny Wirtualnej? 
+
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Jest koszt kopii zapasowej wliczane w koszt maszyny Wirtualnej?
 
 Nie. Koszty tworzenia kopii zapasowej są niezależne od koszty maszyn wirtualnych. Dowiedz się więcej o [cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
- 
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Jakie uprawnienia są wymagane do włączenia kopii zapasowej dla maszyny Wirtualnej? 
 
-Jeśli jesteś współautorem maszyny Wirtualnej, aby umożliwić kopii zapasowej na maszynie Wirtualnej. Jeśli używasz roli niestandardowej potrzebne są następujące uprawnienia w celu włączenia kopii zapasowej na maszynie Wirtualnej: 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Jakie uprawnienia są wymagane do włączenia kopii zapasowej dla maszyny Wirtualnej?
 
-- Microsoft.RecoveryServices/Vaults/write 
-- Microsoft.RecoveryServices/Vaults/read 
-- Microsoft.RecoveryServices/locations/* 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
- 
+Jeśli jesteś współautorem maszyny Wirtualnej, aby umożliwić kopii zapasowej na maszynie Wirtualnej. Jeśli używasz roli niestandardowej potrzebne są następujące uprawnienia w celu włączenia kopii zapasowej na maszynie Wirtualnej:
+
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
+
 Jeśli maszyn wirtualnych i magazynu usługi Recovery Services różnych grupach zasobów, upewnij się, że masz uprawnienia do zapisu w grupie zasobów dla magazynu usługi Recovery Services.  
 
 
@@ -91,7 +91,7 @@ Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z
 Prywatna wersja zapoznawcza do tworzenia kopii zapasowych oprogramowania SAP HANA jest uruchomiony przy użyciu RPO o wartości 15 minut. Jest wbudowana w sposób podobny do kopii zapasowej bazy danych SQL i korzysta z interfejsu backInt rozwiązań innych firm, certyfikowanych przez oprogramowanie SAP HANA. Jeśli chcesz, Wyślij wiadomość e-mail `AskAzureBackupTeam@microsoft.com` z tematem **Zarejestruj się w prywatnej wersji zapoznawczej do utworzenia kopii zapasowej danych SAP HANA na maszynach wirtualnych platformy Azure**.
 
 
-## <a name="restore"></a>Przywracanie
+## <a name="restore"></a>Przywróć
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Jak zdecydować, czy można przywrócić tylko dysków lub pełnej maszyny Wirtualnej?
 Pomyśl o przywracanie maszyny Wirtualnej, jak opcję szybkiego tworzenia maszyny wirtualnej platformy Azure. Opcja ta umożliwia zmianę nazw dysków, kontenerów używanych przez dyski, publicznych adresów IP i nazw interfejsów sieciowych. Zmiana zachowuje unikatowy zasobów po utworzeniu maszyny Wirtualnej. Maszyna wirtualna nie została dodana do zestawu dostępności.
@@ -140,3 +140,6 @@ Maszyna wirtualna jest wykonywana kopia zapasowa przy użyciu ustawień harmonog
 3. Wykonywanie kopii zapasowej ponownie włączone w tej samej lub nowego magazynu.
 
 Możesz przywrócić maszynę Wirtualną z dostępnych punktów przywracania utworzonych przed wykonaniem operacji przenoszenia.
+
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>Czy istnieje limit liczby maszyn wirtualnych, które mogą być skojarzone z tych samych zasad tworzenia kopii zapasowej?
+Tak, istnieje limit 100 maszyn wirtualnych, które mogą być skojarzone tymi samymi zasadami tworzenia kopii zapasowej z portalu. Firma Microsoft zaleca się, że dla ponad 100 maszyn wirtualnych, Utwórz wiele zasad tworzenia kopii zapasowej przy użyciu tego samego harmonogramu lub inny harmonogram.

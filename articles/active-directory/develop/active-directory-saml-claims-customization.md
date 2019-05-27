@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764668"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951001"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -47,7 +47,7 @@ Istnieją dwie możliwe przyczyny, dlaczego może być konieczne edytowanie ośw
 Aby edytować NameID (wartość nazwy identyfikatora):
 
 1. Otwórz **nazwę wartości identyfikatora** strony.
-1. Wybierz atrybut lub przekształcenie, które chcesz zastosować do atrybutu. Opcjonalnie można określić format ma on oświadczenia NameID mieć.
+1. Wybierz atrybut lub przekształcenie, które chcesz zastosować do atrybutu. Opcjonalnie można określić format ma oświadczenia NameID mieć.
 
    ![Edytuj wartość NameID (identyfikator nazwy)](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
@@ -75,7 +75,7 @@ Wybierz żądane źródło `NameIdentifier` (lub NameID) oświadczenia. Możesz 
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| Poczta e-mail | Adres e-mail użytkownika |
+| Email | Adres e-mail użytkownika |
 | userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
 | onpremisessamaccount | Nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD |
 | Identyfikator obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |

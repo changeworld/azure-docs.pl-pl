@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: adgera
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926504"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967050"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -54,11 +54,11 @@ Metadane obiektu blob JSON jest zgodny z modelem następujące:
 | Atrybut | Type | Opis |
 | --- | --- | --- |
 | **parentId** | String | Jednostka nadrzędna do skojarzenia z obiektu blob z (miejsca do magazynowania, urządzeń lub użytkowników) |
-| **Nazwa** |String | Przyjazne dla człowieka nazwę obiektu blob |
+| **name** |String | Przyjazne dla człowieka nazwę obiektu blob |
 | **type** | String | Nie można użyć typu obiektu blob - *typu* i *typeId*  |
-| **typeId** | Liczba całkowita | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
+| **typeId** | Integer | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
 | **Podtyp** | String | Podtyp obiektów blob — nie można użyć *podtypu* i *subtypeId* |
-| **subtypeId** | Liczba całkowita | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
+| **subtypeId** | Integer | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
 | **description** | String | Opis dostosowanego obiektu blob |
 | **Udostępnianie** | String | Czy obiekt blob może być współużytkowany — wyliczenie [`None`, `Tree`, `Global`] |
 
@@ -111,12 +111,12 @@ Indywidualnie zwróconych obiektów blob są zgodne z następującego schematu J
 | Atrybut | Type | Opis |
 | --- | --- | --- |
 | **id** | String | Unikatowy identyfikator dla obiektu blob |
-| **Nazwa** |String | Przyjazne dla człowieka nazwę obiektu blob |
+| **name** |String | Przyjazne dla człowieka nazwę obiektu blob |
 | **parentId** | String | Jednostka nadrzędna do skojarzenia z obiektu blob z (miejsca do magazynowania, urządzeń lub użytkowników) |
 | **type** | String | Nie można użyć typu obiektu blob - *typu* i *typeId*  |
-| **typeId** | Liczba całkowita | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
+| **typeId** | Integer | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
 | **Podtyp** | String | Podtyp obiektów blob — nie można użyć *podtypu* i *subtypeId* |
-| **subtypeId** | Liczba całkowita | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
+| **subtypeId** | Integer | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
 | **Udostępnianie** | String | Czy obiekt blob może być współużytkowany — wyliczenie [`None`, `Tree`, `Global`] |
 | **description** | String | Opis dostosowanego obiektu blob |
 | **contentInfos** | Tablica | Określa informacje metadanych bez struktury, w tym wersja |

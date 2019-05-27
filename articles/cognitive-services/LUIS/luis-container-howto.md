@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073004"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124275"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -109,7 +109,7 @@ Katalog instalacji danych wejściowych może zawierać **produkcji**, **przemies
 |Typ pakietu|Punkt końcowy interfejsu API zapytań|Dostępność zapytań|Format nazwy pliku pakietu|
 |--|--|--|--|
 |Szkolone|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Przygotowanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
+|Przemieszczanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
 |Produkcja|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -256,6 +256,10 @@ Więcej [przykłady](luis-container-configuration.md#example-docker-run-commands
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
+## <a name="endpoint-apis-supported-by-the-container"></a>Interfejsy API obsługiwane przez kontener punktu końcowego
+
+Zarówno w wersji 2 i [V3 (wersja zapoznawcza)](luis-migration-api-v3.md) wersje interfejsu API są dostępne z kontenerem. 
+
 ## <a name="query-the-containers-prediction-endpoint"></a>Zapytanie do endpoint prognoz kontenera
 
 Kontener udostępnia punkt końcowy usługi oparte na protokole REST zapytania prognozowania interfejsów API. Punkty końcowe dla opublikowanych aplikacji (przejściowych lub produkcyjnych) mają _różnych_ trasy niż punktów końcowych dla uczonego aplikacji. 
@@ -329,7 +333,7 @@ Do zamykania w kontenerze, w środowisko wiersza polecenia, na którym działa k
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](luis-container-configuration.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 
 Wysyła kontenera usługi LUIS rozliczeń informacje na platformie Azure, przy użyciu _usług Cognitive Services_ zasobów dla konta systemu Azure. 
 
