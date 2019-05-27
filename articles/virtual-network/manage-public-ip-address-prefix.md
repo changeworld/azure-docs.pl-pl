@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 82ee9d04785fc0f6ac534428bf411ca0fe3204ad
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601510"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952683"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Tworzenie, zmienianie i usuwanie publicznej prefiksu adresu IP
 
@@ -50,7 +50,7 @@ Prefiksy publicznych adresów IP mają opłaty. Aby uzyskać więcej informacji,
    |Subskrypcja|Tak|Musi istnieć w tym samym [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako zasób, którą chcesz skojarzyć publiczny adres IP.|
    |Grupa zasobów|Tak|Może znajdować się w tej samej lub różnych [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako zasób, którą chcesz skojarzyć publiczny adres IP.|
    |Name (Nazwa)|Tak|Nazwa musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
-   |Obszar|Tak|Musi istnieć w tym samym [region](https://azure.microsoft.com/regions)jako publiczne adresy IP można przypisywać adresów z zakresu. Prefiks jest obecnie dotyczy wersji zapoznawczej w zachodnio-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia.|
+   |Obszar|Tak|Musi istnieć w tym samym [region](https://azure.microsoft.com/regions)jako publiczne adresy IP można przypisywać adresów z zakresu.|
    |Rozmiar prefiksu|Tak| Rozmiar prefiksu, których potrzebujesz. A/28 lub 16 adresów IP jest ustawieniem domyślnym.
 
 **Polecenia**
@@ -73,6 +73,13 @@ Po utworzeniu prefiks, musisz utworzyć statyczne adresy IP z prefiksu. Aby to z
    |Name (Nazwa)|Tak|Nazwa publicznego adresu IP musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
    |Limit czasu bezczynności (minuty)|Nie|Ile minut nie zamykaj połączenie TCP lub HTTP bez polegania na klientach, aby wysyłać komunikaty utrzymywania aktywności. |
    |Etykieta nazwy DNS|Nie|Musi być unikatowa w obrębie regionu świadczenia usługi Azure, Utwórz nazwę w (za pośrednictwem wszystkich subskrypcji i wszystkich klientów). Azure powoduje automatyczne zarejestrowanie nazwy i adresu IP w jej systemie DNS, dzięki czemu możesz nawiązać połączenie zasób o nazwie. Azure dołącza podsieć domyślna, takich jak *location.cloudapp.azure.com* (tam, gdzie lokalizacja to lokalizacja, możesz wybrać) do nazwy zostaną podane, można utworzyć w pełni kwalifikowana nazwa DNS. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure DNS z publicznym adresem IP platformy Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+
+Alternatywnie można użyć interfejsu wiersza polecenia PS polecenia poniżej z public-ip prefiks (CLI) i zasób adresu parametrów - PublicIpPrefix (PS), aby utworzyć publiczny adres IP. 
+
+|Tool|Polecenie|
+|---|---|
+|Interfejs wiersza polecenia|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Wyświetl lub usuń prefiks
 

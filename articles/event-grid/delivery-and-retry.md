@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
+ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562002"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952888"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
 
@@ -24,16 +24,18 @@ Obecnie usługa Event Grid wysyła każde zdarzenie indywidualnie do subskrybent
 
 ## <a name="retry-schedule-and-duration"></a>Harmonogram ponownych prób i czas trwania
 
-Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas dostarczania zdarzeń. Jeśli punkt końcowy przestaje odpowiadać, zwraca kod błędu usługi Event Grid ponawia próbę dostarczania według następującego harmonogramu na optymalne rozwiązanie:
+Usługa Event Grid czeka 30 sekund na odpowiedź od dostarczania wiadomości. Po 30 sekundach Jeśli punkt końcowy nie odpowiedział, komunikat jest kolejkowana dla ponownych prób. Usługa Event Grid używa zasady ponawiania wykładniczego wycofywania, podczas dostarczania zdarzeń. Usługa Event Grid ponownych prób dostarczenia według następującego harmonogramu na optymalne rozwiązanie:
 
-1. 10 sekund
-1. 30 sekund
-1. 1 min
-1. 5 minut
-1. 10 minut
-1. 30 minut
-1. 1 godzina
-1. Co godzinę przez maksymalnie 24 godziny
+- 10 sekund
+- 30 sekund
+- 1 minuta
+- 5 minut
+- 10 minut
+- 30 minut
+- 1 godzina
+- Co godzinę przez maksymalnie 24 godziny
+
+Jeśli punkt końcowy odpowie w ciągu 3 minut, usługi Event Grid będzie podejmować próby usunięcia zdarzenia z kolejki ponownych prób na optymalne rozwiązanie, ale duplikaty może nadal można odbierać dane.
 
 Usługa Event Grid dodaje małe losowe do wszystkich kroków ponownych prób i tylko wtedy może pominąć niektóre ponownych prób, jeśli punkt końcowy jest stale złej kondycji, dół przez długi czas lub wydaje się być przeciążeniu.
 
@@ -72,12 +74,12 @@ Następujące kody odpowiedzi HTTP wskazują, że próby dostarczenia zdarzeń n
 
 - 400 Niewłaściwe żądanie
 - 401 Brak autoryzacji
-- 404 — Nie odnaleziono
+- 404 Nie znaleziono
 - 408 Limit czasu żądania
 - Jednostka 413 żądania jest zbyt duża
 - Identyfikator URI 414 za długa
 - 429 zbyt wiele żądań
-- 500 — wewnętrzny błąd serwera
+- 500 Wewnętrzny błąd serwera
 - 503 — usługa niedostępna
 - 504 — limit czasu bramy
 

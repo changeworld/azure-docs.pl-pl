@@ -9,12 +9,12 @@ ms.date: 04/12/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7029f07b494630cc1ebe4a2dbfb297e73d85ec5e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ef01cf194ea7a0afea033d2888df946208073e41
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153191"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65874109"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfiguracja parametrów połączenia usługi Azure Storage
 
@@ -35,7 +35,7 @@ Aplikacja ma dostęp do parametrów połączenia w czasie wykonywania, aby autor
 
 Przechowywanie parametrów połączenia w pliku konfiguracji można łatwo zaktualizować parametry połączenia, aby przełączać się między emulatora magazynu i konto magazynu platformy Azure w chmurze. Należy zmodyfikować parametry połączenia, aby wskazywał środowisku docelowym.
 
-Możesz użyć [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) na dostęp do parametrów połączenia w czasie wykonywania, niezależnie od tego, gdzie aplikacja jest uruchomiona.
+Możesz użyć [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) na dostęp do parametrów połączenia w czasie wykonywania, niezależnie od tego, gdzie aplikacja jest uruchomiona.
 
 ## <a name="create-a-connection-string-for-the-storage-emulator"></a>Utwórz ciąg połączenia dla emulatora magazynu
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
@@ -107,7 +107,7 @@ Jeśli zamapowany na domenę niestandardową punktu końcowego magazynu, a pomin
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Utwórz ciąg połączenia za pomocą sufiksu punktu końcowego
-Aby utworzyć parametry połączenia dla usługi storage w regionach lub wystąpień z innym punktem końcowym sufiksy, takich jak Azure — Chiny lub Azure dla instytucji rządowych, użyj następującego formatu ciągu połączenia. Wskazuje, czy chcesz się połączyć z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub HTTP, Zastąp `myAccountName` nazwą konta magazynu, należy zastąpić `myAccountKey` przy użyciu klucza dostępu do konta i Zastąp `mySuffix` sufiks identyfikatora URI:
+Aby utworzyć parametry połączenia dla usługi storage w regionach lub wystąpień z innym punktem końcowym sufiksy, takich jak Azure China 21Vianet lub platformy Azure dla instytucji rządowych, użyj następującego formatu ciągu połączenia. Wskazuje, czy chcesz się połączyć z kontem magazynu za pośrednictwem protokołu HTTPS (zalecane) lub HTTP, Zastąp `myAccountName` nazwą konta magazynu, należy zastąpić `myAccountKey` przy użyciu klucza dostępu do konta i Zastąp `mySuffix` sufiks identyfikatora URI:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -116,7 +116,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Oto przykładowe parametry połączenia dla usługi storage w chińskiej wersji platformy Azure:
+Oto przykładowe parametry połączenia dla usługi storage w Azure China 21Vianet:
 
 ```
 DefaultEndpointsProtocol=https;

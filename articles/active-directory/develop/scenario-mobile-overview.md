@@ -12,15 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: dadobali
+ms.author: jmprieur
+ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9978905f8ae0719f6a77ca2351f2c43bbf94ee0
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: df5b53ccdcd33e2542834769baff5b759ff7b170
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550368"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962365"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: Wywołuje interfejsy API sieci web aplikacji mobilnej
 
@@ -41,7 +42,7 @@ Utwórz swoją pierwszą aplikację mobilną i wypróbuj Szybki Start!
 >
 > [Szybki start: Uzyskiwanie tokenu i wywołania interfejsu API Microsoft Graph z platformy Xamarin iOS & aplikacji dla systemu Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Środowisko spersonalizowane bezproblemowy interfejs użytkownika ma zasadnicze znaczenie dla aplikacji mobilnych.  Platforma tożsamości firmy Microsoft umożliwia deweloperów aplikacji mobilnych utworzyć środowiska dla systemów iOS i Android użytkowników. Aplikacji do logowania użytkowników usługi Azure Active Directory (Azure AD), osobiste użytkowników kont Microsoft i użytkowników usługi Azure AD B2C i uzyskać tokeny do wywołania internetowego interfejsu API w ich imieniu. Aby zaimplementować te przepływy, użyjemy Microsoft Authentication Library (MSAL), która implementuje będące standardami branżowymi [przepływ kodu autoryzacji OAuth2.0](v2-oauth2-auth-code-flow.md).
 

@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825214"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956846"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -87,7 +87,7 @@ Poniżej przedstawiono niektóre typowe problemy, które osoby zajmujące się n
 
 - Aby uzyskać **Microsoft** **aplikacje, które nie wymagają licencji**, poniżej przedstawiono niektóre inne czynności do wykonania:
 
-  * Jeśli aplikacja żąda **uprawnienia na poziomie użytkownika** (na przykład "dostęp do skrzynek pocztowych użytkowników"), upewnij się, że użytkownik zalogował się do aplikacji i przeprowadził **operacji zezwoleniem użytkownika** aby umożliwić aplikacji dostęp do jej danych.
+  * Jeśli aplikacja żąda **uprawnienia na poziomie użytkownika** (na przykład "dostęp do skrzynek pocztowych użytkowników"), upewnij się, że użytkownik zalogował się do aplikacji i przeprowadził **operacji zezwoleniem użytkownika** umożliwi aplikacji uzyskują dostęp do danych.
 
   * Jeśli aplikacja żąda **uprawnienia na poziomie administratora** (na przykład "dostęp do skrzynek pocztowych wszystkich użytkowników"), upewnij się, że przeprowadził administratora globalnego **operacja zgody na poziomie administratora w imieniu wszystkich użytkowników** w organizacji.
 

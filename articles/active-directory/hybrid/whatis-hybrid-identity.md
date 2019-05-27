@@ -1,6 +1,6 @@
 ---
-title: Łączenie usługi Active Directory z usługą Azure Active Directory. | Microsoft Docs
-description: Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu można posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD.
+title: Co to jest tożsamości hybrydowej w usłudze Azure Active Directory?
+description: Tożsamość hybrydowa występują wspólną tożsamość użytkowników na potrzeby uwierzytelniania i autoryzacji lokalnie i w chmurze.
 keywords: wprowadzenie do programu Azure AD Connect, omówienie programu Azure AD Connect, co to jest program Azure AD Connect, instalowanie usługi Active Directory
 services: active-directory
 author: billmath
@@ -9,24 +9,26 @@ ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6393d363c85fd22b28a3bc2ac5ef02047ebaacf0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784368"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896834"
 ---
-# <a name="what-is-hybrid-identity"></a>Co to jest tożsamość hybrydowa?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Co to jest tożsamości hybrydowej w usłudze Azure Active Directory?
 
-Obecnie małe i duże firmy w coraz większym stopniu korzystają zarówno z aplikacji lokalnych, jak i aplikacji w chmurze.  Użytkownicy wymagają dostępu do aplikacji zarówno lokalnie, jak i w chmurze. To wymaganie stało się wyzwaniem. 
+Obecnie małe i duże firmy w coraz większym stopniu korzystają zarówno z aplikacji lokalnych, jak i aplikacji w chmurze.  Użytkownicy wymagają dostępu do aplikacji zarówno lokalnie, jak i w chmurze. Zarządzanie użytkownikami lokalnie w stwarza chmury wyzwaniem scenariuszy. 
 
 Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe.  Te rozwiązania tworzą wspólną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to **tożsamością hybrydową**.
 
-Aby uzyskać tożsamość hybrydową, można użyć jednej z trzech metoda uwierzytelniania, w zależności od scenariusza.   Te trzy metody to: 
+Za pomocą tożsamości hybrydowej z usługą Azure AD i tożsamość hybrydowa zarządzania tych scenariuszy stanie się możliwe.
+
+Aby osiągnąć tożsamości hybrydowej z usługą Azure AD, jedną z trzech metod uwierzytelniania można, w zależności od scenariuszy.   Te trzy metody to: 
 
 - **[Synchronizacja skrótów haseł](whatis-phs.md)**  
 - **[Uwierzytelnianie przekazywane](how-to-connect-pta.md)**  

@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 6d18cce06a249958e67ca07859a7cc058e2fba45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232357"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110593"
 ---
 Aby wyczyścić prawidłowo po wydaniu sesji wszystkie odwołania.

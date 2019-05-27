@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715239"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849821"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Omówienie kończenia żądań SSL i kompleksowej usługi SSL z usługą Application Gateway
 
@@ -36,7 +36,7 @@ Aby skonfigurować kończenia żądań SSL, certyfikat SSL jest wymagany do doda
 Dla połączenia SSL do pracy należy upewnić się, że certyfikat SSL spełnia następujące warunki:
 
 - Bieżąca data i godzina to "Ważny od" i "Ważny do" zakres dat w certyfikacie.
-- Tego certyfikatu "Common Name" (CN) jest zgodna z nagłówkiem hosta w żądaniu. Na przykład, jeśli klient jest kieruje żądanie do `https://www.contoso.com/`, musi być nazwa Pospolita `www.contoso.com`.
+- „Nazwa pospolita” (CN) certyfikatu musi być zgodna z nagłówkiem hosta w żądaniu. Jeśli na przykład klient wysyła żądanie do domeny `https://www.contoso.com/`, nazwą pospolitą (CN) musi być `www.contoso.com`.
 
 ### <a name="certificates-supported-for-ssl-termination"></a>Obsługiwane w przypadku kończenia żądań SSL certyfikatów
 
@@ -48,6 +48,9 @@ Usługa Application gateway obsługuje następujące typy certyfikatów:
 - Certyfikaty z podpisem własnym: Przeglądarki klienta nie zaufać tym certyfikatom i powiadomi użytkownika czy certyfikatu usługi wirtualnego nie jest częścią łańcuch zaufania. Certyfikaty z podpisem własnym są odpowiednie do testowania lub środowiska, w której administratorzy kontrolować klientów i bezpiecznie pominąć alerty zabezpieczeń w przeglądarce. Obciążenia produkcyjne nigdy nie należy używać certyfikatów z podpisem własnym.
 
 Aby uzyskać więcej informacji, zobacz [skonfigurować kończenia żądań SSL z usługą application gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+
+### <a name="size-of-the-certificate"></a>Rozmiar certyfikatu
+Plik wymiany informacji osobistych (PFX) z informacje dotyczące certyfikatów SSL nie powinien być więcej niż 10 KB.
 
 ## <a name="end-to-end-ssl-encryption"></a>Kompleksową usługę szyfrowania SSL
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8c0b895c3ef811268c7b67393a5382362601d875
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204390"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921915"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Połączenia zewnętrzne rozwiązania przy użyciu Common Event Format
 
@@ -61,7 +61,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
 1. W portalu Azure przez wartownika kliknij **łączników danych** i wybierz typ urządzenia. 
 
 1. W obszarze **konfiguracji agenta systemu Linux Syslog**:
-   - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszyny Wirtualnej systemu Linux, który jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
+   - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszyny Wirtualnej systemu Linux, który jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych Vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
       1. W **wdrożenie niestandardowe** strony, zapewniają szczegółowe informacje i wybierz nazwę użytkownika i hasło i jeśli zgadzasz się na warunki i postanowienia, zakup maszyny Wirtualnej.
       1. Konfigurowanie urządzenia w taki sposób, aby wysłać dzienniki przy użyciu ustawień wymienionych w na stronie połączenia. Łącznik ogólnego Common Event Format Użyj następujących ustawień:
          - Protokół = UDP
@@ -90,6 +90,9 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
       2. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
+ Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń CEF, możesz wyszukać `CommonSecurityLog`.
+
+
 ### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Wdróż agenta na lokalny serwer systemu Linux
 
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
@@ -113,17 +116,49 @@ Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika 
       1. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
   
-## <a name="step-2-validate-connectivity"></a>Krok 2: Zweryfikuj łączność
+ Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń CEF, możesz wyszukać `CommonSecurityLog`.
+
+## <a name="step-3-validate-connectivity"></a>Krok 3: Zweryfikuj łączność
 
 Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiają się w usłudze Log Analytics. 
 
-1. Upewnij się, że dzienniki pojawiają się na prawy port w agencie programu Syslog. Uruchom następujące polecenie na komputerze agenta usługi Syslog: `tcpdump -A -ni any  port 514 -vv` To polecenie wyświetla dzienniki, które są przesyłane z urządzenia do maszyny Syslog. Upewnij się, że dzienniki są otrzymywane z urządzenia źródłowego na prawy port i funkcji odpowiednie.
-2. Sprawdź, czy komunikacja między demona usługi Syslog i agenta. Uruchom następujące polecenie na komputerze agenta usługi Syslog: `tcpdump -A -ni any  port 25226 -vv` To polecenie wyświetla dzienniki, które są przesyłane z urządzenia do maszyny Syslog. Upewnij się, że dzienniki są one odbierane w agencie.
-3. Jeśli oba te polecenia pomyślne wyniki, sprawdź usługi Log Analytics, aby zobaczyć, jeśli dzienniki są odbierane. Wszystkie zdarzenia przesyłane strumieniowo ze te urządzenia są wyświetlane w nieprzetworzonej postaci, w usłudze Log Analytics w obszarze `CommonSecurityLog` typu.
-1. Aby sprawdzić, czy występują błędy, czy dzienniki nie są przychodzących, Szukaj w `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-4. Upewnij się, że rozmiar domyślny wiadomości usługi Syslog wynosi 2048 bajtów (2KB). Jeśli dzienniki są zbyt długie, należy zaktualizować security_events.conf za pomocą tego polecenia: `message_length_limit 4096`
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń CEF, możesz wyszukać **CommonSecurityLog**.
+1. Upewnij się, że używasz prawo funkcji. Urządzenie to musi być takie same, w której znajduje się urządzenie i przez wartownika platformy Azure. Sprawdź, który plik funkcji jest używane w ramach platformy Azure przez wartownika i zmodyfikować go w pliku `security-config-omsagent.conf`. 
 
+2. Upewnij się, że dzienniki pojawiają się na prawy port w agencie programu Syslog. Uruchom następujące polecenie na komputerze agenta usługi Syslog: `tcpdump -A -ni any  port 514 -vv` To polecenie wyświetla dzienniki, które są przesyłane z urządzenia do maszyny Syslog. Upewnij się, że dzienniki są otrzymywane z urządzenia źródłowego na prawy port i funkcji odpowiednie.
+
+3. Upewnij się, że dzienniki wysyłane są zgodne z [RFC 5424](https://tools.ietf.org/html/rfc542).
+
+4. Na komputerze z uruchomionym agentem Syslog, upewnij się, te porty 514, 25226 są otwarte i nasłuchuje, za pomocą polecenia `netstat -a -n:`. Aby uzyskać więcej informacji na temat korzystania z tego polecenia zobacz [netstat(8) - strony ataków typu man Linux](https://linux.die.netman/8/netstat). Jeśli nasłuchuje poprawnie, zostanie wyświetlone to:
+
+   ![Usługa Azure porty wartownik](./media/connect-cef/ports.png) 
+
+5. Upewnij się, że demon jest ustawiony do nasłuchiwania na porcie 514, na którym one wysyłać dzienniki.
+    - Demona rsyslog:<br>Upewnij się, że plik `/etc/rsyslog.conf` ta konfiguracja obejmuje:
+
+           # provides UDP syslog reception
+           module(load="imudp")
+           input(type="imudp" port="514")
+        
+           # provides TCP syslog reception
+           module(load="imtcp")
+           input(type="imtcp" port="514")
+
+      Aby uzyskać więcej informacji, zobacz [imudp: Moduł danych wejściowych Syslog UDP](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) i [imtcp: Moduł danych wejściowych Syslog TCP](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
+
+   - Demona syslog-NG:<br>Upewnij się, że plik `/etc/syslog-ng/syslog-ng.conf` ta konfiguracja obejmuje:
+
+           # source s_network {
+            network( transport(UDP) port(514));
+             };
+     Aby uzyskać więcej informacji, zobacz [imudp: Moduł danych wejściowych Syslog UDP] (Aby uzyskać więcej informacji, zobacz [demona syslog-ng Otwórz 3.16 wersji źródła — Przewodnik administrowania](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
+
+1. Sprawdź, czy komunikacja między demona usługi Syslog i agenta. Uruchom następujące polecenie na komputerze agenta usługi Syslog: `tcpdump -A -ni any  port 25226 -vv` To polecenie wyświetla dzienniki, które są przesyłane z urządzenia do maszyny Syslog. Upewnij się, że dzienniki są one odbierane w agencie.
+
+6. Jeśli oba te polecenia pomyślne wyniki, sprawdź usługi Log Analytics, aby zobaczyć, jeśli dzienniki są odbierane. Wszystkie zdarzenia przesyłane strumieniowo ze te urządzenia są wyświetlane w nieprzetworzonej postaci, w usłudze Log Analytics w obszarze `CommonSecurityLog` typu.
+
+7. Aby sprawdzić, czy istnieją błędy, lub jeśli dzienniki nie są przychodzących, poszukaj `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Jeśli występują błędy niezgodności format dziennika z nazwą, przejdź do strony `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` i spójrz na plik `security_events.conf`i upewnij się, że dzienniki zgodny z formatem wyrażeń regularnych, zostanie wyświetlony w tym pliku.
+
+8. Upewnij się, że rozmiar domyślny wiadomości usługi Syslog wynosi 2048 bajtów (2KB). Jeśli dzienniki są zbyt długie, należy zaktualizować security_events.conf za pomocą tego polecenia: `message_length_limit 4096`
 
 
 ## <a name="next-steps"></a>Kolejne kroki

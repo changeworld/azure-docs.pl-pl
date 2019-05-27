@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61254643"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910818"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ Następujące instruktaż zawiera szczegółowe instrukcje dotyczące tworzenia 
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Przewodnik: Tworzenie niestandardowego działania
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Visual Studio 2012/2013/2015
+* Visual Studio 2012/2013/2015/2017
 * Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 
 ### <a name="azure-batch-prerequisites"></a>Wymagania wstępne usługi Azure Batch
@@ -100,10 +100,10 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
 ### <a name="procedure"></a>Procedura
 1. Tworzenie **Biblioteka klas programu .NET** projektu.
    <ol type="a">
-     <li>Uruchom <b>programu Visual Studio 2017</b> lub <b>programu Visual Studio 2015</b> lub <b>programu Visual Studio 2013</b> lub <b>programu Visual Studio 2012</b>.</li>
+     <li>Uruchom program Visual Studio.</li>
      <li>Kliknij pozycję <b>Plik</b>, wskaż polecenie <b>Nowy</b> i kliknij pozycję <b>Projekt</b>.</li>
      <li>Rozwiń węzeł <b>Szablony</b> i wybierz opcję <b>Visual C#</b>. W tym przewodniku możesz używać języka C#, ale można używać dowolnego języka platformy .NET do tworzenia działań niestandardowych.</li>
-     <li>Wybierz <b>biblioteki klas</b> z listy typów projektów po prawej stronie. W programie VS 2017 wybierz <b>biblioteki klas (.NET Framework)</b> </li>
+     <li>Wybierz <b>biblioteki klas</b> z listy typów projektów po prawej stronie. W programie Visual Studio, wybierz <b>biblioteki klas (.NET Framework)</b> </li>
      <li>Wprowadź <b>MyDotNetActivity</b> dla <b>nazwa</b>.</li>
      <li>Wybierz <b>C:\ADFGetStarted</b> dla <b>lokalizacji</b>.</li>
      <li>Kliknij przycisk <b>OK</b>, aby utworzyć projekt.</li>

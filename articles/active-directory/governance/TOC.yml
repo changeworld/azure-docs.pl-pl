@@ -27,8 +27,6 @@
           href: manage-guest-access-with-access-reviews.md
         - name: Zarządzanie dostępem użytkowników i przeglądy
           href: manage-user-access-with-access-reviews.md
-        - name: Zarządzanie programami i ich kontrolami
-          href: manage-programs-controls.md
         - name: Zarządzanie użytkownikami wykluczonymi z dostępu warunkowego
           href: conditional-access-exclusion.md
 - name: Przewodniki z instrukcjami
@@ -64,8 +62,6 @@
               href: review-your-access.md
             - name: Kończenie przeglądu dostępu
               href: complete-access-review.md
-            - name: Pobieranie wyników przeglądu dostępu
-              href: retrieve-access-review.md
         - name: Role usługi Azure AD
           items:
             - name: Tworzenie przeglądu dostępu

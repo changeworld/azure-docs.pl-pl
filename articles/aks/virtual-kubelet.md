@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023742"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956292"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -26,13 +26,35 @@ W przypadku używania dostawcy rozwiązania Virtual Kubelet dla usługi Azure Co
 >
 > Rozwiązania Virtual Kubelet jest projektem eksperymentalne "open source" i powinna być używana w związku z tym. Aby współtworzyć, problemów z plików i Przeczytaj więcej na temat rozwiązania virtual kubelet, zobacz [projektu wirtualnego GitHub agenta Kubelet][vk-github].
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 W tym dokumencie przyjęto założenie, iż klaster AKS. Jeśli potrzebujesz klastra AKS, zobacz [szybkiego startu usługi Azure Kubernetes Service (AKS)][aks-quick-start].
 
 Należy również wiersza polecenia platformy Azure w wersji **2.0.33** lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 Aby zainstalować rozwiązania Virtual Kubelet [Helm](https://docs.helm.sh/using_helm/#installing-helm) jest również wymagany.
+
+### <a name="register-container-instances-feature-provider"></a>Zarejestruj dostawcę funkcji Container Instances
+
+Jeśli wcześniej nie używano usługi wystąpienia kontenera platformy Azure (ACI), należy zarejestrować dostawcę usług w ramach subskrypcji. Stan rejestracji dostawcy usługi ACI, za pomocą polecenia [az dostawca list] [az provider list], można sprawdzić, jak pokazano w poniższym przykładzie:
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+*Microsoft.ContainerInstance* dostawca powinien wysyłać raporty jako *zarejestrowanej*, jak pokazano w następujących przykładowych danych wyjściowych:
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę, przy użyciu [az zarejestrować dostawcy] [az-provider register], jak pokazano w poniższym przykładzie:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli RBAC
 
@@ -87,9 +109,9 @@ Te argumenty są dostępne dla `aks install-connector` polecenia.
 
 | Argument: | Opis | Wymagane |
 |---|---|:---:|
-| `--connector-name` | Nazwa łącznika usługi ACI.| Yes |
-| `--name` `-n` | Nazwa zarządzanego klastra. | Yes |
-| `--resource-group` `-g` | Nazwa grupy zasobów. | Yes |
+| `--connector-name` | Nazwa łącznika usługi ACI.| Tak |
+| `--name` `-n` | Nazwa zarządzanego klastra. | Tak |
+| `--resource-group` `-g` | Nazwa grupy zasobów. | Tak |
 | `--os-type` | Typ systemu operacyjnego wystąpienia kontenera. Dozwolone wartości: Oba, Linux oraz Windows. Domyślne: Linux. | Nie |
 | `--aci-resource-group` | Grupa zasobów, w której chcesz utworzyć grup kontenerów usługi ACI. | Nie |
 | `--location` `-l` | Lokalizacja do tworzenia grup kontenerów usługi ACI. | Nie |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eecd2a50607fa42562a9ae6a7fb950a253655a45
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60904714"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872700"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Przewodnik: Eksportowanie do bazy danych SQL z usługi Application Insights przy użyciu usługi Stream Analytics
 W tym artykule pokazano, jak przenieść dane telemetryczne z [usługi Azure Application Insights] [ start] do usługi Azure SQL database przy użyciu [eksportu ciągłego] [ export] i [usługi Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -31,7 +31,7 @@ Rozpoczniemy pracę przy założeniu, że masz już aplikację, którą chcesz m
 W tym przykładzie użyjemy dane wyświetleń strony, ale tego samego wzorca można z łatwością rozszerzyć na inne typy danych, takie jak zdarzenia niestandardowe i wyjątki. 
 
 ## <a name="add-application-insights-to-your-application"></a>Dodaj usługę Application Insights do aplikacji
-Aby rozpocząć:
+Aby rozpocząć pracę:
 
 1. [Konfigurowanie usługi Application Insights dla stron sieci web](../../azure-monitor/app/javascript.md). 
    
@@ -179,10 +179,10 @@ Aby uzyskać nazwę i klucz Instrumentacji zasobu usługi Application Insights, 
 
 > [!TIP]
 > Użyj wyświetlany kod przykładowej funkcji, aby sprawdzić, poprawnie ustawiona ścieżka wejściowa. Jeśli nie powiedzie się: Sprawdź, czy dane w magazynie dla wybranego zakresu czasu próbki. Edytuj definicję danych wejściowych i sprawdź Ustaw konto magazynu, prefiks ścieżki i Data formacie poprawnie.
-> 
-> 
-> ## <a name="set-query"></a>Ustaw zapytanie
-> Otwórz sekcję zapytania:
+
+ 
+## <a name="set-query"></a>Ustaw zapytanie
+Otwórz sekcję zapytania:
 
 Zastąp domyślne zapytanie za pomocą:
 

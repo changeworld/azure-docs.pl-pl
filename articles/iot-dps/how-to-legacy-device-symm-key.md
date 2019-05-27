@@ -2,19 +2,18 @@
 title: Jak aprowizować starsze urządzenia z usługi Azure IoT Hub Device Provisioning za pomocą kluczy symetrycznych | Dokumentacja firmy Microsoft
 description: Jak aprowizować starsze urządzenia z urządzeniem, wystąpienie usługi aprowizacji za pomocą kluczy symetrycznych
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775183"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914301"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
 
@@ -30,7 +29,7 @@ W tym artykule założono również, że aktualizacja urządzenia ma miejsce w b
 Ten artykuł został opracowany z myślą o stacjach roboczych z systemem Windows. Jednak opisane procedury można wykonać także w systemie Linux. Aby uzyskać przykład dla systemu Linux, zobacz [Aprowizowanie pod kątem wielu dzierżaw](how-to-provision-multitenant.md).
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Identyfikator unikatowy rejestracji zostanie zdefiniowana dla każdego urządzenia, w oparciu o informacje umożliwiające identyfikację tego urządzenia. Na przykład adres MAC lub numeru seryjnego.
 
@@ -44,7 +43,7 @@ Kod urządzenia, które przedstawiono w tym artykule będzie zgodna z tego sameg
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Ukończenie [skonfigurować IoT Hub Device Provisioning Service przy użyciu witryny Azure portal](./quick-setup-auto-provision.md) Szybki Start.
-* Program Visual Studio 2015 lub [Visual Studio 2017](https://www.visualstudio.com/vs/) z włączonym pakietem roboczym [„Programowanie aplikacji klasycznych w języku C++”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 
@@ -173,7 +172,7 @@ Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
 
 Zastąp wartość **REG_ID** przy użyciu swojego identyfikatora rejestracji.
 
-```PowerShell
+```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
 $REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
 
@@ -184,7 +183,7 @@ $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
 ```
 
-```PowerShell
+```powershell
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 

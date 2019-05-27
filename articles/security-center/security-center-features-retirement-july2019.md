@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 5ac6603be087e887e3304f6a7e14aa063863e1dd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796463"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952140"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcje usługi Security Center (lipiec 2019 r.)
 
@@ -160,9 +160,9 @@ Jeśli masz istniejące powiązanych ze sobą rozwiązań, firma Microsoft zach�
 
 ## Edytowanie konfiguracji zabezpieczeń dla zasad zabezpieczeń<a name="menu_securityconfigurations"></a>
 
-Usługa Azure Security Center monitoruje konfiguracji zabezpieczeń, stosując zestaw [ponad 150 zalecanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). dotyczących wzmacniania ochrony systemu operacyjnego. Te reguły dotyczą zapory, inspekcje, zasady dotyczące haseł i inne. Maszyny w przypadku konfiguracji na ataki, usługa Security Center generuje zalecenie dotyczące zabezpieczeń. [Ekran konfiguracji zabezpieczeń edycji](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) pozwala klientom dostosowywać domyślna konfiguracja zabezpieczeń systemu operacyjnego w usłudze Security Center.
+Usługa Azure Security Center monitoruje konfiguracji zabezpieczeń, stosując zestaw [ponad 150 zalecanych reguł](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). dotyczących wzmacniania ochrony systemu operacyjnego. Te reguły dotyczą zapory, inspekcje, zasady dotyczące haseł i inne. Jeśli okaże się, że maszyna ma konfigurację podatną na zagrożenia, usługa Security Center wygeneruje rekomendację dotyczącą zabezpieczeń. [Ekran konfiguracji zabezpieczeń edycji](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) pozwala klientom dostosowywać domyślna konfiguracja zabezpieczeń systemu operacyjnego w usłudze Security Center.
 
-Firma Microsoft przechodzisz na emeryturę tę funkcję wersji zapoznawczej.
+Firma Microsoft przechodzisz na emeryturę tę funkcję wersji zapoznawczej. Jeśli po dacie wycofania chcesz resetować swoje konfiguracje zabezpieczeń do wartości domyślnych, możesz to zrobić za pomocą programu Powershell i interfejsów API przy użyciu [postępując zgodnie z instrukcjami](https://aka.ms/ascresetsecurityconfigurations)
 
 ![Edytowanie konfiguracji zabezpieczeń][17]
 

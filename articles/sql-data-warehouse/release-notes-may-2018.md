@@ -2,20 +2,20 @@
 title: Usługa Azure SQL Data Warehouse — informacje o wersji maja 2018 r. | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 07/23/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: eb933e8085ec956be713a18602b8baff9c87084b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402704"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912202"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Maj 2018 r. 
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w maju 2018 r. 

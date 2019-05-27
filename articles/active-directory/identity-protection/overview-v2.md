@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d533e6aac9ae1a486d018414a86a9dc3fe742c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294292"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956934"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co to jest Azure Active Directory Identity Protection (odświeżane)?
 
@@ -147,44 +147,44 @@ Przepływ punktu odniesienia dla wykrywania ryzyka Identity Protection i odpowie
 
 ## <a name="common-scenarios"></a>Typowe scenariusze 
 
-Spójrzmy na przykład Sarah, pracownik firmy Contoso. 
+Spójrzmy na przykład pracownik firmy Contoso. 
 
-1. Sarah próbuje zalogować się do usługi Exchange Online z poziomu przeglądarki sieci Tor. Podczas logowania usługa Azure AD wykrywa zdarzenia ryzyka w czasie rzeczywistym. 
+1. Pracownik próbuje zalogować się do usługi Exchange Online z poziomu przeglądarki sieci Tor. Podczas logowania usługa Azure AD wykrywa zdarzenia ryzyka w czasie rzeczywistym. 
 
-2. Usługa Azure AD wykryje, że Sarah loguje się z anonimowego adresu IP, wyzwalając poziomu średniego ryzyka logowania. 
+2. Usługa Azure AD wykryje, że pracownik loguje się z anonimowego adresu IP, wyzwalając poziomu średniego ryzyka logowania. 
 
-3. Sarah jest kwestionowana przez wiersz MFA, ponieważ administrator IT firmy Contoso skonfigurowane zasady dostępu warunkowego ryzyka logowania Identity Protection. Zasady wymagają usługi MFA na ryzyko logowania o średnim lub nowszej. 
+3. Pracownik jest kwestionowana przez wiersz MFA, ponieważ administrator IT firmy Contoso skonfigurowane zasady dostępu warunkowego ryzyka logowania Identity Protection. Zasady wymagają usługi MFA na ryzyko logowania o średnim lub nowszej. 
 
-4. Sarah przekazuje MFA Monituj i uzyskuje dostęp do usługi Exchange Online i poziomie ryzyka użytkownika Sarah firmy nie jest zmieniany. 
+4. Pracownik przekazuje wiersza MFA i uzyskuje dostęp do usługi Exchange Online, a ich poziom ryzyka użytkownika nie jest zmieniany. 
 
-Co się stało się w tle? Próby logowania za pomocą przeglądarki Tor wyzwalane w czasie rzeczywistym ryzyka logowania w usłudze Azure AD dla anonimowego adresu IP. Usługa Azure AD przetworzeniu żądania stosowane ryzyka logowania zasady skonfigurowane w Identity Protection, ponieważ poziom ryzyka logowania firmy Sarah spełnione próg (średnia liczba godzin). Ponieważ Sarah była wcześniej zarejestrowane dla usługi MFA, użytkownik mógł odpowiedzieć i przekazać żądanie uwierzytelniania MFA. Jej możliwości pomyślnie przekazać żądanie uwierzytelniania MFA sygnalizowane do usługi Azure AD, że prawdopodobnie została ona uzasadnione tożsamość właściciela, a jej poziom ryzyka użytkownika nie powoduje zwiększenie. 
+Co się stało się w tle? Próby logowania za pomocą przeglądarki Tor wyzwalane w czasie rzeczywistym ryzyka logowania w usłudze Azure AD dla anonimowego adresu IP. Usługa Azure AD przetworzeniu żądania stosowane ryzyka logowania zasady skonfigurowane w Identity Protection, ponieważ poziom ryzyka logowania pracownika spełnione próg (średnia liczba godzin). Ponieważ pracownik miał wcześniej zarejestrowane dla usługi MFA, byli w stanie odpowiedzieć i przekazać żądanie uwierzytelniania MFA. Możliwość pomyślnie przekazać żądanie uwierzytelniania MFA sygnalizowane do usługi Azure AD, że prawdopodobnie zostały uzasadnione tożsamość właściciela, a nie zwiększa ich poziom ryzyka użytkownika. 
 
 
-Ale co zrobić, jeśli Sarah nie był jeden próba zalogowania? 
+Ale co zrobić, jeśli pracownik nie był jeden próba zalogowania? 
 
-1. Złośliwy aktora przy użyciu poświadczeń firmy Sarah próbuje zalogować się do konta usługi Exchange Online w Sarah z przeglądarki Tor, ponieważ chcą ukryć adresy IP. 
+1. Złośliwy aktora przy użyciu poświadczeń pracownika próbuje zalogować się do swojego konta usługi Exchange Online z przeglądarki Tor, ponieważ chcą ukryć adresy IP. 
 
 2. Usługa Azure AD wykryje, że próba logowania z anonimowego adresu IP, wyzwalania w czasie rzeczywistym ryzyka logowania. 
 
 3. Złośliwe aktora jest kwestionowana przez wiersz MFA, ponieważ administrator IT firmy Contoso skonfigurowane zasady tożsamości ochrony logowania ryzyka dostępu warunkowego, aby wymagać uwierzytelniania Wieloskładnikowego w przypadku, gdy ryzyka logowania jest średnim lub nowszej. 
 
-4. Złośliwy aktora kończy się niepowodzeniem żądania uwierzytelniania MFA i nie może uzyskać dostępu konta usługi Exchange Online Sarah firmy. 
+4. Złośliwy aktora kończy się niepowodzeniem żądania uwierzytelniania MFA i nie można uzyskać dostępu konta usługi Exchange Online pracownika. 
 
-5. Nie powiodło się uwierzytelnianie wieloskładnikowe wiersza Wyzwolone zdarzenie o podwyższonym ryzyku, ma zostać zarejestrowany, zgłaszania ryzyka związanego z użytkownikiem w Sarah dla przyszłych operacji logowania. 
+5. Nie powiodło się uwierzytelnianie wieloskładnikowe wiersza Wyzwolone zdarzenie o podwyższonym ryzyku, ma zostać zarejestrowany, wywoływanie ich ryzyka związanego z użytkownikiem dla przyszłych operacji logowania. 
 
-Teraz, gdy złośliwe aktora próbował uzyskać dostęp do konta przez Sarah, zobaczmy, co się stanie po następnym Sarah próbuje zalogować. 
+Teraz, gdy złośliwe aktora próbował uzyskać dostęp do konta przez Sarah, zobaczmy, co się stanie po następnym pracownika próbuje zalogować. 
 
-1. Sarah próbuje zalogować się do usługi Exchange Online z programu Outlook. Podczas logowania usługa Azure AD wykrywa zdarzenia ryzyka w czasie rzeczywistym, jak również wszelkie ryzyko związane z użytkownikiem poprzedniego. 
+1. Pracownik próbuje zalogować się do usługi Exchange Online z programu Outlook. Podczas logowania usługa Azure AD wykrywa zdarzenia ryzyka w czasie rzeczywistym, jak również wszelkie ryzyko związane z użytkownikiem poprzedniego. 
 
 2. Usługa Azure AD nie wykrywa w czasie rzeczywistym ryzyka logowania, ale wykrywa ryzyka związanego z użytkownikiem wysokiej ze względu na ostatnie ryzykowne działania w poprzednich scenariuszach.  
 
-3. Sarah jest kwestionowana, monit resetowania hasła, ponieważ Contoso administratora IT skonfigurowany przez Wymagaj zmiany hasła podczas logowania użytkownika przy użyciu wysokiego ryzyka zasad ryzyka użytkownika ochrony tożsamości. 
+3. Pracownik jest kwestionowana, monit resetowania hasła, ponieważ Contoso administratora IT skonfigurowany przez Wymagaj zmiany hasła podczas logowania użytkownika przy użyciu wysokiego ryzyka zasad ryzyka użytkownika ochrony tożsamości. 
 
-4. Ponieważ Sarah jest zarejestrowany do samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego, użytkownik pomyślnie zresetuje swoje hasło. 
+4. Ponieważ pracownik jest zarejestrowany do samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego, pomyślnie zresetuje hasło. 
 
-5. Resetowanie swojego hasła, firmy Sarah poświadczenia nie są już naruszenia zabezpieczeń i jego tożsamość powraca do stanu bezpiecznego. 
+5. Poprzez zresetowanie hasła, pracownika poświadczenia nie są już naruszenia zabezpieczeń i ich tożsamości powraca do stanu bezpiecznego. 
 
-6. Sarah przez poprzednie zdarzenia o podwyższonym ryzyku są rozwiązywane i jej poziom ryzyka użytkownika jest automatycznie ustawiany w odpowiedzi na łagodzenia poświadczenia pozbyć się tych kompromisów. 
+6. Pracownika poprzednie zdarzenia o podwyższonym ryzyku są rozwiązywane i jej poziom ryzyka użytkownika jest automatycznie ustawiany w odpowiedzi na łagodzenia poświadczenia pozbyć się tych kompromisów. 
 
 ## <a name="how-do-i-configure-identity-protection"></a>Jak skonfigurować ochronę tożsamości? 
 
@@ -212,11 +212,11 @@ Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w u
 
 | Możliwości | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Podstawowa/bezpłatne usługi Azure AD |
 | --- | --- | --- | --- |
-| Zasady dotyczące ryzyka związanego z użytkownikiem | Yes | Nie | Nie |
-| Zasady dotyczące ryzyka związanego z logowaniem | Yes | Nie | Nie |
+| Zasady dotyczące ryzyka związanego z użytkownikiem | Tak | Nie | Nie |
+| Zasady dotyczące ryzyka związanego z logowaniem | Tak | Nie | Nie |
 | Raport ryzykownych użytkowników | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
 | Raport dotyczący ryzykownych logowań | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
-| Zasady rejestracji w usłudze MFA | Yes | Nie | Nie |
+| Zasady rejestracji w usłudze MFA | Tak | Nie | Nie |
 
 
 

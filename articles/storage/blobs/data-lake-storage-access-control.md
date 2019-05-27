@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233961"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949571"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -150,7 +150,7 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 
 #### <a name="the-owning-group"></a>Grupa będąca właścicielem
 
-Na listach ACL modelu POSIX, każdy użytkownik jest skojarzony z *grupa podstawowa*. Na przykład użytkownik "Alicja" może należeć do grupy "Finanse". Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
+Na listach ACL modelu POSIX, każdy użytkownik jest skojarzony z *grupa podstawowa*. Na przykład użytkownik "Alicja" może należeć do grupy "Finanse". Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako swojej grupy podstawowej. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupa będąca właścicielem dla nowego pliku lub katalogu
 

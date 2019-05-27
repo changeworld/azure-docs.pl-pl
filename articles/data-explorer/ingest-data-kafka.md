@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/19/2018
-ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445642"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901028"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
  
@@ -22,11 +22,11 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
  
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). 
  
-* [Klaster testowy i baza danych](create-cluster-database-portal.md)
+* [Klaster testowy i bazy danych](create-cluster-database-portal.md).
  
-* [Przykładowa aplikacja](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka), która generuje dane i wysyła je do platformy Kafka
+* [Przykładową aplikację](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) która generuje dane i wysyła je do platformy Kafka.
 
-* [Program Visual Studio 2017 w wersji 15.3.2 lub nowszej](https://www.visualstudio.com/vs/) do uruchomienia przykładowej aplikacji
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) uruchamianie przykładowej aplikacji.
  
 ## <a name="kafka-connector-setup"></a>Konfigurowanie łącznika platformy Kafka
 
@@ -36,7 +36,7 @@ Kafka Connect to narzędzie służące do skalowalnego i niezawodnego przesyłan
 
 Platforma Kafka może załadować plik `.jar` jako wtyczkę, która będzie działać jako łącznik niestandardowy. Aby utworzyć taki plik `.jar`, sklonujemy kod lokalnie i skompilujemy go przy użyciu narzędzia Maven. 
 
-#### <a name="clone"></a>Klonowanie
+#### <a name="clone"></a>Klonuj
 
 ```bash
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
@@ -57,7 +57,7 @@ W katalogu głównym *kafka-sink-azure-kusto* uruchom następujące polecenie:
 mvn clean compile assembly:single
 ```
 
-### <a name="deploy"></a>Wdrażanie 
+### <a name="deploy"></a>Wdróż 
 
 Załaduj wtyczkę do platformy Kafka. Przykład wdrożenia za pomocą platformy Docker można znaleźć pod adresem [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593289e64c0f9cd13251a0f7b47b860158100b36
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544564"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119722"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD
 
@@ -125,6 +125,9 @@ Ten obiekt OptionalClaims powoduje, że identyfikator tokenu zwracana do klienta
 ## <a name="configuring-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń
 
 Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując manifest aplikacji (Zobacz przykład poniżej). Aby uzyskać więcej informacji, zobacz [opis artykułu manifestu aplikacji usługi Azure AD](reference-app-manifest.md).
+
+> [!IMPORTANT]
+> Tokeny dostępu są **zawsze** wygenerowane przy użyciu manifest zasobu, a nie klient.  Dlatego w żądaniu `...scope=https://graph.microsoft.com/user.read...` zasób jest wykresu.  W związku z tym token dostępu jest tworzony przy użyciu manifest wykres, a nie manifest klienta.  Zmiana manifestu aplikacji nigdy nie spowoduje, że tokeny dla wykresu, będzie wyglądać inaczej.  Aby sprawdzić, czy Twoje `accessToken` zmiany są stosowane, żądać tokenu dla aplikacji, nie innej aplikacji.  
 
 **Schemat przykładowych:**
 

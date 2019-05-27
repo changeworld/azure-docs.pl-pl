@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230934"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954946"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 Roaming stanu dla przedsiębiorstw jest dostępny dla każdej organizacji za pomocą usługi Azure AD Premium lub pakietu Enterprise Mobility + Security (EMS) licencji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcję usługi Azure AD, zobacz [strona produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -84,7 +84,7 @@ Jawne usuwanie jest, gdy administrator platformy Azure spowoduje usunięcie uży
 Dane, które nie była używana przez jeden rok ("okres przechowywania") będzie traktowane jako nieaktualne i mogą zostać usunięte z chmury firmy Microsoft. Okres przechowywania może ulec zmianie, ale nie będzie mniejszy niż 90 dni. Nieaktualnych danych może być określony zbiór ustawień Windows/aplikacji i wszystkich ustawień dla użytkownika. Na przykład:
 
 * Jeśli żadne urządzenia dostępu do kolekcji określonego ustawienia (na przykład, aplikacja zostanie usunięty z urządzenia lub grupy ustawień, takich jak "Kompozycji" jest wyłączona dla wszystkich urządzeń użytkownika), a tej kolekcji staje się przestarzałe po upływie okresu przechowywania mogą zostać usunięte . 
-* Jeśli użytkownik wyłączył ustawienia synchronizacji na wszystkich swoich urządzeniach, następnie żadne dane ustawienia będą uzyskiwać dostęp, a wszystkie dane ustawienia dla tego użytkownika staną się nieaktualne i mogą zostać usunięte po upływie okresu przechowywania. 
+* Jeśli użytkownik wyłączył synchronizację ustawień na swoich urządzeniach, następnie żadne dane ustawienia będą uzyskiwać dostęp, a wszystkie dane ustawienia dla tego użytkownika staną się nieaktualne i mogą zostać usunięte po upływie okresu przechowywania. 
 * Jeśli administrator usługi Azure AD directory wyłącza Roaming stanu dla przedsiębiorstw na cały katalog, a następnie wszyscy użytkownicy w tym katalogu zostanie zatrzymane, synchronizowanie ustawień, a wszystkie dane ustawienia dla wszystkich użytkowników staną się nieaktualne i mogą zostać usunięte po upływie okresu przechowywania. 
 
 ### <a name="deleted-data-recovery"></a>Odzyskiwanie usuniętych danych

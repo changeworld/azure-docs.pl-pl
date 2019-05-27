@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146170"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961425"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -31,11 +31,11 @@ Magazyn ZRS jest ogólnie dostępna w następujących regionach:
 - Europa Północna
 - Francja Środkowa
 - Japonia Wschodnia
-- Południowe Zjednoczone Królestwo
+- Zjednoczone Królestwo (południe)
+- Środkowe stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
 - Zachodnie stany USA 2
-- Środkowe stany USA
 
 Firma Microsoft nadal włączyć ZRS w dodatkowych regionach platformy Azure. Sprawdź [aktualizacje usługi Azure](https://azure.microsoft.com/updates/) regularnie stronę informacji o nowych regionów.
 
@@ -75,6 +75,7 @@ Mieć na uwadze następujące ograniczenia dotyczące migracji na żywo:
 - Można przeprowadzić migrację tylko danych w tym samym regionie. Jeśli chcesz przeprowadzić migrację danych do konta magazynu ZRS, znajdującego się w regionie, które są inne niż konto źródłowe, należy wykonać ręczną migrację.
 - Tylko typy kont magazynu w warstwie standardowa obsługuje migrację na żywo. Kont usługi Premium storage muszą zostać zmigrowane ręcznie.
 - Migracja na żywo z magazynu ZRS LRS, GRS lub RA-GRS nie jest obsługiwana. Należy ręcznie przenieść dane do nowego lub istniejącego konta magazynu.
+- Dyski zarządzane są dostępne tylko dla magazynu LRS i nie można zmigrować na ZRS. Dla integracji z usługą dostępność zestawów zobacz [wprowadzenie do usługi Azure managed disks w](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets). Dla dysków zarządzanych dysków SSD w warstwie standardowa można przechowywać migawki i obrazy w magazynie standardowych dysków Twardych i [wybrać jedną z opcji LRS, jak i ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 Możesz poprosić o migracji na żywo za pośrednictwem [portalu pomocy technicznej systemu Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Z poziomu portalu wybierz konto magazynu, który chcesz przekonwertować ZRS.
 1. Wybierz **nowe żądanie obsługi**
@@ -96,7 +97,7 @@ Działu pomocy technicznej będą z Tobą skontaktować i zapewniają pomoc, kt�
 
 **Należy zaplanować żadnego przestoju podczas migracji?**
 
-Brak przestojów spowodowanych migracją. Podczas migracji na żywo można nadal konta magazynu podczas migracji danych między sygnatury magazynu źródłowego i docelowego. Podczas procesu migracji masz taki sam poziom trwałości i umowy SLA zapewniającej dostępność jak zwykły sposób.
+Brak przestojów spowodowanych migracją. Podczas migracji na żywo można nadal przy użyciu swojego konta magazynu, podczas migracji danych między sygnatury magazynu źródłowego i docelowego. Podczas procesu migracji masz taki sam poziom trwałości i umowy SLA zapewniającej dostępność jak zwykły sposób.
 
 **Czy istnieje utraty danych skojarzonych z migracji?**
 

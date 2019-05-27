@@ -15,12 +15,12 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5a08c2ae0b82841fd15aac4af06a8874cf64ba53
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121830"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949990"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Zrozumienie definicje ról na potrzeby zasobów platformy Azure
 
@@ -147,9 +147,9 @@ Współautor danych obiektu blob usługi Storage
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Ponieważ Alicja zawiera symbol wieloznaczny (`*`) działania w zakresie subskrypcji, jej uprawnienia dziedziczyć dół umożliwiające jej wykonywać wszystkie akcje zarządzania. Alicja może odczytu, zapisu i usuwania kontenerów. Jednak Alicja nie mogą wykonywać operacje na danych bez wykonywania dodatkowych czynności. Na przykład domyślnie Alicja nie może odczytać obiektów blob w kontenerze. Do odczytywania obiektów blob, Alicja musi pobrać klucze dostępu do magazynu i używać ich do uzyskania dostępu do obiektów blob.
+Ponieważ Alicja zawiera symbol wieloznaczny (`*`) działania w zakresie subskrypcji, ich uprawnienia dziedziczą dół aby umożliwić im wykonywanie wszystkich akcji zarządzania. Alicja może odczytu, zapisu i usuwania kontenerów. Jednak Alicja nie mogą wykonywać operacje na danych bez wykonywania dodatkowych czynności. Na przykład domyślnie Alicja nie może odczytać obiektów blob w kontenerze. Do odczytywania obiektów blob, Alicja musi pobrać klucze dostępu do magazynu i używać ich do uzyskania dostępu do obiektów blob.
 
-Uprawnienia przez Boba są ograniczone do właśnie `Actions` i `DataActions` określonych w [Współautor danych obiektu Blob magazynu](built-in-roles.md#storage-blob-data-contributor) roli. W zależności od roli Bob można wykonywać operacje na danych i zarządzania. Na przykład Bob może odczytu, zapisu i usuwania kontenerów na koncie magazynu określonym i użytkownik może również odczytu, zapisu i usuwania obiektów blob.
+Uprawnienia przez Boba są ograniczone do właśnie `Actions` i `DataActions` określonych w [Współautor danych obiektu Blob magazynu](built-in-roles.md#storage-blob-data-contributor) roli. W zależności od roli Bob można wykonywać operacje na danych i zarządzania. Na przykład Bob może odczytu, zapisu i usuwanie kontenerów na koncie magazynu określonym można również przeczytać, zapisu i usuwania obiektów blob.
 
 Aby uzyskać więcej informacji na temat zarządzania i bezpieczeństwo płaszczyzny danych dla magazynu, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md).
 

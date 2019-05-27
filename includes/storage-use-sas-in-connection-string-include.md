@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165098"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115504"
 ---
 Jeśli użytkownik ma adres URL sygnatury (SAS) dostępu współdzielonego, który udziela dostępu do zasobów na koncie magazynu, można użyć sygnatury dostępu Współdzielonego w parametrach połączenia. Ponieważ sygnatury dostępu Współdzielonego zawiera informacje wymagane do uwierzytelnienia żądania, parametry połączenia przy użyciu sygnatury dostępu Współdzielonego zapewnia protokół, punkt końcowy usługi i niezbędne poświadczenia, aby uzyskać dostęp do zasobu.
 

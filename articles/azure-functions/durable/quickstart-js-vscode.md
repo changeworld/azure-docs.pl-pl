@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61381976"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921350"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -54,7 +54,7 @@ Najpierw należy utworzyć funkcję wyzwalaną przez protokół HTTP, która roz
 
 1. Z obszaru **Azure: Functions** wybierz ikonę tworzenia funkcji.
 
-    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
+    ![Utwórz funkcję](./media/quickstart-js-vscode/create-function.png)
 
 2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon funkcji **wyzwalacza HTTP**.
 
@@ -117,7 +117,7 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 2. Aby przetestować funkcję, ustaw punkt przerwania w kodzie funkcji, a następnie naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**. Jeśli po raz pierwszy używasz funkcji trwałych, jest instalowane rozszerzenie Durable Functions, a kompilacja może potrwać kilka sekund.
 
     > [!NOTE]
-    > Rozszerzenie Durable Functions języka JavaScript wymaga wersji **1.7.0** lub większej rozszerzenia **Microsoft.Azure.WebJobs.Extensions.DurableTask**. Sprawdź, czy wersja rozszerzenia Durable Functions w Twoim pliku `extensions.csproj` spełnia to wymaganie. Jeśli nie, zatrzymaj aplikację funkcji, zmień wersję i naciśnij klawisz F5, aby ponownie uruchomić aplikację funkcji.
+    > Rozszerzenie Durable Functions języka JavaScript wymaga wersji **1.7.0** lub większej rozszerzenia **Microsoft.Azure.WebJobs.Extensions.DurableTask**. Uruchom następujące polecenie w folderze głównym aplikacji usługi Azure Functions, aby zainstalować rozszerzenia funkcji trwałych `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. W panelu **terminalu** skopiuj punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP.
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7d24a1e14cfbb1163ab78b94dd36ec288dce50
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e8bd9a86d5ec0d39a7f1c26adac52f41e6420283
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544047"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121986"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Użytkownik otrzyma wyrażania zgody dla kilku zasobów przy użyciu platformy MSAL.NET
 Microsoft platformy tożsamości z punktu końcowego nie pozwala uzyskać token dla kilku zasobów jednocześnie. Korzystając z Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET), parametr zakresów w przypadku metody tokenu nabywania powinien zawierać tylko zakresy do jednego zasobu. Jednak można wstępnie zgadzasz się na kilka zasobów z wyprzedzeniem, określając dodatkowe zakresy, za pomocą `.WithExtraScopeToConsent` metody konstruktora.
@@ -32,8 +32,8 @@ Microsoft platformy tożsamości z punktu końcowego nie pozwala uzyskać token 
 
 Na przykład jeśli masz dwa zasoby, które mają 2 zakresów każdy:
 
-- https://mytenant.onmicrosoft.com/customerapi (z 2-zakresami `customer.read` i `customer.write`)
-- https://mytenant.onmicrosoft.com/vendorapi (z 2-zakresami `vendor.read` i `vendor.write`)
+- protokół https:\//mytenant.onmicrosoft.com/customerapi (z 2-zakresami `customer.read` i `customer.write`)
+- protokół https:\//mytenant.onmicrosoft.com/vendorapi (z 2-zakresami `vendor.read` i `vendor.write`)
 
 Należy używać `.WithExtraScopeToConsent` modyfikator, która ma *extraScopesToConsent* parametru, jak pokazano w poniższym przykładzie:
 

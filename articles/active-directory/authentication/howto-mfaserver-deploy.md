@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 05/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415223"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956575"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -27,6 +27,9 @@ ms.locfileid: "60415223"
 Po podjęciu decyzji o użyciu lokalnego serwera Multi-Factor Authentication można przejść do kolejnych kroków. Ta strona obejmuje nową instalację serwera oraz jego konfigurację z uwzględnieniem lokalnej usługi Active Directory. Jeśli masz już zainstalowany serwer MFA i chcesz go uaktualnić, zobacz [Upgrade to the latest Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade.md) (Uaktualnianie do najnowszej wersji serwera Azure Multi-Factor Authentication). Jeśli szukasz informacji dotyczących instalowania tylko usługi sieci Web, zobacz [Wdrażanie usługi sieci Web aplikacji mobilnej serwera Azure Multi-Factor Authentication](howto-mfaserver-deploy-mobileapp.md).
 
 ## <a name="plan-your-deployment"></a>Planowanie wdrożenia
+
+> [!WARNING]
+> Począwszy od marca 2019 serwera MFA pliki do pobrania tylko będą dostępne dla dzierżaw płatną. Dzierżaw bezpłatnej/wersji próbnej już będzie pobrać lub generowania i użytkowania poświadczenia aktywacji.
 
 Przed pobraniem serwera Azure Multi-Factor Authentication zastanów się, jakie są wymagania w zakresie obciążenia i wysokiej dostępności. Te informacje pozwolą podjąć decyzję dotyczącą sposobu i miejsca wdrożenia.
 
@@ -74,7 +77,7 @@ Każdy serwer MFA musi mieć możliwość komunikacji wychodzącej za pośrednic
 
 Jeśli zapory ruchu wychodzącego mają ograniczenie na porcie 443, otwórz następujące zakresy adresów IP:
 
-| Podsieć IP | Maska sieci | Zakres adresów IP |
+| Podsieć adresu IP | Maska sieci | Zakres adresów IP |
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
@@ -90,6 +93,9 @@ Jeśli nie używasz funkcji potwierdzania zdarzeń i użytkownicy nie korzystaj�
 
 ## <a name="download-the-mfa-server"></a>Pobieranie serwera MFA
 
+> [!WARNING]
+> Począwszy od marca 2019 serwera MFA pliki do pobrania tylko będą dostępne dla dzierżaw płatną. Dzierżaw bezpłatnej/wersji próbnej już będzie pobrać lub generowania i użytkowania poświadczenia aktywacji.
+
 Aby pobrać serwer Azure Multi-Factor Authentication z witryny Azure Portal, wykonaj następujące czynności:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
@@ -102,9 +108,6 @@ Aby pobrać serwer Azure Multi-Factor Authentication z witryny Azure Portal, wyk
 5. Nie zamykaj tej strony, ponieważ będziemy odwoływać się do niej po uruchomieniu instalatora.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Instalowanie i konfigurowanie serwera MFA
-
-> [!WARNING]
-> Począwszy od marca 2019 serwera MFA pliki do pobrania tylko będą dostępne dla dzierżaw płatną. Dzierżaw bezpłatnej/wersji próbnej już będzie pobrać lub generowania i użytkowania poświadczenia aktywacji.
 
 Po pobraniu serwera możesz go zainstalować i skonfigurować. Sprawdź, czy serwer, na którym zamierzasz go zainstalować, spełnia wymagania podane w sekcji dotyczącej planowania.
 

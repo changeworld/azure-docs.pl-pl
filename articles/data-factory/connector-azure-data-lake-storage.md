@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 355f61d6282c822e18cf4752044c1e1a5cbbc6a0
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: c0591a7850516a419cb59045754cc4eb02979dfd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560776"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66122600"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
@@ -167,6 +167,9 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 >- **Narzędzie do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
 >Jeśli masz obawy na nadawanie uprawnień na poziomie konta, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania, będą nadal działać tak długo, jak tożsamość zarządzaną otrzymuje z odpowiednimi uprawnieniami na pliki do skopiowania.
+
+>[!IMPORTANT]
+>Jeśli używasz programu PolyBase do ładowania danych z Gen2 Azure Data Lake Store do usługi SQL DW, gdy za pomocą usługi ADLS Gen2 zarządzane uwierzytelnianie tożsamości, upewnij się, możesz również skonfigurować usługi SQL DW właściwie się przy użyciu pliku MSI do magazynu usługi ADLS Gen2, wykonaj kroki #1 #3.b w [Niniejsze wskazówki](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Jeśli Gen2 usługi Azure Data Lake Store jest skonfigurowany przy użyciu punktu końcowego usługi sieci wirtualnej, aby przy użyciu technologii PolyBase do ładowania danych z, należy użyć uwierzytelniania tożsamości zarządzanej.
 
 Te właściwości są obsługiwane w połączonej usłudze:
 

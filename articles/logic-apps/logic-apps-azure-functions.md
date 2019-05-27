@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9b304f2d4d2e498701be5977decf202cb0fa995b
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142320"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922072"
 ---
 # <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>Dodawanie i uruchamianie kodu za pomocą usługi Azure Functions w usłudze Azure Logic Apps
 
@@ -51,6 +51,9 @@ Aby uruchomić fragmenty kodu, bez tworzenia usługi Azure functions, Dowiedz si
   Przed dodaniem akcje, które można uruchomić funkcji, aplikacja logiki musi rozpoczynać wyzwalacza.
 
   Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+> [!NOTE]
+> Integracja aplikacji logiki z usługą Functions nie działa, gdy miejsca (wersja zapoznawcza) są włączone.
 
 <a name="create-function-external"></a>
 

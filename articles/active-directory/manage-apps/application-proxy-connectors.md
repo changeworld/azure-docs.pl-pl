@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f337ea9d55a119c3aec6e94649cdbf049f99e9d6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783682"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113088"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
 
@@ -87,7 +87,9 @@ Aby dowiedzieć się więcej na temat grupy łączników, zobacz [Publikuj aplik
 
 ## <a name="capacity-planning"></a>Planowanie wydajnośći 
 
-Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między łączników, aby obsłużyć oczekiwanego natężenia ruchu. W ogólne, większej liczby użytkowników, do których masz większe maszynie należy. Poniżej znajduje się że tabeli, dając konspektu woluminu różnych komputerów może obsłużyć. Należy pamiętać, wszystkie opiera się na oczekiwanych transakcji na drugim (TPS), a nie przez użytkownika, ponieważ użycie wzorce różnią się i nie można używać do prognozowania obciążenia. Będzie również istnieć pewne różnice w oparciu o rozmiar odpowiedzi i czas odpowiedzi aplikacji wewnętrznej bazy danych — niższy TPS Max spowoduje większe rozmiary odpowiedzi i mniejsza czasów odpowiedzi. Zaleca się o dodatkowych maszyn, tak aby rozłożonego obciążenia między maszynami jest o 50%. Dodatkowa pojemność zapewni, że wysokiej dostępności i odporności.
+Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między łączników, aby obsłużyć oczekiwanego natężenia ruchu. Zaleca się, że każda grupa łączników nie ma co najmniej dwa łączniki w celu zapewnienia wysokiej dostępności i skalowalności. Masz trzy łączniki jest optymalne, w przypadku, gdy może być konieczne do obsługi maszyny w dowolnym momencie. 
+
+W ogólne, większej liczby użytkowników, do których masz większe maszynie należy. Poniżej przedstawiono tabeli, dając zarys woluminu i oczekiwany czas oczekiwania, który może obsługiwać różnych komputerach. Należy pamiętać, wszystkie opiera się na oczekiwanych transakcji na drugim (TPS), a nie przez użytkownika, ponieważ użycie wzorce różnią się i nie można używać do prognozowania obciążenia. Będzie również istnieć pewne różnice w oparciu o rozmiar odpowiedzi i czas odpowiedzi aplikacji wewnętrznej bazy danych — niższy TPS Max spowoduje większe rozmiary odpowiedzi i mniejsza czasów odpowiedzi. Zalecamy również o dodatkowych maszyn, tak aby rozłożonego obciążenia między maszynami zawsze zapewnia wystarczającą buforu. Dodatkowa pojemność zapewni, że wysokiej dostępności i odporności.
 
 |Rdzenie|Pamięć RAM|Oczekiwany czas oczekiwania (MS) — poziomie P99|Max TPS|
 | ----- | ----- | ----- | ----- |

@@ -8,20 +8,20 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: ae8eebf9667f2bc03fdc1082fb38c19c5c645c10
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060988"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116012"
 ---
-**Nazwa** | **Adres URL komercyjnych**  | **Adres URL dla instytucji rządowych** | **Opis** |
+Name (Nazwa) | Adres URL komercyjnych | Adres URL dla instytucji rządowych | Opis
 --- | --- | --- | ---
-Azure AD | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Używane do kontrolowania dostępu i tożsamości zarządzania przy użyciu usługi AAD 
-Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Służy do przesyłania danych replikacji i koordynacji 
-Replikacja | ``*.hypervrecoverymanager.windowsazure.com`` | ``*.hypervrecoverymanager.windowsazure.us``  | Służy do operacji zarządzania replikacją i koordynacji 
-Magazyn | ``*.blob.core.windows.net`` | ``*.blob.core.usgovcloudapi.net``  | Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane 
-Dane telemetryczne (opcjonalnie) | ``dc.services.visualstudio.com`` | ``dc.services.visualstudio.com`` | Używany do telemetrii 
-Synchronizacja czasu | ``time.windows.com`` | ``time.nist.gov`` | Ssed do sprawdzania synchronizacji czasu między systemem i czasem globalnym we wszystkich wdrożeniach.
+Usługa Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Używane do dostępu do kontroli i zarządzania tożsamościami, za pomocą usługi Azure Active Directory. 
+Tworzenie kopii zapasowej | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Służy do transferowania i koordynacji danych replikacji.
+Replikacja | ``*.hypervrecoverymanager.windowsazure.com`` | ``*.hypervrecoverymanager.windowsazure.us``  | Służy do wykonywania operacji i koordynacji zarządzania replikacją.
+Magazyn | ``*.blob.core.windows.net`` | ``*.blob.core.usgovcloudapi.net``  | Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane.
+Dane telemetryczne (opcjonalnie) | ``dc.services.visualstudio.com`` | ``dc.services.visualstudio.com`` | Używane dla danych telemetrycznych.
+Synchronizacja czasu | ``time.windows.com`` | ``time.nist.gov`` | Używany do sprawdzania synchronizacji czasu między systemem i czasem globalnym we wszystkich wdrożeniach.
 
 

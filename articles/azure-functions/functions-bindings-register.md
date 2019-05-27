@@ -10,30 +10,30 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 802e177b6f3844abe4d24c26b7ea2d0d4fb1688c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 53eb5fc9389d913ecacec3729a06e47a1c2bf56b
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697012"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864543"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązania usługi Azure Functions
 
-Począwszy od wersji usługi Azure Functions 2.x, [powiązania](./functions-triggers-bindings.md) są dostępne jako oddzielne pakiety z środowisko uruchomieniowe usługi functions. Gdy funkcje .NET dostęp powiązania przy użyciu pakietów NuGet, pakietów rozszerzenia dostęp do innych funkcji wszystkie powiązania za pomocą ustawienia konfiguracji.
+W usłudze Azure Functions w wersji 2.x, [powiązania](./functions-triggers-bindings.md) są dostępne jako oddzielne pakiety z środowisko uruchomieniowe usługi functions. Gdy funkcje .NET dostęp powiązania przy użyciu pakietów NuGet, pakietów rozszerzenia dostęp do innych funkcji wszystkie powiązania za pomocą ustawienia konfiguracji.
 
-Należy wziąć pod uwagę następujące elementy dotyczące powiązań rozszerzenia:
+Należy wziąć pod uwagę następujące elementy związane z powiązań rozszerzenia:
 
-- Rozszerzeń powiązania nie są jawnie zarejestrowane w funkcji 1.x, chyba że [tworzenia C# bibliotekę klasy przy użyciu programu Visual Studio 2017](#local-csharp).
+- Rozszerzeń powiązania nie są jawnie zarejestrowane w funkcji 1.x, chyba że [tworzenia C# biblioteki klas przy użyciu programu Visual Studio 2019](#local-csharp).
 
 - Wyzwalacze HTTP oraz czasomierzem są obsługiwane domyślnie i nie wymagają rozszerzenia.
 
 Poniższa tabela wskazuje, kiedy i jak należy zarejestrować powiązania.
 
-| Środowisko deweloperskie |Rejestracja<br/> w przypadku funkcji 1.x  |Rejestracja<br/> w przypadku funkcji 2.x  |
+| Środowisko deweloperskie |Rejestrowanie<br/> w przypadku funkcji 1.x  |Rejestrowanie<br/> w przypadku funkcji 2.x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatyczny|Automatyczny|
 |Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczny|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
-|Biblioteki klas C# za pomocą programu Visual Studio 2017|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2017)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2017)|
+|C#Biblioteka klas przy użyciu programu Visual Studio 2019 r.|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|
 |Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Korzystanie z platformy .NET Core interfejsu wiersza polecenia](#c-class-library-with-visual-studio-code)|
 
 ## <a name="local-development-with-azure-functions-core-tools-and-extension-bundles"></a>Lokalne Programowanie przy użyciu podstawowych narzędzi usługi Azure Functions i pakietów rozszerzeń
@@ -41,9 +41,9 @@ Poniższa tabela wskazuje, kiedy i jak należy zarejestrować powiązania.
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 <a name="local-csharp"></a>
-## <a name="c-class-library-with-visual-studio-2017"></a>Biblioteki klas C# za pomocą programu Visual Studio 2017
+## <a name="c-class-library-with-visual-studio-2019"></a>C#Biblioteka klas przy użyciu programu Visual Studio 2019 r.
 
-W **programu Visual Studio 2017**, możesz zainstalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
+W **Visual Studio 2019**, możesz zainstalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>

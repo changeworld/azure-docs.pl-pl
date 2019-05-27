@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 194902cfa2992e4370b68bf140ec3a5e03f364ca
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597669"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957455"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie automatycznych eksperymentów uczenia Maszynowego w języku Python
 
@@ -158,11 +158,9 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 Można określić oddzielne train i sprawdzanie poprawności zestawu za pomocą get_data() lub bezpośrednio w `AutoMLConfig` metody.
 
-## <a name="cross-validation-split-options"></a>Krzyżowego sprawdzania poprawności opcji podziału
-
 ### <a name="k-folds-cross-validation"></a>K złożeń krzyżowe sprawdzanie poprawności
 
-Użyj `n_cross_validations` ustawienie, aby określić liczbę krzyżowego sprawdzania poprawności. Szkoleniowy zestaw danych zostanie ona podzielona losowo na `n_cross_validations` złożeń taki sam rozmiar. Podczas każdego krzyżowego sprawdzania poprawności round jednym z złożeń będzie służyć do sprawdzania poprawności modelu skonfigurowanych pod kątem w pozostałych złożeń. Ten proces powtarza się dla `n_cross_validations` Zaokrągla do momentu poszczególnych etapów jest używany jeden raz w postanowieniach sprawdzania poprawności. Średnie wyniki dla wszystkich `n_cross_validations` zaokrągla zostaną zgłoszone, a odpowiedni model zostanie retrained, szkolenie dla całego zestawu danych. 
+Użyj `n_cross_validations` ustawienie, aby określić liczbę krzyżowego sprawdzania poprawności. Szkoleniowy zestaw danych zostanie ona podzielona losowo na `n_cross_validations` złożeń taki sam rozmiar. Podczas każdego krzyżowego sprawdzania poprawności round jednym z złożeń będzie służyć do sprawdzania poprawności modelu skonfigurowanych pod kątem w pozostałych złożeń. Ten proces powtarza się dla `n_cross_validations` Zaokrągla do momentu poszczególnych etapów jest używany jeden raz w postanowieniach sprawdzania poprawności. Średnie wyniki dla wszystkich `n_cross_validations` zaokrągla zostaną zgłoszone, a odpowiedni model zostanie retrained, szkolenie dla całego zestawu danych.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo między weryfikacji (powtarzanych losowego próbkowanie podrzędnych)
 
@@ -188,7 +186,7 @@ Zobacz [witryny GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/m
 
 ## <a name="configure-your-experiment-settings"></a>Skonfiguruj ustawienia eksperymentu
 
-Istnieje kilka opcji, które umożliwiają skonfigurowanie Twoje zautomatyzowane eksperymentu uczenia maszynowego. Te parametry są ustawiane przez utworzenie wystąpienia `AutoMLConfig` obiektu. Zobacz [klasy AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) pełną listę parametrów.  
+Istnieje kilka opcji, które umożliwiają skonfigurowanie Twoje zautomatyzowane eksperymentu uczenia maszynowego. Te parametry są ustawiane przez utworzenie wystąpienia `AutoMLConfig` obiektu. Zobacz [klasy AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) pełną listę parametrów.
 
 Oto niektóre przykłady:
 
@@ -221,7 +219,7 @@ Oto niektóre przykłady:
 
 Trzy różne `task` wartości parametru określają listy algorytmów do zastosowania.  Użyj `whitelist` lub `blacklist` parametry dodatkowo zmodyfikować iteracji, używając dostępnych algorytmów do dołączania lub wykluczania. Na liście obsługiwanych modeli można znaleźć na [klasy SupportedAlgorithms](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py).
 
-## <a name="primary-metric"></a>Podstawowe metryki
+### <a name="primary-metric"></a>Podstawowe metryki
 Podstawowy metric; jak pokazano w przykładach Określa metrykę do użycia podczas uczenia modelu do optymalizacji. Podstawową metrykę, którą można wybrać, jest określana przez typ zadania, które wybierzesz. Poniżej znajduje się lista dostępnych metryk.
 
 |Klasyfikacja | Regresji | Prognozowanie szeregów czasowych
@@ -232,15 +230,15 @@ Podstawowy metric; jak pokazano w przykładach Określa metrykę do użycia podc
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-## <a name="data-preprocessing--featurization"></a>Wstępne przetwarzanie danych i cechowania
+### <a name="data-preprocessing--featurization"></a>Wstępne przetwarzanie danych i cechowania
 
-W każdej automatycznych eksperymentu uczenia maszynowego, Twoje dane są [automatyczne skalowanie i znormalizowane](concept-automated-ml.md#preprocess) ułatwiające algorytmy działać dobrze.  Jednak można również włączyć dodatkowe przetwarzanie wstępne/cechowania, takich jak brakujące wartości, przypisywania, kodowanie i przekształcenia. [Dowiedz się więcej o jakie cechowania jest dołączony](how-to-create-portal-experiments.md#preprocess). 
+W każdej automatycznych eksperymentu uczenia maszynowego, Twoje dane są [automatyczne skalowanie i znormalizowane](concept-automated-ml.md#preprocess) ułatwiające algorytmy działać dobrze.  Jednak można również włączyć dodatkowe przetwarzanie wstępne/cechowania, takich jak brakujące wartości, przypisywania, kodowanie i przekształcenia. [Dowiedz się więcej o jakie cechowania jest dołączony](how-to-create-portal-experiments.md#preprocess).
 
 Aby włączyć ten cechowania, określ `"preprocess": True` dla [ `AutoMLConfig` klasy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
-## <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
+### <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
 Typ zadania prognozowania serii czasu masz dodatkowe parametry, aby zdefiniować.
-1. time_column_name — jest wymaganym parametrem, który definiuje nazwę kolumny w serii szkoleń danych zawierającego daty/godziny. 
+1. time_column_name — jest wymaganym parametrem, który definiuje nazwę kolumny w serii szkoleń danych zawierającego daty/godziny.
 1. max_horizon — definiuje czas, który chcesz przewidzieć się okresowość dane szkoleniowe w oparciu. Na przykład jeśli masz dane szkoleniowe codzienne ziarna czasu, jak daleko na zewnątrz zdefiniujesz Days modelu do szkolenia dla.
 1. grain_column_names — definiuje nazwy kolumn, które zawierają dane serii czasu danych szkoleniowych. Na przykład jeśli są prognozowania sprzedaży konkretnego witryn zbiorczych w sklepie, zdefiniujesz sklepu i marki kolumny jako kolumny ziarna.
 
@@ -287,60 +285,16 @@ run = experiment.submit(automl_config, show_output=True)
 >Zależności są najpierw instalowane na nowej maszynie.  Może upłynąć do 10 minut, zanim są wyświetlane dane wyjściowe.
 >Ustawienie `show_output` do `True` skutkuje dane wyjściowe są wyświetlane w konsoli.
 
-## <a name="exit-criteria"></a>Kryteria wyjścia 
+### <a name="exit-criteria"></a>Kryteria wyjścia
 Istnieje kilka opcji można zdefiniować ukończenie eksperymentu.
-1. Kryteriów — Jeżeli nie zdefiniujesz dowolne Zakończ parametry, których eksperymentu będzie kontynuowane, dopóki nie dalsze postęp na swoje podstawowe metryki. 
+1. Kryteriów — Jeżeli nie zdefiniujesz dowolne Zakończ parametry, których eksperymentu będzie kontynuowane, dopóki nie dalsze postęp na swoje podstawowe metryki.
 1. Liczba iteracji — należy zdefiniować liczbę iteracji eksperymentu do uruchomienia. Możesz opcjonalnie dodać iteration_timeout_minutes do definiowania limitu czasu w ciągu kilku minut dla każdej iteracji.
 1. Zakończ po przez długi czas — przy użyciu experiment_timeout_minutes w ustawieniach, które można zdefiniować, jak długo w ciągu kilku minut, na powinno być kontynuowane eksperymentu w przebiegu.
 1. Zakończ po osiągnięciu wyniku — przy użyciu experiment_exit_score, które możesz wykonać eksperyment, po osiągnięciu wynik, w oparciu o swoje podstawowe metryki.
 
-## <a name="explore-model-metrics"></a>Eksplorowanie metryk modelu
-Jeśli jesteś w notesie, można wyświetlić wyniki w element widget lub wewnętrznej. Zobacz [śledzenia i oceniać modele](how-to-track-experiments.md#view-run-details) Aby uzyskać więcej informacji.
+### <a name="explore-model-metrics"></a>Eksplorowanie metryk modelu
 
-
-### <a name="classification-metrics"></a>Metryki klasyfikacji
-Następujące metryki są zapisywane w każdej iteracji dla zadania klasyfikacji.
-
-|Metryka|Opis|Obliczenia|Dodatkowe parametry
---|--|--|--|
-AUC_Macro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Makro jest średnią arytmetyczną AUC dla każdej klasy.  | [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "makro"|
-AUC_Micro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Micro jest kolumną obliczaną globalnie, łącząc prawdziwie dodatnie i fałszywych alarmów od każdej klasy| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "micro"|
-AUC_Weighted  | AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Ważona jest średnią arytmetyczną oceny dla każdej klasy, ważona według liczby wystąpień wartość true w każdej klasie| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Średni = "ważona"
-accuracy|Dokładność jest procent przewidywane etykiety, które dokładnie pasują do etykiety wartość true. |[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Brak|
-average_precision_score_macro|Średnia dokładności znajduje się podsumowanie krzywej precision-recall jako średnią ważoną szczegółowości w opisie w każdej wartości progowej ze wzrostem wycofaniu z poprzedniej wartości progowej, używane jako wagę. Makro jest średnią arytmetyczną wyniku średnią precyzję każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Średni = "makro"|
-average_precision_score_micro|Średnia dokładności znajduje się podsumowanie krzywej precision-recall jako średnią ważoną szczegółowości w opisie w każdej wartości progowej ze wzrostem wycofaniu z poprzedniej wartości progowej, używane jako wagę. Micro jest kolumną obliczaną globalnie, łącząc prawdziwie dodatnie i fałszywych alarmów przy każdym odcięcia|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Średni = "micro"|
-average_precision_score_weighted|Średnia dokładności znajduje się podsumowanie krzywej precision-recall jako średnią ważoną szczegółowości w opisie w każdej wartości progowej ze wzrostem wycofaniu z poprzedniej wartości progowej, używane jako wagę. Ważona jest średnią arytmetyczną wyniku średnią precyzję dla każdej klasy, ważona według liczby wystąpień wartość true w każdej klasie|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Średni = "ważona"|
-balanced_accuracy|Dokładność o zrównoważonym obciążeniu jest średnią arytmetyczną odwołania dla każdej klasy.|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Średni = "makro"|
-f1_score_macro|F1 wynik jest harmoniczna dokładności i odwołania. Makro jest średnią arytmetyczną wynik F1 dla każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Średni = "makro"|
-f1_score_micro|F1 wynik jest harmoniczna dokładności i odwołania. Micro jest kolumną obliczaną globalnie przez liczenie całkowita prawdziwie dodatnie, fałszywych wyników negatywnych i fałszywych alarmów|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Średni = "micro"|
-f1_score_weighted|F1 wynik jest harmoniczna dokładności i odwołania. Średnia ważona przez klasy częstotliwość oceny F1 dla każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Średni = "ważona"|
-log_loss|To jest funkcja utraty używanych w regresji logistycznej (wielomian) i rozszerzenia takich jak sieci neuronowych, zdefiniowane jako ujemny dziennika prawdopodobieństwo true etykiet podane przewidywania prawdopodobieństwa klasyfikatora. Dla jednego przykładu z true etykiety yt w {0,1} oraz szacowane prawdopodobieństwa yp tego yt = 1, utraty dziennika jest - dziennika P (yt&#124;yp) =-(yt log(yp) + (1 - yt) dziennika (1 - yp))|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Brak|
-norm_macro_recall|Odwołaj znormalizowane — makro jest makro odwołania znormalizowane, dzięki czemu losowe wydajności ma wynik 0 i doskonałe wydajności ma wynik 1. Jest to osiągane przez norm_macro_recall: = (recall_score_macro - R) /(1-R), gdzie R jest oczekiwana wartość recall_score_macro dla prognoz losowy (czyli R = 0,5 dla klasyfikacji binarnej) i R=(1/C) klasy C klasyfikacji problemów|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Średni = "makro" a następnie (recall_score_macro - R) /(1-R), gdzie R jest oczekiwana wartość recall_score_macro dla prognoz losowy (czyli R = 0,5 dla klasyfikacji binarnej) i R=(1/C) klasy C klasyfikacji problemów|
-precision_score_macro|Dokładność jest procent elementy oznaczone jako niektórych klas, które faktycznie są w tej klasie. Makro jest średnią arytmetyczną dokładności dla każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Średni = "makro"|
-precision_score_micro|Dokładność jest procent elementy oznaczone jako niektórych klas, które faktycznie są w tej klasie. Micro jest kolumną obliczaną globalnie przez liczenie całkowita prawdziwie dodatnie i fałszywych alarmów|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Średni = "micro"|
-precision_score_weighted|Dokładność jest procent elementy oznaczone jako niektórych klas, które faktycznie są w tej klasie. Ważona jest średnią arytmetyczną dokładności dla każdej klasy, ważona według liczby wystąpień wartość true w każdej klasie|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Średni = "ważona"|
-recall_score_macro|Odwołanie jest procent elementy rzeczywiście w niektórych klas, które są oznaczone etykietami poprawnie. Makro jest średnią arytmetyczną odwołania dla każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Średni = "makro"|
-recall_score_micro|Odwołanie jest procent elementy rzeczywiście w niektórych klas, które są oznaczone etykietami poprawnie. Micro jest kolumną obliczaną globalnie przez liczenie całkowita prawdziwie dodatnie, fałszywych wyników negatywnych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Średni = "micro"|
-recall_score_weighted|Odwołanie jest procent elementy rzeczywiście w niektórych klas, które są oznaczone etykietami poprawnie. Ważona jest średnią arytmetyczną odwołania dla każdej klasy, ważona według liczby wystąpień wartość true w każdej klasie|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Średni = "ważona"|
-weighted_accuracy|Ważona dokładności jest dokładności, gdzie wagę każdy przykład jest równe część wystąpień wartość true, w tym przykładzie wartość true, klasa|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight jest wektorem równą część tej klasy, dla każdego elementu w elemencie docelowym|
-
-### <a name="regression-and-time-series-forecasting-metrics"></a>Regresji i czas serii Prognozowanie metryki
-Następujące metryki są zapisywane w każdej iteracji regresji lub zadanie prognozowania.
-
-|Metryka|Opis|Obliczenia|Dodatkowe parametry
---|--|--|--|
-explained_variance|Wariancja wyjaśniono to modelu matematycznego kont odmiany danego zestawu danych. Jest to procent spadek wariancji oryginalne dane do wariancję błędy. Średnia błędów wynosi 0, jest równa wyjaśniono wariancji.|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Brak|
-r2_score|R2 to określenie lub procent redukcji kwadratów błędów w porównaniu z modelem linii bazowej, który wyprowadza średniej. Średnia błędów wynosi 0, jest równa wyjaśniono wariancji.|[Obliczanie](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Brak|
-spearman_correlation|Korelacja metodą Spearman jest miarą nonparametric monotonicity relacji między dwoma zestawami danych. W przeciwieństwie do korelacji Pearsona korelacji metodą Spearman nie zakłada, że oba zestawy danych zwykle są rozpowszechniane. Podobnie jak inne współczynniki korelacji ta różni się od -1 do + 1 od 0, co oznacza brak korelacji. Korelacji -1 lub + 1 oznacza dokładne monotoniczny relacji. Dodatnia korelacji oznacza, że x rosną, więc nie y. Korelacji ujemna oznacza, że x rosną, y zmniejsza.|[Obliczanie](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Brak|
-mean_absolute_error|Oznacza to, że błąd absolutny jest oczekiwanej wartości bezwzględnej wartości różnicy między obiektu docelowego i prognozowania|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Brak|
-normalized_mean_absolute_error|Znormalizowany średni bezwzględny błąd to średni bezwzględny błąd podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Podziel według zakresu danych|
-median_absolute_error|Mediana bezwzględny błąd jest medianę wszystkich bezwzględnych różnic między obiektu docelowego i prognozowania. To jest odporny elementy odstające.|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Brak|
-normalized_median_absolute_error|Znormalizowana mediany bezwzględny błąd jest mediany błąd absolutny podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Podziel według zakresu danych|
-root_mean_squared_error|Główny oznacza to, że błąd kwadratów jest pierwiastek kwadratowy z oczekiwanym kwadratu różnicy między obiektu docelowego i prognozowania|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Brak|
-normalized_root_mean_squared_error|Znormalizowana głównego oznacza to, że błąd kwadratów błędu głównego średniej kwadratów podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Podziel według zakresu danych|
-root_mean_squared_log_error|Główny oznaczać błędów w dzienniku kwadratów pierwiastek kwadratowy z oczekiwanym błędem logarytmicznej kwadrat|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Brak|
-normalized_root_mean_squared_log_error|Znormalizowane błąd średniej kwadratów dziennika głównego jest błąd średniej kwadratów dziennika głównego podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Podziel według zakresu danych|
-
+Jeśli jesteś w notesie, można wyświetlić wyniki szkolenia w element widget lub wewnętrznej. Zobacz [śledzenia i oceniać modele](how-to-track-experiments.md#view-run-details) Aby uzyskać więcej informacji.
 
 ## <a name="understand-automated-ml-models"></a>Omówienie automatycznego modeli uczenia Maszynowego
 
@@ -358,7 +312,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Inżynieria funkcji automatycznego
 
-Przejrzyj listę rzeczy, przetwarzania wstępnego i [zautomatyzowane technicznego opracowywania funkcji](concept-automated-ml.md#preprocess) tak się stanie podczas przetwarzania wstępnego = True.  
+Przejrzyj listę rzeczy, przetwarzania wstępnego i [zautomatyzowane technicznego opracowywania funkcji](concept-automated-ml.md#preprocess) tak się stanie podczas przetwarzania wstępnego = True.
 
 Rozważmy następujący przykład:
 + Istnieją 4 funkcje wejściowe: (Liczbowy) B (liczbowe od), C (liczbowe od), D (Data/godzina)
@@ -370,7 +324,7 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
 
 + Interfejs API 1: `get_engineered_feature_names()` zwraca listę nazw funkcji zaprojektowanych.
 
-  Sposób użycia: 
+  Sposób użycia:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -382,11 +336,11 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
   Ta lista zawiera wszystkie nazwy funkcji zaprojektowanych.
 
   >[!Note]
-  >Użyj "timeseriestransformer" dla zadania = "Prognozowanie", użyj innego "datatransformer" dla zadania "regresji" lub "Klasyfikacja". 
+  >Użyj "timeseriestransformer" dla zadania = "Prognozowanie", użyj innego "datatransformer" dla zadania "regresji" lub "Klasyfikacja".
 
 + Interfejs API 2: `get_featurization_summary()` zwraca cechowania podsumowania dla wszystkich danych wejściowych funkcji.
 
-  Sposób użycia: 
+  Sposób użycia:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -417,16 +371,16 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
     'EngineeredFeatureCount': 11,
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
-  
+
    Gdzie:
-   
+
    |Dane wyjściowe|Definicja|
    |----|--------|
-   |RawFeatureName|Nazwa funkcji/kolumny wejściowej z zestawu danych przedstawionego.| 
+   |RawFeatureName|Nazwa funkcji/kolumny wejściowej z zestawu danych przedstawionego.|
    |TypeDetected|Wykryto typ danych wejściowych funkcji.|
    |Porzucone|Wskazuje, jeśli danych wejściowych funkcji zostało porzucone lub używane.|
    |EngineeringFeatureCount|Liczba funkcji wygenerowane przez inżynierów przekształcenia funkcja automatyczna.|
-   |Przekształcenia|Lista zastosowane do wprowadzania funkcji do generowania zaprojektowanych funkcji przekształcenia.|  
+   |Przekształcenia|Lista zastosowane do wprowadzania funkcji do generowania zaprojektowanych funkcji przekształcenia.|
 
 ### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Skalowanie normalizacji i algorytm hypermeter wartościami:
 
@@ -451,108 +405,36 @@ def print_model(model, prefix=""):
         else:
             pprint(step[1].get_params())
             print()
-                
+
 print_model(fitted_model)
 ```
 
-Poniżej przedstawiono przykładowe dane wyjściowe:
+Poniżej przedstawiono przykładowe dane wyjściowe dla potoku przy użyciu określonego algorytmu (LogisticRegression z RobustScalar, w tym przypadku).
 
-+ Potok przy użyciu określonego algorytmu (LogisticRegression z RobustScalar w tym przypadku):
+```
+RobustScaler
+{'copy': True,
+'quantile_range': [10, 90],
+'with_centering': True,
+'with_scaling': True}
 
-  ```
-  RobustScaler
-  {'copy': True,
-   'quantile_range': [10, 90],
-   'with_centering': True,
-   'with_scaling': True}
-  
-  LogisticRegression
-  {'C': 0.18420699693267145,
-   'class_weight': 'balanced',
-   'dual': False,
-   'fit_intercept': True,
-   'intercept_scaling': 1,
-   'max_iter': 100,
-   'multi_class': 'multinomial',
-   'n_jobs': 1,
-   'penalty': 'l2',
-   'random_state': None,
-   'solver': 'newton-cg',
-   'tol': 0.0001,
-   'verbose': 0,
-   'warm_start': False}
-  ```
-  
-+ Potok przy użyciu podejścia zespołu: W tym przypadku jest zespołu potoki różne 2
+LogisticRegression
+{'C': 0.18420699693267145,
+'class_weight': 'balanced',
+'dual': False,
+'fit_intercept': True,
+'intercept_scaling': 1,
+'max_iter': 100,
+'multi_class': 'multinomial',
+'n_jobs': 1,
+'penalty': 'l2',
+'random_state': None,
+'solver': 'newton-cg',
+'tol': 0.0001,
+'verbose': 0,
+'warm_start': False}
+```
 
-  ```
-  prefittedsoftvotingclassifier
-  {'estimators': ['1', '18'],
-  'weights': [0.6666666666666667,
-              0.3333333333333333]}
-
-  1 - RobustScaler
-  {'copy': True,
-   'quantile_range': [25, 75],
-   'with_centering': True,
-   'with_scaling': False}
-  
-  1 - LightGBMClassifier
-  {'boosting_type': 'gbdt',
-   'class_weight': None,
-   'colsample_bytree': 0.2977777777777778,
-   'importance_type': 'split',
-   'learning_rate': 0.1,
-   'max_bin': 30,
-   'max_depth': 5,
-   'min_child_samples': 6,
-   'min_child_weight': 5,
-   'min_split_gain': 0.05263157894736842,
-   'n_estimators': 200,
-   'n_jobs': 1,
-   'num_leaves': 176,
-   'objective': None,
-   'random_state': None,
-   'reg_alpha': 0.2631578947368421,
-   'reg_lambda': 0,
-   'silent': True,
-   'subsample': 0.8415789473684211,
-   'subsample_for_bin': 200000,
-   'subsample_freq': 0,
-   'verbose': -10}
-  
-  18 - StandardScalerWrapper
-  {'class_name': 'StandardScaler',
-   'copy': True,
-   'module_name': 'sklearn.preprocessing.data',
-   'with_mean': True,
-   'with_std': True}
-  
-  18 - LightGBMClassifier
-  {'boosting_type': 'goss',
-   'class_weight': None,
-   'colsample_bytree': 0.2977777777777778,
-   'importance_type': 'split',
-   'learning_rate': 0.07894947368421053,
-   'max_bin': 30,
-   'max_depth': 6,
-   'min_child_samples': 47,
-   'min_child_weight': 0,
-   'min_split_gain': 0.2631578947368421,
-   'n_estimators': 400,
-   'n_jobs': 1,
-   'num_leaves': 14,
-   'objective': None,
-   'random_state': None,
-   'reg_alpha': 0.5789473684210527,
-   'reg_lambda': 0.7894736842105263,
-   'silent': True,
-   'subsample': 1,
-   'subsample_for_bin': 200000,
-   'subsample_freq': 0,
-   'verbose': -10}
-  ```
-  
 <a name="explain"></a>
 
 ## <a name="explain-the-model-interpretability"></a>Wyjaśniono modelu (współdziałania)

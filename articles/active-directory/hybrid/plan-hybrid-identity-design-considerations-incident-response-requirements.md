@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32efe76ac2fce4c4541287e96c3a495f3eb9031b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08bf7950ada5db90d2b8bfea751b39ffc21f3ee9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455809"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950850"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących reagowania na zdarzenia, dla Twojego rozwiązania z tożsamością hybrydową
 Dużych i średnich organizacji najprawdopodobniej będą mieć [reagowania na zdarzenia zabezpieczeń](https://technet.microsoft.com/library/cc700825.aspx) mające na celu pomóc IT podjąć odpowiednie działania na poziomie wystąpienia zdarzenia. Systemu zarządzania tożsamościami jest ważnym elementem procesu reagowania na zdarzenia, ponieważ może służyć do pomocy w identyfikacji, kto wykonał określonej akcji w odniesieniu do obiektu docelowego. Rozwiązania z tożsamością hybrydową musi mieć możliwość zapewnienia możliwości monitorowania i raportowania, które mogą zostać wykorzystane przez IT, aby wykonać działania, aby identyfikować i minimalizować potencjalne zagrożenie. W ramach planu reagowania na zdarzenia typowe mają następujące fazy w ramach planu:
@@ -50,7 +50,7 @@ Systemu zarządzania tożsamościami powinien pomóc administratorom IT do ident
 * Czy firma musi zidentyfikować prób logowania podejrzanych użytkowników na różnych urządzeniach?
 * Czy firma potrzebuje do wykrywania potencjalnych ze złamanymi zabezpieczeniami poświadczenia użytkownika?
 * Czy firma potrzebuje inspekcji dostępu i akcji użytkownika?
-* Czy firma musi wiedzieć, kiedy użytkownik resetowania jego hasła?
+* Czy firma musi wiedzieć, kiedy użytkownik resetuje hasła?
 
 ## <a name="policy-enforcement"></a>Wymuszanie zasad
 Podczas kontroli uszkodzenia i fazy zmniejszenie ryzyka ważne jest szybkie zmniejszenie rzeczywistych i potencjalnych skutków ataku. Tę akcję, która spowoduje przejście na tym etapie można zdecydować o WERSJA_POMOCNICZA i główne jeden. Dokładna będzie zależeć od Twojej organizacji i rodzaj ataku, który napotkasz. Wstępną ocenę zawarte na tym, że konto zostało naruszone, należy wymusić zasady, aby zablokować tego konta. To tylko jeden przykład, w którym będą wykorzystywane systemu zarządzania tożsamościami. Użyj pytania poniżej, aby ułatwić projektowanie rozwiązania z tożsamością hybrydową, biorąc pod uwagę sposób zostaną wymuszone zasady do reagowania na zdarzenie bieżące:

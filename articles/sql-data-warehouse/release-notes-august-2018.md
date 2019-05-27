@@ -2,20 +2,20 @@
 title: Usługa Azure SQL Data Warehouse — informacje o wersji sierpnia 2018 | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 08/13/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 9547380d4636c1a72add9dab7a9eed850abd0307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: f0840e9b91c81b8a99e8c736c3c5db082c92fe76
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475001"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912216"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Sierpień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w sierpnia 2018.
@@ -30,7 +30,7 @@ Możesz przejść do szczegółów każdej kategorii, aby wyświetlić zalecenia
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 
-| Tytuł | Opis |
+| Stanowisko | Opis |
 |:---|:---|
 | **Potencjalnych awarii zapytania, gdy liczba podziałów przekracza maksymalny limit** |Po przekroczeniu limitu pliku podziału 1 milion górną granicę nieobsługiwany wyjątek spowodowany aparatu SQL do porzucenia i wszystkie zapytania nie powiodło się. Ta poprawka rozwiązany problem poprawnie Obsługa wyjątku i zwróci błąd bez powodowania zapytania, aby zakończyć się niepowodzeniem. |
 | **Zwiększona wartość domyślną ExternalMoveReadersPerNode, aby zwiększyć wydajność obciążeń** |Ten problem został spowodowany przez ustawienie właściwości ExternalMoveReadersPerNode są zsynchronizowane z usługą Service fabric, ustawienie. Ta regresji spowodowała pogorszenie wydajności obciążenia Gen2. Poprawka zapewnia wydajność ładowania Gen2 wróć tutaj parametry zoptymalizowane projektu.|

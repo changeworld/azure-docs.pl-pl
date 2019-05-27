@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdb3de88fde2fbc7ec2aaffdb7d82433845db34b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e3470d9220ed471a05792ed5b3bb259e0dcbe0a6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545944"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121911"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Szybki start: Tworzenie aplikacji Xamarin integrującej logowanie firmy Microsoft
 
@@ -57,14 +57,14 @@ Aby umożliwić aplikacji uzyskiwanie tokenów, musisz najpierw zarejestrować j
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Na górnym pasku kliknij swoje konto. Następnie z listy **Katalog** wybierz dzierżawę usługi Active Directory, w której chcesz zarejestrować aplikację.
 3. Kliknij pozycję **Wszystkie usługi** w okienku po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
-4. Kliknij przycisk **Rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
-5. Aby utworzyć nową **natywną** aplikację kliencką, postępuj zgodnie z monitami.
+4. Kliknij przycisk **rejestracje aplikacji**, a następnie wybierz pozycję **nowej rejestracji**.
+5. Aby utworzyć nową aplikację klienta, postępuj zgodnie z monitami.
    * **Nazwa** opisuje aplikację użytkownikom.
+   * W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
    * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość (na przykład `http://DirectorySearcher`).
 6. Gdy zakończysz rejestrację, usługa Azure AD przypisze aplikacji unikatowy identyfikator. Skopiuj wartość z karty **Aplikacje**, ponieważ będzie ona potrzebna później.
-7. Na stronie **Ustawienia** wybierz pozycję **Wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**.
-8. Wybierz **Microsoft Graph** jako interfejs API. W obszarze **Uprawnienia delegowane** dodaj uprawnienie **Odczytuj dane katalogu**. 
-   Ta akcja umożliwia aplikacji wykonywanie zapytań względem interfejsu API programu Graph dotyczących użytkowników.
+7. Z **uprawnienia do interfejsu API** wybierz opcję **Dodaj uprawnienia**. Wewnątrz **wybierz interfejs API** wybierz ***programu Microsoft Graph***.
+8. W obszarze **delegowane uprawnienia**, wybierz uprawnienie **User.Read**, kliknij przycisk **Dodaj** do zapisania. To uprawnienie skonfiguruje aplikację do wykonywania zapytań względem interfejsu API programu Graph usługi Azure AD dotyczących użytkowników.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalowanie i konfigurowanie biblioteki ADAL
 

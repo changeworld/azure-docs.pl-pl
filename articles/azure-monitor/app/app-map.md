@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba4643118c5d90b91c3e51d569e9a628c84159fc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780028"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964038"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
 
@@ -94,7 +94,9 @@ Zaznacz, aby wyświetlić aktywne alerty i podstawowych reguł, które alerty wy
 
 Mapa aplikacji używa **Nazwa roli w chmurze** właściwość do identyfikacji składniki na mapie. Zestaw SDK usługi Application Insights automatycznie dodaje właściwości nazwy roli chmury do telemetrii wyemitowane przez składniki. Na przykład zestaw SDK doda nazwa witryny sieci web lub nazwa roli usługi do chmury roli nazwy właściwości. Jednakże istnieją przypadki, w których możesz chcieć zastąpić wartość domyślną. Aby zastąpić nazwę roli w chmurze i zmiany, jakie wyświetlona na mapie aplikacji:
 
-### <a name="net"></a>.NET
+### <a name="netnet-core"></a>.NET/.NET Core
+
+**Pisanie niestandardowych parametru TelemetryInitializer, tak jak pokazano poniżej.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -117,9 +119,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**Ładowanie usługi inicjatora**
+**Inicjator obciążenia do aktywnego TelemetryConfiguration**
 
-In ApplicationInsights.config:
+W pliku ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -131,7 +133,10 @@ In ApplicationInsights.config:
     </ApplicationInsights>
 ```
 
-Alternatywna metoda jest utworzenie wystąpienia inicjatora w kodzie, na przykład w pliku Global.aspx.cs:
+> [!NOTE]
+> Dodawanie inicjatora, przy użyciu `ApplicationInsights.config` nie jest prawidłowy dla aplikacji platformy ASP.NET Core.
+
+Alternatywna metoda aplikacje ASP.NET sieci Web jest utworzenie wystąpienia inicjatora w kodzie, na przykład w pliku Global.aspx.cs:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -141,6 +146,17 @@ Alternatywna metoda jest utworzenie wystąpienia inicjatora w kodzie, na przykł
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+    }
+```
+
+Aby uzyskać [platformy ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) aplikacji, dodawania nowego `TelemetryInitializer` odbywa się przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Jest to realizowane w `ConfigureServices` metody usługi `Startup.cs` klasy.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
     }
 ```
 

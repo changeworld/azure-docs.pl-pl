@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2018
+ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203525"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911239"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Standard platformy Azure przed atakami DDoS Protection w witrynie Azure portal
 
@@ -204,11 +204,24 @@ Firma Microsoft nawiązała współpracę z [BreakingPoint Cloud](https://www.ix
 - Dokumentowanie zgodności przed atakami DDoS
 - Szkolenie zespołom zabezpieczeń sieci
 
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Wyświetl alerty usługi DDoS protection w usłudze Azure Security Center
+
+Usługa Azure Security Center zawiera listę [alerty zabezpieczeń](/azure/security-center/security-center-managing-and-responding-alerts), informacje w celu ułatwienia badania i Korygowanie problemów. Dzięki tej funkcji możesz Uzyskaj ujednolicony widok alertów, w tym alertów dotyczących ataku DDoS oraz działania podjęte w celu zminimalizowania skuteczności ataku w czasie zbliżonym do.
+Istnieją dwa konkretnych alertów, zobaczysz dla dowolnego przed atakami DDoS ataki wykrywania i łagodzenia skutków:
+
+- **Wykryto ataków DDoS, publiczny adres IP na**: Ten alert jest generowany, gdy usługi DDoS protection wykryje, że jeden z publicznymi adresami IP celem ataków DDoS.
+- **Skorygowane ataków DDoS, publiczny adres IP na**: Ten alert jest generowany, gdy atak na publiczny adres IP zostały skorygowane.
+Aby wyświetlić alerty, otwórz **usługi Security Center** w witrynie Azure portal. W obszarze **ochrony przed zagrożeniami**, wybierz opcję **alerty zabezpieczeń**. Poniższy zrzut ekranu przedstawia przykład alertów ataku DDoS.
+
+![Przed atakami DDoS alertu w usłudze Azure Security Center](./media/manage-ddos-protection/ddos-alert-asc.png)
+
+Alerty zawierają ogólne informacje o publicznym adresie IP, która podlega ataku, geograficzne i informacje dotyczące analizy zagrożeń i kroki korygowania funkcję.
+
 ## <a name="permissions"></a>Uprawnienia
 
 Aby pracować z planów ochrony przed atakami DDoS, Twoje konto musi mieć przypisaną do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowe](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, którą przypisano odpowiednie działania wymienione w poniższej tabeli:
 
-| Akcja                                            | Name (Nazwa)                                     |
+| action                                            | Name (Nazwa)                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Odczyt planu ochrony przed atakami DDoS              |
 | Microsoft.Network/ddosProtectionPlans/write       | Tworzenie lub aktualizowanie planu ochrony przed atakami DDoS  |

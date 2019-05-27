@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: android
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
-ms.reviewer: dadobali
+ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 288581ed3ca339ad9126336556e7b0b565fbbafa
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545688"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121993"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -86,18 +85,17 @@ Potrzebna jest natywna aplikacja kliencka zarejestrowana w firmie Microsoft w wi
     - Wybierz pozycję ***Azure Active Directory*** > ***Rejestracje aplikacji***.
 
 2. Tworzymy aplikację.
-    - Wybierz pozycję **Rejestrowanie nowej aplikacji**.
+    - Wybierz **nowej rejestracji**.
     - Wprowadź nazwę aplikacji w polu **Nazwa**.
-    - W polu **Typ aplikacji** wybierz pozycję **Natywna**.
-    - W polu **Identyfikator URI przekierowania** wprowadź ciąg `http://localhost`.
+    - W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+    - W **identyfikator URI przekierowania**, wybierz opcję **klientem publicznym (mobilnych i klasycznych)** z listy rozwijanej i wpisz `http://localhost`.
+    - Kliknij przycisk **zarejestrować**.
 
 3. Konfigurowanie programu Microsoft Graph
-    - Wybierz kolejno pozycje **Ustawienia > Wymagane uprawnienia**.
-    - Wybierz polecenie **Dodaj**, a następnie w polu **Wybierz interfejs API** wybierz pozycję ***Microsoft Graph***.
-    - Wybierz uprawnienie **Zaloguj się i odczytaj profil użytkownika** i kliknij przycisk **Wybierz**, aby je zapisać.
-        - To uprawnienie jest mapowane na zakres `User.Read`.
-    - Opcjonalnie: w obszarze **Wymagane uprawnienia > Windows Azure Active Directory** usuń wybrane uprawnienie **Zaloguj się i odczytaj profil użytkownika**. Dzięki temu na stronie ze zgodą użytkownika to uprawnienie nie będzie wymienione dwukrotnie.
-
+    - Wybierz **uprawnienia do interfejsu API**.
+    - Wybierz **Dodaj uprawnienia**w programie **wybierz interfejs API** wybierz ***programu Microsoft Graph***.
+    - W obszarze **delegowane uprawnienia**, wybierz uprawnienie **User.Read**, kliknij przycisk **Dodaj** do zapisania.        
+    
 4. Gratulacje! Aplikacja została pomyślnie skonfigurowana. W następnej sekcji konieczne będą następujące elementy:
     - `Application ID`
     - `Redirect URI`

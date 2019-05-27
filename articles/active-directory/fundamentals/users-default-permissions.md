@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb05ee4d6e05cb8b56756a761a519e5903b78bbd
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507093"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921034"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?
 W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Dostęp użytkownika, który składa się z typ użytkownika, ich [przypisań ról](active-directory-users-assign-role-azure-portal.md)i ich własność poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa. Domyślne uprawnienia użytkowników można zmienić tylko w ustawieniach użytkownika w usłudze Azure AD.
@@ -53,7 +53,7 @@ Użytkownicy mogą rejestrować aplikacji | Ustawienie tej opcji nie uniemożliw
 Zezwalaj użytkownikom na łączenie konta służbowego z usługą LinkedIn | Ustawienie tej opcji nie uniemożliwia użytkownikom łączenie ich konta firmowego lub szkolnego za pomocą konta LinkedIn.  Zobacz [konta LinkedIn, udostępnianie danych połączeń i zgody](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) Aby uzyskać więcej informacji.
 Możliwość tworzenia grup zabezpieczeń | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup zabezpieczeń. Administratorzy globalni i Administratorzy użytkowników nadal mogą tworzyć grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
 Możliwość tworzenia grup usługi Office 365 | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup usługi Office 365. Ustawienie tej opcji na wartość Niektóre umożliwia wybranemu zestawowi użytkowników tworzenie grup usługi Office 365. Administratorzy globalni i Administratorzy użytkownik nadal będzie można utworzyć grupy usługi Office 365. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
-Ogranicz dostęp do portalu administracyjnego usługi Azure AD | Ustawienie tej opcji nie uniemożliwia użytkownikom uzyskiwanie dostępu do usługi Azure Active Directory.
+Ogranicz dostęp do portalu administracyjnego usługi Azure AD | Ustawienie tej opcji na tak uniemożliwia użytkownikom uzyskiwanie dostępu do usługi Azure Active Directory tylko w portalu Azure.
 Możliwość odczytywania innych użytkowników | To ustawienie jest dostępne tylko w programie PowerShell. Ustawienie tej opcji na wartość $false uniemożliwia użytkownikom nieadministracyjnym odczytywanie informacji o użytkowniku z katalogu. Nie zapobiega to jednak odczytywaniu informacji o użytkowniku w innych usługach firmy Microsoft, takich jak Exchange Online. To ustawienie powinno być używane tylko w specjalnych okolicznościach i ustawianie go na wartość $false nie jest zalecane.
 
 ## <a name="object-ownership"></a>Własność obiektu

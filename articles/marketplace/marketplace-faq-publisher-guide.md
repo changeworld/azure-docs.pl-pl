@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3e1bad5902bb35ce0c037835359c267582cc8bc7
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 152be044b5696a0d9017729d731e080ed9163828
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938654"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964049"
 ---
 # <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
 
@@ -35,8 +35,8 @@ Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów rozw
 Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań składa się kilka kategorii, w tym między innymi:
 
 * podstawowe systemy operacyjne
-* bazy danych
-* security
+* baz danych
+* zabezpieczenia
 * identity
 * sieć
 * łańcuch bloków
@@ -216,7 +216,7 @@ Tak. Środki subskrypcyjne lub fundusze zobowiązań pieniężnych na koncie mog
 
 Informacje o szacowanym użyciu znajdują się w [portal zarządzania Microsoft Azure](https://portal.azure.com/). Takie informacje o szacowanym użyciu mogą nie uwzględniać ostatnie działania i mogą opierać się na projektowanych podstawie przeszłego zużycia. Okresie publicznej wersji zapoznawczej ta możliwość może nie być dostępna dla wszystkich zakupów i może się różnić w zależności od typu produktu.
 
-### <a name="customer-support"></a>Obsługa klienta
+### <a name="customer-support"></a>Pomoc techniczna
 
 **Skontaktować się z ogólnych problemów z portalu Azure Marketplace?**
 
@@ -310,7 +310,7 @@ Przegląd [przewodnikiem dla wydawców](https://docs.microsoft.com/azure/marketp
 
 **Jak rozpocząć publikowanie w witrynie Azure Marketplace?**
 
-Twoja lista portalu Azure Marketplace należy rozpocząć od przejrzenia [Azure Marketplace wydawca przewodnik](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) i [staje się Wydawca](https://docs.microsoft.com/azure/marketplace/become-publisher). Następnie prześlij swoje zgłoszenie, kończenie [formularz nominacji witryny Marketplace Azure](https://azuremarketplace.microsoft.com/sell/signup).
+Twoja lista portalu Azure Marketplace należy rozpocząć od przejrzenia [Azure Marketplace wydawca przewodnik](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) i [staje się Wydawca](https://docs.microsoft.com/azure/marketplace/become-publisher). Następnie prześlij aplikację przez [przesyłanie oferty](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Zobacz jak [utworzyć konto w Centrum partnerskim](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) Aby uzyskać więcej informacji.
 
 **Czy muszę być członkiem programu Microsoft Partner Network (MPN), aby wystawić swoje aplikacje i usługi w witrynie Azure Marketplace?**
 

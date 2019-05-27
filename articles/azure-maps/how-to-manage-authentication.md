@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60694101"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952572"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Zarządzaj uwierzytelnianiem w usługi Azure Maps
 
@@ -98,4 +98,8 @@ Aby uzyskać więcej informacji na temat żądania tokenów dostępu z usługi A
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat uwierzytelniania usługi Azure AD i zestawu SDK usługi sieci Web Azure Maps, zobacz [usługi Azure AD i zestawu SDK sieci Web usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+Aby dowiedzieć się więcej na temat uwierzytelniania usługi Azure AD i zestawu SDK usługi sieci Web Azure Maps, zobacz [usługi Azure AD i zestawu SDK sieci Web usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+
+Dowiedz się, jak wyświetlać metryki użycia interfejsu API dla swojego konta usługi Azure Maps:
+> [!div class="nextstepaction"] 
+> [Wyświetl metryki użycia](how-to-view-api-usage.md)

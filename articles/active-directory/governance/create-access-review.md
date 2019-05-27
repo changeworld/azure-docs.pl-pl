@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247064"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113476"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -30,8 +30,11 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+- Usługa Azure AD — warstwa Premium P2
 - [Przeglądy dostępu włączone](access-reviews-overview.md)
 - Administrator globalny lub administrator użytkowników
+
+Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Utwórz co najmniej jeden przeglądów dostępu
 
@@ -77,9 +80,13 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
     ![Tworzenie przeglądu dostępu — osób dokonujących przeglądu](./media/create-access-review/reviewers.png)
 
-1. W **programy** wybierz program, którego chcesz użyć. Można uprościć jak śledzenie i zbierać przeglądów dostępu do różnych celów, organizując je w programach. **Domyślny Program** zawsze jest obecny, lub utworzyć inny program. Na przykład możesz mieć jeden program dla każdego inicjatywy zgodności lub celach biznesowych.
+1. W **programy** wybierz program, którego chcesz użyć. **Domyślny Program** zawsze jest obecny.
 
     ![Tworzenie przeglądu dostępu — programy](./media/create-access-review/programs.png)
+
+    Można uprościć jak śledzenie i zbierać przeglądów dostępu do różnych celów, organizując je w programach. Każdy przeglądu dostępu mogą być połączone z programem. Następnie podczas przygotowania raporty Audytor możesz skupić się na przeglądów dostępu w zakresie określonym inicjatywy. Programy i wyników przeglądu dostępu są widoczne dla użytkowników w administrator globalny, administrator użytkownika, administratora zabezpieczeń lub roli czytelnika zabezpieczeń.
+
+    Aby wyświetlić listę programów, przejdź do pozycji dostępu przegląda strony i wybierz pozycję **programy**. Jeśli jesteś administratorem globalnym lub rola administratora, możesz utworzyć dodatkowe programy. Na przykład możesz mieć jeden program dla każdego inicjatywy zgodności lub celach biznesowych. Jeśli nie potrzebujesz już program i nie ma żadnych formantów z nim połączone, możesz go usunąć.
 
 ### <a name="upon-completion-settings"></a>Ustawienia działań po zakończeniu
 
@@ -110,6 +117,8 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
 1. Ustaw **przypomnienia** do **Włącz** aby platforma Azure AD wysyłała przypomnienia o przeglądach dostępu w toku dla recenzentów, którzy nie ukończyli swojego przeglądu.
 
+    Domyślnie usługa Azure AD automatycznie wysyła przypomnienia recenzentom, którzy jeszcze nie odpowiedzieli, po upływie połowy czasu przeznaczonego na przekazanie opinii.
+
 ## <a name="start-the-access-review"></a>Rozpocznij Przegląd dostępu
 
 Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**. Przegląd dostępu będą wyświetlane na liście ze wskaźnikiem jego stan.
@@ -118,19 +127,7 @@ Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**. Przeg
 
 Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md). W przypadku zapoznania się z nimi dla gości, aby dokonać przeglądu własnego dostępu, wyświetlić je instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji](review-your-access.md).
 
-W przypadku niektórych recenzentów gości, gości są powiadamiane za pośrednictwem poczty e-mail tylko wtedy, gdy już zaakceptowane zaproszenia.
-
-## <a name="manage-the-access-review"></a>Zarządzanie przeglądu dostępu
-
-Recenzenci Wypełnij przeglądów ich na postęp można śledzić **Przegląd** strony Przegląd dostępu. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończeniu przeglądu](complete-access-review.md).
-
-![Przeglądy dostępu w toku](./media/create-access-review/overview-progress.png)
-
-Jeśli jest to jednorazowa przeglądu, następnie po umieszczeniu okres przeglądu dostępu lub administrator zatrzymania przeglądu dostępu postępuj zgodnie z instrukcjami w [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md) aby zobaczyć i zastosować wyniki.  
-
-Aby zarządzać szereg dostępu recenzje, przejdź do przeglądu dostępu i będą Znajdź nadchodzące zdarzenia w przeglądach zaplanowane i Edytuj datę zakończenia lub Dodawanie/usuwanie recenzentów w związku z tym.
-
-Na podstawie dokonanego wyboru w **ustawienia działań po zakończeniu**, automatycznie Zastosuj będzie wykonywany po Data zakończenia przeglądu lub jeśli ręcznie zatrzymaj przeglądu. Stan przeglądu ulegnie zmianie z **Ukończono** za pośrednictwem pośrednich stanów, takie jak **stosowanie** a na koniec do stanu **zastosowano**. Należy się spodziewać się zablokowani użytkownicy ewentualnej usuwany z przypisania grupy członkostwa lub aplikacji w ciągu kilku minut.
+Jeśli przypisano gości recenzentów, a nie zaakceptowali zaproszenia, nie otrzymają wiadomość e-mail z przeglądów dostępu ponieważ one musisz najpierw zaakceptować zaproszenie przed przeglądania.
 
 ## <a name="create-reviews-via-apis"></a>Utwórz przeglądy za pośrednictwem interfejsów API
 

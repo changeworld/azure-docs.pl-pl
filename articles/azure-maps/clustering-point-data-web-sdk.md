@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795936"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957320"
 ---
 # <a name="clustering-point-data"></a>Klastrowanie punktu danych
 
@@ -33,7 +33,7 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15 
 });
@@ -46,9 +46,9 @@ var datasource = new atlas.source.DataSource(null, {
 
 | Metoda | Zwracany typ | Opis |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;funkcji&lt;Geometry, wszelkie&gt; \| kształtu&gt; | Pobiera elementy podrzędne danego klastra na następny poziom powiększenia. Tych elementów podrzędnych może być kombinacją kształty i subclusters. Subclusters będzie funkcji dopasowywania ClusteredProperties właściwości. |
+| getClusterChildren(clusterId: number) | Promise&lt;tablicy&lt;funkcji&lt;Geometry, wszelkie&gt; \| kształtu&gt;&gt; | Pobiera elementy podrzędne danego klastra na następny poziom powiększenia. Tych elementów podrzędnych może być kombinacją kształty i subclusters. Subclusters będzie funkcji dopasowywania ClusteredProperties właściwości. |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;numer&gt; | Oblicza poziom powiększenia, jaką rozpoczęcia, rozszerzając lub Rozdziel klastra. |
-| getClusterLeaves (clusterId: liczba limit: numer, offset: numer) | Promise&lt;funkcji&lt;Geometry, wszelkie&gt; \| kształtu&gt; | Pobiera wszystkie punkty w klastrze. Ustaw `limit` zwracanie podzbioru punktów i używać `offset` do strony za pośrednictwem punktów. |
+| getClusterLeaves (clusterId: liczba limit: numer, offset: numer) | Promise&lt;tablicy&lt;funkcji&lt;Geometry, wszelkie&gt; \| kształtu&gt;&gt; | Pobiera wszystkie punkty w klastrze. Ustaw `limit` zwracanie podzbioru punktów i używać `offset` do strony za pośrednictwem punktów. |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Wyświetlanie klastrów za pomocą warstwy bąbelkowych
 
@@ -89,7 +89,7 @@ Po wystąpieniu zdarzenia myszy na warstwy, która zawiera punkty danych klastro
 | klaster | wartość logiczna | Wskazuje, czy funkcja reprezentuje klastra. |
 | cluster_id | string | Unikatowy identyfikator dla klastra, który może być używany z źródła danych `getClusterExpansionZoom`, `getClusterChildren`, i `getClusterLeaves` metody. |
 | point_count | numer | Liczba punktów, znajdujących się w klastrze. |
-| point_count_abbreviated | string | Ciąg, który wyświetla trzyliterowy skrót wartość point_count, jeśli jest za długa. (na przykład 4000 staje się 4K) |
+| point_count_abbreviated | string | Ciąg, który wyświetla trzyliterowy skrót `point_count` wartość, jeśli jest za długa. (na przykład 4000 staje się 4K) |
 
 W tym przykładzie pobiera warstwy bąbelków, która renderuje punktów klastra i dodaje zdarzenie click, po wyzwoleniu obliczania i powiększenia mapy na wyższy poziom powiększenia, w którym klastra spowoduje przerwanie od siebie przy użyciu `getClusterExpansionZoom` metody `DataSource` klasy i `cluster_id` właściwość kliknięto klastrowane punktu danych. 
 

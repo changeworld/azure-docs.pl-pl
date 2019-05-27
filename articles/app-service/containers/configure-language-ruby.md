@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 402c85e7902c8c2f612ad6c777d8f6773a4d0ca3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854871"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956118"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Ruby systemu Linux dla usługi Azure App Service
 
@@ -65,7 +65,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W usłudze App Service możesz [określić ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) poza kodu aplikacji. Następnie uzyskiwaniu dostępu do nich przy użyciu standardu [ENV ['< ścieżka name >"]](https://ruby-doc.org/core-2.3.3/ENV.html) wzorca. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
+W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. Następnie uzyskiwaniu dostępu do nich przy użyciu standardu [ENV ['< ścieżka name >"]](https://ruby-doc.org/core-2.3.3/ENV.html) wzorca. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -82,7 +82,7 @@ Podczas wdrażania [repozytorium Git](../deploy-local-git.md?toc=%2fazure%2fapp-
 
 ### <a name="use---without-flag"></a>Użyj parametru--bez flagi
 
-Aby uruchomić `bundle install` z [— bez](https://bundler.io/man/bundle-install.1.html) Flaga, ustaw `BUNDLE_WITHOUT` [ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) rozdzielaną przecinkami listę grup. Na przykład następujące polecenie ustawia ją na `development,test`.
+Aby uruchomić `bundle install` z [— bez](https://bundler.io/man/bundle-install.1.html) Flaga, ustaw `BUNDLE_WITHOUT` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) rozdzielaną przecinkami listę grup. Na przykład następujące polecenie ustawia ją na `development,test`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
@@ -92,7 +92,7 @@ Jeśli to ustawienie jest zdefiniowana, a następnie uruchamia aparatu wdrażani
 
 ### <a name="precompile-assets"></a>Wstępnie skompilował zasoby
 
-Czynności po wdrożeniu nie wstępnie skompilował zasoby domyślnie. Aby włączyć wstępnej kompilacji zasobów, należy ustawić `ASSETS_PRECOMPILE` [ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) do `true`. Następnie polecenia `bundle exec rake --trace assets:precompile` jest uruchamiany na końcu po wdrożeniu kroki. Na przykład:
+Czynności po wdrożeniu nie wstępnie skompilował zasoby domyślnie. Aby włączyć wstępnej kompilacji zasobów, należy ustawić `ASSETS_PRECOMPILE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `true`. Następnie polecenia `bundle exec rake --trace assets:precompile` jest uruchamiany na końcu po wdrożeniu kroki. Na przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -121,7 +121,7 @@ Proces uruchamiania można dostosować w następujący sposób:
 Serwer platformy Rails w kontenerze dopisków fonetycznych jest uruchamiany w trybie produkcyjnym domyślnie i [przyjęto założenie, że zasoby są wstępnie skompilowane i są one obsługiwane przez serwer sieci web](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Aby obsługiwać zasoby statyczne z serwer platformy Rails, należy wykonać dwie czynności:
 
 - **Wstępnie skompilował zasoby** - [Prekompilowanie statycznych zasobów lokalnie](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) i wdrażać je ręcznie. Lub pozwól, aby aparat wdrażania, zamiast go obsłużyć (zobacz [wstępnie skompilował zasoby](#precompile-assets).
-- **Włącz dostarczanie plików statycznych** — w celu obsługi statycznych zasobów z kontenera dopisków fonetycznych, ustaw `RAILS_SERVE_STATIC_FILES` [ustaw `RAILS_SERVE_STATIC_FILES` ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) do `true`. Na przykład:
+- **Włącz dostarczanie plików statycznych** — w celu obsługi statycznych zasobów z kontenera dopisków fonetycznych, ustaw `RAILS_SERVE_STATIC_FILES` [ustaw `RAILS_SERVE_STATIC_FILES` ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `true`. Na przykład:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -129,13 +129,13 @@ Serwer platformy Rails w kontenerze dopisków fonetycznych jest uruchamiany w tr
 
 ### <a name="run-in-non-production-mode"></a>Uruchom w trybie innym niż produkcyjne
 
-Domyślnie serwer platformy Rails jest uruchamiana w trybie produkcyjnym. Aby uruchomić w trybie projektowania, na przykład ustawić `RAILS_ENV` [ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) do `development`.
+Domyślnie serwer platformy Rails jest uruchamiana w trybie produkcyjnym. Aby uruchomić w trybie projektowania, na przykład ustawić `RAILS_ENV` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `development`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Jednak to samo ustawienie powoduje, że serwer platformy Rails, aby uruchomić w trybie projektowania, który akceptuje żądania tylko localhost i jest niedostępny poza kontenerem. Aby akceptować żądania klienta zdalnego, należy ustawić `APP_COMMAND_LINE` [ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) do `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchamianie poleceń niestandardowych w kontenerze dopisków fonetycznych. Na przykład:
+Jednak to samo ustawienie powoduje, że serwer platformy Rails, aby uruchomić w trybie projektowania, który akceptuje żądania tylko localhost i jest niedostępny poza kontenerem. Aby akceptować żądania klienta zdalnego, należy ustawić `APP_COMMAND_LINE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchamianie poleceń niestandardowych w kontenerze dopisków fonetycznych. Na przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -143,7 +143,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secretkeybase-manually"></a>Ręcznie ustawić secret_key_base
 
-Aby użyć własnego `secret_key_base` wartość samodzielny usługi App Service wygeneruje, ustaw `SECRET_KEY_BASE` [ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) wartością ma. Na przykład:
+Aby użyć własnego `secret_key_base` wartość samodzielny usługi App Service wygeneruje, ustaw `SECRET_KEY_BASE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) wartością ma. Na przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

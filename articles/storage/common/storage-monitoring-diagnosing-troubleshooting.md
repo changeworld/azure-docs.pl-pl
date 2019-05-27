@@ -9,17 +9,17 @@ ms.date: 05/11/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ccafa3431e12b036346c4fd654b2978dc9021471
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192163"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912374"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Diagnozowanie i rozwiązywanie problemów w aplikacji rozproszonej hostowanej w środowisku chmury może być bardziej skomplikowane niż w tradycyjnych środowiskach. Aplikacje można wdrożyć w infrastrukturze PaaS lub IaaS, w środowisku lokalnym, na urządzeniu przenośnym lub w kombinacji tych środowisk. Zazwyczaj ruchem sieciowym Twojej aplikacji mogą przechodzić publicznych i prywatnych sieci i aplikacji mogą używać wielu technologii magazynowania, takich jak Microsoft Azure Storage tabele, obiekty BLOB, kolejek lub przechowuje pliki oprócz innych danych, takich jak relacyjne i bazy danych dokumentów.
 
 Do zarządzania pomyślnie takich aplikacji należy aktywne monitorowanie i zrozumienie, jak diagnozowanie i rozwiązywanie problemów z wszystkimi aspektami ich i ich technologie zależne. Jako użytkownik usługi Azure Storage należy ciągłego monitorowania usług magazynu używanych przez aplikację nieoczekiwane zmiany w zachowaniu (na przykład wolniej niż zwykłe czasy) i używać rejestrowania w celu zbierania bardziej szczegółowych danych i do analizowania problemu w głębokość. Informacje diagnostyczne, którego można uzyskać od zarówno monitorowanie i rejestrowanie pomoże w celu ustalenia głównej przyczyny aplikacji wystąpił problem. Następnie można rozwiązać ten problem i określić odpowiednie czynności, które można wykonać w celu jego rozwiązania. Usługa Azure Storage jest podstawowe usługi platformy Azure i stanowi ważną część większość rozwiązań, które klienci wdrożyć do infrastruktury platformy Azure. Usługa Azure Storage obejmuje funkcje, aby uprościć monitorowanie, diagnozowanie i rozwiązywanie problemów z magazynowaniem w swoich aplikacjach opartych na chmurze.
@@ -426,7 +426,7 @@ Jeśli **wartości PercentThrottlingError** metryki spowodować wzrost Procent �
 Wzrost **wartości PercentThrottlingError** często występuje w tym samym czasie jako wzrost liczby żądań magazynu lub gdy początkowo testowanie obciążenia aplikacji. To może również objawiać w kliencie jako "503 Serwer zajęty" lub komunikaty o stanie "500 limit czasu operacji" HTTP z operacji magazynu.
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>Przejściowy wzrost wartości PercentThrottlingError
-Jeśli widzisz skokami wartości **wartości PercentThrottlingError** pokrywają się z okresy intensywnego działania aplikacji, następuje zaimplementowanie (nie liniowych) wycofań strategii wykładniczego ponownych prób w swoim kliencie. Wycofań ponownych prób odciążyć natychmiastowego partycji i pomóc aplikacji do wygładzania nagłych skoków ruchu. Aby uzyskać więcej informacji o tym, jak wdrożyć zasady ponawiania prób przy użyciu biblioteki klienta usługi Storage, zobacz [Namespace Microsoft.windowsazure.Storage.retrypolicies, gdy spełniają](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy).
+Jeśli widzisz skokami wartości **wartości PercentThrottlingError** pokrywają się z okresy intensywnego działania aplikacji, następuje zaimplementowanie (nie liniowych) wycofań strategii wykładniczego ponownych prób w swoim kliencie. Wycofań ponownych prób odciążyć natychmiastowego partycji i pomóc aplikacji do wygładzania nagłych skoków ruchu. Aby uzyskać więcej informacji o tym, jak wdrożyć zasady ponawiania prób przy użyciu biblioteki klienta usługi Storage, zobacz [przestrzeni nazw Microsoft.Azure.Storage.RetryPolicies](/dotnet/api/microsoft.azure.storage.retrypolicies).
 
 > [!NOTE]
 > Ponadto mogą pojawić się skokami wartości **wartości PercentThrottlingError** , nie pokrywają się z okresy intensywnego działania aplikacji: najbardziej prawdopodobna przyczyna to usługa magazynu, przenosząc partycji w celu lepszego równoważenia obciążenia.
@@ -467,17 +467,17 @@ Najczęstszą przyczyną tego błędu jest klientem odłączania, zanim upłynie
 ### <a name="the-client-is-receiving-403-messages"></a>Klient odbiera komunikaty HTTP 403 (zabronione)
 Jeśli aplikacja kliencka zgłasza błędy HTTP 403 (zabronione), prawdopodobną przyczyną jest to, że klient używa wygasłej sygnatury dostępu współdzielonego podczas wysyłania żądania magazynu (chociaż inne możliwe przyczyny to niedokładność zegara, nieprawidłowe klucze i puste nagłówki). Jeśli przyczyną jest wygasły klucz sygnatury dostępu współdzielonego, nie będą widoczne żadne wpisy w danych dziennika rejestrowania danych magazynu po stronie serwera. W poniższej tabeli przedstawiono przykład z dziennika klienta wygenerowane z biblioteki klienta magazynu, który ilustruje ten problem:
 
-| Element źródłowy | Poziom szczegółowości | Poziom szczegółowości | Identyfikator żądania klienta | Operacja tekstu |
+| Source | Poziom szczegółowości | Poziom szczegółowości | Identyfikator żądania klienta | Operacja tekstu |
 | --- | --- | --- | --- | --- |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab-… |Trwa uruchamianie operacji z lokalizacji podstawowej dla trybu lokalizacji PrimaryOnly. |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Począwszy od żądanie synchroniczne <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Oczekiwanie na odpowiedź. |
-| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (403) Zabronione. |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Odebrano odpowiedź. Kod stanu 403, identyfikator żądania = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, zawartość MD5 = element ETag =. |
-| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Zgłoszono wyjątek podczas operacji: Serwer zdalny zwrócił błąd: (403) zabroniony... |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Sprawdzanie, jeśli należy wykonać ponownie operację. Liczba ponownych prób = 0, kod stanu HTTP 403 i wyjątek = = Serwer zdalny zwrócił błąd: (403) zabroniony... |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Ustawiono podstawowego, w oparciu o trybu lokalizacji w następnej lokalizacji. |
-| Microsoft.WindowsAzure.Storage |Błąd |1 |85d077ab -… |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: (403) Zabronione. |
+| Microsoft.Azure.Storage |Informacje |3 |85d077ab-… |Trwa uruchamianie operacji z lokalizacji podstawowej dla trybu lokalizacji PrimaryOnly. |
+| Microsoft.Azure.Storage |Informacje |3 |85d077ab -… |Począwszy od żądanie synchroniczne <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |Informacje |3 |85d077ab -… |Oczekiwanie na odpowiedź. |
+| Microsoft.Azure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (403) Zabronione. |
+| Microsoft.Azure.Storage |Informacje |3 |85d077ab -… |Odebrano odpowiedź. Kod stanu 403, identyfikator żądania = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, zawartość MD5 = element ETag =. |
+| Microsoft.Azure.Storage |Ostrzeżenie |2 |85d077ab -… |Zgłoszono wyjątek podczas operacji: Serwer zdalny zwrócił błąd: (403) zabroniony... |
+| Microsoft.Azure.Storage |Informacje |3 |85d077ab -… |Sprawdzanie, jeśli należy wykonać ponownie operację. Liczba ponownych prób = 0, kod stanu HTTP 403 i wyjątek = = Serwer zdalny zwrócił błąd: (403) zabroniony... |
+| Microsoft.Azure.Storage |Informacje |3 |85d077ab -… |Ustawiono podstawowego, w oparciu o trybu lokalizacji w następnej lokalizacji. |
+| Microsoft.Azure.Storage |Błąd |1 |85d077ab -… |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: (403) Zabronione. |
 
 W tym scenariuszu należy zbadać, dlaczego tokenu sygnatury dostępu Współdzielonego wygaśnie, zanim klient wysyła ten token do serwera:
 
@@ -626,7 +626,7 @@ Jeśli ten problem występuje często, powinieneś zbadać, dlaczego klient jest
 ### <a name="the-client-is-receiving-409-messages"></a>Klient odbiera komunikaty HTTP 409 (konflikt)
 W poniższej tabeli przedstawiono wyciąg z dwóch operacji klienta w dzienniku po stronie serwera: **DeleteIfExists** a następnie natychmiast przez **CreateIfNotExists** przy użyciu tej samej nazwy kontenera obiektów blob. Każda operacja klienta powoduje dwa żądania wysyłane do serwera, najpierw **GetContainerProperties** żądania, aby sprawdzić, czy kontener istnieje, następuje **DeleteContainer** lub  **CreateContainer** żądania.
 
-| Sygnatura czasowa | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
+| Timestamp | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

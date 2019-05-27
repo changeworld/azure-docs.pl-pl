@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b54c4ef1b188896a70cf8b2f9352d0b76874fd50
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5d8d97aefa2efadae70c976b8a1876b2c7d8f1c1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204286"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921926"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -53,7 +53,7 @@ Następujące metody połączenia danych są obsługiwane przez usługi Azure pr
 - **Zewnętrzny rozwiązań za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone za pomocą interfejsów API, które zostały udostępnione przez połączonego źródła danych. Zazwyczaj większość technologii zabezpieczeń zawierają zestaw interfejsów API za pomocą którego można pobrać dzienników zdarzeń. Interfejsy API nawiązać połączenie z platformy Azure przez wartownika i zbieranie danych z konkretnych typów i wysyłać je do usługi Azure Log Analytics. Urządzenia połączone za pośrednictwem interfejsu API to:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Zewnętrzny rozwiązań za pośrednictwem agenta**: Wartownik platformy Azure mogą być połączone do wszystkich innych źródeł danych, które mogą wykonywać, przesyłanie strumieniowe dzienników w czasie rzeczywistym, za pomocą przy użyciu protokołu Syslog, za pośrednictwem agenta. <br>Większość urządzeń Użyj protokołu Syslog, aby wysyłać komunikaty o zdarzeniach, które zawierają dziennik, sam, jak i dane dotyczące dziennika. Format dzienniki różni się jednak większość urządzeń obsługuje standard Common Event Format (CEF). <br>Agent platformy Azure przez wartownika, który jest oparty na agenta pakietu OMS, konwertuje CEF sformatowane dzienników do formatu, który może być pozyskiwane przez usługę Log Analytics. W zależności od typu urządzenia agent jest zainstalowany bezpośrednio na urządzeniu lub na dedykowanych serwerach Linux. Agent dla systemu Linux odbiera zdarzenia z demona usługi Syslog za pośrednictwem protokołu UDP, ale w przypadkach, gdzie maszynę z systemem Linux oczekuje się, aby zebrać dużą liczbę zdarzeń dziennika systemu, te są wysyłane za pośrednictwem protokołu TCP z demona usługi Syslog do agenta, a do usługi Log Analytics.
+- **Zewnętrzny rozwiązań za pośrednictwem agenta**: Wartownik platformy Azure mogą być połączone do wszystkich innych źródeł danych, które mogą wykonywać, przesyłanie strumieniowe dzienników w czasie rzeczywistym, za pomocą przy użyciu protokołu Syslog, za pośrednictwem agenta. <br>Większość urządzeń Użyj protokołu Syslog, aby wysyłać komunikaty o zdarzeniach, które zawierają dziennik, sam, jak i dane dotyczące dziennika. Format dzienniki różni się jednak większość urządzeń obsługuje standard Common Event Format (CEF). <br>Agent platformy Azure przez wartownika, który jest oparty na programie Microsoft Monitoring Agent, konwertuje dzienniki w formacie CEF do formatu, który może być pozyskiwane przez usługę Log Analytics. W zależności od typu urządzenia agent jest zainstalowany bezpośrednio na urządzeniu lub na dedykowanych serwerach Linux. Agent dla systemu Linux odbiera zdarzenia z demona usługi Syslog za pośrednictwem protokołu UDP, ale w przypadkach, gdzie maszynę z systemem Linux oczekuje się, aby zebrać dużą liczbę zdarzeń dziennika systemu, te są wysyłane za pośrednictwem protokołu TCP z demona usługi Syslog do agenta, a do usługi Log Analytics.
     - Zapór, proxy i punktów końcowych:
         - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
