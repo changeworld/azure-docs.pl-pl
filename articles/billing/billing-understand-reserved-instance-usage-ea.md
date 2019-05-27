@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
-ms.openlocfilehash: 09242eaa6058229226062801f5f71f2bf4c7a9e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789389"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66126847"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów rezerwacji umowy Enterprise Agreement i danych użycia
 
@@ -42,9 +42,9 @@ Porównanie dwóch zestawów danych:
 
 | Dane | Zestaw danych w usłudze rzeczywisty koszt | Zestaw danych w usłudze amortyzowany koszt |
 | --- | --- | --- |
-| Zakup rezerwacji | Dostępne w tym widoku.<br>  Aby uzyskać ten filtr danych na temat ChargeType = &quot;zakupu&quot;. <br> Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się które rezerwacji, Opłata dotyczy.  | Nie ma zastosowania do tego widoku. <br> Koszty zakupu nie są zawarte w amortyzowanym danych. |
+| Zakup rezerwacji | Dostępne w tym widoku.<br><br>  Aby uzyskać ten filtr danych na temat ChargeType = &quot;zakupu&quot;. <br><br> Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się które rezerwacji, Opłata dotyczy.  | Nie ma zastosowania do tego widoku. <br><br> Koszty zakupu nie są zawarte w amortyzowanym danych. |
 | effectivePrice | Ta wartość wynosi zero, użycia, który pobiera rabat związany z rezerwacją. | Wartość jest naliczana proporcjonalnie do liczby godzin kosztów rezerwacji do użycia, który ma rabat związany z rezerwacją. |
-| Nieużywanych rezerwacji (zapewnia liczbę godzin, przez jaką, rezerwacji nie był używany w ciągu dnia i wartości pieniężnej odpadów) | Nie ma zastosowania w tym widoku. | Dostępne w tym widoku.<br> Aby uzyskać te dane, odfiltruj ChargeType = &quot;UnusedReservation&quot;.<br>  Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się, które rezerwacji został wykorzystany. Jest to, ile rezerwacji został zmarnowany w w ciągu dnia.  |
+| Nieużywanych rezerwacji (zapewnia liczbę godzin, przez jaką, rezerwacji nie był używany w ciągu dnia i wartości pieniężnej odpadów) | Nie ma zastosowania w tym widoku. | Dostępne w tym widoku.<br><br> Aby uzyskać te dane, odfiltruj ChargeType = &quot;UnusedReservation&quot;.<br><br>  Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się, które rezerwacji został wykorzystany. Jest to, ile rezerwacji został zmarnowany w w ciągu dnia.  |
 | Cena jednostkowa (cena za zasób z Arkusz cen) | Dostępne | Dostępne |
 
 Zmienił się inne informacje, które są dostępne w danych użycia platformy Azure:
@@ -77,12 +77,12 @@ Informacje w poniższej tabeli przedstawiono metryki i filtr może pomóc w rozw
 | **Typ danych interfejsu API** | Akcję do wywołania interfejsu API |
 | --- | --- |
 | **Wszystkie opłaty (użycia i zakupów)** | Zamień na ActualCost {Metryka} |
-| **Użycie, które stało się rabat związany z rezerwacją** | Zamień na ActualCost {Metryka}<br>Zamień {filter}: properties/reservationId%20ne%20 |
-| **Użycie, które nie uzyskały rabat związany z rezerwacją** | Zamień na ActualCost {Metryka}<br>Zamień {filter}: properties/reservationId%20eq%20 |
+| **Użycie, które stało się rabat związany z rezerwacją** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/reservationId%20ne%20 |
+| **Użycie, które nie dotarł rabat związany z rezerwacją** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/reservationId%20eq%20 |
 | **Amortyzowany opłaty (użycia i zakupów)** | Zamień na AmortizedCost {Metryka} |
-| **Raport nieużywanych rezerwacji** | Zamień na AmortizedCost {Metryka}<br>Zamień {filter}: properties/ChargeType%20eq%20'UnusedReservation " |
-| **Zakup rezerwacji** | Zamień z ActualCostReplace {filter} {Metryka}: properties/ChargeType%20eq%20'Purchase "  |
-| **Zwroty** | Zamień na ActualCost {Metryka}<br>Zamień {filter}: properties/ChargeType%20eq%20'Refund " |
+| **Raport nieużywanych rezerwacji** | Zamień na AmortizedCost {Metryka}<br><br>Zamień {filter}: properties/ChargeType%20eq%20'UnusedReservation " |
+| **Zakup rezerwacji** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/ChargeType%20eq%20'Purchase "  |
+| **Zwroty** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/ChargeType%20eq%20'Refund " |
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Pobierz plik CSV użycia za pomocą nowych danych
 

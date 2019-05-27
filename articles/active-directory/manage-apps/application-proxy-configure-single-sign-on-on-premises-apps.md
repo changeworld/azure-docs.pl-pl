@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/20/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3500ce1f1f80d975555edef56d95f2f1d27ca7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783773"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956877"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML logowania jednokrotnego dla aplikacji w środowisku lokalnym dzięki serwerowi Proxy aplikacji (wersja zapoznawcza)
 
@@ -50,8 +50,9 @@ Należy pamiętać, następujące po zamierzasz instrukcje z samouczka:
 1. Wybierz **SAML** jako pojedynczej metody logowania jednokrotnego.
 1. W **Ustaw się logowanie jednokrotne z SAML** strony, Edytuj **podstawową konfigurację protokołu SAML** danych i postępuj zgodnie z instrukcjami w [Enter podstawową konfigurację protokołu SAML](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) skonfigurować opartej na SAML uwierzytelnianie dla aplikacji.
 
-   * Upewnij się, że **adres URL odpowiedzi** pasuje lub jest ścieżką, w obszarze **zewnętrzny adres URL** dla aplikacji w środowisku lokalnym, która została opublikowana przez serwer Proxy aplikacji. Jeśli aplikacja wymaga innego **adres URL odpowiedzi** konfiguracji SAML, dodaj ją jako **pierwszy** adres URL na liście i Zachowaj **zewnętrzny adres URL** jako dodatkowy adres URL uporządkowane po pierwszym.
-   * Upewnij się, że aplikacja określa również poprawny **adres URL odpowiedzi** lub adres URL usługi konsumenta potwierdzenie służące do odbierania token uwierzytelniania.
+   * Upewnij się, że **adres URL odpowiedzi** pasuje lub jest ścieżką, w obszarze **zewnętrzny adres URL** dla aplikacji w środowisku lokalnym, która została opublikowana przez serwer Proxy aplikacji. 
+   * Jeśli aplikacja wymaga innego **adres URL odpowiedzi** konfiguracji SAML, dodaj ją jako **dodatkowe** adres URL, na liście i znacznik wyboru obok niego wyznaczanie podstawowego  **Adres URL odpowiedzi** do wysyłania odpowiedzi SAML zainicjowanego przez dostawcę tożsamości.
+   * Przepływ zainicjowanego przez dostawcę usług upewnij się, że aplikacja określa również poprawny **adres URL odpowiedzi** lub adres URL usługi konsumenta potwierdzenie służące do odbierania token uwierzytelniania.
 
      ![Wprowadzanie podstawowych danych konfiguracji protokołu SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

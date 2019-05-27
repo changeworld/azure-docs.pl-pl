@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830543"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864819"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Szybki start: Tworzenie aplikacji internetowej platformy ASP.NET 
 
 ## <a name="introduction"></a>Wprowadzenie
 
-W tym przewodniku Szybki start przedstawiono sposób tworzenia i wdrażania aplikacji internetowej platformy ASP.NET w usłudze Azure App Service przy użyciu programu Visual Studio 2017. Przykładowa aplikacja nawiązuje połączenie z usługą Azure Cache for Redis w celu zapisywania i pobierania danych z pamięci podręcznej. Po zakończeniu przewodnika Szybki start otrzymasz uruchomioną aplikację internetową hostowaną na platformie Azure, która odczytuje i zapisuje dane w usłudze Azure Cache for Redis.
+Ten przewodnik Szybki Start przedstawia sposób tworzenia i wdrażania aplikacji sieci web ASP.NET w usłudze Azure App Service przy użyciu programu Visual Studio 2019 r. Przykładowa aplikacja nawiązuje połączenie z usługą Azure Cache for Redis w celu zapisywania i pobierania danych z pamięci podręcznej. Po zakończeniu przewodnika Szybki start otrzymasz uruchomioną aplikację internetową hostowaną na platformie Azure, która odczytuje i zapisuje dane w usłudze Azure Cache for Redis.
 
 ![Ukończony prosty test na platformie Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -34,9 +34,9 @@ W tym przewodniku Szybki start przedstawiono sposób tworzenia i wdrażania apli
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start, musisz zainstalować program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi środowiskami:
-* Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-* Tworzenie aplikacji na platformie Azure
+Aby ukończyć tego przewodnika Szybki Start, musisz zainstalować [Visual Studio 2019](https://www.visualstudio.com/downloads/) w następujących środowiskach:
+* ASP.NET i tworzenie aplikacji internetowych
+* Programowanie na platformie Azure
 
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
@@ -62,7 +62,7 @@ Aby ukończyć ten przewodnik Szybki start, musisz zainstalować program [Visual
 
 4. Upewnij się, że dla ustawienia **Uwierzytelnianie** wybrano pozycję **Bez uwierzytelniania**. Domyślne ustawienie **Uwierzytelnianie** może być różne w różnych wersjach programu Visual Studio. Aby je zmienić, wybierz pozycję **Zmień uwierzytelnianie**, a następnie pozycję **Bez uwierzytelniania**.
 
-5. Wybierz przycisk **OK**, aby utworzyć projekt.
+5. Wybierz **OK** do tworzenia projektu.
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
 
@@ -266,7 +266,7 @@ Po pomyślnym przetestowaniu aplikacji lokalnie możesz wdrożyć ją na platfor
 
 1. W programie Visual Studio kliknij prawym przyciskiem myszy węzeł projektu w Eksploratorze rozwiązań. Następnie wybierz pozycję **Opublikuj**.
 
-    ![Publikowanie](./media/cache-web-app-howto/cache-publish-app.png)
+    ![Opublikuj](./media/cache-web-app-howto/cache-publish-app.png)
 
 2. Wybierz pozycję **Microsoft Azure App Service**, wybierz opcję **Utwórz nowy**, a następnie wybierz pozycję **Opublikuj**.
 
@@ -301,7 +301,7 @@ Po opublikowaniu nowej aplikacji dodaj nowe ustawienie aplikacji. To ustawienie 
 
 2. Dodaj ustawienie nowej aplikacji o nazwie **CacheConnection** dla aplikacji, aby jej używać do łączenia się z pamięcią podręczną. Użyj tej samej wartości, która została skonfigurowana dla `CacheConnection` w pliku *CacheSecrets.config*. Wartość zawiera nazwę hosta pamięci podręcznej i klucz dostępu.
 
-    ![Dodawanie ustawienia aplikacji](./media/cache-web-app-howto/cache-add-app-setting.png)
+    ![Dodaj ustawienie aplikacji](./media/cache-web-app-howto/cache-add-app-setting.png)
 
 ### <a name="run-the-app-in-azure"></a>Uruchamianie aplikacji na platformie Azure
 
@@ -326,7 +326,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 2. W polu **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie wybierz pozycję **Usuń grupę zasobów**.
 
-    ![Usuwanie](./media/cache-web-app-howto/cache-delete-resource-group.png)
+    ![Usuń](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie wybierz pozycję **Usuń**.
 

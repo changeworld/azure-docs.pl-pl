@@ -5,22 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 1/15/2019
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fdfabf328ddfa6b5e4b578be5a1b329cb3219a18
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274676"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989108"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurowanie klientów OpenVPN dla bramy sieci VPN platformy Azure (wersja zapoznawcza)
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurowanie klientów OpenVPN dla bramy sieci VPN platformy Azure
 
 Ten artykuł pomoże Ci skonfigurować **OpenVPN® protokołu** klientów.
-
-> [!IMPORTANT]
-> Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -138,6 +134,6 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz, aby klienci sieci VPN, aby można było uzyskać dostęp do zasobów w innej sieci wirtualnej (produkcja), następnie postępuj zgodnie z instrukcjami [sieć wirtualna-sieć wirtualna](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) artykuł, aby skonfigurować połączenie sieć wirtualna-sieć wirtualna. Pamiętaj włączyć protokół BGP dla bramy i połączenia, w przeciwnym razie ruch nie będzie przepływać.
+Jeśli chcesz, aby klienci sieci VPN, aby można było uzyskać dostęp do zasobów w innej sieci wirtualnej, następnie postępuj zgodnie z instrukcjami [sieć wirtualna-sieć wirtualna](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) artykuł, aby skonfigurować połączenie sieć wirtualna-sieć wirtualna. Pamiętaj włączyć protokół BGP dla bramy i połączenia, w przeciwnym razie ruch nie będzie przepływać.
 
 **"OpenVPN" jest zastrzeżonym znakiem towarowym firmy OpenVPN Inc.**

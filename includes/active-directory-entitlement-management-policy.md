@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: ef8155cda6c31a63204af80ca091a13bb16a687d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866435"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113388"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zasady: Dla użytkowników w katalogu
 
@@ -34,6 +34,9 @@ Wykonaj następujące kroki, jeśli chcesz, aby Twoje zasady dla użytkowników 
 ### <a name="policy-for-users-not-in-your-directory"></a>Zasady: Dla użytkowników spoza katalogu
 
 Jeśli chcesz, aby zasady dla użytkowników spoza katalogu, jakiej może żądać tego pakietu dostęp, wykonaj następujące kroki. Katalogi musi być skonfigurowany tak, aby dozwolone było w **ograniczenia współpracy relacje w organizacji** ustawienia.
+
+> [!NOTE]
+> Konto użytkownika gościa zostanie utworzony dla użytkownika nie zostały jeszcze w Twoim katalogu, w której wniosek zostanie zatwierdzony lub zatwierdzane automatycznie. Gość zostaną zaproszeni, ale nie otrzyma wiadomość e-mail z zaproszeniem. Zamiast tego otrzymają wiadomość e-mail podczas ich przypisanie pakietu dostępu są dostarczane. Domyślnie nowsze, gdy ten użytkownik-Gość nie znajduje się już ma dowolnego pakietu przypisania dostępu, ponieważ ich ostatniego przypisania wygasło lub zostało anulowane, konta gościa zablokowane z logowania i usunąć. Jeśli chcesz mieć użytkowników-gości przez czas nieokreślony, pozostają w katalogu, nawet jeśli mają one nie przypisań pakiet, możesz zmienić ustawienia dla danej konfiguracji zarządzania uprawnienie.
 
 1. W **użytkowników, którzy mogą zażądać dostępu** zaznacz **dla użytkowników spoza katalogu**.
 
@@ -66,7 +69,7 @@ Jeśli chcesz, aby zasady, aby ominąć żądania dostępu i umożliwiają admin
 
 1. Przejdź w dół do [zasad: Wygaśnięcie](#policy-expiration) sekcji.
 
-### <a name="policy-request"></a>Zasady: Żądanie
+### <a name="policy-request"></a>Zasady: Zażądaj
 
 W sekcji żądania należy określić ustawienia zatwierdzania po użytkownik zażąda dostępu do pakietu.
 

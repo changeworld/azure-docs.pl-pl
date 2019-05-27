@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345388"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952210"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla użytkowników zewnętrznych, korzystając z modelu RBAC
 
@@ -57,7 +57,7 @@ Po wybraniu subskrypcji, należy kliknąć przycisk administratora **kontrola do
 
 Następnym krokiem jest wybierz rolę do przypisania i użytkownik, któremu zostanie przypisana rola RBAC do. W **roli** menu rozwijane administratora widzi tylko wbudowane role kontroli RBAC, które są dostępne na platformie Azure. Aby uzyskać bardziej szczegółowe objaśnienia dotyczące poszczególnych ról i ich zakresy możliwe do przypisania, zobacz [wbudowane role zasobów platformy Azure](built-in-roles.md).
 
-Użytkownika administratora musi dodać adres e-mail użytkownika zewnętrznego. To oczekiwane zachowanie dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po użytkownik zewnętrzny zostali zaproszeni, on będą widoczne w obszarze **subskrypcje > Kontrola dostępu (IAM)** przy użyciu wszystkich bieżących użytkowników, które są obecnie przypisane rolę RBAC w zakresie subskrypcji.
+Użytkownika administratora musi dodać adres e-mail użytkownika zewnętrznego. To oczekiwane zachowanie dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po użytkownik zewnętrzny zostali zaproszeni, będą one widoczne w obszarze **subskrypcje > Kontrola dostępu (IAM)** przy użyciu wszystkich bieżących użytkowników, które są obecnie przypisane rolę RBAC w zakresie subskrypcji.
 
 ![Dodaj uprawnienia do nowej roli RBAC](./media/role-assignments-external-users/3.png)
 
@@ -66,7 +66,7 @@ Użytkownika administratora musi dodać adres e-mail użytkownika zewnętrznego.
 Użytkownik "chessercarlton@gmail.com" został zaproszony jako **właściciela** dla subskrypcji "Bezpłatna wersja próbna". Po wysłaniu zaproszenia, zewnętrzne użytkownik otrzyma wiadomość e-mail z potwierdzeniem z łącze do aktywacji.
 ![wiadomość e-mail z zaproszeniem dla ról RBAC](./media/role-assignments-external-users/5.png)
 
-Jest spoza organizacji, nowy użytkownik nie ma żadnych istniejących atrybutów w katalogu "Domyślna dzierżawa usługi Azure". Zostaną one utworzone po użytkownik zewnętrzny wyraził zgody rejestruje się w katalogu, który jest skojarzony z tą subskrypcją został przydzielony do roli.
+Jest spoza organizacji, nowy użytkownik nie ma żadnych istniejących atrybutów w katalogu "Domyślna dzierżawa usługi Azure". Zostaną one utworzone po użytkownik zewnętrzny wyraził zgody rejestruje się w katalogu, który jest skojarzony z tą subskrypcją zostali przypisani do roli.
 
 ![wiadomości z zaproszeniem dla ról RBAC](./media/role-assignments-external-users/6.png)
 

@@ -9,14 +9,14 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 6e859f57f9b5f24ea2f0172f5aa35a60d9769f19
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551697"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962126"
 ---
-# <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Konfigurowanie środowiska deweloperskiego Azure Red Hat OpenShift
+# <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Konfigurowanie środowiska deweloperskiego usługi Azure Red Hat OpenShift
 
 Aby skompilować i uruchomić aplikacje Microsoft Azure Red Hat OpenShift, musisz:
 
@@ -29,13 +29,15 @@ Aby skompilować i uruchomić aplikacje Microsoft Azure Red Hat OpenShift, musis
 
 Zgodnie z poniższymi instrukcjami przeprowadzi użytkownika przez wszystkie te wymagania wstępne.
 
-## <a name="purchase-azure-virtual-machine-reserved-instances"></a>Kup wystąpienia zarezerwowane maszyn wirtualnych platformy Azure
+## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Kup zarezerwowane wystąpienia węzłów aplikacji Azure Red Hat OpenShift
 
-Zanim użyjesz usługi Azure Red Hat OpenShift, musisz kupić wystąpienia zarezerwowane maszyny wirtualnej platformy Azure.
+Zanim użyjesz usługi Azure Red Hat OpenShift, należy kupić co najmniej 4 węzły aplikacji Azure Red Hat OpenShift zarezerwowane, po upływie których będzie można się inicjowanie obsługi klastrów.
 
-Jeśli korzystasz z platformy Azure, tutaj w sposób [zakup maszyny wirtualnej platformy Azure, zarezerwowane wystąpienia](https://aka.ms/openshift/buy). Rezerwacja zmniejsza swoje wydatki wg wstępnie płacenia za w pełni zarządzanych usług platformy Azure. Zapoznaj się [ *co to jest Azure rezerwacje* ](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) Aby dowiedzieć się więcej na temat rezerwacji i jak mogą zaoszczędzić pieniądze.
+Jeśli korzystasz z platformy Azure, [Kup wystąpienia zarezerwowane program Azure Red Hat OpenShift](https://aka.ms/openshift/buy) za pośrednictwem witryny Azure portal. Po zakupie, Twoja subskrypcja zostanie uaktywniona w ciągu 24 godzin.
 
 Jeśli nie jesteś klientem Azure [kontakt ze sprzedażą](https://aka.ms/openshift/contact-sales) i wypełnij formularz sprzedaży w dolnej części strony Aby rozpocząć proces.
+
+Zapoznaj się [Azure Red Hat OpenShift stronę z cennikiem](https://aka.ms/openshift/pricing) Aby uzyskać więcej informacji.
 
 ## <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 

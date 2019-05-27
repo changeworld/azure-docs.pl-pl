@@ -5,24 +5,24 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: ''
+editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94d9fb0878458f3de0a64fac57af4a70e1875112
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324915"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909682"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Przeczyszczanie punktu końcowego usługi Azure CDN
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Węzły brzegowe w usłudze Azure CDN będzie zasobów w pamięci podręcznej do momentu wygaśnięcia zasobu czas wygaśnięcia (TTL).  Po wygaśnięciu czasu wygaśnięcia zasobu, gdy klient zażąda zawartości z węzłem krawędzi, w węźle brzegowym powoduje pobranie zaktualizowanych nową kopię zasobu ma obsługiwać żądania klienta i magazynu odświeżyć pamięć podręczną.
 
 Najlepszym rozwiązaniem jest, aby upewnić się, że użytkownicy zawsze uzyskać najnowszą kopię zawartości jest wersja zasobów dla każdej aktualizacji i opublikować je jako nowe adresy URL.  Sieci CDN pobierze natychmiast nowe zasoby dla następnego żądania klienta.  Czasami chcesz przeczyścić pamięci podręcznej zawartość ze wszystkich węzłów brzegowych i wymusić na nich wszystkich pobrać nowe zaktualizowane zasoby.  Może to być spowodowane aktualizacje do aplikacji sieci web lub szybko zasobów aktualizacji, które zawierają nieprawidłowe informacje.
@@ -69,7 +69,7 @@ Ten samouczek przeprowadzi Cię przez czyszczenie zasobów ze wszystkich węzł�
     ![Przycisk Wyczyść](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Przeczyszczanie żądań trwa około 2 – 3 minuty do przetworzenia z **Azure CDN from Verizon** (standard i premium) i około 7 minut za pomocą **Azure CDN from Akamai**.  Usługa Azure CDN jest objęta limitem 50 współbieżnych przeczyścić żądań w danym momencie na poziomie profilu. 
+> Żądania przeczyszczenia trwa około 2 minuty do przetworzenia z **Azure CDN from Microsoft** i **Azure CDN from Verizon** (standard i premium) i około 10 sekund z **sieć CDN systemu Azure Akamai**.  Usługa Azure CDN jest objęta limitem 50 współbieżnych przeczyścić żądań w danym momencie na poziomie profilu. 
 > 
 > 
 

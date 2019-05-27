@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420206"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111541"
 ---
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
 2. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**. Następnie wybierz pozycję **Integracja** > **Relay**. Jeśli nie widzisz pozycji **Relay** na liście, wybierz pozycję **Zobacz wszystko** w prawym górnym rogu. 
@@ -18,7 +18,7 @@ ms.locfileid: "60420206"
 5. W polu [Grupa zasobów](../articles/azure-resource-manager/manage-resource-groups-portal.md) wybierz istniejącą grupę zasobów, w której znajdzie się przestrzeń nazw, lub utwórz nową.  
 6. W polu **Lokalizacja** wybierz kraj lub region, w którym powinna być hostowana przestrzeń nazw.
    
-    ![Create namespace][create-namespace]
+    ![Tworzenie przestrzeni nazw][create-namespace]
 7. Wybierz pozycję **Utwórz**. System utworzy przestrzeń nazw i włączy ją. Po kilku minutach system aprowizuje zasoby dla Twojego konta.
 
 ### <a name="get-management-credentials"></a>Uzyskiwanie poświadczeń zarządzania

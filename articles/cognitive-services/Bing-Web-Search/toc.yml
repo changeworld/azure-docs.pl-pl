@@ -105,6 +105,8 @@
       href: language-support.md
     - name: Dane analityczne na potrzeby interfejsu API wyszukiwania w Internecie Bing
       href: bing-web-stats.md
+    - name: Zgodność
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Pomoc techniczna
       items:
         - name: Forum usługi User Voice

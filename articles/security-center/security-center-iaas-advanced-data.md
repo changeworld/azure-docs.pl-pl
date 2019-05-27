@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2019
-ms.author: monhaber
-ms.openlocfilehash: e601bbaa0d15078fc2b19b5b7c536e3a1f6d20ad
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.author: v-mohabe
+ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442750"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968589"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Zabezpieczenia zaawansowanych danych dla serwerów SQL iaas
 Zabezpieczenia zaawansowanych danych dla serwerów SQL w usłudze IaaS to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Obecnie zawiera funkcje, dzięki czemu są ujawniane łagodzenia potencjalne luki bazy danych i wykrywanie nietypowych działań wskazujących zagrożenie z bazą danych.
@@ -27,7 +27,7 @@ Zabezpieczenia zaawansowanych danych dla serwerów SQL w usłudze IaaS to ujedno
 Oferty dla serwerów IaaS SQL zabezpieczeń opiera się na tych samych podstawowych technologii używanej do [pakietu zaawansowane bezpieczeństwo danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Bezpieczeństwo danych Zaawansowane (ADS) zawiera zbiór zaawansowane funkcje zabezpieczeń programu SQL, składające się z oceny luk w zabezpieczeniach i Zaawansowana ochrona przed zagrożeniami.
 
