@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/12/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 75c0deaa8bca94349091e3317e4ca70129bb4426
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794779"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991602"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -71,7 +71,8 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Dynamics 365 for Finance and Operations (wcześniej znane jako Dynamics AX Online)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>
   **Następujące usługi nie są obsługiwane**:
-    * CDN
+    * Sieć CDN
+    * Azure Front Door
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -83,7 +84,8 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Usługa Azure Active Directory
 * [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
-    * CDN
+    * Sieć CDN
+    * Azure Front Door
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -220,7 +222,7 @@ Tak. Akceptujemy do 4000 prefiksów tras do prywatnej komunikacji równorzędnej
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Czy istnieją ograniczenia dotyczące zakresów adresów IP I można anonsować za pośrednictwem sesji protokołu BGP?
 
-Prefiksy prywatne (RFC1918) nie są akceptowane dla sesji protokołu BGP z komunikacji równorzędnej firmy Microsoft.
+Prefiksy prywatne (RFC1918) nie są akceptowane dla sesji protokołu BGP z komunikacji równorzędnej firmy Microsoft. Akceptujemy dowolnego rozmiaru prefiks (maksymalnie /32) zarówno firmy Microsoft, jak i prywatnej komunikacji równorzędnej.
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co się stanie w przypadku przekroczenia Protokół BGP ogranicza?
 
@@ -283,6 +285,26 @@ Zapoznaj się [cennik](https://azure.microsoft.com/pricing/details/expressroute/
 ### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Czy opłaty za usługi ExpressRoute premium oprócz standardowe opłaty za usługę ExpressRoute?
 
 Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opłaty za magazyn i wymagane przez dostawcę połączenia.
+
+## <a name="expressroute-local"></a>Lokalne usługi ExpressRoute
+### <a name="what-is-expressroute-local"></a>Co to jest lokalne usługi ExpressRoute?
+Lokalne usługi ExpressRoute jest obwodu jednostki SKU usługi ExpressRoute. Kluczową funkcją lokalny jest, lokalne circit na zapewnia lokalizacji komunikacji równorzędnej usługi ExpressRoute dostępu do tylko do jednego lub dwóch regionach platformy Azure w lub w pobliżu tej samej metro. Z kolei obwód standardowy umożliwia dostęp do wszystkich regionów platformy Azure, w obszarze geopolitycznych i obwodu Premium we wszystkich regionach platformy Azure globalnie. 
+
+### <a name="what-are-the-benefits-of-expressroute-local"></a>Jakie są korzyści z lokalnej usługi ExpressRoute?
+Gdy trzeba płacić transfer danych wychodzących dla obwodu Standard lub Premium usługi ExpressRoute, transfer danych wychodzących nie płać oddzielnie dla obwodu usługi ExpressRoute lokalne. Innymi słowy ceny lokalne usługi ExpressRoute zawiera opłat za transfer danych. Lokalne usługi ExpressRoute jest to bardziej ekonomiczne rozwiązanie, jeśli mają ogromne ilości danych do przesłania i Ty przenosisz dane za pośrednictwem połączenia prywatnego do lokalizacji komunikacji równorzędnej usługi ExpressRoute, obok żądanego regionów świadczenia usługi Azure. 
+
+### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Jakie funkcje są dostępne, a co nie znajdują się w lokalnej usługi ExpressRoute?
+W porównaniu z obwodem usługi ExpressRoute standardowe obwodu lokalnego ma ten sam zestaw funkcji, z wyjątkiem:
+* Zakres dostępu do regionów platformy Azure zgodnie z opisem powyżej
+* Usługa ExpressRoute zasięgu globalnym nie jest dostępna w lokalnych
+
+Lokalne usługi ExpressRoute ma również limity tych samych zasobów (np. liczba sieci wirtualnych na obwód) jako Standard. 
+
+### <a name="how-to-configure-expressroute-local"></a>Jak skonfigurować lokalne usługi ExpressRoute? 
+Lokalne usługi ExpressRoute znajduje się na bezpośrednie ExpressRoute tylko. Najpierw należy skonfigurować port usługi ExpressRoute bezpośrednio. Po utworzeniu bezpośredniej portów można utworzyć obwodu lokalny, postępując zgodnie z instrukcjami [tutaj](expressroute-howto-erdirect.md).
+
+### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Gdzie jest lokalny usługi ExpressRoute i które regiony platformy Azure jest każdej lokalizacji komunikacji równorzędnej mapowane?
+Lokalne usługi ExpressRoute znajduje się w lokalizacji komunikacji równorzędnej, w których co najmniej dwóch regionach platformy Azure, Zamknij. Nie jest dostępne w komunikacji równorzędnej lokalizacji, w których nie regionu systemu Azure, w tym stanu lub prowincji lub kraju. Zapoznaj się dokładnie mapowania [stronie lokalizacje](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>Usługa ExpressRoute dla usługi Office 365
 

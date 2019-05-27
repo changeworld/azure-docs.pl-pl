@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791496"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949906"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
@@ -160,7 +160,7 @@ Na potrzeby ochrony danych poufnych śledząc i magazynowanych, SQL Database ofe
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Jak ograniczyć dostęp do poufnych danych w bazie danych
 
-Każda aplikacja ma nieco poufnych danych w bazie danych, które muszą być chronione, jest widoczny dla wszystkich użytkowników. Pewność, że pracownicy z organizacji konieczne do wyświetlenia tych danych, jednak inne osoby nie powinien mieć możliwości wyświetlania tych danych. Przykładem jest płace pracownika. Menedżer musi jednak dostęp do informacji o płacach jego bezpośrednich podwładnych, poszczególnych członków zespołu nie powinny mieć dostęp do informacji o płacach z jego elementów równorzędnych. Inny scenariusz polega na dane i deweloperów mogą wchodzenie w interakcje z danymi poufnymi w fazie rozwoju lub testowania, na przykład PESEL klientów. Te informacje ponownie nie musi być udostępniana dla dewelopera. W takich przypadkach poufne dane albo musi być zamaskowana lub nie będą widoczne na wszystkich. Usługa SQL Database oferuje dwa takiego podejścia do zapobiegania nieautoryzowanemu dostępowi do danych poufnych:
+Każda aplikacja ma nieco poufnych danych w bazie danych, które muszą być chronione, jest widoczny dla wszystkich użytkowników. Pewność, że pracownicy z organizacji konieczne do wyświetlenia tych danych, jednak inne osoby nie powinien mieć możliwości wyświetlania tych danych. Przykładem jest płace pracownika. Menedżer potrzebować dostępu do informacji o płacach dla ich bezpośrednich podwładnych jednak, poszczególnych członków zespołu nie powinny mieć dostęp do informacji o płacach z jego elementów równorzędnych. Inny scenariusz polega na dane i deweloperów mogą wchodzenie w interakcje z danymi poufnymi w fazie rozwoju lub testowania, na przykład PESEL klientów. Te informacje ponownie nie musi być udostępniana dla dewelopera. W takich przypadkach poufne dane albo musi być zamaskowana lub nie będą widoczne na wszystkich. Usługa SQL Database oferuje dwa takiego podejścia do zapobiegania nieautoryzowanemu dostępowi do danych poufnych:
 
 [Dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started.md) to funkcja maskowania danych, która umożliwia ograniczania ujawniania poufnych danych przez ich maskowanie dla nieuprzywilejowanych użytkowników w warstwie aplikacji. Należy zdefiniować regułę maskowania, która może utworzyć wzorzec maskowania (na przykład, aby przedstawiać tylko cztery ostatnie cyfry national SSN Identyfikatora: XXX-xx-0000 i oznacz go jako Xs większość) i być zidentyfikowanie użytkowników do wykluczenia z reguł maskowania. Maskowanie miały na bieżąco, a są dostępne dla różnych kategorii danych różnych funkcji maskowania. Dynamiczne maskowanie danych pozwala do automatycznego wykrywania poufnych danych w bazie danych i dotyczą maskowania.
 

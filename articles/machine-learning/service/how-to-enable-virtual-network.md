@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: fe51f4589075cb275e867c943c5d7df3e8d5d4a0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795011"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978226"
 ---
-# <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
+# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
-W tym artykule dowiesz się, jak można uruchamiać eksperymenty i wnioskowania wewnątrz sieci wirtualnej. Sieć wirtualna działa jak granica bezpieczeństwa, izolowanie zasobów platformy Azure z publicznego Internetu. Usługa Azure virtual network można również dołączyć do sieci lokalnej. Umożliwia ona bezpiecznie szkolenie modeli i uzyskiwać dostęp do Twojej wdrożonej modeli do wnioskowania.
+W tym artykule dowiesz się, jak można uruchamiać eksperymenty i wnioskowania wewnątrz sieci wirtualnej. Sieć wirtualna działa jak granica bezpieczeństwa, izolowanie zasobów platformy Azure z publicznego Internetu. Usługa Azure virtual network można również dołączyć do sieci lokalnej. Umożliwia ona bezpiecznie szkolenie modeli i uzyskiwać dostęp do Twojej wdrożonej modeli do wnioskowania. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych.
 
 Usługa Azure Machine Learning, zależy od innych usług platformy Azure za zasoby obliczeniowe. Zasoby obliczeniowe (celów obliczeń) są używane do uczenia i wdrażania modeli. Te obliczenia obiekty docelowe mogą być tworzone w sieci wirtualnej. Na przykład można użyć maszyny wirtualnej do nauki o danych firmy Microsoft do nauczenia modelu, a następnie wdrożyć model do usługi Azure Kubernetes Service (AKS). Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
@@ -35,16 +35,16 @@ W tym dokumencie przyjęto założenie, że znasz sieci wirtualnych platformy Az
 ## <a name="storage-account-for-your-workspace"></a>Konto magazynu dla obszaru roboczego
 
 > [!IMPORTANT]
-> Możesz umieścić konta magazynu, który jest dołączony do obszaru roboczego usługi Azure Machine Learning, za zaporą w sieci wirtualnej tylko podczas wykonywania eksperymentów. Wnioskowania wymaga nieograniczonego dostępu do konta magazynu. Jeśli nie masz pewności, jeśli zmodyfikowano tych ustawień lub nie można znaleźć __zmienić domyślną regułę dostępu sieciowego__ w [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci, podczas wykonywania wnioskowania.
+> Możesz umieścić konta magazynu, który jest dołączony do obszaru roboczego usługi Azure Machine Learning, za zaporą w sieci wirtualnej tylko podczas wykonywania eksperymentów. Wnioskowanie wymaga nieograniczonego dostępu do konta magazynu. Jeśli nie masz pewności, jeśli zmodyfikowano tych ustawień lub nie można znaleźć __zmienić domyślną regułę dostępu sieciowego__ w [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci, podczas wnioskowania lub modelu oceniania.
 
-Aby użyć eksperymentowanie w usłudze Azure Machine Learning możliwości za pomocą usługi Azure Storage za sieci wirtualnej, wykonaj następujące czynności:
+Aby użyć funkcji eksperymentowanie w usłudze Azure Machine Learning z usługą Azure Storage za sieci wirtualnej, wykonaj następujące czynności:
 
 1. Tworzenie obliczeń eksperymentowania, np. Usługi Machine Learning obliczenia za sieci wirtualnej, lub Dołącz obliczeń eksperymentowania z obszarem roboczym, np. Klaster HDInsight lub maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [obliczeniowego usługi użyj Machine Learning](#use-machine-learning-compute) i [Użyj maszyny wirtualnej lub klastra HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) sekcje w tym dokumencie
 2. Przejdź do magazynu dołączone do obszaru roboczego. ![Obraz witryny Azure portal pokazujący usługi Azure Storage, który jest dołączony do obszaru roboczego usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
 3. Na stronie usługi Azure Storage wybierz __zapory i sieci wirtualne__. ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci sekcji na stronie usługi Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 4. Na __zapory i sieci wirtualne__ strony wybierz następujące pozycje:
     - Wybierz pozycję __Wybrane sieci__.
-    - W obszarze __sieci wirtualne__ wybierz __Dodaj istniejącą sieć wirtualną__ można dodać sieci wirtualnej, w którym znajduje się obliczeń eksperymentowanie w usłudze. (Zobacz krok 1.)
+    - W obszarze __sieci wirtualne__, wybierz opcję __Dodaj istniejącą sieć wirtualną__ można dodać sieci wirtualnej, w którym znajduje się obliczeń eksperymentowanie w usłudze. (Zobacz krok 1.)
     - Wybierz __dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu__.
 ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci strony w ramach usługi Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
 
@@ -61,10 +61,10 @@ Wystąpienia usługi Key Vault skojarzone z obszarem roboczym jest używany prze
 
 Aby użyć eksperymentowanie w usłudze Azure Machine Learning możliwości za pomocą usługi Key Vault za zaporą sieci wirtualnej, wykonaj następujące czynności:
 1. Przejdź do usługi Key Vault, skojarzone z obszarem roboczym. ![Obraz witryny Azure portal pokazujący usługi Key Vault, który jest skojarzony z obszarem roboczym usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)
-2. W usłudze Key Vault stronie wybierz __zapory i sieci wirtualne__ sekcji. ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci sekcji na stronie usługi Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
+2. Na stronie usługi Key Vault wybierz __zapory i sieci wirtualne__ sekcji. ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci sekcji na stronie usługi Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 3. Na __zapory i sieci wirtualne__ strony wybierz następujące pozycje:
     - Wybierz pozycję __Wybrane sieci__.
-    - W obszarze __sieci wirtualne__ wybierz __Dodaj istniejące sieci wirtualne__ można dodać sieci wirtualnej, w którym znajduje się obliczeń eksperymentowanie w usłudze.
+    - W obszarze __sieci wirtualne__, wybierz opcję __Dodaj istniejące sieci wirtualne__ można dodać sieci wirtualnej, w którym znajduje się obliczeń eksperymentowanie w usłudze.
     - Wybierz __dozwolonych zaufanych usług firmy Microsoft na pomijanie zapory__.
 ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci stronie w obszarze usługi Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
 
@@ -101,7 +101,7 @@ Obecnie obliczeniowego usługi Machine Learning korzysta z usługi Azure Batch a
 
     ![Obraz portalu Azure przedstawiający regułę ruchu przychodzącego za pomocą BatchNodeManagement tag usługi](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- (opcjonalnie) Ruch przychodzący protokołu TCP na porcie 22, aby zezwolić na zdalny dostęp. To ustawienie jest wymagane tylko, jeśli chcesz się połączyć przy użyciu protokołu SSH na publiczny adres IP.
+- (opcjonalnie) Ruch przychodzący protokołu TCP na porcie 22, aby zezwolić na zdalny dostęp. Ten port jest wymagany tylko, jeśli chcesz się połączyć przy użyciu protokołu SSH na publiczny adres IP.
  
 - Ruch wychodzący na dowolny port do sieci wirtualnej.
 
@@ -129,8 +129,19 @@ Poniższy zrzut ekranu pokazuje, jak wygląda konfiguracji reguły sieciowej gru
 
 ![Zrzut ekranu przedstawiający wychodzące reguły sieciowej grupy zabezpieczeń, obliczeniowego usługi Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
 
+### <a name="user-defined-routes-for-forced-tunneling"></a>Trasy zdefiniowane przez użytkownika dla wymuszonego tunelowania
 
+Jeśli używane są wymuszone tunelowanie przy użyciu obliczeniowego usługi Azure Machine Learning, należy dodać [trasy zdefiniowane przez użytkownika (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsieci, która zawiera zasób obliczeniowy.
 
+* Zdefiniowana przez użytkownika trasa dla każdego adresu IP używanego przez usługę Azure Batch w regionie, w której istnieje zasobów. Te trasy Udr włączyć usługi batch do komunikowania się z węzłami obliczeniowymi w przypadku planowania zadań. Aby uzyskać listę adresów IP usługi Batch, skontaktuj się z działem pomocy technicznej systemu Azure.
+
+* Ruch wychodzący do usługi Azure Storage (w szczególności adresy URL formularzy `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, i `<account>.blob.core.windows.net`) nie muszą być blokowany przez urządzenie w sieci lokalnej.
+
+Po dodaniu trasy zdefiniowane przez użytkownika, należy zdefiniować trasę dla każdego powiązane prefiksu adresu IP usługi Batch oraz __typu następnego przeskoku__ do __Internet__. Na poniższej ilustracji przedstawiono przykład tej trasy zdefiniowanej przez użytkownika w witrynie Azure portal:
+
+![Przykład zdefiniowanych przez użytkownika trasa dla prefiksu adresu](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+Aby uzyskać więcej informacji, zobacz [tworzenie puli usługi Azure Batch w sieci wirtualnej](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) artykułu.
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Tworzenie obliczeniowego usługi Machine Learning w sieci wirtualnej
 
@@ -233,7 +244,7 @@ Aby użyć maszyny wirtualnej lub w klastrze Azure HDInsight w sieci wirtualnej 
 > [!IMPORTANT]
 > Sprawdź wymagania wstępne i planowanie adresowania IP dla klastra przed kontynuowaniem kroków. Aby uzyskać więcej informacji, zobacz [skonfiguruj zaawansowane sieci w usłudze Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
 > 
-
+>
 > Zachowaj ustawienie domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślnych reguł zabezpieczeń w [grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
 >
 > Usługa Azure Kubernetes Service i usługa Azure virtual network powinny być w tym samym regionie.
@@ -295,7 +306,7 @@ aks_target = ComputeTarget.create(workspace = ws,
                                   provisioning_configuration = config)
 ```
 
-Po ukończeniu procesu tworzenia, możesz tworzyć wnioskowania w klastrze AKS za sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [sposób wdrażania usługi AKS](how-to-deploy-to-aks.md).
+Po zakończeniu procesu tworzenia możesz wnioskowania/wynik w klastrze AKS za sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [sposób wdrażania usługi AKS](how-to-deploy-to-aks.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

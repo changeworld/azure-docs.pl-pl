@@ -5,27 +5,27 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 04/29/2019
+ms.date: 05/14/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: d20e266d1331fc15e65b2d119468483ff53a4c06
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951553"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148958"
 ---
-| Resource | Podstawowa | Standardowa (Standard) | Premium |
+| Resource | Podstawowy | Standardowa (Standard) | Premium |
 |---|---|---|---|
 | Storage<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | Maksymalny rozmiar warstwy | 200 GiB | 200 GiB | 200 GiB |
-| ReadOps minutę<sup>2, 3</sup> | 1000 | 3,000 | 10 000 |
+| ReadOps minutę<sup>2, 3</sup> | 1000 | 3000 | 10 000 |
 | WriteOps minutę<sup>2, 4</sup> | 100 | 500 | 2000 |
 | Pobierz przepustowości w MB/s<sup>2</sup> | 30 | 60 | 100 |
 | Przekaż przepustowości w MB/s<sup>2</sup> | 10 | 20 | 50 |
 | Elementy webhook | 2 | 10 | 100 |
 | Replikacja geograficzna | ND | ND | [Obsługiwane][geo-replication] |
-| Zaufanie do zawartości (wersja zapoznawcza) | ND | ND | [Obsługiwane][content-trust] |
+| Zaufanie do zawartości | ND | ND | [Obsługiwane][content-trust] |
 
 <sup>1</sup>limity określonego magazynu są ilość *uwzględnione* magazynu dla każdej warstwy. Opłaty są naliczane dodatkowe stawka dzienna za GiB do przechowywania obrazu powyżej tych limitów. Szybkość informacji, zobacz [cennika usługi Azure Container Registry][pricing].
 

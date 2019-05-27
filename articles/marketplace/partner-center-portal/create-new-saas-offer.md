@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 32537426b7b9b1a7015610fc0c3e2dd7c3efa49b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806209"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851225"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
@@ -128,12 +128,12 @@ Po włączeniu wersji testowej zostanie prośba do konfigurowania środowiska po
 
 ### <a name="type-of-test-drive"></a>Typ wersji testowej
 
-- **[Usługa Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)**: Szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania. Produkty, które mieszczą się w tym scenariuszu korzystać tylko zasobów platformy Azure.
-- **[Dynamics 365 dla firm siedziby](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)**: Firma Microsoft hostuje i przechowuje usługa dysku testowego (w tym obsługi administracyjnej i wdrażania) for Business Central, system do planowania zasobów przedsiębiorstwa (Finanse i operacje, łańcuchu dostaw, CRM, itp.).  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)**: Firma Microsoft obsługuje i obsługuje usługa dysku testowego (w tym obsługi administracyjnej i wdrażania) dla systemu zaangażowania użytkowników (sprzedaż, usługi, usługi programu project, usługi terenowe itp.).  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)**: Firma Microsoft obsługuje i przechowuje usługa dysku testowego (w tym obsługi administracyjnej i wdrażania) for Finance and Operations do planowania zasobów przedsiębiorstwa systemu (finanse, operacje, produkcji, łańcuch dostaw, itp.). 
-- **[Aplikacja logiki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)**: Szablon wdrożenia obejmujący wszystkie architektury złożonych rozwiązań. Wszystkie produkty niestandardowego należy używać tego rodzaju wersji testowej.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)**: Osadzonego linku do niestandardowej pulpitu nawigacyjnego. Produkty, które pokazują, że Interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej. Wszystko, co należy przekazać w tym miejscu jest osadzony adres URL do usługi Power BI.
+- **[Usługa Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : Szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania. Produkty, które mieszczą się w tym scenariuszu korzystać tylko zasobów platformy Azure.
+- **[Dynamics 365 dla firm siedziby](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Firma Microsoft hostuje i przechowuje usługa dysku testowego (w tym obsługi administracyjnej i wdrażania) for Business Central, system do planowania zasobów przedsiębiorstwa (Finanse i operacje, łańcuchu dostaw, CRM, itp.).  
+- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Firma Microsoft obsługuje i obsługuje usługa dysku testowego (w tym obsługi administracyjnej i wdrażania) dla systemu zaangażowania użytkowników (sprzedaż, usługi, usługi programu project, usługi terenowe itp.).  
+- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Firma Microsoft obsługuje i przechowuje usługa dysku testowego (w tym obsługi administracyjnej i wdrażania) for Finance and Operations do planowania zasobów przedsiębiorstwa systemu (finanse, operacje, produkcji, łańcuch dostaw, itp.). 
+- **[Aplikacja logiki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : Szablon wdrożenia obejmujący wszystkie architektury złożonych rozwiązań. Wszystkie produkty niestandardowego należy używać tego rodzaju wersji testowej.
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : Osadzonego linku do niestandardowej pulpitu nawigacyjnego. Produkty, które pokazują, że Interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej. Wszystko, co należy przekazać w tym miejscu jest osadzony adres URL do usługi Power BI.
 
 #### <a name="additional-test-drive-resources"></a>Zasoby dysków dodatkowych testów
 - [Test stacji techniczne najlepszych rozwiązań](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
@@ -386,11 +386,11 @@ Firma Microsoft można usunąć złożoność Konfigurowanie wersji testowej, ud
 
 - **Maksymalna liczba współbieżnych testu dyski** (wymagane): Ustawianie maksymalnej liczby klientów, których można użyć w tym samym czasie wersji testowej. Każdy jednoczesnych użytkowników będą wymagały licencją Dynamics 365 podczas wersji testowej jest aktywny, więc należy upewnić się, że masz wystarczającą liczbę licencji, które są dostępne do obsługi zestawu maksymalny limit. Zalecanej wartości wynoszącej 3 – 5.
 
-- **Czas trwania wersji testowej** (wymagane): Określa długość czasu, przez jaki wersji testowej pozostaną aktywne przez zdefiniowanie liczbę godzin. Po tym wiele godzin sesja kończy i nie będzie używać jednej z Twoich licencji. Zaleca się wartość 2 do 24 godzin w zależności od złożoności ofertę. Ten czas trwania może tylko pasujących zestaw przez całkowitą liczbę godzin (np. godziny "2", "1.5" jest nieprawidłowy).  Użytkownik może zażądać nową sesję, gdyby zabrakło czasu i chcesz ponownie uzyskać dostęp w wersji testowej.
+- **Czas trwania wersji testowej** (wymagane): Określa długość czasu, przez jaki wersji testowej pozostaną aktywne przez zdefiniowanie liczby godzin. Po tym wiele godzin sesja kończy i nie będzie używać jednej z Twoich licencji. Zaleca się wartość 2 do 24 godzin w zależności od złożoności ofertę. Ten czas trwania może tylko pasujących zestaw przez całkowitą liczbę godzin (np. godziny "2", "1.5" jest nieprawidłowy).  Użytkownik może zażądać nową sesję, gdyby zabrakło czasu i chcesz ponownie uzyskać dostęp w wersji testowej.
 
 - **Adres URL wystąpienia** (wymagane): Adres URL, gdzie klient rozpocznie ich wersji testowej. Zazwyczaj adres URL wystąpienia usługi Dynamics 365, z tą aplikacją z przykładowymi danymi zainstalowany (np. https://testdrive.crm.dynamics.com).
 
-- **Adres URL interfejsu API sieci Web wystąpienia** (wymagane): Pobieranie adresu URL interfejsu API sieci Web dla wystąpienia usługi Dynamics 365, logując się do konta usługi Microsoft 365 i przechodząc do **ustawienia** \&gt; **Dostosowywania** \&gt; **Zasoby dla deweloperów** \&gt; **Wystąpienia interfejsu API sieci Web (adres URL katalogu głównego usługi)**, skopiuj adres URL tutaj (np. https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Adres URL interfejsu API sieci Web wystąpienia** (wymagane): Pobieranie adresu URL interfejsu API sieci Web dla wystąpienia usługi Dynamics 365, logując się do konta usługi Microsoft 365 i przechodząc do **ustawienia** \&gt; **Dostosowywania** \&gt; **Zasoby dla deweloperów** \&gt; **Wystąpienia interfejsu API sieci Web (adres URL katalogu głównego usługi)** , skopiuj adres URL tutaj (np. https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Nazwa roli** (wymagane): Podaj nazwę roli zabezpieczeń, zdefiniowanych w niestandardowych wersji testowej Dynamics 365. Będzie można przypisać do użytkownika podczas ich wersji testowej (np. test-drive oparta na roli).
 
@@ -443,7 +443,7 @@ Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 - **Wideo: Dodawanie filmów wideo** (opcjonalnie): Filmy wideo mogą być przekazywane do usługi YouTube lub Vimeo i odwołujesz przy użyciu łącza i miniaturę obrazu (w pikselach 533 x 324), dzięki czemu odbiorcy mogą wyświetlać przewodnik informacji ułatwiających im lepiej zrozumieć wersji testowej, w tym sposób pomyślnie korzystać z funkcji usługi oferty i zrozumieć scenariusze, które wyróżniają korzyści.
   - **Nazwa** (wymagane)
   - **Adres URL (w usłudze YouTube lub Vimeo tylko)** (wymagane)
-  - **Miniatura (533 x 324px)**: Plik obrazu musi być w formacie PNG.
+  - **Miniatura (533 x 324px)** : Plik obrazu musi być w formacie PNG.
 
 Wybierz **Zapisz** po wykonaniu tych pól.
 

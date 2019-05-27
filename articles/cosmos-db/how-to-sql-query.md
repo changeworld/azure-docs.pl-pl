@@ -4,14 +4,14 @@ description: Dowiedz się więcej o składni języka SQL, pojęciach związanych
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796161"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954133"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -869,7 +869,7 @@ Wyniki są:
     ]
 ```
 
-Następujące zapytanie SQL jest inny przykład użycia tablicy w ciągu w podzapytania. To zapytanie pobiera różne imiona wszystkich dzieci w arrary.
+Następujące zapytanie SQL jest inny przykład użycia tablicy w ciągu w podzapytania. To zapytanie pobiera różne imiona wszystkich dzieci w tablicy.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
