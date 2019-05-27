@@ -2,19 +2,19 @@
 title: 'Szybki start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault za pomocą aplikacji internetowej platformy .NET — usługa Azure Key Vault | Dokumentacja firmy Microsoft'
 description: W tym przewodniku Szybki start ustawisz i pobierzesz wpis tajny z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 0d2b3f16086bc3dc653124ecfa9e7116f71bc585
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 132711249ffde4a9c49bc997d8c4ebe4d9c74948
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925425"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872539"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Szybki start: Konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 
@@ -39,9 +39,9 @@ Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami dotyczącymi u
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * W systemie Windows:
-  * [Visual Studio 2017 w wersji 15.7.3 lub nowszej](https://www.microsoft.com/net/download/windows) z następującymi pakietami roboczymi:
-    * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-    * Tworzenie aplikacji dla wielu platform w środowisku .NET Core
+  * [Visual Studio 2019](https://www.microsoft.com/net/download/windows) z następującymi pakietami roboczymi:
+    * ASP.NET i tworzenie aplikacji internetowych
+    * Programowanie dla wielu platform .NET core
   * [Zestaw .NET Core 2.1 SDK lub nowszy](https://www.microsoft.com/net/download/windows)
 
 * Na komputerze Mac:
@@ -119,14 +119,14 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 Edytuj plik program.cs, aby uruchomić przykład z określoną nazwą magazynu kluczy:
 
 1. Przejdź do folderu key-vault-dotnet-core-quickstart.
-2. Otwórz plik key-vault-dotnet-core-quickstart.sln w programie Visual Studio 2017.
+2. Otwórz plik klucz magazynu dotnet-core-quickstart.sln w Visual Studio 2019 r.
 3. Otwórz plik Program.cs i zaktualizuj symbol zastępczy *YourKeyVaultName* przy użyciu nazwy utworzonego wcześniej magazynu kluczy.
 
 To rozwiązanie używa bibliotek NuGet [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-Z menu głównego programu Visual Studio 2017 wybierz kolejno pozycje **Debuguj** > **Uruchom** bez debugowania. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**. Wyświetlona zostanie wartość wpisu **AppSecret**.
+Wybierz z menu głównego programu Visual Studio 2019 **debugowania** > **Uruchom bez debugowania**. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**. Wyświetlona zostanie wartość wpisu **AppSecret**.
 
 ## <a name="publish-the-web-application-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 

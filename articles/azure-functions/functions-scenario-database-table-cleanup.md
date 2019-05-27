@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 19a5fe4c087d477ff15d2237a36d1c4ecaa0e070
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120674"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908129"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Łączenie z bazą danych SQL Azure za pomocą usługi Azure Functions
 
-W tym artykule pokazano, jak utworzyć zaplanowane zadanie, które łączy się z wystąpieniem usługi Azure SQL Database za pomocą usługi Azure Functions. Kod funkcji czyści wierszy w tabeli w bazie danych. Nowy C# funkcji jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowanych w programie Visual Studio 2017. Aby zapewnić obsługę tego scenariusza, należy ustawić parametry połączenia bazy danych jako ustawienia aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
+W tym artykule pokazano, jak utworzyć zaplanowane zadanie, które łączy się z wystąpieniem usługi Azure SQL Database za pomocą usługi Azure Functions. Kod funkcji czyści wierszy w tabeli w bazie danych. Nowy C# funkcji jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowanych w programie Visual Studio 2019 r. Aby zapewnić obsługę tego scenariusza, należy ustawić parametry połączenia bazy danych jako ustawienia aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
 
 Jeśli jest to Twój pierwszy kontakt, Praca z C# funkcji, należy przeczytać [usługi Azure Functions C# dokumentacja dla deweloperów](functions-dotnet-class-library.md).
 
@@ -64,7 +64,7 @@ Użytkownik musi wcześniej opublikowaniu aplikacji na platformie Azure. Jeśli 
 
 Należy dodać pakiet NuGet, który zawiera biblioteki SqlClient. Ta biblioteka dostępu do danych jest wymagane do łączenia z bazą danych SQL.
 
-1. Otwórz swój projekt aplikacji funkcji lokalnej w programie Visual Studio 2017.
+1. Otwórz swój projekt aplikacji funkcji lokalnej w programie Visual Studio 2019 r.
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji funkcji, a następnie wybierz **Zarządzaj pakietami NuGet**.
 

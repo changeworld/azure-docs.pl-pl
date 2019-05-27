@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359283"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119365"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -33,7 +33,7 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | Adres e-mail | Tylko samoobsługowego resetowania HASEŁ |
 | Aplikacja Microsoft Authenticator | Uwierzytelnianie wieloskładnikowe i publicznej wersji zapoznawczej na potrzeby samoobsługowego resetowania HASŁA |
 | Token sprzętowy OATH | Publicznej wersji zapoznawczej dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
-| SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
+| Wiadomość SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Połączenie głosowe | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Hasła aplikacji | Uwierzytelnianie wieloskładnikowe tylko w niektórych przypadkach |
 
@@ -165,7 +165,7 @@ Tokeny sprzętowe OATH są są obsługiwane w ramach publicznej wersji zapoznawc
 Po drogą kupna tokeny muszą być przesłane w formacie wartości rozdzielanych przecinkami (CSV) jako przykład poniżej przedstawiono w tym nazwy UPN, numer seryjny, klucz tajny, interwał czasu, producenta i modelu.
 
 ```csv
-upn,serial number,secret key,timeinterval,manufacturer,model
+upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
 

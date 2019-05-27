@@ -8,12 +8,12 @@ ms.author: sngun
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894155"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861302"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji Cassandra przy użyciu zestawu SDK platformy .NET i usługi Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firm
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Można też [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań.
 
 Potrzebne są też następujące elementy: 
-* Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+* Jeśli nie masz jeszcze programu Visual Studio 2019 r zainstalowany, możesz pobrać i używać **bezpłatne** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 * Zainstaluj usługę [Git](https://www.git-scm.com/), aby sklonować przykład.
 
 <a id="create-account"></a>
@@ -122,7 +122,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Portal Azure, strona Parametry połączenia](./media/create-cassandra-dotnet/keys.png)
 
-2. W programie Visual Studio 2017 otwórz plik Program.cs. 
+2. W programie Visual Studio Otwórz plik Program.cs. 
 
 3. Wklej wartość NAZWA UŻYTKOWNIKA z portalu do lokalizacji `<FILLME>` w wierszu 13.
 

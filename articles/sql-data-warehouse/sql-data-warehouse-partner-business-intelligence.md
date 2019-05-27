@@ -2,20 +2,20 @@
 title: Analiza biznesowa programu SQL Data Warehouse partnerzy | Dokumentacja firmy Microsoft
 description: Wyświetla listę partnerów analizy biznesowej innych firm za pomocą rozwiązania obsługujące SQL Data Warehouse.
 services: sql-data-warehouse
-author: jrowlandjones
+author: mabasile-MSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 03/27/2019
-ms.author: jrj
+ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87379631cc7f7b9e31def157ba38336e41b693d8
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477113"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873811"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Usługa SQL Data Warehouse business intelligence partnerów
 Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej gamy narzędzi wiodące w branży.  W tym artykule przedstawiono firm partnerskich firmy Microsoft dzięki rozwiązaniom analizy przysługujący obsługi usługi Azure SQL Data Warehouse.
@@ -34,7 +34,7 @@ Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej
 | ![Microstrategy][14] |**MicroStrategy**<br>Platforma MicroStrategy oferuje kompletny zestaw możliwości analizy i analizy biznesowej, które umożliwiają organizacjom korzyści ze swoich danych biznesowych. Zaawansowany aparat analityczny MicroStrategy firmy, kompleksowe zestawy narzędzi, wiele łączników danych i architektura skalowalne, otwórz upewnij się, że wszystko, czego potrzebujesz, aby rozszerzyć dostęp do analizy dla każdego zespołu i business — funkcja |[Strona produktu][microstrategy_website]<br> [Azure Marketplace][microstrategy_marketplace]<br> |
 | ![Qlik][8] |**Qlik Sense Enterprise**<br>Odnajdowanie szczegółowe informacje o dysku za pomocą aplikacji wizualizacji danych, które każda osoba może użyć. Za pomocą usługa Qlik Sense wszystkim innym w Twojej firmie łatwe tworzenie elastycznych, interaktywne wizualizacje i podejmowanie trafnych decyzji. |[Strona produktu][qlik_website]<br> |
 | ![SiSense][9] |**SiSense**<br>SiSense to oprogramowanie do analizy biznesowej pełnym stosie, które jest dostarczana z narzędziami, które firma musi Analizuj i wizualizuj dane: analitycznej bazy danych o wysokiej wydajności, możliwość Dołącz do wielu źródeł, wyodrębnianie proste danych (ETL) i danych opartych na sieci web wizualizacji. Rozpocznij analizowanie i wizualizowanie dużych zestawów danych przy użyciu analizy i analizy Biznesowej SiSense już dziś. |[Strona produktu][sisense_website]<br> |
-| ![Tableau][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Strona produktu][tableau_website]<br> [Azure Marketplace][tableau_marketplace]<br>|
+| ![TABLEAU][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Strona produktu][tableau_website]<br> [Azure Marketplace][tableau_marketplace]<br>|
 | ![Targit][11] |**Targit (Decision Suite)**<br>Pakiet decyzji Targit zapewnia analizy i analizy Biznesowej platformy, która zapewnia pulpity nawigacyjne czasu rzeczywistego, samoobsługowej analizy, raportowanie przyjazny dla użytkownika, atrakcyjnych funkcji mobilnych i technologii proste odnajdywanie danych w rozwiązaniu pojedyncze, spójne. Targit zapewnia firmom odwagę do działania. |[Strona produktu][targit_website]<br> [Azure Marketplace][targit_marketplace]<br> |
 | ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Strona produktu][yellowfin_website]<br> [Azure Marketplace][yellowfin_marketplace] |
 

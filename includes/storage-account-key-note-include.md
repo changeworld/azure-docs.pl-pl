@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 3cfdca99c91dc54a711801d92aa0da91fb9703e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484254"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115514"
 ---
 > [!IMPORTANT]
 > Klucz konta magazynu jest podobny do hasła głównego konta magazynu. Zawsze starannie chroń klucz konta. Nie udostępniaj go innym użytkownikom, nie koduj go trwale ani nie zapisuj nigdzie w postaci zwykłego tekstu, do którego mają dostęp inne osoby. Wygeneruj ponownie klucz konta za pośrednictwem witryny Azure Portal, jeśli uważasz, że jego zabezpieczenia mogły zostać naruszone.

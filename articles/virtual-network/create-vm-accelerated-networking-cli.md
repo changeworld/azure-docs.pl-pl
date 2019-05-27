@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713746"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873417"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Linux z przyspieszonej sieci
 
@@ -225,6 +225,10 @@ vf_tx_dropped: 0
 ```
 Przyspieszona sieć jest teraz włączone dla maszyny Wirtualnej.
 
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>Obsługa wiązanie dynamiczne i odwołania funkcji wirtualnej 
+Aplikacje muszą uruchamiać syntetycznej karty Sieciowej, która jest widoczna na maszynie Wirtualnej. Jeśli aplikacja uruchamia się bezpośrednio za pośrednictwem funkcji Wirtualnej karty Sieciowej, nie odbiera **wszystkich** pakiety przeznaczone do maszyny Wirtualnej, ponieważ niektóre pakiety wyświetlane nad syntetycznego interfejsu.
+Jeśli uruchamiasz aplikację za pośrednictwem syntetycznej karty Sieciowej, gwarantuje aplikacja otrzymuje **wszystkich** pakiety, które są przeznaczone do niego. Zapewnia także się upewnić, że aplikacja będzie kontynuować działanie, nawet wtedy, gdy VF jest odwoływane, gdy host jest obsługiwany. Powiązywanie z kartą Sieciową syntetycznej aplikacji **obowiązkowe** wymagania dla wszystkich aplikacji, korzystając z zalet **Accelerated Networking**.
+
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>Włącz Accelerated Networking na istniejących maszynach wirtualnych
 Jeśli utworzono maszynę Wirtualną bez przyspieszonej sieci jest możliwe włączyć tę funkcję na istniejącej maszyny Wirtualnej.  Maszyna wirtualna musi obsługiwać Accelerated Networking, spełniając następujące wymagania wstępne opisane powyżej:
 
@@ -259,7 +263,7 @@ az vm start --resource-group myResourceGroup \
     --name myVM
 ```
 
-### <a name="vmss"></a>Zestaw skalowania maszyn wirtualnych
+### <a name="vmss"></a>Stan VMSS
 Zestawu skalowania maszyn wirtualnych jest nieco inna, ale poniżej tego samego przepływu pracy.  Po pierwsze Zatrzymaj maszyny wirtualne:
 
 ```azurecli

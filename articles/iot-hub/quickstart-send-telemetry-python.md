@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: fc303a0ab53c80c91bb29c36a1a7e0f04c4a89e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006877"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873092"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (Python)
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przykładowa aplikacja, uruchamianych w tym przewodniku Szybki Start jest zapisywany przy użyciu języka Python. Obecnie usługa Microsoft Azure IoT SDKs dla języka Python obsługuje tylko określonych wersji języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-Ten przewodnik Szybki Start założono, że używasz komputera deweloperskiego z systemem Windows. Dla systemów Windows, tylko [Python 3.6.x](https://www.python.org/downloads/release/python-368/) jest obsługiwana. Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli system architektury procesora CPU jest 32-bitowych, a następnie Instalator pobierania x86; z architekturą 64-bitowy Pobierz Instalator x86-64. Dodatkowo należy upewnić się, że [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) dla architektury (x86 lub x64) jest zainstalowany.
+Ten przewodnik Szybki Start założono, że używasz komputera deweloperskiego z systemem Windows. Dla systemów Windows, tylko [Python 3.6.x](https://www.python.org/downloads/release/python-368/) jest obsługiwana. Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli system architektury procesora CPU jest 32-bitowych, a następnie Instalator pobierania x86; z architekturą 64-bitowego Pobierz Instalator x86-64. Dodatkowo należy upewnić się, że [programu Microsoft Visual C++ Redistributable dla programu Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) dla architektury (x86 lub x64) jest zainstalowany.
 
 Możesz pobrać języka Python dla innych platform z [Python.org](https://www.python.org/downloads/).
 
@@ -73,7 +73,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
+1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla tego urządzenia została zarejestrowana:
 
     **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 

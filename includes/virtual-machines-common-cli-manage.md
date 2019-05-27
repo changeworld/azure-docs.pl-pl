@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: beece95164f0d82b1aa7f22d56f4dce02f4bb38c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387256"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117260"
 ---
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie i zarządzanie zasobami platformy Azure w systemach macOS, Linux i Windows. Ten artykuł szczegółowo opisuje niektóre z najczęściej używanych poleceń, aby utworzyć i zarządzać maszyn wirtualnych (VM).
 
@@ -22,8 +22,8 @@ Aby uzyskać bardziej szczegółową pomoc dotyczącą konkretnych przełącznik
 | Zadanie | Polecenia interfejsu wiersza polecenia platformy Azure |
 | --- | --- |
 | Tworzenie grupy zasobów | `az group create --name myResourceGroup --location eastus` |
-| Tworzenie maszyny wirtualnej z systemem Linux | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
-| Tworzenie maszyny wirtualnej z systemem Windows | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
+| Utwórz maszynę wirtualną z systemem Linux | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
+| Utwórz maszynę wirtualną z systemem Windows. | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
 
 ### <a name="manage-vm-state"></a>Zarządzanie stanem maszyny Wirtualnej
 | Zadanie | Polecenia interfejsu wiersza polecenia platformy Azure |
@@ -38,7 +38,7 @@ Aby uzyskać bardziej szczegółową pomoc dotyczącą konkretnych przełącznik
 ### <a name="get-vm-info"></a>Pobierz informacje dotyczące maszyny Wirtualnej
 | Zadanie | Polecenia interfejsu wiersza polecenia platformy Azure |
 | --- | --- |
-| Wyświetlanie listy maszyn wirtualnych | `az vm list` |
+| Lista maszyn wirtualnych | `az vm list` |
 | Uzyskiwanie informacji o maszynie wirtualnej | `az vm show --resource-group myResourceGroup --name myVM` |
 | Używanie zasobów maszyny wirtualnej | `az vm list-usage --location eastus` |
 | Pobieranie wszystkich rozmiarów maszyn wirtualnych | `az vm list-sizes --location eastus` |

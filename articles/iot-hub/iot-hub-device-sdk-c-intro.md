@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 05/17/2019
 ms.author: yizhon
-ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401313"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910332"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
 
@@ -126,7 +126,7 @@ Wersja Windows **iothub_client\_przykłady\_iothub_convenience_sample** aplikacj
   ![Visual Studio Solution Explorer](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> Jeśli możesz otworzyć ten projekt w programie Visual Studio 2017, Zaakceptuj monity o rzekieruj projekt do najnowszej wersji.
+> Jeśli program Visual Studio pyta rzekieruj projekt do najnowszej wersji, należy zaakceptować monit.
 
 To rozwiązanie zawiera jeden projekt. Istnieją cztery pakiety NuGet zainstalowane w tym rozwiązaniu:
 
@@ -163,7 +163,7 @@ Należy przekazać kopię parametry połączenia urządzenia, uzyskany w narzęd
 
 Gdy masz prawidłową **IOTHUB\_klienta\_obsługi**, możesz rozpocząć wywoływanie interfejsów API do wysyłania i odbierania wiadomości z usługi IoT Hub.
 
-### <a name="send-messages"></a>Wysyłanie komunikatów
+### <a name="send-messages"></a>Wysyłanie wiadomości
 
 Przykładowa aplikacja konfiguruje pętlę do wysyłania komunikatów do Centrum IoT hub. Poniższy fragment kodu:
 
@@ -226,7 +226,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 
 Należy pamiętać, wywołanie **IoTHubMessage\_Destroy** działać po zakończeniu korzystania z komunikatem. Ta funkcja powoduje zwolnienie zasobów przydzielonych podczas tworzenia komunikatu.
 
-### <a name="receive-messages"></a>Odbieranie komunikatów
+### <a name="receive-messages"></a>Odbieranie wiadomości
 
 Odebranie komunikatu jest operacją asynchroniczną. Najpierw należy zarejestrować się wywołanie zwrotne do wywołania, gdy urządzenie otrzyma komunikat:
 
@@ -339,7 +339,7 @@ Wewnątrz **serializator** folderu w [repozytorium azure-iot-sdk-c](https://gith
   ![Rozwiązania Visual Studio dla przykładu protokołu mqtt](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> Jeśli możesz otworzyć ten projekt w programie Visual Studio 2017, Zaakceptuj monity o rzekieruj projekt do najnowszej wersji.
+> Jeśli program Visual Studio pyta rzekieruj projekt do najnowszej wersji, należy zaakceptować monit.
 
 Podobnie jak w poprzednim przykładzie ta obejmuje kilka pakietów NuGet:
 
@@ -414,7 +414,7 @@ W tym przykładzie jest jednym modelu o nazwie **ContosoAnemometer**. Ten model 
 
 Zdefiniuj powierzchni interfejsu API, który służy do wysyłania komunikatów do Centrum IoT i odpowiadać na komunikaty wysyłane do urządzenia, danych i akcji zdefiniowanych w modelu. Użyj tego modelu najlepiej rozumie przykładu.
 
-### <a name="send-messages"></a>Wysyłanie komunikatów
+### <a name="send-messages"></a>Wysyłanie wiadomości
 
 Model definiuje dane, które można wysyłać do Centrum IoT Hub. W tym przykładzie, oznacza to jeden z elementów danych dwóch zdefiniowane przy użyciu **WITH_DATA** makra. Istnieje kilka kroków wymaganych do wysyłania **DeviceId** i **prędkość wiatru** wartości do usługi IoT hub. Pierwsza to można ustawić dane, które mają zostać wysłane:
 
@@ -483,7 +483,7 @@ Drugi parametr jest wskaźnikiem do kontekstu użytkownika; Ten sam wskaźnik pr
 
 To wszystko na temat wysyłania komunikatów z urządzenia do chmury. Pozostało jedynie na pokrycie jest jak odbierać komunikaty.
 
-### <a name="receive-messages"></a>Odbieranie komunikatów
+### <a name="receive-messages"></a>Odbieranie wiadomości
 
 Odbieranie komunikatów działa podobnie jak sposób wiadomości działają w **usługi IoTHubClient** biblioteki. Najpierw należy zarejestrować się funkcji wywołania zwrotnego komunikat:
 

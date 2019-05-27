@@ -8,15 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 10/23/2018
-ms.date: 03/25/2019
-ms.author: v-junlch
-ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2018
+ms.author: azfuncdf, glenga
+ms.openlocfilehash: 705a43f1ef35f953d1b87c7c44bbc45fcb4334be
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710952"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872858"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Utwórz trwałe funkcje przy użyciu witryny Azure portal
 
@@ -24,7 +23,7 @@ ms.locfileid: "60710952"
 
 > [!NOTE]
 > 
-> * Jeśli tworzysz funkcje trwałe w C#, zamiast tego należy rozważyć [rozwoju Visual Studio 2017](durable-functions-create-first-csharp.md).
+> * Jeśli tworzysz funkcje trwałe w C#, zamiast tego należy rozważyć [rozwoju Visual Studio 2019](durable-functions-create-first-csharp.md).
 > * Jeśli tworzysz trwałe funkcje w języku JavaScript, zamiast tego należy rozważyć [rozwoju Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
@@ -92,7 +91,7 @@ Jeśli tworzysz niezawodne funkcje języka JavaScript, będą musieli zainstalow
 1. Użyj narzędzia HTTP, takiego jak Postman lub programu cURL do wysłania żądania POST na adres URL, który został skopiowany. Poniższy przykład jest polecenia cURL, który wysyła żądanie POST do trwałego funkcji:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
     W tym przykładzie `{your-function-app-name}` domenę, nazwę aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych z identyfikatora URI, które umożliwia monitorowanie i zarządzanie nimi wykonywania, który wygląda podobnie jak w poniższym przykładzie:
@@ -141,5 +140,3 @@ Pierwszą funkcję trwałe jest uruchomiona i działa na platformie Azure.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat typowych wzorców funkcji trwałej](durable-functions-concepts.md)
-
-<!-- Update_Description: wording update -->

@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: iainfou
-ms.openlocfilehash: abeb9ef6e467b62cf7332e01e1b77c710b9ba4f4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8d4ed8f791858747814972bcf16a9672a7f12610
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072871"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901454"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Limity przydziału, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionów w usłudze Azure Kubernetes Service (AKS)
 
-Wszystkich usług platformy Azure dotyczą określone limity i przydziały dla zasobów i funkcji. Rozmiar węzła niektórych maszyn wirtualnych (VM) jednostek SKU są następnie ograniczyć do użycia.
+Wszystkich usług platformy Azure, Ustaw limity i przydziały dla zasobów i funkcji. Niektóre jednostki SKU maszyny wirtualnej (VM) są również może być używana.
 
-Ten artykuł szczegółowo opisuje domyślne limity zasobów dla zasobów usługi Azure Kubernetes Service (AKS), jak również dostępność usługi AKS w regionach platformy Azure.
+Ten artykuł szczegółowo opisuje domyślne limity zasobów dla zasobów usługi Azure Kubernetes Service (AKS) i dostępność usługi AKS w regionach platformy Azure.
 
 ## <a name="service-quotas-and-limits"></a>Limity i przydziały dotyczące usługi
 
@@ -26,11 +26,14 @@ Ten artykuł szczegółowo opisuje domyślne limity zasobów dla zasobów usług
 
 ## <a name="provisioned-infrastructure"></a>Infrastruktura aprowizowana
 
-Do infrastruktury aprowizowanej mają zastosowanie wszystkie inne ograniczenia dotyczące sieci, mocy obliczeniowej i magazynu. Zobacz [Azure subscription and service limits](../azure-subscription-service-limits.md) (Limity subskrypcji i usługi Azure), aby sprawdzić odpowiednie limity.
+Do infrastruktury aprowizowanej mają zastosowanie wszystkie inne ograniczenia dotyczące sieci, mocy obliczeniowej i magazynu. Aby sprawdzić odpowiednie limity, zobacz [limity usług i subskrypcji platformy Azure](../azure-subscription-service-limits.md).
+
+> [!IMPORTANT]
+> Podczas uaktualniania klastra usługi AKS dodatkowe zasoby są tymczasowo używane. Te zasoby obejmują dostępnych adresów IP w podsieci sieci wirtualnej lub limit przydziału procesorów wirtualnych maszyn wirtualnych. Użycie kontenerów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), to jedyny zalecanych do zastosowania najnowszych aktualizacji w węzłach jest w trakcie operacji uaktualniania. Proces uaktualniania klastra nie powiodło się może wskazywać, że nie masz dostępny IP adres miejsca lub procesora wirtualnego vCPU limit przydziału do obsługi tych zasobów tymczasowych. Aby uzyskać więcej informacji na temat procesu uaktualniania węzła systemu Windows Server, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 
 ## <a name="restricted-vm-sizes"></a>Ograniczone rozmiarów maszyn wirtualnych
 
-Każdy węzeł w klastrze AKS zawiera ustaloną ilość zasobów obliczeniowych, takich jak pamięci i procesorów wirtualnych. Węzłów AKS zawiera zasoby obliczeniowe niewystarczający, może nie działać poprawnie zasobników. Aby upewnić się, że wymagane *systemu kubernetes* niezawodnie można zaplanować zasobników i aplikacji, nie można używać następujących jednostek SKU maszyn wirtualnych w usłudze AKS:
+Każdy węzeł w klastrze AKS zawiera ustaloną ilość zasobów obliczeniowych, takich jak pamięci i procesorów wirtualnych. Jeśli węzeł AKS zawiera zasoby obliczeniowe za mało, zasobników może zakończyć się niepowodzeniem do poprawnego działania. Aby upewnić się, że wymagane *systemu kubernetes* zasobników i aplikacjach niezawodnie można zaplanować, nie należy używać następujących jednostek SKU maszyn wirtualnych w usłudze AKS:
 
 - Standardowa_A0
 - Standardowa_A1
@@ -42,13 +45,13 @@ Każdy węzeł w klastrze AKS zawiera ustaloną ilość zasobów obliczeniowych,
 
 Aby uzyskać więcej informacji o typach maszyn wirtualnych i ich zasoby obliczeniowe, zobacz [rozmiary maszyn wirtualnych na platformie Azure][vm-skus].
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność regionalna
 
 Najbardziej aktualną listę, gdzie można wdrożyć i uruchamiaj klastry, zobacz [dostępność w poszczególnych regionach AKS][region-availability].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Niektóre domyślne limity i przydziały mogą zostać zwiększone. Aby zażądać zwiększenia dotyczącego co najmniej jednego zasobu, dla którego takie zwiększenie jest obsługiwane, prześlij [żądanie pomocy technicznej platformy Azure][azure-support] (wybierz wartość „Limit przydziału” dla pozycji **Typ problemu**).
+Niektóre domyślne limity i przydziały mogą zostać zwiększone. Jeśli zasób obsługuje wzrost, żądanie zwiększenia za pośrednictwem [żądania pomocy technicznej platformy Azure] [ azure-support] (dla **typ problemu**, wybierz opcję **przydziału** ).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
@@ -56,3 +59,4 @@ Niektóre domyślne limity i przydziały mogą zostać zwiększone. Aby zażąda
 
 <!-- LINKS - Internal -->
 [vm-skus]: ../virtual-machines/linux/sizes.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

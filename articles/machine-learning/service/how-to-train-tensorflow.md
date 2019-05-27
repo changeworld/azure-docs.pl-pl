@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 82c9aa961221b582bb16438f30a0584232164393
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442354"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65915102"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Szkolenia TensorFlow i Keras modeli za pomocą usługi Azure Machine Learning
 
@@ -28,7 +28,7 @@ Można łatwo uruchamiać zadania szkolenia TensorFlow, mocy obliczeniowej platf
 
 Ponieważ `TensorFlow` narzędzie do szacowania klasa jest podobna do podstawy [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py), firma Microsoft zaleca pierwszy odczytu [podstawowy artykule narzędzie do szacowania](how-to-train-ml-models.md) można zapoznać się z pojęciami nadrzędna.
 
-Aby rozpocząć pracę z usługą Azure Machine Learning [ukończenie tego przewodnika Szybki Start](quickstart-run-cloud-notebook.md). Po zakończeniu będziesz mieć [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md#workspace) i wszystkie nasze [przykładowy notesów](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml) tym w zakresie sieci szkolenia TensorFlow i biblioteki Keras.
+Aby rozpocząć pracę z usługą Azure Machine Learning [ukończenie tego przewodnika Szybki Start](quickstart-run-cloud-notebook.md). Po zakończeniu będziesz mieć [obszaru roboczego usługi Azure Machine Learning](concept-workspace.md) i wszystkie nasze [przykładowy notesów](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml) tym w zakresie sieci szkolenia TensorFlow i biblioteki Keras.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
 

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ab01187b03b3d658b171029003667588382bd7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15118535578419f9e1230c5b2fcfd0d7c42257ea
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820293"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909002"
 ---
 # <a name="access-data-from-your-datastores"></a>Dostęp do danych z usługi magazynów danych
 
@@ -30,7 +30,7 @@ Niniejszy instruktaż zawiera przykłady następujących zadań:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z magazynów danych, należy najpierw [obszaru roboczego](concept-azure-machine-learning-architecture.md#workspace).
+Aby korzystać z magazynów danych, należy najpierw [obszaru roboczego](concept-workspace.md).
 
 Rozpocznij od albo [tworzenia nowego obszaru roboczego](setup-create-workspace.md#sdk) lub pobierania istniejące:
 
@@ -115,7 +115,7 @@ ws.set_default_datastore('your datastore name')
 ## <a name="upload--download-data"></a>Przekazywanie i pobieranie danych
 [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) i [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) metod opisanych w poniższych przykładach są specyficzne dla i działać tak samo dla [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) i [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) klasy.
 
-### <a name="upload"></a>Upload
+### <a name="upload"></a>Przekazanie
 
  Przekaż katalogu lub poszczególne pliki do magazynu danych przy użyciu zestawu SDK języka Python.
 
@@ -155,9 +155,9 @@ W poniższej tabeli wymieniono [ `DataReference` ](https://docs.microsoft.com/py
 
 sposób|Metoda|Opis|
 ----|-----|--------
-Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Zainstaluj za pomocą magazynu danych na obliczeniowego elementu docelowego.
-Do pobrania|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Służy do pobierania zawartości z magazynu danych do lokalizacji określonej przez `path_on_compute`. <br> W kontekście szkolenia, uruchom ten plik do pobrania ma miejsce przed uruchomieniem.
-Upload|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Służy do przekazywania pliku z lokalizacji określonej przez `path_on_compute` z magazynem danych. <br> W kontekście szkolenia, uruchom to przekazywanie odbywa się po ich zakończeniu.
+Zainstaluj| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Zainstaluj za pomocą magazynu danych na obliczeniowego elementu docelowego.
+Pobierz|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Służy do pobierania zawartości z magazynu danych do lokalizacji określonej przez `path_on_compute`. <br> W kontekście szkolenia, uruchom ten plik do pobrania ma miejsce przed uruchomieniem.
+Przekazanie|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Służy do przekazywania pliku z lokalizacji określonej przez `path_on_compute` z magazynem danych. <br> W kontekście szkolenia, uruchom to przekazywanie odbywa się po ich zakończeniu.
 
  ```Python
 import azureml.data

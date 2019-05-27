@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785374"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861543"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory?
 
-Można kontrolować sposób dostępu użytkowników do aplikacji w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego, zdefiniuj odpowiedź ("następnie to zrobić") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku"). 
+Można kontrolować sposób dostępu użytkowników do aplikacji w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego, zdefiniuj odpowiedź ("następnie to zrobić") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku").
 
 ![Przyczyna i odpowiedzi](./media/conditions/10.png)
 
@@ -37,7 +37,7 @@ W kontekście dostępu warunkowego **w takim przypadku** nosi nazwę **warunek**
 ![Zasady dostępu warunkowego](./media/conditions/61.png)
 
 
-Warunki, które nie zostały skonfigurowane w zasadach dostępu warunkowego nie są stosowane. Niektóre warunki są [obowiązkowe](best-practices.md) zastosowania zasad dostępu warunkowego do środowiska. 
+Warunki, które nie zostały skonfigurowane w zasadach dostępu warunkowego nie są stosowane. Niektóre warunki są [obowiązkowe](best-practices.md) zastosowania zasad dostępu warunkowego do środowiska.
 
 W tym artykule przedstawiono warunki i sposoby ich używania w zasadach dostępu warunkowego. 
 
@@ -73,7 +73,7 @@ Organizacje mogą wybrać spośród następujących:
 > [!NOTE]
 > Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp.
 
-**Akcje użytkownika** zadania, które mogą być wykonywane przez użytkownika. Jedyną akcją, aktualnie obsługiwany jest **zarejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza)**, co pozwala zasad dostępu warunkowego, gdy użytkownik rejestruje swoje informacje o zabezpieczeniach.
+**Akcje użytkownika** zadania, które mogą być wykonywane przez użytkownika. Jedyną akcją, aktualnie obsługiwany jest **zarejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza)**, co pozwala zasad dostępu warunkowego, gdy użytkownicy, którzy są włączone dla rejestracji połączone próbować zarejestrować ich zabezpieczeń informacje. Więcej informacji można znaleźć w artykule [Włącz zabezpieczenia informacji o rejestracji (wersja zapoznawcza) w połączeniu](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ## <a name="sign-in-risk"></a>Ryzyko logowania
 

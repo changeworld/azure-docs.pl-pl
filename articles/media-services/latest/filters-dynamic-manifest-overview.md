@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 21fb2b84fd58fb7cca7551ee1cef0c79179cfa40
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: ac440be4444ca0d62f7ffde2b8b65e41dcba6683
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467130"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002437"
 ---
 # <a name="dynamic-manifests"></a>Manifesty dynamiczne
 
@@ -26,12 +26,12 @@ Usługa Media Services oferuje **manifestów dynamicznych** oparte na wstępnie 
 
 W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
 
-|Protokół|Przykład|
+|Protocol|Przykład|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
+ 
 > [!NOTE]
 > Nie zmieniaj manifestów dynamicznych, elementu zawartości i domyślny manifest dla tego zasobu. Klienta można zażądać strumienia z lub bez filtrów. 
 > 
@@ -124,7 +124,7 @@ Aby uzyskać więcej informacji, zobacz [to](https://azure.microsoft.com/blog/az
 
 ## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
 
-Można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dynamiczne manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
+Zobacz [filtry: skojarzyć z Lokalizatory przesyłania strumieniowego](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="considerations-and-limitations"></a>Istotne zagadnienia i ograniczenia
 
@@ -136,7 +136,6 @@ Można określić listę filtrów zasobów lub konta, które będzie dotyczyć T
     
     - Aby określić właściwości ścieżki w zasobie [get i zapoznaj się z plikiem manifestu](#get-and-examine-manifest-files).
     - Formuła, aby ustawić filtr zasobu właściwości sygnatury czasowej: <br/>startTimestamp = &lt;godzina rozpoczęcia w manifeście&gt; +  &lt;oczekiwany czas rozpoczęcia filtrowania w ciągu kilku sekund&gt;* Skala czasu
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

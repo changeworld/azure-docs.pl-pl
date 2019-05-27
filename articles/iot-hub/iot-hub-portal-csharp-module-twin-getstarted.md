@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 75b86ea028a500b6b358c468a1d10a830db01b6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b1872699b8b3ac72424f00cd74bb90b8b7be87f
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354950"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873173"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu portalu i urządzenia platformy .NET
 
@@ -34,7 +34,7 @@ Z tego samouczka dowiesz się:
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Program Visual Studio 2015 lub Visual Studio 2017.
+* Program Visual Studio.
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub

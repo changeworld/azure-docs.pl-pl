@@ -2,20 +2,20 @@
 title: Usługa SQL Data Warehouse partnerów w dziedzinie zarządzania danych | Dokumentacja firmy Microsoft
 description: Wyświetla listę danych firm partnerów zarządzania dzięki rozwiązaniom, które obsługują SQL Data Warehouse.
 services: sql-data-warehouse
-author: jrowlandjones
+author: mabasile-MSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 04/17/2018
-ms.author: jrj
+ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 08d168a688935328fb4716b849c70e828545765b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98f581eca893fc3f0cf2eae12fdcffbe0440bdd7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476247"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873696"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Usługa SQL Data Warehouse partnerów w dziedzinie zarządzania danych
 Aby utworzyć swoje rozwiązanie magazynu danych, wybierz z szerokiej gamy narzędzi wiodące w branży. W tym artykule przedstawiono firm partnerskich firmy Microsoft przy użyciu narzędzia do zarządzania danymi i rozwiązań Obsługa usługi Azure SQL Data Warehouse.

@@ -2,20 +2,20 @@
 title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse — narzędzie sqlcmd | Microsoft Docs
 description: Użyj narzędzia wiersza polecenia sqlcmd, aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e0e423ef0503bc4d23fddf4e1b9ff985636d2ec2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72760c5123703a664695c1be4d286a38e96ecc3f
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474355"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873317"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Nawiązywanie połączenia z usługą SQL Data Warehouse przy użyciu narzędzia sqlcmd
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "61474355"
 
 Użyj narzędzia wiersza polecenia [sqlcmd][sqlcmd], aby połączyć się z usługą Azure SQL Data Warehouse i utworzyć zapytanie.  
 
-## <a name="1-connect"></a>1. Połączenie
+## <a name="1-connect"></a>1. Połącz
 Aby rozpocząć pracę z narzędziem [sqlcmd][sqlcmd], otwórz wiersz polecenia i wpisz **sqlcmd**, a następnie podaj parametry połączenia z bazą danych usługi SQL Data Warehouse. Wymagane parametry połączenia to:
 
 * **Serwer (-S):** Serwer w postaci `<`nazwy serwera`>`. database.windows.net

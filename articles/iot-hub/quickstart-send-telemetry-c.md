@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 1299b627c70b23714ea48dbc62af36ca1f27290e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 92575f2fc8e6dbcfc5767a179ddf60df1bce0c83
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499907"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872598"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (C)
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/vs/) z włączonym pakietem roboczym [„Programowanie aplikacji klasycznych w języku C++”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/vs/) z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
 * Zainstaluj najnowszą wersję usługi [Git](https://git-scm.com/download/).
 * Uruchom następujące polecenie, aby dodać rozszerzenia usługi Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure do swojego wystąpienia usługi Cloud Shell. Rozszerzenia IOT dodaje określone polecenia usługi IoT Hub, IoT Edge i usługi aprowizacji urządzeń IoT (DPS) do wiersza polecenia platformy Azure.
 
@@ -43,23 +43,23 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego
 
-W tym przewodniku Szybki start będziesz używać [zestawu SDK urządzeń Azure IoT dla języka C](iot-hub-device-sdk-c-intro.md). 
+W tym przewodniku Szybki Start będziesz korzystać z [zestaw SDK urządzeń Azure IoT dla języka C](iot-hub-device-sdk-c-intro.md). 
 
 Zestawu SDK możesz używać, instalując pakiety i biblioteki dla następujących środowisk:
 
-* **Linux**. Pakiety apt-get są dostępne dla systemów Ubuntu 16.04 i 18.04 korzystających z następujących architektur procesora: amd64, arm64, armhf oraz i386. Aby uzyskać więcej informacji, zobacz [Tworzenie projektu klienta urządzenia w języku C przy użyciu pakietu apt-get w systemie Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md).
+* **Linux**: polecenia apt-get pakiety są dostępne dla Ubuntu 16.04 i 18.04 przy użyciu następujące architektury Procesora: amd64, arm64, armhf i i386. Aby uzyskać więcej informacji, zobacz [Tworzenie projektu klienta urządzenia w języku C przy użyciu pakietu apt-get w systemie Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md).
 
-* **mbed**. Dla deweloperów tworzących aplikacje urządzeń na platformie mbed opublikowaliśmy bibliotekę i przykłady, dzięki którym rozpoczniesz pracę z usługą Azure IoT Hub w ciągu kilku minut. Aby uzyskać więcej informacji, zobacz [Korzystanie z biblioteki mbed](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
+* **mbed**. Dla deweloperów, tworzenie aplikacji urządzenie na platformie mbed opublikowaliśmy, biblioteki i przykłady, które umożliwią Ci rozpoczęcie pracy w ciągu kilku minut za pomocą usługi Azure IoT Hub. Aby uzyskać więcej informacji, zobacz [Korzystanie z biblioteki mbed](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
 
-* **Arduino**. Jeśli programujesz w środowisku Arduino, możesz korzystać z biblioteki usługi Azure IoT dostępnej w menedżerze bibliotek środowiska IDE Arduino. Aby uzyskać więcej informacji, zobacz [Biblioteka usługi Azure IoT Hub dla środowiska Arduino](https://github.com/azure/azure-iot-arduino).
+* **Arduino**. Jeśli tworzysz na Arduino, mogą korzystać z biblioteki usługi Azure IoT, dostępne w środowisku IDE Arduino library manager. Aby uzyskać więcej informacji, zobacz [Biblioteka usługi Azure IoT Hub dla środowiska Arduino](https://github.com/azure/azure-iot-arduino).
 
 * **iOS**. Zestaw SDK urządzeń centrum IoT na potrzeby programowania urządzeń na komputerach Mac i w systemie iOS jest dostępny w postaci aplikacji CocoaPods. Aby uzyskać więcej informacji, zobacz [Przykłady z systemu iOS dotyczące usługi Microsoft Azure IoT](https://cocoapods.org/pods/AzureIoTHubClient).
 
-Jednak w tym przewodniku Szybki start przygotujesz środowisko deweloperskie używane do sklonowania i opracowania [zestawu SDK usługi Azure IoT dla języka C](https://github.com/Azure/azure-iot-sdk-c) z usługi GitHub. Zestaw SDK w witrynie GitHub zawiera przykładowy kod używany w tym przewodniku Szybki start. 
+Jednak w tym przewodniku Szybki Start umożliwią przygotowanie środowiska programowania, używany do klonowania i twórz [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) z usługi GitHub. Zestaw SDK w witrynie GitHub zawiera przykładowy kod używany w tym przewodniku Szybki start. 
 
 1. Pobierz [system kompilacji CMake](https://cmake.org/download/).
 
-    Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
+    Ważne jest, wymagania wstępne programu Visual Studio (Visual Studio i "programowanie aplikacji klasycznych przy użyciu C++" obciążenia) są zainstalowane na tym komputerze **przed** od `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
 2. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
     
@@ -83,7 +83,7 @@ Jednak w tym przewodniku Szybki start przygotujesz środowisko deweloperskie uż
     cmake ..
     ```
     
-    Jeśli program `cmake` nie znajdzie kompilatora języka C++, mogą występować błędy kompilacji podczas uruchamiania powyższego polecenia. Jeśli tak się stanie, spróbuj uruchomić to polecenie w [wierszu polecenia programu Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Jeśli `cmake` nie może znaleźć Twoje C++ kompilatora, mogą występować błędy kompilacji podczas uruchamiania powyższego polecenia. Jeśli tak się stanie, spróbuj uruchomić to polecenie w [wierszu polecenia programu Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Gdy kompilacja zakończy się powodzeniem, kilka ostatnich wierszy danych wyjściowych będzie wyglądać podobnie do następujących danych wyjściowych:
 
@@ -108,19 +108,19 @@ Jednak w tym przewodniku Szybki start przygotujesz środowisko deweloperskie uż
 
 ## <a name="register-a-device"></a>Rejestrowanie urządzenia
 
-Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tej sekcji za pomocą usługi Azure Cloud Shell z [rozszerzeniem IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) zarejestrujesz symulowane urządzenie.
+Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tej sekcji użyjesz usługi Azure Cloud Shell przy użyciu [rozszerzenia IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) zarejestrować symulowane urządzenie.
 
 1. Uruchom następujące polecenie w usłudze Azure Cloud Shell do tworzenia tożsamości urządzenia.
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
-   **MyCDevice**: jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj MyCDevice w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+   **MyCDevice**: jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj MyCDevice w pokazany sposób. Jeśli wybierzesz inną nazwę dla danego urządzenia, również należy używać tej nazwy, w tym artykule, a nazwa urządzenia w przykładowych aplikacji przed ich uruchomieniem aktualizacji.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
     ```
 
-2. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
+2. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla tego urządzenia została zarejestrowana:
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
@@ -177,7 +177,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 ## <a name="read-the-telemetry-from-your-hub"></a>Odczytywanie danych telemetrycznych z centrum
 
 
-W tej sekcji, używając usługi Azure Cloud Shell z [rozszerzeniem IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest), będziesz monitorować komunikaty urządzenia wysyłane przez urządzenie symulowane.
+W tej sekcji użyjesz usługi Azure Cloud Shell przy użyciu [rozszerzenia IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) do monitorowania komunikatów wysyłanych z urządzenia, które są wysyłane przez urządzenie symulowane.
 
 1. Używając usługi Azure Cloud Shell, uruchom następujące polecenie, aby nawiązać połączenie i odczytać komunikaty z centrum IoT:
 

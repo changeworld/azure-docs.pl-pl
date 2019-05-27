@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2019
+ms.date: 05/18/2019
 ms.author: magoedte
-ms.openlocfilehash: ed387f7038c5dee1a1685c918abcae49942cd55d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148846"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906772"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -26,10 +26,6 @@ Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności or
 Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw, oraz jak pomaga szybko ocenić, zbadać i rozwiązać wykryte problemy.
 
 Aby uzyskać informacje na temat włączania usługi Azure Monitor dla kontenerów, zobacz [dołączanie usługi Azure Monitor dla kontenerów](container-insights-onboard.md).
-
-> [!IMPORTANT]
-> Usługa Azure Monitor do obsługi kontenerów do monitorowania klastra usługi AKS z systemem Windows Server 2019 jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Usługa Azure Monitor udostępnia widok wielu klastrów pokazujący stan kondycji wszystkich monitorowanych klastry AKS z systemem Linux i Windows Server 2019 wdrażane w grupach zasobów w subskrypcji.  Pokazuje klastrów AKS odnalezione nie są monitorowane przez rozwiązanie. Rozumieją kondycji klastra, a w tym miejscu możesz przejść do strony wydajność węzła i kontroler lub przejdź do zobaczyć wykresy wydajności dla klastra.  W przypadku klastrów usługi AKS wykryte i identyfikowane jako niemonitorowane można włączyć monitorowania dla tego klastra w dowolnym momencie.  
 

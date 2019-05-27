@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
 ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880013"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65911311"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Tworzenie aplikacji internetowej oraz pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu szablonu
 
@@ -35,7 +35,7 @@ Aby uzyskać kompletny szablon, zobacz [aplikacji internetowej z pamięcią podr
 W tym szablonie zostanie wdrożona:
 
 * Aplikacja sieci Web platformy Azure
-* Azure Cache for Redis
+* Usługa Azure Cache for Redis
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
@@ -59,7 +59,7 @@ Ten szablon używa zmiennych do konstruowania nazwy zasobów. Używa ona [unique
 ## <a name="resources-to-deploy"></a>Zasoby wymagające wdrożenia
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
+### <a name="azure-cache-for-redis"></a>Usługa Azure Cache for Redis
 Tworzy pamięć podręczna Azure redis cache, który jest używany z aplikacji sieci web. Nazwa pamięci podręcznej została określona w **cacheName** zmiennej.
 
 Ten szablon tworzy pamięć podręczną w tej samej lokalizacji co grupa zasobów.

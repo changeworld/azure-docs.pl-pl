@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143071"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864513"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP w systemie Azure
 
@@ -92,7 +92,7 @@ Pakiety rozszerzeń ułatwia dodawanie rozszerzeń powiązania w dół po drodze
 
 Teraz można dodać funkcji do projektu.
 
-## <a name="create-a-function"></a>Tworzenie funkcji
+## <a name="create-a-function"></a>Utwórz funkcję
 
 Aby dodać funkcję do projektu, uruchom następujące polecenie:
 
@@ -108,7 +108,7 @@ Podfolder o nazwie _HttpTrigger_ zostanie utworzony, który zawiera następując
 
   Każde powiązanie wymaga kierunku, typ i unikatową nazwę. Wyzwalacz HTTP ma powiązanie danych wejściowych typu [ `httpTrigger` ](functions-bindings-http-webhook.md#trigger) i powiązania typu danych wyjściowych [ `http` ](functions-bindings-http-webhook.md#output).
 
-* **__init__.py**: funkcja wyzwalana przez plik skryptu, który jest przez protokół HTTP. Przejrzyj ten skrypt i zobacz, czy zawiera on domyślnie `main()`. Dane HTTP z wyzwalacza jest przekazywany do tej funkcji za pomocą `req` o nazwie parametru wiązania. Zdefiniowane w function.json, `req` jest wystąpieniem [klasy azure.functions.HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* **\_\_init\_\_.py**: funkcja wyzwalana przez plik skryptu, który jest przez protokół HTTP. Przejrzyj ten skrypt i zobacz, czy zawiera on domyślnie `main()`. Dane HTTP z wyzwalacza jest przekazywany do tej funkcji za pomocą `req` o nazwie parametru wiązania. Zdefiniowane w function.json, `req` jest wystąpieniem [klasy azure.functions.HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
     Return, zdefiniowanego obiektu jako `$return` w function.json, jest wystąpieniem [klasy azure.functions.HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Aby dowiedzieć się więcej, zobacz [usługi Azure Functions HTTP wyzwalaczy i powiązań](functions-bindings-http-webhook.md).
 

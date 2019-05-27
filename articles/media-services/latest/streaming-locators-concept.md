@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9a14399117971807c1d18f8eb5fab7d6e6cef2d5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465037"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120349"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
@@ -24,17 +24,19 @@ Aby udostępnić klientom filmy wideo w wyjściowym elemencie zawartości w celu
 
 Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołań interfejsu API i aż do jego usunięcia, chyba że skonfigurujesz opcjonalne czasy rozpoczęcia i zakończenia. 
 
-Podczas tworzenia **lokalizatora przesyłania strumieniowego**, należy określić [zasobów](https://docs.microsoft.com/rest/api/media/assets) nazwy i [przesyłania strumieniowego zasad](https://docs.microsoft.com/rest/api/media/streamingpolicies) nazwy. Można użyć jednej z wstępnie zdefiniowane zasady przesyłania strumieniowego lub utworzenia niestandardowych zasad. Wstępnie zdefiniowane zasady obecnie dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming". Korzystając z niestandardowego przesyłania strumieniowego zasady, należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi Media i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje i protokołów. 
+Podczas tworzenia **lokalizatora przesyłania strumieniowego**, należy określić **zasobów** nazwy i **przesyłania strumieniowego zasad** nazwy. Więcej informacji znajduje się w następujących tematach:
 
-Jeśli chcesz określić opcje szyfrowania na strumień, należy utworzyć [zasad klucza zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies) , konfiguruje sposób dostarczania klucza zawartości dla klientów za pośrednictwem składnika dostarczania klucza usługi Media Services końcowych. Skojarzenia usługi lokalizatora przesyłania strumieniowego za pomocą **zasad klucza zawartości** i klucza zawartości. Usługi Media Services można pozostawić opcję automatycznego generowania klucza. W poniższym przykładzie .NET zawiera instrukcje dotyczące konfigurowania szyfrowania AES z tokenu ograniczeń w wersji 3 usługa Media Services: [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted). **Zasady kluczy zawartości** są aktualizowalne, możesz chcieć zaktualizować zasady, jeśli musisz przeprowadzić rotację kluczy. Może upłynąć do 15 minut w przypadku pamięci podręcznych dostarczania klucza do aktualizacji i wybierze zaktualizowane zasady. Zalecane jest, aby nie tworzyć nowe zasady klucz zawartości dla każdego lokalizatora przesyłania strumieniowego. Należy spróbować ponownie użyć istniejących zasad, zawsze wtedy, gdy potrzebne są te same opcje.
+* [Zasoby](assets-concept.md)
+* [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
+* [Zasady kluczy zawartości](content-key-policy-concept.md)
 
 > [!IMPORTANT]
 > * Właściwości **Lokalizatory przesyłania strumieniowego** będące daty/godziny są zawsze w formacie UTC.
-> * Należy zaprojektować ograniczony zestaw zasad dla swojego konta usługi multimediów i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje. 
+> * Należy zaprojektować ograniczony zestaw zasad dla swojego konta usługi multimediów i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](limits-quotas-constraints.md).
 
 ## <a name="associate-filters-with-streaming-locators"></a>Kojarzenie filtrów z Lokalizatory przesyłania strumieniowego
 
-Można określić listę [aktywów lub filtry](filters-concept.md), która będzie stosowana dla Twojego [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dynamiczne manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
+Zobacz [filtry: skojarzyć z Lokalizatory przesyłania strumieniowego](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filtr, zamówienia, strona lokalizatora przesyłania strumieniowego jednostek
 
@@ -42,5 +44,4 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Servi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET](stream-files-tutorial-with-api.md)
-* [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)
+[Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET](stream-files-tutorial-with-api.md)

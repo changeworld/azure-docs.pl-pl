@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730603"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872809"
 ---
 # <a name="what-are-durable-functions"></a>Co to jest Durable Functions?
 
@@ -49,9 +49,9 @@ Rozszerzenie Durable Functions obsługuje obecnie następujące języki:
 
 Docelowo rozszerzenie Durable Functions ma obsługiwać wszystkie [języki obsługiwane w usłudze Azure Functions](../supported-languages.md). Zobacz [listę problemów z rozszerzeniem Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues), aby poznać aktualny stan prac nad obsługą dodatkowych języków.
 
-Podobnie jak w przypadku usługi Azure Functions, udostępniono szablony pomagające w programowaniu z użyciem rozszerzenia Durable Functions za pomocą programu [Visual Studio 2017](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md) oraz witryny [Azure Portal](durable-functions-create-portal.md).
+Np. usługi Azure Functions są szablony, które pomogą Ci tworzyć niezawodne funkcje przy użyciu [Visual Studio 2019](durable-functions-create-first-csharp.md), [programu Visual Studio Code](quickstart-js-vscode.md)i [witryny Azure portal](durable-functions-create-portal.md).
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 
 Opłaty za rozszerzenie Durable Functions są naliczane tak samo, jak w przypadku usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
@@ -59,7 +59,7 @@ Opłaty za rozszerzenie Durable Functions są naliczane tak samo, jak w przypadk
 
 Ukończ jeden z tych samouczków Szybki start dotyczących poszczególnych języków, aby rozpocząć korzystanie z rozszerzenia Durable Functions w niecałe 10 minut:
 
-* [C# w programie Visual Studio 2017](durable-functions-create-first-csharp.md)
+* [C# using Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript w programie Visual Studio Code](quickstart-js-vscode.md)
 
 W obu przewodnikach Szybki start utworzysz lokalnie i przetestujesz funkcję trwałą „hello world”. Kod funkcji zostanie następnie opublikowany na platformie Azure. Utworzona przez Ciebie funkcja aranżuje i łączy w łańcuchy wywołania do innych funkcji.

@@ -9,11 +9,11 @@ ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: c1ae8e1d06fca79b586208a3eaee0c5d26975ea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60313079"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119354"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -60,7 +60,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
    ![Przycisk dodawania kontenera](media/data-factory-quickstart-prerequisites/add-container-button.png)    
 3. W oknie dialogowym **Nowy kontener** wprowadź jako nazwę **adftutorial**, a następnie wybierz przycisk **OK**. 
 
-   ![Wprowadzanie nazwy kontenera](media/data-factory-quickstart-prerequisites/new-container-dialog.png)
+   ![Wprowadź nazwę kontenera](media/data-factory-quickstart-prerequisites/new-container-dialog.png)
 4. Wybierz pozycję **adftutorial** na liście kontenerów. 
 
    ![Wybieranie kontenera](media/data-factory-quickstart-prerequisites/select-adftutorial-container.png)

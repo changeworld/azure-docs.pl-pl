@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 71ac525e2af7473ca9ce0a8f60268e76eccd1a9a
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530386"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833517"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera usługi Azure PowerShell funkcji
 
@@ -23,9 +23,9 @@ Ten artykuł zawiera szczegółowe informacje o tym, jak wpisać usługi Azure F
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-Funkcja programu PowerShell jest przedstawiana jako skrypt programu PowerShell, który jest wykonywany po ich wyzwoleniu. Każdy skrypt funkcji ma powiązane function.json, który definiuje sposób działania funkcji, takich jak jak jest wyzwalane i parametry wejściowe i wyjściowe. Aby dowiedzieć się więcej, zobacz [wyzwalacze i powiązania artykułu](functions-triggers-bindings.md). 
+PowerShell Azure — funkcja (funkcja) jest przedstawiana jako skrypt programu PowerShell, który jest wykonywany po ich wyzwoleniu. Każdy skrypt funkcji ma powiązane `function.json` pliku, który definiuje sposób działania funkcji, takich jak jak jest wyzwalane i jego parametrów wejściowych i wyjściowych. Aby dowiedzieć się więcej, zobacz [wyzwalacze i powiązania artykułu](functions-triggers-bindings.md). 
 
-Podobnie jak inne rodzaje funkcji skrypt programu PowerShell przyjmuje parametry, które pasują do nazw powiązania danych wejściowych zdefiniowane w function.json. A `TriggerMetadata` parametr jest przekazywany również, który zawiera dodatkowe informacje na temat wyzwalacza, który uruchomił funkcji.
+Podobnie jak inne rodzaje funkcji funkcji skryptu programu PowerShell zająć parametry, które pasują do nazw powiązania danych wejściowych zdefiniowane w `function.json` pliku. A `TriggerMetadata` parametr jest przekazywany również, który zawiera dodatkowe informacje na temat wyzwalacza, który uruchomił funkcji.
 
 W tym artykule założono, że już znasz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Należy również ukończyć [szybkiego startu usługi Functions dla programu PowerShell](functions-create-first-function-powershell.md) tworzenie pierwszej funkcji programu PowerShell.
 
@@ -56,9 +56,9 @@ PSFunctionApp
  | - bin
 ```
 
-W folderze głównym projektu jest wspólny [host.json](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma folder z pliku z kodem (ps1) i plik konfiguracji powiązania (function.json). Nazwa `function.json`w katalogu nadrzędnym jest zawsze nazwę funkcji.
+W folderze głównym projektu jest wspólny [ `host.json` ](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma folder z pliku z kodem (ps1) i plik konfiguracji powiązania (`function.json`). Nazwa katalogu nadrzędnego pliku function.json jest zawsze nazwę funkcji.
 
-Niektóre powiązania wymagają obecności `extensions.csproj`. Powiązanie rozszerzenia, wymagane w [wersji 2.x](functions-versions.md) funkcje środowiska uruchomieniowego, są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Powiązanie rozszerzenia, wymagane w [wersji 2.x](functions-versions.md) funkcje środowiska uruchomieniowego, są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 W aplikacjach funkcji programu PowerShell, mogą opcjonalnie mieć `profile.ps1` które są uruchamiane podczas uruchamiania aplikacji funkcji (znanych jako  *[zimnego](#cold-start)*. Aby uzyskać więcej informacji, zobacz [profil PowerShell](#powershell-profile).
 
@@ -243,7 +243,7 @@ Rejestrowanie w funkcjach programu PowerShell działa jak regularne rejestrowani
 | Błąd | **`Write-Error`** |
 | Ostrzeżenie | **`Write-Warning`**  | 
 | Informacje | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informacje | Zapisuje _informacji_ poziomu rejestrowania. |
-| Debugowanie | **`Write-Debug`** |
+| Debug | **`Write-Debug`** |
 | Ślad | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Oprócz tych poleceń cmdlet nic zapisywane do potoku zostanie przekierowana do `Information` dziennika poziomu i wyświetlane w formacie domyślnym programu PowerShell.

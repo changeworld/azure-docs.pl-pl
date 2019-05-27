@@ -16,14 +16,14 @@ ms.date: 04/27/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abe2f7deef2a1dbe82f4702fd3477303891ab2e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873561"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921056"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie uprawnieniami w usłudze Azure AD? (Wersja zapoznawcza)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie uprawnieniami w usłudze Azure AD? (wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest obecnie w publicznej wersji zapoznawczej.
@@ -110,11 +110,11 @@ Na poniższym diagramie przedstawiono przykład różne elementy w przystawce Za
 
 ![Uprawnienie do zarządzania — omówienie](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Użytkownicy zewnętrzni
+## <a name="external-users"></a>Zewnętrzni użytkownicy
 
 Korzystając z [usługi Azure AD business-to-business (B2B)](../b2b/what-is-b2b.md) zaprosić doświadczenia, musi już wiedzieć, że adresy e-mail użytkowników zewnętrznego gościa chcesz przenieść do katalogu zasobów i pracować. Ta działa wspaniałe, gdy pracujesz nad projektem mniejszych lub krótkoterminowej i wiesz już, wszystkich uczestników, ale jest trudniejsze do zarządzania, jeśli masz wielu użytkowników, którą chcesz pracować, lub jeśli uczestników zmieniać wraz z upływem czasu.  Na przykład użytkownik może być Praca z innej organizacji i mieć jeden punkt kontaktu z tej organizacji, ale wraz z upływem czasu dodatkowe użytkownicy z organizacji będą także potrzebować dostępu.
 
-Za pomocą funkcji zarządzania uprawnienie można zdefiniować zasady, które zezwalają na użytkowników z organizacji, które określisz, które także używają usługi Azure AD, aby mieć możliwość żądania dostępu do pakietu. Można określić, czy zatwierdzenie jest wymagane i uzyskać dostęp do daty wygaśnięcia. Jeśli zatwierdzenie jest wymagane, można również wyznaczyć jako osoba zatwierdzająca jeden lub więcej użytkowników z organizacji zewnętrznego, który użytkownik wcześniej zaproszony — ponieważ mogą one mieć wiedzieć, których użytkowników zewnętrznych z organizacji muszą mieć dostęp. Po skonfigurowaniu pakietu dostępu, możesz wysłać łącze do dostępu do pakietu do osoby kontaktowej w organizację zewnętrzną. Ten kontakt można udostępnić innym użytkownikom w organizacji zewnętrznych i używają tego linku, aby zażądać dostępu do pakietu.  Użytkownicy z tym organizacji, którzy już zostali zaproszeni do katalogu umożliwia również ten link.
+Za pomocą funkcji zarządzania uprawnienie można zdefiniować zasady, które zezwalają na użytkowników z organizacji, które określisz, które także używają usługi Azure AD, aby mieć możliwość żądania dostępu do pakietu. Można określić, czy zatwierdzenie jest wymagane i uzyskać dostęp do daty wygaśnięcia. Jeśli zatwierdzenie jest wymagane, można również wyznaczyć jako osoba zatwierdzająca jeden lub więcej użytkowników z organizacji zewnętrznego, który użytkownik wcześniej zaproszony — ponieważ mogą one mieć wiedzieć, których użytkowników zewnętrznych z organizacji muszą mieć dostęp. Po skonfigurowaniu pakietu dostępu, możesz wysłać łącze do dostępu do pakietu do osoby kontaktowej w organizację zewnętrzną. Ten kontakt można udostępniać innym użytkownikom w organizacji zewnętrznych i używają tego linku, aby zażądać dostępu do pakietu.  Użytkownicy z organizacji, którzy już zostali zaproszeni do katalogu umożliwia również ten link.
 
 Gdy żądanie zostanie zatwierdzone, zarządzanie uprawnieniami przydzieli użytkownikowi wystarczających praw dostępu, które mogą obejmować zapraszania użytkownika, jeśli tak nie jest już w katalogu. Usługa Azure AD automatycznie utworzy konto B2B dla nich.  Należy pamiętać, że administrator może być wcześniej bardzo ograniczona organizacje, które są dozwolone dla pracy zespołowej, ustawiając [B2B blokują lub zezwalają na liście](../b2b/allow-deny-list.md) do zezwalania lub blokowania zaproszenia do innych organizacji.  Jeśli użytkownik nie jest dozwolona przez listę dozwolonych lub zablokowanych, a następnie nie będzie można zaprosić.
 
@@ -130,7 +130,7 @@ Aby lepiej zrozumieć, zarządzanie uprawnieniami i jego dokumentacji, należy p
 | dostęp do pakietu | Kolekcja uprawnień i zasad do zasobów, które użytkownicy mogą żądać. Pakiet dostępu zawsze znajduje się w katalogu. |
 | żądanie dostępu | Żądanie dostępu do pakietu dostępu. Żądanie jest zazwyczaj przechodzi przez przepływ pracy. |
 | policy | Zestaw reguł definiuje cyklu życia dostępu, np. jak użytkownicy uzyskują dostęp, kto może zatwierdzać i jak długo użytkownicy mają dostęp. Przykładowe zasady umożliwiają dostęp pracowników i dostępu zewnętrznego. |
-| wykaz | Kontener powiązane zasoby i dostęp do pakietów. |
+| catalog | Kontener powiązane zasoby i dostęp do pakietów. |
 | Ogólne katalogu | Wbudowane wykaz, który jest zawsze dostępna. Aby dodać zasoby do katalogu ogólne wymaga pewnych uprawnień. |
 | zasób | Zasób lub usługę (np. grupy, aplikacji lub witryny), który użytkownik może mieć uprawnienia do. |
 | typ zasobu | Typ zasobu, który zawiera grupy, aplikacje i witryny usługi SharePoint Online. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 319ec5d09a6daddb5c1fc36f680ee6d0d856e337
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6cb40f8c9f1ee85848b5e3db311d0fb652ec1bc3
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205426"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921818"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Samouczek: Wykrywanie zagrożeń za pomocą platformy Azure przez wartownika w wersji zapoznawczej
 
@@ -59,6 +59,10 @@ Reguły wykrywania bazują na typy zagrożeń i anomalie, które mogą być pode
         | where OperationName == "Create or Update Virtual Machine" or OperationName == "Create Deployment"
         | where ActivityStatus == "Succeeded"
         | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+
+   > [!NOTE]
+   > Długość zapytania powinny należeć do zakresu od 1 do 10000 znaków i nie może zawierać "search *" i "union *".
+
 
 5. W **mapowania jednostki** sekcji, użyj pola w obszarze **typu jednostki** do mapowania pola jednostki rozpoznawane przez Azure przez wartownika kolumn w zapytaniu. Mapowanie odpowiedniej kolumnie w kwerendzie utworzonymi w usłudze Log Analytics do pola jednostki odpowiednią dla każdego pola. Wybierz nazwę odpowiedniej kolumnie w obszarze **właściwość**. Każda jednostka zawiera wiele pól, na przykład identyfikator SID identyfikatorem GUID, itp. Można mapować jednostki w kontekście dowolnego pola, a nie tylko górnego poziomu jednostki.
 

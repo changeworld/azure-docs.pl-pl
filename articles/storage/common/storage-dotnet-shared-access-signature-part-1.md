@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154426"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65907176"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Używanie sygnatur dostępu współdzielonego (SAS)
 
@@ -118,7 +118,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Resource |`sr=b` |Zasób jest obiekt blob. |
 | Uprawnienia |`sp=rw` |Uprawnienia przyznane przez sygnatury dostępu Współdzielonego obejmują Read (r) i zapisu (w). |
 | Zakres adresów IP |`sip=168.1.5.60-168.1.5.70` |Zakres adresów IP, z których będą akceptowane żądania. |
-| Protokół |`spr=https` |Dozwolone są tylko żądania przy użyciu protokołu HTTPS. |
+| Protocol |`spr=https` |Dozwolone są tylko żądania przy użyciu protokołu HTTPS. |
 | Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Umożliwia autoryzację dostępu do obiektu blob. Podpis jest HMAC obliczona logowania do ciągów i klucza przy użyciu algorytm SHA256, a następnie kodowany w formacie Base64. |
 
 ### <a name="account-sas-uri-example"></a>Przykład użycia identyfikatora URI sygnatury dostępu Współdzielonego konta
@@ -232,7 +232,7 @@ Poniżej przedstawiono kilka przykładów oba rodzaje sygnatur dostępu współd
 Aby uruchomić te przykłady języka C#, należy odwoływać się do następujących pakietów NuGet w projekcie:
 
 * [Biblioteka klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage), w wersji 6.x lub nowszej (, aby użyć konta sygnatury dostępu Współdzielonego).
-* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager)
 
 Aby uzyskać więcej przykładów, które pokazują, jak tworzyć i testować sygnatury dostępu Współdzielonego, zobacz [przykłady kodu platformy Azure do przechowywania](https://azure.microsoft.com/documentation/samples/?service=storage).
 
@@ -422,7 +422,6 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 Sygnatury dostępu współdzielonego są przydatne do prezentowania ograniczonych uprawnień do konta magazynu dla klientów, którzy nie powinni mieć klucz konta. W efekcie są to ważna część model zabezpieczeń dla każdej aplikacji za pomocą usługi Azure Storage. Jeśli stosujesz najlepsze rozwiązania wymienione w tym miejscu, można użyć sygnatury dostępu Współdzielonego, aby zapewnić większą elastyczność dostępu do zasobów w ramach konta magazynu bez uszczerbku dla zabezpieczeń aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Zarządzanie dostępem anonimowym odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
 * [Delegowanie dostępu za pomocą sygnatury dostępu współdzielonego](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Wprowadzenie do tabel i token SAS kolejki](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

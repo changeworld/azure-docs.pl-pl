@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350970"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113258"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą usługi Azure AD przeglądów dostępu
 
@@ -31,16 +31,13 @@ Za pomocą usługi Azure Active Directory (Azure AD), możesz łatwo włączyć 
 Możesz również można łatwo upewnij się, że użytkownicy-goście mają odpowiedni dostęp. Możesz poprosić gości, samodzielnie lub osobę podejmującą do wzięcia udziału w przeglądzie dostępu i ponowne certyfikowanie (lub potwierdzające) do dostępu gości. Na podstawie sugestii pochodzących z usługi Azure AD recenzenci mogą wyrazić opinię dotyczącą przedłużenia dostępu poszczególnych użytkowników. Po zakończeniu przeglądu dostępu można wprowadzić zmiany i usunięcie dostępu dla gości, którzy już go nie potrzebują.
 
 > [!NOTE]
-> Ten dokument koncentruje się na przeglądu dostępu użytkowników-gości. Jeśli chcesz przeprowadzić przegląd dostępu wszystkich użytkowników, nie tylko gości, zobacz [zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](manage-user-access-with-access-reviews.md). Jeśli chcesz przejrzeć członkostwo użytkowników w rolach administracyjnych, takich jak administrator globalny, zobacz [Rozpoczynanie przeglądu dostępu w usłudze Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md). 
->
->
+> Ten dokument koncentruje się na przeglądu dostępu użytkowników-gości. Jeśli chcesz przeprowadzić przegląd dostępu wszystkich użytkowników, nie tylko gości, zobacz [zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](manage-user-access-with-access-reviews.md). Jeśli chcesz przejrzeć członkostwo użytkowników w rolach administracyjnych, takich jak administrator globalny, zobacz [Rozpoczynanie przeglądu dostępu w usłudze Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
+- Usługa Azure AD — warstwa Premium P2
 
-Przeglądy dostępu są oferowane wraz z usługą Azure AD w wersji Premium P2, która jest udostępniana z pakietem Microsoft Enterprise Mobility + Security E5. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md). Użytkownicy, którzy chcą korzystać z tej funkcji, w tym tworzyć lub wypełniać przeglądy albo potwierdzać swój dostęp, muszą mieć licencję. 
-
-Możesz również poprosić użytkowników-gości, aby dokonać przeglądu własnego dostępu. W przypadku każdej płatnej licencji usługi Azure AD Premium P2, przypisany do jednego z własnych użytkowników w organizacji można użyć B2B można zaprosić do pięciu użytkowników-gości w ramach dodatku użytkownika zewnętrznego. Tych użytkowników-gości można również użyć funkcji Azure AD Premium P2. Aby uzyskać więcej informacji, zobacz [Licencjonowanie współpracy B2B usługi Azure AD](../b2b/licensing-guidance.md).
+Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Tworzenie i wykonywanie przeglądu dostępu dla gości
 

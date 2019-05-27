@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761673"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916043"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
@@ -51,7 +51,7 @@ Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest rozpoczęcie od 6 SUs dla 
 Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs zobacz tę stronę: [Skalowanie zadań usługi Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Wybieranie ilości jednostek przesyłania strumieniowego są wymagane dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania zdefiniowanego dla tego zadania. Możesz wybrać do limitu przydziału w SUs do danego zadania. Domyślnie każda subskrypcja platformy Azure ma limit przydziału o rozmiarze do 200 SUs dla wszystkich zadań analizy w określonym regionie. Aby zwiększyć SUs dla Twojej subskrypcji po przekroczeniu tego limitu przydziału, skontaktuj się z pomocą [Microsoft Support](https://support.microsoft.com). Prawidłowe wartości dla SUs poszczególne zadania są 1, 3, 6 i w przyrostach co 6.
+> Wybieranie ilości jednostek przesyłania strumieniowego są wymagane dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania zdefiniowanego dla tego zadania. Możesz wybrać do limitu przydziału w SUs do danego zadania. Domyślnie każda subskrypcja platformy Azure ma limit przydziału programu SUs do 500 dla wszystkich zadań analizy w określonym regionie. Aby zwiększyć SUs dla Twojej subskrypcji po przekroczeniu tego limitu przydziału, skontaktuj się z pomocą [Microsoft Support](https://support.microsoft.com). Prawidłowe wartości dla SUs poszczególne zadania są 1, 3, 6 i w przyrostach co 6.
 
 ## <a name="factors-that-increase-su-utilization"></a>Czynniki, które zwiększają % wykorzystania SU 
 

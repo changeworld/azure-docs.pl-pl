@@ -5,21 +5,21 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: ''
+editor: sohamnchatterjee
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: ae316749d3e88bc8bfd99d0f4856d5386916a27f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 33682727b84713b515bb68d34aa5cf8b72ce44fa
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869637"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65862475"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Usługa Azure CDN pokrycia, Metro 
 > [!div class="op_single_selector"]
@@ -36,14 +36,14 @@ W tym artykule wymieniono bieżącego Metro zawierający lokalizacji (POP) typu 
 > Ponieważ każdy produkt Azure CDN ma różne sposób tworzenia jego infrastruktur sieci CDN, firma Microsoft zaleca się przed potencjalnym użyciem lokalizacje POP zdecydować, jaki produkt Azure CDN do użycia. Zamiast tego należy wziąć pod uwagę jego funkcji i wydajności przez użytkownika końcowego. Przetestuj wydajność dzięki każdy produkt Azure CDN, aby wybrać odpowiedniego produktu dla użytkowników. 
 > 
 
-| Region | Microsoft | Verizon | Akamai |
+| Obszar | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Ameryka Północna | Toronto, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, oceny luk w zabezpieczeniach, USA<br />Atlanta, ogólnie, Stany Zjednoczone<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, ko, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, urząd certyfikacji, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Phoenix, AZ, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Meksyk<br />Mexico City, Mexico<br />Puebla, Mexico<br />Querétaro, Mexico<br />Atlanta, ogólnie, Stany Zjednoczone<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, ko, USA<br />Detroit, MI, USA<br />Los Angeles, urząd certyfikacji, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Waszyngton, kontroler domeny, USA | Kanada<br />Meksyk<br />Stany Zjednoczone |
 | Ameryka Południowa | Campinas, Brazylia<br />Rio de Janeiro, Brazil<br />Santiago, Chile | Buenos Aires, Argentyna<br />Rio de Janeiro, Brazil<br />São Paulo, Brazil<br />Valparaíso, Chile<br />Barranquilla, Colombia<br />Medellin, Kolumbia<br />Rights reserved<br />Lima, Peru | Argentyna<br />Brazylia<br />Chile<br />Brytyjska<br />Ekwador<br />Peru<br />Urugwaj |
 | Europa | Wiedeń, Austria<br />Bruksela, Belgia<br />Praga, Czechy<br />Kopenhaga, Dania<br /> Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Berlin, Niemcy<br />Frankfurt, Niemcy<br />Ateny, Grecja<br />Budapeszt, Węgry<br />Dublin, Irlandia<br />Mediolan, Włochy<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Barcelona, Hiszpania<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />Zurych, Szwajcaria<br />London, UK<br />Manchester, Zjednoczone Królestwo | Wiedeń, Austria<br />Kopenhaga, Dania<br />Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Frankfurt, Niemcy<br />Mediolan, Włochy<br />Ryga, Łotwa<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />London, UK | Austria<br />Bułgaria<br />Dania<br />Finlandia<br />Francja<br />Niemcy<br />Grecja<br />Irlandia<br />Włochy<br />Holandia<br />Polska<br />Rosja<br />Hiszpania<br />Szwecja<br />Szwajcaria<br />Zjednoczone Królestwo |
-| Afryka | Kapsztad, Republika Południowej Afryki<br />Johannesburg, Republika Południowej Afryki | Johannesburg, Republika Południowej Afryki | Republika Południowej Afryki |
+| Afryka | Kapsztad, Republika Południowej Afryki<br />Johannesburg, Republika Południowej Afryki | Johannesburg, Republika Południowej Afryki | RPA |
 | Bliski Wschód | Dubaj, Zjednoczone Emiraty Arabskie | Maskat, Oman<br />Fujirah, Zjednoczone Emiraty Arabskie | Katar<br />Zjednoczone Emiraty Arabskie |
-| Indie | Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bengaluru (Bangalur), Indie<br />Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
+| Indie | Chennai (Madras), Indie<br />Hyderabad, Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bengaluru (Bangalur), Indie<br />Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
 | Azja | SRA Hongkong<br />Osaka, Japonia<br />Tokio, Japonia<br />Kuala Lumpur, Malaysia<br />Manila, Filipiny<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Tajpej, Tajwan<br />Bangkok, Tajlandia | SRA Hongkong<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Kaohsiung, Tajwan | SRA Hongkong<br />Indonezja<br />Izrael<br />Japonia<br />SRA Makau<br />Malezja<br />Filipiny<br />Singapur<br />Korea Południowa<br />Tajwan<br />Tajlandia<br />Turcja<br />Wietnam |
 | Australia i Nowa Zelandia | Brisbane, Australia<br />Melbourne, Australia<br />Perth, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Melbourne, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Australia<br />Nowa Zelandia |
 

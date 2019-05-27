@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dda2eafe86d037faab6284c2af0d8026c194d11
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344431"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921143"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure
 
@@ -36,7 +36,7 @@ W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostę
 - Czynności, jak utworzyć rolę niestandardową, odwiedź stronę samouczków rolę niestandardową przy użyciu [programu Azure PowerShell](tutorial-custom-role-powershell.md) lub [wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
 - Jeśli nie można zaktualizować istniejącej roli niestandardowej Sprawdź, czy obecnie logujesz się jako użytkownik, któremu przypisano rolę, która ma `Microsoft.Authorization/roleDefinition/write` uprawnienia, takie jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
 - Jeśli nie możesz usunąć niestandardowej roli i otrzymujesz komunikat o błędzie „Istnieją przypisania ról odwołujące się do roli (kod: RoleDefinitionHasAssignments)”, wówczas istnieją przypisania ról nadal używające roli niestandardowej. Usuń te przypisania ról i spróbuj ponownie usunąć rolę niestandardową.
-- Jeśli otrzymujesz komunikat o błędzie „Przekroczono limit definicji ról. Można utworzyć żadnych więcej definicji roli (kod: RoleDefinitionLimitExceeded) "podczas próby utworzenia nowej niestandardowej roli, Usuń role niestandardowe, które nie są używane. Platforma Azure obsługuje maksymalnie **2000** ról niestandardowych w dzierżawie.
+- Jeśli otrzymujesz komunikat o błędzie „Przekroczono limit definicji ról. Można utworzyć żadnych więcej definicji roli (kod: RoleDefinitionLimitExceeded) "podczas próby utworzenia nowej niestandardowej roli, Usuń role niestandardowe, które nie są używane. Platforma Azure obsługuje maksymalnie **5000** ról niestandardowych w dzierżawie. (Dla chmur specjalne, takie jak platforma Azure Government, Azure (Niemcy) i Azure China 21Vianet limit to 2000 ról niestandardowych).
 - Jeśli zostanie wyświetlony komunikat o błędzie podobny do "klient ma uprawnienia do wykonania akcji"Microsoft.Authorization/roleDefinitions/write"w zakresie"/ subscriptions / {subscriptionid}", ale nie znaleziono połączonej subskrypcji" podczas próby aktualizacji roli niestandardowej Sprawdź czy co najmniej jeden [zakresy możliwe do przypisania](role-definitions.md#assignablescopes) zostały usunięte w dzierżawie. Jeśli zakres został usunięty, utwórz bilet pomocy technicznej, ponieważ w tej chwili nie jest dostępne żadne rozwiązanie samoobsługowe.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Odzyskiwanie kontroli dostępu opartej na rolach po przeniesieniu subskrypcji między dzierżawami

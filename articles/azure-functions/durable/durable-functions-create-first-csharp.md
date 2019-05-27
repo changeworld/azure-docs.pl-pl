@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0288d9c0932d012bc83f23053b661c5a7ea2ef82
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731569"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872969"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Tworzenie pierwszej funkcji trwałej w języku C\#
 
 *Durable Functions* to rozszerzenie usługi [Azure Functions](../functions-overview.md) umożliwiające zapisywanie funkcji stanowych w środowisku bezserwerowym. Rozszerzenie zarządza stanem, punktami kontrolnymi i ponownym uruchamianiem.
 
-W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji trwałej „hello world”.  Ta funkcja aranżuje i łączy w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2017.
+W tym artykule dowiesz się, jak używać narzędzi Visual Studio 2019 r dla usługi Azure Functions do lokalnego utworzenia i przetestowania funkcji "hello world" trwałe.  Ta funkcja aranżuje i łączy w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2019 r.
 
 ![Uruchamianie funkcji trwałej na platformie Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ W tym artykule przedstawiono użycie narzędzi programu Visual Studio 2017 dla u
 
 W celu ukończenia tego samouczka:
 
-* Zainstaluj program [Visual Studio 2017](https://azure.microsoft.com/downloads/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane.
+* Zainstaluj [Visual Studio 2019](https://azure.microsoft.com/downloads/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane.
 
 * Upewnij się, że masz [najnowsze narzędzia usługi Azure Functions](../functions-develop-vs.md#check-your-tools-version).
 

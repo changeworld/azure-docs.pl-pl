@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: e15d6ad445c3fdde0632c3ad468eee7da836a394
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785958"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872690"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Zarządzanie połączeniami w usłudze Azure Functions
 
@@ -21,9 +21,9 @@ Funkcje w aplikacji funkcji udostępniania zasobów. Wśród tych zasoby udostę
 
 ## <a name="connection-limit"></a>Limit połączeń
 
-Liczba dostępnych połączeń jest ograniczona, częściowo, ponieważ aplikacja funkcji jest uruchamiana w [środowisku piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jednym z ograniczenia, które piaskownicy nakłada się na kodzie jest dzienny limit liczby połączeń (obecnie na 600 aktywnych połączeń i 1200 łączna liczba połączeń) na wystąpienie. Po osiągnięciu tego limitu, środowisko uruchomieniowe usługi functions tworzy dziennik z następującym komunikatem: `Host thresholds exceeded: Connections`.
+Liczba dostępnych połączeń jest ograniczona, częściowo, ponieważ aplikacja funkcji jest uruchamiana w [środowisku piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jednego ograniczenia, które piaskownicy nakłada się na kodzie jest ograniczenie liczby połączeń wychodzących, które obecnie 600 aktywnych połączeń (łącznie 1200) dla każdego wystąpienia. Po osiągnięciu tego limitu, środowisko uruchomieniowe usługi functions zapisuje komunikat w dziennikach: `Host thresholds exceeded: Connections`. Aby uzyskać więcej informacji, zobacz [limitów usług Functions](functions-scale.md#service-limits).
 
-To ograniczenie jest dla każdego wystąpienia.  Podczas [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-and-premium-plans-work) do obsługi więcej żądań, każde wystąpienie ma limit połączeń niezależne. Oznacza to, nie ma żadnego limitu połączenia globalnego i może mieć znacznie więcej niż 600 aktywnych połączeń ze wszystkich aktywnych wystąpień.
+To ograniczenie jest dla każdego wystąpienia. Podczas [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-and-premium-plans-work) do obsługi więcej żądań, każde wystąpienie ma limit połączeń niezależne. Oznacza to, nie ma żadnego limitu połączenia globalnego i może mieć znacznie więcej niż 600 aktywnych połączeń ze wszystkich aktywnych wystąpień.
 
 Podczas rozwiązywania problemów, upewnij się, że włączono usługę Application Insights dla aplikacji funkcji. Usługa Application Insights umożliwia wyświetlanie metryk dla twojej aplikacji funkcji, takich jak wykonań. Aby uzyskać więcej informacji, zobacz [wyświetlanie telemetrii w usłudze Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
 

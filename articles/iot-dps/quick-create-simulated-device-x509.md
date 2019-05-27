@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2a27ec63ea4ae25823c604612bd3bcf3a057da61
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: ae5a1708b56db45bec38a4482b5dfd936bdedd4a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "61250012"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901240"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Szybki start: Aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK języka C usługi Azure IoT
 
@@ -35,7 +35,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program Visual Studio 2015 lub [Visual Studio 2017](https://www.visualstudio.com/vs/) z włączonym pakietem roboczym [„Programowanie aplikacji klasycznych w języku C++”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 

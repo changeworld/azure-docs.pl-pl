@@ -2,20 +2,20 @@
 title: Optymalizowanie transakcji dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zoptymalizować wydajność transakcyjnych kodu w usłudze Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko dla długich wycofywanie zmian.
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/19/2018
-ms.author: cakarst
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5e0b2b75ac111f3221108936f84e5883aebfc1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ab1da9fce74359448311591986d57abbbcef066
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478831"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873641"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optymalizowanie transakcji w usłudze Azure SQL Data Warehouse
 Dowiedz się, jak zoptymalizować wydajność transakcyjnych kodu w usłudze Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko dla długich wycofywanie zmian.
@@ -44,9 +44,9 @@ Następujące operacje są w stanie są rejestrowane:
 
 * UTWÓRZ TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
 * WSTAW... WYBIERZ POZYCJĘ
-* TWORZENIE INDEKSU
+* CREATE INDEX
 * ALTER INDEX REBUILD
-* USUŃ INDEKS
+* DROP INDEX
 * OBCINANIE TABELI
 * USUNIĘCIE TABELI
 * INSTRUKCJA ALTER TABLE SWITCH PARTITION

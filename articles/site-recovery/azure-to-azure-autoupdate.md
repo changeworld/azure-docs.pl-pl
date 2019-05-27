@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/29/2098
+ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925711"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922093"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
 
@@ -535,3 +535,14 @@ Jeśli aktualizacje automatyczne nie jest włączone, zobacz poniższe typowe b�
 - **Błąd**: Nie można odnaleźć konta Uruchom jako. Albo jeden z nich został usunięty lub nie został utworzony — aplikacja usługi Azure Active Directory, nazwa główna usługi, rola, zasób certyfikatu usługi Automation, zasób połączenia usługi Automation — lub odcisk palca nie jest taki sam dla certyfikatu i połączenia. 
 
     **Zalecana akcja**: Usuń i następnie [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+
+-  **Błąd**: Azure Uruchom jako certyfikat używany przez konto usługi automation wkrótce wygaśnie. 
+
+    Certyfikat z podpisem własnym utworzony dla konta Uruchom jako wygasa rok od daty utworzenia. Można go odnowić w dowolnym momencie przed wygaśnięciem jego ważności. Jeśli zostały utworzone konto powiadomień e-mail, również będą otrzymywać wiadomości e-mail, gdy akcja jest wymagany ze strony użytkownika. Ten błąd, zostaną wyświetlone dwa miesiące przed datą wygaśnięcia i zostanie zmieniona na błąd krytyczny, jeśli certyfikat wygasł. Po wygaśnięciu certyfikatu automatyczna aktualizacja nie będzie działać do momentu odnowisz takie same.
+
+   **Zalecana akcja**: Kliknij "Napraw", a następnie odnawianie certyfikatu Aby rozwiązać ten problem.
+    
+   ![renew-cert](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+
+> [!NOTE]
+> Po odnowieniu certyfikatu Odśwież stronę, aby bieżący stan zostanie zaktualizowany.

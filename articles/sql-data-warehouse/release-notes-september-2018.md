@@ -2,20 +2,20 @@
 title: Usługa Azure SQL Data Warehouse — informacje o wersji września 2018 r. | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 10/08/2018
-ms.author: mausher
-ms.reviewer: twounder
-ms.openlocfilehash: bc559a1224aace2ee599c24c8dce07a6d55173fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5041458fdc3c6a49c59f2c4c476db71098531419
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474979"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912160"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Wrzesień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w września 2018 r.
@@ -99,7 +99,7 @@ Na koniec ulepszanie zmniejsza ogólną wykonywania instrukcji, które są wykon
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 
-| Tytuł | Opis |
+| Stanowisko | Opis |
 |:---|:---|
 | **Poprawka, tworząc statystyki dystrybucji dla unikatowych ograniczeń** | Ta poprawka rozwiązuje błąd, który użytkownik napotka po określeniu uruchomionej UPDATE STATISTICS z tabeli tylko po tabeli ma zdefiniowane ograniczenia unique. |
 | **Poprawka podczas kompilowania zapytania za pośrednictwem tabel zewnętrznych** | Ta poprawka rozwiązuje wada, która dotyczy czas kompilacji dla zapytań dotyczących tabel zewnętrznych.|

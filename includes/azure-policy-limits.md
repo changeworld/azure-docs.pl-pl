@@ -9,20 +9,20 @@ ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
 ms.openlocfilehash: 57cec39bde460c6079091490acf541761c61e003
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554049"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119303"
 ---
 Istnieje maksymalna liczba, dla każdego typu obiektu usługi Azure Policy. Wpis _Zakres_ oznacza subskrypcję lub [grupę zarządzania](../articles/governance/management-groups/overview.md).
 
-| Lokalizacja | Elementy | Maksymalna liczba |
+| Gdzie | Elementy | Maksymalna liczba |
 |---|---|---|
-| Zakres | Definicje zasad | 250 |
-| Zakres | Definicje inicjatyw | 100 |
+| Scope | Definicje zasad | 250 |
+| Scope | Definicje inicjatyw | 100 |
 | Dzierżawa | Definicje inicjatyw | 1000 |
-| Zakres | Przypisania zasad lub inicjatywy | 100 |
+| Scope | Przypisania zasad lub inicjatywy | 100 |
 | Definicja zasad | Parametry | 20 |
 | Definicja inicjatywy | Zasady | 100 |
 | Definicja inicjatywy | Parametry | 100 |

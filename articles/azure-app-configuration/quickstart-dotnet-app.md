@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: acf1608257bc5416ff52ed9fbd4209008712f2d7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f5837e06f347a4f822ac007dfe54c99fc7457dbb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408707"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872976"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki start: tworzenie aplikacji .NET Framework przy użyciu usługi Azure App Configuration
 
@@ -29,7 +29,7 @@ Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://visualstudio.microsoft.com/vs) i [platformy .NET Framework 4.7.1](https://dotnet.microsoft.com/download) lub nowszy, jeśli jeszcze go.
+W tym przewodniku Szybki Start, zainstaluj [Visual Studio 2019](https://visualstudio.microsoft.com/vs) i [platformy .NET Framework 4.7.1](https://dotnet.microsoft.com/download) lub nowszy, jeśli jeszcze nie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

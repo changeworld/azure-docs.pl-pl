@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beccd3f28cd3f5de3ef777b80c53651c76017619
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: a2d9639c21e201db1df5145caf1345d4f0879af6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545635"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121941"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji .NET Desktop (WPF)
 
@@ -57,13 +57,15 @@ Aby umożliwić aplikacji uzyskiwanie tokenów, zarejestruj aplikację w dzierż
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Na górnym pasku wybierz swoje konto i z listy **Katalog** wybierz dzierżawę usługi Active Directory, w której chcesz zarejestrować aplikację.
 3. Wybierz pozycję **Wszystkie usługi** w okienku nawigacji po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
-4. W obszarze **Rejestracje aplikacji** wybierz pozycję **Dodaj**.
-5. Postępuj zgodnie z monitami i utwórz nową **natywną** aplikację kliencką.
-    * **Nazwa** aplikacji będzie opisywać aplikację dla użytkowników końcowych
-    * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwróci odpowiedzi tokenów. Wprowadź wartość specyficzną dla Twojej aplikacji, na przykład `http://DirectorySearcher`.
+4. Na **rejestracje aplikacji**, wybierz **nowej rejestracji**.
+5. Postępuj zgodnie z monitami, aby utworzyć nową aplikację klienta.
+    * **Nazwa** to nazwa aplikacji; opisuje aplikację innym użytkownikom.
+    * W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+    * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość, które są specyficzne dla aplikacji (na przykład `http://DirectorySearcher`) i jest oparta na wcześniejszych informacji identyfikatora URI przekierowania. Również wybrać **klientem publicznym (mobilnych i klasycznych)** z listy rozwijanej. 
 
 6. Po zakończeniu rejestracji usługa AAD przypisze do aplikacji unikatowy identyfikator aplikacji. Ta wartość będzie potrzebna w kolejnych sekcjach, dlatego skopiuj ją ze strony aplikacji.
-7. Na stronie **Ustawienia** wybierz pozycję **Wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**. Wybierz program **Microsoft Graph** jako interfejs API, a następnie w obszarze **Delegowane uprawnienia** dodaj uprawnienie **Odczytuj dane katalogu**. Ustawienie tego uprawnienia spowoduje skonfigurowanie aplikacji do wykonywania zapytań dotyczących użytkowników względem interfejsu API programu Graph.
+7. Z **uprawnienia do interfejsu API** wybierz opcję **Dodaj uprawnienia**. Wewnątrz **wybierz interfejs API** wybierz ***programu Microsoft Graph***.
+8. W obszarze **delegowane uprawnienia**, wybierz uprawnienie **User.Read**, kliknij przycisk **Dodaj** do zapisania. To uprawnienie skonfiguruje aplikację do wykonywania zapytań względem interfejsu API programu Graph usługi Azure AD dotyczących użytkowników.
 
 ## <a name="step-2-install-and-configure-adal"></a>Krok 2: Instalowanie i konfigurowanie biblioteki ADAL
 

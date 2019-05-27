@@ -4,20 +4,20 @@ description: Instalacja programu Visual Studio i narzędzi SQL Server Data Tools
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: kevinvngo
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/05/2019
-ms.author: kevin
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f67c2a4547ee923e5c1b49302c38693e9ffe87c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 683ec8f9cebb2fcbade9fd636506cf1903eff317
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474253"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873308"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>Instalacja programu Visual Studio i narzędzi SSDT dla usługi SQL Data Warehouse
 Visual Studio 2017 umożliwia tworzenie aplikacji dla usługi SQL Data Warehouse. SSDT 2019 r w usłudze Visual Studio nie jest obecnie obsługiwane dla usługi SQL Data Warehouse. 
@@ -29,7 +29,7 @@ Za pomocą programu Visual Studio z narzędziami SSDT pozwala na używanie Ekspl
 > 
 > 
 
-## <a name="step-1-install-visual-studio"></a>Krok 1: Instalacja programu Visual Studio
+## <a name="step-1-install-visual-studio"></a>Krok 1: Zainstaluj program Visual Studio
 Skorzystaj z poniższych linków, aby pobrać i zainstalować program Visual Studio. Jeśli masz już program Visual Studio 2013 lub nowszy jest zainstalowany, możesz przejść do kroku 2, należy zainstalować narzędzia SSDT.
 
 1. [Pobierz program Visual Studio][].

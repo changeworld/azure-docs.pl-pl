@@ -14,11 +14,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 40086924731876dc44d9651ca46814149dba52f0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122449"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopiowanie danych do i z systemu plików w środowisku lokalnym za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -73,12 +73,12 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Yes |
+| typ |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Tak |
 | host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady. |Yes |
-| Identyfikator użytkownika |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
-| hasło |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
+| userid |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
+| password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
 | encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzDataFactoryEncryptValue. |Nie (Jeśli chcesz określić identyfikator użytkownika i hasło w postaci zwykłego tekstu) |
-| gatewayName |Określa nazwę bramy, która Data Factory powinna używać do łączenia się z serwerem plików lokalnych. |Yes |
+| gatewayName |Określa nazwę bramy, która Data Factory powinna używać do łączenia się z serwerem plików lokalnych. |Tak |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Przykładowe połączona usługa i definicje zestawów danych
@@ -130,12 +130,12 @@ W sekcji typeProperties różni się dla każdego typu zestawu danych. Zawiera i
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
+| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Tak |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku znajduje się w następującym formacie: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
 | fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "obiektu fileFilter": "* .log"<br/>Przykład 2: "obiektu fileFilter": 2014 - 1-?. txt"<br/><br/>Należy zauważyć, że tego obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. |Nie |
 | partitionedBy |PartitionedBy służy do określania dynamiczne folderPath/nazwę pliku do danych szeregów czasowych. Przykładem jest folderPath sparametryzowane za każdą godzinę danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
 > Nie można użyć nazwy pliku i obiektu fileFilter jednocześnie.
@@ -182,7 +182,7 @@ Działanie kopiowania ich różnią się w zależności od typów źródła i uj
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| cykliczne |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
+| recursive |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
 
 **FileSystemSink** obsługuje następujące właściwości:
 

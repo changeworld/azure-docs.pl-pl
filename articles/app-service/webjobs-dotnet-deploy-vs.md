@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ede7e2fe3a2ab4c0dfd4efaea5ec789924968194
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832411"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873019"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service
 
@@ -92,7 +92,7 @@ Możesz wdrożyć projekt jako zadanie WebJob przez siebie lub link do projektu 
 
 Jeśli używasz programu Visual Studio 2015, zainstaluj [zestawu Azure SDK dla platformy .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Jeśli używasz programu Visual Studio 2017, zainstaluj [obciążenie programistyczne platformy Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
+Jeśli używasz programu Visual Studio 2019 r, należy zainstalować [obciążenie programistyczne platformy Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
 
 ### <a id="convert"></a> Włącz wdrożenie zadania Webjob do istniejącego projektu aplikacji konsoli
 
