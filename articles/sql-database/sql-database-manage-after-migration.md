@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703375"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791496"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
@@ -47,7 +47,7 @@ Nie twórz kopie zapasowe w usłudze Azure SQL DB i to, ponieważ nie masz. SQL 
 
 |Warstwa usług|Czas przechowywania w dniach|
 |---|:---:|
-|Podstawowa|7|
+|Podstawowy|7|
 |Standardowa (Standard)|35|
 |Premium|35|
 |||
@@ -127,7 +127,7 @@ Innym rozwiązaniem jest aprowizowanie [zastrzeżone adresy IP](../virtual-netwo
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Port nawiązać połączenie z bazą danych SQL na
 
-Port 1433. Baza danych SQL komunikuje się za pośrednictwem tego portu. Aby nawiązać połączenie z sieci firmowej, trzeba dodać regułę dla ruchu wychodzącego w ustawieniach zapory Twojej organizacji. Program narzędziowy należy unikać uwidaczniania portu 1433 poza granicami platformy Azure. Można uruchomić program SSMS w systemie Azure za pomocą [usługi Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps). Nie wymaga to na otwieranie połączeń wychodzących do portu 1433, adres IP jest statyczny, dzięki czemu bazy danych może być otwarty, aby tylko połączenia programów RemoteApp i obsługuje ona usługi Multi Factor Authentication (MFA).
+Port 1433. Baza danych SQL komunikuje się za pośrednictwem tego portu. Aby nawiązać połączenie z sieci firmowej, trzeba dodać regułę dla ruchu wychodzącego w ustawieniach zapory Twojej organizacji. Program narzędziowy należy unikać uwidaczniania portu 1433 poza granicami platformy Azure.
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Jak monitorować i regulują działania na mój serwer i bazę danych w bazie danych SQL
 

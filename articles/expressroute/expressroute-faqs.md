@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 17f596abda4febbd6e532adcb44d544cd4d104df
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: MT
+ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924671"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794779"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -79,7 +79,7 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Power BI
+* Power BI — dostępny za pośrednictwem regionalnych społeczności platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) dotyczące dowiedzieć się, regionu dzierżawy usługi Power BI. 
 * Usługa Azure Active Directory
 * [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
@@ -152,7 +152,7 @@ Jeśli usługodawca oferuje usługi ExpressRoute w obu lokacjach, możesz wspó�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>W tym samym metro można mieć wiele obwodów usługi ExpressRoute? Czy można połączyć je z tej samej sieci wirtualnej?
 
-Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwodów tworzonych w tej samej lokalizacji komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej, ale tylko maksymalnie 4 obwodów usługi ExpressRoute w każdej lokalizacji komunikacji równorzędnej. Na przykład można wybrać lokalizacje komunikacji równorzędnej "Singapuru" i "Singapur2" i połącz obwodów każdego z nich do tej samej sieci wirtualnej. 
+Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwodów tworzonych w tej samej lokalizacji komunikacji równorzędnej, możesz połączyć obwodów do 4 tej samej sieci wirtualnej.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak połączyć mojej sieci wirtualne z obwodem usługi ExpressRoute
 
@@ -190,7 +190,7 @@ Nie. Z punktu widzenia routingu wszystkie sieci wirtualne połączone z tym samy
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Czy można mieć jedną sieć wirtualną podłączony do więcej niż jeden obwód usługi ExpressRoute?
 
-Tak. Możesz połączyć jednej sieci wirtualnej przy użyciu maksymalnie cztery obwodów usługi ExpressRoute. Musi zostać określona przez cztery różne [lokalizacji usługi ExpressRoute](expressroute-locations.md).
+Tak. Można połączyć się z maksymalnie cztery obwodów usługi ExpressRoute w obu tych samych lub różnych lokalizacji komunikacji równorzędnej jednej sieci wirtualnej. 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Z mojej sieci wirtualnych, które zostały podłączone do obwodów usługi ExpressRoute ma dostęp do Internetu?
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148949"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796161"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -139,7 +139,7 @@ Wyniki zapytania są:
     }]
 ```
 
-Następujące zapytanie zwraca imiona wszystkich dzieci w rodzinie którego `id` odpowiada `WakefieldFamily`, uporządkowanych według miejscowości zamieszkania.
+Następujące zapytanie zwraca imiona wszystkich dzieci w rodzinie którego `id` odpowiada `WakefieldFamily`, uporządkowanych według miast.
 
 ```sql
     SELECT c.givenName
@@ -550,13 +550,13 @@ W poniższej tabeli przedstawiono wynik porównań równości w interfejsie API 
 
 | **Operator** | **Niezdefiniowane** | **Null** | **Wartość logiczna** | **Liczba** | **Ciąg** | **Obiekt** | **Tablica** |
 |---|---|---|---|---|---|---|---|
-| **Niezdefiniowane** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
-| **Null** | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
-| **Wartość logiczna** | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
-| **Liczba** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
-| **Ciąg** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane |
-| **Obiekt** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane |
-| **Tablica** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** |
+| **Niezdefiniowane** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano |
+| **Null** | Nie zdefiniowano | **OK** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano |
+| **Wartość logiczna** | Nie zdefiniowano | Nie zdefiniowano | **OK** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano |
+| **Liczba** | Nie zdefiniowano | Niezdefiniowane | Nie zdefiniowano | **OK** | Nie zdefiniowano | Niezdefiniowane | Nie zdefiniowano |
+| **Ciąg** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano | **OK** | Nie zdefiniowano | Nie zdefiniowano |
+| **Obiekt** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano | **OK** | Nie zdefiniowano |
+| **Tablica** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano | **OK** |
 
 Dla operatorów porównania, takie jak `>`, `>=`, `!=`, `<`, i `<=`, porównanie różnych typów lub między dwoma obiektami lub tablic generuje `Undefined`.  
 
@@ -568,27 +568,27 @@ Operatory logiczne działają na wartościach logicznych. W poniższych tabelach
 
 **Operator OR**
 
-| LUB | True | False | Niezdefiniowane |
+| OR | True | Fałsz | Nie zdefiniowano |
 | --- | --- | --- | --- |
 | True |True |True |True |
-| False |True |False |Niezdefiniowane |
-| Niezdefiniowane |True |Niezdefiniowane |Niezdefiniowane |
+| Fałsz |True |Fałsz |Nie zdefiniowano |
+| Nie zdefiniowano |True |Nie zdefiniowano |Niezdefiniowane |
 
 **Operator AND**
 
-| AND | True | False | Niezdefiniowane |
+| AND | True | Fałsz | Nie zdefiniowano |
 | --- | --- | --- | --- |
-| True |True |False |Niezdefiniowane |
-| False |False |False |False |
-| Niezdefiniowane |Niezdefiniowane |False |Niezdefiniowane |
+| True |True |Fałsz |Nie zdefiniowano |
+| Fałsz |Fałsz |Fałsz |Fałsz |
+| Nie zdefiniowano |Nie zdefiniowano |Fałsz |Nie zdefiniowano |
 
 **Operator NOT**
 
 | NOT |  |
 | --- | --- |
-| True |False |
-| False |True |
-| Niezdefiniowane |Niezdefiniowane |
+| True |Fałsz |
+| Fałsz |True |
+| Nie zdefiniowano |Nie zdefiniowano |
 
 ## <a name="between-keyword"></a>Słowo kluczowe BETWEEN
 
@@ -867,6 +867,13 @@ Wyniki są:
         ]
       }
     ]
+```
+
+Następujące zapytanie SQL jest inny przykład użycia tablicy w ciągu w podzapytania. To zapytanie pobiera różne imiona wszystkich dzieci w arrary.
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
 ```
 
 
@@ -1287,11 +1294,11 @@ Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średnia 
 
 | Funkcja | Opis |
 |-------|-------------|
-| COUNT | Zwraca liczbę elementów w wyrażeniu. |
+| LICZBA | Zwraca liczbę elementów w wyrażeniu. |
 | SUM   | Zwraca sumę wszystkich wartości w wyrażeniu. |
-| MIN   | Zwraca minimalną wartość w wyrażeniu. |
-| MAX   | Zwraca maksymalną wartość w wyrażeniu. |
-| AVG   | Zwraca średnią wartości w wyrażeniu. |
+| MIN.   | Zwraca minimalną wartość w wyrażeniu. |
+| MAKS.   | Zwraca maksymalną wartość w wyrażeniu. |
+| ŚREDNIA   | Zwraca średnią wartości w wyrażeniu. |
 
 Możesz także agregować wynikami iterację tablicy. Aby uzyskać więcej informacji, zobacz [iteracji](#Iteration) sekcji.
 
