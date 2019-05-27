@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6b629c7b8a6addbb2ef6f9ced58d4db656ad2480
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 631338c0217eb61f4f98cd06ffa16cb2500f246b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576796"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146732"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Samouczek: Twórz moduły usługi IoT Edge dla urządzeń Windows
 
@@ -49,7 +49,7 @@ W poniższej tabeli wymieniono scenariusze rozwoju obsługiwane **kontenery Wind
 | - | ------------------ | ------------------ |
 | **Usługi platformy Azure** | Azure Functions <br> Usługa Azure Stream Analytics |   |
 | **Języki** | C#(debugowanie nie jest obsługiwane) | C <br> C# |
-| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
 
 W tym samouczku pokazano kroki programowania dla programu Visual Studio 2017. Jeśli zostanie wykorzystany raczej programu Visual Studio Code, zapoznaj się z instrukcjami wyświetlanymi w [używać programu Visual Studio Code do tworzenia i debugowania modułów dla usługi Azure IoT Edge](how-to-vs-code-develop-module.md).
 
@@ -98,9 +98,9 @@ Rozszerzenia IoT dla programu Visual Studio 2017 umożliwia tworzenie modułów 
 
 1. Jeśli nie masz jeszcze programu Visual Studio na komputerze deweloperskim, [Install Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio?view=vs-2017) z następującymi pakietami roboczymi: 
 
-   * Tworzenie aplikacji na platformie Azure
+   * Programowanie na platformie Azure
    * Programowanie aplikacji klasycznych w języku C++
-   * Tworzenie aplikacji dla wielu platform w środowisku .NET Core
+   * Programowanie dla wielu platform .NET core
 
 1. Jeśli masz już program Visual Studio 2017 na komputerze deweloperskim, upewnij się, że jej wersji 15.7 lub nowszej. Postępuj zgodnie z instrukcjami w [modyfikowanie programu Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2017) dodać wymagane obciążenia, jeśli ich nie masz już.
 
@@ -128,7 +128,7 @@ Rozszerzenie Azure IoT Edge narzędzia udostępnia szablony projektów, dla wszy
 
 2. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**. 
 
-3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania, lub zaakceptuj nazwę domyślną **AzureIoTEdgeApp1**. Wybierz przycisk **OK**, aby utworzyć projekt. 
+3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania, lub zaakceptuj nazwę domyślną **AzureIoTEdgeApp1**. Wybierz **OK** do tworzenia projektu. 
 
    ![Utwórz nowy projekt usługi Azure IoT Edge](./media/tutorial-develop-for-windows/new-project.png)
 

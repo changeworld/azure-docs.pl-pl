@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853148"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956228"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
 
@@ -67,7 +67,7 @@ Alternatywnie:
 
 ## <a name="source-application-settings-from-key-vault"></a>Ustawienia aplikacji źródłowej z usługi Key Vault
 
-Odwołania do usługi Key Vault może służyć jako wartości [ustawienia aplikacji](web-sites-configure.md#app-settings), dzięki czemu można zachować wpisy tajne w usłudze Key Vault, zamiast konfiguracji witryny. Ustawienia aplikacji są bezpiecznie szyfrowane w stanie spoczynku, ale jeśli potrzebujesz możliwości zarządzania wpisami tajnymi, należy przejść do usługi Key Vault.
+Odwołania do usługi Key Vault może służyć jako wartości [ustawienia aplikacji](configure-common.md#configure-app-settings), dzięki czemu można zachować wpisy tajne w usłudze Key Vault, zamiast konfiguracji witryny. Ustawienia aplikacji są bezpiecznie szyfrowane w stanie spoczynku, ale jeśli potrzebujesz możliwości zarządzania wpisami tajnymi, należy przejść do usługi Key Vault.
 
 Aby użyć odwołanie do usługi Key Vault dla ustawienia aplikacji, ustaw odwołanie jako wartość ustawienia. Aplikacja odwoływać się do klucza tajnego za pomocą jego klucza, jak zwykle. Wymagane są bez zmian w kodzie.
 

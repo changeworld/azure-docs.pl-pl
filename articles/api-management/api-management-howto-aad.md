@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 422c2a8a61b1df36b452c153aa6cd78ba7e2dcef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d267ff3a43438d9fe6e4e21f0ac023cfa6675f19
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723647"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956307"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory w usłudze Azure API Management
 
@@ -34,7 +34,7 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure AD
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
-2. Wybierz pozycję ![strzałkę](./media/api-management-howto-aad/arrow.png).
+2. Wybierz ![strzałkę](./media/api-management-howto-aad/arrow.png).
 3. Typ **api** w polu wyszukiwania.
 4. Wybierz **usługi API Management**.
 5. Wybierz swoje wystąpienie usługi API Management.
@@ -61,21 +61,22 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
 14.  Po zarejestrowaniu aplikacji, skopiuj **identyfikator aplikacji (klienta)** z **Przegląd** strony. 
 15. Wróć do wystąpienia usługi API Management. W **dostawcy tożsamości Dodaj** okna, Wklej **identyfikator aplikacji (klienta)** wartością do **identyfikator klienta** pole.
 16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz **certyfikaty i klucze tajne** w obszarze **Zarządzaj**. Wybierz **nowy wpis tajny klienta** przycisku. Wprowadź wartość w **opis**, wybierz dowolną opcję, aby uzyskać **Expires** i wybierz polecenie **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
-17. Wróć do wystąpienia usługi API Management, Wklej klucz tajny w **klucz tajny klienta** pole.
+17. W obszarze **Zarządzaj**, wybierz opcję **uwierzytelniania** , a następnie wybierz **tokeny Identyfikatora** w obszarze **przyznawanie niejawne**
+18. Wróć do wystąpienia usługi API Management, Wklej klucz tajny w **klucz tajny klienta** pole.
 
     > [!IMPORTANT]
     > Upewnij się zaktualizować **klucz tajny klienta** przed wygaśnięciem klucza. 
     >  
     >
 
-18. **Dostawcy tożsamości Dodaj** okno zawiera również **dozwolone dzierżaw** pola tekstowego. Określ domeny wystąpień usługi Azure AD, do których chcesz udzielić dostępu do interfejsów API wystąpienia usługi API Management. Możesz oddzielić wiele domen tabulacji, spacjami lub przecinkami.
+19. **Dostawcy tożsamości Dodaj** okno zawiera również **dozwolone dzierżaw** pola tekstowego. Określ domeny wystąpień usługi Azure AD, do których chcesz udzielić dostępu do interfejsów API wystąpienia usługi API Management. Możesz oddzielić wiele domen tabulacji, spacjami lub przecinkami.
 
 > [!NOTE]
 > Można określić wiele domen w **dozwolone dzierżaw** sekcji. Zanim każdy użytkownik może zalogować się w innej domenie niż oryginalną domenę, w którym aplikacja została zarejestrowana, tylko administrator globalny innej domeny musi udzielić uprawnień do dostępu do danych katalogu aplikacji. Aby udzielić uprawnień, należy administrator globalny:. Przejdź do `https://<URL of your developer portal>/aadadminconsent` (na przykład https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Wpisz nazwę domeny dzierżawy usługi Azure AD, który ma zostać zapewniony dostęp.
-> c. Wybierz pozycję **Prześlij**. 
+> c. Wybierz **przesłać**. 
 
-19.  Po określeniu pożądanej konfiguracji, wybierz **Dodaj**.
+20.  Po określeniu pożądanej konfiguracji, wybierz **Dodaj**.
 
 Po zapisaniu zmian użytkowników w określonej usłudze Azure AD wystąpienia zalogować się do portalu dla deweloperów, wykonując kroki opisane w [Zaloguj się do portalu dla deweloperów przy użyciu konta usługi Azure AD](#log_in_to_dev_portal).
 

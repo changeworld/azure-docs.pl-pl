@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 904b9b8ba98be5e14b1d769a0e1d8c2d6084e24d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477300"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951174"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Po wydaniu usługi Microsoft Azure Storage firma Microsoft opracowała wiele sprawdzone rozwiązania dotyczące korzystania z tych usług w sposób wydajny, a ten artykuł służy do konsolidowania najważniejsze z nich do listy styl listy kontrolnej. Części tego artykułu jest pomoc deweloperom aplikacji, sprawdź, czy używasz sprawdzone rozwiązania z usługą Azure Storage i pomoc w identyfikacji innych sprawdzone rozwiązania, należy rozważyć przyjęcie. W tym artykule nie jest podejmowana próba obejmują co możliwości optymalizacji wydajności i skalowalności — wyklucza te, które są małe w ich wpływ lub nie szerokie zastosowanie. W zakresie, w jakim można przewidzieć zachowania aplikacji podczas projektowania, warto zachować te pamiętać na wczesnym etapie, aby uniknąć projekty, które będą uruchamiane w problemy z wydajnością.  
 
-Każdy deweloper aplikacji przy użyciu usługi Azure Storage powinien trwać przeczytaj ten artykuł, i sprawdź jej aplikacji następuje każdego sprawdzonych rozwiązań wymienione poniżej.  
+Każdy deweloper aplikacji przy użyciu usługi Azure Storage powinien trwać przeczytaj ten artykuł, i sprawdzić ich stosowania następuje każdego sprawdzonych rozwiązań wymienione poniżej.  
 
 ## <a name="checklist"></a>Lista kontrolna
 W tym artykule organizuje sprawdzonych rozwiązań w następujących grupach. Sprawdzone rozwiązania mające zastosowanie do:  

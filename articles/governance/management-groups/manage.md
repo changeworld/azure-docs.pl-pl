@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272482"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950307"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Przeniesienie grup zarządzania w hierarchii  
 
-Podczas przenoszenia nadrzędna grupa zarządzania hierarchię w ramach tej grupy przenosi się z nim.
+Podczas przenoszenia nadrzędna grupa zarządzania hierarchię w ramach tej grupy przenosi się z nim. Dostępu należy przenieść grupy zarządzania, zobacz [dostęp do grupy zarządzania](index.md#management-group-access).
 
 ### <a name="move-management-groups-in-the-portal"></a>Przeniesienie grup zarządzania w portalu
 

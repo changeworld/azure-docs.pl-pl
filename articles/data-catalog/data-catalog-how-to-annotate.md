@@ -8,12 +8,12 @@ ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 3a66c8c5963972828723dd74ffe560a0e2240165
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001940"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953176"
 ---
 # <a name="how-to-annotate-data-sources"></a>Jak dodawać adnotacje do źródeł danych
 ## <a name="introduction"></a>Wprowadzenie
@@ -27,7 +27,7 @@ Wykaz danych rozpoznaje, że różni użytkownicy mają z różnych perspektyw w
 * Administrator bazy danych wie, że harmonogram tworzenia kopii zapasowych dla każdej bazy danych i windows dozwolonych przetwarzania ETL.
 * Właściciela systemu zna procesu żądania dostępu do źródła danych przez użytkowników.
 * Zarządca danych wie, jak zasoby i atrybuty w źródle danych mapy do modelu danych przedsiębiorstwa.
-* Analityk wie, jak dane są używane w kontekście procesów biznesowych, które obsługuje on.
+* Analityk wie, jak dane są używane w kontekście procesów biznesowych, które obsługują.
 
 Każdy z tych perspektyw jest przydatne, a Data Catalog korzysta z użyciem podejścia crowdsourcing metadanych, który umożliwia każdej z nich może być przechwytywane i użycie go do udostępnienia pełny obraz zarejestrowanych źródeł danych. Korzystając z portalu usługi Data Catalog, każdy użytkownik mogą dodawać i edytować własne adnotacje, będąc mogli wyświetlać adnotacje dostarczone przez innych użytkowników.
 

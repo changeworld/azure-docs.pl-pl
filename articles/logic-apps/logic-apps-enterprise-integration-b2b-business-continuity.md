@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: 8d024e0bc90724892bc53f8895b270716ad0cefc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001244"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967747"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Odzyskiwanie po awarii między regionami dla konta integracji B2B w usłudze Azure Logic Apps
 
@@ -62,7 +62,7 @@ Ciągłość biznesową na koncie integracji Logic Apps obsługuje na podstawie 
 
 Podczas zdarzenia awarii, gdy region podstawowy jest niedostępny dla ciągłości działania, bezpośrednie kierowanie ruchu do regionu pomocniczego. Pomaga w regionie pomocniczym, a firm, aby odzyskać funkcje szybko, aby spełnić cel punktu odzyskiwania i/lub RTO uzgodnione przez ich partnerów. Zmniejsza on również działań mających na celu przełączyć się z jednego regionu do innego regionu. 
 
-Brak oczekiwane opóźnienie, jednocześnie kopiując numerów kontrolnych z regionu podstawowego do regionu pomocniczego. Aby uniknąć wysyła numerów kontrolnych wygenerowanego zduplikowane partnerów podczas zdarzenia awarii, zaleca się zwiększenie numery kontrolne w ramach umów w regionie pomocniczym za pomocą [poleceń cmdlet programu PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).
+Brak oczekiwane opóźnienie, jednocześnie kopiując numerów kontrolnych z regionu podstawowego do regionu pomocniczego. Aby uniknąć wysyła numerów kontrolnych wygenerowanego zduplikowane partnerów podczas zdarzenia awarii, zaleca się zwiększenie numery kontrolne w ramach umów w regionie pomocniczym za pomocą [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Wracać do regionu podstawowego zdarzenia po awarii
 
@@ -70,7 +70,7 @@ Aby wrócić do regionu podstawowego gdy stanie się dostępna, wykonaj następu
 
 1. Zatrzymaj akceptowanie komunikatów oferowanych przez partnerów w regionie pomocniczym.  
 
-2. Zwiększony wygenerowanego formantu dla wszystkich umów regionu podstawowego, za pomocą [poleceń cmdlet programu PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).  
+2. Zwiększony wygenerowanego formantu dla wszystkich umów regionu podstawowego, za pomocą [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
 
 3. Bezpośredni ruch z regionu pomocniczego do regionu podstawowego.
 

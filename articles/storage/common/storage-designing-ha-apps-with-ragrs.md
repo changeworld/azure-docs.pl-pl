@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205504"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951310"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -54,7 +54,7 @@ Ten artykuł ma na celu dowiesz się, jak zaprojektować aplikację, która będ
 
 Proponowane rozwiązanie zakłada, że jest zgodna z potencjalnie nieodświeżoną dane są zwracane do aplikacji wywołującej. Ponieważ dane w regionie pomocniczym ostatecznie spójną, istnieje możliwość, region podstawowy może stać się niedostępne, zanim zakończy aktualizację do regionu pomocniczego podczas replikacji.
 
-Na przykład załóżmy, że klient prześle aktualizację pomyślnie, ale region podstawowy ulegnie awarii przed propagacji aktualizacji do regionu pomocniczego. Prosi klienta do odczytywania danych ponownie, użytkownik otrzymuje nieaktualnych danych z regionu pomocniczego, zamiast zaktualizowane dane. Podczas projektowania aplikacji, należy zdecydować, czy jest to dopuszczalne, a jeśli tak, jak komunikat z klienta zostaną. 
+Na przykład załóżmy, że klient prześle aktualizację pomyślnie, ale region podstawowy ulegnie awarii przed propagacji aktualizacji do regionu pomocniczego. Jeśli klient prosi do odczytywania danych ponownie, otrzyma nieaktualnych danych z regionu pomocniczego, zamiast zaktualizowane dane. Podczas projektowania aplikacji, należy zdecydować, czy jest to dopuszczalne, a jeśli tak, jak komunikat z klienta zostaną. 
 
 W dalszej części tego artykułu pokazujemy, jak sprawdzić czas ostatniej synchronizacji dla dodatkowych danych, aby sprawdzić, czy pomocnicza jest aktualny.
 
@@ -197,7 +197,7 @@ Trzeci scenariusz, gdy odpowiada na polecenie ping końcowego podstawowego magaz
 
 Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawowego do pomocniczego. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym są *ostatecznie spójną*. Oznacza to, że wszystkie transakcje w regionie podstawowym ostatecznie pojawią się w regionie pomocniczym, ale może wystąpić opóźnienie, zanim zostaną one wyświetlone i że nie ma żadnej gwarancji, transakcje pojawić się w regionie pomocniczym w kolejności, w której ich były pierwotnie stosowane w regionie podstawowym. Jeśli transakcje pojawić się w regionie pomocniczym poza kolejnością, możesz *może* należy wziąć pod uwagę dane w regionie dodatkowym, aby być w stanie niespójnym, dopóki wyrównywane do usługi.
 
-W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualizujesz Szczegóły pracownika, aby upewnić się, jej członkiem *Administratorzy* roli. Ze względu na tym przykładzie ta migracja wymaga aktualizacji **pracowników** jednostki i zaktualizuj **roli administrator** jednostki wraz z liczbą całkowitą liczbę administratorów. Zwróć uwagę, jak aktualizacje są stosowane poza kolejnością w regionie pomocniczym.
+W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualizacja szczegółów pracownika, aby były członkami *Administratorzy* roli. Ze względu na tym przykładzie ta migracja wymaga aktualizacji **pracowników** jednostki i zaktualizuj **roli administrator** jednostki wraz z liczbą całkowitą liczbę administratorów. Zwróć uwagę, jak aktualizacje są stosowane poza kolejnością w regionie pomocniczym.
 
 | **czas** | **Transakcja**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 

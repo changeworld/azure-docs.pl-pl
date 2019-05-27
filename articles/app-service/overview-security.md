@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838964"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955744"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpieczenia w usłudze Azure App Service
 
@@ -105,7 +105,7 @@ Można bezpieczny dostęp do zasobów lokalnych, takich jak bazy danych na trzy 
 
 ## <a name="application-secrets"></a>Wpisy tajne aplikacji
 
-Nie należy przechowywać kluczy tajnych aplikacji, takich jak poświadczenia bazy danych, tokeny interfejsu API i klucze prywatne w plikach kodu lub konfiguracji. Powszechnie akceptowane podejściem jest dostęp do nich jako [zmienne środowiskowe](https://wikipedia.org/wiki/Environment_variable) przy użyciu standardowego wzorca w wybranym języku. W usłudze App Service jest to sposób definiowania zmiennych środowiskowych [ustawienia aplikacji](web-sites-configure.md#app-settings) (i, szczególnie w przypadku aplikacji .NET [parametry połączenia](web-sites-configure.md#connection-strings)). Ustawienia aplikacji i parametry połączenia są przechowywane w postaci zaszyfrowanej na platformie Azure i są one odszyfrowywane tylko przed są wstrzykiwane do pamięci procesu aplikacji, po uruchomieniu aplikacji. Klucze szyfrowania są obracane regularnie.
+Nie należy przechowywać kluczy tajnych aplikacji, takich jak poświadczenia bazy danych, tokeny interfejsu API i klucze prywatne w plikach kodu lub konfiguracji. Powszechnie akceptowane podejściem jest dostęp do nich jako [zmienne środowiskowe](https://wikipedia.org/wiki/Environment_variable) przy użyciu standardowego wzorca w wybranym języku. W usłudze App Service jest to sposób definiowania zmiennych środowiskowych [ustawienia aplikacji](configure-common.md#configure-app-settings) (i, szczególnie w przypadku aplikacji .NET [parametry połączenia](configure-common.md#configure-connection-strings)). Ustawienia aplikacji i parametry połączenia są przechowywane w postaci zaszyfrowanej na platformie Azure i są one odszyfrowywane tylko przed są wstrzykiwane do pamięci procesu aplikacji, po uruchomieniu aplikacji. Klucze szyfrowania są obracane regularnie.
 
 Alternatywnie można zintegrować aplikację usługi App Service przy użyciu [usługi Azure Key Vault](/azure/key-vault/) zarządzania zaawansowane wpisów tajnych. Przez [uzyskiwania dostępu do usługi Key Vault za pomocą tożsamości zarządzanej](../key-vault/tutorial-web-application-keyvault.md), aplikacji usługi app Service bezpieczny dostęp do danych poufnych, potrzebujesz.
 

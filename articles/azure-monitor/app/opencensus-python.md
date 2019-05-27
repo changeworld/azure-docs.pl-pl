@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60577704"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957246"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Zbierać ślady rozproszonych za pomocą języka Python (wersja zapoznawcza)
 
@@ -78,10 +78,12 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
 ## <a name="opencensus-python-package"></a>Pakiet języka OpenCensus Python
 
-1. Zainstaluj pakiet Open spisu dla języka Python przy użyciu narzędzia pip lub pipenv z wiersza polecenia:
+1. Zainstaluj pakiet Open spisu dla języka Python i eksportu przy użyciu narzędzia pip lub pipenv z wiersza polecenia:
 
-    ```python
+    ```console
     python -m pip install opencensus
+    python -m pip install opencensus-ext-ocagent
+
     # pip env install opencensus
     ```
 
@@ -92,20 +94,20 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
     ```python
     from opencensus.trace.tracer import Tracer
-    
+
     def main():
         while True:
             valuePrompt()
-    
+
     def valuePrompt():
         tracer = Tracer()
         with tracer.span(name="test") as span:
             line = input("Enter a value: ")
             print(line)
-    
+
     if __name__ == "__main__":
         main()
-    
+
     ```
 
 3. Uruchamiając kod wielokrotnie poprosi o podanie wartości. Każdy wpis wartości będą wypisywane w powłoce, a odpowiedni fragment **SpanData** będą generowane przez moduł OpenCensus języka Python. Definiuje projektu OpenCensus [ _śledzenia jako drzewo zakresy_](https://opencensus.io/core-concepts/tracing/).
@@ -127,32 +129,33 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
     ```python
     from opencensus.trace.tracer import Tracer
     from opencensus.trace import config_integration
-    from opencensus.trace.exporters.ocagent import trace_exporter
+    from opencensus.ext.ocagent.trace_exporter import TraceExporter
     from opencensus.trace import tracer as tracer_module
-    
+
     import os
-    
-    def main():        
+
+    def main():
         while True:
             valuePrompt()
-    
+
     def valuePrompt():
-        export_LocalForwarder = trace_exporter.TraceExporter(
+        export_LocalForwarder = TraceExporter(
         service_name=os.getenv('SERVICE_NAME', 'python-service'),
         endpoint=os.getenv('OCAGENT_TRACE_EXPORTER_ENDPOINT'))
-        
+
         tracer = Tracer(exporter=export_LocalForwarder)
         with tracer.span(name="test") as span:
             line = input("Enter a value: ")
             print(line)
-    
+
     if __name__ == "__main__":
         main()
+
     ```
 
 5. Jeśli zostanie zapisany i spróbuj uruchomić modułem, możesz otrzymać `ModuleNotFoundError` dla `grpc`. Jeśli ten problem wystąpi, uruchom następujące polecenie, aby zainstalować [pakietu grpcio](https://pypi.org/project/grpcio/) za pomocą:
 
-    ```
+    ```console
     python -m pip install grpcio
     ```
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76bbcd6fa400111514ec3496005a28ec28ae6ab7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205377"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977897"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -175,8 +175,8 @@ Wybierz **Pokaż szczegóły testu** z określonego testu, aby wyświetlić jego
 
 Podczas przeprowadzania konserwacji swojej usługi możesz wyłączyć testy dostępności lub skojarzone z nimi reguły alertów.
 
-![Wyłączanie testu sieci web](./media/monitor-web-app-availability/6disable.png)
-![Edytuj przebieg testowy](./media/monitor-web-app-availability/8edittest.png)
+![Wyłączanie testu sieci web](./media/monitor-web-app-availability/6disable.png)  
+![Edytowanie testu](./media/monitor-web-app-availability/8edittest.png)
 
 ## <a name="failures"></a>Jeśli widzisz błędy
 Kliknij czerwoną kropkę.

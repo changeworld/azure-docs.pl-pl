@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d158e1869cb85752b9b24e76d5227a2f7167bfcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794154"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957313"
 ---
 # <a name="manage-your-azure-maps-account"></a>Zarządzaj swoim kontem usługi Azure Maps
 
@@ -43,10 +43,14 @@ Następnie zobaczysz stronę potwierdzenia. Użytkownik potwierdzi usunięcie Tw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się, jak zarządzać warstwy cenowej konta usługi Azure Maps:
-    > [!div class="nextstepaction"] 
-    > [Warstwa cenowa zarządzania](./how-to-manage-pricing-tier.md)
+Konfigurowanie uwierzytelniania za pomocą usługi Azure Maps:
+> [!div class="nextstepaction"]
+> [Zarządzaj uwierzytelnianiem](how-to-manage-authentication.md)
 
-* Dowiedz się, jak wyświetlać metryki użycia interfejsu API dla swojego konta usługi Azure Maps:
-    > [!div class="nextstepaction"] 
-    > [Wyświetl metryki użycia](./how-to-view-api-usage.md)
+Dowiedz się, jak zarządzać warstwy cenowej konta usługi Azure Maps:
+> [!div class="nextstepaction"] 
+> [Warstwa cenowa zarządzania](how-to-manage-pricing-tier.md)
+
+Dowiedz się, jak wyświetlać metryki użycia interfejsu API dla swojego konta usługi Azure Maps:
+> [!div class="nextstepaction"] 
+> [Wyświetl metryki użycia](how-to-view-api-usage.md)

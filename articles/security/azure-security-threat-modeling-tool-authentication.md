@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610878"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951715"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Ramka zabezpieczeń: Uwierzytelnianie | Środki zaradcze 
 
@@ -41,7 +41,7 @@ ms.locfileid: "60610878"
 
 ## <a id="standard-authn-web-app"></a>Należy wziąć pod uwagę przy użyciu mechanizmu uwierzytelniania standardowego uwierzytelniania do aplikacji sieci Web
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -52,7 +52,7 @@ ms.locfileid: "60610878"
 
 ## <a id="handle-failed-authn"></a>Aplikacje musi bezpiecznie obsługiwać scenariusze uwierzytelniania nie powiodło się
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -63,7 +63,7 @@ ms.locfileid: "60610878"
 
 ## <a id="step-up-adaptive-authn"></a>Włącz krok w górę lub adaptacyjne uwierzytelniania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -74,7 +74,7 @@ ms.locfileid: "60610878"
 
 ## <a id="admin-interface-lockdown"></a>Upewnij się, że interfejsów administracyjnych są odpowiednio zablokowana
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -85,7 +85,7 @@ ms.locfileid: "60610878"
 
 ## <a id="forgot-pword-fxn"></a>Implementowanie bezpiecznego nie pamiętam hasła funkcje
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -96,18 +96,18 @@ ms.locfileid: "60610878"
 
 ## <a id="pword-account-policy"></a>Upewnij się, że są implementowane zasady haseł i kont
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| Szczegóły | <p>Powinny zostać wdrożone zasady haseł i kont zgodne z zasadami organizacyjnymi i najlepsze rozwiązania.</p><p>Do obrony przed siłowych i zgadywania słownik na podstawie: Aby upewnić się, że użytkownicy tworzyć złożone hasło (np. 12 znaków długości minimalnej, znakami alfanumerycznymi i specjalnymi) należy zaimplementować zasady silnych haseł.</p><p>Zasady blokady konta może być implementowana w następujący sposób:</p><ul><li>**Elastyczne blokady:** Może to być to dobra opcja w celu ochrony użytkowników przed atakami siłowymi. Na przykład zawsze wtedy, gdy użytkownik wprowadzi nieprawidłowe hasło trzykrotnie aplikacji może zablokować konta w ciągu minuty w celu spowolnić proces słownikowym wymuszania jego hasła, dzięki czemu mniej korzystna dla osoby atakującej kontynuować. Gdyby zaimplementować twardych przeciwdziałanie blokady w tym przykładzie wyniesie "DOS" przez trwale blokowania kont. Alternatywnie aplikacji może Wygeneruj hasło Jednorazowe (jednego hasła czasu) i wysłać go poza pasmem (za pośrednictwem poczty e-mail, sms itp.) dla użytkownika. Innym rozwiązaniem może być do zaimplementowania CAPTCHA, po osiągnięciu wartości progowej liczby nieudanych prób.</li><li>**Twarde blokady:** Ten typ blokady powinny być stosowane zawsze, gdy wykrywanie atakiem aplikację i licznik go za pomocą trwale blokowaniem ustawił konto tak, aż zespół reagowania mam czasu na ich analiza śledcza czy użytkownik. Po zakończeniu tego procesu można zdecydować, aby przyznać użytkownikowi tworzenie kopii swojego konta lub wykonywanie dodatkowych czynności prawne względem niego. Takie podejście uniemożliwia osobie atakującej dalsze przechodzące przez aplikację i infrastruktury.</li></ul><p>Obrony przed atakami na domyślne i przewidywalne konta, sprawdź wszystkich kluczy i haseł wymienne, a są generowane lub zmiana po czas instalacji.</p><p>Jeśli aplikacja ma opcję automatycznego generowania haseł, upewnij się, że wygenerowanego hasła są losowe i masz o wysokiej entropii.</p>|
+| Szczegóły | <p>Powinny zostać wdrożone zasady haseł i kont zgodne z zasadami organizacyjnymi i najlepsze rozwiązania.</p><p>Do obrony przed siłowych i zgadywania słownik na podstawie: Aby upewnić się, że użytkownicy tworzyć złożone hasło (np. 12 znaków długości minimalnej, znakami alfanumerycznymi i specjalnymi) należy zaimplementować zasady silnych haseł.</p><p>Zasady blokady konta może być implementowana w następujący sposób:</p><ul><li>**Elastyczne blokady:** Może to być to dobra opcja w celu ochrony użytkowników przed atakami siłowymi. Na przykład zawsze wtedy, gdy użytkownik wprowadzi nieprawidłowe hasło trzykrotnie aplikacji może zablokować konta w ciągu minuty w celu spowolnić proces słownikowym wymuszanie hasła, dzięki czemu mniej korzystna dla osoby atakującej kontynuować. Gdyby zaimplementować twardych przeciwdziałanie blokady w tym przykładzie wyniesie "DOS" przez trwale blokowania kont. Alternatywnie aplikacji może Wygeneruj hasło Jednorazowe (jednego hasła czasu) i wysłać go poza pasmem (za pośrednictwem poczty e-mail, sms itp.) dla użytkownika. Innym rozwiązaniem może być do zaimplementowania CAPTCHA, po osiągnięciu wartości progowej liczby nieudanych prób.</li><li>**Twarde blokady:** Ten typ blokady powinny być stosowane zawsze, gdy wykrywanie użytkownika z atakiem aplikacji i ich za pomocą trwale blokowaniem swojego konta, aż zespół reagowania mam czasu na ich analiza śledcza czy licznik. Po zakończeniu tego procesu można zdecydować, aby przyznać użytkownikowi tworzenie kopii swojego konta lub wykonywanie dodatkowych czynności prawne względem nich. Takie podejście uniemożliwia osobie atakującej dalsze przechodzące przez aplikację i infrastruktury.</li></ul><p>Obrony przed atakami na domyślne i przewidywalne konta, sprawdź wszystkich kluczy i haseł wymienne, a są generowane lub zmiana po czas instalacji.</p><p>Jeśli aplikacja ma opcję automatycznego generowania haseł, upewnij się, że wygenerowanego hasła są losowe i masz o wysokiej entropii.</p>|
 
 ## <a id="controls-username-enum"></a>Wdrożenie kontroli w celu zapobiegania wyliczenia nazwy użytkownika
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -118,7 +118,7 @@ ms.locfileid: "60610878"
 
 ## <a id="win-authn-sql"></a>Jeśli to możliwe, należy użyć uwierzytelniania Windows do łączenia z programem SQL Server
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -129,18 +129,18 @@ ms.locfileid: "60610878"
 
 ## <a id="aad-authn-sql"></a>Jeśli to możliwe na użytek uwierzytelniania usługi Azure Active Directory łączenie z bazą danych SQL
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Usługi SQL Azure |
+| **Odpowiednich technologii** | SQL Azure |
 | **Atrybuty**              | Wersja SQL - V12 |
 | **Odwołania**              | [Łączenie z bazą danych SQL przy użyciu uwierzytelniania usługi Azure Active Directory](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
 | **Kroki** | **Minimalna wersja:** Usługa Azure SQL Database V12 wymagany w celu umożliwienia usłudze Azure SQL Database do użycia uwierzytelnianie usługi AAD w usłudze Microsoft Directory |
 
 ## <a id="authn-account-pword"></a>Gdy używany jest tryb uwierzytelniania SQL, upewnij się, że konta i hasła zasady są wymuszane w programie SQL server
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -151,7 +151,7 @@ ms.locfileid: "60610878"
 
 ## <a id="autn-contained-db"></a>Nie należy używać uwierzytelniania SQL w zawartych baz danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -162,7 +162,7 @@ ms.locfileid: "60610878"
 
 ## <a id="authn-sas-tokens"></a>Użyj na poświadczenia uwierzytelniania urządzeń przy użyciu tokenów sygnatur dostępu współdzielonego
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
@@ -173,7 +173,7 @@ ms.locfileid: "60610878"
 
 ## <a id="multi-factor-azure-admin"></a>Włącz uwierzytelnianie wieloskładnikowe systemu Azure dla administratorów systemu Azure
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania platformy Azure | 
 | **Faza SDL**               | Wdrożenie |  
@@ -184,7 +184,7 @@ ms.locfileid: "60610878"
 
 ## <a id="anon-access-cluster"></a>Ogranicz dostęp anonimowy do klastra usługi Service Fabric
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Wdrożenie |  
@@ -195,7 +195,7 @@ ms.locfileid: "60610878"
 
 ## <a id="fabric-cn-nn"></a>Upewnij się, że certyfikat klienta do węzła usługi Service Fabric innego niż certyfikat węzła do węzła
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Wdrożenie |  
@@ -206,7 +206,7 @@ ms.locfileid: "60610878"
 
 ## <a id="aad-client-fabric"></a>Użyj usługi AAD do uwierzytelniania klientów, aby klastry usługi Service fabric
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Wdrożenie |  
@@ -217,7 +217,7 @@ ms.locfileid: "60610878"
 
 ## <a id="fabric-cert-ca"></a>Upewnij się, że certyfikaty usługi service fabric są uzyskiwane z zatwierdzonych urząd certyfikacji (CA)
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Granicy zaufania usługi Service Fabric | 
 | **Faza SDL**               | Wdrożenie |  
@@ -228,7 +228,7 @@ ms.locfileid: "60610878"
 
 ## <a id="standard-authn-id"></a>Użyj uwierzytelniania standardowego scenariusze obsługiwane przez serwer tożsamości
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Tożsamość serwera | 
 | **Faza SDL**               | Kompilacja |  
@@ -239,7 +239,7 @@ ms.locfileid: "60610878"
 
 ## <a id="override-token"></a>Zastąp domyślną tożsamości serwera pamięci podręcznej tokenu z alternatywnymi skalowalne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Tożsamość serwera | 
 | **Faza SDL**               | Wdrożenie |  
@@ -250,7 +250,7 @@ ms.locfileid: "60610878"
 
 ## <a id="binaries-signed"></a>Upewnij się, że pliki binarne wdrożonej aplikacji są podpisane cyfrowo
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -261,7 +261,7 @@ ms.locfileid: "60610878"
 
 ## <a id="msmq-queues"></a>Włączanie uwierzytelniania podczas nawiązywania połączenia z kolejki usługi MSMQ w programie WCF
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -301,7 +301,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 
 ## <a id="message-none"></a>Czy usługi WCF nie ustawiono komunikat właściwości ClientCredentialType o wartości none
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -317,7 +317,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 
 ## <a id="transport-none"></a>Czy usługi WCF nie ustawiono transportu właściwości ClientCredentialType o wartości none
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -333,7 +333,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 
 ## <a id="authn-secure-api"></a>Upewnij się, uwierzytelniania standardowych technik są używane do zabezpieczania interfejsów API sieci Web
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -344,7 +344,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 
 ## <a id="authn-aad"></a>Użyj uwierzytelniania standardowego scenariusze obsługiwane przez usługę Azure Active Directory
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure AD | 
 | **Faza SDL**               | Kompilacja |  
@@ -355,7 +355,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 
 ## <a id="adal-scalable"></a>Zastąp domyślną pamięci podręcznej tokenu ADAL z alternatywnymi skalowalne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure AD | 
 | **Faza SDL**               | Kompilacja |  
@@ -366,7 +366,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 
 ## <a id="tokenreplaycache-adal"></a>Upewnij się, że TokenReplayCache używany w celu zapobiegania powtórzeń tokenów uwierzytelniania ADAL
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure AD | 
 | **Faza SDL**               | Kompilacja |  
@@ -427,7 +427,7 @@ Należy pamiętać, że testowanie skuteczności tę konfigurację, zaloguj się
 
 ## <a id="adal-oauth2"></a>Użyj biblioteki ADAL do zarządzania od klientów protokołu OAuth2 żądania tokenu usługi AAD (lub lokalnej usługi AD)
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure AD | 
 | **Faza SDL**               | Kompilacja |  
@@ -438,7 +438,7 @@ Należy pamiętać, że testowanie skuteczności tę konfigurację, zaloguj się
 
 ## <a id="authn-devices-field"></a>Uwierzytelnianie urządzeń nawiązujących połączenie z bramy w terenie
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -449,7 +449,7 @@ Należy pamiętać, że testowanie skuteczności tę konfigurację, zaloguj się
 
 ## <a id="authn-devices-cloud"></a>Upewnij się, czy urządzeń nawiązujących połączenie z bramy w chmurze są uwierzytelniane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  
@@ -549,7 +549,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="authn-cred"></a>Użyj poświadczeń uwierzytelniania poszczególnych urządzeń.
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | IoT Cloud Gateway  | 
 | **Faza SDL**               | Kompilacja |  
@@ -560,7 +560,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="req-containers-anon"></a>Upewnij się, że tylko wymagane kontenerów i obiektów blob są podane anonimowy dostęp do odczytu
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -571,7 +571,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="limited-access-sas"></a>Przyznawanie ograniczonego dostępu do obiektów w usłudze Azure storage przy użyciu sygnatury dostępu Współdzielonego lub firmy SAP
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  

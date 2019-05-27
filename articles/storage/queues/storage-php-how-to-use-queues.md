@@ -10,19 +10,19 @@ ms.date: 01/11/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: b827894c633c425220bf94be1f51c52d464bd79b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 4ff54f9ca20c101de55bec2c7acf914c17bd7709
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410462"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951201"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Jak używać Magazynu kolejek w języku PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady są napisane przy użyciu klas z [biblioteki klienta usługi Azure Storage dla języka PHP][download]. Pokryte scenariusze obejmują wstawiania, wgląd, pobierania i usuwaniem komunikatów kolejek, a także tworzenia i usuwania kolejek.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -87,7 +87,7 @@ UseDevelopmentStorage=true
 Aby utworzyć klienta usługi Azure Queue, należy użyć **QueueRestProxy** klasy. Można użyć jednej z następujących technik:
 
 * Przekaż parametry połączenia do niego bezpośrednio.
-* Używać zmiennych środowiskowych w aplikacji sieci Web, aby przechowywać parametry połączenia. Zobacz [ustawień konfiguracji aplikacji sieci web platformy Azure](../../app-service/web-sites-configure.md) dokumentu do konfigurowania parametrów połączenia.
+* Używać zmiennych środowiskowych w aplikacji sieci Web, aby przechowywać parametry połączenia. Zobacz [ustawień konfiguracji aplikacji sieci web platformy Azure](../../app-service/configure-common.md) dokumentu do konfigurowania parametrów połączenia.
 W przedstawionych tutaj przykładach parametry połączenia są przekazywane bezpośrednio.
 
 ```php

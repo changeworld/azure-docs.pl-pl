@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4415759530985710c8376709db9955ba98066160
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00b1b58a39724951f2d5e4e688df8eb178654bbb
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61046165"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952841"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Zadania w projekcie przewodzenia w procesie nauki o danych zespołu
 
-W tym samouczku wymieniono zadania, które jest kierownika projektu oczekiwano dla swojego zespołu projektu. Celem jest zapewnienie środowiska zespół współpracowników, standardowego na [zespołu danych dla celów naukowych](overview.md) (TDSP). Przetwarzania TDSP jest opracowanym przez firmę Microsoft, który zawiera structured sekwencja działań do wykonania wydajne rozwiązania oparte na chmurze analizy predykcyjnej. Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
+W tym samouczku wymieniono zadania, które jest kierownika projektu oczekuje się ukończyć w celu ich zespołu projektu. Celem jest zapewnienie środowiska zespół współpracowników, standardowego na [zespołu danych dla celów naukowych](overview.md) (TDSP). Przetwarzania TDSP jest opracowanym przez firmę Microsoft, który zawiera structured sekwencja działań do wykonania wydajne rozwiązania oparte na chmurze analizy predykcyjnej. Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 
 A **projektu** zarządza codziennych działań poszczególnych naukowców pracujących nad projektem nauki o danych z konkretnych. Przepływ pracy dla zadań, które mają zostać wykonane przez Liderzy projektów, do skonfigurowania takiego środowiska są przedstawione na poniższym rysunku:
 

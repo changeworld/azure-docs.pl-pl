@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 6be1d2b1e68c52d45a42027be5f6d69cc2c25adc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509944"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957012"
 ---
 # <a name="smart-contract-integration-patterns"></a>Wzorce integracji inteligentne kontraktu
 
@@ -180,7 +180,7 @@ W tym modelu, gdzie w standardowym formacie nie można wysłać wiadomości bezp
 
 Typowy scenariusz integracji jest uwzględnienie pobranych z czujników w inteligentne kontraktu danych telemetrii. Na podstawie danych dostarczanych przez czujniki, kontraktów inteligentnych może podjąć świadomej działania i zmienić stan zamówienia.
 
-Na przykład jeśli ciężarówki dostarczanie medycyna temperatury wzrastać do 110 stopni, go może mieć wpływ na efektywność lekarstwa i może spowodować, że problem bezpieczeństwa publicznego w przeciwnym razie Wykryto i usunięto z łańcucha dostaw. Jeśli sterownik accelerated jego samochodu do 100 mil na godzinę, wynikowy informacji z czujnika może wywołać anulowania ubezpieczenia przez jego dostawcę ubezpieczenia. Jeśli samochodu samochodu wypożyczeń, GPS danych może wskazywać, kiedy poszło sterownika poza lokalizację geograficzną objętych umową ich dzierżawa i karę jest opłata w wysokości.
+Na przykład jeśli ciężarówki dostarczanie medycyna temperatury wzrastać do 110 stopni, go może mieć wpływ na efektywność lekarstwa i może spowodować, że problem bezpieczeństwa publicznego w przeciwnym razie Wykryto i usunięto z łańcucha dostaw. Jeśli sterownik accelerated jego samochodu do 100 mil na godzinę, wynikowy informacji z czujnika może wywołać anulowania ubezpieczenia przez ich dostawcę ubezpieczenia. Jeśli samochodu samochodu wypożyczeń, GPS danych może wskazywać, kiedy poszło sterownika poza lokalizację geograficzną objętych umową ich dzierżawa i karę jest opłata w wysokości.
 
 Żądania jest czujniki te można dostarczania danych na stałym poziomie i nie jest właściwe wysłać wszystkie te dane do inteligentnego kontraktu. Typowym podejściem jest, aby ograniczyć liczbę komunikatów wysłanych do łańcucha bloków, dostarczając wszystkie komunikaty do magazynu pomocniczego. Na przykład dostarczanie komunikatów odebranych przy tylko stałych interwałów, na przykład raz na godzinę, a gdy zawartej wartość mieści się poza uzgodnionych od zakresu dla inteligentnych kontraktu. Sprawdzanie wartości wykraczające poza tolerancji, gwarantuje, że do danych odpowiednich dla kontraktów logiki biznesowej jest odbierane i wykonywane. Sprawdzenie wartości z interwałem potwierdza nadal przeprowadza raportowanie czujnika. Wszystkie dane są wysyłane do magazynu pomocniczego raportowania umożliwiające szersze raportowania, analizy i uczenia maszynowego. Na przykład wprowadzenie odczyty czujników z GPS może nie być wymagane co minutę dla inteligentnych kontraktu, można dostarczyć interesujące dane, które ma być używany w raportach lub mapowania tras.
 

@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1d7bb72dab622cd0b18d1da1aa34a651e1443997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365081"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964261"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak skonfigurować bezpośrednio z usługi ExpressRoute
 
@@ -226,7 +226,9 @@ Domyślnie można utworzyć 10 obwodów w ramach subskrypcji, gdzie jest zasobó
 
 Brak przepustowości obwodu dodatkowe, które mogą zostać użyte na bezpośrednio ExpressRoute tylko do obsługi scenariuszy opisanych powyżej. Są to: 40Gbps i 100Gbps.
 
-Można tworzyć obwodów standardowa lub premium. Standardowa obwodów znajdują się w kosztów, podczas obwodów premium kosztują na podstawie przepustowości wybrane. Obwody może zostać utworzony tylko jako mierzone, jako nieograniczona liczba nie jest obsługiwana na bezpośrednio z usługi ExpressRoute.
+**SkuTier** może być lokalny, standardowa lub Premium.
+
+**SkuFamily** musi być MeteredData tylko jako nieograniczona liczba nie jest obsługiwana na bezpośrednio z usługi ExpressRoute.
 
 Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6b0285903537dafb004b5aca033b50560247c605
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd45be69ec29fdcd00710b7366348846f325b151
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204455"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921988"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Połącz urządzenie Barracuda 
 
@@ -27,14 +27,14 @@ ms.locfileid: "65204455"
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Barracuda zapory aplikacji sieci Web (WAF) łącznik umożliwia łatwe łączenie dzienników Barracuda za pomocą usługi Azure przez wartownika, aby wyświetlić pulpity nawigacyjne, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Wartownik Azure wykorzystuje natywna integracja pomiędzy usługą **Barracuda** i Microsoft Azure OMS, aby zapewnić bezproblemową integrację. 
+Barracuda zapory aplikacji sieci Web (WAF) łącznik umożliwia łatwe łączenie dzienników Barracuda za pomocą usługi Azure przez wartownika, aby wyświetlić pulpity nawigacyjne, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Wartownik Azure wykorzystuje natywna integracja pomiędzy usługą **Barracuda** i Microsoft Monitoring Agent umożliwia bezproblemową integrację. 
 
 
 > [!NOTE]
 > Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Skonfigurować i połączyć z zapory aplikacji internetowych Barracuda
-Zapory aplikacji internetowych barracuda można integrować i Eksportuj dzienniki bezpośrednio do platformy Azure przez wartownika za pomocą serwera usługi Azure pakietu OMS.
+Zapory aplikacji internetowych barracuda można integrować i wyeksportuj dzienniki bezpośrednio na platformie Azure przez wartownika za pośrednictwem programu Microsoft Monitoring Agent.
 1. Przejdź do [przepływu konfiguracji zapory aplikacji internetowych Barracuda](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)i postępuj zgodnie z instrukcjami, aby skonfigurować połączenie przy użyciu tych parametrów:
     - **Identyfikator obszaru roboczego**: Skopiuj wartość Identyfikatora obszaru roboczego ze strony łącznika Azure przez wartownika Barracuda.
     - **Klucz podstawowy**: Skopiuj wartość klucz podstawowy na stronie łącznika Azure przez wartownika Barracuda.

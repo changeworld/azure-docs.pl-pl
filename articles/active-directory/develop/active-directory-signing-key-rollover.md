@@ -17,15 +17,15 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47430b4bd2f7fa6811785247ae6cd4f6df6f8f5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f809fa856d39096a85dcc205d8211ba3551eeb48
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546128"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962858"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
-W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy zauważyć, że te przerzucania kluczy w regularnych odstępach czasu, a w nagłych wypadkach można od razu przenoszone. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
+W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy pamiętać, że te klucze przechodzą w regularnych odstępach czasu i w takiej sytuacji, może być przenoszone natychmiast. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Omówienie kluczy podpisywania w usłudze Azure AD
 Usługa Azure AD używa kryptografii klucza publicznego, w oparciu o standardy branżowe, aby ustanowić zaufanie między sobą i aplikacje, które go używają. W praktyce to działa w następujący sposób: Usługa Azure AD używa klucza podpisywania, który składa się z pary kluczy publicznych i prywatnych. Po zalogowaniu się użytkownika do aplikacji, która używa usługi Azure AD do uwierzytelniania usługi Azure AD tworzy token zabezpieczający, który zawiera informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD za pomocą jego klucza prywatnego, przed wysłaniem go do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzącej z usługi Azure AD, aplikacja musi go zweryfikować podpisu tokenu przy użyciu klucza publicznego, udostępniane przez usługę Azure AD, który znajduje się w ramach dzierżawy [dokument odnajdywania protokołu OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) lub SAML / WS-Fed [dokument metadanych Federacji](azure-ad-federation-metadata.md).
@@ -43,7 +43,7 @@ Jak aplikacja obsługuje przerzucania klucza jest zależna od zmiennych, takich 
 * [Aplikacje sieci Web / ochrona zasobów przy użyciu programu .NET OWIN OpenID Connect, WS-Fed i oprogramowania pośredniczącego WindowsAzureActiveDirectoryBearerAuthentication interfejsów API](#owin)
 * [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu platformy .NET Core OpenID Connect lub JwtBearerAuthentication oprogramowania pośredniczącego](#owincore)
 * [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu modułu passport-azure-ad środowiska Node.js](#passport)
-* [Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub Visual Studio 2017](#vs2015)
+* [Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub nowszym](#vs2015)
 * [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013](#vs2013)
 * Interfejsy API sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013
 * [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2012](#vs2012)
@@ -56,12 +56,12 @@ Ten przewodnik jest **nie** dotyczy:
 * Lokalne aplikacje opublikowane za pośrednictwem serwera proxy aplikacji nie musisz martwić się o kluczy podpisywania.
 
 ### <a name="nativeclient"></a>Natywne aplikacje klienckie uzyskiwania dostępu do zasobów
-Aplikacje, które uzyskują dostęp tylko do zasobów (tj.) Microsoft Graph, magazynu kluczy, interfejsu API programu Outlook i innych APIs firmy Microsoft) jest ogólnie tylko uzyskania tokenu i przekazywać je wzdłuż do właściciela zasobu. Biorąc pod uwagę, że nie jest chroniony wszelkie zasoby, nie kontrolują token i dlatego nie trzeba upewnić się, że jest prawidłowo podpisana.
+Aplikacje, które uzyskują dostęp tylko do zasobów (tj.) Program Microsoft Graph, magazynu kluczy, interfejsu API programu Outlook i innych APIs firmy Microsoft) jest ogólnie tylko uzyskania tokenu i przekazywanie ich wzdłuż do właściciela zasobu. Biorąc pod uwagę, że nie jest chroniony wszelkie zasoby, nie kontrolują token i dlatego nie trzeba upewnić się, że jest prawidłowo podpisana.
 
 Natywne aplikacje klienckie, czy komputerze lub urządzeniu przenośnym, należą do tej kategorii, a więc nie ma wpływ przerzucania.
 
 ### <a name="webclient"></a>Aplikacje sieci Web / interfejsów API, uzyskiwaniu dostępu do zasobów
-Aplikacje, które uzyskują dostęp tylko do zasobów (tj.) Microsoft Graph, magazynu kluczy, interfejsu API programu Outlook i innych APIs firmy Microsoft) jest ogólnie tylko uzyskania tokenu i przekazywać je wzdłuż do właściciela zasobu. Biorąc pod uwagę, że nie jest chroniony wszelkie zasoby, nie kontrolują token i dlatego nie trzeba upewnić się, że jest prawidłowo podpisana.
+Aplikacje, które uzyskują dostęp tylko do zasobów (tj.) Program Microsoft Graph, magazynu kluczy, interfejsu API programu Outlook i innych APIs firmy Microsoft) jest ogólnie tylko uzyskania tokenu i przekazywanie ich wzdłuż do właściciela zasobu. Biorąc pod uwagę, że nie jest chroniony wszelkie zasoby, nie kontrolują token i dlatego nie trzeba upewnić się, że jest prawidłowo podpisana.
 
 Aplikacje sieci Web i internetowych interfejsów API, który jest używany tylko do aplikacji flow (poświadczeń klienta / certyfikatu klienta), należą do tej kategorii i w związku z tym nie ma wpływ przerzucania.
 
@@ -128,8 +128,8 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub Visual Studio 2017
-Jeśli aplikacja została skompilowana przy użyciu szablonu aplikacji sieci web w programie Visual Studio 2015 lub Visual Studio 2017 i wybrano **i kont służbowych** z **Zmień uwierzytelnianie** menu jest już potrzebną logikę do obsługi automatycznego przerzucania klucza. Tę logikę osadzone w pośredniczącym OWIN OpenID Connect, pobiera i umieszcza w pamięci podręcznej kluczy z dokumentu odnajdywania protokołu OpenID Connect i okresowo odświeża je.
+### <a name="vs2015"></a>Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub nowszym
+Jeśli aplikacja została skompilowana przy użyciu szablonu aplikacji sieci web w programie Visual Studio 2015 lub nowszego, a następnie wybrania **lub kont służbowych** z **Zmień uwierzytelnianie** menu jest już niezbędne Logika obsługi automatycznego przerzucania klucza. Tę logikę osadzone w pośredniczącym OWIN OpenID Connect, pobiera i umieszcza w pamięci podręcznej kluczy z dokumentu odnajdywania protokołu OpenID Connect i okresowo odświeża je.
 
 Jeśli ręcznie dodano uwierzytelniania do rozwiązania, aplikacja może nie mieć logiki potrzeby przerzucania klucza. Musisz napisać samodzielnie lub postępuj zgodnie z instrukcjami w [aplikacji sieci Web / interfejsów API przy użyciu innych bibliotek lub ręcznego wdrażania każdego z obsługiwanych protokołów](#other).
 

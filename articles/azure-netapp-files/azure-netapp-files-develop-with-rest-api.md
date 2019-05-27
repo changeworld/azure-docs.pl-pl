@@ -12,18 +12,25 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 05/17/2019
 ms.author: b-juche
-ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087255"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957041"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Opracowywanie zawartości dla plików NetApp platformy Azure przy użyciu interfejsu API REST 
 
 Interfejs API REST usługi Azure NetApp Files definiuje operacji HTTP wykonywanych względem zasobów, takich jak konta NetApp, pojemność puli, woluminów i migawek. Ten artykuł ułatwia rozpoczynanie pracy z usługą przy użyciu interfejsu API REST plików NetApp platformy Azure.
+
+## <a name="azure-netapp-files-rest-api-specification"></a>Usługa Azure specyfikacji interfejsu API REST plików NetApp
+
+Specyfikacja interfejsu API REST dla usługi Azure Files NetApp zostanie opublikowana przy użyciu [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
+
+`https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
+
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Dostęp do plików platformy Azure NetApp interfejsu API REST  
 

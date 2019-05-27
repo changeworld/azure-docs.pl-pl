@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f57d80adc7c77f2d874d13a68214cd638a2ac2a0
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60903990"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957291"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatyzowanie raporty niestandardowe z danymi usługi Azure Application Insights
 
@@ -93,6 +93,9 @@ availabilityResults
    ![Tworzenie nowego zrzutu ekranu — funkcja](./media/automate-custom-reports/function-app-03.png)
 
 5. Wybierz  **_usługi Application Insights zaplanowane podsumowanie szablonu_**.
+
+     > [!NOTE]
+     > Domyślnie aplikacje funkcji są tworzone za pomocą środowiska uruchomieniowego w wersji 2.x. Należy najpierw [docelowa wersja środowiska uruchomieniowego usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) 1.x do użycia w usłudze Application Insights zaplanowane podsumowanie szablonu.
 
    ![Nowy szablon usługi Insights aplikacji funkcji zrzut ekranu](./media/automate-custom-reports/function-app-04.png)
 

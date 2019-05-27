@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381289"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950829"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Określić strategia wdrożenia cyklu życia tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategii zarządzania tożsamości do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w [określić zadania związane z zarządzaniem tożsamości hybrydowej](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -40,9 +40,9 @@ Konta w zaawansowanych przedsiębiorstw IT mają setki parametry, które definiu
 | --- | --- | --- | --- |
 | Zarządzanie kontami i inicjowania obsługi |Za pomocą roli serwera usług Active Directory® Domain Services (AD DS), utworzyć skalowalne, bezpieczne i łatwe w zarządzaniu infrastrukturę do zarządzania użytkownikami i zasobami oraz zapewnić obsługę aplikacji obsługujących katalogi, takich jak Microsoft® Exchange Server. <br><br> [Możesz aprowizować grupy w usługach AD DS za pomocą programu Identity manager](https://technet.microsoft.com/library/ff686261.aspx) <br>[Można udostępnić użytkownikom w usługach AD DS](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Administratorzy mogą używać kontroli dostępu, aby zarządzać dostępem użytkowników do zasobów udostępnionych ze względów bezpieczeństwa. W usłudze Active Directory, kontroli dostępu jest przeprowadzany na poziomie obiektu przez ustawienie różnych poziomów dostępu lub uprawnień do obiektów, takich jak Pełna kontrola, zapisu, odczytu lub Brak dostępu. Kontrola dostępu w usłudze Active Directory definiuje sposób różni użytkownicy mogą używać obiektów usługi Active Directory. Domyślnie uprawnienia do obiektów w usłudze Active Directory zostały ustawione na najbezpieczniejsze ustawienie. |Należy utworzyć konta dla wszystkich użytkowników, którzy będą miały dostęp usługi w chmurze firmy Microsoft. Można również zmienić konta użytkowników lub usuwać je, gdy nie są już potrzebne. Domyślnie użytkownicy nie mają uprawnień administratora, ale możesz opcjonalnie przypisać je. <br><br> W usłudze Azure Active Directory jedną z najważniejszych funkcji jest możliwość zarządzania dostępem do zasobów. Te zasoby mogą być częścią katalogu, jak w przypadku uprawnień do zarządzania obiektami za pośrednictwem ról w katalogu, lub znajdować się poza katalogiem, jak w przypadku aplikacji SaaS, usług platformy Azure, witryn programu SharePoint lub zasobów lokalnych. <br><br> Centrum z usługi Azure Active Directory dostępu rozwiązania do zarządzania jest grupą zabezpieczeń. Właściciel zasobu (lub administrator katalogu) może przypisać grupę, aby udzielić określonych uprawnień dostępu do jego zasobów. Członkowie grupy będą świadczone dostępu i właściciel zasobu może delegować uprawnienia do zarządzania listą elementów członkowskich grupy do kogoś innego — takich jak Menedżer działu lub administrator pomocy technicznej<br> <br> Grupy zarządzania, w sekcji usługi Azure AD zawiera więcej informacji o zarządzaniu dostępem za pomocą grup. |Rozszerzanie tożsamości usługi Active Directory na chmurę za pośrednictwem synchronizacji i Federacji |
 
-## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
+## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
 Oparta na rolach dostęp kontrolować (RBAC) używa ról i inicjowania obsługi zasad w celu oceny, testowania i wymuszać swoje procesy biznesowe i reguł, do przyznawania dostępu użytkownikom. Kluczowe Administratorzy tworzą zasady inicjowania obsługi i przypisywania użytkowników do ról i definiują zestawy uprawnień do zasobów dla tych ról. RBAC rozszerza rozwiązanie do zarządzania tożsamościami oparty na oprogramowaniu procesy są używane i obniżyć ręczne interakcji z użytkownikiem w procesie inicjowania obsługi administracyjnej.
-Usługa Azure AD RBAC umożliwia firmie ograniczyć liczbę operacji, które osoba można zrobić, gdy ma on dostęp do witryny Azure portal. Przy użyciu RBAC do kontrolowania dostępu do portalu, Administratorzy IT urzędu certyfikacji Delegowanie dostępu za pomocą następujących metod zarządzania dostępu:
+Usługa Azure AD RBAC umożliwia firmy ograniczyć liczbę operacji, które osoba mogą wykonywać, gdy użytkownicy mają dostęp do portalu Azure. Przy użyciu RBAC do kontrolowania dostępu do portalu, Administratorzy IT urzędu certyfikacji Delegowanie dostępu za pomocą następujących metod zarządzania dostępu:
 
 * **Przypisanie roli oparte na grupach**: Dostęp można przypisać do grup usługi Azure AD, które mogą być synchronizowane z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, których organizacja wprowadziła narzędzia i procesy do zarządzania grupami. Można również użyć funkcji zarządzania delegowanej grupy usługi Azure AD Premium.
 * **Wykorzystaj wbudowane role na platformie Azure**: Można użyć trzech ról — właściciela, współautora i czytelnika, upewnij się, że użytkownicy i grupy mają uprawnienia do wykonania zadania, których potrzebują do wykonania swoich zadań.
@@ -86,7 +86,7 @@ Zintegrowanie katalogów lokalnych z usługą Azure AD zwiększa produktywność
 
 Poniższa ilustracja zawiera przykład ogólny widok procesu synchronizacji tożsamości.
 
-![Sync](./media/plan-hybrid-identity-design-considerations/identitysync.png)
+![Synchronizuj](./media/plan-hybrid-identity-design-considerations/identitysync.png)
 
 Proces synchronizacji tożsamości
 

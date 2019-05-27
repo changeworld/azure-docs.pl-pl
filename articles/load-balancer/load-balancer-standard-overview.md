@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734523"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957474"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure Load Balancer w warstwie standardowa
 
@@ -204,11 +204,11 @@ Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby pr
 >
 >Dopasowywanie jednostki SKU musi być używany dla zasobów modułu równoważenia obciążenia i publicznego adresu IP. Nie może mieć kombinację zasobów podstawowej jednostki SKU i standardowej jednostki SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność regionalna
 
 Load Balancer w warstwie standardowa jest obecnie dostępna we wszystkich regionach chmury publicznej.
 
-## <a name="sla"></a>Umowa SLA
+## <a name="sla"></a>SLA
 
 Standardowe moduły równoważenia obciążenia dostępnych z SLA na poziomie 99,99%.  Przegląd [standardowych umów SLA usługi równoważenia obciążenia](https://aka.ms/lbsla) Aby uzyskać szczegółowe informacje.
 
@@ -226,7 +226,6 @@ Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warst
 - Jednostki SKU nie jest modyfikowalna. Nie można zmienić jednostki SKU dla istniejącego zasobu.
 - Zasób maszynę wirtualną autonomiczny zestaw dostępności zasobów lub zasobu zestawu skalowania maszyny wirtualnej może odwoływać się jedną jednostką SKU, nigdy nie oba.
 - Reguła modułu równoważenia obciążenia nie mogą rozciągać się dwie sieci wirtualne.  Frontony oraz ich wystąpień powiązanych wewnętrznej bazy danych musi znajdować się w tej samej sieci wirtualnej.  
-- Frontonów modułu równoważenia obciążenia nie są dostępne w globalne wirtualne sieci równorzędne.
 - [Subskrypcja operacje są przenoszone z](../azure-resource-manager/resource-group-move-resources.md) nie są obsługiwane w przypadku standardowych jednostek SKU równoważenia obciążenia i narzędzie PIP zasobów.
 - Role procesów roboczych w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft może być dostępny, gdy tylko wewnętrznego standardowego modułu równoważenia obciążenia jest używana z powodu efekt uboczny z jak pre-sieć wirtualna usługi i innych platform services — funkcja. Należy nie polegać na tych odpowiednio obsługi autonomiczną usługą Intune a bazowego platformy mogą ulec zmianie bez powiadomienia. Użytkownik musi zawsze zakładaj, że należy utworzyć [łączności wychodzącej](load-balancer-outbound-connections.md) jawnie, jeśli jest to konieczne, korzystając z wewnętrznego standardowego modułu równoważenia obciążenia tylko.
 - Moduł równoważenia obciążenia to produkt protokołu TCP lub UDP służący do równoważenia obciążenia i przekierowania portów na potrzeby tych konkretnych protokołów IP.  Reguły równoważenia obciążenia i reguły NAT dla ruchu przychodzącego są obsługiwane dla protokołów TCP i UDP, ale nie są obsługiwane dla innych protokołów IP, w tym protokołu ICMP. Moduł równoważenia obciążenia nie kończy, nie odpowiada ani w żaden inny sposób nie wchodzi w interakcję z ładunkiem przepływu protokołu UDP ani TCP. Nie jest to serwer proxy. Pomyślnej weryfikacji łączności z frontonu musi mieć miejsce wewnątrzpasmowe przy użyciu tego samego protokołu, które są używane w obciążenia równoważenia ruchu przychodzącego translatora adresów Sieciowych regułę lub (TCP lub UDP) _i_ co najmniej jedną z maszyn wirtualnych należy wygenerować odpowiedzi dla klienta Aby zobaczyć odpowiedź z frontonu.  Nie odbiera odpowiedź wewnątrzpasmowe z frontonu modułu równoważenia obciążenia oznacza, że żadne maszyny wirtualne zostały przygotowane.  Nie jest możliwe do interakcji z usługą Load Balancer frontonu nie może odpowiadać maszyny wirtualnej.  Dotyczy to również połączeń wychodzących, dla których [translator adresów sieciowych opartych na źródle na potrzeby maskowania portów](load-balancer-outbound-connections.md#snat) jest obsługiwany tylko w przypadku protokołów TCP i UDP; dla wszystkich innych protokołów IP, w tym ICMP, również zakończy się to niepowodzeniem.  Przypisz publiczny adres IP na poziomie wystąpienia, aby rozwiązać ten problem.

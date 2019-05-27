@@ -5,18 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 10/19/2018
-ms.date: 04/09/2019
+ms.date: 10/19/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1084a3e546a234739fbede46612dce96537c7d4a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454646"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950637"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADConnectivityTools
 
@@ -24,11 +23,11 @@ Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell
 
 ## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Wykrywa lokalne problemy z usługą Dns.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
@@ -37,7 +36,7 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>OPIS
 
 Uruchamia testy lokalnych łączność Dns.
-Aby skonfigurować łącznik usługi Active Directory, użytkownik musi mieć zarówno rozpoznawania nazw dla he\she lasu próbuje połączyć się także, jak kontrolery domeny dla tego lasu.
+Aby skonfigurować łącznik usługi Active Directory, użytkownik musi mieć zarówno rozpoznawania nazw w lesie, próbuje połączyć się także, jak kontrolery domeny dla tego lasu.
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -111,11 +110,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-forestexists"></a>Upewnij się, ForestExists
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Określa, czy istnieje określonego lasu.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
@@ -158,11 +157,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Sprawdza poziom funkcjonalności lasu usługi AD.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -259,11 +258,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Wykrywa problemy z łącznością w sieci lokalnej.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
@@ -310,7 +309,7 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Jeśli użytkownik nie korzysta z usług DNS udostępnianych przez witrynę AD / kontrolera domeny logowania, a następnie he\she może chcesz pominąć sprawdzanie, czy port 53.
+Jeśli użytkownik nie korzysta z usług DNS udostępnianych przez witrynę AD / kontrolera domeny logowania, a następnie ich może chcesz pominąć sprawdzanie, czy port 53.
 Użytkownik musi być nadal w stanie rozpoznać _.ldap._tcp. \<forestfqdn\> w kolejności dla konfiguracji łącznika usługi Active Directory została wykonana pomyślnie.
 
 ```yml
@@ -349,11 +348,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-targetsarereachable"></a>Upewnij się, TargetsAreReachable
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Określa, czy określonego lasu i jego skojarzone kontrolery domeny są dostępne.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
@@ -418,11 +417,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Sprawdź, czy domen w uzyskanej FQDN lasu są dostępne
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -518,11 +517,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Sprawdza, czy użytkownik ma poświadczenia administratora przedsiębiorstwa.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -572,11 +571,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Pobiera DomainFQDN poza kombinację konta i hasła.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUserCredentials]
@@ -661,11 +660,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Pobiera ForestFQDN poza kombinację konta i hasła.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -731,11 +730,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Funkcja main.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <Boolean> [[-UserName] <String>]
@@ -813,11 +812,11 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 
 Testy główną funkcję dla łączności sieciowej.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSCredential>
@@ -964,5 +963,3 @@ Accept wildcard characters: False
 
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
-
-<!-- Update_Description: wording update -->

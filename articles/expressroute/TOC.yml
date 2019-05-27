@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: Lokalizacje według dostawcy
           href: expressroute-locations.md
-    - name: Brama sieci wirtualnej usługi ExpressRoute i rozwiązanie FastPath
+    - name: Brama sieci wirtualnej i rozwiązanie FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: Wymagania wstępne
       href: expressroute-prerequisites.md

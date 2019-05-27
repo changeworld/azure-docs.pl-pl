@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: f0eb2f7358e8fb1564275e1de510f302d2eef90b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500944"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916992"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
 
@@ -46,7 +46,7 @@ W tym artykule należy wykonać następujące czynności:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Ukończenie [skonfigurować IoT Hub Device Provisioning Service przy użyciu witryny Azure portal](./quick-setup-auto-provision.md) Szybki Start.
-* Program Visual Studio 2015 lub [Visual Studio 2017](https://www.visualstudio.com/vs/) z włączonym pakietem roboczym [„Programowanie aplikacji klasycznych w języku C++”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -509,11 +509,11 @@ W poniższej tabeli przedstawiono oczekiwane scenariusze i kody błędów wyniki
 | Scenariusz | Wynik rejestracji z usługi Provisioning Service | Inicjowanie obsługi administracyjnej wyniki zestawu SDK |
 | -------- | --------------------------------------------- | ------------------------ |
 | Element webhook zwraca 200 OK "iotHubHostName" Ustaw prawidłową nazwę hosta Centrum IoT | Stan wyniku: Przypisany  | Zestaw SDK zwraca PROV_DEVICE_RESULT_OK wraz z informacjami Centrum |
-| Zwraca element webhook, 200 OK "iotHubHostName" obecne w odpowiedzi, ale ustawiony na pusty ciąg lub wartość null | Stan wyniku: Niepowodzenie<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Element webhook zwraca 401 Brak autoryzacji | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
-| Rejestracja indywidualna została utworzona w celu Wyłącz urządzenie | Stan wyniku: Disabled (Wyłączony) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
+| Zwraca element webhook, 200 OK "iotHubHostName" obecne w odpowiedzi, ale ustawiony na pusty ciąg lub wartość null | Stan wyniku: Błąd<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Element webhook zwraca 401 Brak autoryzacji | Stan wyniku: Błąd<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Rejestracja indywidualna została utworzona w celu Wyłącz urządzenie | Stan wyniku: Wyłączono | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
 | Element webhook zwraca kod błędu: > = 429 | Organizowanie DPS ponowi próbę wiele razy. Zasady ponawiania jest obecnie:<br><br>&nbsp;&nbsp;-Liczba ponownych prób: 10<br>&nbsp;&nbsp;— Interwał początkowa: 1s<br>&nbsp;&nbsp;-Przyrostu: 9S | Zestaw SDK będzie zignorować błąd i przesłać inny komunikat o stanie get w określonym czasie |
-| Element webhook zwraca każdy inny kod stanu | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationFailed (400207) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Element webhook zwraca każdy inny kod stanu | Stan wyniku: Błąd<br><br>Kod błędu: CustomAllocationFailed (400207) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

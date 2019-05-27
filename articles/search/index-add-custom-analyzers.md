@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9daebf46093e38858feff87ca5c4ba89638aa74
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021657"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951907"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Dodaj niestandardowe analizatory do indeksu usługi Azure Search
 
@@ -32,7 +32,7 @@ A *analizatora niestandardowego* jest określonego typu [analizatora tekstu](sea
 
  Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora. Ilustracja wygląda analizatora klienta znajduje się [przykład analizatora niestandardowego](search-analyzers.md#Custom-analyzer-example).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
  Rola [aparat wyszukiwania pełnotekstowego](search-lucene-query-architecture.md), mówiąc najprościej, jest do przetwarzania i przechowywania dokumentów w sposób, który umożliwia wydajne wykonywanie zapytań i pobierania. Na wysokim poziomie wszystkie sprowadza się do wyodrębniania słów ważne dokumenty, umieszczenie ich w indeksie i następnie przy użyciu indeksu do wyszukiwania dokumentów, które odpowiadają słów danego zapytania. Proces wyodrębniania wyrazy w dokumentach i zapytaniach wyszukiwania jest nazywany *poddawać analizie leksykalnej*. Składniki, które wykonują poddawać analizie leksykalnej są nazywane *analizatory*.
 
@@ -223,7 +223,7 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
 |Type|Musi być "#Microsoft.Azure.Search.CustomAnalyzer".|  
-|CharFilters|Ustawiona na jeden z wstępnie zdefiniowanych char filtrów na liście [filtry Char](#CharFilter) tabeli lub filtr niestandardowy char określone w definicji indeksu.|  
+|CharFilters|Ustawiona na jeden z wstępnie zdefiniowanych char filtrów na liście [filtry Char](#char-filters-reference) tabeli lub filtr niestandardowy char określone w definicji indeksu.|  
 |Tokenizer|Wymagany. Ustawiona na jeden z wstępnie zdefiniowanych tokenizatory na liście [Tokenizatory](#Tokenizers) w poniższej tabeli lub tokenizator niestandardowe określone w definicji indeksu.|  
 |TokenFilters|Ustawiona na jeden z wstępnie zdefiniowanych tokenów filtrów na liście [Token filtry](#TokenFilters) tabeli lub filtr niestandardowy token określonego w definicji indeksu.|  
 
@@ -236,8 +236,8 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 |||  
 |-|-|  
 |Name (Nazwa)|Musi zawierać tylko litery, cyfry, spacje, kreski lub znaki podkreślenia, uruchom może i kończyć i jest ograniczona do 128 znaków.|  
-|Type|CHAR filtrowania typu z listy obsługiwanych char filtrów. Zobacz **char_filter_type** kolumny w [Char filtry](#CharFilter) w poniższej tabeli.|  
-|Opcje|Musi być prawidłowe opcje z danym [Char filtry](#CharFilter) typu.|  
+|Type|CHAR filtrowania typu z listy obsługiwanych char filtrów. Zobacz **char_filter_type** kolumny w [Char filtry](#char-filters-reference) w poniższej tabeli.|  
+|Opcje|Musi być prawidłowe opcje z danym [Char filtry](#char-filters-reference) typu.|  
 
 ### <a name="tokenizers"></a>Tokenizatory
 

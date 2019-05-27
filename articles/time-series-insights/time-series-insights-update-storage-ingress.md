@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405717"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951111"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i transferu danych przychodzących w wersji zapoznawczej Azure czas serii szczegółowych informacji
 
@@ -28,7 +28,7 @@ Podczas tworzenia środowiska jednostki SKU z płatnością za rzeczywiste użyc
 * Środowisko usługi Time Series Insights.
 * Konto usługi Azure Storage ogólnego przeznaczenia w wersji 1 przechowywania danych.
 
-Czas Series Insights w wersji zapoznawczej korzysta z magazynu obiektów Blob platformy Azure z typem pliku Parquet. Usługa Time Series Insights zarządza wszystkie operacje danych, takich jak tworzenie obiektów blob, indeksowania i partycjonowanie danych na koncie magazynu platformy Azure. Możesz utworzyć te obiekty BLOB za pomocą konta usługi Azure storage.
+Serie czasu Insights (wersja zapoznawcza) korzysta z magazynu obiektów Blob platformy Azure z typem pliku Parquet. Usługa Time Series Insights zarządza wszystkie operacje danych, takich jak tworzenie obiektów blob, indeksowania i partycjonowanie danych na koncie magazynu platformy Azure. Możesz utworzyć te obiekty BLOB za pomocą konta usługi Azure storage.
 
 Podobnie jak inne obiekty BLOB usługi Azure Storage usługi Time Series Insights, utworzone obiekty BLOB umożliwiają odczyt i zapis do obsługi różnych scenariuszy integracji.
 
@@ -106,7 +106,7 @@ Partycja logiczna jest partycji w obrębie fizyczną partycję, która przechowu
 * **Czas serii identyfikator**: Klucz partycji dla wszystkich danych usługi Time Series Insights w strumieniu zdarzeń i modelu.
 * **Sygnatura czasowa**: Czas, oparte na początkowy ruch przychodzący.
 
-Czas Series Insights w wersji zapoznawczej oferuje zapytania wydajna, które opierają się na te dwie właściwości. Te dwie właściwości udostępniają metodę najbardziej efektywne, umożliwiające szybkie dostarczanie danych usługi Time Series Insights.
+Serie czasu Insights (wersja zapoznawcza) zawiera zapytań wydajna, które opierają się na te dwie właściwości. Te dwie właściwości udostępniają metodę najbardziej efektywne, umożliwiające szybkie dostarczanie danych usługi Time Series Insights.
 
 Należy wybrać odpowiedni identyfikator serii czasu, ponieważ jest właściwością niezmienne. Aby uzyskać więcej informacji, zobacz [wybierz identyfikatory serii czasu](./time-series-insights-update-how-to-id.md).
 
@@ -146,13 +146,13 @@ Może uzyskiwać dostęp do danych na trzy sposoby ogólne:
 
 ### <a name="data-deletion"></a>Usuwanie danych
 
-Nie należy usuwać obiektów blob, ponieważ czas Series Insights w wersji zapoznawczej przechowuje metadane dotyczące obiektów blob w nim.
+Nie należy usuwać obiekty BLOB. Nie tylko są one przydatne do inspekcji i prowadzenie ewidencji danych serii czasu Insights (wersja zapoznawcza) obsługuje metadane obiektu blob w ramach każdego obiektu blob.
 
 ## <a name="time-series-insights-data-ingress"></a>Czas Series Insights dane przychodzące
 
 ### <a name="ingress-policies"></a>Zasady transferu danych przychodzących
 
-Czas Series Insights w wersji zapoznawczej obsługuje te same źródła zdarzeń i typów plików, które obsługuje obecnie usługa Time Series Insights.
+Serie czasu Insights (wersja zapoznawcza) obsługuje te same źródła zdarzeń i typów plików, które obsługuje obecnie usługa Time Series Insights.
 
 Źródła zdarzeń obsługiwanych obejmują:
 
@@ -177,7 +177,7 @@ Czas Series Insights w wersji zapoznawczej indeksuje dane za pomocą strategii o
 
 ### <a name="scale"></a>Skaluj
 
-Czas Series Insights w wersji zapoznawczej obsługuje skali początkowy ruch przychodzący do 6 megabajty na sekundę (MB/s) na środowisko. Trwa rozszerzoną obsługę skalowania. Firma Microsoft planuje aktualizację naszej dokumentacji w celu odzwierciedlenia tych ulepszeń
+Serie czasu Insights (wersja zapoznawcza) obsługuje skalowania początkowy ruch przychodzący do 1 bajt Mega na sekundę (MB/s) na środowisko. Trwa rozszerzoną obsługę skalowania. Firma Microsoft planuje aktualizację naszej dokumentacji w celu odzwierciedlenia tych ulepszeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

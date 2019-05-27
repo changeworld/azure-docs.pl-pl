@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/20/2019
 ms.author: danlep
-ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582418"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977198"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR
 
@@ -94,6 +94,16 @@ Na przykład można utworzyć zadania wieloetapowe, który automatyzuje następu
 Zadania wieloetapowe umożliwiają dzielenie tworzenie, uruchamianie i testowanie obrazu do bardziej konfigurowalna kroków, z obsługą zależności między kroku. Dzięki wieloetapowego zadania w zadaniach usługi ACR masz bardziej precyzyjną kontrolę nad obrazu budowania, testowania i systemu operacyjnego i framework poprawek przepływów pracy.
 
 Dowiedz się więcej o wieloetapowego zadania w [uruchamianie wieloetapowych kompilacji, testów i zadania poprawki w zadaniach usługi ACR](container-registry-tasks-multi-step.md).
+
+## <a name="view-task-logs"></a>Wyświetl dzienniki zadań
+
+Każde uruchomienie zadania generuje dane wyjściowe dziennika, który można sprawdzić w celu ustalenia, czy kroki zadania został uruchomiony pomyślnie. Jeśli używasz [az acr build](/cli/azure/acr#az-acr-build), [az acr Uruchom](/cli/azure/acr#az-acr-run), lub [az acr zadania](/cli/azure/acr/task#az-acr-task-run) polecenia, aby wyzwolić zadanie, dane wyjściowe dziennika dla zadania uruchamianego jest przesyłany strumieniowo do konsoli i również przechowywane na później pobieranie. Wyświetl dzienniki dla zadania podrzędnego uruchamiania w witrynie Azure portal lub użyj [az acr zadań dzienniki](/cli/azure/acr/task#az-acr-task-logs) polecenia.
+
+Począwszy od lipca 2019 danych dzienników dla zadanie zostanie uruchomione w rejestrze zostaną domyślnie zachowywane przez 30 dni i automatycznie przeczyszczane. Pod kątem archiwizowania danych dla zadania uruchamianego, włączyć archiwizacji, za pomocą [az acr zadanie aktualizacji uruchomienia](/cli/azure/acr/task#az-acr-task-update-run) polecenia. Poniższy przykład umożliwia archiwizowanie na potrzeby zadania uruchamianego *cf11* w rejestrze *myregistry*.
+
+```azurecli
+az acr task update-run --registry myregistry --run-id cf11 --no-archive false
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: d0479b834f814616e44a1888ab8b958990610820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611715"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951770"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Wymuszanie uwierzytelniania wieloskładnikowego (MFA) dla administratorów subskrypcji
 
@@ -22,7 +22,7 @@ Po utworzeniu administratorów, w tym z kontem administratora globalnego, istotn
 Można wykonywać codzienne zadania administracyjne przez przypisywanie ról administratorów określonych — np. administrator programu Exchange lub administrator haseł — na konta użytkowników pracowników działu IT, zgodnie z potrzebami.
 Ponadto, umożliwiając [usługi Azure Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) dla administratorów, dodaje drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. Usługa Azure MFA pomaga również IT zmniejszyć prawdopodobieństwo, że poświadczenie ze złamanymi zabezpieczeniami będą mieć dostęp do danych organizacji.
 
-Na przykład: Wymuś uwierzytelnianie wieloskładnikowe Azure dla użytkowników i skonfigurować go do korzystania z połączenia telefonicznego lub wiadomości SMS jako weryfikacji. Poświadczenia użytkownika w przypadku naruszenia zabezpieczeń, osoba atakująca nie będzie można uzyskać dostęp do dowolnego zasobu, ponieważ nie będzie mógł dostęp do telefonu użytkownika. Organizacje, które nie należy dodawać dodatkowych warstw ochrony tożsamości są bardziej podatne na ataku kradzieży poświadczeń, co może prowadzić do naruszenia zabezpieczeń danych.
+Na przykład: Wymuszanie uwierzytelniania Wieloskładnikowego Azure dla użytkowników i skonfigurować go do korzystania z połączenia telefonicznego lub wiadomości SMS jako weryfikacji. Jeśli poświadczenia użytkownika są naruszony, osoba atakująca nie będzie mógł dostęp do dowolnych zasobów, ponieważ nie mają dostępu do telefonu użytkownika. Organizacje, które nie należy dodawać dodatkowych warstw ochrony tożsamości są bardziej podatne na ataku kradzieży poświadczeń, co może prowadzić do naruszenia zabezpieczeń danych.
 
 Jeden alternatywą dla organizacji, które chcesz zachować cały proces uwierzytelniania kontroli lokalnej jest użycie [serwer Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-server), nazywany również "Lokalna Usługa MFA". Za pomocą tej metody, nadal można wymusić uwierzytelnianie wieloskładnikowe, przy jednoczesnym zachowaniu lokalna Usługa MFA server.
 

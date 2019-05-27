@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 577f370c3be0f232be4e6628dd6754c4164ab93f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785255"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952849"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
 
@@ -64,7 +64,7 @@ Można wyświetlić użytkowników-gości, którzy uwierzytelniają się za pomo
 > Gdy użytkownik umarza jednorazowy kod dostępu, a później uzyskuje MSA, konto usługi Azure AD lub innego federacyjnego konta, będą one nadal zostać uwierzytelniony przy użyciu jednorazowy kod dostępu. Jeśli chcesz zaktualizować swoje metody uwierzytelniania, możesz usunąć swoje konta gościa i Zaproś je ponownie.
 
 ### <a name="example"></a>Przykład
-Użytkownik-Gość alexdoe@gmail.com zostało zaproszone do firmy Fabrikam, która nie ma Google federacyjnej Konfigurowanie. Alex nie ma konta Microsoft. ADAM, otrzymasz jednorazowy kod dostępu do uwierzytelniania.
+Użytkownik-Gość alexdoe@gmail.com zostało zaproszone do firmy Fabrikam, która nie ma Google federacyjnej Konfigurowanie. Alex nie ma konta Microsoft. Otrzymają oni jednorazowy kod dostępu do uwierzytelniania.
 
 ## <a name="opting-in-to-the-preview"></a>Zgody na korzystanie z wersji zapoznawczej 
 Może upłynąć kilka minut, zanim Akcja zgłoszenie zgody na uczestnictwo w zaczęły obowiązywać. Po tym tylko nowo zaproszonych użytkowników, którzy spełniają powyższe warunki użyje uwierzytelniania jednorazowy kod dostępu. Użytkowników-gości, którzy wcześniej zrealizować zaproszenia, będą w dalszym ciągu używać ich z tej samej metody uwierzytelniania.

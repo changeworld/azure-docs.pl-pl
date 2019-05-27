@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2f3d08a32384cea815f096f51b24eea596d0d118
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871169"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949828"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Jak indeksować dużych zestawów danych w usłudze Azure Search
 
@@ -67,7 +67,7 @@ Nietypowy, wymaga dużej mocy obliczeniowej indeksowania wymagania — takich ja
 Przetwarzanie równoległe ma następujące elementy:
 
 + Należy podzielić dane źródłowe między wiele kontenerów lub wielu wirtualnych folderów, w tym samym kontenerze. 
-+ Mapowanie mini zestawów danych do jego własnej [źródło daty](https://docs.microsoft.com/rest/api/searchservice/create-data-source)parowania na własnej [indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
++ Mapowanie mini zestawów danych do jego własnej [źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source)parowania na własnej [indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 + Usługa cognitive search odwołania takie same [zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/create-skillset) w Każda definicja indeksatora.
 + Zapisywanie w tym samym docelowym indeksem wyszukiwania. 
 + Planowanie wszystkich indeksatorów, aby go uruchomić w tym samym czasie.

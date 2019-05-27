@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3dd61ae9298a03ce0cbb9e9a5b143229c15ea9bb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786370"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955755"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Wydajność aplikacji — często zadawane pytania dla aplikacji sieci Web na platformie Azure
 
@@ -161,7 +161,7 @@ Rozważ przełączenie do procesów 64-bitowych, dzięki czemu można wykorzysta
 
 Należy również zauważyć, że 64-bitowego środowiska wymaga planu usługi Basic lub Standard. Bezpłatna i współdzielona plany są zawsze uruchamiane w 32-bitowego środowiska.
 
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie aplikacji sieci web w usłudze App Service](web-sites-configure.md).
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie aplikacji sieci web w usłudze App Service](configure-common.md).
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>Dlaczego mój limit czasu żądania 230 sekund?
 

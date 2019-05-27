@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/11/2019
-ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.date: 05/20/2019
+ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823314"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951483"
 ---
 # <a name="sql-database-serverless-preview"></a>Bazy danych SQL Database bez użycia serwera (wersja zapoznawcza)
 
@@ -81,7 +81,22 @@ Ogólnie rzecz biorąc, baz danych są uruchamiane na komputerze o wystarczając
 
 ### <a name="memory-management"></a>Zarządzanie pamięcią
 
-Pamięć dla baz danych bez użycia serwera są odzyskiwane ponad często aprowizowanych baz danych. To zachowanie jest ważne, aby kontrolować koszty w bez użycia serwera. W odróżnieniu od zainicjowanych zasobów obliczeniowych pamięci z pamięci podręcznej SQL jest odzyskiwane z bez użycia serwera bazy danych, gdy wykorzystanie procesora CPU lub pamięci podręcznej jest za mało.
+Pamięć dla baz danych bez użycia serwera są odzyskiwane ponad często w przypadku baz danych zainicjowanych zasobów obliczeniowych. To zachowanie, ważne jest, aby kontrolować koszty w bez użycia serwera i może wpłynąć na wydajność.
+
+#### <a name="cache-reclaiming"></a>Odzyskiwanie w pamięci podręcznej
+
+W przeciwieństwie do baz danych zainicjowanych zasobów obliczeniowych pamięci z pamięci podręcznej SQL jest odzyskać z bez użycia serwera bazy danych, gdy wykorzystanie procesora CPU lub pamięci podręcznej jest za mało.
+
+- Wykorzystanie pamięci podręcznej jest uznawany za niska, gdy łączny rozmiar najczęściej ostatnio używane w pamięci podręcznej wpisy spadnie poniżej wartości progowej przez czas.
+- Po wyzwoleniu odzyskiwanie pamięci podręcznej, rozmiar pamięci podręcznej docelowej zmniejsza się stopniowo ułamek poprzedniego rozmiaru i odzyskiwanie tylko kontynuuje, jeśli użycie pozostaje niski.
+- W przypadku odzyskiwanie pamięci podręcznej zasada służąca do wybierania wpisy w pamięci podręcznej do wykluczenia, to te same zasady wyboru, jak w przypadku baz danych zainicjowanych zasobów obliczeniowych po wysokie wykorzystanie pamięci.
+- Rozmiar pamięci podręcznej nigdy nie zostanie zmniejszony poniżej minimalną ilość pamięci, zgodnie z definicją minimalne rdzeni wirtualnych, które można skonfigurować.
+
+Zarówno bez użycia serwera, jak i elastycznie obliczeń baz danych, pamięci podręcznej, który może zostać wykluczony wpisów, jeśli całą dostępną pamięć jest używany.
+
+#### <a name="cache-hydration"></a>Wypełniania pamięci podręcznej
+
+Pamięć podręczna SQL zwiększa rozmiar pobieranych z dysków w taki sam sposób, jak i z tego samego szybkością, jak w przypadku aprowizowanych baz danych. Gdy baza danych jest zajęta, pamięci podręcznej może wzrosnąć nieograniczonego do limitu pamięci max.
 
 ## <a name="autopause-and-autoresume"></a>Autopause i autoresume
 
@@ -115,7 +130,7 @@ Autoresume jest wyzwalana w przypadku spełnienia dowolnego z następujących wa
 
 ### <a name="connectivity"></a>Łączność
 
-Jeśli bez użycia serwera bazy danych jest wstrzymany, to pierwszy identyfikator logowania będzie wznowić bazy danych i zwrócić komunikat o błędzie informujący, że baza danych jest niedostępna z kodem błędu 40613. Po wznowieniu bazy danych logowania musi zostać powtórzone, można ustanowić łączności. Klienty baz danych przy użyciu logikę ponawiania próby połączenia nie powinni być modyfikowane.
+Jeśli bezserwerowa baza danych jest wstrzymany, to pierwszy identyfikator logowania będzie wznowić bazy danych i zwrócić komunikat o błędzie informujący, że baza danych jest niedostępna z kodem błędu 40613. Po wznowieniu bazy danych logowania musi zostać powtórzone, można ustanowić łączności. Klienty baz danych przy użyciu logikę ponawiania próby połączenia nie powinni być modyfikowane.
 
 ### <a name="latency"></a>Opóźnienie
 
@@ -277,9 +292,9 @@ Ilość zasobów obliczeniowych, naliczana jest uwidaczniany przez następujące
 
 Ta ilość jest obliczane co sekundę i zagregowane ponad 1 minutę.
 
-Należy wziąć pod uwagę bez użycia serwera bazy danych skonfigurowano wartość elementów vcore 1 min i 4 rdzenie wirtualne max.  Odpowiada to około 3 GB, minimalna ilość pamięci do 12 GB pamięci RAM max.  Załóżmy, że opóźnienie automatycznego wstrzymywania jest ustawiona na 6 godzin, a obciążenie bazy danych jest 2 godzinach pierwszym okresie 24 godzin i w przeciwnym razie nieaktywnych.    
+Należy wziąć pod uwagę bez użycia serwera bazy danych skonfigurowano wartość elementów vCore 1 min i 4 rdzenie wirtualne max.  Odpowiada to około 3 GB, minimalna ilość pamięci i pamięci max 12 GB.  Załóżmy, że ustawiono opóźnienie automatycznego wstrzymywania do 6 godzin, a obciążenie bazy danych jest 2 godzinach pierwszego okresu 24-godzinnego i w przeciwnym razie nieaktywnych.    
 
-W takim przypadku baza danych jest naliczana za zasoby obliczeniowe i Magazyn podczas pierwszego 8 godzin.  Mimo, że baza danych jest nieaktywny, zaczynając od 2 godziny, nadal jest rozliczana za obliczenia w kolejnych 6 godzin, oparte na obliczenia minimalne zainicjowano obsługę administracyjną, gdy baza danych jest w trybie online.  Tylko magazyn jest rozliczana w pozostałej części 24-godzinnego okresu, gdy baza danych jest wstrzymany.
+W takim przypadku baza danych jest naliczana za zasoby obliczeniowe i Magazyn podczas pierwszego 8 godzin.  Mimo, że baza danych znajduje się nieaktywne uruchamianie po godzinie, nadal jest rozliczana za obliczenia w kolejnych 6 godzin, oparte na obliczenia minimalne zainicjowano obsługę administracyjną, gdy baza danych jest w trybie online.  Tylko magazyn jest rozliczana w pozostałej części 24-godzinnego okresu, gdy baza danych jest wstrzymany.
 
 Mówiąc ściślej na rachunku obliczeniowych, w tym przykładzie jest obliczana w następujący sposób:
 

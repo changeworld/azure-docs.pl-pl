@@ -4,27 +4,17 @@ description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi A
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e4ae9b7c96677ce494bea31a49b8db83d6bcb3c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793799"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954152"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
-
-### <a name="what-happened-to-the-documentdb-api"></a>Co się stało z interfejsu API usługi DocumentDB?
-
-Azure Cosmos DB — interfejs API usługi DocumentDB lub SQL (DocumentDB) interfejsu API jest teraz określana jako interfejsu API SQL usługi Azure Cosmos DB. Nie trzeba zmienić żadnych czynności, aby kontynuować uruchamianie aplikacji skompilowanej za pomocą interfejsu API usługi DocumentDB. Funkcje pozostaje taka sama.
-
-Jeśli masz konto interfejsu API usługi DocumentDB przed, masz teraz konto interfejsu API SQL bez zmian rozliczeniowego.
-
-### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Co się stało z usługi Azure DocumentDB jako usługi?
-
-Usługa Azure DocumentDB jest teraz częścią usługi Azure Cosmos DB i w sytuacji, w formie interfejsu API SQL. Aplikacje korzystające z bazy danych documentdb platformy Azure zostanie uruchomiony bez wprowadzania żadnych zmian interfejsu API SQL usługi Azure Cosmos DB. Usługa Cosmos DB wdraża również bezpośrednio w usłudze protokoły przewodowe [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) oraz [Azure Table Storage](table-introduction.md). Umożliwia to skierowanie sterowników klienta (i narzędzi) dla często używanych interfejsów API NoSQL bezpośrednio do bazy danych usługi Cosmos.
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Jakie są typowe przypadki użycia usługi Azure Cosmos DB?
 
@@ -32,9 +22,9 @@ Usługa Azure Cosmos DB jest dobrym wyborem dla nowych sieci web, mobilnych, gie
 
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak usługa Azure Cosmos DB zapewnia przewidywalną wydajność?
 
-A [jednostki żądań](request-units.md) służy do mierzenia przepływności w usłudze Azure Cosmos DB. Przepływność 1-RU odpowiada przepływności pobierania dokumentu o rozmiarze 1 KB. Każda operacja w usłudze Azure Cosmos DB, w tym odczyty, zapisy, zapytań SQL i wykonania procedury składowanej ma deterministyczną wartość RU, który jest oparty na przepływności wymaganej do ukończenia tej operacji. Zamiast myśleć o procesora CPU, we/wy i pamięci oraz ich wpływ na przepływność aplikacji, można traktować pod względem pojedynczej mierze jednostek RU.
+A [jednostki żądań](request-units.md) służy do mierzenia przepływności w usłudze Azure Cosmos DB. Przepływność 1RU odpowiada przepływności pobierania dokumentu o rozmiarze 1 KB. Każda operacja w usłudze Azure Cosmos DB, w tym odczyty, zapisy, zapytań SQL i wykonania procedury składowanej ma deterministyczną wartość RU, który jest oparty na przepływności wymaganej do ukończenia tej operacji. Zamiast myśleć o procesora CPU, we/wy i pamięci oraz ich wpływ na przepływność aplikacji, można traktować pod względem pojedynczej mierze jednostek RU.
 
-Możesz skonfigurować każdego kontenera usługi Azure Cosmos DB z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i uzyskać pomoc przy określaniu Twoich potrzeb dotyczących kontenerów, spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner).
+Możesz skonfigurować każdego kontenera usługi Azure Cosmos z aprowizowaną przepływnością wyrażoną jako jednostek żądania przepływności na sekundę. W przypadku aplikacji o dowolnej skali test porównawczy poszczególnych żądań w celu pomiaru ich wartości jednostki ru na i aprowizować kontener służący do obsługi suma liczby jednostek żądania udostępniane wszystkim żądaniom. Możesz również skalować w górę lub Skaluj w dół przepływność z kontenerem aplikacji rozwijających się potrzeb. Aby uzyskać więcej informacji na temat jednostek żądania i uzyskać pomoc przy określaniu Twoich potrzeb dotyczących kontenerów, spróbuj [Kalkulator przepływności](https://www.documentdb.com/capacityplanner).
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak usługa Azure Cosmos DB obsługuje różne modele danych, takie jak klucz/wartość, kolumnowy, dokument i wykres?
 
@@ -91,8 +81,9 @@ Try Azure Cosmos DB subskrypcje będą widoczne w witrynie Azure portal obok inn
 
 Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następujące warunki:
 
-* Jeden kontener na subskrypcję dla konta programu SQL, interfejs API Gremlin i tabeli.
-* Maksymalnie trzy kolekcje na subskrypcję dla konta bazy danych MongoDB.
+* Jeden [kontenera aprowizowanej przepływności](./set-throughput.md#set-throughput-on-a-container) na subskrypcję dla konta programu SQL, interfejs API Gremlin i tabeli.
+* Maksymalnie trzy [przepływność aprowizowana kolekcje](./set-throughput.md#set-throughput-on-a-container) na subskrypcję dla konta bazy danych MongoDB.
+* Jeden [bazy danych aprowizowanej przepływności](./set-throughput.md#set-throughput-on-a-database) na subskrypcję. Aprowizowaną przepływność baz danych może zawierać dowolną liczbę kontenerów wewnątrz.
 * Pojemność magazynu o rozmiarze 10 GB.
 * Replikacja globalnej jest dostępna w następujących [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/): Środkowe stany USA, Europa Północna i Azja południowo-wschodnia
 * Maksymalnej przepływności równej 5 K jednostek RU/s podczas aprowizacji na poziomie kontenera.
@@ -530,7 +521,7 @@ Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki?
 
-Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Najbardziej natywnych sterowniki Apache Tinkerpop Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: Nie można odnaleźć dowolną metodę"Błąd?
 
@@ -755,7 +746,7 @@ Tak, można użyć regularnych składni można utworzyć klucza złożonego part
 
 Nie, w trakcie okresu zapoznawczego stabilne modułu ładującego nie jest obsługiwane.
 
-### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>Czy klastra oprogramowania cassandra w środowisku lokalnym mogą być parowane przy użyciu interfejsu Apache Cassandra API usługi Azure Cosmos DB?
+### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Czy klaster Apache Cassandra w środowisku lokalnym mogą być parowane przy użyciu interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB?
 
 Na obecne usługi Azure Cosmos DB zawiera zoptymalizowany środowisko, w środowisku chmury bez koszty operacji. Jeśli potrzebujesz parowania, Wyślij wiadomość e-mail do [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) z opisem Twojego scenariusza.
 

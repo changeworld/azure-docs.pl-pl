@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/20/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311956"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967242"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migracja z umową Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
 
@@ -128,7 +128,7 @@ Interfejs API szczegóły użycia, podobnie jak w przypadku wszystkich interfejs
 
 | Type | Format Identyfikatora |
 | --- | --- |
-| Konto billingowe | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
+| Konto rozliczeniowe | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Profil rozliczeniowy | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
 | Subskrypcja | `/subscriptions/{subscriptionId}` |
 | Grupa zasobów | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
@@ -181,13 +181,13 @@ Nazwa właściwości zawierający tablicę rekordów użycia zmieniła się z da
 | Identyfikator użytej usługi | Brak | &nbsp; |
 | Centrum kosztów | costCenter | &nbsp; |
 | Data i usageStartDate | date | &nbsp;  |
-| Dzień | Brak | Analizuje dni od daty. |
+|  Dzień | Brak | Analizuje dni od daty. |
 | Identyfikator działu | invoiceSectionId | Dokładne wartości są różne. |
 | Nazwa działu | invoiceSectionName | Dokładnie taki ciąg znaków wartości mogą się różnić. Skonfiguruj faktury sekcji, aby dopasować działów, jeśli to konieczne. |
 | ExtendedCost i kosztów | costInBillingCurrency | &nbsp;  |
 | Identyfikator wystąpienia | resourceId | &nbsp;  |
 | Opłata jest cykliczna | Brak | &nbsp;  |
-| Lokalizacja | location | &nbsp;  |
+| Lokalizacja | lokalizacja | &nbsp;  |
 | Kategoria miernika | meterCategory | Dokładnie taki ciąg znaków wartości mogą się różnić. |
 | Identyfikator miernika | meterId | Dokładnie taki ciąg znaków wartości są różne. |
 | Nazwa miernika | lmeterName | Dokładnie taki ciąg znaków wartości mogą się różnić. |
@@ -202,7 +202,7 @@ Nazwa właściwości zawierający tablicę rekordów użycia zmieniła się z da
 | Product (Produkt) | Product (Produkt) |   |
 | Identyfikator produktu | productId | Dokładnie taki ciąg znaków wartości są różne. |
 | Nazwa wydawcy | publisherName | &nbsp;  |
-| ResourceGroup | resourceGroupName | &nbsp;  |
+| Grupa zasobów | resourceGroupName | &nbsp;  |
 | GuidZasobu | meterId | Dokładnie taki ciąg znaków wartości są różne. |
 | Lokalizacja zasobu | resourceLocation | &nbsp;  |
 | Identyfikator lokalizacji zasobu | Brak | &nbsp;  |
@@ -216,7 +216,7 @@ Nazwa właściwości zawierający tablicę rekordów użycia zmieniła się z da
 | Identyfikator GUID subskrypcji | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | Nazwa subskrypcji | subscriptionName | &nbsp;  |
-| Tagi | tags | Właściwość tags ma zastosowanie do obiektu głównego, aby nie właściwość zagnieżdżonych właściwości. |
+| `Tags` | tags | Właściwość tags ma zastosowanie do obiektu głównego, aby nie właściwość zagnieżdżonych właściwości. |
 | Jednostka miary | unitOfMeasure | Dokładnie taki ciąg znaków wartości są różne. |
 | usageEndDate | date | &nbsp;  |
 | Rok | Brak | Analizuje roku od daty. |
@@ -440,7 +440,7 @@ Starsze właściwości [interfejsów API usługi Azure Resource Manager cena ark
 | Numer części | _Nie dotyczy_ | Zamiast partNumber należy użyć productOrderName i MeterId do unikatowego identyfikowania cena na profil rozliczeniowy. Pola są wyświetlane na fakturze MCA zamiast partNumber MCA faktur. |
 | Cena jednostkowa | Cena jednostkowa | Cena jednostkowa umowy klienta firmy Microsoft. |
 | Kod waluty | pricingCurrency | Umowy klienta firmy Microsoft stanowią ceny w cenie waluty i waluta rozliczeniowa. Kod waluty jest taka sama jak pricingCurrency w umowy klienta firmy Microsoft. |
-| Uwzględnione | includedQuantity | Nie dotyczy usług w umowy klienta firmy Microsoft. Pokaż o wartości zero. |
+| Uwzględniona ilość | includedQuantity | Nie dotyczy usług w umowy klienta firmy Microsoft. Pokaż o wartości zero. |
 |  Identyfikator oferty  | productOrderName | Zamiast identyfikatora oferty należy użyć productOrderName. Nie taka sama, jak identyfikatora oferty, jednak productOrderName i licznik określają, cen w umowy klienta firmy Microsoft. Powiązane meterId i identyfikatora oferty starszych rejestracji. |
 
 Cena dla umowy klienta firmy Microsoft jest zdefiniowany inaczej niż umowy Enterprise Agreement. Cena usługi w ramach rejestracji Enterprise jest unikatowy dla produktu, PartNumber, miernika i oferty. PartNumber nie jest używany w umowy klienta firmy Microsoft.

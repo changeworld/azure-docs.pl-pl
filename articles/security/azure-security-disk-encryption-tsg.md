@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4715ec92c4ee45733cc0eb2839c533f9ee8968fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694128"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956696"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -150,7 +150,9 @@ If the expected encryption state does not match what is being reported in the po
 
 Portalu może wyświetlać dysku formie zaszyfrowanej, nawet po jego niezaszyfrowane na maszynie wirtualnej.  Taka sytuacja może wystąpić, gdy polecenia niskiego poziomu są używane bezpośrednio odszyfrować dysk z poziomu maszyny Wirtualnej, zamiast korzystać z wyższym poziomie polecenia zarządzania usługi Azure Disk Encryption.  Wyższy poziom polecenia nie tylko odszyfrowanie dysku z poziomu maszyny Wirtualnej, ale poza maszyną Wirtualną są również zaktualizować ustawienia szyfrowania na poziomie platformy ważne i rozszerzenie skojarzone z maszyną Wirtualną.  Jeśli nie są one przechowywane w wyrównanie, platforma nie będzie można zgłosić stan szyfrowania lub prawidłowo aprowizowania maszyny Wirtualnej.   
 
-Aby prawidłowo wyłączyć usługi Azure Disk Encryption, rozpoczynać się od znanego, dobrego stanu jest włączone szyfrowanie, a następnie użyj [AzVMDiskEncryption Wyłącz](/powershell/module/az.compute/disable-azvmdiskencryption) i [AzVMDiskEncryptionExtension Usuń](/powershell/module/az.compute/remove-azvmdiskencryptionextension) programu Powershell polecenia, lub [az vm encryption, wyłącz](/cli/azure/vm/encryption) interfejsu wiersza polecenia. 
+Aby wyłączyć usługi Azure Disk Encryption przy użyciu programu PowerShell, użyj [AzVMDiskEncryption Wyłącz](/powershell/module/az.compute/disable-azvmdiskencryption) następuje [AzVMDiskEncryptionExtension Usuń](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Uruchamianie AzVMDiskEncryptionExtension Usuń przed wyłączeniem szyfrowania zakończy się niepowodzeniem.
+
+Aby wyłączyć usługi Azure Disk Encryption przy użyciu interfejsu wiersza polecenia, użyj [az vm encryption, wyłącz](/cli/azure/vm/encryption). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

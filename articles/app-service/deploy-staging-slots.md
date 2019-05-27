@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137878"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955920"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -217,7 +217,7 @@ Korzystając z [Auto-Swap](#Auto-Swap), niektóre aplikacje mogą wymagać akcje
 
 Aby uzyskać więcej informacji na temat dostosowywania `applicationInitialization` elementu, zobacz [najbardziej typowe błędy zamiany miejsca wdrożenia i jak je rozwiązać](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-Można również dostosować zachowanie rozgrzewania z co najmniej jeden z następujących [ustawienia aplikacji](web-sites-configure.md):
+Można również dostosować zachowanie rozgrzewania z co najmniej jeden z następujących [ustawienia aplikacji](configure-common.md):
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Ścieżka do polecenia ping rozgrzanie witryny. Dodaj ustawienie aplikacji, określając niestandardową ścieżkę, która rozpoczyna się z ukośnika jako wartość. Na przykład `/statuscheck`. Wartość domyślna to `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj tego ustawienia aplikacji zawierającego rozdzielaną przecinkami listę kody HTTP. Na przykład: `200,202` . Jeśli zwrócony kod stanu nie jest na liście, operacje rozgrzewania i wymiany są zatrzymywane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.

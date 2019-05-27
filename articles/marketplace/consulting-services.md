@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938306"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964116"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi konsultingowe dla witryny Azure Marketplace i AppSource
 Usługi w portalu Azure Marketplace i AppSource doradcze zapewnia partnerów firmy Microsoft, cel połączenia klientów z usługami do obsługi i rozszerzać ich korzystanie z platformy Azure i celów biznesowych. 
@@ -30,7 +30,7 @@ Witryny sklepów są wyrównane z odbiorców i produktach chmury firmy Microsoft
 |Znaczenie dla rozwiązania     |Pomoc aplikacji stworzona z myślą o lub oparta na platformie Azure|Aplikacje biznesowe, które wykorzystać / rozszerzanie D365, usługi Power BI, usługi Office 365, platformy Azure. (Dodatek dodatek lub Zakończono aplikacji)|
 |Opcje publikowania     |Skontaktuj się z pomocą me, wersja próbna, Transact lub usług doradczych dotyczących|Skontaktuj się ze mną, okres próbny lub usług doradczych dotyczących|
 |W środowisku produktu      |Portal zarządzania platformy Azure|Dynamics 365, Office 365, aplikacje klienta pakietu Office| 
-|Inne      |W środowisku lokalnym publikowanie za pomocą usługi Azure Stack|Usługi doradcze pod kątem Dynamics i usługi Power BI|
+|Inny      |W środowisku lokalnym publikowanie za pomocą usługi Azure Stack|Usługi doradcze pod kątem Dynamics i usługi Power BI|
 
 Oferty usługi, które są oparte na Microsoft Dynamics 365, Office 365 i Power BI są uprawnieni do umieszczenia w usłudze AppSource. Aby uzyskać więcej informacji, zobacz [listy wskazówki dotyczące usług doradczych Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
@@ -62,7 +62,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |Dynamics 365 for Finance and Operations, wersja Enterprise  |  Na poziomie Silver lub Gold [Planowanie zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencji i minimalne przychód z $25 tys w operacji w chmurze w końcu 12 miesięcy.       |
 |Dynamics 365 for Finance and Operations, wersja Business  |  Pełnią [dostawca usług chmury (CSP)](https://partner.microsoft.com/cloud-solution-provider) lub [cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY)](https://partner.microsoft.com/membership/digital-partner-of-record) dla co najmniej jednego odbiorcy      |
 |Power BI, Power BI Custom Visuals | Spełnia [kryteria partnera z zakresu rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Publikacji [pokaz partnerów](https://appsource.microsoft.com/partners) rozwiązania
+|Aplikacje PowerApp | Publikacji [pokaz partnerów](https://appsource.microsoft.com/partners) rozwiązania
 
 <b> Aby uzyskać więcej informacji, zobacz [kompetencji za pośrednictwem sieci Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
  
@@ -74,13 +74,13 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |Australia |Francja  |     Meksyk          |Hiszpania       |
 |Belgia   |Niemcy |     Holandia     |Szwecja       |
 |Kanada    |Indie   |     Nowa Zelandia     |Zjednoczone Królestwo  |
-|Dania   |Włochy   |     Norwegia          |Stany Zjednoczone |
+|Dania   |Włochy   |     Norwegia          |Stany Zjednoczone Ameryki |
 |Finlandia   |Japonia   |     Polska          
 
 Uruchamianie usługi doradcze zaczną na żywo w określonym regionie geograficznym. Pierwsze uruchomienie będzie: Stanów Zjednoczonych, Kanadzie, Zjednoczonym Królestwie i Australii. Katalogi dla innych krajach/regionach zaczną na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak zarejestrować dla usługi w portalu Azure Marketplace i AppSource doradcze
-Rozpocznij od [rejestrowanie](https://azuremarketplace.microsoft.com/sell/signup) danych firmowych w portalu marketplace. Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
+Rozpocznij od [rejestrowanie](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) danych firmowych w portalu marketplace. Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
 
 **Jakie można oczekiwać po rejestracji** zespół organizujący dołączanie skontaktuje się z Tobą w 1 do 3 dni roboczych przy użyciu powitalnej wiadomości e-mail, który będzie zawierać informacje o logowaniu Cloud Partner Portal (CPP). [Portal dla partnerów w chmurze](https://cloudpartner.azure.com) jest portal listy oferty, gdzie wydawców przesyłać informacje i opinie. 
 

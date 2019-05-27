@@ -3,17 +3,17 @@ title: Wdrażanie rozwiązania do monitorowania zdalnego z lokalnie (przy użyci
 description: Ten poradnik pokazuje, jak wdrożyć zdalnego akcelerator rozwiązań do monitorowania na komputerze lokalnym przy użyciu programu Visual Studio na potrzeby projektowania i testowania.
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150964"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967510"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio
 
@@ -27,7 +27,7 @@ Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego na plat
 
 Aby wdrożyć usługi platformy Azure używane przez akcelerator rozwiązania monitorowania zdalnego, należy aktywną subskrypcją platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Ustawienia komputera
 
@@ -60,9 +60,9 @@ Uruchom następujące polecenie, aby uruchomić kontener platformy Docker dla us
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>Wdrażaj wszystkie mikrousługi na komputerze lokalnym
 
-Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w programie Visual Studio 2017:
+Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w programie Visual Studio:
 
-1. Launch Visual Studio 2017
+1. Uruchom program Visual Studio.
 1. Otwórz **monitoring.sln zdalnego** rozwiązania **usług** folderu w lokalnej kopii repozytorium.
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy rozwiązanie, a następnie kliknij **właściwości**.
 1. Wybierz **typowe właściwości > Projekt startowy**.

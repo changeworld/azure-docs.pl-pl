@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863248"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988493"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
@@ -55,7 +55,7 @@ W niektórych scenariuszach odbieranie przez subskrypcje wszystkich komunikatów
 
 Usługa Service Bus ma również zaawansowane funkcje, które umożliwiają rozwiązywanie bardziej złożonych problemów z obsługą komunikatów. Te kluczowe funkcje zostały opisane w sekcjach poniżej:
 
-### <a name="message-sessions"></a>Sesje komunikatów
+### <a name="message-sessions"></a>Sesje wiadomości
 
 Aby zrealizować w usłudze Service Bus metodę FIFO („pierwszy na wejściu, pierwszy na wyjściu”), użyj sesji. [Sesje komunikatów](message-sessions.md) umożliwiają wspólną i uporządkowaną obsługę niepowiązanych sekwencji powiązanych komunikatów. 
 
@@ -107,7 +107,7 @@ Jeśli w regionach lub centrach danych Azure dojdzie do przestoju, [geograficzne
 
 Usługa Service Bus obsługuje standardowe protokoły [AMQP 1.0](service-bus-amqp-overview.md) i [HTTP/REST](/rest/api/servicebus/).
 
-## <a name="client-libraries"></a>Biblioteki klienta
+## <a name="client-libraries"></a>Biblioteki klienckie
 
 Usługa Service Bus obsługuje biblioteki klienckie środowisk [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master) i [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
 
@@ -129,3 +129,4 @@ Aby rozpocząć korzystanie z obsługi komunikatów usługi Service Bus, zobacz 
 * Dodatkowe informacje na temat warstw [Standardowej i Premium](https://azure.microsoft.com/pricing/details/service-bus/) usługi Azure Service Bus oraz ich cen
 * [Performance and Latency of Azure Service Bus Premium tier](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722) (Wydajność i opóźnienie usługi Azure Service Bus w warstwie Premium)
 * Wypróbuj przewodniki Szybki start dla technologii [.NET](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md) lub [JMS](service-bus-java-how-to-use-jms-api-amqp.md)
+* [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

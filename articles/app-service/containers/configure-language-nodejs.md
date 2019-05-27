@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919782"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956162"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurowanie aplikacji Node.js w systemie Linux dla usługi Azure App Service
 
@@ -137,7 +137,7 @@ Po zakończeniu debugowania, Zatrzymaj debuger, wybierając **rozłączenia**. P
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W usłudze App Service możesz [określić ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) poza kodu aplikacji. Następnie możesz można uzyskiwać do nich dostęp przy użyciu standardowego wzorca Node.js. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `NODE_ENV`, użyj następującego kodu:
+W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. Następnie możesz można uzyskiwać do nich dostęp przy użyciu standardowego wzorca Node.js. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `NODE_ENV`, użyj następującego kodu:
 
 ```javascript
 process.env.NODE_ENV
@@ -253,7 +253,7 @@ Gdy działającą aplikację Node.js zachowuje się inaczej w usłudze App Servi
     - W zależności od Twojego *package.json*, różnych pakietach mogą być zainstalowane dla trybu produkcyjnego (`dependencies` a `devDependencies`).
     - Niektóre platformy internetowe mogą wdrożyć pliki statyczne inaczej w trybie produkcyjnym.
     - Niektóre platformy internetowe może używać własne skrypty uruchamiania, podczas uruchamiania w trybie produkcyjnym.
-- Uruchom aplikację w usłudze App Service w trybie projektowania. Na przykład w [MEAN.js](https://meanjs.org/), można ustawić aplikację do trybu projektowania w czasie wykonywania przez [ustawienie `NODE_ENV` ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Uruchom aplikację w usłudze App Service w trybie projektowania. Na przykład w [MEAN.js](https://meanjs.org/), można ustawić aplikację do trybu projektowania w czasie wykonywania przez [ustawienie `NODE_ENV` ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

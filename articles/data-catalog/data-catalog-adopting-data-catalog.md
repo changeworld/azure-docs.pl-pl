@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 62eb51e48ab688abcf39ba3c8d57aaccf6f47cb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3943332179a6d283a8ed3ca66ea559d5cea53a10
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61002412"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953195"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Wdrażanie usługi Azure Data Catalog — podejście i proces
 
@@ -54,7 +54,7 @@ Oto kilka porad ułatwiających zdefiniowanie wizji:
 
 Poniżej przedstawiono przykładową wizję dla planu wdrożenia usługi Data Catalog w fikcyjnej firmie o nazwie Adventure Works:
 
-**Usługa Azure Data Catalog** umożliwia zespołowi działu finansowego firmy Adventure Works współpracę nad najważniejszymi źródłami danych, dzięki czemu każdy członek zespołu można łatwo znaleźć i korzystać z danych muszą i udostępniać swoją wiedzę całemu zespołowi.
+**Usługa Azure Data Catalog** umożliwia zespołowi działu finansowego firmy Adventure Works współpracę nad najważniejszymi źródłami danych, dzięki czemu każdy członek zespołu można łatwo znaleźć i korzystać z danych muszą i udostępniać swoją wiedzę na temat całemu zespołowi.
 
 Po zdefiniowaniu wizji należy zidentyfikować odpowiedni projekt pilotażowy dla usługi Data Catalog. Ogólnie rzecz biorąc, istnieje kilka scenariuszy dotyczących usługi Data Catalog, dlatego w następnej sekcji znajdują się wskazówki pomagające zidentyfikować odpowiednie przypadki użycia.
 

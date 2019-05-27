@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: b0ae3d5b2c60badfb9b59820b1e0b85383e524ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366355"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950373"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute
 > [!div class="op_single_selector"]
@@ -175,6 +175,20 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 ```
 
 Zakres *RoutingWeight* 0 do 32 000. Wartość domyślna to 0.
+
+## <a name="configure-expressroute-fastpath"></a>Konfigurowanie usługi ExpressRoute FastPath 
+Możesz włączyć [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Jeśli obwód usługi ExpressRoute znajduje się na [ExpressRoute bezpośrednio](expressroute-erdirect-about.md) i bramy sieci wirtualnej newtork jest największa wydajność lub ErGw3AZ. FastPath zwiększa preformance ścieżki danych, takich jak pakietów na sekundę i połączeń na sekundę między siecią lokalną i siecią wirtualną. 
+
+> [!NOTE] 
+> Jeśli masz już połączenia sieci wirtualnej, ale nie zostały włączone FastPath musisz usunąć połączenie z siecią wirtualną i Utwórz nowe. 
+> 
+>  
+
+```azurepowershell-interactive 
+$circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
+$gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
+$connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).

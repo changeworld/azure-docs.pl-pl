@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107101"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872800"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -29,16 +29,16 @@ Usługa Azure Functions obsługuje C# i C# script języków programowania. Jeśl
 W tym artykule założono, że użytkownik przeczytał już następujące artykuły:
 
 * [Przewodnik dla deweloperów usługi Azure Functions](functions-reference.md)
-* [Azure Functions Visual Studio 2017 Tools](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Projekt biblioteki klas funkcji
 
 W programie Visual Studio **usługi Azure Functions** szablon projektu umożliwia utworzenie C# projekt biblioteki klas zawierający następujące pliki:
 
 * [Host.JSON](functions-host-json.md) — przechowuje ustawienia konfiguracji, które mają wpływ na wszystkich funkcji w projekcie, gdy uruchomiona lokalnie lub na platformie Azure.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) — przechowuje ustawienia aplikacji i parametry połączenia, które są używane podczas uruchamiania lokalnego. Ten plik zawiera wpisy tajne i nie będą publikowane do aplikacji funkcji na platformie Azure. Zamiast tego należy [Dodawanie ustawień aplikacji do aplikacji funkcji](functions-develop-vs.md#function-app-settings).
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) — przechowuje ustawienia aplikacji i parametry połączenia, które są używane podczas uruchamiania lokalnego. Ten plik zawiera wpisy tajne i nie będą publikowane do aplikacji funkcji na platformie Azure. Zamiast tego [Dodawanie ustawień aplikacji do aplikacji funkcji](functions-develop-vs.md#function-app-settings).
 
-Podczas tworzenia projektu w katalogu wyjściowego strukturę folderów, która wygląda tak, że jest generowany w kompilacji:
+Podczas kompilowania projektu strukturę folderów, która wygląda jak w poniższym przykładzie jest generowany w katalogu wyjściowym kompilacji:
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ Podczas tworzenia projektu w katalogu wyjściowego strukturę folderów, która 
  | - host.json
 ```
 
-Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2017).
+Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
 
 > [!IMPORTANT]
 > Proces kompilacji tworzy *function.json* pliku dla każdej funkcji. To *function.json* pliku nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. Aby dowiedzieć się, jak wyłączyć funkcję, zobacz [wyłączania funkcji](disable-function.md#functions-2x---c-class-libraries).
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` Atrybut oznacza metodę jako punktu wejścia funkcji. Nazwa musi być unikatowa w obrębie projektu, zaczynać się literą i zawierać tylko litery, cyfry oraz `_` i `-`, maksymalnie 127 znaków. Szablony projektów często utworzyć metodę o nazwie `Run`, ale nazwa metody może być Dowolna prawidłowa nazwa metody języka C#.
+`FunctionName` Atrybut oznacza metodę jako punktu wejścia funkcji. Nazwa musi być unikatowa w obrębie projektu, zaczynać się literą i zawierać tylko litery, cyfry oraz `_`, i `-`, maksymalnie 127 znaków. Szablony projektów często utworzyć metodę o nazwie `Run`, ale nazwa metody może być Dowolna prawidłowa nazwa metody języka C#.
 
 Atrybut wyzwalacza Określa typ wyzwalacz i powiązania danych wejściowych do parametru metody. Przykład funkcja jest wyzwalana przez komunikatu w kolejce i komunikatu w kolejce jest przekazywany do metody w `myQueueItem` parametru.
 
@@ -181,7 +181,7 @@ Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniow
 </ItemGroup>
 ```
 
-Wśród `Sdk` zależności pakietów są wyzwalaczy i powiązań. Projekt 1.x odnosi się do 1.x wyzwalaczy i powiązań, ponieważ te dla środowiska .NET Framework, podczas gdy 2.x wyzwalaczy i powiązań docelowej platformy .NET Core.
+Wśród `Sdk` zależności pakietów są wyzwalaczy i powiązań. Projekt 1.x odnosi się do 1.x wyzwalaczy i powiązań, ponieważ te wyzwalacze i powiązania dla środowiska .NET Framework, podczas gdy 2.x wyzwalaczy i powiązań docelowej platformy .NET Core.
 
 `Sdk` Pakietu zależy również od [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), a następnie pośrednio na [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Te zależności, upewnij się, że projekt korzysta z wersji tych pakietów, które działają z wersją środowiska uruchomieniowego funkcji, cele projektu. Na przykład `Newtonsoft.Json` ma wersji 11 dla programu .NET Framework 4.6.1, ale środowisko uruchomieniowe funkcji, który jest przeznaczony dla platformy .NET Framework 4.6.1 jest zgodna tylko z `Newtonsoft.Json` 9.0.1. Dlatego ma również kod funkcji w tym projekcie do użycia `Newtonsoft.Json` 9.0.1.
 

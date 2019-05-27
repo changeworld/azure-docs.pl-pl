@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 05/13/2019
+ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dae280f86abce47bfcc029f4d81e4ca3a7b696f4
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: f3907cbc46bd226ef8e90d2061f2d36b2afabf8a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595434"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957156"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 
@@ -70,7 +70,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ShortParsingBusyThreads|Wątki: Krótkie analizy zajęte wątki|Count|Średnia|Liczba zajętych wątków w puli wątków krótkotrwałej analizie.|ServerResourceType|
 |ShortParsingIdleThreads|Wątki: Krótkie analizy bezczynne wątki|Count|Średnia|Liczba bezczynnych wątków w puli wątków krótkotrwałej analizie.|ServerResourceType|
 |ShortParsingJobQueueLength|Wątki: Krótkie analizy długość kolejki zadań|Count|Średnia|Liczba zadań w kolejce puli wątków krótkotrwałej analizie.|ServerResourceType|
-|memory_thrashing_metric|Przeładowywanie pamięci|Wartość procentowa|Średnia|Średnie przeładowywanie pamięci.|ServerResourceType|
+|memory_thrashing_metric|Przeładowywanie pamięci|Percent|Średnia|Średnie przeładowywanie pamięci.|ServerResourceType|
 |mashup_engine_qpu_metric|Jednostka QPU aparatu M|Count|Średnia|Użycie jednostek QPU przez procesy aparatu mashupów|ServerResourceType|
 |mashup_engine_memory_metric|Pamięć aparatu M|Bajty|Średnia|Użycie pamięci przez procesy aparatu mashupów|ServerResourceType|
 
@@ -84,7 +84,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |FailedRequests|Żądania bramy zakończone niepowodzeniem|Count|Łączna|Liczba błędów w żądaniach bramy|Lokalizacja i nazwa hosta|
 |OtherRequests|Inne żądania bramy|Count|Łączna|Liczba inne żądania bramy|Lokalizacja i nazwa hosta|
 |Czas trwania|Całkowity czas trwania żądań bramy|Milisekundy|Średnia|Ogólny czas trwania dla żądania bramy (w milisekundach)|Lokalizacja i nazwa hosta|
-|Pojemność|Pojemność|Wartość procentowa|Średnia|Metryki dla usługi ApiManagement|Lokalizacja|
+|Pojemność|Pojemność|Percent|Średnia|Metryki dla usługi ApiManagement|Lokalizacja|
 |EventHubTotalEvents|Łączna liczba centrów zdarzeń|Count|Łączna|Liczba zdarzeń wysłanych do Centrum zdarzeń|Lokalizacja|
 |EventHubSuccessfulEvents|Pomyślne centrów zdarzeń|Count|Łączna|Liczba pomyślnych zdarzeń Centrum zdarzeń|Lokalizacja|
 |EventHubTotalFailedEvents|Zdarzenia Centrum zdarzeń nie powiodło się|Count|Łączna|Liczba zakończonych niepowodzeniem zdarzeń usługi Event Hub|Lokalizacja|
@@ -154,12 +154,12 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |totalkeys|Całkowita liczba kluczy|Count|Maksimum||ShardId|
 |expiredkeys|Wygasłe klucze|Count|Łączna||ShardId|
 |usedmemory|Użyta pamięć|Bajty|Maksimum||ShardId|
-|usedmemorypercentage|Procent używanej pamięci|Wartość procentowa|Maksimum||ShardId|
+|usedmemorypercentage|Procent używanej pamięci|Percent|Maksimum||ShardId|
 |usedmemoryRss|Używana pamięć RSS|Bajty|Maksimum||ShardId|
-|serverLoad|Obciążenie serwera|Wartość procentowa|Maksimum||ShardId|
+|serverLoad|Obciążenie serwera|Percent|Maksimum||ShardId|
 |cacheWrite|Zapis w pamięci podręcznej|Bajty na sekundę|Maksimum||ShardId|
 |cacheRead|Odczyt pamięci podręcznej|Bajty na sekundę|Maksimum||ShardId|
-|percentProcessorTime|CPU|Wartość procentowa|Maksimum||ShardId|
+|percentProcessorTime|CPU|Percent|Maksimum||ShardId|
 |cacheLatency|Pamięć podręczna opóźnienie mikrosekund (wersja zapoznawcza)|Count|Średnia||ShardId, SampleType|
 |błędy|Błędy|Count|Maksimum||ShardId, ErrorType|
 |connectedclients0|Podłączeni klienci (fragmencie 0)|Count|Maksimum||Nie wymiarów|
@@ -174,10 +174,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys0|Wygasłe klucze (fragmencie 0)|Count|Łączna||Nie wymiarów|
 |usedmemory0|Używana pamięć (fragmencie 0)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss0|Używana pamięć RSS (fragmencie 0)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad0|Obciążenie serwera (fragmencie 0)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad0|Obciążenie serwera (fragmencie 0)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite0|Zapis w pamięci podręcznej (fragmencie 0)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead0|Odczyt pamięci podręcznej (fragmencie 0)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime0|Procesor (fragmencie 0)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime0|Procesor (fragmencie 0)|Percent|Maksimum||Nie wymiarów|
 |connectedclients1|Podłączeni klienci (fragmencie 1)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed1|Łączna liczba operacji (fragmencie 1)|Count|Łączna||Nie wymiarów|
 |cachehits1|Trafienia w pamięci podręcznej (fragmencie 1)|Count|Łączna||Nie wymiarów|
@@ -190,10 +190,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys1|Wygasłe klucze (fragmencie 1)|Count|Łączna||Nie wymiarów|
 |usedmemory1|Używana pamięć (fragmencie 1)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss1|Używana pamięć RSS (fragmencie 1)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad1|Obciążenie serwera (fragmencie 1)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad1|Obciążenie serwera (fragmencie 1)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite1|Zapis w pamięci podręcznej (fragmencie 1)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead1|Odczyt pamięci podręcznej (fragmencie 1)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime1|Procesor (fragmencie 1)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime1|Procesor (fragmencie 1)|Percent|Maksimum||Nie wymiarów|
 |connectedclients2|Podłączeni klienci (fragmencie 2)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed2|Łączna liczba operacji (fragmencie 2)|Count|Łączna||Nie wymiarów|
 |cachehits2|Trafienia w pamięci podręcznej (fragmencie 2)|Count|Łączna||Nie wymiarów|
@@ -206,10 +206,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys2|Wygasłe klucze (fragmencie 2)|Count|Łączna||Nie wymiarów|
 |usedmemory2|Używana pamięć (fragmencie 2)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss2|Używana pamięć RSS (fragmencie 2)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad2|Obciążenie serwera (fragmencie 2)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad2|Obciążenie serwera (fragmencie 2)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite2|Zapis w pamięci podręcznej (fragmencie 2)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead2|Odczyt pamięci podręcznej (fragmencie 2)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime2|Procesor (fragmencie 2)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime2|Procesor (fragmencie 2)|Percent|Maksimum||Nie wymiarów|
 |connectedclients3|Podłączeni klienci (fragmencie 3)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed3|Łączna liczba operacji (fragmencie 3)|Count|Łączna||Nie wymiarów|
 |cachehits3|Trafienia w pamięci podręcznej (fragmencie 3)|Count|Łączna||Nie wymiarów|
@@ -222,10 +222,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys3|Wygasłe klucze (fragmencie 3)|Count|Łączna||Nie wymiarów|
 |usedmemory3|Używana pamięć (fragmencie 3)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss3|Używana pamięć RSS (fragmencie 3)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad3|Obciążenie serwera (fragmencie 3)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad3|Obciążenie serwera (fragmencie 3)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite3|Zapis w pamięci podręcznej (fragmencie 3)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead3|Odczyt pamięci podręcznej (fragmencie 3)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime3|Procesor (fragmencie 3)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime3|Procesor (fragmencie 3)|Percent|Maksimum||Nie wymiarów|
 |connectedclients4|Podłączeni klienci (fragmencie 4)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed4|Łączna liczba operacji (fragmencie 4)|Count|Łączna||Nie wymiarów|
 |cachehits4|Trafienia w pamięci podręcznej (fragmencie 4)|Count|Łączna||Nie wymiarów|
@@ -238,10 +238,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys4|Wygasłe klucze (fragmencie 4)|Count|Łączna||Nie wymiarów|
 |usedmemory4|Używana pamięć (fragmencie 4)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss4|Używana pamięć RSS (fragmencie 4)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad4|Obciążenie serwera (fragmencie 4)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad4|Obciążenie serwera (fragmencie 4)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite4|Zapis w pamięci podręcznej (fragmencie 4)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead4|Odczyt pamięci podręcznej (fragmencie 4)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime4|Procesor (fragmencie 4)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime4|Procesor (fragmencie 4)|Percent|Maksimum||Nie wymiarów|
 |connectedclients5|Podłączeni klienci (fragmencie 5)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed5|Łączna liczba operacji (fragmencie 5)|Count|Łączna||Nie wymiarów|
 |cachehits5|Trafienia w pamięci podręcznej (fragmencie 5)|Count|Łączna||Nie wymiarów|
@@ -254,10 +254,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys5|Wygasłe klucze (fragmencie 5)|Count|Łączna||Nie wymiarów|
 |usedmemory5|Używana pamięć (fragmencie 5)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss5|Używana pamięć RSS (fragmencie 5)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad5|Obciążenie serwera (fragmencie 5)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad5|Obciążenie serwera (fragmencie 5)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite5|Zapis w pamięci podręcznej (fragmencie 5)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead5|Odczyt pamięci podręcznej (fragmencie 5)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime5|Procesor (fragmencie 5)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime5|Procesor (fragmencie 5)|Percent|Maksimum||Nie wymiarów|
 |connectedclients6|Podłączeni klienci (fragmencie 6)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed6|Łączna liczba operacji (fragmencie 6)|Count|Łączna||Nie wymiarów|
 |cachehits6|Trafienia w pamięci podręcznej (fragmencie 6)|Count|Łączna||Nie wymiarów|
@@ -270,10 +270,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys6|Wygasłe klucze (fragmencie 6)|Count|Łączna||Nie wymiarów|
 |usedmemory6|Używana pamięć (fragmencie 6)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss6|Używana pamięć RSS (fragmencie 6)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad6|Obciążenie serwera (fragmencie 6)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad6|Obciążenie serwera (fragmencie 6)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite6|Zapis w pamięci podręcznej (fragmencie 6)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead6|Odczyt pamięci podręcznej (fragmencie 6)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime6|Procesor (fragmencie 6)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime6|Procesor (fragmencie 6)|Percent|Maksimum||Nie wymiarów|
 |connectedclients7|Podłączeni klienci (fragmencie 7)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed7|Łączna liczba operacji (fragmencie 7)|Count|Łączna||Nie wymiarów|
 |cachehits7|Trafienia w pamięci podręcznej (fragmencie 7)|Count|Łączna||Nie wymiarów|
@@ -286,10 +286,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys7|Wygasłe klucze (fragmencie 7)|Count|Łączna||Nie wymiarów|
 |usedmemory7|Używana pamięć (fragmencie 7)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss7|Używana pamięć RSS (fragmencie 7)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad7|Obciążenie serwera (fragmencie 7)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad7|Obciążenie serwera (fragmencie 7)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite7|Zapis w pamięci podręcznej (fragmencie 7)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead7|Odczyt pamięci podręcznej (fragmencie 7)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime7|Procesor (fragmencie 7)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime7|Procesor (fragmencie 7)|Percent|Maksimum||Nie wymiarów|
 |connectedclients8|Podłączeni klienci (fragmencie 8)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed8|Łączna liczba operacji (fragmencie 8)|Count|Łączna||Nie wymiarów|
 |cachehits8|Trafienia w pamięci podręcznej (fragmencie 8)|Count|Łączna||Nie wymiarów|
@@ -302,10 +302,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys8|Wygasłe klucze (fragmencie 8)|Count|Łączna||Nie wymiarów|
 |usedmemory8|Używana pamięć (fragmencie 8)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss8|Używana pamięć RSS (fragmencie 8)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad8|Obciążenie serwera (fragmencie 8)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad8|Obciążenie serwera (fragmencie 8)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite8|Zapis w pamięci podręcznej (fragmencie 8)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead8|Odczyt pamięci podręcznej (fragmencie 8)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime8|Procesor (fragmencie 8)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime8|Procesor (fragmencie 8)|Percent|Maksimum||Nie wymiarów|
 |connectedclients9|Podłączeni klienci (fragmencie 9)|Count|Maksimum||Nie wymiarów|
 |totalcommandsprocessed9|Łączna liczba operacji (fragmencie 9)|Count|Łączna||Nie wymiarów|
 |cachehits9|Trafienia w pamięci podręcznej (fragmencie 9)|Count|Łączna||Nie wymiarów|
@@ -318,10 +318,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |expiredkeys9|Wygasłe klucze (fragmencie 9)|Count|Łączna||Nie wymiarów|
 |usedmemory9|Używana pamięć (fragmencie 9)|Bajty|Maksimum||Nie wymiarów|
 |usedmemoryRss9|Używana pamięć RSS (fragmencie 9)|Bajty|Maksimum||Nie wymiarów|
-|serverLoad9|Obciążenie serwera (fragmencie 9)|Wartość procentowa|Maksimum||Nie wymiarów|
+|serverLoad9|Obciążenie serwera (fragmencie 9)|Percent|Maksimum||Nie wymiarów|
 |cacheWrite9|Zapis w pamięci podręcznej (fragmencie 9)|Bajty na sekundę|Maksimum||Nie wymiarów|
 |cacheRead9|Odczyt pamięci podręcznej (fragmencie 9)|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime9|Procesor (fragmencie 9)|Wartość procentowa|Maksimum||Nie wymiarów|
+|percentProcessorTime9|Procesor (fragmencie 9)|Percent|Maksimum||Nie wymiarów|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
@@ -403,10 +403,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Przepływy wychodzące|Przepływy wychodzące (wersja zapoznawcza)|Count|Średnia|Przepływy wychodzące to liczba bieżących przepływów z ruchem wychodzącym (ruchem skierowanym z maszyny wirtualnej)|Nie wymiarów|
 |Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruchu przychodzącego do maszyny wirtualnej)|Nie wymiarów|
 |Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruchu wychodzącego z maszyny wirtualnej)|Nie wymiarów|
-|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|LUN|
-|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|LUN|
-|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nie wymiarów|
-|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nie wymiarów|
+|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|LUN|
+|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|LUN|
+|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nie wymiarów|
+|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nie wymiarów|
 |Ruch przychodzący do sieci (łącznie)|Ruch przychodzący do sieci (łącznie)|Bajty|Łączna|Liczba bajtów odebranych ze wszystkich interfejsów sieciowych przez maszyny wirtualne (ruch przychodzący)|Nie wymiarów|
 |Ruch wychodzący z sieci (łącznie)|Ruch wychodzący z sieci (łącznie)|Bajty|Łączna|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|Nie wymiarów|
 
@@ -447,10 +447,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Przepływy wychodzące|Przepływy wychodzące (wersja zapoznawcza)|Count|Średnia|Przepływy wychodzące to liczba bieżących przepływów z ruchem wychodzącym (ruchem skierowanym z maszyny wirtualnej)|Nazwa maszyny wirtualnej|
 |Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruchu przychodzącego do maszyny wirtualnej)|Nazwa maszyny wirtualnej|
 |Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruchu wychodzącego z maszyny wirtualnej)|Nazwa maszyny wirtualnej|
-|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Jednostki LUN, VMName|
-|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Jednostki LUN, VMName|
-|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nazwa maszyny wirtualnej|
-|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Wartość procentowa|Średnia|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nazwa maszyny wirtualnej|
+|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba trafień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Jednostki LUN, VMName|
+|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba chybień w pamięci podręcznej dysku danych w warstwie Premium dla odczytu|Jednostki LUN, VMName|
+|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba trafień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nazwa maszyny wirtualnej|
+|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu (wersja zapoznawcza)|Percent|Średnia|Liczba chybień w pamięci podręcznej dysku systemu operacyjnego w warstwie Premium dla odczytu|Nazwa maszyny wirtualnej|
 |Ruch przychodzący do sieci (łącznie)|Ruch przychodzący do sieci (łącznie)|Bajty|Łączna|Liczba bajtów odebranych ze wszystkich interfejsów sieciowych przez maszyny wirtualne (ruch przychodzący)|Nazwa maszyny wirtualnej|
 |Ruch wychodzący z sieci (łącznie)|Ruch wychodzący z sieci (łącznie)|Bajty|Łączna|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|Nazwa maszyny wirtualnej|
 
@@ -532,8 +532,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |CloudUploadThroughput|Przepływność przekazywania w chmurze|Bajty na sekundę|Średnia|Przepływność przekazywania w chmurze na platformę Azure w okresie raportowania.|Nie wymiarów|
 |CloudReadThroughput|Przepływność pobierania w chmurze|Bajty na sekundę|Średnia|Przepływność pobierania w chmurze na platformę Azure w okresie raportowania.|Nie wymiarów|
 |BytesUploadedToCloud|Bajty przekazane w chmurze (urządzenie)|Bajty|Średnia|Łączna liczba bajtów przekazanych do platformy Azure z urządzenia w okresie raportowania.|Nie wymiarów|
-|HyperVVirtualProcessorUtilization|Funkcja obliczeniowa Edge — procent procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|InstanceName|
-|HyperVMemoryUtilization|Funkcja obliczeniowa Edge — użycie pamięci|Wartość procentowa|Średnia|Ilość pamięci RAM w użyciu|InstanceName|
+|HyperVVirtualProcessorUtilization|Funkcja obliczeniowa Edge — procent procesora CPU|Percent|Średnia|Procent użycia procesora CPU|InstanceName|
+|HyperVMemoryUtilization|Funkcja obliczeniowa Edge — użycie pamięci|Percent|Średnia|Ilość pamięci RAM w użyciu|InstanceName|
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
@@ -552,7 +552,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ActivitySucceededRuns|Powodzenie metryki uruchomień działań|Count|Łączna||Nazwa właściwości ActivityType, Nazwa potoku: FailureType,|
 |TriggerFailedRuns|Nie powiodło się metryki uruchomień wyzwalacza|Count|Łączna||Nazwa, FailureType|
 |TriggerSucceededRuns|Powodzenie metryki uruchomień wyzwalacza|Count|Łączna||Nazwa, FailureType|
-|IntegrationRuntimeCpuPercentage|Wykorzystanie procesora CPU w czasie wykonywania integracji|Wartość procentowa|Średnia||IntegrationRuntimeName, NodeName|
+|IntegrationRuntimeCpuPercentage|Wykorzystanie procesora CPU w czasie wykonywania integracji|Percent|Średnia||IntegrationRuntimeName, NodeName|
 |IntegrationRuntimeAvailableMemory|Dostępna pamięć środowiska Integration runtime|Bajty|Średnia||IntegrationRuntimeName, NodeName|
 |MaxAllowedResourceCount|Liczba jednostek dozwolony maksymalny|Count|Maksimum||Nie wymiarów|
 |MaxAllowedFactorySizeInGbUnits|Maksymalny dozwolony rozmiar fabryki (jednostka GB)|Count|Maksimum||Nie wymiarów|
@@ -584,13 +584,13 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia Procesora|Wartość procentowa|Średnia|Procent użycia Procesora|Nie wymiarów|
-|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Nie wymiarów|
-|io_consumption_percent|% Operacji We/Wy|Wartość procentowa|Średnia|% Operacji We/Wy|Nie wymiarów|
-|storage_percent|Procent pamięci masowej|Wartość procentowa|Średnia|Procent pamięci masowej|Nie wymiarów|
+|cpu_percent|Procent użycia Procesora|Percent|Średnia|Procent użycia Procesora|Nie wymiarów|
+|memory_percent|Procent pamięci|Percent|Średnia|Procent pamięci|Nie wymiarów|
+|io_consumption_percent|% Operacji We/Wy|Percent|Średnia|% Operacji We/Wy|Nie wymiarów|
+|storage_percent|Procent pamięci masowej|Percent|Średnia|Procent pamięci masowej|Nie wymiarów|
 |storage_used|Używane miejsce|Bajty|Średnia|Używane miejsce|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Średnia|Limit magazynu|Nie wymiarów|
-|serverlog_storage_percent|Procent magazynu dziennika serwera|Wartość procentowa|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Percent|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Średnia|Używany Magazyn dzienników serwera|Nie wymiarów|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Nie wymiarów|
 |active_connections|Aktywne połączenia|Count|Średnia|Aktywne połączenia|Nie wymiarów|
@@ -604,13 +604,13 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia Procesora|Wartość procentowa|Średnia|Procent użycia Procesora|Nie wymiarów|
-|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Nie wymiarów|
-|io_consumption_percent|% Operacji We/Wy|Wartość procentowa|Średnia|% Operacji We/Wy|Nie wymiarów|
-|storage_percent|Procent pamięci masowej|Wartość procentowa|Średnia|Procent pamięci masowej|Nie wymiarów|
+|cpu_percent|Procent użycia Procesora|Percent|Średnia|Procent użycia Procesora|Nie wymiarów|
+|memory_percent|Procent pamięci|Percent|Średnia|Procent pamięci|Nie wymiarów|
+|io_consumption_percent|% Operacji We/Wy|Percent|Średnia|% Operacji We/Wy|Nie wymiarów|
+|storage_percent|Procent pamięci masowej|Percent|Średnia|Procent pamięci masowej|Nie wymiarów|
 |storage_used|Używane miejsce|Bajty|Średnia|Używane miejsce|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Średnia|Limit magazynu|Nie wymiarów|
-|serverlog_storage_percent|Procent magazynu dziennika serwera|Wartość procentowa|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Percent|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Średnia|Używany Magazyn dzienników serwera|Nie wymiarów|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Nie wymiarów|
 |active_connections|Aktywne połączenia|Count|Średnia|Aktywne połączenia|Nie wymiarów|
@@ -624,13 +624,13 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia Procesora|Wartość procentowa|Średnia|Procent użycia Procesora|Nie wymiarów|
-|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Nie wymiarów|
-|io_consumption_percent|% Operacji We/Wy|Wartość procentowa|Średnia|% Operacji We/Wy|Nie wymiarów|
-|storage_percent|Procent pamięci masowej|Wartość procentowa|Średnia|Procent pamięci masowej|Nie wymiarów|
+|cpu_percent|Procent użycia Procesora|Percent|Średnia|Procent użycia Procesora|Nie wymiarów|
+|memory_percent|Procent pamięci|Percent|Średnia|Procent pamięci|Nie wymiarów|
+|io_consumption_percent|% Operacji We/Wy|Percent|Średnia|% Operacji We/Wy|Nie wymiarów|
+|storage_percent|Procent pamięci masowej|Percent|Średnia|Procent pamięci masowej|Nie wymiarów|
 |storage_used|Używane miejsce|Bajty|Średnia|Używane miejsce|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Średnia|Limit magazynu|Nie wymiarów|
-|serverlog_storage_percent|Procent magazynu dziennika serwera|Wartość procentowa|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Percent|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Średnia|Używany Magazyn dzienników serwera|Nie wymiarów|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Nie wymiarów|
 |active_connections|Aktywne połączenia|Count|Średnia|Aktywne połączenia|Nie wymiarów|
@@ -645,10 +645,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia Procesora|Wartość procentowa|Średnia|Procent użycia Procesora|Nie wymiarów|
-|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Nie wymiarów|
+|cpu_percent|Procent użycia Procesora|Percent|Średnia|Procent użycia Procesora|Nie wymiarów|
+|memory_percent|Procent pamięci|Percent|Średnia|Procent pamięci|Nie wymiarów|
 |operacje We/Wy|Operacje wejścia/wyjścia|Count|Średnia|Operacje We/Wy na sekundę|Nie wymiarów|
-|storage_percent|Procent pamięci masowej|Wartość procentowa|Średnia|Procent pamięci masowej|Nie wymiarów|
+|storage_percent|Procent pamięci masowej|Percent|Średnia|Procent pamięci masowej|Nie wymiarów|
 |storage_used|Używane miejsce|Bajty|Średnia|Używane miejsce|Nie wymiarów|
 |active_connections|Aktywne połączenia|Count|Średnia|Aktywne połączenia|Nie wymiarów|
 |network_bytes_egress|Sieć — wyjście|Bajty|Łączna|Sieć się między aktywnych połączeń|Nie wymiarów|
@@ -747,7 +747,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MongoRequests|Żądania MONGO|Count|Count|Liczba żądań Mongo|DatabaseName CollectionName, Region, CommandName, kod błędu|
 |ProvisionedThroughput|Aprowizowana przepływność|Count|Maksimum|Aprowizowana przepływność|DatabaseName, CollectionName|
 |ReplicationLatency|Poziomie P99 Czas oczekiwania replikacji|MilliSeconds|Średnia|Poziomie P99 opóźnienie replikacji między regionami źródłowych i docelowych dla konta włączono geograficznie|SourceRegion, TargetRegion|
-|ServiceAvailability|Dostępność usługi|Wartość procentowa|Średnia|Dostępność żądania konta na jedną godzinę, dzień lub miesiąc stopień szczegółowości|Nie wymiarów|
+|ServiceAvailability|Dostępność usługi|Percent|Średnia|Dostępność żądania konta na jedną godzinę, dzień lub miesiąc stopień szczegółowości|Nie wymiarów|
 |TotalRequestUnits|Jednostki łączna liczba żądań|Count|Łączna|Używane jednostki żądania|DatabaseName, CollectionName, Region, StatusCode, OperationType|
 |TotalRequests|Łączna liczba żądań|Count|Count|Liczba żądań|DatabaseName, CollectionName, Region, StatusCode, OperationType|
 
@@ -839,7 +839,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |CaptureBacklog|Lista prac funkcji Capture. (wersja zapoznawcza)|Count|Łączna|Lista prac funkcji Capture dla elementu Microsoft.EventHub. (wersja zapoznawcza)|Nie wymiarów|
 |CapturedMessages|Przechwycone komunikaty. (wersja zapoznawcza)|Count|Łączna|Przechwycone komunikaty dla elementu Microsoft.EventHub. (wersja zapoznawcza)|Nie wymiarów|
 |CapturedBytes|Przechwycone bajty. (wersja zapoznawcza)|Bajty|Łączna|Przechwycone bajty dla elementu Microsoft.EventHub. (wersja zapoznawcza)|Nie wymiarów|
-|CPU|Procesor (wersja zapoznawcza)|Wartość procentowa|Maksimum|Użycie procesora CPU dla klastra Centrum zdarzeń w procentach|Rola|
+|CPU|Procesor (wersja zapoznawcza)|Percent|Maksimum|Użycie procesora CPU dla klastra Centrum zdarzeń w procentach|Rola|
 |AvailableMemory|Dostępna pamięć (wersja zapoznawcza)|Count|Maksimum|Dostępna pamięć dla klastra Centrum zdarzeń w bajtach|Rola|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
@@ -848,12 +848,6 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |GatewayRequests|Żądania bramy|Count|Łączna|Liczba żądań bramy|ClusterDnsName, HttpStatus|
 |CategorizedGatewayRequests|Żądania bramy skategoryzowane|Count|Łączna|Liczba żądań bramy według kategorii (1xx/2xx/3xx/4xx/5xx)|ClusterDnsName, HttpStatus|
-|Skalowanie automatyczne|Metryki automatycznego skalowania|Count|Maksimum|Metryki automatycznego skalowania|ClusterDnsName, MetricName|
-|AllocatedMB|Liczba przydzielonych MB|Count|Maksimum|Liczba przydzielonych MB|ClusterDnsName, MetricName|
-|AvailableMB|Liczba dostępnych MB|Count|Maksimum|Liczba dostępnych MB|ClusterDnsName, MetricName|
-|AppsPending|Oczekujące aplikacje|Count|Maksimum|Oczekujące aplikacje|ClusterDnsName, MetricName|
-|AppsRunning|Aplikacje działające|Count|Maksimum|Aplikacje działające|ClusterDnsName, MetricName|
-|AppsSubmitted|Przesłane aplikacje|Count|Maksimum|Przesłane aplikacje|ClusterDnsName, MetricName|
 |NumActiveWorkers|Liczba aktywnych procesów roboczych|Count|Maksimum|Liczba aktywnych procesów roboczych|ClusterDnsName, MetricName|
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
@@ -889,8 +883,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |performanceCounters/requestsPerSecond|Liczba żądań HTTP|CountPerSecond|Średnia|Liczba wszystkich żądań wysłanych do aplikacji z platformy ASP.NET na sekundę.|cloud/roleInstance|
 |performanceCounters/exceptionsPerSecond|Częstotliwość występowania wyjątków|CountPerSecond|Średnia|Liczba obsługiwanych i nieobsługiwanych wyjątków zgłoszonych w systemie Windows, łącznie z wyjątkami platformy .NET i niezarządzanymi wyjątkami przekonwertowanymi na wyjątki platformy .NET.|cloud/roleInstance|
 |liczniki wydajności/processIOBytesPerSecond|Liczba operacji we/wy procesu|BytesPerSecond|Średnia|Łączna liczba bajtów odczytanych i zapisanych w ciągu sekundy w plikach i sieci oraz na urządzeniach.|cloud/roleInstance|
-|liczniki wydajności/processCpuPercentage|Procesy — procesor CPU|Wartość procentowa|Średnia|Procent minionego czasu wszystkich wątków procesów używały procesora w celu wykonania instrukcji. To może się różnić od 0 do 100. Ta Metryka wskazuje wydajność samego procesu w3wp.|cloud/roleInstance|
-|liczniki wydajności/processorCpuPercentage|Czas procesora|Wartość procentowa|Średnia|Procent czasu poświęconego przez procesor na aktywne wątki.|cloud/roleInstance|
+|liczniki wydajności/processCpuPercentage|Procesy — procesor CPU|Percent|Średnia|Procent minionego czasu wszystkich wątków procesów używały procesora w celu wykonania instrukcji. To może się różnić od 0 do 100. Ta Metryka wskazuje wydajność samego procesu w3wp.|cloud/roleInstance|
+|liczniki wydajności/processorCpuPercentage|Czas procesora|Percent|Średnia|Procent czasu poświęconego przez procesor na aktywne wątki.|cloud/roleInstance|
 |liczniki wydajności/memoryAvailableBytes|Dostępna pamięć|Bajty|Średnia|Pamięć fizyczna dostępna natychmiast do przydzielenia do procesu lub do użycia przez system.|cloud/roleInstance|
 |liczniki wydajności/processPrivateBytes|Prywatne bajty procesu|Bajty|Średnia|Pamięć przypisana wyłącznie do procesów monitorowanej aplikacji.|cloud/roleInstance|
 |żądania/czas trwania|Czas odpowiedzi serwera|MilliSeconds|Średnia|Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, Powodzenie/na żądanie, chmury/roleName|
@@ -914,15 +908,15 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ClusterDataCapacityFactor|Wykorzystanie pamięci podręcznej|Wartość procentowa|Średnia|Poziom użycia w zakresie klastra|Nie wymiarów|
+|ClusterDataCapacityFactor|Wykorzystanie pamięci podręcznej|Percent|Średnia|Poziom użycia w zakresie klastra|Nie wymiarów|
 |QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Zapytania czas w sekundach|QueryStatus|
-|IngestionsLoadFactor|Wykorzystanie pozyskiwania|Wartość procentowa|Średnia|Współczynnik miejsc pozyskiwania używanych w klastrze|Nie wymiarów|
+|IngestionsLoadFactor|Wykorzystanie pozyskiwania|Percent|Średnia|Współczynnik miejsc pozyskiwania używanych w klastrze|Nie wymiarów|
 |IsEngineAnsweringQuery|Podtrzymanie|Count|Średnia|Poprawnością wyboru wskazuje, że klastra odpowiada na kwerendy|Nie wymiarów|
 |IngestCommandOriginalSizeInMb|Pozyskiwanie woluminu (w MB)|Count|Łączna|Łączna ilość pozyskiwanych danych do klastra (w MB)|Nie wymiarów|
 |IngestedEventAgeSeconds|Opóźnienia w pozyskiwaniu danych (w sekundach)|Sekundy|Średnia|Czas wprowadzania od źródła (np. komunikat jest w Centrum zdarzeń) do klastra w ciągu kilku sekund|Nie wymiarów|
 |EventRecievedFromEventHub|Zdarzenia przetwarzane (dla usługi Event Hubs)|Count|Łączna|Liczba zdarzeń przetwarzany przez klaster, gdy wprowadzane z Centrum zdarzeń|Nie wymiarów|
 |IngestionResult|Wynik pozyskiwania|Count|Count|Liczby operacji pozyskiwania|IngestionResultDetails|
-|EngineCPU|CPU|Wartość procentowa|Średnia|Poziom użycia procesora CPU|Nie wymiarów|
+|EngineCPU|CPU|Percent|Średnia|Poziom użycia procesora CPU|Nie wymiarów|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -942,7 +936,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |RunLatency|Opóźnienie przebiegów|Sekundy|Średnia|Opóźnienie ukończonych przebiegów przepływu pracy.|Nie wymiarów|
 |RunSuccessLatency|Opóźnienie przebiegów zakończonych powodzeniem|Sekundy|Średnia|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |RunThrottledEvents|Zdarzenia ograniczenia przebiegu|Count|Łączna|Liczba zdarzeń ograniczenia akcji lub wyzwalacza przepływu pracy.|Nie wymiarów|
-|RunFailurePercentage|Procent niepowodzeń przebiegów|Wartość procentowa|Łączna|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
+|RunFailurePercentage|Procent niepowodzeń przebiegów|Percent|Łączna|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |ActionsStarted|Rozpoczęte akcje |Count|Łączna|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
 |ActionsCompleted|Ukończone akcje |Count|Łączna|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
 |ActionsSucceeded|Akcje zakończone powodzeniem |Count|Łączna|Liczba akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
@@ -984,7 +978,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |RunSuccessLatency|Opóźnienie przebiegów zakończonych powodzeniem|Sekundy|Średnia|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |RunThrottledEvents|Zdarzenia ograniczenia przebiegu|Count|Łączna|Liczba zdarzeń ograniczenia akcji lub wyzwalacza przepływu pracy.|Nie wymiarów|
 |RunStartThrottledEvents|Zdarzenia ograniczenia rozpoczęcia przebiegu|Count|Łączna|Liczba zdarzeń ograniczenia rozpoczęcia przebiegu przepływu pracy.|Nie wymiarów|
-|RunFailurePercentage|Procent niepowodzeń przebiegów|Wartość procentowa|Łączna|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
+|RunFailurePercentage|Procent niepowodzeń przebiegów|Percent|Łączna|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |ActionsStarted|Rozpoczęte akcje |Count|Łączna|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
 |ActionsCompleted|Ukończone akcje |Count|Łączna|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
 |ActionsSucceeded|Akcje zakończone powodzeniem |Count|Łączna|Liczba akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
@@ -1003,10 +997,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |TriggerFireLatency|Opóźnienie uruchomienia wyzwalacza |Sekundy|Średnia|Opóźnienie uaktywnionych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggerSuccessLatency|Opóźnienie udanego wyzwalacza |Sekundy|Średnia|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |TriggerThrottledEvents|Zdarzenia ograniczenia wyzwalacza|Count|Łączna|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|Nie wymiarów|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Użycie procesora przez przepływ pracy na potrzeby środowiska usługi integracji|Wartość procentowa|Średnia|Użycie procesora przez przepływ pracy na potrzeby środowiska usługi integracji.|Nie wymiarów|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Użycie pamięci przez przepływ pracy na potrzeby środowiska usługi integracji|Wartość procentowa|Średnia|Użycie pamięci przez przepływ pracy na potrzeby środowiska usługi integracji.|Nie wymiarów|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Użycie procesora przez łącznik na potrzeby środowiska usługi integracji|Wartość procentowa|Średnia|Użycie procesora przez łącznik na potrzeby środowiska usługi integracji.|Nie wymiarów|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Użycie pamięci przez łącznik na potrzeby środowiska usługi integracji|Wartość procentowa|Średnia|Użycie pamięci przez łącznik na potrzeby środowiska usługi integracji.|Nie wymiarów|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|Użycie procesora przez przepływ pracy na potrzeby środowiska usługi integracji|Percent|Średnia|Użycie procesora przez przepływ pracy na potrzeby środowiska usługi integracji.|Nie wymiarów|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Użycie pamięci przez przepływ pracy na potrzeby środowiska usługi integracji|Percent|Średnia|Użycie pamięci przez przepływ pracy na potrzeby środowiska usługi integracji.|Nie wymiarów|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Użycie procesora przez łącznik na potrzeby środowiska usługi integracji|Percent|Średnia|Użycie procesora przez łącznik na potrzeby środowiska usługi integracji.|Nie wymiarów|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Użycie pamięci przez łącznik na potrzeby środowiska usługi integracji|Percent|Średnia|Użycie pamięci przez łącznik na potrzeby środowiska usługi integracji.|Nie wymiarów|
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
@@ -1088,7 +1082,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |QueryVolume|Wolumin zapytań|Count|Łączna|Liczba zapytań dla strefy DNS|Nie wymiarów|
 |RecordSetCount|Liczba zestawu rekordów|Count|Maksimum|Liczba zestawów rekordów w strefie DNS|Nie wymiarów|
-|RecordSetCapacityUtilization|Wykorzystanie pojemności zestawu rekordów|Wartość procentowa|Maksimum|Wartość procentowa pojemności zestawu rekordów, wykorzystywany przez strefę DNS|Nie wymiarów|
+|RecordSetCapacityUtilization|Wykorzystanie pojemności zestawu rekordów|Percent|Maksimum|Wartość procentowa pojemności zestawu rekordów, wykorzystywany przez strefę DNS|Nie wymiarów|
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
@@ -1188,7 +1182,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ProbesFailedPercent|% Sondy nie powiodło się|Wartość procentowa|Średnia|% łączności sondy monitorujące nie powiodło się.|Nie wymiarów|
+|ProbesFailedPercent|% Sondy nie powiodło się|Percent|Średnia|% łączności sondy monitorujące nie powiodło się.|Nie wymiarów|
 |AverageRoundtripMs|Średni Czas obustronnej konwersji (ms)|MilliSeconds|Średnia|Czas błądzenia średni sieci (ms) dla łączności przesyłane między źródłowym i docelowym sondy monitorujące|Nie wymiarów|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
@@ -1201,7 +1195,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |BackendRequestCount|Liczba żądań wewnętrznej bazy danych|Count|Łączna|Liczba żądań wysyłanych z serwera proxy HTTP/Https do zaplecza|HttpStatus, HttpStatusGroup, wewnętrznej bazy danych|
 |BackendRequestLatency|Opóźnienia żądania wewnętrznej bazy danych|MilliSeconds|Średnia|Czas obliczonym na podstawie Jeśli żądanie zostało wysłane przez serwer proxy HTTP/Https do wewnętrznej bazy danych do momentu otrzymania przez serwer proxy HTTP/Https ostatni bajt odpowiedzi z wewnętrznej bazy danych|Zaplecze|
 |TotalLatency|Całkowity czas oczekiwania|MilliSeconds|Średnia|Czas obliczonym na podstawie żądań klienta otrzymania przez serwer proxy HTTP/Https momentu klient potwierdzenia ostatni bajt odpowiedzi z serwera proxy HTTP/S|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendHealthPercentage|Wartość procentowa kondycję wewnętrznej bazy danych|Wartość procentowa|Średnia|Procent pomyślnych kondycji sondy z serwera proxy HTTP/Https do zaplecza|Backend, BackendPool|
+|BackendHealthPercentage|Wartość procentowa kondycję wewnętrznej bazy danych|Percent|Średnia|Procent pomyślnych kondycji sondy z serwera proxy HTTP/Https do zaplecza|Backend, BackendPool|
 |WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Count|Łączna|Liczba żądań klienta przetwarzanych przez zaporę aplikacji sieci Web|PolicyName, Nazwa_reguły, akcja|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
@@ -1355,7 +1349,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Count|Średnia|Liczba zadań w kolejce puli wątków zapytania.|Nie wymiarów|
 |qpu_high_utilization_metric|Wysokie wykorzystanie jednostek QPU|Count|Łączna|Wysokie wykorzystanie jednostek QPU w ostatniej chwili 1 QPU wysokie wykorzystanie, w przeciwnym razie 0.|Nie wymiarów|
 |memory_metric|Memory (Pamięć)|Bajty|Średnia|Ilość pamięci. Zakres 0 – 3 GB A1, 0 – 5 GB dla opcji A2, A3 0-10 GB, 0 – 25 GB dla formatu A4, 0 – 50 GB dla A5 i 0 – 100 GB w przypadku A6|Nie wymiarów|
-|memory_thrashing_metric|Przeładowywanie pamięci|Wartość procentowa|Średnia|Średnie przeładowywanie pamięci.|Nie wymiarów|
+|memory_thrashing_metric|Przeładowywanie pamięci|Percent|Średnia|Średnie przeładowywanie pamięci.|Nie wymiarów|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
@@ -1381,7 +1375,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |SearchLatency|Opóźnienie wyszukiwania|Sekundy|Średnia|Opóźnienie wyszukiwania średnia dla usługi wyszukiwania|Nie wymiarów|
 |SearchQueriesPerSecond|Zapytania wyszukiwania na sekundę|CountPerSecond|Średnia|Zapytania wyszukiwania na sekundę usługi wyszukiwania|Nie wymiarów|
-|ThrottledSearchQueriesPercentage|Procent zapytań wyszukiwania z ograniczoną przepustowością|Wartość procentowa|Średnia|Procent zapytań wyszukiwania, które były ograniczone do usługi wyszukiwania|Nie wymiarów|
+|ThrottledSearchQueriesPercentage|Procent zapytań wyszukiwania z ograniczoną przepustowością|Percent|Średnia|Procent zapytań wyszukiwania, które były ograniczone do usługi wyszukiwania|Nie wymiarów|
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
@@ -1400,8 +1394,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ActiveMessages|Liczba aktywnych komunikatów w kolejce/temacie. (wersja zapoznawcza)|Count|Średnia|Liczba aktywnych komunikatów w kolejce/temacie. (wersja zapoznawcza)|EntityName|
 |DeadletteredMessages|Liczba komunikatów utraconych w kolejce/temacie. (wersja zapoznawcza)|Count|Średnia|Liczba komunikatów utraconych w kolejce/temacie. (wersja zapoznawcza)|EntityName|
 |ScheduledMessages|Liczba komunikatów zaplanowanych w kolejce/temacie. (wersja zapoznawcza)|Count|Średnia|Liczba komunikatów zaplanowanych w kolejce/temacie. (wersja zapoznawcza)|EntityName|
-|CPUXNS|Użycie procesora na przestrzeń nazw|Wartość procentowa|Maksimum|Metryka użycia procesora przestrzeni nazw w usłudze Service Bus w warstwie Premium|Nie wymiarów|
-|WSXNS|Użycie rozmiaru pamięci na przestrzeń nazw|Wartość procentowa|Maksimum|Metryka użycia pamięci przestrzeni nazw w usłudze Service Bus w warstwie Premium|Nie wymiarów|
+|CPUXNS|Użycie procesora na przestrzeń nazw|Percent|Maksimum|Metryka użycia procesora przestrzeni nazw w usłudze Service Bus w warstwie Premium|Nie wymiarów|
+|WSXNS|Użycie rozmiaru pamięci na przestrzeń nazw|Percent|Maksimum|Metryka użycia pamięci przestrzeni nazw w usłudze Service Bus w warstwie Premium|Nie wymiarów|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1411,8 +1405,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |AllocatedMemory|AllocatedMemory|Bajty|Średnia|Pamięć przydzielona do tego kontenera w MB|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
 |ActualCpu|ActualCpu|Count|Średnia|Rzeczywiste użycie procesora CPU w millicores|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
 |ActualMemory|ActualMemory|Bajty|Średnia|Użycie pamięci Rzeczywiste w MB|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
-|CpuUtilization|CpuUtilization|Wartość procentowa|Średnia|Wykorzystanie procesora CPU dla tego kontenera jako procent AllocatedCpu|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
-|MemoryUtilization|MemoryUtilization|Wartość procentowa|Średnia|Wykorzystanie procesora CPU dla tego kontenera jako procent AllocatedCpu|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
+|CpuUtilization|CpuUtilization|Percent|Średnia|Wykorzystanie procesora CPU dla tego kontenera jako procent AllocatedCpu|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
+|MemoryUtilization|MemoryUtilization|Percent|Średnia|Wykorzystanie procesora CPU dla tego kontenera jako procent AllocatedCpu|ApplicationName, ServiceReplicaName ServiceName, CodePackageName,|
 |ApplicationStatus|ApplicationStatus|Count|Średnia|Stan aplikacji usługi Service Fabric siatki|ApplicationName, stan|
 |Bajty|Bajty|Count|Średnia|Kondycja usługi w aplikacji usługi Service Fabric siatki|ServiceName ApplicationName, stan,|
 |ServiceReplicaStatus|ServiceReplicaStatus|Count|Średnia|Kondycja usługi repliki bazy danych w aplikacji usługi Service Fabric siatki|ApplicationName, stan, ServiceName, ServiceReplicaName|
@@ -1427,70 +1421,70 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MessageCount|Liczba komunikatów|Count|Łączna|Łączna liczba wiadomości.|Nie wymiarów|
 |InboundTraffic|Ruch przychodzący|Bajty|Łączna|Ruch przychodzący usługi|Nie wymiarów|
 |OutboundTraffic|Ruch wychodzący|Bajty|Łączna|Ruch wychodzący z usługi|Nie wymiarów|
-|UserErrors|Błędy użytkowników|Wartość procentowa|Maksimum|Procent błędów użytkownika|Nie wymiarów|
-|SystemErrors|Błędy systemu|Wartość procentowa|Maksimum|Procent błędów systemu|Nie wymiarów|
+|UserErrors|Błędy użytkowników|Percent|Maksimum|Procent błędów użytkownika|Nie wymiarów|
+|SystemErrors|Błędy systemu|Percent|Maksimum|Procent błędów systemu|Nie wymiarów|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Nie wymiarów|
-|physical_data_read_percent|We/wy danych (procent)|Wartość procentowa|Średnia|We/wy danych (procent)|Nie wymiarów|
-|log_write_percent|We/wy dziennika (procent)|Wartość procentowa|Średnia|We/wy dziennika (procent)|Nie wymiarów|
-|dtu_consumption_percent|Procent jednostek DTU|Wartość procentowa|Średnia|Procent jednostek DTU|Nie wymiarów|
+|cpu_percent|Procent użycia procesora CPU|Percent|Średnia|Procent użycia procesora CPU|Nie wymiarów|
+|physical_data_read_percent|We/wy danych (procent)|Percent|Średnia|We/wy danych (procent)|Nie wymiarów|
+|log_write_percent|We/wy dziennika (procent)|Percent|Średnia|We/wy dziennika (procent)|Nie wymiarów|
+|dtu_consumption_percent|Procent jednostek DTU|Percent|Średnia|Procent jednostek DTU|Nie wymiarów|
 |magazyn|Używane miejsce na dane|Bajty|Maksimum|Łączny rozmiar bazy danych|Nie wymiarów|
 |connection_successful|Pomyślnie nawiązane połączenia|Count|Łączna|Pomyślnie nawiązane połączenia|Nie wymiarów|
 |connection_failed|Połączenia zakończone niepowodzeniem|Count|Łączna|Połączenia zakończone niepowodzeniem|Nie wymiarów|
 |blocked_by_firewall|Blokowane przez zaporę|Count|Łączna|Blokowane przez zaporę|Nie wymiarów|
 |Zakleszczenia|Zakleszczenia|Count|Łączna|Zakleszczenia|Nie wymiarów|
-|storage_percent|Procent miejsca danych|Wartość procentowa|Maksimum|Procent użycia rozmiaru bazy danych|Nie wymiarów|
-|xtp_storage_percent|Procent magazynu OLTP w pamięci|Wartość procentowa|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
-|workers_percent|Procent procesów roboczych|Wartość procentowa|Średnia|Procent procesów roboczych|Nie wymiarów|
-|sessions_percent|Procent sesji|Wartość procentowa|Średnia|Procent sesji|Nie wymiarów|
+|storage_percent|Procent miejsca danych|Percent|Maksimum|Procent użycia rozmiaru bazy danych|Nie wymiarów|
+|xtp_storage_percent|Procent magazynu OLTP w pamięci|Percent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
+|workers_percent|Procent procesów roboczych|Percent|Średnia|Procent procesów roboczych|Nie wymiarów|
+|sessions_percent|Procent sesji|Percent|Średnia|Procent sesji|Nie wymiarów|
 |dtu_limit|DTU Limit|Count|Średnia|DTU Limit|Nie wymiarów|
 |dtu_used|Używane jednostki DTU|Count|Średnia|Używane jednostki DTU|Nie wymiarów|
 |cpu_limit|Limitu procesora CPU|Count|Średnia|Limitu procesora CPU|Nie wymiarów|
 |cpu_used|Użycie Procesora|Count|Średnia|Użycie Procesora|Nie wymiarów|
 |dwu_limit|Limit jednostek DWU|Count|Maksimum|Limit jednostek DWU|Nie wymiarów|
-|dwu_consumption_percent|Procent jednostek DWU|Wartość procentowa|Maksimum|Procent jednostek DWU|Nie wymiarów|
+|dwu_consumption_percent|Procent jednostek DWU|Percent|Maksimum|Procent jednostek DWU|Nie wymiarów|
 |dwu_used|Używane jednostki DWU|Count|Maksimum|Używane jednostki DWU|Nie wymiarów|
-|dw_cpu_percent|DW poziomu węzła procent użycia procesora CPU|Wartość procentowa|Średnia|DW poziomu węzła procent użycia procesora CPU|DwLogicalNodeId|
-|dw_physical_data_read_percent|Procentowy poziom we/wy danych węzła magazynu danych|Wartość procentowa|Średnia|Procentowy poziom we/wy danych węzła magazynu danych|DwLogicalNodeId|
-    |cache_hit_percent|Procent liczby trafień pamięci podręcznej|Wartość procentowa|Maksimum|Procent liczby trafień pamięci podręcznej|Nie wymiarów|
-|cache_used_percent|Pamięć podręczna używana wartość procentowa|Wartość procentowa|Maksimum|Pamięć podręczna używana wartość procentowa|Nie wymiarów|
-|local_tempdb_usage_percent|Wartość procentowa lokalnej bazy danych tempdb|Wartość procentowa|Średnia|Wartość procentowa lokalnej bazy danych tempdb|Nie wymiarów|
+|dw_cpu_percent|DW poziomu węzła procent użycia procesora CPU|Percent|Średnia|DW poziomu węzła procent użycia procesora CPU|DwLogicalNodeId|
+|dw_physical_data_read_percent|Procentowy poziom we/wy danych węzła magazynu danych|Percent|Średnia|Procentowy poziom we/wy danych węzła magazynu danych|DwLogicalNodeId|
+    |cache_hit_percent|Procent liczby trafień pamięci podręcznej|Percent|Maksimum|Procent liczby trafień pamięci podręcznej|Nie wymiarów|
+|cache_used_percent|Pamięć podręczna używana wartość procentowa|Percent|Maksimum|Pamięć podręczna używana wartość procentowa|Nie wymiarów|
+|local_tempdb_usage_percent|Wartość procentowa lokalnej bazy danych tempdb|Percent|Średnia|Wartość procentowa lokalnej bazy danych tempdb|Nie wymiarów|
 |app_cpu_billed|Aplikacja rozliczana na podstawie procesora|Count|Łączna|Aplikacja rozliczana na podstawie procesora|Nie wymiarów|
-|app_cpu_percent|Procent użycia Procesora aplikacji|Wartość procentowa|Średnia|Procent użycia Procesora aplikacji|Nie wymiarów|
-|app_memory_percent|Procent używanej pamięci w aplikacji|Wartość procentowa|Średnia|Procent używanej pamięci w aplikacji|Nie wymiarów|
+|app_cpu_percent|Procent użycia Procesora aplikacji|Percent|Średnia|Procent użycia Procesora aplikacji|Nie wymiarów|
+|app_memory_percent|Procent używanej pamięci w aplikacji|Percent|Średnia|Procent używanej pamięci w aplikacji|Nie wymiarów|
 |allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone miejsce na dane|Nie wymiarów|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Nie wymiarów|
-|physical_data_read_percent|We/wy danych (procent)|Wartość procentowa|Średnia|We/wy danych (procent)|Nie wymiarów|
-|log_write_percent|We/wy dziennika (procent)|Wartość procentowa|Średnia|We/wy dziennika (procent)|Nie wymiarów|
-|dtu_consumption_percent|Procent jednostek DTU|Wartość procentowa|Średnia|Procent jednostek DTU|Nie wymiarów|
-|storage_percent|Procent miejsca danych||Wartość procentowa|Średnia|Procent użycia magazynu|Nie wymiarów|
-|workers_percent|Procent procesów roboczych|Wartość procentowa|Średnia|Procent procesów roboczych|Nie wymiarów|
-|sessions_percent|Procent sesji|Wartość procentowa|Średnia|Procent sesji|Nie wymiarów|
+|cpu_percent|Procent użycia procesora CPU|Percent|Średnia|Procent użycia procesora CPU|Nie wymiarów|
+|physical_data_read_percent|We/wy danych (procent)|Percent|Średnia|We/wy danych (procent)|Nie wymiarów|
+|log_write_percent|We/wy dziennika (procent)|Percent|Średnia|We/wy dziennika (procent)|Nie wymiarów|
+|dtu_consumption_percent|Procent jednostek DTU|Percent|Średnia|Procent jednostek DTU|Nie wymiarów|
+|storage_percent|Procent miejsca danych||Percent|Średnia|Procent użycia magazynu|Nie wymiarów|
+|workers_percent|Procent procesów roboczych|Percent|Średnia|Procent procesów roboczych|Nie wymiarów|
+|sessions_percent|Procent sesji|Percent|Średnia|Procent sesji|Nie wymiarów|
 |eDTU_limit|eDTU limit|Count|Średnia|eDTU limit|Nie wymiarów|
 |storage_limit|Maksymalny rozmiar danych|Bajty|Średnia|Limit magazynu|Nie wymiarów|
 |eDTU_used|używane jednostki eDTU|Count|Średnia|używane jednostki eDTU|Nie wymiarów|
 |storage_used|Używane miejsce na dane|Bajty|Średnia|Używane miejsce|Nie wymiarów|
-|xtp_storage_percent|Procent magazynu OLTP w pamięci|Wartość procentowa|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
+|xtp_storage_percent|Procent magazynu OLTP w pamięci|Percent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
 |cpu_limit|Limitu procesora CPU|Count|Średnia|Limitu procesora CPU|Nie wymiarów|
 |cpu_used|Użycie Procesora|Count|Średnia|Użycie Procesora|Nie wymiarów|
 |allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone miejsce na dane|Nie wymiarów|
-|allocated_data_storage_percent|Procent miejsce przydzielone dane|Wartość procentowa|Maksimum|Procent miejsce przydzielone dane|Nie wymiarów|
+|allocated_data_storage_percent|Procent miejsce przydzielone dane|Percent|Maksimum|Procent miejsce przydzielone dane|Nie wymiarów|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |virtual_core_count|Liczba rdzeni wirtualnych|Count|Średnia|Liczba rdzeni wirtualnych|Nie wymiarów|
-|avg_cpu_percent|Średni procent użycia procesora CPU|Wartość procentowa|Średnia|Średni procent użycia procesora CPU|Nie wymiarów|
+|avg_cpu_percent|Średni procent użycia procesora CPU|Percent|Średnia|Średni procent użycia procesora CPU|Nie wymiarów|
 |reserved_storage_mb|Zarezerwowane miejsce do magazynowania|Count|Średnia|Zarezerwowane miejsce do magazynowania|Nie wymiarów|
 |storage_space_used_mb|Używane miejsce w magazynie|Count|Średnia|Używane miejsce w magazynie|Nie wymiarów|
 |io_requests|Liczba żądań We/Wy|Count|Średnia|Liczba żądań We/Wy|Nie wymiarów|
@@ -1581,7 +1575,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ResourceUtilization|% wykorzystania SU|Wartość procentowa|Maksimum|% wykorzystania SU|LogicalName, PartitionId|
+|ResourceUtilization|% wykorzystania SU|Percent|Maksimum|% wykorzystania SU|LogicalName, PartitionId|
 |Liczba|Zdarzenia wejściowe|Count|Łączna|Zdarzenia wejściowe|LogicalName, PartitionId|
 |InputEventBytes|Zdarzenia wejściowe (bajty)|Bajty|Łączna|Zdarzenia wejściowe (bajty)|LogicalName, PartitionId|
 |LateInputEvents|Opóźnione zdarzenia wejściowe|Count|Łączna|Opóźnione zdarzenia wejściowe|LogicalName, PartitionId|
@@ -1654,8 +1648,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuPercentage|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Wystąpienie|
-|MemoryPercentage|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Wystąpienie|
+|CpuPercentage|Procent użycia procesora CPU|Percent|Średnia|Procent użycia procesora CPU|Wystąpienie|
+|MemoryPercentage|Procent pamięci|Percent|Średnia|Procent pamięci|Wystąpienie|
 |DiskQueueLength|Długość kolejki dysku|Count|Średnia|Długość kolejki dysku|Wystąpienie|
 |HttpQueueLength|Długość kolejki HTTP|Count|Średnia|Długość kolejki HTTP|Wystąpienie|
 |BytesReceived|Dane wejściowe|Bajty|Łączna|Dane wejściowe|Wystąpienie|
@@ -1782,8 +1776,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Http4xx|HTTP 4xx|Count|Łączna|HTTP 4xx|Wystąpienie|
 |Http5xx|Błędy serwera HTTP|Count|Łączna|Błędy serwera HTTP|Wystąpienie|
 |AverageResponseTime|Średni czas odpowiedzi|Sekundy|Średnia|Średni czas odpowiedzi|Wystąpienie|
-|CpuPercentage|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Wystąpienie|
-|MemoryPercentage|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Wystąpienie|
+|CpuPercentage|Procent użycia procesora CPU|Percent|Średnia|Procent użycia procesora CPU|Wystąpienie|
+|MemoryPercentage|Procent pamięci|Percent|Średnia|Procent pamięci|Wystąpienie|
 |DiskQueueLength|Długość kolejki dysku|Count|Średnia|Długość kolejki dysku|Wystąpienie|
 |HttpQueueLength|Długość kolejki HTTP|Count|Średnia|Długość kolejki HTTP|Wystąpienie|
 |ActiveRequests|Aktywne żądania|Count|Łączna|Aktywne żądania|Wystąpienie|
@@ -1799,8 +1793,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Łączna liczba procesów roboczych|Łączna liczba procesów roboczych|Count|Średnia|Łączna liczba procesów roboczych|Nie wymiarów|
 |WorkersAvailable|Dostępne procesy robocze|Count|Średnia|Dostępne procesy robocze|Nie wymiarów|
 |WorkersUsed|Używane procesy robocze|Count|Średnia|Używane procesy robocze|Nie wymiarów|
-|CpuPercentage|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Wystąpienie|
-|MemoryPercentage|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Wystąpienie|
+|CpuPercentage|Procent użycia procesora CPU|Percent|Średnia|Procent użycia procesora CPU|Wystąpienie|
+|MemoryPercentage|Procent pamięci|Percent|Średnia|Procent pamięci|Wystąpienie|
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przeczytaj o metrykach w usłudze Azure Monitor](data-platform.md)

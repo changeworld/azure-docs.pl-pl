@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 050f301b55c718e80c1b4157639bd9dce506f6ba
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263784"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979463"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Pobierz dane zgodności zasobów platformy Azure
 
-Jedną z największych zalet usługi Azure Policy jest wglądu i kontroli jest lepsza od zasobów w ramach subskrypcji lub [grupy zarządzania](../../management-groups/overview.md) subskrypcji. Ten formant może być wykonywana na wiele różnych sposobów, na przykład zapobieganie zasobów tworzonych w niewłaściwej lokalizacji, wymuszając użycie wspólny i spójny tag lub inspekcji istniejących zasobów, aby uzyskać odpowiednie konfiguracje i ustawienia. We wszystkich przypadkach dane są generowane przez zasady, aby umożliwić Ci zrozumienie stanu zgodności środowiska.
+Jedną z największych zalet usługi Azure Policy jest wglądu i kontroli jest lepsza od zasobów w ramach subskrypcji lub [grupy zarządzania](../../management-groups/overview.md) subskrypcji. Ten formant może być wykonywana na wiele różnych sposobów, na przykład zapobieganie zasobów tworzonych w niewłaściwej lokalizacji, wymuszając użycie wspólny i spójny tag lub inspekcji istniejących zasobów, aby uzyskać odpowiednie konfiguracje i ustawienia. We wszystkich przypadkach dane są generowane przez usługę Azure Policy, aby umożliwić Ci zrozumienie stanu zgodności środowiska.
 
 Istnieje kilka sposobów na dostęp do informacji o zgodności, generowane przez zasady i przypisań inicjatywy:
 
@@ -33,7 +33,7 @@ Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy si
 
 ## <a name="evaluation-triggers"></a>Wyzwalacze oceny
 
-Wyniki cyklu ukończone oceny są dostępne w `Microsoft.PolicyInsights` dostawcy zasobów za pomocą `PolicyStates` i `PolicyEvents` operacji. Aby uzyskać więcej informacji na temat operacji interfejsu API REST usługi Insights zasad, zobacz [szczegółowych informacji o zasadach](/rest/api/policy-insights/).
+Wyniki cyklu ukończone oceny są dostępne w `Microsoft.PolicyInsights` dostawcy zasobów za pomocą `PolicyStates` i `PolicyEvents` operacji. Aby uzyskać więcej informacji na temat operacji interfejsu API REST usługi Insights zasad platformy Azure, zobacz [szczegółowych informacji o zasadach usługi Azure](/rest/api/policy-insights/).
 
 Wersje ewaluacyjne przypisane zasady oraz inicjatyw się zdarzyć w wyniku różnych zdarzeń:
 
@@ -88,7 +88,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Jak działa zgodności
 
-W przypisaniu zasobu jest **niezgodne** Jeśli on nie być zgodny z reguły zasad lub inicjatywy. W poniższej tabeli przedstawiono, jak inne zasady, efekty pracy z oceny warunku na potrzeby wynikowego stanu zgodności:
+W przypisaniu zasobu jest **niezgodne** Jeśli on nie być zgodny z reguły zasad lub inicjatywy.
+W poniższej tabeli przedstawiono, jak inne zasady, efekty pracy z oceny warunku na potrzeby wynikowego stanu zgodności:
 
 | Stan zasobu | Efekt | Ocena zasad | Stan zgodności |
 | --- | --- | --- | --- |
@@ -114,7 +115,7 @@ Oprócz **zgodne** i **niezgodne**, zasady i zasobów mają trzy inne stany:
 - **Nierozpoczęte**: Cykl oceny nie zostało rozpoczęte zasad lub zasobu.
 - **Niezarejestrowany**: Dostawcy zasobów zasad platformy Azure nie został zarejestrowany lub konto rejestrowane w nie ma uprawnienia do odczytu danych zgodności.
 
-Używa zasad **typu** i **nazwa** pola w definicji do ustalenia, czy zasób jest zgodny. Jeśli zasób jest zgodny, jest traktowana jako odpowiednie i ma stan **zgodne** lub **niezgodne**. Jeśli **typu** lub **nazwa** jest właściwością tylko do definicji, a wszystkie zasoby są traktowane jako stosowane są oceniane.
+Używa usługi Azure Policy **typu** i **nazwa** pola w definicji do ustalenia, czy zasób jest zgodny. Jeśli zasób jest zgodny, jest traktowana jako odpowiednie i ma stan **zgodne** lub **niezgodne**. Jeśli **typu** lub **nazwa** jest właściwością tylko do definicji, a wszystkie zasoby są traktowane jako stosowane są oceniane.
 
 Wartość procentowa zgodności jest określana przez podzielenie **zgodne** zasobów przez _łączna liczba zasobów_.
 _Łączna liczba zasobów_ jest zdefiniowany jako suma **zgodne**, **niezgodne**, i **powodujące konflikt** zasobów. Ogólnej zgodności numery stanowią sumę odrębne zasoby, które są **zgodne** podzielona przez sumę wszystkich odrębne zasoby. Na poniższej ilustracji są 20 odrębne zasoby, które mają zastosowanie i jest tylko jeden **niezgodne**. Ogólna zgodność zasobów jest 95% (19 z 20).
@@ -123,23 +124,22 @@ _Łączna liczba zasobów_ jest zdefiniowany jako suma **zgodne**, **niezgodne**
 
 ## <a name="portal"></a>Portal
 
-Azure portal prezentuje graficznego środowiska wizualizacji i zrozumienie stanu zgodności w danym środowisku. Na **zasad** stronie **Przegląd** opcja zawiera szczegółowe informacje o dostępnych zakresów na zgodność inicjatywy i zasady. Oprócz stanu zgodności i liczba na przypisanie zawiera wykres przedstawiający zgodność z ostatnich siedmiu dni.
-**Zgodności** strona zawiera wiele tych samych informacji (z wyjątkiem wykres), ale zapewnia dodatkowe opcji filtrowania i sortowania.
+Azure portal prezentuje graficznego środowiska wizualizacji i zrozumienie stanu zgodności w danym środowisku. Na **zasad** stronie **Przegląd** opcja zawiera szczegółowe informacje o dostępnych zakresów na zgodność inicjatywy i zasady. Oprócz stanu zgodności i liczba na przypisanie zawiera wykres przedstawiający zgodność z ostatnich siedmiu dni. **Zgodności** strona zawiera wiele tych samych informacji (z wyjątkiem wykres), ale zapewnia dodatkowe opcji filtrowania i sortowania.
 
-![Przykład przedstawiający stronę zasad zgodności](../media/getting-compliance-data/compliance-page.png)
+![Przykład strony zgodność zasad platformy Azure](../media/getting-compliance-data/compliance-page.png)
 
 Ponieważ do różnych zakresów można przypisywać zasad lub inicjatywy, uwzględniono w zakresie dla każdego przypisania i typu definicji, który został przypisany. Liczba niezgodnych zasobów i dostęp niezgodnych zasad dla każdego przypisania również są dostarczone. Kliknięcie zasad lub inicjatywy w tabeli zawiera lepiej poznać zgodności dla tego przypisania.
 
-![Przykład strony szczegółów zgodności zasad](../media/getting-compliance-data/compliance-details.png)
+![Przykład strony szczegółów zgodności zasad platformy Azure](../media/getting-compliance-data/compliance-details.png)
 
 Lista zasobów na **zgodność zasobów** karta przedstawia stan oceny istniejących zasobów dla bieżącego przypisania. Wartością domyślną jest karcie **niezgodne**, ale można je filtrować.
 Zdarzenia (Dołącz, inspekcji, Odmów, Wdrażaj) wyzwalane przez żądanie do utworzenia zasobu zostaną wyświetlone w obszarze **zdarzenia** kartę.
 
-![Przykładem zdarzenia zgodność z zasadami](../media/getting-compliance-data/compliance-events.png)
+![Przykładem zdarzenia zgodność zasad platformy Azure](../media/getting-compliance-data/compliance-events.png)
 
 Kliknij prawym przyciskiem myszy w wierszu zdarzenia, o których chcesz zbierać szczegółowe informacje o, a następnie wybierz pozycję **Pokaż dzienniki aktywności**. Na stronie dziennik aktywności otwiera się i jest wstępnie filtrowane do wyszukiwanie przedstawiający szczegółowe informacje dotyczące przypisania i zdarzenia. Dziennik aktywności zawiera dodatkowy kontekst oraz informacje o tych zdarzeń.
 
-![Przykładowy dziennik aktywności zgodności zasad](../media/getting-compliance-data/compliance-activitylog.png)
+![Przykładowy dziennik aktywności zgodności usługi Azure Policy](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>Zrozumienie braku zgodności
 
@@ -149,7 +149,7 @@ Gdy zasoby są uznane za **niezgodnych**, istnieje wiele możliwych przyczyn. Ab
 
 ## <a name="command-line"></a>Wiersz polecenia
 
-Te same informacje dostępne w portalu można pobrać przy użyciu interfejsu API REST (łącznie z [ARMClient](https://github.com/projectkudu/ARMClient)) lub programu Azure PowerShell. Aby uzyskać szczegółowe informacje o interfejsie API REST, zobacz [szczegółowych informacji o zasadach](/rest/api/policy-insights/) odwołania. Strony podręcznika interfejsu API REST ma zielony "Try It" przycisku na każdej operacji, która pozwala wypróbować go bezpośrednio w przeglądarce.
+Te same informacje dostępne w portalu można pobrać przy użyciu interfejsu API REST (łącznie z [ARMClient](https://github.com/projectkudu/ARMClient)) lub programu Azure PowerShell. Aby uzyskać szczegółowe informacje o interfejsie API REST, zobacz [szczegółowych informacji o zasadach usługi Azure](/rest/api/policy-insights/) odwołania. Strony podręcznika interfejsu API REST ma zielony "Try It" przycisku na każdej operacji, która pozwala wypróbować go bezpośrednio w przeglądarce.
 
 Można użyć poniższych przykładów programu Azure PowerShell, należy utworzyć token uwierzytelniania przy użyciu tego przykładu kodu. Następnie zastąp $restUri ciągu w przykładach, aby pobrać obiekt JSON, który następnie może zostać przeanalizowany.
 
@@ -178,7 +178,7 @@ $response
 
 ### <a name="summarize-results"></a>Podsumowanie wyników
 
-Za pomocą interfejsu API REST podsumowania jest możliwe w kontenerze, definicji lub przypisania. Oto przykład podsumowania na poziomie subskrypcji przy użyciu zasad Insight [Podsumuj subskrypcji](/rest/api/policy-insights/policystates/summarizeforsubscription):
+Za pomocą interfejsu API REST podsumowania jest możliwe w kontenerze, definicji lub przypisania. Oto przykład podsumowania na poziomie subskrypcji przy użyciu Azure zasad Insight [Podsumuj subskrypcji](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -288,11 +288,12 @@ Wyniki powinny wyglądać podobnie do następujących:
 }
 ```
 
-Aby uzyskać więcej informacji o zapytaniach dotyczących zdarzenia dotyczące zasad, zobacz [zdarzenia dotyczące zasad](/rest/api/policy-insights/policyevents) artykule dotyczącym struktury.
+Aby uzyskać więcej informacji o zapytaniach dotyczących zdarzenia dotyczące zasad, zobacz [zdarzenia dotyczące zasad usługi Azure](/rest/api/policy-insights/policyevents) artykule dotyczącym struktury.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Moduł Azure PowerShell dla zasad jest dostępny w galerii programu PowerShell jako [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights). Korzystanie z modułu PowerShellGet, można zainstalować przy użyciu modułu `Install-Module -Name Az.PolicyInsights` (Upewnij się, że zainstalowano najnowszy [programu Azure PowerShell](/powershell/azure/install-az-ps) zainstalowane):
+Moduł Azure PowerShell dla usługi Azure Policy jest dostępna w galerii programu PowerShell jako [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
+Korzystanie z modułu PowerShellGet, można zainstalować przy użyciu modułu `Install-Module -Name Az.PolicyInsights` (Upewnij się, że zainstalowano najnowszy [programu Azure PowerShell](/powershell/azure/install-az-ps) zainstalowane):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -417,13 +418,13 @@ Trent Baker
 
 Jeśli masz [obszaru roboczego usługi Log Analytics](../../../log-analytics/log-analytics-overview.md) z `AzureActivity` z [rozwiązanie Activity Log Analytics](../../../azure-monitor/platform/collect-activity-logs.md) powiązany ze swoją subskrypcją, możesz również wyświetlić wyniki niezgodności przy użyciu cykl oceny proste zapytania Kusto i `AzureActivity` tabeli. Ze szczegółowymi informacjami w dziennikach w usłudze Azure Monitor Aby obejrzeć w przypadku niezgodności można skonfigurować alerty.
 
-![Zgodność z zasadami przy użyciu dzienników usługi Azure Monitor](../media/getting-compliance-data/compliance-loganalytics.png)
+![Zgodność z zasadami platformy Azure przy użyciu dzienników usługi Azure Monitor](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [struktura definicji zasad](../concepts/definition-structure.md)
-- Przegląd [zrozumienia efektów zasad](../concepts/effects.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md)
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

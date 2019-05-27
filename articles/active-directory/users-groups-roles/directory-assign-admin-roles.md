@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 1107a6df92bf577cd60b9ad31627219da8e1a388
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823567"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956543"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -335,28 +335,28 @@ Można wyświetlić, wartości i zresetować informacje dotyczące metody uwierz
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 
-### <a name="b2c-user-flow-administrator"></a>Administrator przepływ użytkownika B2C
+### <a name="b2c-user-flow-administrator"></a>administrator przepływów użytkownika B2C
 Utwórz i Zarządzaj wszystkimi aspektami przepływy użytkownika.
 
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.b2c/userFlows/allTasks | Przeczytaj i skonfigurować przepływy użytkownika w usłudze Azure Active Directory B2C. |
 
-### <a name="b2c-user-flow-attribute-administrator"></a>Administrator atrybut przepływ użytkownika B2C
+### <a name="b2c-user-flow-attribute-administrator"></a>administrator atrybutów przepływów użytkownika B2C
 Tworzenie i Zarządzanie schematami atrybut dostępne dla wszystkich przepływów użytkownika.
 
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.b2c/userAttributes/allTasks | Przeczytaj i konfigurowanie atrybutów użytkownika w usłudze Azure Active Directory B2C. |
 
-### <a name="b2c-ief-keyset-administrator"></a>B2C IEF zestawu kluczy administratora
+### <a name="b2c-ief-keyset-administrator"></a>administrator zestawu kluczy IEF B2C
 Zarządzanie wpisami tajnymi federacyjnych i szyfrowania w struktura środowiska tożsamości.
 
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.b2c/trustFramework/keySets/allTasks | Przeczytaj i zestaw kluczy należy skonfigurować w usłudze Azure Active Directory B2C. |
 
-### <a name="b2c-ief-policy-administrator"></a>Administrator zasad IEF B2C
+### <a name="b2c-ief-policy-administrator"></a>administrator zasad IEF B2C
 Tworzenie i zarządzanie zasadami framework zaufania w struktura środowiska tożsamości.
 
 | **Akcje** | **Opis** |
@@ -367,7 +367,7 @@ Tworzenie i zarządzanie zasadami framework zaufania w struktura środowiska to�
 Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowanie informacji o płatności.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -385,7 +385,7 @@ Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowa
 Można uzyskać dostęp i zarządzać nimi, Zarządzanie pulpitem narzędzi i usług, w tym w usłudze Intune.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -458,7 +458,7 @@ Pełny dostęp do zarządzania urządzeniami w usłudze Azure AD.
 Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystających z tożsamości usługi Azure AD.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -524,7 +524,7 @@ Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystający
 Może odczytywać konfigurację i raporty zgodności oraz zarządzać nimi w usługach Azure AD i Office 365.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -558,7 +558,7 @@ Może zarządzać możliwościami dostępu warunkowego.
 Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -575,7 +575,7 @@ Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzyskania dostępu do danych organizacyjnych klienta.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -705,7 +705,7 @@ Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania do
 Może zarządzać wszystkimi aspektami produktu Exchange.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -765,7 +765,7 @@ Może resetować hasła dla użytkowników niebędących administratorami i admi
 Może zarządzać wszystkimi aspektami produktu Azure Information Protection.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -781,7 +781,7 @@ Może zarządzać wszystkimi aspektami produktu Azure Information Protection.
 Może zarządzać wszystkimi aspektami produktu Intune.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -829,7 +829,7 @@ Można zarządzać licencje produktów dla użytkowników i grup.
 Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -846,7 +846,7 @@ Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum wiadomości usługi Office 365. 
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -859,7 +859,7 @@ Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum 
 Nie używaj — nie są przeznaczone do użytku ogólnego.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -891,7 +891,7 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 Nie używaj — nie są przeznaczone do użytku ogólnego.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -925,7 +925,7 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 Może zarządzać wszystkimi aspektami produktu Power BI.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -955,7 +955,7 @@ Może wyświetlać, ustawiać i resetować informacje o metodzie uwierzytelniani
 Mogą zarządzać przypisaniami ról w usłudze Azure AD i wszystkimi aspektami Privileged Identity Management.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -968,7 +968,7 @@ Mogą zarządzać przypisaniami ról w usłudze Azure AD i wszystkimi aspektami 
 Może odczytywać raporty logowania i inspekcji.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -984,7 +984,7 @@ Może odczytywać raporty logowania i inspekcji.
 Może odczytywać informacje o zabezpieczeniach i raporty oraz zarządzać konfiguracją w usłudze Azure AD i Office 365.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1013,7 +1013,7 @@ Może odczytywać informacje o zabezpieczeniach i raporty oraz zarządzać konfi
 Może odczytywać informacje zabezpieczające i raporty o zabezpieczeniach w usługach Azure AD i Office 365.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1033,7 +1033,7 @@ Może odczytywać informacje zabezpieczające i raporty o zabezpieczeniach w us�
 Może odczytywać informacje o kondycji usług i zarządzać biletami pomocy technicznej.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1049,7 +1049,7 @@ Może odczytywać informacje o kondycji usług i zarządzać biletami pomocy tec
 Może zarządzać wszystkimi aspektami usługi SharePoint.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1072,7 +1072,7 @@ Może zarządzać wszystkimi aspektami usługi SharePoint.
 Może zarządzać funkcjami rozmów telefonicznych i spotkań w ramach usługi Microsoft Teams.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1089,7 +1089,7 @@ Może zarządzać funkcjami rozmów telefonicznych i spotkań w ramach usługi M
 Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu zaawansowanych narzędzi.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1103,7 +1103,7 @@ Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu zaawan
 Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu podstawowych narzędzi.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1117,7 +1117,7 @@ Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu podsta
 Może zarządzać usługą Microsoft Teams.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
