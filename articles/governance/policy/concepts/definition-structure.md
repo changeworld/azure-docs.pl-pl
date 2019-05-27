@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b9fe723ca13cbee0e31b14e60a6bd740d2a282df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779290"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979545"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -100,7 +100,8 @@ Parametr ma następujące właściwości, które są używane w definicji zasad:
   - `displayName`: Przyjazna nazwa wyświetlana w portalu dla parametru.
   - `strongType`: (Opcjonalnie) Używane podczas przypisywania definicji zasad za pośrednictwem portalu. Zawiera listę pamiętać kontekstu. Aby uzyskać więcej informacji, zobacz [strongType](#strongtype).
   - `assignPermissions`: (Opcjonalnie) Ustaw jako _true_ mieć witryny Azure portal utworzyć przypisania roli podczas przypisywania zasad. Ta właściwość jest przydatna w przypadku, gdy chcesz przypisać uprawnienia poza zakres przypisania. Istnieje jedno przypisanie roli na definicji roli w ramach zasad (lub definicji roli we wszystkich zasad w inicjatywy). Wartość tego parametru musi być prawidłowym zasobem lub zakresu.
-- `defaultValue`: (Opcjonalnie) Jeśli wartość nie zostanie określony, ustawia wartość parametru w przypisania. Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
+- `defaultValue`: (Opcjonalnie) Jeśli wartość nie zostanie określony, ustawia wartość parametru w przypisania.
+  Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
 - `allowedValues`: (Opcjonalnie) Zawiera tablicę wartości, które akceptuje parametr, podczas przypisywania.
 
 Na przykład można zdefiniować definicję zasad, aby ograniczyć lokalizacje, w której można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każdy przypisanie definicji zasad, aby ograniczyć akceptowanych wartości. Korzystanie z **strongType** udostępnia udoskonalone funkcje podczas kończenia przypisania za pośrednictwem portalu:
@@ -268,8 +269,7 @@ Obsługiwane są następujące pola:
 - Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]`, i `tags[tag.with.dots]` nadal dopuszczalne sposoby deklarowania pól tagów.
-> Jednak preferowaną wyrażenia są wymienione powyżej.
+> `tags.<tagName>`, `tags[tagName]`, i `tags[tag.with.dots]` nadal dopuszczalne sposoby deklarowania pól tagów. Jednak preferowaną wyrażenia są wymienione powyżej.
 
 #### <a name="use-tags-with-parameters"></a>Za pomocą tagów z parametrami
 

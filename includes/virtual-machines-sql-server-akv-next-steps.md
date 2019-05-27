@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: rothja
 ms.service: virtual-machines-sql
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
+ms.date: 10/26/2018
+ms.author: jroth
 ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129615"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165305"
 ---
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -39,9 +38,11 @@ CREATE CREDENTIAL sysadmin_ekm_cred
     SECRET = '<<SECRET>>'
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
+
 --Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
 ADD CREDENTIAL sysadmin_ekm_cred;
+
 
 CREATE ASYMMETRIC KEY CONTOSO_KEY
 FROM PROVIDER [AzureKeyVault_EKM_Prov]
@@ -146,5 +147,3 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 Aby uzyskać więcej informacji na temat sposobu korzystania z tych funkcji szyfrowania, zobacz [przy użyciu EKM za pomocą funkcji szyfrowania serwera SQL](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
 Pamiętaj, że kroki opisane w tym artykule przyjęto założenie, że masz już program SQL Server działający na maszynie wirtualnej platformy Azure. Jeśli nie, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server na platformie Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Aby uzyskać inne wskazówki na temat uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
-
-<!--Update_Description: wording update, update link-->

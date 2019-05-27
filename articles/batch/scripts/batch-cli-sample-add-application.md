@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
 ms.openlocfilehash: a2abcfeee6fe1a08e2b02ff87e75217daddcfad4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127464"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Przykład użycia interfejsu wiersza polecenia: Dodawanie aplikacji do konta usługi Azure Batch
 
@@ -57,6 +57,6 @@ Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 | [az batch application set](/cli/azure/batch/application#az-batch-application-set) | Aktualizuje właściwości aplikacji.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).

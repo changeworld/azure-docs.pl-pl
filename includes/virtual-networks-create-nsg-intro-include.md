@@ -2,20 +2,20 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-network
-author: rockboyfor
+author: genlin
 ms.service: virtual-network
 ms.topic: include
-origin.date: 04/13/2018
-ms.date: 06/11/2018
-ms.author: v-yeche
+ms.date: 04/13/2018
+ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 20ecc0e30c774c2f237238937ab1c6c1dcd4003f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309985"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170308"
 ---
 Można użyć sieciowej grupy zabezpieczeń umożliwiają kontrolowanie ruchu do jednego lub więcej maszyn wirtualnych (VM), wystąpień roli, kart sieciowych (NIC) lub podsieci w sieci wirtualnej. Sieciowa grupa zabezpieczeń zawiera reguły kontroli dostępu, które zezwalają na ruch lub go blokują w oparciu o kierunek ruchu, protokół, adres źródłowy i docelowy oraz port. Reguły sieciowej grupy zabezpieczeń można zmienić w dowolnym momencie, a zmiany są stosowane do wszystkich skojarzonych wystąpień.
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, odwiedź stronę [co to jest sieciowa grupa zabezpieczeń](../articles/virtual-network/security-overview.md).
+

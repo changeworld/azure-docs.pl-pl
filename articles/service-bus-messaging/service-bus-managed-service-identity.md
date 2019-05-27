@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228393"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978797"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Service Bus 
 
@@ -29,7 +29,23 @@ Za pomocą tożsamości zarządzanych platformy Azure zarządza tą tożsamości
 
 ## <a name="service-bus-roles-and-permissions"></a>Uprawnienia i role usługi Service Bus
 
-Tożsamość zarządzana można dodać tylko do ról "Właściciel" lub "Współautor" w przestrzeni nazw usługi Service Bus. Przyzna tożsamości pełnej kontroli, który dla wszystkich jednostek w przestrzeni nazw. Jednak zarządzania, które operacje, aby zmienić topologii przestrzeni nazw są początkowo tylko jednak obsługiwane usługi Azure Resource Manager. Nie jest za pomocą natywnego interfejsu zarządzania interfejsu REST usługi Service Bus. Ta obsługa oznacza, że nie można użyć klienta programu .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) lub .NET Standard client [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) obiektów w ramach tożsamości zarządzanej.
+Tożsamość zarządzana można dodać do roli ""usługi Service Bus dane właściciela w przestrzeni nazw usługi Service Bus. Udziela uprawnień tożsamości, pełną kontrolę nad (Zarządzanie i operacje na danych) na wszystkich jednostek w przestrzeni nazw.
+
+>[!IMPORTANT]
+> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **"Owner"** lub **"Współautor"** roli.
+>
+> Jednak uprawnienia dostępu do danych **"Owner"** i **"Współautor"** roli będą już uznawane. Jeśli używano **"Owner"** lub **"Współautor"** roli, a następnie te muszą zostać dostosowane korzystanie z **""usługi Service Bus dane właściciela** roli.
+
+Aby użyć nowej wbudowanej roli, wykonaj poniższe kroki —
+
+1. Przejdź do [witryny Azure portal](https://portal.azure.com)
+2. Przejdź do przestrzeni nazw usługi Service Bus, gdzie masz obecnie instalacji roli "Właściciel" lub "Współautor".
+3. Kliknij przycisk "Control(IAM) dostępu do" z menu po lewej.
+4. Dodaj nowe przypisanie roli, zgodnie z poniższymi instrukcjami
+
+    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
+
+5. Wybierz pozycję "Zapisz" można zapisać nowego przypisania roli.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Za pomocą usługi Service Bus zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -51,7 +67,7 @@ Po włączeniu funkcji nową tożsamość usługi jest tworzone w usłudze Azure
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>Utwórz nową przestrzeń nazw komunikatów usługi Service Bus
 
-Następnie [tworzenie przestrzeni nazw komunikatów usługi Service Bus](service-bus-create-namespace-portal.md) w jednym z regionów świadczenia usługi Azure, które mają wersję zapoznawczą obsługi kontroli RBAC: **Wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia**. 
+Następnie [tworzenie przestrzeni nazw komunikatów usługi Service Bus](service-bus-create-namespace-portal.md). 
 
 Przejdź do obszaru nazw **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj przypisanie roli** tożsamości zarządzanej, aby dodać **właściciela** roli. Aby to zrobić, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz).
 

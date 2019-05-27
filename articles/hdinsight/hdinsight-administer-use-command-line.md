@@ -1,110 +1,98 @@
 ---
-title: Zarządzanie klastrami Apache Hadoop za pomocą klasycznego wiersza polecenia platformy Azure — Azure HDInsight
-description: Dowiedz się, jak używać platformy Azure klasyczny interfejs wiersza polecenia do zarządzania klastrami Apache Hadoop w usłudze Azure HDInsight.
+title: Zarządzanie klastrami usługi Azure HDInsight przy użyciu wiersza polecenia platformy Azure
+description: Dowiedz się, jak zarządzać klastrami usługi Azure HDInsight przy użyciu wiersza polecenia platformy Azure. Typy klastrów obejmują Apache Hadoop, Spark, HBase, Storm, Kafka, Interactive Query i usługi ML.
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/13/2019
 ms.author: tyfox
-ms.openlocfilehash: 94ef5a60ecc5d943d78b16a386660049cc52d82e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7c12831c43762ddc776e8d5701f002be97992cbc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694459"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859964"
 ---
-# <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu klasycznego wiersza polecenia platformy Azure
+# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Zarządzanie klastrami usługi Azure HDInsight przy użyciu wiersza polecenia platformy Azure
+
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Dowiedz się, jak używać [klasyczny interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) zarządzanie [Apache Hadoop](https://hadoop.apache.org/) klastrów w usłudze Azure HDInsight. Klasyczny interfejs wiersza polecenia jest zaimplementowana w środowisku Node.js. Można go używać na dowolnej platformie, która obsługuje środowisko Node.js, w tym w systemie Windows, Mac i Linux.
+Dowiedz się, jak używać [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) zarządzać klastrami usługi Azure HDInsight. Interfejs wiersza polecenia platformy Azure to wieloplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure.
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dysponować następującymi elementami:
 
-* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Klasyczny interfejs wiersza polecenia Azure** — zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure Classic](../cli-install-nodejs.md) informacji o instalacji i konfiguracji.
-* **Łączenie z platformą Azure**, używając następującego polecenia:
+* Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) kroków.
 
-    ```cli
-    azure login
-    ```
-  
-    Aby uzyskać więcej informacji na temat uwierzytelniania, przy użyciu konta służbowego lub szkolnego, zobacz [Połącz z subskrypcją platformy Azure z wiersza polecenia platformy Azure Classic](/cli/azure/authenticate-azure-cli).
-* **Przełączenie w tryb usługi Azure Resource Manager** przy użyciu następującego polecenia:
-  
-    ```cli
-    azure config mode arm
-    ```
+* Klaster platformy Apache Hadoop w HDInsight. Zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-Aby uzyskać pomoc, należy użyć **-h** przełącznika.  Na przykład:
+## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
 
-```cli
-azure hdinsight cluster create -h
+Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać usługi Azure Cloud Shell, a następnie po prostu wybierz **wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym wypadku wprowadź poniższe polecenie:
+
+```azurecli-interactive
+az login
+
+# If you have multiple subscriptions, set the one to use
+# az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="create-clusters-with-the-cli"></a>Tworzenie klastrów przy użyciu interfejsu wiersza polecenia
-Zobacz [Tworzenie klastrów w HDInsight przy użyciu wiersza polecenia platformy Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+## <a name="list-clusters"></a>Wyświetlanie listy klastrów
 
-## <a name="list-and-show-cluster-details"></a>Listy i wyświetlaniu szczegółów klastra
-Aby wyświetlić listę i szczegóły klastra, użyj następujących poleceń:
+Użyj [lista hdinsight az](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) na wyświetlanie listy klastrów. Edytuj poniższe polecenia, zastępując `RESOURCE_GROUP_NAME` z nazwą grupy zasobów, a następnie wprowadź polecenia:
 
-```cli
-azure hdinsight cluster list
-azure hdinsight cluster show <Cluster Name>
+```azurecli-interactive
+# List all clusters in the current subscription
+az hdinsight list
+
+# List only cluster name and its resource group
+az hdinsight list --query "[].{Cluster:name, ResourceGroup:resourceGroup}" --output table
+
+# List all cluster for your resource group
+az hdinsight list --resource-group RESOURCE_GROUP_NAME
+
+# List all cluster names for your resource group
+az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:name}" --output table
 ```
 
-![Widok listy klastrów w wiersza polecenia][image-cli-clusterlisting]
+## <a name="show-cluster"></a>Pokaż klastra
+
+Użyj [az hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) Aby wyświetlić informacje dotyczące określonego klastra. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`, i `CLUSTER_NAME` z istotnymi informacjami, a następnie wprowadź polecenie:
+
+```azurecli-interactive
+az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
+```
 
 ## <a name="delete-clusters"></a>Usuwanie klastrów
-Aby usunąć klaster, użyj następującego polecenia:
 
-```cli
-azure hdinsight cluster delete <Cluster Name>
+Użyj [usługa hdinsight az usunięcia](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) można usunąć określonego klastra. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`, i `CLUSTER_NAME` z istotnymi informacjami, a następnie wprowadź polecenie:
+
+```azurecli-interactive
+az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 ```
 
-Możesz także usunąć klaster, usuwając grupę zasobów zawierającą klaster. Należy pamiętać, że spowoduje to usunięcie wszystkich zasobów w grupie, w tym domyślne konto magazynu.
+Możesz także usunąć klaster, usuwając grupę zasobów zawierającą klaster. Należy zauważyć, że spowoduje to usunięcie wszystkich zasobów w grupie, w tym domyślne konto magazynu.
 
-```cli
-azure group delete <Resource Group Name>
+```azurecli-interactive
+az group delete --name RESOURCE_GROUP_NAME
 ```
 
 ## <a name="scale-clusters"></a>Skalowanie klastrów
-Aby zmienić rozmiar klastra Apache Hadoop:
 
-```cli
-azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-```
+Użyj [rozmiar az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) zmiany rozmiaru określonego klastra HDInsight z określonym rozmiarem. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`, i `CLUSTER_NAME` istotne informacje. Zastąp `TARGET_INSTANCE_COUNT` z żądaną liczbę węzłów procesu roboczego dla klastra. Aby uzyskać więcej informacji na temat skalowania klastrów, zobacz [klastrów HDInsight skalowania](./hdinsight-scaling-best-practices.md). Wpisz polecenie:
 
-
-## <a name="enabledisable-http-access-for-a-cluster"></a>Włącz/Wyłącz dostęp HTTP dla klastra
-
-```cli
-azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <password>
-azure hdinsight cluster disable-http-access [options] <Cluster Name>
+```azurecli-interactive
+az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 W tym artykule mają przedstawiono sposób wykonywania różnych zadań administracyjnych klastra HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md)
-* [Administrowanie HDInsight za pomocą programu Azure PowerShell][hdinsight-admin-powershell]
-* [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
-* [Jak używać klasycznego wiersza polecenia platformy Azure][azure-command-line-tools]
-
-[azure-command-line-tools]: ../cli-install-nodejs.md
-[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-
-[image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
-[image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
-[image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
-[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/command-line-list-of-clusters.png "Listy i wyświetlaniu klastrów"
+* [Administrowanie HDInsight za pomocą programu Azure PowerShell](hdinsight-administer-use-powershell.md)
+* [Rozpoczynanie pracy z usługą Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)

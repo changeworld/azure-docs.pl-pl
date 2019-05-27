@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 1957fa4310a22a162ee2a621d1e0349e253badb3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456571"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132462"
 ---
 ## <a name="trigger"></a>Wyzwalacz
 
@@ -387,12 +387,12 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa `eventHubTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. |
-|**path** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**consumerGroup** |**ConsumerGroup** | Opcjonalna właściwość, która ustawia [grupy odbiorców](../articles/event-hubs/event-hubs-features.md)odbiorców event #) używany do subskrybowania zdarzenia w Centrum. W przypadku pominięcia `$Default` używanie grupy odbiorców. |
 |**Kardynalność** | Nie dotyczy | Dla języka Javascript. Ustaw `many` w celu włączenia przetwarzania wsadowego.  Jeśli pominięty lub ustawiony jako `one`, jeden komunikat o przekazany do funkcji. |
-|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku [przestrzeni nazw](../articles/event-hubs/event-hubs-create.md)#create na--hubs-przestrzeń nazw usługi event), nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu wyzwalacz.|
-|**path**|**EventHubName**|Nazwa Centrum zdarzeń. Można odwoływać się za pomocą ustawień aplikacji `%eventHubName%`|
+|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku [przestrzeni nazw](../articles/event-hubs/event-hubs-create.md)#create na--hubs-przestrzeń nazw usługi event), nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu wyzwalacz.|
+|**Ścieżka**|**EventHubName**|Nazwa Centrum zdarzeń. Można odwoływać się za pomocą ustawień aplikacji `%eventHubName%`|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -446,6 +446,26 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     return $"{DateTime.Now}";
+}
+```
+
+Poniższy przykład pokazuje sposób użycia `IAsyncCollector` interfejsu została wysłana partia komunikatów. Ten scenariusz jest typowy podczas przetwarzania komunikatów pochodzących z jednego Centrum zdarzeń i wysyła wynik do innego Centrum zdarzeń.
+
+```csharp
+[FunctionName("EH2EH")]
+public static async Task Run(
+    [EventHubTrigger("source", Connection = "EventHubConnectionAppSetting")] EventData[] events,
+    [EventHub("dest", Connection = "EventHubConnectionAppSetting")]IAsyncCollector<string> outputEvents,
+    ILogger log)
+{
+    foreach (EventData eventData in events)
+    {
+        // do some processing:
+        var myProcessedEvent = DoSomething(eventData);
+
+        // then send the message
+        await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    }
 }
 ```
 
@@ -656,10 +676,10 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa "eventHub". |
 |**direction** | Nie dotyczy | Musi być równa "out". Ten parametr ma wartość automatycznie podczas tworzenia powiązania w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje zdarzenie. |
-|**path** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**name** | Nie dotyczy | Nazwa zmiennej użytą w kodzie funkcji, który reprezentuje zdarzenie. |
+|**Ścieżka** |**EventHubName** | Funkcje 1.x tylko. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**eventHubName** |**EventHubName** | Działa tylko 2.x. Nazwa Centrum zdarzeń. Gdy nazwa Centrum zdarzeń jest również obecny w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
-|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku *przestrzeni nazw*, nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć uprawnienia do wysyłania do wysyłania wiadomości do strumienia zdarzeń.|
+|**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia do przestrzeni nazw Centrum zdarzeń. Skopiować te parametry połączenia, klikając pozycję **informacje o połączeniu** przycisku *przestrzeni nazw*, nie Centrum zdarzeń, sam. Te parametry połączenia muszą mieć uprawnienia do wysyłania do wysyłania wiadomości do strumienia zdarzeń.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -671,9 +691,9 @@ W języku JavaScript, zdarzenie wyjściowe uzyskują dostęp przy użyciu `conte
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Powiązanie | Informacje ogólne |
+| Powiązanie | Odwołanie |
 |---|---|
-| Centrum zdarzeń | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Centrum zdarzeń usługi Event Hubs | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 

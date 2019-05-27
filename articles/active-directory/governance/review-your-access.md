@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384553"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113184"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
 Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do grup ani aplikacji w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostępu usługi Azure AD.
 
 W tym artykule opisano, jak przejrzeć swój własny dostęp do grupy lub aplikacji.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Usługa Azure AD — warstwa Premium P2
+
+Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otwórz przegląd dostępu
 
@@ -70,7 +76,7 @@ Po otwarciu przeglądu dostępu, możesz zobaczyć dostępu.
 
     ![Przeprowadzenie przeglądu dostępu](./media/review-your-access/perform-access-review-submit.png)
 
-1. Kliknij przycisk **Prześlij**.
+1. Kliknij przycisk **Submit** (Prześlij).
 
     Wybór zostanie przesłany i powrót do portalu MyApps.
 

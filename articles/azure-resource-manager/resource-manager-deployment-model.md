@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
 ms.openlocfilehash: c8aafa2dc2798aee5576dab4781b42d4aa67ddd9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269267"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128512"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Porównanie usługi Azure Resource Manager i wdrożenia klasycznego: omówienie modeli wdrażania i stanu zasobów
 
@@ -155,7 +155,7 @@ Wszelkie utworzone elementy do automatyzacji oraz skrypty będą nadal działać
 
 Kompleksowy zestaw szablonów startowych można znaleźć na stronie [Szablony szybkiego startu usługi Azure Resource Manager](https://azure.microsoft.com/documentation/templates/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby zapoznać się z tworzeniem szablonu definiującego maszynę wirtualną, konto magazynu i sieć wirtualną, zobacz [Przewodnik po szablonie usługi Resource Manager](resource-manager-template-walkthrough.md).
 * Aby wyświetlić polecenia dotyczące wdrażania szablonu, zobacz [Wdrażanie aplikacji za pomocą szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).

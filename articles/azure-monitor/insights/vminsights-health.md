@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 9fa76c9637a6dcdca48bf45e8ee2aa9305a4f64f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522190"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130454"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Poznanie kondycji usługi Azure virtual machines
 
@@ -85,7 +85,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 Przed zagłębieniem się w funkcji kondycji dla pojedynczej maszyny wirtualnej lub grupy maszyn wirtualnych, ważne jest, że firma Microsoft zapewnia krótkie wprowadzenie, aby zrozumieć sposób prezentowania informacji i reprezentują wizualizacji.  
 
-## <a name="view-health-directly-from-a-virtual-machine"></a>Wyświetl kondycję bezpośrednio z maszyny wirtualnej 
+### <a name="view-health-directly-from-a-virtual-machine"></a>Wyświetl kondycję bezpośrednio z maszyny wirtualnej 
 
 Aby wyświetlić kondycję maszyn wirtualnych platformy Azure, wybierz **Insights (wersja zapoznawcza)** z okienka po lewej stronie maszyny wirtualnej. Na stronie maszyny Wirtualnej insights **kondycji** jest domyślnie otwarty i wyświetla widok kondycji maszyny wirtualnej.  
 
@@ -96,11 +96,21 @@ Na **kondycji** kartę w sekcji **kondycji maszyny Wirtualnej gościa**, w tabel
 Stany kondycji zdefiniowane dla maszyny Wirtualnej zostały opisane w poniższej tabeli: 
 
 |Ikona |Stan kondycji |Znaczenie |
-|-----|-------------|------------|
+|-----|-------------|---------------|
 | |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się on w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej problemów i działa zgodnie z potrzebami. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
 | |Krytyczne |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
 | |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy wartości progowe stanu kondycji może można skonfigurować), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. Z listą nadrzędny monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
-| |Nieznana |Stan kondycji jest *nieznany* stan, gdy stan kondycji nie można obliczyć z kilku powodów, takich jak nie może zbierać dane, usługa niezainicjowana itp. Ten stan kondycji jest niemożliwe.| 
+| |Nieznana |Stan kondycji jest *nieznany* kiedy nie można obliczyć z kilku powodów. Zobacz następujący przypis <sup>1</sup> dodatkowe szczegóły i możliwe rozwiązania, aby je rozwiązać. |
+
+<sup>1</sup> nieznany stan kondycji jest spowodowane przez następujące problemy:
+
+- Ponownie skonfigurować agenta, a nie jest już określony raporty do obszaru roboczego, gdy włączono usługi Azure Monitor dla maszyn wirtualnych. Aby skonfigurować agenta w celu przekazywania informacji do obszaru roboczego, zobacz [Dodawanie lub usuwanie obszaru roboczego](../platform/agent-manage.md#adding-or-removing-a-workspace).
+- Maszyna wirtualna została usunięta.
+- Obszar roboczy, skojarzone z usługą Azure Monitor dla maszyn wirtualnych zostaną usunięte. Aby odzyskać obszaru roboczego, w przypadku planu Premier możesz otworzyć żądania pomocy technicznej za pomocą korzyści z pomocy technicznej [Premier](https://premier.microsoft.com/).
+- Zależności rozwiązania zostały usunięte. Aby ponownie włączyć ServiceMap i InfrastructureInsights rozwiązania w Twoim obszarze roboczym usługi Log Analytics, można ponownie zainstalować przy użyciu [szablonu usługi Azure Resource Manager](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions) , ma pod warunkiem lub za pomocą opcji konfigurowania obszaru roboczego na znaleziono Rozpoczynanie pracy kartę.
+- Maszyny Wirtualnej zostało zatrzymane.
+- Usługi platformy Azure maszyna wirtualna jest niedostępna lub obecnie jest wykonywana konserwacja.
+- Obszar roboczy [danych dotyczących dziennego ani nie ogranicza przechowywania](../platform/manage-cost-storage.md) jest spełniony.
 
 Wybieranie **Wyświetl diagnostykę kondycji** spowoduje otwarcie strony, przedstawiający wszystkie składniki maszyny Wirtualnej, kryteriów skojarzonej kondycji, zmian stanu i innych istotnych problemów napotykanych przez monitorowanie składników powiązane z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz [Diagnostyka kondycji](#health-diagnostics). 
 
@@ -108,7 +118,7 @@ W obszarze **kondycja składnika** sekcji tabeli pojawi się stan kondycji zbior
 
 Podczas uzyskiwania dostępu do kondycji, w maszynie Wirtualnej platformy Azure z systemem operacyjnym Windows, stan kondycji górnej pięciu podstawowych Windows services są wyświetlane w sekcji **podstawowych usług kondycji**.  Wybranie jednej z usług powoduje otwarcie strony z listą kryteria kondycji monitorowania tego składnika, a jej stan kondycji.  Kliknięcie nazwy kryteria kondycji zostanie otwarty w okienku właściwości, a w tym miejscu możesz przejrzeć szczegóły konfiguracji, w tym przypadku kryteria kondycji ma odpowiedni alert usługi Azure Monitor zdefiniowane. Aby dowiedzieć się więcej, zobacz [Diagnostyka kondycji i Praca z kryteria kondycji](#health-diagnostics).  
 
-## <a name="aggregate-virtual-machine-perspective"></a>Perspektywa agregacji maszyny wirtualnej
+### <a name="aggregate-virtual-machine-perspective"></a>Perspektywa agregacji maszyny wirtualnej
 
 Aby wyświetlić kondycji zbieranie danych dla wszystkich maszyn wirtualnych w grupie zasobów, z listy nawigacji w portalu wybierz **usługi Azure Monitor** , a następnie wybierz **maszyny wirtualne (wersja zapoznawcza)**.  
 
@@ -154,7 +164,7 @@ Możesz przejść do dalszych szczegółów, aby zobaczyć, które wystąpienia 
 
 ## <a name="health-diagnostics"></a>Diagnostyka kondycji
 
-Thge **Diagnostyka kondycji** strona pozwala umożliwia zwizualizowanie Model kondycji maszyny Wirtualnej, wyświetlanie listy wszystkich składników maszyn wirtualnych, skojarzone kryteria kondycji, zmian stanu i innych istotnych problemów identyfikowane za pomocą monitorowanych składników powiązane do maszyny Wirtualnej.
+**Diagnostyka kondycji** strona pozwala umożliwia zwizualizowanie Model kondycji maszyny Wirtualnej, wyświetlanie listy wszystkich składników maszyn wirtualnych, skojarzone kryteria kondycji, zmian stanu i innych istotnych problemów identyfikowane za pomocą monitorowanych składników powiązane do maszyny Wirtualnej.
 
 ![Przykład strony Diagnostyka kondycji dla maszyny Wirtualnej](./media/vminsights-health/health-diagnostics-page-01.png)
 
@@ -343,7 +353,7 @@ Aby włączyć lub wyłączyć alert kryteria kondycji konkretnego właściwoś�
 Monitor kondycji maszyn wirtualnych platformy Azure obsługuje wiadomości SMS i powiadomień e-mail, gdy alerty są generowane, gdy kryteria kondycji staje się nieprawidłowy. Aby skonfigurować powiadomienia, musisz Zanotuj nazwę grupy akcji, który jest skonfigurowany do wysyłania powiadomień programu SMS lub wiadomości e-mail. 
 
 >[!NOTE]
->Ta akcja musi zostać wykonana względem każdej maszyny Wirtualnej monitorowanej, którą chcesz otrzymywać powiadomienie.
+>Ta akcja musi wykonać względem każdej maszyny Wirtualnej monitorowanej, że chcesz otrzymywać powiadomienie, nie ma zastosowania do wszystkich maszyn wirtualnych w grupie zasobów.  
 
 1. W oknie terminalu wpisz **logowania armclient.exe**. Ten sposób wyświetli monit o logowanie do platformy Azure.
 

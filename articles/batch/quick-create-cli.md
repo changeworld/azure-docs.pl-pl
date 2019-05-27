@@ -11,11 +11,11 @@ ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
 ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752351"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127490"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Szybki start: Uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -95,7 +95,7 @@ az batch pool show --pool-id mypool \
 
 Wykonuj kolejne kroki, aby utworzyć zadanie i zadania podrzędne, w czasie gdy stan puli ulega zmianie. Pula jest gotowa do uruchamiania zadań podrzędnych, gdy stan alokacji to `steady` i wszystkie węzły są uruchomione. 
 
-## <a name="create-a-job"></a>Tworzenie zadania
+## <a name="create-a-job"></a>Utwórz zadanie
 
 Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione.  Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Utwórz zadanie usługi Batch za pomocą polecenia [az batch job create](/cli/azure/batch/job#az-batch-job-create). Poniższy przykład tworzy zadanie *myjob* w puli *mypool*. Początkowo zadanie nie zawiera zadań podrzędnych.
 
@@ -204,7 +204,7 @@ Za pomocą polecenia [az group delete](/cli/azure/group#az-group-delete) można 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono konto usługi Batch, pulę usługi Batch i zadanie usługi Batch. Zadanie uruchomiło przykładowe zadania podrzędne i wyświetlono dane wyjściowe utworzone w jednym z węzłów. Teraz, gdy już rozumiesz kluczowe pojęcia związane z usługą Batch, możesz wypróbować tę usługę z bardziej realistycznymi obciążeniami na większą skalę. Aby dowiedzieć się więcej o usłudze Azure Batch, kontynuuj naukę w ramach samouczków usługi Azure Batch. 
 

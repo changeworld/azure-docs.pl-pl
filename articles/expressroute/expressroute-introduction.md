@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 10/18/2018
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b13c57728c43e02f7ebf9d7730d82d681f5fc1f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364350"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965884"
 ---
 # <a name="expressroute-overview"></a>Omówienie usługi ExpressRoute
 Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i Dynamics 365.
@@ -59,8 +59,11 @@ Z firmą Microsoft możesz się połączyć w jednej z naszych [lokalizacji komu
 
 Na przykład po połączeniu się z firmą Microsoft w Amsterdamie za pośrednictwem usługi ExpressRoute uzyskasz dostęp do wszystkich usług w chmurze Microsoft hostowanych w Europie Północnej i Europie Zachodniej. Zobacz artykuł [ExpressRoute partners and peering locations](expressroute-locations.md) (Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute), który zawiera omówienie regionów geopolitycznych, powiązanych regionów chmury Microsoft i odpowiadających im lokalizacji komunikacji równorzędnej usługi ExpressRoute.
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globalna łączność dzięki dodatkowi ExpressRoute Premium
-Możesz włączyć funkcję dodatku ExpressRoute Premium, aby rozszerzyć łączność w ramach granic geopolitycznych. Na przykład po połączeniu się z firmą Microsoft w Amsterdamie za pośrednictwem usługi ExpressRoute będziesz mieć dostęp do wszystkich usług w chmurze Microsoft hostowanych we wszystkich regionach na świecie (z wyjątkiem chmur krajowych). Możesz uzyskać dostęp do usług wdrożonych w Ameryce Południowej lub Australii w taki sam sposób, w jaki uzyskujesz dostęp do regionów Europa Północna i Europa Zachodnia.
+### <a name="global-connectivity-with-expressroute-premium"></a>Globalna łączność dzięki ExpressRoute Premium
+Aby umożliwić [ExpressRoute Premium](expressroute-faqs.md) Aby rozszerzyć łączność w ramach granic geopolitycznych. Na przykład po połączeniu się z firmą Microsoft w Amsterdamie za pośrednictwem usługi ExpressRoute będziesz mieć dostęp do wszystkich usług w chmurze Microsoft hostowanych we wszystkich regionach na świecie (z wyjątkiem chmur krajowych). Możesz uzyskać dostęp do usług wdrożonych w Ameryce Południowej lub Australii w taki sam sposób, w jaki uzyskujesz dostęp do regionów Europa Północna i Europa Zachodnia.
+
+### <a name="local-connectivity-with-expressroute-local"></a>Łączność lokalna z lokalnej usługi ExpressRoute
+Transfer danych ekonomiczne rozwiązanie, należy włączyć [lokalnej jednostki SKU](expressroute-faqs.md) Jeśli możesz zebranie danych z lokalizacją usługi ExpressRoute, w pobliżu odpowiedni region platformy Azure. Za pomocą lokalnego transfer danych znajduje się w Twoich rękach portu usługi ExpressRoute. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Łączność między sieciami lokalnymi za pomocą rozwiązania ExpressRoute Global Reach
 Za pomocą rozwiązania ExpressRoute Global Reach możesz umożliwić wymianę danych między lokacjami lokalnymi, łącząc obwody usługi ExpressRoute. Jeśli na przykład masz prywatne centrum danych w Kalifornii połączone z usługą ExpressRoute w Dolinie Krzemowej i kolejne prywatne centrum danych w Teksasie połączone z usługą ExpressRoute w Dallas, dzięki rozwiązaniu ExpressRoute Global Reach możesz połączyć te prywatne centra danych za pośrednictwem dwóch obwodów usługi ExpressRoute. Ruch sieciowy między centrami danych będzie odbywał się za pośrednictwem sieci firmy Microsoft.
@@ -72,7 +75,7 @@ Usługa ExpressRoute ma nieustannie rosnący ekosystem dostawców połączeń i 
 ### <a name="connectivity-to-national-clouds"></a>Łączność z chmurami krajowymi
 Firma Microsoft obsługuje izolowane środowiska w chmurze dla określonych regionów geopolitycznych i segmentów klientów. Lista krajowych chmur i dostawców znajduje się w artykule [Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute](expressroute-locations.md).
 
-### <a name="expressroute-direct"></a>Usługa ExpressRoute Direct
+### <a name="expressroute-direct"></a>ExpressRoute Direct
 Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w lokalizacjach komunikacji równorzędnej strategicznie rozmieszczonych na całym świecie. Usługa ExpressRoute Direct zapewnia dwustronną łączność z przepustowością 100 Gb/s, co umożliwia obsługę łączności w trybie aktywny/aktywny na dużą skalę.
 
 Oto kilka najważniejszych funkcji, które zapewnia usługa ExpressRoute Direct:

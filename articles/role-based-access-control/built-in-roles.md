@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ce23b891decd20db239e653702533ac7af21b980
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5d964ebd40ac1bd8817bc93d5e4f78096f221be2
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073334"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977767"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -56,12 +56,14 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Avere Operator](#avere-operator) | Używane przez klaster vFXT Avere Zarządzanie klastrem |
 | [Rola administratora klastra Azure Kubernetes Service](#azure-kubernetes-service-cluster-admin-role) | Wyświetl listę akcji poświadczeń administratora klastra. |
 | [Rola użytkownika klastra Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Wyświetl listę akcji poświadczeń użytkownika klastra. |
+| [Czytnik danych usługi Azure Maps (wersja zapoznawcza)](#azure-maps-data-reader-preview) | Udziela uprawnień do odczytu danych związanych z mapą z konta usługi Azure Maps. |
 | [Właściciel rejestracji w usłudze Azure Stack](#azure-stack-registration-owner) | Umożliwia zarządzanie rejestracjami w usłudze Azure Stack. |
 | [Współautor kopii zapasowych](#backup-contributor) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii zapasowych, tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Czytelnik kopii zapasowych](#backup-reader) | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
 | [Czytelnik rozliczenia](#billing-reader) | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
 | [BizTalk Contributor](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. |
+| [Dostęp do elementu członkowskiego łańcucha bloków węzła (wersja zapoznawcza)](#blockchain-member-node-access-preview) | Zezwala na dostęp do węzłów członkowskich łańcucha bloków |
 | [Współautor punktu końcowego usługi CDN](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi usługi CDN, lecz nie może przyznawać dostępu innym użytkownikom. |
 | [CDN Endpoint Reader](#cdn-endpoint-reader) | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
 | [Współautor profilu CDN](#cdn-profile-contributor) | Może zarządzać profilami usługi CDN i ich punktami końcowymi, ale nie może przyznawać dostępu innym użytkownikom. |
@@ -86,6 +88,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Użytkownik usługi DevTest Labs](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
+| [Event Hubs danych właściciela](#event-hubs-data-owner) | Umożliwia uzyskanie pełnego dostępu do zasobów usługi Azure Event Hubs | 
 | [Współautor EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Pozwala zarządzać operacjami subskrypcji zdarzeń usługi Event Grid. |
 | [Czytnik EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Pozwala odczytywać subskrypcje zdarzeń usługi Event Grid. |
 | [Klaster HDInsight — Operator](#hdinsight-cluster-operator) | Umożliwia odczytu i modyfikowania konfiguracji klastra HDInsight. |
@@ -116,6 +119,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Administrator zabezpieczeń](#security-admin) | W usłudze Security Center tylko: Można wyświetlić zasady zabezpieczeń, widoku stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń, Odrzuć alerty i zalecenia |
 | [Menedżer zabezpieczeń (starsza wersja)](#security-manager-legacy) | To jest rola starszej wersji. Zamiast tego użyj Administrator zabezpieczeń |
 | [Czytelnik zabezpieczeń](#security-reader) | W usłudze Security Center tylko: Można wyświetlić, zaleceń i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie może wprowadzać zmian |
+| [Usługa Service Bus danych właściciela](#service-bus-data-owner) | Umożliwia pełny dostęp do zasobów usługi Azure Service Bus |
 | [Współautor usługi Site Recovery](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator usługi Site Recovery](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
 | [Czytelnik usługi Site Recovery](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
@@ -427,7 +431,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="automation-operator"></a>Operator usługi
+## <a name="automation-operator"></a>Operator automatyzacji
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,6 +575,21 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="azure-maps-data-reader-preview"></a>Czytnik danych usługi Azure Maps (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Udziela uprawnień do odczytu danych związanych z mapą z konta usługi Azure Maps. |
+> | **Identyfikator** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.Maps/accounts/data/read | Daje dostęp do odczytu danych na konto usługi maps. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
@@ -815,6 +834,21 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="blockchain-member-node-access-preview"></a>Dostęp do węzłów członkowskich łańcucha bloków (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na dostęp do węzłów członkowskich łańcucha bloków |
+> | **Identyfikator** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
+> | **Akcje** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | Pobiera lub wyświetla ich listę istniejących węzłów transakcji składowej łańcucha bloków. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | Łączy do węzła transakcji składowej łańcucha bloków. |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="cdn-endpoint-contributor"></a>Współautor punktu końcowego usługi CDN
 > [!div class="mx-tableFixed"]
 > | | |
@@ -932,7 +966,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Identyfikator** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
-> | Microsoft.ClassicStorage/storageAccounts/* | Tworzenie i zarządzanie kontami magazynu |
+> | Microsoft.ClassicStorage/storageAccounts/* | Tworzenie kont magazynu i zarządzanie nimi |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
@@ -1139,6 +1173,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Resources/subscriptions/read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Advisor/configurations/read | Pobieranie konfiguracji |
+> | Microsoft.Advisor/recommendations/read | Odczytuje zalecenia |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
@@ -1159,6 +1195,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Resources/subscriptions/read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Advisor/configurations/read | Pobieranie konfiguracji |
+> | Microsoft.Advisor/recommendations/read | Odczytuje zalecenia |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
@@ -1198,6 +1236,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | Wyświetla listę niezaszyfrowanych poświadczeń związanych z zamówieniem. |
 > | Microsoft.Databox/locations/availableSkus/action | Ta metoda zwraca listę dostępnych jednostek SKU. |
+> | Microsoft.Databox/locations/validateAddress/action | Weryfikuje adres wysyłkowy i udostępnia alternatywne adresy, jeśli istnieją. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
@@ -1299,6 +1338,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.DevTestLab/*/read | Odczyt właściwości laboratorium |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Oświadczenie losowe przejęcia maszynę wirtualną w środowisku laboratoryjnym. |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | Tworzenie maszyn wirtualnych w laboratorium. |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | Upewnij się, że bieżący użytkownik nie ma prawidłowego profilu w środowisku laboratoryjnym. |
 > | Microsoft.DevTestLab/labs/formulas/delete | Usunięcie formuły. |
 > | Microsoft.DevTestLab/labs/formulas/read | Przeczytaj formuły. |
 > | Microsoft.DevTestLab/labs/formulas/write | Dodaje lub modyfikuje formuły. |
@@ -1369,6 +1409,22 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="event-hubs-data-owner"></a>Event Hubs danych właściciela
+
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na pełny dostęp do zasobów usługi Azure Event Hubs. |
+> | **Identyfikator** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **Akcje** |  |
+> | Microsoft.EventHubs/* | Umożliwia dostęp do pełnego zarządzania, do przestrzeni nazw usługi Event Hubs |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.EventHubs/* | Zezwala na pełny dostęp do przestrzeni nazw usługi Event Hubs |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="eventgrid-eventsubscription-contributor"></a>Współautor subskrypcji zdarzeń usługi Event Grid
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1426,6 +1482,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Resources/deployments/operations/read | Pobiera operacje wdrażania lub wyświetla ich listę. |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
+> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
 > | *Brak* |  |
@@ -1514,7 +1571,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="log-analytics-contributor"></a>Współautor usługi Log Analytics
+## <a name="log-analytics-contributor"></a>Współpracownik usługi Log Analytics
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2019,6 +2076,22 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="service-bus-data-owner"></a>Usługa Service Bus danych właściciela
+
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Zezwala na pełny dostęp do zasobów usługi Azure Service Bus. |
+> | **Identyfikator** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **Akcje** |  |
+> | Microsoft.ServiceBus/* | Umożliwia dostęp do pełnego zarządzania, do przestrzeni nazw usługi Service Bus |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.ServiceBus/* | Zezwala na pełny dostęp do przestrzeni nazw usługi Service Bus |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="site-recovery-contributor"></a>Współautor usługi Site Recovery
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2431,7 +2504,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
-> | Microsoft.Storage/storageAccounts/* | Tworzenie i zarządzanie kontami magazynu |
+> | Microsoft.Storage/storageAccounts/* | Tworzenie kont magazynu i zarządzanie nimi |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
 > | *Brak* |  |
@@ -2482,7 +2555,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Opis** | Zapewnia pełny dostęp do kontenerów obiektów blob usługi Azure Storage i danych, w tym przypisywanie kontroli dostępu POSIX. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akcje** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/* | Pełne uprawnienia w kontenerach.  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* | Pełne uprawnienia w kontenerach. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |

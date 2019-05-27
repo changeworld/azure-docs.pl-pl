@@ -5,16 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 03/05/2019
-ms.date: 03/25/2019
-ms.author: v-junlch
+ms.date: 03/05/2019
+ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403866"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131838"
 ---
 Szablon projektu usługi Azure Functions w programie Visual Studio umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikację funkcji do funkcji grupy można użyć jako jednostki logicznej, zarządzania, wdrażanie i udostępnianie zasobów.
 
@@ -39,4 +38,3 @@ Szablon projektu usługi Azure Functions w programie Visual Studio umożliwia ut
     > Upewnij się, możesz ustawić **prawa dostępu** do `Anonymous`. Po wybraniu domyślnego poziomu `Function`, jesteś zobowiązany do przedstawienia [funkcyjne](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) w żądaniach wysyłanych do uzyskania dostępu do punktu końcowego funkcji.
     
 4. Wybierz **OK** do tworzenia projektu funkcji i funkcji wyzwalanej przez HTTP.
-

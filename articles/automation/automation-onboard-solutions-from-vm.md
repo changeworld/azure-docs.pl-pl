@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38b5b233d21c0c5d79d7bcb6a145e6232b238b0e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738933"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133117"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań zarządzania aktualizacjami, śledzenie zmian i spisu z maszyną wirtualną platformy Azure
 
@@ -104,6 +104,8 @@ Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczy
 * Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
 * Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
 * Zmienne
+
+Alternatywnie można również odłączyć obszaru roboczego z konta usługi Automation z obszaru roboczego usługi Log Analytics. W obszarze roboczym wybierz **konta usługi Automation** w obszarze **powiązane zasoby**. Na stronie konta automatyzacji wybierz **odłączyć konto**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

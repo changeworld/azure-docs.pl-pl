@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
 ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153277"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -97,7 +97,7 @@ Amazon S3 obsługuje klienta i serwera szyfrowanie danych magazynowanych. Aby uz
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Usługi Amazon Redshift obsługuje klaster szyfrowanie danych magazynowanych. Aby uzyskać więcej informacji, zobacz [szyfrowania bazy danych usługi Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
-#### <a name="salesforce"></a>SalesForce
+#### <a name="salesforce"></a>Salesforce
 SalesForce obsługuje szyfrowanie platformy Shield, który umożliwia szyfrowanie wszystkich plików załączników i pola niestandardowe. Aby uzyskać więcej informacji, zobacz [zrozumienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Scenariusze hybrydowe
@@ -135,11 +135,11 @@ Usługa Azure Virtual Network jest logicznym odzwierciedleniem Twojej sieci w ch
 
 Poniższa tabela zawiera podsumowanie sieci i zaleceń dotyczących Self-Hosted integration runtime konfiguracji na podstawie różnych kombinacji źródłowe i docelowe lokalizacje hybrydowe przenoszenie danych.
 
-| Element źródłowy      | Element docelowy                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
+| Source      | Lokalizacja docelowa                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej)           | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalnie | Usługi oparte na platformie Azure, z publicznym punktem końcowym | ExpressRoute (komunikacji równorzędnej firmy Microsoft)            | Własne środowisko integration runtime może być zainstalowane w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. |
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej)           | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalne | Usługi oparte na platformie Azure, z publicznym punktem końcowym | ExpressRoute (komunikacji równorzędnej firmy Microsoft)            | Własne środowisko integration runtime może być zainstalowane w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. |
 
 Na poniższych ilustracjach przedstawiono użycie własnego środowiska integration runtime do przenoszenia danych między lokalną bazą danych i usług platformy Azure przy użyciu usługi ExpressRoute i sieci VPN IPSec (usługa Azure Virtual Network):
 

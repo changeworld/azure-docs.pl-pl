@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 35f1b805323da03f1622e5c355d6ffa6d960b275
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171503"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Tworzenie definicji aplikacji zarządzanej za pomocą programu PowerShell
 
@@ -41,7 +41,7 @@ Ten skrypt używa następującego polecenia do utworzenia definicji aplikacji za
 | [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Tworzy definicję aplikacji zarządzanej. Należy podać pakiet, który zawiera wymagane pliki. |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby zapoznać się z wprowadzeniem do aplikacji zarządzanych, zobacz [Azure Managed Application overview](../overview.md) (Omówienie aplikacji zarządzanych platformy Azure).
 * Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).

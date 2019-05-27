@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 4/18/2019
 ms.author: victorh
 ms.openlocfilehash: 5307f7674635fd33241e1faba9bb0b7c0432d10b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134871"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Samouczek: Tworzenie bramy aplikacji przy użyciu opartego na ścieżkach reguł routingu, za pomocą witryny Azure portal
 
@@ -58,7 +58,7 @@ Sieć wirtualna jest wymagane do komunikacji między zasobami, które można utw
    - *myAGSubnet* — jako nazwę podsieci.
    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-     ![Tworzenie sieci wirtualnej](./media/create-url-route-portal/application-gateway-vnet.png)
+     ![Utwórz sieć wirtualną](./media/create-url-route-portal/application-gateway-vnet.png)
 
 6. Wybierz **OK** utworzyć sieć wirtualną i podsieć.
 7. Wybierz **wybierz publiczny adres IP**, wybierz opcję **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne innych ustawień, a następnie kliknij przycisk **OK**.
@@ -121,7 +121,7 @@ W tym przykładzie utworzysz trzy maszyny wirtualne do użycia jako serwery zapl
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Tworzenie puli wewnętrznej bazy danych z maszynami wirtualnymi
 
 1. Wybierz **wszystkie zasoby** , a następnie wybierz **myAppGateway**.
-2. Wybierz **pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Wybierz pozycję **appGatewayBackendPool**.
+2. Wybierz **pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Wybierz **appGatewayBackendPool**.
 3. Wybierz **Add target** dodać *myVM1* do appGatewayBackendPool.
 
     ![Dodawanie serwerów zaplecza](./media/create-url-route-portal/application-gateway-backend.png)

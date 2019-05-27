@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4ff596cdafd348288187b0cd9b32f7b4c2d275
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cafe81a1b5ab6d26e71eff05e355d2ed79c4d5e7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823388"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119379"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Włącz połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -43,7 +43,7 @@ Wykonaj następujące kroki, aby włączyć rejestrację połączone:
 > Począwszy od marca 2019 opcji połączenia telefonicznego nie będzie dostępna dla uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ użytkowników w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie dotyczy wiadomości SMS. Opcje połączenia telefonicznego będą dostępne dla użytkowników w płatną dzierżaw usługi Azure AD.
 
 > [!NOTE]
-> Po włączeniu rejestracji połączone, użytkownicy, którzy rejestrowanie lub Potwierdzanie numeru telefonu lub aplikacji mobilnej za pomocą nowego środowiska można ich używać uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ, jeśli te metody są włączone w uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ zasady. Jeśli wyłączysz następnie tego środowiska, użytkownicy, którzy przejdź do poprzedniej rejestracji SSPR strony w `https:/aka.ms/ssprsetup` będą musieli wykonywać uwierzytelnianie wieloskładnikowe, przed uzyskaniem dostępu do strony.
+> Po włączeniu rejestracji połączone, użytkownicy, którzy rejestrowanie lub Potwierdzanie numeru telefonu lub aplikacji mobilnej za pomocą nowego środowiska można ich używać uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ, jeśli te metody są włączone w uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ zasady. Jeśli wyłączysz następnie tego środowiska, użytkownicy, którzy przejdź do poprzedniej rejestracji SSPR strony w `https://aka.ms/ssprsetup` będą musieli wykonywać uwierzytelnianie wieloskładnikowe, przed uzyskaniem dostępu do strony.
 
 Jeśli strefa Lista przypisywanie witryn do zostały skonfigurowane w programie Internet Explorer, następujące witryny muszą znajdować się w tej samej strefy:
 

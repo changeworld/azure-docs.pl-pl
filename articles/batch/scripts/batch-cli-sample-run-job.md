@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
 ms.openlocfilehash: 4ddcc2541bd31c887c17e549209270c60d735351
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472290"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127369"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Przykład użycia interfejsu wiersza polecenia: Uruchamianie zadania i zadań podrzędnych za pomocą usługi Azure Batch
 
@@ -58,6 +58,6 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | Pobiera szczegóły zadania podrzędnego z określonego zadania usługi Batch.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).

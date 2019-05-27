@@ -14,11 +14,11 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505809"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165321"
 ---
 ## <a name="prepare-for-akv-integration"></a>Przygotowanie do Integracja
 Aby korzystać z integracji magazynu kluczy Azure do skonfigurowania maszyny Wirtualnej programu SQL Server, istnieje kilka wymagań wstępnych: 

@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202165"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164275"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Uzyskaj parametry połączenia w witrynie Azure portal
 Użyj [witryny Azure portal](https://portal.azure.com/) uzyskać parametry połączenia, który jest konieczny, aby program kliencki do interakcji z usługą Azure SQL Database.

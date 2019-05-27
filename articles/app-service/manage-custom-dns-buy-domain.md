@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619722"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978891"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
@@ -201,7 +201,9 @@ Przejdź do listy nazw hostów w przeglądarce. W przykładzie na poprzednim zrz
 
 ## <a name="renew-the-domain"></a>Odnów domenę
 
-Domena usługi App Service, które zakupiono jest ważny przez jeden rok od daty zakupu. Domyślnie domena jest konfigurowana automatycznie odnowić pobierając metodę płatności dla następnego roku. Jeśli chcesz wyłączyć funkcję automatycznego odnawiania lub jeśli chcesz ręcznie odnowić domenę, postępuj zgodnie z instrukcjami w tym miejscu.
+Domena usługi App Service, które zakupiono jest ważny przez jeden rok od daty zakupu. Domyślnie domena jest konfigurowana automatycznie odnowić pobierając metodę płatności dla następnego roku. Można ręcznie odnowić swojej nazwy domeny.
+
+Jeśli chcesz wyłączyć funkcję automatycznego odnawiania lub jeśli chcesz ręcznie odnowić domenę, postępuj zgodnie z instrukcjami w tym miejscu.
 
 W **App Services** kliknij nazwę swojej aplikacji, wybierz pozycję **ustawienia**, a następnie wybierz pozycję **domen niestandardowych**.
 
@@ -211,11 +213,25 @@ W **domen usługi App Service** sekcji, wybierz domenę, którą chcesz skonfigu
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-Na lewym pasku nawigacyjnym domeny wybierz **odnowienie domeny**. Aby zatrzymać automatyczne odnawianie domeny, wybierz **poza**, a następnie **Zapisz**. 
+Na lewym pasku nawigacyjnym domeny wybierz **odnowienie domeny**. Aby zatrzymać automatyczne odnawianie domeny, wybierz **poza**, a następnie **Zapisz**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-Aby ręcznie odnowić domenę, wybierz **odnawianie domeny**. Jednak ten przycisk jest aktywny aż do 90 dni przed wygaśnięciem domeny.
+Aby ręcznie odnowić domenę, wybierz **odnawianie domeny**. Jednak ten przycisk nie jest aktywne, dopóki nie [90 dni przed wygaśnięciem domeny](#when-domain-expires).
+
+Jeśli odnowienie Twojej domeny zakończy się pomyślnie, otrzymasz wiadomość e-mail z powiadomieniem w ciągu 24 godzin.
+
+## <a name="when-domain-expires"></a>Kiedy wygaśnie domeny
+
+Azure zajmuje się wygaśnie lub wygasłe domeny usługi App Service w następujący sposób:
+
+* Po wyłączeniu automatycznego odnawiania: 90 dni przed wygaśnięciem, odnowienia wiadomość e-mail z powiadomieniem są wysyłane do Ciebie i **odnawianie domeny** w portalu zostanie aktywowany przycisk.
+* Jeśli włączono automatyczne odnowienie: W dniu po dacie wygaśnięcia Twojej domeny usługi Azure próbuje opłata za odnowienie nazwy domeny.
+* Jeśli wystąpi błąd podczas automatycznego odnawiania (na przykład karty na plik wygasła), lub jeśli wyłączeniu automatycznego odnawiania i umożliwić domeny wygaśnie, Azure powiadomienia o wygaśnięciu domeny i parki nazwy domeny. Możesz [ręcznie odnowić](#renew-the-domain) domenę.
+* W dniu 4-12 dni po wygaśnięciu platforma Azure wysyła wiadomości e-mail z powiadomieniem dodatkowe. Możesz [ręcznie odnowić](#renew-the-domain) domenę.
+* W dniu 19 po wygaśnięciu domenę pozostanie wstrzymany, ale staje się podlegają opłacie realizacji. Możesz wywołać obsługi klienta, aby odnowić nazwy domeny, odnowienie, zastosowanie i realizacji opłaty.
+* 25 dnia po wygaśnięciu Azure umieszcza domenę dla aukcji z branży aukcji usługi DNS. Możesz wywołać obsługi klienta, aby odnowić nazwy domeny, odnowienie, zastosowanie i realizacji opłaty.
+* Na 30 dni po wygaśnięciu, ponieważ nie ma już mogła zrealizować Twojej domeny.
 
 <a name="custom"></a>
 

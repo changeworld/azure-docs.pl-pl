@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 6af5c8cdad00802052f08be844f77d36420da3c9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142369"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165938"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -29,7 +29,7 @@ Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów 
 * [Avro format](#avro-format)
 
 > [!TIP]
-> Dowiedz się, jak działanie kopiowania mapuje dane źródła do ujścia z [mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md), w tym jak metadanych jest określone w oparciu o ustawienia formatu pliku i porady w tym, kiedy należy określić [dataset `structure` ](concepts-datasets-linked-services.md#dataset-structure-or-schema) sekcji.
+> Dowiedz się, jak działanie kopiowania mapuje dane źródła do ujścia z [mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md).
 
 ## <a name="text-format"></a>Format tekstu
 
@@ -409,7 +409,7 @@ Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: 
 }
 ```
 
-## <a name="parquet-format"></a>Format Parquet
+## <a name="parquet-format"></a>Parquet format
 
 >[!NOTE]
 >Data Factory wprowadzono nowe datset format Parquet, zobacz [formatu Parquet](format-parquet.md) artykułu zawierającego szczegóły. Następujące konfiguracje dla zestawu danych magazynu danych oparte na plikach jest nadal obsługiwany jako — dotyczy compabitility z poprzednimi wersjami. Zaleca się używać nowego modelu, w przyszłości.

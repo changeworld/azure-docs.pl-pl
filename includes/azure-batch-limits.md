@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: batch
-author: dlepow
+author: laurenhughes
 ms.service: batch
 ms.topic: include
 ms.date: 10/11/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 6b48dbfc33890df12209c3a242d812ad2103e07a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ffb02fce41e8805dfccf1dfd6e982cf107039ec
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776377"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127542"
 ---
 | **Zasób** | **Limit domyślny** | **Maksymalny limit** |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "60776377"
 | Liczba rdzeni dedykowanych na konto usługi Batch | 10-100 | Nie dotyczy<sup>1</sup> |
 | Rdzeni o niskim priorytecie na konto usługi Batch | 10-100 | N/D<sup>2</sup> |
 | Aktywne zadania i harmonogramy zadań<sup>3</sup> na konto usługi Batch | 100-300 | 1,000<sup>4</sup> |
-| Pule na konto usługi Batch | 20-100 | 500<sup>4</sup> |
+| Liczba pul na konto usługi Batch | 20-100 | 500<sup>4</sup> |
 
 > [!NOTE]
 > Domyślne limity zależą od typu Twojej subskrypcji, który umożliwia utworzenie konta usługi Batch. Limity przydziałów rdzeni, wyświetlane są przeznaczone dla konta usługi Batch w trybie usługi Batch. [Wyświetl przydziały na koncie usługi Batch](../articles/batch/batch-quota-limit.md#view-batch-quotas). 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769502"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955965"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Skalowanie automatyczne i środowisko App Service Environment w wersji 1
 
@@ -63,7 +63,7 @@ Funkcja automatycznego skalowania środowiska App Service najlepiej można zilus
 W tym artykule opisano wszystkie niezbędne zagadnienia podczas konfigurowania automatycznego skalowania. Artykuł przeprowadzi Cię przez interakcji, które dochodzą do głosu, gdy należy wziąć pod uwagę automatycznego skalowania środowiska App Service Environment, które są hostowane w środowisku App Service.
 
 ### <a name="scenario-introduction"></a>Wprowadzenie do scenariusza
-Frank jest sysadmin w przedsiębiorstwie, który został zmigrowany część obciążeń, które zarządza on do środowiska usługi App Service.
+Frank jest sysadmin w przedsiębiorstwie, który został zmigrowany część obciążeń, które zarządzają do środowiska usługi App Service.
 
 Środowisko usługi App Service jest skonfigurowane pod kątem skalowanie ręczne w następujący sposób:
 
@@ -76,7 +76,7 @@ Pula procesów roboczych 1 jest używany w przypadku obciążeń produkcyjnych p
 
 Plany usługi App Service dla odpowiedzi na pytania i deweloperów są skonfigurowane do skalowanie ręczne. Plan usługi App Service w środowisku produkcyjnym ustawiono automatyczne skalowanie radzenia sobie z wahania obciążenia i ruch.
 
-Frank jest bardzo podobnie do funkcji z aplikacją. Zna się, że godzinach szczytu obciążenia są między 9:00 i 18:00:00, ponieważ jest to aplikacja line-of-business (LOB), używanego przez pracowników, gdy znajdują się w biurze. Po spadku wykorzystania, gdy użytkownicy są wykonywane na ten dzień. Poza godzinami szczytu występuje nadal niektóre obciążenia, ponieważ użytkownicy mogą uzyskiwać dostęp aplikacji zdalnie za pomocą ich urządzeń przenośnych lub komputerów głównego. Plan usługi App Service w środowisku produkcyjnym jest już skonfigurowana do automatycznego skalowania na podstawie użycia procesora CPU z następującymi regułami:
+Frank jest bardzo podobnie do funkcji z aplikacją. Wiedzą, że godzinach szczytu obciążenia są między 9:00 i 18:00:00, ponieważ jest to aplikacja line-of-business (LOB), używanego przez pracowników, gdy znajdują się w biurze. Po spadku wykorzystania, gdy użytkownicy są wykonywane na ten dzień. Poza godzinami szczytu występuje nadal niektóre obciążenia, ponieważ użytkownicy mogą uzyskiwać dostęp aplikacji zdalnie za pomocą ich urządzeń przenośnych lub komputerów głównego. Plan usługi App Service w środowisku produkcyjnym jest już skonfigurowana do automatycznego skalowania na podstawie użycia procesora CPU z następującymi regułami:
 
 ![Określone ustawienia dla aplikacji biznesowych.][asp-scale]
 

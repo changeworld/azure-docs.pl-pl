@@ -6,13 +6,13 @@ manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: rayne-wiselman
-ms.openlocfilehash: 605421196c2ec7f62826e2f6c823d50262af8144
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: raynew
+ms.openlocfilehash: 8a3c9a4fb1b43c1d00d66fee3548ccd10a1e075e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61278146"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969375"
 ---
 # <a name="monitor-site-recovery"></a>Monitor Usługa Site Recovery
 
@@ -39,7 +39,7 @@ Sekcja zreplikowane elementy nie pokazuje kondycję wszystkich maszyn, które ma
 --- | ---
 W dobrej kondycji | Zwykle jest wykonywana replikacja. Nie błąd lub ostrzeżenie objawów są wykrywane.
 Ostrzeżenie | Objawy ostrzeżenia, które mogą mieć wpływ na replikację są wykrywane.
-Krytyczny | Wykryto co najmniej jeden objawy błąd replikacji krytycznej.<br/><br/> Następujące objawy błędu są zazwyczaj wskaźniki replikacja została zablokowana lub nie postępuje, tak szybko, jak współczynnik zmian danych.
+Krytyczne | Wykryto co najmniej jeden objawy błąd replikacji krytycznej.<br/><br/> Następujące objawy błędu są zazwyczaj wskaźniki replikacja została zablokowana lub nie postępuje, tak szybko, jak współczynnik zmian danych.
 Nie dotyczy | Serwery, które nie są obecnie powinien być replikacji. Może to obejmować maszyn, które zostały przełączone w tryb failover.
 
 ## <a name="monitor-test-failovers"></a>Monitor testu pracy w trybie Failover
@@ -98,9 +98,9 @@ Aktualizacje oprogramowania | Dostępność nowych aktualizacji oprogramowania o
     **Scenariusz** | **State**  | **Wyświetl dostępne?**
     --- |--- | ---
     **Replikacja między lokacjami lokalnymi** | Wszystkie stany | Nie 
-    **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure**  | Replikacja włączona początkowej replikacji w toku | Yes
+    **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure**  | Replikacja włączona początkowej replikacji w toku | Tak
     **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure** | W trybie Failover / powrotu po awarii | Nie   
-    **Replikacja VMware do platformy Azure** | Replikacja włączona początkowej replikacji w toku | Yes     
+    **Replikacja VMware do platformy Azure** | Replikacja włączona początkowej replikacji w toku | Tak     
     **Replikacja VMware do platformy Azure** | Nie można ponownie w tryb failover lub nie powiodła się | Nie      
     **Replikacja funkcji Hyper-V do platformy Azure** | Nie można ponownie w tryb failover lub nie powiodła się | Nie
 

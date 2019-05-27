@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6e88d8f1c16e7c73f5c62325e41701e6f0ea97fb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728090"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967956"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -57,7 +57,7 @@ Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania czynn
 1. Dane i deweloperów tworzy własne środowisko integration runtime w fabryce danych Azure przy użyciu polecenia cmdlet programu PowerShell. Witryna Azure portal nie obsługuje obecnie tej funkcji.
 2. Dane i deweloperów tworzy połączonej usługi magazynu danych w środowisku lokalnym za pośrednictwem własne wystąpienie infrastruktury integration runtime za pomocą której należy połączyć się z magazynów danych.
 3. Węzeł Self-Hosted integration runtime szyfruje poświadczenia za pomocą Windows Data Protection interfejsu API (DPAPI) i zapisuje poświadczenia lokalnie. Jeśli wiele węzłów są skonfigurowane w celu zapewnienia wysokiej dostępności, poświadczenia są dodatkowo synchronizowane w innych węzłach. Każdy węzeł szyfruje poświadczenia przy użyciu interfejsu DPAPI i przechowuje je lokalnie. Synchronizacja poświadczeń jest niewidoczna dla dewelopera danych i jest obsługiwany przez Self-Hosted IR    
-4. Usługa Data Factory, który komunikuje się z własnego środowiska integration runtime do planowania i zarządzania zadań za pośrednictwem *kanał kontrolny* , który używa udostępnionych kolejki usługi Azure Service Bus. Gdy zadanie działania musi zostać uruchomione, usługi Data Factory umieszcza w kolejce żądań wraz z żadnych informacji dotyczących poświadczeń (w przypadku, gdy poświadczenia nie są już przechowywane na własne środowisko integration runtime). Własne środowisko integration runtime dotyczącego zadania po sondowania kolejki.
+4. Usługa Data Factory, który komunikuje się z własnego środowiska integration runtime do planowania i zarządzania zadań za pośrednictwem *kanał kontrolny* , który używa udostępnionego [Azure Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay). Gdy zadanie działania musi zostać uruchomione, usługi Data Factory umieszcza w kolejce żądań wraz z żadnych informacji dotyczących poświadczeń (w przypadku, gdy poświadczenia nie są już przechowywane na własne środowisko integration runtime). Własne środowisko integration runtime dotyczącego zadania po sondowania kolejki.
 5. Własne środowisko integration runtime kopiuje dane z lokalnego magazynu do magazynu w chmurze lub na odwrót w zależności od sposobu skonfigurowania działania kopiowania w potoku danych. W tym kroku własnego środowiska integration runtime bezpośrednio komunikuje się z usługami magazynu w chmurze, takimi jak usługi Azure Blob storage za pośrednictwem bezpiecznego kanału (HTTPS).
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Zagadnienia dotyczące korzystania z własnego środowiska IR
@@ -126,11 +126,11 @@ Można skojarzyć wiele węzłów, instalując oprogramowanie Self-Hosted integr
 
 ### <a name="scale-considerations"></a>Zagadnienia dotyczące skalowania
 
-#### <a name="scale-out"></a>Skalowanie w poziomie
+#### <a name="scale-out"></a>Skaluj w poziomie
 
 Gdy ilość dostępnej pamięci na własne środowisko IR jest niska, a użycie procesora CPU jest wysokie, dodanie nowego węzła ułatwia skalowanie obciążenia między maszynami. Jeśli działania kończą się niepowodzeniem, ponieważ jesteś limit czasu lub ponieważ samodzielnie hostowany węzeł IR jest w trybie offline, pomaga Jeśli dodasz węzeł do bramy.
 
-#### <a name="scale-up"></a>Skalowanie w górę
+#### <a name="scale-up"></a>Skaluj w górę
 
 Gdy ilość dostępnej pamięci i procesora CPU nie mogą być wykorzystane dobrze, ale wykonanie równoczesnych zadań zbliża się limit, powinien skalowanie w górę, zwiększając liczbę współbieżnych zadań, które można uruchomić w węźle. Można również skalować w górę, gdy działania przekraczają limit, ponieważ własne środowisko IR jest przeciążony. Jak pokazano na poniższej ilustracji, można zwiększyć maksymalną pojemność dla węzła:  
 

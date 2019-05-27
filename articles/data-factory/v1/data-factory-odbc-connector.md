@@ -14,11 +14,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 83de0046a56788e40b9224823af0411a18dea5eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122510"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Przenieś magazyny danych ODBC z danych za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,13 +67,13 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla OD
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesOdbc** |Yes |
-| Parametry połączenia |Poświadczenia dostępu swobodnego część ciąg połączenia i opcjonalnie zaszyfrowane poświadczenia. Zobacz przykłady w poniższych sekcjach. <br/><br/>Można określić parametry połączenia za pomocą wzorca, takich jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć systemu DSN (nazwa źródła danych), możesz skonfigurować na maszynie bramy przy użyciu `"DSN=<name of the DSN>;"` (muszą nadal określić część poświadczeń w połączonej usłudze odpowiednio). |Yes |
+| type |Właściwość type musi być równa: **OnPremisesOdbc** |Tak |
+| connectionString |Poświadczenia dostępu swobodnego część ciąg połączenia i opcjonalnie zaszyfrowane poświadczenia. Zobacz przykłady w poniższych sekcjach. <br/><br/>Można określić parametry połączenia za pomocą wzorca, takich jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć systemu DSN (nazwa źródła danych), możesz skonfigurować na maszynie bramy przy użyciu `"DSN=<name of the DSN>;"` (muszą nadal określić część poświadczeń w połączonej usłudze odpowiednio). |Tak |
 | poświadczenia |Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nie |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC. Możliwe wartości: Anonimowy i podstawowa. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Nie |
-| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
-| gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, aby nawiązać połączenie z magazynem danych ODBC. |Yes |
+| authenticationType |Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC. Możliwe wartości to: Anonimowy i podstawowa. |Tak |
+| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Nie |
+| password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
+| gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, aby nawiązać połączenie z magazynem danych ODBC. |Tak |
 
 ### <a name="using-basic-authentication"></a>Przy użyciu uwierzytelniania podstawowego
 
@@ -139,7 +139,7 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zesta
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| tableName |Nazwa tabeli w magazynie danych ODBC. |Yes |
+| tableName |Nazwa tabeli w magazynie danych ODBC. |Tak |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasady są dostępne dla wszystkich typów działań.
@@ -150,7 +150,7 @@ W działaniu kopiowania, gdy źródłem jest typu **RelationalSource** (w tym OD
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Yes |
+| query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Tak |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z magazynu danych ODBC do obiektów Blob platformy Azure

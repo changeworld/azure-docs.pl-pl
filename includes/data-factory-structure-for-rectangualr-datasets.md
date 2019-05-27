@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309170"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66122523"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Określanie definicji struktury dla prostokątnych zestawów danych
 Sekcja struktury w zestawach danych JSON jest **opcjonalne** sekcji prostokątny tabel (wiersze i kolumny) i zawiera kolekcję kolumn dla tabeli. W sekcji struktury użyje albo udostępnianie informacji o typie dla konwersji typu lub sposób mapowania kolumn. W poniższych sekcjach opisano te funkcje szczegółowo. 
@@ -18,9 +18,9 @@ Każda kolumna zawiera następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| name |Nazwa kolumny. |Yes |
-| type |Typ danych kolumny. Zobacz więcej szczegółów typu konwersje sekcji poniżej dotyczącą tego, możesz określić informacje o typie |Nie |
-| Kultury |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET, Datetime i Datetimeoffset oparte na platformie .NET. Wartość domyślna to "en-us". |Nie |
+| name |Nazwa kolumny. |Tak |
+| typ |Typ danych kolumny. Zobacz więcej szczegółów typu konwersje sekcji poniżej dotyczącą tego, możesz określić informacje o typie |Nie |
+| culture |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET, Datetime i Datetimeoffset oparte na platformie .NET. Wartość domyślna to "en-us". |Nie |
 | format |Ciąg formatu, które ma być używany, gdy typ jest określony, a .NET typu Datetime i Datetimeoffset. |Nie |
 
 Poniższy przykład pokazuje sekcji strukturze JSON dla tabeli, która ma trzy kolumny userid, nazwę oraz lastlogindate.
@@ -56,9 +56,9 @@ Usługi Data factory obsługuje następujące zgodny ze specyfikacją zgodne .NE
 * Bool
 * String 
 * Guid
-* DateTime
+* Datetime
 * Datetimeoffset
-* Zakres czasu 
+* Timespan 
 
 Dla typu Datetime i Datetimeoffset również Opcjonalnie możesz określić ciąg "kultury" & "format" ułatwiają analizowanie niestandardowego ciągu daty/godziny. Zobacz przykład poniżej konwersji typu.
 

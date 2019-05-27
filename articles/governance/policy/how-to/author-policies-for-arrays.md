@@ -7,12 +7,12 @@ ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498767"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979326"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy dla zasobów platformy Azure
 
@@ -207,9 +207,9 @@ Aby uzyskać więcej informacji, zobacz [Dołącz przykłady](../concepts/effect
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [struktura definicji zasad](../concepts/definition-structure.md)
-- Przegląd [zrozumienia efektów zasad](../concepts/effects.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md)
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 05/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a66d45028b9fbf9c421b10ffb7863fcb9be5bec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f4ecc01f42d491f5d9d967b9983e773c1df22298
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779861"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986827"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "65779861"
 ## <a name="add-signing-and-encryption-keys"></a>Dodaj klucze podpisywania i szyfrowania
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
-2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Kliknij przycisk **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy. 
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Kliknij przycisk **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera Twojej dzierżawy. 
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
 
@@ -70,17 +70,17 @@ Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiaj
 
 ### <a name="register-the-identityexperienceframework-application"></a>Rejestrowanie aplikacji IdentityExperienceFramework
 
-1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal Wyszukaj i wybierz pozycję **rejestracje aplikacji**.
-2. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
-3. Aby uzyskać **nazwa**, wprowadź `IdentityExperienceFramework`.
-4. Aby uzyskać **typ aplikacji**, wybierz **aplikacji/interfejs API sieci Web**.
-5. Aby uzyskać **adres URL logowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `your-tenant-name` to nazwa domeny dzierżawy usługi Azure AD B2C.
-6. Kliknij pozycję **Utwórz**. 
-7. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
+1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal Wyszukaj i wybierz pozycję **usługi Azure Active Directory**.
+2. Wybierz z menu **rejestracje aplikacji (starsza wersja)**.
+3. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
+4. Aby uzyskać **nazwa**, wprowadź `IdentityExperienceFramework`.
+5. Aby uzyskać **typ aplikacji**, wybierz **aplikacji/interfejs API sieci Web**.
+6. Aby uzyskać **adres URL logowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `your-tenant-name` to nazwa domeny dzierżawy usługi Azure AD B2C. Wszystkie adresy URL powinny teraz być za pomocą [z usługi b2clogin.com](b2clogin.md).
+7. Kliknij pozycję **Utwórz**. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Rejestrowanie aplikacji ProxyIdentityExperienceFramework
 
-1. Wybierz **rejestracje aplikacji**, a następnie wybierz pozycję **rejestrowanie nowej aplikacji**.
+1. W **rejestracje aplikacji (starsza wersja)**, wybierz opcję **rejestrowanie nowej aplikacji**.
 2. Aby uzyskać **nazwa**, wprowadź `ProxyIdentityExperienceFramework`.
 3. Aby uzyskać **typ aplikacji**, wybierz **natywnych**.
 4. Aby uzyskać **identyfikator URI przekierowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `yourtenant` jest Twoja dzierżawa usługi Azure AD B2C.

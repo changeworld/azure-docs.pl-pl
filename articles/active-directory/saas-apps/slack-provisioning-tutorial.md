@@ -3,9 +3,8 @@ title: 'Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkownik
 description: Dowiedz się, jak skonfigurować usługę Azure Active Directory do automatycznego aprowizacji i usuwanie kont użytkowników Slack.
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
-writer: asmalser-msft
-manager: daveba
+author: ArvindHarinder1
+manager: CelesteDG
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -14,15 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: asmalser-msft
-ms.reviewer: asmalser
+ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50bcada8cfc72c06804793850f1f28a288f5248
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 036112027fcf210f0ac2ff1e631c8b0bd4b5e9ef
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620217"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964396"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników
 
@@ -124,7 +122,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
   
   * Firmy Slack **userName** atrybutu musi być w obszarze 21 znaków i mieć unikatową wartość.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

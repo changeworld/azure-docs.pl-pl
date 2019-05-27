@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747817"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953028"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpiecznie zainstalowania i obsługi usługi Azure Data Box
 ![Ikona ostrzeżenia](./media/data-box-safety/warning_icon.png)
@@ -116,7 +116,7 @@ Zmiany lub modyfikacje wprowadzone do urządzenia nie zostaną zatwierdzone prze
 
 ![Zwróć uwagę, ikona](./media/data-box-safety/notice_icon.png) **powiadomienia:** 
 
-Została przetestowana i spełnia ograniczenia klasy urządzeń cyfrowych, zgodnie z częścią 15 cz tego urządzenia. Limity te są przeznaczone do zapewnienia wystarczającej ochrony przed zakłóceniami szkodliwe, gdy urządzenie jest świadczona w środowiskach komercyjnych. Te urządzenia generuje, używa i może fale radiowe i jeśli nie jest zainstalowane i wykorzystywane zgodnie z instrukcją, może powodować zakłócenia szkodliwych opcji łączności. Działanie tego urządzenia w miejscu zamieszkania jest może spowodować szkodliwe zakłócenia, w którym użytkownik będzie musiał usunąć na jego koszt.
+Została przetestowana i spełnia ograniczenia klasy urządzeń cyfrowych, zgodnie z częścią 15 cz tego urządzenia. Limity te są przeznaczone do zapewnienia wystarczającej ochrony przed zakłóceniami szkodliwe, gdy urządzenie jest świadczona w środowiskach komercyjnych. Te urządzenia generuje, używa i może fale radiowe i jeśli nie jest zainstalowane i wykorzystywane zgodnie z instrukcją, może powodować zakłócenia szkodliwych opcji łączności. Działanie tego urządzenia w miejscu zamieszkania jest może spowodować szkodliwe zakłócenia, w którym użytkownik będzie musiał usunąć na ich koszt.
 
 To urządzenie jest zgodny z częścią 15 cz i w przemyśle RSS wykluczone licencji Kanada normach. Operacja podlega następujące dwa warunki: (1) to urządzenie nie może powodować zakłócenia szkodliwych i (2) to urządzenie musi zaakceptować zakłócenia, w tym zakłócenia, które mogą powodować nieoczekiwane działanie urządzenia.
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: eb4fb0e08564921556c0562e9fa7d670b76e860a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899300"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131015"
 ---
 Wartość nazwy kolekcji właściwości niestandardowych. Ta kolekcja jest używany do Rozszerz standardowy telemetrii za pomocą niestandardowych wymiarów. Przykłady to miejsce wdrożenia, który telemetrii lub elementu telemetrii konkretnej właściwości, takich jak numer zamówienia. 
 

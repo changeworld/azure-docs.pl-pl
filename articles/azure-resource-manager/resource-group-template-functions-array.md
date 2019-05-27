@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128695"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funkcje tablicy i obiektów dla szablonów usługi Azure Resource Manager
 
@@ -58,7 +58,7 @@ Konwertuje wartość na tablicę.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Yes |int, string, tablicy lub obiektu |Wartość do przekonwertowania na tablicę. |
+| convertToArray |Tak |int, string, tablicy lub obiektu |Wartość do przekonwertowania na tablicę. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -136,7 +136,7 @@ Zwraca pierwszą wartość inną niż null z parametrów. Puste ciągi, pusta ta
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, string, tablicy lub obiektu |Pierwsza wartość do testowania wartości null. |
+| arg1 |Tak |int, string, tablicy lub obiektu |Pierwsza wartość do testowania wartości null. |
 | dodatkowe argumenty |Nie |int, string, tablicy lub obiektu |Dodatkowe wartości null. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -195,9 +195,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringOutput | String | default |
+| stringOutput | String | domyślny |
 | intOutput | Int | 1 |
-| objectOutput | Obiekt | {"first": "default"} |
+| objectOutput | Object | {"first": "default"} |
 | arrayOutput | Tablica | [1] |
 | emptyOutput | Bool | True |
 
@@ -224,7 +224,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Pierwsza tablica lub ciąg dla łączenia. |
+| arg1 |Tak |tablicy lub ciągu |Pierwsza tablica lub ciąg dla łączenia. |
 | dodatkowe argumenty |Nie |tablicy lub ciągu |Dodatkowe tablic lub ciągów w kolejności sekwencyjnej dla łączenia. |
 
 Ta funkcja może potrwać dowolną liczbę argumentów i może akceptować ciągi lub tablice parametrów.
@@ -338,8 +338,8 @@ Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz lub ciąg zawiera 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| kontener |Yes |Array, obiekt lub ciągu |Wartość, która zawiera wartość do znalezienia. |
-| itemToFind |Yes |ciąg lub int |Wartość do znalezienia. |
+| container |Tak |Array, obiekt lub ciągu |Wartość, która zawiera wartość do znalezienia. |
+| itemToFind |Tak |ciąg lub int |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -403,11 +403,11 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | False |
+| stringFalse | Bool | Fałsz |
 | objectTrue | Bool | True |
-| objectFalse | Bool | False |
+| objectFalse | Bool | Fałsz |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| arrayFalse | Bool | Fałsz |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -432,7 +432,7 @@ Tworzy tablicę z parametrów.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Ciąg, liczba całkowita, tablicy lub obiektu |Pierwsza wartość w tablicy. |
+| arg1 |Tak |Ciąg, liczba całkowita, tablicy lub obiektu |Pierwsza wartość w tablicy. |
 | dodatkowe argumenty |Nie |Ciąg, liczba całkowita, tablicy lub obiektu |Dodatkowe wartości w tablicy. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -513,7 +513,7 @@ Określa, czy tablica, obiekt lub ciąg jest pusty.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |Array, obiekt lub ciągu |Wartość, aby sprawdzić, czy jest pusta. |
+| itemToTest |Tak |Array, obiekt lub ciągu |Wartość, aby sprawdzić, czy jest pusta. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -591,7 +591,7 @@ Zwraca pierwszy element tablicy lub pierwszy znak ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Wartość można pobrać pierwszy element lub znak. |
+| arg1 |Tak |tablicy lub ciągu |Wartość można pobrać pierwszy element lub znak. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -656,8 +656,8 @@ Zwraca pojedynczą tablicę lub obiekt o wspólnych elementach zawiera sekcja z 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub obiektu |Pierwsza wartość używanych na potrzeby znajdowania wspólne elementy. |
-| argument2 |Yes |tablicy lub obiektu |Druga wartość używanych na potrzeby znajdowania wspólne elementy. |
+| arg1 |Tak |tablicy lub obiektu |Pierwsza wartość używanych na potrzeby znajdowania wspólne elementy. |
+| argument2 |Tak |tablicy lub obiektu |Druga wartość używanych na potrzeby znajdowania wspólne elementy. |
 | dodatkowe argumenty |Nie |tablicy lub obiektu |Dodatkowe wartości używanych na potrzeby znajdowania wspólne elementy. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -709,7 +709,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| objectOutput | Obiekt | {"jeden": "", "trzy": "c"} |
+| objectOutput | Object | {"jeden": "", "trzy": "c"} |
 | arrayOutput | Tablica | ["2", "3"] |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -733,7 +733,7 @@ Zwraca obiekt JSON.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |ciąg |Wartość do przekonwertowania na format JSON. |
+| arg1 |Tak |string |Wartość do przekonwertowania na format JSON. |
 
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -781,9 +781,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| jsonOutput | Obiekt | {"a": "b"} |
-| nullOutput | Wartość logiczna | True |
-| paramOutput | Obiekt | {"a": "demo value"}
+| jsonOutput | Object | {"a": "b"} |
+| nullOutput | Boolean | True |
+| paramOutput | Object | {"a": "demo value"}
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -808,7 +808,7 @@ Zwraca ostatni element tablicy lub ostatni znak w ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Wartość można pobrać ostatniego elementu lub znak. |
+| arg1 |Tak |tablicy lub ciągu |Wartość można pobrać ostatniego elementu lub znak. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -873,7 +873,7 @@ Zwraca liczbę elementów w tablicy lub znaków w ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Tablica do użycia w celu uzyskania liczba elementów lub ciąg do użycia w celu uzyskania liczby znaków. |
+| arg1 |Tak |tablicy lub ciągu |Tablica do użycia w celu uzyskania liczba elementów lub ciąg do użycia w celu uzyskania liczby znaków. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -956,7 +956,7 @@ Zwraca maksymalną wartość w tablicy liczb całkowitych lub na liście liczb c
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja do uzyskania maksymalnej wartości. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja do uzyskania maksymalnej wartości. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1011,7 +1011,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min(arg1)`
 
 Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
@@ -1020,7 +1020,7 @@ Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb ca
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1084,8 +1084,8 @@ Tworzy tablicę liczb całkowitych z początkowa liczba całkowita i zawierając
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Yes |int |Pierwsza liczba całkowita w tablicy. |
-| numberofElements |Yes |int |Liczb całkowitych w tablicy. |
+| startingInteger |Tak |int |Pierwsza liczba całkowita w tablicy. |
+| numberofElements |Tak |int |Liczb całkowitych w tablicy. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1148,8 +1148,8 @@ Zwraca tablicę ze wszystkimi elementami po określonej liczbie w tablicy lub zw
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
-| numberToSkip |Yes |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
+| originalValue |Tak |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
+| numberToSkip |Tak |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1229,8 +1229,8 @@ Zwraca tablicę z określonej liczby elementów od początku tablicy lub ciągu 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
-| numberToTake |Yes |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
+| originalValue |Tak |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
+| numberToTake |Tak |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1310,8 +1310,8 @@ Zwraca pojedynczą tablicę lub obiekt ze wszystkimi elementami z parametrów. Z
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub obiektu |Pierwsza wartość na potrzeby dołączenia elementów. |
-| argument2 |Yes |tablicy lub obiektu |Druga wartość na potrzeby dołączenia elementów. |
+| arg1 |Tak |tablicy lub obiektu |Pierwsza wartość na potrzeby dołączenia elementów. |
+| argument2 |Tak |tablicy lub obiektu |Druga wartość na potrzeby dołączenia elementów. |
 | dodatkowe argumenty |Nie |tablicy lub obiektu |Dodatkowe wartości na potrzeby dołączenia elementów. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -1363,7 +1363,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| objectOutput | Obiekt | {"jeden": "", "dwóch": "b", "trzy": "c2", "4": "d", "5": "e"} |
+| objectOutput | Object | {"jeden": "", "dwóch": "b", "trzy": "c2", "4": "d", "5": "e"} |
 | arrayOutput | Tablica | ["jednego", "2", "trzy", "4"] |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:

@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264392"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165505"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otwieranie portów TCP w zaporze systemu Windows dla domyślnego wystąpienia aparatu bazy danych
 1. Nawiąż połączenie z maszyną wirtualną przy użyciu pulpitu zdalnego. Aby uzyskać szczegółowe instrukcje dotyczące nawiązywania połączenia z maszyną wirtualną, zobacz [Otwieranie maszyny wirtualnej SQL przy użyciu pulpitu zdalnego](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
@@ -26,12 +26,12 @@ ms.locfileid: "51264392"
 6. Kliknij przycisk **Dalej**.
 7. W oknie dialogowym **Akcja** wybierz pozycję **Zezwalaj na połączenie**, a następnie kliknij przycisk **Dalej**.
    
-    **Uwaga dotycząca zabezpieczeń**: Wybranie opcji **Zezwalaj na połączenie, jeśli jest bezpieczne** może zapewnić większe bezpieczeństwo. Wybierz tę opcję, jeśli chcesz skonfigurować dodatkowe opcje zabezpieczeń w środowisku.
+    **Uwaga dotycząca zabezpieczeń:** Wybieranie **Zezwalaj na połączenie, jeśli jest bezpieczne** może zapewnić większe bezpieczeństwo. Wybierz tę opcję, jeśli chcesz skonfigurować dodatkowe opcje zabezpieczeń w środowisku.
    
     ![Zezwalanie na połączenia](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
 8. W oknie dialogowym **Profil** wybierz pozycję **Publiczny**, **Prywatny** i **Domena**. Następnie kliknij przycisk **Next** (Dalej).
    
-    **Uwaga dotycząca zabezpieczeń:** Wybranie pozycji **Publiczny** umożliwia uzyskiwanie dostępu przez Internet. Jeśli to możliwe, wybierz bardzie restrykcyjny profil.
+    **Uwaga dotycząca zabezpieczeń:**  Wybieranie **publicznych** zezwala na dostęp przez internet. Jeśli to możliwe, wybierz bardzie restrykcyjny profil.
    
     ![Profil publiczny](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
 9. W oknie dialogowym **Nazwa** wpisz nazwę i opis dla tej reguły, a następnie kliknij przycisk **Zakończ**.
@@ -55,7 +55,7 @@ Aparat bazy danych programu SQL Server nie może korzystać z uwierzytelniania s
 1. Po nawiązaniu połączenia z maszyną wirtualną wpisz na stronie startowej ciąg **SQL Server Management Studio** i kliknij wybraną ikonę.
    
     Podczas pierwszego uruchomienia program Management Studio musi utworzyć środowisko użytkowników programu Management Studio. Może to potrwać kilka chwil.
-2. Program Management Studio wyświetli okno dialogowe **Łączenie z serwerem**. W polu **Nazwa serwera** wpisz nazwę maszyny wirtualnej, którą chcesz połączyć z silnikiem bazy danych przy użyciu Eksploratora obiektów. Zamiast nazwy maszyny wirtualnej możesz także użyć wartości **(lokalny)** lub jednej kropki jako **Nazwa serwera**. Wybierz **uwierzytelniania Windows**i pozostawić ***nazwa_maszyny_wirtualnej * \your_local_administrator** w **nazwa_użytkownika** pole. Kliknij przycisk **Połącz**.
+2. Program Management Studio wyświetli okno dialogowe **Łączenie z serwerem**. W polu **Nazwa serwera** wpisz nazwę maszyny wirtualnej, którą chcesz połączyć z silnikiem bazy danych przy użyciu Eksploratora obiektów. Zamiast nazwy maszyny wirtualnej możesz także użyć wartości **(lokalny)** lub jednej kropki jako **Nazwa serwera**. Wybierz **uwierzytelniania Windows**i pozostawić ***your_VM_name\your_local_administrator*** w **nazwa_użytkownika** pole. Kliknij przycisk **Połącz**.
    
     ![Łączenie z serwerem](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. W Eksploratorze obiektów programu SQL Server Management Studio kliknij prawym przyciskiem myszy nazwę wystąpienia programu SQL Server (nazwę maszyny wirtualnej), a następnie kliknij pozycję **Właściwości**.

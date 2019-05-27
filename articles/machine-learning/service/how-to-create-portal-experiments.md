@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 96abef29c5290770d296fb5053007e36d1eaf537
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035435"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990151"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Tworzenie i eksplorowanie zautomatyzowanych usługi machine learning eksperymentów w witrynie Azure portal (wersja zapoznawcza)
 
@@ -40,7 +40,7 @@ Przejdź do okienka po lewej stronie obszaru roboczego. W sekcji Tworzenie (wers
 
 ![Strona docelowa eksperymentu portalu Azure](media/how-to-create-portal-experiments/landing-page.png)
 
-W przeciwnym razie zostanie wyświetlony pulpit nawigacyjny learning maszyny automatyczne przegląd wszystkich zautomatyzowanych maszyny eksperymentów, łącznie z tymi Uruchom z zestawem SDK uczenia. W tym miejscu można filtrować i eksplorowanie przebiegów według daty, eksperymentowanie nazwę i stan uruchomienia.
+W przeciwnym razie zostanie wyświetlony pulpit nawigacyjny learning maszyny automatyczne przegląd wszystkich zautomatyzowanych maszyny uczenia eksperymenty, w tym te utworzone za pomocą zestawu SDK. W tym miejscu można filtrować i eksplorowanie przebiegów według daty, eksperymentowanie nazwę i stan uruchomienia.
 
 ![Pulpit nawigacyjny eksperymentu portalu Azure](media/how-to-create-portal-experiments/dashboard.png)
 
@@ -105,7 +105,7 @@ Wybierz przycisk tworzenia eksperymentu, aby wypełnić następującą postać.
     Podstawowe metryki| Metryka główne używane do oceniania modelu. [Dowiedz się więcej o metrykach modelu](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
     Kryteria wyjścia| Gdy dowolne z poniższych kryteriów są spełnione, przed ukończeniem pełną kończy się zadania szkolenia. <br> *Szkolenie zadania czas (w minutach)*: Jak długo, aby zezwolić na uruchomienie zadania szkolenia.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do testowania w ramach zadania szkolenia. Zadanie nie zostanie uruchomione więcej niż określoną liczbę iteracji. <br> *Metryki oceny próg*:  Minimalny wynik metryki dla wszystkich potoków. Daje to gwarancję, że jeśli Metryka zdefiniowanego celu, którą chcesz się połączyć, możesz nie poświęcić więcej czasu na zadania szkolenia, niż jest to konieczne.
     Przetwarzanie wstępne| Zaznacz, aby włączyć lub wyłączyć wstępnego przetwarzania wykonywane przez uczenie maszynowe automatycznych. Przetwarzanie wstępne obejmuje czyszczenia danych, przygotowywania i transformacji do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
-    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności do użycia w ramach zadania szkolenia. [Dowiedz się więcej o krzyżowego sprawdzania poprawności](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Weryfikacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności do użycia w ramach zadania szkolenia. [Dowiedz się więcej o krzyżowego sprawdzania poprawności](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
     Współbieżność| Wybierz limity wielordzeniowych, którego chcesz używać podczas używania wielu rdzeni obliczeniowych.
     Algorytm zablokowane| Wybieranie algorytmów, które chcesz wykluczyć z zadania szkolenia.
 
@@ -184,6 +184,63 @@ Przechodzenie do wszystkich modeli danych wyjściowych, aby wyświetlić szczeg�
 
 ![Szczegóły iteracji](media/how-to-create-portal-experiments/iteration-details.png)
 
+## <a name="deploy-model"></a>Wdrażanie modelu
+
+Po utworzeniu najlepszy model pod ręką, nadszedł czas na go wdrożyć jako usługę sieci web w celu przewidywania na nowych danych.
+
+Automatyczne ML ułatwiają wdrażanie modelu bez konieczności pisania kodu:
+
+1. Istnieje kilka opcji wdrożenia. 
+    1. Jeśli chcesz wdrożyć najlepszy model na podstawie kryteriów oceniania metryki, należy ustawić w eksperymencie wybierz **wdrażanie najlepszy Model** z **szczegółów uruchomienia** strony.
+
+        ![Wdrażanie modelu przycisku](media/how-to-create-portal-experiments/deploy-model-button.png)
+
+    1. Jeśli chcesz wdrożyć iteracji określonego modelu, przejść do szczegółów na podstawie modelu, aby otworzyć jego stronę szczegółów uruchomienia określonej i wybierz **wdrażanie modelu**.
+
+        ![Wdrażanie modelu przycisku](media/how-to-create-portal-experiments/deploy-model-button2.png)
+
+1. Pierwszym krokiem jest zarejestrowanie w usłudze. Wybierz opcję "Register modelu" i poczekaj na ukończenie procesu rejestracji.
+
+    ![Wdrażanie modelu bloku](media/how-to-create-portal-experiments/deploy-model-blade.png)
+
+1. Po zarejestrowaniu modelu będzie można pobrać skrypt oceniania (scoring.py) i skryptów środowiska (condaEnv.yml) do użycia podczas wdrażania.
+
+1. Skrypt oceniania i skryptów środowiska są pobierane, przejdź do **zasoby** bloku, w okienku nawigacji po lewej stronie, a następnie wybierz pozycję **modeli**.
+
+    ![Modele okienko nawigacji](media/how-to-create-portal-experiments/nav-pane-models.png)
+
+1. Wybierz model, który został zarejestrowany, a następnie wybierz pozycję "Utwórz obraz".
+
+    Model może zidentyfikować na podstawie jego opis, który będzie zawierać identyfikator uruchomienia liczbę iteracji w następującym formacie: *< Run_ID > _ < Iteration_number > _modelu*
+
+    ![Modele: Tworzenie obrazu](media/how-to-create-portal-experiments/model-create-image.png)
+
+1. Wprowadź nazwę dla obrazu. 
+1. Wybierz **Przeglądaj** przycisk obok pola "Plik oceniania", aby przekazać plik oceniania (scoring.py) został wcześniej pobrany.
+
+1. Wybierz **Przeglądaj** przycisk obok pola "Conda plik", można przekazać pliku środowiska (condaEnv.yml), który został wcześniej pobrany.
+
+    Można użyć własnych skrypt oceniania i plików conda, a także dodatkowe pliki do przekazania. [Dowiedz się więcej o skrypt oceniania](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script).
+
+      >[!Important]
+      > Nazwy plików musi być w obszarze 32 znaków i musi rozpoczynać się i kończyć znaków alfanumerycznych. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne, między. Spacje są niedozwolone.
+
+    ![Tworzenie obrazu](media/how-to-create-portal-experiments/create-image.png)
+
+1. Wybierz przycisk "Utwórz", aby rozpocząć tworzenie obrazu. To potrwa kilka minut, po zakończeniu, zostanie wyświetlony komunikat na górnym pasku.
+1. Przejdź do karty "Obrazy", zaznacz pole wyboru obok obraz, który chcesz wdrożyć, a następnie wybierz pozycję "Utwórz wdrożenia". [Dowiedz się więcej na temat wdrożeń](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+
+    Istnieją 2 opcje wdrażania.
+     + Wystąpienia kontenerów platformy Azure (ACI) — jest używana więcej do testowania, cel, a nie operacyjnych wdrożenia na dużą skalę. Upewnij się, że Podaj wartości dla co najmniej jednym rdzeniu na _pojemność rezerwowa procesora CPU_i co najmniej jednego gigabajta (GB) dla _pojemność rezerwowa pamięci_
+     + Usługa Azure Kubernetes Service (AKS)) — ta opcja służy do wdrażania na dużą skalę. Musisz mieć gotowy obliczeniowe na podstawie usługi AKS.
+
+     ![Obrazy: Tworzenie wdrożenia](media/how-to-create-portal-experiments/images-create-deployment.png)
+
+1. Po zakończeniu wybierz pozycję **Utwórz**. Wdrażanie modelu może potrwać kilka minut dla każdego potoku na zakończenie działania.
+
+1. To wszystko! Masz usługę sieci web operational do generowania przewidywań.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Dowiedz się więcej na temat uczenia maszynowego automatycznych](concept-automated-ml.md) i Azure Machine Learning.
+* [Informacje o sposobie korzystania z usługi internetowej](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

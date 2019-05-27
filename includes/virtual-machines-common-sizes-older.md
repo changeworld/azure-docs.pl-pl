@@ -9,11 +9,11 @@ ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 7196a2ea794c1d17a2c55c05accb447d83929972
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744438"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145730"
 ---
 Ta sekcja zawiera informacje dotyczące starszych generacjach rozmiarów maszyn wirtualnych. Te rozmiary są nadal obsługiwane, ale nie będą otrzymywali dodatkowej pojemności. Brak rozmiary alternatywnych lub nowsza, które są ogólnie dostępne. Zapoznaj się [rozmiary dla Windows maszyn wirtualnych na platformie Azure](../articles/virtual-machines/windows/sizes.md) lub [rozmiary maszyn wirtualnych systemu Linux na platformie Azure](../articles/virtual-machines/linux/sizes.md) wybrać maszynę Wirtualną rozmiarów, które będzie najlepiej dopasować Twoich potrzeb.  
 

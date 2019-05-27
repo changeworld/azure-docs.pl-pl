@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127143"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -70,7 +70,7 @@ Aby delegować zarządzanie dostępem dla rezerwacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkich usług** > **rezerwacji** do listy rezerwacji, które mają dostęp do.
 3. Wybierz zastrzeżenie, którego chcesz delegować dostęp do innych użytkowników.
-4. Wybierz pozycję **Kontrola dostępu (IAM)**.
+4. Wybierz **kontrola dostępu (IAM)**.
 5. Wybierz **Dodaj przypisanie roli** > **roli** > **właściciela**. Ewentualnie, jeśli chcesz nadać ograniczony dostęp, wybierz inną rolę.
 6. Wpisz adres e-mail użytkownika, którego chcesz dodać jako właściciela.
 7. Wybierz użytkownika, a następnie wybierz polecenie **Zapisz**.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 894dd5ea7270390780813b647fe7a8b4c0f173bd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39513797"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66139960"
 ---
 1. Kliknij przycisk **App Services**, wybierz zaplecze funkcji Mobile Apps, wybierz pozycję **Szybki start**, a następnie wybierz platformę klienta (iOS, Android, Xamarin, Cordova).
 
@@ -31,7 +31,7 @@ ms.locfileid: "39513797"
 
     ![Powiadomienie witryny Azure Portal o pomyślnym utworzeniu połączenia danych][notification]
 
-    d. Połączenie danych musi się powieść.
+    c. Połączenie danych musi się powieść.
 
     ![Powiadomienie witryny Azure Portal „Masz już połączenie danych”][already-connection]
 

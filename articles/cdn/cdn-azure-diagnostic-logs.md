@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66125908"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -197,7 +197,7 @@ Dzienniki analiz Core są generowane co godzinę, a dane są zbierane i przechow
 |Nazwa punktu końcowego |Nazwa punktu końcowego usługi CDN|
 |Rok|  Czterocyfrowy reprezentacja roku, na przykład 2017 r.|
 |Miesiąc| Reprezentacja dwucyfrowy numer miesiąca. 01 stycznia =... 12 grudnia =|
-|Dzień|   Reprezentacja dwucyfrowy dzień miesiąca|
+| Dzień|   Reprezentacja dwucyfrowy dzień miesiąca|
 |PT1H.json| Rzeczywisty plik JSON, w której są przechowywane dane analizy|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Eksportowanie danych analitycznych podstawowych do pliku CSV
@@ -238,59 +238,59 @@ Wykonaj następujące kroki, aby dodać usługi Azure Monitor, rozwiązanie do m
 
 2. W **New** w obszarze **Marketplace**, wybierz opcję **monitorowanie + zarządzanie**.
 
-    ![Portal Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
+    ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
 3. W **monitorowanie + zarządzanie** wybierz opcję **holograficznych**.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/15_See-all.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/15_See-all.png)
 
 4. Wyszukaj usługę CDN w polu wyszukiwania.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/16_Search-for.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/16_Search-for.png)
 
 5. Wybierz **sieć CDN systemu Azure Core Analytics**. 
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/17_Core-analytics.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
 6. Po wybraniu **Utwórz**, zostanie wyświetlony monit, aby utworzyć nowy obszar roboczy usługi Log Analytics lub użyj istniejącej. 
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/18_Adding-solution.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
 7. Wybierz obszar roboczy, utworzonego wcześniej. Następnie należy dodać konto usługi automation.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/19_Add-automation.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/19_Add-automation.png)
 
 8. Na poniższym ekranie przedstawiono formularz konta usługi automation, które należy wypełnić. 
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/20_Automation.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/20_Automation.png)
 
 9. Po utworzeniu konta usługi automation można przystąpić do dodawania rozwiązania. Wybierz przycisk **Utwórz**.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/21_Ready.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/21_Ready.png)
 
 10. Rozwiązania został dodany do obszaru roboczego. Wróć do pulpitu nawigacyjnego witryny Azure portal.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/22_Dashboard.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/22_Dashboard.png)
 
     Wybierz obszar roboczy usługi Log Analytics, który został utworzony, aby przejść do obszaru roboczego. 
 
 11. Wybierz **portalu pakietu OMS** Kafelek, aby wyświetlić nowe rozwiązanie.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/23_workspace.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/23_workspace.png)
 
 12. Twój portal powinna teraz wyglądać podobnie jak następujący ekran:
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/24_OMS-solution.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
     Wybierz jeden z kafelków, aby zobaczyć kilka widoków danych.
 
-    ![Zobacz wszystkie](./media/cdn-diagnostics-log/25_Interior-view.png)
+    ![Zobacz wszystko](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     Można przewiniesz w lewo lub w prawo, aby wyświetlić Kafelki dalsze reprezentujących poszczególnych widoków danych. 
 
     Wybierz jeden z kafelków, aby zobaczyć więcej szczegółów dotyczących danych.
 
-     ![Zobacz wszystkie](./media/cdn-diagnostics-log/26_Further-detail.png)
+     ![Zobacz wszystko](./media/cdn-diagnostics-log/26_Further-detail.png)
 
 ### <a name="offers-and-pricing-tiers"></a>Oferty i warstw cenowych
 
@@ -325,32 +325,32 @@ W poniższej tabeli przedstawiono listę dostępnych w obszarach podstawowych me
 
 |Metryka                     | Opis | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | Łączna liczba trafień żądania, w tym okresie. | Yes | Yes |Yes |
-| RequestCountHttpStatus2xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 2xx (na przykład 200, 202). | Yes | Yes |Yes |
-| RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 3xx (na przykład, 300, 302). | Yes | Yes |Yes |
-| RequestCountHttpStatus4xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 4xx (na przykład, 400, 404). | Yes | Yes |Yes |
-| RequestCountHttpStatus5xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 5xx (na przykład, 500, 504). | Yes | Yes |Yes |
-| RequestCountHttpStatusOthers | Liczba inne kody HTTP (poza 2xx-5xx). | Yes | Yes |Yes |
-| RequestCountHttpStatus200 | Liczba wszystkich żądań, które spowodowały 200 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
-| RequestCountHttpStatus206 | Liczba wszystkich żądań, które spowodowały 206 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
-| RequestCountHttpStatus302 | Liczba wszystkich żądań, które wpłynęły na 302 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
-| RequestCountHttpStatus304 | Liczba wszystkich żądań, które spowodowały 304 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
-| RequestCountHttpStatus404 | Liczba wszystkich żądań, na które uzyskano odpowiedź kod HTTP 404. | Yes | Nie  |Yes |
-| RequestCountCacheHit | Liczba wszystkich żądań, na które uzyskano w pamięci podręcznej odwołań. Zasób był obsługiwany bezpośrednio w punkcie POP do klienta. | Yes | Yes | Nie  |
-| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowały Chybienie pamięci podręcznej. Trafienia pamięci podręcznej oznacza, że zasób nie został znaleziony na najbliższy do klienta punkt POP i dlatego został pobrany z punktu początkowego. | Yes | Yes | Nie |
-| RequestCountCacheNoCache | Liczba wszystkich żądań do elementu zawartości, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Yes | Yes | Nie |
-| RequestCountCacheUncacheable | Liczba wszystkich żądań do zasobów, które mają zablokowaną możliwość buforowania Cache-Control elementu zawartości i nagłówki wygasa, które wskazują, że go powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Yes | Yes | Nie |
+| RequestCountTotal         | Łączna liczba trafień żądania, w tym okresie. | Tak | Yes |Tak |
+| RequestCountHttpStatus2xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 2xx (na przykład 200, 202). | Tak | Yes |Tak |
+| RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 3xx (na przykład, 300, 302). | Tak | Yes |Tak |
+| RequestCountHttpStatus4xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 4xx (na przykład, 400, 404). | Tak | Yes |Tak |
+| RequestCountHttpStatus5xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 5xx (na przykład, 500, 504). | Tak | Yes |Tak |
+| RequestCountHttpStatusOthers | Liczba inne kody HTTP (poza 2xx-5xx). | Tak | Yes |Tak |
+| RequestCountHttpStatus200 | Liczba wszystkich żądań, które spowodowały 200 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
+| RequestCountHttpStatus206 | Liczba wszystkich żądań, które spowodowały 206 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
+| RequestCountHttpStatus302 | Liczba wszystkich żądań, które wpłynęły na 302 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
+| RequestCountHttpStatus304 | Liczba wszystkich żądań, które spowodowały 304 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
+| RequestCountHttpStatus404 | Liczba wszystkich żądań, na które uzyskano odpowiedź kod HTTP 404. | Tak | Nie  |Tak |
+| RequestCountCacheHit | Liczba wszystkich żądań, na które uzyskano w pamięci podręcznej odwołań. Zasób był obsługiwany bezpośrednio w punkcie POP do klienta. | Tak | Yes | Nie  |
+| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowały Chybienie pamięci podręcznej. Trafienia pamięci podręcznej oznacza, że zasób nie został znaleziony na najbliższy do klienta punkt POP i dlatego został pobrany z punktu początkowego. | Tak | Yes | Nie |
+| RequestCountCacheNoCache | Liczba wszystkich żądań do elementu zawartości, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Tak | Yes | Nie |
+| RequestCountCacheUncacheable | Liczba wszystkich żądań do zasobów, które mają zablokowaną możliwość buforowania Cache-Control elementu zawartości i nagłówki wygasa, które wskazują, że go powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Tak | Yes | Nie |
 | RequestCountCacheOthers | Liczba wszystkich żądań ze stanem pamięci podręcznej nie pasuje do żadnego powyżej. | Nie | Yes | Nie  |
-| EgressTotal | Dodatkowy wychodzący transfer danych w GB | Yes |Yes |Yes |
-| EgressHttpStatus2xx | Dane wychodzące transferu * dla odpowiedzi z kodów stanu HTTP 2xx w GB. | Yes | Yes | Nie  |
-| EgressHttpStatus3xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 3xx w GB. | Yes | Yes | Nie  |
-| EgressHttpStatus4xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 4xx w GB. | Yes | Yes | Nie  |
-| EgressHttpStatus5xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 5xx w GB. | Yes | Yes | Nie |
-| EgressHttpStatusOthers | Transfer danych wychodzących dla odpowiedzi z innych kodach stanów HTTP w GB. | Yes | Yes | Nie  |
-| EgressCacheHit | Transfer danych wychodzących dla odpowiedzi, które były dostarczane bezpośrednio z pamięci podręcznej usługi CDN CDN POP i krawędzi. | Yes | Yes | Nie |
-| EgressCacheMiss. | Transfer danych wychodzących dla odpowiedzi, które nie zostały znalezione na najbliższy serwer protokołu POP i pobierane z serwera pochodzenia. | Yes | Yes | Nie |
-| EgressCacheNoCache | Wychodzący transfer danych dla zasobów, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Yes | Yes | Nie |
-| EgressCacheUncacheable | Wychodzący transfer danych dla zasobów, które nie będą mogli buforowana przez Cache-Control i/lub Expires nagłówków zawartości. Wskazuje, czy jego powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Yes | Yes | Nie |
+| EgressTotal | Dodatkowy wychodzący transfer danych w GB | Tak |Yes |Tak |
+| EgressHttpStatus2xx | Dane wychodzące transferu * dla odpowiedzi z kodów stanu HTTP 2xx w GB. | Tak | Yes | Nie  |
+| EgressHttpStatus3xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 3xx w GB. | Tak | Yes | Nie  |
+| EgressHttpStatus4xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 4xx w GB. | Tak | Yes | Nie  |
+| EgressHttpStatus5xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 5xx w GB. | Tak | Yes | Nie |
+| EgressHttpStatusOthers | Transfer danych wychodzących dla odpowiedzi z innych kodach stanów HTTP w GB. | Tak | Yes | Nie  |
+| EgressCacheHit | Transfer danych wychodzących dla odpowiedzi, które były dostarczane bezpośrednio z pamięci podręcznej usługi CDN CDN POP i krawędzi. | Tak | Yes | Nie |
+| EgressCacheMiss. | Transfer danych wychodzących dla odpowiedzi, które nie zostały znalezione na najbliższy serwer protokołu POP i pobierane z serwera pochodzenia. | Tak | Yes | Nie |
+| EgressCacheNoCache | Wychodzący transfer danych dla zasobów, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Tak | Yes | Nie |
+| EgressCacheUncacheable | Wychodzący transfer danych dla zasobów, które nie będą mogli buforowana przez Cache-Control i/lub Expires nagłówków zawartości. Wskazuje, czy jego powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Tak | Yes | Nie |
 | EgressCacheOthers | Wychodzące transfery danych w innych sytuacjach pamięci podręcznej. | Nie | Yes | Nie |
 
 * Dodatkowy wychodzący transfer danych odnosi się do ruchu dostarczane z serwerów POP sieci CDN do klienta.

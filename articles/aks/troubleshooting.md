@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192287"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966377"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 
@@ -118,3 +118,15 @@ Ograniczenia nazewnictwa są implementowane przez platformę Azure i usługi AKS
 
 * AKS *MC_* łączy nazwy grupy zasobów, nazwę grupy zasobów i nazwę zasobu. Składnia generowanych automatycznie `MC_resourceGroupName_resourceName_AzureRegion` musi być większa niż 80 znaków. Jeśli to konieczne, należy zmniejszyć długość nazwy grupy zasobów lub nazwę klastra AKS.
 * *DnsPrefix* musi się zaczynać i kończyć się znakiem alfanumerycznym wartości. Prawidłowe znaki to wartości alfanumeryczne i łączniki (-). *DnsPrefix* nie może zawierać znaków specjalnych, takich jak znak kropki (.).
+
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Otrzymuję błędy podczas próby utworzenia, aktualizacji, skalowanie, usunąć lub uaktualnić klaster, że operacja jest niedozwolona, ponieważ inna operacja jest w toku.
+
+*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z aka.ms/aks oczekujące operacji*
+
+Działanie klastra są ograniczone, gdy poprzednia operacja jest nadal w toku. Aby uzyskać szczegółowy stan klastra, użyj `az aks show -g myResourceGroup -n myAKSCluster -o table` polecenia. Użyj własną grupę zasobów i nazwę klastra AKS, zgodnie z potrzebami.
+
+Oparte na dane wyjściowe stan klastra:
+
+* Jeśli klaster znajduje się w dowolnym stanie inicjowania obsługi innych niż *Powodzenie* lub *niepowodzenie*, poczekaj, aż operacja (*uaktualnianie / aktualizowanie / tworzenie / skalowanie / usuwanie / migracja*) kończy się. Po zakończeniu poprzedniej operacji ponownie spróbuj wykonać operację najnowsze klastra.
+
+* Jeśli klaster zawiera nieudanego uaktualnienia, wykonaj czynności opisane [odbieranie błędów, które Mój klaster jest w stanie niepowodzenia i uaktualnianie i skalowanie nie będzie działać, dopóki nie zostanie on rozwiązany](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).

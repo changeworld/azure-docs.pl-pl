@@ -17,11 +17,11 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: e90880aeaae17c80d6714f917f2ea849c953711f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755412"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66169314"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure na maszynach wirtualnych z systemem Linux
 
@@ -66,7 +66,7 @@ Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów za pomocą 
 az group create --name myRGNetwork --location eastus
 ```
 
-### <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
+### <a name="create-virtual-network"></a>Utwórz sieć wirtualną
 
 Użyj polecenia [az network vnet create](/cli/azure/network/vnet), aby utworzyć sieć wirtualną. W tym przykładzie sieć nazywa się *mvVNet*, a jej prefiks adresu to *10.0.0.0/16*. Tworzona jest również podsieć o nazwie *myFrontendSubnet* z prefiksem *10.0.1.0/24*. W dalszej części tego samouczka maszyna wirtualna frontonu zostanie połączona z tą podsiecią. 
 
@@ -291,7 +291,7 @@ Maszyna wirtualna zaplecza jest dostępna dla podsieci frontonu tylko na porcie 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku utworzono i zabezpieczono sieci platformy Azure na potrzeby maszyn wirtualnych. W tym samouczku omówiono:
 

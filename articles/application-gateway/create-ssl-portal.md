@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 4/17/2019
 ms.author: victorh
 ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134536"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Samouczek: Konfigurowanie bramy aplikacji przy użyciu kończenia żądań SSL przy użyciu witryny Azure portal
 
@@ -81,7 +81,7 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
    - *myAGSubnet* — jako nazwę podsieci.
    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-     ![Tworzenie sieci wirtualnej](./media/create-ssl-portal/application-gateway-vnet.png)
+     ![Utwórz sieć wirtualną](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. Wybierz **OK** utworzyć sieć wirtualną i podsieć.
 7. Wybierz **wybierz publiczny adres IP**, wybierz opcję **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne innych ustawień, a następnie kliknij przycisk **OK**.
@@ -106,7 +106,7 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
 
 W tym przykładzie utworzysz dwie maszyny wirtualne, używane jako serwery zaplecza w usłudze application gateway. Możesz także zainstalować usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji został pomyślnie utworzony.
 
-### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+### <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 
 1. Wybierz pozycję **Nowy**.
 2. Wybierz pozycję **Compute**, a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.

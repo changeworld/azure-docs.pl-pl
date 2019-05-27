@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: bb47a1b828084673961a6d2c5657793b4437f294
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160578"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151703"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Korzystanie z usługi IoT Edge na Windows umożliwiające uruchamianie kontenerów systemu Linux
 
@@ -64,6 +64,13 @@ Możesz dowiedzieć się więcej o opcjach innej instalacji i parametrów w arty
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
 2. Uruchom program PowerShell jako administrator.
+
+   >[!NOTE]
+   >Aby zainstalować usługi IoT Edge, PowerShell (x86), należy użyć AMD64 sesji programu PowerShell. Jeśli nie masz pewności, jakiego typu sesji używasz, uruchom następujące polecenie:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. **IoTEdge Wdróż** polecenie sprawdza, czy komputer Windows jest w obsługiwanej wersji, włączenie funkcji kontenerów i pliki do pobrania moby środowiska uruchomieniowego, (która nie jest używany dla kontenerów systemu Linux) i środowisko uruchomieniowe usługi IoT Edge. Ustawienia domyślne polecenia, aby kontenery Windows, więc zadeklarować systemu Linux jako system operacyjny żądanego kontenera. 
 

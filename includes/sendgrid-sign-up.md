@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: erikre
 ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444872"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121377"
 ---
 W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatnych wiadomości e-mail. Pozwala to uzyskać dostęp do zaawansowanych raportów i analiz oraz [wszystkich interfejsów API][all APIs] (np. sieci Web, protokołu SMTP, zdarzeń czy analizy). Informacje o dodatkowych usługach SendGrid można znaleźć na stronie z [rozwiązaniami usługi SendGrid][SendGrid Solutions].
 
@@ -53,7 +53,7 @@ W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatny
 ### <a name="to-find-your-sendgrid-api-key"></a>Aby znaleźć klucz interfejsu API usługi SendGrid
 1. Kliknij pozycję **Zarządzaj**.
 
-    ![manage][manage]
+    ![zarządzaj][manage]
 2. W pulpicie nawigacyjnym usługi SendGrid wybierz pozycję **Ustawienia**, a następnie pozycję **Klucze interfejsu API** w menu po lewej stronie.
 
     ![api-keys][api-keys]
@@ -74,7 +74,7 @@ W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatny
 
 Aby zarządzać ustawieniami dostarczania poczty e-mail, kliknij przycisk **Zarządzaj**. Nastąpi przekierowanie do pulpitu nawigacyjnego usługi SendGrid.
 
-![manage][manage]
+![zarządzaj][manage]
 
 Aby uzyskać więcej informacji na temat wysyłania wiadomości e-mail za pośrednictwem usługi SendGrid, odwiedź stronę [omówienie interfejsu API usługi poczty E-mail][Email API Overview].
 

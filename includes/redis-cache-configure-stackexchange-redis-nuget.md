@@ -2,15 +2,14 @@
 author: wesmc7777
 ms.service: redis-cache
 ms.topic: include
-origin.date: 11/09/2018
-ms.date: 12/25/2018
-ms.author: v-junlch
+ms.date: 11/09/2018
+ms.author: wesmc
 ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830298"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132902"
 ---
 Aplikacje platformy .NET mogą używać klienta pamięci podręcznej **StackExchange.Redis**, którego można skonfigurować w programie Visual Studio przy użyciu pakietu NuGet upraszczającego konfigurację aplikacji klienta pamięci podręcznej. 
 
@@ -21,7 +20,7 @@ Aplikacje platformy .NET mogą używać klienta pamięci podręcznej **StackExch
 
 Aby skonfigurować aplikację klienta w programie Visual Studio przy użyciu pakietu NuGet StackExchange.Redis, kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań** i wybierz pozycję **Zarządzaj pakietami NuGet**. 
 
-![Zarządzanie pakietami NuGet](./media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-manage-nuget-menu.png)
+![Zarządzanie pakietami NuGet](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-manage-nuget-menu.png)
 
 Wpisz **StackExchange.Redis** lub **StackExchange.Redis.StrongName** w polu tekstowym wyszukiwania, wybierz z wyników żądaną wersję i kliknij przycisk **Zainstaluj**.
 
@@ -30,7 +29,7 @@ Wpisz **StackExchange.Redis** lub **StackExchange.Redis.StrongName** w polu teks
 >
 >
 
-![Pakiet NuGet StackExchange.Redis](./media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
+![Pakiet NuGet StackExchange.Redis](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
 Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu umożliwiające aplikacji klienta uzyskiwać dostęp do usługi Azure Cache dla pamięci podręcznej Redis przy użyciu pamięci podręcznej StackExchange.Azure klienta pamięci podręcznej Redis.
 
@@ -44,5 +43,3 @@ Można także zainstalować pakiet NuGet StackExchange.Redis, klikając pozycję
 ```
 Install-Package StackExchange.Redis
 ```
-
-<!-- ms.date: 12/25/2018 -->

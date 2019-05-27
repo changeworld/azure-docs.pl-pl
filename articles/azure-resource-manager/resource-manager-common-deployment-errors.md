@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128567"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -30,7 +30,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 
 ## <a name="error-codes"></a>Kody błędów
 
-| Kod błędu | Środki zaradcze | Więcej informacji |
+| Kod błędu | Ograniczanie ryzyka | Więcej informacji |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Postępuj zgodnie z ograniczenia nazewnictwa dla kont magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Sprawdź właściwości konta dostępnego magazynu. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -63,7 +63,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | MissingRegistrationForLocation | Sprawdź stan rejestracji dostawcy zasobów oraz obsługiwane lokalizacje. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Sprawdź stan rejestracji dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| NotFound | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
+| Nie odnaleziono | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Wdrożenie próbuje operacji, która przekracza limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe Sprawdź, czy wdrożenie w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Upewnij się, że zasób nadrzędny znajduje się przed utworzeniem elementu podrzędnego zasobów. | [Rozwiąż zasób nadrzędny](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Być może wybrano hasło zbyt wiele znaków lub mogą mieć przekonwertowane wartość hasła na bezpieczny ciąg przed przekazaniem go jako parametr. Jeśli szablon zawiera **bezpieczny ciąg** parametru, nie trzeba przekonwertować wartości na bezpieczny ciąg. Podaj hasło jako tekst. |  |

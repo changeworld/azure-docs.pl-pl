@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1a2e75dcffe32c6f1aeaba8646b96bbc1500ffdf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aac0a3ab14cc2543fe3b60f4c52e14e3cb0ee743
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438214"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991713"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych Windows na platformie Azure
 
@@ -33,13 +33,13 @@ Azure jest teraz objęta infrastruktury z systemem Windows Server 2016. System W
 >
 > Aby uzyskać więcej informacji, zobacz [dokładnego czasu systemu Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Dokładność zegara komputera jest pomiarowym na blisko zegara komputera jest standardowy czas uniwersalny czas koordynowany (UTC). UTC jest definiowany przez wielonarodowych próbka dokładne zegary niepodzielność, które może być tylko wyłączyć jedną sekundę lat 300. Jednak bezpośrednio do czytania UTC wymaga specjalistycznego sprzętu. Zamiast tego należy serwery czasu UTC są synchronizowane i są dostępne z innych komputerów w celu zapewnienia skalowalności i niezawodności. Każdy komputer ma czas Usługa synchronizacji jest uruchomiona, wie, jakie serwery czasu, należy użyć i okresowo sprawdza, czy zegar komputera ma zostać poprawione i dostosowuje czas, w razie potrzeby. 
 
 Hosty platformy Azure są synchronizowane wewnętrznych serwerów czasu firmy Microsoft, które przyjmują czasu z urządzeń należących do firmy Microsoft warstwy 1, przy użyciu anten GPS. Maszyny wirtualne na platformie Azure albo mogą być zależne od ich host do przekazania dokładnego czasu (*hosta czasu*) do maszyny Wirtualnej lub maszyny Wirtualnej może bezpośrednio pobierać czas z czasem serwera lub jako kombinację obu tych. 
 
-Maszyna wirtualna interakcji z hostem może również wpływać na zegara. Podczas [pamięci zachowywanie konserwacji](maintenance-and-updates.md#maintenance-not-requiring-a-reboot), maszyny wirtualne są wstrzymane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem konserwacji zegar maszyny Wirtualnej zawiera 10:00:00 AM i obowiązuje 28 sekundach. Po wznowieniu działania maszyny Wirtualnej, zegar na maszynie Wirtualnej nadal będą wyświetlane 10:00:00 AM, który będzie 28 sekundach wyłączone. Prawidłowe w tym celu usługa VMICTimeSync monitoruje co dzieje się na hoście i wyświetla monit o zmiany do wykonania na maszynach wirtualnych wyrównania.
+Maszyna wirtualna interakcji z hostem może również wpływać na zegara. Podczas [pamięci zachowywanie konserwacji](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot), maszyny wirtualne są wstrzymane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem konserwacji zegar maszyny Wirtualnej zawiera 10:00:00 AM i obowiązuje 28 sekundach. Po wznowieniu działania maszyny Wirtualnej, zegar na maszynie Wirtualnej nadal będą wyświetlane 10:00:00 AM, który będzie 28 sekundach wyłączone. Prawidłowe w tym celu usługa VMICTimeSync monitoruje co dzieje się na hoście i wyświetla monit o zmiany do wykonania na maszynach wirtualnych wyrównania.
 
 Usługa VMICTimeSync działa w trybie próbki lub synchronizacji i wpływają tylko do przodu zegara. W trybie próbki, wymagająca W32time, należy uruchomić usługę VMICTimeSync sonduje hosta co 5 sekund i zawiera przykłady czasu W32time. Co około 30 sekund, usługę W32time przyjmuje najnowszej próbki czasu i używa go do wywierania wpływu na zegarze gościa. Trybu synchronizacji aktywuje, jeśli zostało wznowione gościa lub zegara gościa drifts więcej niż 5 sekund za zegara hosta. W przypadkach, w którym jest prawidłowo uruchomiona usługa W32time ostatnim przypadku powinno nigdy się wydarzyć.
 

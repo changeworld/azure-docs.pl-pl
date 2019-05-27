@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262937"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165482"
 ---
 Następnie, jeśli wszystkie serwery w klastrze są uruchomione w systemie Windows Server 2008 R2 lub Windows Server 2012, należy sprawdzić, czy poprawka [KB2854082](https://support.microsoft.com/kb/2854082) jest zainstalowany na każdym z serwerów lokalnych lub maszyn wirtualnych platformy Azure, które są częścią klastra. Dowolny serwer lub maszynę Wirtualną, która jest w klastrze, ale nie w grupie dostępności powinny mieć również po zainstalowaniu tej poprawki.
 

@@ -6,14 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/15/2018
-ms.author: victorh
+origin.date: 08/15/2018
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66133693"
 ---
 # <a name="renew-application-gateway-certificates"></a>Odnów certyfikaty bramy Application Gateway
 
@@ -25,7 +26,7 @@ Można odnowić certyfikat, który został skojarzony odbiornik, albo w witrynie
 
 Aby odnowić certyfikat odbiornika z poziomu portalu, przejdź do swojej odbiorników bramy aplikacji. Kliknij przycisk odbiornik, który ma certyfikat, który wymaga odnowienia, a następnie kliknij przycisk **Odnów lub Edytuj wybrany certyfikat**.
 
-![Odnów certyfikat](media/renew-certificate/ssl-cert.png)
+![Odnów certyfikat](./media/renew-certificate/ssl-cert.png)
 
 Przekaż nowy certyfikat PFX, nadaj jej nazwę, wpisz hasło, a następnie kliknij **Zapisz**.
 
@@ -35,7 +36,7 @@ Przekaż nowy certyfikat PFX, nadaj jej nazwę, wpisz hasło, a następnie klikn
 
 Aby odnowić certyfikat przy użyciu programu Azure PowerShell, użyj następującego skryptu:
 
-```azurepowershell-interactive
+```azurepowershell
 $appgw = Get-AzApplicationGateway `
   -ResourceGroupName <ResourceGroup> `
   -Name <AppGatewayName>
@@ -52,15 +53,17 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-```azurecli-interactive
-az network application-gateway ssl-cert update \
-  -n "<CertName>" \
-  --gateway-name "<AppGatewayName>" \
-  -g "ResourceGroupName>" \
-  --cert-file <PathToCerFile> \
+```azurecli
+az network application-gateway ssl-cert update `
+  -n "<CertName>" `
+  --gateway-name "<AppGatewayName>" `
+  -g "ResourceGroupName>" `
+  --cert-file <PathToCerFile> `
   --cert-password "<password>"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak skonfigurować odciążanie protokołu SSL za pomocą usługi Azure Application Gateway, zobacz [skonfigurować odciążanie protokołu SSL](application-gateway-ssl-portal.md)
+
+<!-- Update_Description: code update -->

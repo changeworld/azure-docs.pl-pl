@@ -5,11 +5,11 @@ ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
 ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60200264"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66125217"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w usłudze Azure Cloud Shell
 Usługa cloud Shell korzysta z usługi Azure File storage, aby utrwalać pliki między sesjami. W menu start początkowej usługi Cloud Shell monituje o skojarzyć udział plików nowej lub istniejącej utrwalanie plików między sesjami.
@@ -49,7 +49,7 @@ Skojarzonych kont muszą znajdować się w tym samym regionie, co komputer Cloud
 
 Cloud Shell maszyn istnieją w następujących regionach:
 
-|Obszar|Region|
+|Obszar|Obszar|
 |---|---|
 |Ameryki|Wschodnie stany USA, południowo-środkowe stany USA, zachodnie stany USA|
 |Europa|Europa Północna, Europa Zachodnia|

@@ -16,11 +16,11 @@ ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550209"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127509"
 ---
 ### <a name="general-requirements"></a>Wymagania ogólne
 
@@ -48,7 +48,7 @@ Dodatkowe wymagania dotyczące sieci wirtualnej różnią się w zależności od
 
 **Dodatkowe zasoby sieciowe** — usługa Batch automatycznie przydziela dodatkowe zasoby sieciowe w grupie zasobów zawierającej sieć wirtualną. Dla każdego 50 węzły dedykowane (lub każdy z 20 węzłów o niskim priorytecie) przydziela partii: Moduł równoważenia obciążenia 1 sieciowej grupy zabezpieczeń (NSG), 1 publiczny adres IP i 1. Te zasoby są ograniczone przez [limity zasobów](../articles/azure-subscription-service-limits.md) subskrypcji. W przypadku dużych pul może być konieczne zażądanie zwiększenia limitu przydziału dla co najmniej jednego z tych zasobów.
 
-#### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
+#### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
 
 Podsieć musi zezwalać na komunikację przychodzącą z usługi Batch, co umożliwia planowanie zadań w węzłach obliczeniowych, i na komunikację wychodzącą na potrzeby komunikacji z usługą Azure Storage lub innymi zasobami. W przypadku pul w konfiguracji maszyny wirtualnej usługa Batch dodaje sieciowe grupy zabezpieczeń na poziomie interfejsów sieciowych (NIC) dołączonych do maszyn wirtualnych. Te sieciowe grupy zabezpieczeń automatycznie konfigurują reguły ruchu przychodzącego i wychodzącego, aby zezwolić na następujący ruch:
 
@@ -64,16 +64,16 @@ Nie trzeba określać sieciowych grup zabezpieczeń na poziomie podsieci, poniew
 
 **Reguły zabezpieczeń dla ruchu przychodzącego**
 
-| Źródłowe adresy IP | Tag usługi źródłowej | Porty źródłowe | Element docelowy | Porty docelowe | Protokół | Akcja |
+| Źródłowe adresy IP | Tag usługi źródłowej | Porty źródłowe | Lokalizacja docelowa | Porty docelowe | Protocol | action |
 | --- | --- | --- | --- | --- | --- | --- |
-| ND | `BatchNodeManagement` [Tag usługi](../articles/virtual-network/security-overview.md#service-tags) | * | Dowolne | 29876-29877 | TCP | Zezwalaj |
-| Użytkownik źródłowe adresy IP do zdalnego uzyskiwania dostępu do węzłów obliczeniowych i/lub podsieci węzła obliczeń dla zadania obejmujące wiele wystąpień systemu Linux, jeśli jest to wymagane. | ND | * | Dowolne | 3389 (Windows), 22 (Linux) | TCP | Zezwalaj |
+| ND | `BatchNodeManagement` [Tag usługi](../articles/virtual-network/security-overview.md#service-tags) | * | Dowolne | 29876-29877 | TCP | Zezwól |
+| Użytkownik źródłowe adresy IP do zdalnego uzyskiwania dostępu do węzłów obliczeniowych i/lub podsieci węzła obliczeń dla zadania obejmujące wiele wystąpień systemu Linux, jeśli jest to wymagane. | ND | * | Dowolne | 3389 (Windows), 22 (Linux) | TCP | Zezwól |
 
 **Reguły zabezpieczeń dla ruchu wychodzącego**
 
-| Element źródłowy | Porty źródłowe | Element docelowy | Docelowy tag usługi | Protokół | Akcja |
+| Source | Porty źródłowe | Lokalizacja docelowa | Docelowy tag usługi | Protocol | action |
 | --- | --- | --- | --- | --- | --- |
-| Dowolne | 443 | [Tag usługi](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (w tym samym regionie jako konta usługi Batch i sieci wirtualnej)  | Dowolne | Zezwalaj |
+| Dowolne | 443 | [Tag usługi](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (w tym samym regionie jako konta usługi Batch i sieci wirtualnej)  | Dowolne | Zezwól |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pule w konfiguracji usługi Cloud Services
 
@@ -87,7 +87,7 @@ Nie trzeba określać sieciowych grup zabezpieczeń na poziomie podsieci, poniew
 
 **Uprawnienia** — jednostka usługi `MicrosoftAzureBatch` musi mieć rolę `Classic Virtual Machine Contributor` w ramach kontroli dostępu opartej na rolach (RBAC) dla określonej sieci wirtualnej.
 
-#### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
+#### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
 
 Podsieć musi zezwalać na komunikację przychodzącą z usługi Batch, co umożliwia planowanie zadań w węzłach obliczeniowych, i na komunikację wychodzącą na potrzeby komunikacji z usługą Azure Storage lub innymi zasobami.
 
@@ -97,13 +97,13 @@ Skonfiguruj ruch przychodzący na porcie 3389 dla Windows Jeśli chcesz zezwoli�
 
 **Reguły zabezpieczeń dla ruchu przychodzącego**
 
-| Źródłowe adresy IP | Porty źródłowe | Element docelowy | Porty docelowe | Protokół | Akcja |
+| Źródłowe adresy IP | Porty źródłowe | Lokalizacja docelowa | Porty docelowe | Protocol | action |
 | --- | --- | --- | --- | --- | --- |
-Dowolne <br /><br />Mimo że w praktyce wymaga to zezwolenia na cały ruch, usługa Batch stosuje regułę listy ACL filtrującą wszystkie adresy IP nienależące do usługi Batch na poziomie każdego węzła. | * | Dowolne | 10100, 20100, 30100 | TCP | Zezwalaj |
-| Opcjonalnie umożliwić dostęp RDP do węzłów obliczeniowych. | * | Dowolne | 3389 | TCP | Zezwalaj |
+Dowolne <br /><br />Mimo że w praktyce wymaga to zezwolenia na cały ruch, usługa Batch stosuje regułę listy ACL filtrującą wszystkie adresy IP nienależące do usługi Batch na poziomie każdego węzła. | * | Dowolne | 10100, 20100, 30100 | TCP | Zezwól |
+| Opcjonalnie umożliwić dostęp RDP do węzłów obliczeniowych. | * | Dowolne | 3389 | TCP | Zezwól |
 
 **Reguły zabezpieczeń dla ruchu wychodzącego**
 
-| Element źródłowy | Porty źródłowe | Element docelowy | Porty docelowe | Protokół | Akcja |
+| Source | Porty źródłowe | Lokalizacja docelowa | Porty docelowe | Protocol | action |
 | --- | --- | --- | --- | --- | --- |
-| Dowolne | * | Dowolne | 443  | Dowolne | Zezwalaj |
+| Dowolne | * | Dowolne | 443  | Dowolne | Zezwól |

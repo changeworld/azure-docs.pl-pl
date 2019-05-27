@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343464"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978307"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Kontrola dostępu w usłudze Active Directory Role-Based (wersja zapoznawcza)
 
@@ -27,8 +27,13 @@ Dla usługi Azure Event Hubs zarządzania przestrzenie nazw i wszystkie pokrewne
 Aplikacja, która korzysta z usługi Azure AD RBAC nie trzeba obsługiwać zasady sygnatury dostępu Współdzielonego i klucze lub innych tokenów dostępu, specyficzne dla usługi Event Hubs. Aplikacja kliencka wchodzi w interakcję z usługą Azure AD, aby ustanowić kontekstu uwierzytelniania, a następnie uzyskuje token dostępu dla usługi Event Hubs. Przy użyciu kont użytkowników domeny, które wymagają logowania interakcyjnego aplikacja nigdy nie obsługuje żadnych poświadczeń bezpośrednio.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role i uprawnienia
+System Azure oferuje następujące wbudowane role kontroli RBAC Autoryzowanie dostępu do przestrzeni nazw usługi Event Hubs:
 
-Początkowe publicznej wersji zapoznawczej można tylko dodać konta usługi Azure AD i nazwy główne usług role "Właściciel" lub "Współautor" w przestrzeni nazw usługi Event Hubs. Ta operacja spowoduje przydzielenie tożsamości pełną kontrolę wszystkich jednostek w przestrzeni nazw. Operacje zarządzania, które zmienić topologii przestrzeni nazw są początkowo tylko obsługiwane do usługi Azure resource management i nie przy użyciu natywnego interfejsu zarządzania REST centrów zdarzeń. Ta obsługa również oznacza, że klienta .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) obiektu nie można używać z kontem usługi Azure AD.  
+[Event Hubs danych właściciela (wersja zapoznawcza)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) rola umożliwia dostęp do danych w przestrzeni nazw usługi Event Hubs i jej podmioty (kolejki, tematy, subskrypcje i filtrów)
+
+>[!IMPORTANT]
+> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **właściciela** lub **Współautor** roli. Jednak uprawnienia dostępu do danych **właściciela** i **Współautor** roli nie są już uznawane. Jeśli używasz **właściciela** lub **Współautor** roli, przełącz się do przy użyciu **Event Hubs danych właściciela** roli.
+
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Usługa Event Hubs przy użyciu konta użytkownika domeny usługi Azure AD
 
@@ -44,7 +49,7 @@ Jeśli nadal chcesz utworzyć konto określone w tym scenariuszu [wykonaj nastę
 
 ### <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md) w jednym z regionów świadczenia usługi Azure, które mają wersję zapoznawczą obsługi kontroli RBAC usługi Event Hubs: **Wschodnie stany USA**, **wschodnie stany USA 2**, lub **Europa Zachodnia**. 
+Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md). 
 
 Po utworzeniu przestrzeni nazw, przejdź do jej **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj przypisanie roli** można dodać konto użytkownika usługi Azure AD do roli właściciel. Jeśli używasz konta użytkownika, a następnie utworzono przestrzeń nazw, użytkownik jest już w roli właściciela. Aby dodać innego konta do roli, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz). Konto użytkownika ma teraz dostęp do przestrzeni nazw usługi Event Hubs i Centrum zdarzeń została wcześniej utworzona.
  

@@ -9,20 +9,20 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6359d57a1f4cce6ec89fd76ef343b515cafae6e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739043"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133139"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązania Update Management, śledzenia zmian i spis rozwiązań na wielu maszynach wirtualnych
 
 Usługa Azure Automation oferuje rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i spisu zainstalowanych na komputerach. Istnieje wiele sposobów dołączania maszyn, możesz dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), z Twojej [konta usługi Automation](automation-onboard-solutions-from-automation-account.md), podczas przeglądania maszyny wirtualne lub przez [elementurunbook](automation-onboard-solutions.md). W tym artykule opisano dołączania do tych rozwiązań podczas przeglądania maszyn wirtualnych na platformie Azure.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do platformy Azure na stronie https://portal.azure.com
+Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 ## <a name="enable-solutions"></a>Włączanie rozwiązań
 
@@ -59,27 +59,10 @@ Jeśli wybrany obszar roboczy nie został połączony z kontem usługi Automatio
 
 ![Brak obszaru roboczego](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
-
-W poniższej tabeli przedstawiono obsługiwane mapowania:
-
-|**Regionu obszaru roboczego usługi log Analytics**|**Region usługi Azure Automation**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP i EastUS mapowania obszarów roboczych usługi Log Analytics do kont usługi Automation nie są dokładnie mapowania regionu, ale poprawna mapowania.
-
-<sup>2</sup> ze względu na ograniczenia wydajności region nie jest dostępna podczas tworzenia nowych zasobów. Obejmuje to obszary robocze kont usługi Automation i Log Analytics. Jednak istniejących połączonych zasobów w regionie powinny nadal działać.
+> [!NOTE]
+> W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
+>
+> Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
 
 Usuń zaznaczenie pola wyboru obok dowolnej maszyny wirtualnej, których nie chcesz, aby włączyć. Maszyny wirtualne, których nie można włączyć są już usunięte.
 
@@ -122,6 +105,8 @@ Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczy
 * Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
 * Zmienne
 
+Alternatywnie można również odłączyć obszaru roboczego z konta usługi Automation z obszaru roboczego usługi Log Analytics. W obszarze roboczym wybierz **konta usługi Automation** w obszarze **powiązane zasoby**. Na stronie konta automatyzacji wybierz **odłączyć konto**.
+
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Podczas dołączania wielu maszyn, może być maszyn, które są wyświetlane jako **nie można włączyć**. Istnieją różne przyczyny, dlaczego niektóre maszyny nie może być włączone. W poniższych sekcjach opisano możliwe przyczyny **nie można włączyć** stanu na maszynie Wirtualnej, podczas próby dołączyć.
@@ -152,7 +137,7 @@ Podczas dołączania wielu maszyn, może być maszyn, które są wyświetlane ja
 
 **Przyczyna**: Maszyny wirtualne, które używają klasycznego modelu wdrażania nie są obsługiwane.
 
-**Rozwiązanie**: Migruj maszynę wirtualną, do modelu wdrażania usługi resource manager. Aby dowiedzieć się, jak to zrobić, zobacz [migrację zasobów modelu wdrożenia klasycznego](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Rozwiązanie**: Migruj maszynę wirtualną, do modelu wdrażania usługi Resource Manager. Aby dowiedzieć się, jak to zrobić, zobacz [migrację zasobów modelu wdrożenia klasycznego](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Maszyna wirtualna jest zatrzymana. (cofnięty przydział)
 

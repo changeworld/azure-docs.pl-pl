@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
 ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127810"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
 W tym artykule przedstawiono sposób konfigurowania usługi Azure Backup w systemie Windows Server lub klienta Windows oraz zarządzania nimi i odzyskiwania kopii zapasowych przy użyciu programu PowerShell.
 
-## <a name="install-azure-powershell"></a>Instalowanie programu Azure PowerShell
+## <a name="install-azure-powershell"></a>Zainstaluj program Azure PowerShell
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Aby rozpocząć pracę, [zainstalowanie najnowszej wersji programu PowerShell](/powershell/azure/install-az-ps).

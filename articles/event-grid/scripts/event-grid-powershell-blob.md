@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/10/2018
 ms.author: tomfitz
 ms.openlocfilehash: d236bcbf71915576ee31587e9abfff92c99250c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66117210"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Subskrybowanie do zdarzeń dla konta usługi Blob Storage przy użyciu programu PowerShell
 

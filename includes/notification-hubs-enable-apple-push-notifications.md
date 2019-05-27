@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2fc4f26f187301ea7a7a1e3051038f75da728547
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39c016e7b4b70368eb1ca2bd517ed7f48d223e24
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60426687"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140542"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generowanie pliku żądania podpisania certyfikatu
 
@@ -25,7 +25,7 @@ Wygeneruj plik żądania podpisania certyfikatu (CSR), który jest używany prze
 2. Kliknij opcję **Keychain Access**, rozwiń węzeł **Asystent certyfikatu**, a następnie kliknij opcję **Żądaj certyfikatu od urzędu certyfikacji...**.
 
     ![Żądanie nowego certyfikatu za pomocą narzędzia Keychain Access](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-3. Wybierz wartości pól **Adres e-mail użytkownika** i **Nazwa pospolita**, upewnij się, że pole **Zapisano na dysku** zostało zaznaczone, a następnie kliknij przycisk **Kontynuuj**. Pozostaw pole **Adres e-mail urzędu certyfikacji** puste, ponieważ nie jest wymagane.
+3. Wybierz wartości pól **Adres e-mail użytkownika** i **Nazwa pospolita**, upewnij się, że pole **Zapisano na dysku** zostało zaznaczone, a następnie kliknij przycisk **Kontynuuj**. Pozostaw **adres E-mail urzędu certyfikacji** pole puste, ponieważ nie jest wymagana.
 
     ![Wymagane informacje o certyfikacie](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
@@ -39,16 +39,16 @@ Następnie zarejestrujesz aplikację w firmie Apple, włączysz powiadomienia pu
 
 ## <a name="register-your-app-for-push-notifications"></a>Rejestrowanie aplikacji dla usługi powiadomień wypychanych
 
-Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy zarejestrować aplikację w firmie Apple oraz zarejestrować się w usłudze powiadomień wypychanych.  
+Wypychać powiadomienia do aplikacji systemu iOS, Zarejestruj swoją aplikację z firmą Apple i zarejestrować się w usłudze powiadomień wypychanych.  
 
-1. Jeśli aplikacja nie została jeszcze zarejestrowana, przejdź do [portalu inicjowania obsługi systemu iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456) w Centrum deweloperów firmy Apple, zaloguj się za pomocą identyfikatora firmy Apple, kliknij opcję **Identyfikatory**, następnie kliknij opcję **Identyfikatory aplikacji**, a na koniec kliknij znak **+**, aby zarejestrować nową aplikację.
+1. Jeśli aplikacja nie została jeszcze zarejestrowana, przejdź do [portalu aprowizacji systemu iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456) w Centrum deweloperów firmy Apple, zaloguj się przy użyciu identyfikatora Apple ID, kliknij przycisk **identyfikatory**, następnie kliknij przycisk **identyfikatorów aplikacji** , a na koniec kliknij znak **+** Aby zarejestrować nową aplikację.
 
     ![Strona identyfikatorów aplikacji w portalu aprowizowania dla systemu iOS](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
 2. Zaktualizuj następujące trzy pola dla nowej aplikacji, a następnie kliknij przycisk **Kontynuuj**:
 
    * **Nazwa**: Wpisz nazwę opisową dla aplikacji **nazwa** pole **opis Identyfikatora aplikacji** sekcji.
-   * **Identyfikator pakietu**: W obszarze **jawny identyfikator aplikacji** sekcji, wprowadź **identyfikatora pakietu** w formie `<Organization Identifier>.<Product Name>` zgodnie z opisem w [podręczniku dystrybucji aplikacji](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). *Identyfikator organizacji* i *Nazwa produktu*, których używasz, muszą być zgodne z identyfikatorem organizacji i nazwą produktu, których używasz podczas tworzenia projektu w programie XCode. Na poniższym zrzucie ekranu pozycja *NotificationHubs* stanowi identyfikator organizacji, a *GetStarted* nazwę produktu. Zagwarantowanie, że wartość ta jest zgodna z wartością używaną w projekcie w programie XCode, pozwoli na użycie poprawnego profilu publikowania w programie XCode.
+   * **Identyfikator pakietu**: W obszarze **jawny identyfikator aplikacji** sekcji, wprowadź **identyfikatora pakietu** w formie `<Organization Identifier>.<Product Name>` zgodnie z opisem w [podręczniku dystrybucji aplikacji](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). *Identyfikator organizacji* i *Nazwa produktu*, których używasz, muszą być zgodne z identyfikatorem organizacji i nazwą produktu, których używasz podczas tworzenia projektu w programie XCode. Poniższy zrzut ekranu *NotificationHubs* wartość jest używana jako identyfikator organizacji i *GetStarted* jest używana jako nazwa produktu. Zagwarantowanie, że wartość ta jest zgodna z wartością używaną w projekcie w programie XCode, pozwoli na użycie poprawnego profilu publikowania w programie XCode.
    * **Powiadomienia wypychane**: Sprawdź **powiadomień wypychanych** opcji **App Services** sekcji.
 
      ![Formularz rejestracji nowego identyfikatora aplikacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
@@ -104,7 +104,7 @@ Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy
 
     ![Eksportowanie certyfikatu w formacie p12](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    Zanotuj nazwę pliku i lokalizację wyeksportowanego certyfikatu .p12. Jest on używany do włączania uwierzytelniania za pomocą usługi APNS.
+    Zanotuj nazwę pliku i lokalizację wyeksportowanego certyfikatu .p12. Służy do włączenia uwierzytelniania za pomocą usługi APNS.
 
     > [!NOTE]
     > W tym samouczku opisano proces tworzenia pliku QuickStart.p12. Nazwa i lokalizacja pliku mogą się różnić.
@@ -121,7 +121,7 @@ Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy
 
     ![Wybieranie identyfikatora aplikacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
-4. Na ekranie **Wybierz certyfikaty** wybierz certyfikat programowania zwykle używany do podpisywania kodu, a następnie kliknij przycisk **Kontynuuj**. Ten certyfikat jest inny niż utworzony certyfikat wypychania.
+4. Na ekranie **Wybierz certyfikaty** wybierz certyfikat programowania zwykle używany do podpisywania kodu, a następnie kliknij przycisk **Kontynuuj**. Ten certyfikat nie jest utworzony certyfikat wypychania.
 
     ![Wybieranie certyfikatu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
 
@@ -136,3 +136,21 @@ Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy
 7. Podczas tworzenia nowego profilu inicjowania obsługi kliknij go, aby go pobrać i zainstalować na komputerze deweloperskim z zainstalowanym programem Xcode. Następnie kliknij przycisk **Gotowe**.
 
     ![Pobieranie profilu aprowizacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+
+## <a name="create-a-notification-hub"></a>Tworzenie centrum powiadomień
+W tej sekcji utworzysz centrum powiadomień i skonfigurujesz uwierzytelnianie w usłudze APNs przy użyciu utworzonego wcześniej certyfikatu powiadomień wypychanych **.p12**. Jeśli chcesz użyć już utworzonego centrum powiadomień, możesz przejść do kroku 5.
+
+[!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
+
+## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurowanie centrum powiadomień przy użyciu informacji o usłudze APNS
+
+1. W obszarze **Usługi powiadomień** wybierz pozycję **Apple (APNS)**.
+2. Wybierz pozycję **Certyfikat**.
+3. Wybierz **ikonę pliku**.
+4. Wybierz wcześniej wyeksportowany plik **.p12**.
+5. Określ poprawne **hasło**.
+6. Wybierz tryb **Piaskownica**. Trybu **Produkcja** używaj wyłącznie wtedy, gdy chcesz wysyłać powiadomienia push do użytkowników, którzy kupili Twoją aplikację w sklepie.
+
+    ! [Konfigurowanie certyfikacji APNS w witrynie Azure portal] [7]
+
+Twoje centrum powiadomień jest teraz skonfigurowane z usługą APNs i masz parametry połączenia służące do rejestrowania aplikacji oraz wysyłania powiadomień push.

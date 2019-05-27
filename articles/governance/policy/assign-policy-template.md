@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 03d15d30deabbc2bd34fbb4fba108be382f94fa1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f31d6197c22be4d66e0610ad7914f541a45ed995
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787356"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979574"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Szybki start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu usługi Resource Manager
 
@@ -25,7 +25,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-policy-assignment"></a>Tworzenie przypisania zasad
 
-W tym przewodniku Szybki Start utworzysz przypisanie zasad i przypisywanie definicji zasad wbudowanych o nazwie *inspekcji maszyn wirtualnych, które nie korzystają z dysków zarządzanych*. Aby przejrzeć częściową listę dostępnych zasad wbudowanych, zobacz [Przykłady zasad](./samples/index.md).
+W tym przewodniku Szybki Start utworzysz przypisanie zasad i przypisywanie definicji zasad wbudowanych o nazwie *inspekcji maszyn wirtualnych, które nie korzystają z dysków zarządzanych*. Aby uzyskać częściowa lista dostępnych zasad wbudowanych, zobacz [przykładów usługi Azure Policy](./samples/index.md).
 
 Istnieje kilka metod tworzenia przypisania zasad. W tym przewodniku Szybki Start użyjesz [szablon szybkiego startu](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 Oto kopię szablonu:

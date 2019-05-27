@@ -9,11 +9,11 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403884"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131419"
 ---
 Funkcje pozwala w prosty sposób dodać Integracja usługi Application Insights do aplikacji funkcji z [Azure Portal].
 
@@ -30,7 +30,7 @@ Funkcje pozwala w prosty sposób dodać Integracja usługi Application Insights 
     | **Nazwa** | Unikatową nazwę aplikacji | Najłatwiej można użyć tej samej nazwie co aplikacja funkcji, która musi być unikatowa w ramach subskrypcji. | 
     | **Lokalizacja** | Europa Zachodnia | Jeśli to możliwe, używać tego samego [region](https://azure.microsoft.com/regions/) jako aplikację funkcji lub w pobliżu. |
 
-1. Wybierz pozycję **OK**. Zasób usługi Application Insights jest tworzony w tej samej grupie zasobów i subskrypcji co aplikacja funkcji. Po zakończeniu tworzenia, zamknij okno usługi Application Insights.
+1. Wybierz **OK**. Zasób usługi Application Insights jest tworzony w tej samej grupie zasobów i subskrypcji co aplikacja funkcji. Po zakończeniu tworzenia, zamknij okno usługi Application Insights.
 
 1. W aplikacji funkcji, wybierz **ustawienia aplikacji**i przewiń w dół do **ustawienia aplikacji**. Po wyświetleniu ustawienie o nazwie `APPINSIGHTS_INSTRUMENTATIONKEY`, oznacza to, że integracja usługi Application Insights jest włączone dla aplikacji funkcji działających na platformie Azure.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f4f2b93316c87a5e8ba572ca2b584dbd13f6536c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228025"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956954"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Jeśli użytkownik jest identyfikowany jako pomocnicza, przepływ użytkownika m
 
 - **Wyślij token JSON bez znaku do aplikacji**: Usługa Azure AD B2C powiadamia aplikację, że użytkownik jest pomocnicze i zawiera informacje o stanie użytkownika uzyskuje zgodę rodzica. Następnie aplikacja przechodzi przez stosowanie reguł biznesowych. JSON token nie zostanie zakończone po pomyślnym uwierzytelnieniu w aplikacji. Aplikacja musi przetworzyć nieuwierzytelniony użytkownik zgodnie z oświadczenia zawarte w tokenie JSON, które mogą obejmować **nazwa**, **e-mail**, **grupy wiekowej**i **consentProvidedForMinor**.
 
-- **Zablokuj użytkownikowi**: Jeśli użytkownik jest pomocnicze, a nie dostarczono zgody rodziców, usługi Azure AD B2C może powiadomić użytkownika dany użytkownik jest zablokowany. Wystawiony token nie, wówczas dostęp będzie zablokowany i konto użytkownika nie jest tworzone podczas podróży rejestracji. Aby zaimplementować to powiadomienie, należy podać odpowiednie strony zawartości HTML/CSS do informowania użytkowników i istnieje odpowiednie opcje. Żadne dalsze działania jest wymagane przez aplikację do nowej rejestracji.
+- **Zablokuj użytkownikowi**: Jeśli użytkownik jest pomocnicze, a nie dostarczono zgody rodziców, usługi Azure AD B2C może powiadomić użytkownika one zablokowany. Wystawiony token nie, wówczas dostęp będzie zablokowany i konto użytkownika nie jest tworzone podczas podróży rejestracji. Aby zaimplementować to powiadomienie, należy podać odpowiednie strony zawartości HTML/CSS do informowania użytkowników i istnieje odpowiednie opcje. Żadne dalsze działania jest wymagane przez aplikację do nowej rejestracji.
 
 ## <a name="get-parental-consent"></a>Pobierz zgody rodziców
 
@@ -48,7 +48,7 @@ Oto przykładowy przepływ użytkownika w celu zbierania zgody rodziców:
 
 1. [Interfejsu API usługi Azure Active Directory Graph](/previous-versions/azure/ad/graph/api/api-catalog) operacji identyfikuje użytkownika jako pomocnicze i zwraca dane użytkownika do aplikacji w postaci bez znaku token JSON.
 
-2. Aplikacja przetwarza JSON token i zawiera ekran z pomocnicze, powiadamianie mu, że wymagana jest zgoda rodzica i żądanie wyrażenia zgody przez nadrzędne w trybie online. 
+2. Aplikacja przetwarza JSON token i zawiera ekran z pomocnicze, informacją o tym, że wymagana jest zgoda rodzica i żądanie wyrażenia zgody przez nadrzędne w trybie online. 
 
 3. Usługa Azure AD B2C pokazuje podróż Zaloguj się, że użytkownik zalogować się w zwykły sposób i wystawia token do aplikacji, która jest ustawiona w celu uwzględnienia **legalAgeGroupClassification = "minorWithParentalConsent"**. Aplikacja umożliwia zbieranie informacji o adres e-mail elementu nadrzędnego i sprawdza, czy element nadrzędny jest osobą dorosłą. Aby to zrobić, używa zaufanego źródła, takich jak national identyfikator pakietu office, weryfikacja licencji lub dowód karty kredytowej. Jeśli weryfikacja zakończy się pomyślnie, aplikacja wyświetli pomocnicza do logowania za pomocą przepływu użytkownika usługi Azure AD B2C. Jeśli zgoda zostanie odrzucona (na przykład, jeśli **legalAgeGroupClassification = "minorWithoutParentalConsent"**), usługi Azure AD B2C zwraca token JSON (nie logowania) do aplikacji w celu ponownego uruchomienia procesu zgody. Użytkownik może opcjonalnie można dostosowywać przepływ użytkownika, tak aby drobnych lub osobę dorosłą mogli odzyskać dostęp do konta pomocnicze, wysyłając kodu rejestracyjnego do jego adres e-mail lub adres e-mail osoby dorosłej w rekordzie.
 

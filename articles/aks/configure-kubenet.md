@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073990"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956390"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Użyj wtyczki kubenet sieci przy użyciu własnych zakresów adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,6 +22,9 @@ Domyślnie AKS klastrów użyj [wtyczki kubenet][kubenet], a siecią wirtualną 
 Za pomocą [wtyczki Azure Container Networking interfejsu (CNI)][cni-networking], co zasobnika pobiera adres IP z podsieci i są dostępne bezpośrednio. Te adresy IP musi być unikatowa w przestrzeń sieci i muszą być planowane z góry. Każdy węzeł ma parametr konfiguracji maksymalna liczba zasobników, które obsługuje. Równoważną liczbę adresów IP w każdym węźle następnie są zarezerwowane na początku dla tego węzła. Takie podejście wymaga więcej planowania i często prowadzi do wyczerpania adresu IP lub jest potrzebna ponowna kompilacja klastrów w większej podsieci, w miarę wzrostu wymagań aplikacji.
 
 W tym artykule dowiesz się, jak używać *wtyczki kubenet* sieci w celu tworzenia i używania podsieci sieci wirtualnej dla klastra usługi AKS. Aby uzyskać więcej informacji na temat opcji sieci i zagadnienia, zobacz [sieci pojęcia dla platformy Kubernetes i AKS][aks-network-concepts].
+
+> [!WARNING]
+> Aby użyć pule węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy użyć wtyczki Azure CNI. Korzystanie z wtyczki kubenet jako model sieci nie jest dostępna dla kontenerów systemu Windows Server.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -149,6 +152,8 @@ Poniższe zakresy adresów IP są również określone jako część klastra two
     * Ten zakres adresów musi być wystarczająco duży, aby uwzględnić liczbę węzłów, które oczekują skalować do. Nie można zmienić tego zakresu adresów, po wdrożeniu klastra, jeśli potrzebujesz większej liczby adresów dla kolejnych węzłów.
     * Zakres adresów IP zasobnika jest używany do przypisywania */24* przestrzeń adresowa do każdego węzła w klastrze. W poniższym przykładzie *— cidr zasobnika* z *192.168.0.0/16* przypisuje pierwszego węzła *192.168.0.0/24*, drugi węzeł *192.168.1.0/24*, a trzeci węzła *192.168.2.0/24*.
     * Skaluje klaster lub uaktualnień platforma Azure w dalszym ciągu Przypisz zakres adresów IP zasobnika do każdego nowego węzła.
+    
+* *— Adres w przypadku mostka platformy docker* zezwala węzłów AKS komunikowanie się z podstawowej platformy zarządzania. Ten adres IP nie może być w zakresie adresów IP sieci wirtualnej klastra, a nie mogą nakładać się na inne zakresy adresów, używany w sieci.
 
 ```azurecli-interactive
 az aks create \

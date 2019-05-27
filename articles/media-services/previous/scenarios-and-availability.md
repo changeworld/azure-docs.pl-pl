@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0cae2befad1b0cd2d6a093387c41aac8ccdfff7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719215"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991430"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -31,7 +31,7 @@ Usługa AMS działa w wielu centrach danych na całym świecie. Te centra danych
 
 W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żywo](#live_scenarios) lub na żądanie. Temat zawiera także szczegółowe informacje o dostępności funkcji i usług multimedialnych w centrach danych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -207,15 +207,14 @@ Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają 
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Azure Media Face Detector|Wersja zapoznawcza|Wszyscy|
-|Azure Media Hyperlapse|Wersja zapoznawcza|Wszyscy|
+|Azure Media Face Detector|Preview|Wszyscy|
 |Azure Media Indexer|Ogólna dostępność|Wszyscy|
-|Azure Media Motion Detector|Wersja zapoznawcza|Wszyscy|
-|Azure Media OCR|Wersja zapoznawcza|Wszyscy|
-|Azure Media Redactor|Wersja zapoznawcza|Wszyscy|
-|Azure Media Stabilizer|Wersja zapoznawcza|Wszyscy|
-|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszyscy|
-|Azure Media Indexer 2|Wersja zapoznawcza|Wszystkie z wyjątkiem Chin i obszaru administracji federalnej USA|
+|Azure Media Motion Detector|Preview|Wszyscy|
+|Azure Media OCR|Preview|Wszyscy|
+|Azure Media Redactor|Preview|Wszyscy|
+|Azure Media Stabilizer|Preview|Wszyscy|
+|Azure Media Video Thumbnails|Preview|Wszyscy|
+|Azure Media Indexer 2|Preview|Wszystkie z wyjątkiem Chin i obszaru administracji federalnej USA|
 
 ### <a name="protection"></a>Ochrona
 
@@ -261,6 +260,6 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

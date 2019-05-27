@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55905227"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140883"
 ---
 ## <a name="create-client"></a>Tworzenie połączenia klienta
 Utwórz połączenie klienta, tworząc obiekt `WindowsAzure.MobileServiceClient`.  Zastąp ciąg `appUrl` adresem URL Twojej aplikacji Mobile App.

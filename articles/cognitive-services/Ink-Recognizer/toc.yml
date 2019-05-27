@@ -52,3 +52,5 @@
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Prywatność i pliki cookie
       href: 'https://privacy.microsoft.com/privacystatement'
+    - name: Zgodność
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

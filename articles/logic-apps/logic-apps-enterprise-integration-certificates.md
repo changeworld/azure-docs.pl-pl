@@ -12,11 +12,11 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167175"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
 
@@ -50,7 +50,7 @@ Aby użyć *certyfikatu publicznego* w usłudze logic apps, które mają możliw
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | <*certificate-name*> | Nazwa certyfikatu, który jest "publicCert", w tym przykładzie | 
-   | **Typ certyfikatu** | Public | Typ certyfikatu |
+   | **Typ certyfikatu** | Publiczna | Typ certyfikatu |
    | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. |
    ||||
 
@@ -89,7 +89,7 @@ Po zdefiniowaniu właściwości w [umów](logic-apps-enterprise-integration-agre
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | <*certificate-name*> | Nazwa certyfikatu, który jest "privateCert", w tym przykładzie | 
-   | **Typ certyfikatu** | Private | Typ certyfikatu |
+   | **Typ certyfikatu** | Prywatna | Typ certyfikatu |
    | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. | 
    | **Grupa zasobów** | <*integration-account-resource-group*> | Grupa zasobów konta integracji, czyli "MyResourceGroup" w tym przykładzie | 
    | **Usługa Key Vault** | <*key-vault-name*> | Nazwa Twojego magazynu kluczy Azure |

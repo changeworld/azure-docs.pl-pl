@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730494"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66129023"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Wdrażanie szablonu za pomocą usługi Cloud Shell
 
@@ -19,11 +19,11 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
 1. Wybierz swoją grupę zasobów usługi Cloud Shell. Wzorzec nazwy to `cloud-shell-storage-<region>`.
 
-   ![Wybieranie grupy zasobów](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![Wybierz grupę zasobów](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
 
 1. Wybierz konto magazynu dla usługi Cloud Shell.
 
-   ![Wybieranie konta magazynu](./media/resource-manager-cloud-shell-deploy/select-storage.png)
+   ![Wybierz konto magazynu](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
 1. Wybierz pozycję **Obiekty blob**.
 
@@ -31,7 +31,7 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
 1. Wybierz pozycję **+ Kontener**.
 
-   ![Dodawanie kontenera](./media/resource-manager-cloud-shell-deploy/add-container.png)
+   ![Dodaj kontener](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
 1. Kontener należy podać nazwę i poziom dostępu. Przykładowy szablon w tym artykule nie zawiera żadnych poufnych informacji, co pozwala anonimowy dostęp do odczytu. Kliknij przycisk **OK**.
 
@@ -47,7 +47,7 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
 1. Znajdź i przekaż swój szablon.
 
-   ![Przekazywanie pliku](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
+   ![Przekaż plik](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
 1. Po przekazał, wybierz szablon.
 

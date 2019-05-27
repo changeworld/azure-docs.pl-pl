@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f1f08ca8517d01a6d72f1f8a18514ea3f851ff14
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 43a99835776563f469efa3e0b14992203b34915e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136639"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>Tworzenie kopii zapasowej aplikacji internetowej przy użyciu programu PowerShell
 
@@ -57,7 +57,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzWebAppBackup](/powershell/module/az.websites/new-azwebappbackup) | Tworzy kopię zapasową aplikacji internetowej. |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Pobiera listę kopii zapasowych dla aplikacji internetowej. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

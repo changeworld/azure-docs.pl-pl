@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171426"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -52,7 +52,7 @@ resource-group | **myresourcegroup** | Wprowadź nazwę grupy zasobów platformy
 sku-name | **GP_Gen5_2** | Nazwa jednostki SKU. Zgodnie z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne* w skrócie. Aby uzyskać więcej informacji na temat parametru **sku-name**, zobacz sekcję poniżej tabeli.
 backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: od 7 do 35. 
 geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)**, **Disabled (Wyłączone)**.
-location | **westus** | Lokalizacja platformy Azure dla serwera.
+lokalizacja | **westus** | Lokalizacja platformy Azure dla serwera.
 ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)**, **Disabled (Wyłączone)**.
 storage-size | **51200** | Pojemność magazynu serwera (w megabajtach). Prawidłowy rozmiar magazynu to 5120 MB (minimum) rosnący z przyrostem 1024 MB. Aby uzyskać więcej informacji na temat limitów rozmiaru magazynu, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md). 
 version | **10.2** | Wersja główna aparatu MariaDB.

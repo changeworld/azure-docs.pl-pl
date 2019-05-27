@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
-ms.openlocfilehash: db34734e9fbb8635f1a62def8a877d83d02e2206
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f21f1eed6babee52f30c6eccc79f88dc7bee5d58
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216387"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864477"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Planowanie i emitowanie zadań (.NET/.NET)
 
@@ -49,7 +49,7 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe .NET (C#):
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Program Visual Studio 2017.
+* Program Visual Studio.
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub

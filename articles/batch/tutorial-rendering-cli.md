@@ -10,11 +10,11 @@ ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
 ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127309"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Samouczek: Renderowanie sceny w usłudze Azure Batch 
 
@@ -186,7 +186,7 @@ se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## <a name="render-a-single-frame-scene"></a>Renderowanie sceny z jedną ramką
 
-### <a name="create-a-job"></a>Tworzenie zadania
+### <a name="create-a-job"></a>Utwórz zadanie
 
 Utwórz zadanie renderowania do uruchomienia w puli za pomocą polecenia [az batch job create](/cli/azure/batch/job#az-batch-job-create). Początkowo zadanie nie zawiera zadań podrzędnych.
 

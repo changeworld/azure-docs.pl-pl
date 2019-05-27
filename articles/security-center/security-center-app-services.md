@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
-ms.author: monhaber
-ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: v-mohabe
+ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62095274"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966812"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrona usługi App Service z usługą Azure Security Center
 Ten artykuł ułatwia monitorowanie oraz chronić Twoich aplikacji uruchomionych na podstawie usługi App Service przy użyciu usługi Azure Security Center.
@@ -34,7 +34,7 @@ Usługa Security Center wykorzystuje skalowalność chmury do identyfikowania at
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby monitorować i zabezpieczanie usługi App Service, musisz mieć plan usługi App Service, który jest skojarzony z dedykowanych maszynach. Te plany są: Basic, Standard, Premium i samodzielnie lub Linux. Usługa Azure Security Center nie obsługuje plany bezpłatna, współdzielona ani użycie. Aby uzyskać więcej informacji, zobacz [planów usługi App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Aby monitorować i zabezpieczyć usługę App Service, musisz mieć plan usługi App Service, który jest skojarzony z dedykowanymi maszynami. Te plany są następujące: Podstawowy, Standardowy, Premium, Izolowany lub Linux. Usługa Azure Security Center nie obsługuje planów Bezpłatny, Współdzielony ani Zużycie. Aby uzyskać więcej informacji, zobacz [planów usługi App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 ## <a name="security-center-protection"></a>Ochrona usługi Security Center
 

@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fe06e7081e4e3691aeb054985f9f2f3f6dc7d19e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d6753b319bc5bc4cbda18fe486695e5b0266acae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794996"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66169652"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
-Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie odbywa się przez poinstruowanie zasady uruchomią **deployIfNotExists** wpływu przypisanych zasad na istniejących zasobów. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonać korygowanie za pomocą zasad.
+Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie odbywa się przez poinstruowanie usługi Azure Policy, aby uruchomić **deployIfNotExists** wpływu przypisanych zasad na istniejących zasobów. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonać korygowanie za pomocą usługi Azure Policy.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Jak działają zabezpieczenia korygowania
 
-Po uruchomieniu szablon zasad **deployIfNotExists** definicji zasad, jak za pomocą [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md).
-Zasady tworzy tożsamość zarządzaną dla każdego przypisania, ale musi mieć szczegółowe informacje o jakie role, aby przyznać tożsamości zarządzanej. Jeśli tożsamość zarządzana brakuje ról, ten błąd jest wyświetlany podczas przypisywania zasad lub inicjatywy. Korzystając z portalu, automatycznie przyzna zasada tożsamość zarządzaną wymienionych ról po uruchomieniu przypisania.
+Gdy działa szablonu usługi Azure Policy w **deployIfNotExists** definicji zasad, jak za pomocą [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md).
+Usługa Azure Policy tworzy tożsamość zarządzaną dla każdego przypisania, ale musi mieć szczegółowe informacje o jakie role, aby przyznać tożsamości zarządzanej. Jeśli tożsamość zarządzana brakuje ról, ten błąd jest wyświetlany podczas przypisywania zasad lub inicjatywy. Korzystając z portalu Azure automatycznie przyzna zasada tożsamość zarządzaną wymienionych ról po uruchomieniu przypisania.
 
 ![Tożsamość zarządzana — Brak roli](../media/remediate-resources/missing-role.png)
 
@@ -39,7 +39,7 @@ Pierwszym krokiem jest zdefiniowanie ról, **deployIfNotExists** musi w definicj
 "details": {
     ...
     "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
         "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
     ]
 }
@@ -57,7 +57,7 @@ Get-AzRoleDefinition -Name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>Ręcznie skonfiguruj tożsamość zarządzaną
 
-Podczas tworzenia przydziału przy użyciu portalu, zasady generuje tożsamość zarządzaną i spowoduje przyznanie role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia musi być wykonywane ręcznie:
+Tworząc przypisania za pomocą portalu usługi Azure Policy generuje tożsamość zarządzaną i spowoduje przyznanie role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia musi być wykonywane ręcznie:
 
 - Podczas korzystania z zestawu SDK (np. programu Azure PowerShell)
 - Po zmodyfikowaniu zasobu poza zakres przypisania przez szablon
@@ -126,7 +126,8 @@ Aby dodać rolę przydział tożsamość zarządzaną, wykonaj następujące kro
 
 1. Kliknij przycisk **kontrola dostępu (IAM)** łącze w na stronie zasobów, a następnie kliknij przycisk **+ Dodaj przypisanie roli** w górnej części strony kontrola dostępu.
 
-1. Wybierz odpowiednią rolę, który odpowiada **roleDefinitionIds** z definicji zasad. Pozostaw **Przypisz dostęp do** wartość domyślną "Azure AD użytkownika, grupy lub aplikacji". W **wybierz** pole, wklej lub wpisz część Identyfikatora zasobu przypisania znajdujące się wcześniej. Po zakończeniu wyszukiwania, kliknij obiekt o takiej samej nazwie, wybierz identyfikator, a następnie kliknij przycisk **Zapisz**.
+1. Wybierz odpowiednią rolę, który odpowiada **roleDefinitionIds** z definicji zasad.
+   Pozostaw **Przypisz dostęp do** wartość domyślną "Azure AD użytkownika, grupy lub aplikacji". W **wybierz** pole, wklej lub wpisz część Identyfikatora zasobu przypisania znajdujące się wcześniej. Po zakończeniu wyszukiwania, kliknij obiekt o takiej samej nazwie, wybierz identyfikator, a następnie kliknij przycisk **Zapisz**.
 
 ## <a name="create-a-remediation-task"></a>Utwórz zadanie korygowania
 
@@ -193,9 +194,9 @@ Inne polecenia cmdlet korygowania i przykłady, zobacz [Az.PolicyInsights](/powe
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [struktura definicji zasad](../concepts/definition-structure.md)
-- Przegląd [zrozumienia efektów zasad](../concepts/effects.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md)
-- Dowiedz się, jak [uzyskać dane na temat zgodności](getting-compliance-data.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
+- Dowiedz się, jak [Pobierz dane zgodności](getting-compliance-data.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

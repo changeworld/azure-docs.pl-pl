@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
 ms.openlocfilehash: 031a460862cf12efa02c139074e5a7066f0526c6
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641792"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132296"
 ---
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zanim będzie można opublikować aplikację, należy zalogować się do platformy Azure.
 
-1. W obszarze **Azure: Functions** wybierz pozycję **Sign in to Azure...** (Logowanie do platformy Azure...). Jeśli nie masz jeszcze konta, możesz **utworzyć bezpłatne konto platformy Azure**.
+1. W **platformy Azure: Funkcje** obszaru, wybierz **logowanie do platformy Azure...** . Jeśli nie masz jeszcze konta, możesz **utworzyć bezpłatne konto platformy Azure**.
 
     ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 

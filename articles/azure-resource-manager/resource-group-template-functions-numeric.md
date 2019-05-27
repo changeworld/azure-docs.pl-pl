@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128649"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje numeryczne dla szablonów usługi Azure Resource Manager
 
@@ -40,7 +40,7 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z liczb całkow
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>add
+## <a name="add"></a>dodaj
 `add(operand1, operand2)`
 
 Zwraca sumę dwóch podanych liczb całkowitych.
@@ -49,8 +49,8 @@ Zwraca sumę dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- | 
-|Operand1 |Yes |int |Pierwsza liczba do dodania. |
-|Operand2 |Yes |int |Druga liczba do dodania. |
+|Operand1 |Tak |int |Pierwsza liczba do dodania. |
+|Operand2 |Tak |int |Druga liczba do dodania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -120,7 +120,7 @@ Zwraca indeks iteracji pętli.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| loopName | Nie | ciąg | Nazwa pętli w celu uzyskania iteracji. |
+| loopName | Nie | string | Nazwa pętli w celu uzyskania iteracji. |
 | offset |Nie |int |Liczba do dodania do wartości iteracji liczony od zera. |
 
 ### <a name="remarks"></a>Uwagi
@@ -166,8 +166,8 @@ Zwraca dzielenia dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Liczba jest dzielona. |
-| Operand2 |Yes |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
+| Operand1 |Tak |int |Liczba jest dzielona. |
+| Operand2 |Tak |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -228,7 +228,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="float" />
 
-## <a name="float"></a>float
+## <a name="float"></a>liczba zmiennoprzecinkowa
 `float(arg1)`
 
 Konwertuje wartość na zmiennoprzecinkowy numer punktu. Podczas przekazywania parametrów niestandardowych do aplikacji, takie jak aplikacja logiki tylko użyć tej funkcji.
@@ -237,7 +237,7 @@ Konwertuje wartość na zmiennoprzecinkowy numer punktu. Podczas przekazywania p
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |ciąg lub int |Wartość do przekonwertowania na zmiennoprzecinkowy numer punktu. |
+| arg1 |Tak |ciąg lub int |Wartość do przekonwertowania na zmiennoprzecinkowy numer punktu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Zmiennoprzecinkowa numer.
@@ -271,7 +271,7 @@ Konwertuje określoną wartość do wartości całkowitej.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes |ciąg lub int |Wartość do przekonwertowania na liczbę całkowitą. |
+| valueToConvert |Tak |ciąg lub int |Wartość do przekonwertowania na liczbę całkowitą. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -331,7 +331,7 @@ Zwraca maksymalną wartość w tablicy liczb całkowitych lub na liście liczb c
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja do uzyskania maksymalnej wartości. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja do uzyskania maksymalnej wartości. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -386,7 +386,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min (arg1)`
 
 Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
@@ -395,7 +395,7 @@ Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb ca
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -459,8 +459,8 @@ Zwraca resztę z dzielenia liczby całkowitej, przy użyciu dwóch podanych licz
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Liczba jest dzielona. |
-| Operand2 |Yes |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
+| Operand1 |Tak |int |Liczba jest dzielona. |
+| Operand2 |Tak |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca resztę.
@@ -529,8 +529,8 @@ Zwraca iloczyn dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Pierwszy numer do pomnożenia. |
-| Operand2 |Yes |int |Druga liczba do pomnożenia. |
+| Operand1 |Tak |int |Pierwszy numer do pomnożenia. |
+| Operand2 |Tak |int |Druga liczba do pomnożenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -600,8 +600,8 @@ Zwraca odejmowania dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Numer który jest odejmowany od. |
-| Operand2 |Yes |int |Liczba, która jest odejmowana. |
+| Operand1 |Tak |int |Numer który jest odejmowany od. |
+| Operand2 |Tak |int |Liczba, która jest odejmowana. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca odejmowania.

@@ -8,40 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: bf3af8f5d1d2f063199a8275c2f49c70140e8732
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 46bd1bdd55725878bc7b1bd55d5e24b78d82aada
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588775"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124548"
 ---
 # <a name="get-face-detection-data"></a>Pobieranie danych wykrywania twarzy
 
-Ten przewodnik pokazują, jak wyodrębnić atrybutów, takich jak płci, wieku lub poza z danego obrazu za pomocą wykrywania twarzy. Fragmenty kodu, w tym przewodniku są zapisywane C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy, ale te same funkcje są dostępne za pośrednictwem [interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Ten przewodnik pokazuje sposób użycia wykrywanie twarzy można wyodrębnić atrybutów, takich jak płci, wieku lub poza z danego obrazu. Fragmenty kodu, w tym przewodniku są zapisywane C# za pomocą biblioteki klienta usługi Azure Cognitive Services Face API. Taką samą funkcjonalność jest dostępna za pośrednictwem [interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-Ten przewodnik przedstawia sposób do:
+W tym przewodniku przedstawiono sposób do:
 
 - Pobierz lokalizacje i wymiary twarzy na obrazie.
-- Pobierz lokalizacje różnych to punktów charakterystycznych (uczniów, czołowych, ujścia i tak dalej) do obrazu.
-- Odgadnąć, płeć, wiek i emocji i innych atrybutów twarzy wykryte.
+- Pobierz lokalizacje różnych to punktów charakterystycznych, takie jak uczniów, czołowych i ujścia w obrazie.
+- Odgadnąć, płeć, wiek, emocje i innych atrybutów twarzy wykryte.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
-W tym przewodniku założono, zostały już wykonane **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** obiektu o nazwie `faceClient`, przy użyciu twarzy subskrypcji key i punktu końcowego adresu URL. W tym miejscu, można użyć funkcji wykrywania twarzy, wywołując jedną **[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)** (używanych w tym przewodniku) lub **[DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)**. Zobacz [wykrywanie twarzy Przewodnik Szybki start dotyczący C# ](../quickstarts/csharp-detect-sdk.md) instrukcje na temat konfigurowania tego.
+W tym przewodniku założono, że możesz już zbudowany [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) obiektu o nazwie `faceClient`, przy użyciu twarzy subskrypcji key i punktu końcowego adresu URL. W tym miejscu, można użyć funkcji wykrywania twarzy, wywołując jedną [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), która zostanie użyta w tym przewodniku lub [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Aby uzyskać instrukcje na temat sposobu skonfigurowania tej funkcji, zobacz [wykrywania twarzy Przewodnik Szybki start dotyczący C# ](../quickstarts/csharp-detect-sdk.md).
 
-Ten przewodnik koncentruje się na szczegółowe informacje na temat wywołania Wykryj&mdash;argumenty, które można przekazać i co można zrobić za pomocą zwracanych danych. Firma Microsoft zaleca tylko podczas badania funkcje, których potrzebujesz, ponieważ każda operacja zajmuje dodatkowy czas do ukończenia.
+Ten przewodnik koncentruje się na szczegółowe informacje na temat wywołania wykrywania, takie jak jakie argumenty można przekazać i co można zrobić za pomocą zwracanych danych. Zaleca się wyszukać tylko funkcje, których potrzebujesz. Każda operacja zajmuje dodatkowy czas ukończenia.
 
 ## <a name="get-basic-face-data"></a>Pobieranie danych podstawowych twarzy
 
-Aby znaleźć twarzy i ich lokalizacji obrazu, należy wywołać metodę z _returnFaceId_ parametr **true** (ustawienie domyślne).
+Aby znaleźć twarzy i ich lokalizacji obrazu, należy wywołać metodę z _returnFaceId_ parametr **true**. Jest to ustawienie domyślne.
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
 ```
 
-Zwrócony **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** obiekty mogą być wyszukiwane ich unikatowych identyfikatorów i prostokąt, co daje współrzędne twarzy w pikselach.
+Można tworzyć zapytania zwracanego [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) obiektów dla ich unikatowych identyfikatorów i prostokąt, który zawiera współrzędne twarzy w pikselach.
 
 ```csharp
 foreach (var face in faces)
@@ -51,21 +51,17 @@ foreach (var face in faces)
 }
 ```
 
-Zobacz **[FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)** informacji na temat sposobu analizowania lokalizacji i wymiary powierzchni. Zazwyczaj prostokąta zawiera oczy rzęs, czołowych i ujścia; początku head, uszy i chin nie uwzględniono niekoniecznie. Jeśli zamierzasz używać obrys twarzy, aby przyciąć head pełną lub średniej zrzut pionowa (identyfikator typu obraz zdjęcia), można rozwinąć prostokąt, jest pewna w każdym kierunku.
+Aby uzyskać informacje na temat sposobu analizowania lokalizacji i wymiary powierzchni, zobacz [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Zazwyczaj prostokącie oczy rzęs, czołowych i ujścia. Początku head, uszy i chin nie są zawsze uwzględniane. Aby użyć obrys twarzy przyciąć pełną head lub uzyskać portret środku zrzut, być może obraz typ Identyfikatora zdjęcia, możesz rozwinąć prostokąt w każdym kierunku.
 
 ## <a name="get-face-landmarks"></a>Pobierz to punktów charakterystycznych
 
-To punktów charakterystycznych to zbiór łatwe do znalezienia punkty na powierzchni, takich jak uczniów lub porady czołowych. Dane charakterystycznych elementów krajobrazu twarzy można uzyskać przez ustawienie _returnFaceLandmarks_ parametr **true**.
+[Twarzy charakterystycznych elementów krajobrazu](../concepts/face-detection.md#face-landmarks) to zbiór łatwe do znalezienia punkty na powierzchni, takich jak uczniów lub porady czołowych. Aby uzyskać dane charakterystycznych elementów krajobrazu rozpoznawania twarzy, należy ustawić _returnFaceLandmarks_ parametr **true**.
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
 ```
 
-Domyślnie istnieje 27 wstępnie zdefiniowanych punktów charakterystycznych. Na poniższej ilustracji przedstawiono wszystkie punkty 27:
-
-![Diagramu twarzy ze wszystkich 27 charakterystycznych punktów oznakowane jako](../Images/landmarks.1.jpg)
-
-Punktów zwrócił znajdują się w jednostkach pikseli, podobnie jak ramki prostokąt twarzy. Poniższy kod demonstruje, jak może pobrać lokalizacji czołowych i uczniów:
+Poniższy kod demonstruje, jak może pobrać lokalizacji czołowych i uczniów:
 
 ```csharp
 foreach (var face in faces)
@@ -83,7 +79,7 @@ foreach (var face in faces)
 }
 ```
 
-Danych charakterystycznych elementów krajobrazu twarzy można również dokładnie obliczyć kierunek powierzchni. Na przykład możemy zdefiniować obrót twarz jako wektor z Centrum ujścia do środka oczu. Poniższy kod oblicza wektor to:
+Możesz również użyć danych charakterystycznych elementów krajobrazu twarzy dokładnie obliczyć kierunek twarz. Na przykład można zdefiniować obrót twarz jako wektor z Centrum ujścia do środka oczu. Poniższy kod oblicza wektor to:
 
 ```csharp
 var upperLipBottom = landmarks.UpperLipBottom;
@@ -105,25 +101,13 @@ Vector faceDirection = new Vector(
     centerOfTwoEyes.Y - centerOfMouth.Y);
 ```
 
-Kierunek twarz, wiedząc, następnie można obracać ramkę prostokątny twarzy, są bardziej prawidłowo wyrównane. Jeśli chcesz przyciąć twarzy na obrazie, można programowo obrócić obraz, aby zawsze miejscami pojawiania się twarzy pionowo.
+Gdy wiadomo, kierunku twarz, można też obrócić ramkę prostokątny twarzy, są bardziej prawidłowo wyrównane. Aby przyciąć twarzy na obrazie, można programowo obrócić obraz, dzięki czemu zawsze miejscami pojawiania się twarzy pionowo.
 
 ## <a name="get-face-attributes"></a>Pobieranie atrybutów twarzy
 
-Oprócz prostokąty twarzy i charakterystycznych elementów krajobrazu interfejs API wykrywania twarzy można analizować kilka pojęć atrybutów twarzy. Należą do nich:
+Oprócz prostokąty twarzy i charakterystycznych elementów krajobrazu interfejs API wykrywania twarzy można analizować kilka pojęć atrybutów twarzy. Aby uzyskać pełną listę, zobacz [atrybutów twarzy](../concepts/face-detection.md#attributes) koncepcyjny sekcji.
 
-- Wiek
-- Płeć
-- Intensywność uśmiechu
-- Zarost
-- Okulary
-- 3D poza siedzibę
-- Rozpoznawanie emocji
-
-> [!IMPORTANT]
-> Te atrybuty są przewidzieć przy użyciu algorytmów statystycznych, a nie zawsze są dokładne. Należy zachować ostrożność podczas podejmowania decyzji na podstawie danych atrybutu.
->
-
-Aby analizować atrybutów twarzy, należy ustawić _returnFaceAttributes_ parametru do listy **[wyliczenia FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** wartości.
+Aby analizować atrybutów twarzy, należy ustawić _returnFaceAttributes_ parametru do listy [wyliczenia FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) wartości.
 
 ```csharp
 var requiredFaceAttributes = new FaceAttributeType[] {
@@ -138,7 +122,7 @@ var requiredFaceAttributes = new FaceAttributeType[] {
 var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
 ```
 
-Następnie pobieranie odwołań do zwracanych danych i wykonać dalsze czynności zgodnie z potrzebami.
+Następnie pobieranie odwołań do zwracanych danych i wykonać więcej operacji zgodnie z potrzebami.
 
 ```csharp
 foreach (var face in faces)
@@ -154,11 +138,14 @@ foreach (var face in faces)
 }
 ```
 
-Aby dowiedzieć się więcej na temat każdego z atrybutów, zobacz [słownik](../Glossary.md).
+Aby dowiedzieć się więcej na temat każdego z atrybutów, zobacz [wykrywanie twarzy i atrybuty](../concepts/face-detection.md) przewodnik koncepcyjny.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku przedstawiono sposób użycia różnych funkcji wykrywania twarzy. Następnie możesz zapoznać się [słownik](../Glossary.md) uzyskać bardziej szczegółowy widok danych twarzy zostały pobrane.
+W tym przewodniku przedstawiono sposób użycia różnych funkcji wykrywania twarzy. Następnie zintegrować te funkcje aplikację wykonując szczegółowy samouczek.
+
+- [Samouczek: Tworzenie aplikacji WPF, aby wyświetlić dane rozpoznawania twarzy na obrazie](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Samouczek: Tworzenie aplikacji dla systemu Android, aby wykrywać i ramki twarzy na obrazie](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Tematy pokrewne
 

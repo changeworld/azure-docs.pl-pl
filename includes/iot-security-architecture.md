@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626607"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66166342"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
 
@@ -181,10 +181,10 @@ W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładz
 
 | **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
-| Urządzenie |S |Przypisywanie tożsamości na urządzeniu i uwierzytelniania urządzenia |Wymiana urządzenia lub częścią urządzenia za pomocą innego urządzenia. Skąd wiadomo, że mówienia na właściwym urządzeniu? |Uwierzytelniania urządzenia, za pomocą zabezpieczeń TLS (Transport Layer) lub protokołu IPSec. Infrastruktura powinien obsługiwać za pomocą klucz wstępny (PSK) na tych urządzeniach, które nie obsługują pełne asymetrycznego kryptografii. Korzystać z usługi Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
+| Urządzenie |N |Przypisywanie tożsamości na urządzeniu i uwierzytelniania urządzenia |Wymiana urządzenia lub częścią urządzenia za pomocą innego urządzenia. Skąd wiadomo, że mówienia na właściwym urządzeniu? |Uwierzytelniania urządzenia, za pomocą zabezpieczeń TLS (Transport Layer) lub protokołu IPSec. Infrastruktura powinien obsługiwać za pomocą klucz wstępny (PSK) na tych urządzeniach, które nie obsługują pełne asymetrycznego kryptografii. Korzystać z usługi Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Zastosować tamperproof mechanizmy do urządzenia, na przykład, co utrudnia się niemożliwe do wyodrębnienia z urządzenia kluczy i innymi materiałami kryptograficznymi. |Ryzyko jest, jeśli ktoś jest manipulowanie nimi urządzeń (zakłócenia fizycznej). Jak na pewno, że urządzenie nie została naruszona. |Najbardziej efektywne środki zaradcze jest TPM możliwości module (TPM), która umożliwia przechowywanie kluczy w specjalnych obwody na układ, z którego nie można odczytać kluczy, ale można używać tylko dla operacji kryptograficznych, które używają klucza, ale nigdy nie ujawni klucz. Szyfrowanie pamięci urządzenia. Zarządzanie kluczami dla tego urządzenia. Podpisywanie kodu. |
 || E |Zapewniający kontrolę dostępu do urządzenia. Schemat autoryzacji. |Jeśli urządzenie umożliwia poszczególne akcje do wykonania zależnie od polecenia ze źródła zewnętrznego lub nawet ze złamanymi zabezpieczeniami czujniki, umożliwia ataku wykonywać operacje gdzie indziej dostępny. |Posiadanie schemat autoryzacji dla urządzenia |
-| Bramy w terenie |S |Uwierzytelnianie bramy w terenie bramy w chmurze (takie jak certyfikat na podstawie, klucza Wstępnego, lub oparta na oświadczeniach). |Jeśli ktoś podszywały się pod bramy w terenie, następnie go może być wyświetlany jako dowolnego urządzenia. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Te same Najważniejsze kwestie magazynu i zaświadczenie urządzeń znajdujących się w ogólne — Najlepszy przypadek jest używanie modułu TPM. Rozszerzenie 6LowPAN protokołu IPSec do obsługi bezprzewodowej sieci czujników (WSN). |
+| Bramy w terenie |N |Uwierzytelnianie bramy w terenie bramy w chmurze (takie jak certyfikat na podstawie, klucza Wstępnego, lub oparta na oświadczeniach). |Jeśli ktoś podszywały się pod bramy w terenie, następnie go może być wyświetlany jako dowolnego urządzenia. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Te same Najważniejsze kwestie magazynu i zaświadczenie urządzeń znajdujących się w ogólne — Najlepszy przypadek jest używanie modułu TPM. Rozszerzenie 6LowPAN protokołu IPSec do obsługi bezprzewodowej sieci czujników (WSN). |
 || TRID |Ochrona bramy w terenie przed naruszeniem (TPM)? |Fałszowanie atakami nakłonienia myśleć bramy chmury, które rozmawia bramy w terenie może spowodować ujawnienie informacji i nieuprawnionej modyfikacji danych |Pamięć szyfrowania, modułu TPM firmy, uwierzytelniania. |
 || E |Mechanizm kontroli dostępu dla bramy w terenie | | |
 

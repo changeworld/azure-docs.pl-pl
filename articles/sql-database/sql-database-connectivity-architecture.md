@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66164440"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -86,13 +86,13 @@ Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy us
 | Japonia Zachodnia | 191.238.68.11 | 104.214.148.156 |
 | Korea Środkowa | 52.231.32.42 | |
 | Korea Południowa | 52.231.200.86 |  |
-| Środkowo-północne stany USA | 23.98.55.75 | 23.96.178.199 |
+| Północno-środkowe stany USA | 23.98.55.75 | 23.96.178.199 |
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
-| Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
+| Południowo-środkowe stany USA | 23.98.162.75 | 13.66.62.124 |
 | Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
-| Południowe Zjednoczone Królestwo | 51.140.184.11 | |
-| Zachodnie Zjednoczone Królestwo | 51.141.8.11| |
-| Środkowo-zachodnie stany USA | 13.78.145.25 | |
+| Zjednoczone Królestwo (południe) | 51.140.184.11 | |
+| Zjednoczone Królestwo (zachód) | 51.141.8.11| |
+| Zachodnio-środkowe stany USA | 13.78.145.25 | |
 | Europa Zachodnia | 191.237.232.75 | 40.68.37.158 |
 | Zachodnie stany USA 1 | 23.99.34.75 | 104.42.238.205 |
 | Zachodnie stany USA 2 | 13.66.226.202 | |

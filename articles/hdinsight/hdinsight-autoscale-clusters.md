@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413683"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000102"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
+
+> [!Important]
+> Funkcja automatycznego skalowania działa tylko w przypadku klastrów platformy Spark i Hive, MapReduce, utworzonych po maja 2019 8. 
 
 Funkcja automatycznego skalowania klastra Azure HDInsight automatycznie skaluje liczbę węzłów procesu roboczego w klastrze górę i w dół. Nie można aktualnie skalować inne rodzaje węzłów w klastrze.  Podczas tworzenia nowego klastra HDInsight można ustawić minimalną i maksymalną liczbę węzłów procesu roboczego. Automatyczne skalowanie następnie monitoruje wymagań dotyczących zasobów obciążenia analizy i liczby węzłów procesu roboczego jest skalowana w górę lub w dół. Nie ma dodatkowych opłat dla tej funkcji.
 
 ## <a name="cluster-compatibility"></a>Zgodność z klastra
-
-> [!Important]
-> Funkcja automatycznego skalowania działa tylko w przypadku klastrów utworzonych po publiczną dostępność tej funkcji w maja 2019 r. Nie będzie działać w przypadku istniejących klastrów.
 
 W poniższej tabeli opisano typy klastrów i wersje, które są zgodne z funkcją automatycznego skalowania.
 
@@ -189,6 +189,25 @@ Utworzeniem klastra usługi HDInsight przy użyciu automatycznego skalowania na 
 Aby włączyć automatyczne skalowanie na działającego klastra, zaznacz **rozmiar klastra** w obszarze **ustawienia**. Następnie kliknij przycisk **włączyć Skalowanie automatyczne**. Wybierz typ skalowania automatycznego ma, a następnie wprowadź opcje skalowania obciążenia lub harmonogramu. Na koniec kliknij **Zapisz**.
 
 ![Włącz opcję Automatyczne skalowanie na podstawie harmonogramu węzła procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+
+## <a name="best-practices"></a>Najlepsze rozwiązania
+
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>Wybieranie skalowania obciążenia lub harmonogramu
+
+Przed podjęciem decyzji o na tryb, w którym można wybrać, należy wziąć pod uwagę następujące czynniki:
+
+* Ładowanie wariancja: jest obciążenie klastra zgodna z spójnego wzorca o określonych godzinach w określone dni. Jeśli nie, planowania na podstawie obciążenia jest lepszym rozwiązaniem.
+* Wymagania umowy SLA: Skalowanie automatyczne skalowanie jest reaktywne zamiast predykcyjne. Zostaną wystarczające opóźnienia między rozpoczęciu obciążenia zwiększenie i gdy klaster musi być w rozmiaru docelowego? Jeśli ma rygorystyczne wymagania umowy SLA i obciążenie jest stałym wzorzec znane, na podstawie harmonogramu jest lepszym rozwiązaniem.
+
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Należy wziąć pod uwagę opóźnienie skalowania w górę lub w dół operacji
+
+Może potrwać 10 – 20 minut na zakończenie operacji skalowania. Podczas konfigurowania niestandardowych harmonogramu należy zaplanować to opóźnienie. Na przykład: rozmiar klastra, który ma być 20 o 9:00, należy tak, aby operacja skalowania została ukończona, 9:00 AM ustawić czas wcześniejszy przykład 8:30:00 wyzwalacza harmonogramu.
+
+### <a name="preparation-for-scaling-down"></a>Przygotowanie do skalowania w dół
+
+Podczas skalowania w dół procesu klastra automatycznego skalowania będzie zlikwidować węzły, aby spełnić rozmiar docelowej. Jeśli na tych węzłach są uruchomione zadania, automatycznego skalowania będzie zaczekać na ukończenie zadania. Ponieważ każdy węzeł procesu roboczego służy również rolę w systemie plików HDFS, dane tymczasowe zostaną przesunięte do pozostałych węzłów. Dlatego należy upewnij się, że istnieje wystarczająca ilość miejsca w pozostałych węzłach udostępniać dane tymczasowe. 
+
+Uruchomione zadania będą w dalszym uruchamiania i zakończenia. Oczekujące zadania będzie czekać na zaplanowane zwykły przy użyciu mniejszej liczby węzłów procesu roboczego dostępne.
 
 ## <a name="monitoring"></a>Monitorowanie
 

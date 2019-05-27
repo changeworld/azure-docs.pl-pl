@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64732756"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164614"
 ---
 Przed utworzeniem jakichkolwiek elementów zapoznajmy się z pojęciem zakresu. Platforma Azure oferuje cztery poziomy zarządzania: grupy zarządzania, subskrypcję, grupy zasobów i zasób. [Grupy zarządzania](../articles/billing/billing-enterprise-mgmt-group-overview.md) są w wersji zapoznawczej. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
 
-![Zakres](./media/resource-manager-governance-scope/scope-levels.png)
+![Scope](./media/resource-manager-governance-scope/scope-levels.png)
 
 Ustawienia zarządzania są stosowane na dowolnych z tych poziomów zakresu. Zasięg zastosowania ustawienia jest określany na podstawie wybranego poziomu. Niższe poziomy dziedziczą ustawienia z wyższych poziomów. Po zastosowaniu ustawienia do subskrypcji to ustawienie jest stosowane do wszystkich grup zasobów i zasobów w ramach subskrypcji. Kiedy ustawienie jest stosowane do grupy zasobów, jest ono stosowane do grupy zasobów i wszystkich zasobów, które się w niej znajdują. Takie ustawienie nie ma jednak wpływu na inną grupę zasobów.
 

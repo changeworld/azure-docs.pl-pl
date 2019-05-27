@@ -4,14 +4,14 @@ description: Dowiedz się więcej na temat łącznika usługi Azure Cosmos DB Sp
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc0f2044f70c674177f9c9786f56f0441db2e282
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330250"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978905"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Przyspiesz analizy danych big data przy użyciu platformy Apache Spark do łącznika usługi Azure Cosmos DB
 
@@ -120,7 +120,7 @@ Więcej fragmentów kodu i kompletne przykłady, zobacz [Jupyter](https://github
 
 Tworzenie łącznika ze źródła w usłudze Github lub pobrać plikach JAR uber z narzędzia Maven, poniższe linki.
 
-| platforma Spark | Scala | Najnowsza wersja |
+| Spark | Scala | Najnowsza wersja |
 |---|---|---|
 | 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.3.5](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar)
 | 2.3.0 | 2.11 | [azure-cosmosdb-spark_2.3.0_2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)

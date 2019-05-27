@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7b5df31c3e1d07cc9ac93f73362e853fab728fa9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 0c1efa0e5cfa4bf31e58be64b3fe78075b79b515
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793802"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141690"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -72,7 +72,7 @@ Wszystkie zadania, które wykonują zasobów przy użyciu usługi Azure Resource
 5. Wybierz **Windows** **interfejsu API zarządzania usługami Azure**.
 6. Naciśnij klawisz **wybierz**.
 
-    ![Dodawanie uprawnień](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    ![Dodaj uprawnienia](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
 7. Kliknij przycisk **delegowane uprawnienia** obok nowo dodanych aplikacji, zaznacz pole wyboru, aby uzyskać **dostęp do usługi Azure Service Management (wersja zapoznawcza)**.
 8. Naciśnij klawisz **wybierz**.
@@ -223,7 +223,7 @@ Zapoznaj się z poniższymi zasobami, aby różne wskazówki dotyczące procesu/
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
 
-[Azure API Management REST API]: https://msdn.microsoft.com/library/azure/dn781421.aspx
+[Azure API Management REST API]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
 
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 

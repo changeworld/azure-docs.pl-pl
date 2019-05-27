@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386368"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148181"
 ---
 Liczba dysków z danymi można dołączyć do maszyny wirtualnej platformy Azure. Oparte na cele skalowalności i wydajności dla dysków z danymi maszyny Wirtualnej, można określić liczbę i typ dysku, który trzeba spełniaj swoje wymagania pojemności i wydajności.
 

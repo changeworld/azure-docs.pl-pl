@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
 ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135465"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -210,7 +210,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy została włączona w każ
 |requestCount     | Liczba żądań, które są obsługiwane.        |
 |opóźnienie | Średnie opóźnienie (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
-|Przepływność| Średnia przepływność od czasu ostatniego dziennika, mierzone w bajtach na sekundę.|
+|throughput| Średnia przepływność od czasu ostatniego dziennika, mierzone w bajtach na sekundę.|
 
 ```json
 {
@@ -249,7 +249,7 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 |ruleSetVersion     | Wersja używanego zestawu reguł. Dostępne wartości to 2.2.9 i 3.0.     |
 |ruleId     | Identyfikator reguły wyzwalającą zdarzenie.        |
 |message     | Przyjazny dla użytkownika komunikat wyzwalająca zdarzenia. Szczegółowe informacje znajdują się w sekcji szczegółów.        |
-|action     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
+|akcja     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
 |witryna     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
 |szczegóły     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
 |details.Message     | Opis reguły.        |

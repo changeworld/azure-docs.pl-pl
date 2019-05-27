@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: monhaber
-ms.openlocfilehash: 22791fc43ff17d56e1f51e7f7737a10109f47c59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: c23c9a2b9af1947c397b96431ae3c3bcd0e30aaa
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906231"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968289"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Poprawa bezpiecznego ocenę w usłudze Azure Security Center
 
@@ -43,7 +43,7 @@ Aby wyświetlić ocenę ogólną bezpiecznego:
 
 1. Na pulpicie nawigacyjnym platformy Azure kliknij **usługi Security Center** a następnie kliknij przycisk **bezpiecznego wynik**.
 2. U góry możesz zobaczyć bezpiecznego ocena najważniejsze funkcje:
-   - **Secure ogólną ocenę** reprezentuje wynik na zasady dla wybranej subskrypcji
+   - **Ogólny wskaźnik bezpieczeństwa** reprezentuje wskaźnik dla zasad w wybranej subskrypcji
    - **Zabezpieczanie wynik według kategorii** dowiesz się, które zasoby wymagają uwagi najbardziej
    - **Najlepszych zaleceń zabezpieczenia przez ocenę wpływu** zawiera listę zaleceń, które poprawią bezpiecznego ocenę, najlepiej, jeśli zostaną zaimplementowane.
  
@@ -52,7 +52,7 @@ Aby wyświetlić ocenę ogólną bezpiecznego:
 3. W poniższej tabeli widać wszystkich subskrypcji i wynik ogólny bezpieczny dla każdego.
 
    > [!NOTE]
-   > Suma bezpiecznego wynik każdej subskrypcji nie jest równa wynik ogólny bezpieczne. Bezpieczne wynik jest obliczenia oparte na stosunek między zasoby w dobrej kondycji i łączna liczba zasobów na zalecenia nie sumę bezpiecznego wyniki wszystkich subskrypcji. 
+   > Suma wskaźników bezpieczeństwa poszczególnych subskrypcji nie jest równa ogólnemu wskaźnikowi bezpieczeństwa. Wskaźnik bezpieczeństwa jest obliczany na podstawie proporcji między liczbą zasobów w dobrej kondycji i ogólną liczbą zasobów dla rekomendacji. Nie jest on sumą wskaźników bezpieczeństwa poszczególnych subskrypcji. 
    >
 4. Kliknij przycisk **Wyświetl zalecenia** Aby wyświetlić zalecenia dla tej subskrypcji, która może rozwiązać w celu bezpiecznego ocenę.
 4. Na liście zaleceń widać, że każde zalecenie, aby uzyskać to kolumna, która reprezentuje **Secure ocenę wpływu**. Ten numer reprezentuje ile zwiększyć ogólną bezpiecznego ocenę w sytuacji, jeśli należy postępować zgodnie z zaleceniami. Na przykład na ekranie poniżej, jeśli użytkownik **korygowanie luk w zabezpieczeniach w konfiguracjach zabezpieczeń w kontenerze**, bezpieczne ocenę ceny wzrosną o 35 punktów.
@@ -65,9 +65,9 @@ Aby wyświetlić ocenę ogólną bezpiecznego:
 
 Ponadto aby wyświetlić poszczególne wyniki bezpieczne, można znaleźć je w bloku poszczególne zalecenia.  
 
-**Zalecenie secure wynik** jest obliczenia oparte na stosunek między zasoby w dobrej kondycji i łączna liczba zasobów. Liczba zasoby w dobrej kondycji jest równa łączna liczba zasobów, otrzymują maksymalna wynik bezpiecznego zalecenia 50. Spróbuj pobrać ocenę bezpiecznego bliżej max wynik, napraw zasoby w złej kondycji, postępując zgodnie z zaleceniami.
+**Wskaźnik bezpieczeństwa zalecenia** jest obliczany na podstawie proporcji między liczbą zasobów w dobrej kondycji i ogólną liczbą zasobów. Jeśli liczba zasobów w dobrej kondycji jest równa łącznej liczbie zasobów, otrzymujesz maksymalny wskaźnik bezpieczeństwa zalecenia, który wynosi 50. Aby spróbować uzyskać wskaźnik bezpieczeństwa jak najbardziej zbliżony do maksymalnego, napraw zasoby będące w złej kondycji, postępując zgodnie z zaleceniami.
 
-**Wpływ rekomendacji** umożliwia sprawdzenie, ile zwiększa ocenę bezpieczne w przypadku zastosowania kroków zaleceń. Na przykład, jeśli bezpieczne ocenę 42 i **wpływ rekomendacji** jest + 3, wykonując czynności opisane w zaleceniu, poprawić ocenę przestanie 45.
+**Wpływ zalecenia** umożliwia sprawdzenie, o ile zwiększy się wskaźnik bezpieczeństwa, jeśli zastosujesz zalecane czynności. Jeśli na przykład Twój wskaźnik bezpieczeństwa wynosi 42 i **wpływ zalecenia** wynosi +3, wykonując czynności opisane w zaleceniu, zwiększysz swój wskaźnik do wartości 45.
 
 Zalecenie przedstawia zagrożenia, które obciążenia jest narażony na, jeśli nie zostaną podjęte kroki korygowania.
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276494"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979310"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
-W tym artykule opisano za pośrednictwem programowe tworzenie zasad i zarządzanie nimi. Definicje zasad wymuszają różne reguły i efekty dotyczące zasobów. Wymuszania gwarantuje, że zasoby pozostają zgodne ze standardami firmy i umów dotyczących poziomu usług.
+W tym artykule opisano za pośrednictwem programowe tworzenie zasad i zarządzanie nimi. Azure definicje zasad wymuszają różne reguły i efekty dotyczące zasobów. Wymuszania gwarantuje, że zasoby pozostają zgodne ze standardami firmy i umów dotyczących poziomu usług.
 
 Aby uzyskać informacje o zgodności, zobacz [pobierania danych zgodności](getting-compliance-data.md).
 
@@ -31,13 +31,13 @@ Przed rozpoczęciem upewnij się, że są spełnione następujące wymagania wst
 
 1. Aktualizowanie modułu Azure PowerShell do najnowszej wersji. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps), aby uzyskać szczegółowe informacje. Aby uzyskać więcej informacji na temat najnowszej wersji, zobacz [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
-1. Zarejestruj dostawcę zasobów usługi Policy Insights przy użyciu programu Azure PowerShell w celu zweryfikowania, że Twoja subskrypcja współpracuje z dostawcą zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do uruchamiania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
+1. Zarejestruj dostawcę zasobów usługi Azure Policy Insights przy użyciu programu Azure PowerShell w celu zweryfikowania, że Twoja subskrypcja współpracuje z dostawcą zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do uruchamiania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Aby uzyskać więcej informacji na temat rejestrowania i przeglądania dostawców zasobów, zobacz [dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Aby uzyskać więcej informacji na temat rejestrowania i przeglądania dostawców zasobów, zobacz [Dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md).
 
 1. Jeśli jeszcze nie, zainstaluj wiersza polecenia platformy Azure. Można uzyskać najnowszą wersję w [zainstalować interfejs wiersza polecenia w usłudze Azure na Windows](/cli/azure/install-azure-cli-windows).
 
@@ -148,7 +148,7 @@ Poniższa procedura umożliwia utworzenie definicji zasad.
 
    Zastąp kroku {subscriptionId} o identyfikatorze subskrypcji lub {managementGroupId} o identyfikatorze usługi [grupy zarządzania](../../management-groups/overview.md).
 
-   Aby uzyskać więcej informacji na temat struktury kwerendy zobacz [definicji zasad — tworzenia lub aktualizacji](/rest/api/resources/policydefinitions/createorupdate) i [definicji zasad — tworzenia lub aktualizacji w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   Aby uzyskać więcej informacji na temat struktury kwerendy zobacz [definicji zasad platformy Azure — tworzenia lub aktualizacji](/rest/api/resources/policydefinitions/createorupdate) i [definicji zasad — tworzenia lub aktualizacji w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 Poniższa procedura umożliwia tworzenie przypisania zasad i przypisywanie definicji zasad na poziomie grupy zasobów.
 
@@ -230,7 +230,7 @@ Aby utworzyć definicję zasad, użyj następującej procedury:
    - Subskrypcja — `/subscriptions/{subID}`
    - Grupa zarządzania- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Możesz uzyskać identyfikator definicji zasad przy użyciu programu PowerShell za pomocą następującego polecenia:
+Możesz uzyskać identyfikator definicji zasad platformy Azure przy użyciu programu PowerShell za pomocą następującego polecenia:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -251,5 +251,5 @@ Sprawdź następujące artykuły, aby uzyskać więcej informacji na temat polec
 - [Zasoby interfejsu API REST platformy Azure](/rest/api/resources/)
 - [Azure PowerShell Modules](/powershell/module/az.resources/#policies)
 - [Polecenia zasad wiersza polecenia platformy Azure](/cli/azure/policy?view=azure-cli-latest)
-- [Dostawcę zasobów szczegółowych informacji o zasadach dokumentacja interfejsu API REST](/rest/api/policy-insights)
-- [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md)
+- [Dostawca zasobów szczegółowych informacji o zasadach usługi Azure dokumentacja interfejsu API REST](/rest/api/policy-insights)
+- [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

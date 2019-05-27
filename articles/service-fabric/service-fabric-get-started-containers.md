@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
 ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049495"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66119110"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -450,13 +450,13 @@ Zapisz wszystkie zmiany i skompiluj aplikację. Aby opublikować aplikację, w E
 
 W obszarze **Punkt końcowy połączenia** wprowadź punkt końcowy zarządzania dla klastra. Na przykład „containercluster.westus2.cloudapp.azure.com:19000”. Punkt końcowy połączenia klienta można znaleźć na karcie Przegląd klastra w witrynie [Azure Portal](https://portal.azure.com).
 
-Kliknij przycisk **Opublikuj**.
+Kliknij przycisk **publikowania**.
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to oparte na sieci Web narzędzie do sprawdzania aplikacji i węzłów oraz zarządzania nimi w klastrze usługi Service Fabric. Otwórz przeglądarkę i przejdź do adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, a następnie wykonaj procedurę wdrażania aplikacji. Aplikacja wdrożona, ale jest w stanie błędu do czasu pobrania obrazu na węzły klastra (co może zająć trochę czasu, w zależności od rozmiaru obrazu): ![Error][1]
 
 Aplikacja jest gotowa, gdy jest on w ```Ready``` stanu: ![Gotowe][2]
 
-Otwórz przeglądarkę i przejdź pod adres http://containercluster.westus2.cloudapp.azure.com:8081. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
+Otwórz przeglądarkę i przejdź do http://containercluster.westus2.cloudapp.azure.com:8081. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
 ## <a name="clean-up"></a>Czyszczenie
 

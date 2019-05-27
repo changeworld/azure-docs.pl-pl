@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 88b3ffa38eb42eef42c98920b2c3193661b1c0f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2c9682746201306f1b99a04462819618225caa11
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236158"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164260"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows
 
@@ -114,7 +114,7 @@ Po tym należy utworzyć nową dzierżawę Windows pulpit wirtualny skojarzony z
 New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId <SubscriptionID>
 ```
 
-Przy użyciu wartości odpowiednich dla Twojej firmy i dzierżawy należy zastąpić wartości w nawiasach kwadratowych. Załóżmy na przykład, że jesteś Windows TenantCreator pulpitu wirtualnego w organizacji Contoso. Polecenia cmdlet, które należy uruchomić następujące polecenie będzie wyglądać następująco:
+Przy użyciu wartości odpowiednich dla Twojej firmy i dzierżawy należy zastąpić wartości w nawiasach kwadratowych. Nazwa, wybrany dla nowej dzierżawy pulpitu wirtualnego Windows powinna być unikatowa w skali globalnej. Załóżmy na przykład, że jesteś Windows TenantCreator pulpitu wirtualnego w organizacji Contoso. Polecenia cmdlet, które należy uruchomić następujące polecenie będzie wyglądać następująco:
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999

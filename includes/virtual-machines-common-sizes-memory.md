@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 0b0e03b163d4de7a441bb7d2714be23b58c95028
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561280"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170374"
 ---
 Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest najlepszy w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -90,7 +90,7 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 <sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
 
 
-## <a name="mv2-series"></a>Mv2 serii
+## <a name="mv2-series"></a>Seria Mv2
 
 Magazyn w warstwie Premium: Obsługiwane
 
@@ -98,15 +98,57 @@ Buforowanie Premium Storage: Obsługiwane
 
 Akcelerator zapisu: [Obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
+Seria Mv2 funkcje wysokiej przepływności, małego opóźnienia, jest bezpośrednio zamapowany Magazyn lokalny NVMe, uruchomiony w funkcji hyper Threading Intel® Xeon® Platinum procesora 2,5 GHz (Skylake) 8180 M wszystkie podstawowe podstawowy 2,5 GHz i częstotliwością max turbo 3,8 GHz. Wszystkie rozmiary maszyn wirtualnych serii Mv2 można użyć dysków trwałych w warstwach standardowa i premium. Wystąpienia serii Mv2 są zoptymalizowane pod kątem pamięci rozmiarów maszyn wirtualnych, zapewniając niezrównaną wydajność obliczeniową umożliwiającą obsługę dużych baz danych w pamięci i obciążeń z wysokiego współczynnika pamięci do procesorów, który jest idealnym rozwiązaniem dla serwerów relacyjnych baz danych i dużych pamięci podręcznych, w pamięci Analiza ruchu. 
+
 |Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
-| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
 
 Maszyny Wirtualne serii Mv2 są wyposażone w technologię Intel® Hyper-Threading  
 
-<sup>1</sup> te dużych procesory wirtualne wymagają jednego z tych systemów operacyjnych gościa: Windows Server 2016, Windows Server 2019 r, SLES 12 z dodatkiem SP4 i SLES 15 RHEL 7.6
+<sup>1</sup> te duże maszyny wirtualne wymagają jednego z tych systemów operacyjnych gościa: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
+<sup>2</sup> maszyny wirtualne z serii Mv2 są tylko generacji 2. Jeśli używasz systemu Linux, zobacz w poniższej sekcji Znajdowanie i Wybieranie obrazu systemu SUSE Linux.
+
+#### <a name="find-a-suse-image"></a>Znajdowanie obrazów SUSE
+
+Aby wybrać odpowiedni obraz SUSE Linux w witrynie Azure portal: 
+
+1. W witrynie Azure portal wybierz **Utwórz zasób** 
+1. Wyszukaj "SUSE SAP" 
+1. Z systemem SLES for SAP generacji 2 obrazy są dostępne jako albo płatności lub przenieść Twojej subskrypcji (BYOS). W wynikach wyszukiwania rozwiń kategorię odpowiedni obraz:
+
+    * SUSE Linux Enterprise Server (SLES) for SAP
+    * SUSE Linux Enterprise Server (SLES) dla rozwiązania SAP (BYOS)
+    
+1. Obrazy SUSE zgodny z serią Mv2 są poprzedzone nazwą `GEN2:`. Na poniższych ilustracjach SUSE są dostępne dla maszyn wirtualnych z serii Mv2:
+
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 z dodatkiem SP4 dla aplikacji SAP
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 dla aplikacji SAP
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 z dodatkiem SP4 dla aplikacji SAP (BYOS)
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 dla aplikacji SAP (BYOS)
+
+#### <a name="select-a-suse-image-via-azure-cli"></a>Wybierz obraz SUSE za pośrednictwem wiersza polecenia platformy Azure
+
+Aby wyświetlić listę dostępnych SLES for SAP obrazów maszyn wirtualnych z serii Mv2, należy użyć następującego [ `az vm image list` ](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) polecenia:
+
+```azurecli
+az vm image list --output table --publisher SUSE --sku gen2 --all
+```
+
+Polecenie wyświetla dostępne obecnie maszyny wirtualne 2 generacji dostępnych od firmy SUSE dla maszyn wirtualnych serii Mv2. 
+
+Przykładowe dane wyjściowe:
+
+```
+Offer          Publisher  Sku          Urn                                        Version
+-------------  ---------  -----------  -----------------------------------------  ----------
+SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
+SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
+```
 
 ## <a name="m-series"></a>Seria M 
 

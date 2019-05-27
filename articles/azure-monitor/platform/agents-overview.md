@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922835"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977583"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -30,7 +30,7 @@ Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z masz
 W tym artykule opisano różnice między nimi i ich funkcje w kolejności, w celu ustalenia, który z nich będzie obsługiwać Twoje zarządzania usługami IT lub ogólnych wymagań dotyczących monitorowania.  
 
 ## <a name="azure-diagnostic-extension"></a>Rozszerzenie diagnostyki platformy Azure
-[Rozszerzenia diagnostyki Azure](../../azure-monitor/platform/diagnostics-extension-overview.md) (często nazywany rozszerzenia diagnostyki Azure Windows (WAD) lub diagnostyki Azure Linux (LAD)), które podano dla usług Azure Cloud Services, ponieważ stały się ogólnie dostępna w 2010 r. jest agent, który dostarcza proste zbierania danych diagnostycznych z zasób obliczeniowy platformy Azure, takich jak maszyny Wirtualnej i utrzymują się do usługi Azure storage. Gdy w usłudze storage została wybrana opcja wyświetlania przy użyciu jednego z kilku dostępnych narzędzi, takich jak [Eksploratora serwera w programie Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) i [Eksploratora usługi Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+[Rozszerzenia diagnostyki Azure](../../azure-monitor/platform/diagnostics-extension-overview.md) (często nazywany rozszerzenia diagnostyki Azure Windows (WAD) lub diagnostyki Azure Linux (LAD)), które podano dla usług Azure Cloud Services, ponieważ stały się ogólnie dostępna w 2010 r. jest agent, który dostarcza proste zbierania danych diagnostycznych z zasób obliczeniowy platformy Azure, takich jak maszyny Wirtualnej i utrzymują się do usługi Azure storage. Gdy w magazynie, istnieje możliwość wyświetlenia przy użyciu jednego z kilku dostępnych narzędzi, takich jak [Eksploratora serwera w programie Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) i [Eksploratora usługi Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Istnieje możliwość zbierania:
 
@@ -59,7 +59,7 @@ W przypadku zaawansowanego monitorowania, gdy potrzebujesz więcej niż zbierani
 Jeśli chcesz, należy użyć agenta usługi Log Analytics:
 
 * Zbieraj dane z różnych źródeł, zarówno w obrębie platformy Azure, innych dostawców rozwiązań w chmurze i zasobów lokalnych. 
-* Przy użyciu jednej z usługi Azure Monitor, takich jak monitorowanie rozwiązań [usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-overview.md), [usługi Azure Monitor dla kontenerów](../insights/container-insights-overview.md)itp.  
+* Użyj jednej z usługi Azure Monitor, takich jak monitorowanie rozwiązań [usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-overview.md), [usługi Azure Monitor dla kontenerów](../insights/container-insights-overview.md)itp.  
 * Użyj jednej z innych usług zarządzania systemu Azure, takich jak [usługi Azure Security Center](../../security-center/security-center-intro.md), [usługi Azure Automation](../../automation/automation-intro.md)itp.
 
 Wcześniej kilka usług platformy Azure były powiązane jako *pakietu Operations Management Suite*, a w rezultacie agenta usługi Log Analytics jest udostępniany w usługach w tym usługi Azure Security Center i Azure Automation.  Obejmuje to pełny zestaw funkcji, które oferują one, zapewniając kompleksowe zarządzanie całym ich cyklu życia maszynach wirtualnych platformy Azure.  Przedstawiono kilka przykładów:

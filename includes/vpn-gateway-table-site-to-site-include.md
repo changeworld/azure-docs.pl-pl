@@ -9,11 +9,11 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 7238138c8a8a66c974e160a5beda45c8a464a4f2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929428"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170536"
 ---
 | **Model/metoda wdrażania** | **Azure Portal** | **Program PowerShell** | **Interfejs wiersza polecenia platformy Azure** |
 | --- | --- | --- | --- |

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129745"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Usługa Azure Monitor autoscaling często używane metryki
 
@@ -53,33 +53,33 @@ Można utworzyć alertu dla następujących metryk:
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Procent |
-| \Processor(_Total)\% czas uprzywilejowany |Procent |
-| \Processor(_Total)\% czas użytkownika |Procent |
-| Częstotliwość \Processor informacji (%) (_łącznie) \Processor |Licznik |
-| \System\Processes |Licznik |
-| Liczba \Thread \Process (%) (_łącznie) |Licznik |
-| Liczba \Handle \Process (%) (_łącznie) |Licznik |
-| \Memory\% przydzielonych bajtów w użyciu |Procent |
+| \Processor(_Total)\% Processor Time |Percent |
+| \Processor(_Total)\% czas uprzywilejowany |Percent |
+| \Processor(_Total)\% czas użytkownika |Percent |
+| Częstotliwość \Processor informacji (%) (_łącznie) \Processor |Count |
+| \System\Processes |Count |
+| Liczba \Thread \Process (%) (_łącznie) |Count |
+| Liczba \Handle \Process (%) (_łącznie) |Count |
+| \Memory\% przydzielonych bajtów w użyciu |Percent |
 | \Memory\Available Bytes |Bajty |
 | \Memory\Committed bajtów |Bajty |
 | \Memory\Commit limit |Bajty |
 | Bajty stronicowanej \Memory\Pool |Bajty |
 | \Memory\Pool niestronicowanej |Bajty |
-| \PhysicalDisk(_Total)\% dysku w czasie |Procent |
-| \PhysicalDisk(_Total)\% czas odczytu z dysku |Procent |
-| \PhysicalDisk(_Total)\% czas zapisu na dysku |Procent |
+| \PhysicalDisk(_Total)\% dysku w czasie |Percent |
+| \PhysicalDisk(_Total)\% czas odczytu z dysku |Percent |
+| \PhysicalDisk(_Total)\% czas zapisu na dysku |Percent |
 | Transfery \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
 | Odczyty \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
 | Zapisy \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
 | \PhysicalDisk(_Total)\Disk Bytes/sec |Bajty na sekundę |
 | \Disk \PhysicalDisk (%) (_łącznie) Odczytane bajty/s |Bajty na sekundę |
 | Bajty zapisu \Disk \PhysicalDisk (%) (_łącznie) / s |Bajty na sekundę |
-| \PhysicalDisk(_Total)\Avg. Długość kolejki dysku |Licznik |
-| \PhysicalDisk(_Total)\Avg. Długość kolejki odczytu dysku |Licznik |
-| \PhysicalDisk(_Total)\Avg. Długość kolejki zapisu dysku |Licznik |
-| \LogicalDisk(_Total)\% wolnego miejsca |Procent |
-| \LogicalDisk(_Total)\Free Megabytes |Licznik |
+| \PhysicalDisk(_Total)\Avg. Długość kolejki dysku |Count |
+| \PhysicalDisk(_Total)\Avg. Długość kolejki odczytu dysku |Count |
+| \PhysicalDisk(_Total)\Avg. Długość kolejki zapisu dysku |Count |
+| \LogicalDisk(_Total)\% wolnego miejsca |Percent |
+| \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Metryki systemu operacyjnego gościa, maszyny wirtualne systemu Linux
 Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest domyślnie włączona, przy użyciu rozszerzenia diagnostyki.
@@ -95,25 +95,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Nazwa metryki | Jednostka |
 | --- | --- |
 | \Memory\AvailableMemory |Bajty |
-| \Memory\PercentAvailableMemory |Procent |
+| \Memory\PercentAvailableMemory |Percent |
 | \Memory\UsedMemory |Bajty |
-| \Memory\PercentUsedMemory |Procent |
-| \Memory\PercentUsedByCache |Procent |
+| \Memory\PercentUsedMemory |Percent |
+| \Memory\PercentUsedByCache |Percent |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |Bajty |
-| \Memory\PercentAvailableSwap |Procent |
+| \Memory\PercentAvailableSwap |Percent |
 | \Memory\UsedSwap |Bajty |
-| \Memory\PercentUsedSwap |Procent |
-| \Processor\PercentIdleTime |Procent |
-| \Processor\PercentUserTime |Procent |
-| \Processor\PercentNiceTime |Procent |
-| \Processor\PercentPrivilegedTime |Procent |
-| \Processor\PercentInterruptTime |Procent |
-| \Processor\PercentDPCTime |Procent |
-| \Processor\PercentProcessorTime |Procent |
-| \Processor\PercentIOWaitTime |Procent |
+| \Memory\PercentUsedSwap |Percent |
+| \Processor\PercentIdleTime |Percent |
+| \Processor\PercentUserTime |Percent |
+| \Processor\PercentNiceTime |Percent |
+| \Processor\PercentPrivilegedTime |Percent |
+| \Processor\PercentInterruptTime |Percent |
+| \Processor\PercentDPCTime |Percent |
+| \Processor\PercentProcessorTime |Percent |
+| \Processor\PercentIOWaitTime |Percent |
 | \PhysicalDisk\BytesPerSecond |Bajty na sekundę |
 | \PhysicalDisk\ReadBytesPerSecond |Bajty na sekundę |
 | \PhysicalDisk\WriteBytesPerSecond |Bajty na sekundę |
@@ -123,15 +123,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Sekundy |
 | \PhysicalDisk\AverageWriteTime |Sekundy |
 | \PhysicalDisk\AverageTransferTime |Sekundy |
-| \PhysicalDisk\AverageDiskQueueLength |Licznik |
+| \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |Bajty |
 | \NetworkInterface\BytesReceived |Bajty |
-| \NetworkInterface\PacketsTransmitted |Licznik |
-| \NetworkInterface\PacketsReceived |Licznik |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |Bajty |
-| \NetworkInterface\TotalRxErrors |Licznik |
-| \NetworkInterface\TotalTxErrors |Licznik |
-| \NetworkInterface\TotalCollisions |Licznik |
+| \NetworkInterface\TotalRxErrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \NetworkInterface\TotalCollisions |Count |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Często używane metryki sieci Web (farma serwerów)
 Można również wykonać automatyczne skalowanie, oparte na typowych metryk serwera sieci web, takie jak długość kolejki Http. Nazwa metryki jego jest **HttpQueueLength**.  W poniższej sekcji przedstawiono metryki farmy (aplikacje sieci Web) dostępnego serwera.
@@ -147,10 +147,10 @@ Można alert po wystąpieniu lub przez te metryki.
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
-| CpuPercentage |Procent |
-| MemoryPercentage |Procent |
-| DiskQueueLength |Licznik |
-| HttpQueueLength |Licznik |
+| CpuPercentage |Percent |
+| MemoryPercentage |Percent |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |Bajty |
 | BytesSent |Bajty |
 
@@ -190,4 +190,3 @@ Dla zestawów skalowania maszyn wirtualnych, możesz zaktualizować ustawienie a
 > Dla usługi Service Bus nie istnieje pojęcie grup zasobów, ale usługi Azure Resource Manager tworzy domyślną grupę zasobów, na region. Grupa zasobów ma zazwyczaj format "Default - ServiceBus-[region]". For example, 'Default-ServiceBus-EastUS', 'Default-ServiceBus-WestUS', 'Default-ServiceBus-AustraliaEast' etc.
 >
 >
-

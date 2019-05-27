@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b78955336226276b7a2cf7e4867be51267e2527f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 2d8c79d34d4fae26b203ccd76ecc1bf745472bb6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136573"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Przypisywanie domeny niestandardowej do aplikacji internetowej przy użyciu programu PowerShell
 
@@ -54,7 +54,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Modyfikuje plan usługi App Service, aby zmienić jej warstwę cenową. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Modyfikuje konfigurację aplikacji internetowej. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

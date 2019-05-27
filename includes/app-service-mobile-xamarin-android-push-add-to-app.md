@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 3ced8c9fdadf547ec234c6d1bd5f3ddb8af7bc05
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817452"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140227"
 ---
 1. Utwórz nową klasę w projekcie o nazwie `ToDoBroadcastReceiver`.
 2. Dodaj następujące instrukcje using **ToDoBroadcastReceiver** klasy:
@@ -109,7 +109,7 @@ ms.locfileid: "42817452"
     }
     ```
 
-    Ta metoda używa Identyfikatora rejestracji zwróconego GCM do rejestrowania dla powiadomień wypychanych na platformie Azure. Tylko można dodać tagi do rejestracji po jego utworzeniu. Aby uzyskać więcej informacji, zobacz [porady: Dodawanie tagów do instalacji urządzeń, aby umożliwić wypychania do znaczników](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Ta metoda używa Identyfikatora rejestracji zwróconego GCM do rejestrowania dla powiadomień wypychanych na platformie Azure. Tylko można dodać tagi do rejestracji po jego utworzeniu. Aby uzyskać więcej informacji, zobacz [jak: Dodawanie tagów do instalacji urządzeń, aby umożliwić wypychania do znaczników](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
 
 7. Zastąp **OnMessage** method in Class metoda **PushHandlerService** następującym kodem:
 

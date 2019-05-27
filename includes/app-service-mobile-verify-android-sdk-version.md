@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133039"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141250"
 ---
 Ze względu na trwające prace programistyczne wersji zestawu SDK systemu Android zainstalowane w programie Android Studio może być niezgodna z wersją w kodzie. Zestaw SDK systemu Android, do którego odwołuje się ten samouczek jest wersja 26, najnowsze informacje w czasie pisania. Numer wersji może zwiększyć, są wyświetlane nowe wersje zestawu SDK, a firma Microsoft zaleca używanie najnowsza dostępna wersja.
 

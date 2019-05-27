@@ -16,11 +16,11 @@ ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629574"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138617"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Samouczek: Hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service
 
@@ -98,7 +98,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+### <a name="create-a-web-app"></a>Utwórz aplikację internetową
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -199,7 +199,7 @@ W celu uzyskania większej elastyczności możesz korzystać z narzędzi własne
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Które czynności umiesz wykonać:
 
