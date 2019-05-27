@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f526ea3d1a53ef2ae80f36c863e7a19797e9142
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546000"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001215"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Szybki start: Tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej
 
@@ -63,20 +63,15 @@ Aby umożliwić aplikacji uwierzytelnianie użytkowników i uzyskiwanie tokenów
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Jeśli zalogowano się w wielu katalogach, należy upewnić się, że wyświetlany jest prawidłowy katalog. Aby to sprawdzić, kliknij swoje konto na pasku u góry strony. Na liście **Katalog** wybierz dzierżawę usługi Azure AD, w której chcesz zarejestrować aplikację.
 1. Kliknij pozycję **Wszystkie usługi** w okienku po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
-1. Kliknij przycisk **Rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
-1. Postępuj zgodnie z monitami, aby utworzyć nową aplikację internetową i/lub internetowy interfejs API:
-
-    * **Nazwa** opisuje aplikację użytkownikom.
-    * **Adres URL logowania** to lokalizacja, do której zwracane są tokeny przez usługę Azure AD. W tym przykładzie domyślna lokalizacja to `https://localhost:44326/`.
-
-1. Po zakończeniu rejestracji usługa Azure AD przypisuje aplikacji unikatowy identyfikator. Ta wartość będzie potrzebna w kolejnych sekcjach, a więc należy skopiować ją z karty aplikacji.
-1. Biblioteka adal.js wykorzystuje niejawny przepływ protokołu OAuth, aby nawiązać połączenie z usługą Azure AD. Należy włączyć niejawny przepływ dla aplikacji:
-
-    1. Kliknij aplikację, a następnie wybierz pozycję **Manifest**, aby otworzyć edytor manifestu w tekście.
-    1. Znajdź właściwość `oauth2AllowImplicitFlow`. Ustaw dla niej wartość `true`.
-    1. Kliknij przycisk **Zapisz**, aby zapisać manifest.
-
-1. Udziel uprawnień w całej dzierżawie dla swojej aplikacji. Przejdź kolejno do pozycji **Ustawienia > Wymagane uprawnienia** i wybierz przycisk **Udziel uprawnień** na pasku u góry strony.
+1. Kliknij przycisk **rejestracje aplikacji**, a następnie wybierz pozycję **nowej rejestracji**.
+1. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
+1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+1. Wybierz **Web** platformy w obszarze **identyfikator URI przekierowania** sekcji, a następnie ustaw wartość `https://localhost:44326/` (lokalizacja, do którego usługa Azure AD będzie zwracać tokeny).
+1. Po zakończeniu wybierz pozycję **Rejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)**.
+1. Biblioteka adal.js wykorzystuje niejawny przepływ protokołu OAuth, aby nawiązać połączenie z usługą Azure AD. Należy włączyć niejawny przepływ dla swojej aplikacji. W okienku nawigacji po lewej stronie w zarejestrowanej aplikacji wybierz pozycję **Uwierzytelnianie**.
+1. Na stronie **Ustawienia zaawansowane** w obszarze **Niejawne udzielenie** zaznacz obydwa pola wyboru: **Tokeny identyfikatorów** i **Tokeny dostępu**. Tokeny identyfikatorów i tokeny dostępu są wymagane, ponieważ ta aplikacja musi zalogować użytkowników i wywołać interfejs API.
+1. Wybierz pozycję **Zapisz**.
+1. Udziel uprawnień w całej dzierżawie dla swojej aplikacji. Przejdź do **uprawnienia do interfejsu API**i wybierz **udzielić zgody administratora** przycisku w obszarze **wyrazić zgody**.
 1. Wybierz pozycję **Tak**, aby potwierdzić.
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalowanie biblioteki ADAL i konfigurowanie aplikacji jednostronicowej

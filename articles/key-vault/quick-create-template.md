@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 05/22/2019
 ms.author: jgao
-ms.openlocfilehash: b1b50858286e3a174de254ae16c64b04abc00936
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 802c0409fe3ac88f73c383958d2337be09ef7992
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716006"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016475"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault przy użyciu szablonu usługi Resource Manager
 
@@ -61,10 +61,10 @@ Szablon używany w tym przewodniku Szybki Start jest z [szablony szybkiego start
     * **Subskrypcja**: wybierz subskrypcję platformy Azure.
     * **Grupa zasobów**: Wybierz **Utwórz nową**, wprowadź unikatową nazwę grupy zasobów, a następnie kliknij przycisk **OK**. 
     * **Lokalizacja**: wybierz lokalizację.  Na przykład **Środkowe stany USA**.
-    * **Nazwa usługi Key Vault**: wprowadź unikatową nazwę dla usługi key vault.  
-    * **Identyfikator dzierżawy**: funkcja szablonu automatycznie pobiera identyfikator dzierżawy.  Nie zmieniaj wartości domyślnej
+    * **Nazwa usługi Key Vault**: Wprowadź nazwę magazynu kluczy, który musi być globalnie unikatowa w obrębie. vault.azure.net przestrzeni nazw.  
+    * **Identyfikator dzierżawy**: funkcja szablonu automatycznie pobiera identyfikator dzierżawy.  Nie zmieniaj wartości domyślne.
     * **Identyfikator użytkownika usługi AD**: Wprowadź identyfikator obiektu użytkownika usługi Azure AD, możesz pobrać z [wymagania wstępne](#prerequisites).
-    * **Nazwa wpisu tajnego**: Wprowadź nazwę klucza tajnego, który jest przechowywany w magazynie kluczy.  Na przykład **adminpassword**
+    * **Nazwa wpisu tajnego**: Wprowadź nazwę klucza tajnego, który jest przechowywany w magazynie kluczy.  Na przykład **adminpassword**.
     * **Wartość wpisu tajnego**: wprowadź wartość wpisu tajnego.  Jeśli przechowujesz hasła, zaleca się używać wygenerowane hasło utworzone w sekcji wymagania wstępne.
     * **Wyrażam zgodę na powyższe warunki i postanowienia**: Zaznacz.
 3. Wybierz pozycję **Kup**.

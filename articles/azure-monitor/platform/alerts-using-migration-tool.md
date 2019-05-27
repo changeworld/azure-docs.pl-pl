@@ -7,16 +7,19 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 55e6b515328df635a423e0ecf736b03e17a90b8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00229cca1d7fb238b330ec98cd35d0bb59bc821a
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698422"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015623"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Skorzystaj z narzędzia migracji dobrowolne migracji klasycznej reguły alertu
 
-Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana w lipcu 2019 r. Narzędzie migracji jest dostępne w portalu Azure, aby klienci używają reguł alertów klasycznych i którzy chcą wyzwolić migrację samodzielnie. W tym artykule wyjaśniono, jak używać narzędzia migracji do dobrowolnie migracji regułami alertów klasycznych, zanim automatyczną migrację rozpocznie się w lipcu 2019 r.
+Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana w 2019 września (został pierwotnie 2019 lipca). Narzędzie migracji jest dostępne w portalu Azure, aby klienci używają reguł alertów klasycznych i którzy chcą wyzwolić migrację samodzielnie. W tym artykule wyjaśniono, jak używać narzędzia migracji do dobrowolnie migracji regułami alertów klasycznych, przed rozpoczęciem migracji automatyczne, w 2019 września.
+
+> [!NOTE]
+> Ze względu na opóźnienie wdrożenie narzędzie do migracji została dacie wycofania migracji alertów klasycznych [rozszerzony do 31 sierpnia 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od daty pierwotnie ogłoszone się 30 czerwca 2019 r.
 
 ## <a name="benefits-of-new-alerts"></a>Zalety nowych alertów
 
@@ -78,7 +81,7 @@ Aby wyzwolić migracji regułami alertów klasycznych w witrynie Azure portal, w
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Dlaczego Moja subskrypcja jest wymieniony jako nie jest gotowy do migracji?
 
-Narzędzie migracji jest wprowadzane klientów fazami. W wczesnych faz większości lub wszystkich subskrypcji, ponieważ może być oznaczona jako **nie jest gotowy do migracji**. Przez środek kwietnia jednak wszystkie subskrypcje powinny być gotowy do migracji.
+Narzędzie migracji jest wprowadzane klientów fazami. W wczesnych faz większości lub wszystkich subskrypcji, ponieważ może być oznaczona jako **nie jest gotowy do migracji**. 
 
 Gdy subskrypcja będzie gotowe do migracji, właściciel subskrypcji otrzyma wiadomość e-mail z informacją o dostępnej narzędzie. Zorientować się, dla tego komunikatu.
 

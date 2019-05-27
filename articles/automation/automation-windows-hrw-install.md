@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0cc00b4f2075ba77490d310080b9968bedb8dc1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cc3307a4f32d77b9b8d259ac846c4db1c1ae4a99
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701775"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002510"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -60,8 +60,10 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
    * *SubscriptionID* (obowiązkowe): Identyfikator subskrypcji platformy Azure, która znajduje się konto usługi Automation.
    * *WorkspaceName* (opcjonalnie): Nazwa obszaru roboczego usługi Log Analytics. Jeśli nie masz obszaru roboczego usługi Log Analytics, skrypt tworzy i konfiguruje jeden.
 
-     > [!NOTE]
-     > Obecnie tylko regiony automatyzacji, obsługiwane w przypadku integracji z usługą Azure Monitor dzienniki są **Australia południowo-wschodnia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**i **Europa Zachodnia**. Jeśli konto usługi Automation nie jest w jednym z tych regionów, skrypt tworzy obszar roboczy usługi Log Analytics, ale ostrzega o tym, że nie może łączyć je ze sobą.
+   > [!NOTE]
+   > W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
+   >
+   > Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
 
 2. Na komputerze, należy otworzyć **programu Windows PowerShell** z **Start** ekranu w trybie administratora.
 3. Z powłoki wiersza polecenia programu PowerShell przejdź do folderu, który zawiera skrypt, który został pobrany. Zmienianie wartości parametrów *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *Nazwa_obszaru_roboczego -*. Następnie uruchom skrypt.

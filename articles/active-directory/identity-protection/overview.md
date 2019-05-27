@@ -17,23 +17,16 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304e23ec76a2f79d0ab3852efe2a483cf86c51b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453029"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66015215"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co to jest Azure Active Directory Identity Protection?
 
-Usługa Azure Active Directory Identity Protection to funkcja usługi Azure AD Premium P2, oferująca poniższe możliwości:
-
-- Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji
-
-- Skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane działania, that are related to tożsamości w organizacji  
-
-- Badanie podejrzanych zdarzeń i podejmowanie odpowiednich działań w celu rozwiązania problemów   
-
+Usługa Azure Active Directory Identity Protection umożliwia organizacjom skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane działania związane z tożsamościami użytkowników.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -51,47 +44,38 @@ Wykrywanie tożsamości ze złamanymi zabezpieczeniami jest nie łatwym zadaniem
 
 Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. W celu ochrony tożsamości w organizacji, można skonfigurować opartych na ryzykach zasady, które automatycznie odpowiadać na wykryte problemy, jeśli osiągnięty poziom ryzyka określony. Te zasady, oprócz innych kontrolek dostępu warunkowego, dostarczone przez usługę Azure Active Directory i [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), można automatycznie Blokuj lub zainicjować działania korygujące adaptacyjne, w tym Resetowanie haseł i wymuszanie uwierzytelniania wieloskładnikowego.
 
-
-#### <a name="identity-protection-capabilities"></a>Funkcje ochrony tożsamości
+### <a name="identity-protection-capabilities"></a>Funkcje ochrony tożsamości
 
 **Wykrywanie luk w zabezpieczeniach i ryzykowne konta:**  
 
-* Zapewnianie niestandardowych zalecenia, aby poprawić ogólny stan zabezpieczeń przez wyróżnianie luk w zabezpieczeniach
-* Obliczanie poziomy ryzyka logowania
-* Obliczanie poziomów ryzyka użytkownika
-
+- Zapewnianie niestandardowych zalecenia, aby poprawić ogólny stan zabezpieczeń przez wyróżnianie luk w zabezpieczeniach
+- Obliczanie poziomy ryzyka logowania
+- Obliczanie poziomów ryzyka użytkownika
 
 **Badanie zdarzeń o podwyższonym ryzyku:**
 
-* Wysyłanie powiadomień dla zdarzeń o podwyższonym ryzyku
-* Badanie zdarzeń o podwyższonym ryzyku, korzystając z informacji istotnych i kontekstowych
-* Zapewnienie podstawowych przepływów pracy do śledzenia dochodzenia
-* Zapewnianiu łatwego dostępu do akcji korygowania, takie jak resetowanie haseł
+- Wysyłanie powiadomień dla zdarzeń o podwyższonym ryzyku
+- Badanie zdarzeń o podwyższonym ryzyku, korzystając z informacji istotnych i kontekstowych
+- Zapewnienie podstawowych przepływów pracy do śledzenia dochodzenia
+- Zapewnianiu łatwego dostępu do akcji korygowania, takie jak resetowanie haseł
 
 **Zasady dostępu warunkowego na podstawie ryzyka:**
 
-* Zasady wyeliminowanie ryzykowne logowania za pomocą blokowania logowania bądź wymagają takiej wezwań do uwierzytelnienia Multi-Factor Authentication
-* Zasady na wartość Blokuj lub kont bezpiecznego ryzykownych użytkowników
-* Zasady, aby wymagać od użytkowników rejestracji do uwierzytelniania wieloskładnikowego
-
-
+- Zasady wyeliminowanie ryzykowne logowania za pomocą blokowania logowania bądź wymagają takiej wezwań do uwierzytelnienia Multi-Factor Authentication
+- Zasady na wartość Blokuj lub kont bezpiecznego ryzykownych użytkowników
+- Zasady, aby wymagać od użytkowników rejestracji do uwierzytelniania wieloskładnikowego
 
 ## <a name="identity-protection-roles"></a>Role ochrony tożsamości
 
 Aby zrównoważyć obciążenie działań z zakresu zarządzania całym implementacji Identity Protection, można przypisać kilku ról. Usługa Azure AD Identity Protection obsługuje 3 role katalogu:
 
-| Rola                         | Można zrobić                          | Nie można wykonać
-| :--                          | ---                                |  ---   |
-| Administrator globalny         | Pełny dostęp do usługi Identity Protection dołączanie Identity Protection| |
-| Administrator zabezpieczeń       | Pełny dostęp do usługi Identity Protection | Dołączanie Identity Protection, resetować hasła dla użytkownika |
-| Czytelnik zabezpieczeń              | Dostęp tylko do odczytu do usługi Identity Protection | Korygowanie użytkowników dołączanie Identity Protection, konfigurowanie zasad, resetowania haseł |
-
-
-
+| Rola | Można zrobić | Nie można wykonać |
+| :-- | --- | --- |
+| Administrator globalny | Pełny dostęp do usługi Identity Protection dołączanie Identity Protection| |
+| Administrator zabezpieczeń | Pełny dostęp do usługi Identity Protection | Dołączanie Identity Protection, resetować hasła dla użytkownika |
+| Czytelnik zabezpieczeń | Dostęp tylko do odczytu do usługi Identity Protection | Korygowanie użytkowników dołączanie Identity Protection, konfigurowanie zasad, resetowania haseł |
 
 Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
-
-
 
 ## <a name="detection"></a>Wykrywanie
 
@@ -104,7 +88,6 @@ Usługa Azure Active Directory Identity Protection analizuje konfigurację i wyk
 Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmy heurystyczne wykryć podejrzane akcje, które są związane z tożsamościami użytkowników. System tworzy rekord dla każdego wykryte podejrzane działania. Te rekordy są również nazywane zdarzeń o podwyższonym ryzyku.  
 Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../active-directory-identity-protection-risk-events.md).
 
-
 ## <a name="investigation"></a>Badanie
 
 Ci się podróż przez ochronę tożsamości zwykle zaczyna się od pulpitu nawigacyjnego Identity Protection.
@@ -113,29 +96,26 @@ Ci się podróż przez ochronę tożsamości zwykle zaczyna się od pulpitu nawi
 
 Pulpit nawigacyjny zapewnia dostęp do następujących elementów:
 
-* Raporty takie jak **użytkownicy oflagowani w związku z ryzykiem**, **zdarzeń o podwyższonym ryzyku** i **luk w zabezpieczeniach**
-* Ustawienia, takie jak konfiguracja usługi **zasad zabezpieczeń**, **powiadomienia** i **rejestracji uwierzytelniania wieloskładnikowego**
+- Raporty takie jak **użytkownicy oflagowani w związku z ryzykiem**, **zdarzeń o podwyższonym ryzyku** i **luk w zabezpieczeniach**
+- Ustawienia, takie jak konfiguracja usługi **zasad zabezpieczeń**, **powiadomienia** i **rejestracji uwierzytelniania wieloskładnikowego**
 
 Zwykle to punkt początkowy dla badania, czyli procesu recenzowania działania, dzienniki i inne istotne informacje związane z zdarzenie o podwyższonym ryzyku, można zdecydować, czy kroki korygowania i ograniczania ryzyka są niezbędne, i jak oceniasz tożsamości naruszone i zrozumieć używania tożsamości ze złamanymi zabezpieczeniami.
 
 Możesz powiązać badanie działań mających na celu [powiadomienia](notifications.md) ochrony usługi Azure Active Directory, wysyła wiadomości e-mail.
-
-
 
 ## <a name="policies"></a>Zasady
 
 Aby zaimplementować automatycznych odpowiedzi, Azure Active Directory Identity Protection oferuje trzy zasady:
 
 - [Zasady rejestracji uwierzytelniania wieloskładnikowego](howto-mfa-policy.md)
-
 - [Zasady dotyczące ryzyka związanego z użytkownika](howto-user-risk-policy.md)
-
 - [Zasady ryzyka logowania](howto-sign-in-risk-policy.md)
 
+## <a name="license-requirements"></a>Wymagania licencyjne
+
+[!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Witryna Channel 9: Usługa Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-
 - [Włączanie usługi Azure Active Directory Identity Protection](enable.md)
-

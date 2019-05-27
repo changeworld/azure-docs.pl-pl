@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60400488"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015266"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Zamówienie urządzenia zdarzenia połączeń z usługi Azure IoT Hub przy użyciu usługi Azure Cosmos DB
 
@@ -154,7 +154,7 @@ Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz usługi Event Gr
 
 4. W Projektancie aplikacji logiki przewiń w prawo aż zobaczysz typowe wyzwalacze. W obszarze **szablony**, wybierz **pusta aplikacja logiki** tak, aby tworzyć aplikacji logiki od podstaw.
 
-### <a name="select-a-trigger"></a>Wybieranie wyzwalacza
+### <a name="select-a-trigger"></a>Wybierz wyzwalacz
 
 Wyzwalacz to konkretne zdarzenie, które uruchamia aplikację logiki. W tym samouczku wyzwalacz, który uruchamia przepływ pracy, odbiera żądanie za pośrednictwem protokołu HTTP.
 
@@ -220,7 +220,7 @@ W przepływie pracy aplikacji logiki warunki pomoc, uruchom określonych akcji p
 
    **Identyfikator bazy danych**: ToDoList
 
-   **Identyfikator kolekcji**: Items
+   **Identyfikator kolekcji**: Elementy
 
    **Identyfikator procedury Sproc**: LatestDeviceConnectionState
 

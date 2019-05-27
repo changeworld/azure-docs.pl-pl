@@ -257,6 +257,10 @@
       items:
         - name: Analizowanie obciążenia
           href: analyze-your-workload.md
+        - name: Monitorowanie znaczenia obciążenia i zarządzanie nim
+          href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+        - name: Konfigurowanie znaczenia obciążenia
+          href: sql-data-warehouse-how-to-configure-workload-importance.md
     - name: Zarządzanie i monitorowanie
       items:
         - name: Uaktualnianie do wersji Gen2

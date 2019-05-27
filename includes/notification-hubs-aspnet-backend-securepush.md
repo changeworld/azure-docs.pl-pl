@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874557"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111520"
 ---
 ## <a name="webapi-project"></a>Projektem WebAPI
 1. W programie Visual Studio, otwórz **AppBackend** projektu, który został utworzony w **powiadamianie użytkowników** samouczka.
@@ -91,5 +91,5 @@ ms.locfileid: "60874557"
 Należy pamiętać, że `Post` metoda teraz wysyłał powiadomienie wyskakujące. Wysyła powiadomienie raw, zawierający tylko identyfikator powiadomień, a nie wszystkie poufnej zawartości. Upewnij się również dodać komentarz operacji wysyłania dla platform, dla których nie masz poświadczenia skonfigurowane w Centrum powiadomień, jak będą powodować błędy.
 
 1. Teraz ponownie wdrożymy tę aplikację w witrynie sieci Web platformy Azure, aby go udostępnić wszystkim urządzeniom. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
-2. Wybierz witryny internetowej platformy Azure jako swoje docelową lokalizację publikacji. Zaloguj się przy użyciu konta platformy Azure i wybrać istniejącą lub nową witrynę sieci Web i zanotuj **docelowy adres URL** właściwość **połączenia** kartę. W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **Opublikuj**.
+2. Wybierz witryny internetowej platformy Azure jako swoje docelową lokalizację publikacji. Zaloguj się przy użyciu konta platformy Azure i wybrać istniejącą lub nową witrynę sieci Web i zanotuj **docelowy adres URL** właściwość **połączenia** kartę. W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **publikowania**.
 

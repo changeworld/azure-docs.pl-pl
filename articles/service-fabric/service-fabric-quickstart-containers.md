@@ -16,11 +16,11 @@ ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66110364"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Windows w usłudze Service Fabric
 
@@ -148,7 +148,7 @@ Kliknij pozycję **Zaawansowane parametry połączenia**, a następnie zweryfiku
 
 ![Okno dialogowe Publikowanie](./media/service-fabric-quickstart-containers/publish-app.png)
 
-Kliknij przycisk **Opublikuj**.
+Kliknij przycisk **publikowania**.
 
 Każda aplikacja w klastrze musi mieć unikatową nazwę. Jeśli występuje konflikt nazw, zmień nazwę projektu programu Visual Studio i wdróż ponownie.
 

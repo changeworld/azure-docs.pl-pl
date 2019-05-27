@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384687"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113239"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników do grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
 Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do grup i aplikacji w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostępu usługi Azure AD.
 
 W tym artykule opisano, jak wyznaczone osoby dokonującej przeglądu wykonuje przeglądu dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Usługa Azure AD — warstwa Premium P2
+
+Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otwórz przegląd dostępu
 
@@ -64,16 +70,16 @@ Jeśli żądanie ma przeglądu własnego dostępu, strona będzie wyglądała r�
 
 Istnieją dwa sposoby, można zatwierdzić lub odmowa dostępu:
 
-- Możesz mogli zatwierdzać lub odrzucać każde żądanie pojedynczo, lub
+- Mogli zatwierdzać lub odrzucać dostęp do co najmniej jednego użytkownika lub
 - Można zaakceptować zalecenia systemu określone, co jest najprostszym i najszybszy sposób.
 
-### <a name="approve-or-deny-access-for-each-request"></a>Zatwierdź lub Odrzuć dostęp dla każdego żądania
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>Zatwierdź lub Odrzuć dostęp dla co najmniej jednego użytkownika
 
 1. Przejrzyj listę użytkowników, aby zdecydować, czy Zatwierdź lub Odrzuć ich przedłużenia dostępu.
 
-1. Aby zatwierdzić lub odrzucić każdego żądania, kliknij wiersz, aby otworzyć okno, aby określić akcję do wykonania.
+1. Aby zatwierdzić lub odmówić dostępu dla pojedynczego użytkownika, kliknij wiersz, aby otworzyć okno, aby określić akcję do wykonania. Aby zatwierdzić lub nie zezwoli na dostęp dla wielu użytkowników, dodać znaczniki wyboru obok użytkowników, a następnie kliknij przycisk **użytkowników X przeglądu** przycisk, aby otworzyć okno, aby określić akcję do wykonania.
 
-1. Kliknij przycisk **zatwierdzić** lub **Odmów**. Jeśli nie masz, możesz kliknąć **nie znasz**. To spowoduje użytkownika, jego dostępu, ale zaznaczenia zostaną odzwierciedlone w dziennikach inspekcji.
+1. Kliknij przycisk **zatwierdzić** lub **Odmów**. Jeśli nie masz, możesz kliknąć **nie znasz**. To spowoduje użytkownika utrzymywania ich dostęp, ale zaznaczenia zostaną odzwierciedlone w dziennikach inspekcji.
 
     ![Przeprowadzenie przeglądu dostępu](./media/perform-access-review/approve-deny.png)
 

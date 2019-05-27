@@ -111,8 +111,6 @@
           href: application-proxy-remove-personal-data.md
         - name: Konfigurowanie domeny niestandardowej
           href: application-proxy-configure-custom-domain.md
-        - name: Błędy konfiguracji
-          href: application-proxy-troubleshoot.md
         - name: Przewodniki dotyczące publikowania
           items:
             - name: Integracja z usługą Cloud App Security
@@ -129,6 +127,12 @@
               href: application-proxy-qlik.md
         - name: Rozwiązywanie problemów z serwerem proxy aplikacji
           items:
+            - name: Schemat blokowy rozwiązywania problemów z łącznikiem
+              href: application-proxy-debug-connectors.md
+            - name: Schemat blokowy rozwiązywania problemów z aplikacją
+              href: application-proxy-debug-apps.md
+            - name: Błędy konfiguracji
+              href: application-proxy-troubleshoot.md
             - name: Problem z wyświetlaniem strony aplikacji
               href: application-proxy-page-appearance-broken-problem.md
             - name: Ładowanie aplikacji trwa zbyt długo

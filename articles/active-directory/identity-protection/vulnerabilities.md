@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294241"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113126"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Luki w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection
 
@@ -30,13 +30,11 @@ Poniższe sekcje zawierają omówienie usterki zgłoszone przez ochronę tożsam
 
 Tę lukę w zabezpieczeniach pomaga ocenić wdrożenia usługi Azure Multi-Factor Authentication w Twojej organizacji.
 
-Aby wyświetlić liczbę dla użytkowników, którzy nie są zarejestrowani do uwierzytelniania Wieloskładnikowego, kliknij pozycję luki w zabezpieczeniach i są przekierowywane do statystyki w wyniku zabezpieczanie tożsamości.
-
 Usługa Azure Multi-Factor Authentication udostępnia drugą warstwę zabezpieczeń do uwierzytelniania użytkowników. Jego pomaga w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania. Usługa Azure Multi-Factor Authentication udostępnia opcje weryfikacji łatwy w użyciu, takie jak:
 
 * Połączenie telefoniczne
 * Wiadomość SMS
-* Powiadomienie aplikacji mobilnej
+* Powiadomienia w aplikacji mobilnej
 * Kod weryfikacyjny OTP
 
 Firma Microsoft zaleca, wymagają usługi Azure Multi-Factor Authentication do logowania użytkownika. Uwierzytelnianie wieloskładnikowe odgrywa kluczową rolę w zasadach dostępu warunkowego na podstawie ryzyka dostępne za pośrednictwem Identity Protection.

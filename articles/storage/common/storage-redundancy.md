@@ -9,18 +9,20 @@ ms.date: 01/18/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7006e19616be51d79dc3e1319064d19024400bcc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789994"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002820"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
 Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewnienia trwałości i wysokiej dostępności. Usługa Azure Storage dane są kopiowane, aby jest chroniony z planowanych i nieplanowanych zdarzeń wraz ze przejściowych awarii sprzętu, sieci lub awarii zasilania i ogromnych klęskami żywiołowymi. Można replikować dane w tym samym centrum danych, w centrach danych strefowych, w tym samym regionie lub w regionach podstawowemu.
 
 Replikacja gwarantuje, że Twoje konto magazynu spełnia warunki [Umowy dotyczącej poziomu usług (SLA) dla Magazynu](https://azure.microsoft.com/support/legal/sla/storage/) nawet w przypadku wystąpienia błędów. Zobacz umowę SLA, aby uzyskać informacje o gwarancjach usługi Azure Storage dotyczących trwałości i dostępności.
+
+Usługa Azure Storage regularnie sprawdza integralność danych przechowywane przy użyciu kontroli cyklicznej kontroli nadmiarowości (CRC). Jeśli zostanie wykryte uszkodzenie danych, jest to naprawić, za pomocą nadmiarowych danych. Usługa Azure Storage również oblicza sumy kontrolne na cały ruch sieciowy, aby wykrywać uszkodzenia pakiety danych podczas przechowywania i pobierania danych.
 
 ## <a name="choosing-a-redundancy-option"></a>Wybranie opcji nadmiarowości
 
