@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466072"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949630"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak tworzyć umożliwiającej płynne przesyłanie strumieniowe aplikacji Windows Store  
 
@@ -85,7 +85,7 @@ Aby uzyskać więcej informacji na temat tworzenia aplikacji Windows Store, zoba
     | Name (Nazwa) | Wartość |
     | --- | --- |
     | Grupa odwołań |Windows/Extensions |
-    | Informacje ogólne |Wybierz pozycję Microsoft Smooth Streaming Client SDK dla systemu Windows 8 i pakiet programu Microsoft Visual C++ Runtime |
+    | Odwołanie |Wybierz pozycję Microsoft Smooth Streaming Client SDK dla systemu Windows 8 i pakiet programu Microsoft Visual C++ Runtime |
 
 1. Kliknij przycisk **OK**. 
 
@@ -507,7 +507,7 @@ Te same zdarzenia są dostępne na adaptacyjne Menedżer poziom źródła, któr
    ```
 
    > [!NOTE]
-   > CoreDispatcher służy do wprowadzania zmian w wątku interfejsu użytkownika z innego niż wątek interfejsu użytkownika. W przypadku wąskiego gardła na Wątek dyspozytora dla deweloperów można używać dyspozytora dostarczone przez zamierza ma uprawnienia do zaktualizowania elementu interfejsu użytkownika.  Na przykład:
+   > CoreDispatcher służy do wprowadzania zmian w wątku interfejsu użytkownika z innego niż wątek interfejsu użytkownika. W przypadku wąskiego gardła na Wątek dyspozytora dla deweloperów można używać dyspozytora dostarczone przez element interfejsu użytkownika, które zamierzają aktualizacji.  Na przykład:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -847,7 +847,7 @@ Smooth Streaming prezentacji może zawierać wiele plików wideo zakodowane za p
          </ListBox>
          </StackPanel>
    ```
-3. Naciśnij klawisz **CTRL + S** można zapisać zmian he
+3. Naciśnij klawisz **CTRL + S** Aby zapisać zmiany
 
 ### <a name="to-modify-the-code-behind-file"></a>Aby zmodyfikować pliku CodeBehind
 
@@ -1027,7 +1027,7 @@ Lekcja 4 została ukończona.  W tej lekcji należy dodać funkcje, aby wybrać 
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Inne zasoby dotyczące oprogramowania:

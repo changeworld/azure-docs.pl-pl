@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: ae1f5f9148fa516c98d78afdd57887d4279f92dc
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827684"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952941"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -51,7 +51,7 @@ Należy ustanowić połączenie przy użyciu jednej z następujących opcji:
 
 - **Zezwól na użycie zakresów adresów IP centrum danych platformy Azure**. Ta opcja umożliwia [zakresów adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) do pobrania. Aby uzyskać dostęp do grupy zabezpieczeń sieci (NSG), należy użyć polecenia cmdlet AzureNetworkSecurityRule zestawu. W przypadku listy dozwolonych tylko specyficzne dla regionu adresy IP, będzie również konieczne do listy dozwolonych w usłudze Azure Active Directory (Azure AD) usługi tag, aby włączyć uwierzytelnianie.
 
-- **Zezwalaj na dostęp za pomocą sieciowej grupy zabezpieczeń tagów**. Jeśli używasz sieciowych grup zabezpieczeń do ograniczenia łączności, ta opcja dodaje regułę do usługi sieciowej grupy zabezpieczeń, która umożliwia dostęp ruchu wychodzącego do usługi Azure Backup przy użyciu tagu AzureBackup. Oprócz tego tagu potrzebna będzie również odpowiadające [reguły](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags) dla usługi Azure AD i Azure Storage, aby zezwolić na połączenia do transmisji danych i uwierzytelniania. AzureBackup tag jest obecnie dostępna w programie PowerShell tylko. Aby utworzyć regułę przy użyciu tagu AzureBackup:
+- **Zezwalaj na dostęp za pomocą sieciowej grupy zabezpieczeń tagów**. Jeśli używasz sieciowych grup zabezpieczeń do ograniczenia łączności, ta opcja dodaje regułę do usługi sieciowej grupy zabezpieczeń, która umożliwia dostęp ruchu wychodzącego do usługi Azure Backup przy użyciu tagu AzureBackup. Oprócz tego tagu potrzebna będzie również odpowiadające [reguły](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) dla usługi Azure AD i Azure Storage, aby zezwolić na połączenia do transmisji danych i uwierzytelniania. AzureBackup tag jest obecnie dostępna w programie PowerShell tylko. Aby utworzyć regułę przy użyciu tagu AzureBackup:
 
     - Dodawanie poświadczeń konta platformy Azure i aktualizowanie chmur krajowych<br/>
     `Add-AzureRmAccount`
@@ -67,7 +67,7 @@ Należy ustanowić połączenie przy użyciu jednej z następujących opcji:
 
   - Zapisywanie sieciowej grupy zabezpieczeń<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
-- **Zezwalaj na dostęp przy użyciu tagów zapory usługi Azure**. Jeśli używasz zapory usługi Azure, tworzenie aplikacji za pomocą reguły AzureBackup [FQDN tag](https://docs.microsoft.com/en-us/azure/firewall/fqdn-tags). Dzięki temu dostęp ruchu wychodzącego do usługi Azure Backup.
+- **Zezwalaj na dostęp przy użyciu tagów zapory usługi Azure**. Jeśli używasz zapory usługi Azure, tworzenie aplikacji za pomocą reguły AzureBackup [FQDN tag](https://docs.microsoft.com/azure/firewall/fqdn-tags). Dzięki temu dostęp ruchu wychodzącego do usługi Azure Backup.
 - **Wdrażanie serwera proxy HTTP na potrzeby kierowania ruchu**. Gdy tworzysz kopię zapasową bazy danych programu SQL Server na Maszynie wirtualnej platformy Azure, rozszerzenie kopii zapasowej na maszynie Wirtualnej używa interfejsów API protokołu HTTPS wysyłać polecenia zarządzania usługi Azure Backup i danych do usługi Azure Storage. Zapasowy numer wewnętrzny również używa usługi Azure AD do uwierzytelniania. Ruch rozszerzenia kopii zapasowej dla tych trzech usług należy kierować za pośrednictwem serwera proxy HTTP. Rozszerzenia są jedynym składnikiem, który jest skonfigurowany do uzyskiwania dostępu do publicznej sieci internet.
 
 Opcje łączności obejmują następujące zalety i wady:

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: d53d3ad077d07fd63063429018306be7d40dc024
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21ec3ea70e495364e40e492a5d0f9375e5c5d3e3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664019"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66139971"
 ---
-1. Zaloguj się w [Azure Portal].
+1. Zaloguj się w witrynie [Azure Portal].
 
 2. Kliknij pozycję **Utwórz zasób**.
 
@@ -29,7 +29,7 @@ ms.locfileid: "34664019"
 
 6. W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów _lub_ utwórz nową (używając tej samej nazwy, co aplikacja).
 
-7. Kliknij przycisk **Utwórz**. Zanim przejdziesz do kolejnych kroków, odczekaj kilka minut, aby usługa została wdrożona pomyślnie. Obserwuj ikonę powiadomień (dzwonek) w nagłówku portalu, pokazującą aktualizacje stanu.
+7. Kliknij pozycję **Utwórz**. Zanim przejdziesz do kolejnych kroków, odczekaj kilka minut, aby usługa została wdrożona pomyślnie. Obserwuj ikonę powiadomień (dzwonek) w nagłówku portalu, pokazującą aktualizacje stanu.
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart.png
