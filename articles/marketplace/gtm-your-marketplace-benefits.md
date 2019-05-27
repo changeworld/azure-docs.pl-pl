@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1f3ae120bbbb902188d893d5a04582a6e9547bdf
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937962"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909739"
 ---
 # <a name="your-marketplace-benefits"></a>Korzyści wynikające z witryny Marketplace
 
@@ -34,11 +34,7 @@ Korzyści Go-to-Market są dostępne dla partnerów, którzy ostatnio zostały o
 2. Microsoft Marketplaces Consultation: Skorzystać z tej [bezpłatne konsultacji](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) ułatwiające zaplanowanie architektury aplikacji w witrynie marketplace.
 3. Fora witryny Marketplace: Zadaj pytania bezpośrednio do pracowników firmy Microsoft i innych partnerów portalu marketplace w [forum witryny Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
 4. Pomoc techniczna: Użyj w menu Pomoc [portalu Cloud Partner](https://cloudpartner.azure.com/) Aby uzyskać pomoc dotyczącą usługi związane z portalu marketplace pytania dotyczące pomocy technicznej. 
-5. Programowanie testowania sponsorowania: Przejrzyj poniższe uprawnienia i przesłać żądanie dotyczące korzystania z dostępu sponsorowanego [formularz rejestracji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3omd2bW7etLoEoufw2-vMdUNUkxSjQ5V0hJOEtZSks3ME45TDJNTkVUTi4u):
-    * : Tworzenie i testowanie są na potrzeby publikowania w portalu Azure Marketplace.
-    * Nie można użyć finansowania do żadnych innych celów.
-    * Nagrody wynosi 5000 zł przez 90 dni użytkowania, zaczynając od po pierwszej akcji pochodzi w przypisanych subskrypcji.
-    * Aplikacja poddawana testom musi przejść na żywo w witrynie Azure Marketplace w ciągu 30 dni od ostatniego dnia finansowania: Na przykład jeśli takiego finansowania jest używany w dniu 1 grudnia, następnie aplikacja musi być na żywo przez 31 marca.
+5. Integracja z usługą AAD i rozwój i testowanie dostępu sponsorowanego: użytkownik zostanie wyłączony w po przejściu na żywo za pomocą transactable (możliwy do rozmieszczenia i płatne oferty). Zobacz następną sekcję, jak rozpocząć pracę z korzyści go-to-market.
 
 ## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Korzyści go-to-market (GTM wprowadzenie) w witrynie Marketplace
 
@@ -46,8 +42,8 @@ Dla nowych ofert w portalu Azure Marketplace i AppSource kwalifikujesz się do o
 
 | Witryna sklepu | Dodatkowe korzyści dostępne |
 |:--- |:--- |
-| AppSource |  Partnerzy Gold firmy Microsoft <br> Wersja próbna aplikacji |
-| Portal Azure Marketplace | Przeprowadzaj transakcje oferty <br> Próbnych |
+| AppSource |  Partnerzy Gold firmy Microsoft <br> Przeprowadzaj transakcje ofert — korzyści z witryny Marketplace <br> Wersja próbna aplikacji |
+| Portal Azure Marketplace | Przeprowadzaj transakcje ofert — korzyści z witryny Marketplace <br> Próbnych |
 
 Dział pomocy technicznej Twojej GTM zawiera szablony, zawartości sieci web, szkolenia i narzędzia umożliwiające wypromuj swoją firmę.
 
@@ -56,18 +52,22 @@ Aby uzyskać dostęp do tych korzyści, musisz:
 1. Publikowanie oferty w portalu Azure Marketplace lub w usłudze AppSource.
 2. Upewnij się, wprowadzono marketingu kontakt w **informacje kontaktowe** część oferty. Powinna to być dedykowanym zasobem marketingu, w przeciwieństwie do aliasu wychwytywania. (tj, należy unikać "obsługuje\@", "info\@", "marketing\@" itp.)
 
-Na podstawie stanu swoje rozwiązanie, oferta listy, okres próbny lub Transact, otrzymasz wiadomość e-mail przy użyciu zasobów samodzielnej pomocy lub zaproszenia do wywołania konsultacji za pomocą dedykowanego Menedżera zaangażowania. Nie trzeba nic robić, aby zainicjować połączenie — Marketplace zespół organizujący dołączanie skontaktuje się z Tobą użytkownikowi na podstawie informacji podanych w [portalu Cloud Partner](https://cloudpartner.azure.com/).
+Na podstawie stanu swoje rozwiązanie, oferta listy, okres próbny lub Transact — korzyści z portalu Marketplace, otrzymasz wiadomość e-mail przy użyciu zasobów samodzielnej pomocy lub zaproszenia do wywołania konsultacji za pomocą dedykowanego Menedżera zaangażowania. Nie trzeba nic robić, aby zainicjować połączenie — Marketplace zespół organizujący dołączanie skontaktuje się z Tobą użytkownikowi na podstawie informacji podanych w [portalu Cloud Partner](https://cloudpartner.azure.com/).
 
-Zakres działań, które są dostępne dla Ciebie rozwija proporcjonalna do rozwoju środowiska ofert w portalu marketplace. Wszystkie listy otrzymują podstawowy poziom optymalizacji zalecenia i promocji.  Te oferty są również kwalifikuje się do dodatkowych korzyści marketingu na podstawie stanu rozwiązania (listy, okres próbny lub Transact) wybrane witryny marketplace i osiągnięcia kompetencji partnera firmy Microsoft.
+Zakres działań, które są dostępne dla Ciebie rozwija proporcjonalna do rozwoju środowiska ofert w portalu marketplace. Wszystkie listy otrzymują podstawowy poziom optymalizacji zalecenia i promocji.  Te oferty są również kwalifikuje się do dodatkowych korzyści marketingowe oparte na stan (listy, okres próbny lub języka Transact - korzyści z portalu marketplace) wybrane rozwiązanie w portalu marketplace i osiągnięcia kompetencji partnera firmy Microsoft.
 
-W poniższej tabeli podsumowania wymagania kwalifikacyjne:
+W poniższej tabeli podsumowania wymagania kwalifikacyjne dotyczące listy i próbnych:
 
-![](./media/marketplace-publishers-guide/gtm-activities-table.png)
+![](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
 \* Wymaga kompetencji silver lub gold. <br>
 \*\* Wymaga kompetencji gold. <br>
 \*\*\* Wymaga kompetencji gold i współpracy sprzedażowej na listach zawartości partnera. <br>
 ^ Tylko transact mające zastosowanie do portalu Azure Marketplace.
+
+## <a name="marketplace-rewards-for-transact-partners"></a>Nagrody witryny Marketplace dla partnerów transact
+
+Pełną listę korzyści z nagrody portalu marketplace, mogą być wyświetlane w [podsumowania slajdy programu](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

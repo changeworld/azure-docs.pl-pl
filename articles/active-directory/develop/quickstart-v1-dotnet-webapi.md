@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78d251d637d12f35968c2b897a2a8cfd6496b7e0
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545932"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001104"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Szybki start: Tworzenie internetowego interfejsu API platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji
 
@@ -58,12 +58,12 @@ Aby ułatwić zabezpieczanie aplikacji, należy najpierw utworzyć aplikację w 
     * Pomiń ten krok, jeśli masz tylko jedną dzierżawę usługi Azure AD w ramach konta usługi lub jeśli wybrano już odpowiednią dzierżawę usługi Azure AD.
 
 3. W okienku nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**.
-4. Wybierz pozycję **Rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
-5. Postępuj zgodnie z monitami i utwórz nową **aplikację internetową i/lub nowy internetowy interfejs API**.
-    * **Nazwa** opisuje aplikację użytkownikom. Wprowadź wartość **Usługa Lista zadań do wykonania**.
-    * **Identyfikator URI przekierowania** jest połączeniem schematu i łańcucha, które jest używane przez usługę Azure AD do zwracania wszystkich tokenów zażądanych przez aplikację. Wprowadź adres `https://localhost:44321/` dla tej wartości.
-
-6. Na stronie **Ustawienia > Właściwości** zaktualizuj identyfikator URI aplikacji. Wprowadź identyfikator specyficzny dla dzierżawy. Na przykład wprowadź wartość `https://contoso.onmicrosoft.com/TodoListService`.
+4. Wybierz **rejestracje aplikacji**, a następnie wybierz pozycję **nowej rejestracji**.
+5. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
+W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+6. Wybierz **Web** platformy w obszarze **identyfikator URI przekierowania** sekcji, a następnie ustaw wartość `https://localhost:44321/` (lokalizacja, do którego usługa Azure AD będzie zwracać tokeny).
+7. Po zakończeniu wybierz pozycję **Rejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)**.
+6. Wybierz **uwidaczniania interfejsu API**, zaktualizuj identyfikator URI Identyfikatora aplikacji, klikając **ustaw**. Wprowadź identyfikator specyficzny dla dzierżawy. Na przykład wprowadź wartość `https://contoso.onmicrosoft.com/TodoListService`.
 7. Zapisz konfigurację. Pozostaw portal otwarty, ponieważ wkrótce konieczne będzie również zarejestrowanie aplikacji klienckiej.
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Konfigurowanie aplikacji pod kątem korzystania z potoku uwierzytelniania OWIN
@@ -148,12 +148,9 @@ Aby zweryfikować przychodzące żądania i tokeny, należy skonfigurować aplik
 Zanim usługa Lista zadań do wykonania zacznie działać, należy skonfigurować klienta Lista zadań do wykonania, aby mógł on pobierać tokeny z usługi Azure AD i wykonywać wywołania usługi.
 
 1. Wróć do witryny [Azure Portal](https://portal.azure.com).
-1. Utwórz nową aplikację w ramach dzierżawy usługi Azure AD, a następnie wybierz pozycję **Natywna aplikacja kliencka** w wynikowym monicie.
-    * **Nazwa** opisuje aplikację użytkownikom.
-    * Wprowadź adres `http://TodoListClient/` dla wartości **Identyfikator URI przekierowania**.
-
+1. Tworzenie nowej rejestracji aplikacji w dzierżawie usługi Azure AD.  Wprowadź **nazwa** opisującą aplikację dla użytkowników, należy wprowadzić `http://TodoListClient/` dla **identyfikator URI przekierowania** wartości, a następnie wybierz **klientem publicznym (mobilnych i klasycznych)** w Lista rozwijana.
 1. Po zakończeniu rejestracji usługa Azure AD przypisuje aplikacji unikatowy identyfikator. Ta wartość będzie potrzebna w kolejnych krokach, więc należy skopiować ją ze strony aplikacji.
-1. Na stronie **Ustawienia** wybierz pozycję **Wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**. Zlokalizuj i wybierz usługę Lista zadań do wykonania, dodaj uprawnienie **TodoListService** w obszarze **Uprawnienia delegowane**, a następnie wybierz pozycję **Gotowe**.
+1. Wybierz **uprawnienia do interfejsu API**, następnie **Dodaj uprawnienia**.  Zlokalizuj i wybierz do czy listy usługę, Dodaj **user_impersonation TodoListService dostępu** uprawnień w obszarze **delegowane uprawnienia**, a następnie wybierz pozycję **Dodaj uprawnienia**.
 1. W programie Visual Studio otwórz plik `App.config` w projekcie TodoListClient, a następnie wprowadź wartości konfiguracyjne w sekcji `<appSettings>`.
 
     * `ida:Tenant` to nazwa dzierżawy usługi Azure AD, na przykład contoso.onmicrosoft.com.

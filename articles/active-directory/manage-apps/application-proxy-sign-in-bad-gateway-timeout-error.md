@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 290b548f31a967d514b09e4de775b12de7703b07
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7499dbe1f3f0b89a11814ad1b65a52bb9ba9fd05
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782956"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016074"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -77,7 +77,7 @@ Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
 1. Otwórz aplikację w portalu, przechodząc do **usługi Azure Active Directory**, klikając na **aplikacje dla przedsiębiorstw**, następnie **wszystkich aplikacji.** Otwórz aplikację, a następnie wybierz **serwera Proxy aplikacji** menu po lewej stronie.
 
-2. Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty".
+2. Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do Sprawdź wszystkie wymagane porty są dozwolone.
 
 3. Jeśli Nieprawidłowa grupa łączników jest wyświetlany, wybierz za pomocą listy rozwijanej właściwej grupy, a upewnij się, że nie są już wyświetlane ostrzeżenia. Jeśli wyświetlana jest zamierzony grupy łączników, kliknij przycisk z komunikatem ostrzegawczym, aby otworzyć stronę za pomocą funkcji zarządzania łącznika.
 
@@ -87,11 +87,11 @@ Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
    * Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Zazwyczaj łącznik jest zainstalowany na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
 
-   * Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
+   * Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do Sprawdź wszystkie wymagane porty są dozwolone.
 
 Po zakończeniu korzystania z następujące kroki, aby upewnić się, że aplikacja została przypisana do grupy z pracy łączniki, przetestuj aplikację ponownie. Jeśli nadal nie działa, przejdź do następnej sekcji.
 
-## <a name="check-all-required-ports-are-whitelisted"></a>Sprawdź wszystkie wymagane porty będą się na białej liście
+## <a name="check-all-required-ports-are-open"></a>Sprawdź wszystkie wymagane porty są otwarte
 
 Aby sprawdzić, czy wszystkie wymagane porty są otwarte, zobacz dokumentację na otwieranie portów. Jeśli wszystkie wymagane porty są otwarte, przejdź do następnej sekcji.
 

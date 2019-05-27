@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d22fca27943be7ac7db8b8edd5882b9fa4ab3ab9
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607261"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001698"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Atrybuty zabezpieczeń dla usługi Azure App Service
 
@@ -29,17 +29,17 @@ W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure 
 | Szyfrowanie w spoczynku (na przykład szyfrowanie po stronie serwera, szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta i inne funkcje szyfrowania) | Tak | Zawartość pliku witryny sieci Web jest przechowywana w usłudze Azure Storage automatycznie szyfruje zawartość w stanie spoczynku. Zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).<br><br>Wpisy tajne klienta dostarczane są szyfrowane, gdy. Wpisy tajne są szyfrowane, gdy podczas przechowywane w bazach danych konfiguracji usługi App Service.<br><br>Lokalnie dołączonych dysków może opcjonalnie służyć jako tymczasowy magazyn przez witryny sieci Web (D:\local i % TMP %). Podłączone lokalnie dyski nie są szyfrowane w stanie spoczynku. |
 | Szyfrowanie podczas transferu (np. szyfrowanie usługi ExpressRoute w sieci wirtualnej, szyfrowania i szyfrowania sieć wirtualna-sieć wirtualna)| Tak | Klienci mogą skonfigurować witryny sieci web w celu wymagania i używać protokołu HTTPS dla ruchu przychodzącego. Zobacz wpis w blogu [jak usługi Azure App Service tylko HTTPS](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/). |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Klienci mogą wybrać opcję przechowywania wpisów tajnych aplikacji w usłudze Key Vault i pobierać je w czasie wykonywania. Zobacz [odwołuje się do użycia magazynu kluczy dla usługi App Service i Azure Functions (wersja zapoznawcza)](app-service-key-vault-references.md).|
-| Szyfrowanie na poziomie kolumny (usługi danych platformy Azure)| ND | |
+| Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
 | Wywołania interfejsu API szyfrowane| Tak | Występować wywołań zarządzania można konfigurować usługę App Service za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml) wywołań za pośrednictwem protokołu HTTPS. |
 
 ## <a name="network-segmentation"></a>Segmentacji sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Punkt końcowy usługi pomocy technicznej| Tak | Obecnie dostępne w wersji zapoznawczej dla usługi App Service. Zobacz [ograniczenia dostępu do usługi Azure App Service](app-service-ip-restrictions.md). |
+| Obsługa punktu końcowego usługi| Tak | Obecnie dostępne w wersji zapoznawczej dla usługi App Service. Zobacz [ograniczenia dostępu do usługi Azure App Service](app-service-ip-restrictions.md). |
 | Obsługa iniekcji sieci wirtualnej| Tak | Środowiska usługi App Service są implementacji prywatnej usługi App Service dedykowanego pojedynczemu klientowi, które są wstrzykiwane do sieci wirtualnej klienta. Zobacz [wprowadzenie do środowisk App Service Environment](environment/intro.md). |
 | Izolacja sieci i Firewalling pomocy technicznej| Tak | Publiczne odmiany wielodostępnej usługi App Service klienci mogą skonfigurować listy ACL (ograniczenia adresów IP) do blokowania dozwolonego ruchu przychodzącego sieci.  Zobacz [ograniczenia dostępu do usługi Azure App Service](app-service-ip-restrictions.md).  Środowiska usługi App Service są wdrażane bezpośrednio do sieci wirtualnych i dlatego mogą być chronione przy użyciu sieciowych grup zabezpieczeń. |
-| Obsługa wymuszonego tunelowania | Tak | Środowiska usługi App Service można wdrożyć w sieci wirtualnej klienta, gdy wymuszanie tunelowania jest konfigurowane. Klienci muszą postępuj zgodnie z instrukcjami [skonfigurować środowisko App Service Environment przy wymuszonego tunelowania](environment/forced-tunnel-support.md). |
+| Obsługa tunelowania wymuszonego| Tak | Środowiska usługi App Service można wdrożyć w sieci wirtualnej klienta, gdy wymuszanie tunelowania jest konfigurowane. Klienci muszą postępuj zgodnie z instrukcjami [skonfigurować środowisko App Service Environment przy wymuszonego tunelowania](environment/forced-tunnel-support.md). |
 
 ## <a name="detection"></a>Wykrywanie
 
@@ -59,8 +59,8 @@ W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure 
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Zarządzania kontrolą/Plan rejestrowania i inspekcji| Tak | Wszystkie operacje zarządzania wykonywane na obiektach usługi App Service wystąpić za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml). Historyczne Dzienniki te operacje są dostępne zarówno w portalu, jak i za pomocą interfejsu wiersza polecenia; zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftweb) i [az monitor z dziennika aktywności](/cli/azure/monitor/activity-log). |
-| Rejestrowanie i inspekcja na płaszczyźnie danych | Nie | Płaszczyzny danych dla usługi App Service jest zdalnym udziale plików zawierających zawartości wdrożonych witryn sieci web klienta.  Nie ma żadnych inspekcji w zdalnym udziale plików. |
+| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Tak | Wszystkie operacje zarządzania wykonywane na obiektach usługi App Service wystąpić za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml). Historyczne Dzienniki te operacje są dostępne zarówno w portalu, jak i za pomocą interfejsu wiersza polecenia; zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftweb) i [az monitor z dziennika aktywności](/cli/azure/monitor/activity-log). |
+| Rejestrowanie płaszczyzny danych i inspekcji | Nie | Płaszczyzny danych dla usługi App Service jest zdalnym udziale plików zawierających zawartości wdrożonych witryn sieci web klienta.  Nie ma żadnych inspekcji w zdalnym udziale plików. |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 

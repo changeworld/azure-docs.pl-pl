@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39a757900b4307d702a0ce0ce1c20694418aa8dd
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648656"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872832"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak uruchamiać funkcje trwałe jako zadania Webjob
 
@@ -37,7 +37,7 @@ W tym artykule przyjęto założenie, że znasz podstawowe informacje dotyczące
 
 Wykonanie czynności opisanych w tym artykule:
 
-* [Instalowanie programu Visual Studio 2017 w wersji 15.6 lub nowszej](https://docs.microsoft.com/visualstudio/install/) z **programowanie na platformie Azure** obciążenia.
+* [Instalowanie programu Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) z **programowanie na platformie Azure** obciążenia.
 
   Jeśli już zainstalowano oprogramowania Visual Studio, ale nie ma tego obciążenia, dodać obciążenie, wybierając **narzędzia** > **Pobierz narzędzia i funkcje**.
 
@@ -49,7 +49,7 @@ Wykonanie czynności opisanych w tym artykule:
 
 W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJobs (równoważne z usługi Azure Functions w wersji 1.x). Aby uzyskać informacje o wersji 3.x, zobacz [zestawu SDK usługi WebJobs 3.x](#webjobs-sdk-3x) w dalszej części tego artykułu.
 
-## <a name="create-a-console-app"></a>Tworzenie aplikacji konsolowej
+## <a name="create-a-console-app"></a>Tworzenie aplikacji konsoli
 
 Aby uruchomić funkcje trwałe jako zadania Webjob, należy najpierw utworzyć aplikację konsoli. Projekt zestawu SDK usługi WebJobs jest po prostu projekt aplikacji konsoli przy użyciu odpowiednich zainstalowanych pakietów NuGet.
 

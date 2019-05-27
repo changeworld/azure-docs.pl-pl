@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 551f3be2ca23bc18224d28faeea6a6df80eba1db
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4efd9556e255709204654cf0acbf1b08fa2c1fc0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823537"
+ms.locfileid: "65872153"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS realizacji interfejsy API wersji 2 
 
-Ten artykuł zawiera interfejs API, który pozwala niezależnym dostawcom oprogramowania (ISV) i sprzedawać swoje aplikacje SaaS w portalu Azure Marketplace i AppSource. Ten interfejs API jest wymagane do wyświetlania listy SaaS oferują usługi AppSource i portalu Azure Marketplace.
+Ten artykuł zawiera interfejs API, który pozwala niezależnym dostawcom oprogramowania (ISV) i sprzedawać swoje aplikacje SaaS w portalu Azure Marketplace i AppSource. Ten interfejs API jest potrzebę transactable SaaS oferują usługi AppSource i portalu Azure Marketplace.
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Zarządzanie cyklem życia subskrypcji SaaS
 

@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d5e9c6c8a104c16d1ff4e96929ff47ed6fd5ff6
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771179"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966116"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
-W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje systemu RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcji hypervisor do przygotowywania, które zostały omówione w tym artykule są maszyny wirtualne funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji na temat wymagania kwalifikacyjne dotyczące udziału w systemie Red Hat Cloud Access program zobacz [witryny sieci Web firmy Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
+W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje systemu RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcji hypervisor do przygotowywania, które zostały omówione w tym artykule są maszyny wirtualne funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji na temat wymagania kwalifikacyjne dotyczące udziału w systemie Red Hat Cloud Access program zobacz [witryny sieci Web firmy Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Sposoby automatyzacji tworzenia RHEL obrazy dla [kreatora obrazów platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z Menedżera funkcji Hyper-V
 
@@ -110,7 +110,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Należy pamiętać, że dysk lokalny zasób to tymczasowy dysk a, może być opróżnione, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, należy odpowiednio zmodyfikować następujące parametry w /etc/waagent.conf:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Należy pamiętać, że dysk lokalny zasób to tymczasowy dysk i czy może być opróżnione, jeśli maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, należy odpowiednio zmodyfikować następujące parametry w /etc/waagent.conf:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -124,6 +124,8 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -193,7 +195,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, jeśli maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -207,6 +209,8 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -315,7 +319,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
         # chkconfig waagent on
 
-1. Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w **/etc/waagent.conf** odpowiednio:
+1. Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, jeśli maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w **/etc/waagent.conf** odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -329,6 +333,8 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -464,7 +470,7 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, jeśli maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -478,6 +484,8 @@ W tej sekcji założono, że zostały już uzyskane plik ISO z witryny sieci Web
 
 1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -593,7 +601,7 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
 
 1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, jeśli maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -607,6 +615,8 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
 
 1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -707,7 +717,7 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
 
 1. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny wirtualnej po aprowizacji maszyny wirtualnej na platformie Azure. Pamiętaj, że dysk lokalny zasób jest dyskiem tymczasowym może opróżnić, jeśli maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure w poprzednim kroku, zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -721,6 +731,8 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
 
 1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -875,7 +887,7 @@ W tej sekcji założono, zainstalowano maszynę wirtualną systemu RHEL w środo
         NM_CONTROLLED=no
         EOF
 
-        # Deprovision and prepare for Azure
+        # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
 
         %end

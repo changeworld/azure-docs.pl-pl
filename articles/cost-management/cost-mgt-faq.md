@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430634"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002022"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
@@ -74,9 +74,9 @@ Po wykonaniu powyższych kroków, możesz wyświetlić zalecenia optymalizator w
 
 Najpierw Przyjrzyjmy się najbardziej typowy scenariusz, który powoduje, że konta użytkowników uzyskać *initiallySuspended*.
 
-> Admin1 może być użytkownikiem dostawcy rozwiązań w chmurze firmy Microsoft lub umowy Enterprise Agreement. Jego organizacja jest gotowy rozpocząć korzystanie z platformy Cloudyn.  Użytkownik rejestruje się w witrynie Azure portal i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługi Cloudyn i loguje się do portalu Cloudyn, staje się on *głównych administratorów*. Admin1 nie utworzyć kont użytkowników. Jednak przy użyciu portalu Cloudyn, on tworzenia konta platformy Azure i konfiguruje hierarchii jednostek. Admin1 informuje Admin2, administrator dzierżawy, który musi zarejestrować w usłudze Cloudyn i zaloguj się do portalu Cloudyn.
-> 
-> Admin2 rejestruje się w witrynie Azure portal. Jednak gdy próbuje zalogować się do portalu Cloudyn, emitowany błąd informujący o tym, jego konto jest **zawieszone**. Administrator podstawowy Admin1, jest powiadamiany o zawieszenie konta. Admin1 musi aktywować firmy Admin2 konto i przyznać *dostęp do jednostki administracyjnej* dla odpowiednich jednostek i umożliwia użytkownika zarządzania dostępem i aktywne konta użytkownika.
+> Admin1 może być użytkownikiem dostawcy rozwiązań w chmurze firmy Microsoft lub umowy Enterprise Agreement. Organizacji jest gotowy rozpocząć korzystanie z platformy Cloudyn.  Użytkownik rejestruje się w witrynie Azure portal i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługi Cloudyn i loguje się do portalu Cloudyn, staje się Admin1 *głównych administratorów*. Admin1 nie utworzyć kont użytkowników. Jednak przy użyciu portalu Cloudyn, ich tworzenie kont platformy Azure i Konfigurowanie hierarchii jednostek. Admin1 informuje Admin2, administrator dzierżawy, należy zarejestrować w usłudze Cloudyn i zaloguj się do portalu Cloudyn.
+>
+> Admin2 rejestruje się w witrynie Azure portal. Jednak gdy użytkownik próbuje zalogować się do portalu Cloudyn one wyświetlony komunikat o błędzie informujący o tym, jego konto jest **zawieszone**. Administrator podstawowy Admin1, jest powiadamiany o zawieszenie konta. Admin1 musi aktywować firmy Admin2 konto i przyznać *dostęp do jednostki administracyjnej* dla odpowiednich jednostek i umożliwia użytkownika zarządzania dostępem i aktywne konta użytkownika.
 
 
 Jeśli zostanie wyświetlony alert o żądanie, aby zezwolić użytkownikowi na dostęp, musisz aktywować konto użytkownika.

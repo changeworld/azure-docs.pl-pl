@@ -5,16 +5,16 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 26ff592ea0d0a57049ae11a981fe8d8e77ca876f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606944"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001753"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure
 
@@ -393,8 +393,12 @@ W przypadku danych, który został zmodyfikowany i uzyskać dostęp regularnie w
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**Utworzono nowe zasady, dlaczego akcje nie są uruchamiane natychmiast?**  
+**Utworzono nowe zasady, dlaczego akcje nie natychmiast uruchomić?**  
 Platforma działa zasady cyklu życia raz dziennie. Po skonfigurowaniu zasad, może upłynąć do 24 godzin w przypadku niektórych działań uruchomić po raz pierwszy.  
+
+**Ręcznie jest wypełnienia obiektu blob zarchiwizowany, jak zapobiec jej jest przenoszony z powrotem do warstwy archiwum tymczasowo?**  
+Obiekt blob jest przenoszony z warstwy dostępu do jednej usługi do innej warstwy dostępu, nie powoduje zmiany jego czas ostatniej modyfikacji. Jeśli użytkownik ręcznie przywrócenia z magazynu trwałego zarchiwizowane obiekt blob do warstwy gorąca i używanie, jej będzie przeniesiony z powrotem do warstwy archiwum przez aparat zarządzania cyklem życia. Można zapobiec jego, wyłączając reguły, który ma wpływ na ten obiekt blob tymczasowo. Można skopiować obiektu blob do innej lokalizacji, jeśli musi trwale pozostają w warstwie gorąca. Gdy obiekt blob można bezpiecznie przeniesiony z powrotem do warstwy archiwum, można ponownie włączyć reguły. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

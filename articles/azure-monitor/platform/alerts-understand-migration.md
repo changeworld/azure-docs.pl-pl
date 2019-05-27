@@ -1,47 +1,50 @@
 ---
-title: Zrozumienie sposobu dobrowolne narzędzia migracji alertów w usłudze Azure Monitor współpracuje
-description: Zrozumienie sposobu działania narzędzia migracji alertów i rozwiązywanie problemów, jeśli wystąpią problemy.
+title: Zrozumienie sposobu działania narzędzia migracji dobrowolne alertów usługi Azure Monitor
+description: Zrozumienie sposobu działania narzędzia migracji alerty i rozwiązywanie problemów.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: a45a0cff606bc854924d5da0841b26e1cb9031bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b5a13254fc9dfd58db83a1bc8b9dd071cfbbdab2
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347604"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015591"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Zrozumienie sposobu działania narzędzia migracji
 
-Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana w lipcu 2019 r. Narzędzie migracji, aby wyzwolić dobrowolnie migracji jest dostępne w witrynie Azure portal i wprowadza się klienci, którzy używają klasycznej reguły alertu.
+Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana w 2019 września (został pierwotnie 2019 lipca). Narzędzie migracji jest dostępne w portalu Azure, aby klienci używają reguł alertów klasycznych i którzy chcą wyzwolić migrację samodzielnie.
 
-Ten artykuł przeprowadzi działania narzędzia migracji dobrowolne. Omówiono także korygowanie niektórych typowych problemów.
+W tym artykule opisano, jak działa narzędzie dobrowolne migracji. Omówiono także środki zaradcze dla niektórych typowych problemów.
+
+> [!NOTE]
+> Ze względu na opóźnienie wdrożenie narzędzie do migracji została dacie wycofania migracji alertów klasycznych [rozszerzony do 31 sierpnia 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od daty pierwotnie ogłoszone się 30 czerwca 2019 r.
 
 ## <a name="which-classic-alert-rules-can-be-migrated"></a>Które klasycznej reguły alertu można poddać migracji?
 
-Gdy prawie wszystkich reguł alertów klasycznych można poddać migracji za pomocą narzędzia, istnieją pewne wyjątki. Następujące reguły alertu nie będą migrowane przy użyciu narzędzia (lub podczas automatycznej migracji w 2019 lipca)
+Mimo że narzędzia można migrować prawie wszystkich klasycznych reguł alertów, istnieją pewne wyjątki. Następujące reguły alertu nie będą migrowane przy użyciu narzędzia (lub podczas automatycznej migracji w 2019 września):
 
-- Klasyczne reguły alertów dotyczących metryk gościa maszyny wirtualnej (Windows i Linux). [Zobacz wskazówki na temat ponownego tworzenia tych reguł alertów w nowych alertów dotyczących metryk](#guest-metrics-on-virtual-machines)
-- Klasyczne reguły alertów dotyczących metryk klasycznego magazynu. [Zobacz wskazówki dotyczące monitorowania sieci klasycznych kont magazynu](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)
-- Klasyczne reguły alertów na niektóre metryki konta magazynu. [Poniższe szczegóły](#storage-account-metrics)
+- Klasyczne reguły alertów dotyczących metryk gościa maszyny wirtualnej (Windows i Linux). Zobacz [wskazówki dotyczące ponownego tworzenia tych reguł alertów w nowych alertów dotyczących metryk](#guest-metrics-on-virtual-machines) w dalszej części tego artykułu.
+- Klasyczne reguły alertów dotyczących metryk klasycznego magazynu. Zobacz [wskazówki dotyczące monitorowania sieci klasycznych kont magazynu](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
+- Klasyczne reguły alertów na niektóre metryki konta magazynu. Zobacz [szczegóły](#storage-account-metrics) w dalszej części tego artykułu.
 
-Jeśli Twoja subskrypcja obejmuje takie zasady klasyczne, pozostałe reguły zostaną poddane migracji, ale będzie musiał ręcznie zmigrować te reguły. Firma Microsoft nie udostępnia automatyczną migrację, wszystkie takie istniejących metryki alertów klasycznych będzie współpracował nad 2020 czerwca w celu zapewnienia czasu, należy przenieść do nowych alertów. Jednak nowe alerty klasyczne nie mogą być tworzone po czerwca 2019 r.
+Jeśli Twoja subskrypcja obejmuje takie zasady klasyczne, można migrować je ręcznie. Ponieważ firma Microsoft nie udostępnia automatyczną migrację, wszelkie istniejące, klasyczne alertów dotyczących metryk z tych typów będą nadal działać do momentu 2020 czerwca. To rozszerzenie zapewnia czasu, należy przenieść do nowych alertów. Jednak nowe alerty klasyczne nie mogą być tworzone po sierpniu 2019 r.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Metryki gościa na maszynach wirtualnych
 
-Aby można było utworzyć nowych alertów dotyczących metryk na metryki gościa, metryk gościa muszą być wysyłane do magazynu usługi Azure Monitor metryki niestandardowe. Postępuj zgodnie z poniższymi instrukcjami, aby włączyć ujścia usługi Azure Monitor w konfiguracji ustawień diagnostyki.
+Przed utworzeniem nowych alertów dotyczących metryk na metryki gościa, metryk gościa muszą być wysyłane do magazynu usługi Azure Monitor metryki niestandardowe. Wykonaj te instrukcje, aby umożliwić ujścia usługi Azure Monitor w ustawieniach diagnostycznych:
 
 - [Włączanie metryki gościa dla maszyn wirtualnych Windows](collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Włączanie metryki gościa dla maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
+- [Włączanie metryki gościa dla maszyn wirtualnych systemu Linux](collect-custom-metrics-linux-telegraf.md)
 
-Po ukończeniu powyższych kroków można tworzyć nowych alertów dotyczących metryk na metryki gościa. Gdy zostały utworzone ponownie nowych alertów dotyczących metryk, alertów klasycznych mogą zostać usunięte.
+Po te kroki są wykonywane, można utworzyć nowych alertów dotyczących metryk na metryki gościa. I po utworzeniu nowych alertów dotyczących metryk, możesz usunąć alertów klasycznych.
 
 ### <a name="storage-account-metrics"></a>Metryki konta magazynu
 
-Wszystkie alerty klasyczne dla kont magazynu można poddać migracji, z wyjątkiem tych alertów na następujących metrykach:
+Oprócz alertów dotyczących tych metryk można poddać migracji wszystkich alertów klasycznych na kontach magazynu:
 
 - PercentAuthorizationError
 - PercentClientOtherError
@@ -53,18 +56,18 @@ Wszystkie alerty klasyczne dla kont magazynu można poddać migracji, z wyjątki
 - AnonymousThrottlingError
 - SASThrottlingError
 
-Klasyczne reguły alertów dotyczących metryk procent należy zmigrować na podstawie [mapowanie między metryk magazynowania stare i nowe](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Progi należy odpowiednio można zmodyfikować zgodnie z nową metrykę, dostępne jest bezwzględna.
+Klasyczny alert zasad dotyczących metryki procent muszą być migrowane na podstawie [mapowanie między metryk magazynowania stare i nowe](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Wartości progowe, będzie konieczne odpowiednio można modyfikować, ponieważ nowy dostępnych metryk jest bezwzględna.
 
-AnonymousThrottlingError i SASThrottlingError będą musiały zostać podzielony na dwie ponieważ istnieją nowe alerty klasyczne reguł alertów jest nie połączone metrykę, która zawiera te same funkcje. Progi musi być odpowiednio dostosowane.
+Klasyczne reguły alertów na AnonymousThrottlingError i SASThrottlingError musi zostać podzielony na dwa nowe alerty, ponieważ nie istnieje żadne połączone metrykę, która zawiera te same funkcje. Progi musi być odpowiednio dostosowane.
 
-## <a name="roll-out-phases"></a>Wdrożenie fazy
+## <a name="rollout-phases"></a>Etapy wdrażania
 
-Narzędzie do migracji jest wprowadzane w fazach klientów korzystających z klasycznej reguły alertu. **Właściciele subskrypcji** zostanie wysłana wiadomość e-mail, gdy subskrypcja będzie gotowa do migracji za pomocą narzędzia.
+Narzędzie do migracji jest wprowadzane w fazach klientów korzystających z klasycznej reguły alertu. Właściciele subskrypcji otrzymają wiadomość e-mail, gdy subskrypcja będzie gotowa do migracji za pomocą narzędzia.
 
 > [!NOTE]
-> Jak narzędzie jest wdrażana w fazach w wczesnych faz, może pojawić się, że większość subskrypcji, ponieważ nie są jeszcze gotowe do migracji.
+> Ponieważ to narzędzie jest wdrażana w fazach, może pojawić się, że większość subskrypcji, ponieważ nie są jeszcze gotowe do migracji podczas wczesnych faz.
 
-Obecnie **podzbioru** subskrypcji, która **tylko** mają klasycznej reguły alertu dla zasobu następujące typy są oznaczone jako gotowe do migracji. Obsługę większej liczby typów zasobów zostanie dodana w kolejnych fazach.
+Obecnie podzbiór subskrypcji jest oznaczone jako gotowe do migracji. Podzbiór ten obejmuje te subskrypcje, które mają reguły alertów klasycznych tylko w następujących typów zasobów. Obsługę większej liczby typów zasobów zostanie dodana w kolejnych fazach.
 
 - Microsoft.apimanagement/service
 - Microsoft.batch/batchaccounts
@@ -92,24 +95,24 @@ Obecnie **podzbioru** subskrypcji, która **tylko** mają klasycznej reguły ale
 
 ## <a name="who-can-trigger-the-migration"></a>Kto może wyzwalać migracji?
 
-Każdy użytkownik mający rolę wbudowaną z **Współautor monitorowania** w subskrypcji poziomu będzie można wyzwolić migracji. Użytkownicy mający rolę niestandardową z następującymi uprawnieniami może także wyzwolić migracji:
+Każdy użytkownik mający wbudowana rola Współautor monitorowania na poziomie subskrypcji można uruchomić migracji. Użytkownicy, którzy mają rolę niestandardową z następującymi uprawnieniami może także wyzwolić migracji:
 
 - */read
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
 - Microsoft.Insights/metricAlerts/*
 
-## <a name="common-issues-and-remediations"></a>Typowe problemy i ich korygowania funkcję
+## <a name="common-problems-and-remedies"></a>Typowe problemy i środki zaradcze
 
-Po [wyzwolić migracji](alerts-using-migration-tool.md), będą używane adresy e-mail, pod warunkiem informujące o zakończeniu migracji, lub jeśli jest akcja wymaga ze strony użytkownika. W poniższej sekcji opisano niektóre typowe problemy oraz jak je skorygować
+Po zakończeniu [wyzwolić migracji](alerts-using-migration-tool.md), otrzymasz wiadomość e-mail na adresy podane informujące, że migracja została zakończona lub jeśli wymaga żadnych akcji ze strony użytkownika. W tej sekcji opisano niektóre typowe problemy i radzenia sobie z nimi.
 
 ### <a name="validation-failed"></a>Nie można sprawdzić poprawności
 
-Ze względu na pewne ostatnie zmiany klasyczne reguły alertów w ramach subskrypcji nie można zmigrować subskrypcji. Jest to problem tymczasowy. Możesz ponownie uruchomić migrację po przechodzi w stan migracji **gotowe do migracji** w ciągu kilku dni.
+Ze względu na pewne ostatnie zmiany klasyczne reguły alertów w ramach subskrypcji nie można zmigrować subskrypcji. Ten problem jest tymczasowy. Możesz ponownie uruchomić migrację po przechodzi w stan migracji **gotowe do migracji** w ciągu kilku dni.
 
-### <a name="policyscope-lock-preventing-us-from-migrating-your-rules"></a>Zakres zasad/lock uniemożliwia migracji reguł
+### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Zasad lub w zakresie blokada uniemożliwia migracji reguł
 
-W ramach migracji nowych alertów dotyczących metryk i nowych grup akcji zostaną utworzone i klasycznej reguły alertu zostaną usunięte (po utworzeniu nowych zasad). Istnieje jednak zasad lub zakres blokada uniemożliwia tworzenie zasobów. W zależności od zasad lub zakres blokady nie można migrować niektóre lub wszystkie reguły. Można rozwiązać ten problem, usuwając zasady zakresu blokowania/tymczasowo i wyzwolić próbę wykonania migracji.
+W ramach migracji można utworzyć nowych alertów dotyczących metryk i nowych grup akcji, a następnie zostaną usunięte klasycznej reguły alertu. Istnieje jednak zasad lub zakres blokada uniemożliwia tworzenie zasobów. W zależności od zasad lub zakres blokady nie można migrować niektóre lub wszystkie reguły. Ten problem można rozwiązać przez tymczasowe usunięcie blokady zakresu lub zasad i wyzwalając próbę wykonania migracji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

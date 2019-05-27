@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: f26391e36e3208996160fffad01e39ec2f182318
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a9f8066896134072665c3f5b325e033b638bf094
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130972"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001010"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Wdróż aplikację podwójnego stosu protokołu IPv6 w systemie Azure - PowerShell (wersja zapoznawcza)
 
@@ -151,7 +151,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Utwórz podstawowy moduł równoważenia obciążenia przy użyciu polecenia [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład obejmuje tworzenie publicznego podstawowego modułu równoważenia obciążenia o nazwie *myLoadBalancer* przy użyciu konfiguracji adresów IP frontonu IPv4 i IPv6, pule zaplecza, sondy kondycji, równoważenie obciążenia reguł i translatora adresów Sieciowych reguł, który został utworzony w poprzednie kroki:
+Utwórz podstawowy moduł równoważenia obciążenia przy użyciu polecenia [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład obejmuje tworzenie publicznego podstawowego modułu równoważenia obciążenia o nazwie *myLoadBalancer* za pomocą protokołów IPv4 i IPv6 adresu IP frontonu konfiguracje, pule zaplecza i reguł równoważenia obciążenia, które zostały utworzone w poprzednich krokach:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `

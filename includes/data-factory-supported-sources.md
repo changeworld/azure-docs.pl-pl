@@ -9,11 +9,11 @@ ms.date: 11/19/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: cfc977134b103cc3b601ba674c596e232aa4f167
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462406"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111725"
 ---
 |Kategoria | Magazyn danych |  
 | :-------- | :----- |  

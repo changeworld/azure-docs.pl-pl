@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 37fed781629351475b384ac843a588bdaf7b5b66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 100482496df2db1bff07a070bb82c6811208cfd4
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718166"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891312"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Łączenie programu Excel do platformy Apache Hadoop w usłudze Azure HDInsight przy użyciu sterownika Hive ODBC firmy Microsoft
 
@@ -54,7 +54,7 @@ Poniższe kroki pokazują sposób tworzenia źródła danych ODBC programu Hive.
    |  Hostami |Wprowadź &lt;Nazwa_klastra_usługi_hdinsight&gt;. azurehdinsight.net. np. myHDICluster.azurehdinsight.net. |
    |  Port |Użyj portu <strong>443</strong>. (Ten port został zmieniony z 563 na 443). |
    |  Database (Baza danych) |Użyj <strong>domyślne</strong>. |
-   |  Mechanism (Mechanizm) |Wybierz wartość <strong>Azure HDInsight Service</strong> (Usługa Azure HDInsight). |
+   |  Mechanizm |Wybierz wartość <strong>Azure HDInsight Service</strong> (Usługa Azure HDInsight). |
    |  Nazwa użytkownika |Wprowadź username użytkownika HTTP klastra HDInsight. Domyślna nazwa użytkownika to <strong>admin</strong>. |
    |  Hasło |Wprowadź hasło użytkownika klastra HDInsight. |
 
@@ -99,7 +99,7 @@ W tym artykule przedstawiono sposób użyć sterownika Hive ODBC firmy Microsoft
 
 * [Wizualizuj dane Apache Hive z usługą Microsoft Power BI w usłudze Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Wizualizuj dane Interactive Query Hive z usługą Power BI w usłudze Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Uruchamianie zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache](./../hdinsight-connect-hive-zeppelin.md).
+* [Uruchamianie zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Łączenie programu Excel do platformy Apache Hadoop za pomocą dodatku Power Query](apache-hadoop-connect-excel-power-query.md).
 * [Nawiązywanie połączenia usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
 * [Narzędzie Azure HDInsight dla programu Visual Studio Code](../hdinsight-for-vscode.md).

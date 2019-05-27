@@ -8,24 +8,25 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/02/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c15b9aa0bde704ad3665375d1c1a5bb8a1d32cf
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: HT
+ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604128"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015283"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu
 
-Utwórz serwer opartych na chmurze Notes, a następnie użyć go.  W tym przewodniku Szybki Start uruchamianie kodu w języku Python, który loguje się wartości [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie za pomocą usługi Machine Learning. 
+Nie jest wymagana instalacja.  Wprowadzenie do usługi Azure Machine Learning w chmurze przy użyciu serwera zarządzanego notesu. Jeśli chcesz zamiast tego Zainstaluj zestaw SDK środowiska Python, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu](quickstart-run-local-notebook.md).
 
-Ten przewodnik Szybki Start przedstawiono sposób tworzenia zasobu chmury w obszarze roboczym usługi Azure Machine Learning skonfigurowany ze środowiskiem Python niezbędne do uruchomienia usługi Azure Machine Learning. Aby użyć własnego środowiska, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu](quickstart-run-local-notebook.md).  
+Ten przewodnik Szybki Start pokazano, jak za pomocą [obszarze roboczym usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md) do śledzenia Twojej eksperymentów uczenia maszynowego.  Utworzysz [notesu maszyny Wirtualnej (wersja zapoznawcza)](how-to-configure-environment.md#notebookvm), bezpieczne i oparte na chmurze platformy Azure stacja robocza, która zawiera serwer notesu Jupyter, JupyterLab i w pełni przygotowany środowisku ML. Następnie należy uruchomić Notes Python na tej maszynie Wirtualnej, dziennika wartości do obszaru roboczego.
 
 W tym przewodniku Szybki start wykonasz następujące czynności:
 
-* Utwórz nowy serwer opartych na chmurze Notes w obszarze roboczym.
+* Tworzenie obszaru roboczego
+* Utwórz notes maszyny Wirtualnej w obszarze roboczym.
 * Uruchom interfejs sieci web programu Jupyter.
 * Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.
 * Uruchamianie notesu.
@@ -35,11 +36,11 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#create-a-cloud-based-notebook-server). W przeciwnym razie utworzyć teraz.
+Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#create-notebook). W przeciwnym razie utworzyć teraz.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-a-cloud-based-notebook-server"></a>Utwórz serwer opartych na chmurze notesu
+## <a name="create-notebook"></a>Tworzenie notesu maszyny Wirtualnej
 
  Z obszaru roboczego utworzysz zasób chmury, aby rozpocząć korzystanie z notesów programu Jupyter. Ten zasób zapewnia oparte na chmurze platforma, wstępnie skonfigurowane na wszystko, czego potrzebujesz, aby uruchomić usługę Azure Machine Learning.
 
@@ -59,6 +60,7 @@ Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do [następn
     ![Utwórz nową maszynę Wirtualną](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Odczekaj około 4 – 5 minut, aż stan zmieni się na **systemem**.
+
 
 ## <a name="launch-jupyter-web-interface"></a>Uruchom interfejs sieci web programu Jupyter
 
@@ -143,6 +145,7 @@ Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświet
 
 W tym przewodniku Szybki Start możesz wykonać te zadania:
 
+* Tworzenie obszaru roboczego
 * Utwórz notes maszyny Wirtualnej.
 * Uruchom interfejs sieci web programu Jupyter.
 * Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.

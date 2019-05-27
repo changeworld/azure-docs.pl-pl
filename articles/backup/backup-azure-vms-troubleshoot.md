@@ -2,23 +2,23 @@
 title: Rozwiązywanie problemów z błędami kopii zapasowych w usłudze Azure virtual machines
 description: Rozwiązywanie problemów z kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure
 services: backup
-author: srinathv
+author: srinathvasireddy
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: srinathv
-ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/22/2019
+ms.author: srinathvasireddy
+ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550026"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002310"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
-Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Backup, podając informacje przedstawione w poniższej tabeli:
+Można rozwiązać, napotkano błędy podczas używania usługi Azure Backup z informacjami o wymienionych poniżej:
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowej
 
 ### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime-kopiowania danych kopii zapasowej z magazynu przekroczyło limit czasu
 
@@ -173,7 +173,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Operacja migawki nie powiodło się z powodu błędu, aby zainstalować pakiet redystrybucyjny Visual C++ dla Visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2012_x64.<br/>Upewnij się, że wartość klucza rejestru, który umożliwia instalację usługi jest ustawiony do poprawnej wartości. Oznacza to, że ustawia **Start** wartość w **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** do **3** i nie **4**. <br><br>Jeśli nadal masz problemy z instalacją, uruchom ponownie usługę instalacji uruchamiając **MSIEXEC/unregister** następuje **MSIEXEC /REGISTER** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania (job)
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
@@ -182,7 +182,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Kopia zapasowa nie można anulować zadania, ponieważ nie jest w toku: <br>Anulowanie jest obsługiwana tylko w przypadku zadania w toku. Spróbuj anulować zadanie w toku. |Ten błąd występuje ze względu na stan przejściowy. Poczekaj chwilę i ponów próbę wykonania operacji anulowania. |
 | Nie można anulować zadania kopii zapasowej: <br>Poczekaj na zakończenie zadania. |Brak |
 
-## <a name="restore"></a>Przywracanie
+## <a name="restore"></a>Przywróć
 
 | Szczegóły błędu | Obejście |
 | --- | --- |

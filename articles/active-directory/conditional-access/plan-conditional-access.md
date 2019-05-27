@@ -13,12 +13,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4832055bffa72732991cb766ce88cc48c07530e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301420"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001192"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
 
@@ -81,7 +81,7 @@ W tym momencie jest odpowiedni moment, aby decyzję w sprawie standard nazewnict
  
 ![Standard nazewnictwa](./media/plan-conditional-access/11.png)
 
-Gdy nazwę opisową ułatwia zapewnienie Omówienie wdrożenia dostępu warunkowego, numer sekwencji jest przydatne, jeśli muszą odwoływać się do zasad w konwersacji. Na przykład jeśli administrator innymi możesz skontaktować się telefonicznie, możesz poprosić go, aby otworzyć przystawkę Zasady EM063 do rozwiązania problemu.
+Gdy nazwę opisową ułatwia zapewnienie Omówienie wdrożenia dostępu warunkowego, numer sekwencji jest przydatne, jeśli muszą odwoływać się do zasad w konwersacji. Na przykład jeśli innymi administratora możesz skontaktować się telefonicznie, możesz poprosić ich, aby otworzyć przystawkę Zasady EM063 do rozwiązania problemu.
 
 
 
@@ -131,7 +131,7 @@ Aby uprościć środowisko logowania użytkowników, można zezwolić im na Zalo
 
 Typowe przypadki użycia, aby wymagać uwierzytelniania Wieloskładnikowego są dostępu:
 
-- [Przez administratorów](baseline-protection.md#require-mfa-for-admins)
+- [Przez administratorów](howto-baseline-protect-administrators.md)
 - [Do określonych aplikacji](app-based-mfa.md) 
 - [Z lokalizacji sieciowej, nie ufasz](untrusted-networks.md).
 

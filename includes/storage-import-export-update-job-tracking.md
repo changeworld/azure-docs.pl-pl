@@ -1,20 +1,19 @@
 ---
 title: Plik dyrektywy include
 description: Plik dyrektywy include
-author: WenJason
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-origin.date: 07/17/2018
-ms.date: 12/10/2018
-ms.author: v-jay
+ms.date: 07/17/2018
+ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479081"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115406"
 ---
 Po dostawy dyski, wróć do **Import/Export** strony w witrynie Azure portal. 
 

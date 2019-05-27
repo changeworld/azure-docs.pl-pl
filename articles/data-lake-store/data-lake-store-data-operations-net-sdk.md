@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878855"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908060"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak wykonywać operacje systemu plików w Data Lake
 Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK, zobacz [operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Program Visual Studio w wersji 2013, 2015 lub 2017**. Poniższe instrukcje korzystają z programu Visual Studio 2017.
+* **Visual Studio 2013 lub nowszy**. Poniższe instrukcje korzystają z programu Visual Studio 2019 r.
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -41,19 +41,11 @@ Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania konte
 ## <a name="create-a-net-application"></a>Tworzenie aplikacji .NET
 Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) przeprowadzi Cię przez proces tworzenia plików w magazynie, łączenia plików, pobierania pliku i usuwania niektórych plików z magazynu. Ta część artykułu przeprowadzi Cię przez najważniejsze fragmenty kodu.
 
-1. Otwórz program Visual Studio i utwórz aplikację konsolową.
-2. W menu **Plik** kliknij pozycję **Nowy**, a następnie kliknij pozycję **Projekt**.
-3. W obszarze **Nowy projekt** wpisz lub wybierz następujące wartości:
+1. W programie Visual Studio, wybierz **pliku** menu **New**, a następnie **projektu**.
+2. Wybierz **Aplikacja konsoli (.NET Framework)**, a następnie wybierz pozycję **dalej**.
+3. W **Nazwa projektu**, wprowadź `CreateADLApplication`, a następnie wybierz pozycję **Utwórz**.
 
-   | Właściwość | Wartość |
-   | --- | --- |
-   | Category |Szablony/Visual C#/Windows |
-   | Szablon |Aplikacja konsolowa |
-   | Name (Nazwa) |CreateADLApplication |
-
-4. Kliknij przycisk **OK**, aby utworzyć projekt.
-
-5. Dodaj pakiety NuGet do swojego projektu.
+4. Dodaj pakiety NuGet do swojego projektu.
 
    1. Kliknij prawym przyciskiem myszy nazwę projektu w Eksploratorze rozwiązań i kliknij polecenie **Zarządzaj pakietami NuGet**.
    2. Na karcie **Menedżer pakietów NuGet** upewnij się, że **Źródło pakietów** jest ustawione na wartość **nuget.org** i że zaznaczone jest pole wyboru **Uwzględnij wersję wstępną**.
@@ -64,7 +56,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/
     
       Zamknij **Menedżera pakietów NuGet**.
 
-6. Otwórz plik **Program.cs**, usuń istniejący kod, a następnie dołącz poniższe instrukcje, aby dodać odwołania do przestrzeni nazw.
+5. Otwórz plik **Program.cs**, usuń istniejący kod, a następnie dołącz poniższe instrukcje, aby dodać odwołania do przestrzeni nazw.
 
         using System;
         using System.IO;using System.Threading;
@@ -78,7 +70,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/
         using Microsoft.Azure.DataLake.Store;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. Zadeklaruj zmienne w pokazany poniżej sposób i podaj wartości dla symboli zastępczych. Upewnij się również, że podana tutaj ścieżka lokalna i nazwa pliku istnieją na komputerze.
+6. Zadeklaruj zmienne w pokazany poniżej sposób i podaj wartości dla symboli zastępczych. Upewnij się również, że podana tutaj ścieżka lokalna i nazwa pliku istnieją na komputerze.
 
         namespace SdkSample
         {
@@ -139,7 +131,7 @@ Poniższy fragment kodu odczytuje zawartość pliku w Data Lake Storage Gen1.
         }
     }
 
-## <a name="get-file-properties"></a>Pobieranie właściwości pliku
+## <a name="get-file-properties"></a>Pobierz właściwości pliku
 Poniższy fragment kodu zwraca właściwości skojarzone z plikiem lub katalogiem.
 
     // Get file properties

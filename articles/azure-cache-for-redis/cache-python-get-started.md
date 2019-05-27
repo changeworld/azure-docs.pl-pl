@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8682a335372a1516be49b35400a2605f08d6b45e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830115"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872999"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Szybki start: korzystanie z usługi Azure Cache for Redis za pomocą języka Python
 
@@ -46,7 +46,7 @@ W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączenia 
 
 [Redis-py](https://github.com/andymccurdy/redis-py) to interfejs języka Python dla usługi Azure Cache for Redis. Użyj dostępnego w języku Python narzędzia do obsługi pakietów *pip*, aby zainstalować pakiet redis-py. 
 
-W poniższym przykładzie do zainstalowania pakietu redis-py w systemie Windows 10 użyto narzędzia *pip3* dla języka Python3, korzystając z wiersza polecenia programu Visual Studio 2017 Developer z podwyższonym poziomem uprawnień administratora.
+W poniższym przykładzie użyto *pip3* dla środowiska python3 jako zainstalować pakiet redis-py w systemie Windows 10 przy użyciu programu Visual Studio 2019 wiersz polecenia dewelopera uruchomiona z podwyższonym poziomem uprawnień administratora.
 
     pip3 install redis
 

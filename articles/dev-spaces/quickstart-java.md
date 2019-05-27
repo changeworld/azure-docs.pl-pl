@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Szybkie opracowywanie usługi Kubernetes przy użyciu kontenery, mikrousługi i języka Java na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, Java, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: f39fc0a7094941bb44fbe717879b3a2179c3be25
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800882"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979126"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Programowanie za pomocą języka Java na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
 
@@ -41,7 +41,7 @@ Musisz utworzyć klaster usługi AKS w [obsługiwany region](https://docs.micros
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie usługi Azure Dev miejsca do magazynowania w klastrze usługi AKS
@@ -122,7 +122,7 @@ Jeśli użytkownik zaprzestanie `azds up` polecenie, używając *Ctrl + c*, usł
 Aby wdrożyć zaktualizowaną wersję usługi, zaktualizuj dowolny plik w projekcie i ponownie uruchom `azds up` polecenia. Na przykład:
 
 1. Jeśli `azds up` jest nadal uruchomione, naciśnij klawisz *Ctrl + c*.
-1. Aktualizacja [wiersz 16 w `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L16) do:
+1. Aktualizacja [wiersz 19 w `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) do:
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -178,17 +178,17 @@ Kliknij przycisk *debugowania* następnie *Zatrzymaj debugowanie* zatrzymanie de
 
 Uruchom usługę, podczas debugowania przy użyciu trybu *Uruchom Program Java (AZDS, Distributed File System)*.
 
-Przejdź z powrotem do *Explorer* widoku, klikając *widoku* następnie *Explorer*. Otwórz `src/main/java/com/ms/sample/webfrontend/Application.java` i kliknij przycisk gdzieś w wierszu 16 do ważną kursor. Aby ustawić punkt przerwania trafień *F9* lub kliknij przycisk *debugowania* następnie *Przełącz punkt przerwania*.
+Przejdź z powrotem do *Explorer* widoku, klikając *widoku* następnie *Explorer*. Otwórz `src/main/java/com/ms/sample/webfrontend/Application.java` i kliknij przycisk gdzieś w wierszu 19 tam umieścić kursor. Aby ustawić punkt przerwania trafień *F9* lub kliknij przycisk *debugowania* następnie *Przełącz punkt przerwania*.
 
-Otwórz swoją usługę w przeglądarce i zwróć uwagę, że jest wyświetlany żaden komunikat. Wróć do programu Visual Studio Code i sprawdź, czy jest wyróżniony wiersz 16. Punkt przerwania, gdy ustawiasz została wstrzymana usługi w wierszu 16. Aby wznowić działanie usługi, trafienia *F5* lub kliknij przycisk *debugowania* następnie *Kontynuuj*. Wróć do przeglądarki i zwróć uwagę, że teraz jest wyświetlany komunikat.
+Otwórz swoją usługę w przeglądarce i zwróć uwagę, że jest wyświetlany żaden komunikat. Wróć do programu Visual Studio Code i sprawdź, czy jest wyróżniony wiersz 19. Punkt przerwania, gdy ustawiasz została wstrzymana usługi w wierszu 19. Aby wznowić działanie usługi, trafienia *F5* lub kliknij przycisk *debugowania* następnie *Kontynuuj*. Wróć do przeglądarki i zwróć uwagę, że teraz jest wyświetlany komunikat.
 
 Podczas uruchamiania usługi w usłudze Kubernetes załączonym debuggerze, masz pełny dostęp do debugowania informacje, takie jak stos wywołań, zmienne lokalne i informacje o wyjątku.
 
-Usuń punkt przerwania, umieszczając kursor w wierszu 16 `src/main/java/com/ms/sample/webfrontend/Application.java` TAB i naciśnięcie klawisza *F9*.
+Usuń punkt przerwania, umieszczając kursor w wierszu 19 `src/main/java/com/ms/sample/webfrontend/Application.java` TAB i naciśnięcie klawisza *F9*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizowanie kodu z programu Visual Studio Code
 
-Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 16 w `src/main/java/com/ms/sample/webfrontend/Application.java`. Na przykład:
+Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 19 w `src/main/java/com/ms/sample/webfrontend/Application.java`. Na przykład:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

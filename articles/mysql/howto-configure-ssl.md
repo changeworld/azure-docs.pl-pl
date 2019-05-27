@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: f7346d5f40e0fe7dd4dbe892e96549f7ff181cb2
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/21/2019
+ms.openlocfilehash: eb405549ba2d1c97b16f5b465abf0dc54de3b80d
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511011"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000910"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurowanie łączności SSL w aplikacji w celu bezpiecznego połączenia z usługą Azure Database for MySQL
 Usługa Azure Database for MySQL obsługuje łączenie usługi Azure Database for MySQL server z aplikacji klienckich za pomocą protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
@@ -21,6 +21,9 @@ Pobierz certyfikat umożliwia komunikację za pośrednictwem protokołu SSL za p
 **W przypadku programu Microsoft Internet Explorer i Microsoft Edge:** Po zakończeniu pobierania, Zmień nazwę certyfikatu BaltimoreCyberTrustRoot.crt.pem.
 
 ## <a name="step-2-bind-ssl"></a>Krok 2: Powiązanie SSL
+
+Określone programowania języka parametrów połączenia, można znaleźć na stronie [przykładowego kodu](howto-configure-ssl.md#sample-code) poniżej.
+
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Nawiązywanie połączenia z serwerem za pośrednictwem protokołu SSL przy użyciu aplikacji MySQL Workbench
 Skonfiguruj aplikację MySQL Workbench nawiązać bezpiecznego połączenia za pośrednictwem protokołu SSL. Z okna dialogowego Konfigurowanie nowego połączenia, przejdź do **SSL** kartę. W **pliku urzędu certyfikacji SSL:** wprowadź lokalizację plików **BaltimoreCyberTrustRoot.crt.pem**. 
 ![Zapisywanie dostosowanego kafelka](./media/howto-configure-ssl/mysql-workbench-ssl.png) dla istniejących połączeń powiązania protokołu SSL, klikając prawym przyciskiem myszy ikonę połączenia i wybierz pozycję Edytuj. Następnie przejdź do **SSL** kartę i powiąż pliku certyfikatu.
@@ -83,24 +86,44 @@ try:
 except mysql.connector.Error as err:
     print(err)
 ```
+
 ### <a name="python-pymysql"></a>Python (PyMySQL)
 ```python
 conn = pymysql.connect(user = 'myadmin@mydemoserver', 
         password = 'yourpassword', 
         database = 'quickstartdb', 
         host = 'mydemoserver.mysql.database.azure.com', 
-        ssl = {'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
+        ssl = {'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
+
+### <a name="django-pymysql"></a>Django (PyMySQL)
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'quickstartdb',
+        'USER': 'myadmin@mydemoserver',
+        'PASSWORD': 'yourpassword',
+        'HOST': 'mydemoserver.mysql.database.azure.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
+        }
+    }
+}
+```
+
 ### <a name="ruby"></a>Ruby
 ```ruby
 client = Mysql2::Client.new(
-        :host     => 'mydemoserver.mysql.database.azure.com', 
-        :username => 'myadmin@mydemoserver',      
-        :password => 'yourpassword',    
+        :host     => 'mydemoserver.mysql.database.azure.com',
+        :username => 'myadmin@mydemoserver',
+        :password => 'yourpassword',
         :database => 'quickstartdb',
         :ssl_ca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
     )
 ```
+
 ### <a name="golang"></a>Golang
 ```go
 rootCertPool := x509.NewCertPool()
@@ -113,7 +136,7 @@ var connectionString string
 connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
 db, _ := sql.Open("mysql", connectionString)
 ```
-### <a name="javajdbc"></a>JAVA(JDBC)
+### <a name="java-mysql-connector-for-java"></a>Java (łącznik programu MySQL dla języka Java)
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -140,7 +163,7 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
-### <a name="javamariadb"></a>JAVA(MariaDB)
+### <a name="java-mariadb-connector-for-java"></a>Java (MariaDB łącznik dla języka Java)
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+

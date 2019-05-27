@@ -2,20 +2,19 @@
 title: Aprowizowanie symulowanego urządzenia TPM dla usługi Azure IoT Hub przy użyciu języka C | Microsoft Docs
 description: W tym przewodniku Szybki start używane są rejestracje indywidualne. W tym przewodniku Szybki start utworzysz i aprowizujesz symulowane urządzenie TPM za pomocą zestawu SDK języka C dla usługi Azure IoT Hub Device Provisioning.
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e705ce17f0f09d341f2c650dfaccbbad60da14c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca6914967d855123c70bf746a9d68d2e045e76d9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262776"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908678"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Szybki start: Aprowizowanie symulowanego urządzenia TPM za pomocą zestawu SDK języka C usługi Azure IoT
 
@@ -35,7 +34,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program Visual Studio 2015 lub [Visual Studio 2017](https://www.visualstudio.com/vs/) z włączonym pakietem roboczym [„Programowanie aplikacji klasycznych w języku C++”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 
@@ -132,7 +131,7 @@ W tej sekcji skompilujesz i wykonasz przykładowy kod, który odczyta klucz por�
     - **Mechanizm:** Wybierz opcję **TPM** jako *Mechanizm* poświadczania tożsamości.
     - **Klucz poręczenia:** wprowadź *klucz poręczenia* wygenerowany dla urządzenia TPM, uruchamiając projekt *tpm_device_provision*.
     - **Identyfikator rejestracji:** wprowadź *identyfikator rejestracji* wygenerowany dla urządzenia TPM, uruchamiając projekt *tpm_device_provision*.
-    - **Urządzenie usługi IoT Edge:** Wybierz pozycję **Wyłącz**.
+    - **Urządzenie usługi IoT Edge:** Wybierz **wyłączyć**.
     - **Identyfikator urządzenia usługi IoT Hub:** wprowadź ciąg **test-docs-device**, aby nadać urządzeniu identyfikator.
 
       ![Wprowadzanie informacji o rejestracji urządzenia w portalu](./media/quick-create-simulated-device/enter-device-enrollment.png)  

@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7868b52fee991d4b9323fa0b7969aeca4dc83cdb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711952"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001459"
 ---
-# <a name="common-security-attributes-for-azure-storage"></a>Wspólne atrybuty zabezpieczeń dla usługi Azure Storage
+# <a name="security-attributes-for-azure-storage"></a>Atrybuty zabezpieczeń dla usługi Azure Storage
 
-Zabezpieczenia są zintegrowane w każdy aspekt usługi platformy Azure. W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure Storage. 
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w usłudze Azure Storage. 
 
 [!INCLUDE [Security Attributes Header](../../../includes/security-attributes-header.md)]
 
@@ -26,44 +26,44 @@ Zabezpieczenia są zintegrowane w każdy aspekt usługi platformy Azure. W tym a
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes |  |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Yes | Obsługa standardowych mechanizmów HTTPS/TLS.  Użytkownicy mogą także szyfrować dane przed ich wysłaniem do usługi. |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Yes | Zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak |  |
+| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Obsługa standardowych mechanizmów HTTPS/TLS.  Użytkownicy mogą także szyfrować dane przed ich wysłaniem do usługi. |
+| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND |  |
-| Wywołania interfejsu API szyfrowane| Yes |  |
+| Wywołania interfejsu API szyfrowane| Tak |  |
 
 ## <a name="network-segmentation"></a>Segmentacji sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| Yes |  |
+| Obsługa punktu końcowego usługi| Tak |  |
 | Obsługa iniekcji sieci wirtualnej| ND |  |
-| Izolacja sieci i zapory pomocy technicznej| Yes | |
+| Izolacja sieci i zapory pomocy technicznej| Tak | |
 | Obsługa tunelowania wymuszonego| ND |  |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Metryki usługi Azure Monitor dostępny teraz dzienniki począwszy od wersji zapoznawczej |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Metryki usługi Azure Monitor dostępny teraz dzienniki począwszy od wersji zapoznawczej |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Yes | Usługa Azure Active Directory, klucz współużytkowany, token dostępu współdzielonego. |
-| Autoryzacja| Yes | Obsługuje autoryzacji RBAC, listy ACL modelu POSIX i tokeny sygnatur dostępu Współdzielonego |
+| Authentication| Tak | Usługa Azure Active Directory, klucz współużytkowany, token dostępu współdzielonego. |
+| Autoryzacja| Tak | Obsługuje autoryzacji RBAC, listy ACL modelu POSIX i tokeny sygnatur dostępu Współdzielonego |
 
 
 ## <a name="audit-trail"></a>Dziennik inspekcji
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji | Yes | Dziennik aktywności platformy Azure Resource Manager |
-| Rejestrowanie płaszczyzny danych i inspekcji| Yes | Dzienniki diagnostyczne usługi i rejestrowanie usługi Azure Monitor począwszy od wersji zapoznawczej  |
+| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji | Tak | Dziennik aktywności platformy Azure Resource Manager |
+| Rejestrowanie płaszczyzny danych i inspekcji| Tak | Dzienniki diagnostyczne usługi i rejestrowanie usługi Azure Monitor począwszy od wersji zapoznawczej  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Yes | Obsługa wersji dostawcy zasobów za pośrednictwem interfejsów API usługi Azure Resource Manager |
+| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak | Obsługa wersji dostawcy zasobów za pośrednictwem interfejsów API usługi Azure Resource Manager |

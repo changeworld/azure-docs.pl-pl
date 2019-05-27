@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713966"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003131"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Omówienie usługi Service Bus, kolejki utraconych wiadomości
 
@@ -102,6 +102,17 @@ while(true)
     }
 }
 ```
+
+## <a name="path-to-the-dead-letter-queue"></a>Ścieżka do kolejki utraconych wiadomości
+Kolejki utraconych wiadomości można uzyskać dostęp, używając następującej składni:
+
+```
+<queue path>/$deadletterqueue
+<topic path>/Subscription/<subscription path>/$deadletterqueue
+```
+
+Jeśli używasz zestawu SDK .NET można uzyskać ścieżki do kolejki utraconych wiadomości przy użyciu metody SubscriptionClient.FormatDeadLetterPath(). Ta metoda przyjmuje nazwę subskrypcji/nazwę tematu i sufiksy z **/$DeadLetterQueue**.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

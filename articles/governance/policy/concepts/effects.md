@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498819"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116203"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
 
@@ -30,7 +30,7 @@ Obecnie istnieją sześć efektów, które są obsługiwane w definicji zasad:
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
-Żądania można utworzyć lub zaktualizować zasobów za pomocą usługi Azure Resource Manager są obliczane najpierw przez zasady. Zasady tworzy listę wszystkich przydziałów, stosowanie do zasobu, które ocenia następnie zasobu wobec każdej definicji. Zasady kilka efektów są przetwarzane przed przekazaniem żądania do odpowiedniego dostawcy zasobów. Uniemożliwi to niepotrzebne przetwarzania przez dostawcę zasobów, gdy zasób nie spełnia wymagań zaprojektowane nadzoru kontrolki zasad.
+Żądania można utworzyć lub zaktualizować zasobów za pomocą usługi Azure Resource Manager są obliczane najpierw przez usługę Azure Policy. Usługa Azure Policy tworzy listę wszystkich przydziałów, stosowanie do zasobu, które ocenia następnie zasobu wobec każdej definicji. Usługa Azure Policy przetwarza kilka efektów przed przekazaniem żądania do odpowiedniego dostawcy zasobów. Uniemożliwi to niepotrzebne przetwarzania przez dostawcę zasobów, gdy zasób nie spełnia wymagań kontrolki zaprojektowane zarządzania usługi Azure Policy.
 
 - **Wyłączone** jest najpierw sprawdzane w celu określenia, jeśli powinna być oceniana reguła zasad.
 - **Dołącz** jest następnie oceniany. Ponieważ Dołącz może zmienić żądania, zmiany wprowadzone przez dołączanie może uniemożliwić inspekcji lub odmówić efekt wraz z.
@@ -88,8 +88,7 @@ Przykład 2: Dwa **pól i wartości** pary do dołączenia zestawu tagów.
 }
 ```
 
-Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\*]**
-[alias](definition-structure.md#aliases) z tablicą **wartość** konfigurowania reguł adresów IP dla Konto magazynu. Gdy non -**[\*]** aliasu jest tablicą, dołącza efekt **wartość** jako macierz w całości. Jeśli tablica już istnieje, Odmów zdarzeniu z konflikt.
+Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\*]** [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu. Gdy non -**[\*]** aliasu jest tablicą, dołącza efekt **wartość** jako macierz w całości. Jeśli tablica już istnieje, Odmów zdarzeniu z konflikt.
 
 ```json
 "then": {
@@ -119,7 +118,7 @@ Przykład 4: Pojedynczy **pól i wartości** Sparuj przy użyciu **[\*]** [alias
 }
 ```
 
-## <a name="deny"></a>Zablokuj
+## <a name="deny"></a>Odrzuć
 
 Odmów używany w celu zapobiegania żądania zasobów nie jest zgodna standardów zdefiniowanych za pośrednictwem definicji zasad, która kończy się niepowodzeniem żądania.
 
@@ -149,7 +148,7 @@ Inspekcja służy do tworzenia to zdarzenie ostrzegawcze w dzienniku aktywności
 
 ### <a name="audit-evaluation"></a>Ocena inspekcji
 
-Inspekcja jest ostatni efekt sprawdzana przez zasady podczas jej tworzenia lub aktualizacji zasobu. Zasady wysyła następnie zasobu na potrzeby dostawcy zasobów. Inspekcja działa tak samo, dla żądania zasobów i cykl oceny. Dodaje zasady `Microsoft.Authorization/policies/audit/action` operacji z dziennikiem aktywności i oznaczy zasobu jako niezgodne.
+Inspekcja jest ostatni efekt sprawdzane przez usługę Azure Policy, podczas tworzenia lub aktualizacji zasobu. Usługa Azure Policy wysyła następnie zasobu na potrzeby dostawcy zasobów. Inspekcja działa tak samo, dla żądania zasobów i cykl oceny. Usługa Azure Policy dodaje `Microsoft.Authorization/policies/audit/action` operacji z dziennikiem aktywności i oznaczy zasobu jako niezgodne.
 
 ### <a name="audit-properties"></a>Właściwości inspekcji
 
@@ -171,7 +170,7 @@ AuditIfNotExists umożliwia inspekcję na zasoby, które odpowiadają **Jeśli**
 
 ### <a name="auditifnotexists-evaluation"></a>Ocena AuditIfNotExists
 
-AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji zasobu i zwrócił kod stanu powodzenia. Audyt występuje, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** nie zostało oszacowane jako prawdziwe. Dodaje zasady `Microsoft.Authorization/policies/audit/action` na działanie operacji logowania tak samo jako efekt inspekcji. Po wyzwoleniu zasób, który spełnione **Jeśli** warunek jest zasobem, który jest oznaczony jako niezgodne.
+AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji zasobu i zwrócił kod stanu powodzenia. Audyt występuje, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** nie zostało oszacowane jako prawdziwe. Usługa Azure Policy dodaje `Microsoft.Authorization/policies/audit/action` na działanie operacji logowania tak samo jako efekt inspekcji. Po wyzwoleniu zasób, który spełnione **Jeśli** warunek jest zasobem, który jest oznaczony jako niezgodne.
 
 ### <a name="auditifnotexists-properties"></a>Właściwości AuditIfNotExists
 
@@ -300,7 +299,7 @@ Przykład: Oblicza baz danych SQL Server w celu ustalenia, czy włączono transp
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
         "roleDefinitionIds": [
-            "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
         ],
         "existenceCondition": {
@@ -369,9 +368,9 @@ Każdego przydziału jest szacowana osobno. Jako takie nie ma szansę zasobu do 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [struktura definicji zasad](definition-structure.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md)
-- Dowiedz się, jak [uzyskać dane na temat zgodności](../how-to/getting-compliance-data.md)
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](definition-structure.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md).
+- Dowiedz się, jak [Pobierz dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

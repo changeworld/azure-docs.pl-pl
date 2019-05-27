@@ -4,15 +4,15 @@ description: W tym artykule opisano transakcji bazy danych i mechanizmu kontroli
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889359"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978984"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transakcje i optymistyczna kontrola współbieżności
 
@@ -22,22 +22,22 @@ Aparat bazy danych Azure Cosmos DB obsługuje pełne zgodne transakcje ACID (nie
 
 | **Operacja**  | **Typ operacji** | **Jednego lub wielu elementów** |
 |---------|---------|---------|
-| Wstaw (bez wyzwalacz pre lub używanego po nim) | Zapisywanie | Pojedynczy element transakcji |
+| Wstaw (bez wyzwalacz pre lub używanego po nim) | Zapis | Pojedynczy element transakcji |
 | Wstaw (z wyzwalaczem pre lub używanego po nim) | Zapisu i odczytu | Transakcji wielu elementów |
-| Zastąp (bez wyzwalacz pre lub używanego po nim) | Zapisywanie | Pojedynczy element transakcji |
+| Zastąp (bez wyzwalacz pre lub używanego po nim) | Zapis | Pojedynczy element transakcji |
 | Zamień (wyzwalacz pre lub używanego po nim) | Zapisu i odczytu | Transakcji wielu elementów |
-| UPSERT (bez wyzwalacz pre lub używanego po nim) | Zapisywanie | Pojedynczy element transakcji |
+| UPSERT (bez wyzwalacz pre lub używanego po nim) | Zapis | Pojedynczy element transakcji |
 | UPSERT (z wyzwalaczem pre lub używanego po nim) | Zapisu i odczytu | Transakcji wielu elementów |
-| Usuń (bez wyzwalacz pre lub używanego po nim) | Zapisywanie | Pojedynczy element transakcji |
+| Usuń (bez wyzwalacz pre lub używanego po nim) | Zapis | Pojedynczy element transakcji |
 | Usuń (z wyzwalaczem pre lub używanego po nim) | Zapisu i odczytu | Transakcji wielu elementów |
 | Wykonaj procedurę składowaną | Zapisu i odczytu | Transakcji wielu elementów |
-| System zainicjowane wykonywania procedury scalania | Zapisywanie | Transakcji wielu elementów |
-| System zainicjowane wykonywania usuwania elementów w oparciu o wygaśnięcia (TTL) elementu | Zapisywanie | Transakcji wielu elementów |
-| Odczyt | Odczyt | Pojedynczą pozycją transakcji |
-| Zestawienie zmian | Odczyt | Transakcji wielu elementów |
-| Odczyt z podziałem na strony | Odczyt | Transakcji wielu elementów |
-| Zapytanie z podziałem na strony | Odczyt | Transakcji wielu elementów |
-| Wykonanie funkcji zdefiniowanej przez użytkownika jako część zapytania z podziałem na strony | Odczyt | Transakcji wielu elementów |
+| System zainicjowane wykonywania procedury scalania | Zapis | Transakcji wielu elementów |
+| System zainicjowane wykonywania usuwania elementów w oparciu o wygaśnięcia (TTL) elementu | Zapis | Transakcji wielu elementów |
+| Odczytaj | Odczytaj | Pojedynczą pozycją transakcji |
+| Zestawienie zmian | Odczytaj | Transakcji wielu elementów |
+| Odczyt z podziałem na strony | Odczytaj | Transakcji wielu elementów |
+| Zapytanie z podziałem na strony | Odczytaj | Transakcji wielu elementów |
+| Wykonanie funkcji zdefiniowanej przez użytkownika jako część zapytania z podziałem na strony | Odczytaj | Transakcji wielu elementów |
 
 ## <a name="multi-item-transactions"></a>Transakcje wielu elementów
 

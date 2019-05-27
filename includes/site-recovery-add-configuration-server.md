@@ -10,16 +10,16 @@ ms.date: 02/28/2019
 ms.author: mayg
 ms.custom: include file
 ms.openlocfilehash: 7c682105113dac7c1d457489cf926210ead77993
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57343563"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115996"
 ---
 1. Uruchom plik instalacyjny ujednoliconego instalatora.
 2. W **przed rozpoczęciem**, wybierz opcję **Zainstaluj serwer konfiguracji i serwer przetwarzania**.
 
-    ![Przed rozpoczęciem](./media/site-recovery-add-configuration-server/combined-wiz1.png)
+    ![Zanim rozpoczniesz](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 
 3. W obszarze **Licencja na oprogramowanie innej firmy** kliknij pozycję **Akceptuję**, aby pobrać i zainstalować program MySQL.
 

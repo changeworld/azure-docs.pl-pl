@@ -5,23 +5,23 @@ services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: dadobali
+ms.author: jmprieur
+ms.reviwer: brandwe
 ms.custom: include file
-ms.openlocfilehash: 9782c6c2024c5cf490f207bb12a214c93a53b813
-ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
+ms.openlocfilehash: a4b0c2e2d7732c6d2a4f57411731f7145cf3e73e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951352"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967661"
 ---
-## <a name="register-your-application"></a>Rejestrowanie aplikacji
+## <a name="register-your-application"></a>Zarejestruj swoją aplikację
 
 Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 

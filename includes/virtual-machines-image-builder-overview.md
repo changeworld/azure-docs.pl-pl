@@ -6,11 +6,11 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416337"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111455"
 ---
 Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
  

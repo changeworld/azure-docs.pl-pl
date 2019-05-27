@@ -2,20 +2,20 @@
 title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse — VSTS | Microsoft Docs
 description: Tworzenie zapytań względem usługi SQL Data Warehouse przy użyciu programu Visual Studio.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 564a30767f650e4ead025acb22e518eb0da55bd4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6aa707d3c63b7ead6db94f84ebd9214302cc7367
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476425"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873724"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Nawiązywanie połączenia z usługą SQL Data Warehouse przy użyciu programu Visual Studio i narzędzi SSDT
 > [!div class="op_single_selector"]

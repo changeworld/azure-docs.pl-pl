@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 4471c9d5b6c09bcf4d9100cccfa725f36cf9a3f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045086"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111235"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus przy użyciu szablonu usługi Azure Resource Manager
 W tym przewodniku Szybki Start utworzysz szablonu usługi Azure Resource Manager, który tworzy przestrzeń nazw usługi Service Bus typu **komunikatów** z **standardowa** jednostki SKU. Artykuł definiuje również parametry, które są określone dla wykonywania wdrożenia. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb. Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Azure Resource Manager][Authoring Azure Resource Manager templates]. Aby uzyskać kompletny szablon, zobacz [szablon przestrzeni nazw usługi Service Bus] [ Service Bus namespace template] w witrynie GitHub.

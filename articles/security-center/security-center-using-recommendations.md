@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/26/2019
-ms.author: monhaber
-ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703462"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967972"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Usługa Azure Security Center zaleceń, aby zwiększyć poziom bezpieczeństwa
 Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczących, dostarczone przez usługę Azure Security Center może zmniejszyć prawdopodobieństwo zdarzeń zabezpieczeń. W tym artykule przedstawiono sposób używania zasad zabezpieczeń i zalecenia w usłudze Security Center, aby ułatwić uniknięcie atak na zabezpieczenia. 

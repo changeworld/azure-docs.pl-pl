@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501960"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002478"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -49,7 +49,7 @@ Zaleca się użyć oddzielnego konta usługi Automation dla rozwiązania urucham
 
 ### <a name="permissions-needed-to-deploy"></a>Uprawnienia wymagane do wdrożenia
 
-Istnieją pewne uprawnienia, które użytkownik musi mieć wdrażania uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania. Te uprawnienia są różne, jeśli przy użyciu wstępnie utworzonego obszaru roboczego konto usługi Automation i Log Analytics lub tworzenie nowych plików podczas wdrażania.
+Istnieją pewne uprawnienia, które użytkownik musi mieć wdrażania uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania. Te uprawnienia są różne, jeśli przy użyciu wstępnie utworzonego obszaru roboczego konto usługi Automation i Log Analytics lub tworzenie nowych plików podczas wdrażania. Jeśli jesteś współautorem subskrypcji a administratorem globalnym w swojej dzierżawie usługi Azure Active Directory, nie musisz skonfigurować następujące uprawnienia. Jeśli nie ma tych uprawnień lub należy skonfigurować rolę niestandardową, zobacz uprawnień wymaganych poniżej.
 
 #### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Konto istniejące konto usługi Automation i Log Analytics
 
@@ -79,41 +79,21 @@ Aby wdrożyć uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwią
 
 Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami poza godzinami pracy wdrażania rozwiązania do nowego konta usługi Automation i Log Analytics obszaru roboczego użytkownika wdrażania rozwiązania wymaga uprawnienia określone w poprzedniej sekcji, a także następujące uprawnienia:
 
-- Administrator współpracujący dla subskrypcji — jest to niezbędne do tworzenia klasycznego konta Uruchom jako
-- Być częścią **Deweloper aplikacji** roli. Aby uzyskać więcej informacji na temat konfigurowania konta Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
+- Administrator współpracujący dla subskrypcji — to tylko potrzebne do utworzenia klasycznego konta Uruchom jako
+- Być częścią [usługi Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **Deweloper aplikacji** roli. Aby uzyskać więcej informacji na temat konfigurowania konta Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
+- Współautorem subskrypcji lub następujące uprawnienia.
 
 | Uprawnienie |Scope|
 | --- | --- |
+| Microsoft.Authorization/Operations/read | Subskrypcja|
+| Microsoft.Authorization/permissions/read |Subskrypcja|
 | Microsoft.Authorization/roleAssignments/read | Subskrypcja |
 | Microsoft.Authorization/roleAssignments/write | Subskrypcja |
+| Microsoft.Authorization/roleAssignments/delete | Subskrypcja |
 | Microsoft.Automation/automationAccounts/connections/read | Grupa zasobów |
 | Microsoft.Automation/automationAccounts/certificates/read | Grupa zasobów |
 | Microsoft.Automation/automationAccounts/write | Grupa zasobów |
 | Microsoft.OperationalInsights/workspaces/write | Grupa zasobów |
-
-### <a name="region-mappings"></a>Mapowanie regionów
-
-Podczas włączania uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu, tylko w określonych regionach są obsługiwane w przypadku łączenia z obszarem roboczym usługi Log Analytics i konto usługi Automation.
-
-W poniższej tabeli przedstawiono obsługiwane mapowania:
-
-|**Regionu obszaru roboczego usługi log Analytics**|**Region usługi Azure Automation**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP i EastUS mapowania obszarów roboczych usługi Log Analytics do kont usługi Automation nie są dokładnie mapowania regionu, ale poprawna mapowania.
-
-<sup>2</sup> ze względu na ograniczenia wydajności region nie jest dostępna podczas tworzenia nowych zasobów. Obejmuje to obszary robocze kont usługi Automation i Log Analytics. Jednak istniejących połączonych zasobów w regionie powinny nadal działać.
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
@@ -140,6 +120,11 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
    - Aby uzyskać **grupy zasobów**, można utworzyć nową grupę zasobów lub wybrać istniejącą grupę.
    - Wybierz **lokalizację**. Obecnie jedynymi dostępnymi lokalizacjami są **Australia południowo-wschodnia**, **Kanada Środkowa**, **Indie środkowe**, **wschodnie stany USA**, **Japonia, część wschodnia**, **Azja południowo-wschodnia**, **Południowe Zjednoczone Królestwo**, **Europa Zachodnia**, i **zachodnie stany USA 2**.
    - Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczne)** opcji. Dzienniki platformy Azure Monitor został zaktualizowany [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwie na GB jest jedyną opcją.
+
+   > [!NOTE]
+   > W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
+   >
+   > Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
 
 5. Po podaniu wymaganych informacji w **obszaru roboczego usługi Log Analytics** kliknij **Utwórz**. Możesz śledzić postęp w sekcji **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
 6. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, możesz utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim lub wybierz istniejące konto usługi Automation, która nie jest już połączona z obszarem roboczym usługi Log Analytics. Wybierz istniejące konto usługi Automation, lub kliknij przycisk **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
@@ -433,7 +418,9 @@ Jeśli zdecydujesz, że nie jest już konieczne korzystanie z odpowiedniego rozw
 
 Aby usunąć rozwiązanie, wykonaj następujące czynności:
 
-1. Z poziomu konta usługi Automation wybierz **obszaru roboczego** z lewej strony.
+1. Na koncie usługi Automation w ramach **powiązane zasoby**, wybierz opcję **połączony obszar roboczy**.
+1. Wybierz **przejdź do obszaru roboczego**.
+1. W obszarze **ogólne**, wybierz opcję **rozwiązania**. 
 1. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]**. Na **VMManagementSolution [obszar roboczy]** stronę z menu, wybierz opcję **Usuń**.<br><br> ![Usuń rozwiązanie Mgmt maszyny Wirtualnej](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. W **Usuń rozwiązanie** okna, upewnij się, że chcesz usunąć rozwiązanie.
 1. Podczas weryfikowania informacji i rozwiązanie zostanie usunięty, możesz śledzić postęp w sekcji **powiadomienia** z menu. Nastąpi powrót do **rozwiązania** strony po rozpoczęciu procesu, aby usunąć rozwiązania.

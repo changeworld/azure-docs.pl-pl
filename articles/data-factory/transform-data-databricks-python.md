@@ -3,21 +3,21 @@ title: Przekształcanie danych za pomocą języka Python usługi Databricks — 
 description: Dowiedz się sposób przetwarzania lub przekształcać dane, uruchamiając Python usługi Databricks.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 60aafd983d1c21777276683a8685376a247d11f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: gauravmalhot
+ms.author: gamal
+ms.reviewer: maghan
+manager: craigg
+ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589205"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002847"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania języka Python w usłudze Azure Databricks
 
@@ -64,11 +64,11 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
 
 |Właściwość|Opis|Wymagane|
 |---|---|---|
-|name|Nazwa działania w potoku.|Yes|
+|name|Nazwa działania w potoku.|Tak|
 |description|Tekst opisujący, co działanie robi.|Nie|
-|type|W przypadku działania języka Python usługi Databricks typ działania jest DatabricksSparkPython.|Yes|
-|linkedServiceName|Nazwa połączonej usługi, na którym działa działania języka Python usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
-|pythonFile|Identyfikator URI pliku Python, do wykonania. Obsługiwane są tylko DBFS ścieżki.|Yes|
+|typ|W przypadku działania języka Python usługi Databricks typ działania jest DatabricksSparkPython.|Tak|
+|linkedServiceName|Nazwa połączonej usługi, na którym działa działania języka Python usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Tak|
+|pythonFile|Identyfikator URI pliku Python, do wykonania. Obsługiwane są tylko DBFS ścieżki.|Tak|
 |parameters|Parametry wiersza polecenia, które zostaną przekazane do pliku języka Python. Jest to tablica ciągów.|Nie|
 |Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica < string, object >|Nie|
 

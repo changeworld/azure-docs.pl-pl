@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
 ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66110272"
 ---
 # <a name="service-fabric-networking-patterns"></a>Wzorce sieci usługi Service Fabric
 Klaster usługi Azure Service Fabric można zintegrować z inne funkcje sieci platformy Azure. W tym artykule pokazujemy, jak tworzyć klastry, korzystających z następujących funkcji:

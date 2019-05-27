@@ -45,6 +45,8 @@
           href: publish-portal.md
         - name: Używanie wpisu tajnego z usługi Key Vault
           href: key-vault-access.md
+        - name: Wdrażanie za pomocą tożsamości zarządzanej
+          href: publish-managed-identity.md
     - name: Klienci
       items:
         - name: Monitorowanie aplikacji zarządzanych

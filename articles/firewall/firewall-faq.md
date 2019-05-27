@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 5/3/2019
 ms.author: victorh
-ms.openlocfilehash: 4c4a6776e3bb56026a48963ec83fe582380c68d0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145960"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016017"
 ---
 # <a name="azure-firewall-faq"></a>Zaporę platformy Azure — często zadawane pytania
 
@@ -25,7 +25,7 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 * Zapora stanowa jako usługa
 * Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
 * Filtrowanie według nazw FQDN
-* Tagi w pełni kwalifikowanych nazw domen
+* Tagi nazw FQDN
 * Reguły filtrowania ruchu sieciowego
 * Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 * Obsługa technologii DNAT dla ruchu przychodzącego
@@ -87,7 +87,7 @@ Można użyć programu Azure PowerShell *deallocate* i *przydzielić* metody.
 Na przykład:
 
 ```azurepowershell
-# Stop an exisitng firewall
+# Stop an existing firewall
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
