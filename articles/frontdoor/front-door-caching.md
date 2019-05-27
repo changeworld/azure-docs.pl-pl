@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306142"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962918"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Buforowanie przy użyciu usługi Azure drzwi
 Poniższy dokument określa zachowanie drzwiami frontowymi za pomocą reguł routingu, które mają włączone buforowanie.
@@ -101,7 +101,7 @@ Powoduje usunięcie pamięci podręcznej, na wejściu jest rozróżniana wielko�
 ## <a name="cache-expiration"></a>Wygaśnięcia pamięci podręcznej
 Kolejność następujące nagłówki jest używana w celu określenia, jak długo element będzie przechowywane w naszych pamięci podręcznej:</br>
 1. Cache-Control: s-maxage =\<sekund >
-2. Cache-Control: maxage =\<sekund >
+2. Cache-Control: max-age=\<seconds>
 3. Wygasa: \<Data http >
 
 Nagłówki Cache-Control odpowiedzi, które wskazują, że odpowiedzi nie będą buforowane takich jak Cache-Control: Cache-Control prywatne: nie pamięci podręcznej i Cache-Control: nie-store są uznawane. Jednak w przypadku wielu żądań locie przez usługę POP dla tego samego adresu URL, może udostępniać odpowiedzi. Jeżeli Cache-Control ma domyślne zachowanie jest AFD będzie buforowania przez zasób dla X czas, gdzie X jest pobierana losowo od 1 do 3 dni.

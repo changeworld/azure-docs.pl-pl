@@ -14,11 +14,11 @@ ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122719"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie potoków i zarządzanie nimi usługi Azure Data Factory przy użyciu witryny Azure portal i programu PowerShell
 > [!div class="op_single_selector"]
@@ -107,10 +107,10 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 <td>ActivityResume</td><td>Działanie jest wstrzymane i nie może uruchamiać wycinków, dopóki nie zostanie wznowione działanie.</td>
 </tr>
 <tr>
-<td>Ponawianie próby</td><td>Ponawiane wykonywania działania.</td>
+<td>Spróbuj ponownie</td><td>Ponawiane wykonywania działania.</td>
 </tr>
 <tr>
-<td>Walidacja</td><td>Weryfikacja jeszcze się nie rozpoczął.</td>
+<td>Weryfikacja</td><td>Weryfikacja jeszcze się nie rozpoczął.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Walidacja Trwa oczekiwanie na ponowienie próby.</td>
@@ -123,18 +123,18 @@ Wycinków zestawu danych w usłudze data factory może mieć jedną z następuj�
 <td>Wycinek jest przetwarzany.</td>
 </tr>
 <tr>
-<td rowspan="4">Niepowodzenie</td><td>Przekroczono limit czasu</td><td>Wykonanie działanie trwało dłużej niż dozwolona przez działanie.</td>
+<td rowspan="4">Błąd</td><td>Przekroczono limit czasu</td><td>Wykonanie działanie trwało dłużej niż dozwolona przez działanie.</td>
 </tr>
 <tr>
-<td>Anulowane</td><td>Wycinek została anulowana przez użytkownika akcji.</td>
+<td>Anulowano</td><td>Wycinek została anulowana przez użytkownika akcji.</td>
 </tr>
 <tr>
-<td>Walidacja</td><td>Weryfikacja nie powiodła się.</td>
+<td>Weryfikacja</td><td>Weryfikacja nie powiodła się.</td>
 </tr>
 <tr>
 <td>-</td><td>Wycinek nie powiodło się wygenerowany i/lub zweryfikować.</td>
 </tr>
-<td>Gotowy</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
+<td>Gotowe</td><td>-</td><td>Wycinek jest gotowy do użycia.</td>
 </tr>
 <tr>
 <td>Pominięte</td><td>Brak</td><td>Wycinek nie jest przetwarzany.</td>

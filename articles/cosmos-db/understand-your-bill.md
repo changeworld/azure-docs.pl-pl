@@ -4,15 +4,15 @@ description: W tym artykule wyjaśniono, jak informacje o rachunku Azure Cosmos 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d3bfe1b54409fd57f7535bac2362dc7040975061
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115541"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965663"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Informacje o rachunku Azure Cosmos DB
 
@@ -213,8 +213,8 @@ Rozważmy inny przykład, w którym ma być aktywnie Szacowanie wysokości rachu
 |**Koszt przepływności** | | | |
 |----|----|----|----|
 |Typ operacji| Żądań na sekundę| Średni RU/request| Wymagane (RUS)|
-|Zapisywanie| 100 | 5 | 500|
-|Odczyt| 400| 1| 400|
+|Zapis| 100 | 5 | 500|
+|Odczytaj| 400| 1| 400|
 
 Łączna liczba jednostek RU na sekundę: 500 + 400 = 900 koszt na godzinę: 900/100 * $0.008 = $0.072 oczekiwany koszt miesięczny przepływności (przy założeniu 31 dni): $0.072 * 24 * 31 = 53.57 $
 
@@ -238,7 +238,7 @@ Pojemność na platformie Azure Cosmos DB zastrzeżone umożliwia zakup przepły
 |----|----|----|----|----|
 |Wschodnie stany USA|$0.008 |50 K|$4|$2,880 |
 |Japonia Wschodnia|$0.009 |50 K| $4.50 |$3,240 |
-|Łącznie|||$8.50|$6,120 |
+|Łączna|||$8.50|$6,120 |
 
 Zastanówmy się, że zakupiono rezerwowanie pojemności zamiast tego. Możesz kupić rezerwowanie pojemności dla 100 tysięcy jednostek RU na sekundę w cenie 56,064 $ przez jeden rok (20% rabatem) lub 6.40 $ / godz. Zobacz cennik rezerwowanie pojemności [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/)).  
 
