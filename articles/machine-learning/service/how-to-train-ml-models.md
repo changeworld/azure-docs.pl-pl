@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818496"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153614"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Szkolenie modeli przy użyciu usługi Azure Machine Learning przy użyciu narzędzie do szacowania
 
@@ -26,7 +26,7 @@ Ułatwiające głębokiego uczenia szkoleń modelowych Azure Machine Learning ze
 
 ## <a name="train-with-an-estimator"></a>Szkolenie przy użyciu narzędzie do szacowania
 
-Po utworzeniu usługi [obszaru roboczego](concept-azure-machine-learning-architecture.md#workspace) i skonfiguruj swoje [środowisko programistyczne](how-to-configure-environment.md), uczenia modelu w usłudze Azure Machine Learning obejmuje następujące czynności:  
+Po utworzeniu usługi [obszaru roboczego](concept-workspace.md) i skonfiguruj swoje [środowisko programistyczne](how-to-configure-environment.md), uczenia modelu w usłudze Azure Machine Learning obejmuje następujące czynności:  
 1. Tworzenie [zdalnego obliczeniowych elementów docelowych](how-to-set-up-training-targets.md) (Uwaga komputerze lokalnym można również użyć jako cel obliczenia)
 2. Przekaż swoje [dane szkoleniowe](how-to-access-data.md) magazynem danych (opcjonalnie)
 3. Utwórz swoje [skrypt szkoleniowy](tutorial-train-models-with-aml.md#create-a-training-script)
@@ -119,6 +119,10 @@ Na koniec można przesłać zadania szkolenia:
 run = experiment.submit(estimator)
 print(run.get_portal_url())
 ```
+
+## <a name="github-tracking-and-integration"></a>Śledzenie usługi GitHub i integracja
+
+Po rozpoczęciu szkolenia, gdzie katalog źródłowy jest w nim program lokalnego repozytorium Git, informacje o repozytorium znajduje się w historii uruchamiania. Na przykład identyfikator bieżącego zatwierdzenia w repozytorium jest rejestrowany jako część historii.
 
 ## <a name="examples"></a>Przykłady
 Aby uzyskać Notes, która przedstawia podstawy wzorca narzędzie do szacowania zobacz:

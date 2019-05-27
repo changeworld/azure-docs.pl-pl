@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66166039"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalowanie programu Elastic Stack na maszynie wirtualnej platformy Azure
 
@@ -49,7 +49,7 @@ Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup*
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). 
 
@@ -234,7 +234,7 @@ Wybierz pozycję **Discover** (Odnajdywanie) w konsoli Kibana, aby wyszukiwać, 
 
 ![Przeglądanie zdarzeń dziennika systemu w programie w Kibana](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku został wdrożony program Elastic Stack na deweloperskiej maszynie wirtualnej na platformie Azure. W tym samouczku omówiono:
 

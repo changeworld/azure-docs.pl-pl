@@ -9,11 +9,11 @@ ms.date: 12/20/2018
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: 7e4760990229433b2ea40fadd0d17de0b52fcb36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534113"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162159"
 ---
 W poniższej tabeli opisano role, które są dostępne w reprezentacji urządzeń cyfrowych platformy Azure:
 

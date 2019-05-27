@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66147975"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
 Ten artykuł pomaga Ci rozpocząć pracę, wykonując kilka akcji, które zmaksymalizować korzyści, jakie oferuje usługa Azure Security Center. Wykonanie tych akcji umożliwia wgląd na wszystkich subskrypcji platformy Azure, które są połączone z dzierżawą usługi Azure Active Directory i skutecznie zarządzać poziom bezpieczeństwa w organizacji na dużą skalę, stosując zasady zabezpieczeń w wielu Subskrypcje w sposób aggregative.

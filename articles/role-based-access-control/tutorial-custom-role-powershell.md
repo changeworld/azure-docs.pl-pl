@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66158858"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Samouczek: Tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu programu Azure PowerShell
 
@@ -274,7 +274,7 @@ Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON lub użyj obiekt
 
 1. Gdy zostanie wyświetlony monit o potwierdzenie, wpisz **Y** (T).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell](custom-roles-powershell.md)

@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 1897193f0ae781029a7303c42ca8eeaa51389892
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920580"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142717"
 ---
 # <a name="refresh-with-azure-automation"></a>Odświeżanie za pomocą usługi Azure Automation
 
@@ -73,7 +73,7 @@ Możesz utworzyć jednostkę usługi, musi mieć uprawnienia administratora serw
 
     ![Importowanie elementu Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. Po utworzeniu elementu Runbook, zostanie automatycznie przejść do trybu edycji.  Wybierz pozycję **Publikuj**.
+5. Po utworzeniu elementu Runbook, zostanie automatycznie przejść do trybu edycji.  Wybierz **publikowania**.
 
     ![Publikowanie elementu Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -148,7 +148,7 @@ Aby korzystać z elementu runbook za pomocą usługi Azure Data Factory, należy
 |Właściwość  |Wartość  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Nazwa bazy danych usług Azure Analysis Services <br/> Przykład: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Nazwa serwera usług Azure Analysis Services. <br/> Przykład: https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |Nazwa serwera usług Azure Analysis Services. <br/> Przykład: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Typ odświeżania do wykonania. <br/> Przykład: Pełne         |
 
 Przykład treść kodu JSON:

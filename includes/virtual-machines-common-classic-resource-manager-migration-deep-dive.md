@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125366"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66167088"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrację zasobów IaaS od modelu wdrażania klasycznego do usługi Azure Resource Manager
 Po pierwsze należy zrozumieć różnicę między operacjami płaszczyzny danych i płaszczyzny zarządzania w infrastrukturze jako zasoby usługi (IaaS).
@@ -45,7 +45,7 @@ Przepływ pracy migracji jest następujący:
 >
 >
 
-### <a name="validate"></a>Walidacja
+### <a name="validate"></a>Weryfikuj
 Operacja walidacji to pierwszy krok w procesie migracji. Celem tego kroku jest analizowanie stanu zasobów, które chcesz migrować w klasycznym modelu wdrażania. Operacja ocenia, czy zasoby są w stanie migracji (powodzenie lub niepowodzenie).
 
 Wybierz sieć wirtualną lub usługę w chmurze (Jeśli nie jest w sieci wirtualnej), który ma zostać zwalidowana pod kątem migracji. Jeśli zasób nie jest zdolny do migracji, Azure zawiera listę powodów dlaczego.
@@ -107,7 +107,7 @@ Istnieje nie okno Ustaw czas, przed którym należy zatwierdzić migrację. Ten 
 
 Jeśli napotkasz jakiekolwiek problemy, zawsze możesz przerwać migrację i wrócić do klasycznego modelu wdrażania. Po powrocie platforma Azure otworzy operacje płaszczyzny zarządzania dla zasobów, dzięki czemu można wznowienie zwykłych operacji dla tych maszyn wirtualnych w klasycznym modelu wdrażania.
 
-### <a name="abort"></a>Przerwanie
+### <a name="abort"></a>Przerwij
 Jest to krok opcjonalny, jeśli chcesz cofnąć zmiany do klasycznego modelu wdrażania oraz zatrzymania migracji. Ta operacja usuwa metadanych Menedżera zasobów (utworzonym w kroku) dla zasobów. 
 
 ![Diagramu kroków przerwania](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
@@ -117,7 +117,7 @@ Jest to krok opcjonalny, jeśli chcesz cofnąć zmiany do klasycznego modelu wdr
 > Nie można wykonać tej operacji po wyzwoleniu operacji zatwierdzenia.     
 >
 
-### <a name="commit"></a>Zatwierdzenie
+### <a name="commit"></a>Zatwierdź
 Po zakończeniu walidacji możesz zatwierdzić migrację. Zasoby nie będą już w klasycznym modelu wdrażania i są dostępne tylko w modelu wdrażania usługi Resource Manager. Zmigrowanymi zasobami można zarządzać tylko w nowym portalu.
 
 > [!NOTE]
@@ -153,7 +153,7 @@ Reprezentacje Menedżera zasobów, zasobów i klasycznego modelu wdrażania moż
 | Sieć wirtualna |Sieć wirtualna |Sieć wirtualna jest migrowana razem ze wszystkimi właściwościami do modelu wdrażania usługi Resource Manager. Nowa grupa zasobów jest tworzona za pomocą sufiksu `-migrated`. |
 | Zastrzeżone adresy IP |Publiczny adres IP z przydziałem statycznym |Zastrzeżone adresy IP skojarzone z modułem równoważenia obciążenia są migrowane w ramach migrowania usługi w chmurze lub maszyny wirtualnej. Migracja nieskojarzonego zastrzeżonego adresu IP nie jest obecnie obsługiwana. |
 | Publiczny adres IP dla maszyny wirtualnej |Publiczny adres IP z przydziałem dynamicznym |Publiczny adres IP skojarzony z maszyną wirtualną jest konwertowany na zasób publicznego adresu IP z przydziałem statycznym. |
-| Sieciowe grupy zabezpieczeń |Sieciowe grupy zabezpieczeń |Sieciowa grupa zabezpieczeń skojarzona z podsiecią jest klonowana w ramach migracji do modelu wdrażania usługi Resource Manager. Sieciowa grupa zabezpieczeń w klasycznym modelu wdrażania nie jest usuwana podczas migracji. Jednak operacje płaszczyzny zarządzania dla sieciowej grupy zabezpieczeń są zablokowane, gdy trwa migracja. |
+| Sieciowe grupy zabezpieczeń |sieciowych grup zabezpieczeń |Sieciowa grupa zabezpieczeń skojarzona z podsiecią jest klonowana w ramach migracji do modelu wdrażania usługi Resource Manager. Sieciowa grupa zabezpieczeń w klasycznym modelu wdrażania nie jest usuwana podczas migracji. Jednak operacje płaszczyzny zarządzania dla sieciowej grupy zabezpieczeń są zablokowane, gdy trwa migracja. |
 | Serwery DNS |Serwery DNS |Serwery DNS skojarzone z siecią wirtualną lub maszyną wirtualną są migrowane w ramach migracji odpowiadających zasobów razem ze wszystkimi właściwościami. |
 | Trasy zdefiniowane przez użytkownika |Trasy zdefiniowane przez użytkownika |Trasy zdefiniowane przez użytkownika skojarzone z podsiecią są klonowane w ramach migracji do modelu wdrażania usługi Resource Manager. Trasy zdefiniowane przez użytkownika w klasycznym modelu wdrażania nie są usuwane podczas migracji. Operacje płaszczyzny zarządzania dla tras zdefiniowanych przez użytkownika są zablokowane, gdy trwa migracja. |
 | Właściwość przekazywania adresu IP w konfiguracji sieci maszyny wirtualnej |Właściwość przekazywania adresu IP dla karty sieciowej |Właściwość przekazywania adresu IP na maszynie wirtualnej jest konwertowana na właściwość interfejsu sieciowego podczas migracji. |

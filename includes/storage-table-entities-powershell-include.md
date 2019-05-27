@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541387"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159767"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
@@ -70,9 +70,9 @@ Get-AzTableRow -table $cloudTable | ft
 
 To polecenie daje wyniki podobne do poniższej tabeli:
 
-| userid | nazwa użytkownika | partycja | rowkey |
+| userid | username | partycja | rowkey |
 |----|---------|---------------|----|
-| 1 | Chris | Partycja1 | CA |
+| 1 | Chris | Partycja1 | Urząd certyfikacji |
 | 3 | Christine | Partycja1 | WA |
 | 2 | Jessie | Partycja2 | NM |
 | 4 | Steven | Partycja2 | TX |
@@ -85,9 +85,9 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 Wyniki wyglądać podobnie do poniższej tabeli:
 
-| userid | nazwa użytkownika | partycja | rowkey |
+| userid | username | partycja | rowkey |
 |----|---------|---------------|----|
-| 1 | Chris | Partycja1 | CA |
+| 1 | Chris | Partycja1 | Urząd certyfikacji |
 | 3 | Christine | Partycja1 | WA |
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Pobieranie jednostek dla określonej wartości w określonej kolumnie
@@ -101,12 +101,12 @@ Get-AzTableRow -table $cloudTable `
 
 To zapytanie pobiera jeden rekord.
 
-|Pole|wartość|
+|Pole|value|
 |----|----|
 | userid | 1 |
-| nazwa użytkownika | Chris |
+| username | Chris |
 | PartitionKey | Partycja1 |
-| RowKey      | CA |
+| RowKey      | Urząd certyfikacji |
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>Pobieranie jednostki przy użyciu niestandardowego filtru 
 
@@ -118,12 +118,12 @@ Get-AzTableRow `
 
 To zapytanie pobiera jeden rekord.
 
-|Pole|wartość|
+|Pole|value|
 |----|----|
 | userid | 1 |
-| nazwa użytkownika | Chris |
+| username | Chris |
 | PartitionKey | Partycja1 |
-| RowKey      | CA |
+| RowKey      | Urząd certyfikacji |
 
 ### <a name="updating-entities"></a>Aktualizowanie jednostek 
 
@@ -153,10 +153,10 @@ Get-AzTableRow -table $cloudTable `
 
 Wyniki wskazują rekord Jessie2.
 
-|Pole|wartość|
+|Pole|value|
 |----|----|
 | userid | 2 |
-| nazwa użytkownika | Jessie2 |
+| username | Jessie2 |
 | PartitionKey | Partycja2 |
 | RowKey      | NM |
 

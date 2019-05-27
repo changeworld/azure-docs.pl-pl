@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 6c424f1ac77e70b8f1fd561ad5134ec86f652fa6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52271628"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156820"
 ---
 Powiadomienia wypychane są zwykle wysyłane za pośrednictwem usługi wewnętrznej bazy danych, takiej jak Mobile Apps czy ASP.NET, przy użyciu zgodnej biblioteki. Jeśli biblioteka nie jest dostępna w danym zapleczu, powiadomienia można również wysyłać bezpośrednio za pomocą interfejsu API REST.
 
 Poniższa lista zawiera kilka innych samouczków, z którymi warto się zapoznać, planując wysyłanie powiadomień:
 
-* Azure Mobile Apps: aby zapoznać się z przykładem wysyłania powiadomień z poziomu wewnętrznej bazy danych usługi Mobile Apps zintegrowanej z usługą Notification Hubs, zobacz temat [Add Push Notifications to your iOS App (Dodawanie powiadomień push do aplikacji dla systemu iOS)](../articles/app-service-mobile/app-service-mobile-ios-get-started-push.md).  
-* ASP.NET: [Używanie usługi Notification Hubs w celu wysyłania powiadomień push do użytkowników](../articles/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
-* Zestaw Java SDK centrum Azure Notification Hub: informacje na temat wysyłania powiadomień za pomocą języka Java można znaleźć w temacie [How to use Notification Hubs from Java](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md) (Używanie usługi Notification Hubs z poziomu języka Java). To rozwiązanie przetestowano w programie Eclipse pod kątem tworzenia aplikacji dla systemu Android.
-* PHP: [How to use Notification Hubs from PHP](../articles/notification-hubs/notification-hubs-php-push-notification-tutorial.md) (Używanie usługi Notification Hubs z poziomu języka PHP).
+* Azure Mobile Apps: Na przykład sposób wysyłania powiadomień z zaplecza funkcji Mobile Apps zintegrowanej z usługą Notification Hubs, zobacz [Dodawanie powiadomień wypychanych do aplikacji dla systemu iOS](../articles/app-service-mobile/app-service-mobile-ios-get-started-push.md).  
+* ASP.NET: [Używać usługi Notification Hubs wysyłać powiadomienia wypychane do użytkowników](../articles/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
+* Azure Notification Hub Java SDK: Zobacz [jak używać usługi Notification Hubs w języku Java](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md) wysyłania powiadomień w języku Java. To rozwiązanie przetestowano w programie Eclipse pod kątem tworzenia aplikacji dla systemu Android.
+* PHP: [Jak używać usługi Notification Hubs za pomocą języka PHP](../articles/notification-hubs/notification-hubs-php-push-notification-tutorial.md).
 

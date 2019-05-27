@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0334f9fd2d749b88580ff3857d705de2ae961902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407796"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157705"
 ---
 Brama sieci wirtualnej używa specyficznej podsieci nazywanej podsiecią bramy. Podsieć bramy jest częścią zakresu adresów IP sieci wirtualnej, który jest wybierany podczas konfigurowania sieci wirtualnej. Zawiera ona adresy IP używane przez zasoby i usługi bramy sieci wirtualnej. Aby platforma Azure wdrożyła zasoby bramy, podsieć musi mieć nazwę „GatewaySubnet”. Nie można określić innej podsieci w celu wdrożenia w niej zasobów bramy. Jeśli nie będziesz mieć podsieci o nazwie „GatewaySubnet”, tworzenie bramy sieci VPN nie powiedzie się.
 

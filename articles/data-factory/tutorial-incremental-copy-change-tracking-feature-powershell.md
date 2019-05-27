@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167490"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 W tym samouczku utworzysz fabrykę usługi Azure Data Factory z potokiem służącym do ładowania danych przyrostowych na podstawie informacji o **śledzeniu zmian** w źródłowej bazie danych Azure SQL Database do magazynu Azure Blob Storage.  
@@ -235,7 +235,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 ### <a name="create-azure-sql-database-linked-service"></a>Utwórz połączoną usługę Azure SQL Database.
 W tym kroku opisano sposób łączenia bazy danych Azure SQL Database z fabryką danych.
 
-1. W folderze **C:\ADFTutorials\IncCopyMultiTableTutorial** utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService.json** z następującą zawartością: Przed zapisaniem pliku zamień parametry server, database **, &lt;user id&gt; i &lt;password&gt;** na nazwę swojego serwera Azure SQL Server, nazwę bazy danych, identyfikator użytkownika i hasło. 
+1. W folderze **C:\ADFTutorials\IncCopyMultiTableTutorial** utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService.json** z następującą zawartością: Przed zapisaniem pliku zamień parametry **&lt;server&gt;, &lt;database&gt;, &lt;user id&gt; i &lt;password&gt;** na nazwę swojego serwera Azure SQL Server, nazwę bazy danych, identyfikator użytkownika i hasło. 
 
     ```json
     {

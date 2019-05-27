@@ -9,11 +9,11 @@ ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: f0ff729084d194ff2e05e89eadc45782f775b1c5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929427"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156747"
 ---
 W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami powiadomień szablonu z aplikacji konsoli .NET. 
 
@@ -22,7 +22,7 @@ W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami pow
     c. Wybierz **Aplikacja konsoli (.NET Framework)** na liście szablonów. 
     d. Wprowadź **nazwa** dla aplikacji. 
     e. Wybierz **folderu** dla aplikacji.
-    f. Wybierz przycisk **OK**, aby utworzyć projekt. 
+    f. Wybierz **OK** do tworzenia projektu. 
 2. W menu głównym programu Visual Studio wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów** a następnie w oknie konsoli Wprowadź następujący ciąg:
    
     ```

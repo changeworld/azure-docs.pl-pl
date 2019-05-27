@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: MT
+ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502100"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151181"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -34,39 +34,23 @@ Ogólnie maszyny uczenie się przepływu pracy przebiega w następującej kolejn
 1. Po znalezieniu zadowalające Uruchom rejestrowanie utrwalonej modelu w **rejestru modelu**.
 1. Twórz oceniania skrypt, który używa modelu i **wdrożyć model** jako **usługi sieci web** na platformie Azure lub do **urządzenie usługi IoT Edge**.
 
+Należy wykonać te czynności przy użyciu dowolnej z następujących czynności:
++ [Usługi Azure Machine Learning zestawu SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
++ [Usługi Azure Machine Learning interfejs wiersza polecenia](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++  [Interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning](ui-concept-visual-interface.md)
 
 > [!NOTE]
 > Chociaż w tym artykule definiuje terminy i pojęcia używane przez usługę Azure Machine Learning, nie definiuje terminy i pojęcia związane z platformą Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="workspace"></a>Obszar roboczy
 
-Obszar roboczy jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zapewnia scentralizowanym miejscem do pracy z wszystkich artefaktów, które możesz utworzyć, korzystając z usługi Azure Machine Learning.
-
-Obszar roboczy przechowuje listę obliczeniowych elementów docelowych, używanych do uczenia modelu. Zapewnia również historię przebiegów szkoleniowych, w tym dzienniki, metryki, dane wyjściowe i migawkę skryptów. Użyjesz tych informacji do określenia, które Uruchom szkolenia tworzy najlepszy model.
-
-Zarejestruj się modeli z obszarem roboczym. Używasz zarejestrowanego modelu i oceniania skryptów do wdrażania modelu w usłudze Azure Container Instances, Azure Kubernetes Service lub tablicą programowalny bramy (FPGA) jako punkt końcowy oparty na protokole REST protokołu HTTP. Można także wdrożyć obraz do urządzenia z usługi Azure IoT Edge jako moduł. Wewnętrznie obraz platformy docker jest tworzony do hostowania wdrożonym obrazie. Jeśli to konieczne, można określić własnego obrazu.
-
-Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być współużytkowany przez wiele osób. Po udostępnieniu obszaru roboczego można kontrolować dostęp do niego przez przypisywanie użytkowników do następujących ról:
-
-* Właściciel
-* Współautor
-* Czytelnik
-
-Aby uzyskać więcej informacji na temat tych ról, zobacz [zarządzanie dostępem do obszaru roboczego usługi Azure Machine Learning](how-to-assign-roles.md) artykułu.
-
-Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
-
-* [Usługa Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Rejestry kontenerów platformy docker, używane podczas uczenia i wdrażania modelu.
-* [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): Jest używana jako magazyn danych domyślny dla obszaru roboczego.
-* [Usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Monitorowanie informacji o modelach magazynów.
-* [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Magazyny kluczy tajnych, które są używane przez obliczeniowych elementów docelowych i inne poufne informacje, które jest potrzebne przez obszar roboczy.
-
-> [!NOTE]
-> Oprócz tworzenia nowych wersji, można również użyć istniejące usługi platformy Azure.
+[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zapewnia scentralizowanym miejscem do pracy z wszystkich artefaktów, które możesz utworzyć, korzystając z usługi Azure Machine Learning.
 
 Taksonomia obszaru roboczego zostało zilustrowane na poniższym diagramie:
 
 [![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+Aby uzyskać więcej informacji na temat obszarów roboczych, zobacz [co to jest obszar roboczy usługi Azure Machine Learning?](concept-workspace.md).
 
 ## <a name="experiment"></a>Eksperyment
 
@@ -170,6 +154,10 @@ Uruchom zostanie wyświetlony po przesłaniu skryptu w celu nauczenia modelu. Ur
 
 Na przykład wyświetlanie uruchomień, które są produkowane przez uczenia modelu, zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
+## <a name="github-tracking-and-integration"></a>Śledzenie usługi GitHub i integracja
+
+Po rozpoczęciu szkolenia, gdzie katalog źródłowy jest w nim program lokalnego repozytorium Git, informacje o repozytorium znajduje się w historii uruchamiania. Na przykład identyfikator bieżącego zatwierdzenia w repozytorium jest rejestrowany jako część historii. Działa to z przebiegów przesłane za pomocą narzędzie do szacowania potoku uczenia Maszynowego i uruchomienia skryptu. Działa z zestawu SDK lub interfejsu wiersza polecenia Machine Learning przesłane uruchomień.
+
 ## <a name="snapshot"></a>Migawka
 
 Po przesłaniu uruchomienie usługi Azure Machine Learning kompresuje katalogu, który zawiera skrypt jako plik zip i wysyła je do obliczeniowego elementu docelowego. Następnie został wyodrębniony plik zip, a skrypt jest uruchamiany istnieje. Usługa Azure Machine Learning są także przechowywane w pliku zip jako migawka jako część rekordu uruchomienia. Każda osoba mająca dostęp do obszaru roboczego można przeglądać rekordu uruchomienia i pobrać migawki.
@@ -228,7 +216,7 @@ Usługa Azure IoT Edge zapewnia, że modułu i monitoruje urządzenia, który je
 
 ## <a name="pipeline"></a>Potok
 
-Korzystanie z uczenia maszynowego na błędy potoków można tworzyć i zarządzać nimi przepływy pracy, które łączyć usługi machine learning faz. Na przykład potok może obejmować przygotowywania danych, szkolenie modelu, wdrożenie modelu i fazy wnioskowania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
+Korzystanie z uczenia maszynowego na błędy potoków można tworzyć i zarządzać nimi przepływy pracy, które łączyć usługi machine learning faz. Na przykład potok może obejmować przygotowywania danych, szkolenie modelu, wdrożenie modelu i fazy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
 
 Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz [potoków i Azure Machine Learning](concept-ml-pipelines.md).
 

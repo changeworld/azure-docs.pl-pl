@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500869"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146908"
 ---
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
 **Połączonej usługi Azure Storage** umożliwia połączenie konta usługi Azure storage do usługi Azure data factory przy użyciu **klucz konta**, co umożliwia usługi data factory z globalnego dostępu do usługi Azure Storage. Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla połączonej usługi Azure Storage.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość type musi być równa: **AzureStorage** |Yes |
-| Parametry połączenia |Określ informacje potrzebne do łączenia z usługą Azure storage dla właściwości connectionString. |Yes |
+| type |Właściwość type musi być równa: **AzureStorage** |Tak |
+| connectionString |Określ informacje potrzebne do łączenia z usługą Azure storage dla właściwości connectionString. |Tak |
 
 Zobacz następującą sekcję, wykonując czynności przedstawione widok/kopiowania klucza konta usługi Azure Storage: [Klucze dostępu](../articles/storage/common/storage-account-manage.md#access-keys).
 
@@ -49,8 +49,8 @@ Usługa połączona sygnatury dostępu Współdzielonego Azure Storage pozwala p
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość type musi być równa: **AzureStorageSas** |Yes |
-| sasUri |Określ udostępniony URI podpisu dostępu do zasobów usługi Azure Storage, np. obiektów blob, kontenerów lub tabeli.  |Yes |
+| type |Właściwość type musi być równa: **AzureStorageSas** |Tak |
+| sasUri |Określ udostępniony URI podpisu dostępu do zasobów usługi Azure Storage, np. obiektów blob, kontenerów lub tabeli.  |Tak |
 
 **Przykład:**
 

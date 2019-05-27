@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.openlocfilehash: 6bedba2c68c05ee7ed6518996e54d007f3e83dc1
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66170675"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Przykładowy skrypt programu Azure PowerShell: Równoważenie obciążenia wielu witryn internetowych
 
@@ -66,7 +66,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 

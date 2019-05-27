@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486858"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151604"
 ---
 ## <a name="specifying-formats"></a>Określanie formatów
 Usługa Azure Data Factory obsługuje następujące typy formatów:
@@ -207,7 +207,7 @@ W tym przykładzie oczekiwany jest jeden główny obiekt JSON mapowany na pojedy
 ```
 i chcesz skopiować ją do tabeli usługi Azure SQL w następującym formacie przez wyodrębnienie danych z obiektu i tabeli:
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| identyfikator | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 

@@ -15,15 +15,15 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66158451"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell
 
-Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu programu Azure PowerShell ról niestandardowych.
+Jeśli [wbudowane role dla zasobów platformy Azure](built-in-roles.md) nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne role niestandardowe. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu programu Azure PowerShell ról niestandardowych.
 
 Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestandardowej, zobacz [samouczka: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md).
 
@@ -34,7 +34,7 @@ Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestanda
 Aby utworzyć niestandardowe role, potrzebne są:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- [Usługi Azure Cloud Shell](../cloud-shell/overview.md) lub [programu Azure PowerShell](/powershell/azure/install-az-ps)
+- Usługa [Azure Cloud Shell](../cloud-shell/overview.md) lub program [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
@@ -231,7 +231,7 @@ Aby dodać rolę do subskrypcji, uruchom następujące polecenie programu PowerS
 New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
-## <a name="update-a-custom-role"></a>Aktualizacja roli niestandardowej
+## <a name="update-a-custom-role"></a>Aktualizowanie roli niestandardowej
 
 Podobnie jak tworzenie roli niestandardowej, możesz zmodyfikować przy użyciu istniejącej roli niestandardowej `PSRoleDefinition` obiektu lub szablon JSON.
 
@@ -361,5 +361,5 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+- [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)
 - [Operacje dostawcy zasobów w usłudze Azure Resource Manager](resource-provider-operations.md)

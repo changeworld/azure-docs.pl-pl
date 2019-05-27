@@ -9,11 +9,11 @@ ms.date: 01/15/2019
 ms.author: rezas
 ms.custom: include file
 ms.openlocfilehash: 979ca857a4410a8efd1b211afc09a0563d76a1ba
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830503"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158660"
 ---
 Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować już utworzone zasoby i użyć ich ponownie.
 
@@ -31,6 +31,6 @@ Aby usunąć grupę zasobów na podstawie nazwy:
 
 3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Usuwanie](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
+    ![Usuń](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.

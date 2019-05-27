@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821348"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151189"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Bezpieczeństwo przedsiębiorstwa w usłudze Azure Machine Learning
 
@@ -88,7 +88,7 @@ Aby uzyskać więcej informacji na temat zarządzanych tożsamości, zobacz [zar
 | Obszar roboczy | Współautor | 
 | Konto magazynu | Współautor danych obiektu blob usługi Storage | 
 | Usługa Key Vault | Dostęp do wszystkich certyfikatów kluczy, wpisów tajnych oraz ich | 
-| Azure Container Registry | Współautor | 
+| Rejestr kontenerów platformy Azure | Współautor | 
 | Grupa zasobów, która zawiera obszar roboczy | Współautor | 
 | Grupy zasobów zawierającej usługę Key Vault (jeśli jest inna niż ta, zawierająca obszar roboczy) | Współautor | 
 
@@ -154,7 +154,7 @@ Na poniższym diagramie przedstawiono przepływ pracy tworzenia obszaru roboczeg
 Użytkownik loguje się do usługi Azure AD za pomocą dowolnego z obsługiwanych klientów usługi Azure Machine Learning (portal Azure CLI, w przypadku zestawu SDK języka Python) i żąda odpowiedniego tokenu usługi Azure Resource Manager.  Użytkownik wywołuje usługi Azure Resource Manager do utworzenia obszaru roboczego.  Usługa Azure Resource Manager kontakty usługi Azure Machine Learning usługi dostawcy zasobów można aprowizować obszaru roboczego.  Dodatkowe zasoby są tworzone w ramach subskrypcji klienta podczas tworzenia obszaru roboczego:
 * Magazyn kluczy (na potrzeby przechowywania wpisów tajnych)
 * Konto usługi Azure Storage (w tym obiektów Blob i udział plików)
-* Usługa Azure Container Registry (w celu przechowywania obrazów platformy docker do wnioskowania i eksperymentowania)
+* Usługa Azure Container Registry (w celu przechowywania obrazów platformy docker do wnioskowania/oceniania i eksperymentowania)
 * Usługa Application Insights (na potrzeby przechowywania danych telemetrycznych)
 
 Inne usługi obliczeniowe dołączone do obszaru roboczego (usługi Azure Kubernetes Service, maszyna wirtualna itd.) mogą również udostępniane przez klientów, zgodnie z potrzebami. 
@@ -167,12 +167,12 @@ Skojarzone z usługi Azure Machine Learning obszaru roboczego usługi są katalo
 
 ![Zrzut ekranu przedstawiający tworzenie przepływu pracy dla obszaru roboczego](./media/enterprise-readiness/code-snapshot.png)
 
-### <a name="training"></a>Szkolenia
+### <a name="training"></a>Szkolenie
 Na poniższym diagramie przedstawiono przepływ pracy szkolenia.
 * Usługa Azure Machine Learning jest wywoływana przy użyciu Identyfikatora migawki dla migawki kod zapisany wcześniej
 * Usługa Azure Machine Learning, który tworzy usługi Uruchom (opcjonalnie) identyfikator & tokenem usługi Azure Machine Learning, który jest później używany przez celów obliczeń, takich jak Machine obliczeń/maszyna wirtualna do uczenia odpowiedzieć usługi Azure Machine Learning
 * Można wybrać obu zarządzane zasoby obliczeniowe (np.) Usługi Machine Learning obliczeń) lub niezarządzanego obliczeniowe (np.) Maszyna wirtualna) do uruchamiania zadań szkoleniowych. Przepływ danych zostało wyjaśnione w obu scenariuszach poniżej:
-* (Maszyny Wirtualnej/HDInsight/elementu lokalnego — uzyskiwać dostęp za pomocą poświadczenia protokołu SSH w usłudze Key Vault w ramach subskrypcji firmy Microsoft) Usługa Azure Machine Learning działa kod zarządzania na cel obliczenia który:
+* (Maszyny Wirtualnej/HDInsight — uzyskiwać dostęp za pomocą poświadczenia protokołu SSH w usłudze Key Vault w ramach subskrypcji firmy Microsoft) Usługa Azure Machine Learning działa kod zarządzania na cel obliczenia który:
     1.  Przygotowanie środowiska (Uwaga: Docker to także opcję dla maszyny Wirtualnej i lokalnym. Zobacz kroki obliczeniowego usługi Machine Learning poniżej zrozumieć, jak uruchamianie eksperymentu dotyczące działania kontenera platformy docker)
     2.  Pobiera kod
     3.  Konfiguruje środowisko zmienne/konfiguracji
@@ -189,7 +189,7 @@ Ten krok jest wyświetlany w usłudze flow, gdzie szkolenia obliczenia zapisów 
 ![Zrzut ekranu przedstawiający tworzenie przepływu pracy dla obszaru roboczego](./media/enterprise-readiness/training-and-metrics.png)
 
 ### <a name="creating-web-services"></a>Tworzenie usługi sieci web
-Na poniższym diagramie przedstawiono przepływ pracy wnioskowania, w której model jest wdrażany jako usługę sieci web.
+Na poniższym diagramie przedstawiono przepływ pracy wnioskowania. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych.
 Zobacz szczegóły poniżej:
 * Użytkownik rejestruje modelu przy użyciu klienta, takich jak zestaw SDK usługi Azure ML
 * Użytkownik tworzy obraz przy użyciu modelu, wynik plików i inne zależności modelu

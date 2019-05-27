@@ -16,11 +16,11 @@ ms.date: 03/13/2019
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66158091"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra usługi Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -200,7 +200,7 @@ Wartość *ClusterName* służy jako prefiks aplikacji usługi Azure AD tworzony
 
 Wartość *WebApplicationReplyUrl* to domyślny punkt końcowy zwracany przez usługę Azure AD do użytkowników, gdy zakończą logowanie. Ustaw ten punkt końcowy jako punkt końcowy narzędzia Service Fabric Explorer dla klastra. Domyślnie to:
 
-https://&lt;domena_klastra&gt;:19080/Explorer
+https://&lt;cluster_domain&gt;:19080/Explorer
 
 Zostanie wyświetlony monit Zaloguj się do konta z uprawnieniami administratora dla dzierżawy usługi Azure AD. Po zalogowaniu skrypt utworzy aplikacje internetową i natywną mające reprezentować klaster usługi Service Fabric. W aplikacjach dzierżawcy w [witryny Azure portal](https://portal.azure.com), powinny zostać wyświetlone dwa nowe wpisy:
 

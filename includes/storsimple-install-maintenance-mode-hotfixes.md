@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2d0fd904dd704c704662192e1e92fe403f0971c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409955"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171901"
 ---
 #### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>Aby zainstalować poprawki przeznaczone do trybu konserwacji za pomocą programu Windows PowerShell dla usługi StorSimple
 > [!IMPORTANT]

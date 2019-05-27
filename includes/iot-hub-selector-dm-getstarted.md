@@ -1,10 +1,15 @@
 ---
+author: wesmc7777
+ms.author: wesmc
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
 ms.openlocfilehash: 19331f35ea2fa773325ec61e728677e37767ab54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346279"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156362"
 ---
 > [!div class="op_single_selector"]
 > * [Urządzenie: Usługa środowiska node.js: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
@@ -15,6 +20,7 @@ ms.locfileid: "60346279"
 Serwer zaplecza w aplikacji można używać usługi Azure IoT Hub w nim elementów podstawowych, takich jak [bliźniaczej reprezentacji urządzenia] [ lnk-devtwin] i [metody bezpośrednie][lnk-c2dmethod], aby zdalnie uruchomić i monitorować urządzenia akcje z zakresu zarządzania na urządzeniach. Ten samouczek pokazuje, jak aplikacji zaplecza i aplikacji urządzenia mogą pracować razem inicjowania i monitorowania ponownego uruchomienia urządzenia zdalnego za pomocą usługi IoT Hub.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Użyj metody bezpośredniej do zainicjowania akcji zarządzania urządzeniami (na przykład ponowne uruchomienie komputera, resetowanie do ustawień fabrycznych i aktualizacja oprogramowania układowego) z poziomu aplikacji zaplecza w chmurze. Urządzenie jest odpowiedzialny za:
 
 * Obsługa żądanie metody wysyłane z usługi IoT Hub.

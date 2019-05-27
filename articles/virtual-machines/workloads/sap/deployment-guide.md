@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
 ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850891"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66154061"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -437,7 +437,7 @@ Kreator poprowadzi ustawiania parametrów wymaganych do utworzenia maszyny wirtu
      * **Typ dysku**: Wybierz typ dysku, dysku systemu operacyjnego. Jeśli chcesz użyć usługi Premium Storage dla dysków z danymi, zalecamy użycie magazynu Premium Storage dla dysku systemu operacyjnego również.
      * **Użyj usługi managed disks**: Jeśli chcesz używać usługi Managed Disks, wybierz pozycję Tak. Aby uzyskać więcej informacji na temat dysków zarządzanych, zobacz rozdział [Managed Disks] [ planning-guide-managed-disks] w przewodniku planowania.
      * **Konto magazynu**: Wybierz istniejące konto magazynu lub Utwórz nową. Nie wszystkie typy magazynu działa w przypadku uruchamiania aplikacji SAP. Aby uzyskać więcej informacji na temat typów magazynu, zobacz [struktury magazynu maszyny wirtualnej w przypadku wdrożeń RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
-   * **Sieć**
+   * **Sieci**
      * **Sieć wirtualna** i **podsieci**: Aby zintegrować maszyny wirtualnej z sieci intranet, wybierz sieć wirtualną, która jest połączona z siecią lokalną.
      * **Publiczny adres IP**: Wybierz publiczny adres IP, którego chcesz używać, lub wprowadź parametry, aby utworzyć nowy publiczny adres IP. Publiczny adres IP umożliwia dostęp do maszyny wirtualnej za pośrednictwem Internetu. Upewnij się również utworzyć sieciowej grupy zabezpieczeń, aby zabezpieczać dostęp do maszyny wirtualnej.
      * **Sieciowa grupa zabezpieczeń**: Aby uzyskać więcej informacji, zobacz [sterowaniu przepływem ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń][virtual-networks-nsg].
@@ -576,7 +576,7 @@ Kreator poprowadzi ustawiania parametrów wymaganych do utworzenia maszyny wirtu
    * **Storage**
      * **Typ dysku**: Wybierz typ dysku, dysku systemu operacyjnego. Jeśli chcesz użyć usługi Premium Storage dla dysków z danymi, zalecamy użycie magazynu Premium Storage dla dysku systemu operacyjnego również.
      * **Użyj usługi managed disks**: Jeśli chcesz używać usługi Managed Disks, wybierz pozycję Tak. Aby uzyskać więcej informacji na temat dysków zarządzanych, zobacz rozdział [Managed Disks] [ planning-guide-managed-disks] w przewodniku planowania.
-   * **Sieć**
+   * **Sieci**
      * **Sieć wirtualna** i **podsieci**: Aby zintegrować maszyny wirtualnej z sieci intranet, wybierz sieć wirtualną, która jest połączona z siecią lokalną.
      * **Publiczny adres IP**: Wybierz publiczny adres IP, którego chcesz używać, lub wprowadź parametry, aby utworzyć nowy publiczny adres IP. Publiczny adres IP umożliwia dostęp do maszyny wirtualnej za pośrednictwem Internetu. Upewnij się również utworzyć sieciowej grupy zabezpieczeń, aby zabezpieczać dostęp do maszyny wirtualnej.
      * **Sieciowa grupa zabezpieczeń**: Aby uzyskać więcej informacji, zobacz [sterowaniu przepływem ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń][virtual-networks-nsg].
@@ -693,7 +693,7 @@ Poniższy schemat przedstawia sekwencję czynności przenoszenia lokalnej maszyn
 
 Jeśli dysk jest już przekazany i określone na platformie Azure (zobacz [planowanie maszyn wirtualnych platformy Azure i wdrażanie środowiska SAP NetWeaver][planning-guide]), wykonać zadania opisane w ciągu następnych kilka sekcji.
 
-#### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+#### <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 
 Aby utworzyć wdrożenie, używając prywatnego dysku systemu operacyjnego za pośrednictwem witryny Azure portal, należy użyć szablonu SAP, opublikowane w [repozytorium GitHub azure-quickstart-templates][azure-quickstart-templates-github]. Możesz również ręcznie utworzyć maszynę wirtualną przy użyciu programu PowerShell.
 

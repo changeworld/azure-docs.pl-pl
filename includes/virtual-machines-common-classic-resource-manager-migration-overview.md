@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 289912e1519a68ae607ace7766e35731af0016b9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929429"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158267"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager
 W tym artykule opisano sposób migracji infrastruktury jako zasoby usługi (IaaS) z klasycznego modelu wdrażania usługi Resource Manager i szczegółowe informacje, jak połączyć zasoby z dwa modele wdrażania, które współistnieć w subskrypcji przy użyciu sieci wirtualnej bramy lokacja lokacja. Przeczytaj więcej o [funkcje usługi Azure Resource Manager i korzyści](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -131,5 +131,4 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 | Azure HDInsight |Sieci wirtualne, które zawierają usługi HDInsight |To nie jest obecnie obsługiwane. |
 | Microsoft Dynamics Lifecycle Services |Sieci wirtualne, które zawierają maszyny wirtualne, które są zarządzane przez program Dynamics Lifecycle Services |To nie jest obecnie obsługiwane. |
 | Azure AD Domain Services |Sieci wirtualne, które zawierają usług domenowych Azure AD |To nie jest obecnie obsługiwane. |
-| Azure RemoteApp |Sieci wirtualne, które zawierają wdrożenia usługi Azure RemoteApp |To nie jest obecnie obsługiwane. |
 | Usługa Azure API Management |Sieci wirtualne, które zawierają wdrożenia usługi Azure API Management |To nie jest obecnie obsługiwane. Aby przeprowadzić migrację sieci Wirtualnej IaaS, należy zmienić sieci Wirtualnej, wdrożenia usługi API Management jest operacją nie przestojów. |

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
 ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155215"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -279,10 +279,10 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 | Właściwość JSON | Type | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Yes | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | obiekt | Yes | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | string | Tak | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | obiekt | Tak | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | numer | Nie | 1 | Od 1 do 1000 | `"interval":10` |
-| **endTime** | string | Yes | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | string | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | obiekt | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Właściwość startTime

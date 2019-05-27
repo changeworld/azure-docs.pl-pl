@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c24bbb9433e4164d4b2f6ce1ac7bd726cc36356
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506903"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142640"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — tworzenie i zarządzanie nimi wiele pul węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -332,7 +332,7 @@ Można zaplanować tylko zasobników, które mają tej zmiany barwy zastosowane 
 
 W tym artykule utworzono klaster AKS, która zawiera węzły opartą na procesorze GPU. Aby zmniejszyć koszt niepotrzebne, można usunąć *gpunodepool*, lub całego klastra AKS.
 
-Aby usunąć pulę węzłów opartą na procesorze GPU, użyj [usunąć pulę węzłów aks az] [ az-aks-nodepool-delete] polecenia, jak pokazano w poniższym przykładzie:
+Aby usunąć pulę węzłów opartą na procesorze GPU, użyj [Usuń az aks nodepool] [ az-aks-nodepool-delete] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
@@ -348,8 +348,10 @@ az group delete --name myResourceGroup --yes --no-wait
 
 W tym artykule przedstawiono sposób tworzenia i zarządzania nimi wiele pul węzłów w klastrze AKS. Aby uzyskać więcej informacji o sposobie kontrolowania zasobników w pule węzłów, zobacz [najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze AKS][operator-best-practices-advanced-scheduler].
 
+Aby utworzyć pule węzłów kontenerów systemu Windows Server, zobacz [kontener systemu Windows Server w usłudze AKS][aks-windows].
+
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -376,3 +378,4 @@ W tym artykule przedstawiono sposób tworzenia i zarządzania nimi wiele pul wę
 [install-azure-cli]: /cli/azure/install-azure-cli
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[aks-windows]: windows-container-cli.md

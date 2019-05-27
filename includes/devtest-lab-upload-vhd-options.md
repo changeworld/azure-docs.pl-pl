@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: f4a9a131bcabc28a1eb77ffc31d93dc1d391cce4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61296065"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157187"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Aby ukończyć ten samouczek, konieczne jest posiadanie pliku wirtualnego dysku twardego przekazane do konta magazynu skojarzone z laboratorium, w którym tworzysz niestandardowy obraz. Wybierz dowolne z następujących linków, aby przesłać plik VHD:

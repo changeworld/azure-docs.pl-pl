@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483069"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66163916"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Samouczek: tworzenie fabryki danych za pomocą programu Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -173,7 +173,7 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
 
     Właściwość | Opis |
     -------- | ----------- |
-    type |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w usłudze Azure Blob Storage.
+    typ |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w usłudze Azure Blob Storage.
     linkedServiceName | Odnosi się do utworzonej wcześniej usługi AzureStorageLinkedService1.
     fileName |Ta właściwość jest opcjonalna. Jeśli tę właściwość pominiesz, zostaną wybrane wszystkie pliki z folderu folderPath. W tym przypadku zostanie przetworzony tylko plik input.log.
     type | Pliki dziennika są w formacie tekstowym, więc używana jest wartość TextFormat. |

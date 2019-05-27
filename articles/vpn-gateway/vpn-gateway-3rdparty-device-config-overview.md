@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 07f2e46198118530de5a2163480eb44575891c4b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7d3a32b5f2b2742a36716bac9747f20c47c98858
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150181"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Omówienie konfiguracji urządzeń sieci VPN partnera
 Ten artykuł zawiera omówienie konfigurowania lokalnego urządzenia sieci VPN do łączenia się z bramami Azure VPN Gateway. A przykładowy sieci wirtualnej platformy Azure i konfigurowania bramy sieci VPN jest używana do pokazują, jak połączyć się z konfiguracji urządzenia sieci VPN różnych lokalnych przy użyciu tych samych parametrów.

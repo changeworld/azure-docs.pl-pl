@@ -9,11 +9,11 @@ ms.date: 11/19/2018
 ms.author: dech
 ms.custom: include file
 ms.openlocfilehash: c3cbfda674abaeea1adf35c3ee0d2b5ddf6b2f84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853490"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153751"
 ---
 Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby utworzyć bazę danych i kolekcję. 
 

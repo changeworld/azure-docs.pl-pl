@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 268467796e67caf2d20fedb44d83fd455a09b83e
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65538391"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147833"
 ---
 **Wychodzące transfery danych**: [Wychodzące transfery danych](https://azure.microsoft.com/pricing/details/bandwidth/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 

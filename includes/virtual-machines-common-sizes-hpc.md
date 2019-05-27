@@ -9,11 +9,11 @@ ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199340"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145826"
 ---
 Seria H maszyn wirtualnych (VM) są przeznaczone do klasy kierownicze wydajność, skalowalność MPI i ekonomiczność dla różnych obciążeń HPC w rzeczywistych warunkach.
 
@@ -25,7 +25,7 @@ Zarówno HB, jak i maszyny wirtualne połączenia Hybrydowego są wyposażone w 
 
 Maszyny wirtualne z serii H są zoptymalizowane pod kątem aplikacje o wysokiej częstotliwości procesora CPU lub pamięci na podstawowe wymagania. Seria H maszyn wirtualnych funkcji 8 lub 16 procesorów Intel Xeon E5 2667 v3 procesora rdzenie, 7 lub 14 GB pamięci RAM na rdzeń procesora CPU, a nie wielowątkowość. Seria H oferuje 56 Gb/s InfiniBand o przepustowości fdr wraz Mellanox w systemie fat nieblokującej na poziomie drzewa Konfiguracja spójną wydajność funkcji RDMA. Maszyny wirtualne z serii H obsługuje Intel MPI 5.x i MS-MPI.
 
-## <a name="hb-series"></a>HB serii
+## <a name="hb-series"></a>Seria HB
 
 Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Obsługiwane
 
@@ -35,7 +35,7 @@ Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Ob
 
 <br>
 
-## <a name="hc-series"></a>Seria połączenia Hybrydowego
+## <a name="hc-series"></a>Seria HC
 
 Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Obsługiwane
 

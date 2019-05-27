@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e48ab075264423479e792848af522a890736a403
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8907ae61fb03b417a74eb32e1fd09aece75d5e2c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152692"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151719"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows
 
@@ -76,6 +76,13 @@ W tym przykładzie przedstawiono ręcznej instalacji przy użyciu kontenerów Wi
 
 2. Uruchom program PowerShell jako administrator.
 
+   >[!NOTE]
+   >Aby zainstalować usługi IoT Edge, PowerShell (x86), należy użyć AMD64 sesji programu PowerShell. Jeśli nie masz pewności, jakiego typu sesji używasz, uruchom następujące polecenie:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
+
 3. **IoTEdge Wdróż** polecenie sprawdza, czy komputer Windows jest w obsługiwanej wersji, włączenie funkcji kontenerów i pliki do pobrania moby środowiska uruchomieniowego i środowisko uruchomieniowe usługi IoT Edge. Domyślnie polecenia przy użyciu kontenerów Windows. 
 
    ```powershell
@@ -111,12 +118,19 @@ Ta druga opcja służy do aprowizacji urządzenia przy użyciu IoT Hub Device Pr
 
 W poniższym przykładzie pokazano automatycznej instalacji, za pomocą kontenerów Windows:
 
-1. Postępuj zgodnie z instrukcjami w [tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na Windows](how-to-auto-provision-simulated-device-windows.md) konfiguracji usługi Device Provisioning i pobrać jego **identyfikator zakresu**symulowane urządzenie TPM i pobrać jego  **Identyfikator rejestracji**, następnie utworzyć rejestrację indywidualną. Gdy urządzenie jest zarejestrowane w usłudze IoT hub, kontynuuj te kroki instalacji.  
+1. Postępuj zgodnie z instrukcjami w [tworzenie i aprowizowanie symulowanego urządzenia TPM IoT Edge na Windows](how-to-auto-provision-simulated-device-windows.md) konfiguracji usługi Device Provisioning i pobrać jego **identyfikator zakresu**symulowane urządzenie TPM i pobrać jego **Identyfikator rejestracji**, następnie utworzyć rejestrację indywidualną. Gdy urządzenie jest zarejestrowane w usłudze IoT hub, kontynuuj te kroki instalacji.  
 
    >[!TIP]
    >Zachowaj okna, które działa symulatora modułu TPM, otwórz podczas instalacji programu i testowania. 
 
 2. Uruchom program PowerShell jako administrator.
+
+   >[!NOTE]
+   >Aby zainstalować usługi IoT Edge, PowerShell (x86), należy użyć AMD64 sesji programu PowerShell. Jeśli nie masz pewności, jakiego typu sesji używasz, uruchom następujące polecenie:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. **IoTEdge Wdróż** polecenie sprawdza, czy komputer Windows jest w obsługiwanej wersji, włączenie funkcji kontenerów i pliki do pobrania moby środowiska uruchomieniowego i środowisko uruchomieniowe usługi IoT Edge. Domyślnie polecenia przy użyciu kontenerów Windows. 
 
@@ -262,7 +276,7 @@ Polecenie Wdróż IoTEdge pliki do pobrania i wdraża demona zabezpieczeń IoT E
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-Polecenie IoTEdge zainicjować konfiguruje usługi IoT Edge przy użyciu parametrów połączenia urządzenia i informacje o operacjach. Wiele informacji generowanych przez to polecenie jest następnie przechowywany w pliku iotedge\config.yaml. Polecenie inicjowania akceptuje następujące typowe parametry, między innymi. Aby uzyskać pełną listę, należy użyć niestandardowego `Get-Help Initialize-IoTEdge -full`. 
+Polecenie IoTEdge zainicjować konfiguruje usługi IoT Edge przy użyciu parametrów połączenia urządzenia i informacje o operacjach. Wiele informacji generowanych przez to polecenie jest następnie przechowywany w pliku iotedge\config.yaml. Polecenie inicjowania akceptuje następujące typowe parametry, między innymi. Aby uzyskać pełną listę, użyj polecenia `Get-Help Initialize-IoTEdge -full`. 
 
 | Parametr | Dopuszczalne wartości | Komentarze |
 | --------- | --------------- | -------- |

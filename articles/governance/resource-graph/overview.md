@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137777"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162078"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
@@ -43,7 +43,7 @@ Wykres zasobów platformy Azure możesz:
 ## <a name="how-resource-graph-is-kept-current"></a>Jak wykres zasobów jest aktualizowany
 
 Po zaktualizowaniu zasobów platformy Azure, wykres zasobów jest powiadamiany przez usługę Resource Manager zmiany.
-Wykres zasobów następnie aktualizuje swoją bazę danych. Wykres zasobów wykonywane jest także wyrażenie _pełne skanowanie w poszukiwaniu_. To skanowanie zapewnia, że wykres zasobów danych jest bieżący, w przypadku brakujących powiadomienia lub gdy zasób jest aktualizowany poza usługi Resource Manager.
+Wykres zasobów następnie aktualizuje swoją bazę danych. Wykres zasobów wykonywane jest także wyrażenie _pełne skanowanie w poszukiwaniu_. To skanowanie zapewnia, że wykres zasobów danych jest bieżący, w przypadku brakujących powiadomienia, lub gdy zasób jest aktualizowany poza usługi Resource Manager.
 
 ## <a name="the-query-language"></a>Język zapytań
 
@@ -63,9 +63,15 @@ Aby użyć usługi Resource Graph, musisz mieć odpowiednie prawa w [kontroli do
 
 ## <a name="throttling"></a>Ograniczanie przepływności
 
-Jako to bezpłatna usługa zapytania do wykresu zasobów są ograniczone, aby zapewnić najlepsze środowisko i czasu odpowiedzi dla wszystkich klientów. Jeśli Twoja organizacja chce, aby używać interfejsu API programu Graph zasobów dla dużych i często zapytań, korzystać z portalu "Opinie" ze strony wykresu zasobów. Koniecznie opisz swój przypadek biznesowy i zaznacz pole wyboru „Firma Microsoft może skontaktować się z Tobą pocztą e-mail w sprawie Twojej opinii”, aby zespół mógł się z Tobą skontaktować.
+Jako to bezpłatna usługa zapytania do wykresu zasobów są ograniczone, aby zapewnić najlepsze środowisko i czasu odpowiedzi dla wszystkich klientów. Jeśli organizacja chce używać interfejsu API programu Graph zasobów dla dużych i często zapytań, użyć portalu "Opinie" [strony portalu wykres zasobów](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
+Podaj Twój przypadek biznesowy i zaznacz pole wyboru "Firmy Microsoft można wysłać pocztą e-mail możesz sprawie Twojej opinii" w kolejności dla zespołu do skontaktowania się z Tobą.
 
-Ogranicza wykres zasobów na poziomie dzierżawy. Usługa zastępuje i ustawia `x-ms-ratelimit-remaining-tenant-reads` nagłówek odpowiedzi, aby wskazać, pozostałe zapytań dostępnych przez użytkownika w ramach dzierżawy. Wykres zasobów spowoduje zresetowanie limitu przydziału co 5 sekund zamiast co godzinę. Aby uzyskać więcej informacji, zobacz [żądania ograniczania przepustowości usługi Resource Manager](../../azure-resource-manager/resource-manager-request-limits.md).
+Wykres zasobów ogranicza zapytań na poziomie użytkownika. Odpowiedź usługi zawiera następujące nagłówki HTTP:
+
+- `x-ms-user-quota-remaining` (int): Pozostały limit przydziału zasobów dla użytkownika. Ta wartość jest mapowany na liczby zapytań.
+- `x-ms-user-quota-resets-after` (: mm: ss): Czas trwania, dopóki nie zostanie zresetowane przez użytkownika limit przydziału użycia
+
+Aby uzyskać więcej informacji, zobacz [żądania ograniczania przepustowości usługi Resource Manager](../../azure-resource-manager/resource-manager-request-limits.md).
 
 ## <a name="running-your-first-query"></a>Uruchamianie pierwszego zapytania
 

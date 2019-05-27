@@ -9,22 +9,30 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 12d1576c3bfbf96c0445fcd2a6f0bc37d6a68f11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02ef0d6c7c8ddc7088938d9c8ea379e3b97f3045
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753465"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158719"
 ---
-1. Wykonaj czynności opisane w [przewodniku Szybki start dotyczącym języka Python dla usługi Azure Machine Learning](../articles/machine-learning/service/quickstart-create-workspace-with-python.md) w celu utworzenia obszaru roboczego.  Jeśli chcesz, możesz pominąć sekcję **Korzystanie z notesu**.
+1. [Utwórz obszar roboczy usługi Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md).
+
 1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
 
     ```
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
-1. Dodaj plik konfiguracji obszaru roboczego przy użyciu jednej z następujących metod:
-    * Do sklonowanego katalogu skopiuj plik **aml_config\config.json** utworzony podczas wykonywania czynności z przewodnika Szybki start stanowiącego wymagania wstępne.
+
+1. Dodaj plik konfiguracji obszaru roboczego do sklonowanego katalogu przy użyciu jednej z następujących metod:
+
+    * W [witryny Azure portal](https://ms.portal.azure.com), wybierz opcję **Pobierz config.json** z **Przegląd** części obszaru roboczego. 
+
+    ![Pobierz plik config.json](./media/aml-dsvm-server/download-config.png)
+
     * Utwórz nowy obszar roboczy za pomocą kodu w notesie [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) w sklonowanym katalogu.
+
+
 1. Uruchom serwer notesów z poziomu sklonowanego katalogu.
     
     ```shell

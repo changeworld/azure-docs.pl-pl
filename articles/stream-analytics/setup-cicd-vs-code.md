@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7fe46712d610d881c21653461d12e4f8efecb468
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827878"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158503"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>Wykonuj ciągłe integrowanie i tworzenie przy użyciu pakietów Menedżera npm Stream Analytics ciągłej integracji/ciągłego wdrażania
 W tym artykule opisano jak skonfigurować ciągłą integrację i procesu wdrażania za pomocą pakietu npm usługi Azure Stream Analytics ciągłej integracji/ciągłego wdrażania.
@@ -22,10 +22,14 @@ W tym artykule opisano jak skonfigurować ciągłą integrację i procesu wdraż
 
 Możesz włączyć ciągłej integracji i ciągłego wdrażania dla zadań usługi Azure Stream Analytics przy użyciu **asa-streamanalytics-cicd** pakietów Menedżera npm. Pakiet npm udostępnia narzędzia umożliwiające generowanie szablonów usługi Azure Resource Manager z [projektów Stream Analytics Visual Studio Code](quick-create-vs-code.md). Może służyć w Windows, macOS i Linux bez konieczności instalowania programu Visual Studio Code.
 
-Po utworzeniu [pobrano pakiet](https://www.npmjs.com/package/azure-streamanalytics-cicd), użyj następującego polecenia w danych wyjściowych szablonów usługi Azure Resource Manager. Jeśli **outputPath** nie zostanie określony, szablony zostaną umieszczone w **Wdróż** folder w węźle projektu **bin** folderu.
+Po utworzeniu [pobrano pakiet](https://www.npmjs.com/package/azure-streamanalytics-cicd), użyj następującego polecenia w danych wyjściowych szablonów usługi Azure Resource Manager. **ScriptPath** argument jest ścieżka bezwzględna do **asaql** plik w projekcie. Upewnij się, że asaproj.json i JobConfig.json pliki znajdują się w tym samym folderze przy użyciu pliku skryptu. Jeśli **outputPath** nie zostanie określony, szablony zostaną umieszczone w **Wdróż** folder w węźle projektu **bin** folderu.
 
 ```powershell
-asa-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+```
+Przykład (w systemie macOS)
+```powershell
+azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
 Gdy projekt Stream Analytics Visual Studio Code pomyślnie skompilowana, generuje ona następujące pliki szablonów dwie usługi Azure Resource Manager w obszarze **bin / Debug na detalicznego / Deploy** folderu: 
@@ -38,7 +42,7 @@ Gdy projekt Stream Analytics Visual Studio Code pomyślnie skompilowana, generuj
 
        [ProjectName].JobTemplate.parameters.json   
 
-Domyślne parametry w pliku parameters.json pochodzą z ustawień w projekcie programu Visual Studio. Jeśli chcesz wdrożyć do innego środowiska, w związku z tym Zastąp parametry.
+Domyślne parametry w pliku parameters.json pochodzą z ustawieniami w projekcie programu Visual Studio Code. Jeśli chcesz wdrożyć do innego środowiska, w związku z tym Zastąp parametry.
 
 > [!NOTE]
 > Za pomocą poświadczeń domyślnych wartości są ustawione na wartość null. Jesteś **wymagane** można ustawić wartości przed wdrożeniem w chmurze.

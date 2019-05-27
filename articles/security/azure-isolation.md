@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8142551d9c20c18d83c256b3f07a0deb291577c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60588538"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147654"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
-### <a name="overview"></a>Omówienie
+### <a name="overview"></a>Przegląd
 Ułatwiają Azure bieżących i przyszłych klientów zrozumieć i korzystanie z różnych funkcji zabezpieczeń dostępnych w i związanych z platformą Azure, firma Microsoft opracowała szereg oficjalne dokumenty, przeglądy zabezpieczeń, najlepsze rozwiązania i Listy kontrolne.
 Tematy zakresu pod względem szczegółowo i są okresowo aktualizowane. Ten dokument jest częścią tej serii, zgodnie z opisem w następującej sekcji abstrakcyjne.
 
@@ -72,7 +72,7 @@ Użytkownikom, grupom i aplikacjom z tego katalogu można zarządzać zasobów w
 
 Diagnostyka i koniecznych konserwacji działający model, korzystającej z systemu podniesienie uprawnień just in time jest wymagane i używane. Usługa Azure AD Privileged Identity Management (PIM) wprowadza koncepcję uprawnionego administratora. [Uprawnionymi administratorami](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) powinny być użytkownicy, którzy muszą uprzywilejowanego dostępu teraz, a następnie, ale nie każdego dnia. Rola pozostaje nieaktywna, a gdy użytkownik potrzebuje dostępu, przechodzi proces aktywacji i staje się aktywnym administratorem na określony z góry czas.
 
-![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
+![Usługa Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
 Usługa Azure Active Directory obsługuje każdą dzierżawę we własnym kontenerze chronione, za pomocą zasad i uprawnień, aby i w kontenerze wyłącznie do i są zarządzane przez dzierżawcę.
 
@@ -137,6 +137,7 @@ Korzystanie z rozmiarem izolowane gwarantuje, że maszyna wirtualna będzie tylk
 * Maszyna wirtualna Standard_G5
 * Standardowa_ds15_v2
 * Maszyna wirtualna Standard_D15_v2
+* Standard_F72s_v2
 
 Dowiedz się więcej na temat każdej izolowanej dostępny rozmiar [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
@@ -246,7 +247,7 @@ W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://docs.m
 
 -   [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS.
 
-#### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 [Usługa Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) dla maszyn wirtualnych (VM) ułatwia zaspakajanie organizacyjnych bezpieczeństwa i zgodności z przepisami dzięki możliwości szyfrowania dysków maszyny Wirtualnej (w tym dysków rozruchowych i danych) przy użyciu kluczy i zasad w kontrolce [klucz usługi Azure Vault](https://azure.microsoft.com/services/key-vault/).
 
 Rozwiązanie Disk Encryption for Windows opiera się na [szyfrowania dysków Microsoft BitLocker](https://technet.microsoft.com/library/cc732774.aspx), a rozwiązanie dla systemu Linux opiera się na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
@@ -303,7 +304,7 @@ Serwerów logicznych i baz danych są specyficzne dla SQL platformy Azure pojęc
 
 Serwery SQL Azure nie są fizycznej lub wystąpień maszyn wirtualnych, zamiast tego są one kolekcji baz danych, udostępnianie zasady zarządzania i zabezpieczeń, które są przechowywane w tak zwany "wzorca logicznego" bazy danych.
 
-![Usługi SQL Azure](./media/azure-isolation/azure-isolation-fig11.png)
+![SQL Azure](./media/azure-isolation/azure-isolation-fig11.png)
 
 Logicznej głównej bazy danych obejmują:
 

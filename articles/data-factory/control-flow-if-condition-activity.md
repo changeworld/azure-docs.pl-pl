@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153472"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w usłudze Azure Data Factory
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
@@ -66,11 +66,11 @@ Działanie If Condition pełni taką samą rolę, co instrukcja if w językach p
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania warunku if. | String | Yes
-type | Musi być równa **IfCondition** | String | Yes
-expression | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Yes
-ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Tablica | Yes
-ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Tablica | Yes
+name | Nazwa działania warunku if. | String | Tak
+typ | Musi być równa **IfCondition** | String | Tak
+expression | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Tak
+ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Tablica | Tak
+ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Tablica | Tak
 
 ## <a name="example"></a>Przykład
 Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określana przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection jest spełniony, dane są kopiowane do outputPath1. Ponadto jeśli wartość routeSelection ma wartość false, dane są kopiowane do outputPath2. 

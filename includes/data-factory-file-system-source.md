@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1300b15f91a6522a2c2a1c19f2999947abaac083
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61257200"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161502"
 ---
 W działaniu kopiowania, gdy źródłem jest typu **FileSystemSource**, w sekcji typeProperties dostępne są następujące właściwości:
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| cykliczne |Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
+| recursive |Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dd5dc53311c8611a4ca4d174401bba797fe5c4b1
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505859"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146328"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>Włącz logowanie za pomocą ustawień diagnostycznych
 
@@ -25,7 +25,7 @@ ms.locfileid: "58505859"
 
 3. Wybierz **Włącz diagnostykę**.
 
-   ![Włączanie diagnostyki](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
+   ![Włącz diagnostykę](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
 4. Nazwij ustawień diagnostycznych.
 
@@ -33,7 +33,7 @@ ms.locfileid: "58505859"
 
    * Zarchiwizuj na koncie magazynu
    * Przesyłaj strumieniowo do centrum zdarzeń
-   * Wysyłanie do usługi Log Analytics
+   * Wyślij do usługi Log Analytics
 
 6. Wybierz operacje, które chcesz monitorować, a następnie włączyć dzienniki dla tych operacji. Dostępne są następujące operacje, które można raportować ustawień diagnostycznych:
 

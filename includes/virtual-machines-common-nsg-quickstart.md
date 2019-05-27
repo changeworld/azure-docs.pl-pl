@@ -2,19 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines-windows
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-origin.date: 09/12/2018
-ms.date: 11/12/2018
-ms.author: v-yeche
+ms.date: 09/12/2018
+ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405398"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66154783"
 ---
 Otwieranie portu lub utworzenie punktu końcowego, na maszynę wirtualną (VM) na platformie Azure przez utworzenie filtru sieci dla podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontroli ruchu przychodzącego i wychodzącego, możesz umieścić na sieciowej grupy zabezpieczeń, który jest dołączony do zasobu, który odbiera ruch.
 
@@ -34,4 +33,8 @@ Po utworzeniu maszyny Wirtualnej, który jest skonfigurowany do obsługi żąda�
 
 3. Kojarzenie sieciowej grupy zabezpieczeń przy użyciu interfejsu sieciowego maszyny Wirtualnej lub podsieci.
 
-    Mimo że w tym przykładzie używa prostej reguły, aby zezwolić na ruch HTTP, umożliwia także sieciowych grup zabezpieczeń i reguł do utworzenia bardziej złożonych konfiguracji sieci.
+Mimo że w tym przykładzie używa prostej reguły, aby zezwolić na ruch HTTP, umożliwia także sieciowych grup zabezpieczeń i reguł do utworzenia bardziej złożonych konfiguracji sieci. 
+
+
+
+

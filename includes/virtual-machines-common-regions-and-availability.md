@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542632"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156247"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regiony i dostępność maszyn wirtualnych na platformie Azure
 Platforma Azure działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
@@ -95,6 +95,8 @@ Zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/detail
 Zestaw dostępności to logiczne grupowanie maszyn wirtualnych w obrębie centrum danych, który umożliwia platformie Azure zrozumienie sposobu kompilacji aplikacji w celu zapewnienia nadmiarowości i dostępności. Zaleca się, że co najmniej dwie maszyny wirtualne są tworzone w zestawie w celu zapewnienia wysokiej dostępności aplikacji i w celu spełnienia dostępności [99,95% umowy SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Nie ma żadnych kosztów dla zestawu dostępności się, zapłacisz tylko za każdym wystąpieniu maszyny Wirtualnej, którą tworzysz. Gdy używa pojedynczej maszyny Wirtualnej [Azure — wersja premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd), umowy SLA platformy Azure mają zastosowanie w przypadku zdarzeń nieplanowanej konserwacji.
 
 Zestaw dostępności składa się z dwa dodatkowe grupowania, które chronią przed awariami sprzętu i zezwala na aktualizacje, które można bezpiecznie stosowane — błędów domenach i Aktualizacja domeny. Zapoznaj się z dodatkowymi informacjami na temat zarządzania dostępnością [maszyn wirtualnych z systemem Linux](../articles/virtual-machines/linux/manage-availability.md) lub [maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/manage-availability.md).
+
+Podczas przydzielania wiele zasobów obliczeniowych, które nie używają konstrukcje wysokiej dostępności domen błędów istnieje wysokie prawdopodobieństwo antykoligację, jednak tej konfiguracji zapobiegającej koligacji nie jest gwarantowana.
 
 ### <a name="fault-domains"></a>Domeny błędów
 Domena błędów to logiczne grupowanie odpowiednich elementów sprzętu, które współdzielą źródła zasilania i przełącznik sieciowy, podobnie jak w przypadku regału w lokalnym centrum danych. Podczas tworzenia maszyn wirtualnych w zestawie dostępności platforma Azure automatycznie rozdziela maszyny wirtualne między domeny błędów. To podejście ogranicza wpływ potencjalnych awarii sprzętu fizycznego, przestojów sieci lub przerw w dostawie prądu.

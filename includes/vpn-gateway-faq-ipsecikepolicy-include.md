@@ -2,19 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 12/14/2018
-ms.date: 12/24/2018
-ms.author: v-jay
+ms.date: 12/14/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456480"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151035"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Czy niestandardowe zasady protokołu IPsec/IKE są obsługiwane na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
 Niestandardowe zasady protokołu IPsec/IKE są obsługiwane na bramach sieci VPN **VpnGw1, VpnGw2, VpnGw3, Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU **nie** jest obsługiwana.

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: d5b08a22aa3896fb7158ef3535b115e3e0189142
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596982"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158954"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -374,7 +374,7 @@ Po ponownym zainstalowaniu kontrolera sieci, należy ponownie wdrożyć zasobnik
 Użytkowników, uzyskiwanie dostępu do kontrolera Azure Dev miejsca do magazynowania musi mieć dostęp do odczytu administratora *plik kubeconfig* w klastrze AKS. Na przykład, to uprawnienie jest dostępne w [wbudowanej roli administratora klastra usługi Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Użytkownik, uzyskiwanie dostępu do kontrolera Azure Dev miejsca do magazynowania musi mieć również *Współautor* lub *właściciela* rolę RBAC dla kontrolera.
 
 ### <a name="try"></a>Spróbuj
-Dostępne są szczegółowe informacje na temat aktualizowania uprawnień użytkownika, dla klastra usługi AKS [tutaj](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
+Dostępne są szczegółowe informacje na temat aktualizowania uprawnień użytkownika, dla klastra usługi AKS [tutaj](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
 
 Aby zaktualizować rolę RBAC użytkownika dla kontrolera:
 

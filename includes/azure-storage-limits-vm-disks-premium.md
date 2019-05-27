@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386339"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148197"
 ---
 **Dyski Premium niezarządzanej maszyny wirtualnej: Limity dla konta**
 
@@ -26,7 +26,7 @@ ms.locfileid: "60386339"
 | Typ dysku magazynu Premium Storage | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- |
 | Rozmiar dysku |128 GiB |512 GiB |1,024 GiB (1 TB) |2,048 GiB (2 TB)|4,095 GiB (4 TB)|
-| Maksymalna liczba IOPS na dysk |500 |2300 |5000 |7500 |7500 |
+| Maksymalna liczba IOPS na dysk |500 |2,300 |5000 |7500 |7,500 |
 | Maksymalna przepływność na dysk |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
 | Maksymalna liczba dysków na konto magazynu |280 |70 |35 | 17 | 8 |
 

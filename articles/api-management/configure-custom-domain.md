@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693610"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141297"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny 
 
@@ -36,8 +36,6 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 + Wystąpienie usługi APIM. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
 + Nazwa domeny niestandardowej, którego właścicielem jest użytkownik. Nazwa domeny niestandardowej, którego chcesz użyć, należy kupowane niezależnie i hostowany na serwerze DNS. W tym temacie nie daje instrukcje na temat sposobu hostowania niestandardowej nazwy domeny.
 + Musi mieć ważny certyfikat przy użyciu klucza publicznego i prywatnego (. PLIK PFX). Podmiotu lub alternatywna nazwa podmiotu (SAN) musi być zgodna z nazwą domeny (umożliwia usługi APIM, oznacza bezpieczne Uwidacznianie adresy URL za pośrednictwem protokołu SSL).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Użyj witryny Azure portal, aby ustawić niestandardową nazwę domeny
 

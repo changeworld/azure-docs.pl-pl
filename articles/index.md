@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b36302e349327354e31ef4ea5adb9842d04ed4f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c1c33cab46082d1d3b748b45b40a7928801b2e55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149332"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151257"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -649,6 +649,12 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                     <h3>Azure Stack</h3>
                                     <ul>
                                         <li>
+                                            <a href="/azure-stack">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-stack/">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Operator usługi Azure Stack</p>
@@ -658,6 +664,11 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <a href="/azure/azure-stack/user">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Użytkownik usługi Azure Stack</p>
+                                            </a>
+                                        </li>                                        <li>
+                                            <a href="/azure-stack/asdk/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Zestaw Azure Stack Development Kit (ASDK)</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1776,7 +1787,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                         <li>
                                             <a href="/azure/azure-portal/">
                                                 <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
-                                                <p>Azure Portal</p>
+                                                <p>Portal Azure</p>
                                             </a>
                                         </li>
                                         <li>
@@ -5536,7 +5547,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Portal</h3>
+                                                    <h3>Portal Azure</h3>
                                                     <p>Tworzenie i monitorowanie wszystkich produktów platformy Azure oraz zarządzanie nimi przy użyciu pojedynczej, ujednoliconej konsoli</p>
                                                 </div>
                                             </div>
@@ -5959,6 +5970,25 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         <a href="#stack">Azure Stack</a>
                         <ul id="stack" class="cardsA">
                             <li>
+                                <a href="/azure-stack">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Stack</h3>
+                                                    <p>Rozszerz usługi platformy Azure i możliwości na środowisko lokalne, aby tworzyć oraz wdrażać aplikacje chmury hybrydowej i aplikacje brzegowe ponad granicami chmury</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-stack/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -5970,7 +6000,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Operator usługi Azure Stack</h3>
-                                                    <p>Dostarczanie usług platformy Azure z własnego centrum danych za pomocą nowej platformy chmury hybrydowej</p>
+                                                    <p>Dowiedz się, jak zarządzać infrastrukturą zintegrowanych systemów usługi Azure Stack i oferować usługi</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5989,6 +6019,23 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <div class="cardText">
                                                 <h3>Użytkownik usługi Azure Stack</h3>
                                                 <p>Korzystanie z usług i kompilowanie aplikacji na potrzeby usługi Azure Stack</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure-stack/asdk/">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure-stack.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Zestaw Azure Stack Development Kit (ASDK)</h3>
+                                                <p>Środowisko nieprodukcyjne do oceny i testowania</p>
                                             </div>
                                         </div>
                                     </div>
@@ -6266,7 +6313,7 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure Portal</h3>
+                                                <h3>Portal Azure</h3>
                                                 <p>
                                                     <a href="/azure/azure-portal/">Wprowadzenie</a>
                                                 </p>
