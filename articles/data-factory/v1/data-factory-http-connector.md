@@ -55,7 +55,7 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla protokołu
 | --- | --- | --- |
 | type | **Typu** właściwość musi być równa **Http**. | Yes |
 | url | Podstawowy adres URL do serwera sieci web. | Yes |
-| Element authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, i **ClientCertificate**. <br><br> Można znaleźć w kolejnych sekcjach, w tym artykule, aby więcej właściwości i przykłady kodu JSON dla tych typów uwierzytelniania. | Yes |
+| authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, i **ClientCertificate**. <br><br> Można znaleźć w kolejnych sekcjach, w tym artykule, aby więcej właściwości i przykłady kodu JSON dla tych typów uwierzytelniania. | Yes |
 | enableServerCertificateValidation | Określa, czy włączyć obsługę weryfikacji certyfikatu SSL serwera, jeśli źródło jest serwerem sieci web protokołu HTTPS. Gdy serwer protokołu HTTPS używa certyfikatu z podpisem własnym, ustaw tę opcję na **false**. | Nie<br /> (wartość domyślna to **true**) |
 | gatewayName | Nazwa wystąpienia bramy zarządzania danymi na potrzeby połączenia ze źródłem HTTP w środowisku lokalnym. | Tak, jeśli kopiujesz dane ze źródła HTTP w środowisku lokalnym |
 | encryptedCredential | Zaszyfrowane poświadczenia umożliwiające dostęp do punktu końcowego HTTP. Wartość jest generowana automatycznie podczas konfigurowania informacji o uwierzytelnianiu za pomocą Kreatora kopiowania lub za pomocą **ClickOnce** okno dialogowe. | Nie<br /> (dotyczy tylko wtedy, gdy kopiowanie danych z lokalnego serwera HTTP) |
@@ -68,7 +68,7 @@ Ustaw **authenticationType** do **podstawowe**, **szyfrowanego**, lub **Windows*
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| nazwa użytkownika | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
+| userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
 | password | Hasło dla użytkownika (**username**). | Yes |
 
 **Przykład: Uwierzytelnianie podstawowe, szyfrowane lub Windows**
@@ -166,7 +166,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
 | requestBody | Treść żądania HTTP. | Nie |
 | format | Jeśli chcesz *pobierają dane z punktu końcowego HTTP jako — jest* bez podczas analizowania, Pomiń **format** ustawienie. <br><br> Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 **Przykład: Metoda GET (ustawienie domyślne)**
 
