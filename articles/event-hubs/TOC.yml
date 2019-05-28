@@ -15,7 +15,7 @@
   items:
     - name: Tworzenie centrum zdarzeń
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: event-hubs-create.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: event-hubs-quickstart-cli.md
@@ -51,8 +51,6 @@
           href: event-hubs-capture-python.md
     - name: Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-    - name: Tworzenie dedykowanego klastra usługi Event Hubs
-      href: event-hubs-dedicated-cluster-create-portal.md
 - name: Samouczki
   items:
     - name: Wizualizowanie danych dotyczących anomalii w strumieniach danych usługi Event Hubs
@@ -86,14 +84,18 @@
       href: event-hubs-event-processor-host.md
     - name: Przewodnik programowania
       href: event-hubs-programming-guide.md
-    - name: Tożsamość zarządzana dla zasobów platformy Azure
-      href: event-hubs-managed-service-identity.md
-    - name: Kontrola dostępu oparta na rolach (wersja zapoznawcza)
-      href: event-hubs-role-based-access-control.md
-    - name: Geograficzne odzyskiwanie po awarii i replikacja geograficzna
-      href: event-hubs-geo-dr.md
-    - name: Omówienie modelu uwierzytelniania i zabezpieczeń
-      href: event-hubs-authentication-and-security-model-overview.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Tożsamość zarządzana dla zasobów platformy Azure
+          href: event-hubs-managed-service-identity.md
+        - name: Kontrola dostępu oparta na rolach (wersja zapoznawcza)
+          href: event-hubs-role-based-access-control.md
+        - name: Geograficzne odzyskiwanie po awarii i replikacja geograficzna
+          href: event-hubs-geo-dr.md
+        - name: Omówienie modelu uwierzytelniania i zabezpieczeń
+          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Atrybuty zabezpieczeń
+          href: event-hubs-security-attributes.md
     - name: Dostępność i spójność
       href: event-hubs-availability-and-consistency.md
     - name: Przewodnik dotyczący protokołu AMQP 1.0

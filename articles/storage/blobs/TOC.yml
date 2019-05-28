@@ -364,13 +364,17 @@
           href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Transfer danych
           items:
-            - name: Narzędzie AzCopy (wersja 10)
-              href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Narzędzie AzCopy w systemie Windows (wersja 8)
-              href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Narzędzie AzCopy w systemie Linux (wersja 8)
-              href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Używanie usługi Azure Data Factory
+            - name: Narzędzie AzCopy
+              items:
+                - name: Rozpoczęcie pracy
+                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Używanie z obiektami blob
+                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Używanie z zasobnikami usługi Amazon S3
+                  href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Konfigurowanie, optymalizowanie i rozwiązywanie problemów'
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Instalowanie usługi Blob Storage jako systemu plików w systemie Linux
               href: storage-how-to-mount-container-linux.md
@@ -571,6 +575,14 @@
       items:
         - name: Pozyskiwanie danych
           items:
+            - name: Narzędzie AzCopy
+              items:
+                - name: Rozpoczęcie pracy
+                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Używanie z usługą Azure Data Lake Storage Gen2
+                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Konfigurowanie, optymalizowanie i rozwiązywanie problemów'
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Za pomocą polecenia Distcp
               href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Za pomocą usługi Azure Data Factory

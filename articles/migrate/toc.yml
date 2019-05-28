@@ -28,36 +28,8 @@
           href: migrate-best-practices-networking.md
         - name: Najlepsze rozwiązania dotyczące określania kosztów i rozmiarów po migracji
           href: migrate-best-practices-costs.md
-    - name: Seria dotycząca migracji w firmie Contoso
-      items:
-        - name: 1. Contoso — omówienie migracji
-          href: contoso-migration-overview.md
-        - name: 2. Contoso — wdrażanie infrastruktury platformy Azure
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso — ocena zasobów lokalnych pod kątem migracji na platformę Azure
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w wystąpieniu zarządzanym usługi Azure SQL Database
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso — ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w zawsze włączonych grupach dostępności serwera usługi Azure SQL
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso — ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso — ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i w usłudze Azure MySQL
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso — refaktoryzowanie aplikacji w usługach Azure Web Apps i Azure SQL Database
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso — refaktoryzowanie aplikacji systemu Linux w usługach Azure Web Apps i Azure MySQL
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso — migracja serwera TFS do usługi Azure DevOps Services
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso — zmiana architektury aplikacji w kontenerach platformy Azure i usłudze Azure SQL Database
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso — przebudowa aplikacji na platformie Azure
-          href: contoso-migration-rebuild.md
-        - name: 14. Contoso — skalowanie migracji
-          href: contoso-migration-scale.md
+    - name: Przykłady migracji — seria Contoso
+      href: contoso-migration-overview.md
     - name: Odnajdywanie i ocenianie w dużym środowisku
       href: how-to-scale-assessment.md
     - name: Grupowanie maszyn
