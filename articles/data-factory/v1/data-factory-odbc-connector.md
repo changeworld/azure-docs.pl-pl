@@ -69,9 +69,9 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla OD
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesOdbc** |Tak |
 | connectionString |Poświadczenia dostępu swobodnego część ciąg połączenia i opcjonalnie zaszyfrowane poświadczenia. Zobacz przykłady w poniższych sekcjach. <br/><br/>Można określić parametry połączenia za pomocą wzorca, takich jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć systemu DSN (nazwa źródła danych), możesz skonfigurować na maszynie bramy przy użyciu `"DSN=<name of the DSN>;"` (muszą nadal określić część poświadczeń w połączonej usłudze odpowiednio). |Tak |
-| poświadczenia |Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nie |
+| credential |Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nie |
 | authenticationType |Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC. Możliwe wartości to: Anonimowy i podstawowa. |Tak |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Nie |
+| userName |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, aby nawiązać połączenie z magazynem danych ODBC. |Tak |
 
