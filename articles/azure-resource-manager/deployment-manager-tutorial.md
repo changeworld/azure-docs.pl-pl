@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/02/2019
+ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466301"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238851"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: Azure Deployment Manager za pomocą szablonów usługi Resource Manager (publiczna wersja zapoznawcza)
 
@@ -55,7 +55,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 * Pewne doświadczenie w opracowywaniu [szablonów usługi Azure Resource Manager](./resource-group-overview.md).
-* Usługa Azure Deployment Manager jest w prywatnej wersji zapoznawczej. Aby utworzyć konto przy użyciu usługi Azure Deployment Manager, wypełnij [arkusz tworzenia konta](https://aka.ms/admsignup). 
 * Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Polecenia cmdlet usługi Deployment Manager. Aby zainstalować te polecenia cmdlet wersji wstępnej, potrzebujesz najnowszej wersji modułu PowerShellGet. Aby uzyskać najnowszą wersję, zobacz [Installing PowerShellGet (Instalowanie modułu PowerShellGet)](/powershell/gallery/installing-psget). Po zainstalowaniu modułu PowerShellGet zamknij okno programu PowerShell. Otwórz nowe okno programu PowerShell z podwyższonym poziomem uprawnień i użyj następującego polecenia:
 
@@ -106,18 +105,18 @@ Folder ArtifactStore z plików do pobrania zawiera dwa foldery:
 
 Dwie wersje (1.0.0.0 i 1.0.0.1) dotyczą [wdrażania poprawek](#deploy-the-revision). Chociaż artefakty szablonu oraz artefakty binarne mają dwie wersje, tylko artefakty binarne różnią się w tych dwóch wersjach. W praktyce artefakty binarne są aktualizowane częściej w porównaniu do artefaktów szablonu.
 
-1. Otwórz plik **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json** w edytorze tekstów. Jest to podstawowy szablon służący do tworzenia konta magazynu.  
-2. Otwórz plik **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**. 
+1. Otwórz plik **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json** w edytorze tekstów. Jest to podstawowy szablon służący do tworzenia konta magazynu.
+2. Otwórz plik **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**.
 
     ![Szablon tworzenia aplikacji internetowej w samouczku dotyczącym usługi Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
     Szablon wywołuje pakiet wdrożeniowy, który zawiera pliki aplikacji internetowej. W tym samouczku skompresowany pakiet zawiera tylko plik index.html.
-3. Otwórz plik **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**. 
+3. Otwórz plik **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Szablon tworzenia aplikacji internetowej w samouczku dotyczącym usługi Azure Deployment Manager — parametry containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
 
     Wartość identyfikatora URI deployPackageUri to ścieżka do pakietu wdrożeniowego. Parametr zawiera zmienną **$containerRoot**. Wartość zmiennej $containerRoot jest zapewniana w [szablonie wprowadzania](#create-the-rollout-template) przez złączenie lokalizacji SAS źródła artefaktu, folderu głównego artefaktu oraz identyfikatora URI deployPackageUri.
-4. Otwórz plik **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.  
+4. Otwórz plik **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.
 
     ```html
     <html>
@@ -159,7 +158,7 @@ Musisz utworzyć tożsamość zarządzaną przypisaną przez użytkownika i skon
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. W portalu wybierz opcję **Subskrypcje** z menu po lewej stronie, a następnie wybierz swoją subskrypcję.
-4. Wybierz opcję **Kontrola dostępu (IAM)**, a następnie wybierz opcję **Dodaj przypisanie roli**.
+4. Wybierz opcję **Kontrola dostępu (IAM)** , a następnie wybierz opcję **Dodaj przypisanie roli**.
 5. Wprowadź lub wybierz poniższe wartości:
 
     ![Samouczek dotyczący usługi Azure Deployment Manager — kontrola dostępu tożsamości zarządzanej przypisanej przez użytkownika](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)
@@ -257,7 +256,7 @@ Poniższy zrzut ekranu przedstawia definicję kroku oczekiwania:
 
 ![Samouczek dotyczący usługi Azure Deployment Manager — krok oczekiwania zasobów szablonu wprowadzania](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-wait-step.png)
 
-Czas trwania używa [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). **PT1M** (wymagane są wielkie litery) to przykład 1-minutowego oczekiwania. 
+Czas trwania używa [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). **PT1M** (wymagane są wielkie litery) to przykład 1-minutowego oczekiwania.
 
 Poniższy zrzut ekranu przedstawia tylko niektóre części definicji wprowadzania:
 
@@ -278,7 +277,7 @@ Możesz utworzyć plik parametrów używany z szablonem wprowadzania.
 2. Wprowadź wartości parametrów:
 
     * **namePrefix**: Wprowadź ciąg zawierający 4–5 znaków. Ten prefiks jest używany do tworzenia unikatowych nazw zasobów platformy Azure.
-    * **azureResourceLocation**: Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji Środkowe stany USA lub **Wschodnie stany USA 2**.
+    * **azureResourceLocation**: Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
     * **artifactSourceSASLocation**: Identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
     * **binaryArtifactRoot**: Użyj wartości **binaries/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
     * **managedIdentityID**: Wprowadź tożsamość zarządzaną przypisaną przez użytkownika. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity). Składnia jest następująca:
@@ -292,13 +291,13 @@ Możesz utworzyć plik parametrów używany z szablonem wprowadzania.
 
 ## <a name="deploy-the-templates"></a>Wdrażanie szablonów
 
-Programu Azure PowerShell można użyć do wdrażania szablonów. 
+Programu Azure PowerShell można użyć do wdrażania szablonów.
 
 1. Uruchom skrypt, aby wdrożyć topologię usługi.
 
     ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"  
+    $location = "Central US"
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
 
     # Create a resource group
@@ -429,7 +428,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
     * **&lt;namePrefix>ServiceWUSrg**: zawiera zasoby zdefiniowane przez usługę ServiceWUS.
     * **&lt;namePrefix>ServiceEUSrg**: zawiera zasoby zdefiniowane przez usługę ServiceEUS.
     * Grupa zasobów dla tożsamości zarządzanej zdefiniowanej przez użytkownika.
-3. Wybierz nazwę grupy zasobów.  
+3. Wybierz nazwę grupy zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 5. Powtórz dwa ostatnie kroki, aby usunąć inne grupy zasobów utworzone w ramach tego samouczka.
 
