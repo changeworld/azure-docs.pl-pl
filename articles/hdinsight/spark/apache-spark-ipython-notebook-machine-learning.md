@@ -6,20 +6,20 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 87efac96aa0120bfcc804f7a2a49a5ac3da1036b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719071"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252881"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Samouczek: tworzenie aplikacji uczenia maszynowego platformy Apache Spark w usłudze HDInsight 
 
 W tym samouczku dowiesz się, jak utworzyć aplikację uczenia maszynowego platformy [Apache Spark](https://spark.apache.org/) dla usługi Azure HDInsight za pomocą środowiska [Jupyter Notebook](https://jupyter.org/). 
 
-[MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) to skalowalna biblioteka uczenia maszynowego platformy Spark, składająca się ze wspólnych narzędzi i algorytmów uczenia się, w tym klasyfikacji, regresji, klastrowania, filtrowania z wykorzystaniem współpracy, zmniejszania wymiarowości, a także źródłowych typów pierwotnych optymalizacji.
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) to skalowalna biblioteka uczenia maszynowego platformy Spark, składająca się ze wspólnych narzędzi i algorytmów uczenia się, w tym klasyfikacji, regresji, klastrowania, filtrowania z wykorzystaniem współpracy, zmniejszania wymiarowości, a także źródłowych typów pierwotnych optymalizacji.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Wymagania wstępne:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Obowiązują następujące wymagania:
+* Klaster Apache Spark w usłudze HDInsight. Zobacz [utworzyć klaster platformy Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-* Zapoznanie się z przewodnikiem [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Znajomość zagadnień dotyczących używania notesów Jupyter za pomocą platformy Spark w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz [Załaduj dane i uruchamiać zapytania z platformy Apache Spark w HDInsight](./apache-spark-load-data-run-query.md).
 
 ## <a name="understand-the-data-set"></a>Opis zestawu danych
 
-Aplikacja korzysta z przykładowych danych zawartych w pliku HVAC.csv, który jest domyślnie dostępny we wszystkich klastrach. Plik znajduje się w lokalizacji **\HdiSamples\HdiSamples\SensorSampleData\hvac**. Dane dotyczą temperatury docelowej i temperatury rzeczywistej niektórych budynków, wyposażonych w instalacje grzewczo-wentylacyjne (HVAC). Kolumna **System** zawiera identyfikatory systemów, a kolumna **SystemAge** — liczbę lat użytkowania instalacji grzewczo-wentylacyjnej w danym budynku. Na podstawie danych — temperatury docelowej oraz identyfikatora i liczby lat użytkowania systemu — można przewidzieć warunki temperaturowe (ciepło lub zimno) w budynku.
+Aplikacja korzysta z przykładowych danych zawartych w pliku HVAC.csv, który jest domyślnie dostępny we wszystkich klastrach. Plik znajduje się w `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Dane dotyczą temperatury docelowej i temperatury rzeczywistej niektórych budynków, wyposażonych w instalacje grzewczo-wentylacyjne (HVAC). Kolumna **System** zawiera identyfikatory systemów, a kolumna **SystemAge** — liczbę lat użytkowania instalacji grzewczo-wentylacyjnej w danym budynku. Na podstawie danych — temperatury docelowej oraz identyfikatora i liczby lat użytkowania systemu — można przewidzieć warunki temperaturowe (ciepło lub zimno) w budynku.
 
 ![Migawka danych używanych w przykładzie uczenia maszynowego platformy Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Migawka danych używanych w przykładzie uczenia maszynowego platformy Spark")
 
@@ -60,6 +60,7 @@ W tej aplikacji [potok uczenia maszynowego](https://spark.apache.org/docs/2.2.0/
     from pyspark.mllib.regression import LabeledPoint
     from numpy import array
     ```
+
 3. Załaduj dane (hvac.csv) i je przeanalizuj, a następnie je wykorzystaj do nauczenia modelu. 
 
     ```PySpark
@@ -96,7 +97,7 @@ W tej aplikacji [potok uczenia maszynowego](https://spark.apache.org/docs/2.2.0/
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    Aby uzyskać więcej informacji o potoku i jego działaniu, zobacz <a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Apache Spark machine learning pipeline</a> (Potok uczenia maszynowego platformy Apache Spark).
+    Aby uzyskać więcej informacji o potoku i jego działaniu, zobacz [Apache Spark machine learning pipeline](https://spark.apache.org/docs/latest/ml-pipeline.html) (Potok uczenia maszynowego platformy Apache Spark).
 
 5. Dopasuj potok do dokumentu szkoleniowego.
    
@@ -187,12 +188,7 @@ Klastry Apache Spark w usłudze HDInsight obejmują biblioteki Anaconda. Zawiera
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-* Tworzenie aplikacji uczenia maszynowego platformy Apache Spark
-
-Przejdź do następnego samouczka, aby dowiedzieć się, jak używać środowiska IntelliJ IDEA na potrzeby zadań Spark. 
+W tym samouczku pokazaliśmy ci, jak tworzyć platformy Apache Spark aplikacji uczenia maszynowego dla usługi Azure HDInsight za pomocą notesu Jupyter. Przejdź do następnego samouczka, aby dowiedzieć się, jak używać środowiska IntelliJ IDEA na potrzeby zadań Spark. 
 
 > [!div class="nextstepaction"]
 > [Utwórz aplikację Scala Maven za pomocą środowiska IntelliJ](./apache-spark-create-standalone-application.md)
-

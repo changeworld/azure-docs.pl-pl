@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861527"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253074"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -29,7 +29,7 @@ W tym samouczku umożliwisz użytkownikom resetowanie swoich haseł z ekranu log
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Musisz mieć co najmniej system Windows 10 z aktualizacją z kwietnia 2018 r., a urządzenie musi być:
+* Użytkownik musi działać co najmniej system Windows 10 w wersji z kwietnia 2018 r aktualizacji (v1803) i urządzenia muszą być albo:
    * [dołączone do usługi Azure AD](../device-management-azure-portal.md) lub
    * [dołączone do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) z łącznością sieciową z kontrolerem domeny.
 * Musisz włączyć funkcję samoobsługowego resetowania haseł w usłudze Azure AD.
@@ -122,7 +122,7 @@ Podczas testowania tej funkcjonalności za pomocą pulpitu zdalnego lub rozszerz
 
 * Resetowanie hasła nie jest obecnie obsługiwane z poziomu pulpitu zdalnego.
 
-Jeśli zasady w wersjach systemu Windows 10 wcześniejszych niż 1809 wymagają naciśnięcia klawiszy Ctrl+Alt+Del, pozycja **Resetuj hasło** nie będzie działać.
+Jeśli wymagane jest wprowadzenie przez zasady w wersjach systemu Windows 10 przed v1809, Ctrl + Alt + Del **Resetuj hasło** nie będzie działać.
 
 Jeśli powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać.
 
