@@ -5,20 +5,22 @@ services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 05/16/2019
 ms.author: babanisa
-ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562904"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305073"
 ---
-# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Tworzenie własnego rozwiązania odzyskiwania po awarii dla tematów niestandardowych
-
+# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Tworzenie własnych odzyskiwanie po awarii dla tematy niestandardowe w usłudze Event Grid
 Odzyskiwanie po awarii powinno być skoncentrowane na odzyskiwaniu po poważnej utracie funkcjonalności aplikacji. Ten samouczek przeprowadzi Cię przez konfigurowanie architektury obsługi zdarzeń pod kątem odzyskiwania w przypadku pogorszenia kondycji usługi Event Grid w konkretnym regionie.
 
 Z tego samouczka dowiesz się, jak utworzyć aktywną/pasywną architekturę trybu failover dla tematów niestandardowych w usłudze Event Grid. Przygotujesz tryb failover przez dublowanie tematów i subskrypcji w dwóch regionach, a następnie zarządzanie tym trybem w przypadku pogorszenia się kondycji tematu. Architektura przedstawiona w tym samouczku realizuje tryb failover dla całego nowego ruchu. Należy pamiętać, że w przypadku tej konfiguracji nie można odzyskać zdarzeń już przetwarzanych do czasu przywrócenia dobrej kondycji problemowego regionu.
+
+> [!NOTE]
+> Usługa Event Grid obsługuje teraz automatyczne geograficznego odzyskiwania po awarii (GeoDR) po stronie serwera. Nadal można zaimplementować logikę odzyskiwania po awarii po stronie klienta, jeśli chcesz, aby większą kontrolę na temat procesu pracy awaryjnej. Aby uzyskać szczegółowe informacje dotyczące automatycznego GeoDR, zobacz [odzyskiwania po awarii replikacji geograficznej po stronie serwera w usłudze Azure Event Grid](geo-disaster-recovery.md).
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 

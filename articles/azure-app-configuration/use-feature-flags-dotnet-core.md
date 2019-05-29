@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f712cc34a3d41ea9472bf9428606cb378eef8c18
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244261"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299260"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Samouczek: Używanie flag funkcji w aplikacji platformy .NET Core
 
-Biblioteki .NET Core funkcja zarządzania umożliwiają idiomatyczną Implementowanie flagi funkcji w aplikacji .NET lub ASP.NET Core. Pozwalają one dodać flagi funkcji w kodzie bardziej deklaratywne, aby nie trzeba napisać cały `if` instrukcje dla nich ręcznie. Cykle życia flagi funkcji (na przykład, odświeżanie i pamięci podręcznej Flaga stanów, gwarancji stanu flagi, mają być niezmienialne podczas wywołania żądania) w którym zarządzają za sceną. Ponadto biblioteka ASP.NET Core oferuje integracji out-of--box, łącznie z akcji kontrolera MVC, widoki, trasy i oprogramowania pośredniczącego.
+Biblioteki .NET Core funkcja zarządzania umożliwiają idiomatyczną Implementowanie flagi funkcji w aplikacji .NET lub ASP.NET Core. Pozwalają one dodać flagi funkcji w kodzie bardziej deklaratywne, aby nie trzeba napisać cały `if` instrukcje dla nich ręcznie. W którym zarządzają cykle życia flagi funkcji (na przykład, odświeżanie i pamięci podręcznej Flaga stanów, gwarancji stanu flagi, mają być niezmienialne podczas wywołania żądania) w tle. Ponadto biblioteka ASP.NET Core oferuje integracji out-of--box, łącznie z akcji kontrolera MVC, widoki, trasy i oprogramowania pośredniczącego.
 
 [Dodawanie flag funkcji do aplikacji platformy ASP.NET Core](./quickstart-feature-flag-aspnet-core.md) przewodniku Szybki Start przedstawiono różne sposoby, aby dodać flag funkcji w aplikacji ASP.NET Core. W tym samouczku wyjaśniono one bardziej szczegółowo. Zobacz [dokumentacją dotyczącą zarządzania funkcji platformy ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410) pełną dokumentację.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * W części klucza aplikacji do sterowania dostępności funkcji, należy dodać flag funkcji.
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Jeśli używasz filtru flagi funkcji należy uwzględnić dodatkowe biblioteki i zarejestruj go. Poniższy przykład pokazuje, jak zastosować filtr wbudowanej funkcji o nazwie **PercentageFilter "** .
+Użyj filtrów w swojej flag funkcji, należy uwzględnić dodatkowe biblioteki i zarejestrowanie go. Poniższy przykład pokazuje, jak zastosować filtr wbudowanej funkcji o nazwie **PercentageFilter "** .
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -82,7 +82,7 @@ public class Startup
 }
 ```
 
-W celu efektywnego prowadzenia działalności, należy zachować flag funkcji spoza aplikacji i zarządzaj nimi osobno. Dzięki temu można zmodyfikować stany flagi w dowolnym momencie i zastosowaniem w aplikacji natychmiast tych zmian. Konfiguracja aplikacji zapewnia, scentralizowanym miejscem do organizowania i kontrolowanie Twojej funkcji flagi za pośrednictwem dedykowanego interfejsu użytkownika portalu i dostarcza flagi do aplikacji bezpośrednio za pomocą klienta platformy .NET Core bibliotek. Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji aplikacji jest za pośrednictwem dostawcy konfiguracji `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Można użyć tego pakietu NuGet w kodzie, dodając następujące polecenie, aby *Program.cs* pliku:
+W celu efektywnego prowadzenia działalności, należy zachować flag funkcji spoza aplikacji i zarządzaj nimi osobno. Dzięki temu można zmodyfikować stany flagi w dowolnym momencie i tych wprowadzonych zmian w aplikacji natychmiast. Konfiguracja aplikacji zapewnia, scentralizowanym miejscem do organizowania i kontrolowanie Twojej funkcji flagi za pośrednictwem dedykowanego interfejsu użytkownika portalu i dostarcza flagi do aplikacji bezpośrednio za pomocą klienta platformy .NET Core bibliotek. Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji aplikacji jest za pośrednictwem dostawcy konfiguracji `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Można użyć tego pakietu NuGet w kodzie, dodając następujące polecenie, aby *Program.cs* pliku:
 
 ```csharp
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;

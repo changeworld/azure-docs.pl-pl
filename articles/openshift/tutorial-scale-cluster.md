@@ -2,18 +2,18 @@
 title: Samouczek — skalowanie klastra usługi Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skalować klastra systemu Microsoft Azure Red Hat OpenShift przy użyciu wiersza polecenia platformy Azure
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/06/2019
-ms.openlocfilehash: f86b60fbe20fc630863d6e177d45f2c1f06a7863
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: b25e17e7064006a1421142dfcd32997cb4426e8e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080702"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305982"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>Samouczek: Skalowanie klastra usługi Azure Red Hat OpenShift
 

@@ -2,18 +2,18 @@
 title: Samouczek — Tworzenie klastra usługi Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć klaster systemu Microsoft Azure Red Hat OpenShift, za pomocą wiersza polecenia platformy Azure
 services: container-service
-author: TylerMSFT
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: d8d767b97e335feeb31851c89a9b21eddf7157ea
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962213"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306183"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Samouczek: Tworzenie klastra usługi Azure Red Hat OpenShift
 
@@ -183,7 +183,7 @@ Teraz użytkownik jest zalogowany do konsoli usługi klastra.
 
 ## <a name="step-5-install-the-openshift-cli"></a>Krok 5. Zainstaluj interfejs wiersza polecenia platformy OpenShift
 
-[Interfejsu wiersza polecenia platformy OpenShift](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (lub *narzędzia oC.*) zapewnia polecenia do zarządzania aplikacjami i niższego poziomu narzędzi do interakcji z różnych składników klastra platformy OpenShift.
+[Interfejsu wiersza polecenia platformy OpenShift](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (lub *narzędzia oC.* ) zapewnia polecenia do zarządzania aplikacjami i niższego poziomu narzędzi do interakcji z różnych składników klastra platformy OpenShift.
 
 W konsoli platformy OpenShift, kliknij znak zapytania w prawym górnym rogu według nazwy logowania i wybierz **narzędzi wiersza polecenia**.  Postępuj zgodnie z **najnowszej wersji** link, aby pobrać i zainstalować obsługiwanych oC. interfejsu wiersza polecenia dla systemów Linux, MacOS lub Windows.
 

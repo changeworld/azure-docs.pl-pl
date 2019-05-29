@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 7def77c0b1cf99fcc2cee77a28782dddaf2ac45d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65994545"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297773"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Szybki start: Wywoływanie usługi Analiza tekstu przy użyciu zestawu SDK języka Ruby
 
@@ -28,18 +28,12 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+* [Ruby 2.5.5 lub nowszy](https://www.ruby-lang.org/)
+* Analiza tekstu [zestawu SDK dla języka Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+ 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany podczas tworzenia konta. 
-
-Pobierz i zainstaluj wersję języka Ruby 2.5.5 w zależności od architektury Twojego systemu z [tutaj](https://rubyinstaller.org/downloads/).
-
-> [!Tip]
->  Można wywołać [punkty końcowe interfejsu API REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) bezpośrednio za pomocą języka Ruby, `Microsoft.Azure.CognitiveServices.TextAnalytics` zestawu SDK można łatwo wywołania usługi bez serializację i deserializację formatu JSON.
->
-> Kilka przydatnych linków:
-> - [Strona rozwiązania gem języka Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
-> - [Kod zestawu SDK w witrynie GitHub](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics/lib/v2.1/generated/azure_cognitiveservices_textanalytics)
 
 <a name="RubyProject"></a>
 

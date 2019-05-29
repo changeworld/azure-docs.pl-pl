@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 24869981595cd68eb833f7b176e17a2683127945
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787915"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306752"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage
 
@@ -40,7 +40,7 @@ W celu ukończenia tego samouczka:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+* Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
   - **Tworzenie aplikacji na platformie Azure**
 
   ![Tworzenie aplikacji na platformie Azure (w Internecie i w chmurze)](media/storage-create-geo-redundant-storage/workloads.png)
@@ -82,6 +82,8 @@ Wykonaj następujące kroki, aby utworzyć konto magazynu geograficznie nadmiaro
    | **Model wdrażania** | Resource Manager  | Usługa Resource Manager oferuje najnowsze funkcje.|
    | **Rodzaj konta** | StorageV2 | Aby uzyskać więcej informacji na temat typów kont, zobacz [Typy kont magazynu](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Wydajność** | Standardowa (Standard) | Warstwa Standardowa jest wystarczająca na potrzeby przykładowego scenariusza. |
+   | **Replikacja**| Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS) | To ustawienie jest niezbędne do działania przykładu. |
+   |**Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
    | **Replikacja**| Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS) | Jest to niezbędne do działania przykładu. |
    |**Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
@@ -167,7 +169,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
-Ten przykład wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu. Zapisz je w zmiennych środowiskowych znajdujących się lokalnie na maszynie używanej do uruchamiania aplikacji przykładowej. Aby utworzyć zmienne środowiskowe, użyj jednego z poniższych przykładów, w zależności od używanego systemu operacyjnego — Linux lub Windows. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
+Ten przykład wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu. Zapisz je w zmiennych środowiskowych znajdujących się lokalnie na maszynie używanej do uruchamiania aplikacji przykładowej. Aby utworzyć zmienne środowiskowe, użyj jednego z poniższych przykładów, w zależności od używanego systemu operacyjnego — Linux lub Windows. W Windows, zmienna środowiskowa nie jest dostępna po ponownym załadowaniu **polecenia** lub używasz powłoki.
 
 ### <a name="linux-example"></a>Przykład dla systemu Linux
 
@@ -194,7 +196,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Te informacje można znaleźć w witrynie Azure portal, przechodząc do swojego konta magazynu i wybranie **klucze dostępu** w **ustawienia** sekcji.
 
-Należy również zainstalować wymagane zależności. Aby to zrobić, otwórz wiersz polecenia, przejdź do folderu przykładu, a następnie wprowadź `npm install`.
+Zainstaluj wymagane zależności. Aby to zrobić, otwórz wiersz polecenia, przejdź do folderu przykładu, a następnie wprowadź `npm install`.
 
 ---
 
@@ -220,7 +222,7 @@ W przykładowym kodzie metoda `run_circuit_breaker` w pliku `circuitbreaker.py` 
 
 Funkcja ponawiania obiektu usługi Storage została ustawiona na zasady ponawiania liniowego. Funkcja ponawiania określa, czy należy ponowić próbę żądania, oraz wskazuje liczbę sekund oczekiwania przed ponownym podjęciem próby wykonania żądania. Ustaw pozycję **retry\_to\_secondary** na wartość true, jeśli żądanie powinno być ponawiane w punkcie pomocniczym w przypadku niepowodzenia początkowego żądania w punkcie podstawowym. W przykładowej aplikacji niestandardowe zasady ponawiania zostały zdefiniowane w funkcji `retry_callback` obiektu magazynu.
 
-Przed pobraniem definiowana jest funkcja [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) i [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) obiektu usługi. Te funkcje definiują procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.
+Przed pobraniem obiektu usługi [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) i [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) funkcja jest zdefiniowana. Te funkcje definiują procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.
 
 # <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
@@ -231,11 +233,11 @@ Aby uruchomić aplikację przykładową, użyj narzędzia Maven w wierszu polece
 
 Ten przykład tworzy plik testowy w katalogu domyślnym. Dla użytkowników Windows ten katalog jest **AppData\Local\Temp**. Następnie w przykładzie zostaną przedstawione następujące polecenia, które możesz wprowadzić:
 
-- Wprowadź **P**, aby wykonać operację „put blob”, co spowoduje przekazanie pliku tymczasowego na konto magazynu.
-- Wprowadź **L**, aby wykonać operację „list blob”, co spowoduje wyświetlenie listy obiektów blob znajdujących się aktualnie w kontenerze.
-- Wprowadź **G**, aby wykonać operację „get blob”, co spowoduje pobranie pliku z konta magazynu na komputer lokalny.
-- Wprowadź **D**, aby wykonać operację „delete blob”, co spowoduje usunięcie obiektu blob z konta magazynu.
-- Wprowadź **E**, aby zamknąć przykład i usunąć wszystkie utworzone przez niego zasoby.
+- Wprowadź **P** można wykonać operacji umieszczania obiektu blob, to polecenie służy do przekazywania tymczasowego pliku do swojego konta magazynu.
+- Wprowadź **L** operacji listy obiektów blob, to polecenie Wyświetlanie listy obiektów blob, obecnie w kontenerze.
+- Wprowadź **G** na wykonanie operacji pobrania obiektu blob, to polecenie pobiera plik z konta usługi storage na komputer lokalny.
+- Wprowadź **D** można wykonać operacji usuwania obiektów blob, to polecenie usuwa obiekt blob z konta magazynu.
+- Wprowadź **E** zamknąć próbki, to polecenie spowoduje również usunięcie wszystkich zasobów plik, który został utworzony.
 
 Ten przykład przedstawia dane wyjściowe zwracane w przypadku uruchomienia aplikacji w systemie Windows.
 

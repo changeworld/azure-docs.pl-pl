@@ -7,14 +7,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: aahi
-ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233619"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306981"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów wykrywanie anomalii
 
@@ -22,7 +22,7 @@ Wykrywanie anomalii ma następujących kontenerów:
 
 |Funkcja|Funkcje|
 |-|-|
-|Wykrywanie anomalii| <li> Wykrywa anomalie, w jakiej występują w czasie rzeczywistym. <li> Wykrywa anomalie przez cały zestaw danych jako zadania wsadowego. <li> Wnioskuje oczekiwanym zakresem normalne dane. <li> Obsługuje anomalii wykrywanie czułości korekta lepsze dopasowanie danych. |
+|Narzędzie do wykrywania anomalii| <li> Wykrywa anomalie, w jakiej występują w czasie rzeczywistym. <li> Wykrywa anomalie przez cały zestaw danych jako zadania wsadowego. <li> Wnioskuje oczekiwanym zakresem normalne dane. <li> Obsługuje anomalii wykrywanie czułości korekta lepsze dopasowanie danych. |
 
 Aby uzyskać szczegółowe informacje na temat interfejsów API Zobacz:
 * [Dowiedz się więcej o usłudze API wykrywanie anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -176,6 +176,10 @@ Wyślij kontenery wykrywanie anomalii w usłudze rozliczeń informacje na platfo
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](anomaly-detector-container-configuration.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Podsumowanie
 

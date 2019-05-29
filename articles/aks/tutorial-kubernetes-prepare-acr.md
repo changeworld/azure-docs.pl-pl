@@ -2,18 +2,18 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — tworzenie rejestru kontenerów
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) utworzysz wystąpienie usługi Azure Container Registry i przekażesz przykładowy obraz kontenera aplikacji.
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 1ba320a523d21beebe089084f40efff4b36dc4af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1bd41dc464c251a2e7dab3087f3feffb15db785f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032319"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304407"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Samouczek: Wdrażanie usługi Azure Container Registry i korzystanie z niej
 

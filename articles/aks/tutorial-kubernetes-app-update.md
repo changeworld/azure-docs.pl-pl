@@ -2,18 +2,18 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — aktualizowanie aplikacji
 description: Z tego samouczka dotyczącego usługi Azure Kubernetes Service (AKS) dowiesz się, jak zaktualizować istniejące wdrożenie aplikacji do usługi AKS przy użyciu nowej wersji kodu aplikacji.
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: zarhoads
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 5415778713261fbb3e57695573c8486cb32da781
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f183fd9c9aca3e1c8ed5e2e31d2a451fae92e0a4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032299"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304481"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 43e35e8074922f45493bc635455d1d176078ce51
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833529"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304284"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -103,16 +103,7 @@ Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zoba
 
 Poszczególnych kontenerów może mieć własne wymagania, jak również w tym serwera i wymagania dotyczące alokacji pamięci.
 
-## <a name="developer-samples"></a>Przykłady dla deweloperów
-
-Przykłady dla deweloperów są dostępne pod adresem naszych [repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-containers-samples).
-
-## <a name="view-webinar"></a>Obejrzyj seminarium internetowe 
-
-Dołącz do [seminarium](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) Aby dowiedzieć się więcej na temat:
-
-* Wdrażanie usług Cognitive Services do dowolnej maszyny za pomocą platformy Docker
-* Sposób wdrażania usług Cognitive Services w usłudze AKS
+[!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

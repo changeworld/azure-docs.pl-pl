@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ca321b8a073f709b55093fde6ff32ae876f3ef12
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7678415b7ce505da7678a00a4bcf2d933e260530
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238072"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303975"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Twórz C# moduł usługi IoT Edge dla urządzeń Windows
 
@@ -34,11 +34,11 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 ## <a name="solution-scope"></a>Zakres rozwiązania
 
-Ten samouczek przedstawia sposób tworzenia modułu w **C#** przy użyciu **programu Visual Studio 2017**oraz jak wdrożyć ją **urządzenia Windows**. Jeśli tworzysz modułów dla urządzeń z systemem Linux, przejdź do strony [programowanie C# moduł usługi IoT Edge dla urządzeń z systemem Linux](tutorial-csharp-module.md) zamiast tego. 
+Ten samouczek przedstawia sposób tworzenia modułu w **C#** przy użyciu **Visual Studio 2019**oraz jak wdrożyć ją **urządzenia Windows**. Jeśli tworzysz modułów dla urządzeń z systemem Linux, przejdź do strony [programowanie C# moduł usługi IoT Edge dla urządzeń z systemem Linux](tutorial-csharp-module.md) zamiast tego. 
 
 Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów C na urządzeniach Windows: 
 
-| C# | Visual Studio Code | Visual Studio 2017 | 
+| C# | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Twórz Windows AMD64** | ![Twórz C# modułów na potrzeby WinAMD64 w programie VS Code](./media/tutorial-c-module/green-check.png) | ![Twórz C# modułów na potrzeby WinAMD64 w programie Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 debugowania** |   | ![Debugowanie C# modułów na potrzeby WinAMD64 w programie Visual Studio](./media/tutorial-c-module/green-check.png) |
@@ -50,8 +50,11 @@ Przed rozpoczęciem tego samouczka, powinien wykonano już instrukcje poprzednim
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
 * A [urządzenia Windows z usługą Azure IoT Edge](quickstart.md).
 * Rejestr kontenera, takiej jak [usługi Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Program Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio?view=vs-2017), wersji 15.7 lub nowszej, skonfigurowano [Azure IoT Edge narzędzia](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) rozszerzenia.
+* [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) skonfigurowano [Azure IoT Edge narzędzia](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) rozszerzenia.
 * [Docker CE](https://docs.docker.com/install/) skonfigurowane do uruchamiania kontenerów Windows.
+
+> [!TIP]
+> Jeśli używasz programu Visual Studio 2017 (w wersji 15.7 lub nowszej) plrease Pobierz i zainstaluj [narzędzia do usługi Azure IoT Edge (wersja zapoznawcza)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) dla programu VS 2017 z witryny marketplace programu Visual Studio
 
 ## <a name="create-a-module-project"></a>Utwórz projekt modułu
 
@@ -59,21 +62,22 @@ Poniższe kroki umożliwiają utworzenie projektu modułu usługi IoT Edge przy 
 
 ### <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-Rozszerzenia Azure IoT Tools udostępnia szablony projektów dla wszystkich obsługiwanych IoT Edge, moduł języków w programie Visual Studio 2017. Te szablony mają wszystkie pliki i kod, który należy zainstalować moduł pracy do testowania usługi IoT Edge lub zapewniają punkt wyjścia, aby dostosować szablon z własną logiką biznesową. 
+Narzędzia usługi Azure IoT Edge zapewnia szablony projektu dla wszystkich obsługiwanych IoT Edge, moduł języków w programie Visual Studio. Te szablony mają wszystkie pliki i kod, który należy zainstalować moduł pracy do testowania usługi IoT Edge lub zapewniają punkt wyjścia, aby dostosować szablon z własną logiką biznesową. 
 
-1. Uruchom program Visual Studio jako administrator.
+1. Uruchom program Visual Studio 2019 r, a następnie wybierz pozycję **Utwórz nowy projekt**.
 
-2. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**. 
-
-3. W nowym oknie projektu, wybierz **usługi Azure IoT** typ projektu, a następnie wybierz **usługi Azure IoT Edge** projektu. Zmień nazwę projektu i rozwiązania do opisu coś podobnego **CSharpTutorialApp**. Wybierz **OK** do tworzenia projektu. 
+2. W nowym oknie projektu, wyszukiwanie **usługi IoT Edge** projektu, a następnie wybierz **usługi Azure IoT Edge (Windows amd64)** projektu. Kliknij przycisk **Dalej**. 
 
    ![Utwórz nowy projekt usługi Azure IoT Edge](./media/tutorial-csharp-module-windows/new-project.png)
+
+3. W konfiguracji okno nowego projektu, Zmień nazwę projektu i rozwiązania do opisu coś podobnego **CSharpTutorialApp**. Kliknij przycisk **Utwórz** do tworzenia projektu. 
+
+   ![Skonfiguruj nowy projekt usługi Azure IoT Edge](./media/tutorial-csharp-module-windows/configure-project.png)
 
 4. W oknie aplikacji IoT Edge i moduł należy skonfigurować projekt z następującymi wartościami: 
 
    | Pole | Wartość |
    | ----- | ----- |
-   | Platforma aplikacji | Usuń zaznaczenie pola wyboru **Linux Amd64**i sprawdź **WindowsAmd64**. |
    | Wybierz szablon | Wybierz  **C# modułu**. | 
    | Nazwa projektu modułu | Nazwij moduł **CSharpModule**. | 
    | Repozytorium obrazów platformy docker | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wypełniana wstępnie z wartości Nazwa projektu modułu. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Serwer logowania możesz pobrać ze strony Przegląd rejestru kontenerów w witrynie Azure Portal. <br><br> Ostateczne repozytorium obrazów wygląda następująco: \<nazwa rejestru\>.azurecr.io/csharpmodule. |

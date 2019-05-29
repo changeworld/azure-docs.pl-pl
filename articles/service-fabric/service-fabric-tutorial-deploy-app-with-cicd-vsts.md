@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/02/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c805d2bc03ad07635b01a5e978822ecab2425457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba0975486039546d5be0f704fb617beb1a9e0908
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61390557"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306891"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: Wdrażanie aplikacji przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
@@ -47,7 +47,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/), a następnie zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
+* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 * Utwórz klaster usługi Service Fabric z systemem Windows na platformie Azure, na przykład [postępując zgodnie z tym samouczkiem](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 * Utwórz [organizację usługi Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Umożliwia to utworzenie projektu w usłudze Azure DevOps i korzystanie z usługi Azure Pipelines.
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Przygotowywanie profilu publikowania
 
-Po [utworzeniu aplikacji](service-fabric-tutorial-create-dotnet-app.md) i [wdrożeniu jej na platformie Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure Pipelines.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
+Po [utworzeniu aplikacji](service-fabric-tutorial-create-dotnet-app.md) i [wdrożeniu jej na platformie Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure Pipelines.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...** .
 
 Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy ciągłej integracji, na przykład chmurę.  Określ punkt końcowy połączenia klastra.  Zaznacz pole wyboru **Uaktualnij aplikację**, aby uaktualnić aplikację dla każdego wdrożenia w usłudze Azure DevOps.  Kliknij hiperlink **Zapisz**, aby zapisać ustawienia w profilu publikowania, a następnie kliknij przycisk **Anuluj** w celu zamknięcia okna dialogowego.
 
@@ -86,7 +86,7 @@ Opublikowanie repozytorium powoduje utworzenie nowego projektu na Twoim koncie o
 
 ## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurowanie ciągłego dostarczania za pomocą usługi Azure Pipelines
 
-Potok kompilacji usługi Azure Pipelines opisuje przepływ pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz potok kompilacji, który spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej o [potokach kompilacji usługi Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
+Potok usługi Azure potoki kompilacji w tym artykule opisano przepływ pracy, który składa się z szeregu kroków kompilacji, które są wykonywane sekwencyjnie. Utwórz potok kompilacji, który spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej o [potokach kompilacji usługi Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
 
 Potok wydania usługi Azure Pipelines opisuje przepływ pracy, który wdraża pakiet aplikacji w klastrze. Jednoczesne użycie potoku kompilacji i potoku wydania powoduje wykonanie całego przepływu pracy, zaczynając od plików źródłowych, a kończąc na aplikacji uruchomionej w klastrze. Dowiedz się więcej o [potokach kompilacji usługi Azure Pipelines](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
@@ -108,7 +108,7 @@ W obszarze **Wybieranie szablonu** wybierz szablon **Aplikacja usługi Azure Ser
 
 W obszarze **Zadania** wprowadź wyrażenie „Hostowany program VS2017” jako **Pulę agentów**.
 
-![Wybieranie zadań][save-and-queue]
+![Wybierz zadania podrzędne][save-and-queue]
 
 W obszarze **Wyzwalacze** włącz ciągłą integrację, zaznaczając pozycję **Włącz ciągłą integrację**. W obszarze **Filtry gałęzi** wartość domyślna pozycji **Specyfikacja gałęzi** jest ustawiona na **master**. Wybierz pozycję **Zapisz i dodaj do kolejki**, aby ręcznie uruchomić kompilację.
 
@@ -116,7 +116,7 @@ W obszarze **Wyzwalacze** włącz ciągłą integrację, zaznaczając pozycję *
 
 Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjonowania. Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje**.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, zdefiniuj potok wydania, który wdraża aplikację w klastrze.
 
-### <a name="create-a-release-pipeline"></a>Tworzenie potoku wydania
+### <a name="create-a-release-pipeline"></a>Tworzenie potoku tworzenia wersji
 
 Wybierz kartę **Potoki**, wybierz pozycję **Wydania**, a następnie wybierz pozycję **+ Nowy potok**.  W obszarze **Wybieranie szablonu** wybierz z listy szablon **Wdrożenie usługi Azure Service Fabric**, a następnie przycisk **Zastosuj**.
 
@@ -128,13 +128,13 @@ Wybierz pozycję **Zadania**->**Środowisko 1**, a następnie pozycję **+Nowe**
 
 W widoku **Dodawanie nowego połączenia z usługą Service Fabric** wybierz uwierzytelnianie **Na podstawie certyfikatu** lub **Azure Active Directory**.  Określ nazwę połączenia dla klastra „mysftestcluster” i następujący punkt końcowy klastra „tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000” (lub punkt końcowy klastra, w którym przeprowadzane jest wdrożenie).
 
-W przypadku uwierzytelniania opartego na certyfikatach dodaj **Odcisk palca certyfikatu serwera** dla certyfikatu serwera, którego użyto do utworzenia klastra.  W obszarze **Certyfikat klienta** dodaj plik certyfikatu klienta zakodowany przy użyciu kodowania base-64. Zobacz pomoc podręczną dla tego pola, aby uzyskać informacje dotyczące sposobu uzyskania reprezentacji certyfikatu w kodowaniu base-64. Dodaj również **Hasło** certyfikatu.  Jeśli nie masz osobnego certyfikatu klienta, możesz użyć certyfikatu klastra lub serwera.
+W przypadku uwierzytelniania opartego na certyfikatach, dodać **odcisk palca certyfikatu serwera** z certyfikatu serwera użytego do utworzenia klastra.  W obszarze **Certyfikat klienta** dodaj plik certyfikatu klienta zakodowany przy użyciu kodowania base-64. Zobacz pomoc podręczną dla tego pola, aby uzyskać informacje dotyczące sposobu uzyskania reprezentacji certyfikatu w kodowaniu base-64. Dodaj również **Hasło** certyfikatu.  Jeśli nie masz osobnego certyfikatu klienta, możesz użyć certyfikatu klastra lub serwera.
 
 W przypadku poświadczeń usługi Azure Active Directory dodaj **Odcisk palca certyfikatu serwera** dla certyfikatu serwera użytego do utworzenia klastra oraz poświadczenia w polach **Nazwa użytkownika** i **Hasło**, których chcesz użyć w celu nawiązania połączenia z klastrem.
 
 Kliknij przycisk **Dodaj**, aby zapisać połączenie klastra.
 
-Następnie dodaj artefakt kompilacji do potoku, aby umożliwić potokowi wydania odnalezienie danych wyjściowych kompilacji. Wybierz pozycję **Potok**, a następnie **Artefakty**->**+ Dodaj**.  W obszarze **Źródło (definicja kompilacji)** wybierz wcześniej utworzony potok kompilacji.  Kliknij przycisk **Dodaj**, aby zapisać artefakt kompilacji.
+Następnie dodaj artefakt kompilacji do potoku, aby umożliwić potokowi wydania odnalezienie danych wyjściowych kompilacji. Wybierz pozycję **Potok**, a następnie **Artefakty**-> **+ Dodaj**.  W obszarze **Źródło (definicja kompilacji)** wybierz wcześniej utworzony potok kompilacji.  Kliknij przycisk **Dodaj**, aby zapisać artefakt kompilacji.
 
 ![Dodawanie artefaktu][add-artifact]
 
@@ -187,10 +187,11 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Dodawanie kontroli źródła do projektu
 > * Tworzenie potoku kompilacji
-> * Tworzenie potoku wydania
+> * Tworzenie potoku tworzenia wersji
 > * Automatyczne wdrażanie i uaktualnianie aplikacji
 
 Przejdź do następnego samouczka:
+> [!div class="nextstepaction"]
 > [Konfigurowanie monitorowania i diagnostyki dla aplikacji](service-fabric-tutorial-monitoring-aspnet.md)
 
 <!-- Image References -->

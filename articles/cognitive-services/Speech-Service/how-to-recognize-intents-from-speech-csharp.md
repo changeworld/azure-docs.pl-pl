@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699929"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257346"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
-
-[!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
 Zestaw [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) usługi Cognitive Services jest integrowany z usługą [Language Understanding Service (LUIS)](https://www.luis.ai/home) w celu udostępnienia funkcji **rozpoznawania intencji**. Intencja to coś, co użytkownik chce zrobić: zarezerwować lot, sprawdzić prognozę pogody lub zadzwonić. Następnie może on użyć terminów, które wydają się naturalne. Korzystając z uczenia maszynowego, usługa LUIS mapuje żądania użytkownika na zdefiniowane intencje.
 

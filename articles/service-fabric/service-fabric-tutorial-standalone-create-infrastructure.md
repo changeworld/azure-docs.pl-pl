@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: aa50cbe640c928c4113fb64c1b503548a95ee0a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718347"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302476"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: Tworzenie infrastruktury usługi AWS do hostowania klastra usługi Service Fabric
 
@@ -33,7 +33,7 @@ Część pierwsza serii zawiera informacje na temat wykonywania następujących 
 > [!div class="checklist"]
 > * Tworzenie zestawu wystąpień EC2
 > * Modyfikowanie grupy zabezpieczeń
-> * Logowanie się do jednego z wystąpień
+> * Zaloguj się do jednego z wystąpień
 > * Przygotowywanie wystąpienia na potrzeby usługi Service Fabric
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -42,7 +42,7 @@ Do ukończenia tego samouczka jest potrzebne konto usług AWS.  Jeśli nie masz 
 
 ## <a name="create-ec2-instances"></a>Tworzenie wystąpień EC2
 
-Zaloguj się do konsoli usług AWS, wprowadź **EC2** w polu wyszukiwania i wybierz pozycję **Serwery wirtualne EC2 w chmurze**.
+Zaloguj się do konsoli usług AWS > wprowadź **usługi EC2** w polu wyszukiwania > **usługi EC2 serwerów wirtualnych w chmurze**
 
 ![Wyszukiwanie w konsoli usług AWS][aws-console]
 
@@ -151,7 +151,7 @@ W części pierwszej tej serii przedstawiono sposób uruchamiania trzech wystąp
 > [!div class="checklist"]
 > * Tworzenie zestawu wystąpień EC2
 > * Modyfikowanie grupy zabezpieczeń
-> * Logowanie się do jednego z wystąpień
+> * Zaloguj się do jednego z wystąpień
 > * Przygotowywanie wystąpienia na potrzeby usługi Service Fabric
 
 Przejdź do części drugiej tej serii, aby skonfigurować usługę Service Fabric w klastrze.

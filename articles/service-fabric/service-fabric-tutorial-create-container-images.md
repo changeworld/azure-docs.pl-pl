@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865293"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306781"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: Tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
 
@@ -88,7 +88,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Wdrażanie usługi Azure Container Registry
 
-Najpierw uruchom polecenie **az login**, aby zalogować się do konta platformy Azure.
+Najpierw uruchom **az login** polecenie, aby zalogować się do konta platformy Azure.
 
 ```bash
 az login
@@ -116,7 +116,7 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 W dalszej części tego samouczka wartość „acrName” jest używana jako symbol zastępczy wybranej nazwy rejestru kontenerów. Zanotuj tę wartość.
 
-## <a name="log-in-to-your-container-registry"></a>Logowanie do rejestru kontenerów
+## <a name="sign-in-to-your-container-registry"></a>Zaloguj się do rejestru kontenerów
 
 Zaloguj się do swojego wystąpienia usługi ACR przed wypchnięciem do niego obrazów. Aby wykonać tę operację, użyj polecenia **az acr login**. Podaj unikatową nazwę nadaną rejestrowi kontenerów podczas jego tworzenia.
 

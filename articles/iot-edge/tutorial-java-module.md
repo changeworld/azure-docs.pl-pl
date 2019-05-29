@@ -9,12 +9,12 @@ ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a105e59007543ffaf31b586707390954643e8bee
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 95fab84fb6472339c9d6b847f8c09139b55e1466
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239631"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303844"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Samouczek: Tworzenie modułu usługi IoT Edge w języku Java dla urządzeń z systemem Linux
 
@@ -37,7 +37,7 @@ Ten samouczek przedstawia sposób tworzenia modułu w **Java** przy użyciu **pr
 
 Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów języka Java: 
 
-| Java | Visual Studio Code | Visual Studio 2017 | 
+| Java | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **AMD64 systemu Linux** | ![Używanie programu VS Code dla modułów języka Java w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **ARM32 systemu Linux** | ![Używanie programu VS Code dla modułów języka Java w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) |  |

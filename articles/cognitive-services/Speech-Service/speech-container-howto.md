@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153047"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306555"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -107,10 +107,10 @@ Następujący tag znajduje się przykład formatu:
 
 Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **mowy na tekst** 1.1.1 wersję kontenera:
 
-|Językowe ustawienia regionalne|Tagi|
+|Językowe ustawienia regionalne|`Tags`|
 |--|--|
 |Chiński|`zh-cn`|
-|Polski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
+|Angielski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
 |Francuski |`fr-ca`<br>`fr-fr`|
 |Niemiecki|`de-de`|
 |Włoski|`it-it`|
@@ -136,13 +136,13 @@ Następujący tag znajduje się przykład formatu:
 
 Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany tekstu na mowę** w 1.1.0 wersję kontenera:
 
-|Językowe ustawienia regionalne|Tagi|Obsługiwane głosów|
+|Językowe ustawienia regionalne|`Tags`|Obsługiwane głosów|
 |--|--|--|
 |Chiński|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
-|Polski |`en-au`|catherine<br>hayleyrus|
-|Polski |`en-gb`|george-apollo<br>hazelrus<br>susan apollo|
-|Polski |`en-in`|heera apollo<br>priyarus<br>ravi apollo<br>|
-|Polski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
+|Angielski |`en-au`|catherine<br>hayleyrus|
+|Angielski |`en-gb`|george-apollo<br>hazelrus<br>susan apollo|
+|Angielski |`en-in`|heera apollo<br>priyarus<br>ravi apollo<br>|
+|Angielski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
 |Francuski|`fr-ca`|caroline<br>harmonierus|
 |Francuski|`fr-fr`|hortenserus<br>julie-apollo<br>paul-apollo|
 |Niemiecki|`de-de`|hedda<br>heddarus<br>Stefan apollo|
@@ -274,13 +274,17 @@ Kontener zawiera punkt końcowy REST API, który można znaleźć [tutaj](https:
 
 Po uruchomieniu kontenera, korzysta z kontenera **stdout** i **stderr** o danych wyjściowych, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 
 Wyślij kontenery mowy, rozliczeń, informacje na platformie Azure, przy użyciu _mowy_ zasobów dla konta systemu Azure. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](speech-container-configuration.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Podsumowanie
 

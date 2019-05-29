@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4ee3c0bf344520afee6b3a00eb49759ae1432949
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11fa72f5853350c76b2a8d0aa4fd7b96b598b670
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239774"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303850"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Samouczek: Twórz moduły usługi IoT Edge dla urządzeń z systemem Linux
 
@@ -42,18 +42,18 @@ W tym samouczku przedstawiono tworzenie moduł usługi IoT Edge. *Moduł usługi
 
 Podczas tworzenia modułów usługi IoT Edge, należy zrozumieć różnicę między komputerem deweloperskim i docelowego urządzenia IoT Edge, na którym moduł po pewnym czasie zostanie wdrożony. Kontener, który tworzysz do przechowywania kodu modułu musi być zgodna systemu operacyjnego (OS) *urządzenie docelowe*. Na przykład najbardziej typowym scenariuszem jest ktoś tworzenia modułu na komputerze Windows, Linux urządzenie z IoT Edge docelowe pomyślny przebieg operacji. W takim przypadku system operacyjny kontenera będzie systemu Linux. Podczas wykonywania kroków tego samouczka, należy pamiętać o różnicy między *maszyna deweloperska z systemu operacyjnego* i *kontenera systemu operacyjnego*.
 
-Ten samouczek jest przeznaczony dla systemu Linux z systemem usługi IoT Edge. Można użyć systemu operacyjnego maszyny tworzenia, tak długo, jak komputerze deweloperskim umożliwia uruchamianie kontenerów systemu Linux. Zaleca się przy użyciu programu Visual Studio Code do tworzenia dla urządzeń z systemem Linux, więc to, czego użyje tego samouczka. Visual Studio 2017 można użyć, mimo że istnieją różnice w obsłudze dwa narzędzia.
+Ten samouczek jest przeznaczony dla systemu Linux z systemem usługi IoT Edge. Można użyć systemu operacyjnego maszyny tworzenia, tak długo, jak komputerze deweloperskim umożliwia uruchamianie kontenerów systemu Linux. Zaleca się przy użyciu programu Visual Studio Code do tworzenia dla urządzeń z systemem Linux, więc to, czego użyje tego samouczka. Visual Studio można użyć, mimo że istnieją różnice w obsłudze dwa narzędzia.
 
-W poniższej tabeli wymieniono scenariusze rozwoju obsługiwane **kontenerów systemu Linux** w programie Visual Studio Code i Visual Studio 2017.
+W poniższej tabeli wymieniono scenariusze rozwoju obsługiwane **kontenerów systemu Linux** w programie Visual Studio Code i Visual Studio.
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Architektura urządzenia systemu Linux** | AMD64 systemu Linux <br> Linux ARM32 | AMD64 systemu Linux <br> Linux ARM32 |
 | **Usługi platformy Azure** | Azure Functions <br> Usługa Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Języki** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools), [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-W tym samouczku pokazano kroki programowania dla programu Visual Studio Code. Jeśli zostanie wykorzystany raczej programu Visual Studio 2017, zapoznaj się z instrukcjami wyświetlanymi w [używać programu Visual Studio 2017 do tworzenia i debugowania modułów dla usługi Azure IoT Edge](how-to-visual-studio-develop-module.md).
+W tym samouczku pokazano kroki programowania dla programu Visual Studio Code. Jeśli zostanie wykorzystany raczej programu Visual Studio, zapoznaj się z instrukcjami wyświetlanymi w [używać programu Visual Studio 2019 r do tworzenia i debugowania modułów dla usługi Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

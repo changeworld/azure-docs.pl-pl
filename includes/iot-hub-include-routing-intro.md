@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 400f12237ae8b8cbaf6d66bda1663ecb680136f3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162666"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271541"
 ---
 [Routing komunikatów](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktach końcowych zgodnego z Centrum zdarzeń lub niestandardowe punkty końcowe takich jak usługi blob storage, kolejek usługi Service Bus, tematy usługi Service Bus i Event Hubs. Aby skonfigurować routing niestandardowy komunikat, należy utworzyć [zapytań routingu](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) dostosować trasy, który odpowiada określony warunek. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. Jeśli komunikat nie pasuje do żadnego z zdefiniowane zapytania routingu, odbywa się do domyślnego punktu końcowego.
 
 W tym samouczku 2-częściowych dowiesz się, jak skonfigurować i korzystać z tych niestandardowych zapytań routingu za pomocą usługi IoT Hub. Możesz przesyłać wiadomości z urządzenia IoT do jednego z wielu punktów końcowych, w tym magazyn obiektów blob i kolejki usługi Service Bus. Komunikaty do kolejki usługi Service Bus są pobierane przez aplikację logiki i wysyłane za pośrednictwem poczty e-mail. Komunikaty, które nie mają niestandardowy komunikat routing zdefiniowany są wysyłane do domyślnego punktu końcowego, a następnie pobierane przez usługę Azure Stream Analytics i wyświetlane w wizualizacji usługi Power BI.
 
- Na zakończenie części 1 i 2 tego samouczka należy wykonać następujące zadania:
+Aby wykonane części 1 i 2 w tym samouczku wykonywane są następujące zadania:
 
 **Część I: Tworzenie zasobów, skonfigurować routing wiadomości**
 > [!div class="checklist"]

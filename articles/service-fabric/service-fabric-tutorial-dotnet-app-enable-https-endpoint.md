@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a8f4e89adec0a6be001f3e6d6df1a252677c5916
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48dd09bf70e99adc250027df872266bea39a786b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158138"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302411"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Samouczek: Dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core za pomocą usługi Kestrel
 
@@ -52,7 +52,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/) w wersji 15.5 lub nowszej z obciążeniami **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
+* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) wersji 15.5 lub nowszej za pomocą **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Uzyskaj certyfikat lub utwórz certyfikat programistyczny z podpisem własnym
@@ -185,7 +185,7 @@ private X509Certificate2 GetCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Udzielanie dostępu USŁUGA SIECIOWA do klucza prywatnego certyfikatu
 
-W poprzednim kroku zaimportowano certyfikat do magazynu `Cert:\LocalMachine\My` na komputerze dewelopera.  Należy również jawnie nadać kontu z uruchomioną usługą (domyślnie USŁUGA SIECIOWA) prawa dostępu do klucza prywatnego certyfikatu. Można to zrobić ręcznie (przy użyciu narzędzia certlm.msc), ale zaleca się automatyczne uruchomienie skryptu programu PowerShell przez [skonfigurowanie skryptu uruchamiania](service-fabric-run-script-at-service-startup.md) w elemencie **SetupEntryPoint** manifestu usługi.
+W poprzednim kroku zaimportowano certyfikat do magazynu `Cert:\LocalMachine\My` na komputerze dewelopera.  Teraz jawnie nadać kontu z uruchomioną usługę (domyślnie Usługa sieciowa) dostęp do klucza prywatnego certyfikatu. Ten krok można wykonać ręcznie (przy użyciu narzędzia certlm.msc), ale zaleca się automatyczne uruchomienie skryptu programu PowerShell przez [skonfigurowanie skryptu uruchamiania](service-fabric-run-script-at-service-startup.md) w **SetupEntryPoint** manifestu usługi.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurowanie punktu wejścia usługi instalatora
 

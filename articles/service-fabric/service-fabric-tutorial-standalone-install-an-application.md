@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: instalowanie aplikacji w autonomicznym klastrze usługi Service Fabric — Azure Service Fabric | Microsoft Docs'
-description: W tym samouczku dowiesz się, jak zainstalować aplikację w autonomicznym klastrze usługi Service Fabric.
+description: W tym samouczku dowiesz się, jak zainstalować aplikację do klastra usługi Service Fabric autonomicznego.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 17bb5f5d8fe7ee407caf0ea5c34dc5380dbd79b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717959"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302417"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: Wdrażanie aplikacji na klastra autonomicznego usługi Service Fabric
 
-Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. Ta seria samouczków przedstawia proces tworzenia klastra autonomicznego hostowanego w usłudze AWS i wdrażania w nim aplikacji.
+Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków Tworzenie klastra autonomicznego hostowanych na platformie AWS i wdrożyć aplikację do niego.
 
-Ten samouczek jest trzecią częścią serii.  Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z naszą obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tym samouczku pokazano, jak utworzyć infrastrukturę usług AWS niezbędną do obsługi takiego klastra autonomicznego.
+Ten samouczek jest trzecią częścią serii.  Klastry autonomiczne usługi Service Fabric oferuje opcję, aby wybrać własne środowisko, a następnie utworzyć klaster jako część naszego podejścia "Dowolny system operacyjny, każdej chmury" przy użyciu usługi Service Fabric. W tym samouczku pokazano, jak utworzyć infrastrukturę usług AWS niezbędną do obsługi takiego klastra autonomicznego.
 
 Część trzecia serii zawiera informacje na temat wykonywania następujących czynności:
 
@@ -38,7 +38,7 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 
 Przed rozpoczęciem tego samouczka:
 
-* [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/), a następnie zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
+* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania

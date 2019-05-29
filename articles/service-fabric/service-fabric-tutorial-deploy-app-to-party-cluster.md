@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: aljo,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 451cfde133955b987b97bc2447724d2e00010892
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b3922ea97391a83d729bcf8b25c489a45119046
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61391404"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302437"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji usługi Service Fabric w klastrze na platformie Azure
 
@@ -44,7 +44,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/) i zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
+* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/)i zainstaluj **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 * [Zainstaluj zestaw SDK usługi Service Fabric](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
@@ -75,18 +75,18 @@ Usługa internetowa frontonu aplikacji Voting nasłuchuje na określonym porcie 
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
 ```
 
-Zanotuj punkt końcowy usługi, który będzie potrzebny w kolejnym kroku.  Jeśli przeprowadzasz wdrożenie w istniejącym klastrze, otwórz ten port, tworząc regułę równoważenia obciążenia i sondę w module równoważenia obciążenia platformy Azure przy użyciu [skryptu programu PowerShell](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) lub za pośrednictwem modułu równoważenia obciążenia dla tego klastra w witrynie [Azure Portal](https://portal.azure.com).
+Zanotuj punkt końcowy usługi, który będzie potrzebny w kolejnym kroku.  Jeśli wdrażasz do istniejącego klastra, należy otworzyć ten port, przez utworzenie reguły i sondę równoważenia obciążenia przy użyciu modułu równoważenia obciążenia platformy Azure [skrypt programu PowerShell](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) lub za pośrednictwem modułu równoważenia obciążenia dla tego klastra w [witryny Azure portal ](https://portal.azure.com).
 
 ### <a name="create-a-test-cluster-in-azure"></a>Tworzenie klastra testowego na platformie Azure
 W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Voting (Głosowanie)** i wybierz polecenie **Opublikuj**.
 
-W polu **Punkt końcowy połączenia** wybierz pozycję **Tworzenie nowego klastra**.  Jeśli przeprowadzasz wdrożenie w istniejącym klastrze, wybierz punkt końcowy klastra z listy.  Zostanie otwarte okno dialogowe Tworzenie klastra usługi Service Fabric.
+W polu **Punkt końcowy połączenia** wybierz pozycję **Tworzenie nowego klastra**.  Jeśli wdrażasz do istniejącego klastra, wybierz punkt końcowy klastra z listy.  Zostanie otwarte okno dialogowe Tworzenie klastra usługi Service Fabric.
 
 Na karcie **Klaster** wprowadź wartość w polu **Nazwa klastra** (na przykład „mytestcluster”), wybierz swoją subskrypcję, wybierz region dla klastra (na przykład Południowo-środkowe stany USA), wprowadź liczby węzłów klastra (na potrzeby klastra testowego zalecamy trzy węzły), a następnie wprowadź grupę zasobów (na przykład „mytestclustergroup”). Kliknij przycisk **Dalej**.
 
 ![Tworzenie klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-Na karcie **Certyfikat** wprowadź hasło i ścieżkę danych wyjściowych dla certyfikatu klastra. Certyfikat z podpisem własnym zostanie utworzony jako plik PFX i zapisany w określonej ścieżce danych wyjściowych.  Certyfikat jest używany zarówno w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem.  Certyfikatu z podpisem własnym nie należy używać w przypadku klastrów produkcyjnych.  Ten certyfikat jest używany przez program Visual Studio do uwierzytelniania w klastrze i wdrażania aplikacji. Zaznacz pozycję **Importuj certyfikat**, aby zainstalować plik PFX w folderze CurrentUser\My certificate store na Twoim komputerze.  Kliknij przycisk **Dalej**.
+Na karcie **Certyfikat** wprowadź hasło i ścieżkę danych wyjściowych dla certyfikatu klastra. Certyfikat z podpisem własnym zostanie utworzony jako plik PFX i zapisany w określonej ścieżce danych wyjściowych.  Certyfikat jest używany zarówno w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem.  Nie należy używać certyfikatu z podpisem własnym w przypadku klastrów produkcyjnych.  Ten certyfikat jest używany przez program Visual Studio do uwierzytelniania w klastrze i wdrażania aplikacji. Zaznacz pozycję **Importuj certyfikat**, aby zainstalować plik PFX w folderze CurrentUser\My certificate store na Twoim komputerze.  Kliknij przycisk **Dalej**.
 
 ![Tworzenie klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
@@ -107,7 +107,7 @@ W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Voting (
 W polu **Punkt końcowy połączenia** wybierz punkt końcowy klastra utworzonego w poprzednim kroku.  Na przykład „mytestcluster.southcentral.cloudapp.azure.com:19000”. Jeśli wybierzesz pozycję **Zaawansowane parametry połączenia**, informacje o certyfikacie powinny być automatycznie wypełnione.  
 ![Publikowanie aplikacji usługi Service Fabric](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
-Wybierz pozycję **Publikuj**.
+Wybierz **publikowania**.
 
 Po wdrożeniu aplikacji otwórz przeglądarkę i wprowadź adres klastra, a następnie wartość **:8080**. Ewentualnie wpisz inny numer portu, jeśli został skonfigurowany. Może to być na przykład `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Aplikacja zostanie teraz wyświetlona jako uruchomiona w klastrze na platformie Azure. Na stronie internetowej aplikacji do głosowania spróbuj dodać lub usunąć opcje głosowania oraz zagłosować na co najmniej jedną z tych opcji.
 
