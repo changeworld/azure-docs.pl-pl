@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 05/24/2019
 ms.author: diberry
-ms.openlocfilehash: f74d43d90a288a145887878305a95e1052ab8c05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f40ed3d0b77662e23e4042f568b8241cef130c6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60920045"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256615"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Python
 
@@ -79,4 +79,4 @@ Dowiedz się więcej o [żądania](../how-to/metadata-generateanswer-usage.md#ge
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)
