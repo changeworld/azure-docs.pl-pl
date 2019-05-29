@@ -6,7 +6,7 @@
         - name: Co to jest Rozwiązanie VMware firmy CloudSimple
           href: cloudsimple-vmware-solutions-overview.md
         - name: Kluczowe pojęcia dotyczące administracji
-          href: 'https://docs.azure.cloudsimple.com/key-concepts/'
+          href: key-concepts.md
     - name: Szybki start
       expanded: true
       items:
@@ -21,7 +21,7 @@
     - name: Pojęcia
       items:
         - name: Usługa
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-service/'
+          href: cloudsimple-service.md
         - name: Węzły
           href: cloudsimple-node.md
         - name: Chmura prywatna
@@ -45,13 +45,13 @@
         - name: Oprogramowanie VMware w chmurze prywatnej
           href: vmware-components.md
         - name: Omówienie zabezpieczeń
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
+          href: cloudsimple-security.md
         - name: Limit przydziału węzłów
           href: node-quota.md
         - name: Konserwacja i aktualizacje
           href: cloudsimple-maintenance-updates.md
         - name: Często zadawane pytania
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
+          href: cloudsimple-faq.md
     - name: Samouczki
       items:
         - name: Włączanie dostawcy zasobów

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a03707246f27bcba9cc46168ec04893b7bbc4c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990800"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357811"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: Używanie warunków w szablonach usługi Azure Resource Manager
 
@@ -39,7 +39,7 @@ Ten samouczek obejmuje następujące zadania:
 Ten samouczek obejmuje tylko podstawowy scenariusz użycia warunków. Aby uzyskać więcej informacji, zobacz:
 
 * [Struktura pliku szablonu: Warunek](./resource-group-authoring-templates.md#condition).
-* [Warunkowe wdrażanie zasobu w szablonie usługi Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy.md).
+* [Warunkowe wdrażanie zasobu w szablonie usługi Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Funkcja szablonu: Jeśli](./resource-group-template-functions-logical.md#if).
 * [Funkcje porównania dla szablonów usługi Azure Resource Manager](./resource-group-template-functions-comparison.md)
 
@@ -62,14 +62,14 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów usługi Resource Manager. Zamiast tworzyć szablon od podstaw, możesz znaleźć szablon przykładowy i zmodyfikować go. Szablon używany w tym samouczku nazywa się [Wdrożenie prostej maszyny wirtualnej z systemem Windows](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
-1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
+1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
+3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
 4. Istnieje pięć zasobów definiowanych przez szablon:
 
    * `Microsoft.Storage/storageAccounts`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).

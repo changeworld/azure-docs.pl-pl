@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3a307c32d15aa8c7809d728d98220b0819e91c7c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901106"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357392"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
@@ -28,7 +28,7 @@ Przetwarzania obrazów w aplikacji można używać, korzystając z natywnego zes
 
 Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazów oraz dostarczać szczegółowe informacje na ich temat. Wszystkie funkcje w poniższej tabeli są udostępniane przez interfejs API [analizowania obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 
-| Akcja | Opis |
+| action | Opis |
 | ------ | ----------- |
 |**[Tagowanie funkcji wizualnych](concept-tagging-images.md)**|Identyfikowanie i tagowanie elementów wizualnych na obrazie w oparciu o zestaw tysięcy rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy tagi są niejednoznaczne lub wykraczają poza popularną wiedzę, odpowiedź interfejsu API zawiera „wskazówki”, aby wyjaśnić ich znaczenie w kontekście znanego otoczenia. Tagowanie nie jest ograniczone do głównego tematu, na przykład do osoby na pierwszym planie, ale uwzględnia także otoczenie (wewnątrz lub na zewnątrz), meble, narzędzia, rośliny, zwierzęta, akcesoria, gadżety itd.|
 |**[Wykrywanie obiektów](concept-object-detection.md)**| Wykrywanie obiektów jest podobne do tagowania, ale interfejs API zwraca współrzędne pola ograniczenia dla każdego zastosowanego tagu. Na przykład jeśli na obrazie znajduje się pies, kot i osoba, operacja wykrywania utworzy listę tych obiektów wraz z ich współrzędnymi na obrazie. Ta funkcja umożliwia przetwarzanie dalszych relacji między obiektami na obrazie. Ponadto w odpowiednich przypadkach informuje, że obraz zawiera wiele wystąpień tego samego tagu.|
@@ -46,7 +46,7 @@ Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazó
 
 Przetwarzanie obrazów służą do wyodrębniania tekstu z obrazu do strumienia znaków do odczytu maszynowego przy użyciu [optyczne rozpoznawanie znaków (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api). Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawia kąt obrotu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język rozpoznanego tekstu.
 
-Można również użyć [API odczytu](concept-recognizing-text.md#read-api) umożliwia wyodrębnianie tekstu odręcznego i drukować z obrazy i dokumenty zawierające dużo tekstu. Interfejs API odczytu używa modeli zaktualizowane i działa dla obiektów różne na różnych powierzchniach i tłach, takich jak przychody, plakaty, wizytówki, litery i tablic. Obecnie interfejs API odczytu jest w wersji zapoznawczej i jedynym obsługiwanym językiem jest angielski.
+Można również użyć [API odczytu](concept-recognizing-text.md#read-api) umożliwia wyodrębnianie tekstu odręcznego i drukować z obrazy i dokumenty zawierające dużo tekstu. Interfejs API odczytu używa modeli zaktualizowane i działa dla obiektów różne na różnych powierzchniach i tłach, takich jak przychody, plakaty, wizytówki, litery i tablic. Obecnie jedynym obsługiwanym językiem jest angielski.
 
 ## <a name="moderate-content-in-images"></a>Moderowanie zawartości na obrazach
 

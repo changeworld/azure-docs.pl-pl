@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3e33eef430db627a82bb82e8c22ddc861d08982b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0d201baec253abee9ad8a998dd36968927a25a6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60692110"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357591"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 
@@ -216,7 +216,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` Tworzy `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. `atlas.service.MapsURL.newPipeline()` Przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. `routeURL` Reprezentuje adres URL do usługi Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operacji.
+   `SubscriptionKeyCredential` Tworzy `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. `atlas.service.MapsURL.newPipeline()` Przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) wystąpienia. `routeURL` Reprezentuje adres URL do usługi Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operacji.
 
 2. Po skonfigurowaniu poświadczeń i adres URL, Dodaj następujący kod JavaScript kod, aby utworzyć trasę od początku do punktu końcowego dla ciężarówki wykonywania USHazmatClass2 gniazdami ładunku i wyświetlić wyniki.
 
@@ -245,7 +245,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
     });
     ```
 
-    Ten fragment kodu powyżej zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metody. Wiersz trasy następnie są wyodrębniane z kolekcji funkcji GeoJSON z odpowiedzi, które zostały wyodrębnione przy użyciu `geojson.getFeatures()` metody. Wiersz trasy jest dodawane do źródła danych. Dodaje także indeks 0, aby upewnić się, że jest on renderowany przed innymi wierszami w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Dwie właściwości są dodawane do wiersza trasa ciężarówki, kolor pociągnięcia, ładny odcień niebieski i grubość dziewięć pikseli.
+    Ten fragment kodu powyżej zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metody. Wiersz trasy następnie są wyodrębniane z kolekcji funkcji GeoJSON z odpowiedzi, które zostały wyodrębnione przy użyciu `geojson.getFeatures()` metody. Wiersz trasy jest dodawane do źródła danych. Dodaje także indeks 0, aby upewnić się, że jest on renderowany przed innymi wierszami w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Dwie właściwości są dodawane do wiersza trasa ciężarówki, kolor pociągnięcia, ładny odcień niebieski i grubość dziewięć pikseli.
 
 3. Dodaj następujący kod JavaScript, aby utworzyć trasę dla samochodu i wyświetlić wyniki.
 
@@ -265,7 +265,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
     });
     ```
 
-    Ten fragment kodu powyżej zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metody. Wiersz trasy następnie są wyodrębniane z kolekcji funkcji GeoJSON z odpowiedzi, które zostały wyodrębnione przy użyciu `geojson.getFeatures()` metody. Wiersz trasy jest dodawane do źródła danych. Dwie właściwości są dodawane do wiersza trasa samochodu, kolor pociągnięcia, który jest odcień purpurowy i grubość 5 pikseli.  
+    Ten fragment kodu powyżej zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metody. Wiersz trasy następnie są wyodrębniane z kolekcji funkcji GeoJSON z odpowiedzi, które zostały wyodrębnione przy użyciu `geojson.getFeatures()` metody. Wiersz trasy jest dodawane do źródła danych. Dwie właściwości są dodawane do wiersza trasa samochodu, kolor pociągnięcia, który jest odcień purpurowy i grubość 5 pikseli.  
 
 4. Zapisz plik **MapTruckRoute.html** i odśwież stronę w przeglądarce, aby wyświetlić wynik. W przypadku pomyślnego połączenia z interfejsami API usługi Maps powinna pojawić się mapa podobna do poniższej.
 

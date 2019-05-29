@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a2d793a1fbd68d6a71f48b556a77ddcaaaf111
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 93a1ad1f9fbc01cd06b3aaffc8a718634e8454d6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66112195"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357026"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Samouczek: Integracja Displayr za pomocą usługi Azure Active Directory
 
@@ -91,11 +91,11 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-1. Aplikacja Displayr oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
+1. Aplikacja Displayr oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![image](common/edit-attribute.png)
 
-1. Ponadto powyżej Displayr aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W **atrybutów użytkowników i oświadczeń** sekcji na **oświadczenia grupy (wersja zapoznawcza)** okno dialogowe, należy wykonać następujące czynności:
+1. Ponadto powyżej Displayr aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W **atrybutów użytkowników i oświadczeń** sekcji na **oświadczenia grupy (wersja zapoznawcza)** okno dialogowe, należy wykonać następujące czynności:
 
     a. Kliknij przycisk **pióra** obok **grup zwracane w oświadczenie**.
 
@@ -133,7 +133,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     ![Konfigurowanie](./media/displayr-tutorial/config01.png)
 
-5. Przełącz się do **ustawienia** z górnego menu i przewiń w dół strony kliknięcie **konfigurowanie pojedynczego logowania na (SAML)**.
+5. Przełącz się do **ustawienia** z górnego menu i przewiń w dół strony kliknięcie **konfigurowanie pojedynczego logowania na (SAML)** .
 
     ![Konfigurowanie](./media/displayr-tutorial/config02.png)
 

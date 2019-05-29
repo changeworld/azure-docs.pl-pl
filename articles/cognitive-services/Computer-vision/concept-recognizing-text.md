@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60368025"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357182"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
@@ -24,12 +24,12 @@ Przetwarzania obrazów udostępnia szereg usług, które wykrywanie i wyodrębni
 
 ## <a name="read-api"></a>Odczyt interfejsu API
 
-Interfejs API odczytu wykrywa zawartość tekstową na obrazie za pomocą naszych najnowszych modeli rozpoznawania i konwertuje zidentyfikowany tekst do strumienia znaków czytelnych. Jest zoptymalizowany dla obrazów zawierające dużo tekstu (takich jak dokumenty, które zostały przeskanowane cyfrowo) i obrazów przy użyciu wiele szumu visual. Asynchronicznie wykonuje ponieważ większe dokumenty może potrwać kilka minut, aby zwrócić wynik.
+Interfejs API odczytu wykrywa zawartość tekstową na obrazie za pomocą naszych najnowszych modeli rozpoznawania i konwertuje zidentyfikowany tekst do strumienia znaków czytelnych. Jest zoptymalizowany dla obrazów zawierające dużo tekstu (takich jak dokumenty, które zostały przeskanowane cyfrowo) i obrazów przy użyciu wiele szumu visual. Jego określi, który model rozpoznawania do użycia dla każdego wiersza tekstu, obsługi obrazów za pomocą tekstu odręcznego i drukować. Interfejs API odczytu wykonuje asynchronicznie, ponieważ większe dokumenty może potrwać kilka minut, aby zwrócić wynik.
 
 Operacja odczytu zachowuje oryginalne grupowanie wiersza rozpoznane słowa w danych wyjściowych. Każdy wiersz zawiera współrzędne pola ograniczenia, a każdy wyraz w wierszu ma również swój własny współrzędnych. Jeśli wyraz został rozpoznany bez obaw niski, te informacje zamieszczono również. Zobacz [dokumentację referencyjną interfejsu API odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) Aby dowiedzieć się więcej.
 
 > [!NOTE]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko dla tekstu w języku angielskim.
+> Ta funkcja jest dostępna tylko dla tekstu w języku angielskim.
 
 ### <a name="image-requirements"></a>Wymagania obrazu
 
@@ -80,7 +80,7 @@ Działa rozpoznawanie interfejsu API tłumaczenia tekstu przy użyciu obrazów, 
 - Wymiary obrazu musi mieć od 50 x 50 i 4200 x 4200 pikseli.
 - Rozmiar pliku obrazu musi być mniejszy niż 4 megabajty (MB).
 
-## <a name="improve-results"></a>Ulepsz wyniki
+## <a name="limitations"></a>Ograniczenia
 
 Dokładność operacje rozpoznawanie tekstu, zależy od jakości obrazów. Następujące czynniki mogą spowodować niedokładne odczytu:
 
