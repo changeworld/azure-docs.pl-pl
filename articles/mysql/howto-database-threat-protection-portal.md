@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61458986"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Zaawansowana ochrona przed zagrożeniami dla usługi Azure Database for MySQL
@@ -28,7 +28,7 @@ Zaawansowana ochrona przed zagrożeniami jest częścią oferty zaawansowane zab
 
 ## <a name="set-up-threat-detection"></a>Konfigurowanie wykrywania zagrożeń
 1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com).
-2. Przejdź do strony konfiguracji usługi Azure Database for MySQL server, który chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)**.
+2. Przejdź do strony konfiguracji usługi Azure Database for MySQL server, który chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)** .
 3. Na **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)** strony konfiguracji:
 
    - Włącz zaawansowaną ochronę przed zagrożeniami na serwerze.
@@ -46,7 +46,7 @@ Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań 
 
     Wyświetl aktywne zagrożenia:
 
-    ![Aktywne zagrożenia](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![aktywne zagrożenia](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kliknij określony alert, aby uzyskać dodatkowe informacje i akcje dla tego typu zagrożenia badanie i korygowanie przez przyszłymi zagrożeniami.
     

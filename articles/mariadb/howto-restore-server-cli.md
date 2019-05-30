@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 41e75a946f51f67b2b77a36dc0525cd4ff5fcd64
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 409fe7b76306036cad19980459ca718c87118d8f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543125"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66171391"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure
 
@@ -70,6 +70,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 ```
 
 `az mariadb server restore` Polecenie wymaga następujących parametrów:
+
 | Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje na serwerze źródłowym.  |
@@ -109,6 +110,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 ```
 
 `az mariadb server georestore` Polecenie wymaga następujących parametrów:
+
 | Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Nazwa grupy zasobów, nowy serwer będzie znajdować się.|

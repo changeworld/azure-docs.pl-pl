@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df4f89bd1b2e3c0423f5d758cfa637e4da9e04d0
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193907"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66396543"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -62,7 +62,7 @@ Wybierz, co chcesz replikować, i miejsce, do którego chcesz przeprowadzać rep
 **Scenariusz** | **Szczegóły**
 --- | --- 
 VMware | Konfigurowanie [środowisko źródłowe](vmware-azure-set-up-source.md)i skonfiguruj [serwera konfiguracji](vmware-azure-deploy-configuration-server.md).
-Maszyna fizyczna | [Konfigurowanie](physical-azure-set-up-source.md) środowiska i konfiguracji serwera źródłowego.
+Komputer fizyczny | [Konfigurowanie](physical-azure-set-up-source.md) środowiska i konfiguracji serwera źródłowego.
 Funkcja Hyper-V | Konfigurowanie [środowiska źródłowego](hyper-v-azure-tutorial.md#set-up-the-source-environment)<br/><br/> Konfigurowanie [środowisko źródłowe](hyper-v-vmm-azure-tutorial.md#set-up-the-source-environment) funkcji Hyper-v wdrożone za pomocą programu System Center VMM.
 
 ## <a name="set-up-the-target-environment"></a>Konfigurowanie środowiska docelowego
@@ -81,7 +81,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 **Scenariusz** | **Szczegóły**
 --- | --- 
 VMware | Konfigurowanie [zasad replikacji](vmware-azure-set-up-replication.md) dla maszyn wirtualnych VMware.
-Maszyna fizyczna | Konfigurowanie [zasad replikacji](physical-azure-disaster-recovery.md#create-a-replication-policy) maszyn fizycznych.
+Komputer fizyczny | Konfigurowanie [zasad replikacji](physical-azure-disaster-recovery.md#create-a-replication-policy) maszyn fizycznych.
 Funkcja Hyper-V | Konfigurowanie [zasad replikacji](hyper-v-azure-tutorial.md#set-up-a-replication-policy)<br/><br/> Konfigurowanie [zasad replikacji](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy) funkcji Hyper-v wdrożone za pomocą programu System Center VMM.
 
 ## <a name="enable-replication"></a>Włączanie replikacji
@@ -89,7 +89,7 @@ Funkcja Hyper-V | Konfigurowanie [zasad replikacji](hyper-v-azure-tutorial.md#se
 **Scenariusz** | **Szczegóły**
 --- | --- 
 VMware | [Włącz replikację](vmware-azure-enable-replication.md) dla maszyn wirtualnych oprogramowania VMware.
-Maszyna fizyczna | [Włącz replikację](physical-azure-disaster-recovery.md#enable-replication) maszyn fizycznych.
+Komputer fizyczny | [Włącz replikację](physical-azure-disaster-recovery.md#enable-replication) maszyn fizycznych.
 Funkcja Hyper-V | [Włączanie replikacji](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> [Włącz replikację](hyper-v-vmm-azure-tutorial.md#enable-replication) funkcji Hyper-v wdrożone za pomocą programu System Center VMM.
 
 
@@ -118,7 +118,7 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
 > [!WARNING]
 > **Nie anuluj trybu failover, który jest w toku**: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
 
-W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. Dłuższy czas testu trybu failover może występować w przypadku serwerów fizycznych; maszyn VMware z systemem Linux; maszyn wirtualnych VMware, które nie mają włączonej usługi DHCP, oraz maszyn wirtualnych VMware, które nie mają następujących sterowników rozruchowych: storvsc, vmbus, storflt, intelide, atapi.
+W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. Dłuższy czas testu trybu failover dla serwerów fizycznych, maszyn VMware z systemem Linux, maszyny wirtualne VMware, które nie mają włączona usługa DHCP i maszyny wirtualne VMware, które nie mają następujących sterowników rozruchowych: storvsc, vmbus, storflt, intelide, atapi.
 
 ## <a name="after-migration"></a>Po migracji
 
@@ -159,7 +159,7 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz
+W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. teraz
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie odzyskiwania po awarii](azure-to-azure-replicate-after-migration.md) do regionu pomocniczego platformy Azure dla maszyn wirtualnych platformy Azure.
