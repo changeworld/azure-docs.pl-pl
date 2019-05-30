@@ -2,7 +2,7 @@
 title: Diagnozowanie i rozwiązywanie problemów z wersji zapoznawczej Azure czas serii szczegółowych informacji | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak diagnozować i rozwiązywanie problemów z programem Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a63bfd4e82147fe3324e146f2aaff8889da87e
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d18f8f4808d5ca9dd7eca1561b1ee08c2073f5fa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472312"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237544"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnozowanie i rozwiązywanie problemów
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera podsumowanie kilka typowych problemów, które można napot
 
 Ten problem może wystąpić, jeśli nie masz uprawnień, aby uzyskiwać dostęp do środowiska usługi Time Series Insights. Użytkownicy muszą roli dostęp na poziomie czytelnika, aby wyświetlić swoje środowisko usługi Time Series Insights. Aby sprawdzić bieżące poziomy dostępu i udzielić dodatkowe prawa dostępu, można znaleźć w sekcji zasady dostępu do danych na zasób usługi Time Series Insights w [witryny Azure portal](https://portal.azure.com/).
 
-  [![Środowisko](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![środowisko](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problem: żadne dane nie są widoczne w programie explorer (wersja zapoznawcza)
 

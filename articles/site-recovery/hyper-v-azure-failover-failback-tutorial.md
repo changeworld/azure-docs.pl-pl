@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 53b2c2945062ef348104e24a352895a14eed1a04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4889d82ac1c837581771860f2aba86faf7650ee
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749006"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399436"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych na platformie Azure
 
@@ -73,7 +73,7 @@ Powrót po awarii polega zasadniczo na przełączeniu maszyn wirtualnych platfor
 
 1. W obszarze **Ustawienia** > **Zreplikowane elementy** kliknij kolejno maszynę wirtualną i pozycję **Planowana praca w trybie failover**.
 2. W obszarze **Potwierdź planowaną pracę w trybie failover** sprawdź kierunek przełączenia w tryb failover (z platformy Azure) i wybierz lokalizację źródłową oraz docelową.
-3. Zaznacz pole **Synchronizuj dane przed przejściem do trybu failover (synchronizuj tylko zmiany różnicowe)**. Ta opcja minimalizuje czas przestoju maszyny wirtualnej, ponieważ synchronizacja jest prowadzona bez wyłączania maszyny wirtualnej.
+3. Zaznacz pole **Synchronizuj dane przed przejściem do trybu failover (synchronizuj tylko zmiany różnicowe)** . Ta opcja minimalizuje czas przestoju maszyny wirtualnej, ponieważ synchronizacja jest prowadzona bez wyłączania maszyny wirtualnej.
 4. Zainicjuj tryb failover. Na karcie **Zadania** można śledzić postęp trybu failover.
 5. Po zakończeniu początkowej synchronizacji danych, gdy wszystko będzie gotowe do zamknięcia maszyn wirtualnych platformy Azure, kliknij pozycję **Zadania** > nazwa zadania planowanej pracy w trybie failover > **Zakończ pracę w trybie failover**. Spowoduje to zamknięcie maszyny wirtualnej platformy Azure, przekazanie najnowszych zmian do środowiska lokalnego i uruchomienie lokalnych maszyn wirtualnych.
 6. Zaloguj się na lokalnej maszynie wirtualnej, aby sprawdzić, czy działa zgodnie z oczekiwaniami.

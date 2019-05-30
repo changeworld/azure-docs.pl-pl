@@ -2,7 +2,7 @@
 title: Aprowizowanie i zarządzanie nimi serii czasu Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: Zrozumienie, jak aprowizować i zarządzać nimi Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce24fb8c62432e50fe04de23d2abbee1ec120c6c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471626"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237590"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Aprowizowanie i zarządzanie nimi Azure czas Series Insights w wersji zapoznawczej
 
 W tym artykule opisano sposób tworzenia i zarządzanie środowiskiem Azure czas Series Insights w wersji zapoznawczej za pomocą [witryny Azure portal](https://portal.azure.com/).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Środowiska czasu Series Insights w wersji zapoznawczej platformy Azure są środowisk płatność za rzeczywiste użycie (PAYG).
 

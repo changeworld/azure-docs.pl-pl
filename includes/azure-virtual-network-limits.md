@@ -5,17 +5,17 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 04/10/2019
+ms.date: 05/15/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 79c4530878783cbdb62cac630d81b65dc73c52a4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733736"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238382"
 ---
-<a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
+<a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zarządzanych przy użyciu zasobów sieciowych **klasycznego** modelu wdrażania na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 | Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -24,37 +24,37 @@ ms.locfileid: "64733736"
 | Serwery DNS na sieć wirtualną |20 |20 |
 | Prywatne adresy IP na sieć wirtualną |4,096 |4,096 |
 | Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500 000 maksymalnie 1 000 000 dla co najmniej dwóch kart interfejsu sieciowego. |500 000 maksymalnie 1 000 000 dla co najmniej dwóch kart interfejsu sieciowego. |
-| Network Security Groups (NSGs) |100 |200 |
-| Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |200 |1000 |
-| Tabele tras zdefiniowanych przez użytkownika |100 |200 |
-| Trasy zdefiniowane przez użytkownika na jedną tabelę tras |100 |400 |
-| Publiczne adresy IP (dynamiczne) |5 |Skontaktuj się z pomocą techniczną. |
-| Zastrzeżone publiczne adresy IP |20 |Skontaktuj się z pomocą techniczną. |
-| Publiczne adresy VIP na wdrożenie |5 |Skontaktuj się z pomocą techniczną. |
+| Network Security Groups (NSGs) |200 |200 |
+| Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 |1000 |
+| Tabele tras zdefiniowanych przez użytkownika |200 |200 |
+| Trasy zdefiniowane przez użytkownika na jedną tabelę tras |400 |400 |
+| Publiczne adresy IP (dynamiczne) |5 |Skontaktuj się z pomocą techniczną |
+| Zastrzeżone publiczne adresy IP |20 |Skontaktuj się z pomocą techniczną |
+| Publiczne adresy VIP na wdrożenie |5 |Skontaktuj się z pomocą techniczną |
 | Prywatne adresy VIP (wewnętrzne Równoważenie obciążenia) na wdrożenie |1 |1 |
 | Listy kontroli dostępu do punktu końcowego (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Limity dotyczące sieci — usługi Azure Resource Manager
-Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
+Poniższe limity mają zastosowanie tylko w przypadku zarządzanych przy użyciu zasobów sieciowych **usługi Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
 > Firma Microsoft niedawno zwiększono wszystkie domyślne limity do ich maksymalnych limitów. W przypadku żadnej kolumny maksymalny limit zasób nie ma limitów dostosowywalnych. Jeśli ma limity wzrosła o pomocy technicznej w przeszłości, a nie widzisz limity zaktualizowane w poniższych tabelach [Otwórz żądanie obsługi klienta online bez dodatkowych opłat](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| Resource | Domyślny limit/maksymalny limit | 
+| Resource | Domyślne/maksymalny limit | 
 | --- | --- |
 | Sieci wirtualne |1000 |
-| Podsieci na sieć wirtualną |3,000 |
+| Podsieci na sieć wirtualną |3000 |
 | Komunikacja równorzędna sieci wirtualnych na sieć wirtualną |500 |
 | Serwery DNS na sieć wirtualną |20 |
 | Prywatne adresy IP na sieć wirtualną |65,536 |
 | Prywatne adresy IP na interfejs sieciowy |256 |
 | Prywatne adresy IP na maszynę wirtualną |256 |
 | Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500,000 |
-| Karty sieciowe |65,536 |
-| Grupy zabezpieczeń sieci |5000 |
+| Karty interfejsu sieciowego |65,536 |
+| Grupy zabezpieczeń sieci |5,000 |
 | Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 |
 | Adresy IP i zakresów określonych dla źródła lub miejsca docelowego w grupie zabezpieczeń |4,000 |
-| Grupy zabezpieczeń aplikacji |3,000 |
+| Grupy zabezpieczeń aplikacji |3000 |
 | Grupy zabezpieczeń aplikacji na konfiguracji adresu IP dla karty Sieciowej |20 |
 | Konfiguracje adresów IP na grupy zabezpieczeń aplikacji |4,000 |
 | Grupy zabezpieczeń aplikacji, które można określić w ramach wszystkich reguł zabezpieczeń grupy zabezpieczeń sieci |100 |
@@ -70,12 +70,12 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Publiczne adresy IP — dynamiczny | 1000 Basic. |Skontaktuj się z pomocą techniczną. |
 | Publiczne adresy IP — statyczny | 1000 Basic. |Skontaktuj się z pomocą techniczną. |
 | Publiczne adresy IP — statyczny | 200 dla warstwy standardowa.|Skontaktuj się z pomocą techniczną. |
-| Rozmiar prefiksu publicznego adresu IP (wersja zapoznawcza) | /28 | /28 |
+| Publiczne rozmiar prefiksu adresu IP | /28 | Skontaktuj się z pomocą techniczną. |
 
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
 Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
-| Resource | Limit domyślny |
+| Resource | Domyślne/maksymalny limit |
 | --- | --- |
 | Moduły równoważenia obciążenia | 1000 | 
 | Zasady dla każdego zasobu, Basic | 250 |

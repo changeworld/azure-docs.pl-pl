@@ -13,19 +13,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
-ms.openlocfilehash: 236bb39125ec03a9652a57f9cd4aaa5da2695452
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554225"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238814"
 ---
-| Zasób | Limit domyślny | Limit maksymalny | 
+| Resource | Limit domyślny | Limit maksymalny | 
 | --- | --- | --- |
 | Jednostki usługi Azure SignalR Service dla każdego wystąpienia bezpłatnie warstwy. |1 |1 |
 | Jednostki usługi Azure SignalR Service każde wystąpienie w warstwie standardowa |100 |100 |
 | Jednostki usługi Azure SignalR Service na subskrypcję na region za darmo warstwy.|5 |5 |
-| Całkowita liczba jednostek usługi Azure SignalR Service Zlicza na subskrypcję na region |50 |Nieograniczona liczba |
+| Całkowita liczba jednostek usługi Azure SignalR Service Zlicza na subskrypcję na region |150 |Nieograniczona liczba |
 | Połączenia na jednostkę dziennie dla bezpłatnej warstwy |20 |20 |
 | Połączenia na jednostkę dziennie w przypadku warstwy standardowa |1000 |1000|
 | Uwzględnione wiadomości na jednostkę dziennie za darmo warstwy.|20,000 |20,000 |

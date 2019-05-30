@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: 16add1531db769d0e06f0a7034a36b568b69e602
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554028"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238363"
 ---
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Maksymalna liczba maszyn wirtualnych w zestawie skalowania |1000 |1000 |
 | Ustaw maksymalną liczbę maszyn wirtualnych na podstawie niestandardowego obrazu maszyny Wirtualnej w skali|600 |600 |

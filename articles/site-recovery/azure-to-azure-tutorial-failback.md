@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 339cbf18d79053dfb0704d928b8c9251c73b3a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a3b67e9b0dc41eeb14000400912892fbf29acfe2
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951791"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399494"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Powrót po awarii maszyny Wirtualnej platformy Azure między regionami platformy Azure
 
@@ -31,7 +31,7 @@ W tym samouczku opisano, jak ich powrotu po awarii jednej maszyny Wirtualnej pla
 > 
 > Ten samouczek ułatwia do trybu failover kilka maszyn wirtualnych do regionu docelowego i powrotem do regionu źródłowego z minimalną dostosowań. Aby uzyskać więcej szczegółowych instrukcji, przejrzyj [instrukcje przeprowadzi na maszynach wirtualnych Azure](https://docs.microsoft.com/azure/virtual-machines/windows/).
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
 * Upewnij się, że stan maszyny Wirtualnej to **tryb Failover zatwierdzony**.
 * Sprawdź, czy region podstawowy jest dostępny i że jesteś w stanie utworzyć i zapisać w nim nowe zasoby.
@@ -50,7 +50,7 @@ Po ponownym włączeniu ochrony maszyn wirtualnych, można powrotu po awarii do 
 5. Po testowy tryb failover zakończy się pomyślnie, wybierz **wyczyść test pracy awaryjnej** aby wyczyścić zasoby utworzone w regionie źródłowym do testowania trybu failover.
 6. W **zreplikowane elementy**, wybierz maszynę Wirtualną, a następnie wybierz **trybu Failover**.
 7. W **trybu Failover**, wybierz punkt odzyskiwania do trybu failover:
-    - **Najnowsze (ustawienie domyślne)**: Przetwarza wszystkie dane w usłudze Site Recovery i udostępnia najniższy cel punktu odzyskiwania (RPO).
+    - **Najnowsze (ustawienie domyślne)** : Przetwarza wszystkie dane w usłudze Site Recovery i udostępnia najniższy cel punktu odzyskiwania (RPO).
     - **Najnowszy przetworzony**: Przywraca maszynę Wirtualną do ostatniego punktu odzyskiwania, które zostały przetworzone przez usługę Site Recovery.
     - **Niestandardowy**: Wprowadza tryb failover do określonego punktu odzyskiwania. Ta opcja jest przydatna na potrzeby wykonywania testu trybu failover.
 

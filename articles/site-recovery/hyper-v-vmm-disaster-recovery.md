@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124153"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398401"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
 
@@ -116,14 +116,14 @@ Wybierz docelowy serwer VMM i chmurę:
 1. Kliknij pozycję **Przygotowanie infrastruktury** > **Docelowa**, a następnie wybierz docelowy serwer VMM.
 2. Zostaną wyświetlone chmury programu VMM, które są zsynchronizowane z usługą Site Recovery. Wybierz chmurę docelową.
 
-   ![Środowisko docelowe](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Cel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji
 
 Przed rozpoczęciem upewnij się, że wszystkie hosty, które korzystają z zasad, mają ten sam system operacyjny. Jeśli na hostach są uruchomione różne wersje systemu Windows Server, konieczne będzie wiele zasad replikacji.
 
-1. Aby utworzyć nowe zasady replikacji, kliknij kolejno pozycje **Przygotowanie infrastruktury** > **Ustawienia replikacji** > **+ Utwórz i skojarz**.
+1. Aby utworzyć nowe zasady replikacji, kliknij kolejno pozycje **Przygotowanie infrastruktury** > **Ustawienia replikacji** >  **+ Utwórz i skojarz**.
 2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Typem źródłowym i docelowym powinien być **Hyper-V**.
 3. W obszarze **Wersja hosta funkcji Hyper-V** wybierz system operacyjny uruchomiony na hoście.
 4. W pozycji **Typ uwierzytelniania** i **Port uwierzytelniania** określ, jak ruch jest uwierzytelniany między serwerami podstawowymi i odzyskiwania hostów funkcji Hyper-V.
