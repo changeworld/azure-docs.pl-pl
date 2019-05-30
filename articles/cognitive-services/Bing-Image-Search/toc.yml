@@ -67,9 +67,9 @@
 - name: Dokumentacja
   items:
     - name: Interfejs API wyszukiwania obrazów Bing v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference'
     - name: Interfejs API wyszukiwania obrazów Bing v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference'
     - name: Dokumentacja programu Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
     - name: Dokumentacja interfejsu wiersza polecenia platformy Azure

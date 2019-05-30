@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9c8d1fb234efd5df297082cfc1001f28ca1656
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2b9e4f5208eb1f6abb0d6fd786630c183a04ce50
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990374"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388866"
 ---
 # <a name="tutorial-integrate-workday-with-azure-active-directory"></a>Samouczek: Integracja z produktu Workday za pomocą usługi Azure Active Directory
 
@@ -88,7 +88,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     > [!NOTE]
     > Te wartości nie są rzeczywiste. Rzeczywisty adres URL logowania i adres URL odpowiedzi, należy zaktualizować te wartości. Adres URL odpowiedzi muszą mieć poddomeny na przykład: www, wd2, wd3, wd3 impl, wd5, wd5 impl).
-    > Przy użyciu polecenia podobnego `http://www.myworkday.com` działa, ale `http://myworkday.com` nie. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Workday](https://www.workday.com/partners-services/services/support.html) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Przy użyciu polecenia podobnego `http://www.myworkday.com` działa, ale `http://myworkday.com` nie. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Aplikacja produktu Workday oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. WORKDAY aplikacja oczekuje **nameidentifier** mają być mapowane z **user.mail**, **UPN**itd., więc trzeba edytować mapowanie atrybutów, klikając  **Edytuj** ikonę i zmień mapowanie atrybutu.
 
@@ -138,7 +138,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
    > [!NOTE]
    > Wartość atrybutu środowisko jest powiązana wartość adres URL dzierżawy:  
    > -Czy nazwa domeny adres URL dzierżawy produktu Workday rozpoczyna się od impl na przykład: *https:\//impl.workday.com/\<dzierżawy\>/login-saml2.flex*), **środowiska**atrybut należy skonfigurować do implementacji.  
-   > — Jeśli nazwa domeny rozpoczyna się czymś innym, musisz skontaktować się z [zespołem pomocy technicznej klienta Workday](https://www.workday.com/partners-services/services/support.html) można pobrać dopasowywania **środowiska** wartość.
+   > — Jeśli nazwa domeny rozpoczyna się czymś innym, musisz skontaktować się z [zespołem pomocy technicznej klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) można pobrać dopasowywania **środowiska** wartość.
 
 4. W **konfiguracji SAML** sekcji, wykonaj następujące czynności:
 
@@ -197,7 +197,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     ![Konfiguracja logowania jednokrotnego](./media/workday-tutorial/WorkdaySSOConfiguratio.png "konfiguracji logowania jednokrotnego")
 
-    a.  W **identyfikator dostawcy usługi** polu tekstowym wpisz **https://www.workday.com**.
+    a.  W **identyfikator dostawcy usługi** polu tekstowym wpisz **https://www.workday.com** .
 
     b. Wybierz **nie Deflate żądania zainicjowanego przez dostawcę usług uwierzytelniania**.
 
@@ -250,7 +250,7 @@ W tej sekcji utworzysz użytkownika w usłudze WORKDAY aplikacja o nazwie Britta
 
 Po wybraniu kafelka produktu Workday w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze Workday, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: c04a9dff55794a3e48146e8effc3627452b3db14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f2b5a2bc3248c9f2ee0eb49e993fd55c7714367a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950170"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389167"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak skonfigurować zasady filtrowania geograficznego zapory aplikacji sieci Web dla usługi drzwi
 W tym samouczku pokazano, jak utworzyć przykładowe zasady filtrowania geograficznego za pomocą programu Azure PowerShell i skojarzyć je z istniejącym hostem frontonu usługi Front Door. Te zasady filtrowania geograficznego próbka będzie blokować żądania od wszystkich innych krajach/regionach z wyjątkiem Stanów Zjednoczonych.
@@ -110,6 +110,5 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > Należy ustawić właściwość WebApplicationFirewallPolicyLink raz połączyć zasadę zapory aplikacji sieci Web z hosta serwera sieci Web drzwiami frontowymi. Zasady kolejne aktualizacje są automatycznie stosowane do hosta serwera sieci Web.
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-- Uzyskaj informacje o [zabezpieczeniach warstwy aplikacji w usłudze Front Door](front-door-application-security.md).
+- Dowiedz się więcej o [zapory aplikacji sieci web platformy Azure](waf-overview.md).
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).

@@ -8,26 +8,24 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: a02144914e73ca1788976d8b01ccd95d1b9e9a1b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8f2e956603fbb9aec81b08260eade846eb6a622c
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66133051"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393320"
 ---
 Jeśli planujesz kontynuować do następnego samouczka, zachować zasoby utworzone w tym przewodniku Szybki Start. Można je wykorzystać w następnym samouczku.
 
 Jeśli zakończeniu przewodnika Szybki Start Przykładowa aplikacja usunięcie zasobów platformy Azure utworzone w tym przewodniku Szybki Start, aby uniknąć naliczania opłat.
 
 > [!IMPORTANT]
-> Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów i wszystkie zasoby w nim trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub niewłaściwej grupy zasobów. Być może utworzono zasoby do hostowania w tym przykładzie wewnątrz istniejącej grupy zasobów, która zawiera zasoby, które chcesz zachować. Usuwać poszczególne zasoby pojedynczo z odpowiednich bloków zamiast usuwania grupy zasobów.
->
->
+> Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów i wszystkie zasoby w nim trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub niewłaściwej grupy zasobów. Jeśli utworzono zasoby do hostowania w tym przykładzie wewnątrz grupy zasobów, która zawiera zasoby, które chcesz zachować, usuwać poszczególne zasoby pojedynczo z jego odpowiedniego okienko, zamiast usuwania grupy zasobów.
 
-Zaloguj się do [witryny Azure portal](https://aka.ms/azconfig/portal)i wybierz **grup zasobów**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i wybierz **grup zasobów**.
+1. W **Filtruj według nazwy** wprowadź nazwę grupy zasobów. W instrukcjach tego przewodnika Szybki start używana była grupa zasobów o nazwie *AppConfigTestResources*.
+1. W liście wyników, wybierz grupę zasobów, a następnie kliknij prawym przyciskiem myszy wiersza lub użyć **wielokropka** ( **...** ) przycisk, aby otworzyć menu kontekstowe.
+1. Wybierz pozycję **Usuń grupę zasobów**.
+1. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wprowadź nazwę grupy zasobów w celu potwierdzenia, a następnie wybierz **Usuń**.
 
-W **Filtruj według nazwy** wprowadź nazwę grupy zasobów. W instrukcjach tego przewodnika Szybki start używana była grupa zasobów o nazwie *AppConfigTestResources*. W swojej grupy zasobów na liście wyników wybierz **...**  , a następnie wybierz **Usuń grupę zasobów**.
-
-Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wprowadź nazwę grupy zasobów w celu potwierdzenia, a następnie wybierz **Usuń**.
-
-Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
+Po kilku chwilach grupy zasobów i wszystkie jej zasoby zostaną usunięte.

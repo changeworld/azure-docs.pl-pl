@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 4ea511bec75557bc6f7d37b1724b4b0db65ba9cc
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523029"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299417"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Szybki start: Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu NFS 
 
@@ -57,7 +57,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-netapp-account"></a>Tworzenie konta usługi NetApp
 
-1. W polu wyszukiwania w witrynie Azure portal, wprowadź **usługi Azure Files NetApp** , a następnie wybierz **plików NetApp Azure (wersja zapoznawcza)** z wyświetlonej listy.
+1. W polu wyszukiwania w witrynie Azure portal, wprowadź **usługi Azure Files NetApp** , a następnie wybierz **usługi Azure Files NetApp** z wyświetlonej listy.
 
       ![Wybierz pliki NetApp platformy Azure](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
@@ -156,13 +156,13 @@ Gdy wszystko będzie gotowe, i chcesz, możesz usunąć grupę zasobów. Akcja u
 
 3. Na stronie grupy zasobów kliknij **Usuń grupę zasobów**.
 
-    ![Usuń grupę zasobów](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Usuwanie grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Zostanie otwarte okno zawierające ostrzeżenie dotyczące zasobów, które zostaną usunięte razem z grupą zasobów.
 
 4. Wprowadź nazwę grupy zasobów (myRG1), aby upewnić się, że chcesz trwale usunąć grupę zasobów i wszystkie zawarte w niej zasoby, a następnie kliknij przycisk **Usuń**.
 
-    ![Usuń grupę zasobów](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Usuwanie grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 ## <a name="next-steps"></a>Kolejne kroki  
 

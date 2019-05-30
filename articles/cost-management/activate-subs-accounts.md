@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: efc012e496045d3d5d12d6fe756b62e4ae19cc2a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9999518b81d264cb1e46f3c03ec65379d35aa603
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002139"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242445"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą platformy Cloudyn
 
@@ -51,7 +51,7 @@ Dodając konto lub aktualizując subskrypcję przyznajesz platformie Cloudyn dos
 
 ### <a name="add-a-new-account-subscription"></a>Dodawanie nowego konta (subskrypcji)
 
-1. W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Cloud Accounts (Konta w chmurze)**.
+1. W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Cloud Accounts (Konta w chmurze)** .
 2. Kliknij pozycję **Dodaj nowe konto**. Zostanie wyświetlone okno **Dodawanie nowego konta**. Wprowadź wymagane informacje.  
     ![Wprowadzanie wymaganych informacji w oknie Dodaj nowe konto](./media/activate-subs-accounts/add-new-account.png)
 
@@ -64,7 +64,7 @@ Dodając konto lub aktualizując subskrypcję przyznajesz platformie Cloudyn dos
     2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
     3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
     4. Skopiuj identyfikator GUID katalogu. Ta wartość jest Twoim identyfikatorem dzierżawy.
-    Aby uzyskać więcej informacji, zobacz [Get tenant ID (Pobieranie identyfikatora dzierżawy)](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    Aby uzyskać więcej informacji, zobacz [Get tenant ID (Pobieranie identyfikatora dzierżawy)](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 3. W razie potrzeby wybierz identyfikator stawki. Jeśli nie znasz identyfikatora stawki, wykonaj następujące czynności, aby go znaleźć:
     1. W prawym górnym rogu witryny Azure Portal kliknij informacje o użytkowniku, a następnie kliknij pozycję **Wyświetl mój rachunek**.
     2. W obszarze **Konto rozliczeniowe** kliknij pozycję **Subskrypcje**.

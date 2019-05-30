@@ -17,15 +17,15 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c9d0724021017ec8c411d637420b05284ea52
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 72ab8a85ecc5649352382469e09d7dfd83a5ddfa
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544175"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305719"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Dostarczanie własnego HttpClient i serwer proxy przy użyciu platformy MSAL.NET
-Podczas inicjowania aplikacji publicznych klienta, możesz użyć `.WithHttpClientFactory method` zapewnienie własnego HttpClient.  Dostarczanie własnego HttpClient umożliwia zaawansowanych scenariuszy takich precyzyjne kontrolowanie serwera proxy HTTP, dostosowywanie nagłówków agenta użytkownika lub wymuszanie biblioteki MSAL do użycia określonego HttpClient (na przykład w aplikacji sieci web platformy ASP.NET Core/API).
+Gdy [inicjowania aplikacji publicznych klienta](msal-net-initializing-client-applications.md), możesz użyć `.WithHttpClientFactory method` zapewnienie własnego HttpClient.  Dostarczanie własnego HttpClient umożliwia zaawansowanych scenariuszy takich precyzyjne kontrolowanie serwera proxy HTTP, dostosowywanie nagłówków agenta użytkownika lub wymuszanie biblioteki MSAL do użycia określonego HttpClient (na przykład w aplikacji sieci web platformy ASP.NET Core/API).
 
 ## <a name="initialize-with-httpclientfactory"></a>Zainicjuj przy użyciu HttpClientFactory
 Poniższy przykład pokazuje, aby utworzyć `HttpClientFactory` i następnie Zainicjowanie aplikacji klienckiej publicznych z nią:

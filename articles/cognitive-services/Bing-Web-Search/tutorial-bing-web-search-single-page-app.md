@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798338"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390049"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: Tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w Internecie Bing
 
@@ -80,7 +80,7 @@ W tym samouczku skoncentrowano się na `scripts.js` i logice wymaganych do wywo�
 
 ## <a name="query-options"></a>Opcje zapytań
 
-Formularz HTML zawiera opcje, które mapują do parametrów zapytań w [interfejsie API wyszukiwania w sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters). W tej tabeli przedstawiono poszczególne czynności, które użytkownicy mogą wykonać w celu filtrowania wyników wyszukiwania przy użyciu przykładowej aplikacji:
+Formularz HTML zawiera opcje, które mapują do parametrów zapytań w [interfejsie API wyszukiwania w sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters). W tej tabeli przedstawiono poszczególne czynności, które użytkownicy mogą wykonać w celu filtrowania wyników wyszukiwania przy użyciu przykładowej aplikacji:
 
 | Parametr | Opis |
 |-----------|-------------|
@@ -93,7 +93,7 @@ Formularz HTML zawiera opcje, które mapują do parametrów zapytań w [interfej
 | `offset` | Ukryte pole. Przesunięcie pierwszego wyniku wyszukiwania w żądaniu używane na potrzeby stronicowania. Jest resetowane do wartości `0` dla każdego nowego żądania. |
 
 > [!NOTE]
-> Interfejs API wyszukiwania w sieci Web Bing oferuje dodatkowe parametry zapytania, które mogą pomóc uściślić wyniki wyszukiwania. W tym przykładzie użyto tylko kilku. Aby uzyskać pełną listę dostępnych parametrów, zobacz [informacje dotyczące interfejsu API wyszukiwania w sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters).
+> Interfejs API wyszukiwania w sieci Web Bing oferuje dodatkowe parametry zapytania, które mogą pomóc uściślić wyniki wyszukiwania. W tym przykładzie użyto tylko kilku. Aby uzyskać pełną listę dostępnych parametrów, zobacz [informacje dotyczące interfejsu API wyszukiwania w sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
 
 Funkcja `bingSearchOptions()` konwertuje te opcje, aby dostosować je do formatu wymaganego przez interfejs API wyszukiwania Bing.
 

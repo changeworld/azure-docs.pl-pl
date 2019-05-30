@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 9544337ef1322e52cbdf123bb48d283485a8c7dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b847615e8440a8992c8130d12cd6111afe3d33d2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60896142"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390235"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Korzystanie z interfejsu API sprawdzania pisowni Bing
 
@@ -44,14 +44,14 @@ Tryb `Spell` jest bardziej agresywny i umożliwia zwrócenie lepszych wyników w
 
 ## <a name="market-setting"></a>Ustawienie rynku
 
-[Kod rynku](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#market-codes) powinien być określony za pomocą parametru zapytania `mkt` w żądaniu. W przeciwnym razie interfejs API użyje domyślnego rynku, bazując na adresie IP żądania.
+[Kod rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) powinien być określony za pomocą parametru zapytania `mkt` w żądaniu. W przeciwnym razie interfejs API użyje domyślnego rynku, bazując na adresie IP żądania.
 
 
 ## <a name="http-post-and-get-support"></a>Obsługa żądań HTTP POST i GET
 
 Interfejs API obsługuje żądania HTTP POST i HTTP GET. To, którego użyjesz, zależy od długości tekstu, który chcesz sprawdzić. Jeśli ciągi zawsze mają mniej niż 1500 znaków, należy użyć żądania HTTP GET. Jeśli chcesz, aby obsługiwane były ciągi dłuższe niż 10 000 znaków, należy użyć żądania HTTP POST. Ciąg tekstu może zawierać wszelkie prawidłowe znaki UTF-8.
 
-W poniższym przykładzie przedstawiono żądanie POST sprawdzające pisownię i gramatykę w ciągu tekstowym. Przykład zawiera parametr zapytania [mode](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#mode), aby pokazać pełne zapytanie (mógł zostać pominięty, ponieważ domyślna wartość parametru `mode` to Proof). Parametr zapytania [text](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#text) zawiera ciąg, który ma zostać sprawdzony.
+W poniższym przykładzie przedstawiono żądanie POST sprawdzające pisownię i gramatykę w ciągu tekstowym. Przykład zawiera parametr zapytania [mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode), aby pokazać pełne zapytanie (mógł zostać pominięty, ponieważ domyślna wartość parametru `mode` to Proof). Parametr zapytania [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) zawiera ciąg, który ma zostać sprawdzony.
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -68,7 +68,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 W przypadku użycia żądania HTTP GET należy uwzględnić parametr zapytania `text` w ciągu zapytania adresu URL.
   
-Poniżej przedstawiono odpowiedź na poprzednie żądanie. Odpowiedź zawiera obiekt [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#spellcheck). 
+Poniżej przedstawiono odpowiedź na poprzednie żądanie. Odpowiedź zawiera obiekt [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck). 
   
 ```json
 {  
@@ -112,7 +112,7 @@ Poniżej przedstawiono odpowiedź na poprzednie żądanie. Odpowiedź zawiera ob
 }  
 ```  
   
-W polu [FlaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#flaggedtokens) wyświetlana jest lista błędów pisowni i gramatyki, które interfejs API odnalazł w ciągu [text](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#text). Pole `token` zawiera wyraz, który ma zostać zastąpiony. Należy użyć przesunięcia zaczynającego się od zera w polu `offset`, aby znaleźć token w ciągu `text`. Następnie należy zastąpić słowo w tej lokalizacji słowem podanym w polu `suggestion`. 
+W polu [FlaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) wyświetlana jest lista błędów pisowni i gramatyki, które interfejs API odnalazł w ciągu [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text). Pole `token` zawiera wyraz, który ma zostać zastąpiony. Należy użyć przesunięcia zaczynającego się od zera w polu `offset`, aby znaleźć token w ciągu `text`. Następnie należy zastąpić słowo w tej lokalizacji słowem podanym w polu `suggestion`. 
 
 Jeśli pole `type` zawiera wartość RepeatedToken, i tak należy zastąpić token słowem z pola `suggestion`, ale prawdopodobnie należy także usunąć spację końcową.
 
@@ -123,4 +123,4 @@ Jeśli pole `type` zawiera wartość RepeatedToken, i tak należy zastąpić tok
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Czym jest interfejs API sprawdzania pisowni Bing?](../overview.md)
-- [Dokumentacja interfejsu API sprawdzania pisowni Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [Dokumentacja interfejsu API sprawdzania pisowni Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

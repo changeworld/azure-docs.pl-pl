@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2019
+ms.date: 05/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589364"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225914"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
@@ -55,7 +55,7 @@ Usługa Resource Manager zapewnia kilka korzyści:
 
 System Azure oferuje cztery poziomy zakresem zarządzania: [grup zarządzania](../governance/management-groups/index.md), subskrypcji, [grup zasobów](#resource-groups)i zasobów. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
 
-![Zakres](./media/resource-group-overview/scope-levels.png)
+![Scope](./media/resource-group-overview/scope-levels.png)
 
 Ustawienia zarządzania są stosowane na dowolnych z tych poziomów zakresu. Zasięg zastosowania ustawienia jest określany na podstawie wybranego poziomu. Niższe poziomy dziedziczą ustawienia z wyższych poziomów. Na przykład, po zastosowaniu [zasad](../governance/policy/overview.md) do subskrypcji, zasady są stosowane do wszystkich grup zasobów i zasobów w ramach subskrypcji. Po zastosowaniu zasad w grupie zasobów, które zasady są stosowane grupy zasobów i wszystkie jej zasoby. Jednak innej grupy zasobów nie ma tego przypisania zasad.
 
@@ -91,7 +91,7 @@ Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizo
 
 Każdy dostawca zasobów udostępnia zestaw zasobów i operacji do pracy z tymi zasobami. Na przykład w celu przechowywania kluczy i kluczy tajnych należy użyć dostawcy zasobów **Microsoft.KeyVault**. Ten dostawca zasobów udostępnia typ zasobu o nazwie **magazyny** umożliwiający utworzenie magazynu kluczy.
 
-Nazwa typu zasobu ma następujący format: **{dostawca_zasobów}/{typ_zasobu}**. Typ zasobu dla magazynu kluczy to **Microsoft.KeyVault/magazyny**.
+Nazwa typu zasobu ma następujący format: **{dostawca_zasobów}/{typ_zasobu}** . Typ zasobu dla magazynu kluczy to **Microsoft.KeyVault/magazyny**.
 
 Przed rozpoczęciem wdrażania zasobów należy uzyskać wiedzę na temat dostępnych dostawców zasobów. Znajomość nazw zasobów i ich dostawców pomaga określić zasoby, które mają zostać wdrożone na platformie Azure. Dodatkowo trzeba znać prawidłowe lokalizacje i wersje interfejsów API dla każdego typu zasobu. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](resource-manager-supported-services.md).
 
@@ -174,7 +174,21 @@ Po zdefiniowaniu szablonu można przystąpić do wdrażania zasobów na platform
 
 Podczas wdrażania złożonej usługi na platformie Azure może być konieczne wdrożenie swojej usługi w wielu regionach i sprawdzenie jej kondycji przed przejściem do następnego kroku. Użyj usługi [Azure Deployment Manager](deployment-manager-overview.md) do koordynowania etapowego wdrażania usługi. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz tych środków ostrożności, operacje wdrażania w poprzedniej sekcji są lepszym rozwiązaniem.
 
-Usługa Deployment Manager jest obecnie dostępna w prywatnej wersji zapoznawczej.
+Usługa Deployment Manager jest obecnie w publicznej wersji zapoznawczej.
+
+## <a name="resiliency-of-azure-resource-manager"></a>Odporność platformy Azure Resource Manager
+
+Usługa Azure Resource Manager jest przeznaczona dla odporności i stałej dostępności. Operacje płaszczyzny Menedżera zasobów i kontroli (żądania wysyłane do management.azure.com) w interfejsu API REST są:
+
+* Rozproszone w wielu regionach. Niektóre usługi są regionalne.
+
+* Rozpowszechniane w różnych strefach dostępności (jak dobrze regiony) w lokalizacjach, które mają w wielu strefach dostępności.
+
+* Nie jest ona zależna od pojedynczego logicznego centrum danych.
+
+* Nigdy niepobrane konserwacyjne.
+
+Odporność to ma zastosowanie do usług, które odbierania żądań przy użyciu usługi Resource Manager. Na przykład usługi Key Vault korzyści związane z tym odporności.
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

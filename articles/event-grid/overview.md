@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bfc8b62c61e2b9d01ffa0c582468b6236c92cccc
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823643"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257937"
 ---
 # <a name="what-is-azure-event-grid"></a>Co to jest usługa Azure Event Grid?
 
@@ -22,7 +22,7 @@ Usługa Azure Event Grid umożliwia łatwe tworzenie aplikacji za pomocą archit
 
 Filtry pozwalają kierować określone zdarzenia do różnych punktów końcowych i korzystać z multiemisji do wielu punktów końcowych, a także zapewniają niezawodne dostarczanie zdarzeń.
 
-Obecnie usługa Azure Event Grid jest dostępna we wszystkich publicznych regionach. Jeszcze nie jest dostępna w Azure (Niemcy), Azure China 21Vianet lub chmury platformy Azure dla instytucji rządowych.
+Usługa Azure Event Grid jest wdrażany w celu zapewnienia maksymalnej dostępności przez natywnie rozsyłanie się w wielu domenach błędów w każdym regionie i w różnych strefach dostępności (w regionach, które je obsługują). Obecnie usługa Azure Event Grid jest dostępna we wszystkich publicznych regionach. Jeszcze nie jest dostępna w Azure (Niemcy), Azure China 21Vianet lub chmury platformy Azure dla instytucji rządowych.
 
 Ten artykuł zawiera omówienie usługi Azure Event Grid. Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md). 
 

@@ -1,26 +1,26 @@
 ---
-title: Integracja dla przedsiębiorstw w usłudze Azure Logic Apps | Microsoft Docs
-description: W tym artykule opisano wykorzystanie automatyzacji zadań, przepływów pracy i procesów biznesowych do utworzenia rozwiązań integracji dla przedsiębiorstw, które umożliwiają integrowanie aplikacji, danych, usług i systemów w przedsiębiorstwach i organizacjach. Tworzenie rozwiązań na potrzeby integracji danych, integracji systemów, usług Enterprise Application Integration (EAI) i scenariuszy aranżacji.
+title: Integracja dla przedsiębiorstw z usługą Azure Logic Apps
+description: Omówienie tworzenia rozwiązań integracji przedsiębiorstwa, automatyzowanie i organizowanie zadania, przepływy pracy i procesów biznesowych, które integrowania aplikacji, danych, usługami i systemami przedsiębiorstw i organizacji. Tworzenie rozwiązań na potrzeby integracji danych, integracji systemów, usług Enterprise Application Integration (EAI) i scenariuszy aranżacji.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+manager: carmonm
+ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61318548"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299108"
 ---
 # <a name="what-is-azure-logic-apps"></a>Co to jest usługa Azure Logic Apps?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) to usługa w chmurze, która ułatwia automatyzowanie i organizowanie zadań, procesów biznesowych i [przepływów pracy](#logic-app-concepts) na potrzeby integracji aplikacji, danych, systemów oraz usług w przedsiębiorstwach lub organizacjach. Usługa Logic Apps ułatwia projektowanie i tworzenie skalowalnych rozwiązań na potrzeby [integracji](https://azure.microsoft.com/product-categories/integration/) aplikacji, danych, systemów i usług Enterprise Application Integration (EAI) oraz komunikacji między firmami (B2B), zarówno w chmurze, jak i środowisku lokalnym.
+[Usługa Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) to usługa w chmurze, która ułatwia planowanie, automatyzowanie i organizowanie zadań i procesów biznesowych i [przepływy pracy](#logic-app-concepts) potrzebne do integrowania aplikacji, danych, systemów i usług w ramach przedsiębiorstwa lub organizacje. Usługa Logic Apps ułatwia projektowanie i tworzenie skalowalnych rozwiązań na potrzeby [integracji](https://azure.microsoft.com/product-categories/integration/) aplikacji, danych, systemów i usług Enterprise Application Integration (EAI) oraz komunikacji między firmami (B2B), zarówno w chmurze, jak i środowisku lokalnym.
 
 Poniżej przedstawiono kilka przykładowych obciążeń, które można zautomatyzować za pomocą aplikacji logiki:
 
@@ -35,7 +35,7 @@ Tworząc rozwiązania integracji dla przedsiębiorstw przy użyciu usługi Azure
 
 ## <a name="how-does-logic-apps-work"></a>Jak działa usługa Logic Apps? 
 
-Każdy przepływ pracy aplikacji logiki rozpoczyna się od wyzwalacza, który jest aktywowany, gdy zajdzie określone zdarzenie lub gdy nowe dostępne dane spełniają określone kryteria. Wiele wyzwalaczy oferuje podstawowe możliwości planowania, dzięki czemu można określić regularność uruchamiania obciążeń. W przypadku wielu niestandardowych scenariuszy planowania przepływy pracy należy uruchomiać za pomocą wyzwalacza harmonogramu. Dowiedz się więcej o [sposobach tworzenia przepływów pracy opartych na harmonogramach](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md).
+Każdy przepływ pracy aplikacji logiki rozpoczyna się od wyzwalacza, który jest aktywowany, gdy zajdzie określone zdarzenie lub gdy nowe dostępne dane spełniają określone kryteria. Wiele wyzwalaczy udostępnianych przez łączniki usługi Logic Apps oferuje podstawowe możliwości planowania, tak aby skonfigurujesz regularność uruchamiania obciążeń. Dla bardziej złożonych planowania i zaawansowanych cykli można użyć wyzwalacza cyklu jako pierwszy krok w każdym przepływie pracy. Dowiedz się więcej o [przepływów pracy opartych na harmonogramie](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki, które uruchamia akcje przepływu pracy. Te akcje mogą również obejmować konwersje danych i kontrole przepływów, na przykład instrukcje warunkowe, instrukcje switch, pętle i rozgałęziania. Ta aplikacja logiki rozpoczyna się na przykład od wyzwalacza usług Dynamics 365 z wbudowanymi kryteriami „Gdy rekord zostanie zaktualizowany”. Jeśli wyzwalacz wykryje zdarzenie zgodne z tymi kryteriami, aktywuje się i uruchamia akcje przepływu pracy. W tym przypadku akcje obejmują transformacje XML, aktualizacje danych, rozgałęzienia decyzji i powiadomienia e-mail.
 
@@ -132,16 +132,11 @@ Wszystkie te usługi pomagają „skleić” i połączyć ze sobą różne syst
 
 ## <a name="get-started"></a>Rozpoczęcie pracy 
 
-Logic Apps to jedna z wielu usług hostowanych na platformie Microsoft Azure. Dlatego przed rozpoczęciem należy uzyskać subskrypcję Azure. Jeśli nie masz subskrypcji, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+Logic Apps to jedna z wielu usług hostowanych na platformie Microsoft Azure. Dlatego przed rozpoczęciem należy uzyskać subskrypcję Azure. Jeśli nie masz subskrypcji, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
 Jeśli masz subskrypcję platformy Azure, wypróbuj ten [przewodnik Szybki start, aby utworzyć pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md), która za pośrednictwem kanału informacyjnego RSS monitoruje witryną internetową pod kątem nowej zawartości i jeśli się taka pojawi, wysyła wiadomość e-mail.
 
-## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
-
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Sprawdzanie ruchu za pomocą aplikacji logiki opartej na harmonogramie](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 * Dowiedz się więcej o [rozwiązaniach nieużywających serwera na platformie Azure](../logic-apps/logic-apps-serverless-overview.md)

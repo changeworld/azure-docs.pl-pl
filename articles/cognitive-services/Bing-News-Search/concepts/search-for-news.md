@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: scottwhi
-ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77f8e41b2271770e49c2e5c4d1591c213eaa257d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648435"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383414"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
 
@@ -27,7 +27,7 @@ O ile interfejs API wyszukiwania wiadomości Bing umożliwia przede wszystkim wy
 
 Jeśli udostępniasz pole wyszukiwania, w którym użytkownik wprowadza wyszukiwany termin, użyj [interfejsu API automatycznego sugerowania Bing](../../bing-autosuggest/get-suggested-search-terms.md) w celu ulepszenia jego działania. Interfejs API zwraca sugerowane ciągi zapytań na podstawie częściowych wyszukiwanych terminów w miarę wpisywania ich przez użytkownika.
 
-Gdy użytkownik wprowadzi wyszukiwany termin, zakoduj go w formacie URL przed ustawieniem parametru zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query). Na przykład jeśli użytkownik wprowadzi frazę *sailing dinghies*, ustaw parametr `q` na wartość `sailing+dinghies` lub `sailing%20dinghies`.
+Gdy użytkownik wprowadzi wyszukiwany termin, zakoduj go w formacie URL przed ustawieniem parametru zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query). Na przykład jeśli użytkownik wprowadzi frazę *sailing dinghies*, ustaw parametr `q` na wartość `sailing+dinghies` lub `sailing%20dinghies`.
 
 ## <a name="get-general-news"></a>Uzyskiwanie wiadomości ogólnych
 
@@ -99,9 +99,9 @@ Poniżej przedstawiono odpowiedź na poprzednie zapytanie. W ramach [wymagań do
 }
 ```
 
-Odpowiedź z [wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) zawiera artykuły z wiadomościami, które usługa Bing uznała za odpowiednie dla zapytania. Pole `totalEstimatedMatches` zawiera szacunkową liczbę artykułów, które są dostępne do wyświetlenia. Aby uzyskać informacje na temat stronicowania artykułów, zobacz [Stronicowanie wiadomości](../paging-news.md).
+Odpowiedź z [wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) zawiera artykuły z wiadomościami, które usługa Bing uznała za odpowiednie dla zapytania. Pole `totalEstimatedMatches` zawiera szacunkową liczbę artykułów, które są dostępne do wyświetlenia. Aby uzyskać informacje na temat stronicowania artykułów, zobacz [Stronicowanie wiadomości](../paging-news.md).
 
-Każdy [artykułu z wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle) na liście zawiera nazwę, opis i adres URL do artykułu w witrynie internetowej hosta. Jeśli artykuł zawiera obraz, obiekt zawiera miniaturę obrazu. Użyj właściwości `name` i `url`, aby utworzyć hiperlink prowadzący użytkownika do artykułu w witrynie hosta. Jeśli artykuł zawiera obraz, umożliw jego kliknięcie przy użyciu właściwości `url`. Pamiętaj, aby podać źródło artykułu przy użyciu właściwości `provider`.
+Każdy [artykułu z wiadomościami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) na liście zawiera nazwę, opis i adres URL do artykułu w witrynie internetowej hosta. Jeśli artykuł zawiera obraz, obiekt zawiera miniaturę obrazu. Użyj właściwości `name` i `url`, aby utworzyć hiperlink prowadzący użytkownika do artykułu w witrynie hosta. Jeśli artykuł zawiera obraz, umożliw jego kliknięcie przy użyciu właściwości `url`. Pamiętaj, aby podać źródło artykułu przy użyciu właściwości `provider`.
 
 Jeśli usłudze Bing uda się określić kategorię artykułu z wiadomościami, artykuł będzie zawierał pole `category`.
 
@@ -135,7 +135,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Użyj parametru zapytania [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category), aby określić kategorię artykułów do pobrania. Aby uzyskać listę kategorii wiadomości, które można określić, zobacz [Kategorie wiadomości według rynku](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market).
+Użyj parametru zapytania [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category), aby określić kategorię artykułów do pobrania. Aby uzyskać listę kategorii wiadomości, które można określić, zobacz [Kategorie wiadomości według rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market).
 
 Odpowiedź na żądanie pobrania wiadomości według kategorii jest prawie taka sama jak w przypadku żądania pobrania wiadomości ogólnych. Jednak wszystkie artykuły należą do określonej kategorii.
 
@@ -153,11 +153,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Nie używaj parametru zapytania [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category).
+Nie używaj parametru zapytania [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category).
 
 Odpowiedź na żądanie pobrania wiadomości z nagłówków jest taka sama jak w przypadku żądania pobrania najważniejszych wiadomości z dnia dzisiejszego. Jeśli artykuł jest artykułem z nagłówka, jego pole `headline` ma wartość **true**.
 
-Domyślnie odpowiedź zawiera maksymalnie 12 artykułów z nagłówków. Aby zmienić liczbę artykułów z nagłówków do zwrócenia, określ parametr zapytania [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount). Odpowiedź zawiera również do czterech artykułów spoza nagłówków w każdej z kategorii wiadomości.
+Domyślnie odpowiedź zawiera maksymalnie 12 artykułów z nagłówków. Aby zmienić liczbę artykułów z nagłówków do zwrócenia, określ parametr zapytania [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount). Odpowiedź zawiera również do czterech artykułów spoza nagłówków w każdej z kategorii wiadomości.
 
 W odpowiedzi klaster artykułów jest liczony jako jeden artykuł. Ponieważ klaster może zawierać kilka artykułów, odpowiedź może obejmować więcej niż 12 artykułów z nagłówków i więcej niż 4 artykuły spoza nagłówków na kategorię.
 
@@ -223,7 +223,7 @@ Poniższy kod JSON jest odpowiedzią na poprzednie żądanie. Każdy popularny a
 
 ## <a name="getting-related-news"></a>Pobieranie powiązanych wiadomości
 
-Jeśli istnieją inne artykuły, które są powiązane z artykułem z wiadomościami, artykuł z wiadomościami może zawierać pole [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles). Poniżej przedstawiono artykuł z klastrowanymi artykułami.
+Jeśli istnieją inne artykuły, które są powiązane z artykułem z wiadomościami, artykuł z wiadomościami może zawierać pole [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles). Poniżej przedstawiono artykuł z klastrowanymi artykułami.
 
 ```json
     {

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864377"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237792"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu
 
@@ -33,14 +33,29 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 * Serwer notesu Python 3.6 przy użyciu usługi Azure Machine Learning zainstalowany zestaw SDK
 * Obszar roboczy usługi Azure Machine Learning
-* Plik konfiguracji obszaru roboczego (**.azureml/config.json** ).
+* Plik konfiguracji obszaru roboczego ( **.azureml/config.json**).
 
-Pobierz wszystkie te wstępnie wymagane składniki z [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#portal).
+Pobierz wszystkie te wstępnie wymagane składniki z [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk).
+
 
 
 ## <a name="use-the-workspace"></a>Korzystanie z obszaru roboczego
 
-Utwórz skrypt lub uruchomić Notes w tym samym katalogu co plik konfiguracji obszaru roboczego. Uruchom ten kod, który używa podstawowych interfejsów API zestawu SDK do śledzenia przebiegów eksperymentu.
+Utwórz skrypt lub uruchomić Notes w tym samym katalogu co plik konfiguracji obszaru roboczego ( **.azureml/config.json**).
+
+### <a name="attach-to-workspace"></a>Dołącz do obszaru roboczego
+
+Ten kod odczytuje informacje z pliku konfiguracji do dołączenia do obszaru roboczego.
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>Wartości log
+
+Uruchom ten kod, który używa podstawowych interfejsów API zestawu SDK do śledzenia przebiegów eksperymentu.
 
 1. Utwórz eksperyment w obszarze roboczym.
 1. Zarejestruj pojedynczą wartość w eksperymencie.

@@ -62,13 +62,13 @@
 - name: Dokumentacja
   items:
     - name: Dokumentacja interfejsu API niestandardowego automatycznego sugerowania Bing
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference'
     - name: Dokumentacja interfejsu API niestandardowego wyszukiwania obrazów Bing
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference'
     - name: Dokumentacja interfejsu API wyszukiwania niestandardowego Bing
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference'
     - name: Dokumentacja interfejsu API wyszukiwania niestandardowego wideo Bing
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference'
     - name: Wymagania dotyczące użycia i wyświetlania interfejsu API wyszukiwania Bing
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true

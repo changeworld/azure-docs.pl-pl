@@ -12,12 +12,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 18dde6b028365cc04343b6d2f461cdb8c1a2bede
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074337"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389070"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database za pomocą witryny Azure Portal
 
@@ -88,7 +88,7 @@ Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works
    ![Dodatkowe ustawienia bazy danych SQL](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
-   > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)**, co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
+   > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)** , co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
 
 7. Pozostałe wartości Pozostaw domyślne, a następnie wybierz pozycję **przeglądu + Utwórz** w dolnej części formularza.
 8. Przejrzyj ustawienia końcowe i wybierz **Utwórz**.
@@ -137,4 +137,4 @@ Po zakończeniu korzystania z tych zasobów możesz je usunąć w następujący 
   - [Nawiązywanie połączeń i wykonywanie zapytań za pomocą usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Aby utworzyć pojedynczą bazę danych w warstwie zainicjowanych zasobów obliczeniowych, przy użyciu wiersza polecenia platformy Azure, zobacz [przykłady interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
 - Aby utworzyć pojedynczą bazę danych w warstwie zainicjowanych zasobów obliczeniowych, przy użyciu programu Azure PowerShell, zobacz [przykładów programu Azure PowerShell](sql-database-powershell-samples.md).
-- Aby utworzyć pojedynczą bazę danych w warstwie bezserwerowe środowisko obliczeniowe przy użyciu programu Azure Powershell, zobacz [bezserwerowa baza danych utwórz przy użyciu programu PowerShell](sql-database-serverless.md#create-new-database-using-powershell)
+- Aby utworzyć pojedynczą bazę danych w warstwie bezserwerowe środowisko obliczeniowe przy użyciu programu Azure Powershell, zobacz [bezserwerowa baza danych utwórz przy użyciu programu PowerShell](sql-database-serverless.md#create-new-serverless-database-using-powershell)

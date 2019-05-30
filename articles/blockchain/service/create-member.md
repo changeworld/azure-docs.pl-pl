@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 51775c5534a13fb2515fafa182658beafd38c1eb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 357dc47027582d5c638bb3c7344c839f37f93dc5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026893"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399133"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Azure Service łańcucha bloków w witrynie Azure portal
 
@@ -32,7 +32,7 @@ Usługa Azure usługa łańcuch bloków jest tworzona ze zdefiniowanym zestawem 
 1. Wybierz **łańcucha bloków** > **usługi platformy Azure Blockchain**.
 1. Ukończ szablonu.
 
-    ![Utwórz usługę](./media/create-member/create-member.png)
+    ![Tworzenie usługi](./media/create-member/create-member.png)
 
     Ustawienie | Opis
     --------|------------
@@ -40,11 +40,12 @@ Usługa Azure usługa łańcuch bloków jest tworzona ze zdefiniowanym zestawem 
     Subskrypcja | Wybierz subskrypcję platformy Azure, którego chcesz użyć dla usługi. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
     Grupa zasobów | Nowa nazwa grupy zasobów lub istniejąca nazwa z subskrypcji.
     Region | Lokalizacja musi być taka sama dla wszystkich elementów członkowskich konsorcjum.
-    Element członkowski hasło do konta | Podaj nowe hasło dla konta członkowskiego. Element członkowski hasło do konta jest używany do uwierzytelniania przy użyciu uwierzytelniania podstawowego punktu końcowego publicznego elementu członkowskiego łańcucha bloków.
+    Element członkowski hasło do konta | Element członkowski hasło do konta jest używany do szyfrowania prywatnego klucza konta Ethereum, które są tworzone dla elementów członkowskich. Do zarządzania konsorcjum używasz konta i hasło do konta członkowskiego.
     Nazwa konsorcjum | Wprowadź unikatową nazwę dla nowego konsorcjum. Jeśli przyłączasz konsorcjum za pomocą zaproszenia, wartość jest konsorcjum są utworzone.
     Opis | Opis konsorcjum.
-    Protokół |  (Wersja zapoznawcza) obsługuje protokół kworum.
+    Protocol |  (Wersja zapoznawcza) obsługuje protokół kworum.
     Cennik | Konfiguracja węzła dla nowej usługi. Wybierz opcję **Standardowa**. transakcji 1 i 2 węzły modułu sprawdzania poprawności węzłów jest ustawieniem domyślnym.
+    Transakcja węzeł hasła | Hasło dla elementu członkowskiego domyślnego transakcji węzła. Podaj hasło dla uwierzytelniania podstawowego, łącząc się z łańcucha bloków elementu członkowskiego domyślnego transakcji węzła publiczny punkt końcowy.
 
 1. Wybierz **Utwórz** do udostępniania usługi. Aprowizowanie trwa około 10 minut.
 1. Wybierz **powiadomienia** na pasku narzędzi, aby monitorować proces wdrażania.

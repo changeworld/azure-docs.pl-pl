@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 80fabccb8a59bcd472812698f624d49dc26c24fa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777327"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399118"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Samouczek: Wyślij transakcji za pomocą usługi Azure Service łańcucha bloków
 
@@ -35,10 +35,8 @@ Omawiane tematy:
 
 * Pełne [utworzyć element członkowski łańcucha bloków w witrynie Azure portal](create-member.md)
 * Pełne [Szybki Start: Nawiązywanie połączenia z sieci konsorcjum za pomocą Truffle](connect-truffle.md)
-* Truffle wymaga zainstalowania narzędzi kilka tym [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), i [Truffle](https://github.com/trufflesuite/truffle).
-
-    Aby szybko skonfigurować w systemie Windows 10, należy zainstalować [Ubuntu on Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6) terminala powłoki Bash w systemie Unix Zainstaluj [Truffle](https://github.com/trufflesuite/truffle). Ubuntu on Windows dystrybucji obejmuje środowisko Node.js i usługi Git.
-
+* Zainstaluj [Truffle](https://github.com/trufflesuite/truffle). Truffle wymaga zainstalowania narzędzi kilka tym [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Zainstaluj [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python jest wymagany dla sieci Web 3.
 * Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/Download)
 * Zainstaluj [rozszerzenia programu Visual Studio Code trwałość](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
 
@@ -65,9 +63,9 @@ Domyślnie masz jeden węzeł transakcji. Zamierzamy dodać dwa więcej. Jednym 
 
 Możesz kontynuować samouczek, natomiast węzły są aprowizowane. Po zakończeniu inicjowania obsługi administracyjnej, będziesz mieć trzy węzły transakcji.
 
-## <a name="open-truffle-project"></a>Otwórz projekt Truffle
+## <a name="open-truffle-console"></a>Otwórz konsolę Truffle
 
-1. Otwórz terminal powłoki Bash.
+1. Otwórz wiersz polecenia środowiska Node.js lub powłoki.
 1. Zmień swoją ścieżkę do katalogu projektu Truffle z wymagań wstępnych [Szybki Start: Nawiązywanie połączenia z sieci konsorcjum za pomocą Truffle](connect-truffle.md). Na przykład:
 
     ```bash
@@ -82,9 +80,9 @@ Możesz kontynuować samouczek, natomiast węzły są aprowizowane. Po zakończe
 
     Truffle tworzy łańcuch bloków rozwoju lokalnego i dostarcza interakcyjną konsolę.
 
-## <a name="connect-to-transaction-node"></a>Łączenie z węzłem transakcji
+## <a name="create-ethereum-account"></a>Utwórz konto Ethereum
 
-Sieci Web 3 umożliwia łączenie z węzłem transakcji domyślne i utworzyć konto. Parametry połączenia w sieci Web 3 może pobrać z witryny Azure portal.
+Sieci Web 3 umożliwia łączenie z węzłem transakcji domyślne i Utwórz konto Ethereum. Parametry połączenia w sieci Web 3 może pobrać z witryny Azure portal.
 
 1. W witrynie Azure portal przejdź do węzła transakcji domyślne i wybierz **węzłów transakcji > przykładowego kodu > sieci Web 3**.
 1. Skopiuj kod JavaScript z **HTTPS (klucz dostępu 1)** ![sieci Web 3 przykładowy kod](./media/send-transaction/web3-code.png)
@@ -105,7 +103,7 @@ Sieci Web 3 umożliwia łączenie z węzłem transakcji domyślne i utworzyć ko
     web3.eth.personal.newAccount("1@myStrongPassword");
     ```
 
-    Upewnij się, notatki zwrócony adres konta i hasło, którego użyto do następnej sekcji.
+    Upewnij się, notatki zwrócony adres konta i hasło. Należy Ethereum adres konta i hasło w następnej sekcji.
 
 1. Zamknij środowisko programistyczne Truffle.
 
@@ -138,101 +136,99 @@ Z listy węzłów transakcji, można uzyskać klucz publiczny. Skopiuj klucz pub
 1. Otwórz plik konfiguracyjny Truffle `truffle-config.js`.
 1. Zastąp zawartość pliku następujące informacje o konfiguracji. Dodaj zmienne uwzględniające adresy punktów końcowych i informacje o koncie. Sekcje nawiasu ostrego należy zastąpić wartościami, które zostały zebrane z poprzedniej sekcji.
 
-``` javascript
-var defaultnode = "<default transaction node connection string>";
-var alpha = "<alpha transaction node connection string>";
-var beta = "<beta transaction node connection string>";
-
-var myAccount = "<account address>";
-var myPassword = "<account password>";
-
-var Web3 = require("web3");
-```
-
-Dodaj kod konfiguracji, aby **module.exports** sekcji konfiguracji.
-
-```javascript
-module.exports = {
-  networks: {
-    defaultnode: {
-      provider:(() =>  {
-      const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-
-      const web3 = new Web3(AzureBlockchainProvider);
-      web3.eth.personal.unlockAccount(myAccount, myPassword);
-
-      return AzureBlockchainProvider;
-      })(),
-
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0,
-      from: myAccount
-    },
-    alpha: {
-      provider: new Web3.providers.HttpProvider(alpha),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
-    },
-    beta: {
-      provider: new Web3.providers.HttpProvider(beta),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
+    ``` javascript
+    var defaultnode = "<default transaction node connection string>";
+    var alpha = "<alpha transaction node connection string>";
+    var beta = "<beta transaction node connection string>";
+    
+    var myAccount = "<Ethereum account address>";
+    var myPassword = "<Ethereum account password>";
+    
+    var Web3 = require("web3");
+    
+    module.exports = {
+      networks: {
+        defaultnode: {
+          provider:(() =>  {
+          const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
+    
+          const web3 = new Web3(AzureBlockchainProvider);
+          web3.eth.personal.unlockAccount(myAccount, myPassword);
+    
+          return AzureBlockchainProvider;
+          })(),
+    
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0,
+          from: myAccount
+        },
+        alpha: {
+          provider: new Web3.providers.HttpProvider(alpha),
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0
+        },
+        beta: {
+          provider: new Web3.providers.HttpProvider(beta),
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0
+        }
+      }
     }
-  }
-}
-```
+    ```
+
+1. Czy zapisać zmiany `truffle-config.js`.
 
 ## <a name="create-smart-contract"></a>Tworzenie inteligentnych kontraktu
 
-W folderze **umów**, Utwórz nowy plik o nazwie `SimpleStorage.sol`. Dodaj następujący kod.
+1. W folderze **umów**, Utwórz nowy plik o nazwie `SimpleStorage.sol`. Dodaj następujący kod.
 
-```solidity
-pragma solidity >=0.4.21 <0.6.0;
-
-contract SimpleStorage {
-    string public storedData;
-
-    constructor(string memory initVal) public {
-        storedData = initVal;
+    ```solidity
+    pragma solidity >=0.4.21 <0.6.0;
+    
+    contract SimpleStorage {
+        string public storedData;
+    
+        constructor(string memory initVal) public {
+            storedData = initVal;
+        }
+    
+        function set(string memory x) public {
+            storedData = x;
+        }
+    
+        function get() view public returns (string memory retVal) {
+            return storedData;
+        }
     }
+    ```
+    
+1. W folderze **migracje**, Utwórz nowy plik o nazwie `2_deploy_simplestorage.js`. Dodaj następujący kod.
 
-    function set(string memory x) public {
-        storedData = x;
-    }
+    ```solidity
+    var SimpleStorage = artifacts.require("SimpleStorage.sol");
+    
+    module.exports = function(deployer) {
+    
+      // Pass 42 to the contract as the first constructor parameter
+      deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"})  
+    };
+    ```
 
-    function get() view public returns (string memory retVal) {
-        return storedData;
-    }
-}
-```
+1. Zastąp wartości w nawiasy ostre.
 
-W folderze **migracje**, Utwórz nowy plik o nazwie `2_deploy_simplestorage.js`. Dodaj następujący kod.
+    | Wartość | Opis
+    |-------|-------------
+    | \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
+    | \<Adres konta Ethereum\> | Adres konta Ethereum utworzone w węźle transakcji domyślne
+    
+    W tym przykładzie wartość początkową **storeData** ma wartość 42.
 
-```solidity
-var SimpleStorage = artifacts.require("SimpleStorage.sol");
+    **privateFor** definiuje węzły, na których jest dostępna Umowa. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych. Jeśli nie podasz **privateFor:** i **z:** , transakcje inteligentne kontraktu były publiczne i mogą być widoczne dla wszystkich członków konsorcjum.
 
-module.exports = function(deployer) {
-
-  // Pass 42 to the contract as the first constructor parameter
-  deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Account address>"})  
-};
-```
-
-Zastąp wartości w nawiasy ostre.
-
-| Wartość | Opis
-|-------|-------------
-| \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
-| \<Adres konta\> | Adres konta tworzone w węźle transakcji domyślne.
-
-W tym przykładzie wartość początkową **storeData** ma wartość 42.
-
-**privateFor** definiuje węzły, na których jest dostępna Umowa. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych. Jeśli nie podasz **privateFor:** i **z:**, transakcje inteligentne kontraktu były publiczne i mogą być widoczne dla wszystkich członków konsorcjum.
-
-Zapisz wszystkie pliki, wybierając **Plik > Zapisz wszystko**.
+1. Zapisz wszystkie pliki, wybierając **Plik > Zapisz wszystko**.
 
 ## <a name="deploy-smart-contract"></a>Wdrażanie inteligentne kontraktu
 
@@ -247,7 +243,7 @@ Truffle najpierw kompiluje i wdraża **SimpleStorage** inteligentne kontraktu.
 Przykładowe dane wyjściowe:
 
 ```
-pat@DESKTOP:/mnt/c/truffledemo$ truffle migrate --network defaultnode
+admin@desktop:/mnt/c/truffledemo$ truffle migrate --network defaultnode
 
 2_deploy_simplestorage.js
 =========================
@@ -279,190 +275,185 @@ Summary
 
 ## <a name="validate-contract-privacy"></a>Weryfikowanie zamówienia zachowania
 
-Ze względu na umowy poufność informacji użytkowników, wartości umowy może być odpytywany tylko z węzłów, firma Microsoft jest zadeklarowana w **privateFor**. W tym przykładzie firma Microsoft kwerendy domyślnego węzła transakcji, ponieważ konto istnieje w tym węźle. Za pomocą konsoli Truffle łączenie z węzłem transakcji domyślne.
+Ze względu na umowy poufność informacji użytkowników, wartości umowy może być odpytywany tylko z węzłów, firma Microsoft jest zadeklarowana w **privateFor**. W tym przykładzie firma Microsoft kwerendy domyślnego węzła transakcji, ponieważ konto istnieje w tym węźle. 
 
-```bash
-truffle console --network defaultnode
-```
+1. Za pomocą konsoli Truffle łączenie z węzłem transakcji domyślne.
 
-Wykonaj polecenie zwraca wartość instancji kontraktu.
+    ```bash
+    truffle console --network defaultnode
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. W konsoli Truffle wykonaj kod zwracający wartość wystąpienia kontraktu.
 
-Jeśli podczas badania domyślnego węzła transakcji zakończy się pomyślnie, jest zwracana wartość 42.
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Przykładowe dane wyjściowe:
+    Jeśli podczas badania domyślnego węzła transakcji zakończy się pomyślnie, jest zwracana wartość 42. Na przykład:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network defaultnode
-truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
+    truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    '42'
+    ```
 
-Zamknij konsolę.
+1. Zakończ działanie konsoli Truffle.
 
-```bash
-.exit
-```
+    ```bash
+    .exit
+    ```
 
-Ponieważ firma Microsoft zadeklarowana **alfa** węzła klucz publiczny w **privateFor**, firma Microsoft może zbadać **alfa** węzła. Za pomocą konsoli Truffle nawiązać **alfa** węzła.
+Ponieważ firma Microsoft zadeklarowana **alfa** węzła klucz publiczny w **privateFor**, firma Microsoft może zbadać **alfa** węzła.
 
-```bash
-truffle console --network alpha
-```
+1. Za pomocą konsoli Truffle nawiązać **alfa** węzła.
 
-Wykonaj polecenie zwraca wartość instancji kontraktu.
+    ```bash
+    truffle console --network alpha
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. W konsoli Truffle wykonaj kod zwracający wartość wystąpienia kontraktu.
 
-Jeśli podczas badania **alfa** node zakończy się pomyślnie, zostanie zwrócona wartość 42.
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Przykładowe dane wyjściowe:
+    Jeśli podczas badania **alfa** node zakończy się pomyślnie, zostanie zwrócona wartość 42. Na przykład:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network alpha
-truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
+    truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    '42'
+    ```
 
-Zamknij konsolę.
+1. Zakończ działanie konsoli Truffle.
 
-```bash
-.exit
-```
+    ```bash
+    .exit
+    ```
 
-Ponieważ firma Microsoft nie zadeklarował **beta** węzła klucz publiczny w **privateFor**, firma Microsoft nie będzie można wykonać zapytania o **beta** węzła ze względu na zachowania kontraktu. Za pomocą konsoli Truffle nawiązać **beta** węzła.
+Ponieważ firma Microsoft nie zadeklarował **beta** węzła klucz publiczny w **privateFor**, firma Microsoft nie będzie można wykonać zapytania o **beta** węzła ze względu na zachowania kontraktu.
 
-```bash
-truffle console --network beta
-```
+1. Za pomocą konsoli Truffle nawiązać **beta** węzła.
 
-Wykonaj polecenie zwraca wartość instancji kontraktu.
+    ```bash
+    truffle console --network beta
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Wykonywanie kodu, który zwraca wartość instancji kontraktu.
 
-Podczas badania **beta** node zakończy się niepowodzeniem, ponieważ kontrakt jest prywatny.
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Przykładowe dane wyjściowe:
+1. Podczas badania **beta** node zakończy się niepowodzeniem, ponieważ kontrakt jest prywatny. Na przykład:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network beta
-truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-Thrown:
-Error: Returned values aren't valid, did it run Out of Gas?
-    at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-    at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-    at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-    at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
+    truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    Thrown:
+    Error: Returned values aren't valid, did it run Out of Gas?
+        at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
+        at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
+        at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
+        at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
+    ```
 
-Zamknij konsolę.
+1. Zakończ działanie konsoli Truffle.
 
-```bash
-.exit
-```
-
+    ```bash
+    .exit
+    ```
+    
 ## <a name="send-a-transaction"></a>Wyślij transakcji
 
-Utwórz plik o nazwie `sampletx.js`. Zapisz go w katalogu głównym projektu.
+1. Utwórz plik o nazwie `sampletx.js`. Zapisz go w katalogu głównym projektu.
+1. Poniższy skrypt ustawia kontrakt **storedData** wartość zmiennej do 65. Dodaj kod do nowego pliku.
 
-Ten skrypt ustawia kontrakt **storedData** wartość zmiennej do 65. Dodaj kod do nowego pliku.
+    ```javascript
+    var SimpleStorage = artifacts.require("SimpleStorage");
+    
+    module.exports = function(done) {
+      console.log("Getting deployed version of SimpleStorage...")
+      SimpleStorage.deployed().then(function(instance) {
+        console.log("Setting value to 65...");
+        return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"});
+      }).then(function(result) {
+        console.log("Transaction:", result.tx);
+        console.log("Finished!");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-```javascript
-var SimpleStorage = artifacts.require("SimpleStorage");
+    Zastąp wartości w nawiasy kątowe, a następnie zapisz plik.
 
-module.exports = function(done) {
-  console.log("Getting deployed version of SimpleStorage...")
-  SimpleStorage.deployed().then(function(instance) {
-    console.log("Setting value to 65...");
-    return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Account address>"});
-  }).then(function(result) {
-    console.log("Transaction:", result.tx);
-    console.log("Finished!");
-    done();
-  }).catch(function(e) {
-    console.log(e);
-    done();
-  });
-};
-```
+    | Wartość | Opis
+    |-------|-------------
+    | \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
+    | \<Adres konta Ethereum\> | Utworzone w węźle transakcji domyślny adres konta Ethereum.
 
-Zastąp wartości w nawiasy kątowe, a następnie zapisz plik.
+    **privateFor** definiuje węzły, których transakcji jest dostępna. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych.
 
-| Wartość | Opis
-|-------|-------------
-| \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
-| \<Adres konta\> | Adres konta tworzone w węźle transakcji domyślne.
+1. Użyj Truffle można wykonać skryptu dla domyślnego węzła transakcji.
 
-**privateFor** definiuje węzły, których transakcji jest dostępna. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych.
+    ```bash
+    truffle exec sampletx.js --network defaultnode
+    ```
 
-Użyj Truffle można wykonać skryptu dla domyślnego węzła transakcji.
+1. W konsoli Truffle wykonaj kod zwracający wartość wystąpienia kontraktu.
 
-```bash
-truffle exec sampletx.js --network defaultnode
-```
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-Wykonaj polecenie zwraca wartość instancji kontraktu.
+    Jeśli transakcja zakończyła się pomyślnie, jest zwracana wartość 65. Na przykład:
+    
+    ```
+    Getting deployed version of SimpleStorage...
+    Setting value to 65...
+    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
+    Finished!
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Zakończ działanie konsoli Truffle.
 
-Jeśli transakcja zakończyła się pomyślnie, jest zwracana wartość 65.
-
-Przykładowe dane wyjściowe:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-Zamknij konsolę.
-
-```bash
-.exit
-```
-
+    ```bash
+    .exit
+    ```
+    
 ## <a name="validate-transaction-privacy"></a>Sprawdź poprawność zachowania transakcji
 
-Ze względu na transakcji poufność informacji użytkowników, można wykonać tylko transakcji w węzłach, firma Microsoft jest zadeklarowana w **privateFor**. W tym przykładzie można wykonać transakcji, ponieważ firma Microsoft zadeklarowana **alfa** węzła klucz publiczny w **privateFor**. Wykonywanie transakcji w za pomocą Truffle **alfa** węzła.
+Ze względu na transakcji poufność informacji użytkowników, można wykonać tylko transakcji w węzłach, firma Microsoft jest zadeklarowana w **privateFor**. W tym przykładzie można wykonać transakcji, ponieważ firma Microsoft zadeklarowana **alfa** węzła klucz publiczny w **privateFor**. 
 
-```bash
-truffle exec sampletx.js --network alpha
-```
+1. Wykonywanie transakcji w za pomocą Truffle **alfa** węzła.
 
-Wykonaj polecenie zwraca wartość instancji kontraktu.
+    ```bash
+    truffle exec sampletx.js --network alpha
+    ```
+    
+1. Wykonywanie kodu, który zwraca wartość instancji kontraktu.
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
+    
+    Jeśli transakcja zakończyła się pomyślnie, jest zwracana wartość 65. Na przykład:
 
-Jeśli transakcja zakończyła się pomyślnie, jest zwracana wartość 65.
+    ```
+    Getting deployed version of SimpleStorage...
+    Setting value to 65...
+    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
+    Finished!
+    ```
+    
+1. Zakończ działanie konsoli Truffle.
 
-Przykładowe dane wyjściowe:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-Zamknij konsolę.
-
-```bash
-.exit
-```
-
-W tym samouczku dodano dwa węzły transakcji, aby zademonstrować zachowania kontraktu i transakcji. Węzeł domyślne są używane do wdrażania prywatnej kontraktu inteligentne. Możesz przetestować zachowania podczas badania wartości umowy i wykonywania transakcji z łańcucha bloków.
+    ```bash
+    .exit
+    ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -474,6 +465,8 @@ Aby usunąć grupę zasobów:
 1. Wybierz pozycję **Usuń grupę zasobów**. Sprawdź usunięcie, wpisując nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+W tym samouczku dodano dwa węzły transakcji, aby zademonstrować zachowania kontraktu i transakcji. Węzeł domyślne są używane do wdrażania prywatnej kontraktu inteligentne. Możesz przetestować zachowania podczas badania wartości umowy i wykonywania transakcji z łańcucha bloków.
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji łańcucha bloków przy użyciu usługi Azure Service łańcucha bloków](develop.md)

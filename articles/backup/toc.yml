@@ -219,18 +219,18 @@
           href: backup-azure-restore-windows-server.md
         - name: Przywracanie stanu systemu Windows Server
           href: backup-azure-restore-system-state.md
-        - name: Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
-          href: backup-azure-manage-windows-server.md
     - name: Magazyn usługi Recovery Services
       items:
         - name: Omówienie magazynów usługi Recovery Services
           href: backup-azure-recovery-services-vault-overview.md
-        - name: Uaktualnienie magazynu usługi Backup do magazynu usługi Recovery Services
-          href: backup-azure-upgrade-backup-to-recovery-services.md
+        - name: Tworzenie magazynu usługi Recovery Services
+          href: backup-create-rs-vault.md
         - name: Usuwanie magazynu usługi Recovery Services
           href: backup-azure-delete-vault.md
         - name: Przenoszenie magazynu usługi Recovery Services
           href: backup-azure-move-recovery-services-vault.md
+        - name: Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
+          href: backup-azure-manage-windows-server.md
     - name: Rozwiązywanie problemów
       items:
         - name: Maszyna wirtualna platformy Azure

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: d5bd291758d6bb445b757b93fd91a4c2321b97db
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.date: 05/29/2019
+ms.openlocfilehash: 18ce5e9d7cff0d32021e97cd85f1e18c0309f00b
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898939"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357682"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -118,15 +118,18 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
 
     Tabela docelowa:
 
-    Dostępne są dwie opcje routingu: *statyczny* i *dynamiczny*. W tym przewodniku Szybki start będziesz używać routingu statycznego (opcja domyślna), w którym określisz nazwę tabeli, format pliku i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
-    Możesz również użyć routingu dynamicznego, w przypadku którego Twoje dane zawierają niezbędne informacje o routingu.
+    Dostępne są dwie opcje dla routingu pozyskiwanych danych: *statyczne* i *dynamiczne*. 
+    W tym artykule możesz użyć routing statyczny, gdzie Określ nazwę tabeli, formatu danych i mapowania. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
     | Format danych | *JSON* | Obsługiwane formaty to: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV i TXT. |
-    | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**.|
+    | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**. Wymagane dla formatu JSON, WIELOWIERSZOWE JSON lub AVRO i opcjonalny w przypadku innych formatów.|
     | | |
+
+    > [!NOTE]
+    > Wybierz **Moje dane zawierają informacji o routingu** używają routingu dynamicznego, gdzie dane obejmuje niezbędne informacje routingu w [przykładową aplikację](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) komentarzy. Jeśli ustawiono wartość właściwości statyczne i dynamiczne, właściwości dynamicznych przesłonięte przez statyczne. 
 
 ## <a name="copy-the-connection-string"></a>Kopiowanie parametrów połączenia
 

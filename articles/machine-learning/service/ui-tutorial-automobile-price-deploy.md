@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787837"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389218"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu za pomocą interfejsu wizualnego uczenia maszynowego
 
@@ -107,7 +107,7 @@ Usługi sieci web można sprawdzić na karcie usług sieci web w interfejs grafi
 
     ![Zrzut ekranu przedstawiający przetestować stronę usługi sieci web](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. Dane wejściowe testowanie danych lub użyj autofilled przykładowych danych i wybierz polecenie **testu** u dołu. Żądanie testu jest przesyłany do usługi sieci web, a wyniki są wyświetlane na stronie.
+1. Dane wejściowe testowanie danych lub użyj autofilled przykładowych danych i wybierz polecenie **testu** u dołu. Żądanie testu jest przesyłany do usługi sieci web, a wyniki są wyświetlane na stronie. Mimo że wartość cena jest generowany dla danych wejściowych, nie jest używany do generowania wartości prognozy.
 
 ## <a name="manage-the-web-service"></a>Zarządzanie usługą sieci web
 

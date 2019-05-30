@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 588fe452473ddc2434d92f90afbf8a0e1bc8c275
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 74f7d8a1a828732d5448bf29c0878adb5f74b5e1
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795761"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398254"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -126,14 +126,14 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 1. W obszarze **Maszyny wirtualne** wybierz maszyny wirtualne, które mają być replikowane.
 2. Kliknij przycisk **OK**.
 
-### <a name="configure-replication-settings"></a>Konfiguruj ustawienia replikacji
+### <a name="configure-replication-settings"></a>Konfigurowanie ustawień replikacji
 
 Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie docelowym. Ustawienia możesz zmienić zgodnie z potrzebami.
 
 1. Kliknij pozycję **Ustawienia**, aby wyświetlić ustawienia replikacji i regionu docelowego.
 2. Aby zastąpić domyślne ustawienia regionu docelowego, kliknij pozycję **Dostosuj** obok pozycji **Grupa zasobów, sieć, magazyn i dostępność**.
 
-   ![Skonfiguruj ustawienia](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+   ![Konfigurowanie ustawień](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
 3. Dostosuj ustawienia docelowe, zgodnie z opisem w tabeli.

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 6d2b9c8dd8fb89e201cff5155b1dec0857204752
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519229"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400050"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -183,7 +183,7 @@ Włącz replikację dla każdej maszyny wirtualnej, która ma zostać zmigrowana
 
      |  |  |
      |-----|-----|
-     | Obiekt docelowy: | Pozostaw wartość domyślną.|
+     | Cel: | Pozostaw wartość domyślną.|
      | Subskrypcja: | Wybierz subskrypcję, której używasz.|
      | Grupa zasobów po przełączeniu w tryb failover:| Użyj grupy zasobów utworzonej w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
      | Model wdrażania po przełączeniu w tryb failover: | Wybierz opcję **Menedżer zasobów**.|
@@ -200,7 +200,7 @@ Włącz replikację dla każdej maszyny wirtualnej, która ma zostać zmigrowana
 
      Wybierz konto utworzone na serwerze konfiguracji, a następnie wybierz opcję **OK**.
 
-   - 5. Konfiguruj ustawienia replikacji
+   - 5. Konfigurowanie ustawień replikacji
 
      Upewnij się, że wybrane z listy rozwijanej zasady replikacji to zasady **myReplicationPolicy**, a następnie wybierz opcję **OK**.
 
@@ -246,7 +246,7 @@ Uruchom rzeczywisty tryb failover dla wystąpień usługi EC2, aby zmigrować je
    - Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne. 
 
-     ![Zakończ migrację](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Kończenie migracji](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nie anuluj trybu failover, który jest w toku*. Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie on zatrzymany, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  

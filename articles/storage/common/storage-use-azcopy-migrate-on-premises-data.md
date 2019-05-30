@@ -9,12 +9,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 64d79abd1e142a231c08e02e7d62e8bfbab7b90e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e40a0b35cd99565bec4e26862c938f6228bf9836
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244740"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393745"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Samouczek: Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy
 
@@ -119,9 +119,12 @@ Skopiuj polecenia narzędzia AzCopy do edytora tekstu. Zaktualizuj wartości par
 
 W poniższych przykładach założono, że nosi nazwę folderu `myFolder`, nazwę konta magazynu jest `mystorageaccount` i Twoja nazwa kontenera jest `mycontainer`.
 
+> [!NOTE]
+> W przykładzie Linux dołącza token sygnatury dostępu Współdzielonego. Należy podać jedną w poleceniu. Bieżąca wersja programu AzCopy V10 nie obsługuje uwierzytelniania usługi Azure AD w zadania cron.
+
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-    azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+    azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 

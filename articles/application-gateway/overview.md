@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 4/30/2019
 ms.author: victorh
 ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "64947266"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
@@ -125,7 +125,7 @@ Usługa Application Gateway obsługuje możliwość dodać, usunąć lub zaktual
 
 Aby uzyskać więcej informacji, zobacz [nagłówków HTTP Nadpisz](rewrite-http-headers.md).
 
-## <a name="sizing"></a>Ustalanie rozmiaru
+## <a name="sizing"></a>Zmiany rozmiaru
 
 Standard_v2 bramy aplikacji i jednostki SKU WAF_v2 można skonfigurować na potrzeby skalowania automatycznego lub ustalony rozmiar wdrożenia. Te jednostki SKU nie oferują rozmiary innego wystąpienia.
 
@@ -135,7 +135,7 @@ Pełna lista limitów usługi Application Gateway znajduje się na stronie [ogra
 
 W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla każdego wystąpienia bramy aplikacji z włączonym obciążeniem SSL:
 
-| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Large |
+| Średni rozmiar odpowiedzi strony zaplecza | Małe | Średni | Duże |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

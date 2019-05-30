@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: 0b3343a9635fe4120f03e56c41797591d2f25815
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e972dfdd7694a1a43302fa5879ea22f2ecd051ad
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793699"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298858"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
@@ -50,7 +50,7 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.2 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (tylko Windows) |-|-|
 | Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1.1 |1.1.1.0 * (zobacz uwaga poniżej) | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1.1 |1.1, 1.0 * (zobacz uwaga poniżej) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Narzędzie mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -78,9 +78,9 @@ W poniższej tabeli wymieniono wersje HDInsight. Wersje HDP, które odpowiadają
 
 W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie Azure portal, jak również innych metod wdrażania, takich jak program PowerShell i zestawu SDK platformy .NET.
 
-| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Duża dostępność |  Dostępność w witrynie Azure portal | 
+| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Tak |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Yes |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | | |Tak |Tak |
 
 
@@ -92,16 +92,16 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie
 
 W poniższej tabeli wymieniono wersje HDInsight, które są **nie** dostępne w witrynie Azure portal.
 
-| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Duża dostępność |  Dostępność w witrynie Azure portal | 
+| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 <br> (Inne niż Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 r. |5 września 2017 r. |28 czerwca 2018 r. |Tak |Nie |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 r. |9 stycznia 2018 r. |Tak |Nie |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Tak |Nie |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Tak |Nie |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Yes |Nie |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Yes |Nie |
 | HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Tak |Nie |
 | HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 r. |18 maja 2015 r. |30 czerwca 2016 r. |Tak |Nie |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Tak |Nie |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Tak |Nie |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Yes |Nie |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Yes |Nie |
 | HDInsight w wersji 1.6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 r. |Do 31 maja 2015 r. |Nie |Nie |
 
 > [!NOTE]  
@@ -138,8 +138,8 @@ Zabezpieczenia przedsiębiorstwa jest opcjonalny pakiet, którą można dodać w
 Obecnie tylko następujące typy klastrów obsługują pakiet Enterprise Security:
 
 - Usługi Hadoop (tylko HDInsight 3.6)
-- Spark
-- Zapytanie interaktywne
+- platforma Spark
+- Zapytanie interakcyjne
 
 ### <a name="support-for-azure-data-lake-storage"></a>Obsługa usługi Azure Data Lake Storage
 
@@ -149,7 +149,7 @@ Obsługuje pakiet Enterprise Security, za pomocą usługi Azure Data Lake Storag
 
 Aby uzyskać informacje o cenach i umowy SLA pakiet Enterprise Security, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="hdinsight-windows-retirement"></a>Wycofanie usługi HDInsight dla systemu Windows
+## <a name="hdinsight-windows-retirement"></a>Wycofanie Windows HDInsight
 
 Microsoft Azure HDInsight w wersji 3.3 było ostatniej wersji HDInsight na Windows. Data wycofania HDInsight na Windows jest 31 lipca 2018 r. W przypadku klastrów HDInsight Windows 3.3 lub wcześniej, należy przeprowadzić migrację do HDInsight w systemie Linux (HDInsight w wersji 3.5 lub nowszej) przed 31 lipca 2018 r. Migracja do systemu operacyjnego Linux pozwala zachować możliwość tworzenia lub zmiany rozmiaru klastry usługi HDInsight. Obsługa HDInsight w wersji 3.3 na Windows wygasła w dniu 27 czerwca 2016 r.
 
@@ -243,7 +243,7 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 
 * Wszystkie obsługiwane regiony z wyjątkiem Brazylii Południowej i Japonia, część zachodnia:
 
-|Typ klastra|Hadoop|HBase|Zapytanie interaktywne|Storm|Spark|ML Server|Kafka|
+|Typ klastra|Hadoop|HBase|Zapytanie interakcyjne|Storm|platforma Spark|ML Server|Kafka|
 |---|---|---|---|---|---|---|---|
 |Główny: domyślny rozmiar maszyny Wirtualnej|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
 |Główny: zalecane rozmiary maszyn wirtualnych|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M, wersja 2|
@@ -275,7 +275,7 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 
 * Brazylia Południowa i Japonia, część zachodnia tylko (nie rozmiary v2):
 
-  | Typ klastra | Hadoop | HBase | Zapytanie interaktywne |Storm | Spark | ML Services |
+  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | Usługi ML |
   | --- | --- | --- | --- | --- | --- | --- |
   | Główny: domyślny rozmiar maszyny Wirtualnej |D12 |D12  | D13 |A3 |D12 |D12 |
   | Główny: zalecane rozmiary maszyn wirtualnych |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |

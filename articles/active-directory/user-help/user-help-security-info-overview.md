@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e471f447b0c50c9c65923d7135b2b48789728df
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8a200df2f474cead197a0e74ae7e27927f814d2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470699"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242277"
 ---
 # <a name="security-info-preview-overview"></a>Omówienie informacji zabezpieczających (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ ms.locfileid: "65470699"
 >[!Important]
 >Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-## <a name="security-info-articles"></a>Informacje o artykuły dotyczące zabezpieczeń
+## <a name="security-info-related-articles"></a>Artykuły dotyczące zabezpieczeń związane z informacji
 
 Aby uzyskać szczegółowe informacje i instrukcje dotyczące dodawania aktualizowania i usuwania swoje informacje zabezpieczające, zobacz następujące artykuły, które są (oparte na metodzie, którego chcesz użyć):
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729277"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236349"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -55,6 +55,9 @@ A.  Aby zobaczyć, gdzie są obecnie dostępne dyski Data Box, przejdź do [dost
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>PYTANIE: W jakich regionach mogę zapisać dane, korzystając z usługi Data Box Disk?
 A. Dysku Data Box jest obsługiwane dla wszystkich regionów w USA, Kanadzie, Australii, Europa Zachodnia i Europa Północna, Korei i Japonia. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
+
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>PYTANIE: Będzie Moje dysku Data Box krzyżowe obramowania kraju podczas wysyłania?
+A. Dysku Data Box są dostarczane z w obrębie tego samego kraju jako miejsca docelowego i nie przechodzi wszystkie międzynarodowej obramowania. Jedynym wyjątkiem jest zamówień w Unii Europejskiej (UE), gdzie dysków może wysłać do i z jakiegokolwiek kraju UE.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z urządzeniami Data Box Disk?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box Disk, [skontaktuj się z działem pomocy technicznej firmy Microsoft](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -164,9 +167,9 @@ A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworz
 
 ### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>PYTANIE: Po skopiowaniu danych do folderu ManagedDisk. Nie widzę żadnych dysków zarządzanych z grupą zasobów określona dla dysków zarządzanych. Przekazano dane na platformie Azure i jak mogę go znaleźć?
 A. Tak. Przekazano dane na platformie Azure, ale jeśli nie widzisz żadnych dysków zarządzanych przy użyciu grup określonego zasobu, prawdopodobną przyczyną jest danych nie jest prawidłowa. W przypadku stronicowych obiektów blob, blokowe obiekty BLOB, Azure Files i dysków zarządzanych nie jest prawidłowy, te musieli przejść do następujących folderów:
- - Stronicowe obiekty BLOB musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-pb -*.
- - Usługa Azure Files musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-af -*.
- - Dyski zarządzane musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-md -*.
+ - Stronicowe obiekty BLOB musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-pb -* .
+ - Usługa Azure Files musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-af -* .
+ - Dyski zarządzane musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-md -* .
 
 ## <a name="next-steps"></a>Kolejne kroki
 

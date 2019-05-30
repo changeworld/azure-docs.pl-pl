@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 01/03/2019
+ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e8a68ca87307e1265c200f2e05464ff87983c1e6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788017"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258404"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 
@@ -68,8 +68,8 @@ Istnieje wiele rozwiązań do migrowania istniejących danych do magazynu obiekt
 - **Biblioteka przenoszenia danych usługi Azure Storage** jest biblioteką .NET służącą do przenoszenia danych między usługami Azure Storage. Narzędzie AzCopy zostało utworzone przy użyciu biblioteki przenoszenia danych. Więcej informacji można znaleźć w [dokumentacji referencyjnej](/dotnet/api/microsoft.azure.storage.datamovement) biblioteki przenoszenia danych. 
 - **Usługa Azure Data Factory** obsługuje kopiowanie danych do i z magazynu obiektów blob przy użyciu klucza konta, sygnatury dostępu współdzielonego, jednostki usługi lub tożsamości zarządzanych do uwierzytelnienia zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz temat [Copy data to or from Azure Blob storage by using Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Kopiowanie danych do i z usługi Azure Blob Storage za pomocą usługi Azure Data Factory). 
 - **Blobfuse** jest sterownikiem wirtualnego systemu plików usługi Azure Blob Storage. Sterownik blobfuse umożliwia dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Aby uzyskać więcej informacji, zobacz temat [How to mount Blob storage as a file system with blobfuse](storage-how-to-mount-container-linux.md) (Jak zainstalować magazyn obiektów blob jako system plików przy użyciu sterownika blobfuse).
-- **Azure Data Box Disk** jest usługą służącą do przenoszenia danych lokalnych do magazynu obiektów blob, gdy ograniczenia dotyczące dużych zestawów danych lub sieci uniemożliwiają przekazywanie danych przez sieć. Możesz użyć usługi [Azure Data Box Disk](../../databox/data-box-disk-overview.md), aby poprosić o dyski SSD od firmy Microsoft. Możesz następnie skopiować dane na te dyski i odesłać je do firmy Microsoft do przekazania do usługi Blob Storage.
-- **Usługa Azure Import/Export** umożliwia eksportowanie dużych ilości danych z konta magazynu na dyski twarde dostarczone przez użytkownika, które potem firma Microsoft odsyła do użytkownika. Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export service to transfer data to Blob Storage](../common/storage-import-export-service.md) (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export).
+- **Urządzenie Azure Data Box** usługa jest dostępna na przesyłanie danych lokalnych do usługi Blob storage, po dużych zestawów danych lub sieci ograniczenia przekazywania danych przez sieć określenie. W zależności od rozmiar danych, możesz poprosić o [dysku Azure Data Box](../../databox/data-box-disk-overview.md), [urządzenia Azure Data Box](../../databox/data-box-overview.md), lub [Azure Data Box mocno](../../databox/data-box-heavy-overview.md) urządzeń firmy Microsoft. Możesz następnie skopiować dane do tych urządzeń i odeślemy je do firmy Microsoft do przekazania do magazynu obiektów Blob.
+- **Usługa Azure Import/Export** zapewniono możliwość importowania lub eksportowania dużych ilości danych do i z konta magazynu przy użyciu dysków twardych, które należy podać. Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export service to transfer data to Blob Storage](../common/storage-import-export-service.md) (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

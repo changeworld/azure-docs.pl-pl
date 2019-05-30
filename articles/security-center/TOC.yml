@@ -45,6 +45,8 @@
       href: security-center-onboarding.md
     - name: Ochrona serwera za pomocą usługi Windows Defender ATP
       href: security-center-wdatp.md
+    - name: Zaawansowane zabezpieczenia danych w produktach IaaS
+      href: security-center-iaas-advanced-data.md
     - name: Włączanie ochrony usługi App Service
       href: security-center-app-services.md
     - name: Praca z zasadami zabezpieczeń
@@ -62,8 +64,6 @@
       items:
         - name: Zbieranie danych
           href: security-center-enable-data-collection.md
-        - name: Zaawansowane zabezpieczenia danych w produktach IaaS
-          href: security-center-iaas-advanced-data.md
         - name: Wbudowane zasady zabezpieczeń
           href: security-center-policy-definitions.md
         - name: Powiadomienia e-mail

@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
-ms.openlocfilehash: 39948479cc563d2f622763ea7b4d09910ffc494c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9b529780387e1129dd7827e4d9c805d185a459d0
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779872"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399258"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio
 
@@ -36,7 +36,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 1. Wybierz pozycję **Utwórz zasób** > wyszukaj pozycję **Kubernetes** > wybierz pozycję **Kubernetes Service** > **Utwórz**.
 
-   Wykonanie poniższych kroków w każdej pozycji *klastra Kubernetes tworzenie* formularza i sprawdź wybranej [region obsługuje usługi Azure Dev miejsca do magazynowania](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+   Wykonanie poniższych kroków w każdej pozycji *klastra Kubernetes tworzenie* formularza i sprawdź wybranej [region obsługuje usługi Azure Dev miejsca do magazynowania][supported-regions].
 
    - **Szczegóły projektu**: Wybierz subskrypcję platformy Azure i grupę nowych lub istniejących zasobów platformy Azure.
    - **SZCZEGÓŁY KLASTRA**: wprowadź nazwę, region, wersję i prefiks nazwy DNS dla klastra AKS.
@@ -54,10 +54,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 1. Wybierz pozycje **Przegląd + utwórz**, a następnie po zakończeniu wybierz pozycję **Utwórz**.
 
 ## <a name="get-the-visual-studio-tools"></a>Pobieranie narzędzi Visual Studio
-1. Zainstaluj najnowszą wersję programu [Visual Studio 2017](https://www.visualstudio.com/vs/).
-1. Przy otwartym instalatorze programu Visual Studio upewnij się, że wybrano następujące obciążenie:
-    * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-1. Instalacja narzędzi [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio)
+Zainstaluj najnowszą wersję [programu Visual Studio](https://www.visualstudio.com/vs/). Dla programu Visual Studio 2019 r na Windows, musisz zainstalować obciążenia programowanie na platformie Azure. Dla programu Visual Studio 2017 na Windows muszą Zainstaluj obciążenie programistyczne platformy ASP.NET i sieci web oraz [Visual Studio Tools dla platformy Kubernetes](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Tworzenie aplikacji internetowej uruchomionej w kontenerze
 
@@ -65,7 +62,7 @@ W tej sekcji możesz utworzyć aplikację sieci web platformy ASP.NET Core i Uzy
 
 ### <a name="create-an-aspnet-web-app"></a>Tworzenie aplikacji internetowej platformy ASP.NET
 
-W programie Visual Studio 2017 utwórz nowy projekt. Obecnie projekt musi być **aplikacją internetową ASP.NET Core**. Nazwij projekt „**webfrontend**”.
+Z poziomu programu Visual Studio, Utwórz nowy projekt. Obecnie projekt musi być **aplikacją internetową ASP.NET Core**. Nazwij projekt „**webfrontend**”.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -150,3 +147,6 @@ Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę 
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-netcore-visualstudio.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

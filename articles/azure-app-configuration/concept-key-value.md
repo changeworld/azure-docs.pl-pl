@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408739"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393603"
 ---
 # <a name="keys-and-values"></a>Klucze i wartości
 
@@ -27,7 +27,7 @@ Konfiguracja aplikacji Azure przechowuje dane konfiguracji jako pary klucz warto
 
 Klucze służą jako nazwy dla par klucz wartość i są używane do przechowywania i pobierania odpowiednie wartości. Jest to powszechną praktyką w celu zorganizowania klucze hierarchicznej przestrzeni nazw przy użyciu znaku ogranicznika, takich jak `/` lub `:`. Należy użyć Konwencji, który jest najbardziej odpowiedni dla aplikacji. Usługa App Configuration traktuje klucze jako jedną całość. Go nie przeanalizować klucze, aby zorientować się, jak ich nazwy są skonstruowane ani wymuszać reguły na nich.
 
-Użycie magazynu konfiguracji w ramach struktury aplikacji może określać określonych systemów nazewnictwa dla wartości klucza. Na przykład w języku Java Spring Cloud framework definiuje `Environment` zasoby, które określania ustawień dla aplikacji platformy Spring, aby zostać sparametryzowane przez zmienne, które obejmują *Nazwa aplikacji* i *profilu*. Klucze dla danych konfiguracji odnoszące się do Spring Cloud zaczynają się zwykle te dwa elementy, oddzielając ogranicznika.
+Użycie danych konfiguracji w ramach struktury aplikacji może określać określonych systemów nazewnictwa dla wartości klucza. Na przykład w języku Java Spring Cloud framework definiuje `Environment` zasoby, które określania ustawień dla aplikacji platformy Spring, aby zostać sparametryzowane przez zmienne, które obejmują *Nazwa aplikacji* i *profilu*. Klucze dla danych konfiguracji odnoszące się do Spring Cloud zaczynają się zwykle te dwa elementy, oddzielając ogranicznika.
 
 Klucze przechowywane w usłudze App Configuration są opartymi na standardzie Unicode ciągami uwzględniającymi wielkość liter. W magazynie konfiguracji aplikacji klucze *app1* i *App1* są rozróżniane. Miej to na uwadze, korzystając z ustawień konfiguracji w aplikacji, ponieważ niektóre środowiska obsługi kluczy konfiguracji uwzględniania wielkości liter. Na przykład system konfiguracji platformy ASP.NET Core traktuje klucze jako ciągi bez uwzględniania wielkości liter. Aby uniknąć nieprzewidywalnych zachowania, gdy zapytanie konfiguracji aplikacji w aplikacji platformy ASP.NET Core, nie używaj kluczy, które różnią się jedynie wielkość liter.
 
@@ -86,7 +86,7 @@ Każda wartość klucza jest unikatowo identyfikowana przez jego klucza oraz ety
 
 Może zawierać również następujące wzorce etykiety:
 
-| Etykieta | |
+| Label | |
 |---|---|
 | Element `label` jest pomijany lub `label=*` | Dopasowuje wszelkie etykiety, która zawiera `null` |
 | `label=%00` | Dopasowuje `null` etykiety |

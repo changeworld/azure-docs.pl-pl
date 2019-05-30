@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 01/28/2019
+ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: ab349018705f173f1b138b854e0773ef3f996f1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4fd03dc6ebada5b665a0c256e9cedbb646cd2fb6
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725844"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297450"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co to jest platforma Apache Spark w usłudze Azure HDInsight
 
@@ -42,7 +42,7 @@ Klastry Spark w usłudze HDInsight oferują w pełni zarządzaną usługę Spark
 | Buforowanie na dyskach SSD |Istnieje możliwość buforowania danych w pamięci lub na dyskach SSD podłączonych do węzłów klastra. Buforowanie w pamięci zapewnia najlepszą wydajność zapytań, ale może być kosztowne. Buforowanie na dyskach SSD stanowi doskonałe rozwiązanie umożliwiające poprawę wydajności zapytań bez konieczności tworzenia klastra o rozmiarze obejmującym cały zestaw danych w pamięci. |
 | Integracja z narzędziami do analizy biznesowej |Klastry Spark w usłudze HDInsight zawierają łączniki dla narzędzi do analizy biznesowej danych, takich jak [Power BI](https://www.powerbi.com/). |
 | Wstępnie załadowane biblioteki Anaconda |Klastry Spark w usłudze HDInsight są dostarczane z wstępnie zainstalowanymi bibliotekami Anaconda. Platforma [Anaconda](https://docs.continuum.io/anaconda/) dostarcza prawie 200 bibliotek do uczenia maszynowego, analizy danych, wizualizacji itp. |
-| Skalowalność | Usługa HDInsight umożliwia zmianę liczby węzłów klastra. Ponadto klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub Data Lake Storage. |
+| Skalowalność | HDInsight umożliwia zmianę liczby węzłów klastra. Ponadto klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub Data Lake Storage. |
 | Umowa SLA |Oferta klastrów Spark w usłudze HDInsight obejmuje całodobową pomoc techniczną oraz umowę SLA gwarantującą 99,9% czasu działania. |
 
 Klastry Apache Spark w usłudze HDInsight obejmują następujące składniki, które są domyślnie dostępne w klastrach.
@@ -78,12 +78,14 @@ Klastry Spark w usłudze HDInsight umożliwiają realizację następujących gł
     Klaster Apache Spark w usłudze HDInsight przechowuje dane w usłudze Azure Storage lub Azure Data Lake Storage. Eksperci biznesowi i osoby podejmujące kluczowe decyzje mogą analizować i tworzyć raporty na podstawie danych oraz korzystać z usługi Microsoft Power BI w celu sporządzania interakcyjnych raportów na podstawie analizowanych danych. Analitycy mogą rozpocząć pracę od danych o częściowej strukturze lub bez struktury w magazynie klastra, zdefiniować schemat danych za pomocą notesów, a następnie skompilować modele danych przy użyciu usługi Microsoft Power BI. Klastry Spark w usłudze HDInsight obsługują również wiele narzędzi do analizy biznesowej innych firm, takich jak Tableau, dzięki czemu platforma Spark ułatwia pracę analityków danych, ekspertów biznesowych i osób podejmujących kluczowe decyzje.
 
     [Samouczek: wizualizowanie danych platformy Spark przy użyciu usługi Power BI](apache-spark-use-bi-tools.md)
+
 - Spark Machine Learning
 
     Platforma Apache Spark jest dostarczana z biblioteką [MLlib](https://spark.apache.org/mllib/) do uczenia maszynowego opartą na platformie Spark, której można używać z klastra Spark w usłudze HDInsight. Klaster Spark w usłudze HDInsight obejmuje również platformę Anaconda — dystrybucję oprogramowania Python z szeregiem różnych pakietów do uczenia maszynowego. W połączeniu z wbudowaną obsługą notesów Jupyter i Zeppelin platforma zapewnia środowisko do tworzenia aplikacji do uczenia maszynowego.
 
     [Samouczek: przewidywanie temperatur w budynkach z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)  
-    [Samouczek: przewidywanie wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)    
+    [Samouczek: przewidywanie wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+
 - Przesyłanie strumieniowe i analiza danych w czasie rzeczywistym na platformie Spark
 
     Klastry Spark w usłudze HDInsight zapewniają szeroką obsługę tworzenia rozwiązań do analizy w czasie rzeczywistym. Platforma Spark jest już wyposażona w łączniki do przyjmowania danych z wielu źródeł, takich jak Kafka, Flume, Twitter, ZeroMQ lub gniazda TCP, a ponadto platforma Spark w usłudze HDInsight oferuje wysokiej klasy obsługę pobierania danych z usługi Azure Event Hubs. Event Hubs to najczęściej używana usługa kolejkowania na platformie Azure. Wbudowana obsługa usługi Event Hubs sprawia, że klastry Spark w usłudze HDInsight stanowią idealną platformę do tworzenia potoku analizy w czasie rzeczywistym.

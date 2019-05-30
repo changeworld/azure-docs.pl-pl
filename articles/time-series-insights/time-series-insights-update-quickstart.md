@@ -4,19 +4,19 @@ description: Omówienie środowiska pokazowego usługi Azure Time Series Insight
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: dbdbfc797d37ed38936d6cfd354383d412c6b52d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e35d46607e0a186c8a3a38669c68a6ea52711b51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205819"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242086"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki start: Poznawanie środowiska pokazowego usługi Azure Time Series Insights w wersji zapoznawczej
 
@@ -40,14 +40,14 @@ W Eksploratorze czasu Series Insights w wersji zapoznawczej pokazuje dane histor
 
 1. Przyjrzyj się turbiny wiatru **W7** w **1 zakładu produkcyjnego firmy Contoso**.  
 
-    * Aktualizuj zakres widoku do **1/1/17 20:00 do 17-3/10 20:00 (czas UTC)**.
+    * Aktualizuj zakres widoku do **1/1/17 20:00 do 17-3/10 20:00 (czas UTC)** .
     * Wybierz **roślin Contoso 1** > **W7** > **Generator System** > **GeneratorSpeed** czujnik. Następnie sprawdź wartości wynikowe.
 
       [![W7 w zakładzie Contoso 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
 1. Niedawno firma Contoso wykryła pożar w turbinie **W7**. Opinie różnią się o zbliżeniowa przyczynę pożaru zostało. W trakcie ściślejszej kontroli widzimy, że czujnik alertu fire została aktywowana podczas ognia.
 
-    * Aktualizuj zakres widoku do **3/9/17 20:00 do 17-3/10 20:00 (czas UTC)**.
+    * Aktualizuj zakres widoku do **3/9/17 20:00 do 17-3/10 20:00 (czas UTC)** .
     * Wybierz **bezpieczeństwa systemu** > **FireAlert** czujnika.
 
       [![Znaleziono pożar w turbiny wiatru W7 firmy Contoso](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
@@ -61,7 +61,7 @@ W Eksploratorze czasu Series Insights w wersji zapoznawczej pokazuje dane histor
 
 1. Wykorzystanie ropa naftowa i aktywnych czujników ostrzeżenie stwierdzone bezpośrednio poprzedzający ognia. Rozwiń szeregów czasowych wyświetlanych, aby zobaczyć inne znaki obecne prowadzących do ognia. Zarówno czujników podlegała wahaniom spójnie wraz z upływem czasu wskazujący wzorzec trwałe i budzi.
 
-    * Aktualizuj zakres widoku do **2/24/17 20:00 do 17-3/10 20:00 (czas UTC)**.
+    * Aktualizuj zakres widoku do **2/24/17 20:00 do 17-3/10 20:00 (czas UTC)** .
 
       [![Wykorzystanie ropa naftowa i aktywnych czujników ostrzeżenie również stwierdzone](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
@@ -82,7 +82,7 @@ Korzystając z usługi Azure Time Series Insights oraz nasza telemetria czujnik,
 
 1. Niektóre scenariusze wymagają zaawansowane analizy, aby odkryć subtelne wskazówek w danych. Wybierz Wiatrak **W6** w dniu **6/25**
 
-    * Aktualizuj zakres widoku do **6/1/17 20:00 do 7/1/17 20:00 (czas UTC)**.
+    * Aktualizuj zakres widoku do **6/1/17 20:00 do 7/1/17 20:00 (czas UTC)** .
     * Następnie wybierz pozycję **1 zakładu produkcyjnego firmy Contoso** > **W6** > **bezpieczeństwa systemu** > **VoltageActuatorSwitchWarning**  czujnika.
 
       [![Aktualizuj zakres widoku, a następnie wybierz pozycję W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)

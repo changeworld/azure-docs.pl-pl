@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: 68a1a757b5c5e4ce63d7f12a8502d57942d4ec42
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5b43d822bf29ce07f292403a3a24ad8c13964038
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240926"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389125"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -61,7 +61,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Azure Cosmos, a następnie otwórz **domyślna spójność** okienka. Wybierz odpowiedni poziom spójności jako nowe ustawienie domyślne, a następnie wybierz pozycję **Zapisz**. Witryna Azure portal udostępnia również wizualizację poziomów spójności różnych oraz utworów muzycznych oznaczenia. 
+Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Azure Cosmos, a następnie otwórz **domyślna spójność** okienka. Wybierz odpowiedni poziom spójności jako nowe ustawienie domyślne, a następnie wybierz pozycję **Zapisz**. Azure portal udostępnia również wizualizację poziomów spójności różnych oraz utworów muzycznych oznaczenia. 
 
 ![Menu spójności w witrynie Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 

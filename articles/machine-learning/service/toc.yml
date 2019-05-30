@@ -176,7 +176,7 @@
           href: how-to-train-ml-models.md
         - name: Korzystanie z biblioteki PyTorch
           href: how-to-train-pytorch.md
-        - name: Korzystanie z bibliotek TensorFlow i Keras
+        - name: Korzystanie z biblioteki TensorFlow
           href: how-to-train-tensorflow.md
         - name: Dostrajanie hiperparametrów
           displayName: parameter

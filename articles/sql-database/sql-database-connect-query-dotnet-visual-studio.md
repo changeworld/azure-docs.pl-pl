@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 3959eb789102cd3d54fc7bab32e585b3c09d897b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7870322746d8cb647547e5c85036579611ac3292
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792156"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303301"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki start: Korzystanie z platformy .NET i języka C# w programie Visual Studio w celu nawiązywania połączenia i wykonywania zapytań w bazie danych Azure SQL Database
 
@@ -43,7 +43,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
   > [!IMPORTANT]
   > Skrypty zamieszczone w tym artykule korzystają z bazy danych Adventure Works. Za pomocą wystąpienia zarządzanego należy zaimportować bazę danych Adventure Works do bazy danych wystąpienia lub zmodyfikować skrypty znajdujące się w tym artykule, aby korzystały z bazy danych Wide World Importers.
 
-- [Program Visual Studio 2017](https://www.visualstudio.com/downloads/), wersja Community, Professional lub Enterprise.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community, Professional lub Enterprise edition.
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
@@ -59,7 +59,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**. 
    
-1. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C#** i wybierz opcję **Aplikacja konsolowa (.NET Framework)**.
+1. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C#** i wybierz opcję **Aplikacja konsolowa (.NET Framework)** .
    
 1. Wprowadź *sqltest* jako nazwę projektu i wybierz **OK**. Zostanie utworzony nowy projekt. 
    
@@ -73,7 +73,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
    
 1. Po zakończeniu instalacji można zamknąć **Menedżera pakietów NuGet**. 
    
-1. W edytorze kodu zastąp zawartość **Program.cs** następującym kodem. Podstaw wartości `<server>`, `<username>`, `<password>`, i `<database>`.
+1. W edytorze kodu zastąp zawartość **Program.cs** następującym kodem. Zastąp wartości `<server>`, `<username>`, `<password>`, i `<database>`.
    
    >[!IMPORTANT]
    >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 

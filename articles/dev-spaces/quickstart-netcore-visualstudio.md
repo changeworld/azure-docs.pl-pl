@@ -1,5 +1,5 @@
 ---
-title: Programowanie przy użyciu platformy .NET Core w usłudze AKS za pomocą usługi Azure Dev miejsca do magazynowania i Visual Studio 2017
+title: Programowanie przy użyciu platformy .NET Core w usłudze AKS za pomocą usługi Azure Dev miejsca do magazynowania i programu Visual Studio
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -13,30 +13,29 @@ keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Serv
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 110962c03f0236ebb26c9ed586981b51f36c635f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765304"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399225"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Szybki start: Programowanie przy użyciu platformy .NET Core na platformie Kubernetes za pomocą usługi Azure Dev miejsca do magazynowania (Visual Studio 2017)
+# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>Szybki start: Programowanie przy użyciu platformy .NET Core na platformie Kubernetes za pomocą usługi Azure Dev miejsca do magazynowania (Visual Studio)
 
 Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Konfigurowanie usługi Azure Dev Spaces za pomocą zarządzanego klastra Kubernetes na platformie Azure.
-- Iteracyjne tworzenie kodu w kontenerów za pomocą programu Visual Studio 2017.
-- Debugować możesz kod działający w klastrze za pomocą programu Visual Studio 2017.
+- Iteracyjne tworzenie kodu w kontenerach przy użyciu programu Visual Studio.
+- Debugować możesz kod działający w klastrze za pomocą programu Visual Studio.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- Program Visual Studio 2017 na Windows z zainstalowanym obciążeniem programowania dla sieci Web. Jeśli program nie został zainstalowany, pobierz go [tutaj](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- [Visual Studio Tools dla platformy Kubernetes](https://aka.ms/get-vsk8stools) zainstalowane.
+- Visual Studio 2019 r na Windows z zainstalowanym obciążeniem programowanie na platformie Azure. Umożliwia także programu Visual Studio 2017 na Windows z pakietem roboczym programowania dla sieci Web i [Visual Studio Tools dla platformy Kubernetes](https://aka.ms/get-vsk8stools) zainstalowane. Jeśli nie masz zainstalowanego programu Visual Studio, pobierz ją [tutaj](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Utwórz klaster Azure Kubernetes Service
 
-Należy utworzyć klaster usługi AKS w [obsługiwany region](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Aby utworzyć klaster:
+Należy utworzyć klaster usługi AKS w [obsługiwany region][supported-regions]. Aby utworzyć klaster:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 1. Wybierz *+ Utwórz zasób > Usługa Kubernetes*. 
@@ -55,8 +54,8 @@ Przejdź do klastra usługi AKS w witrynie Azure portal, a następnie kliknij pr
 
 ## <a name="create-a-new-aspnet-web-app"></a>Utwórz nową aplikację sieci web platformy ASP.NET
 
-1. Otwórz program Visual Studio 2017.
-1. Utwórz nowy projekt.
+1. Otwórz program Visual Studio.
+1. Tworzenie nowego projektu.
 1. Wybierz *aplikacji sieci Web programu ASP.NET Core* i nazwij swój projekt *webfrontend*.
 1. Kliknij przycisk *OK*.
 1. Po wyświetleniu monitu wybierz *aplikacji sieci Web (Model-View-Controller)* dla szablonu.
@@ -101,7 +100,7 @@ Ten proces mógł wyłączyć publicznego dostępu do usługi. Aby włączyć do
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Jeśli program Visual Studio 2017 jest nadal połączony do obszaru dev, kliknij przycisk Zatrzymaj. Zmień wiersz 20 w `Controllers/HomeController.cs` do:
+Jeśli program Visual Studio jest nadal połączony do obszaru dev, kliknij przycisk Zatrzymaj. Zmień wiersz 20 w `Controllers/HomeController.cs` do:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -113,9 +112,9 @@ Zamiast ponownego kompilowania lub wdrażania nowy obraz kontenera każdorazowo 
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Ustawianie i używanie punktów przerwania do debugowania
 
-Jeśli program Visual Studio 2017 jest nadal połączony do obszaru dev, kliknij przycisk Zatrzymaj. Otwórz `Controllers/HomeController.cs` i kliknij przycisk gdzieś w wierszu 20 tam umieścić kursor. Aby ustawić punkt przerwania trafień *F9* lub kliknij przycisk *debugowania* następnie *Przełącz punkt przerwania*. Aby uruchomić swoją usługę w trybie debugowania, w obszarze dev, trafienia *F5* lub kliknij przycisk *debugowania* następnie *Rozpocznij debugowanie*.
+Jeśli program Visual Studio jest nadal połączony do obszaru dev, kliknij przycisk Zatrzymaj. Otwórz `Controllers/HomeController.cs` i kliknij przycisk gdzieś w wierszu 20 tam umieścić kursor. Aby ustawić punkt przerwania trafień *F9* lub kliknij przycisk *debugowania* następnie *Przełącz punkt przerwania*. Aby uruchomić swoją usługę w trybie debugowania, w obszarze dev, trafienia *F5* lub kliknij przycisk *debugowania* następnie *Rozpocznij debugowanie*.
 
-Otwórz swoją usługę w przeglądarce i zwróć uwagę, że jest wyświetlany żaden komunikat. Wróć do programu Visual Studio 2017 i sprawdź, czy jest wyróżniony wiersz 20. Punkt przerwania, gdy ustawiasz została wstrzymana usługi w wierszu 20. Aby wznowić działanie usługi, trafienia *F5* lub kliknij przycisk *debugowania* następnie *Kontynuuj*. Wróć do przeglądarki i zwróć uwagę, że teraz jest wyświetlany komunikat.
+Otwórz swoją usługę w przeglądarce i zwróć uwagę, że jest wyświetlany żaden komunikat. Wróć do programu Visual Studio i sprawdź, czy jest wyróżniony wiersz 20. Punkt przerwania, gdy ustawiasz została wstrzymana usługi w wierszu 20. Aby wznowić działanie usługi, trafienia *F5* lub kliknij przycisk *debugowania* następnie *Kontynuuj*. Wróć do przeglądarki i zwróć uwagę, że teraz jest wyświetlany komunikat.
 
 Podczas uruchamiania usługi w usłudze Kubernetes załączonym debuggerze, masz pełny dostęp do debugowania informacje, takie jak stos wywołań, zmienne lokalne i informacje o wyjątku.
 
@@ -135,3 +134,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[supported-regions]: about.md#supported-regions-and-configurations

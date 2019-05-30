@@ -6,18 +6,18 @@ author: stevelas
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 04/10/2018
+ms.date: 05/24/2019
 ms.author: stevelas
-ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a26b261a900dfae742e00d9540e744524b781815
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60868996"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384120"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
-Firmy, które chcą zaznaczyć swoją obecność lokalną lub wykonywać dynamiczną kopię zapasową, decydują się na uruchamianie usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem jest umieszczenie rejestru kontenerów w każdym regionie, w którym uruchamiane są obrazy. Umożliwia to wykonywanie operacji w pobliskiej sieci, dzięki czemu transfery w warstwie obrazu są szybkie i niezawodne. Replikacja geograficzna umożliwia działanie rejestru kontenerów platformy Azure jako pojedynczego rejestru obsługującego wiele regionów przy użyciu wielowzorcowych rejestrów regionalnych.
+Firmy, które chcą zaznaczyć swoją obecność lokalną lub wykonywać dynamiczną kopię zapasową, decydują się na uruchamianie usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem jest umieszczenie rejestru kontenerów w każdym regionie, w którym uruchamiane są obrazy. Umożliwia to wykonywanie operacji w pobliskiej sieci, dzięki czemu transfery w warstwie obrazu są szybkie i niezawodne. Replikacja geograficzna umożliwia działanie rejestru kontenerów platformy Azure jako pojedynczego rejestru obsługującego wiele regionów przy użyciu wielowzorcowych rejestrów regionalnych. 
 
 Rejestr z replikacją geograficzną zapewnia następujące korzyści:
 
@@ -60,10 +60,11 @@ Funkcja replikacji geograficznej usługi Azure Container Registry zapewnia nast�
 
 * Zarządzanie pojedynczym rejestrem w wielu regionach: `contoso.azurecr.io`
 * Zarządzanie jedną konfiguracją wdrożeń obrazów, ponieważ we wszystkich regionach jest używany ten sam adres URL obrazu: `contoso.azurecr.io/public/products/web:1.2`
-* Wypychanie do pojedynczego rejestru, podczas gdy usługa ACR zarządza replikacją geograficzną, co obejmuje regionalne elementy webhook na potrzeby powiadomień lokalnych
+* Wypchnij do pojedynczym rejestrem, podczas gdy ACR zarządza replikacji geograficznej. Możesz skonfigurować regionalnych [elementów webhook](container-registry-webhook.md) do powiadamiania osób zdarzenia w określonym replik.
 
 ## <a name="configure-geo-replication"></a>Konfigurowanie replikacji geograficznej
-Konfigurowanie replikacji geograficznej jest równie proste, co klikanie regionów na mapie.
+
+Konfigurowanie replikacji geograficznej jest równie proste, co klikanie regionów na mapie. Można również zarządzać replikacją geograficzną za pomocą narzędzi, w tym [az acr replikacji](/cli/azure/acr/replication) poleceń w interfejsie wiersza polecenia platformy Azure.
 
 Replikacja geograficzna jest funkcją dotyczącą tylko [rejestrów w warstwie Premium](container-registry-skus.md). Jeśli Twój rejestr nie znajduje się jeszcze w warstwie Premium, możesz zmienić warstwę z warstwy Podstawowa i Standardowa na warstwę Premium w [witrynie Azure Portal](https://portal.azure.com):
 
@@ -91,15 +92,19 @@ Aby skonfigurować dodatkowe repliki, wybierz zielone sześciokąty dla innych r
 
 Usługa ACR rozpocznie synchronizowanie obrazów między skonfigurowanymi replikami. Po ukończeniu tego zadania w portalu zostanie wyświetlony stan *Gotowe*. Stan repliki w portalu nie jest automatycznie aktualizowany. Użyj przycisku odświeżania, aby wyświetlić zaktualizowany stan.
 
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>Zagadnienia dotyczące korzystania z rejestru z replikacją geograficzną
+
+* Każdego regionu, w rejestrze z replikacją geograficzną jest niezależne, po skonfigurowaniu. Azure SLA rejestru kontenera mają zastosowanie do każdego regionu z replikacją geograficzną.
+* Podczas wypychania lub ściągania obrazów z rejestru replikowanego geograficznie, usługi Azure Traffic Manager w tle wysyła żądanie do rejestru znajduje się w regionie najbliżej Ciebie.
+* Po wypchnięciu aktualizacji obrazu lub tag do najbliższego regionu, dopiero po pewnym czasie usługi Azure Container Registry do replikowania manifesty i warstwy do pozostałych regionach, które wyrażania zgody na. Większe obrazy dłużej może replikować niż mniejsze. Obrazów i tagów są synchronizowane w regionach replikacji przy użyciu modelu spójności ostatecznej.
+* Aby zarządzać przepływów pracy, które są zależne od wypychania aktualizacji do rejestru replikowanego geograficznie, zaleca się skonfigurowanie [elementów webhook](container-registry-webhook.md) do reagowania na zdarzenia wypychania. Regionalne elementy webhook w ramach rejestr z replikacją geograficzną można skonfigurować do śledzenia wypychanie zdarzeń po ich zakończeniu regionach replikacją geograficzną.
+
+
 ## <a name="geo-replication-pricing"></a>Cennik replikacji geograficznej
 
 Replikacja geograficzna jest funkcją [jednostki SKU w warstwie Premium](container-registry-skus.md) usługi Azure Container Registry. Replikacja rejestru w żądanych regionach wiąże się z naliczaniem opłat za rejestr w warstwie Premium w danym regionie.
 
 W poprzednim przykładzie firma Contoso skonsolidowała dwa rejestry w ramach jednego, dodając repliki do regionu Wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Firma Contoso zapłaciłaby miesięcznie czterokrotną opłatę za warstwę Premium bez dodatkowej konfiguracji ani zarządzania. W każdym regionie obrazy są teraz ściągane lokalnie, co zwiększa wydajność i niezawodność bez ponoszenia opłat za ruch wychodzący w sieci z regionu Zachodnie stany USA do regionu Kanada Środkowa i Wschodnie stany USA.
-
-## <a name="summary"></a>Podsumowanie
-
-Dzięki replikacji geograficznej możesz zarządzać swoimi regionalnymi centrami danych jako jedną chmurą globalną. Ze względu na to, że obrazy są używane w wielu usługach platformy Azure, możesz korzystać z zalet pojedynczego obszaru zarządzania, obsługując równocześnie szybkie i niezawodne lokalne operacje ściągania obrazów w pobliskiej sieci.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

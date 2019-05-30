@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408574"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393549"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji Java Spring korzystającej z usługi App Configuration
 
@@ -29,7 +29,7 @@ Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora ko
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)](https://aka.ms/azure-jdks) z wersji 8 i [narzędzia Apache Maven](https://maven.apache.org/) w wersji 3.0 lub nowszej.
+Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) z wersji 8 i [narzędzia Apache Maven](https://maven.apache.org/) w wersji 3.0 lub nowszej.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,11 +37,11 @@ Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Eksplorator konfiguracji** > **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz **Eksplorator konfiguracji** >  **+ Utwórz** można dodać następujące pary klucz wartość:
 
     | Klucz | Wartość |
     |---|---|
-    | /application/config.message | Witaj |
+    | /application/config.message | Witamy |
 
     Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
 

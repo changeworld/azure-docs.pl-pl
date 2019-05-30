@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150457"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236283"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -24,8 +24,8 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 - Informacje o usłudze
 - Zamawianie urządzenia
 - Konfigurowanie i łączenie 
-- Śledź stan
-- Kopiuj dane 
+- Śledzenie stanu
+- Kopiowanie danych 
 - Dostawa urządzenia
 - Weryfikowanie i przekazywanie danych 
 - Pomoc techniczna dotycząca łańcucha nadzoru
@@ -124,7 +124,7 @@ A. Jeśli nie możesz uzyskać dostępu do hasła odblokowania w witrynie Azure 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>PYTANIE: Czy na urządzeniu Data Box jest obsługiwana konfiguracja kanału portu? Jak wygląda sytuacja w przypadku wielościeżkowego we/wy (MPIO)?
 A. Nie obsługujemy konfiguracji kanału portu, konfiguracji wielościeżkowego we/wy (MPIO) ani konfiguracji sieci vLAN na urządzeniu Data Box.
 
-## <a name="track-status"></a>Śledź stan
+## <a name="track-status"></a>Śledzenie stanu
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>PYTANIE: Jak mogę śledzić stan urządzenia Data Box od momentu złożenia zamówienia do jego odesłania? 
 A.  Stan zamówienia urządzenia Data Box możesz śledzić w witrynie Azure Portal. Podczas tworzenia zamówienia jest również wyświetlany monit o podanie adresu e-mail do powiadomień. Jeśli go podasz, będziesz otrzymywać powiadomienia e-mail o każdej zmianie stanu zamówienia. Więcej informacji na temat [konfigurowania wiadomości e-mail z powiadomieniami](data-box-portal-ui-admin.md#edit-notification-details).
@@ -184,7 +184,7 @@ A. Jeśli urządzenie zostało dostarczone uszkodzone lub istnieje dowód manipu
 A. W ramach usługi Data Box firma Microsoft obsługuje wysyłkę do i z centrum danych platformy Azure. Jeśli chcesz skorzystać z usług własnego przewoźnika, możesz skorzystać z usługi Azure Import/Export. Aby uzyskać więcej informacji, przejdź do tematu [Co to jest usługa Azure Import/Export?](../storage/common/storage-import-export-service.md)
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>PYTANIE: Będzie Moje urządzenia Data Box krzyżowe obramowania kraju podczas wysyłania?
-A. Wszystkie urządzenia Data Box są dostarczane z w obrębie tego samego kraju jako miejsca docelowego i nie przechodzi wszystkie międzynarodowej obramowania. Jedynym wyjątkiem jest zamówień w Unii Europejskiej (UE), których urządzeń można wysłać do i z jakiegokolwiek kraju UE.
+A. Wszystkie urządzenia Data Box są dostarczane z w obrębie tego samego kraju jako miejsca docelowego i nie przechodzi wszystkie międzynarodowej obramowania. Jedynym wyjątkiem jest zamówień w Unii Europejskiej (UE), których urządzeń można wysłać do i z jakiegokolwiek kraju UE. Dotyczy to zarówno Data Box, jak i duże pole danych urządzeń.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>PYTANIE: Etykieta wysyłki zwrotnej nie jest widoczna na wyświetlaczu E-ink. Co mam zrobić?
 A. Jeśli na wyświetlaczu E-ink nie widać etykiety wysyłki zwrotnej, wykonaj następujące czynności:

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8af927bee11d66c473707b603951fa693f6840e3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540897"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299032"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -82,11 +82,11 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 | Skillset | Najwyższego poziomu o nazwie zasobu zawierającego zbiór umiejętności. Zestawu umiejętności jest wzbogacony potok. Jest wywoływana podczas indeksowania w indeksatorze. | [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
 | Umiejętności cognitive | Niepodzielne przekształcenie w wzbogacony potok. Często jest składnikiem, który wyodrębnia lub wnioskuje struktury i w związku z tym rozszerzają zrozumienie danych wejściowych. Prawie zawsze dane wyjściowe są oparte na tekście, a przetwarzanie jest przetwarzanie języka naturalnego i przetwarzanie obrazu, który wyodrębnia lub generuje tekstu z obrazów w danych wejściowych. Dane wyjściowe z umiejętności mogą być zamapowane do pola w indeksie lub używane jako dane wejściowe wzbogacania podrzędnego. Wstępnie zdefiniowane i udostępniane przez firmę Microsoft lub niestandardowe umiejętności: utworzonych i wdrożonych przez użytkownika. | [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) |
 | Wyodrębnianie danych | Obejmuje szerokiej gamy przetwarzanie, jednak odnoszących się do wyszukiwania kognitywnego umiejętności rozpoznawania jednostek jest najczęściej używana do wyodrębniania danych (jednostki) ze źródła, która nie zapewnia natywnej tych informacji. | [Umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md)| 
-| Przetwarzanie obrazu | Wnioskuje tekstu z obrazu, takich jak możliwości rozpoznawania charakterystycznych elementów krajobrazu lub umożliwia wyodrębnianie tekstu z obrazu. Typowe przykłady obejmują optyczne rozpoznawanie znaków do podnoszenia znaków z pliku skanowanego dokumentu (JPEG), lub rozpoznawanie Nazwa ulicy na zdjęciu zawierających znak ulicy. | [Obraz umiejętności analizy](cognitive-search-skill-image-analysis.md) lub [umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md)
+| Przetwarzanie obrazów | Wnioskuje tekstu z obrazu, takich jak możliwości rozpoznawania charakterystycznych elementów krajobrazu lub umożliwia wyodrębnianie tekstu z obrazu. Typowe przykłady obejmują optyczne rozpoznawanie znaków do podnoszenia znaków z pliku skanowanego dokumentu (JPEG), lub rozpoznawanie Nazwa ulicy na zdjęciu zawierających znak ulicy. | [Obraz umiejętności analizy](cognitive-search-skill-image-analysis.md) lub [umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md)
 | Przetwarzanie języka naturalnego | Tekst przetwarzania szczegółowych informacji i informacje o tekstu w danych wejściowych. Wykrywanie języka, analizę tonacji i wyodrębnianie kluczowych fraz są umiejętności, które są objęte przetwarzania języka naturalnego.  | [Kluczowe frazy wyodrębniania umiejętności](cognitive-search-skill-keyphrases.md), [umiejętności wykrywania języka](cognitive-search-skill-language-detection.md), [umiejętności analizy tonacji](cognitive-search-skill-sentiment.md) |
 | Łamania dokumentów | Proces wyodrębniania lub tworzenia zawartości tekstowej ze źródeł innych niż tekst podczas indeksowania. Optyczne rozpoznawanie znaków (OCR) znajduje się przykład, ale zazwyczaj odwołuje się do podstawowych funkcji indeksator zgodnie z indeksatora wyodrębnia zawartość z plików aplikacji. Źródło danych, podając lokalizację pliku źródłowego i definicja indeksatora, zapewniając mapowania pól są oba kluczowe czynniki łamania dokumentów. | Zobacz [indeksatorów](search-indexer-overview.md) |
 | Kształtowanie | Konsolidowanie fragmentów tekstu w większej struktury lub z drugiej strony podziału większe fragmenty tekstu do rozmiarów do dalszego przetwarzania transmisji dla klientów. | [Umiejętności shaper](cognitive-search-skill-shaper.md), [umiejętności fuzji tekstu](cognitive-search-skill-textmerger.md), [tekst podziału umiejętności](cognitive-search-skill-textsplit.md) |
-| Wzbogaconego dokumentów | Przejściowe wewnętrznej struktury, nie są bezpośrednio dostępne w kodzie. Wzbogaconego dokumenty są generowane podczas przetwarzania, ale tylko ostateczne dane wyjściowe są zachowywane w indeksie wyszukiwania. Mapowania pól określają, elementy danych, które są dodawane do indeksu. | Zobacz [uzyskiwaniu dostępu do dokumentów wzbogaconego](cognitive-search-tutorial-blob.md#access-enriched-document). |
+| Wzbogaconego dokumentów | Przejściowe wewnętrznej struktury, generowane podczas przetwarzania z końcowych danych wyjściowych, które zostaną uwzględnione w indeksie wyszukiwania. Zestawu umiejętności określa, które wzbogacenia są wykonywane. Mapowania pól określają, elementy danych, które są dodawane do indeksu. Opcjonalnie można utworzyć magazynu wiedzy do zostaną zachowane, a następnie zapoznaj się z wzbogaconego dla dokumentów za pomocą narzędzi, takich jak Eksplorator usługi Storage, usługa Power BI lub innego narzędzia, który nawiązuje połączenie z usługą Azure Blob storage. | Zobacz [wiedzy magazynu (wersja zapoznawcza)](knowledge-store-concept-intro.md). |
 | Indeksator |  Przeszukiwarką, która wyodrębnia dane z możliwością wyszukiwania i metadanych z zewnętrznego źródła danych i wypełnienie indeksu oparte na mapowania pól do pól między indeksem a źródłem danych dla łamania dokumentów. W przypadku wzbogacenia wyszukiwania kognitywnego indeksatora wywołuje zestawu umiejętności i zawiera mapowania pól kojarzenie Wzbogacanie danych wyjściowych pól docelowych. w indeksie. Definicja indeksatora znajdują się instrukcje i odwołania dla operacji potoku, a potok jest wywoływana po uruchomieniu indeksatora. | [Indexers](search-indexer-overview.md) (Indeksatory) |
 | Źródło danych  | Obiekt, który używane w indeksatorze, aby nawiązać połączenie z zewnętrznym źródłem danych z obsługiwanych typów na platformie Azure. | Zobacz [indeksatorów](search-indexer-overview.md) |
 | Indeks | Indeksu wyszukiwania utrwalonych w usłudze Azure Search, utworzony na podstawie schematu indeksu, który definiuje pola struktury i użycia. | [Indeksy w usłudze Azure Search](search-what-is-an-index.md) | 

@@ -1,6 +1,6 @@
 ---
 title: Zarządzania funkcję konfiguracji aplikacji platformy Azure | Dokumentacja firmy Microsoft
-description: Omówienie sposobu konfiguracji aplikacji usługi Azure mogą być używane w taki sposób, aby włączyć lub wyłączyć funkcje aplikacji na żądanie
+description: Omówienie sposobu konfiguracji aplikacji usługi Azure mogą być używane w taki sposób, aby włączyć lub wyłączyć funkcje aplikacji na żądanie.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,36 +12,45 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 304ca08275ccf4bf32d38e3fc89dd5cf07460fa4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 46f39e87e4e4cf115cbc1fceeabf0dab38fade28
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413767"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393356"
 ---
-# <a name="feature-management"></a>Zarządzanie funkcjami
+# <a name="feature-management-overview"></a>Omówienie funkcji usługi zarządzania
 
-Tradycyjnie wysyłania nowych funkcji aplikacji wymaga pełne ponownego wdrożenia komputera samej aplikacji. Aby przetestować funkcję, prawdopodobnie należy wdrożyć aplikację wielokrotnie kontroli, gdy staje się widoczny lub kto może zobaczyć, jak to. Funkcja zarządzania jest rozwiązaniem tworzenia nowoczesnych oprogramowania oddziela wydawanie funkcji od wdrażania kodu, które umożliwia szybkie zmiany dostępności funkcji na żądanie. Używa ona technikę o nazwie *flagi funkcji* (znany także jako *przełącznika funkcji*, *przełącznik funkcji*i tak dalej) do administrowania cykl życia funkcji dynamicznie. Ułatwia deweloperom pracę z następujących problemów:
+Tradycyjnie wysyłania nowych funkcji aplikacji wymaga pełne ponownego wdrożenia komputera samej aplikacji. Aby przetestować funkcję, prawdopodobnie należy wdrożyć aplikację wiele razy do formantu, gdy funkcja staje się widoczny lub kto może zobaczyć, jak to.
 
-* **Zarządzanie gałęziami kodu**: Flagi funkcji są często używane do opakowania nowe funkcjonalności aplikacji, która jest w fazie projektowania. Takie funkcje "" domyślnie ukryty. Dostarczanie, bezpieczne, chociaż niedokończone i pozostanie w stanie uśpienia w środowisku produkcyjnym. Użycie tej metody o nazwie *ciemny wdrożenia*, można zwolnić całego kodu na końcu każdego cyklu tworzenia oprogramowania. Nie są już potrzebne do obsługi dowolnej innej gałęzi kodu między wiele cykli ze względu na funkcję trwa więcej niż jedną kropkę, należy wykonać.
-* **Testowanie w produkcji**: Flagi funkcji służy do udzielania wczesny dostęp do nowych funkcji w środowisku produkcyjnym. Na przykład można ograniczyć dostęp jedynie do członków zespołu lub testerów wersji beta wewnętrznego. Ci użytkownicy będą uzyskiwać środowisko produkcyjne o pełnej wierności, zamiast symulowanych lub częściowe doświadczenie w środowisku testowym.
-* **Pilotaż**: Flagi funkcji umożliwia również wdrażanie nowych funkcji dla użytkowników końcowych przyrostowo. Można pierwszego obiektu docelowego niewielką część swojej populacji użytkowników, a następnie stopniowo zwiększać wartość procentowa wraz z upływem czasu, po weszły większą pewnością w implementacji.
-* **Błyskawiczne kill przełącznika**: Flagi funkcji zapewniają nieprzerwaną pracę projektowi wydawania nowych funkcji. Za ich pomocą można nie tylko włączyć, ale także łatwo wyłączony funkcji aplikacji. Zyskasz możliwość szybkiego wyłączenia funkcji, jeśli to konieczne, bez konieczności ponowne skompilowanie i wdrożenie aplikacji.
-* **Selektywne aktywacji**: Chociaż większość flag funkcji istnieje tylko w przypadku, dopóki ich skojarzone funkcje zostały pomyślnie zwolnione, niektóre może trwać długo. Można ich używać jako sposób podzielić użytkowników i dostarczać określony zbiór funkcji do każdej grupy. Na przykład może być funkcją, która działa w przeglądarce internetowej. Flagi funkcji można zdefiniować w taki sposób, że tylko użytkownicy tej przeglądarki może widzieć i używać tej funkcji. Zaletą tego podejścia jest to, że można łatwo rozszerzyć listę obsługiwanych przeglądarek później bez konieczności wykonywania jakiegokolwiek kodu, zmiany.
+Funkcja zarządzania jest rozwiązaniem nowoczesne tworzenie oprogramowania, który oddziela wydawanie funkcji od wdrażania kodu i umożliwia szybkie zmiany dostępności funkcji na żądanie. Używa ona technikę o nazwie *flag funkcji* (znany także jako *Włącza lub wyłącza funkcję*, *przełączniki funkcji*i tak dalej) do administrowania dynamicznie cykl życia funkcji.
+
+Funkcja zarządzania pomaga deweloperom rozwiązywania problemów w następujących:
+
+* **Zarządzanie gałęziami kodu**: Flagi funkcji są często używane do opakowania nowe funkcjonalności aplikacji, która jest w fazie projektowania. Takie funkcje "" domyślnie ukryty. Bezpiecznie można publikować funkcję, nawet jeśli ma niedokończone, i pozostaną w stanie uśpienia w środowisku produkcyjnym. Za pomocą tego podejścia, o nazwie *ciemny wdrożenia*, można zwolnić całego kodu na końcu każdego cyklu tworzenia oprogramowania. Nie są już potrzebne do obsługi dowolnej innej gałęzi kodu między wiele cykli ze względu na funkcję trwa więcej niż jednego cyklu należy wykonać.
+* **Testowanie w produkcji**: Flagi funkcji służy do udzielania wczesny dostęp do nowych funkcji w środowisku produkcyjnym. Na przykład można ograniczyć dostęp do tylko członków zespołu lub do testerów wersji beta wewnętrznego. Ci użytkownicy będą uzyskiwać środowisko produkcyjne o pełnej wierności, zamiast symulowanych lub częściowe doświadczenie w środowisku testowym.
+* **Pilotaż**: Flagi funkcji umożliwia również użytkownikom końcowym przyrostowo wdrażać nowe funkcje. Można pierwszego obiektu docelowego niewielką część swojej populacji użytkowników, a następnie stopniowo zwiększać wartość procentowa wraz z upływem czasu, po weszły większą pewnością w implementacji.
+* **Błyskawiczne kill przełącznika**: Flagi funkcji zapewniają nieprzerwaną pracę projektowi wydawania nowych funkcji. Za ich pomocą funkcje aplikacji mogą być łatwo włączać i wyłączać. Jeśli to konieczne, funkcję można wyłączyć szybkie bez ponownego tworzenia i wdrażania aplikacji.
+* **Selektywne aktywacji**: Chociaż większość flag funkcji istnieje tylko do momentu ich skojarzone funkcje zostały pomyślnie zwolnione, niektóre może trwać długo. Aby podzielić użytkowników i oferować określony zbiór funkcji do każdej grupy, można użyć flagi funkcji. Na przykład może być funkcją, która działa tylko w przeglądarce internetowej. Tylko użytkownicy tej przeglądarki można przejrzeć i użyć funkcji, można zdefiniować flagi funkcji. W przypadku tej metody możesz łatwo rozszerzyć listę obsługiwanych przeglądarek później bez konieczności wprowadzania żadnych zmian w kodzie.
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
 
-Poniżej przedstawiono kilka nowe warunki związane z zarządzaniem funkcją.
+Poniżej przedstawiono kilka nowe warunki związane z zarządzaniem funkcji:
 
-* **Flagi funkcji**: Flaga funkcji jest zmienną ze stanem binarne *na* lub *poza* i skojarzonego kodu bloku. Jego stan decyduje o tym, czy blok kodu jest uruchamiane, czy nie.
-* **Funkcja menedżera**: Menedżer funkcji jest pakiet aplikacji, który obsługuje cyklu życia wszystkie flagi funkcji w aplikacji. Zwykle zapewnia dodatkowe funkcje, takie jak buforowanie flag i Aktualizuj ich Stany.
-* **Filtr**: Filtr jest reguła dla oceny stanu flagi funkcji. Grupy użytkowników, urządzenia lub przeglądarki typu i lokalizacji geograficznej, przedział czasu należą do czego może reprezentować filtru.
+* **Flagi funkcji**: Flaga funkcji jest zmienną ze stanem binarne *na* lub *poza*. Flagi funkcji ma również blokiem skojarzonego kodu. Stan flagi funkcji wyzwala czy blok kodu jest uruchomiony lub nie.
+* **Funkcja menedżera**: Menedżer funkcji jest pakiet aplikacji, który obsługuje cyklu życia wszystkie flagi funkcji w aplikacji. Menedżer funkcji zwykle zapewnia dodatkowe funkcje, takie jak buforowanie flag funkcji i aktualizowanie ich Stany.
+* **Filtr**: Filtr jest reguła dla oceny stanu flagi funkcji. Grupy użytkowników, urządzenia lub przeglądarki typu, lokalizacji geograficznej i przedział czasu są przykładami co może reprezentować filtru.
 
-Skutecznego wdrożenia zarządzania funkcji składa się z co najmniej dwa składniki: Praca z optymalizacją: aplikacji, która sprawia, że użycie flagi funkcji i oddzielnych repozytorium, są przechowywane flagi funkcji i ich bieżących stanów. Poniżej przedstawiono ich interakcji.
+Skutecznego wdrożenia zarządzania funkcji składa się z co najmniej dwa składniki: Praca z optymalizacją:
+
+* Aplikacja, która sprawia, że użycie flagi funkcji.
+* Oddzielne repozytorium, które są przechowywane flagi funkcji i ich bieżących stanów.
+
+Sposób interakcji te składniki przedstawiono w poniższych przykładach.
 
 ## <a name="feature-flag-usage-in-code"></a>Użycie flagi funkcji w kodzie
 
-Podstawowy wzorzec wprowadzania flagi funkcji w aplikacji jest prosta. Możesz ją wyobrażenie jako zmienną logiczną stanu używany z `if` instrukcji warunkowej, w kodzie.
+Podstawowy wzorzec wprowadzania flagi funkcji w aplikacji jest prosta. Można potraktować flagi funkcji jako zmienną logiczną stanu używany z `if` instrukcji warunkowej, w kodzie:
 
 ```csharp
 if (featureFlag) {
@@ -49,19 +58,19 @@ if (featureFlag) {
 }
 ```
 
-W takim przypadku `featureFlag` jest ustawiona na `True`, jest wykonywany blok kodu ujęty; w przeciwnym razie zostanie ona pominięta. Wartość `featureFlag` można ustawić statycznie:
+W takim przypadku `featureFlag` jest równa `True`, blok kodu ujęty wykonane; w przeciwnym razie, zostanie ona pominięta. Można ustawić wartość `featureFlag` statycznie, jak w poniższym przykładzie kodu:
 
 ```csharp
 bool featureFlag = true;
 ```
 
-On również mogą być obliczane na podstawie określonych reguł:
+Możesz również ocenić stan flagi na podstawie określonych reguł:
 
 ```csharp
 bool featureFlag = isBetaUser();
 ```
 
-Nieco bardziej skomplikowanego wzorzec flagi funkcji obejmuje `else` także instrukcji.
+Nieco bardziej skomplikowanego wzorzec flagi funkcji obejmuje `else` także instrukcji:
 
 ```csharp
 if (featureFlag) {
@@ -71,7 +80,7 @@ if (featureFlag) {
 }
 ```
 
-To może być ponowne napisanie we wzorcu podstawowe jednak. [Użyj flagi funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md) pokazuje zalet standaryzacji przy użyciu wzorca prostego kodu.
+Jednak można napisać ponownie to zachowanie w podstawowy wzorzec. [Użyj flagi funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md) przedstawiono zalety standaryzacji przy użyciu wzorca prostego kodu. Na przykład:
 
 ```csharp
 if (featureFlag) {
@@ -85,7 +94,11 @@ if (!featureFlag) {
 
 ## <a name="feature-flag-repository"></a>Repozytorium flagi funkcji
 
-Aby skutecznie ich używać, musisz Zapisz wszystkie flagi funkcji używane w aplikacji. Który będzie umożliwiają zmianę stanów flagi funkcji bez konieczności modyfikowania i ponownego wdrażania aplikacji. Konfiguracja aplikacji platformy Azure jest zaprojektowane jako centralne repozytorium dla flag funkcji. Możesz użyć go do definiowania różnych rodzajów flag funkcji i manipulowania ich stanów, szybko i pewnie. Możesz mogą uzyskiwać dostęp do tych flag funkcji łatwo z aplikacji przy użyciu biblioteki konfiguracji aplikacji dla różnych platform języków programowania. [Użyj flagi funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md) pokazuje, jak dostawcy konfiguracji aplikacji programu .NET Core i bibliotek zarządzania funkcji są ze sobą jako kompletnego rozwiązania używane do implementowania flag funkcji dla aplikacji sieci web platformy ASP.NET.
+Aby skutecznie używać flag funkcji, musisz Zapisz wszystkie flagi funkcji używane w aplikacji. Takie podejście umożliwia zmianę stanów flagi funkcji bez konieczności modyfikowania i ponownego wdrażania aplikacji.
+
+Konfiguracja aplikacji platformy Azure jest zaprojektowane jako centralne repozytorium dla flag funkcji. Służy do definiowania różnych rodzajów flag funkcji i manipulowania ich stanów, szybko i pewnie. Biblioteki konfiguracji aplikacji dla różnych platform języków programowania można następnie użyć łatwo uzyskać dostęp do tych flag funkcji z aplikacji.
+
+[Użyj flagi funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md) pokazuje, jak dostawca konfiguracji aplikacji programu .NET Core i bibliotek zarządzania funkcji są używane razem do wdrożenia flag funkcji dla aplikacji sieci web platformy ASP.NET.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

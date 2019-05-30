@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: 44094a38fff17908fd5ea851209130f89a49c988
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 23093cd8bcb5793b9e5b9abc835f64233e666ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707026"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241741"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co to jest usługa Azure Virtual Network?
 
-Usługa Azure Virtual Network umożliwia wielu typom zasobów platformy Azure, np. maszynom wirtualnym Azure, bezpieczne komunikowanie się ze sobą, z Internetem oraz sieciami lokalnymi. Sieć wirtualna jest ograniczona do pojedynczego regionu. Jednak wiele sieci wirtualnych z różnych regionów można połączyć ze sobą przy użyciu komunikacji równorzędnej sieci wirtualnej.
+Usługa Azure Virtual Network umożliwia wielu typom zasobów platformy Azure, np. maszynom wirtualnym Azure, bezpieczne komunikowanie się ze sobą, z Internetem oraz sieciami lokalnymi. Sieci wirtualnej jest ograniczony do jednego regionu platformy Azure. Azure [region](https://azure.microsoft.com/global-infrastructure/regions/) to zestaw centrów danych wdrożonego w ramach obwodu o zdefiniowanym opóźnieniu i połączony za pośrednictwem dedykowanej, regionalnej sieci o małych opóźnieniach. 
+
+Sieci wirtualne są tworzone podsieci. Podsieć jest zakresem adresów IP w ramach sieci wirtualnej. Podsieci, takie jak sieci wirtualne są ograniczone do jednego regionu platformy Azure. 
+
+Wiele sieci wirtualnych z różnych regionów, mogą być połączone ze sobą przy użyciu komunikacji równorzędnej sieci wirtualnej.
 
 Usługa Azure Virtual Network oferuje następujące kluczowe funkcje:
 

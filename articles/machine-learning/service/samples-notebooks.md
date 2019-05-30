@@ -1,7 +1,7 @@
 ---
 title: Przykładowe notesy Jupyter
 titleSuffix: Azure Machine Learning service
-description: Znajdź przykładowe notesy Jupyter Notebook i skorzystaj z nich, aby poznać usługę Azure Machine Learning przy użyciu języka Python.
+description: Znajdź i eksplorowanie usługi Azure Machine Learning zestawu SDK języka Python za pomocą notesów programu Jupyter w przykładzie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,58 +9,57 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 05/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: cd88fd85ce6d18287c700a54e42b6237a42ea5c9
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: ea4d5a807c25ea0406b49dac8a83ef1a34e0e8b3
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035367"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391785"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Korzystanie z notesów Jupyter Notebook w celu eksplorowania usługi Azure Machine Learning
 
-Dla Twojej wygody opracowaliśmy szereg notesów Jupyter Notebook w języku Python, których możesz użyć do zapoznania się z usługą Azure Machine Learning. 
+[Repozytorium usługi Azure Machine Learning notesów](https://github.com/azure/machinelearningnotebooks) obejmuje najnowsze przykłady zestawu SDK usługi Azure Machine Learning języka Python. Te Juypter notebooków zapoznaj się z zestawu SDK i służyć jako modele własne projekty uczenia maszynowego.
 
-Dowiedz się, jak używać usługi z dokumentacji znajdującej się w tej witrynie, oraz jak dostosować notesy do danej sytuacji. 
+W tym artykule pokazano, jak uzyskać dostęp do repozytorium z następujących środowiskach:
 
-Aby uruchomić serwer notesów przy użyciu tych przykładowych notesów, użyj jednej z poniższych ścieżek.  Gdy serwer zostanie już uruchomiony, znajdź notesy samouczków w folderze **tutorials** lub odkryj różne funkcje w folderze **how-to-use-azureml**.
+- [Notes usługi Azure Machine Learning maszyny Wirtualnej](#azure-machine-learning-notebook-vm)
+- [Przenieś serwer notesu](#bring-your-own-jupyter-notebook-server)
+- [Maszyna wirtualna do nauki o danych](#data-science-virtual-machine)
+- [Azure Notebooks](#azure-notebooks)
 
-## <a name="a-managed-cloud-notebook-server"></a>Serwer notesu zarządzana usługa w chmurze
+> [!NOTE]
+> Gdy sklonowane repozytorium, można znaleźć samouczek notesy w **samouczki** folder i notesy specyficzne dla funkcji w **jak-to-użyj-usługi Azure ml** folderu.
 
-To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. Przykładowy Notes i [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) są już zainstalowane i skonfigurowane dla Ciebie, po utworzeniu zasobu w chmurze.  
+## <a name="azure-machine-learning-notebook-vm"></a>Notes usługi Azure Machine Learning maszyny Wirtualnej
 
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+Najprostszym sposobem, aby rozpocząć pracę z przykładów jest realizacja [Szybki Start oparte na chmurze notesu](quickstart-run-cloud-notebook.md). Po zakończeniu będziesz mieć dedykowany serwer wstępnie załadowane z zestawu SDK i przykładowe repozytorium. Brak plików do pobrania i instalacji konieczne.
 
-* Przykłady są dostępne na stronie sieci Web notesu.
+## <a name="bring-your-own-jupyter-notebook-server"></a>Przenieś serwer notesu programu Jupyter
 
-## <a name="a-data-science-virtual-machine-dsvm"></a>Maszyna wirtualna do nauki o danych (DSVM)
-
-W środowisku DSVM jest już zainstalowany i skonfigurowany [zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) oraz serwer notesów. 
-
-Po [utworzeniu maszyny wirtualnej DSVM](how-to-configure-environment.md#dsvm) wykonaj następujące czynności na maszynie wirtualnej DSVM w celu uruchomienia notesów.
-
-[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-## <a name="your-own-jupyter-notebook-server"></a>Serwer notesu programu Jupyter
-
-Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.
+Jeśli chcesz przenieść serwer notesu dla rozwoju lokalnych, wykonaj następujące kroki:
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-Instrukcje dotyczące konfigurowania zainstaluje pakietów, musisz uruchomić notesów Szybki Start i samouczków.  Inne przykładowe notesy mogą wymagać zainstalowania dodatkowych składników.  Aby uzyskać więcej informacji dotyczących tych składników, zobacz [Instalowanie zestawu SDK usługi Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+Te instrukcje instalacji podstawowej pakiety zestawu SDK, niezbędne do notesów Szybki Start i samouczków. Inne przykładowe notesów może wymagać zainstalowania dodatkowych składników. Aby uzyskać więcej informacji, zobacz [zainstalować zestaw SDK usługi Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+
+## <a name="data-science-virtual-machine"></a>Maszyna wirtualna do analizy danych
+
+Maszyna wirtualna do nauki o danych (DSVM) jest dostosowany obraz maszyny Wirtualnej, przeznaczony do nauki o danych. Jeśli użytkownik [tworzenie maszyny wirtualnej DSVM](how-to-configure-environment.md#dsvm), zestaw SDK i notesu serwer są zainstalowane i skonfigurowane. Jednak nadal musisz utworzyć obszar roboczy i sklonowania przykładowego repozytorium.
+
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
 ## <a name="azure-notebooks"></a>Azure Notebooks
 
-Notesy próbki i [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) są już zainstalowane i skonfigurowane na [notesów usługi Azure](https://notebooks.azure.com/). Instalacja i przyszłe aktualizacje są automatycznie zarządzane za pomocą usług platformy Azure.
+Na [notesów usługi Azure](https://notebooks.azure.com/), zestaw SDK i notesu serwer są zainstalowane i skonfigurowane. Notesy platformy Azure udostępnia środowisko notesu w pełni zarządzane, proste do eksplorowania.
 
-Użyj [witryny Azure portal](https://portal.azure.com) wprowadzenie notesy platformy Azure.  Otwórz obszar roboczy z **Przegląd** zaznacz **wprowadzenie do platformy Azure, notesy**.
+Aby uzyskać dostęp do repozytorium przykładów na notesy platformy Azure, przejdź do obszaru roboczego usługi Azure Machine Learning, za pośrednictwem [witryny Azure portal](https://portal.azure.com). Z **Przegląd** zaznacz **wprowadzenie do platformy Azure, notesy**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-+ Zapoznaj się z notesów próbki dla usługi Azure Machine Learning, w tym repozytorium GitHub: https://aka.ms/aml-notebooks
+Zapoznaj się z [przykładowy notesów](https://aka.ms/aml-notebooks) Aby dowiedzieć się, jakie usługi Azure Machine Learning usługa może zrobić lub wypróbuj następujące samouczki:
 
-Skorzystaj z następujących samouczków:
-+ [Szkolenie i wdrażanie modelu klasyfikacji obrazów przy użyciu zestawu danych MNIST](tutorial-train-models-with-aml.md)
+- [Szkolenie i wdrażanie modelu klasyfikacji obrazów przy użyciu zestawu danych MNIST](tutorial-train-models-with-aml.md)
 
-+ [Prepare data and use automated machine learning to train a regression model with the NYC taxi data set (Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego w celu szkolenia modelu regresji przy użyciu zestawu danych dotyczących taksówek w Nowym Jorku)](tutorial-data-prep.md)
+- [Prepare data and use automated machine learning to train a regression model with the NYC taxi data set (Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego w celu szkolenia modelu regresji przy użyciu zestawu danych dotyczących taksówek w Nowym Jorku)](tutorial-data-prep.md)

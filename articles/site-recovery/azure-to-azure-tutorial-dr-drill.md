@@ -2,20 +2,19 @@
 title: Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery
 description: Dowiedz się, jak uruchomić próbne odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure dla maszyn wirtualnych IaaS platformy Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
-author: rockboyfor
-manager: digimobile
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-origin.date: 04/08/2019
-ms.date: 04/22/2019
-ms.author: v-yeche
+ms.date: 05/30/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 16c791287cc50b5ac8992a86f6de1e3eeb5e329e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d058282a9e903b37505f2a762d4264efbbec3a5a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552947"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399516"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -34,6 +33,7 @@ W tym samouczku przedstawiono sposób uruchamiania próbnego odzyskiwania po awa
 
 - Przed uruchomieniem testu trybu failover zalecamy, aby zweryfikować właściwości maszyny wirtualnej w celu upewnienia się, że wszystko jest zgodne z oczekiwaniami.  Uzyskaj dostęp do właściwości maszyny wirtualnej w obszarze **Elementy replikowane**. Blok **Podstawy** zawiera informacje o ustawieniach i stanie maszyny.
 - **Zalecamy, aby do testowania trybu failover użyć oddzielnej sieci maszyn wirtualnych platformy Azure**, a nie domyślnej sieci skonfigurowanej podczas włączania replikacji.
+
 
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 
@@ -55,6 +55,3 @@ W tym samouczku przedstawiono sposób uruchamiania próbnego odzyskiwania po awa
 
 > [!div class="nextstepaction"]
 > [Uruchamianie produkcyjnego trybu failover](azure-to-azure-tutorial-failover-failback.md)
-
-<!-- Update_Description: update meta properties -->
-

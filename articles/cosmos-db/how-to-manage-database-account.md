@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 07d177987db1dea261520e8ee2543d871d552acb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: abd50f4e2ca08bea2af491f4b3991278a6dc3b5e
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240886"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399886"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Zarządzanie kontem usługi Azure Cosmos
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ### <a id="create-database-account-via-ps"></a>Azure PowerShell
 ```azurepowershell-interactive
-# Create an Azure Cosmos Account for Core (SQL) API
+# Create an Azure Cosmos account for Core (SQL) API
 $resourceGroupName = "myResourceGroup"
 $location = "West US"
 $accountName = "mycosmosaccount" # must be lower case.
@@ -71,7 +71,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="create-database-account-via-arm-template"></a>Szablon usługi Azure Resource Manager
 
-Ten szablon usługi Azure Resource Manager utworzy konto usługi Azure Cosmos DB dla wszystkich obsługiwanych API skonfigurowany przy użyciu dwóch regionach i opcji, aby wybrać poziom spójności, automatycznej pracy awaryjnej i Multi-Master. Aby wdrożyć ten szablon, kliknij pozycję Wdróż na platformie Azure na stronie readme [Tworzenie usługi Azure Cosmos DB](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
+Ten szablon usługi Azure Resource Manager utworzy konta usługi Azure Cosmos dowolny obsługiwany interfejs API skonfigurowany przy użyciu dwóch regionów i opcji, aby wybrać Multi-Master, poziomu spójności i automatycznej pracy awaryjnej. Aby wdrożyć ten szablon, kliknij pozycję Wdróż na platformie Azure na stronie readme [konta usługi Cosmos Azure utworzyć](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Dodawanie/usuwanie regionów z poziomu konta bazy danych
 
@@ -185,7 +185,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName --ena
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
 ```azurepowershell-interactive
-# Update an Azure Cosmos Account from single to multi-master
+# Update an Azure Cosmos account from single to multi-master
 
 $account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
@@ -200,7 +200,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-arm"></a>Szablon usługi Resource Manager
 
-Konto można przeprowadzić migrację z pojedynczego elementu głównego do Multi-Master przez wdrożenie szablonu usługi Resource Manager, używanego do utworzenia konta i ustawienie `enableMultipleWriteLocations: true`. Następujący szablon usługi Azure Resource Manager jest szablonem minimalne systemu od zera, który wdroży konta usługi Azure Cosmos DB dla interfejsu API SQL za pomocą jednego regionu i Multi-Master włączone.
+Konto można przeprowadzić migrację z pojedynczego elementu głównego do Multi-Master przez wdrożenie szablonu usługi Resource Manager, używanego do utworzenia konta i ustawienie `enableMultipleWriteLocations: true`. Następujący szablon usługi Azure Resource Manager jest szablonem minimalne systemu od zera, który wdroży konta usługi Azure Cosmos dla interfejsu API SQL za pomocą jednego regionu i Multi-Master włączone.
 
 ```json
 {
@@ -239,13 +239,13 @@ Konto można przeprowadzić migrację z pojedynczego elementu głównego do Mult
 }
 ```
 
-## <a id="automatic-failover"></a>Włączanie automatycznego przejścia do trybu failover dla konta usługi Azure Cosmos DB
+## <a id="automatic-failover"></a>Włączanie automatycznego przejścia do trybu failover dla konta usługi Azure Cosmos
 
 Opcji automatycznej pracy awaryjnej umożliwia usługi Azure Cosmos DB w tryb failover do regionu z najwyższym priorytetem trybu failover z żadna akcja użytkownika powinna region staną się niedostępne. Po włączeniu automatycznej pracy awaryjnej, mogą być modyfikowane priorytetu regionu. Konto musi mieć co najmniej dwóch regionach w celu włączenia automatycznej pracy awaryjnej.
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Z poziomu konta usługi Azure Cosmos DB otwórz okienko **Replikuj dane globalnie**.
+1. Z konta usługi Azure Cosmos Otwórz **Replikuj dane globalnie** okienka.
 
 2. U góry okienka wybierz pozycję **Automatyczne przełączanie w tryb failover**.
 
@@ -344,7 +344,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 Proces przeprowadzania ręcznego przełączania trybu failover obejmuje zmiana regionu zapisu dla konta (priorytetem trybu failover = 0) do innego regionu skonfigurowany dla konta.
 
 > [!NOTE]
-> Wielu wzorców kont nie można ręcznie przełączone w tryb failover. Dla aplikacji przy użyciu zestawu SDK usługi Azure Cosmos DB zestaw SDK będzie Wykryj, kiedy region staje się niedostępny, a następnie nastąpi automatyczne przekierowanie do następnego regionu najbliższego Jeśli za pomocą międzyregionalnych interfejsów API w zestawie SDK.
+> Wielu wzorców kont nie można ręcznie przełączone w tryb failover. W przypadku aplikacji przy użyciu zestawu SDK usługi Azure Cosmos zestaw SDK będzie Wykryj, kiedy region staje się niedostępny, a następnie nastąpi automatyczne przekierowanie do następnego regionu najbliższego Jeśli za pomocą międzyregionalnych interfejsów API w zestawie SDK.
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 

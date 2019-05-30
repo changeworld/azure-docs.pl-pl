@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596555"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235075"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej do nauki o danych platformy Azure dla systemów Linux i Windows
 
@@ -48,7 +48,7 @@ Maratony deweloperów i konkursy w zakresie nauki o danych lub modelowanie i eks
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Niestandardowe mocy obliczeniowej dla notesów usługi Azure
 
-[Notesy platformy Azure](/azure/notebooks/azure-notebooks-overview.md) to bezpłatna usługa hostowana na tworzenie, uruchamianie i udostępnianie aplikacji Jupyter notebooks w chmurze nie instalacji. Jednak w warstwie bezpłatna usługa i jest ograniczony do 4GB pamięci i 1GB danych. Aby zwolnić wszystkie limity, zostanie następnie dołączony projektu notesów do maszyny Wirtualnej do nauki o danych lub innej maszyny Wirtualnej serwerem Jupyter. Jeśli zalogujesz się do notesów usługi Azure przy użyciu konta, za pomocą usługi Azure Active Directory (na przykład konto firmowe), notesów automatycznie zawiera maszyny wirtualne do nauki o danych w dowolnej subskrypcji powiązanej z tym kontem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie projektów i zarządzanie nimi — warstwa Obliczenia](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+[Notesy platformy Azure](/azure/notebooks/azure-notebooks-overview) to bezpłatna usługa hostowana na tworzenie, uruchamianie i udostępnianie aplikacji Jupyter notebooks w chmurze nie instalacji. Jednak w warstwie bezpłatna usługa i jest ograniczony do 4GB pamięci i 1GB danych. Aby zwolnić wszystkie limity, zostanie następnie dołączony projektu notesów do maszyny Wirtualnej do nauki o danych lub innej maszyny Wirtualnej serwerem Jupyter. Jeśli zalogujesz się do notesów usługi Azure przy użyciu konta, za pomocą usługi Azure Active Directory (na przykład konto firmowe), notesów automatycznie zawiera maszyny wirtualne do nauki o danych w dowolnej subskrypcji powiązanej z tym kontem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie projektów i zarządzanie nimi — warstwa Obliczenia](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krótkoterminowe eksperymenty i ocena
 Maszyna wirtualna do nauki o danych umożliwia ocenę lub naukę narzędzi, takich jak Microsoft ML Server, SQL Server, narzędzia programu Visual Studio, Jupyter, zestawy narzędzi do uczenia głębokiego i maszynowego, oraz nowych narzędzi popularnych w społeczności przy minimalnym zakresie konfiguracji. Maszynę wirtualną Data Science Virtual Machine można szybko skonfigurować, dlatego można ją stosować w innych krótkoterminowych scenariuszach użycia, takich jak replikowanie opublikowanych eksperymentów, przeprowadzanie pokazów, wykonywanie procedur w przewodnikach w ramach sesji online lub samouczków konferencji.
