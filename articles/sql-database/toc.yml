@@ -296,6 +296,8 @@
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Atrybuty zabezpieczeń
           href: sql-database-security-attributes.md
+        - name: Ograniczenia funkcji
+          href: sql-database-feature-restrictions.md
     - name: Skalowalność
       items:
         - name: Omówienie skalowalności
@@ -368,12 +370,20 @@
           href: sql-database-temporal-tables.md
         - name: Automatyzacja zadań
           href: sql-database-job-automation-overview.md
+        - name: Serwery połączone
+          href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
+        - name: Usługa Service Broker
+          href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
+        - name: Poczta bazy danych
+          href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/sql-database/toc.json'
         - name: Machine Learning Services
           items:
             - name: Omówienie
               href: sql-database-machine-learning-services-overview.md
             - name: Podstawowe różnice
               href: sql-database-machine-learning-services-differences.md
+        - name: Integracja środowiska CLR/.NET po stronie serwera
+          href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/sql-database/toc.json'
 - name: Przewodniki z instrukcjami
   items:
     - name: Omówienie

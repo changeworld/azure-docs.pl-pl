@@ -11,10 +11,10 @@ ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 588fe452473ddc2434d92f90afbf8a0e1bc8c275
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65751025"
+ms.locfileid: "65795761"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 

@@ -423,7 +423,7 @@
       items:
         - name: Architektura sieci wirtualnej usługi HDInsight
           href: ../hdinsight-virtual-network-architecture.md
-        - name: Ograniczanie ruchu wychodzącego w usłudze HDInsight
+        - name: Ograniczanie ruchu wychodzącego za pomocą zapory
           href: ../hdinsight-restrict-outbound-traffic.md
         - name: Usługa HDInsight w sieci wirtualnej platformy Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md

@@ -22,6 +22,8 @@
   items:
     - name: Logowanie jednokrotne do zasobów lokalnych
       href: azuread-join-sso.md
+    - name: Zarządzane stacje robocze platformy Azure
+      href: concept-azure-managed-workstation.md
 - name: Przewodniki z instrukcjami
   expanded: true
   items:
@@ -39,6 +41,8 @@
       href: assign-local-admin.md
     - name: Włączanie roamingu stanu dla przedsiębiorstw
       href: enterprise-state-roaming-enable.md
+    - name: Wdrażanie zarządzanych stacji roboczych platformy Azure
+      href: howto-azure-managed-workstation.md
     - name: Rozwiązywanie problemów z urządzeniami z bieżącym systemem Windows dołączonymi do hybrydowej usługi Azure AD
       href: troubleshoot-hybrid-join-windows-current.md
     - name: Rozwiązywanie problemów z urządzeniami ze starszym systemem Windows dołączonymi do hybrydowej usługi Azure AD

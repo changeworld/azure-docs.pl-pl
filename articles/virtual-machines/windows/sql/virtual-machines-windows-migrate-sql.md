@@ -16,18 +16,22 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 95acda60935e82b226a1a0e860b5fa8effb8e47e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e5a7bfc243fc8c797ffc66b2130756567ddc0fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325702"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795774"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrowanie bazy danych programu SQL Server do programu SQL Server na maszynie wirtualnej platformy Azure
 
 Istnieje kilka metod migracji lokalnej bazy danych użytkownika programu SQL Server do programu SQL Server na Maszynie wirtualnej platformy Azure. Ten artykuł będzie krótko omówiono różne metody i zaleca się najlepszej metody dla różnych scenariuszy.
 
+
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+
+  > [!NOTE]
+  > Program SQL Server 2008 i SQL Server 2008 R2 zbliża się [końca ich Cykl wsparcia technicznego](https://www.microsoft.com/sql-server/sql-server-2008) dla wystąpień w środowisku lokalnym. Rozszerzenie obsługi, możesz migrować wystąpienia programu SQL Server na Maszynie wirtualnej platformy Azure lub kupić rozszerzone aktualizacje zabezpieczeń, aby utrzymać ją w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz [rozszerzona obsługa programu SQL Server 2008 i 2008 R2 z platformą Azure](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
 
 ## <a name="what-are-the-primary-migration-methods"></a>Jakie są metody migracji głównej?
 Dostępne są następujące metody migracji głównej:
@@ -96,7 +100,7 @@ Ta metoda umożliwia migrację wszystkich systemowych i użytkownika bazy danych
 ## <a name="ship-hard-drive"></a>Dostarczaj dysku twardego
 Użyj [metody usługi Import/Export Windows](../../../storage/common/storage-import-export-service.md) przesyłanie dużych ilości danych plików do usługi Azure Blob storage w sytuacjach, w którym przekazywanie za pośrednictwem sieci jest zbyt duży lub nie jest to możliwe. Z tą usługą są wysyłane co najmniej jeden dyski twarde zawierające dane do centrum danych platformy Azure, w którym dane zostaną przekazane do konta magazynu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](virtual-machines-windows-sql-server-iaas-overview.md).
 
 > [!TIP]

@@ -17,7 +17,7 @@ ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752697"
+ms.locfileid: "65792056"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Przewodniki Szybki start: Nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań
 

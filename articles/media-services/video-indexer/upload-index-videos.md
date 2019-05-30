@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 89903d3f65c74da6903e53284f168d2d6a12168a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719664"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799213"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -61,15 +62,15 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
     
         |Name (Nazwa)|Opis|
         |---|---|
-        |id|Identyfikator wideo|
-        |state|Stan wideo|  
+        |identyfikator|Identyfikator wideo|
+        |stan|Stan wideo|  
     - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osoba rozpoznana na filmie wideo:
   - Właściwości
     
       |Name (Nazwa)|Opis|
       |---|---|
-      |id| Identyfikator wideo|
+      |identyfikator| Identyfikator wideo|
       |faceId|Identyfikator Face ID w indeksie wideo|
       |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
       |personName|Imię i nazwisko osoby|
@@ -91,7 +92,7 @@ Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne z
 
 Cena zależy od wybranej opcji indeksowania.  
 
-### <a name="priority"></a>priority
+### <a name="priority"></a>priorytet
 
 Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Następujące wartości są prawidłowe: **Niska**, **normalny** (ustawienie domyślne) i **wysokiej**.
 

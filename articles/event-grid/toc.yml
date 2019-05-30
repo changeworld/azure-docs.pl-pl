@@ -101,6 +101,8 @@
       href: event-sources.md
     - name: Procedury obsługi zdarzeń
       href: event-handlers.md
+    - name: Geograficzne odzyskiwanie po awarii
+      href: geo-disaster-recovery.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Publikowanie w temacie niestandardowym

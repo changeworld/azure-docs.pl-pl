@@ -3,19 +3,19 @@ title: Obsługa języków — interfejs API wyszukiwania wiadomości Bing
 titleSuffix: Azure Cognitive Services
 description: Lista języków naturalnych, krajów i regionów, które są obsługiwane przez interfejs API wyszukiwania wiadomości Bing.
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: aahi
+ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201418"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799329"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wiadomości Bing
 
@@ -37,25 +37,25 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Austria|Niemiecki|de-AT|
 |Szwajcaria|Niemiecki|de-CH|
 |Niemcy|Niemiecki|de-DE.|
-|Australia|Polski|EN-AU|
-|Kanada|Polski|EN-CA|
-|Zjednoczone Królestwo|Polski|en-GB|
-|Indonezja|Polski|EN-ID|
-|Irlandia|Polski|EN-IE|
-|Indie|Polski|EN-IN|
-|Malezja|Polski|Moje en|
-|Nowa Zelandia|Polski|EN NZ|
-|Republika Filipin|Polski|en-PH|
-|Singapur|Polski|en-SG|
-|Stany Zjednoczone|Polski|en-US|
-|Polski|Ogólne|EN-WW|
-|Polski|Ogólne|en-XA|
-|Republika Południowej Afryki|Polski|en-ZA|
+|Australia|Angielski|EN-AU|
+|Kanada|Angielski|EN-CA|
+|Zjednoczone Królestwo|Angielski|en-GB|
+|Indonezja|Angielski|EN-ID|
+|Irlandia|Angielski|EN-IE|
+|Indie|Angielski|EN-IN|
+|Malezja|Angielski|Moje en|
+|Nowa Zelandia|Angielski|EN NZ|
+|Republika Filipin|Angielski|en-PH|
+|Singapur|Angielski|en-SG|
+|Stany Zjednoczone Ameryki|Angielski|en-US|
+|Angielski|Ogólne|EN-WW|
+|Angielski|Ogólne|en-XA|
+|RPA|Angielski|en-ZA|
 |Argentyna|Hiszpański|ES AR|
 |Chile|Hiszpański|ES-CL|
 |Hiszpania|Hiszpański|es-ES|
 |Meksyk|Hiszpański|es-MX|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Stany Zjednoczone Ameryki|Hiszpański|es-US|
 |Hiszpański|Ogólne|es-XL|
 |Finlandia|Fiński|fi-FI|  
 |Francja|Francuski|fr-BE|
@@ -67,7 +67,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |SRA Hongkong|Chiński (tradycyjny)|zh-HK|  
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Japonia|Japoński|ja-JP|  
-|Korea|Koreański|ko-KR|  
+|Korea Południowa|Koreański|ko-KR|  
 |Holandia|Holenderski|NL-NL|  
 |Chińska Republika Ludowa|Chiński|zh-CN|  
 |Brazylia|Portugalski|pt-BR|
@@ -84,13 +84,13 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |---------------------|--------------|-----------------|
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Niemcy|Niemiecki|de-DE.|
-|Australia|Polski|EN-AU|
-|Zjednoczone Królestwo|Polski|en-GB|
-|Stany Zjednoczone|Polski|en-US|
-|Polski|Ogólne|EN-WW|
+|Australia|Angielski|EN-AU|
+|Zjednoczone Królestwo|Angielski|en-GB|
+|Stany Zjednoczone Ameryki|Angielski|en-US|
+|Angielski|Ogólne|EN-WW|
 |Chile|Hiszpański|ES-CL|
 |Meksyk|Hiszpański|es-MX|
-|Stany Zjednoczone|Hiszpański|es-US|
+|Stany Zjednoczone Ameryki|Hiszpański|es-US|
 |Finlandia|Fiński|fi-FI|  
 |Kanada|Francuski|fr-CA|
 |Francja|Francuski|fr-FR|  
@@ -106,11 +106,11 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Kraj/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------|
 |Niemcy|Niemiecki|de-DE.|
-|Australia|Polski|EN-AU|
-|Zjednoczone Królestwo|Polski|en-GB|
-|Stany Zjednoczone|Polski|en-US|
-|Kanada|Polski|EN-CA|
-|Indie|Polski|EN-IN|
+|Australia|Angielski|EN-AU|
+|Zjednoczone Królestwo|Angielski|en-GB|
+|Stany Zjednoczone Ameryki|Angielski|en-US|
+|Kanada|Angielski|EN-CA|
+|Indie|Angielski|EN-IN|
 |Francja|Francuski|fr-FR|
 |Kanada|Francuski|fr-CA|
 |Brazylia|Portugalski|pt-BR|
@@ -129,7 +129,7 @@ Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w 
 |Austria|AT|  
 |Belgia|BE|  
 |Brazylia|BR|  
-|Kanada|CA|  
+|Kanada|Urząd certyfikacji|  
 |Chile|CL|  
 |Dania|DK|  
 |Finlandia|FI|  
@@ -138,28 +138,28 @@ Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w 
 |SRA Hongkong|HK|  
 |Indie|IN|  
 |Indonezja|ID|  
-|Włochy|IT|  
+|Włochy|it|  
 |Japonia|JP|  
-|Korea|KR|  
+|Korea Południowa|KR|  
 |Malezja|MY|  
 |Meksyk|MX|  
 |Holandia|NL|  
 |Nowa Zelandia|NZ|  
-|Norwegia|NO|  
+|Norwegia|NIE|  
 |Chińska Republika Ludowa|CN|  
 |Polska|PL|  
 |Portugalia|PT|  
 |Republika Filipin|PH|  
 |Rosja|RU|  
 |Arabia Saudyjska|SA|  
-|Republika Południowej Afryki|ZA|  
+|RPA|ZA|  
 |Hiszpania|ES|  
 |Szwecja|SE|  
 |Szwajcaria|CH|  
 |Tajwan|TW|  
 |Turcja|TR|  
 |Zjednoczone Królestwo|GB|  
-|Stany Zjednoczone|USA|
+|Stany Zjednoczone Ameryki|USA|
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).

@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d3e777b5611dec382dc4eaaac5ec1594abcdab31
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106974"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787688"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Wywoływanie funkcji z usługi Microsoft Flow
 
@@ -35,6 +35,8 @@ W tym temacie dowiesz się, jak:
 > * Dodaj połączenie z interfejsem API.
 > * Utwórz przepływ do wysyłania wiadomości e-mail, jeśli naprawy jest ekonomiczne.
 > * Uruchamianie przepływu.
+
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -156,7 +158,7 @@ Teraz Dodaj łącznik niestandardowy, który wywołuje funkcję platformy Azure.
 
 1. W **tak** gałęzi, kliknij przycisk **Dodaj akcję**.
 
-    ![Dodawanie akcji](media/functions-flow-scenario/condition1-yes-add-action.png)
+    ![Dodaj akcję](media/functions-flow-scenario/condition1-yes-add-action.png)
 
 2. W **wybierz akcję** okno dialogowe, wyszukaj `Turbine Repair`, następnie wybierz akcję **naprawy turbiny — oblicza koszty**.
 
@@ -196,7 +198,7 @@ W tym momencie w usłudze flow, wartość zwrócona przez funkcję ma **komunika
 
 1. W **tak** gałęzi drugi warunek, kliknij przycisk **Dodaj akcję**.
 
-    ![Dodawanie akcji](media/functions-flow-scenario/condition2-yes-add-action.png)
+    ![Dodaj akcję](media/functions-flow-scenario/condition2-yes-add-action.png)
 
 2. W **wybierz akcję** okno dialogowe, wyszukaj `email`, następnie Wybieranie akcji Wyślij wiadomość e-mail, oparty na systemie poczty e-mail, użyj (w tym przypadku Outlook).
 
@@ -229,7 +231,7 @@ Teraz, gdy przepływ zostanie zakończona, możesz dodać wiersz do listy progra
     | **Tytuł**           | Turbiny 60 |
     | **LastServiceDate** | 08/04/2017 |
     | **MaxOutput**       | 2500 |
-    | **ServiceRequired** | Yes |
+    | **ServiceRequired** | Tak |
     | **EstimatedEffort** | 10 |
 
 3. Kliknij przycisk **Gotowe**.
@@ -244,7 +246,7 @@ Teraz, gdy przepływ zostanie zakończona, możesz dodać wiersz do listy progra
 
 5. W obszarze **HISTORII URUCHAMIANIA**, kliknij przycisk przebiegu przepływu.
 
-    ![Historia uruchamiania](media/functions-flow-scenario/run-history.png)
+    ![Hist. przeb.](media/functions-flow-scenario/run-history.png)
 
     Jeśli uruchomienie zakończyło się pomyślnie, można przejrzeć przepływ operacji na następnej stronie. Jeśli działanie nie powiodło się dla jakiegokolwiek powodu, następnej strony zawiera informacje dotyczące rozwiązywania problemów.
 

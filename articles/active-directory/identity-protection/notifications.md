@@ -18,12 +18,12 @@ ms.date: 12/07/2017
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 482b69752cc889ff99c3d9082d3bc20a7caa6d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294537"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784337"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Powiadomienia usługi Azure Active Directory Identity Protection
 
@@ -39,6 +39,8 @@ Ten artykuł zawiera omówienie zarówno wiadomości e-mail z powiadomieniem.
 
 W odpowiedzi na wykryte konta na ryzyko, Azure AD Identity Protection generuje alerty w wiadomościach e-mail z **wykryto narażonych użytkowników** jako podmiotu. Wiadomość e-mail zawiera link do **[użytkownicy oflagowani w związku z ryzykiem](../reports-monitoring/concept-user-at-risk.md)** raportu. Najlepszym rozwiązaniem należy natychmiast Zbadaj narażeni użytkownicy.
 
+Konfiguracja dla tego alertu można określić, na jakim poziomie ryzyka użytkownika wygenerowanie alertu. Wiadomość e-mail zostanie wygenerowany, gdy osiągnie poziom ryzyka użytkownika, co określono; jednak nie otrzymasz nowych użytkowników wykryto ryzyko alertów e-mail dla tego użytkownika po przeniesieniu ich do tego poziomu ryzyka użytkownika. Na przykład jeśli ustawiono zasady w celu otrzymywania alertów dotyczących ryzyka związanego z użytkownikiem w średnich i John przenosi średniego ryzyka użytkowników, zostaną odebrane użytkowników wiadomości e-mail o podwyższonym ryzyku wykrywane Jan. Jednak nie otrzymasz drugi użytkowników wykryto ryzyko alert Jeśli Jan następnie przejdzie do wysokiego ryzyka lub ma zdarzenia o podwyższonym ryzyku w dodatkowych.
+
 ![Narażeni użytkownicy wykryto wiadomości e-mail](./media/notifications/01.png)
 
 
@@ -46,7 +48,7 @@ W odpowiedzi na wykryte konta na ryzyko, Azure AD Identity Protection generuje a
 
 Jako administrator możesz ustawić:
 
-- **Poziom ryzyka, wyzwalającego Generowanie tę wiadomość e-mail** — Domyślnie poziom ryzyka jest równa "Wysoka" ryzyka.
+- **Poziom ryzyka użytkownika wyzwalającego Generowanie tę wiadomość e-mail** — Domyślnie poziom ryzyka jest równa "Wysoka" ryzyka.
 - **Adresaci wiadomości e-mail** — domyślnie adresatów zawierają wszystkich administratorów globalnych. Administratorzy globalni można również dodać inne Administratorzy globalni, Administratorzy zabezpieczeń, czytelnicy zabezpieczeń jako adresatów.  
 
 

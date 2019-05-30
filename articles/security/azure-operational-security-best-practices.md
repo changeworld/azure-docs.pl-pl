@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4a4677b5db730001df75d201d8e6d3149cb928e6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0418d325f3b3719549181a48fc0432a677f695d5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409841"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795905"
 ---
 # <a name="azure-operational-security-best-practices"></a>Najlepsze rozwiązania kwestii bezpieczeństwa platformy Azure
 Ten artykuł zawiera zestaw najlepsze rozwiązanie w zakresie ochrony danych, aplikacji i innych zasobów na platformie Azure.
@@ -153,7 +153,7 @@ Możesz użyć [usługi Azure Resource Manager](https://azure.microsoft.com/docu
 **Szczegóły**: [Potoki usługi Azure](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) to rozwiązanie do automatyzacji wielu etap wdrażania i zarządzania nimi procesu tworzenia wersji. Twórz potoki zarządzanego ciągłe wdrażanie do wydania szybko, łatwo i często. W przypadku potoków usługi Azure można zautomatyzować proces tworzenia wydań i można wstępnie zdefiniowanych przepływów pracy zatwierdzania. Wdrażanie lokalnej do chmury, należy rozszerzyć i dostosować zgodnie z potrzebami.
 
 **Najlepsze rozwiązanie**: Sprawdź wydajność Twojej aplikacji przed jej uruchamiania lub wdrażania aktualizacji w środowisku produkcyjnym.  
-**Szczegóły**: Uruchom oparte na chmurze [testy obciążeniowe](https://docs.microsoft.com/azure/devops/test/load-test/overview.md?view=azure-devops#alternatives) do:
+**Szczegóły**: Uruchom oparte na chmurze [testy obciążeniowe](/azure/devops/test/load-test/overview#alternatives) do:
 
 - Znajdowanie problemów z wydajnością w aplikacji.
 - Poprawić jakość wdrożenia.

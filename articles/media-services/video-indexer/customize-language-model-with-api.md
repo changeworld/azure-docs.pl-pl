@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: ca1e66d20b19c1a5b85a4f4ff1c433331116bee7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553746"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799591"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Dostosuj model języka, korzystając z interfejsów API indeksatora wideo
 
@@ -53,11 +54,11 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Yes|Unikatowy identyfikator globalny dla konta|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-|modelName|string|Yes|Nazwa modelu językowego|
-|language|string|Yes|Język modelu językowego. <br/>**Języka** parametru musi być podany język w formacie BCP 47 "region tagu języka" (np.: "en US"). Obsługiwane języki są angielski (en US), niemiecki (de-DE), hiszpański (es-SP), arabski (ar — na przykład), francuski (fr-FR), Hindi (cześć HI), włoski (it-IT), japoński (ja-JP), portugalski (pt-BR), rosyjski (ru-RU) i chiński (zh-CN).  |
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|modelName|string|Tak|Nazwa modelu językowego|
+|język|string|Tak|Język modelu językowego. <br/>**Języka** parametru musi być podany język w formacie BCP 47 "region tagu języka" (np.: "en US"). Obsługiwane języki są angielski (en US), niemiecki (de-DE), hiszpański (es-SP), arabski (ar — na przykład), francuski (fr-FR), Hindi (cześć HI), włoski (it-IT), japoński (ja-JP), portugalski (pt-BR), rosyjski (ru-RU) i chiński (zh-CN).  |
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -124,10 +125,10 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -189,10 +190,10 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -231,10 +232,10 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 |modelName|string|Nie|Nowa nazwa, które można przekazać do modelu|
 |włącz|wartość logiczna|Nie|Wybierz, czy wszystkie pliki w tym modelu są włączone (PRAWDA) lub wyłączony (false)|
 
@@ -300,11 +301,11 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
+|fileId|string|Tak|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 |fileName|string|Nie|Nazwę można zaktualizować nazwy pliku|
 |włącz|wartość logiczna|Nie|Zaktualizować, czy ten plik jest włączony (PRAWDA) lub wyłączony (FAŁSZ) w modelu językowego|
 
@@ -350,10 +351,10 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -415,9 +416,9 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -486,11 +487,11 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
+|fileId|string|Tak|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -523,11 +524,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
+|fileId|string|Tak|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -572,11 +573,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountID|string|Yes|Unikatowy identyfikator globalny dla konta|
-|modelId|string|Yes|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
-|fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
-|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|lokalizacja|string|Tak|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountID|string|Tak|Unikatowy identyfikator globalny dla konta|
+|modelId|string|Tak|Identyfikator modelu języka, który znajduje się plik (generowany podczas tworzenia modelu językowego)|
+|fileId|string|Tak|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
+|accessToken|string|Tak|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania 
 

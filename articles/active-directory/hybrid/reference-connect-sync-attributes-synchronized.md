@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2dca71023cbed34ef3661ca980cf1eac4ca620c1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508109"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784296"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: Atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez program Azure AD Connect sync.  
@@ -256,7 +256,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (później znane jako usługi Skype dla firm)
+## <a name="teams-and-skype-for-business-online"></a>Zespoły i Skype dla firm Online
 | Nazwa atrybutu | Użytkownik | Kontakt | Grupa | Komentarz |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Określa, czy konto jest włączone. |

@@ -9,7 +9,7 @@
   items:
     - name: Tworzenie klastra i bazy danych
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: create-cluster-database-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: create-cluster-database-cli.md
@@ -41,14 +41,6 @@
           href: web-query-data.md
         - name: Python
           href: python-query-data.md
-    - name: Wizualizowanie danych
-      items:
-        - name: Power BI — łącznik
-          href: power-bi-connector.md
-        - name: Power BI — zaimportowane zapytanie
-          href: power-bi-imported-query.md
-        - name: Power BI — zapytanie SQL
-          href: power-bi-sql-query.md
 - name: Samouczki
   items:
     - name: Pozyskiwanie danych bez używania kodu
@@ -80,6 +72,20 @@
           href: anomaly-detection.md
         - name: Uczenie maszynowe
           href: machine-learning-clustering.md
+    - name: Wizualizowanie danych
+      items:
+        - name: Power BI
+          items:
+            - name: łącznik
+              href: power-bi-connector.md
+            - name: zaimportowane zapytanie
+              href: power-bi-imported-query.md
+            - name: Zapytanie SQL
+              href: power-bi-sql-query.md
+        - name: Sisense
+          href: sisense.md
+        - name: Grafana
+          href: grafana.md
     - name: Zarządzanie
       items:
         - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
@@ -108,8 +114,6 @@
           href: kqlmagic.md
         - name: Kopiowanie danych za pomocą usługi Azure Data Factory
           href: data-factory-load-data.md
-        - name: Wizualizacja danych na platformie Grafana
-          href: grafana.md
         - name: Łączenie z bazą danych ODBC
           href: connect-odbc.md
     - name: Rozwiązywanie problemów

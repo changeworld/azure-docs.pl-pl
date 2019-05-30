@@ -1,7 +1,7 @@
 ---
-title: 'Regresja: Przewidzieć cenę'
+title: 'Regresja: Przewidywanie ceny'
 titleSuffix: Azure Machine Learning service
-description: Ten interfejs graficzny przykładowy eksperyment pokazuje, jak do zbudowania modelu regresji do prognozowania cen samochodów. Proces obejmuje szkolenia, testowania i oceniania modelu w zestawie danych data (Raw) cen samochodów.
+description: Dowiedz się, jak tworzyć usługi machine learning modelu do prognozowania cen samochodów bez konieczności pisania nawet jednego wiersza kodu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,30 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: fa9b9179cda767d69d08dcd357a03123bde901cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028893"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787858"
 ---
-# <a name="sample-1---regression-predict-price"></a>Przykład 1 - regresji. Przewidzieć cenę
+# <a name="sample-1---regression-predict-price"></a>Przykład 1 - regresji. Przewidywanie ceny
 
-Ten interfejs graficzny przykładowy eksperyment pokazuje, jak do zbudowania modelu regresji do prognozowania cen samochodów. Proces obejmuje szkolenia, testowania i oceniania modelu przy użyciu **danych dotyczących cen samochodów (Raw)** zestawu danych.
+Dowiedz się, jak tworzyć usługi machine learning model regresji, bez napisania choćby jednego wiersza kodu za pomocą interfejsu wizualnego.
+
+To eksperymentować pociągów **decyzji regresor lasu** do prognozowania samochodu jego ceny na podstawie funkcji technicznych, takich jak marka, model, moc i rozmiar. Ponieważ chcemy znaleźć odpowiedź na pytanie "Ile?" jest to problem regresji. Jednakże można zastosować te same czynności podstawowe, w tym eksperymencie rozwiązania dowolnego typu maszyny nauczanym problemem, czy jest to regresji, klasyfikacji, klastrowania i tak dalej.
+
+Podstawowe kroki model uczenia maszynowego szkoleń są:
+
+1. Pobieranie danych
+1. Wstępne przetwarzanie danych
+1. Uczenie modelu
+1. Ocenianie modelu
+
+Oto ostateczną, zakończone wykres eksperymentu, który będziemy nad tym pracować. Firma Microsoft udostępni racjonalne uzasadnienie dla wszystkich modułów dzięki czemu można zmieniać podobne decyzje na własną rękę.
+
+![Wykres eksperymentu](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,23 +41,6 @@ Ten interfejs graficzny przykładowy eksperyment pokazuje, jak do zbudowania mod
 4. Wybierz **Otwórz** przycisku w eksperymencie przykład 1:
 
     ![Otwórz eksperyment](media/ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
-
-## <a name="related-sample"></a>Powiązane próbki
-
-[Przykład 2 - regresji. Prognozowanie cen samochodów (porównaj algorytmy)](ui-sample-regression-predict-automobile-price-compare-algorithms.md) zapewnia bardziej skomplikowanych przykładowego eksperymentu, która rozwiązuje ten sam problem co tego eksperymentu przy użyciu dwóch różnych regresji modeli. Widoczny jest sposób szybkie porównywanie różnych algorytmów. Sprawdź wprowadzone zmiany, jeśli potrzebujesz bardziej zaawansowany przykład.
-
-## <a name="experiment-summary"></a>Podsumowanie eksperymentu
-
-Do tworzenia eksperymentu, firma Microsoft wykonaj następujące kroki:
-
-1. Pobierz dane.
-1. Wstępne przetwarzanie danych.
-1. Uczenie modelu.
-1. Testowanie, oceny i Porównaj modele.
-
-Oto kompletny wykres eksperymentu:
-
-![Wykres eksperymentu](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="get-the-data"></a>Pobieranie danych
 
@@ -59,6 +55,7 @@ Używamy **Select Columns in Dataset** modułu, aby wykluczyć kolumny znormaliz
 ![Przetwarzanie wstępne danych](./media/ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>Uczenie modelu
+
 Machine learning problemy różnią się. Typowe zadania uczenia maszynowego obejmują klasyfikacji i klastrowania, regresji i polecania systemów, z których każdy może wymagać innego algorytmu. Wybór algorytmu często zależy od wymagań przypadków użycia. Po pobraniu algorytmu, należy dostosować jego parametry to w opracowywaniu dokładniejszych modeli. Następnie należy ocenić wszystkie modele, w oparciu o metryki, takie jak wydajność, dokładność i zrozumiałość informacji.
 
 Ponieważ celem tego eksperymentu jest do prognozowania cen samochodów, a kolumna etykiety (cena) zawiera liczb rzeczywistych, model regresji jest dobrym wyborem. Biorąc pod uwagę, że wiele funkcji jest stosunkowo mały (mniej niż 100), a te funkcje nie są rozrzedzony, granic decyzji prawdopodobnie będzie nieliniowych. Dlatego używamy **regresji lasu decyzji** w tym eksperymencie.

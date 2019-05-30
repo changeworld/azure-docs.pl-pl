@@ -223,6 +223,14 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Korzystanie z programu Azure PowerShell
               href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Modyfikowanie zestawu skalowania
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Sieć dla zestawów skalowania
+          href: virtual-machine-scale-sets-networking.md
+        - name: Automatyczne uaktualnienia systemu operacyjnego
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Ochrona wystąpień (wersja zapoznawcza)
+          href: virtual-machine-scale-sets-instance-protection.md
         - name: Udostępnione galerie obrazów
           items:
             - name: Omówienie
@@ -237,14 +245,8 @@
               href: troubleshooting-shared-images.md
         - name: Skalowanie w pionie w zestawie skalowania
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-        - name: Automatyczne uaktualnienia systemu operacyjnego
-          href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Modyfikowanie zestawu skalowania
-          href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Korzystanie z konfiguracji DSC i zestawów skalowania
           href: virtual-machine-scale-sets-dsc.md
-        - name: Sieć dla zestawów skalowania
-          href: virtual-machine-scale-sets-networking.md
         - name: Konwertowanie szablonu na dyski zarządzane
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: Planowana konserwacja

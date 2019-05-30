@@ -14,17 +14,19 @@
       href: virtual-wan-point-to-site-portal.md
 - name: Pojęcia
   items:
-    - name: Lokalizacje i partnerzy
+    - name: Informacje o lokalizacjach i partnerach
       href: virtual-wan-locations-partners.md
-    - name: Architektura globalnej sieci tranzytowej
+    - name: Informacje o architekturze globalnej sieci tranzytowej
       href: virtual-wan-global-transit-network-architecture.md
-    - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
+    - name: Informacje o płaszczyźnie kontroli usługi Office 365 w wirtualnej sieci WAN
       href: virtual-wan-office365-overview.md
+    - name: Informacje o zasadach protokołu IPsec
+      href: virtual-wan-ipsec.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: virtual-wan-route-table-portal.md
         - name: Azure PowerShell
           href: virtual-wan-route-table.md

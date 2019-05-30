@@ -78,6 +78,9 @@
         - name: Przewidywanie zmian
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Zestawy danych licencji Azure Open
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: Pojęcia
   items:
     - name: Obszar roboczy
@@ -130,6 +133,9 @@
         - name: Włącz rejestrowanie
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: Ustawianie katalogów wejściowych i wyjściowych
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: Używanie rozszerzenia programu VS Code
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md

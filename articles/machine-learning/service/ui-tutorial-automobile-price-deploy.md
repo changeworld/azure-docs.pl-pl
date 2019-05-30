@@ -14,7 +14,7 @@ ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65749217"
+ms.locfileid: "65787837"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu za pomocą interfejsu wizualnego uczenia maszynowego
 
@@ -95,7 +95,7 @@ Dane wejściowe użytkownika wprowadza wdrożonym modelu za pomocą **sieci Web 
 
 Usługi sieci web można sprawdzić na karcie usług sieci web w interfejs graficzny.
 
-1. Przejdź do sekcji usługi sieci web. Zostaną wyświetlone wdrożone z nazwą usługi sieci web **— samouczek — prognozowania cen samochodów [Exp predykcyjne]**.
+1. Przejdź do sekcji usługi sieci web. Zostaną wyświetlone wdrożone z nazwą usługi sieci web **— samouczek — prognozowania cen samochodów [Exp predykcyjne]** .
 
      ![Zrzut ekranu przedstawiający kartę usługi sieci web z usługą internetową ostatnio utworzone wyróżniony](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 

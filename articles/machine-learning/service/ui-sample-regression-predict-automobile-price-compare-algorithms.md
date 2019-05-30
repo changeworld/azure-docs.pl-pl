@@ -1,7 +1,7 @@
 ---
 title: 'Regresja: Przewidzieć cenę i porównaj algorytmów'
 titleSuffix: Azure Machine Learning service
-description: Ten interfejs graficzny przykładowy eksperyment pokazuje, jak porównywać dwa modele regresji, które przewidzieć cenę samochodów. Proces obejmuje szkolenia, testowania i oceniania modelu w zestawie danych data (Raw) cen samochodów.
+description: W tym artykule przedstawiono sposób tworzenia eksperymentu uczenia maszynowego złożonych bez napisania choćby jednego wiersza kodu za pomocą interfejsu wizualnego. Dowiedz się, jak do trenowania i porównywania wielu modele regresji, aby przewidzieć cenę samochodu na podstawie funkcji Technical Preview
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a4a9e74fa7f56b67f0f4a64f6619db1c5c69a2c
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: c8c813a2304797e71499a916e29c18f8bec2b389
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442132"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787793"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Przykład 2 - regresji. Przewidzieć cenę i porównaj algorytmów
 
-Ten interfejs graficzny przykładowy eksperyment pokazuje, jak porównywać dwa modele regresji, które przewidzieć cenę samochodów. Proces obejmuje szkolenia, testowania i oceniania modelu przy użyciu **danych dotyczących cen samochodów (Raw)** zestawu danych.
+Informacje o sposobie tworzenia eksperymentu uczenia maszynowego złożonych bez napisania choćby jednego wiersza kodu za pomocą interfejsu wizualnego. W tym przykładzie szkolenie modeli i porównuje wielu modele regresji, aby przewidzieć cenę samochodu na podstawie jego techniczne funkcji. Firma Microsoft udostępni uzasadnienie wyboru tych elementów wprowadzone w tym eksperymencie, dzięki czemu można czoła własne problemów uczenia maszynowego.
+
+Jeśli po prostu rozpoczniesz pracę z usługą machine learning, może zająć się [wersję podstawową](ui-sample-regression-predict-automobile-price-basic.md) tego doświadczenia, aby wyświetlić podstawowe regresji, eksperymentowanie.
+
+Oto wykres zakończone, w tym eksperymencie:
+
+[![Wykres eksperymentu](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,10 +35,6 @@ Ten interfejs graficzny przykładowy eksperyment pokazuje, jak porównywać dwa 
 
     ![Otwórz eksperyment](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="related-sample"></a>Powiązane próbki
-
-[Przykład 1 - regresji. Prognozowanie cen samochodów (Basic)](ui-sample-regression-predict-automobile-price-basic.md) zapewnia prostszy eksperymentu, która rozwiązuje ten sam problem co tego eksperymentu, ale używającym tylko jeden model regresji. Jeśli szukasz podstawowy przykład metodą regresji, odwołując się do niej.
-
 ## <a name="experiment-summary"></a>Podsumowanie eksperymentu
 
 Do tworzenia eksperymentu, firma Microsoft wykonaj następujące kroki:
@@ -41,11 +43,6 @@ Do tworzenia eksperymentu, firma Microsoft wykonaj następujące kroki:
 1. Wstępne przetwarzanie danych.
 1. Uczenie modelu.
 1. Testowanie, oceny i Porównaj modele.
-
-Oto kompletny wykres eksperymentu:
-
-[![Wykres eksperymentu](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
-
 
 ## <a name="get-the-data"></a>Pobieranie danych
 

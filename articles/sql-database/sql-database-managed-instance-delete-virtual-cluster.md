@@ -12,18 +12,18 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 95d1681c9ff9981990d873a58a2d01833d690e0f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411989"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791370"
 ---
 # <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>Usuwanie podsieci po usunięcie bazy danych SQL Azure wystąpienie zarządzane
 
 Ten artykuł zawiera wskazówki na temat sposobu ręcznie usunąć podsieci po usunięcie ostatniej usługi Azure SQL Database managed wystąpienia znajdujących się w nim.
 
-[Klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , obsługuje zawarte usunięto wystąpienie zarządzane, będą przechowywane przez 12 godzin przed usunięciem wystąpienia. Klaster wirtualny jest życiu zgodnie z projektem, aby umożliwić szybsze tworzenie wystąpień zarządzanych w tej samej podsieci. W tym okresie nie można usunąć podsieć skojarzona z klaster wirtualny.
+[Klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , obsługuje zawarte usunięto wystąpienie zarządzane, będą przechowywane przez 12 godzin przed usunięciem wystąpienia. Klaster wirtualny jest życiu zgodnie z projektem, aby umożliwić szybsze tworzenie wystąpień zarządzanych w tej samej podsieci. Utrzymywanie pusty klaster wirtualny jest bezpłatne. W tym okresie nie można usunąć podsieć skojarzona z klaster wirtualny.
 
 Natychmiastowe wersja podsieci używane przez klaster wirtualny puste jest możliwy za pośrednictwem ręczne usuwanie klaster wirtualny. Usunięcie klastra wirtualnego można osiągnąć za pomocą witryny Azure portal lub klastry wirtualne interfejsu API.
 

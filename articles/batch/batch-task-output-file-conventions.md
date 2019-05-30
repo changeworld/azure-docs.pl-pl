@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96f1cb60dbb7cf08224e8566852cf47fe5f0fa1c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d4e16ca40e8026861d492f950396d6aa39d4c445
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203555"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791557"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET
 
@@ -59,7 +59,7 @@ Można utrwalić danych wyjściowych do usługi Azure Storage za pomocą bibliot
 
 1. W witrynie Azure Portal przejdź do swojego konta usługi Batch.
 1. W obszarze **ustawienia**, wybierz opcję **konta magazynu**.
-1. Jeśli nie masz jeszcze konta magazynu skojarzonego z kontem usługi Batch, kliknij przycisk **konta usługi Storage (Brak)**.
+1. Jeśli nie masz jeszcze konta magazynu skojarzonego z kontem usługi Batch, kliknij przycisk **konta usługi Storage (Brak)** .
 1. Wybierz konto magazynu z listy dla Twojej subskrypcji. Aby uzyskać najlepszą wydajność należy użyć konta usługi Azure Storage, która znajduje się w tym samym regionie co konto usługi Batch, na którym są uruchomione zadania podrzędne.
 
 ## <a name="persist-output-data"></a>Utrwalanie danych wyjściowych
@@ -208,7 +208,7 @@ Aby wyświetlić pliki wyjściowe zadania i dzienniki w witrynie Azure portal, p
 
 [PersistOutputs] [ github_persistoutputs] przykładowy projekt jest jednym z [przykładów kodu usługi Azure Batch] [ github_samples] w witrynie GitHub. To rozwiązanie programu Visual Studio pokazuje, jak zachować dane wyjściowe zadania do trwałego magazynu za pomocą biblioteki Konwencji plików usługi Batch Azure. Do uruchomienia przykładu, wykonaj następujące kroki:
 
-1. Otwórz projekt w **programu Visual Studio 2017**.
+1. Otwórz projekt w **Visual Studio 2019**.
 2. Dodawanie usługi Batch i Storage **poświadczenia konta** do **AccountSettings.settings** w projekcie Microsoft.Azure.Batch.Samples.Common.
 3. **Tworzenie** (ale nie należy uruchamiać) to rozwiązanie. Jeśli zostanie wyświetlony monit, należy przywrócić wszystkie pakiety NuGet.
 4. Użyj witryny Azure portal, aby przekazać [pakiet aplikacji](batch-application-packages.md) dla **PersistOutputsTask**. Obejmują `PersistOutputsTask.exe` i ustaw jego zestawów zależnych w pakiecie .zip, identyfikator aplikacji, aby "PersistOutputsTask" i "1.0" wersja pakietu aplikacji.

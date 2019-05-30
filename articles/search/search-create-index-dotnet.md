@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 05/16/2019
 ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65758457"
+ms.locfileid: "65795814"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Szybki start: 1 — Tworzenie indeksu usługi Azure Search wC#
 > [!div class="op_single_selector"]

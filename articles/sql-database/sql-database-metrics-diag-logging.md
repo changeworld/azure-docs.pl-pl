@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548645"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791905"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -64,16 +64,16 @@ Można skonfiguruj baz danych Azure SQL i wystąpienie bazy danych, aby zebrać 
 
 | Monitorowanie telemetrii dla baz danych | Pojedynczą bazę danych i obsługi technicznej baza danych w puli | Wystąpienie obsługi bazy danych |
 | :------------------- | ----- | ----- |
-| [Wszystkie metryki](#all-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Yes | Nie |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Yes | Yes |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany) są takie procesora CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
-| [Błędy](#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Yes | Yes |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu bazy danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
-| [Limity czasu](#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Yes | Nie |
-| [Bloki](#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
-| [Zakleszczenie](#deadlocks-dataset): Zawiera informacje o zdarzeniach zakleszczenie w bazie danych. | Yes | Nie |
-| [AutomaticTuning](#automatic-tuning-dataset): Zawiera informacje dotyczące automatycznego zalecenia dotyczące dostrajania bazy danych. | Yes | Nie |
-| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
+| [Podstawowe metryki](#basic-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Tak | Nie |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Tak | Tak |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany) są takie procesora CPU, DZIENNIKÓW i blokowanie. | Tak | Tak |
+| [Błędy](#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Tak | Tak |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu bazy danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Tak | Nie |
+| [Limity czasu](#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Tak | Nie |
+| [Bloki](#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Tak | Nie |
+| [Zakleszczenie](#deadlocks-dataset): Zawiera informacje o zdarzeniach zakleszczenie w bazie danych. | Tak | Nie |
+| [AutomaticTuning](#automatic-tuning-dataset): Zawiera informacje dotyczące automatycznego zalecenia dotyczące dostrajania bazy danych. | Tak | Nie |
+| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Tak | Tak |
 
 > [!IMPORTANT]
 > Pule elastyczne i zarządzanych wystąpień przez mają swoje własne dane oddzielne diagnostyczne i telemetryczne z baz danych, które zawierają. Jest to należy zwrócić uwagę jako dane diagnostyczne i telemetryczne skonfigurowano oddzielnie dla każdej z tych zasobów, zgodnie z opisem poniżej.
@@ -91,9 +91,9 @@ Możesz użyć **ustawień diagnostycznych** menu dla każdego pojedynczego puli
 
 Można wybrać zasób puli elastycznej zebrać następujące dane telemetryczne diagnostyki:
 
-| Zasób | Monitorowanie danych telemetrycznych |
+| Resource | Monitorowanie danych telemetrycznych |
 | :------------------- | ------------------- |
-| **Elastyczna pula** | [Wszystkie metryki](sql-database-metrics-diag-logging.md#all-metrics) zawiera procent eDTU/użycia procesora CPU, limit jednostek eDTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, procent sesji, procent pracowników, magazynu, procent użycia magazynu, limit przestrzeni dyskowej i procent użycia magazynu XTP. |
+| **Elastyczna pula** | [Podstawowe metryki](sql-database-metrics-diag-logging.md#basic-metrics) zawiera procent eDTU/użycia procesora CPU, limit jednostek eDTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, procent sesji, procent pracowników, magazynu, procent użycia magazynu, limit przestrzeni dyskowej i procent użycia magazynu XTP. |
 
 Aby skonfigurować, przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla pul elastycznych i baz danych w elastycznej puli, musisz oddzielnie skonfigurować **zarówno** z następujących czynności:
 
@@ -113,7 +113,7 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne w pr
 1. Wprowadź nazwę ustawienia do własnych celów.
 1. Wybierz zasób docelowy dla przesyłania strumieniowego danych diagnostycznych: **Archiwum do konta magazynu**, **Stream do usługi event hub**, lub **wysyłanie do usługi Log Analytics**.
 1. Dla usługi log analytics wybierz **Konfiguruj** i Utwórz nowy obszar roboczy, wybierając **+ Utwórz nowy obszar roboczy**, lub wybierz istniejący obszar roboczy.
-1. Zaznacz pole wyboru dla puli elastycznej dane diagnostyczne i telemetryczne: **AllMetrics**.
+1. Zaznacz pole wyboru dla puli elastycznej dane diagnostyczne i telemetryczne: **Podstawowe** metryki.
    ![Skonfigurować diagnostykę dla pul elastycznych](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. Wybierz pozycję **Zapisz**.
 1. Ponadto skonfigurować, przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla każdej bazy danych w puli elastycznej, którą chcesz monitorować, wykonując kroki opisane w następnej sekcji.
@@ -137,7 +137,7 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla 
 1. Wprowadź nazwę ustawienia do własnych celów.
 1. Wybierz zasób docelowy dla przesyłania strumieniowego danych diagnostycznych: **Archiwum do konta magazynu**, **Stream do usługi event hub**, lub **wysyłanie do usługi Log Analytics**.
 1. Standardowe, oparte na zdarzeniach środowisko monitorowania wybierz następujące pola wyboru dla bazy danych diagnostycznych dzienników telemetrii: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **błędy** , **DatabaseWaitStatistics**, **przekroczeń limitu czasu**, **bloki**, i **zakleszczenia**.
-1. Dla zaawansowanych, jedną minutę na podstawie środowiska monitorowania, zaznacz pole wyboru dla **AllMetrics**.
+1. Dla zaawansowanych, jedną minutę na podstawie środowiska monitorowania, zaznacz pole wyboru dla **podstawowe** metryki.
    ![Skonfigurować diagnostykę dla pojedynczej puli i wystąpienia bazy danych](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. Wybierz pozycję **Zapisz**.
 1. Powtórz te czynności dla każdej bazy danych, które chcesz monitorować.
@@ -153,7 +153,7 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla 
 
 Można skonfigurować wystąpienia zarządzanego zasobu zebrać następujące dane telemetryczne diagnostyki:
 
-| Zasób | Monitorowanie danych telemetrycznych |
+| Resource | Monitorowanie danych telemetrycznych |
 | :------------------- | ------------------- |
 | **Wystąpienie zarządzane** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
 
@@ -385,7 +385,7 @@ Lub po prostu:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Na przykład może być nazwa obiektu blob dla wszystkich metryk:
+Na przykład może być nazwa obiektu blob, aby uzyskać podstawowe metryki:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -411,23 +411,26 @@ Jeśli używasz usługi Azure SQL Analytics, możesz monitorować swoje użycie 
 
 Monitorowanie telemetrii dostępne dla usługi Azure SQL Database, pul elastycznych i wystąpienia zarządzanego jest opisane poniżej. Zebrane dane telemetryczne z monitorowania wewnątrz SQL Analytics może służyć do własnych niestandardowych analizy i programowanie aplikacji za pomocą [zapytań dzienników usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) języka.
 
-## <a name="all-metrics"></a>Wszystkie metryki
+## <a name="basic-metrics"></a>Metryki podstawowe
 
-Zapoznaj się z następującymi tabelami, aby uzyskać szczegółowe informacje o wszystkich metryk przez zasób.
+Zapoznaj się z następującymi tabelami, aby uzyskać szczegółowe informacje o podstawowe metryki przez zasób.
 
-### <a name="all-metrics-for-elastic-pools"></a>Wszystkie metryki dla pul elastycznych
+> [!NOTE]
+> Opcja podstawowe metryki była wcześniej znana jako wszystkie metryki. Zmiany dokonane było tylko nazwy i nie było monitorowane metryki bez żadnych zmian. Ta zmiana zainicjowano umożliwiające wprowadzenie dodatkowych kategorii metryki w przyszłości.
+
+### <a name="basic-metrics-for-elastic-pools"></a>Podstawowe metryki dla pul elastycznych
 
 |**Zasób**|**Metryki**|
 |---|---|
 |Pula elastyczna|Procent eDTU używane liczby jednostek eDTU, limitu liczby jednostek eDTU, procent użycia procesora CPU i procent odczytu danych fizycznych, dziennik zapisu procent, procent sesji, procent pracowników, Magazyn, procent użycia magazynu, limit przestrzeni dyskowej, procent użycia magazynu XTP |
 
-### <a name="all-metrics-for-azure-sql-databases"></a>Wszystkie metryki dla baz danych SQL Azure
+### <a name="basic-metrics-for-azure-sql-databases"></a>Podstawowe metryki dla baz danych SQL Azure
 
 |**Zasób**|**Metryki**|
 |---|---|
 |Baza danych Azure SQL Database|Procentowa wartość jednostki DTU, używane jednostki DTU, limit jednostek DTU, procent użycia procesora CPU i procent odczytu danych fizycznych, dziennik zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu, XTP procent użycia magazynu, a zakleszczenia |
 
-## <a name="all-logs"></a>Wszystkie dzienniki
+## <a name="basic-logs"></a>Dzienniki podstawowe
 
 W poniższych tabelach opisano szczegóły telemetria dostępna dla wszystkich dzienników. Zobacz [obsługiwane rejestrowanie diagnostyczne](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) do puli, zrozumienie, dzienników, które są obsługiwane w przypadku flavor określonej bazy danych — Azure SQL pojedynczy, lub wystąpienie bazy danych.
 
@@ -438,13 +441,13 @@ W poniższych tabelach opisano szczegóły telemetria dostępna dla wszystkich d
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: ResourceUsageStats |
-|Zasób|Nazwa zasobu |
+|Category|Nazwa kategorii. Zawsze: ResourceUsageStats |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: MANAGEDINSTANCES |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa wystąpienia zarządzanego |
 |ResourceId|Identyfikator URI zasobu |
 |SKU_s|Jednostka SKU produktu wystąpienia zarządzanego |
@@ -463,14 +466,14 @@ W poniższych tabelach opisano szczegóły telemetria dostępna dla wszystkich d
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: QueryStoreRuntimeStatistics |
+|Category|Nazwa kategorii. Zawsze: QueryStoreRuntimeStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreRuntimeStatisticsEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -514,14 +517,14 @@ Dowiedz się więcej o [danych statystyki czasu wykonywania zapytania Store](htt
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: QueryStoreWaitStatistics |
+|Category|Nazwa kategorii. Zawsze: QueryStoreWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreWaitStatisticsEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -552,22 +555,22 @@ Dowiedz się więcej o [Query Store oczekiwania dane statystyk](https://docs.mic
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQ |
-|Kategoria|Nazwa kategorii. Zawsze: Błędy |
+|Category|Nazwa kategorii. Zawsze: Błędy |
 |OperationName|Nazwa operacji. Zawsze: ErrorEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
 |ResourceId|Identyfikator URI zasobu |
-|Komunikat|Komunikat o błędzie w postaci zwykłego tekstu |
+|Message|Komunikat o błędzie w postaci zwykłego tekstu |
 |user_defined_b|Jest bit zdefiniowane przez użytkownika błędu |
 |error_number_d|Kod błędu |
-|Ważność|Ważność błędu |
+|Severity|Ważność błędu |
 |state_d|Stan błędu |
 |query_hash_s|Skrót zapytania zapytania nie powiodło się, jeśli jest dostępny |
 |query_plan_hash_s|Skrót planu zapytania, zapytania zakończone niepowodzeniem, jeśli jest dostępny |
@@ -581,14 +584,14 @@ Dowiedz się więcej o [komunikaty o błędach programu SQL Server](https://msdn
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: DatabaseWaitStatistics |
+|Category|Nazwa kategorii. Zawsze: DatabaseWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: DatabaseWaitStatisticsEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -610,14 +613,14 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: Limity czasu |
+|Category|Nazwa kategorii. Zawsze: Limity czasu |
 |OperationName|Nazwa operacji. Zawsze: TimeoutEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -633,14 +636,14 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: bloki |
+|Category|Nazwa kategorii. Zawsze: bloki |
 |OperationName|Nazwa operacji. Zawsze: BlockEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -657,14 +660,14 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC] |Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: Zakleszczenia |
+|Category|Nazwa kategorii. Zawsze: Zakleszczenia |
 |OperationName|Nazwa operacji. Zawsze: DeadlockEvent |
-|Zasób|Nazwa zasobu |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -678,13 +681,13 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Zawsze: AutomaticTuning |
-|Zasób|Nazwa zasobu |
+|Category|Nazwa kategorii. Zawsze: AutomaticTuning |
+|Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
+|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |LogicalDatabaseName_s|Nazwa bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |

@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f98cdcab2d108f8dd9d40e3770498ad17b2a8a88
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60555437"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799618"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Dostosuj model języka, za pomocą witryny sieci Web indeksatora wideo
 
@@ -60,10 +61,10 @@ Aby użyć Twojego modelu językowego na nowy film wideo, wykonaj jedną z nast�
 
 * Kliknij pozycję **przekazywanie** przycisku w górnej części strony 
 
-    ![Upload](./media/customize-language-model/upload.png)
+    ![Przekazanie](./media/customize-language-model/upload.png)
 * Usuń z pliku audio lub wideo w okręgu lub Przeglądaj w poszukiwaniu pliku
 
-    ![Upload](./media/customize-language-model/upload2.png)
+    ![Przekazanie](./media/customize-language-model/upload2.png)
 
 Zapewni to możliwość dokonania wyboru **języka źródłowego wideo**. Kliknij listę rozwijaną i wybierz model języka, który został utworzony z listy. Powinien on Załóżmy, że język Twojego modelu językowego i nazwę, która udostępniła je w nawiasach.
 

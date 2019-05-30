@@ -15,10 +15,10 @@ ms.date: 05/15/2019
 ms.author: rolyon
 ms.openlocfilehash: e99a9d2cfa38c9b2ea74f9075b18f81006b34881
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761429"
+ms.locfileid: "65791525"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Samouczek: Daj użytkownikowi dostęp do zasobów platformy Azure przy użyciu szablonu RBAC i usługi Resource Manager
 
@@ -65,7 +65,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Otwórz grupę zasobów, utworzony w poprzedniej procedurze. Domyślna nazwa jest nazwą projektu, przy użyciu **rg** dołączane.
-1. Z menu po lewej stronie wybierz opcję **Kontrola dostępu (IAM)**.
+1. Z menu po lewej stronie wybierz opcję **Kontrola dostępu (IAM)** .
 1. Wybierz **przypisań ról**. 
 1. W **nazwa**, wprowadź adres e-mail został wpisany w poprzedniej procedurze. Powinien zostać wyświetlony użytkownik z adresem e-mail ma **Współautor maszyny wirtualnej** roli.
 

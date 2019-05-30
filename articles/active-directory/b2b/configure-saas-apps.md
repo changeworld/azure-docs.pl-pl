@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35dad420aa004e27ec974c494dc66e9b8e13c733
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414365"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65811943"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B
 
@@ -72,7 +72,7 @@ Aby umożliwić użytkownikom na logowanie przy użyciu swojego konta organizacj
 
 Po użytkowników z gościa lub elementu członkowskiego zdefiniowano w aplikacji Dropbox, otrzyma zaproszenie oddzielne z usługi Dropbox. Aby korzystać z usługi Dropbox logowanie jednokrotne, zapraszane osoby muszą musi zaakceptować zaproszenie, klikając łącze w nim.
 
-## <a name="box"></a>Box
+## <a name="box"></a>Pole
 Możesz umożliwić użytkownikom uwierzytelnianie użytkowników-gości pole za pomocą konta usługi Azure AD przy użyciu Federacji, który jest oparty na protokole SAML. W ramach tej procedury możesz przekazać do usługi Box.com metadanych.
 
 1. Dodawanie aplikacji Box z aplikacjami w przedsiębiorstwie.
@@ -81,7 +81,7 @@ Możesz umożliwić użytkownikom uwierzytelnianie użytkowników-gości pole za
 
    ![Zrzut ekranu przedstawiający ustawienia konfiguracji rejestracji jednokrotnej](media/configure-saas-apps/configure-box-sso.png)
 
-   a. W **adres URL logowania** Sprawdź, czy adres URL logowania jest odpowiednio ustawiony dla pola w witrynie Azure portal. Ten adres URL jest adres URL dzierżawy usługi Box.com. Powinien on być zgodny konwencji nazewnictwa *https://.box.com*.  
+   a. W **adres URL logowania** Sprawdź, czy adres URL logowania jest odpowiednio ustawiony dla pola w witrynie Azure portal. Ten adres URL jest adres URL dzierżawy usługi Box.com. Powinien on być zgodny konwencji nazewnictwa *https://.box.com* .  
    **Identyfikator** nie ma zastosowania do tej aplikacji, ale nadal jest wyświetlany jako wymaganym polem.
 
    b. W **identyfikator użytkownika** wprowadź **user.mail** (na potrzeby logowania jednokrotnego dla konta gościa).

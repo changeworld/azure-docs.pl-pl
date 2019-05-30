@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61316833"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795796"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
@@ -92,10 +92,6 @@ Zastępowanie standardowych analyzer wymaga odbudowywanie indeksu. Jeśli to mo�
 ### <a name="inspect-tokenized-terms"></a>Sprawdzanie warunków tokenami
 
 Jeśli wyszukiwanie nie zwraca oczekiwanych rezultatów, najbardziej prawdopodobnym scenariuszem jest token rozbieżności między termin wejść na tym zapytaniu i tokenami terminy w indeksie. Jeśli tokeny nie są takie same, do zmaterializowania się nie powieść dopasowań. Aby sprawdzić dane wyjściowe tokenizatora, zaleca się używanie [analizowanie API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) jako narzędzie do analizy. Odpowiedź składa się tokenów, tak jak w przypadku określonego analizatora.
-
-### <a name="compare-english-analyzers"></a>Porównaj analizatory w języku angielskim
-
-[Wersja demonstracyjna analizatora wyszukiwania](https://alice.unearth.ai/) jest aplikacją firm pokaz przedstawiający porównania side-by-side standardowy analizator Lucene, Lucene w języku angielskim analizator i procesora angielskiej języka naturalnego firmy Microsoft. Indeks został rozwiązany; zawiera ona tekstu z popularnych wątku. Dla każdego dane wejściowe zostaną podane, wyniki z każdego analizatora są wyświetlane w sąsiadujących okienka, co daje poczucie przetwarzaniu tego samego ciągu w każdej analizatora. 
 
 <a name="examples"></a>
 
@@ -348,8 +344,6 @@ Tworzenie [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure
 + Dowiedz się, jak zastosować [analizatory leksykalne specyficzny dla języka](index-add-language-analyzers.md).
 
 + [Skonfiguruj niestandardowe analizatory](index-add-custom-analyzers.md) minimalnego przetwarzania lub wyspecjalizowanych przetwarzania dla poszczególnych pól.
-
-+ [Porównaj analizatory standardowych i angielskim](https://alice.unearth.ai/) w okienkach sąsiadująco w tej wersji demonstracyjnej witryny sieci web. 
 
 ## <a name="see-also"></a>Zobacz także
 

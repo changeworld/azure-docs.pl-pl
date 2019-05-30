@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
+ms.date: 05/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572410"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784328"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -42,6 +42,17 @@ Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink
 >Udostępnia nową wersję programu Azure AD Connect to proces, który wymaga kilku kroku kontroli jakości w celu zapewnienia ich funkcjonalności operacji usługi, a gdy przejdziemy przez ten proces zostanie zaktualizowany numer wersji w nowej wersji, a także stanu wydania aby odzwierciedlały najnowsze stanu.
 Gdy przejdziemy przez ten proces, numer wersji, wersji będą wyświetlane ze znakiem "X" w pozycji numeru wersji pomocniczej, jak "1.3.X.0" — oznacza to, że informacje o wersji, w tym dokumencie są prawidłowe dla wszystkich wersji rozpoczynające się od "1.3.". Jak najszybciej ostatecznych procesu tworzenia wersji numer wydania zostaną zaktualizowane do wersji niedawno wydany i stanu wersji zostanie zaktualizowana w celu "Wydania do pobrania i automatyczne uaktualnianie".
 Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="13210"></a>1.3.21.0
+
+### <a name="release-status"></a>Stan zlecenia 
+
+05/14/2019: Do ustalenia
+
+
+### <a name="fixed-issues"></a>Rozwiązane problemy 
+
+- Naprawiono podniesienie uprawnień w Microsoft Azure Active Directory Connect kompilacji 1.3.20.0.  Tę lukę w zabezpieczeniach, w pewnych okolicznościach może umożliwić atakującemu dwóch poleceń cmdlet programu powershell są wykonywane w kontekście konta uprzywilejowanego i wykonania uprzywilejowanych akcji.  Ta aktualizacja zabezpieczeń usuwa ten problem, wyłączając te polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [aktualizacji zabezpieczeń](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -389,16 +400,16 @@ Blokowanie dostępu do konta usługi AD DS, implementując następujące zmiany 
 
 Type     | Name (Nazwa)                          | Dostęp               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
-Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwól    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
+Zezwól    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwól    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby zwiększyć ustawień dla konta usług AD DS, należy uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell spowoduje przypisanie uprawnień wymienionych powyżej konto usług AD DS.
 
@@ -406,13 +417,13 @@ Aby zwiększyć ustawień dla konta usług AD DS, należy uruchomić [ten skrypt
 
 Aby użyć skryptu programu PowerShell, aby zastosować te ustawienia do istniejącego konta usługi AD DS, (ether udostępnioną przez Twoją organizację lub utworzony w poprzedniej instalacji programu Azure AD Connect, Pobierz skrypt z podany link powyżej.
 
-##### <a name="usage"></a>Użycie:
+##### <a name="usage"></a>Sposób użycia:
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Lokalizacja 
+Gdzie 
 
 **$ObjectDN** = konto usługi Active Directory, w której uprawnienia muszą być ściągane.
 
@@ -730,9 +741,9 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Wybierz pozycję|
-    |CertKeyAlgorithmParams|CertHashString|Lokalizacja|
-    |||Zawiera|
+    |CertVersion|CertSignatureAlgorithmOid|Wybierz|
+    |CertKeyAlgorithmParams|CertHashString|Gdzie|
+    |||Z|
 
 * Aby umożliwić klientom tworzenie reguły synchronizacji niestandardowych do przepływu, sAMAccountName, domainNetBios i domainFQDN dla grupy obiektów, a także distinguishedName obiektów użytkownika zostały wprowadzone następujące zmiany schematu:
 
@@ -786,7 +797,7 @@ Synchronizacja programu Azure AD Connect
 * Rozwiązano problem powodujący automatyczne uaktualnienie do odbywa się na serwerze usługi Azure AD Connect, nawet jeśli klient wyłączył tę funkcję, za pomocą polecenia cmdlet Set-ADSyncAutoUpgrade. Dzięki tej poprawce proces automatycznego uaktualniania na serwerze nadal sprawdza, czy uaktualnienie okresowo, ale pobrany program instalacyjny honoruje konfiguracji automatycznego uaktualniania.
 * Podczas uaktualniania w miejscu narzędzia DirSync Azure AD Connect tworzy konto usługi Azure AD do użycia przez łącznik usługi Azure AD do synchronizacji z usługą Azure AD. Po utworzeniu konta usługi Azure AD Connect uwierzytelnia się za pomocą usługi Azure AD przy użyciu konta. Czasami, uwierzytelnianie nie powiedzie się z powodu przejściowych problemów, co z kolei powoduje, że uaktualnienie w miejscu narzędzia DirSync z powodu błędu *"Wystąpił błąd podczas wykonywania zadania Konfiguruj AAD Sync: AADSTS50034: Aby zalogować się do tej aplikacji, to konto należy dodać do katalogu xxx.onmicrosoft.com."* Aby zwiększyć odporność uaktualnienie narzędzia DirSync, Azure AD Connect teraz ponawia etap uwierzytelniania.
 * Wystąpił problem z kompilacją 443, który powoduje, że uaktualnienie w miejscu narzędzia DirSync została wykonana pomyślnie, ale nie zostaną utworzone profile przebiegu, wymagane do synchronizacji katalogów. Naprawianie logiki znajduje się w tej kompilacji programu Azure AD Connect. Podczas uaktualniania klienta do tej kompilacji, Azure AD Connect wykrywa brak profilów uruchamiania i ich tworzenia.
-* Rozwiązano problem, który powoduje, że proces synchronizacji haseł nie można uruchomić za pomocą 6900 identyfikator zdarzenia i błąd *"został już dodany element o takim samym kluczem"*. Ten problem występuje, jeśli zaktualizujesz jednostki Organizacyjnej konfigurację filtrowania do uwzględnienia w partycji konfiguracji usługi AD. Aby rozwiązać ten problem, proces synchronizacji haseł synchronizuje zmiany haseł z tylko partycji domeny usługi AD. Domeny inne niż partycje, takich jak partycja konfiguracji są pomijane.
+* Rozwiązano problem, który powoduje, że proces synchronizacji haseł nie można uruchomić za pomocą 6900 identyfikator zdarzenia i błąd *"został już dodany element o takim samym kluczem"* . Ten problem występuje, jeśli zaktualizujesz jednostki Organizacyjnej konfigurację filtrowania do uwzględnienia w partycji konfiguracji usługi AD. Aby rozwiązać ten problem, proces synchronizacji haseł synchronizuje zmiany haseł z tylko partycji domeny usługi AD. Domeny inne niż partycje, takich jak partycja konfiguracji są pomijane.
 * Podczas instalacji ekspresowej, Azure AD Connect tworzy lokalne konto usług AD DS do użycia przez AD connector do komunikowania się z lokalnej usługi AD. Wcześniej konto zostanie utworzone z flagą PASSWD_NOTREQD, ustaw dla atrybutu Kontrola konta użytkownika i hasła losowego jest ustawiona na koncie. Teraz program Azure AD Connect jawnie usuwa flagę PASSWD_NOTREQD, po ustawieniu hasła dla konta.
 * Rozwiązano problem, który powoduje, że uaktualnienie narzędzia DirSync kończy się niepowodzeniem z powodu błędu *"zakleszczenie wystąpił w programie sql server próby uzyskania blokady aplikacji"* gdy atrybut mailNickname znajduje się w lokalnej schematu usługi AD, ale nie jest ograniczany do Klasa obiektu użytkownika AD.
 * Rozwiązano problem powodujący funkcji zapisywania zwrotnego urządzeń automatycznie były wyłączone, gdy administrator aktualizuje konfigurację synchronizacji programu Azure AD Connect przy użyciu Kreatora Azure AD Connect. Ten problem jest spowodowany przez kreatora sprawdzanie wymaganego wstępnie istniejącej konfiguracji funkcji zapisywania zwrotnego urządzeń w lokalnej usługi AD i sprawdzenie nie powiedzie się. Obejście polega na pomijania sprawdzania, jeśli zapisywania zwrotnego urządzeń jest już włączone wcześniej.

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a6a63748ef36bbbceb00bc815616f2cb12692a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693222"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799795"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorowanie wydajności klastra
 
@@ -30,7 +30,7 @@ Aby uzyskać ogólne przyjrzeć się węzły klastra i ich ładowania, zaloguj s
 | Kolor | Opis |
 | --- | --- |
 | Czerwony | Co najmniej jeden składnik główny hosta nie działa. Zatrzymaj wskaźnik myszy, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
-| Orange | Co najmniej jeden element podrzędny składnika na hoście nie działa. Zatrzymaj wskaźnik myszy, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
+| Pomarańczowy | Co najmniej jeden składnik pomocniczy na hoście nie działa. Zatrzymaj wskaźnik myszy, aby wyświetlić etykietkę narzędzia list składniki dotknięte problemem. |
 | Żółty | Ambari serwer nie otrzymał pulsu z hosta do więcej niż trzy minuty. |
 | Zielony | Normalny stan pracy. |
 

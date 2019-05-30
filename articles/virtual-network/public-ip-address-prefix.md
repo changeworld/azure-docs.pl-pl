@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154483"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799107"
 ---
 # <a name="public-ip-address-prefix"></a>Publiczny prefiks adresu IP
 
@@ -55,7 +55,7 @@ Następujące zasoby do statyczny publiczny adres IP można skojarzyć z prefiks
 ## <a name="constraints"></a>Ograniczenia
 
 - Nie można określić adresy IP dla prefiksu. Platforma Azure przydziela adresów IP dla prefiksu, w zależności od rozmiaru, który określisz.
-- Domyślny rozmiar prefiksu to/28 lub 16 publiczne adresy IP.
+- Można utworzyć prefiks maksymalnie 16 adresów IP lub / 28. Aby uzyskać więcej informacji, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Zakres, nie można zmienić po utworzeniu prefiks.
 - Zakres jest tylko adresy IPv4. Zakres nie zawiera adresów IPv6.
 - Można przypisać tylko statyczne publiczne adresy IP utworzone za pomocą standardowej jednostki SKU z zakresu prefiksu. Aby dowiedzieć się więcej na temat publiczny adres IP adres jednostki SKU, zobacz [publiczny adres IP](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).

@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 4406789e3f9a10ff814aca0c2fd114de8a2abb69
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572668"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794387"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedynczej bazy danych w usłudze Azure SQL Database
 
@@ -30,7 +30,7 @@ Opcja wdrażania pojedynczej bazy danych tworzy bazę danych w usłudze Azure SQ
 
 ## <a name="dynamic-scalability"></a>Dynamiczna skalowalność
 
-Możesz utworzyć swoją pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie usług niskiej ceny do wydajności i następnie [zmienić jej warstwę usług](sql-database-single-database-scale.md) ręcznie lub programowo w dowolnym momencie thehigher ceny do wydajności usługi warstwy, aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
+Możesz utworzyć swoją pierwszą aplikację na małej, pojedynczej bazy danych przy niskich kosztach w warstwa wystąpień obliczeniowych bez użycia serwera (wersja zapoznawcza) lub rozmiar małego wystąpienia obliczeniowego w warstwie zainicjowanych zasobów obliczeniowych. Możesz zmienić [warstwy obliczeń lub usługa](sql-database-single-database-scale.md) ręcznie lub programowo w dowolnym momencie, aby zaspokoić potrzeby rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
 ## <a name="single-databases-and-elastic-pools"></a>Pojedyncze bazy danych i pul elastycznych
 

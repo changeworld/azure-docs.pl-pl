@@ -6,19 +6,20 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c4ccc189c0f8ed3de868c9965d7068ad9670cbcb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535414"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799560"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Dostosuj model języka, za pomocą indeksatora wideo
 
-Usługa Video Indexer obsługuje automatyczne rozpoznawanie mowy dzięki integracji z usługą Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Możesz dostosować model języka przez przekazanie tekstu dostosowania, a mianowicie tekst z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznany, zakładając, że Wymowa domyślne i modelu językowego dowiesz się, nowe prawdopodobne sekwencji wyrazów. Niestandardowe modele językowe są obsługiwane w przypadku angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski, portugalski (Brazylia), Hindi i koreańskim. 
+Usługa Video Indexer obsługuje automatyczne rozpoznawanie mowy dzięki integracji z usługą Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Możesz dostosować model języka przez przekazanie tekstu dostosowania, a mianowicie tekst z domeny słownictwo, którego chcesz aparatu, aby dostosować je do. Po użytkownik nauczenia modelu, nowych słów, które pojawiają się w tekście adaptacji zostanie rozpoznany, zakładając, że Wymowa domyślne i modelu językowego dowiesz się, nowe prawdopodobne sekwencji wyrazów. Niestandardowe modele językowe są obsługiwane przez język angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski, portugalski (Brazylia), Hindi i koreański. 
 
 Weźmy programu word, który jest bardzo specyficzny, takich jak "Kubernetes" (w kontekście usługi Azure Kubernetes service), na przykład. Ponieważ słowo pojawił się do usługi Video Indexer, uznaje się za "społeczności". Należy do nauczenia modelu, rozpoznawał ją jako "Kubernetes". W innych przypadkach istnieje wyrazy, ale model języka nie jest oczekiwane pojawiać się w pewnym kontekście. Na przykład "container service" nie jest to sekwencja programu word 2 model języka niewyspecjalizowaną rozpoznawany jako określony zestaw wyrazów.
 

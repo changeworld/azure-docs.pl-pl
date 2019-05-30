@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357668"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812542"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak użytkownicy w organizacji mogą zapraszać gości do aplikacji
 
@@ -35,11 +35,11 @@ Po Gość użytkownik został dodany do katalogu w usłudze Azure AD, właścici
 Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można użyć panelu dostępu, można zaprosić użytkownika-gościa do aplikacji, które chcą udostępniać. Użytkownik-Gość niekoniecznie nie musi zostać dodane do usługi Azure AD z wyprzedzeniem. 
 
 1. Otwórz Panel dostępu, przechodząc do `https://myapps.microsoft.com`.
-2. Wskaż aplikacji, wybierz wielokropek (**...** ), a następnie wybierz pozycję **aplikacji Zarządzanie**.
+2. Wskaż aplikacji, wybierz wielokropek ( **...** ), a następnie wybierz pozycję **aplikacji Zarządzanie**.
  
    ![Zrzut ekranu przedstawiający Zarządzanie aplikacji podmenu aplikacji Salesforce](media/add-users-iw/access-panel-manage-app.png)
  
-3. W górnej części listy użytkowników, wybierz **+**.
+3. W górnej części listy użytkowników, wybierz **+** .
    
    ![Zrzut ekranu przedstawiający symbol znaku plus dotyczące dodawania członków do aplikacji](media/add-users-iw/access-panel-manage-app-add-user.png)
    
@@ -62,7 +62,7 @@ Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można zapr
    
    ![Zrzut ekranu przedstawiający miejsce wybrać grupę, w obszarze grupy jestem właścicielem](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. W górnej części listy członków grupy wybierz **+**.
+5. W górnej części listy członków grupy wybierz **+** .
    
    ![Zrzut ekranu przedstawiający symbol znaku plus dotyczące dodawania członków do grupy](media/add-users-iw/access-panel-groups-add-member.png)
    

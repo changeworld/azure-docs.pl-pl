@@ -1,7 +1,7 @@
 ---
 title: 'Klasyfikacja: Prognozowanie ryzyka kredytowego (koszt poufnych)'
 titleSuffix: Azure Machine Learning service
-description: Ten interfejs graficzny przykładowy eksperyment pokazuje sposób wykonania binarnej klasyfikacji kosztowej za pomocą dostosowanych skryptu języka Python. Prognozuje go, oceny ryzyka kredytowego na podstawie informacji dostarczonych w kredytowym.
+description: W tym artykule pokazano, jak tworzyć złożone eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak implementować niestandardowe skrypty języka Python oraz porównanie różnych modeli można wybrać najlepsze rozwiązanie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,26 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440961"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787815"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt poufnych)
 
-Ten interfejs graficzny przykładowy eksperyment pokazuje sposób wykonania binarnej klasyfikacji kosztowej za pomocą dostosowanych skryptu języka Python. Koszt misclassifying pozytywne próbki jest pięciokrotnie koszt misclassifying ujemna przykładów.
+W tym artykule pokazano, jak tworzyć złożone eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak implementować logikę niestandardową przy użyciu skryptów języka Python oraz porównanie różnych modeli można wybrać najlepsze rozwiązanie.
 
-W tym przykładzie przewiduje oceny ryzyka kredytowego w oparciu o informacje zawarte w kredytowym, biorąc pod uwagę koszty błędu klasyfikacji.
+W tym przykładzie przygotowuje klasyfikatora przewidzieć ryzyko kredytowe, przy użyciu informacji o aplikacji środków, takich jak Historia kredytów, wiek i liczba kart kredytowych. Jednakże można zastosować koncepcji, w tym artykule do własnych uczenia maszynowego problemów.
 
-W tym eksperymencie porównamy dwa różne podejścia do generowania modeli, aby rozwiązać ten problem:
+Jeśli po prostu rozpoczniesz pracę z usługą machine learning, może zająć się [przykładowe klasyfikatora podstawowego](ui-sample-classification-predict-credit-risk-basic.md) pierwszy.
 
-- Szkolenie przy użyciu oryginalnego zestawu danych.
-- Szkolenie przy użyciu replikowanego zestawu danych.
+Oto wykres zakończone, w tym eksperymencie:
 
-Za pomocą obu metod Oceniamy modele przy użyciu zestawu danych testowych za pomocą replikacji, aby upewnić się, że wyniki są wyrównane przy użyciu funkcji cost. Przetestowanie dwoma klasyfikatorami za pomocą obu metod: **Obsługa Two-Class wektor maszyny** i **Two-Class wzmocnione drzewo decyzyjnego**.
+[![Wykres eksperymentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,15 +37,18 @@ Za pomocą obu metod Oceniamy modele przy użyciu zestawu danych testowych za po
 
     ![Otwórz eksperyment](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="related-sample"></a>Powiązane próbki
-
-Zobacz [przykładowy 3 - klasyfikacji: Prognozowanie ryzyka kredytowego (Basic)](ui-sample-classification-predict-churn.md) podstawowe eksperymentu, która rozwiązuje ten sam problem co tego eksperymentu, bez dostosowywania koszty błędu klasyfikacji.
-
 ## <a name="data"></a>Dane
 
 Używamy zestawu danych karty kredytowej niemiecki z repozytorium Irvine Unikatowości. Ten zestaw danych zawiera 1000 próbek z funkcjami 20 i 1 etykiety. Poszczególne przykładowe aplikacje przedstawiają osoby. 20 funkcje obejmują funkcje numeryczne i podzielonych na kategorie. Zobacz [UCI witryny sieci Web](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) Aby uzyskać więcej informacji na temat zestawu danych. Ostatnia kolumna jest etykiety, który wskazuje ryzyko kredytowe, a ma tylko dwa możliwe wartości: ryzyko kredytowe wysoki = 2 i niskie ryzyko kredytowe = 1.
 
 ## <a name="experiment-summary"></a>Podsumowanie eksperymentu
+
+W tym eksperymencie porównamy dwa różne podejścia do generowania modeli, aby rozwiązać ten problem:
+
+- Szkolenie przy użyciu oryginalnego zestawu danych.
+- Szkolenie przy użyciu replikowanego zestawu danych.
+
+Za pomocą obu metod Oceniamy modele przy użyciu zestawu danych testowych za pomocą replikacji, aby upewnić się, że wyniki są wyrównane przy użyciu funkcji cost. Przetestowanie dwoma klasyfikatorami za pomocą obu metod: **Obsługa Two-Class wektor maszyny** i **Two-Class wzmocnione drzewo decyzyjnego**.
 
 Koszt misclassifying to przykład niskiego ryzyka jako wysokie wynosi 1, a misclassifying o wysokim ryzyku przykład jako niski koszt wynosi 5. Używamy **wykonanie skryptu Python** modułu dla tego błędu klasyfikacji kosztów.
 
@@ -71,7 +73,7 @@ Aby uwzględnić tę funkcję, kosztów, możemy wygenerować nowy zestaw danych
 
 Replikowanie danych o wysokim ryzyku, testujemy ten kod języka Python do **wykonanie skryptu Python** modułu:
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -104,12 +106,11 @@ Standardowa eksperymentalne przepływu pracy firma Microsoft umożliwia tworzeni
 
 1. Inicjowanie algorytmów uczenia, za pomocą **Two-Class pomocy technicznej Vector Machine** i **Two-Class Boosted Decision drzewa**.
 1. Użyj **Train Model** zastosowanie algorytmu do danych i utworzyć model rzeczywistych.
-3. Użyj **Score Model** aby wygenerować wyniki przy użyciu przykładów testu.
+1. Użyj **Score Model** aby wygenerować wyniki przy użyciu przykładów testu.
 
 Na poniższym diagramie przedstawiono część tego eksperymentu, w którym zestawy szkolenia oryginalnego i replikowane są używane do trenowania dwa różne modele SVM. **Uczenie modelu** jest podłączony do zestawu szkoleniowego i **Score Model** jest połączony z zestawu testowego.
 
 ![Wykres eksperymentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
-
 
 Na etapie oceny eksperymentu możemy obliczyć dokładność każdego z czterech modeli. W tym eksperymencie używamy **Evaluate Model** do przykładów, które mają ten sam błędu klasyfikacji porównania kosztów.
 
@@ -121,7 +122,7 @@ Należy zauważyć, że zestaw danych replikowanych testu jest używany jako dan
 
 **Evaluate Model** modułu tworzy tabelę z jednego wiersza, który zawiera różne metryki. Aby utworzyć pojedynczy zestaw wyników, dokładności, najpierw używamy **Dodaj wiersze** do połączenia wyników w jedną tabelę. Następnie używamy poniższy skrypt języka Python w **wykonanie skryptu Python** modułu, aby dodać nazwę modelu i podejście szkolenia dla każdego wiersza w tabeli wyników:
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -138,7 +139,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     result = pd.concat([new_cols, dataframe1], axis=1)
     return result,
 ```
-
 
 ## <a name="results"></a>Wyniki
 

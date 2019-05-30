@@ -3,20 +3,20 @@ title: 'Szybki start: Wyszukiwanie wiadomości — zestaw SDK wyszukiwania wiado
 titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki Start, aby wyszukać wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla C#, a przetworzenie odpowiedzi.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 01/10/2019
-ms.author: v-gedod
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fe9010215e5b6c4c9ece2372e3ce87bcf99b150c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e0a4da2662b9d4b4b775631705e7b4fcc1eecea
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323199"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798670"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla języka C#
 
@@ -24,7 +24,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolna wersja programu [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Dowolnej wersji programu [programu Visual Studio 2017 r. lub nowszej](https://www.visualstudio.com/downloads/).
 * Struktura [Json.NET](https://www.newtonsoft.com/json) dostępna jako pakiet NuGet.
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 
