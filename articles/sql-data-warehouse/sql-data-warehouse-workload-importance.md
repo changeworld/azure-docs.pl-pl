@@ -1,5 +1,5 @@
 ---
-title: Znaczenie obciążenie | Dokumentacja firmy Microsoft
+title: Znaczenie obciążenia w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące konfigurowania znaczenie dla zapytań w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,18 +10,18 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002888"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233838"
 ---
-# <a name="sql-data-warehouse-workload-importance"></a>Znaczenie obciążenia usługa SQL Data Warehouse
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Znaczenie obciążenia w usłudze Azure SQL Data Warehouse
 
 W tym artykule wyjaśniono, jak znaczenie obciążenia mogą mieć wpływ na kolejność wykonywania żądań usługa SQL Data Warehouse.
 
-## <a name="importance"></a>Ważność
+## <a name="importance"></a>Znaczenie
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 

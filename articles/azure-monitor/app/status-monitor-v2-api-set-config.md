@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 953edcb98de6ea705721aef0922562d23e18f0f5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 971fea76a23859f32437a1698b6d3094113737a1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148244"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255094"
 ---
 # <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v021-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Set-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)
 
@@ -128,7 +128,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
  - [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
 - [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów
 - [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
-- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md)
+- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md)
  
  Dodawanie kolejnych funkcji telemetrii:
  - [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.

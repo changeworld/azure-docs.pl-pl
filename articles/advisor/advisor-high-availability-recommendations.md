@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467731"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254663"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
 
@@ -30,7 +30,7 @@ Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch m
 
 Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Skorzystaj z funkcji Dyski zarządzane, aby zwiększyć niezawodność danych
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Użycie usługi Managed Disks w celu poprawy niezawodności dotyczącej danych
 
 Maszyny wirtualne, które znajdują się w zestaw dostępności z dyskami współużytkującymi konta magazynu lub jednostki skali magazynu nie są odporne na błędy jednostki skali magazynu jednego podczas awarii. Klasyfikator zidentyfikuje te zestawy dostępności i zaleca się migrację do usługi Azure Managed Disks. Pozwoli to zagwarantować, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane pod kątem uniknięcia pojedynczego punktu awarii. 
 
@@ -69,6 +69,30 @@ W konfiguracji aktywne aktywne oba wystąpienia bramy sieci VPN ustanowią tunel
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Uruchamianie obciążeń produkcyjnych za pomocą bram sieci VPN w środowisku produkcyjnym
 
 Usługa Azure Advisor sprawdzi dla bram sieci VPN, które są podstawowej jednostki SKU i zaleca się używanie produkcji jednostki SKU. Podstawowa jednostka SKU jest przeznaczona dla celów projektowania i testowania. Jednostki SKU w środowisku produkcyjnym oferują większej liczby tuneli, obsługi protokołu BGP, opcje konfiguracji aktywne aktywne, niestandardowe zasad Ipsec/IKE i wyższe stabilność i dostępność.
+
+## <a name="repair-invalid-log-alert-rules"></a>Napraw reguł alertów dzienników nieprawidłowy
+
+Usługa Azure Advisor wykryje reguł alertów, które mają nieprawidłowe zapytania określony w sekcji warunków. Reguł alertów dzienników są tworzone w usłudze Azure Monitor i są używane do uruchamiania zapytań analitycznych w określonych odstępach czasu. Wyniki zapytania określają, czy alert ma być wyzwalane. Zapytania analityczne może stać się nadgodzinach nieprawidłowa z powodu zmian w odwołania do zasobów, tabel lub poleceń. Klasyfikator oferuje rekomendacje dotyczące poprawisz zapytania w regule alertu, aby uniemożliwić wyłączone automatycznego pobierania i zapewnić pokrycie monitorowania zasobów na platformie Azure. [Dowiedz się więcej na temat rozwiązywania problemów reguły alertów](https://aka.ms/aa_logalerts_queryrepair)
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurowanie spójnego trybu indeksowania w kolekcji usługi Cosmos DB
+
+Kontenery usługi Azure Cosmos DB skonfigurowaną z opóźnieniem tryb indeksowania może mieć wpływ na aktualność wyników zapytania. Advisor wykryje, że kontenery są skonfigurowane w ten sposób i zaleca się przełączenie do trybu spójne. [Dowiedz się więcej na temat zasady w usłudze Cosmos DB indeksowania](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurowanie kontenerów usługi Azure Cosmos DB przy użyciu klucza partycji
+
+Usługa Azure Advisor będzie identyfikować niepartycjonowana kolekcji usługi Azure Cosmos DB, które są zbliża się limit przydziału aprowizowanego magazynu. Oferuje rekomendacje, migracja tych kolekcji do nowej kolekcji z definicją klucza partycji, tak, aby ich automatycznie można skalować w poziomie przez usługę. [Dowiedz się więcej o wybór klucza partycji](https://aka.ms/cosmosdb/choose-partitionkey)
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Uaktualnienie do najnowszej wersji Nuget zestawu SDK .NET usługi Azure Cosmos DB
+
+Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które korzystają z starsze wersje zestawu SDK platformy .NET i zaleca się uaktualnienie do najnowszej wersji z pakietów Nuget dla najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej o Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uaktualnij do najnowszej wersji zestawu SDK Java usługi Azure Cosmos DB, z narzędzia Maven
+
+Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które używają starej wersji zestawu SDK języka Java i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Łącznik platformy Spark usługi Azure Cosmos DB uaktualnienie do najnowszej wersji narzędzia Maven
+
+Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które są używane przez łącznik usługi Cosmos DB Spark stare wersje i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej na temat łącznika usługi Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
 

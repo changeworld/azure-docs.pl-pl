@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790156"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258624"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -150,6 +150,10 @@ Aby uzyskać więcej informacji, zobacz [wprowadzenie odnajdywanie i klasyfikacj
 ### <a name="compliance"></a>Zgodność
 
 Oprócz powyższych funkcji i funkcjonalności, które mogą pomóc aplikacji spełnić różne wymagania dotyczące zabezpieczeń, usługa Azure SQL Database również uczestniczy w regularnych inspekcjach i posiada certyfikaty na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+
+### <a name="feature-restrictions"></a>Ograniczenia funkcji
+
+Funkcja ograniczenia zapobiec niektóre rodzaje wstrzyknięcie kodu SQL przed wyciekiem informacje o bazie danych, nawet wtedy, gdy zakończy się wstrzyknięcie kodu SQL. Aby uzyskać więcej informacji, zobacz [ograniczeń funkcji bazy danych SQL Azure](sql-database-feature-restrictions.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

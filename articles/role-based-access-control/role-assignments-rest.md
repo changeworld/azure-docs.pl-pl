@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531844"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357074"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu API REST
 
@@ -38,12 +38,16 @@ RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań ról.
 
-    | Zakres | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
-
+    
+       
+     > [!NOTE]
+     > W powyższym przykładzie, jest Microsoft.web, że jest używana przez dostawcę zasobów które odwołuje się do wystąpienia usługi aplikacji. Podobnie można korzystać z każdego dostawcy zasobów i zakres identyfikatora URI kompilacji. Aby poznać więcej można znaleźć [dostawcy zasobów platformy Azure i ich typy](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) i objęty pomocą techniczną [operacji dostawcy zasobów usługi Azure RM](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations).  
+     
 1. Zastąp *{filter}* z warunkiem, że chcesz zastosować, aby filtrować listę przypisania roli.
 
     | Filtr | Opis |
@@ -77,7 +81,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
     
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem przypisania roli.
 
-    | Zakres | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -105,7 +109,7 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* w zakresie usuwania przypisania roli.
 
-    | Zakres | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |

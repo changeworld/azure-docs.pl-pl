@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 13379111706eaa816a8fa16cfe72711b7bf4d739
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2a30d5a040c2713f04173e83732cea5fa19af3b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576478"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255287"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorowanie usług i aplikacji Node.js za pomocą usługi Application Insights
 
-Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje usługi i składniki zaplecza po ich wdrożeniu w celu ułatwienia [odnajdywania i szybkiego diagnozowania różnych problemów, na przykład z wydajnością](../../azure-monitor/app/detect-triage-diagnose.md). Usługi Application Insights dla usług środowiska Node.js hostowanych w centrum danych można używać w maszynach wirtualnych platformy Azure i aplikacjach internetowych, a nawet w innych chmurach publicznych.
+[Usługa Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje swoje usługi i składniki zaplecza po wdrożeniu w celu odnajdywania i szybkiego diagnozowania wydajności i inne problemy. Usługi Application Insights dla usług środowiska Node.js hostowanych w centrum danych można używać w maszynach wirtualnych platformy Azure i aplikacjach internetowych, a nawet w innych chmurach publicznych.
 
 Aby móc odbierać, przechowywać i eksplorować dane monitorowania, uwzględnij zestaw SDK w kodzie, a następnie skonfiguruj odpowiedni zasób usługi Application Insights na platformie Azure. Zestaw SDK wysyła dane do zasobu na potrzeby przyszłej analizy i eksploracji.
 
@@ -202,7 +202,7 @@ server.on("listening", () => {
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Monitorowanie telemetrii w portalu](../../azure-monitor/app/app-insights-dashboards.md)
+* [Monitorowanie telemetrii w portalu](../../azure-monitor/app/overview-dashboard.md)
 * [Zapisywanie zapytań analizy za pośrednictwem danych telemetrycznych](../../azure-monitor/log-query/get-started-portal.md)
 
 <!--references-->

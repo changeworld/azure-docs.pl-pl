@@ -8,12 +8,12 @@ manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d003e851dcfa77b18a67450946a71e4a13ce495c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00274f8e15006f6f58a7c5f153bf0bbc0d26afb9
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700970"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416428"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault
 
@@ -21,7 +21,7 @@ Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault umożliwiaj
 
 Istnieje jeden ważny wyjątek z tego ograniczenia. Jeśli użytkownik ma wyrażeniu zgody na uczestnictwo w umożliwia zaufanych usług firmy Microsoft, połączenia z tych usług są Poinformuj przez zaporę. Na przykład usługi te to Office 365 Exchange Online, usługi Office 365 SharePoint Online, Azure compute, usługi Azure Resource Manager i usługi Azure Backup. Takie użytkownicy nadal muszą przedstawić prawidłowy token w usłudze Azure Active Directory, a musi uprawnień (skonfigurowana jako zasady dostępu) do wykonania żądanej operacji. Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="usage-scenarios"></a>Scenariusze użycia
+## <a name="usage-scenarios"></a>Scenariusze użytkowania
 
 Można skonfigurować [usługi Key Vault zapory i sieci wirtualne](key-vault-network-security.md) Aby odmówić dostępu do ruchu, ze wszystkich sieci (w tym ruch z Internetu) domyślnie. Możesz udzielić dostępu do ruchu z określonych sieciach wirtualnych platformy Azure i publicznej sieci internet, adres IP zakresu, co pozwala na tworzenie bezpiecznej granicy sieci dla aplikacji.
 
@@ -53,22 +53,22 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Key Vault 
 > Należy pamiętać o następujących ograniczeniach konfiguracji:
 > * Dozwolone są maksymalnie 127 reguł sieci wirtualnej i 127 reguły protokołu IPv4. 
 > * Używające zakresy adresów małych "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane. Zamiast tego należy skonfigurować te zakresy, za pomocą poszczególne reguły dotyczące adresów IP.
-> * Reguły sieciowych adresów IP są dozwolone tylko dla publicznych adresów IP. Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się **10.**, **172.16 31**, i **192.168.**. 
+> * Reguły sieciowych adresów IP są dozwolone tylko dla publicznych adresów IP. Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się **10.** , **172.16 31**, i **192.168.** . 
 > * W tej chwili obsługiwane są tylko adresy IPv4.
 
 ## <a name="trusted-services"></a>Zaufanych usług
 
 Oto lista zaufanych usług, które mogą uzyskać dostęp do magazynu kluczy, jeśli **Zezwalaj usługom zaufanych** opcja jest włączona.
 
-|Zaufaną usługę|Scenariusze użycia|
+|Zaufaną usługę|Scenariusze użytkowania|
 | --- | --- |
-|Usługa wdrażania Azure Virtual Machines|[Wdrażanie certyfikatów na maszynach wirtualnych z zarządzanego przez klienta usługi Key Vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
-|Usługa wdrażania szablonów Azure Resource Manager|[Przekazywanie bezpiecznych wartości podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
-|Usługa szyfrowania woluminów Azure Disk Encryption|Zezwalaj na dostęp do klucza funkcji BitLocker (systemu Windows Windows VM) lub DM hasło (maszyny Wirtualnej systemu Linux) i klucza szyfrowania podczas wdrażania maszyn wirtualnych. Dzięki temu [usługi Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
+|Usługa wdrażania w usłudze Azure Virtual Machines|[Wdrażanie certyfikatów na maszynach wirtualnych z zarządzanego przez klienta usługi Key Vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
+|Usługa wdrażania szablonów usługi Azure Resource Manager|[Przekazywanie bezpiecznych wartości podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
+|Usługa szyfrowania woluminów w usłudze Azure Disk Encryption|Zezwalaj na dostęp do klucza funkcji BitLocker (systemu Windows Windows VM) lub DM hasło (maszyny Wirtualnej systemu Linux) i klucza szyfrowania podczas wdrażania maszyn wirtualnych. Dzięki temu [usługi Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
 |Azure Backup|Zezwalaj na kopia zapasowa i przywracanie odpowiednich kluczy i wpisów tajnych podczas tworzenia kopii zapasowej maszyn wirtualnych platformy Azure, za pomocą [kopia zapasowa Azure](../backup/backup-introduction-to-azure-backup.md).|
 |Usługa Exchange Online i SharePoint Online|Zezwalaj na dostęp do klucza klienta szyfrowanie usługi Azure Storage za pomocą [klucz klienta](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
 |Azure Information Protection|Zezwalaj na dostęp do klucza dzierżawy do [usługi Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
-|Azure App Service|[Wdróż certyfikat aplikacji internetowej platformy Azure za pośrednictwem usługi Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/).|
+|Usługa Azure App Service|[Wdróż certyfikat aplikacji internetowej platformy Azure za pośrednictwem usługi Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Database|[Transparent Data Encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database i Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Szyfrowanie danych w usłudze Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) za pomocą klucza zarządzanego przez klienta.|

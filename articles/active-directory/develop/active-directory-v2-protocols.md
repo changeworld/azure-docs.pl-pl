@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546113"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417648"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoły platforma tożsamości firmy Microsoft
 
@@ -48,7 +48,7 @@ W prawie wszystkie przepływy protokołu OAuth 2.0 i OpenID Connect istnieją cz
 Każda aplikacja, która chce zaakceptować zarówno osobistych i kont służbowych muszą być zarejestrowane przy użyciu **rejestracje aplikacji** środowiska w [witryny Azure portal](https://aka.ms/appregistrations) przed jego zaakceptowaniem tych użytkowników przy użyciu protokołu OAuth 2.0 lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisać kilka wartości do swojej aplikacji:
 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację
-* A **identyfikator URI przekierowania** lub **identyfikator pakietu** który może służyć do kierowania odpowiedzi z powrotem do aplikacji
+* A **identyfikator URI przekierowania** (opcjonalnie) który może służyć do kierowania odpowiedzi z powrotem do aplikacji
 * Kilka innych wartości specyficznych dla danego scenariusza.
 
 Aby uzyskać więcej szczegółowych informacji, zapoznaj się z procedurą [rejestracji aplikacji](quickstart-register-app.md).

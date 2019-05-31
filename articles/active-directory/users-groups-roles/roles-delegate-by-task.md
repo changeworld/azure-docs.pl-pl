@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468321"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417082"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów przez zadanie administratora w usłudze Azure Active Directory
 
@@ -57,7 +57,7 @@ Tworzenie, Odczyt, aktualizowanie i usuwanie użytkowników | Administrator glob
 Przeczytaj całą konfigurację | Administrator globalny | 
 Dzienniki inspekcji B2C odczytu | Administrator globalny ([dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
-## <a name="company-branding"></a>Znakowanie firmowe
+## <a name="company-branding"></a>Oznaczanie marką firmy
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -115,8 +115,8 @@ Przeczytaj całą konfigurację | Czytnika w subskrypcji platformy Azure zawiera
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Wyłączanie urządzenia | Administrator urządzeń w chmurze | 
-Włączanie urządzenia | Administrator urządzeń w chmurze | 
+Wyłączenie urządzenia | Administrator urządzenia w chmurze | 
+Włącz urządzenie | Administrator urządzenia w chmurze | 
 Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Klucze funkcji BitLocker odczytu | Czytelnik zabezpieczeń | Hasło administratora, administrator zabezpieczeń
 
@@ -144,18 +144,18 @@ Aktualizowanie właściwości rejestracji jednokrotnej | Właściciel aplikacji 
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator użytkownika | 
-Utwórz grupę | Administrator użytkownika | 
-Tworzenie, aktualizowanie lub usuwanie przeglądu dostępu grupy lub aplikacji | Administrator użytkownika | 
-Zarządzanie wygasaniem grupy | Administrator użytkownika | 
+Przypisywanie licencji | Administrator użytkowników | 
+Utwórz grupę | Administrator użytkowników | 
+Tworzenie, aktualizowanie lub usuwanie przeglądu dostępu grupy lub aplikacji | Administrator użytkowników | 
+Zarządzanie wygasaniem grupy | Administrator użytkowników | 
 Zarządzenie ustawieniami grup | Administrator globalny | 
 Przeczytaj całą konfigurację (z wyjątkiem ukrytych członkostwa) | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Odczytuj informacje o ukrytym członkostwie | Członek grupy | Właściciel grupy, hasło administratora, administrator programu Exchange, administrator programu SharePoint, zespoły administratora, administrator użytkowników
 Przeczytaj członkostwa w grupach z ukrytym członkostwie | Administrator pomocy technicznej | Administrator użytkowników, administrator zespołów
-Odwoływanie licencji | Administrator licencji | Administrator użytkownika
-Zaktualizuj członkostwo w grupie | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
-Właściciele grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
-Właściwości grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
+Odwoływanie licencji | Administrator licencji | Administrator użytkowników
+Zaktualizuj członkostwo w grupie | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
+Właściciele grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
+Właściwości grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -176,9 +176,9 @@ Przeczytaj luk w zabezpieczeniach | Czytelnik zabezpieczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator licencji | Administrator użytkownika
+Przypisywanie licencji | Administrator licencji | Administrator użytkowników
 Przeczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odwoływanie licencji | Administrator licencji | Administrator użytkownika
+Odwoływanie licencji | Administrator licencji | Administrator użytkowników
 Wypróbuj i Kup subskrypcję | Administrator rozliczeń | 
 
 
@@ -186,13 +186,13 @@ Wypróbuj i Kup subskrypcję | Administrator rozliczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Odczytaj dzienniki inspekcji | Czytelnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
+Odczytaj dzienniki inspekcji | Czytnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
 
 ## <a name="monitoring---sign-ins"></a>Monitorowanie — logowania
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Odczytywania dzienników logowania | Czytelnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
+Odczytywania dzienników logowania | Czytnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
 
 ## <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
@@ -209,7 +209,7 @@ Przywróć uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urzą
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Zablokuj/odblokuj użytkowników | Administrator globalny | 
+Blokowanie/odblokowywanie użytkowników | Administrator globalny | 
 Konfigurowanie blokady konta | Administrator globalny | 
 Skonfiguruj reguły buforowania | Administrator globalny | 
 Skonfiguruj alert oszustwa | Administrator globalny
@@ -247,16 +247,16 @@ Przeczytaj całą konfigurację | Administrator zabezpieczeń | Administrator u�
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie użytkowników do ról | Administrator ról uprzywilejowanych | 
-Konfigurowanie ustawień roli | Administrator ról uprzywilejowanych | 
+Przypisywanie użytkowników do ról | Administrator roli uprzywilejowanej | 
+Konfigurowanie ustawień roli | Administrator roli uprzywilejowanej | 
 Wyświetl działania inspekcji | Czytelnik zabezpieczeń | 
 Przeglądanie członkostwa w roli | Czytelnik zabezpieczeń | 
 
-## <a name="roles-and-administrators"></a>Role i administratorzy
+## <a name="roles-and-administrators"></a>Role i Administratorzy
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Zarządzanie przypisaniami ról | Administrator ról uprzywilejowanych | 
+Zarządzanie przypisaniami ról | Administrator roli uprzywilejowanej | 
 Przegląd dostępu do odczytu roli usługi Azure AD  | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administratorem ról uprzywilejowanych
 Przeczytaj całą konfigurację | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 
@@ -314,22 +314,22 @@ Przeczytaj użytkowników oznaczonych flagą ryzyka | Czytelnik zabezpieczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Dodawanie użytkownika do roli w katalogu | Administrator ról uprzywilejowanych | 
-Dodaj użytkownika do grupy | Administrator użytkownika | 
-Przypisywanie licencji | Administrator licencji | Administrator użytkownika
-Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkownika
-Tworzenie użytkownika | Administrator użytkownika | 
-Usuwanie użytkowników | Administrator użytkownika | 
-Unieważnienie tokenów odświeżania z administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkownika | 
-Unieważnienie tokenów odświeżania dla użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkownika
+Dodawanie użytkownika do roli w katalogu | Administrator roli uprzywilejowanej | 
+Dodawanie użytkownika do grupy | Administrator użytkowników | 
+Przypisywanie licencji | Administrator licencji | Administrator użytkowników
+Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkowników
+Tworzenie użytkownika | Administrator użytkowników | 
+Usuwanie użytkowników | Administrator użytkowników | 
+Unieważnienie tokenów odświeżania z administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkowników | 
+Unieważnienie tokenów odświeżania dla użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkowników
 Unieważnienie tokenów odświeżania uprzywilejowanych administratorów (w dokumentacji) | Administrator globalny | 
 Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
-Resetowanie hasła dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkownika | 
-Resetowanie hasła użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkownika
+Resetowanie hasła dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkowników | 
+Resetowanie hasła użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkowników
 Resetuj hasło uprzywilejowanych administratorów | Administrator globalny | 
-Odwoływanie licencji | Administrator licencji | Administrator użytkownika
-Aktualizuj wszystkie właściwości, z wyjątkiem główna nazwa użytkownika | Administrator użytkownika | 
-Zaktualizuj główną nazwę użytkownika dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkownika | 
+Odwoływanie licencji | Administrator licencji | Administrator użytkowników
+Aktualizuj wszystkie właściwości, z wyjątkiem główna nazwa użytkownika | Administrator użytkowników | 
+Zaktualizuj główną nazwę użytkownika dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkowników | 
 Zaktualizuj właściwość główną nazwę użytkownika w uprzywilejowanych administratorów (w dokumentacji) | Administrator globalny | 
 Aktualizowanie ustawień użytkownika | Administrator globalny | 
 
@@ -338,7 +338,7 @@ Aktualizowanie ustawień użytkownika | Administrator globalny |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Prześlij bilet pomocy technicznej | Administrator usługi | Administrator aplikacji, rozliczenia, Administrator, Administrator aplikacji w chmurze, Administrator do spraw zgodności, Dynamics 365 administratora, Administrator Analytics pulpitu, Administrator programu Exchange, Administrator haseł, Information Protection Administrator, Administrator usługi Intune, usługi Skype dla administratora firmy, Power BI Administrator, uprzywilejowanego uwierzytelniania administratora, Administrator programu SharePoint, administratora komunikacji zespołów, zespoły administratora, Administrator użytkowników Administrator usługi Analytics w miejscu pracy
+Prześlij bilet pomocy technicznej | Administrator usługi | Administrator aplikacji Azure Administrator usługi Information Protection, rozliczeń administratora, Administrator aplikacji w chmurze zgodności Administrator, Administrator Dynamics 365, analizy pulpitu administratora, Administrator programu Exchange hasła Administrator, Administrator usługi Intune, usługi Skype dla administratora firmy, Power BI Administrator, uprzywilejowanego uwierzytelniania administratora, Administrator programu SharePoint, administratora komunikacji zespołów, zespoły administratora, Administrator użytkowników Administrator usługi Analytics w miejscu pracy
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989847"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298488"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -24,6 +24,21 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 + Usługi Azure Machine Learning [ **przygotowania danych zestawu SDK**](https://aka.ms/data-prep-sdk)
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
+
+## <a name="2019-05-28"></a>2019-05-28
+
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Zestaw SDK v1.1.4 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Nowe funkcje**
+  + Następujące funkcje języka wyrażeń umożliwia teraz wyodrębnianie i analizowanie wartości typu datetime do nowych kolumn.
+    + `RegEx.extract_record()` wyodrębnia daty/godziny elementy do nowej kolumny.
+    + `create_datetime()` Tworzy obiekty daty/godziny na podstawie elementów oddzielne daty/godziny.
+  + Podczas wywoływania `get_profile()`, można teraz zobaczyć, czy kwantyl kolumny są oznaczone jako (szacowane), aby jasno wskazywać, że wartości mają charakter szacunkowy.
+  + Teraz możesz używać ** symboli wieloznacznych podczas odczytu z magazynu obiektów Blob platformy Azure.
+    + Np. `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+
++ **Poprawki błędów**
+  + Naprawiono usterki związane z Odczyt pliku Parquet ze źródła zdalnego (usługi Azure Blob).
 
 ## <a name="2019-05-14"></a>2019-05-14
 

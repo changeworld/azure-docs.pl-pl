@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573643"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393121"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. 
@@ -38,7 +38,7 @@ Aby skonfigurować swoje dane referencyjne, najpierw musisz utworzyć danych wej
 |Wzorzec ścieżki   | Ścieżka używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących 2 zmiennych:<BR>{date}, {time}<BR>Przykład 1: products/{date}/{time}/product-list.csv<BR>Przykład 2: products/{date}/product-list.csv<BR>Przykład 3: Lista-produktów.csv<BR><br> Jeśli obiekt blob nie istnieje w określonej ścieżce, zadanie usługi Stream Analytics będzie czekać w nieskończoność dla obiektu blob staną się dostępne.   |
 |Format daty [opcjonalnie]   | Jeśli używano {date} w ramach wzorzec ścieżki, który określiłeś, format daty, w którym sklasyfikowano obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: RRRR/MM/DD/MM/DD/RRRR, itp.   |
 |Format czasu [opcjonalnie]   | Jeśli używano {time} w ramach wzorzec ścieżki, który określiłeś, format czasu, w którym sklasyfikowano obiektów blob można wybrać z listy rozwijanej obsługiwanych formatów.<BR>Przykład: HH gg/mm i HH mm.  |
-|Format serializacji zdarzeń   | Aby zapytania działały zgodnie z oczekiwaniami, usługa Stream Analytics musi znać format serializacji używany w przypadku przychodzących strumieni danych. Dane referencyjne są obsługiwane formaty: CSV i JSON.  |
+|Format serializacji zdarzeń   | Aby upewnić się, że Twoje zapytania działały zgodnie z oczekiwaniami, usługa Stream Analytics musi znać format serializacji używany w przypadku przychodzących strumieni danych. Dane referencyjne są obsługiwane formaty: CSV i JSON.  |
 |Kodowanie   | UTF-8 to jedyny obsługiwany obecnie format kodowania.  |
 
 ### <a name="static-reference-data"></a>Statyczne dane referencyjne
@@ -72,7 +72,7 @@ Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB
 3. Obiekty BLOB danych referencyjnych są **nie** uporządkowane w czasie "Ostatniej modyfikacji" obiektu blob, ale tylko w programie Data i godzina określone w obiekcie blob przy użyciu {date} i {time} podstawienia.
 3. Aby uniknąć konieczności listy dużą liczbę obiektów blob, rozważ usunięcie bardzo starych obiektów blob, dla których przetwarzanie zostanie już wykonane. Należy pamiętać, ASA może przejść, trzeba ponownie przetworzyć małą ilością w niektórych scenariuszach, takich jak ponowne uruchomienie komputera.
 
-## <a name="azure-sql-database-preview"></a>Usługa Azure SQL Database (wersja zapoznawcza)
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 Danych odwołania w usłudze Azure SQL Database są pobierane przez zadanie usługi Stream Analytics i są przechowywane jako migawka w pamięci dla przetwarzania. Migawki danych odwołania także są przechowywane w kontenerze na koncie magazynu, który określisz w ustawieniach konfiguracji. Kontener jest utworzony automatycznie podczas uruchamiania zadania. Jeśli zadanie jest zatrzymana lub przechodzi do stanu nie powiodło się, kontenery utworzone automatycznie są usuwane po ponownym uruchomieniu zadania.  
 
@@ -93,9 +93,9 @@ Aby skonfigurować dane odwołanie do bazy danych SQL, należy najpierw utworzy�
 |Database (Baza danych)|Azure SQL Database zawierającą dane odwołanie.|
 |Nazwa użytkownika|Nazwa użytkownika skojarzony z usługi Azure SQL Database.|
 |Hasło|Hasło skojarzone z usługi Azure SQL Database.|
-|Odświeżaj okresowo|Ta opcja pozwala wybrać częstotliwość odświeżania. Wybieranie "Włączone" pozwoli określić częstotliwość odświeżania w DD:HH:MM.|
-|Zapytanie migawki|Jest to domyślna opcja zapytanie pobiera dane referencyjne z bazy danych SQL.|
-|Zapytanie delta|W przypadku zaawansowanych scenariuszy z dużych zestawów danych i krótki częstotliwość odświeżania, dodasz zapytania różnicowego.|
+|Okresowo odświeżania|Ta opcja pozwala wybrać częstotliwość odświeżania. Wybieranie "Włączone" pozwoli określić częstotliwość odświeżania w DD:HH:MM.|
+|Zapytanie o migawki|Jest to domyślna opcja zapytanie pobiera dane referencyjne z bazy danych SQL.|
+|Zapytania różnicowego|W przypadku zaawansowanych scenariuszy z dużych zestawów danych i krótki częstotliwość odświeżania, dodasz zapytania różnicowego.|
 
 ## <a name="size-limitation"></a>Ograniczenie rozmiaru
 

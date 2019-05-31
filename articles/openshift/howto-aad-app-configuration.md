@@ -1,20 +1,20 @@
 ---
 title: Integracja usługi Azure Active Directory dla usługi Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć grupę zabezpieczeń usługi Azure AD i użytkownika do testowania aplikacji w klastrze usługi Microsoft Azure Red Hat OpenShift.
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.service: openshift
 manager: jeconnoc
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: f6b87748c33c1afd047ae25dfb7df3670a73e7c8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779680"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306474"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integracja usługi Azure Active Directory dla usługi Azure Red Hat OpenShift
 
@@ -69,7 +69,7 @@ Jeśli Twoja organizacja nie ma jeszcze rejestracji aplikacji usługi Azure Acti
 2. W **rejestrowania aplikacji** okienku, wprowadź nazwę dla rejestracji aplikacji.
 3. Upewnij się, że w obszarze **obsługiwane typy kont** , **kont w tym katalogu organizacji tylko** jest zaznaczone. Jest to najbezpieczniejsza opcja wyboru.
 4. Firma Microsoft doda identyfikatora URI przekierowania później, gdy wiemy, że identyfikator URI klastra. Kliknij przycisk **zarejestrować** przycisk, aby utworzyć rejestrację aplikacji usługi Azure AD.
-5. Na wyświetlonej stronie Skopiuj **identyfikator aplikacji (klienta)**. Firma Microsoft będzie odnosił się do tej wartości jako `APPID` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
+5. Na wyświetlonej stronie Skopiuj **identyfikator aplikacji (klienta)** . Firma Microsoft będzie odnosił się do tej wartości jako `APPID` w [Tworzenie klastra usługi Azure Red Hat OpenShift](tutorial-create-cluster.md) samouczka.
 
 ![Zrzut ekranu przedstawiający stronę obiektu aplikacji](./media/howto-create-tenant/get-app-id.png)
 

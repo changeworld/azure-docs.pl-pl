@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124717"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399595"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
@@ -68,7 +68,7 @@ Oto, co jest potrzebne do skonfigurowania tego scenariusza.
 **Wymaganie** | **Szczegóły**
 --- | ---
 **Konto subskrypcji platformy Azure** | Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
-**Uprawnienia konta platformy Azure** | Konto platformy Azure, którego używasz wymaga uprawnień do:<br/><br/> — Utwórz magazyn usługi Recovery Services<br/><br/> — Tworzenie maszyny wirtualnej w grupie zasobów i sieć wirtualną, używanych w przypadku scenariusza<br/><br/> -Zapisu do konta magazynu, które określisz<br/><br/> Należy pamiętać, że:<br/><br/> — Jeśli utworzysz konto, jesteś administratorem subskrypcji i mogą wykonywać wszystkie akcje.<br/><br/> — Jeśli używasz istniejącej subskrypcji i nie jesteś administratorem, musisz skontaktować się z administratorem w celu uprawnień właściciela lub współautora.<br/><br/> — Jeśli potrzebujesz bardziej szczegółowych uprawnień, zapoznaj się z [w tym artykule](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
+**Uprawnienia konta platformy Azure** | Konto platformy Azure, którego używasz wymaga uprawnień do:<br/><br/> — Utwórz magazyn usługi Recovery Services<br/><br/> — Tworzenie maszyny wirtualnej w grupie zasobów i sieć wirtualną, używanych w przypadku scenariusza<br/><br/> -Zapisu do konta magazynu, które określisz<br/><br/> Należy pamiętać o następujących kwestiach:<br/><br/> — Jeśli utworzysz konto, jesteś administratorem subskrypcji i mogą wykonywać wszystkie akcje.<br/><br/> — Jeśli używasz istniejącej subskrypcji i nie jesteś administratorem, musisz skontaktować się z administratorem w celu uprawnień właściciela lub współautora.<br/><br/> — Jeśli potrzebujesz bardziej szczegółowych uprawnień, zapoznaj się z [w tym artykule](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
 **Usługa Azure Stack maszyny Wirtualnej** | Potrzebujesz maszyny Wirtualnej platformy Azure Stack, w ramach subskrypcji dzierżawy, który zostanie wdrożony jako serwera konfiguracji usługi Site Recovery. 
 
 

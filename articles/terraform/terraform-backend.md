@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89108f02957990ad1c7eb736f39de89537f06db5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60905892"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297916"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Stan programu Terraform Store w usłudze Azure Storage
 
@@ -79,7 +79,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 Aby skonfigurować narzędzie Terraform w celu użycia wewnętrznej bazy danych, należy dołączyć *zaplecza* konfiguracji o typie *azurerm* wewnątrz konfiguracji programu Terraform. Dodaj *storage_account_name*, *container_name*, i *klucz* wartości do bloku konfiguracji.
 
-Poniższy przykład umożliwia skonfigurowanie programu Terraform w wewnętrznej bazie danych i tworzy i grupy zasobów platformy Azure. Zastąp wartości wartościami z używanego środowiska.
+Poniższy przykład umożliwia skonfigurowanie programu Terraform w wewnętrznej bazie danych i tworzy grupę zasobów platformy Azure. Zastąp wartości wartościami z używanego środowiska.
 
 ```json
 terraform {

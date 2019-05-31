@@ -6,20 +6,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1659ab72620b6bf91eb932f8414a0f6600350e37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714470"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257997"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari upraszcza zarządzanie i monitorowanie klastra Apache Hadoop, zapewniając łatwy do użycia interfejsu użytkownika sieci web i interfejsu API REST. Ambari znajduje się w klastrach HDInsight opartych na systemie Linux i służy do monitorowania klastra i wprowadzania zmian w konfiguracji.
+Apache Ambari upraszcza zarządzanie i monitorowanie klastra Apache Hadoop, zapewniając łatwy do użycia interfejsu użytkownika sieci web i interfejsu API REST. Ambari znajduje się w klastrach HDInsight i służy do monitorowania klastra i wprowadzania zmian w konfiguracji.
 
 W tym dokumencie dowiesz się, jak używać interfejsu użytkownika sieci Web Ambari z klastrem usługi HDInsight.
 
@@ -27,14 +27,9 @@ W tym dokumencie dowiesz się, jak używać interfejsu użytkownika sieci Web Am
 
 [Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie usługi Hadoop, udostępniając łatwy w użyciu interfejsu użytkownika sieci web. Ambari służy do zarządzania i monitorowania klastrów platformy Hadoop. Deweloperzy mogą integrować możliwości swoich aplikacji za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-Interfejs użytkownika sieci Web Ambari znajduje się domyślnie z klastrami HDInsight, które używają systemu operacyjnego Linux.
-
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). 
-
 ## <a name="connectivity"></a>Łączność
 
-Interfejs użytkownika sieci Web Ambari jest dostępna w klastrze usługi HDInsight w HTTPS://CLUSTERNAME.azurehdinsight.net, gdzie **CLUSTERNAME** jest nazwą klastra.
+Interfejs użytkownika sieci Web Ambari jest dostępna w klastrze usługi HDInsight w `https://CLUSTERNAME.azurehdinsight.net`, gdzie `CLUSTERNAME` jest nazwą klastra.
 
 > [!IMPORTANT]  
 > Nawiązywanie połączenia z systemu Ambari w HDInsight wymaga protokołu HTTPS. Po wyświetleniu monitu o uwierzytelnienie, użyj nazwy konta administratora i hasło podane podczas tworzenia klastra.
@@ -54,23 +49,17 @@ Po otwarciu strony, należy zwrócić uwagę na pasek u góry. Ten pasek zawiera
 
 ![ambari nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
 
-* **Logo systemu Ambari** — zostanie otwarty pulpit nawigacyjny, który może służyć do monitorowania klastra.
-
-* **Klaster platformy ops # nazwa** -Wyświetla liczbę trwające operacje Ambari. Wybieranie nazwy klastra lub **# ops** Wyświetla listę operacji w tle.
-
-* **alerty (#)** -wyświetla ostrzeżenia lub krytyczny alerty, jeśli istnieje klastra.
-
-* **Pulpit nawigacyjny** -Wyświetla pulpitu nawigacyjnego.
-
-* **Usługi** — informacje i ustawień konfiguracji dla usług w klastrze.
-
-* **Hosty** — informacje i ustawień konfiguracji dla węzłów w klastrze.
-
-* **Alerty** -dziennika informacje, ostrzeżenia i krytyczne alerty.
-
-* **Administrator** -stosu/usług oprogramowania, które są zainstalowane w klastrze, informacje o koncie usługi i zabezpieczeń protokołu Kerberos.
-
-* **Przycisk administratora** -Ambari zarządzania, ustawienia użytkownika i wylogowania.
+|Element |Opis |
+|---|---|
+|Logo systemu Ambari|Zostanie otwarty pulpit nawigacyjny, który może służyć do monitorowania klastra.|
+|Platforma ops # nazwa klastra|Wyświetla liczbę trwające operacje Ambari. Wybieranie nazwy klastra lub **# ops** Wyświetla listę operacji w tle.|
+|alerty (#)|Wyświetla ostrzeżenia lub krytyczny alertów, jeśli istnieje klastra.|
+|Pulpit nawigacyjny|Wyświetla pulpitu nawigacyjnego.|
+|Usługi|Informacje i ustawień konfiguracji dla usług w klastrze.|
+|Hosts|Informacje i ustawień konfiguracji dla węzłów w klastrze.|
+|Alerty|Dziennik informacje, ostrzeżenia i krytyczne alerty.|
+|Jednostka administracyjna|Stos/usług oprogramowania, które są zainstalowane w klastrze, informacje o koncie usługi i zabezpieczeń protokołu Kerberos.|
+|Przycisk administratora|Zarządzanie Ambari, ustawienia użytkownika i Wyloguj.|
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -162,31 +151,18 @@ Praca z użytkowników, grupy i uprawnienia są obsługiwane w przypadku korzyst
 
 2. Użyj **akcje** w menu akcji, którą chcesz wykonać:
 
-   * **Uruchom wszystkie składniki** -Start wszystkie składniki na hoście.
-
-   * **Zatrzymaj wszystkie składniki** — Zatrzymaj wszystkie składniki na hoście.
-
-   * **Uruchom ponownie wszystkie składniki** — Zatrzymaj i uruchom wszystkie składniki na hoście.
-
-   * **Włącz tryb konserwacji** -pomija alertów dla hosta. W tym trybie powinno być włączone, jeśli są wykonywane działania, które generują alerty. Na przykład zatrzymanie i uruchomienie usługi.
-
-   * **Wyłącz tryb konserwacji** — zwraca hosta do normalnego alertów.
-
-   * **Zatrzymaj** -DataNode zatrzymuje lub NodeManagers na hoście.
-
-   * **Rozpocznij** -DataNode rozpoczyna się lub NodeManagers na hoście.
-
-   * **Uruchom ponownie** -zatrzymuje i uruchamia DataNode lub NodeManagers na hoście.
-
-   * **Likwidowanie** -usuwa hosta z klastra.
-
-     > [!NOTE]  
-     > Nie należy używać tej akcji w klastrach HDInsight.
-
-   * **Recommission** — dodaje wcześniej zlikwidowana hosta do klastra.
-
-     > [!NOTE]  
-     > Nie należy używać tej akcji w klastrach HDInsight.
+    |Element |Opis |
+    |---|---|
+    |Uruchom wszystkie składniki|Uruchom wszystkie składniki na hoście.|
+    |Zatrzymaj wszystkie składniki|Zatrzymaj wszystkie składniki na hoście.|
+    |Uruchom ponownie wszystkie składniki|Uruchamiaj i zatrzymuj wszystkie składniki na hoście.|
+    |Włącz tryb konserwacji|Pomija alertów dla hosta. W tym trybie powinno być włączone, jeśli są wykonywane działania, które generują alerty. Na przykład zatrzymanie i uruchomienie usługi.|
+    |Wyłącz tryb konserwacji|Zwraca hosta do normalnego alertów.|
+    |Stop|Zatrzymuje DataNode lub NodeManagers na hoście.|
+    |Początek|Uruchamia DataNode lub NodeManagers na hoście.|
+    |Ponowne uruchamianie|Zatrzymuje i uruchamia DataNode lub NodeManagers na hoście.|
+    |Likwidowanie wdrożenia|Usuwa hosta z klastra. **Nie należy używać tej akcji w klastrach HDInsight.**|
+    |Recommission|Dodaje wcześniej zlikwidowana hosta do klastra. **Nie należy używać tej akcji w klastrach HDInsight.**|
 
 ### <a id="service"></a>Usługi
 
@@ -226,7 +202,6 @@ Aby skonfigurować usługę, użyj następujących kroków:
 ## <a name="ambari-views"></a>Widoki Ambari
 
 Widoki Ambari umożliwiają deweloperom Podłącz elementy interfejsu użytkownika do przy użyciu interfejsu użytkownika sieci Web Ambari [Apache Ambari widoków Framework](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight udostępnia następujące widoki z typami klastrów usługi Hadoop:
-
 
 * Widok programu hive: Hive View umożliwia uruchamianie zapytań Hive bezpośrednio w przeglądarce sieci web. Możesz zapisać zapytania, wyświetlić wyniki, Zapisz wyniki do magazynu klastra lub pobrać wyniki do systemu lokalnego. Aby uzyskać więcej informacji na temat korzystania z widoków programu Hive, zobacz [Użyj Apache Hive widoków z HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
 

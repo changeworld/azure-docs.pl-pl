@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415488"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240171"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -31,13 +31,13 @@ W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu E
 >
 > Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 
-Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem klastra HDInsight z ESP. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
+Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem klastra HDInsight z ESP. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/create-instance.md). 
 
 Po włączeniu usług AD DS Azure wszystkich użytkowników i obiekty rozpocząć synchronizowanie z usługi Azure Active Directory (AAD) do usługi Azure AD — DS domyślnie. Długość operacji synchronizacji jest zależna od liczby obiektów w usłudze Azure AD. Synchronizacja może potrwać kilka dni w setkach tysięcy obiektów. 
 
-Można zsynchronizować tylko grupy, którzy potrzebują dostępu do klastrów HDInsight. Tej opcji tylko określone grupy synchronizacji jest nazywany *zakresu synchronizacji*. Zobacz [konfigurowania zakresu synchronizacji z usługi Azure AD do domeny zarządzanej](../../active-directory-domain-services/active-directory-ds-scoped-synchronization.md) instrukcje.
+Można zsynchronizować tylko grupy, którzy potrzebują dostępu do klastrów HDInsight. Tej opcji tylko określone grupy synchronizacji jest nazywany *zakresu synchronizacji*. Zobacz [konfigurowania zakresu synchronizacji z usługi Azure AD do domeny zarządzanej](../../active-directory-domain-services/scoped-synchronization.md) instrukcje.
 
-Podczas włączania bezpiecznego protokołu LDAP, umieść nazwę domeny w polu Nazwa podmiotu i alternatywnej nazwy podmiotu w certyfikacie. Na przykład, jeśli nazwa domeny to *contoso100.onmicrosoft.com*, upewnij się, że takiej samej nazwie istnieje w nazwie podmiotu certyfikatu i alternatywnej nazwy podmiotu. Aby uzyskać więcej informacji, zobacz [domeny zarządzanej przez Konfigurowanie bezpiecznego protokołu LDAP dla usługi Azure AD — DS](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). Poniżej przedstawiono przykład tworzenia certyfikatu z podpisem własnym i nazwy domeny (*contoso100.onmicrosoft.com*) w nazwie podmiotu i DnsName (alternatywnej nazwy podmiotu):
+Podczas włączania bezpiecznego protokołu LDAP, umieść nazwę domeny w polu Nazwa podmiotu i alternatywnej nazwy podmiotu w certyfikacie. Na przykład, jeśli nazwa domeny to *contoso100.onmicrosoft.com*, upewnij się, że takiej samej nazwie istnieje w nazwie podmiotu certyfikatu i alternatywnej nazwy podmiotu. Aby uzyskać więcej informacji, zobacz [domeny zarządzanej przez Konfigurowanie bezpiecznego protokołu LDAP dla usługi Azure AD — DS](../../active-directory-domain-services/configure-ldaps.md). Poniżej przedstawiono przykład tworzenia certyfikatu z podpisem własnym i nazwy domeny (*contoso100.onmicrosoft.com*) w nazwie podmiotu i DnsName (alternatywnej nazwy podmiotu):
 
 ```powershell
 $lifetime=Get-Date

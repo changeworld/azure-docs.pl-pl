@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 05/29/2019
+ms.author: monhaber
+ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968589"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400161"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Zabezpieczenia zaawansowanych danych dla serwerów SQL iaas
-Zabezpieczenia zaawansowanych danych dla serwerów SQL w usłudze IaaS to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Obecnie zawiera funkcje, dzięki czemu są ujawniane łagodzenia potencjalne luki bazy danych i wykrywanie nietypowych działań wskazujących zagrożenie z bazą danych.
+Zabezpieczeń zaawansowanych danych dla serwerów SQL w usłudze Azure Virtual Machines to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Obecnie zawiera funkcje, dzięki czemu są ujawniane łagodzenia potencjalne luki bazy danych i wykrywanie nietypowych działań wskazujących zagrożenie z bazą danych. 
 
-Oferty dla serwerów IaaS SQL zabezpieczeń opiera się na tych samych podstawowych technologii używanej do [pakietu zaawansowane bezpieczeństwo danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
+Zabezpieczenia, tej oferty dla serwerów SQL maszyn wirtualnych platformy Azure są oparte na tych samych podstawowych technologii używanej do [pakietu zaawansowane bezpieczeństwo danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
 
 ## <a name="overview"></a>Przegląd
 
-Bezpieczeństwo danych Zaawansowane (ADS) zawiera zbiór zaawansowane funkcje zabezpieczeń programu SQL, składające się z oceny luk w zabezpieczeniach i Zaawansowana ochrona przed zagrożeniami.
+Bezpieczeństwo danych zaawansowane zawiera zbiór zaawansowane funkcje zabezpieczeń programu SQL, składające się z oceny luk w zabezpieczeniach i Zaawansowana ochrona przed zagrożeniami.
 
 * [Ocena luk w zabezpieczeniach](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) jest łatwa do skonfigurowania usługi odnajdywania, śledzenie i ułatwić korygowanie potencjalnych luk w bazie danych. Zapewnia wgląd w stan zabezpieczeń i zawiera kroki, aby rozwiązać problemy z zabezpieczeniami i poprawić funkcjonalność z fortifications swojej bazy danych.
 * [Zaawansowana ochrona przed zagrożeniami](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać program SQL server. Stale monitoruje bazę danych pod kątem podejrzanych działań i zawiera alerty zabezpieczeń zorientowanych na akcje dotyczące bazy danych nietypowe wzorce dostępu. Te alerty zawierają szczegółowe informacje podejrzanych działań i rekomendowanych działań umożliwiających zbadania i wyeliminowania zagrożenia.
 
-## <a name="get-started-with-ads-for-iaas"></a>Rozpoczynanie korzystania z REKLAM dla IaaS
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Rozpoczynanie pracy z zabezpieczeniami zaawansowanymi danych SQL na maszynach wirtualnych platformy Azure
 
-Poniższe kroki ułatwiające rozpoczęcie pracy z REKLAM dla IaaS.
+Poniższe kroki ułatwiające rozpoczęcie pracy z zabezpieczeniami zaawansowanymi danych SQL na maszynach wirtualnych platformy Azure.
 
-### <a name="set-up-ads-for-iaas"></a>Ustawienia REKLAM dla IaaS
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Skonfiguruj zaawansowane zabezpieczenia danych SQL na maszynach wirtualnych platformy Azure
 
 **Przed rozpoczęciem**: Należy obszar roboczy usługi Log Analytics do przechowywania dzienników zabezpieczeń analizowane. Jeśli nie masz, a następnie możesz utworzyć je łatwo, jak wyjaśniono w [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -55,7 +55,7 @@ Poniższe kroki ułatwiające rozpoczęcie pracy z REKLAM dla IaaS.
 
 1. Wybierz obszar roboczy, a następnie kliknij przycisk **Utwórz**.
 
-   ![Wybierz obszar roboczy](./media/security-center-advanced-iaas-data/sql-workspace.png)
+   ![Wybór obszaru roboczego](./media/security-center-advanced-iaas-data/sql-workspace.png)
 
 1. Uruchom ponownie [maszyny Wirtualnej programu SQL server](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017).
 
@@ -95,14 +95,14 @@ Można wyświetlać i zarządzać bieżące alerty zabezpieczeń.
 
 Możesz ustawić listę adresatów otrzymujących wiadomość e-mail z powiadomieniem, gdy zostaną wygenerowane alerty usługi ASC. Wiadomość e-mail zawiera bezpośredni link do alertu w usłudze Azure Security Center z wszystkich odpowiednich szczegółów. 
 
-1. Przejdź do **usługi Security Center** > **zasady zabezpieczeń** i w wierszu kliknij odpowiednie subskrypcji **Edytuj ustawienia >**.
+1. Przejdź do **usługi Security Center** > **zasady zabezpieczeń** i w wierszu kliknij odpowiednie subskrypcji **Edytuj ustawienia >** .
 
     ![Ustawienia subskrypcji](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
 1. Z **ustawienia** kliknij menu **wiadomości E-mail z powiadomieniami**. 
 1. W **adres E-mail** tekstu wprowadź adresy e-mail, aby otrzymywać powiadomienia. Aby wprowadzić więcej niż jeden adres e-mail, adresy e-mail oddziel przecinkami (,).  Na przykład admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![Ustawienia wiadomości e-mail](./media/security-center-advanced-iaas-data/email-settings.png)
+      ![Ustawienia poczty e-mail](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. W **powiadomienia E-mail** ustawienia, z następujących opcji:
   
@@ -120,7 +120,7 @@ Pulpit nawigacyjny z oceny luk w zabezpieczeniach omówienie wyników oceny we w
 
 Można wyświetlić Twoje wyniki oceny luk w zabezpieczeniach i raporty bezpośrednio z usługi Log Analytics.
 
-1. Przejdź do obszaru roboczego usługi Log Analytics za pomocą rozwiązania REKLAM.
+1. Przejdź do obszaru roboczego usługi Log Analytics za pomocą rozwiązania w zakresie zaawansowanych zabezpieczeń danych.
 1. Przejdź do **rozwiązania** i wybierz **oceny luk w zabezpieczeniach SQL** rozwiązania.
 1. W **Podsumowanie** okienku kliknij **Wyświetl podsumowanie** i wybierz swoje **raport z oceny luk w zabezpieczeniach SQL**.
 
@@ -136,13 +136,13 @@ Można wyświetlić Twoje wyniki oceny luk w zabezpieczeniach i raporty bezpośr
 
    1. Następnie kliknij, aby wyświetlić szczegóły dotyczące każdej luk w zabezpieczeniach, w tym opis luk w zabezpieczeniach i wpływu, stan, skojarzone o podwyższonym ryzyku i rzeczywiste wyniki dla tej bazy danych. Rzeczywiste zapytanie, które zostało uruchomione do wykonania tego wyboru, a informacje o korygowaniu rozpoznawania tę lukę w zabezpieczeniach może być też widoczny.
 
-    ![Wybierz obszar roboczy](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    ![Wybór obszaru roboczego](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
 
-    ![Wybierz obszar roboczy](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
+    ![Wybór obszaru roboczego](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
 
 1. Możesz uruchomić żadnych zapytań usługi Log Analytics z danymi wyniki oceny luk w zabezpieczeniach, aby kątami danych zgodnie z potrzebami.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>Zaawansowana ochrona przed zagrożeniami, serwerami SQL IaaS alerty
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Zaawansowana ochrona przed zagrożeniami, serwerami SQL dotyczących alertów maszyny wirtualne platformy Azure
 Alerty są generowane na podstawie nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać serwerami programu SQL Server. Zdarzenia te można uruchomić następujące alerty:
 
 ### <a name="anomalous-access-pattern-alerts"></a>Dostęp z nietypowego wzorca alertów

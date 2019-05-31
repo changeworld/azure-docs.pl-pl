@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621566"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302240"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Aplikacja usługi Service Fabric i usługi zabezpieczeń
 Architektura mikrousług może przynieść [wiele korzyści](service-fabric-overview-microservices.md). Zarządzanie zabezpieczeniami mikrousług, jest jednak żądania i inne niż zarządzanie zabezpieczeniami tradycyjne aplikacje monolityczne. 
@@ -36,7 +36,7 @@ Pierwszym krokiem do podejmowania decyzji dotyczących zaufania poziom interfejs
 
 Jeśli usługi są dostępne bezpośrednio, usługi uwierzytelniania, takich jak Azure Active Directory lub mikrousług dedykowanych uwierzytelniania, pełniący funkcję zabezpieczeń, usługa tokenów (STS) może być używane do uwierzytelniania użytkowników. Usługi za pomocą tokenów zabezpieczających lub pliki cookie są współużytkowane decyzji dotyczących zaufania. 
 
-Dla platformy ASP.NET Core przy użyciu podstawowego mechanizmu [uwierzytelniania użytkowników](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) jest systemu członkostwa programu ASP.NET Core Identity. Tożsamości platformy ASP.NET Core przechowuje informacje o użytkowniku (w tym informacje logowania, ról i oświadczenia) w magazynie danych skonfigurowane przez dewelopera. Tożsamość platformy ASP.NET Core obsługuje uwierzytelnianie dwuskładnikowe.  Zewnętrzni dostawcy uwierzytelniania są również obsługiwane, dzięki czemu użytkownicy mogą zalogować się przy użyciu istniejące procesy uwierzytelniania od dostawców, takich jak Microsoft, Google, Facebook lub Twitter. 
+Dla platformy ASP.NET Core przy użyciu podstawowego mechanizmu [uwierzytelniania użytkowników](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) jest systemu członkostwa programu ASP.NET Core Identity. Tożsamości platformy ASP.NET Core przechowuje informacje o użytkowniku (w tym informacje logowania, ról i oświadczenia) w magazynie danych skonfigurowane przez dewelopera. Tożsamość platformy ASP.NET Core obsługuje uwierzytelnianie dwuskładnikowe.  Zewnętrzni dostawcy uwierzytelniania są również obsługiwane, dzięki czemu użytkownicy mogą się logować przy użyciu istniejące procesy uwierzytelniania od dostawców, takich jak Microsoft, Google, Facebook lub Twitter.
 
 ### <a name="authorization"></a>Autoryzacja
 Po uwierzytelnieniu usługi, należy autoryzować dostęp użytkownika lub określić, jakie użytkownik będzie mógł robić. Ten proces umożliwia usłudze się interfejsów API, niektórzy użytkownicy uwierzytelnieni, ale nie dla wszystkich. Autoryzacja jest prostopadły i niezależna od uwierzytelniania, które polega na upewnieniu się, kim jest użytkownik. Uwierzytelnianie może utworzyć jedną lub więcej tożsamości dla bieżącego użytkownika.

@@ -10,16 +10,16 @@ ms.subservice: load data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6bc1431ace55538c489d73e0a62d18f274c06d57
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a8bca6c1e56595e4a7d64f9f388c9daca0b166ac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873754"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242922"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse
 
-W tym samouczku magazyn danych WideWorldImportersDW jest ładowany z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse za pomocą programu PolyBase. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności: 
+W tym samouczku magazyn danych WideWorldImportersDW jest ładowany z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse za pomocą programu PolyBase. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu danych w witrynie Azure Portal
@@ -37,7 +37,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
-
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
@@ -1121,7 +1120,7 @@ Zostały wykonane następujące zadania:
 > * Wyświetlenie postępu ładowania danych
 > * Utworzenie statystyk dotyczących nowo załadowanych danych
 
-Przejdź do omówienia migracji, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych do usługi SQL Data Warehouse.
+Przejdź do omówienia rozwoju, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Dowiedz się, jak przeprowadzić migrację istniejącej bazy danych do usługi SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Decyzje projektowe, aby przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse](sql-data-warehouse-overview-develop.md)

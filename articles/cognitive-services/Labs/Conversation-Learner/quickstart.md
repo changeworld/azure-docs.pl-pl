@@ -3,19 +3,19 @@ title: Jak utworzyć model uczeń konwersacji za pomocą środowiska Node.js —
 titleSuffix: Azure
 description: Dowiedz się, jak utworzyć model uczeń konwersacji za pomocą środowiska Node.js.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: cc071d59a387c8ae4982eacbce6812526f447788
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708366"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388762"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Tworzenie modelu uczeń konwersacji za pomocą środowiska Node.js
 
@@ -61,7 +61,7 @@ Uczeń konwersacji projekt składa się z zestawu SDK, Dodaj do bota i usługi w
     > [!NOTE]
     > Podczas `npm install`, możesz zignorować ten błąd, jeśli występuje: `gyp ERR! stack Error: Can't find Python executable`
 
-2. Konfiguruj:
+2. Skonfiguruj:
 
    Utwórz plik o nazwie `.env` w katalogu `cl-bot-01`.  Zawartość pliku powinna być:
 

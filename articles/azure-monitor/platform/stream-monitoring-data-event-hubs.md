@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452684"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243465"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -43,7 +43,7 @@ Przed rozpoczęciem należy [Utwórz koncentrator przestrzeni nazw i zdarzeń us
 * Liczbę jednostek przepływności, można zwiększyć skalę przepływności usługi event hubs. Liczba partycji można zrównoleglić użycie wielu odbiorców. Jedna partycja wykonać maksymalnie 20MBps lub około 20 000 komunikatów na sekundę. W zależności od narzędzia korzystanie z danych może być lub może nie obsługiwać korzystanie z różnych partycji. Jeśli nie masz pewności co do liczby partycji można ustawić, zalecamy rozpoczęcie od cztery partycje.
 * Zalecane ustawienie przechowywanie komunikatów w Centrum zdarzeń do 7 dni. Jeśli narzędzie konsumencki przestanie działać więcej niż jeden dzień, dzięki temu narzędziu można wczytać tam, gdzie ją przerwaliśmy (zdarzenia maksymalnie 7 dni).
 * Zalecamy używanie domyślna grupa odbiorców Centrum zdarzeń. Nie ma potrzeby do tworzenia innych grup odbiorców lub używają grupy odbiorców oddzielne, chyba że użytkownik chce posiadać dwóch różnych narzędzi, które korzystają z tych samych danych, z tym samym Centrum zdarzeń.
-* Dla dziennika aktywności platformy Azure wybierz obszar nazw usługi Event Hubs i Azure Monitor tworzy Centrum zdarzeń w ramach tej przestrzeni nazw o nazwie "insights — dzienniki operationallogs." Dla innych typów dziennika można wybrać istniejącym Centrum zdarzeń (umożliwiając ponowne używanie tego samego Centrum zdarzeń insights — dzienniki operationallogs) lub usługi Azure Monitor Tworzenie Centrum zdarzeń dla każdej kategorii dziennika.
+* W dzienniku aktywności platformy Azure wybierz przestrzeń nazw usługi Event Hubs i Azure Monitor tworzy Centrum zdarzeń w ramach tej przestrzeni nazw o nazwie "insights — dzienniki operationallogs." Dla innych typów dziennika można wybrać istniejącym Centrum zdarzeń (umożliwiając ponowne używanie tego samego Centrum zdarzeń insights — dzienniki operationallogs) lub usługi Azure Monitor Tworzenie Centrum zdarzeń dla każdej kategorii dziennika.
 * Zwykle należy otworzyć port 5671 i 5672 na maszynie, korzystanie z danych z Centrum zdarzeń.
 
 Można również znaleźć [Azure Event Hubs — często zadawane pytania](../../event-hubs/event-hubs-faq.md).
@@ -118,7 +118,7 @@ Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monito
 
 ## <a name="next-steps"></a>Następne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](../../azure-monitor/platform/archive-activity-log.md)
-* [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
+* [Zapoznaj się z omówieniem dziennik aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
 * [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

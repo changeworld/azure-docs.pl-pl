@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 73785422a7c45a12671e6cd53da89609190a8352
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66141407"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243285"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure rozpoczyna się od informacji w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -103,7 +103,7 @@ Poniżej przedstawiono listę typowych problemów z błędną konfiguracją, kt�
 * **Niestandardowe ustawienia serwera DNS**: Usługa API Management jest zależna od kilka usług platformy Azure. Kiedy usługa API Management znajduje się w sieci Wirtualnej za pomocą niestandardowego serwera DNS, należy go rozpoznać nazwy hostów tych usług platformy Azure. Postępuj zgodnie z [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wskazówki dotyczące konfiguracją niestandardowego serwera DNS. Zobacz w poniższej tabeli portów i inne wymagania dotyczące sieci dla odwołania.
 
 > [!IMPORTANT]
-> Jeśli planujesz użyć niestandardowych serwerów DNS dla sieci Wirtualnej, należy skonfigurować ją **przed** wdrażanie usługi API Management do niego. W przeciwnym razie należy zaktualizować usługę API Management po każdej zmianie serwery DNS, uruchamiając [zastosować operacja konfiguracji sieci](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Jeśli planujesz użyć niestandardowych serwerów DNS dla sieci Wirtualnej, należy skonfigurować ją **przed** wdrażanie usługi API Management do niego. W przeciwnym razie należy zaktualizować usługę API Management po każdej zmianie serwery DNS, uruchamiając [zastosować operacja konfiguracji sieci](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Porty wymagane dla usługi API Management**: Przychodzący i wychodzący ruch do podsieci, w której jest wdrażany usługi API Management może być kontrolowana za pomocą [sieciowej grupy zabezpieczeń][Network Security Group]. Jeśli którekolwiek z tych portów są niedostępne, usługa API Management może nie działać prawidłowo i może stać się niedostępny. Co najmniej jeden z tych portów, zablokowane jest innym Typowym problemem błędnej konfiguracji w przypadku korzystania z usługi API Management z sieci Wirtualnej.
 
@@ -111,18 +111,18 @@ Poniżej przedstawiono listę typowych problemów z błędną konfiguracją, kt�
 
 | Źródło / porty docelowe | Direction          | Protokół transportowy |   [Tagi usługi](../virtual-network/security-overview.md#service-tags) <br> Źródłowy / docelowy   | Cel (*)                                                 | Typ sieci wirtualnej |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| * / 80, 443                  | Przychodzący            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikacja klienta z usługi API Management                      | Zewnętrzna             |
+| * / 80, 443                  | Przychodzący            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikacja klienta z usługi API Management                      | Zewnętrzne             |
 | * / 3443                     | Przychodzący            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell         | Zewnętrzne i wewnętrzne  |
-| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK / Storage             | **Zależność od usługi Azure Storage**                             | Zewnętrzne i wewnętrzne  |
-| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Usługa Azure Active Directory (jeśli dotyczy)                   | Zewnętrzne i wewnętrzne  |
-| * / 1433                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Zewnętrzne i wewnętrzne  |
-| * / 5672                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / usługi EventHub            | Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania | Zewnętrzne i wewnętrzne  |
-| * / 445                      | Wychodzący           | TCP                | VIRTUAL_NETWORK / Storage             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Zewnętrzne i wewnętrzne  |
-| * / 1886                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Niezbędnych do publikowania stan kondycji Resource Health          | Zewnętrzne i wewnętrzne  |
-| * / 443                     | Wychodzący           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Publikowanie diagnostyki dzienników i metryk                        | Zewnętrzne i wewnętrzne  |
-| * / 25                       | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
-| * / 587                      | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
-| * / 25028                    | Wychodzący           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
+| * / 80, 443                  | Wychodzące           | TCP                | VIRTUAL_NETWORK / Storage             | **Zależność od usługi Azure Storage**                             | Zewnętrzne i wewnętrzne  |
+| * / 80, 443                  | Wychodzące           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Usługa Azure Active Directory (jeśli dotyczy)                   | Zewnętrzne i wewnętrzne  |
+| * / 1433                     | Wychodzące           | TCP                | VIRTUAL_NETWORK / SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Zewnętrzne i wewnętrzne  |
+| * / 5672                     | Wychodzące           | TCP                | VIRTUAL_NETWORK / usługi EventHub            | Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania | Zewnętrzne i wewnętrzne  |
+| * / 445                      | Wychodzące           | TCP                | VIRTUAL_NETWORK / Storage             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Zewnętrzne i wewnętrzne  |
+| * / 1886                     | Wychodzące           | TCP                | VIRTUAL_NETWORK / INTERNET            | Niezbędnych do publikowania stan kondycji Resource Health          | Zewnętrzne i wewnętrzne  |
+| * / 443                     | Wychodzące           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Publikowanie diagnostyki dzienników i metryk                        | Zewnętrzne i wewnętrzne  |
+| * / 25                       | Wychodzące           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
+| * / 587                      | Wychodzące           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
+| * / 25028                    | Wychodzące           | TCP                | VIRTUAL_NETWORK / INTERNET            | Łączenie z usługą przekazywania protokołu SMTP w celu wysyłania wiadomości e-mail                    | Zewnętrzne i wewnętrzne  |
 | * / 6381 - 6383              | Dla ruchu przychodzącego i wychodzącego | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między RoleInstances          | Zewnętrzne i wewnętrzne  |
 | * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Moduł równoważenia obciążenia infrastruktury platformy Azure                          | Zewnętrzne i wewnętrzne  |
 
@@ -139,7 +139,7 @@ Poniżej przedstawiono listę typowych problemów z błędną konfiguracją, kt�
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com gdzie `East US 2` jest eastus2.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure — Chiny       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure (Chiny)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **Przekazywania SMTP**: Połączenia sieciowego ruchu wychodzącego do przekazywania SMTP, który jest rozpoznawany jako na hoście `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` i `ies.global.microsoft.com`
 
@@ -170,7 +170,7 @@ Poniżej przedstawiono listę typowych problemów z błędną konfiguracją, kt�
   > [!IMPORTANT]
   > Po zweryfikowaniu połączenia, upewnij się usunąć wszystkie zasoby, które są wdrożone w tej podsieci, przed wdrożeniem usługi API Management do podsieci.
 
-* **Aktualizacje przyrostowe**: Podczas wprowadzania zmian do sieci, zapoznaj się [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), aby sprawdzić, czy usługa API Management nie utracił dostęp do krytycznych zasobów, których ona zależy. Co 15 minut można zaktualizować stanu łączności.
+* **Aktualizacje przyrostowe**: Podczas wprowadzania zmian do sieci, zapoznaj się [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus), aby sprawdzić, czy usługa API Management nie utracił dostęp do krytycznych zasobów, których ona zależy. Co 15 minut można zaktualizować stanu łączności.
 
 * **Linki nawigacji zasobu**: Podczas wdrażania do podsieci sieci wirtualnej usługi Resource Manager style, usługa API Management zastrzega sobie podsieci, tworząc Link nawigacji zasobu. Jeśli podsieć zawiera już zasobu z innego dostawcy, wdrożenie będzie **się nie powieść**. Podobnie podczas przenoszenia usługi API Management do innej podsieci lub usuń go, firma Microsoft usunie tego linku nawigacji zasobu.
 

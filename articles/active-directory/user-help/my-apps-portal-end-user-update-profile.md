@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa6de024758d16b99569261e10d46f9328241427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf8484cdadcdb368c00351ca68e42652b475a7d4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483021"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305415"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Zaktualizować swoje informacje profilu i konta w portalu Moje aplikacje
 Za pomocą swojego konta firmowego lub szkolnego oparta na sieci web **Moje aplikacje** portalu, aby wyświetlić i uruchomić wiele organizacji aplikacji w chmurze, aby zaktualizować niektóre z Twoich informacji profilu i konta, aby wyświetlić swoje **grup** informacji i wykonywać **przeglądów dostępu** dla aplikacji i grup. Jeśli nie masz dostępu do **Moje aplikacje** portal, należy skontaktować się z pomocą techniczną o uprawnienia.
@@ -61,7 +61,7 @@ Aktualizowanie i zarządzania pracą lub szkołą informacje o koncie z **profil
 
 - Wyloguj się wszędzie.
 
-## <a name="change-your-password"></a>Zmień hasło
+## <a name="change-your-password"></a>Zmiana hasła
 Jeśli chcesz zmienić hasło dla swojego konta firmowego lub szkolnego, możesz wybrać **Zmień hasło** z **Zarządzanie kontem** obszaru **profilu** strony.
 
 ### <a name="to-change-your-password"></a>Aby zmienić hasło
@@ -71,7 +71,7 @@ Jeśli chcesz zmienić hasło dla swojego konta firmowego lub szkolnego, możesz
 
     ![Zmień hasło stronę](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Wybierz pozycję **Prześlij**.
+3. Wybierz **przesłać**.
 
     Twoje hasło jest zmieniane. Będziesz musiał zalogować się do żadnych aplikacji, które wcześniej zalogowano się przy użyciu konta firmowego lub szkolnego.
 

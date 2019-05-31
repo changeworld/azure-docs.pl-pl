@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a14e03c21de0b5388040943fbe5e9434271b567f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472242"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258813"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -86,7 +86,9 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Token zawiera wartości-mieszane, tak aby odbiorca może ponownie obliczyć skrótu z tymi samymi parametrami, weryfikowanie, czy wystawca ma prawidłowy klucz podpisywania.
 
-Identyfikator URI zasobu jest pełny identyfikator URI zasobu usługi Service Bus, do której dostęp jest zgłoszone. Na przykład `http://<namespace>.servicebus.windows.net/<entityPath>` lub `sb://<namespace>.servicebus.windows.net/<entityPath>`, czyli `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. Identyfikator URI musi być [zakodowane w formacie procent](https://msdn.microsoft.com/library/4fkewx0t.aspx).
+Identyfikator URI zasobu jest pełny identyfikator URI zasobu usługi Service Bus, do której dostęp jest zgłoszone. Na przykład `http://<namespace>.servicebus.windows.net/<entityPath>` lub `sb://<namespace>.servicebus.windows.net/<entityPath>`, czyli `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+
+**Identyfikator URI musi być [zakodowane w formacie procent](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
 Reguły autoryzacji dostępu współdzielonego użytego do podpisania musi być skonfigurowany w jednostce określona przez ten identyfikator URI lub za pomocą jednej z grup nadrzędnych hierarchicznych. Na przykład `http://contoso.servicebus.windows.net/contosoTopics/T1` lub `http://contoso.servicebus.windows.net` w poprzednim przykładzie.
 
@@ -255,11 +257,11 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane dla różnych operacji
 
 | Operacja | Wymagane oświadczenia | Oświadczenie zakresu |
 | --- | --- | --- |
-| **Przestrzeń nazw** | | |
+| **Namespace** | | |
 | Skonfiguruj reguły autoryzacji w przestrzeni nazw |Zarządzanie |Dowolny adres przestrzeni nazw |
 | **Service Registry** | | |
 | Wyliczać zasady prywatne |Zarządzanie |Dowolny adres przestrzeni nazw |
-| Rozpocząć nasłuchiwania w przestrzeni nazw |Nasłuchuj |Dowolny adres przestrzeni nazw |
+| Rozpocząć nasłuchiwania w przestrzeni nazw |Nasłuchiwanie |Dowolny adres przestrzeni nazw |
 | Wysyłanie komunikatów do odbiornika w przestrzeni nazw |Wysyłanie |Dowolny adres przestrzeni nazw |
 | **kolejki** | | |
 | Tworzenie kolejki |Zarządzanie |Dowolny adres przestrzeni nazw |
@@ -268,13 +270,13 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane dla różnych operacji
 | Pobierz opis kolejki |Zarządzanie |Dowolny adres prawidłową kolejką |
 | Konfigurowanie reguł autoryzacji dla kolejki |Zarządzanie |Dowolny adres prawidłową kolejką |
 | Wysyłać do kolejki |Wysyłanie |Dowolny adres prawidłową kolejką |
-| Odbieranie komunikatów z kolejki |Nasłuchuj |Dowolny adres prawidłową kolejką |
-| Porzucenie lub ukończenie wiadomości po odebraniu wiadomości w trybie blokady podglądu |Nasłuchuj |Dowolny adres prawidłową kolejką |
-| Odrocz wiadomość do nowszych pobierania |Nasłuchuj |Dowolny adres prawidłową kolejką |
-| Utraconych wiadomości |Nasłuchuj |Dowolny adres prawidłową kolejką |
-| Pobierz stan skojarzony z sesją kolejki komunikatów |Nasłuchuj |Dowolny adres prawidłową kolejką |
-| Ustaw stan skojarzony z sesją kolejki komunikatów |Nasłuchuj |Dowolny adres prawidłową kolejką |
-| Harmonogram wiadomości w celu późniejszego dostarczenia; na przykład [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Nasłuchuj | Dowolny adres prawidłową kolejką
+| Odbieranie komunikatów z kolejki |Nasłuchiwanie |Dowolny adres prawidłową kolejką |
+| Porzucenie lub ukończenie wiadomości po odebraniu wiadomości w trybie blokady podglądu |Nasłuchiwanie |Dowolny adres prawidłową kolejką |
+| Odrocz wiadomość do nowszych pobierania |Nasłuchiwanie |Dowolny adres prawidłową kolejką |
+| Utraconych wiadomości |Nasłuchiwanie |Dowolny adres prawidłową kolejką |
+| Pobierz stan skojarzony z sesją kolejki komunikatów |Nasłuchiwanie |Dowolny adres prawidłową kolejką |
+| Ustaw stan skojarzony z sesją kolejki komunikatów |Nasłuchiwanie |Dowolny adres prawidłową kolejką |
+| Harmonogram wiadomości w celu późniejszego dostarczenia; na przykład [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Nasłuchiwanie | Dowolny adres prawidłową kolejką
 | **Temat** | | |
 | Tworzenie tematu |Zarządzanie |Dowolny adres przestrzeni nazw |
 | Usuwanie tematu |Zarządzanie |Dowolny adres nieprawidłowy temat |
@@ -287,11 +289,11 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane dla różnych operacji
 | Usuwanie subskrypcji |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
 | Wyliczanie subskrypcji |Zarządzanie |.. / myTopic/subskrypcji |
 | Pobierz opis subskrypcji |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
-| Porzucenie lub ukończenie wiadomości po odebraniu wiadomości w trybie blokady podglądu |Nasłuchuj |.. /myTopic/Subscriptions/mySubscription |
-| Odrocz wiadomość do nowszych pobierania |Nasłuchuj |.. /myTopic/Subscriptions/mySubscription |
-| Utraconych wiadomości |Nasłuchuj |.. /myTopic/Subscriptions/mySubscription |
-| Pobierz stan skojarzony z sesją tematu |Nasłuchuj |.. /myTopic/Subscriptions/mySubscription |
-| Ustaw stan skojarzony z sesją tematu |Nasłuchuj |.. /myTopic/Subscriptions/mySubscription |
+| Porzucenie lub ukończenie wiadomości po odebraniu wiadomości w trybie blokady podglądu |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
+| Odrocz wiadomość do nowszych pobierania |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
+| Utraconych wiadomości |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
+| Pobierz stan skojarzony z sesją tematu |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
+| Ustaw stan skojarzony z sesją tematu |Nasłuchiwanie |.. /myTopic/Subscriptions/mySubscription |
 | **reguły** | | |
 | Tworzenie reguły |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |
 | Usuwanie reguły |Zarządzanie |.. /myTopic/Subscriptions/mySubscription |

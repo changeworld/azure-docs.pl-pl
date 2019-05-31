@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236599"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244988"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Utwórz galerię udostępnionego obrazu przy użyciu witryny Azure portal
 
@@ -67,6 +67,7 @@ W tym przykładzie utworzono maszynę Wirtualną o nazwie *myVMfromImage*w *myRe
 1. Jeśli chcesz zezwolić na dostęp zdalny do maszyny Wirtualnej, w obszarze **publiczne porty wejściowe**, wybierz **Zezwalaj na wybranych portach** , a następnie wybierz **protokołu RDP (3389)** z listy rozwijanej. Jeśli nie chcesz zezwolić na dostęp zdalny do maszyny Wirtualnej, należy pozostawić **Brak** wybrany dla **publiczne porty wejściowe**.
 1. Gdy skończysz, wybierz pozycję **przeglądu + Utwórz** znajdujący się u dołu strony.
 1. Po maszyny Wirtualnej pozytywnie przejdą weryfikację, wybierz **Utwórz** w dolnej części strony Aby rozpocząć wdrażanie.
+
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

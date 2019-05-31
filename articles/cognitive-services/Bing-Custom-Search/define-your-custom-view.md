@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 83ae5f923130ecb46b7b94cd8112ee45ae13e3f4
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e4799ca099d608c3b8ecd16612b790f5654df7dd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236258"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390414"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurowanie środowiska wyszukiwania niestandardowego Bing
 
@@ -27,9 +27,9 @@ Podczas definiowania wycinków, sieci Web, należy użyć następującego:
 
 | Nazwa fragmentu | Opis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domena     | Wycinek domeny obejmuje wszystkie zawartości znajdującej się w obrębie domeny internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje, że Bing można także przeszukać poddomeny w domenie. Na przykład, jeśli określisz `microsoft.com`, Wyszukiwarka Bing zwraca także wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
+| Domain     | Wycinek domeny obejmuje wszystkie zawartości znajdującej się w obrębie domeny internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje, że Bing można także przeszukać poddomeny w domenie. Na przykład, jeśli określisz `microsoft.com`, Wyszukiwarka Bing zwraca także wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
 | Podstrony    | Wycinek podstrony zawiera całą zawartość w podstrony i ścieżki poniżej. W ścieżce można określić maksymalnie dwóch podstrony. Na przykład: `www.microsoft.com/en-us/windows/`                                                                                                                       |
-| Strona sieci Web    | Wycinek strony sieci Web mogą zawierać tylko tej strony sieci Web w polu wyszukiwania niestandardowego. Opcjonalnie możesz określić, czy dołączać podstrony.                                                                                                                                                                                  |
+| Strony sieci Web    | Wycinek strony sieci Web mogą zawierać tylko tej strony sieci Web w polu wyszukiwania niestandardowego. Opcjonalnie możesz określić, czy dołączać podstrony.                                                                                                                                                                                  |
 
 > [!IMPORTANT]
 > Wszystkich domen, podstrony i stron sieci Web, który określisz musi być indeksowane przez usługę Bing i publicznych. Jeśli jesteś właścicielem publicznej witryny, które mają zostać uwzględnione w wyszukiwaniu i Bing nie zindeksował go, zobacz Bing [dokumentacji webmastera](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) szczegółowe informacje na temat pobierania Bing, aby je indeksować. Zobacz też w dokumentacji webmastera, aby uzyskać szczegółowe informacje o pobieraniu Bing zaktualizować przeszukanych witryny, jeśli indeks jest nieaktualna.
@@ -74,7 +74,7 @@ Po dodaniu umożliwiająca **Active** listy, wyszukiwanie niestandardowe Bing po
 
 ## <a name="search-for-images-and-videos"></a>Wyszukiwanie obrazów i klipów wideo
 
-Możesz wyszukać obrazów i filmów wideo w sposób podobny do zawartości sieci web za pomocą [interfejsu API wyszukiwania obrazów Bing Custom](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference) lub [interfejsu API wyszukiwania wideo Bing Custom](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference). Można wyświetlić tych wyników z [hostowanych interfejsu użytkownika](hosted-ui.md), lub interfejsów API. 
+Możesz wyszukać obrazów i filmów wideo w sposób podobny do zawartości sieci web za pomocą [interfejsu API wyszukiwania obrazów Bing Custom](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) lub [interfejsu API wyszukiwania wideo Bing Custom](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Można wyświetlić tych wyników z [hostowanych interfejsu użytkownika](hosted-ui.md), lub interfejsów API. 
 
 Te interfejsy API są podobne do innych niestandardowych [wyszukiwania obrazów Bing](../Bing-Image-Search/overview.md) i [wyszukiwania wideo Bing](../Bing-Video-Search/search-the-web.md) interfejsów API, ale wyszukiwanie cała sieć web i nie wymagają `customConfig` parametr zapytania. Zobacz te zestawów dokumentacji, aby uzyskać więcej informacji na temat pracy z obrazów i filmów wideo. 
 
@@ -83,7 +83,7 @@ Te interfejsy API są podobne do innych niestandardowych [wyszukiwania obrazów 
 Wystąpienie usługi wyszukiwania można przetestować za pomocą okienka (wersja zapoznawcza) po prawej stronie w witrynie portal do przesyłania zapytań wyszukiwań i wyświetlić wyniki. 
 
 1. Poniżej pola wyszukiwania, wybierz **Moje wystąpienia**. Możesz porównać wyniki ze środowiska wyszukiwania Bing, wybierając **Bing**. 
-2. Wybieranie filtru bezpieczne wyszukiwanie i rynku do wyszukiwania (zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)).
+2. Wybieranie filtru bezpieczne wyszukiwanie i rynku do wyszukiwania (zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Wprowadź kwerendę i naciśnij klawisz enter lub kliknij ikonę wyszukiwania, aby wyświetlić wyniki z bieżącej konfiguracji. Można zmienić typu wyszukiwania wykonywania, klikając pozycję **Web**, **obraz**, lub **wideo** uzyskanie odpowiednich wyników. 
 
 <a name="adjustrank"></a>
@@ -95,7 +95,7 @@ Portal umożliwia dostosowanie klasyfikacji wyszukiwania zawartości z określon
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Blokuj      | Przenosi domeny, podstrony lub strony sieci Web do listy zablokowanych. Bing wykluczy zawartości z wybranej lokacji były wyświetlane w wynikach wyszukiwania.                    |
-| Zwiększ wynik      | Zwiększa zawartość z domeny lub podstrony mogą być wyższe w wynikach wyszukiwania.                                                                                        |
+| Zwiększenie wydajności      | Zwiększa zawartość z domeny lub podstrony mogą być wyższe w wynikach wyszukiwania.                                                                                        |
 | Obniżenie poziomu     | Przenosi zawartość z domeny lub podstrony niżej w wynikach wyszukiwania. Zdecyduj, czy obniżyć zawartości z domeny lub podstrony, należy dla strony sieci Web. |
 | Przypnij na górze | Przenosi domeny, podstrony lub strony sieci Web do **Pinned** listy. Zmusza to strona sieci Web, aby pojawiało się jako wyniki wyszukiwania górnego danemu wyszukiwaniu zapytania.                   |
 
@@ -131,9 +131,9 @@ Domyślnie strony sieci Web są tylko przypięte do początku wyników wyszukiwa
 
 | Wartość | Opis                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| Rozpoczyna się od | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika, który rozpoczyna się od ciągu zapytania numeru pin |
-| Kończy się na   | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika kończy się ciągiem zapytania numeru pin.  |
-| Zawiera    | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania numeru pin.   |
+| rozpoczyna się od | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika, który rozpoczyna się od ciągu zapytania numeru pin |
+| kończy się ciągiem   | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika kończy się ciągiem zapytania numeru pin.  |
+| zawiera    | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania numeru pin.   |
 
 
 Aby zmienić warunek dopasowania numeru pin, kliknij ikonę edycji kodu pin. W **warunek dopasowania zapytania** kolumny, kliknij listę rozwijaną i wybierz nowy warunek, którego chcesz użyć. Następnie kliknij przycisk Zapisz ikonę, aby zapisać zmiany.

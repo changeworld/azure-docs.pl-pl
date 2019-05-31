@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
-ms.translationtype: HT
+ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851225"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243303"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
@@ -89,7 +89,7 @@ Oprogramowanie opłat licencyjnych są uporządkowane jako opłata stosowana jes
 - Partnerzy, którzy mają kwalifikowanych dla **obniżona za usługę portalu Marketplace** zobaczą opłaty mniejsze transakcji na SaaS oferuje od maja 2019 aż do 2020 czerwca. W tym scenariuszu firma Microsoft rozlicza 100,00 USD dla licencji na oprogramowanie i płaci się $90.00 z wydawcą zostało nawiązane.
 
 > [!NOTE]
-> **Zmniejszona opłata za usługę portalu Marketplace**: W przypadku niektórych SaaS oferuje czy zostały opublikowane na rynku komercyjnych, Microsoft zmniejsza jego opłata za usługę portalu Marketplace z 20% (zgodnie z opisem w umowie wydawcy portalu Microsoft) do 10%. Aby oferty kwalifikują się co najmniej jedno z Twoich ofert musi zostały wyznaczone przez firmę Microsoft jako gotowości do wspólnej sprzedaży adresu IP lub adresów IP wspólnej odsprzedaży uszeregowane według priorytetów.  Uprawnienia muszą być spełnione co najmniej pięciu (5) dni przed końcem dnia każdego miesiąca kalendarzowego w celu odbierania to zmniejszenie opłata za usługę portalu Marketplace na miesiąc.  Zmniejszona za usługę portalu Marketplace nie ma zastosowania do maszyn wirtualnych, aplikacji zarządzanych przez lub innych produktów, udostępniane za pośrednictwem rynku komercyjnych.  Zmniejszona za usługę portalu Marketplace będzie dostępna jedynie kwalifikowaną oferty na potrzeby opłat licencyjnych za zbieranych przez firmę Microsoft, między 31 maja 2019 a 30 czerwca 2020.  Po upływie tego czasu opłaty za usługę portalu Marketplace powróci do jego normalnej kwoty. 
+> **Zmniejszona opłata za usługę portalu Marketplace**: W przypadku niektórych SaaS oferuje czy zostały opublikowane na rynku komercyjnych, Microsoft zmniejsza jego opłata za usługę portalu Marketplace z 20% (zgodnie z opisem w umowie wydawcy portalu Microsoft) do 10%. Aby oferty kwalifikują się co najmniej jedno z Twoich ofert musi zostały wyznaczone przez firmę Microsoft jako gotowości do wspólnej sprzedaży adresu IP lub adresów IP wspólnej odsprzedaży uszeregowane według priorytetów.  Uprawnienia muszą być spełnione co najmniej pięciu (5) dni przed końcem dnia każdego miesiąca kalendarzowego w celu odbierania to zmniejszenie opłata za usługę portalu Marketplace na miesiąc.  Zmniejszona za usługę portalu Marketplace nie ma zastosowania do maszyn wirtualnych, aplikacji zarządzanych przez lub innych produktów, udostępniane za pośrednictwem rynku komercyjnych.  Zmniejszona za usługę portalu Marketplace będzie dostępna jedynie kwalifikowaną oferty na potrzeby opłat licencyjnych za zbieranych przez firmę Microsoft, między 1 maja 2019 a 30 czerwca 2020.  Po upływie tego czasu opłaty za usługę portalu Marketplace powróci do jego normalnej kwoty. 
 
 |**W ramach firmy Microsoft**|**100 USD miesięcznie**|
 |:---|:---|
@@ -115,8 +115,12 @@ Lista oferty dla klientów za darmo, podając prawidłowy adres URL (rozpoczynaj
 ##### <a name="free-trial"></a>Bezpłatna wersja próbna
 Wyświetl listę oferty dla klientów na podstawie bezpłatnej wersji próbnej, podając prawidłowy adres URL (rozpoczynający się od http lub https) gdzie mają dostęp do aplikacji.  Na przykład: `https://contoso.com/trial/saas-app`
 
-##### <a name="contact-me"></a>Skontaktuj się ze mną
+##### <a name="contact-me"></a>Kontakt ze mną
 Zbieraj informacje kontaktowe klienta, nawiązując połączenie z system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o uprawnienia, aby udostępnić swoje informacje. Te szczegóły klienta wraz z nazwa oferty, identyfikator i źródło marketplace wykryto do oferty, będą wysyłane do systemu CRM, które zostały skonfigurowane. Aby uzyskać więcej informacji o konfigurowaniu CRM, zobacz [Connect — Zarządzanie potencjalnymi klientami](#connect-lead-management). 
+
+## <a name="example-marketplace-offer-listing"></a>Przykład portalu marketplace oferty listy
+
+![Przykład ofert portalu marketplace oraz oznaczenia](./media/marketplace-offer.svg)
 
 ## <a name="enable-a-test-drive"></a>Włączanie wersji testowej
 
@@ -177,7 +181,8 @@ Wybierz maksymalnie dwóch (2) branżach używane do grupowania oferty w obszara
 To pole jest opcjonalne używany w witrynie marketplace usługi AppSource do identyfikowania numer wersji oferty. 
 
 ### <a name="standard-contract"></a>Kontrakt standardowy
-- **Użyj standardowej umowy?** 
+
+- **Użyj standardowej umowy?**
 
 Aby uprościć proces zakupów dla klientów i ograniczyć złożoność prawne dla dostawców oprogramowania, firma Microsoft oferuje szablon standardowej umowy w celu ułatwienia transakcji w portalu marketplace. 
 
@@ -185,7 +190,8 @@ Zamiast tworzenia niestandardowych warunków i postanowień, wydawcom portalu Az
 
 Standardowa kontrakt można znaleźć tutaj: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-##### <a name="terms-of-use"></a>Warunki użytkowania
+#### <a name="terms-of-use"></a>Warunki użytkowania
+
 Jeśli Twoje postanowienia licencyjne różnią się od standardowej umowy, można wybrać prawne warunki użytkowania, w tym miejscu należy wprowadzić. Można również wprowadzić maksymalnie 10 000 znaków tekstu, w tym polu. Jeśli warunki użytkowania wymaga dłuższego opis, wprowadź pojedynczy link z adresem URL, w tym polu, gdzie można znaleźć usługi dodatkowe postanowienia licencyjne. Ona klientom zostanie wyświetlona jako aktywne połączenie.
 
 Klienci są proszeni o zaakceptowanie tych warunków, zanim użytkownik podejmie próbę aplikacji. 
@@ -193,9 +199,11 @@ Klienci są proszeni o zaakceptowanie tych warunków, zanim użytkownik podejmie
 Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 
 ## <a name="offer-listing"></a>Oferuje listę
+
 Oferty Wyświetla kartę języków (i rynków), których Twoja oferta jest dostępna, obecnie angielski (Stany Zjednoczone) jest jedyną lokalizacją dostępne. Ponadto ta strona wyświetla stan listy specyficzny dla języka i daty/godziny, który został dodany. Musisz zdefiniować szczegóły portalu marketplace (oferują nazwę, opis, wyszukiwane terminy, itp.) dla każdego z języków / na rynek.
 
 ### <a name="offer-listings"></a>Ofert
+
 Podaj szczegóły, które mają być wyświetlane w portalu marketplace, w tym opis oferty i zasobów marketingowych.
 
 - **Nazwa** (wymagane): Nazwy zdefiniowane w tym miejscu będzie wyświetlany jako tytuł oferty w Twojej witrynie marketplace(s), które zostały wybrane. Nazwy są wstępnie wypełnione w oparciu poprzedniego **nowa oferta** wpisu.  Może to być innych.  To nie mogą zawierać spacji, ikon emoji (chyba że są one symbole znaków towarowych i prawach autorskich) i muszą być ograniczone do 50 znaków.
@@ -235,8 +243,7 @@ Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 - [Najlepsze rozwiązania dotyczące portalu marketplace oferty list](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 
-
-## <a name="preview"></a>Preview
+## <a name="preview"></a>Wersja zapoznawcza
 
 **Podgląd** karta pozwala na zdefiniowanie ograniczonego **odbiorców wersji zapoznawczej** służącą do zwalniania oferty przed opublikowaniem oferty na żywo do szerszego grona odbiorców witryny marketplace.
 
@@ -256,7 +263,7 @@ Ręcznie dodaj adresy e-mail maksymalnie dziesięciu (10) lub dwadzieścia (20) 
 
 - **Adres URL strony** (wymagane): Zdefiniuj lokacji adres URL, którego klienci będą kierowane do proponowany po nabycia oferty w portalu Marketplace. Ten adres URL będzie również punkt końcowy, który będzie otrzymywać połączenia interfejsy API w celu ułatwienia handlowych firmy Microsoft.
 
-- **Element webhook połączenia** (wymagane): Dla wszystkich zdarzeń asynchronicznych, które firma Microsoft musi wysłać użytkownikom w imieniu klienta (przykład: Subskrypcja platformy Azure stała się nieprawidłowa), wymagamy, musisz podać element webhook połączenia. Jeśli nie masz jeszcze system elementu webhook w miejscu, najprostsza konfiguracja ma mieć aplikacja logiki punktu końcowego HTTP, który będzie nasłuchiwać zdarzeń ogłaszany do niego i odpowiednio je obsłużyć (np. https://prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Element webhook połączenia** (wymagane): Dla wszystkich zdarzeń asynchronicznych, które firma Microsoft musi wysłać użytkownikom w imieniu klienta (przykład: Subskrypcja platformy Azure stała się nieprawidłowa), wymagamy, musisz podać element webhook połączenia. Jeśli nie masz jeszcze system elementu webhook w miejscu, najprostsza konfiguracja ma mieć aplikacja logiki punktu końcowego HTTP, który będzie nasłuchiwać zdarzeń ogłaszany do niego i odpowiednio je obsłużyć (np. https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Identyfikator dzierżawy usługi Azure AD** (wymagane): W witrynie Azure portal, możemy wymagać, aby użytkownik [Utwórz aplikację usługi Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , dzięki czemu możemy sprawdzić poprawność połączenia między naszych dwóch usług znajduje się za uwierzytelnianiu komunikacji. Aby znaleźć [identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), przejdź do usługi Azure Active Directory i wybierz **właściwości**, poszukaj **identyfikator katalogu** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -270,9 +277,10 @@ Ręcznie dodaj adresy e-mail maksymalnie dziesięciu (10) lub dwadzieścia (20) 
 
 Po utworzeniu zobaczysz nazwy planu, identyfikatory, cennik modeli, dostępności (publiczny lub prywatny), bieżący, publikowania, stan i wszystkie dostępne akcje.
 
--   **Akcje** dostępne w **omówienie planu** różnią się w zależności od bieżącego stanu planu i mogą obejmować:
-  - Jeśli stan planu **projekt** — Usuń wersję roboczą
-  - Jeśli stan planu **Live** — Stop sprzedawać, plan lub odbiorców prywatnej synchronizacji
+**Akcje** dostępne w **omówienie planu** różnią się w zależności od bieżącego stanu planu i mogą obejmować:
+
+- Jeśli stan planu **projekt** — Usuń wersję roboczą
+- Jeśli stan planu **Live** — Stop sprzedawać, plan lub odbiorców prywatnej synchronizacji
 
 **Utwórz nowy plan** (co najmniej jeden plan dla osób, które umożliwia sprzedaży firmy Microsoft)
 
@@ -334,7 +342,7 @@ Przejrzyj ceny dokładnie przed opublikowaniem, ponieważ istnieją pewne ograni
 
 Masz możliwość skonfigurowania każdego planu był widoczny dla wszystkich użytkowników lub tylko dla określonej grupy odbiorców wybrane. Możesz przypisać członkostwo w tej grupie odbiorców ograniczone, przy użyciu identyfikatora dzierżawy usługi Azure AD.
 
-#### <a name="privacy"></a>Prywatność
+#### <a name="privacy"></a>Ochrona prywatności
 
 - **Jest to prywatne plan** (opcjonalne pole wyboru)
 
@@ -351,6 +359,9 @@ Ofert SaaS użyć identyfikatorów dzierżawy, aby zdefiniować prywatny odbiorc
 > [!NOTE]
 > Prywatne odbiorców (lub ograniczone odbiorców) różni się od odbiorców wersji zapoznawczej. W **[Podgląd](#preview)** karcie można zdefiniować odbiorców wersji zapoznawczej. Odbiorcy (wersja zapoznawcza) ma mieć dostęp do swojej oferty *wcześniejsze* do oferty opublikowanej na żywo w witrynie marketplace. Natomiast określenie odbiorców prywatnych ma zastosowanie tylko do określonego planu, (wersja zapoznawcza) są wyświetlane wszystkie plany (prywatnej lub nie), ale tylko w okresie ograniczonej wersji zapoznawczej, gdy plan jest przetestowany i zweryfikowany.
 
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Lista planów w ramach oferty w portalu marketplace
+
+![W planie rynku przykładzie lista z uwagi](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>Wersja testowa
 
@@ -447,7 +458,7 @@ Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 
 Wybierz **Zapisz** po wykonaniu tych pól.
 
-## <a name="publish"></a>Opublikuj
+## <a name="publish"></a>Publikowanie
 
 #### <a name="submit-offer-to-preview"></a>Prześlij oferują one w wersji zapoznawczej
 

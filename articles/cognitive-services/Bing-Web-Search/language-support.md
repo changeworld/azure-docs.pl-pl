@@ -10,31 +10,31 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798244"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384772"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu API wyszukiwania w Internecie Bing
 
 API wyszukiwania w Internecie Bing obsługuje ponad tuzina trzech krajów lub regionów, z których wiele z więcej niż jednym języku. Określanie kraj lub region z zapytaniem pomaga zawęzić wyniki wyszukiwania oparte na tym zainteresowania krajów lub regionów. Wyniki mogą być dostępne łącza do usługi Bing, a te linki mogą lokalizować Bing środowiska użytkownika zgodnie z określonego kraju/regionu lub języka.
 
-Można określić kraj lub region przy użyciu `cc` parametr zapytania. Kraj lub region jest określony, należy określić co najmniej jeden kod języka z [ `Accept-Language` nagłówka](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Użyj [tabeli rynków](#markets) listę języków obsługiwanych w poszczególnych segmentach rynku.
+Można określić kraj lub region przy użyciu `cc` parametr zapytania. Kraj lub region jest określony, należy określić co najmniej jeden kod języka z [ `Accept-Language` nagłówka](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). Użyj [tabeli rynków](#markets) listę języków obsługiwanych w poszczególnych segmentach rynku.
 
 Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **rynków** tabeli. Określanie na rynek, jednocześnie Określa kraj lub region i język preferowany. Można jawnie ustawić język za pomocą `setLang` parametr zapytania.
 
 ## <a name="countriesregions"></a>Kraje/regiony
 
-|Kraj/region|Kod|
+|Country/region|Kod|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
 |Austria|AT|
 |Belgia|BE|
 |Brazylia|BR|
-|Kanada|Urząd certyfikacji|
+|Kanada|CA|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
@@ -43,40 +43,40 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |SRA Hongkong|HK|
 |Indie|IN|
 |Indonezja|ID|
-|Włochy|it|
+|Włochy|IT|
 |Japonia|JP|
-|Korea Południowa|KR|
+|Korea|KR|
 |Malezja|MY|
 |Meksyk|MX|
 |Holandia|NL|
 |Nowa Zelandia|NZ|
-|Norwegia|NIE|
+|Norwegia|NO|
 |Chiny|CN|
 |Polska|PL|
 |Portugalia|PT|
 |Filipiny|PH|
 |Rosja|RU|
 |Arabia Saudyjska|SA|
-|RPA|ZA|
+|Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
 |Zjednoczone Królestwo|GB|
-|Stany Zjednoczone Ameryki|USA|
+|Stany Zjednoczone|USA|
 
 ## <a name="markets"></a>Rynki
 
-|Kraj/region|Język|Rynek kodu|
+|Country/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
-|Australia|Angielski|EN-AU|
+|Australia|Polski|EN-AU|
 |Austria|Niemiecki|de-AT|
 |Belgia|Holenderski|nl-BE|
 |Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
-|Kanada|Angielski|EN-CA|
+|Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
 |Chile|Hiszpański|ES-CL|
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
@@ -84,32 +84,32 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Francja|Francuski|fr-FR|
 |Niemcy|Niemiecki|de-DE.|
 |SRA Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Angielski|EN-IN|
-|Indonezja|Angielski|EN-ID|
+|Indie|Polski|EN-IN|
+|Indonezja|Polski|EN-ID|
 |Włochy|Włoski|IT-IT|
 |Japonia|Japoński|ja-JP|
-|Korea Południowa|Koreański|ko-KR|
-|Malezja|Angielski|Moje en|
+|Korea|Koreański|ko-KR|
+|Malezja|Polski|Moje en|
 |Meksyk|Hiszpański|es-MX|
 |Holandia|Holenderski|NL-NL|
-|Nowa Zelandia|Angielski|EN NZ|
+|Nowa Zelandia|Polski|EN NZ|
 |Norwegia|Norweski|no-NO|
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Angielski|en-PH|
+|Filipiny|Polski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|RPA|Angielski|en-ZA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
 |Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Zjednoczone Królestwo|Angielski|en-GB|
-|Stany Zjednoczone Ameryki|Angielski|en-US|
-|Stany Zjednoczone Ameryki|Hiszpański|es-US|
+|Zjednoczone Królestwo|Polski|en-GB|
+|Stany Zjednoczone|Polski|en-US|
+|Stany Zjednoczone|Hiszpański|es-US|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

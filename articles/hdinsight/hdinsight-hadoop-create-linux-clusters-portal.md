@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cf1a6ffa61b41af5abd20dac13b85024001d2ed2
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715189"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393994"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu witryny Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -42,7 +42,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Za pomocą
    
     ![Tworzenie nowego klastra w witrynie Azure portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "tworzenia nowego klastra w witrynie Azure portal")
 
-1. Na **HDInsight** wybierz opcję **niestandardowe (rozmiar, ustawienia, aplikacje)**.
+1. Na **HDInsight** wybierz opcję **niestandardowe (rozmiar, ustawienia, aplikacje)** .
 
 1. Wybierz **1 podstawy**. Następnie wprowadź następujące informacje.
 
@@ -92,7 +92,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Za pomocą
      Wybierz **dalej** aby przejść do następnej strony.
 
 
-6. Z **4 aplikacji (opcjonalnie)**, zaznacz wszystkie aplikacje, które chcesz. Te aplikacje można tworzyć firmy Microsoft, niezależnych dostawców oprogramowania (ISV) lub użytkownik. Aby uzyskać więcej informacji, zobacz [instalowanie aplikacji podczas tworzenia klastra](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+6. Z **4 aplikacji (opcjonalnie)** , zaznacz wszystkie aplikacje, które chcesz. Te aplikacje można tworzyć firmy Microsoft, niezależnych dostawców oprogramowania (ISV) lub użytkownik. Aby uzyskać więcej informacji, zobacz [instalowanie aplikacji podczas tworzenia klastra](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
     Wybierz **dalej** aby przejść do następnej strony.
 

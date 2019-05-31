@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: b5af6c5007130d71f94e1fa748adc333a8d08a48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689319"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258286"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -621,11 +621,11 @@ Masz pewną swobodę określania w sposób obsługi alertów dla określonej war
 
 ## <a name="patching-and-operations"></a>Stosowanie poprawek i operacje
 
-### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>Jak utworzyć zestaw skalowania w istniejącej grupy zasobów?
+### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>Można utworzyć zestawu skalowania w istniejącej grupy zasobów?
 
-Tworzenie zestawów skalowania w istniejący zasób grupy nie jest jeszcze możliwe w witrynie Azure portal, ale można określić istniejącą grupę zasobów, gdy wdrażanie zestawu skalowania przy użyciu szablonu usługi Azure Resource Manager. Można również określić istniejącą grupę zasobów, podczas tworzenia zestawu skalowania przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia.
+Tak, można utworzyć zestawu skalowania w istniejącej grupy zasobów.
 
-### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>Możemy przenieść zestawie skalowania do innej grupy zasobów
+### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>Czy można przenieść zestawu do innej grupy zasobów skalowania?
 
 Tak, można przenieść zasobów zestawu skalowania na nową subskrypcję lub grupę zasobów.
 

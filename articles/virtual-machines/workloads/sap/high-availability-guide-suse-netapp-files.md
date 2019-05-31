@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 3bd8600d0839c31a17221bb5421dc36165deb434
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b3b5a89b43eaa5c0851962aef414ec9c9b7440da
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142977"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357730"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server za pomocą usługi Azure Files NetApp dla aplikacji SAP
 
@@ -58,7 +58,7 @@ ms.locfileid: "65142977"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowanie maszyn wirtualnych, zainstalować w ramach klastra i instalacji o wysokiej dostępności systemu SAP NetWeaver 7.50, za pomocą [plików NetApp Azure (w publicznej wersji zapoznawczej)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
+W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowanie maszyn wirtualnych, zainstalować w ramach klastra i instalacji o wysokiej dostępności systemu SAP NetWeaver 7.50, za pomocą [usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
 W przykładowych konfiguracji, polecenia instalacji itp., wystąpienie ASCS jest liczba 00, liczby wystąpień Wywołujących 01, wystąpienie aplikacji głównej (PAS) jest 02 i wystąpienia aplikacji (AAS) to 03. QAS identyfikator systemu SAP jest używany. 
 
 W tym artykule wyjaśniono, jak osiągnąć wysoką dostępność dla aplikacji SAP NetWeaver za pomocą usługi Azure NetApp Files. Warstwa bazy danych nie jest omówiona szczegółowo w tym artykule.
@@ -87,7 +87,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
 * [Rozszerzenie o wysokiej dostępności SUSE 12 z dodatkiem SP3 — informacje o wersji][suse-ha-12sp3-relnotes]
 * [Aplikacje środowiska SAP NetApp na Microsoft Azure przy użyciu usługi Azure Files NetApp][anf-sap-applications-azure]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wysoka availability(HA) usługi centralne SAP Netweaver wymaga magazynu udostępnionego.
 Aby to osiągnąć w systemie SUSE Linux do tej pory było konieczne tworzenie oddzielnych klastra systemu plików NFS o wysokiej dostępności. 
@@ -139,13 +139,13 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Wywołujących i bazy danyc
 
 Oprogramowanie SAP NetWeaver wymaga magazynu udostępnionego dla katalogu transportu i profilu.  Przed kontynuowaniem instalacji dla infrastruktury plików NetApp platformy Azure, zapoznaj się z [dokumentacji usługi Azure Files NetApp][anf-azure-doc]. Sprawdź, jeśli wybranego regionu świadczenia usługi Azure oferuje usługi Azure Files NetApp. Kliknięcie następującego łącza przedstawia dostępność usługi Azure Files NetApp uporządkowane według regionów platformy Azure: [Azure NetApp pliki dostępności według regionów platformy Azure][anf-avail-matrix].
 
-Funkcja plików Azure NetApp jest w publicznej wersji zapoznawczej w kilku regionach platformy Azure. Przed wdrożeniem usługi Azure Files NetApp, zarejestruj się w wersji zapoznawczej usługi Azure Files NetApp, zgodnie z [zarejestrować instrukcje plików Azure NetApp][anf-register]. 
+Usługa Azure files NetApp jest dostępna w kilku [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Przed wdrożeniem usługi Azure Files NetApp, żądanie dołączania do usługi Azure Files NetApp, zgodnie z [zarejestrować instrukcje plików Azure NetApp][anf-register]. 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Wdrażanie zasobów usługi Azure Files NetApp  
 
-W krokach założono, że został już wdrożony [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Należy pamiętać, że zasoby usługi Azure Files NetApp i maszyn wirtualnych, w której zostanie zainstalowany zasoby usługi Azure Files NetApp należy wdrożyć w tej samej sieci wirtualnej platformy Azure.  
+W krokach założono, że został już wdrożony [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Zasoby usługi Azure Files NetApp i maszyn wirtualnych, w której zostanie zainstalowany zasoby usługi Azure Files NetApp musi zostać wdrożony w tej samej sieci wirtualnej platformy Azure lub w równorzędnej sieci wirtualnych platformy Azure.  
 
-1. Jeśli nie zrobiono, już, poprosić o [rejestrowanie w wersji zapoznawczej Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
+1. Jeśli nie zostało wykonane, żądanie [dołączania do usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
 
 2. Tworzenie konta NetApp w wybranym regionie platformy Azure, zgodnie z [instrukcje dotyczące tworzenia konta NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
 3. Konfigurowanie usługi Azure Files NetApp pojemność puli zgodnie z [instrukcje dotyczące sposobu konfigurowania usługi Azure Files NetApp pojemność puli](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
@@ -153,7 +153,7 @@ Architektura środowiska SAP Netweaver, przedstawione w tym artykule używa poje
 
 4. Delegowanie podsieci do plików NetApp platformy Azure, zgodnie z opisem w [instrukcje delegowania podsieci do usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Wdrażanie usługi Azure Files NetApp woluminów, zgodnie z [instrukcjami, aby utworzyć wolumin dla usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Wdrażanie woluminy w wyznaczonym usługi Azure Files NetApp [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Należy pamiętać, że zasoby usługi Azure Files NetApp i maszyn wirtualnych platformy Azure muszą być w tej samej sieci wirtualnej platformy Azure. Na przykład sapmnt<b>QAS</b>, usrsap<b>QAS</b>itd są nazwy woluminów i sapmnt<b>qas</b>, usrsap<b>qas</b>itd są filepaths dla platformy Azure Woluminy plików NetApp.  
+5. Wdrażanie usługi Azure Files NetApp woluminów, zgodnie z [instrukcjami, aby utworzyć wolumin dla usługi Azure Files NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Wdrażanie woluminy w wyznaczonym usługi Azure Files NetApp [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Należy pamiętać o tym, które zasoby usługi Azure Files NetApp i maszyn wirtualnych platformy Azure musi być w tej samej sieci wirtualnej platformy Azure lub w równorzędnej sieci wirtualnych platformy Azure. Na przykład sapmnt<b>QAS</b>, usrsap<b>QAS</b>itd są nazwy woluminów i sapmnt<b>qas</b>, usrsap<b>qas</b>itd są filepaths dla platformy Azure Woluminy plików NetApp.  
 
    1. wolumin sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. wolumin usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -266,7 +266,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    > [!NOTE]
    > Nie należy używać łączników nazwy hostów węzły klastra. W przeciwnym razie klaster nie będzie działać. Jest to znane ograniczenie i SUSE pracuje nad poprawką. Poprawki zostaną wydane jako poprawki pakietu — suse — cloud łącznika systemu sap.
 
-   Upewnij się, że zainstalowano nową wersję łącznika klastra SAP SUSE. Stary certyfikat został wywołany sap_suse_cluster_connector i nosi nazwę nowego **klastra łącznika, sap suse w-**.
+   Upewnij się, że zainstalowano nową wersję łącznika klastra SAP SUSE. Stary certyfikat został wywołany sap_suse_cluster_connector i nosi nazwę nowego **klastra łącznika, sap suse w-** .
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
@@ -364,7 +364,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    > [!NOTE]
    > Usługi Azure Files NetApp obsługuje obecnie tylko NFSv3. Nie pomijaj nfsvers = 3 przełącznik.
    
-   Uruchom ponownie autofs, aby zainstalować nowe udziały
+   Uruchom ponownie `autofs` Zainstaluj nowe udziały
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -734,7 +734,7 @@ Następujące elementy mają prefiks albo **[A]** — dotyczy to zarówno adresy
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/ursap<b>qas</b>pas
    </code></pre>
 
-   Uruchom ponownie autofs, aby zainstalować nowe udziały
+   Uruchom ponownie `autofs` Zainstaluj nowe udziały
 
    <pre><code>
    sudo systemctl enable autofs
@@ -759,7 +759,7 @@ Następujące elementy mają prefiks albo **[A]** — dotyczy to zarówno adresy
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Uruchom ponownie autofs, aby zainstalować nowe udziały
+   Uruchom ponownie `autofs` Zainstaluj nowe udziały
 
    <pre><code>
    sudo systemctl enable autofs
@@ -1230,7 +1230,7 @@ Następujące testy są kopią przypadków testowych w [najlepszych praktyk prze
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Jeśli uruchomisz wyłącznie polecenie raz, sapstart spowoduje ponowne uruchomienie procesu. Jeśli zostanie ono uruchomione często wystarczający będzie sapstart nie ponowne uruchomienie tego procesu i zasobów będzie w stanie zatrzymania. Uruchom następujące polecenia jako użytkownik główny, aby wyczyścić stanu zasobów wystąpienia Wywołujących po przeprowadzeniu testu.
+   Jeśli uruchomisz wyłącznie polecenie raz, `sapstart` spowoduje ponowne uruchomienie tego procesu. Jeśli zostanie uruchomione, często `sapstart` nie będzie ponownie uruchomić proces i zasobów będzie w stanie zatrzymania. Uruchom następujące polecenia jako użytkownik główny, aby wyczyścić stanu zasobów wystąpienia Wywołujących po przeprowadzeniu testu.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

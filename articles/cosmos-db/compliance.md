@@ -4,15 +4,15 @@ description: W tym artykule opisano zakres certyfikatów dla ofert zgodności us
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: af1b3dba0ac73ef30a4be20cab795ce6de595970
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606288"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239706"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Zgodności w usłudze Azure Cosmos DB 
 
@@ -20,7 +20,7 @@ Usługa Azure Cosmos DB jest dostępna we wszystkich regionach platformy Azure. 
 
 * **Publicznej platformy Azure** chmury, co jest dostępne na całym świecie.
 
-* **Chińska wersja platformy Azure** jest dostępna za pośrednictwem wyjątkowemu partnerstwu między firmą Microsoft i 21Vianet — jednym z największych dostawców Internetu w tym kraju.
+* **Azure w Chinach — 21Vianet** jest dostępna za pośrednictwem wyjątkowemu partnerstwu między firmą Microsoft i 21Vianet — jednym z największych dostawców Internetu w tym kraju.
 
 * **Azure (Niemcy)** świadczy usługi w modelu powiernika danych, który zapewnia tego klienta dane pozostają w Niemczech pod kontrolą T-Systems International GmbH, podmiot zależny firmy Deutsche Telecom, działają jako niemiecki powiernik danych.
 
@@ -36,15 +36,32 @@ Usługa Azure Cosmos DB jest nieustannie rozszerza jego zakres certyfikatów. Ob
 
 | **Stosowane globalnie** | **Administracja USA** | **Określonych w branży** | **Określone kraj lub region** |
 | --- | --- | --- | --- |
-| Certyfikacja STAR CSA<br/><br/>CSA STAR zaświadczania<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| DoD SRG Level 2<br/><br/>FedRAMP Moderate<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Australia IRAP Unclassified<br/><br/>C5 (Niemcy)<br/><br/>Mtcs w Singapurze poziom 3<br/><br/>Wysoka ENS (Hiszpania)|
+| Certyfikacja STAR CSA | DoD SRG Level 2 | HIPAA BAA | Australia IRAP Unclassified |
+| CSA STAR zaświadczania | FedRAMP Moderate | HITRUST | C5 (Niemcy)|
+| ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | Mtcs w Singapurze poziom 3 |
+| ISO 22301:2012 | | | Wysoka ENS (Hiszpania)|
+| ISO 27001:2013| | | |
+| ISO 27017:2015 | | | |
+| ISO 27018:2014 | | | |
+| ISO 9001:2015 | | | |
+| SOC 1, 2, 3 | | | |
 
 Aby dowiedzieć się więcej na temat każdego z tych ofert zgodności i jakie są korzyści z używania, zobacz [zgodności omówienie platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) strony.
 
 Poniższa tabela zawiera listę certyfikatów, obsługiwane przez usługę Azure Cosmos DB na platformie Azure Government:
 
-| **Stosowane globalnie** | **Administracja USA** | **Określonych w branży** | **Określone kraj lub region** |
+| **Stosowane globalnie** | **Administracja USA** | **Określonych w branży** | 
 | --- | --- | --- | --- |
-| Certyfikacja STAR CSA<br/><br/>CSA STAR zaświadczania<br/><br/>ISO 20000-1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3 | DoD SRG Level 2<br/><br/>DoD SRG Level 5<br/><br/>CJIS<br/><br/>FedRAMP High<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Australia IRAP Unclassified<br/><br/>C5 (Niemcy)<br/><br/>Mtcs w Singapurze poziom 3<br/><br/>Wysoka ENS (Hiszpania)|
+| Certyfikacja STAR CSA | CJIS| HIPAA BAA | 
+| CSA STAR zaświadczania| DoD SRG Level 2| HITRUST  | 
+| ISO 20000-1:2011 | DoD SRG Level 4 | PCI DSS | 
+| ISO 9001:2012 | DoD SRG Level 5 | | 
+| ISO 27001:2013 | FedRAMP High | |
+| ISO 9001:2015 | IRS 1075|  |
+| ISO 27017:2014 | NIST CSF | |
+| ISO 27018:2015 | NIST SP 800-171 | |
+| SOC 1, 2, 3 | | |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 6c271c2c9feb1520951b2a8e301da4878970d60a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: HT
+ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259425"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416555"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Wystąpienia (wersja zapoznawcza) ustawiona ochrona wystąpienia dla skalowania maszyn wirtualnych platformy Azure
 Maszyna wirtualna platformy Azure scale sets umożliwia lepsze elastyczność obciążeń za pośrednictwem [skalowania automatycznego](virtual-machine-scale-sets-autoscale-overview.md), dzięki czemu możesz skonfigurować, kiedy się skaluje infrastruktury i podczas jej skalowana w pionie. Zestawy skalowania umożliwiają także centralnie zarządzanie, konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych za pośrednictwem różnych [zasad uaktualniania](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ustawienia. Aktualizację można skonfigurować w modelu zestawu skalowania i nowa konfiguracja jest stosowane automatycznie do każdego wystąpienia w zestawie skalowania, gdy zasad uaktualniania został ustawiony na tryb automatyczny lub wycofywanie.
@@ -30,7 +30,7 @@ Aplikacja przetwarza ruchu, może wystąpić sytuacje wymagające konkretnych wy
 W tym artykule opisano, jak można zastosować i inne wystąpienie funkcji ochrony za pomocą wystąpień zestawu skalowania.
 
 > [!NOTE]
->Ochrona wystąpienia jest obecnie w publicznej wersji zapoznawczej. Żadna procedura uczestnictwo jest potrzebna do korzystania z funkcji w publicznej wersji zapoznawczej opisano poniżej. Wystąpienie protection w wersji zapoznawczej jest obsługiwana tylko przy użyciu interfejsu API w wersji 2019-03-01 i nowszych.
+>Ochrona wystąpienia jest obecnie w publicznej wersji zapoznawczej. Żadna procedura uczestnictwo jest potrzebna do korzystania z funkcji w publicznej wersji zapoznawczej opisano poniżej. Wystąpienie protection w wersji zapoznawczej jest obsługiwana tylko przy użyciu interfejsu API w wersji 2019-03-01 i na zestawach skalowania, które korzystają z dysków zarządzanych.
 
 ## <a name="types-of-instance-protection"></a>Typy ochrony wystąpienia
 Zestawy skalowania zapewniają dwa typy funkcji ochrony wystąpienie:

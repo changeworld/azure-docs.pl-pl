@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148591"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254864"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów 
 
@@ -101,7 +101,7 @@ To ostrzeżenie może się pojawić, nawet jeśli skonfigurowano zasady kopii za
 Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej.
 - Woluminy folderu pamięci podręcznej powinien mieć wolnego miejsca, która jest równa co najmniej 5 – 10% całkowitego rozmiaru danych kopii zapasowej.
 - Jeśli wolumin ma mniej niż 5% wolnego miejsca, Zwiększ rozmiar woluminu lub Przenieś folder pamięci podręcznej do woluminu z wystarczającą ilością miejsca.
-- 
+- Jeśli utworzenie kopii zapasowej stanu systemu Windows, będziesz potrzebować dodatkowe 30 – 35 GB wolnego miejsca w woluminie zawierającym folder pamięci podręcznej
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Jak zmienić lokalizację pamięci podręcznej agenta usług MARS?
 
 

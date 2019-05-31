@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 05/31/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb8944578caf00fac5ca430e411f044a875f6af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bc7d3ffcb56251825bf5f6d760de647938f1ead
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288718"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417875"
 ---
 # <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM
 
@@ -45,7 +45,7 @@ Wykonaj następujące kroki, aby otworzyć ustawienia dla roli usługi Azure AD.
 
     Na stronie Ustawienia dla każdej roli istnieje kilka ustawień, które można skonfigurować. Te ustawienia mają wpływ tylko na użytkowników, którzy są **kwalifikujących się** przypisania, nie **stałe** przypisania.
 
-## <a name="activations"></a>Uaktywnienia
+## <a name="activations"></a>Aktywacje
 
 Użyj **aktywacji** suwak, aby ustawić maksymalny czas w godzinach, rola pozostaje aktywna, przed jego wygaśnięciem. Ta wartość może mieć wartość od 1 do 72 godzin.
 
@@ -55,7 +55,7 @@ Użyj **powiadomienia** przełącznika, aby określić, czy administratorzy będ
 
 Po ustawieniu **Włącz**, powiadomienia są wysyłane do:
 
-- Administrator uprawnionej roli
+- Administrator ról uprzywilejowanych
 - Administrator zabezpieczeń
 - Administrator globalny
 
@@ -72,22 +72,22 @@ Użyj **uwierzytelnianie wieloskładnikowe** przełącznik, aby określić, czy 
 * Użytkownicy, którzy mają konta Microsoft dla swoich adresów e-mail (zazwyczaj @outlook.com, ale nie zawsze) nie można zarejestrować usługi Azure MFA. Jeśli chcesz przypisać role do użytkowników z kontami Microsoft, możesz zwiększyć ich administratorów trwałych lub wyłączanie usługi MFA dla tej roli.
 * Nie można wyłączyć uwierzytelnianie wieloskładnikowe dla ról o wysokim poziomie uprawnień dla usługi Azure AD i Office 365. Jest to funkcja bezpieczeństwa, ponieważ te role powinny być dokładnie chronione:  
   
+  * Administrator usługi Azure Information Protection
   * Administrator rozliczeń
   * Administrator aplikacji w chmurze
-  * Administrator zgodności
+  * Administrator do spraw zgodności
   * Administrator dostępu warunkowego
   * Administrator usługi CRM
   * Osoba zatwierdzająca dostęp do skrytki klienta
-  * Składniki zapisywania w katalogach
+  * Zapisywanie katalogów
   * Administrator programu Exchange
   * Administrator globalny
-  * Administrator usługi Information Protection
   * Administrator usługi Intune
   * Administrator usługi Power BI
-  * Administrator uprawnionej roli
+  * Administrator ról uprzywilejowanych
   * Administrator zabezpieczeń
   * Administrator usługi SharePoint
-  * Administrator programu Skype dla firm
+  * Skype dla administratora firmy
   * Administrator użytkowników
 
 Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe (MFA) i PIM](pim-how-to-require-mfa.md).

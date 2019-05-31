@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a038dc2706c7cb128751630f8997851409886290
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797801"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384808"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Jak stronicować za pośrednictwem wyników z API wyszukiwania w Internecie Bing
 
-Po wywołaniu interfejsu API wyszukiwania w Internecie Bing zwraca listę wyników. Lista jest podzbiorem całkowita liczba wyników, które mogą dotyczyć zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) pola.  
+Po wywołaniu interfejsu API wyszukiwania w Internecie Bing zwraca listę wyników. Lista jest podzbiorem całkowita liczba wyników, które mogą dotyczyć zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) pola.  
 
 W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, które obejmuje odpowiedzi sieci Web.  
 
@@ -35,7 +35,7 @@ W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, które obe
 }  
 ```
 
-Na stronie przy użyciu dostępnych stron sieci Web, należy użyć [liczba](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) parametry zapytania.  
+Na stronie przy użyciu dostępnych stron sieci Web, należy użyć [liczba](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#offset) parametry zapytania.  
 
 `count` Parametr określa liczbę wyników do zwrócenia w odpowiedzi. Maksymalna liczba wyników, których może żądać w odpowiedzi jest 50. Wartość domyślna wynosi 10. Rzeczywista liczba dostarczonych może być mniejsza niż żądana.
 
@@ -59,7 +59,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Internetowy interfejs API wyszukiwania zwraca wyniki, które obejmują stron sieci Web i może zawierać obrazów, filmów wideo i wiadomości. Po stronie wyników wyszukiwania stronicowania [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpowiedzi i nie inne odpowiedzi taką jak obrazy lub wiadomości. Na przykład jeśli ustawisz `count` do 50, wrócisz 50 wyniki strony sieci Web, ale odpowiedź może zawierać wyniki dla innych odpowiedzi także. Na przykład odpowiedź może zawierać 15 obrazów i 4 artykuły z wiadomościami. Istnieje również możliwość, że wyniki mogą obejmować wiadomości na pierwszej stronie, ale nie drugiej strony, lub na odwrót.   
+Internetowy interfejs API wyszukiwania zwraca wyniki, które obejmują stron sieci Web i może zawierać obrazów, filmów wideo i wiadomości. Po stronie wyników wyszukiwania stronicowania [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) odpowiedzi i nie inne odpowiedzi taką jak obrazy lub wiadomości. Na przykład jeśli ustawisz `count` do 50, wrócisz 50 wyniki strony sieci Web, ale odpowiedź może zawierać wyniki dla innych odpowiedzi także. Na przykład odpowiedź może zawierać 15 obrazów i 4 artykuły z wiadomościami. Istnieje również możliwość, że wyniki mogą obejmować wiadomości na pierwszej stronie, ale nie drugiej strony, lub na odwrót.   
 
 Jeśli określisz `responseFilter` parametr zapytania i nie mają stron sieci Web na liście filtrów, nie używaj `count` i `offset` parametrów. 
 

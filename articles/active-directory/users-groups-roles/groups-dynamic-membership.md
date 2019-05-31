@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192428"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397880"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -80,13 +80,13 @@ Poniżej przedstawiono właściwości użytkownika, które można użyć do utwo
 | city |Dowolną wartość ciągu lub *o wartości null* |(user.city - eq "value") |
 | Kraj |Dowolną wartość ciągu lub *o wartości null* |(user.country - eq "value") |
 | companyName | Dowolną wartość ciągu lub *o wartości null* | (user.companyName - eq "value") |
-| department |Dowolną wartość ciągu lub *o wartości null* |(user.department - eq "value") |
+| Dział |Dowolną wartość ciągu lub *o wartości null* |(user.department - eq "value") |
 | displayName |dowolną wartość ciągu |(user.displayName - eq "value") |
 | employeeId |dowolną wartość ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Dowolną wartość ciągu lub *o wartości null* |(user.givenName - eq "value") |
 | Stanowisko |Dowolną wartość ciągu lub *o wartości null* |(user.jobTitle - eq "value") |
-| mail (poczta) |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
+| poczta |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (alias poczty użytkownika) |(user.mailNickName - eq "value") |
 | Telefon komórkowy |Dowolną wartość ciągu lub *o wartości null* |(user.mobile - eq "value") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
@@ -98,7 +98,7 @@ Poniżej przedstawiono właściwości użytkownika, które można użyć do utwo
 | sipProxyAddress |Dowolną wartość ciągu lub *o wartości null* |(user.sipProxyAddress - eq "value") |
 | state |Dowolną wartość ciągu lub *o wartości null* |(user.state - eq "value") |
 | Adres |Dowolną wartość ciągu lub *o wartości null* |(user.streetAddress - eq "value") |
-| surname |Dowolną wartość ciągu lub *o wartości null* |(user.surname - eq "value") |
+| nazwisko |Dowolną wartość ciągu lub *o wartości null* |(user.surname - eq "value") |
 | telephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.telephoneNumber - eq "value") |
 | usageLocation |Numer kierunkowy kraju własną literą dwa |(user.usageLocation - eq "PL") |
 | userPrincipalName |dowolną wartość ciągu |(user.userPrincipalName - eq "alias@domain") |
@@ -124,7 +124,7 @@ W poniższej tabeli wymieniono operatory obsługiwane i ich składnię w jednym 
 | Nie zaczyna się od |-notStartsWith |
 | Rozpoczyna się od |startsWith — |
 | Nie zawiera |-notContains |
-| Contains |-zawiera |
+| zawiera |-zawiera |
 | Nie jest zgodne |-notMatch |
 | Dopasowanie |-dopasowania |
 | W | -w |
@@ -353,7 +353,6 @@ Następujące atrybuty urządzenia może służyć.
  deviceManufacturer | dowolną wartość ciągu | (device.deviceManufacturer - eq "Samsung")
  deviceModel | dowolną wartość ciągu | (device.deviceModel - eq "iPad Air")
  deviceOwnership | Osobiste, firma, nieznany | (device.deviceOwnership - eq "Firma")
- domainName | dowolną wartość ciągu | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Nazwa profilu profilu rejestracji urządzeń firmy Apple lub rozwiązania Windows Autopilot | (device.enrollmentProfileName - eq "IPhone DEP")
  isRooted | wartość true, false | (device.isRooted - eq true)
  managementType | Zarządzanie urządzeniami Przenośnymi (dla urządzeń przenośnych)<br>Komputer (w przypadku komputerów zarządzanych przez agenta PC usługi Intune) | (device.managementType - eq "MDM")
@@ -372,4 +371,4 @@ Te artykuły zawierają dodatkowe informacje na temat grup w usłudze Azure Acti
 * [Tworzenie nowej grupy i dodawanie członków](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [Zarządzanie ustawieniami grupy](../fundamentals/active-directory-groups-settings-azure-portal.md)
 * [Zarządzanie członkostwem w grupie](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-dynamic-membership.md)
+* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-create-rule.md)

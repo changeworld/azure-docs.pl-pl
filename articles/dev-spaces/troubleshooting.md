@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158954"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234001"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -242,7 +242,7 @@ Kontekst kompilacji jest domyślnie na poziomie projektu/usługi, w związku z t
 ### <a name="try"></a>Wypróbuj:
 Co trzeba zrobić:
 1. Modyfikowanie _azds.yaml_ pliku, aby ustawić kontekstu kompilacji na poziomie rozwiązania.
-2. Modyfikowanie _pliku Dockerfile_ i _Dockerfile.develop_ pliki do odwoływania się do projektu (_.csproj_) pliki poprawnie, względem nowej kompilacji kontekstu.
+2. Modyfikowanie _pliku Dockerfile_ i _Dockerfile.develop_ pliki do odwoływania się do projektu ( _.csproj_) pliki poprawnie, względem nowej kompilacji kontekstu.
 3. Miejsce _.dockerignore_ pliku obok pliku .sln i modyfikować zgodnie z potrzebami.
 
 Na przykład można znaleźć https://github.com/sgreenmsft/buildcontextsample
@@ -404,3 +404,8 @@ Utwórz kontroler z alternatywną nazwę:
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
+
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Włączanie tworzenia miejsca do magazynowania kończy się niepowodzeniem, gdy pule węzłów Windows zostaną dodane do klastra usługi AKS
+
+### <a name="reason"></a>Reason
+Obecnie Azure Dev miejsca do magazynowania jest przeznaczony do uruchamiania na zasobników systemu Linux i tylko węzłów. W tej chwili nie można włączyć usługi Azure Dev miejsca do magazynowania w klastrze usługi AKS z pulą węzłów Windows.

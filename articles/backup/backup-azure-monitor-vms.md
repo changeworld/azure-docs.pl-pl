@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e13a4b1c01329bef1ec270af5ba007cd788aa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464432"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399751"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Monitorowanie alertów związanych z kopiami zapasowymi maszyny wirtualnej platformy Azure
 
@@ -40,7 +40,7 @@ Aby otworzyć blok kopia zapasowa alerty z sekcji alerty i zdarzenia:
     ![Kafelek alerty kopii zapasowej](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
 4. Aby wyświetlić szczegółowe informacje na temat konkretnego alertu z listy zdarzeń, kliknij alert, aby otworzyć jego **szczegóły** sekcji.
 
-    ![Szczegół zdarzenia](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
+    ![Szczegóły zdarzenia](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
     Aby dostosować atrybuty wyświetlane na liście, zobacz [wyświetlić atrybuty dodatkowe zdarzenia](backup-azure-monitor-vms.md)
 
@@ -70,7 +70,7 @@ Aby skonfigurować powiadomienia e-mail o alertach
    | Poziom alertu | Wysyłania alertów |
    | --- | --- |
    | Krytyczny | Niepowodzenie kopii zapasowej, niepowodzenia odzyskiwania |
-   | Ostrzeżenie | dla zadania tworzenia kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami (na przykład: Niektóre moduły zapisujące nie powiodło się podczas tworzenia migawki) |
+   | Ostrzeżenie | obecnie nie alerty ostrzegawcze są dostępne dla kopii zapasowych maszyn wirtualnych platformy Azure (na przykład: Niektóre moduły zapisujące nie powiodło się podczas tworzenia migawki) |
    | Informacyjne | obecnie nie alerty informacyjne są dostępne dla kopii zapasowej maszyny Wirtualnej platformy Azure |
 
 ### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Sytuacje, gdzie poczty e-mail nie jest wysyłana, mimo że powiadomienia zostały skonfigurowane

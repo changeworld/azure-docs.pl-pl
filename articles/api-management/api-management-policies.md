@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ad57f86e221a98461fcd1dc11b92f5665d6128d0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786446"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254402"
 ---
 # <a name="api-management-policies"></a>API Management policies
 Ta sekcja zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](api-management-howto-policies.md).  
@@ -39,12 +39,15 @@ Ta sekcja zawiera odwołania do następujących zasad usługi API Management. Ab
     -   [Sprawdzanie poprawności tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) -wymusza istnienia i ważności wyodrębnione z określonego nagłówka HTTP lub parametr zapytania określony token JWT.  
 -   [Zasady zaawansowane](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Przepływ sterowania](api-management-advanced-policies.md#choose) — warunkowo stosuje instrukcje zasad na podstawie oceny wyrażeń logicznych.  
-    -   [Przekazanie żądania](api-management-advanced-policies.md#ForwardRequest) -przekazuje żądanie do usługi zaplecza.  
-    -   [Dziennik do Centrum zdarzeń](api-management-advanced-policies.md#log-to-eventhub) — wysyła komunikaty w określonym formacie do obiektu docelowego komunikatu zdefiniowanych przez podmiot rejestratora.  
+    -   [Przekazanie żądania](api-management-advanced-policies.md#ForwardRequest) -przekazuje żądanie do usługi zaplecza.
+    -   [Limit współbieżności](api-management-advanced-policies.md#LimitConcurrency) — uniemożliwia ujęte zasad wykonania przez więcej niż określoną liczbę żądań w danym momencie.
+    -   [Dziennik do Centrum zdarzeń](api-management-advanced-policies.md#log-to-eventhub) — wysyła komunikaty w określonym formacie do obiektu docelowego komunikatu zdefiniowanych przez podmiot rejestratora.
+    -   [Pozorowanie odpowiedzi](api-management-advanced-policies.md#mock-response) -przerwań potoku wykonywania i zwracał pozorowane odpowiedzi bezpośrednio do obiektu wywołującego.
     -   [Ponów próbę wykonania](api-management-advanced-policies.md#Retry) -ponawia próbę wykonania instrukcji ujęty zasad, jeśli i do momentu spełnienia warunku. Wykonywanie będzie powtarzać w określonych odstępach czasu i do określonej liczba ponownych prób.  
     -   [Odpowiedź zwrócona](api-management-advanced-policies.md#ReturnResponse) -przerwań potoku wykonywania i zwraca określoną odpowiedź bezpośrednio do obiektu wywołującego.  
     -   [Wyślij żądanie jeden ze sposobów](api-management-advanced-policies.md#SendOneWayRequest) — wysyła żądanie do określonego adresu URL bez oczekiwania na odpowiedź.  
-    -   [Wyślij żądanie](api-management-advanced-policies.md#SendRequest) — wysyła żądanie do określonego adresu URL.  
+    -   [Wyślij żądanie](api-management-advanced-policies.md#SendRequest) — wysyła żądanie do określonego adresu URL.
+    -   [Ustaw serwer proxy HTTP](api-management-advanced-policies.md#SetHttpProxy) — pozwala na żądania trasy przekazywane za pośrednictwem serwera proxy HTTP.
     -   [Ustaw zmienną](api-management-advanced-policies.md#set-variable) — utrwalanie wartość w zmiennej nazwanego kontekstu na potrzeby późniejszego dostępu.  
     -   [Ustawia metodę żądania](api-management-advanced-policies.md#SetRequestMethod) — umożliwia zmianę metody HTTP dla żądania.  
     -   [Ustawionego kodu stanu](api-management-advanced-policies.md#SetStatus) — zmienia kod stanu HTTP do określonej wartości.  

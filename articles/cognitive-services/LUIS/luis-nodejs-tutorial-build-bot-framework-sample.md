@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8bd6a9df9518cb1b2312b525e8876629a2189bd2
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197055"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399619"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w środowisku Node.js przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
 Przy użyciu platformy Node.js utwórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
+
+A [platformy Bot Framework 4.x, za pomocą usługi LUIS samouczka](luis-nodejs-tutorial-bf-v4.md) jest również dostępna.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -236,7 +238,7 @@ bot.dialog('TurnOff',
 ```
 ## <a name="test-the-bot"></a>Testowanie robota
 
-W witrynie Azure Portal wybierz **testowania w czatów internetowych** do testowania robota. Spróbuj wiadomości typu like "Włączenie świateł" i "turn off Moje heater" do wywołania intencji, które dodano do niego.
+W witrynie Azure portal wybierz **testowania w czatów internetowych** do testowania robota. Spróbuj wiadomości typu like "Włączenie świateł" i "turn off Moje heater" do wywołania intencji, które dodano do niego.
    ![Testowanie HomeAutomation bot w czatów internetowych](./media/luis-tutorial-node-bot/bot-service-chat-results.png)
 
 > [!TIP]

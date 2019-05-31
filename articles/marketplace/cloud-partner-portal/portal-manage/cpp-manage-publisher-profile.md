@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pabutler
-ms.openlocfilehash: 6ca0eb23dad218262eff5d80543628df273022c9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942242"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257537"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Zarządzanie profilem wydawcy portalu Azure Marketplace i AppSource
 
@@ -49,7 +49,7 @@ Możesz również połączyć istniejące konto Centrum deweloperów przy użyci
 > [!NOTE]
 > Rejestracja konta Centrum deweloperów jest obowiązkowa dla publikowania płatnych jednostek SKU platformę handlową.
 
-Jeśli nie masz konta Centrum deweloperów, możesz utworzyć konto zgodnie z opisem w [rejestrowanie w Centrum deweloperów](../../register-dev-center.md).  Następnie należy dodać adres e-mail zarejestrowany jako właściciela w portalu Cloud Partner oferty. Właściciel tylko dodać adres e-mail zarejestrowany na swój profil publikowania z **użytkownika** sekcji. Następnie zaloguj się do portalu przy użyciu tego samego adresu e-mail i łączenie danych konta Centrum deweloperów.
+Jeśli nie masz konta Centrum deweloperów, możesz utworzyć konto zgodnie z opisem w [rejestrowanie w Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/register-dev-center).  Następnie należy dodać adres e-mail zarejestrowany jako właściciela w portalu Cloud Partner oferty. Właściciel tylko dodać adres e-mail zarejestrowany na swój profil publikowania z **użytkownika** sekcji. Następnie zaloguj się do portalu przy użyciu tego samego adresu e-mail i łączenie danych konta Centrum deweloperów.
 
 ![Szczegóły profilu wydawcy — opis profilu wydawcy](./media/publisherprofiledescription.png)
 

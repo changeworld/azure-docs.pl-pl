@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170964"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306862"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Konfigurowanie dzienników usługi Azure Monitor dla klastra
 
@@ -62,7 +62,7 @@ Jeśli używasz Windows Kontynuuj poniższe kroki, aby nawiązać połączenie z
 
 3. Na **dzienniki konta magazynu** wybierz opcję **Dodaj** u góry, aby dodać dzienniki klastra do obszaru roboczego.
 
-4. Wybierz **konta magazynu** dodać odpowiednie konto utworzone w klastrze. Jeśli używana jest domyślna nazwa, konto magazynu jest **sfdg\<resourceGroupName\>**. Można również to potwierdzić, przy użyciu szablonu usługi Azure Resource Manager umożliwia wdrażanie klastra, sprawdzając wartość **applicationDiagnosticsStorageAccountName**. Jeśli nazwa nie jest widoczne, przewiń w dół i wybierz **Załaduj więcej**. Wybierz nazwę konta magazynu.
+4. Wybierz **konta magazynu** dodać odpowiednie konto utworzone w klastrze. Jeśli używana jest domyślna nazwa, konto magazynu jest **sfdg\<resourceGroupName\>** . Można również to potwierdzić, przy użyciu szablonu usługi Azure Resource Manager umożliwia wdrażanie klastra, sprawdzając wartość **applicationDiagnosticsStorageAccountName**. Jeśli nazwa nie jest widoczne, przewiń w dół i wybierz **Załaduj więcej**. Wybierz nazwę konta magazynu.
 
 5. Określ typ danych. Ustaw ją na **usługi Service Fabric zdarzenia**.
 
@@ -110,7 +110,7 @@ $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
-# Log in to Azure and access the correct subscription
+# Sign in to Azure and access the correct subscription
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId $SubID 
 

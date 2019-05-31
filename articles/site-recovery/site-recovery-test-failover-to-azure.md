@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 6d8ad71894444b3759e506c50244b592ac1f8aac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67cbd37becb1fe87a7f4f554f574b6e5219c9243
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471489"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399931"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure 
 
@@ -26,7 +26,7 @@ Możesz uruchomić testowy tryb failover do zweryfikowania Twojej replikacji i s
 ## <a name="run-a-test-failover"></a>Wykonywanie próby przejścia w tryb failover
 Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. Jeśli chcesz uruchomić test trybu failover dla pojedynczej maszyny Wirtualnej, wykonaj czynności opisane [tutaj](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)
 
-![Test pracy w trybie failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Testowanie trybu Failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. W usłudze Site Recovery w witrynie Azure portal, kliknij przycisk **plany odzyskiwania** > *recoveryplan_name* > **testowy tryb Failover**.
@@ -49,7 +49,7 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. Jeśli 
 8. W obszarze **Uwagi** zarejestruj i zapisz wszelkie obserwacje związane z testem pracy w trybie failover.
 
 
-![Test pracy w trybie failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Testowanie trybu Failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Podczas testowania trybu failover zostaje wyzwolona, zostaną wykonane następujące zadania:
 

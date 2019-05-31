@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8b8f9856fe7e0fa591ceb42aab97e92642b6098
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362343"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399362"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
@@ -55,15 +55,15 @@ Można replikować tylko maszyny z systemem Linux przy użyciu następujących m
 
 **Konfiguracja** | **Obsługiwane**  
 --- | --- 
-Host - zespołu kart interfejsu Sieciowego | Yes 
-Host - sieci VLAN | Yes 
+Host - zespołu kart interfejsu Sieciowego | Tak 
+Host - sieci VLAN | Tak 
 Host — protokołu IPv4 | Yes 
 Host - IPv6 | Nie 
 Maszyna wirtualna - gościa zespołu kart interfejsu Sieciowego | Nie
-Gość maszyny Wirtualnej — protokołu IPv4 | Yes
+Gość maszyny Wirtualnej — protokołu IPv4 | Tak
 Gość maszyny Wirtualnej — IPv6 | Nie
 Gość maszyny Wirtualnej — Windows/Linux — statyczny adres IP | Yes
-Gość maszyny Wirtualnej — Multi-NIC | Yes
+Gość maszyny Wirtualnej — Multi-NIC | Tak
 
 
 ## <a name="storage"></a>Magazyn
@@ -73,9 +73,9 @@ Gość maszyny Wirtualnej — Multi-NIC | Yes
 **Magazyn (host)** | **Obsługiwane**
 --- | --- 
 NFS | ND
-SMB 3.0 |  Yes
-SAN (ISCSI) | Yes
-Wiele ścieżek (MPIO) | Yes
+SMB 3.0 |  Tak
+SAN (ISCSI) | Tak
+Wiele ścieżek (MPIO) | Tak
 
 ### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
@@ -83,19 +83,19 @@ Wiele ścieżek (MPIO) | Yes
 --- | --- | 
 VMDK |  ND
 VHD/VHDX | Tak (maksymalnie 16 dysków)
-Zbieranie generacji 2 maszyn wirtualnych | Yes
+Zbieranie generacji 2 maszyn wirtualnych | Tak
 Udostępniony dysk klastra | Nie
 Zaszyfrowanego dysku | Nie
 UEFI| ND
 NFS | Nie
 SMB 3.0 | Nie
 RDM | ND
-> 1 TB danych na dysku | Yes
-Wolumin dysku rozłożonego > 1 TB<br/><br/> LVM | Yes
-Miejsca do magazynowania | Yes
+> 1 TB danych na dysku | Tak
+Wolumin dysku rozłożonego > 1 TB<br/><br/> LVM | Tak
+Miejsca do magazynowania | Tak
 Dodaj lub usuń gorąco dysku | Nie
 Wykluczanie dysku | Yes
-Wiele ścieżek (MPIO) | Yes
+Wiele ścieżek (MPIO) | Tak
 
 ## <a name="vaults"></a>Magazyny
 

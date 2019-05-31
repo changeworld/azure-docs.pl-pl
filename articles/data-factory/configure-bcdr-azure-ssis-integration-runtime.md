@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66120442"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399239"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurowanie środowiska Azure-SSIS Integration Runtime przy użyciu replikacji geograficznej usługi Azure SQL Database i trybu failover
 
@@ -52,11 +52,11 @@ Ten rozdział ma zastosowanie, gdy jest spełniony jeden z następujących warun
 
 - Azure-SSIS IR wskazuje punkt końcowy serwera podstawowego grupy trybu failover. Ten punkt końcowy ulega zmianie, po przejściu do trybu failover.
 
-  OR
+  LUB
 
 - Serwer usługi Azure SQL Database jest skonfigurowany z regułą punktu końcowego usługi sieci wirtualnej.
 
-  OR
+  LUB
 
 - Serwer bazy danych jest baza danych wystąpienia zarządzanego SQL skonfigurowany z siecią wirtualną.
 
@@ -100,6 +100,59 @@ Wykonaj następujące kroki, aby zatrzymać środowiska IR Azure-SSIS, przełąc
     Aby uzyskać więcej informacji na temat tego polecenia programu PowerShell, zobacz [tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory](create-azure-ssis-integration-runtime.md)
 
 3. Uruchom ponownie środowisko IR.
+
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>W scenariuszu 3 — Dołączanie istniejącej bazy danych SSISDB (wykazu usług SSIS) do nowego Azure-SSIS IR
+
+ADF lub Azure-SSIS IR wystąpienia awarii w bieżącym regionie, można tworzyć i przechowuje swoje bazy danych SSISDB, Praca z nowego środowiska IR Azure-SSIS w nowym regionie.
+
+### <a name="prerequisites"></a>Wymagania wstępne
+
+- Jeśli używasz sieci wirtualnej w bieżącym regionie, należy użyć innej sieci wirtualnej w nowym regionie połączyć środowiska Azure-SSIS integration runtime. Aby uzyskać więcej informacji, zobacz [dołączyć środowisko Azure-SSIS integration runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
+
+- Jeśli używasz instalacji niestandardowej, może być konieczne przygotowanie innego identyfikatora URI połączenia SAS dla kontenera obiektów blob, który przechowuje skryptu instalacji niestandardowej i skojarzone pliki, aby go w dalszym ciągu być niedostępne podczas przestoju. Aby uzyskać więcej informacji, zobacz [konfigurowania ustawień niestandardowych na środowiska Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+
+### <a name="steps"></a>Kroki
+
+Wykonaj następujące kroki, aby zatrzymać środowiska IR Azure-SSIS, przełączyć środowisko IR w nowym regionie i uruchom go ponownie.
+
+1. Wykonaj procedurę składowaną się dołączony do bazy danych SSISDB **\<new_data_factory_name\>** lub  **\<new_integration_runtime_name\>** .
+   
+  ```SQL
+    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
+
+2. Utwórz fabrykę danych o nazwie **\<new_data_factory_name\>** w nowym regionie. Aby uzyskać więcej informacji zobacz Tworzenie fabryki danych.
+
+     ```powershell
+     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+                         -Location "new region"`
+                         -Name "<new_data_factory_name>"
+     ```
+    Aby uzyskać więcej informacji na temat tego polecenia programu PowerShell, zobacz [utworzyć fabrykę danych platformy Azure przy użyciu programu PowerShell](quickstart-create-data-factory-powershell.md)
+
+3. Utwórz nowe środowisko IR Azure-SSIS o nazwie **\<new_integration_runtime_name\>** w nowym regionie przy użyciu programu Azure PowerShell.
+
+    ```powershell
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+                                           -DataFactoryName "new data factory name" `
+                                           -Name "<new_integration_runtime_name>" `
+                                           -Description $AzureSSISDescription `
+                                           -Type Managed `
+                                           -Location $AzureSSISLocation `
+                                           -NodeSize $AzureSSISNodeSize `
+                                           -NodeCount $AzureSSISNodeNumber `
+                                           -Edition $AzureSSISEdition `
+                                           -LicenseType $AzureSSISLicenseType `
+                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                           -VnetId "new vnet" `
+                                           -Subnet "new subnet" `
+                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
+                                           -CatalogPricingTier $SSISDBPricingTier
+    ```
+
+    Aby uzyskać więcej informacji na temat tego polecenia programu PowerShell, zobacz [tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory](create-azure-ssis-integration-runtime.md)
+
+4. Uruchom ponownie środowisko IR.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

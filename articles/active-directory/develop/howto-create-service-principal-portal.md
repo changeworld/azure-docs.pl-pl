@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2019
+ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764849"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235396"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: Aby utworzyć aplikację usługi Azure AD i jednostkę usługi, które mogą uzyskiwać dostęp do zasobów, użyj portalu
 
@@ -40,11 +40,11 @@ Do dzieła bezpośrednio do tworzenia tożsamości. Jeśli napotkasz problem, sp
 
    ![Wybieranie rejestracji aplikacji](./media/howto-create-service-principal-portal/select-app-registrations.png)
 
-1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
+1. Wybierz **nowej rejestracji**.
 
    ![Dodawanie aplikacji](./media/howto-create-service-principal-portal/select-add-app.png)
 
-1. Podaj nazwę i adres URL aplikacji. Wybierz **aplikację internetową/interfejs API** dla typu aplikacji, którą chcesz utworzyć. Nie można utworzyć poświadczenia na potrzeby [aplikacji natywnej](../manage-apps/application-proxy-configure-native-client-application.md). Nie można użyć tego typu aplikacji automatycznych. Po ustawieniu wartości, wybierz **Utwórz**.
+1. Podaj nazwę dla aplikacji. Wybierz obsługiwane konto typ, który decyduje, kto za pomocą tej aplikacji. W obszarze **identyfikator URI przekierowania**, wybierz opcję **Web** dla typu aplikacji, którą chcesz utworzyć. Wprowadź identyfikator URI, gdzie token dostępu jest wysyłany do.  Nie można utworzyć poświadczenia na potrzeby [aplikacji natywnej](../manage-apps/application-proxy-configure-native-client-application.md). Nie można użyć tego typu aplikacji automatycznych. Po ustawieniu wartości, wybierz **zarejestrować**.
 
    ![Nadawanie nazwy aplikacji](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -66,14 +66,14 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
 
    Jeśli nie widzisz subskrypcji, czego szukasz, wybierz opcję **filtr globalny subskrypcji**. Upewnij się, subskrypcji, którą chcesz, aby wybrano dla portalu. 
 
-1. Wybierz **kontrola dostępu (IAM)**.
+1. Wybierz **kontrola dostępu (IAM)** .
 1. Wybierz **Dodaj przypisanie roli**.
 
    ![Wybierz opcję Dodaj przypisanie roli](./media/howto-create-service-principal-portal/select-add.png)
 
 1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji, które można wykonać akcji, takich jak **ponowny rozruch**, **start** i **zatrzymać** wystąpień, wybierz opcję **Współautor** roli. Domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj nazwę i zaznacz go.
 
-   ![Wybieranie roli](./media/howto-create-service-principal-portal/select-role.png)
+   ![Wybór roli](./media/howto-create-service-principal-portal/select-role.png)
 
 1. Wybierz **Zapisz** zakończenie przypisanie roli. Zostanie wyświetlona aplikacja na liście Użytkownicy przypisani do roli dla tego zakresu.
 
@@ -81,31 +81,41 @@ Konfigurowanie jednostki usługi. Aby rozpocząć, użycie go do uruchamiania ap
 
 ## <a name="get-values-for-signing-in"></a>Pobieranie wartości do logowania
 
-### <a name="get-tenant-id"></a>Pobieranie identyfikatora dzierżawy
-
-Podczas programowego logowania, musisz przekazać identyfikator dzierżawy z żądaniem uwierzytelniania.
+Podczas programowego logowania, musisz przekazać identyfikator dzierżawy z żądaniem uwierzytelniania. Należy również identyfikator swojej aplikacji i klucza uwierzytelniania. Aby uzyskać te wartości, wykonaj następujące kroki:
 
 1. Wybierz pozycję **Azure Active Directory**.
-1. Wybierz **właściwości**.
-
-   ![Wybierz właściwości usługi Azure AD](./media/howto-create-service-principal-portal/select-ad-properties.png)
-
-1. Kopiuj **identyfikator katalogu** można pobrać identyfikatora dzierżawy.
-
-   ![Identyfikator dzierżawy](./media/howto-create-service-principal-portal/copy-directory-id.png)
-
-### <a name="get-application-id-and-authentication-key"></a>Pobierz aplikację Identyfikatora i klucza uwierzytelniania
-
-Należy również identyfikator swojej aplikacji i klucza uwierzytelniania. Aby uzyskać te wartości, wykonaj następujące kroki:
 
 1. Z **rejestracje aplikacji** w usłudze Azure AD, wybierz swoją aplikację.
 
    ![Wybierz aplikację](./media/howto-create-service-principal-portal/select-app.png)
 
+1. Skopiuj identyfikator katalogu (dzierżawcy) i zapisz go w kodzie aplikacji.
+
+    ![Identyfikator dzierżawy](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+
 1. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji.
 
    ![Identyfikator klienta](./media/howto-create-service-principal-portal/copy-app-id.png)
 
+## <a name="certificates-and-secrets"></a>Certyfikaty i klucze tajne
+Aplikacje demona mogą używać dwie formy poświadczeń do uwierzytelniania za pomocą usługi Azure AD: certyfikatów i kluczy tajnych aplikacji.  Firma Microsoft zaleca używanie certyfikatu, ale można również utworzyć nowy klucz tajny aplikacji.
+
+### <a name="upload-a-certificate"></a>Przekaż certyfikat
+
+Można użyć istniejącego certyfikatu, jeśli nie masz.  Opcjonalnie można utworzyć certyfikatu z podpisem własnym do celów testowych. Otwórz program PowerShell i uruchom [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z następującymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na komputerze: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Eksportowanie przy użyciu tego certyfikatu [Zarządzaj certyfikatem użytkownika](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) przystawki MMC dostępna z poziomu Panelu sterowania Windows.
+
+Aby przekazać certyfikat:
+1. Wybierz **certyfikaty i klucze tajne**.
+
+   ![Wybierz ustawienia](./media/howto-create-service-principal-portal/select-certs-secrets.png)
+1. Kliknij pozycję **Przekaż certyfikat** a następnie wybierz certyfikat (istniejącego certyfikatu lub samodzielnie podpisanych certyfikatów można wyeksportować).
+    ![Przekazywanie certyfikatu](./media/howto-create-service-principal-portal/upload-cert.png)
+1. Kliknij pozycję **Add** (Dodaj).
+
+Po zarejestrowaniu certyfikatu swoją aplikację w portalu rejestracji aplikacji, musisz włączyć kodem aplikacji klienta do korzystania z certyfikatu.
+
+### <a name="create-a-new-application-secret"></a>Utwórz nowy klucz tajny aplikacji
+Jeśli nie chcesz używać certyfikatu, można utworzyć nowy klucz tajny aplikacji.
 1. Wybierz **certyfikaty i klucze tajne**.
 
    ![Wybierz ustawienia](./media/howto-create-service-principal-portal/select-certs-secrets.png)

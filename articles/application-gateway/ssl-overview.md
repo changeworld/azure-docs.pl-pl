@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849821"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254320"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Omówienie kończenia żądań SSL i kompleksowej usługi SSL z usługą Application Gateway
 
@@ -20,7 +20,7 @@ Secure Sockets Layer (SSL) to technologia standardowych zabezpieczeń, do nawią
 
 ## <a name="ssl-termination"></a>Kończenie żądań protokołu SSL
 
-Usługa Application Gateway obsługuje kończenia żądań SSL na bramie, po której ruch na ogół płynie niezaszyfrowany do serwerów wewnętrznej bazy danych. Istnieje wiele z korzyści wynikających z wykonywania kończenia żądań SSL na bramie aplikacji:
+Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Istnieje wiele z korzyści wynikających z wykonywania kończenia żądań SSL na bramie aplikacji:
 
 - **Zwiększona wydajność** — największa wydajność osiągnięty podczas odszyfrowywania protokołu SSL jest początkowa uzgadniania. W celu poprawy wydajności serwera, wykonując odszyfrowywania buforuje identyfikatory sesji SSL i zarządza biletami sesji TLS. Jeśli zostanie to zrobione w usłudze application gateway, wszystkie żądania z tego samego klienta można użyć wartości z pamięci podręcznej. Jeśli to się robi na serwerach wewnętrznej bazy danych, następnie każdorazowo żądania tego klienta przejdź do innego serwera, klienta musi re‑authenticate. Korzystanie z protokołu TLS biletów może pomóc rozwiązać ten problem, ale nie są obsługiwane przez wszystkich klientów i mogą być trudne do konfigurowania i zarządzania nimi.
 - **Lepsze wykorzystanie serwerów wewnętrznej bazy danych** — SSL/TLS przetwarzania jest bardzo intensywnie z Procesora i staje się coraz bardziej intensywnie, zwiększania rozmiaru klucza. Usuwanie tę pracę z serwerów zaplecza pozwala skoncentrować się na jakie są najbardziej efektywny sposób na dostarczania zawartości.
@@ -50,13 +50,13 @@ Usługa Application gateway obsługuje następujące typy certyfikatów:
 Aby uzyskać więcej informacji, zobacz [skonfigurować kończenia żądań SSL z usługą application gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Rozmiar certyfikatu
-Plik wymiany informacji osobistych (PFX) z informacje dotyczące certyfikatów SSL nie powinien być więcej niż 10 KB.
+Sprawdź [ogranicza Application Gateway](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) sekcji, aby wiedzieć, maksymalna SSL certyfikatu obsługiwany rozmiar.
 
 ## <a name="end-to-end-ssl-encryption"></a>Kompleksową usługę szyfrowania SSL
 
 Niektórzy klienci mogą nie pozwalają nieszyfrowana komunikacja z serwerami wewnętrznej bazy danych. Może to być spowodowane wymaganiami dotyczącymi zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji brama aplikacji obsługuje kompleksowe szyfrowanie SSL.
 
-Kompleksowa usługa SSL pozwala na bezpieczne przesyłanie danych poufnych na zaplecze, szyfrowane, gdy nadal trwa, korzystając z zalet funkcji równoważenia obciążenia warstwy 7 której usługa application gateway zapewnia. Do tych funkcji należą koligacja sesji oparta na plikach cookie, routing oparty na adresach URL, obsługa routingu opartego na witrynach lub możliwość iniekcji nagłówków X-Forwarded-*.
+Kompleksowa usługa SSL pozwala na bezpieczne przesyłanie zaszyfrowanych danych poufnych do zaplecza, umożliwiając jednocześnie korzystanie z funkcji równoważenia obciążenia warstwy 7, które oferuje usługa Application Gateway. Do tych funkcji należą koligacja sesji oparta na plikach cookie, routing oparty na adresach URL, obsługa routingu opartego na witrynach lub możliwość iniekcji nagłówków X-Forwarded-*.
 
 Po skonfigurowaniu kompleksowego trybu komunikacji SSL usługa Application Gateway kończy sesje SSL na bramie i odszyfrowuje ruch użytkownika. Następnie stosuje skonfigurowane reguły, aby wybrać odpowiednie wystąpienie puli serwerów zaplecza w celu skierowania do nich ruchu. Następnie usługa Application Gateway inicjuje nowe połączenie SSL z serwerem zaplecza i ponownie szyfruje dane przy użyciu certyfikatu klucza publicznego serwera zaplecza przed przekazaniem żądania do zaplecza. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego. Kompleksowa usługa SSL jest włączona konfigurując dla ustawienia protokołu [ustawienia HTTP zaplecza](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) HTTPS, których są następnie stosowane do puli zaplecza.
 

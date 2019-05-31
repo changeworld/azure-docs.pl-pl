@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8c2c69a81597c2702d608ccac8dceed1e832aff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bc33d65972e12591130389e0c3cb8697898d1da9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790225"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390358"
 ---
 # <a name="custom-search"></a>Wyszukiwanie niestandardowe
 Wyszukiwanie niestandardowe Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów. Użytkownicy zobaczą wyniki wyszukiwania dostosowane do zawartości, która ich interesuje, zamiast przewijać kolejne strony ogólnych wyników wyszukiwania zawierające nieistotną zawartość.
@@ -28,12 +28,12 @@ Punkt końcowy: Zwraca sugestie dotyczące wyszukiwania jako wyniki JSON, które
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-Przykłady, których opisano sposób konfigurowania źródeł wyszukiwania niestandardowego, zobacz [samouczek](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [interfejs API wyszukiwania niestandardowego Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference) odwołania.
+Przykłady, których opisano sposób konfigurowania źródeł wyszukiwania niestandardowego, zobacz [samouczek](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [interfejs API wyszukiwania niestandardowego Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) odwołania.
 
 ## <a name="custom-search-response-json"></a>Wyszukiwanie niestandardowe odpowiedzi JSON
-Żądanie niestandardowego wyszukiwania zwraca wyniki w postaci obiektów JSON, zobacz [obiekty odpowiedzi](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#response-objects). 
+Żądanie niestandardowego wyszukiwania zwraca wyniki w postaci obiektów JSON, zobacz [obiekty odpowiedzi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects). 
 
-## <a name="custom-autosuggest"></a>Automatyczne sugerowanie
+## <a name="custom-autosuggest"></a>Niestandardowego automatycznego sugerowania
 Niestandardowy interfejs API automatycznego sugerowania pozwala wysyłać zapytania częściowego wyszukiwany termin do usługi Bing i wrócić Lista proponowanych zapytań, które można skonfigurować. Za pomocą niestandardowego automatycznego sugerowania należy dodać sugestie zwracane przez interfejs API i opcjonalnie Określ, czy zawierają sugestie generowane przez usługę Bing.
 
 ## <a name="custom-autosuggest-endpoint"></a>Niestandardowego automatycznego sugerowania punktu końcowego

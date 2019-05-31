@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/18/2019
-ms.author: mayg
-ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/30/2019
+ms.author: raynew
+ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61280489"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399967"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>W tryb failover maszyn wirtualnych i serwerów fizycznych 
 
@@ -65,7 +65,7 @@ Ta procedura opisuje sposób uruchomić tryb failover dla [planu odzyskiwania](s
 1. Po przejściu w tryb failover Zweryfikuj maszynę wirtualną przez rejestrowanie się w nim. Jeśli chcesz się przełączyć do innego punktu odzyskiwania maszyny wirtualnej, a następnie można użyć **Zmień punkt odzyskiwania** opcji.
 1. Po poprawnym skonfigurowaniu przełączania maszyny wirtualnej w tryb failover możesz **zatwierdzić** tryb failover. **Zatwierdzenie powoduje usunięcie wszystkich punktów odzyskiwania dostępnych w usłudze** i **Zmień punkt odzyskiwania** opcja nie jest już dostępna.
 
-## <a name="planned-failover"></a>Planowane przełączenie w tryb failover
+## <a name="planned-failover"></a>Planowany tryb failover
 Maszyny wirtualne/serwery fizyczne chronione za pomocą Site Recovery również obsługę **zaplanowanym powrocie po awarii**. Planowany tryb failover jest zero utraty pracy awaryjnej opcję danych. Po wyzwoleniu planowanego trybu failover, pierwsze źródłowych maszyn wirtualnych jest wyłączona, najnowsze dane są synchronizowane i następnie wyzwoleniu przejścia w tryb failover.
 
 > [!NOTE]
@@ -80,7 +80,7 @@ Po wyzwoleniu przejścia w tryb failover obejmuje następujące kroki:
 
 1. Sprawdzanie wymagań wstępnych: Ten krok zapewnia, że spełniono wszystkie warunki wymagane dla trybu failover
 1. Tryb failover: Ten krok przetwarza dane i sprawia, że gotowy, aby z niej można utworzyć maszynę wirtualną platformy Azure. Jeśli wybrano **najnowsze** punktu odzyskiwania tego kroku jest tworzony punkt odzyskiwania z danych, który został wysłany do usługi.
-1. Uruchom: Ten krok umożliwia utworzenie maszyny wirtualnej platformy Azure przy użyciu danych przetworzonych w poprzednim kroku.
+1. Uruchamianie: Ten krok umożliwia utworzenie maszyny wirtualnej platformy Azure przy użyciu danych przetworzonych w poprzednim kroku.
 
 > [!WARNING]
 > **Nie Anuluj będące w toku pracy awaryjnej**: Przed uruchomieniem trybu failover replikacja maszyny wirtualnej zostanie zatrzymana. Jeśli użytkownik **anulować** w toku zadania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie uruchomiona do replikacji. Nie można ponownie uruchomić replikację.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: allensu
-ms.openlocfilehash: 8f64e3aa7cbe5441df1861b3176cc7e2072afa2a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: HT
+ms.openlocfilehash: 304beeae02da5836ba88a56d7166fc681e263501
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991954"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258356"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Samouczek: Poprawa odpowiedzi witryny sieci Web przy użyciu usługi Traffic Manager
 
@@ -54,7 +54,7 @@ W tej sekcji opisano tworzenie dwóch wystąpień witryny internetowej, które z
 
 #### <a name="create-vms-for-running-websites"></a>Tworzenie maszyn wirtualnych do uruchamiania witryn internetowych
 
-W tej sekcji utworzysz dwie maszyny wirtualne *myIISVMEastUS* i *myIISVMWEurope* w regionach świadczenia usługi Azure **Wschodnie stany USA** i **Europa Zachodnia**.
+W tej sekcji utworzysz dwie maszyny wirtualne *myIISVMEastUS* i *myIISVMWestEurope* w **wschodnie stany USA** i **Europa Zachodnia** regiony platformy Azure.
 
 1. W górnym lewym rogu witryny Azure portal, wybierz opcję **Utwórz zasób** > **obliczenia** > **systemie Windows Datacenter 2019**.
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
@@ -70,14 +70,14 @@ W tej sekcji utworzysz dwie maszyny wirtualne *myIISVMEastUS* i *myIISVMWEurope*
 3. Wybierz **zarządzania** karty lub wybierz **dalej: Dyski**, a następnie pozycję **Dalej: Sieć**, następnie **dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
 4. Wybierz pozycję **Przegląd + utwórz**.
 5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  
-6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę Wirtualną o nazwie *myIISVMWEurope*, za pomocą **grupy zasobów** nazwa *myResourceGroupTM2*, **lokalizacji** z *Europa Zachodnia*i inne ustawienia takie same jak *myIISVMEastUS*.
+6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę Wirtualną o nazwie *myIISVMWestEurope*, za pomocą **grupy zasobów** nazwa *myResourceGroupTM2*, **lokalizacji**z *Europa Zachodnia*i inne ustawienia takie same jak *myIISVMEastUS*.
 7. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
    ![Tworzenie maszyny wirtualnej](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Instalowanie usług IIS i dostosowywanie domyślnej strony internetowej
 
-W tej sekcji zainstaluj serwer usług IIS na dwóch maszynach wirtualnych — *myIISVMEastUS* &  i *myIISVMWEurope*, a następnie zaktualizuj domyślną stronę witryny internetowej. Niestandardowa strona witryny internetowej przedstawia nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki sieci Web.
+W tej sekcji, zainstaluj na serwerze usług IIS na dwie maszyny wirtualne *myIISVMEastUS* i *myIISVMWestEurope*, a następnie zaktualizuj domyślną stronę witryny sieci Web. Niestandardowa strona witryny internetowej przedstawia nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki sieci Web.
 
 1. Wybierz opcję **Wszystkie zasoby** w menu po lewej stronie, a następnie na liście zasobów kliknij zasób *myIISVMEastUS*, który znajduje się w grupie zasobów *myResourceGroupTM1*.
 2. Na stronie **Przegląd** kliknij opcję **Połącz**, a następnie w polu **Połącz z maszyną wirtualną**, wybierz opcję **Pobierz plik RDP**.
@@ -100,11 +100,11 @@ W tej sekcji zainstaluj serwer usług IIS na dwóch maszynach wirtualnych — *m
 
      ![Instalowanie usług IIS i dostosowywanie strony internetowej](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 8. Zamknij połączenie protokołu RDP z maszyną wirtualną *myIISVMEastUS*.
-9. Powtórz kroki 1–8, tworząc połączenie RDP z maszyną wirtualną *myIISVMWEurope* w grupie zasobów *myResourceGroupTM2*, aby zainstalować usługi IIS i dostosować domyślną stronę internetową.
+9. Powtórz kroki 1-8 z poprzez utworzenie połączenia RDP z maszyną Wirtualną *myIISVMWestEurope* w ramach *myResourceGroupTM2* grupę zasobów, aby zainstalować usługi IIS i dostosować jego domyślnej strony sieci web.
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>Konfigurowanie nazw DNS dla maszyn wirtualnych z uruchomionymi usługami IIS
 
-Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punktów końcowych usługi. W tej sekcji skonfigurujesz nazwy DNS dla serwerów usług IIS — *myIISVMEastUS* i *myIISVMWEurope*.
+Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punktów końcowych usługi. W tej sekcji skonfigurujesz nazwy DNS dla serwerów usług IIS — *myIISVMEastUS* i *myIISVMWestEurope*.
 
 1. Kliknij opcję **Wszystkie zasoby** w menu po lewej stronie, a następnie na liście zasobów wybierz zasób *myIISVMEastUS*, który znajduje się w grupie zasobów *myResourceGroupTM1*.
 2. Na stronie **Przegląd**, w obszarze **Nazwa DNS**, wybierz opcję **Konfiguruj**.
@@ -113,7 +113,7 @@ Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punkt
 
 ### <a name="create-test-vms"></a>Tworzenie testowych maszyn wirtualnych
 
-W tej sekcji utworzysz Maszynę wirtualną (*mVMEastUS* i *myVMWestEurope*) w każdym regionie platformy Azure (**wschodnie stany USA** i **Europa Zachodnia**. Te maszyny wirtualne posłużą do testowania, jak usługa Traffic Manager kieruje ruch do najbliższego serwera usług IIS, kiedy użytkownik nawiguje do witryny internetowej.
+W tej sekcji utworzysz Maszynę wirtualną (*myVMEastUS* i *myVMWestEurope*) w każdym regionie platformy Azure (**wschodnie stany USA** i **Europa Zachodnia**). Te maszyny wirtualne posłużą do testowania, jak usługa Traffic Manager kieruje ruch do najbliższego serwera usług IIS, kiedy użytkownik nawiguje do witryny internetowej.
 
 1. W górnym lewym rogu witryny Azure portal, wybierz opcję **Utwórz zasób** > **obliczenia** > **systemie Windows Datacenter 2019**.
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
@@ -152,7 +152,7 @@ Tworzenie profilu usługi Traffic Manager, który kieruje ruch użytkowników ta
 
 ## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
-Dodaj dwie maszyny wirtualne uruchomione usługi IIS serwery — *myIISVMEastUS* & *myIISVMWEurope* na potrzeby kierowania ruchu użytkowników do najbliższego punktu końcowego dla użytkownika.
+Dodaj dwie maszyny wirtualne uruchomione usługi IIS serwery — *myIISVMEastUS* & *myIISVMWestEurope* na potrzeby kierowania ruchu użytkowników do najbliższego punktu końcowego dla użytkownika.
 
 1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji, a następnie wybierz ten profil w wyświetlonych wynikach.
 2. W obszarze **Profil usługi Traffic Manager** w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**, a następnie kliknij pozycję **Dodaj**.
@@ -166,7 +166,7 @@ Dodaj dwie maszyny wirtualne uruchomione usługi IIS serwery — *myIISVMEastUS*
     | Zasób docelowy          | **Wybierz publiczny adres IP**, aby wyświetlić listę zasobów z publicznymi adresami IP w ramach tej samej subskrypcji. W obszarze **Zasób** wybierz publiczny adres IP o nazwie *myIISVMEastUS-ip*. Jest to publiczny adres IP serwera usług IIS maszyny wirtualnej w regionie Wschodnie stany USA.|
     |        |           |
 
-4. Powtórz kroki 2 i 3, aby dodać innego punktu końcowego o nazwie *myWestEuropeEndpoint* za publiczny adres IP *myIISVMWEurope ip* skojarzony z serwerem IIS maszyny Wirtualnej o nazwie *myIISVMWEurope* .
+4. Powtórz kroki 2 i 3, aby dodać innego punktu końcowego o nazwie *myWestEuropeEndpoint* za publiczny adres IP *myIISVMWestEurope ip* skojarzony z serwerem IIS maszyny Wirtualnej o nazwie  *myIISVMWestEurope*.
 5. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
     ![Dodawanie punktu końcowego usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
@@ -178,7 +178,7 @@ W tej sekcji możesz przetestować, usługi Traffic Manager kierowanie ruchu uż
 1. Określ nazwę DNS profilu usługi Traffic Manager.
 2. Wyświetl informacje o działaniu usługi Traffic Manager w następujący sposób:
     - Z testową maszynę Wirtualną (*myVMEastUS*) znajdującą się w **wschodnie stany USA** regionu, w przeglądarce internetowej przejdź do profilu usługi Traffic Manager nazwę DNS.
-    - Z testową maszynę Wirtualną (*myVMEastUS*) znajdującą się w **Europa Zachodnia** regionu, w przeglądarce internetowej przejdź do profilu usługi Traffic Manager nazwę DNS.
+    - Z testową maszynę Wirtualną (*myVMWestEurope*) znajdującą się w **Europa Zachodnia** regionu, w przeglądarce internetowej przejdź do profilu usługi Traffic Manager nazwę DNS.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Określanie nazwy DNS profilu usługi Traffic Manager
 
@@ -205,7 +205,7 @@ W tej sekcji zobaczysz działanie usługi Traffic Manager.
 
    ![Testowanie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. Następnie połącz się z maszyną wirtualną *myVMWestEurope* na terenie **Europa Zachodnia** korzystając z kroków 1 – 5 i przejdź do nazwy domeny profilu usługi Traffic Manager z tej maszyny Wirtualnej. Ponieważ maszyna wirtualna znajduje się w **Europa Zachodnia**, możesz teraz są kierowane do witryny sieci Web hostowana na najbliższych na serwerze usług IIS *myIISVMWEurope* znajdującą się w **Europa Zachodnia**.
+2. Następnie połącz się z maszyną wirtualną *myVMWestEurope* na terenie **Europa Zachodnia** korzystając z kroków 1 – 5 i przejdź do nazwy domeny profilu usługi Traffic Manager z tej maszyny Wirtualnej. Ponieważ maszyna wirtualna znajduje się w **Europa Zachodnia**, możesz teraz są kierowane do witryny sieci Web hostowana na najbliższych na serwerze usług IIS *myIISVMWestEurope* znajdującą się w **Europa Zachodnia**.
 
    ![Testowanie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

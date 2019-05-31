@@ -9,11 +9,11 @@ ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733753"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238529"
 ---
 Usługa Azure Data Factory to wielodostępna usługa, która ma następujące domyślne limity w miejscu, aby upewnić się, że subskrypcjami klientów są chronione przed jego obciążeń. Aby zwiększyć limity do maksimum dla Twojej subskrypcji, skontaktuj się z działem pomocy technicznej.
 
@@ -22,13 +22,13 @@ Usługa Azure Data Factory to wielodostępna usługa, która ma następujące do
 | Resource | Limit domyślny | Limit maksymalny |
 | -------- | ------------- | ------------- |
 | Fabryki danych w subskrypcji platformy Azure | 50 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Całkowita liczba jednostek, takich jak potoki, zestawy danych, wyzwalacze, połączonych usług i środowisk integration Runtime w fabryce danych | 5000 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Całkowita liczba jednostek, takich jak potoki, zestawy danych, wyzwalacze, połączonych usług i środowisk integration Runtime w fabryce danych | 5,000 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Łączna liczba rdzeni procesora CPU dla środowiska Azure-SSIS Integration Runtime w ramach jednej subskrypcji | 256 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Potok równoczesny przebiegów na usługi data factory, która jest współużytkowana przez wszystkie potoki w fabryce | 10 000  | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maksymalna działań na potok, który zawiera wewnętrzny działania dla kontenerów | 40 | 40 |
 | Maksymalna liczba środowisk połączonych integration Runtime, utworzony względem pojedynczej własnego środowiska integration runtime | 100 | [Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maksymalna parametry dla potoku | 50 | 50 |
-| Elementy ForEach | 100 000 | 100 000 |
+| Elementy ForEach | 100,000 | 100,000 |
 | Równoległość ForEach | 20 | 50 |
 | Liczba znaków w wyrażeniu | 8192 | 8192 |
 | Interwał wyzwalacza okna wirowania minimalne | 15 min | 15 min |
@@ -48,7 +48,7 @@ Usługa Azure Data Factory to wielodostępna usługa, która ma następujące do
 | --- | --- | --- |
 | Fabryki danych w subskrypcji platformy Azure |50 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Potoki w fabryce danych |2,500 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Zestawy danych w ramach usługi data factory |5000 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Zestawy danych w ramach usługi data factory |5,000 |[Skontaktuj się z działem pomocy technicznej](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Współbieżne wycinki dla zestawu danych |10 |10 |
 | Liczba bajtów na obiekt w potoku<sup>1</sup> |200 KB |200 KB |
 | Liczba bajtów na obiekt danych zestawu i połączone obiekty usługi<sup>1</sup> |100 KB |2000 KB |

@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak wykonać najważniejsze wskazówki podc
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,24 +12,24 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf1f570319370fab99e2f52086bc81df259e3d35
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1c6e8ef9effdb5cf31aee1603de28bed0d894cbb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236502"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239092"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planowanie środowiska Azure czas serii szczegółowych informacji w wersji Ogólnodostępnej
 
 W tym artykule opisano planowanie środowiska ogólnodostępnej (GA) usługa Azure Time Series Insights na podstawie oczekiwanego transfer przychodzący i wymagania dotyczące przechowywania danych.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-more-about-data-retention-in-azuretime-series-insights-and-how-to-plan-for-itbr"></a>Dowiedz się więcej o przechowywaniu danych w AzureTime Series Insights oraz sposobu planowania dla niego.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Aby rozpocząć korzystanie z usługi Time Series Insights, najlepiej Jeśli wiesz, jak dużo danych, które chcą wypchnąć za minutę, a także, jak długo ma być do przechowywania danych.  
 
@@ -74,7 +74,7 @@ Z punktu widzenia ograniczania pakiet ingressed danych o rozmiarze pakietów wyn
 
 Poniższa tabela podsumowuje pojemność zdarzeń przychodzących dla każdej jednostki SKU:
 
-|Jednostka SKU  |Liczba zdarzeń / miesiąc / jednostkę  |Rozmiar zdarzenia / miesiąc / jednostkę  |Liczba zdarzeń na minutę / jednostkę  | Rozmiar / minutę / jednostkę   |
+|SKU  |Liczba zdarzeń / miesiąc / jednostkę  |Rozmiar zdarzenia / miesiąc / jednostkę  |Liczba zdarzeń na minutę / jednostkę  | Rozmiar / minutę / jednostkę   |
 |---------|---------|---------|---------|---------|
 |S1     |   30 mln     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 milionów    |   300 GB   | 7,200   | 7200 KB  |

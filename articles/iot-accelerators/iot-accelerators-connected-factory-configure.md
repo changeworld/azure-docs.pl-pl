@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e059762cbbf5de2ac03a8a74397e59c9b3bdb97e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450027"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387096"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurowanie akcelerator rozwiązania połączonej fabryki
 
@@ -282,7 +282,7 @@ Dane ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności symu
 * Wartości węzła OPC UA do uwzględnienia w obliczeniach.
 * Jak rysunek jest obliczany na podstawie wartości telemetryczne.
 
-Połączona fabryka używa formuł ogólnej wydajności sprzętu, jako opublikowane przez https://www.oeefoundation.org.
+Połączona fabryka używa formuł ogólnej wydajności sprzętu, jako opublikowane przez [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
 
 Obiekty węzła OPC UA stacji Włącz znakowanie do użycia podczas obliczania wartości ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności. **Istotności** właściwość wskazuje, dla których rysunek ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności powinna zostać użyta wartość węzła OPC UA. **OpCode** właściwość definiuje, jak wartość znajduje się w obliczeń.
 

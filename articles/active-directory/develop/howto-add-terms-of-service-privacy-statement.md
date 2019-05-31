@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2242c6fc46f5556de0b0dd63659670e9c3f998d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 399f72c7819378ddc1566c2bdde94801b2c71687
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540187"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235324"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Instrukcje: Konfigurowanie warunków użytkowania usługi i zasady zachowania poufności dla aplikacji
 
@@ -56,33 +56,20 @@ Przykłady: `https://myapp.com/terms-of-service` i `https://myapp.com/privacy-st
 
 Jeśli warunki usługi i zasady zachowania poufności są gotowe, można dodać łącza do tych dokumentów, w swojej aplikacji za pomocą jednej z następujących metod:
 
-* [W witrynie Azure portal](#registered-in-azure-portal)
-* [W portalu rejestracji aplikacji lub Centrum deweloperów](#registered-in-app-reg-portal)
+* [W witrynie Azure portal](#azure-portal)
 * [Za pomocą aplikacji obiektu JSON](#app-object-json)
 * [Za pomocą programu MSGraph beta interfejsu API REST](#msgraph-beta-rest-api)
 
-### <a name="registered-in-azure-portal"></a>Jeśli aplikacja jest zarejestrowana w witrynie Azure portal
-
-Jeśli aplikacja jest zarejestrowana w witrynie Azure portal, wykonaj następujące kroki.
+### <a name="azure-portal"></a>Za pomocą witryny Azure portal
+Wykonaj następujące kroki w witrynie Azure portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do **rejestracje aplikacji** sekcji i wybierz swoją aplikację.
-3. Otwórz **właściwości** części aplikacji.
+3. Otwórz **znakowania** okienka.
 4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
 5. Zapisz zmiany.
 
     ![Sekcja właściwości aplikacji z warunkami adresy URL poufności informacji usług i ochrony prywatności](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
-
-### <a name="registered-in-app-reg-portal"></a>Jeśli aplikacja jest zarejestrowana w portalu rejestracji aplikacji
-
-Wykonaj następujące kroki, jeśli aplikacja jest zarejestrowana w portalu rejestracji aplikacji lub Centrum deweloperów.
-
-1. Zaloguj się do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/).
-2. Wybierz aplikację, a następnie przewiń listę do **profilu** sekcji.
-3. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
-4. Zapisz zmiany.
-
-    ![Sekcji profilu aplikacji z warunkami usługi i ochrona prywatności adresów URL, instrukcja](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Za pomocą aplikacji obiektu JSON
 

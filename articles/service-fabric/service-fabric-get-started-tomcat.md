@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df3156688f018aee4717271557220396827dd9e2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947435"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306828"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Tworzenie kontenera usługi Service Fabric z systemem serwera Apache Tomcat w systemie Linux
 Apache Tomcat to popularne, typu open-source implementacja technologii Java Servlet i serwer Java. W tym artykule przedstawiono sposób tworzenia kontenera za pomocą oprogramowania Apache Tomcat i prostą aplikację sieci Web, miało miejsce wdrożenie kontenera w klastrze usługi Service Fabric z systemem Linux i połączyć się z aplikacją sieci Web.  
@@ -111,9 +111,9 @@ Wykonaj kroki opisane w tej sekcji, aby utworzyć obraz platformy Docker na pods
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Wypchnij obraz Tomcat do rejestru kontenerów
 Teraz, gdy masz pewność działania Tomcat obrazu w kontenerze na komputerze deweloperskim, Wypchnij go do repozytorium w rejestrze kontenerów. W tym artykule używa usługi Azure Container Registry do przechowywania obrazu, ale w niektórych modyfikacji kroków, możesz użyć dowolnego rejestru kontenerów, które wybierzesz. W tym artykule nazwę rejestru zakłada się, że *myregistry* , a nazwa rejestru pełną to myregistry.azurecr.io. Zmiany są odpowiednie dla danego scenariusza. 
 
-1. Uruchom `docker login`, aby zalogować się do rejestru kontenera za pomocą Twoich [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
+1. Uruchom `docker login` zalogować się do rejestru kontenerów za pomocą usługi [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
-   Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz również zalogować się za pomocą nazwy i hasła użytkownika rejestru.
+   Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Alternatywnie można logowania przy użyciu nazwy i hasła użytkownika rejestru.
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword

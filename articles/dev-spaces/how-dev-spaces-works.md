@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605412"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399834"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -80,7 +80,7 @@ Omówimy więcej szczegółów dotyczących działania usługi Azure Dev miejsca
 ## <a name="prepare-your-aks-cluster"></a>Przygotuj klastra usługi AKS
 
 Trwa przygotowywanie klastra usługi AKS obejmuje:
-* Weryfikowanie usługi AKS klastra znajduje się w regionie [obsługiwane przez usługi Azure Dev miejsca do magazynowania](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+* Weryfikowanie usługi AKS klastra znajduje się w regionie [obsługiwane przez usługi Azure Dev miejsca do magazynowania][supported-regions].
 * Weryfikowanie, są uruchomione usługi Kubernetes 1.10.3 lub nowszej.
 * Włączanie usługi Azure Dev miejsca do magazynowania w sieci za pomocą klastra `az aks use-dev-spaces`
 
@@ -278,7 +278,7 @@ Gdy żądanie HTTP do usługi z spoza klastra, żądanie jest przesyłany do kon
 
 Gdy żądania HTTP do usługi z innej usługi w klastrze, najpierw przechodzi przez wywołującego usługi serwera proxy devspaces kontenera. Kontener devspaces proxy patrzy na żądania HTTP i sprawdzenia `azds-route-as` nagłówka. Oparte na nagłówek, kontener devspaces proxy będzie wyglądać adres IP usługi skojarzona wartość nagłówka. Jeśli adres IP zostanie znaleziony, kontener devspaces proxy zmienia trasę żądania na adres IP. Jeśli adres IP nie zostanie znaleziony, kontener devspaces proxy kieruje żądanie do tego kontenera aplikacji.
 
-Na przykład aplikacje *serviceA* i *serviceB* są wdrażane do miejsca dev nadrzędny o nazwie *domyślne*. *serviceA* opiera się na *serviceB* i sprawia, że wywołania HTTP. Użytkownik platformy Azure tworzy miejsce dev podrzędnych, na podstawie *domyślne* noszącej *azureuser*. Użytkownika usługi Azure wdraża też własne wersję *serviceA* do ich obszaru podrzędnych. Po wysłaniu żądania do *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+Na przykład aplikacje *serviceA* i *serviceB* są wdrażane do miejsca dev nadrzędny o nazwie *domyślne*. *serviceA* opiera się na *serviceB* i sprawia, że wywołania HTTP. Użytkownik platformy Azure tworzy miejsce dev podrzędnych, na podstawie *domyślne* noszącej *azureuser*. Użytkownika usługi Azure wdraża też własne wersję *serviceA* do ich obszaru podrzędnych. Po wysłaniu żądania do *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Usługa Azure spacje Dev routingu](media/how-dev-spaces-works/routing.svg)
 
@@ -337,13 +337,13 @@ Za pomocą *install.values* właściwości, możesz wyświetlić listę jednego 
 
 W powyższym przykładzie *install.set.replicaCount* właściwość zawiera informacje kontrolera, ile wystąpień aplikację do uruchamiania w obszarze deweloperów. Zależnie od scenariusza można zwiększyć tę wartość, ale jej wpływ na dołączanie debugera do zasobnika Twojej aplikacji. Aby uzyskać więcej informacji, zobacz [artykule dotyczącym rozwiązywania problemów](troubleshooting.md).
 
-W wygenerowanym wykresu Helm obraz kontenera jest ustawiona na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}*. `azds.yaml` Plik definiuje *install.set.image.tag* właściwość jako *$(tag)* domyślnie używany jako wartość pozycji *{{. VALUES.Image.tag}}*. Ustawiając *install.set.image.tag* właściwości w ten sposób umożliwia obrazu kontenera dla swojej aplikacji, które ma zostać oznaczony w odrębnych sposób podczas uruchamiania usługi Azure Dev miejsca do magazynowania. W tym konkretnym przypadku obraz, który jest oznaczony jako  *\<wartość image.repository >: $(tag)*. Należy użyć *$(tag)* zmiennej jako wartości *install.set.image.tag* w kolejności dla miejsca do magazynowania Dev rozpoznaje i odszukaj kontener w klastrze AKS.
+W wygenerowanym wykresu Helm obraz kontenera jest ustawiona na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}* . `azds.yaml` Plik definiuje *install.set.image.tag* właściwość jako *$(tag)* domyślnie używany jako wartość pozycji *{{. VALUES.Image.tag}}* . Ustawiając *install.set.image.tag* właściwości w ten sposób umożliwia obrazu kontenera dla swojej aplikacji, które ma zostać oznaczony w odrębnych sposób podczas uruchamiania usługi Azure Dev miejsca do magazynowania. W tym konkretnym przypadku obraz, który jest oznaczony jako  *\<wartość image.repository >: $(tag)* . Należy użyć *$(tag)* zmiennej jako wartości *install.set.image.tag* w kolejności dla miejsca do magazynowania Dev rozpoznaje i odszukaj kontener w klastrze AKS.
 
-W powyższym przykładzie `azds.yaml` definiuje *install.set.ingress.hosts*. *Install.set.ingress.hosts* właściwość definiuje format nazwy hosta, dla publicznych punktów końcowych. Ta właściwość używa również *$(spacePrefix)*, *$(rootSpacePrefix)*, i *$(hostSuffix)*, które są dostarczone przez kontroler. 
+W powyższym przykładzie `azds.yaml` definiuje *install.set.ingress.hosts*. *Install.set.ingress.hosts* właściwość definiuje format nazwy hosta, dla publicznych punktów końcowych. Ta właściwość używa również *$(spacePrefix)* , *$(rootSpacePrefix)* , i *$(hostSuffix)* , które są dostarczone przez kontroler. 
 
 *$(SpacePrefix)* jest nazwą obszaru dev podrzędne mają postać *SPACENAME.s*. *$(RootSpacePrefix)* to nazwa miejsca nadrzędnej. Na przykład jeśli *azureuser* to miejsce podrzędnych z *domyślne*, wartość *$(rootSpacePrefix)* jest *domyślne* i wartość *$(spacePrefix)* jest *azureuser.s*. Jeśli miejsce nie jest spacją podrzędnych *$(spacePrefix)* jest pusta. Na przykład jeśli *domyślne* miejsca nie ma nadrzędnego miejsca, wartość *$(rootSpacePrefix)* jest *domyślne* i wartość *$(spacePrefix)* jest pusta. *$(HostSuffix)* jest sufiks DNS, wskazujący na kontroler danych przychodzących miejsca do magazynowania deweloperów platformy Azure, działającego w klastrze AKS. Ten sufiks DNS odpowiada wpis DNS symbol wieloznaczny, na przykład  *\*. RANDOM_VALUE.eus.azds.IO*, który został utworzony, gdy kontroler Azure Dev miejsca do magazynowania została dodana do klastra usługi AKS.
 
-W powyższych `azds.yaml` pliku, ale można też aktualizować *install.set.ingress.hosts* Aby zmienić nazwę hosta aplikacji. Na przykład, jeśli chce się Uprość nazwę hosta aplikacji *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* do *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)*.
+W powyższych `azds.yaml` pliku, ale można też aktualizować *install.set.ingress.hosts* Aby zmienić nazwę hosta aplikacji. Na przykład, jeśli chce się Uprość nazwę hosta aplikacji *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* do *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
 Aby utworzyć kontener dla aplikacji, używa kontrolera poniżej sekcji `azds.yaml` pliku konfiguracji:
 
@@ -408,7 +408,7 @@ W przypadku aplikacji Java, .NET i Node.js można debugować aplikacji uruchamia
 
 ![Debugowanie kodu](media/get-started-node/debug-configuration-nodejs2.png)
 
-Po uruchomieniu aplikacji za pomocą programu Visual Studio Code lub Visual Studio do debugowania, obsługę uruchamiania i łączenia przestrzeni dev w taki sam sposób, jak działa `azds up`. Narzędzia po stronie klienta w programie Visual Studio Code i Visual Studio oferują również dodatkowy parametr przy użyciu określonych informacji dotyczących debugowania. Parametr zawiera nazwy obrazu debugera, lokalizacja debugera w obrazie debugera i lokalizacji docelowej w kontenerze aplikacji do zainstalowania folder debugera. 
+Po uruchomieniu aplikacji za pomocą programu Visual Studio Code lub Visual Studio do debugowania, obsługę uruchamiania i łączenia przestrzeni dev w taki sam sposób, jak działa `azds up`. Narzędzia po stronie klienta w programie Visual Studio Code i Visual Studio oferują również dodatkowy parametr przy użyciu określonych informacji dotyczących debugowania. Parametr zawiera nazwy obrazu debugera, lokalizacja debugera w obrazie debugera i lokalizacji docelowej w kontenerze aplikacji do zainstalowania folder debugera.
 
 Obraz debugera jest ustalany automatycznie narzędzia po stronie klienta. Używa metody podobnej do komentarzowi użytemu w pliku Dockerfile i wygenerować planu Helm, podczas uruchamiania `azds prep`. Po debuger jest zainstalowany w aplikacji, obrazów, jest uruchamiane przy użyciu `azds exec`.
 
@@ -442,3 +442,7 @@ Aby rozpocząć projektowanie zespołowe, zobacz następujące artykuły z porad
 * [Programowanie zespołowe — .NET Core za pomocą interfejsu wiersza polecenia i programu Visual Studio Code](team-development-netcore.md)
 * [Programowanie zespołowe — .NET Core z programem Visual Studio](team-development-netcore-visualstudio.md)
 * [Programowanie zespołowe — Node.js przy użyciu interfejsu wiersza polecenia i programu Visual Studio Code](team-development-nodejs.md)
+
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751261"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239075"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 ## <a name="video-3-data-science-for-beginners-series"></a>Wideo 3: Analiza danych dla początkujących serii
@@ -48,7 +48,7 @@ Mówiliśmy o tym, jak do nauki o danych jest proces przewidywanie odpowiedzi na
 
 Niezrozumiała pytanie nie ma na udzielenie odpowiedzi z nazwą lub liczbą. Musi być sharp pytanie.
 
-Załóżmy, że znaleziono magic lamp przy użyciu genie, kto realistyczne odpowiedzą na każde pytanie, które możesz zadawać pytania. Jednak jest mischievous genie, a użytkownik zostanie podjęta próba kompromis jego odpowiedź jako niejasna i pozostał przejrzysty on uzyskać natychmiast dzięki. Chcesz przypiąć go w dół do pytania, więc hermetyczne nie może on pomóc ale informujące o tym, co chcesz wiedzieć.
+Załóżmy, że znaleziono magic lamp przy użyciu genie, kto realistyczne odpowiedzą na każde pytanie, które możesz zadawać pytania. Ale mischievous genie, który podejmie próbę upewnij ich odpowiedzi jako niejasna i pozostał przejrzysty, jak można natychmiast uzyskać za pomocą. Chcesz przypiąć je w dół do pytania, więc hermetyczne, że nie może pomóc, ale informujące o tym, co chcesz wiedzieć.
 
 Jeśli masz zamiar Zadaj pytanie niejasne, takie jak "Co się dzieje się tak zdarzyć z moich stock?", genie mogą odpowiedzieć, "cena zmieni się". To realistyczne odpowiedzi, ale nie jest to bardzo przydatne.
 

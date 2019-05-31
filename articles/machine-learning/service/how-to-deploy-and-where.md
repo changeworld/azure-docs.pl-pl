@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/21/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4685d02fa9a1f08d86bdbe2915b94f177235b864
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 929a4ae2e954933bf00550770ba9d41319dc6241
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016417"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418042"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -235,9 +235,6 @@ Poniższe sekcje pokazują, jak utworzyć konfigurację wdrożenia, a następnie
 ### <a id="local"></a> Wdrożenie lokalne
 
 Aby wdrożyć lokalnie, musisz mieć **zainstalowana platforma Docker** na komputerze lokalnym.
-
-Przykłady w tej sekcji użyto [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-), który wymaga zarejestrowania modelu i obrazów przed wykonaniem wdrożenia. Aby uzyskać więcej informacji na temat innych metod wdrażania, zobacz [wdrażanie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) i [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-).
-
 
 + **Korzystanie z zestawu SDK**
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920516"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418141"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Odnajdowanie obszaru macierzystego dla strony logowania usługi Azure Active Directory
 
@@ -32,19 +32,19 @@ Do obsługi szerszego zakresu poświadczeń i zwiększenia użyteczności, zacho
 
 Dodatkową zaletą tej pracy jest błąd Ulepszone komunikaty. Poniżej przedstawiono kilka przykładów ulepszone błąd komunikatów podczas logowania się do aplikacji, która obsługuje tylko użytkownicy usługi Azure Active Directory.
 
-1. Nazwa użytkownika jest błędnie wpisana lub nazwa użytkownika nie ma jeszcze zsynchronizowane z usługą Azure AD:
+- Nazwa użytkownika jest błędnie wpisana lub nazwa użytkownika nie ma jeszcze zsynchronizowane z usługą Azure AD:
   
     ![Nazwa użytkownika jest błędnie wpisana lub nie można odnaleźć](./media/signin-realm-discovery/typo-username.png)
   
-2. Nazwa domeny jest źle wpisano:
+- Nazwa domeny jest źle wpisano:
   
     ![Nazwa domeny jest błędnie wpisana lub nie można odnaleźć](./media/signin-realm-discovery/typo-domain.png)
   
-3. Użytkownik próbuje zalogować się przy użyciu domena konsumencka znane:
+- Użytkownik próbuje zalogować się przy użyciu domena konsumencka znane:
   
     ![Zaloguj się przy użyciu domena konsumencka znane](./media/signin-realm-discovery/consumer-domain.png)
   
-4. Hasło jest źle wpisano, ale nazwa użytkownika jest dokładne:  
+- Hasło jest źle wpisano, ale nazwa użytkownika jest dokładne:  
   
     ![hasło jest źle wpisano przy użyciu właściwej nazwy użytkownika](./media/signin-realm-discovery/incorrect-password.png)
   

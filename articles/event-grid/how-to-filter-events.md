@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 182a936e97cd6ed2527d618dfe777ae861c757e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bb95b80e12c818641e2be2b929cdfd01f8f5b5c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119628"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304230"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtrowanie zdarzeń usługi Event Grid
 
@@ -184,8 +184,6 @@ Kolejny przykład szablonu usługi Resource Manager tworzy subskrypcję dla usł
 ## <a name="filter-by-operators-and-data"></a>Filtruj według operatory i danych
 
 Aby uzyskać większą elastyczność filtrowania można użyć operatorów i właściwości danych, aby filtrować zdarzenia.
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>Subskrybuj, korzystając z zaawansowanych filtrów
 

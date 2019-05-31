@@ -3,19 +3,19 @@ title: Jak używać wywołania zwrotnego wykrywania jednostek z modelu uczeń ko
 titleSuffix: Azure
 description: Dowiedz się, jak wywołania zwrotnego wykrywania jednostki za pomocą modelu uczeń konwersacji.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 576dc6bd44360f73c4133907233e59e5f51837b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: ed254ea3db1c8f0e680cba71185e9b4505d8f200
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707578"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387651"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Jak używać wywołania zwrotnego wykrywania jednostki
 

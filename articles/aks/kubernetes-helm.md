@@ -5,14 +5,14 @@ services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2fcdb72fa2717659e78e6f767bdc73b0d7be0886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76a5391cbe142851d9b1f60ea9346af2e7a35d6a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465040"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392136"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalowanie aplikacji za pomocą narzędzia Helm w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,10 @@ W tym artykule przedstawiono sposób konfigurowania i używania narzędzia Helm 
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-Należy również narzędzia Helm zainstalować interfejs wiersza polecenia, klient, który działa w systemie deweloperskim i pozwala na uruchamianie, zatrzymywanie i zarządzać aplikacjami za pomocą narzędzia Helm. Jeśli używasz usługi Azure Cloud Shell, interfejs wiersza polecenia narzędzia Helm jest już zainstalowana. Aby, zobacz instrukcje dotyczące instalacji na lokalnym platformie [instalowanie narzędzia Helm][helm-install].
+Należy również narzędzia Helm zainstalować interfejs wiersza polecenia, czyli klienta, który działa w systemie deweloperskim. Umożliwia uruchamianie, zatrzymywanie i zarządzać aplikacjami za pomocą narzędzia Helm. Jeśli używasz usługi Azure Cloud Shell, interfejs wiersza polecenia narzędzia Helm jest już zainstalowana. Aby, zobacz instrukcje dotyczące instalacji na lokalnym platformie [instalowanie narzędzia Helm][helm-install].
+
+> [!IMPORTANT]
+> Helm jest przeznaczony do uruchomienia w węzłach systemu Linux. W przypadku węzłów systemu Windows Server w klastrze, upewnij się, że narzędzia Helm zasobników tylko są planowane do uruchomienia w węzłach systemu Linux. Należy również upewnić się, że żadnych wykresów rozwiązania Helm, które należy zainstalować również są zaplanowane do uruchomienia na odpowiednich węzłów. Polecenia w tym artykule korzystają [selektory węzła] [ k8s-node-selector] zapewnienie zasobników są zaplanowane do odpowiednich węzłów, ale nie wszystkich wykresów rozwiązania Helm może narazić selektora węzła. Możesz też rozważyć, przy użyciu innych opcji w klastrze, takich jak [taints][taints].
 
 ## <a name="create-a-service-account"></a>Tworzenie konta usługi
 
@@ -70,7 +73,7 @@ Z klastrem Kubernetes z włączoną funkcją RBAC można kontrolować poziom dos
 Aby wdrożyć podstawowe Tiller w klastrze AKS, wykonaj [polecenia helm init] [ helm-init] polecenia. Jeśli klaster nie jest włączone RBAC, Usuń `--service-account` argument i wartość. Jeśli protokoły TLS/SSL jest skonfigurowany dla Tiller i Helm, Pomiń ten krok inicjowania podstawowe i zamiast tego Podaj wymagane `--tiller-tls-` jak pokazano w następnym przykładzie.
 
 ```console
-helm init --service-account tiller
+helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 Jeśli skonfigurowano protokół TLS/SSL między Helm i Tiller zapewniają `--tiller-tls-*` parametrów i nazwy własne certyfikaty, jak pokazano w poniższym przykładzie:
@@ -82,7 +85,8 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
-    --service-account tiller
+    --service-account tiller \
+    --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 ## <a name="find-helm-charts"></a>Znajdź wykresów rozwiązania Helm
@@ -141,78 +145,62 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ## <a name="run-helm-charts"></a>Uruchom wykresów rozwiązania Helm
 
-Aby zainstalować wykresów za pomocą narzędzia Helm, użyj [helm install] [ helm-install] polecenie i wprowadź nazwę wykresu do zainstalowania. Aby to zobaczyć w działaniu, należy zainstalować podstawowe wdrożenie platformy Wordpress przy użyciu wykresu Helm. Jeśli skonfigurowano protokół TLS/SSL, należy dodać `--tls` parametr do użycia certyfikat klienta narzędzia Helm.
+Aby zainstalować wykresów za pomocą narzędzia Helm, użyj [helm install] [ helm-install] polecenie i wprowadź nazwę wykresu do zainstalowania. Aby zobaczyć, instalowanie wykresu Helm w akcji, należy zainstalować wdrożenie podstawowego serwera nginx za pomocą wykresu Helm. Jeśli skonfigurowano protokół TLS/SSL, należy dodać `--tls` parametr do użycia certyfikat klienta narzędzia Helm.
 
 ```console
-helm install stable/wordpress
+helm install stable/nginx-ingress \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 Następujące dane wyjściowe skróconego przykładu przedstawia stan wdrożenia zasobów platformy Kubernetes, w ramach wykresu Helm:
 
 ```
-$ helm install stable/wordpress
+$ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
-NAME:   wishful-mastiff
-LAST DEPLOYED: Wed Mar  6 19:11:38 2019
+NAME:   flailing-alpaca
+LAST DEPLOYED: Thu May 23 12:55:21 2019
 NAMESPACE: default
 STATUS: DEPLOYED
 
 RESOURCES:
-==> v1beta1/Deployment
-NAME                       DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
-wishful-mastiff-wordpress  1        1        1           0          1s
-
-==> v1beta1/StatefulSet
-NAME                     DESIRED  CURRENT  AGE
-wishful-mastiff-mariadb  1        1        1s
+==> v1/ConfigMap
+NAME                                      DATA  AGE
+flailing-alpaca-nginx-ingress-controller  1     0s
 
 ==> v1/Pod(related)
-NAME                                        READY  STATUS   RESTARTS  AGE
-wishful-mastiff-wordpress-6f96f8fdf9-q84sz  0/1    Pending  0         1s
-wishful-mastiff-mariadb-0                   0/1    Pending  0         1s
-
-==> v1/Secret
-NAME                       TYPE    DATA  AGE
-wishful-mastiff-mariadb    Opaque  2     2s
-wishful-mastiff-wordpress  Opaque  2     2s
-
-==> v1/ConfigMap
-NAME                           DATA  AGE
-wishful-mastiff-mariadb        1     2s
-wishful-mastiff-mariadb-tests  1     2s
-
-==> v1/PersistentVolumeClaim
-NAME                       STATUS   VOLUME   CAPACITY  ACCESS MODES  STORAGECLASS  AGE
-wishful-mastiff-wordpress  Pending  default  2s
+NAME                                                            READY  STATUS             RESTARTS  AGE
+flailing-alpaca-nginx-ingress-controller-56666dfd9f-bq4cl       0/1    ContainerCreating  0         0s
+flailing-alpaca-nginx-ingress-default-backend-66bc89dc44-m87bp  0/1    ContainerCreating  0         0s
 
 ==> v1/Service
-NAME                       TYPE          CLUSTER-IP   EXTERNAL-IP  PORT(S)                     AGE
-wishful-mastiff-mariadb    ClusterIP     10.1.116.54  <none>       3306/TCP                    2s
-wishful-mastiff-wordpress  LoadBalancer  10.1.217.64  <pending>    80:31751/TCP,443:31264/TCP  2s
+NAME                                           TYPE          CLUSTER-IP  EXTERNAL-IP  PORT(S)                     AGE
+flailing-alpaca-nginx-ingress-controller       LoadBalancer  10.0.109.7  <pending>    80:31219/TCP,443:32421/TCP  0s
+flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none>       80/TCP                      0s
 ...
 ```
 
-Trwa minutę lub dwie *EXTERNAL-IP* adres usługi Wordpress uzupełnione i pozwala uzyskać do niego dostęp za pomocą przeglądarki internetowej.
+Trwa minutę lub dwie *EXTERNAL-IP* adres usługi nginx — ruch przychodzący controller uzupełnione i pozwala uzyskać do niego dostęp za pomocą przeglądarki internetowej.
 
 ## <a name="list-helm-releases"></a>Wersje narzędzia Helm list
 
-Aby wyświetlić listę wersji zainstalowany w klastrze, należy użyć [polecenie helm list] [ helm-list] polecenia. Poniższy przykład pokazuje wersji systemu Wordpress, wdrożonych w poprzednim kroku. Jeśli skonfigurowano protokół TLS/SSL, należy dodać `--tls` parametr do użycia certyfikat klienta narzędzia Helm.
+Aby wyświetlić listę wersji zainstalowany w klastrze, należy użyć [polecenie helm list] [ helm-list] polecenia. Poniższy przykład pokazuje wersji ruch przychodzący serwera nginx, wdrożonych w poprzednim kroku. Jeśli skonfigurowano protokół TLS/SSL, należy dodać `--tls` parametr do użycia certyfikat klienta narzędzia Helm.
 
 ```console
 $ helm list
 
-NAME                REVISION    UPDATED                     STATUS      CHART            APP VERSION    NAMESPACE
-wishful-mastiff   1         Wed Mar  6 19:11:38 2019    DEPLOYED    wordpress-2.1.3  4.9.7          default
+NAME                REVISION    UPDATED                     STATUS      CHART                 APP VERSION   NAMESPACE
+flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingress-1.6.13    0.24.1      default
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić te zasoby, należy użyć `helm delete` polecenia i podaj nazwę swojej wersji, tak jak w poprzednim `helm list` polecenia. Poniższy przykład usuwa wydania o nazwie *wishful mastiff*:
+Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić te zasoby, należy użyć `helm delete` polecenia i podaj nazwę swojej wersji, tak jak w poprzednim `helm list` polecenia. Poniższy przykład usuwa wydania o nazwie *flailing alpaki*:
 
 ```console
-$ helm delete wishful-mastiff
+$ helm delete flailing-alpaca
 
-release "wishful-mastiff" deleted
+release "flailing-alpaca" deleted
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -239,3 +227,5 @@ Aby uzyskać więcej informacji o zarządzaniu wdrażaniem aplikacji platformy K
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
+[taints]: operator-best-practices-advanced-scheduler.md

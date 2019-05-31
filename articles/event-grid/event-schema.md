@@ -8,18 +8,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561566"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304248"
 ---
 # <a name="azure-event-grid-event-schema"></a>Schemat zdarzeń w usłudze Azure Event Grid
 
 W tym artykule opisano, właściwości i schematu, które znajdują się dla wszystkich zdarzeń. Zdarzenia składają się z zbiór właściwości pięć wymaganych parametrów i obiekt wymaganych danych. Właściwości są wspólne dla wszystkich zdarzeń z dowolnego wydawcę. Obiekt danych posiada właściwości, które są specyficzne dla każdego wydawcy. Tematy systemu te właściwości są specyficzne dla dostawcy zasobów, takich jak usługa Azure Storage lub Azure Event Hubs.
 
-Źródła zdarzeń wysyła zdarzenia do usługi Azure Event Grid w tablicy, który może mieć kilka obiektów zdarzeń. Ogłaszając zdarzenia do tematu usługi event grid tablicy może mieć całkowity rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB. Jeśli zdarzenia lub tablicy jest większy niż limity rozmiaru, pojawi się odpowiedź **413 ładunku duży**.
+Źródła zdarzeń wysyła zdarzenia do usługi Azure Event Grid w tablicy, który może mieć kilka obiektów zdarzeń. Ogłaszając zdarzenia do tematu usługi event grid tablicy może mieć całkowity rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB (ogólnie) lub 1 MB (wersja zapoznawcza). Jeśli zdarzenia lub tablicy jest większy niż limity rozmiaru, pojawi się odpowiedź **413 ładunku duży**.
+
+> [!NOTE]
+> Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
 
 Usługa Event Grid wysyła zdarzenia do subskrybentów w tablicy, która ma pojedyncze zdarzenie. To zachowanie, mogą ulec zmianie w przyszłości.
 
@@ -83,12 +86,12 @@ Wszystkie zdarzenia mają te same dane następujących najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| Temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| dane | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| Dane | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| dataVersion | string | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Aby dowiedzieć się więcej na temat właściwości w obiekcie danych, zobacz źródło zdarzenia:

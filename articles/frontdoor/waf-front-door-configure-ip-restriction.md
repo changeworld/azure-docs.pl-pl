@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 05/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: b129579916330a34a2a78d98f2c7653f129d3319
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: dae2bb8ece9ef56c0999e0f89abbf6f8d8e950e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523708"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242941"
 ---
 # <a name="configure-an-ip-restriction-rule-with-web-application-firewall-for-azure-front-door-preview"></a>Skonfiguruj regułę ograniczeń adresów IP przy użyciu zapory aplikacji sieci web dla platformy Azure drzwiami frontowymi (wersja zapoznawcza)
  W tym artykule pokazano, jak skonfigurować zasady ograniczeń adresów IP w zapory aplikacji sieci web platformy Azure (WAF) dla drzwiami frontowymi przy użyciu szablonu z wiersza polecenia platformy Azure, programu Azure PowerShell lub usługi Azure Resource Manager.
@@ -57,7 +57,7 @@ Dodaj niestandardowe reguły kontroli dostępu IP do zasad zapory aplikacji siec
 
 W poniższym przykładzie:
 -  Zastąp *IPAllowPolicyExampleCLI* o swoje unikatowe zasady utworzone wcześniej.
--  Zastąp *zakresu 1, ip adresu w-*, *ip adres zakresu-2* przy użyciu własnego zakresu.
+-  Zastąp *zakresu 1, ip adresu w-* , *ip adres zakresu-2* przy użyciu własnego zakresu.
 
 Najpierw należy utworzyć pakiet Integracyjny Zezwalaj na regułę dla określonych adresów.
 
@@ -137,7 +137,7 @@ Install-Module -Name Az.FrontDoor
 Utwórz profil drzwiami frontowymi, wykonując instrukcje opisane w [Szybki Start: Utwórz profil drzwi](quickstart-create-front-door.md)
 
 ### <a name="define-ip-match-condition"></a>Zdefiniuj warunek dopasowania adresów IP
-Użyj [New AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) polecenie, aby zdefiniować warunek dopasowania adresów IP. W poniższym przykładzie Zastąp *zakresu 1, ip adresu w-*, *ip adres zakresu-2* przy użyciu własnego zakresu.
+Użyj [New AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) polecenie, aby zdefiniować warunek dopasowania adresów IP. W poniższym przykładzie Zastąp *zakresu 1, ip adresu w-* , *ip adres zakresu-2* przy użyciu własnego zakresu.
 
 ```powershell
   $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -157,7 +157,7 @@ Utwórz wszystkie reguły warunku dopasowania adresów IP
    Użyj [New AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) polecenie, aby zdefiniować akcję i ustaw priorytet. W poniższym przykładzie będą dozwolone żądania z adresów IP klientów, które pasują do listy. 
 
 ```powershell
-  $IPAllowRule = New-AzFrontDoorCustomRuleObject `
+  $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
     -Name "IPAllowRule" `
     -RuleType MatchRule `
     -MatchCondition $IPMatchCondition `
@@ -166,7 +166,7 @@ Utwórz wszystkie reguły warunku dopasowania adresów IP
 Tworzenie bloku wszystkich adresów IP reguły z niższym priorytetem niż poprzednie IP regułę Zezwalaj.
 
 ```powershell
-  $IPBlockAll = New-AzFrontDoorCustomRuleObject `
+  $IPBlockAll = New-AzFrontDoorWafCustomRuleObject `
     -Name "IPDenyAll" `
     -RuleType MatchRule `
     -MatchCondition $IPMatchALlCondition `
