@@ -287,6 +287,8 @@
               href: application-proxy-connector-installation-problem.md
             - name: Problem z logowaniem
               href: application-sign-in-problem-on-premises-application-proxy.md
+            - name: Problemy z funkcją CORS na serwerze proxy aplikacji
+              href: application-proxy-understand-cors-issues.md
 - name: Dokumentacja
   items:
     - name: Historia wersji serwera proxy aplikacji

@@ -83,7 +83,7 @@
           displayName: roles
         - name: Wyodrębnianie danych o formacie swobodnym
           href: luis-tutorial-pattern-any.md
-    - name: Korzystanie z bota
+    - name: Używanie struktury botów V4
       items:
         - name: 'Przy użyciu języka C#'
           href: luis-csharp-tutorial-bf-v4.md
@@ -198,7 +198,7 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: Za pomocą usługi rozpoznawania mowy
           href: luis-tutorial-speech-to-intent.md
-        - name: Za pomocą bota
+        - name: Używanie struktury botów V3
           items:
             - name: Bot aplikacji internetowej
               items:
@@ -279,6 +279,8 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Granice
       href: luis-boundaries.md
+    - name: Ustawienia aplikacji
+      href: luis-reference-application-settings.md
     - name: Dokumentacja wstępnie utworzonych jednostek
       items:
         - name: Jednostki na kulturę
