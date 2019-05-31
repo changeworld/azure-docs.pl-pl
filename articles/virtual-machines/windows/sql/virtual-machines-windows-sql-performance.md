@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477352"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393762"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wytyczne dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Ten artykuł zawiera wskazówki dotyczące optymalizacji wydajności programu SQL Server na maszynie wirtualnej platformy Azure firmy Microsoft. Podczas uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure, firma Microsoft zaleca, będziesz nadal korzystać z tej samej bazy danych opcje dostrajania wydajności, które mają zastosowanie do programu SQL Server w środowisku serwera w środowisku lokalnym. Jednak wydajność relacyjnej bazy danych w chmurze publicznej zależy od wielu czynników, takich jak rozmiar maszyny wirtualnej i konfiguracja dysków z danymi.
 
@@ -179,13 +179,24 @@ Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB 
 
 Niektóre wdrożenia mogą osiągać korzyści wyższą wydajność przy użyciu bardziej zaawansowanych technik konfiguracji. Poniższa lista wyróżnione niektóre funkcje programu SQL Server, które mogą pomóc Ci osiągnąć większą wydajność:
 
-* **Tworzenie kopii zapasowych w usłudze Azure storage**: Podczas wykonywania kopii zapasowych programu SQL Server uruchomionego na maszynach wirtualnych platformy Azure, możesz użyć [kopię zapasową serwera SQL do adresu URL](https://msdn.microsoft.com/library/dn435916.aspx). Ta funkcja jest dostępna, począwszy od pakietu CU2 programu SQL Server 2012 z dodatkiem SP1 i zalecane w przypadku wykonywania kopii zapasowych dołączonych dysków z danymi. Po użytkownik/przywracania kopii zapasowej do/z usługi Azure storage, postępuj zgodnie z zaleceniami, przy zachowaniu [SQL Server kopii zapasowej do adresu URL najlepszych rozwiązań i rozwiązywanie problemów i przywracanie z kopii zapasowych przechowywanych w usłudze Azure Storage](https://msdn.microsoft.com/library/jj919149.aspx). Możesz też zautomatyzować te kopie zapasowe przy użyciu [automatyczne kopie zapasowe dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
+### <a name="backup-to-azure-storage"></a>Kopia zapasowa w usłudze Azure Storage
+Podczas wykonywania kopii zapasowych programu SQL Server uruchomionego na maszynach wirtualnych platformy Azure, możesz użyć [kopię zapasową serwera SQL do adresu URL](https://msdn.microsoft.com/library/dn435916.aspx). Ta funkcja jest dostępna, począwszy od pakietu CU2 programu SQL Server 2012 z dodatkiem SP1 i zalecane w przypadku wykonywania kopii zapasowych dołączonych dysków z danymi. Po użytkownik/przywracania kopii zapasowej do/z usługi Azure storage, postępuj zgodnie z zaleceniami, przy zachowaniu [SQL Server kopii zapasowej do adresu URL najlepszych rozwiązań i rozwiązywanie problemów i przywracanie z kopii zapasowych przechowywanych w usłudze Azure Storage](https://msdn.microsoft.com/library/jj919149.aspx). Możesz też zautomatyzować te kopie zapasowe przy użyciu [automatyczne kopie zapasowe dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
 
-    Starszych niż SQL Server 2012, można użyć [kopię zapasową serwera SQL do narzędzia Azure](https://www.microsoft.com/download/details.aspx?id=40740). To narzędzie może pomóc w celu zwiększenia przepływności kopii zapasowej przy użyciu wielu celów tworzenia kopii zapasowej usługi stripe.
+Starszych niż SQL Server 2012, można użyć [kopię zapasową serwera SQL do narzędzia Azure](https://www.microsoft.com/download/details.aspx?id=40740). To narzędzie może pomóc w celu zwiększenia przepływności kopii zapasowej przy użyciu wielu celów tworzenia kopii zapasowej usługi stripe.
 
-* **Pliki danych programu SQL Server na platformie Azure**: Ta nowa funkcja [pliki danych programu SQL Server na platformie Azure](https://msdn.microsoft.com/library/dn385720.aspx), jest dostępna, począwszy od programu SQL Server 2014. Uruchomiony program SQL Server przy użyciu plików danych na platformie Azure pokazuje charakterystyki wydajności porównywalnej jako korzystają z dysków danych na platformie Azure.
+### <a name="sql-server-data-files-in-azure"></a>Pliki danych programu SQL Server na platformie Azure
 
-## <a name="next-steps"></a>Następne kroki
+Ta nowa funkcja [pliki danych programu SQL Server na platformie Azure](https://msdn.microsoft.com/library/dn385720.aspx), jest dostępna, począwszy od programu SQL Server 2014. Uruchomiony program SQL Server przy użyciu plików danych na platformie Azure pokazuje charakterystyki wydajności porównywalnej jako korzystają z dysków danych na platformie Azure.
+
+### <a name="failover-cluster-instance-and-storage-spaces"></a>Wystąpienia klastra trybu failover i miejsca do magazynowania
+
+Jeśli używasz funkcji miejsca do magazynowania, podczas dodawania węzłów do klastra na **potwierdzenie** strony, usuń zaznaczenie pola wyboru **Dodaj wszystkie odpowiednie magazyny do klastra**. 
+
+![Usuń zaznaczenie pola wyboru odpowiednie magazyny](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
+
+Jeśli używasz funkcji miejsca do magazynowania, a nie Usuń zaznaczenie pola wyboru **Dodaj wszystkie odpowiednie magazyny do klastra**, Windows powoduje odłączenie dysków wirtualnych podczas procesu klastrowania. W rezultacie nie są wyświetlane w Menedżerze dysków lub Eksploratorze aż miejsca do magazynowania są usuwane z klastra i ponownie dołączyć przy użyciu programu PowerShell. Miejsca do magazynowania grupuje wielu dysków w pule magazynu. Aby uzyskać więcej informacji, zobacz [miejsca do magazynowania](/windows-server/storage/storage-spaces/overview).
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat magazynu i wydajności, zobacz [wskazówki dotyczące konfigurowania magazynu dla programu SQL Server na maszynie Wirtualnej platformy Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 

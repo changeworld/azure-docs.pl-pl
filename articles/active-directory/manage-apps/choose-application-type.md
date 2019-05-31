@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6e1a1c614bfa126d58cf9343f945d16fd1c2733
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30a4bfa2cf7a39a28db0575a6851f5b7b481524c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781012"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388169"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Wybieranie typu aplikacji, podczas dodawania aplikacji w usłudze Azure Active Directory
 Zapoznaj się z czterech typów aplikacji, które można dodać do usługi Azure Active Directory (Azure AD). Podczas dodawania aplikacji w usłudze Azure Active Directory, zostanie wyświetlony monit wybrać jeden typ cztery aplikacji. 
@@ -80,7 +80,7 @@ Obsługiwane są następujące **logowanie jednokrotne** tryby aplikacji usługi
   >
   >
 
-- **Logowanie na podstawie nagłówka** — wybierz tę opcję, [logowanie na podstawie nagłówka](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) pojedynczego tryb logowania jednokrotnego w przypadku aplikacji przy użyciu PingAccess, która obsługuje uwierzytelnianie na podstawie nagłówków HTTP, który chcesz wykonać logowania jednokrotnego do 
+- **Logowanie na podstawie nagłówka** — wybierz tę opcję, [logowanie na podstawie nagłówka](application-proxy-configure-single-sign-on-with-ping-access.md) pojedynczego tryb logowania jednokrotnego w przypadku aplikacji przy użyciu PingAccess, która obsługuje uwierzytelnianie na podstawie nagłówków HTTP, który chcesz wykonać logowania jednokrotnego do 
 
   >[!NOTE]
   >Ta opcja jest dostępna tylko w przypadku skonfigurowania serwera proxy aplikacji i PingAccess dla aplikacji.

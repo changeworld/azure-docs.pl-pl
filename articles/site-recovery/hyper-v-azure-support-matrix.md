@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: e311a328c1c3d78fa8e5ba7065dcc6484006eaaf
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: bce9f3b3a574d27e2fb47fb9b2da9470c43fd2eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235876"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399429"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure
 
@@ -60,15 +60,15 @@ Dodaj dysk na replikowanej maszynie Wirtualnej funkcji Hyper-V | Nieobsługiwane
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 Sieć hosta: Tworzenie zespołu kart interfejsu Sieciowego | Tak | Tak
-Sieć hosta: Sieć VLAN | Tak | Tak
-Sieć hosta: Protokół IPv4 | Tak | Tak
-Sieć hosta: Protokół IPv6 | Nie | Nie
+Sieć hosta: VLAN | Tak | Yes
+Sieć hosta: IPv4 | Yes | Tak
+Sieć hosta: IPv6 | Nie | Nie
 Sieć maszyny Wirtualnej gościa: Tworzenie zespołu kart interfejsu Sieciowego | Nie | Nie
-Sieć maszyny Wirtualnej gościa: Protokół IPv4 | Tak | Tak
-Sieć maszyny Wirtualnej gościa: Protokół IPv6 | Nie | Tak
+Sieć maszyny Wirtualnej gościa: IPv4 | Tak | Tak
+Sieć maszyny Wirtualnej gościa: IPv6 | Nie | Tak
 Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Windows) | Tak | Tak
 Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Linux) | Nie | Nie
-Sieć maszyny Wirtualnej gościa: Multi-NIC | Tak | Tak
+Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes | Yes
 
 
 
@@ -76,15 +76,15 @@ Sieć maszyny Wirtualnej gościa: Multi-NIC | Tak | Tak
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Azure ExpressRoute | Tak | Tak
-Wewnętrzny moduł równoważenia obciążenia | Tak | Tak
-ELB | Tak | Tak
+Usługa ExpressRoute systemu Azure | Tak | Tak
+ILB | Tak | Tak
+ELB | Yes | Tak
 Azure Traffic Manager | Tak | Tak
-Multi-NIC | Tak | Tak
-Zastrzeżony adres IP | Tak | Tak
-Protokół IPv4 | Tak | Tak
-Zachowaj źródłowy adres IP | Tak | Tak
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapór usługi Azure Storage) | Tak | Tak
+Multi-NIC | Tak | Yes
+Zastrzeżony adres IP | Tak | Yes
+IPv4 | Tak | Yes
+Zachowaj źródłowy adres IP | Tak | Yes
+Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapór usługi Azure Storage) | Yes | Tak
 Accelerated Networking | Nie | Nie
 
 
@@ -93,17 +93,17 @@ Accelerated Networking | Nie | Nie
 **Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | --- 
 NFS | Nie dotyczy | Nie dotyczy
-SMB 3.0 | Tak | Tak
-SAN (ISCSI) | Tak | Tak
-Wiele ścieżek (MPIO). Przetestowane za pomocą:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> Program EMC PowerPath DSM dla CLARiiON | Tak | Tak
+SMB 3.0 | Yes | Yes
+SAN (ISCSI) | Tak | Yes
+Wiele ścieżek (MPIO). Przetestowane za pomocą:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> Program EMC PowerPath DSM dla CLARiiON | Yes | Yes
 
 ## <a name="hyper-v-vm-guest-storage"></a>Magazyn gościa maszyny Wirtualnej funkcji Hyper-V
 
 **Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nie dotyczy | Nie dotyczy
-VHD/VHDX | Tak | Tak
-2. generacji maszyn wirtualnych | Tak | Tak
+VHD/VHDX | Yes | Tak
+2. generacji maszyn wirtualnych | Tak | Yes
 EFI/UEFI| Tak | Tak
 Udostępniony dysk klastra | Nie | Nie
 Zaszyfrowanego dysku | Nie | Nie
@@ -115,23 +115,23 @@ Dysk: Logiczne i fizyczne z sektorami 4K | Nieobsługiwane: Velikost haldy 1/Gen
 Dysk: 4K logiczne i fizyczne sektora 512 bajtów | Tak |  Tak
 Zarządzanie woluminami logicznych (LVM). LVM jest obsługiwana na tylko dyski z danymi. Platforma Azure udostępnia tylko jeden dysk systemu operacyjnego. | Tak | Tak
 Wolumin o użycie dysku rozłożonego > 1 TB | Tak | Tak
-Miejsca do magazynowania | Tak | Tak
+Miejsca do magazynowania | Yes | Tak
 Dodaj lub usuń gorąco dysku | Nie | Nie
 Wykluczanie dysku | Tak | Tak
-Wiele ścieżek (MPIO) | Tak | Tak
+Wiele ścieżek (MPIO) | Tak | Yes
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 Magazyn lokalnie nadmiarowy | Tak | Tak
-Magazyn geograficznie nadmiarowy | Tak | Tak
+Magazyn geograficznie nadmiarowy | Tak | Yes
 Magazyn geograficznie nadmiarowy z dostępem do odczytu | Tak | Tak
 Chłodny Magazyn | Nie | Nie
 Magazynu gorącego| Nie | Nie
 Obiekty BLOB typu Block | Nie | Nie
 Szyfrowanie danych magazynowanych (SSE)| Tak | Tak
-Premium Storage | Tak | Tak
+Premium Storage | Yes | Tak
 Usługa import/export | Nie | Nie
 Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Nie | Nie
 
@@ -151,7 +151,7 @@ Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure muszą s
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
 System operacyjny gościa | Usługa Site Recovery obsługuje wszystkie systemy operacyjne, które są [obsługiwanym przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
-Architektura systemu operacyjnego gościa | 64-bitowa | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
+Architektura systemu operacyjnego gościa | 64-bitowy | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Rozmiar dysku systemu operacyjnego | Do 2048 GB dla maszyn wirtualnych generacji 1.<br/><br/> Maksymalnie 300 GB dla maszyn wirtualnych generacji 2.  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Liczba dysków systemu operacyjnego | 1 | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Liczba dysków danych | 16 lub mniej  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.

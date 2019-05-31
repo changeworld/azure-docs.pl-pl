@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
-ms.openlocfilehash: fbe0b82008d7b15332c4e2cd62c49c611f20fe89
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794711"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299212"
 ---
 # <a name="register-for-azure-netapp-files"></a>Rejestrowanie w usłudze Azure NetApp Files
 
@@ -60,12 +60,12 @@ Aby korzystać z usługi, należy zarejestrować dostawcę zasobów platformy Az
 
    Dane wyjściowe polecenia są podobne do następujących:
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/publicPreviewADC",  
-       "name": "Microsoft.NetApp/publicPreviewADC" 
+       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+       "name": "Microsoft.NetApp/ANFGA" 
        
    `<SubID>` to identyfikator Twojej subskrypcji.
 
-    Jeśli nie widać nazwy funkcji `Microsoft.NetApp/publicPreviewADC`, nie masz dostępu do usługi. Zatrzymaj, w tym kroku. Postępuj zgodnie z instrukcjami wyświetlanymi w [wniosek o liście oczekujących do uzyskiwania dostępu do usługi](#waitlist) Aby zażądać dostępu usługi przed kontynuowaniem. 
+    Jeśli nie widać nazwy funkcji `Microsoft.NetApp/ANFGA`, nie masz dostępu do usługi. Zatrzymaj, w tym kroku. Postępuj zgodnie z instrukcjami wyświetlanymi w [wniosek o liście oczekujących do uzyskiwania dostępu do usługi](#waitlist) Aby zażądać dostępu usługi przed kontynuowaniem. 
 
 4. W konsoli usługi Azure Cloud Shell wprowadź następujące polecenie, aby zarejestrować dostawcę zasobów platformy Azure: 
     

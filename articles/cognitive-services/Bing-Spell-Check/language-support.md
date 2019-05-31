@@ -10,23 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 16efb97569aabbea28065b03e9944d6881c39eee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60895384"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390166"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Obsługa języka i regionu dla interfejsu API sprawdzania pisowni Bing
 
 Te języki są obsługiwane przez API sprawdzania pisowni Bing (tylko w `spell` tryb).
 
-Należy pamiętać, że chcesz pracować w dowolnym innym języku niż `en-US`, `mkt` powinna być ustawiona i `Accept-Language` lub `setLang` powinna być ustawiona, ponieważ został opisany w [odwołanie do interfejsu API sprawdzania pisowni w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+Należy pamiętać, że chcesz pracować w dowolnym innym języku niż `en-US`, `mkt` powinna być ustawiona i `Accept-Language` lub `setLang` powinna być ustawiona, ponieważ został opisany w [odwołanie do interfejsu API sprawdzania pisowni w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
 | Arabski      | `ar`          |
-| Chiński (Chińska Republika Ludowa)     | `zh-CN`          |
+| Chiński (Chińskiej Republiki Ludowej)     | `zh-CN`          |
 | Chiński (SRA Hongkong)    | `zh-HK`          |
 | Chiński (Tajwan)     | `zh-TW`          |
 | Duński      | `da`          |
@@ -39,7 +39,7 @@ Należy pamiętać, że chcesz pracować w dowolnym innym języku niż `en-US`, 
 | Angielski (Malezja)     | `en-MY`          |
 | Angielski (Nowa Zelandia)    | `en-NZ`          |
 | Angielski (Filipiny)     | `en-PH`          |
-| Angielski (Republika Południowej Afryki)    | `en-ZA`          |
+| Angielski (RPA)    | `en-ZA`          |
 | Angielski (Zjednoczone Królestwo)    | `en-GB`          |
 | Angielski (Stany Zjednoczone)    | `en-US`          |
 | Fiński     | `fi`          |

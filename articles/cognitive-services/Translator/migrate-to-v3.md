@@ -3,19 +3,19 @@ title: Migrowanie do V3 — interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak przeprowadzić migrację z V2 do V3 interfejsu API tłumaczenia tekstu.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa1733ddd70de3f8ef93452a880094ccf8b9ef56
-ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
+ms.author: v-pawal
+ms.openlocfilehash: 81b2e5c9c659a3811d7417d87b811a86f4350a52
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951476"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382917"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 

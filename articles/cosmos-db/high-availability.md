@@ -4,15 +4,15 @@ description: W tym artykule opisano, jak usługa Azure Cosmos DB zapewnia wysok�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 05/29/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 74e2d7901d127c9dd7edd8509e5bba082c4ad220
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 74eee3d164e7ee3831f292568da9cf0620e576e5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978969"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399285"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Jako globalnie rozproszonej bazy danych Cosmos DB zapewnia kompleksowe umowy SLA
 
 |Typ operacji  | Pojedynczy region |Multiregionalne (zapisuje pojedynczy region)|Multiregionalne (zapisuje wielu regionów) |
 |---------|---------|---------|-------|
-|Zapisuje    | 99.99    |99.99   |99.999|
-|Czyta     | 99.99    |99.999  |99.999|
+|Operacje zapisu    | 99.99    |99.99   |99.999|
+|Operacje odczytu     | 99.99    |99.999  |99.999|
 
 > [!NOTE]
 > W praktyce dostępność rzeczywiste zapisu powiązana nieaktualność, sesja, spójny prefiks i modeli spójności ostatecznej jest znacznie wyższa niż opublikowanych umowy SLA. Rzeczywiste dostępność do odczytu dla wszystkich poziomów spójności jest znacznie wyższa niż opublikowanych umowy SLA.
@@ -48,13 +48,55 @@ Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB upewnia
 
 - Skonfigurowano regiony odczytu dla wielu kont w wielu regionach będzie o wysokiej dostępności dla odczytów i zapisów. Wywoływania regionalnego trybu failover są natychmiastowe i nie wymaga dokonywania żadnych zmian w aplikacji.
 
-- **Multiregionalne konta z regionem zapisu pojedynczego (przestojach region zapisu):** Podczas awarii region zapisu tych kont będzie pozostawać stale dostępnymi dla odczytów. Jednak opłata za zapisywanie należy **"Włącz automatyczną pracę awaryjną"** na usługi Cosmos konta do trybu failover objęte wpływem regionu do innego regionu. Przełączenie w tryb failover miało miejsce w kolejności priorytet regionu, który został określony. Gdy objęte wpływem region jest wróci do trybu online, nie zostały zreplikowane dane w regionie zapisu dotyczy problem, w czasie awarii są udostępniane za pośrednictwem [konflikty kanału informacyjnego](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikacje mogą odczytywać konflikty źródła danych, rozwiąż konflikty, w oparciu o logikę specyficzną dla aplikacji i zapisywać zaktualizowane dane z powrotem do kontenera Cosmos zgodnie z potrzebami. Po odzyskaniu region zapisu wcześniej objęte wpływem staje się automatycznie dostępne jako region odczytu. Można wywołać ręcznej pracy awaryjnej i skonfigurować objęte wpływem region jako regionu zapisu. Ponownie wykonać ręcznej pracy awaryjnej, korzystając z [wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover). Brak **bez utraty danych lub dostępności** przed, podczas lub po ręcznej pracy awaryjnej. Aplikacja jest nadal o wysokiej dostępności. 
+- **Multiregionalne konta z regionem zapisu pojedynczego (przestojach region zapisu):** Podczas awarii region zapisu tych kont będzie pozostawać stale dostępnymi dla odczytów. Jednak opłata za zapisywanie należy **"Włącz automatyczną pracę awaryjną"** na usługi Cosmos konta do trybu failover objęte wpływem regionu do innego regionu. Przełączenie w tryb failover miało miejsce w kolejności priorytet regionu, który został określony. Gdy objęte wpływem region jest wróci do trybu online, niezreplikowane danych w regionie zapisu dotyczy problem, w czasie awarii są udostępniane za pośrednictwem [konflikty kanału informacyjnego](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikacje mogą odczytywać konflikty źródła danych, rozwiąż konflikty, w oparciu o logikę specyficzną dla aplikacji i zapisywać zaktualizowane dane z powrotem do kontenera Cosmos zgodnie z potrzebami. Po odzyskaniu region zapisu wcześniej objęte wpływem staje się automatycznie dostępne jako region odczytu. Można wywołać ręcznej pracy awaryjnej i skonfigurować objęte wpływem region jako regionu zapisu. Ponownie wykonać ręcznej pracy awaryjnej, korzystając z [wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover). Brak **bez utraty danych lub dostępności** przed, podczas lub po ręcznej pracy awaryjnej. Aplikacja jest nadal o wysokiej dostępności. 
 
 - **Multiregionalne konta z regionem zapisu pojedynczego (regionem odczytu awarii):** Podczas awarii regionem odczytu te konta będzie pozostawać stale dostępnymi dla operacji odczytu i zapisu. Objęte wpływem region jest automatycznie rozłączany z regionu zapisu i zostanie oznaczona w trybie offline. [Cosmos DB z zestawów SDK](sql-api-sdk-dotnet.md) przekierowania odczyta wywołania do następnego dostępnego regionu na liście preferowany region. Jeśli żaden z regionów na liście preferowany region jest dostępny, wywołania automatycznie wrócić do bieżącego regionu zapisu. Żadne zmiany nie są wymagane w kodzie aplikacji do obsługi awarii w regionie odczytu. Po pewnym czasie gdy objęte wpływem region jest wróci do trybu online, wcześniej objęte wpływem odczytu z regionu zostanie automatycznie zsynchronizowana z bieżącego regionu zapisu i będzie można ponownie obsługiwać żądań odczytu. Dalsze operacje odczytu są przekierowywane do regionu odzyskane bez wprowadzania jakichkolwiek zmian w kodzie aplikacji. Podczas pracy awaryjnej i ponowne przyłączanie regionu zakończyły się niepowodzeniem przeczytaj spójności, które gwarancje w dalszym ciągu być uznawane przez usługi Cosmos DB.
 
 - Kont w jednym regionie mogą zostać utracone po awarii regionalnej dostępności. Zawsze zaleca się konfigurowanie **co najmniej dwóch regionach** (najlepiej, co najmniej dwóch zapis regionów) przy użyciu konta Cosmos w celu zapewnienia wysokiej dostępności przez cały czas.
 
-- Nawet w przypadku bardzo rzadkie i niefortunne gdy region platformy Azure jest trwale nieodwracalny, istnieje bez utraty danych skonfigurowanie Twojego konta usługi Cosmos wielu regionów za pomocą domyślnego poziomu spójności *silne*. W przypadku region zapisu trwale nieodwracalny, dla kont Cosmos w wielu regionach skonfigurowano spójności powiązana nieaktualność potencjalnych okno utraty danych jest ograniczony do okna nieaktualność (*K* lub *T*); w sesji, poziom spójny prefiks i spójność ostateczna potencjalnych okno utraty danych jest ograniczony do maksymalnie pięć sekund.
+- Nawet w przypadku rzadko i niefortunne gdy region platformy Azure jest trwale nieodwracalny, istnieje bez utraty danych skonfigurowanie Twojego konta usługi Cosmos wielu regionów za pomocą domyślnego poziomu spójności *silne*. W przypadku region zapisu trwale nieodwracalny, dla kont Cosmos w wielu regionach skonfigurowano spójności powiązana nieaktualność potencjalnych okno utraty danych jest ograniczony do okna nieaktualność (*K* lub *T*); w sesji, poziom spójny prefiks i spójność ostateczna potencjalnych okno utraty danych jest ograniczony do maksymalnie pięć sekund. 
+
+## <a name="availability-zone-support"></a>Obsługa strefy dostępności
+
+Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielu wzorców bazy danych, która zapewnia wysoką dostępność i odporność podczas awarii regionalnego. Ponadto do wielu regionów odporności, teraz możesz włączyć **nadmiarowości strefy** podczas wybierania regionu do skojarzenia z bazą danych Azure Cosmos. 
+
+Strefy dostępności, z obsługą usługi Azure Cosmos DB będzie upewnij się, że repliki są umieszczane w wielu strefach w danym regionie w celu zapewnienia wysokiej dostępności i odporności strefowej awarii. Nie wprowadzono żadnych zmian, opóźnienia i inne umowy SLA w tej konfiguracji. W przypadku awarii jednej strefie strefy nadmiarowość zapewnia trwałość pełnych danych w celu punktu odzyskiwania = 0 i dostępność dzięki RTO = 0. 
+
+Nadmiarowość strefy to *dodatkowe możliwości* do [replikacji wielu wzorców](how-to-multi-master.md) funkcji. Samodzielnie nadmiarowości strefy nie może polegać umożliwiającego osiągnięcie odporności regionalne. Na przykład w przypadku regionalnej awarii lub dostępie z małymi opóźnieniami między regionami, zalecane jest zapewnienie wielu regionów zapisu oprócz nadmiarowości strefy. 
+
+Podczas konfigurowania multiregionalne zapisu dla konta usługi Azure Cosmos, możesz zdecydować się na nadmiarowości strefy bez dodatkowych kosztów. W przeciwnym razie zobacz uwagi poniżej dotyczące cennika usługi obsługę nadmiarowości strefy. Nadmiarowości strefy na istniejący region konta usługi Azure Cosmos można włączyć, usuwając region i dodanie go z powrotem włączony nadmiarowości strefy.
+
+Ta funkcja jest dostępna w następujących regionach platformy Azure:
+
+* Południowe Zjednoczone Królestwo
+* Azja Południowo-Wschodnia 
+
+> [!NOTE] 
+> Włączanie strefy dostępności dla jednego regionu konta usługi Azure Cosmos spowoduje opłaty, które są równoważne dodanie dodatkowych regionów do konta. Aby uzyskać szczegółowe informacje o cenach, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/) i [koszt wielu regionów w usłudze Azure Cosmos DB](optimize-cost-regions.md) artykułów. 
+
+Poniższa tabela zawiera podsumowanie możliwości wysokiej dostępności w różnych konfiguracjach konta: 
+
+|KLUCZOWY WSKAŹNIK WYDAJNOŚCI  |Jednym regionie bez stref dostępności (inne niż AZ)  |Jeden Region z strefach dostępności (AZ)  |Wielu regionach ze strefami dostępności występują (AZ, 2 regiony) — najbardziej zalecane ustawienia |
+|---------|---------|---------|---------|
+|Zapis umowa SLA dotycząca dostępności     |   99,99%      |    99,99%     |  99.999%  |
+|Umowa SLA gwarantująca dostępność do odczytu   |   99,99%      |   99,99%      |  99.999%       |
+|Cena  |  Stawka rozliczeniowa w obrębie jednego regionu |  Stawka rozliczeniowa w jednym regionie w strefie dostępności |  Stawka rozliczeniowa w wielu regionach       |
+|Błędy strefy — utrata danych   |  Utrata danych  |   Bez utraty danych |   Bez utraty danych  |
+|Błędy strefy — dostępność |  Utrata dostępności  | Bez utraty dostępności  |  Bez utraty dostępności  |
+|Opóźnienie odczytu    |  Obejmujące wiele regionów    |   Obejmujące wiele regionów   |    Małe  |
+|Opóźnienie zapisu    |   Obejmujące wiele regionów   |  Obejmujące wiele regionów    |   Małe   |
+|Awaria regionalna — utrata danych    |   Utrata danych      |  Utrata danych       |   Utrata danych <br/><br/> Jeśli przy użyciu powiązana nieaktualność spójności z węzłem głównym multi i więcej niż jeden region, utrata danych jest ograniczona do powiązana nieaktualność skonfigurowane na Twoim koncie. <br/><br/> Można uniknąć utraty danych podczas awarii regionalnej, konfigurując wysoki poziom spójności z wieloma regionami. Ta opcja jest powiązana z skutków ubocznych, które mają wpływ na dostępność i wydajność.      |
+|Awaria regionalna — dostępność  |  Utrata dostępności       |  Utrata dostępności       |  Bez utraty dostępności  |
+|Przepływność    |  Jedn. X aprowizowana przepływność      |  Jedn. X aprowizowana przepływność       |  2 x aprowizowanej przepływności jednostek RU/s <br/><br/> Ten tryb konfiguracji wymaga dwukrotność przepływność w porównaniu do jednego regionu, ze strefami dostępności występują, ponieważ istnieją dwa regiony.   |
+
+Podczas dodawania regionów do nowego lub istniejącego konta usługi Azure Cosmos można włączyć nadmiarowości strefy. Obecnie tylko umożliwia nadmiarowości strefy za pomocą szablonów programu PowerShell lub usługi Azure Resource Manager. Aby włączyć nadmiarowości strefy na Twoim koncie usługi Azure Cosmos, należy ustawić `isZoneRedundant` flaga `true` dla określonej lokalizacji. Możesz ustawić tę flagę w ramach właściwości lokalizacji. Na przykład poniższy fragment kodu programu powershell umożliwia nadmiarowości strefy dla regionu "Azja południowo-wschodnia":
+
+```powershell
+$locations = @( 
+    @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" }, 
+    @{ "locationName"="East US"; "failoverPriority"=1 } 
+) 
+```
 
 ## <a name="building-highly-available-applications"></a>Tworzenie aplikacji o wysokiej dostępności
 

@@ -3,19 +3,19 @@ title: Translator Text API V2.0
 titleSuffix: Azure Cognitive Services
 description: Dokumentacja interfejsu API tekstu usługi Translator w wersji 2.0.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-jansko
-ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61467160"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389848"
 ---
 # <a name="translator-text-api-v20"></a>Interfejs API tekstu usługi Translator w wersji 2.0
 
@@ -28,11 +28,18 @@ Interfejsu API tekstu usługi Translator w wersji 2 można bezproblemowo zintegr
 Interfejs API tekstu usługi Translator, konieczne będzie dostęp do [konta na platformie Microsoft Azure](../translator-text-how-to-signup.md).
 
 ## <a name="authorization"></a>Autoryzacja
-Wszystkie wywołania interfejsu API tłumaczenia tekstu wymaga klucza subskrypcji na potrzeby uwierzytelniania. Interfejs API obsługuje dwa tryby uwierzytelniania:
+Wszystkie wywołania interfejsu API tłumaczenia tekstu wymaga klucza subskrypcji na potrzeby uwierzytelniania. Interfejs API obsługuje trzy tryby uwierzytelniania:
 
-* Przy użyciu tokenu dostępu. Użyj klucz subskrypcji, do którego odwołuje się **kroku** 9, aby generowała token dostępu, dzięki czemu żądania POST do usługi autoryzacji. Zobacz dokumentację usługi tokenu, aby uzyskać szczegółowe informacje. Przekaż token dostępu w usłudze Translator przy użyciu nagłówka autoryzacji lub access_token parametr zapytania. Token dostępu jest ważny przez 10 minut. Uzyskaj nowy token dostępu co 10 minut i Zachowaj przy użyciu tego samego dostępu tokenu dla powtarzanych żądań w ciągu tych 10 minut.
+- Token dostępu. Użyj klucz subskrypcji, do którego odwołuje się **kroku** 9, aby generowała token dostępu, dzięki czemu żądania POST do usługi autoryzacji. Zobacz dokumentację usługi tokenu, aby uzyskać szczegółowe informacje. Przekaż token dostępu do usługi Translator, przy użyciu nagłówka autoryzacji lub `access_token` parametr zapytania. Token dostępu jest ważny przez 10 minut. Uzyskać nowy token dostępu co 10 minut i Zachowaj przy użyciu tego samego dostępu tokenu dla powtarzanych żądań w ciągu tych 10 minut.
+- Klucz subskrypcji bezpośrednio. Przekaż swój klucz subskrypcji jako wartość `Ocp-Apim-Subscription-Key` nagłówka dołączone do żądania interfejsu API usługi Translator. W tym trybie nie trzeba wywołać usługę token uwierzytelniania do generowania tokenu dostępu.
+- A [subskrypcji wielu usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ten tryb pozwala korzystać z jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. <br/>
+Korzystając z wieloma usługami klucz tajny musi zawierać dwa nagłówki uwierzytelniania z żądaniem. Pierwszy nagłówek przekazuje klucz tajny. Drugi nagłówek określa regionu skojarzonego z Twoją subskrypcją:
+   - `Ocp-Apim-Subscription-Key`
+   - `Ocp-Apim-Subscription-Region`
 
-* Bezpośrednio przy użyciu klucza subskrypcji. Przekaż swój klucz subskrypcji jako wartość `Ocp-Apim-Subscription-Key` nagłówka dołączone do żądania interfejsu API usługi Translator. W tym trybie nie trzeba wywoływać usługi tokenu uwierzytelniania do generowania tokenu dostępu.
+Region jest wymagane dla wielu usług subskrypcji interfejsu API tłumaczenia tekstu. Regionu, możesz wybrać to jedyny region, który umożliwia tłumaczenie tekstu po przy użyciu klucza subskrypcji z wieloma usługami, a musi być tym samym regionie, które są wybrane podczas tworzenia konta dla subskrypcji wielu usług za pośrednictwem witryny Azure portal.
+
+Dostępne regiony to `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, i `westus2`.
 
 Należy rozważyć swój klucz subskrypcji i token dostępu jako wpisy tajne, które powinny być ukryte w widoku.
 
@@ -78,19 +85,19 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis    |Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji  |(puste)    |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query|string|
-|tekst|(puste)   |Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
-|z|(puste)   |Opcjonalny. Ciąg reprezentujący kod języka tekstu tłumaczenia. Na przykład en w języku angielskim.|query|string|
-|na|(puste) |Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
-|contentType|(puste)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to text/plain (ustawienie domyślne) i text/html. Kod HTML musi być elementem pełną, poprawnie sformułowany.|query|string|
-|category|(puste)   |Opcjonalny. Ciąg zawierający kategoria tłumaczenia (domena). Wartość domyślna to "general".|query|string|
-|Autoryzacja|(puste)  |Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)  |Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji  |(pusty)    |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query|string|
+|text|(pusty)   |Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
+|from|(pusty)   |Opcjonalny. Ciąg reprezentujący kod języka tekstu tłumaczenia. Na przykład en w języku angielskim.|query|string|
+|na|(pusty) |Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
+|Typ zawartości|(pusty)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to text/plain (ustawienie domyślne) i text/html. Kod HTML musi być elementem pełną, poprawnie sformułowany.|query|string|
+|category|(pusty)   |Opcjonalny. Ciąg zawierający kategoria tłumaczenia (domena). Wartość domyślna to "general".|query|string|
+|Autoryzacja|(pusty)  |Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)  |Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
 
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -184,11 +191,11 @@ Typ zawartości odpowiedzi: aplikacja/xml
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
 |Autoryzacja|(pusty)) |Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP   |Przyczyna|
+|Kod stanu HTTP   |Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie. Typowe błędy: <ul><li>Element tablicy nie może być pusta</li><li>Nieprawidłowej kategorii</li><li>Z języka jest nieprawidłowa</li><li>Język jest nieprawidłowy</li><li>Żądanie zawiera zbyt wiele elementów</li><li>Język From nie jest obsługiwany.</li><li>Język To nie jest obsługiwany.</li><li>Przetłumacz żądania ma zbyt dużej ilości danych</li><li>HTML nie jest w niepoprawnym formacie.</li><li>Przekazano zbyt wiele parametrów Przetłumacz żądania</li></ul>|
 |401    |Nieprawidłowe poświadczenia|
@@ -224,14 +231,14 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|ustawienia regionalne|(puste) |Wymagany. Ciąg reprezentujący kombinacji ISO 639 kultury małe dwuliterowych kod skojarzony z języka i kod ISO 3166 przeszczepiania wielkie dwuliterowych można lokalizować nazwy języka lub ISO 639 małych liter, kultura kod samodzielnie.|query|string|
-|Autoryzacja|(puste)  |Jeśli wymagane pole appid lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)  |Jeśli wymagane pole appid lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|Ustawienia regionalne|(pusty) |Wymagany. Ciąg reprezentujący kombinacji ISO 639 kultury małe dwuliterowych kod skojarzony z języka i kod ISO 3166 przeszczepiania wielkie dwuliterowych można lokalizować nazwy języka lub ISO 639 małych liter, kultura kod samodzielnie.|query|string|
+|Autoryzacja|(pusty)  |Jeśli wymagane pole appid lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)  |Jeśli wymagane pole appid lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -258,13 +265,13 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|Autoryzacja|(puste)  |Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|Autoryzacja|(pusty)  |Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -274,7 +281,7 @@ Typ zawartości odpowiedzi: aplikacja/xml
 ## <a name="get-getlanguagesforspeak"></a>GET /GetLanguagesForSpeak
 
 ### <a name="implementation-notes"></a>Uwagi dotyczące implementacji
-Pobiera języki, dla których jest dostępna synteza mowy.
+Pobiera języki dostępne dla synteza mowy.
 
 Identyfikator URI żądania jest `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForSpeak`.
 
@@ -291,13 +298,13 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|Autoryzacja|(puste)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
  
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400|Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401|Nieprawidłowe poświadczenia|
@@ -323,17 +330,17 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|tekst|(puste)   |Wymagany. Ciąg zawierający zdania lub zdania określony język wymawiane dla strumienia wave. Rozmiar tekstu, aby porozmawiać nie może przekraczać 2000 znaków.|query|string|
-|language|(puste)   |Wymagany. Ciąg reprezentujący kod obsługiwanego języka, aby porozmawiać z tekstem w. Kod musi być obecne na liście kodów zwrócona przez metodę `GetLanguagesForSpeak`.|query|string|
-|format|(puste)|Opcjonalny. Ciąg określający identyfikator typu zawartości. Obecnie `audio/wav` i `audio/mp3` są dostępne. Wartość domyślna to `audio/wav`.|query|string|
-|opcje|(puste)    |<ul><li>Opcjonalny. Ciąg określający właściwości syntezatora mowy:<li>`MaxQuality` i `MinSize` są dostępne określić jakość sygnałów audio. Za pomocą `MaxQuality`, możesz uzyskać głosów z najwyższą jakość i `MinSize`, możesz uzyskać głosów z najmniejszego możliwego rozmiaru. Wartość domyślna to `MinSize`.</li><li>`female` i `male` są dostępne określić żądaną płeć głosu. Wartość domyślna to `female`. Użyj pionowy pasek <code>\|</code> obejmujący wiele opcji. Na przykład `MaxQuality|Male`.</li></li></ul> |query|string|
-|Autoryzacja|(puste)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|text|(pusty)   |Wymagany. Ciąg zawierający zdania lub zdania określony język wymawiane dla strumienia wave. Rozmiar tekstu, aby porozmawiać nie może przekraczać 2000 znaków.|query|string|
+|language|(pusty)   |Wymagany. Ciąg reprezentujący kod obsługiwanego języka, aby porozmawiać z tekstem w. Kod musi być obecne na liście kodów zwrócona przez metodę `GetLanguagesForSpeak`.|query|string|
+|format|(pusty)|Opcjonalny. Ciąg określający identyfikator typu zawartości. Obecnie `audio/wav` i `audio/mp3` są dostępne. Wartość domyślna to `audio/wav`.|query|string|
+|Opcje|(pusty)    |<ul><li>Opcjonalny. Ciąg określający właściwości syntezatora mowy:<li>`MaxQuality` i `MinSize` są dostępne określić jakość sygnałów audio. Za pomocą `MaxQuality`, możesz uzyskać głosów z najwyższą jakość i `MinSize`, możesz uzyskać głosów z najmniejszego możliwego rozmiaru. Wartość domyślna to `MinSize`.</li><li>`female` i `male` są dostępne określić żądaną płeć głosu. Wartość domyślna to `female`. Użyj pionowy pasek <code>\|</code> obejmujący wiele opcji. Na przykład `MaxQuality|Male`.</li></li></ul> |query|string|
+|Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -359,14 +366,14 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)  |Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|tekst|(puste)|Wymagany. Ciąg zawierający tekst, którego język jest zidentyfikowanie. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query| string|
-|Autoryzacja|(puste)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key  |(puste)    |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)  |Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|text|(pusty)|Wymagany. Ciąg zawierający tekst, którego język jest zidentyfikowanie. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query| string|
+|Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key  |(pusty)    |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400|Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -414,13 +421,13 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|Autoryzacja|(puste)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Jeśli wymagane `appid` nie określono pola lub nagłówka autoryzacji.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|Autoryzacja|(pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` nie określono pola lub nagłówka autoryzacji.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -448,22 +455,22 @@ Typ zawartości odpowiedzi: aplikacja: xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych   |
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|OriginalText|(puste)|Wymagany. Ciąg zawierający tekst do tłumaczenia z. Ciąg może się składać maksymalnie 1000 znaków.|query|string|
-|translatedText|(puste) |Wymagany. Ciąg zawierający przetłumaczonego tekstu w języku docelowym. Ciąg może się składać maksymalnie 2000 znaków.|query|string|
-|z|(puste)   |Wymagany. Ciąg reprezentujący kod języka tekstu tłumaczenia. EN = wersja angielska, de = niemieckiego itp...|query|string|
-|na|(puste)|Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
-|rating|(puste) |Opcjonalny. Liczba całkowita reprezentująca oceny jakości dla tych parametrów. Wartość od -10 do 10. Wartość domyślna to 1.|query|liczba całkowita|
-|contentType|(puste)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to "text/plain" i "text/html". Kod HTML musi być elementem pełną, poprawnie sformułowany.   |query|string|
-|category|(puste)|Opcjonalny. Ciąg zawierający kategoria tłumaczenia (domena). Wartość domyślna to "general".|query|string|
-|Użytkownik|(puste)|Wymagany. Ciąg używany do śledzenia inicjatorem przesyłania.|query|string|
-|identyfikator URI|(puste)|Opcjonalny. Ciąg zawierający lokalizację zawartości to tłumaczenie.|query|string|
-|Autoryzacja|(puste)|Jeśli wymagane pole appid lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.    |nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|OriginalText|(pusty)|Wymagany. Ciąg zawierający tekst do tłumaczenia z. Ciąg może się składać maksymalnie 1000 znaków.|query|string|
+|translatedText|(pusty) |Wymagany. Ciąg zawierający przetłumaczonego tekstu w języku docelowym. Ciąg może się składać maksymalnie 2000 znaków.|query|string|
+|from|(pusty)   |Wymagany. Ciąg reprezentujący kod języka tekstu tłumaczenia. EN = wersja angielska, de = niemieckiego itp...|query|string|
+|na|(pusty)|Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
+|rating|(pusty) |Opcjonalny. Liczba całkowita reprezentująca oceny jakości dla tych parametrów. Wartość od -10 do 10. Wartość domyślna to 1.|query|liczba całkowita|
+|Typ zawartości|(pusty)    |Opcjonalny. Format tekst tłumaczony. Obsługiwane formaty to "text/plain" i "text/html". Kod HTML musi być elementem pełną, poprawnie sformułowany.   |query|string|
+|category|(pusty)|Opcjonalny. Ciąg zawierający kategoria tłumaczenia (domena). Wartość domyślna to "general".|query|string|
+|Użytkownik|(pusty)|Wymagany. Ciąg używany do śledzenia inicjatorem przesyłania.|query|string|
+|Identyfikator URI|(pusty)|Opcjonalny. Ciąg zawierający lokalizację zawartości to tłumaczenie.|query|string|
+|Autoryzacja|(pusty)|Jeśli wymagane pole appid lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.    |nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -525,12 +532,12 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Autoryzacja|(puste)|Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
+|Autoryzacja|(pusty)|Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -558,15 +565,15 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)  |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query| string|
-|tekst|(puste)   |Wymagany. Ciąg reprezentujący tekst, który ma podzielić na zdania. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
-|language   |(puste)    |Wymagany. Ciąg reprezentujący kod języka tekstu wejściowego.|query|string|
-|Autoryzacja|(puste)|Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".    |nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)  |Wymagany. Jeśli nagłówek autoryzacji lub Ocp-Apim-Subscription-Key jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający "Bearer" + "" + "access_token".|query| string|
+|text|(pusty)   |Wymagany. Ciąg reprezentujący tekst, który ma podzielić na zdania. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
+|language   |(pusty)    |Wymagany. Ciąg reprezentujący kod języka tekstu wejściowego.|query|string|
+|Autoryzacja|(pusty)|Wymagane, jeśli pole appid lub nagłówek Ocp-Apim-Subscription-Key nie jest określony. Token autoryzacji:  "Bearer" + " " + "access_token".    |nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)|Wymagane, jeśli pole appid lub nagłówka autoryzacji nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400|Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401|Nieprawidłowe poświadczenia|
@@ -652,17 +659,17 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Identyfikator aplikacji|(puste)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
-|tekst|(puste)|Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
-|z|(puste)|Wymagany. Ciąg reprezentujący kod języka tekstu tłumaczenia.|query|string|
-|na |(puste)    |Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
-|maxTranslations|(puste)|Wymagany. Liczba całkowita reprezentująca maksymalną liczbę tłumaczeń do zwrócenia.|query|liczba całkowita|
-|Autoryzacja| (puste)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|string| nagłówek|
-|OCP-Apim-Subscription-Key|(puste)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Identyfikator aplikacji|(pusty)|Wymagany. Jeśli `Authorization` lub `Ocp-Apim-Subscription-Key` nagłówek jest używany, pozostaw to pole puste appid else zawierają ciąg zawierający `"Bearer" + " " + "access_token"`.|query|string|
+|text|(pusty)|Wymagany. Ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|query|string|
+|from|(pusty)|Wymagany. Ciąg reprezentujący kod języka tekstu tłumaczenia.|query|string|
+|na |(pusty)    |Wymagany. Ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|query|string|
+|maxTranslations|(pusty)|Wymagany. Liczba całkowita reprezentująca maksymalną liczbę tłumaczeń do zwrócenia.|query|liczba całkowita|
+|Autoryzacja| (pusty)|Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|string| nagłówek|
+|OCP-Apim-Subscription-Key|(pusty)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|
@@ -772,12 +779,12 @@ Typ zawartości odpowiedzi: aplikacja/xml
 
 |Parametr|Wartość|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|:--|
-|Autoryzacja  |(puste)    |Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
-|OCP-Apim-Subscription-Key|(puste)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
+|Autoryzacja  |(pusty)    |Jeśli wymagane `appid` pola lub `Ocp-Apim-Subscription-Key` nagłówka nie jest określony. Token autoryzacji: `"Bearer" + " " + "access_token"`.|nagłówek|string|
+|OCP-Apim-Subscription-Key|(pusty)  |Jeśli wymagane `appid` pola lub `Authorization` nagłówka nie jest określony.|nagłówek|string|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|
+|Kod stanu HTTP|Reason|
 |:--|:--|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe oraz odpowiedzi szczegółowy komunikat o błędzie.|
 |401    |Nieprawidłowe poświadczenia|

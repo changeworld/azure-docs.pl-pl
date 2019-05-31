@@ -10,16 +10,16 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1d344f388b03acb3a81fcfde0e214eb7d82dc9b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1eab92dcc9c1890e82f9999e26e54378a3687c6d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578729"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390492"
 ---
 # <a name="how-to-page-through-news-search-results"></a>Jak stronicować za pośrednictwem wyników wyszukiwania wiadomości
 
-Po wywołaniu interfejsu API wyszukiwania wiadomości Bing zwraca listę wyników, które są istotne dla kwerendy. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-totalmatches) pola.  
+Po wywołaniu interfejsu API wyszukiwania wiadomości Bing zwraca listę wyników, które są istotne dla kwerendy. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-totalmatches) pola.  
   
 W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zawiera odpowiedź wiadomości.  
 
@@ -32,7 +32,7 @@ W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zaw
 }  
 ```  
   
-Na stronie przy użyciu dostępnych artykułów, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) parametry zapytania.  
+Na stronie przy użyciu dostępnych artykułów, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#offset) parametry zapytania.  
  
 
 |Parametr  |Opis  |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ada62fbfa51604a6b3188c27d5c14da40c8ac116
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452725"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400212"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor programu PowerShell
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji usługi Azure Monitor.
@@ -42,6 +42,11 @@ Zostanie wyświetlony ekran logowania. Po zalogowaniu się na Twoim koncie, iden
 Get-AzSubscription
 ```
 
+Aby zobaczyć kontekst pracy (subskrypcję, która Twojego polecenia są uruchamiane względem), użyj następującego polecenia:
+
+```powershell
+Get-AzContext
+```
 Aby zmienić kontekst pracy do innej subskrypcji, użyj następującego polecenia:
 
 ```powershell
@@ -50,18 +55,23 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>Pobieranie dziennika aktywności dla subskrypcji
-Użyj `Get-AzLog` polecenia cmdlet.  Poniżej przedstawiono kilka typowych przykładów.
+Użyj [Get AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) polecenia cmdlet.  Poniżej przedstawiono kilka typowych przykładów. Dziennik aktywności zawiera ostatnich 90 dni operacji. Za pomocą daty przed powoduje to czas w komunikacie o błędzie.  
+
+Zobacz, jakie bieżącej daty/godziny są Aby sprawdzić, jakie czasu do użycia w poniższych poleceń:
+```powershell
+Get-Date
+```
 
 Pobierz wpisy dziennika tej daty/godziny do przedstawienia:
 
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
 Pobierz wpisy dziennika z zakresu daty/godziny:
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 Pobierz wpisy dziennika w określonej grupie zasobów:
@@ -85,13 +95,13 @@ Get-AzLog -Caller 'myname@company.com'
 Następujące polecenie pobiera ostatnie 1000 zdarzeń z dziennika aktywności:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
 `Get-AzLog` obsługuje wiele innych parametrów. Zobacz `Get-AzLog` odwołania, aby uzyskać więcej informacji.
 
 > [!NOTE]
-> `Get-AzLog` zapewnia tylko 15 dni historii. Za pomocą **— wartości elementu MaxEvents** parametr umożliwia zapytania ostatnie N zdarzeń dłużej niż 15 dni. Aby zdarzenia dostępu do starszych niż 15 dni należy użyć interfejsu API REST lub zestawu SDK (C# przykład za pomocą zestawu SDK). Jeśli nie dołączysz **StartTime**, wówczas wartość domyślna to **EndTime** pomniejszona o jedną godzinę. Jeśli nie dołączysz **EndTime**, wartością domyślną jest bieżący czas. Wszystkie godziny są w formacie UTC.
+> `Get-AzLog` zapewnia tylko 15 dni historii. Za pomocą **- MaxRecords** parametr umożliwia zapytania ostatnie N zdarzeń dłużej niż 15 dni. Aby zdarzenia dostępu do starszych niż 15 dni należy użyć interfejsu API REST lub zestawu SDK (C# przykład za pomocą zestawu SDK). Jeśli nie dołączysz **StartTime**, wówczas wartość domyślna to **EndTime** pomniejszona o jedną godzinę. Jeśli nie dołączysz **EndTime**, wartością domyślną jest bieżący czas. Wszystkie godziny są w formacie UTC.
 > 
 > 
 
@@ -140,7 +150,7 @@ Można utworzyć właściwości wiadomości e-mail i elementy webhook, za pomoc�
 
 W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu za pomocą metryk.
 
-| parametr | value |
+| Parametr | value |
 | --- | --- |
 | Name (Nazwa) |simpletestdiskwrite |
 | Lokalizacja tę regułę alertu |Wschodnie stany USA |

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401786"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397128"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -305,6 +305,8 @@ Ten błąd występuje ze względu na jeden z następujących problemów:
 
 4. Element runbook próba wywołania pliku wykonywalnego lub subprocess w elemencie runbook, które jest uruchamiane w piaskownicy usługi Azure. Ten scenariusz nie jest obsługiwany w piaskownicach platformy Azure.
 
+5. Podjęto próbę zapisania zbyt dużą ilość danych wyjątku do strumienia wyjściowego elementu runbook.
+
 #### <a name="resolution"></a>Rozwiązanie
 
 Dowolne z poniższych rozwiązań rozwiązać ten problem:
@@ -316,6 +318,8 @@ Dowolne z poniższych rozwiązań rozwiązać ten problem:
 * Innym rozwiązaniem jest uruchomienie elementu runbook na [hybrydowego procesu roboczego Runbook](../automation-hrw-run-runbooks.md). Hybrydowe procesy robocze nie są ograniczone przez limity pamięci i sieci, które są piaskownic platformy Azure.
 
 * Jeśli musisz wywołać procesu (na przykład .exe lub subprocess.call) w elemencie runbook, należy uruchomić element runbook na [hybrydowego procesu roboczego Runbook](../automation-hrw-run-runbooks.md).
+
+* Obowiązuje limit 1MB na strumieniu danych wyjściowych zadania. Upewnij się, należy ująć wywołań do pliku wykonywalnego lub proces podrzędny w bloku try/catch. Jeśli mogą zgłosić wyjątek, należy zapisać wiadomość z tego wyjątku do zmiennej automatyzacji. Uniemożliwi to ona zapisywana w strumieniu danych wyjściowych zadania.
 
 ### <a name="fails-deserialized-object"></a>Scenariusz: Element Runbook nie powiodło się z powodu zdeserializowany obiekt
 

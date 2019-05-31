@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 08ea0081c84ea31b2b71d03679b1b527cf94c075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556784"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258730"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Zarządzaj węzły, które tworzą klaster.
@@ -28,10 +28,10 @@ Zarządzaj węzły, które tworzą klaster.
 
 |Polecenie|Opis|
 | --- | --- |
-| wyłącz | Dezaktywuj z zamiarem dezaktywacji określony węzeł klastra usługi Service Fabric. |
-| włącz | Aktywuj węzeł klastra usługi Service Fabric, który jest obecnie wyłączona. |
+| Wyłącz | Dezaktywuj z zamiarem dezaktywacji określony węzeł klastra usługi Service Fabric. |
+| Włącz | Aktywuj węzeł klastra usługi Service Fabric, który jest obecnie wyłączona. |
 | zdrowie | Pobiera kondycji węzła usługi Service Fabric. |
-| informacje | Pobiera informacje dotyczące określonego węzła w klastrze usługi Service Fabric. |
+| Informacje o | Pobiera informacje dotyczące określonego węzła w klastrze usługi Service Fabric. |
 | list | Pobiera listę węzłów w klastrze usługi Service Fabric. |
 | ładowanie | Pobiera informacje o ładowaniu węzła usługi Service Fabric. |
 | remove-state | Powiadamia usługi Service Fabric, że stan utrwalony w węźle trwale ani nie usunięto utracone. |
@@ -180,6 +180,8 @@ Pobiera informacje o ładowaniu węzła usługi Service Fabric dla metryk, któr
 Powiadamia usługi Service Fabric, że stan utrwalony w węźle trwale ani nie usunięto utracone.
 
 Oznacza to, że nie jest możliwe do odzyskania utrwalonego stanu tego węzła. Zwykle dzieje się tak, jeśli dysk twardy zostało wyczyszczone czyste lub jeśli wystąpiła awaria dysku twardego. Węzeł musi być wyłączone dla tej operacji zakończy się powodzeniem. Ta operacja służy do usługi Service Fabric wiedzieć, że repliki w tym węźle nie istnieją już i powinna zostać przerwana w tej usługi Service Fabric Trwa oczekiwanie na tych replik w celu przywracane. Nie należy uruchamiać tego polecenia cmdlet, jeśli stan, w tym węźle nie została usunięta, a węzeł możesz wrócić i jej stanem bez zmian.
+
+Począwszy od usługi Service Fabric 6.5, aby użyć tego polecenia cmdlet dla węzły obiektów początkowych, zmień węzły obiektów początkowych do regularnego węzłów (bez inicjatora), a następnie wywołaj to polecenie cmdlet, aby usunąć stan węzła. Jeśli klaster działa na platformie Azure po awarii węzła inicjatora, usługi Service Fabric spróbuje automatycznie zmienić do węzła innego niż inicjatora. Aby to zrobić, upewnij się, że liczba węzłów innych niż inicjatora w typie podstawowym węzłem jest większą lub równą liczbę w dół węzły obiektów początkowych. Jeśli to konieczne, należy dodać więcej węzłów do typu węzła podstawowego, aby to osiągnąć. Dla autonomicznego klastra, jeśli węzeł inicjujący szczegółów nie oczekiwano przywracane jej stanem niezmienione,. Usuń węzeł z klastra, zobacz [usuwania węzłów z klastra autonomicznego usługi Service Fabric](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) 
 
 ### <a name="arguments"></a>Argumenty
 

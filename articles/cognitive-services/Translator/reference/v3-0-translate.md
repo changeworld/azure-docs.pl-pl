@@ -3,19 +3,19 @@ title: Interfejs API tekstu usługi Translator Translate — metoda
 titleSuffix: Azure Cognitive Services
 description: Metoda Translator tekstu interfejsu API tłumaczenia.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 5a2192c4555c2d84587ec8e39ce9ba94c985b541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: v-pawal
+ms.openlocfilehash: be61d8932288b9a6b2cc96e53d3630124ec0f610
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235835"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389748"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -45,7 +45,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
   </tr>
   <tr>
-    <td>do</td>
+    <td>na</td>
     <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z <a href="./v3-0-languages.md">obsługiwane języki</a> objęte <code>translation</code> zakresu. Na przykład użyć <code>to=de</code> do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć <code>to=de&to=it</code> do translacji niemieckim i włoskim.</td>
   </tr>
   <tr>
@@ -189,7 +189,7 @@ Przykład odpowiedzi JSON znajdują się w [przykłady](#examples) sekcji.
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
 
 <table width="100%">
-  <th width="20%">Kod stanu</th>
+  <th width="20%">Kod stanu:</th>
   <th>Opis</th>
   <tr>
     <td>200</td>
@@ -374,7 +374,7 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>action</th>
+  <th>Akcja</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>To zachowanie domyślne. Wulgaryzmów zostaną spełnione ze źródła do docelowego.<br/><br/>

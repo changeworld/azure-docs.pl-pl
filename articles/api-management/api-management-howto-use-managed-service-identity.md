@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75a02abb6cce332daad12e1feb25fb425f89f7f4
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656703"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393386"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Używanie zarządzanych tożsamości w usłudze Azure API Management
 
 W tym artykule dowiesz się, jak utworzyć tożsamość zarządzana w przypadku wystąpienia usługi API Management i jak uzyskać dostęp do innych zasobów. Tożsamość zarządzana generowanych przez usługi Azure Active Directory (Azure AD) umożliwia wystąpienia usługi API Management w łatwy i bezpieczny dostęp z innych zasobów platformy Azure chronionych przez usługi AD, takich jak usługi Azure Key Vault. Ta tożsamość jest zarządzana przez platformę Azure i nie wymaga obsługi administracyjnej ani Obróć jakichkolwiek kluczy tajnych. Aby uzyskać więcej informacji o zarządzanych tożsamości, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Utwórz tożsamość zarządzaną dla wystąpienia usługi API Management
 
@@ -242,3 +240,4 @@ Dowiedz się więcej na temat zarządzanych tożsamości dla zasobów platformy 
 
 * [Co to jest zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md)
 * [Szablony usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates)
+* [Uwierzytelnianie za pomocą tożsamości zarządzanej w zasadach](./api-management-authentication-policies.md#ManagedIdentity)

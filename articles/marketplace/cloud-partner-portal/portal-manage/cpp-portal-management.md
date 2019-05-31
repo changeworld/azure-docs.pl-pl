@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: d35e221790c2f94caf582859f78389ecca987709
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 58451dd225a4f0625a6922bde672a6928ea50943
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942201"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257487"
 ---
 # <a name="cloud-partner-portal-management"></a>Zarządzanie w portalu dla partnerów w chmurze
 
@@ -24,7 +24,7 @@ W tej sekcji opisano typy umożliwiające tworzenie i zarządzanie kontami, trze
 Przed rozpoczęciem korzystania z portalu Cloud Partner, należy zapoznać się z następujących artykułów:
 
 - [Azure Marketplace — zasady i warunki](../../policies-terms.md) Wyświetla listę różnych wymagań prawnych i technicznych i reguł, które mają zastosowanie do użytkowników i wydawców [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [AppSource](https://appsource.microsoft.com).
-- [Stają się wydawcy w witrynie Marketplace chmury](../../become-publisher.md) zawiera omówienie wszystkich kroków wymaganych do stają się oficjalny program Microsoft publisher chmury.
+- [Stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher) zawiera omówienie wszystkich kroków wymaganych do stają się oficjalny program Microsoft publisher chmury.
 
 
 ## <a name="account-creation-and-management"></a>Tworzenie konta i zarządzanie nimi

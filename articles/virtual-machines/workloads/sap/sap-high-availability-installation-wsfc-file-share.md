@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a20299887de827f25e4c3306f5e78c188c9a8a7f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969405"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357692"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Zainstaluj oprogramowanie SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS na platformie Azure
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS
 
-Tworzenie nazwy sieciowej klastra SAP ASCS/SCS (na przykład **pr1-ascs [10.0.6.7]**), zgodnie z opisem w [Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
+Tworzenie nazwy sieciowej klastra SAP ASCS/SCS (na przykład **pr1-ascs [10.0.6.7]** ), zgodnie z opisem w [Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Instalowanie wystąpienia ASCS/SCS i Wywołujących w klastrze
@@ -300,7 +300,7 @@ Tworzenie nazwy sieciowej klastra SAP ASCS/SCS (na przykład **pr1-ascs [10.0.6.
 
 Zainstaluj wystąpienie SAP ASCS/SCS na pierwszym węźle klastra. Aby zainstalować wystąpienie usługi, w narzędziu SAP SWPM instalację, przejdź do:
 
-**\<Produktu >** > **\<DBMS >** > **instalacji** > **serwer aplikacji ABAP** () lub **Java**) > **System o wysokiej dostępności** > **wystąpienia ASCS/SCS** > **pierwszym węźle klastra**.
+**\<Produktu >**  >  **\<DBMS >**  > **instalacji** > **serwer aplikacji ABAP** () lub **Java**) > **System o wysokiej dostępności** > **wystąpienia ASCS/SCS** > **pierwszym węźle klastra**.
 
 ### <a name="add-a-probe-port"></a>Dodaj port sondy
 
@@ -310,12 +310,12 @@ Zasób klastra SAP, SAP, identyfikator SID, IP port sondy, należy skonfigurowa�
 
 Zainstaluj wystąpienie SAP ASCS/SCS na drugim węźle klastra. Aby zainstalować wystąpienie usługi, w narzędziu SAP SWPM instalację, przejdź do:
 
-**\<Produktu >** > **\<DBMS >** > **instalacji** > **serwer aplikacji ABAP** () lub **Java**) > **System o wysokiej dostępności** > **wystąpienia ASCS/SCS** > **dodatkowym węźle klastra** .
+**\<Produktu >**  >  **\<DBMS >**  > **instalacji** > **serwer aplikacji ABAP** () lub **Java**) > **System o wysokiej dostępności** > **wystąpienia ASCS/SCS** > **dodatkowym węźle klastra** .
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizuj profil wystąpienia SAP ASCS/SCS
 
-Zaktualizuj parametry w profilu wystąpienia SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_\<Host >.
+Zaktualizuj parametry w profilu wystąpienia SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_ \<Host >.
 
 
 | Nazwa parametru | Wartość parametru |
@@ -324,7 +324,7 @@ Zaktualizuj parametry w profilu wystąpienia SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-Ponownie uruchom wystąpienie SAP ASCS/SCS. Ustaw `KeepAlive` parametrów w obu węzłach klastra SAP ASCS/SCS postępuj zgodnie z instrukcjami, aby [Ustaw wpisy rejestru w węzłach klastra wystąpienia SAP ASCS/SCS]([high-availability-guide]:high-availability-guide.md). 
+Ponownie uruchom wystąpienie SAP ASCS/SCS. Ustaw `KeepAlive` parametrów w obu węzłach klastra SAP ASCS/SCS postępuj zgodnie z instrukcjami, aby [Ustaw wpisy rejestru w węzłach klastra wystąpienia SAP ASCS/SCS][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Zainstaluj wystąpienie DBMS i serwery aplikacji SAP
 

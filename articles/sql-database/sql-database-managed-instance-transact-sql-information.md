@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852148"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258596"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -27,6 +27,7 @@ Ten artykuł zawiera podsumowanie i wyjaśnia różnice w składnią i zachowani
 - [Zabezpieczenia](#security) zawiera różnice w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credential), [dostawcy usług kryptograficznych](#cryptographic-providers), [identyfikatory logowania i użytkowników](#logins-and-users)i [klucza usługi i klucz główny usługi](#service-key-and-service-master-key).
 - [Konfiguracja](#configuration) zawiera różnice w [buforu rozszerzenia puli](#buffer-pool-extension), [sortowania](#collation), [poziomy zgodności](#compatibility-levels), [dublowania bazy danych ](#database-mirroring), [opcje bazy danych](#database-options), [programu SQL Server Agent](#sql-server-agent), i [Opcje tabeli](#tables).
 - [Funkcje](#functionalities) obejmuje [ZBIORCZEGO WSTAWIANIA/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcje rozproszone](#distributed-transactions), [zdarzeniom rozszerzonym](#extended-events), [zewnętrznych bibliotekach](#external-libraries), [filestream i FileTable](#filestream-and-filetable), [pełnotekstowe wyszukiwanie semantyczne](#full-text-semantic-search), [serwery połączone](#linked-servers), [PolyBase](#polybase), [replikacji](#replication), [PRZYWRÓCIĆ](#restore-statement), [programu Service Broker](#service-broker), [procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-and-triggers).
+- [Ustawienia środowiska](#Environment) takich jak konfiguracja sieci wirtualnych i podsieci.
 - [Funkcje, które mają różne zachowanie w zarządzane wystąpienia](#Changes).
 - [Tymczasowe ograniczenia i znane problemy](#Issues).
 
@@ -46,7 +47,7 @@ Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparat
 - [GRUPA DOSTĘPNOŚCI LISTY](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) klauzuli [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) — instrukcja
 
-### <a name="backup"></a>Tworzenie kopii zapasowej
+### <a name="backup"></a>Backup
 
 Wystąpienia zarządzanego mają automatycznych kopii zapasowych, dzięki czemu użytkownicy mogą tworzyć pełne kopie `COPY_ONLY` kopii zapasowych. Różnicowe kopie zapasowe, log oraz kopii zapasowych migawki pliku nie są obsługiwane.
 
@@ -276,11 +277,11 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
 
 - Ustawienia programu SQL Server Agent jest tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym. 
-- Zadania (job)
+- Zadania
   - Kroki w zadaniu języka T-SQL są obsługiwane.
   - Obsługiwane są następujące zadania replikacji:
     - Czytnik dziennika transakcji
-    - Migawka
+    - Snapshot
     - Dystrybutor
   - Kroki zadania SSIS są obsługiwane.
   - Inne rodzaje kroków zadania nie są obecnie obsługiwane:
@@ -454,6 +455,19 @@ Broker usług dla wielu wystąpień nie jest obsługiwane:
 - `xp_cmdshell` nie jest obsługiwane. Zobacz [procedury xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` nie są obsługiwane w tym `sp_addextendedproc`  i `sp_dropextendedproc`. Zobacz [rozszerzonych procedur składowanych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`, i `sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+
+## <a name="Environment"></a>Ograniczenia Environmet
+
+### <a name="subnet"></a>Podsieć
+- W podsieci, zarezerwowane wystąpienia zarządzanego nie można umieścić inne zasoby (na przykład maszyny wirtualne). Umieszczenie tych zasobów w innych podsieciach.
+- Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimalna to 16, chociaż zaleca się mieć co najmniej 32 adresów IP w podsieci.
+- [Punkty końcowe usługi nie może być skojarzony z podsieci wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, wyłączenia opcji punktów końcowych usługi podczas tworzenia sieci wirtualnej.
+- Liczba i typy wystąpień, które można umieścić w podsieci mają też [ograniczenia i limity](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Istnieją pewne [reguł zabezpieczeń, które muszą zostać zastosowane w danej podsieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+
+### <a name="vnet"></a>Sieć wirtualna
+- Sieć wirtualną można wdrożyć przy użyciu modelu Resource - opartych na modelu klasycznym dla sieci wirtualnej nie jest obsługiwana.
+- Niektórych usług, takich jak środowiska usługi App Service, Logic apps i wystąpienia zarządzane przez usługę (używane dla replikacji geograficznej, replikacji transakcyjnej lub za pośrednictwem serwerów połączonych) nie może uzyskać dostępu wystąpienia zarządzane przez usługę w różnych regionach, jeśli ich sieci wirtualne są połączone za pomocą [globalnej komunikacji równorzędnej](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się do tych zasobów za pośrednictwem usługi ExpressRoute lub sieci wirtualnej między sieciami wirtualnymi za pośrednictwem bram sieci wirtualnej.
 
 ## <a name="Changes"></a> Zmiany zachowania
 

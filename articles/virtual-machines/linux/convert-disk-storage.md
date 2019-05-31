@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 2e7eb455a53abbe2df6ff72f091a599665732429
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bc42bcbf7149f88eb895317a411c7acd5913d63d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724896"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417695"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Konwertuj Azure zarządzane dyski magazynu od planu Standard do Premium lub Premium na standardową
 
-Istnieją cztery [typów dysków](disks-types.md) dysków zarządzanych dla platformy Azure: Magazyn dyskowy Ultra platformy Azure, dysk SSD w warstwie Premium, SSD w warstwie standardowa i Standard dysk twardy. Można łatwo przełączać się między dysku Premium SSD, SSD w warstwie standardowa i standardowy dysk twardy, zgodnie z potrzebami wydajności przy niewielkim przestoju. Ta funkcja nie jest obsługiwana dla dysków niezarządzanych lub Ultra Magazyn dyskowy. Ale możesz z łatwością [convert niezarządzanych do usługi managed disks](convert-unmanaged-to-managed-disks.md) mieć możliwość przełączania się między typy dysków.
+Istnieją cztery dyski zarządzane typy dysków platformy Azure: Dyski SSD ultra platformy Azure (wersja zapoznawcza) i premium SSD, SSD w warstwie standardowa i standardowych dysków Twardych. Możesz przełączać się między trzy typy dysków GA (premium SSD, SSD w warstwie standardowa i standardowych dysków Twardych) oparte na potrzeby związane z wydajnością. Nie jesteś jeszcze możliwość przełączania się z lub do najwyższej dyski SSD, Wdróż nową.
+
+Ta funkcja nie jest obsługiwana w przypadku dysków niezarządzanych. Ale możesz z łatwością [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md) mieć możliwość przełączania się między typy dysków.
 
 W tym artykule pokazano, jak do przekonwertowania dysków zarządzanych warstwy standardowej na Premium lub Premium na standardową przy użyciu wiersza polecenia platformy Azure. Aby zainstalować lub uaktualnić narzędzie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli).
 

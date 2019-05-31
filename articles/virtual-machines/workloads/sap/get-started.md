@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/15/2019
+ms.date: 05/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f14110cec0650927f74dfe3a38f06187c6df39de
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b8eebd7a7a8933d082741a3086ffcf03a58066f
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792657"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357705"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure umożliwia hostowanie i uruchamianie scenariusze obciążeń SAP
 
@@ -36,15 +36,12 @@ Scenariusze obciążeń SAP na platformie Azure obsługującego również tworzy
 
 ## <a name="latest-changes"></a>Najnowsze zmiany
 
+- Wprowadzenie ścieżkę Fast usługi ExpressRoute i zasięgu globalnym dla dużych wystąpień HANA w [architektura SAP HANA (duże wystąpienia) sieci](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) i powiązanych dokumentów
 - Wersja [dużych wystąpień HANA na platformie Azure kontrolować za pośrednictwem witryny Azure portal](hana-li-portal.md)
-
 - Wersja [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server za pomocą usługi Azure Files NetApp dla aplikacji SAP](high-availability-guide-suse-netapp-files.md)
-
 - Wyjaśnienia **net.ipv4.tcp_timestamps parametrów systemu operacyjnego Linux** ustawienia w połączeniu z platformą Azure Usługa równoważenia obciążenia
 
-- Wersja [konfiguracje obciążeń SAP ze strefami dostępności platformy Azure](sap-ha-availability-zones.md)
 
-- Wersja [kontrolną planowania i wdrażania obciążeń SAP](sap-deployment-checklist.md)
 
 
 
@@ -60,7 +57,7 @@ Seria dokumentów prowadzi za pośrednictwem platformy SAP HANA na platformie Az
 - [Wysoka dostępność i odzyskiwanie po awarii oprogramowania SAP Hana na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
 - [Rozwiązywanie problemów i monitorowanie oprogramowania SAP HANA na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
-Kolejne kroki:
+Następne kroki:
 
 - Odczyt [omówienie i architektura oprogramowania SAP HANA na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 

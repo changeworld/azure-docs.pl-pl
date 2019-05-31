@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66179817"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254462"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Java w systemie Linux dla usługi Azure App Service
 
@@ -134,7 +134,7 @@ Alternatywnie można skonfigurować ustawienia aplikacji przy użyciu wtyczki Ma
 
 Jeśli aplikacja języka Java jest szczególnie duże, należy zwiększyć limit czasu uruchamiania. Aby to zrobić, należy utworzyć ustawienie aplikacji, `WEBSITES_CONTAINER_START_TIME_LIMIT` i ustaw ją na liczbę sekund oczekiwania przed przekroczeniem limitu czasu usługi App Service. Wartość maksymalna to `1800` sekund.
 
-## <a name="secure-applications"></a>Zabezpiecz aplikacje
+## <a name="secure-applications"></a>Zabezpieczanie aplikacji
 
 Aplikacje Java uruchomiona w usłudze App Service dla systemu Linux ma ten sam zestaw [najlepszych rozwiązań dotyczących zabezpieczeń](/azure/security/security-paas-applications-using-app-services) jako inne aplikacje. 
 
@@ -164,7 +164,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Wyloguj użytkowników i wykonywać inne czynności, można znaleźć w dokumentacji na [użycie aplikacji usług uwierzytelniania i autoryzacji](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to). Istnieje również oficjalnej dokumentacji na serwerze Tomcat [interfejsu HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) i jego metod. Następujące serwletów, które metody są również uwodniony zgodnie z konfiguracją usługi App Service:
+Wyloguj użytkowników i wykonywać inne czynności, można znaleźć w dokumentacji na [użycie aplikacji usług uwierzytelniania i autoryzacji](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). Istnieje również oficjalnej dokumentacji na serwerze Tomcat [interfejsu HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) i jego metod. Następujące serwletów, które metody są również uwodniony zgodnie z konfiguracją usługi App Service:
 
 ```java
 public boolean isSecure()

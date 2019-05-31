@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 86efb6b655405500f994a5a5ec7acbd18c645004
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957853"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417927"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące usługi Azure Container Registry
 
@@ -253,10 +253,11 @@ Obraz kwarantanny jest obecnie w wersji zapoznawczej z rejestru Azure container 
 - [Nowe uprawnienia użytkownika może nie obowiązywać natychmiast po zaktualizowaniu](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Informacje dotyczące uwierzytelniania nie zostanie podany w prawidłowym formacie na bezpośrednie wywołania interfejsu API REST](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Dlaczego witryna Azure portal nie zawiera wszystkich repozytoriów lub tagi?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Jak zbierać ślady protokołu http na Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>polecenie docker pull nie powiodło się z powodu błędu: net/http: żądanie zostało anulowane podczas oczekiwania na połączenie (Client.Timeout przekroczony podczas oczekiwania na nagłówki)
 
- - Jeśli ten błąd jest przejściowy problem, a następnie ponów próbę zakończy się powodzeniem. 
+ - Jeśli ten błąd jest przejściowy problem, a następnie ponów próbę zakończy się powodzeniem.
  - Jeśli `docker pull` zakończy się niepowodzeniem, może to być problem z demona platformy docker. Zazwyczaj można wyeliminować problem, ponownie uruchomić demona platformy docker. 
  - Jeśli nadal widzisz ten problem, po ponownym uruchomieniu demona platformy docker, problem może być pewne problemy z połączeniem sieciowym z maszyną. Aby sprawdzić, jeśli ogólny sieci na maszynie jest w dobrej kondycji, spróbuj wykonać polecenie takich jak `ping www.bing.com`.
  - Zawsze należy mechanizm ponawiania prób dla wszystkich operacji klienta platformy docker.
@@ -387,6 +388,28 @@ curl $redirect_url
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Dlaczego witryna Azure portal nie zawiera wszystkich repozytoriów lub tagi? 
 
 Jeśli używasz przeglądarki Microsoft Edge widać, co najwyżej 100 repozytoriów lub tagi, na liście. Jeśli rejestr ma więcej niż 100 repozytoriów lub tagi, firma Microsoft zaleca, użyj przeglądarki Firefox lub Chrome przeglądarki, aby je wszystkie wymienić.
+
+### <a name="how-do-i-collect-http-traces-on-windows"></a>Jak zbierać ślady protokołu http na Windows?
+
+#### <a name="prerequisites"></a>Wymagania wstępne
+
+- Włącz odszyfrowywania protokołu https w narzędziu fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Włącz Docker, aby użyć serwera proxy przy użyciu interfejsu użytkownika platformy Docker: <https://docs.docker.com/docker-for-windows/#proxies>
+- Pamiętaj przywrócić po zakończeniu.  Dzięki włączeniu tej opcji jest nieodpowiedni platformy docker i nie jest uruchomiony program fiddler.
+
+#### <a name="windows-containers"></a>Kontenery systemu Windows
+
+Skonfiguruj serwer proxy 127.0.0.1:8888 platformy Docker
+
+#### <a name="linux-containers"></a>Kontenery systemu Linux
+
+Znajdź ip platformy Docker przełącznika wirtualnego maszyny wirtualnej:
+
+```powershell
+(Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+```
+
+Skonfiguruj serwer proxy platformy Docker w danych wyjściowych poprzedniego polecenia i port 8888 (na przykład 10.0.75.1:8888)
 
 ## <a name="tasks"></a>Zadania
 

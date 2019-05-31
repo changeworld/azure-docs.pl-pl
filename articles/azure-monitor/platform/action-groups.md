@@ -5,18 +5,18 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 5/10/2019
+ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544474"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416957"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
-## <a name="overview"></a>Omówienie ##
+## <a name="overview"></a>Przegląd ##
 Grupy akcji to zbiór preferencje powiadamiania zdefiniowane przez właściciela subskrypcji platformy Azure. Alerty monitorowania i kondycji usług platformy Azure umożliwia powiadomienie użytkowników, czy alert został wywołany grup akcji. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika. Można skonfigurować maksymalnie 2000 grup akcji w ramach subskrypcji.
 
 Możesz skonfigurować akcję, aby powiadomić osoby, adres e-mail lub wiadomości SMS, otrzymują potwierdzenie wskazujący, że zostały one dodane do grupy akcji.
@@ -35,9 +35,9 @@ Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablon�
 1. W [portal](https://portal.azure.com), wybierz opcję **Monitor**. **Monitor** okienko konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
 
     ![Usługa "Monitor"](./media/action-groups/home-monitor.png)
-1. Wybierz **alerty** polecenie **Zarządzanie grupami działań**.
+1. Wybierz **alerty** polecenie **zarządzać akcjami**.
 
-    ![Zarządzanie przycisk grupy akcji](./media/action-groups/manage-action-groups.png)
+    ![Zarządzanie przycisk Akcje](./media/action-groups/manage-action-groups.png)
 1. Wybierz **Dodaj grupę akcji**, a następnie wypełnij pola.
 
     ![Polecenie "Dodaj grupę akcji"](./media/action-groups/add-action-group.png)
@@ -102,6 +102,8 @@ Zakresy adresów IP źródła
  - 13.106.57.196
  - 52.244.68.117
  - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

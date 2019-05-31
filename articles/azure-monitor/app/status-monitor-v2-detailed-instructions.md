@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3aca64c7b0f1ad04967782cb3349da302db557a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6eca2b47c2362f34415db8b4f335f3089babc58b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145083"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255878"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Stan monitora v2 szczegółowe instrukcje
 
@@ -29,7 +29,7 @@ Dołączono również ręcznej instrukcje w przypadku, gdy dostęp do Internetu 
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-## <a name="instrumentation-key"></a>Klucz instrumentacji
+## <a name="instrumentation-key"></a>Klucz Instrumentacji
 
 Aby rozpocząć pracę, musi mieć klucz instrumentacji. Aby uzyskać więcej informacji, przeczytaj [Utwórz zasób usługi Application Insights](create-new-resource.md#copy-the-instrumentation-key).
 
@@ -224,7 +224,7 @@ Zapoznaj się z powyższymi instrukcjami podczas pisania skryptów instalacji.
 Zestaw SDK usługi Application Insights będzie konieczne wysyłanie danych telemetrycznych aplikacji do firmy Microsoft. Firma Microsoft zaleca skonfigurowanie ustawień serwera proxy dla aplikacji w z pliku web.config. Zobacz [usługi Application Insights — często zadawane pytania: Przekazywanie proxy](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough) Aby uzyskać więcej informacji.
 
 
-## <a name="enable-monitoring"></a>Włącz monitorowanie 
+## <a name="enable-monitoring"></a>Włączanie monitorowania 
 
 Cmd: `Enable-ApplicationInsightsMonitoring`
 
@@ -239,7 +239,7 @@ Przejrzyj nasze [dokumentacja interfejsu API](status-monitor-v2-api-enable-monit
 - [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
 - [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów
 - [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
-- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md)
+- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md)
 
  Dodawanie kolejnych funkcji telemetrii:
 

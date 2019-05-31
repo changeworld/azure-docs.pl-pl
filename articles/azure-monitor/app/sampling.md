@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c11eeb84fe4ed1ded93cb8de7ff54b756fd36749
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779909"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388383"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -527,3 +527,4 @@ Po stronie klienta (JavaScript) zestawu SDK uczestniczy w stałej stawki próbko
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Filtrowanie](../../azure-monitor/app/api-filtering-sampling.md) może zapewnić więcej ścisłej kontroli wysyła zestawu SDK.
+* Zapoznaj się z artykułami Developer Network [zoptymalizować Telemetrii za pomocą usługi Application Insights](https://msdn.microsoft.com/magazine/mt808502.aspx).

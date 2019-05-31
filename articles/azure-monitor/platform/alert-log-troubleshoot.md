@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1c7712fc2ce55a3d22995bb119a9ee485a064903
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683387"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399182"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów dotyczących alertów dzienników w usłudze Azure Monitor  
 
@@ -38,7 +38,7 @@ Aby uniknąć opóźnień, system czeka i ponawia zapytanie alertu wiele razy, j
 
 Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), okres czasu, określona w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie. 
 
-W okresie ogranicza dane pobierane dla zapytania dziennika zapobiec nadużyciu i jego zmierzone dowolnego polecenia na czas (takich jak **temu**) używanych w zapytaniu dziennika. Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego **temu (1d)**, zapytanie nadal tylko używa danych między 12:15 PM i 13:15 czasu, ponieważ w okresie jest równa tego interwału.
+W okresie ogranicza dane pobierane dla zapytania dziennika zapobiec nadużyciu i jego zmierzone dowolnego polecenia na czas (takich jak **temu**) używanych w zapytaniu dziennika. Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego **temu (1d)** , zapytanie nadal tylko używa danych między 12:15 PM i 13:15 czasu, ponieważ w okresie jest równa tego interwału.
 
 Sprawdź, czy okres czasu w konfiguracji zgodnego z zapytaniem. W przykładzie przedstawionym wcześniej Jeśli używa zapytania dotyczącego dziennika **temu (1d)** z zielonym znacznikiem, okres czasu powinien być ustawiony na 24 godziny lub 1440 minut (oznaczone na czerwono). To ustawienie zapewni, że zapytanie działa zgodnie z oczekiwaniami.
 
@@ -181,6 +181,7 @@ Następujące przykładowe zdarzenie w dzienniku aktywności platformy Azure jes
 Każdej reguły alertu dziennika utworzonego w usłudze Azure Monitor w ramach konfiguracji należy określić zapytania usługi analytics, która usługa alertu dotyczącego będzie okresowo uruchamiany. Zapytania usługi analytics może być poprawną składnię w czasie tworzenia reguły lub aktualizacji. Jednak czasami przedziale czasu kwerendy w reguł alertów dzienników mogą tworzyć problemy składni i spowodować wykonanie reguły nie powiedzie się. Niektóre typowe przyczyny, dlaczego warto tworzyć zapytania usługi analytics podawany reguł alertów dzienników błędów są:
 
 - Zapytania są zapisywane do [działającym na wielu zasobach](../log-query/cross-workspace-query.md). A co najmniej jeden z określonych zasobów już istnieje.
+- [alert dziennika typu pomiaru metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) skonfigurowane ustawiono alert zapytania nie jest zgodne z normami składni
 - Wystąpił brak przepływu danych do korzystania z platformy analizy. [Wykonywania zapytań powoduje błąd](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , ponieważ nie ma żadnych danych dla podanego zapytania.
 - Zmiany w [języka zapytań](https://docs.microsoft.com/azure/kusto/query/) obejmują poprawione format poleceń i funkcji. Dlatego podane wcześniej w regule alertu zapytanie nie jest już prawidłowy.
 

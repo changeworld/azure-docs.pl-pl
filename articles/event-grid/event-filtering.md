@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187653"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305058"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Omówienie zdarzeń filtrowania dla subskrypcji usługi Event Grid
 
@@ -107,18 +107,18 @@ Wszystkie porównania ciągów są insensitve przypadek.
 
 W przypadku zdarzeń w schemacie usługi Event Grid Użyj następujących wartości dla klucza:
 
-* Identyfikator
+* Id
 * Temat
 * Subject
-* EventType
+* Typ zdarzenia
 * dataVersion
 * Dane zdarzenia (na przykład Data.key1)
 
 W przypadku zdarzeń w schemacie zdarzeń w chmurze Użyj następujących wartości dla klucza:
 
 * Identyfikator zdarzenia
-* Element źródłowy
-* EventType
+* Source
+* Typ zdarzenia
 * eventTypeVersion
 * Dane zdarzenia (na przykład Data.key1)
 
@@ -140,8 +140,6 @@ Zaawansowane filtrowanie ma następujące ograniczenia:
 * Pięć zaawansowane filtry dla subskrypcji usługi event grid
 * 512 znaków na wartość ciągu
 * Pięć wartości **w** i **nie** operatorów
-* Klucz może mieć tylko jeden poziom zagnieżdżenia (na przykład data.key1)
-* Schematy zdarzeń niestandardowych można filtrować tylko według pól najwyższego poziomu
 
 Ten sam klucz może służyć w więcej niż jeden filtr.
 

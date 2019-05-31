@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799329"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384984"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wiadomości Bing
 
@@ -31,31 +31,31 @@ Aby uzyskać `/news/search` punktu końcowego, w poniższej tabeli wymieniono wa
 
 Kodów listę kraj/region, który można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych krajów](#countrycodes).  
 
-|Kraj/region|Język|Rynek kodu|  
+|Country/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------|
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Austria|Niemiecki|de-AT|
 |Szwajcaria|Niemiecki|de-CH|
 |Niemcy|Niemiecki|de-DE.|
-|Australia|Angielski|EN-AU|
-|Kanada|Angielski|EN-CA|
-|Zjednoczone Królestwo|Angielski|en-GB|
-|Indonezja|Angielski|EN-ID|
-|Irlandia|Angielski|EN-IE|
-|Indie|Angielski|EN-IN|
-|Malezja|Angielski|Moje en|
-|Nowa Zelandia|Angielski|EN NZ|
-|Republika Filipin|Angielski|en-PH|
-|Singapur|Angielski|en-SG|
-|Stany Zjednoczone Ameryki|Angielski|en-US|
-|Angielski|Ogólne|EN-WW|
-|Angielski|Ogólne|en-XA|
-|RPA|Angielski|en-ZA|
+|Australia|Polski|EN-AU|
+|Kanada|Polski|EN-CA|
+|Zjednoczone Królestwo|Polski|en-GB|
+|Indonezja|Polski|EN-ID|
+|Irlandia|Polski|EN-IE|
+|Indie|Polski|EN-IN|
+|Malezja|Polski|Moje en|
+|Nowa Zelandia|Polski|EN NZ|
+|Republika Filipin|Polski|en-PH|
+|Singapur|Polski|en-SG|
+|Stany Zjednoczone|Polski|en-US|
+|Polski|Ogólne|EN-WW|
+|Polski|Ogólne|en-XA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Argentyna|Hiszpański|ES AR|
 |Chile|Hiszpański|ES-CL|
 |Hiszpania|Hiszpański|es-ES|
 |Meksyk|Hiszpański|es-MX|
-|Stany Zjednoczone Ameryki|Hiszpański|es-US|
+|Stany Zjednoczone|Hiszpański|es-US|
 |Hiszpański|Ogólne|es-XL|
 |Finlandia|Fiński|fi-FI|  
 |Francja|Francuski|fr-BE|
@@ -67,7 +67,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |SRA Hongkong|Chiński (tradycyjny)|zh-HK|  
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Japonia|Japoński|ja-JP|  
-|Korea Południowa|Koreański|ko-KR|  
+|Korea|Koreański|ko-KR|  
 |Holandia|Holenderski|NL-NL|  
 |Chińska Republika Ludowa|Chiński|zh-CN|  
 |Brazylia|Portugalski|pt-BR|
@@ -80,17 +80,17 @@ Aby uzyskać `/news` punktu końcowego, w poniższej tabeli wymieniono wartości
 
 Kodów listę kraj/region, który można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych krajów](#countrycodes).  
 
-|Kraj/region|Język|Rynek kodu|  
+|Country/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------|
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Niemcy|Niemiecki|de-DE.|
-|Australia|Angielski|EN-AU|
-|Zjednoczone Królestwo|Angielski|en-GB|
-|Stany Zjednoczone Ameryki|Angielski|en-US|
-|Angielski|Ogólne|EN-WW|
+|Australia|Polski|EN-AU|
+|Zjednoczone Królestwo|Polski|en-GB|
+|Stany Zjednoczone|Polski|en-US|
+|Polski|Ogólne|EN-WW|
 |Chile|Hiszpański|ES-CL|
 |Meksyk|Hiszpański|es-MX|
-|Stany Zjednoczone Ameryki|Hiszpański|es-US|
+|Stany Zjednoczone|Hiszpański|es-US|
 |Finlandia|Fiński|fi-FI|  
 |Kanada|Francuski|fr-CA|
 |Francja|Francuski|fr-FR|  
@@ -103,14 +103,14 @@ Aby uzyskać `/news/trendingtopics` punktu końcowego, w poniższej tabeli wymie
 
 Kodów listę kraj/region, który można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych krajów](#countrycodes).  
 
-|Kraj/region|Język|Rynek kodu|  
+|Country/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------|
 |Niemcy|Niemiecki|de-DE.|
-|Australia|Angielski|EN-AU|
-|Zjednoczone Królestwo|Angielski|en-GB|
-|Stany Zjednoczone Ameryki|Angielski|en-US|
-|Kanada|Angielski|EN-CA|
-|Indie|Angielski|EN-IN|
+|Australia|Polski|EN-AU|
+|Zjednoczone Królestwo|Polski|en-GB|
+|Stany Zjednoczone|Polski|en-US|
+|Kanada|Polski|EN-CA|
+|Indie|Polski|EN-IN|
 |Francja|Francuski|fr-FR|
 |Kanada|Francuski|fr-CA|
 |Brazylia|Portugalski|pt-BR|
@@ -122,14 +122,14 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 
 Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w `cc` parametr zapytania. Lista może ulec zmianie.  
 
-|Kraj/region|Kod kraju|  
+|Country/region|Kod kraju|  
 |---------------------|------------------|  
 |Argentyna|AR|  
 |Australia|AU|  
 |Austria|AT|  
 |Belgia|BE|  
 |Brazylia|BR|  
-|Kanada|Urząd certyfikacji|  
+|Kanada|CA|  
 |Chile|CL|  
 |Dania|DK|  
 |Finlandia|FI|  
@@ -138,28 +138,28 @@ Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w 
 |SRA Hongkong|HK|  
 |Indie|IN|  
 |Indonezja|ID|  
-|Włochy|it|  
+|Włochy|IT|  
 |Japonia|JP|  
-|Korea Południowa|KR|  
+|Korea|KR|  
 |Malezja|MY|  
 |Meksyk|MX|  
 |Holandia|NL|  
 |Nowa Zelandia|NZ|  
-|Norwegia|NIE|  
+|Norwegia|NO|  
 |Chińska Republika Ludowa|CN|  
 |Polska|PL|  
 |Portugalia|PT|  
 |Republika Filipin|PH|  
 |Rosja|RU|  
 |Arabia Saudyjska|SA|  
-|RPA|ZA|  
+|Republika Południowej Afryki|ZA|  
 |Hiszpania|ES|  
 |Szwecja|SE|  
 |Szwajcaria|CH|  
 |Tajwan|TW|  
 |Turcja|TR|  
 |Zjednoczone Królestwo|GB|  
-|Stany Zjednoczone Ameryki|USA|
+|Stany Zjednoczone|USA|
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

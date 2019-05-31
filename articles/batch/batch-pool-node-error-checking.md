@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 9/25/2018
+ms.date: 05/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b0a9d04fccce7ccbacb700f7af5126c6ae05140a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791345"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357758"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sprawdź błędy puli i węzła
 
@@ -84,18 +84,27 @@ Można określić co najmniej jeden pakiet aplikacji dla puli. Usługa Batch pob
 
 Węzeł [błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) właściwość zgłasza błąd do pobrania i zdekompresować pakietu aplikacji. Batch ustawia stan węzła **bezużyteczne**.
 
+### <a name="container-download-failure"></a>Błąd pobierania kontenera
+
+Możesz określić jedno lub więcej odwołań kontenera w puli. Batch pobierze określonego kontenerów do każdego węzła. Węzeł [błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) właściwość zgłasza błąd pobierania kontenera i ustawia stan węzła **bezużyteczne**.
+
 ### <a name="node-in-unusable-state"></a>Węzeł w stanie uniemożliwiającym jego używanie
 
 Usługa Azure Batch może ustawić [stan węzła](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) do **bezużyteczne** wielu powodów. Ze stanem węzła równa **bezużyteczne**, nie można zaplanować zadania w węźle, ale nadal wiąże opłaty.
 
-Batch zawsze próbuje odzyskać bezużyteczne węzłów, ale odzyskiwania może być lub może nie być możliwe w zależności od przyczyny.
+Węzły w **unsuable**, ale bez [błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) stan oznacza, że partii nie może komunikować się z maszyną Wirtualną. W tym przypadku wsadowego zawsze próbuje odzyskać maszynę Wirtualną. Batch nie podejmie automatycznie próbę odzyskania sprawności maszyn wirtualnych, których nie można zainstalować pakiety aplikacji lub kontenerów, nawet jeśli ich stan to **bezużyteczne**.
 
 Jeśli usługi Batch można określić przyczyny, węzeł [błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) właściwość zgłasza go.
 
 Dodatkowe przykłady przyczyny **bezużyteczne** węzłów obejmują:
 
 - Niestandardowy obraz maszyny Wirtualnej jest nieprawidłowy. Na przykład, nie został poprawnie przygotowany obraz.
+
 - Maszyna wirtualna zostanie przeniesiona z powodu awarii infrastruktury lub uaktualnienie niskiego poziomu. Batch odzyskuje węzła.
+
+- Obraz maszyny Wirtualnej został wdrożony na sprzęcie, który go nie obsługuje. Na przykład "HPC" obrazu maszyny Wirtualnej uruchomionej na sprzęcie innych niż HPC. Na przykład, może uruchomić obraz CentOS HPC [maszyna wirtualna Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) maszyny Wirtualnej.
+
+- Maszyny wirtualne znajdują się w [sieci wirtualnej platformy Azure](batch-virtual-network.md), i został zablokowany ruch do portów klucza.
 
 ### <a name="node-agent-log-files"></a>Plików dziennika agenta węzła
 

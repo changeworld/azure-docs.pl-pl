@@ -15,12 +15,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 827c42763eee39c717cedc90469ae765cc331272
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602448"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253836"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM
 Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generuje alerty w przypadku podejrzanej lub niebezpieczne działania w środowisku. Po wyzwoleniu alertu ona wyświetlona na stronie alertów. 
@@ -33,11 +33,11 @@ Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub r�
 ![Raport o alertach](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Alerty
-| Alert | Severity | Wyzwalacz | Zalecenie |
+| Alerty | Severity | Wyzwalacz | Zalecenie |
 | --- | --- | --- | --- |
-| **Zbyt wielu właścicieli przypisanych do zasobu** |Średnia |Zbyt wielu użytkowników korzysta z roli właściciela. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre mniej uprzywilejowanych ról. |
-| **Zbyt wiele trwałych właścicieli przypisanych do zasobu** |Średnia |Zbyt wielu użytkowników są trwale przypisane do roli. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre do wymagana aktywacja w celu użycia roli. |
-| **Utworzono zduplikowaną rolę** |Średnia |Wiele ról ma takich samych kryteriów. |Użyj tylko jednej z tych ról. |
+| **Zbyt wielu właścicieli przypisanych do zasobu** |Średni |Zbyt wielu użytkowników korzysta z roli właściciela. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre mniej uprzywilejowanych ról. |
+| **Zbyt wiele trwałych właścicieli przypisanych do zasobu** |Średni |Zbyt wielu użytkowników są trwale przypisane do roli. |Przejrzyj użytkowników na liście, a następnie ponownie przypisać niektóre do wymagana aktywacja w celu użycia roli. |
+| **Utworzono zduplikowaną rolę** |Średni |Wiele ról ma takich samych kryteriów. |Użyj tylko jednej z tych ról. |
 
 
 ### <a name="severity"></a>Severity
@@ -54,4 +54,4 @@ Dostosowywanie ustawień na różne alerty chcesz pracować w swoim środowisku 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-alerts.md)
+- [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)

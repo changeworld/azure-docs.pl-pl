@@ -4,14 +4,14 @@ description: Dowiedz się więcej o składni języka SQL, pojęciach związanych
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 943ed63aed0f64ae6cbd62c52731c6ec73ddd0bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954133"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388481"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -550,13 +550,13 @@ W poniższej tabeli przedstawiono wynik porównań równości w interfejsie API 
 
 | **Operator** | **Niezdefiniowane** | **Null** | **Wartość logiczna** | **Liczba** | **Ciąg** | **Obiekt** | **Tablica** |
 |---|---|---|---|---|---|---|---|
-| **Niezdefiniowane** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano |
-| **Null** | Nie zdefiniowano | **OK** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano |
-| **Wartość logiczna** | Nie zdefiniowano | Nie zdefiniowano | **OK** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano |
-| **Liczba** | Nie zdefiniowano | Niezdefiniowane | Nie zdefiniowano | **OK** | Nie zdefiniowano | Niezdefiniowane | Nie zdefiniowano |
-| **Ciąg** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano | **OK** | Nie zdefiniowano | Nie zdefiniowano |
-| **Obiekt** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano | **OK** | Nie zdefiniowano |
-| **Tablica** | Nie zdefiniowano | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Nie zdefiniowano | **OK** |
+| **Niezdefiniowane** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
+| **Null** | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
+| **Wartość logiczna** | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
+| **Liczba** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
+| **Ciąg** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane |
+| **Obiekt** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane |
+| **Tablica** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** |
 
 Dla operatorów porównania, takie jak `>`, `>=`, `!=`, `<`, i `<=`, porównanie różnych typów lub między dwoma obiektami lub tablic generuje `Undefined`.  
 
@@ -568,27 +568,27 @@ Operatory logiczne działają na wartościach logicznych. W poniższych tabelach
 
 **Operator OR**
 
-| OR | True | Fałsz | Nie zdefiniowano |
+| LUB | True | False | Niezdefiniowane |
 | --- | --- | --- | --- |
 | True |True |True |True |
-| Fałsz |True |Fałsz |Nie zdefiniowano |
-| Nie zdefiniowano |True |Nie zdefiniowano |Niezdefiniowane |
+| False |True |False |Niezdefiniowane |
+| Niezdefiniowane |True |Niezdefiniowane |Niezdefiniowane |
 
 **Operator AND**
 
-| AND | True | Fałsz | Nie zdefiniowano |
+| AND | True | False | Niezdefiniowane |
 | --- | --- | --- | --- |
-| True |True |Fałsz |Nie zdefiniowano |
-| Fałsz |Fałsz |Fałsz |Fałsz |
-| Nie zdefiniowano |Nie zdefiniowano |Fałsz |Nie zdefiniowano |
+| True |True |False |Niezdefiniowane |
+| False |False |False |False |
+| Niezdefiniowane |Niezdefiniowane |False |Niezdefiniowane |
 
 **Operator NOT**
 
 | NOT |  |
 | --- | --- |
-| True |Fałsz |
-| Fałsz |True |
-| Nie zdefiniowano |Nie zdefiniowano |
+| True |False |
+| False |True |
+| Niezdefiniowane |Niezdefiniowane |
 
 ## <a name="between-keyword"></a>Słowo kluczowe BETWEEN
 
@@ -756,7 +756,7 @@ To zapytanie pobiera rodziny `id` rosnąco nazwę miejscowości. Jeśli wiele el
 
 ## <a id="OffsetLimitClause"></a>Klauzula ograniczenia PRZESUNIĘCIA
 
-Przesunięcie LIMIT to opcjonalna klauzula do pominięcia, a następnie wykonać pewnej liczby wartości z zapytania. Liczba przesunięcie i licznik limitu są wymagane w klauzuli ograniczenia PRZESUNIĘCIA.
+Przesunięcie LIMIT to opcjonalna klauzula do pominięcia, a następnie wykonać pewnej liczby wartości z zapytania. Liczba przesunięcie i licznik limitu są wymagane w klauzuli ograniczenia PRZESUNIĘCIA. Obecnie ta klauzula jest obsługiwana w przypadku kwerend w tylko jednej partycji, zapytań między partycjami jeszcze go nie obsługują. 
 
 Stosowania limitu przesunięcie w połączeniu z klauzulą ORDER BY zestaw wyników jest generowany, wykonując Pomiń i podejmij uporządkowane wartości. Jeśli jest używany nie klauzuli ORDER BY, spowodują deterministyczne kolejność wartości.
 
@@ -1294,11 +1294,11 @@ Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średnia 
 
 | Funkcja | Opis |
 |-------|-------------|
-| LICZBA | Zwraca liczbę elementów w wyrażeniu. |
+| COUNT | Zwraca liczbę elementów w wyrażeniu. |
 | SUM   | Zwraca sumę wszystkich wartości w wyrażeniu. |
-| MIN.   | Zwraca minimalną wartość w wyrażeniu. |
-| MAKS.   | Zwraca maksymalną wartość w wyrażeniu. |
-| ŚREDNIA   | Zwraca średnią wartości w wyrażeniu. |
+| MIN   | Zwraca minimalną wartość w wyrażeniu. |
+| MAX   | Zwraca maksymalną wartość w wyrażeniu. |
+| AVG   | Zwraca średnią wartości w wyrażeniu. |
 
 Możesz także agregować wynikami iterację tablicy. Aby uzyskać więcej informacji, zobacz [iteracji](#Iteration) sekcji.
 

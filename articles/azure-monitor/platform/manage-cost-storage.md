@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e0b9faeb796653abb4c061884ab2fbb78e867e71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918980"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417866"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użycia i kosztów za pomocą usługi Azure Monitor dzienników
 
@@ -85,7 +85,7 @@ Aby ułatwić rozpoczęcie pracy, Oto zalecane ustawienia dla alertu:
    - Zapytanie wyszukiwania: Operacja | których szczegóły zawiera "Przekroczenie"
    - Na podstawie: Liczba wyników
    - Warunek: Większe niż
-   - Próg: 0
+   - Wartość progowa: 0
    - Okres: 5 (w minutach)
    - Częstotliwość: 5 (w minutach)
 - Nazwa reguły alertu: Osiągnięto dzienny limit danych
@@ -151,13 +151,13 @@ Większe użycie jest spowodowane przez jedną lub obie z następujących przycz
 
 ## <a name="understanding-nodes-sending-data"></a>Opis węzły wysyłające dane
 
-Aby poznać liczbę komputerów (węzłów), zgłoszenie danych każdego dnia w ciągu ostatniego miesiąca, użyj
+Aby poznać liczbę komputerów wysyłających Puls z każdego dnia w ciągu ostatniego miesiąca, użyj
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (niektóre typy danych są bezpłatne), korzystać z `_IsBillable` [właściwość](log-standard-properties.md#_isbillable):
+Aby uzyskać listę komputerów, które będą rozliczane jako węzły, jeśli obszar roboczy jest w starszej wersji na warstwie cenowej węzła, odszukaj węzły wysyłające **rozliczane typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, należy użyć `_IsBillable` [właściwość](log-standard-properties.md#_isbillable) i używać skrajnie po lewej stronie pola w pełni kwalifikowaną nazwę domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczane:
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -165,15 +165,24 @@ Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (n
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. To zapytanie zastąpi stary sposób wykonywania zapytań na komputerze informacji o typie danych użycia.  
-
-Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wysyłają rozliczane typy danych (czyli jak usługi Log Analytics oblicza płatnych węzłów dla starszej wersji na warstwie cenowej węzła):
+Można oszacować liczbę płatnych węzłów widoczne jako: 
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| billableNodes=dcount(computerName)`
+
+> [!NOTE]
+> Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. To zapytanie zastąpi stary sposób wykonywania zapytań na komputerze informacji o typie danych użycia.  
+
+Bardziej precyzyjne obliczenie co faktycznie jest naliczana jest uzyskać liczbę komputerów, na godzinę, które wysyłają typy danych rozliczane. (W przypadku obszarów roboczych w starszej wersji warstwę cenową na węzeł, usługi Log Analytics oblicza liczbę węzłów, które będą musiały być rozliczane godzinowo). 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
 ## <a name="understanding-ingested-data-volume"></a>Ilość danych pozyskanych opis
 
@@ -197,24 +206,19 @@ Aby wyświetlić **rozmiar** płatnych zdarzeń wprowadzanych na komputerze, uż
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 `_IsBillable` [Właściwość](log-standard-properties.md#_isbillable) Określa, czy pozyskiwanych danych spowoduje naliczenie opłat.
 
-Aby wyświetlić **liczba** zdarzeń wprowadzanych na komputerze, należy użyć
-
-```kusto
-union withsource = tt *
-| summarize count() by Computer | sort by count_ nulls last
-```
-
-Aby wyświetlić liczbę płatnych zdarzeń wprowadzanych na komputerze, należy użyć 
+Aby wyświetlić liczbę **płatnych** zdarzenia wprowadzanych na komputerze, użyj 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize count() by Computer  | sort by count_ nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize eventCount=count() by computerName  | sort by count_ nulls last
 ```
 
 Jeśli chcesz wyświetlić liczniki dla typów danych płatnych wysyłania danych do konkretnego komputera, należy użyć:

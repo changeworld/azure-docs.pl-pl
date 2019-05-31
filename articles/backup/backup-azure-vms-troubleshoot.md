@@ -8,26 +8,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 23137cd686bcdba59880ff705a43b16ced992b59
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002310"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303994"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać, napotkano błędy podczas używania usługi Azure Backup z informacjami o wymienionych poniżej:
 
-## <a name="backup"></a>Tworzenie kopii zapasowej
+## <a name="backup"></a>Backup
+W tej sekcji omówiono niepowodzenie operacji tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.
 
-### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime-kopiowania danych kopii zapasowej z magazynu przekroczyło limit czasu
+## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - kopiowania danych kopii zapasowej z magazynu przekroczyło limit czasu
 
 Kod błędu: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 Komunikat o błędzie: Kopiowanie danych kopii zapasowej z magazynu przekroczyło limit czasu
 
 Może się to zdarzyć z powodu błędów magazynu przejściowego lub brak wystarczającej ilości miejsca konta operacje We/Wy dla usługi kopii zapasowej na przesyłanie danych do magazynu przed upływem limitu czasu. Konfigurowanie kopii zapasowych maszyn wirtualnych przy użyciu tych [najlepsze praktyki](backup-azure-vms-introduction.md#best-practices) i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState — maszyna wirtualna nie jest w stanie, który umożliwia tworzenie kopii zapasowych.
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState — maszyna wirtualna nie jest w stanie, który umożliwia tworzenie kopii zapasowych.
 
 Kod błędu: UserErrorVmNotInDesirableState <br/>
 Komunikat o błędzie: Maszyna wirtualna nie jest w stanie, który umożliwia tworzenie kopii zapasowych.<br/>
@@ -37,7 +38,7 @@ Wykonywanie kopii zapasowej nie powiodło się, ponieważ maszyna wirtualna jest
 * Jeśli maszyna wirtualna jest w stanie przejściowym między **systemem** i **Zamknij**, poczekaj, aż zmianę stanu. Następnie wyzwolić zadanie tworzenia kopii zapasowej.
 *  Jeśli maszyna wirtualna jest maszyną Wirtualną systemu Linux i używa modułu jądra systemu Linux Security-Enhanced, ścieżka agenta systemu Linux platformy Azure wykluczania **/var/lib/waagent** z zasad zabezpieczeń i upewnij się, że zainstalowano rozszerzenie kopii zapasowej.
 
-### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed — nie można zablokować przynajmniej jednego punktu instalacji maszyny wirtualnej, aby utworzyć migawkę spójną systemu plików
+## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed — nie można zablokować przynajmniej jednego punktu instalacji maszyny wirtualnej, aby utworzyć migawkę spójną systemu plików
 
 Kod błędu: UserErrorFsFreezeFailed <br/>
 Komunikat o błędzie: Nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej w celu utworzenia migawki spójnej z systemem plików.
@@ -47,7 +48,7 @@ Komunikat o błędzie: Nie można zablokować co najmniej jednego punktu instala
 * Uruchom sprawdzanie spójności systemu plików na tych urządzeniach za pomocą **fsck** polecenia.
 * Ponownie zainstaluj urządzeń i ponów próbę wykonania operacji tworzenia kopii zapasowej.</ol>
 
-### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC — operacja instalacji rozszerzenia nie powiodła się ze względu na błąd modelu COM +
+## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC — operacja instalacji rozszerzenia nie powiodła się ze względu na błąd modelu COM +
 
 Kod błędu: ExtensionSnapshotFailedCOM <br/>
 Komunikat o błędzie: Operacja migawki nie powiodła się z powodu błędu modelu COM +
@@ -55,21 +56,22 @@ Komunikat o błędzie: Operacja migawki nie powiodła się z powodu błędu mode
 Kod błędu: ExtensionInstallationFailedCOM  <br/>
 Komunikat o błędzie: Operacja instalacji rozszerzenia nie powiodła się z powodu błędu modelu COM +
 
-Kod błędu: Komunikat o błędzie ExtensionInstallationFailedMDTC: Nie można zainstalować rozszerzenia z powodu błędu "COM + nie może komunikować się z Microsoft Distributed Transaction Coordinator
+Kod błędu: ExtensionInstallationFailedMDTC <br/>
+Komunikat o błędzie: Nie można zainstalować rozszerzenia z powodu błędu "COM + nie może komunikować się z Microsoft Distributed Transaction Coordinator <br/>
 
 Operacja tworzenia kopii zapasowej nie powiodło się z powodu problemu z usługą Windows **modelu COM + System** aplikacji.  Aby rozwiązać ten problem, wykonaj poniższe czynności:
 
 * Ponowne uruchamianie/usługa Windows **COM + System Application** (z wiersza polecenia z podwyższonym **-net start COMSysApp**).
-* Upewnij się, **Distributed Transaction Coordinator** services działa jako **Usługa sieciowa** konta. Jeśli nie, zmień ją na uruchamianie jako **Usługa sieciowa** konta, a następnie ponownie uruchom **aplikacja systemowa modelu COM +**.
+* Upewnij się, **Distributed Transaction Coordinator** services działa jako **Usługa sieciowa** konta. Jeśli nie, zmień ją na uruchamianie jako **Usługa sieciowa** konta, a następnie ponownie uruchom **aplikacja systemowa modelu COM +** .
 * Jeśli nie można ponownie uruchomić usługę, zainstaluj ponownie **Distributed Transaction Coordinator** usługi, wykonując następujące czynności:
     * Zatrzymaj usługę MSDTC
     * Otwórz wiersz polecenia (cmd)
     * Uruchom polecenie "msdtc — Odinstaluj"
     * Uruchom polecenie "msdtc — instalowanie"
     * Uruchom usługę MSDTC
-* Uruchom usługę Windows **aplikacja systemowa modelu COM +**. Po **aplikacja systemowa modelu COM +** jest uruchamiana, wyzwalanie zadania tworzenia kopii zapasowej w witrynie Azure portal.</ol>
+* Uruchom usługę Windows **aplikacja systemowa modelu COM +** . Po **aplikacja systemowa modelu COM +** jest uruchamiana, wyzwalanie zadania tworzenia kopii zapasowej w witrynie Azure portal.</ol>
 
-### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState — operacja migawki nie powiodło się, ponieważ składniki zapisywania usługi VSS są w złym stanie
+## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState — operacja migawki nie powiodło się, ponieważ składniki zapisywania usługi VSS są w złym stanie
 
 Kod błędu: ExtensionFailedVssWriterInBadState <br/>
 Komunikat o błędzie: Operacja migawki nie powiodło się, ponieważ składniki zapisywania usługi VSS są w złym stanie.
@@ -79,7 +81,7 @@ Uruchom ponownie składniki zapisywania usługi VSS, które znajdują się w nie
   * ```net stop serviceName```
   * ```net start serviceName```
 
-### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure — nie można przeanalizować konfiguracji dla rozszerzenia kopii zapasowej
+## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure — nie można przeanalizować konfiguracji dla rozszerzenia kopii zapasowej
 
 Kod błędu: ExtensionConfigParsingFailure<br/>
 Komunikat o błędzie: Nie można przeanalizować konfiguracji dla rozszerzenia kopii zapasowej.
@@ -108,7 +110,7 @@ Jeśli widzisz uprawnień w **MachineKeys** katalogu są inne niż domyślne, wy
     * W obszarze **osobistych** > **certyfikaty**, usunąć wszystkie certyfikaty, gdzie **wystawiony dla** jest klasycznego modelu wdrażania lub **CRP zostaje Zainstalowana Windows Azure Generator certyfikatu**.
 3. Wyzwalanie zadania tworzenia kopii zapasowej maszyny Wirtualnej.
 
-### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState — stan rozszerzenia nie obsługuje operacji kopii zapasowej
+## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState — stan rozszerzenia nie obsługuje operacji kopii zapasowej
 
 Kod błędu: ExtensionStuckInDeletionState <br/>
 Komunikat o błędzie: Stan rozszerzenia nie obsługuje operacji kopii zapasowej
@@ -121,7 +123,7 @@ Operacja tworzenia kopii zapasowej nie powiodło się z powodu niespójnym stani
 * Po usunięciu rozszerzenia kopii zapasowej ponów próbę wykonania operacji tworzenia kopii zapasowej
 * Kolejna operacja tworzenia kopii zapasowej spowoduje zainstalowanie nowego rozszerzenia w odpowiednim stanie
 
-### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>Przekroczono ExtensionFailedSnapshotLimitReachedError — migawki nie można wykonać operacji jako limit migawek dla niektórych dołączonych dysków
+## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>Przekroczono ExtensionFailedSnapshotLimitReachedError — migawki nie można wykonać operacji jako limit migawek dla niektórych dołączonych dysków
 
 Kod błędu: ExtensionFailedSnapshotLimitReachedError  <br/>
 Komunikat o błędzie: Operacja migawki nie powiodło się, jak limit migawek został przekroczony dla niektórych dołączonych dysków
@@ -135,7 +137,7 @@ Operacja migawki nie powiodło się, jak limit migawek został przekroczony dla 
     * Upewnij się, wartość **isanysnapshotfailed** jest ustawiony jako wartość false w /etc/azure/vmbackup.conf
     * Planowanie usługi Azure Site Recovery w innym czasie, w taki sposób, że nie powoduje konfliktu operacji tworzenia kopii zapasowej.
 
-### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive — operacja migawki nie powiodło się ze względu na nieodpowiednie zasoby maszyny Wirtualnej.
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive — operacja migawki nie powiodło się ze względu na nieodpowiednie zasoby maszyny Wirtualnej.
 
 Kod błędu: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 Komunikat o błędzie: Operacja migawki nie powiodła się ze względu na nieodpowiednie zasoby maszyny Wirtualnej.
@@ -157,7 +159,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 
 **Krok 3**: Spróbuj [zwiększenie rozmiaru maszyny Wirtualnej](https://azure.microsoft.com/blog/resize-virtual-machines/) i spróbuj ponownie wykonać operację
 
-### <a name="common-vm-backup-errors"></a>Typowe błędy tworzenia kopii zapasowej maszyny Wirtualnej
+## <a name="common-vm-backup-errors"></a>Typowe błędy tworzenia kopii zapasowej maszyny Wirtualnej
 
 | Szczegóły błędu | Obejście |
 | ------ | --- |
@@ -173,7 +175,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Operacja migawki nie powiodło się z powodu błędu, aby zainstalować pakiet redystrybucyjny Visual C++ dla Visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2012_x64.<br/>Upewnij się, że wartość klucza rejestru, który umożliwia instalację usługi jest ustawiony do poprawnej wartości. Oznacza to, że ustawia **Start** wartość w **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** do **3** i nie **4**. <br><br>Jeśli nadal masz problemy z instalacją, uruchom ponownie usługę instalacji uruchamiając **MSIEXEC/unregister** następuje **MSIEXEC /REGISTER** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 
 
-## <a name="jobs"></a>Zadania (job)
+## <a name="jobs"></a>Zadania
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
@@ -182,7 +184,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Kopia zapasowa nie można anulować zadania, ponieważ nie jest w toku: <br>Anulowanie jest obsługiwana tylko w przypadku zadania w toku. Spróbuj anulować zadanie w toku. |Ten błąd występuje ze względu na stan przejściowy. Poczekaj chwilę i ponów próbę wykonania operacji anulowania. |
 | Nie można anulować zadania kopii zapasowej: <br>Poczekaj na zakończenie zadania. |Brak |
 
-## <a name="restore"></a>Przywróć
+## <a name="restore"></a>Przywracanie
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
@@ -239,7 +241,7 @@ Sprawdź wersję agenta maszyny Wirtualnej, na maszynach wirtualnych Windows:
 ## <a name="troubleshoot-vm-snapshot-issues"></a>Rozwiązywanie problemów dotyczących migawki maszyny Wirtualnej
 Kopia zapasowa maszyny Wirtualnej, zależy od tego, wystawiania poleceń migawkę bazowego magazynu. Nie ma dostępu do magazynu lub opóźnienia w zadaniu migawki Uruchom może spowodować zadania tworzenia kopii zapasowej nie powiedzie się. Następujące warunki mogą spowodować niepowodzenie zadania migawki:
 
-- **Dostęp sieciowy do magazynu jest zablokowany za pomocą sieciowej grupy zabezpieczeń**. Dowiedz się więcej na temat sposobu [ustanowić dostępu do sieci](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do magazynu przy użyciu albo dodanie do listy dozwolonych adresów IP lub za pośrednictwem serwera proxy.
+- **Dostęp sieciowy do magazynu jest zablokowany za pomocą sieciowej grupy zabezpieczeń**. Dowiedz się więcej na temat sposobu [ustanowić dostępu do sieci](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do magazynu przy użyciu obu listy dozwolonych adresów IP lub za pośrednictwem serwera proxy.
 - **Maszyny wirtualne z skonfigurowano kopii zapasowej programu SQL Server może spowodować opóźnienie zadań migawek**. Domyślnie kopia zapasowa maszyny Wirtualnej tworzy VSS pełnej kopii zapasowej na maszynach wirtualnych Windows. Maszyny wirtualne z programem SQL Server, za pomocą programu SQL Server skonfigurowano kopię zapasową, mogą występować opóźnienia migawki. W przypadku opóźnienia migawki powodować niepowodzenia tworzenia kopii zapasowej, należy ustawić następujący klucz rejestru:
 
    ```
@@ -262,8 +264,8 @@ Trzeba rozwiązać publiczne adresy internetowe została omówiona w [ten blog p
 
 Po rozpoznawanie nazw odbywa się poprawnie, dostęp do adresów IP platformy Azure wymaga także podać. Aby odblokować dostęp do infrastruktury platformy Azure, wykonaj jedną z następujących czynności:
 
-- Umieszczenie zakresów adresów IP centrów danych platformy Azure na liście dozwolonych:
-   1. Pobierz listę [centrum danych platformy Azure adresy IP](https://www.microsoft.com/download/details.aspx?id=41653) do listy dozwolonych.
+- Zezwalaj na listę zakresów IP centrum danych platformy Azure:
+   1. Pobierz listę [centrum danych platformy Azure adresy IP](https://www.microsoft.com/download/details.aspx?id=41653) aby być w liście dozwolonych.
    1. Odblokuj adresów IP przy użyciu [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) polecenia cmdlet. Uruchom to polecenie cmdlet na maszynie wirtualnej platformy Azure, w oknie programu PowerShell z podwyższonym poziomem uprawnień. Uruchom jako Administrator.
    1. Dodaj reguły do sieciowej grupy zabezpieczeń, jeśli nie masz w miejscu, aby umożliwić dostęp do adresów IP.
 - Tworzenie ścieżki dla ruchu HTTP do przepływu:

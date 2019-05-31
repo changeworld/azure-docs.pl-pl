@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111307"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306933"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programowe skalowania klastra usługi Service Fabric 
 
@@ -29,7 +29,7 @@ Klastry usługi Service Fabric działających na platformie Azure są tworzone n
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Zarządzanie poświadczeniami
-Jednym z wyzwań pisania usługi do obsługi skalowania jest, czy usługa musi umożliwiać dostęp do zasobów zestawu skalowania maszyn wirtualnych bez logowania interakcyjnego. Uzyskiwanie dostępu do klastra usługi Service Fabric jest łatwe, jeśli usługa skalowania modyfikuje własną aplikację usługi Service Fabric, ale poświadczenia są wymagane do dostępu do zestawu skalowania. Aby zalogować się, można użyć [nazwy głównej usługi](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) utworzone za pomocą [wiersza polecenia platformy Azure](https://github.com/azure/azure-cli).
+Jednym z wyzwań pisania usługi do obsługi skalowania jest, czy usługa musi umożliwiać dostęp do zasobów zestawu skalowania maszyn wirtualnych bez logowania interakcyjnego. Uzyskiwanie dostępu do klastra usługi Service Fabric jest łatwe, jeśli usługa skalowania modyfikuje własną aplikację usługi Service Fabric, ale poświadczenia są wymagane do dostępu do zestawu skalowania. Aby się zarejestrować, można użyć [nazwy głównej usługi](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) utworzone za pomocą [wiersza polecenia platformy Azure](https://github.com/azure/azure-cli).
 
 Nazwy głównej usługi można utworzyć wykonując następujące kroki:
 
@@ -38,7 +38,7 @@ Nazwy głównej usługi można utworzyć wykonując następujące kroki:
     1. Zanotuj identyfikator aplikacji (nazywane "identyfikator klienta" w innym miejscu), nazwy, hasła i dzierżawy w celu późniejszego użycia.
     2. Należy również Identyfikatora subskrypcji, które można przeglądać za pomocą `az account list`
 
-Biblioteki fluent obliczeń może zalogować się przy użyciu tych poświadczeń w następujący sposób (należy pamiętać, że podstawowych fluent typów platformy Azure, takich jak `IAzure` znajdują się w [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) pakietu):
+Biblioteki fluent obliczeń zalogować się przy użyciu tych poświadczeń w następujący sposób (należy pamiętać, że podstawowych fluent typów platformy Azure, takich jak `IAzure` znajdują się w [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) pakietu):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {

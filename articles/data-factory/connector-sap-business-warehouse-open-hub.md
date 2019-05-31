@@ -3,22 +3,21 @@ title: Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwe
 description: Dowiedz się, jak skopiować dane z SAP Business Warehouse (BW) za pośrednictwem Centrum Otwórz do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 03/08/2019
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/08/2019
+ms.author: jingwang
+ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848898"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256910"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory
 
@@ -135,7 +134,7 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Salesforce.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP BW Open koncentratora.
 
 Aby skopiować dane z i do Centrum Otwórz programu SAP BW, należy ustawić właściwość typu zestawu danych na **SapOpenHubTable**. Następujące właściwości są obsługiwane.
 
@@ -173,7 +172,7 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="sap-bw-open-hub-as-source"></a>Oprogramowanie SAP BW Open Centrum jako źródło
 
-Aby skopiować dane z Centrum Otwórz programu SAP BW, należy ustawić typ źródła w działaniu kopiowania, aby **SapOpenHubSource**. Gdy nie ma żadnych dodatkowych właściwości specyficzne dla typu, które są potrzebne w działaniu kopiowania **źródła** sekcji.
+Aby skopiować dane z Centrum Otwórz programu SAP BW, należy ustawić typ źródła w działaniu kopiowania, aby **SapOpenHubSource**. Nie ma żadnych dodatkowych właściwości specyficzne dla typu, które są potrzebne w działaniu kopiowania **źródła** sekcji.
 
 **Przykład:**
 

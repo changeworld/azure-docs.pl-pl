@@ -3,19 +3,19 @@ title: Metoda BreakSentence interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Metoda BreakSentence interfejs API tekstu usługi Translator.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: b2c0fbbfbcd2e3cf71ef85b9d06f2f805698bfd0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 0ecb620757bc58b109747f69eb3b5afe0c56bac4
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797430"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387557"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>*Wymagany parametr zapytania*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>język</td>
+    <td>language</td>
     <td>*Parametr opcjonalny zapytania*.<br/>Tag języka, który identyfikuje język tekstu wejściowego. Jeśli kod nie zostanie określony, zostaną zastosowane automatyczne wykrywanie języka.</td>
   </tr>
   <tr>
@@ -134,7 +134,7 @@ Przykład odpowiedź JSON to:
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
 
 <table width="100%">
-  <th width="20%">Kod stanu</th>
+  <th width="20%">Kod stanu:</th>
   <th>Opis</th>
   <tr>
     <td>200</td>

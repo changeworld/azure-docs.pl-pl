@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd893c68f2e9cac713e09dd0bdafb7f277ae889
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5687e6d0094083a9ee58455cc72b0b2e4da32d65
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707528"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417153"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizuj typ magazynu dysków zarządzanych
 
-Istnieją cztery opcje dla usługi Azure managed disks: Magazyn dyskowy Ultra platformy Azure, dysk SSD w warstwie Premium, SSD w warstwie standardowa i Standard dysk twardy. Możesz przełączać się między te typy magazynu, zgodnie z potrzebami wydajności przy niewielkim przestoju. Ta funkcja nie jest obsługiwana w przypadku dysków niezarządzanych. Ale możesz z łatwością [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md) mieć możliwość przełączania się między typy dysków.
+Istnieją cztery dyski zarządzane typy dysków platformy Azure: Dyski SSD ultra platformy Azure (wersja zapoznawcza) i premium SSD, SSD w warstwie standardowa i standardowych dysków Twardych. Możesz przełączać się między trzy typy dysków GA (premium SSD, SSD w warstwie standardowa i standardowych dysków Twardych) oparte na potrzeby związane z wydajnością. Nie jesteś jeszcze możliwość przełączania się z lub do najwyższej dyski SSD, Wdróż nową.
+
+Ta funkcja nie jest obsługiwana w przypadku dysków niezarządzanych. Ale możesz z łatwością [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md) mieć możliwość przełączania się między typy dysków.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 

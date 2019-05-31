@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: bbbaef306b9ed2bb415b29bc6d96dcfe649338f9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 95044373800441bdcc04bdb84e8485dce29f11e7
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205940"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357402"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
@@ -91,7 +91,7 @@ Aby zagnieździć szablonu w ramach głównego szablonu, należy użyć **szablo
 > [!NOTE]
 > Zagnieżdżone szablony nie można używać parametry lub zmienne, które są zdefiniowane w obrębie zagnieżdżonych szablonów. Można użyć parametrów i zmiennych z głównego szablonu. W powyższym przykładzie `[variables('storageName')]` pobiera wartość z głównego szablonu, a nie zagnieżdżonych szablonów. To ograniczenie nie ma zastosowania do szablonów zewnętrznych.
 >
-> Dla dwa zasoby zdefiniowane wewnątrz szablonu zagnieżdżanie i jeden zasób jest zależny od innych, wartość zależność jest po prostu nazwą zasobu zależne:
+> Dla dwa zasoby zdefiniowane wewnątrz zagnieżdżonych szablonów i jeden zasób jest zależny od innych, wartość zależność jest po prostu nazwą zasób zależny:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"

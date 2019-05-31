@@ -12,14 +12,14 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142724"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297091"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację do wystąpienia zarządzanego Azure SQL Database
 
 Obecnie masz wiele opcji do wyboru podczas podejmowania decyzji o sposób i miejsce hostowania aplikacji.
 
@@ -56,7 +56,7 @@ Jak połączyć lokalnych z siecią wirtualną platformy Azure dostępne są dwi
 - Połączenie sieci VPN typu lokacja-lokacja ([witryny Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [Usługa ExpressRoute](../expressroute/expressroute-introduction.md) połączenia  
 
-Jeśli nie można ustanowić połączenia do wystąpienia zarządzanego środowiska lokalnego do platformy Azure połączenie zostało ustanowione pomyślnie, sprawdź, czy zapory ma otwarte połączeń wychodzących w SQL porcie 1433, a także 11000 12000 zakres portów dla przekierowania.
+Jeśli nie można ustanowić połączenia do wystąpienia zarządzanego środowiska lokalnego do platformy Azure połączenie zostało ustanowione pomyślnie, sprawdź, czy zapory ma otwarte połączeń wychodzących w SQL porcie 1433, a także 11000 11999 zakres portów dla przekierowania.
 
 ## <a name="connect-an-application-on-the-developers-box"></a>Łączenie aplikacji w usłudze box deweloperów
 
@@ -96,7 +96,7 @@ W tym scenariuszu przedstawiono na poniższym diagramie:
 
 Aby informacje o rozwiązywaniu problemów z połączeniem, sprawdź następujące kwestie:
 
-- Jeśli nie można nawiązać połączenia z wystąpieniem zarządzanym z maszyny wirtualnej platformy Azure w ramach tej samej sieci wirtualnej, ale inną podsieć, sprawdź, czy ustawić w podsieci maszyny Wirtualnej, który może blokować dostęp do grupy zabezpieczeń sieci. Ponadto należy pamiętać, że trzeba otworzyć połączeń wychodzących na SQL porcie 1433, a także porty z zakresu od 11000 12000, ponieważ te są potrzebne do nawiązywania połączenia za pośrednictwem przekierowanie wewnątrz granic platformy Azure.
+- Jeśli nie można nawiązać połączenia z wystąpieniem zarządzanym z maszyny wirtualnej platformy Azure w ramach tej samej sieci wirtualnej, ale inną podsieć, sprawdź, czy ustawić w podsieci maszyny Wirtualnej, który może blokować dostęp do grupy zabezpieczeń sieci. Ponadto należy pamiętać, że trzeba otworzyć połączeń wychodzących na SQL porcie 1433, a także porty z zakresu od 11000 11999, ponieważ te są potrzebne do nawiązywania połączenia za pośrednictwem przekierowanie wewnątrz granic platformy Azure.
 - Upewnij się, że propagacja protokołu BGP jest ustawiona na **włączone** dla tabeli tras skojarzonej z siecią wirtualną.
 - Jeśli przy użyciu sieci VPN typu P2S, sprawdź konfigurację w witrynie Azure portal, aby zobaczyć, jeśli zostanie wyświetlony **ruchem przychodzącym/wychodzącym** liczb. Niezerowa Koniunkcja numery wskazują Azure routing ruchu ze środowiska lokalnego.
 

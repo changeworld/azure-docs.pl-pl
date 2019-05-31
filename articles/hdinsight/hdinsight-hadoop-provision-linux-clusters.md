@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 01/28/2019
-ms.openlocfilehash: 2f8c3aa0a5d37327ba49aebb1def94e90751b7cc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.date: 05/28/2019
+ms.openlocfilehash: 351b6a8e056d22fa8f2d695a2722b39b9771c8b0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597574"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299386"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i więcej
 
@@ -22,7 +22,7 @@ ms.locfileid: "65597574"
 
 Informacje o sposobie instalowania i konfigurowania klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka, Interactive Query, bazy danych Apache HBase, usługi ML i Apache Storm. Ponadto Dowiedz się, jak dostosowywać klastry i zwiększyć bezpieczeństwo, je przyłączania do domeny.
 
-Klaster Hadoop składa się z kilku maszyn wirtualnych (węzłów), które są używane do przetwarzania rozproszonego zadań. Usługa Azure HDInsight obsługuje szczegóły implementacji instalacji i konfiguracji poszczególnych węzłów, więc musisz podać informacje o konfiguracji ogólnych. 
+Klaster Hadoop składa się z kilku maszyn wirtualnych (węzłów), które są używane do przetwarzania rozproszonego zadań. Usługa Azure HDInsight obsługuje szczegóły implementacji instalacji i konfiguracji poszczególnych węzłów, więc musisz podać informacje o konfiguracji ogólnych.
 
 > [!IMPORTANT]  
 > Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. Dowiedz się, jak [usunięcia klastra.](hdinsight-delete-cluster.md)
@@ -52,11 +52,7 @@ Wykonaj instrukcje na ekranie, aby zrobić Konfiguracja klastra podstawowego. Sz
 * Logowania do klastra i nazwę użytkownika SSH
 * [Lokalizacja](#location)
 
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [wycofanie HDInsight 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
->
-
-## <a name="resource-group-name"></a>Nazwa grupy zasobów 
+## <a name="resource-group-name"></a>Nazwa grupy zasobów
 
 [Usługa Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ułatwia pracę z zasobami w aplikacji jako grupa, określane jako grupę zasobów platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby dla aplikacji w ramach jednej skoordynowanej operacji.
 
@@ -160,10 +156,10 @@ Każdy typ klastra ma swój własny liczbę węzłów, terminologii dla węzłó
 
 | Type | Węzły | Diagram |
 | --- | --- | --- |
-| Hadoop |Węzeł główny (2), węzeł danych (1 +) |![Węzły klastra usługi HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| Hbase |Główny serwer (2), region (1 +), węzeł główne/dozorcy (3) |![Węzły klastra HDInsight HBase](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
+| Hadoop |Węzeł główny (2), węzeł procesu roboczego (1 +) |![Węzły klastra usługi HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| HBase |Główny serwer (2), region (1 +), węzeł główne/dozorcy (3) |![Węzły klastra HDInsight HBase](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Węzeł nimbus (2), serwer nadzorcy (1 +), węzłem dozorcy (3) |![Węzły klastra HDInsight Storm](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzłem dozorcy (3) (wersja bezpłatna dla rozmiaru maszyny Wirtualnej dozorcy A1) |![Węzły klastra HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| platforma Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzłem dozorcy (3) (wersja bezpłatna dla rozmiaru maszyny Wirtualnej dozorcy A1) |![Węzły klastra HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 Aby uzyskać więcej informacji, zobacz [domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) w "Co to są składniki i wersje w HDInsight?"
 
@@ -172,17 +168,16 @@ Koszt klastrów HDInsight jest określany na podstawie liczby węzłów i rozmia
 Różne typy klastrów mieć różnych typów węzłów, liczby węzłów i rozmiary węzłów:
 * Wartość domyślna typu klastra Hadoop: 
     * Dwa *węzłami głównymi*  
-    * Cztery *węzły danych*
+    * Cztery *węzłów procesu roboczego*
 * Domyślny typ klastra STORM: 
     * Dwa *węzły Nimbus*
     * Trzy *węzłów dozorcy*
     * Cztery *węzły nadzorcy* 
 
-Jeśli tylko testujesz HDInsight, firma Microsoft zaleca, że używasz jednego węzła danych. Aby uzyskać więcej informacji na temat cen HDInsight, zobacz [ceny HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
+Jeśli tylko testujesz HDInsight, firma Microsoft zaleca, że używasz jednego węzła procesu roboczego. Aby uzyskać więcej informacji na temat cen HDInsight, zobacz [ceny HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 > [!NOTE]  
 > Limit rozmiaru klastra waha się między subskrypcjami platformy Azure. Skontaktuj się z pomocą [Azure pomocy technicznej dotyczącej rozliczeń](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) do zwiększenia limitu.
->
 
 Jeśli używasz witryny Azure portal, aby skonfigurować klaster, rozmiar węzła jest dostępna za pośrednictwem **warstw cenowych węzła** bloku. W portalu widać również koszt związany z rozmiarów innego węzła. 
 
@@ -197,12 +192,10 @@ Aby dowiedzieć się, jaka wartość należy używać do określenia rozmiaru ma
 
 > [!IMPORTANT]  
 > Jeśli potrzebujesz więcej niż 32 węzły procesu roboczego w klastrze, należy wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
->
->
 
 Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](../virtual-machines/windows/sizes.md). Aby uzyskać informacje o cenach poszczególnych rozmiarów, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).   
 
-## <a name="advanced-settings-script-actions"></a>Ustawienia zaawansowane: Działania skryptu
+## <a name="advanced-settings-script-actions"></a>Ustawienia zaawansowane: Akcje skryptu
 
 Można zainstalować dodatkowe składniki lub dostosowywanie konfiguracji klastra za pomocą skryptów tworzenia. Te skrypty są wywoływane za pośrednictwem **akcji skryptu**, czyli opcja konfiguracji, która może być stosowane w witrynie Azure portal, poleceń cmdlet programu PowerShell Windows HDInsight lub zestawu .NET SDK HDInsight. Aby uzyskać więcej informacji, zobacz [klastra HDInsight dostosować za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -212,8 +205,6 @@ Niektóre składniki natywnego języka Java, takich jak Apache Mahout i usuwania
 > Jeśli występują problemy, wdrażanie plików JAR, korzystając z klastrami HDInsight lub wywoływania pliki JAR w klastrach HDInsight, skontaktuj się z pomocą [Microsoft Support](https://azure.microsoft.com/support/options/).
 >
 > Kaskadowe nie jest obsługiwana przez HDInsight i nie kwalifikuje się do firmy Microsoft Support. Aby uzyskać listę obsługiwanych składników, zobacz [nowości w wersjach klastra, dostarczone przez HDInsight](hdinsight-component-versioning.md).
->
->
 
 Czasami którą chcesz skonfigurować następujące pliki konfiguracji w trakcie procesu tworzenia:
 

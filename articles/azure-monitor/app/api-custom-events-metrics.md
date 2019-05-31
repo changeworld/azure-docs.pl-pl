@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: d0a4180a3ea28427b8d82c6f5cf86ef9fa51d580
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785893"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299251"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -53,7 +53,7 @@ Jeśli nie masz jeszcze odwołanie na zestaw SDK usługi Application Insights:
   * [Projektu w języku Java](../../azure-monitor/app/java-get-started.md)
   * [Projekt node.js](../../azure-monitor/app/nodejs.md)
   * [Język JavaScript na każdej stronie sieci Web](../../azure-monitor/app/javascript.md) 
-* Na Twoim urządzeniu lub w kodzie serwera sieci Web dołącz:
+* W kodzie serwera sieci web lub urządzenia obejmują:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 
@@ -712,7 +712,7 @@ dependencies
 
 ## <a name="flushing-data"></a>Opróżnienie danych
 
-Normalnie zestaw SDK wysyła dane w czasie wybrany, aby zminimalizować jej wpływ na użytkownika. Jednak w niektórych przypadkach możesz chcieć opróżniania buforu — na przykład, jeśli używasz zestawu SDK w aplikacji, która kończy pracę.
+Normalnie zestaw SDK wysyła dane w ustalonych odstępach czasu (zwykle 30 sekund) lub zawsze wtedy, gdy rozmiar buforu jest pełny (zazwyczaj 500 elementów). Jednak w niektórych przypadkach możesz chcieć opróżniania buforu — na przykład, jeśli używasz zestawu SDK w aplikacji, która kończy pracę.
 
 *C#*
 
@@ -782,7 +782,7 @@ Jeśli aplikacja grup użytkowników do kont, można również przekazać identy
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-W [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md), można utworzyć wykres, który zlicza **uwierzytelniania użytkowników,**, i **kont użytkowników**.
+W [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md), można utworzyć wykres, który zlicza **uwierzytelniania użytkowników,** , i **kont użytkowników**.
 
 Możesz również [wyszukiwania](../../azure-monitor/app/diagnostic-search.md) punktów danych klienta przy użyciu nazwy użytkownika i kont.
 

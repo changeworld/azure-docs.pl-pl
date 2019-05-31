@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/28/2019
+ms.openlocfilehash: 9a6a1a744a8441d2f082d4d14a3aba8aa1cfc09e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510240"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306037"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Tworzenie i zarządzanie odczytu replik z wiersza polecenia platformy Azure
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać odczytu replik w usłudze Azure Database for PostgreSQL z wiersza polecenia platformy Azure. Aby dowiedzieć się więcej na temat odczytu repliki, zobacz [Przegląd](concepts-read-replicas.md).
 
-> [!NOTE]
-> Wiersza polecenia platformy Azure nie obsługuje jeszcze tworzenia replik w różnych regionach, z serwera głównego. Aby utworzyć replikę między regionami, należy użyć [witryny Azure portal](howto-read-replicas-portal.md).
+> [!IMPORTANT]
+> Można utworzyć odczytu repliki, w tym samym regionie co serwer główny lub w innym regionie platformy Azure wybranym. Replikacja w wielu regionach jest obecnie w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-up-azure-cli.md) jako serwer główny.
@@ -55,8 +55,16 @@ Te kroki musi służyć do przygotowania serwera głównego w warstwach ogólneg
 | name | mydemoserver-replica | Nazwa nowego serwera repliki, który jest tworzony. |
 | source-server | mydemoserver | Nazwa lub zasób identyfikator istniejącego serwera głównego jako źródła replikacji. |
 
+W poniższym przykładzie interfejsu wiersza polecenia replika zostanie utworzona w tym samym regionie jako wzorzec.
+
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
+```
+
+Do utworzenia wielu regionów odczytu repliki, należy użyć `--location` parametru. Poniższy przykład interfejsu wiersza polecenia tworzy repliki w regionie zachodnie stany USA.
+
+```azurecli-interactive
+az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 Jeśli nie został ustawiony `azure.replication_support` parametr **REPLIKI** na ogólnego przeznaczenia lub zoptymalizowane pod kątem pamięci głównego serwera i uruchom ponownie serwer, otrzymasz komunikat o błędzie. Te dwa kroki należy wykonać przed przystąpieniem do tworzenia repliki.

@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873019"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417091"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service
 
@@ -27,7 +27,7 @@ W tym artykule wyjaśniono, jak używać programu Visual Studio, aby wdrożyć p
 
 Wiele zadań Webjob mogą publikować w pojedynczej aplikacji sieci web. Upewnij się, że każdy zadania WebJob w aplikacji sieci web ma unikatową nazwę.
 
-Wersji 3.x programu [zestawu Azure WebJobs SDK](webjobs-sdk-how-to.md) umożliwia tworzenie zadań Webjob, który uruchamiany jako aplikacje platformy .NET Core, podczas gdy w wersji 2.x obsługuje programu .NET Framework. Sposób wdrażania projektu zadań Webjob jest różnych projektów .NET Core i .NET Framework z nich.
+W wersji 3.x programu [zestawu Azure WebJobs SDK](webjobs-sdk-how-to.md) umożliwia opracowywanie zadań Webjob, który uruchamiany jako aplikacje platformy .NET Core lub .NET Framework aplikacji podczas wersji 2.x obsługuje programu .NET Framework. Sposób wdrażania projektu zadania Webjob różni się dla projektów .NET Core i .NET Framework z nich.
 
 ## <a name="webjobs-as-net-core-console-apps"></a>Zadania Webjob jako aplikacji konsoli .NET Core
 
@@ -144,7 +144,7 @@ Aby utworzyć nowy projekt z obsługą usługi WebJobs, można użyć szablonu p
 > 
 
 #### <a id="createnolink"></a> Użyj szablonu nowego projektu zadań Webjob dla niezależnych zadań WebJob
-1. Kliknij przycisk **pliku** > **nowy projekt**, a następnie w polu **nowy projekt** kliknij okno dialogowe **chmury**  >   **Zadanie WebJob platformy Azure (.NET Framework)**.
+1. Kliknij przycisk **pliku** > **nowy projekt**, a następnie w polu **nowy projekt** kliknij okno dialogowe **chmury**  >   **Zadanie WebJob platformy Azure (.NET Framework)** .
    
     ![Okno dialogowe nowego projektu przedstawiający szablon zadania WebJob](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Wykonaj instrukcje przedstawione wcześniej do [aplikację konsoli projektu niezależnie od projektu zadania Webjob](#convertnolink).

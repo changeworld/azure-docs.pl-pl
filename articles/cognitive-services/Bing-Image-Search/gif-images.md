@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4b396c3b99c143f20caa774ee3c4c6ee25f96150
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0a2040424aa70f30831e214ce0b05d21414ff45c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777121"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389404"
 ---
 # <a name="search-for-gif-images"></a>Wyszukiwanie obrazów GIF 
 
@@ -26,7 +26,7 @@ Następujący adres URL jest zapytanie dotyczące obrazów animowany obraz GIF.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) parametr określa terminy wyszukiwania.  Poprzednie zapytanie określa również `animatedGif` przy użyciu [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) parametr filtru.
+[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametr określa terminy wyszukiwania.  Poprzednie zapytanie określa również `animatedGif` przy użyciu [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) parametr filtru.
 
 Aby zobaczyć przykłady wyników, użyj następującego adresu URL, aby wyszukać bing.com.
 ```
@@ -35,14 +35,14 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>Parametry zapytania
 
-Aby uzyskać więcej informacji na temat parametrów zapytania i opcji, zobacz [dokumentacja interfejsu API wyszukiwania obrazów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters). Przykładem jest zgodna pod nagłówkiem [przykład wyszukaj animowany plik gif, za pomocą języka Java](#gifExample).
+Aby uzyskać więcej informacji na temat parametrów zapytania i opcji, zobacz [dokumentacja interfejsu API wyszukiwania obrazów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). Przykładem jest zgodna pod nagłówkiem [przykład wyszukaj animowany plik gif, za pomocą języka Java](#gifExample).
 
 ## <a name="tips-and-suggestions"></a>Porady i sugestie
 
-- Można określić [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxfilesize) i [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minfilesize) parametrów. Zalecamy ustawienie maxFileSize = 2000000, ponieważ większość plików GIF w indeksie jest w obszarze 2MB.  Pomaga to również do kontrolowania rozmiaru danych, jeśli przepustowość jest istotny, takie jak w scenariuszach mobilnych, sieci komórkowej.
+- Można określić [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) i [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) parametrów. Zalecamy ustawienie maxFileSize = 2000000, ponieważ większość plików GIF w indeksie jest w obszarze 2MB.  Pomaga to również do kontrolowania rozmiaru danych, jeśli przepustowość jest istotny, takie jak w scenariuszach mobilnych, sieci komórkowej.
 - Aby poprawić wydajność, należy załadować miniaturę przed ładowania źródłowy adres url.  
 - Dla pierwszego uruchomienia lub docelowej strony środowisko, której nie ma zapytania użytkownika jeszcze, spróbuj użyć naszego popularne wyszukiwania gif, aby pomocy [popularne obrazy interfejsu API](trending-images.md).
-- Dostępne są trzy ustawienia dla [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) parametru.  `strict` Opcja blokuje treści dla dorosłych.
+- Dostępne są trzy ustawienia dla [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) parametru.  `strict` Opcja blokuje treści dla dorosłych.
 - Zobacz [mkt](supported-countries-markets.md) pełną listę języków obsługiwanych lokalizacji.
 - *AnimatedGifHttps* tylko zwraca animowane obrazów gif, które są z adresu https. Dla bezpieczeństwa wiele aplikacji wymaga połączenia z linków zewnętrznych sieci web przy użyciu protokołu https. Na przykład Apple Store aplikacji wymaga połączenia z usługami sieci web przy użyciu protokołu HTTPS, który szyfruje bezpiecznego przesyłanych danych użytkownika.
 
@@ -55,7 +55,7 @@ Następujący adres URL wyszukuje animowany obraz GIF obrazów: `q=interesting`
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-Jak pokazano w poniższym przykładzie, zapytanie adresu URL wymaga [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers) nagłówka.
+Jak pokazano w poniższym przykładzie, zapytanie adresu URL wymaga [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) nagłówka.
 
 W poniższym przykładzie w języku Java, tworzy i wysyła żądanie.
 

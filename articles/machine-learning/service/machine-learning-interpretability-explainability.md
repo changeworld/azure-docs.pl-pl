@@ -9,43 +9,45 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/29/2019
-ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 05/30/2019
+ms.openlocfilehash: 94309a019800b560cf6731d84cea324932e3f357
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851993"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398547"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Model współdziałania z usługą Azure Machine Learning
 
-W tym artykule nauczysz wyjaśniający, dlaczego modelu wprowadzone prognozy są tym jak przy użyciu pakietu współdziałania z zestawu SDK języka Python usługi Azure Machine Learning.
+W tym artykule dowiesz się, jak wyjaśnić, dlaczego modelu wprowadzone prognozy są tym jak za pomocą różnych pakietów współdziałania z zestawu SDK języka Python usługi Azure Machine Learning.
 
-Za pomocą klasy i metody, w tym pakiecie, można uzyskać:
-+ Współdziałania na rzeczywistych zestawach danych, na dużą skalę, podczas szkoleń i wnioskowania. 
+Za pomocą klasy i metody w zestawie SDK, można uzyskać:
++ Funkcja wartości znaczenia dla funkcji zaprojektowanych i raw
++ Współdziałania na rzeczywistych zestawach danych, na dużą skalę, podczas szkoleń i wnioskowania.
 + Interaktywne wizualizacje do odnajdywania wzorce w danych i wyjaśnienia w czasie szkolenia
-+ Funkcja wartości ważności: funkcje pierwotne i odtworzone
 
-Podczas fazy szkolenia w cyklu rozwoju modelu projektantów i ewaluatory mogą używać do wyjaśnienia danych wyjściowych modelu do uczestników projektu do tworzenia relacji zaufania.  Wgląd w modelu są również używane do debugowania, sprawdzanie poprawności zachowania modelu odpowiada ich celów oraz sprawdzenia obecności odchylenie.
+Podczas fazy szkolenia w cyklu rozwoju modelu projektantów i ewaluatory służy modelem wyjściowym współdziałania w celu sprawdzenia hipotez i tworzenie relacji zaufania z zainteresowanych stron.  Wgląd w modelu są również używane do debugowania, sprawdzanie poprawności zachowania modelu odpowiada ich celów oraz sprawdzenia obecności odchylenie.
 
-Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych. W tej fazie analityków danych może wyjaśnić wynikowy prognoz do osób, które korzystają z modelu. Na przykład, dlaczego modelu odmawianie pożyczki hipoteczny i przewidzieć, że portfelu inwestycji niesie ze sobą większe ryzyko?
+W usłudze machine learning **funkcji** pól danych używane do prognozowania docelowy punkt danych. Na przykład przewidzieć ryzyko kredytowe, pola danych wieku, rozmiaru konta i wiek konta mogą być używane. W tym przypadku wieku, rozmiaru konta i wiek konta są **funkcji**. Funkcja znaczenie informuje wpływ określane są przewidywania modelu dla każdego pola danych. Na przykład wiek może intensywnie używany w prognozie podczas rozmiarów kont i wieku nie mają wpływu na dokładność prognozowania znacznie. Ten proces umożliwia analitykom danych wyjaśnić, wynikowy prognozy, tak aby zainteresowane strony mają wgląd w punktów danych, które są dla Ciebie najważniejsze w modelu.
 
-Korzystanie z tych oferty, może wyjaśnić modeli uczenia maszynowego **globalnie na wszystkie dane**, lub **lokalnie w punkcie danych specyficznych dla** przy użyciu technologii z najnowocześniejszych w sposób łatwy w użyciu i skalowalne.
+Za pomocą tych narzędzi można wyjaśnić modeli uczenia maszynowego **globalnie na wszystkie dane**, lub **lokalnie w punktach danych specyficznych dla** przy użyciu technologii z najnowocześniejszych w sposób łatwy w użyciu i skalowalne.
 
-Klasy współdziałania są udostępniane za pośrednictwem dwoma pakietami języka Python. Dowiedz się, jak [zainstalować pakiety zestawu SDK dla usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+Klasy współdziałania są udostępniane za pośrednictwem wielu pakietów SDK. Dowiedz się, jak [zainstalować pakiety zestawu SDK dla usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py), pakietu głównego, zawierający funkcje obsługiwane przez firmę Microsoft. 
+* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py), pakietu głównego, zawierający funkcje obsługiwane przez firmę Microsoft.
 
 * `azureml.contrib.explain.model`, w wersji zapoznawczej i eksperymentalne funkcje, które możesz wypróbować.
 
+* `azureml.train.automl.automlexplainer` pakiet do interpretacji automatycznych modeli uczenia maszynowego.
+
 > [!IMPORTANT]
-> Elementy w contrib nie są w pełni obsługiwane. W miarę dojrzała eksperymentalne funkcje stopniowo zostaną przeniesione do pakietu głównego.
+> Zawartość w `contrib` przestrzeni nazw nie jest w pełni obsługiwane. W miarę dojrzała eksperymentalne funkcje stopniowo zostaną przeniesione do głównego obszaru nazw.
 
 ## <a name="how-to-interpret-your-model"></a>Sposób interpretowania modelu
 
 Można zastosować współdziałania klasy i metody, aby zrozumieć zachowanie globalnego modelu lub określonych prognozy. Pierwsza nazywa globalnego wyjaśnienie a drugim jest wyjaśnienie lokalnego.
 
-Metody można również podzielić na podstawie tego, czy metoda jest niezależny od modelu lub modelu określonego. Niektóre metody docelowej modeli określonego typu. Na przykład jego kształtu drzewa objaśnienie dotyczy tylko modeli oparta na drzewie. Niektóre metody modelu należy traktować jako czarne pole, takich jak mimic objaśnienie lub objaśnienie jądra dla kształtu. `explain` Pakietu wykorzystuje te różne metody, na podstawie zestawów danych, typy modeli i przypadkami użycia. 
+Metody można również podzielić na podstawie tego, czy metoda jest niezależny od modelu lub modelu określonego. Niektóre metody docelowej modeli określonego typu. Na przykład jego kształtu drzewa objaśnienie dotyczy tylko modeli oparta na drzewie. Niektóre metody modelu należy traktować jako czarne pole, takich jak mimic objaśnienie lub objaśnienie jądra dla kształtu. `explain` Pakietu wykorzystuje te różne metody, na podstawie zestawów danych, typy modeli i przypadkami użycia.
 
 Wynik jest zestaw informacji na temat sposobu podanego modelu sprawia, że jej przewidywania, takich jak:
 * Znaczenie względną funkcji globalnych/elementu lokalnego
@@ -103,9 +105,9 @@ Funkcje wyjaśnienie zaakceptować modeli i potoków jako dane wejściowe. Jeśl
 
 ### <a name="train-and-explain-locally"></a>Szkolenie i wyjaśnić lokalnie
 
-1. Uczenie modelu w lokalnego notesu programu Jupyter. 
+1. Uczenie modelu w lokalnego notesu programu Jupyter.
 
-    ``` python
+    ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
     from sklearn.datasets import load_breast_cancer
     from sklearn import svm
@@ -126,8 +128,9 @@ Funkcje wyjaśnienie zaakceptować modeli i potoków jako dane wejściowe. Jeśl
     # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
+
     lub
-    
+
     ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -152,16 +155,18 @@ Funkcje wyjaśnienie zaakceptować modeli i potoków jako dane wejściowe. Jeśl
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0])
-    
+
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
     ```
+
     lub
+
     ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4])
-    
+
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -173,14 +178,14 @@ Chociaż możesz uczyć się na różnych celów obliczeń, obsługiwane przez u
 
 1. Utwórz skrypt szkoleniowy w lokalnego notesu programu Jupyter (na przykład run_explainer.py).
 
-    ``` python  
+    ```python
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
-    
+
     # Train your model here
 
-    # explain predictions on your local machine   
-    # "features" and "classes" fields are optional 
+    # explain predictions on your local machine
+    # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
     global_explanation = explainer.explain_global(x_test)
@@ -198,10 +203,9 @@ Chociaż możesz uczyć się na różnych celów obliczeń, obsługiwane przez u
 
 2. Postępuj zgodnie z instrukcjami [Konfigurowanie obliczeniowych elementów docelowych do trenowania modelu](how-to-set-up-training-targets.md#amlcompute) Aby dowiedzieć się więcej o sposobie konfigurowania Azure obliczeniowego usługi Machine Learning jako obliczeniowego elementu docelowego i przesłać przebieg szkolenia.
 
-3. Pobierz wyjaśnienie lokalnego notesu programu Jupyter. 
+3. Pobierz wyjaśnienie lokalnego notesu programu Jupyter.
 
-
-    ``` python
+    ```python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
     # Get model explanation data
     client = ExplanationClient.from_run(run)
@@ -239,6 +243,7 @@ Poniższe wykresy zawierają globalny widok danych dotyczących uczonego modelu 
 [![Pulpit nawigacyjny wizualizacji globalne](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
 
 ### <a name="local-visualizations"></a>Lokalne wizualizacje
+
 Kliknięcie w dowolnym momencie indywidualne dane w dowolnym momencie poprzedniego powierzchni załadować diagram znaczenie funkcji lokalnej punktu danych.
 
 |Wykres|Opis|
@@ -253,11 +258,11 @@ Aby załadować pulpit nawigacyjny wizualizacji, użyj następującego kodu:
 from azureml.contrib.explain.model.visualize import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, x_test)
-``` 
+```
 
 ## <a name="raw-feature-transformations"></a>Nieprzetworzone funkcji przekształcenia
 
-Opcjonalnie można przekazać potok przekształcania funkcji do objaśnienie do odbierania wyjaśnienia pod względem funkcji pierwotne przed transformacji (zamiast funkcji zaprojektowanych). Jeśli pominiesz ten objaśnienie zawiera wyjaśnienie pod względem funkcji zaprojektowanych. 
+Opcjonalnie można przekazać potok przekształcania funkcji do objaśnienie do odbierania wyjaśnienia pod względem funkcji pierwotne przed transformacji (zamiast funkcji zaprojektowanych). Jeśli pominiesz ten objaśnienie zawiera wyjaśnienie pod względem funkcji zaprojektowanych.
 
 Format obsługiwane przekształcenia jest taka sama, jak to opisano w [pandas skryptu sklearn](https://github.com/scikit-learn-contrib/sklearn-pandas). Ogólnie rzecz biorąc wszelkie przekształcenia są obsługiwane, tak długo, jak one działają w jednej kolumnie i dlatego są wyraźnie jeden do wielu.
 
@@ -292,33 +297,37 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
 Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czasie oceniania podanie informacji o wyjaśnienie lokalnego. Proces wdrażania oceniania objaśnienie jest podobny do wdrażania modelu i obejmuje następujące kroki:
 
 1. Utwórz obiekt wyjaśnienie:
+
    ```python
    from azureml.contrib.explain.model.tabular_explainer import TabularExplainer
 
    explainer = TabularExplainer(model, x_test)
-   ``` 
+   ```
 
 1. Utwórz oceniania objaśnienie, za pomocą obiektu wyjaśnienie:
+
    ```python
    scoring_explainer = explainer.create_scoring_explainer(x_test)
 
    # Pickle scoring explainer
    scoring_explainer_path = scoring_explainer.save('scoring_explainer_deploy')
-   ``` 
+   ```
 
 1. Konfigurowanie i rejestrowanie obrazu, który używa modelu objaśnienie oceniania.
+
    ```python
    # Register explainer model using the path from ScoringExplainer.save - could be done on remote compute
    run.upload_file('breast_cancer_scoring_explainer.pkl', scoring_explainer_path)
    model = run.register_model(model_name='breast_cancer_scoring_explainer', model_path='breast_cancer_scoring_explainer.pkl')
    print(model.name, model.id, model.version, sep = '\t')
-   ``` 
+   ```
 
 1. [Opcjonalnie] Pobieranie oceniania objaśnienie z chmury i przetestować objaśnienia
+
    ```python
    from azureml.contrib.explain.model.scoring.scoring_explainer import ScoringExplainer
 
-   # Retreive the scoring explainer model from cloud"
+   # Retrieve the scoring explainer model from cloud"
    scoring_explainer_model = Model(ws, 'breast_cancer_scoring_explainer')
    scoring_explainer_model_path = scoring_explainer_model.download(target_dir=os.getcwd(), exist_ok=True)
 
@@ -333,6 +342,7 @@ Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czas
 1. Wdróż obraz obliczeniowego elementu docelowego:
 
    1. Utwórz plik oceniania (przed wykonaniem tego kroku, postępuj zgodnie z instrukcjami [Wdrażaj modele za pomocą usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) zarejestrować oryginalnego modelu prognozowania)
+
         ```python
         %%writefile score.py
         import json
@@ -365,50 +375,55 @@ Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czas
             local_importance_values = scoring_explainer.explain(data)
             # You can return any data type as long as it is JSON-serializable
             return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
-        ``` 
-    1. Definiowanie konfiguracji wdrożenia (Ta konfiguracja zależy od wymagań modelu. W poniższym przykładzie zdefiniowano konfiguracji, który używa jednego rdzenia procesora CPU i 1 GB pamięci)
+        ```
+
+   1. Definiowanie konfiguracji wdrożenia (Ta konfiguracja zależy od wymagań modelu. W poniższym przykładzie zdefiniowano konfiguracji, który używa jednego rdzenia procesora CPU i 1 GB pamięci)
+
         ```python
         from azureml.core.webservice import AciWebservice
 
-        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                                       memory_gb=1, 
-                                                       tags={"data": "breastcancer",  
-                                                             "method" : "local_explanation"}, 
+        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
+                                                       memory_gb=1,
+                                                       tags={"data": "breastcancer",
+                                                             "method" : "local_explanation"},
                                                        description='Get local explanations for breast cancer data')
-        ``` 
+        ```
 
-    1. Utwórz plik z zależności środowiska
+   1. Utwórz plik z zależności środowiska
 
         ```python
-        from azureml.core.conda_dependencies import CondaDependencies 
+        from azureml.core.conda_dependencies import CondaDependencies
 
         # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
 
-        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"], 
+        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"],
                                         conda_packages=["scikit-learn"])
 
         with open("myenv.yml","w") as f:
             f.write(myenv.serialize_to_string())
-            
+
         with open("myenv.yml","r") as f:
             print(f.read())
-        ``` 
-    1. Tworzenie niestandardowego pliku dockerfile przy użyciu zainstalowane g ++
+        ```
+
+   1. Tworzenie niestandardowego pliku dockerfile przy użyciu zainstalowane g ++
 
         ```python
         %%writefile dockerfile
-        RUN apt-get update && apt-get install -y g++  
-        ``` 
-    1. Wdrażanie utworzonemu obrazowi (Szacowany czas: 5 minut)
+        RUN apt-get update && apt-get install -y g++
+        ```
+
+   1. Wdrażanie utworzonemu obrazowi (Szacowany czas: 5 minut)
+
         ```python
         from azureml.core.webservice import Webservice
         from azureml.core.image import ContainerImage
 
         # Use the custom scoring, docker, and conda files we created above
         image_config = ContainerImage.image_configuration(execution_script="score.py",
-                                                        docker_file="dockerfile", 
-                                                        runtime="python", 
+                                                        docker_file="dockerfile",
+                                                        runtime="python",
                                                         conda_file="myenv.yml")
 
         # Use configs and models generated above
@@ -419,9 +434,10 @@ Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czas
                                             image_config=image_config)
 
         service.wait_for_deployment(show_output=True)
-        ``` 
+        ```
 
 1. Testowanie wdrożenia
+
     ```python
     import requests
 
@@ -438,9 +454,33 @@ Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czas
     print("POST to url", service.scoring_uri)
     # can covert back to Python objects from json string if desired
     print("prediction:", resp.text)
-    ``` 
+    ```
 
 1. Czyszczenie: Aby usunąć wdrożonej usługi sieci web, użyj `service.delete()`.
+
+## <a name="interpretability-in-automated-ml"></a>Współdziałania w automatycznych ML
+
+Uczenie maszynowe automatycznych zawiera pakiety do interpretacji funkcji znaczenie w modelach skonfigurowanych pod kątem automatycznego. Ponadto scenariusze klasyfikacji umożliwiają pobieranie funkcję klasy na poziomie ważności. Istnieją dwie metody, aby włączyć to zachowanie, w ramach uczenia maszynowego automatyczne:
+
+* Aby włączyć funkcję znaczenie dla modelu uczonego zespołu, użyj [ `explain_model()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkcji.
+
+    ```python
+    from azureml.train.automl.automlexplainer import explain_model
+
+    shap_values, expected_values, overall_summary, overall_imp, \
+        per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
+    ```
+
+* Aby włączyć funkcję znaczenie dla każdego indywidualnego uruchomienia przed szkolenia, ustaw `model_explainability` parametr `True` w `AutoMLConfig` obiektu wraz z dostarczania sprawdzania poprawności danych. Następnie użyj [ `retrieve_model_explanation()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkcji.
+
+    ```python
+    from azureml.train.automl.automlexplainer import retrieve_model_explanation
+
+    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, \
+        per_class_imp = retrieve_model_explanation(best_run)
+    ```
+
+Aby uzyskać więcej informacji, zobacz [porad](how-to-configure-auto-train.md#explain-the-model-interpretability) na włączenie funkcji współdziałania automatycznych machine Learning.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

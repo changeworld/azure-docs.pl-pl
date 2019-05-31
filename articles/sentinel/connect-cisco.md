@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2019
 ms.author: rkarlin
-ms.openlocfilehash: a0ece3007e1eadf6cb2901941b771f0ff3243f02
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: fd04e380b0b5732db1e39ffc9b5aa6047c7ef777
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921940"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382987"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Łączenie urządzenia Cisco ASA 
 
@@ -118,7 +118,7 @@ Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiaj
 
 3. Upewnij się, że dzienniki wysyłane są zgodne z [RFC 5424](https://tools.ietf.org/html/rfc542).
 
-4. Na komputerze z uruchomionym agentem Syslog, upewnij się, te porty 514, 25226 są otwarte i nasłuchuje, za pomocą polecenia `netstat -a -n:`. Aby uzyskać więcej informacji na temat korzystania z tego polecenia zobacz [netstat(8) - strony ataków typu man Linux](https://linux.die.netman/8/netstat). Jeśli nasłuchuje poprawnie, zostanie wyświetlone to:
+4. Na komputerze z uruchomionym agentem Syslog, upewnij się, te porty 514, 25226 są otwarte i nasłuchuje, za pomocą polecenia `netstat -a -n:`. Aby uzyskać więcej informacji na temat korzystania z tego polecenia zobacz [netstat(8) - strony ataków typu man Linux](https://linux.die.net/man/8/netstat). Jeśli nasłuchuje poprawnie, zostanie wyświetlone to:
 
    ![Usługa Azure porty wartownik](./media/connect-cef/ports.png) 
 

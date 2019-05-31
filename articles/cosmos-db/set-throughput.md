@@ -4,14 +4,14 @@ description: Dowiedz się, jak ustawić aprowizowanej przepływności baz danych
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: 598a1562127a67c78f67cdd02b00d83d4a606739
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953546"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389248"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -71,8 +71,7 @@ Na poniższej ilustracji przedstawiono, jak fizyczną partycję można hostować
 Możesz połączyć dwa modele. Przepływność inicjowania obsługi administracyjnej, zarówno w bazie danych, jak i w kontenerze jest dozwolone. Poniższy przykład pokazuje, jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos i kontener:
 
 * Można utworzyć bazy danych Azure Cosmos o nazwie *Z* z aprowizowanej przepływności równej *"K"* (RUS). 
-* Następnie należy utworzyć pięć kontenerów o nazwie *A*, *B*, *C*, *D*, i *E* w bazie danych.
-* Można jawnie skonfigurujesz *"P"* RUs aprowizowaną przepływność w kontenerze o nazwie *B*.
+* Następnie należy utworzyć pięć kontenerów o nazwie *A*, *B*, *C*, *D*, i *E* w bazie danych. Podczas tworzenia kontenera B, upewnij się umożliwić **Aprowizowanie dedykowanej przepływności dla tego kontenera** opcji i skonfigurować jawnie *"P"* RUs aprowizowaną przepływność w tym kontenerze. Należy pamiętać, że możesz skonfigurować przepływność udostępnione i dedykowane tylko podczas tworzenia bazy danych i kontenera. 
 * *"K"* jednostek żądania przepływności jest współużytkowany przez cztery kontenery *A*, *C*, *D*, i *E*. Dokładne zalecenia dotyczące ilości przepustowość dostępna dla *A*, *C*, *D*, lub *E* różni się. Nie istnieją żadne umowy SLA dla każdego kontenera poszczególnych przepływności.
 * Kontener o nazwie *B* jest gwarantowane, Pobierz *"P"* jednostek żądania przepływności przez cały czas. Jest wspierana przez umowy SLA.
 

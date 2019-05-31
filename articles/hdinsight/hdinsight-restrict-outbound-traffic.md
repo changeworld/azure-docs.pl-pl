@@ -7,13 +7,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 05/13/2019
-ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
-ms.translationtype: HT
+ms.date: 05/24/2019
+ms.openlocfilehash: c40bae6ac1af2489e4e77d2c280b95cccf8b5603
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978011"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257829"
 ---
 # <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Skonfiguruj ograniczenia ruchu sieciowego ruchu wychodzącego w przypadku klastrów Azure HDInsight (wersja zapoznawcza)
 
@@ -32,38 +32,23 @@ Rozwiązania do zabezpieczania adresy ruchu wychodzącego jest korzystanie z urz
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurowanie zapory platformy Azure za pomocą HDInsight
 
 Podsumowanie kroki, aby zablokować ruch wychodzący z usługi HDInsight istniejących za pomocą zapory usługi Azure są następujące:
-1. Włączanie punktów końcowych usługi.
 1. Tworzenie zapory.
 1. Dodawanie reguły aplikacji do zapory
 1. Dodawanie reguł sieci do zapory.
 1. Tworzenie tabeli routingu.
 
-### <a name="enable-service-endpoints"></a>Włączanie punktów końcowych usługi
-
-Jeśli chcesz pominąć zapory (np. oszczędności kosztów na transfer danych), a następnie można włączyć punktów końcowych usługi dla języków SQL i magazynu w podsieci usługi HDInsight. W przypadku usługi włączonych punktów końcowych do bazy danych SQL Azure wszelkie zależności usługi Azure SQL, które ma klastra musi być skonfigurowany z również punktami końcowymi usługi.
-
-Aby włączyć punkty końcowe usługi prawidłowe, wykonaj następujące czynności:
-
-1. Zaloguj się do witryny Azure portal i wybierz sieć wirtualną wdrożoną w klastrze usługi HDInsight.
-1. Wybierz **podsieci** w obszarze **ustawienia**.
-1. Wybierz podsieć, w którym jest wdrażany klaster.
-1. Na ekranie, aby edytować ustawienia podsieci, kliknij przycisk **Microsoft.SQL** i/lub **Microsoft.Storage** z **punkty końcowe usługi**  >   **Usługi** polu listy rozwijanej.
-1. Jeśli używasz klastra ESP, a następnie należy również zaznaczyć **Microsoft.AzureActiveDirectory** punktu końcowego usługi.
-1. Kliknij pozycję **Zapisz**.
-
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Tworzenie nowej zapory dla klastra
 
 1. Utwórz podsieć o nazwie **AzureFirewallSubnet** w sieci wirtualnej, gdy istnieje klastra. 
 1. Tworzenie nowej zapory **FW01 testu** wykonując kroki w [samouczka: Wdróż i Skonfiguruj zaporę platformy Azure przy użyciu witryny Azure portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
-1. Wybierz Nowa Zapora w witrynie Azure portal. Kliknij przycisk **reguły** w obszarze **ustawienia** > **kolekcji reguł aplikacji** > **dodać kolekcję reguł aplikacji**.
-
-    ![Tytuł: Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 ### <a name="configure-the-firewall-with-application-rules"></a>Konfigurowanie zapory przy użyciu reguł aplikacji
 
 Utwórz kolekcję reguł aplikacji, która umożliwia klastrowi wysyłać i odbierać wiadomości ważne.
 
 Wybierz pozycję Nowa Zapora **FW01 testu** w witrynie Azure portal. Kliknij przycisk **reguły** w obszarze **ustawienia** > **kolekcji reguł aplikacji** > **dodać kolekcję reguł aplikacji**.
+
+![Tytuł: Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Na **dodać kolekcję reguł aplikacji** ekranu, wykonaj następujące czynności:
 
@@ -75,12 +60,9 @@ Na **dodać kolekcję reguł aplikacji** ekranu, wykonaj następujące czynnośc
     1. Reguła zezwalająca na działanie logowania Windows:
         1. W **nazw FQDN docelowego** sekcji, podaj **nazwa**i ustaw **źródłowych adresów** do `*`.
         1. Wprowadź `https:443` w obszarze **protokołu: Port** i `login.windows.net` w obszarze **docelowej nazwy FQDN**.
-    1. Reguła zezwalająca na telemetrii SQM:
-        1. W **nazw FQDN docelowego** sekcji, podaj **nazwa**i ustaw **źródłowych adresów** do `*`.
-        1. Wprowadź `https:443` w obszarze **protokołu: Port** i `sqm.telemetry.microsoft.com` w obszarze **docelowej nazwy FQDN**.
     1. Jeśli nie używasz powyższe punkty końcowe usługi klastra jest wspierana przez WASB, Dodaj regułę dla WASB:
         1. W **nazw FQDN docelowego** sekcji, podaj **nazwa**i ustaw **źródłowych adresów** do `*`.
-        1. Wprowadź `http` lub [https] w zależności od Jeśli używasz wasb: / / lub wasbs: / / w obszarze **protokołu: Port** i adres url konta magazynu w ramach **nazw FQDN docelowego**.
+        1. Wprowadź `http` lub `https` zależności od tego, jeśli używasz wasb: / / lub wasbs: / / w obszarze **protokołu: Port** i adres url konta magazynu w ramach **nazw FQDN docelowego**.
 1. Kliknij pozycję **Add** (Dodaj).
 
 ![Tytuł: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
@@ -88,9 +70,6 @@ Na **dodać kolekcję reguł aplikacji** ekranu, wykonaj następujące czynnośc
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurowanie zapory przy użyciu reguł sieci
 
 Tworzenie reguł sieci, aby poprawnie skonfigurować klastra usługi HDInsight.
-
-> [!Important]
-> Możesz wybrać między za pomocą tagów usługi SQL na zaporze, używając reguł sieci, zgodnie z opisem w tej sekcji lub SQL usługi punktu końcowego, co opisano w [sekcji na punkty końcowe usługi](#enable-service-endpoints). Jeśli wybierzesz opcję użycia znaczników SQL w regułach sieciowych, możesz zarejestrować błąd i inspekcji ruchu SQL. Przy użyciu punktu końcowego usługi będzie mieć ruch SQL ominąć zaporę.
 
 1. Wybierz pozycję Nowa Zapora **FW01 testu** w witrynie Azure portal.
 1. Kliknij przycisk **reguły** w obszarze **ustawienia** > **sieci kolekcji reguł** > **dodać kolekcję reguł sieci**.
@@ -112,12 +91,7 @@ Tworzenie reguł sieci, aby poprawnie skonfigurować klastra usługi HDInsight.
         1. Ustaw **źródłowych adresów** `*`.
         1. Wprowadź adres IP konta magazynu w **adresów docelowych**.
         1. Ustaw **porty docelowe** do `*`.
-    1. Regułę sieciowej w celu umożliwienia komunikacji z usługi zarządzania klucza dla Windows aktywacji.
-        1. W kolejnym wierszu w **reguły** sekcji, podaj **nazwa** i wybierz **wszelkie** z **protokołu** listy rozwijanej.
-        1. Ustaw **źródłowych adresów** `*`.
-        1. Ustaw **adresów docelowych** do `*`.
-        1. Ustaw **porty docelowe** do `1688`.
-    1. Jeśli używasz usługi Log Analytics, następnie należy utworzyć regułę sieciowej w celu umożliwienia komunikacji z obszaru roboczego usługi Log Analytics.
+    1. (Opcjonalnie) Jeśli używasz usługi Log Analytics, następnie należy utworzyć regułę sieciowej w celu umożliwienia komunikacji z obszaru roboczego usługi Log Analytics.
         1. W kolejnym wierszu w **reguły** sekcji, podaj **nazwa** i wybierz **wszelkie** z **protokołu** listy rozwijanej.
         1. Ustaw **źródłowych adresów** `*`.
         1. Ustaw **adresów docelowych** do `*`.
@@ -150,7 +124,7 @@ Na przykład aby skonfigurować tabeli tras dla klastra, utworzone w regionie US
 1. Kliknij przycisk **trasy** w obszarze **ustawienia**.
 1. Kliknij przycisk **Dodaj** można utworzyć trasy dla adresów IP w poniższej tabeli.
 
-| Nazwa trasy | Prefiks adresu | Typ następnego skoku | Adres następnego przeskoku |
+| Nazwa trasy | Prefiks adresu | Typ następnego skoku | Adres następnego skoku |
 |---|---|---|---|
 | 168.61.49.99 | 168.61.49.99/32 | Internet | Nie dotyczy |
 | 23.99.5.239 | 23.99.5.239/32 | Internet | Nie dotyczy |

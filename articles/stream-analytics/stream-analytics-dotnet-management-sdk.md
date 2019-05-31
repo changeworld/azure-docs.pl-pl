@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa4a9a8d01d499dc431c8b182401226aa72bf1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2da78f5c750dbc694085bb46a6ed43e74884d45
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480004"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303033"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Zarządzanie zestawu SDK platformy .NET: Konfigurowanie i uruchamianie zadań analizy przy użyciu interfejsu API usługi Azure Stream Analytics dla platformy .NET
 Dowiedz się, jak skonfigurować i uruchomić zadania analizy przy użyciu interfejsu API analizy Stream dla platformy .NET przy użyciu zestawu SDK platformy .NET zarządzania. Konfigurowanie projektu i tworzenia źródeł wejściowych i wyjściowych, transformacji i rozpoczęcia zatrzymanie zadań. Dla zadań analizy przesyłanie strumieniowe danych z magazynu obiektów Blob lub Centrum zdarzeń.
@@ -27,11 +27,11 @@ Usługa Azure Stream Analytics jest w pełni zarządzaną usługę, zapewniając
 > Zaktualizowaliśmy przykładowego kodu w tym artykule przy użyciu zestawu .NET SDK usługi Azure Stream Analytics Management v2.x wersji. Przykładowy kod za pomocą wersji zestawu SDK lagecy (1.x) używa, zobacz [Użyj v1.x zestawu .NET SDK zarządzania dla usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dysponować następującymi elementami:
+Przed przystąpieniem do wykonywania w tym artykule, musisz mieć następujące wymagania:
 
-* Zainstaluj program Visual Studio 2017 lub 2015.
+* Zainstaluj program Visual Studio 2019 lub 2015.
 * Pobierz i zainstaluj [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Utwórz grupę zasobów platformy Azure w ramach subskrypcji. Poniżej przedstawiono przykładowy skrypt programu Azure PowerShell. Uzyskać programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview);  
+* Utwórz grupę zasobów platformy Azure w ramach subskrypcji. Poniższy przykład jest przykładowy skrypt programu Azure PowerShell. Uzyskać programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview);  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +50,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
 * Konfigurowanie źródła danych wejściowych i celem danych wyjściowych dla zadania nawiązać połączenie.
 
 ## <a name="set-up-a-project"></a>Konfigurowanie projektu
-Aby utworzyć zadanie usługi analytics, należy użyć interfejsu API analizy Stream dla platformy .NET, najpierw skonfigurować projekt.
+Aby utworzyć zadanie usługi analytics, należy użyć interfejsu API analizy Stream dla platformy .NET, najpierw skonfiguruj projekt.
 
 1. Utwórz aplikację konsolową programu Visual Studio C# .NET.
 2. W konsoli Menedżera pakietów uruchom następujące polecenia, aby zainstalować pakiety NuGet. Pierwsza z nich jest usługi Azure Stream Analytics Management .NET SDK. Drugi służy do uwierzytelniania klienta usługi Azure.
@@ -211,7 +211,7 @@ Poniższy kod tworzy źródła danych wejściowych usługi Stream Analytics przy
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Utwórz obiekt docelowy danych wyjściowych usługi Stream Analytics
-Tworzenie obiektu docelowego dane wyjściowe jest bardzo podobne do tworzenia źródła danych wejściowych usługi Stream Analytics. Takie jak źródła danych wejściowych do określonego zadania powiązane są elementy docelowe danych wyjściowych. Aby użyć tej samej wartości docelowej danych wyjściowych dla różnych zadań, należy ponownie wywołaj metodę i określić innej nazwy zadania.
+Tworzenie obiektu docelowego dane wyjściowe jest podobne do tworzenia źródła danych wejściowych usługi Stream Analytics. Takie jak źródła danych wejściowych do określonego zadania powiązane są elementy docelowe danych wyjściowych. Aby użyć tej samej wartości docelowej danych wyjściowych dla różnych zadań, należy ponownie wywołaj metodę i określić innej nazwy zadania.
 
 Poniższy kod tworzy obiekt docelowy danych wyjściowych (usługa Azure SQL database). Można dostosować typ danych celem danych wyjściowych i/lub typu serializacji.
 
@@ -289,7 +289,7 @@ Uruchamianie zadania usługi Stream Analytics można zatrzymać, wywołując **z
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Znasz już podstawowe informacje dotyczące tworzenia i uruchamiać zadania analizy przy użyciu zestawu .NET SDK. Aby dowiedzieć się więcej, zobacz następujące tematy:
+Znasz już podstawowe informacje dotyczące tworzenia i uruchamiać zadania analizy przy użyciu zestawu .NET SDK. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

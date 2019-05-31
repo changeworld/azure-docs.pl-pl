@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 10af40a1f671d5871204ff465395c8c3619671f7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232491"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255013"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -26,7 +26,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Stosowanie zasad tworzenia kopii zapasowych w celu ochrony wielu maszyn wirtualnych
 > * Wyzwalacz zadania tworzenia kopii zapasowej na żądanie dla chronionych maszyn wirtualnych przed można utworzyć kopię zapasową (lub ochronę) maszyny wirtualnej, należy wykonać [wymagania wstępne](backup-azure-arm-vms-prepare.md) do przygotowania środowiska na potrzeby ochrony maszyn wirtualnych.
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
 - [Dowiedz się więcej](backup-azure-recovery-services-vault-overview.md) dotyczących magazynów usługi Recovery Services.
 - [Przejrzyj](backup-architecture.md#architecture-direct-backup-of-azure-vms) architektura do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure, [Dowiedz się więcej o](backup-azure-vms-introduction.md) procesu tworzenia kopii zapasowej i [Przejrzyj](backup-support-matrix-iaas.md) pomocy technicznej, ograniczenia i wymagania wstępne.
@@ -159,7 +159,7 @@ Set-AzRecoveryServicesBackupProperty -Vault $vault -BackupStorageRedundancy GeoR
 
 Podczas tworzenia magazynu usługi Recovery Services jest on dostarczany z domyślnymi zasadami ochrony i przechowywania. Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej każdego dnia o określonej godzinie. Domyślne zasady przechowywania zachowują codzienny punkt odzyskiwania przez 30 dni. Aby zapewnić szybką ochronę maszyny Wirtualnej i edytować zasady, które później za pomocą różnych szczegółów, można użyć domyślne zasady.
 
-Użyj **[Get AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) umożliwiającą wyświetlenie zasad ochrony dostępne w magazynie. Można użyć tego polecenia cmdlet, aby uzyskać szczegółowe zasady lub aby wyświetlić zasady skojarzone z typem obciążenia. Poniższy przykład pobiera zasady dla obciążeń typu AzureVM.
+Użyj **[Get AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy)** umożliwiającą wyświetlenie zasad ochrony dostępne w magazynie. Można użyć tego polecenia cmdlet, aby uzyskać szczegółowe zasady lub aby wyświetlić zasady skojarzone z typem obciążenia. Poniższy przykład pobiera zasady dla obciążeń typu AzureVM.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -230,7 +230,7 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
 
-Aby włączyć ochronę na **zaszyfrowanych maszyn wirtualnych (szyfrowane tylko przy użyciu klucza szyfrowania bloków)**, musisz udzielić uprawnień usługi Azure Backup na odczyt kluczy tajnych w magazynie kluczy.
+Aby włączyć ochronę na **zaszyfrowanych maszyn wirtualnych (szyfrowane tylko przy użyciu klucza szyfrowania bloków)** , musisz udzielić uprawnień usługi Azure Backup na odczyt kluczy tajnych w magazynie kluczy.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -352,7 +352,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="stop-protection"></a>Zatrzymaj ochronę
 
-#### <a name="retain-data"></a>Zachowaj dane
+#### <a name="retain-data"></a>Przechowywanie danych
 
 Jeśli użytkownik zamierza Zatrzymaj ochronę, mogą używać [AzRecoveryServicesBackupProtection Wyłącz](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS polecenia cmdlet. Spowoduje to zatrzymanie zaplanowanych kopii zapasowych, ale dane kopii zapasowej do teraz są zachowywane nieskończoność.
 
@@ -361,7 +361,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Usuń dane kopii zapasowej
+#### <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
 
 Aby całkowicie usunąć przechowywać dane kopii zapasowej w magazynie, wystarczy dodać atrybut "-RemoveRecoveryPoints flagi/przełącznik, aby [Wyłącz polecenia ochrona](#retain-data).
 

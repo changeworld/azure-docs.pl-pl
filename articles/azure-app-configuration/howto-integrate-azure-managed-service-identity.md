@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408903"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393649"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integracja z usługą Azure managed tożsamości
 
@@ -49,7 +49,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzyć aplikację w zwykły, a następnie włączyć tę funkcję.
 
-1. Tworzenie aplikacji w [witryny Azure portal](https://aka.ms/azconfig/portal) w zwykły sposób. Przejdź do niego w portalu.
+1. Tworzenie aplikacji w [witryny Azure portal](https://portal.azure.com) w zwykły sposób. Przejdź do niego w portalu.
 
 2. Przewiń w dół do **ustawienia** grupę w okienku po lewej stronie, a następnie wybierz pozycję **tożsamości**.
 
@@ -59,9 +59,9 @@ Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzy
 
 ## <a name="grant-access-to-app-configuration"></a>Udzielanie dostępu do usługi App Configuration
 
-1. W [witryny Azure portal](https://aka.ms/azconfig/portal), wybierz opcję **wszystkie zasoby** i wybierz magazyn konfiguracji aplikacji, który został utworzony w przewodniku Szybki Start.
+1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **wszystkie zasoby** i wybierz magazyn konfiguracji aplikacji, który został utworzony w przewodniku Szybki Start.
 
-2. Wybierz **kontrola dostępu (IAM)**.
+2. Wybierz **kontrola dostępu (IAM)** .
 
 3. Na **Sprawdź dostęp** zaznacz **Dodaj** w **Dodaj przypisanie roli** karty interfejsu użytkownika.
 
@@ -75,7 +75,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzy
 
 ## <a name="use-a-managed-identity"></a>Korzystanie z tożsamości zarządzanej
 
-1. Otwórz *appsettings.json*i Dodaj poniższy skrypt. Zastąp  *\<service_endpoint >*, razem z nawiasami, za pomocą adresu URL do sklepu z aplikacjami konfiguracji:
+1. Otwórz *appsettings.json*i Dodaj poniższy skrypt. Zastąp  *\<service_endpoint >* , razem z nawiasami, za pomocą adresu URL do sklepu z aplikacjami konfiguracji:
 
     ```json
     "AppConfig": {

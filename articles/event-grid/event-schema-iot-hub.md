@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: 5fcd7c10002e7e1ae9683fdd89d3af14a1500050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e770beb0470b54d8e13493bca4790323b2e96ce1
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561799"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393202"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schemat zdarzeń Azure Event Grid dla Centrum IoT Hub
 
@@ -33,6 +33,9 @@ Usługa Azure IoT Hub emituje następujące typy zdarzeń:
 | Microsoft.Devices.DeviceDeleted | Opublikowana, gdy urządzenie zostanie usunięty z usługi IoT hub. | 
 | Microsoft.Devices.DeviceConnected | Gdy urządzenie jest podłączone do usługi IoT hub opublikowany. |
 | Microsoft.Devices.DeviceDisconnected | Gdy urządzenie jest odłączony od usługi IoT hub opublikowany. | 
+| Microsoft.Devices.DeviceTelemetry | Opublikowana, gdy komunikaty telemetryczne są wysyłane do usługi IoT hub. |
+
+Wszystkie zdarzenia urządzenia, z wyjątkiem zdarzeń telemetrii urządzenia są ogólnie dostępne we wszystkich regionach obsługiwanych przez usługę Event Grid. Zdarzenia telemetrii urządzenia jest w publicznej wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="example-event"></a>Przykład zdarzenia
 
@@ -56,6 +59,40 @@ Schemat zdarzeń DeviceConnected i DeviceDisconnected mieć tę samą strukturę
   }, 
   "dataVersion": "1", 
   "metadataVersion": "1" 
+}]
+```
+
+Zdarzenie DeviceTelemetry jest wywoływane, gdy zdarzenia telemetrii są wysyłane do usługi IoT Hub. Poniżej przedstawiono przykładowe schematu dla tego zdarzenia.
+
+```json
+[{
+  "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceTelemetry",
+  "eventTime": "2019-01-07T20:58:30.48Z",
+  "data": {        
+      "body": {            
+          "Weather": {                
+              "Temperature": 900            
+          },
+          "Location": "USA"        
+      },
+        "properties": {            
+          "Status": "Active"        
+        },
+        "systemProperties": {            
+            "iothub-content-type": "application/json",
+            "iothub-content-encoding": "utf-8",
+            "iothub-connection-device-id": "d1",
+            "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+            "iothub-connection-auth-generation-id": "123455432199234570",
+            "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
+            "iothub-message-source": "Telemetry"        
+        }    
+    },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -115,11 +152,11 @@ Wszystkie zdarzenia zawierają te same dane najwyższego poziomu:
 | -------- | ---- | ----------- |
 | id | string | Unikatowy identyfikator zdarzenia. |
 | temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| Temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| dane | obiekt | Dane zdarzeń usługi IoT Hub.  |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| Dane | obiekt | Dane zdarzeń usługi IoT Hub.  |
+| dataVersion | string | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Dla wszystkich zdarzeń usługi IoT Hub obiekt danych zawiera następujące właściwości:
@@ -129,7 +166,9 @@ Dla wszystkich zdarzeń usługi IoT Hub obiekt danych zawiera następujące wła
 | hubName | string | Nazwa usługi IoT Hub, gdy urządzenie utworzony lub został usunięty. |
 | deviceId | string | Unikatowy identyfikator urządzenia. Ten ciąg uwzględniający wielkość liter może mieć długości maksymalnie 128 znaków i obsługuje znaki ASCII 7-bitowe znaki alfanumeryczne oraz następujące znaki specjalne: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
-Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Aby uzyskać **urządzenie połączone** i **Urządzenie odłączone** zdarzeń usługi IoT Hub, obiekt danych zawiera następujące właściwości:
+Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. 
+
+Aby uzyskać **urządzenie połączone** i **Urządzenie odłączone** zdarzeń usługi IoT Hub, obiekt danych zawiera następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
@@ -137,20 +176,28 @@ Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Aby uzyska
 | deviceConnectionStateEventInfo | obiekt | Informacje zdarzeń o stanie połączenia urządzenia
 | sequenceNumber | string | Liczba, która pomaga wskazać kolejność podłączone urządzenie lub urządzenia odłączony zdarzenia. Najnowsze zdarzenia będzie mieć numer sekwencji jest wyższa niż poprzednie zdarzenie. Ten numer może ulec zmianie przez więcej niż 1, ale jest dokładnie rosnącej. Zobacz [sposób użycia numer sekwencyjny](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
-Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usługi IoT Hub, obiekt danych zawiera następujące właściwości:
+Aby uzyskać **danych Telemetrycznych z urządzenia** zdarzeń usługi IoT Hub zawiera obiekt danych komunikatu urządzenia do chmury w [format komunikatów usługi IoT hub](../iot-hub/iot-hub-devguide-messages-construct.md) i ma następujące właściwości:
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
+| Treść | string | Zawartość wiadomości z urządzenia. |
+| properties | string | Właściwości aplikacji są zdefiniowane przez użytkownika ciągów, które można dodać do wiadomości. Te pola są opcjonalne. |
+| Właściwości systemu | string | [Właściwości systemu](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) pomagać w identyfikacji zawartości i źródła wiadomości. Komunikaty telemetryczne urządzenia musi być w prawidłowym formacie JSON za pomocą contentType wartość JSON i contentEncoding równa UTF-8 we właściwościach komunikatu systemu. Jeśli to nie jest ustawiona, usługi IoT Hub będzie zapisywać komunikaty w podstawowej formacie zakodowanym 64.  |
+
+Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usługi IoT Hub, obiekt danych zawiera następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | twin | obiekt | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli chmury reprezentacja metadanych urządzenia w aplikacji. | 
 | deviceID | string | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
-| etag | string | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
+| Element etag | string | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
 | deviceEtag| string | Moduł weryfikacji dla zapewnienia spójności aktualizacji do rejestru urządzeń. Każdy deviceEtag może być unikatowy dla rejestru urządzeń. |
 | status | string | Bliźniacza reprezentacja urządzenia jest włączone czy wyłączone. | 
 | statusUpdateTime | string | Zaktualizuj ISO8601 sygnatura czasowa ostatniego stanu bliźniaczej reprezentacji urządzenia. |
 | connectionState | string | Czy urządzenie jest połączone lub odłączone. | 
 | lastActivityTime | string | ISO8601 sygnaturę czasową ostatniej aktywności. | 
 | cloudToDeviceMessageCount | liczba całkowita | Liczba komunikatów urządzeń, wysyłane do tego urządzenia w chmurze. | 
-| Element authenticationType | string | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
+| authenticationType | string | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
 | x509Thumbprint | string | Odcisk palca jest unikatową wartość dla x509 certyfikatu, często używane, można znaleźć określonego certyfikatu w magazynie certyfikatów. Odcisk palca jest generowana dynamicznie przy użyciu algorytmu SHA1, a nie istnieje fizycznie w certyfikacie. | 
 | primaryThumbprint | string | Podstawowy odcisk palca dla x509 certyfikatu. |
 | secondaryThumbprint | string | Pomocniczy odcisk palca dla x509 certyfikatu. | 

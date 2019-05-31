@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6f4c354c89fa00d5fc65c635f5f6315761be2f01
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869849"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384140"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania obrazów Bing
 
@@ -34,7 +34,7 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 
 ## <a name="countriesregions"></a>Kraje/regiony
 
-|Kraj/region|Kod|
+|Country/region|Kod|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
@@ -76,7 +76,7 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 
 ## <a name="markets"></a>Rynki
 
-|Kraj/region|Język|Rynek kodu|
+|Country/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
@@ -119,4 +119,4 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Stany Zjednoczone|Hiszpański|es-US|
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania obrazów wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania obrazów wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

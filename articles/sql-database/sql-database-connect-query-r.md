@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 796e9c17a457bfb1a79b600b178d2c733e10f91e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1d4b17cf1e0349bf877c676cb4e591fc20ad4113
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382407"
+ms.locfileid: "66416366"
 ---
 # <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Szybki start: Używanie języka R do wykonywania zapytań usługi Azure SQL database (wersja zapoznawcza)
 
@@ -85,6 +85,9 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 1. Kompletny skrypt języka R w celu przekazania [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
 
    Skrypt jest przekazywana `@script` argumentu. Wszystko wewnątrz `@script` argument musi być prawidłowym kodem R.
+   
+   >[!IMPORTANT]
+   >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 
 
     ```sql
     EXECUTE sp_execute_external_script

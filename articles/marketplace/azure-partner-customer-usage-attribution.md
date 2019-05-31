@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800971"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66296826"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -208,7 +208,7 @@ Po Dodaj identyfikator GUID szablonu lub agenta użytkownika, a następnie zarej
 
 Po zmodyfikowaniu szablonu i uruchamiania wdrożenia testowego, należy użyć poniższy skrypt programu PowerShell można pobrać zasoby, które są wdrażane i oznaczony.
 
-Możesz użyć skryptu, aby sprawdzić, czy identyfikator GUID został pomyślnie dodany do szablonu usługi Resource Manager. Skrypt nie ma zastosowania do wdrażania interfejsu API usługi Resource Manager.
+Możesz użyć skryptu, aby sprawdzić, czy identyfikator GUID został pomyślnie dodany do szablonu usługi Resource Manager. Skrypt nie ma zastosowania do wdrożeń programu Terraform i interfejsów API usługi Resource Manager.
 
 Zaloguj się do platformy Azure. Wybierz subskrypcję do wdrożenia, który chcesz zweryfikować przed uruchomieniem skryptu. Uruchom skrypt wdrożenia, w ramach subskrypcji.
 
@@ -245,7 +245,7 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>Zgłoś
+## <a name="report"></a>Raport
 
 Raport jest dostępny dla klienta użycie: uznanie autorstwa na pulpicie nawigacyjnym analizy Centrum partnerskiego. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Aby wyświetlić raport, musisz Zaloguj się przy użyciu poświadczeń Centrum partnerskiego. Jeśli występują problemy z raportem lub zaloguj się, Utwórz żądanie pomocy technicznej zgodnie z instrukcjami w sekcji pomocy technicznej Get.
 

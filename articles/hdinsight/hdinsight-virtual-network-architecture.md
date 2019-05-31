@@ -5,15 +5,14 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 03/26/2019
-ms.date: 04/29/2019
-ms.author: v-yiso
-ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: 41420497bffd0abdc598e4c86b2dbda1466b2ce1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484893"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252849"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
 
@@ -26,7 +25,7 @@ Usługa Azure HDInsight clusters mają różne typy maszyn wirtualnych, albo prz
 | Type | Opis |
 | --- | --- |
 | Węzeł główny |  W przypadku wszystkich typów klastrów z wyjątkiem systemu Apache Storm węzły główne hostują procesów, które Zarządzanie wykonywaniem aplikacji rozproszonej. Węzeł główny jest również węzeł, który można nawiąż połączenie i wykonywania aplikacji, które następnie są koordynowany uruchamianej w zasobów klastra. Liczba węzłów głównych jest ustalony na dwa wszystkie typy klastrów. |
-| Węzeł usługi zooKeeper | Dozorcy służy do koordynowania zadań między węzły, które wykonują przetwarzania danych. Ponadto jest wybór lidera węzła głównego i śledzi informacje o który węzła głównego jest uruchomioną określoną usługą wzorca. Liczba węzłów dozorcy jest ustalony na dwa. |
+| Węzeł usługi zooKeeper | Dozorcy służy do koordynowania zadań między węzły, które wykonują przetwarzania danych. Ponadto jest wybór lidera węzła głównego i śledzi informacje o który węzła głównego jest uruchomioną określoną usługą wzorca. Liczba węzłów dozorcy jest ustalony na trzy. |
 | Węzeł procesu roboczego | Reprezentuje węzły, które obsługują funkcję przetwarzania danych. Węzłów procesu roboczego może być dodane lub usunięte z klastra na skalowanie możliwości obliczeniowych i zarządzania kosztami. |
 | Węzłem krawędzi oprogramowania R Server | Węzłem krawędzi oprogramowania R Server reprezentuje węzeł, w którym można nawiąż połączenie i wykonywania aplikacji, które następnie są koordynowany uruchamianej w zasobów klastra. Węzeł krawędzi nie uczestniczy w analizy danych w klastrze. Ten węzeł obsługuje również R Studio Server, dzięki któremu można uruchomić aplikację języka R za pomocą przeglądarki. |
 | Węzeł regionu | Typ klastra HBase uruchamiane serwera regionalnego węzła region (nazywane również węzeł danych). Serwery regionów obsługi i zarządzanie nimi część danych zarządzanych przez bazę danych HBase. Węzły regionu można dodane lub usunięte z klastra na skalowanie możliwości obliczeniowych i zarządzania kosztami.|

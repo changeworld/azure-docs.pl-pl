@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 2f48e0d8b46684d067fe2e32f241e28d94c2edbd
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471643"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399678"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -40,7 +40,7 @@ Dowiedz się więcej o usłudze backup [przy użyciu kopii zapasowej serwera](ba
 
 **Akcja** | **Pomoc techniczna**
 --- | ---
-Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej platformy Azure z systemem Windows | Obsługiwane w przypadku:  System Windows Server 2019 r (rdzenie Datacenter/Datacenter), Windows Server 2016 (Datacenter/Datacenter-rdzeniowe); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM i z dodatkiem SP1)
+Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej platformy Azure z systemem Windows | Obsługiwane w przypadku: <br/><br/> -Windows Server 2019 r (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2016 (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM i Standard z dodatkiem SP1)
 Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej z systemem Linux | Obsługiwane w przypadku:<br/><br/> — Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7, 6.8 6,9, 7.2, 7.3, WERSJI 7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Tworzenie kopii zapasowej maszyny Wirtualnej, która jest shutdown/offline maszyny Wirtualnej | Obsługiwane.<br/><br/> Migawka jest spójna w razie awarii tylko, nie spójny na poziomie aplikacji.
 Wykonywanie kopii zapasowych dysków, po migracji do usługi managed disks | Obsługiwane.<br/><br/> Kopia zapasowa, będą nadal działać. Nie jest wymagana żadna akcja.
@@ -61,7 +61,7 @@ W poniższej tabeli przedstawiono obsługiwane systemy operacyjne, podczas wykon
 
 **Scenariusz** | **Obsługa systemu operacyjnego**
 --- | ---
-Tworzenie kopii zapasowej za pomocą rozszerzenia agenta maszyny Wirtualnej platformy Azure | Klient Windows: Nieobsługiwane<br/><br/> System Windows Server 2019 r (rdzenie Datacenter/Datacenter), Windows Server 2016 (Datacenter/Datacenter-rdzeniowe); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM i z dodatkiem SP1)
+Tworzenie kopii zapasowej za pomocą rozszerzenia agenta maszyny Wirtualnej platformy Azure | Klient Windows: Nieobsługiwane<br/><br/>-Windows Server 2019 r (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2016 (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM i Standard z dodatkiem SP1)
 Tworzenie kopii za pomocą agenta usług MARS | [Obsługiwane](backup-support-matrix-mars-agent.md#support-for-direct-backups) systemów operacyjnych.
 Tworzenie kopii zapasowej z programu DPM/serwera usługi Mab | Obsługiwane systemy operacyjne dla kopii zapasowych z użyciem [serwera usługi Mab](backup-mabs-protection-matrix.md) i [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 

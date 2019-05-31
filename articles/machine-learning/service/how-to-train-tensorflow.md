@@ -10,18 +10,20 @@ ms.author: minxia
 author: mx-iao
 ms.date: 05/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f3d675d0eac1255974995fd7717192ec6a21bac1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
-ms.translationtype: HT
+ms.openlocfilehash: 314917ce91407206d786b191df118893696ac82c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400229"
+ms.locfileid: "66417131"
 ---
-# <a name="use-azure-machine-learning-service-to-train-and-register-tensorflow-models"></a>Szkolenie i rejestrować TensorFlow modeli za pomocą usługi Azure Machine Learning
+# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Szkolenie i zarejestruj TensorFlow modeli na skalę przy użyciu usługi Azure Machine Learning
 
 W tym artykule pokazano, jak szkolenie i zarejestrować model TensorFlow przy użyciu usługi Azure Machine Learning. Będziemy używać popularnej [zestawu danych mnist ręcznie ZAPISANYCH](http://yann.lecun.com/exdb/mnist/) do klasyfikowania cyfr pisma odręcznego za pomocą sieci neuronowej, oparta na TensorFlow.
 
-Za pomocą usługi Azure Machine Learning będziesz mieć możliwość szybkiego skalowania w poziomie przy użyciu zasobów obliczeniowych w elastycznej chmurze zadań szkoleniowych typu open source. Będzie też można śledzić swoje przebiegów szkoleniowych, wersji modeli, wdrażanie modeli i wiele więcej. Czy tworzysz od podstaw modelu TensorFlow korzystamy istniejącego modelu w chmurze, usługa Azure Machine Learning jest tutaj ułatwiające tworzenie modeli gotowe do produkcji.
+Za pomocą usługi Azure Machine Learning będziesz mieć możliwość szybkiego skalowania w poziomie przy użyciu zasobów obliczeniowych w elastycznej chmurze zadań szkoleniowych typu open source. Będzie też można śledzić swoje przebiegów szkoleniowych, wersji modeli, wdrażanie modeli i wiele więcej. 
+
+Czy tworzysz od podstaw modelu TensorFlow korzystamy istniejącego modelu w chmurze, możesz tworzyć modele gotowa do użycia w środowisku produkcyjnym za pomocą usługi Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

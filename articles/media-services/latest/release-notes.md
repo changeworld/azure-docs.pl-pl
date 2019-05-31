@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/29/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153077"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385143"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -36,7 +36,21 @@ Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do prz
 
 ## <a name="may-2019"></a>Maja 2019 r
 
+### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS w wersji 4 lub nowszym pomocy technicznej w funkcji dynamicznego tworzenia pakietów 
+
+Dodano HLS (w wersji 4 lub nowszej) obsługuje w funkcji dynamicznego tworzenia pakietów dla zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków.
+
+Aby uzyskać więcej informacji, zobacz [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md).
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea, pary regionalne jest otwarty dla usługi Media Services 
+
+Usługa Media Services jest teraz dostępna w regionach Korea Środkowa i Korea Południowa. 
+
+Aby uzyskać więcej informacji, zobacz [chmur i regionów, w których usługi Media Services v3 istnieje](azure-clouds-regions.md).
+
 ### <a name="performance-improvements"></a>Ulepszenia wydajności
+
+Dodano aktualizacje, które obejmują udoskonalenia w zakresie wydajności usługi Media Services.
 
 * Maksymalny rozmiar pliku do przetwarzania został zaktualizowany. Zobacz, [przydziały i ograniczenia](limits-quotas-constraints.md).
 * [Kodowanie poprawy szybkości](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
@@ -52,7 +66,7 @@ Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do prz
 
 Dynamiczne pakowanie teraz obsługuje Dolby Atmos. Aby uzyskać więcej informacji, zobacz [kodery-dekodery Audio obsługiwane przez funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
-Teraz można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [skojarzyć filtrów z lokalizatora przesyłania strumieniowego](filters-concept.md#associate-filters-with-streaming-locator).
+Teraz można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [skojarzyć filtrów z lokalizatora przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>Lutego 2019 r
 
@@ -133,7 +147,7 @@ W tej sekcji opisano aktualizacje usługi Azure Media Services (AMS) październi
 
 [Wersja Ogólnodostępna v3 REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) zawiera więcej interfejsów API na żywo, filtry na poziomie manifestu konta/zasobów i obsługa technologii DRM.
 
-#### <a name="azure-resource-management"></a>Zarządzanie zasobami platformy Azure 
+#### <a name="azure-resource-management"></a>Azure Resource Management 
 
 Obsługa usługi Azure Resource Management umożliwia ujednolicone zarządzanie i operacje interfejsu API (teraz wszystko w jednym miejscu).
 

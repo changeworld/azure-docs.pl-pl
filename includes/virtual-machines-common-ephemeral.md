@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145919"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391360"
 ---
 Efemeryczne dyski systemu operacyjnego do tworzenia lokalnego magazynu maszyny wirtualnej (VM) i nie są zachowywane do zdalnej usługi Azure Storage. Efemeryczne dyski systemu operacyjnego działają dobrze w przypadku obciążeń bezstanowych, gdzie aplikacje są odporne na awariami pojedynczych maszyn wirtualnych, ale są bardziej zajmującym się ochroną czas, jaki zajmuje wdrożeń na dużą skalę lub czasu, aby odtworzyć poszczególnych wystąpień maszyn wirtualnych. Jest również odpowiedni w przypadku aplikacji wdrożonych za pomocą klasycznego modelu wdrażania, aby przejść do modelu wdrażania usługi Resource Manager. Dzięki efemerycznemu dyskowi systemu operacyjnego występują niższe opóźnienia odczytu/zapisu na dysku systemu operacyjnego, a odtwarzanie z obrazu maszyny wirtualnej jest szybsze. Ponadto dysk systemu operacyjnego tymczasowych jest bezpłatny, pociągnąć za sobą żadnych kosztów magazynu dla dysku systemu operacyjnego. 
  
@@ -35,41 +35,9 @@ Podstawowe różnice między trwałe i efemeryczne dyski systemu operacyjnego:
 | Obsługa regionu              | Wszystkie regiony                                                                                  | Wszystkie regiony                              |
 | Trwałość danych            | System operacyjny dysku danych zapisanych na dysku systemu operacyjnego są przechowywane w usłudze Azure Storage                                  | Dane zapisane na dysku systemu operacyjnego są przechowywane w lokalnym magazynie maszyny Wirtualnej i nie jest trwały do usługi Azure Storage. |
 | Zatrzymana z cofniętą alokacją stanu      | Zatrzymana z cofniętą alokacją i ponownego uruchomienia ze stanu zatrzymana z cofniętą alokacją maszyn wirtualnych i wystąpień zestawu skalowania | Maszyn wirtualnych i wystąpień zestawu skalowania nie może być zatrzymana z cofniętą alokacją                                  |
-| Wyspecjalizowane obsługę dysku systemu operacyjnego | Tak                                                                                          | Nie                                                                                 |
+| Wyspecjalizowane obsługę dysku systemu operacyjnego | Yes                                                                                          | Nie                                                                                 |
 | Zmiany rozmiaru dysku systemu operacyjnego              | Obsługiwana podczas tworzenia maszyny Wirtualnej i maszyna wirtualna jest zatrzymana z cofniętą alokacją                                | Obsługiwana podczas tworzenia maszyny Wirtualnej tylko                                                  |
 | Zmiana rozmiaru do nowego rozmiaru maszyny Wirtualnej   | Dane z dysku systemu operacyjnego są zachowywane.                                                                    | Usunięcie danych na dysku systemu operacyjnego, system operacyjny jest ponownie zainicjowana                                      |
-
-## <a name="register-for-the-preview"></a>Zarejestruj się w celu korzystania z wersji zapoznawczej
-
-
-Zarejestrować się samodzielnie Efemeryczne dyski systemu operacyjnego przy użyciu najnowszej wersji interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell w wersji zapoznawczej.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-Aby sprawdzić, jeśli są rejestrowane w wersji zapoznawczej:
-
-```azurepowershell-interactive
-Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="cli"></a>Interfejs wiersza polecenia
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
-```
-
-Aby sprawdzić, jeśli są rejestrowane w wersji zapoznawczej:
- 
-```azurecli-interactive
-az provider show --namespace Microsoft.Compute
-```
-
 
 ## <a name="scale-set-deployment"></a>Wdrożenie zestawu skalowania  
 Proces tworzenia zestawu skalowania, który korzysta z efemerycznego dysku systemu operacyjnego jest dodanie `diffDiskSettings` właściwość `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` typ zasobu w szablonie. Ponadto zasad buforowania musi być równa `ReadOnly` dla efemerycznego dysku systemu operacyjnego. 
@@ -196,7 +164,7 @@ Odp.: Tak, można utworzyć maszyny wirtualne z Efemerycznego dysku systemu oper
 Odp.: Efemeryczne dyski nie obsługują:
 - Przechwytywanie obrazów maszyn wirtualnych
 - Migawki dysków 
-- Azure Disk Encryption 
+- Usługa Azure Disk Encryption 
 - Azure Backup
 - Azure Site Recovery  
 - Wymiana dysku systemu operacyjnego 

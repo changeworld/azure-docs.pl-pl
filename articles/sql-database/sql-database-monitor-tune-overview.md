@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: cae0fbd450e6b392e1689d4642181f6e5279752b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: HT
+ms.openlocfilehash: 2fa43fcd48736a3d044deb07ed690af580c3b987
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393206"
+ms.locfileid: "66416281"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -143,6 +143,24 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
+### <a name="factors-influencing-query-plan-changes"></a>Czynniki mające wpływ na zmiany planu zapytań
+
+Plan wygenerowane zapytanie, która różni się od co pierwotnie był buforowany może spowodować ponowną kompilację planu wykonania zapytania. Istnieją różne powody, dlaczego istniejący plan oryginalnego może automatycznie ponownie skompilowana:
+- Zmiany w schemacie odwołuje się zapytanie
+- Zmiany danych w tabelach odwołuje się zapytanie 
+- Zmiany opcji kontekst zapytania 
+
+Skompilowany plan, może wysunąć z pamięci podręcznej z różnych powodów, takich jak ponowne uruchomienie wystąpienia, zmiany konfiguracji, wykorzystanie pamięci i jawnego żądania wyczyszczenia pamięci podręcznej w zakresie bazy danych. Ponadto za pomocą wskazówka RECOMPILE oznacza, że nie będzie można buforować planu.
+
+Ponownej kompilacji (lub nowej kompilacji po eksmisji pamięci podręcznej) nadal może spowodować generowanie plan wykonania zapytania identyczne niż pierwotnie przestrzegane.  Jeśli jednak istnieją zmiany do planu w porównaniu do poprzedniego lub oryginalny plan, poniżej przedstawiono najbardziej typowe wyjaśnienia Przyczyna zmiany planu wykonania zapytania:
+
+- **Zmienione projektu fizycznego**. Na przykład utworzyć nowe indeksy bardziej efektywnie cover, których wymagania zapytanie może być używana dla nowych kompilacji, jeśli Optymalizator zapytań postanawia go to bardziej optymalne wykorzystanie tego nowego indeksu niż używanie struktury danych początkowo wybrane do pierwszej wersji wykonanie kwerendy.  Zmiany fizyczne przywoływanych obiektów może spowodować nowy wybór planu w czasie kompilacji.
+
+- **Różnic między zasobami serwera**. W przypadku, gdy jeden plan różni się w systemie"A" a "system B" — dostępność zasobów, takich jak liczba dostępnych procesorów mogą mieć wpływ na jakie plan pobiera wygenerowany.  Na przykład jeśli jeden system ma większej liczby procesorów, można wybrać plan równoległy. 
+
+- **Różne statystyki**. Statystyki związane z obiektami odwołania lub nazwę istotnie różnią się od oryginalnego systemu statystyk.  Jeśli statystyki i występuje ponownej kompilacji, optymalizator zapytań użyje statystyki, począwszy od tego konkretnego punktu w czasie. Poprawione statystyki mogą mieć dystrybucji znacząco odmiennych danych oraz częstotliwości, które nie zostały uwzględnione w przypadku oryginalnej kompilacji.  Zmiany te są używane do szacowania kardynalności szacuje (liczba wierszy przewidywanym przepływają przez drzewo logiczne zapytań).  Zmiany do szacowania kardynalności może prowadzić nam wybrać różne operatory fizycznych i skojarzone zamówienia dla operacji.  Nawet drobne zmiany do statystyk może spowodować plan wykonania zmienionym zapytaniem.
+
+- **Zmieniono wersję bazy danych zgodności poziomu lub jej kardynalności narzędzie do szacowania**.  Zmiany poziomu zgodności bazy danych można włączyć nowe strategie i funkcje, które może spowodować planu wykonanie innego zapytania.  Poza poziom zgodności bazy danych wyłączenie lub włączenie flagi śledzenia 4199 lub zmianę stanu bazy danych konfiguracji o określonym zakresie, który QUERY_OPTIMIZER_HOTFIXES także mogą mieć wpływ na zapytania opcje planu wykonania w czasie kompilacji.  Flagi śledzenia 9481 (CE starszych force) i 2312 (zmusza domyślne CE) są również zaplanować wpływających na. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiąż problematycznych zapytań lub podać więcej zasobów
 

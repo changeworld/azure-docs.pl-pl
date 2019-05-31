@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0af36fa68b2d801eed52e6f081b040fb56929c91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12549bb53a21dd657f51a4a02460ddc82c47bef8
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613645"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386385"
 ---
 # <a name="paging-through-video-search-results"></a>Stronicowanie wyników wyszukiwania klipów wideo
 
@@ -26,7 +26,7 @@ Interfejs API wyszukiwania wideo Bing zwraca podzbiór wszystkie wyniki wyszukiw
 
 ## <a name="total-estimated-matches"></a>Łączny szacowany dopasowań
 
-Aby uzyskać szacunkową liczbę wyników wyszukiwania znaleziono, użyj [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) pola w odpowiedzi JSON.   
+Aby uzyskać szacunkową liczbę wyników wyszukiwania znaleziono, użyj [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-totalestimatedmatches) pola w odpowiedzi JSON.   
   
 ```json  
 {
@@ -39,7 +39,7 @@ Aby uzyskać szacunkową liczbę wyników wyszukiwania znaleziono, użyj [totalE
   
 ## <a name="paging-through-videos"></a>Stronicowanie filmów wideo
 
-Na stronie przy użyciu dostępnych filmów wideo, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) parametry zapytania podczas wysyłania żądania.  
+Na stronie przy użyciu dostępnych filmów wideo, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) parametry zapytania podczas wysyłania żądania.  
   
 
 |Parametr  |Opis  |
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-Jeśli korzystasz z wartością domyślną dla [liczba](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count), należy określić `offset` parametr, jak w poniższym przykładzie zapytania.  
+Jeśli korzystasz z wartością domyślną dla [liczba](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count), należy określić `offset` parametr, jak w poniższym przykładzie zapytania.  
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 
 Jeśli strony za pośrednictwem 35 filmów wideo w czasie, należy ustawić `offset` parametr na wartość 0 na pierwszego żądania zapytania, a następnie zwiększenie `offset` przez 35 na kolejnych żądań. Jednak niektóre wyniki w następnej odpowiedzi może zawierać zduplikowanych wyniki wideo z poprzedniej odpowiedzi. Na przykład dwa pierwsze filmów wideo w odpowiedzi może być taka sama jak ostatnie dwa filmy wideo z poprzedniej odpowiedzi.
 
-Aby wyeliminować zduplikowane wyniki, należy użyć [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-nextoffset) pole `Videos` obiektu.
+Aby wyeliminować zduplikowane wyniki, należy użyć [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-nextoffset) pole `Videos` obiektu.
 
 Na przykład, jeśli chcesz stronie 30 filmów wideo w czasie, możesz ustawić `count` do 30 i `offset` na 0 w pierwszego żądania. W kolejnym żądaniu, należy ustawić `offset` parametr do zapytania `nextOffset` wartość.
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956228"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397825"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Aby przeczytać wpisy tajne z magazynu Key Vault, musisz mieć utworzony magazyn
    > [!NOTE] 
    > Usługa Key Vault odwołuje się do aktualnie tylko przypisana przez system obsługi tożsamości zarządzanej. Nie można używać tożsamości przypisanych przez użytkownika.
 
-1. Tworzenie [zasady w usłudze Key Vault dostępu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) tożsamości aplikacji została utworzona wcześniej. Włącz uprawnienie wpisu tajnego "Get" te zasady. Nie należy konfigurować "uprawnienia aplikacji" lub `appliationId` ustawienia, ponieważ nie jest zgodny z tożsamości zarządzanej.
+1. Tworzenie [zasady w usłudze Key Vault dostępu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) tożsamości aplikacji została utworzona wcześniej. Włącz uprawnienie wpisu tajnego "Get" te zasady. Nie należy konfigurować "uprawnienia aplikacji" lub `applicationId` ustawienia, ponieważ nie jest zgodny z tożsamości zarządzanej.
 
 ## <a name="reference-syntax"></a>Składnia odwołania
 

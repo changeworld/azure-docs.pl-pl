@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 357dc47027582d5c638bb3c7344c839f37f93dc5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399133"
+ms.locfileid: "66417498"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Azure Service łańcucha bloków w witrynie Azure portal
 
@@ -44,7 +44,7 @@ Usługa Azure usługa łańcuch bloków jest tworzona ze zdefiniowanym zestawem 
     Nazwa konsorcjum | Wprowadź unikatową nazwę dla nowego konsorcjum. Jeśli przyłączasz konsorcjum za pomocą zaproszenia, wartość jest konsorcjum są utworzone.
     Opis | Opis konsorcjum.
     Protocol |  (Wersja zapoznawcza) obsługuje protokół kworum.
-    Cennik | Konfiguracja węzła dla nowej usługi. Wybierz opcję **Standardowa**. transakcji 1 i 2 węzły modułu sprawdzania poprawności węzłów jest ustawieniem domyślnym.
+    Cennik | Konfiguracja węzła dla nowej usługi. Wybierz opcję **Standardowa**. 2 węzłów modułu sprawdzania poprawności i węzła 1 transakcji są ustawienia domyślne.
     Transakcja węzeł hasła | Hasło dla elementu członkowskiego domyślnego transakcji węzła. Podaj hasło dla uwierzytelniania podstawowego, łącząc się z łańcucha bloków elementu członkowskiego domyślnego transakcji węzła publiczny punkt końcowy.
 
 1. Wybierz **Utwórz** do udostępniania usługi. Aprowizowanie trwa około 10 minut.

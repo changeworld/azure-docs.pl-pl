@@ -3,19 +3,19 @@ title: Zarządzanie danymi użytkowników za pomocą uczeń konwersacji — Micr
 titleSuffix: Azure
 description: Dowiedz się, jak zarządzać danymi użytkownika przy użyciu uczeń konwersacji.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 83c7e808e48733487e84d668236cdb327c21c44c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688542"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385202"
 ---
 # <a name="managing-user-data"></a>Zarządzanie danymi użytkowników
 

@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6fc2af0cbe770ee787da757966bbc1647717e5a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61247556"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302679"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Przygotuj swój rozwój i środowisko testowe dla usługi IoT Edge
 
@@ -62,11 +62,11 @@ Szablony modułu dla niektórych języków i usług mają wymagania wstępne, kt
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generator modułu w usłudze Azure IoT Edge w środowisku Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Narzędzie PIP](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Usługa Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-2017-extension"></a>Rozszerzenie programu Visual Studio 2017
+### <a name="visual-studio-20172019-extension"></a>Rozszerzenie programu Visual Studio 2017/2019 r
 
-Narzędzia usługi Azure IoT Edge dla programu Visual Studio zapewnia usługi IoT Edge szablon modułu oparta na C#. 
+Narzędzia usługi Azure IoT Edge dla programu Visual Studio zapewnia usługi IoT Edge szablon modułu oparta na C# i C. 
 
-Aby uzyskać więcej informacji oraz aby pobrać, zobacz [narzędzia usługi Azure IoT Edge dla programu Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools).
+Aby uzyskać więcej informacji oraz aby pobrać, zobacz [narzędzia usługi Azure IoT Edge dla programu Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) lub [narzędzia usługi Azure IoT Edge dla programu Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools).
 
 ### <a name="iot-edge-dev-tool"></a>Narzędzia deweloperskie usługi IoT Edge
 
@@ -80,7 +80,7 @@ Istnieje kilka narzędzi do testowania ułatwiające symulowanie urządzenia us�
 
 Tylko środowisko uruchomieniowe usługi IoT Edge jest obsługiwana w przypadku wdrożeń produkcyjnych, ale następujące narzędzia umożliwiają symulowanie i łatwo utworzyć usługi IoT Edge urządzenia do tworzenia i testowania. Narzędzia te nie są wzajemnie się wykluczają, ale mogą współpracować ze sobą środowisko programowania pełną. 
 
-| Tool | Tzw. | Obsługiwane platformy | Najlepsze dla |
+| Narzędzie | Tzw. | Obsługiwane platformy | Najlepsze dla |
 | ---- | ------------- | ------------------- | --------- |
 | Narzędzia deweloperskie IoT EdgeHub  | iotedgehubdev | System Windows, Linux, MacOS | Symulowanie urządzenia do debugowania modułów. |
 | Kontener deweloperów usługi IoT Edge | microsoft/iotedgedev | System Windows, Linux, MacOS | Tworzenie, bez konieczności instalowania zależności. |
@@ -109,7 +109,7 @@ Aby uzyskać więcej informacji, zobacz [uruchamiania usługi Azure IoT Edge w k
 
 ### <a name="iot-edge-device-container"></a>Kontener urządzeń usługi IoT Edge
 
-Kontener urządzeń usługi IoT Edge jest kompletne urządzenie usługi IoT Edge, gotowe do uruchomienia na dowolnym komputerze z aparatem kontenera. Kontener urządzeń zawiera środowisko uruchomieniowe usługi IoT Edge i aparat container, sam. Każde wystąpienie kontenera jest w pełni funkcjonalne własnym aprowizacji urządzenia IoT Edge. Kontener urządzeń obsługuje zdalne debugowanie modułów, tak długo, jak istnieje trasa sieci do modułu. Kontener urządzeń jest dobry do szybkiego tworzenia dużą liczbą urządzeń usługi IoT Edge, aby przetestować scenariusze na dużą skalę lub potoków metodyki DevOps. Obsługuje ona również wdrażanie w usłudze kubernetes za pomocą narzędzia helm. 
+Kontener urządzeń usługi IoT Edge jest kompletne urządzenie usługi IoT Edge, gotowe do uruchomienia na dowolnym komputerze z aparatem kontenera. Kontener urządzeń zawiera środowisko uruchomieniowe usługi IoT Edge i aparat container, sam. Każde wystąpienie kontenera jest w pełni funkcjonalne własnym aprowizacji urządzenia IoT Edge. Kontener urządzeń obsługuje zdalne debugowanie modułów, tak długo, jak istnieje trasa sieci do modułu. Kontener urządzeń jest dobry do szybkiego tworzenia dużej liczby usługi IoT Edge urządzenia, aby przetestować scenariusze na dużą skalę lub potoki usługi Azure. Obsługuje ona również wdrażanie w usłudze kubernetes za pomocą narzędzia helm. 
 
 Aby uzyskać więcej informacji, zobacz [kontener urządzeń usługi Azure IoT Edge](https://github.com/toolboc/azure-iot-edge-device-container).
 

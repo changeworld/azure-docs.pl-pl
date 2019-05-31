@@ -10,18 +10,26 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 05/29/2019
 ms.author: bwren
-ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130758"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357573"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
 ![Logo usługi Office 365](media/solution-office-365/icon.png)
+
+
+> [!NOTE]
+> Zalecaną metodą, aby zainstalować i skonfigurować rozwiązanie usługi Office 365 jest zapewnienie [łącznik usługi Office 365](../../sentinel/connect-office-365.md) w [Azure przez wartownika](../../sentinel/overview.md) zamiast przy użyciu kroków w tym artykule. Jest to zaktualizowaną wersję rozwiązania usługi Office 365 ze środowiskiem ulepszone konfiguracji. Aby połączyć dzienniki usługi Azure AD, należy użyć [wartownik Azure usługi Azure AD connector](../../sentinel/connect-azure-active-directory.md), który zapewnia dokładniejsze dane dziennika niż dzienniki zarządzania usługi Office 365. 
+>
+> Gdy możesz [dołączanie przez wartownika Azure](../../sentinel/quickstart-onboard.md), określ obszar roboczy usługi Log Analytics, odpowiedniego rozwiązania usługi Office 365 instalowane w. Po włączeniu łącznik rozwiązania będą dostępne w obszarze roboczym i używać dokładnie tak samo jako żadnych innych rozwiązań do monitorowania, zainstalowane.
+>
+> Użytkownicy chmury platformy Azure dla instytucji rządowych, należy zainstalować usługi Office 365, korzystając z procedury w tym artykule, ponieważ przez wartownika Azure nie jest jeszcze dostępna w chmurze dla instytucji rządowych.
 
 Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środowiska usługi Office 365 w usłudze Azure Monitor.
 
@@ -30,6 +38,7 @@ Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środow
 - Wykrywanie i badanie użytkownika niepożądane zachowanie, które można dostosować do potrzeb organizacji.
 - Prezentacja inspekcje i zapewniaj zgodność. Na przykład można monitorować operacji na plikach dostęp do poufnych plików, które pomogą Ci z procesem inspekcje i zapewniaj zgodność.
 - Rozwiązywać problemy operacyjne przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
+
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,7 +56,7 @@ Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowa
 To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../platform/om-agents.md).
   
 
-## <a name="install-and-configure"></a>Instalacja i konfiguracja
+## <a name="install-and-configure"></a>Instalowanie i konfigurowanie
 
 Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-monitoring-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.
 
@@ -79,7 +88,7 @@ Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory,
     ![Dodawanie rejestracji aplikacji](media/solution-office-365/add-app-registration.png)
 1. Wprowadź aplikację **nazwa** i **adres URL logowania**.  Nazwa powinna być opisowe.  Użyj `http://localhost` dla adresu URL i Zachowaj _aplikacji sieci Web / interfejs API_ dla **typ aplikacji**
     
-    ![Utwórz aplikację](media/solution-office-365/create-application.png)
+    ![Tworzenie aplikacji](media/solution-office-365/create-application.png)
 1. Kliknij przycisk **Utwórz** i zweryfikować informacje o aplikacji.
 
     ![Zarejestrowana aplikacja](media/solution-office-365/registered-app.png)
@@ -94,19 +103,19 @@ Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory,
 1. Wybierz **wymagane uprawnienia** w **ustawienia** menu, a następnie kliknij przycisk **Dodaj**.
 1. Kliknij przycisk **wybierz interfejs API** i następnie **interfejsów API zarządzania usługi Office 365**. Kliknij przycisk **interfejsów API zarządzania usługi Office 365**. Kliknij pozycję **Wybierz**.
 
-    ![Wybierz interfejs API](media/solution-office-365/select-api.png)
+    ![Wybieranie interfejsu API](media/solution-office-365/select-api.png)
 
 1. W obszarze **wybierz uprawnienia** wybierz następujące opcje dla obu **uprawnienia aplikacji** i **delegowane uprawnienia**:
-   - Odczytuj informacje o kondycji usług dla organizacji
+   - Przeczytaj informacje o kondycji usług w Twojej organizacji
    - Odczytaj dane aktywności dla Twojej organizacji
    - Odczytuj raporty aktywności dotyczące organizacji
 
-     ![Wybierz interfejs API](media/solution-office-365/select-permissions.png)
+     ![Wybieranie interfejsu API](media/solution-office-365/select-permissions.png)
 
 1. Kliknij przycisk **wybierz** i następnie **gotowe**.
 1. Kliknij przycisk **udzielić uprawnień** a następnie kliknij przycisk **tak** po wyświetleniu monitu o weryfikację.
 
-    ![Udziel uprawnień](media/solution-office-365/grant-permissions.png)
+    ![Udzielenie uprawnień](media/solution-office-365/grant-permissions.png)
 
 ### <a name="add-a-key-for-the-application"></a>Dodaj klucz aplikacji
 
@@ -181,7 +190,7 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
 
 1. Użytkownik zobaczy okno podobny do przedstawionego poniżej. Kliknij przycisk **zaakceptować**.
     
-    ![Zgoda administratora](media/solution-office-365/admin-consent.png)
+    ![zgoda administratora](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Subskrybowanie do obszaru roboczego usługi Log Analytics
 
@@ -388,7 +397,7 @@ At line:12 char:18
 
 ```
 
-## <a name="uninstall"></a>Odinstaluj
+## <a name="uninstall"></a>Dezinstalacja
 
 Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu procesu w [usunąć to rozwiązanie do zarządzania](solutions.md#remove-a-monitoring-solution). Zbierane dane z usługi Office 365 do usługi Azure Monitor jednak nie powoduje wstrzymania. Postępuj zgodnie z poniższą procedurą, aby anulować subskrypcję usługi Office 365 i zatrzymać zbieranie danych.
 
@@ -512,7 +521,7 @@ Kliknij pozycję **usługi Office 365** Kafelek, aby otworzyć **usługi Office 
 
 Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera dziesięć najważniejszych alertów według liczby odpowiadającego kryteriom tej kolumny dla określonego zakresu i przedziału czasu. Możesz uruchomić przeszukiwanie dziennika, które zawiera całą listę, klikając przycisk Zobacz wszystko w dolnej części kolumny lub przez kliknięcie nagłówka kolumny.
 
-| Kolumnowy | Opis |
+| Kolumna | Opis |
 |:--|:--|
 | Operacje | Zawiera informacje dotyczące aktywnych użytkowników z wszystkich monitorowanych subskrypcji usługi Office 365. Można również wyświetlić liczbę działań, które zdarzają się wraz z upływem czasu.
 | Exchange | Pokazuje podział działania serwera Exchange, takie jak uprawnienia Dodaj skrzynkę pocztową lub skrzynki pocztowej Ustaw. |
@@ -541,7 +550,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 | ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to Succeeded, częściowe powodzenie lub niepowodzenie. Wartość dla działania administracyjnego programu Exchange, ma wartość PRAWDA lub FAŁSZ. |
 | UserId | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
 | UserKey | Alternatywnego Identyfikatora użytkownika zidentyfikowanego we właściwości identyfikatora użytkownika.  Na przykład właściwość ta jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia, wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i programem Exchange. Ta właściwość może również określić tę samą wartość jako właściwość identyfikatora użytkownika dla zdarzenia zachodzące w innych usługach i zdarzeniach wykonywanych przez konta systemowe|
-| UserType | Typ użytkownika, który wykonał operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Normalna<br>Zastrzeżone<br>ServicePrincipal<br>System |
+| UserType | Typ użytkownika, który wykonał operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowany<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Podstawowa usługi Azure Active Directory
@@ -579,7 +588,7 @@ Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze 
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | Użytkownik wykonanej akcji (identyfikowanych na podstawie właściwości Operation). |
-| Aktor | Użytkownik lub nazwa główna usługi, który wykonał akcję. |
+| aktora | Użytkownik lub nazwa główna usługi, który wykonał akcję. |
 | ActorContextId | Identyfikator GUID aktora należy do organizacji. |
 | ActorIpAddress | Adres IP aktora w formacie adresu IPV4 lub IPV6. |
 | InterSystemsId | Identyfikator GUID śledzić akcje składnikami w ramach usługi Office 365. |

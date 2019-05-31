@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869532"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356970"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -205,7 +205,7 @@ Aby skopiować dane z systemu Dynamics, należy ustawić typ źródłowego w dzi
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu źródła działania kopiowania musi być równa **DynamicsSource**. | Yes |
-| query | Narzędzia FetchXML jest język zapytania własności, który jest używany w usłudze Dynamics (online i lokalnego). Zobacz poniższy przykład. Aby dowiedzieć się więcej, zobacz [tworzenie zapytań przy użyciu FeachXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nie (Jeśli określono parametr "entityName" w zestawie danych) |
+| query | Narzędzia FetchXML jest język zapytania własności, który jest używany w usłudze Dynamics (online i lokalnego). Zobacz poniższy przykład. Aby dowiedzieć się więcej, zobacz [tworzenie zapytań przy użyciu narzędzia FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nie (Jeśli określono parametr "entityName" w zestawie danych) |
 
 >[!NOTE]
 >Kolumna klucza podstawowego zawsze zostaną skopiowane się, nawet jeśli projekcji kolumny, skonfigurowanych w zapytanie FetchXML nie zawiera on.
@@ -269,12 +269,12 @@ Aby skopiować dane do usługi Dynamics, należy ustawić typ ujścia w działan
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type ujścia działania kopiowania musi być równa **DynamicsSink**. | Yes |
-| writeBehavior | Zachowanie zapisu operacji.<br/>Dozwolona wartość to **"Upsert"**. | Yes |
+| writeBehavior | Zachowanie zapisu operacji.<br/>Dozwolona wartość to **"Upsert"** . | Yes |
 | writeBatchSize | Liczba wierszy danych zapisanych w każdej z partii Dynamics. | Nie (wartość domyślna to 10) |
-| ignoreNullValues | Wskazuje, czy ignorować wartości null w danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
+| ignoreNullValues | Wskazuje, czy ignorować wartości null w danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,** : Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **FALSE**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
 
 >[!NOTE]
->Wartość domyślna obiektu sink "**writeBatchSize**"i działanie kopiowania"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" ujścia Dynamics są oba 10. W związku z tym 100 rekordów są przesyłane do usługi Dynamics jednocześnie.
+>Wartość domyślna obiektu sink "**writeBatchSize**"i działanie kopiowania" **[parallelCopies](copy-activity-performance.md#parallel-copy)** " ujścia Dynamics są oba 10. W związku z tym 100 rekordów są przesyłane do usługi Dynamics jednocześnie.
 
 For Dynamics 365 online, obowiązuje limit [2 wywołań współbieżnych usługi batch w ramach jednej organizacji](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Przekroczeniu tego limitu błędu "Serwer jest zajęty" jest generowany, zanim pierwsze żądanie nigdy nie zostanie wykonany. Utrzymywanie "writeBatchSize" mniejsza lub równa 10 pozwoliłoby uniknąć takich ograniczania równoczesnych wywołań.
 

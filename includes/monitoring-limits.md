@@ -8,23 +8,25 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 4700573d3f5319599a6437d092e20d8013d2f7fb
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 050d3314345e64e3d69a07367a0e9acc318fa106
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58633006"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271570"
 ---
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Ustawienia automatycznego skalowania |100 na region na subskrypcję. | Taka sama jak domyślna. |
 | Alerty metryki (wersja klasyczna) |100 aktywnych reguł alertów na subskrypcję. | Z działem pomocy technicznej. |
-| Alerty dotyczące metryk |100 aktywnych reguł alertów na subskrypcję. | Z działem pomocy technicznej. |
+| Alerty dotyczące metryk |1000 aktywnych reguł alertów na subskrypcję (w chmurach publicznych) i 100 aktywnych reguł alertów na subskrypcję w chińskiej wersji platformy Azure i Azure dla instytucji rządowych. | Z działem pomocy technicznej. |
+| Alerty dotyczące dziennika aktywności | 100 aktywnych reguł alertów na subskrypcję. | Taka sama jak domyślna. |
+| Alerty dotyczące dzienników | 512 | Z działem pomocy technicznej. |
 | Grupy akcji |2000 grup akcji na subskrypcję. | Z działem pomocy technicznej. |
 
 **Limity dotyczące grupy akcji**
 
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Wypychanie aplikacji platformy Azure | 10 działania aplikacji platformy azure dla każdej grupy akcji. | Z działem pomocy technicznej. |
 | Email | 1000 akcji poczty e-mail do grupy akcji. Zobacz też [ograniczania informacje o szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Z działem pomocy technicznej. |

@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142717"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356995"
 ---
 # <a name="refresh-with-azure-automation"></a>Odświeżanie za pomocą usługi Azure Automation
 
@@ -26,7 +26,7 @@ Przykładowy element Runbook programu PowerShell, który pokazuje, odświeżanie
 
 Wszystkie wywołania musi zostać uwierzytelniony przy użyciu prawidłowego tokenu usługi Azure Active Directory (OAuth 2).  W przykładzie w tym artykule użyje nazwy głównej usługi (SPN) do uwierzytelniania w usługach Azure Analysis Services.
 
-Aby dowiedzieć się więcej na temat tworzenia jednostki usługi, zobacz]
+Aby dowiedzieć się więcej na temat tworzenia jednostki usługi, zobacz [utworzyć nazwę główną usługi za pomocą witryny Azure portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

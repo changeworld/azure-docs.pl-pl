@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: f23cf78bfca48b3a78e234520d645abdb354038f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d8f3461e94f04e8e82658ede5e60d53350056c5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197466"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399651"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w C# przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
 Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
+
+A [platformy Bot Framework 4.x, za pomocą usługi LUIS samouczka](luis-csharp-tutorial-bf-v4.md) jest również dostępna.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 

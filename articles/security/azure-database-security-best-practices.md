@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9cd02172af5246c60b93a6e4696988268abed506
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409806"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258679"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure
 W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń bazy danych.
@@ -165,6 +165,10 @@ Włączenie tych możliwości pomoże Ci:
 - Wykrywanie i reagowanie na potencjalne zagrożenia.
 
 Ponadto wykrywanie zagrożeń integruje alerty z usługą Azure Security Center, pełny widok stanu bezpieczeństwa wszystkich Twoich zasobów platformy Azure.
+
+## <a name="enable-feature-restrictions"></a>Włącz ograniczenia funkcji
+
+Dane znajdujące się w bazach danych może być narażony na atakujących przy użyciu wektory ataków, które błędy bazy danych i czas wykonywania zapytania. Usługa Azure SQL Database oferuje pewną liczbę funkcji ograniczeń mechanizmów ochrony bazy danych. Aby dowiedzieć się więcej, zobacz [ograniczeń funkcji bazy danych SQL](../sql-database/sql-database-feature-restrictions.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](security-best-practices-and-patterns.md) dla więcej najważniejsze wskazówki dotyczące zabezpieczeń do użycia podczas one projektowanie, wdrażanie i zarządzanie rozwiązań w chmurze, korzystając z platformy Azure.

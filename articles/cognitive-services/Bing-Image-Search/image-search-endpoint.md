@@ -10,16 +10,16 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 9b3edd10d2928a512b94e9273000439f80cb8f33
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 076dbb26c267cf65a0d6f3a9835375b09951f2aa
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777098"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388515"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Punkty końcowe dla API wyszukiwania obrazów Bing
 
-**Interfejsu API wyszukiwania obrazów** obejmuje trzy punkty końcowe.  Punkt końcowy 1 zwraca obrazów z sieci Web na podstawie zapytania. Zwraca punkt końcowy 2 [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse).  Punkt końcowy 3 zwraca popularnych obrazów.
+**Interfejsu API wyszukiwania obrazów** obejmuje trzy punkty końcowe.  Punkt końcowy 1 zwraca obrazów z sieci Web na podstawie zapytania. Zwraca punkt końcowy 2 [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  Punkt końcowy 3 zwraca popularnych obrazów.
 
 ## <a name="endpoints"></a>Punkty końcowe
 
@@ -34,9 +34,9 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-Żądanie pobrania zwraca szczegółowe informacje o pliku obrazu, takich jak strony sieci Web, które obejmują obraz. Obejmują [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) parametrem `GET` żądania.
+Żądanie pobrania zwraca szczegółowe informacje o pliku obrazu, takich jak strony sieci Web, które obejmują obraz. Obejmują [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) parametrem `GET` żądania.
 
-Lub może zawierać obrazów binarnych w treści `POST` żądania i ustaw [modułów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr `RecognizedEntities`. Spowoduje to zwrócenie [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#insightstoken) można użyć jako parametru w kolejnej `GET` żądanie, która zwraca informacje o osobach w obrazie.  Ustaw `modules` do `All` można pobrać wszystkie szczegółowe informacje, z wyjątkiem `RecognizedEntities` w wynikach `POST` bez konieczności szukania innego przy użyciu wywołania `insightsToken`.
+Lub może zawierać obrazów binarnych w treści `POST` żądania i ustaw [modułów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) parametr `RecognizedEntities`. Spowoduje to zwrócenie [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) można użyć jako parametru w kolejnej `GET` żądanie, która zwraca informacje o osobach w obrazie.  Ustaw `modules` do `All` można pobrać wszystkie szczegółowe informacje, z wyjątkiem `RecognizedEntities` w wynikach `POST` bez konieczności szukania innego przy użyciu wywołania `insightsToken`.
 
 
 **Punkt końcowy 3:** Zwraca obrazów, które stają się popularne na podstawie żądania wyszukiwania wykonywanymi przez innych użytkowników. Obrazy są podzielone na różne kategorie, na przykład, na podstawie warte zauważenia osób lub zdarzenia.
@@ -46,7 +46,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 
 Aby uzyskać listę rynków, które obsługują popularnych obrazów, zobacz [popularne obrazy](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images).
 
-Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [interfejsu API wyszukiwania obrazów Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) odwołania.
+Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [interfejsu API wyszukiwania obrazów Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) odwołania.
 ## <a name="response-json"></a>Response JSON
 Odpowiedź na żądanie wyszukiwania obrazów zawiera wyniki jako obiekty JSON. Zobacz przykłady podczas analizowania wyników [samouczek](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) i [kod źródłowy](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source).
 

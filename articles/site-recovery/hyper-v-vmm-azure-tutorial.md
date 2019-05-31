@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8c3c9347a027cccfaef6def84bfdc4c83555e98a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 653db1497fcce5981bba7416f073b0330ca2861f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966493"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398152"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM na platformie Azure
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Włączanie replikacji maszyny wirtualnej.
 
 > [!NOTE]
-> W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w **przewodniki z instrukcjami** części [dokumentacja usługi Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery).
+> W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w **przewodniki z instrukcjami** części [dokumentacja usługi Site Recovery](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -44,10 +44,10 @@ Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zostały już w
 
 1. W witrynie Azure portal przejdź do **Magazyny usługi Recovery Services** i wybierz magazyn. Możemy przygotować magazyn **ContosoVMVault** w poprzednim samouczku.
 2. W **wprowadzenie**, wybierz opcję **Site Recovery**, a następnie wybierz pozycję **Przygotuj infrastrukturę**.
-3. W **cel ochrony** > **których znajdują się maszyny?**, wybierz opcję **On-premises**.
-4. W **gdzie chcesz zreplikować maszyny?**, wybierz opcję **na platformę Azure**.
-5. W **są maszynach zwirtualizowane?**, wybierz opcję **tak, przy użyciu funkcji Hyper-V**.
-6. W **używasz programu System Center VMM do zarządzania hostów funkcji Hyper-V?**, wybierz opcję **tak**.
+3. W **cel ochrony** > **których znajdują się maszyny?** , wybierz opcję **On-premises**.
+4. W **gdzie chcesz zreplikować maszyny?** , wybierz opcję **na platformę Azure**.
+5. W **są maszynach zwirtualizowane?** , wybierz opcję **tak, przy użyciu funkcji Hyper-V**.
+6. W **używasz programu System Center VMM do zarządzania hostów funkcji Hyper-V?** , wybierz opcję **tak**.
 7.  Kliknij przycisk **OK**.
 
     ![Cel replikacji](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
@@ -55,7 +55,7 @@ Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zostały już w
 ## <a name="confirm-deployment-planning"></a>Potwierdzanie planowania wdrożenia
 
 1. W **planowania wdrożenia**, jeśli planowane jest dużych wdrożeniach, Pobierz planista wdrażania funkcji Hyper-v przy użyciu linku na stronie. [Dowiedz się więcej](hyper-v-deployment-planner-overview.md) o planowaniu wdrożenia funkcji Hyper-V.
-2. W tym samouczku nie potrzebujemy planista wdrażania. W **czy ukończono Planowanie wdrożenia?**, wybierz opcję **zrobię to później**, a następnie wybierz pozycję **OK**.
+2. W tym samouczku nie potrzebujemy planista wdrażania. W **czy ukończono Planowanie wdrożenia?** , wybierz opcję **zrobię to później**, a następnie wybierz pozycję **OK**.
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
@@ -112,7 +112,7 @@ Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji
 
-1. Wybierz **przygotowanie infrastruktury** > **ustawień replikacji** > **+ Utwórz i skojarz**.
+1. Wybierz **przygotowanie infrastruktury** > **ustawień replikacji** >  **+ Utwórz i skojarz**.
 2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Firma Microsoft korzysta z **ContosoReplicationPolicy**.
 3. Pozostaw ustawienia domyślne, a następnie wybierz pozycję **OK**.
     - **Częstotliwość kopiowania** wskazuje, że po początkowej replikacji danych różnicowych będą replikowane co pięć minut.

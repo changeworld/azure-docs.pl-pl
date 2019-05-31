@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5f3a43a6c48714566b5c53b33fe541b50d61589
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431807"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383890"
 ---
 # <a name="get-insights-about-a-video"></a>Uzyskaj szczegółowe informacje dotyczące filmu wideo
 
-Każdy plik wideo zwracane przez interfejs API wyszukiwania wideo Bing zawiera identyfikator wideo, który można użyć, aby uzyskać więcej informacji o tym, takich jak powiązane filmy wideo. Aby uzyskać szczegółowe informacje dotyczące filmu wideo, Pobierz jej [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) tokenu w odpowiedzi interfejsu API. 
+Każdy plik wideo zwracane przez interfejs API wyszukiwania wideo Bing zawiera identyfikator wideo, który można użyć, aby uzyskać więcej informacji o tym, takich jak powiązane filmy wideo. Aby uzyskać szczegółowe informacje dotyczące filmu wideo, Pobierz jej [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) tokenu w odpowiedzi interfejsu API. 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Każdy plik wideo zwracane przez interfejs API wyszukiwania wideo Bing zawiera i
     ],
 ```
 
-Następnie wyślij żądanie Pobierz do punktu końcowego Szczegóły filmu wideo z identyfikatorem. Ustaw [identyfikator](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) parametr do zapytania `videoId` tokenu. Aby określić, które chcesz, aby uzyskać szczegółowe informacje, należy ustawić [modułów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr zapytania. Aby uzyskać wszystkie szczegółowe informacje, należy ustawić `modules` dla wszystkich. Odpowiedź zawiera wszystkie szczegółowe informacje, które są wymagane, jeśli jest dostępny.
+Następnie wyślij żądanie Pobierz do punktu końcowego Szczegóły filmu wideo z identyfikatorem. Ustaw [identyfikator](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) parametr do zapytania `videoId` tokenu. Aby określić, które chcesz, aby uzyskać szczegółowe informacje, należy ustawić [modułów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) parametr zapytania. Aby uzyskać wszystkie szczegółowe informacje, należy ustawić `modules` dla wszystkich. Odpowiedź zawiera wszystkie szczegółowe informacje, które są wymagane, jeśli jest dostępny.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Uzyskiwanie szczegółowych danych pokrewne wideo  
 
-Aby pobrać pliki wideo, które są związane z wideo w określonym, należy ustawić [modułów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr do zapytania `RelatedVideos`.
+Aby pobrać pliki wideo, które są związane z wideo w określonym, należy ustawić [modułów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) parametr do zapytania `RelatedVideos`.
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Odpowiedź na to żądanie będzie miał najwyższego poziomu [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) zamiast obiektu [wideo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) obiektu.  
+Odpowiedź na to żądanie będzie miał najwyższego poziomu [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) zamiast obiektu [wideo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obiektu.  
   
 ```json
 {

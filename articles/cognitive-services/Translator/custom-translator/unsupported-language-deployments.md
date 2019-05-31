@@ -3,21 +3,21 @@ title: Nieobsługiwany język wdrożenia — niestandardowe w usłudze Translato
 titleSuffix: Azure Cognitive Services
 description: Jak wdrożyć pary nieobsługiwany język w niestandardowych w usłudze Translator.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: v-pawal
-ms.openlocfilehash: 09fbd771d945646fe385508779d38e4abb2ee293
-ms.sourcegitcommit: daf6538427ea6effef898f2ee3d857e5fa2dccbc
+ms.openlocfilehash: 0938ba2e839be603c557cc2a87dd0c5aa1dfe1e3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64476508"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390598"
 ---
-# <a name="unsupported-language-deployments"></a>Nieobsługiwany język wdrożenia
+# <a name="unsupported-language-deployments"></a>Wdrożenia w nieobsługiwanych językach
 
 <!--Custom Translator provides the highest-quality translations possible using the latest techniques in neural machine learning. While Microsoft intends to make neural training available in all languages, there are some limitations that prevent us from being able to offer neural machine translation in all language pairs.-->  
 
@@ -32,7 +32,7 @@ Aby swoje modele, aby być kandydatami do wdrożenia muszą spełniać następuj
 * Model musi być w stanie wdrożonym w przypadku migracji.  
 * Para języka modelu musi być parę nieobsługiwany język w niestandardowych w usłudze Translator.  Kierunki, w których język jest obsługiwana na lub z języka angielskiego, ale pary, sama nie ma języka angielskiego nadają się do wdrożeń nieobsługiwany język.  Na przykład model koncentratora, francuski parą języka niemieckiego jest uznawany za nieobsługiwany język pary nawet mimo że francuska, angielskiej i angielskiego na niemiecki są obsługiwanego języka parę.
 
-## <a name="process"></a>Przetwórz
+## <a name="process"></a>Process
 Po dokonaniu migracji modeli z koncentratora, które są kandydatami do wdrożenia, można je znaleźć, przechodząc do **ustawienia** strony dla obszaru roboczego i przewijając do końca strony, gdzie zostaną wyświetlone **nieobsługiwany W usłudze Translator Centrum szkolenia** sekcji.  W tej sekcji jest wyświetlany tylko w przypadku projektów, które spełniają wymagania wstępne wymienione powyżej.
 
 ![Jak przeprowadzić migrację z Centrum](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)

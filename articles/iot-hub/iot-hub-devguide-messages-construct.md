@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 49a28c120ae71224195edcdb3809335aeea1fa3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364314"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252799"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Tworzenie i odczytywanie komunikatów usługi IoT Hub
 
@@ -43,6 +43,8 @@ Obsługa komunikatów za pomocą usługi IoT Hub urządzenia do chmury ma nastę
 
 * Jak wyjaśniono w [kontrolować dostęp do usługi IoT Hub](iot-hub-devguide-security.md), usługa IoT Hub udostępnia na urządzenia uwierzytelniania i kontroli dostępu.
 
+* Za sygnatury komunikaty z informacjami, które przechodzi do właściwości aplikacji. Aby uzyskać więcej informacji, zobacz [komunikatu wzbogacenia](iot-hub-message-enrichments-overview.md).
+
 Aby uzyskać więcej informacji na temat kodowania i dekodowania wiadomości wysłane przy użyciu różnych protokołów, zobacz [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
 Poniższa lista zawiera zbiór właściwości systemu w komunikatach usługi IoT Hub.
@@ -54,13 +56,13 @@ Poniższa lista zawiera zbiór właściwości systemu w komunikatach usługi IoT
 | na |Lokalizacji docelowej, określone w [chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wiadomości. | Brak komunikatów C2D; tak, w przeciwnym razie. |
 | czas w przypadku wygaśnięcia bezwzględne |Data i godzina wygaśnięcia komunikatu. | Yes |
 | iothub enqueuedtime |Data i godzina [chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wiadomość została odebrana przez usługę IoT Hub. | Brak komunikatów C2D; tak, w przeciwnym razie. |
-| correlation-id |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera identyfikator komunikatu żądania we wzorcach "żądanie-odpowiedź". | Yes |
+| correlation-id |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera identyfikator komunikatu żądania we wzorcach "żądanie-odpowiedź". | Tak |
 | user-id |Identyfikator używany do określenia pochodzenia wiadomości. Gdy komunikaty są generowane przez usługę IoT Hub, jest równa `{iot hub name}`. | Nie |
-| potwierdzenia iothub |Generator komunikat o opinię. Ta właściwość jest używana w komunikatów z chmury do urządzeń do usługi IoT Hub do generowania komunikatów zwrotnych w wyniku użycia komunikatu żądania przez urządzenie. Możliwe wartości: **Brak** (ustawienie domyślne): Brak komunikatu opinii jest generowany, **dodatnią**: Jeśli wiadomość została ukończona, wyświetlony komunikat opinii **ujemna**: odbierania komunikat opinii wygasł (lub została osiągnięta maksymalna liczba prób dostarczenia) bez kończone przez to urządzenie lub **pełne**: pozytywne i negatywne. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Yes |
+| potwierdzenia iothub |Generator komunikat o opinię. Ta właściwość jest używana w komunikatów z chmury do urządzeń do usługi IoT Hub do generowania komunikatów zwrotnych w wyniku użycia komunikatu żądania przez urządzenie. Możliwe wartości: **Brak** (ustawienie domyślne): Brak komunikatu opinii jest generowany, **dodatnią**: Jeśli wiadomość została ukończona, wyświetlony komunikat opinii **ujemna**: odbierania komunikat opinii wygasł (lub została osiągnięta maksymalna liczba prób dostarczenia) bez kończone przez to urządzenie lub **pełne**: pozytywne i negatywne. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Tak |
 | iothub-connection-device-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **deviceId** urządzenia wysyłającego wiadomość. | Brak komunikatów D2C; tak, w przeciwnym razie. |
 | iothub-connection-auth-generation-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **generationId** (zgodnie [właściwości tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties)) urządzenia, która wysłała komunikat. | Brak komunikatów D2C; tak, w przeciwnym razie. |
 | iothub-connection-auth-method |Metoda uwierzytelniania, ustawić przez usługę IoT Hub dla komunikatów z urządzenia do chmury. Ta właściwość zawiera informacje o metodę uwierzytelniania stosowaną w celu uwierzytelnienia urządzenia wysyłania wiadomości. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | Brak komunikatów D2C; tak, w przeciwnym razie. |
-| iothub-creation-time-utc | Data i godzina utworzenia komunikatu na urządzeniu. Urządzenie musi jawnie ustaw tę wartość. | Yes |
+| iothub-creation-time-utc | Data i godzina utworzenia komunikatu na urządzeniu. Urządzenie musi jawnie ustaw tę wartość. | Tak |
 
 ## <a name="message-size"></a>Rozmiar komunikatu
 

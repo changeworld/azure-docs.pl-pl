@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6557f3a4129076c1e8708208e5d4e0d4f53dcec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741788"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393285"
 ---
 # <a name="import-or-export-configuration-data"></a>Importowanie lub eksportowanie danych konfiguracji
 
@@ -29,7 +29,7 @@ Ten artykuł zawiera wskazówki do importowania i eksportowania danych za pomoc�
 
 Import powoduje przeniesienie konfiguracji magazynu danych, w konfiguracji aplikacji z istniejącym źródłem, a nie ręcznie wprowadzić informacje. Aby przeprowadzić migrację danych do magazynu konfiguracji aplikacji lub zagregowanych danych z wielu źródeł, należy użyć funkcji importowania. Konfiguracja aplikacji obsługuje importowania z pliku JSON, YAML lub właściwości.
 
-Importowanie danych przy użyciu [witryny Azure portal](https://aka.ms/azconfig/portal) lub [wiersza polecenia platformy Azure](./scripts/cli-import.md). W witrynie Azure portal wykonaj następujące kroki:
+Importowanie danych przy użyciu [witryny Azure portal](https://portal.azure.com) lub [wiersza polecenia platformy Azure](./scripts/cli-import.md). W witrynie Azure portal wykonaj następujące kroki:
 
 1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie wybierz pozycję **Import/Export**.
 
@@ -53,7 +53,7 @@ Importowanie danych przy użyciu [witryny Azure portal](https://aka.ms/azconfig/
 
 Eksportowanie zapisuje dane konfiguracji przechowywane w konfiguracji aplikacji do innego miejsca docelowego. Funkcja eksportu, na przykład, aby zapisać dane w magazynie konfiguracji aplikacji do pliku, który jest osadzony w kodzie aplikacji podczas wdrażania.
 
-Eksportowanie danych przy użyciu [witryny Azure portal](https://aka.ms/azconfig/portal) lub [wiersza polecenia platformy Azure](./scripts/cli-export.md). W witrynie Azure portal wykonaj następujące kroki:
+Eksportowanie danych przy użyciu [witryny Azure portal](https://portal.azure.com) lub [wiersza polecenia platformy Azure](./scripts/cli-export.md). W witrynie Azure portal wykonaj następujące kroki:
 
 1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie wybierz pozycję **Import/Export**.
 

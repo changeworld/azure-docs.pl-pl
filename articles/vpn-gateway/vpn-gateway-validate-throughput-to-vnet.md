@@ -2,38 +2,31 @@
 title: Sprawdzanie przepustowości sieci VPN z siecią wirtualną Azure firmy Microsoft | Dokumentacja firmy Microsoft
 description: Ten dokument ma na celu pomóc użytkownikowi, sprawdzanie przepustowości sieci z ich zasobów lokalnych na maszynie wirtualnej platformy Azure.
 services: vpn-gateway
-documentationcenter: na
-author: chadmath
+author: cherylmc
 manager: jasmc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 05/29/2019
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1117afcf6254c32ebe0a4e72ad5619606098253
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457564"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388612"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak zweryfikować przepływność sieci VPN do sieci wirtualnej
 
 Umożliwia ustanawianie bezpiecznej połączenia bramy sieci VPN, obejmujące między siecią wirtualną w ramach platformy Azure i lokalnej infrastruktury IT.
 
-W tym artykule przedstawiono sposób sprawdzania poprawności przepływność sieci z zasobami lokalnymi, maszyną wirtualną (VM) platformy Azure. Zawiera także wskazówki dotyczące rozwiązywania problemów.
+W tym artykule przedstawiono sposób sprawdzania poprawności przepływność sieci z zasobami lokalnymi, maszyną wirtualną (VM) platformy Azure. Zawiera także wskazówki dotyczące rozwiązywania problemów. 
 
 >[!NOTE]
 >Ten artykuł ma ułatwić diagnozowanie i rozwiązywanie typowych problemów dotyczących. Jeśli nie uda się rozwiązać problem, korzystając z poniższych informacji [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 >
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Połączenie bramy sieci VPN obejmuje następujące składniki:
 
@@ -127,7 +120,7 @@ Może wystąpić powolne pliku kopiowanie, gdy za pomocą Eksploratora Windows l
 - Za mało szybkość odczytu/zapisu dysku maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z magazynu Azure](../storage/common/storage-e2e-troubleshooting.md).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Interfejs umożliwiający dostęp do Internetu zewnętrznego urządzenia w środowisku lokalnym
-Jeśli lokalne urządzenie sieci VPN adresu IP dostępnego z Internetu jest uwzględniona w [sieci lokalnej](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definicji na platformie Azure, możesz napotkać niemożność Przenieś w górę zamknie połączenie sieci VPN, sporadyczne lub problemów z wydajnością.
+Jeśli lokalne urządzenie sieci VPN adresu IP dostępnego z Internetu jest uwzględniona w [sieci lokalnej](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definicja przestrzeni adresów na platformie Azure, możesz napotkać niemożność Przenieś w górę zamknie połączenie sieci VPN, sporadyczne lub problemów z wydajnością.
 
 ## <a name="checking-latency"></a>Sprawdzanie opóźnienia
 Użyj polecenia tracert do śledzenia na urządzeniu Microsoft Azure Edge, aby ustalić, czy istnieją wszelkich opóźnień powyżej 100 ms między przeskoków.
