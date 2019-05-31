@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61487486"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframe rehosting na maszynach wirtualnych platformy Azure
@@ -39,7 +39,7 @@ Rehost, ponownie skompilować, Zamień lub wycofać? IaaS lub PaaS? Aby określi
 
 Micro fokus Enterprise Server jest jednym z największych komputera mainframe rehosting dostępnych platform. Umożliwia uruchamianie obciążeń z/OS na mniej kosztowne x86 platform na platformie Azure.
 
-Aby rozpocząć:
+Aby rozpocząć pracę:
 
 - [Instalowanie serwera Enterprise i Enterprise Developer na platformie Azure](./microfocus/set-up-micro-focus-azure.md)
 - [Konfigurowanie CICS BankDemo dla dewelopera przedsiębiorstwa na platformie Azure](./microfocus/demo.md)
@@ -50,7 +50,7 @@ Aby rozpocząć:
 
 TmaxSoft OpenFrame jest rozwiązaniem rehosting popularnych mainframe używane w scenariuszach lift-and-shift. Środowisko OpenFrame na platformie Azure nadaje się do rozwoju, pokazów, testów lub obciążeń produkcyjnych.
 
-Aby rozpocząć:
+Aby rozpocząć pracę:
 
 - [Rozpoczynanie pracy z usługą TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
 - [Pobierz książkę elektroniczną](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
@@ -61,7 +61,7 @@ Programowanie Z IBM i środowiska testowego (IBM zD & T) konfiguruje poza środo
 
 Emulacja środowiska na platformie Azure można hostować różne rodzaje Z wystąpień za pośrednictwem dystrybucji kontrolowane przez deweloperów aplikacji (ADCDs). Możesz uruchomić zD & T w wersji osobistej, zD & T Sysplex równoległych i zD & T Enterprise Edition na platformie Azure i usługi Azure Stack.
 
-Aby rozpocząć:
+Aby rozpocząć pracę:
 
 - [Konfigurowanie IBM zD & T 12.0 na platformie Azure](./ibm/install-ibm-z-environment.md)
 - [Konfigurowanie ADCD na zD & T](./ibm/demo.md)

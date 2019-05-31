@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: df666843b8a42711aa860a6f8c5e916fb68f036d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: HT
+ms.openlocfilehash: 16d100256f9252b478500488c2dc5a01c7e6a0b5
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389934"
+ms.locfileid: "66418066"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -155,9 +155,11 @@ Za pomocą usługi Azure Machine Learning zautomatyzowane ML służy do tworzeni
 
 Automatyczne ML jest również dostępna w innych rozwiązaniach firmy Microsoft w takich jak:
 
-+ W aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code za pomocą [strukturze ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)
-+ [Na HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md), gdzie możesz skalować w poziomie ML szkolenia zadaniami automatycznymi na platformie Spark w klastrach HDInsight równolegle.
-+ [W usłudze Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)
+|Integracje|Opis
+|------------|-----------
+|ML.NET|Wybór modelu automatyczne i szkolenia w aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code za pomocą platformy ML.NET zautomatyzowane ML (wersja zapoznawcza). [Dowiedz się więcej](https://docs.microsoft.com/dotnet/machine-learning/automl-overview).
+|HDIsnight|Skalowanie w poziomie uczenie Maszynowe szkolenia zadaniami automatycznymi na platformie Spark w klastrach HDInsight równolegle. [Dowiedz się więcej](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md).
+|Usługa PowerBI|Wywoływanie modeli uczenia maszynowego bezpośrednio w usłudze Power BI (wersja zapoznawcza). [Dowiedz się więcej](https://docs.microsoft.com/power-bi/service-machine-learning-automated).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

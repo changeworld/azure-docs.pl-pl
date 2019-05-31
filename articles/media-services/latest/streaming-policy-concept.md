@@ -9,71 +9,75 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 510899e44e4ea4a90e21473ee6af546744c2be2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120230"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392924"
 ---
 # <a name="streaming-policies"></a>Zasady przesyłania strumieniowego
 
 W usłudze Azure Media Services v3 [przesyłania strumieniowego zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies) umożliwiają definiowanie protokołów przesyłania strumieniowego i opcje szyfrowania dla Twojego [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md). Usługa Media Services v3 zawiera kilka wstępnie zdefiniowanych zasad przesyłania strumieniowego, aby można je bezpośrednio do wersji próbnej lub produkcji. 
 
-Obecnie dostępne wstępnie zdefiniowane zasady przesyłania strumieniowego:<br/>"Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming".
+Obecnie dostępne wstępnie zdefiniowane zasady przesyłania strumieniowego:<br/>
+* 'Predefined_DownloadOnly'
+* 'Predefined_ClearStreamingOnly'
+* "Predefined_DownloadAndClearStreaming"
+* 'Predefined_ClearKey'
+* 'Predefined_MultiDrmCencStreaming' 
+* "Predefined_MultiDrmStreaming"
 
-Jeśli masz specjalnych wymagań (na przykład, jeśli chcesz określić różnych protokołów, należy użyć usługi dostarczania kluczy niestandardowych lub należy użyć ścieżki wyczyść audio), można utworzyć niestandardowe zasady przesyłania strumieniowego. 
+Następujące "drzewa decyzyjnego" pomaga w wyborze wstępnie zdefiniowanych zasad przesyłania strumieniowego dla danego scenariusza.
 
- 
 > [!IMPORTANT]
 > * Właściwości **przesyłania strumieniowego zasady** będące daty/godziny są zawsze w formacie UTC.
 > * Należy zaprojektować ograniczony zestaw zasad dla swojego konta usługi multimediów i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Drzewo decyzyjne
 
-Następujące drzewo decyzyjne pomoże Ci wybrać wstępnie zdefiniowanych zasad przesyłania strumieniowego dla danego scenariusza.
+Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
 
-Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  <br/>
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/small.png"></a> 
+<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-## <a name="examples"></a>Przykłady
+Jeśli szyfrowanie zawartości, należy utworzyć [zasad klucza zawartości](content-key-policy-concept.md), **zasad klucza zawartości** nie jest potrzebna do zwykłego przesyłania strumieniowego lub pobierania. 
 
-### <a name="not-encrypted"></a>Niezaszyfrowane
+Jeśli masz specjalnych wymagań (na przykład, jeśli chcesz określić różnych protokołów, należy użyć usługi dostarczania kluczy niestandardowych lub należy użyć ścieżki wyczyść audio), możesz to zrobić [tworzenie](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) niestandardowe zasady przesyłania strumieniowego. 
 
-Jeśli chcesz przesyłać strumieniowo Twojego pliku w Wyczyść (niezaszyfrowane), zestawu wstępnie zdefiniowanych zasad przesyłania strumieniowego wyczyść: do "Predefined_ClearStreamingOnly" (na platformie .NET, możesz użyć wyliczenia PredefinedStreamingPolicy.ClearStreamingOnly).
+## <a name="get-a-streaming-policy-definition"></a>Pobierz definicję zasad do przesyłania strumieniowego  
 
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
-    });
+Jeśli chcesz zobaczyć definicję zasad z przesyłania strumieniowego, użyj [uzyskać](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) i określ nazwę zasad. Na przykład:
+
+### <a name="rest"></a>REST
+
+Żądanie:
+
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaServices/contosomedia/streamingPolicies/clearStreamingPolicy?api-version=2018-07-01
 ```
 
-### <a name="encrypted"></a>Zaszyfrowane 
+Odpowiedź:
 
-Jeśli zachodzi potrzeba szyfrowanie zawartości przy użyciu szyfrowania koperty i cenc, ustawić zasady "Predefined_MultiDrmCencStreaming". Te zasady wskazują, że chcesz wygenerować dwa klucze zawartości (koperta i CENC) i ustawić je w lokalizatorze. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM).
-
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
-        DefaultContentKeyPolicyName = contentPolicyName
-    });
 ```
-
-Jeśli chcesz również zaszyfrować strumienia z CBCS (FairPlay), należy użyć "Predefined_MultiDrmStreaming".
+{
+  "name": "clearStreamingPolicy",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/streamingPolicies/clearStreamingPolicy",
+  "type": "Microsoft.Media/mediaservices/streamingPolicies",
+  "properties": {
+    "created": "2018-08-08T18:29:30.8501486Z",
+    "noEncryption": {
+      "enabledProtocols": {
+        "download": true,
+        "dash": true,
+        "hls": true,
+        "smoothStreaming": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 

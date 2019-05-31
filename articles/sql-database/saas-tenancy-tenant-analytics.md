@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6115d7f70c2c75898b18a27af298a44ca87ca1bd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486500"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240881"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-tenant analytics przy użyciu wyodrębnione dane — aplikacja jednej dzierżawy
  
@@ -63,7 +63,7 @@ Na koniec magazynu analytics jest wysyłane zapytanie za pomocą **usługi Power
 
 Zrozumienie, jak poszczególni dzierżawcy używa usługi służy do zapoznaj się z opcjami znakując usługi i udoskonalić usługę, aby ułatwić dzierżawcom osiągania sukcesów. Ten samouczek zawiera podstawowe przykłady rodzajów szczegółowe informacje, które można zebrać dane dzierżawy.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -241,5 +241,5 @@ Gratulacje!
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - Dodatkowe [samouczki nawiązujące do aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
-- [Zadania elastyczne](sql-database-elastic-jobs-overview.md).
+- [Zadania elastyczne](elastic-jobs-overview.md).
 - [Analizować międzydzierżawowa, przy użyciu danych wyodrębnionych - aplikacji wielodostępnej](saas-multitenantdb-tenant-analytics.md)

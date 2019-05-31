@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a1d2cc50b405df2c71d94e74973b3291a4e908cb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: HT
+ms.openlocfilehash: 04808dda193a3a472813cda852a1a2f24d00e112
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393484"
+ms.locfileid: "66417999"
 ---
 # <a name="content-key-policies"></a>Zasady kluczy zawartości
 
@@ -25,7 +25,7 @@ Usługa Media Services można dostarczanie zawartości na żywo i na żądanie d
 
 Aby określić opcje szyfrowania na strumień, należy utworzyć [przesyłania strumieniowego zasad](streaming-policy-concept.md) i powiąż ją z Twojej [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md). Możesz utworzyć [zasad klucza zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies) do skonfigurowania jak klucz zawartości (zapewniająca bezpieczny dostęp do Twojego [zasoby](assets-concept.md)) są dostarczane dla klientów końcowych. Należy ustawić wymagania (ograniczenia) zasady klucza zawartości, które muszą zostać spełnione w kolejności kluczy przy użyciu określonej konfiguracji, które mają zostać dostarczone klientom. Ta zawartość zasad klucza nie są potrzebne do zwykłego przesyłania strumieniowego lub pobierania. 
 
-Zazwyczaj należy skojarzyć swoje **zasad klucza zawartości** za pomocą usługi **lokalizatora przesyłania strumieniowego**. Alternatywnie można określić zawartości zasady klucz wewnątrz zasadę przesyłania strumieniowego, (tworząc niestandardowe zasady przesyłania strumieniowego dla zaawansowanych scenariuszy). 
+Zazwyczaj należy skojarzyć swoje **zasad klucza zawartości** za pomocą usługi [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md). Alternatywnie, można określić zawartości zasady klucz wewnątrz [przesyłania strumieniowego zasad](streaming-policy-concept.md) (podczas tworzenia niestandardowych zasad przesyłania strumieniowego dla zaawansowanych scenariuszy). 
 
 Zaleca się, aby umożliwić usługi Media Services do automatycznego generowania kluczy zawartości. Zazwyczaj będzie używać klucza długotrwałych, a do sprawdzania istnienia zasad za pomocą **uzyskać**. Aby uzyskać klucz, należy wywołać metodę oddzielnej akcji służącej do pobrania wpisów tajnych lub poświadczeń, zobacz przykład znajdujący się.
 

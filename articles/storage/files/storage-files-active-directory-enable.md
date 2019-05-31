@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: rogarana
-ms.openlocfilehash: d5e2f9dba3afee953d296316e990b58c536cbdae
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602018"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237786"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -47,13 +47,13 @@ Przed włączeniem usługi Azure AD przy użyciu protokołu SMB dla usługi Azur
 
 2.  **Włączanie usług domenowych Azure AD dla dzierżawy usługi Azure AD.**
 
-    Aby zapewnić obsługę uwierzytelniania przy użyciu poświadczeń usługi Azure AD, należy włączyć usługi Azure AD Domain Services dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie z szczegółowymi wskazówkami dotyczącymi [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
+    Aby zapewnić obsługę uwierzytelniania przy użyciu poświadczeń usługi Azure AD, należy włączyć usługi Azure AD Domain Services dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie z szczegółowymi wskazówkami dotyczącymi [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/create-instance.md).
 
     Zwykle trwa około 15 minut wdrożenia usług domenowych Azure AD zakończyć. Sprawdź, czy stan kondycji usługi domenowe Azure AD zawiera **systemem**, z włączoną synchronizacją skrótów haseł, przed przejściem do następnego kroku.
 
 3.  **Przyłączanie do domeny maszyny Wirtualnej platformy Azure za pomocą usługi Azure AD Domain Services.**
 
-    Dostępu do udziału plików przy użyciu poświadczeń usługi Azure AD z maszyny Wirtualnej, maszyna wirtualna musi być przyłączony do domeny usług domenowych Azure AD. Aby uzyskać więcej informacji na temat przyłączania do domeny maszyny Wirtualnej, zobacz [dołączanie maszyny wirtualnej systemu Windows Server do domeny zarządzanej](../../active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md).
+    Dostępu do udziału plików przy użyciu poświadczeń usługi Azure AD z maszyny Wirtualnej, maszyna wirtualna musi być przyłączony do domeny usług domenowych Azure AD. Aby uzyskać więcej informacji na temat przyłączania do domeny maszyny Wirtualnej, zobacz [dołączanie maszyny wirtualnej systemu Windows Server do domeny zarządzanej](../../active-directory-domain-services/join-windows-vm.md).
 
     > [!NOTE]
     > Uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB za pomocą usługi Azure Files jest obsługiwana tylko na platformie Azure maszyn wirtualnych uruchomionych na wersje systemów operacyjnych Windows 7 lub Windows Server 2008 R2.
@@ -79,7 +79,7 @@ Aby włączyć uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SM
 
 1. W witrynie Azure portal przejdź do istniejącego konta magazynu lub [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 2. W **ustawienia** zaznacz **konfiguracji**.
-3. Włącz **Azure uwierzytelniania usługi Active Directory dla usługi Azure Files (wersja zapoznawcza)**.
+3. Włącz **Azure uwierzytelniania usługi Active Directory dla usługi Azure Files (wersja zapoznawcza)** .
 
 Na poniższej ilustracji przedstawiono sposób włączania uwierzytelniania usługi Azure AD przy użyciu protokołu SMB dla konta magazynu.
 

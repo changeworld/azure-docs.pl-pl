@@ -5,13 +5,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: f7ac4b7434c56d356fa7e88de39e819a112ae234
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/29/2019
+ms.openlocfilehash: d39aaf458a1c67330ee1023ec2598bfb979fa48f
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723389"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393698"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Rozwiązywanie problemów przy użyciu usługi Azure HDInsight
 
@@ -28,7 +28,7 @@ ms.locfileid: "64723389"
 
 | Aby uzyskać informacje na temat | Zobacz następujące artykuły |
 | --- | --- |
-| HDInsight w systemie Linux i optymalizacja | - [Informacje o używaniu HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop pamięci i rozwiązywanie problemów z wydajnością](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Wydajność zapytań technologii Hive](https://web.archive.org/web/20190217214250/https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
+| HDInsight w systemie Linux i optymalizacja | - [Informacje o używaniu HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop pamięci i rozwiązywanie problemów z wydajnością](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Wydajność zapytań technologii Hive](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Dzienniki i zrzuty | - [Dzienniki aplikacji Apache Hadoop YARN dostępu w systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Włączanie zrzutów sterty dla usługi Apache Hadoop w systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [Analizowanie dzienników usługi HDInsight](hdinsight-debug-jobs.md)|
 | Błędy | - [Omówienie i rozwiązywanie błędów usługi WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Apache Hive ustawienia, aby naprawić błąd zdarzeń OutofMemory](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Narzędzia | - [Optymalizowanie zapytań technologii Hive](hdinsight-hadoop-optimize-hive-query.md)<br>- [Narzędzia HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Narzędzia HDInsight Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Narzędzia HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Narzędzia HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
