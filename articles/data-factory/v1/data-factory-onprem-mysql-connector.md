@@ -69,11 +69,11 @@ Poniższa tabela zawiera opis specyficzne dla usługi MySQL połączone elementy
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesMySql** |Yes |
-| serwer |Nazwa serwera MySQL. |Yes |
-| baza danych |Nazwa bazy danych MySQL. |Yes |
-| Schemat |Nazwa schematu w bazie danych. |Nie |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Yes |
+| server |Nazwa serwera MySQL. |Yes |
+| database |Nazwa bazy danych MySQL. |Yes |
+| schema |Nazwa schematu w bazie danych. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
+| userName |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Yes |
 | password |Określ hasło dla konta użytkownika, który określiłeś. |Yes |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych MySQL w środowisku lokalnym. |Yes |
 
