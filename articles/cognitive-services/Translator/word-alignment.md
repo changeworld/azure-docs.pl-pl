@@ -3,20 +3,20 @@ title: Wyrównanie Word — interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Otrzymywanie informacji, wyrównanie programu word z interfejsu API tłumaczenia tekstu.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: v-jansko
+ms.author: v-pawal
 ms.custom: seodec18
-ms.openlocfilehash: cc795d6b164a97351ec8806c6b7c8bed0c0c1266
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d48e2dd49eb3c2f449825f988618db3c6b04c0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336749"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387285"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Jak otrzymywać informacje wyrównanie programu word
 
@@ -26,7 +26,7 @@ Aby otrzymywać informacje wyrównanie, używana jest metoda Translate i zawiera
 ## <a name="alignment-information-format"></a>Format informacji o wyrównania
 Wyrównanie jest zwracana jako wartość ciągu następujący format dla każdego wyrazu w źródle. Informacje dotyczące każdego wyrazu jest oddzielona od miejsca, w tym oddzielone miejsca języków (skrypt), takich jak chiński:
 
-[[SourceTextStartIndex]:\[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 Przykład parametrów wyrównanie: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
