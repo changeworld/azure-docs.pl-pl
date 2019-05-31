@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
+ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962664"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235336"
 ---
 # <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów
 
@@ -35,7 +35,7 @@ Jeśli dopiero zaczynasz do integracji z usługą Azure Active Directory (Azure 
 > * Jeśli znajdziesz problem z jednym z naszych bibliotek uwierzytelniania, podnieść *GitHub* problem
 > * Na koniec Jeśli potrzebujesz, możesz chcieć Otwórz żądanie obsługi
 
-## <a name="search"></a>wyszukaj
+## <a name="search"></a>Wyszukiwanie
 
 Jeśli masz pytania dotyczące programowania, można znaleźć w dokumentacji, [przykłady dla usługi GitHub](https://github.com/azure-samples), lub odpowiedzi na [Stack Overflow](https://www.stackoverflow.com) pytania.
 
@@ -51,7 +51,7 @@ Gdzie *{Your wyszukiwane terminy}* odpowiadają słowa kluczowe wyszukiwania.
 
 ## <a name="use-the-development-support-tools"></a>Używanie narzędzi obsługi programowania
 
-| Tool  | Opis  |
+| Narzędzie  | Opis  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Wklej identyfikator lub tokenu dostępu w celu zdekodowania nazwy oświadczenia i wartości. |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Narzędzie, które pozwala wysyłać żądania i odpowiedzi dla interfejsu API programu Microsoft Graph. |
@@ -81,10 +81,10 @@ Następujące wpisy w witrynie Stack Overflow zawiera porady dotyczące zadawani
 
 Jeśli znajdziesz błąd lub problem związany z naszych bibliotek, należy zgłosić problem w repozytoriach usługi GitHub. Ponieważ skorzystać z bibliotek typu open source, możesz również przekazywać żądania ściągnięcia.
 
-Aby wyświetlić listę bibliotek i ich repozytoriów GitHub, zobacz następujące artykuły:
+Aby uzyskać listę bibliotek i ich repozytoriów GitHub zobacz następujące tematy:
 
 * [Biblioteki ADAL](active-directory-authentication-libraries.md) bibliotek i repozytoria GitHub
-* [Biblioteka MSAL](reference-v2-libraries.md) bibliotek i repozytoria GitHub
+* [Platformy MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. Android](https://github.com/AzureAD/microsoft-authentication-library-for-android), i [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) bibliotek i repozytoria GitHub
 
 ## <a name="open-a-support-request"></a>Otwórz żądanie obsługi
 

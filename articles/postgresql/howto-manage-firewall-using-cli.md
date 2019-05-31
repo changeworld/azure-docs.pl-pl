@@ -1,20 +1,20 @@
 ---
-title: Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure
-description: W tym artykule opisano sposób tworzenia i zarządzania usługi Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia z wiersza polecenia platformy Azure.
+title: Tworzenie i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
+description: W tym artykule opisano sposób tworzenia i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia z wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 9a96361d3fb155ea5b400990690e3c2b1f65f819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 03b1c215994e4089ad0aed4eac3868b05c564c4c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422376"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067536"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure
+# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tworzenie i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
 Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Omówienie usługi Azure Database dla PostgreSQL reguł zapory, zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md).
 
 Wirtualne reguł sieci wirtualnej można również bezpieczny dostęp do serwera. Dowiedz się więcej o [creating and managing Virtual Network i punktów końcowych i reguł za pomocą wiersza polecenia platformy Azure usługi](howto-manage-vnet-using-cli.md).

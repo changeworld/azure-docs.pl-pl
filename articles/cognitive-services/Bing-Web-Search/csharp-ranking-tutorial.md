@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: bking
-ms.openlocfilehash: 7c074d5d25453e2b2a1ddfc32422790235815f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6afaa2f497fa1a23d083c3ddd76359a49105732d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431161"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384838"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Tworzenie klienta wyszukiwania aplikacji konsoli w języku C#
 
@@ -38,7 +38,7 @@ Aby skorzystać z samouczka, potrzebne są:
 
 W programie Visual Studio utwórz projekt za pomocą kombinacji `Ctrl` + `Shift` + `N`.
 
-W **nowy projekt** okno dialogowe, kliknij przycisk **Visual C# > Windows Classic Desktop > Aplikacja Konsolowa (.NET Framework)**.
+W **nowy projekt** okno dialogowe, kliknij przycisk **Visual C# > Windows Classic Desktop > Aplikacja Konsolowa (.NET Framework)** .
 
 Nazwij aplikację **MyConsoleSearchApp**, a następnie kliknij przycisk **OK**.
 
@@ -221,7 +221,7 @@ Przed wyświetleniem jak wyświetlać wyniki według rangi, spójrz na przykład
 }
 ```
 
-`rankingResponse` Obiekt JSON ([dokumentacji](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) opisuje kolejność wyświetlania odpowiednie wyniki wyszukiwania. Zawiera co najmniej jednej z poniższych, priorytetyzacji grup:
+`rankingResponse` Obiekt JSON ([dokumentacji](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) opisuje kolejność wyświetlania odpowiednie wyniki wyszukiwania. Zawiera co najmniej jednej z poniższych, priorytetyzacji grup:
 
 - `pole`: Wyniki wyszukiwania, aby uzyskać najbardziej widoczne traktowania (na przykład wyświetlane powyżej linii głównej i paska bocznego).
 - `mainline`: Wyniki wyszukiwania w celu wyświetlenia w ramach linii głównej.

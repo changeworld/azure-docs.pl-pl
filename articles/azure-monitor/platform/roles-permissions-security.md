@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453077"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243422"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
 
@@ -28,11 +28,11 @@ Usługa Azure Monitor wbudowane role mają na celu ograniczenia dostępu do zaso
 Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji, ale nie można zmodyfikować dowolnego zasobu lub edytować wszelkie ustawienia związane z monitorowania zasobów. Ta rola jest odpowiednia dla użytkowników w organizacji, takie jak operacje lub pomocy technicznej inżynierów, którzy muszą mieć możliwość:
 
 * Wyświetlać pulpity nawigacyjne monitorowania w portalu i Utwórz swoje własne prywatne pulpity nawigacyjne monitorowania.
-* Wyświetl reguły alertu zdefiniowane w [Azure Alerts](../../azure-monitor/platform/alerts-overview.md)
-* Zapytanie dotyczące korzystania z metryk [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md), lub [międzyplatformowego interfejsu wiersza polecenia](../../azure-monitor/platform/cli-samples.md).
+* Wyświetl reguły alertu zdefiniowane w [Azure Alerts](alerts-overview.md)
+* Zapytanie dotyczące korzystania z metryk [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](powershell-quickstart-samples.md), lub [międzyplatformowego interfejsu wiersza polecenia](cli-samples.md).
 * Wyślij zapytanie do dziennika aktywności przy użyciu portalu, interfejsu API REST usługi Azure Monitor, poleceń cmdlet programu PowerShell lub wieloplatformowego interfejsu wiersza polecenia.
-* Widok [ustawień diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.
-* Widok [profil dziennika](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) dla subskrypcji.
+* Widok [ustawień diagnostycznych](diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.
+* Widok [profil dziennika](activity-log-export.md) dla subskrypcji.
 * Wyświetl ustawienia automatycznego skalowania.
 * Wyświetl działania alertu i ustawienia.
 * Dostęp do danych usługi Application Insights i wyświetlanie danych analitycznych w sztucznej Inteligencji.
@@ -52,9 +52,9 @@ Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie 
 Osoby przypisane do roli Współautor monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji i utworzyć lub zmodyfikować ustawienia monitorowania, ale nie można modyfikować żadnych innych zasobów. Ta rola jest podzbiorem roli Czytelnik monitorowania i jest przeznaczona dla członków zespołu monitorowania lub dostawcy usług zarządzanych, które oprócz powyższego, uprawnienia muszą być również możliwość organizacji:
 
 * Publikuj monitorowania pulpitów nawigacyjnych jako udostępniony pulpit nawigacyjny.
-* Ustaw [ustawień diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.\*
-* Ustaw [profil dziennika](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) dla subskrypcji.\*
-* Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
+* Ustaw [ustawień diagnostycznych](diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.\*
+* Ustaw [profil dziennika](activity-log-export.md) dla subskrypcji.\*
+* Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](alerts-overview.md).
 * Utwórz testy sieci web usługi Application Insights i składników.
 * Obszar roboczy usługi Log Analytics listy udostępnionych kluczy.
 * Włącz lub wyłącz pakiety monitorowania, w obszarze roboczym usługi Log Analytics.

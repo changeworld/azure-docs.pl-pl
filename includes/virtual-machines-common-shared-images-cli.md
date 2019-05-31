@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2019
+ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 9647cdd584b53f581f46f728ca2d08f9a113ce92
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 841027fe8d6b97e661faa038dc9381edbb3d4cd8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156151"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226032"
 ---
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -25,6 +25,8 @@ Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz u
 
 Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
+Jeśli wolisz zainstalować i używać go lokalnie interfejsu wiersza polecenia, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli).
+
 ## <a name="create-an-image-gallery"></a>Tworzenie galerii obrazów 
 
 Galeria obrazów jest podstawowy zasób umożliwiający włączenie udostępniania obrazów. Dozwolone znaki dla nazwy galerii są wielkie i małe litery, cyfry, kropki i okresów. Nazwa galerii nie może zawierać łączników.   Galeria nazwy muszą być unikatowe w ramach Twojej subskrypcji. 
@@ -33,7 +35,7 @@ Tworzenie galerii obrazów przy użyciu [tworzenie az sig](/cli/azure/sig#az-sig
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
-az sig create -g myGalleryRG --gallery-name myGallery
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
 ## <a name="create-an-image-definition"></a>Utwórz definicję obrazu
@@ -44,7 +46,7 @@ Tworzenie definicji początkowej obraz w galerii, używając [utworzyć definicj
 
 ```azurecli-interactive 
 az sig image-definition create \
-   -g myGalleryRG \
+   --resource-group myGalleryRG \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --publisher myPublisher \
@@ -60,16 +62,16 @@ Tworzenie wersji obrazu, stosownie do potrzeb, przy użyciu [az obraz galerii tw
 
 Dozwolone znaki wersję obrazu są liczby i kropki. Numery muszą należeć do zakresu 32-bitową liczbę całkowitą. Format: *Brak elementu MajorVersion*. *MinorVersion*. *Poprawka*.
 
-W tym przykładzie jest wersja naszych obrazu *1.0.0* i zamierzamy utworzyć 2 repliki w *zachodnio-środkowe stany USA* region, 1 repliki w *południowo-środkowe stany USA* region i 1 repliki w *wschodnie stany USA 2* regionu.
+W tym przykładzie jest wersja naszych obrazu *1.0.0* i zamierzamy utworzyć 2 repliki w *zachodnio-środkowe stany USA* region, 1 repliki w *południowo-środkowe stany USA* region i 1 repliki w *wschodnie stany USA 2* regionem przy użyciu magazynu strefowo nadmiarowego.
 
 
 ```azurecli-interactive 
 az sig image-version create \
-   -g myGalleryRG \
+   --resource-group myGalleryRG \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
-   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1" \
+   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1=Standard_ZRS" \
    --replica-count 2 \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
 ```
@@ -77,5 +79,24 @@ az sig image-version create \
 > [!NOTE]
 > Musisz czekać na wersję obrazu do całkowitego zakończenia są zbudowane i replikowane korzystać z tego samego obrazu zarządzanego, aby utworzyć inną wersję obrazu.
 >
-> Można również przechowywać swoje wersję obrazu w [magazyn Strefowo nadmiarowy](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , dodając `--storage-account-type standard_zrs` po utworzeniu wersję obrazu.
+> Można również przechowywać wszystkie repliki wersji obrazu w [magazyn Strefowo nadmiarowy](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , dodając `--storage-account-type standard_zrs` po utworzeniu wersję obrazu.
 >
+
+## <a name="share-the-gallery"></a>Udostępnianie galerii
+
+Firma Microsoft zaleca, udostępniać innym użytkownikom na poziomie galerii. Aby uzyskać identyfikator obiektu w galerii, użyj [Pokaż sig az](/cli/azure/sig#az-sig-show).
+
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
+```
+
+Użyj Identyfikatora obiektu jako zasięg, wraz z adresem e-mail i [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create) można udzielić użytkownikowi dostępu do galerii obrazów udostępnionych.
+
+```azurecli-interactive
+az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>
+```
+
+

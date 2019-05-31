@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485155"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304137"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i eksplorowanie oddzielną aplikację pojedynczej dzierżawy, który używa usługi Azure SQL Database
 
@@ -25,9 +25,9 @@ W tym samouczku, wdrażanie i eksplorowanie przykładowej aplikacji SaaS o nazwi
 
 Aplikacja autonomiczna lub wzorzec aplikacji dla dzierżawcy wdraża wystąpienie aplikacji, dla każdej dzierżawy.  Każda aplikacja jest skonfigurowany do określonej dzierżawy i wdrożone w grupie oddzielne zasoby platformy Azure. Wiele wystąpień aplikacji są aprowizowane zapewnienie rozwiązanie dla wielu dzierżawców. Ten wzorzec jest najlepiej nadaje się do mniejszej liczby, dzierżaw, gdzie izolacji dzierżawy ma najwyższy priorytet. Platforma Azure oferuje partnera programów, które umożliwiają zasobom można wdrożyć w subskrypcji dzierżawcy i zarządzane przez dostawcę usług w imieniu dzierżawcy. 
 
-W tym samouczku wdrożysz trzy aplikacje autonomiczne trzy dzierżaw do subskrypcji platformy Azure.  Masz pełny dostęp i pracować z poszczególnych składników aplikacji.
+W tym samouczku wdrożysz trzy aplikacje autonomiczne trzy dzierżaw w ramach subskrypcji platformy Azure.  Masz pełny dostęp i pracować z poszczególnych składników aplikacji.
 
-Skrypty kodu i zarządzanie źródłowy aplikacji są dostępne w [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) repozytorium GitHub. Aplikacja została utworzona za pomocą programu Visual Studio 2015 i nie zostało pomyślnie Otwórz i skompiluj w programie Visual Studio 2017 bez aktualizowania.
+Skrypty kodu i zarządzanie źródłowy aplikacji są dostępne w [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) repozytorium GitHub. Aplikacji został utworzony przy użyciu programu Visual Studio 2015 nie pomyślnie otworzyć i skompilowany w programie Visual Studio 2019 r bez aktualizowania.
 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Gdzie można uzyskać kod źródłowy aplikacji i skrypty zarządzania.
 > * Temat serwerów i baz danych, które składają się na aplikację.
 
-Dodatkowe samouczki zostaną wydane. Pozwoli ich do eksplorowania szeroką gamę scenariuszy zarządzania, na podstawie tego wzorca aplikacji.   
+Dodatkowe samouczki zostaną wydane. Będziesz umożliwiają one Eksplorowanie szeroką gamę scenariuszy zarządzania, na podstawie tego wzorca aplikacji.   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>Wdróż aplikację Wingtip Tickets autonomiczny SaaS
 
@@ -56,7 +56,7 @@ Wdróż aplikację dla trzech podana dzierżaw:
     > Niektóre zapory uwierzytelniania i serwera są celowo niezabezpieczone w celach demonstracyjnych. **Utwórz nową grupę zasobów** dla każdego wdrożenia aplikacji.  Nie należy używać istniejącej grupy zasobów. Nie należy używać tej aplikacji lub wszystkie zasoby, które tworzy, w środowisku produkcyjnym. Po zakończeniu pracy z aplikacjami, aby zatrzymać ich rozliczanie, należy usunąć wszystkie grupy zasobów.
 
     Najlepiej użyć tylko małe litery, cyfry i łączniki w nazwach zasobów.
-    * Aby uzyskać **grupy zasobów**, wybierz pozycję Utwórz nowy, a następnie podaj nazwę małe grupy zasobów. **firmy Wingtip-sa -\<venueName\>-\<użytkownika\>**  jest zalecany wzorzec.  Aby uzyskać \<venueName\>, zastąp nazwą miejsca, bez spacji. Aby uzyskać \<użytkownika\>, zastąp wartość użytkownika poniżej.  W ramach tego wzorca nazwy grup zasobów mogą być *wingtip-sa-contosoconcerthall-af1*, *wingtip-sa-dogwooddojo-af1*, *wingtip-sa-fabrikamjazzclub-af1*.
+    * Aby uzyskać **grupy zasobów**, wybierz pozycję Utwórz nowy, a następnie podaj nazwę małe grupy zasobów. **firmy Wingtip-sa -\<venueName\>-\<użytkownika\>**  jest zalecany wzorzec.  Aby uzyskać \<venueName\>, zastąp nazwę właściwości nie może zawierać spacji. Aby uzyskać \<użytkownika\>, zastąp wartość symbolu użytkownika poniżej.  W ramach tego wzorca nazwy grup zasobów mogą być *wingtip-sa-contosoconcerthall-af1*, *wingtip-sa-dogwooddojo-af1*, *wingtip-sa-fabrikamjazzclub-af1*.
     * Wybierz **lokalizacji** z listy rozwijanej.
 
     * Dla **użytkownika** — firma Microsoft zaleca wartość krótki użytkownika, takie jak inicjały i cyfrą: na przykład *af1*.
@@ -107,7 +107,7 @@ Każda baza danych dzierżawy jest 50 jednostek DTU *autonomiczny* bazy danych.
 <!--
 * Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
 - Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).
@@ -126,6 +126,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Temat serwerów i baz danych, które składają się na aplikację.
 > * Jak usunąć przykładowych zasobów w celu zakończenia ich rozliczania.
 
-Następnie spróbuj [Provision and Catalog](saas-standaloneapp-provision-and-catalog.md) samouczek, w którym przedstawimy korzystanie z katalogu dzierżawy, który umożliwia szeroką gamę scenariuszy międzydzierżawowa, takich jak schemat, zarządzaniem i dzierżawami analizy.
+Następnie spróbuj [Provision and Catalog](saas-standaloneapp-provision-and-catalog.md) samouczek, w której dowiesz się o użycie katalogu dzierżawy, który umożliwia szeroką gamę scenariuszy międzydzierżawowa, takich jak schemat, zarządzaniem i dzierżawami analizy.
  
 

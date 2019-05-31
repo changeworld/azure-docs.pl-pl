@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07e8fce5fd8db5d2070b8e382a0eba2ae7187b0d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485258"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242785"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematami w aplikacji SaaS, która używa podzielonej na fragmenty wielodostępnych baz danych SQL
 
@@ -31,7 +31,7 @@ Ten samouczek analizuje dwa następujące scenariusze:
 - Wdróż aktualizacje danych referencyjnych dla wszystkich dzierżaw.
 - Ponowne kompilowanie indeksu dla tabeli, który zawiera dane referencyjne.
 
-[Zadań elastycznych](sql-database-elastic-jobs-overview.md) funkcja usługi Azure SQL Database jest używana do wykonywania tych operacji w bazach danych dzierżawy. Zadania również działać w bazie danych dzierżawy "template". W przykładowej aplikacji Wingtip Tickets tego szablonu bazy danych jest kopiowany do obsługi administracyjnej nowej bazy danych dzierżawy.
+[Zadań elastycznych](elastic-jobs-overview.md) funkcja usługi Azure SQL Database jest używana do wykonywania tych operacji w bazach danych dzierżawy. Zadania również działać w bazie danych dzierżawy "template". W przykładowej aplikacji Wingtip Tickets tego szablonu bazy danych jest kopiowany do obsługi administracyjnej nowej bazy danych dzierżawy.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -57,7 +57,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Wprowadzenie do wzorców zarządzania schematu SaaS
 
-Model podzielonej na fragmenty wielodostępną bazą danych, używane w tym przykładzie umożliwia bazy danych dzierżaw zawierają co najmniej jednego dzierżawcy. W tym przykładzie przedstawiono mogą używać różnych wielu dzierżawy i jedną dzierżawą baz danych, umożliwiając *hybrydowego* model zarządzania dzierżawy. Zarządzanie zmianami w tych baz danych może być skomplikowane. [Zadania elastyczne](sql-database-elastic-jobs-overview.md) ułatwia administrowanie i zarządzanie dużą liczbą bazy danych. Zadania umożliwiają bezpieczne i niezawodne uruchamianie skryptów języka Transact-SQL, jako zadań w odniesieniu do grupy baz danych dzierżaw. Zadania są niezależne od działań użytkownika lub danych wejściowych. Ta metoda może służyć do wdrażania zmian schematu lub wspólnych danych referencyjnych, we wszystkich dzierżawach w aplikacji. Zadania elastyczne można również utrzymania złoty szablonu kopię bazy danych. Ten szablon jest używany do tworzenia nowych dzierżaw, zawsze zapewnienie najnowszy schemat i dane referencyjne są używane.
+Model podzielonej na fragmenty wielodostępną bazą danych, używane w tym przykładzie umożliwia bazy danych dzierżaw zawierają co najmniej jednego dzierżawcy. W tym przykładzie przedstawiono mogą używać różnych wielu dzierżawy i jedną dzierżawą baz danych, umożliwiając *hybrydowego* model zarządzania dzierżawy. Zarządzanie zmianami w tych baz danych może być skomplikowane. [Zadania elastyczne](elastic-jobs-overview.md) ułatwia administrowanie i zarządzanie dużą liczbą bazy danych. Zadania umożliwiają bezpieczne i niezawodne uruchamianie skryptów języka Transact-SQL, jako zadań w odniesieniu do grupy baz danych dzierżaw. Zadania są niezależne od działań użytkownika lub danych wejściowych. Ta metoda może służyć do wdrażania zmian schematu lub wspólnych danych referencyjnych, we wszystkich dzierżawach w aplikacji. Zadania elastyczne można również utrzymania złoty szablonu kopię bazy danych. Ten szablon jest używany do tworzenia nowych dzierżaw, zawsze zapewnienie najnowszy schemat i dane referencyjne są używane.
 
 ![ekran](media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -161,8 +161,7 @@ Sprawdź następujące elementy w *OnlineReindex.sql* skryptu:
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [Zarządzanie skalowaną w poziomie bazą danych w chmurze](sql-database-elastic-jobs-overview.md)
-* [Tworzenie baz danych skalowanych w poziomie i zarządzanie nimi](sql-database-elastic-jobs-create-and-manage.md)
+* [Zarządzanie skalowaną w poziomie bazą danych w chmurze](elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

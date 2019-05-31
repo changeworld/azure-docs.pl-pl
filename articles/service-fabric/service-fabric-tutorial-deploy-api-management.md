@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 92b1e95598da27f0b7d7df30dfa4a82824b4a48c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158221"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306813"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integracja usługi API Management z usługą Service Fabric na platformie Azure
 
@@ -75,8 +75,8 @@ Utwórz podstawowe bezstanowa ASP.NET Core usługi Reliable Service przy użyciu
 Uruchom program Visual Studio jako administrator i utwórz usługę ASP.NET Core:
 
  1. W programie Visual Studio wybierz pozycję Plik -> Nowy projekt.
- 2. W obszarze Chmura wybierz szablon aplikacji Service Fabric i nadaj mu nazwę **„ApiApplication”**.
- 3. Wybierz szablon bezstanowej usługi ASP.NET Core i nazwij projekt **„WebApiService”**.
+ 2. W obszarze Chmura wybierz szablon aplikacji Service Fabric i nadaj mu nazwę **„ApiApplication”** .
+ 3. Wybierz szablon bezstanowej usługi ASP.NET Core i nazwij projekt **„WebApiService”** .
  4. Wybierz szablon projektu Web API ASP.NET Core 2.0.
  5. Po utworzeniu projektu otwórz plik `PackageRoot\ServiceManifest.xml` i usuń atrybut `Port` z konfiguracji zasobu punktu końcowego:
 
@@ -288,7 +288,7 @@ Teraz możesz wysłać żądanie do usługi zaplecza Service Fabric za pośredni
 
 Klaster składa się z innych zasobów platformy Azure poza samym zasobem klastra. Najprostszym sposobem na usunięcie klastra i wszystkich wykorzystywanych przez niego zasobów jest usunięcie grupy zasobów.
 
-Zaloguj się do platformy Azure i wybierz identyfikator subskrypcji, za pomocą którego chcesz usunąć klaster.  Identyfikator subskrypcji można uzyskać po zalogowaniu się do [witryny Azure Portal](https://portal.azure.com). Usuń grupę zasobów i wszystkie zasoby klastra, używając [polecenia cmdlet Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
+Logowanie do platformy Azure i wybierz identyfikator subskrypcji, z którą chcesz usunąć klaster.  Identyfikator subskrypcji można uzyskać po zalogowaniu się do [witryny Azure Portal](https://portal.azure.com). Usuń grupę zasobów i wszystkie zasoby klastra, używając [polecenia cmdlet Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

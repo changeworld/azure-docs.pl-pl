@@ -4,7 +4,7 @@ description: W tym artykule opisano sposób zarządzania danymi referencyjnymi w
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 683aa2c7112533d9e3c06ddcb238048a26c75db3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510045"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237612"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi GA dla środowiska usługi Azure Time Series Insights przy użyciuC#
 
@@ -33,7 +33,7 @@ Wykonaj następujące kroki, aby skompilować i uruchomić przykładowy kod:
 
    Aby dowiedzieć się, jak skonfigurować nieinterakcyjnych aplikacji, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md).
 
-1. Edytuj kod przykładowy umożliwiający Zastąp stałe przykład, po tym **DUMMY #**, w pobliżu początku kodu.
+1. Edytuj kod przykładowy umożliwiający Zastąp stałe przykład, po tym **DUMMY #** , w pobliżu początku kodu.
 
 > [!NOTE]
 > Wyświetl GA przykładowego kodu w [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: e586ab1bdcca9d6109cf42b6341c333fabb02993
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/28/2019
+ms.openlocfilehash: 9316ca0dfaa2d550ea9a2b89d2c93e0e37230f62
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601672"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388343"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -77,7 +77,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
     
     Aby znaleźć istniejącej konfiguracji zabezpieczeń, użyj następujących poleceń programu Azure PowerShell lub wiersza polecenia platformy Azure:
 
-    * Sieciowe grupy zabezpieczeń
+    * Grupy zabezpieczeń sieci
 
         Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wpisz polecenie:
     
@@ -211,41 +211,39 @@ Nawiązywanie Apache Ambari i stron sieci web za pośrednictwem sieci wirtualnej
 
 ## <a id="networktraffic"></a> Kontrolowanie ruchu sieciowego
 
+### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>Kontrolowanie ruchu przychodzącego w klastrach HDInsight
+
 Ruch sieciowy w sieciach wirtualnych platformy Azure mogą być kontrolowane za pomocą następujących metod:
 
 * **Sieciowe grupy zabezpieczeń** (NSG) umożliwiają filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../virtual-network/security-overview.md) dokumentu.
 
-    > [!WARNING]  
-    > HDInsight nie obsługuje Ograniczanie ruchu wychodzącego. Powinien być dozwolony ruch wychodzący.
-
-* **Trasy zdefiniowane przez użytkownika** (UDR) określać przepływ ruchu między zasobami w sieci. Aby uzyskać więcej informacji, zobacz [trasy zdefiniowane przez użytkownika i przesyłaniu dalej IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
-
 * **Sieciowych urządzeń wirtualnych** replikować z działaniem urządzeń, takich jak routery i zapory. Aby uzyskać więcej informacji, zobacz [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
-Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do kondycji HDInsight i usług zarządzania, zarówno dla ruchu przychodzącego i wychodzącego z sieci Wirtualnej. Przy użyciu sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika, należy się upewnić, że te usługi nadal może komunikować się z klastrem HDInsight.
+Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do kondycji HDInsight i usług zarządzania, zarówno dla ruchu przychodzącego i wychodzącego z sieci Wirtualnej. Przy użyciu sieciowych grup zabezpieczeń, należy się upewnić, że te usługi nadal może komunikować się z klastrem HDInsight.
 
-### <a id="hdinsight-ip"></a> HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika
+![Diagram jednostek HDInsight utworzone w sieci Wirtualnej platformy Azure niestandardowe](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-Jeśli planujesz użycie **sieciowe grupy zabezpieczeń** lub **trasy zdefiniowane przez użytkownika** do sterowania ruchem sieciowym, wykonaj następujące czynności przed zainstalowaniem HDInsight:
+### <a id="hdinsight-ip"></a> HDInsight przy użyciu sieciowych grup zabezpieczeń
+
+Jeśli planujesz użycie **sieciowe grupy zabezpieczeń** do sterowania ruchem sieciowym, wykonaj następujące czynności przed zainstalowaniem HDInsight:
 
 1. Określ region platformy Azure, które będą używane dla HDInsight.
 
 2. Określ adresy IP wymagane przez HDInsight. Aby uzyskać więcej informacji, zobacz [adresy IP wymagane przez HDInsight](#hdinsight-ip) sekcji.
 
-3. Utwórz lub zmodyfikuj sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika dla podsieci, której planujesz zainstalować HDInsight do.
+3. Utwórz lub zmodyfikuj sieciowych grup zabezpieczeń dla podsieci, której planujesz zainstalować HDInsight do.
 
-    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na __dla ruchu przychodzącego__ ruch na porcie __443__ z adresu IP adresów. Pozwoli to zagwarantować, usługi zarządzania usługi HDI dotrzeć do klastra z zewnętrznej sieci Wirtualnej.
-    * __Trasy zdefiniowane przez użytkownika__: Jeśli planujesz użyć tras zdefiniowanych przez użytkownika, tworzona jest trasa dla każdego adresu IP i ustawić __typu następnego przeskoku__ do __Internet__. Należy również zezwolić wszelki ruch wychodzący z sieci Wirtualnej bez żadnych ograniczeń. Na przykład mogą kierować cały pozostały ruch do platformy Azure zapory lub sieciowych urządzeń wirtualnych (hostowanego na platformie Azure) do celów monitorowania, ale ruch wychodzący nie powinien być blokowany.
+    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na __dla ruchu przychodzącego__ ruch na porcie __443__ z adresu IP adresów. Pozwoli to zagwarantować, że usługi zarządzania HDInsight może osiągnąć klastra z spoza sieci wirtualnej.
 
-Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika dokumentacji:
+Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [omówienie sieciowych grup zabezpieczeń](../virtual-network/security-overview.md).
 
-* [Sieciowa grupa zabezpieczeń](../virtual-network/security-overview.md)
+### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Kontrolowanie ruchu wychodzącego z klastrów HDInsight
 
-* [Trasy zdefiniowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md)
+Aby uzyskać więcej informacji na temat kontrolowania ruchu wychodzącego z klastrami HDInsight, zobacz [skonfigurować ograniczenie ruchu sieciowego ruchu wychodzącego dla usługi Azure HDInsight clusters](hdinsight-restrict-outbound-traffic.md).
 
 #### <a name="forced-tunneling-to-on-premise"></a>Wymuszonego tunelowania do środowiska lokalnego
 
-Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu którym cały ruch z podsieci jest zmuszony do określonej sieci lub lokalizacji, takiej jak sieć lokalną. HDInsight jest __nie__ obsługi wymuszonego tunelowania do sieci lokalnej. Jeśli używasz zapory usługi Azure lub sieciowe urządzenie wirtualne hostowane na platformie Azure, można użyć tras zdefiniowanych przez użytkownika, przekierowywanie ruchu do konta magazynu do celów monitorowania i zezwolić na cały ruch wychodzący.
+Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu którym cały ruch z podsieci jest zmuszony do określonej sieci lub lokalizacji, takiej jak sieć lokalną. HDInsight jest __nie__ obsługi wymuszonego tunelowania ruchu w sieci lokalnej. 
 
 ## <a id="hdinsight-ip"></a> Wymaganych adresów IP
 
@@ -258,7 +256,7 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
 
 1. Zawsze muszą zezwalać na ruch z następujących adresów IP:
 
-    | Źródłowy adres IP | Lokalizacja docelowa  | Direction |
+    | Źródłowy adres IP | Miejsce docelowe  | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | \*:443 | Przychodzący |
     | 23.99.5.239 | \*:443 | Przychodzący |
@@ -270,7 +268,7 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     > [!IMPORTANT]  
     > Jeśli region platformy Azure, którego używasz, nie jest wymieniony, następnie używać tylko cztery adresy IP z kroku 1.
 
-    | Kraj | Obszar | Dozwolone adresy IP źródła | Dozwolone docelowego | Direction |
+    | Kraj | Region | Dozwolone adresy IP źródła | Dozwolone docelowego | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Azja | Azja Wschodnia | 23.102.235.122</br>52.175.38.134 | \*:443 | Przychodzący |
     | &nbsp; | Azja Południowo-Wschodnia | 13.76.245.160</br>13.76.136.249 | \*:443 | Przychodzący |
@@ -292,14 +290,14 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     | &nbsp; | Indie Południowe | 104.211.223.67<br/>104.211.216.210 | \*:443 | Przychodzący |
     | Japonia | Japonia Wschodnia | 13.78.125.90</br>13.78.89.60 | \*:443 | Przychodzący |
     | &nbsp; | Japonia Zachodnia | 40.74.125.69</br>138.91.29.150 | \*:443 | Przychodzący |
-    | Korea Południowa | Korea Środkowa | 52.231.39.142</br>52.231.36.209 | \*:433 | Przychodzący |
+    | Korea | Korea Środkowa | 52.231.39.142</br>52.231.36.209 | \*:433 | Przychodzący |
     | &nbsp; | Korea Południowa | 52.231.203.16</br>52.231.205.214 | \*:443 | Przychodzący
-    | Zjednoczone Królestwo | Zjednoczone Królestwo (zachód) | 51.141.13.110</br>51.141.7.20 | \*:443 | Przychodzący |
-    | &nbsp; | Zjednoczone Królestwo (południe) | 51.140.47.39</br>51.140.52.16 | \*:443 | Przychodzący |
-    | Stany Zjednoczone Ameryki | Środkowe stany USA | 13.67.223.215</br>40.86.83.253 | \*:443 | Przychodzący |
+    | Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | 51.141.13.110</br>51.141.7.20 | \*:443 | Przychodzący |
+    | &nbsp; | Południowe Zjednoczone Królestwo | 51.140.47.39</br>51.140.52.16 | \*:443 | Przychodzący |
+    | Stany Zjednoczone | Środkowe stany USA | 13.67.223.215</br>40.86.83.253 | \*:443 | Przychodzący |
     | &nbsp; | Wschodnie stany USA | 13.82.225.233</br>40.71.175.99 | \*:443 | Przychodzący |
-    | &nbsp; | Północno-środkowe stany USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Przychodzący |
-    | &nbsp; | Zachodnio-środkowe stany USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Przychodzący |
+    | &nbsp; | Środkowo-północne stany USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Przychodzący |
+    | &nbsp; | Środkowo-zachodnie stany USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Przychodzący |
     | &nbsp; | Zachodnie stany USA | 13.64.254.98</br>23.101.196.19 | \*:443 | Przychodzący |
     | &nbsp; | Zachodnie stany USA 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Przychodzący |
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7c1167a6170cdc0b897c57a51c417a9312b6f41a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eb6a5ed74073a1a31fc9bb1972266e76c7bc2782
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794153"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418470"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertuj maszynę wirtualną z systemem Linux z dysków niezarządzanych do usługi managed disks
 
@@ -34,6 +34,7 @@ W tym artykule przedstawiono sposób konwertowania maszyn wirtualnych przy użyc
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
+* Oryginalne wirtualne dyski twarde i konto magazynu używane przez maszynę wirtualną przed konwersją nie są usuwane. Nadal będą za nie naliczane opłaty. Aby uniknąć naliczania opłat za te artefakty, usuń oryginalne obiekty blob dysków VHD po upewnieniu się, że konwersja została zakończona. Jeśli musisz znaleźć tych niedołączone dyski, aby można było je usunąć, zobacz artykuł naszych [Znajdowanie i usuwanie niedołączonych Azure dyski zarządzane i niezarządzane](find-unattached-disks.md).
 
 ## <a name="convert-single-instance-vms"></a>Konwertowanie maszyn wirtualnych z jednego wystąpienia
 W tej sekcji opisano sposób konwertowania maszyn wirtualnych platformy Azure z jednego wystąpienia z dysków niezarządzanych do dysków zarządzanych. (W przypadku maszyn wirtualnych w zestawie dostępności, zobacz następną sekcję). Ten proces można użyć do konwersji maszyny wirtualne z dysków w warstwie premium (SSD), niezarządzanych dysków na dyski zarządzane w warstwie premium lub standardowa (HDD), niezarządzanych do dysków zarządzanych w warstwie standardowa.

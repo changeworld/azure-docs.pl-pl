@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 291ec651061b7a8a3ea3c0645a6bd6581d529ef6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170391"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245004"
 ---
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
@@ -56,7 +56,6 @@ Utwórz definicję Galeria obrazów w galerii. W tym przykładzie nosi nazwę ob
 1. Po zakończeniu wdrożenia wybierz **przejdź do zasobu**.
 
 
-
 ## <a name="create-an-image-version"></a>Utwórz wersję obrazu
 
 Utwórz wersję obrazu na podstawie obrazu zarządzanego. W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych. Wybierając regiony docelowe dla replikacji, należy pamiętać, że również należy dołączyć *źródła* regionie co miejsce docelowe dla replikacji.
@@ -75,3 +74,20 @@ Dozwolone znaki wersję obrazu są liczby i kropki. Numery muszą należeć do z
 1. Po zakończeniu wdrożenia wybierz **przejdź do zasobu**.
 
 Replikować obraz do wszystkich regionów docelowych może potrwać.
+
+## <a name="share-the-gallery"></a>Udostępnianie galerii
+
+Firma Microsoft zaleca udostępnieniu dostęp na poziomie galerii obrazów. Poniżej przedstawiono udostępnianie galerii, który został utworzony.
+
+1. Otwórz [portal Azure](https://portal.azure.com).
+1. W menu po lewej stronie wybierz **grup zasobów**. 
+1. Z listy grup zasobów wybierz **myGalleryRG**. Zostanie otwarty blok grupy zasobów.
+1. W menu po lewej stronie **myGalleryRG** wybierz opcję **kontrola dostępu (IAM)** . 
+1. W obszarze **Dodaj przypisanie roli**, wybierz opcję **Dodaj**. **Dodaj przypisanie roli** spowoduje to otwarcie okienka. 
+1. W obszarze **roli**, wybierz opcję **czytnika**.
+1. W obszarze **Przypisz dostęp do**, pozostaw wartość domyślną **użytkownika, grupy lub jednostki usługi Azure AD**.
+1. W obszarze **wybierz**, wpisz adres e-mail osoby, które chcesz zaprosić.
+1. Jeśli użytkownik znajduje się poza organizacją, zostanie wyświetlony komunikat **tego użytkownika zostanie wysłana wiadomość e-mail, który pozwala na współpracę z firmą Microsoft.** Wybierz użytkownika, za pomocą adresu e-mail, a następnie kliknij przycisk **Zapisz**.
+
+Jeśli użytkownik jest spoza organizacji, otrzymają one wiadomość e-mail z zaproszeniem do dołączenia do organizacji. Użytkownik musi zaakceptować zaproszenie, a następnie będą mogli zobaczyć galerii i wszystkie definicje obrazu i wersji na liście zasobów.
+

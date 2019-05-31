@@ -2,16 +2,16 @@
 title: Jak zmienić, usunąć lub zarządzać grupami zarządzania - Azure rządów
 description: Dowiedz się, jak wyświetlać, obsługi, aktualizacji i usuwania hierarchia grup zarządzania.
 author: rthorn17
-ms.service: azure-resource-manager
-ms.date: 04/04/2019
+ms.service: governance
+ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950307"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242948"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -128,7 +128,7 @@ Możesz wyświetlić wszystkie grupy zarządzania już bezpośredniego lub dzied
 
 1. Aby wyświetlić szczegóły grupy zarządzania, wybierz **(szczegóły)** łącze obok tytułu grupy zarządzania. Jeśli ten link nie jest dostępna, nie masz uprawnień do wyświetlania tej grupy zarządzania.
 
-   ![Główny](./media/main.png)
+   ![Main](./media/main.png)
 
 ### <a name="view-in-powershell"></a>Widok w programie PowerShell
 
@@ -206,10 +206,12 @@ Jednym z powodów tworzenia grupy zarządzania jest powiązać razem subskrypcji
 Aby przenieść subskrypcję, wszystkie z następujących uprawnień RBAC, muszą być spełnione:
 
 - Rola "Właściciel" w subskrypcji podrzędnych.
-- "Właściciel", "Współautor" lub "Współautor grupy zarządzania" roli na group.* zarządzania nadrzędnego docelowej
-- "Właściciel", "Współautor" lub "Współautor grupy zarządzania" roli na istniejące group.* zarządzania nadrzędnego
+- "Właściciel", "Współautor" lub "Współautor grupy zarządzania" Rola nadrzędna grupa zarządzania docelowego.
+- Rola "Owner", "Współautor" lub "Współautor grupy zarządzania" w istniejącej grupie zarządzania nadrzędnej.
 
-*: Chyba że obiekt docelowy lub istniejącej grupy zarządzania nadrzędnego jest głównej grupy zarządzania. Ponieważ głównej grupy zarządzania jest domyślnie docelowa dodatkowego dla wszystkich nowych grup zarządzania, jak i subskrypcje, użytkownicy nie muszą uprawnienia do niego, aby przenieść element.
+W przypadku istniejącej grupy zarządzania nadrzędnej lub docelowe głównej grupy zarządzania, wymagania dotyczące uprawnień nie mają zastosowania. Ponieważ głównej grupy zarządzania jest domyślnie docelowa dodatkowego dla wszystkich nowych grup zarządzania, jak i subskrypcje, nie potrzebujesz uprawnienia do niego, aby przenieść element.
+
+Jeśli rola właściciela subskrypcji jest dziedziczona z bieżącej grupy zarządzania, Przenieś elementy docelowe są ograniczone. Można przenosić tylko subskrypcji do innej grupy zarządzania, w których masz rolę właściciela. Nie można przenieść ją do grupy zarządzania których jesteś współautorem, ponieważ spowoduje utratę własności subskrypcji. Jeśli bezpośrednio masz przypisaną rolę właściciela subskrypcji (nie dziedziczone z grupy zarządzania), można przenieść ją do żadnej grupy zarządzania, w których jesteś współautorem.
 
 Aby zobaczyć, jakie posiadasz uprawnienia w witrynie Azure portal, wybierz opcję zarządzania w grupie, a następnie wybierz pozycję **IAM**. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [zarządzanie dostępem i uprawnieniami przy użyciu RBAC](../../role-based-access-control/overview.md).
 
@@ -325,7 +327,7 @@ Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](..
 
 ![Dzienniki aktywności przy użyciu grup zarządzania](media/al-mg.png)
 
-Jeśli chcesz wykonać zapytanie dotyczące grup zarządzania spoza witryny Azure Portal, zakres docelowy grup zarządzania wygląda tak: **„/providers/Microsoft.Management/managementGroups/{identyfikator_grupy_zarządzania}”**.
+Jeśli chcesz wykonać zapytanie dotyczące grup zarządzania spoza witryny Azure Portal, zakres docelowy grup zarządzania wygląda tak: **„/providers/Microsoft.Management/managementGroups/{identyfikator_grupy_zarządzania}”** .
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Odwoływanie się do grup zarządzania, od innych dostawców zasobów
 

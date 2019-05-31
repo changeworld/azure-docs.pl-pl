@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232765"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237658"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -111,7 +111,7 @@ Istnieje możliwość zmniejszyć rozmiar udziału elastycznie poniżej swoje u�
 
 W poniższej tabeli przedstawiono kilka przykładów tych formuł dla rozmiarów elastycznie udziału:
 
-|Pojemność (GiB) | Baseline IOPS | Seria operacje We/Wy | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
+|Pojemność (GiB) | Liczba operacji we/wy na sekundę punktu odniesienia | Seria operacje We/Wy | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Maksymalnie 300     | 66   | 44   |
 |500         | 500     | Maksymalnie 1500   | 90   | 60   |
@@ -189,9 +189,9 @@ Istnieje możliwość synchronizowania wielu plików platformy Azure udostępnia
 Istnieje wiele opcji łatwy do zbiorczego transferu danych z istniejącego pliku udostępniania, takie jak udział plików lokalnych do usługi Azure Files. Kilka popularnych usług obejmują (niepełna lista):
 
 * **Azure File Sync**: Jako część pierwsza synchronizacja między udziału plików platformy Azure ("punktu końcowego w chmurze") i Windows katalogu przestrzeni nazw ("punkt końcowy serwera") usługi Azure File Sync będą replikowane do usługi Azure Files wszystkich danych z istniejącego udziału plików.
-* **[Usługa Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez wysyłanie dysków twardych do centrum danych platformy Azure. 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: ROBOCOPY jest narzędziem dobrze znanych kopiowania, które jest dostarczany z programem Windows i Windows Server. ROBOCOPY mogą służyć do przenoszenia danych do usługi pliki Azure przez zainstalowanie udziału plików lokalnie, a następnie użycie lokalizacji zainstalowanego jako miejsce docelowe polecenia Robocopy.
-* **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z usługi Azure Files, a także usługi Azure Blob storage przy użyciu prostych poleceń z optymalną wydajnością. Narzędzie AzCopy jest dostępna dla Windows i Linux.
+* **[Usługa Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do udziału plików platformy Azure przez wysyłanie dysków twardych do centrum danych platformy Azure. 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : ROBOCOPY jest narzędziem dobrze znanych kopiowania, które jest dostarczany z programem Windows i Windows Server. ROBOCOPY mogą służyć do przenoszenia danych do usługi pliki Azure przez zainstalowanie udziału plików lokalnie, a następnie użycie lokalizacji zainstalowanego jako miejsce docelowe polecenia Robocopy.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z usługi Azure Files, a także usługi Azure Blob storage przy użyciu prostych poleceń z optymalną wydajnością.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Planowanie wdrażania usługi synchronizacji plików platformy Azure](storage-sync-files-planning.md)

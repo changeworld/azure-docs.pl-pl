@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Funkcje | Dokumentacja firmy Mic
 description: Funkcje usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8d1c3eb3-1022-4add-a919-c98cc6584af1
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.author: ergreenl
-ms.openlocfilehash: 9e4ab7aa4f61921d8b327404a266694349d78164
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 27aaaca4f28feac0f68b4e034426c64b934b1f95
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417269"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234929"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Funkcje
@@ -35,7 +35,7 @@ Następujące funkcje są dostępne w domenach usług domenowych Azure AD zarzą
 * **Użyj firmowych poświadczeń/haseł:** Hasła użytkowników w dzierżawie usługi Azure AD działa z usług domenowych Azure AD. Użytkownicy mogą używają poświadczeń firmowych, do maszyn przyłączania do domeny, zaloguj się interaktywnie lub za pośrednictwem pulpitu zdalnego i uwierzytelniania względem domeny zarządzanej.
 * **Powiązanie z protokołem LDAP & LDAP przeczytaj pomocy technicznej:** Możesz użyć aplikacji, które zależą od powiązania LDAP do uwierzytelniania użytkowników w domenach obsługiwanych przez usługi domenowe Azure AD. Ponadto aplikacje, które używają protokołu LDAP, operacje odczytu atrybutów użytkownika i komputera zapytania z katalogu może również współdziałać z usług domenowych Azure AD.
 * **Bezpieczny protokół LDAP (LDAPS):** Aby umożliwić dostęp do katalogu za pośrednictwem bezpiecznego protokołu LDAP (LDAPS). Dostęp protokołu Secure LDAP jest dostępna w ramach sieci wirtualnej domyślnie. Jednak możesz również opcjonalnie włączyć dostęp protokołu secure LDAP przez internet.
-* **Zasady grupy:** Można użyć jednej wbudowanej GPO dla użytkowników i komputerów kontenerów w celu wymuszania zgodności przy użyciu wymaganych zasad zabezpieczeń dla kont użytkowników i komputerów przyłączonych do domeny. Możesz również utworzyć własne niestandardowe obiekty zasad grupy i przypisać je do niestandardowej jednostki organizacyjne, aby [Zarządzanie zasadami grupy](active-directory-ds-admin-guide-administer-group-policy.md).
+* **Zasady grupy:** Można użyć jednej wbudowanej GPO dla użytkowników i komputerów kontenerów w celu wymuszania zgodności przy użyciu wymaganych zasad zabezpieczeń dla kont użytkowników i komputerów przyłączonych do domeny. Możesz również utworzyć własne niestandardowe obiekty zasad grupy i przypisać je do niestandardowej jednostki organizacyjne, aby [Zarządzanie zasadami grupy](manage-group-policy.md).
 * **Zarządzanie DNS:** Członkowie grupy "Administratorzy usługi AAD DC" zarządzać DNS dla domeny zarządzanej przy użyciu znanych narzędzi administracyjnych DNS, takich jak przystawki MMC administracji DNS.
 * **Tworzenie niestandardowej jednostki organizacyjne (OU):** Członkowie grupy "Administratorzy usługi AAD DC" można utworzyć niestandardowe jednostek organizacyjnych w domenie zarządzanej. Tacy użytkownicy otrzymują pełne uprawnienia administracyjne za pośrednictwem niestandardowe jednostki organizacyjne, więc one można dodawać i usuwać konta usług, komputerów, grup itp. w ramach tych niestandardowych jednostkach organizacyjnych.
 * **Dostępne w wielu regionach na świecie platformy Azure:** Ze strony zawierającej [usługi platformy Azure uporządkowane według regionów](https://azure.microsoft.com/regions/#services/) dowiesz się, w których regionach platformy Azure jest dostępna usługa Azure AD Domain Services.

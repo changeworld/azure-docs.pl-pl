@@ -11,30 +11,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fa5c5638da390f4416afc9f4bd9c5d58c34cea8
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825571"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233751"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ustaw niestandardową stronę główną dla opublikowanych aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD
 
-W tym artykule omówiono sposób skonfigurować aplikację tak, aby Poleć użytkownikowi, aby niestandardową stronę główną, które mogą się różnić w zależności od tego, czy są one wewnętrzne lub zewnętrzne. Podczas publikowania aplikacji za pomocą serwera Proxy aplikacji, ustaw wewnętrzny adres URL, ale czasami nie jest strona którą użytkownik powinien zobaczyć najpierw. Ustaw niestandardową stronę główną, dlatego, że użytkownik otrzyma odpowiednią stronę w przypadku uzyskiwania dostępu do aplikacji. Użytkownik zobaczy niestandardową stronę główną, należy ustawić, niezależnie od tego, czy mogą uzyskać dostęp do aplikacji z usługi Azure Active Directory panelu dostępu lub uruchamianie aplikacji usługi Office 365.
+W tym artykule omówiono sposób skonfigurować aplikację tak, aby Poleć użytkownikowi, do niestandardowej strony głównej. Podczas publikowania aplikacji za pomocą serwera Proxy aplikacji, ustaw wewnętrzny adres URL, ale czasami nie jest strona którą użytkownik powinien zobaczyć najpierw. Ustaw niestandardową stronę główną, dlatego, że użytkownik otrzyma odpowiednią stronę w przypadku uzyskiwania dostępu do aplikacji. Użytkownik zobaczy niestandardową stronę główną, należy ustawić, niezależnie od tego, czy mogą uzyskać dostęp do aplikacji z usługi Azure Active Directory panelu dostępu lub uruchamianie aplikacji usługi Office 365.
 
 Gdy użytkownik uruchamia aplikację, są one skierowane domyślnie adres URL domeny katalogu głównego dla opublikowanej aplikacji. Strona docelowa jest zwykle ustawiana jako adres URL strony głównej. Aby zdefiniować niestandardową stronę główną adres URL, jeśli chcesz, aby użytkownik aplikacji z zawarciem na określonej stronie w aplikacji, należy użyć modułu Azure AD PowerShell.
 
-Oto jeden scenariusz tłumaczy to, dlaczego firma ustawiał niestandardową stronę główną i dlaczego będzie się różnić w zależności od rodzaju użytkownika:
+Oto jeden scenariusz, który wyjaśnia, dlaczego firma ustawiał niestandardowa strona główna:
 
+- W sieci firmowej, użytkownik przechodzi do `https://ExpenseApp/login/login.aspx` logować się i uzyskać dostęp do Twojej aplikacji.
 - Ponieważ inne zasoby (na przykład obrazy), które serwer Proxy aplikacji musi mieć dostęp na najwyższym poziomie w strukturze folderów, publikowanie aplikacji przy użyciu `https://ExpenseApp` jako wewnętrzny adres URL.
-- Jednak w sieci firmowej, użytkownik przechodzi do `https://ExpenseApp/login/login.aspx` logować się i uzyskać dostęp do Twojej aplikacji.
 - Domyślny adres URL zewnętrznego `https://ExpenseApp-contoso.msappproxy.net`, która nie przyjmuje użytkownika zewnętrznego do strony logowania.
-- Jeśli chcesz ustawić `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` jako zewnętrzny adres URL zamiast tego należy więc zewnętrznych użytkownik zobaczy strony logowania najpierw.
+- Jeśli chcesz ustawić `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` jako adres URL strony głównej zamiast tego należy więc zewnętrznych użytkownik zobaczy strony logowania najpierw.
 
 >[!NOTE]
 >Po zapewnieniu użytkownikom dostępu do opublikowanych aplikacji, aplikacje są wyświetlane w [panelu dostępu usługi Azure AD](../user-help/my-apps-portal-end-user-access.md) i [uruchamianie aplikacji usługi Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
@@ -49,21 +49,21 @@ Przed ustawieniem adres URL strony głównej, należy przestrzegać następując
 
 - Jeśli wprowadzisz zmiany w opublikowanej aplikacji, zmiana może zresetować wartość adres URL strony głównej. Po zaktualizowaniu aplikacji w przyszłości, należy przeprowadzić ponowne sprawdzenie i, jeśli to konieczne, zaktualizuj adres URL strony głównej.
 
-Można zmienić stronę główną zewnętrznego lub wewnętrznego w witrynie Azure portal lub przy użyciu programu PowerShell.
+Można ustawić adres URL strony głównej przy użyciu witryny Azure portal lub przy użyciu programu PowerShell.
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>Zmień stronę główną w witrynie Azure portal
 
-Aby zmienić stronę główną wewnętrznych i zewnętrznych aplikacji za pośrednictwem portalu usługi Azure AD, wykonaj następujące kroki:
+Aby zmienić adres URL strony głównej aplikacji za pośrednictwem portalu usługi Azure AD, wykonaj następujące kroki:
 
-1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/). Zostanie wyświetlony pulpit nawigacyjny, Centrum administracyjnego usługi Azure Active Directory.
-2. Na pasku bocznym wybierz **usługi Azure Active Directory**. Zostanie wyświetlona strona Omówienie usługi Azure AD.
-3. Na pasku bocznym Przegląd wybierz **rejestracje aplikacji**. Zostanie wyświetlona lista zarejestrowanych aplikacji.
-4. Wybierz aplikację z listy. Zostanie wyświetlona strona przedstawiający szczegółowe informacje o zarejestrowanych aplikacji.
-5. Wybierz link w obszarze **identyfikatory URI przekierowań**, który wyświetla liczbę identyfikatory URI przekierowania dla sieci web i typów publicznych klienta. Zostanie wyświetlona strona uwierzytelniania dla zarejestrowanych aplikacji.
-6. W ostatnim wierszu **identyfikatory URI przekierowań** tabeli, należy ustawić **typu** kolumny **klientem publicznym (mobilnych i klasycznych)**, a następnie w **identyfikator URI PRZEKIEROWANIA**kolumny typu wewnętrznego adresu URL, którego chcesz użyć. Poniżej wiersza, który właśnie został zmodyfikowany, pojawi się nowy pusty wiersz.
-7. W nowym wierszu, ustaw **typu** kolumny **sieci Web**, a następnie w **identyfikator URI PRZEKIEROWANIA** kolumny, typ zewnętrzny adres URL, którego chcesz użyć.
-8. Aby usunąć wszystkie istniejące wiersze identyfikatora URI przekierowania, należy zaznaczyć **Usuń** ikonę (Kosza) obok każdego wiersza niepożądane.
-9. Wybierz pozycję **Zapisz**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) jako administrator.
+2. Wybierz **usługi Azure Active Directory**, a następnie **rejestracje aplikacji**. Zostanie wyświetlona lista zarejestrowanych aplikacji.
+3. Wybierz aplikację z listy. Zostanie wyświetlona strona przedstawiający szczegółowe informacje o zarejestrowanych aplikacji.
+4. W obszarze **Zarządzaj**, wybierz opcję **znakowania**.
+5. Aktualizacja **adres URL strony głównej** z Twojej nowej ścieżki.
+
+   ![Znakowanie strony dla aplikacji zarejestrowanych, wyświetlane pola Adres URL strony głównej](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+ 
+6. Wybierz pozycję **Zapisz**.
 
 ## <a name="change-the-home-page-with-powershell"></a>Zmień stronę główną przy użyciu programu PowerShell
 

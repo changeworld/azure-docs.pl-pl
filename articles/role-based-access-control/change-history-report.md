@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308894"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242102"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Wyświetlanie dzienników aktywności dla zmian RBAC do zasobów platformy Azure
 
@@ -121,9 +121,9 @@ Poniżej przedstawiono podstawowe kroki, aby rozpocząć pracę:
 
 1. [Utwórz obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
-1. [Skonfiguruj rozwiązanie Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md#configuration) dla obszaru roboczego.
+1. [Skonfiguruj rozwiązanie Activity Log Analytics](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) dla obszaru roboczego.
 
-1. [Wyświetlanie dzienników aktywności](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Szybko przejdź do strony Przegląd rozwiązanie Activity Log Analytics jest kliknięcie **usługi Log Analytics** opcji.
+1. [Wyświetlanie dzienników aktywności](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Szybko przejdź do strony Przegląd rozwiązanie Activity Log Analytics jest kliknięcie **usługi Log Analytics** opcji.
 
    ![Usługa Azure Monitor dzienniki opcji w portalu](./media/change-history-report/azure-log-analytics-option.png)
 
@@ -151,4 +151,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wyświetlanie zdarzeń w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
+* [Monitorowanie aktywności subskrypcji za pomocą dziennika aktywności platformy Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

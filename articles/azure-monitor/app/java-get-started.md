@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cc1456aa9928cbd4a24c203eab62e3e75b4d7c1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691305"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256184"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
-
-[Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzalną usługą analizy dla deweloperów sieci Web, która ułatwia zrozumienie wydajności i użycia aktywnej aplikacji. Służy do [automatycznie instrument żądania, śledzić zależności i liczniki wydajności zbieranie](auto-collect-dependencies.md#java), [diagnozowanie problemów z wydajnością oraz wyjątków](../../azure-monitor/app/detect-triage-diagnose.md), i [pisanie kodu] [ api] do śledzenia, co użytkownicy robią Twojej aplikacji. 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzalną usługą analizy dla deweloperów sieci Web, która ułatwia zrozumienie wydajności i użycia aktywnej aplikacji. Służy do [automatycznie instrument żądania, śledzić zależności i liczniki wydajności zbieranie](auto-collect-dependencies.md#java), diagnozowanie problemów z wydajnością oraz wyjątków, i [pisanie kodu] [ api] Aby śledzić, co użytkownicy robią Twojej aplikacji. 
 
 ![Zrzut ekranu przedstawiający Przegląd przykładowych danych](./media/java-get-started/overview-graphs.png)
 
@@ -487,7 +486,6 @@ Usługa Application Insights może służyć do testowania witryny sieci Web w r
 * [Monitorowanie liczników wydajności sytemu Unix](java-collectd.md)
 * Dodawanie [monitorowania do stron sieci Web](javascript.md) w celu monitorowania czasów ładowania stron, wywołań AJAX i wyjątków przeglądarki
 * Zapisywanie [niestandardowych danych telemetrycznych](../../azure-monitor/app/api-custom-events-metrics.md) w celu śledzenia użycia w przeglądarce lub na serwerze.
-* Tworzenie [pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md) umożliwiających przygotowywanie kluczowych wykresów na potrzeby monitorowania systemu
 * Tworzenie zaawansowanych zapytań dotyczących telemetrii z poziomu aplikacji przy użyciu usługi [Analytics](../../azure-monitor/app/analytics.md)
 * Aby uzyskać więcej informacji, odwiedź stronę [Azure dla deweloperów języka Java](/java/azure).
 

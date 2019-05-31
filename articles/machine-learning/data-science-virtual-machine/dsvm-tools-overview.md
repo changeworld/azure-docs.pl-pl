@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1defaea3743ebb8ddb688cef28efb7eee8ecb07c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597101"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236480"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Poznaj maszyny wirtualnej do nauki o danych
 
@@ -30,7 +30,7 @@ Maszyna wirtualna do nauki o danych (DSVM) zawiera obszerną listę do nauki o d
 Maszyny DSVM zawiera również wiele wskazówki i przykłady kodu w formie notesów programu Jupyter, które mogą być wykonywane lokalnie. Istnieje również dokumentacji dla tych przykładów ułatwić zrozumienie. 
 
 > [!NOTE]
-> Możesz użyć [notesów usługi Azure](/azure/notebooks/azure-notebooks-overview.md) tworzenie, uruchamianie i udostępnianie aplikacji Jupyter notebooks w chmurze. Możesz [dołączyć Maszynę wirtualną do nauki o danych do platformy Azure, notesy](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) Aby rozszerzyć możliwości obliczeniowych dostępnych.
+> Możesz użyć [notesów usługi Azure](/azure/notebooks/azure-notebooks-overview) tworzenie, uruchamianie i udostępnianie aplikacji Jupyter notebooks w chmurze. Możesz [dołączyć Maszynę wirtualną do nauki o danych do platformy Azure, notesy](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) Aby rozszerzyć możliwości obliczeniowych dostępnych.
 
 Narzędzi, platform, narzędzi i przykładów, które znajdują się na maszynie Wirtualnej do nauki o danych są podzielone na następujące sekcje:
 

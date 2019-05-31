@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Wprowadzenie | Dokumentacja firm
 description: Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: ergreenl
-ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: a4a515f3d669794d5bcdd8fa506a8d3b846db987
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417767"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234936"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 
@@ -44,7 +44,7 @@ Kreator automatycznie tworzy grupy administracyjnej w katalogu usługi Azure AD.
 
 ## <a name="configure-synchronization"></a>Konfigurowanie synchronizacji
 
-Azure AD Domain Services umożliwia albo pełną synchronizację wszystkich użytkowników i grup w usłudze Azure AD, lub wybrać synchronizacji o określonym zakresie, aby zsynchronizować tylko określone grupy. Jeśli wybierzesz opcję pełnej synchronizacji, zostanie **nie** można wybrać synchronizacji o określonym zakresie w późniejszym czasie. Aby dowiedzieć się więcej o zakresie synchronizacji, odwiedź stronę [usługi Azure AD Domain Services o określonym zakresie synchronizacji artykułu](active-directory-ds-scoped-synchronization.md).
+Azure AD Domain Services umożliwia albo pełną synchronizację wszystkich użytkowników i grup w usłudze Azure AD, lub wybrać synchronizacji o określonym zakresie, aby zsynchronizować tylko określone grupy. Jeśli wybierzesz opcję pełnej synchronizacji, zostanie **nie** można wybrać synchronizacji o określonym zakresie w późniejszym czasie. Aby dowiedzieć się więcej o zakresie synchronizacji, odwiedź stronę [usługi Azure AD Domain Services o określonym zakresie synchronizacji artykułu](scoped-synchronization.md).
 
 ### <a name="full-synchronization"></a>Pełna synchronizacja
 
@@ -98,7 +98,7 @@ Proces udostępniania Twoja domena zarządzana może potrwać do godziny.
 
 ## <a name="need-help"></a>Potrzebujesz pomocy?
 
-Może potrwać godzinę lub dwie dla obu kontrolerów domeny dla domeny zarządzanej do zainicjowania obsługi administracyjnej. Jeśli wdrożenie nie powiodło się lub została zablokowana w stanie "Oczekiwanie" dla więcej niż kilka godzin, swobodnie [skontaktuj się z zespołem produktu, aby uzyskać Pomoc](active-directory-ds-contact-us.md).
+Może potrwać godzinę lub dwie dla obu kontrolerów domeny dla domeny zarządzanej do zainicjowania obsługi administracyjnej. Jeśli wdrożenie nie powiodło się lub została zablokowana w stanie "Oczekiwanie" dla więcej niż kilka godzin, swobodnie [skontaktuj się z zespołem produktu, aby uzyskać Pomoc](contact-us.md).
 
 ## <a name="next-step"></a>Następny krok
 

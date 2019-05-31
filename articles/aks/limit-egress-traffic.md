@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: de0ba13a527569e446a44c275b7323d4487f53b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780296"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418128"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — ruch wychodzący Limit dla węzłów klastra i kontrola dostępu do wymaganych portów i usług w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Domyślnie klastry usługi AKS mają nieograniczony dostęp do Internetu wychodz
 Ten artykuł szczegółowo opisuje jakie porty sieciowe i w pełni kwalifikowanych nazw domen (FQDN) są wymagane i opcjonalne, jeśli można ograniczyć ruch wychodzący w klastrze AKS.  Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi, uczestnictwo. Są one udostępniane do zbierania opinii i błędy z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w wersji zapoznawczej objęte "starań" pomocy technicznej. Pomoc od zespołów pomocy technicznej usługi AKS jest dostępna w godzinach pracy i Pacyfik, część strefy czasowej (PST) tylko. Aby uzyskać więcej informacji zobacz następujące artykuły pomocy technicznej:
 >
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+> * [Zasady pomocy technicznej usługi AKS][aks-support-policies]
+> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -68,11 +69,11 @@ W usłudze AKS istnieją dwa rodzaje portów i adresów:
 Następujących portów wychodzących reguł sieci są wymagane dla klastra usługi AKS:
 
 * TCP port *443*
-* TCP port *9000*
+* TCP port *9000* i TCP port *22* dla tunelu zasobnik frontonu do komunikowania się z zakończeniem tunelu na serwerze interfejsu API.
 
 Następujące nazwy FQDN / wymaganych reguł aplikacji:
 
-| Nazwa FQDN                      | Port      | Użycie      |
+| NAZWA FQDN                      | Port      | Użycie      |
 |---------------------------|-----------|----------|
 | *.azmk8s.io               | HTTPS:443 | Ten adres jest punkt końcowy serwera interfejsu API. |
 | aksrepos.azurecr.io       | HTTPS:443 | Ten adres jest wymagane do dostępu do obrazów w usłudze Azure Container Registry (ACR). |
@@ -90,7 +91,7 @@ Następujących portów wychodzących / reguł sieci nie są wymagane w przypadk
 
 Następujące nazwy FQDN / reguł aplikacji są zalecane w przypadku klastrów usługi AKS do poprawnego działania:
 
-| Nazwa FQDN                                    | Port      | Użycie      |
+| NAZWA FQDN                                    | Port      | Użycie      |
 |-----------------------------------------|-----------|----------|
 | *.ubuntu.com                            | HTTP:80   | Ten adres służy do pobierania zabezpieczeń wymagane poprawki i aktualizacje węzłów klastra systemu Linux. |
 | packages.microsoft.com                  | HTTPS:443 | Ten adres jest repozytorium pakietów firmy Microsoft, które są używane dla pamięci podręcznej *polecenia apt-get* operacji. |
@@ -105,9 +106,6 @@ Następujące nazwy FQDN / reguł aplikacji są zalecane w przypadku klastrów u
 
 W tym artykule przedstawiono jakie porty i adresy umożliwia, jeśli ograniczenia ruchu wychodzącego dla klastra. Można również zdefiniować jak zasobników, samodzielnie może komunikować się i jakie ograniczenia ma w klastrze. Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między zasobników w usłudze AKS za pomocą zasad sieciowych][network-policy].
 
-<!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -118,3 +116,5 @@ W tym artykule przedstawiono jakie porty i adresy umożliwia, jeśli ograniczeni
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-upgrade]: upgrade-cluster.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

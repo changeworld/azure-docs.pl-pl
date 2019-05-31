@@ -3,19 +3,19 @@ title: Odwołanie V3.0 interfejs API tłumaczenia tekstu w usłudze Translator
 titlesuffix: Azure Cognitive Services
 description: Dokumentacja dotycząca V3.0 interfejs API tekstu usługi Translator.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796874"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387511"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -41,7 +41,7 @@ Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów dany
 
 Aby wymusić żądania, które mają być obsługiwane przez określone centrum danych, zmienić globalny punkt końcowy w żądaniu interfejsu API do żądanego punktu końcowego regionalne:
 
-|Opis|Obszar|Podstawowy adres URL|
+|Opis|Region|Podstawowy adres URL|
 |:--|:--|:--|
 |Azure|Globalny|  api.cognitive.microsofttranslator.com|
 |Azure|Ameryka Północna|   api-nam.cognitive.microsofttranslator.com|
@@ -144,7 +144,7 @@ Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 
 | 400036| Języka docelowego ("do" pole) jest nieprawidłowy lub niedostępny.|
 | 400042| Jedną z opcji określone ("Opcje" pole) jest nieprawidłowy.|
 | 400043| Identyfikator śledzenia klienta (ClientTraceId pola lub Nagłówek X-ClientTranceId) Brak lub jest nieprawidłowy.|
-| 400050| Wprowadzany tekst jest zbyt długa.|
+| 400050| Wprowadzany tekst jest zbyt długa. Widok [limity żądań](../request-limits.md).|
 | 400064| Parametr "translacji" Brak lub jest nieprawidłowa.|
 | 400070| Liczba docelowych skryptów (parametr ToScript) jest niezgodny z liczba docelowych języki (parametr).|
 | 400071| Wartość nie jest prawidłowa dla TextType.|
@@ -152,14 +152,15 @@ Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 
 | 400073| Parametr skryptu jest nieprawidłowy.|
 | 400074| Treść żądania nie jest prawidłowym plikiem JSON.|
 | 400075| Kombinacja pary i kategorii języka jest nieprawidłowa.|
-| 400077| Rozmiar maksymalny żądania został przekroczony.|
+| 400077| Rozmiar maksymalny żądania został przekroczony. Widok [limity żądań](../request-limits.md).|
 | 400079| Nie ma żądanego translacji od i do języka systemu niestandardowych.|
 | 401000| Żądanie nie ma uprawnień, ponieważ poświadczenia są brakujący lub nieprawidłowy.|
 | 401015| "Są podane poświadczenia dla interfejsu API rozpoznawania mowy. To żądanie wymaga poświadczeń dla interfejsu API tłumaczenia tekstu. Użyj subskrypcji interfejsu API tłumaczenia tekstu."|
 | 403000| Operacja nie jest dozwolona.|
 | 403001| Operacja jest niedozwolona, ponieważ subskrypcja przekroczyła limit przydziału bezpłatnych.|
 | 405000| Metoda żądania nie jest obsługiwana dla żądanego zasobu.|
-| 408001| Żądanego systemu tłumaczenia niestandardowych nie jest jeszcze dostępna. Spróbuj ponownie za kilka minut.|
+| 408001| Przygotowywany żądanego systemu tłumaczenia. Spróbuj ponownie za kilka minut.|
+| 408002| Przekroczono limit czasu oczekiwania na przychodzącego strumienia żądania. Klient nie generowały żądania w czasie, który został przygotowany serwer, aby czekać. Klient może Powtórz żądania bez modyfikacji w dowolnym momencie nowsze.|
 | 415000| Nagłówek Content-Type jest brakujący lub nieprawidłowy.|
 | 429000, 429001, 429002| Serwer odrzucił żądanie, ponieważ klienta przekroczyła limity żądań.|
 | 500000| Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś to za pomocą daty/godziny wystąpienia błędu, poproś identyfikator odpowiedzi nagłówek X-RequestId i identyfikator klienta z nagłówek żądania X-ClientTraceId.|

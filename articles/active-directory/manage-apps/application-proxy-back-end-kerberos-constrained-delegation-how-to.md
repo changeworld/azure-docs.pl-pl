@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c95eb45d75a54af75fdc8004316bc8bfeeddbd7e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0cfaea53156b78fad024046bb6f55229f8ad6536
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783930"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236268"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Rozwiązywanie problemów z konfiguracjami delegowanie ograniczone protokołu Kerberos dla serwera Proxy aplikacji
 
@@ -182,4 +182,4 @@ Jeśli nadal nie możesz postępu, pomocy technicznej firmy Microsoft mogą pom�
 - Uwierzytelniania z wieloma przeskokami są często używane w scenariuszach gdzie warstwy aplikacji, za pomocą zaplecza i frontonu, gdy oba wymagają uwierzytelniania, takiego jak SQL Server Reporting Services. Aby skonfigurować wieloskokowych scenariusza, zobacz artykuł pomocy technicznej [Kerberos ograniczone delegowanie może wymagać przejścia protokołu w scenariuszach z wieloma przeskokami](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Konfigurowanie ograniczonego delegowania protokołu Kerberos w domenie zarządzanej](../../active-directory-domain-services/active-directory-ds-enable-kcd.md).
+[Konfigurowanie ograniczonego delegowania protokołu Kerberos w domenie zarządzanej](../../active-directory-domain-services/deploy-kcd.md).

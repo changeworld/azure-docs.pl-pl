@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9bce408215cef540604a72109bc5b29ebc3359e7
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413800"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237378"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -185,9 +185,6 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ```
 
-> [!IMPORTANT]
-> Ze względu na problem w środowisku uruchomieniowym upewnij się, że czas przechowywania w zasadach przechowywania jest skonfigurowany do mniej niż 24 dni — w przeciwnym razie mogłyby spowodować przywracanie kopii zapasowej usługi, aby przejść do kworum utraty wpis replica w tryb failover.
-
 ### <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
 Po zdefiniowaniu zasad tworzenia kopii zapasowej, aby spełnić wymagania dotyczące ochrony danych aplikacji, zasady tworzenia kopii zapasowej należy skojarzone z aplikacją. W zależności od wymagań zasad tworzenia kopii zapasowej może być skojarzony z aplikacją, usługi lub partycji.
 
@@ -286,10 +283,6 @@ FailureError            :
 ## <a name="limitation-caveats"></a>Ograniczenie / zastrzeżenia
 - Polecenia cmdlet programu PowerShell usługi Service Fabric są w wersji zapoznawczej.
 - Klastry usługi Service Fabric nie są obsługiwane w systemie Linux.
-
-## <a name="known-issues"></a>Znane problemy
-- Upewnij się, że okres przechowywania jest skonfigurowany do mniej niż 24 dni. 
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Opis okresowe konfiguracji kopii zapasowej](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

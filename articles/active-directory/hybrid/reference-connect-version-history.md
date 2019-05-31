@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2019
+ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 235877ac8f84e695e5f81770d33b6fed89a5f241
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784328"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298795"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -44,10 +44,20 @@ Gdy przejdziemy przez ten proces, numer wersji, wersji będą wyświetlane ze zn
 Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
 ## <a name="13210"></a>1.3.21.0
+>[!IMPORTANT]
+>Istnieje znany problem z uaktualniania starszej wersji usługi Azure AD Connect do 1.3.21.0 gdzie portalu usługi Office 365 nie będzie odzwierciedlał zaktualizowanej wersji, nawet jeśli program Azure AD Connect uaktualniona pomyślnie.
+>
+> Aby rozwiązać problem należy zaimportować **AdSync** modułu, a następnie uruchom`Set-ADSyncDirSyncConfiguration` polecenia cmdlet programu powershell na serwerze programu Azure AD Connect.  Można użyć następujących czynności:
+>
+>1. Otwórz program Powershell w trybie administratora
+>2. Uruchom polecenie `Import-Module "ADSync"`
+>3. Uruchom polecenie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
+ 
+
 
 ### <a name="release-status"></a>Stan zlecenia 
 
-05/14/2019: Do ustalenia
+05/14/2019: Ogólnie dostępnych do pobrania
 
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy 
@@ -398,18 +408,18 @@ Blokowanie dostępu do konta usługi AD DS, implementując następujące zmiany 
 *   Usuń wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie. Chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE.
 *   Przypisz te określone uprawnienia:
 
-Type     | Name (Nazwa)                          | Dostęp               | Dotyczy
+Type     | Name (Nazwa)                          | Access               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
-Zezwól    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
-Zezwól    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwól    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwól    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
-Zezwól    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwól    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
+Zezwalaj    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
+Zezwalaj    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby zwiększyć ustawień dla konta usług AD DS, należy uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell spowoduje przypisanie uprawnień wymienionych powyżej konto usług AD DS.
 
@@ -417,13 +427,13 @@ Aby zwiększyć ustawień dla konta usług AD DS, należy uruchomić [ten skrypt
 
 Aby użyć skryptu programu PowerShell, aby zastosować te ustawienia do istniejącego konta usługi AD DS, (ether udostępnioną przez Twoją organizację lub utworzony w poprzedniej instalacji programu Azure AD Connect, Pobierz skrypt z podany link powyżej.
 
-##### <a name="usage"></a>Sposób użycia:
+##### <a name="usage"></a>Użycie:
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Gdzie 
+Lokalizacja 
 
 **$ObjectDN** = konto usługi Active Directory, w której uprawnienia muszą być ściągane.
 
@@ -742,13 +752,13 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Wybierz|
-    |CertKeyAlgorithmParams|CertHashString|Gdzie|
-    |||Z|
+    |CertKeyAlgorithmParams|CertHashString|Lokalizacja|
+    |||Zawiera|
 
 * Aby umożliwić klientom tworzenie reguły synchronizacji niestandardowych do przepływu, sAMAccountName, domainNetBios i domainFQDN dla grupy obiektów, a także distinguishedName obiektów użytkownika zostały wprowadzone następujące zmiany schematu:
 
   * Następujące atrybuty zostały dodane do schematu MV:
-    * Grupa: Nazwa konta
+    * Grupa: AccountName
     * Grupa: domainNetBios
     * Grupa: domainFQDN
     * Osoby: distinguishedName
@@ -1018,7 +1028,7 @@ Wydanie: Maja 2016 r.
 
 * Ostrzeżenie i pomaga zweryfikować domen, jeśli nie przed programem Azure AD Connect.
 * Dodano obsługę [Microsoft Cloud w Niemczech](reference-connect-instances.md#microsoft-cloud-germany).
-* Dodano obsługę najnowsze [chmury Microsoft Azure dla instytucji rządowych](reference-connect-instances.md#microsoft-azure-government-cloud) infrastruktury za pomocą nowego wymagania dotyczące adresu URL.
+* Dodano obsługę najnowsze [chmury Microsoft Azure dla instytucji rządowych](reference-connect-instances.md#microsoft-azure-government) infrastruktury za pomocą nowego wymagania dotyczące adresu URL.
 
 **Rozwiązano problemy i ulepszenia:**
 

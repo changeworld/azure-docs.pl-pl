@@ -1,22 +1,22 @@
 ---
-title: Migracja z minimalnym przestojem do usługi Azure Database for PostgreSQL
-description: W tym artykule opisano sposób wykonywania migracja z minimalnym przestojem postgresql w warstwie bazy danych do usługi Azure Database for PostgreSQL za pomocą usługi Azure Database Migration Service.
+title: Migracja z minimalnym przestojem do usługi Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano, jak przeprowadzić migrację minimalnych przestojach postgresql w warstwie bazy danych do usługi Azure Database for PostgreSQL — pojedynczy serwer przy użyciu usługi Azure Database Migration Service.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: ceb64781dc7e5243f785ad239c24e5f21b0481ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421236"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067509"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migracja z minimalnym przestojem do usługi Azure Database for PostgreSQL
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Migracja z minimalnym przestojem do usługi Azure Database for PostgreSQL — pojedynczy serwer
 Można przeprowadzić migracji PostgreSQL do usługi Azure Database for PostgreSQL przy minimalnych przestojach przy użyciu nowo wprowadzonych **możliwości ciągłej synchronizacji** dla [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) . Ta funkcja ogranicza czas przestoju, który jest naliczany przez aplikację.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Usługa Azure DMS wykonuje wstępnego obciążenia lokalne do usługi Azure Database for PostgreSQL, a następnie stale synchronizuje wszystkie nowe transakcje na platformie Azure, gdy aplikacja jest uruchomiona. Po danych wyrównywane na docelowej stronie platformy Azure, Zatrzymaj aplikację na krótko (minimalnych przestojach), poczekaj, aż ostatniej partii danych (od czasu, Zatrzymaj aplikację, dopóki aplikacja jest skutecznie niedostępna do przyjmowania dowolnego nowego ruchu) do przechwytywania Konfigurowanie w elemencie docelowym, a następnie zaktualizuj parametry połączenia, aby wskazywała na platformie Azure. Gdy skończysz, Twoja aplikacja będzie na żywo na platformie Azure!
 
 ![Ciągła synchronizacja z usługą Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)

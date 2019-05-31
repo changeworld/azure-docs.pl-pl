@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 93b5aeafafdc6ab7ee233f6360bb5e09f45b387f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: ddff9ffb00f4167cb8f64a75b129711467de739d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708819"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297061"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformy Apache Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -85,7 +85,7 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
 1. Postępuj zgodnie z instrukcjami w [Praca z certyfikatami z podpisem własnym dla połączeń punkt lokacja](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentu. W tym dokumencie tworzy certyfikaty potrzebny dla bramy.
 
-2. Otwórz wiersz polecenia programu PowerShell i użyj poniższego kodu, aby zalogować się do subskrypcji platformy Azure:
+2. Otwórz wiersz polecenia programu PowerShell i użyj poniższego kodu, aby zarejestrować się w Twojej subskrypcji platformy Azure:
 
     ```powershell
     Connect-AzAccount
@@ -197,8 +197,10 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
     New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
-        -Type Standard_GRS `
-        -Location $location
+        -SkuName Standard_GRS `
+        -Location $location `
+        -Kind StorageV2 `
+        -EnableHttpsTrafficOnly 1
 
     # Get the storage account keys and create a context
     $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
@@ -240,7 +242,7 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
 Domyślnie Apache Zookeeper zwraca nazwę domeny brokerów platformy Kafka na klientach. Ta konfiguracja nie działa przy użyciu oprogramowania klienckiego sieci VPN, zgodnie z rozpoznawania nazw nie może używać w przypadku jednostek w sieci wirtualnej. W przypadku tej konfiguracji umożliwia skonfigurowanie platformy Kafka anonsowanie adresów IP zamiast nazwy domeny następujące czynności:
 
-1. Korzystając z przeglądarki internetowej przejdź do https://CLUSTERNAME.azurehdinsight.net. Zastąp __CLUSTERNAME__ o nazwie platformy Kafka w klastrze HDInsight.
+1. Korzystając z przeglądarki internetowej przejdź do `https://CLUSTERNAME.azurehdinsight.net`. Zastąp `CLUSTERNAME` o nazwie platformy Kafka w klastrze HDInsight.
 
     Po wyświetleniu monitu użyj protokołu HTTPS, nazwę użytkownika i hasło dla klastra. Interfejs użytkownika sieci Web Ambari klastra jest wyświetlana.
 
@@ -320,7 +322,9 @@ Aby zweryfikować połączenie do platformy Kafka, należy użyć do tworzenia i
 
 2. Poniższa tabela zainstalować [języka python na platformie kafka](https://kafka-python.readthedocs.io/) klienta:
 
-        pip install kafka-python
+    ```bash
+    pip install kafka-python
+    ```
 
 3. Aby wysyłać dane do platformy Kafka, użyj następującego kodu języka Python:
 

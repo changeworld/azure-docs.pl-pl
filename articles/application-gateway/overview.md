@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/30/2019
+ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e2e29bf0068fae5d6f4987ec5c3f2a52b883e4bd
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64947266"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418117"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -29,9 +29,9 @@ Ten typ routingu jest nazywany równoważeniem obciążenia warstwy aplikacji (w
 
 W usłudze Azure Application Gateway są dostępne następujące funkcje:
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Kończenie żądań protokołu Secure Sockets Layer (SSL)
+## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) zakończenia
 
-Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być ze względu na wymagania dotyczące zabezpieczeń, w przypadku wymagań dotyczących zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji usługa Application Gateway obsługuje kompleksowe szyfrowanie SSL.
+Usługa Application gateway obsługuje protokoły SSL/TLS zakończenie na bramie, po których ruch na ogół płynie niezaszyfrowany do serwerów wewnętrznej bazy danych. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być ze względu na wymagania dotyczące zabezpieczeń, w przypadku wymagań dotyczących zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. W przypadku tych aplikacji usługa application gateway obsługuje kompleksowe szyfrowanie SSL/TLS.
 
 ## <a name="autoscaling"></a>Skalowanie automatyczne
 

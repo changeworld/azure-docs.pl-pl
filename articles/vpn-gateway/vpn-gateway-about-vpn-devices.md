@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 05/29/2019
 ms.author: yushwang
-ms.openlocfilehash: 30558300036974a765765fe0eb0181e2a8dc73ca
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 6535949767999e04b11106ff8a294e912a6d0fb8
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508361"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388850"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -42,7 +42,7 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 |**Dostawca**          |**Rodzina urządzeń**     |**Minimalna wersja systemu operacyjnego** |**Instrukcje dotyczące konfiguracji typu PolicyBased** |**Instrukcje dotyczące konfiguracji typu RouteBased** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Niezgodne  |[Przewodnik po konfiguracji](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
-| Allied Telesis     |Routery sieci VPN z serii AR |AR-Series 5.4.7+               |Dostępne wkrótce     |[Przewodnik po konfiguracji](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Allied Telesis     |Routery sieci VPN z serii AR |AR-Series 5.4.7+               |Wkrótce     |[Przewodnik po konfiguracji](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall z serii F |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[Przewodnik po konfiguracji](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[Przewodnik po konfiguracji](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall z serii X |Barracuda Firewall 6.5 |[Przewodnik po konfiguracji](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Niezgodne |
 | Check Point |Security Gateway |R80.10 |[Przewodnik po konfiguracji](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Przewodnik po konfiguracji](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
@@ -65,8 +65,10 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 | ShareTech | UTM następnej generacji (seria NU) | 9.0.1.3 | Niezgodne | [Przewodnik po konfiguracji](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |Seria TZ, seria NSA<br>Seria SuperMassive<br>Seria E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Niezgodne |[Przewodnik po konfiguracji](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [Przewodnik po konfiguracji](https://community.sophos.com/kb/127546)<br><br>[Przewodnik po konfiguracji — wiele sygnatury dostępu współdzielonego](https://community.sophos.com/kb/en-us/133154) |
+| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 |  | [Przewodnik po konfiguracji](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokół BGP za pośrednictwem IKEv2 i IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI za pośrednictwem IKEv2 i IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Wszyscy |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Zyxel |Seria ZyWALL USG<br>Seria ZyWALL zaawansowanej ochrony przed zagrożeniami<br>Seria ZyWALL sieci VPN | ZLD v4.32 + | | [VTI za pośrednictwem IKEv2 i IPsec](https://businessforum.zyxel.com/discussion/2648/)<br>[Protokół BGP za pośrednictwem IKEv2 i IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >

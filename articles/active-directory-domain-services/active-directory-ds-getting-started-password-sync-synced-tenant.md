@@ -3,7 +3,7 @@ title: 'Azure AD Domain Services: Włączanie synchronizacji haseł | Dokumentac
 description: Wprowadzenie do usługi Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
-ms.author: ergreenl
-ms.openlocfilehash: 74ad811481aea83454d7e3179652e68d4c406521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 37bcdcd304f702f210e755f45af71b2da10bd6e1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417252"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234880"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji haseł w usługach Azure Active Directory Domain Services
 W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów poświadczeń wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji poświadczeń użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
@@ -80,6 +80,6 @@ Czas synchronizacji skrótów poświadczeń z usługą Azure AD zależy od rozmi
 
 ## <a name="related-content"></a>Powiązana zawartość
 * [Włączanie synchronizacji haseł w usługach AAD Domain Services dla katalogu usługi Azure AD tylko w chmurze](active-directory-ds-getting-started-password-sync.md)
-* [Administrowanie domeną zarządzaną usług Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
+* [Zarządzaj domeną usługi Azure AD Domain Services](manage-domain.md)
 * [Dołączanie maszyny wirtualnej z systemem Windows do domeny zarządzanej usług Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Dołączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux do domeny zarządzanej usług Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

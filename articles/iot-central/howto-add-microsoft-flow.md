@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467991"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235809"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -41,7 +41,7 @@ W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne
 
     ![Utwórz nową akcję Microsoft Flow](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. Zobaczysz listę tha przepływy pracy mają dostęp do a są dołączone do tej reguły IoT Central. Kliknij przycisk **Eksploruj szablony** lub **nowy > Utwórz z szablonu** i można wybrać jedną z dostępnych szablonów. 
+1. Zostanie wyświetlona lista przepływów pracy, które mają dostęp do a są dołączone do tej reguły IoT Central. Kliknij przycisk **Eksploruj szablony** lub **nowy > Utwórz z szablonu** i można wybrać jedną z dostępnych szablonów. 
 
     ![Dostępne szablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 

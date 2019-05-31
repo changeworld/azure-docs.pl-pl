@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 0a6bcb3fb94df56caf4d095097572dd8a704f856
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/27/2019
+ms.openlocfilehash: 705ced82ad4edad0bb4adc057414f6b20b80d8d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701194"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298874"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Użyj zewnętrznych magazynów metadanych w usłudze Azure HDInsight
 
@@ -50,7 +50,7 @@ HDInsight obsługuje również niestandardowe magazyny metadanych, które są za
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Wybierz niestandardowy Magazyn metadanych podczas tworzenia klastra
 
-Klaster może wskazywać wcześniej utworzoną bazę danych SQL Azure, podczas tworzenia klastra lub po utworzeniu klastra można skonfigurować bazy danych SQL. Ta opcja jest określona za pomocą magazynu > Ustawienia magazynu metadanych podczas tworzenia nowej usługi Hadoop, Spark lub interakcyjną technologią Hive klastra z witryny Azure portal.
+Klaster może wskazywać wcześniej utworzoną bazę danych SQL Azure, podczas tworzenia klastra lub po utworzeniu klastra można skonfigurować bazy danych SQL. Ta opcja jest określona za pomocą **magazynu > Ustawienia magazynu metadanych** podczas tworzenia nowej usługi Hadoop, Spark lub interactive Hive klastra z witryny Azure portal.
 
 ![Portal Azure Store metadanych programu Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
 
@@ -79,4 +79,4 @@ Aby uzyskać instrukcje dotyczące tworzenia Magazyn metadanych programu Oozie z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i więcej](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Konfigurowanie klastrów w usłudze HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i innych](./hdinsight-hadoop-provision-linux-clusters.md)

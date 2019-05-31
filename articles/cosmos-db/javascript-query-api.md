@@ -1,19 +1,18 @@
 ---
 title: Praca z JavaScript zapytanie o języku zintegrowanym interfejsu API w usłudze Azure Cosmos DB
 description: Ten artykuł wprowadza pojęcia dla języka JavaScript zapytanie o języku zintegrowanym interfejsu API do tworzenia procedur składowanych i wyzwalaczy w usłudze Azure Cosmos DB.
-author: rockboyfor
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 12/08/2018
-ms.date: 03/04/2019
-ms.author: v-yeche
+ms.date: 05/23/2019
+ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 101b5382eaa01ed87f05d83c82002fa1b93144b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc1815ce4a7a9ed40848e4a67a7fd9e032c1daa1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61043241"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226194"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Zapytanie JavaScript API w usłudze Azure Cosmos DB
 
@@ -70,5 +69,3 @@ Dowiedz się więcej pojęcia i porad zapisu, a następnie użyj procedur skład
 - [Sposób użycia procedury składowane, wyzwalacze, funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 - [Dokumentacja interfejsu API po stronie serwera w usłudze Azure Cosmos DB JavaScript](https://azure.github.io/azure-cosmosdb-js-server)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)
-
-<!-- Update_Description: update meta properties -->

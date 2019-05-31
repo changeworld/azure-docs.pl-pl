@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 05/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4aae8eb29b9e90bd1cb84949e97e21ed68c04c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: d1466614dfeb8fa4d3d095bae070d01c6503c5bb
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812784"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357240"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Ograniczenia współpracy B2B usługi Azure AD
 Współpraca z usługą Azure Active Directory (Azure AD) B2B jest obecnie dostępna z zastrzeżeniem ograniczeń, opisane w tym artykule.
@@ -29,6 +29,9 @@ W przepływach współpracy B2B możemy dodać użytkowników do katalogu i dyna
 
 ## <a name="azure-ad-directories"></a>Katalogi usługi Azure AD
 Usługa Azure AD B2B jest podlegają usługi Azure AD directory limitów usług. Szczegółowe informacje na temat liczby katalogów, użytkownik może utworzyć i liczba katalogów do których użytkownik lub użytkownik-Gość może należą, zobacz [usługi Azure AD, ograniczenia i limity](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+
+## <a name="national-clouds"></a>Chmury krajowe
+[Chmury krajowe](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) są odizolowane fizycznie wystąpienia platformy Azure. Współpraca B2B nie jest obsługiwana w granicach chmur krajowych. Na przykład w dzierżawie platformy Azure znajduje się w chmurze publicznej, globalne, nie można zaprosić użytkownika, którego konto znajduje się w chmurze krajowej. Aby współpracować z użytkownikiem, poproś innego adresu e-mail lub Utwórz konto użytkownika elementu członkowskiego dla nich w katalogu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

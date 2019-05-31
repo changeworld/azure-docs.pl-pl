@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 14f76a716447e09299cfa18d6758245706c7b481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbb67845922dd9a3b2a78f76bf25d73bace98a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556530"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240132"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i eksplorowanie wielodostępną aplikację SaaS, która używa wzorca bazy danych dla dzierżawcy z usługą SQL Database
 
@@ -129,7 +129,7 @@ Aplikacja Wingtip używa [*usługi Azure Traffic Manager* ](../traffic-manager/
 
     | Część adresu URL        | Opis       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Zdarzenia części aplikacji Wingtip.<br /><br /> *-dpt* wyróżnia *bazy danych dla dzierżawcy* wdrożenia aplikacji Wingtip Tickets z innych implementacji. Należą do nich *pojedynczego* aplikacji dla dzierżawcy (*-sa*) lub *wielodostępnej bazie danych* (*- mt*) implementacji. |
+    | http://events.wingtip-dpt | Zdarzenia części aplikacji Wingtip.<br /><br /> *-dpt* wyróżnia *bazy danych dla dzierżawcy* wdrożenia aplikacji Wingtip Tickets z innych implementacji. Należą do nich *pojedynczego* aplikacji dla dzierżawcy ( *-sa*) lub *wielodostępnej bazie danych* ( *- mt*) implementacji. |
     | .  *&lt;użytkownika&gt;* | *af1* w przykładzie. |
     | .trafficmanager.net/ | Usługi Traffic Manager bazowy adres URL. |
     | fabrikamjazzclub | Identyfikuje dzierżawy o nazwie firmy Fabrikam Jazz Club. |
@@ -182,7 +182,7 @@ Jeśli chcesz kontrolować i monitorować zadania w tle, należy użyć następu
     - Domyślnie zadania w tle są uruchamiane na 120 minut.
     - Każde zadanie powoduje, że obciążenia procesora CPU w bazie danych jedną dzierżawę, wykonując *sp_CpuLoadGenerator*. Intensywność i czas trwania obciążenia różni się w zależności od `$DemoScenario`.
     - *sp_CpuLoadGenerator* pętli wokół instrukcję SQL SELECT, powodujący wysokie obciążenie procesora CPU. Odstęp czasu między problemów wyboru zależy od wartości parametru, aby utworzyć sterowane obciążenie procesora CPU. Poziomy obciążenia i interwały są wybierane w sposób bardziej realistycznymi obciążeniami.
-    - Plik SQL znajduje się w obszarze *WingtipTenantDB\\dbo\\StoredProcedures\\*.
+    - Plik SQL znajduje się w obszarze *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
 4. Jeśli `$OneTime = $false`, generator obciążenia rozpoczyna się zadania w tle, a następnie kontynuuje działanie. Co 10 sekund monitoruje dla nowych dzierżaw, które są udostępniane. Jeśli ustawisz `$OneTime = $true`, LoadGenerator uruchamia zadania w tle, a następnie zatrzymuje, uruchomiona na pierwszym planie. W tym samouczku pozostaw `$OneTime = $false`.
 
@@ -221,14 +221,14 @@ Odśwież Centrum zdarzeń, aby utworzyć nową dzierżawę, są wyświetlane na
 
 Teraz, gdy Zacząłem obciążenia względem kolekcji dzierżaw, Przyjrzyjmy się niektóre zasoby, które zostały wdrożone.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do listy serwerów SQL. Następnie otwórz **catalog-dpt -&lt;użytkownika&gt;** serwera.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do listy serwerów SQL. Następnie otwórz **catalog-dpt -&lt;użytkownika&gt;**  serwera.
     - Serwer wykazu zawiera dwie bazy danych, **tenantcatalog** i **basetenantdb** (szablonu bazy danych, która jest kopiowana do tworzenia nowych dzierżaw).
 
    ![Bazy danych](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Wróć do listy serwerów SQL.
 
-3. Otwórz **tenants1-dpt -&lt;użytkownika&gt;** serwera baz danych dzierżaw.
+3. Otwórz **tenants1-dpt -&lt;użytkownika&gt;**  serwera baz danych dzierżaw.
 
 4. Zobacz następujące elementy:
 
@@ -254,7 +254,7 @@ Dwa wykresy pokazują, że elastyczne pule i bazy danych SQL są dobrze nadaje s
 
 - Aby uzyskać więcej informacji, zobacz dodatkowe [samouczków, które są kompilowane w aplikacji SaaS o nazwie Wingtip Tickets bazy danych dla dzierżawcy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Aby dowiedzieć się więcej o elastycznych pulach, zobacz [co to jest pula elastyczna Azure SQL?](sql-database-elastic-pool.md).
-- Aby dowiedzieć się więcej o zadaniach elastycznych, zobacz [Zarządzanie bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-jobs-overview.md).
+- Aby dowiedzieć się więcej o zadaniach elastycznych, zobacz [Zarządzanie bazami danych w chmurze skalowanych w poziomie](elastic-jobs-overview.md).
 - Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

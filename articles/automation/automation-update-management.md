@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b92083b78971ab00f87e073ba7f4944a6f828daf
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 885c5266e80114b54007d05d2220fbf5ea5ab84e
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991637"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397637"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -187,7 +187,7 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
+| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
 | Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
@@ -211,7 +211,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ![Widok domyślny zarządzania aktualizacjami](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Zainstaluj aktualizacje
+## <a name="install-updates"></a>Instalowanie aktualizacji
 
 Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Aby utworzyć wdrożenie aktualizacji, musi mieć dostęp do zapisu do konta usługi Automation i do zapisu w żadnych maszyn wirtualnych platformy Azure są przeznaczone we wdrożeniu. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md).
 
@@ -232,7 +232,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 |System operacyjny| System Linux lub Windows|
 | Grupy aktualizacji |Dla maszyn należy zdefiniować zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. </br></br>W przypadku komputerów spoza platformy Azure wybierz istniejącą zapisanego wyszukiwania, aby wybrać grupę maszyn spoza platformy Azure w celu uwzględnione we wdrożeniu. </br></br>Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md) |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
 | Skrypty przed i skryptu używanego po utworzeniu|Wybierz skrypty do uruchomienia przed i po wdrożeniu|
@@ -262,13 +262,13 @@ Wybierz **brakujące aktualizacje** Aby wyświetlić listę aktualizacji, które
 
 ## <a name="view-update-deployments"></a>Wyświetlanie wdrożeń aktualizacji
 
-Wybierz **wdrożenia aktualizacji** kartę, aby wyświetlić listę istniejących wdrożeń aktualizacji. Wybierz jedno z wdrożeń aktualizacji w tabeli, aby otworzyć **aktualizowanie uruchomienia wdrażania** okienko dla tego wdrożenia aktualizacji.
+Wybierz **wdrożenia aktualizacji** kartę, aby wyświetlić listę istniejących wdrożeń aktualizacji. Wybierz jedno z wdrożeń aktualizacji w tabeli, aby otworzyć **aktualizowanie uruchomienia wdrażania** okienko dla tego wdrożenia aktualizacji. Dzienniki zadania są przechowywane dla maksymalnie 30 dni.
 
 ![Przegląd wyników wdrożenia aktualizacji](./media/automation-update-management/update-deployment-run.png)
 
 Aby wyświetlić wdrożenie aktualizacji z interfejsu API REST, zobacz [przebiegów konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurationruns).
 
-## <a name="update-classifications"></a>Aktualizuj klasyfikacje
+## <a name="update-classifications"></a>Klasyfikacje aktualizacji
 
 W poniższej tabeli wymieniono klasyfikacji aktualizacji w zarządzania aktualizacjami definicji dla każdej klasyfikacji.
 
@@ -356,7 +356,7 @@ Aby uzyskać więcej informacji na temat porty wymagane przez hybrydowy proces r
 
 Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adresy IP, możesz pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP.
 
-## <a name="search-logs"></a>Przeszukiwanie dzienników
+## <a name="search-logs"></a>Dzienniki wyszukiwania
 
 Oprócz szczegółów, które znajdują się w witrynie Azure portal można wykonać wyszukiwania w dziennikach. Na stronach rozwiązania wybierz **usługi Log Analytics**. **Wyszukiwanie w dzienniku** zostanie otwarte okienko.
 
@@ -586,7 +586,7 @@ Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktuali
 * Lokalizacje
 * `Tags`
 
-![Wybieranie grup](./media/automation-update-management/select-groups.png)
+![Wybierz grupy](./media/automation-update-management/select-groups.png)
 
 Aby wyświetlić podgląd wyników grupę dynamiczną, kliknij przycisk **Podgląd** przycisku. Tej wersji zapoznawczej pokazuje członkostwa w grupie w tym czasie, w tym przykładzie Trwa wyszukiwanie maszyn ze znacznikiem **roli** jest równa **BackendServer**. Jeśli jedna maszyna mają ten tag dodany, będzie można dodać do wszystkich przyszłych wdrożeń względem tej grupy.
 
@@ -596,7 +596,7 @@ Aby wyświetlić podgląd wyników grupę dynamiczną, kliknij przycisk **Podgl�
 
 Na platformie Azure bez maszyn, zapisane wyszukiwania również określane jako grup komputerów są używane do tworzenia grupy dynamicznej. Aby dowiedzieć się, jak utworzyć zapisanego kryterium wyszukiwania, zobacz [utworzyć grupę komputerów](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po utworzeniu grupy możesz wybrać go z listy zapisanych wyszukiwań. Kliknij przycisk **Podgląd** nad wersją zapoznawczą komputerów w zapisanego wyszukiwania, w tym czasie.
 
-![Wybieranie grup](./media/automation-update-management/select-groups-2.png)
+![Wybierz grupy](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integracja z programem System Center Configuration Manager
 

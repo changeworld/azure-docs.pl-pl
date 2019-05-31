@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 81be4d5809fe8a3f36f7364b15e19d0046a8b5cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713979"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237152"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
@@ -70,7 +70,7 @@ Aby określić rozmiar klastra optymalne dla aplikacji, można testu porównawcz
 
 Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora mocy obliczeniowej, pamięci RAM i opóźnienie sieci:
 
-* Procesor CPU: Rozmiar maszyny Wirtualnej decyduje o liczbie rdzeni. Każdy węzeł można osiągnąć, więcej rdzeni, wyższy stopień obliczeń równoległych. Ponadto niektóre typy maszyn wirtualnych mają szybsze rdzeni.
+* CPU: Rozmiar maszyny Wirtualnej decyduje o liczbie rdzeni. Każdy węzeł można osiągnąć, więcej rdzeni, wyższy stopień obliczeń równoległych. Ponadto niektóre typy maszyn wirtualnych mają szybsze rdzeni.
 
 * Pamięć RAM: Rozmiar maszyny Wirtualnej decyduje również o ilość pamięci RAM dostępnej na maszynie wirtualnej. W przypadku obciążeń, które przechowuje dane w pamięci do przetwarzania, a nie odczytu z dysku, upewnij się, węzłów procesu roboczego ma za mało pamięci, aby dopasować dane.
 
@@ -104,9 +104,9 @@ Aby zidentyfikować problem na lokalny klaster jednowęzłowy możesz ponownie u
 
 Po ustaleniu, klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ., sprawdzić aktualne limity pojemności limit przydziału subskrypcji. W przypadku osiągnięcia limitu przydziału nie można wdrażać nowych klastrów lub skalowania w poziomie z istniejących klastrów, dodając większą liczbę węzłów procesu roboczego. Limit przydziału tylko jest limit przydziału rdzeni procesora CPU, znajdującą się na poziomie regionu dla każdej subskrypcji. Na przykład Twoja subskrypcja może mieć 30 limit liczby rdzeni w regionie wschodnie stany USA. Jeśli potrzebujesz zażądać zwiększenia limitu przydziału, wykonaj następujące czynności:
 
-1. Przejdź do witryny Azure Portal
-1. Kliknij pozycję **Pomoc i obsługa techniczna** w lewym dolnym rogu strony.
-1. Kliknij pozycję **nowe żądanie obsługi**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Wybierz **Pomoc i obsługa techniczna** w lewym dolnym rogu strony.
+1. Wybierz **nowe żądanie obsługi**.
 1. Na **nowe żądanie obsługi** w obszarze **podstawy** , a następnie wybierz następujące opcje:
    - **Typ problemu**: **Limity usług i subskrypcji (przydziały)**
    - **Subskrypcja**: subskrypcji, którą chcesz zmodyfikować
@@ -114,10 +114,10 @@ Po ustaleniu, klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ., sprawd
     
      ![Utwórz żądanie obsługi, aby zwiększyć limit przydziału rdzeni HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Kliknij przycisk **Dalej**.
-1. Na **szczegóły** strony, wprowadź opis problemu, wybierz ważność problemu i wybierz preferowaną metodę kontaktu.
-1. Kliknij pozycję **Next: Przeglądanie + tworzenie**.
-1. Na **przeglądu + Utwórz** kliknij pozycję **Utwórz**.
+1. Wybierz opcję **Dalej: Rozwiązania >>** .
+1. Na **szczegóły** strony, wprowadź opis problemu, wybierz ważność problemu, preferowaną metodę kontaktu i inne wymagane pola.
+1. Wybierz opcję **Dalej: Przeglądanie + Tworzenie >>** .
+1. Na **przeglądu + Utwórz** zaznacz **Utwórz**.
 
 > [!NOTE]  
 > Jeśli chcesz zwiększyć limit przydziału rdzeni HDInsight w regionie prywatnych, [wniosek o dozwolonych](https://aka.ms/canaryintwhitelist).

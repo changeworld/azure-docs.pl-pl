@@ -3,22 +3,22 @@ title: Zarządzanie użycia i kosztów dla usługi Azure Application Insights | 
 description: Zarządzanie woluminami danych telemetrycznych i monitorowanie kosztów w usłudze Application Insights.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: DaleKoetke
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: Dale.Koetke
-ms.date: 12/21/2018
-ms.author: mbullwin
-ms.openlocfilehash: edf724d6fd659ad4e8887a9c68467d17a33f5ccc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: mbullwin
+ms.date: 05/29/2019
+ms.author: dalek
+ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254562"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357278"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użycia i kosztów dla usługi Application Insights
 
@@ -35,7 +35,7 @@ Cennik usługi [usługi Azure Application Insights] [ start] jest oparty na wolu
 ### <a name="data-volume-details"></a>Szczegóły wolumin danych
 
 * Ilość danych jest liczba bajtów odebranych przez usługę Application Insights dane telemetryczne. Ilość danych jest mierzony jako rozmiar nieskompresowanych pakietów danych JSON, które jest odebrane przez usługę Application Insights z aplikacji. Aby uzyskać [zaimportowane do analizy danych tabelarycznych](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), ilość danych jest mierzony jako rozmiar nieskompresowanych plików, które są wysyłane do usługi Application Insights.
-* Opłaty za objętość danych aplikacji są teraz zgłaszane na nowych liczników rozliczeń o nazwie **pozyskiwanie danych** od kwietnia 2018 r. To jest nowy licznik można współdzielić w ramach monitorowania technologii, takich jak aplikacje Insights i Log Analytics i jest obecnie dostępna w obszarze nazwy usługi **usługi Log Analytics**. 
+* Opłaty za objętość danych aplikacji są teraz zgłaszane na nowych liczników rozliczeń o nazwie **pozyskiwanie danych** od kwietnia 2018 r. Ten nowy licznik jest współużytkowany przez monitorowanie technologii, takich jak aplikacje Insights i Log Analytics i jest obecnie dostępna w obszarze nazwy usługi **usługi Log Analytics**. 
 * [Live Stream metryki](../../azure-monitor/app/live-stream.md) danych nie jest liczony cennik celów.
 
 Dla bieżącego cen w regionie i waluty, zobacz [cen usługi Application Insights][pricing].
@@ -132,57 +132,56 @@ Aby odnaleźć rzeczywiste próbkowania, niezależnie od tego, gdzie jest zastos
 
 W każdym przechowywane rekordu, `itemCount` wskazuje liczbę oryginalnego rekordy, które reprezentuje. Jest równa 1 + Liczba poprzednich odrzuconych rekordów. 
 
-## <a name="automation"></a>Automatyzacja
-
-Można napisać skrypt, aby ustawić plan cenowy przy użyciu usługi Azure Resource Management. [Dowiedz się, jak to zrobić](powershell.md#price).
-
 ## <a name="limits-summary"></a>Podsumowanie ograniczeń
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="disable-daily-cap-e-mails"></a>Wyłącz dzienny limit wiadomości e-mail.
 
-Aby wyłączyć dzienny wolumin limit wiadomości e-mail, w obszarze **Konfiguruj** części zasobu usługi Application Insights w **użycie i szacunkowe koszty** okienku wybierz **dzienny limit** . Istnieją ustawienia, aby wysłać wiadomość e-mail, gdy limit zostanie osiągnięty, a także gdy zmienianych poziom ostrzeżeń został osiągnięty. Jeśli chcesz wyłączyć wszystkie codziennie woluminu limit związane z wiadomości e-mail obu polach, usuń zaznaczenie pola wyboru.
+Aby wyłączyć dzienny wolumin limit wiadomości e-mail, w obszarze **Konfiguruj** części zasobu usługi Application Insights w **użycie i szacunkowe koszty** okienku wybierz **dzienny limit** . Istnieją ustawienia, aby wysłać wiadomość e-mail, gdy limit zostanie osiągnięty, a także gdy zmienianych poziom ostrzeżeń został osiągnięty. Jeśli chcesz wyłączyć wszystkie dzienny limit, związanych z woluminami wiadomości e-mail Usuń zaznaczenie pola wyboru obu polach.
 
-## <a name="legacy-enterprise-pricing-plan"></a>Starszej wersji Enterprise, plan taryfowy
+## <a name="legacy-enterprise-per-node-pricing-tier"></a>Warstwa cenowa starszej wersji Enterprise (na węzeł)
 
-Dla wcześnie wdrażających użytkowników usługi Azure Application Insights są nadal możliwe dwa plany cenowe: Podstawowe, jak i Enterprise. Podstawowy plan taryfowy jest taka sama, jak opisano powyżej i jest domyślny plan. Obejmuje wszystkie funkcje planu Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach planu podstawowego. 
+Dla wcześnie wdrażających użytkowników usługi Azure Application Insights nadal istnieją dwie możliwe warstwy cenowe: Podstawowe, jak i Enterprise. Warstwa cenowa podstawowa jest taka sama, jak opisano powyżej, a to domyślna warstwa. Obejmuje wszystkie funkcje warstwy Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach warstwy podstawowa. 
 
-Enterprise plan ma opłaty za węzeł i każdy węzeł otrzyma dzienny przydział danych. W przedsiębiorstwie cennikiem, opłaty są naliczane za dane pozyskane powyżej uwzględnione dopuszczalnej wartości. Jeśli używasz pakietu Operations Management Suite, należy wybrać Enterprise plan. 
+> [!NOTE]
+> Zmieniono tych starszych warstw cenowych. Enterprise warstwa cenowa jest teraz nazywana **na węzeł** i warstwy cenowej podstawowa jest teraz nazywana **na GB**. Te nowe nazwy są używane w dół i w witrynie Azure portal.  
+
+W warstwie na węzeł (dawniej Enterprise) ma opłaty za węzeł i każdy węzeł otrzyma dzienny przydział danych. W warstwie cenowej na węzeł opłaty są naliczane za dane pozyskane powyżej uwzględnione dopuszczalnej wartości. Jeśli używasz pakietu Operations Management Suite, wybierz warstwę na węzeł. 
 
 Dla bieżącego cenach w regionie i waluty, zobacz [cen usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
 > W kwietniu 2018 r. Firma Microsoft [wprowadzone](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania platformy Azure. Ten model przyjmuje prosty model "zgodnie z rzeczywistym użyciem" w pełnym portfolio monitorowanie usług. Dowiedz się więcej o [nowego modelu cen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na podstawie Twojej wzorców użycia i [sposób dołączenia do nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
-### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Enterprise plan i uprawnienia subskrypcji pakietu Operations Management Suite
+### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Na warstwie węzła oraz uprawnienia subskrypcji pakietu Operations Management Suite
 
-Klienci, którzy wykupią pakietu Operations Management Suite E1 i E2 można uzyskać usługi Application Insights Enterprise jako dodatkowych składników, bez ponoszenia dodatkowych kosztów jako [ogłoszonej wcześniej](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). W szczególności każda jednostka wersji pakietu Operations Management Suite E1 i E2 obejmuje uprawnienie do jednego węzła planu usługi Application Insights Enterprise. Każdy węzeł usługi Application Insights obejmuje maksymalnie 200 MB danych przetwarzanych dziennie (oddzielony od pozyskiwania danych usługi Log Analytics), z przechowywaniem danych 90 dni bez ponoszenia dodatkowych kosztów. Plan jest opisany bardziej szczegółowo w dalszej części tego artykułu. 
+Klienci, którzy wykupią pakietu Operations Management Suite E1 i E2 można uzyskać Application Insights na węzeł jako dodatkowych składników, bez ponoszenia dodatkowych kosztów jako [ogłoszonej wcześniej](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). W szczególności każda jednostka wersji pakietu Operations Management Suite E1 i E2 obejmuje uprawnienie do jednego węzła w warstwie Application Insights na węzeł. Każdy węzeł usługi Application Insights obejmuje maksymalnie 200 MB danych przetwarzanych dziennie (oddzielony od pozyskiwania danych usługi Log Analytics), z przechowywaniem danych 90 dni bez ponoszenia dodatkowych kosztów. Warstwy są opisane bardziej szczegółowo w dalszej części tego artykułu. 
 
-Ponieważ ten plan dotyczy tylko klientów z subskrypcją pakietu Operations Management Suite, klienci, którzy nie masz subskrypcji pakietu Operations Management Suite nie ma możliwość wybrania tego planu.
+Ponieważ ta warstwa dotyczy tylko klientów z subskrypcją pakietu Operations Management Suite, klienci, którzy nie masz subskrypcji pakietu Operations Management Suite nie ma możliwość wybrania tej warstwy.
 
 > [!NOTE]
-> Aby upewnić się, że uzyskać to uprawnienie, zasobów usługi Application Insights musi być w przedsiębiorstwie plan cenowy. To uprawnienie ma zastosowanie tylko jako węzły. Zasoby usługi Application Insights w planie Basic okaże się żadnych korzyści. To uprawnienie nie jest widoczny w szacowane koszty wyświetlane w **użycia i szacowanych kosztów** okienka. Po przeniesieniu subskrypcji do nowej platformy Azure, monitorowanie modelu cenowego z kwietnia 2018 r planem Basic jest także plan tylko dostępne. Przeniesienie subskrypcji do nowego modelu cenowego monitorowania platformy Azure nie jest zalecane, jeśli masz subskrypcję pakietu Operations Management Suite.
+> Aby upewnić się, że uzyskać to uprawnienie, zasobów usługi Application Insights musi znajdować się w węźle na warstwę cenową. To uprawnienie ma zastosowanie tylko jako węzły. Zasoby usługi Application Insights w warstwie na GB okaże się żadnych korzyści. To uprawnienie nie jest widoczny w szacowane koszty wyświetlane w **użycia i szacowanych kosztów** okienka. Po przeniesieniu subskrypcji do nowej platformy Azure, monitorowanie modelu cen w kwietniu 2018 r. w warstwie na GB jest również jedynym dostępnej warstwy. Przeniesienie subskrypcji do nowego modelu cenowego monitorowania platformy Azure nie jest zalecane, jeśli masz subskrypcję pakietu Operations Management Suite.
 
-### <a name="how-the-enterprise-plan-works"></a>Jak działa Enterprise plan
+### <a name="how-the-per-node-tier-works"></a>Jak działa w warstwie na węzeł
 
-* Płacisz za każdy węzeł, który wysyła dane telemetryczne dotyczące wszystkich aplikacji w planie Enterprise.
+* Płacisz za każdy węzeł, który wysyła dane telemetryczne dotyczące wszystkich aplikacji w warstwie na węzeł.
   * A *węzła* jest komputer fizyczny lub wirtualny serwer lub wystąpienie roli platforma jako usługa, która jest hostem aplikacji.
   * Komputerach deweloperskich, przeglądarek klientów i urządzeń przenośnych nie są traktowane jako węzły.
   * Jeśli aplikacja ma kilka składników, które wysyłają dane telemetryczne, np. usługi sieci web i procesu roboczego zaplecza, składniki są zliczane osobno.
   * [Live Stream metryki](../../azure-monitor/app/live-stream.md) danych nie jest liczony cennik celów. W ramach subskrypcji usługi opłaty są naliczane za węzeł, a nie aplikacji. Jeśli masz pięć węzłów, które wysyłają dane telemetryczne dla 12 aplikacji, Opłata dotyczy pięć węzłów.
 * Mimo, że opłaty są podane na miesiąc, opłaty są naliczane tylko za godziny, w których dany węzeł przesyła dane telemetryczne z aplikacji. Opłata za godziny jest cudzysłowie opłata miesięczna podzielona przez 744 (liczba godzin w miesiącu mającym 31 dni).
 * Dane woluminu alokacji wynoszącej 200 MB dziennie znajduje się w każdym węźle, który został wykryty (z dokładnością co godzinę). Niewykorzystane dane alokacji nie jest przenoszone od 1 dnia następnego.
-  * Jeśli wybierzesz Enterprise, plan taryfowy, każda subskrypcja otrzymuje dzienny przydział danych na podstawie liczby węzłów, które wysyłają dane telemetryczne do zasobów usługi Application Insights w tej subskrypcji. Dlatego jeśli masz pięć węzłów wysyłających dane, cały dzień, będziesz mieć dzienny przydział 1 GB, stosowany do wszystkich zasobów usługi Application Insights w tej subskrypcji. Nie ma znaczenia, jeśli niektóre węzły wysyła więcej danych niż inne węzły, ponieważ uwzględnione dane są dzielone między wszystkie węzły. Jeśli w danym dniu zasoby usługi Application Insights otrzymywać więcej danych niż przewiduje dzienny przydział danych dla tej subskrypcji, na GB nadwyżki danych opłaty. 
+  * Jeśli wybierzesz warstwę cenową na węzeł, każda subskrypcja otrzymuje dzienny przydział danych na podstawie liczby węzłów, które wysyłają dane telemetryczne do zasobów usługi Application Insights w tej subskrypcji. Dlatego jeśli masz pięć węzłów wysyłających dane, cały dzień, będziesz mieć dzienny przydział 1 GB, stosowany do wszystkich zasobów usługi Application Insights w tej subskrypcji. Nie ma znaczenia, jeśli niektóre węzły wysyła więcej danych niż inne węzły, ponieważ uwzględnione dane są dzielone między wszystkie węzły. Jeśli w danym dniu zasoby usługi Application Insights, otrzymasz więcej danych niż przewiduje dzienny przydział danych dla tej subskrypcji, na GB nadwyżki danych opłaty. 
   * Dzienny przydział danych jest obliczany jako liczba godzin w ciągu dnia (przy użyciu czasu UTC) czy każdy węzeł wysyła dane telemetryczne, podzielona przez 24 pomnożona przez 200 MB. Dlatego w przypadku czterech węzłów, które wysyłają dane telemetryczne przez 15 godzin z 24 godzin dnia uwzględnione dane na ten dzień będzie ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. W cenie za nadwyżkowe użycie danych 2.30 USD za GB opłata byłaby 1,15 USD węzły wysłać 1 GB danych tego samego dnia.
-  * Dzienny limit plan Enterprise nie zostały udostępnione aplikacji, dla których wybrano planu podstawowego. Nieużywane dopuszczalnej wartości nie jest przenoszone z typowymi. 
+  * Dzienny limit warstwę na węzeł nie jest dzielony między aplikacje, dla których wybrano warstwę na GB. Nieużywane dopuszczalnej wartości nie jest przenoszone z typowymi. 
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Przykłady sposobu ustalania liczby unikatowych węzłów
 
 | Scenariusz                               | Łączna liczba węzeł dziennie |
 |:---------------------------------------|:----------------:|
 | 1 aplikacja, korzystająca z 3 wystąpień usługi Azure App Service i 1 serwer wirtualny | 4 |
-| 3 działających na maszynach wirtualnych 2; zasoby usługi Application Insights dla tych aplikacji są w tej samej subskrypcji i Enterprise plan | 2 | 
+| 3 działających na maszynach wirtualnych 2; zasoby usługi Application Insights dla tych aplikacji są w tej samej subskrypcji, a w warstwie na węzeł | 2 | 
 | 4 aplikacji, którego zasoby aplikacji szczegółowe informacje znajdują się w tej samej subskrypcji; Każda aplikacja uruchomiona 2 wystąpienia 16 poza godzinami pracy, a 4 wystąpień w godzinach szczytu 8 | 13.33 | 
 | Cloud services za pomocą roli procesu roboczego 1 oraz roli sieci Web 1, każdy uruchomiony 2 wystąpienia | 4 | 
 | 5 węzłami klastra usługi Azure Service Fabric z systemem mikrousług 50; Każda mikrousługa uruchomionych wystąpień 3 | 5|
@@ -192,6 +191,11 @@ Ponieważ ten plan dotyczy tylko klientów z subskrypcją pakietu Operations Man
   * We wcześniejszych wersjach zestawu SDK [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zachowuje się jak nowsze wersje zestawu SDK, ale [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) zgłasza tylko jeden węzeł, niezależnie od liczby hostów aplikacji. 
   * Jeśli aplikacja używa zestawu SDK, aby ustawić **roleInstance** niestandardowej wartości domyślnie tej samej wartości służy do określania liczby węzłów. 
   * Jeśli używasz nowej wersji zestawu SDK z aplikacji, która jest uruchamiana z urządzeń przenośnych i komputerów klienckich, liczba węzłów może zwrócić liczbę, która jest bardzo duża (z powodu dużej liczby urządzeń przenośnych i komputerów klienckich). 
+
+## <a name="automation"></a>Automatyzacja
+
+Można napisać skrypt, aby ustawić warstwę cenową za pomocą usługi Azure Resource Management. [Dowiedz się, jak to zrobić](powershell.md#price).
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

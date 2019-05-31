@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 38b2244d68de25f53d59dd4eb0a6beba03f0e51d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9368abe7d3b6ad6cf6e86b503dca4fca4f18739c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60916686"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388457"
 ---
 # <a name="page-through-the-images-results"></a>Przejrzyj wyniki obrazów
 
-Po wywołaniu interfejsu API wyszukiwania obrazów Bing zwraca listę wyników. Lista jest podzestawem całkowitej liczby wyników odpowiednich dla zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) pola.  
+Po wywołaniu interfejsu API wyszukiwania obrazów Bing zwraca listę wyników. Lista jest podzestawem całkowitej liczby wyników odpowiednich dla zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#totalestimatedmatches) pola.  
 
 W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zawiera odpowiedź obrazów.  
 
@@ -34,7 +34,7 @@ W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, który zaw
 }  
 ```  
 
-Na stronie przy użyciu dostępnych obrazów, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) parametry zapytania.  
+Na stronie przy użyciu dostępnych obrazów, użyj [liczba](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) parametry zapytania.  
 
 `count` Parametr określa liczbę wyników do zwrócenia w odpowiedzi. Maksymalna liczba wyników, których może żądać w odpowiedzi wynosi 150. Wartością domyślną jest 35. Rzeczywista liczba dostarczonych może być mniejsza niż żądana.
 
@@ -58,7 +58,7 @@ Host: api.cognitive.microsoft.com
 
 Można by oczekiwać, że jeśli stronie 35 obrazów w danym momencie należy ustawić `offset` parametr na wartość 0 na pierwszego żądania zapytania, a następnie zwiększenie `offset` przez 35 na kolejnych żądań. Jednak niektóre wyniki w kolejnej odpowiedzi może być duplikaty poprzedniej odpowiedzi. Na przykład pierwsze dwa obrazy w odpowiedzi może być taka sama jak ostatnie dwa obrazy z poprzedniej odpowiedzi.
 
-Aby wyeliminować zduplikowane wyniki, należy użyć [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#nextoffset) pole `Images` obiektu. `nextOffset` Pola informujący o tym `offset` do użycia dla następnego żądania. Na przykład, jeśli chcesz stronie 30 obrazów w czasie, należy ustawić `count` do 30 i `offset` na 0 w pierwszego żądania. W kolejnym żądaniu, należy ustawić `count` do 30 i `offset` wartość poprzedniej odpowiedzi `nextOffset`. Na stronie Wstecz, zalecamy utrzymanie stosu poprzedniego przesunięcia i wyświetlanie najnowszych, ostatnio.
+Aby wyeliminować zduplikowane wyniki, należy użyć [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#nextoffset) pole `Images` obiektu. `nextOffset` Pola informujący o tym `offset` do użycia dla następnego żądania. Na przykład, jeśli chcesz stronie 30 obrazów w czasie, należy ustawić `count` do 30 i `offset` na 0 w pierwszego żądania. W kolejnym żądaniu, należy ustawić `count` do 30 i `offset` wartość poprzedniej odpowiedzi `nextOffset`. Na stronie Wstecz, zalecamy utrzymanie stosu poprzedniego przesunięcia i wyświetlanie najnowszych, ostatnio.
 
 > [!NOTE]
 > Stronicowanie ma zastosowanie tylko do wyszukiwania obrazów (/ obrazy/wyszukiwania), a nie szczegółowe informacje o obrazach lub popularnych obrazów (/ Obrazy/analizy trendów).

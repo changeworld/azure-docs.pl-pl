@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 813cfb25ebcd3dd15314d7aa05933d0bf1167917
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835053"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258055"
 ---
 # <a name="azure-saas-application-offer"></a>Oferta Azure aplikacji SaaS
 
@@ -20,6 +20,7 @@ W tej sekcji wyjaśniono, jak opublikować oprogramowanie jako usługa (SaaS) of
 
 > [!IMPORTANT] 
 > SaaS oferują funkcje jest przeprowadzana migracja do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+> Aby uzyskać więcej informacji, zobacz [Tworzenie nowej oferty SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 
 Użyj aplikacji SaaS, gdy rozwiązanie zostanie wdrożony w ramach własnej subskrypcji platformy Azure i klientów będzie zalogować się za pomocą interfejsu projektowania i zarządzania nimi przetestować aplikację. <a href="https://azure.microsoft.com/services/active-directory">Usługa Azure Active Directory (AAD)</a> umożliwia korzystanie z istniejącym środowiskiem wersji próbnej.

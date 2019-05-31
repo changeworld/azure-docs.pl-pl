@@ -3,19 +3,19 @@ title: Przekształć tekst — interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Przekształcenia tekstu przy użyciu interfejsu API tłumaczenia tekstu.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 1319b7191d9b192897e1e8ab4900239bd9230bce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 4d024fd30a77c011bab4f120c4ef3614aac09998
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608323"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389684"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Jak użyć metody TransformText
 
@@ -30,7 +30,7 @@ Metoda jest usługą RESTful przy użyciu GET za pośrednictwem protokołu HTTP.
 
 | Parametr | Opis |
 |:---|:---|
-| Nagłówek uwierzytelnienia | **Wymagane** nagłówka HTTP używany do identyfikowania aplikacji. Użyj klucza: "Autoryzacja" i wartość: "Bearer" + "" + tokenu dostępu. Szczegółowe informacje można znaleźć tutaj.|
+| Nagłówek autoryzacji | **Wymagane** nagłówka HTTP używany do identyfikowania aplikacji. Użyj klucza: "Autoryzacja" i wartość: "Bearer" + "" + tokenu dostępu. Szczegółowe informacje można znaleźć tutaj.|
 | language | **Wymagane** ciąg reprezentujący kod języka. Ten parametr obsługuje tylko język angielski przy użyciu **en** jako nazwę języka.|
 | category | **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko opcja domyślna **ogólne**.|
 | zdania | **Wymagane** zdania, który chcesz naprawić. |

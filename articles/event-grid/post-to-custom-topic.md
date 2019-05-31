@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: fc8877ed23b408ea041de67018a71cc203c5e8c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162038"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304210"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Wpis do tematu niestandardowego usługi Azure Event Grid
 
@@ -39,7 +39,7 @@ Aby uzyskać punkt końcowy dla tematu niestandardowego przy użyciu programu Az
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Nagłówek
+## <a name="header"></a>nagłówek
 
 W żądaniu, zawierają wartość nagłówka o nazwie `aeg-sas-key` zawierający klucz na potrzeby uwierzytelniania.
 
@@ -76,7 +76,10 @@ Niestandardowe tematy najwyższego poziomu dane zawierają te same pola jako sta
 ]
 ```
 
-Aby uzyskać opis tych właściwości, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md). Ogłaszając zdarzenia do tematu usługi event grid tablicy może mieć całkowity rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB.
+Aby uzyskać opis tych właściwości, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md). Ogłaszając zdarzenia do tematu usługi event grid tablicy może mieć całkowity rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB (ogólnie) lub 1 MB (wersja zapoznawcza).
+
+> [!NOTE]
+> Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
 
 Na przykład jest schematu danych ważnego zdarzenia:
 
@@ -100,10 +103,10 @@ Po publikowanie do endpoint tematu, otrzymasz odpowiedź. Odpowiedź jest standa
 
 |Wynik  |Odpowiedź  |
 |---------|---------|
-|Sukces  | 200 OK  |
+|Powodzenie  | 200 OK  |
 |Dane zdarzenia mają niepoprawny format | 400 Niewłaściwe żądanie |
 |Nieprawidłowy klucz dostępu. | 401 Brak autoryzacji |
-|Nieprawidłowy punkt końcowy | 404 Nie znaleziono |
+|Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
 |Tablica lub zdarzeń przekracza limit rozmiaru | Ładunek 413 zbyt duży |
 
 Błędy treść wiadomości ma następujący format:

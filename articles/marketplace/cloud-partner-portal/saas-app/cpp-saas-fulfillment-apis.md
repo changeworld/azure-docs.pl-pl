@@ -7,14 +7,18 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: pabutler
-ms.openlocfilehash: ec206c2d637f9fb2727d72cf17087050a765672c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e7a01af1eba865b0a088b0fa7226273527abd70e
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941965"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257403"
 ---
 # <a name="saas-fulfillment-apis"></a>Interfejsy API realizacji SaaS
+
+> [!IMPORTANT] 
+> SaaS oferują funkcje zostały przeniesione do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+> Aby uzyskać więcej informacji, zobacz [Tworzenie nowej oferty SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 Interfejsy API z realizacji SaaS umożliwiają niezależnym dostawcom oprogramowania (ISV), aby zintegrować swoje aplikacje SaaS przy użyciu portalu Azure Marketplace. Te interfejsy API umożliwiają aplikacjom niezależnego dostawcy oprogramowania do wzięcia udziału w wszystkie kanały commerce włączone: bezpośrednie, prowadzonej przez partnera (odsprzedawcy) i doprowadziło do pola.  Są one wymagane do wyświetlania listy transactable ofert SaaS w portalu Azure Marketplace.
 

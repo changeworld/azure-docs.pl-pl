@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197012"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241375"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Usługa Usługa uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 > [!div class="op_single_selector"]
@@ -48,9 +48,9 @@ Podczas zgodnie z instrukcjami w powyższym linkiem, upewnij się, możesz wybra
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Krok 2: Pobierz identyfikator aplikacji, klucz uwierzytelniania i Identyfikatora dzierżawy
 Podczas programowego logowania, potrzebujesz Identyfikatora aplikacji. Jeśli aplikacja zostanie uruchomiona w ramach własnej poświadczeń, należy również klucza uwierzytelniania.
 
-* Aby uzyskać instrukcje dotyczące sposobu pobierania aplikacji Identyfikatora i klucza uwierzytelniania (nazywane również klucz tajny klienta) dla aplikacji, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Aby uzyskać instrukcje dotyczące sposobu pobierania aplikacji Identyfikatora i klucza uwierzytelniania (nazywane również klucz tajny klienta) dla aplikacji, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
-* Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>Krok 3: Przypisz aplikację usługi Azure AD do usługi Azure Data Lake Storage Gen1 konta pliku lub folderu
 

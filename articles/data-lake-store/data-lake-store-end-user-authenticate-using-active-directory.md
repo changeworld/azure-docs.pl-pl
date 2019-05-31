@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878252"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234054"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 > [!div class="op_single_selector"]
@@ -45,12 +45,12 @@ W tym artykule zawiera informacje o sposobie tworzenia **natywną aplikację Azu
   
     ![Pobierz domena usługi AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Twoim identyfikatorem dzierżawy platformy Azure. Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* Twoim identyfikatorem dzierżawy platformy Azure. Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Uwierzytelnianie użytkowników końcowych
 Ten mechanizm uwierzytelniania jest zalecaną metodą, jeśli chcesz, aby użytkownik końcowy, aby zalogować się do aplikacji za pomocą usługi Azure AD. Będzie uzyskiwać dostęp do zasobów platformy Azure na tym samym poziomie dostępu jako użytkownik końcowy rejestrowania w aplikacji. Użytkownikowi końcowemu musi podawać swoich poświadczeń kolei okresowo dla swojej aplikacji zachować dostęp.
 
-Wynik o logowaniu użytkownika jest, że aplikacja otrzymuje token dostępu i token odświeżania. Token dostępu jest dołączany do każdego żądania wysłanego do programu Data Lake Storage Gen1 lub Data Lake Analytics i jest on prawidłowy dla jednej godziny domyślnie. Token odświeżania można uzyskać nowy token dostępu i jest on prawidłowy dla domyślnie do dwóch tygodni. Można użyć dwa różne podejścia dla nazwy logowania użytkownika końcowego.
+Wynik po użytkownik końcowy, zaloguj się w jest, że aplikacja otrzymuje token dostępu i token odświeżania. Token dostępu jest dołączany do każdego żądania wysłanego do programu Data Lake Storage Gen1 lub Data Lake Analytics i jest on prawidłowy dla jednej godziny domyślnie. Token odświeżania można uzyskać nowy token dostępu i jest on prawidłowy dla domyślnie do dwóch tygodni. Dwa różne podejścia można użyć do logowania do użytkownika końcowego.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Przy użyciu wyskakującego okienka OAuth 2.0
 Aplikację można uruchomić OAuth 2.0 autoryzacji podręczne, w którym użytkownik może wprowadzić swoje poświadczenia. Są one współpracuje również z procesu usługi Azure AD uwierzytelniania dwuskładnikowego (2FA), jeśli to konieczne. 
@@ -82,7 +82,7 @@ Podczas postępując zgodnie z instrukcjami w linku, upewnij się, możesz wybra
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: Uzyskiwanie Identyfikatora aplikacji i identyfikator URI przekierowania
 
-Zobacz [uzyskiwanie Identyfikatora aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) można pobrać identyfikator aplikacji.
+Zobacz [uzyskiwanie Identyfikatora aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) można pobrać identyfikator aplikacji.
 
 Aby pobrać identyfikator URI przekierowania, wykonaj następujące czynności.
 

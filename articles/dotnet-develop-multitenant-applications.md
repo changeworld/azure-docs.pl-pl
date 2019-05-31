@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 342c7903e58a5c3bc41278152630187fa0c63b7b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 92a0caedca34756228dbf57ec9099fd2ece3d84e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119151"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225974"
 ---
 # <a name="multitenant-applications-in-azure"></a>Aplikacji wielodostępnych na platformie Azure
 Wielodostępnej aplikacji jest zasobem współdzielonym, umożliwiająca oddzielne użytkowników lub "dzierżawy" wyświetlić aplikację tak, jakby była swoje własne. Typowy scenariusz, który jest przydatna w aplikacji wielodostępnej jest jeden w którym wszyscy użytkownicy aplikacji mogą chcieć dostosować środowisko użytkownika, ale mają te same wymagania podstawowe biznesowych. Przykłady dużych wielodostępne aplikacje usługi Office 365, Outlook.com i visualstudio.com.
@@ -40,7 +40,7 @@ Właściwie zaimplementowana wielodostępnej aplikacji zapewnia następujące ko
 * **Koszty**: Koszty są niższe niż uruchamianie aplikacji dedykowaną, pojedynczej dzierżawy, ponieważ wielodostępu umożliwia udostępnianie zasobów.
 * **Dostosowywalności**. Możliwość dostosowywania aplikacji dla dzierżawy usługi na różne sposoby, takie jak dodawanie lub usuwanie funkcji, zmienianie kolorów i logo lub nawet dodanie własnych kodu lub skryptu.
 
-Krótko mówiąc dostępnych jest wiele kwestii, które należy wziąć pod uwagę, do świadczenia usług o wysokim stopniu skalowalności, istnieją również liczbę cele i wymagania, które są wspólne dla wielu aplikacji wielodostępnych. Niektóre mogą nie być odpowiednie w określonych scenariuszach i ważność poszczególnych cele i wymagania różnią się w każdym scenariuszu. Jako dostawca aplikacji wielodostępnej Ponadto będziesz mieć cele i wymagania, takie jak spełnia wymagania dzierżawców cele wymagania, rentowność, rozliczenia, wiele poziomów usług, inicjowanie obsługi administracyjnej, łatwość konserwacji oraz monitorowania i automatyzacji.
+Krótko mówiąc dostępnych jest wiele kwestii, które należy wziąć pod uwagę, do świadczenia usług o wysokim stopniu skalowalności, istnieją również liczbę cele i wymagania, które są wspólne dla wielu aplikacji wielodostępnych. Niektóre mogą nie być odpowiednie w określonych scenariuszach i ważność poszczególnych cele i wymagania różnią się w każdym scenariuszu. Jako dostawca aplikacji wielodostępnej Ponadto będziesz mieć cele i wymagania, takie jak spotkania dzierżawcy cele i wymagania, rentowność, rozliczenia, wiele poziomów usług, inicjowania obsługi, monitorowania łatwość konserwacji i automatyzacji.
 
 Aby uzyskać więcej informacji na temat zagadnień projektowych dodatkowe wielodostępnej aplikacji, zobacz [hostingu aplikacji z wieloma dzierżawami, na platformie Azure][Hosting a Multi-Tenant Application on Azure]. Aby uzyskać informacje na temat typowych wzorców architektury danych w aplikacjach baz danych typu oprogramowanie jako usługa (SaaS), zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database). 
 
@@ -51,15 +51,15 @@ System Azure oferuje wiele funkcji, które umożliwiają rozwiązywać kluczowe 
 * Witryny sieci Web segmentu dzierżaw przez nagłówki hosta z lub bez komunikacji SSL
 * Witryny sieci Web segmentu dzierżaw przez parametry zapytania
 * Usługi sieci Web w przypadku ról procesów roboczych
-  * Role procesów roboczych. która zazwyczaj przetworzyć dane do wewnętrznej bazy danych aplikacji.
+  * Role procesów roboczych, zwykle przetwarzających dane do wewnętrznej bazy danych aplikacji.
   * Role sieci Web, które zazwyczaj działa jako fronton dla aplikacji.
 
 **Storage**
 
-Zarządzanie danymi, takich jak Azure SQL Database lub magazynu Azure usług, takich jak usługi tabeli, która zapewnia usługi do przechowywania dużych ilości danych bez struktury i usługi obiektów Blob, która zapewnia usługi do przechowywania dużych ilości tekstu bez struktury i danych binarnych dane, takie jak wideo, audio i obrazy.
+Zarządzanie danymi, takich jak usługi Azure SQL Database lub magazynu Azure, takich jak usługa tabeli, która zapewnia usługi do przechowywania dużych ilości danych bez struktury i usługi Blob service, która zapewnia usługi do przechowywania dużych ilości tekstu bez struktury lub dane binarne, takie jak wideo, audio i obrazy.
 
-* Zabezpieczanie wielodostępnej bazie danych SQL odpowiednich identyfikatorów logowania programu SQL Server dla dzierżawcy.
-* Za pomocą tabele platformy Azure dla aplikacji zasobów, określając zasady dostępu na poziomie kontenera można możliwości dostosowania uprawnień bez konieczności wystawiania nowego adresy URL dla zasobów chronione przy użyciu sygnatury dostępu współdzielonego.
+* Zabezpieczanie wielodostępnej bazie danych SQL logowania programu SQL Server dla dzierżawcy.
+* Przy użyciu tabel platformy Azure dla zasobów aplikacji, określając zasady dostępu na poziomie kontenera, może mieć możliwość dostosowania uprawnień bez konieczności wystawiania nowego adresy URL dla zasobów chronione przy użyciu sygnatury dostępu współdzielonego.
 * Kolejki platformy Azure dla kolejek platformy Azure zasoby aplikacji są często używane do przetwarzania dysku w imieniu dzierżaw, ale może również służyć do dostarczania pracy wymaganej do inicjowania obsługi administracyjnej lub zarządzania.
 * Kolejki usługi Service Bus dla zasobów aplikacji, który wypycha działają udostępnionej usługi, możesz użyć pojedynczej kolejki gdzie nadawcy Każda dzierżawa ma tylko uprawnienia (wyprowadzana z oświadczeń wystawionych z usługi ACS) do wypychania do tej kolejki, a tylko odbiorcy z usługi uprawnienia do pobierania z kolejki danych przechodzących z wieloma dzierżawcami.
 
@@ -73,20 +73,20 @@ Platforma Azure udostępnia kilka usług sieciowych, które obsługują uwierzyt
 
 * Azure umożliwia sieci wirtualnej możesz aprowizować i zarządzać nimi wirtualnych sieci prywatnych (VPN) na platformie Azure oraz bezpieczne łączenie ich z lokalną infrastrukturą informatyczną.
 * Menedżer ruchu w sieci wirtualnej umożliwia równoważenie obciążenia ruchem przychodzącym wielu hostowanych usług platformy Azure, czy są one uruchamiane w jednym centrum danych lub w różnych centrach danych na całym świecie.
-* Azure Active Directory (Azure AD) to nowoczesna, oparta na REST usługa, która zapewnia funkcji kontroli tożsamości zarządzania i dostęp do aplikacji w chmurze. Używanie programu Azure AD dla zasobów aplikacji w usłudze Azure AD zapewnia prosty sposób uwierzytelniania i autoryzacji użytkowników uzyskujących do uzyskania dostępu do aplikacji sieci web i usług, zezwalając funkcji uwierzytelniania i autoryzacji, aby uwzględnić poza swój kod.
-* Usługa Azure Service Bus zapewnia bezpiecznej wymiany komunikatów i możliwości przepływu danych na potrzeby rozproszonego oraz aplikacje hybrydowe, takie jak komunikacja między platformą Azure aplikacji i aplikacji lokalnych i usług hostowanych, bez konieczności złożonych zapory i zabezpieczeń infrastruktura. Za pomocą usługi Service Bus Relay dla zasobów aplikacji do usług, które są widoczne jako punktów końcowych może należeć do dzierżawy (na przykład hostowane poza usługą systemu, takich jak lokalne) lub mogą one być aprowizowana specjalnie dla dzierżawy (ponieważ usług dane poufne, specyficznym dla dzierżawy porusza się między nimi).
+* Azure Active Directory (Azure AD) to nowoczesna, oparta na REST usługa, która zapewnia funkcji kontroli tożsamości zarządzania i dostęp do aplikacji w chmurze. Używanie programu Azure AD dla zasobów aplikacji udostępnia łatwy sposób uwierzytelniania i autoryzacji użytkowników uzyskujących dostęp do aplikacji sieci web i usług, zezwalając funkcji uwierzytelniania i autoryzacji, aby uwzględnić poza swój kod.
+* Usługa Azure Service Bus zapewnia bezpiecznej wymiany komunikatów i możliwości przepływu danych na potrzeby rozproszonego oraz aplikacje hybrydowe, takie jak komunikacja między platformą Azure aplikacji i aplikacji lokalnych i usług hostowanych, bez konieczności złożonych zapory i zabezpieczeń infrastruktura. Dostęp do usług, które są dostępne jako punktów końcowych przy użyciu usługi Service Bus Relay dla zasobów aplikacji może należeć do dzierżawy (na przykład hostowane poza usługą systemu, takich jak lokalne) lub mogą one być aprowizowana specjalnie dla dzierżawy (ponieważ usług dane poufne, specyficznym dla dzierżawy porusza się między nimi).
 
 **Aprowizowanie zasobów**
 
-System Azure oferuje szereg sposobów aprowizowanie nowych dzierżaw w aplikacji. Dla aplikacji wielodostępnych z wieloma dzierżawami jest zazwyczaj konieczne zautomatyzować ten proces, należy włączyć samoobsługowe Inicjowanie obsługi administracyjnej.
+Platforma Azure udostępnia szereg sposobów aprowizacja nowych dzierżaw w aplikacji. Dla aplikacji wielodostępnych z wieloma dzierżawami jest zazwyczaj konieczne zautomatyzować ten proces, należy włączyć samoobsługowe Inicjowanie obsługi administracyjnej.
 
 * Role proces roboczy umożliwiają aprowizacji i anulować obsługę każdego dzierżawcy zasoby (na przykład gdy nową dzierżawę tworzy konto lub anuluje), zbieranie metryk dla pomiaru użycia, skalowania i zarządzanie nim zgodnie z harmonogramem niektórych lub w odpowiedzi na przekroczenia progów wydajności wskaźniki. Tej samej roli może również służyć do wypychania aktualizacji i uaktualnień do rozwiązania.
 * Obiekty BLOB platformy Azure, które mogą być używane do udostępniania obliczeń lub wstępnie zainicjowana zasobów magazynu dla nowych dzierżaw, przy jednoczesnym zapewnieniu zasady dostępu na poziomie kontenera chronić zasoby obliczeniowe usługi pakietów, obrazów wirtualnych dysków Twardych i innych zasobów.
 * Opcje aprowizacji zasobów bazy danych SQL dla dzierżawy:
   
-  * DDL w skryptach lub osadzony jako zasoby w ramach zestawów
+  * DDL w skryptach lub osadzony jako zasoby w ramach zestawów.
   * SQL Server 2008 R2 pakiety DAC wdrożone programowo.
-  * Kopiowanie z bazy danych master odwołania
+  * Kopiowanie z bazy danych master odwołania.
   * Do aprowizowania nowych baz danych z pliku przy użyciu bazy danych importu i eksportu.
 
 <!--links-->

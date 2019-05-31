@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a52d05c77d0aeb8ebeba196df60e59f0647fea9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60740288"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233919"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database dla serwera MariaDB warstw cenowych
 
@@ -20,7 +20,7 @@ W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Data
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Generacja obliczeń | 5. generacja |5. generacja | 5. generacja |
-| Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
@@ -51,19 +51,25 @@ Magazyn, który możesz aprowizować to pojemność magazynu jest dostępne dla 
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
 | Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS |
 
-Można dodać dodatkowej pojemności, podczas i po utworzeniu serwera. Warstwa podstawowa nie zapewnia gwarancję operacji We/Wy. Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych operacje We/Wy skalowanie o rozmiarze aprowizowanego magazynu współczynnik 3:1.
+Dodanie pojemności dodatkowego miejsca do magazynowania, podczas i po utworzeniu serwera i umożliwić systemu w celu zwiększenia magazynu automatycznie w zależności od użycia magazynu obciążenia. Warstwa podstawowa nie zapewnia gwarancję operacji We/Wy. Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych operacje We/Wy skalowanie o rozmiarze aprowizowanego magazynu współczynnik 3:1.
 
 Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za pomocą poleceń interfejsu wiersza polecenia platformy Azure. Istotne metryki do monitorowania są [limit przestrzeni dyskowej, procent użycia magazynu, magazynu i procent We/Wy](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 
-Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie spadnie poniżej 5 GB lub 5% zaaprowizowanej pojemności magazynu, w zależności od tego, która wartość będzie niższa. Przykładowo po aprowizowaniu 100 GB miejsca do magazynowania i rzeczywiste użycie przechodzi przez 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli zaaprowizowano 5 GB pojemności magazynu, serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca spanie poniżej 250 MB.  
+Serwery z mniej niż 100 GB zainicjowano obsługę administracyjną magazynu są oznaczone tylko do odczytu, jeśli ilość wolnego miejsca jest mniejsza niż 512MB lub 5% rozmiaru aprowizowanego magazynu. Serwery z więcej niż 100 GB zainicjowano obsługę administracyjną magazynu są oznaczone odczytu, tylko wtedy, gdy ilość wolnego miejsca jest mniejsza niż 5 GB.
+
+Przykładowo po aprowizowaniu 110 GB miejsca do magazynowania i rzeczywiste użycie przekroczą 105 GB danych, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli aprowizowaniu 5 GB miejsca do magazynowania, serwer zostanie oznaczony tylko do odczytu po przekraczać 512 MB wolnego miejsca.
 
 Podczas gdy usługa próbuje przełączyć serwer w tryb tylko do odczytu, wszystkie nowe żądania transakcji zapisu są blokowane, a istniejące aktywne transakcje nadal są wykonywane. Gdy serwer zostanie przełączony w tryb tylko do odczytu, wszystkie kolejne zatwierdzenia transakcji i operacji zapisu zakończą się niepowodzeniem. Zapytania odczytu będą działać bez żadnych przerw. Gdy zwiększysz zaaprowizowaną pojemność magazynu, serwer będzie ponownie gotowy do akceptowania transakcji zapisu.
 
-Zalecane jest skonfigurowanie alertu, aby otrzymywać powiadomienia, gdy magazyn serwera zbliża się do progu, dzięki czemu można uniknąć, jakim jest w stanie tylko do odczytu. 
+Zaleca się włączenie funkcji magazynu automatyczne powiększanie lub skonfigurować alert, aby otrzymywać powiadomienia, gdy magazyn serwera zbliża się do progu więc można uniknąć, jakim jest w stanie tylko do odczytu. Aby uzyskać więcej informacji, zobacz dokumentację na [sposobu ustawiania alertu](howto-alert-metric.md).
 
-Aby uzyskać więcej informacji, zobacz dokumentację na [sposobu ustawiania alertu](howto-alert-metric.md).
+### <a name="storage-auto-grow"></a>Magazyn automatyczne powiększanie
+
+Jeśli rosnąć automatycznie magazynu jest włączona, Magazyn automatycznie rozszerza się bez wywierania wpływu na obciążenie pracą. W przypadku serwerów z mniej niż 100 GB zainicjowano obsługę administracyjną magazynu rozmiar aprowizowanego magazynu jest zwiększana o 5 GB, jak ilość wolnego miejsca jest poniżej większą niż 1 GB lub 10% aprowizowanego magazynu. W przypadku serwerów z więcej niż 100 GB magazynu aprowizowanego rozmiaru aprowizowanego magazynu zwiększa się o 5% gdy ilość wolnego miejsca jest poniżej 5% rozmiaru aprowizowanego magazynu. Limity pamięci masowej, jak określono powyżej mają zastosowanie.
+
+Przykładowo po aprowizowaniu 1000 GB miejsca do magazynowania i rzeczywiste użycie przekroczą 950 GB, rozmiar magazynu serwera zostaje zwiększona do 1050 GB. Alternatywnie Jeśli aprowizowaniu 10 GB miejsca do magazynowania, rozmiar magazynu jest wzrost do 15 GB podczas kosztuje mniej niż 1 GB pamięci.
 
 ## <a name="backup"></a>Backup
 

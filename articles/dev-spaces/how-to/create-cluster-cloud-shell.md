@@ -9,12 +9,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Dowiedz się, jak szybko utworzyć klaster usługi Kubernetes, włączone dla usługi Azure Dev miejsca do magazynowania bezpośrednio z przeglądarki, bez konieczności instalowania żadnych.
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
-ms.openlocfilehash: c9dabc13e85295b88483f43b26ccf0b15406ad9b
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 532a094f96817f3c525384694b6fa60a292aa948
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861609"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391673"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell
 
@@ -22,7 +22,7 @@ Możesz użyć [usługi Azure Cloud Shell](/azure/cloud-shell) do tworzenia klas
 
 ## <a name="create-the-cluster"></a>Tworzenie klastra
 
-Najpierw utwórz grupę zasobów w [region, który obsługuje usługi Azure Dev miejsca do magazynowania](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+Najpierw utwórz grupę zasobów w [region, który obsługuje usługi Azure Dev miejsca do magazynowania][supported-regions].
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -39,3 +39,6 @@ Utworzenie klastra trwa kilka minut.  Po ukończeniu dane wyjściowe jest wyświ
 ## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz [miejsca do magazynowania Azure Dev](/azure/dev-spaces/) linki do samouczków, pełne.
+
+
+[supported-regions]: ../about.md#supported-regions-and-configurations

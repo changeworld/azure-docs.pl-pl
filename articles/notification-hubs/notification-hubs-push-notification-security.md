@@ -12,18 +12,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: 22494984ca45cde7255fb5e1a30548c859bfad68
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2ba3be0d51758cf7afd9f85258403bf79ca8401f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826520"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239413"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Model zabezpieczeń usługi Azure Notification hubs
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym temacie opisano model zabezpieczeń usługi Azure Notification hubs. Ponieważ usługa Notification Hubs znajdują się jednostki usługi Service Bus, implementują ten sam model zabezpieczeń, co Usługa Service Bus. Aby uzyskać więcej informacji, zobacz [uwierzytelniania w usłudze Service Bus](https://msdn.microsoft.com/library/azure/dn155925.aspx) tematów.
 
@@ -43,13 +43,13 @@ Jest ważne dowiedzieć się, że klucz z dostępem do nasłuchiwania zezwala na
 
 Podobnie jak inne podmioty, operacje Centrum powiadomień są dozwolone dla trzech oświadczeń zabezpieczeń: Posłuchaj, wysyłanie i zarządzanie.
 
-| Oświadczenie   | Opis                                          | Dozwolone operacje |
+| Claim   | Opis                                          | Dozwolone operacje |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Nasłuchuj  | Utwórz/zaktualizuj, Odczyt i usuwanie pojedynczego rejestracji | Utwórz/zaktualizuj rejestracji<br><br>Odczyt rejestracji<br><br>Odczyt wszystkich rejestracji dla dojścia<br><br>Usuwanie rejestracji |
-| Wyślij    | Wysyłanie komunikatów do Centrum powiadomień                | Wyślij wiadomość |
+| Nasłuchiwanie  | Utwórz/zaktualizuj, Odczyt i usuwanie pojedynczego rejestracji | Utwórz/zaktualizuj rejestracji<br><br>Odczyt rejestracji<br><br>Odczyt wszystkich rejestracji dla dojścia<br><br>Usuwanie rejestracji |
+| Wysyłanie    | Wysyłanie komunikatów do Centrum powiadomień                | Wyślij wiadomość |
 | Zarządzanie  | CRUDs (w tym aktualizowanie poświadczenia systemu powiadomień platformy i kluczy zabezpieczeń) w usłudze Notification Hubs i odczytu rejestracji na podstawie tagów |Usługa tworzenia/aktualizacji/odczyt/usuwanie notification hubs<br><br>Odczyt rejestracji według tagu |
 
-Usługa Notification Hubs akceptować oświadczeń przyznane przez Microsoft Azure Access Control tokenów i tokenów sygnatur wygenerowane z klucze współużytkowane są konfigurowane bezpośrednio w Centrum powiadomień.
+Notification Hubs akceptuje podpisu wygenerować tokeny z udostępnione klucze skonfigurowane bezpośrednio w Centrum powiadomień.
 
 Nie jest możliwe wysłanie powiadomienia do więcej niż jednej przestrzeni nazw. Przestrzenie nazw to kontener logiczny dla usługi notification hubs i nie są związane z wysyłaniem powiadomień.
 Zasady dostępu na poziomie przestrzeni nazw (poświadczenia) może służyć do operacji na poziomie przestrzeni nazw, na przykład: wyświetlanie listy usługi notification hubs, tworzenie lub usuwanie usługi notification hubs, itp. Tylko zasady dostępu na poziomie koncentratora będzie można wysyłać powiadomienia.

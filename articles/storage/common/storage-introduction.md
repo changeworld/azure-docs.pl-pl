@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b03197fb0d4d97756e5a3fe88de78c11a816b5ec
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 4a6a6249f3edca30ab3d3f9a213b4282b4323d15
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951276"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258336"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -36,7 +36,7 @@ Usługa Azure Storage obejmuje następujące usługi danych:
 
 Dostęp do każdej usługi uzyskuje się za pośrednictwem konta magazynu. Aby rozpocząć, zobacz artykuł [Tworzenie konta magazynu](storage-quickstart-create-account.md).
 
-## <a name="blob-storage"></a>Magazyn obiektów blob
+## <a name="blob-storage"></a>Blob Storage
 
 Azure Blob Storage to rozwiązanie do magazynowania obiektów w chmurze firmy Microsoft. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury, takich jak dane tekstowe lub binarne. 
 
@@ -85,7 +85,9 @@ Aby uzyskać więcej informacji na temat usługi Table Storage, zobacz [Omówien
 
 ## <a name="disk-storage"></a>Przechowywanie na dysku
 
-Usługa Azure Storage obejmuje również wszystkie funkcje dysków zarządzanych i niezarządzanych, z których korzystają maszyny wirtualne. Aby uzyskać więcej informacji na temat tych funkcji, zobacz [dokumentację usług Compute](https://docs.microsoft.com/azure/#pivot=products&panel=Compute).
+Zarządzane przez platformę Azure dysk jest wirtualny dysk twardy (VHD). Można traktować je jak dysk fizyczny na serwerze w środowisku lokalnym, ale zwirtualizowanych. Usługi Azure managed disks są przechowywane jako stronicowe obiekty BLOB, które są losowych operacji We/Wy obiektu magazynu na platformie Azure. Nazywamy dysku zarządzanego "zarządzana", ponieważ jest klasą abstrakcyjną za pośrednictwem stronicowe obiekty BLOB i kontenery obiektów blob oraz konta usługi Azure storage. W przypadku dysków zarządzanych wszystko, co należy zrobić to aprowizowanie dysku, a platforma Azure zajmie się resztą.
+
+Aby uzyskać więcej informacji na temat dysków zarządzanych, zobacz [wprowadzenie do usługi Azure managed disks w](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="types-of-storage-accounts"></a>Typy kont magazynu
 

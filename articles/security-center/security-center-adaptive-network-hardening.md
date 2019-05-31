@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 17f01d89598d99425d157e4c9c31e64ab1ccbcda
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 05/24/2019
+ms.author: monhaber
+ms.openlocfilehash: f35f410ddc039ee264fa1de317e152cb03f391b5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966985"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241530"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania sieci zaostrzanie poziomu zabezpieczeń w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować funkcje adaptacyjnego sterowania ograniczania funkcjonalności sieci w Centrum zabezpieczeń Azure.
@@ -33,7 +33,6 @@ Na przykład załóżmy, że jest istniejącą regułę sieciowej grupy zabezpie
 
 ![Widok zaostrzanie poziomu zabezpieczeń sieci](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-
 > [!NOTE]
 > Funkcje adaptacyjnego sterowania zalecenia dotyczące wzmacniania ochrony sieci są obsługiwane w następujących portów: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
@@ -42,8 +41,8 @@ Na przykład załóżmy, że jest istniejącą regułę sieciowej grupy zabezpie
 1. W usłudze Security Center wybierz **sieć** -> **adaptacyjne ograniczania funkcjonalności sieci**. Maszyny wirtualne w sieci zostaną wyświetlone w obszarze trzech osobnych kartach:
    * **Zasoby w złej kondycji**: Maszyny wirtualne, które mają obecnie zaleceń i alertów, które zostały wyzwolone przez uruchomienie algorytmu adaptacyjne ograniczania funkcjonalności sieci. 
    * **Zasoby w dobrej kondycji**: Maszyny wirtualne bez alerty i zalecenia.
-   * **Nieprzeskanowane zasoby**: W przypadku maszyn wirtualnych, które algorytm adaptacyjne ograniczania funkcjonalności sieci, nie mogą być uruchamiane z jednego z następujących powodów:
-      * **Maszyny wirtualne są klasyczne maszyny wirtualne**:-obsługiwane są tylko usługi Azure Resource Manager dla maszyn wirtualnych.
+   * **Nieprzeskanowane zasoby**: W przypadku maszyn wirtualnych, które algorytm adaptacyjne ograniczania funkcjonalności sieci, nie można uruchomić na z jednego z następujących powodów:
+      * **Maszyny wirtualne są klasyczne maszyny wirtualne**: Obsługiwane są tylko usługi Azure Resource Manager dla maszyn wirtualnych.
       * **Dostępnych jest za mało danych**: Aby wygenerować dokładne ruchu rekomendacje dotyczące ograniczania funkcjonalności, usługa Security Center wymaga co najmniej 30 dni danych w ruchu.
       * **Maszyna wirtualna nie jest chroniony przez ASC standard**: Tylko maszyny wirtualne, które są ustawione na warstwy cenowej standardowa Centrum zabezpieczeń kwalifikują się do tej funkcji.
 
@@ -57,18 +56,23 @@ Na przykład załóżmy, że jest istniejącą regułę sieciowej grupy zabezpie
 ## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Przejrzyj i Zastosuj zalecane reguły kodu adaptacyjne wzmacnianie sieci
 
 1. Z **zasoby w złej kondycji** , a następnie wybierz Maszynę wirtualną. Alerty i reguły wzmocnienia zabezpieczeń zalecane są wymienione.
-   ![zaostrzanie poziomu zabezpieczeń alertów](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+
+     ![reguły wzmocnienia zabezpieczeń](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
    > **Reguły** karta zawiera listę reguł, które adaptacyjne ograniczania funkcjonalności sieci zaleca się dodawania. **Alerty** zawiera listę wszystkich alertów, które zostały wygenerowane z powodu ruchu, przepływać do zasobu, który nie jest w zakresie adresów IP dozwolonych w zalecanych reguł.
-
-   ![reguły wzmocnienia zabezpieczeń](./media/security-center-adaptive-network-hardening/hardening-rules.png)
 
 2. Jeśli chcesz zmienić niektóre parametry reguły, można zmodyfikować, jak wyjaśniono w [modyfikowanie reguły](#modify-rule).
    > [!NOTE]
    > Możesz również [Usuń](#delete-rule) lub [Dodaj](#add-rule) regułę.
 
-3. Wybierz zasady, które chcesz zastosować sieciową grupę zabezpieczeń, a następnie kliknij przycisk **Wymuś**. 
+3. Wybierz zasady, które chcesz zastosować sieciową grupę zabezpieczeń, a następnie kliknij przycisk **Wymuś**.
+
+      > [!NOTE]
+      > Wymuszone zasady są dodawane do NSG(s) ochronę maszyny Wirtualnej. (Maszyny Wirtualnej może być chroniona przez sieciową grupę zabezpieczeń, która jest skojarzona z jej kontrolera interfejsu Sieciowego i/lub podsieci, w której znajduje się maszyna wirtualna)
+
+    ![Wymuszanie reguł](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
+
 
 ### Modyfikowanie reguły  <a name ="modify-rule"> </a>
 
@@ -82,13 +86,13 @@ Ważne wskazówki dotyczące modyfikowania reguły adaptacyjne wzmacniania ochro
   > [!NOTE]
   > Tworzenie i modyfikowanie "Odmów" zasady odbywa się bezpośrednio z sieciowej grupy zabezpieczeń dla uzyskać więcej informacji, zobacz [tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
-* A **zezwalają na ruch z wszystkich** reguła jest jedynym typem "Odmów" reguły, które będą wyświetlane w tym miejscu i nie można modyfikować. Można jednak usunąć (zobacz [usunąć regułę](#delete-rule)).
+* A **zezwalają na ruch z wszystkich** reguła jest jedynym typem "Odmów" reguły, które będą wyświetlane w tym miejscu i nie można modyfikować. Jednak możesz usunąć (zobacz [usunąć regułę](#delete-rule)).
   > [!NOTE]
-  > A **zezwalają na ruch z wszystkich** reguły jest zalecane, gdy, w wyniku uruchomienia algorytm, usługa Security Center nie identyfikacji ruchu, który powinien być dozwolony, w oparciu o istniejącą konfigurację sieciową grupę zabezpieczeń. Dlatego zalecane reguły jest odrzucanie cały ruch do określonego portu. Nazwa tego typu reguł jest wyświetlany jako "wygenerowanej przez system". Po wymuszania tej reguły, jego rzeczywista nazwa w sieciowej grupie zabezpieczeń będzie ciąg składające się z protokołem, kierunek ruchu, "DENY" i liczbę losową.
+  > A **zezwalają na ruch z wszystkich** reguły jest zalecane, gdy, w wyniku uruchomienia algorytm, usługa Security Center nie identyfikacji ruchu, który powinien być dozwolony, w oparciu o istniejącą konfigurację sieciową grupę zabezpieczeń. Dlatego zalecane reguły jest odrzucanie cały ruch do określonego portu. Nazwa tego typu reguł jest wyświetlany jako "*generowany przez System*". Po wymuszania tej reguły, jego rzeczywista nazwa w sieciowej grupie zabezpieczeń będzie ciąg składające się z protokołem, kierunek ruchu, "DENY" i liczbę losową.
 
 *Aby zmodyfikować regułę adaptacyjne wzmacniania ochrony sieci:*
 
-1. Aby zmodyfikować niektóre parametry reguły w **reguły** kartę, kliknij wielokropek (...) na końcu wiersza reguły, a następnie kliknij przycisk **edycji reguły**.
+1. Aby zmodyfikować niektóre parametry reguły w **reguły** kartę, kliknij wielokropek (...) na końcu wiersza reguły, a następnie kliknij przycisk **Edytuj**.
 
    ![Edytuj regułę](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
@@ -97,10 +101,13 @@ Ważne wskazówki dotyczące modyfikowania reguły adaptacyjne wzmacniania ochro
    > [!NOTE]
    > Po kliknięciu przycisku **Zapisz**, zostało pomyślnie zmienione reguły. *Jednak nie zastosowano je do sieciowej grupy zabezpieczeń.* Aby zastosować go, możesz wybierz regułę na liście i kliknij przycisk **Wymuś** (opisany w następnym kroku).
 
+   ![Edytuj regułę](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+
 3. Aby zastosować regułę zaktualizowane, z listy, wybierz zaktualizowano regułę, a następnie kliknij przycisk **Wymuś**.
 
-### Dodaj nową regułę <a name ="add-rule"> </a>
+    ![Wymuszanie reguł](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
+### Dodaj nową regułę <a name ="add-rule"> </a>
 
 Możesz dodać regułę "Zezwalaj", które nie było zalecane przez usługę Security Center.
 
@@ -113,13 +120,14 @@ Możesz dodać regułę "Zezwalaj", które nie było zalecane przez usługę Sec
 
    ![Dodaj regułę](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
-1. W **edycji reguły** oknie wprowadź szczegółowe informacje i kliknij przycisk **Zapisz**.
+1. W **nową regułę** oknie wprowadź szczegółowe informacje i kliknij przycisk **Dodaj**.
 
    > [!NOTE]
-   > Po kliknięciu przycisku **Zapisz**pomyślnie dodano regułę i jest ona wyświetlana z innymi regułami zalecane. Jednak nie zastosowano je na grupy zabezpieczeń sieci. Aby go uaktywnić, możesz wybierz regułę na liście i kliknij przycisk **Wymuś** (opisany w następnym kroku).
+   > Po kliknięciu przycisku **Dodaj**pomyślnie dodano regułę i jest ona wyświetlana z innymi regułami zalecane. Jednak nie zastosowano je na grupy zabezpieczeń sieci. Aby go uaktywnić, możesz wybierz regułę na liście i kliknij przycisk **Wymuś** (opisany w następnym kroku).
 
 3. Aby zastosować nową regułę z listy, wybierz nową regułę, a następnie kliknij przycisk **Wymuś**.
 
+    ![Wymuszanie reguł](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
 ### Usuwanie reguły <a name ="delete-rule"> </a>
@@ -128,9 +136,9 @@ Gdy jest to konieczne, możesz usunąć zalecane reguły. Na przykład mogą okr
 
 *Aby usunąć regułę adaptacyjne wzmacniania ochrony sieci:*
 
-1. W **reguły** kartę, kliknij wielokropek (...) na końcu wiersza reguły, a następnie kliknij przycisk **Usuń regułę**.
+1. W **reguły** kartę, kliknij wielokropek (...) na końcu wiersza reguły, a następnie kliknij przycisk **Usuń**.  
 
-   ![Usuń regułę](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![reguły wzmocnienia zabezpieczeń](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
 
 

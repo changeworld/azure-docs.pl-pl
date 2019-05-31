@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 05/23/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249774"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235184"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co to jest architektura usługi Azure Active Directory?
 Usługa Azure Active Directory (Azure AD) umożliwia bezpieczne zarządzanie dostępem do usług i zasobów platformy Azure dla użytkowników. W ramach usługi Azure AD można skorzystać z pełnego zestawu możliwości zarządzania tożsamościami. Aby uzyskać więcej informacji na temat funkcji usługi Azure AD, zobacz [Co to jest usługa Azure Active Directory?](active-directory-whatis.md)
@@ -30,14 +30,14 @@ Rozproszona geograficznie Architektura usługi Azure AD łączy rozbudowane moni
 
 W tym artykule omówione są następujące elementy architektury:
  *  Projekt architektury usługi
- *  Użyteczność 
+ *  Skalowalność
  *  Ciągła dostępność
  *  Centra danych
 
 ### <a name="service-architecture-design"></a>Projekt architektury usługi
 Najczęstszym sposobem tworzenia dostępny i użytecznego, bogate w dane i system jest użycie niezależnych bloków konstrukcyjnych lub jednostek skalowania. W przypadku warstwy danych usługi Azure AD jednostki skalowania są nazywane *partycje*. 
 
-Warstwa danych ma kilka usług frontonu, które zapewniają możliwość odczytu i zapisu. Na poniższym diagramie pokazano, w jaki składniki partycji pojedynczego katalogu są dostarczane w całym geograficznie rozproszonych centrów danych. 
+Warstwa danych ma kilka usług frontonu, które zapewniają możliwość odczytu i zapisu. Na poniższym diagramie pokazano, w jaki składniki partycji pojedynczego katalogu są dostarczane w całym geograficznie rozproszone centra danych. 
 
   ![Diagram partycji pojedynczego katalogu](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -49,7 +49,7 @@ Składniki architektury usługi Azure AD obejmują repliki podstawowe i pomocnic
 
 **Repliki pomocnicze**
 
-Wszystkie operacje *odczytu* z katalogu są obsługiwane przez *repliki pomocnicze* w centrach danych, które fizycznie znajdują się w różnych lokalizacjach geograficznych. Istnieje wiele replik pomocniczych, ponieważ dane są replikowane w sposób asynchroniczny. Operacje odczytu z katalogu, takie jak żądania uwierzytelniania są obsługiwane przez centra danych znajdujące się blisko klientów. Repliki pomocnicze są odpowiedzialne za skalowalność odczytu.
+Wszystkie katalogu *odczytuje* są obsługiwane na podstawie *replik pomocniczych*, w centrach danych, które fizycznie znajdują się w różnych lokalizacjach geograficznych. Istnieje wiele replik pomocniczych, ponieważ dane są replikowane w sposób asynchroniczny. Operacje odczytu z katalogu, takie jak żądania uwierzytelniania są obsługiwane z centrów danych, które znajdują się blisko klientów. Repliki pomocnicze są odpowiedzialne za skalowalność odczytu.
 
 ### <a name="scalability"></a>Skalowalność
 
@@ -61,7 +61,7 @@ Aplikacje katalogów nawiązują połączenie z najbliższymi centrami danych. T
 
 ### <a name="continuous-availability"></a>Ciągła dostępność
 
-Dostępność (lub czas dostępności) definiuje możliwość wykonywania przez system nieprzerwanej pracy. Kluczem do wysokiej dostępności usługi Azure AD jest, że usługi możliwość szybkiego przełączania ruchu między wieloma geograficznie rozproszonych centrów danych. Każde centrum danych jest niezależne, co umożliwia wystąpienie nieskorelowanych trybów awarii.
+Dostępność (lub czas dostępności) definiuje możliwość wykonywania przez system nieprzerwanej pracy. Kluczem do wysokiej dostępności usługi Azure AD jest, że usługi możliwość szybkiego przełączania ruchu między wiele rozproszonych geograficznie centrów danych. Każde centrum danych jest niezależne, które umożliwia wystąpienie nieskorelowanych trybów awarii. Przez ten projekt wysokiej dostępności usługi Azure AD nie wymaga przestojów konserwacyjne.
 
 Projekt partycji usługi Azure AD jest uproszczony w porównaniu do organizacyjnego projektu usługi AD, przy użyciu projekt pojedynczego elementu głównego, który obejmuje starannie zorganizowany i deterministyczny replikę podstawową procesu trybu failover.
 
@@ -73,21 +73,21 @@ Operacje odczytu (których liczba jest wiele rzędów wielkości większa od ope
 
 **Trwałość danych**
 
-Operacja zapisu jest trwale zatwierdzana w co najmniej dwóch centrach danych przed potwierdzeniem. Najpierw ma miejsce zatwierdzanie operacji zapisu w replice podstawowej, a następnie operacja zapisu jest natychmiast replikowana do co najmniej jednego innego centrum danych. Ta akcja zapisu gwarantuje, że potencjalna krytyczna utrata centrum danych hostującego podstawową nie spowoduje utraty danych.
+Zapisu jest trwale zatwierdzana w co najmniej dwóch centrach danych przed potwierdzeniem. Dzieje się to pierwsze zatwierdzenie zapisu na serwerze podstawowym, a następnie natychmiast replikowana do co najmniej jednego innego centrum danych zapisu. Ta akcja zapisu gwarantuje, że potencjalna krytyczna utrata centrum danych hostujące podstawowego nie powoduje utraty danych.
 
 Usługa Azure AD obsługuje zerowy [cel czasu odzyskiwania (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) nie utratę danych w tryb failover. Obejmuje to:
 -  Wystawiania tokenów i operacje odczytu z katalogu
 -  Zezwalanie tylko około 5 minut cel czasu odzyskiwania do zapisu w katalogu
 
-### <a name="data-centers"></a>Centra danych
+### <a name="datacenters"></a>Centra danych
 
-Repliki usługi Azure AD są przechowywane w centrach danych znajdujących się na całym świecie. Aby uzyskać więcej informacji, zobacz [Centra danych platformy Azure](https://azure.microsoft.com/overview/datacenters).
+Repliki usługi Azure AD są przechowywane w centrach danych znajdujących się na całym świecie. Aby uzyskać więcej informacji, zobacz [globalna infrastruktura platformy Azure](https://azure.microsoft.com/global-infrastructure/).
 
-Działania usługi Azure AD względem centrów danych mają następujące cechy:
+Usługa Azure AD działa w centrach danych o następującej charakterystyce:
 
- * Uwierzytelnianie, wykresu i inne usługi AD znajdują się za usługą bramy. Brama zarządza równoważeniem obciążenia tych usług. Zakończy się niepowodzeniem przez automatycznie wszystkie serwery w złej kondycji w przypadku wykrycia użycie sond kondycji transakcyjnych. Na podstawie danych z tych sond kondycji brama dynamicznie kieruje ruch do centrów danych będących w dobrej kondycji.
- * Na potrzeby operacji *odczytu* katalog posiada repliki pomocnicze i odpowiednie usługi frontonu w ramach konfiguracji aktywne-aktywne działające w wielu centrach danych. W razie awarii całego centrum danych ruch zostanie automatycznie skierowany do innego centrum danych.
- *  Dla *zapisuje*, katalog przejdzie w tryb failover repliki podstawowej (głównej) w centrach danych za pośrednictwem planowanych (nowe podstawowa jest synchronizowana ze starego podstawowego) lub procedur awaryjnych trybu failover. Trwałość danych jest zapewniana przez replikowanie każdego zatwierdzenia do co najmniej dwóch centrów danych.
+ * Uwierzytelnianie, wykresu i inne usługi AD znajdują się za usługą bramy. Brama zarządza równoważeniem obciążenia tych usług. Zakończy się niepowodzeniem przez automatycznie wszystkie serwery w złej kondycji w przypadku wykrycia użycie sond kondycji transakcyjnych. Oparte na tych sond kondycji, brama dynamicznie kieruje ruch do centrów danych w dobrej kondycji.
+ * Aby uzyskać *odczytuje*, katalog posiada repliki pomocnicze i odpowiednie usługi frontonu w konfiguracji aktywne aktywne działające w wielu centrach danych. W razie awarii całego centrum danych ruch zostanie automatycznie skierowany do innego centrum danych.
+ *  Dla *zapisuje*, katalog przejdzie w tryb failover repliki podstawowej (głównej) w centrach danych za pośrednictwem planowanych (nowe podstawowa jest synchronizowana ze starego podstawowego) lub procedur awaryjnych trybu failover. Trwałość danych jest zapewniana przez replikowanie każdego zatwierdzenia do co najmniej dwóch centrach danych.
 
 **Spójność danych**
 

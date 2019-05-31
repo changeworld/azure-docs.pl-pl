@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 0146f6ca610a25e57771fb21436a70acbdd5a5ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bf97c0c447bfabc1454959d457bbd50f3490299
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486668"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242798"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analizować międzydzierżawowa, przy użyciu danych wyodrębnionych - aplikacji wielodostępnej
  
@@ -64,7 +64,7 @@ Na koniec badane są tabele schematu gwiazdy. Wyniki zapytania są wyświetlane 
 
 Zrozumienie, jak spójnie każdego dzierżawcy jest korzystanie z niej zapewnia możliwość tworzenia planów usług, które spełniają potrzeby do swoich potrzeb. Ten samouczek zawiera podstawowe przykłady szczegółowe informacje, które można zebrać dane dzierżawy.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -242,5 +242,5 @@ Gratulacje!
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Dodatkowe [samouczki nawiązujące do aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
-- [Zadania elastyczne](sql-database-elastic-jobs-overview.md).
+- [Zadania elastyczne](elastic-jobs-overview.md).
 - [Cross-tenant analytics przy użyciu wyodrębnione dane — aplikacja jednej dzierżawy](saas-tenancy-tenant-analytics.md) 

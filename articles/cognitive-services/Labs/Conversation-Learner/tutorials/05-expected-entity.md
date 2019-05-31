@@ -3,19 +3,19 @@ title: Jak używać właściwości "Oczekiwaniami Entity" Akcje uczeń konwersac
 titleSuffix: Azure
 description: Dowiedz się, jak używać właściwości "Oczekiwaniami Entity" modelu uczeń konwersacji.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 01d991cff9b7f7a66740f86e537833ffe4e862c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 48a8abd401ff7191da4709c726042b566d140b78
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707946"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387824"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak użyć właściwości "Oczekiwaniami Entity" w akcji
 

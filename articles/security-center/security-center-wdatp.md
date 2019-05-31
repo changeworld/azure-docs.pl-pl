@@ -3,7 +3,7 @@ title: Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami w usłu
 description: Ten dokument wprowadza integrację między usługą Azure Security Center i zaawansowanej ochrony przed zagrożeniami programu Windows Defender.
 services: security-center
 documentationcenter: na
-author: barclayn
+author: monhaber
 manager: barbkess
 editor: ''
 ms.service: security-center
@@ -11,21 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2018
-ms.author: barclayn
-ms.openlocfilehash: 75ca1401f72e00454dc3355d31c8b8ea64669a72
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/27/2018
+ms.author: monhaber
+ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129131"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258503"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami w usłudze Azure Security Center
 
-Usługa Azure Security Center jest rozszerzenie oferty platformach ochrony obciążenia w chmurze dzięki integracji z usługą [zaawansowanej ochrony przed zagrożeniami programu Windows Defender](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
-Ta zmiana zapewnia kompleksowe funkcje do punktu końcowego wykrywania i odpowiedzi (EDR). Dzięki integracji z usługą Windows Defender ATP można wykryć nieprawidłowości. Można również wykrywanie oraz reagowanie na zaawansowane ataki na punkty końcowe serwera monitorowane przez usługę Azure Security Center.
+Usługa Azure Security Center rozszerza ofertę platform ochrony obciążeń w chmurze dzięki integracji z usługą [Windows Defender Advanced Threat Protection](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
+Ta zmiana zapewnia kompleksowe możliwości dotyczące wykrywania i odpowiedzi punktu końcowego (EDR, Endpoint Detection and Response). Dzięki integracji z usługą Windows Defender ATP można wykryć nieprawidłowości. Można również wykrywanie oraz reagowanie na zaawansowane ataki na punkty końcowe serwera monitorowane przez usługę Azure Security Center.
 
-Usługa Azure Security Center, klienci mogą teraz używać funkcji Windows Defender ATP:
+## <a name="windows-defender-atp-features-in-security-center"></a>Funkcje usługi Windows Defender ATP w usłudze Security Center
+
+Korzystając z usługi Windows Defender ATP zapewnia następujące korzyści:
 
 - **Czujniki wykrywanie naruszenia wpis następnej generacji**: Usługi Windows Defender ATP czujniki, aby uzyskać serwery Windows zbierać szeroką gamę sygnały zachowań.
 
@@ -53,9 +55,10 @@ Możesz badać alertu, przez przestawianie w usłudze Windows Defender ATP. Moż
 
 ## <a name="platform-support"></a>Obsługa platform
 
-Ta funkcja obsługuje wykrywanie w systemie Windows Server 2012 R2 i Windows Server 2016.
+Program Windows Defender ATP w usłudze Security Center obsługuje wykrywanie w systemach operacyjnych Windows Server 2012 R2 i Windows Server 2016, należącymi do subskrypcji usług w warstwie standardowa.
 
-Obsługiwane są tylko serwery w ramach subskrypcji w warstwie usługi standardowa.
+> [!NOTE]
+> Gdy używasz usługi Azure Security Center do monitorowania serwerów dzierżawy usługi Windows Defender ATP jest automatycznie tworzony i danych usługi Windows Defender ATP jest domyślnie przechowywane w Europie. Jeśli musisz przenieść dane do innej lokalizacji, należy skontaktować się z Microsoft Support zresetować dzierżawy.
 
 ## <a name="onboarding-servers-to-security-center"></a>Serwery przy dołączaniu do usługi Security Center 
 
@@ -69,7 +72,6 @@ Aby dodać serwery do usługi Security Center, kliknij przycisk **przejdź do us
 4. Po dołączeniu, można monitorować maszyny znajdujące się w **obliczeniowe i aplikacje**.
 
    ![Dodawanie komputerów](media/security-center-wdatp/onboard-computers.png)
-
 
 ## <a name="enable-windows-defender-atp-integration"></a>Włączanie integracji usługi Windows Defender ATP
 

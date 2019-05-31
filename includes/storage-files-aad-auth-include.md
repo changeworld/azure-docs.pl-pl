@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 64751e0fcbf9a2255964d0de673e2cc2020ceb9a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0cfa0fdb51969c92e767adfa86a0065d11da56e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114228"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237742"
 ---
-[Usługa Azure Files](../articles/storage/files/storage-files-introduction.md) obsługuje uwierzytelnianie oparte na tożsamości za pośrednictwem protokołu SMB (Server Message Block) (wersja zapoznawcza) za pośrednictwem [usługi domenowe Azure Active Directory (Azure AD)](../articles/active-directory-domain-services/active-directory-ds-overview.md). Przyłączone do domeny Windows maszyn wirtualnych (VM) mogą uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu [usługi Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) poświadczeń. 
+[Usługa Azure Files](../articles/storage/files/storage-files-introduction.md) obsługuje uwierzytelnianie oparte na tożsamości za pośrednictwem protokołu SMB (Server Message Block) (wersja zapoznawcza) za pośrednictwem [usługi domenowe Azure Active Directory (Azure AD)](../articles/active-directory-domain-services/overview.md). Przyłączone do domeny Windows maszyn wirtualnych (VM) mogą uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu [usługi Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) poświadczeń. 
 
 Usługa Azure AD uwierzytelnia tożsamości, takie jak użytkownika, grupy lub nazwy głównej usługi z [kontroli dostępu opartej na rolach (RBAC)](../articles/role-based-access-control/overview.md). Można zdefiniować niestandardowe role RBAC, które obejmują typowe zestawy uprawnień, które umożliwiają dostęp do usługi Azure Files. Podczas przypisywania usługi niestandardową rolę RBAC do tożsamości usługi Azure AD, że tożsamość ma uprawnienia do udziału plików platformy Azure zgodnie z tych uprawnień.
 

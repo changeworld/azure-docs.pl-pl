@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 7fca586083f70e0b0f7e593d5203392260cd2136
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172343"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297702"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapowanie wydajności przepływów danych i dostosowywania przewodnik
 
@@ -29,7 +29,7 @@ Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfej
 
 ![Debugowanie przycisk](media/data-flow/debugb1.png "debugowania")
 
-## <a name="optimizing-for-azure-sql-database"></a>Optymalizacja dla usługi Azure SQL Database
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optymalizacja dla usługi Azure SQL Database i Azure SQL Data Warehouse
 
 ![Źródło część](media/data-flow/sourcepart2.png "część źródła")
 
@@ -65,6 +65,13 @@ Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfej
 * Zwiększ liczbę rdzeni, które spowoduje zwiększenie liczby węzłów i udostępnić więcej mocy obliczeniowej w celu wykonywania zapytań i zapisu do bazy danych SQL Azure.
 * Wypróbuj "Obliczenia zoptymalizowane pod kątem" i "Zoptymalizowanego pod kątem pamięci" opcje do zastosowania większej ilości zasobów do węzłów obliczeniowych.
 
+### <a name="unit-test-and-performance-test-with-debug"></a>Testów jednostkowych i testów wydajności za pomocą debugowania
+
+* Po jednostki testowania przepływu danych, ustaw "Debug przepływ danych" na wartość ON.
+* W Projektancie przepływu danych karta Podgląd danych na przekształceń do wyświetlania wyników logiki przekształcania.
+* Test jednostkowy dane przepływy przy użyciu projektanta potoku, umieszczając działanie z przepływu danych w projekcie potoku kanwy i testowanie za pomocą przycisku "Debugowanie".
+* Testowanie w trybie debugowania będą działać względem środowisku na żywo klastrowym przygotowaniu bez konieczności oczekiwania na telefoniczny pokrętła klaster just in time.
+
 ### <a name="disable-indexes-on-write"></a>Wyłącz indeksy podczas zapisu
 * Użyj ADF potoku przechowywane procedury działania przed działaniem usługi przepływ danych, które wyłączają indeksów w tabelach docelowych, które są zapisywane z magazynem ujścia.
 * Po działania przepływu danych Dodaj kolejne działanie przechowywanej, która umożliwiała te indeksy.
@@ -72,6 +79,34 @@ Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfej
 ### <a name="increase-the-size-of-your-azure-sql-db"></a>Zwiększ rozmiar bazy danych SQL Azure
 * Zaplanuj zmiany rozmiaru źródła i ujścia Azure SQL DB zanim przebieg, który ogranicza potoku, aby zwiększyć przepływność i minimalizowanie ograniczania platformy Azure, gdy liczba jednostek DTU.
 * Po zakończeniu wykonywanie potoku można zmienić rozmiar bazy danych do ich normalna szybkość wykonywania.
+
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Optymalizacja dla usługi Azure SQL Data Warehouse
+
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Ładowanie danych zbiorczo za pomocą programu Polybase za pomocą przemieszczania
+
+* Aby uniknąć przetwarzania wiersz po wierszu floes swoje dane, należy ustawić opcję "Staging" w ustawieniach obiektu Sink tak, aby ADF dzięki technologii Polybase, aby uniknąć wstawia wiersz po wierszu do magazynu danych. Wydać polecenie usługi ADF, aby przy użyciu technologii Polybase, aby dane mogą być ładowane w trybie zbiorczym.
+* Podczas wykonywania Twoje działanie przepływu danych w potoku, za pomocą przemieszczania jest włączona, będzie konieczne wybranie lokalizacji magazynu obiektów Blob, dane tymczasowe do ładowania zbiorczego.
+
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zwiększ rozmiar usługi SQL data Warehouse platformy Azure
+
+* Zaplanuj zmiany rozmiaru źródła i ujścia Azure SQL data Warehouse, przed uruchomieniem potoku, aby zwiększyć przepływność i minimalizowanie ograniczania platformy Azure, po osiągnięciu limitów jednostek DWU.
+
+* Po zakończeniu wykonywanie potoku można zmienić rozmiar bazy danych do ich normalna szybkość wykonywania.
+
+## <a name="optimize-for-files"></a>Optymalizacja pod kątem plików
+
+* Można kontrolować, jak wiele partycji, używających usługi ADF. Na każde Przekształcenie źródła i ujścia, a także każde przekształcenie poszczególnych można ustawić schematu partycjonowania. W przypadku plików mniejszych może się okazać, wybierając "Jednej partycji" może czasami pracować, lepsze i szybsze niż pytaniem platformy Spark w celu podzielenia małych plików.
+* Jeśli nie masz wystarczająco dużo informacji o źródle danych, możesz "Działanie okrężne" partycjonowanie i ustaw liczbę partycji.
+* Eksplorowanie danych, okazać, że są kolumn, które mogą być klawiszy skrótu dobre za pomocą skrótu partycjonowanie opcji.
+
+### <a name="file-naming-options"></a>Opcje nazewnictwa plików
+
+* Domyślny rodzaj pisanie przekształcone dane w usłudze ADF mapowanie przepływu danych jest do zapisu do zestawu danych, który zawiera obiekt Blob lub połączonej usługi Azure Data Lake Store. Należy ustawić ten zestaw danych, aby wskazywał folder lub kontenera, wskazanego pliku.
+* Użycie przepływów danych, Azure Spark usługi Databricks na wykonanie, co oznacza, że dane wyjściowe zostanie ona podzielona przez wiele plików, na podstawie albo domyślne Spark partycjonowania lub partycjonowanie schemat, które zostały wybrane.
+* Bardzo często operacji w przepływu danych w usłudze ADF jest wybrać opcję "Dane wyjściowe do pojedynczego pliku", tak aby wszystkie pliki części danych wyjściowych są scalane w pojedynczym wyjściowym plik.
+* Ta operacja wymaga jednak, że dane wyjściowe zmniejsza się do jednej partycji na pojedynczym węźle klastra.
+* Miej to na uwadze podczas wybierania to popularne rozwiązanie. Można uruchomić wykorzystać zasoby węzła klastra, w przypadku łączenia wielu plików źródłowych duże w pojedynczym wyjściowym pliku partycji.
+* Aby uniknąć wyczerpaniem zasobów obliczeniowych, w węźle, zachowaj domyślne lub jawnego schematu partycjonowania w usłudze ADF, który optymalizuje wydajność, a następnie dodaj kolejne działania kopiowania w potoku, który łączy wszystkie części pliki z folderu danych wyjściowych do pojedynczego nowe plik. Zasadniczo ta technika oddziela akcji transformacji z scalanie plików i osiąga ten sam wynik jako ustawienie "dane wyjściowe do pojedynczego pliku".
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne artykuły, przepływ danych:

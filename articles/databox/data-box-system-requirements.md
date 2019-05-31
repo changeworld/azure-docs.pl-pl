@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bce5dd1dd34c53276c5486cc255c4cd93bb6080
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746934"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242176"
 ---
 # <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
 
@@ -31,68 +31,28 @@ Wymagania dotyczące oprogramowania zawierają informacje o obsługiwane systemy
 
 ### <a name="supported-operating-systems-for-clients"></a>Obsługiwane systemy operacyjne dla klientów
 
-Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla operacji kopiowania danych za pomocą klientów podłączonych do urządzenia Data Box.
-
-| **System operacyjny** | **Wersje** | 
-| --- | --- | 
-| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
-| Windows |7, 8, 10 | 
-|Linux    |         |
+[!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
 ### <a name="supported-file-systems-for-linux-clients"></a>Systemy plików obsługiwane przez klientów systemu Linux
 
-| **Protokoły** | **Wersje** | 
-| --- | --- | 
-| SMB |2.X lub nowszy |
-| NFS | Wszystkie wersje, w tym 4.1|
+[!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
 ### <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
-Poniżej przedstawiono listę kont magazynu obsługiwanych typów magazynów dla urządzenia Data Box. Aby uzyskać pełną listę wszystkich różnych typów kont magazynu i ich pełne możliwości, zobacz [typy kont magazynu](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
-
-| **Konto magazynu / obsługiwane typy magazynu** | **Blokowe obiekty blob** |**Obiekt blob typu Page*** |**Usługa pliki Azure** |**Uwagi**|
-| --- | --- | -- | -- | -- |
-| Standardowa klasycznego | Tak | Tak | Tak |
-| Standardowa ogólnego przeznaczenia w wersji 1  | Tak | Tak | Tak | Obsługiwane są zarówno gorąca i chłodna.|
-| Ogólnego przeznaczenia w wersji 1 — wersja Premium  |  | Tak| | |
-| Standardowa ogólnego przeznaczenia w wersji 2  | Tak | Tak | Tak | Obsługiwane są zarówno gorąca i chłodna.|
-| Ogólnego przeznaczenia w wersji 2 — wersja Premium  |  |Tak | | |
-| Magazyn obiektów blob Standard |Tak | | |Obsługiwane są zarówno gorąca i chłodna. |
-
-\* *-Danych przekazanych do stronicowych obiektów blob musi być 512 bajtów wyrównane, takie jak wirtualne dyski twarde.*
-
->[!NOTE]
-> Usługa Azure Data Lake Storage Gen 2 konta nie są obsługiwane.
-
+[!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
 ### <a name="supported-storage-types"></a>Obsługiwane typy
 
-Poniżej przedstawiono listę typów magazynu obsługiwane urządzenia Data Box.
-
-| **Format pliku** | **Uwagi** |
-| --- | --- |
-| Usługa Azure blokowych obiektów blob | |
-| Obiekt blob typu page platformy Azure  | Dane powinny mieć 512 bajtów wyrównane.|
-| Azure Files | |
-
+[!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 
 ### <a name="supported-web-browsers"></a>Obsługiwane przeglądarki sieci web
 
-Poniżej przedstawiono listę przeglądarek sieci web obsługiwane w przypadku lokalnego Interfejsu w przeglądarce.
-
-| **Przeglądarka** | **Wersje** | **Dodatkowe wymagania dotyczące/uwagi** |
-| --- | --- | --- |
-| Google Chrome |Najnowsza wersja |Przetestowane za pomocą przeglądarki Chrome|
-| Microsoft Edge |Najnowsza wersja | |
-| FireFox | Najnowsza wersja | Przetestowane za pomocą przeglądarki FireFox|
-| Internet Explorer |Najnowsza wersja |Jeśli nie możesz się zarejestrować, sprawdź, czy pliki cookie i języka Javascript są włączone. Aby włączyć dostęp do interfejsu użytkownika, należy dodać adres IP urządzenia, aby **Akcje prywatności** tak, aby urządzenia mogą uzyskiwać dostęp do plików cookie. |
-
+[!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
 
 Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępna, łącza 1 GbE danych może służyć do skopiowania danych, ale kopiowania, które ma wpływ szybkości.
 
-## <a name="next-step"></a>Następny krok
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wdrażanie usługi Azure Data Box](data-box-deploy-ordered.md)
-

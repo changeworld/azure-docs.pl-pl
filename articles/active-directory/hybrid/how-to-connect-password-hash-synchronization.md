@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348335"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235154"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -64,7 +64,7 @@ W poniższej sekcji opisano, szczegółowe, jak działa synchronizacja skrótów
 >Oryginalny skrót MD4 nie są przesyłane do usługi Azure AD. Zamiast tego są przesyłane skrót SHA256 obiektu oryginalnego wyznaczania wartości skrótu MD4. W rezultacie w przypadku wyznaczania wartości skrótu, przechowywane w usłudze Azure AD, nie można użyć w przypadku ataków typu pass--hash w środowisku lokalnym.
 
 ### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Jak synchronizacja skrótów haseł współpracuje z usługą Azure Active Directory Domain Services
-Można również użyć funkcji synchronizacji skrótów haseł do synchronizacji haseł w środowisku lokalnym do [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). W tym scenariuszu wystąpienia usługi Azure Active Directory Domain Services uwierzytelniani są użytkownicy usługi w chmurze za pomocą wszystkich metod dostępnych w Twoim wystąpieniu usługi Active Directory w środowisku lokalnym. Proces ten scenariusz jest podobny do przy użyciu usługi Active Directory migracji Tool (ADMT) w środowisku lokalnym.
+Można również użyć funkcji synchronizacji skrótów haseł do synchronizacji haseł w środowisku lokalnym do [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). W tym scenariuszu wystąpienia usługi Azure Active Directory Domain Services uwierzytelniani są użytkownicy usługi w chmurze za pomocą wszystkich metod dostępnych w Twoim wystąpieniu usługi Active Directory w środowisku lokalnym. Proces ten scenariusz jest podobny do przy użyciu usługi Active Directory migracji Tool (ADMT) w środowisku lokalnym.
 
 ### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 Podczas synchronizacji haseł wersji tekstowego hasła nie jest uwidaczniany w funkcji synchronizacji skrótów haseł, do usługi Azure AD lub dowolnej z usług jest skojarzony.

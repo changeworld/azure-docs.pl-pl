@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbc8363052556f29633c069bcd82af5249a3406f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119110"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306874"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -175,9 +175,9 @@ docker rm my-web-site
 
 Po sprawdzeniu, że kontener działa na komputerze dewelopera, wypchnij obraz do rejestru w usłudze Azure Container Registry.
 
-Uruchom ``docker login``, aby zalogować się do rejestru kontenera za pomocą Twoich [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
+Uruchom ``docker login`` zalogować się do rejestru kontenerów za pomocą usługi [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
-Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz również zalogować się za pomocą nazwy i hasła użytkownika rejestru.
+Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Alternatywnie można logowania przy użyciu nazwy i hasła użytkownika rejestru.
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -308,8 +308,6 @@ New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEnciphermen
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
 Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
-
-# Add the certificate to all the VMs in the cluster.
 Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
 ```
 Zaszyfruj hasło przy użyciu polecenia cmdlet [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps).
@@ -421,7 +419,11 @@ System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz 
 ```
 ## <a name="configure-docker-healthcheck"></a>Konfigurowanie funkcji HEALTHCHECK platformy Docker 
 
-Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera. 
+Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. 
+
+Począwszy od najnowszej wersji odświeżanie v6.4, masz możliwość określenia, że oceny funkcji HEALTHCHECK platformy docker, powinny być raportowane jako błąd. Jeśli ta opcja jest włączona, **OK** raport o kondycji pojawi się, gdy *health_status* jest *dobrej kondycji* i **błąd** pojawi się, gdy *health_status* jest *złej kondycji*.
+
+Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera.
 
 ![HealthCheckHealthy][3]
 
@@ -436,12 +438,18 @@ Możesz skonfigurować zachowanie funkcji **HEALTHCHECK** dla każdego kontenera
     <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true"
+              RestartContainerOnUnhealthyDockerHealthStatus="false" 
+              TreatContainerUnhealthyStatusAsError="false" />
       </ContainerHostPolicies>
     </Policies>
 </ServiceManifestImport>
 ```
-Domyślnie wartość *IncludeDockerHealthStatusInSystemHealthReport* jest ustawiona na **true**, a wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **false**. Jeśli wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **true**, kontener wielokrotnie raportujący złą kondycję jest uruchamiany ponownie (potencjalnie w innych węzłach).
+Domyślnie *IncludeDockerHealthStatusInSystemHealthReport* ustawiono **true**, *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na  **FALSE**, i *TreatContainerUnhealthyStatusAsError* ustawiono **false**. 
+
+Jeśli wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **true**, kontener wielokrotnie raportujący złą kondycję jest uruchamiany ponownie (potencjalnie w innych węzłach).
+
+Jeśli *TreatContainerUnhealthyStatusAsError* ustawiono **true**, **błąd** raportów o kondycji pojawi się, gdy kontener *health_status*jest *złej kondycji*.
 
 Aby wyłączyć integrację funkcji **HEALTHCHECK** dla całego klastra usługi Service Fabric, należy ustawić wartość [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
 
@@ -726,15 +734,6 @@ W środowisku uruchomieniowym usługi Service Fabric w wersji 6.2 lub nowszej mo
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o uruchamianiu [kontenerów w usłudze Service Fabric](service-fabric-containers-overview.md).
 * Zapoznaj się z samouczkiem [Deploy a .NET application in a container](service-fabric-host-app-in-a-container.md) (Wdrażanie aplikacji .NET w kontenerze).
-* Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.
-* Sprawdź [przykłady kodu kontenera usługi Service Fabric](https://github.com/Azure-Samples/service-fabric-containers) w witrynie GitHub.
-
-[1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
-[2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png
-[3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
-[4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
-[5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png
-c-host-app-in-a-container.md) tutorial.
 * Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.
 * Sprawdź [przykłady kodu kontenera usługi Service Fabric](https://github.com/Azure-Samples/service-fabric-containers) w witrynie GitHub.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: fe08569937dc29ecbc66da1cb2c431cca11a8580
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835103"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389018"
 ---
 # <a name="azure-serial-console-for-linux"></a>Serial konsoli platformy Azure dla systemu Linux
 
@@ -117,7 +117,9 @@ Konsoli szeregowej można wyłączyć dla określonej maszyny Wirtualnej lub mas
 > Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Uprawnienia te obejmują role administratora lub właściciela. Role niestandardowe może również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
-Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/disableconsole). Możesz użyć **wypróbuj** funkcji dostępnych na tej stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swój identyfikator subskrypcji dla **subscriptionId**, wprowadź **domyślne** dla **domyślne**, a następnie wybierz pozycję **Uruchom**. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne.
+Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/disableconsole). Ta akcja wymaga dostępu na poziomie współautora lub nowszego do subskrypcji. Możesz użyć **wypróbuj** funkcji dostępnych na tej stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swój identyfikator subskrypcji dla **subscriptionId**, wprowadź **domyślne** dla **domyślne**, a następnie wybierz pozycję **Uruchom**. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne.
+
+Aby ponownie włączyć konsoli szeregowej subskrypcji, użyj [Włącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/enableconsole).
 
 ![Wypróbuj interfejs API REST](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -182,10 +184,10 @@ Ponieważ większość błędów przejściowych, ponawianie próby połączenia 
 
 Błąd                            |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
-Nie można pobrać ustawień diagnostyki rozruchu dla  *&lt;VMNAME&gt;*. Aby korzystać z konsoli szeregowej, upewnij się, że Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej. | Upewnij się, że maszyna wirtualna ma [diagnostykę rozruchu](boot-diagnostics.md) włączone.
+Nie można pobrać ustawień diagnostyki rozruchu dla  *&lt;VMNAME&gt;* . Aby korzystać z konsoli szeregowej, upewnij się, że Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej. | Upewnij się, że maszyna wirtualna ma [diagnostykę rozruchu](boot-diagnostics.md) włączone.
 Maszyna wirtualna jest w stanie zatrzymania, przydział zostanie cofnięty. Uruchom maszynę Wirtualną i spróbuj ponownie nawiązać połączenie konsoli szeregowej. | Maszyna wirtualna musi być w stanie uruchomionym uzyskać dostęp do konsoli szeregowej.
 Nie masz wymaganych uprawnień do tej maszyny Wirtualnej za pomocą konsoli szeregowej. Upewnij się, że co najmniej uprawnienia roli Współautor maszyny wirtualnej.| Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
-Nie można określić grupy zasobów dla konta magazynu diagnostyki rozruchu  *&lt;STORAGEACCOUNTNAME&gt;*. Sprawdź, czy Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej, i czy masz dostęp do tego konta magazynu. | Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
+Nie można określić grupy zasobów dla konta magazynu diagnostyki rozruchu  *&lt;STORAGEACCOUNTNAME&gt;* . Sprawdź, czy Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej, i czy masz dostęp do tego konta magazynu. | Dostęp do konsoli szeregowej wymaga pewnych uprawnień. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
 Gniazda sieci Web został zamknięty lub nie można otworzyć. | Może być konieczne do listy dozwolonych `*.console.azure.com`. Bardziej szczegółowe, ale dłużej podejście jest do listy dozwolonych adresów [zakresów adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653), które są stosunkowo regularnie zmieniane.
 Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu nie ma zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
 
@@ -198,6 +200,7 @@ Naciśnięcie klawisza **Enter** po transparent połączenia nie powoduje, że m
 Tekst konsoli szeregowej wymaga tylko część rozmiaru ekranu (często po nim za pomocą edytora tekstów). | Negocjowanie o rozmiar okna nie obsługują konsoli szeregowej ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), co oznacza, że nie będzie brak sygnału SIGWINCH wysłanych do zaktualizowania rozmiaru ekranu i maszyna wirtualna będzie miała żadnej znajomości rozmiar usługi terminalowe. Zainstaluj xterm lub podobnej użyteczności, aby zapewnić Ci `resize` polecenia, a następnie uruchom `resize`.
 Wklejanie ciągów długich nie działa. | Konsoli szeregowej ogranicza długość ciągów w terminalu, aby 2048 znaków, aby zapobiec przeciążeniu przepustowość portu szeregowego.
 Konsola szeregowa nie działa z zaporą konta magazynu. | Konsola szeregowa zgodnie z projektem nie może działać z zapór konta usługi storage na konto magazynu diagnostyki rozruchu włączona.
+Konsola szeregowa nie działa z kontem magazynu za pomocą usługi Azure Data Lake Storage Gen2 hierarchiczne przestrzenie nazw. | Jest to znany problem z hierarchicznej przestrzeni nazw. Aby rozwiązać problem, upewnij się, czy konto magazynu diagnostyki rozruchu maszyny Wirtualnej nie został utworzony przy użyciu usługi Azure Data Lake Storage Gen2. Tę opcję można ustawić tylko podczas tworzenia konta magazynu. Może być konieczne utworzenie konta magazynu diagnostyki rozruchu oddzielne bez Azure Data Lake Storage Gen2 włączone, aby rozwiązać ten problem.
 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania

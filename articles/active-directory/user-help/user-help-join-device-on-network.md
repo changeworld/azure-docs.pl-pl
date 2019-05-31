@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474541"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243271"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Dołącz swoje urządzenie pracy do sieci organizacji
 Dołączanie urządzenia należące do pracy systemu Windows 10 do sieci w organizacji, aby dostęp do zasobów z potencjalnie ograniczeniami.
@@ -116,3 +116,4 @@ Po dołączeniu urządzenia do sieci w organizacji należy mogła uzyskać dost�
 
 - Jeśli Twoja organizacja chce, aby zarejestrować urządzenie osobiste, takie jak telefon, zobacz [zarejestrowania urządzenia osobistego w sieci organizacji](user-help-register-device-on-network.md).
 
+- Jeśli Twoja organizacja jest zarządzana w usłudze Microsoft Intune i masz pytania dotyczące rejestracji, logowania lub dowolnego innego związanych z usługą Intune problemu, zapoznaj się z [zawartość pomocy użytkownika usługi Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

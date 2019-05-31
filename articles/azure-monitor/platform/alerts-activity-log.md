@@ -1,18 +1,18 @@
 ---
-title: Tworzenie widoku i zarządzanie nimi alertów dziennika aktywności w usłudze Azure Monitor
-description: Jak utworzyć alertów dzienników aktywności z witryny Azure Portal, szablonów zasobów i programu PowerShell.
+title: Tworzenie, wyświetlanie i zarządzanie aktywności alerty dzienników w usłudze Azure Monitor
+description: Jak tworzenie alertów dziennika aktywności przy użyciu witryny Azure portal, szablonów usługi Azure Resource Manager i programu Azure PowerShell.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130090"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244960"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -97,7 +97,7 @@ Użyj poniższej procedury:
     Możesz włączyć, wyłączyć, edytować lub usunąć regułę. Dowiedz się więcej o zarządzaniu reguł dzienników aktywności.
 
 
-Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisk; następnie wykonaj kroki 4 i nowszych wersjach opisany powyżej samouczka.
+Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure portal](activity-log-view.md#azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisk; następnie wykonaj kroki 4 i nowszych wersjach opisany powyżej samouczka.
     
  ![ Dodaj alert dziennika aktywności](media/alerts-activity-log/add-activity-log.png)
     
@@ -201,7 +201,7 @@ Przykładowy kod json powyżej, można zapisać jako (np.) sampleActivityLogAler
 > Może upłynąć do 5 minut nowych reguła alertu dziennika aktywności stanie się aktywna
 
 ## <a name="rest-api"></a>Interfejs API REST 
-[Usługa Azure Monitor — interfejs API alertów dziennika aktywności](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
+[Usługa Azure Monitor — dziennik aktywności interfejs API alertów](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -216,7 +216,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 gdy sampleActivityLogAlert.parameters.json zawiera wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
 
-### <a name="use-activity-log-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell z dziennika aktywności
+### <a name="use-activity-log-powershell-cmdlets"></a>Korzystanie z dziennika aktywności poleceń cmdlet programu PowerShell
 
 Alerty dziennika aktywności są wyposażone w dedykowane dostępnych poleceń cmdlet programu PowerShell:
 

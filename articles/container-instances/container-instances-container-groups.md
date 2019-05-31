@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518664"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072834"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w usłudze Azure Container Instances
 
@@ -65,7 +65,7 @@ Aby uzyskać więcej informacji, zobacz [ResourceRequirements] [ resource-requir
 
 * Przydziel **minimalne** 1 procesora CPU i 1 GB pamięci do grupy kontenerów. Pojedynczy kontener wystąpień w obrębie grupy mogą być udostępniane z mniej niż 1 procesora CPU i 1 GB pamięci. 
 
-* Aby uzyskać **maksymalną** zasoby w grupie kontenerów, zobacz [dostępności zasobów] [aci-— dostępność regionów] dla usługi Azure Container Instances w regionie wdrażania.
+* Aby uzyskać **maksymalna** zasoby w grupie kontenerów, zobacz [dostępności zasobów] [ region-availability] dla usługi Azure Container Instances w regionie wdrażania.
 
 ## <a name="networking"></a>Networking
 

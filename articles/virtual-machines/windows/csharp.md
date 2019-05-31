@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55b73f5f4e6998eb1eb8c5ebc873fa20f8722a3e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61402045"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304588"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka C# #
 
@@ -41,7 +41,7 @@ Wykonaj te czynności trwa około 20 minut.
 
 1. Jeśli jeszcze nie, zainstaluj [programu Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz **programowanie aplikacji klasycznych dla platformy .NET** na stronie obciążeń, a następnie kliknij **zainstalować**. Podsumowując, możesz zobaczyć, że **narzędzi programistycznych .NET Framework 4 4.6** jest automatycznie wybrana. Jeśli zainstalowano już program Visual Studio, możesz dodać obciążenia platformy .NET, przy użyciu Uruchom okno programu Visual Studio.
 2. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-3. W **szablony** > **Visual C#**, wybierz opcję **Aplikacja konsoli (.NET Framework)**, wprowadź *myDotnetProject* dla nazwy Projekt, wybierz lokalizację projektu, a następnie kliknij **OK**.
+3. W **szablony** > **Visual C#** , wybierz opcję **Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* dla nazwy Projekt, wybierz lokalizację projektu, a następnie kliknij **OK**.
 
 ## <a name="install-the-package"></a>Zainstaluj pakiet
 
@@ -60,7 +60,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usł
 
 ### <a name="create-the-authorization-file"></a>Utwórz plik autoryzacji
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *elementy Visual C#*. Nadaj plikowi nazwę *azureauth.properties*, a następnie kliknij przycisk **Dodaj**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *elementy Visual C#* . Nadaj plikowi nazwę *azureauth.properties*, a następnie kliknij przycisk **Dodaj**.
 2. Dodaj następujące właściwości autoryzacji:
 
     ```
@@ -80,12 +80,12 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usł
 4. Ustaw zmienną środowiskową w Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżkę do pliku autoryzacji, który został utworzony. Na przykład można następujące polecenie programu PowerShell:
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>Tworzenie klienta zarządzania
 
-1. Otwórz plik Program.cs w projekcie, który został utworzony, a następnie dodaj je za pomocą instrukcji do istniejących instrukcji w górnej części pliku:
+1. Otwórz plik Program.cs w projekcie, który został utworzony. Następnie dodaj je za pomocą instrukcji do istniejących instrukcji w górnej części pliku:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -365,7 +365,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Dodaj dysk danych do maszyny Wirtualnej
 
-Aby dodać dysk danych do maszyny wirtualnej, Dodaj następujący kod do metody Main, aby dodać dysk danych, która ma 2 GB, rozmiar jednostki LUN 0 i typem buforowanie ReadWrite Hanowi:
+Aby dodać dysk danych do maszyny wirtualnej, Dodaj ten kod do metody Main. Ten przykład dodaje dysk danych, która ma 2 GB, rozmiar jednostki LUN 0 i typem buforowanie ReadWrite Hanowi:
 
 ```
 Console.WriteLine("Adding data disk to vm...");

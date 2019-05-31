@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957455"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400246"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie automatycznych eksperymentów uczenia Maszynowego w języku Python
 
@@ -59,6 +59,14 @@ Klasyfikacja | Regresji | Prognozowanie szeregów czasowych
 [Bayesa firmy](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [Stochastycznego spadku gradientu (wstecznej Propagacji)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
+Użyj `task` parametru w `AutoMLConfig` konstruktora, aby określić typ swojego eksperymentu.
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+# task can be one of classification, regression, forecasting
+automl_config = AutoMLConfig(task="classification")
+```
 
 ## <a name="data-source-and-format"></a>Źródło danych i format
 Uczenie maszynowe automatycznych obsługuje dane, które znajdują się na komputerze lokalnym lub w chmurze, takich jak Azure Blob Storage. Dane mogą być odczytywane w scikit-informacje formatów obsługiwanych danych. Można odczytywać dane do:
@@ -121,7 +129,7 @@ Klucz | Typ | Wzajemnie wykluczających się z    | Opis
 ---|---|---|---
 X | Tablica Numpy lub pandas Dataframe | data_train, etykiety kolumn |  Wszystkie funkcje do jego trenowanie za pomocą
 Y | Tablica Numpy lub pandas Dataframe |   label   | Etykiety danych w celu jego trenowanie za pomocą. Klasyfikacja powinna być tablicy liczb całkowitych.
-X_valid | Tablica Numpy lub pandas Dataframe   | data_train, etykiety | _Opcjonalnie_ wszystkie funkcje umożliwiające weryfikację. Jeśli nie zostanie określony, X jest podzielony między szkolenie i sprawdzanie poprawności
+X_valid | Tablica Numpy lub pandas Dataframe   | data_train, etykiety | _Opcjonalnie_ funkcji danych, który wchodzi w skład zestawu sprawdzania poprawności. Jeśli nie zostanie określony, X jest podzielony między szkolenie i sprawdzanie poprawności
 y_valid |   Tablica Numpy lub pandas Dataframe | data_train, etykiety | _Opcjonalnie_ danych etykietę umożliwiające weryfikację. Jeśli nie zostanie określony, y jest podzielony między szkolenie i sprawdzanie poprawności
 sample_weight | Tablica Numpy lub pandas Dataframe |   data_train, etykiety kolumn| _Opcjonalnie_ wartość wagi, dla każdego przykładu. Użyj, jeśli chcesz przypisać różne wagi dla punktów danych
 sample_weight_valid | Tablica Numpy lub pandas Dataframe | data_train, etykiety kolumn |    _Opcjonalnie_ wartość wagi, dla każdego przykładu sprawdzania poprawności. Jeśli nie zostanie określony, sample_weight są dzielone na szkolenie i sprawdzanie poprawności
@@ -129,30 +137,6 @@ data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Wszystkie dane (
 label | ciąg  | X, y, X_valid, y_valid |  Kolumna data_train reprezentuje etykietę
 Kolumny | Tablica ciągów  ||  _Opcjonalnie_ listy dozwolonych kolumn na potrzeby funkcji
 cv_splits_indices   | Tablica liczb całkowitych ||  _Opcjonalnie_ listy indeksów do dzielenia danych krzyżowego sprawdzania poprawności
-
-### <a name="load-and-prepare-data-using-data-prep-sdk"></a>Ładowanie i przygotowuj dane za pomocą zestawu SDK. przygotowywanie danych
-Automatyczne eksperymentów uczenia maszynowego obsługuje ładowanie danych i przekształcenia przy użyciu przygotowywanie danych zestawu SDK. Korzystanie z zestawu SDK zapewnia możliwość
-
->* Ładowanie z wiele typów plików za pomocą analizy parametru wnioskowania (kodowanie, separator, nagłówki)
->* Konwersja typu użycia wnioskowania podczas ładowania pliku
->* Funkcja obsługi połączeń MS SQL Server i usługi Azure Data Lake Storage
->* Dodawanie kolumny za pomocą wyrażenia
->* Naliczenie brakujące wartości
->* Tworzenie kolumn pochodnych według przykładu
->* Filtrowanie
->* Niestandardowe przekształcenia języka Python
-
-Aby dowiedzieć się więcej o danych można znaleźć zestawu sdk przygotowywania [sposobu przygotowania danych do modelowania artykułu](how-to-load-data.md).
-Poniżej przedstawiono przykład ładowania danych przy użyciu zestawu sdk przygotowywania danych.
-```python
-# The data referenced here was pulled from `sklearn.datasets.load_digits()`.
-simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
-X = dprep.auto_read_file(simple_example_data_root + 'X.csv').skip(1)  # Remove the header row.
-# You can use `auto_read_file` which intelligently figures out delimiters and datatypes of a file.
-
-# Here we read a comma delimited file and convert all columns to integers.
-y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelector(term='.*', use_regex = True))
-```
 
 ## <a name="train-and-validation-data"></a>Szkolenie i sprawdzanie poprawności danych
 
@@ -324,7 +308,7 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
 
 + Interfejs API 1: `get_engineered_feature_names()` zwraca listę nazw funkcji zaprojektowanych.
 
-  Sposób użycia:
+  Użycie:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -340,7 +324,7 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
 
 + Interfejs API 2: `get_featurization_summary()` zwraca cechowania podsumowania dla wszystkich danych wejściowych funkcji.
 
-  Sposób użycia:
+  Użycie:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -501,6 +485,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 ![Funkcja znaczenie wykresu](./media/how-to-configure-auto-train/feature-importance.png)
+
+Aby uzyskać więcej informacji na temat jak wyjaśnienia modelu i znaczenie funkcję można włączyć w innych obszarach SDK poza uczenia maszynowego automatycznych, zobacz [koncepcji](machine-learning-interpretability-explainability.md) artykuł na temat współdziałania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

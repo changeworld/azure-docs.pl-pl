@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 5d56c878eab92a7152bc0b248cab5c2ebf7e6dde
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198419"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254294"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń, na urządzeniu usługi IoT Edge
 
@@ -140,7 +140,7 @@ Istnieją trzy kroki, aby utworzyć wdrożenie usługi IoT Edge dla Centrum zabe
 
    ![Określanie tras](media/howto/edge-onboarding-9.png)
 
-#### <a name="step-3-review-deployment"></a>Krok 3: Przejrzyj wdrożenie
+#### <a name="step-3-review-deployment"></a>Krok 3: Przegląd wdrożenia
 
 1. W **wdrożenia Przejrzyj** kartę, przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania** do ukończenia wdrażania.
 
@@ -158,7 +158,7 @@ Jeśli wystąpi problem, dzienniki kontenerów są najlepszym sposobem, aby dowi
    
    | Name (Nazwa) | IMAGE |
    | --- | --- |
-   | azureIoTSecurity | MCR.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | azureiotsecurity | MCR.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | MCR.microsoft.com/ascforiot/edgehub:1.0.9-Preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    

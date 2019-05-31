@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9979cb97ec578a59ba8263f2eb1fe53d41db862f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251203"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399459"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure
 
@@ -95,7 +95,7 @@ Potrzebujesz co najmniej jedna maszyna wirtualna uruchomiona na autonomicznego l
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Czy można replikować maszyny wirtualne znajdujące się w klastrze funkcji Hyper-V?
 
-Tak, Usługa Site Recovery obsługuje klastrowane hosty funkcji Hyper-V. Należy pamiętać, że:
+Tak, Usługa Site Recovery obsługuje klastrowane hosty funkcji Hyper-V. Należy pamiętać o następujących kwestiach:
 
 - Wszystkie węzły klastra powinien być zarejestrowany w tym samym magazynie.
 - Jeśli nie używasz programu VMM, wszystkie hosty funkcji Hyper-V w klastrze, należy dodać do tej samej lokacji funkcji Hyper-V.

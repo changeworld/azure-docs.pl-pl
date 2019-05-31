@@ -12,20 +12,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: 959c1ff8b199320105f650a7eb62a04bedb03b3b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: be579b631fd910c56f2c360d6aace5b8d35c22e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412784"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235986"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Tworzenie aplikacji systemu Windows z zapleczem na platformie Azure
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku przedstawiono sposób dodawania usługi zaplecza opartej na chmurze do aplikacji platformy uniwersalnej systemu Windows. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Mobile Apps](app-service-mobile-value-prop.md). Poniżej przedstawiono ekrany przechwycone z ukończonej aplikacji:
 
@@ -39,7 +39,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć konto wersji próbnej platformy Azure i uzyskać maksymalnie 10 bezpłatnych aplikacji mobilnych, z których możesz korzystać nawet po zakończeniu okresu ważności wersji próbnej. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Windows 10.
-* [Visual Studio Community].
+* Visual Studio Community 2017.
 * Wiedza dotycząca opracowywania aplikacji platformy UWP. Odwiedź stronę [dokumentacji platformy UWP](https://docs.microsoft.com/windows/uwp/), aby dowiedzieć się, jak [skonfigurować środowisko](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) tworzenia aplikacji platformy UWP.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Tworzenie zaplecza nowej Aplikacji mobilnej Azure
@@ -48,42 +48,29 @@ Wykonaj te kroki, aby utworzyć zaplecze nowej Aplikacji mobilnej.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które może być używane przez aplikacje mobilne klientów. Teraz pobierzesz projekt serwera dla prostego zaplecza typu „lista czynności do wykonania” i opublikujesz go na platformie Azure.
-
-## <a name="configure-the-server-project"></a>Konfigurowanie projektu serwera
-
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Tworzenie połączenia z bazą danych i konfigurowanie projektu klienta i serwera
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-client-project"></a>Pobieranie i uruchamianie projektu klienta
+## <a name="run-the-client-project"></a>Uruchom projekt klienta
 
-Po skonfigurowaniu zaplecza Aplikacji mobilnej można utworzyć nową aplikację klienta lub zmodyfikować istniejącą aplikację w celu nawiązania połączenia z platformą Azure. W tej sekcji można pobrać projekt przykładowej aplikacji platformy uniwersalnej systemu Windows dostosowany pod kątem nawiązywania połączenia z zapleczem aplikacji mobilnej.
+1. Otwórz projekt platformy uniwersalnej systemu Windows.
 
-1. W bloku **Szybki start** dla zaplecza Aplikacji mobilnej kliknij pozycję **Utwórz nową aplikację** > **Pobieranie**, a następnie wyodrębnij skompresowane pliki projektu na komputerze lokalnym.
+2. Przejdź do [witryny Azure portal](https://portal.azure.com/) i przejdź do aplikacji mobilnej, który został utworzony. Na `Overview` bloku, zwróć uwagę na adres URL, który jest publiczny punkt końcowy dla twojej aplikacji mobilnej. Przykład — nazwa witryny, dla mojej nazwy aplikacji "test123" będzie https://test123.azurewebsites.net.
 
-    ![Pobieranie projektu Szybki start systemu Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
+3. Otwórz plik `App.xaml.cs` w tym folderze - windows-platformy uniwersalnej systemu Windows — cs/ZUMOAPPNAME /. Nazwa aplikacji jest `ZUMOAPPNAME`.
 
-2. Otwórz projekt platformy uniwersalnej systemu Windows i naciśnij klawisz F5, aby wdrożyć i uruchomić aplikację.
-3. W aplikacji wpisz znaczący tekst, na przykład *Ukończ samouczek* w polu tekstowym **Wstaw czynność do wykonania**, a następnie kliknij pozycję **Zapisz**.
+4. W `App` klasy, Zastąp `ZUMOAPPURL` parametru z publicznym punktem końcowym powyżej.
+
+    `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
+
+    staje się
+    
+    `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
+
+5. Naciśnij klawisz F5, aby wdrożyć i uruchomić aplikację.
+
+6. W aplikacji wpisz znaczący tekst, na przykład *Ukończ samouczek* w polu tekstowym **Wstaw czynność do wykonania**, a następnie kliknij pozycję **Zapisz**.
 
     ![Kompletna aplikacja systemu Windows typu Szybki start na komputerze](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
     Spowoduje to wysłanie żądania POST do zaplecza nowej aplikacji mobilnej, która jest obsługiwana na platformie Azure.
-
-> [!TIP]
-> Możesz dodać projekt aplikacji platformy uniwersalnej systemu Windows do tego samego rozwiązania co projekt serwera, jeśli używasz zaplecza .NET. Ułatwi to debugowanie oraz testowanie zaplecza i aplikacji w tym samym rozwiązaniu programu Visual Studio. Aby dodać projekt aplikacji platformy uniwersalnej systemu Windows do rozwiązania wewnętrznej bazy danych, należy używać programu Visual Studio 2017 r. lub nowszej.
-
-## <a name="next-steps"></a>Kolejne kroki
-
-* [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Dowiedz się, jak uwierzytelniać użytkowników aplikacji przy użyciu dostawcy tożsamości.
-* [Dodawanie powiadomień wypychanych do aplikacji](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  Dowiedz się, jak dodać obsługę powiadomień wypychanych do aplikacji i skonfigurować zaplecze Aplikacji mobilnej na potrzeby wysyłania powiadomień wypychanych przy użyciu usługi Azure Notification Hubs.
-* [Włączanie synchronizacji w trybie offline dla aplikacji](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Dowiedz się, jak dodać obsługę aplikacji w trybie offline przy użyciu zaplecza aplikacji mobilnej. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną &mdash; przeglądanie, dodawanie lub modyfikowanie danych &mdash; nawet w przypadku braku połączenia sieciowego.
-
-<!-- Anchors. -->
-<!-- Images. -->
-<!-- URLs. -->
-[Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
-[Azure portal]: https://portal.azure.com/
-[Visual Studio Community]: https://go.microsoft.com/fwLink/p/?LinkID=534203

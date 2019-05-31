@@ -1,54 +1,36 @@
 ---
-title: Rozwiązywanie problemów na urządzenie Azure Data Box | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób rozwiązywania problemów występujących w usłudze Azure Data Box przy przekazywaniu danych do platformy Azure.
+title: Rozwiązywanie problemów na urządzenie Azure Data Box, Azure Data Box mocno | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób rozwiązywania problemów występujących w usłudze Azure Data Box i Azure Data Box mocno podczas kopiowania danych na tych urządzeniach.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 1126002a93419371be3216c55114385c9c600419
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593998"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257283"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box"></a>Rozwiązywanie problemów związanych z usługi Azure Data Box
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Rozwiązywanie problemów związanych z usługi Azure Data Box i Azure Data Box duże
 
-W tym artykule zawiera szczegółowe informacje na temat rozwiązywania problemów, że może zostać wyświetlony w przypadku korzystania z usługi Azure Data Box.
+W tym artykule zawiera szczegółowe informacje na temat rozwiązywania problemów, że może pojawić się podczas korzystania z Boxn danych platformy Azure lub Azure Data Box duże.
 
 ## <a name="errors-during-data-copy"></a>Błędy podczas kopiowania danych
 
 Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano w poniższych sekcjach.
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH 
-
-**Opis błędu:** Nazwa kontenera lub udziału musi mieć długość od 3 do 63 znaków.
-
-**Sugerowane rozwiązanie:** Folderu w udziale urządzenia Data Box (SMB/NFS), do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
-
-- Na **Połącz i skopiuj** strony lokalnego internetowego interfejsu użytkownika urządzenia Data Box, pobierania i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale urządzenia Data Box, aby upewnić się, że:
-
-    - Nazwa ma od 3 do 63 znaków.
-    - Nazwy mogą mieć tylko litery, cyfry i łączniki.
-    - Nazwy nie może zaczynać się ani kończyć łączników.
-    - Nazwy nie może zawierać następujących po sobie łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`.
-    - Przykłady nazw, które nie są prawidłowe: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
-
-    Aby uzyskać więcej informacji, zobacz Azure konwencje nazewnictwa dla [nazwy kontenera](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazwy udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
-
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **Opis błędu:** Nazwa kontenera lub udziału musi mieć długość od 3 do 63 znaków. 
 
-**Sugerowane rozwiązanie:** Folderu w udziale urządzenia Data Box (SMB/NFS), do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
+**Sugerowane rozwiązanie:** Folder w obszarze share(SMB/NFS) pola danych lub duże pole danych, do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
 
-- Na **Połącz i skopiuj** strony lokalnego internetowego interfejsu użytkownika urządzenia Data Box, pobierania i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale urządzenia Data Box, aby upewnić się, że:
+- Na **Połącz i skopiuj** stronie urządzenia lokalnego internetowego interfejsu użytkownika, pobieranie i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
+- Zmień nazwę folderu w udziale pola danych lub duże pole danych, aby upewnić się, że:
 
     - Nazwa ma od 3 do 63 znaków.
     - Nazwy mogą mieć tylko litery, cyfry i łączniki.
@@ -64,10 +46,10 @@ Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano
 
 **Opis błędu:** Nazwa kontenera lub udziału musi zawierać wyłącznie litery, cyfry lub łączniki.
 
-**Sugerowane rozwiązanie:** Folderu w udziale urządzenia Data Box (SMB/NFS), do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
+**Sugerowane rozwiązanie:** Folder w obszarze share(SMB/NFS) pola danych lub duże pole danych, do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
 
-- Na **Połącz i skopiuj** strony lokalnego internetowego interfejsu użytkownika urządzenia Data Box, pobierania i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale urządzenia Data Box, aby upewnić się, że:
+- Na **Połącz i skopiuj** stronie urządzenia lokalnego internetowego interfejsu użytkownika, pobieranie i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
+- Zmień nazwę folderu w udziale pola danych lub duże pole danych, aby upewnić się, że:
 
     - Nazwa ma od 3 do 63 znaków.
     - Nazwy mogą mieć tylko litery, cyfry i łączniki.
@@ -82,10 +64,10 @@ Wszystkie błędy, które nie są widoczne podczas kopiowania danych podsumowano
 
 **Opis błędu:** Nie można uruchomić nazwy kontenera i nazwy udziału lub kończyć się znakiem łączniki oraz nie może zawierać następujących po sobie łączników.
 
-**Sugerowane rozwiązanie:** Folderu w udziale urządzenia Data Box (SMB/NFS), do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
+**Sugerowane rozwiązanie:** Folder w obszarze share(SMB/NFS) pola danych lub duże pole danych, do którego skopiowano danych staje się kontenerów platformy Azure, w ramach konta magazynu. 
 
-- Na **Połącz i skopiuj** strony lokalnego internetowego interfejsu użytkownika urządzenia Data Box, pobierania i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
-- Zmień nazwę folderu w udziale urządzenia Data Box, aby upewnić się, że:
+- Na **Połącz i skopiuj** stronie urządzenia lokalnego internetowego interfejsu użytkownika, pobieranie i przejrzyj pliki błędów, aby zidentyfikować folder nazwy z problemami.
+- Zmień nazwę folderu w udziale pola danych lub duże pole danych, aby upewnić się, że:
 
     - Nazwa ma od 3 do 63 znaków.
     - Nazwy mogą mieć tylko litery, cyfry i łączniki.
@@ -112,7 +94,7 @@ Aby uzyskać więcej informacji, zobacz [kopiowania do usługi managed disks](da
 
 **Opis błędu:** Udział plików platformy Azure ogranicza udział 5 TB danych. Ten limit został przekroczony dla niektórych udziałów.
 
-**Sugerowane rozwiązanie:** Na **Połącz i skopiuj** strony urządzenia Data Box lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
+**Sugerowane rozwiązanie:** Na **Połącz i skopiuj** strony z lokalnego Interfejsu w przeglądarce, pobrać i przejrzeć plików błędów.
 
 Określ foldery, które mają ten problem z dzienników błędów i upewnij się, że pliki w tym folderze znajdują się w sekcji 5 TB.
 
@@ -194,7 +176,7 @@ Aby uzyskać więcej informacji zobacz Azure konwencje nazewnictwa dla nazwy obi
 
 **Opis błędu:** Obiekt blob lub plik jest nieprawidłowo wyrównany.
 
-**Sugerowane rozwiązanie:** Powiązana udziału blob strony na urządzenie Data Box tylko obsługuje pliki, które są 512 bajtów (np. VHD/VHDX). Wszelkie dane skopiowane do udziału blob strony zostanie przekazany na platformę Azure jako stronicowe obiekty BLOB.
+**Sugerowane rozwiązanie:** Powiązana udziału blob strony na urządzenie Data Box lub duże pole danych tylko obsługuje pliki, które są 512 bajtów (np. VHD/VHDX). Wszelkie dane skopiowane do udziału blob strony zostanie przekazany na platformę Azure jako stronicowe obiekty BLOB.
 
 Usuń wszystkie dane bez do dysku VHD/VHDX z udziału blob strony. Można używać udziałów dla blokowych obiektów blob i plików platformy Azure dla danych typu ogólnego.
 

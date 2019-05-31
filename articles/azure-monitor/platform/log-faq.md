@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394833"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356222"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 
@@ -35,7 +35,7 @@ Odp.: Są one tak samo. [Usługa log Analytics jest integrowany jako funkcję w 
 
 ### <a name="q-can-i-still-use-log-search"></a>Pyt.: Można nadal korzystać z wyszukiwania w dziennikach? 
 
-Odp.: Wyszukiwanie w dzienniku aktualnie jest nadal dostępny w portalu pakietu OMS i w witrynie Azure portal w obszarze nazwy **dzienniki (wersja klasyczna)**. Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019 r. Klasyczne środowisko dzienników w witrynie Azure portal zostaną stopniowo wycofane i zastąpione nowe środowisko dzienniki. 
+Odp.: Wyszukiwanie w dzienniku aktualnie jest nadal dostępny w portalu pakietu OMS i w witrynie Azure portal w obszarze nazwy **dzienniki (wersja klasyczna)** . Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019 r. Klasyczne środowisko dzienników w witrynie Azure portal zostaną stopniowo wycofane i zastąpione nowe środowisko dzienniki. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>PYTANIE: Można nadal korzystać z portalu Advanced Analytics? 
 Nowe środowisko dzienników w witrynie Azure portal jest oparty na portalu usługi analiza zaawansowana, ale jest nadal dostępny spoza witryny Azure portal. Plan wycofywania tego zewnętrznego portalu zostanie ogłoszona wkrótce.
@@ -84,7 +84,7 @@ Odp.: Lista widoków i zainstalowane rozwiązania są dostępne w witrynie Azure
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>PYTANIE: Dlaczego nie mogę utworzyć obszary robocze w regionie zachodnio-środkowe stany USA? 
 
-Odp.: W tym regionie osiągnięto tymczasowy limit pojemności. Rozwiązanie tego problemu zaplanowano na pierwszą połowę 2019 r.
+Odp.: W tym regionie osiągnięto tymczasowy limit pojemności. Ten limit jest planowana skierowanych do końca września maja 2019 r.
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>PYTANIE: Usługa Log Analytics używa ten sam agent Azure Security Center?
@@ -195,7 +195,7 @@ W obszarze **Azure Log Analytics (OMS)** kartę, poszukaj zielony znacznik wybor
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Pyt.: Jak zatrzymać agenta komunikowanie się z usługą Log Analytics?
 
 Odp.: W programie System Center Operations Manager należy usunąć komputer z listy zarządzanych komputerów pakietu OMS. Programu Operations Manager zaktualizuje konfigurację agenta nie jest już raport do usługi Log Analytics. Dla agentów bezpośrednio podłączone do usługi Log Analytics możesz zatrzymać je komunikację za pośrednictwem: Kontrolowanie panelu, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
-W obszarze **Azure Log Analytics (OMS)**, Usuń wszystkie obszary robocze na liście.
+W obszarze **Azure Log Analytics (OMS)** , Usuń wszystkie obszary robocze na liście.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Pyt.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
 

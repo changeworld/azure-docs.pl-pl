@@ -12,12 +12,12 @@ ms.date: 05/03/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41dde1579fc98db37ab7d92ce362d0a4ce9a82cf
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 23e5fc24e426c87bbc5062183f2ee2db0e546484
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824573"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388217"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Środowiska użytkownika końcowego dla aplikacji w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) oferuje kilka sposobów dostosowania do wdrażania aplikacji dla użytkowników końcowych w organizacji:
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji na temat uruchamiania aplikacji usługi Office 3
 ## <a name="direct-sign-on-to-federated-apps"></a>Bezpośrednie logowanie do aplikacji federacyjnych
 Większość aplikacji federacyjnych obsługuje SAML 2.0, WS-Federation i OpenID connect również pomocy technicznej przez użytkowników na poziomie aplikacji, a następnie Pobierz zalogowany za pomocą usługi Azure AD przez automatyczne przekierowanie lub klikając łącze do logowania. Jest to określane jako dostawca usług-zainicjowania logowania jednokrotnego, a większość aplikacji federacyjnych w galerii aplikacji usługi Azure AD obsługuje tego (znajduje się dokumentacja połączone za pomocą Kreatora konfiguracji rejestracji logowania jednokrotnego aplikacji w witrynie Azure portal, aby uzyskać szczegółowe informacje).
 
-![](./media/end-user-experiences/workdaymobile.png)
+![Przykład strony logowania aplikacji mobilnej](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>Łącza bezpośrednie logowanie jednokrotne
 Usługa Azure AD obsługuje również pojedynczego logowania jednokrotnego łączy bezpośrednich dla poszczególnych aplikacji, które obsługują opartego na hasłach logowanie jednokrotne połączonej logowania jednokrotnego i jakiejkolwiek formy federacyjnego logowania jednokrotnego.

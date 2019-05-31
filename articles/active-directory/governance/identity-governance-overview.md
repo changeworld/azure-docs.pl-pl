@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30bbddd044d1aea70e43825035c94b69a46f1f8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935828"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66307040"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest zarządzanie usługi Azure AD Identity?
 
@@ -84,6 +84,6 @@ Możesz również zapoznać się na karcie wprowadzające **zarządzania tożsam
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Co to jest zarządzanie uprawnieniami w usłudze Azure AD? (wersja zapoznawcza)](entitlement-management-overview.md)
-- [Co to są usługi Azure AD access przeglądy?](access-reviews-overview.md)
+- [Co to są przeglądy dostępu w usłudze Azure AD?](access-reviews-overview.md)
 - [Co to jest Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 - [Do czego można wykorzystać warunki użytkowania?](active-directory-tou.md)

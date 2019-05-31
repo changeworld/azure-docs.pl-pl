@@ -1,5 +1,5 @@
 ---
-title: Klasy zasobów do zarządzania obciążeniem — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+title: Klasy zasobów do zarządzania obciążenia w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące używania klas zasobów do zarządzania współbieżności i zasoby obliczeniowe dla zapytań w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/22/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75bd6e8071717ba755b71f51afcd884539049489
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1c15778eb2ce38efb65e777578008b61e7066d67
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165980"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244519"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w usłudze Azure SQL Data Warehouse
 
@@ -196,7 +196,7 @@ Użytkownicy mogą należeć do wielu klas zasobów. Gdy użytkownik należy do 
 - Zasób dynamiczny klasy mają pierwszeństwo przed statycznych klas zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc(dynamic) i staticrc80 (statyczne), zapytania działały z mediumrc.
 - Większych klas zasobów mają pierwszeństwo przed mniejszej klasy zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc i largerc, zapytania działały z largerc. Podobnie jeśli użytkownik jest członkiem zarówno staticrc20, jak i statirc80, zapytania działały z staticrc80 alokacji zasobów.
 
-## <a name="recommendations"></a>Rekomendacje
+## <a name="recommendations"></a>Zalecenia
 
 Firma Microsoft zaleca się utworzenie użytkownika, który jest przeznaczony do obsługi określonego typu zapytania lub operacja ładowania. Nadaj tego użytkownika do klasy zasobów trwałe, zamiast Zmienianie klasy zasobów częste. Statycznych klas zasobów sobie większą ogólną kontrolę na obciążenie, dlatego zalecane jest używanie statycznych klas zasobów, zanim będzie można uznać klas dynamicznych zasobów.
 

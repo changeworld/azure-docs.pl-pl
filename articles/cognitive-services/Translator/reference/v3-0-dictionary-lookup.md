@@ -3,19 +3,19 @@ title: Metoda wyszukiwania słownika interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Metoda wyszukiwania słownika interfejsu API tekstu usługi Translator.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b844ac4018ef768527ca17bd68ca53baaf5d9552
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 10ccdcf0fda424e67b993c7c9300f0b84c56121f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605504"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389792"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Wyszukiwanie w słowniku
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>z</td>
+    <td>from</td>
     <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
   <tr>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 42c94188c0c38448660998bcfc122ae626285566
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146992"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66249093"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -38,9 +38,11 @@ Obsługiwane są następujące systemy operacyjne klientów:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Czy można pominąć serwery proxy i zapory, korzystając z funkcji punkt-lokacja?
 
-Platforma Azure obsługuje dwa typy połączeń punkt-lokacja w sieci VPN:
+Platforma Azure obsługuje trzy typy opcji sieci VPN typu punkt lokacja:
 
 * Protokół Secure Socket Tunneling Protocol (SSTP). Protokół SSTP jest własnym rozwiązaniem firmy Microsoft bazującym na protokole SSL. Może przechodzić przez zapory, ponieważ większość zapór otwiera port TCP 443, z którego korzysta protokół SSL.
+
+* OpenVPN. OpenVPN jest rozwiązaniem opartym na protokole SSL, może przechodzić przez zapory, ponieważ większość zapór otwiera port TCP, który używa protokołu SSL 443.
 
 * Sieć VPN z protokołem IKEv2. Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN IPsec, które korzysta z portów UDP 500 i 4500 i protokołu IP nr 50. Zapory nie zawsze otwierają te porty, więc istnieje możliwość, że sieć VPN z protokołem IKEv2 nie będzie mogła nawiązywać połączeń przez serwery proxy i zapory.
 
@@ -66,7 +68,7 @@ Trudno jest utrzymać dokładną przepływność tuneli VPN. Protokoły IPsec i 
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Czy mogę używać dowolnego programowego klienta sieci VPN dla połączeń typu punkt-lokacja obsługujących protokoły SSTP i/lub IKEv2?
 
-Nie. Możesz używać wyłącznie natywnego klienta sieci VPN w systemie Windows dla protokołu SSTP i natywnego klienta sieci VPN na komputerach Mac dla protokołu IKEv2. Zapoznaj się z listą obsługiwanych systemów operacyjnych klienta.
+Nie. Możesz używać wyłącznie natywnego klienta sieci VPN w systemie Windows dla protokołu SSTP i natywnego klienta sieci VPN na komputerach Mac dla protokołu IKEv2. Jednak można użyć klienta OpenVPN na wszystkich platformach, nawiązać połączenie za pośrednictwem protokołu OpenVPN. Zapoznaj się z listą obsługiwanych systemów operacyjnych klienta.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Czy platforma Azure obsługuje sieć VPN z protokołem IKEv2 w systemie Windows?
 

@@ -5,12 +5,12 @@ author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125478"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304704"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na platformie Azure
 
@@ -20,13 +20,13 @@ CICs oznacza System kontroli informacje klienta, platforma transakcji używanych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Maszyna wirtualna o [Enterprise Developer](set-up-micro-focus-azure.md). Należy pamiętać o tym, czy Enterprise Developer ma pełne wystąpienie Enterprise Server go do celów tworzenia i testowania. To jest wystąpienie serwera przedsiębiorstwa używany udział w pokazie.
+- Maszyna wirtualna o [Enterprise Developer](set-up-micro-focus-azure.md). Należy pamiętać o tym, czy Enterprise Developer ma pełne wystąpienie Enterprise Server go do celów tworzenia i testowania. To wystąpienie jest wystąpienie serwera przedsiębiorstwa używany udział w pokazie.
 
 - [Wersja programu SQL Server Express 2017](https://www.microsoft.com/sql-server/sql-server-editions-express). Pobierz i zainstaluj go na maszynie Wirtualnej Developer Enterprise. Enterprise Server wymaga bazy danych zarządzania CICS regionów, a aplikacja BankDemo również używa bazy danych SQL Server o nazwie BANKDEMO. Ten pokaz przyjęto założenie, że używasz programu SQL Server Express dla obu baz danych. Podczas instalacji, wybierz opcję instalacji podstawowej.
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). Program SSMS jest używany do zarządzania bazami danych i uruchamiania skryptu T-SQL. Pobierz i zainstaluj go na maszynie Wirtualnej Developer Enterprise.
 
-- [Program Visual Studio 2017](https://azure.microsoft.com/downloads/) za pomocą najnowszego dodatku service pack lub [programu Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), który można pobrać bezpłatnie.
+- [Visual Studio 2019](https://azure.microsoft.com/downloads/) za pomocą najnowszego dodatku service pack lub [programu Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), który można pobrać bezpłatnie.
 
 - Rumba pulpit lub inną 3270 emulatora.
 
@@ -38,7 +38,7 @@ Po zainstalowaniu Enterprise Developer 4.0 na maszynie Wirtualnej, należy skonf
 
 2. Kliknij przycisk **wyszukiwania** ikona obok pozycji **Start** przycisk i typ **funkcji Windows**. Zostanie otwarte okno Menedżera serwera Dodaj role i funkcje kreatora.
 
-3. Wybierz **roli Serwer sieci Web (IIS)**, a następnie sprawdź następujące czynności:
+3. Wybierz **roli Serwer sieci Web (IIS)** , a następnie sprawdź następujące opcje:
 
     - Narzędzia zarządzania siecią Web
     - Zgodność z narzędziami zarządzania usług IIS 6 (Zaznacz wszystkie dostępne funkcje)
@@ -46,7 +46,7 @@ Po zainstalowaniu Enterprise Developer 4.0 na maszynie Wirtualnej, należy skonf
     - Narzędzia i skrypty zarządzania usługami IIS
     - Usługa zarządzania usługami IIS
 
-4. Wybierz **usługi World Wide Web**i sprawdź następujące:
+4. Wybierz **usługi World Wide Web**, a następnie wybierz następujące opcje:
 
      Funkcje tworzenia aplikacji:
     - Rozszerzalność architektury .NET
@@ -54,17 +54,17 @@ Po zainstalowaniu Enterprise Developer 4.0 na maszynie Wirtualnej, należy skonf
     - Wspólne funkcje HTTP: Dodaj wszystkie dostępne funkcje
     - Kondycja i Diagnostyka: Dodaj wszystkie dostępne funkcje
     - Zabezpieczenia:
-        - Uwierzytelnianie podstawowe
+        - uwierzytelniania podstawowego
         - Uwierzytelnianie systemu Windows
 
 5. Wybierz **usługi Windows Process Activation Service** i wszystkie jego elementy podrzędne.
 
-6. Aby uzyskać **funkcji**, sprawdź **programu Microsoft .NET framework 3.5.1**i sprawdź następujące:
+6. Dla **funkcji**, sprawdź **programu Microsoft .NET framework 3.5.1**, a następnie wybierz następujące opcje:
 
     - Windows Communication Foundation HTTP aktywacji
     - Aktywacja bez HTTP programu Windows Communication Foundation
 
-7. Aby uzyskać **funkcji**, sprawdź **programu Microsoft .NET framework 4.6**i sprawdź następujące:
+7. Dla **funkcji**, sprawdź **programu Microsoft .NET framework 4.6**, a następnie wybierz następujące opcje:
 
    - Aktywacja potoku nazwanego
    - Aktywacja TCP
@@ -88,7 +88,7 @@ Po zainstalowaniu Enterprise Developer 4.0 na maszynie Wirtualnej, należy skonf
 
 ## <a name="configure-the-local-system-account-for-sql-server"></a>Skonfiguruj lokalne konto systemowe dla programu SQL Server
 
-Niektóre procesy Enterprise Server muszą być w stanie zalogować się do programu SQL Server i tworzyć bazy danych i innych obiektów. Te procesy używają konta systemu lokalnego, więc należy przyznać uprawnienia administratora systemu do tego konta.
+Niektóre procesy Enterprise Server muszą być w stanie się w programie SQL Server i utworzeniu bazy danych i innych obiektów. Te procesy używają konta systemu lokalnego, więc należy przyznać uprawnienia administratora systemu do tego konta.
 
 1. Uruchom **SSMS** i kliknij przycisk **Connect** do łączenia się z lokalnym serwerem SQLEXPRESS przy użyciu uwierzytelniania Windows. Powinny być dostępne w **nazwy serwera** listy.
 
@@ -197,18 +197,18 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
      ![Nowy ekran definicji zasobu XA bazy danych](media/09-demo-xa.png)
 
-6. Kliknij przycisk z wielokropkiem (**...** ) aby wywołać Kreatora parametry połączenia. Aby uzyskać **nazwy serwera**, typ **(local)\\SQLEXPRESS**. Aby uzyskać **logowania**, wybierz opcję **uwierzytelniania Windows**. Nazwa bazy danych, wpisz **BANKDEMO**
+6. Kliknij przycisk z wielokropkiem ( **...** ) aby wywołać Kreatora parametry połączenia. Aby uzyskać **nazwy serwera**, typ **(local)\\SQLEXPRESS**. Aby uzyskać **logowania**, wybierz opcję **uwierzytelniania Windows**. Nazwa bazy danych, wpisz **BANKDEMO**
 
      ![Edytuj parametry połączenia ekranu](media/10-demo-string.png)
 
-7. Testuj połączenie.
+7. Przetestuj połączenie.
 
 ## <a name="start-the-bankdemo-region"></a>Rozpocznij BANKDEMO Region
 
 > [!NOTE]
 > Pierwszym krokiem jest ważne. Należy ustawić Region do użycia XA definicji zasobu został utworzony.
 
-1. Przejdź do **BANDEMO CICS Region** w obszarze **kontenera regionów**, a następnie wybierz **Edytuj plik startowy Region** z **akcje** okienko. Przewiń w dół do właściwości SQL, a następnie wprowadź **bankdemo** dla **nazwy zasobów XA** , lub użyj wielokropka, aby go zaznaczyć.
+1. Przejdź do **BANDEMO CICS Region** w obszarze **kontenera regionów**, a następnie wybierz **Edytuj plik startowy Region** z **akcje** okienko. Przewiń w dół do właściwości SQL, a następnie wprowadź **bankdemo** dla **nazwy zasobów XA**, lub użyj wielokropka, aby go zaznaczyć.
 
 2. Kliknij przycisk **Zapisz** ikonę, aby zapisać zmiany.
 
@@ -216,13 +216,13 @@ Zapytanie powinno być uruchomione z bez błędów. Po zakończeniu będziesz mi
 
 4. W dolnej części **Region uruchomień/zatrzymań** wyświetlonym w środkowym okienku wybierz **Start**. Po kilku sekundach rozpoczyna się region.
 
-     ![Pole SQL uruchomień/zatrzymań](/media/11-demo-sql.png)
+     ![Pole SQL uruchomień/zatrzymań](media/11-demo-sql.png)
 
      ![Region CICS BANKDEMO — wprowadzenie ekranu](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Utwórz odbiornik
 
-Należy utworzyć odbiornik, sesje TN3270, które uzyskiwać dostęp do aplikacji BankDemo.
+Utwórz odbiornik dla sesji TN3270, uzyskujących dostęp do aplikacji BankDemo.
 
 1. W okienku po lewej stronie rozwiń **edytorów konfiguracji** i wybierz **odbiornika**.
 
@@ -236,7 +236,7 @@ Należy utworzyć odbiornik, sesje TN3270, które uzyskiwać dostęp do aplikacj
 
 6. Dodaj kanał TN3270, klikając prawym przyciskiem myszy **BANKDEMO Region** i wybierając polecenie **Dodaj kanał**.
 
-7. Aby uzyskać **nazwa**, wprowadź **TN3270**. Aby uzyskać **portu**, wprowadź **9024**. (Zwróć uwagę, że aplikacja ESDEMO używa portu 9230, warto użyć innego portu).
+7. Aby uzyskać **nazwa**, wprowadź **TN3270**. Aby uzyskać **portu**, wprowadź **9024**. Aplikacja ESDEMO korzysta z portu 9230 warto użyć innego portu.
 
 8. Aby zapisać plik, kliknij przycisk **Zapisz** ikonę lub wybierz **pliku** \> **Zapisz**.
 

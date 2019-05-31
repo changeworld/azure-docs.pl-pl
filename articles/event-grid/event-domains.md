@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 131a55d130e7ebf619ee283e943c0b0a7b45edfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562038"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304297"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Omówienie domen zdarzeń związanych z zarządzaniem tematy usługi Event Grid
 
@@ -22,8 +22,6 @@ W tym artykule opisano sposób używania domen zdarzenie pozwala na zarządzanie
 * Zarządzaj autoryzacji i uwierzytelniania.
 * Partycji tematów bez konieczności zarządzania każdym indywidualnie.
 * Unikaj publikowania w indywidualnie do poszczególnych punktów końcowych tematu.
-
-Ta funkcja jest dostępna w wersji zapoznawczej. Aby go użyć, należy zainstalować rozszerzenia w wersji zapoznawczej lub modułu. Aby uzyskać instrukcje, zobacz [zarządzania tematami i publikowania zdarzeń za pomocą zdarzeń domeny](how-to-event-domains.md).
 
 ## <a name="event-domain-overview"></a>Omówienie usługi Event domeny
 
@@ -49,7 +47,7 @@ RBAC w domenach zdarzeń działa tak samo [zarządzane kontroli dostępu](securi
 
 ### <a name="built-in-roles"></a>Wbudowane role
 
-Usługa Event Grid ma dwie definicje wbudowana rola, aby ułatwić RBAC do pracy z domenami zdarzeń. Te role są **EventGrid EventSubscription współautora (wersja zapoznawcza)** i **EventGrid EventSubscription Reader (wersja zapoznawcza)**. Te role są przypisywane do użytkowników, którzy muszą subskrybować tematy w domenie zdarzeń. Określania zakresu przypisania roli do tylko użytkowników potrzebuje do subskrybowania tematu.
+Usługa Event Grid ma dwie definicje wbudowana rola, aby ułatwić RBAC do pracy z domenami zdarzeń. Te role są **EventGrid EventSubscription współautora (wersja zapoznawcza)** i **EventGrid EventSubscription Reader (wersja zapoznawcza)** . Te role są przypisywane do użytkowników, którzy muszą subskrybować tematy w domenie zdarzeń. Możesz określić zakres przypisania roli do tematu, który użytkownicy potrzebują do subskrybowania.
 
 Aby uzyskać informacje o tych rolach, zobacz [wbudowanych ról dla usługi Event Grid](security-authentication.md#built-in-roles).
 
@@ -99,18 +97,18 @@ Na przykład następującą tablicę zdarzenia publikowania prześle zdarzenie z
 Zdarzenie domeny obsługiwać publikowanie tematów dla Ciebie. Zamiast publikowania zdarzeń do każdego tematu, z którymi można zarządzać indywidualnie możesz opublikować wszystkie zdarzenia do punktu końcowego w domenie. Usługa Event Grid sprawia, że się, że każde zdarzenie jest wysyłane do prawidłowy temat.
 
 ## <a name="limits-and-quotas"></a>Limity przydziału i ograniczenia
+Poniżej przedstawiono limity przydziału i ograniczenia związane z domenami zdarzeń:
 
-### <a name="control-plane"></a>Płaszczyzna kontroli
+- 100 000 tematów w każdej domenie zdarzeń 
+- 100 domen zdarzeń na subskrypcję platformy Azure 
+- 500 subskrypcji zdarzeń dla tematu w domenie zdarzeń
+- 50 subskrypcji zakres domeny 
+- 5000 zdarzeń na drugim szybkości pozyskiwania (do domeny)
 
-W trakcie okresu zapoznawczego domen zdarzeń są ograniczone do 1000 tematów w domenie i 50 subskrypcji zdarzeń dla tematu w domenie. Subskrypcje zakres domeny zdarzeń również są ograniczone do 50.
-
-### <a name="data-plane"></a>Płaszczyzna danych
-
-W trakcie okresu zapoznawczego przepływność zdarzeń dla zdarzenia domeny będzie ograniczona do tego samego zdarzenia 5000 na drugim stawka pozyskiwania tematy niestandardowe są ograniczone do.
+Jeśli nie spełnia te limity, należy, korzystał z zespół pracujący nad produktem, otwierając bilet pomocy technicznej lub wysyłając wiadomość e-mail na adres [ askgrid@microsoft.com ](mailto:askgrid.microsoft.com). 
 
 ## <a name="pricing"></a>Cennik
-
-W trakcie okresu zapoznawczego, zdarzenie domenach używały tych samych [operacje ceny](https://azure.microsoft.com/pricing/details/event-grid/) używanego przez wszystkie inne funkcje w usłudze Event Grid.
+Zdarzenie domenach używały tych samych [operacje ceny](https://azure.microsoft.com/pricing/details/event-grid/) używanego przez wszystkie inne funkcje w usłudze Event Grid.
 
 Operacje działać tak samo w domenach zdarzeń, jak w tematy niestandardowe. Każdy transferu danych przychodzących zdarzenia do domeny zdarzeń jest operacją i kolejnymi próbami dostarczenia zdarzeń jest operacją.
 

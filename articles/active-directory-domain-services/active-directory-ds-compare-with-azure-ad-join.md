@@ -3,7 +3,7 @@ title: Porównaj przyłączanie do usługi Azure AD i Azure Active Directory Dom
 description: Wybieranie między Azure AD Join a usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
-ms.author: ergreenl
-ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: eaa8cb54a46b1ff3c2c0f7c40c824f6ddcca16b9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359436"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234959"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Wybieranie między przyłączanie do usługi Azure Active Directory i Azure Active Directory Domain Services
 W tym artykule opisano różnice między dołączania usługi Azure Active Directory (AD) i Azure AD Domain Services i pomoże wybrać, w oparciu o przypadki użycia.
@@ -66,14 +66,14 @@ Na komputerze przyłączonym do domeny uwierzytelnianie użytkowników odbywa si
 
 ## <a name="next-steps"></a>Kolejne kroki
 ### <a name="learn-more-about-azure-ad-domain-services"></a>Dowiedz się więcej o usłudze Azure AD Domain Services
-* [Omówienie usług domenowych Azure AD](active-directory-ds-overview.md)
+* [Omówienie usług domenowych Azure AD](overview.md)
 * [Funkcje](active-directory-ds-features.md)
-* [Scenariusze wdrażania](active-directory-ds-scenarios.md)
-* [Dowiedz się, jeśli program Azure AD Domain Services odpowiada przypadki użycia](active-directory-ds-comparison.md)
-* [Zrozumienie, jak usługi domenowe Azure AD synchronizuje się z katalogiem usługi Azure AD](active-directory-ds-synchronization.md)
+* [Scenariusze wdrażania](scenarios.md)
+* [Dowiedz się, jeśli program Azure AD Domain Services odpowiada przypadki użycia](comparison.md)
+* [Zrozumienie, jak usługi domenowe Azure AD synchronizuje się z katalogiem usługi Azure AD](synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>Dowiedz się więcej o usłudze Azure AD Join
 * [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Wprowadzenie do usług Azure AD Domain Services
-* [Włączanie usług domenowych Azure AD przy użyciu witryny Azure portal](active-directory-ds-getting-started.md)
+* [Włączanie usług domenowych Azure AD przy użyciu witryny Azure portal](create-instance.md)

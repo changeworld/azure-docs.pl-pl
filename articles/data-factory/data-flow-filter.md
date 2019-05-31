@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: d1751c47ad4507260d9f8d6ea44fcb32ed0e7338
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61347433"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234412"
 ---
-# <a name="azure-data-factoryfilter-transformation"></a>Przekształcenie FactoryFilter danych na platformie Azure
+# <a name="azure-data-factory-filter-transformation"></a>Usługi Azure data factory Filtr przekształcania
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 

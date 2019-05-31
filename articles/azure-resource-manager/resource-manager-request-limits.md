@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791363"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399713"
 ---
 # <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań usługi Resource Manager
 
 Dla każdej subskrypcji platformy Azure i dzierżawy usługi Resource Manager pozwala maksymalnie 12 000 żądań na godzinę żądania odczytu i 1200 zapisu na godzinę. Limity te są ograniczone do Identyfikatora podmiotu zabezpieczeń, dzięki czemu żądania i identyfikator subskrypcji lub identyfikatora dzierżawy W przypadku żądań pochodzących z więcej niż jeden identyfikator podmiotu zabezpieczeń, limit jednej subskrypcji, czy dzierżawa jest większa niż 12 000 i 1200 na godzinę.
 
-Żądania są stosowane do dzierżawy lub Twojej subskrypcji. Żądania subskrypcji są te dotyczą przekazanie subskrypcji IDENTYFIKATORA, takie jak pobieranie grup zasobów w ramach subskrypcji. Żądania dzierżawy nie zawierają Identyfikatora subskrypcji, takie jak pobieranie prawidłowych lokalizacji platformy Azure.
+Żądania są stosowane do dzierżawy lub Twojej subskrypcji. Żądania subskrypcji są te, które obejmują przekazywanie Identyfikatora subskrypcji, takie jak pobieranie grup zasobów w ramach subskrypcji. Żądania dzierżawy nie zawierają Identyfikatora subskrypcji, takie jak pobieranie prawidłowych lokalizacji platformy Azure.
 
 Te limity mają zastosowanie do każdego wystąpienia usługi Azure Resource Manager. Istnieje wiele wystąpień w każdym regionie platformy Azure i usługi Azure Resource Manager jest wdrażana we wszystkich regionach platformy Azure.  Zatem w praktyce skutecznie znacznie wyższa niż te limity są limity, jako użytkownik żądania są zazwyczaj obsługiwane przez wiele różnych wystąpień.
 
@@ -45,7 +45,7 @@ Liczba pozostałych żądań, które można określić, sprawdzając nagłówki 
 ## <a name="retrieving-the-header-values"></a>Pobieranie wartości nagłówka
 Podczas pobierania tych wartości nagłówka w kodzie albo skrypt nie różni się od pobierania dowolnej wartości nagłówka. 
 
-Na przykład w **C#**, pobrać wartość nagłówka z **HttpWebResponse** obiektu o nazwie **odpowiedzi** następującym kodem:
+Na przykład w **C#** , pobrać wartość nagłówka z **HttpWebResponse** obiektu o nazwie **odpowiedzi** następującym kodem:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)

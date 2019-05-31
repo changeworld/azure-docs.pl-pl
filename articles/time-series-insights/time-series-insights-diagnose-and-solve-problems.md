@@ -4,25 +4,25 @@ description: W tym artykule opisano sposób diagnozowania, rozwiązywanie proble
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be2652355e3b9830d4a5198ba71c0f4a78858dd
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 68d46b54bf066724d8f3474f421d2d1f751b75e3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471696"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235046"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w danym środowisku usługi Time Series Insights
 
 W tym artykule opisano niektóre problemy, które mogą wystąpić w danym środowisku usługi Azure Time Series Insights. Artykuł zawiera potencjalne przyczyny i potencjalne rozwiązania do rozpoznania.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Poznaj wymagania klientów Series Insights wspólnego czasu i środki zaradcze.</br>
 
@@ -104,13 +104,13 @@ Upewnij się, że sygnatura czasowa nazwy i wartości właściwości są zgodne 
 
 Najprostszym sposobem zapewnienia, że nazwę właściwości sygnatury czasowej są przechwytywane i działa poprawnie za pomocą Eksploratora usługi Time Series Insights. W Eksploratorze usługi Time Series Insights za pomocą wykresu wybierz okres czasu, po wprowadzeniu nazwę właściwości sygnatury czasowej. Kliknij prawym przyciskiem myszy zaznaczenie, a następnie wybierz **Eksploruj zdarzenia** opcji.
 
-Pierwszy nagłówek kolumny powinien być nazwę właściwości sygnatury czasowej. Obok wyraz **sygnatura czasowa**, powinien zostać wyświetlony **($ts)**.
+Pierwszy nagłówek kolumny powinien być nazwę właściwości sygnatury czasowej. Obok wyraz **sygnatura czasowa**, powinien zostać wyświetlony **($ts)** .
 
 Nie powinny zostać wyświetlone następujące wartości:
 
 - *(abc)* : Wskazuje, że usługa Time Series Insights odczytuje wartości danych jako ciągi.
 - *Ikona kalendarza*: Wskazuje, że usługi Time Series Insights odczytuje wartości danych jako *daty/godziny*.
-- *#*: Wskazuje, że usługa Time Series Insights odczytuje wartości danych jako liczba całkowita.
+- *#* : Wskazuje, że usługa Time Series Insights odczytuje wartości danych jako liczba całkowita.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

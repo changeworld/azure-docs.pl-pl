@@ -2,45 +2,59 @@
 title: Usługa Azure Table | Portal Azure Marketplace
 description: Skonfiguruj zarządzanie potencjalnymi klientami dla tabeli platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: af582e51875f84503116f4ec7131464d51e54a99
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935840"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240488"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Instrukcje prowadzić zarządzania dla usługi Azure Table
 
 W tym artykule opisano sposób konfigurowania usługi Azure Table do przechowywania potencjalnych klientów. Tabela platformy Azure umożliwia przechowywanie i Dostosuj informacje o kliencie.
 
-## <a name="to-configure-azure-table"></a>Aby skonfigurować usługi Azure Table
 
-1.  Jeśli nie masz konta platformy Azure, możesz to zrobić [Utwórz bezpłatne konto próbne](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="how-to-configure-azure-table"></a>Jak skonfigurować usługi Azure Table
 
-2.  Po uaktywnieniu konta platformy Azure, zaloguj się do [witryny Azure portal](https://portal.azure.com).
-3.  W witrynie Azure portal Utwórz konto magazynu. Następny zrzut ekranu pokazuje, jak utworzyć konto magazynu. Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny za magazyn](https://azure.microsoft.com/pricing/details/storage/).
+1. Jeśli nie masz konta platformy Azure, możesz to zrobić [Utwórz bezpłatne konto próbne](https://azure.microsoft.com/pricing/free-trial/).
+2. Po uaktywnieniu konta platformy Azure, zaloguj się do [witryny Azure portal](https://portal.azure.com).
+3. W witrynie Azure portal Utwórz konto magazynu, korzystając z następującej procedury.  
+    1. Wybierz **+ Utwórz zasób** na pasku menu po lewej stronie.  **New** (bloku) w okienku pojawi się po prawej stronie.
+    2. Wybierz **magazynu** w **New** okienka.  A **polecane** po prawej stronie zostanie wyświetlona lista.
+    3. Wybierz **konta magazynu** do rozpoczęcia tworzenia konta.  Postępuj zgodnie z instrukcjami w artykule [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
     ![Kroki, aby utworzyć konto magazynu platformy Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  Skopiuj parametry połączenia konta magazynu dla klucza i wklej go do **parametry połączenia konta magazynu** pole w portalu Cloud Partner. Na przykład stingu połączenia `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`
-    
-    ![Klucz usługi Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+    Aby uzyskać więcej informacji na temat kont magazynu wybierz [samouczek szybkiego startu](https://docs.microsoft.com/azure/storage/).  Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny za magazyn](https://azure.microsoft.com/pricing/details/storage/).
 
-Możesz użyć [Eksplorator usługi Azure storage](https://azurestorageexplorer.codeplex.com/) lub inne narzędzie, aby wyświetlić dane w tabeli magazynu. Możesz również wyeksportować dane w tabeli platformy Azure.
-data.
+4. Zaczekaj, aż aprowizacji konta magazynu, proces, który zazwyczaj zajmuje kilka minut.  Uzyskiwać dostęp do konta usługi storage z **Home** strony w witrynie Azure Portal, wybierając **Zobacz wszystkie Twoje zasoby** lub wybierając **wszystkie zasoby** w lewym obszarze nawigacji pasek menu w witrynie Azure Portal.
 
-## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(Opcjonalnie)**  Użyj Microsoft Flow za pomocą usługi Azure table
+    ![Dostęp do konta usługi Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
-Możesz użyć [Microsoft Flow](https://docs.microsoft.com/flow/) zautomatyzować powiadomienia, za każdym razem, gdy potencjalny klient zostanie dodana do tabeli platformy Azure. Jeśli nie masz konta, możesz [Załóż bezpłatne konto](https://flow.microsoft.com/).
+5. W okienku konta magazynu, skopiuj parametry połączenia konta magazynu dla klucza i wklej go w **parametry połączenia konta magazynu** pole w portalu Cloud Partner. Przykładem ciągu połączenia jest:
+
+```sql
+DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
+```
+
+  ![Klucz usługi Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+
+Możesz użyć [Eksplorator usługi Azure storage](https://azurestorageexplorer.codeplex.com/) lub innego podobnego narzędzia, aby wyświetlić dane w tabeli magazynu. Można również wyeksportować dane z tabel platformy Azure.
+
+
+## <a name="use-microsoft-flow-with-an-azure-table-optional"></a>Microsoft Flow za pomocą usługi Azure Table (*opcjonalne*) 
+
+Możesz użyć [Microsoft Flow](https://docs.microsoft.com/flow/) zautomatyzować powiadomienia, za każdym razem, gdy potencjalny klient zostanie dodana do tabeli platformy Azure. Jeśli nie masz konta, możesz to zrobić [Załóż bezpłatne konto](https://flow.microsoft.com/).
+
 
 ### <a name="lead-notification-example"></a>Przykład powiadomienia potencjalnych klientów
 
-Użyj tego przykładu jako przewodnika, aby utworzyć prosty przepływ, który automatycznie wysyła wiadomość e-mail z powiadomieniem po dodaniu nowego potencjalnego klienta do tabeli platformy Azure. W tym przykładzie cykl wysyłać informacje o potencjalnym kliencie co godzinę, jeśli magazyn tabel jest aktualizowana.
+Użyj tego przykładu jako przewodnika, aby utworzyć przepływ podstawowy, który automatycznie wysyła wiadomość e-mail z powiadomieniem po dodaniu nowego potencjalnego klienta do tabeli platformy Azure. W tym przykładzie cykl wysyłać informacje o potencjalnym kliencie co godzinę, jeśli magazyn tabel jest aktualizowana.
 
 1. Zaloguj się do konta usługi Microsoft Flow.
 2. Na pasku nawigacyjnym po lewej stronie wybierz **moje przepływy**.
@@ -57,7 +71,7 @@ Użyj tego przykładu jako przewodnika, aby utworzyć prosty przepływ, który a
    >[!NOTE] 
    >Mimo że w tym przykładzie użyto interwału 1-godzinnego, możesz wybrać interwał i częstotliwość, z którą jest najlepszym rozwiązaniem dla potrzeb biznesowych.
 
-   ![Ustaw częstotliwość godzinę cyklu](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
+   ![Ustaw częstotliwość cyklu 1 godziny](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
 
 9. Wybierz **+ nowy krok**.
 10. Wyszukaj "Get ostatnich czas", a następnie wybierz pozycję **Pobierz czas w przeszłości** w kolumnie akcje. 
@@ -83,7 +97,7 @@ W następnego zestawu kroków połączysz się z tabeli platformy Azure i skonfi
 
      ![Wybierz niestandardową wartość dla nazwy tabeli platformy Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Zapytanie filtru** — to pole i Get upłynął czas ikona jest wyświetlana w oknie podręcznym. Wybierz **czas w przeszłości** skorzystać z tej jako sygnatura czasowa do filtrowania zapytania. Alternatywnie można wkleić tę funkcję w pole: `gt datetime'@{body('Get_past_time')}'`
+   - **Zapytanie filtru** — to pole, a **Pobierz czas w przeszłości** ikona jest wyświetlana w oknie podręcznym. Wybierz **czas w przeszłości** skorzystać z tej jako sygnatura czasowa do filtrowania zapytania. Alternatywnie można wkleić następującą funkcję do pola: CreatedTime `gt datetime'@{body('Get_past_time')}'` 
 
      ![Konfigurowanie funkcji zapytania filtru](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -114,20 +128,23 @@ W następnego zestawu kroków połączysz się z tabeli platformy Azure i skonfi
 
     - **Aby** — wprowadź adres e-mail dla wszystkich użytkowników, które otrzymają to powiadomienie.
     - **Temat** — Podaj temat wiadomości e-mail. Na przykład: Nowych potencjalnych klientów!
-    - **Treść**:   Dodaj tekst, który chcesz uwzględnić w każdej wiadomości e-mail (opcjonalnie), a następnie wklej w treści `('Get_entities')?['value']` jako funkcję, aby wstawić informacje o potencjalnym kliencie.
+    - **Treść**:   Dodaj tekst, który chcesz uwzględnić w każdej wiadomości e-mail (opcjonalnie), a następnie wklej w treści `body('Get_entities')?['value']` jako funkcję, aby wstawić informacje o potencjalnym kliencie.
 
       >[!NOTE] 
       >Możesz wstawić dodatkowe dane statyczne lub dynamiczne punkty do treści tej wiadomości e-mail.
 
-       ![Konfigurowanie poczty e-mail dla powiadomień o potencjalnych klientów](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
+      ![Konfigurowanie poczty e-mail dla powiadomień o potencjalnych klientów](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
 13. Wybierz **Zapisz** Aby zapisać przepływ. Microsoft Flow automatycznie spowoduje przetestowanie przepływu dla błędów. Jeśli nie ma żadnych błędów, przepływ uruchamiania po zapisaniu.
 
 Następnym zrzucie ekranu przedstawiono przykład sposobu końcowego przepływ powinien wyglądać.
 
- ![Sekwencja końcowego przepływu](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+[![Sekwencja końcowego przepływu](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
-### <a name="managing-your-flow"></a>Zarządzanie przepływu
+(*Kliknij obraz, aby powiększyć.* )
+
+
+### <a name="manage-your-flow"></a>Zarządzanie przepływu
 
 Zarządzanie przepływ po uruchomiona jest bardzo proste.  Masz pełną kontrolę nad przepływu. Na przykład można zatrzymać go, go edytować, wyświetlać historię wykonywania i umieścić dane analityczne. Następny zrzut ekranu przedstawia opcje, które są dostępne do zarządzania przepływem. 
 
@@ -138,6 +155,7 @@ Przepływ nadal będzie działać, dopóki nie można zatrzymać za pomocą **wy
 Jeśli nie otrzymujesz powiadomień e-mail wszelkich potencjalnych klientów, oznacza to, że nowych potencjalnych klientów nie zostały dodane do tabeli platformy Azure. W przypadku wszelkich błędów przepływów, otrzymasz wiadomość e-mail, podobnie jak w przykładzie na następnym zrzucie ekranu.
 
  ![Powiadomienie e-mail niepowodzenia przepływu](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

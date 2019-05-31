@@ -2,7 +2,7 @@
 title: Azure zapytań czasu Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: Podczas badania danych czasu Series Insights w wersji zapoznawczej platformy Azure.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: bbf682df2df7a8cdc9fedb36aa4244fc5c0e9488
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205012"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243997"
 ---
 # <a name="data-querying"></a>Wykonywanie zapytań dotyczących danych
 
@@ -27,7 +27,7 @@ Trzy podstawowe kategorie interfejsu API są dostępne w usłudze Time Series In
 
 * **Interfejsy API (TSM-Q) dla zapytania w modelu serii czasu**: Umożliwia służy do tworzenia, odczytu, aktualizacji i usuwania operacji na metadanych w środowisku części modelu szeregów czasowych. Przykładami są wystąpienia, typy i hierarchii.
 
-* **Szeregi czasowe zapytania interfejsy API (TSQ)**: Umożliwia pobieranie danych zdarzenia, jak jest rejestrowana od dostawcy źródła. Te interfejsy API mogą wykonywać operacje, przekształcania, łączenie i wykonywania obliczeń na danych szeregów czasowych.
+* **Szeregi czasowe zapytania interfejsy API (TSQ)** : Umożliwia pobieranie danych zdarzenia, jak jest rejestrowana od dostawcy źródła. Te interfejsy API mogą wykonywać operacje, przekształcania, łączenie i wykonywania obliczeń na danych szeregów czasowych.
 
 [Języka wyrażeń serii czasu (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) jest kategorią czwarty zaawansowane. Aby włączyć skład zaawansowanych obliczeń używa modeli szeregów czasowych.
 

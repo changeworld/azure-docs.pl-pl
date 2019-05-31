@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596508"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235104"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych z Windows na platformie Azure
 
@@ -106,7 +106,7 @@ Aby utworzyć wystąpienie maszyny wirtualnej DSVM:
 
 Po maszyny Wirtualnej jest tworzony i zainicjowano obsługę administracyjną, można pulpitu zdalnego do niej przy użyciu poświadczeń konta administratora, które skonfigurowano w poprzednim **podstawy** sekcji. Możesz rozpocząć korzystanie z narzędzia, które są zainstalowane i skonfigurowane na maszynie Wirtualnej. Wiele narzędzi jest możliwy za pośrednictwem kafelków menu start i ikony pulpitu.
 
-Maszyna wirtualna do nauki o danych można także dołączyć do notesów usługi Azure do uruchamiania aplikacji Jupyter notebooks na maszynie Wirtualnej i obejścia ograniczeń w warstwie bezpłatnej usługi. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesów — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Maszyna wirtualna do nauki o danych można także dołączyć do notesów usługi Azure do uruchamiania aplikacji Jupyter notebooks na maszynie Wirtualnej i obejścia ograniczeń w warstwie bezpłatnej usługi. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesów — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Narzędzi zainstalowanych w programie Microsoft maszyny wirtualnej analizy danych
 
@@ -139,7 +139,7 @@ Firma Microsoft spakować kilka notesów przykładowy w języku Python i R. Po u
 * SQL Server Machine Learning Services w bazie danych analitycznych
 * Python
 * Microsoft Cognitive ToolKit
-* TensorFlow
+* Tensorflow
 * Inne technologie platformy Azure
 
 Łącza do przykładów można znaleźć na stronie głównej Notes, po uwierzytelnieniu w notesie Jupyter przy użyciu hasła utworzonego w poprzednim kroku.

@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988289"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417700"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
@@ -23,7 +23,7 @@ Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersj
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>Sprawdź swoją wersję usługi Azure SQL Data Warehouse
 
-Ponieważ nowe funkcje są wdrażane do wszystkich regionów, sprawdź, czy wersja wdrożone wystąpienie usługi i najnowsze informacje o wersji usługi Azure SQL data Warehouse dostępności funkcji. Aby sprawdzić swoją wersję usługi Azure SQL data Warehouse, należy nawiązać połączenie z magazynem danych za pośrednictwem programu SQL Server Management Studio (SSMS) i uruchom `SELECT @@VERSION AS 'SQL Data Warehouse';` zwracać bieżącą wersję usługi Azure SQL data Warehouse.
+Jak nowe funkcje są wdrażane do wszystkich regionów, sprawdź wersję wdrożone wystąpienie usługi i najnowsze informacje o wersji usługi Azure SQL data Warehouse dostępności funkcji. Aby sprawdzić swoją wersję usługi Azure SQL data Warehouse, należy nawiązać połączenie z magazynem danych za pośrednictwem programu SQL Server Management Studio (SSMS) i uruchom `SELECT @@VERSION AS 'SQL Data Warehouse';` zwracać bieżącą wersję usługi Azure SQL data Warehouse.
 
 Przykładowe dane wyjściowe: ![Wersja SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
@@ -38,6 +38,7 @@ Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone 
 |**Dodatkową obsługę języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkcje JSON**|Analitycy biznesowi mogą teraz używać znanego języka T-SQL do wykonywania zapytań i manipulowania nimi dokumenty, które są sformatowane jako dane JSON w usłudze Azure Data Warehouse przy użyciu następujących nowych funkcji JSON:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Zestaw wyników buforowania (wersja zapoznawcza)**|Zestaw wyników z pamięci podręcznej umożliwia błyskawicznych zapytań czasy reakcji przy jednoczesnym zmniejszeniu czasu do wglądu dla analityków biznesowych i raportowania użytkowników. Aby uzyskać więcej informacji, zobacz:</br> - [Instrukcja ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE — opcje SET (języka Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Ustaw zestaw wyników BUFOROWANIA (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET — instrukcja (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+|**Uporządkowane klastrowanego indeksu magazynu kolumn (wersja zapoznawcza)**|Magazynu kolumn jest kluczowym elementem w odniesieniu do przechowywania i wydajnego wykonywania zapytań dużych ilości danych. Dla każdej tabeli do dzielenia danych przychodzących w grupy wierszy i każda kolumna formularzy grupę wierszy Segment na dysku.  Uporządkowane klastrowanego magazynu kolumn indeksów w dalszej optymalizacji wykonanie zapytania przez włączenie eliminacji wydajne segmentu.   Aby uzyskać więcej informacji, zobacz:</br> -  [Tworzenie tabeli (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>Marca 2019 r
 
@@ -72,7 +73,7 @@ Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone 
 
 | Udoskonalenia dokumentacji | Szczegóły |
 | --- | --- |
-|brak | |
+|Brak | |
 | | |
 
 ## <a name="december-2018"></a>Grudzień 2018 r.

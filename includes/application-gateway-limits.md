@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: e35f01cc5479a5d27d92c9ed74a12bc44db673cd
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65754024"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238219"
 ---
 | Resource | Domyślne/maksymalny limit | Uwaga |
 | --- | --- | --- |
@@ -23,10 +23,11 @@ ms.locfileid: "65754024"
 | Ustawienia HTTP zaplecza |100<sup>1</sup> | |
 | Wystąpienia na bramę |32 | |
 | Certyfikaty SSL |100<sup>1</sup> |1 na odbiorniki HTTP |
+| Maksymalny rozmiar certyfikat protokołu SSL |W WERSJI 1 JEDNOSTKA SKU - 10 KB<br>W WERSJI 2 JEDNOSTKA SKU - 25 KB| |
 | Certyfikaty uwierzytelniania |100 | |
 | Zaufane certyfikaty główne |100 | |
-| Minimalny limit czasu żądania |1 s | |
-| Maksymalny limit czasu żądania |24 godz. | |
+| Minimalny limit czasu żądania |1 sekunda | |
+| Maksymalny limit czasu żądania |24 godziny | |
 | Liczba witryn |100<sup>1</sup> |1 na odbiorniki HTTP |
 | Mapy adresów URL na odbiornik |1 | |
 | Maksymalna reguł opartych na ścieżkach na adres URL mapy|100||

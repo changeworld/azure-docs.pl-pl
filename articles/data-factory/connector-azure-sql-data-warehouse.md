@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6d2ed8ba13fac03a60d9a0730776bc8348876b62
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 5ce838897370430c388d74c3d356497f16efdc8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153569"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245062"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -146,7 +146,7 @@ Aby użyć uwierzytelniania tokenu aplikacji usługi oparte na jednostce usługi
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Przyznaj nazwy głównej usługi potrzebnych uprawnień** , jak zwykle dla użytkowników SQL lub inne osoby. Uruchom poniższy kod lub odwoływać się do więcej opcji [tutaj](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+4. **Przyznaj nazwy głównej usługi potrzebnych uprawnień** , jak zwykle dla użytkowników SQL lub inne osoby. Uruchom poniższy kod lub odwoływać się do więcej opcji [tutaj](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Jeśli chcesz załadować dane, Dowiedz się, przy użyciu technologii PolyBase [wymagane uprawnienie bazy danych](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -196,7 +196,7 @@ Aby użyć uwierzytelniania tożsamości zarządzanej, wykonaj następujące kro
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **Udzielanie tożsamości zarządzanej usługi Data Factory wymaganych uprawnień** , jak zwykle dla użytkowników SQL i innym osobom. Uruchom poniższy kod lub odwoływać się do więcej opcji [tutaj](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+3. **Udzielanie tożsamości zarządzanej usługi Data Factory wymaganych uprawnień** , jak zwykle dla użytkowników SQL i innym osobom. Uruchom poniższy kod lub odwoływać się do więcej opcji [tutaj](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Jeśli chcesz załadować dane, Dowiedz się, przy użyciu technologii PolyBase [wymagane uprawnienie bazy danych](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -227,7 +227,7 @@ Aby użyć uwierzytelniania tożsamości zarządzanej, wykonaj następujące kro
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure SQL Data Warehouse.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure SQL Data Warehouse.
 
 Aby skopiować dane z lub do usługi Azure SQL Data Warehouse, obsługiwane są następujące właściwości:
 
@@ -400,9 +400,9 @@ Dowiedz się więcej o tym, jak można efektywnie obciążenia usługa SQL Data 
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase
 
-Za pomocą [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) to wydajny sposób ładowania dużych ilości danych do usługi Azure SQL Data Warehouse o wysokiej przepływności. Zobaczysz duże korzyści przepływności przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT. Zobacz [dotyczące wydajności](copy-activity-performance.md#performance-reference) szczegółowe porównanie. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
+Za pomocą [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) to wydajny sposób ładowania dużych ilości danych do usługi Azure SQL Data Warehouse o wysokiej przepływności. Zobaczysz duże korzyści przepływności przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT. Zobacz [dotyczące wydajności](copy-activity-performance.md#performance-reference) szczegółowe porównanie. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
 
-* Jeśli źródło danych znajduje się w **obiektów Blob platformy Azure, Azure Data Lake Storage Gen1 lub Azure Data Lake Storage Gen2**i **format jest PolyBase zgodne**, działanie kopiowania umożliwia bezpośrednio wywołać program PolyBase, aby umożliwić platformie Azure Usługa SQL Data Warehouse ściągania danych ze źródła. Aby uzyskać więcej informacji, zobacz  **[bezpośrednie kopiowania przy użyciu programu PolyBase](#direct-copy-by-using-polybase)**.
+* Jeśli źródło danych znajduje się w **obiektów Blob platformy Azure, Azure Data Lake Storage Gen1 lub Azure Data Lake Storage Gen2**i **format jest PolyBase zgodne**, działanie kopiowania umożliwia bezpośrednio wywołać program PolyBase, aby umożliwić platformie Azure Usługa SQL Data Warehouse ściągania danych ze źródła. Aby uzyskać więcej informacji, zobacz  **[bezpośrednie kopiowania przy użyciu programu PolyBase](#direct-copy-by-using-polybase)** .
 * Jeśli Twoje źródłowy magazyn danych i format pierwotnie nie jest obsługiwana przez program PolyBase, użyj **[kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase)** są wyposażone w zamian. Funkcja kopiowania przejściowego zapewnia także większą przepływność. Automatycznie konwertuje dane w formacie zgodnym z programu PolyBase. I przechowuje dane w usłudze Azure Blob storage. Następnie ładuje dane do usługi SQL Data Warehouse.
 
 >[!TIP]
@@ -426,7 +426,7 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Konto uwierzytelniania za pomocą klucza uwierzytelniania tożsamości zarządzanej |
 
     >[!IMPORTANT]
-    >Skonfigurowanie usługi Azure Storage przy użyciu punktu końcowego usługi sieci wirtualnej muszą używać uwierzytelniania tożsamości zarządzanej. Zapoznaj się [wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >Skonfigurowanie usługi Azure Storage przy użyciu punktu końcowego usługi sieci wirtualnej muszą używać uwierzytelniania tożsamości zarządzanej. Zapoznaj się [wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
 
 2. **Formatu danych źródłowych** jest **Parquet**, **ORC**, lub **tekst rozdzielany**, w następujący sposób:
 

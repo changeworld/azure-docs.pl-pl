@@ -1,20 +1,20 @@
 ---
-title: Migrowanie bazy danych za pomocą importowania i eksportowania w usłudze Azure Database for PostgreSQL
+title: Migrowanie bazy danych za pomocą importowania i eksportowania w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 description: W tym artykule opisano sposób wyodrębniania bazę danych PostgreSQL do pliku skryptu i importowania danych do docelowej bazy danych z tego pliku.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/01/2018
-ms.openlocfilehash: ecd7dc225379fc9d3eda6fb2e80e3c47a73db49b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 785e9ec77dea749546e3f1d59007706eac14f2ea
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422342"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067029"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migracja bazy danych postgresql w warstwie użycie opcji eksportowania i importowania
-Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku skryptu i [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) do importowania danych do docelowej bazy danych z tego pliku.
+Możesz użyć [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku skryptu i [psql](https://www.postgresql.org/docs/current/static/app-psql.html) do importowania danych do docelowej bazy danych z tego pliku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków w tym przewodniku, potrzebne są:

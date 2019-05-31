@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990192"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299103"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
@@ -38,14 +38,14 @@ Usługa Azure Logic Apps liczniki — wszystkie akcje, które są uruchamiane w 
 
 ## <a name="fixed-pricing-model"></a>Naprawiono modelu cen
 
-[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) umożliwia prywatne, izolowane i dedykowane można tworzyć i uruchamiać aplikacje logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane wewnątrz środowiska ISE płacisz stałą cenę miesięczną dla wbudowanych akcji i wyzwalaczy, a także dla łączników standardowych.
+[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) umożliwia prywatne, izolowane i dedykowane można tworzyć i uruchamiać aplikacje logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane wewnątrz środowiska ISE, płacisz [stała cena za miesiąc](https://azure.microsoft.com/pricing/details/logic-apps) dla wbudowanych akcji i wyzwalaczy, a także dla łączników standardowych.
 
-Twoje ISE obejmuje także jeden łącznik przedsiębiorstwa bezpłatne, w tym tyle połączeń. Użycie dodatkowe łączniki dla przedsiębiorstw jest obciążany cena za użycie przedsiębiorstwa.
+Twoje ISE obejmuje także jeden łącznik przedsiębiorstwa bezpłatne, w tym jak najwięcej *połączeń* jak chcesz. Użycie dodatkowe łączniki dla przedsiębiorstw jest rozliczana na podstawie [cena za użycie Enterprise](https://azure.microsoft.com/pricing/details/logic-apps). Tylko ogólnie dostępne łączniki dla przedsiębiorstw są naliczane według cena za użycie przedsiębiorstwa. Łączniki dla przedsiębiorstw publicznej wersji zapoznawczej są obciążane opłatami według [współczynnik łącznika standardowego](https://azure.microsoft.com/pricing/details/logic-apps).
 
 > [!NOTE]
 > W środowisku ISE, wbudowane wyzwalacze i akcje wyświetlenia **Core** etykietowanie i uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Standard i łączniki dla przedsiębiorstw, które wyświetlają **ISE** etykiety uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Łączniki, które nie są wyświetlane etykiety ISE Uruchom w usłudze Logic Apps globalnego.
 
-Jednostkę podstawową ISE ma ustaloną pojemność, jeśli potrzebujesz więcej przepływności, można więc [dodawać kolejne jednostki skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), albo podczas tworzenia lub później. 
+Jednostkę podstawową ISE ma ustaloną pojemność, jeśli potrzebujesz więcej przepływności, można więc [dodawać kolejne jednostki skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), albo podczas tworzenia lub później. Aplikacje logiki, które są uruchamiane w środowisku ISE nie powodują naliczania koszty przechowywania danych.
 
 Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [Azure Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps).
 
@@ -108,7 +108,7 @@ Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [cennika usługi Az
 
 ## <a name="data-retention"></a>Przechowywanie danych
 
-Wszystkie dane wejściowe i wyjściowe, które są przechowywane w historii uruchamiania aplikacji logiki naliczana na podstawie aplikacji logiki [Uruchom okres przechowywania](logic-apps-limits-and-config.md#run-duration-retention-limits). Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [cennika usługi Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
+Z wyjątkiem aplikacji logiki, uruchamiany w środowisku usługi integracji (ISE), wszystkie dane wejściowe i wyjściowe, które są przechowywane w historii uruchamiania aplikacji logiki są rozliczane na podstawie aplikacji logiki [Uruchom okres przechowywania](logic-apps-limits-and-config.md#run-duration-retention-limits). Aplikacje logiki, które są uruchamiane w środowisku ISE nie powodują naliczania koszty przechowywania danych. Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [cennika usługi Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Aby pomóc monitorować użycie magazynu aplikację logiki, możesz wykonywać następujące czynności:
 

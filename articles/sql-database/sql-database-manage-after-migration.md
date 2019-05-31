@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949906"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357324"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
@@ -29,6 +29,7 @@ Przenoszenie z tradycyjnych zarządza własnym, własnym kontrolowanym środowis
 
 W tym artykule omówiono niektóre z podstawowych cech usługi Azure SQL Database jako platformy, które mogą oni podczas pracy z pojedynczymi bazami danych i baz danych w puli w elastycznej puli. Są to następujące czynności:
 
+- Monitor bazy danych przy użyciu witryny Azure portal
 - Business ciągłości działania i odzyskiwania po awarii (BCDR)
 - Zabezpieczenia i zgodność z przepisami
 - Inteligentna baza danych monitorowania i konserwacji
@@ -36,6 +37,25 @@ W tym artykule omówiono niektóre z podstawowych cech usługi Azure SQL Databas
 
 > [!NOTE]
 > Ten artykuł dotyczy następujących opcji wdrażania w usłudze Azure SQL Database: pojedyncze bazy danych i pul elastycznych. Nie ma zastosowania do opcji wdrożenia wystąpienia zarządzanego w bazie danych SQL.
+
+## <a name="monitor-databases-using-the-azure-portal"></a>Monitorowanie baz danych za pomocą witryny Azure Portal
+
+W [witryny Azure portal](https://portal.azure.com/), możesz monitorować wykorzystanie pojedynczej bazy danych s wybrać bazę danych, a następnie klikając polecenie **monitorowanie** wykresu. Spowoduje to wyświetlenie okna **Metryka**, które możesz zmienić, klikając przycisk **Edytuj wykres**. Dodaj następujące metryki:
+
+- Procent użycia procesora CPU
+- Procent użycia jednostek DTU
+- Procent użycia operacji we/wy na danych
+- Procent użycia rozmiaru bazy danych
+
+Po dodaniu tych metryk możesz nadal wyświetlać je w **monitorowanie** wykresu z dodatkowymi informacjami na **metryki** okna. Wszystkie cztery metryki pokazują średnią wartość procentową wykorzystania względem jednostek **DTU** bazy danych. Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) artykuły, aby uzyskać więcej informacji na temat warstw usługi.  
+
+![Monitorowanie warstw usług pod względem wydajności bazy danych.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+Możesz również skonfigurować alerty dotyczące metryk wydajności. Kliknij przycisk **Dodaj alert** w oknie **Metryka**. Użyj kreatora, aby skonfigurować alert. Istnieje możliwość ustawienia alertu, który będzie wysyłany, gdy metryki przekroczą określony próg lub spadną poniżej określonego progu.
+
+Jeśli na przykład spodziewasz się, że obciążenie bazy danych wzrośnie, możesz skonfigurować alert polegający na wysłaniu wiadomości e-mail, gdy dowolna z metryk wydajności osiągnie 80%. Umożliwia to jako wczesne ostrzeżenie zorientować się, kiedy może być konieczne przejdź do następnego najwyższy rozmiaru obliczeń.
+
+Metryki wydajności może również pomóc w określeniu, jeśli jesteś w stanie zmiany na starszą niższe rozmiaru obliczeń. Załóżmy, że używasz bazy danych, której warstwa i poziom to Standardowa S2, a wszystkie metryki wydajności pokazują, że baza danych wykorzystuje średnio nie więcej niż 10% w określonym czasie. Istnieje prawdopodobieństwo, że baza danych będzie działać równie dobrze na poziomie Standardowa S1. Jednak należy pamiętać o obciążeniach, które chwilowo wzrastają przed podjęciem decyzji o przeniesieniu na niższym rozmiaru obliczeń lub.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR)
 
@@ -47,7 +67,7 @@ Nie twórz kopie zapasowe w usłudze Azure SQL DB i to, ponieważ nie masz. SQL 
 
 |Warstwa usług|Czas przechowywania w dniach|
 |---|:---:|
-|Podstawowy|7|
+|Podstawowa|7|
 |Standardowa (Standard)|35|
 |Premium|35|
 |||

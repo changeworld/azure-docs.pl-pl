@@ -12,19 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 05/06/2019
 ms.author: crdun
-ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: f3e8ca4f9736dffe4928fc8920b0890dff87367b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127900"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236025"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Tworzenie aplikacji platformy Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku przedstawiono sposób dodawania usługi zaplecza opartej na chmurze do aplikacji platformy Xamarin.Android. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Mobile Apps](app-service-mobile-value-prop.md).
 
 Zrzut ekranu gotowej aplikacji znajduje się poniżej:
@@ -36,7 +36,7 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, skorzystaj z bezpłatnej wersji próbnej platformy Azure i uzyskaj maksymalnie 10 bezpłatnych aplikacji mobilnych. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Aktywne konto platformy Azure. Jeśli nie masz konta, skorzystaj z bezpłatnej wersji próbnej platformy Azure i uzyskaj maksymalnie 10 bezpłatnych aplikacji mobilnych. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Visual Studio z programem Xamarin. Instrukcje można znaleźć w temacie [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (Konfigurowanie i instalowanie dla programów Visual Studio i Xamarin).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Tworzenie zaplecza Aplikacji mobilnej Azure
@@ -46,15 +46,27 @@ Wykonaj te kroki, aby utworzyć zaplecze aplikacji mobilnej.
 
 W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które może być używane przez aplikacje mobilne klientów. Następnie należy pobrać projekt serwera dla prostego zaplecza typu „lista czynności do wykonania” i opublikować go na platformie Azure.
 
-## <a name="configure-the-server-project"></a>Konfigurowanie projektu serwera
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Tworzenie połączenia z bazą danych i konfigurowanie projektu klienta i serwera
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinandroid-app"></a>Pobieranie i uruchamianie aplikacji platformy Xamarin.Android
-1. W obszarze **Pobierz i uruchom projekt platformy Xamarin.Android** kliknij przycisk **Pobierz**.
+## <a name="run-the-xamarinandroid-app"></a>Uruchamianie aplikacji platformy Xamarin.Android
+1. Otwórz projekt platformy Xamarin.Android.
 
-      Zapisz skompresowany plik projektu na komputerze lokalnym i zapamiętaj, gdzie został on zapisany.
-2. Naciśnij klawisz **F5**, aby skompilować projekt i uruchomić aplikację.
-3. W aplikacji wpisz znaczący tekst, na przykład *Ukończ samouczek*, a następnie kliknij przycisk **Dodaj**.
+2. Przejdź do [witryny Azure portal](https://portal.azure.com/) i przejdź do aplikacji mobilnej, który został utworzony. Na `Overview` bloku, zwróć uwagę na adres URL, który jest publiczny punkt końcowy dla twojej aplikacji mobilnej. Przykład — nazwa witryny, dla mojej nazwy aplikacji "test123" będzie https://test123.azurewebsites.net.
+
+3. Otwórz plik `ToDoActivity.cs` w tym folderze - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs. Nazwa aplikacji jest `ZUMOAPPNAME`.
+
+4. W `ToDoActivity` klasy, Zastąp `ZUMOAPPURL` zmiennej z publicznym punktem końcowym powyżej.
+
+    `const string applicationURL = @"ZUMOAPPURL";`
+
+    staje się
+    
+    `const string applicationURL = @"https://test123.azurewebsites.net";`
+    
+5. Naciśnij klawisz F5, aby wdrożyć i uruchomić aplikację.
+
+6. W aplikacji wpisz znaczący tekst, na przykład *Ukończ samouczek*, a następnie kliknij przycisk **Dodaj**.
 
     ![][10]
 
@@ -62,27 +74,14 @@ W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które m
 
    > [!NOTE]
    > Możesz przejrzeć kod uzyskujący dostęp do zaplecza aplikacji mobilnej w celu wyszukiwania i wstawiania danych. Znajduje się on w pliku C# ToDoActivity.cs.
-   >
-   >
-
+   
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Jeśli masz problemy z kompilowaniem rozwiązania, uruchom menedżera pakietów NuGet i zaktualizuj pakiety dla pomocy technicznej `Xamarin.Android`. Projekty typu Szybki start nie zawsze zawierają najnowsze wersje.
 
 Pamiętaj, że wszystkie pakiety dla pomocy technicznej, do których odwołuje się projekt, muszą mieć tę samą wersję. [Pakiet NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów dla pomocy technicznej, musisz bezpośrednio zainstalować ten pakiet w wymaganej wersji w celu uniknięcia konfliktów.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Dodawanie synchronizacji offline do aplikacji](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-xamarin-android-get-started-users.md)
-* [Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md)
-* [Jak używać zarządzanego klienta usługi Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
-
 <!-- Images. -->
 [0]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-completed-android.png
-[6]: ./media/app-service-mobile-xamarin-android-get-started/mobile-portal-quickstart-xamarin.png
-[8]: ./media/app-service-mobile-xamarin-android-get-started/mobile-xamarin-project-android-vs.png
-[9]: ./media/app-service-mobile-xamarin-android-get-started/mobile-xamarin-project-android-xs.png
 [10]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-startup-android.png
-
 <!-- URLs. -->
-[Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203

@@ -7,14 +7,14 @@ keywords: przypadki użycia systemu apache storm,klaster storm,co to jest apache
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5688056bc0d371c780bce02254769792e9a95696
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42aaa91906319133fd2864cd836447fcf3ca3a07
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696110"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257777"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -47,7 +47,7 @@ System Storm w usłudze HDInsight oferuje następujące funkcje:
 
 Lista firm, które używają systemu Apache Storm w rozwiązaniach analitycznych działających w czasie rzeczywistym, jest dostępna na stronie [Companies Using Apache Storm](https://storm.apache.org/documentation/Powered-By.html) (Firmy korzystające z systemu Apache Storm).
 
-Aby rozpocząć korzystanie z systemu Storm, zobacz [Rozpoczynanie pracy z usługą Apache Storm w HDInsight][gettingstarted].
+Aby rozpocząć korzystanie z systemu Storm, zobacz [Rozpoczynanie pracy z usługą Apache Storm w HDInsight](apache-storm-tutorial-get-started-linux.md).
 
 ## <a name="how-does-apache-storm-work"></a>Jak działa systemu Apache Storm
 
@@ -177,10 +177,5 @@ Przykładową topologię pokazującą metodę konfigurowania logowania można zn
 
 Dowiedz się więcej na temat rozwiązań analitycznych w czasie rzeczywistym przy użyciu platformy Apache Storm w HDInsight:
 
-* [Wprowadzenie do systemu Apache Storm w usłudze HDInsight][gettingstarted]
+* [Rozpoczynanie pracy z usługą Apache Storm w HDInsight](apache-storm-tutorial-get-started-linux.md)
 * [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](apache-storm-example-topology.md)
-
-[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
-[samoa]: https://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
-[gettingstarted]: apache-storm-tutorial-get-started-linux.md

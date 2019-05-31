@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f9a1e82cb60bf0ec32165294e7f4af3e93d042b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158539"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244428"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
 Dysk algorytmów sztucznej Inteligencji [cognitive potoki indeksowania](cognitive-search-concept-intro.md) wykorzystywanych do wzbogacenia dokumentu w usłudze Azure Search. Algorytmy te są oparte na zasoby usług Azure Cognitive Services, w tym [komputerowej](https://azure.microsoft.com/services/cognitive-services/computer-vision/) analizy obrazów i optyczne rozpoznawanie znaków (OCR) i [analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) rozpoznawania jednostek Wyodrębnianie kluczowych fraz, a inne wzbogacenia. Ponieważ używane przez usługę Azure Search na potrzeby wzbogacania dokumentu, algorytmy są opakowane w *umiejętności*, umieszczone w *zestawu umiejętności*i jest przywoływana przez *indeksatora* podczas indeksowanie.
 
-Możesz bezpłatnie wzbogacić ograniczonej liczby dokumentów lub możesz dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule dowiesz się, jak dołączyć płatnych zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności w celu wzbogacenia dokumentów podczas [indeksowanie usługi Azure Search](search-what-is-an-index.md).
+Ograniczona liczba dokumentów można wzbogacić za darmo. Lub możesz dołączyć płatnych zasobu usług Cognitive Services, aby *zestawu umiejętności* dla obciążeń typu większych i częściej. W tym artykule dowiesz się, jak dołączyć płatnych zasobu usług Cognitive Services w celu wzbogacenia dokumentów w usłudze Azure Search [indeksowania](search-what-is-an-index.md).
 
 > [!NOTE]
 > Płatne zdarzenia obejmują wywołania do wyodrębniania interfejsy API usług Cognitive Services i obraz w ramach etapu łamania dokumentów w usłudze Azure Search. Nie ma opłat do wyodrębniania tekstu z dokumentów i umiejętności, które nie wywołują usług Cognitive Services.
@@ -30,7 +30,9 @@ Możesz bezpłatnie wzbogacić ograniczonej liczby dokumentów lub możesz doł�
 
 ## <a name="same-region-requirement"></a>Wymaganie tego samego regionu
 
-Firma Microsoft wymaga, że usługa Azure Search i Azure Cognitive Services istnieje w tym samym regionie. W przeciwnym razie zostanie wyświetlony ten komunikat w czasie wykonywania: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` Nie ma możliwości przenoszenia usługi między regionami. Jeśli ten błąd, możesz utworzyć nową usługę w tym samym regionie i ponownie opublikować indeksów, w związku z tym.
+Firma Microsoft wymaga, że usługa Azure Search i Azure Cognitive Services istnieje w tym samym regionie. W przeciwnym razie zostanie wyświetlony ten komunikat w czasie wykonywania: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+
+Nie ma możliwości przenoszenia usługi między regionami. Jeśli ten błąd, należy utworzyć nowy zasób usług Cognitive Services w tym samym regionie co usługa Azure Search.
 
 ## <a name="use-free-resources"></a>Bezpłatne zasoby
 
@@ -42,9 +44,9 @@ Bezpłatna (ograniczony wzbogacenia) zasoby są ograniczone do 20 dokumentów ka
 
    ![Otwórz Kreatora importu danych](media/search-get-started-portal/import-data-cmd2.png "Otwórz Kreatora importu danych")
 
-1. Wybierz źródło danych i w dalszym ciągu **Dodaj wyszukiwanie kognitywne (opcjonalnie)**. Aby uzyskać przewodnik krok po kroku tego kreatora, zobacz [Import, indeksu i wykonywania zapytań przy użyciu narzędzia portalu](search-get-started-portal.md).
+1. Wybierz źródło danych i w dalszym ciągu **Dodaj wyszukiwanie kognitywne (opcjonalnie)** . Aby uzyskać przewodnik krok po kroku tego kreatora, zobacz [Import, indeksu i wykonywania zapytań przy użyciu narzędzia portalu](search-get-started-portal.md).
 
-1. Rozwiń **dołączyć usług Cognitive Services** , a następnie wybierz **bezpłatna (ograniczony wzbogacenia)**:
+1. Rozwiń **dołączyć usług Cognitive Services** , a następnie wybierz **bezpłatna (ograniczony wzbogacenia)** :
 
    ![Rozwinięta sekcja dołączyć usług Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach1.png "sekcji rozwinięte dołączyć usług Cognitive Services")
 
@@ -56,7 +58,7 @@ Dla obciążeń, które utworzyć więcej niż 20 wzbogacenia dziennie upewnij s
 
 Opłaty są naliczane tylko w przypadku umiejętności, które wywołują interfejsy API usług Cognitive Services. Nie jest wystawiany na [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), lub umiejętności, takich jak [funkcja scalająca tekst](cognitive-search-skill-textmerger.md), [rozdzielacz tekstu](cognitive-search-skill-textsplit.md), i [shaper](cognitive-search-skill-shaper.md), które nie są oparte na interfejsie API.
 
-1. Otwórz Kreatora importu danych, wybierz źródło danych i w dalszym ciągu **Dodaj wyszukiwanie kognitywne (opcjonalnie)**.
+1. Otwórz Kreatora importu danych, wybierz źródło danych i w dalszym ciągu **Dodaj wyszukiwanie kognitywne (opcjonalnie)** .
 
 1. Rozwiń **dołączyć usług Cognitive Services** , a następnie wybierz **Tworzenie nowego zasobu usług Cognitive Services**. Nowa karta zostanie otwarty, w którym można utworzyć zasobu:
 

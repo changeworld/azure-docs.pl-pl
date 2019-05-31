@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 0b14180c894977d822aa30ea5f46a2e21e247dc1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dd2e68c820a8c9e503a3539fd50bf3fba68e3949
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942329"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257525"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 Customer Engagement wstępnie wymaganych składników
 
@@ -40,7 +40,7 @@ Usługi Dynamics 365 Customer Engagement aplikacji musi być zgodna z [wytyczne 
 
 Wymagania biznesowe obejmują następujące obowiązki umowne stosowane w UE i prawne proceduralne:
 
-* Musi być zarejestrowana we [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) lub zostać zarejestrowane wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami [stają się wydawcy w witrynie Marketplace chmury](../../become-publisher.md).  (Trzeci krok zamiast tego użyć [formularz nominacji partnera usługi AppSource](https://appsource.microsoft.com/partners/signup)). 
+* Musi być zarejestrowana we [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) lub zostać zarejestrowane wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Trzeci krok zamiast tego użyć [formularz nominacji partnera usługi AppSource](https://appsource.microsoft.com/partners/signup)). 
 
     >[!NOTE]
     >Zalogować się do portalu Cloud Partner, należy używać tego samego konta Microsoft Developer Center w rejestracji. Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. To konto nie powinny być specyficzne dla poszczególnych usług lub oferty.

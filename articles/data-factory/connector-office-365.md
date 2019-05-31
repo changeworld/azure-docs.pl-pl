@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ca3cbb1ef46c7fe53b6b16bda40ebef245613f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415659"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245038"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory
 
@@ -41,8 +41,8 @@ Aby skopiować dane z usługi Office 365 na platformie Azure, musisz wykonać na
 - Administrator dzierżawy usługi Office 365 należy wykonać akcje na pokład, zgodnie z opisem [tutaj](https://docs.microsoft.com/graph/data-connect-get-started).
 - Utwórz i skonfiguruj aplikację sieci web usługi Azure AD w usłudze Azure Active Directory.  Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Zanotuj następujące wartości, które będą używane do definiowania połączonej usługi dla usługi Office 365:
-    - Identyfikator dzierżawy. Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
-    - Klucz Identyfikatora aplikacji i aplikacji.  Aby uzyskać instrukcje, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+    - Identyfikator dzierżawy. Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+    - Klucz Identyfikatora aplikacji i aplikacji.  Aby uzyskać instrukcje, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 - Dodaj tożsamość użytkownika, który powoduje ustawienie żądania dostępu do danych jako właściciel aplikacji sieci web usługi Azure AD (aplikacji internetowej z usługi Azure AD > Ustawienia > właścicieli > Dodaj właściciela). 
     - Tożsamość użytkownika musi być w organizacji usługi Office 365 są pobieranie danych z i nie może być użytkownikiem-gościem.
 
@@ -80,7 +80,7 @@ Następujące właściwości są obsługiwane dla usługi Office 365, połączon
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Office365** | Tak |
 | office365TenantId | Identyfikator dzierżawy usługi Azure, do której należy konto usługi Office 365. | Tak |
-| servicePrincipalTenantId | Określ informacje o dzierżawy, pod którą znajduje się aplikacja sieci web usługi Azure AD. | Tak |
+| servicePrincipalTenantId | Określ informacje o dzierżawy, pod którą znajduje się aplikacja sieci web usługi Azure AD. | Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. | Tak |
 | connectVia | Integration Runtime, który ma być używany do łączenia się z magazynem danych.  Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie |
@@ -118,7 +118,7 @@ Aby skopiować dane z usługi Office 365, obsługiwane są następujące właśc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **Office365Table** | Tak |
+| type | Właściwość typu elementu dataset musi być równa: **Office365Table** | Yes |
 | tableName | Nazwa zestawu danych w celu wyodrębnienia z usługi Office 365. Zapoznaj się [tutaj](https://docs.microsoft.com/graph/data-connect-datasets#datasets) listę zestawów danych w usłudze Office 365 dostępne do wyodrębnienia. | Tak |
 | allowedGroups | Predykat wyboru grupy.  Użyj tej właściwości, aby wybrać maksymalnie 10 grup użytkowników, dla których będzie można odzyskać danych.  Jeśli nie określono żadnych grup, dane zostaną zwrócone dla całej organizacji. | Nie |
 | userScopeFilterUri | Gdy `allowedGroups` właściwość nie zostanie określona, można użyć predykatu wyrażenie, które są stosowane w całej dzierżawie, aby filtrować określonych wierszy w celu wyodrębnienia z usługi Office 365. Format predykatu powinny odpowiadać format kwerendy interfejsów API programu Microsoft Graph, np. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nie |

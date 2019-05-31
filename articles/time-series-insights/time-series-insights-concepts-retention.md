@@ -4,25 +4,25 @@ description: W tym artykule opisano dwa ustawienia, które kontrolują przechowy
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e3336df30873b40d2b8a464d1f866b524f76776d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790426"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236993"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Omówienie przechowywania danych w usłudze Azure Time Series Insights
 
 W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku usługi Azure Time Series Insights.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Poniższy klip wideo zawiera podsumowanie przechowywanie danych usługi Time Series Insights oraz sposobu planowania dla niego.</br>
 
@@ -42,7 +42,7 @@ Informacje na temat przechowywania zachowania przełączania można przejrzeć [
 
 Porównaj zachowania w zakresie przechowywania danych:
 
-## <a name="purge-old-data"></a>Przeczyść stare dane
+## <a name="purge-old-data"></a>Usuwanie starych danych
 
 - To zachowanie jest zachowaniem domyślnym dla środowiska usługi Time Series Insights.  
 - To zachowanie jest preferowane w przypadku, gdy użytkownicy chcą zobaczyć zawsze ich *najbardziej aktualne dane* w swoim środowisku usługi Time Series Insights.
@@ -63,7 +63,7 @@ Należy wziąć pod uwagę środowisko skonfigurowane również zachowanie przec
 
 Zawsze, gdy to środowisko dzienny transfer przychodzący przekroczy 0.166 GB dziennie, dane nie mogą być przechowywane przez 180 dni, ponieważ pobiera przeczyścić dane. Należy wziąć pod uwagę tego samego środowiska zajęty horyzoncie czasowym. Załóżmy, że szybkość transferu danych przychodzących środowiska może wzrosnąć do średniej 0.189 GB dziennie. W tym okresie zajęty 158 dni danych zostaną zachowane (30GB/0.189 = 158,73 dni przechowywania). Ten czas jest mniejszy niż przedział czasu przechowywania żądanych danych.
 
-## <a name="pause-ingress"></a>Wstrzymaj ruch przychodzący
+## <a name="pause-ingress"></a>Wstrzymaj transferu danych przychodzących
 
 - **Wstrzymać ruch przychodzący** ustawienie zaprojektowano w celu zapewnienia dane nie są przeczyszczane, jeśli osiągnięciu limitów rozmiaru i liczby przed ich okresu przechowywania.  
 - **Wstrzymaj ruch przychodzący** zapewnia dodatkowy czas dla użytkowników zwiększyć jej pojemność, ich środowiska, zanim dane są przeczyszczane ze względu na naruszenie okres przechowywania danych

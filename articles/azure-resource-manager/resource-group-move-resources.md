@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4b836faef4630f6bee914478aecaed1bb4db7d71
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872639"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225884"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -54,8 +54,8 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Azure Cosmos DB
 * Azure Data Explorer
-* Usługa Azure Database for MariaDB
-* Usługa Azure Database for MySQL
+* Azure Database for MariaDB
+* Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Usługa Azure DevOps — wykonaj kroki, aby [zmienić subskrypcję platformy Azure używane na potrzeby rozliczeń](/azure/devops/organizations/billing/change-azure-subscription?view=azure-devops).
 * Azure Maps
@@ -68,7 +68,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * CDN
 * Cloud Services — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Cognitive Services
-* Rejestr kontenerów
+* Container Registry
 * Content Moderator
 * Cost Management
 * Customer Insights
@@ -89,7 +89,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
 * Usługa Managed Disks — Managed Disks w strefach dostępności nie można przenieść do innej subskrypcji
 * Tożsamość zarządzana — przypisanych przez użytkownika
-* Usługa multimediów
+* Media Services
 * Monitor — upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#monitor-limits)
 * Notification Hubs
 * Operational Insights
@@ -98,10 +98,10 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
 * Usługi Recovery Services vault — Zarejestruj się w [Podgląd](#recovery-services-limitations).
-* Platforma SAP HANA na platformie Azure
+* Oprogramowanie SAP HANA na platformie Azure
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
-* Magistrala usług
+* Service Bus
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
@@ -111,7 +111,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Stream Analytics — Stream Analytics, zadania nie można przenieść uruchamianego w stanie.
 * Bazy danych programu SQL server — bazy danych i serwera musi być w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 * Time Series Insights
-* Menedżer ruchu
+* Traffic Manager
 * Virtual Machines — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Maszyny wirtualne (klasyczne) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Zestawy skalowania maszyn wirtualnych — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
@@ -133,7 +133,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Azure NetApp Files
 * Certyfikaty — certyfikaty usługi App Service można przenosić, ale zostały przekazane certyfikaty [ograniczenia](#app-service-limitations).
 * Aplikacje klasyczne
-* Wystąpienia kontenerów
+* Container Instances
 * Container Service
 * Data Box
 * Miejsca do magazynowania dev
@@ -231,7 +231,7 @@ Wybierz opcję, aby uzyskać zalecane kroki, aby przenieść aplikację sieci we
 
 Zostanie wyświetlony zalecane akcje, które należy wykonać przed przenoszenia zasobów. Informacje dotyczące oryginalnej grupy zasobów dla aplikacji sieci web.
 
-![Rekomendacje](./media/resource-group-move-resources/recommendations.png)
+![Zalecenia](./media/resource-group-move-resources/recommendations.png)
 
 ### <a name="app-service-certificate-limitations"></a>Ograniczenia dotyczące certyfikatu usługi aplikacji
 
@@ -323,7 +323,7 @@ Operacja może trwać kilka minut.
 
 ### <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
- Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się [ograniczonej publicznej wersji zapoznawczej](../backup/backup-azure-move-recovery-services-vault.md).
+ Aby przenieść magazyn usługi Recovery Services, wykonaj następujące kroki: [Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../backup/backup-azure-move-recovery-services-vault.md).
 
 Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS.
 

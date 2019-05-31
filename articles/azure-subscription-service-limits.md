@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: byvinyal
-ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: HT
+ms.openlocfilehash: 3bdc8580749761242b1fc811b2182d73a2d46328
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66023222"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238714"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozwinięte i aktualizowane na pokrycie większej liczby usług.
@@ -156,8 +156,6 @@ W poniższej tabeli przedstawiono funkcje i limity Basic, Standard i Premium [wa
 ### <a name="azure-machine-learning-service-limits"></a>Limity usługi Machine Learning platformy Azure
 Ostatnie wartości dla przydziały obliczeniowego usługi Azure Machine Learning można znaleźć w [strony limitu przydziału usługi Azure Machine Learning](../articles/machine-learning/service/how-to-manage-quotas.md)
 
-[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
-
 ### <a name="networking-limits"></a>Limity sieci
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
@@ -252,7 +250,7 @@ W poniższej tabeli przedstawiono limity usługi Azure BizTalk Services.
 ### <a name="azure-cosmos-db-limits"></a>Usługa Azure Cosmos DB ogranicza
 Limity usługi Azure Cosmos DB, zobacz [limity w usłudze Azure Cosmos DB](cosmos-db/concepts-limits.md).
 
-### <a name="azure-database-for-mysql"></a>Usługa Azure Database for MySQL
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 Dla usługi Azure Database for MySQL ograniczeń, zobacz [ograniczenia w usłudze Azure Database for MySQL](mysql/concepts-limits.md).
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL

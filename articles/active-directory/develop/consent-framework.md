@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93adedc5c1343df1eee05b653b60cfd7e810044c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540428"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235432"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Platformy wyrażania zgody w usłudze Azure Active Directory
 
@@ -40,7 +40,7 @@ Poniższe kroki pokazują, jak środowisko działa zgody dla deweloperów aplika
 
 1. Załóżmy, że masz klienta aplikacji sieci web, który wymaga, aby żądać określonych uprawnień dostępu do zasobów/interfejsu API. Dowiesz się, jak przeprowadzić tę konfigurację w następnej sekcji, ale zasadniczo witryny Azure portal jest używane do deklarowania żądań dotyczących uprawnień podczas konfiguracji. Podobnie jak inne ustawienia konfiguracji, staną się one częścią rejestracji aplikacji w usłudze Azure AD:
 
-    ![Uprawnienia do innych aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![Uprawnienia do innych aplikacji](./media/consent-framework/permissions.png)
 
 1. Należy wziąć pod uwagę uprawnienia aplikacji zostały zaktualizowane, aplikacja jest uruchomiona i użytkownik ma użyć go po raz pierwszy. Po pierwsze, aplikacja musi uzyskać kod autoryzacji z usługi Azure AD `/authorize` punktu końcowego. Może wtedy użyć kodu autoryzacji do uzyskania nowego tokenu dostępu i odświeżania.
 
@@ -58,11 +58,10 @@ Poniższe kroki pokazują, jak środowisko działa zgody dla deweloperów aplika
 
     **Do wyrażenia zgody na aplikację na delegowane uprawnienia**
 
-   1. Przejdź do **ustawienia** strony aplikacji
-   1. Wybierz **wymagane uprawnienia**.
-   1. Kliknij pozycję **udzielić uprawnień** przycisku.
+   1. Przejdź do **uprawnienia do interfejsu API** strony aplikacji
+   1. Kliknij pozycję **udzielić zgody administratora** przycisku.
 
-      ![Przyznawanie uprawnień dla zgody administratora jawne](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Przyznawanie uprawnień dla zgody administratora jawne](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
    > Udzielanie jawnej zgody, za pomocą **udzielić uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym przypadku wystąpi błąd aplikacji przy żądaniu tokenu dostępu.

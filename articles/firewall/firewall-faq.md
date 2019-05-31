@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/3/2019
+ms.date: 5/30/2019
 ms.author: victorh
-ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016017"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384676"
 ---
 # <a name="azure-firewall-faq"></a>Zaporę platformy Azure — często zadawane pytania
 
@@ -25,7 +25,7 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 * Zapora stanowa jako usługa
 * Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
 * Filtrowanie według nazw FQDN
-* Tagi nazw FQDN
+* Tagi w pełni kwalifikowanych nazw domen
 * Reguły filtrowania ruchu sieciowego
 * Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 * Obsługa technologii DNAT dla ruchu przychodzącego
@@ -34,7 +34,7 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Co to jest model typowe wdrożenie dla zapory usługi Azure?
 
-Zaporę usługi Azure można wdrożyć w dowolnej sieci wirtualnej, ale klienci zwykle wdrożyć ją w centralnej sieci wirtualnej i nawiązać komunikację równorzędną między innymi sieciami wirtualnymi do niego w modelu koncentrator i klienci. Następnie można ustawić trasy domyślnej w wirtualnych sieciach równorzędnych wskaż tej centralnej zapory sieci wirtualnej. Globalne wirtualne sieci równorzędne są obsługiwane, ale nie jest zalecane z powodu granicę potencjalnej wydajności i opóźnień między regionami. Aby uzyskać najlepszą wydajność należy wdrożyć jedną zaporą na region.
+Zaporę usługi Azure można wdrożyć w dowolnej sieci wirtualnej, ale klienci zwykle wdrożyć ją w centralnej sieci wirtualnej i nawiązać komunikację równorzędną między innymi sieciami wirtualnymi do niego w modelu koncentrator i klienci. Następnie można ustawić trasy domyślnej w wirtualnych sieciach równorzędnych wskaż tej centralnej zapory sieci wirtualnej. Globalne wirtualne sieci równorzędne są obsługiwane, ale nie jest zalecane z powodu granicę potencjalnej wydajności i opóźnień w wielu regionach. Aby uzyskać najlepszą wydajność należy wdrożyć jedną zaporą na region.
 
 Zaletą tego modelu to możliwość centralnego działania sterowania na wiele sieci wirtualne będące szprychami w różnych subskrypcjach. Istnieją również oszczędności, ponieważ nie trzeba wdrażać oddzielnie zapory w każdej sieci wirtualnej. Oszczędności kosztów powinno być mierzone lub skojarz koszty komunikacji równorzędnej na podstawie wzorców ruchu klientów.
 
@@ -62,7 +62,7 @@ Zaporę platformy Azure jest zintegrowana z usługą Azure Monitor do przegląda
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak zapory usługi Azure działa inaczej w istniejących usług, takich jak urządzenia WUS w portalu marketplace?
 
-Zaporę platformy Azure to usługa Zapora podstawowa, która rozwiązywania przy użyciu określonych scenariuszy. Oczekuje się, konieczne może być zarówno urządzeń WUS innych firm i zapory usługi Azure. Współpracując z lepiej jest to główny priorytet.
+Zaporę platformy Azure to usługa Zapora podstawowa, która rozwiązywania przy użyciu określonych scenariuszy. Oczekuje się, że będziesz mieć różne urządzenia WUS innych firm i zapory usługi Azure. Współpracując z lepiej jest to główny priorytet.
 
 ## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Jaka jest różnica między brama aplikacji zapory aplikacji internetowych i zapory usługi Azure?
 
@@ -71,6 +71,11 @@ Zapora aplikacji sieci Web (WAF) to funkcja usługi Application Gateway, która 
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Jaka jest różnica między grupami zabezpieczeń sieci (NSG) i zapory usługi Azure?
 
 Usługa zapory usługi Azure uzupełniają funkcje grupy zabezpieczeń sieci. Razem zapewniają większe bezpieczeństwo sieci "ochronę w głębi". Sieciowe grupy zabezpieczeń zapewniają rozproszonych ruchu warstwy sieci, filtrowanie, aby ograniczyć ruch do zasobów w sieciach wirtualnych w ramach każdej subskrypcji. Zaporę platformy Azure jest pełni stanowe, scentralizowane sieci zapory jako usługa, co zapewnia ochronę na poziomie sieci i aplikacji w różnych subskrypcjach i sieciami wirtualnymi.
+
+## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Sieciowe grupy zabezpieczeń (NSG) obsługiwanych w podsieci zapory usługi Azure?
+
+Zapora usługi Azure jest to zarządzana usługa, za pomocą różnych warstw ochrony, w tym platformy ochrony przy użyciu interfejsu Sieciowego poziomie sieciowych grup zabezpieczeń (nie wyświetlane).  Poziom podsieci sieciowe grupy zabezpieczeń nie są wymagane w podsieci zapory usługi Azure i są wyłączone, aby zapewnić nie przerw w działaniu usługi.
+
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak skonfigurować zaporę usługi Azure za pomocą moje punkty końcowe usługi?
 
@@ -121,11 +126,11 @@ Tak. Konfigurowanie tras zdefiniowanych przez użytkownika, aby przekierować ru
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Jest wymuszone tunelowanie łańcucha do wirtualnego urządzenia sieciowego obsługiwane?
 
-Wymuszone tunelowanie nie jest obsługiwany przez domyślną, ale można ją włączyć za pomocą pomocy od działu pomocy technicznej.
+Domyślnie wymuszonego tunelowania nie jest obsługiwany, ale można ją włączyć za pomocą pomocy od działu pomocy technicznej.
 
 Zaporę platformy Azure musi mieć bezpośrednie połączenie z Internetem. Jeśli Twoje AzureFirewallSubnet uczy się trasę domyślną elementom sieci lokalnej za pośrednictwem protokołu BGP, konieczne jest przesłonięcie to za pomocą 0.0.0.0/0 trasy zdefiniowanej przez użytkownika za pomocą **Typ następnego przeskoku** wartość ustawiona jako **Internet** utrzymanie bezpośredniej Łączność z Internetem. Domyślnie Zapora usługi Azure nie obsługuje wymuszonego tunelowania do sieci lokalnej.
 
-Jednak jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, Microsoft będzie obsługiwać go na podstawie przypadku. Się z pomocą techniczną, dzięki czemu możesz przejrzeć tej sprawy. Jeśli zaakceptowane, utworzymy dozwolonych subskrypcji i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.
+Jednak jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, Microsoft będzie obsługiwać go na podstawie przypadku. Się z pomocą techniczną, dzięki czemu możesz przejrzeć tej sprawy. Jeśli zaakceptowane, utworzymy pozwolisz i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Czy istnieją wszystkie zapory ograniczenia grup zasobów?
 
@@ -137,7 +142,7 @@ Nie. Reguły translatora adresów Sieciowych niejawnie Dodaj odpowiednie sieci r
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Jak działają symboli wieloznacznych w aplikacji obiekt docelowy reguły pełni kwalifikowaną nazwę domeny?
 
-Jeśli skonfigurujesz ***. contoso.com**, umożliwia ona *anyvalue*. contoso.com, ale nie contoso.com (wierzchołki domeny). Jeśli chcesz zezwolić na wierzchołku domeny jawnie należy go skonfigurować jako docelowa nazwa FQDN.
+Jeśli skonfigurujesz * **. contoso.com**, umożliwia ona *anyvalue*. contoso.com, ale nie contoso.com (wierzchołki domeny). Jeśli chcesz zezwolić na wierzchołku domeny jawnie należy go skonfigurować jako docelowa nazwa FQDN.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Jak działa *stan inicjowania obsługi: Nie powiodło się* oznacza?
 

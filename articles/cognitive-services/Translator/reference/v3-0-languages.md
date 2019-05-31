@@ -3,19 +3,19 @@ title: Metoda języków interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Użyj metody interfejsu API usługi Translator tekstu/wszystkie języki.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 415093610bfbc314e569eeeb658508bdfb021d9c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797293"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389725"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Języki
 
@@ -40,7 +40,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
     <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>zakres</td>
+    <td>scope</td>
     <td>*Opcjonalny parametr*.<br/>Rozdzielana przecinkami lista nazw zdefiniowanie grupy języków do zwrócenia. Dozwolone są nazwy grup: `translation`, `transliteration` i `dictionary`. Jeśli żaden zakres nie jest podany, a następnie zwracane są wszystkie grupy, który jest odpowiednikiem przekazywanie `scope=translation,transliteration,dictionary`. Aby zdecydować, które zestaw obsługiwanych języków jest odpowiednie dla danego scenariusza, zobacz opis [obiekt odpowiedzi](#response-body).</td>
   </tr>
 </table> 
@@ -232,7 +232,7 @@ Listę obsługiwanych języków nie zmieni się często. Aby oszczędzić przepu
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>ETag</td>
+    <td>Element eTag</td>
     <td>Bieżąca wartość tagu jednostki dla żądanej grupy obsługiwanych języków. Aby kolejnych żądań bardziej wydajne, klient może wysyłać `ETag` wartość w `If-None-Match` pola nagłówka.
     </td>
   </tr>
@@ -247,7 +247,7 @@ Listę obsługiwanych języków nie zmieni się często. Aby oszczędzić przepu
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
 
 <table width="100%">
-  <th width="20%">Kod stanu</th>
+  <th width="20%">Kod stanu:</th>
   <th>Opis</th>
   <tr>
     <td>200</td>

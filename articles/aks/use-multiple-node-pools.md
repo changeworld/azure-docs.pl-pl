@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142640"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235755"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — tworzenie i zarządzanie nimi wiele pul węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ W konsoli usługi Azure Kubernetes Service (AKS) węzłów o tej samej konfigura
 W tym artykule przedstawiono sposób tworzenia i zarządzania nimi wiele pul węzłów w klastrze AKS. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi, uczestnictwo. Są one udostępniane do zbierania opinii i błędy z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w wersji zapoznawczej objęte "starań" pomocy technicznej. Pomoc od zespołów pomocy technicznej usługi AKS jest dostępna w godzinach pracy i Pacyfik, część strefy czasowej (PST) tylko. Aby uzyskać więcej informacji zobacz następujące artykuły pomocy technicznej:
 >
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+> * [Zasady pomocy technicznej usługi AKS][aks-support-policies]
+> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -72,6 +73,7 @@ Podczas tworzenia i zarządzania klastrami usługi AKS, które obsługują wiele
 * Wiele pul węzłów są dostępne tylko dla klastrów utworzonych po pomyślnym zarejestrowaniu *MultiAgentpoolPreview* i *VMSSPreview* funkcje dla Twojej subskrypcji. Nie można dodać lub Zarządzaj pulami węzła z istniejącego klastra AKS utworzone przed te funkcje zostały pomyślnie zarejestrowane.
 * Nie można usunąć puli pierwszy węzeł.
 * Nie można używać dodatku routing aplikacji protokołu HTTP.
+* Nie można już pule węzłów Dodawanie/aktualizowanie/usuwanie, podobnie jak w przypadku większości operacji przy użyciu istniejącego szablonu usługi Resource Manager. Zamiast tego [korzystanie z oddzielnych szablonu usługi Resource Manager](#manage-node-pools-using-a-resource-manager-template) do wprowadzania zmian w pule węzłów w klastrze AKS.
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, następujące dodatkowe ograniczenia:
 
@@ -328,6 +330,95 @@ Events:
 
 Można zaplanować tylko zasobników, które mają tej zmiany barwy zastosowane w węzłach *gpunodepool*. Inne zasobnika może być zaplanowane w *nodepool1* pulę węzłów. Jeśli tworzysz pule dodatkowych węzłów, można użyć dodatkowych nasłonecznieniem i tolerations, aby ograniczyć zasobników, jakie można zaplanować na te zasoby węzła.
 
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>Zarządzanie pulami węzła przy użyciu szablonu usługi Resource Manager
+
+Gdy używasz szablonu usługi Azure Resource Manager do tworzenia i zarządzanych zasobów, zazwyczaj można zaktualizować ustawień w szablonie i ponowne wdrażanie na aktualizację zasobu. Za pomocą nodepools w usłudze AKS nie można zaktualizować profilu nodepool początkowej, po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejący szablon usługi Resource Manager, wprowadzić zmiany w pule węzłów i ponownego wdrażania. Zamiast tego należy utworzyć oddzielne szablonu usługi Resource Manager, która aktualizuje tylko pule agentów do istniejącego klastra usługi AKS.
+
+Tworzenie szablonu, takich jak `aks-agentpools.json` i wklej następujące manifest przykładu. Ten przykładowy szablon konfiguruje następujące ustawienia:
+
+* Aktualizacje *Linux* puli agenta o nazwie *myagentpool* do uruchomienia trzy węzły.
+* Zestawy węzłów w puli węzłów, aby uruchomić wersję rozwiązania Kubernetes *1.12.8*.
+* Określa rozmiar węzła jako *Standard_DS2_v2*.
+
+Edytuj te wartości, jak należy zaktualizować, dodawanie lub usuwanie pule węzłów stosownie do potrzeb:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of your existing AKS cluster."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of your existing AKS cluster."
+      }
+    },
+    "agentPoolName": {
+      "type": "string",
+      "defaultValue": "myagentpool",
+      "metadata": {
+        "description": "The name of the agent pool to create or update."
+      }
+    },
+    "vnetSubnetId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The Vnet subnet resource ID for your existing AKS cluster."
+      }
+    }
+  },
+  "variables": {
+    "apiVersion": {
+      "aks": "2019-04-01"
+    },
+    "agentPoolProfiles": {
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2019-04-01",
+      "type": "Microsoft.ContainerService/managedClusters/agentPools",
+      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+            "maxPods": "[variables('agentPoolProfiles').maxPods]",
+            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+            "count": "[variables('agentPoolProfiles').agentCount]",
+            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+            "osType": "[variables('agentPoolProfiles').osType]",
+            "storageProfile": "ManagedDisks",
+      "type": "VirtualMachineScaleSets",
+            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+            "orchestratorVersion": "1.12.8"
+      }
+    }
+  ]
+}
+```
+
+Wdrażanie przy użyciu tego szablonu [Utwórz wdrożenie grupy az] [ az-group-deployment-create] polecenia, jak pokazano w poniższym przykładzie. Zostanie wyświetlony monit o istniejącej nazwy klastra AKS i lokalizacji:
+
+```azurecli-interactive
+az group deployment create \
+    --resource-group myResourceGroup \
+    --template-file aks-agentpools.json
+```
+
+Może upłynąć kilka minut, aby zaktualizować klastra usługi AKS w taki sposób, w zależności od ustawień puli węzeł i operacje, które są zdefiniowane w szablonie usługi Resource Manager.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 W tym artykule utworzono klaster AKS, która zawiera węzły opartą na procesorze GPU. Aby zmniejszyć koszt niepotrzebne, można usunąć *gpunodepool*, lub całego klastra AKS.
@@ -351,7 +442,6 @@ W tym artykule przedstawiono sposób tworzenia i zarządzania nimi wiele pul wę
 Aby utworzyć pule węzłów kontenerów systemu Windows Server, zobacz [kontener systemu Windows Server w usłudze AKS][aks-windows].
 
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -379,3 +469,6 @@ Aby utworzyć pule węzłów kontenerów systemu Windows Server, zobacz [kontene
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

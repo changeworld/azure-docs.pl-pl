@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d9cc5da0cd2936c1ac79a308366b8164548cb202
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864800"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241722"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Jak zarządzać kontami użytkowników w usłudze Azure API Management
 
-W usłudze API Management deweloperzy mają użytkownicy interfejsów API, które należy udostępnić za pomocą usługi API Management. W tym przewodniku przedstawiono sposób utworzyć i zaprosić deweloperów do użycia interfejsów API i produktów, możesz udostępnić je za pomocą wystąpienia usługi API Management. Aby uzyskać informacji na temat programowego zarządzania kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/user) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania.
+W usłudze API Management deweloperzy mają użytkownicy interfejsów API, które należy udostępnić za pomocą usługi API Management. W tym przewodniku przedstawiono sposób utworzyć i zaprosić deweloperów do użycia interfejsów API i produktów, możesz udostępnić je za pomocą wystąpienia usługi API Management. Aby uzyskać informacji na temat programowego zarządzania kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 75c0deaa8bca94349091e3317e4ca70129bb4426
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991602"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257963"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -71,7 +71,7 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Dynamics 365 for Finance and Operations (wcześniej znane jako Dynamics AX Online)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>
   **Następujące usługi nie są obsługiwane**:
-    * Sieć CDN
+    * CDN
     * Azure Front Door
     * Multi-Factor Authentication
     * Traffic Manager
@@ -84,7 +84,7 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Usługa Azure Active Directory
 * [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
-    * Sieć CDN
+    * CDN
     * Azure Front Door
     * Multi-Factor Authentication
     * Traffic Manager
@@ -288,7 +288,7 @@ Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opła
 
 ## <a name="expressroute-local"></a>Lokalne usługi ExpressRoute
 ### <a name="what-is-expressroute-local"></a>Co to jest lokalne usługi ExpressRoute?
-Lokalne usługi ExpressRoute jest obwodu jednostki SKU usługi ExpressRoute. Kluczową funkcją lokalny jest, lokalne circit na zapewnia lokalizacji komunikacji równorzędnej usługi ExpressRoute dostępu do tylko do jednego lub dwóch regionach platformy Azure w lub w pobliżu tej samej metro. Z kolei obwód standardowy umożliwia dostęp do wszystkich regionów platformy Azure, w obszarze geopolitycznych i obwodu Premium we wszystkich regionach platformy Azure globalnie. 
+Lokalne usługi ExpressRoute jest obwodu jednostki SKU usługi ExpressRoute. Kluczową funkcją lokalny jest, lokalne obwodu na zapewnia lokalizacji komunikacji równorzędnej usługi ExpressRoute dostępu do tylko do jednego lub dwóch regionach platformy Azure w lub w pobliżu tej samej metro. Z kolei obwód standardowy umożliwia dostęp do wszystkich regionów platformy Azure, w obszarze geopolitycznych i obwodu Premium we wszystkich regionach platformy Azure globalnie. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Jakie są korzyści z lokalnej usługi ExpressRoute?
 Gdy trzeba płacić transfer danych wychodzących dla obwodu Standard lub Premium usługi ExpressRoute, transfer danych wychodzących nie płać oddzielnie dla obwodu usługi ExpressRoute lokalne. Innymi słowy ceny lokalne usługi ExpressRoute zawiera opłat za transfer danych. Lokalne usługi ExpressRoute jest to bardziej ekonomiczne rozwiązanie, jeśli mają ogromne ilości danych do przesłania i Ty przenosisz dane za pośrednictwem połączenia prywatnego do lokalizacji komunikacji równorzędnej usługi ExpressRoute, obok żądanego regionów świadczenia usługi Azure. 

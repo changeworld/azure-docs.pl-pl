@@ -3,7 +3,7 @@ title: Powiązań z użyciem bezpiecznego protokołu LDAP (LDAPS) do domeny zarz
 description: Powiąż z domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: 62776408675acba1ee8a57252c794e5a1c840155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417043"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234856"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Powiąż z domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 
@@ -64,13 +64,13 @@ Przykład sieciowej grupy zabezpieczeń w poniższej tabeli zablokuje dostęp pr
 
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Azure AD Domain Services — wprowadzenie — przewodnik](active-directory-ds-getting-started.md)
-* [Administrowanie domeną zarządzaną usług Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD Domain Services — wprowadzenie — przewodnik](create-instance.md)
+* [Zarządzaj domeną usługi Azure AD Domain Services](manage-domain.md)
 * [Podstawy kwerendy LDAP](https://technet.microsoft.com/library/aa996205.aspx)
-* [Administrowanie zasadami grupy w domenie zarządzanej usług domenowych Azure AD](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Zarządzanie zasadami grupy dla usług domenowych Azure AD](manage-group-policy.md)
 * [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md)
 * [Utwórz sieciową grupę zabezpieczeń](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-step"></a>Następny krok
-[Rozwiązywanie problemów z bezpiecznego protokołu LDAP w domenie zarządzanej](active-directory-ds-ldaps-troubleshoot.md)
+[Rozwiązywanie problemów z bezpiecznego protokołu LDAP w domenie zarządzanej](tshoot-ldaps.md)

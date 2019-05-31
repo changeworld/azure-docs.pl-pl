@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002478"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389106"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -71,7 +71,8 @@ Aby wdrożyć uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwią
 | Microsoft.OperationsManagement/solutions/write | Grupa zasobów |
 | Microsoft.OperationalInsights/workspaces/* | Grupa zasobów |
 | Microsoft.Insights/diagnosticSettings/write | Grupa zasobów |
-| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | Grupa zasobów |
+| Microsoft.Insights/ActionGroups/Write | Grupa zasobów |
+| Microsoft.Insights/ActionGroups/read | Grupa zasobów |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Grupa zasobów |
 | Microsoft.Resources/deployments/* | Grupa zasobów |
 
@@ -138,7 +139,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
 
    W tym miejscu zostanie wyświetlony monit:
    - Określ **docelowa grupa zasobów nazwy**. Te wartości są nazwy grup zasobów zawierających maszyny wirtualne mają być zarządzane przez to rozwiązanie. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Możesz skorzystać z tej opcji, jeśli chcesz uwzględnić maszyny wirtualne we wszystkich grupach zasobów w subskrypcji. Ta wartość jest przechowywana w **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** zmiennych.
-   - Określ **listę wykluczeń maszyny Wirtualnej (ciąg)**. Ta wartość jest nazwa co najmniej jednej maszyny wirtualnej z docelową grupę zasobów. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Ta wartość jest przechowywana w **External_ExcludeVMNames** zmiennej.
+   - Określ **listę wykluczeń maszyny Wirtualnej (ciąg)** . Ta wartość jest nazwa co najmniej jednej maszyny wirtualnej z docelową grupę zasobów. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Ta wartość jest przechowywana w **External_ExcludeVMNames** zmiennej.
    - Wybierz **harmonogram**. Ta wartość jest cyklicznej daty i godziny uruchamiania oraz zatrzymywania maszyn wirtualnych w docelowych grupach zasobów. Domyślnie harmonogram jest skonfigurowany w ciągu 30 minut od teraz. Wybierając inny region jest niedostępny. Aby skonfigurować harmonogram do określonej strefy czasowej po skonfigurowaniu rozwiązania, zobacz [modyfikowanie harmonogramu uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedules).
    - Aby otrzymać **wiadomości E-mail z powiadomieniami** z grupy akcji, zaakceptuj wartość domyślną **tak** i podaj prawidłowy adres e-mail. Jeśli wybierzesz **nie** , ale później zdecydujesz w późniejszym terminie, że chcesz otrzymywać powiadomień pocztą e-mail, możesz zaktualizować [grupy akcji](../azure-monitor/platform/action-groups.md) utworzonego za pomocą prawidłowych adresów e-mail rozdzielonych przecinkami. Należy również włączyć następujące reguły alertu:
 
@@ -147,7 +148,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > Wartością domyślną dla **nazwy grupy zasobów obiektów docelowych** jest **&ast;**. Jest przeznaczony dla wszystkich maszyn wirtualnych w ramach subskrypcji. Jeśli nie chcesz, aby rozwiązanie pod kątem wszystkich maszyn wirtualnych w ramach subskrypcji, ta wartość musi zostać zaktualizowany do listy nazwy grupy zasobów przed włączeniem harmonogramy.
+     > Wartością domyślną dla **nazwy grupy zasobów obiektów docelowych** jest **&ast;** . Jest przeznaczony dla wszystkich maszyn wirtualnych w ramach subskrypcji. Jeśli nie chcesz, aby rozwiązanie pod kątem wszystkich maszyn wirtualnych w ramach subskrypcji, ta wartość musi zostać zaktualizowany do listy nazwy grupy zasobów przed włączeniem harmonogramy.
 
 8. Po skonfigurowaniu ustawień początkowych wymaganych dla rozwiązania, kliknij przycisk **OK** zamknąć **parametry** strony i wybierz **Utwórz**. Po wszystkie ustawienia zostaną zweryfikowane, rozwiązanie jest wdrożone do subskrypcji. Ten proces może potrwać kilka sekund, aby zakończyć i śledzić postęp w obszarze **powiadomienia** z menu.
 
@@ -246,14 +247,14 @@ Poniższa tabela zawiera listę elementów runbook, wdrożone do konta usługi A
 
 Obejmują wszystkie nadrzędne elementy runbook _WhatIf_ parametru. Po ustawieniu **True**, _WhatIf_ obsługuje ze szczegółami dotyczącymi dokładne zachowanie wykonuje element runbook po uruchomieniu bez _WhatIf_ parametru i sprawdza poprawność poprawny są maszyny wirtualne celem. Element runbook wykonuje tylko działania zdefiniowane podczas _WhatIf_ parametr ma wartość **False**.
 
-|Runbook | Parametry | Opis|
+|Element Runbook | Parametry | Opis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wywoływana z nadrzędnego elementu runbook. Ten element runbook tworzy alerty na podstawie poszczególnych zasobów w ramach scenariusza opisywanego AutoStop.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: Wartość PRAWDA lub FAŁSZ  | Tworzy lub aktualizuje Azure reguł alertów na maszynach wirtualnych w grupach docelowych, subskrypcji lub zasobu. <br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_.<br> *WhatIf* weryfikuje logiką wykonywania elementu runbook bez wykonywania.|
-|AutoStop_Disable | brak | Wyłącza alerty AutoStop i domyślnego harmonogramu.|
+|AutoStop_Disable | Brak | Wyłącza alerty AutoStop i domyślnego harmonogramu.|
 |AutoStop_StopVM_Child | WebHookData | Wywoływana z nadrzędnego elementu runbook. Reguły alertów wywołać ten element runbook, aby zatrzymać maszynę Wirtualną.|
-|Bootstrap_Main | brak | Umożliwia konfigurowanie ładowania początkowego konfiguracji, takich jak webhookURI, które nie są zwykle dostępne z usługi Azure Resource Manager jeden raz. Ten element runbook zostanie automatycznie usunięta po pomyślnym wdrożeniu.|
-|ScheduledStartStop_Child | Nazwa maszyny wirtualnej <br> Akcja: Uruchamianie lub zatrzymywanie <br> ResourceGroupName | Wywoływana z nadrzędnego elementu runbook. Wykonuje uruchamianie lub zatrzymywanie akcję na zatrzymanie zaplanowane.|
+|Bootstrap_Main | Brak | Umożliwia konfigurowanie ładowania początkowego konfiguracji, takich jak webhookURI, które nie są zwykle dostępne z usługi Azure Resource Manager jeden raz. Ten element runbook zostanie automatycznie usunięta po pomyślnym wdrożeniu.|
+|ScheduledStartStop_Child | VMName <br> Akcja: Uruchamianie lub zatrzymywanie <br> ResourceGroupName | Wywoływana z nadrzędnego elementu runbook. Wykonuje uruchamianie lub zatrzymywanie akcję na zatrzymanie zaplanowane.|
 |ScheduledStartStop_Parent | Akcja: Uruchamianie lub zatrzymywanie <br>VMList <br> WhatIf: Wartość PRAWDA lub FAŁSZ | To ustawienie ma wpływ na wszystkie maszyny wirtualne w subskrypcji. Edytuj **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** można wykonywać tylko na ten temat grup zasobów docelowych. Można również wykluczyć określonych maszyn wirtualnych, aktualizując **External_ExcludeVMNames** zmiennej.<br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_.<br> _WhatIf_ weryfikuje logiką wykonywania elementu runbook bez wykonywania.|
 |SequencedStartStop_Parent | Akcja: Uruchamianie lub zatrzymywanie <br> WhatIf: Wartość PRAWDA lub FAŁSZ<br>VMList| Utworzenie tagów o nazwie **sequencestart** i **sequencestop** na każdej maszynie Wirtualnej, dla którego chcesz działania uruchamiania/zatrzymywania sekwencji. Te nazwy tagu jest rozróżniana wielkość liter. Wartość tagu powinna być dodatnią liczbą całkowitą (1, 2, 3), kolejność, w którym chcesz rozpocząć lub zatrzymać. <br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_. <br> _WhatIf_ weryfikuje logiką wykonywania elementu runbook bez wykonywania. <br> **Uwaga**: Maszyny wirtualne muszą być w grupach zasobów, zdefiniowane jako External_Start_ResourceGroupNames External_Stop_ResourceGroupNames i External_ExcludeVMNames w usłudze Azure Automation zmiennych. Muszą mieć odpowiednie znaczniki do wykonywania czynności zastosować zmiany.|
 
@@ -304,8 +305,8 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |----------|----------|
 |Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
 |Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
-|Identyfikator korelacji | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
-|Identyfikator zadania | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
+|CorrelationId | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
+|JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
 |resourceId | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
@@ -325,9 +326,9 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |----------|----------|
 |Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
 |Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
-|Identyfikator zadania | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
+|JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
-|Grupa zasobów | Określa nazwę grupy zasobów zadania elementu Runbook.|
+|ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
 |resourceId | Określa identyfikator zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
 |ResourceProvider | Określa nazwę usługi platformy Azure, która zapewnia zasoby do wdrożenia i zarządzania. W przypadku usługi Automation wartością jest Azure Automation.|
 |ResourceType | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
@@ -421,7 +422,7 @@ Aby usunąć rozwiązanie, wykonaj następujące czynności:
 1. Na koncie usługi Automation w ramach **powiązane zasoby**, wybierz opcję **połączony obszar roboczy**.
 1. Wybierz **przejdź do obszaru roboczego**.
 1. W obszarze **ogólne**, wybierz opcję **rozwiązania**. 
-1. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]**. Na **VMManagementSolution [obszar roboczy]** stronę z menu, wybierz opcję **Usuń**.<br><br> ![Usuń rozwiązanie Mgmt maszyny Wirtualnej](media/automation-solution-vm-management/vm-management-solution-delete.png)
+1. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]** . Na **VMManagementSolution [obszar roboczy]** stronę z menu, wybierz opcję **Usuń**.<br><br> ![Usuń rozwiązanie Mgmt maszyny Wirtualnej](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. W **Usuń rozwiązanie** okna, upewnij się, że chcesz usunąć rozwiązanie.
 1. Podczas weryfikowania informacji i rozwiązanie zostanie usunięty, możesz śledzić postęp w sekcji **powiadomienia** z menu. Nastąpi powrót do **rozwiązania** strony po rozpoczęciu procesu, aby usunąć rozwiązania.
 

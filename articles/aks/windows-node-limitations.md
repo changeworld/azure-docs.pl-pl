@@ -2,17 +2,17 @@
 title: Ograniczenia dotyczące pule węzłów systemu Windows Server w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się więcej o znanych ograniczeniach, po uruchomieniu pule węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 3d249271995d96307722dadf6b3e012e63565e6a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.author: twhitney
+ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956266"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304393"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżących ograniczeń dotyczących pule węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ W usłudze Azure Kubernetes Service (AKS), można utworzyć pulę węzłów z sy
 W tym artykule przedstawiono kilka ograniczeń i pojęcia systemu operacyjnego dla węzłów systemu Windows Server w usłudze AKS. Pule węzłów dla systemu Windows Server są obecnie dostępne w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi, uczestnictwo. Są one udostępniane do zbierania opinii i błędy z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w wersji zapoznawczej objęte "starań" pomocy technicznej. Pomoc od zespołów pomocy technicznej usługi AKS jest dostępna w godzinach pracy i Pacyfik, część strefy czasowej (PST) tylko. Aby uzyskać więcej informacji zobacz następujące artykuły pomocy technicznej:
 >
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+> * [Zasady pomocy technicznej usługi AKS][aks-support-policies]
+> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Ograniczenia dotyczące systemu Windows Server w usłudze Kubernetes
 
@@ -57,6 +58,8 @@ Następujące dodatkowe ograniczenia do pomocy technicznej pulę węzłów syste
 - W wersji zapoznawczej funkcji w usłudze AKS, takie jak zasad sieciowych i skalowanie klastra nie są zalecane dla węzłów systemu Windows Server.
 - Ruch przychodzący kontrolerów powinny zostać zaplanowane tylko w węzłach systemu Linux przy użyciu NodeSelector.
 - Azure Dev do magazynowania jest obecnie dostępny tylko w przypadku pul węzłów opartych na systemie Linux.
+- Grupy kont usług zarządzanych, czy pomoc techniczna (gMSA), gdy węzły systemu Windows Server nie są przyłączone do domeny usługi Active Directory nie jest obecnie dostępna w usłudze AKS.
+    - Open source, nadrzędne [aparatu aks] [ aks-engine] projektu obecnie oferuje gMSA pomocy technicznej, jeśli chcesz korzystać z tej funkcji.
 
 ## <a name="os-concepts-that-are-different"></a>Pojęcia dotyczące systemu operacyjnego, które różnią się
 
@@ -74,11 +77,13 @@ Aby rozpocząć pracę z kontenerami systemu Windows Server w usłudze AKS, [utw
 
 <!-- LINKS - external -->
 [upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
-[aks-github]: https://github.com/azure/aks/issues]
 [kubernetes]: https://kubernetes.io
+[aks-engine]: https://github.com/azure/aks-engine
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
 [configure-azure-cni]: configure-azure-cni.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [windows-node-cli]: windows-container-cli.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

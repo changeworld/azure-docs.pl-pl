@@ -4,14 +4,14 @@ description: Użyj wiersza polecenia platformy Azure do zarządzania kontem usł
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 4/8/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 144515fef9da714ab80f15bb39757ed2283c6dd0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151211"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243374"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Zarządzanie zasobami usługi Azure Cosmos przy użyciu wiersza polecenia platformy Azure
 
@@ -21,7 +21,7 @@ Następującymi wskazówkami w tym artykule opisano typowe polecenia do automaty
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-## <a name="create-an-azure-cosmos-db-account"></a>Utwórz konto usługi Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 
 Aby utworzyć konto usługi Azure Cosmos DB z interfejsem API SQL, spójność sesji w regionach wschodnie stany USA i zachodnie stany USA, uruchom następujące polecenie:
 

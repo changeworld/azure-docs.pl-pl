@@ -12,36 +12,43 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3181609bf34a04de4e31b73429f9bc5fa3fe3408
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e321c0b473b110597b5b87a6e67666737116daa2
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411899"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393348"
 ---
 # <a name="azure-app-configuration-faq"></a>Konfiguracja aplikacji platformy Azure — często zadawane pytania
 
-Ten artykuł adresy częste pytania dotyczące konfiguracji aplikacji usługi Azure.
+W tym artykule opisano często zadawane pytania dotyczące konfiguracji aplikacji platformy Azure.
 
-## <a name="how-is-app-configuration-different-from-key-vault"></a>Czym różni się konfiguracji aplikacji z usługi Key Vault?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Czym różni się usługa App Configuration od usługi Azure Key Vault?
 
-Konfiguracja aplikacji jest przeznaczony dla różnych zestaw przypadków użycia: ułatwia deweloperom Zarządzanie ustawieniami aplikacji i kontrolować dostępności funkcji. Ma on uprościć wykonywanie wielu zadań Praca z danymi złożonej konfiguracji. Obsługuje ona hierarchicznej przestrzeni nazw, etykietowania, zaawansowanych kwerend, pobierania partii i operacje zarządzania wyspecjalizowanych i interfejsów użytkownika. Konfiguracja aplikacji jest wzajemnie dopełniającego się do usługi Key Vault i dwa powinny być używane równolegle w większości wdrożeń aplikacji.
+Konfiguracja aplikacji jest przeznaczony dla różnych zestaw przypadków użycia: ułatwia deweloperom Zarządzanie ustawieniami aplikacji i kontrolować dostępności funkcji. Ma on uprościć wykonywanie wielu zadań Praca z danymi złożonej konfiguracji.
+
+Obsługuje konfigurację aplikacji:
+
+- Hierarchiczne przestrzenie nazw
+- Etykietowania
+- Rozbudowane zapytania
+- Pobieranie usługi Batch
+- Operacje zarządzania specjalne
+- Interfejs użytkownika funkcji zarządzania
+
+Konfiguracja aplikacji jest wzajemnie dopełniającego się do usługi Key Vault, a dwa powinny być używane równolegle w większości wdrożeń aplikacji.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Czy lepiej przechowywać klucze tajne, w konfiguracji aplikacji?
 
-Konfiguracja aplikacji zapewnia zabezpieczeń ze wzmocnionymi zabezpieczeniami, jednocześnie usługi Key Vault jest nadal najlepsze miejsce do przechowywania wpisów tajnych aplikacji. Zapewnia szyfrowanie na poziomie sprzętu, zasady dostępu szczegółowej i operacji zarządzania, takich jak rotacja certyfikatu.
+Mimo że zabezpiecza ze wzmocnionymi zabezpieczeniami konfiguracji aplikacji usługi Key Vault jest nadal najlepsze miejsce do przechowywania wpisów tajnych aplikacji. Key Vault oferuje szyfrowanie na poziomie sprzętu, zasady dostępu szczegółowej i operacji zarządzania, takich jak rotacja certyfikatu.
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Czy konfiguracja aplikacji szyfruje Moje dane?
 
-Tak. Konfiguracja aplikacji szyfruje wszystkie wartości klucza, jego przechowuje i komunikacja sieciowa. Nazwy są używane jako indeksy do pobierania danych konfiguracji i kluczy nie są szyfrowane.
-
-## <a name="does-app-configuration-support-azure-virtual-network-vnet"></a>Konfiguracja aplikacji obsługuje usługa Azure Virtual Network (VNET)?
-
-Jeszcze nie. Obsługa sieci Wirtualnej jest planowana za usługi ogólnie dostępne.
+Tak. Konfiguracja aplikacji szyfruje wszystkie wartości klucza, który przechowuje, a szyfrowanie komunikacji sieciowej. Nazwy kluczy są używane jako indeksy do pobierania danych konfiguracji, a nie są szyfrowane.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak należy przechowywać konfiguracje dla wielu środowisk (test, tymczasowego, produkcyjnego i tak dalej)
 
-Obecnie można kontrolować, kto ma dostęp do konfiguracji aplikacji na poziomie-store. Należy użyć oddzielnego magazynu dla każdego środowiska, który wymaga różnych uprawnień. Takie podejście zapewnia najlepsze izolacji zabezpieczeń.
+Obecnie można kontrolować, kto ma dostęp do konfiguracji aplikacji na poziomie-store. Użyj oddzielnego magazynu dla każdego środowiska, który wymaga różnych uprawnień. Takie podejście zapewnia najlepsze izolacji zabezpieczeń.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Jakie są zalecane sposoby korzystania z konfiguracji aplikacji?
 

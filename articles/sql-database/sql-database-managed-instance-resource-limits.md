@@ -9,35 +9,35 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop, sachinp
+ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 05/22/2019
-ms.openlocfilehash: e091ec29c810fce7a39ad5aa5cc8f0ddae711752
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 7ff8405bba39e274c4f9f0cbacb7c295564c877e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016410"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303210"
 ---
-# <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
+# <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Omówienie usługi Azure SQL Database managed wystąpienia limity zasobów
 
-Ten artykuł zawiera omówienie limitów zasobów wystąpienia zarządzanego Azure SQL Database i zawiera informacje, jak utworzyć żądanie, aby zwiększyć domyślne limity regionalne subskrypcji.
+Ten artykuł zawiera omówienie limity zasobów dla wystąpienia zarządzanego usługi Azure SQL Database i zawiera informacje dotyczące sposobów poprosić o zwiększenie limitów.
 
 > [!NOTE]
-> Aby uzyskać inne ograniczenia, wystąpienia zarządzanego, zobacz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-managed-instance.md#vcore-based-purchasing-model) i [wystąpienie zarządzane usługi warstwy](sql-database-managed-instance.md#managed-instance-service-tiers). Aby poznać różnice w obsługiwanych funkcjach i T-SQL zobacz instrukcje [różnice są wyposażone w](sql-database-features.md) i [Obsługa instrukcji języka T-SQL](sql-database-managed-instance-transact-sql-information.md).
+> Aby poznać różnice w obsługiwanych funkcjach i T-SQL zobacz instrukcje [różnice są wyposażone w](sql-database-features.md) i [Obsługa instrukcji języka T-SQL](sql-database-managed-instance-transact-sql-information.md).
 
 ## <a name="instance-level-resource-limits"></a>Limity zasobów na poziomie wystąpienia
 
-Wystąpienie zarządzane ma cechy i limitów zasobów, które jest zależna od podstawową infrastrukturę i architektury. Limity są zależne od sprzętu w warstwie generowania i usługi.
+Wystąpienie zarządzane ma cechy i limitów zasobów, które są zależne od podstawową infrastrukturę i architektury. Limity są zależne od sprzętu w warstwie generowania i usługi.
 
 ### <a name="hardware-generation-characteristics"></a>Właściwości generacji sprzętu
 
-Wystąpienie usługi Azure SQL Database Managed można wdrożyć na dwa sprzętu generacji (4. generacji i 5. generacji). Generacji sprzętu mają inne cechy, które są opisane w poniższej tabeli:
+Wystąpienie zarządzane usługi Azure SQL Database można wdrożyć w obu generacji sprzętu: 4. generacji, jak i Gen5. Generacji sprzętu mają inne cechy, które są opisane w poniższej tabeli:
 
 |   | **4. generacji** | **5. generacji** |
 | --- | --- | --- |
 | Sprzęt | Intel E5-2673 v3 procesorów 2,4 GHz (Haswell), dołączony dysk SSD — rdzeń wirtualny = 1 PP (fizycznych rdzeni) | Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów, szybkie dyski SSD NVMe, — rdzeń wirtualny = LP 1 (hyper wątek) |
-| Rdzenie wirtualne | 8, 16, 24 rdzenie wirtualne | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
+| rdzenie wirtualne | 8, 16, 24 rdzenie wirtualne | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
 | Memory (Pamięć) | 7 GB na rdzeń wirtualny | 5.1 GB na rdzeń wirtualny |
 | Maksymalna liczba OLTP w pamięci pamięci | 3 GB na rdzeń wirtualny | 2.6 GB na rdzeń wirtualny |
 | Maksymalny rozmiar wystąpienia magazynu (ogólnego przeznaczenia) |  8 TB | 8 TB |
@@ -56,19 +56,20 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
 | Danych/dziennika operacji We/Wy (w przybliżeniu) | 500 — 7500 operacji na pliku<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11-110 tys. obr (1375/rdzeń wirtualny) |
-| Przepływność dziennika | 3MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 22 MB/s na wystąpienie | 4 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48 MB/s na wystąpienie|
+| Przepływność dziennika | 3 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 22 MB/s na wystąpienie | 4 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48 MB/s na wystąpienie|
 | Przepływność danych (w przybliżeniu) | 100 - 250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
 | We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
 | Maksymalny rozmiar bazy danych tempDB | 192 - 1,920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
+| Maksymalna liczba sesji | 30000 | 30000 |
 
 **Informacje o**:
 
 - Zarówno danych i dziennika rozmiar pliku w użytkownika i systemowe bazy danych znajdują się w rozmiarze wystąpienia magazynu, która jest porównywana z maksymalny limit rozmiaru magazynu. Użyj <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> widok systemowy ustalenie Suma używane miejsce w bazach danych. Dzienniki błędów są nie jest trwały i nie są uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględnione w rozmiaru magazynu.
-- Przepływność i operacje We/Wy także zależeć od rozmiaru strony, który nie jest jawnie ograniczone wystąpienia zarządzanego.
+- Przepływność i operacje We/Wy także zależeć od rozmiaru strony, która nie jest jawnie ograniczone wystąpienia zarządzanego.
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Instanced zarządzane można tworzyć tylko w [obsługiwane regiony](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Jeśli chcesz utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwane, możesz to zrobić [Wyślij żądanie pomocy technicznej za pośrednictwem witryny Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance).
+Wystąpienia zarządzane można tworzyć tylko w [obsługiwane regiony](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwane, mogą [Wyślij żądanie pomocy technicznej za pośrednictwem witryny Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance).
 
 ## <a name="supported-subscription-types"></a>Typy obsługiwane subskrypcji
 
@@ -91,7 +92,7 @@ Typy obsługiwane subskrypcji mogą zawierać ograniczoną liczbę zasobów na r
 - **Limit liczby wystąpień**: Maksymalna liczba wystąpień, które mogą być wdrażane w jednym regionie.
 
 > [!Note]
-> Limity te są ustawienia domyślne i ograniczenia nie weryfikacji technicznej. Limity, może być zwiększenia na żądanie, tworząc specjalny [żądania pomocy technicznej w witrynie Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz większej liczby wystąpień zarządzanych w bieżącym regionie. Jako alternatywę można utworzyć nowego wystąpienia zarządzane przez usługę w innym regionie platformy Azure, bez wysyłania żądań pomocy technicznej.
+> Limity te są ustawienia domyślne i ograniczenia nie weryfikacji technicznej. Limity, może być zwiększenia na żądanie, tworząc specjalny [żądania pomocy technicznej w witrynie Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz bardziej zarządzanych wystąpień w bieżącym regionie. Alternatywnie można utworzyć nowe wystąpienia zarządzanego w innym regionie platformy Azure, bez wysyłania żądań pomocy technicznej.
 
 W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych subskrypcji:
 
@@ -105,12 +106,11 @@ W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych
 
 \* 1 BC lub 4 wystąpień zasad grupy w jednej podsieci, można wdrożyć albo tak, aby łączna liczba jednostek"wystąpienie" w podsieci nigdy nie przekracza 4.
 
-** Maksymalnej liczby wystąpień w jednej warstwie usługi ma zastosowanie, jeśli żadne wystąpienia znajduje się w innej warstwie usługi. W przypadku, gdy użytkownik chce mieszać GP i BC wystąpienia w ramach tej samej podsieci, następująca sekcja służy jako odwołanie dla dozwolonych kombinacji. Zgodnie z zasadą proste całkowita liczba podsieci nie może przekraczać 3, a łączna liczba jednostek wystąpienia nie może przekraczać 12.
-
+** Maksymalnej liczby wystąpień w jednej warstwie usługi ma zastosowanie, jeśli żadne wystąpienia znajduje się w innej warstwie usługi. Jeśli użytkownik chce mieszać GP i BC wystąpienia tej samej podsieci, następująca sekcja służy jako odwołanie dla dozwolonych kombinacji. Zgodnie z zasadą proste całkowita liczba podsieci nie może przekraczać 3, a łączna liczba jednostek wystąpienia nie może przekraczać 12.
 
 
 > [!IMPORTANT]
-> Podczas planowania wdrożenia należy rozważyć, czy wystąpienia biznesowe krytyczne (BC) (z powodu dodane redundancy) zwykle zużywa 4 x większą pojemność niż wystąpienia ogólnego przeznaczenia (GP). Tak więc, na obliczeniach, wystąpienia zasad grupy: 1 = 1 wystąpienie jednostki oraz wystąpienia 1 BC = 4 jednostki wystąpienia. Aby uprościć analizy użycia na wartości domyślne, podsumowanie jednostki wystąpienia we wszystkich podsieciach w regionie, w których są wdrażane wystąpienia zarządzane przez usługę i należy porównać wyniki z granicami jednostki wystąpienia dla typu Twojej subskrypcji.
+> Podczas planowania wdrożenia należy rozważyć, czy wystąpienia biznesowe krytyczne (BC) (z powodu dodane redundancy) zwykle zużywa 4 x większą pojemność niż wystąpienia ogólnego przeznaczenia (GP). Tak więc, na obliczeniach, wystąpienia zasad grupy: 1 = 1 wystąpienie jednostki oraz wystąpienia 1 BC = 4 jednostki wystąpienia. Aby uprościć analizy użycia na wartości domyślne, podsumowanie jednostki wystąpienia we wszystkich podsieciach w regionie, gdzie zarządzanych wystąpień są wdrażane i porównać wyniki z granicami jednostki wystąpienia dla typu Twojej subskrypcji.
 
 ## <a name="strategies-for-deploying-mixed-general-purpose-and-business-critical-instances"></a>Strategie wdrażania mieszane wystąpień ogólnego przeznaczenia i krytyczne dla działania firmy
 
@@ -121,7 +121,7 @@ W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych
 
 Poniższe przykłady obejmują przypadków wdrożenie z podsieciami niepuste i mieszane GP i BC warstwy usług.
 
-|Liczba podsieci|Podsieć 1|Podsieć 2|Podsieć 3|
+|Liczba podsieci|Podsieć 1|Podsieć 2|Podsieci 3|
 |:---|:---|:---|:---|
 |1|1 BC i maksymalnie 8 zasad grupy<br>2 BC i maksymalnie 4 zasad grupy|ND| ND|
 |2|BC 0, GP maksymalnie 4|BC 1, GP maksymalnie 4<br>2 BC, 0 GP|ND|
@@ -130,16 +130,16 @@ Poniższe przykłady obejmują przypadków wdrożenie z podsieciami niepuste i m
 |3|1 BC, 0 GP|1 BC, 0 GP|BC 0, GP maksymalnie 4|
 |3|1 BC, 0 GP|BC 0, GP maksymalnie 4|BC 0, GP maksymalnie 4|
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Uzyskanie większego limitu przydziału dla wystąpienia zarządzanego usługi SQL
+## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Uzyskanie większego limitu przydziału dla SQL wystąpienia zarządzanego
 
-Jeśli potrzebujesz większej liczby wystąpień zarządzanych w Twojej bieżącej regionach można wysłać żądanie pomocy technicznej, aby rozszerzyć przydziału przy użyciu witryny Azure portal.
+Jeśli potrzebujesz więcej wystąpień zarządzanych w Twojej bieżącej regionach, należy wysłać żądanie obsługi, aby rozszerzyć przydział, korzystając z portalu Azure.
 Aby zainicjować proces uzyskiwania większego limitu przydziału:
 
 1. Otwórz **Pomoc i obsługa techniczna**i kliknij przycisk **nowe żądanie obsługi**.
 
    ![Pomoc i obsługa techniczna](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na karcie podstawy nowe żądanie pomocy technicznej:
-   - Aby uzyskać **typ problemu**, wybierz opcję **limity usług i subskrypcji (przydziały)**.
+   - Aby uzyskać **typ problemu**, wybierz opcję **limity usług i subskrypcji (przydziały)** .
    - W polu **Subskrypcja** wybierz subskrypcję.
    - Aby uzyskać **typ limitu przydziału**, wybierz opcję **wystąpienie zarządzane usługi SQL Database**.
    - Aby uzyskać **plan pomocy technicznej**, wybierz plan pomocy technicznej.
@@ -167,5 +167,5 @@ Aby zainicjować proces uzyskiwania większego limitu przydziału:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji na temat wystąpienia zarządzanego, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md).
-- Aby uzyskać informacje o cenach, zobacz [wystąpienie zarządzane usługi SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/managed/).
-- Aby dowiedzieć się, jak utworzyć pierwsze wystąpienie zarządzane, zobacz [przewodnika Szybki start](sql-database-managed-instance-get-started.md).
+- Aby uzyskać informacje o cenach, zobacz [zarządzana ceny wystąpienia usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+- Aby dowiedzieć się, jak utworzyć pierwszego wystąpienia zarządzanego, zobacz [przewodnika Szybki Start](sql-database-managed-instance-get-started.md).

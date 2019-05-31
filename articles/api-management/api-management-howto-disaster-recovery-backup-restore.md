@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0c1efa0e5cfa4bf31e58be64b3fe78075b79b515
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e0c02829a2fef6e281794fdba6c9fb5d9b8a736b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141690"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241703"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -72,9 +72,9 @@ Wszystkie zadania, które wykonują zasobów przy użyciu usługi Azure Resource
 5. Wybierz **Windows** **interfejsu API zarządzania usługami Azure**.
 6. Naciśnij klawisz **wybierz**.
 
-    ![Dodaj uprawnienia](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    ![Dodawanie uprawnień](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Kliknij przycisk **delegowane uprawnienia** obok nowo dodanych aplikacji, zaznacz pole wyboru, aby uzyskać **dostęp do usługi Azure Service Management (wersja zapoznawcza)**.
+7. Kliknij przycisk **delegowane uprawnienia** obok nowo dodanych aplikacji, zaznacz pole wyboru, aby uzyskać **dostęp do usługi Azure Service Management (wersja zapoznawcza)** .
 8. Naciśnij klawisz **wybierz**.
 9. Kliknij przycisk **udzielić uprawnień**.
 
@@ -124,7 +124,7 @@ Zastąp `{tenant id}`, `{application id}`, i `{redirect uri}` przy użyciu nast�
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Podczas wywoływania operacji tworzenia kopii zapasowych i przywracania
 
-Interfejsy API REST są [usługi Api Management — kopia zapasowa](/rest/api/apimanagement/apimanagementservice/backup) i [usługi Api Management — Przywracanie](/rest/api/apimanagement/apimanagementservice/restore).
+Interfejsy API REST są [usługi Api Management — kopia zapasowa](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) i [usługi Api Management — Przywracanie](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
 
 Przed wywołaniem "Kopia zapasowa i przywracanie" czynności opisane w poniższych sekcjach, ustawić nagłówek autoryzacji żądania dla wywołania REST.
 

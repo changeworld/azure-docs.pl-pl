@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562359"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305271"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
 
@@ -22,7 +22,8 @@ W tym artykule opisano główne pojęcia w usłudze Azure Event Grid.
 
 Zdarzenie jest najmniejsza ilość informacje opisujące pełni coś, co wydarzyło się w systemie. Każde zdarzenie zawiera wspólne informacje, takie jak: źródło zdarzenia, czas zdarzenia miały miejsce i unikatowy identyfikator. Każde zdarzenie ma również określone informacje, których dotyczy tylko określonych typach zdarzenia. Na przykład zdarzenie o nowy plik tworzonych w usłudze Azure Storage zawiera szczegóły dotyczące pliku, takie jak `lastTimeModified` wartość. Lub zdarzenie usługi Event Hubs ma adres URL pliku przechwytywania. 
 
-Każde wydarzenie jest ograniczone do 64 KB danych.
+Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
+
 
 Dla właściwości, które są wysyłane w zdarzeniu, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
@@ -59,9 +60,6 @@ Aby uzyskać przykłady tworzenia subskrypcji zobacz:
 Aby dowiedzieć się, jak pobieranie bieżącego zdarzenia subskrypcji siatki, zobacz [subskrypcji usługi Event Grid zapytania](query-event-subscriptions.md).
 
 ## <a name="event-subscription-expiration"></a>Wygaśnięcie subskrypcji zdarzeń
-
-[Rozszerzenia usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla wiersza polecenia platformy Azure pozwala na ustawienie wygaśnięcia daty podczas tworzenia subskrypcji zdarzeń. Jeśli korzystasz z interfejsu API REST, należy użyć `api-version=2018-09-15-preview`
-
 Subskrypcja zdarzeń automatycznie wygaśnie po tej dacie. Ustawienia okresu ważności subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas, a nie chcesz martwić się o czyszczenia tych subskrypcjach. Na przykład podczas tworzenia subskrypcji zdarzeń, aby przetestować scenariusz, możesz chcieć ustawienia okresu ważności. 
 
 Na przykład ustawienia wygaśnięcia, zobacz [subskrypcji z zaawansowanych filtrów](how-to-filter-events.md#subscribe-with-advanced-filters).
@@ -82,7 +80,10 @@ Jeśli usługa Event Grid można potwierdzić, że zdarzenia zostały odebrane p
 
 ## <a name="batching"></a>Tworzenie partii
 
-Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Można w tym zadaniu wsadowym jednego dla scenariuszy niskiej przepustowości, jednak dla dużej liczby przypadków użycia, zalecane jest, batch kilka zdarzeń, które razem na publikowanie osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie nadal nie powinna być dłuższa niż 64 KB.
+Korzystając z niestandardowego tematu, zawsze należy opublikować zdarzenia w tablicy. Można w tym zadaniu wsadowym jednego dla scenariuszy niskiej przepustowości, jednak dla dużej liczby przypadków użycia, zalecane jest, batch kilka zdarzeń, które razem na publikowanie osiągnąć wyższą wydajność. Partie można maksymalnie 1 MB. Każde zdarzenie nadal nie powinna być dłuższa niż 64 KB (ogólnie) lub 1 MB (wersja zapoznawcza).
+
+> [!NOTE]
+> Zdarzenie o rozmiarze do 64 KB jest objęty przez umowy poziomu usług (SLA) ogólna dostępność (GA). Pomoc techniczna dotycząca zdarzenie o rozmiarze do 1 MB jest obecnie w wersji zapoznawczej. Zdarzenia przekracza 64 KB są naliczane w przyrostach 64 KB. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

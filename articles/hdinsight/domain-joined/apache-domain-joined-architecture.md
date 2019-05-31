@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 069b3fe89183d7897cea39e2a8a1fe1bbed80bb0
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.date: 05/29/2019
+ms.openlocfilehash: 168a73ced039b9bced9a6aae6a138468b345b19d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556347"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391681"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -21,7 +21,7 @@ Klaster w warstwie standardowa usługi Azure HDInsight to klaster z jednego uży
 
 Wiele przedsiębiorstw zostały przeniesione na model, w którym zespoły zarządzania klastrami, a wiele zespołów aplikacji klastrów udziału. Te większych przedsiębiorstw potrzebują wielu użytkowników dostępu do poszczególnych klastrów w usłudze Azure HDInsight.
 
-HDInsight zależy od dostawcy popularnych tożsamości — usłudze Active Directory — w zarządzany sposób. Po zintegrowaniu HDInsight przy użyciu [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), dostęp do tych klastrów przy użyciu poświadczeń domeny. 
+HDInsight zależy od dostawcy popularnych tożsamości — usłudze Active Directory — w zarządzany sposób. Po zintegrowaniu HDInsight przy użyciu [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/overview.md), dostęp do tych klastrów przy użyciu poświadczeń domeny. 
 
 Maszyny wirtualne (VM) w HDInsight są przyłączony do domeny podana. Tak wszystkie usługi działające na HDInsight (Apache Ambari, serwerze Apache Hive, Apache Ranger, Apache Spark thrift server i inne) współpracują bezproblemowo dla tego uwierzytelnionego użytkownika. Administratorzy mogą tworzyć zasady silnych autoryzacji przy użyciu struktury Apache Ranger w celu zapewnienia kontroli dostępu opartej na rolach dla zasobów w klastrze.
 
@@ -45,7 +45,7 @@ Aby podsumować, należy skonfigurować środowisko przy użyciu:
 HDInsight aktualnie obsługuje tylko usługi Azure AD DS jako kontrolera domeny głównej, używanego przez klaster komunikacji protokołu Kerberos. Jednak inne złożonych konfiguracji usługi Active Directory jest to możliwe, tak długo, jak takiej konfiguracji prowadzi do włączania usługi Azure AD DS dla dostępu HDInsight.
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
-[Usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) zapewnia domeny zarządzanej, która jest w pełni zgodna z usługą Active Directory systemu Windows Server. Microsoft zajmuje się zarządzaniem, obsługą jej poprawek oraz monitorowanie domeny w konfiguracji o wysokiej dostępności (HA). Możesz wdrożyć klaster bez martwienia się o utrzymania kontrolerów domeny. 
+[Usługi Azure AD DS](../../active-directory-domain-services/overview.md) zapewnia domeny zarządzanej, która jest w pełni zgodna z usługą Active Directory systemu Windows Server. Microsoft zajmuje się zarządzaniem, obsługą jej poprawek oraz monitorowanie domeny w konfiguracji o wysokiej dostępności (HA). Możesz wdrożyć klaster bez martwienia się o utrzymania kontrolerów domeny. 
 
 Użytkownikom, grupom i hasła są synchronizowane z usługi Azure AD. Jednokierunkowa synchronizacji z wystąpienia usługi Azure AD do usługi Azure AD DS pozwala użytkownikom logować się do klastra przy użyciu tych samych poświadczeń firmowych. 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: b3f86147eb91e874d5317204ca05fb45628414d3
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833408"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243237"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -78,7 +78,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Zawsze stosuj konwersji.<br />Konwersja zawartości — typ json — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność JSON.|Tak|ND|
+|Zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Zawsze stosuj konwersji.<br />Konwersja zawartości — typ json — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność JSON.|Tak|ND|
 |consider-accept-header|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — wartość true — zastosowania konwersji, jeśli w żądaniu nagłówka Accept żądania JSON.<br />— wartość false — Zawsze stosuj konwersji.|Nie|true|
 |Data analizy|Po ustawieniu `false` wartości dat, po prostu są kopiowane podczas przekształcania|Nie|true|
 
@@ -116,14 +116,14 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|xml-to-json|Element główny.|Tak|
+|xml-to-json|Element główny.|Yes|
 
 ### <a name="attributes"></a>Atrybuty
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |rodzaj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> javascript — przyjaznego - przekonwertowany za pomocą pliku JSON ma postać przyjazne dla deweloperów języka JavaScript.<br />-direct - przekonwertowanego JSON odzwierciedla strukturę oryginalnego dokumentu XML.|Tak|ND|
-|zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Konwertuj zawsze.<br />Konwersja zawartości — typ xml — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność kodu XML.|Tak|ND|
+|Zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Konwertuj zawsze.<br />Konwersja zawartości — typ xml — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność kodu XML.|Yes|ND|
 |consider-accept-header|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — wartość true — zastosowania konwersji, jeśli w żądaniu nagłówka Accept żądania XML.<br />— wartość false — Zawsze stosuj konwersji.|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -158,8 +158,8 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|from|Ciąg do wyszukania.|Tak|ND|
-|do|Ciąg zastępujący. Określ zero długość ciąg zastępujący usunąć ciąg wyszukiwania.|Tak|ND|
+|from|Ciąg do wyszukania.|Yes|ND|
+|na|Ciąg zastępujący. Określ zero długość ciąg zastępujący usunąć ciąg wyszukiwania.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -215,7 +215,7 @@ lub
 ```
 
 > [!NOTE]
-> Jednostki zaplecza mogą być zarządzane za pośrednictwem funkcji zarządzania [API](https://docs.microsoft.com/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Jednostki zaplecza mogą być zarządzane za pośrednictwem funkcji zarządzania [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Przykład
 
@@ -270,7 +270,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |podstawowy adres url|Nowe zaplecze podstawowy adres URL usługi.|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
-|Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [API](https://docs.microsoft.com/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
+|Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
 |sf-partition-key|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Używana do rozpoznawania określonej partycji z usługi rozpoznawania nazw.|Nie|ND|
 |sf-replica-type|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Kontroluje, czy żądanie należy przejść do podstawowej lub pomocniczej replice partycji. |Nie|ND|
 |sf-resolve-condition|Dotyczy tylko w przypadku wewnętrznej bazy danych usługi Service Fabric. Warunek, identyfikowanie, jeśli wywołanie do zaplecza usługi Service Fabric musi być powtarzana z nowego rozwiązania.|Nie|ND|
@@ -405,7 +405,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|szablon|Używane, aby zmienić tryb tworzenia szablonów, który Ustawianie treść zasad zostanie wykonany w. Obecnie jest to jedyna obsługiwana wartość:<br /><br />-liquid — Ustawianie zasad treści użyje aparat szablonów liquid |Nie||
+|Szablon|Używane, aby zmienić tryb tworzenia szablonów, który Ustawianie treść zasad zostanie wykonany w. Obecnie jest to jedyna obsługiwana wartość:<br /><br />-liquid — Ustawianie zasad treści użyje aparat szablonów liquid |Nie||
 
 Do uzyskania dostępu do informacji na temat żądań i odpowiedzi, Liquid szablonu można powiązać obiektu context, z następującymi właściwościami: <br />
 <pre>context.
@@ -506,7 +506,7 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|set-header|Element główny.|Tak|
+|set-header|Element główny.|Yes|
 |value|Określa wartość nagłówka do ustawienia. Dla wiele nagłówków o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Tak|
 
 ### <a name="properties"></a>Właściwości
@@ -651,7 +651,7 @@ OriginalUrl.
 
 |Atrybut|Opis|Wymagane|Domyślne|
 |---------------|-----------------|--------------|-------------|
-|szablon|Rzeczywisty adres URL usługi internetowej za pomocą parametrów ciągu zapytania. Korzystając z wyrażeń, wartości całkowitej musi być wyrażeniem.|Tak|ND|
+|Szablon|Rzeczywisty adres URL usługi internetowej za pomocą parametrów ciągu zapytania. Korzystając z wyrażeń, wartości całkowitej musi być wyrażeniem.|Tak|ND|
 |copy-unmatched-params|Określa, czy parametry zapytania w żądaniu przychodzącym nie znajduje się w oryginalnym szablonie adres URL są dodawane do adresu URL zdefiniowane w szablonie ponownego napisania|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -715,8 +715,8 @@ OriginalUrl.
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
 |xsl-transform|Element główny.|Tak|
-|parametr|Używane do definiowania zmiennych używanych w transformacji|Nie|
-|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Tak|
+|Parametr|Używane do definiowania zmiennych używanych w transformacji|Nie|
+|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Yes|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

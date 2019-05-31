@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2019
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c989b690e9537dcaaf3710996474a1b8b99826b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962740"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235355"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Słownik deweloperów platforma tożsamości firmy Microsoft
 
@@ -64,7 +64,7 @@ Aby umożliwić aplikacji Integracja z usługą i delegować funkcje zarządzani
 
 Zobacz [Integrowanie aplikacji z usługą Azure Active Directory] [ AAD-Integrating-Apps] Aby uzyskać więcej informacji.
 
-## <a name="authentication"></a>uwierzytelnianie
+## <a name="authentication"></a>Uwierzytelnianie
 
 Czynność wyzwaniem strona legalnych poświadczeń, zapewniając podstawą do utworzenia podmiotu zabezpieczeń ma być używany dla tożsamości i kontroli dostępu. Podczas [przydziału autoryzacji OAuth2](#authorization-grant) na przykład strona uwierzytelniania jest wypełnianie roli albo [właściciel zasobu](#resource-owner) lub [aplikacja kliencka](#client-application), w zależności od Przydział używany.
 
@@ -95,7 +95,7 @@ Zgodnie z definicją [ramy autoryzacji OAuth2][OAuth2-Role-Def], odpowiedzialne 
 
 W przypadku integracji aplikacji platforma tożsamości firmy Microsoft, platforma tożsamości usługi Microsoft implementuje rolę serwera autoryzacji dla aplikacji usługi Azure AD i usługi firmy Microsoft interfejsów API, na przykład [interfejsów API programu Microsoft Graph] [Microsoft-Graph].
 
-## <a name="claim"></a>oświadczenie
+## <a name="claim"></a>Oświadczenia
 
 A [token zabezpieczający](#security-token) zawiera oświadczenia, zapewniający potwierdzenia około jednej jednostki (takie jak [aplikacja kliencka](#client-application) lub [właściciel zasobu](#resource-owner)) do innej jednostki (takie jak [serwer zasobów](#resource-server)). Oświadczenia są pary nazwa/wartość, które przekazywania informacji o tokenu podmiotu (na przykład, podmiot zabezpieczeń został uwierzytelniony przez [serwera autoryzacji](#authorization-server)). Oświadczenia obecne w danym tokenie są zależne od kilku zmiennych, takich jak typ tokenu, typ poświadczenia używane do uwierzytelniania podmiotu, konfigurację aplikacji, itp.
 
@@ -142,7 +142,7 @@ A [aplikacja kliencka](#client-application) uzyskuje dostęp do [serwer zasobów
 
 Również powierzchni, podczas [zgody](#consent) procesu, dzięki czemu administrator lub właściciel zasobu możliwość grant/odmowa dostępu klienta do zasobów w ramach ich dzierżawy.
 
-Żądań dotyczących uprawnień są konfigurowane na stronie "aplikacje" / "Ustawienia" karcie [witryny Azure portal][AZURE-portal], w obszarze "Wymagane uprawnienia", wybierając odpowiednią "Uprawnienia delegowane" i "aplikacja Uprawnienia"(one wymaga członkostwa w roli administratora globalnego). Ponieważ [publicznych klienta](#client-application) nie może bezpiecznie obsługiwać poświadczeń, może zażądać jedynie uprawnień delegowanych, gdy [poufne klienta](#client-application) ma możliwość żądania aplikacją i delegowanego uprawnienia. Klienta [obiekt aplikacji](#application-object) przechowuje uprawnień zadeklarowanych w jego [właściwość requiredResourceAccess][AAD-Graph-App-Entity].
+Żądań dotyczących uprawnień są skonfigurowane na **uprawnienia do interfejsu API** strony dla aplikacji w [witryny Azure portal][AZURE-portal], wybierając żądane "delegowane uprawnienia" i " Uprawnienia aplikacji"(one wymaga członkostwa w roli administratora globalnego). Ponieważ [publicznych klienta](#client-application) nie może bezpiecznie obsługiwać poświadczeń, może zażądać jedynie uprawnień delegowanych, gdy [poufne klienta](#client-application) ma możliwość żądania aplikacją i delegowanego uprawnienia. Klienta [obiekt aplikacji](#application-object) przechowuje uprawnień zadeklarowanych w jego [właściwość requiredResourceAccess][AAD-Graph-App-Entity].
 
 ## <a name="resource-owner"></a>właściciel zasobu
 
@@ -182,7 +182,7 @@ Po użytkownik rejestru/Zaktualizuj aplikację w [witryny Azure portal][AZURE-po
 
 Aby uzyskać więcej informacji, zobacz [aplikacji i obiekty nazwę głównej usługi][AAD-App-SP-Objects].
 
-## <a name="sign-in"></a>logowanie
+## <a name="sign-in"></a>sign-in
 
 Proces [aplikacja kliencka](#client-application) inicjowanie uwierzytelnianie użytkowników końcowych i przechwytywanie dotyczące stanu na potrzeby uzyskiwania [token zabezpieczający](#security-token) i określać ich zakresy sesji aplikacji do tego stanu. Stan może zawierać artefakty, takie jak informacje o profilu użytkownika, a informacje pochodzące z oświadczeń tokenu.
 

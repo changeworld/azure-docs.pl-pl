@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec10359c6f684b1d7fb008946b7ceca2ed626ba
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545376"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235249"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikacji dla platformy tożsamości firmy Microsoft
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Aplikacje jednej strony (JavaScript)
 
-Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często są zapisywane przy użyciu struktury, takich jak AngularJS, Ember.js lub Durandal.js. Punkt końcowy platforma tożsamości firmy Microsoft obsługuje te aplikacje przy użyciu [niejawnego przepływu OAuth 2.0](v2-oauth2-implicit-grant-flow.md).
+Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często są zapisywane przy użyciu struktury, takich jak Angular, React czy Vue. Punkt końcowy platforma tożsamości firmy Microsoft obsługuje te aplikacje przy użyciu [niejawnego przepływu OAuth 2.0](v2-oauth2-implicit-grant-flow.md).
 
 W tym przepływie aplikacja odbiera tokenów, bezpośrednio z platformą Microsoft identity punktu końcowego, bez żadnych wymiany serwera serwera autoryzacji. Wszystkie logiki uwierzytelniania i obsługi przyjmuje sesji należy umieścić w całości klienta JavaScript, bez dodatkowych Strona przekierowania.
 

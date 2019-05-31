@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bde1983f89cb2fcd0a6fddadc2c3379dee4310be
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495464"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399628"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights i Azure functions
-W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
+W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub Power BI, aby analizować, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
 
-Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
+Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x. A [platformy Bot Framework 4.x, za pomocą usługi LUIS samouczka](luis-nodejs-tutorial-bf-v4.md) jest również dostępna.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -112,7 +112,7 @@ Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS.
 
 1. W portalu, wybierz **wszystkie zasoby** następnie Filtruj według nazwy bot aplikacji sieci web. Kliknij zasób z typem **usługi Application Insights**. Ikona usługi Application Insights jest żarówki. 
 
-    ! [[Wyszukiwania dla usługi app insights w witrynie Azure Portal](./media/luis-tutorial-appinsights/search-for-app-insights.png)
+    ! [[Wyszukiwania dla usługi app insights w witrynie Azure portal](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. Po otwarciu zasobu kliknij **wyszukiwania** ikonę lupy w prawym panelu. Nowy panel do wyświetla odpowiednie. W zależności od ilości danych telemetrycznych zostanie znaleziony, zespół może potrwać chwilę, aby wyświetlić. Wyszukaj `LUIS-results` i naciśnij klawisz na klawiaturze, należy wprowadzić. Lista jest zawężony do właśnie takie wyniki zapytania usługi LUIS, dodane za pomocą tego samouczka.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523638"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387347"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurowanie sieci web aplikacji współczynnik limit reguły zapory przy użyciu programu Azure PowerShell
 Sieci web platformy Azure reguła zapory usługi application (WAF) współczynnik limit Azure drzwiami frontowymi kontroluje liczbę żądań od jednego klienta adresu IP podczas okresu jednej minuty.
@@ -65,10 +65,10 @@ W poniższym przykładzie dopasowywane */promo* jako wartość *RequestUri* zmie
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>Utwórz regułę limit szybkości niestandardowe
-Ustaw limit szybkości za pomocą [New AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). W poniższym przykładzie ustawiono limit 1000. Żądania za pomocą dowolnego klienta do strony promocyjnych przekracza 1000 w ciągu jednej minuty są blokowane, dopóki nie rozpoczyna się następna minuta.
+Ustaw limit szybkości za pomocą [New AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). W poniższym przykładzie ustawiono limit 1000. Żądania za pomocą dowolnego klienta do strony promocyjnych przekracza 1000 w ciągu jednej minuty są blokowane, dopóki nie rozpoczyna się następna minuta.
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `

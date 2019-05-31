@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85e15b756d2ea241296e11ebfcb5bf3029143de7
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768924"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357780"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -29,7 +29,7 @@ Istnieją dwa sposoby, aby wyszukać lokalizację zainteresowania. Jednym ze spo
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i ustawia mechanizm uwierzytelniania, korzystanie z klucza subskrypcji. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-Tworzy drugi blok kodu `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie `atlas.service.MapsURL.newPipeline()` przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. `searchURL` Reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
+Tworzy drugi blok kodu `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie `atlas.service.MapsURL.newPipeline()` przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) wystąpienia. `searchURL` Reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
 
 Trzeci bloku kodu tworzy źródła danych obiektu przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy i dodać wyniki wyszukiwania do niego. A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Warstwa symbol zostanie utworzony i źródło danych jest dodawane do warstwy "symbol", która następnie zostanie dodany do mapy.
 

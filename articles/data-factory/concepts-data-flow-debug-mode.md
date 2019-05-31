@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 1a332dd46cac196c8185ddb12c0d900f5c36e1b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a50778db5fd57202c17f05407045259371912586
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61271009"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239188"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Tryb debugowania przepływu danych mapowania
 
@@ -22,10 +22,13 @@ Azure Data Factory mapowania przepływ danych ma tryb debugowania, które mogą 
 
 ![Debugowanie przycisk](media/data-flow/debugbutton.png "przycisk debugowania")
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Gdy tryb debugowania jest włączona, interaktywnie utworzysz przepływ danych z aktywnego klastra Spark. Sesja zostanie zamknięte po wyłączeniu debugowania w usłudze Azure Data Factory. Należy pamiętać o godzinowe opłaty naliczane przez usługi Azure Databricks w czasie, czy masz włączony sesji debugowania.
 
 W większości przypadków jest dobrą praktyką jest tworzenie przepływu danych w trybie debugowania, tak że można sprawdzać poprawność logiki biznesowej i wyświetlić przekształceń danych, przed opublikowaniem swoją pracę w usłudze Azure Data Factory. Należy również użyj przycisku "Debugowanie" na panelu potoku na przetestowanie przepływu danych w potoku.
+
+> [!NOTE]
+> Jasny tryb debugowania jest zielony, na pasku narzędzi usługi Data Factory, opłata wyniesie stawka przepływ danych debugowania wynosi 8 rdzeni/godz. ogólne obliczeń z 60-minutowego czas wygaśnięcia 
 
 ## <a name="debug-mode-on"></a>Tryb debugowania na
 Po przełączeniu w tryb debugowania, zostanie wyświetlony monit z formularzem boczny panel, który będzie żądać wskaż interaktywne klastra usługi Azure Databricks i wybierz opcje dla pobierania próbek źródła. Musisz używania interaktywne klastra z usługi Azure Databricks i wybierz rozmiar próbki z każdej usługi przekształceń źródła lub pobranie pliku tekstowego do użycia dla danych testowych.
@@ -36,12 +39,12 @@ Po przełączeniu w tryb debugowania, zostanie wyświetlony monit z formularzem 
 >Podczas pracy w trybie debugowania w przepływ danych ujścia nie będą zapisywane dane przekształcania. Sesja debugowania jest przeznaczony do służyć jako test > potrzeby przekształceń. Ujścia nie są wymagane podczas debugowania i są ignorowane w przepływie danych. Jeśli chcesz przetestować, zapisanie danych > w ujściem Twojej wykonania przepływu danych z potoku usługi Azure Data Factory i użyj wykonywania debugowania z potoku.
 
 ## <a name="debug-settings"></a>Ustawienia debugowania
-Ustawienia debugowania mogą być każde źródło, z przepływu danych będą wyświetlane w panelu po stronie i można również edytować, wybierając pozycję "Ustawienia źródła" na pasku narzędzi Projektanta przepływu danych. Można wybrać, limity i/lub źródła pliku do użytku dla każdego swoją transformację źródła. Limity wierszy, w tym ustawieniu są przeznaczone tylko dla bieżącej sesji debugowania. Umożliwia także ustawienia próbkowania w źródle ograniczania wierszy do transforamtion źródła.
+Ustawienia debugowania mogą być każde źródło, z przepływu danych będą wyświetlane w panelu po stronie i można również edytować, wybierając pozycję "Ustawienia źródła" na pasku narzędzi Projektanta przepływu danych. Można wybrać, limity i/lub źródła pliku do użytku dla każdego swoją transformację źródła. Limity wierszy, w tym ustawieniu są przeznaczone tylko dla bieżącej sesji debugowania. Umożliwia także ustawienia próbkowania w źródle ograniczania wierszy do przekształcania źródła.
 
 ## <a name="cluster-status"></a>Stan klastra
 Istnieje klastra wskaźnika stanu, w górnej części powierzchni projektu, który będzie zielony, gdy klaster jest gotowy do debugowania. Jeśli klaster jest już bez wyłączania zasilania, zielony wskaźnik będą wyświetlane niemal natychmiast. Jeśli klaster nie został jeszcze uruchomiony, po wprowadzeniu tryb debugowania, następnie trzeba będzie poczekać 5 – 7 minut dla klastra nad ułatwieniem wdrażania. Będzie żółty światła wskaźnika, aż wszystko będzie gotowe. Gdy klaster jest gotowy do debugowania przepływu danych, będzie zielony światła wskaźnika.
 
-Po zakończeniu z Twojej debugowania, Włącz debugowanie wyłączyć tak, aby klaster usługi Azure Databricks można zakończyć.
+Po zakończeniu Twojej debugowania, wyłączyć przełącznika debugowania, aby klaster usługi Azure Databricks można zakończyć i możesz już nie jest naliczana działanie debugowania.
 
 <img src="media/data-flow/datapreview.png" width="400">
 

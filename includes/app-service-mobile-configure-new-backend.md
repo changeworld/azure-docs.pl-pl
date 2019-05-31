@@ -5,50 +5,101 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 894dd5ea7270390780813b647fe7a8b4c0f173bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 99ca7e82a11687d25355589e7ea539a14cdb493b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139960"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66420768"
 ---
-1. Kliknij przycisk **App Services**, wybierz zaplecze funkcji Mobile Apps, wybierz pozycję **Szybki start**, a następnie wybierz platformę klienta (iOS, Android, Xamarin, Cordova).
+1. Pobierz klienta SDK przewodników Szybki Start dla następujących platform:
+    
+    [dla systemu iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS)  
+    [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift)  
+    [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android)  
+    [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS)  
+    [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android)  
+    [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms)  
+    [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova)  
+    [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)  
 
-    ![Witryna Azure Portal z wyróżnioną pozycją Mobile Apps — szybki start][quickstart]
+    > [!NOTE]
+    > Jeśli używasz projektu systemu iOS należy pobrać "azuresdk-iOS -\*.zip" z [najnowszej wersji usługi GitHub](https://github.com/Azure/azure-mobile-apps-ios-client/releases/latest). Rozpakuj i Dodaj `MicrosoftAzureMobile.framework` plik do katalogu głównego projektu.
+    >
 
-1. Jeśli nie skonfigurowano połączenia z bazą danych, utwórz je w następujący sposób:
+2. Musisz dodać połączenie z bazą danych lub Połącz z istniejącego połączenia. Po pierwsze należy ustalić, czy będzie Utwórz magazyn danych lub użyj istniejącej.
 
-    ![Witryna Azure Portal z opcją połączenia funkcji Mobile Apps z bazą danych][connect]
+    - **Utwórz nowy magazyn danych**: Jeśli zamierzasz utworzyć magazyn danych, należy użyć poniższej procedury szybkiego startu:
 
-    a. Utwórz nową bazę danych SQL i serwer. Może być konieczne pozostawienie wartości domyślnej MS_TableConnectionString w polu nazwy parametrów połączenia w celu wykonania kroku 3 poniżej.
+        [Szybki start: Wprowadzenie do pojedynczych baz danych w usłudze Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    ![Witryna Azure Portal z opcją tworzenia nowej bazy danych i serwera funkcji Mobile Apps][server]
+    - **Istniejące źródło danych**: Postępuj zgodnie z instrukcjami poniżej, jeśli chcesz użyć istniejącego połączenia bazy danych
 
-    b. Poczekaj na pomyślne utworzenie połączenia danych.
+        1. Format parametrów połączenia bazy danych SQL — `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
 
-    ![Powiadomienie witryny Azure Portal o pomyślnym utworzeniu połączenia danych][notification]
+           **{your_SQLServer}**  Nazwę serwera, to można znaleźć na stronie Przegląd usługi dla bazy danych i jest zwykle w formie "server_name.database.windows.net".
+            **{port}**  zwykle 1433.
+            **{your_catalogue}**  Nazwę bazy danych.
+            **{your_username}**  Nazwę użytkownika, dostęp do bazy danych.
+            **{your_password}**  Hasło, aby dostęp do bazy danych.
 
-    c. Połączenie danych musi się powieść.
+            [Dowiedz się więcej o format parametrów połączenia SQL](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)
 
-    ![Powiadomienie witryny Azure Portal „Masz już połączenie danych”][already-connection]
+        2. Dodaj parametry połączenia do Twojej **aplikacji mobilnej** w usłudze App Service możesz określić parametry połączenia dla aplikacji przy użyciu **konfiguracji** opcji w menu.
 
-1. W obszarze **2. Utwórz tabelę interfejsu API** wybierz dla języka Node.js opcję **Język zaplecza**.
+            Aby dodać parametry połączenia:
 
-1. Zaakceptuj potwierdzenie i wybierz pozycję **Utwórz tabelę TodoItem**.
-    Ta akcja spowoduje utworzenie nowej tabeli elementów do wykonania w bazie danych.
+            1. Kliknij pozycję **ustawienia aplikacji** kartę.
 
-    >[!IMPORTANT]
-    > Przełączenie istniejącego zaplecza na język Node.js spowoduje zastąpienie całej zawartości. Aby w zamian utworzyć zaplecze .NET, zobacz [Work with the .NET back-end server SDK for Mobile Apps (Praca z zestawem SDK serwera zaplecza .NET SDK dla funkcji Mobile Apps)][instructions].
+            2. Kliknij pozycję **[+] nowe parametry połączenia**.
 
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
-[connect]: ./media/app-service-mobile-configure-new-backend/connect-to-bd.png
-[notification]: ./media/app-service-mobile-configure-new-backend/notification-data-connection-create.png
-[server]: ./media/app-service-mobile-configure-new-backend/create-new-server.png
-[already-connection]: ./media/app-service-mobile-configure-new-backend/already-connection.png
+            3. Należy podać **nazwa**, **wartość** i **typu** dla parametrów połączenia.
 
-<!-- URLs -->
-[instructions]: ../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app
+            4. Typ **nazwa** jako `MS_TableConnectionString`
+
+            5. Wartość powinna być w parametrach połączenia, które utworzone w kroku przed.
+
+            6. W przypadku dodawania parametrów połączenia z bazą danych SQL Azure wybierz **SQLAzure** w obszarze **typu**.
+
+3. Usługa Azure Mobile Apps zawiera zestawy SDK dla zaplecza .NET i Node.js.
+
+   - **Zaplecze środowiska Node.js**
+    
+     Jeśli zamierzasz używać aplikacji szybkiego startu Node.js, postępuj zgodnie z poniższymi instrukcjami.
+
+     1. W witrynie Azure portal przejdź do **łatwych tabel**, zostanie wyświetlony następujący ekran.
+      
+        ![Węzeł łatwych tabel](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
+
+     2. Upewnij się, że parametry połączenia SQL został już dodany do **konfiguracji** kartę. Zaznacz pole wyboru **potwierdzam, że spowoduje to zastąpienie całej zawartości witryny** i kliknij przycisk **Utwórz tabelę TodoItem** przycisku.
+     
+        ![Konfiguracja łatwych tabel węzła](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
+
+     3. W **łatwych tabel**, kliknij przycisk **+ Dodaj** przycisku.
+    
+        ![Przycisk Dodaj węzeł łatwych tabel](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
+
+     4. Utwórz `TodoItem` tabelę z dostęp anonimowy.
+      
+        ![Łatwe tabele węźle Dodaj tabelę](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
+
+   - **Zaplecze platformy .NET**
+    
+        Jeśli zamierzasz używać aplikacji szybkiego startu platformy .NET, postępuj zgodnie z poniższymi instrukcjami.
+
+        1. Pobierz Projekt serwera platformy .NET dla aplikacji mobilnych platformy Azure z [repozytorium azure-mobile-apps-quickstarts](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet/Quickstart).
+
+        2. Tworzenie projektu serwera .NET lokalnie w programie Visual Studio.
+
+        3. W programie Visual Studio, otwórz Solution Explorer, kliknij prawym przyciskiem myszy `ZUMOAPPNAMEService` projektu, kliknij przycisk **Publikuj**, zostanie wyświetlony `Publish to App Service` okna. Jeśli pracujesz na komputerze Mac, zapoznaj się z innych sposobów wdrażania aplikacji [tutaj](https://docs.microsoft.com/en-us/azure/app-service/deploy-local-git).
+        
+           ![Publikowanie z programu Visual studio](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
+
+        4. Wybierz **usługi App Service** publikować docelowego, następnie kliknij przycisk **wybierz istniejącą**, następnie kliknij przycisk **Publikuj** znajdujący się u dołu okna.
+
+        5. Musisz zalogować się do programu Visual Studio z subskrypcją platformy Azure najpierw. Wybierz `Subscription`, `Resource Group`, a następnie wybierz nazwę swojej aplikacji. Gdy wszystko będzie gotowe, kliknij przycisk **OK**, spowoduje to wdrożenie projektu serwera platformy .NET, czy masz lokalnie do zaplecza usługi App Service. Po zakończeniu wdrażania nastąpi przekierowanie do `http://{zumoappname}.azurewebsites.net/` w przeglądarce.
+        
+           ![Wewnętrznej bazy danych jest uruchomiona](./media/app-service-mobile-configure-new-backend/backend-is-up.png)

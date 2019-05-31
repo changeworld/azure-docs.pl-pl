@@ -2,24 +2,24 @@
 title: Obsługę zasobów Azure Red Hat OpenShift | Dokumentacja firmy Microsoft
 description: Dowiedz się, które regiony platformy Azure i rozmiary maszyn wirtualnych są obsługiwane przez program Microsoft Azure Red Hat OpenShift.
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/15/2019
-ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788695"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306216"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Zasoby platformy Azure Red Hat OpenShift
 
 Ten temat zawiera listę regionów platformy Azure i rozmiary maszyn wirtualnych obsługiwanych przez usługę Microsoft Azure Red Hat OpenShift.
 
-## <a name="azure-regions"></a>Regiony platformy Azure
+## <a name="azure-regions"></a>Regiony świadczenia usługi Azure
 
 Zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bieżącą listę regionów, w którym można wdrożyć Azure Red Hat OpenShift klastrów.
 

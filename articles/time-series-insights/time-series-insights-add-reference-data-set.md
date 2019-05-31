@@ -4,19 +4,19 @@ description: W tym artykule opisano sposób dodawania zestawu danych referencyjn
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0b9db05effe42880465310f6eb5c38e3e832266
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 62c3b35f80300a38213b089567c3f63a8a2ce8db
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606912"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235070"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
 
@@ -26,7 +26,7 @@ Zestawu danych referencyjnych jest kolekcją elementów, które polepszają zdar
 
 Dane referencyjne nie jest przyłączona wstecznie. W związku z tym tylko bieżące i przyszłe transferu danych przychodzących danych jest dopasowane i przyłączone do odwołania zestawu daty, po jego skonfigurowaniu i przekazać.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Więcej informacji na temat modelu danych usługi Time Series Insights odwołania.</br>
 

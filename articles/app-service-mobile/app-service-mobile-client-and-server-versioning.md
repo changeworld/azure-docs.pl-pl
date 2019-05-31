@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 56c5e0582afe55dcd63aa056817898d3d4942419
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cfa6a363725c35083b32d6de1dd1371777f91907
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859077"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240302"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji klienta i serwera w funkcji Mobile Apps i Mobile Services
 Najnowsza wersja usługi Azure Mobile Services to **Mobile Apps** funkcji Azure App Service.
@@ -29,7 +29,7 @@ Oznacza to, należy użyć *Mobile Apps* zestawu SDK klienta za pomocą *Mobile 
 
 Uwaga: zawsze, gdy ten dokument odwołuje się do *usług Mobile Services* wewnętrznej bazy danych, nie zawsze musi być hostowane w usłudze Mobile Services. Teraz jest możliwa migracja usługi mobilnej do uruchamiania w usłudze App Service bez żadnych zmian w kodzie, ale nadal będzie korzystać z usługi *usług Mobile Services* wersji zestawu SDK.
 
-Aby dowiedzieć się więcej na temat migracji do usługi App Service bez żadnych zmian w kodzie, zobacz artykuł [Migracja usługi mobilnej w usłudze Azure App Service].
+Aby dowiedzieć się więcej na temat migracji do usługi App Service bez żadnych zmian w kodzie, zobacz artykuł [migracji usługi mobilnej w usłudze Azure App Service].
 
 ## <a name="header-specification"></a>Specyfikacja nagłówka
 Klucz `ZUMO-API-VERSION` może być określony w nagłówku HTTP lub ciągu zapytania. Wartość jest ciągiem wersji w postaci **x.y.z**.
@@ -47,50 +47,6 @@ Użytkownik może zrezygnować z wersji sprawdzanie przez ustawienie wartości *
 
 > [!NOTE]
 > Istnieje szereg zmian w zachowaniu między usługami Mobile Services i Mobile Apps, szczególnie w obszarach synchronizacji w trybie offline, uwierzytelnianie i powiadomienia wypychane. Tylko powinien możesz zrezygnować z wersji sprawdzania po Ukończ testowanie zapewnienie te zachowania zmiany nie przerywają funkcjonalności aplikacji.
->
->
-
-## <a name="summary-of-compatibility-for-all-versions"></a>Podsumowanie zgodności dla wszystkich wersji
-Na wykresie poniżej przedstawiono zgodność między wszystkie typy klienta i serwera. Zapleczem jest klasyfikowana jako albo Mobile **usług** lub Mobile **aplikacje** na podstawie zestawu SDK, który używa serwera.
-
-|  | **Usługi Mobile Services** Node.js lub .NET | **Aplikacje mobilne** Node.js lub .NET |
-| --- | --- | --- |
-| [Klienci usług Mobile Services] |OK |Błąd\* |
-| [Aplikacje mobilne klientów] |Błąd\* |OK |
-
-\*To można kontrolować, określając **MS_SkipVersionCheck**.
-
-<!-- IMPORTANT!  The anchors for Mobile Services and Mobile Apps MUST be 1.0.0 and 2.0.0 respectively, since there is an exception error message that uses those anchors. -->
-
-<!-- NOTE: the fwlink to this document is https://go.microsoft.com/fwlink/?LinkID=690568 -->
-
-## <a name="1.0.0"></a>Klienta usługi Mobile Services i serwera
-Zestawy SDK klientów w poniższej tabeli są zgodne z **usług Mobile Services**.
-
-Uwaga: usług Mobile Services zestawy SDK klientów *nie* Wyślij wartość nagłówka dla `ZUMO-API-VERSION`. Jeśli usługa otrzyma ten nagłówek lub wartości ciągu zapytania, zostanie zwrócony błąd, chyba że jawnie użytkownik zgodził się zgodnie z powyższym opisem.
-
-### <a name="MobileServicesClients"></a> Mobile *usług* zestawów SDK klienta
-| Platforma klienta | Wersja | Wartość nagłówka wersji |
-| --- | --- | --- |
-| Klient zarządzany (Windows, Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |Nie dotyczy |
-| iOS |[2.2.2](https://aka.ms/gc6fex) |Nie dotyczy |
-| Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |Nie dotyczy |
-| HTML |[1.2.7](https://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |Nie dotyczy |
-
-### <a name="mobile-services-server-sdks"></a>Mobile *usług* zestawami SDK serwera
-| Platforma serwera | Wersja | Zaakceptowana wersja nagłówka |
-| --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**Nie nagłówka wersji** |
-| Node.js |(już wkrótce) |**Nie nagłówka wersji** |
-
-<!-- TODO: add Node npm version -->
-
-### <a name="behavior-of-mobile-services-backends"></a>Zachowanie zaplecza usług Mobile Services
-| ZUMO-API-VERSION | Wartość MS_SkipVersionCheck | Odpowiedź |
-| --- | --- | --- |
-| Nie określono |Dowolne |200 — OK |
-| Dowolna wartość |True |200 — OK |
-| Dowolna wartość |Określona wartość false/nie |400 - Niewłaściwe żądanie |
 
 ## <a name="2.0.0"></a>Usługa Azure Mobile Apps klienta i serwera
 ### <a name="MobileAppsClients"></a> Mobile *aplikacje* zestawów SDK klienta
@@ -101,8 +57,6 @@ Sprawdzanie wersji został wprowadzony w następujących wersjach zestawu SDK kl
 | Klient zarządzany (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
 | Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
-
-<!-- TODO: add HTML version when released -->
 
 ### <a name="mobile-apps-server-sdks"></a>Mobile *aplikacje* zestawami SDK serwera
 Sprawdzanie wersji znajduje się w poniższych wersjach zestawu SDK serwera:
@@ -121,12 +75,6 @@ Sprawdzanie wersji znajduje się w poniższych wersjach zestawu SDK serwera:
 | 2.0.0-2.x.y |Określona wartość false/nie |200 — OK |
 | 3.0.0-3.x.y |Określona wartość false/nie |400 - Niewłaściwe żądanie |
 
-## <a name="next-steps"></a>Następne kroki
-* [Migracja usługi mobilnej w usłudze Azure App Service]
-
-[Klienci usług Mobile Services]: #MobileServicesClients
-[Aplikacje mobilne klientów]: #MobileAppsClients
-
-
+[Mobile Services clients]: #MobileServicesClients
+[Mobile Apps clients]: #MobileAppsClients
 [Mobile App Server SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
-[Migracja usługi mobilnej w usłudze Azure App Service]: app-service-mobile-migrating-from-mobile-services.md

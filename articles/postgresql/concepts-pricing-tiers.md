@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: e2580a57f943ad8da16cfbaeda2ee35d0f4bb691
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: ed534f910fa1e44d3d53ab61ee86378eba788036
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073195"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240381"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -20,7 +20,7 @@ W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Data
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Generacja obliczeń | Gen 4, 5. generacji | Gen 4, 5. generacji | 5. generacja |
-| Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
@@ -36,51 +36,9 @@ Aby wybrać warstwę cenową, skorzystaj z poniższej tabeli jako punktu wyjści
 
 Po utworzeniu serwera, liczba rdzeni wirtualnych, generacja sprzętu i ceny warstwy (z wyjątkiem do i z Basic) można zmienić w górę lub w dół w ciągu kilku sekund. Możesz również niezależnie dostosować wielkość pamięci masowej w górę oraz okres przechowywania kopii zapasowej w górę lub w dół bez przestojów aplikacji. Nie można zmienić typu magazynu kopii zapasowych, po utworzeniu serwera. Aby uzyskać więcej informacji, zobacz [skalować zasoby](#scale-resources) sekcji.
 
-
 ## <a name="compute-generations-and-vcores"></a>Generacji zasobów obliczeniowych i rdzeni wirtualnych
 
-Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezentuje logiczny procesor CPU bazowego sprzętu. Obecnie można wybrać z obu generacji obliczeń Gen 4 i 5 ogólnego. Logiczne procesory CPU 4 generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów. Logiczne procesory CPU 5 generacji wykorzystują procesory Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów. Gen 4 i 5 ogólnego są dostępne w następujących regionach ("X" oznacza dostępne). 
-
-| **Region platformy Azure** | **4. generacji** | **5. generacji** |
-|:---|:----------:|:--------------------:|
-| Środkowe stany USA |  | X |
-| Wschodnie stany USA |  | X |
-| Wschodnie stany USA 2 |  | X |
-| Środkowo-północne stany USA |  | X |
-| Środkowo-południowe stany USA |  | X |
-| Zachodnie stany USA |  | X |
-| Zachodnie stany USA 2 |  | X |
-| Brazylia Południowa |  | X |
-| Kanada Środkowa |  | X |
-| Kanada Wschodnia |  | X |
-| Europa Północna |  | X |
-| Europa Zachodnia |  | X |
-| Francja Środkowa |  | X |
-| Południowe Zjednoczone Królestwo |  | X |
-| Zachodnie Zjednoczone Królestwo |  | X |
-| Azja Wschodnia |  | X |
-| Azja Południowo-Wschodnia |  | X |
-| Australia Wschodnia |  | X |
-| Australia Środkowa |  | X |
-| Australia Środkowa 2 |  | X |
-| Australia Południowo-Wschodnia |  | X |
-| Indie Środkowe |  | X |
-| Indie Południowe |  | X |
-| Indie Zachodnie |  | X |
-| Japonia Wschodnia |  | X |
-| Japonia Zachodnia |  | X |
-| Korea Środkowa |  | X |
-| Korea Południowa |  | X |
-| Chiny wschodnie 1 | X |  |
-| Chiny Wschodnie 2 |  | X |
-| Chiny Północne 1 | X |  |
-| Chiny Północne 2 |  | X |
-| Niemcy Środkowe |  | X |
-| US DoD — środkowe stany  | X |  |
-| US DoD — wschodnie stany  | X |  |
-| Administracja USA — Arizona |  | X |
-| Administracja USA — Teksas |  | X |
-| Administracja USA — Wirginia |  | X |
+Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezentuje logiczny procesor CPU bazowego sprzętu. Chiny wschodnie 1, Chiny Północne 1, dod — środkowe stany USA i dod — wschodnie stany USA wykorzystują Gen 4 logiczne procesory CPU, które wykorzystują procesory Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów. Korzystanie z innych regionów Gen 5 logiczne procesory CPU, które wykorzystują procesory Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów.
 
 ## <a name="storage"></a>Magazyn
 
@@ -93,19 +51,27 @@ Magazyn, który możesz aprowizować to pojemność magazynu jest dostępne dla 
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
 | Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS |
 
-Można dodać dodatkowej pojemności, podczas i po utworzeniu serwera. Warstwa podstawowa nie zapewnia gwarancję operacji We/Wy. Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych operacje We/Wy skalowanie o rozmiarze aprowizowanego magazynu współczynnik 3:1.
+Dodanie pojemności dodatkowego miejsca do magazynowania, podczas i po utworzeniu serwera i umożliwić systemu w celu zwiększenia magazynu automatycznie w zależności od użycia magazynu obciążenia. Warstwa podstawowa nie zapewnia gwarancję operacji We/Wy. Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych operacje We/Wy skalowanie o rozmiarze aprowizowanego magazynu współczynnik 3:1.
 
 Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za pomocą poleceń interfejsu wiersza polecenia platformy Azure. Istotne metryki do monitorowania są [limit przestrzeni dyskowej, procent użycia magazynu, magazynu i procent We/Wy](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 
-Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie spadnie poniżej 5 GB lub 5% zaaprowizowanej pojemności magazynu, w zależności od tego, która wartość będzie niższa. Przykładowo po aprowizowaniu 100 GB miejsca do magazynowania i rzeczywiste użycie przechodzi przez 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli zaaprowizowano 5 GB pojemności magazynu, serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca spanie poniżej 250 MB.  
+Serwery z mniej niż 100 GB zainicjowano obsługę administracyjną magazynu są oznaczone tylko do odczytu, jeśli ilość wolnego miejsca jest mniejsza niż 512MB lub 5% rozmiaru aprowizowanego magazynu. Serwery z więcej niż 100 GB zainicjowano obsługę administracyjną magazynu są oznaczone odczytu, tylko wtedy, gdy ilość wolnego miejsca jest mniejsza niż 5 GB.
+
+Przykładowo po aprowizowaniu 110 GB miejsca do magazynowania i rzeczywiste użycie przekroczą 105 GB danych, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli aprowizowaniu 5 GB miejsca do magazynowania, serwer zostanie oznaczony tylko do odczytu po przekraczać 512 MB wolnego miejsca.
 
 Gdy serwer jest wartość tylko do odczytu, wszystkie istniejące sesje są odłączone i niezatwierdzone transakcje są wycofywane. Wszystkie operacje zapisu w kolejnych i transakcji zatwierdza kończyć się niepowodzeniem. Wszystkie kolejne zapytania odczytu będzie działać nieprzerwanie.  
 
 Można zwiększyć ilość aprowizowanego magazynu na serwerze lub Rozpocznij nową sesję w trybie i upuść danych odczytu i zapisu do odzyskania ilość wolnego miejsca. Uruchamianie `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` ustawia bieżącej sesji, aby odczytać trybie zapisu. Aby uniknąć uszkodzenia danych, nie należy wykonywać dowolne operacje zapisu, gdy serwer jest nadal w stanie tylko do odczytu.
 
-Zalecane jest skonfigurowanie alertu, aby otrzymywać powiadomienia, gdy magazyn serwera zbliża się do progu, dzięki czemu można uniknąć, jakim jest w stanie tylko do odczytu. Aby uzyskać więcej informacji, zobacz dokumentację na [sposobu ustawiania alertu](howto-alert-on-metric.md).
+Zaleca się włączenie funkcji magazynu automatyczne powiększanie lub skonfigurować alert, aby otrzymywać powiadomienia, gdy magazyn serwera zbliża się do progu więc można uniknąć, jakim jest w stanie tylko do odczytu. Aby uzyskać więcej informacji, zobacz dokumentację na [sposobu ustawiania alertu](howto-alert-on-metric.md).
+
+### <a name="storage-auto-grow"></a>Magazyn automatyczne powiększanie
+
+Jeśli rosnąć automatycznie magazynu jest włączona, Magazyn automatycznie rozszerza się bez wywierania wpływu na obciążenie pracą. W przypadku serwerów z mniej niż 100 GB zainicjowano obsługę administracyjną magazynu rozmiar aprowizowanego magazynu jest zwiększana o 5 GB, jak ilość wolnego miejsca jest poniżej większą niż 1 GB lub 10% aprowizowanego magazynu. W przypadku serwerów z więcej niż 100 GB magazynu aprowizowanego rozmiaru aprowizowanego magazynu zwiększa się o 5% gdy ilość wolnego miejsca jest poniżej 5% rozmiaru aprowizowanego magazynu. Limity pamięci masowej, jak określono powyżej mają zastosowanie.
+
+Przykładowo po aprowizowaniu 1000 GB miejsca do magazynowania i rzeczywiste użycie przekroczą 950 GB, rozmiar magazynu serwera zostaje zwiększona do 1050 GB. Alternatywnie Jeśli aprowizowaniu 10 GB miejsca do magazynowania, rozmiar magazynu jest wzrost do 15 GB podczas kosztuje mniej niż 1 GB pamięci.
 
 ## <a name="backup"></a>Backup
 

@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b3b3b019df70b6c27833afdd0447ecf32da32ff
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821831"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305013"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
 Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* są ważne funkcje w każdej firmie. Usługa Azure Event Hubs obsługuje zarówno odzyskiwania po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. 
 
-Funkcji odzyskiwania po awarii geograficznej jest ogólnie dostępna w ramach jednostki SKU standardowa centrów zdarzeń.
+Funkcja odzyskiwania po awarii geograficznej jest ogólnie dostępna, zarówno w przypadku centrów Event w warstwie standardowa, jak i w wersji dedykowanej jednostki SKU. Należy pamiętać, można tylko parę geograficznie przestrzenie nazw w tej samej warstwie jednostki SKU. Na przykład w przypadku przestrzeni nazw w klastrze, która jest oferowana tylko w naszych jednostki SKU w wersji dedykowanej, będzie tylko można sparować z przestrzenią nazw w innym klastrze. 
 
 ## <a name="outages-and-disasters"></a>Wyłączeń i awarii
 

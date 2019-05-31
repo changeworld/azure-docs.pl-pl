@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: b8bd6e7c77faa54a8ebf0842cf140ef8aa73e953
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834544"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304356"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad usługi API Management
 W tym artykule omówiono wyrażenia zasad składnia jest C# 7. Każde wyrażenie ma dostęp do niejawnie podana [kontekstu](api-management-policy-expressions.md#ContextVariables) zmienną i dozwolonych [podzbioru](api-management-policy-expressions.md#CLRTypes) dla typów programu .NET Framework.
@@ -192,7 +192,7 @@ Poniższa tabela zawiera listę typów programu .NET Framework i ich elementów 
 |System.Xml.Linq.XComment|Wszyscy|
 |System.Xml.Linq.XContainer|Wszyscy|
 |System.Xml.Linq.XDeclaration|Wszyscy|
-|System.Xml.Linq.XDocument|Wszystko, z wyjątkiem: Załaduj|
+|System.Xml.Linq.XDocument|Wszystko, z wyjątkiem: Ładowanie|
 |System.Xml.Linq.XDocumentType|Wszyscy|
 |System.Xml.Linq.XElement|Wszyscy|
 |System.Xml.Linq.XName|Wszyscy|
@@ -210,26 +210,26 @@ Zmiennej o nazwie `context` jest niejawnie dostępne we wszystkich zasadach [wyr
 
 |Zmiennej kontekstowej|Dozwolone metody, właściwości i wartości parametrów|
 |----------------------|-------------------------------------------------------|
-|Kontekst|Api: IApi<br /><br /> Wdrożenie<br /><br /> Który upłynął: TimeSpan — odstęp czasu między wartość sygnatury czasowej i bieżący czas<br /><br /> LastError<br /><br /> Operacja<br /><br /> Product (Produkt)<br /><br /> Zażądaj<br /><br /> RequestId: Identyfikator GUID — identyfikator unikatowy żądania<br /><br /> Odpowiedź<br /><br /> Subskrypcja<br /><br /> Sygnatura czasowa: DateTime — punktu w czasie, gdy otrzymano żądanie<br /><br /> Śledzenie: bool — wskazuje, jeśli śledzenie jest włączone czy wyłączone <br /><br /> Użytkownik<br /><br /> Zmienne: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
-|context.Api|Identyfikator: ciąg<br /><br /> IsCurrentRevision: bool<br /><br />  Nazwa: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Poprawka: ciąg<br /><br /> ServiceUrl: IUrl<br /><br /> Wersja: ciąg |
-|context.Deployment|Region: ciąg<br /><br /> ServiceName: ciąg<br /><br /> Certyfikaty: IReadOnlyDictionary<string, X509Certificate2>|
-|context.LastError|Źródło: ciąg<br /><br /> Przyczyna: ciąg<br /><br /> Komunikat: ciąg<br /><br /> Zakres: ciąg<br /><br /> Sekcja: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> PolicyId: ciąg<br /><br /> Aby uzyskać więcej informacji na temat kontekstu. LastError, zobacz [obsługi błędów](api-management-error-handling-policies.md).|
-|context.Operation|Identyfikator: ciąg<br /><br /> Metoda: ciąg<br /><br /> Nazwa: ciąg<br /><br /> UrlTemplate: ciąg|
-|context.Product|Interfejsy API: Interfejs IEnumerable < IApi\><br /><br /> ApprovalRequired: bool<br /><br /> Grupy: Interfejs IEnumerable < IGroup\><br /><br /> Identyfikator: ciąg<br /><br /> Nazwa: ciąg<br /><br /> Stan: wyliczenia ProductState {NotPublished, opublikowano}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
-|context.Request|Treść: IMessageBody<br /><br /> Certyfikat: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Nagłówki: IReadOnlyDictionary < string, string [] ><br /><br /> Adres IP: ciąg<br /><br /> MatchedParameters: IReadOnlyDictionary < string, string ><br /><br /> Metoda: ciąg<br /><br /> OriginalUrl:IUrl<br /><br /> Adres URL: IUrl|
-|Parametry kontekstu. Request.Headers.GetValueOrDefault (headerName: string, defaultValue: ciąg)|headerName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości nagłówka żądania rozdzielonych przecinkami lub `defaultValue` Jeśli nagłówek nie zostanie znaleziony.|
-|context.Response|Treść: IMessageBody<br /><br /> Nagłówki: IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: ciąg|
-|Parametry kontekstu. Response.Headers.GetValueOrDefault (headerName: string, defaultValue: ciąg)|headerName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości nagłówka odpowiedzi rozdzielonych przecinkami lub `defaultValue` Jeśli nagłówek nie zostanie znaleziony.|
-|context.Subscription|CreatedTime: DateTime<br /><br /> EndDate: Data i godzina?<br /><br /> Identyfikator: ciąg<br /><br /> Klucz: ciąg<br /><br /> Nazwa: ciąg<br /><br /> PrimaryKey: ciąg<br /><br /> Klucz pomocniczy: ciąg<br /><br /> Oprócz parametru StartDate: Data i godzina?|
-|context.User|Adres e-mail: ciąg<br /><br /> Imię: ciąg<br /><br /> Grupy: Interfejs IEnumerable < IGroup\><br /><br /> Identyfikator: ciąg<br /><br /> Tożsamości: Interfejs IEnumerable < IUserIdentity\><br /><br /> Nazwisko: ciąg<br /><br /> Uwaga: ciąg<br /><br /> RegistrationDate: DateTime|
-|IApi|Identyfikator: ciąg<br /><br /> Nazwa: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Protokoły: Interfejs IEnumerable < string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|
-|IGroup|Identyfikator: ciąg<br /><br /> Nazwa: ciąg|
-|IMessageBody|Jako < T\>(preserveContent: bool = false): Gdzie T: ciąg znaków, JObject, JToken, JArray, XNode XElement i XDocument<br /><br /> `context.Request.Body.As<T>` i `context.Response.Body.As<T>` metody są używane do odczytu, żądań i odpowiedzi, treści wiadomości w określonym typie `T`. Domyślnie metoda korzysta z oryginalnego strumienia treści komunikatu i renderuje ona niedostępna po zwraca. Aby uniknąć przez metody działają na kopię w strumieniu treści, należy ustawić `preserveContent` parametr `true`. Przejdź [tutaj](api-management-transformation-policies.md#SetBody) aby zobaczyć przykład.|
-|IUrl|Host: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Port: int<br /><br /> Zapytanie: IReadOnlyDictionary < string, string [] ><br /><br /> Ciąg zapytania: ciąg<br /><br /> Schemat: ciąg|
-|IUserIdentity|Identyfikator: ciąg<br /><br /> Dostawca: ciąg|
-|ISubscriptionKeyParameterNames|Nagłówek: ciąg<br /><br /> Zapytanie: ciąg|
-|ciąg IUrl.Query.GetValueOrDefault (queryParameterName: string, defaultValue: ciąg)|queryParameterName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości parametrów zapytania rozdzielonych przecinkami lub `defaultValue` Jeśli parametr nie zostanie znaleziony.|
-|Kontekst T. Variables.GetValueOrDefault < T\>(nazwa_zmiennej: string, defaultValue: T)|nazwa_zmiennej: ciąg<br /><br /> defaultValue: W<br /><br /> Zwraca wartość zmiennej rzutowane na typ `T` lub `defaultValue` Jeśli zmienna nie zostanie znaleziony.<br /><br /> Ta metoda zgłasza wyjątek, jeśli określony typ jest niezgodny z rzeczywisty typ zwracany zmiennej.|
+|Kontekst|[Interfejs API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Wdrożenie](#ref-context-deployment)<br /><br /> Który upłynął: TimeSpan — odstęp czasu między wartość sygnatury czasowej i bieżący czas<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operacja](#ref-context-operation)<br /><br /> [Produkt](#ref-context-product)<br /><br /> [Żądanie](#ref-context-request)<br /><br /> RequestId: Identyfikator GUID — identyfikator unikatowy żądania<br /><br /> [Odpowiedź](#ref-context-response)<br /><br /> [Subskrypcja](#ref-context-subscription)<br /><br /> Sygnatura czasowa: DateTime — punktu w czasie, gdy otrzymano żądanie<br /><br /> Śledzenie: bool — wskazuje, jeśli śledzenie jest włączone czy wyłączone <br /><br /> [Użytkownik](#ref-context-user)<br /><br /> [Zmienne](#ref-context-variables): IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
+|<a id="ref-context-api"></a>kontekst. Interfejs API|Identyfikator: ciąg<br /><br /> IsCurrentRevision: bool<br /><br />  Nazwa: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Poprawka: ciąg<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Wersja: ciąg |
+|<a id="ref-context-deployment"></a>context.Deployment|Region: ciąg<br /><br /> ServiceName: ciąg<br /><br /> Certyfikaty: IReadOnlyDictionary<string, X509Certificate2>|
+|<a id="ref-context-lasterror"></a>context.LastError|Źródło: ciąg<br /><br /> Przyczyna: ciąg<br /><br /> Komunikat: ciąg<br /><br /> Zakres: ciąg<br /><br /> Sekcja: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> PolicyId: ciąg<br /><br /> Aby uzyskać więcej informacji na temat kontekstu. LastError, zobacz [obsługi błędów](api-management-error-handling-policies.md).|
+|<a id="ref-context-operation"></a>context.Operation|Identyfikator: ciąg<br /><br /> Metoda: ciąg<br /><br /> Nazwa: ciąg<br /><br /> UrlTemplate: ciąg|
+|<a id="ref-context-product"></a>context.Product|Interfejsy API: Interfejs IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Grupy: Interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Identyfikator: ciąg<br /><br /> Nazwa: ciąg<br /><br /> Stan: wyliczenia ProductState {NotPublished, opublikowano}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
+|<a id="ref-context-request"></a>context.Request|Body: [IMessageBody](#ref-imessagebody)<br /><br /> Certyfikat: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Nagłówki](#ref-context-request-headers): IReadOnlyDictionary < string, string [] ><br /><br /> Adres IP: ciąg<br /><br /> MatchedParameters: IReadOnlyDictionary < string, string ><br /><br /> Metoda: ciąg<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adres URL: [IUrl](#ref-iurl)|
+|<a id="ref-context-request-headers"></a>Parametry kontekstu. Request.Headers.GetValueOrDefault (headerName: string, defaultValue: ciąg)|headerName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości nagłówka żądania rozdzielonych przecinkami lub `defaultValue` Jeśli nagłówek nie zostanie znaleziony.|
+|<a id="ref-context-response"></a>context.Response|Body: [IMessageBody](#ref-imessagebody)<br /><br /> [Nagłówki](#ref-context-response-headers): IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: ciąg|
+|<a id="ref-context-response-headers"></a>Parametry kontekstu. Response.Headers.GetValueOrDefault (headerName: string, defaultValue: ciąg)|headerName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości nagłówka odpowiedzi rozdzielonych przecinkami lub `defaultValue` Jeśli nagłówek nie zostanie znaleziony.|
+|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime: DateTime<br /><br /> EndDate: Data i godzina?<br /><br /> Identyfikator: ciąg<br /><br /> Klucz: ciąg<br /><br /> Nazwa: ciąg<br /><br /> PrimaryKey: ciąg<br /><br /> Klucz pomocniczy: ciąg<br /><br /> Oprócz parametru StartDate: Data i godzina?|
+|<a id="ref-context-user"></a>kontekst. Użytkownik|Adres e-mail: ciąg<br /><br /> Imię: ciąg<br /><br /> Grupy: Interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Identyfikator: ciąg<br /><br /> Tożsamości: Interfejs IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> Nazwisko: ciąg<br /><br /> Uwaga: ciąg<br /><br /> RegistrationDate: DateTime|
+|<a id="ref-iapi"></a>IApi|Identyfikator: ciąg<br /><br /> Nazwa: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Protokoły: Interfejs IEnumerable < string\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
+|<a id="ref-igroup"></a>IGroup|Identyfikator: ciąg<br /><br /> Nazwa: ciąg|
+|<a id="ref-imessagebody"></a>IMessageBody|Jako < T\>(preserveContent: bool = false): Gdzie T: ciąg znaków, JObject, JToken, JArray, XNode XElement i XDocument<br /><br /> `context.Request.Body.As<T>` i `context.Response.Body.As<T>` metody są używane do odczytu, żądań i odpowiedzi, treści wiadomości w określonym typie `T`. Domyślnie metoda korzysta z oryginalnego strumienia treści komunikatu i renderuje ona niedostępna po zwraca. Aby uniknąć przez metody działają na kopię w strumieniu treści, należy ustawić `preserveContent` parametr `true`. Przejdź [tutaj](api-management-transformation-policies.md#SetBody) aby zobaczyć przykład.|
+|<a id="ref-iurl"></a>IUrl|Host: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Port: int<br /><br /> [Zapytanie](#ref-iurl-query): IReadOnlyDictionary < string, string [] ><br /><br /> Ciąg zapytania: ciąg<br /><br /> Schemat: ciąg|
+|<a id="ref-iuseridentity"></a>IUserIdentity|Identyfikator: ciąg<br /><br /> Dostawca: ciąg|
+|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Nagłówek: ciąg<br /><br /> Zapytanie: ciąg|
+|<a id="ref-iurl-query"></a>ciąg IUrl.Query.GetValueOrDefault (queryParameterName: string, defaultValue: ciąg)|queryParameterName: ciąg<br /><br /> defaultValue: ciąg<br /><br /> Zwraca wartości parametrów zapytania rozdzielonych przecinkami lub `defaultValue` Jeśli parametr nie zostanie znaleziony.|
+|<a id="ref-context-variables"></a>Kontekst T. Variables.GetValueOrDefault < T\>(nazwa_zmiennej: string, defaultValue: T)|nazwa_zmiennej: ciąg<br /><br /> defaultValue: T<br /><br /> Zwraca wartość zmiennej rzutowane na typ `T` lub `defaultValue` Jeśli zmienna nie zostanie znaleziony.<br /><br /> Ta metoda zgłasza wyjątek, jeśli określony typ jest niezgodny z rzeczywisty typ zwracany zmiennej.|
 |BasicAuthCredentials AsBasic(input: this string)|wprowadzania: ciąg<br /><br /> Jeśli parametr wejściowy zawiera prawidłową wartość nagłówka żądania uwierzytelnienia podstawowe uwierzytelnianie HTTP, metoda zwraca obiekt typu `BasicAuthCredentials`; w przeciwnym razie metoda zwraca wartość null.|
 |wartość logiczna TryParseBasic (dane wejściowe: ten ciąg, wynik: się BasicAuthCredentials)|wprowadzania: ciąg<br /><br /> wynik: limit BasicAuthCredentials<br /><br /> Jeśli parametr wejściowy zawiera podstawowe uwierzytelnianie HTTP autoryzacji prawidłową w nagłówku żądania metoda zwraca `true` i parametr wynik zawiera wartość typu `BasicAuthCredentials`; w przeciwnym razie metoda zwraca `false`.|
 |BasicAuthCredentials|Hasło: ciąg<br /><br /> UserId: string|

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8522b1d0a8f8466870966d3f11ce66f7bf15672b
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016368"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226397"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Usługa Application Insights dla aplikacji platformy ASP.NET Core
 
@@ -380,9 +380,10 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 ## <a name="open-source-sdk"></a>Zestaw SDK typu open-source
 [Odczytywanie i Współtworzenie kodu](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 - Zewnętrzne wideo krok po kroku dotyczące [Konfigurowanie usługi Application Insights przy użyciu platformy .NET Core i Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) od podstaw.
+- Zewnętrzne wideo krok po kroku dotyczące [Konfigurowanie usługi Application Insights przy użyciu platformy .NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync) od podstaw.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zapoznaj się z przepływy użytkownika](../../azure-monitor/app/usage-flows.md) Aby zrozumieć, jak użytkownicy nawigują w aplikacjach.

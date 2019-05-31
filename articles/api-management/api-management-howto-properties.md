@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658039"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241688"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać wartości o nazwie w zasadach usługi Azure API Management
 Zasady usługi API Management są zaawansowaną możliwością system, który pozwala witrynie Azure portal zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można skonstruować przy użyciu wartości tekst dosłowny, wyrażenia zasad i nazwane wartości. 
@@ -27,16 +27,16 @@ Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz
 
 | Atrybut | Type | Opis |
 | --- | --- | --- |
-| Nazwa wyświetlana |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
-| Wartość |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
-|Wpis tajny|wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
-| `Tags` |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
+| `Display name` |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
+| `Value`        |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
+| `Secret`       |wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
+| `Tags`         |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 
 Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure/api-management/api-management-policy-expressions). Na przykład, wartość `ExpressionProperty` to wyrażenie zasad, które zwraca ciąg zawierający bieżącej daty i godziny. Właściwość `ContosoHeaderValue` jest oznaczony jako klucz tajny, dzięki czemu jego wartość nie jest wyświetlana.
 
-| Name (Nazwa) | Wartość | Wpis tajny | `Tags` |
+| Name (Nazwa) | Value | Secret | `Tags` |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
@@ -55,7 +55,7 @@ Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad]
 
 Po utworzeniu właściwości można edytować go, klikając właściwości. Jeśli zmienisz nazwę właściwości, wszystkie zasady, które odwołują się tę właściwość są automatycznie aktualizowane do użycia nowej nazwy.
 
-Aby uzyskać informacje na temat edytowania właściwości przy użyciu interfejsu API REST, zobacz [Edytuj właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/property?Patch).
+Aby uzyskać informacje na temat edytowania właściwości przy użyciu interfejsu API REST, zobacz [Edytuj właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property?patch).
 
 ## <a name="to-delete-a-property"></a>Aby usunąć właściwość
 
@@ -66,7 +66,7 @@ Aby usunąć właściwość, kliknij przycisk **Usuń** widoczny obok właściwo
 > 
 > 
 
-Aby uzyskać informacje na temat usuwania właściwości przy użyciu interfejsu API REST, zobacz [Usuń właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/property?Delete).
+Aby uzyskać informacje na temat usuwania właściwości przy użyciu interfejsu API REST, zobacz [Usuń właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>Wyszukiwanie i filtrowanie wartości o nazwie
 

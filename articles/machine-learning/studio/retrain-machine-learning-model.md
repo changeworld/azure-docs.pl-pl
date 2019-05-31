@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 395a231fcf43378a51e22427254abb196a46081e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709009"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245094"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne szkolenie i wdrożyć model uczenia maszynowego
 
@@ -49,7 +49,7 @@ Aby wdrożyć ponownego trenowania usługę sieci web, wykonaj następujące kro
     Teraz możesz wdrożyć eksperymentu szkolenia jako ponownego trenowania usługę sieci web, która generuje uczonego modelu i wyniki oceny modelu.
 
 1. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **ustawić usługę sieci Web**
-1. Wybierz **wdrażanie usługi sieci Web [New]**. W portalu usług sieci Web Azure Machine Learning zostanie otwarty na **wdrażanie usługi sieci Web** strony.
+1. Wybierz **wdrażanie usługi sieci Web [New]** . W portalu usług sieci Web Azure Machine Learning zostanie otwarty na **wdrażanie usługi sieci Web** strony.
 1. Wpisz nazwę usługi sieci web, a następnie wybierz plan płatności.
 1. Wybierz pozycję **Wdróż**.
 
@@ -59,7 +59,7 @@ W tym przykładzie używamy C# do tworzenia aplikacji ponownego trenowania. Umo�
 
 Do wywoływania interfejsów API do ponownego trenowania, wykonaj następujące kroki:
 
-1. Tworzenie C# konsoli aplikacji w programie Visual Studio: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
+1. Tworzenie C# konsoli aplikacji w programie Visual Studio: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)** .
 1. Zaloguj się do portalu usług sieci Web Machine Learning.
 1. Kliknij usługę sieci web, którą pracujesz z.
 1. Kliknij przycisk **używanie**.
@@ -89,7 +89,7 @@ Przykładowy kod BES służy do przekazywania pliku z dysku lokalnego (na przyk�
 1. Z listy kont magazynu wybierz jeden do przechowywania retrained modelu.
 1. W kolumnie nawigacji po lewej stronie kliknij **klucze dostępu**.
 1. Skopiuj i Zapisz **podstawowy klucz dostępu**.
-1. W kolumnie nawigacji po lewej stronie kliknij **kontenery**.
+1. W kolumnie nawigacji po lewej stronie kliknij **obiektów blob**.
 1. Wybierz istniejący kontener, lub Utwórz nową i Zapisz nazwę.
 
 Znajdź *StorageAccountName*, *StorageAccountKey*, i *StorageContainerName* deklaracji i zaktualizuj wartości, które zostały zapisane w portalu.

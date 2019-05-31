@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693559"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243264"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Subskrypcje w usłudze Azure API Management
 
@@ -42,7 +42,7 @@ Subskrypcje można skojarzyć z różnych zakresów: produkt, wszystkie interfej
 
 ### <a name="subscriptions-for-a-product"></a>Subskrypcji dla produktu
 
-Tradycyjnie subskrypcji w usłudze API Management zawsze były skojarzone z pojedynczym [oferowanego interfejsu API](api-management-terminology.md) zakresu. Deweloperzy znaleźć listę produktów w portalu dla deweloperów. Następnie będzie przesyłają oni żądania subskrypcji dla produktów, że użytkownik chce używać. Po zatwierdzeniu żądania subskrypcji automatycznie lub przez wydawców interfejsów API, deweloper służy kluczy w nim dostęp do wszystkich interfejsów API w produkcie.
+Tradycyjnie subskrypcji w usłudze API Management zawsze były skojarzone z pojedynczym [oferowanego interfejsu API](api-management-terminology.md) zakresu. Deweloperzy znaleźć listę produktów w portalu dla deweloperów. Następnie będzie przesyłają oni żądania subskrypcji dla produktów, że użytkownik chce używać. Po zatwierdzeniu żądania subskrypcji automatycznie lub przez wydawców interfejsów API, deweloper służy kluczy w nim dostęp do wszystkich interfejsów API w produkcie. Obecnie portal dla deweloperów wyświetlane są tylko subskrypcje w zakresie produktu w ramach sekcji profilu użytkownika. 
 
 ![Subskrypcje produktów](./media/api-management-subscriptions/product-subscription.png)
 

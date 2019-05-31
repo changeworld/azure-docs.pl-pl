@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.openlocfilehash: be592cb6bb7c041fab0a2f96a338f4f4bb0ff00a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510922"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225363"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Odczytu replik w usłudze Azure Database for MySQL
 
@@ -42,8 +42,7 @@ Jeśli serwer główny nie ma żadnych istniejących serwerów repliki, wzorzec 
 
 Po uruchomieniu przepływu pracy tworzenia repliki, puste serwera Azure Database for MySQL jest tworzony. Nowy serwer jest wypełniony danymi, która znajdowała się na serwerze głównym. Godzina utworzenia zależy od ilości danych na wzorcu i czas od ostatniej pełnej cotygodniowej kopii zapasowej. Czas może wynosić od kilku minut do kilku godzin.
 
-> [!NOTE]
-> Jeśli nie masz zestaw alertu magazynu na serwerach, firma Microsoft zaleca, że możesz to zrobić. Ten alert informuje, kiedy zbliża się limit przestrzeni dyskowej, która będzie miało wpływ na replikację serwera.
+Każdej repliki jest włączony dla magazynu [automatyczne powiększanie](concepts-pricing-tiers.md#storage-auto-grow). Funkcja auto-grow umożliwia replikę tak, aby nadążyć za dane replikowane do niego i uniknąć przerwy w replikacji spowodowane przez Brak błędów magazynu.
 
 Dowiedz się, jak [utworzyć odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md).
 
@@ -69,7 +68,7 @@ Ta metryka jest obliczany przy użyciu `seconds_behind_master` dostępnych w baz
 
 Ustaw alert informujący o tym, gdy opóźnienie replikacji osiągnie wartość, która nie jest dopuszczalne dla obciążenia.
 
-## <a name="stop-replication"></a>Zatrzymaj replikację
+## <a name="stop-replication"></a>Zatrzymywanie replikacji
 
 Można zatrzymać replikacji między serwerem głównym i repliki. Po zatrzymaniu replikacji między głównym serwerem i odczytu repliki, replika staje się serwerem autonomicznym. Dane na serwerze autonomicznym są dane, która była dostępna w replice w momencie uruchomienia polecenia zatrzymania replikacji. Serwer autonomiczny nie zapoznaj się z serwerem głównym.
 
@@ -124,7 +123,7 @@ Następujące parametry serwera są zablokowane na serwerach zarówno węzła g�
 
 [ `event_scheduler` ](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametru jest zablokowany na serwerach repliki. 
 
-### <a name="other"></a>Inny
+### <a name="other"></a>Inne
 
 - Identyfikatory transakcji globalnej (GTID) nie są obsługiwane.
 - Tworzenie repliki repliki nie jest obsługiwane.

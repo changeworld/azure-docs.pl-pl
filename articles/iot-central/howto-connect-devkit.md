@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887346"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235880"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -66,7 +66,7 @@ Jeśli wcześniej używano urządzenia i chcesz ponownie skonfigurować go do ko
 #### <a name="to-prepare-the-devkit-device"></a>Aby przygotować urządzenie Mxchip
 
 1. Pobierz najnowszy wstępnie skompilowanych usługi Azure IoT Central oprogramowania układowego dla zestawu deweloperskiego z [zwalnia](https://aka.ms/iotcentral-docs-MXChip-releases) strony w witrynie GitHub.
-1. Podłącz urządzenie Mxchip do komputera deweloperskiego za pomocą kabla USB. W Windows na dysku mapowane na pamięć na urządzeniu Mxchip zostanie otwarte okno Eksploratora plików. Na przykład dysk może być wywoływana **az3166 usługi (D:)**.
+1. Podłącz urządzenie Mxchip do komputera deweloperskiego za pomocą kabla USB. W Windows na dysku mapowane na pamięć na urządzeniu Mxchip zostanie otwarte okno Eksploratora plików. Na przykład dysk może być wywoływana **az3166 usługi (D:)** .
 1. Przeciągnij **iotCentral.bin** pliku na okno dysku. Po zakończeniu kopiowania urządzenie uruchamia się ponownie z nowym oprogramowaniem układowym.
 
 1. Po ponownym uruchomieniu urządzenia Mxchip, wyświetli się następujący ekran:
@@ -208,12 +208,12 @@ Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawier
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stany 
-| Name (Nazwa)          | Nazwa wyświetlana   | NORMALNY | UWAGA | ZAGROŻENIA | 
+| Name (Nazwa)          | `Display name`   | NORMALNY | UWAGA | ZAGROŻENIA | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
 
 #### <a name="events"></a>Zdarzenia 
-| Name (Nazwa)             | Nazwa wyświetlana      | 
+| Name (Nazwa)             | `Display name`      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Naciśnięty przycisk B  | 
 
@@ -221,21 +221,21 @@ Aplikacja utworzone na podstawie szablonu aplikacji przykładowej Devkits zawier
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
+| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika
 
-| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
+| `Display name` | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
-| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Type            | `Display name` | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Właściwości urządzenia | Lokalizacji urządzenia   | location  | location    |
@@ -243,11 +243,11 @@ Ustawienia przełącznika
 
 ### <a name="commands"></a>Polecenia
 
-| Nazwa wyświetlana | Nazwa pola | Zwracany typ | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
+| `Display name` | Nazwa pola | Zwracany typ | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Echo         | echo       | tekst        | wartość, aby wyświetlić         | displayedValue   | tekst             |
+| Echo         | echo       | text        | wartość, aby wyświetlić         | displayedValue   | text             |
 | Odliczanie    | Odliczanie  | numer      | Są liczone od               | countFrom        | numer           |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Skoro już wiesz, jak połączyć z urządzeniem Raspberry Pi z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, kiedy znasz Łączenie zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.

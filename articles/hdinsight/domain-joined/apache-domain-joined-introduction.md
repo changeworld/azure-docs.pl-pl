@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793565"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243949"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Co to jest pakiet Enterprise Security w usłudze Azure HDInsight
 
@@ -36,7 +36,7 @@ Zabezpieczenia brzegowe w HDInsight odbywa się za pośrednictwem sieci wirtualn
 Kolejna warstwa zabezpieczeń brzegowych odbywa się za pośrednictwem usługi bramy sieci VPN. Brama działa jako pierwsza linia obrony w przypadku wszystkich żądań przychodzących do klastra HDInsight. Go akceptuje żądanie, sprawdza jego poprawność, a następnie zezwala na przekazanie go do innych węzłów w klastrze. W ten sposób brama zapewnia zabezpieczenia brzegowe dla innych węzłów nazw i danych w klastrze.
 
 ## <a name="authentication"></a>Authentication
-Administrator przedsiębiorstwa może utworzyć klaster HDInsight przy użyciu ESP w [sieci wirtualnej](https://azure.microsoft.com/services/virtual-network/). Wszystkie węzły klastra HDInsight są przyłączone do domeny, którą zarządza przedsiębiorstwo. Jest to osiągane za pośrednictwem [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
+Administrator przedsiębiorstwa może utworzyć klaster HDInsight przy użyciu ESP w [sieci wirtualnej](https://azure.microsoft.com/services/virtual-network/). Wszystkie węzły klastra HDInsight są przyłączone do domeny, którą zarządza przedsiębiorstwo. Jest to osiągane za pośrednictwem [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). 
 
 W przypadku takiej konfiguracji pracownicy przedsiębiorstwa zalogować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również użyć poświadczeń domeny do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoków Ambari Apache, ODBC, JDBC, PowerShell i interfejsów API REST do interakcji z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników, którzy współpracują z klastrem za pośrednictwem tych punktów końcowych.
 

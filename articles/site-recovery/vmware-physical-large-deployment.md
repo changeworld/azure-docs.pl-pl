@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: raynew
-ms.openlocfilehash: 593a82221ec94e43d50b7382ba89053d5f68864a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805924"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237276"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Konfigurowanie odzyskiwania po awarii na dużą skalę dla serwerów fizycznych i maszyn wirtualnych VMware
 
@@ -26,7 +26,7 @@ W ramach ciągłości działania i strategia odzyskiwania (BCDR) zdefiniuj cele 
 - Podczas planowania odzyskiwania po awarii na dużą skalę dla maszyn wirtualnych VMware i ustalenie zasobów platformy Azure, które są potrzebne, można określić wartości RTO, który będzie używany w obliczeniach pojemności.
 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Ogólne najlepsze rozwiązania dotyczące odzyskiwania po awarii na dużą skalę. Następujące najlepsze rozwiązania zostały omówione bardziej szczegółowo w następnej sekcji dokumentu.
 
@@ -100,7 +100,7 @@ Co to jest zgodne średniej? Aby uruchomić Maszynę wirtualną platformy Azure,
 
 **Maszyna jest zgodna z platformą Azure?** | **Limity maszyn wirtualnych platformy Azure (tryb failover dysków zarządzanych)**
 --- | --- 
-Tak | 2000
+Yes | 2000
 Nie | 1000
 
 - Limity przyjęto założenie, to minimalny, inne zadania są wykonywane w regionie docelowym dla subskrypcji.
@@ -188,7 +188,7 @@ Należy rozpocząć replikację dla pierwszej partii maszyn wirtualnych, aby roz
 1. Przypisywanie administratora odzyskiwania po awarii, do monitorowania stanu kondycji replikowanych maszyn.
 2. [Monitorowanie zdarzeń dotyczących](site-recovery-monitor-and-troubleshoot.md) zreplikowane elementy i infrastruktury.
 3. [Monitorowanie kondycji](vmware-physical-azure-monitor-process-server.md) serwerów proces skalowania w poziomie.
-4. Zarejestruj się uzyskać [wiadomości e-mail z powiadomieniami](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) dla zdarzeń, ułatwiają monitorowanie.
+4. Zarejestruj się uzyskać [wiadomości e-mail z powiadomieniami](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) dla zdarzeń, ułatwiają monitorowanie.
 5. Należy przeprowadzić zwykłe [odzyskiwanie po awarii](site-recovery-test-failover-to-azure.md), aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
 
 

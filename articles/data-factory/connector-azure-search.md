@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 05/24/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faf0cab55ec0cef034638d218f2172f3676ff39b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998476"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245107"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory
 
@@ -77,7 +77,7 @@ Następujące właściwości są obsługiwane przez usługę Azure Search połą
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure Search.
 
-Aby skopiować dane do usługi Azure Search, należy ustawić właściwość typu zestawu danych na **RelationalTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane do usługi Azure Search, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

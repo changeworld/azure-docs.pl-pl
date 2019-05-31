@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712869"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244907"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor
 
@@ -28,12 +28,12 @@ Załóżmy, że utworzono regułę alertu metryki prosty próg statyczne w nast�
 
 - (Do monitorowania zasobów platformy Azure) zasób docelowy: myVM
 - Metryka: Procentowe użycie procesora CPU
-- Typ warunku: Statyczny
-- Agregacja czasu (statystyki, który jest uruchamiany za pośrednictwem pierwotne wartości metryk. Obsługiwane razem, gdy wszelkie operacje agregacji są Min, Max, Avg, łącznie): Średnia
+- Typ warunku: Static
+- Agregacja czasu (statystyki, który jest uruchamiany za pośrednictwem pierwotne wartości metryk. Czasu obsługiwane operacje agregacji są minimalny, maksymalny, Avg, łącznie i Count): Średnia
 - Okres (wygląd wsteczny okna za pośrednictwem metryki, które są sprawdzane w wartości): W ciągu ostatnich 5 minut.
 - Frequency (częstotliwość, z którą alert dotyczący metryki sprawdza, jeśli warunki są spełnione): 1 min
 - Operator: Większe niż
-- Próg: 70
+- Wartość progowa: 70
 
 Od chwili, gdy zostanie utworzona reguła alertu monitor jest uruchamiane co 1 min i szuka w wartości metryk z ostatnich 5 minut i sprawdza się, jeśli średnia tych wartości przekracza 70. Jeśli warunek jest spełniony, oznacza to, średnie użycie procesora CPU procent dla ostatnich 5 minut przekracza 70, reguła alertu wyzwala powiadomienie aktywowane. Jeśli wiadomość e-mail lub Akcja punktu zaczepienia sieci web skonfigurowano grupy akcji skojarzonych z regułą alertu, otrzymasz powiadomienie aktywowanego zarówno.
 
@@ -43,12 +43,12 @@ Załóżmy, że utworzono proste reguła alertu metryki dynamicznymi progami w n
 
 - (Do monitorowania zasobów platformy Azure) zasób docelowy: myVM
 - Metryka: Procentowe użycie procesora CPU
-- Typ warunku: Dynamiczny
-- Agregacja czasu (statystyki, który jest uruchamiany za pośrednictwem pierwotne wartości metryk. Obsługiwane razem, gdy wszelkie operacje agregacji są Min, Max, Avg, łącznie): Średnia
+- Typ warunku: Dynamiczne
+- Agregacja czasu (statystyki, który jest uruchamiany za pośrednictwem pierwotne wartości metryk. Czasu obsługiwane operacje agregacji są minimalny, maksymalny, Avg, łącznie i Count): Średnia
 - Okres (wygląd wsteczny okna za pośrednictwem metryki, które są sprawdzane w wartości): W ciągu ostatnich 5 minut.
 - Frequency (częstotliwość, z którą alert dotyczący metryki sprawdza, jeśli warunki są spełnione): 1 min
 - Operator: Większe niż
-- Czułość: Medium
+- Czułość: Średni
 - Wygląd wstecz okresy: 4
 - Liczba naruszeń: 4
 
@@ -74,14 +74,14 @@ Załóżmy, że masz plan usługi App Service dla witryny sieci Web. Chcesz moni
 
 - Zasób docelowy: myAppServicePlan
 - Metryka: Procentowe użycie procesora CPU
-- Typ warunku: Statyczny
+- Typ warunku: Static
 - Wymiary
   - Wystąpienia = InstanceName1, InstanceName2
 - Agregacja czasu: Średnia
 - Okres: W ciągu ostatnich 5 minut.
 - Częstotliwość: 1 min
 - Operator: GreaterThan
-- Próg: 70
+- Wartość progowa: 70
 
 Podobnie jak wcześniej, ta reguła umożliwia monitorowanie Jeśli średniego użycia procesora CPU dla ostatnich 5 minut przekracza 70%. Jednak ta zasada umożliwia monitorowanie dwóch wystąpień z witryną sieci Web. Każde wystąpienie będzie są monitorowane indywidualnie i będą wyświetlane powiadomienia indywidualnie.
 
@@ -89,14 +89,14 @@ Załóżmy, że masz aplikację sieci web, która ma do czynienia z ogromną ż�
 
 - Zasób docelowy: myAppServicePlan
 - Metryka: Procentowe użycie procesora CPU
-- Typ warunku: Statyczny
+- Typ warunku: Static
 - Wymiary
   - Wystąpienia = *
 - Agregacja czasu: Średnia
 - Okres: W ciągu ostatnich 5 minut.
 - Częstotliwość: 1 min
 - Operator: GreaterThan
-- Próg: 70
+- Wartość progowa: 70
 
 Ta reguła będzie automatycznie monitorować wszystkie wartości tj wystąpienia można monitorować wystąpień, jak pojawiają się bez konieczności modyfikowania usługi reguła alertu metryki ponownie.
 
@@ -106,14 +106,14 @@ Załóżmy, że masz aplikację sieci web za pomocą wielu wystąpień i nie wie
 
 - Zasób docelowy: myAppServicePlan
 - Metryka: Procentowe użycie procesora CPU
-- Typ warunku: Dynamiczny
+- Typ warunku: Dynamiczne
 - Wymiary
   - Wystąpienia = *
 - Agregacja czasu: Średnia
 - Okres: W ciągu ostatnich 5 minut.
 - Częstotliwość: 1 min
 - Operator: GreaterThan
-- Czułość: Medium
+- Czułość: Średni
 - Wygląd wstecz okresy: 1
 - Liczba naruszeń: 1
 
@@ -145,33 +145,33 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 
 |Typ zasobu obsługiwane przez klasyczny alertów dotyczących metryk | Obsługiwane przez alertów dotyczących metryk |
 |-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | Yes |
-| Microsoft.Batch/batchAccounts| Yes|
-|Microsoft.Cache/redis| Yes |
+| Microsoft.ApiManagement/service | Tak |
+| Microsoft.Batch/batchAccounts| Tak|
+|Microsoft.Cache/redis| Tak |
 |Microsoft.ClassicCompute/virtualMachines | Nie |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nie|
 |Microsoft.CognitiveServices/accounts | Nie |
-|Microsoft.Compute/virtualMachines | Yes|
-|Microsoft.Compute/virtualMachineScaleSets| Yes|
+|Microsoft.Compute/virtualMachines | Tak|
+|Microsoft.Compute/virtualMachineScaleSets| Tak|
 |Microsoft.ClassicStorage/storageAccounts| Nie |
-|Microsoft.DataFactory/datafactories | Yes|
-|Microsoft.DBforMySQL/servers| Yes|
-|Microsoft.DBforPostgreSQL/servers| Yes|
+|Microsoft.DataFactory/datafactories | Tak|
+|Microsoft.DBforMySQL/servers| Tak|
+|Microsoft.DBforPostgreSQL/servers| Tak|
 |Microsoft.Devices/IotHubs | Nie|
-|Microsoft.DocumentDB/databaseAccounts| Yes|
-|Microsoft.EventHub/namespaces | Yes|
-|Microsoft.Logic/workflows | Yes|
-|Microsoft.Network/loadBalancers |Yes|
+|Microsoft.DocumentDB/databaseAccounts| Tak|
+|Microsoft.EventHub/namespaces | Tak|
+|Microsoft.Logic/workflows | Tak|
+|Microsoft.Network/loadBalancers |Tak|
 |Microsoft.Network/publicIPAddresses| Yes|
 |Microsoft.Network/applicationGateways| Yes|
 |Microsoft.Network/expressRouteCircuits| Yes|
 |Microsoft.Network/trafficManagerProfiles | Yes|
-|Microsoft.Search/searchServices | Yes|
-|Microsoft.ServiceBus/namespaces| Yes |
-|Microsoft.Storage/storageAccounts | Yes|
+|Microsoft.Search/searchServices | Tak|
+|Microsoft.ServiceBus/namespaces| Tak |
+|Microsoft.Storage/storageAccounts | Tak|
 |Microsoft.StreamAnalytics/streamingjobs| Yes|
 |Microsoft.TimeSeriesInsights/environments | Yes|
-|Microsoft W sieci Web/farm serwerów | Yes |
+|Microsoft W sieci Web/farm serwerów | Tak |
 |Microsoft / Witryn (z wyjątkiem funkcji) | Yes|
 |Microsoft HostingEnvironments/Web/multiRolePools | Nie|
 |Microsoft HostingEnvironments/Web/workerPools| Nie |

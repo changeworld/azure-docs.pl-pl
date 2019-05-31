@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3928a47abf07ab7e6dad0e0a5883162363805df8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358995"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235574"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak, które wymuszają weryfikację dwuetapową dla użytkownika
 
@@ -43,7 +43,7 @@ Konta użytkowników w usłudze Azure Multi-Factor Authentication mają następu
 
 | Stan | Opis | Aplikacje korzystające z przeglądarki, których to dotyczy | Aplikacje przeglądarki, których to dotyczy | Nowoczesnego uwierzytelniania, których to dotyczy |
 |:---:|:---:|:---:|:--:|:--:|
-| Disabled (Wyłączony) |Stan domyślny dla nowego użytkownika, nie są zarejestrowane w usłudze Azure MFA. |Nie |Nie |Nie |
+| Wyłączone |Stan domyślny dla nowego użytkownika, nie są zarejestrowane w usłudze Azure MFA. |Nie |Nie |Nie |
 | Enabled (Włączony) |Użytkownik został zarejestrowany w usłudze Azure MFA, ale nie została zarejestrowana. Otrzyma monit o zarejestrować przy następnym logowaniu. |Nie.  One nadal działać do momentu zakończenia procesu rejestracji. | Tak. Po wygaśnięciu sesji, wymagana jest rejestracja usługi Azure MFA.| Tak. Po wygaśnięciu ważności tokenu dostępu, wymagana jest rejestracja usługi Azure MFA. |
 | Enforced (Wymuszony) |Użytkownik został zarejestrowany i zakończeniu procesu rejestracji dla usługi Azure MFA. |Tak. Aplikacje wymagające wprowadzenia hasła aplikacji. |Tak. Usługa Azure MFA jest wymagana podczas logowania. | Tak. Usługa Azure MFA jest wymagana podczas logowania. |
 
@@ -84,7 +84,7 @@ Aby zmienić stan użytkownika przy użyciu [usługi Azure AD PowerShell](/power
 
 * Enabled (Włączony)
 * Enforced (Wymuszony)
-* Disabled (Wyłączony)  
+* Wyłączone  
 
 Nie bezpośrednio do przenoszenia użytkowników *wymuszone* stanu. Jeśli to zrobisz, nie opartych na przeglądarce aplikacji przestają działać, ponieważ użytkownik nie przeszli rejestracja w usłudze Azure MFA i uzyskać [hasła aplikacji](howto-mfa-mfasettings.md#app-passwords).
 
@@ -133,6 +133,72 @@ które, można również skrócony do:
    ```PowerShell
    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
    ```
+
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konwertuj użytkowników z usługi MFA na użytkownika dostępu warunkowego na podstawie uwierzytelniania Wieloskładnikowego
+
+Następujące polecenie programu PowerShell mogą pomóc w podejmowaniu konwersji na podstawie dostępu warunkowego usługi Azure Multi-Factor Authentication.
+
+```PowerShell
+# Disable MFA for all users, keeping their MFA methods intact
+Get-MsolUser -All | Disable-MFA -KeepMethods
+
+# Enforce MFA for all users
+Get-MsolUser -All | Set-MfaState -State Enforced
+
+# Wrapper to disable MFA with the option to keep the MFA
+# methods (to avoid having to proof-up again later)
+function Disable-Mfa {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline=$True)]
+        $User,
+        [switch] $KeepMethods
+    )
+
+    Process {
+
+        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
+        $User | Set-MfaState -State Disabled
+
+        if ($KeepMethods) {
+            # Restore the MFA methods which got cleared when disabling MFA
+            Set-MsolUser -ObjectId $User.ObjectId `
+                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
+        }
+    }
+}
+
+# Sets the MFA requirement state
+function Set-MfaState {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $ObjectId,
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $UserPrincipalName,
+        [ValidateSet("Disabled","Enabled","Enforced")]
+        $State
+    )
+
+    Process {
+        Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
+        $Requirements = @()
+        if ($State -ne "Disabled") {
+            $Requirement =
+                [Microsoft.Online.Administration.StrongAuthenticationRequirement]::new()
+            $Requirement.RelyingParty = "*"
+            $Requirement.State = $State
+            $Requirements += $Requirement
+        }
+
+        Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
+                     -StrongAuthenticationRequirements $Requirements
+    }
+}
+
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

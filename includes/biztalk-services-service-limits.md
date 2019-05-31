@@ -9,13 +9,13 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553900"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238467"
 ---
-| Zasób | Bezpłatna (wersja zapoznawcza) | Developer | Podstawowa | Standardowa (Standard) | Premium |
+| Resource | Bezpłatna (wersja zapoznawcza) | Developer | Podstawowa | Standardowa (Standard) | Premium |
 | --- | --- | --- | --- | --- | --- |
 | Skalowanie w poziomie |ND |ND |Tak, w przyrostach co 1 jednostkę podstawową |Tak, w przyrostach co 1 jednostkę standardową |Tak, w przyrostach co 1 jednostkę Premium |
 | Limit skalowania |ND |ND |Maksymalnie 8 jednostek |Maksymalnie 8 jednostek |Maksymalnie 8 jednostek |

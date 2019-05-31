@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876194"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067616"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor (publiczna wersja zapoznawcza)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor
 
 Alert dotyczący metryki z dynamicznymi progami wykrywania korzysta z zaawansowanych (ML), aby dowiedzieć się zachowanie historyczne metryk, zidentyfikować wzorce i anomalie, które wskazują na problemy możliwe usługi uczenia maszynowego. Zapewnia obsługę zarówno prostego interfejsu użytkownika, jak i operacji na dużą skalę, pozwalając użytkownikom na konfigurowanie reguł alertów za pośrednictwem interfejsu API usługi Azure Resource Manager, w pełni zautomatyzowany sposób.
 
@@ -116,7 +116,7 @@ Następujące elementy są najlepsze rozwiązania dotyczące sposobu konfigurowa
 
 4. Po wybraniu zasobu docelowego kliknij **Dodaj warunek**.
 
-5. Wybierz **"Procent użycia procesora CPU"**.
+5. Wybierz **"Procent użycia procesora CPU"** .
 
 6. Opcjonalnie można dostosować metryki, dostosowując **okres** i **agregacji**. Zaleca się do użycia typ agregacji "Maximum" dla tego typu metryki, ponieważ jest mniej reprezentatywne zachowanie. "Maksymalna" progu statycznych typu agregacji może być więcej właściwe.
 
@@ -153,7 +153,7 @@ Następujące elementy są najlepsze rozwiązania dotyczące sposobu konfigurowa
 
 4. Po wybraniu zasobu docelowego kliknij **Dodaj warunek**.
 
-5. Wybierz **"Czas wykonywania żądania HTTP"**.
+5. Wybierz **"Czas wykonywania żądania HTTP"** .
 
 6. Opcjonalnie można dostosować metryki, dostosowując **okres** i **agregacji**. Zaleca się do użycia typ agregacji "Maximum" dla tego typu metryki, ponieważ jest mniej reprezentatywne zachowanie. "Maksymalna" progu statycznych typu agregacji może być więcej właściwe.
 

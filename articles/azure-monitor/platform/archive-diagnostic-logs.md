@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 82aaa573c55748daf62b620cdd82561bae6af492
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc1804e547bb1a29fc0dc680b948f1bb31af8307
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345979"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244916"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
-W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST do archiwizacji swoje [dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dzienników diagnostycznych z zasadami przechowywania opcjonalne inspekcji, analizę statyczną lub kopii zapasowej. Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
+W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST do archiwizacji swoje [dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dzienników diagnostycznych z zasadami przechowywania opcjonalne inspekcji, analizę statyczną lub kopii zapasowej. Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
 
 > [!WARNING]
 > Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 

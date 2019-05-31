@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311140"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399196"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Tworzenie niestandardowych artefaktów dla swojej maszyny wirtualnej w usłudze DevTest Labs
 
@@ -29,7 +29,7 @@ Obejrzyj poniższy klip wideo z omówieniem kroków opisanych w tym artykule:
 >
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Możesz użyć *artefaktów* wdrażanie i konfigurowanie aplikacji po zainicjowaniu obsługi administracyjnej maszyny Wirtualnej. Artefakt składa się z plikiem definicji artefaktów i inne pliki skryptów, które są przechowywane w folderze w repozytorium Git. Pliki definicji artefaktu składają się z kodu JSON i wyrażeń, które służą do określania, co chcesz zainstalować na maszynie Wirtualnej. Na przykład można zdefiniować nazwę artefakt, polecenie do uruchomienia i parametry, które są dostępne, gdy polecenie jest wykonywane. Mogą odwoływać się do innych plików skryptu w pliku definicji artefaktu według nazwy.
 
 ## <a name="artifact-definition-file-format"></a>Format pliku definicji artefaktu
@@ -56,10 +56,10 @@ Poniższy przykład przedstawia sekcje, które tworzą podstawowa struktura plik
 | Nazwa elementu | Wymagana? | Opis |
 | --- | --- | --- |
 | $schema |Nie |Lokalizacja pliku schematu JSON. Plik schematu JSON może pomóc można sprawdzić poprawność pliku definicji. |
-| title |Yes |Nazwa artefaktu wyświetlane w środowisku laboratoryjnym. |
-| description |Yes |Opis artefaktu wyświetlane w środowisku laboratoryjnym. |
+| tytuł |Tak |Nazwa artefaktu wyświetlane w środowisku laboratoryjnym. |
+| description |Tak |Opis artefaktu wyświetlane w środowisku laboratoryjnym. |
 | iconUri |Nie |Identyfikator URI ikona wyświetlana w środowisku laboratoryjnym. |
-| targetOsType |Yes |System operacyjny maszyny wirtualnej, w którym zainstalowano artefaktu. Obsługiwane opcje to Windows i Linux. |
+| targetOsType |Tak |System operacyjny maszyny wirtualnej, w którym zainstalowano artefaktu. Obsługiwane opcje to Windows i Linux. |
 | parameters |Nie |Wartości, które znajdują się po uruchomieniu polecenia install artefaktów na maszynie. Dzięki temu można dostosować swoje artefaktu. |
 | runCommand |Yes |Artefakt zainstalować polecenia, który jest wykonywany na maszynie Wirtualnej. |
 
@@ -78,9 +78,9 @@ Aby zdefiniować parametry, należy użyć następującej strukturze:
 
 | Nazwa elementu | Wymagana? | Opis |
 | --- | --- | --- |
-| type |Yes |Typ wartości parametru. Przejrzyj następującą listę dozwolonych typów. |
-| displayName |Yes |Nazwa parametru, który jest wyświetlany użytkownikowi w środowisku laboratoryjnym. |
-| description |Yes |Opis parametru, który jest wyświetlany w środowisku laboratoryjnym. |
+| — typ |Tak |Typ wartości parametru. Przejrzyj następującą listę dozwolonych typów. |
+| displayName |Tak |Nazwa parametru, który jest wyświetlany użytkownikowi w środowisku laboratoryjnym. |
+| description |Tak |Opis parametru, który jest wyświetlany w środowisku laboratoryjnym. |
 
 Dozwolone typy to:
 
@@ -89,14 +89,39 @@ Dozwolone typy to:
 * wartość logiczna (wszystkie prawidłowe logiczna JSON)
 * Tablica (wszystkie prawidłową tablicą JSON)
 
+## <a name="secrets-as-secure-strings"></a>Wpisy tajne jako bezpieczny ciąg
+Zadeklaruj wpisów tajnych jako bezpieczny ciąg. Oto Składnia deklaracji parametru bezpieczny ciąg, w ramach `parameters` części **artifactfile.json** pliku:
+
+```json
+
+    "securestringParam": {
+      "type": "securestring",
+      "displayName": "Secure String Parameter",
+      "description": "Any text string is allowed, including spaces, and will be presented in UI as masked characters.",
+      "allowEmpty": false
+    },
+```
+
+Polecenie instalacji artefaktu, uruchom skrypt programu PowerShell, który przyjmuje bezpieczny ciąg utworzony za pomocą polecenia ConvertTo-SecureString. 
+
+```json
+  "runCommand": {
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact.ps1 -StringParam ''', parameters('stringParam'), ''' -SecureStringParam (ConvertTo-SecureString ''', parameters('securestringParam'), ''' -AsPlainText -Force) -IntParam ', parameters('intParam'), ' -BoolParam:$', parameters('boolParam'), ' -FileContentsParam ''', parameters('fileContentsParam'), ''' -ExtraLogLines ', parameters('extraLogLines'), ' -ForceFail:$', parameters('forceFail'), '\"')]"
+  }
+```
+
+Artifactfile.json kompletny przykład i artifact.ps1 (skrypt programu PowerShell) można znaleźć [tego przykładu w usłudze GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
+
+Jest innym ważnym punktem należy pamiętać, aby nie rejestrować wpisy tajne w konsoli jako dane wyjściowe są przechwytywane do debugowania użytkownika. 
+
 ## <a name="artifact-expressions-and-functions"></a>Artefakt wyrażeń i funkcji
 Można używać wyrażeń i funkcji do konstruowania artefaktu zainstalować polecenia.
 Wyrażenia są ujęte w nawiasach kwadratowych ([i]), które są oceniane, po zainstalowaniu artefaktu. Wyrażenia może występować w dowolnym miejscu w wartości ciągu JSON. Wyrażenia zawsze zwraca inną wartość JSON. Aby użyć literału ciągu, rozpoczynająca się od nawiasu ([), należy użyć dwóch nawiasy kwadratowe ([[).
-Zazwyczaj należy użyć wyrażeń z usługą functions do utworzenia wartości. Tak samo, jak w języku JavaScript, wywołania funkcji są sformatowane jako **functionName (arg1 arg2, arg3)**.
+Zazwyczaj należy użyć wyrażeń z usługą functions do utworzenia wartości. Tak samo, jak w języku JavaScript, wywołania funkcji są sformatowane jako **functionName (arg1 arg2, arg3)** .
 
 Na poniższej liście przedstawiono typowe funkcje:
 
-* **parameters(parameterName)**: Zwraca wartość parametru, który znajduje się po uruchomieniu polecenia artefaktu.
+* **parameters(parameterName)** : Zwraca wartość parametru, który znajduje się po uruchomieniu polecenia artefaktu.
 * **concat (arg1, arg2 arg3...)** : To połączenie wielu wartości ciągów. Ta funkcja może przybierać różne argumentów.
 
 Poniższy przykład pokazuje, jak używać wyrażeń i funkcji do tworzenia wartości:

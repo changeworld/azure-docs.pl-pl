@@ -1,5 +1,5 @@
 ---
-title: Klasyfikacja magazynu danych SQL | Dokumentacja firmy Microsoft
+title: Klasyfikacji usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące za pomocą funkcji klasyfikacji, aby zarządzać współbieżności, ważność i zasoby obliczeniowe dla zapytań w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000123"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236905"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>Usługa SQL Data Warehouse obciążenia klasyfikacji
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Klasyfikacji obciążenia w usłudze Azure SQL Data Warehouse
 
 W tym artykule opisano proces klasyfikacji obciążenia usługa SQL Data Warehouse przypisywania klasy zasobów i znaczenie na przychodzące żądania.
 

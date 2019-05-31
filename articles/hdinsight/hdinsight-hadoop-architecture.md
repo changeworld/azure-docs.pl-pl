@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: edf7655c20f1b3bad5ce4d337861bd2ff3e029db
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/27/2019
+ms.openlocfilehash: 3fd85232ff7044c699a3e68ce34b267bf50c4dc3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721367"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257861"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura platformy Apache Hadoop w usłudze HDInsight
 
@@ -49,5 +49,5 @@ Wszystkie typy klastrów HDInsight wdrożenie usługi YARN. Menedżera zasobów 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Korzystanie z technologii MapReduce na platformie Apache Hadoop w usłudze HDInsight](hadoop/hdinsight-use-mapreduce.md)
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131450"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241171"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -186,8 +186,8 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
   },
   "Host": {
     "LocalHttpPort": 7071,
-    "CORS": "*"
-    "CORSCredentials": true
+    "CORS": "*",
+    "CORSCredentials": false
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -318,12 +318,12 @@ func host start
 | **`--cors-credentials`** | Zezwalaj na uwierzytelnionych żądań cross-origin (np. pliki cookie i Nagłówek uwierzytelnienia) w wersji 2.x tylko. |
 | **`--cors`** | Rozdzielana przecinkami lista źródeł CORS, bez spacji. |
 | **`--language-worker`** | Argumenty do konfigurowania procesu roboczego języka. W wersji 2.x tylko. |
-| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Domyślne: Wartość z pliku launch.json lub 5858. W wersji 1.x tylko. |
+| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Wartość domyślna: Wartość z pliku launch.json lub 5858. W wersji 1.x tylko. |
 | **`--password`** | Hasło lub plik, który zawiera hasło do pliku .pfx. Używana tylko z `--cert`. W wersji 2.x tylko. |
 | **`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
 | **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe, zanim proces zostanie zakończony. Używana tylko wtedy, gdy uruchamianie podstawowych narzędzi w zintegrowanym środowisku programistycznym (IDE).|
 | **`--script-root --prefix`** | Można określić ścieżkę do katalogu głównego aplikacji funkcji, który ma zostać uruchomić lub wdrożyć. Służy to do skompilowanych projektach, generujących pliki projektu do podfolderu. Na przykład podczas kompilowania biblioteki klas C# plików projektu, host.json, local.settings.json i function.json są generowane w *głównego* podfolder ze ścieżką, takich jak `MyProject/bin/Debug/netstandard2.0`. W tym przypadku Ustaw prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji, podczas uruchamiania na platformie Azure. |
-| **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Domyślne: 20 sekund.|
+| **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Wartość domyślna: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
 
 Dla języka C# projekt biblioteki klas (.csproj), należy wprowadzić `--build` opcję, aby wygenerować biblioteki .dll.

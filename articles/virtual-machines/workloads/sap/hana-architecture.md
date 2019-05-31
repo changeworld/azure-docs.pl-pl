@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80ef63cdd9de8cb2340fe15d761402bb9f00fae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d077487f85c789bcdfea3d91e29ee0d44ce82de0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795954"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239437"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architektura SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -34,7 +34,7 @@ Ogólna Architektura środowiska SAP Hana na platformie Azure (duże wystąpieni
 
 Architektura, wyświetlane jest podzielony na trzy sekcje:
 
-- **prawy**: Pokazuje infrastruktury lokalnej, uruchamianego z różnych aplikacji w danych centra tak, aby użytkownicy końcowi mogą uzyskiwać dostęp LOB aplikacji, takich jak SAP. W idealnym przypadku tej lokalnej infrastruktury następnie jest połączony z platformą Azure za pomocą [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- **prawy**: Pokazuje infrastruktury lokalnej, uruchamianego z różnych aplikacji w danych centra tak, aby użytkownicy końcowi mogą uzyskiwać dostęp LOB aplikacji, takich jak SAP. W idealnym przypadku tej lokalnej infrastruktury jest połączony z platformą Azure za pomocą [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 - **Centrum**: Pokazuje IaaS platformy Azure i, w tym przypadku korzystanie z maszyn wirtualnych w celu hostowania SAP lub inne aplikacje korzystające z platformy SAP HANA jako DBMS system. Mniejsze wystąpień HANA, które funkcją pamięci, które maszyny wirtualne są wdrażane na maszynach wirtualnych wraz z ich warstwy aplikacji. Aby uzyskać więcej informacji na temat maszyn wirtualnych, zobacz [maszyn wirtualnych](https://azure.microsoft.com/services/virtual-machines/).
 
@@ -45,11 +45,11 @@ Architektura, wyświetlane jest podzielony na trzy sekcje:
   -  [Używanie SAP na maszynach wirtualnych Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [Korzystanie z rozwiązań SAP na maszynach wirtualnych platformy Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **po lewej stronie**: Zawiera sprzęt z certyfikatem TDI i programu SAP HANA w sygnaturze dużego wystąpienia platformy Azure. Jednostki dużych wystąpień HANA są połączone z sieciami wirtualnymi w subskrypcji przy użyciu tej samej technologii co łączność ze środowiska lokalnego na platformę Azure.
+- **po lewej stronie**: Zawiera sprzęt z certyfikatem TDI i programu SAP HANA w sygnaturze dużego wystąpienia platformy Azure. Jednostki dużych wystąpień HANA są połączone z sieciami wirtualnymi w subskrypcji platformy Azure przy użyciu tej samej technologii co łączność ze środowiska lokalnego na platformę Azure. Począwszy od maja 2019 optymalizacji stało się wprowadzono umożliwiający komunikację między jednostkami dużych wystąpień HANA i maszyn wirtualnych platformy Azure bez angażowania bramę usługi ExpressRoute. Tego rodzaju optymalizacji, o nazwie Path szybkie usługi ExpressRoute jest wyświetlany w tej architekturze (czerwone linie). 
 
 Sygnatura dużego wystąpienia platformy Azure, sama obejmuje następujące składniki:
 
-- **Przetwarzanie**: Serwery, które są oparte na procesorach Intel Xeon E7-8890v3 lub Intel Xeon E7-8890v4, zapewniają wymagane możliwości obliczeniowych, które zostały SAP HANA z certyfikatem platformy.
+- **Przetwarzanie**: Serwery, które są oparte na różnych generacji najnowszych procesorów Intel Xeon zapewniają wymagane możliwości obliczeniowych, które zostały SAP HANA z certyfikatem platformy.
 - **Sieć**: Ujednolicone szybkich sieci szkieletowej, łączącym obliczeń, magazynu i składniki sieci LAN.
 - **Magazyn**: Infrastruktura magazynu, która jest dostępna za pośrednictwem jednolitego sieci szkieletowej. Określonej pojemności, który znajduje się zależy od określonego oprogramowania SAP HANA na konfiguracji platformy Azure (duże wystąpienia), który jest wdrożony. Większa pojemność magazynu jest dostępna za dodatkową opłatą miesięcznych.
 

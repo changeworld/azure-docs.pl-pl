@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 163b8e1f68b8d5a102465022c67f7d0da57a7215
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 541ffe70ae5198e631568584a58d02ac283e89d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596960"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298253"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -40,7 +40,7 @@ Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure 
 
 Znajdź [pełne dokumenty referencyjne dotyczące rozszerzenia interfejsu wiersza polecenia platformy azure-cli-ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
 
-## <a name="install-the-extension"></a>Zainstaluj rozszerzenie
+## <a name="install-the-extension"></a>Instalowanie rozszerzenia
 
 Aby zainstalować rozszerzenie interfejsu wiersza polecenia Machine Learning, użyj następującego polecenia:
 
@@ -165,13 +165,11 @@ Poniższe polecenia pokazują, jak rejestrowanie uczonego modelu, a następnie w
     Aby uzyskać więcej informacji, zobacz [profil modelu uczenia maszynowego az](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
 
 + Wdrażanie modelu w usłudze AKS
-
     ```azurecli-interactive
-    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
+    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
     ```
-
+    
     Poniżej przedstawiono przykład `inferenceconfig.json` dokumentu:
-
     ```json
     {
     "entryScript": "score.py",
@@ -182,6 +180,13 @@ Poniższe polecenia pokazują, jak rejestrowanie uczonego modelu, a następnie w
     "enableGpu": false,
     "baseImage": null,
     "baseImageRegistry": null
+    }
+    ```
+    Oto przykład dokument "deploymentconfig.json":
+    ```json
+    {
+    "computeType": "aks",
+    "ComputeTarget": "akscomputetarget"
     }
     ```
 

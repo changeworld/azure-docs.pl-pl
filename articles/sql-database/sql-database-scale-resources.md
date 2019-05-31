@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e476f27e2a1945135bd90435078d5bcd47c4b3de
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709210"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073137"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych, przy minimalnych przestojach
 
@@ -36,12 +36,10 @@ Nie musisz przejmować się zakupu sprzętu i zmieniając podstawowej infrastruk
 Usługa Azure SQL Database oferuje [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
 - [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje połączenie wystąpień obliczeniowych, pamięci i zasobów we/wy w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych: Podstawowa, Standardowa i Premium. Poziomy wydajności w każdej warstwie udostępniają różne kombinacje tych zasobów i można do nich dodawać kolejne zasoby magazynu.
-- [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Ten model zakupu oferuje trzy warstwy usługi: Ogólnego przeznaczenia, krytyczne dla działania firmy i na dużą skalę (wersja zapoznawcza).
+- [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Ten model zakupu oferuje trzy warstwy usługi: Ogólnego przeznaczenia i krytyczne dla działania, na dużą skalę.
 
 Możesz utworzyć pierwszą aplikację na małej, pojedynczej bazy danych na niskim poziomie kosztów miesięcznie w warstwie podstawowa, standardowa lub ogólnego przeznaczenia i następnie zmienić warstwę usługi ręcznie lub programowo w dowolnym momencie do warstwy usług Premium lub krytyczne dla działania firmy, aby spełnić ne zewnętrznego źródła danych rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
-> [!IMPORTANT]
-> Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w niektórych regionach platformy Azure. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 > [!NOTE]
 > Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów.
 

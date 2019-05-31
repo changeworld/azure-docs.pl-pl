@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7d607b4370d51ea2605fae6543bd3336853b0806
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954209"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389470"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Praca z bazami danych, kontenerów i elementów w usłudze Azure Cosmos DB
 
@@ -55,6 +55,9 @@ Podczas tworzenia kontenera usługi Azure Cosmos, należy skonfigurować przepł
 
 * **Tryb udostępnionego aprowizowanej przepływności**: Te kontenery udostępniać aprowizowanej przepływności innych kontenerów w tej samej bazy danych (z wyjątkiem kontenerów, które zostały skonfigurowane za pomocą dedykowanego aprowizowana przepływność). Innymi słowy aprowizowaną przepływność w bazie danych jest udostępniany wszystkie kontenery "udostępnionej przepływności". Aby dowiedzieć się więcej, zobacz [jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
 
+> [!NOTE]
+> Udostępnione i dedykowane przepływności można skonfigurować tylko podczas tworzenia bazy danych i kontenera. Aby przełączyć się z trybu dedykowanej przepływności trybie udostępnionej przepływności (i na odwrót), po utworzeniu kontenera, musisz utworzyć nowy kontener i przeprowadzić migrację danych do nowego kontenera. Dane można migrować za pomocą zestawienia funkcji zmian do usługi Azure Cosmos DB.
+
 Kontener usługi Azure Cosmos można skalować elastycznie, czy tworzyć kontenery przy użyciu tryby dedykowanej lub współdzielonej aprowizowanej przepływności.
 
 Kontener usługi Azure Cosmos jest kontenerem niezależnej od schematu elementów. Elementy w kontenerze mogą mieć dowolną schematów. Na przykład elementu, który reprezentuje osobę i elementu, który reprezentuje samochodów mogą być umieszczane w *ten sam kontener*. Domyślnie wszystkie elementy, które dodajesz do kontenera są automatycznie indeksowane bez konieczności jawnego indeksu lub Zarządzanie schematami. Można dostosować zachowanie indeksowania, konfigurując [zasad indeksowania](index-overview.md) w kontenerze. 
@@ -71,7 +74,7 @@ Kontener usługi Azure Cosmos jest przeznaczone do jednostek specyficzne dla int
 
 | Azure Cosmos entity | Interfejs API SQL | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- |
-|Usługa Azure container Cosmos | Kolekcja | Tabela | Collection | Graph | Tabela |
+|Usługa Azure container Cosmos | Collection | Tabela | Collection | Graph | Tabela |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Właściwości kontenera usługi Azure Cosmos
 
@@ -83,9 +86,9 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowane przez system
 |\_Element etag | System-generated | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
 |\_usług terminalowych | System-generated | Znacznik czasu ostatniej aktualizacji kontenera | Yes | Nie | Nie | Nie | Nie |
 |\_self | System-generated | Mogą być adresowane identyfikator URI kontenera | Yes | Nie | Nie | Nie | Nie |
-|identyfikator | User-configurable | Zdefiniowane przez użytkownika unikatową nazwę kontenera | Yes | Yes | Yes | Yes | Yes |
+|id | User-configurable | Zdefiniowane przez użytkownika unikatową nazwę kontenera | Yes | Yes | Yes | Yes | Yes |
 |indexingPolicy | User-configurable | Pozwala zmienić ścieżkę indeksu, typ indeksu i tryb indeksu | Tak | Nie | Nie | Nie | Yes |
-|TimeToLive | User-configurable | Umożliwia automatyczne usuwanie elementów z kontenera po ustawionym okresie. Aby uzyskać więcej informacji, zobacz [czas wygaśnięcia](time-to-live.md). | Tak | Nie | Nie | Nie | Yes |
+|timeToLive | User-configurable | Umożliwia automatyczne usuwanie elementów z kontenera po ustawionym okresie. Aby uzyskać więcej informacji, zobacz [czas wygaśnięcia](time-to-live.md). | Yes | Nie | Nie | Nie | Yes |
 |changeFeedPolicy | User-configurable | Używane do odczytywania zmiany wprowadzone do elementów w kontenerze. Aby uzyskać więcej informacji, zobacz [zestawienia zmian](change-feed.md). | Tak | Nie | Nie | Nie | Yes |
 |uniqueKeyPolicy | User-configurable | Można zapewnić unikatowość co najmniej jednej wartości w partycji logicznej. Aby uzyskać więcej informacji, zobacz [unikatowych ograniczeń klucza](unique-keys.md). | Tak | Nie | Nie | Nie | Yes |
 
@@ -95,10 +98,10 @@ Kontener usługi Azure Cosmos obsługuje następujące operacje przy użyciu jed
 
 | Operacja | Interfejs wiersza polecenia platformy Azure | Interfejs API SQL | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- | --- |
-| Wyliczanie kontenerów w bazie danych | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Wyliczanie kontenerów w bazie danych | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Przeczytaj kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Utwórz nowy kontener | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Aktualizacja kontenera | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Aktualizacja kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Usuwanie kontenera | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 
 ## <a name="azure-cosmos-items"></a>Usługa Azure Cosmos elementów
@@ -120,7 +123,7 @@ Każdy element Azure Cosmos ma następujące właściwości zdefiniowane przez s
 |\_usług terminalowych | System-generated | Sygnatura czasowa ostatniej aktualizacji elementu | Tak | Nie | Nie | Nie | Nie |
 |\_self | System-generated | Mogą być adresowane identyfikator URI elementu | Yes | Nie | Nie | Nie | Nie |
 |id | Albo | Zdefiniowane przez użytkownika unikatową nazwą w partycji logicznej. Jeśli użytkownik nie określono Identyfikatora, system automatycznie generuje go. | Tak | Yes | Yes | Yes | Yes |
-|Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Zdefiniowane przez użytkownika właściwości, które są reprezentowane w reprezentacji natywnego interfejsu API (w tym JSON, BSON i języka CQL) | Tak | Yes | Yes | Yes | Yes |
+|Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Zdefiniowane przez użytkownika właściwości, które są reprezentowane w reprezentacji natywnego interfejsu API (w tym JSON, BSON i języka CQL) | Yes | Yes | Yes | Yes | Yes |
 
 ### <a name="operations-on-items"></a>Operacje na elementach
 

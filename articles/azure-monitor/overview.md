@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0485f8e3b377ce94ec23a4a1a94eb7e189b0232b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c72ac62b55b2b08be5aaad563933bcb2b703cba9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787194"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245077"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -25,7 +25,7 @@ Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji, zapew
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środku diagramu są magazynów danych dla metryki i dzienniki, które są dwa podstawowe typy danych używany przez usługi Azure Monitor. Po lewej stronie są [źródła danych monitorowania](platform/data-sources.md) , wypełnić te [magazyny danych](platform/data-platform.md). Po prawej stronie są różne funkcje, które usługi Azure Monitor wykonuje się za pomocą tego zebranych danych, takich jak analiza, alertów i przesyłania strumieniowego z systemami zewnętrznymi.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -83,7 +83,7 @@ Dane monitorowania jest przydatna, jeśli można zwiększyć wgląd w działanie
 [Usługa Azure Monitor dla maszyn wirtualnych](insights/vminsights-overview.md) monitoruje usługi Azure virtual machines (VM) na dużą skalę, analizując wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasobów i zewnętrzne procesy. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji w przypadku maszyn wirtualnych hostowanych lokalnie lub innego dostawcy chmury.  
 
 
-![VM Insights](media/overview/vm-insights.png)
+![Szczegółowe informacje z maszyny Wirtualnej](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
 [Monitorowanie rozwiązań](insights/solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. Obejmują one logikę do zbierania danych monitorowania dla aplikacji lub usługi, [zapytania](log-query/log-query-overview.md) można analizować te dane i [widoków](../log-analytics/log-analytics-view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](insights/solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.

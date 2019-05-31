@@ -4,15 +4,15 @@ description: W tym artykule opisano, jak usługi Azure Cosmos DB jest skalowana 
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: b645fe210e7eeb073380dcadefead3e1b4d7ccc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f930b5c478cc880952b4559be4c6647b260efcf2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926429"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243487"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globalne skalowanie aprowizowanej przepływności 
 

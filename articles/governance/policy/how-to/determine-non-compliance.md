@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979346"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298920"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -90,20 +90,24 @@ Następujące macierzy mapuje każdą możliwą _Przyczyna_ w odpowiedzialne [wa
 |Bieżąca wartość musi zawierać wartość docelową jako klucz. |containsKey lub **nie** notContainsKey |
 |Bieżąca wartość musi zawierać wartość docelową. |zawiera lub **nie** notContains |
 |Bieżąca wartość musi być równa wartości docelowej. |równa się lub **nie** notEquals |
-|Bieżąca wartość musi istnieć. |Istnieje |
-|Bieżąca wartość musi zawierać się w wartości docelowej. |w lub **nie** notIn |
-|Bieżąca wartość musi być podobna do wartości docelowej. |Podobnie jak lub **nie** notLike |
-|Bieżąca wartość musi być zgodna z wartością docelową (z uwzględnieniem wielkości liter). |zgodne lub **nie** notMatch |
-|Bieżąca wartość musi być zgodna z wartością docelową (bez uwzględniania wielkości liter). |matchInsensitively lub **nie** notMatchInsensitively |
-|Bieżąca wartość nie może zawierać wartości docelowej jako klucza. |notContainsKey lub **nie** containsKey|
+|Bieżąca wartość musi być mniejsza niż wartość docelową. |mniej lub **nie** greaterOrEquals |
+|Bieżąca wartość musi być większa lub równa wartości docelowej. |greaterOrEquals lub **nie** mniej |
+|Bieżąca wartość musi być większa niż wartość docelową. |większe lub **nie** lessOrEquals |
+|Bieżąca wartość musi być mniejsza lub równa wartości docelowej. |lessOrEquals lub **nie** większa |
+|Bieżąca wartość, musi istnieć. |Istnieje |
+|Bieżąca wartość musi być w wartości docelowej. |w lub **nie** notIn |
+|Bieżąca wartość musi być takie jak wartości docelowej. |Podobnie jak lub **nie** notLike |
+|Bieżąca wartość należy czułym na wielkość liter wartości docelowej. |zgodne lub **nie** notMatch |
+|Bieżąca wartość musi dopasowanie bez uwzględniania wielkości liter w wartości docelowej. |matchInsensitively lub **nie** notMatchInsensitively |
+|Bieżąca wartość nie może zawierać wartości docelowej jako klucz. |notContainsKey lub **nie** containsKey|
 |Bieżąca wartość nie może zawierać wartości docelowej. |notContains lub **nie** zawiera |
 |Bieżąca wartość nie może być równa wartości docelowej. |notEquals lub **nie** równa się |
 |Bieżąca wartość nie może istnieć. |**nie** istnieje  |
-|Bieżąca wartość nie może zawierać się w wartości docelowej. |notIn lub **nie** w |
-|Bieżąca wartość nie może być podobna do wartości docelowej. |notLike lub **nie** np. |
-|Bieżąca wartość nie może być zgodna z wartością docelową (z uwzględnieniem wielkości liter). |notMatch lub **nie** dopasowania |
-|Bieżąca wartość nie może być zgodna z wartością docelową (bez uwzględniania wielkości liter). |notMatchInsensitively lub **nie** matchInsensitively |
-|Żadne powiązane zasoby nie są zgodne ze szczegółami efektu w definicji zasad. |Zasób typu zdefiniowanego w **then.details.type** i powiązane z zasobem zdefiniowane w **Jeśli** część reguły zasad nie istnieje. |
+|Bieżąca wartość nie może być w wartości docelowej. |notIn lub **nie** w |
+|Bieżąca wartość nie może być np. wartości docelowej. |notLike lub **nie** np. |
+|Bieżąca wartość musi dopasowanie bez uwzględniania wielkości liter w wartości docelowej. |notMatch lub **nie** dopasowania |
+|Bieżąca wartość musi być nie wielkości liter wartości docelowej. |notMatchInsensitively lub **nie** matchInsensitively |
+|Nie powiązanych zasobów odpowiada efekt w definicji zasad. |Zasób typu zdefiniowanego w **then.details.type** i powiązane z zasobem zdefiniowane w **Jeśli** część reguły zasad nie istnieje. |
 
 ## <a name="compliance-details-for-guest-configuration"></a>Szczegóły zgodności konfiguracji gościa
 
@@ -128,7 +132,7 @@ Możesz również utracić dostęp do bezpośrednio zalogować się do maszyny W
    - **Typ zasobu** — _guestConfigurationAssignments_ pełnej nazwy.
    - **Ostatnio oceniono** — czas ostatniego powiadomienia, usługi gościa konfiguracji usługi Azure Policy o stanie docelowej maszyny wirtualnej.
 
-   ![Wyświetl szczegóły zgodności.](../media/determine-non-compliance/guestconfig-assignment-view.png)
+   ![Wyświetl szczegóły zgodności](../media/determine-non-compliance/guestconfig-assignment-view.png)
 
 1. Wybierz nazwę przypisanie konfiguracji gościa w **nazwa** kolumnie, aby otworzyć **zgodność zasobów** strony.
 
@@ -136,7 +140,7 @@ Możesz również utracić dostęp do bezpośrednio zalogować się do maszyny W
 
 **Przypisania gościa** strony wyświetli wszystkie szczegóły dostępne zgodności. Każdy wiersz w widoku reprezentuje wersję próbną, która została wykonana na maszynie wirtualnej. W **Przyczyna** kolumny, frazę opisujące, dlaczego jest przypisanie gościa _niezgodne_ jest wyświetlany. Jeśli masz inspekcji, że maszyny wirtualne powinny być przyłączony do domeny, na przykład **Przyczyna** kolumny zostanie wyświetlony tekst w tym bieżące członkostwo w domenie.
 
-![Wyświetl szczegóły zgodności.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Wyświetl szczegóły zgodności](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

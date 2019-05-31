@@ -1,5 +1,5 @@
 ---
-title: Limity pamięci i współbieżności — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+title: Limity pamięci i współbieżności w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 024b3f9c6d1fdd0d4bcb1126e4577387a6415a59
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 3bc1fef1842911e9b2cfb65b3c8cc72e4b615010
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873471"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241269"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla usługi Azure SQL Data Warehouse
 Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i Zastosuj te możliwości do planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md). 
@@ -25,7 +25,7 @@ Obecnie istnieją dwie generacje z usługą SQL Data Warehouse — Gen1 i Gen2. 
 ## <a name="data-warehouse-capacity-settings"></a>Ustawienia pojemności magazynu danych
 W poniższej tabeli przedstawiono maksymalną pojemność magazynu danych na różne poziomy wydajności. Aby zmienić poziom wydajności, zobacz [skalowanie zasobów obliczeniowych — portal](quickstart-scale-compute-portal.md).
 
-### <a name="gen2"></a>Druga generacja
+### <a name="gen2"></a>Gen2
 
 Gen2 — zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dodatkowa pamięć pomaga Gen2 dostarczać jego wysoka wydajność.  Poziomy wydajności dla zakresu Gen2 od DW100c do DW30000c. 
 
@@ -50,7 +50,7 @@ Gen2 — zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dod
 
 Maksymalna jednostka DWU Gen2 jest DW30000c, która ma 60 węzłów obliczeniowych i jednym dystrybucję na węźle obliczeniowym. Na przykład 600 TB magazynu danych na DW30000c przetwarza około 10 TB na każdym węźle obliczeniowym.
 
-### <a name="gen1"></a>Pierwsza generacja
+### <a name="gen1"></a>Gen1
 
 Poziomy usług Gen1 należą do zakresu od DW100 do DW6000. 
 
@@ -72,7 +72,7 @@ Poziomy usług Gen1 należą do zakresu od DW100 do DW6000.
 ## <a name="concurrency-maximums"></a>Maksymalne wartości współbieżności
 Aby upewnić się, że każde zapytanie ma za mało zasobów do wydajnego wykonywania, usługa SQL Data Warehouse śledzi wykorzystanie zasobów przez przypisywanie gniazd współbieżności każda kwerenda. System umieszcza zapytania do kolejki, w oparciu o ważności oraz liczby gniazd współbieżności. Zapytania oczekiwać w kolejce do momentu wystarczającej liczby gniazd współbieżności są dostępne. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i gniazd współbieżności określić priorytet procesora CPU. Aby uzyskać więcej informacji, zobacz [analizowanie obciążenia](analyze-your-workload.md)
 
-### <a name="gen2"></a>Druga generacja
+### <a name="gen2"></a>Gen2
  
 **Statycznych klas zasobów**
 
@@ -127,7 +127,7 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz l
 
 
 
-#### <a name="gen1"></a>Pierwsza generacja
+#### <a name="gen1"></a>Gen1
 
 Statycznych klas zasobów
 

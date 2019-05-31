@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512906"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386912"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formaty i nazewnictwa wskazówki Konwencji dokumentów
 
@@ -33,7 +33,7 @@ Poniższa tabela zawiera wszystkie obsługiwane formaty plików, które można u
 | HTML              | .HTML, .HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
 | Plik tekstowy         | .TXT         | UTF-16 lub UTF-8 zakodowane pliki tekstowe. Nazwa pliku nie może zawierać znaki japońskie.                                                                                                                                                                                        |
 | Tekst wyrównany w pliku | . DOPASUJ       | Rozszerzenie `.ALIGN` to specjalne rozszerzenie, które można użyć, jeśli wiesz, że zdań w parze dokumentu są dokładnie wyrównana. Jeśli podasz `.ALIGN` pliku, niestandardowe w usłudze Translator nie zostaną wyrównane zdania dla Ciebie. |
-| Plik programu Excel        | .XLSX        | Plik programu Excel (2013 lub nowszy). Pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kod języka.                                                                                                                                                                                                                                                      |
+| Excel file        | .XLSX        | Plik programu Excel (2013 lub nowszy). Pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kod języka.                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>Słownik formatów
 

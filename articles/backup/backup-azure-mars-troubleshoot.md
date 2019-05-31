@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: 122f0884469a4901b02a1c86dd5ec98ef4fb24b0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
-ms.translationtype: HT
+ms.openlocfilehash: f36442c5e26391f410eeb5e39a7485da7199bdad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000247"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243450"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z Agent usług Microsoft Azure Recovery Services (MARS)
 
@@ -55,7 +55,8 @@ Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem R
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |
-| **Error** <br /><ol><li>*Agent usług Microsoft Azure Recovery Service nie może nawiązać połączenia z programem Kopia zapasowa Microsoft Azure. (ID: 100050) ustawienia sieciowe i upewnij się, że jesteś w stanie połączyć się z Internetem*<li>*(407) Wymagane jest uwierzytelnianie serwera proxy* |Serwer proxy blokuje połączenia. |  <ul><li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy** i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Wybierz **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera. <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, Wyklucz następujące pliki ze skanowania oprogramowania antywirusowego. <ul><li>CBEngine.exe (instead of dpmra.exe).<li>CSC.exe (powiązanego z .NET Framework). Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** <br /><ol><li>*Agent usług Microsoft Azure Recovery Service nie może nawiązać połączenia z programem Kopia zapasowa Microsoft Azure. (ID: 100050) ustawienia sieciowe i upewnij się, że jesteś w stanie połączyć się z Internetem*<li>*(407) Wymagane jest uwierzytelnianie serwera proxy* |Serwer proxy blokuje połączenia. |  <ul><li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy** i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Wybierz **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera.<li> Jeśli komputer ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwer proxy zezwalać na te [adresy URL](backup-configure-vault.md#verify-internet-access) i [adresu IP](backup-configure-vault.md#verify-internet-access). <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, Wyklucz następujące pliki ze skanowania oprogramowania antywirusowego. <ul><li>CBEngine.exe (instead of dpmra.exe).<li>CSC.exe (powiązanego z .NET Framework). Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nie można ustawić klucza szyfrowania na potrzeby bezpiecznych kopii zapasowych
@@ -68,13 +69,13 @@ Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem R
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 |---------|---------|---------|
-|**Error** <br /><ol>*Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]. Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft*     | <li> Folder tymczasowy znajduje się na woluminie, który ma za mało miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony do innej lokalizacji. <li> Brakuje pliku OnlineBackup.KEK.         | <li>Uaktualnianie do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta usług MARS.<li>Przenieś pliki tymczasowe lokalizacja folderu lub pamięci podręcznej do woluminu z ilością wolnego miejsca równa 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Aby poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|**Error** <br />*Aktywacja nie została pomyślnie ukończona. Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x1FC07]. Spróbuj ponownie wykonać operację po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft*     | <li> Folder tymczasowy znajduje się na woluminie, który ma za mało miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony do innej lokalizacji. <li> Brakuje pliku OnlineBackup.KEK.         | <li>Uaktualnianie do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta usług MARS.<li>Przenieś pliki tymczasowe lokalizacja folderu lub pamięci podręcznej do woluminu z ilością wolnego miejsca równa 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Aby poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Hasło szyfrowania nie zostały prawidłowo skonfigurowane
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 |---------|---------|---------|
-|**Error** <br /><ol>*Błąd 34506. Hasło szyfrowania zapisane na tym komputerze nie jest prawidłowo skonfigurowane*.    | <li> Folder tymczasowy znajduje się na woluminie, który ma za mało miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony do innej lokalizacji. <li> Brakuje pliku OnlineBackup.KEK.        | <li>Uaktualnianie do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta usług MARS.<li>Przenieś folder tymczasowy lub lokalizację pamięci podręcznej do woluminu z wolne miejsce odpowiadające 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Aby poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+|**Error** <br />*Błąd 34506. Hasło szyfrowania zapisane na tym komputerze nie jest prawidłowo skonfigurowane*.    | <li> Folder tymczasowy znajduje się na woluminie, który ma za mało miejsca. <li> Folder tymczasowy został niepoprawnie przeniesiony do innej lokalizacji. <li> Brakuje pliku OnlineBackup.KEK.        | <li>Uaktualnianie do [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta usług MARS.<li>Przenieś folder tymczasowy lub lokalizację pamięci podręcznej do woluminu z wolne miejsce odpowiadające 5 – 10% całkowitego rozmiaru danych kopii zapasowej. Aby poprawnie przenieść lokalizację pamięci podręcznej, skorzystaj z procedury opisanej w [pytania dotyczące agenta usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Upewnij się, że plik OnlineBackup.KEK jest obecny. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Tworzenie kopii zapasowych nie działają zgodnie z harmonogramem
@@ -119,7 +120,7 @@ Usługa Azure Backup nie może pomyślnie zainstalować woluminu odzyskiwania, n
 
     ![Zrzut ekranu usługi Azure Backup Menedżera urządzeń, za pomocą kontrolerów magazynu wyróżniony](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  Przejdź do **Menedżera zadań** > **usługi (lokalne)** > **Usługa inicjatora iSCSI firmy Microsoft**.
+7.  Przejdź do **Menedżera zadań** > **usługi (lokalne)**  > **Usługa inicjatora iSCSI firmy Microsoft**.
 
     ![Zrzut ekranu usługi Azure Backup Menedżera zadań, za pomocą usługi (lokalne) wyróżniony](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 

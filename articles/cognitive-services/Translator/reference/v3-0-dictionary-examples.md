@@ -3,19 +3,19 @@ title: Metoda przykłady słownika interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Metoda przykłady słowników interfejs API tekstu usługi Translator.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: d48349b802023d9a05bf14898440837b7793715d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 526fc3e51691773e27530a0fa775f4f07ee94acd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605123"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389772"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Przykłady słowników
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>z</td>
+    <td>from</td>
     <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
   <tr>

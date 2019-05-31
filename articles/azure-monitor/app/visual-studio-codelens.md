@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 9ad3484e9134f1ff96823968b65d7b6dc45c7539
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d4f7cfab8291fcb6d0160035b9e421a8d47b2396
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372417"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255181"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio
 Metody w kodzie aplikacji internetowej mogą być adnotowane przy użyciu telemetrii dotyczącej wyjątków czasu wykonywania i czasu odpowiedzi na żądanie. W przypadku instalowania usługi [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) w aplikacji dane telemetryczne pojawią się w funkcji [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) programu Visual Studio — w uwagach na górze każdej funkcji, w których są wyświetlane użyteczne informacje, takie jak liczba miejsc, w których odwoływano się do funkcji i nazwisko ostatniej osoby, która ją edytowała.
@@ -58,7 +58,7 @@ Aby uzyskać szczegółowe informacje, kliknij wskaźnik CodeLens wyjątków:
 > Jeśli widzisz komunikat „Liczba wyjątków: 0” w funkcji CodeLens, ale wiesz, że powinny pojawić się wyjątki, upewnij się, że wybrano właściwy zasób usługi Application Insights w funkcji CodeLens. Aby wybrać inny zasób, kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz polecenie **Application Insights > Wybierz źródło telemetrii**. Funkcja CodeLens jest wyświetlana tylko dla 15 najczęściej występujących wyjątków w aplikacji w ciągu ostatnich 24 godzin, dlatego jeśli wyjątek znajduje się na miejscu 16 lub dalszym, zobaczysz informację „Liczba wyjątków: 0”. Wyjątki od widoków platformy ASP.NET mogą nie pojawić się w metodach kontrolera, które wygenerowały te widoki.
 > 
 > [!TIP]
-> Jeśli widzisz komunikat „Liczba wyjątków: ?” w funkcji CodeLens, należy skojarzyć konto platformy Azure z programem Visual Studio lub może się okazać, że poświadczenie Twojego konta platformy Azure wygasło. W obu przypadkach kliknij pozycję „Liczba wyjątków: ?” i wybierz polecenie **Dodaj konto...**, aby wprowadzić poświadczenia.
+> Jeśli widzisz komunikat „Liczba wyjątków: ?” w funkcji CodeLens, należy skojarzyć konto platformy Azure z programem Visual Studio lub może się okazać, że poświadczenie Twojego konta platformy Azure wygasło. W obu przypadkach kliknij pozycję „Liczba wyjątków: ?” i wybierz polecenie **Dodaj konto...** , aby wprowadzić poświadczenia.
 > 
 > 
 
@@ -80,5 +80,5 @@ Aby uzyskać szczegółowe informacje, kliknij wskaźnik CodeLens żądań:
 | --- | --- |
 | **[Praca z usługą Application Insights w programie Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Wyszukiwanie danych telemetrycznych, wyświetlanie danych CodeLens i konfigurowanie usługi Application Insights. Wszystko to w programie Visual Studio. |![Kliknij prawym przyciskiem myszy projekt i wybierz kolejno opcje Application Insights, Wyszukiwanie](./media/visual-studio-codelens/34.png) |
 | **[Dodawanie większej ilości danych](../../azure-monitor/app/asp-net-more.md)**<br/>Monitorowanie użycia, dostępności, zależności i wyjątków. Integrowanie śladów ze struktur rejestrowania. Zapisywanie niestandardowych danych telemetrycznych. |![Visual Studio](./media/visual-studio-codelens/64.png) |
-| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/app-insights-dashboards.md)**<br/>Pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności aplikacji na żywo oraz eksportowanie telemetrii. |![Visual Studio](./media/visual-studio-codelens/62.png) |
+| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/overview-dashboard.md)**<br/>Pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności aplikacji na żywo oraz eksportowanie telemetrii. |![Visual Studio](./media/visual-studio-codelens/62.png) |
 

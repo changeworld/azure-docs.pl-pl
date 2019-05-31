@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921915"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389965"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Połączenia zewnętrzne rozwiązania przy użyciu Common Event Format
 
@@ -44,6 +44,8 @@ Połączenie między przez wartownika platformy Azure i urządzeniem w formacie 
 2. Agent usługi Syslog zbiera dane i bezpiecznie wysyła je do usługi Log Analytics, gdzie zostanie przeanalizowana i wzbogacony.
 3. Agent przechowuje dane w obszarze roboczym usługi Log Analytics, dzięki czemu mogą być wyszukiwane zgodnie z potrzebami, korzystając z analizy, reguły korelacji i pulpitów nawigacyjnych.
 
+> [!NOTE]
+> Agent może zbierać dzienniki z wielu źródeł, ale musi być zainstalowany na komputerze dedykowanego serwera proxy.
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>Krok 1: Łączenie do urządzenia w formacie CEF za pośrednictwem dedykowanej maszynie Wirtualnej platformy Azure
 
@@ -61,7 +63,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
 1. W portalu Azure przez wartownika kliknij **łączników danych** i wybierz typ urządzenia. 
 
 1. W obszarze **konfiguracji agenta systemu Linux Syslog**:
-   - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszyny Wirtualnej systemu Linux, który jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych Vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
+   - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszyny Wirtualnej systemu Linux, który jest automatycznie połączony z obszarem roboczym. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych Vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
       1. W **wdrożenie niestandardowe** strony, zapewniają szczegółowe informacje i wybierz nazwę użytkownika i hasło i jeśli zgadzasz się na warunki i postanowienia, zakup maszyny Wirtualnej.
       1. Konfigurowanie urządzenia w taki sposób, aby wysłać dzienniki przy użyciu ustawień wymienionych w na stronie połączenia. Łącznik ogólnego Common Event Format Użyj następujących ustawień:
          - Protokół = UDP
@@ -118,6 +120,13 @@ Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika 
   
  Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń CEF, możesz wyszukać `CommonSecurityLog`.
 
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>Krok 2: Do przodu dzienniki Common Event Format (CEF), aby agent usługi Syslog
+
+Ustaw rozwiązanie zabezpieczające do wysyłania komunikatów Syslog w formacie CEF do agenta programu Syslog. Upewnij się, że używasz te same parametry, które pojawiają się w konfiguracji agenta. Są to zazwyczaj:
+
+- Port 514
+- Funkcji local4
+
 ## <a name="step-3-validate-connectivity"></a>Krok 3: Zweryfikuj łączność
 
 Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiają się w usłudze Log Analytics. 
@@ -128,7 +137,7 @@ Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiaj
 
 3. Upewnij się, że dzienniki wysyłane są zgodne z [RFC 5424](https://tools.ietf.org/html/rfc542).
 
-4. Na komputerze z uruchomionym agentem Syslog, upewnij się, te porty 514, 25226 są otwarte i nasłuchuje, za pomocą polecenia `netstat -a -n:`. Aby uzyskać więcej informacji na temat korzystania z tego polecenia zobacz [netstat(8) - strony ataków typu man Linux](https://linux.die.netman/8/netstat). Jeśli nasłuchuje poprawnie, zostanie wyświetlone to:
+4. Na komputerze z uruchomionym agentem Syslog, upewnij się, te porty 514, 25226 są otwarte i nasłuchuje, za pomocą polecenia `netstat -a -n:`. Aby uzyskać więcej informacji na temat korzystania z tego polecenia zobacz [netstat(8) - strony ataków typu man Linux](https://linux.die.net/man/8/netstat). Jeśli nasłuchuje poprawnie, zostanie wyświetlone to:
 
    ![Usługa Azure porty wartownik](./media/connect-cef/ports.png) 
 

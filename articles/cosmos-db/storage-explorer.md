@@ -4,15 +4,15 @@ description: Dowiedz się, jak nawiązać połączenie z usługi Azure Cosmos DB
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 8700d0988927b221ace82a492e9902f1f36a562b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60951265"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242646"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Praca z danymi za pomocą Eksploratora usługi Azure Storage
 
@@ -223,11 +223,11 @@ Gdy Eksplorator usługi Storage napotka jeden z tych „certyfikatów z podpisem
      - [System Windows](https://slproweb.com/products/Win32OpenSSL.html) (dowolna z wersji uproszczonych jest OK)
      - Systemów Mac i Linux: Powinien być dołączony do systemu operacyjnego
 2. Uruchom protokół Open SSL
-    - W systemie Windows: Przejdź do katalogu instalacyjnego, następnie **/bin/**, a następnie kliknij dwukrotnie **openssl.exe**.
+    - W systemie Windows: Przejdź do katalogu instalacyjnego, następnie **/bin/** , a następnie kliknij dwukrotnie **openssl.exe**.
     - Komputery Mac i system Linux: wykonaj polecenie **openssl** z terminala
 3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`
 4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie wiesz, które z nich są z podpisem własnym, wówczas poszukaj pozycji, gdzie podmiot („s:”) i wystawca („i:”) są identyczni.
-5.  Po znalezieniu jakichkolwiek certyfikatów z podpisem własnym skopiuj i wklej wszystko, poczynając od **---BEGIN CERTIFICATE---** do **---END CERTIFICATE---**, do nowego pliku cer dla każdego z nich.
+5.  Po znalezieniu jakichkolwiek certyfikatów z podpisem własnym skopiuj i wklej wszystko, poczynając od **---BEGIN CERTIFICATE---** do **---END CERTIFICATE---** , do nowego pliku cer dla każdego z nich.
 6.  Otwórz Eksploratora usługi Storage, a następnie przejdź do pozycji **Edytuj** > **Certyfikaty SSL** > **Importuj certyfikaty**. Za pomocą selektora plików znajdź, wybierz i otwórz utworzony plik cer.
 
 Jeśli nie możesz odnaleźć żadnych certyfikatów z podpisem własnym za pomocą powyższych kroków, możesz wysłać opinię, aby uzyskać dalszą pomoc.

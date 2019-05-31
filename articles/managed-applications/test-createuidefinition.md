@@ -1,40 +1,58 @@
 ---
 title: Testowanie definicji interfejsu użytkownika usługi Azure Managed Applications | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób testowania środowiska użytkownika do tworzenia aplikacji zarządzanych platformy Azure za pośrednictwem portalu.
-services: managed-applications
-documentationcenter: na
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/22/2018
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: b1392c29881a9077e26baafc8972148800d03d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99ca319910be2cb20214172826eb40361abe72f0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746321"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257585"
 ---
-# <a name="test-azure-portal-interface-for-your-managed-application"></a>Testowanie interfejsu portalu platformy Azure dla aplikacji zarządzanej
-Po [tworzenia pliku createUiDefinition.json](create-uidefinition-overview.md) dla aplikacji zarządzanych platformy Azure, musisz przetestowanie środowiska użytkownika. Aby uprościć testowanie, należy użyć skryptu, który ładuje plik w portalu. Nie potrzebujesz rzeczywiście wdrożyć Twoją zarządzaną aplikacją.
+# <a name="test-your-portal-interface-for-azure-managed-applications"></a>Testowanie interfejsu portalu usługi Azure Managed Applications
+
+Po [tworzenia pliku createUiDefinition.json](create-uidefinition-overview.md) dla zarządzanych aplikacji, należy przetestować środowisko użytkownika. Aby uprościć testowanie, należy użyć środowiska piaskownicy, która ładuje plik w portalu. Nie potrzebujesz rzeczywiście wdrożyć Twoją zarządzaną aplikacją. Piaskownica przedstawia interfejsu użytkownika w środowisku portalu aktualnych i pełnego ekranu. Alternatywnie można użyć skryptu programu PowerShell dla testowania interfejsu, ale używa widoku starszej wersji portalu. Oba podejścia są wyświetlane w tym artykule. Piaskownica to zalecany sposób nad wersją zapoznawczą interfejsu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* A **createUiDefinition.json** pliku. Jeśli nie masz tego pliku, skopiuj [przykładowy plik](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json) i zapisać go lokalnie.
+* A **createUiDefinition.json** pliku. Jeśli nie masz tego pliku, skopiuj [przykładowy plik](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="download-test-script"></a>Pobierz skrypt testu
+## <a name="use-sandbox"></a>Użyj ustawienia piaskownica
+
+1. Otwórz [tworzenie piaskownicy definicji interfejsu użytkownika](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade).
+
+   ![Pokaż piaskownicy](./media/test-createuidefinition/show-sandbox.png)
+
+1. Zastąp zawartość pliku createUiDefinition.json pustą definicję. Wybierz **Podgląd**.
+
+   ![Wybierz ikonę Podgląd](./media/test-createuidefinition/select-preview.png)
+
+1. Zostanie wyświetlony formularz, który został utworzony. Można przejść przez środowisko użytkownika i podaj wartości.
+
+   ![Pokaż formularz](./media/test-createuidefinition/show-ui-form.png)
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Jeśli nie jest wyświetlany po wybraniu formularza **(wersja zapoznawcza)** , może być błąd składni. Wyszukaj czerwony wskaźnika na pasku przewijania w prawo i przejście do niej.
+
+![Pokaż błąd składni](./media/test-createuidefinition/show-syntax-error.png)
+
+Jeśli formularz nie jest wyświetlany, a zamiast tego będzie widoczna ikona chmury z listy zakończenia, formularz ma błąd, np. Brak właściwości. Otwórz narzędzia dla deweloperów sieci Web w przeglądarce. **Konsoli** ważne komunikaty dotyczące interfejsu.
+
+![Pokaż błąd](./media/test-createuidefinition/show-error.png)
+
+## <a name="use-test-script"></a>Użyj skryptu testu
 
 Aby przetestować interfejs użytkownika w portalu, skopiuj jeden z poniższych skryptów na komputer lokalny:
 
 * [Skrypt programu PowerShell ładowane bezpośrednio](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Skrypt interfejsu wiersza polecenia platformy Azure w ładowane bezpośrednio](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
-
-## <a name="run-script"></a>Uruchom skrypt
 
 Aby wyświetlić plik interfejsu w portalu, uruchom pobranego skryptu. Skrypt tworzy konto magazynu w ramach subskrypcji platformy Azure, a następnie przekazuje plik createUiDefinition.json do konta magazynu. Konto magazynu jest tworzone podczas pierwszego uruchomienia skryptu, lub jeśli konto magazynu zostało usunięte. Jeśli konto magazynu już istnieje w subskrypcji platformy Azure, skrypt ponownie go używa. Skrypt spowoduje otwarcie portalu i ładuje plik z konta magazynu.
 
@@ -70,19 +88,9 @@ W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 ./sideload-createuidef.sh
 ```
 
-## <a name="test-your-interface"></a>Testowanie interfejsu użytkownika
-
 Skrypt zostanie otwarty w nowej karcie w przeglądarce. Wyświetla portalu przy użyciu interfejsu do tworzenia aplikacji zarządzanej.
 
 ![Wyświetl portal](./media/test-createuidefinition/view-portal.png)
-
-Przed rozpoczęciem wypełniania pól, należy otworzyć narzędzia Web Developer Tools w przeglądarce. **Konsoli** ważne komunikaty dotyczące interfejsu.
-
-![Wybierz pozycję Konsola](./media/test-createuidefinition/select-console.png)
-
-Jeśli Twoja definicja interfejsu zawiera błąd, zostanie wyświetlony opis w konsoli.
-
-![Pokaż błąd](./media/test-createuidefinition/show-error.png)
 
 Podaj wartości dla pól. Po zakończeniu przekonasz się wartości, które są przekazywane do szablonu.
 
@@ -90,15 +98,7 @@ Podaj wartości dla pól. Po zakończeniu przekonasz się wartości, które są 
 
 Te wartości można użyć jako plik parametrów do testowania wdrożenia szablonu.
 
-## <a name="troubleshooting-the-interface"></a>Rozwiązywanie problemów z interfejsu
-
-Niektóre typowe błędy, które można napotkać, to:
-
-* W portalu nie załadować interfejsu. Zamiast tego zawiera ikonę chmury z listy zakończenia. Zazwyczaj zobaczysz tę ikonę, gdy występuje błąd składni w pliku. Otwórz plik w programie VS Code (lub innego edytora JSON, zawierającą sprawdzanie poprawności schematu) i Znajdź błędy składniowe.
-
-* Portal zawiesza się na ekranie Podsumowanie. Zazwyczaj ten przeszkód występuje, gdy znajduje się błąd w sekcji danych wyjściowych. Na przykład użytkownik może mieć odwołuje się do formant, który nie istnieje.
-
-* Parametr w danych wyjściowych jest pusty. Parametr może odwoływać się do właściwości, która nie istnieje. Na przykład odwołanie do formantu jest prawidłowy, ale odwołania do właściwości jest nieprawidłowa.
+Jeśli portalu zawiesza się na ekranie Podsumowanie, może być błąd w sekcji danych wyjściowych. Na przykład użytkownik może mieć odwołuje się do formant, który nie istnieje. Jeśli parametr w danych wyjściowych jest pusta, parametr może odwoływać się do właściwości, która nie istnieje. Na przykład odwołanie do formantu jest prawidłowy, ale odwołania do właściwości jest nieprawidłowa.
 
 ## <a name="test-your-solution-files"></a>Testowanie pliki rozwiązania
 

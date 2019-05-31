@@ -5,14 +5,14 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eea4366ca19c01af1f79566a5ca6bcae8805b6c3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765950"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242492"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Usługa Qlik Sense nawiązać połączenie z usługi Azure Cosmos DB i wizualizuj dane bazy danych
 

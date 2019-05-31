@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 31c5feac577dc5e9e0eed9ced9ccfe25c12d3086
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1b36ed5197aeb056c70200a49e09cc777d66d0b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310477"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237357"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Opis okresowe konfiguracji kopii zapasowej w usłudze Azure Service Fabric
 
@@ -137,9 +137,6 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
             "MinimumNumberOfBackups": 20
         }
         ```
-
-> [!IMPORTANT]
-> Ze względu na problem w środowisku uruchomieniowym upewnij się, że czas przechowywania w zasadach przechowywania jest skonfigurowany do mniej niż 24 dni — w przeciwnym razie mogłyby spowodować przywracanie kopii zapasowej usługi, aby przejść do kworum utraty wpis replica w tryb failover.
 
 ## <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
 Po zdefiniowaniu zasad tworzenia kopii zapasowej do spełnienia wymagań w zakresie tworzenia kopii zapasowej danych, należy odpowiednio skojarzony albo zasad tworzenia kopii zapasowej _aplikacji_, lub _usługi_, lub _partycji_.

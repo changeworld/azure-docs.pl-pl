@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6afe54d269d273c6a93e6431e9f1c1af7b18cc0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720920"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237733"
 ---
 # <a name="how-to-deploy-azure-files"></a>Jak wdrożyć usługę Pliki Azure
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. W tym artykule Pokaż praktycznie wdrażanie usługi Azure Files w Twojej organizacji.
@@ -108,7 +108,7 @@ ROBOCOPY jest narzędziem dobrze znanych kopiowania, które jest dostarczany z p
 ### <a name="azcopy"></a>Narzędzie AzCopy
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z usługi Azure Files, a także usługi Azure Blob storage przy użyciu prostych poleceń z optymalną wydajnością. Narzędzie AzCopy jest prosty w użyciu:
 
-1. Pobierz [najnowszą wersję programu AzCopy na Windows](https://aka.ms/downloadazcopy) lub [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
+1. Pobierz [najnowszą wersję programu AzCopy na Windows](https://aka.ms/downloadazcopy) lub [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy).
 2. Użyj `azcopy` do przenoszenia danych do udziału plików platformy Azure, w wierszu polecenia. Składnia na Windows jest w następujący sposób: 
 
     ```

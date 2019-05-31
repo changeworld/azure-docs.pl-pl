@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c80e9953a24504c4ad324ce077b741e60a52b1fb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908016"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243709"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -34,11 +34,11 @@ W tym artykule dowiesz się o tym, jak wykonać uwierzytelnianie użytkowników 
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"**. Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"** . Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Tworzenie aplikacji .NET
 1. W programie Visual Studio, wybierz **pliku** menu **New**, a następnie **projektu**.
-2. Wybierz **Aplikacja konsoli (.NET Framework)**, a następnie wybierz pozycję **dalej**.
+2. Wybierz **Aplikacja konsoli (.NET Framework)** , a następnie wybierz pozycję **dalej**.
 3. W **Nazwa projektu**, wprowadź `CreateADLApplication`, a następnie wybierz pozycję **Utwórz**.
 
 4. Dodaj pakiety NuGet do swojego projektu.
@@ -74,7 +74,7 @@ W tym artykule dowiesz się o tym, jak wykonać uwierzytelnianie użytkowników 
 ## <a name="end-user-authentication"></a>Uwierzytelnianie użytkowników końcowych
 Dodaj następujący fragment kodu w aplikacji klienckiej .NET. Zastąp wartości zastępcze wartościami pobranymi z natywną aplikację Azure AD (wymienione jako warunek wstępny). Ten fragment kodu umożliwia uwierzytelnianie aplikacji **interaktywnie** z Data Lake Storage Gen1, co oznacza, że zostanie wyświetlony monit o wprowadzenie poświadczeń platformy Azure.
 
-W celu ułatwienia poniższy fragment kodu używa wartości domyślnych Identyfikatora klienta oraz identyfikatora URI, które są prawidłowe dla każdej subskrypcji platformy Azure przekierowania. W poniższym fragmencie kodu wystarczy podać wartość identyfikatora dzierżawy. Możesz pobrać identyfikator dzierżawy wykonując instrukcje podane w [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+W celu ułatwienia poniższy fragment kodu używa wartości domyślnych Identyfikatora klienta oraz identyfikatora URI, które są prawidłowe dla każdej subskrypcji platformy Azure przekierowania. W poniższym fragmencie kodu wystarczy podać wartość identyfikatora dzierżawy. Możesz pobrać identyfikator dzierżawy wykonując instrukcje podane w [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
     
 - Zastąp funkcji Main() następującym kodem:
 

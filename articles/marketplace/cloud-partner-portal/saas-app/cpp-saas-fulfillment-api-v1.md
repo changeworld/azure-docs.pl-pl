@@ -8,16 +8,20 @@ ms.topic: reference
 ms.date: 03/28/2019
 ms.author: pabutler
 ROBOTS: NOINDEX
-ms.openlocfilehash: 816bdc61f85fdf171870a5b552661b816ec65e2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9b80f0fd36545de94e7128080dba5e516344c107
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943138"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257515"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS realizacji interfejsy API wersji 1 (przestarzałe)
 
 W tym artykule opisano sposób tworzenia oferty SaaS za pomocą interfejsów API. Interfejsy API, składa się z pozostałych metod i punktów końcowych, są niezbędne dla Jeśli sprzedajesz za pośrednictwem wybrane platformy Azure, dzięki czemu subskrypcje do swojej oferty SaaS.  
+
+> [!IMPORTANT] 
+> SaaS oferują funkcje zostały przeniesione do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+> Aby uzyskać więcej informacji, zobacz [Tworzenie nowej oferty SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 > [!WARNING]
 > Ta początkowa wersja interfejsu API realizacji SaaS jest przestarzała; Zamiast tego należy użyć [SaaS realizacji interfejsu API w wersji 2](./cpp-saas-fulfillment-api-v2.md).  Ten interfejs API jest obecnie są obsługiwana wyłącznie do obsługi istniejących wydawców. 
@@ -27,7 +31,7 @@ Aby pomóc w zintegrowaniu usługi SaaS dzięki platformie Azure dostępne są n
 -   Rozwiąż
 -   Subskrybuj
 -   Convert
--   Cofnij subskrypcję
+-   Anulowanie subskrypcji
 
 
 ## <a name="api-methods-and-endpoints"></a>Metody interfejsu API i punktów końcowych
@@ -66,9 +70,9 @@ Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawc�
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nie           | Unikatowy ciąg wartości do śledzenia żądania z klienta, najlepiej z identyfikatorem GUID. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.  |
 | x-ms-correlationid | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. To jest skorelowane wszystkie zdarzenia w operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
-| Typ zawartości       | Yes          | `application/json`                                        |
-| Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
-| x-ms-marketplace-token| Yes| Parametr tokenu zapytania w adresie URL, gdy użytkownik jest przekierowywany do witryny sieci Web SaaS ISV na platformie Azure. **Uwaga:** Ten token jest prawidłowy tylko przez 1 godzinę. Ponadto dekodowanie URL wartość tokenu za pomocą przeglądarki przed jego użyciem.|
+| Typ zawartości       | Tak          | `application/json`                                        |
+| Autoryzacja      | Tak          | JSON web token (JWT) token elementu nośnego.                    |
+| x-ms-marketplace-token| Tak| Parametr tokenu zapytania w adresie URL, gdy użytkownik jest przekierowywany do witryny sieci Web SaaS ISV na platformie Azure. **Uwaga:** Ten token jest prawidłowy tylko przez 1 godzinę. Ponadto dekodowanie URL wartość tokenu za pomocą przeglądarki przed jego użyciem.|
 |  |  |  |
   
 
@@ -108,7 +112,7 @@ Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawc�
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
 | x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie wartość ta jest identyfikator serwera korelacji.                   |
 | x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Ten identyfikator jest używany do żadnych uzgadniania. |
 | Retry-After        | Nie           | Ta wartość jest ustawiona tylko w przypadku odpowiedzi 429.                                                                   |
@@ -121,7 +125,7 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -136,8 +140,8 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 | x-ms-requestid         |   Nie         | Unikatowy ciąg wartości do śledzenia żądania z klienta, najlepiej z identyfikatorem GUID. Jeśli nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
 | x-ms-correlationid     |   Nie         | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
 | If-Match/If-None-Match |   Nie         |   Silne modułu sprawdzania poprawności wartość elementu ETag.                                                          |
-| Typ zawartości           |   Yes        |    `application/json`                                                                   |
-|  Autoryzacja         |   Yes        |    JSON web token (JWT) token elementu nośnego.                                               |
+| Typ zawartości           |   Tak        |    `application/json`                                                                   |
+|  Autoryzacja         |   Tak        |    JSON web token (JWT) token elementu nośnego.                                               |
 | x-ms-marketplace-session-mode| Nie | Flaga włączenia trybu uruchomienia próbnego podczas subskrybowania oferty SaaS. Jeśli ustawiona, subskrypcja nie zostanie obciążona. Jest to przydatne dla niezależnych dostawców oprogramowania, testowania scenariuszy. Ustaw ją na **"próbnym uruchamianiem"**|
 |  |  |  |
 
@@ -173,11 +177,11 @@ Odpowiedzi 202 monitowanie o stanie operacji żądania w nagłówku "Operacja lo
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
 | x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie wartość ta jest identyfikator serwera korelacji.                   |
-| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Ta wartość jest używana do dowolnego uzgadniania. |
-| Retry-After        | Yes          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
-| Operacja lokalizacji | Yes          | Link do zasobu, można uzyskać stanu operacji.                                                        |
+| x-ms-activityid    | Tak          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Ta wartość jest używana do dowolnego uzgadniania. |
+| Retry-After        | Tak          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
+| Operacja lokalizacji | Tak          | Link do zasobu, można uzyskać stanu operacji.                                                        |
 |  |  |  |
 
 ### <a name="change-plan-endpoint"></a>Punkt końcowy plan zmiany
@@ -186,7 +190,7 @@ Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie s
 
 **POPRAWKI**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -201,7 +205,7 @@ Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie s
 | x-ms-requestid          | Nie           | Unikatowy ciąg wartości dla śledzenia żądania od klienta. Zaleca się identyfikator GUID. Jeśli nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.   |
 | x-ms-correlationid      | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
 | If-Match /If-None-Match | Nie           | Silne modułu sprawdzania poprawności wartość elementu ETag.                              |
-| Typ zawartości            | Yes          | `application/json`                                        |
+| Typ zawartości            | Tak          | `application/json`                                        |
 | Autoryzacja           | Yes          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  |
 
@@ -235,11 +239,11 @@ Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie s
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
-| x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie wartość ta jest identyfikator serwera korelacji.                   |
-| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Ta wartość jest używana do dowolnego uzgadniania. |
-| Retry-After        | Yes          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
-| Operacja lokalizacji | Yes          | Link do zasobu, można uzyskać stanu operacji.                                                        |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-correlationid | Tak          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie wartość ta jest identyfikator serwera korelacji.                   |
+| x-ms-activityid    | Tak          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Ta wartość jest używana do dowolnego uzgadniania. |
+| Retry-After        | Tak          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
+| Operacja lokalizacji | Tak          | Link do zasobu, można uzyskać stanu operacji.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Usuwanie subskrypcji
@@ -250,7 +254,7 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -264,7 +268,7 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 |--------------------|--------------| ----------------------------------------------------------|
 | x-ms-requestid     | Nie           | Unikatowy ciąg wartości dla śledzenia żądania od klienta. Zaleca się identyfikator GUID. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.                                                           |
 | x-ms-correlationid | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
-| Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
+| Autoryzacja      | Tak          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  |
 
 *Kody odpowiedzi*
@@ -285,11 +289,11 @@ Odpowiedzi 202 monitowanie o stanie operacji żądania w nagłówku "Operacja lo
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
 | x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie, to jest identyfikator serwera korelacji.                   |
 | x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
-| Retry-After        | Yes          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
-| Operacja lokalizacji | Yes          | Link do zasobu, można uzyskać stanu operacji.                                                        |
+| Retry-After        | Tak          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
+| Operacja lokalizacji | Tak          | Link do zasobu, można uzyskać stanu operacji.                                                        |
 |   |  |  |
 
 ### <a name="get-operation-status"></a>Pobierz stan operacji
@@ -300,7 +304,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -314,7 +318,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nie           | Unikatowy ciąg wartości dla śledzenia żądania od klienta. Zaleca się identyfikator GUID. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.   |
 | x-ms-correlationid | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.  |
-| Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
+| Autoryzacja      | Tak          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  | 
 
 *Treść odpowiedzi*
@@ -334,7 +338,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 | id                 | String        | Identyfikator operacji.                                                                      |
 | status             | Wyliczenia          | Stan operacji, jedną z następujących: `In Progress`, `Succeeded`, lub `Failed`.          |
 | resourceLocation   | String        | Link do subskrypcji, który został utworzony lub zmodyfikowany. Dzięki temu klient, aby uzyskać zaktualizowany stan operacji post. Ta wartość nie jest ustawiony dla `Unsubscribe` operacji. |
-| utworzone            | DateTime      | Czas utworzenia operacji w formacie UTC.                                                           |
+| Utworzone            | DateTime      | Czas utworzenia operacji w formacie UTC.                                                           |
 | lastModified       | DateTime      | Ostatnia aktualizacja o nieudanej operacji w formacie UTC.                                                      |
 |  |  |  |
 
@@ -354,10 +358,10 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
 | x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie, to jest identyfikator serwera korelacji.                   |
-| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
-| Retry-After        | Yes          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
+| x-ms-activityid    | Tak          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
+| Retry-After        | Tak          | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
 |  |  |  |
 
 ### <a name="get-subscription"></a>Uzyskiwanie subskrypcji
@@ -368,7 +372,7 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -406,7 +410,7 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 | planId                 | String        | Identyfikator planu, który użytkownik.          |
 | saasSubscriptionName   | String        | Nazwa subskrypcji SaaS.                |
 | saasSubscriptionStatus | Wyliczenia          | Stan operacji.  Jeden z następujących czynności:  <br/> - `Subscribed`: Subskrypcja jest aktywna.  <br/> - `Pending`: Użytkownik utworzenia zasobu, ale nie zostanie aktywowany przez niezależnych dostawców oprogramowania.   <br/> - `Unsubscribed`: Anulowano subskrypcję użytkownika.   <br/> - `Suspended`: Użytkownik został zawieszony subskrypcji.   <br/> - `Deactivated`:  Subskrypcja platformy Azure została zawieszona.  |
-| utworzone                | DateTime      | Wartość sygnatury czasowej tworzenia subskrypcji w formacie UTC. |
+| Utworzone                | DateTime      | Wartość sygnatury czasowej tworzenia subskrypcji w formacie UTC. |
 | lastModified           | DateTime      | Subskrypcja zmodyfikowana wartość znacznika czasu w formacie UTC. |
 |  |  |  |
 
@@ -426,11 +430,11 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
-| x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie, to jest identyfikator serwera korelacji.                   |
-| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-correlationid | Tak          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie, to jest identyfikator serwera korelacji.                   |
+| x-ms-activityid    | Tak          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
 | Retry-After        | Nie           | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
-| eTag               | Yes          | Link do zasobu, można uzyskać stanu operacji.                                                        |
+| eTag               | Tak          | Link do zasobu, można uzyskać stanu operacji.                                                        |
 |  |  |  |
 
 ### <a name="get-subscriptions"></a>Pobiera subskrypcje
@@ -454,7 +458,7 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nie           | Unikatowy ciąg wartości dla śledzenia żądania od klienta. Zaleca się identyfikator GUID. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.             |
 | x-ms-correlationid | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
-| Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
+| Autoryzacja      | Tak          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  |
 
 *Treść odpowiedzi*
@@ -478,7 +482,7 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 | planId                 | String        | Identyfikator planu, który użytkownik.          |
 | saasSubscriptionName   | String        | Nazwa subskrypcji SaaS.                |
 | saasSubscriptionStatus | Wyliczenia          | Stan operacji.  Jeden z następujących czynności:  <br/> - `Subscribed`: Subskrypcja jest aktywna.  <br/> - `Pending`: Użytkownik utworzenia zasobu, ale nie zostanie aktywowany przez niezależnych dostawców oprogramowania.   <br/> - `Unsubscribed`: Anulowano subskrypcję użytkownika.   <br/> - `Suspended`: Użytkownik został zawieszony subskrypcji.   <br/> - `Deactivated`:  Subskrypcja platformy Azure została zawieszona.  |
-| utworzone                | DateTime      | Wartość sygnatury czasowej tworzenia subskrypcji w formacie UTC. |
+| Utworzone                | DateTime      | Wartość sygnatury czasowej tworzenia subskrypcji w formacie UTC. |
 | lastModified           | DateTime      | Subskrypcja zmodyfikowana wartość znacznika czasu w formacie UTC. |
 |  |  |  |
 
@@ -498,9 +502,9 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
-| x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie, to jest identyfikator serwera korelacji.                   |
-| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
+| x-ms-requestid     | Tak          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
+| x-ms-correlationid | Tak          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie, to jest identyfikator serwera korelacji.                   |
+| x-ms-activityid    | Tak          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
 | Retry-After        | Nie           | Stan można sprawdzić na interwał, z którego komputera klienckiego.                                                       |
 |  |  |  |
 
@@ -529,7 +533,7 @@ Element webhook SaaS jest używana do powiadamiania aktywnie zmiany w usłudze S
 | offerId                | String        | Identyfikator oferty, które subskrybuje użytkownik. Podany tylko w przypadku akcji "Aktualizuj".        |
 | publisherId                | String        | Identyfikator wydawcy, oferty SaaS         |
 | planId                 | String        | Identyfikator planu, który użytkownik. Podany tylko w przypadku akcji "Aktualizuj".          |
-| action                 | String        | Akcja, która jest przyczyną tego powiadomienia. Możliwe wartości - aktywowania, Usuń, Wstrzymaj, przywrócenie, aktualizację          |
+| Akcja                 | String        | Akcja, która jest przyczyną tego powiadomienia. Możliwe wartości - aktywowania, Usuń, Wstrzymaj, przywrócenie, aktualizację          |
 | timeStamp                 | String        | Wartość znacznika czasu w formacie UTC to powiadomienie zostało wyzwolone.          |
 |  |  |  |
 

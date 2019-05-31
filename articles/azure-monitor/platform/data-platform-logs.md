@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897f2eef0a52838d6190cb85a6a7f4492250935b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809213"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244852"
 ---
 # <a name="logs-in-azure-monitor"></a>Dzienniki w usłudze Azure Monitor
 
@@ -44,9 +44,9 @@ W poniższej tabeli wymieniono różne sposoby dzienników można używać w us�
 |  |  |
 |:---|:---|
 | Analiza | Użyj [usługi Log Analytics](../log-query/get-started-portal.md) w witrynie Azure portal, aby zapisać [rejestrowania zapytań](../log-query/log-query-overview.md) i interakcyjnie analizować dane dzienników przy użyciu zaawansowany aparat analizy Eksploratora danych.<br>Użyj [Konsola analizy usługi Application Insights](../app/analytics.md) w witrynie Azure portal do zapisywania dziennika zapytań i interakcyjnie analizować dane dzienników z usługi Application Insights. |
-| Wizualizacja | Wyniki zapytania renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).<br>Tworzenie [skoroszytu](../app/usage-workbooks.md) połączyć z wieloma zestawami danych w interaktywnych raportów. <br>Eksportowanie wyników kwerendy, aby [usługi Power BI](powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.<br>Eksportowanie wyników kwerendy, aby [Grafana](grafana-plugin.md) wykorzystać jej dashboarding i łączyć z innymi źródłami danych.|
+| Wizualizuj | Wyniki zapytania renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).<br>Tworzenie [skoroszytu](../app/usage-workbooks.md) połączyć z wieloma zestawami danych w interaktywnych raportów. <br>Eksportowanie wyników kwerendy, aby [usługi Power BI](powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.<br>Eksportowanie wyników kwerendy, aby [Grafana](grafana-plugin.md) wykorzystać jej dashboarding i łączyć z innymi źródłami danych.|
 | Alerty | Konfigurowanie [reguł alertów dzienników](alerts-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.<br>Konfigurowanie [regułę alertu metryki](alerts-metric-logs.md) na niektórych dzienników danych dziennika, wyodrębnić jako metryki. |
-| Pobierz | Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [wiersza polecenia platformy Azure](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Dostęp do dziennika wyników zapytania z niestandardowych aplikacji przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
+| Pobieranie | Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [wiersza polecenia platformy Azure](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Dostęp do dziennika wyników zapytania z niestandardowych aplikacji przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
 | Eksportowanie | Tworzenie przepływu pracy można pobrać danych dziennika i skopiuj go do lokalizacji zewnętrznej za pomocą [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
@@ -79,7 +79,7 @@ Usługa Azure Monitor może zbierać dane dzienników z różnych źródeł, zar
 | Dane | Opis |
 |:---|:---|
 | Dzienniki inspekcji w usłudze Azure Active Directory | Skonfigurować za pomocą ustawień diagnostycznych dla każdego katalogu. Zobacz [dzienniki Integracja usługi Azure AD przy użyciu dzienników usługi Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).  |
-| Dzienniki aktywności | Domyślnie przechowywane oddzielnie i mogą służyć do niemal alerty w czasie rzeczywistym. Zainstalować rozwiązanie Activity Log Analytics można zapisać do obszaru roboczego usługi Log Analytics. Zobacz [zbierać i analizować Dzienniki aktywności platformy Azure w usłudze Log Analytics](collect-activity-logs.md). |
+| Dzienniki aktywności | Domyślnie przechowywane oddzielnie i mogą służyć do niemal alerty w czasie rzeczywistym. Zainstaluj dziennika aktywności rozwiązania do analizy do zapisu do obszaru roboczego usługi Log Analytics. Zobacz [zbierać i analizować Dzienniki aktywności platformy Azure w usłudze Log Analytics](activity-log-collect.md). |
 
 ### <a name="azure-resources"></a>Zasoby platformy Azure
 

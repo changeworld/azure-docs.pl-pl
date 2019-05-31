@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8ca3b52d181578e6b35090489b7133a94b55cbd
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ac0f8cb4d9069d2ef7ce48939ad2dd1c92732d1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852081"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242968"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse
 
@@ -590,7 +590,7 @@ W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/
   
 1. **Program Polybase łączności z kontem usługi Azure Storage:**
     
-   1. Utwórz swoje poświadczenia bazy danych za pomocą **tożsamość = "Tożsamości usługi zarządzanej"**:
+   1. Utwórz swoje poświadczenia bazy danych za pomocą **tożsamość = "Tożsamości usługi zarządzanej"** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -640,7 +640,7 @@ Zostały wykonane następujące zadania:
 > * Wyświetlenie postępu ładowania danych
 > * Utworzenie statystyk dotyczących nowo załadowanych danych
 
-Przejdź do omówienia migracji, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych do usługi SQL Data Warehouse.
+Przejdź do omówienia rozwoju, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Dowiedz się, jak przeprowadzić migrację istniejącej bazy danych do usługi SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Decyzje projektowe, aby przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)

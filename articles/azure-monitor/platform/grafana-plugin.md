@@ -3,18 +3,18 @@ title: Monitorowanie usług platformy Azure i aplikacji przy użyciu narzędzia 
 description: Dane trasy usługi Azure Monitor i Application Insights aby można było wyświetlić Grafana.
 services: azure-monitor
 keywords: ''
-author: lingliw
-ms.author: v-lingwu
-ms.date: 04/12/19
+author: rboucher
+ms.author: robb
+ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9a20aba84e79e87f84d63e4bdae3ba1aac062f5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396095"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387187"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Teraz możesz monitorować usługi systemu Azure i aplikacji w [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbieranych przez usługi Azure Monitor, łącznie z różnych dzienników i metryk. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -103,7 +103,7 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
      > [!NOTE]
      >
      > Domyślne zapytanie dostarczane za pomocą wtyczki wykorzystuje dwa makra: "__interval $__timeFilter() i $. 
-     > Te makra umożliwiają Grafana dynamicznie obliczyć zakres czasu i ziarno czasu, po przejściu na części wykresu. Można usunąć tych makr i użyj filtru (czas standardowy), takie jak *TimeGenerated > ago(1h)*, ale ta oznacza, że wykres będzie obsługuje powiększenia w funkcji.
+     > Te makra umożliwiają Grafana dynamicznie obliczyć zakres czasu i ziarno czasu, po przejściu na części wykresu. Można usunąć tych makr i użyj filtru (czas standardowy), takie jak *TimeGenerated > ago(1h)* , ale ta oznacza, że wykres będzie obsługuje powiększenia w funkcji.
     
      ![Grafana konfiguracji programu graph dla usługi Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
@@ -119,8 +119,6 @@ Możesz także ponownie użyć tej konfiguracji, aby uwzględnić metryki z serw
 
 Poniżej przedstawiono wartościowa dokumentacja ułatwiająca artykuły dotyczące sposobu używania Telegraf, InfluxDB, Prometheus i platformy Docker
  - [Jak monitorować metryki systemowe z stosem ZNACZNIKÓW w systemie Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
-
- - [Monitoruj metryki zasobu platformy Docker przy użyciu narzędzia Grafana, InfluxDB i Telegraf](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
 
  - [Rozwiązanie monitorowania dla hostów platformy Docker, kontenery i usług konteneryzowanych](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
@@ -168,3 +166,4 @@ Jeśli konfigurujesz środowiska Grafana na platformie Azure, opłaty są nalicz
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przegląd metryk usługi Azure Monitor](data-platform.md)
+

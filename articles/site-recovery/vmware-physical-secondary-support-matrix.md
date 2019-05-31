@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 742f1359d928aa05a8b8d36bde2ccf022db93b79
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564854"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418259"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -30,7 +30,7 @@ Ten artykuł zawiera podsumowanie, co jest obsługiwane w przypadku używania [u
 
 **System operacyjny** | **Szczegóły**
 --- | ---
-vCenter Server | vCenter 5.5, 6.0 i 6.5<br/><br/> Po uruchomieniu, 6.0 lub 6.5, należy pamiętać, że tylko 5.5 funkcje są obsługiwane.
+Serwer vCenter | vCenter 5.5, 6.0 i 6.5<br/><br/> Po uruchomieniu, 6.0 lub 6.5, należy pamiętać, że tylko 5.5 funkcje są obsługiwane.
 
 
 ## <a name="replicated-vm-support"></a>Replikowane maszyn wirtualnych z osłoną
@@ -57,15 +57,15 @@ Można replikować tylko maszyny z systemem Linux przy użyciu następujących m
 
 **Konfiguracja** | **Obsługiwane**  
 --- | --- 
-Host - zespołu kart interfejsu Sieciowego | Yes 
-Host - sieci VLAN | Yes 
+Host - zespołu kart interfejsu Sieciowego | Tak 
+Host - sieci VLAN | Tak 
 Host — protokołu IPv4 | Yes 
 Host - IPv6 | Nie 
 Maszyna wirtualna - gościa zespołu kart interfejsu Sieciowego | Nie
-Gość maszyny Wirtualnej — protokołu IPv4 | Yes
+Gość maszyny Wirtualnej — protokołu IPv4 | Tak
 Gość maszyny Wirtualnej — IPv6 | Nie
 Gość maszyny Wirtualnej — Windows/Linux — statyczny adres IP | Yes
-Gość maszyny Wirtualnej — Multi-NIC | Yes
+Gość maszyny Wirtualnej — Multi-NIC | Tak
 
 
 ## <a name="storage"></a>Magazyn
@@ -74,29 +74,29 @@ Gość maszyny Wirtualnej — Multi-NIC | Yes
 
 **Magazyn (host)** | **Obsługiwane** 
 --- | --- 
-NFS | Yes 
+NFS | Tak 
 SMB 3.0 | ND 
 SAN (ISCSI) | Yes 
-Wiele ścieżek (MPIO) | Yes 
+Wiele ścieżek (MPIO) | Tak 
 
 ### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
 **Konfiguracja** | **Obsługiwane** 
 --- | --- 
-VMDK | Yes 
+VMDK | Tak 
 VHD/VHDX | ND 
 Zbieranie generacji 2 maszyn wirtualnych | ND 
-Udostępniony dysk klastra | Yes 
+Udostępniony dysk klastra | Tak 
 Zaszyfrowanego dysku | Nie 
-UEFI| Yes 
+UEFI| Tak 
 NFS | Nie 
 SMB 3.0 | Nie 
-RDM | Yes 
+RDM | Tak 
 > 1 TB danych na dysku | Yes 
-Wolumin dysku rozłożonego > 1 TB<br/><br/> LVM | Yes 
+Wolumin dysku rozłożonego > 1 TB<br/><br/> LVM | Tak 
 Miejsca do magazynowania | Nie 
-Dodaj lub usuń gorąco dysku | Yes 
-Wykluczanie dysku | Yes 
+Dodaj lub usuń gorąco dysku | Tak 
+Wykluczanie dysku | Tak 
 Wiele ścieżek (MPIO) | ND 
 
 ## <a name="vaults"></a>Magazyny

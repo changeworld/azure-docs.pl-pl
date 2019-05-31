@@ -3,19 +3,19 @@ title: Framework współpracy tłumaczenia (CTF) raportowanie — interfejs API 
 titlesuffix: Azure Cognitive Services
 description: Jak używać raportowania współpracy Translation Framework (CTF).
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: v-pawal
+ms.openlocfilehash: 166c152828a91889d7d1d7eb6f8c03dac48172f5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712818"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389389"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
 
@@ -76,7 +76,7 @@ Ta metoda pobiera liczbę tłumaczeń, które są tworzone przez użytkownika. Z
 |:---|:---|
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | uriPrefix | **Opcjonalnie** ciąg zawierający prefiks identyfikatora URI tłumaczenia.|
-| z | **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia. |
+| from | **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia. |
 | na | **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
@@ -84,7 +84,7 @@ Ta metoda pobiera liczbę tłumaczeń, które są tworzone przez użytkownika. Z
 | category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
 | minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC. |
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC. |
-| pomiń| **Opcjonalnie** liczbę wyników, które chcesz przejść na stronę. Na przykład chcąc pomijania wierszy pierwszych 20 wyników i widokiem z 21 rekordu wyników, należy określić wartość 20 dla tego parametru. Wartość domyślna tego parametru to 0.|
+| Pomiń| **Opcjonalnie** liczbę wyników, które chcesz przejść na stronę. Na przykład chcąc pomijania wierszy pierwszych 20 wyników i widokiem z 21 rekordu wyników, należy określić wartość 20 dla tego parametru. Wartość domyślna tego parametru to 0.|
 | Wypełnij | **Opcjonalnie** liczbę wyników, które mają zostać pobrane. Maksymalna liczba każdego żądania wynosi 100. Wartość domyślna to 100.|
 
 > [!NOTE]
@@ -96,7 +96,7 @@ Zestaw wyników zawiera tablicę **UserTranslationCount**. Każdy UserTranslatio
 
 | Pole | Opis |
 |:---|:---|
-| Licznik| Liczba wyników, które są pobierane|
+| Count| Liczba wyników, które są pobierane|
 | Od | Język źródłowy|
 | Ocena| Ocena, która jest stosowana przez osoby przesyłającej w wywołaniu metody AddTranslation()|
 | Do| Język docelowy|
@@ -105,7 +105,7 @@ Zestaw wyników zawiera tablicę **UserTranslationCount**. Każdy UserTranslatio
 
 **Wyjątki**
 
-| Wyjątek | Komunikat | Warunki |
+| Wyjątek | Message | Warunki |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | Parametr "**maxDateUtc**"musi być większa lub równa"**minDateUtc**".| Wartość parametru **maxDateUtc** jest mniejsza niż wartość parametru **minDateUtc**.|
 | TranslateApiException | Adres IP za pośrednictwem przydziału.| <ul><li>Osiągnięto limit liczby żądań na minutę.</li><li>Rozmiar żądania będzie ograniczony w 10 000 znaków.</li><li>Co godzinę i dzienny limit przydziału ograniczyć liczbę znaków, które będzie akceptować interfejsu API w usłudze Translator firmy Microsoft.</li></ul>|
@@ -147,7 +147,7 @@ Ta metoda pobiera tłumaczenia, które są tworzone przez użytkownika. Zapewnia
 |:---|:---|
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | uriPrefix| **Opcjonalnie** ciąg zawierający prefiks identyfikatora URI tłumaczenia.|
-| z| **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia.|
+| from| **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia.|
 | na| **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
@@ -155,7 +155,7 @@ Ta metoda pobiera tłumaczenia, które są tworzone przez użytkownika. Zapewnia
 | category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
 | minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
-| pomiń| **Opcjonalnie** liczbę wyników, które chcesz przejść na stronę. Na przykład chcąc pomijania wierszy pierwszych 20 wyników i widokiem z 21 rekordu wyników, należy określić wartość 20 dla tego parametru. Wartość domyślna tego parametru to 0.|
+| Pomiń| **Opcjonalnie** liczbę wyników, które chcesz przejść na stronę. Na przykład chcąc pomijania wierszy pierwszych 20 wyników i widokiem z 21 rekordu wyników, należy określić wartość 20 dla tego parametru. Wartość domyślna tego parametru to 0.|
 | Wypełnij| **Opcjonalnie** liczbę wyników, które mają zostać pobrane. Maksymalna liczba każdego żądania wynosi 100. Wartością domyślną jest 50.|
 
 > [!NOTE]
@@ -178,7 +178,7 @@ Zestaw wyników zawiera tablicę **UserTranslation**. Każdy UserTranslation zaw
 
 **Wyjątki**
 
-| Wyjątek | Komunikat | Warunki |
+| Wyjątek | Message | Warunki |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | Parametr "**maxDateUtc**"musi być większa lub równa"**minDateUtc**".| Wartość parametru **maxDateUtc** jest mniejsza niż wartość parametru **minDateUtc**.|
 | TranslateApiException | Adres IP za pośrednictwem przydziału.| <ul><li>Osiągnięto limit liczby żądań na minutę.</li><li>Rozmiar żądania będzie ograniczony w 10 000 znaków.</li><li>Co godzinę i dzienny limit przydziału ograniczyć liczbę znaków, które będzie akceptować interfejsu API w usłudze Translator firmy Microsoft.</li></ul>|

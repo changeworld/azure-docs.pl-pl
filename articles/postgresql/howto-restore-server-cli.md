@@ -1,20 +1,20 @@
 ---
-title: Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL
-description: Dowiedz się, jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure.
+title: Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: Dowiedz się, jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL — pojedynczy serwer przy użyciu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419925"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65069100"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
 
 ## <a name="backup-happens-automatically"></a>Kopia zapasowa odbywa się automatycznie
 Usługa Azure Database for postgresql w warstwie są kopie zapasowe serwerów okresowo do włączania funkcji przywracania. Za pomocą tej funkcji można przywrócić serwera i jego baz danych do wcześniejszych punktu w czasie na nowym serwerze.

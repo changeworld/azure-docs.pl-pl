@@ -15,12 +15,12 @@ ms.date: 07/07/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: b22f52ce9aa7f57e5b6638eef580a2675d5c9b1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372572"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255131"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Debugowanie aplikacji przy użyciu usługi Azure Application Insights w programie Visual Studio
 W programie Visual Studio (w wersji 2015 i nowszych) można analizować wydajność i diagnozować problemy w aplikacji internetowej platformy ASP.NET zarówno podczas debugowania, jak i w środowisku produkcyjnym, przy użyciu telemetrii z usługi [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -105,5 +105,5 @@ Jest to również przydatne, jeśli masz trochę [niestandardowej telemetrii](..
 |  |  |
 | --- | --- |
 | **[Dodawanie większej ilości danych](../../azure-monitor/app/asp-net-more.md)**<br/>Monitorowanie użycia, dostępności, zależności i wyjątków. Integrowanie śladów ze struktur rejestrowania. Zapisywanie niestandardowych danych telemetrycznych. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/app-insights-dashboards.md)**<br/>Wyświetlać pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności na żywo, aplikacji i danych telemetrycznych wyeksportowany. |![Visual Studio](./media/visual-studio/62.png) |
+| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/overview-dashboard.md)**<br/>Wyświetlać pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności na żywo, aplikacji i danych telemetrycznych wyeksportowany. |![Visual Studio](./media/visual-studio/62.png) |
 

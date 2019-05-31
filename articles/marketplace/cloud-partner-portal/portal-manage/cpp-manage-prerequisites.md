@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: da594ca5793bbf61f393fb1380309403fd808cef
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942214"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258142"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portalu Cloud Partner 
 
@@ -23,12 +23,13 @@ Przed użyciem [portalu Cloud Partner](https://cloudpartner.azure.com/) dowolnej
 
 Dokładnie sprawdź swoje prawa i obowiązki w ramach [umowy o świadczenie usług firmy Microsoft](https://www.microsoft.com/servicesagreement) i [Microsoft Terms](https://www.microsoft.com/legal/intellectualproperty/copyright) przed utworzeniem konta usługi.  
 
-Wybierz nazwę swojego konta dokładnie.  Reprezentuje Twojej organizacji, więc nie powinna zawierać żadnych chronionych prawem autorskim lub sporne słów.  Na przykład Microsoft zabrania użycie jej chronionych prawem autorskim warunków, takich jak "Azure" i "Microsoft" w nazwach kont.  Aby uzyskać więcej informacji, zobacz [wytyczne dotyczące witryny Azure Marketplace](../../guidelines.md)
+Wybierz nazwę swojego konta dokładnie.  Reprezentuje Twojej organizacji, więc nie powinna zawierać żadnych chronionych prawem autorskim lub sporne słów.  Na przykład Microsoft zabrania użycie jej chronionych prawem autorskim warunków, takich jak "Azure" i "Microsoft" w nazwach kont.  Aby uzyskać więcej informacji, zobacz [wytyczne dotyczące witryny Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines)
 
 
 ## <a name="registration-steps"></a>Kroki rejestracji
 
-W poniższej tabeli wymieniono kroki niezbędne do w pełni Zarejestruj się jako wydawca chmury firmy Microsoft.  Aby uzyskać pełne instrukcje, zobacz [stają się wydawcy w witrynie Marketplace chmury](../../become-publisher.md). 
+W poniższej tabeli wymieniono kroki niezbędne do w pełni Zarejestruj się jako wydawca chmury firmy Microsoft.  Aby uzyskać pełne instrukcje, zobacz [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher
+). 
 
 
 |                   Krok                   |  Wynikowy rejestracji lub zasobów                     |

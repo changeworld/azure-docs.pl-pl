@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 03/22/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: bff6fe697912bca0bc55501a74a01a92b1330521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de04b461d8e2d2dce9a88052a86fbe5d163fafec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551399"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244199"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal — omówienie
 
@@ -23,6 +23,8 @@ Ten artykuł wprowadza witryny Azure portal, identyfikuje elementy strony portal
 ## <a name="what-is-the-azure-portal"></a>Co to jest witryna Azure portal?
 
 Azure portal to oparte na sieci web, ujednoliconej konsoli, która stanowi alternatywę dla narzędzia wiersza polecenia. W witrynie Azure portal można zarządzać subskrypcją platformy Azure przy użyciu graficznego interfejsu użytkownika. Można tworzyć, zarządzać i monitorować wszystko — od prostych aplikacji sieci web do wdrożeń w chmurze złożonych, tworzyć niestandardowe pulpity nawigacyjne dla zorganizowany widok zasobów i skonfigurować opcje ułatwień dostępu, aby uzyskać najlepsze wyniki.
+
+Witryna Azure portal jest przeznaczona dla odporności i stałej dostępności. Ma będzie ona widoczna w każdym centrum danych platformy Azure, umożliwiając odporna na awarie pojedynczych centrum danych i unika również slow-downs sieci dzięki blisko użytkowników. Witryna Azure portal stale aktualizuje i nie wymaga przestojów konserwacyjne.
 
 ## <a name="azure-home"></a>Azure Home
 
@@ -66,7 +68,6 @@ Wstępnie wypełniona Ulubione na pasku bocznym, wraz z łączami do często uż
 
 > [!TIP]
 > Najszybszym sposobem znalezienia zasobów, usługi lub dokumentacja jest użycie *wyszukiwania* w nagłówku globalnego. Użyj linków nawigacji wrócić do poprzedniej strony.
->
 >
 
 ## <a name="next-steps"></a>Kolejne kroki

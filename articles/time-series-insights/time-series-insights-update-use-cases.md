@@ -2,7 +2,7 @@
 title: Przypadki użycia usługi Azure Insights serii czasu (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, przypadki użycia Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27c79155a4630f49faf49f30b2d46bf1e0dffd90
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508317"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389995"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Przypadki użycia w usłudze Azure czas Series Insights w wersji zapoznawczej
 
@@ -28,11 +28,11 @@ W szczególności ten artykuł zawiera odpowiedzi na następujące pytania:
 * Jakie są korzyści z używania usługi Time Series Insights, aby uzyskać [analizy operacyjnej i efektywność procesu](#operational-analysis-and-driving-process-efficiency)?
 * Jakie są korzyści z używania usługi Time Series Insights, aby uzyskać [advanced analytics](#advanced-analytics)?
 
-Omówienie tych scenariuszy użycia jest opisane poniżej.
+Omówienie tych scenariuszy użycia jest opisane w poniższych sekcjach.
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Usługa Azure Time Series Insights to oferta, platform-as-a-service end-to-end. Służy do zbierania, przetwarzania, przechowywania, analizowania i wysyłania zapytań dotyczących danych skali IoT wysoce contextualized, zoptymalizowanego serii czasu. Usługa Time Series Insights jest idealny dla eksploracji danych ad hoc i analizę operacyjną. Usługa Time Series Insights to usługa jednoznacznie rozszerzalne, dostosowany, oferty, że spełnia szerokie musi przemysłowych wdrożenia IoT.
+Usługa Azure Time Series Insights to oferta, platform-as-a-service end-to-end. Służy do zbierania, przetwarzania, przechowywania, analizowania i wysyłania zapytań dotyczących danych skali IoT wysoce contextualized, zoptymalizowanego serii czasu. Usługa Time Series Insights jest idealny dla eksploracji danych ad hoc i analizę operacyjną. Usługa Time Series Insights to usługa jednoznacznie rozszerzalne, dostosowane oferty, że spełnia szerokie musi przemysłowych wdrożenia IoT.
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>Eksplorowanie danych i wizualne wykrywanie anomalii
 
@@ -54,7 +54,7 @@ Istnieją trzy podstawowe sposoby interakcji z danymi przechowywanymi w usłudze
 
     * Odczyt [biblioteki klienta Javascript Insights serii czasu](tutorial-explore-js-client-lib.md) i [klienta usługi Time Series Insights](https://github.com/Microsoft/tsiclient) dokumentacji, aby dowiedzieć się więcej na temat zestawu SDK języka JavaScript.
 
-    * Dowiedz się więcej na temat udostępniania adresy URL i nowy interfejs użytkownika, przeglądając [wizualizowanie danych w programie explorer (wersja zapoznawcza)](time-series-insights-update-explorer.md).
+    * Dowiedz się więcej na temat udostępniania adresy URL i nowy interfejs użytkownika, przeglądając [wizualizować dane w Eksploratorze usługi Azure czas Series Insights w wersji zapoznawczej](time-series-insights-update-explorer.md).
 
 - Jest trzeci sposobem na rozpoczęcie korzystania z zaawansowanych interfejsów API wykonywać zapytania względem danych przechowywanych w usłudze Time Series Insights. Usługa Time Series Insights zawiera operatory czasowe, takie jak `from`, `to`, `first`, i `last`. Posiada takich jak agregacje i przekształcenia `average`, `min`, `max`, `split by`, `order by`, i `DateHistogram`. Ma on także, takich jak filtrowanie operatory `has`, `in`, `and`, `or`, `greater than`, i `REGEX`. Te operatory umożliwiają aplikacjom podrzędne szybko znaleźć interesujące trendów i wzorców w danych. Ich używać, aby wypełnić wizualizacje rozwijane w domu, można zauważyć anomalie.
 
@@ -97,7 +97,5 @@ Usługi Time Series Insights Most między danymi IoT i zaawansowane funkcje anal
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [czasu Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
-
-- Aby zaplanować środowisko, przeczytaj [planowania czasu Series Insights w wersji zapoznawczej](./time-series-insights-update-plan.md).
-
+- Odczyt [planowania czasu Series Insights w wersji zapoznawczej](./time-series-insights-update-plan.md) zaplanowanie środowiska.
 - Odczyt [klienta usługi Time Series Insights](https://github.com/Microsoft/tsiclient) dokumentacji.

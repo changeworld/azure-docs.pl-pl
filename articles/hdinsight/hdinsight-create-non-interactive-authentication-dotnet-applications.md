@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: b07a932ef048aa894af990baa57b87529d9da3aa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b96c38d5bb24a267ad0203083e485d1780f28c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717394"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241468"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Tworzenie aplikacji HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
 Można uruchomić aplikacji Microsoft .NET usługi Azure HDInsight przy użyciu tożsamości aplikacji (nieinterakcyjne) lub w obszarze tożsamość zalogowanego użytkownika (interakcyjne) aplikacji. W tym artykule przedstawiono sposób tworzenia nieinterakcyjnych authentication aplikacji .NET w celu połączenia z platformą Azure i zarządzanie nimi HDInsight. Przykład aplikacji interaktywnych, zobacz [nawiązywanie połączenia z usługi Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
 
 Z poziomu nieinterakcyjnych aplikacji .NET potrzebne są:
 
-* Identyfikator dzierżawy subskrypcji platformy Azure (nazywanych również *identyfikator katalogu*). Zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
-* Identyfikator klienta aplikacji usługi Azure Active Directory (Azure AD). Zobacz [utworzyć aplikację usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) i [uzyskiwanie Identyfikatora aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
-* Klucz tajny aplikacji usługi Azure AD. Zobacz [Pobierz klucz uwierzytelniania aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Identyfikator dzierżawy subskrypcji platformy Azure (nazywanych również *identyfikator katalogu*). Zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Identyfikator klienta aplikacji usługi Azure Active Directory (Azure AD). Zobacz [utworzyć aplikację usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) i [uzyskiwanie Identyfikatora aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Klucz tajny aplikacji usługi Azure AD. Zobacz [Pobierz klucz uwierzytelniania aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Klaster usługi HDInsight. Zobacz [Wprowadzenie — samouczek](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
@@ -35,7 +35,7 @@ Przypisywanie aplikacji usługi Azure AD [roli](../role-based-access-control/bui
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 3. Wybierz grupę zasobów, która ma klaster HDInsight, na którym będzie uruchomiona zapytania Hive w dalszej części tego samouczka. Jeśli masz dużą liczbę grup zasobów, można użyć filtru, można znaleźć tego, który chcesz.
-4. W menu grupy zasobów wybierz **kontrola dostępu (IAM)**.
+4. W menu grupy zasobów wybierz **kontrola dostępu (IAM)** .
 5. Wybierz **przypisań ról** kartę, aby wyświetlić bieżące przypisania roli.
 6. W górnej części strony wybierz **Dodaj przypisanie roli**.
 7. Postępuj zgodnie z instrukcjami, aby dodać rolę właściciela do aplikacji usługi Azure AD. Po pomyślnym dodaniu roli, aplikacja znajduje się w ramach roli właściciela. 

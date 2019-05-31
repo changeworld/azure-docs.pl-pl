@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920442"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254649"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Poprawianie wydajności aplikacji Azure za pomocą usługi Azure Advisor
 
@@ -25,7 +25,7 @@ Zalecenia dotyczące wydajności usługi Azure Advisor zwiększyć szybkość i 
 
 Usługa Azure Advisor identyfikuje profile usługi Traffic Manager przy użyciu dłuższego czasu wygaśnięcia skonfigurowane i zaleca Konfigurowanie czasu wygaśnięcia do 20 sekund lub 60 sekund w zależności od tego, czy profil, który jest skonfigurowany dla [szybkiego trybu Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
-## <a name="improve-database-performance-with-sql-db-advisor"></a>Zwiększ wydajność bazy danych dzięki funkcji SQL DB Advisor
+## <a name="improve-database-performance-with-sql-db-advisor"></a>Zwiększ wydajność bazy danych przy użyciu funkcji SQL DB Advisor
 
 Advisor zapewnia spójne, skonsolidowanego widoku zaleceń dotyczących wszystkich zasobów platformy Azure. Integruje się z funkcji SQL Database Advisor, aby zapewnić Ci zalecenia dotyczące poprawy wydajności bazy danych SQL Azure. SQL Database Advisor ocenia wydajność bazy danych SQL Azure, analizując Twojej historii użycia. Oferuje rekomendacje, które są dopasowane do typowego obciążenie bazy danych.
 
@@ -93,6 +93,22 @@ Usługa Azure Advisor wykorzystuje oparte na obciążeniu Algorytm heurystyczny,
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Skalowanie serwera usługi Azure MySQL, Azure PostgreSQL lub MariaDB platformy Azure do wyższej jednostki SKU, aby zapobiec ograniczeń połączeń
 Każdego nowego połączenia z serwerem bazy danych zajmuje trochę pamięci. Spadku wydajności serwera bazy danych, jeśli połączenia z serwerem kończą się niepowodzeniem z powodu [górny limit](https://docs.microsoft.com/azure/postgresql/concepts-limits) w pamięci. Usługa Azure Advisor zidentyfikuje serwerów z systemem za pomocą wielu błędów połączenia i zaleca się uaktualnienie serwera limitów połączeń zapewnienie większej ilości pamięci do serwera przez skalowanie w górę obliczeń lub przy użyciu pamięci zoptymalizowane pod kątem SKU, która ma większą moc obliczeniową na każdy rdzeń.
+
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>Skalowanie pamięci podręcznej w celu użycia innego rozmiaru lub jednostki SKU, aby poprawić pamięci podręcznej i wydajności aplikacji
+
+Wystąpienia pamięci podręcznej działają najlepiej, gdy nie jest uruchomiona w ramach wykorzystanie dużą ilość pamięci, obciążenie serwera wysokiej lub o wysokiej przepustowości, która może spowodować zawieszenie, utraty danych lub staną się niedostępne. Advisor będzie identyfikować wystąpienia pamięci podręcznej w tych warunkach i zaleca się stosowania najlepszych rozwiązań, aby zmniejszyć wykorzystanie pamięci, obciążenie serwera lub przepustowość sieci lub skalowanie do innego rozmiaru lub jednostki SKU o większej pojemności.
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Dodawanie regionów z ruchem do swojego konta usługi Azure Cosmos DB
+
+Klasyfikator wykryje konta usługi Azure Cosmos DB, które mają ruch z regionu, który nie jest obecnie skonfigurowany i zaleca się dodawania tego regionu. To spowoduje zwiększenie opóźnienia w przypadku żądań pochodzących z tego regionu i zapewni dostępność w razie awarii do regionu. [Dowiedz się więcej na temat dystrybucji danych globalnych za pomocą usługi Azure Cosmos DB](https://aka.ms/cosmos/globaldistribution)
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Konfigurowanie usługi Azure Cosmos DB zasad indeksowania z klientem dołączone lub wykluczone ścieżki
+
+Usługa Azure Advisor będzie identyfikować kontenerów usługi Cosmos DB, które korzystają z domyślnych zasad indeksowania, ale mogą odnieść korzyści z niestandardowych zasad indeksowania oparte na wzorcu obciążenia. Domyślnych zasad indeksowania indeksuje wszystkie właściwości, ale za pomocą jawnego dołączone lub wykluczone ścieżki używane w filtrach zapytań za pomocą niestandardowych zasad indeksowania może zmniejszyć (RUS) oraz magazynu używane do indeksowania. [Dowiedz się więcej na temat modyfikowania zasad indeksu](https://aka.ms/cosmosdb/modify-index-policy)
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Konfigurowanie usługi Azure Cosmos DB rozmiar strony zapytania (MaxItemCount) na wartość -1 
+
+Usługa Azure Advisor będzie identyfikować kontenerów usługi Azure Cosmos DB, które korzystają z rozmiar strony zapytania 100 i zaleca się używanie rozmiar strony,-1 w przypadku skanowania szybciej. [Dowiedz się więcej o maksymalna liczba elementów](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c0d73b2e37046f75a1cea700d9099c5bbb5f6e0c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c849aadcd0fdc8f8ba071e3db5572e9e4c590e92
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170411"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391338"
 ---
 Maszyny Wirtualnej zoptymalizowane pod kątem procesora GPU z jednym lub wieloma procesorami GPU firmy NVIDIA wyspecjalizowane maszyny wirtualne o rozmiarach. Te rozmiary są przeznaczone dla obciążeń intensywnie korzystających z obliczeń, bogatych w elementy graficzne i wizualizacji. Ten artykuł zawiera informacje o liczbie i rodzaju procesorów GPU, procesorów wirtualnych, dysków z danymi i kart sieciowych. Przepustowość przepływności i sieć magazynu dostępne są również dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -35,7 +35,7 @@ Buforowanie Premium Storage:  Nieobsługiwane
 Maszyny wirtualne z serii NC są obsługiwane przez [procesory GPU NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Użytkownicy mogą przetwarzanie danych szybciej dzięki wykorzystaniu architektury CUDA dla aplikacji eksploracji energii, symulacji awarii, ray śledzenia renderowania, uczenie głębokie i inne. Konfigurację NC24r zapewnia małe opóźnienia interfejsu sieci o wysokiej przepływności zoptymalizowany pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
 
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
 | Standardowa_NC6 |6 |56 | 340 | 1 | 12 | 24 | 1 |
 | Standardowa_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
@@ -58,7 +58,7 @@ Maszyny wirtualne z serii NCv2 są obsługiwane przez [procesory GPU NVIDIA Tesl
 > Dla tej rodziny rozmiar przydziału rdzeni procesorów wirtualnych w ramach subskrypcji jest początkowo równa 0 w każdym regionie. [Zażądać zwiększenia limitu przydziału procesorów wirtualnych](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępny region](https://azure.microsoft.com/regions/services/).
 >
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | ---  | --- |
 | Standard_NC6s_v2 |6 |112 | 736 | 1 | 16 | 12 | 4 |
 | Standard_NC12s_v2 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
@@ -81,7 +81,7 @@ Maszyny wirtualne z serii NCv3 są obsługiwane przez [procesory GPU NVIDIA Tesl
 > Dla tej rodziny rozmiar przydziału rdzeni procesorów wirtualnych w ramach subskrypcji jest początkowo równa 0 w każdym regionie. [Zażądać zwiększenia limitu przydziału procesorów wirtualnych](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępny region](https://azure.microsoft.com/regions/services/).
 >
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC6s_v3 |6 |112 | 736 | 1 | 16 | 12 | 4 |
 | Standard_NC12s_v3 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
@@ -108,9 +108,9 @@ Maszyna wirtualna serii NDv2 jest nowy dodatek do rodziny procesorów GPU zaproj
 <br>
 
 
-| Rozmiar              | Procesor wirtualny | Procesor GPU              | Memory (Pamięć)  | Karty sieciowe (maks.) | Maksymalnie z Rozmiar dysku           | Maksymalnie z dyski z danymi (1023 GB każdy) | Maksymalna przepustowość sieci | 
+| Rozmiar              | Procesor wirtualny | Procesory GPU              | Memory (Pamięć)  | Karty sieciowe (maks.) | Maksymalnie z Rozmiar dysku           | Maksymalnie z dyski z danymi (1023 GB każdy) | Maksymalna przepustowość sieci | 
 |-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
-| Standard_ND40s_v2 | 40   | 8 V100 (NVLink) | 672 GiB | 8          | Temporary 1344 / 2948XIO | 32                             | 24 000 MB/s           |
+| Standard_ND40s_v2 | 40   | 8 V100 (NVLink) | 672 GiB | 8          | Temporary 1344 / 2948XIO | 32                             | 24000 MB/s           |
 
 ## <a name="nd-series"></a>Seria ND
 
@@ -124,7 +124,7 @@ Maszyny wirtualne serii ND to nowy dodatek do rodziny procesorów GPU zaprojekto
 > Dla tej rodziny rozmiar przydziału rdzeni procesorów wirtualnych na region w ramach subskrypcji początkowo jest równa 0. [Zażądać zwiększenia limitu przydziału procesorów wirtualnych](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępny region](https://azure.microsoft.com/regions/services/).
 >
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_ND6s |6 |112 | 736 | 1 | 24 | 12 | 4 |
 | Standard_ND12s |12 |224 | 1474 | 2 | 48 | 24 | 8 | 
@@ -145,7 +145,7 @@ Maszyn wirtualnych z serii NV są obsługiwane przez [procesory GPU NVIDIA Tesla
 
 Każdy procesor GPU w wystąpieniach NV jest dostarczany z licencją siatki. Ta licencja zapewnia elastyczność do korzystania z wystąpienia NV jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 współbieżnych użytkownicy mogą łączyć się maszyna wirtualna dla scenariusza aplikacji wirtualnej.
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | Standardowa_NV6 |6 |56 |340 | 1 | 8 | 24 | 1 | 1 | 25 |
 | Standardowa_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
@@ -163,11 +163,11 @@ Maszyn wirtualnych z serii NVv3 są obsługiwane przez [procesory GPU NVIDIA Tes
 
 Każdy procesor GPU w NVv3 wystąpienia jest powiązana z licencją siatki. Ta licencja zapewnia elastyczność do korzystania z wystąpienia NV jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 współbieżnych użytkownicy mogą łączyć się maszyna wirtualna dla scenariusza aplikacji wirtualnej.
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesor GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6s_v3 | 12 | 112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
-| Standard_NV12s_v3 | 24 | 224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
-| Standard_NV24s_v3 | 48 | 448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+| Standard_NV12s_v3 | 12 | 112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
+| Standard_NV24s_v3 | 24 | 224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
+| Standard_NV48s_v3 | 48 | 448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
 1 procesor GPU = połowa karty M60.
 

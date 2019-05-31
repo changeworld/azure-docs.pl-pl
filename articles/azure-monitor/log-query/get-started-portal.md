@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520642"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255259"
 ---
 # <a name="get-started-with-azure-monitor-log-analytics"></a>Rozpoczynanie pracy z usługą Azure Monitor Log Analytics
 
@@ -46,7 +46,7 @@ Event | search "error"
 
 To zapytanie wyszukuje _zdarzeń_ tabeli rekordy, które zawierają termin "error", w dowolnej właściwości.
 
-Zapytania można zacząć od jednej nazwy tabeli lub **wyszukiwania** polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, która definiuje zakres kwerendy. Znaku kreski pionowej (|) oddziela polecenia, więc dane wyjściowe pierwszy z nich w danych wejściowych następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
+Zapytania można zacząć od jednej nazwy tabeli lub **wyszukiwania** polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, która definiuje zakres kwerendy. Znaku kreski pionowej (|) oddziela polecenia, dzięki czemu dane wyjściowe pierwszy z nich służy jako dane wejściowe następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
 
 Innym sposobem pisania tego samego zapytania będą:
 

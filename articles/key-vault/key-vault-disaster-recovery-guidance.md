@@ -7,14 +7,14 @@ manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 9346f3f9bd9395ac863af87d05724a76ae83fb2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dba1fe91a635f467f4a3aeeaa048897065822869
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702330"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236638"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Usługa Azure Key Vault dostępność i nadmiarowość
 
@@ -25,6 +25,8 @@ Zawartość magazynu kluczy są replikowane w regionie i co najmniej 150 mil w r
 W przypadku awarii pojedynczych składników w usłudze magazynu kluczy, alternatywne składników w obrębie regionu krok ma obsługiwać żądania upewnij się, że jest bez spadku funkcji. Nie trzeba podejmować żadnych działań do tego wyzwalacza. On odbywa się automatycznie i będzie przezroczysty dla użytkownika.
 
 W rzadkich niedostępności cały region platformy Azure, są automatycznie kierowane żądania, wchodzące w usłudze Azure Key Vault w danym regionie (*przełączone w tryb failover*) do regionu pomocniczego. Gdy region podstawowy będzie znowu dostępna, są kierowane żądania Wstecz (*powrót po awarii*) do regionu podstawowego. Ponownie nie trzeba podejmować żadnych działań, ponieważ jest to wykonywane automatycznie.
+
+Przez ten projekt wysokiej dostępności usługi Azure Key Vault nie wymaga przestojów konserwacyjne.
 
 Istnieje kilka zastrzeżenia, których trzeba pamiętać:
 
@@ -41,7 +43,7 @@ Istnieje kilka zastrzeżenia, których trzeba pamiętać:
   * OPAKOWYWANIE
   * Dekodowanie
   * Weryfikuj
-  * Podpisywanie
+  * Logowanie
   * Backup
 * Po przejściu w tryb failover jest powrót po awarii, wszystkie żądania typy (włącznie z odczytu *i* liczbę żądań zapisu) są dostępne.
 

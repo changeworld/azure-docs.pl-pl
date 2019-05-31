@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510973"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242294"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytu replik w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -40,10 +40,9 @@ Na serwerze głównym musi być `azure.replication_support` parametr **REPLIKI**
 
 Po uruchomieniu przepływu pracy tworzenia repliki, pustą bazę danych Azure dla serwera PostgreSQL jest tworzony. Nowy serwer jest wypełniony danymi, która znajdowała się na serwerze głównym. Godzina utworzenia zależy od ilości danych na wzorcu i czas od ostatniej pełnej cotygodniowej kopii zapasowej. Czas może wynosić od kilku minut do kilku godzin.
 
-Funkcję odczytu repliki korzysta z replikacji postgresql w warstwie fizycznej, replikacji nie logiczne. Przesyłanie strumieniowe replikacji przy użyciu miejsc replikacji to domyślny tryb działania. Gdy jest to konieczne, wysyłania dziennika jest używany do zapoznać się z nimi.
+Każdej repliki jest włączony dla magazynu [automatyczne powiększanie](concepts-pricing-tiers.md#storage-auto-grow). Funkcja auto-grow umożliwia replikę tak, aby nadążyć za dane replikowane do niego i uniknąć przerwy w replikacji spowodowane przez Brak błędów magazynu.
 
-> [!NOTE]
-> Jeśli nie masz zestaw alertu magazynu na serwerach, firma Microsoft zaleca, że możesz to zrobić. Ten alert informuje, kiedy zbliża się limit przestrzeni dyskowej, która będzie miało wpływ na replikację serwera.
+Funkcję odczytu repliki korzysta z replikacji postgresql w warstwie fizycznej, replikacji nie logiczne. Przesyłanie strumieniowe replikacji przy użyciu miejsc replikacji to domyślny tryb działania. Gdy jest to konieczne, wysyłania dziennika jest używany do zapoznać się z nimi.
 
 Dowiedz się, jak [utworzyć odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md).
 
@@ -94,7 +93,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 > [!NOTE]
 > Jeśli ponowne uruchomienie serwera głównego lub odczytu repliki, czas, jaki zajmuje ponowne uruchomienie i zapoznać się z nimi jest widoczny w metryki Lag repliki.
 
-## <a name="stop-replication"></a>Zatrzymaj replikację
+## <a name="stop-replication"></a>Zatrzymywanie replikacji
 Można zatrzymać replikacji między serwerem głównym i repliki. Akcja zatrzymania powoduje, że repliki, aby ponownie uruchomić i usunąć jego ustawienia replikacji. Po zatrzymaniu replikacji między głównym serwerem i odczytu repliki, replika staje się serwerem autonomicznym. Dane na serwerze autonomicznym są dane, która była dostępna w replice w momencie uruchomienia polecenia zatrzymania replikacji. Serwer autonomiczny nie zapoznaj się z serwerem głównym.
 
 > [!IMPORTANT]

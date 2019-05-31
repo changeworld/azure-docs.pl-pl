@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89dbdeb02e603602155b3b8b04294aaa757b6b11
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327987"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241453"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu CentOS dla platformy Azure
+
+Dowiedz się utworzyć i przekazać Azure wirtualnego dysku twardego (VHD) z systemem operacyjnym opartych na systemie CentOS Linux.
 
 * [Przygotowywanie maszyny wirtualnej w wersji 6.x CentOS dla platformy Azure](#centos-6x)
 * [Przygotowywanie maszyny wirtualnej CentOS 7.0 + dla platformy Azure](#centos-70)
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,95 +52,113 @@ W tym artykule założono, że już zainstalowano CentOS (lub podobny) wirtualne
 
 3. CentOS 6 NetworkManager może kolidować z agentem systemu Linux platformy Azure. Ten pakiet należy odinstalować, uruchamiając następujące polecenie:
 
-        # sudo rpm -e --nodeps NetworkManager
+    ```bash
+    sudo rpm -e --nodeps NetworkManager
+    ```
 
 4. Tworzenie lub edytowanie pliku `/etc/sysconfig/network` i Dodaj następujący tekst:
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+    ```console
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 5. Tworzenie lub edytowanie pliku `/etc/sysconfig/network-scripts/ifcfg-eth0` i Dodaj następujący tekst:
 
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+    ```console
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
 
 6. Zmodyfikuj zasady usługi udev, aby uniknąć generowania reguł statycznej interfejsy sieci Ethernet. Te reguły, które może powodować problemy podczas klonowania maszyny wirtualnej na platformie Microsoft Azure lub funkcji Hyper-V:
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```bash
+    sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```
 
 7. Upewnij się, że Usługa sieciowa rozpocznie się w czasie rozruchu, uruchamiając następujące polecenie:
 
-        # sudo chkconfig network on
+    ```bash
+    sudo chkconfig network on
+    ```
 
 8. Jeśli chcesz użyć OpenLogic duplikatów, które znajdują się w obrębie centrów danych platformy Azure, a następnie zastąp `/etc/yum.repos.d/CentOS-Base.repo` plików za pomocą następujących repozytoriów.  Spowoduje to również dodanie **[openlogic]** repozytorium, które obejmuje dodatkowych pakietów, takich jak agenta systemu Linux platformy Azure:
 
-        [openlogic]
-        name=CentOS-$releasever - openlogic packages for $basearch
-        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-        enabled=1
-        gpgcheck=0
+    ```console
+    [openlogic]
+    name=CentOS-$releasever - openlogic packages for $basearch
+    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+    enabled=1
+    gpgcheck=0
 
-        [base]
-        name=CentOS-$releasever - Base
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    [base]
+    name=CentOS-$releasever - Base
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #released updates
+    [updates]
+    name=CentOS-$releasever - Updates
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #additional packages that may be useful
-        [extras]
-        name=CentOS-$releasever - Extras
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #additional packages that may be useful
+    [extras]
+    name=CentOS-$releasever - Extras
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #additional packages that extend functionality of existing packages
-        [centosplus]
-        name=CentOS-$releasever - Plus
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #additional packages that extend functionality of existing packages
+    [centosplus]
+    name=CentOS-$releasever - Plus
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+    gpgcheck=1
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #contrib - packages by Centos Users
-        [contrib]
-        name=CentOS-$releasever - Contrib
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    #contrib - packages by Centos Users
+    [contrib]
+    name=CentOS-$releasever - Contrib
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+    gpgcheck=1
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+    ```
 
     > [!Note]
     > Dalszej części tego przewodnika założy, używane są co najmniej `[openlogic]` repozytorium, które będzie używane do zainstalowania agenta systemu Linux platformy Azure poniżej.
 
 9. Dodaj następujący wiersz do /etc/yum.conf:
 
-        http_caching=packages
+    ```console
+    http_caching=packages
+    ```
 
 10. Uruchom następujące polecenie, aby wyczyścić bieżących metadanych yum i aktualizowanie systemu przy użyciu najnowszych pakietów:
 
-        # yum clean all
+    ```bash
+    yum clean all
+    ```
 
     Jeśli tworzysz obrazu dla starszych wersji systemu CentOS, zalecane jest Aktualizuj wszystkie pakiety do najnowszej wersji:
 
-        # sudo yum -y update
+    ```bash
+    sudo yum -y update
+    ```
 
     Po uruchomieniu tego polecenia może być konieczne ponowne uruchomienie komputera.
 
@@ -148,26 +167,34 @@ W tym artykule założono, że już zainstalowano CentOS (lub podobny) wirtualne
     > [!IMPORTANT]
     > Ten krok jest **wymagane** centos 6.3 i wcześniejszych oraz opcjonalny w przypadku nowszych wersji.
 
-        # sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
-        # sudo yum install microsoft-hyper-v
+    ```bash
+    sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
+    sudo yum install microsoft-hyper-v
+    ```
 
     Alternatywnie, można wykonać instrukcje instalacji ręcznej w systemie [stronę pobierania LIS](https://go.microsoft.com/fwlink/?linkid=403033) instalacji RPM na maszynie Wirtualnej.
 
 12. Zainstaluj agenta systemu Linux platformy Azure i zależności:
 
-        # sudo yum install python-pyasn1 WALinuxAgent
+    ```bash
+    sudo yum install python-pyasn1 WALinuxAgent
+    ```
 
     Spowoduje to usunięcie pakietu WALinuxAgent NetworkManager i pakietów NetworkManager gnome jeśli one nie zostały już usunięte zgodnie z opisem w kroku 3.
 
 13. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby to zrobić, otwórz `/boot/grub/menu.lst` w edytorze tekstów i upewnij się, że jądra domyślna obejmuje następujące parametry:
 
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```console
+    console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
 
     Zapewni to także wszystkie konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów.
 
     Oprócz powyższego, zaleca się *Usuń* następujące parametry:
 
-        rhgb quiet crashkernel=auto
+    ```console
+    rhgb quiet crashkernel=auto
+    ```
 
     Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego.  `crashkernel` Opcja może być skonfigurowany w razie potrzeby po lewej stronie, ale należy pamiętać, że ten parametr powoduje zmniejszenie ilości dostępnej pamięci na maszynie Wirtualnej o co najmniej 128 MB, może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
@@ -180,21 +207,25 @@ W tym artykule założono, że już zainstalowano CentOS (lub podobny) wirtualne
 
     Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
+    ```
 
 16. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
+    ```
 
 17. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
-- - -
+
 
 ## <a name="centos-70"></a>CentOS 7.0+
 
@@ -214,121 +245,149 @@ Przygotowywanie maszyny wirtualnej CentOS 7 dla systemu Azure jest bardzo podobn
 
 3. Tworzenie lub edytowanie pliku `/etc/sysconfig/network` i Dodaj następujący tekst:
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+    ```console
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 4. Tworzenie lub edytowanie pliku `/etc/sysconfig/network-scripts/ifcfg-eth0` i Dodaj następujący tekst:
 
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
-        NM_CONTROLLED=no
+    ```console
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    NM_CONTROLLED=no
+    ```
 
 5. Zmodyfikuj zasady usługi udev, aby uniknąć generowania reguł statycznej interfejsy sieci Ethernet. Te reguły, które może powodować problemy podczas klonowania maszyny wirtualnej na platformie Microsoft Azure lub funkcji Hyper-V:
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```bash
+    sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```
 
 6. Jeśli chcesz użyć OpenLogic duplikatów, które znajdują się w obrębie centrów danych platformy Azure, a następnie zastąp `/etc/yum.repos.d/CentOS-Base.repo` plików za pomocą następujących repozytoriów.  Spowoduje to również dodanie **[openlogic]** repozytorium, które zawiera pakiety dla agenta systemu Linux platformy Azure:
 
-        [openlogic]
-        name=CentOS-$releasever - openlogic packages for $basearch
-        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-        enabled=1
-        gpgcheck=0
-
-        [base]
-        name=CentOS-$releasever - Base
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-        #additional packages that may be useful
-        [extras]
-        name=CentOS-$releasever - Extras
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-        #additional packages that extend functionality of existing packages
-        [centosplus]
-        name=CentOS-$releasever - Plus
-        #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
+    ```console
+    [openlogic]
+    name=CentOS-$releasever - openlogic packages for $basearch
+    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+    enabled=1
+    gpgcheck=0
+    
+    [base]
+    name=CentOS-$releasever - Base
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    
+    #released updates
+    [updates]
+    name=CentOS-$releasever - Updates
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    
+    #additional packages that may be useful
+    [extras]
+    name=CentOS-$releasever - Extras
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    
+    #additional packages that extend functionality of existing packages
+    [centosplus]
+    name=CentOS-$releasever - Plus
+    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+    gpgcheck=1
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    ```
+    
     > [!Note]
     > Dalszej części tego przewodnika założy, używane są co najmniej `[openlogic]` repozytorium, które będzie używane do zainstalowania agenta systemu Linux platformy Azure poniżej.
 
 7. Uruchom następujące polecenie, aby wyczyścić bieżących metadanych yum i zainstaluj wszystkie aktualizacje:
 
-        # sudo yum clean all
+    ```bash
+    sudo yum clean all
+    ```
 
     Jeśli tworzysz obrazu dla starszych wersji systemu CentOS, zalecane jest Aktualizuj wszystkie pakiety do najnowszej wersji:
 
-        # sudo yum -y update
+    ```bash
+    sudo yum -y update
+    ```
 
     Wymagany jest ponowny rozruch może po uruchomieniu tego polecenia.
 
 8. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby to zrobić, otwórz `/etc/default/grub` w edytorze tekstów i Edytuj `GRUB_CMDLINE_LINUX` parametru, na przykład:
 
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```console
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```
 
    Zapewni to także wszystkie konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. On również wyłącza nowe konwencje nazw CentOS 7 dla kart interfejsu sieciowego. Oprócz powyższego, zaleca się *Usuń* następujące parametry:
 
-        rhgb quiet crashkernel=auto
+    ```console
+    rhgb quiet crashkernel=auto
+    ```
 
     Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego. `crashkernel` Opcja może być skonfigurowany w razie potrzeby po lewej stronie, ale należy pamiętać, że ten parametr powoduje zmniejszenie ilości dostępnej pamięci na maszynie Wirtualnej o co najmniej 128 MB, może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
 
 9. Po zakończeniu edycji `/etc/default/grub` na powyżej, uruchom następujące polecenie, aby ponownie skompilować konfigurację programu grub:
 
-        # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```bash
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
 
 10. Jeśli tworzenie obrazu z **VirtualBox, KVM lub VMware:** Upewnij się, że sterowniki funkcji Hyper-V znajdują się w initramfs:
 
     Edytuj `/etc/dracut.conf`, Dodaj zawartość:
 
-        add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    ```console
+    add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    ```
 
     Ponownie skompiluj initramfs:
 
-        # sudo dracut -f -v
+    ```bash
+    sudo dracut -f -v
+    ```
 
 11. Zainstaluj agenta systemu Linux platformy Azure i zależności:
 
-        # sudo yum install python-pyasn1 WALinuxAgent
-        # sudo systemctl enable waagent
+    ```bash
+    sudo yum install python-pyasn1 WALinuxAgent
+    sudo systemctl enable waagent
+    ```
 
 12. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
     Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 13. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+    ```bash
+    sudo waagent -force -deprovision
+    export HISTSIZE=0
+    logout
+    ```
 
 14. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 

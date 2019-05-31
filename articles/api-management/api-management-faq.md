@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 6a917b5e4586e9b2f54fee5816a9a0bcfcca2eee
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956248"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357246"
 ---
 # <a name="azure-api-management-faqs"></a>Często zadawane pytania usługi Azure API Management
 Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dotyczące usługi Azure API Management.
@@ -137,7 +137,7 @@ Tak. Można to zrobić za pomocą programu PowerShell lub przesyłając bezpośr
 Użyj [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (dla nowego zaplecza) lub [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (w przypadku istniejącego zaplecza) polecenia cmdlet programu PowerShell i ustaw `-SkipCertificateChainValidation` parametr `True`. 
 
 ```powershell
-$context = New-AApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 

@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d8c8fcf84cd008957fcdb7cd14c4a07d9f3643
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 59af4e20c7fe838f7c725b47e45968941fa85cb7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074908"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254055"
 ---
 # <a name="protected-web-api---app-registration"></a>Chroniony internetowy interfejs API — rejestrowanie aplikacji
 
@@ -33,8 +33,8 @@ Zobacz [Szybki start: Rejestrowanie aplikacji z platformą tożsamości Microsof
 
 Punkt końcowy platforma tożsamości firmy Microsoft mogą wystawiać dwóch rodzajów tokenów: v1.0 tokenów i tokenów w wersji 2.0. Dowiedz się więcej o tych tokenów w [tokeny dostępu](access-tokens.md). Zaakceptowana wersja tokenu jest zależna od **obsługiwane typy kont** wybrane podczas tworzenia aplikacji:
 
-- Jeśli wartość **obsługiwane typy kont** jest **kont w dowolnym katalogu organizacji i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com)**, będą akceptowane wersji tokenów w wersji 2.0.
-- W przeciwnym razie zaakceptowana wersja tokenu będą w wersji 2.0.
+- Jeśli wartość **obsługiwane typy kont** jest **kont w dowolnym katalogu organizacji i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com)** , będą akceptowane wersji tokenów w wersji 2.0.
+- W przeciwnym razie zaakceptowana wersja tokenu będzie 1.0.
 
 Po utworzeniu aplikacji możesz zmienić zaakceptowana wersja tokenu, wykonując następujące czynności:
 
@@ -49,7 +49,7 @@ Po utworzeniu aplikacji możesz zmienić zaakceptowana wersja tokenu, wykonując
 
 Interfejsy API sieci Web nie trzeba zarejestrować identyfikator URI przekierowania, ponieważ żaden użytkownik nie jest zalogowany interaktywnie.
 
-## <a name="expose-an-api"></a>Uwidocznij interfejs API
+## <a name="expose-an-api"></a>Uwidaczniania interfejsu API
 
 Inne ustawienie specyficzne dla interfejsów API sieci web jest ujawniany interfejsu API i narażonych zakresów.
 

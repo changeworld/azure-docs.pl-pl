@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2983980786fc706d103c0147a0776f2ff8c2d4f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 0f4ab484b76bb536dd4e9d3c4fff2c85d93e4a41
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545467"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235194"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service to service wywołania tej tożsamości użytkownika użycia delegowanego przepływu w imieniu z
 
@@ -58,31 +58,32 @@ Rejestrowanie aplikacji klienckiej i usługi warstwy środkowej w usłudze Azure
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Na górnym pasku wybierz swoje konto i sprawdź w obszarze **katalogu** listę, aby wybrać dzierżawy usługi Active Directory dla aplikacji.
 1. Wybierz **więcej usług** w okienku po lewej stronie i wybierz polecenie **usługi Azure Active Directory**.
-1. Wybierz **rejestracje aplikacji** i następnie **rejestrowanie nowej aplikacji**.
+1. Wybierz **rejestracje aplikacji** i następnie **nowej rejestracji**.
 1. Wprowadź przyjazną nazwę dla aplikacji, a następnie wybierz typ aplikacji.
-    1. W zależności od typu aplikacji, ustawić adres URL logowania lub adres URL przekierowania do podstawowego adresu URL.
-    1. Wybierz **Utwórz** do tworzenia aplikacji.
+1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+1. Ustaw identyfikator URI przekierowania do podstawowego adresu URL.
+1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Wygeneruj klucz tajny klienta przed zakończeniem pracy w witrynie Azure portal.
-   1. W witrynie Azure portal, wybierz aplikację, a następnie wybierz pozycję **ustawienia**.
-   1. Wybierz **klucze** w menu Ustawienia i dodać klucz za pomocą klucza okres jednego roku lub dwa lata.
-   1. Podczas zapisywania na tej stronie witryny Azure portal Wyświetla wartość klucza. Skopiuj i Zapisz wartość klucza w bezpiecznym miejscu.
+1. W witrynie Azure portal, wybierz aplikację, a następnie wybierz pozycję **certyfikaty i klucze tajne**.
+1. Wybierz **nowy wpis tajny klienta** i dodać wpis tajny na okres jednego roku lub dwa lata.
+1. Podczas zapisywania na tej stronie witryny Azure portal Wyświetla wartość wpisu tajnego. Skopiuj i Zapisz wartość wpisu tajnego w bezpiecznym miejscu.
 
-      > [!IMPORTANT]
-      > Wymagany jest klucz, aby skonfigurować ustawienia aplikacji w danej implementacji. Ta wartość klucza jest on wyświetlany ponownie i nie jest możliwe do pobierania w inny sposób. Zapisz go, jak jest ona widoczna w witrynie Azure portal.
+> [!IMPORTANT]
+> Potrzebny jest klucz tajny, aby skonfigurować ustawienia aplikacji w danej implementacji. Ta wartość wpisu tajnego jest on wyświetlany ponownie i nie jest możliwe do pobierania w inny sposób. Zapisz go, jak jest ona widoczna w witrynie Azure portal.
 
 ### <a name="register-the-client-application"></a>Rejestrowanie aplikacji klienta
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Na górnym pasku wybierz swoje konto i sprawdź w obszarze **katalogu** listę, aby wybrać dzierżawy usługi Active Directory dla aplikacji.
 1. Wybierz **więcej usług** w okienku po lewej stronie i wybierz polecenie **usługi Azure Active Directory**.
-1. Wybierz **rejestracje aplikacji** i następnie **rejestrowanie nowej aplikacji**.
+1. Wybierz **rejestracje aplikacji** i następnie **nowej rejestracji**.
 1. Wprowadź przyjazną nazwę dla aplikacji, a następnie wybierz typ aplikacji.
-   1. W zależności od typu aplikacji, ustawić adres URL logowania lub adres URL przekierowania do podstawowego adresu URL.
-   1. Wybierz **Utwórz** do tworzenia aplikacji.
-1. Skonfiguruj uprawnienia dla aplikacji.
-   1. W menu Ustawienia, wybierz **wymagane uprawnienia** sekcji, a następnie wybierz **Dodaj** i **wybierz interfejs API**.
-   1. W polu tekstowym, wpisz nazwę usługi warstwy środkowej.
-   1. Wybierz **wybierz uprawnienia** , a następnie wybierz **nazwy usługi dostępu**.
+1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
+1. Ustaw identyfikator URI przekierowania do podstawowego adresu URL.
+1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
+1. Skonfiguruj uprawnienia dla aplikacji. W **uprawnienia do interfejsu API**, wybierz opcję **Dodaj uprawnienia** i następnie **Moje interfejsy API**.
+1. W polu tekstowym, wpisz nazwę usługi warstwy środkowej.
+1. Wybierz **wybierz uprawnienia** , a następnie wybierz **dostępu <service name>** .
 
 ### <a name="configure-known-client-applications"></a>Konfiguruj aplikacje klienckie znane
 
@@ -110,13 +111,13 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |wymagane | Typ żądania tokenu. Żądanie OBO używa formatu JSON tokenu sieci Web (JWT), dlatego wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| potwierdzenie |wymagane | Wartość tokenu dostępu, użyty w żądaniu. |
-| client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w witrynie Azure portal, wybierz **usługi Active Directory**, wybierz katalog, a następnie wybierz nazwę aplikacji. |
-| client_secret |wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
-| zasób |wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
-| requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| zakres |wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
+| grant_type |Wymagane | Typ żądania tokenu. Żądanie OBO używa formatu JSON tokenu sieci Web (JWT), dlatego wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| potwierdzenie |Wymagane | Wartość tokenu dostępu, użyty w żądaniu. |
+| client_id |Wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w witrynie Azure portal, wybierz **usługi Active Directory**, wybierz katalog, a następnie wybierz nazwę aplikacji. |
+| client_secret |Wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
+| Zasób |Wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
+| requested_token_use |Wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
+| scope |Wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
 
 #### <a name="example"></a>Przykład
 
@@ -144,14 +145,14 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |wymagane | Typ żądania tokenu. Żądanie OBO używa tokenu dostępu JWT, dlatego wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| potwierdzenie |wymagane | Wartość tokenu użytego w żądaniu. |
-| client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w witrynie Azure portal, wybierz **usługi Active Directory**, wybierz katalog, a następnie wybierz nazwę aplikacji. |
-| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |wymagane | JSON Web Token, tworzenie i zalogować się przy użyciu certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Zobacz [certyfikatu poświadczeń](active-directory-certificate-credentials.md) Aby dowiedzieć się więcej o formacie potwierdzenia i o tym jak zarejestrować certyfikat.|
-| zasób |wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
-| requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| zakres |wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
+| grant_type |Wymagane | Typ żądania tokenu. Żądanie OBO używa tokenu dostępu JWT, dlatego wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| potwierdzenie |Wymagane | Wartość tokenu użytego w żądaniu. |
+| client_id |Wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w witrynie Azure portal, wybierz **usługi Active Directory**, wybierz katalog, a następnie wybierz nazwę aplikacji. |
+| client_assertion_type |Wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Wymagane | JSON Web Token, tworzenie i zalogować się przy użyciu certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Zobacz [certyfikatu poświadczeń](active-directory-certificate-credentials.md) Aby dowiedzieć się więcej o formacie potwierdzenia i o tym jak zarejestrować certyfikat.|
+| Zasób |Wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
+| requested_token_use |Wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
+| scope |Wymagane | Spacjami listy zakresów dla żądania tokenu. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
 
 Te parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, chyba że `client_secret parameter` zostaje zastąpiona przez dwa parametry: `client_assertion_type` i `client_assertion`.
 
@@ -183,10 +184,10 @@ Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0, z następującymi parametrami
 | Parametr | Opis |
 | --- | --- |
 | token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| zakres |Zakres dostępu przyznane w tokenie. |
+| scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
-| zasób |Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). |
+| Zasób |Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). |
 | access_token |Token żądanego dostępu. Wywoływania usługi można użyć tego tokenu do uwierzytelnienia w usłudze odbierania. |
 | id_token |Żądany identyfikator tokenu. Wywoływania usługi można użyć tego tokenu do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. |
 | refresh_token |Token odświeżania dla tokenu żądanego dostępu. Wywoływania usługi można użyć tego tokenu do żądania inny token dostępu po wygaśnięciu bieżącego tokenu dostępu. |
@@ -254,13 +255,13 @@ Niektóre usługi sieci web opartych na OAuth konieczne dostęp inne usługi sie
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |wymagane | Typ żądania tokenu. Dla żądania, który używa token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| potwierdzenie |wymagane | Wartość tokenu dostępu, użyty w żądaniu.|
-| client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w witrynie Azure portal, wybierz **usługi Active Directory**, wybierz katalog, a następnie wybierz nazwę aplikacji. |
-| client_secret |wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
-| zasób |wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Jest to zasób, który ma być odbiorców tokenu SAML. Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
-| requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| requested_token_type | wymagane | Określa typ żądanego tokenu. Wartość może być **urn: ietf:params:oauth:token — typ: saml2** lub **urn: ietf:params:oauth:token — typ: saml1** w zależności od wymagań dostęp do zasobów. |
+| grant_type |Wymagane | Typ żądania tokenu. Dla żądania, który używa token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| potwierdzenie |Wymagane | Wartość tokenu dostępu, użyty w żądaniu.|
+| client_id |Wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w witrynie Azure portal, wybierz **usługi Active Directory**, wybierz katalog, a następnie wybierz nazwę aplikacji. |
+| client_secret |Wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
+| Zasób |Wymagane | Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). Jest to zasób, który ma być odbiorców tokenu SAML. Aby znaleźć identyfikator URI w witrynie Azure portal, wybierz **usługi Active Directory** i wybierz katalog. Wybierz nazwę aplikacji, wybierz pozycję **wszystkie ustawienia**, a następnie wybierz pozycję **właściwości**. |
+| requested_token_use |Wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
+| requested_token_type | Wymagane | Określa typ żądanego tokenu. Wartość może być **urn: ietf:params:oauth:token — typ: saml2** lub **urn: ietf:params:oauth:token — typ: saml1** w zależności od wymagań dostęp do zasobów. |
 
 Odpowiedź zawiera token SAML zakodowane w UTF8 i Base64url.
 
@@ -274,10 +275,10 @@ Odpowiedź zawiera token SAML zakodowane w UTF8 i Base64url.
 | Parametr | Opis |
 | --- | --- |
 | token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| zakres |Zakres dostępu przyznane w tokenie. |
+| scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
-| zasób |Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). |
+| Zasób |Aplikacja identyfikator URI usługi odbieranie (zabezpieczono zasób). |
 | access_token |Parametr, który zwraca potwierdzenie SAML. |
 | refresh_token |Token odświeżania. Wywoływania usługi można użyć tego tokenu do żądania inny token dostępu po wygaśnięciu bieżącego potwierdzenie SAML. |
 

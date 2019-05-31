@@ -4,15 +4,15 @@ description: Ten artykuł zawiera szczegółowe informacje techniczne dotyczące
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c490657eb67a34e79c8dbaea31cb59b49cc6448e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071948"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241089"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Rozkład danych globalnych za pomocą usługi Azure Cosmos DB — kulisy
 
@@ -68,7 +68,7 @@ Stosujemy zegary zakodowany wektora (zawierający identyfikator regionu i zegary
 
 W przypadku baz danych Cosmos skonfigurowany z wieloma regionami zapisu systemu udostępnia szereg elastyczny automatycznych konflikt zasad rozpoznawania dla deweloperów do wyboru, w tym: 
 
-- **Ostatni zapis usługi Wins (LWW)**, która domyślnie używa zdefiniowaną przez system właściwość sygnatury czasowej (która jest oparta na protokole zegara synchronizacji czasu). Usługa cosmos DB umożliwia również określenie innych niestandardowych właściwości wartości liczbowych służący do rozwiązywania konfliktów.  
+- **Ostatni zapis usługi Wins (LWW)** , która domyślnie używa zdefiniowaną przez system właściwość sygnatury czasowej (która jest oparta na protokole zegara synchronizacji czasu). Usługa cosmos DB umożliwia również określenie innych niestandardowych właściwości wartości liczbowych służący do rozwiązywania konfliktów.  
 - **Zasad rozpoznawania w konflikcie zdefiniowanych przez aplikację (niestandardowy)** (wyrażone za pomocą procedury scalania), który jest przeznaczony dla zdefiniowanych przez aplikację semantyki uzgadniania konfliktów. Te procedury Pobierz wywoływane po wykryciu konflikty zapisów pod nadzorem transakcji bazy danych po stronie serwera. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania. Istnieją [kilka przykładów rozpoznawania w konflikcie](how-to-manage-conflicts.md) możesz wypróbować.  
 
 ## <a name="consistency-models"></a>Modeli spójności

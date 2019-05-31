@@ -7,16 +7,20 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 4efd9556e255709204654cf0acbf1b08fa2c1fc0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 432fef4c5dec697fecce694e251dd533aa1cbf07
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872153"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418020"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS realizacji interfejsy API wersji 2 
 
 Ten artykuł zawiera interfejs API, który pozwala niezależnym dostawcom oprogramowania (ISV) i sprzedawać swoje aplikacje SaaS w portalu Azure Marketplace i AppSource. Ten interfejs API jest potrzebę transactable SaaS oferują usługi AppSource i portalu Azure Marketplace.
+
+> [!IMPORTANT] 
+> SaaS oferują funkcje zostały przeniesione do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+> Aby uzyskać więcej informacji, zobacz [Tworzenie nowej oferty SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Zarządzanie cyklem życia subskrypcji SaaS
 
@@ -35,7 +39,7 @@ Gdy klient inicjuje zakupu, niezależny dostawca oprogramowania odbiera tych inf
 
 ![Wywołania interfejsu API do inicjowania obsługi usługi SaaS.](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>Przeprowadzono aprowizację
+#### <a name="provisioned"></a>Zaaprowizowane
 
 Ten stan jest w stanie stabilności aprowizowanej usługi.
 
@@ -53,7 +57,7 @@ Na poniższym diagramie przedstawiono akcje, gdy aktualizacja jest inicjowane pr
 
 ![Liczba wywołań interfejsu API, gdy aktualizacja jest inicjowane przez usługi SaaS.](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Wstrzymane
+#### <a name="suspended"></a>Suspended
 
 Ten stan wskazuje, nie otrzymał płatności odbiorcy. Zgodnie z zasadami przekazujemy klienta okres prolongaty przed unfulfilling subskrypcji. Gdy subskrypcja jest w tym stanie: 
 
@@ -61,12 +65,12 @@ Ten stan wskazuje, nie otrzymał płatności odbiorcy. Zgodnie z zasadami przeka
 - Subskrypcja musi znajdować się w stanie możliwe do odzyskania, który można przywrócić pełną funkcjonalność bez utraty danych lub ustawień. 
 - Można oczekiwać, że można pobrać przywrócenie żądania dla tej subskrypcji za pośrednictwem realizacji interfejsu API lub żądanie do inicjowania obsługi administracyjnej z końcem okresu prolongaty. 
 
-#### <a name="unsubscribed"></a>Brak subskrypcji 
+#### <a name="unsubscribed"></a>Anulowano subskrypcję 
 
 Subskrypcje dotrzeć do tego stanu w odpowiedzi na żądanie klienta jawne lub w odpowiedzi na płatności opłat. Oczekuje od niezależnych dostawców oprogramowania się, że danych klienta jest zachowywana do odzyskania na żądanie, co X dni, a następnie usuwany. 
 
 
-## <a name="api-reference"></a>Dokumentacja interfejsu API
+## <a name="api-reference"></a>Dokumentacja interfejsów API
 
 W tej sekcji omówiono SaaS *API subskrypcji* i *operacji interfejsu API*.  Wartość `api-version` parametru w wersji 2 interfejsy API są `2018-08-31`.  
 
@@ -118,22 +122,22 @@ Subskrypcja SaaS jest rozpoznawany jako nieprzezroczysty tokenu.<br>
 ```json
 Response body:
 {
-    "subscriptionId": "<guid>",  
+    "id": "<guid>",  
     "subscriptionName": "Contoso Cloud Solution",
     "offerId": "offer1",
     "planId": "silver",
-    "quantity": "20" 
+    "quantity": "20" // This will not be returned if the "quantity" = 1
 }
 ```
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Nieprawidłowe żądanie. x-ms-Portal marketplace — token jest Brak, źle sformułowane lub wygasł.
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera
@@ -152,7 +156,7 @@ Wewnętrzny błąd serwera
 Subskrypcja interfejs API obsługuje następujące operacje protokołu HTTPS: **Pobierz**, **wpis**, **poprawki**, i **Usuń**.
 
 
-#### <a name="list-subscriptions"></a>Wyświetl listę subskrypcji
+#### <a name="list-subscriptions"></a>Subskrypcji listy
 
 Wyświetla listę wszystkich subskrypcji SaaS dla wydawcy.
 
@@ -208,7 +212,7 @@ Oparte na token uwierzytelniania, Uzyskaj wydawcy i odpowiednich subskrypcji dla
 Token kontynuacji jest dostępne tylko w przypadku dodatkowych "strony" planów do pobrania. 
 
 Kod: 403 <br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy. 
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy. 
 
 Kod: 500 Wewnętrzny błąd serwera
 
@@ -270,10 +274,10 @@ Response Body:
 ```
 
 Kod: 404<br>
-Nie znaleziono<br> 
+Nie można odnaleźć<br> 
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera<br>
@@ -325,10 +329,10 @@ Treść odpowiedzi:
 ```
 
 Kod: 404<br>
-Nie znaleziono<br> 
+Nie można odnaleźć<br> 
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy. <br> 
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy. <br> 
 
 Kod: 500<br>
 Wewnętrzny błąd serwera<br>
@@ -376,13 +380,13 @@ Kod: 200<br>
 Aktywuje subskrypcji.<br>
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Błędy nieprawidłowych weryfikacji żądań
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera
@@ -439,7 +443,7 @@ Kod: 202<br>
 Żądanie, aby zmienić plan zostało zaakceptowane. Niezależny dostawca oprogramowania oczekuje się, aby sondować lokalizację operację, aby określić Powodzenie/niepowodzenie. <br>
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Błędy nieprawidłowych weryfikacji żądań.
@@ -448,7 +452,7 @@ Błędy nieprawidłowych weryfikacji żądań.
 >Tylko plan lub ilość, może być poprawionego w tym samym czasie, nie oba. Umożliwia edycję w subskrypcji przy użyciu **aktualizacji** nie znajduje się w `allowedCustomerOperations`.
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera
@@ -505,7 +509,7 @@ Kod: 202<br>
 Zaakceptowane. Żądanie, aby zmienić ilość zostało zaakceptowane. Niezależny dostawca oprogramowania oczekuje się, aby sondować lokalizację operację, aby określić Powodzenie/niepowodzenie. <br>
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Błędy nieprawidłowych weryfikacji żądań.
@@ -514,7 +518,7 @@ Błędy nieprawidłowych weryfikacji żądań.
 >Tylko plan lub ilość, może być poprawionego w tym samym czasie, nie oba. Umożliwia edycję w subskrypcji przy użyciu **aktualizacji** nie znajduje się w `allowedCustomerOperations`.
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera
@@ -556,13 +560,13 @@ Kod: 202<br>
 Niezależny dostawca oprogramowania zainicjował wywołanie do wskazania anulować subskrypcję SaaS.<br>
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Usuwanie subskrypcji przy użyciu **Usuń** nie `allowedCustomerOperations`.
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera
@@ -624,13 +628,13 @@ Kod: 200<br> Pobiera listę oczekujących operacji w ramach subskrypcji.<br>
 ```
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Błędy nieprawidłowych weryfikacji żądań
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 500<br>
 Wewnętrzny błąd serwera
@@ -687,13 +691,13 @@ Response body:
 ```
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Błędy nieprawidłowych weryfikacji żądań
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
  
 Kod: 500<br> Wewnętrzny błąd serwera
 
@@ -745,13 +749,13 @@ Zaktualizuj stan operacji można wskazywać Powodzenie/Niepowodzenie przy użyci
 Kod: 200<br> Wywołanie, aby informować o zakończeniu operacji po stronie niezależnego dostawcy oprogramowania. Na przykład tej odpowiedzi może oznaczać zmiana stanowisk/planów.
 
 Kod: 404<br>
-Nie znaleziono
+Nie można odnaleźć
 
 Kod: 400<br>
 Błędy nieprawidłowych weryfikacji żądań
 
 Kod: 403<br>
-Bez autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
+Brak autoryzacji. Nie podano tokenu uwierzytelniania, jest nieprawidłowa lub żądanie jest próba uzyskania dostępu pozyskiwania, które nie należą do bieżącej wydawcy.
 
 Kod: 409<br>
 Wystąpił konflikt. Na przykład nowsza transakcja jest już spełnione

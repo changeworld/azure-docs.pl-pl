@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 86ad6fce34f323d94f7b9c318ba81f547360d4df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038517"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237319"
 ---
 # <a name="networking"></a>Networking
 
@@ -71,6 +71,8 @@ Skalowanie infrastruktury jest wymagany do włączenia Accelerated Networking w 
 * Aby uruchomić obciążeń kontenerów Windows, użyj [Otwórz tryb sieci](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) ułatwienie komunikacji service-to-service.
 
 * Używanie zwrotnego serwera proxy, takiej jak [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) lub [usługi Service Fabric zwrotny serwer proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) do udostępnienia typowe porty aplikacji, takich jak 80 i 443.
+
+* Dla kontenerów Windows air gapped maszyn, których nie można ściągnąć warstwy podstawowa z magazynem w chmurze platformy Azure w serwisie zastąpić zachowanie obcego warstwy za pomocą [— Zezwalaj na nondistributable artefaktów](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) Flaga demona platformy Docker.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

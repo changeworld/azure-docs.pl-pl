@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: b2aa3eb6a117bbbdcf9c4aa44161dc25ddea2f1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484395"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241916"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Zarządzanie schematami w aplikacji SaaS przy użyciu wzorca bazy danych dla dzierżawy usługa Azure SQL Database
  
 Zgodnie z rozwojem aplikacji bazy danych zmian natychmiastową należy podjąć, z danymi schematu lub odwołanie do bazy danych.  Okresowo potrzebne są także zadania konserwacji bazy danych. Zarządzanie aplikacji korzystającej z bazy danych dla każdego dzierżawcy wzorzec wymaga zastosować te zmiany, lub zadania konserwacji w wielu bazach danych dzierżaw.
 
-Ten samouczek analizuje dwa scenariusze — wdrażanie aktualizacji danych referencyjnych dla wszystkich dzierżaw i ponowne tworzenie indeksu tabeli zawierającej dane referencyjne. [Zadań elastycznych](sql-database-elastic-jobs-overview.md) funkcja jest używana do wykonywania tych akcji, na wszystkich baz danych dzierżaw, a na bazie szablonu użyty do utworzenia nowej dzierżawy baz danych.
+Ten samouczek analizuje dwa scenariusze — wdrażanie aktualizacji danych referencyjnych dla wszystkich dzierżaw i ponowne tworzenie indeksu tabeli zawierającej dane referencyjne. [Zadań elastycznych](elastic-jobs-overview.md) funkcja jest używana do wykonywania tych akcji, na wszystkich baz danych dzierżaw, a na bazie szablonu użyty do utworzenia nowej dzierżawy baz danych.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -46,7 +46,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Wprowadzenie do wzorców zarządzania schematu SaaS
 
-Bazy danych dla każdego dzierżawcy wzorzec skutecznie izoluje dane dzierżawy, ale zwiększa się liczba baz danych, zarządzanie i obsługa. [Zadania elastyczne](sql-database-elastic-jobs-overview.md) ułatwia administrowanie i zarządzanie bazami danych SQL. Zadania umożliwiają bezpieczne i niezawodne uruchamiania zadań (skryptów T-SQL) względem grupy baz danych. Zadań można wdrożyć schematu i zmiany wspólnych danych referencyjnych we wszystkich bazach danych dzierżaw w aplikacji. Zadania elastyczne można również utrzymania *szablonu* bazy danych używanej do tworzenia nowych dzierżaw, dzięki czemu zawsze zawiera najnowsze schemat i dane referencyjne.
+Bazy danych dla każdego dzierżawcy wzorzec skutecznie izoluje dane dzierżawy, ale zwiększa się liczba baz danych, zarządzanie i obsługa. [Zadania elastyczne](elastic-jobs-overview.md) ułatwia administrowanie i zarządzanie bazami danych SQL. Zadania umożliwiają bezpieczne i niezawodne uruchamiania zadań (skryptów T-SQL) względem grupy baz danych. Zadań można wdrożyć schematu i zmiany wspólnych danych referencyjnych we wszystkich bazach danych dzierżaw w aplikacji. Zadania elastyczne można również utrzymania *szablonu* bazy danych używanej do tworzenia nowych dzierżaw, dzięki czemu zawsze zawiera najnowsze schemat i dane referencyjne.
 
 ![ekran](media/saas-tenancy-schema-management/schema-management-dpt.png)
 
@@ -133,5 +133,4 @@ Następnie spróbuj [raportowanie Ad hoc samouczek](saas-tenancy-cross-tenant-re
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Dodatkowe samouczki nawiązujące do wdrożenia aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Zarządzanie skalowaną w poziomie bazą danych w chmurze](sql-database-elastic-jobs-overview.md)
-* [Tworzenie baz danych skalowanych w poziomie i zarządzanie nimi](sql-database-elastic-jobs-create-and-manage.md)
+* [Zarządzanie skalowaną w poziomie bazą danych w chmurze](elastic-jobs-overview.md)

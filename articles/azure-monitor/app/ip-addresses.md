@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 05/21/2019
 ms.author: mbullwin
-ms.openlocfilehash: af4d350c715a0792934f9d080f0bf571c3b2d2b5
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: c4e924d1e3012bc5e49c89f51026cd651398f4c5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66023234"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242885"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługę Application Insights i Log Analytics
 [Usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) usługa używa liczby adresów IP. Może być konieczne, te adresy, czy aplikacja, który jest monitorowany znajduje się za zaporą.
@@ -38,7 +38,7 @@ Należy otworzyć Niektóre porty wychodzące w zaporze serwera, aby umożliwić
 | Przeznaczenie | URL | IP | Porty |
 | --- | --- | --- | --- |
 | Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20 | 443 |
-| Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
+| Stream metryki na żywo |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Monitor stanu
 Stan monitora Konfiguracja — wymagane tylko podczas wprowadzania zmian.
@@ -380,51 +380,51 @@ East US
 ```  
 
 ## <a name="application-insights-api"></a>Usługa Application Insights interfejsu API
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
 | Interfejs API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | Dokumentacja interfejsu API |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
-| Wewnętrznego interfejsu API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |dynamiczne|443 |
+| Wewnętrznego interfejsu API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |Dynamiczne|443 |
 
 ## <a name="log-analytics-api"></a>Interfejs API analizy dzienników
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
 | Interfejs API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | Dokumentacja interfejsu API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
-| Portal analiza | analytics.applicationinsights.io | dynamiczne | 80,443 |
-| Sieć CDN | applicationanalytics.azureedge.net | dynamiczne | 80,443 |
-| Media CDN | applicationanalyticsmedia.azureedge.net | dynamiczne | 80,443 |
+| Portal analiza | analytics.applicationinsights.io | Dynamiczne | 80,443 |
+| CDN | applicationanalytics.azureedge.net | Dynamiczne | 80,443 |
+| Media CDN | applicationanalyticsmedia.azureedge.net | Dynamiczne | 80,443 |
 
 Uwaga: *. applicationinsights.io domeny należy do zespołu usługi Application Insights.
 
 ## <a name="log-analytics-portal"></a>Portal analizy dzienników
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
-| Portal | portal.loganalytics.io | dynamiczne | 80,443 |
-| Sieć CDN | applicationanalytics.azureedge.net | dynamiczne | 80,443 |
+| Portal | portal.loganalytics.io | Dynamiczne | 80,443 |
+| CDN | applicationanalytics.azureedge.net | Dynamiczne | 80,443 |
 
 Uwaga: *. domeny loganalytics.io właścicielem jest zespół usługi Log Analytics.
 
 ## <a name="application-insights-azure-portal-extension"></a>Portal usługi Application Insights, Azure rozszerzenia
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
-| Rozszerzenie usługi Application Insights | stamp2.app.insightsportal.visualstudio.com | dynamiczne | 80,443 |
-| Rozszerzenie usługi Application Insights usługi CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamiczne | 80,443 |
+| Rozszerzenie usługi Application Insights | stamp2.app.insightsportal.visualstudio.com | Dynamiczne | 80,443 |
+| Rozszerzenie usługi Application Insights usługi CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | Dynamiczne | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Zestawy SDK usługi Application Insights
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
-| Zestaw SDK Application Insights JS usługi CDN | az416426.vo.msecnd.net | dynamiczne | 80,443 |
-| Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamiczne | 80,443 |
+| Zestaw SDK Application Insights JS usługi CDN | az416426.vo.msecnd.net | Dynamiczne | 80,443 |
+| Application Insights Java SDK | aijavasdk.blob.core.windows.net | Dynamiczne | 80,443 |
 
 ## <a name="alert-webhooks"></a>Elementy webhook alertu
 
@@ -434,19 +434,19 @@ Uwaga: *. domeny loganalytics.io właścicielem jest zespół usługi Log Analyt
 
 ## <a name="profiler"></a>Profiler
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 40.68.32.221<br/>40.85.246.0<br/>40.85.246.57<br/>40.117.252.0<br/>40.117.253.100<br/>51.140.140.162<br/>51.140.140.184<br/>51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.147.66<br/>52.178.149.106<br/>52.230.122.9<br/>52.230.124.46<br/>104.40.217.71<br/>104.211.89.26<br/>104.211.90.232 | 443
-| Portal | gateway.azureserviceprofiler.net | dynamiczne | 443
-| Magazyn | *.core.windows.net | dynamiczne | 443
+| Portal | gateway.azureserviceprofiler.net | Dynamiczne | 443
+| Magazyn | *.core.windows.net | Dynamiczne | 443
 
 ## <a name="snapshot-debugger"></a>Rozszerzenie Snapshot Debugger
 
 > [!NOTE]
 > Profiler i debuger migawek udziału tego samego zestawu adresów IP.
 
-| Przeznaczenie | URI | IP | Porty |
+| Przeznaczenie | Identyfikator URI | IP | Porty |
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 40.68.32.221<br/>40.85.246.0<br/>40.85.246.57<br/>40.117.252.0<br/>40.117.253.100<br/>51.140.140.162<br/>51.140.140.184<br/>51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.147.66<br/>52.178.149.106<br/>52.230.122.9<br/>52.230.124.46<br/>104.40.217.71<br/>104.211.89.26<br/>104.211.90.232 | 443
-| Portal | ppe.gateway.azureserviceprofiler.net | dynamiczne | 443
-| Magazyn | *.core.windows.net | dynamiczne | 443
+| Portal | ppe.gateway.azureserviceprofiler.net | Dynamiczne | 443
+| Magazyn | *.core.windows.net | Dynamiczne | 443

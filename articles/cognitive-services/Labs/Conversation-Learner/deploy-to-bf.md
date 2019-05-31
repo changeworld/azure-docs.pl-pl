@@ -3,19 +3,19 @@ title: Jak wdrożyć robota uczeń konwersacji — Microsoft Cognitive Services 
 titleSuffix: Azure
 description: Dowiedz się, jak wdrożyć bot uczeń konwersacji.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 5522f762f3893f1d67cd3755b1e022f0118cc004
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848269"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385316"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak wdrożyć bot uczeń konwersacji
 
@@ -115,7 +115,7 @@ Poniżej przedstawiono instrukcje krok po kroku dotyczące wdrażania Bot uczeń
 
        Zmienna środowiskowa | value
        --- | --- 
-       CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
+       CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
        CONVERSATION_LEARNER_MODEL_ID      | Identyfikator GUID identyfikatora aplikacji, uzyskany z poziomu interfejsu użytkownika uczeń konwersacji w obszarze "ustawienia" dla modelu >
        LUIS_AUTHORING_KEY               | Tworzenie klucza dla tego modelu usługi LUIS
        LUIS_SUBSCRIPTION_KEY            | Nie jest wymagane, ale zalecane do opublikowanych Boty, które należy unikać tworzenia limitu przydziału.

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: af903ce3ce7cfa165c278e415827dda36630e7b4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209727"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237760"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Omówienie uwierzytelniania usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,7 +26,7 @@ Warto poznać kilka kluczowych pojęć odnoszących się do uwierzytelniania us�
     Azure Active Directory (Azure AD) to usługa firmy Microsoft wieloma dzierżawami opartej na chmurze zarządzania katalogami i tożsamościami zarządzania. Usługa Azure AD łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji i ochrony tożsamości w ramach jednego rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure AD Domain Services**  
-    Usługi domenowe Azure AD oferuje zarządzane usługi domenowe, takie jak przyłączanie do domeny, zasady grupy, LDAP i Kerberos/NTLM uwierzytelniania. Te usługi są w pełni zgodne z usługą Windows Server Active Directory. Aby uzyskać więcej informacji, zobacz [usługi domenowe Azure Active Directory (AD)](../../active-directory-domain-services/active-directory-ds-overview.md).
+    Usługi domenowe Azure AD oferuje zarządzane usługi domenowe, takie jak przyłączanie do domeny, zasady grupy, LDAP i Kerberos/NTLM uwierzytelniania. Te usługi są w pełni zgodne z usługą Windows Server Active Directory. Aby uzyskać więcej informacji, zobacz [usługi domenowe Azure Active Directory (AD)](../../active-directory-domain-services/overview.md).
 
 -   **Kontrola dostępu (RBAC) oparta na rolach platformy Azure**  
     Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu funkcji RBAC, można zarządzać dostępem do zasobów przez udzielenie użytkownikom najmniejsze uprawnienia wymagane do wykonywania swoich zadań. Aby uzyskać więcej informacji o ROLACH, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC) na platformie Azure?](../../role-based-access-control/overview.md)
@@ -60,7 +60,7 @@ Tożsamość skojarzoną z aplikacji uruchomionej na maszynie Wirtualnej próbuj
 ### <a name="enable-azure-ad-authentication-over-smb"></a>Włączanie uwierzytelniania w usłudze Azure AD przez SMB
 Dla usługi Azure Files storage nowych i istniejących kont utworzonych po 24 września 2018 r. można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB. 
 
-Przed włączeniem uwierzytelniania usługi Azure AD przy użyciu protokołu SMB, sprawdź, czy usługi domenowe Azure AD został pomyślnie wdrożony dla podstawowego dzierżawy usługi Azure AD, z którą jest skojarzone konta magazynu. Jeśli usługi domenowe Azure AD nie zostały jeszcze skonfigurowany, wykonaj instrukcje krok po kroku ze wskazówkami zawartymi w [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
+Przed włączeniem uwierzytelniania usługi Azure AD przy użyciu protokołu SMB, sprawdź, czy usługi domenowe Azure AD został pomyślnie wdrożony dla podstawowego dzierżawy usługi Azure AD, z którą jest skojarzone konta magazynu. Jeśli usługi domenowe Azure AD nie zostały jeszcze skonfigurowany, wykonaj instrukcje krok po kroku ze wskazówkami zawartymi w [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/create-instance.md).
 
 Wdrożenie usługi Azure AD Domain Services zwykle trwa 10 do 15 minut. Po wdrożeniu usługi Azure AD Domain Services dla usługi Azure Files można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB. Aby uzyskać więcej informacji, zobacz [uwierzytelniania włączyć usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-enable.md). 
 

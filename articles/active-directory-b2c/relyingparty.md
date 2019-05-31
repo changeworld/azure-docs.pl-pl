@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705083"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253771"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -104,7 +104,7 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator podróży użytkownika w ramach zasad. Aby uzyskać więcej informacji, zobacz [podróży użytkownika](userjourneys.md) |
+| Identyfikator odwołania | Tak | Identyfikator podróży użytkownika w ramach zasad. Aby uzyskać więcej informacji, zobacz [podróży użytkownika](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -124,8 +124,8 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Zakres | Yes | Zakres jednego zachowanie logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`, lub `Policy`. `Suppressed` Wartość wskazuje, że zachowanie jest pomijane. Na przykład w przypadku jednej sesji logowania jednokrotnego, sesja nie jest zachowywana na potrzeby użytkownika, a użytkownik zawsze jest monitowany o wyboru dostawcy tożsamości. `TrustFramework` Wartość wskazuje, że zachowanie jest stosowana dla wszystkich zasad w ramach relacji zaufania. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Tenant` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad w ramach dzierżawy. Na przykład użytkownik w nawigowaniu po dwóch kursów zasad dla dzierżawy nie jest monitowany o wyboru dostawcy tożsamości. `Application` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji, dzięki czemu żądania. Na przykład dwóch kursów zasad dla aplikacji w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Policy` Wartość wskazuje, że zachowanie ma zastosowanie tylko do zasad. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik jest monitowany o wyboru dostawcy tożsamości podczas przełączania między zasadami. |
-| KeepAliveInDays | Yes | Określa, jak długo użytkownik pozostaje zalogowany. Ustawienie wartości 0 spowoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz [nie wylogowuj mnie](active-directory-b2c-reference-kmsi-custom.md). |
+| Scope | Tak | Zakres jednego zachowanie logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`, lub `Policy`. `Suppressed` Wartość wskazuje, że zachowanie jest pomijane. Na przykład w przypadku jednej sesji logowania jednokrotnego, sesja nie jest zachowywana na potrzeby użytkownika, a użytkownik zawsze jest monitowany o wyboru dostawcy tożsamości. `TrustFramework` Wartość wskazuje, że zachowanie jest stosowana dla wszystkich zasad w ramach relacji zaufania. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Tenant` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad w ramach dzierżawy. Na przykład użytkownik w nawigowaniu po dwóch kursów zasad dla dzierżawy nie jest monitowany o wyboru dostawcy tożsamości. `Application` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji, dzięki czemu żądania. Na przykład dwóch kursów zasad dla aplikacji w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Policy` Wartość wskazuje, że zachowanie ma zastosowanie tylko do zasad. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik jest monitowany o wyboru dostawcy tożsamości podczas przełączania między zasadami. |
+| KeepAliveInDays | Tak | Określa, jak długo użytkownik pozostaje zalogowany. Ustawienie wartości 0 spowoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz [nie wylogowuj mnie](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -134,10 +134,10 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Yes | Wartość musi być `ApplicationInsights`. | 
-| InstrumentationKey | Yes | Ciąg, który zawiera klucz instrumentacji dla elementu szczegółowych informacji w aplikacji. |
+| InstrumentationKey | Tak | Ciąg, który zawiera klucz instrumentacji dla elementu szczegółowych informacji w aplikacji. |
 | DeveloperMode | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, Application Insights przyspiesza dane telemetryczne za pośrednictwem potoku przetwarzania. To ustawienie jest dobry do tworzenia aplikacji, ale ograniczone w dużej ilości danych z dzienników aktywności szczegółowe są przeznaczone tylko do pomocy podczas tworzenia zasad niestandardowych. Nie należy używać trybu projektowania w środowisku produkcyjnym. Dzienniki zbierać wszystkie oświadczenia wysyłane do i z dostawcami tożsamości, podczas programowania. Jeśli używane w środowisku produkcyjnym, deweloper przyjmuje odpowiedzialność za dane osobowe (prywatnie osobowe) zebrane w dzienniku usługi App Insights, w której jest właścicielem. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest równa `true`.|
-| ClientEnabled | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła skrypt po stronie klienta usługi Application Insights do śledzenia błędów po stronie klienta i widoku strony. | 
-| ServerEnabled | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła istniejących JSON UserJourneyRecorder jako zdarzenie niestandardowe do usługi Application Insights. | 
+| ClientEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła skrypt po stronie klienta usługi Application Insights do śledzenia błędów po stronie klienta i widoku strony. | 
+| ServerEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła istniejących JSON UserJourneyRecorder jako zdarzenie niestandardowe do usługi Application Insights. | 
 | TelemetryVersion | Yes | Wartość musi być `1.0.0`. | 
 
 Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md)
@@ -170,7 +170,7 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- | 
-| Identyfikator | Yes | Wartość musi być `PolicyProfile`. |
+| Id | Tak | Wartość musi być `PolicyProfile`. |
 
 **Profilu technicznego** zawiera następujące elementy:
 
@@ -178,7 +178,7 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 | ------- | ----------- | ----------- |
 | Nazwa wyświetlana | 0:1 | Ciąg, który zawiera nazwę profilu technicznego, który jest widoczny dla użytkowników. |
 | Opis | 0:1 | Ciąg, który zawiera opis profilu technicznego, który jest widoczny dla użytkowników. |
-| Protokół | 1:1 | Protokół używany do Federacji. |
+| Protocol | 1:1 | Protokół używany do Federacji. |
 | Metadane | 0:1 | Kolekcja *elementu* par klucz/wartość wykorzystana przez protokół komunikacji z punktem końcowym w toku transakcji można skonfigurować interakcję między jednostkę uzależnioną i innych uczestników społeczności. |
 | OutputClaims | 0:1 | Lista typów oświadczeń, które są wykonywane jako dane wyjściowe w profilu technicznym. Każdy z tych elementów zawiera odwołanie do **oświadczenia** już zdefiniowana w **ClaimsSchema** sekcji lub w zasadach, z której dziedziczy ten plik zasad. |
 | SubjectNamingInfo | 0:1 | Nazwa podmiotu używana w tokenach. |
@@ -201,21 +201,21 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Odwołanie do **oświadczenia** już zdefiniowana w **ClaimsSchema** sekcji w pliku zasad. |
+| ClaimTypeReferenceId | Tak | Odwołanie do **oświadczenia** już zdefiniowana w **ClaimsSchema** sekcji w pliku zasad. |
 | defaultValue | Nie | Wartość domyślna, który może służyć, jeśli wartość oświadczenia jest pusta. |
 | PartnerClaimType | Nie | Wysyła oświadczenie inną nazwę, zgodnie z konfiguracją w definicji typu oświadczenia. |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Za pomocą **SubjectNameingInfo** elementu, można kontrolować wartość tokenu podmiotu:
-- **JTW token** — `sub` oświadczenia. To jest podmiotem zabezpieczeń o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpieczne, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby uzyskać więcej informacji, zobacz [tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md).
+- **JWT token** — `sub` oświadczenia. To jest podmiotem zabezpieczeń o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpieczne, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby uzyskać więcej informacji, zobacz [tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md).
 - **SAML token** — `<Subject><NameID>` element, który identyfikuje element podmiotu.
 
 **SubjectNamingInfo** element zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ oświadczenia | Yes | Odwołanie do oświadczeń wychodzących **PartnerClaimType**. Dane wyjściowe oświadczenia, muszą być zdefiniowane w zasadach jednostki uzależnionej strona **OutputClaims** kolekcji. |
+| Typ oświadczenia | Tak | Odwołanie do oświadczeń wychodzących **PartnerClaimType**. Dane wyjściowe oświadczenia, muszą być zdefiniowane w zasadach jednostki uzależnionej strona **OutputClaims** kolekcji. |
 
 Poniższy przykład pokazuje jak zdefiniować, OpenId Connect jednostki zależnej. Informacje o nazwie podmiotu jest skonfigurowany jako `objectId`:
 

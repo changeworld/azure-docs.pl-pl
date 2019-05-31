@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160480"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236619"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu 
 
 Za pomocą usługi Azure Machine Learning można uczenie modelu na wielu różnych zasobów lub środowisk, zbiorczo określany jako [ __celów obliczeń__](concept-azure-machine-learning-architecture.md#compute-target). Cel obliczenia może być komputer lokalny lub zasobem w chmurze, takich jak Azure obliczeniowego usługi Machine Learning, Azure HDInsight lub zdalnego maszyny wirtualnej.  Można również utworzyć obliczeniowych elementów docelowych dla modelu wdrożenia, zgodnie z opisem w ["gdzie i jak wdrożyć swoje modele"](how-to-deploy-and-where.md).
 
-Można tworzyć i zarządzać obliczeniowego elementu docelowego przy użyciu zestawu SDK usługi Azure Machine Learning, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
+Można tworzyć i zarządzać obliczeniowego elementu docelowego przy użyciu Azure Machine Learning zestawu SDK w witrynie Azure portal, rozszerzenie interfejsu wiersza polecenia platformy Azure lub usługi Azure Machine Learning programu VS Code. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
  
 W tym artykule dowiesz się, jak używać różnych celów obliczeń do trenowania modelu.  Kroków dla wszystkich celów obliczeń, użyj tego samego przepływu pracy:
 1. __Utwórz__ cel obliczenia, jeśli nie masz jeszcze jeden.
@@ -377,6 +377,10 @@ Możesz uzyskać dostęp obliczeniowych elementów docelowych, które są skojar
 
 Aby uzyskać więcej informacji, zobacz [zarządzania zasobami](reference-azure-machine-learning-cli.md#resource-management).
 
+## <a name="set-up-compute-with-vs-code"></a>Konfigurowanie obliczeniowe przy użyciu programu VS Code
+
+Można uzyskać dostęp, tworzyć i zarządzać obliczeniowych elementów docelowych, które są skojarzone z sieci za pomocą obszaru roboczego [rozszerzenie programu VS Code](how-to-vscode-tools.md#create-and-manage-compute-targets) dla usługi Azure Machine Learning.
+
 ## <a id="submit"></a>Prześlij szkolenia uruchamiania
 
 Po utworzeniu konfiguracji uruchamiania, użyj do uruchamiania eksperymentu.  Wzorca kodu, aby przesłać przebiegu szkolenia jest taka sama dla wszystkich typów obliczeniowych elementów docelowych:
@@ -416,8 +420,9 @@ Przełącz na tym samym eksperymencie co do uruchamiania w innego celu obliczeń
 
 Możesz też:
 
-* Przesyłanie eksperymentu za pomocą `Estimator` obiektu, jak pokazano na [modeli uczenia Maszynowego szkolenie dzięki aplikacjom](how-to-train-ml-models.md). 
+* Przesyłanie eksperymentu za pomocą `Estimator` obiektu, jak pokazano na [modeli uczenia Maszynowego szkolenie dzięki aplikacjom](how-to-train-ml-models.md).
 * Przysyłanie eksperymentu [przy użyciu interfejsu wiersza polecenia rozszerzenia](reference-azure-machine-learning-cli.md#experiments).
+* Przesyłanie eksperymentu za pośrednictwem [rozszerzenie programu VS Code](how-to-vscode-tools.md#train-and-tune-models).
 
 ## <a name="github-tracking-and-integration"></a>Śledzenie usługi GitHub i integracja
 

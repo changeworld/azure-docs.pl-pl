@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468011"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244699"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Przekształć element XML z mapami w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
@@ -28,11 +28,11 @@ Limity dotyczące kont integracji i artefaktów, takich jak mapy, zobacz [limity
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * [Konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) przechowywania map i innych artefaktów dla integracji dla przedsiębiorstw i rozwiązań biznesowych (B2B).
 
-* Jeśli mapa odwołuje się do zestawu zewnętrznego, musisz przekazać *zarówno w zestawie, jak i mapy* na koncie integracji. Upewnij się, że *Przekaż pierwszy zestaw*, a następnie przekaż mapę, która odwołuje się do zestawu.
+* Jeśli mapa odwołuje się do zestawu zewnętrznego, musisz przekazać *zarówno w zestawie, jak i mapy* na koncie integracji. Upewnij się, że [ *Przekaż pierwszy zestaw*](#add-assembly), a następnie przekaż mapę, która odwołuje się do zestawu.
 
   Jeśli zestaw jest 2 MB lub mniejszych, można dodać zestaw na koncie integracji *bezpośrednio* w witrynie Azure portal. Jednak jeśli Twoje zestawu lub mapy jest większy niż 2 MB, ale nie większy niż [limit rozmiaru dla zestawów lub mapy](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), jest podjęcie następujących kroków:
 
@@ -50,9 +50,11 @@ Limity dotyczące kont integracji i artefaktów, takich jak mapy, zobacz [limity
 
 Nie ma potrzeby podczas tworzenia i dodawania mapy aplikacji logiki. Jednak aby używać mapy, potrzebuje aplikacja logiki łączenia z kontem integracji, gdzie przechowywane są mapowane. Dowiedz się, [sposobu łączenia aplikacji logiki z konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Dowiedz się, jeśli nie masz jeszcze aplikacji logiki, [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
+<a name="add-assembly"></a>
+
 ## <a name="add-referenced-assemblies"></a>Dodaj przywoływanych zestawach
 
-1. Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure Portal</a> przy użyciu poświadczeń konta Azure.
+1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
 1. Aby znaleźć i otworzyć konto integracji w głównym menu platformy Azure, wybierz pozycję **wszystkich usług**. 
    W polu wyszukiwania wprowadź "konto integracji". 
@@ -74,6 +76,9 @@ Nie ma potrzeby podczas tworzenia i dodawania mapy aplikacji logiki. Jednak aby 
 
 Na podstawie pliku zestawu rozmiaru, wykonaj kroki przekazywania zestawu, który jest [do 2 MB](#smaller-assembly) lub [więcej niż 2 MB, ale tylko do 8 MB](#larger-assembly).
 Limity ilości zestaw konta integracji, zobacz [limity i konfiguracja dla usługi Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+
+> [!NOTE]
+> Zmiana zestawu, należy również zaktualizować mapę, czy mapa ma zmiany.
 
 <a name="smaller-assembly"></a>
 
@@ -128,7 +133,7 @@ Aby dodać większych zestawów, możesz przekazać zestawu do kontenera obiekt�
 
 1. Wróć do witryny Azure portal gdzie **Dodaj zestaw** okienko jest otwarte. 
    Wprowadź nazwę zestawu. 
-   Wybierz **duży plik (więcej niż 2 MB)**.
+   Wybierz **duży plik (więcej niż 2 MB)** .
 
    **Identyfikator URI zawartości** pojawi się pole, a nie **zestawu** pole.
 
@@ -153,7 +158,7 @@ Na koncie integracji **Przegląd** w obszarze **składniki**, **zestawy** Kafele
 
 1. Wróć do witryny Azure portal gdzie **Dodaj zestaw** okienko jest otwarte. 
    Wprowadź nazwę zestawu. 
-   Wybierz **duży plik (więcej niż 2 MB)**.
+   Wybierz **duży plik (więcej niż 2 MB)** .
 
    **Identyfikator URI zawartości** pojawi się pole, a nie **zestawu** pole.
 
@@ -170,7 +175,7 @@ Limity dotyczące ilości mapy w ramach kont integracji, zobacz [limity i konfig
 
 Po załadowaniu wszystkich zestawów, do których odwołuje się do mapy możesz teraz przekazać mapy.
 
-1. Jeśli użytkownik jeszcze nie zostało to zrobione, zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> przy użyciu poświadczeń konta platformy Azure. 
+1. Jeśli użytkownik jeszcze nie zostało to zrobione, zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu poświadczeń konta platformy Azure. 
 
 1. Jeśli na koncie integracji nie jest jeszcze otwarty, w menu głównym platformy Azure, wybierz **wszystkich usług**. 
    W polu wyszukiwania wprowadź "konto integracji". 
@@ -310,7 +315,7 @@ the map appears in the **Maps** list.
 
 Aby zaktualizować istniejącą mapę, masz Przekaż nowy plik mapy, który zawiera zmiany, które mają. Jednakże można najpierw pobrać istniejącej mapy do edycji.
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
+1. W [witryny Azure portal](https://portal.azure.com), Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
 
 1. W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiwania wprowadź "konto integracji". Wybierz **kont integracji**.
 
@@ -328,7 +333,7 @@ Aby zaktualizować istniejącą mapę, masz Przekaż nowy plik mapy, który zawi
 
 ## <a name="delete-maps"></a>Usuwanie mapy
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
+1. W [witryny Azure portal](https://portal.azure.com), Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
 
 1. W głównym menu platformy Azure, wybierz **wszystkich usług**. 
    W polu wyszukiwania wprowadź "konto integracji". 

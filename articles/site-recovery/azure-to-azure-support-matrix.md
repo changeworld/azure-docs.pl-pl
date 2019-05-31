@@ -5,16 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: de2e57901becad68f3fad16967faf3ae4833177a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 928d741132623bd92dae1097724295691d7f3808
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797872"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398332"
 ---
-# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Macierz obsługi na potrzeby replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matryca obsługi replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
 Ten artykuł zawiera podsumowanie obsługi i wymagań wstępnych podczas ustawiania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure między regionami platformy Azure do innego, przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
 
@@ -182,13 +182,14 @@ Ta tabela zawiera podsumowanie obsługę dysku, dysk z danymi i tymczasowy dysk 
 Maksymalny rozmiar dysku systemu operacyjnego | 2048 GB | [Dowiedz się więcej](../virtual-machines/windows/managed-disks-overview.md) dotyczące dysków maszyn wirtualnych.
 Dysk tymczasowy | Nieobsługiwane | Dysk tymczasowy zawsze jest wykluczony z replikacji.<br/><br/> Nie należy przechowywać żadnych trwałych danych na dysku tymczasowym. [Dowiedz się więcej](../virtual-machines/windows/managed-disks-overview.md).
 Maksymalny rozmiar dysku danych | 4095 GB |
+Minimalny rozmiar dysku danych | Nie ograniczenie dotyczące dysków niezarządzanych. 2 GB dla dysków zarządzanych | 
 Maksymalna liczba dysków danych | Maksymalnie 64 zgodnie z pomocy technicznej dla określonego rozmiaru maszyny Wirtualnej platformy Azure | [Dowiedz się więcej](../virtual-machines/windows/sizes.md) o rozmiarach maszyn wirtualnych.
 Częstotliwość zmian dysku danych | Maksymalnie 10 MB/s na dysk usługi premium storage. Maksymalnie 2 MB/s na dysk dla magazynu w warstwie standardowa. | Jeśli średni współczynnik zmian na dysku jest stale wyższa niż wartość maksymalna, replikacji nie będzie zapoznać się z nimi.<br/><br/>  Jednak maksymalny po przekroczeniu sporadycznie, replikację można zapoznać się z nimi, ale może zostać wyświetlony punktów odzyskiwania nieco opóźnione.
 Dysk danych — konto magazynu w warstwie standardowa | Obsługiwane |
 Dysk danych — konto magazynu premium storage | Obsługiwane | Maszyna wirtualna ma dyski rozkładają się na konta magazynu w warstwie standardowa i premium, po wybraniu innego docelowego konta magazynu dla każdego dysku, aby upewnić się, że mają taką samą konfigurację magazynu w regionie docelowym.
 Dysk zarządzany — standardowa | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
 Dysk zarządzany — premium | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
-SSD w warstwie Standardowa | Obsługiwane |
+Standardowa, SSD | Obsługiwane |
 Nadmiarowość | Usługi LRS i GRS są obsługiwane.<br/><br/> Magazyn ZRS nie jest obsługiwane.
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny Wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Miejsca do magazynowania | Obsługiwane |
@@ -241,7 +242,7 @@ Sieciowa grupa zabezpieczeń w podsieci | Obsługiwane | Kojarzenie sieciowej gr
 Zastrzeżony adres IP (statyczne) | Obsługiwane | Jeśli karta sieciowa źródłowej maszyny Wirtualnej ma statyczny adres IP, a podsieć docelowa ma ten sam adres IP dostępne, jest przypisany do w trybie Failover maszyny Wirtualnej.<br/><br/> Jeśli podsieć docelowa nie ma ten sam adres IP dostępny, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla maszyny Wirtualnej.<br/><br/> Można również określić stały adres IP i podsieci w **zreplikowane elementy** > **ustawienia** > **obliczenia i sieć**  >  **Interfejsy sieciowe**.
 Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych adresów IP kart Sieciowych w trybie Failover maszyny Wirtualnej jest również dynamiczne domyślnie.<br/><br/> Możesz zmodyfikować to stały adres IP w razie potrzeby.
 Wiele adresów IP | Nieobsługiwane | Po przełączeniu w tryb failover maszyny Wirtualnej, która ma kartę Sieciową z wieloma adresami IP jest przechowywana tylko podstawowy adres IP karty Sieciowej w regionie źródłowym. Aby przypisać wiele adresów IP, można dodać maszyny wirtualne do [planu odzyskiwania](recovery-plan-overview.md) i dołączyć skrypt do przypisywania dodatkowych adresów IP do planu, lub można wprowadzić zmiany ręcznie lub za pomocą skryptu po włączeniu trybu failover. 
-Menedżer ruchu     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
+Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |
 Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej]. (site-recovery-azure-to-azure-networking-guidance.md)   
@@ -249,7 +250,7 @@ Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna kor
 Połączenie lokacja lokacja sieci VPN do sieci lokalnej<br/><br/>(z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch Site Recovery nie jest kierowany do sieci lokalnej. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
 Połączenie między sieciami Wirtualnymi | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)  
 Punkty końcowe usługi dla sieci wirtualnej | Obsługiwane | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu.
-Przyspieszona sieć | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Wydajniejsze sieci | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 

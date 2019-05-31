@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 054369a7fd75663c75c99c6ee586843582a6b6f9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: HT
+ms.openlocfilehash: bfa69c6904644f707626e57a6696695cf4868c50
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965965"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236614"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -28,7 +28,7 @@ Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmu
 ### <a name="about-this-tutorial"></a>Informacje o tym samouczku
 W tym samouczku pokazano, jak napisać kod .NET dla niektórych typowych scenariuszy przy użyciu usługi Azure Queue Storage. Omówione scenariusze obejmują tworzenie i usuwanie kolejek oraz dodawanie, odczytywanie i usuwanie komunikatów kolejek.
 
-**Szacowany czas trwania:** 45 min
+**Szacowany czas trwania:** 45 minut
 
 ###<a name="prerequisites"></a>Wymagania wstępne:
 
@@ -231,7 +231,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 ```
 
 ## <a name="get-the-queue-length"></a>Pobieranie długości kolejki
-Możesz uzyskać szacunkową liczbę komunikatów w kolejce. Metoda [FetchAttributes](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) prosi usługę kolejki o pobranie atrybutów kolejki, w tym liczby komunikatów. Właściwość [ApproximateMessageCount](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) zwraca ostatnią wartość pobraną przez metodę **FetchAttributes** bez wywoływania usługi kolejki.
+Możesz uzyskać szacunkową liczbę komunikatów w kolejce. Metoda [FetchAttributes](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) prosi usługę kolejki o pobranie atrybutów kolejki, w tym liczby komunikatów. Właściwość [ApproximateMessageCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) zwraca ostatnią wartość pobraną przez metodę **FetchAttributes** bez wywoływania usługi kolejki.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -255,7 +255,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="delete-a-queue"></a>Usuwanie kolejki
-Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj metodę [Delete](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) na obiekcie kolejki.
+Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj metodę [Delete](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) na obiekcie kolejki.
 
 ```csharp
 // Retrieve storage account from connection string.

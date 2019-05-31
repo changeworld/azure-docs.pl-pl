@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572522"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256127"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Dziennik i wstępnie zagregowane metryki w usłudze Application Insights
 
@@ -34,7 +34,7 @@ W tym samym czasie zbieranie kompletny zestaw zdarzeń, może być niepraktyczne
 
 ## <a name="pre-aggregated-metrics"></a>Wstępnie zagregowane metryki
 
-Oprócz metryk opartych na dzienniku w Fall 2018 r. zespół usługi Application Insights wysłane publicznej wersji zapoznawczej metryk, które są przechowywane w repozytorium specjalistyczne, zoptymalizowana pod kątem szeregów czasowych. Nowe metryki nie są przechowywane jako pojedyncze zdarzenia z dużą liczbą właściwości. Zamiast tego są one przechowywane jako szeregów czasowych wstępnie zagregowane i tylko z kluczami wymiarów. To sprawia, że nowe metryki przełożonego w czasie wykonywania zapytania: pobieranie danych się nie dzieje znacznie szybciej i wymaga mniej mocy obliczeniowej. W związku z tym umożliwia to obsługę nowych scenariuszy takich jak [niemal alerty w czasie rzeczywistym w wymiarach metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)reakcji [pulpity nawigacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards)i nie tylko.
+Oprócz metryk opartych na dzienniku w Fall 2018 r. zespół usługi Application Insights wysłane publicznej wersji zapoznawczej metryk, które są przechowywane w repozytorium specjalistyczne, zoptymalizowana pod kątem szeregów czasowych. Nowe metryki nie są przechowywane jako pojedyncze zdarzenia z dużą liczbą właściwości. Zamiast tego są one przechowywane jako szeregów czasowych wstępnie zagregowane i tylko z kluczami wymiarów. To sprawia, że nowe metryki przełożonego w czasie wykonywania zapytania: pobieranie danych się nie dzieje znacznie szybciej i wymaga mniej mocy obliczeniowej. W związku z tym umożliwia to obsługę nowych scenariuszy takich jak [niemal alerty w czasie rzeczywistym w wymiarach metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)reakcji [pulpity nawigacyjne](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)i nie tylko.
 
 > [!IMPORTANT]
 > Współistnieć, opartych na dzienniku i wstępnie zagregowane metryki w usłudze Application Insights. Do odróżniania dwóch, w usłudze Application Insights UX wstępnie zagregowane metryki są teraz nazywane "Standardowych metryk (wersja zapoznawcza)", podczas gdy tradycyjnych metryki z zdarzenia zostały zmienione na "opartych na dzienniku metryki".

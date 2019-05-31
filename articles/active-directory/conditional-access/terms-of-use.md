@@ -1,29 +1,26 @@
 ---
 title: Warunki użytkowania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak rozpocząć pracę, przy użyciu usługi Azure Active Directory z warunkami użytkowania do prezentowania informacji pracowników lub gości, zanim uzyska dostęp.
+description: Rozpoczęcie korzystania z usługi Azure Active Directory z warunkami użytkowania do prezentowania informacji pracowników lub gości, zanim uzyska dostęp.
 services: active-directory
-author: rolyon
-manager: mtillman
-editor: ''
-ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/15/2019
-ms.author: rolyon
+ms.topic: conceptual
+ms.date: 05/29/2019
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8659ecab649216650403f3a992cc6e356e5de5d0
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823581"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383173"
 ---
-# <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
-Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
+# <a name="azure-active-directory-terms-of-use"></a>Usługa Azure Active Directory z warunkami użytkowania
+
+Warunki użytkowania w usłudze Azure AD zapewnia prostą metodę, która organizacje mogą używać do prezentowania informacji użytkownikom końcowym. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -37,156 +34,156 @@ Aby obejrzeć dodatkowe filmy wideo zobacz:
 - [Jak wdrożyć warunki użytkowania usługi Azure Active Directory](https://www.youtube.com/embed/N4vgqHO2tgY)
 - [Jak wdrażać warunki użytkowania usługi Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY)
 
-## <a name="what-can-i-do-with-terms-of-use"></a>Do czego można wykorzystać warunki użytkowania?
+## <a name="what-can-i-do-with-terms-of-use"></a>Co można zrobić z warunkami użytkowania?
+
 Usługa Azure AD z warunkami użytkowania ma następujące możliwości:
+
 - Wymagaj zaakceptowania Twoich warunków użytkowania przed uzyskaniem dostępu do pracowników lub gości.
 - Wymagaj pracowników lub gości zaakceptować warunki użytkowania na każdym urządzeniu zanim uzyska dostęp.
 - Wymagaj pracowników lub gości zaakceptować warunki użytkowania, zgodnie z cyklicznym harmonogramem.
-- Prezentowanie ogólnych warunków użytkowania obowiązujących wszystkich użytkowników w organizacji.
-- Prezentowanie specyficznych warunków użytkowania zależnych od atrybutów użytkownika (np. warunki dla lekarzy różnią się od warunków dla pielęgniarek, a pracownicy krajowi mają inne warunki niż pracownicy międzynarodowi) za pomocą [grup dynamicznych](../users-groups-roles/groups-dynamic-membership.md).
-- Prezentowanie specyficznych warunków użytkowania podczas korzystania z aplikacji mających duży wpływ na działalność biznesową, takich jak Salesforce.
-- Prezentowanie warunków użytkowania w innych językach.
+- Wymagaj zaakceptowania Twoich warunków użytkowania przed zarejestrowaniem informacji o zabezpieczeniach w usłudze Azure Multi-Factor Authentication (MFA) przez pracowników lub gości.
+- Wymagają od pracowników do zaakceptowania Twoich warunków użytkowania przed zarejestrowaniem informacji o zabezpieczeniach w usłudze Azure AD samoobsługowego resetowania haseł (SSPR).
+- Przedstawia ogólne warunki użytkowania dla wszystkich użytkowników w Twojej organizacji.
+- Przedstawia specyficzne warunki użytkowania na podstawie atrybutów użytkownika (np.) warunki dla lekarzy różnią się od warunków dla pielęgniarek, a pracownicy krajowi mają inne warunki niż pracownicy międzynarodowi) za pomocą [grup dynamicznych](../users-groups-roles/groups-dynamic-membership.md).
+- Podczas uzyskiwania dostępu do aplikacji znaczenie biznesowe wysoki, takich jak Salesforce, stanowią specyficzne warunki użytkowania.
+- Obecne warunki użytkowania w różnych językach.
 - Lista, która ma lub nie zostało zaakceptowane warunki użytkowania.
 - Pomaga w osiągnięciu przepisów dotyczących zachowania poufności.
 - Wyświetl dziennik postanowień aktywności użycia dotyczących zgodności i inspekcji.
 - Tworzenie i zarządzanie nimi za pomocą funkcji warunki [interfejsów API programu Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (obecnie w wersji zapoznawczej).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do skonfigurowania warunków użytkowania usługi Azure AD niezbędne są następujące elementy:
+
+Aby użyć i skonfigurować warunki użytkowania usługi Azure AD, musisz mieć:
 
 - Subskrypcja usługi Azure AD w wersji Premium P1, Premium P2, EMS E3 lub EMS E5.
-    - Jeśli nie masz żadnej z tych subskrypcji, możesz [uzyskać dostęp do usługi Azure AD w wersji Premium](../fundamentals/active-directory-get-started-premium.md) lub [włączyć wersję próbnej usługi Azure AD w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
+   - Jeśli nie masz żadnej z tych subskrypcji, możesz [uzyskać dostęp do usługi Azure AD w wersji Premium](../fundamentals/active-directory-get-started-premium.md) lub [włączyć wersję próbnej usługi Azure AD w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 - Jedno z następujących kont administratora katalogu, który chcesz skonfigurować:
-    - Administrator globalny
-    - Administrator zabezpieczeń
-    - Administrator dostępu warunkowego
+   - Administrator globalny
+   - Administrator zabezpieczeń
+   - Administrator dostępu warunkowego
 
 ## <a name="terms-of-use-document"></a>Dokument z warunkami użytkowania
 
-Zawartość warunków użytkowania usługi Azure AD jest przedstawiana w formacie PDF. Zawartość ta może być dowolna i obejmować na przykład istniejące dokumenty kontraktowe, umożliwiając gromadzenie umów użytkowników końcowych podczas logowania. Aby zapewnić obsługę użytkowników na urządzeniach przenośnych, zalecany rozmiar czcionki w pliku PDF jest punktem 24.
+Warunki użytkowania w usłudze Azure AD w formacie PDF do prezentowania zawartości. Zawartość ta może być dowolna i obejmować na przykład istniejące dokumenty kontraktowe, umożliwiając gromadzenie umów użytkowników końcowych podczas logowania. Aby zapewnić obsługę użytkowników na urządzeniach przenośnych, zalecany rozmiar czcionki w pliku PDF jest punktem 24.
 
 ## <a name="add-terms-of-use"></a>Dodawanie warunków użytkowania
-Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj go za pomocą poniższej procedury.
+
+Po zakończeniu pracy nad zawartością Twojej dokument z warunkami użytkowania, należy użyć poniższej procedury ją dodać.
 
 1. Logowanie do platformy Azure jako globalny, Administrator, Administrator zabezpieczeń lub Administrator dostępu warunkowego.
-
 1. Przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
 
-    ![Blok Warunki użytkowania](./media/terms-of-use/tou-blade.png)
+   ![Blok Warunki użytkowania](./media/terms-of-use/tou-blade.png)
 
 1. Kliknij pozycję **Nowe warunki**.
 
-    ![Dodawanie warunków użytkowania](./media/terms-of-use/new-tou.png)
+   ![Dodawanie warunków użytkowania](./media/terms-of-use/new-tou.png)
 
 1. W **nazwa** wprowadź nazwę warunków użytkowania, który będzie używany w witrynie Azure portal.
-
 1. W **nazwę wyświetlaną** wprowadź tytuł, którą użytkownicy widzą podczas logowania.
-
 1. Aby uzyskać **dokument z warunkami użytkowania**, przejdź do swojej zawierającego końcową wersję warunków użytkowania PDF i wybierz ją.
-
 1. Wybierz język, dla Twojego dokument z warunkami użytkowania. Opcja wyboru języka umożliwia przekazanie wielu wersji językowych warunków użytkowania. Wersja warunków użytkowania widoczna dla użytkownika końcowego będzie zależała od preferencji jego przeglądarki.
-
 1. Aby wymagać od użytkowników końcowych wyświetlić warunków użytkowania przed ich akceptacją, należy ustawić **Wymagaj od użytkowników rozwinięcia warunków użytkowania** do **na**.
-
 1. Aby wymagać od użytkowników końcowych zaakceptować warunki użytkowania na każdym urządzeniu, które uzyskują dostęp do z, należy ustawić **wymagać od użytkowników akceptacji na każdym urządzeniu** do **na**. Aby uzyskać więcej informacji, zobacz [na urządzenie z warunkami użytkowania](#per-device-terms-of-use).
+1. Wygaśnięcie warunki zgody użycia zgodnie z harmonogramem, należy ustawić **wygaśnie zgody** do **na**. Jeśli włączona, są wyświetlane dwa ustawienia dodatkowe harmonogramu.
 
-1. Jeśli chcesz wygasić zgadza się z warunkami użytkowania zgodnie z harmonogramem, ustaw **wygaśnie zgody** do **na**. Jeśli włączona, są wyświetlane dwa ustawienia dodatkowe harmonogramu.
-
-    ![Wygaśnięcie zgód](./media/terms-of-use/expire-consents.png)
+   ![Wygaśnięcie zgód](./media/terms-of-use/expire-consents.png)
 
 1. Użyj **Wygaś od** i **częstotliwość** ustawień, aby określić harmonogram warunki Użyj wygasanie ważności poświadczeń. W poniższej tabeli przedstawiono wyniki dla kilku przykładowych ustawień:
 
-    | Wygaśnięcie zaczyna się | Częstotliwość | Wynik |
-    | --- | --- | --- |
-    | Dzisiejsza data  | Miesięczne | Od dzisiaj użytkownicy muszą zaakceptować warunki użytkowania i następnie ponownie zaakceptowali co miesiąc. |
-    | W przyszłości  | Miesięczne | Od dzisiaj, użytkownicy muszą zaakceptować warunki użytkowania. W przypadku przyszłych Data wygaśnie zgody i następnie użytkownicy muszą ponownie zaakceptowali co miesiąc.  |
+   | Wygaśnięcie zaczyna się | Częstotliwość | Wynik |
+   | --- | --- | --- |
+   | Dzisiejsza data  | Miesięczne | Od dzisiaj użytkownicy muszą zaakceptować warunki użytkowania i następnie ponownie zaakceptowali co miesiąc. |
+   | W przyszłości  | Miesięczne | Od dzisiaj, użytkownicy muszą zaakceptować warunki użytkowania. W przypadku przyszłych Data wygaśnie zgody i następnie użytkownicy muszą ponownie zaakceptowali co miesiąc.  |
 
-    Na przykład jeśli ustawisz wygasania, począwszy od daty **1 stycznia** i częstotliwość **miesięczne**, Oto jak wygasanie ważności poświadczeń mogą wystąpić w przypadku dwóch użytkowników:
+   Na przykład jeśli ustawisz wygasania, począwszy od daty **1 stycznia** i częstotliwość **miesięczne**, Oto jak wygasanie ważności poświadczeń mogą wystąpić w przypadku dwóch użytkowników:
 
-    | Użytkownik | Najpierw zaakceptować daty | Najpierw wygasa dnia | Po drugie wygasa dnia | Trzeci wygasa dnia |
-    | --- | --- | --- | --- | --- |
-    | Alicja | 1 stycznia | 1 lutego | 1 marca | 1 kwietnia |
-    | Bob | 15 stycznia | 1 lutego | 1 marca | 1 kwietnia |
+   | Użytkownik | Najpierw zaakceptować daty | Najpierw wygasa dnia | Po drugie wygasa dnia | Trzeci wygasa dnia |
+   | --- | --- | --- | --- | --- |
+   | Alicja | 1 stycznia | 1 lutego | 1 marca | 1 kwietnia |
+   | Bob | 15 stycznia | 1 lutego | 1 marca | 1 kwietnia |
 
 1. Użyj **czas trwania zanim ponownej akceptacji wymaga (w dniach)** ustawienie, aby określić liczbę dni, po którym użytkownik musi ponownie zaakceptowali warunki użytkowania. Dzięki temu użytkownicy mogą postępuj zgodnie z własnym harmonogramem. Na przykład, jeśli zostanie ustawiona na czas trwania **30** dni, Oto jak wygasanie ważności poświadczeń mogą wystąpić w przypadku dwóch użytkowników:
 
-    | Użytkownik | Najpierw zaakceptować daty | Najpierw wygasa dnia | Po drugie wygasa dnia | Trzeci wygasa dnia |
-    | --- | --- | --- | --- | --- |
-    | Alicja | 1 stycznia | Do 31 stycznia | 2 marca | 1 kwietnia |
-    | Bob | 15 stycznia | 14 lutego | 16 marca | Kwi 15 |
+   | Użytkownik | Najpierw zaakceptować daty | Najpierw wygasa dnia | Po drugie wygasa dnia | Trzeci wygasa dnia |
+   | --- | --- | --- | --- | --- |
+   | Alicja | 1 stycznia | Do 31 stycznia | 2 marca | 1 kwietnia |
+   | Bob | 15 stycznia | 14 lutego | 16 marca | Kwi 15 |
 
-    Istnieje możliwość użycia **wygaśnie zgody** i **czas trwania zanim ponownej akceptacji wymaga (w dniach)** ustawienia, ale zazwyczaj można użyć jednej z nich.
+   Istnieje możliwość użycia **wygaśnie zgody** i **czas trwania zanim ponownej akceptacji wymaga (w dniach)** ustawienia, ale zazwyczaj można użyć jednej z nich.
 
 1. W obszarze **dostępu warunkowego**, użyj **Wymuś przy użyciu szablonu zasad dostępu warunkowego** listę, aby wybrać szablon, aby wymusić warunki użytkowania.
 
-    ![Szablony dostępu warunkowego](./media/terms-of-use/conditional-access-templates.png)
+   ![Szablony dostępu warunkowego](./media/terms-of-use/conditional-access-templates.png)
 
-    | Szablon | Opis |
-    | --- | --- |
-    | **Dostęp do aplikacji w chmurze dla wszystkich gości** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich gości i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, może być wymagane wylogowanie się i zaloguj się. |
-    | **Dostęp do aplikacji dla wszystkich użytkowników w chmurze** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich użytkowników i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, konieczna będzie wylogowanie się i zaloguj się. |
-    | **Zasady niestandardowe** | Wybierz użytkowników, grupy i aplikacje, których będą dotyczyć niniejsze warunki użytkowania. |
-    | **Tworzenie zasad dostępu warunkowego później** | Te warunki użytkowania zostaną wyświetlone na liście przyznawania kontroli podczas tworzenia zasad dostępu warunkowego. |
+   | Szablon | Opis |
+   | --- | --- |
+   | **Dostęp do aplikacji w chmurze dla wszystkich gości** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich gości i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, może być wymagane wylogowanie się i zaloguj się. |
+   | **Dostęp do aplikacji dla wszystkich użytkowników w chmurze** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich użytkowników i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, konieczna będzie wylogowanie się i zaloguj się. |
+   | **Zasady niestandardowe** | Wybierz użytkowników, grup i aplikacji, które będą dotyczyć te warunki użytkowania. |
+   | **Tworzenie zasad dostępu warunkowego później** | Te warunki użytkowania zostaną wyświetlone na liście przyznawania kontroli podczas tworzenia zasad dostępu warunkowego. |
 
-    >[!IMPORTANT]
-    >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi. Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
+   >[!IMPORTANT]
+   >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi. Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
 
-     Niestandardowe zasady dostępu warunkowego pozwalają zwiększyć szczegółowość warunków użytkowania, które mogą dotyczyć pojedynczej aplikacji w chmurze lub grupy użytkowników. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze wymagają](require-tou.md).
+    Niestandardowe zasady dostępu warunkowego Włącz zwiększyć szczegółowość warunków użytkowania w dół do aplikacji w chmurze lub grupy użytkowników. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze wymagają](require-tou.md).
 
 1. Kliknij pozycję **Utwórz**.
 
-    Jeśli wybrano szablon niestandardowy dostęp warunkowy, nowy ekran pojawi się, która umożliwia tworzenie niestandardowych zasad dostępu warunkowego.
+   Jeśli wybrano szablon niestandardowy dostęp warunkowy, nowy ekran pojawi się, która umożliwia tworzenie niestandardowych zasad dostępu warunkowego.
 
-    ![Niestandardowe zasady](./media/terms-of-use/custom-policy.png)
+   ![Niestandardowe zasady](./media/terms-of-use/custom-policy.png)
 
-    Zostaną wyświetlone nowe warunki użytkowania.
+   Zostaną wyświetlone nowe warunki użytkowania.
 
-    ![Dodawanie warunków użytkowania](./media/terms-of-use/create-tou.png)
+   ![Dodawanie warunków użytkowania](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>Wyświetl raport, kto został zaakceptowany i odrzucone
-W bloku Warunki użytkowania znajduje się liczba użytkowników, którzy je zaakceptowali i odrzucili. Te liczby oraz lista użytkowników, którzy zaakceptowali lub odrzucili warunki użytkowania, jest przechowywana przez cały okres istnienia warunków użytkowania.
+
+W bloku Warunki użytkowania znajduje się liczba użytkowników, którzy je zaakceptowali i odrzucili. Tych liczb i który zaakceptowane/odrzucone są przechowywane przez cały okres istnienia warunki użytkowania.
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
 
-    ![Blok Warunki użytkowania](./media/terms-of-use/view-tou.png)
+   ![Blok Warunki użytkowania](./media/terms-of-use/view-tou.png)
 
 1. Warunki użytkowania, kliknij liczby w obszarze **zaakceptowano** lub **odrzucone** do wyświetlania bieżącego stanu użytkownikom.
 
-    ![Zgody na warunki użytkowania](./media/terms-of-use/accepted-tou.png)
+   ![Zgody na warunki użytkowania](./media/terms-of-use/accepted-tou.png)
 
-1. Aby wyświetlić historię dla poszczególnych użytkowników, kliknij przycisk wielokropka (**...** ) i następnie **wyświetlić historię**.
+1. Aby wyświetlić historię dla poszczególnych użytkowników, kliknij przycisk wielokropka ( **...** ) i następnie **wyświetlić historię**.
 
-    ![Wyświetlić menu Historia](./media/terms-of-use/view-history-menu.png)
+   ![Wyświetlić menu Historia](./media/terms-of-use/view-history-menu.png)
 
-    W okienku widoku Historia Zobacz historię wszystkich akceptuje odmówi i wygasanie ważności poświadczeń.
+   W okienku widoku Historia Zobacz historię wszystkich akceptuje odmówi i wygasanie ważności poświadczeń.
 
-    ![Wyświetl historię okienko](./media/terms-of-use/view-history-pane.png)
+   ![Wyświetl historię okienko](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Wyświetl usługi Azure AD dzienniki inspekcji
-Jeśli chcesz wyświetlić dodatkową aktywność, warunki użytkowania usługi Azure AD zawierają dzienniki inspekcji. Każdy zgody użytkownika wyzwala zdarzenie w dziennikach inspekcji, które są przechowywane przez **30 dni**. Te dzienniki możesz wyświetlić w portalu lub pobrać jako plik CSV.
+
+Jeśli chcesz wyświetlić dodatkowe działania, warunki użytkowania usługi Azure AD zawiera dzienniki inspekcji. Każdy zgody użytkownika wyzwala zdarzenie w dziennikach inspekcji, które są przechowywane przez **30 dni**. Te dzienniki możesz wyświetlić w portalu lub pobrać jako plik CSV.
 
 Aby rozpocząć pracę z usługą Azure AD dzienniki inspekcji, użyj następującej procedury:
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Wybierz warunki użytkowania.
-
 1. Kliknij pozycję **Wyświetl dzienniki inspekcji**.
 
-    ![Blok Warunki użytkowania](./media/terms-of-use/audit-tou.png)
+   ![Blok Warunki użytkowania](./media/terms-of-use/audit-tou.png)
 
 1. Ekranie dzienników inspekcji w usłudze Azure AD, można filtrować informacje przy użyciu podanej listy do informacji z dzienników inspekcji określonego docelowego.
 
-    Można również kliknąć pozycję **Pobierz**, aby pobrać informacje w pliku CSV do użytku lokalnego.
+   Można również kliknąć pozycję **Pobierz**, aby pobrać informacje w pliku CSV do użytku lokalnego.
 
-    ![Dzienniki inspekcji](./media/terms-of-use/audit-logs-tou.png)
+   ![Dzienniki inspekcji](./media/terms-of-use/audit-logs-tou.png)
 
-    Po kliknięciu przycisku dziennika okienko pojawia się ze szczegółami dodatkowe działania.
+   Po kliknięciu przycisku dziennika okienko pojawia się ze szczegółami dodatkowe działania.
 
-    ![Szczegóły działania](./media/terms-of-use/audit-log-activity-details.png)
+   ![Szczegóły działania](./media/terms-of-use/audit-log-activity-details.png)
 
-## <a name="what-terms-of-use-looks-like-for-users"></a>W jaki sposób warunki użytkowania są wyświetlane użytkownikom
-Po utworzeniu warunków użytkowania i wymuszeniu ich stosowania uprawnionym użytkownikom zostanie wyświetlony następujący ekran podczas logowania.
+## <a name="what-terms-of-use-looks-like-for-users"></a>Jakie warunki użytkowania wygląda dla użytkowników
+
+Po utworzeniu warunków użytkowania i wymuszane, użytkownicy, którzy znajdują się w zakresie, zostanie wyświetlony następujący ekran podczas logowania.
 
 ![Logowanie w sieci web użytkownika](./media/terms-of-use/user-tou.png)
 
@@ -194,62 +191,58 @@ Użytkownicy mogą przeglądać warunki użytkowania i, jeśli to konieczne, uż
 
 ![Wyświetlanie warunków użytkowania za pomocą przycisków powiększenia](./media/terms-of-use/zoom-buttons.png)
 
-Na poniższym ekranie przedstawiono, w jaki sposób warunki użytkowania są wyświetlane na urządzeniach przenośnych.
+Na poniższym ekranie przedstawiono, jak wygląda warunki użytkowania na urządzeniach przenośnych.
 
 ![Przenośne logowanie użytkownika](./media/terms-of-use/mobile-tou.png)
 
 Tylko użytkownicy muszą zaakceptować warunki użytkowania raz, a użytkownicy nie zobaczą warunki użytkowania ponownie na kolejnych logowań.
 
-### <a name="how-users-can-review-their-terms-of-use"></a>Jak użytkownicy mogą przeglądać warunki użytkowania
-Użytkownicy mogą wyświetlać i przeglądać warunki użytkowania, które zaakceptowali, korzystając z poniższej procedury.
+### <a name="how-users-can-review-their-terms-of-use"></a>Jak użytkownicy mogli je przejrzeć swoje warunki użytkowania
+
+Użytkownicy mogą przejrzeć i przeglądać warunki użytkowania, które zaakceptowali przy użyciu poniższej procedury.
 
 1. Zaloguj się do witryny [https://myapps.microsoft.com](https://myapps.microsoft.com).
-
 1. W prawym górnym rogu kliknij swoją nazwę i wybierz **profilu**.
 
-    ![Profil](./media/terms-of-use/tou14.png)
+   ![Profil](./media/terms-of-use/tou14.png)
 
 1. Na stronie Profil kliknij pozycję **Przejrzyj warunki użytkowania**.
 
-    ![Profilu — zapoznaj się z warunkami użytkowania](./media/terms-of-use/tou13a.png)
+   ![Profilu — zapoznaj się z warunkami użytkowania](./media/terms-of-use/tou13a.png)
 
 1. Następnie możesz przejrzeć zaakceptowane warunki użytkowania.
 
 ## <a name="edit-terms-of-use-details"></a>Edytuj szczegóły warunków użytkowania
+
 Możesz edytować niektóre szczegóły warunków użytkowania, ale nie można zmodyfikować istniejący dokument. Poniższa procedura opisuje sposób edytowania szczegółów.
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Wybierz warunki użytkowania, które chcesz edytować.
-
 1. Kliknij przycisk **Edycja warunków**.
-
 1. W postanowieniach edycji okienko użycia Zmień nazwę, nazwę wyświetlaną lub Wymagaj od użytkowników rozwinięcia wartości.
 
-    Jeśli istnieją inne ustawienia, które chcesz zmienić, takie jak dokument PDF, Wymagaj od użytkowników akceptacji na każdym urządzeniu, wygasają zgody, czas trwania zanim reacceptance lub zasady dostępu warunkowego, należy utworzyć nowe warunki użytkowania.
+   Jeśli istnieją inne ustawienia, które chcesz zmienić, takie jak dokument PDF, Wymagaj od użytkowników akceptacji na każdym urządzeniu, wygasają zgody, czas trwania zanim reacceptance lub zasady dostępu warunkowego, należy utworzyć nowe warunki użytkowania.
 
-    ![Edycja warunków użytkowania](./media/terms-of-use/edit-tou.png)
+   ![Edycja warunków użytkowania](./media/terms-of-use/edit-tou.png)
 
 1. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
 
-    Po zapisaniu zmian, użytkownicy nie będą musieli akceptować wprowadzone zmiany.
+   Po zapisaniu zmian, użytkownicy nie będą musieli akceptować wprowadzone zmiany.
 
 ## <a name="add-a-terms-of-use-language"></a>Dodawanie warunków użycia języka
+
 Poniższa procedura opisuje sposób dodawania warunków użycia języka.
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Wybierz warunki użytkowania, które chcesz edytować.
-
 1. W okienku szczegółów kliknij **języków** kartę.
 
-    ![Dodawanie warunków użytkowania](./media/terms-of-use/languages-tou.png)
+   ![Dodawanie warunków użytkowania](./media/terms-of-use/languages-tou.png)
 
 1. Kliknij przycisk **Dodaj język**.
-
 1. W słowach Dodaj użycie języka okienka przekazać zlokalizowane dokument PDF i wybierz język.
 
-    ![Dodawanie warunków użytkowania](./media/terms-of-use/language-add-tou.png)
+   ![Dodawanie warunków użytkowania](./media/terms-of-use/language-add-tou.png)
 
 1. Kliknij przycisk **Dodaj** można dodać języka.
 
@@ -263,9 +256,9 @@ Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 > |  | iOS | Android | Windows 10 | Inne |
 > | --- | --- | --- | --- | --- |
 > | **Aplikacja natywna** | Yes | Yes | Tak |  |
-> | **Microsoft Edge** | Tak | Yes | Yes |  |
+> | **Microsoft Edge** | Yes | Yes | Yes |  |
 > | **Program Internet Explorer** | Yes | Yes | Yes |  |
-> | **Chrome (z rozszerzeniem)** | Yes | Yes | Yes |  |
+> | **Chrome (z rozszerzeniem)** | Yes | Yes | Tak |  |
 
 Warunki użytkowania na urządzenie ma następujące ograniczenia:
 
@@ -291,30 +284,31 @@ Jeśli użytkownik korzysta z przeglądarki, która nie jest obsługiwana, popro
 ![Nieobsługiwana przeglądarka](./media/terms-of-use/per-device-browser-unsupported.png)
 
 ## <a name="delete-terms-of-use"></a>Usuwanie warunków użytkowania
-Stare warunki użytkowania można usunąć, korzystając z poniższej procedury.
+
+Możesz usunąć stare warunki użytkowania, korzystając z następującej procedury.
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Wybierz warunki użytkowania, które chcesz usunąć.
-
 1. Kliknij pozycję **Usuń**.
-
 1. W wyświetlonym komunikacie z pytaniem o kontynuowanie kliknij pozycję **Tak**.
 
-    ![Usuwanie warunków użytkowania](./media/terms-of-use/delete-tou.png)
+   ![Usuwanie warunków użytkowania](./media/terms-of-use/delete-tou.png)
 
-    Warunki użytkowania nie powinny już być widoczne.
+   Już nie powinny być widoczne warunki użytkowania.
 
 ## <a name="deleted-users-and-active-terms-of-use"></a>Usunięci użytkownicy i aktywne warunki użytkowania
-Domyślnie usunięty użytkownik jest w stanie usunięcia w usłudze Azure AD przez 30 dni i w tym okresie administrator może przywrócić go w razie potrzeby. Po 30 dniach użytkownik jest trwale usuwany. Ponadto przy użyciu portalu usługi Azure Active Directory administrator globalny może jawnie [trwale usunąć niedawno usuniętego użytkownika](../fundamentals/active-directory-users-restore.md) przed upłynięciem tego okresu. Gdy użytkownik zostanie trwale usunięty, nowe dane dotyczące tego użytkownika będą usuwane z aktywnych warunków użytkowania. Informacje inspekcji dotyczące usuniętych użytkowników pozostają w dzienniku inspekcji.
+
+Domyślnie usunięty użytkownik jest w stanie usunięcia w usłudze Azure AD przez 30 dni i w tym okresie administrator może przywrócić go w razie potrzeby. Po 30 dniach użytkownik jest trwale usuwany. Ponadto przy użyciu portalu usługi Azure Active Directory administrator globalny może jawnie [trwale usunąć niedawno usuniętego użytkownika](../fundamentals/active-directory-users-restore.md) przed upłynięciem tego okresu. Jeden użytkownik został trwale usunięty, kolejne dane dotyczące tego użytkownika zostaną usunięte z active warunki użytkowania. Informacje inspekcji dotyczące usuniętych użytkowników pozostają w dzienniku inspekcji.
 
 ## <a name="policy-changes"></a>Zmiany zasad
+
 Zasady dostępu warunkowego zaczynają obowiązywać natychmiast. W takim przypadku administrator będzie wyświetlane "smutne chmury" lub "Problemy z tokenem usługi Azure AD". Administrator musi się wylogować i zaloguj się ponownie, aby spełnić wymagania nowych zasad.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > W następujących przypadkach uprawnieni użytkownicy muszą się wylogować i zalogować ponownie, aby spełnić wymagania nowych zasad:
-> - dla warunków użytkowania włączono zasady dostępu warunkowego
-> - lub utworzono drugą wersję warunków użytkowania
+>
+> - Dla warunków użytkowania włączono zasady dostępu warunkowego
+> - Utworzono drugą wersję warunków użytkowania
 
 ## <a name="b2b-guests-preview"></a>Goście B2B (wersja zapoznawcza)
 
@@ -361,7 +355,7 @@ Odp.: Nie, jeśli administrator podda edycji szczegóły warunków użytkowania 
 Odp.: Obecnie nie można zaktualizować istniejący dokument z warunkami użytkowania. Aby zmienić dokument z warunkami użytkowania, należy utworzyć nowe warunki wystąpienia użycia.
 
 **Pyt.: Jeśli dokument z warunkami użytkowania PDF hiperłącza, czy użytkownicy końcowi będą mogli klikać?**<br />
-Odp.: Plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
+Odp.: Plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,** , który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
 
 **Pyt.: Warunki użytkowania, może obsługiwać wiele języków?**<br />
 Odp.: Tak. Aktualnie nie istnieją 108 różnych języków, administrator może skonfigurować dla pojedynczego warunki użytkowania. Administrator może przekazać wiele dokumentów PDF i oznaczać te dokumenty przy użyciu odpowiedniego języka (maksymalnie 108). Po zalogowaniu się użytkownicy końcowi możemy przyjrzeć się ich preferencji językowych przeglądarki i wyświetlić pasujących dokumentów. W przypadku braku dopasowania wyświetlamy dokument domyślny, który jest pierwszy dokument, który zostanie przekazany.
@@ -378,7 +372,7 @@ Odp.: Tak, tworząc wiele zasad dostępu warunkowego obejmujących grupy lub apl
 **Pyt.: Co się stanie, jeśli użytkownik odrzuci warunki użytkowania?**<br />
 Odp.: Użytkownik zostanie zablokowany dostęp do aplikacji. Użytkownik będzie musiał zalogować się ponownie i zaakceptuj warunki w celu uzyskania dostępu.
 
-**Pyt.: Czy jest możliwe unaccept warunki użytkowania, które wcześniej zostały zaakceptowane**<br />
+**Pyt.: Czy jest możliwe unaccept warunki użytkowania, który wcześniej został zaakceptowany**<br />
 Odp.: Możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-users-can-review-their-terms-of-use), ale obecnie nie istnieje sposób unaccept.
 
 **Pyt.: Co się stanie, jeśli również używam warunków i postanowień usługi Intune?**<br />

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 398b7a78c9bc13631e15c8725efb8cc0fba3f127
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62261e46dc4744597acd10c32f0a835f4a597d4d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806479"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243971"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozszerzona obsługa programu SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
 
@@ -56,9 +56,9 @@ Zbiorcze migracji, zaleca się [usługi Azure Site Recovery](/azure/site-recover
 
 Serwer SQL wymaga migawek spójności aplikacji usługi Azure Site Recovery w celu zagwarantowania odzyskiwania; i usługi Azure Site Recovery obsługuje migawek spójności aplikacji za pomocą minimalny interwał na 1 godzinę. Możliwe dla programu SQL Server za pomocą usługi Azure Site Recovery migracje cel punktu odzyskiwania minimalną jest 1 godzinę i czas RTO wynosi 2 godziny, a także czas odzyskiwania serwera SQL.
 
-### <a name="database-migration-service"></a>Database Migration Service
+### <a name="database-migration-service"></a>Usługa migracji bazy danych
 
-[Database Migration Service](/dms/dms-overview) jest opcja dla klientów, jeśli migrowanie ze środowiska lokalnego na maszynie Wirtualnej platformy Azure po uaktualnieniu programu SQL Server do programu SQL Server 2012 lub nowszym.
+[Database Migration Service](/azure/dms/dms-overview) jest opcja dla klientów, jeśli migrowanie ze środowiska lokalnego na maszynie Wirtualnej platformy Azure po uaktualnieniu programu SQL Server do programu SQL Server 2012 lub nowszym.
 
 ## <a name="disaster-recovery"></a>Odzyskiwanie po awarii
 

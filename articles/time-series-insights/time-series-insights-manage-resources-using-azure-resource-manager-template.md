@@ -4,19 +4,19 @@ description: W tym artykule opisano, jak zarządzać środowiskiem usługi Azure
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5e350e8a9093936f1e747afda7c3192b4d8368d
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471710"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237653"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów usługi Time Series Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -27,7 +27,7 @@ Usługa Time Series Insights obsługuje następujące zasoby:
    | Resource | Opis |
    | --- | --- |
    | Środowisko | Środowisko usługi Time Series Insights to logiczna grupa zdarzeń, które są odczytu z brokerów zdarzeń, przechowywane i udostępniane dla zapytania. Aby uzyskać więcej informacji, zobacz [Planowanie środowiska usługi Azure Time Series Insights](time-series-insights-environment-planning.md) |
-   | Źródło zdarzenia | Źródłem zdarzenia jest połączenie z brokera zdarzeń, z którego odczytuje, a pozyskuje zdarzenia do środowiska usługi Time Series Insights. Źródła zdarzeń obecnie obsługiwane są usługi IoT Hub i Centrum zdarzeń. |
+   | Źródło zdarzeń | Źródłem zdarzenia jest połączenie z brokera zdarzeń, z którego odczytuje, a pozyskuje zdarzenia do środowiska usługi Time Series Insights. Źródła zdarzeń obecnie obsługiwane są usługi IoT Hub i Centrum zdarzeń. |
    | Zestaw danych referencyjnych | Zestawy danych referencyjnych Podaj metadane dotyczące zdarzeń w środowisku. Metadane w zestawy danych referencyjnych zostaną dołączone do zdarzeń podczas transferu danych przychodzących. Zestawy danych referencyjnych są definiowane jako zasoby według ich właściwości klucza zdarzeń. Rzeczywiste metadanych, które stanowi odwołanie do zestawu danych zostanie przekazany lub zmodyfikowany za pośrednictwem płaszczyzny danych interfejsów API. |
    | Zasady dostępu | Zasady dostępu Udziel uprawnień do wysyłania zapytań dotyczących danych, manipulowania danymi referencyjnymi w środowisku oraz udostępnianie zapisanych zapytań i perspektyw powiązanych ze środowiskiem. Aby uzyskać więcej informacji, przeczytaj [zezwolić na dostęp do środowiska usługi Time Series Insights przy użyciu witryny Azure portal](time-series-insights-data-access.md) |
 

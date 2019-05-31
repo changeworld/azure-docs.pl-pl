@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c100bd6815e003d49efcdca65b16d7efa35ac34
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610909"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234250"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpieczenia usługi i technologie dostępne na platformie Azure
 
@@ -69,7 +69,7 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 | [Azure&nbsp;roli&nbsp;na podstawie&nbsp;kontroli dostępu](../active-directory/role-based-access-control-configure.md)|Funkcja kontroli dostępu umożliwia użytkownikom dostęp do zasobów, które są wymagane do dostępu na podstawie ich ról w organizacji.  |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|Repozytorium uwierzytelniania opartego na chmurze, która obsługuje wiele usług zarządzania tożsamościami w ramach platformy Azure i katalogu wielodostępna, oparta na chmurze.  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Usługa zarządzania tożsamościami, która umożliwia kontrolę nad jak klienci rejestracji, logowania i zarządzają swoimi profilami podczas korzystania z aplikacji opartych na platformie Azure.   |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)| Oparte na chmurze i zarządzana wersja Active Directory Domain Services. |
+| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md)| Oparte na chmurze i zarządzana wersja Active Directory Domain Services. |
 | [Usługa Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| Zapewnienie bezpieczeństwa, korzystającej z kilku różnych formy uwierzytelniania i weryfikacji przed zezwoleniem na dostęp do zabezpieczonych informacji. |
 
 ## <a name="backup-and-disaster-recovery"></a>Kopia zapasowa i odzyskiwanie po awarii

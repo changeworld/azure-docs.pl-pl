@@ -3,19 +3,19 @@ title: Translator Text API Detect Method
 titlesuffix: Azure Cognitive Services
 description: Metoda Translator tekstu interfejsu API wykrywania.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: ea8fe989dd0ef7026957153fb5c9836742d008dd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 275cf91eb3bf72a612882164c24e4773edcad0f2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797490"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389805"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
@@ -138,7 +138,7 @@ Przykład odpowiedź JSON to:
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
 
 <table width="100%">
-  <th width="20%">Kod stanu</th>
+  <th width="20%">Kod stanu:</th>
   <th>Opis</th>
   <tr>
     <td>200</td>

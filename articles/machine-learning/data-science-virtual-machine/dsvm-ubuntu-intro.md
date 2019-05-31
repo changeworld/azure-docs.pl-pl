@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d693af5ddd0b94734dfa065bef8a1f3a5de09ccc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597124"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236492"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
@@ -121,9 +121,9 @@ Aby uzyskać dostęp maszyny wirtualnej DSVM Ubuntu za pomocą trzech metod:
 1. X2Go graficzny sesji
 1. JupyterHub i JupyterLab dla notesów programu Jupyter
 
-Maszyna wirtualna do nauki o danych można także dołączyć do notesów usługi Azure do uruchamiania aplikacji Jupyter notebooks na maszynie Wirtualnej i obejścia ograniczeń w warstwie bezpłatnej usługi. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesów — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Maszyna wirtualna do nauki o danych można także dołączyć do notesów usługi Azure do uruchamiania aplikacji Jupyter notebooks na maszynie Wirtualnej i obejścia ograniczeń w warstwie bezpłatnej usługi. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesów — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
-### <a name="ssh"></a>SSH
+### <a name="ssh"></a>Protokół SSH
 
 Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](https://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
 

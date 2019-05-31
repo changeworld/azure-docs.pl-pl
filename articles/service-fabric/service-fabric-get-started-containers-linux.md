@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 9e8f209f1448119ed2e3dfd5d38d42699a4be01c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947921"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302278"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -141,9 +141,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Wypychanie obrazu do rejestru kontenerów
 Po sprawdzeniu, że aplikacja działa na platformie Docker, wypchnij obraz do rejestru w usłudze Azure Container Registry.
 
-Uruchom `docker login`, aby zalogować się do rejestru kontenera za pomocą Twoich [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
+Uruchom `docker login` zalogować się do rejestru kontenerów za pomocą usługi [poświadczeń rejestru](../container-registry/container-registry-authentication.md).
 
-Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Możesz również zalogować się za pomocą nazwy i hasła użytkownika rejestru.
+Poniższy przykład przekazuje identyfikator i hasło [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Na przykład nazwę główną usługi można było przypisać do rejestru dla scenariusza automatyzacji. Alternatywnie można logowania przy użyciu nazwy i hasła użytkownika rejestru.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -231,7 +231,12 @@ W wersji środowiska uruchomieniowego 6.3 izolacji maszyny Wirtualnej jest obsł
 
 
 ## <a name="configure-docker-healthcheck"></a>Konfigurowanie funkcji HEALTHCHECK platformy Docker 
-Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera. 
+
+Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. 
+
+Począwszy od najnowszej wersji odświeżanie v6.4, masz możliwość określenia, że oceny funkcji HEALTHCHECK platformy docker, powinny być raportowane jako błąd. Jeśli ta opcja jest włączona, **OK** raport o kondycji pojawi się, gdy *health_status* jest *dobrej kondycji* i **błąd** pojawi się, gdy *health_status* jest *złej kondycji*.
+
+Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera.
 
 ![HealthCheckHealthy][1]
 
@@ -246,12 +251,18 @@ Możesz skonfigurować zachowanie funkcji **HEALTHCHECK** dla każdego kontenera
     <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true"
+              RestartContainerOnUnhealthyDockerHealthStatus="false" 
+              TreatContainerUnhealthyStatusAsError="false" />
       </ContainerHostPolicies>
     </Policies>
 </ServiceManifestImport>
 ```
-Domyślnie wartość *IncludeDockerHealthStatusInSystemHealthReport* jest ustawiona na **true**, a wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **false**. Jeśli wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **true**, kontener wielokrotnie raportujący złą kondycję jest uruchamiany ponownie (potencjalnie w innych węzłach).
+Domyślnie *IncludeDockerHealthStatusInSystemHealthReport* ustawiono **true**, *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na  **FALSE**, i *TreatContainerUnhealthyStatusAsError* ustawiono **false**. 
+
+Jeśli wartość *RestartContainerOnUnhealthyDockerHealthStatus* jest ustawiona na **true**, kontener wielokrotnie raportujący złą kondycję jest uruchamiany ponownie (potencjalnie w innych węzłach).
+
+Jeśli *TreatContainerUnhealthyStatusAsError* ustawiono **true**, **błąd** raportów o kondycji pojawi się, gdy kontener *health_status*jest *złej kondycji*.
 
 Aby wyłączyć integrację funkcji **HEALTHCHECK** dla całego klastra usługi Service Fabric, należy ustawić wartość [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
 

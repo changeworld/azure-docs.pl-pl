@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485503"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234127"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Wielodostępne aplikacje za pomocą narzędzi elastycznych baz danych i zabezpieczenia na poziomie wiersza
 
@@ -228,7 +228,7 @@ Zabezpieczenia na poziomie wiersza jest zaimplementowana w języku Transact-SQL.
     - Predykat bloku zapobiega wierszy, które nie spełniają filtr miałyby INSERTed ani zaktualizowane.
     - Jeśli SESJA\_nie ustawiono KONTEKSTU, funkcja zwraca wartość NULL, a żadne wiersze nie są widoczne lub mógł zostać wstawiona.
 
-Aby włączyć zabezpieczenia na poziomie wiersza na wszystkich fragmentów, należy wykonać przy użyciu programu Visual Studio (SSDT), programu SSMS lub skrypt programu PowerShell dołączony w projekcie języka T-SQL. Czy używasz [zadania Elastic Database](sql-database-elastic-jobs-overview.md), można zautomatyzować wykonywanie tego języka T-SQL na wszystkich fragmentów.
+Aby włączyć zabezpieczenia na poziomie wiersza na wszystkich fragmentów, należy wykonać przy użyciu programu Visual Studio (SSDT), programu SSMS lub skrypt programu PowerShell dołączony w projekcie języka T-SQL. Czy używasz [zadania Elastic Database](elastic-jobs-overview.md), można zautomatyzować wykonywanie tego języka T-SQL na wszystkich fragmentów.
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.

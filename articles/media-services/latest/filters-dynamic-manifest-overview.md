@@ -11,32 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: ac440be4444ca0d62f7ffde2b8b65e41dcba6683
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 041a73cd2840e0b6a1840e15629d9c0e284e9890
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002437"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225521"
 ---
-# <a name="dynamic-manifests"></a>Manifesty dynamiczne
+# <a name="pre-filtering-manifests-with-dynamic-packager"></a>Wstępnie filtrowania manifesty za pomocą funkcji dynamicznego pakowania
 
-Usługa Media Services oferuje **manifestów dynamicznych** oparte na wstępnie zdefiniowane filtry. Po zdefiniowaniu filtry (zobacz [zdefiniować filtry](filters-concept.md)), klienci można korzystać z ich do przesyłania strumieniowego określonej wersji lub podrzędnych klipów wideo. Filtry mogą określić w adresie URL przesyłania strumieniowego. Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: Apple HTTP Live przesyłania strumieniowego (HLS), między innymi MPEG-DASH i Smooth Streaming. 
+Podczas dostarczania adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe zawartości do urządzeń, często konieczne publikowanie wielu wersji manifestu możliwości określonego urządzenia docelowego lub dostępnej przepustowości sieci. [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) pozwala określić filtry, które można odfiltrować określonych koderów-dekoderów, rozdzielczości, szybkości transmisji i dźwięk śledzić kombinacje na bieżąco usunięcie konieczności tworzenia wielu kopii. Po prostu, należy opublikować nowy adres URL przy użyciu określonych filtrów pod kątem urządzenia docelowego (z systemem iOS, Android, SmartTV lub przeglądarki) i możliwości sieciowych (scenariusze o dużej przepustowości, mobilnych lub o niskiej przepustowości). W tym przypadku klienci można manipulować, przesyłanie strumieniowe zawartości za pomocą ciągu zapytania (, określając dostępny [filtry zasobów lub filtry konta](filters-concept.md)) i korzystaj z filtrów do określonych sekcji strumienia strumienia.
 
-W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
+Niektóre scenariusze dostarczania wymagają, należy upewnić się, że klient nie może uzyskać dostępu do określonej ścieżki. Na przykład może nie chcesz opublikować manifestu, który zawiera HD ścieżki do warstwy określonych subskrybentów. Możesz też usunąć ścieżek określonych adaptacyjną szybkością transmisji bitów (ABR), aby ograniczyć koszty dostawy do określonego urządzenia, które nie będą korzystać z dodatkowych ścieżek. W takim przypadku można było skojarzyć listę filtrów wstępnie utworzonych za pomocą usługi [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md) przy tworzeniu. W tym przypadku klienci nie można manipulować, jak są przesyłane strumieniowo zawartość, jest on definiowany przez **lokalizatora przesyłania strumieniowego**.
 
-|Protocol|Przykład|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
- 
+Można połączyć filtrowania poprzez określenie [filtrów na lokalizatora przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator) + dodatkowe urządzenia określone filtry określające przez klienta w adresie URL. Może to być przydatne do ograniczania dodatkowych ścieżek, takich jak strumienie metadanych lub zdarzenia, audio, języki lub opisu ścieżki audio. 
+
+Możliwość określenia różnych filtrów na strumień, zapewnia zaawansowany **manifestów dynamicznych** manipulowania rozwiązania pod kątem wielu scenariuszy przypadków użycia dla urządzeń docelowych. W tym temacie opisano pojęcia związane z **manifestów dynamicznych** i zawiera przykładowe scenariusze, w których warto korzystać z tej funkcji.
+
 > [!NOTE]
-> Nie zmieniaj manifestów dynamicznych, elementu zawartości i domyślny manifest dla tego zasobu. Klienta można zażądać strumienia z lub bez filtrów. 
+> Nie zmieniaj manifestów dynamicznych, elementu zawartości i domyślny manifest dla tego zasobu. 
 > 
-
-W tym temacie opisano pojęcia związane z **manifestów dynamicznych** i zawiera przykładowe scenariusze, w których warto korzystać z tej funkcji.
 
 ## <a name="manifests-overview"></a>Omówienie manifestów
 
@@ -55,6 +51,16 @@ Na przykład REST, zobacz [przekazywanie, kodowanie i przesyłanie strumieniowe 
 Możesz użyć [strony pokaz usługi Azure Media Player](https://aka.ms/amp) monitorowanie szybkości transmisji bitów strumienia wideo. Na stronie wersji demonstracyjnej są wyświetlane informacje diagnostyczne w **diagnostyki** karty:
 
 ![Diagnostyka Azure Media Player][amp_diagnostics]
+ 
+### <a name="examples-urls-with-filters-in-query-string"></a>Przykłady: Adresy URL z filtrami w ciągu zapytania
+
+Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: HLS, MPEG-DASH i Smooth Streaming. W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
+
+|Protocol|Przykład|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="rendition-filtering"></a>Filtrowania wyświetlania
 
@@ -121,10 +127,6 @@ Aby połączyć filtry, musisz ustawić nazw filtrów do manifestu/odtwarzania a
 Można połączyć maksymalnie trzy filtry. 
 
 Aby uzyskać więcej informacji, zobacz [to](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blogu.
-
-## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
-
-Zobacz [filtry: skojarzyć z Lokalizatory przesyłania strumieniowego](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="considerations-and-limitations"></a>Istotne zagadnienia i ograniczenia
 

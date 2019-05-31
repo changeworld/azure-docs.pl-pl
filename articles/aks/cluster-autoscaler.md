@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: d5a287a8da884290e94e9ac1c864abe28e47d53d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508142"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234159"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — automatyczne skalowanie klastra, aby spełniać wymagania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Na bieżąco z zapotrzebowaniem na zasoby aplikacji w usłudze Azure Kubernetes 
 W tym artykule pokazano, jak włączyć i zarządzać nimi skalowanie klastra w klastrze AKS. Skalowanie klastra należy badać tylko w wersji zapoznawczej w klastrach usługi AKS z pulą jeden węzeł.
 
 > [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi, uczestnictwo. Są one udostępniane do zbierania opinii i błędy z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w wersji zapoznawczej objęte "starań" pomocy technicznej. Pomoc od zespołów pomocy technicznej usługi AKS jest dostępna w godzinach pracy i Pacyfik, część strefy czasowej (PST) tylko. Aby uzyskać więcej informacji zobacz następujące artykuły pomocy technicznej:
 >
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+> * [Zasady pomocy technicznej usługi AKS][aks-support-policies]
+> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -181,7 +182,8 @@ W tym artykule pokazano, jak automatycznie skalować liczbę węzłów AKS. Aby 
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[aks-github]: https://github.com/azure/aks/issues
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

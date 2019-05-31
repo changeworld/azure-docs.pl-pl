@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68973d3a88791bcfffc8183f5e3a16975fe15742
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2e6a5ecd704aabb4994337cb7b7df9e84677348d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540454"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235280"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
@@ -45,7 +45,7 @@ Spójrzmy na poszczególnych kroków w artykule. Możesz też przejść bezpośr
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizowanie rejestracji jako wielodostępnych
 
-Rejestracje interfejsu API i aplikacji sieci web w usłudze Azure AD są domyślnie pojedynczej dzierżawy. Aby włączyć rejestrację wielodostępne, wyszukując **wielu gośćmi** przełączyć się **właściwości** rejestrację aplikacji w okienku [witryny Azure portal] [ AZURE-portal] i ustawieniem dla niego **tak**.
+Rejestracje interfejsu API i aplikacji sieci web w usłudze Azure AD są domyślnie pojedynczej dzierżawy. Aby włączyć rejestrację wielodostępne, wyszukując **obsługiwane typy kont** przełączyć się **uwierzytelniania** okienko rejestrację aplikacji w [witrynyAzureportal] [ AZURE-portal] i ustawieniem dla niego **kont w dowolnym katalogu organizacji**.
 
 Przed aplikacji wielodostępnych, usługa Azure AD wymaga identyfikator URI Identyfikatora aplikacji aplikacji mogą być globalnie unikatowa. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji pojedynczej dzierżawy wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD.
 
@@ -115,7 +115,7 @@ To środowisko zgody dotyczy uprawnień żądany przez aplikację. Platforma to�
 
 Niektóre uprawnienia mogą wyrażono zgodę przez zwykłego użytkownika, a inne wymagają zgody administratora dzierżawy. 
 
-### <a name="admin-consent"></a>Zgoda administratora
+### <a name="admin-consent"></a>zgoda administratora
 
 Uprawnienia dotyczące tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli Twoja aplikacja żąda uprawnienia tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, jest wyświetlany komunikat o błędzie, informujący o tym, że użytkownik nie jest w stanie do wyrażenia zgody.
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 78e3897ec653326bcd88a538a6ea7d33938659b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761943"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299183"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -31,6 +31,9 @@ Aby móc korzystać z **funkcję dynamicznego tworzenia pakietów**, musisz mie�
 Dzięki temu wystarczy przechowywać i opłacać pliki w jednym formacie magazynu, a usługa Media Services utworzy oraz udostępni właściwą odpowiedź na podstawie żądań klienta. 
 
 W usłudze Media Services funkcję dynamicznego tworzenia pakietów jest używany, czy są przesyłania strumieniowego na żywo lub na żądanie. 
+
+> [!NOTE]
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="common-on-demand-workflow"></a>Typowy przepływ pracy na żądanie
 
@@ -92,10 +95,32 @@ Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawieraj�
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Kodery-dekodery audio obsługiwane przez funkcję dynamicznego tworzenia pakietów
 
-Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawierają audio zakodowane za pomocą [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 HE AAC), [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(Enhanced AC-3 lub E AC3), Dolby Atmos lub [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (Używanie usług DTS Express, DTS LBR, DTS HD, HD DTS bezstratne). Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane pod kątem obsługi standardów, takich jak MPEG-DASH protokół wspólne przesyłanie strumieniowe formatu (CSF) lub wspólnej Media aplikacji formatu (CMAF) pofragmentowany plik MP4, a następnie za pośrednictwem protokołu HTTP Live Streaming (HLS) przy użyciu CMAF.
+### <a name="mp4-files-support"></a>Obsługuje pliki w formacie MP4
 
-> [!NOTE]
-> Dynamiczne tworzenie pakietów nie obsługuje plików, które zawierają [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) audio (AC3) (jest to starszy koder-dekoder).
+Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawierają zakodowane za pomocą audio 
+
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, HE-AAC v2)
+* [Dolby cyfrowych oraz](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(rozszerzony AC-3 lub E AC3)
+* Dolby Atmos
+   
+   Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane pod kątem obsługi standardów, takich jak MPEG-DASH protokół wspólne przesyłanie strumieniowe formatu (CSF) lub wspólnej Media aplikacji formatu (CMAF) pofragmentowany plik MP4, a następnie za pośrednictwem protokołu HTTP Live Streaming (HLS) przy użyciu CMAF.
+
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)
+
+    Kodery-dekodery typy Wdrożeń obsługiwane przez formaty pakowania kreska-CSF, DASH CMAF, HLS M2TS i HLS CMAF są:  
+
+    * Używanie usług DTS Otocz cyfrowych (dtsc)
+    * DTS HD o wysokiej rozdzielczości i wzorzec DTS HD Audio (dtsh)
+    * Używanie usług DTS Express (dtse)
+    * DTS HD bezstratne (nie-rdzeniowe) (dtsl)
+
+### <a name="hls-support"></a>Obsługa protokołu HLS
+
+Dynamiczne tworzenie pakietów obsługuje HLS (w wersji 4 lub nowszej) dla zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków.
+
+### <a name="not-supported"></a>Nieobsługiwane
+
+Dynamiczne tworzenie pakietów nie obsługuje plików, które zawierają [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) audio (AC3) (jest to starszy koder-dekoder).
 
 ## <a name="dynamic-encryption"></a>Szyfrowanie dynamiczne
 
@@ -193,10 +218,7 @@ Oto przykład Smooth Streaming manifestu:
 
 ## <a name="dynamic-manifest"></a>Dynamiczne manifestu
 
-Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. Aby uzyskać więcej informacji, zobacz [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
-
-> [!NOTE]
-> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
+Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. Aby uzyskać więcej informacji, zobacz [wstępnie filtrowanie manifesty za pomocą funkcji dynamicznego pakowania](filters-dynamic-manifest-overview.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
 

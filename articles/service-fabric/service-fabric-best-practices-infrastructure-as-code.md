@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2dfe1493c6611fb69a417895aaa1028ad5881b9c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159930"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237433"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kod
 
@@ -95,6 +95,47 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
         microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
+```
+
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfiguracja automatycznego uaktualnienia systemu operacyjnego maszyny wirtualnej platformy Azure 
+Uaktualnianie maszyny wirtualnej jest operacją zainicjowanej przez użytkownika i zaleca się, że używasz [maszyn wirtualnych skalowania Ustaw automatyczne uaktualnienie systemu operacyjnego](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) dla usługi Azure Service Fabric clusters zarządzania poprawkami hosta; Patch Orchestration Application to alternatywne rozwiązanie, które jest przeznaczony dla w przypadku hostowania poza platformą Azure, mimo że POA mogą być używane na platformie Azure z koszty hostingu POA na platformie Azure jest typową przyczyną preferowanie automatycznego uaktualniania systemu operacyjnego maszyny wirtualnej za pośrednictwem POA. Właściwości szablonu obliczeniowych maszyn wirtualnych skalowania Ustaw usługi Resource Manager, aby umożliwić uaktualnienie systemu operacyjnego automatycznie są następujące:
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+Korzystając z automatycznych uaktualnień systemu operacyjnego za pomocą usługi Service Fabric, nowy obraz systemu operacyjnego jest udostępniona jednej domeny aktualizacji jednocześnie, aby zapewnić wysoką dostępność usługi działające w usłudze Service Fabric. Korzystanie z automatycznego uaktualniania systemu operacyjnego w usłudze Service Fabric klaster musi być skonfigurowana pod kątem użycia warstwy trwałości Silver lub nowszej.
+
+Upewnij się, że następujący klucz rejestru jest ustawiona na wartość FAŁSZ aby zapobiec inicjowaniu nieskoordynowane aktualizacje w maszynach hostów systemu windows: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+
+Poniżej przedstawiono właściwości szablonu obliczeniowych maszyn wirtualnych skalowania Ustaw usługi Resource Manager, aby ustawić klucz rejestru Windows Update na wartość false:
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Konfiguracja klastra uaktualnienia sieci szkieletowej usługi platformy Azure
+Właściwości szablonu usługi Resource Manager umożliwia automatyczne uaktualnianie klastra usługi Service Fabric jest następująca:
+```json
+"upgradeMode": "Automatic",
+```
+Aby ręcznie uaktualnić klaster, Pobierz dystrybucji pliku cab/deb do maszyny wirtualnej klastra, a następnie wywołaj następujące polecenie programu PowerShell:
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

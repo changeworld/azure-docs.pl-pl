@@ -1,19 +1,19 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami — Azure Database for PostgreSQL
+title: Advanced Threat Protection — Azure Database for PostgreSQL — jednego serwera
 description: Ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421339"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067466"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Zaawansowana ochrona przed zagrożeniami dla bazy danych Azure database for PostgreSQL
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Zaawansowana ochrona przed zagrożeniami dla usługi Azure Database for PostgreSQL — pojedynczy serwer
 
 Usługa Advanced Threat Protection dla usługi Azure Database for PostgreSQL wykrywa nietypowe działania wskazujące na nieprawidłowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub wykorzystania ich.
 
@@ -28,7 +28,7 @@ Zaawansowana ochrona przed zagrożeniami jest częścią oferty zaawansowane zab
 
 ## <a name="set-up-threat-detection"></a>Konfigurowanie wykrywania zagrożeń
 1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com).
-2. Przejdź do strony konfiguracji usługi Azure Database dla serwera PostgreSQL, który chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)**.
+2. Przejdź do strony konfiguracji usługi Azure Database dla serwera PostgreSQL, który chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)** .
 3. Na **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)** strony konfiguracji:
 
    - Włącz zaawansowaną ochronę przed zagrożeniami na serwerze.
@@ -46,7 +46,7 @@ Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań 
 
     Wyświetl aktywne zagrożenia:
 
-    ![Aktywne zagrożenia](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![aktywne zagrożenia](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kliknij określony alert, aby uzyskać dodatkowe informacje i akcje dla tego typu zagrożenia badanie i korygowanie przez przyszłymi zagrożeniami.
     

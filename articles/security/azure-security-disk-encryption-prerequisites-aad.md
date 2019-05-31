@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2cc5d953ec412c1c747989d58303beae05f2039c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 201998168b0709b1608ffad2565518e15d47e52c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66118062"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234305"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -73,7 +73,7 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 **Zasady grupy:**
  - Rozwiązanie Azure Disk Encryption dla maszyn wirtualnych IaaS Windows korzysta z zewnętrznego ochrony klucza funkcji BitLocker. Dla maszyn wirtualnych przyłączonych do domeny, nie Wypchnij żadnych zasad grupy, które wymuszają modułu TPM funkcje ochrony kluczy. Aby uzyskać informacje o zasadach grupy "Zezwalaj na funkcję BitLocker bez zgodnego modułu TPM", zobacz [dokumentacja zasad grupy funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup).
 
--  Zasad funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny za pomocą zasad grupy niestandardowe, należy uwzględnić następujące ustawienia: [Konfigurowanie magazynu użytkownika informacji o odzyskiwaniu -> Zezwalaj na 256-bitowego klucza odzyskiwania funkcji bitlocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli ustawienia zasad grupy niestandardowe do używania funkcji BitLocker są niezgodne. Na komputerach, które nie mają poprawne ustawienie, należy zastosować nowe zasady, wymusić nowe zasady w celu aktualizacji (/ Force gpupdate.exe) i ponowne uruchomienie, może być wymagane.  
+-  Zasad funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny za pomocą zasad grupy niestandardowe, należy uwzględnić następujące ustawienia: [Konfigurowanie magazynu użytkownika informacji o odzyskiwaniu -> Zezwalaj na 256-bitowego klucza odzyskiwania funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli ustawienia zasad grupy niestandardowe do używania funkcji BitLocker są niezgodne. Na komputerach, które nie mają poprawne ustawienie, należy zastosować nowe zasady, wymusić nowe zasady w celu aktualizacji (/ Force gpupdate.exe) i ponowne uruchomienie, może być wymagane.  
 
 
 ## <a name="bkmk_PSH"></a> Program Azure PowerShell
@@ -246,7 +246,7 @@ Skorzystaj z procedury [w obsłudze portalu do tworzenia aplikacji i usługi jed
 1. [Sprawdź wymagane uprawnienia](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
 2. [Tworzenie aplikacji usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - Można użyć dowolnej nazwy i chcesz przy tworzeniu aplikacji adres URL logowania.
-3. [Pobierz identyfikator aplikacji i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key). 
+3. [Pobierz identyfikator aplikacji i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
      - Klucz uwierzytelniania jest klucz tajny klienta i służy jako AadClientSecret AzVMDiskEncryptionExtension zestawu. 
         - Klucz uwierzytelniania jest używany przez aplikację jako poświadczeń do logowania do usługi Azure AD. W witrynie Azure portal ten klucz tajny jest nazywany kluczy, ale nie zawiera żadnych relacji do magazynów kluczy. Zabezpiecz ten wpis tajny odpowiednio. 
      - Identyfikator aplikacji posłuży później jako AadClientId dla zestawu AzVMDiskEncryptionExtension i ServicePrincipalName dla AzKeyVaultAccessPolicy zestawu. 

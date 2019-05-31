@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713001"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244392"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
 
-## <a name="blog-post"></a>Wpis na blogu
+## <a name="blog-post"></a>Wpis w blogu
 Naszym blogu zespołu laboratoria DevTest został wycofany z 20 marca 2019 r. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Gdzie mogę śledzić aktualizacje funkcji od teraz?
@@ -280,7 +280,7 @@ Aby uzyskać szczegółowe informacje, zobacz [porównanie niestandardowych obra
 
 Aby zautomatyzować przekazywanie plików wirtualnego dysku twardego do tworzenia niestandardowych obrazów, masz dwie opcje:
 
-- Użyj [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) do kopiowania lub przekazywania plików VHD do konta magazynu, która jest skojarzona z laboratorium.
+- Użyj [AzCopy](../storage/common/storage-use-azcopy-v10.md) do kopiowania lub przekazywania plików VHD do konta magazynu, która jest skojarzona z laboratorium.
 - Użyj [Eksplorator usługi Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Eksplorator usługi Storage jest aplikacją autonomiczną, z systemem Windows, OS X i Linux.
 
 Aby znaleźć docelowe konto magazynu, która jest skojarzona z laboratorium:

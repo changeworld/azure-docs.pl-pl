@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: a70a887ccb19d9c1cbdb5f8ebf6aa8d4b25a0dfd
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65161073"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388990"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Zadanie usługi Azure DevOps w Eksploratorze danych platformy Azure
 
@@ -44,7 +44,7 @@ Utwórz następujące foldery przykładowe (*funkcje*, *zasady*, *tabel*) w repo
 > [!TIP]
 > Podczas tworzenia własnego przepływu pracy, firma Microsoft zaleca, dzięki czemu idempotentne Twojego kodu. Na przykład użyć [tabeli scalania .create](/azure/kusto/management/tables#create-merge-tables) zamiast [tabeli .create](/azure/kusto/management/tables#create-table)i użyj [.create lub alter](/azure/kusto/management/functions#create-or-alter-function) zamiast funkcji [.create](/azure/kusto/management/functions#create-function) Funkcja.
 
-## <a name="create-a-release-pipeline"></a>Tworzenie potoku wydania
+## <a name="create-a-release-pipeline"></a>Tworzenie potoku tworzenia wersji
 
 1. Zaloguj się do Twojej [DevOps platformy Azure organizacji](https://dev.azure.com/).
 1. Wybierz **potoki** > **wersji** z menu po lewej stronie i wybierz przycisk **nowy potok**.
@@ -67,7 +67,7 @@ Utwórz następujące foldery przykładowe (*funkcje*, *zasady*, *tabel*) w repo
 
     ![Utwórz zmienną](media/devops/create-variable.png)
 
-    Można znaleźć usługi Endpoint_URL na stronie Przegląd usługi **klastra Eksploratora danych usługi Azure** w witrynie Azure portal zawiera identyfikator URI klastra Eksploratora danych usługi Azure. Konstruowania identyfikatorów URI w następującym formacie `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Na przykład: https://kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
+    Można znaleźć usługi Endpoint_URL na stronie Przegląd usługi **klastra Eksploratora danych usługi Azure** w witrynie Azure portal zawiera identyfikator URI klastra Eksploratora danych usługi Azure. Konstruowania identyfikatorów URI w następującym formacie `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Na przykład https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
 
     ![Usługa Azure identyfikator URI klastra Eksplorator danych](media/devops/adx-cluster-uri.png)
 
@@ -85,7 +85,7 @@ Utwórz następujące foldery przykładowe (*funkcje*, *zasady*, *tabel*) w repo
 
 1. Kliknij pozycję **polecenia Kusto** po lewej i aktualizacji zadań z poniższymi informacjami:
     * **Nazwa wyświetlana**: Nazwa zadania
-    * **Ścieżka pliku**: W **tabel** zadań, określić */Tables/*.csl, ponieważ pliki tworzenia tabeli znajdują się w *tabeli* folderu.
+    * **Ścieżka pliku**: W **tabel** zadań, określić */Tables/* .csl, ponieważ pliki tworzenia tabeli znajdują się w *tabeli* folderu.
     * **Adres URL punktu końcowego**: wprowadź `EndPoint URL`zmiennej utworzonej w poprzednim kroku.
     * Wybierz **punktu końcowego usługi** i wybierz **+ nowy**.
 

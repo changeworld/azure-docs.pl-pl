@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 244b2d1764f30f790c3e51e23cd2fa0af6375960
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1df35c82ffb8b98f8b7bf86c21694b62b3804e4
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480255"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298299"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
 
 >[!IMPORTANT]
-> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/15/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integracja dzienników platformy Azure należy używać tylko, jeśli [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) łącznik nie jest dostępna z dostawcą zdarzeń naruszenia zabezpieczeń i Event Management (SIEM).
 

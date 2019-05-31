@@ -1,20 +1,20 @@
 ---
-title: Konfiguruj parametry usługi w usłudze Azure Database for PostgreSQL
-description: W tym artykule opisano jak skonfigurować parametry usługi w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
+title: Konfiguruj parametry usługi w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano jak skonfigurować parametry usługi w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c88518749129abed1cf43a70b9165035626a780f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9a9312d347f896047a5f8606b2518b63830c4d76
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421217"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067171"
 ---
-# <a name="customize-server-configuration-parameters-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera przy użyciu wiersza polecenia platformy Azure
+# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera dla usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
 Można wyświetlać, Pokaż i zaktualizuj parametry konfiguracji dla serwera Azure PostgreSQL za pomocą interfejsu wiersza polecenia (Azure CLI). Podzbiór aparatu konfiguracji jest narażony na poziomie serwera i może być modyfikowany. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

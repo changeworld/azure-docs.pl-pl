@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cd52fb82e5e4cce759be5dfdd8872f64802459
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003164"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235500"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Zasady punktu odniesienia: Ochrona użytkowników końcowych (wersja zapoznawcza)
 
@@ -75,11 +75,11 @@ Ta zasada linii bazowej zapewnia opcji, aby wykluczyć użytkowników. Przed wł
 
 Zasady **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
 
-Aby włączyć te zasady i chronić administratorów:
+Aby włączyć te zasady i chronić użytkowników:
 
 1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
-1. Na liście zasad wybierz **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)**.
+1. Na liście zasad wybierz **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
 1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.

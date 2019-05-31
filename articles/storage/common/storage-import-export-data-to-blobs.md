@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/29/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 82672136d6f9af50a3d91da2044f6e0ced4b44a6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409363"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356428"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -58,7 +58,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 6.  Aby przygotować się na dysku, uruchom następujące polecenie. **W zależności od rozmiaru danych to może potrwać kilka godzin, dni.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /sk:<Storage account key> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
     ```
     Plik dziennika jest tworzony w tym samym folderze, na którym uruchomiono narzędzie. Dwa inne pliki są również tworzone - *.xml* pliku (folder, w którym uruchamiasz narzędzie) i *manifest.xml dysku* pliku (gdzie znajdują się dane folder).
     
@@ -68,12 +68,12 @@ Wykonaj poniższe kroki, aby przygotować dyski.
     |---------|---------|
     |/j:     |Nazwa pliku dziennika z rozszerzeniem jrn. Generowany jest plik dziennika na dysku. Zalecamy użycie numer seryjny dysku jako nazwa pliku dziennika.         |
     |/id:     |Identyfikator sesji. Użyj numeru sesji unikatowy dla poszczególnych wystąpień tego polecenia.      |
-    |/sk:     |Klucz konta usługi Azure Storage.         |
     |/t:     |Literę dysku, który ma zostać wysłane. Na przykład dysk `D`.         |
     |/bk:     |Klucz funkcji BitLocker dla dysku. Jego hasło numeryczne z danych wyjściowych `manage-bde -protectors -get D:`      |
     |/srcdir:     |Następuje literę dysku, który ma zostać wysłane `:\`. Na przykład `D:\`.         |
     |/dstdir:     |Nazwa kontenera docelowego w usłudze Azure Storage.         |
     |/skipwrite:     |Opcja, która określa, że nie istnieje żadne nowe dane wymagane do skopiowania i istniejące dane na dysku jest przygotowany.          |
+    |/enablecontentmd5:     |Po włączeniu opcji gwarantuje, że MD5 jest obliczany w trakcie przekazywania blokowych obiektów blob na platformie Azure.          |
 7. Powtórz poprzedni krok dla każdego dysku, który ma zostać wysłane. Plik dziennika o podanej nazwie jest tworzony dla każdego uruchomienia wiersza polecenia.
     
     > [!IMPORTANT]

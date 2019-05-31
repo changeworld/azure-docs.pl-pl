@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978226"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356181"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
@@ -141,7 +141,7 @@ Po dodaniu trasy zdefiniowane przez użytkownika, należy zdefiniować trasę dl
 
 ![Przykład zdefiniowanych przez użytkownika trasa dla prefiksu adresu](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Aby uzyskać więcej informacji, zobacz [tworzenie puli usługi Azure Batch w sieci wirtualnej](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) artykułu.
+Aby uzyskać więcej informacji, zobacz [tworzenie puli usługi Azure Batch w sieci wirtualnej](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) artykułu.
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Tworzenie obliczeniowego usługi Machine Learning w sieci wirtualnej
 
@@ -221,7 +221,7 @@ Aby użyć maszyny wirtualnej lub w klastrze Azure HDInsight w sieci wirtualnej 
 
     * __Tag usługi źródłowej__: Wybierz __AzureMachineLearning__.
 
-    * __Źródłowe zakresy portów__: Wybierz __*__.
+    * __Źródłowe zakresy portów__: Wybierz __*__ .
 
     * __Miejsce docelowe__: Wybierz __wszelkie__.
 

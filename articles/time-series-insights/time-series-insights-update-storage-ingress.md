@@ -2,7 +2,7 @@
 title: Magazyn danych i transferu danych przychodzących w wersji zapoznawczej Azure czas serii szczegółowych informacji | Dokumentacja firmy Microsoft
 description: Omówienie przechowywania danych i transferu danych przychodzących w wersji zapoznawczej Azure czas serii szczegółowych informacji.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 8587fb0138309040232b6e0abc0f3eb17cc3093a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951111"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244074"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i transferu danych przychodzących w wersji zapoznawczej Azure czas serii szczegółowych informacji
 
@@ -110,7 +110,7 @@ Serie czasu Insights (wersja zapoznawcza) zawiera zapytań wydajna, które opier
 
 Należy wybrać odpowiedni identyfikator serii czasu, ponieważ jest właściwością niezmienne. Aby uzyskać więcej informacji, zobacz [wybierz identyfikatory serii czasu](./time-series-insights-update-how-to-id.md).
 
-## <a name="azure-storage"></a>Magazyn Azure
+## <a name="azure-storage"></a>Azure Storage
 
 ### <a name="your-storage-account"></a>Konta magazynu
 
@@ -175,7 +175,7 @@ Czas Series Insights w wersji zapoznawczej indeksuje dane za pomocą strategii o
 > * W trakcie okresu zapoznawczego należy się spodziewać dłuższy czas, przed udostępnieniem danych.
 > * Jeśli wystąpią wszystkie istotne opóźnienia, pamiętaj, że skontaktuj się z nami.
 
-### <a name="scale"></a>Skaluj
+### <a name="scale"></a>Skalowanie
 
 Serie czasu Insights (wersja zapoznawcza) obsługuje skalowania początkowy ruch przychodzący do 1 bajt Mega na sekundę (MB/s) na środowisko. Trwa rozszerzoną obsługę skalowania. Firma Microsoft planuje aktualizację naszej dokumentacji w celu odzwierciedlenia tych ulepszeń.
 

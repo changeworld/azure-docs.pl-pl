@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777393"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244931"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
-**Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
+**Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](activity-log-export.md). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
 
 ## <a name="administrative"></a>Administracyjne
 Ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akcji operacje wykonywane przy użyciu usługi Resource Manager. Typy zdarzeń, które powinny zostać wyświetlone tej kategorii należą "Tworzenie maszyny wirtualnej" i "Usuń sieciową grupę zabezpieczeń" każdej akcji podjętej przez użytkownika lub aplikacji przy użyciu usługi Resource Manager ma formę operacji na określonego typu zasobu. W przypadku typu operacji zapisu, usuń lub akcję, rekordy początkowego i powodzenie lub niepowodzenie tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna także wszelkie zmiany do kontroli dostępu opartej na rolach w ramach subskrypcji.
@@ -113,7 +113,7 @@ Ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akc
 | Nazwa elementu | Opis |
 | --- | --- |
 | Autoryzacja |Obiekt blob RBAC właściwości zdarzenia. Zazwyczaj zawiera właściwości "action", "roli" i "scope". |
-| element wywołujący |Adres e-mail użytkownika, który wykonał operację, oświadczenia nazwy UPN lub nazwy SPN oświadczenia na podstawie dostępności. |
+| Obiekt wywołujący |Adres e-mail użytkownika, który wykonał operację, oświadczenia nazwy UPN lub nazwy SPN oświadczenia na podstawie dostępności. |
 | kanały |Jeden z następujących wartości: "Admin", "Operacja" |
 | oświadczenia |Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
@@ -216,7 +216,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, kt
         "localizedValue": "Resource Health"
     },
     "eventTimestamp": "2018-09-04T15:33:43.65Z",
-    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
     "level": "Critical",
     "operationId": "",
     "operationName": {
@@ -232,7 +232,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, kt
         "value": "Microsoft.Compute/virtualMachines",
         "localizedValue": "Microsoft.Compute/virtualMachines"
     },
-    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
     "status": {
         "value": "Active",
         "localizedValue": "Active"
@@ -242,7 +242,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, kt
         "localizedValue": ""
     },
     "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
-    "subscriptionId": "<subscription Id>",
+    "subscriptionId": "<subscription ID>",
     "properties": {
         "stage": "Active",
         "title": "Virtual Machine health status changed to unavailable",
@@ -352,7 +352,7 @@ Ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest 
 ### <a name="property-descriptions"></a>Opisy właściwości
 | Nazwa elementu | Opis |
 | --- | --- |
-| element wywołujący | Zawsze Microsoft.Insights/alertRules |
+| Obiekt wywołujący | Zawsze Microsoft.Insights/alertRules |
 | kanały | Zawsze "Admin, operacji" |
 | oświadczenia | Obiekt blob JSON z typem nazwy SPN (główna nazwa usługi) lub zasobu, aparat alertów. |
 | correlationId | Identyfikator GUID w formacie ciągu. |
@@ -462,7 +462,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat s
 ### <a name="property-descriptions"></a>Opisy właściwości
 | Nazwa elementu | Opis |
 | --- | --- |
-| element wywołujący | Always Microsoft.Insights/autoscaleSettings |
+| Obiekt wywołujący | Always Microsoft.Insights/autoscaleSettings |
 | kanały | Zawsze "Admin, operacji" |
 | oświadczenia | Obiekt blob JSON z typem nazwy SPN (główna nazwa usługi) lub zasobu, aparat skalowania automatycznego. |
 | correlationId | Identyfikator GUID w formacie ciągu. |
@@ -744,7 +744,7 @@ Ta kategoria zawiera rekordy wszystkich efekt działania operacji wykonywanych p
 | Nazwa elementu | Opis |
 | --- | --- |
 | Autoryzacja | Tablica RBAC właściwości zdarzenia. Dla nowych zasobów jest to akcja i zakres żądania, która wyzwoliła oceny. Dla istniejących zasobów akcja jest "Microsoft.Resources/checkPolicyCompliance/read". |
-| element wywołujący | Dla nowych zasobów, tożsamość, która zainicjowała wdrożenia. Dla istniejących zasobów, identyfikator GUID RP szczegółowych informacji programu Microsoft Azure zasad. |
+| Obiekt wywołujący | Dla nowych zasobów, tożsamość, która zainicjowała wdrożenia. Dla istniejących zasobów, identyfikator GUID RP szczegółowych informacji programu Microsoft Azure zasad. |
 | kanały | Zdarzenia dotyczące zasad można użyć tylko kanału "Działania". |
 | oświadczenia | Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
 | correlationId | Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
@@ -798,6 +798,6 @@ Podczas przesyłania strumieniowego dziennika aktywności platformy Azure na kon
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dowiedz się więcej o dzienniku aktywności (dawniej Audit Logs)](../../azure-monitor/platform/activity-logs-overview.md)
-* [Stream dziennika aktywności platformy Azure do usługi Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [Dowiedz się więcej o dzienniku aktywności](activity-logs-overview.md)
+* [Eksportuj Dziennik aktywności do usługi Azure Storage lub usługi Event Hubs](activity-log-export.md)
 

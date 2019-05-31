@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227927"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305676"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -34,7 +34,7 @@ Usługa Azure AD umożliwia logowanie jednokrotne do urządzeń, aplikacji i us�
 
 Lokalizacja jest etykietę dla lokalizacji sieciowej albo reprezentuje lokalizację o nazwie lub uwierzytelnianie wieloskładnikowe zaufanych adresów IP.
 
-## <a name="named-locations"></a>Lokalizacje nazwane
+## <a name="named-locations"></a>Nazwane lokalizacje
 
 Nazwane lokalizacje umożliwia tworzenie logiczne grupowanie zakresów adresów IP lub innych krajów i regionów.
 
@@ -56,7 +56,7 @@ Lokalizacja o nazwie zawiera następujące składniki:
 - **Kraje/regiony** — ta opcja umożliwia wybranie co najmniej jeden kraj lub region, aby zdefiniować nazwanych lokalizacji.
 - **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju lub regionu. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Użyj tego ustawienia podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach.
 
-Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Organizacje można skonfigurować maksymalnie 90 nazwane lokalizacje, każdy skonfigurowaną do 12000 zakresów adresów IP.
+Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Organizacje można skonfigurować maksymalnie 90 nazwane lokalizacje, każdy skonfigurowany z maksymalnie 1200 zakresów adresów IP.
 
 Zasadom dostępu warunkowego dla ruchu IPv4 i IPv6. Obecnie nazwane lokalizacje są dozwolone zakresy adresów IPv6, należy skonfigurować. To ograniczenie powoduje, że następujące sytuacje:
 
@@ -88,13 +88,13 @@ Jeśli oba kroki zakończy się niepowodzeniem, użytkownik uznaje się już zna
 
 Po skonfigurowaniu warunek lokalizacji, masz możliwość rozróżnienia:
 
-- Dowolna lokalizacja
+- Dowolne miejsce
 - Wszystkie zaufane lokalizacje
 - Wybrane lokalizacje
 
 ![Konfiguracja warunków lokalizacji](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Dowolna lokalizacja
+### <a name="any-location"></a>Dowolne miejsce
 
 Domyślnie wybranie **dowolnej lokalizacji** powoduje, że zasady mają być stosowane do wszystkich adresów IP, co oznacza każdy adres w Internecie. To ustawienie nie jest ograniczona do adresów IP, które zostały skonfigurowane jako lokalizację o nazwie. Po wybraniu **dowolnej lokalizacji**, nadal można wykluczyć określone lokalizacje z zasad. Na przykład można zastosować zasady do wszystkich lokalizacji, z wyjątkiem zaufane lokalizacje, aby ustawić zakres do wszystkich lokalizacji, z wyjątkiem sieci firmowej.
 

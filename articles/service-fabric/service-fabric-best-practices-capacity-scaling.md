@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: c72392e46805049703300dd6f60fc7bf08b9053b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9bddb6552b11dd506ee3e2c1c416c15da11048b7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235763"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258757"
 ---
 # <a name="capacity-planning-and-scaling"></a>Planowanie wydajności i skalowania
 
@@ -70,6 +70,9 @@ Właściwości węzła i ograniczeniami dotyczącymi umieszczania zadeklarowany 
 2. Uruchom `Get-ServiceFabricNode` aby upewnić się, że węzeł zmienił się na wyłączone. Jeśli nie, zaczekaj, aż węzeł jest wyłączony. Może to potrwać kilka godzin w każdym węźle. Nie Kontynuuj, dopóki nie przeszła węzeł na wyłączone.
 3. Zmniejsz liczbę maszyn wirtualnych o jeden w tego typu węzła. Obecnie najwyższy wystąpienia maszyny Wirtualnej zostaną usunięte.
 4. Powtórz kroki od 1 do 3, zgodnie z potrzebami, ale nigdy nie skalowania w zależności od liczby wystąpień w typach węzła podstawowego mniejszą niż gwarantuje warstwy niezawodności. Zobacz [Planowanie pojemności klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) listę zalecanych wystąpień.
+
+> [!NOTE]
+> Jest to obsługiwany scenariusz, kiedy przeprowadzić pionowy operacji skalowania: Czy można migrować Mój klaster usługi Service Fabric i aplikacji z dysków niezarządzanych do usługi Managed Disks bez przestojów aplikacji. Zestawy skalowania przez udostępnienie nowej maszyny wirtualnej z dyskami zarządzanymi i przeprowadzania uaktualnienia aplikacji z ograniczeniami dotyczącymi umieszczania przeznaczonych aprowizowana pojemność; klaster usługi Service Fabric można zaplanować obciążenie na wydajność węzła aprowizowany klaster, która jest wdrażana przez domenę uaktualnienia bez przestojów aplikacji. [Usługa Azure obciążenia równoważenia podstawowej jednostki SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) punktów końcowych puli wewnętrznej bazy danych może być maszyny wirtualne w pojedynczym zestawie dostępności lub zestawie skalowania maszyn wirtualnych. Oznacza to, że nie można użyć podstawowej jednostki SKU modułu równoważenia obciążenia, jeśli przenosisz aplikację usługi Service Fabric systemów między zestawami skalowania, bez powodowania tymczasowe inaccessibility usługi Service Fabric klaster punkt końcowy zarządzania, nawet jeśli klastra i jego aplikacji nadal działają; często użytkownika zainicjować obsługę administracyjną modułu równoważenia obciążenia standardowej jednostki SKU, podczas wykonywania wirtualny adres IP (VIP) zamiany dnia podstawowa jednostka SKU modułu równoważenia obciążenia i standardowe jednostki SKU LB zasobów, aby uniknąć przyszłych około 30 sekund są więc inaccessibility wymagane dla zamianą adresów VIP.
 
 ## <a name="horizontal-scaling"></a>skalowanie w poziomie,
 

@@ -7,16 +7,20 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 1edaf89c056918f640a905b99d01775273b2c133
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e31efb9a52ff004e6e35ddfc251732c014eedae9
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941925"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257424"
 ---
 # <a name="register-a-saas-application"></a>Rejestrowanie aplikacji SaaS
 
 W tym artykule wyjaśniono, jak zarejestrować aplikację SaaS, korzystanie z programu Microsoft [witryny Azure portal](https://portal.azure.com/).  Po pomyślnej rejestracji zostanie wyświetlony token zabezpieczeń usługi Azure Active Directory (Azure AD), który umożliwia dostęp do interfejsów API realizacji SaaS.  Aby uzyskać więcej informacji na temat usługi Azure AD, zobacz [co to jest uwierzytelnianie?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
+
+> [!IMPORTANT] 
+> SaaS oferują funkcje zostały przeniesione do [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Wszyscy wydawcy nowe należy użyć Centrum partnerskiego, do tworzenia nowych ofert SaaS i zarządzania istniejące oferty.  Bieżący wydawców z oferty SaaS są batchwise migrowane z portalu Cloud Partner do Centrum partnerskiego.  Cloud Partner Portal spowoduje wyświetlenie komunikatów o stanie, aby wskazać, kiedy zostały poddane migracji określonych istniejące oferty.
+> Aby uzyskać więcej informacji, zobacz [Tworzenie nowej oferty SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 
 ## <a name="service-to-service-authentication-flow"></a>Przepływ uwierzytelniania do usługi
@@ -45,7 +49,7 @@ Każda aplikacja, która ma korzystać z funkcji usługi Azure AD, musi najpierw
         - Wybierz **aplikacji sieci Web / interfejs API** dla [aplikacje klienckie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) i [aplikacji interfejsu API i zasobów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) są instalowane na zabezpieczonym serwerze. To ustawienie jest używane do uwierzytelniania OAuth poufne [sieci web klientów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) i publicznych [klientów z systemem agenta użytkownika](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Ta sama aplikacja może ujawniać zarówno klienta, jak i interfejs API lub zasób.
     -   **Adres URL logowania**: W przypadku aplikacji interfejsu API i aplikacji sieci Web Podaj podstawowy adres URL aplikacji. Na przykład **http://localhost:31544** może być adres URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy następnie użyje tego adresu URL do logowania do aplikacji klienta sieci web.
-    -   **Identyfikator URI przekierowania**: W przypadku aplikacji natywnych Podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla twojej aplikacji, na przykład **http://MyFirstAADApp**.
+    -   **Identyfikator URI przekierowania**: W przypadku aplikacji natywnych Podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla twojej aplikacji, na przykład **http://MyFirstAADApp** .
 
         ![Rejestracje aplikacji AD SaaS](./media/saas-offer-app-registration-v1-2.png)
 
@@ -72,7 +76,7 @@ Metoda HTTP
 
 *Adres URL żądania*
 
-**https://login.microsoftonline.com/*{Identyfikatordzierżawy}*/oauth2/token**
+**https://login.microsoftonline.com/ *{Identyfikatordzierżawy}* /oauth2/token**
 
 *Parametr identyfikatora URI*
 

@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467940"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254722"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Zmniejsz koszty usługi przy użyciu usługi Azure Advisor
 
@@ -44,6 +44,13 @@ Advisor również powiadomi wystąpień zarezerwowanych, do których masz które
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Usuń nieskojarzonego publiczne adresy IP w celu zaoszczędzenia pieniędzy
 
 Klasyfikator identyfikuje publiczne adresy IP, które nie są aktualnie skojarzone z zasobami platformy Azure, takich jak moduły równoważenia obciążenia lub maszyn wirtualnych. Publiczny adres IP na te adresy pochodzą z za symboliczną cenę. Jeśli użytkownik nie chce ich używać, usuwając je może spowodować obniżenie kosztów.
+
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Usuń potoki usługi Azure Data Factory, które kończą się niepowodzeniem
+
+Usługa Azure Advisor wykryje potoki usługi Azure Data Factory, które regularnie się nie powieść i zaleca, aby rozwiązać problemy, lub usunąć potoki się niepowodzeniem, jeśli są już potrzebne. Będzie rozliczenie dla tych potoków nawet wtedy, gdy mimo że nie używasz można natomiast kończą się niepowodzeniem. 
+
+## <a name="use-standard-snapshots-for-managed-disks"></a>Użyj standardowych migawek dla dysków zarządzanych
+Aby zapisać 60% kosztów, firma Microsoft zaleca przechowywania z migawki w magazynie Standard Storage, niezależnie od typu magazynu dysku nadrzędnego. Jest to opcja domyślna dla migawek dysków Managed Disks. Usługa Azure Advisor będzie identyfikować migawki, które są przechowywane magazynu w warstwie Premium i zaleca się migracja migawek z wersji Premium do magazynu w warstwie standardowa. [Dowiedz się więcej na temat cen dysków zarządzanych](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących kosztów w usłudze Azure Advisor
 

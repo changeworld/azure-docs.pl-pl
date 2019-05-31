@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 57eacca75d711c5125a2856a7b6219cd2ec5306b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956358"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242032"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu SSH do usługi Azure Kubernetes Service (AKS) węzłów klastra z powodu konserwacji lub rozwiązywania problemów
 
@@ -33,18 +33,25 @@ Domyślnie klucze SSH są uzyskany, lub wygenerowane, a następnie dodane do wę
 > [!NOTE]
 > Może klucze SSH obecnie można dodawać tylko do węzłów systemu Linux przy użyciu wiersza polecenia platformy Azure. Jeśli używasz węzłów systemu Windows Server, używanie kluczy SSH, podane podczas tworzenia klastra AKS, a następnie przejdź do kroku na [jak uzyskać adres węzła AKS](#get-the-aks-node-address). Ewentualnie [łączyć się z węzłami systemu Windows Server przy użyciu połączeń protokołu remote desktop protocol (RDP)][aks-windows-rdp].
 
+Kroki, aby uzyskać prywatny adres IP węzłów AKS jest inny, na podstawie typu klastra AKS, po uruchomieniu:
+
+* W przypadku większości klastrów usługi AKS, wykonaj kroki, aby [uzyskać adres IP w przypadku regularnego klastrów AKS](#add-ssh-keys-to-regular-aks-clusters).
+* Jeśli używasz funkcji w wersji zapoznawczej w usłudze AKS, używanego przez zestawy skalowania maszyn wirtualnych, takich jak wiele pule węzłów lub obsługa kontenerów systemu Windows Server, [postępuj zgodnie z instrukcjami dla klastrów AKS opartych na zestawie skali maszyny wirtualnej](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters).
+
+### <a name="add-ssh-keys-to-regular-aks-clusters"></a>Dodawanie kluczy SSH do regularnego klastrów usługi AKS
+
 Aby dodać klucz SSH do węzłów systemu Linux w usłudze AKS, wykonaj następujące czynności:
 
-1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Podaj własne podstawowej grupy zasobów i nazwę klastra AKS:
+1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Podaj własne podstawowej grupy zasobów i nazwę klastra AKS. Nazwa klastra jest przypisany do zmiennej o nazwie *CLUSTER_RESOURCE_GROUP*:
 
     ```azurecli-interactive
-    az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
     ```
 
 1. Listy maszyn wirtualnych za pomocą grupy zasobów klastra usługi AKS [az vm list] [ az-vm-list] polecenia. Te maszyny wirtualne są węzłów AKS:
 
     ```azurecli-interactive
-    az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
     ```
 
     Następujące przykładowe dane wyjściowe pokazuje węzłów AKS:
@@ -59,25 +66,61 @@ Aby dodać klucz SSH do węzłów systemu Linux w usłudze AKS, wykonaj następu
 
     ```azurecli-interactive
     az vm user update \
-      --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+      --resource-group $CLUSTER_RESOURCE_GROUP \
       --name aks-nodepool1-79590246-0 \
       --username azureuser \
       --ssh-key-value ~/.ssh/id_rsa.pub
+    ```
+
+### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>Dodawanie kluczy SSH do klastrów usługi AKS opartych na zestawie skali maszyny wirtualnej
+
+Aby dodać klucz SSH do węzła usługi AKS w systemie Linux, który jest częścią zestawu skalowania maszyn wirtualnych, wykonaj następujące czynności:
+
+1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Podaj własne podstawowej grupy zasobów i nazwę klastra AKS. Nazwa klastra jest przypisany do zmiennej o nazwie *CLUSTER_RESOURCE_GROUP*:
+
+    ```azurecli-interactive
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+    ```
+
+1. Następnie Pobierz zestawu dla klastra usługi AKS przy użyciu skalowania maszyn wirtualnych [az vmss list] [ az-vmss-list] polecenia. Nazwa zestawu skalowania maszyn wirtualnych jest przypisany do zmiennej o nazwie *SCALE_SET_NAME*:
+
+    ```azurecli-interactive
+    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+    ```
+
+1. Aby dodać kluczy SSH do węzłów w zestawie skalowania maszyn wirtualnych, użyj [az vmss rozszerzenia zestawu] [ az-vmss-extension-set] polecenia. Grupa zasobów klastra i nazwy zestawu skalowania maszyn wirtualnych są dostarczane przy użyciu poprzednich poleceń. Domyślnie, nazwa użytkownika dla węzłów AKS jest *azureuser*. W razie potrzeby zaktualizuj lokalizację własne SSH ogólnodostępnej lokalizacji kluczy, takich jak *~/.ssh/id_rsa.pub*:
+
+    ```azurecli-interactive
+    az vmss extension set  \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --vmss-name $SCALE_SET_NAME \
+        --name VMAccessForLinux \
+        --publisher Microsoft.OSTCExtensions \
+        --version 1.4 \
+        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+    ```
+
+1. Zastosuj klucz SSH do węzłów przy użyciu [az vmss update-instances] [ az-vmss-update-instances] polecenia:
+
+    ```azurecli-interactive
+    az vmss update-instances --instance-ids '*' \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --name $SCALE_SET_NAME
     ```
 
 ## <a name="get-the-aks-node-address"></a>Uzyskaj adres węzła usługi AKS
 
 Węzłów AKS nie są widoczne publicznie w Internecie. Aby SSH do węzłów AKS należy użyć prywatnego adresu IP. W następnym kroku utworzysz zasobnik pomocnika w klastra usługi AKS, która umożliwia SSH ten prywatny adres IP węzła. Kroki, aby uzyskać prywatny adres IP węzłów AKS jest inny, na podstawie typu klastra AKS, po uruchomieniu:
 
-* W przypadku większości klastrów usługi AKS, wykonaj kroki, aby [uzyskać adres IP w przypadku regularnego klastrów AKS](#regular-aks-clusters).
-* Jeśli używasz funkcji w wersji zapoznawczej w usłudze AKS, używanego przez zestawy skalowania maszyn wirtualnych, takich jak wiele pule węzłów lub obsługa kontenerów systemu Windows Server, [postępuj zgodnie z instrukcjami dla klastrów AKS opartych na zestawie skali maszyny wirtualnej](#virtual-machine-scale-set-based-aks-clusters).
+* W przypadku większości klastrów usługi AKS, wykonaj kroki, aby [uzyskać adres IP w przypadku regularnego klastrów AKS](#ssh-to-regular-aks-clusters).
+* Jeśli używasz funkcji w wersji zapoznawczej w usłudze AKS, używanego przez zestawy skalowania maszyn wirtualnych, takich jak wiele pule węzłów lub obsługa kontenerów systemu Windows Server, [postępuj zgodnie z instrukcjami dla klastrów AKS opartych na zestawie skali maszyny wirtualnej](#ssh-to-virtual-machine-scale-set-based-aks-clusters).
 
-### <a name="regular-aks-clusters"></a>Regularne klastrów usługi AKS
+### <a name="ssh-to-regular-aks-clusters"></a>Protokół SSH z regularnych klastrów usługi AKS
 
 Wyświetl prywatny adres IP w usłudze AKS klastra węzła przy użyciu [az vm-— adresy ip] [ az-vm-list-ip-addresses] polecenia. Podaj własny AKS klastra Nazwa grupy zasobów uzyskane w ramach poprzedniego [az-aks-show] [ az-aks-show] krok:
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
 Następujące przykładowe dane wyjściowe pokazuje prywatnych adresów IP węzłów AKS:
@@ -88,7 +131,7 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
-### <a name="virtual-machine-scale-set-based-aks-clusters"></a>Klastry AKS opartych na zestawie skali maszyny wirtualnej
+### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>Protokół SSH z klastrami AKS opartych na zestawie skali maszyny wirtualnej
 
 Wewnętrzny adres IP węzłów przy użyciu listy [kubectl get-polecenia][kubectl-get]:
 
@@ -199,3 +242,6 @@ Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, możes
 [aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
 [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
+[az-vmss-list]: /cli/azure/vmss#az-vmss-list
+[az-vmss-extension-set]: /cli/azure/vmss/extension#az-vmss-extension-set
+[az-vmss-update-instances]: /cli/azure/vmss#az-vmss-update-instances

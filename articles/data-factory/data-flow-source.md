@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: dc0a6e008c7a1f4fb414f6d8adad3a94abc7a6b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792333"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234544"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcenie źródła dla mapowania przepływu danych 
 
@@ -92,7 +92,7 @@ Wybierz ustawienia do zarządzania plikami w źródle.
 
 Jeśli źródłem jest baza danych SQL lub SQL Data Warehouse, masz dodatkowe opcje zarządzania pliku źródłowym.
 
-* **Zapytanie**: Wprowadź kwerendę SQL dla źródła. To ustawienie przesłania dowolnej tabeli, który został wybrany w zestawie danych. Należy pamiętać, że **Order By** klauzule nie są obsługiwane w tym miejscu. Ale ustawione pełną instrukcję SELECT FROM w tym miejscu.
+* **Zapytanie**: Wprowadź kwerendę SQL dla źródła. To ustawienie przesłania wszelkie tabelę, która została wybrana w zestawie danych. Należy pamiętać, że **Order By** klauzule nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Umożliwia także funkcje tabel zdefiniowanych przez użytkownika. **Wybierz * z udfGetData()** jest UDF w języku SQL, która zwraca tabelę. To zapytanie powoduje wygenerowanie tabeli źródłowej, używanego w przepływie danych.
 * **Wielkość partii**: Wprowadź rozmiar partii, Podziel duże ilości danych do odczytu.
 
 > [!NOTE]

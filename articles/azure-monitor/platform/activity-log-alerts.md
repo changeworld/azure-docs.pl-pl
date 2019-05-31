@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 3459ef4caa99a2147144354165bef7d2852e87cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d0819f71405b1bf1d4bef57a8b93d57bc879087
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777818"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244968"
 ---
 # <a name="alerts-on-activity-log"></a>Alerty dotyczące dzienników aktywności 
 
-## <a name="overview"></a>Omówienie
-Alerty dzienników aktywności są alerty, które aktywują po wystąpieniu nowego zdarzenia dziennika aktywności, który spełnia warunki określone w alercie. Są one zasobów platformy Azure, dzięki czemu mogą być tworzone przy użyciu szablonu usługi Azure Resource Manager. One również mogą być tworzone, zaktualizował lub usunął w witrynie Azure portal. Ten artykuł wprowadza pojęcia dotyczące alertów dziennika aktywności. Go następnie pokazano, jak skonfigurować alertów dla zdarzenia dziennika aktywności przy użyciu witryny Azure portal. Aby uzyskać więcej informacji na temat użycia, zobacz [tworzenie i zarządzanie nimi alertów dziennika aktywności](../../azure-monitor/platform/alerts-activity-log.md).
+## <a name="overview"></a>Przegląd
+Alerty dzienników aktywności są alerty, które aktywują po wystąpieniu nowego zdarzenia dziennika aktywności, który spełnia warunki określone w alercie. Są one zasobów platformy Azure, dzięki czemu mogą być tworzone przy użyciu szablonu usługi Azure Resource Manager. One również mogą być tworzone, zaktualizował lub usunął w witrynie Azure portal. Ten artykuł wprowadza pojęcia dotyczące alertów dziennika aktywności. Go następnie pokazano, jak skonfigurować alertów dla zdarzenia dziennika aktywności przy użyciu witryny Azure portal. Aby uzyskać więcej informacji na temat użycia, zobacz [tworzenie i zarządzanie nimi alertów dziennika aktywności](alerts-activity-log.md).
 
 > [!NOTE]
-> Alerty **nie może** można utworzyć dla zdarzeń w kategorii alertu dziennika aktywności
+> Alerty **nie** można utworzyć dla zdarzeń w kategorii alertu dziennika aktywności.
 
 Zazwyczaj można Tworzenie alertów dziennika aktywności do odbierania powiadomień po:
 
 * Określone operacje są wykonywane na zasoby w subskrypcji platformy Azure, często są ograniczone do określonego zasobu, grupy lub zasobów. Na przykład można otrzymywać powiadomienia, gdy każda maszyna wirtualna w myProductionResourceGroup zostanie usunięty. Możesz też otrzymywać powiadomienia, gdy wszystkie nowe role są przypisane do użytkownika w ramach subskrypcji.
 * Występuje zdarzenie kondycji usługi. Zdarzenia usługi Service health zawierają powiadomienie o zdarzeń i zdarzeń konserwacji, które są stosowane do zasobów w ramach subskrypcji.
 
-Prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure Portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisku.
+Prosty sposób analogiczny opis warunki, na których można tworzyć reguły alertu w dzienniku aktywności jest aby eksplorować lub filtrowanie zdarzeń za pomocą [dziennika aktywności w witrynie Azure portal](activity-log-view.md#azure-portal). W usłudze Azure Monitor — dziennik aktywności jeden można filtrować lub znaleźć wymaganych zdarzeń i następnie utworzyć alert przy użyciu **Dodaj alert dziennika aktywności** przycisku.
 
 W obu przypadkach alertu dziennika aktywności monitoruje tylko w przypadku zdarzeń w ramach subskrypcji, w której jest tworzony alert.
 
-Można skonfigurować alertu dziennika aktywności, na podstawie dowolnej właściwości najwyższego poziomu w obiekcie JSON dla zdarzenia dziennika aktywności. Aby uzyskać więcej informacji, zobacz [Przegląd dziennika aktywności platformy Azure](./../../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log). Aby dowiedzieć się więcej na temat zdarzenia usługi service health, zobacz [odbieranie alertów dziennika aktywności dla powiadomień dotyczących usług](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+Można skonfigurować alertu dziennika aktywności, na podstawie dowolnej właściwości najwyższego poziomu w obiekcie JSON dla zdarzenia dziennika aktywności. Aby uzyskać więcej informacji, zobacz [Przegląd dziennika aktywności platformy Azure](./activity-logs-overview.md#categories-in-the-activity-log). Aby dowiedzieć się więcej na temat zdarzenia usługi service health, zobacz [odbieranie alertów dziennika aktywności dla powiadomień dotyczących usług](./alerts-activity-log-service-notifications.md). 
 
 Alerty dziennika aktywności skorzystać z kilku typowych opcji:
 
@@ -57,12 +57,13 @@ Po aktywowaniu alertu dziennika aktywności używa grupy akcji do wygenerowania 
 * Użyj istniejącej grupy akcji w alertu dziennika aktywności.
 * Utwórz nową grupę akcji.
 
-Aby dowiedzieć się więcej o grupach akcji, zobacz [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](../../azure-monitor/platform/action-groups.md).
+Aby dowiedzieć się więcej o grupach akcji, zobacz [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](action-groups.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Pobierz [Przegląd alertów](../../azure-monitor/platform/alerts-overview.md).
-- Dowiedz się więcej o [tworzenie i modyfikowanie alertów dziennika aktywności](../../azure-monitor/platform/alerts-activity-log.md).
+- Pobierz [Przegląd alertów](alerts-overview.md).
+- Dowiedz się więcej o [tworzenie i modyfikowanie alertów dziennika aktywności](alerts-activity-log.md).
 - Przegląd [schemat elementów webhook alertu dziennika aktywności](activity-log-alerts-webhook.md).
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md).
+- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](service-notifications.md).
+
 

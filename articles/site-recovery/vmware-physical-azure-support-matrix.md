@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 514aaaf7a274e60a17bbae62b3c62e7cf3668e7a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540587"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237302"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -46,14 +46,14 @@ Pamięć RAM | 16 GB
 Liczba dysków | 3 dyskami<br/><br/> Dyski obejmują dysku systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii.
 Wolne miejsce na dysku | 600 GB miejsca na wymaganą dla pamięci podręcznej serwera przetwarzania.
 Wolne miejsce na dysku | 600 GB miejsca na wymaganą do przechowywania dysków.
-System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 |
+System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 ze środowiskiem pulpitu |
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
 Interfejs PowerCLI | [Interfejs PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") nie jest wymagane dla serwera konfiguracji z wersjami z [: 9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Role systemu Windows Server | Nie włączaj: <br/> - Active Directory Domain Services <br/>- Internet Information Services <br/> - Hyper-V |
 Zasady grupy| Nie włączaj: <br/> -Zapobiegaj dostępowi do wiersza polecenia. <br/> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br/> — Logika zaufania dla plików załączników. <br/> -Włącz wykonywanie skryptu. <br/> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br/> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br/> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br/>
 Typ karty NIC | Innego VMXNET3 (jeśli jest wdrażane jako maszyny Wirtualnej VMware)
-Typ adresu IP | Statyczny
+Typ adresu IP | Static
 Porty | port 443 jest używany do organizowanie kanału sterowania)<br/>9443 umożliwiający transport danych
 
 ## <a name="replicated-machines"></a>Replikowane maszyny
@@ -148,14 +148,14 @@ Wiele kart sieciowych sieci gościa/serwera | Tak.
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Azure ExpressRoute | Tak
-Wewnętrzny moduł równoważenia obciążenia | Tak
+Usługa ExpressRoute systemu Azure | Tak
+ILB | Tak
 ELB | Tak
-Azure Traffic Manager | Tak
+Azure Traffic Manager | Yes
 Multi-NIC | Tak
 Zastrzeżony adres IP | Tak
-Protokół IPv4 | Tak
-Zachowaj źródłowy adres IP | Tak
+IPv4 | Tak
+Zachowaj źródłowy adres IP | Yes
 Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> | Tak
 Accelerated Networking | Nie
 
@@ -165,18 +165,18 @@ Accelerated Networking | Nie
 Dysk dynamiczny | Operacja dysku systemowego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
 Konfiguracja dysku platformy docker | Nie
 Host NFS | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
-Sieć SAN (iSCSI/FC) hosta | Tak
+Sieć SAN (iSCSI/FC) hosta | Yes
 Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Host wielościeżkowego (MPIO) | Tak, przetestowane za pomocą DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualnego hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera VMDK | Tak
+Gość/serwera VMDK | Yes
 Dysku udostępnionego klastra gościa/serwera | Nie
 Gość/serwera zaszyfrowanego dysku | Nie
 Gość/serwer systemu plików NFS | Nie
 Gość/serwer iSCSI | Nie
 Guest/server SMB 3.0 | Nie
 Gość/serwera RDM | Tak<br/><br/> N/d dla serwerów fizycznych
-Gość/serwera dysku > 1 TB | Tak<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
+Gość/serwera dysku > 1 TB | Yes<br/><br/>Do 4095 GB.<br/><br/> Dysk musi być większa niż 1024 MB.
 Gość/serwera na dysku o rozmiarze sektora fizycznego logicznych i 4 k 4K | Tak
 Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | Tak
 Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Tak
@@ -195,7 +195,7 @@ Rozruchu interfejsu EFI/UEFI gościa/serwera | Obsługiwane podczas migracji mas
 | Azure Data Box | Nie
 
 
-## <a name="azure-storage"></a>Magazyn Azure
+## <a name="azure-storage"></a>Azure Storage
 
 **Składnik** | **Obsługiwane**
 --- | ---
@@ -206,7 +206,7 @@ Chłodny Magazyn | Nie
 Magazynu gorącego| Nie
 Obiekty BLOB typu Block | Nie
 Szyfrowanie danych magazynowanych (szyfrowanie usługi Storage)| Tak
-Premium Storage | Tak
+Premium Storage | Yes
 Usługa import/export | Nie
 Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Tak
 Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorące i chłodne warstwy) | Nie

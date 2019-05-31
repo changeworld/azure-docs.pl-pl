@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415794"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235588"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Przed rejestracją połączonych użytkowników zarejestrowania metod uwierzytel
 
 ![Mój profil przedstawiający zarejestrowane informacje zabezpieczające dla użytkownika](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane na administratora i dokumentacji skoncentrowane na użytkownika, aby upewnić się, że rozumiesz, funkcje i wpływ tej funkcji. Bazowy szkolenia na temat dokumentacji użytkownika przygotowanie użytkowników do nowego środowiska i aby zapewnić pomyślne wdrożenie.
+Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane na administratora i dokumentacji skoncentrowane na użytkownika, aby upewnić się, że rozumiesz, funkcje i wpływ tej funkcji. Na podstawie szkolenia [dokumentacji użytkownika](../user-help/user-help-security-info-overview.md) przygotowanie użytkowników do nowego środowiska i aby zapewnić pomyślne wdrożenie.
 
 Usługa Azure AD w połączeniu informacji zabezpieczających rejestracja nie jest obecnie dostępny dla chmury krajowe, takie jak Azure US Government, Azure (Niemcy) lub Azure (Chiny) — firmą 21Vianet.
 
@@ -47,14 +47,14 @@ Połączone rejestracji obsługuje następujące metody uwierzytelniania i akcje
 |   | Zarejestruj subskrypcję | Change | Usuwanie |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Tak (maksymalnie 5) | Nie | Yes |
-| Inną aplikację uwierzytelniania | Tak (maksymalnie 5) | Nie | Yes |
-| Token sprzętowy | Nie | Nie | Yes |
-| Numer telefonu | Yes | Yes | Yes |
-| Alternatywny numer telefonu | Yes | Yes | Yes |
-| Telefon służbowy | Nie | Nie | Nie |
-| Email | Yes | Yes | Yes |
-| Pytania zabezpieczające | Yes | Nie | Yes |
-| Hasła aplikacji | Yes | Nie | Yes |
+| Inną aplikację uwierzytelniania | Tak (maksymalnie 5) | Nie | Tak |
+| Token sprzętowy | Nie | Nie | Tak |
+| Phone | Tak | Yes | Tak |
+| Alternatywny numer telefonu | Tak | Yes | Yes |
+| Telefon biurowy | Nie | Nie | Nie |
+| Email | Tak | Yes | Yes |
+| Pytania zabezpieczające | Tak | Nie | Tak |
+| Hasła aplikacji | Yes | Nie | Tak |
 
 > [!NOTE]
 > Hasła aplikacji są dostępne tylko dla użytkowników, którzy wymusić uwierzytelnianie wieloskładnikowe. Hasła aplikacji nie są dostępne dla użytkowników, którzy są włączone dla usługi Multi-Factor Authentication za pośrednictwem zasad dostępu warunkowego.
@@ -84,20 +84,20 @@ Dla obu trybów osób, które zostały wcześniej zarejestrowane metody, która 
 
 Poniżej przedstawiono kilka scenariuszy, w których użytkownicy mogą być monitowani do zarejestrowania lub Odśwież swoje informacje zabezpieczające:
 
-* Wymuszone za pomocą usługi Identity Protection rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
-* Wymuszane za pośrednictwem uwierzytelniania wieloskładnikowego dla użytkownika rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
-* Wymuszane za pośrednictwem dostępu warunkowego lub innymi zasadami rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o zarejestrować, korzystając z zasobem, który wymaga uwierzytelniania wieloskładnikowego. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
-* Wymuszone rejestracji samoobsługowego resetowania HASEŁ: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Zarejestruj są tylko metody z funkcji samoobsługowego resetowania HASEŁ.
-* Odświeżanie funkcji samoobsługowego resetowania HASEŁ, wymuszane: Użytkownicy muszą przejrzeć swoje informacje zabezpieczające z interwałem ustawione przez administratora. Użytkownicy są wyświetlane w jego informacje i można potwierdzić bieżące informacje o lub wprowadzić zmiany, jeśli to konieczne.
+- Wymuszone za pomocą usługi Identity Protection rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
+- Wymuszane za pośrednictwem uwierzytelniania wieloskładnikowego dla użytkownika rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
+- Wymuszane za pośrednictwem dostępu warunkowego lub innymi zasadami rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o zarejestrować, korzystając z zasobem, który wymaga uwierzytelniania wieloskładnikowego. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
+- Wymuszone rejestracji samoobsługowego resetowania HASEŁ: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Zarejestruj są tylko metody z funkcji samoobsługowego resetowania HASEŁ.
+- Odświeżanie funkcji samoobsługowego resetowania HASEŁ, wymuszane: Użytkownicy muszą przejrzeć swoje informacje zabezpieczające z interwałem ustawione przez administratora. Użytkownicy są wyświetlane w jego informacje i można potwierdzić bieżące informacje o lub wprowadzić zmiany, jeśli to konieczne.
 
 Podczas rejestracji są wymuszane, użytkownicy zostaną wyświetlone minimalna liczba metod wymaganych do zgodne z zasadami uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ, od najbardziej do najmniej bezpieczna.
 
 Na przykład:
 
-* Użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ. Zasady samoobsługowego resetowania HASEŁ wymagane dwie metody, aby zresetować i włączył kod aplikacji mobilnej, poczty e-mail i telefon.
-   * Ten użytkownik jest wymagany do zarejestrowania dwóch metod.
-      * Użytkownik jest domyślnie wyświetlany Authenticator i telefon.
-      * Użytkownika można zarejestrować e-mail zamiast aplikacji authenticator lub numeru telefonu.
+- Użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ. Zasady samoobsługowego resetowania HASEŁ wymagane dwie metody, aby zresetować i włączył kod aplikacji mobilnej, poczty e-mail i telefon.
+   - Ten użytkownik jest wymagany do zarejestrowania dwóch metod.
+      - Użytkownik jest domyślnie wyświetlany Authenticator i telefon.
+      - Użytkownika można zarejestrować e-mail zamiast aplikacji authenticator lub numeru telefonu.
 
 Ten schemat blokowy opisano metody, które są wyświetlane dla użytkownika, w przypadku przerwania do rejestracji podczas logowania:
 

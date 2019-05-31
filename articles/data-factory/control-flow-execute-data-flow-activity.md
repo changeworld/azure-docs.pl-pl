@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153487"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235857"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Wykonywanie działań przepływu danych w usłudze Azure Data Factory
 Działanie przepływu danych wykonaj służy do uruchamiania przepływu danych ADF uruchomienia debugowania (piaskownicy) potoku i uruchomień potoków wyzwolone.
@@ -49,10 +49,6 @@ Działanie przepływu danych wykonaj służy do uruchamiania przepływu danych A
 
 ![Wykonywania przepływu danych](media/data-flow/activity-data-flow.png "wykonywania przepływu danych")
 
-### <a name="run-on"></a>Uruchom na
-
-Wybierz środowisko obliczeniowe dla wykonania przepływu danych. Wartość domyślna to Azure automatyczne rozwiązanie domyślne środowisko Integration Runtime. Ten wybór spowoduje to wykonanie przepływu danych w środowisku platformy Spark w tym samym regionie, co fabryką danych. Typ obliczenia będą klastra zadań, co oznacza, że środowisko obliczeniowe może potrwać kilka minut do uruchamiania.
-
 ### <a name="debugging-pipelines-with-data-flows"></a>Debugowanie potoków przy użyciu przepływów danych
 
 ![Debugowanie przycisk](media/data-flow/debugbutton.png "przycisk debugowania")
@@ -65,9 +61,14 @@ Jest to wymagane pola, które definiuje, które środowisko IR do użycia dla wy
 
 Ustawieniem domyślnym dla wykonania przepływu danych jest 8 rdzeni obliczeniowych ogólnego z wartością TTL równą 60 minut.
 
+Wybierz środowisko obliczeniowe dla wykonania przepływu danych. Wartość domyślna to Azure automatyczne rozwiązanie domyślne środowisko Integration Runtime. Ten wybór spowoduje to wykonanie przepływu danych w środowisku platformy Spark w tym samym regionie, co fabryką danych. Typ obliczenia będą klastra zadań, co oznacza, że środowisko obliczeniowe może potrwać kilka minut do uruchamiania.
+
 Masz kontrolę nad środowiska wykonawczego platformy Spark dla działań przepływu danych. W [Azure IR](concepts-integration-runtime.md) są ustawienia, aby ustawić typ obliczenia (ogólnego przeznaczenia, zoptymalizowanych pod kątem pamięci i zoptymalizowane pod kątem obliczeń), liczba rdzeni procesu roboczego, a time-to-live do dopasowania aparatu wykonywania za pomocą obliczeń przepływ danych wymagania. Ponadto ustawienie czasu wygaśnięcia pozwala zachować klaster bez wyłączania zasilania, są natychmiast dostępne dla Liczba wykonań zadań.
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
+
+> [!NOTE]
+> Wybór produktu Integration Runtime w działaniu przepływu danych jest stosowana tylko do *wyzwalane wykonań* potoku. Debugowanie potok przy użyciu przepływu danych przy użyciu debugowania będą wykonywane w klastrze Spark 8-rdzeniowy domyślne.
 
 ### <a name="staging-area"></a>Obszar przejściowy
 

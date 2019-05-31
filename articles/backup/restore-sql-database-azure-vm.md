@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781805"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242371"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie bazy danych SQL Server na maszynach wirtualnych platformy Azure
 
@@ -41,6 +41,7 @@ Przed przywróceniem bazy danych, pamiętaj o następujących kwestiach:
     - Tylko nazwę określonego klienta można otworzyć połączenia.
 - Dla wszystkich systemowych baz danych (master, msdb modelu) należy zatrzymać usługi programu SQL Server Agent, zanim wyzwolenia przywracania.
 - Zamknij wszelkie aplikacje, które może próbować wykonać połączenie do dowolnego z tych baz danych.
+- W przypadku wielu wystąpieniach na serwerze, wszystkich wystąpień powinna być w górę i w przeciwnym razie uruchomienie serwera nie było wyświetlane na liście serwerów docelowych w celu przywrócenia bazy danych.
 
 ## <a name="restore-a-database"></a>Przywracanie bazy danych
 
@@ -152,6 +153,13 @@ Jeśli wybrano **pełna i różnicowa** jako typ przywracania, wykonaj następuj
 1. Śledź postęp przywracania w **powiadomienia** obszaru, lub śledzić go, wybierając **przywrócić zadania** menu bazy danych.
 
     ![Postęp zadania przywracania](./media/backup-azure-sql-database/restore-job-notification.png)
+
+### <a name="restore-databases-with-large-number-of-files"></a>Przywracanie baz danych z dużą liczbą plików
+
+Jeśli rozmiar ciągu łączna liczba plików w bazie danych jest większa niż [określonego limitu](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path), kopia zapasowa Azure przechowuje listę plików bazy danych w składniku pit różnych w taki sposób, że nie można ustawić ścieżki docelowej przywracania podczas przywracania Operacja. Zamiast tego pliki zostaną przywrócone do ścieżki domyślnej SQL.
+
+  ![Przywracanie bazy danych przy użyciu dużego pliku](./media/backup-azure-sql-database/restore-large-files.jpg)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

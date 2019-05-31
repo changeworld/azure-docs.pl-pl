@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949571"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243592"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -22,13 +22,13 @@ Azure Data Lake magazynu Gen2 implementuje model kontroli dostępu, który obsł
 
 <a id="azure-role-based-access-control-rbac" />
 
-## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
+## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
 RBAC używają przypisań ról w celu efektywnego zastosowania zestawy uprawnień, aby *podmiotów zabezpieczeń*. A *podmiotu zabezpieczeń* jest obiektem, który reprezentuje użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana, która jest zdefiniowana w usłudze Azure Active Directory (AD), który żąda dostępu do zasobów platformy Azure.
 
-Zazwyczaj te zasoby platformy Azure są ograniczone do najwyższego poziomu zasobów (na przykład: Konta usługi Azure Storage). W przypadku usługi Azure Storage, a w związku z tym usługi Azure Data Lake Storage Gen2 ten mechanizm został rozszerzony do zasobów systemu plików.
+Zazwyczaj te zasoby platformy Azure są ograniczone do najwyższego poziomu zasobów (na przykład: Konta usługi Azure Storage). W przypadku usługi Azure Storage, a w związku z tym usługi Azure Data Lake Storage Gen2 ten mechanizm został rozszerzony do zasobu kontenera (w systemie plików).
 
-Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie konta usługi storage, zobacz [uwierzytelnienia dostępu do platformy Azure obiekty BLOB i kolejki, przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie konta usługi storage, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Wpływ przypisania roli na listach kontroli dostępu na poziomie plików i katalogów
 
@@ -49,7 +49,7 @@ Tokeny sygnatur dostępu Współdzielonego obejmują dozwolone uprawnienia jako 
 
 ## <a name="access-control-lists-on-files-and-directories"></a>Listy kontroli dostępu do plików i katalogów
 
-Podmiot zabezpieczeń można skojarzyć z poziomu dostępu do plików i katalogów. Skojarzenia te są przechwytywane *listy kontroli dostępu (ACL)*. Poszczególnych plików i katalogów w ramach konta magazynu ma listy kontroli dostępu.
+Podmiot zabezpieczeń można skojarzyć z poziomu dostępu do plików i katalogów. Skojarzenia te są przechwytywane *listy kontroli dostępu (ACL)* . Poszczególnych plików i katalogów w ramach konta magazynu ma listy kontroli dostępu.
 
 Jeśli rola jest przypisany do podmiotu zabezpieczeń na poziomie konta magazynu, można użyć listy kontroli dostępu przyznanie tego podmiotu zabezpieczeń z podwyższonym poziomem uprawnień dostępu do określonych plików i katalogów.
 
@@ -77,8 +77,6 @@ Domyślne listy ACL są szablony list ACL skojarzony z katalogiem, które okreś
 
 Zarówno listy ACL dostępu i domyślnej listy ACL mają tę samą strukturę.
 
-Zarówno listy ACL dostępu i domyślnej listy ACL mają tę samą strukturę.
-
 > [!NOTE]
 > Zmienianie domyślnego listy ACL w nadrzędnej nie wpływa na dostęp do listy ACL lub domyślnych listę ACL elementów podrzędnych, które już istnieją.
 
@@ -91,6 +89,9 @@ Uprawnienia do obiektu systemu plików są **odczytu**, **zapisu**, i **Execute*
 | **Odczyt (R)** | Może odczytywać zawartości pliku | Wymaga **odczytu** i **Execute** wyświetlania zawartości katalogu |
 | **Zapis (W)** | Może zapisywać w pliku lub dołączać do pliku | Wymaga **zapisu** i **Execute** utworzyć podrzędne elementy w katalogu |
 | **Wykonanie (X)** | Nie oznacza niczego w kontekście Data Lake Storage Gen2 | Wymagane na przechodzenie przez elementy podrzędne w katalogu |
+
+> [!NOTE]
+> Jeśli przyznajesz uprawnienia za pomocą tylko listy ACL (nie RBAC), a następnie udzielić usługi głównej odczytu lub zapisu do pliku, musisz podać nazwę główną usługi **Execute** uprawnienia systemu plików i każdy folder w Hierarchia folderów, które mogą prowadzić do pliku.
 
 #### <a name="short-forms-for-permissions"></a>Krótkie formy uprawnień
 

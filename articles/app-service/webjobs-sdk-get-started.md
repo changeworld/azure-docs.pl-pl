@@ -13,18 +13,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 20bb8d5380f5a905a827dfb12dcc032e327267e0
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864856"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418228"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
-W tym artykule pokazano, jak utworzyć projekt zestawu Azure WebJobs SDK, uruchomić je lokalnie i następnie wdrożysz go do programu Visual Studio 2019 [usługi Azure App Service](overview.md). Projekt, możesz utworzyć jest aplikację konsoli .NET Core, która korzysta z wersji 3.x zestawu WebJobs SDK. Jeśli interesuje Cię w wersji 2.x, która używa .NET Framework, zobacz [tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service](webjobs-dotnet-deploy-vs.md).
+W tym artykule pokazano, jak utworzyć projekt zestawu Azure WebJobs SDK, uruchomić je lokalnie i następnie wdrożysz go do programu Visual Studio 2019 [usługi Azure App Service](overview.md). W wersji 3.x zestawu WebJobs SDK obsługuje aplikacje konsoli .NET Core i .NET Framework. Aby dowiedzieć się więcej na temat pracy z zestawem SDK WebJobs, zobacz [jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach](webjobs-sdk-how-to.md).
 
-Aby dowiedzieć się więcej na temat pracy z zestawem SDK WebJobs, zobacz [jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach](webjobs-sdk-how-to.md).
+W tym artykule pokazano, jak wdrażać zadania Webjob jako aplikacji konsolowej .NET Core. Aby wdrażać zadania Webjob jako aplikacji konsoli .NET Framework, zobacz [WebJobs jako .NET Framework konsoli aplikacji](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Jeśli interesuje Cię wersja zestawu SDK usługi WebJobs 2.x, która obsługuje tylko .NET Framework, zobacz [tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,11 +32,11 @@ Aby dowiedzieć się więcej na temat pracy z zestawem SDK WebJobs, zobacz [jak 
 
 * Konieczne jest posiadanie [konta platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Aby opublikować projekt zestawu SDK zadań Webjob na platformie Azure.
 
-## <a name="create-a-project"></a>Utwórz projekt
+## <a name="create-a-project"></a>Tworzenie projektu
 
 1. W programie Visual Studio, wybierz **Utwórz nowy projekt**.
 
-2. Wybierz **konsoli aplikacji (.NET Core)**.
+2. Wybierz **konsoli aplikacji (.NET Core)** .
 
 3. Nadaj projektowi nazwę *WebJobsSDKSample*, a następnie wybierz pozycję **Utwórz**.
 
@@ -171,7 +171,7 @@ Począwszy od wersji 3.x, należy jawnie zainstalować rozszerzenie powiązania 
                     });
     ```
 
-## <a name="create-a-function"></a>Utwórz funkcję
+## <a name="create-a-function"></a>Tworzenie funkcji
 
 1. Kliknij prawym przyciskiem myszy projekt, wybierz **Dodaj** > **nowy element...** , wybierz **klasy**, nadaj nazwę nowej C# plik klasy *Functions.cs*i wybierz **Dodaj**.
 
@@ -217,7 +217,7 @@ Emulator usługi Azure Storage, który jest uruchamiany lokalnie, nie ma wszystk
 
    ![Tworzenie konta magazynu](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. W obszarze **magazynu** w węźle **Eksploratora serwera**, wybierz nowe konto magazynu. W **właściwości** okna, wybierz przycisk wielokropka (**...** ) w prawym rogu **parametry połączenia** pole wartości.
+1. W obszarze **magazynu** w węźle **Eksploratora serwera**, wybierz nowe konto magazynu. W **właściwości** okna, wybierz przycisk wielokropka ( **...** ) w prawym rogu **parametry połączenia** pole wartości.
 
    ![Wielokropek ciąg połączenia](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
@@ -340,7 +340,7 @@ W tej sekcji należy wykonać następujące zadania, aby skonfigurować rejestro
 
    |Name (Nazwa)  |Ciąg połączenia  |Typ bazy danych|
    |---------|---------|------|
-   |AzureWebJobsStorage | {Parametry połączenia magazynu, które wcześniej zostały skopiowane}|Niestandardowa|
+   |AzureWebJobsStorage | {Parametry połączenia magazynu, które wcześniej zostały skopiowane}|Niestandardowy|
 
 1. Jeśli **ustawienia aplikacji** okno nie ma instrumentacji usługi Application Insights klucza, należy dodać go, który został wcześniej skopiowany. (Klucz Instrumentacji może być już istnieje, w zależności od sposobu tworzenia aplikacji usługi app Service.)
 

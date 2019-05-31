@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: Python i interfejsów API REST — usługa Azure Search'
 description: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu języka Python, notesy Jupyter i interfejsu API REST usługi Azure Search.
-ms.date: 05/15/2019
+ms.date: 05/23/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117338"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244792"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu notesów programu Jupyter w języku Python
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Następujące usługi i narzędzia są używane w tym przewodniku Szybki Start.
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), zapewniając Python 3.x i notesy Jupyter.
 
-+ [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start. 
++ [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Korzystać z bezpłatnej warstwy, w tym przewodniku Szybki Start. 
 
 ## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
@@ -52,7 +52,7 @@ Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane
 
 ## <a name="connect-to-azure-search"></a>Łączenie z usługą Azure Search
 
-Otwieranie notesu Jupyter i sprawdź połączenie z lokalnej stacji roboczej, żądając listy indeksów w usłudze. Na Windows za pomocą anaconda3, wersja Nawigator Anaconda służy do uruchamiania notesu.
+W tym zadaniu uruchamiania notesu programu Jupyter i sprawdź, czy możesz nawiązać połączenie usługi Azure Search. Możesz to zrobić poprzez żądanie listy indeksów w ramach usługi. Na Windows za pomocą anaconda3, wersja Nawigator Anaconda służy do uruchamiania notesu.
 
 1. Tworzenie nowego notesu środowiska python3 jako.
 
@@ -73,7 +73,7 @@ Otwieranie notesu Jupyter i sprawdź połączenie z lokalnej stacji roboczej, ż
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-1. W trzeciej komórce sformułować żądania. To żądanie GET jest przeznaczony dla kolekcja indeksy usługi wyszukiwania i wybiera właściwość name.
+1. W trzeciej komórce sformułować żądania. To żądanie GET jest przeznaczony dla kolekcja indeksy usługi wyszukiwania i wybiera właściwości name obiektu istniejące indeksy.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -82,20 +82,20 @@ Otwieranie notesu Jupyter i sprawdź połączenie z lokalnej stacji roboczej, ż
    pprint(index_list)
    ```
 
-1. Uruchom każdego kroku. Jeśli istnieje indeksów, odpowiedź zawiera listy indeksów. Na poniższym zrzucie ekranu usługa obejmuje indeks obiektu blob platformy Azure i indeks realestate-us-sample.
+1. Uruchom każdego kroku. Jeśli istnieje indeksów, odpowiedź zawiera listę nazw indeksu. Na poniższym zrzucie ekranu usługa jest już indeks obiektu blob platformy Azure i indeks realestate-us-sample.
 
    ![Skrypt w języku Python w notesie Jupyter za pośrednictwem protokołu HTTP żądania do usługi Azure Search](media/search-get-started-python/connect-azure-search.png "skrypt w języku Python w notesie Jupyter za pośrednictwem protokołu HTTP żądania do usługi Azure Search")
 
-   Kolekcja pusty indeks zwraca tej odpowiedzi: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Z kolei kolekcji pusty indeks zwraca tej odpowiedzi: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 > [!Tip]
 > Bezpłatne usługi są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Ten przewodnik Szybki Start tworzy jeden. Upewnij się, że dysponujesz miejscem do tworzenia nowych obiektów, zanim przejdziesz dalej.
 
 ## <a name="1---create-an-index"></a>1 — Tworzenie indeksu
 
-Jeśli używasz portalu indeksu musi istnieć w usłudze przed załadowaniem danych. Ten krok używa [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index) wypychania schematu indeksu w usłudze
+Jeśli używasz portalu indeksu musi istnieć w usłudze przed załadowaniem danych. Ten krok używa [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index) wypychania schematu indeksu w usłudze.
 
-Kolekcja pól definiuje strukturę *dokumentu*. Wymagane elementy indeksu obejmują nazwy i kolekcji pól. Każde pole ma nazwę, typ i atrybuty, które określają, jak jest używana (na przykład, czy jest pełnotekstowe wyszukiwanie, filtrowanie lub pobieranie w wynikach wyszukiwania). W ramach indeksu, jednego pola typu `Edm.String` musi zostać wyznaczona jako *klucz* dokumentu tożsamości.
+Wymagane elementy indeksu obejmują nazwę, kolekcję pól i klucz. Kolekcja pól definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają sposób używania pola (na przykład, czy jest pełnotekstowe wyszukiwanie, filtrowanie lub pobieranie w wynikach wyszukiwania). W ramach indeksu, jednego pola typu `Edm.String` musi zostać wyznaczona jako *klucz* dokumentu tożsamości.
 
 Ten indeks o nazwie "hotels-py" i ma definicje pól, pokazane poniżej. Jest podzbiorem większego [indeksu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) używane w innych instruktaży. Firma Microsoft spacje w tym przewodniku Szybki Start w celu skrócenia programu.
 
@@ -127,7 +127,7 @@ Ten indeks o nazwie "hotels-py" i ma definicje pól, pokazane poniżej. Jest pod
     }
     ```
 
-2. W innej komórce sformułować żądania. Umieść to żądanie jest przeznaczony dla kolekcja indeksy usługi wyszukiwania i tworzy indeks na podstawie schematu indeksu podany w poprzednim kroku.
+2. W innej komórce sformułować żądania. Umieść to żądanie jest przeznaczony dla kolekcja indeksy usługi wyszukiwania i tworzy indeks na podstawie schematu indeksu podany w poprzedniej komórki.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -138,12 +138,12 @@ Ten indeks o nazwie "hotels-py" i ma definicje pól, pokazane poniżej. Jest pod
 
 3. Uruchom każdego kroku.
 
-   Odpowiedź zawiera reprezentacji JSON schematu. Poniższy zrzut ekranu przycina części schemat indeksu, aby zobaczyć więcej odpowiedzi.
+   Odpowiedź zawiera reprezentacji JSON schematu. Poniższy zrzut ekranu są wyświetlane tylko część odpowiedzi.
 
     ![Żądanie utworzenia indeksu](media/search-get-started-python/create-index.png "żądanie utworzenia indeksu")
 
 > [!Tip]
-> W celu weryfikacji, można również zapoznaj się z listą indeksów w portalu, lub ponownie uruchomić żądanie połączenia usługi, aby zobaczyć *py hotele* indeksu na liście kolekcji indeksów.
+> Innym sposobem, aby zweryfikować utworzenie indeksu jest zapoznaj się z listą indeksów w portalu.
 
 <a name="load-documents"></a>
 
@@ -211,6 +211,7 @@ Aby wypchnąć dokumenty, należy użyć żądania HTTP POST do punktu końcoweg
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
+            }
         },
         {
         "@search.action": "upload",
@@ -229,11 +230,11 @@ Aby wypchnąć dokumenty, należy użyć żądania HTTP POST do punktu końcoweg
             "StateProvince": "TX",
             "PostalCode": "78216",
             "Country": "USA"
-       }
-      }
-     ]
+            }
+        }
+    ]
     }
-    ```
+    ```   
 
 2. W innej komórce sformułować żądania. To żądanie POST jest przeznaczony dla kolekcji docs indeksu hotels py i wypycha dokumenty określone w poprzednim kroku.
 
@@ -246,26 +247,7 @@ Aby wypchnąć dokumenty, należy użyć żądania HTTP POST do punktu końcoweg
 
 3. Uruchom każdego kroku, aby wypchnąć dokumenty do indeksu w usłudze wyszukiwania. Wyniki powinny wyglądać podobnie do poniższego przykładu. 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
-    'value': [{'errorMessage': None,
-            'key': '1',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '2',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '3',
-            'status': True,
-            'statusCode': 201}]},
-           {'errorMessage': None,
-            'key': '4',
-            'status': True,
-            'statusCode': 201}]}
-     ```
-
+    ![Wysyłać dokumenty do indeksu](media/search-get-started-python/load-index.png "wysyłać dokumenty do indeksu")
 
 ## <a name="3---search-an-index"></a>3 — Przeszukiwanie indeksu
 
@@ -278,7 +260,7 @@ W tym kroku przedstawiono sposób tworzenia zapytań względem indeksu przy uży
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. Sformułuj żądanie. To żądanie GET jest przeznaczony dla kolekcji docs indeksu hotels py i dołącza zapytania, które określiłeś w poprzednim kroku.
+2. W innej komórce Sformułuj żądanie. To żądanie GET jest przeznaczony dla kolekcji docs indeksu hotels py i dołącza zapytania, które określiłeś w poprzednim kroku.
 
    ```python
    url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
@@ -287,32 +269,29 @@ W tym kroku przedstawiono sposób tworzenia zapytań względem indeksu przy uży
    pprint(query)
    ```
 
-   Wyniki powinny wyglądać podobnie do następujących danych wyjściowych. Wyniki są unranked (search.score = 1,0), ponieważ firma Microsoft nie zapewnia żadnych kryteriów dopasowania.
+3. Uruchom każdego kroku. Wyniki powinny wyglądać podobnie do następujących danych wyjściowych. 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
-    '@odata.count': 3,
-    'value': [{'@search.score': 1.0,
-               'HotelId': '1',
-               'HotelName': 'Secret Point Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '2',
-               'HotelName': 'Twin Dome Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'},
-              {'@search.score': 1.0,
-               'HotelId': '4',
-               'HotelName': 'Sublime Cliff Hotel'}]}
+    ![Przeszukiwanie indeksu](media/search-get-started-python/search-index.png "przeszukiwanie indeksu")
+
+4. Wypróbuj kilka innych przykładów zapytanie, aby uzyskać pewne pojęcie składni. Można zastąpić ciągwyszukiwania poniższych przykładach, a następnie uruchom ponownie żądanie wyszukiwania. 
+
+   Zastosuj filtr: 
+
+   ```python
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
    ```
 
-3. Wypróbuj kilka innych przykładów zapytanie, aby uzyskać pewne pojęcie składni. Możesz zastosować filtr, wykonać dwóch pierwszych wyników lub kolejność według określonego pola.
+   Wykonaj najwyższe dwa wyniki:
 
-   + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
+   ```python
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   ```
 
-   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
+    Kolejność, według określonego pola:
 
-   + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
+   ```python
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   ```
 
 ## <a name="clean-up"></a>Czyszczenie 
 

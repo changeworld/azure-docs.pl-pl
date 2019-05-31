@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b8e3ddf1cf5d61f730ce01a35ee0813b47ad2d2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204422"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305936"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikowanie aplikacji sieci Web platformy ASP.NET na maszynie Wirtualnej platformy Azure z programu Visual Studio
 
-W tym dokumencie opisano sposób publikowania aplikacji sieci web ASP.NET przy użyciu maszyn wirtualnych (VM) **Microsoft Azure Virtual Machines** funkcja publikowania w programie Visual Studio 2017.  
+W tym dokumencie opisano sposób publikowania aplikacji sieci web ASP.NET przy użyciu maszyn wirtualnych (VM) **Microsoft Azure Virtual Machines** funkcja publikowania w programie Visual Studio 2019 r.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby można było używać programu Visual Studio do publikowania projektu programu ASP.NET na Maszynie wirtualnej platformy Azure, maszyna wirtualna musi być skonfigurowany prawidłowo.
@@ -34,7 +34,7 @@ Aby można było używać programu Visual Studio do publikowania projektu progra
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Publikowanie aplikacji sieci web platformy ASP.NET do maszyny Wirtualnej platformy Azure przy użyciu programu Visual Studio
 W poniższej sekcji opisano sposób publikowania istniejącą aplikację sieci web platformy ASP.NET na maszynie wirtualnej platformy Azure.
 
-1. Otwórz swoje rozwiązanie aplikacji sieci web w programie Visual Studio 2017.
+1. Otwórz swoje rozwiązanie aplikacji sieci web w programie Visual Studio 2019 r.
 2. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz polecenie **publikowania...**
 3. Użyj strzałki w prawym rogu strony, aby przewijać opcje publikowania, dopóki nie znajdziesz **Microsoft Azure Virtual Machines**.  
 
@@ -58,7 +58,7 @@ W poniższej sekcji opisano sposób publikowania istniejącą aplikację sieci w
 
 7. Kliknij przycisk OK, aby rozpocząć publikowanie.
 
-8. Po wyświetleniu monitu o poświadczenia, należy podać nazwę użytkownika i hasło konta użytkownika na docelowej maszynie Wirtualnej, który jest skonfigurowany z publikowaniem prawa (zazwyczaj nazwa użytkownika administratora i hasło użyte podczas tworzenia maszyny Wirtualnej).  
+8. Po wyświetleniu monitu o poświadczenia, należy podać nazwę użytkownika i hasło konta użytkownika na docelowej maszynie Wirtualnej, który jest skonfigurowany z prawa do publikacji. Te poświadczenia są zazwyczaj nazwa użytkownika administratora i hasło użyte podczas tworzenia maszyny Wirtualnej.  
 
    ![WebDeploy logowania]
 
@@ -99,12 +99,12 @@ Twoje ustawienia powinny wyglądać następująco:
 ![Ustawienia — strona połączenia publikowania]
 
 #### <a name="save-user-name-and-password"></a>Zapisz nazwę użytkownika i hasło
-- Aby uniknąć, podając informacje o uwierzytelnianiu za każdym razem, gdy opublikujesz, które możesz wypełnić **nazwa_użytkownika** i **hasło** pola i wybierz pozycję **Zapisz hasło** pole.
+- Należy unikać, podając informacje o uwierzytelnianiu za każdym razem, gdy publikujesz. Aby to zrobić, należy wypełnić **nazwa_użytkownika** i **hasło** pola i wybierz pozycję **Zapisz hasło** pole.
 - Użyj **Waliduj połączenie** przycisk, aby upewnić się, że wprowadzono odpowiednie informacje.
 
 #### <a name="deploy-to-clean-web-server"></a>Wdrażanie do czyszczenia serwera sieci web
 
-- Jeśli chcesz się upewnić, czy serwer sieci web jest czysta kopia aplikacji sieci web po każdym przekazywania (i żadne inne pliki nie są pozostawiane, zawiesza się z poprzedniego wdrożenia), możesz sprawdzić **Usuń dodatkowe pliki w lokalizacji docelowej** Zaznacz pole wyboru w **ustawienia** kartę.
+- Jeśli chcesz upewnić się, czy serwer sieci web jest czysta kopia aplikacji sieci web po każdym przekazywania oraz że żadne inne pliki nie są pozostawiane z poprzedniego wdrożenia można sprawdzić **Usuń dodatkowe pliki w lokalizacji docelowej** pola wyboru w  **Ustawienia** kartę.
 
 - Ostrzeżenie: Publikowanie za pomocą tego ustawienia spowoduje usunięcie wszystkich plików, które istnieją na serwerze sieci web (katalogu wwwroot). Upewnij się, że znasz stan maszyny przed opublikowaniem po włączeniu tej opcji. 
 

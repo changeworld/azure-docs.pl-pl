@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 4a648bd2704e93abedeefae14aee66ae8bfeecef
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 27d93f963003cfb30b8827d45c0472405b0ed0a6
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073901"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392659"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Utworzyć kontroler ruch przychodzący z siecią wirtualną wewnętrzny w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Możesz również wykonać następujące czynności:
 
 W tym artykule używa narzędzia Helm do zainstalowania serwera NGINX kontrolera danych przychodzących, Menedżer certyfikatów i przykładową aplikację sieci web. Musisz mieć narzędzia Helm inicjowane w obrębie klastra usługi AKS i przy użyciu konta usługi dla Tiller. Aby uzyskać więcej informacji na temat konfigurowania i używania narzędzia Helm, zobacz [instalowanie aplikacji za pomocą narzędzia Helm w usłudze Azure Kubernetes Service (AKS)][use-helm].
 
-W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.61 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Tworzenie kontrolera danych przychodzących
 
@@ -49,6 +49,8 @@ controller:
 
 Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Aby użyć pliku manifestu utworzonego w poprzednim kroku, należy dodać `-f internal-ingress.yaml` parametru. Dodano nadmiarowość dwóch replik kontrolerów ruch przychodzący serwera NGINX są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z systemem replik kontrolera danych przychodzących, upewnij się, że istnieje więcej niż jeden węzeł w klastrze AKS.
 
+Kontroler danych przychodzących musi odbywać się w węźle systemu Linux. Węzły systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) nie należy uruchamiać kontrolera danych przychodzących. Selektor węzła jest określony, przy użyciu `--set nodeSelector` parametru, aby poinformować harmonogram Kubernetes, aby uruchomić kontroler danych przychodzących NGINX w węźle opartych na systemie Linux.
+
 > [!TIP]
 > Poniższy przykład obejmuje tworzenie przestrzeni nazw Kubernetes, transferu danych przychodzących zasobów o nazwie *basic ruch przychodzący*. Określ obszar nazw dla Twojego środowiska, zgodnie z potrzebami. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` polecenia narzędzia Helm.
 
@@ -60,7 +62,9 @@ kubectl create namespace ingress-basic
 helm install stable/nginx-ingress \
     --namespace ingress-basic \
     -f internal-ingress.yaml \
-    --set controller.replicaCount=2
+    --set controller.replicaCount=2 \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 Po utworzeniu rozwiązania Kubernetes usługi równoważenia obciążenia dla kontrolera danych przychodzących NGINX swoje wewnętrzny adres IP jest przypisywany, jak pokazano w następujących przykładowych danych wyjściowych:
@@ -117,19 +121,19 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - http:
       paths:
-      - path: /
-        backend:
+      - backend:
           serviceName: aks-helloworld
           servicePort: 80
-      - path: /hello-world-two
-        backend:
+        path: /(.*)
+      - backend:
           serviceName: ingress-demo
           servicePort: 80
+        path: /hello-world-two(/|$)(.*)
 ```
 
 Tworzenie przy użyciu zasobów ruch przychodzący `kubectl apply -f hello-world-ingress.yaml` polecenia.
@@ -154,7 +158,7 @@ Zainstaluj `curl` w zasobnik przy użyciu `apt-get`:
 apt-get update && apt-get install -y curl
 ```
 
-Teraz uzyskiwać dostęp do usługi Kubernetes transferu danych przychodzących kontroler przy użyciu adresu `curl`, takich jak *http://10.240.0.42*. Podaj własny wewnętrzny adres IP określony podczas wdrażania kontrolera danych przychodzących w pierwszym kroku w tym artykule.
+Teraz uzyskiwać dostęp do usługi Kubernetes transferu danych przychodzących kontroler przy użyciu adresu `curl`, takich jak *http://10.240.0.42* . Podaj własny wewnętrzny adres IP określony podczas wdrażania kontrolera danych przychodzących w pierwszym kroku w tym artykule.
 
 ```console
 curl -L http://10.240.0.42
@@ -173,7 +177,7 @@ $ curl -L 10.240.0.42
 [...]
 ```
 
-Teraz Dodaj */hello-world-two* ścieżkę na adres, takie jak *http://10.240.0.42/hello-world-two*. Zwracana jest drugiej aplikacji demonstracyjnej z tytułem niestandardowych, jak pokazano w następujących danych wyjściowych skróconego przykładu:
+Teraz Dodaj */hello-world-two* ścieżkę na adres, takie jak *http://10.240.0.42/hello-world-two* . Zwracana jest drugiej aplikacji demonstracyjnej z tytułem niestandardowych, jak pokazano w następujących danych wyjściowych skróconego przykładu:
 
 ```
 $ curl -L -k http://10.240.0.42/hello-world-two

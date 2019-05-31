@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 399dcd744819cf4cb5d9f5f9636967c34e186a0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94f410b7bd3b7c2eb3d7d6a9316323092010338e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60920994"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418336"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Wymagania dotyczące serwera konfiguracji odzyskiwania po awarii programu VMware do platformy Azure
 
@@ -56,7 +56,7 @@ IIS | -Brak przeniosła istniejące wcześniej domyślnej witryny sieci Web <br>
 
 **Składnik** | **Wymaganie** 
 --- | --- 
-Typ adresu IP | Statyczny 
+Typ adresu IP | Static 
 Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL (bezpośrednio lub za pośrednictwem serwera proxy): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> -https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF musi również mieć dostęp do następujących adresów URL: <br> -https:\//login.microsoftonline.com <br> -https:\//secure.aadcdn.microsoftonline-p.com <br> -https:\//login.live.com  <br> -https:\//auth.gfx.ms <br> - https:\//graph.windows.net <br> -https:\//login.windows.net <br> -https:\//www.live.com <br> -https:\//www.microsoft.com <br> - https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych) 
 Typ karty NIC | Innego VMXNET3 (Jeśli na serwerze konfiguracji maszyny Wirtualnej VMware)

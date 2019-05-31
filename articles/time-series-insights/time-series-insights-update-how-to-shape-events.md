@@ -1,8 +1,8 @@
 ---
 title: Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przekształcać zdarzeń Azure czas Series Insights w wersji zapoznawczej.
+description: Dowiedz się, jak przekształcać zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 38072d111d51cc2d2c6265643b69a870a679a454
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: f0e1a79073596dcabfacb7163e12b33bb582b7c3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466142"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238929"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
@@ -23,7 +23,7 @@ Ten artykuł pomoże Ci kształt pliku JSON, aby zmaksymalizować wydajność kw
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Należy wziąć pod uwagę sposób wysyłania zdarzeń do czasu Series Insights w wersji zapoznawczej. To znaczy należy zawsze:
+Zastanów się, jak wysyłanie zdarzeń do czasu Series Insights w wersji zapoznawczej. To znaczy należy zawsze:
 
 * jak najbardziej wydajny wysyłanie danych przez sieć.
 * Store dane w sposób, który pomoże Ci agregować je bardziej odpowiednio do danego scenariusza.
@@ -31,16 +31,16 @@ Należy wziąć pod uwagę sposób wysyłania zdarzeń do czasu Series Insights 
 Aby uzyskać najlepszą wydajność zapytań możliwe wykonaj następujące czynności:
 
 * Nie wysyłaj niepotrzebnych właściwości. Czas Series Insights w wersji zapoznawczej opłaty naliczane są na wykorzystanie. Najlepiej do przechowywania i przetwarzania danych, który zostanie kwerenda.
-* Użyj pól wystąpień dla danych statycznych. Praktyka ta pomaga unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych działają podobnie jak odwoływać się do danych w usłudze GA Insights serii czasu. Aby dowiedzieć się więcej na temat wystąpienia pól, zobacz [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
+* Użyj pól wystąpień dla danych statycznych. Praktyka ta pomaga unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych pracy, takich jak odwoływać się do danych w usłudze Time Series Insights jest ogólnie dostępna usługa. Aby dowiedzieć się więcej na temat wystąpienia pól, zobacz [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
 * Udostępnianie właściwości wymiaru spośród dwóch lub większej liczby zdarzeń. Pomaga to bardziej wydajne wysyłanie danych przez sieć.
-* Nie używaj tablicy głębokiego zagnieżdżenia. Czas Series Insights w wersji zapoznawczej obsługuje maksymalnie dwóch poziomów zagnieżdżonych tablic zawierających obiekty. Czas Series Insights w wersji zapoznawczej spłaszcza tablic w wiadomości do wielu zdarzeń przy użyciu pary wartości właściwości.
-* Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Wysyłając oddzielnie zmniejsza liczbę zdarzeń i ponieważ mniej zdarzeń wymagających przetworzenia, praktyka wprowadzać zapytania wydajniej.
+* Nie używaj tablicy głębokiego zagnieżdżenia. Czas Series Insights w wersji zapoznawczej obsługuje maksymalnie dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Czas Series Insights w wersji zapoznawczej spłaszcza tablic w wiadomości do wielu zdarzeń przy użyciu pary wartości właściwości.
+* Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Wysyłając oddzielnie zmniejsza liczbę zdarzeń i może poprawić wydajność zapytań, ponieważ mniej zdarzeń wymagających przetworzenia.
 
 ## <a name="example"></a>Przykład
 
-Poniższy przykład opiera się na scenariuszu, gdy dwie lub większą liczbę urządzeń wysyłać pomiary i sygnały. Pomiary i sygnały może być *przepływ współczynnika*, *wykorzystanie ropa naftowa aparatu*, *temperatury*, i *wilgotności*.
+Poniższy przykład opiera się na scenariuszu, gdy dwie lub większą liczbę urządzeń wysyłać pomiary i sygnały. Pomiary i sygnały może efektywnie *przepływ współczynnika*, *wykorzystanie ropa naftowa aparatu*, *temperatury*, i *wilgotności*.
 
-W poniższym przykładzie istnieje pojedynczy komunikat usługi IoT Hub, gdzie zewnętrzne tablica zawiera sekcji udostępnianej typowe wartości wymiarów. Zewnętrzne tablicy używa wystąpienia serii czasu danych w celu zwiększenia efektywności wiadomości. Wystąpienia serii czasu zawiera metadanych urządzeń, która nie zmienia się przy użyciu każdego zdarzenia, ale zapewnia użytecznych właściwości do analizy danych. Aby zapisać na bajty przesyłane przez sieć, a komunikat był bardziej wydajne, należy wziąć pod uwagę dzielenia na partie typowe wartości wymiarów i wykorzystujących metadanych wystąpienia serii czasu.
+W poniższym przykładzie istnieje jeden komunikat o usłudze Azure IoT Hub gdzie zewnętrzne tablica zawiera sekcji udostępnianej typowe wartości wymiarów. Zewnętrzne tablicy używa wystąpienia serii czasu danych w celu zwiększenia efektywności wiadomości. Wystąpienia serii czasu zawiera metadanych urządzeń, która nie zmienia się przy użyciu każdego zdarzenia, ale zapewnia użytecznych właściwości do analizy danych. Aby zapisać na bajty przesyłane przez sieć, a komunikat był bardziej wydajne, należy wziąć pod uwagę dzielenia na partie typowe wartości wymiarów i wykorzystujących metadanych wystąpienia serii czasu.
 
 ### <a name="example-json-payload"></a>Przykładowy ładunek JSON
 
@@ -108,7 +108,7 @@ W poniższym przykładzie istnieje pojedynczy komunikat usługi IoT Hub, gdzie z
   },
 ```
 
-Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. W tabeli przedstawiono dodatkowe kolumny **typu**. W poniższym przykładzie pokazano, jak można [kształt](./time-series-insights-send-events.md#json) dane telemetryczne:
+Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. W tabeli przedstawiono dodatkowe kolumny **typu**. W poniższym przykładzie pokazano, jak można [kształt](./time-series-insights-send-events.md#json) dane telemetryczne.
 
 | deviceId  | Typ | L1 | PAMIĘCI PODRĘCZNEJ L2 | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -119,7 +119,7 @@ Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) pod
 W poprzednim przykładzie Pamiętaj o następujących kwestiach:
 
 * Właściwości statyczne są przechowywane w czasu Series Insights w wersji zapoznawczej do optymalizacji danych przesyłanych przez sieć.
-* Dane o czasie Series Insights w wersji zapoznawczej jest dołączony w czasie wykonywania zapytań przy użyciu *timeSeriesId* zdefiniowanego w wystąpieniu.
+* Dane o czasie Series Insights w wersji zapoznawczej jest dołączony w czasie wykonywania zapytania za pomocą Identyfikatora serii czasu, który jest zdefiniowany w wystąpieniu.
 * Używane są dwie warstwy zagnieżdżenia, który jest najbardziej obsługiwaną przez czas Series Insights w wersji zapoznawczej. Koniecznie można uniknąć głęboko zagnieżdżonych tablic.
 * Ponieważ istnieje kilka miar, są one wysyłane jako osobne właściwości w ramach tego samego obiektu. W tym przykładzie **serii. Przepływ współczynnika psi**, **serii. Psi wykorzystanie ropa naftowa aparatu**, i **serii. Przepływ współczynnika ft3/s** są unikatowe kolumny.
 
@@ -130,5 +130,4 @@ W poprzednim przykładzie Pamiętaj o następujących kwestiach:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej o składni zapytań dla danych czasu Series Insights w wersji zapoznawczej dostęp do interfejsu API REST.
-
 - Aby dowiedzieć się więcej na temat obsługiwane kształty JSON, zobacz [kształty JSON obsługiwany](./time-series-insights-send-events.md#json).

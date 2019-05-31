@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: e1cd7d9e135f5e3196f02237076c5c8069048fb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 199ce2fe24d76595493dc2128cebb3fcb642fcab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442736"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241147"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -330,7 +330,7 @@ Wyzwalacz usługi Service Bus udostępnia wiele [właściwości metadanych](./fu
 |`CorrelationId`|`string`|Identyfikator korelacji.|
 
 > [!NOTE]
-> Obecnie wyzwalacza działa tylko z kolejki i subskrypcje, które nie używają sesji. Należy śledzić [ten element, funkcja](https://github.com/Azure/azure-functions-host/issues/563) wszelkie dalsze aktualizacji dotyczące tej funkcji. 
+> Obecnie Usługa Service bus wyzwalacz, który współdziała z subskrypcji i kolejek sesji włączone jest dostępna w wersji zapoznawczej. Należy śledzić [tego elementu](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) wszelkie dalsze aktualizacji tej kwestii. 
 
 Zobacz [przykłady kodu](#trigger---example) używające tych właściwości we wcześniejszej części tego artykułu.
 

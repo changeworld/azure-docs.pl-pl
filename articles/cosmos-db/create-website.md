@@ -4,14 +4,14 @@ description: Dowiedz się, jak wdrożyć konto usługi Azure Cosmos DB, Azure Ap
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889853"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257237"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Wdrażanie usługi Azure Cosmos DB i Azure App Service Web Apps przy użyciu szablonu usługi Azure Resource Manager
 W tym samouczku pokazano, jak szablon usługi Azure Resource Manager umożliwia wdrażanie i integrowanie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) aplikacji sieci web i przykładowej aplikacji sieci web.

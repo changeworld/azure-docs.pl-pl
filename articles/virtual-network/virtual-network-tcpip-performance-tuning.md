@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410043"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234998"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
 
@@ -79,7 +79,7 @@ Należy pamiętać, który zwiększa rozmiar jednostki MTU niekoniecznie będzie
 
 #### <a name="azure-and-vm-mtu"></a>Platforma Azure i rozmiar jednostki MTU maszyny Wirtualnej
 
-Domyślny rozmiar jednostki MTU maszyn wirtualnych platformy Azure to 1500 bajtów. Stos sieci wirtualnej platformy Azure będzie podejmować próby fragmentu pakietów na 1400 bajtów. Lecz stos sieci wirtualnej będzie zezwalać na pakiety do 2,006 bajtów podczas bit Fragment nie jest ustawiony w nagłówku protokołu IP.
+Domyślny rozmiar jednostki MTU maszyn wirtualnych platformy Azure to 1500 bajtów. Stos sieci wirtualnej platformy Azure będzie podejmować próby fragmentu pakietów na 1400 bajtów.
 
 Należy pamiętać, że stos sieci wirtualnej jest natury nieefektywne, ponieważ fragmenty pakietów na 1400 bajtów, nawet jeśli maszyny wirtualne mają rozmiar jednostki MTU 1500. Znaczną część pakietów sieciowych są znacznie mniejsze niż 1400 lub 1500 bajtów.
 
@@ -140,7 +140,7 @@ Opóźnienie sieci podlega prędkość światła za pośrednictwem sieci świat�
 
 | | | | |
 |-|-|-|-|
-|**trasy**|**odległość**|**Czas jednokierunkowe**|**RTT**|
+|**Route**|**odległość**|**Czas jednokierunkowe**|**RTT**|
 |Nowy Jork, aby San Francisco|4,148 km|21 ms|42 ms|
 |Nowy Jork do Londynu|5,585 km|28 ms|56 ms|
 |Nowy Jork, aby Sydney|15,993 km|80 ms|160 ms|
@@ -237,10 +237,10 @@ Są to efektywne ustawienia protokołu TCP dla `AutoTuningLevel`:
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**Współczynnik skalowania**|**Mnożnik skalowania**|**Formułę<br/>Oblicz maksymalny rozmiar okna**|
-|Wyłączono|Brak|Brak|Rozmiar okna|
+|Wyłączone|Brak|Brak|Rozmiar okna|
 |Ograniczenia|4|2^4|Rozmiar okna * (2 ^ 4)|
 |Bardzo ograniczona|2|2^2|Rozmiar okna * (2 ^ 2)|
-|Normalny|8|2^8|Rozmiar okna * (2 ^ 8)|
+|Normalne|8|2^8|Rozmiar okna * (2 ^ 8)|
 |Eksperymentalne|14|2^14|Rozmiar okna * (2 ^ 14)|
 
 Te ustawienia są najprawdopodobniej mają wpływ na wydajność protokołu TCP, ale należy pamiętać, że wiele czynników w Internecie, niezależnych od platformy Azure, może również wpływać na wydajność protokołu TCP.
@@ -256,7 +256,7 @@ Ponieważ większy rozmiar jednostki MTU oznacza większe MSS, być może zastan
 
 ### <a name="accelerated-networking-and-receive-side-scaling"></a>Przyspieszoną sieć i skalowanie po stronie odbierania
 
-#### <a name="accelerated-networking"></a>Przyspieszona sieć
+#### <a name="accelerated-networking"></a>Wydajniejsze sieci
 
 Funkcje sieci maszyny wirtualnej w przeszłości były intensywnie z zarówno na maszynie Wirtualnej gościa i funkcji hypervisor/hosta Procesora. Każdy pakiet tranzytu za pośrednictwem hosta są przetwarzane w oprogramowaniu przez hosta procesora CPU, łącznie z wszystkich sieci wirtualnej hermetyzacji i dehermetyzacji. Dlatego więcej ruchu, który przechodzi przez hosta, załaduj większe zużycie Procesora. I Procesora hosta jest zajęty z innymi operacjami, który będzie również mieć wpływ na przepustowość sieci i czas oczekiwania. Azure rozwiązuje ten problem z przyspieszoną siecią.
 
@@ -264,7 +264,7 @@ Przyspieszona sieć zapewnia opóźnienia spójnej ultralow sieci za pomocą wew
 
 Przyspieszona sieć zwiększa wydajność, umożliwiając gościa maszyny Wirtualnej, aby pominąć hosta i określać ścieżki danych bezpośrednio z SmartNIC hosta. Poniżej przedstawiono niektóre zalety przyspieszonej łączności sieciowej:
 
-- **Zmniejszyć czas oczekiwania wyższe pakietów na sekundę (pps)**: Usunięcie przełącznika wirtualnego z ścieżki danych eliminuje razem pakietów, który możesz wydać na hoście dla przetwarzania zasad i zwiększa się liczba pakietów, które mogą być przetwarzane w maszynie Wirtualnej.
+- **Zmniejszyć czas oczekiwania wyższe pakietów na sekundę (pps)** : Usunięcie przełącznika wirtualnego z ścieżki danych eliminuje razem pakietów, który możesz wydać na hoście dla przetwarzania zasad i zwiększa się liczba pakietów, które mogą być przetwarzane w maszynie Wirtualnej.
 
 - **Zmniejszona zakłócenia**: Przełącznik wirtualny przetwarzania zależy od tego, liczbę zasad, która musi zostać zastosowana i obciążenie procesora CPU, który wykonuje przetwarzanie. Odciążanie wymuszania zasad do sprzętu usuwa tego zmienność, zapewniając pakietów bezpośrednio do maszyny Wirtualnej, eliminując łączności hosta do maszyny Wirtualnej i wszystkie przerwań oprogramowania oraz przełączeń kontekstu.
 

@@ -3,26 +3,29 @@ title: Zadeklaruj, moduły i trasy z manifesty wdrożenia — usługi Azure IoT 
 description: Dowiedz się, jak manifest wdrożenia oświadcza, które moduły do wdrożenia, jak wdrażać je oraz sposób tworzenia trasy wiadomości między nimi.
 author: kgremban
 manager: philmea
-ms.author: v-yiso
-origin.date: 03/28/2019
-ms.date: 04/22/2019
+ms.author: kgremban
+ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seodec18
+ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363209"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389363"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Dowiedz się, jak wdrażać moduły oraz określenia trasy w usługi IoT Edge
 
-Każde urządzenie usługi IoT Edge działa co najmniej dwa moduły: $edgeAgent i $edgeHub, które są częścią środowiska uruchomieniowego usługi IoT Edge. Ponadto dowolnego urządzenia IoT Edge można uruchamiać wiele modułów, aby wykonać dowolną liczbę procesów. Możesz wdrożyć te moduły na urządzeniu jednocześnie, dzięki czemu usługa IoT Edge zapewnia sposób deklarowania które moduły do zainstalowania i sposobu ich konfigurowania pod kątem współpracują ze sobą. 
+Każde urządzenie usługi IoT Edge działa co najmniej dwa moduły: $edgeAgent i $edgeHub, które są częścią środowiska uruchomieniowego usługi IoT Edge. Urządzenie usługi IoT Edge można uruchamiać wiele dodatkowych modułów dla dowolnej liczby procesów. Użyj manifestu wdrażania, sprawdzić urządzenia, które moduły do zainstalowania i sposobu ich konfigurowania pod kątem współpracują ze sobą. 
 
 *Manifest wdrożenia* to dokument JSON, który opisuje:
 
-* **Agenta usługi IoT Edge** bliźniaczą reprezentację modułu, który zawiera obraz kontenera dla każdego modułu, poświadczenia, które mają dostęp do kontenera prywatnych rejestrów i instrukcje dotyczące sposobu tworzenia i zarządzania nimi każdy moduł.
+* **Agenta usługi IoT Edge** bliźniaczą reprezentację modułu, który zawiera trzy składniki. 
+  * Obraz kontenera dla każdego modułu, która jest uruchamiana na urządzeniu.
+  * Poświadczenia dostępu do kontenera prywatnych rejestrów, zawierających obrazy modułu.
+  * Instrukcje dotyczące sposobu tworzenia i zarządzania nimi każdego modułu.
 * **Centrum usługi IoT Edge** bliźniaczą reprezentację modułu, która obejmuje przepływ komunikatów między modułami i ostatecznie do usługi IoT Hub.
 * Opcjonalnie żądane właściwości bliźniaczych reprezentacjach żadnych dodatkowych modułów.
 
@@ -134,7 +137,9 @@ Każdy wymaga źródła i ujścia, ale warunek jest opcjonalne, można użyć do
 
 ### <a name="source"></a>Element źródłowy
 
-Źródło Określa, skąd pochodzą komunikaty. Komunikaty z urządzenia typu liść lub moduły można kierować do usługi IoT Edge.
+Źródło Określa, skąd pochodzą komunikaty. Usługi IoT Edge można przesyłać wiadomości z modułów lub liści urządzeń. 
+
+Za pomocą zestawów SDK IoT, modułów mogą zadeklarować określonych danych wyjściowych kolejki komunikatów, ich za pomocą klasy ModuleClient. Kolejki danych wyjściowych nie są niezbędne, ale są przydatne do zarządzania wiele tras. Urządzenia liścia można użyć klasy DeviceClient zestawami SDK IoT do wysyłania komunikatów do urządzenia bramy usługi IoT Edge w taki sam sposób, który prześle komunikaty do usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [poznawanie i używanie usługi Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md).
 
 Właściwość źródło może być dowolny z następujących wartości:
 
@@ -142,14 +147,14 @@ Właściwość źródło może być dowolny z następujących wartości:
 | ------ | ----------- |
 | `/*` | Wszystkie komunikaty z urządzenia do chmury lub bliźniaczej reprezentacji powiadomienia o zmianie z dowolnego urządzenia modułu lub typu liść |
 | `/twinChangeNotifications` | Każda zmiana bliźniaczych reprezentacji (zgłoszone właściwości aktualizuje) pochodzące z dowolnego urządzenia modułu lub typu liść |
-| `/messages/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez urządzenie modułu lub typu liść, niektórych lub dane wyjściowe |
+| `/messages/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez moduł niektórych lub dane wyjściowe lub za pomocą urządzenia liścia |
 | `/messages/modules/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez moduł niektórych lub dane wyjściowe |
 | `/messages/modules/<moduleId>/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu niektórych lub dane wyjściowe |
 | `/messages/modules/<moduleId>/outputs/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu przy użyciu pewne dane wyjściowe |
 | `/messages/modules/<moduleId>/outputs/<output>` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu przy użyciu określonych danych wyjściowych |
 
 ### <a name="condition"></a>Warunek
-Warunek jest opcjonalny w deklaracji trasy. Jeśli chcesz przekazać wszystkie komunikaty z ujścia w źródle, po prostu Opuść **gdzie** klauzuli całkowicie. Możesz też [język zapytań usługi IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) do filtrowania niektórych komunikatów lub typy komunikatów, które spełniają warunek. Trasy usługi IoT Edge nie obsługują komunikaty o filtrowaniu na podstawie tagów bliźniaczych reprezentacji lub właściwości. 
+Warunek jest opcjonalny w deklaracji trasy. Jeśli chcesz przekazać wszystkie komunikaty ze źródła do ujścia, po prostu Opuść **gdzie** klauzuli całkowicie. Możesz też [język zapytań usługi IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) do filtrowania niektórych komunikatów lub typy komunikatów, które spełniają warunek. Trasy usługi IoT Edge nie obsługują komunikaty o filtrowaniu na podstawie tagów bliźniaczych reprezentacji lub właściwości. 
 
 Komunikaty, które przechodzą między modułów usługi IoT Edge są formatowane w taki sam jak komunikaty, które przechodzą między urządzeniami i usługi Azure IoT Hub. Wszystkie komunikaty są w formacie JSON i mieć **systemProperties**, **parametr appProperties**, i **treści** parametrów. 
 
@@ -276,9 +281,3 @@ Poniższy przykład pokazuje, jak może wyglądać dokumentu manifestu prawidło
 * Aby uzyskać pełną listę właściwości, które mogą lub muszą być zawarte w $edgeAgent i $edgeHub, zobacz [właściwości agenta usługi IoT Edge i Centrum usługi IoT Edge](module-edgeagent-edgehub.md).
 
 * Teraz, gdy wiesz, jak są używane moduły usługi IoT Edge, [zrozumieć wymagania i narzędzia do tworzenia modułów usługi IoT Edge](module-development.md).
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md

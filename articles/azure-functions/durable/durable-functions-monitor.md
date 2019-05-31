@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977437"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387091"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Monitorowanie scenariusza w funkcje trwałe — przykład obserwatora pogody
 
@@ -42,7 +42,7 @@ W tym przykładzie monitoruje warunki pogodowe z bieżącej lokalizacji i powiad
 
 Ten przykład obejmuje przy użyciu podziemny interfejsu API pogody, aby sprawdzić bieżące warunki pogodowe dla lokalizacji.
 
-Pierwszą rzeczą, jaką należy to konto pod ziemią o pogodzie. Utworzyć jedno za darmo na [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Po utworzeniu konta usługi, należy uzyskać klucz interfejsu API. Możesz to zrobić, odwiedzając [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api), a następnie wybierając pozycję Ustawienia klucza. Plan Stratus Developer jest programem bezpłatnym i wystarczające do uruchomienia tego przykładu.
+Pierwszą rzeczą, jaką należy to konto pod ziemią o pogodzie. Utworzyć jedno za darmo na [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Po utworzeniu konta usługi, należy uzyskać klucz interfejsu API. Możesz to zrobić, odwiedzając [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api/?MR=1), a następnie wybierając pozycję Ustawienia klucza. Plan Stratus Developer jest programem bezpłatnym i wystarczające do uruchomienia tego przykładu.
 
 Po utworzeniu klucza interfejsu API, Dodaj następujący kod **ustawienia aplikacji** do aplikacji funkcji.
 

@@ -3,19 +3,19 @@ title: Interfejs API tekstu usługi Translator transliteracja — metoda
 titlesuffix: Azure Cognitive Services
 description: Metoda transliteracja interfejsu API usługi Translator tekstu.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: cd7fee34f020f16d1511bc57b4ad86dbd5eb168d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 138a04cca1bbbaf7b59f628f491a5f13d73fb6f7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796961"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387391"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>język</td>
+    <td>language</td>
     <td>*Wymagany parametr*.<br/>Określa język tekstu, aby przekonwertować z jednego skryptu. Języki możliwe są wymienione w `transliteration` zakres uzyskać, badając usługę dla jego [obsługiwane języki](./v3-0-languages.md).</td>
   </tr>
   <tr>
@@ -127,7 +127,7 @@ Przykład odpowiedź JSON to:
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie. 
 
 <table width="100%">
-  <th width="20%">Kod stanu</th>
+  <th width="20%">Kod stanu:</th>
   <th>Opis</th>
   <tr>
     <td>200</td>

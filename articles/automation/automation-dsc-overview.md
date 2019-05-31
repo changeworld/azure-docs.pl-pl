@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 926629660c9593c59362bd1bc49c5115ac5e3187
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441055"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235942"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Omówienie konfiguracji stanu usługi Azure Automation
 
@@ -69,7 +69,7 @@ Ubuntu  | 18.04
 
 ### <a name="dsc-requirements"></a>Wymagania dotyczące DSC
 
-Dla wszystkich węzłów Windows działających na platformie Azure [WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) zostanie zainstalowany podczas dołączania.  Dla węzłów z systemem Windows Server 2012 i Windows 7 [zostanie włączona usługa WinRM](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Dla wszystkich węzłów Windows działających na platformie Azure [WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) zostanie zainstalowany podczas dołączania.  Dla węzłów z systemem Windows Server 2012 i Windows 7 [zostanie włączona usługa WinRM](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
 Dla wszystkich węzłów systemu Linux działających na platformie Azure [DSC programu PowerShell dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) zostanie zainstalowany podczas dołączania.
 
@@ -98,8 +98,8 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
-| Zachodnio-środkowe stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Południowo-środkowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Środkowo-zachodnie stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Środkowo-południowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Wschodnie stany USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -108,8 +108,8 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Zjednoczone Królestwo (południe) | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Aby uzyskać listę adresów IP regionu zamiast nazwy regionów, Pobierz [adres IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653) plik XML z Microsoft Download Center.
 

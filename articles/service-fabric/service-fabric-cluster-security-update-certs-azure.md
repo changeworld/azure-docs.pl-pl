@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f1998ec2fe82b9fd52547fbccb208542b22bc949
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161835"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306913"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
 Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
@@ -48,7 +48,7 @@ Jeśli jest zgodne z zamiarami użytkownika można usunąć certyfikatu, który 
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Dodawanie certyfikatu pomocniczego przy użyciu programu Powershell usługi Resource Manager
 > [!TIP]
-> Teraz jest lepsze i łatwiejsze w sposób dodać certyfikat pomocniczy przy użyciu [AzServiceFabricClusterCertificate Dodaj](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) polecenia cmdlet. Nie trzeba wykonać pozostałe kroki w tej sekcji.  Ponadto nie trzeba szablonu pierwotnie używana do tworzenia i wdrażania klastra, korzystając z [AzServiceFabricClusterCertificate Dodaj](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) polecenia cmdlet.
+> Istnieje teraz sposób lepsze i łatwiejsze do dodania dodatkowego certyfikatu przy użyciu [AzServiceFabricClusterCertificate Dodaj](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) polecenia cmdlet. Nie trzeba wykonać pozostałe kroki w tej sekcji.  Ponadto nie trzeba szablonu pierwotnie używana do tworzenia i wdrażania klastra, korzystając z [AzServiceFabricClusterCertificate Dodaj](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) polecenia cmdlet.
 
 Tej procedury przyjęto są zaznajomieni z działaniem Menedżera zasobów i zostaną wdrożone co najmniej jeden klaster usługi Service Fabric przy użyciu szablonu usługi Resource Manager i szablon, którego użyto do skonfigurowania klastra w wygodny. Zakłada również, czy masz doświadczenia, przy użyciu formatu JSON.
 

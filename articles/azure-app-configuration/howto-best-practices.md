@@ -12,30 +12,39 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d1275a48de5cad9321186ba20860d853b8ce55ad
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 3d9a597e7ced631627a121f3f0757e472f9a4bae
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413616"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393591"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Konfiguracja aplikacji najlepszych rozwiązań dotyczących platformy Azure
 
-W tym artykule omówiono typowe wzorce i rozwiązania, korzystając z konfiguracji aplikacji platformy Azure.
+W tym artykule omówiono typowe wzorce i najlepsze rozwiązania, podczas korzystania z konfiguracji aplikacji platformy Azure.
 
 ## <a name="key-groupings"></a>Grupy kluczy
 
-Konfiguracja aplikacji są dostępne dwie opcje do organizowania klucze: klucz prefiksów lub etykiety. Można użyć jednego lub obu.
+Konfiguracja aplikacji są dostępne dwie opcje do organizowania kluczy:
 
-Prefiksy klucza to początku części kluczy. Zestaw kluczy można grupować logicznie przy użyciu tego samego prefiksu w nazwach. Prefiksy może zawierać wiele składników połączonych ze sobą według ogranicznika takich jak `/`, podobny do ścieżki adresu URL, w celu utworzenia przestrzeni nazw. Takie hierarchie są przydatne, gdy będą przechowywane klucze dla wielu aplikacji, składników usług i środowisk, w jednym magazynie konfiguracji aplikacji. Ważne jest, aby pamiętać o są klucze kodu aplikacji odwołań do pobierania wartości odpowiednie ustawienia. Klucz nie należy zmieniać. w przeciwnym razie trzeba będzie zmodyfikować kod, za każdym razem, się dzieje.
+* Prefiksy klucza
+* Etykiety
 
-Etykiety jest atrybut kluczy. Są one używane do tworzenia wariantów klucza. Na przykład możesz przypisać etykiety do wielu wersji klucza. Może być nieco, iteracji, środowiska lub inne informacje kontekstowe. Twoja aplikacja może zażądać zupełnie innego zestawu wartości klucza po prostu, określając inną etykietę. Wszystkie odwołania kluczy może pozostać bez zmian.
+Jedną lub obie opcje służy do grupowania klucze.
+
+*Klucz prefiksy* są tymi częściami początku kluczy. Zestaw kluczy można grupować logicznie przy użyciu tego samego prefiksu w nazwach. Prefiksy może zawierać wiele składników połączone przez ogranicznik, takie jak `/`, podobny do ścieżki adresu URL, w celu utworzenia przestrzeni nazw. Takie hierarchie są przydatne, gdy w przypadku przechowywania kluczy dla wielu aplikacji, składników usług i środowisk, w jednym magazynie konfiguracji aplikacji.
+
+Ważne jest, aby pamiętać o są klucze kodu aplikacji odwołań do pobierania wartości odpowiednie ustawienia. Nie powinno się zmieniać klucze; w przeciwnym razie trzeba będzie zmodyfikować za każdym razem, się dzieje w kodzie.
+
+*Etykiety* są atrybut kluczy. Służą one do utworzenia wariantów klucza. Na przykład możesz przypisać etykiety do wielu wersji klucza. Wersja może być iteracji, środowiska lub inne informacje kontekstowe. Twoja aplikacja może zażądać zupełnie innego zestawu wartości klucza, określając inną etykietę. Co w efekcie wszystkie odwołania kluczy nie ulegają zmianie w kodzie.
 
 ## <a name="key-value-compositions"></a>Kompozycje pary klucz wartość
 
-Konfiguracja aplikacji traktuje wszystkie klucze przechowywane z niego jako niezależne podmioty. Nie próbuj wywnioskować żadnych relacji między kluczami ani dziedziczy wartości kluczy, w oparciu o ich hierarchią w. Można zagregować wiele zestawów kluczy, jednak przy użyciu etykiet połączone z odpowiedniej konfiguracji układania w kodzie aplikacji.
+Konfiguracja aplikacji traktuje wszystkie klucze przechowywane z niego jako niezależne podmioty. Konfiguracja aplikacji nie próby wywnioskować żadnych relacji między kluczami lub dziedziczy wartości kluczy, w oparciu o ich hierarchią w. Możesz jednak agregować wiele zestawów kluczy, za pomocą etykiet, w połączeniu z odpowiedniej konfiguracji układania w kodzie aplikacji.
 
-Przyjrzyjmy się przykładowi. Mają ustawienie **Asset1** o wartości mogą się różnić dla środowiska "Programowanie". Można utworzyć klucza o nazwie "Asset1" puste etykiety i etykiety o nazwie "Programowanie". Umieść wartość domyślną dla **Asset1** poprzednie i określoną wartość dla "Programowanie" w tym drugim. W kodzie należy najpierw pobrać wartości klucza bez wszelkie etykiety, a następnie te z etykietą "Programowanie", aby zastąpić wszelkie poprzednie wartości tych samych kluczy. Korzystając z nowoczesnego środowiska programowania, takiego jak .NET Core, możesz uzyskać tę możliwość stosu za darmo, jeśli dostawca natywnego konfiguracji umożliwia dostęp do konfiguracji aplikacji. Poniższy fragment kodu pokazuje, jak można implementować układania w aplikacji platformy .NET Core.
+Przyjrzyjmy się przykładowi. Załóżmy, że mają ustawienie o nazwie **Asset1**, którego wartość może się różnić w zależności od środowiska programowania. Możesz utworzyć klucz o nazwie "Asset1" puste etykiety i etykiety o nazwie "Programowanie". W pierwszej etykiecie, umieść wartość domyślną dla **Asset1**, i umieścić określoną wartość dla "Programowanie" w tym drugim.
+
+W kodzie należy najpierw pobrać wartości klucza, bez żadnych etykiet, a następnie pobrać ten sam zestaw wartości klucza po raz drugi z etykietą "Programowanie". Podczas pobierania wartości po raz drugi poprzednie wartości kluczy zostaną zastąpione. Systemu konfiguracji platformy .NET Core umożliwia "stos" wiele zestawów danych konfiguracji na siebie. Jeśli klucz istnieje w więcej niż jeden zestaw, używana jest ostatni zestaw, który go zawiera. Modern framework programowania, takich jak .NET Core umożliwia skorzystanie z tej możliwości stosu za darmo, jeśli dostawca natywnego konfiguracji umożliwia dostęp do konfiguracji aplikacji. Poniższy fragment kodu przedstawia, jak można implementować układania w aplikacji platformy .NET Core:
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
@@ -49,13 +58,18 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="app-configuration-bootstrap"></a>Bootstrap konfiguracji aplikacji
 
-Na dostęp do magazynu konfiguracji aplikacji, używając parametrów połączenia, który jest dostępny w witrynie Azure portal. Parametry połączenia zawierają informacje o poświadczeniu i będą traktowane jako wpisy tajne. Muszą one znajdować się w usłudze Key Vault. Lepszym rozwiązaniem jest korzystanie z systemu Azure z tożsamości zarządzanej. Przy użyciu tej metody wystarczy adresu URL punktu końcowego konfiguracji aplikacji do ładowania początkowego dostępu do magazynu konfiguracji. Adres URL można osadzać w kodzie aplikacji (na przykład w *appsettings.json* pliku). Zobacz [integracji z usługą Azure managed tożsamości](howto-integrate-azure-managed-service-identity.md) Aby uzyskać więcej informacji.
+Na dostęp do magazynu konfiguracji aplikacji, używając parametrów połączenia, który jest dostępny w witrynie Azure portal. Ponieważ parametry połączenia zawierają informacji o poświadczeniach, były uważane za klucze tajne. Tych kluczy tajnych, które muszą być przechowywane w usłudze Azure Key Vault, a kod musi uwierzytelniać się Key Vault, aby je pobrać.
 
-## <a name="web-app-or-function-access-to-app-configuration"></a>Aplikacja sieci Web lub funkcji dostęp do konfiguracji aplikacji
+Lepszym rozwiązaniem jest użycie funkcji zarządzanych tożsamości w usłudze Azure Active Directory. Z zarządzanych tożsamości należy tylko konfigurację aplikacji punktu końcowego adresu URL do ładowania początkowego dostępu do magazynu konfiguracji aplikacji. Adres URL można osadzać w kodzie aplikacji (na przykład w *appsettings.json* pliku). Zobacz [integracji z usługą Azure managed tożsamości](howto-integrate-azure-managed-service-identity.md) Aby uzyskać szczegółowe informacje.
 
-Możesz wprowadzić parametry połączenia ze swoim magazynem konfiguracji aplikacji do ustawień aplikacji usługi App Service w witrynie Azure portal. Można również przechowywać go w usłudze Key Vault i [odwoływać się do niego z usługi App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references). Możesz również użyć usługi Azure managed tożsamości dostępu do magazynu konfiguracji. Zobacz [integracji z usługą Azure managed tożsamości](howto-integrate-azure-managed-service-identity.md) Aby uzyskać więcej informacji.
+## <a name="app-or-function-access-to-app-configuration"></a>Aplikacja lub funkcja dostęp do konfiguracji aplikacji
 
-Alternatywnie możesz wypychać konfiguracji z konfiguracji aplikacji w usłudze App Service. Konfiguracja aplikacji udostępnia funkcję eksportu (w witrynie Azure portal i interfejs wiersza polecenia), która wysyła dane bezpośrednio do usługi App Service. Przy użyciu tej metody nie musisz zmieniać kodu aplikacji na wszystkich.
+Można zapewnić dostęp do konfiguracji aplikacji dla aplikacji sieci web lub funkcji za pomocą jednej z następujących metod:
+
+* W witrynie Azure portal należy wprowadzić parametry połączenia ze swoim magazynem konfiguracji aplikacji w ustawieniach aplikacji w usłudze App Service.
+* Store parametry połączenia ze swoim magazynem konfiguracji aplikacji w usłudze Key Vault i [odwoływać się do niego z usługi App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Użyj usługi Azure managed tożsamości dostępu do magazynu konfiguracji aplikacji. Aby uzyskać więcej informacji, zobacz [integracji z usługą Azure managed tożsamości](howto-integrate-azure-managed-service-identity.md).
+* Wypychanie konfiguracji z konfiguracji aplikacji w usłudze App Service. Konfiguracja aplikacji udostępnia funkcję eksportu (w witrynie Azure portal i interfejsu wiersza polecenia platformy Azure), która wysyła dane bezpośrednio do usługi App Service. Przy użyciu tej metody nie trzeba zmieniać kodu aplikacji na wszystkich.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

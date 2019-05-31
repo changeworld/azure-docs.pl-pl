@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306555"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388682"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
-Kontenery mowy Umożliwiaj klientom tworzenie jednego Architektura aplikacji mowy, zoptymalizowane pod kątem wykorzystać możliwości chmury niezawodne i lokalizacja krawędzi. Kontenery dwóch mowy, firma Microsoft obsługuje teraz są **mowy na tekst** i **zamiany tekstu na mowę**. 
+Kontenery mowy Umożliwiaj klientom tworzenie jednego Architektura aplikacji mowy, zoptymalizowane pod kątem wykorzystać możliwości chmury niezawodne i lokalizacja krawędzi. 
 
 Kontenery mowy dwa są **mowy na tekst** i **zamiany tekstu na mowę**. 
 
 |Funkcja|Funkcje|Najpóźniejsza|
 |-|-|--|
-|Zamiana mowy na tekst| <li>Przekształca w czasie rzeczywistym ciągłą mowę na tekst.<li>Może być używana do wsadowego przekształcania mowy z nagrań audio. <li>Obsługuje pośrednie wyniki, rozpoznawanie końca wypowiedzi, automatyczne formatowanie tekstu i maskowanie niestosownych wyrażeń. <li>Może wywoływać [interfejs API usługi Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) w celu wyodrębnienia intencji użytkownika z przekształconej mowy.\*|1.1.1|
-|Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. <li>Oferuje możliwość wyboru płci i/lub dialektów w wielu obsługiwanych językach. <li>Obsługuje dane wejściowe w postaci zwykłego tekstu lub języku znaczników syntezy mowy (SSML). |1.1.0|
+|Zamiany mowy na tekst| <li>Transcribes ciągłej w czasie rzeczywistym mowy lub partii nagrania audio na tekst za pomocą wyników pośrednich.|1.1.1|
+|Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. dane wejściowe w postaci zwykłego tekstu lub mowy syntezy Markup Language (SSML). |1.1.0|
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -110,7 +110,7 @@ Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **mowy
 |Językowe ustawienia regionalne|`Tags`|
 |--|--|
 |Chiński|`zh-cn`|
-|Angielski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
+|Polski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
 |Francuski |`fr-ca`<br>`fr-fr`|
 |Niemiecki|`de-de`|
 |Włoski|`it-it`|
@@ -139,10 +139,10 @@ Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zami
 |Językowe ustawienia regionalne|`Tags`|Obsługiwane głosów|
 |--|--|--|
 |Chiński|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
-|Angielski |`en-au`|catherine<br>hayleyrus|
-|Angielski |`en-gb`|george-apollo<br>hazelrus<br>susan apollo|
-|Angielski |`en-in`|heera apollo<br>priyarus<br>ravi apollo<br>|
-|Angielski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
+|Polski |`en-au`|catherine<br>hayleyrus|
+|Polski |`en-gb`|george-apollo<br>hazelrus<br>susan apollo|
+|Polski |`en-in`|heera apollo<br>priyarus<br>ravi apollo<br>|
+|Polski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
 |Francuski|`fr-ca`|caroline<br>harmonierus|
 |Francuski|`fr-fr`|hortenserus<br>julie-apollo<br>paul-apollo|
 |Niemiecki|`de-de`|hedda<br>heddarus<br>Stefan apollo|
@@ -155,7 +155,7 @@ Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zami
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Polecenie docker pull dla kontenerów mowy
 
-#### <a name="speech-to-text"></a>Zamiana mowy na tekst
+#### <a name="speech-to-text"></a>Zamiany mowy na tekst
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
@@ -197,7 +197,7 @@ Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} 
 ```
 
-### <a name="speech-to-text"></a>Zamiana mowy na tekst
+### <a name="speech-to-text"></a>Zamiany mowy na tekst
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
@@ -221,10 +221,10 @@ To polecenie:
 
 |Kontener|Endpoint|
 |--|--|
-|Zamiana mowy na tekst|ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1|
+|Zamiany mowy na tekst|ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1|
 |Zamiana tekstu na mowę|http://localhost:5000/speech/synthesize/cognitiveservices/v1|
 
-### <a name="speech-to-text"></a>Zamiana mowy na tekst
+### <a name="speech-to-text"></a>Zamiany mowy na tekst
 
 Kontener udostępnia punkt końcowy zapytań w oparciu o websocket, interfejsów API, które są dostępne za pośrednictwem [zestaw SDK rozpoznawania mowy](index.yml).
 
@@ -274,7 +274,7 @@ Kontener zawiera punkt końcowy REST API, który można znaleźć [tutaj](https:
 
 Po uruchomieniu kontenera, korzysta z kontenera **stdout** i **stderr** o danych wyjściowych, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Wyślij kontenery mowy, rozliczeń, informacje na platformie Azure, przy użyciu _mowy_ zasobów dla konta systemu Azure. 
 

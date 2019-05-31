@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 898f0974a6a29abde5c84d611adc8d50c3873141
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b08dfd87910cbb9f23f6b108a970d160612e1a7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372790"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255902"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analizowanie trendów w programie Visual Studio
 Narzędzie Trendy usługi Application Insights wizualizuje sposób, w jaki ważne zdarzenia telemetrii aplikacji internetowej zmieniają się z upływem czasu, co ułatwia szybkie identyfikowanie problemów i anomalii. Łącząc Cię z bardziej szczegółowymi informacjami diagnostycznymi, narzędzie Trendy może ułatwić zwiększenie wydajności aplikacji, śledzenie przyczyn wyjątków oraz odkrywanie szczegółowych danych w zdarzeniach niestandardowych.
@@ -94,7 +94,7 @@ Aby anulować zastosowanie jednego z tych filtrów, kliknij przycisk **Usuń wyb
 ![Wiele filtrów](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Znajdowanie anomalii
-Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są nieprawidłowe w porównaniu do innych bąbelków w tym samym szeregu czasowym. Z menu rozwijanego Typ widoku wybierz pozycję **Liczby w przedziale czasu (wyróżnij anomalie)** lub **Wartości procentowe w przedziale czasu (wyróżnij anomalie)**. Czerwone bąbelki są nieprawidłowe. Anomalie są zdefiniowane jako bąbelki zawierające liczby/wartości procentowe przekraczające 2,1 raza standardowe odchylenie od liczb/wartości procentowych, które wystąpiły w ostatnich dwóch okresach (48 godzin w przypadku przeglądania ostatnich 24 godzin, itp.).
+Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są nieprawidłowe w porównaniu do innych bąbelków w tym samym szeregu czasowym. Z menu rozwijanego Typ widoku wybierz pozycję **Liczby w przedziale czasu (wyróżnij anomalie)** lub **Wartości procentowe w przedziale czasu (wyróżnij anomalie)** . Czerwone bąbelki są nieprawidłowe. Anomalie są zdefiniowane jako bąbelki zawierające liczby/wartości procentowe przekraczające 2,1 raza standardowe odchylenie od liczb/wartości procentowych, które wystąpiły w ostatnich dwóch okresach (48 godzin w przypadku przeglądania ostatnich 24 godzin, itp.).
 
 ![Kolorowe punkty oznaczają anomalie](./media/visual-studio-trends/TrendsAnomalies-750.png)
 
@@ -108,5 +108,5 @@ Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są niepr
 | --- | --- |
 | **[Praca z usługą Application Insights w programie Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Wyszukiwanie danych telemetrycznych, wyświetlanie danych CodeLens i konfigurowanie usługi Application Insights. Wszystko to w programie Visual Studio. |![Kliknij prawym przyciskiem myszy projekt i wybierz kolejno opcje Application Insights, Wyszukiwanie](./media/visual-studio-trends/34.png) |
 | **[Dodawanie większej ilości danych](../../azure-monitor/app/asp-net-more.md)**<br/>Monitorowanie użycia, dostępności, zależności i wyjątków. Integrowanie śladów ze struktur rejestrowania. Zapisywanie niestandardowych danych telemetrycznych. |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/app-insights-dashboards.md)**<br/>Pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności aplikacji na żywo oraz eksportowanie telemetrii. |![Visual Studio](./media/visual-studio-trends/62.png) |
+| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/overview-dashboard.md)**<br/>Pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności aplikacji na żywo oraz eksportowanie telemetrii. |![Visual Studio](./media/visual-studio-trends/62.png) |
 

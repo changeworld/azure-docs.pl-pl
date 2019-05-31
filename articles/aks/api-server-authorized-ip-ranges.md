@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 1b983c534ab92218759175655bbf396788e4c39d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5c27d47a918939d012abee3c2317eba39587d734
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956496"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243581"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — bezpieczny dostęp do serwera interfejsu API przy użyciu autoryzowane zakresy adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ W usłudze Kubernetes serwera interfejsu API odbiera żądania do wykonywania ak
 Ten artykuł pokazuje, jak używać zakresów adresów IP serwera autoryzacji interfejsu API w celu ograniczenia żądań na płaszczyźnie kontroli. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi, uczestnictwo. Są one udostępniane do zbierania opinii i błędy z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w wersji zapoznawczej objęte "starań" pomocy technicznej. Pomoc od zespołów pomocy technicznej usługi AKS jest dostępna w godzinach pracy i Pacyfik, część strefy czasowej (PST) tylko. Aby uzyskać więcej informacji zobacz następujące artykuły pomocy technicznej:
 >
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+> * [Zasady pomocy technicznej usługi AKS][aks-support-policies]
+> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -242,7 +243,6 @@ W tym artykule został włączony zakresów adresów IP serwera autoryzacji inte
 Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze AKS] [ concepts-security] i [najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze AKS] [ operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
 
 <!-- LINKS - internal -->
@@ -265,3 +265,5 @@ Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń dla a
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

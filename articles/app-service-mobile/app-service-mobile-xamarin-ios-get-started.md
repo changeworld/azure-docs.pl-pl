@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/01/2016
+ms.date: 05/06/2019
 ms.author: crdun
-ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 559050cbc575fce5bdb5b32ec266e1cc3d09b2d5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097484"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242704"
 ---
 # <a name="create-a-xamarinios-app"></a>Tworzenie aplikacji platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku przedstawiono sposób dodawania usługi zaplecza opartej na chmurze do aplikacji mobilnej platformy Xamarin.iOS przy użyciu zaplecza Aplikacji mobilnej Azure.  Utworzysz zaplecze nowej aplikacji mobilnej oraz prostą aplikację platformy Xamarin.iOS typu *Lista czynności do wykonania*, która przechowuje dane aplikacji na platformie Azure.
 
 Wykonanie kroków tego samouczka jest wymagane w przypadku wszystkich innych samouczków dla platformy Xamarin.iOS dotyczących używania funkcji Mobile Apps w usłudze Azure App Service.
@@ -32,60 +32,41 @@ Wykonanie kroków tego samouczka jest wymagane w przypadku wszystkich innych sam
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, utwórz konto wersji próbnej platformy Azure i uzyskać maksymalnie 10 bezpłatnych aplikacji mobilnych, z których możesz korzystać nawet po zakończeniu okresu ważności wersji próbnej. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio z programem Xamarin. Instrukcje można znaleźć w temacie [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (Konfigurowanie i instalowanie dla programów Visual Studio i Xamarin).
-* Komputer Mac z zainstalowanym środowiskiem Xcode v7.0 lub nowszym i rozwiązaniem Xamarin Studio Community. Zobacz tematy [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (Konfigurowanie i instalowanie dla programów Visual Studio i Xamarin) oraz [Setup, install, and verifications for Mac users](/visualstudio/cross-platform/setup-install-and-verifications-for-mac-users) (Konfigurowanie, instalowanie oraz weryfikacje dla użytkowników komputerów Mac) (MSDN).
-
+* Aktywne konto platformy Azure. Jeśli nie masz konta, utwórz konto wersji próbnej platformy Azure i uzyskać maksymalnie 10 bezpłatnych aplikacji mobilnych, z których możesz korzystać nawet po zakończeniu okresu ważności wersji próbnej. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Visual Studio for Mac. Zobacz [Instalator i instalacja programu Visual Studio dla komputerów Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* Komputer Mac z Xcode 9.0 lub nowszym.
+  
 ## <a name="create-an-azure-mobile-app-backend"></a>Tworzenie zaplecza Aplikacji mobilnej Azure
-Wykonaj te kroki, aby utworzyć zaplecze aplikacji mobilnej.
-
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-the-server-project"></a>Konfigurowanie projektu serwera
-W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które może być używane przez aplikacje mobilne klientów. Następnie należy pobrać projekt serwera dla prostego zaplecza typu „lista czynności do wykonania” i opublikować go na platformie Azure.
-
-Wykonaj następujące kroki, aby skonfigurować projekt serwera do użycia zaplecza Node.js lub .NET.
-
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Tworzenie połączenia z bazą danych i konfigurowanie projektu klienta i serwera
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinios-app"></a>Pobieranie i uruchamianie aplikacji platformy Xamarin.iOS
-1. Otwórz [Azure Portal] w oknie przeglądarki.
-2. W bloku ustawień Aplikacji mobilnej kliknij pozycję **Wprowadzenie** > **Xamarin.iOS**. W kroku 3 kliknij pozycję **Utwórz nową aplikację**, jeśli nie została jeszcze wybrana.  Następnie kliknij przycisk **Pobierz**.
+## <a name="run-the-xamarinios-app"></a>Uruchamianie aplikacji platformy Xamarin.iOS
+1. Otwórz projekt rozszerzenia Xamarin.iOS.
 
-      Zostanie pobrana aplikacja kliencka, która będzie łączyć się z zapleczem aplikacji mobilnej. Zapisz skompresowany plik projektu na komputerze lokalnym i zapamiętaj, gdzie został on zapisany.
-3. Wyodrębnij pobrany projekt, a następnie otwórz go w programie Xamarin Studio (lub Visual Studio).
+2. Przejdź do [witryny Azure portal](https://portal.azure.com/) i przejdź do aplikacji mobilnej, który został utworzony. Na `Overview` bloku, zwróć uwagę na adres URL, który jest publiczny punkt końcowy dla twojej aplikacji mobilnej. Przykład — nazwa witryny, dla mojej nazwy aplikacji "test123" będzie https://test123.azurewebsites.net.
 
-    ![][9]
+3. Otwórz plik `QSTodoService.cs` w tym folderze - xamarin.iOS/ZUMOAPPNAME. Nazwa aplikacji jest `ZUMOAPPNAME`.
 
-    ![][8]
-4. Naciśnij klawisz F5, aby skompilować projekt i uruchomić aplikację w emulatorze urządzenia iPhone.
-5. W aplikacji wpisz znaczący tekst, na przykład *Poznaj program Xamarin*, a następnie kliknij przycisk **+**.
+4. W `QSTodoService` klasy, Zastąp `ZUMOAPPURL` zmiennej z publicznym punktem końcowym powyżej.
+
+    `const string applicationURL = @"ZUMOAPPURL";`
+
+    staje się
+    
+    `const string applicationURL = @"https://test123.azurewebsites.net";`
+    
+5. Naciśnij klawisz F5, aby wdrożyć i uruchomić aplikację w emulatorze urządzenia iPhone.
+
+6. W aplikacji wpisz znaczący tekst, na przykład *ukończenia tego samouczka* a następnie kliknij przycisk +.
 
     ![][10]
 
     Dane z żądania zostaną wstawione do tabeli TodoItem. Elementy przechowywane w tabeli są zwracane przez zaplecze aplikacji mobilnej, a dane są wyświetlane na liście.
 
-> [!NOTE]
-> Możesz przejrzeć kod uzyskujący dostęp do zaplecza aplikacji mobilnej w celu wyszukiwania i wstawiania danych. Znajduje się on w pliku C# QSTodoService.cs.
->
->
-
-## <a name="next-steps"></a>Kolejne kroki
-* [Dodawanie synchronizacji offline do aplikacji](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-xamarin-ios-get-started-users.md)
-* [Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Android](app-service-mobile-xamarin-ios-get-started-push.md)
-* [Jak używać zarządzanego klienta usługi Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
-
-<!-- Anchors. -->
-[Getting started with mobile app backends]:#getting-started
-[Create a new mobile app backend]:#create-new-service
-[Next Steps]:#next-steps
-
+   > [!NOTE]
+   > Możesz przejrzeć kod uzyskujący dostęp do zaplecza aplikacji mobilnej w celu wyszukiwania i wstawiania danych. Znajduje się on w pliku C# ToDoActivity.cs.
+   
 <!-- Images. -->
-[6]: ./media/app-service-mobile-xamarin-ios-get-started/xamarin-ios-quickstart.png
-[8]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-xamarin-project-ios-vs.png
-[9]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-xamarin-project-ios-xs.png
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
-
-<!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/

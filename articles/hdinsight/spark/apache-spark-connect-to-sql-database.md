@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.openlocfilehash: 84946083146517146ad9aeb48693230aaaaf7943
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/21/2019
+ms.openlocfilehash: 3812cf55a26a12ef110b8acf14edd0e8bfd36851
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701176"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236528"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Klaster HDInsight Spark umożliwia odczytywanie i zapisywanie danych do usługi Azure SQL database
 
-Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu usługi Azure SQL database i odczytania, zapisywania i przesyłanie strumieniowe danych do bazy danych SQL. Instrukcje w tym artykule korzystają [notesu programu Jupyter](https://jupyter.org/) można uruchamiać fragmenty kodu z języka Scala. Można jednak tworzenie autonomicznych aplikacji w języku Scala lub Python i wykonywać te same zadania. 
+Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu usługi Azure SQL database i odczytania, zapisywania i przesyłanie strumieniowe danych do bazy danych SQL. Instrukcje w tym artykule korzystają [notesu programu Jupyter](https://jupyter.org/) można uruchamiać fragmenty kodu z języka Scala. Można jednak tworzenie autonomicznych aplikacji w języku Scala lub Python i wykonywać te same zadania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,7 +36,7 @@ Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight pr
 Rozpocznij od utworzenia [notesu programu Jupyter](https://jupyter.org/) skojarzonego z klastrem Spark. Ten notes umożliwia uruchamiać fragmenty kodu, używane w tym artykule. 
 
 1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster.
-1. Wybierz **notesu programu Jupyter** poniżej **pulpity nawigacyjne klastra** po prawej stronie.  Jeśli nie widzisz **pulpity nawigacyjne klastra**, kliknij przycisk **Przegląd** menu po lewej stronie w bloku. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
+1. Wybierz **notesu programu Jupyter** poniżej **pulpity nawigacyjne klastra** po prawej stronie.  Jeśli nie widzisz **pulpity nawigacyjne klastra**, wybierz opcję **Przegląd** menu po lewej stronie. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
     ![Notes Jupyter na platformie Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook na platformie Spark")
    
@@ -164,7 +164,7 @@ W tej sekcji, firma Microsoft przesyłanie strumieniowe danych do **hvactable** 
 
 1. Pierwszym krokiem, upewnij się, nie ma żadnych rekordów w **hvactable**. Za pomocą programu SSMS, uruchom następujące zapytanie w tabeli.
 
-       DELETE FROM [dbo].[hvactable]
+       TRUNCATE TABLE [dbo].[hvactable]
 
 1. Tworzenie nowego notesu Jupyter w klastrze HDInsight Spark. Wklej poniższy fragment kodu w komórce kodu, a następnie naciśnij klawisz **SHIFT + ENTER**:
 
@@ -174,7 +174,7 @@ W tej sekcji, firma Microsoft przesyłanie strumieniowe danych do **hvactable** 
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Firma Microsoft strumienia danych z **HVAC.csv** do hvactable. Plik HVAC.csv jest dostępny w klastrze w */HdiSamples/HdiSamples/SensorSampleData/HVAC/*. W poniższym fragmencie kodu możemy najpierw pobrania schematu dane, które mają być przesyłane strumieniowo. Następnie utwórz ramkę danych przesyłania strumieniowego przy użyciu tego schematu. Wklej ten fragment w komórce kodu i naciśnij klawisz **SHIFT + ENTER** do uruchomienia.
+1. Firma Microsoft strumienia danych z **HVAC.csv** do hvactable. Plik HVAC.csv jest dostępny w klastrze w `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. W poniższym fragmencie kodu możemy najpierw pobrania schematu dane, które mają być przesyłane strumieniowo. Następnie utwórz ramkę danych przesyłania strumieniowego przy użyciu tego schematu. Wklej ten fragment w komórce kodu i naciśnij klawisz **SHIFT + ENTER** do uruchomienia.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

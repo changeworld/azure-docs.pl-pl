@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127552"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386771"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurowanie środowiska obsługiwanego interfejsu użytkownika
 
@@ -78,7 +78,7 @@ Korzystanie z albo Interfejsie hostowanej:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Dodaj następujące parametry zapytania do adresu URL, zgodnie z potrzebami. Aby uzyskać informacje na temat tych parametrów, zobacz [interfejs API wyszukiwania niestandardowego](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) odwołania.
+  > Dodaj następujące parametry zapytania do adresu URL, zgodnie z potrzebami. Aby uzyskać informacje na temat tych parametrów, zobacz [interfejs API wyszukiwania niestandardowego](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) odwołania.
   >
   > - q
   > - mkt

@@ -1,9 +1,9 @@
 ---
-title: Utwórz certyfikat secure LDAP dla usługi Azure AD Domain Services Zarządzaj domeną | Dokumentacja firmy Microsoft
+title: Tworzenie. Plik PFX przy użyciu bezpiecznego certyfikatu LDAP (LDAPS) dla domeny usług domenowych Azure AD
 description: Utwórz certyfikat secure LDAP dla usługi Azure AD Domain Services Zarządzaj domeną
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -13,22 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2017
-ms.author: ergreenl
-ms.openlocfilehash: 801ba3b84ba9956ca8d13916ac4d90060a7f4037
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.author: mstephen
+ms.openlocfilehash: b79418c6e64727e4fdf13b3f4f267d84fcf5da85
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418561"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235023"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Tworzenie. Plik PFX przy użyciu bezpiecznego certyfikatu LDAP (LDAPS) dla domeny zarządzanej
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Pełne [zadanie 1: uzyskiwanie certyfikatu dla protokołu secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md).
 
+Pełne [zadanie 1: uzyskiwanie certyfikatu dla protokołu secure LDAP](configure-ldaps.md).
 
 ## <a name="task-2-export-the-secure-ldap-certificate-to-a-pfx-file"></a>Zadanie 2. Certyfikat secure LDAP do eksportowania. Plik PFX
+
 Przed rozpoczęciem tego zadania należy uzyskać certyfikat secure LDAP z publicznego urzędu certyfikacji, lub Utwórz certyfikat z podpisem własnym.
 
 Aby wyeksportować certyfikat protokołu LDAPS. Plik PFX:
@@ -96,6 +97,6 @@ Aby wyeksportować certyfikat protokołu LDAPS. Plik PFX:
 
     ![Wyeksportuj certyfikat gotowe](./media/active-directory-domain-services-admin-guide/secure-ldap-exported-as-pfx.png)
 
-
 ## <a name="next-step"></a>Następny krok
+
 [Zadanie 3: Włączanie protokołu secure LDAP dla domeny zarządzanej](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)

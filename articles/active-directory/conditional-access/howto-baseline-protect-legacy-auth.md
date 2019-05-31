@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562214d4bf8fd83f740e114a6d77200b4611649
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003224"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235554"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Zasady punktu odniesienia: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
 Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Directory (Azure AD) obsługuje szerokiej gamy protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Uwierzytelnianie starszych jest terminu, który odwołuje się do żądania uwierzytelnienia przez:
 
 * Starsi klienci pakietu Office, które nie korzystają z nowoczesnego uwierzytelniania (na przykład klienta pakietu Office 2010)
-* Dowolnego klienta, który korzysta z protokołów poczty starszej wersji, takich jak IMAP/SMPT/POP3
+* Dowolnego klienta, który korzysta z protokołów poczty starszej wersji, takich jak IMAP/SMTP/POP3
 
 Obecnie większość wszystkich uszczerbku prób logowania pochodzą z uwierzytelniania starszej wersji. Uwierzytelnianie starszych nie obsługuje uwierzytelnianie wieloskładnikowe (MFA). Nawet w przypadku zasad MFA włączone w Twoim katalogu, nieuprawnione można uwierzytelniać przy użyciu starszej wersji protokołu i Pomiń uwierzytelnianie wieloskładnikowe.
 
@@ -74,13 +74,13 @@ Jeśli używasz systemu MacOS zaleca się uaktualnienie do pakietu Office dla ko
 
 Dla klientów programu Outlook z systemem Windows korzystała z nowoczesnego uwierzytelniania Exchange Online musi być nowoczesnego uwierzytelniania, także włączone. Jeśli z nowoczesnego uwierzytelniania jest wyłączona w przypadku Usługa Exchange Online, klientów programu Outlook z systemem Windows obsługujące nowoczesnego uwierzytelniania (Outlook 2013 lub nowszy) będą używane uwierzytelnianie podstawowe do łączenia do skrzynek pocztowych usługi Exchange Online.
 
-SharePoint Online jest włączony dla domyślnej nowoczesnego uwierzytelniania. W przypadku katalogów utworzonych po 1 sierpnia 2017 r. nowoczesnego uwierzytelniania jest domyślnie włączona, w usłudze Exchange Online. Jednak jeśli wcześniej była wyłączona nowoczesnego uwierzytelniania lub używasz Katalog utworzony przed tą datą, postępuj zgodnie z instrukcjami w artykule aby [Włączanie nowoczesnego uwierzytelniania w usłudze Exchange Online](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+SharePoint Online jest włączony dla domyślnej nowoczesnego uwierzytelniania. W przypadku katalogów utworzonych po 1 sierpnia 2017 r. nowoczesnego uwierzytelniania jest domyślnie włączona, w usłudze Exchange Online. Jednak jeśli wcześniej była wyłączona nowoczesnego uwierzytelniania lub używasz Katalog utworzony przed tą datą, postępuj zgodnie z instrukcjami w artykule aby [Włączanie nowoczesnego uwierzytelniania w usłudze Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 ### <a name="step-4-skype-for-business"></a>Krok 4: Skype dla firm
 
 Aby zapobiec starsze uwierzytelnianie żądań przez program Skype dla firm, należy włączyć nowoczesne uwierzytelnianie dla usługi Skype dla firm Online. W przypadku katalogów utworzonych po 1 sierpnia 2017 r. nowoczesne uwierzytelnianie dla aplikacji Skype dla firm jest domyślnie włączona.
 
-Aby włączyć nowoczesnego uwierzytelniania w programie Skype dla firm, zalecamy przejście do Microsoft Teams, która domyślnie obsługuje nowoczesnego uwierzytelniania. Jednak nie jest możliwe do tr w tej chwili, należy włączyć nowoczesne uwierzytelnianie dla usługi Skype dla firm Online, Skype dla firm klientów uruchamia korzystających z nowoczesnego uwierzytelniania. Wykonaj następujące kroki w artykule [Skype dla firm topologie obsługiwane z nowoczesnym uwierzytelnianiem](https://docs.microsoft.com/en-us/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), kroki włączyć nowoczesne uwierzytelnianie dla aplikacji Skype dla firm.
+Aby włączyć nowoczesnego uwierzytelniania w programie Skype dla firm, zalecamy przejście do Microsoft Teams, która domyślnie obsługuje nowoczesnego uwierzytelniania. Jednak nie jest możliwe do tr w tej chwili, należy włączyć nowoczesne uwierzytelnianie dla usługi Skype dla firm Online, Skype dla firm klientów uruchamia korzystających z nowoczesnego uwierzytelniania. Wykonaj następujące kroki w artykule [Skype dla firm topologie obsługiwane z nowoczesnym uwierzytelnianiem](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), kroki włączyć nowoczesne uwierzytelnianie dla aplikacji Skype dla firm.
 
 Oprócz Włączanie nowoczesnego uwierzytelniania dla usługi Skype dla firm Online, firma Microsoft zaleca nowoczesnego uwierzytelniania można włączyć dla usługi Exchange Online, gdy włączanie nowoczesnego uwierzytelniania dla usługi Skype dla firm. Ten proces ułatwi Synchronizuj stan nowoczesnego uwierzytelniania w usłudze Exchange Online i Skype dla firm online i uniemożliwi wielu monity o logowanie do usługi Skype dla firm klientów.
 
@@ -105,11 +105,11 @@ Procedurę włączania nowoczesnego uwierzytelniania można znaleźć w następu
 
 Zasady **bazowymi zasadami: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
 
-Aby włączyć te zasady i chronić administratorów:
+Aby włączyć te zasady i chronić swoją organizację:
 
 1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
-1. Na liście zasad wybierz **bazowymi zasadami: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)**.
+1. Na liście zasad wybierz **bazowymi zasadami: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
 1. Dodaj wykluczenia użytkownika, klikając **użytkowników** > **wybierz wykluczonych użytkowników** i wybierając pozycję Użytkownicy, którzy muszą być wyłączone. Kliknij przycisk **wybierz** następnie **gotowe**.
 1. Kliknij przycisk **Zapisz**.

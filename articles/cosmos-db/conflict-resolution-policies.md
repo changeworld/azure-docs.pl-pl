@@ -4,15 +4,15 @@ description: W tym artykule opisano kategorie konfliktu i zasady rozwiązywania 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98e9f5fff1b74d417ee07ed0056c8046b49baa17
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892595"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236547"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Typy konfliktów i zasady ich rozwiązywania
 
@@ -30,7 +30,7 @@ Dla konta usługi Azure Cosmos skonfigurowany z wieloma regionami zapisu może w
 
 Usługa Azure Cosmos DB oferuje elastyczny mechanizm rozwiązywania konfliktów przy zapisywaniu opartych na zasadach. Możesz wybrać dwie zasady rozwiązywania konfliktów na kontenerze usługi Azure Cosmos:
 
-- **Ostatni zapis Wins (LWW)**: Te zasady rozpoznawania domyślnie używa właściwości zdefiniowane przez system sygnatury czasowej. Jest ona oparta na protokole zegara synchronizacji czasu. Jeśli korzystasz z interfejsu API SQL, można określić wszelkie inne wartości liczbowych właściwości niestandardowej (np. własny pojęcie sygnaturę czasową) służący do rozwiązywania konfliktów. Właściwości niestandardowej wartości liczbowych jest również nazywany *Ścieżka rozpoznawania konfliktu*. 
+- **Ostatni zapis Wins (LWW)** : Te zasady rozpoznawania domyślnie używa właściwości zdefiniowane przez system sygnatury czasowej. Jest ona oparta na protokole zegara synchronizacji czasu. Jeśli korzystasz z interfejsu API SQL, można określić wszelkie inne wartości liczbowych właściwości niestandardowej (np. własny pojęcie sygnaturę czasową) służący do rozwiązywania konfliktów. Właściwości niestandardowej wartości liczbowych jest również nazywany *Ścieżka rozpoznawania konfliktu*. 
 
   Jeśli dwa lub więcej elementów konflikt wstawić lub Zastąp operacje, element o najwyższej wartości dla ścieżki rozwiązywania konfliktów staje się zwycięzca. System Określa zwycięzcą, jeśli wiele elementów ma taką samą wartość liczbową dla ścieżki rozwiązywania konfliktów. Wszystkie regiony są gwarantowane zbiegają się do pojedynczego zwycięzca i na końcu się przy użyciu tej samej wersji elementu zatwierdzone. Po usunięciu biorących udział konflikty, zawsze usuniętych wersji wins przez wstawić lub Zastąp konflikty. Ten wynik odbywa się niezależnie od tego, co to jest wartość Ścieżka rozpoznawania konfliktu.
 

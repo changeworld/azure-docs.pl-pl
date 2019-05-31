@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544764"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242301"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plan usługi Azure Functions — wersja Premium (wersja zapoznawcza)
 
@@ -91,9 +91,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>Dostępnego wystąpienia jednostki SKU
 
-Podczas tworzenia, nasz plan skalowania, można wybrać trzy rozmiarów wystąpień.  Użytkownik jest naliczana dla całkowitej liczby rdzeni i pamięci, użycie na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień zgodnie z potrzebami.  
+Podczas tworzenia lub skalowania planu, możesz wybrać trzy rozmiarów wystąpień.  Użytkownik jest naliczana dla całkowitej liczby rdzeni i pamięci, użycie na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień zgodnie z potrzebami.  
 
-|Jednostka SKU|Rdzenie|Memory (Pamięć)|Magazyn|
+|SKU|Rdzenie|Memory (Pamięć)|Magazyn|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -103,7 +103,7 @@ Podczas tworzenia, nasz plan skalowania, można wybrać trzy rozmiarów wystąpi
 
 Poniżej są obecnie obsługiwane regiony, w publicznej wersji zapoznawczej.
 
-|Obszar|
+|Region|
 |--|
 |Australia Wschodnia|
 |Australia Południowo-Wschodnia|
@@ -114,12 +114,12 @@ Poniżej są obecnie obsługiwane regiony, w publicznej wersji zapoznawczej.
 |Francja Środkowa|
 |Japonia Zachodnia|
 |Korea Środkowa|
-|Północno-środkowe stany USA|
+|Środkowo-północne stany USA|
 |Europa Północna|
-|Południowo-środkowe stany USA|
+|Środkowo-południowe stany USA|
 |Indie Południowe|
 |Azja Południowo-Wschodnia|
-|Zjednoczone Królestwo (zachód)|
+|Zachodnie Zjednoczone Królestwo|
 |Europa Zachodnia|
 |Indie Zachodnie|
 |Zachodnie stany USA|

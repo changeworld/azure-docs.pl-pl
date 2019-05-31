@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Włączanie synchronizacji skró
 description: Wprowadzenie do usługi Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 5a32a0df-a3ca-4ebe-b980-91f58f8030fc
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2018
-ms.author: ergreenl
-ms.openlocfilehash: ad905f93a8c4b03fd6ccc9edb93b52f23bcb2c58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 734e4bad970229ea8eb770d586062b098e586353
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417489"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234888"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services
 W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów haseł wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji skrótów haseł użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
@@ -82,6 +82,6 @@ Nowego hasła w usługach Azure Active Directory Domain Services można używać
 * [Jak zaktualizować własne hasło](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [Wprowadzenie do zarządzania hasłami w usłudze Azure AD](../active-directory/authentication/quickstart-sspr.md)
 * [Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services dla zsynchronizowanej dzierżawy usługi Azure AD](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-* [Administrowanie domeną zarządzaną usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-administer-domain.md)
+* [Zarządzaj domeną usługi Azure AD Domain Services](manage-domain.md)
 * [Dołączanie maszyny wirtualnej z systemem Windows do domeny zarządzanej usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Dołączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux do domeny zarządzanej usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

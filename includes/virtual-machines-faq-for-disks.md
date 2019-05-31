@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145916"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248906"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -141,19 +141,9 @@ Za dyski zarządzane nie można ich zmienić. Jednak tak długo, jak nie jest ob
 
 Partycjonowanie GPT może służyć tylko na dyskach danych, nie dyski systemu operacyjnego. Dyski systemu operacyjnego, należy użyć stylu partycji MBR.
 
-## <a name="uploading-to-a-managed-disk"></a>Trwa przekazywanie do dysku zarządzanego
+**Jakich typów dysków obsługuje migawki?**
 
-**Dane można przekazywać do istniejącego zarządzanego dysku?**
-
-Nie, przekazywania można używać tylko podczas tworzenia nowego pustego dysku z **ReadyToUpload** stanu.
-
-**Czy mogę dołączyć dysku do maszyny Wirtualnej jest w stanie przekazywania?**
-
-Nie.
-
-**Stan przekazywania mogą utworzyć migawkę dysków zarządzanych?**
-
-Nie.
+Dysk SSD w warstwie Premium SSD w warstwie standardowa i SSD w warstwie standardowa obsługuje migawki bez limitu rozmiaru. Dlatego możesz migawki dużych dysków (maksymalnie 32 TiB). Największa SSD nie obsługują migawki.
 
 ## <a name="standard-ssd-disks"></a>Dyski SSD w warstwie standardowa
 
@@ -353,7 +343,7 @@ Tak.
 
 **Co to są największych rozmiary dysków obsługiwanych przez usługę Azure Backup i Azure Site Recovery?**
 
-Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azure Site Recovery jest 4 TiB. Dysków większych, maksymalnie 32 TiB zostaną dodane wkrótce.
+Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azure Site Recovery jest 4 TiB. Dysków większych, maksymalnie 32 TiB nie jest jeszcze dostępna.
 
 **Co to jest zalecaną maszynę Wirtualną o rozmiarach większych rozmiarów dysków (> 4 TiB) dla dysków standardowych dysków Twardych i SSD w warstwie standardowa w celu osiągnięcia zoptymalizowane pod kątem operacji We/Wy i przepustowości dysku?**
 

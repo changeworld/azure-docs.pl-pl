@@ -4,32 +4,32 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: c2db5740d6373c8f6be5dabe0260fe7f99575641
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce64047fd7490106790ea8bb1ad7963d82a87c24
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554273"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238447"
 ---
-| Zasób | Bezpłatna | Udostępniona | Podstawowa | Standardowa (Standard) | Premium (wersja 2) | Izolowane </th> |
+| Resource | Wolne | Udostępnione | Podstawowa | Standardowa (Standard) | Premium (wersja 2) | Izolowane </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Aplikacje internetowe, mobilne i interfejsu API](https://azure.microsoft.com/services/app-service/) na [planu usługi Azure App Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup>|
 | [Plan usługi App Service](../articles/app-service/overview-hosting-plans.md) |10 na region |10 dla grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów|
-| Typ wystąpienia obliczeniowe |Udostępniona |Udostępniona |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup></p> |W wersji dedykowanej<sup>3</sup>|
+| Typ wystąpienia obliczeniowe |Udostępnione |Udostępnione |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup></p> |W wersji dedykowanej<sup>3</sup>|
 | [Skalowanie w poziomie](../articles/app-service/web-sites-scale.md) (maksymalna liczba wystąpień) |1 udostępnionego |1 udostępnionego |3 w wersji dedykowanej<sup>3</sup> |10 w wersji dedykowanej<sup>3</sup> |20 w wersji dedykowanej<sup>3</sup>|w wersji dedykowanej 100<sup>4</sup>|
 | Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | Czas Procesora (5 minut)<sup>6</sup> |3 minuty |3 minuty |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | Czas Procesora (dzień)<sup>6</sup> |60 minut |240 minut |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Pamięć (1 godzina) |1024 MB na plan usługi App Service |1024 MB dla aplikacji |ND |ND |ND |ND |
 | Przepustowość |165 MB |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |Nieograniczona [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) zastosowania |
-| Architektura aplikacji |32-bitowa |32-bitowa |32-bitowy/64-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |
+| Architektura aplikacji |32-bitowy |32-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |32-bitowy/64-bitowy |
 | Web sockets dla każdego wystąpienia<sup>7</sup> |5 |35 |350 |Nieograniczona liczba |Nieograniczona liczba |Nieograniczona liczba |
 | Współbieżne [debugera połączeń](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikację |1 |1 |1 |5 |5 |5 |
 | Certyfikaty usługi App Service na subskrypcję<sup>10</sup>| Nieobsługiwane | Nieobsługiwane |10 |10 |10 |10 |
 | Domeny niestandardowe na aplikację</a> |0 (tylko w przypadku poddomena azurewebsites.net)|500 |500 |500 |500 |500 |
 | Domena niestandardowa [Obsługa protokołu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nieobsługiwane, certyfikat wieloznaczny dla *. azurewebsites.net domyślnie dostępne|Nieobsługiwane, certyfikat wieloznaczny dla *. azurewebsites.net domyślnie dostępne|Nieograniczone połączenia SNI SSL |Nieograniczone połączenia SNI SSL i 1 połączenie IP SSL połączeń |Nieograniczone połączenia SNI SSL i 1 połączenie IP SSL połączeń | Nieograniczone połączenia SNI SSL i 1 połączenie IP SSL połączeń|
 | Zintegrowana usługa równoważenia obciążenia | |X |X |X |X |X<sup>9</sup> |
-| [Zawsze włączone](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
+| [Zawsze włączone](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Zaplanowane kopie zapasowe](../articles/app-service/manage-backup.md) | | | | Zaplanowane kopie zapasowe co 2 godziny, maksymalnie 12 kopii zapasowych dziennie (Ręczne + zaplanowane) | Zaplanowane kopie zapasowe co godzinę, maksymalnie 50 kopii zapasowych dziennie (Ręczne + zaplanowane) | Zaplanowane kopie zapasowe co godzinę, maksymalnie 50 kopii zapasowych dziennie (Ręczne + zaplanowane) |
 | [Skalowanie automatyczne](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
 | [Zadania Webjob](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |

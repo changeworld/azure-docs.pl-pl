@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: ab777b487159b009bf2cac6086bb09cc71714b0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587754"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257565"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Tworzenie interfejsu użytkownika witryny Azure portal dla aplikacji zarządzanej
 Ten dokument wprowadza podstawowe pojęcia dotyczące pliku createUiDefinition.json. Azure portal używa tego pliku do generowania interfejsu użytkownika do tworzenia aplikacji zarządzanej.
@@ -48,6 +48,8 @@ Schemat właściwości parametrów zależy od kombinacji obsługi i wersji. Dla 
 
 W tym `$schema` jest zalecane, ale opcjonalne. Jeśli zostanie określony, wartość `version` musi odpowiadać wersji w ramach `$schema` identyfikatora URI.
 
+Można użyć edytora JSON do tworzenia definicji interfejsu użytkownika lub piaskownicy definicji interfejsu użytkownika można użyć do tworzenia i definicji interfejsu użytkownika w wersji zapoznawczej. Aby uzyskać więcej informacji na temat piaskownicy, zobacz [testowania interfejsu portalu usługi Azure Managed Applications](test-createuidefinition.md).
+
 ## <a name="basics"></a>Podstawy
 Krok podstawy zawsze stanowi pierwszy krok kreatora generowane, gdy w witrynie Azure portal analizuje plik. Oprócz wyświetlania elementów wymienionych w `basics`, portalu wprowadza elementy użytkownikom na wybór subskrypcji, grupy zasobów i lokalizacji wdrożenia. Ogólnie rzecz biorąc elementy, które zapytania dla parametrów całe wdrożenie, takie jak nazwa poświadczenia klastra lub administrator powinien przeprowadzić w tym kroku.
 
@@ -72,7 +74,7 @@ Aby ustawić nazwę zasobu aplikacji zarządzanej, musi zawierać wartość o na
 ```
 
 ## <a name="functions"></a>Funkcje
-Podobnie jak funkcje szablonu w usłudze Azure Resource Manager (zarówno w składni i funkcji), CreateUiDefinition udostępnia funkcje do pracy z elementów danych wejściowych i danych wyjściowych, a także funkcje takie jak warunkowych.
+Podobnie jak funkcje szablonu w usłudze Azure Resource Manager (zarówno w składni i funkcji), CreateUiDefinition udostępnia funkcje do pracy z danymi wejściowymi elementów i danych wyjściowych i funkcji, takich jak warunkowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Sam plik createUiDefinition.json ma prosty schemat. Rzeczywiste głębokość pochodzi z wszystkie obsługiwane elementy i funkcje. Te elementy są opisane bardziej szczegółowo na:

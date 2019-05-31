@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db515454c68fe3a7eb1a4616c3278d9fc93ddb2c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621466"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258661"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Zarządzanie aplikacjami i usługami jako zasoby usługi Azure Resource Manager
 
@@ -258,6 +258,17 @@ Poniższy fragment kodu przedstawia różnych rodzajów zasobów, które mogą b
    > *ApiVersion* musi być równa `"2017-07-01-preview"`. Tego szablonu można także wdrożyć niezależnie od klastra, tak długo, jak klastra została już wdrożona.
 
 5. Wdrażanie! 
+
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>Usuń zasób aplikacji dostawcy zasobów usługi w sieci szkieletowej
+Poniżej spowoduje wyzwolenie pakietu aplikacji jako niezaznaczone aprowizowane z klastra, a to spowoduje oczyszczenie użycie miejsca na dysku:
+```powershell
+Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2017-07-01-preview" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
+```
+Po prostu usunięcie Microsoft.ServiceFabric/clusters/application za pomocą szablonu usługi ARM nie będzie wstrzymał obsługi administracyjnej aplikacji
+
+>[!NOTE]
+> Po zakończeniu usuwania nie powinny występować wersja pakietu w SFX lub ARM dłużej. Nie można usunąć typu zasobu wersji aplikacji aplikacja jest uruchomiona. ARM/SFRP uniemożliwi to. Jeśli spróbujesz wstrzymał obsługi administracyjnej uruchomiony pakiet środowiska uruchomieniowego SF uniemożliwi mu.
+
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Zarządzanie istniejącej aplikacji za pomocą usługi Resource Manager
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b486e617389e1611dfebf3d347d2d64df088593
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387627"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258650"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Dowiedz się więcej o różnicach między usługami w chmurze i usługi Service Fabric przed przeprowadzeniem migracji aplikacji.
 Microsoft Azure Service Fabric to platforma aplikacji chmurze następnej generacji dla aplikacji rozproszonych, wysoce skalowalną i wysoce niezawodne. Wprowadza wiele nowych funkcji do tworzenia pakietów, wdrażanie, uaktualnianie i zarządzania aplikacji rozproszonych w chmurze. 
@@ -88,6 +88,24 @@ Typowe mechanizm komunikacji między warstwami w środowiskach bezstanowych, tak
 Tego samego modelu komunikacji może służyć w usłudze Service Fabric. Może to być przydatne podczas migrowania istniejących aplikacji usługi w chmurze w usłudze Service Fabric. 
 
 ![Bezpośrednia komunikacja usługi Service Fabric][8]
+
+## <a name="parity"></a>Parzystość
+[Cloud Services jest podobna do usługi Service Fabric w zakresie stopnia kontroli i łatwości użycia, lecz teraz jest to starsza usługa i usługi Service Fabric jest zalecane w przypadku nowych wdrożeń](https://docs.microsoft.com/azure/app-service/overview-compare); Oto porównanie interfejsu API:
+
+
+| **Interfejs API usługi w chmurze** | **Usługa Service Fabric interfejsu API** | **Uwagi** |
+| --- | --- | --- |
+| RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId lub. NodeName | Identyfikator jest właściwością nazwa węzła |
+| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | Filtrowanie według NodeName i użyć właściwości FD |
+| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | Filtrowanie według NodeName i użyj właściwości uaktualnienia |
+| RoleInstance.GetInstanceEndpoints | FabricRuntime.GetActivationContext lub nazewnictwa (ResolveService) | CodePackageActivationContext, która jest dostępna zarówno FabricRuntime.GetActivationContext, jak i w obrębie repliki za pośrednictwem ServiceInitializationParameters.CodePackageActivationContext oferowane w trakcie. Inicjowanie |
+| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | Jeśli chcesz zrobić tego samego sortowania, filtrowania według typu, który można pobrać listy typów węzłów z klastra manifestu za pośrednictwem FabricClient.ClusterManager.GetClusterManifest i Pobierz typy ról/węzłów, w tym miejscu. |
+| RoleEnvironment.GetIsAvailable | Połącz WindowsFabricCluster lub Utwórz FabricRuntime wskazywanej do określonego węzła | * |
+| RoleEnvironment.GetLocalResource | CodePackageActivationContext.Log/Temp/Work | * |
+| RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext.Log/Temp/Work | * |
+| LocalResource.GetRootPath | CodePackageActivationContext.Log/Temp/Work | * |
+| Role.GetInstances | FabricClient.QueryManager.GetNodeList lub ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime.GetActivationContext lub nazewnictwa (ResolveService) | * |
 
 ## <a name="next-steps"></a>Następne kroki
 Jest to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric zastąpić tylko wdrożenie usługi w chmurze za pomocą aplikacji usługi Service Fabric, utrzymywanie ogólna Architektura aplikacji mniej więcej taka sama. Poniższy artykuł zawiera wskazówki ułatwiające przekonwertować bezstanowej usługi Service Fabric w sieci Web lub roli procesu roboczego.

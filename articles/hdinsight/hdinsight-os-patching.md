@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cfbd68e66730fc338130bc16849fe0b2f4abd6be
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203636"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244408"
 ---
 # <a name="os-patching-for-hdinsight"></a>Stosowanie poprawek dla HDInsight systemu operacyjnego 
 
@@ -45,6 +45,7 @@ Gdy za pomocą ten skrypt wymaga następujących informacji:
 
 > [!NOTE]  
 > Ten skrypt należy oznaczyć jako utrwalone po zastosowaniu wbudowanej w istniejącym klastrze. W przeciwnym razie wszelkie nowe węzły utworzone za pośrednictwem operacji skalowania użyje domyślnej harmonogram stosowania poprawek.  Jeśli zastosujesz skrypt jako część procesu tworzenia klastra są utrwalane automatycznie.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -3,20 +3,19 @@ title: Znak liczby - API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Jak interfejs API tekstu usługi Translator liczby znaków.
 services: cognitive-services
-author: Jann-Skotdal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 03/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/01/2019
+ms.author: v-pawal
+ms.openlocfilehash: 157b809c1f1707cdaa561ab09486cf4886fff4e0
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513756"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389224"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Jak interfejs API tekstu usługi Translator liczby znaków
 
@@ -34,7 +33,7 @@ Co jest liczone są:
 * Każdy punkt kodowy zdefiniowane w formacie Unicode
 * Powtórzony translacji, nawet wtedy, gdy ten sam tekst ma przetłumaczone wcześniej
 
-W przypadku skryptów oparte na ideogramów, takich jak chiński i japoński Kanji interfejsu API tłumaczenia tekstu będzie nadal liczby punkty kodowe Unicode, jeden znak na ideogram. Wyjątek: Surogaty Unicode liczba jako dwa znaki.
+W przypadku skryptów oparte na ideogramów, takich jak chiński i japoński Kanji interfejsu API tłumaczenia tekstu będzie nadal liczby punkty kodowe Unicode, jeden znak na ideogram. Wystąpił wyjątek: Surogaty Unicode liczba jako dwa znaki.
 
 Liczba żądań, słowa lub zdania bajtów jest bez znaczenia w liczbie znaków. 
 
@@ -42,4 +41,3 @@ Wywołania metod wykrywania i BreakSentence nie są wliczane do użycia znaku. J
 
 
 Aby uzyskać więcej informacji dotyczących liczby znaków [często zadawane pytania dotyczące programu Microsoft Translator](https://www.microsoft.com/en-us/translator/faq.aspx).
-

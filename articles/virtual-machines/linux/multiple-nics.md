@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 838afe38cc3b2b98ddad358ddb23ab6b6727e867
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772437"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236850"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
 
@@ -100,7 +100,7 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
-Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
+Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for-multiple-nics).
 
 ## <a name="add-a-nic-to-a-vm"></a>Dodaj kartę Sieciową do maszyny Wirtualnej
 W poprzednich krokach utworzono maszynę Wirtualną z wieloma kartami sieciowymi. Karty sieciowe można również dodać do istniejącej maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej. Jeśli to konieczne, możesz [zmienić rozmiar maszyny Wirtualnej](change-vm-size.md).
@@ -138,7 +138,7 @@ Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm):
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
-Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
+Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for-multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>Usuń kartę Sieciową z maszyny Wirtualnej
 Aby usunąć kartę Sieciową z istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
@@ -183,7 +183,7 @@ Można również użyć `copyIndex()` celu następnie dołączenia liczby do naz
 
 Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu szablonów usługi Resource Manager](../../virtual-network/template-samples.md).
 
-Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
+Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for-multiple-nics).
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych
 

@@ -9,23 +9,23 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 19272e93739d98962ab6818e1c2626ac9e0ac6d9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204441"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306657"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
 
-W tym artykule dowiesz się, jak używać interfejsów API REST usługi Storage Blob oraz sposób uwierzytelniania połączenia z usługą. Jest ona zapisywana z punktu widzenia osoby, która nie zna o REST i nie wiadomo jak wykonywać wywołanie interfejsu REST, ale jest deweloperem. Firma Microsoft Przejrzyj dokumentację referencyjną wywołanie interfejsu REST i zobacz, jak tłumaczenie rzeczywistego wywołania REST — pola, które go miejsce? Po wiedzę, jak skonfigurować wywołanie interfejsu REST, możesz korzystać z tej wiedzy, aby użyć dowolnego innego magazynu usługi interfejsów API REST.
+W tym artykule dowiesz się, jak używać interfejsów API REST usługi Storage Blob oraz sposób uwierzytelniania połączenia z usługą. Jest ona zapisywana z punktu widzenia dla deweloperów, którzy nie zna o REST i nie wiadomo jak wykonywać wywołanie interfejsu REST. Firma Microsoft Przejrzyj dokumentację referencyjną wywołanie interfejsu REST i zobacz, jak tłumaczenie rzeczywistego wywołania REST — pola, które go miejsce? Po wiedzę, jak skonfigurować wywołanie interfejsu REST, możesz korzystać z tej wiedzy, aby użyć dowolnego innego magazynu usługi interfejsów API REST.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 Aplikacja wyświetla listę kontenerów w magazynie obiektów blob dla konta magazynu. Aby wypróbować ten kod w tym artykule, potrzebne są następujące elementy: 
 
-* Zainstaluj [programu Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) o następujących obciążeniach:
-    - Tworzenie aplikacji na platformie Azure
+* Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) o następujących obciążeniach:
+    - Programowanie na platformie Azure
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -51,7 +51,7 @@ Oznacza, że REST *prezentowania*. Dla określonej definicji, zapoznaj się z [W
 
 Po prostu REST to architektura, służy do wywoływania interfejsów API lub Tworzenie interfejsów API do wywołania. Jest ono niezależne, co się dzieje po obu stronach i jakie inne oprogramowanie jest używana podczas wysyłania lub odbierania pozostałe wywołania. Można napisać aplikację, która działa na komputerze Mac, Windows, Linux, telefon z systemem Android lub tabletu, iPhone, iPod lub witryny sieci web i używać tego samego interfejsu API REST dla wszystkich tych platform. Dane mogą być przekazywane w i/lub się po wywołaniu interfejsu API REST. Interfejs API REST zależy od platformy jest wywoływane — ważne jest informacje przekazywane w żądaniu i danych zawartych w odpowiedzi.
 
-Wiedza, jak przy użyciu architektury REST jest przydatne umiejętności. Zespół pracujący nad produktem Azure często wydaje nowe funkcje. Wiele razy, nowe funkcje są dostępne za pośrednictwem interfejsu REST, ale nie zostały udostępnione za pośrednictwem **wszystkich** bibliotek klienckich magazynu lub interfejsu użytkownika (np. witryna Azure portal). Jeśli chcesz zawsze używać najnowszej i najlepszej, nauki REST jest wymagana. Ponadto jeśli chcesz zapisać biblioteki do interakcji z usługą Azure Storage lub chcesz uzyskać dostęp do usługi Azure Storage przy użyciu języka programowania, którego nie ma zestawu SDK lub magazynu biblioteki klienta, możesz użyć interfejsu API REST.
+Wiedza, jak przy użyciu architektury REST jest przydatne umiejętności. Zespół pracujący nad produktem Azure często wydaje nowe funkcje. Wiele razy nowe funkcje są dostępne za pośrednictwem interfejsu REST. Czasami jednak funkcje nie zostały udostępnione za pośrednictwem **wszystkich** bibliotek klienckich magazynu lub interfejsu użytkownika (np. witryna Azure portal). Jeśli chcesz zawsze używać najnowszej i najlepszej, nauki REST jest wymagana. Ponadto jeśli chcesz zapisać biblioteki do interakcji z usługą Azure Storage lub chcesz uzyskać dostęp do usługi Azure Storage przy użyciu języka programowania, którego nie ma zestawu SDK lub magazynu biblioteki klienta, możesz użyć interfejsu API REST.
 
 ## <a name="about-the-sample-application"></a>Temat przykładowej aplikacji
 
@@ -61,7 +61,7 @@ Jeśli przyjrzymy się [interfejsu API REST usługi Blob](/rest/api/storageservi
 
 ## <a name="rest-api-reference-list-containers-api"></a>Dokumentacja interfejsu API REST: Lista kontenerów interfejsu API
 
-Przyjrzyjmy się na stronie dokumentacja interfejsu API REST [ListContainers](/rest/api/storageservices/List-Containers2) operację, aby zrozumieć, niektóre pola pochodzenie w żądaniu i odpowiedzi w następnej sekcji kodu.
+Przyjrzyjmy się na stronie dokumentacja interfejsu API REST [ListContainers](/rest/api/storageservices/List-Containers2) operacji. Ta informacja pomoże zrozumieć, niektóre pola pochodzenie w żądań i odpowiedzi.
 
 **Metoda żądania**: POBIERZ. To polecenie jest metoda HTTP, który został określony jako właściwość obiektu żądania. Inne wartości dla tego zlecenia obejmują HEAD, PUT i DELETE, w zależności od tego, wywoływany jest interfejs API.
 
@@ -77,21 +77,21 @@ Aby korzystać z dodatkowych parametrów, dołącz je do ciągu zasobu o wartoś
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Nagłówki żądania](/rest/api/storageservices/List-Containers2#request-headers)**:** Ta sekcja zawiera nagłówki żądania wymaganych i opcjonalnych. Wymagane są trzy nagłówki: *autoryzacji* nagłówka, *x-ms-date* (zawiera czas UTC żądania), a *x-ms-version* (określa wersję pozostałe Interfejs API do użycia). W tym *x-ms klient request-id* w nagłówkach jest opcjonalna — można ustawić wartość dla tego pola do żadnego elementu; są zapisywane do magazynu analizy dzienników, gdy jest włączone rejestrowanie.
+[Nagłówki żądania](/rest/api/storageservices/List-Containers2#request-headers) **:** Ta sekcja zawiera nagłówki żądania wymaganych i opcjonalnych. Wymagane są trzy nagłówki: *autoryzacji* nagłówka, *x-ms-date* (zawiera czas UTC żądania), a *x-ms-version* (określa wersję pozostałe Interfejs API do użycia). W tym *x-ms klient request-id* w nagłówkach jest opcjonalna — można ustawić wartość dla tego pola do żadnego elementu; są zapisywane do magazynu analizy dzienników, gdy jest włączone rejestrowanie.
 
-[Treść żądania](/rest/api/storageservices/List-Containers2#request-body)**:** Brak treści żądania nie ListContainers. Treść żądania jest używana we wszystkich operacji PUT przy przekazywaniu obiektów blob, a także SetContainerAccessPolicy, co pozwala na wysyłanie na liście XML przechowywane zasady dostępu do zastosowania. Zapisane zasady dostępu zostały omówione w artykule [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Treść żądania](/rest/api/storageservices/List-Containers2#request-body) **:** Brak treści żądania nie ListContainers. Treść żądania jest używana we wszystkich operacji PUT przy przekazywaniu obiektów blob, a także SetContainerAccessPolicy, co pozwala na wysyłanie na liście XML przechowywane zasady dostępu do zastosowania. Zapisane zasady dostępu zostały omówione w artykule [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Kod stanu odpowiedzi](/rest/api/storageservices/List-Containers2#status-code)**:** Informuje żadnych kodów stanu, które trzeba znać. W tym przykładzie kod stanu HTTP 200 to ok. Aby uzyskać pełną listę kodów stanu HTTP, zapoznaj się [definicjami kodów stanu](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Aby wyświetlić kody błędów specyficzne dla interfejsów API REST magazynu, zobacz [kody błędów wspólnego interfejsu API REST](/rest/api/storageservices/common-rest-api-error-codes)
+[Kod stanu odpowiedzi](/rest/api/storageservices/List-Containers2#status-code) **:** Informuje żadnych kodów stanu, które trzeba znać. W tym przykładzie kod stanu HTTP 200 to ok. Aby uzyskać pełną listę kodów stanu HTTP, zapoznaj się [definicjami kodów stanu](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Aby wyświetlić kody błędów specyficzne dla interfejsów API REST magazynu, zobacz [kody błędów wspólnego interfejsu API REST](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Nagłówki odpowiedzi](/rest/api/storageservices/List-Containers2#response-headers)**:** Obejmują one *typu zawartości*; *x-ms-request-id* (identyfikator żądania przekazałeś, jeśli ma to zastosowanie); *x-ms-version* (wskazuje wersję usługi obiektów Blob używane), a *data* (czas UTC, informuje, jakich czasie wysłano żądanie).
+[Nagłówki odpowiedzi](/rest/api/storageservices/List-Containers2#response-headers) **:** Obejmują one *typu zawartości*; *x-ms-request-id*, który jest przekazywany w; identyfikator żądania *x-ms-version*, który wskazuje wersję usługi obiektów Blob używane; i *data*, która jest w formacie UTC i informuje, jakie czasu żądania został utworzony.
 
 [Treść odpowiedzi](/rest/api/storageservices/List-Containers2#response-body): To pole jest zapewnienie żądanych danych struktury XML. W tym przykładzie odpowiedź jest listę kontenerów i ich właściwości.
 
 ## <a name="creating-the-rest-request"></a>Tworzenie żądania REST
 
-Kilka uwag dotyczących przed rozpoczęciem — aby zapewnić bezpieczeństwo podczas uruchamiania w środowisku produkcyjnym, należy zawsze używać protokołu HTTPS zamiast protokołu HTTP. Na potrzeby tego ćwiczenia należy użyć protokołu HTTP, aby można było wyświetlić dane żądań i odpowiedzi. Aby wyświetlić informacje dotyczące żądania i odpowiedzi w rzeczywistych wywołania REST, możesz pobrać [Fiddler](https://www.telerik.com/fiddler) lub podobnej aplikacji. W rozwiązaniu Visual Studio nazwa konta magazynu i klucz są zapisane na stałe w klasie, a metoda ListContainersAsyncREST przekazuje nazwę konta magazynu i klucza konta magazynu do metod, które są używane do tworzenia różnych składników żądania REST . W rzeczywistej aplikacji Nazwa konta magazynu i klucz będzie znajdować się w pliku konfiguracji, zmienne środowiskowe, lub można pobrać z usługi Azure Key Vault.
+Kilka uwag dotyczących przed rozpoczęciem — aby zapewnić bezpieczeństwo podczas uruchamiania w środowisku produkcyjnym, należy zawsze używać protokołu HTTPS zamiast protokołu HTTP. Na potrzeby tego ćwiczenia należy użyć protokołu HTTP, aby można było wyświetlić dane żądań i odpowiedzi. Aby wyświetlić informacje dotyczące żądania i odpowiedzi w rzeczywistych wywołania REST, możesz pobrać [Fiddler](https://www.telerik.com/fiddler) lub podobnej aplikacji. W programie Visual Studio, rozwiązania, nazwa konta magazynu i klucz są zapisane na stałe w klasie. Metoda ListContainersAsyncREST przekazuje nazwę konta magazynu i klucza konta magazynu do metod, które są używane do tworzenia różnych składników żądania REST. W rzeczywistej aplikacji Nazwa konta magazynu i klucz będzie znajdować się w pliku konfiguracji, zmienne środowiskowe, lub można pobrać z usługi Azure Key Vault.
 
-W naszym przykładowym projekcie kodu na potrzeby tworzenia nagłówek autoryzacji znajduje się w osobnej klasy z rozwiązaniem, że możesz może zająć całą klasę i dodaj go do własnego rozwiązania i używać go "as""to. Kod nagłówka autoryzacji działa w przypadku większości wywołań interfejsu API REST do usługi Azure Storage.
+W naszym przykładowym projekcie kodu na potrzeby tworzenia nagłówek autoryzacji jest w osobnej klasy. Chodzi o to, że możesz może zająć całą klasę i dodaj go do własnego rozwiązania i używać go "as""to. Kod nagłówka autoryzacji działa w przypadku większości wywołań interfejsu API REST do usługi Azure Storage.
 
 Aby tworzyć żądania, który jest obiekt HttpRequestMessage, przejdź do ListContainersAsyncREST w pliku Program.cs. Procedura tworzenia żądania jest następująca: 
 
@@ -358,7 +358,7 @@ Ta część ciągu podpisu reprezentuje konto magazynu, docelowe przez żądanie
 /contosorest/\ncomp:list
 ```
 
-W przypadku parametrów zapytania w tym te, jak również. Poniżej przedstawiono kod, który obsługuje także dodatkowe parametry zapytania i parametry zapytania z wieloma wartościami. Należy pamiętać, że tworzysz ten kod w celu pracy dla wszystkich interfejsów API REST, które chcesz uwzględnić wszystkie możliwości, nawet wtedy, gdy metoda ListContainers nie potrzebuje wszystkich z nich.
+W przypadku parametrów zapytania w tym przykładzie zawiera również tych parametrów. Poniżej przedstawiono kod, który obsługuje także dodatkowe parametry zapytania i parametry zapytania z wieloma wartościami. Należy pamiętać, że tworzysz ten kod do działania dla wszystkich interfejsów API REST. Chcesz uwzględnić wszystkie możliwości, nawet wtedy, gdy metoda ListContainers nie potrzebuje wszystkich z nich.
 
 ```csharp 
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
@@ -428,11 +428,11 @@ SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 
 AuthorizationHeader jest ostatni nagłówek umieszczany w nagłówkach żądania przed opublikowaniem odpowiedzi.
 
-Która obejmuje wszystko, czego potrzebujesz, aby dowiedzieć się, wraz z kodem, dozą klasy, która służy do tworzenia żądania ma być używany do wywoływania interfejsów API REST usługi Storage.
+Która obejmuje wszystko, czego potrzebujesz, aby utworzyć klasę, za pomocą którego można utworzyć żądania do wywoływania interfejsów API REST usług Storage.
 
 ## <a name="how-about-another-example"></a>Co myślisz o inny przykład? 
 
-Przyjrzyjmy się jak zmienić kod, aby Wywołaj metodę ListBlobs dla kontenera *1 kontenera*. To jest niemal identyczny kod do wyświetlania listy kontenerów, tylko różnic, identyfikator URI i jak przeanalizować odpowiedzi. 
+Przyjrzyjmy się jak zmienić kod, aby Wywołaj metodę ListBlobs dla kontenera *1 kontenera*. Ten kod jest niemal identyczny kod do wyświetlania listy kontenerów, tylko różnic, identyfikator URI i jak przeanalizować odpowiedzi. 
 
 Jeśli wyświetlasz dokumentację referencyjną [ListBlobs](/rest/api/storageservices/List-Blobs), okaże się, że metoda jest *UZYSKAĆ* i RequestURI:
 
@@ -564,7 +564,7 @@ Content-Length: 1135
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono sposób wysłać żądanie do interfejsu API REST, aby pobrać listę kontenerów lub listę obiektów blob w kontenerze magazynu obiektów blob. Przedstawiono również sposób tworzenia podpisu autoryzacji dla wywołania interfejsu API REST, jak z niej korzystać w żądaniu REST i jak zbadać odpowiedź.
+W tym artykule przedstawiono sposób wysłać żądanie do interfejsu API REST usługi blob storage. Z tym żądaniem możesz pobrać listę kontenerów lub listę obiektów blob w kontenerze. Pokazaliśmy ci, jak utworzyć podpis autoryzacji dla wywołania interfejsu API REST i jak z niej korzystać w żądaniu REST. Na koniec pokazaliśmy ci, jak zbadać odpowiedź.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

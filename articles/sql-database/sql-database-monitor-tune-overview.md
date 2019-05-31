@@ -7,56 +7,48 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
+author: jovanpop-msft
+ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: cae0fbd450e6b392e1689d4642181f6e5279752b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719087"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393206"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
-Azure SQL Database to usługa danych automatycznie zarządzane i elastyczne, gdzie możesz łatwo monitorować użycie, dodawanie lub usuwanie zasobów (procesor CPU, pamięć, we/wy), zalecenia dotyczące wyszukiwania, których można zwiększyć wydajność bazy danych, lub pozwól bazie danych dostosowywać się do obciążenia i automatycznie zoptymalizować wydajność.
+Usługa Azure umożliwia bazy danych SQL Database można łatwo monitorować użycie, dodawanie lub usuwanie zasobów (procesora CPU, pamięć, we/wy), rozwiązywania potencjalnych problemów i znaleźć zaleceń, które może poprawić wydajność bazy danych. Usługa Azure SQL Database ma wiele funkcji, które automatycznie można rozwiązać problemy w bazach danych jeśli chcesz zezwolić bazy danych, dostosowywać się do obciążenia i automatycznie optymalizacji wydajności. Istnieją jednak niestandardowe problemy, które być może trzeba rozwiązać. W tym artykule opisano niektóre najlepsze rozwiązania i narzędzia, które umożliwiają rozwiązywanie problemów z wydajnością.
+
+Istnieją dwa główne czynności, które należy wykonać w celu zapewnienia, że bazy danych możesz działa bez problemów:
+- [Monitorowanie wydajności bazy danych](#monitoring-database-performance) aby upewnić się, że zasoby przydzielone do bazy danych może obsłużyć obciążenie. Jeśli widzisz, że w przypadku osiągnięcia limitów zasobów, będziesz potrzebować do identyfikacji zasobu najważniejsze zapytań zużywających najwięcej zasobów i optymalizujesz je lub dodać więcej zasobów, zmieniając warstwę usług.
+- [Rozwiązywanie problemów z wydajnością](#troubleshoot-performance-issues) w celu ustaleniu, dlaczego wystąpiło kilka potencjalny problem, odkryć ich główną przyczynę problemu i akcji, która rozwiąże problem.
 
 ## <a name="monitoring-database-performance"></a>Monitorowanie wydajności bazy danych
 
-Monitorowanie wydajności bazy danych SQL na platformie Azure rozpoczyna się od monitorowania wykorzystania zasobów względem wybranego poziomu wydajności bazy danych. Usługa Azure SQL Database umożliwia określenie możliwości w celu zwiększenia i zoptymalizowania wydajności zapytań bez konieczności zmieniania zasobów, przeglądając [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md). Częstymi przyczynami słabej wydajności bazy danych są brakujące indeksy i nieprawidłowo zoptymalizowane zapytania. Można zastosować te zalecenia dotyczące dostrajania, aby zwiększyć wydajność przetwarzania obciążenia. Możesz również pozwalają bazy danych Azure SQL, aby [automatycznie zoptymalizować wydajność kwerend](sql-database-automatic-tuning.md) , stosując wszystkie zidentyfikowane zalecenia i weryfikowanie, czy poprawiają wydajność bazy danych.
+Monitorowanie wydajności bazy danych SQL na platformie Azure rozpoczyna się od monitorowania wykorzystania zasobów względem wybranego poziomu wydajności bazy danych. Należy monitorować następujące zasoby:
+ - **Użycie procesora CPU** — należy sprawdzić, są osiągnięcia 100% użycia procesora CPU w dłuższy okres czasu. To może wskazywać, czy może być konieczne uaktualnienie, bazy danych lub wystąpienia lub zidentyfikować i dostrojenia zapytań, które używają najczęściej, mocy obliczeniowej.
+ - **Statystyki oczekiwania** — należy sprawdzić, jakie Dlaczego zapytań oczekują na zasoby. Queriesmig poczekaj, aż dane mają być pobierane lub zapisane pliki bazy danych, oczekiwanie, ponieważ osiągnięto limit niektórych zasobów itp.
+ - **Użycie operacji We/Wy** — należy sprawdzić, są osiągnięcia limitów we/wy magazynu.
+ - **Użycie pamięci** — ilość pamięci dostępnej dla bazy danych lub wystąpienia jest proporcjonalna do liczby rdzeni wirtualnych i należy sprawdzić jest wystarczająco dla obciążenia. Oczekiwana długość życia strony jest jeden z parametrów, które mogą wskazywać są strony szybko usuwane z pamięci.
+
+Usługa Azure SQL Database **zapewnia zawiadomień, które ułatwiają rozwiązywanie problemów i naprawy potencjalne problemy z wydajnością**. Można łatwo zidentyfikować możliwości w celu zwiększenia i zoptymalizowania wydajności zapytań bez konieczności zmieniania zasobów, przeglądając [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md). Częstymi przyczynami słabej wydajności bazy danych są brakujące indeksy i nieprawidłowo zoptymalizowane zapytania. Można zastosować te zalecenia dotyczące dostrajania, aby zwiększyć wydajność przetwarzania obciążenia. Możesz również pozwalają bazy danych Azure SQL, aby [automatycznie zoptymalizować wydajność kwerend](sql-database-automatic-tuning.md) , stosując wszystkie zidentyfikowane zalecenia i weryfikowanie, czy poprawiają wydajność bazy danych.
 
 Masz następujące opcje monitorowania i rozwiązywanie problemów z wydajnością bazy danych:
 
 - W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **baz danych SQL**wybierz bazy danych, a następnie użyć wykres monitorowanie wyszukiwać zasoby zbliża się do ich maksymalnej. Użycie jednostek DTU jest wyświetlana domyślnie. Kliknij przycisk **Edytuj** zmienić zakres czasu i wartości wyświetlane.
-- Użyj [Query Performance Insight](sql-database-query-performance.md) można identyfikować zapytania, które możesz wydać na w pełni korzystać z zasobów.
-- Użyj [SQL Database Advisor](sql-database-advisor-portal.md) Aby wyświetlić zalecenia dotyczące tworzenia i usuwanie indeksów, parametryzacji zapytań i naprawia problemy ze schematem.
+- Narzędzia, takie jak SQL Server Management Studio zapewnia wiele przydatnych raportów, takich jak [pulpit nawigacyjny wydajności](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) w przypadku, gdy było monitorowania wykorzystania zasobów i zidentyfikować zapytania, korzystające z najważniejszych zasobów lub [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)gdzie możesz zidentyfikować zapytania o pogorszonej wydajności.
+- Użyj [Query Performance Insight](sql-database-query-performance.md) [witryny Azure portal](https://portal.azure.com) Aby identyfikować zapytania, które możesz wydać na w pełni korzystać z zasobów. Ta funkcja jest dostępna w pojedynczej bazy danych i pul elastycznych tylko.
+- Użyj [SQL Database Advisor](sql-database-advisor-portal.md) Aby wyświetlić zalecenia dotyczące tworzenia i usuwanie indeksów, parametryzacji zapytań i naprawia problemy ze schematem. Ta funkcja jest dostępna w pojedynczej bazy danych i pul elastycznych tylko.
 - Użyj [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) automatyczne monitorowanie wydajności bazy danych. Po wykryciu problemu z wydajnością, dziennik diagnostyczny jest generowany ze szczegółami i głównej przyczyny Analysis (analiza głównej przyczyny) problemu. Zalecenie dotyczące poprawy wydajności znajduje się, gdy jest to możliwe.
 - [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md) i pozwól SQL Azure, bazy danych automatycznego rozwiązywania zidentyfikowanych problemów z wydajnością.
 - Użyj [dynamicznych widoków zarządzania (DMV)](sql-database-monitoring-with-dmvs.md), [zdarzeniom rozszerzonym](sql-database-xevent-db-diff-from-svr.md)i [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) szczegółowe Rozwiązywanie problemów z wydajnością.
 
 > [!TIP]
 > Zobacz [wskazówki dotyczące wydajności](sql-database-performance-guidance.md) można znaleźć technik, które można użyć w celu poprawy wydajności usługi Azure SQL Database po zidentyfikowaniu problemu z wydajnością za pomocą co najmniej jednym z powyższych metod.
-
-## <a name="monitor-databases-using-the-azure-portal"></a>Monitorowanie baz danych za pomocą witryny Azure Portal
-
-W [witryny Azure portal](https://portal.azure.com/), możesz monitorować wykorzystanie pojedynczej bazy danych s wybrać bazę danych, a następnie klikając polecenie **monitorowanie** wykresu. Spowoduje to wyświetlenie okna **Metryka**, które możesz zmienić, klikając przycisk **Edytuj wykres**. Dodaj następujące metryki:
-
-- Procent użycia procesora CPU
-- Procent użycia jednostek DTU
-- Procent użycia operacji we/wy na danych
-- Procent użycia rozmiaru bazy danych
-
-Po dodaniu tych metryk możesz nadal wyświetlać je w **monitorowanie** wykresu z dodatkowymi informacjami na **metryki** okna. Wszystkie cztery metryki pokazują średnią wartość procentową wykorzystania względem jednostek **DTU** bazy danych. Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) artykuły, aby uzyskać więcej informacji na temat warstw usługi.  
-
-![Monitorowanie warstw usług pod względem wydajności bazy danych.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
-
-Możesz również skonfigurować alerty dotyczące metryk wydajności. Kliknij przycisk **Dodaj alert** w oknie **Metryka**. Użyj kreatora, aby skonfigurować alert. Istnieje możliwość ustawienia alertu, który będzie wysyłany, gdy metryki przekroczą określony próg lub spadną poniżej określonego progu.
-
-Jeśli na przykład spodziewasz się, że obciążenie bazy danych wzrośnie, możesz skonfigurować alert polegający na wysłaniu wiadomości e-mail, gdy dowolna z metryk wydajności osiągnie 80%. Umożliwia to jako wczesne ostrzeżenie zorientować się, kiedy może być konieczne przejdź do następnego najwyższy rozmiaru obliczeń.
-
-Metryki wydajności może również pomóc w określeniu, jeśli jesteś w stanie zmiany na starszą niższe rozmiaru obliczeń. Załóżmy, że używasz bazy danych, której warstwa i poziom to Standardowa S2, a wszystkie metryki wydajności pokazują, że baza danych wykorzystuje średnio nie więcej niż 10% w określonym czasie. Istnieje prawdopodobieństwo, że baza danych będzie działać równie dobrze na poziomie Standardowa S1. Jednak należy pamiętać o obciążeniach, które chwilowo wzrastają przed podjęciem decyzji o przeniesieniu na niższym rozmiaru obliczeń lub.
 
 ## <a name="troubleshoot-performance-issues"></a>Rozwiązywanie problemów z wydajnością
 
@@ -65,6 +57,18 @@ Aby zdiagnozować i rozwiązać problemy z wydajnością, Rozpocznij od zrozumie
 ![Stany obciążenia](./media/sql-database-monitor-tune-overview/workload-states.png)
 
 W przypadku obciążeń z problemów z wydajnością, to problem z wydajnością może być spowodowane rywalizacji o zasoby procesora CPU ( **dotyczące uruchamiania** warunku) lub poszczególnych zapytań oczekuje na coś ( **oczekiwania dotyczące** warunku ).
+
+Przyczyny lub **dotyczące uruchamiania** problemów może być:
+- **Problemy z kompilacji** -Optymalizator zapytań SQL może powodować generowanie optymalne planu z powodu starych statystyki, niepoprawny szacowania liczby wierszy, które będą przetwarzane lub oszacowania wymaganej ilości pamięci. Jeśli wiesz, że to zapytanie zostało wykonane szybciej w przeszłości, lub na inne wystąpienia (wystąpienia programu SQL Server lub wystąpienia zarządzanego), wykonaj plany rzeczywiste wykonanie i porównaj je, aby zobaczyć, czy są różne. Spróbuj zastosować wskazówki zapytania lub ponowne kompilowanie statystyk ani indeksów, aby uzyskać lepsze planu. Włącz automatyczna korekta planu usługi Azure SQL Database, aby automatycznie rozwiązać te problemy.
+- **Brak problemów z wykonywaniem** — Jeśli to ustawienie jest optymalne, planu zapytania, a następnie prawdopodobnie wykorzystuje pewne ograniczenia zasobów w bazie danych, takie jak dziennik przepływność zapisu lub może zostać użyty zdefragmentowanej indeksy, które powinien zostać ponownie skompilowany. Można również przyczyny problemów z wykonywaniem dużej liczby równoczesnych zapytań, które są wydatków na zasoby. **Oczekiwania dotyczące** problemy są w większości przypadków związane z problemami wykonywania, ponieważ zapytania, które nie są wykonywane efektywnie prawdopodobnie oczekiwania na zasoby.
+
+Przyczyny lub **oczekiwania dotyczące** problemów może być:
+- **Blokowanie** — jedno zapytanie może być Zaczekaj, aż blokady niektórych obiektów w bazie danych innych próby dostępu do tych samych obiektów. Można łatwo zidentyfikować blokowania zapytań przy użyciu DMV lub narzędzia do monitorowania.
+- **Problemy z operacji We/Wy** -zapytania mogą oczekiwać dla stron, które są zapisywane w plikach dziennika i danych. W takim przypadku zobaczysz `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`, lub `PAGEIOLATCH_*` czekać w DMV statystyk.
+- **Problemy z bazy danych TempDB** — Jeśli używasz wiele tabel tymczasowych lub zobaczysz, że wiele TempDB wylewa w planów zapytań może być problem z przepływności bazy danych TempDB. 
+- **Problemy związane z pamięcią** — możesz nie mieć wystarczającej ilości pamięci dla obciążenia, może usunąć swoje oczekiwanej długości życia strony lub zapytań pojawiają się mniej przydział pamięci, niż jest to potrzebne. W niektórych przypadkach wbudowanych funkcji analizy w Optymalizator zapytań rozwiąże tych problemów.
+ 
+W poniższych sekcjach opisano sposób zidentyfikować i rozwiązać niektóre z tych problemów.
 
 ## <a name="running-related-performance-issues"></a>Problemy z wydajnością dotyczące uruchamiania
 
@@ -76,7 +80,7 @@ Ogólną wytyczną wykorzystaniu Procesora jest stale wynosiło co najmniej 80%,
 
 Jeśli okaże się, że masz problemu z wydajnością dotyczące uruchamiania, celem użytkownika jest identyfikowanie problemu dokładne przy użyciu co najmniej jednej metody. Najczęściej stosowanymi metodami do identyfikowania problemów dotyczących uruchamiania są:
 
-- Użyj [witryny Azure portal](#monitor-databases-using-the-azure-portal) monitorować wykorzystanie procesora CPU w procentach.
+- Użyj [witryny Azure portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) monitorować wykorzystanie procesora CPU w procentach.
 - Należy użyć następującego [dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md):
 
   - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) zwraca użycie procesora CPU, we/wy i pamięci dla bazy danych Azure SQL Database. Dla co 15 sekund, istnieje jeden wiersz, nawet jeśli nie ma działania w bazie danych. Dane historyczne są utrzymywane przez jedną godzinę.

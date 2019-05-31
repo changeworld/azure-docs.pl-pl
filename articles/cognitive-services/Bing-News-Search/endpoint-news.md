@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: b680f476345bde61797fd1cc137cad6e5653d0a5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6ea218da23d65696c76008cb15e183fcc4bbda10
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798214"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383225"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Punkty końcowe interfejsu API wyszukiwania wiadomości Bing
 
@@ -39,7 +39,7 @@ Zwraca elementy wiadomości oparty na zapytaniu przeszukiwania. Jeśli zapytanie
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Zwraca elementy z najważniejszych wiadomości według kategorii. Konkretnie poprosić biznesowych Sport i rozrywka artykułów z wykorzystaniem `category=business`, `category=sports`, lub `category=entertainment`.  `category` Parametru należy używać tylko z `/news` adresu URL. Istnieją pewne wymagania formalny, do określania kategorii; Zapoznaj się `category` w [parametr zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentacji. Wyślij zapytanie według adresu url kodowanie wyszukiwanego terminu i dodanie go do`q=""` parametru. Aby zapewnić dostępność, zobacz [obsługiwane kraje/regiony i rynków](language-support.md#supported-markets-for-news-endpoint).
+Zwraca elementy z najważniejszych wiadomości według kategorii. Konkretnie poprosić biznesowych Sport i rozrywka artykułów z wykorzystaniem `category=business`, `category=sports`, lub `category=entertainment`.  `category` Parametru należy używać tylko z `/news` adresu URL. Istnieją pewne wymagania formalny, do określania kategorii; Zapoznaj się `category` w [parametr zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) dokumentacji. Wyślij zapytanie według adresu url kodowanie wyszukiwanego terminu i dodanie go do`q=""` parametru. Aby zapewnić dostępność, zobacz [obsługiwane kraje/regiony i rynków](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Popularne tematy wiadomości 
 
@@ -51,7 +51,7 @@ Zwraca tematy wiadomości, które popularność w sieciach społecznościowych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [wyszukiwania wiadomości Bing w wersji 7 interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) odwołania.
+Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [wyszukiwania wiadomości Bing w wersji 7 interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) odwołania.
 
 Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez każdy punkt końcowy zobacz strony pomocy dla każdego typu.
 Przykłady podstawowe żądań przy użyciu interfejsu API wyszukiwania wiadomości, zobacz [przewodniki szybkiego startu dla wyszukiwania wiadomości Bing](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).

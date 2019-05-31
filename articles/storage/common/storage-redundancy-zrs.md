@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 111167584fb2e0e2ee5977e0e24b3ebf07b170c1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65961425"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238002"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -31,7 +31,7 @@ Magazyn ZRS jest ogólnie dostępna w następujących regionach:
 - Europa Północna
 - Francja Środkowa
 - Japonia Wschodnia
-- Zjednoczone Królestwo (południe)
+- Południowe Zjednoczone Królestwo
 - Środkowe stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
@@ -49,7 +49,7 @@ Magazyn ZRS nie może chronić dane przed regionalnej awarii, w którym trwale d
 ## <a name="converting-to-zrs-replication"></a>Konwertowanie na replikacją ZRS
 Migracja do / z magazynu LRS, GRS i RA-GRS jest bardzo proste. Umożliwia zmianę typu nadmiarowości Twoje konto w witrynie Azure portal lub interfejsu API dostawcy zasobów magazynu. Azure zostanie następnie do replikowania danych odpowiednio. 
 
-Migrowanie danych do / z magazynu ZRS wymaga innych strategii. Migracja magazynu ZRS obejmuje fizyczne przenoszenie danych z sygnaturą pojedynczy magazyn do wielu sygnatury w regionie.
+Migrowanie danych do magazynu ZRS wymaga innych strategii. Migracja magazynu ZRS obejmuje fizyczne przenoszenie danych z sygnaturą pojedynczy magazyn do wielu sygnatury w regionie.
 
 Istnieją dwie podstawowe opcje migracji magazynu ZRS: 
 

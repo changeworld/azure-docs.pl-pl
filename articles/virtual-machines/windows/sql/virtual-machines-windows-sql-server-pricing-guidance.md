@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477245"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393852"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Cennik wskazówki dotyczące maszyn wirtualnych programu SQL Server platformy Azure
 
@@ -57,11 +57,11 @@ W przypadku obciążeń produkcyjnych bez uproszczonych, użyj jednej z następu
 
 | Wersja programu SQL Server | Obciążenie |
 |-----|-----|
-| Sieć Web | Małych witryn sieci web |
+| sieć Web | Małych witryn sieci web |
 | Standardowa (Standard) | Małych i średnich obciążeń |
 | Enterprise | Obciążeń dużych lub o kluczowym znaczeniu|
 
-Dostępne są dwie opcje do zapłacenia za licencjonowania w przypadku tych wersji programu SQL Server: *płacić za użycie* lub *model dostarczania własnej licencji (BYOL)*.
+Dostępne są dwie opcje do zapłacenia za licencjonowania w przypadku tych wersji programu SQL Server: *płacić za użycie* lub *model dostarczania własnej licencji (BYOL)* .
 
 ## <a name="pay-per-usage"></a>Płatność za użycie
 
@@ -99,7 +99,7 @@ Aby utworzyć maszynę Wirtualną programu SQL Server 2017 Azure przy użyciu je
 **Użycie własnej licencji programu SQL Server, dzięki funkcji przenośności licencji**, nazywany również **BYOL**, oznacza, że przy użyciu istniejącej licencji woluminu programu SQL Server z pakietem Software Assurance w Maszynie wirtualnej platformy Azure. SQL Server maszyny Wirtualnej przy użyciu modelu BYOL opłaty tylko kosztów obsługi maszyny Wirtualnej, a nie licencji programu SQL Server, biorąc pod uwagę, że masz już nabyte za pośrednictwem programu licencjonowania zbiorowego licencji i pakietu Software Assurance.
 
 > [!IMPORTANT]
-> Obrazy BYOL wymaga umowy Enterprise Agreement z pakietem Software Assurance. Nie są one dostępne w ramach usługi Azure Cloud Solution Partner (CSP) w tej chwili.
+> Obrazy BYOL wymaga umowy Enterprise Agreement z pakietem Software Assurance. Nie są one dostępne w ramach usługi Azure Cloud Solution Partner (CSP) w tej chwili. Dostawcy usług Kryptograficznych mogą oni własnej licencji przez wdrożenie obrazu zgodnie z rzeczywistym użyciem, a następnie włączać [korzyść użycia hybrydowego platformy Azure](virtual-machines-windows-sql-ahb.md).
 
 > [!NOTE]
 > Obrazy BYOL są obecnie dostępne tylko dla maszyn wirtualnych Windows. Można jednak ręcznie zainstalować programu SQL Server na maszynie Wirtualnej tylko do systemu Linux. Zapoznaj się z instrukcjami w [często zadawane pytania dotyczące systemu Linux SQL VM](../../linux/sql/sql-server-linux-faq.md).
@@ -141,7 +141,7 @@ Koszt licencji programu SQL Server jest bezpośrednio związana liczba procesor�
 
 Istnieją nowe rozmiary maszyn, które działają prawidłowo w przypadku niektórych rodzajów obciążeń programu SQL Server. Te rozmiary maszyn utrzymywać wysokie poziomy pamięć, Magazyn i przepustowość operacji We/Wy, ale mają niższe liczby rdzeni zwirtualizowanych. Na przykład rozważmy następujący przykład:
 
-| Rozmiar maszyny wirtualnej | Procesory wirtualne vCPU | Memory (Pamięć) | Maksymalna liczba dysków | Maksymalna przepływność operacji We/Wy | Koszty licencjonowania programu SQL | Łączne koszty (obliczeń + licencjonowania) |
+| Rozmiar maszyny wirtualnej | procesorów wirtualnych | Memory (Pamięć) | Maksymalna liczba dysków | Maksymalna przepływność operacji We/Wy | Koszty licencjonowania programu SQL | Łączne koszty (obliczeń + licencjonowania) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 operacje We/Wy lub 768 MB/s | | |
 | **Standard_DS14 4v2** | 4 | 112 GB | 32 | 51,200 operacje We/Wy lub 768 MB/s | 75% niższy | 57% niższy |

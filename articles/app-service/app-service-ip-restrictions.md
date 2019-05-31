@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 05/23/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be0de7e809565fce4171401760d11ef9de45724e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541687"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236119"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Ograniczenia dostępu do usługi Azure App Service #
 
@@ -54,7 +54,7 @@ Możesz kliknąć **[+] Dodaj** można dodać nowej reguły ograniczeń dostępu
 
 Podczas tworzenia reguły należy wybrać zezwalania/niezezwalania, a także typ reguły. Wymagane są także zapewnienie, że wartość priorytetu i co to jest ograniczenie dostępu do.  Możesz opcjonalnie dodać nazwę i opis reguły.  
 
-Aby ustawić adres IP na podstawie reguły, wybierz typ protokołu IPv4 lub IPv6. Notacja adres IP musi być określona w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć podobny 1.2.3.4/32 gdzie pierwsze cztery oktety reprezentują adresu IP, a /32 to maski. Notacja IPv4 CIDR dla wszystkich adresów jest 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, możesz przeczytać [Bezklasowego routingu międzydomenowego](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Aby ustawić adres IP na podstawie reguły, wybierz typ protokołu IPv4 lub IPv6. Notacja adres IP musi być określona w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć podobny 1.2.3.4/32 gdzie pierwsze cztery oktety reprezentują adresu IP, a /32 to maski. Notacja IPv4 CIDR dla wszystkich adresów jest 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, możesz przeczytać [Bezklasowego routingu międzydomenowego](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 ![Dodaj regułę ograniczeń dostępu do sieci wirtualnej](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
@@ -79,6 +79,14 @@ Aby usunąć regułę, kliknij przycisk **...**  na swoje zasady, a następnie k
 Oprócz możliwości kontrolowania dostępu do aplikacji, można również ograniczyć dostęp do witryny scm, używanych przez aplikację. Witryny scm jest, narzędzie web deploy punktu końcowego, a także do konsoli Kudu. Oddzielnie można przypisać ograniczenia dostępu do witryny scm z aplikacji lub używać tego samego zestawu dla witryny scm i aplikacji. Jeśli zaznaczysz to pole, aby te same ograniczenia co aplikacja, wszystko jest wygaszony. Jeśli usuniesz zaznaczenie pola wyboru pola są stosowane niezależnie od ustawienia była wcześniej w witryny scm. 
 
 ![ograniczenia dostępu do listy](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+
+## <a name="blocking-a-single-ip-address"></a>Blokowanie pojedynczego adresu IP ##
+
+Podczas dodawania pierwszego reguły ograniczenia adresów IP, usługa zostanie dodany jawnego **Odmawiaj wszystkim** reguła z priorytetem 2147483647. W praktyce jawne **Odmawiaj wszystkim** reguła będzie ostatnia reguła wykonywane i spowoduje zablokowanie dostępu do dowolnego adresu IP, który nie jest jawnie dozwolone przy użyciu **Zezwalaj** reguły.
+
+W scenariuszu, gdzie użytkownicy chcą jawnie blokować pojedynczego adresu IP lub blok adresów IP, ale zezwalaj na wszystko, czego jeszcze dostępu, należy go dodać jawne **Zezwalaj na wszystko** reguły.
+
+![adres ip jednego bloku](media/app-service-ip-restrictions/block-single-address.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programowe operowanie zasady ograniczeń dostępu ##
 

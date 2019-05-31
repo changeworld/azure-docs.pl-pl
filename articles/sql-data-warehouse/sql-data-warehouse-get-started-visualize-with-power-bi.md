@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 94ec38bc2cad3566fad88dc2ac56648f79aa16b2
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4650e171c180653e94d78451d66bba1bcc71b136
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873372"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241285"
 ---
 # <a name="visualize-data-with-power-bi"></a>Wizualizacja danych przy użyciu usługi Power BI
 Ten samouczek przedstawia sposób nawiązania połączenia z usługą SQL Data Warehouse przy użyciu usługi Power BI oraz tworzenia podstawowych wizualizacji.
@@ -93,4 +93,4 @@ Korzystając z połączenia bezpośredniego:
 Te ograniczenia i uwagi mogą ulec zmianie, jak poprawić doświadczenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po przećwiczeniu podstawowych zadań z użyciem przykładowych danych zapoznaj się ze sposobami wykonywania takich czynności, jak [opracowywanie](sql-data-warehouse-overview-develop.md), [ładowanie](design-elt-data-loading.md) lub [migrowanie](sql-data-warehouse-overview-migrate.md) danych. Możesz też zapoznać się z [witryną sieci Web usługi Power BI](https://www.powerbi.com/).
+Teraz, gdy firma Microsoft udzielono trochę czasu na przećwiczeniu podstawowych zadań z przykładowymi danymi, zobacz instrukcje [opracowywanie](sql-data-warehouse-overview-develop.md) lub [obciążenia](design-elt-data-loading.md). Możesz też zapoznać się z [witryną sieci Web usługi Power BI](https://www.powerbi.com/).

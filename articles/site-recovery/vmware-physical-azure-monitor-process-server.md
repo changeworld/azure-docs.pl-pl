@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/24/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: f3ba08bc1d557d53bca2421b5052f496c740b185
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 4ff52e737438210296b8f2201d5e66e1d38b7bc9
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969325"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418286"
 ---
 # <a name="monitor-the-process-server"></a>Monitorowanie serwera przetwarzania
 
@@ -24,7 +24,7 @@ W tym artykule opisano sposób monitorowania [Site Recovery](site-recovery-overv
 
 [Dowiedz się więcej](vmware-physical-azure-config-process-server-overview.md) o roli i wdrożenie serwerów przetwarzania.
 
-## <a name="monitoring-overview"></a>Monitorowanie — przegląd
+## <a name="monitoring-overview"></a>Omówienie monitorowania
 
 Ponieważ serwer przetwarzania ma wiele ról, szczególnie w zreplikowanych danych pamięci podręcznej, kompresji i przesyłanie danych do platformy Azure, jest ważne, aby monitorować kondycję serwera przetwarzania na bieżąco.
 
@@ -58,10 +58,10 @@ Serwer przetwarzania generuje liczbę alertów dotyczących kondycji, podsumowan
 ![Ostrzeżenie][yellow] | Użycie pamięci > 80% w przypadku ostatnich 15 minut
 ![Ostrzeżenie][yellow] | % < 30 wolnego miejsca na folder pamięci podręcznej dla ostatnich 15 minut
 ![Ostrzeżenie][yellow] | Usługi serwera przetwarzania nie są uruchomione dla ostatnich 15 minut
-![Krytyczne][red] | Wykorzystanie procesora CPU > 95% ostatnich 15 minut
-![Krytyczne][red] | Użycie pamięci > 95% ostatnich 15 minut
-![Krytyczne][red] | Pamięć podręczna folderu wolnego miejsca < 25% dla ostatnich 15 minut
-![Krytyczne][red] | Brak pulsu z serwera przetwarzania przez 15 minut.
+![Krytyczny][red] | Wykorzystanie procesora CPU > 95% ostatnich 15 minut
+![Krytyczny][red] | Użycie pamięci > 95% ostatnich 15 minut
+![Krytyczny][red] | Pamięć podręczna folderu wolnego miejsca < 25% dla ostatnich 15 minut
+![Krytyczny][red] | Brak pulsu z serwera przetwarzania przez 15 minut.
 
 ![Klucz tabeli](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 

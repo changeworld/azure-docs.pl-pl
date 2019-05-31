@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/21/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002502"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240810"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -54,7 +54,7 @@ Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć określone upraw
 |Tworzenie lub usuwanie certyfikatu usługi Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Współautor dla grupy zasobów         |Grupa zasobów konta usługi Automation|
 |Tworzenie lub usuwanie połączenia usługi Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Współautor dla grupy zasobów |Grupa zasobów konta usługi Automation|
 
-<sup>1</sup> użytkownicy inni niż administratorzy w dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Jeśli dzierżawy usługi Azure AD **użytkownicy mogą rejestrować aplikacje** opcji **ustawienia użytkownika**strona jest ustawiona na **tak**. Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, użytkownik wykonujący tę akcję musi być **administratora globalnego** w usłudze Azure AD.
+<sup>1</sup> użytkownicy inni niż administratorzy w dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Jeśli dzierżawy usługi Azure AD **użytkownicy mogą rejestrować aplikacje** opcji **ustawienia użytkownika**strona jest ustawiona na **tak**. Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, użytkownik wykonujący tę akcję musi być zdefiniowana w powyższej tabeli.
 
 Jeśli nie jesteś członkiem wystąpienia usługi Active Directory subskrypcji przed dodaniem do **administratora globalnego** roli w subskrypcji dodawane jako Gość. W takiej sytuacji pojawi się `You do not have permissions to create…` ostrzeżenia na **Dodawanie konta usługi Automation** strony. Użytkownicy dodani do **administratora globalnego** roli najpierw może być usunięty z wystąpienia usługi Active Directory dla subskrypcji i ponownie dodani, aby zostali pełnymi użytkownikami w usłudze Active Directory. Aby zweryfikować tę sytuację, w okienku **Azure Active Directory** w witrynie Azure Portal wybierz kolejno pozycje **Użytkownicy i grupy** i **Wszyscy użytkownicy**, a po wybraniu określonego użytkownika wybierz pozycję **Profil**. Wartość atrybutu **Typ użytkownika** na liście profilów użytkowników nie powinna być równa **Gość**.
 
@@ -376,7 +376,7 @@ W witrynie Azure portal wybierz **subskrypcje** i wybierz subskrypcję, konta us
 
 ![Współautorzy subskrypcji](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Aby dodać nazwę główną usługi do grupy zasobów, wybierz grupę zasobów w witrynie Azure portal i wybierz pozycję **kontrola dostępu (IAM)**. Wybierz **Dodaj przypisanie roli**, spowoduje to otwarcie **Dodaj przypisanie roli** strony. Aby uzyskać **roli**, wybierz opcję **Współautor**. W **wybierz** tekstu wpisz nazwę jednostki usługi dla konta Uruchom jako i wybierz ją z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Wykonaj te kroki dla grupy zasobów, którą chcesz nadać usługi Automation Uruchom jako platformy Azure jednostce usługi dostępu do.
+Aby dodać nazwę główną usługi do grupy zasobów, wybierz grupę zasobów w witrynie Azure portal i wybierz pozycję **kontrola dostępu (IAM)** . Wybierz **Dodaj przypisanie roli**, spowoduje to otwarcie **Dodaj przypisanie roli** strony. Aby uzyskać **roli**, wybierz opcję **Współautor**. W **wybierz** tekstu wpisz nazwę jednostki usługi dla konta Uruchom jako i wybierz ją z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Wykonaj te kroki dla grupy zasobów, którą chcesz nadać usługi Automation Uruchom jako platformy Azure jednostce usługi dostępu do.
 
 ## <a name="misconfiguration"></a>Błąd konfiguracji
 

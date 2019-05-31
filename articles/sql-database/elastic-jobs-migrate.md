@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviewer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 627b29018afff2adb57b3b8b5c816bea9c421f68
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475800"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236858"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migracja do nowego zadania elastycznych baz danych
 
 Uaktualnionej wersji [zadania Elastic Database](elastic-jobs-overview.md) jest dostępna.
 
-Jeśli masz istniejącą wersję klienta hostowane [zadania Elastic Database](sql-database-elastic-jobs-overview.md), migracji poleceń cmdlet i skryptów są dostarczane dla łatwe migrowanie do najnowszej wersji.
+Jeśli masz istniejący klient hostowanej wersji zadania Elastic Database, poleceń cmdlet migracji i skryptów są dostarczane w prosty sposób migracji do najnowszej wersji.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -32,7 +32,7 @@ Uaktualnioną wersją zadania elastycznych baz danych ma nowy zestaw poleceń cm
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Zainstaluj najnowsze polecenia cmdlet zadań elastycznych
 
-Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
 
 Zainstaluj **Az.Sql** 1.1.1-preview modułu, aby uzyskać najnowsze polecenia cmdlet zadania elastycznego. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
 
@@ -93,7 +93,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 Skoro zarówno stare i nowe zadania elastyczne polecenia cmdlet są inicjowane, migrować swoje poświadczenia zadania, obiektów docelowych i zadań, do nowego *bazy danych zadania*.
 
-### <a name="setup"></a>Konfigurowanie
+### <a name="setup"></a>Konfiguracja
 
 ```powershell
 $ErrorActionPreference = "Stop";

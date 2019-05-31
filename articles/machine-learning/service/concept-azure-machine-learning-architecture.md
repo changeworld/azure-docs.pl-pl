@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151181"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242423"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -37,6 +37,7 @@ Ogólnie maszyny uczenie się przepływu pracy przebiega w następującej kolejn
 Należy wykonać te czynności przy użyciu dowolnej z następujących czynności:
 + [Usługi Azure Machine Learning zestawu SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + [Usługi Azure Machine Learning interfejs wiersza polecenia](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++ [Rozszerzenie usługi Azure Machine Learning programu VS Code](how-to-vscode-tools.md)
 +  [Interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning](ui-concept-visual-interface.md)
 
 > [!NOTE]
@@ -58,7 +59,7 @@ Eksperyment to zbiór wielu uruchomień z określonego skryptu. Zawsze należy d
 
 Na przykład z użyciem eksperymentu zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
-## <a name="model"></a>Model
+## <a name="model"></a>Modelowanie
 
 W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego obejmuje algorytmu, wybierając dostarczanie danych i dostosowywanie hiperparametrów. Szkolenie jest procesem iteracyjnym, tworzącego trenowanego modelu, który hermetyzuje, jakie zakorzenione podczas procesu uczenia modelu.
 
@@ -141,7 +142,7 @@ Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia 
 
 Przykład — patrz [Tutorial: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-## <a name="run"></a>Uruchom
+## <a name="run"></a>Uruchom polecenie
 
 Przebieg jest rekord, który zawiera następujące informacje:
 
@@ -158,7 +159,7 @@ Na przykład wyświetlanie uruchomień, które są produkowane przez uczenia mod
 
 Po rozpoczęciu szkolenia, gdzie katalog źródłowy jest w nim program lokalnego repozytorium Git, informacje o repozytorium znajduje się w historii uruchamiania. Na przykład identyfikator bieżącego zatwierdzenia w repozytorium jest rejestrowany jako część historii. Działa to z przebiegów przesłane za pomocą narzędzie do szacowania potoku uczenia Maszynowego i uruchomienia skryptu. Działa z zestawu SDK lub interfejsu wiersza polecenia Machine Learning przesłane uruchomień.
 
-## <a name="snapshot"></a>Migawka
+## <a name="snapshot"></a>Snapshot
 
 Po przesłaniu uruchomienie usługi Azure Machine Learning kompresuje katalogu, który zawiera skrypt jako plik zip i wysyła je do obliczeniowego elementu docelowego. Następnie został wyodrębniony plik zip, a skrypt jest uruchamiany istnieje. Usługa Azure Machine Learning są także przechowywane w pliku zip jako migawka jako część rekordu uruchomienia. Każda osoba mająca dostęp do obszaru roboczego można przeglądać rekordu uruchomienia i pobrać migawki.
 

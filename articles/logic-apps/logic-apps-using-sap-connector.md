@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 05/09/2019
 tags: connectors
-ms.openlocfilehash: 3fb39103fc9cb0f38bca56dcaeea4837ff4dfabe
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bccefec80ef3afd6d312bb1048d3be5d8e708728
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541189"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258147"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
@@ -119,6 +119,8 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
       Jeśli **typ logowania** właściwość jest ustawiona na **grupy**, te właściwości, które zwykle znajdują się opcjonalne, są wymagane:
 
       ![Utwórz połączenie z serwerem SAP wiadomości](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Domyślnie silne wpisywanie służy pod kątem nieprawidłowych wartości, wykonując sprawdzanie poprawności kodu XML względem schematu. To zachowanie może pomóc w wykrywaniu wcześniej. **Bezpieczne wpisując** opcja jest dostępna dla zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [ **bezpieczne wpisując** opcji](#safe-typing).
 
    1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
@@ -225,6 +227,8 @@ W tym przykładzie użyto aplikację logiki, która wyzwala podczas odbierania k
 
       ![Utwórz połączenie z serwerem SAP wiadomości](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
+      Domyślnie silne wpisywanie służy pod kątem nieprawidłowych wartości, wykonując sprawdzanie poprawności kodu XML względem schematu. To zachowanie może pomóc w wykrywaniu wcześniej. **Bezpieczne wpisując** opcja jest dostępna dla zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [ **bezpieczne wpisując** opcji](#safe-typing).
+
 1. Podaj wymagane parametry zgodnie z konfiguracją systemu SAP.
 
    Opcjonalnie możesz podać co najmniej jedną akcję SAP. Ta lista akcji określa komunikaty odbierane przez wyzwalacz z serwera SAP za pośrednictwem bramy danych. Pusta lista określa, że wyzwalacz odbiera wszystkie komunikaty. Jeśli lista zawiera więcej niż jeden komunikat, wyzwalacz odbiera tylko komunikaty, które są określone na liście. Inne komunikaty wysyłane z serwera SAP są odrzucane przez bramę.
@@ -306,7 +310,11 @@ Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
       ![Utwórz połączenie z serwerem SAP wiadomości](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-   1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**. Usługa Logic Apps, konfiguruje i testuje połączenie, upewniając się, że połączenie działa poprawnie.
+      Domyślnie silne wpisywanie służy pod kątem nieprawidłowych wartości, wykonując sprawdzanie poprawności kodu XML względem schematu. To zachowanie może pomóc w wykrywaniu wcześniej. **Bezpieczne wpisując** opcja jest dostępna dla zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [ **bezpieczne wpisując** opcji](#safe-typing).
+
+   1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**. 
+   
+      Usługa Logic Apps, konfiguruje i testuje połączenie, upewniając się, że połączenie działa poprawnie.
 
 1. Podaj ścieżkę do artefaktu, dla którego chcesz wygenerować schemat.
 
@@ -397,11 +405,58 @@ Aby włączyć SNC dla żądań do lub z systemem SAP, wybierz **SNC użyj** pol
    | **USŁUGA REJESTRACJI JEDNOKROTNEJ SNC** | Po nawiązaniu połączenia za pośrednictwem SNC tożsamości SNC jest zazwyczaj używany do uwierzytelniania obiektu wywołującego. Innym rozwiązaniem jest zastąpienie tak, aby informacje użytkownika i hasło mogą służyć do uwierzytelniania obiektu wywołującego, ale nadal szyfrowany wiersza. |
    | **Moja nazwa SNC** | W większości przypadków można pominąć tę właściwość. Zainstalowane rozwiązanie SNC wie, zwykle własną nazwę SNC. Tylko w przypadku rozwiązań Obsługa "wiele tożsamości" może być konieczne określ tożsamość ma być używany dla tego konkretnego docelowego lub serwer. |
    | **Nazwa partnera SNC** | Nazwa wewnętrznej bazy danych SNC |
-   | **Jakość SNC ochrony** | Jakość usługi do użycia w przypadku komunikacji SNC tego miejsca docelowego/serwera. Wartość domyślna jest definiowany przez system wewnętrznej bazy danych. Wartość maksymalna jest definiowany przez produkt zabezpieczeń używane dla SNC. |
+   | **Jakość SNC ochrony** | Jakość usługi ma być używany do komunikacji SNC tego konkretnego docelowego/serwera. Wartość domyślna jest definiowany przez system wewnętrznej bazy danych. Wartość maksymalna jest definiowany przez produkt zabezpieczeń używane dla SNC. |
    |||
 
    > [!NOTE]
    > Zmienne środowiskowe zmienna środowiskowa SNC_LIB i SNC_LIB_64 powinna nie można ustawić na komputerze gdzie mają bramą danych i Biblioteka SNC. Jeśli ustawiona, ich pierwszeństwo miałoby na wartość Biblioteka SNC przekazywane za pośrednictwem łącznika.
+
+<a name="safe-typing"></a>
+
+## <a name="safe-typing"></a>Wpisywanie bezpieczne
+
+Domyślnie podczas tworzenia połączenia SAP silne wpisywanie służy pod kątem nieprawidłowych wartości, wykonując sprawdzanie poprawności kodu XML względem schematu. To zachowanie może pomóc w wykrywaniu wcześniej. **Bezpieczne wpisując** opcja jest dostępna dla zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Jeśli wybierzesz **bezpieczne wpisując**, typ DATS i wpisz TIMS SAP są traktowane jako ciągi, a nie jako odpowiedniki XML `xs:date` i `xs:time` gdzie `xmlns:xs="http://www.w3.org/2001/XMLSchema"`. Bezpieczne wpisując ma wpływ na zachowanie dla wszystkich generowanie schematu, Wyślij wiadomość dla zarówno ładunku "została wysłana" i "Odebrano" odpowiedzi i wyzwalacza. 
+
+Gdy jest używane silne wpisywanie (**bezpieczne wpisując** nie włączone), schemat mapowania typów DATS i TIMS prostsze typów XML:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true" type="xs:date"/>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true" type="xs:time"/>
+```
+
+Podczas wysyłania komunikatów przy użyciu silne wpisywanie, do dopasowania formatu typu XML jest zgodny DATS i TIMS odpowiedzi:
+
+```xml
+<DATE>9999-12-31</DATE>
+<TIME>23:59:59</TIME>
+```
+
+Gdy **bezpieczne wpisując** jest włączona, schemat mapuje DATS i TIMS typy XML pola ciągu, za pomocą ograniczenia długości, na przykład:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+```
+
+Podczas wysyłania komunikatów przy użyciu **bezpieczne wpisując** włączone, DATS i TIMS odpowiedź wygląda następująco:
+
+```xml
+<DATE>99991231</DATE>
+<TIME>235959</TIME>
+```
+
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 

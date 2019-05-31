@@ -2,17 +2,17 @@
 title: W wersji zapoznawczej — tworzenie kontenerów systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak szybko utworzyć klaster Kubernetes, Wdróż aplikację w kontenerze systemu Windows Server w usłudze Azure Kubernetes Service (AKS) przy użyciu wiersza polecenia platformy Azure.
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: zarhoads
-ms.openlocfilehash: 328fb9707c7151b8696cfb55e13567db90e45b7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: twhitney
+ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991152"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305298"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>W wersji zapoznawczej — tworzenie kontenerów systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS) przy użyciu wiersza polecenia platformy Azure
 
@@ -35,9 +35,10 @@ Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza poleceni
 Po utworzeniu klastra, który umożliwia uruchamianie kontenerów systemu Windows Server, należy dodać do puli dodatkowego węzła. Dodawanie puli dodatkowego węzła zostało omówione w dalszej części, ale najpierw należy włączyć kilka funkcji w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi, uczestnictwo. Są one udostępniane do zbierania opinii i błędy z naszej społeczności. W wersji zapoznawczej te funkcje nie są przeznaczone do użytku produkcyjnego. Funkcje w wersji zapoznawczej objęte "starań" pomocy technicznej. Pomoc od zespołów pomocy technicznej usługi AKS jest dostępna w godzinach pracy i Pacyfik, część strefy czasowej (PST) tylko. Aby uzyskać więcej informacji zobacz następujące artykuły pomocy technicznej:
 >
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+> * [Zasady pomocy technicznej usługi AKS][aks-support-policies]
+> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia w wersji zapoznawczej usługi aks
     
@@ -276,7 +277,7 @@ Aby wyświetlić przykładową aplikację w akcji, otwórz przeglądarkę sieci 
 
 ![Obraz przedstawiający Przechodzenie do aplikacji przykładowej platformy ASP.NET](media/windows-container/asp-net-sample-app.png)
 
-## <a name="delete-cluster"></a>Usuń klaster
+## <a name="delete-cluster"></a>Usuwanie klastra
 
 Gdy klaster nie będzie już potrzebny, usuń grupę zasobów, usługę kontenera i wszystkie pokrewne zasoby za pomocą polecenia [az group delete][az-group-delete].
 
@@ -302,7 +303,6 @@ Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompl
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [dotnet-samples]: https://hub.docker.com/_/microsoft-dotnet-framework-samples/
-[aks-github]: https://github.com/azure/aks/issues
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
@@ -328,3 +328,5 @@ Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompl
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
 [use-advanced-networking]: configure-advanced-networking.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

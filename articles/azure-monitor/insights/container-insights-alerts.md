@@ -11,26 +11,27 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 04/26/2019
 ms.author: magoedte
-ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494630"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072393"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w usłudze Azure Monitor dla kontenerów
 Usługa Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenerów, które są wdrażane w usłudze Azure Container Instances lub zarządzanych klastrów Kubernetes, które są hostowane na platformie Azure Kubernetes Service (AKS).
 
 W tym artykule opisano sposób włączania alertów w następujących sytuacjach:
 
-* Gdy wykorzystanie procesora CPU lub pamięci na węzłach klastra przekracza określoną wartość progową
-* Gdy użycie procesora CPU lub pamięci na każdy kontener w kontrolerze przekracza określoną wartość progową porównaniu limit, który jest ustawiony na odpowiadający jej zasób
-* *Niegotowe* zlicza stan węzła
-*  *Nie powiodło się*, *oczekujące*, *nieznany*, *systemem*, lub *Powodzenie* liczby zasobników fazy
+- Gdy wykorzystanie procesora CPU lub pamięci na węzłach klastra przekracza próg
+- Gdy użycie procesora CPU lub pamięci na każdy kontener w kontrolerze przekroczy próg porównaniu limit, który jest ustawiony na odpowiadający jej zasób
+- *Niegotowe* zlicza stan węzła
+- *Nie powiodło się*, *oczekujące*, *nieznany*, *systemem*, lub *Powodzenie* liczby zasobników fazy
+- Gdy ilość wolnego miejsca na węzłach klastra przekracza próg 
 
-Aby otrzymywać alerty dla wysokie użycie procesora CPU i użycie pamięci na węzłach klastra, użyj zapytań, które są dostarczane do utworzenia alertu dotyczącego metryki lub alertu pomiaru metryki. Alerty metryki mają mniejsze opóźnienia niż alertów dzienników. Ale alertów dzienników zapewnia zaawansowane zapytania i większego zaawansowania. Alerty zapytania porównania datetime bieżącej przy użyciu dzienników *teraz* operatora i będzie godzinę wstecz. (Usługa azure Monitor dla kontenerów przechowuje wszystkie daty w formacie uniwersalnego czasu koordynowanego (UTC)).
+Aby otrzymywać alerty dla wysokie użycie procesora CPU, wykorzystanie pamięci lub małej ilości wolnego miejsca na węzłach klastra, użyj zapytań, które są dostarczane do utworzenia alertu dotyczącego metryki lub alertu pomiaru metryki. Alerty metryki mają mniejsze opóźnienia niż alertów dzienników. Ale alertów dzienników zapewnia zaawansowane zapytania i większego zaawansowania. Alerty zapytania porównania datetime bieżącej przy użyciu dzienników *teraz* operatora i będzie godzinę wstecz. (Usługa azure Monitor dla kontenerów przechowuje wszystkie daty w formacie uniwersalnego czasu koordynowanego (UTC)).
 
 Jeśli nie znasz przy użyciu alertów usługi Azure Monitor, zobacz [Przegląd alertów na platformie Microsoft Azure](../platform/alerts-overview.md) przed rozpoczęciem. Aby dowiedzieć się więcej na temat alertów, które używają dziennika zapytań, zobacz [alerty dzienników w usłudze Azure Monitor](../platform/alerts-unified-log.md). Aby uzyskać więcej informacji dotyczących alertów dotyczących metryk, zobacz [alertów dotyczących metryk w usłudze Azure Monitor](../platform/alerts-metric-overview.md).
 
@@ -255,6 +256,33 @@ let endDateTime = now();
 >[!NOTE]
 >Aby utworzyć alerty dotyczące niektórych zasobnika faz, takich jak *oczekujące*, *nie powiodło się*, lub *nieznany*, zmodyfikuj ostatni wiersz zapytania. Na przykład w ramach alertu *FailedCount* użyć: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
+Następujące zapytanie zwraca dyski węzłów klastra, które przekraczają 90% wolnego miejsca. Aby uzyskać identyfikator klastra, najpierw uruchom następujące zapytanie, a następnie skopiuj wartość z `ClusterId` właściwości:
+
+```kusto
+InsightsMetrics
+| extend Tags = todynamic(Tags)            
+| project ClusterId = Tags['container.azm.ms/clusterId']   
+| distinct tostring(ClusterId)   
+``` 
+
+```kusto
+let clusterId = '<cluster-id>';
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+InsightsMetrics
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where Origin == 'container.azm.ms/telegraf'            
+| where Namespace == 'disk'            
+| extend Tags = todynamic(Tags)            
+| project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
+| where ClusterId =~ clusterId       
+| where DiskMetricName == 'used_percent'
+| summarize AggregatedValue = max(DiskMetricValue) by bin(TimeGenerated, trendBinSize)
+| where AggregatedValue >= 90
+```
+
 ## <a name="create-an-alert-rule"></a>Tworzenie reguły alertu
 Wykonaj następujące kroki, aby utworzyć alert dziennika w usłudze Azure Monitor przy użyciu jednej z reguł wyszukiwania dziennika, które podano wcześniej.  
 
@@ -272,9 +300,9 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w usłudze Azure Moni
 8. Skonfiguruj alert w następujący sposób:
 
     1. Z listy rozwijanej **Na podstawie** wybierz pozycję **Pomiar metryki**. Pomiar metryki tworzy alert dla każdego obiektu w zapytaniu, który ma wartość powyżej naszych określoną wartość progową.
-    1. Dla **warunek**, wybierz opcję **większa**, a następnie wprowadź **75** jako początkowej, podstawowej **próg**. Lub wprowadź inną wartość, która spełnia podane kryteria.
+    1. Dla **warunek**, wybierz opcję **większy niż**, a następnie wprowadź **75** jako początkowej, podstawowej **próg** alertów wykorzystanie procesora CPU i pamięci . Alert małej ilości miejsca, wprowadź **90**. Lub wprowadź inną wartość, która spełnia podane kryteria.
     1. W **wyzwalacz alertu na podstawie** zaznacz **kolejne naruszenia**. Wybierz z listy rozwijanej **większa**, a następnie wprowadź **2**.
-    1. Aby skonfigurować alert dla procesora CPU kontenera lub wykorzystanie pamięci, w obszarze **agregowane na**, wybierz opcję **ContainerName**. 
+    1. Aby skonfigurować alert dla procesora CPU kontenera lub wykorzystanie pamięci, w obszarze **agregowane na**, wybierz opcję **ContainerName**. Aby skonfigurować alert małej ilości węzła klastra, wybierz **ClusterId**.
     1. W **Evaluated na podstawie** sekcji, ustaw **okres** wartość **60 minut**. Reguła będzie uruchamiany co 5 minut i zwracają rekordy, które zostały utworzone w ciągu ostatniej godziny od bieżącego czasu. Ustawianie okresu kontom szerokości okna potencjalnych opóźnieniu przesyłania danych. Gwarantuje również, że zapytanie zwraca dane w celu uniknięcia ujemna wartość false, w którym nigdy nie wyzwala alert.
 
 9. Wybierz **gotowe** aby zakończyć tworzenie reguły alertu.

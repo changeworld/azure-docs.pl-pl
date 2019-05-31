@@ -8,12 +8,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4e28ca15197f89caeaeaca0aabb648755b8235f1
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551538"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236510"
 ---
 # <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
 
@@ -29,7 +29,7 @@ Wykrywanie zmian i szczegóły są cenne dla następujących przykładowe scenar
 - Utrzymywanie bazą zarządzania konfiguracją, znane jako CMDB aktualne. Zamiast odświeżanie wszystkich zasobów i ich zestawy pełną właściwość z częstotliwością, zaplanowane, pobierać tylko co się zmieniło.
 - Zrozumienie, jakie inne właściwości mogły zostać zmienione podczas zasobem zmieniono stan zgodności. Ocena te dodatkowe właściwości może zapewnić wgląd w innych właściwości, które może być konieczne, można zarządzać za pomocą usługi Azure Policy definition.
 
-W tym artykule pokazano, jak do zebrania tych informacji za pośrednictwem zestawu SDK wykres zasobów. Aby wyświetlić te informacje w witrynie Azure portal, zobacz usługi Azure Policy [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview) lub dziennik aktywności platformy Azure [historię zmian](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history).
+W tym artykule pokazano, jak do zebrania tych informacji za pośrednictwem zestawu SDK wykres zasobów. Aby wyświetlić te informacje w witrynie Azure portal, zobacz usługi Azure Policy [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview) lub dziennik aktywności platformy Azure [historię zmian](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
 
 > [!NOTE]
 > Szczegóły zmiany w wykresie zasobów są przeznaczone dla właściwości Resource Manager. Śledzenie zmian na maszynie wirtualnej, dla usługi Azure Automation [śledzenie zmian](../../../automation/automation-change-tracking.md) lub usługi Azure Policy [Konfiguracja gościa dla maszyn wirtualnych](../../policy/concepts/guest-configuration.md).
@@ -44,7 +44,7 @@ Pierwszym krokiem podczas wyświetlania, co się zmieniło w zasobie jest można
 **ResourceChanges** punktu końcowego wymaga dwóch parametrów w treści żądania:
 
 - **resourceId**: Zasób platformy Azure do wyszukania zmian.
-- **Interwał**: Właściwość o _start_ i _zakończenia_ daty, kiedy mają być sprawdzane dla zdarzenia zmiany za pomocą **Zulu strefy czasowej (Z)**.
+- **Interwał**: Właściwość o _start_ i _zakończenia_ daty, kiedy mają być sprawdzane dla zdarzenia zmiany za pomocą **Zulu strefy czasowej (Z)** .
 
 Przykład treść żądania:
 

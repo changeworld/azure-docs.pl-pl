@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381692"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298755"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Rozwiązywanie problemów z błędami występującymi podczas synchronizacji
 Podczas synchronizowania danych tożsamości z usługi Windows Server Active Directory (AD DS) do usługi Azure Active Directory (Azure AD), mogą wystąpić błędy. Ten artykuł zawiera omówienie różnych typów błędów synchronizacji, niektóre z możliwych scenariuszy, które powodują tych błędów i potencjalne sposoby naprawienia błędy. W tym artykule zawiera z najczęściej popełnianymi typami błędów i może nie obejmować wszystkich możliwych błędów.
@@ -53,7 +53,7 @@ Schemat usługi Active Directory systemu Azure nie zezwala na dwóch lub więcej
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* Identyfikator obiektu
+* ObjectId
 
 > [!NOTE]
 > [Odporność platformy Azure AD atrybut zduplikowany atrybut](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkcji jest również udostępniana jako zachowanie domyślne usługi Azure Active Directory.  Zmniejsza to liczbę wszystkich błędów synchronizacji widzianych przez program Azure AD Connect (a także innych klientów synchronizacji), wprowadzając usługi Azure AD bardziej odporne na błędy w taki sposób, obsługuje on zduplikowanych atrybutów ProxyAddresses i UserPrincipalName atrybuty w środowiska lokalne usługi AD. Ta funkcja nie naprawić błędy dublowania. Dlatego dane nadal musi mieć stałą. Jednak umożliwia inicjowanie obsługi nowych obiektów, które w przeciwnym razie jest zablokowany aprowizowana z powodu zduplikowane wartości w usłudze Azure AD. Spowoduje to także zmniejszyć liczbę błędów synchronizacji zwracana do klienta synchronizacji.
@@ -190,7 +190,7 @@ Synchronizacja użytkownika sufiks UserPrincipalName został zmieniony z jednej 
 
 #### <a name="example"></a>Przykład
 1. Bob Smith, konto dla domeny Contoso.com, pobiera dodane jako nowy użytkownik w usłudze Active Directory za pomocą właściwości UserPrincipalName bob@contoso.com
-2. Bob zostanie przeniesiony do innego oddziału contoso.com o nazwie Fabrikam.com i jego UserPrincipalName jest zmieniana na bob@fabrikam.com
+2. Bob zostanie przeniesiony do innego oddziału contoso.com o nazwie Fabrikam.com i ich UserPrincipalName jest zmieniana na bob@fabrikam.com
 3. Domeny contoso.com i fabrikam.com są domen federacyjnych w usłudze Azure Active Directory.
 4. UserPrincipalName przez Boba zostaje zaktualizowana i powoduje błąd synchronizacji "FederatedDomainChangeError".
 
@@ -221,7 +221,7 @@ Gdy atrybut przekroczy dozwolony limit rozmiaru, długości lub liczby ustawiony
 ### <a name="how-to-fix"></a>Jak naprawić
 1. Upewnij się, że atrybut powoduje błąd w ramach ograniczenia dozwolone.
 
-## <a name="existing-admin-role-conflict"></a>Istniejący konflikt roli administratora
+## <a name="existing-admin-role-conflict"></a>Istniejące konflikt roli administratora
 
 ### <a name="description"></a>Opis
 **Istniejącego konfliktu roli administratora** ma miejsce w obiekcie użytkownika podczas synchronizacji, gdy ma ten obiekt użytkownika:
@@ -244,6 +244,6 @@ Aby rozwiązać tego problemu, wykonaj, jedną z następujących czynności:
 >[!NOTE]
 >Można przypisać roli administracyjnej do istniejącego obiektu użytkownika ponownie po ukończeniu nietrwałego zgodność między obiektu użytkownika w środowisku lokalnym i obiektów użytkownika usługi Azure AD.
 
-## <a name="related-links"></a>Powiązane linki
+## <a name="related-links"></a>Linki pokrewne
 * [Znajdź obiekty usługi Active Directory w Centrum administracyjne usługi Active Directory](https://technet.microsoft.com/library/dd560661.aspx)
 * [Tworzenie zapytań względem usługi Azure Active Directory obiektu przy użyciu programu PowerShell usługi Azure Active Directory](https://msdn.microsoft.com/library/azure/jj151815.aspx)

@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: d52aa3b39a17c42c0f0e0cb669c69d336b41ba48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 866374df7d3a6973cfc5995afd5cc3c4b0145c48
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035826"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400000"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Tworzenie i dostosowywanie planów odzyskiwania
 
@@ -21,7 +21,7 @@ W tym artykule opisano sposób tworzenia i dostosowywania planu odzyskiwania w [
 
 ## <a name="create-a-recovery-plan"></a>Tworzenie planu odzyskiwania
 
-1. W magazynie usługi Recovery Services, wybierz **plany odzyskiwania (Usługa Site Recovery)** > **+ planu odzyskiwania**.
+1. W magazynie usługi Recovery Services, wybierz **plany odzyskiwania (Usługa Site Recovery)**  >  **+ planu odzyskiwania**.
 2. W **Tworzenie planu odzyskiwania**, określ nazwę dla tego planu.
 3. Wybierz źródłowy i docelowy oparty na maszynach w planie, a następnie wybierz pozycję **usługi Resource Manager** dla modelu wdrażania. Lokalizacja źródłowa musi mieć maszyn, które są włączone dla trybu failover i odzyskiwania. 
 
@@ -53,7 +53,7 @@ Tworzenie dodatkowych grup, a następnie dodaj maszyny do różnych grup, aby na
 
 ## <a name="add-a-script-or-manual-action"></a>Dodawanie skryptów lub akcji ręcznej
 
-Plan odzyskiwania można dostosować, dodając skryptów lub akcji ręcznej. Należy pamiętać, że:
+Plan odzyskiwania można dostosować, dodając skryptów lub akcji ręcznej. Należy pamiętać o następujących kwestiach:
 
 - Jeśli przeprowadzasz replikację do platformy Azure można zintegrować elementów runbook usługi Azure automation do planu odzyskiwania. [Dowiedz się więcej](site-recovery-runbook-automation.md).
 - Jeśli replikujesz maszyny wirtualne funkcji Hyper-V zarządzanych przez program System Center VMM, możesz utworzyć skrypt na serwerze programu VMM w środowisku lokalnym i uwzględnić go w ramach planu odzyskiwania.
@@ -70,13 +70,16 @@ Plan odzyskiwania można dostosować, dodając skryptów lub akcji ręcznej. Nal
     Z lokacji funkcji Hyper-V na platformę Azure | Element Runbook | Nie dotyczy
     Program VMM do dodatkowej z programem VMM | Skrypt | Skrypt
 
-1. W planie odzyskiwania, kliknij ten krok, do którego ma zostać dodany akcji i określ, kiedy powinny występować akcji:. Jeśli chcesz, aby akcja została wykonana przed maszyn w grupie są uruchamiane po przejściu w tryb failover wybierz **Dodaj akcję wstępną**.
-    b. Akcja została wykonana po maszyn w menu start grupy po włączeniu trybu failover, zaznacz **Dodaj akcję po**. Aby zmienić położenie akcji, wybierz **Przenieś w górę** lub **Przenieś w dół** przycisków.
+1. W ramach planu odzyskiwania kliknij krok, do którego ma zostać dodany akcji i określ, kiedy powinny występować akcji:
+    1. Jeśli chcesz, aby akcja została wykonana przed maszyn w grupie są uruchamiane po przejściu w tryb failover wybierz **Dodaj akcję wstępną**.
+    1. Akcja została wykonana po maszyn w menu start grupy po włączeniu trybu failover, zaznacz **Dodaj akcję po**. Aby zmienić położenie akcji, wybierz **Przenieś w górę** lub **Przenieś w dół** przycisków.
 2. W **Wstawianie akcji**, wybierz opcję **skryptu** lub **akcji ręcznej**.
-3. Jeśli chcesz dodać akcję ręczną, wykonaj następujące czynności". Wpisz nazwę dla akcji, a następnie wpisz w instrukcjach akcji. Uruchamiających przełączenie w tryb failover zostaną wyświetlone następujące instrukcje.
-    b. Określ, czy chcesz dodać akcji ręcznej dla wszystkich typów przejścia w tryb failover (Testowanie pracy w trybie Failover planowana praca awaryjna (jeśli dotyczy)). Następnie kliknij przycisk **OK**.
-4. Jeśli chcesz dodać skrypt, wykonaj następujące czynności:. W przypadku dodawania skryptów programu VMM, zaznacz **przejściu w tryb Failover skryptu VMM programu**, a następnie w **ścieżka skryptu** wpisz względną ścieżkę do udziału. Na przykład jeśli udział znajduje się w lokalizacji \\ <VMMServerName>\MSSCVMMLibrary\RPScripts, określ ścieżkę: \RPScripts\RPScript.PS1.
-    b. W przypadku dodawania usługi Azure automation Uruchom książki, określ **konta usługi Azure Automation** w którym znajduje się element runbook i wybierz odpowiedni **skrypt elementu Runbook usługi Azure**.
+3. Jeśli chcesz dodać akcję ręczną, wykonaj następujące czynności:
+    1. Wpisz nazwę dla akcji, a następnie wpisz w instrukcjach akcji. Uruchamiających przełączenie w tryb failover zostaną wyświetlone następujące instrukcje.
+    1. Określ, czy chcesz dodać akcji ręcznej dla wszystkich typów przejścia w tryb failover (Testowanie pracy w trybie Failover planowana praca awaryjna (jeśli dotyczy)). Następnie kliknij przycisk **OK**.
+4. Jeśli chcesz dodać skrypt, wykonaj następujące czynności:
+    1. W przypadku dodawania skryptów programu VMM, zaznacz **przejściu w tryb Failover skryptu VMM programu**, a następnie w **ścieżka skryptu** wpisz względną ścieżkę do udziału. Na przykład jeśli udział znajduje się w lokalizacji \\ \<lokalizacji VMMServerName > \MSSCVMMLibrary\RPScripts, określ ścieżkę: \RPScripts\RPScript.PS1.
+    1. W przypadku dodawania usługi Azure automation Uruchom książki, określ **konta usługi Azure Automation** w którym znajduje się element runbook i wybierz odpowiedni **skrypt elementu Runbook usługi Azure**.
 5. Uruchom testowanie trybu failover planu odzyskiwania, aby upewnić się, że skrypt działa zgodnie z oczekiwaniami.
 
 ## <a name="watch-a-video"></a>Obejrzyj wideo

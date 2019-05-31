@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: db065c78008e47326155e9e2b3a0f65031ec4cd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e99553afc05fca0250607bfccd2799adaf471e5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478433"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298157"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrowanie usługi Azure Active Directory z dziennikami inspekcji
 
@@ -28,7 +28,7 @@ Zdarzenia inspekcji w usłudze Azure Active Directory (Azure AD) pomoże zidenty
 
 
 >[!IMPORTANT]
-> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/15/2019 r. Pliki do pobrania AzLog zostały wyłączone w dniu 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Dzienniki inspekcji czynności, aby zintegrować usługę Azure Active Directory
 

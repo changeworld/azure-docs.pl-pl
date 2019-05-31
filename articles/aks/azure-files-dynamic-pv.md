@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 43f3a55bc820a232ccebc3a940faa86f9eb730f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467378"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072219"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i trwały wolumin za pomocą usługi Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -136,7 +136,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>Użyj trwały wolumin
 
-Poniższego kodu YAML tworzy zasobnik, który używa oświadczeń trwały wolumin *azurefile* zainstalować udział plików platformy Azure w */mnt/azure* ścieżki.
+Poniższego kodu YAML tworzy zasobnik, który używa oświadczeń trwały wolumin *azurefile* zainstalować udział plików platformy Azure w */mnt/azure* ścieżki. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"* .
 
 Utwórz plik o nazwie `azure-pvc-files.yaml`, a następnie skopiuj do poniższego kodu YAML. Upewnij się, że *claimName* odpowiada PVC utworzony w poprzednim kroku.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 4cca65e2be44d2c846cd4034f0a9d7e8c7d9af28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ab30351bfff9c5bbf070a1e8a54a4919e4d2231a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130885"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226264"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profil aplikacji sieci web uruchomionej na maszynie wirtualnej platformy Azure lub skalowania maszyn wirtualnych ustawić za pomocą Application Insights Profiler
 
@@ -31,7 +31,8 @@ Można także wdrożyć usługi Azure Application Insights Profiler od następuj
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Wdrażanie Profiler na maszynie wirtualnej lub zestawu skalowania maszyn wirtualnych
 W tym artykule pokazano, jak uzyskać Application Insights Profiler uruchomionej na maszyn wirtualnych (VM) lub w zestawie skalowania maszyn wirtualnych platformy Azure. Profiler jest instalowany przy użyciu rozszerzenia diagnostyki Azure dla maszyn wirtualnych. Skonfiguruj rozszerzenia Aby uruchomić Profiler i umieszczenie zestawu SDK usługi Application Insights w aplikacji.
 
-1. Dodaj zestaw SDK usługi Application Insights do swojej [aplikacji ASP.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) lub regularnych [aplikacji .NET](windows-services.md?toc=/azure/azure-monitor/toc.json).  
+1. Dodaj zestaw SDK usługi Application Insights do swojej [aplikacji ASP.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net).
+
    Aby wyświetlić profile swoich żądań, konieczne jest wysłanie żądania danych telemetrycznych do usługi Application Insights.
 
 1. Zainstaluj rozszerzenie diagnostyki platformy Azure na maszynie Wirtualnej. Aby uzyskać pełne przykłady szablonów usługi Resource Manager zobacz:  

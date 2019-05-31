@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 10/01/2016
+ms.date: 5/6/2019
 ms.author: crdun
-ms.openlocfilehash: 805868617fe7161159c72ba53ac0c94247722ac9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 72fd043321aefe74e95b34ec24c7be2ffd409439
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113453"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240325"
 ---
 # <a name="create-an-android-app"></a>Tworzenie aplikacji systemu Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku przedstawiono sposób dodawania usługi zaplecza opartej na chmurze do aplikacji mobilnej systemu Android przy użyciu zaplecza aplikacji mobilnej Azure.  Będziesz tworzyć nowe zaplecze aplikacji mobilnej oraz prostą aplikację systemu Android typu *Lista czynności do wykonania*, która przechowuje dane aplikacji na platformie Azure.
 
 Wykonanie kroków tego samouczka jest wymagane w przypadku wszystkich innych samouczków z zakresu systemu Android dotyczących używania funkcji Mobile Apps w usłudze Azure App Service.
@@ -33,16 +33,16 @@ Wykonanie kroków tego samouczka jest wymagane w przypadku wszystkich innych sam
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * [Narzędzia dla deweloperów systemu Android](https://developer.android.com/sdk/index.html), w tym zintegrowane środowisko projektowe Android Studio i najnowsza platforma systemu Android.
-* Zestaw Azure Mobile Android SDK, który jest automatycznie używany jako część pobieranego projektu szybkiego startu.
+* Azure Mobile Android SDK.
 * [Aktywne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Tworzenie zaplecza nowej aplikacji mobilnej Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-the-server-project"></a>Konfigurowanie projektu serwera
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Tworzenie połączenia z bazą danych i konfigurowanie projektu klienta i serwera
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-android-app"></a>Pobieranie i uruchamianie aplikacji systemu Android
+## <a name="run-the-android-app"></a>Uruchamianie aplikacji systemu Android
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->

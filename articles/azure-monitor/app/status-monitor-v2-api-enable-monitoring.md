@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 17798c78b167821f5f30a11996ac90cf67fb0179
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0a443df0c55dc916ef6d12d53811e9d9932370e7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144949"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255918"
 ---
 # <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Enable-ApplicationInsightsMonitoring (v0.2.1 alfa)
 
@@ -156,7 +156,7 @@ Successfully enabled Application Insights Status Monitor
  - [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
 - [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów
 - [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
-- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md)
+- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md)
  
  Dodawanie kolejnych funkcji telemetrii:
  - [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.

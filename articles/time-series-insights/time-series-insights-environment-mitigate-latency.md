@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak monitorowanie, diagnozowanie i rozwiąz
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 6151af941b89198812f2a33a522b30ff0a8796a0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471740"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242073"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i minimalizowanie ograniczania w celu zmniejszenia opóźnienia w usłudze Azure Time Series Insights
 
@@ -32,7 +32,7 @@ Możesz z największym prawdopodobieństwem mogą wystąpić opóźnienia i ogra
 - Wypchnij dużych ilości zdarzeń historycznych do źródła zdarzenia skutkuje to opóźnienie (usługi Time Series Insights będzie trzeba zapoznać się z nimi).
 - Dołącz do danymi referencyjnymi przy użyciu telemetrii, co skutkuje większym rozmiarze zdarzenia.  Z punktu widzenia ograniczania pakiet ingressed danych o rozmiarze pakietów wynosi 32 KB jest traktowane jako 32 zdarzenia, każdy o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB; pakiety danych większe niż 32 KB są obcinane.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Więcej informacji na temat zachowania w zakresie transferu danych przychodzących usługi Time Series Insights danych oraz sposobu planowania dla niego.</br>
 
