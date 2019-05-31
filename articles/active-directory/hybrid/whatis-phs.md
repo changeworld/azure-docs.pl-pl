@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f588115e38ded07b79568c91b8d166949b34a886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294948"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253856"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Co to jest synchronizacja skrótów haseł w usłudze Azure AD?
 Synchronizacja skrótów haseł to jedna z metod logowania używana do zapewnienia tożsamości hybrydowej. Program Azure AD Connect synchronizuje skróty haseł użytkowników z lokalnego wystąpienia usługi Active Directory do wystąpienia usługi Azure AD w chmurze.
@@ -47,7 +47,7 @@ Aby uzyskać więcej informacji, zobacz [Co to jest tożsamość hybrydowa?](wha
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Co to jest tożsamość hybrydowa?](whatis-phs.md)
+- [Co to jest tożsamość hybrydowa?](whatis-hybrid-identity.md)
 - [Co to są programy Azure AD Connect i Connect Health?](whatis-azure-ad-connect.md)
 - [Co to jest uwierzytelnianie przekazywane?](how-to-connect-pta.md)
 - [Co to jest federacja?](whatis-fed.md)

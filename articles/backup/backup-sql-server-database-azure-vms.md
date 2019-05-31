@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: HT
+ms.openlocfilehash: 0307dc5c83782119f6c10279563b8b9f0a999d28
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952941"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236880"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -49,7 +49,7 @@ Dla wszystkich operacji maszynę Wirtualną programu SQL Server wymaga łączno�
 
 Należy ustanowić połączenie przy użyciu jednej z następujących opcji:
 
-- **Zezwól na użycie zakresów adresów IP centrum danych platformy Azure**. Ta opcja umożliwia [zakresów adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) do pobrania. Aby uzyskać dostęp do grupy zabezpieczeń sieci (NSG), należy użyć polecenia cmdlet AzureNetworkSecurityRule zestawu. W przypadku listy dozwolonych tylko specyficzne dla regionu adresy IP, będzie również konieczne do listy dozwolonych w usłudze Azure Active Directory (Azure AD) usługi tag, aby włączyć uwierzytelnianie.
+- **Zezwól na użycie zakresów adresów IP centrum danych platformy Azure**. Ta opcja umożliwia [zakresów adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) do pobrania. Aby uzyskać dostęp do grupy zabezpieczeń sieci (NSG), należy użyć polecenia cmdlet AzureNetworkSecurityRule zestawu. Jeśli bezpieczne adresatów listy tylko adresy IP określonego regionu, należy również zaktualizować listę bezpiecznych adresatów tag usługi Azure Active Directory (Azure AD), aby włączyć uwierzytelnianie.
 
 - **Zezwalaj na dostęp za pomocą sieciowej grupy zabezpieczeń tagów**. Jeśli używasz sieciowych grup zabezpieczeń do ograniczenia łączności, ta opcja dodaje regułę do usługi sieciowej grupy zabezpieczeń, która umożliwia dostęp ruchu wychodzącego do usługi Azure Backup przy użyciu tagu AzureBackup. Oprócz tego tagu potrzebna będzie również odpowiadające [reguły](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) dla usługi Azure AD i Azure Storage, aby zezwolić na połączenia do transmisji danych i uwierzytelniania. AzureBackup tag jest obecnie dostępna w programie PowerShell tylko. Aby utworzyć regułę przy użyciu tagu AzureBackup:
 
@@ -96,7 +96,8 @@ Należy unikać nazw bazy danych przy użyciu następujących elementów:
   * Końcowe i spacje wiodące
   * Końcowe znaki wykrzyknika (!)
   * Zamykających nawiasów kwadratowych (])
-  * Począwszy od F:\
+  * Średnik ";"
+  * Ukośnik "/"
 
 Tworzenie aliasów jest dostępna dla nieobsługiwane znaki, ale zaleca się ich unikać. Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
@@ -162,7 +163,7 @@ Jak wykryć bazy danych uruchomione na maszynie Wirtualnej:
 
      * Aby chronić więcej niż 50 baz danych, skonfiguruj wiele kopii zapasowych.
      * Aby włączyć [ ](#enable-auto-protection) całe wystąpienie lub zawsze włączonej grupy dostępności. W **AUTOPROTECT** listy rozwijanej wybierz **ON**, a następnie wybierz pozycję **OK**.
-     
+
     > [!NOTE]
     > [Automatycznej ochrony](#enable-auto-protection) funkcja nie tylko umożliwia ochronę wszystkich istniejących baz danych tylko raz, ale również automatycznie chronić wszelkie nowe bazy danych dodane do tego wystąpienia lub grupy dostępności.  
 
