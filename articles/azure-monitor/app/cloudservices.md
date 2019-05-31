@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: d27c0e9570959e01267d83a768ead45b48b7cea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1520b01826de2a80d8baeccf4913fa180d385644
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60903274"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256303"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługi w chmurze usługi Application Insights dla platformy Azure
 [Usługa Application Insights] [ start] można monitorować [aplikacje usługi Azure cloud](https://azure.microsoft.com/services/cloud-services/) dostępność, wydajność, błędy i użycia przez połączenie danych z zestawów SDK Application Insights z [Diagnostyki azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) danych z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -41,7 +41,7 @@ Ta opcja umożliwia Instrumentację aplikacji w czasie wykonywania, dzięki czem
 
 Jeśli ta opcja jest wszystko, czego potrzebujesz, wszystko będzie gotowe. 
 
-Kolejnymi krokami [wyświetlanie metryk z poziomu aplikacji](../../azure-monitor/app/metrics-explorer.md), [wykonywanie zapytań do danych z analizą](../../azure-monitor/app/analytics.md), a także może być [pulpit nawigacyjny](../../azure-monitor/app/app-insights-dashboards.md). 
+Kolejnymi krokami [wyświetlanie metryk z poziomu aplikacji](../../azure-monitor/app/metrics-explorer.md), [wykonywanie zapytań do danych z analizą](../../azure-monitor/app/analytics.md). 
 
 Do monitorowania wydajności w przeglądarce, możesz również chcieć skonfigurować [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) i [Dodaj kod do strony sieci Web](../../azure-monitor/app/javascript.md).
 
@@ -61,7 +61,7 @@ Dane telemetryczne z Twojej aplikacji jest przechowywane, analizowane i wyświet
 Każdy zasób należy do grupy zasobów. Grupy zasobów są używane do zarządzania kosztami, aby udzielić dostępu do członków zespołu i wdrażania aktualizacji w ramach jednej skoordynowanej transakcji. Na przykład, można wykonać następujące akcje [napisać skrypt, aby wdrożyć](../../azure-resource-manager/resource-group-template-deploy.md) usługi w chmurze platformy Azure i jej usługi Application Insights, monitorowanie zasobów łącznie w jednej operacji.
 
 ### <a name="resources-for-components"></a>Zasoby dla składników
-Firma Microsoft zaleca, aby utworzyć osobny zasób dla każdego składnika aplikacji. Oznacza to możesz utworzyć zasób dla każdej roli sieci web i roli procesu roboczego. Możesz analizować każdy składnik oddzielnie, ale możesz tworzyć [pulpit nawigacyjny](../../azure-monitor/app/app-insights-dashboards.md) który zgromadzi kluczowe wykresy ze wszystkich składników, tak aby można porównać i monitorować je w jednym widoku. 
+Firma Microsoft zaleca, aby utworzyć osobny zasób dla każdego składnika aplikacji. Oznacza to możesz utworzyć zasób dla każdej roli sieci web i roli procesu roboczego. Możesz analizować każdy składnik oddzielnie, ale możesz tworzyć [pulpit nawigacyjny](../../azure-monitor/app/overview-dashboard.md) który zgromadzi kluczowe wykresy ze wszystkich składników, tak aby można porównać i monitorować je w jednym widoku. 
 
 Alternatywnym podejściem jest do wysyłania danych telemetrycznych z więcej niż jednej roli do tego samego zasobu, ale [dodanie właściwości wymiaru do każdego elementu telemetrii](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) która określa jego rolę źródłową. W tym podejściu wykresy metryk, takich jak wyjątki, zwykle przedstawiają agregację liczby elementów z różnych ról, ale możesz posegmentować wykres zgodnie z identyfikatorem roli, zgodnie z potrzebami. Można także filtrować wyszukiwania przez ten sam wymiar. Ta alternatywa sprawia, że nieco prostsze wyświetlić wszystkie elementy w tym samym czasie, ale również może prowadzić do wystąpienia pewnych niejasności między rolami.
 
@@ -91,7 +91,7 @@ Jeśli zdecydujesz się utworzyć osobny zasób dla każdej roli, a być może, 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Konfigurowanie diagnostyki platformy Azure dla każdej roli
 Ustaw tę opcję, aby monitorować aplikację za pomocą usługi Application Insights. Dla ról sieci web ta opcja zapewnia monitorowanie wydajności, alerty, diagnostyki i analizy użycia. W przypadku innych ról możesz wyszukiwać i monitorować diagnostyki platformy Azure, takie jak ponowne uruchomienie, liczniki wydajności i wywołania interfejsu System.Diagnostics.Trace. 
 
-1. W Eksploratorze rozwiązań w usłudze Visual Studio w obszarze  **\<YourCloudService >** > **role**, otwórz właściwości każdej roli.
+1. W Eksploratorze rozwiązań w usłudze Visual Studio w obszarze  **\<YourCloudService >**  > **role**, otwórz właściwości każdej roli.
 
 1. W **konfiguracji**, wybierz opcję **Wysyłaj dane diagnostyczne do usługi Application Insights** pole wyboru, a następnie wybierz zasób usługi Application Insights, który został utworzony wcześniej.
 
@@ -229,7 +229,7 @@ Można pobrać telemetrii oparte na przeglądarce, takie jak wyświetleń strony
 Aby upewnić się, aplikacja pozostaje na żywo i dynamiczne [Konfigurowanie testów sieci web][availability].
 
 ## <a name="display-everything-together"></a>Wyświetlanie wszystkich elementów razem
-Aby uzyskać ogólny obraz systemu, można wyświetlić kluczowe wykresy monitorowania razem na jednej [pulpit nawigacyjny](../../azure-monitor/app/app-insights-dashboards.md). Na przykład możesz przypiąć liczbę żądań i awarii poszczególnych ról. 
+Aby uzyskać ogólny obraz systemu, można wyświetlić kluczowe wykresy monitorowania razem na jednej [pulpit nawigacyjny](../../azure-monitor/app/overview-dashboard.md). Na przykład możesz przypiąć liczbę żądań i awarii poszczególnych ról. 
 
 Jeśli system używa innych usług platformy Azure, takich jak Stream Analytics, uwzględnić wykresy ich monitorowania oraz. 
 
