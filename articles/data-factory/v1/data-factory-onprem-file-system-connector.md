@@ -73,7 +73,7 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| typ |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Tak |
+| type |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Tak |
 | host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady. |Yes |
 | userid |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
 | password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
