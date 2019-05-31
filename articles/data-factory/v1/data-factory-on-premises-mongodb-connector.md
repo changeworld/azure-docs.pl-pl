@@ -67,10 +67,10 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla **
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesMongoDb** |Yes |
-| serwer |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
+| server |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania połączeń klientów. |Opcjonalne, wartość domyślna: 27017 |
-| Element authenticationType |Podstawowe, lub anonimowe. |Yes |
-| nazwa użytkownika |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
+| authenticationType |Podstawowe, lub anonimowe. |Yes |
+| username |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | password |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który chcesz użyć, aby sprawdzić swoje poświadczenia dla uwierzytelniania. |Opcjonalnie (Jeśli używane jest uwierzytelnianie podstawowe). domyślne: korzysta z konta administratora i baza danych określona za pomocą właściwości databaseName. |
 | databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
