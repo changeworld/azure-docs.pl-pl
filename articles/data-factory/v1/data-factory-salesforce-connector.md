@@ -71,7 +71,7 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **Salesforce**. |Yes |
 | environmentUrl | Określ wystąpienie adres URL usługi Salesforce. <br><br> -Wartością domyślną jest "https:\//login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, należy określić "https://test.salesforce.com". <br> — Aby skopiować dane z domeny niestandardowej, określić, na przykład "https://[domain].my.salesforce.com". |Nie |
-| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Yes |
+| username |Określ nazwę użytkownika dla konta użytkownika. |Yes |
 | password |Określ hasło dla konta użytkownika. |Yes |
 | securityToken |Określ token zabezpieczeń dla konta użytkownika. Zobacz [uzyskać token zabezpieczający](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) instrukcje na temat sposobu resetowania/get tokenu zabezpieczającego. Aby dowiedzieć się więcej o tokenów zabezpieczających ogólnie rzecz biorąc, zobacz [zabezpieczeń i interfejsu API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
 
