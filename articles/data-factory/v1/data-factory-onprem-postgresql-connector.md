@@ -75,11 +75,11 @@ Poniższa tabela zawiera opis specyficzne dla usługi PostgreSQL, połączone el
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesPostgreSql** |Yes |
-| serwer |Nazwa serwera PostgreSQL. |Yes |
-| baza danych |Nazwa bazy danych PostgreSQL. |Yes |
-| Schemat |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| server |Nazwa serwera PostgreSQL. |Yes |
+| database |Nazwa bazy danych PostgreSQL. |Yes |
+| schema |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych postgresql w warstwie lokalnej. |Yes |
 
