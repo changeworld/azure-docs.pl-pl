@@ -65,9 +65,9 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla pr
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesTeradata** |Yes |
-| serwer |Nazwa serwera programu Teradata. |Yes |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| server |Nazwa serwera programu Teradata. |Yes |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych Teradata w środowisku lokalnym. |Yes |
 
