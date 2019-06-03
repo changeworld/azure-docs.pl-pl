@@ -67,11 +67,11 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla pr
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OnPremisesSybase** |Yes |
-| serwer |Nazwa serwera bazy danych Sybase. |Yes |
-| baza danych |Nazwa bazy danych programu Sybase. |Yes |
-| Schemat |Nazwa schematu w bazie danych. |Nie |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| server |Nazwa serwera bazy danych Sybase. |Yes |
+| database |Nazwa bazy danych programu Sybase. |Yes |
+| schema |Nazwa schematu w bazie danych. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
+| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalną bazą danych programu Sybase. |Yes |
 
