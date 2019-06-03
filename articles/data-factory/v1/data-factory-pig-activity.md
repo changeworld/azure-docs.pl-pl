@@ -88,12 +88,12 @@ Działanie HDInsight Pig w usłudze Data Factory [potoku](data-factory-create-pi
 | name |Nazwa działania |Yes |
 | description |Tekst opisujący przeznaczenie działania |Nie |
 | type |HDinsightPig |Yes |
-| dane wejściowe |Co najmniej jeden dane wejściowe, używane przez działania technologii Pig |Nie |
-| wyjścia |Co najmniej jeden dane wyjściowe, generowane przez działanie technologii Pig |Yes |
+| inputs |Co najmniej jeden dane wejściowe, używane przez działania technologii Pig |Nie |
+| outputs |Co najmniej jeden dane wyjściowe, generowane przez działanie technologii Pig |Yes |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
-| skrypt |Określ wbudowany skrypt Pig |Nie |
-| Ścieżka skryptu |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
-| Definiuje |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
+| script |Określ wbudowany skrypt Pig |Nie |
+| scriptPath |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
 
 ## <a name="example"></a>Przykład
 Rozważmy przykład dzienników gier, analizy, w której chcesz zidentyfikować czas spędzony przez graczy granie w gry uruchomiony przez Twoją firmę.
