@@ -9,18 +9,22 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 4ccb8665c9880e21897c81ed4b4ff534e52bb6d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 481f7a7589a58baac922001d230f95198ed45eb7
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829688"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417948"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>Przykład: Sposób wykrywania języka przy użyciu analizy tekstu
 
-[Interfejs API wykrywania języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) ocenia wejściowy tekst i dla każdego dokumentu zwraca identyfikatory języka z wynikiem wskazującym siłę analizy. Analiza tekstu rozpoznaje maksymalnie 120 języków.
+[Wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkcji interfejsu API ocenia tekstu wejściowego i dla każdego dokumentu i zwraca identyfikatorów języka, w wyniku wskazujący siły analizy.
 
 Ta możliwość jest przydatna w przypadku magazynów zawartości przechowujących dowolne teksty, których język nie jest znany. Wyniki analizy możesz przeanalizować w celu ustalenia, który język jest używany w wejściowym dokumencie. Odpowiedź zawiera również wynik, który odzwierciedla zaufanie modelu (wartość z zakresu od 0 do 1).
+
+Nie publikujemy dokładna lista języków dla tej funkcji, ale może wykryć, szerokiej gamy języków, warianty, dialekty i w niektórych językach regionalne/kultury. 
+
+Jeśli masz zawartość wyrażona w języku rzadziej używane, możesz spróbować wykrywanie języka, aby zobaczyć, jeśli zwracany jest kod. Odpowiedź dla języków, których nie można wykryć jest `unknown`.
 
 > [!TIP]
 > Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby wykrywania języka, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
@@ -206,7 +210,7 @@ Wynikowe dane wyjściowe zawierają dominujący język z wynikiem mniejszym niż
 
 W tym artykule przedstawiono pojęcia i przepływ pracy dotyczące wykrywania języka za pomocą analizy tekstu w usłudze Cognitive Services. Oto krótkie przypomnienie głównych zagadnień, które uprzednio opisano i przedstawiono:
 
-+ [Interfejs API wykrywania języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) jest dostępny dla 120 języków.
++ [Wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) jest dostępna dla szerokiej gamy języków, warianty, dialekty i w niektórych językach regionalne/kultury.
 + Dokumenty JSON w treści żądania obejmują identyfikator i tekst.
 + Żądanie POST jest wysyłane do punktu końcowego `/languages` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) prawidłowego dla używanej subskrypcji.
 + Dane wyjściowe odpowiedzi składające się z identyfikatorów języka dla każdego identyfikatora dokumentu można przesłać strumieniowo do każdej aplikacji akceptującej kod JSON, na przykład programu Excel i usługi Power BI.

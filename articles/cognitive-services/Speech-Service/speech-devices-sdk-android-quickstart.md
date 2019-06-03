@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234525"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425663"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Szybki start: Uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Android
 
@@ -145,7 +145,7 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
 
    ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/qsg-8.png)
 
-1. Nowo dodane jest pokaz transkrypcji konwersacji. Rozpocznij przepisywania z Rozpoczynanie sesji. Domyślnie wszyscy jest Gość, jednak w przypadku podpisów głosu uczestnika one można umieścić w /video/participants.properties pliku na urządzeniu. Do generowania głosu podpisu przyjrzeć [transkrypcja rozmów (SDK)](how-to-use-conversation-transcription-service.md).
+1. Wypróbuj nowy pokaz transkrypcji konwersacji. Rozpocznij przepisywania z Rozpoczynanie sesji. Domyślnie wszyscy jest gościa. Jednak w przypadku podpisów głosu uczestnika one można umieścić w pliku `/video/participants.properties` na urządzeniu. Do generowania podpisu głosowej, Przyjrzyj się [transkrypcja rozmów (SDK)](how-to-use-conversation-transcription-service.md).
 
    ![Pokaz transkrypcji konwersacji aplikacji](media/speech-devices-sdk/qsg-15.png)
 

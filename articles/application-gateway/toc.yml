@@ -97,7 +97,7 @@
           href: create-vmss-template.md
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: configure-application-gateway-with-private-frontend-ip.md
         - name: Azure PowerShell
           href: application-gateway-ilb-arm.md
@@ -135,7 +135,7 @@
           href: tutorial-restrict-web-traffic-cli.md
     - name: Konfigurowanie zestawów reguł zapory aplikacji internetowej
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: application-gateway-customize-waf-rules-portal.md
         - name: Azure PowerShell
           href: application-gateway-customize-waf-rules-powershell.md
@@ -179,7 +179,7 @@
           href: tutorial-url-redirect-powershell.md
     - name: Ponowne zapisywanie nagłówków HTTP
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
@@ -209,6 +209,8 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Błędy „Zła brama” (502)
           href: application-gateway-troubleshooting-502.md
+    - name: Migrowanie z wersji 1 do wersji 2
+      href: migrate-v1-v2.md
 - name: Dokumentacja
   items:
     - name: Reguły CRS

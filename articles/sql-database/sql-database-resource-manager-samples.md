@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1e2f55d334d432544ffc185e5c68dfe4325b2b09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b967dc872529ec8b045df81542eec4c555b17a6c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559735"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418436"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Szablony usługi Azure Resource Manager dla usługi Azure SQL Database
 
@@ -33,7 +33,6 @@ Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla 
 | [Serwer logiczny](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Ten szablon usługi Azure Resource Manager tworzy serwer logiczny dla usługi Azure SQL Database. |
 | [Elastyczna pula](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Ten szablon umożliwia wdrożenie nowej elastycznej puli za pomocą jej nowo skojarzonego serwera SQL i nowych baz danych SQL do przypisania do niej. |
 | [Grupy trybu failover](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Ten szablon tworzy dwa serwery logiczne usługi Azure SQL, bazę danych SQL i grupę trybu failover.|
-| [Advanced Threat Protection](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-advanced-threat-protection-server-policy) | Ten szablon umożliwia wdrożenie serwera logicznego usługi Azure SQL z włączoną usługą Advanced Threat Protection i opcjonalną usługą Azure SQL Database. Usługa SQL Advanced Threat Protection to ujednolicony pakiet zaawansowanych możliwości zabezpieczeń SQL.|
 | [Wykrywanie zagrożeń](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Ten szablon umożliwia wdrożenie serwera logicznego usługi Azure SQL i zestawu baz danych Azure SQL Database z włączonym wykrywaniem zagrożeń z adresem e-mail dla alertów dla każdej bazy danych. Wykrywanie zagrożeń jest częścią oferty SQL Advanced Threat Protection (ATP) i zapewnia warstwę zabezpieczeń, która reaguje na potencjalne zagrożenia dla serwerów SQL i baz danych.|
 | [Przeprowadzanie inspekcji w usłudze Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Ten szablon umożliwia wdrożenie serwera logicznego usługi Azure SQL z włączoną inspekcją w celu zapisywania dzienników inspekcji do magazynu obiektów blob. Inspekcja usługi Azure SQL Database śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji, który można umieścić na Twoim koncie magazynu platformy Azure, w obszarze roboczym pakietu OMS lub w centrach zdarzeń.|
 | [Przeprowadzanie inspekcji w Centrum zdarzeń platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Ten szablon umożliwia wdrożenie serwera usługi Azure SQL z włączoną inspekcją w celu zapisywania dzienników inspekcji do istniejącego Centrum zdarzeń. Aby wysyłać zdarzenia inspekcji do Centrum zdarzeń, ustaw ustawienia inspekcji za pomocą `Enabled` `State` i ustaw `IsAzureMonitorTargetEnabled` jako `true`. Ponadto skonfiguruj ustawienia diagnostyczne przy użyciu kategorii dzienników diagnostycznych `SQLSecurityAuditEvents` w bazie danych `master` (dla inspekcji na poziomie serwera). Inspekcja usługi Azure SQL Database i SQL Data Warehouse śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji, który można umieścić na koncie magazynu platformy Azure, w obszarze roboczym pakietu OMS lub centrach zdarzeń.|

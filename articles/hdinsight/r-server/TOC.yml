@@ -247,6 +247,10 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Dostęp do sieci
       items:
+        - name: Architektura sieci wirtualnej usługi HDInsight
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Ograniczanie ruchu wychodzącego za pomocą zapory
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Usługa HDInsight w sieci wirtualnej platformy Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: Łączenie usługi HDInsight z siecią lokalną

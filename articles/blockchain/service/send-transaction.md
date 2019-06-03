@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 80fabccb8a59bcd472812698f624d49dc26c24fa
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399118"
+ms.locfileid: "66417485"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Samouczek: Wyślij transakcji za pomocą usługi Azure Service łańcucha bloków
 
@@ -183,7 +183,7 @@ Z listy węzłów transakcji, można uzyskać klucz publiczny. Skopiuj klucz pub
 
 ## <a name="create-smart-contract"></a>Tworzenie inteligentnych kontraktu
 
-1. W folderze **umów**, Utwórz nowy plik o nazwie `SimpleStorage.sol`. Dodaj następujący kod.
+1. W **umów** folderu, Utwórz nowy plik o nazwie `SimpleStorage.sol`. Dodaj następujący kod.
 
     ```solidity
     pragma solidity >=0.4.21 <0.6.0;
@@ -205,7 +205,7 @@ Z listy węzłów transakcji, można uzyskać klucz publiczny. Skopiuj klucz pub
     }
     ```
     
-1. W folderze **migracje**, Utwórz nowy plik o nazwie `2_deploy_simplestorage.js`. Dodaj następujący kod.
+1. W **migracje** folderu, Utwórz nowy plik o nazwie `2_deploy_simplestorage.js`. Dodaj następujący kod.
 
     ```solidity
     var SimpleStorage = artifacts.require("SimpleStorage.sol");
@@ -223,10 +223,10 @@ Z listy węzłów transakcji, można uzyskać klucz publiczny. Skopiuj klucz pub
     |-------|-------------
     | \<klucz publiczny alfa węzła\> | Klucz publiczny alfa węzła
     | \<Adres konta Ethereum\> | Adres konta Ethereum utworzone w węźle transakcji domyślne
-    
+
     W tym przykładzie wartość początkową **storeData** ma wartość 42.
 
-    **privateFor** definiuje węzły, na których jest dostępna Umowa. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych. Jeśli nie podasz **privateFor:** i **z:** , transakcje inteligentne kontraktu były publiczne i mogą być widoczne dla wszystkich członków konsorcjum.
+    **privateFor** definiuje węzły, na których jest dostępna Umowa. W tym przykładzie węzeł transakcji domyślne konto można rzutować prywatnej transakcji **alfa** węzła. Możesz dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych. Jeśli nie podasz **privateFor:** i **z:** , transakcje inteligentne kontraktu były publiczne i mogą być widoczne dla wszystkich członków konsorcjum.
 
 1. Zapisz wszystkie pliki, wybierając **Plik > Zapisz wszystko**.
 

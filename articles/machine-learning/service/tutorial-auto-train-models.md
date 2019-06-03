@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035456"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417294"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -38,7 +38,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.0.
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 1.0.39.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -147,7 +147,7 @@ dflow_prepared.get_profile()
       <th>Type</th>
       <th>Min.</th>
       <th>Maks.</th>
-      <th>Licznik</th>
+      <th>Count</th>
       <th>Liczba brakujących</th>
       <th>Liczba niebrakujących</th>
       <th>Odsetek brakujących</th>

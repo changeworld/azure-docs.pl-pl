@@ -6,15 +6,15 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60925768"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417827"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure
 
@@ -23,7 +23,7 @@ W tym artykule opisano sposób uruchamiania próbnego odzyskiwania po awarii dla
 
 Jest to czwarty samouczek z serii, która pokazuje, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla maszyn lokalnych.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci izolowanej do testowego przełączania w tryb failover
@@ -81,7 +81,7 @@ Uruchom testowe przełączenie w tryb failover w następujący sposób:
 
 W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. Dłuższy czas testowego przełączania w tryb failover może występować w przypadku maszyn VMware z systemem Linux, maszyn wirtualnych VMware, które nie mają włączonej usługi DHCP, oraz maszyn wirtualnych VMware, które nie mają następujących sterowników rozruchowych: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="connect-after-failover"></a>Połącz po zakończeniu pracy w trybie failover
+## <a name="connect-after-failover"></a>Połącz po włączeniu trybu failover
 
 Jeśli chcesz nawiązać połączenie przy użyciu protokołu RDP/SSH po przejściu w tryb failover maszyn wirtualnych platformy Azure [przygotować się do połączenia](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Jeśli napotkasz jakiekolwiek problemy łączności po włączeniu trybu failover, wykonaj [Rozwiązywanie problemów z](site-recovery-failover-to-azure-troubleshoot.md) przewodnik.
 

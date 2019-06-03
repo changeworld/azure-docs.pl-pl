@@ -210,6 +210,8 @@
         - name: Kontrola dostępu oparta na rolach
           displayName: rbac
           href: role-based-access-control.md
+        - name: Atrybuty zabezpieczeń
+          href: cosmos-db-security-attributes.md
     - name: Gotowość przedsiębiorstwa
       items:
         - name: Tworzenie kopii zapasowych w trybie online i ich przywracanie na żądanie

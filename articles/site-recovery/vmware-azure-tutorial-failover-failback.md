@@ -6,15 +6,15 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a089b3e4d7b8a38f2bf88c8ccf6e269331589be
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 854e09600440c28f7505a016566ea0f05e994f5f
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966285"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418315"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms"></a>Tryb failover i powrót po awarii maszyn wirtualnych VMware
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!NOTE]
 > W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Użyj opcji domyślnych, jeśli jest to możliwe, a nie pokazuj wszystkich możliwych ustawień i ścieżki. Jeśli chcesz dowiedzieć się więcej o trybie failover szczegółowo, zobacz [w tryb failover maszyn wirtualnych i serwerów fizycznych](site-recovery-failover.md).
 
-## <a name="before-you-start"></a>Zanim rozpoczniesz
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Wykonaj poprzednich samouczków:
 
@@ -62,7 +62,7 @@ Sprawdź właściwości w następujący sposób:
 3. W **obliczenia i sieć**, te właściwości można modyfikować zgodnie z potrzebami:
     * Nazwa platformy Azure
     * Grupa zasobów
-    * Rozmiar elementu docelowego
+    * Rozmiar docelowy
     * [Zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md)
     * Ustawienia dysku zarządzanego
 

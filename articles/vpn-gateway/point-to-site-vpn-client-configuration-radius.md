@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/31/2019
 ms.locfileid: "66115388"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN, uwierzytelnianie usługi RADIUS P2S
@@ -145,7 +145,7 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN Wind
     ![Szczegółowe informacje dla połączenia sieci VPN](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. Wybierz **ustawienia uwierzytelniania**. Wybierz **Username** na liście i wprowadź swoje poświadczenia. Jeśli zostały podane poświadczenia wcześniej, następnie **Username** zostanie automatycznie wybrana z listy i nazwę użytkownika i hasło są wstępnie wypełnione. Wybierz **OK** Aby zapisać ustawienia.
 
-    ![Ustawienia uwierzytelniania](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![ustawienia uwierzytelniania](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. Ponownie **sieci** okno dialogowe, wybierz opcję **Zastosuj** Aby zapisać zmiany. Aby zainicjować połączenie, wybierz pozycję **Connect**.
 
 #### <a name="adlinuxcli"></a>Instalacja klienta sieci VPN w systemie Linux za pomocą strongSwan
@@ -252,7 +252,7 @@ Poniższe kroki umożliwiają konfigurowanie natywnego klienta sieci VPN na komp
    ![Informacje o serwerze](./media/point-to-site-vpn-client-configuration-radius/servertag.png)
 5. Wybierz **ustawienia uwierzytelniania**i wybierz **certyfikatu**. 
 
-   ![Ustawienia uwierzytelniania](./media/point-to-site-vpn-client-configuration-radius/certoption.png)
+   ![ustawienia uwierzytelniania](./media/point-to-site-vpn-client-configuration-radius/certoption.png)
 6. Kliknij przycisk **wybierz** wybrać certyfikat, który ma zostać użyty do uwierzytelniania.
 
    ![Wybieranie certyfikatu na potrzeby uwierzytelniania](./media/point-to-site-vpn-client-configuration-radius/certificate.png)

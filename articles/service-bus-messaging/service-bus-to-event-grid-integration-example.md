@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: spelluru
-ms.openlocfilehash: b29798bb87b7c5c677e7d80e552e45e8d1290541
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7dbc7dbc0b670de81a3f4603b0d52bce7559af8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786856"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428318"
 ---
 # <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Odpowiadanie na zdarzenia usługi Azure Service Bus odebranych za pośrednictwem usługi Azure Event Grid przy użyciu usługi Azure Functions i Azure Logic Apps
 W tym samouczku dowiesz się, jak reagować na zdarzenia usługi Azure Service Bus, które są odbierane za pośrednictwem usługi Azure Event Grid przy użyciu usługi Azure Functions i Azure Logic Apps. Wykonasz następujące czynności:
@@ -280,13 +280,12 @@ W tej sekcji dowiesz się, jak odbierać i przetwarzać komunikaty po odebraniu 
     3. Aby uzyskać **Nazwa zasobu**, wybierz przestrzeń nazw usługi Service Bus. 
     4. Wybierz **dodano nowy parametr**i wybierz **filtr sufiksu**. 
     5. Aby uzyskać **filtr sufiksu**, wprowadź nazwę drugiego subskrypcji tematu usługi Service Bus. 
-
         ![Projektant aplikacji logiki — konfigurowanie zdarzeń](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. Wybierz **+ nowy krok** w projektancie, a następnie wykonaj następujące czynności:
     1. Wyszukaj **Service Bus**.
     2. Wybierz **usługi Service Bus** na liście. 
     3. Wybierz **komunikatów** w **akcje** listy. 
-    4. Wybierz **Pobierz komunikaty z subskrypcji tematu (czasowa blokada)**. 
+    4. Wybierz **Pobierz komunikaty z subskrypcji tematu (czasowa blokada)** . 
 
         ![Projektant aplikacji logiki — Akcja wiadomości get](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
     5. Wprowadź **nazwa połączenia**. Na przykład: **Pobierz komunikaty z subskrypcji tematu**i wybierz przestrzeń nazw usługi Service Bus. 

@@ -56,7 +56,7 @@ Następujące właściwości są obsługiwane dla ODBC połączone usługi:
 | authenticationType | Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC.<br/>Dozwolone wartości to: **Podstawowe** i **anonimowe**. | Yes |
 | userName | Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. | Nie |
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| poświadczenia | Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `"RefreshToken=<secret refresh token>;"`. Oznacz to pole jako obiektu SecureString. | Nie |
+| credential | Dostęp do poświadczeń część parametrów połączenia określonych w formacie wartości właściwości specyficzne dla sterownika. Przykład: `"RefreshToken=<secret refresh token>;"`. Oznacz to pole jako obiektu SecureString. | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład 1: przy użyciu uwierzytelniania podstawowego**

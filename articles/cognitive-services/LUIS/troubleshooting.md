@@ -11,16 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b114b1c3b1c421c6e6944666e3fd928d2aced966
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225879"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417982"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat Language Understanding (LUIS).
+
+## <a name="whats-new"></a>Co nowego
+
+[Dowiedz się więcej](whats-new.md) o what's new in interpretacji języka.
 
 <a name="luis-authoring"></a>
 
@@ -64,7 +68,7 @@ Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r.
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak przenieść własność aplikacją usługi LUIS?
 Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Wstępnie utworzone jednostki jest oznaczony w wypowiedź przykładzie zamiast Moje jednostkę niestandardową. Jak to naprawić? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Wstępnie utworzone jednostki jest oznaczony w wypowiedź przykładzie zamiast Moje jednostkę niestandardową. Jak rozwiązać ten problem? 
 
 Zobacz [rozwiązywania problemów ze wstępnie utworzonych jednostek](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 43aa0956ef1f44fa5705800ff2b424608ec75499
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2c6af53aeec5d40f603d65595d93527107c0d80a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795612"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427703"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak używać usługi Azure Kubernetes za pomocą usługi Azure Cosmos DB (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Aby dowiedzieć się więcej na temat etcd interfejsu API w usłudze Azure Cosmo
 
 1. Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Można pobrać wiersza polecenia platformy Azure jest określonego systemu operacyjnego i zainstalować.
 
-1. Zainstaluj [v0.32.3](https://github.com/Azure/aks-engine/releases/tag/v0.32.3) wersja aparatu Kubernetes usługi Azure. Instrukcje dotyczące instalacji dla różnych systemów operacyjnych są dostępne w [Azure Kubernetes aparatu](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) strony. Po prostu potrzebujesz z procedury **Instalowanie aparatu AKS** sekcji połączonych doc. Po pobraniu, Wyodrębnij plik zip.
+1. Zainstaluj [najnowszej wersji](https://github.com/Azure/aks-engine/releases) aparatu Kubernetes usługi Azure. Instrukcje dotyczące instalacji dla różnych systemów operacyjnych są dostępne w [Azure Kubernetes aparatu](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) strony. Po prostu potrzebujesz z procedury **Instalowanie aparatu AKS** sekcji połączonych doc. Po pobraniu, Wyodrębnij plik zip.
 
    Aparat usługi Azure Kubernetes (**aks aparatu**) generuje szablony usługi Azure Resource Manager dla klastrów Kubernetes na platformie Azure. Dane wejściowe aks aparat są pliku definicji klastra, który opisuje żądany klaster z programu orchestrator, funkcje i agentów. Struktura plików wejściowych jest podobny do publicznego interfejsu API dla usługi Azure Kubernetes Service.
 
@@ -77,7 +77,7 @@ Aby dowiedzieć się więcej na temat etcd interfejsu API w usłudze Azure Cosmo
 1. W wierszu polecenia przejdź do folderu, w którym znajduje się plik wykonywalny usługi Azure Kubernetes aparatu. Na przykład w wierszu polecenia można przejść do folderu jako:
 
    ```cmd
-   cd "\aks-engine-v0.32.3-windows-amd64\aks-engine-v0.32.3-windows-amd64"
+   cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
 1. Otwórz ulubionego edytora tekstu, a następnie zdefiniować szablon usługi Resource Manager, który jest wdrażany klaster Azure Kubernetes za pomocą usługi Azure Cosmos DB etcd interfejsu API. Skopiuj poniższą definicję formatu JSON do edytora tekstu, a następnie zapisz plik jako `apiModel.json`:

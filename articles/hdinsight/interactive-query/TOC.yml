@@ -320,12 +320,14 @@
       maintainContext: true
     - name: Dostęp do sieci
       items:
+        - name: Architektura sieci wirtualnej usługi HDInsight
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Ograniczanie ruchu wychodzącego za pomocą zapory
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Usługa HDInsight w sieci wirtualnej platformy Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: Łączenie usługi HDInsight z siecią lokalną
           href: ../connect-on-premises-network.md
-          maintainContext: true
     - name: Monitorowanie przy użyciu dzienników usługi Azure Monitor
       items:
         - name: Korzystanie z dzienników usługi Azure Monitor
