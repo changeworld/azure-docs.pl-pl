@@ -205,6 +205,8 @@
               href: devtest-lab-announcements.md
             - name: Dodawanie informacji o pomocy technicznej do laboratorium
               href: devtest-lab-internal-support-message.md
+            - name: Konfigurowanie galerii obrazów udostępnionych w usłudze Azure DevTest Labs
+              href: configure-shared-image-gallery.md
         - name: Wybieranie niestandardowego obrazu lub formuły
           href: devtest-lab-comparing-vm-base-image-types.md
         - name: Zarządzanie obrazami niestandardowymi

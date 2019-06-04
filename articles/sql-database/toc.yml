@@ -101,7 +101,7 @@
       href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning Services
       items:
-        - name: Tworzenie i wdrażanie modelu predykcyjnego w języku R
+        - name: Tworzenie modelu predykcyjnego w języku R
           items:
             - name: 1. Przygotowanie danych
               href: sql-database-tutorial-predictive-model-prepare-data.md
@@ -109,6 +109,14 @@
               href: sql-database-tutorial-predictive-model-build-compare.md
             - name: 3. Wdrażanie modelu
               href: sql-database-tutorial-predictive-model-deploy.md
+        - name: Tworzenie modelu klastrowania w języku R
+          items:
+            - name: 1. Przygotowanie danych
+              href: sql-database-tutorial-clustering-model-prepare-data.md
+            - name: 2. Tworzenie modelu
+              href: sql-database-tutorial-clustering-model-build.md
+            - name: 3. Wdrażanie modelu
+              href: sql-database-tutorial-clustering-model-deploy.md
 - name: Przykłady
   items:
     - name: Przykłady kodu

@@ -90,12 +90,12 @@ Następujących tabeli opisano właściwości w definicji JSON działania:
 | name |Nazwa działania. Określ nazwę, która reprezentuje akcję skonfigurowanego działania<br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description |Tekst opisujący przeznaczenie działania. |Nie |
 | type |Określa typ działania. Zobacz [MAGAZYNY danych](#data-stores) i [działania PRZEKSZTAŁCANIA danych](#data-transformation-activities) sekcje dla różnych typów działań. |Tak |
-| dane wejściowe |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Brak działań HDInsightStreaming i SqlServerStoredProcedure <br/> <br/> Tak dla wszystkich innych |
+| inputs |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Brak działań HDInsightStreaming i SqlServerStoredProcedure <br/> <br/> Tak dla wszystkich innych |
 | outputs |Dane wyjściowe tabele używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |Yes |
 | linkedServiceName |Nazwa połączonej usługi używana na potrzeby działania. <br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. |Tak dla działań HDInsight, Azure Machine Learning działań i działania dotyczącego procedury składowanej. <br/><br/>Nie dla wszystkich innych |
 | typeProperties |Właściwości w sekcji typeProperties zależą od typu działania. |Nie |
 | policy |Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Jeśli nie jest określona, używane są domyślne zasady. |Nie |
-| Harmonogram |Właściwość "harmonogram" jest używana do definiowania żądanego planowania dla działania. Właściwości podrzędnych są takie same, jak te w [właściwości availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
+| scheduler |Właściwość "harmonogram" jest używana do definiowania żądanego planowania dla działania. Właściwości podrzędnych są takie same, jak te w [właściwości availability w zestawie danych](data-factory-create-datasets.md#dataset-availability). |Nie |
 
 ### <a name="policies"></a>Zasady
 Zasady wpływają na zachowania w czasie wykonywania działania, w szczególności, po przetworzeniu wycinka tabeli. Poniższa tabela zawiera szczegółowe informacje.

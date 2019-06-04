@@ -22,6 +22,8 @@
   items:
     - name: Logowanie jednokrotne do zasobów lokalnych
       href: azuread-join-sso.md
+    - name: Podstawowe tokeny odświeżania
+      href: concept-primary-refresh-token.md
     - name: Zarządzane stacje robocze platformy Azure
       href: concept-azure-managed-workstation.md
 - name: Przewodniki z instrukcjami
@@ -35,7 +37,7 @@
       href: azureadjoin-plan.md
     - name: Planowanie implementacji dołączania do hybrydowej usługi Azure AD
       href: hybrid-azuread-join-plan.md
-    - name: Kontrolowanie dołączania Twoich urządzeń do hybrydowej usługi Azure AD
+    - name: Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
       href: hybrid-azuread-join-control.md
     - name: Przypisywanie administratorów lokalnych do urządzeń dołączonych do usługi Azure AD
       href: assign-local-admin.md

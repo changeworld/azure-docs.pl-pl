@@ -92,7 +92,7 @@ Działanie HDInsight Pig w usłudze Data Factory [potoku](data-factory-create-pi
 | outputs |Co najmniej jeden dane wyjściowe, generowane przez działanie technologii Pig |Yes |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
 | script |Określ wbudowany skrypt Pig |Nie |
-| scriptPath |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| Ścieżka skryptu |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
 
 ## <a name="example"></a>Przykład
@@ -211,7 +211,7 @@ Aby użyć sparametryzowany skrypt programu Pig, wykonaj następujące czynnośc
       }
     }
     ```
-* Skrypt programu Pig, dotyczą parametrów przy użyciu "**$parameterName**" jak pokazano w poniższym przykładzie:
+* Skrypt programu Pig, dotyczą parametrów przy użyciu " **$parameterName**" jak pokazano w poniższym przykładzie:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

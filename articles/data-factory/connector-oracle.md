@@ -66,7 +66,7 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej b
 
 **Aby włączyć szyfrowanie na połączenie z oprogramowaniem Oracle**, masz dwie opcje:
 
-1.  Aby użyć **Triple-DES szyfrowania (3DES) i Advanced Encryption Standard (AES)**, po stronie serwera Oracle, przejdź do bazy danych Oracle zaawansowane zabezpieczenia (OAS) i konfigurowanie ustawień szyfrowania, zobacz szczegóły dotyczące [tutaj](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Łącznik ADF Oracle automatycznie negocjuje metodę szyfrowania, użyj skonfigurowanych w OAS, podczas ustanawiania połączenia Oracle.
+1.  Aby użyć **Triple-DES szyfrowania (3DES) i Advanced Encryption Standard (AES)** , po stronie serwera Oracle, przejdź do bazy danych Oracle zaawansowane zabezpieczenia (OAS) i konfigurowanie ustawień szyfrowania, zobacz szczegóły dotyczące [tutaj](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Łącznik ADF Oracle automatycznie negocjuje metodę szyfrowania, użyj skonfigurowanych w OAS, podczas ustanawiania połączenia Oracle.
 
 2.  Aby użyć **SSL**, wykonaj poniższe kroki:
 
@@ -284,13 +284,13 @@ Podczas kopiowania danych z i do oprogramowania Oracle, następujące mapowania 
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Decimal, ciąg (jeśli dokładności > 28) |
-| INTEGER |Decimal, ciąg (jeśli dokładności > 28) |
+| FLOAT |Decimal, String (jeśli dokładności > 28) |
+| INTEGER |Decimal, String (jeśli dokładności > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMER |Decimal, ciąg (jeśli dokładności > 28) |
+| NUMBER |Decimal, String (jeśli dokładności > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

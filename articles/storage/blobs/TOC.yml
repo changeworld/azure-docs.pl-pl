@@ -275,6 +275,8 @@
           href: storage-blob-event-overview.md
         - name: Cechy stronicowego obiektu blob
           href: storage-blob-pageblob-overview.md
+        - name: Statyczne witryny internetowe
+          href: storage-blob-static-website.md
     - name: Instrukcje
       items:
         - name: Tworzenie kont magazynu i zarządzanie nimi
@@ -353,7 +355,7 @@
         - name: Ustawianie i pobieranie właściwości oraz metadanych
           href: storage-properties-metadata.md
         - name: Hostowanie statycznej witryny internetowej
-          href: storage-blob-static-website.md
+          href: storage-blob-static-website-how-to.md
         - name: Mapowanie usługi Azure CDN na domenę niestandardową w celu uzyskania dostępu za pośrednictwem protokołu HTTPS
           href: storage-https-custom-domain-cdn.md
         - name: Konfigurowanie domeny niestandardowej
