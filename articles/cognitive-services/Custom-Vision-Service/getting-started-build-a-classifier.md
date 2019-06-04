@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60606356"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497304"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
 
@@ -28,7 +28,7 @@ Aby użyć usługi Custom Vision Service Klasyfikacja obrazów, należy utworzy�
 
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Tworzenie niestandardowego przetwarzania zasobów w witrynie Azure portal
-Aby korzystać z usługi Custom Vision Service, konieczne będzie utworzenie Custom Vision uczenia i przewidywania zasobów w w [witryny Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Spowoduje to utworzenie szkolenia i prognozowania zasobów. 
+Aby korzystać z usługi Custom Vision Service, konieczne będzie utworzenie Custom Vision uczenia i przewidywania zasobów w [witryny Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Spowoduje to utworzenie szkolenia i prognozowania zasobów. 
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
@@ -70,8 +70,8 @@ Aby skutecznie nauczenia modelu, należy używać obrazów z różnymi visual. W
 * Tło
 * Styl wizualny
 * osoba/pogrupowane subject(s)
-* rozmiar
-* type
+* Rozmiar
+* — typ
 
 Dodatkowo należy upewnić się, że wszystkie Twoje uczone obrazy spełniają następujące kryteria:
 * format JPG, PNG lub bmp

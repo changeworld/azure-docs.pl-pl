@@ -1,5 +1,5 @@
 ---
-title: Jak za pomocą usług znakowania wersji modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak za pomocą usług znakowania wersji modelu uczeń konwersacji — usług Azure Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
 description: Dowiedz się, jak używać przechowywanie wersji i znakowanie z modelem uczeń konwersacji.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7a1d94700cf84068f918ecff4f4dd433358341e0
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388396"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475711"
 ---
 # <a name="how-to-use-version-tagging"></a>Jak używać wersji znakowanie
 
@@ -109,4 +109,4 @@ Teraz wiesz, jak działa przechowywanie wersji i jak możesz korzystać z botem 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Demonstracja — Resetowanie hasła](./demo-password-reset.md)
+> [Wyliczenie jednostki i akcje jednostki z zestawu](./tutorial-enum-set-entity.md)

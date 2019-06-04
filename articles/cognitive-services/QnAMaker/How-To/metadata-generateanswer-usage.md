@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/30/2019
 ms.author: tulasim
-ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3088d0f161496cfd2e1cb8897cef36365ece9962
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792231"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496952"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi wiedzy, za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -71,8 +71,8 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Parametr trasy adresu URL|Host punktu końcowego interfejsu QnAMaker|string|Nazwa hosta punktu końcowego, wdrożonych w ramach subskrypcji platformy Azure. Jest on dostępny na stronie ustawień, po opublikowaniu w bazie wiedzy knowledge base. |
-|Nagłówek|Content-Type|string|Typ nośnika treści wysłanej do interfejsu API. Wartość domyślna to: "|
-|Nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|nagłówek|Content-Type|string|Typ nośnika treści wysłanej do interfejsu API. Wartość domyślna to: "|
+|nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Treść wpisu|Obiekt JSON|JSON|Pytanie przy użyciu ustawień|
 
 
@@ -80,12 +80,13 @@ Treść kodu JSON ma kilka ustawień:
 
 |Właściwość treść JSON|Wymagane|Type|Przeznaczenie|
 |--|--|--|--|
-|`question`|wymagane|string|Pytanie użytkownika mają być wysyłane do bazy wiedzy.|
-|`top`|opcjonalne|liczba całkowita|Liczba wyników w rankingu do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.|
-|`userId`|opcjonalne|string|Unikatowy identyfikator, aby zidentyfikować użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmowy.|
-|`scoreThreshold`|opcjonalne|liczba całkowita|Zostaną zwrócone tylko odpowiedzi z oceną zaufania powyżej wartości progowej. Wartość domyślna to 0.|
-|`isTest`|opcjonalne|wartość logiczna|Jeśli ustawionej na wartość true, zwraca wyniki z `testkb` indeksu wyszukiwania zamiast opublikowanych indeksu.|
-|`strictFilters`|opcjonalne|string|Jeśli zostanie określony, informuje narzędzie QnA Maker, aby zwrócić tylko odpowiedzi, które mają określonych metadanych. Użyj `none` oznacza odpowiedzi powinien mieć żadnych filtrów metadanych. |
+|`question`|Wymagane|string|Pytanie użytkownika mają być wysyłane do bazy wiedzy.|
+|`top`|Opcjonalne|liczba całkowita|Liczba wyników w rankingu do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.|
+|`userId`|Opcjonalne|string|Unikatowy identyfikator, aby zidentyfikować użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmowy.|
+|`scoreThreshold`|Opcjonalne|liczba całkowita|Zostaną zwrócone tylko odpowiedzi z oceną zaufania powyżej wartości progowej. Wartość domyślna to 0.|
+|`isTest`|Opcjonalne|wartość logiczna|Jeśli ustawionej na wartość true, zwraca wyniki z `testkb` indeksu wyszukiwania zamiast opublikowanych indeksu.|
+|`strictFilters`|Opcjonalne|string|Jeśli zostanie określony, informuje narzędzie QnA Maker, aby zwrócić tylko odpowiedzi, które mają określonych metadanych. Użyj `none` oznacza odpowiedzi powinien mieć żadnych filtrów metadanych. |
+|`RankerType`|Opcjonalne|string|Jeśli zostanie określony jako `QuestionOnly`, informuje narzędzie QnA Maker, aby wyszukać tylko pytania. Jeśli nie zostanie określony, narzędzie QnA Maker wyszukuje pytań i odpowiedzi.
 
 Przykładowy kod JSON wygląda następująco:
 
@@ -119,7 +120,7 @@ Odpowiedź oznaczająca Powodzenie zwraca stan 200 i odpowiedź w formacie JSON.
 |source|Nazwa źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedź.|
 |metadane|Metadane skojarzone z odpowiedzią.|
 |metadata.name|Nazwa metadanych. (string, maksymalna długość: 100, które są wymagane)|
-|METADATA.Value: Wartość metadanych. (string, maksymalna długość: 100, które są wymagane)|
+|metadata.value|Wartość metadanych. (string, maksymalna długość: 100, które są wymagane)|
 
 
 ```json
@@ -172,7 +173,7 @@ Ponieważ wyniki są wymagane tylko w przypadku restauracji "Paradise", można u
 }
 ```
 
-< nazwa = "Zachowaj kontekstu" ></a>
+<a name="keep-context"></a>
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Użyj wyników pytań i odpowiedzi, aby zachować kontekst konwersacji
 
@@ -201,6 +202,21 @@ Odpowiedź na GenerateAnswer zawiera odpowiednie informacje o metadanych zestawu
             ]
         }
     ]
+}
+```
+
+## <a name="match-questions-only-by-text"></a>Odpowiada pytania tylko według tekstu
+
+Domyślnie narzędzie QnA Maker przeszukuje pytań i odpowiedzi. Jeśli chcesz przeszukiwać tylko pytania do generowania odpowiedzi, użyj `RankerType=QuestionOnly` w treści żądania GenerateAnswer POST.
+
+Możesz wyszukać opublikowanych kb, za pomocą `isTest=false`, lub za pomocą testu kb `isTest=true`.
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
 }
 ```
 

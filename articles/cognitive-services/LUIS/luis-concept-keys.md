@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 1f5aab607c5046df0dee4db5caf36b0b7de53c4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: feb4622be14b51cfa72c33cda6c2477f799758c6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813941"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473591"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Do tworzenia i zapytania kluczy punktu końcowego prognozowania w usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md), [ją przypisać](luis-how-to-azure-subscription.md) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 
@@ -49,11 +49,11 @@ Gdy będziesz potrzebować **kwerendy punktu końcowego produkcji**, utwórz zas
 
 Po zakończeniu procesu tworzenia zasobów platformy Azure [przypisany klawisz](luis-how-to-azure-subscription.md) do aplikacji. 
 
-    * Klucz punktu końcowego umożliwia limit przydziału liczby trafień punktu końcowego zgodnie z planem użycia, które zostały określone podczas tworzenia klucza. Zobacz [ceny usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) Aby uzyskać informacje o cenach.
+* Klucz punktu końcowego umożliwia limit przydziału liczby trafień punktu końcowego zgodnie z planem użycia, które zostały określone podczas tworzenia klucza. Zobacz [ceny usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) Aby uzyskać informacje o cenach.
 
-    * Dla wszystkich aplikacji usługi LUIS lub dla określonych aplikacji LUIS można klucza punktu końcowego. 
+* Dla wszystkich aplikacji usługi LUIS lub dla określonych aplikacji LUIS można klucza punktu końcowego. 
 
-    * Nie należy używać klucza punktu końcowego na potrzeby tworzenia aplikacji usługi LUIS. 
+* Nie należy używać klucza punktu końcowego na potrzeby tworzenia aplikacji usługi LUIS. 
 
 ## <a name="use-endpoint-key-in-query"></a>Użyj klucza punktu końcowego w zapytaniu
 Punkt końcowy usługi LUIS akceptuje dwa style zapytania, ale klucza punktu końcowego jednocześnie używać w różnych miejscach:

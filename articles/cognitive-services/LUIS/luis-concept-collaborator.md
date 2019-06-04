@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956979"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473515"
 ---
 # <a name="collaborating-with-other-authors"></a>Współpraca z innymi autorami
 
@@ -31,7 +31,7 @@ Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-colla
 
 ## <a name="luis-app-owner"></a>Właściciel aplikacji usługi LUIS
 
-Konta, które służy do tworzenia aplikacji jest właścicielem i każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji **[ustawienia](luis-how-to-collaborate.md)** strony. Właściciel może usunąć aplikację otrzymywać wiadomości e-mail, gdy przydział punktu końcowego osiągnie 75% limit miesięczny. 
+Konta, które służy do tworzenia aplikacji jest właścicielem i każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji **[ustawienia](luis-how-to-collaborate.md)** strony. Właściciel otrzyma wiadomość e-mail po osiągnięciu limitu przydziału z punktu końcowego 75% limit miesięczny. 
 
 ## <a name="authorization-roles"></a>Role autoryzacji
 Usługa LUIS nie obsługuje różne role dla właścicieli i współpracowników z jednym wyjątkiem. Właściciel jest to jedyne konto, które można usunąć aplikacji.
@@ -42,7 +42,7 @@ Jeśli interesuje Cię w kontrolowaniu dostępu do modelu, należy wziąć pod u
 Usługa LUIS nie zapewnia przeniesienie prawa własności, jednak żadnych współpracownika wyeksportować aplikację, a następnie utwórz aplikację przez zaimportowanie. Należy pamiętać, że nowa aplikacja ma inny identyfikator aplikacji. Nowych potrzeb aplikacji ma być uczony, opublikowane, a nowy punkt końcowy używane.
 
 ## <a name="luis-app-collaborators"></a>Współpracownicy aplikacji usługi LUIS
-Właściciel aplikacji można dodać współpracowników do aplikacji. Właściciel musi dodać adres e-mail współpracownika aplikacji  **[ustawienia](luis-how-to-collaborate.md)**. Współpracownik ma pełny dostęp do aplikacji. Jeśli współpracownik usuwa aplikację, aplikacja zostanie usunięta z konta współpracownika, ale pozostaje w właściciela konta. 
+Właściciel aplikacji można dodać współpracowników do aplikacji. Właściciel musi dodać adres e-mail współpracownika aplikacji  **[ustawienia](luis-how-to-collaborate.md)** . Współpracownik ma pełny dostęp do aplikacji. Jeśli współpracownik usuwa aplikację, aplikacja zostanie usunięta z konta współpracownika, ale pozostaje w właściciela konta. 
 
 Jeśli chcesz udostępnić wiele aplikacji wraz ze współpracownikami, każda aplikacja wymaga dodano adres e-mail współpracownika. 
 

@@ -157,8 +157,8 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | refreshtoken |
 | request_nonce |
 | resource |
+| rola |
 | role |
-| roles |
 | scope |
 | scp |
 | sid |

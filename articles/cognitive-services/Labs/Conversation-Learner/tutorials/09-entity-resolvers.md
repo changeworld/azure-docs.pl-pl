@@ -1,5 +1,5 @@
 ---
-title: Rozwiązujący jednostki w modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Rozwiązujący jednostki w modelu uczeń konwersacji - usług Azure Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
 description: Dowiedz się, jak korzystać z rozpoznawania nazw jednostki w uczeń konwersacji.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7b5f5645a8b5d1d993f87d18503fe270f42c5de5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 51f74f504f0ad70c8c7f73be8ee6a05add685824
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390029"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475737"
 ---
 # <a name="entity-resolvers"></a>Mechanizmy rozpoznawania elementów jednostki
 
@@ -94,4 +94,4 @@ Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Alternatywne danych wejściowych](./10-alternative-inputs.md)
+> [Wyliczenie jednostki](./tutorial-enum-set-entity.md)
