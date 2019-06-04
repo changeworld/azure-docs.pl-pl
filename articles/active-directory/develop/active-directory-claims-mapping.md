@@ -59,9 +59,9 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | access_token |
 | account_type |
 | acr |
-| aktora |
+| actor |
 | actortoken |
-| AIO |
+| aio |
 | altsecid |
 | amr |
 | app_chain |
@@ -69,11 +69,11 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | app_res |
 | appctx |
 | appctxsender |
-| Identyfikator aplikacji |
+| appid |
 | appidacr |
-| potwierdzenie |
+| assertion |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -86,13 +86,13 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
-| opcją cnf |
-| kod |
-| funkcje sterowania |
+| cnf |
+| code |
+| controls |
 | credential_keys |
-| Renderowanie po stronie klienta |
+| csr |
 | csr_type |
-| Identyfikator urządzenia |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -100,12 +100,12 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | email |
 | endpoint |
 | enfpolids |
-| EXP |
+| exp |
 | expires_on |
 | grant_type |
-| wykres |
+| graph |
 | group_sids |
-| Grupy |
+| groups |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -116,11 +116,11 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| IAT |
-| Dostawca tożsamości |
-| dostawcy tożsamości |
+| iat |
+| identityprovider |
+| idp |
 | in_corp |
-| wystąpienie |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
 | iss |
@@ -136,8 +136,8 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | nameid |
 | nbf |
 | netbios_name |
-| Identyfikator jednorazowy |
-| Identyfikator OID |
+| nonce |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -149,29 +149,29 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| Identyfikator PUID |
+| puid |
 | pwd_exp |
 | pwd_url |
 | redirect_uri |
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| zasób |
-| rola |
+| resource |
 | role |
-| zakres |
+| roles |
+| scope |
 | scp |
-| Identyfikator SID |
-| Podpis |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| Sub |
+| sub |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| identyfikatora TID |
+| tid |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
@@ -179,7 +179,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | user_setting_sync_url |
 | username |
 | uti |
-| VER |
+| ver |
 | verified_primary_email |
 | verified_secondary_email |
 | wids |
