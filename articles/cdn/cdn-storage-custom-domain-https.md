@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 7aaf4be23c806dda621430c4d1b0c142f41feb1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51fcb1e504f853973d9772bcece7e893a2d94e44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323888"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472136"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Samouczek: Dostęp do magazynu obiektów blob przy użyciu domeny niestandardowej Azure CDN przy użyciu protokołu HTTPS
 
@@ -44,7 +44,7 @@ Usługa Azure CDN ignoruje wszelkie ograniczenia dodane do tokenu SAS. Na przyk�
 Jeśli tworzysz wiele adresów URL sygnatur SAS dla tego samego punktu końcowego obiektu blob, rozważ włączenie buforowania ciągu zapytania. Daje to gwarancję, że każdy adres URL jest traktowany jako unikatowy obiekt. Aby uzyskać więcej informacji, zobacz [Sterowanie zachowaniem buforowania usługi CDN za pomocą ciągów zapytań](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>Przekierowywanie protokołu HTTP do HTTPS
-Możesz przekierowywać ruch HTTP do ruchu HTTPS, tworząc [regułę przekierowywania adresu URL](cdn-rules-engine-reference-features.md#url-redirect) przy użyciu [aparatu reguł usługi Azure CDN](cdn-rules-engine.md). Ta opcja wymaga profilu **usługi Azure CDN w warstwie Premium firmy Verizon**. 
+Możesz przekierowywać ruch HTTP do ruchu HTTPS, tworząc [regułę przekierowywania adresu URL](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) przy użyciu [aparatu reguł usługi Azure CDN](cdn-verizon-premium-rules-engine.md). Ta opcja wymaga profilu **usługi Azure CDN w warstwie Premium firmy Verizon**.
 
 ![Reguła przekierowywania adresu URL](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
 

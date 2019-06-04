@@ -20,14 +20,6 @@
       href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Najlepsze rozwiązania w zakresie migracji
-      items:
-        - name: Najlepsze rozwiązania w zakresie zabezpieczeń i zarządzania po migracji
-          href: migrate-best-practices-security-management.md
-        - name: Najlepsze rozwiązania dotyczące sieci po migracji
-          href: migrate-best-practices-networking.md
-        - name: Najlepsze rozwiązania dotyczące określania kosztów i rozmiarów po migracji
-          href: migrate-best-practices-costs.md
     - name: Przykłady migracji — seria Contoso
       href: contoso-migration-overview.md
     - name: Odnajdywanie i ocenianie w dużym środowisku

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608296"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474688"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
 
@@ -44,15 +44,15 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 Edytuj `App.config` pliku, a następnie dodaj nazwę dzierżawy usługi Active Directory, punkty końcowe usługi i klucze subskrypcji wskazywanym przez `#####`. Potrzebne są następujące informacje:
 
-    |Klucz|Opis|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Punkt końcowy interfejsu API platformy Azure Media Services (AMS)|
-    |`ClientSecret`|Klucz subskrypcji dla platformy Azure Media Services|
-    |`ClientId`|Identyfikator klienta dla platformy Azure Media Services|
-    |`AzureAdTenantName`|Nazwa dzierżawcy usługi Active Directory reprezentująca Twoją organizację|
-    |`ContentModeratorReviewApiSubscriptionKey`|Klucz subskrypcji dla interfejsu API przeglądu usługi Content Moderator|
-    |`ContentModeratorApiEndpoint`|Punkt końcowy dla interfejsu API usługi Content Moderator|
-    |`ContentModeratorTeamId`|Identyfikator zespołu dla usługi Content Moderator|
+|Klucz|Opis|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Punkt końcowy interfejsu API platformy Azure Media Services (AMS)|
+|`ClientSecret`|Klucz subskrypcji dla platformy Azure Media Services|
+|`ClientId`|Identyfikator klienta dla platformy Azure Media Services|
+|`AzureAdTenantName`|Nazwa dzierżawcy usługi Active Directory reprezentująca Twoją organizację|
+|`ContentModeratorReviewApiSubscriptionKey`|Klucz subskrypcji dla interfejsu API przeglądu usługi Content Moderator|
+|`ContentModeratorApiEndpoint`|Punkt końcowy dla interfejsu API usługi Content Moderator|
+|`ContentModeratorTeamId`|Identyfikator zespołu dla usługi Content Moderator|
 
 ## <a name="examine-the-main-code"></a>Badanie głównej kodu
 

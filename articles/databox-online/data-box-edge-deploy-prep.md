@@ -6,18 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 364ceabc3c9e7a577bd126b81bcd5256d947bbe3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924769"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476777"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Samouczek: Przygotowywanie do wdrażania usługi Azure Data Box Edge  
-
 
 To jest pierwszy samouczek z serii samouczków dotyczących wdrażania, wymaganych do pełnego wdrożenia usługi Azure Data Box Edge. W tym samouczku opisano sposób przygotowania witryny Azure Portal do wdrożenia zasobu usługi Data Box Edge.
 
@@ -31,7 +30,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-
 ### <a name="get-started"></a>Rozpoczęcie pracy
 
 Proces wdrażania usługi Data Box Edge opisano w następujących samouczkach w zalecanej kolejności.
@@ -42,7 +40,7 @@ Proces wdrażania usługi Data Box Edge opisano w następujących samouczkach w 
 | 2. |**[Instalowanie urządzenia Data Box Edge](data-box-edge-deploy-install.md)**|Rozpakuj, umieść na stojaku i podłącz kable urządzenia fizycznego Data Box Edge.  |
 | 3. |**[Łączenie, konfigurowanie i aktywowanie urządzenia Data Box Edge](data-box-edge-deploy-connect-setup-activate.md)** |Nawiąż połączenie z lokalnym internetowym interfejsem użytkownika, przeprowadź konfigurację urządzenia i je aktywuj. Urządzenie jest gotowe do skonfigurowania udziałów SMB lub NFS.  |
 | 4. |**[Przesyłanie danych za pomocą usługi Data Box Edge](data-box-edge-deploy-add-shares.md)** |Dodaj udziały i nawiąż z nimi połączenie za pomocą protokołu SMB lub NFS. |
-| 5. |**[Przekształcanie danych za pomocą usługi Data Box Edge](data-box-edge-deploy-configure-compute.md)** |Skonfiguruj moduły usługi Edge na urządzeniu w celu przekształcania danych podczas ich przenoszenia na platformę Azure. |
+| 5. |**[Przekształcanie danych za pomocą usługi Data Box Edge](data-box-edge-deploy-configure-compute.md)** |Konfiguruj moduły obliczeń na urządzeniu w celu przekształcania danych, kiedy przesuwa się on na platformie Azure. |
 
 Teraz możesz rozpocząć konfigurowanie witryny Azure Portal.
 
@@ -55,7 +53,11 @@ Poniżej opisano wymagania wstępne dotyczące konfiguracji zasobu usługi Data 
 Przed rozpoczęciem upewnij się, że:
 
 - Twoja subskrypcja platformy Microsoft Azure obsługuje zasób usługi Data Box Edge. Płatność za rzeczywiste użycie subskrypcje nie są obsługiwane.
-- Masz właściciela lub współautora dostęp do Twojej subskrypcji.
+- Masz właściciela lub współautora dostęp na poziomie grupy zasobów dla zasobów bramy okno usługi Edge i dane pole danych, usługi IoT Hub i Azure Storage.
+
+    - Aby utworzyć brzeg urządzenia Data Box / zasobu bramy pola danych, powinni mieć uprawnienia współautora (lub wyższy) zakresu na poziomie grupy zasobów. Należy również upewnić, że `Microsoft.DataBoxEdge` dostawca jest zarejestrowany. Aby uzyskać informacje dotyczące rejestrowania, przejdź do [procedura Rejestruj dostawcę zasobów](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Aby utworzyć dowolny zasób usługi IoT Hub, upewnij się, że ten dostawca Microsoft.Devices jest zarejestrowany. Aby uzyskać informacje dotyczące rejestrowania, przejdź do [procedura Rejestruj dostawcę zasobów](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Aby utworzyć zasób konta magazynu, ponownie potrzebny współautora lub nowszej dostępu zakresu na poziomie grupy zasobów. Usługa Azure Storage jest domyślnie zarejestrowanego dostawcy zasobów.
 - Masz administratora lub użytkownika, dostęp do interfejsu API usługi Azure Active Directory Graph. Aby uzyskać więcej informacji, zobacz [interfejsu API usługi Azure Active Directory Graph](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
 
@@ -64,7 +66,7 @@ Przed rozpoczęciem upewnij się, że:
 Przed wdrożeniem urządzenia fizycznego upewnij się, że są spełnione następujące warunki:
 
 - Przejrzeniu informacji bezpieczeństwa, która została uwzględniona w pakiecie wydania.
-- Na standardowym stojaku 19” w centrum danych masz dostępne gniazdo 1U w celu zamontowania urządzenia. 
+- W centrum danych na urządzeniu w stelażu masz gniazdo 1U dostępne w stojaku standardowa 19".
 - Masz dostęp do płaskiej, stabilnej i poziomej powierzchni roboczej, gdzie można bezpiecznie umieścić urządzenie.
 - Miejsce, w którym chcesz skonfigurować urządzenie, ma standardowe zasilanie prądem przemiennym z niezależnego źródła lub jednostkę dystrybucji zasilania na stojaku (PDU, rack power distribution unit) z zasilaczem UPS.
 - Masz dostęp do urządzenia fizycznego.

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 6bc7af30d409fb7add321953aa2e956a0a3c1840
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 8ee96f2e06071d60eb97596687387fd80ba14cc3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427782"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496278"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb-preview"></a>Samouczek: Kopiowanie danych do usługi Azure Data pole mocno za pośrednictwem protokołu SMB (wersja zapoznawcza)
 
@@ -227,7 +227,7 @@ Po nawiązaniu połączenia z udziałem SMB rozpocznij kopiowanie danych.
 
     ![Pobierz pliki błędów](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych na duże pole danych](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [Rozwiązywanie problemów z dużymi pole danych wystawia](data-box-troubleshoot.md).
+    Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych na duże pole danych](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [Rozwiązywanie problemów z dużymi pole danych wystawia](data-box-troubleshoot.md).
 
 5. Otwórz plik błędu w Notatniku. Następujący plik błąd wskazuje, że dane nie są prawidłowo wyrównane.
 

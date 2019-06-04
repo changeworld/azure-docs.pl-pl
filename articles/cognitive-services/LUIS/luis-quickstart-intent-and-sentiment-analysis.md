@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 3315af0898cb3b18af0334a433a94242b056a8bd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236196"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479776"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Samouczek:  Uzyskiwanie tonacji wypowiedzi
 
@@ -54,6 +54,7 @@ Ponieważ jest to ustawienie publikowania, nie widać go na stronach intencji i 
 
 ## <a name="add-personname-prebuilt-entity"></a>Dodawanie wstępnie utworzonej jednostki PersonName 
 
+1. Wybierz **kompilacji** z menu nawigacji.
 
 1. Wybierz pozycję **Entities** (Jednostki) w menu nawigacji po lewej stronie.
 
@@ -69,11 +70,11 @@ Ponieważ jest to ustawienie publikowania, nie widać go na stronach intencji i 
 
 Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy. 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Wybierz pozycję **Intents** (Intencje) na lewym panelu.
 
-2. Wybierz pozycję **Create new intent** (Utwórz nową intencję).
+1. Wybierz pozycję **Create new intent** (Utwórz nową intencję).
 
-3. Nadaj nowej intencji nazwę `EmployeeFeedback`.
+1. Nadaj nowej intencji nazwę `EmployeeFeedback`.
 
     ![Okno dialogowe tworzenia nowej intencji z nazwą EmployeeFeedback](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
@@ -106,7 +107,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 1. Wybierz pozycję **Manage** (Zarządzaj) w prawym górnym okienku nawigacji, a następnie wybierz pozycję **Publish settings** (Ustawienia publikowania) z menu po lewej stronie.
 
-1. Wybierz pozycję **Sentiment Analysis** (Analiza tonacji), aby włączyć to ustawienie. 
+1. Wybierz **Użyj analiza tonacji, aby określić, czy wypowiedź użytkownika jest dodatnia, ujemna lub neutralne.** Aby włączyć to ustawienie. 
 
     ![Włączanie analizy tonacji jako ustawienia publikowania](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -118,7 +119,11 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Przejdź na koniec tego adresu URL i wprowadź ciąg `Jill Jones work with the media team on the public portal was amazing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
+1. Przejdź na końcu adresu URL w adres, a następnie wprowadź następujące wypowiedź:
+
+    `Jill Jones work with the media team on the public portal was amazing` 
+
+    Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `EmployeeFeedback` z wyodrębnioną analizą tonacji.
     
     ```json
     {
@@ -153,6 +158,8 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
     ```
 
     Wynik analizy sentimentAnalysis jest pozytywny i ma wartość 86%. 
+
+    Wypróbuj inną wypowiedź, usuwając wartość `q` na pasku adresu przeglądarki: `William Jones did a terrible job presenting his ideas.` Wynik tonacji wskazuje negatywną tonację, zwracając niskim wynikiem `0.18597582`.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
-ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d51c7b7c2e8d7f9774018f54a6639bebb882420
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653294"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471550"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
 
@@ -60,7 +60,7 @@ Przed kontynuowaniem potrzebne będą następujące elementy:
 Pierwszą rzeczą, jaką należy wykonać, jest skonfigurowanie projektu w programie Visual Studio.
 
 1. Otwórz program Visual Studio. Następnie wybierz pozycję **Plik > Nowy > Projekt**.
-2. W panelu po lewej stronie znajdź i wybierz pozycję **Visual C#**. Następnie wybierz pozycję **Aplikacja WPF (.NET Framework)** w środkowym panelu.
+2. W panelu po lewej stronie znajdź i wybierz pozycję **Visual C#** . Następnie wybierz pozycję **Aplikacja WPF (.NET Framework)** w środkowym panelu.
    ![Tworzenie aplikacji WPF w programie Visual Studio](media/create-wpf-project-visual-studio.png)
 3. Nazwij swój projekt, ustaw wersję platformy na **.NET Framework 4.5.2 lub nowszą**, a następnie kliknij przycisk **OK**.
 4. Projekt został utworzony. Zauważysz, że otwarte są dwie karty: `MainWindow.xaml` i `MainWindow.xaml.cs`. W tym samouczku będziemy dodawać kod do tych dwóch plików. Pierwszy dotyczy interfejsu użytkownika aplikacji; drugi dotyczy wywołań tłumaczenia tekstu w usłudze Translator i sprawdzania pisowni Bing.
@@ -79,9 +79,9 @@ Dodajmy do naszego projektu zestawy na potrzeby serializacji i deserializacji ob
 1. Znajdź swój projekt w Eksploratorze rozwiązań programu Visual Studio (panel po prawej stronie). Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > Odwołanie**, co spowoduje otwarcie **Menedżera odwołań**.
    ![Dodawanie odwołań do zestawów](media/add-assemblies-sample.png)
 2. Karta zestawów zawiera listę wszystkich zestawów .NET Framework, do których można się odwoływać. Użyj paska wyszukiwania w prawym górnym rogu ekranu, aby wyszukać te odwołania i dodać je do projektu:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
+   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
+   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
 3. Po dodaniu tych odwołań do projektu możesz kliknąć przycisk **OK**, aby zamknąć **Menedżera odwołań**.
 
 > [!NOTE]

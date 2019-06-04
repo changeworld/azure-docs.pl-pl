@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b4825770d8220e24c0d981af19313f265806d84
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 672bcc3d0cb15ef348d090ed6c5a38d6912465ef
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800441"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496306"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk przy użyciu systemu plików NFS
 
@@ -130,7 +130,7 @@ W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego nal
 > [!IMPORTANT]
 > Nie są obsługiwane następujące typy plików systemu Linux: łącza symbolicznego, pliki znak, blokowanie plików, gniazda i potoków. Następujące typy plików będą powodować błędy podczas **przygotowywanie do wysłania** kroku.
 
-Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych do urządzenia Data Box](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md).
+Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych do urządzenia Data Box](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md).
 
 W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     

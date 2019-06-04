@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek:  Integracja pojedynczego lasu usługi AD z platformą Azure przy użyciu funkcji synchronizacji skrótów haseł | Microsoft Docs'
+title: 'Samouczek:  Integracja z pojedynczym lasem usługi AD na platformie Azure przy użyciu wersji'
 description: W tym samouczku pokazano, jak skonfigurować środowisko tożsamości hybrydowej przy użyciu funkcji synchronizacji skrótów haseł.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60295708"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474003"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Samouczek:  Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
 

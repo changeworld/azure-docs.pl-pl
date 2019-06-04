@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek:  Integrowanie pojedynczego lasu usługi AD z platformą Azure przy użyciu uwierzytelniania przekazywanego | Microsoft Docs'
+title: 'Samouczek:  Integracja z pojedynczym lasem usługi AD na platformie Azure przy użyciu PTA'
 description: W tym samouczku pokazano, jak skonfigurować środowisko tożsamości hybrydowej przy użyciu uwierzytelniania przekazywanego.
 services: active-directory
 author: billmath
@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d848202840d49dde18d358769519329141c2b35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233902"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473009"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Samouczek:  Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
 
@@ -39,7 +39,7 @@ Poniżej przedstawiono wymagania wstępne niezbędne do wykonania kroków tego s
 >
 > Kopie skryptów programu PowerShell używanych w tym samouczku są dostępne w usłudze GitHub — [tutaj](https://github.com/billmath/tutorial-phs).
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Pierwszą rzeczą, jaką należy zrobić, aby skonfigurować i uruchomić środowisko tożsamości hybrydowej, jest utworzenie maszyny wirtualnej, która będzie służyć jako lokalny serwer usługi Active Directory.  
 
 >[!NOTE]

@@ -1,5 +1,5 @@
 ---
-title: Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL — Azure App Service | Microsoft Docs
+title: Przekazany i powiązany certyfikat SSL — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak powiązać niestandardowy certyfikat protokołu SSL ze swoją aplikacją internetową, zapleczem aplikacji mobilnej lub aplikacją interfejsu API w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: nodejs
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0ee1e7c652ddf4126fc9658bf17d3e919d7a5c8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138682"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475375"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Samouczek: Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service
+# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Samouczek: Przekazywanie i utworzenia powiązania certyfikatów SSL w usłudze Azure App Service
 
-Usługa Azure App Service oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten samouczek pokazuje, jak powiązać niestandardowy certyfikat protokołu SSL zakupiony od zaufanego urzędu certyfikacji z usługą [Azure App Service](overview.md). Po zakończeniu będzie można uzyskać dostęp do aplikacji w punkcie końcowym protokołu HTTPS niestandardowej domeny DNS.
+Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku dowiesz się, jak zabezpieczyć domeny niestandardowej w usłudze App Service przy użyciu certyfikatu zakupionego od zaufanego urzędu certyfikacji. On również dowiesz się, jak przekazywać żadnych prywatnych i publicznych certyfikatów wymagań aplikacji. Po zakończeniu będzie można uzyskać dostęp do aplikacji w punkcie końcowym protokołu HTTPS niestandardowej domeny DNS.
 
 ![Aplikacja internetowa z niestandardowym certyfikatem protokołu SSL](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -32,51 +32,48 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Uaktualnienie warstwy cenowej aplikacji
-> * Wiązanie niestandardowego certyfikatu z usługą App Service
+> * Zabezpieczanie domenę niestandardową przy użyciu certyfikatu
+> * Przekaż certyfikat prywatny
+> * Przekazywanie certyfikatu publicznego
 > * Odnawianie certyfikatów
-> * Wymuszaj HTTPS
+> * Wymuszanie protokołu HTTPS
 > * Wymuszanie protokołu TLS 1.1/1.2
 > * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
-
-> [!NOTE]
-> Jeśli potrzebujesz niestandardowego certyfikatu protokołu SSL, możesz pobrać go bezpośrednio w witrynie Azure Portal i powiązać ze swoją aplikacją. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
 
 - [Utwórz aplikację usługi App Service](/azure/app-service/)
-- [Zamapuj niestandardową nazwę DNS na swoją aplikację usługi App Service](app-service-web-tutorial-custom-domain.md)
-- Uzyskaj certyfikat protokołu SSL z zaufanego urzędu certyfikacji
-- Zachowaj klucz prywatny użyty do podpisania żądania certyfikatu protokołu SSL
+- [Mapowanie niestandardowej nazwy DNS na aplikację usługi App Service](app-service-web-tutorial-custom-domain.md) (jeśli jest to zabezpieczenie domeny niestandardowej)
+- Uzyskiwanie certyfikatu z zaufanego urzędu certyfikacji
+- Klucz prywatny, użytego do podpisania żądania certyfikatu (Aby uzyskać certyfikaty prywatne)
 
 <a name="requirements"></a>
 
-### <a name="requirements-for-your-ssl-certificate"></a>Wymagania dotyczące certyfikatu protokołu SSL
+## <a name="prepare-a-private-certificate"></a>Przygotowanie certyfikatu prywatnego
 
-Aby używać certyfikatu w usłudze App Service, musi on spełniać wszystkie następujące wymagania:
+Aby zabezpieczyć domenę, certyfikat musi spełniać następujące wymagania:
 
+* Skonfigurowany na potrzeby uwierzytelniania serwera
 * Podpisany przez zaufany urząd certyfikacji
 * Wyeksportowany jako chroniony hasłem plik PFX
 * Zawiera klucz prywatny o długości co najmniej 2048 bitów
 * Zawiera wszystkie certyfikaty pośrednie w łańcuchu certyfikatów
 
+> [!TIP]
+> Jeśli potrzebujesz uzyskać niestandardowy certyfikat protokołu SSL, można kupić w witrynie Azure portal bezpośrednio i zaimportować go do swojej aplikacji. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
+
 > [!NOTE]
 > **Certyfikaty kryptografii opartej na krzywej eliptycznej (ECC, Elliptic Curve Cryptography)** mogą współpracować z usługą App Service, ale nie są uwzględnione w tym artykule. Skontaktuj się ze swoim urzędem certyfikacji, aby uzyskać informacje o dokładnych krokach, które należy wykonać w celu utworzenia certyfikatów ECC.
 
-[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
-
-<a name="upload"></a>
-
-## <a name="bind-your-ssl-certificate"></a>Wiązanie certyfikatu protokołu SSL
-
-Wszystko jest gotowe do przekazania certyfikatu protokołu SSL do aplikacji.
+Po uzyskaniu certyfikatu za pośrednictwem swojego usługodawcy certyfikat, wykonaj kroki opisane w tej sekcji, aby przygotować go do usługi App Service.
 
 ### <a name="merge-intermediate-certificates"></a>Scalanie certyfikatów pośrednich
 
-Jeśli Twój urząd certyfikacji dał Ci wiele certyfikatów w łańcuchu certyfikatów, musisz kolejno scalić certyfikaty. 
+Jeśli Twój urząd certyfikacji dał Ci wiele certyfikatów w łańcuchu certyfikatów, musisz kolejno scalić certyfikaty.
 
-Aby to zrobić, otwórz każdy otrzymany certyfikat w edytorze tekstów. 
+Aby to zrobić, otwórz każdy otrzymany certyfikat w edytorze tekstów.
 
 Utwórz plik scalonego certyfikatu o nazwie _mergedcertificate.crt_. W edytorze tekstów skopiuj zawartość każdego certyfikatu do tego pliku. Kolejność certyfikatów powinna być zgodna z kolejnością w łańcuchu certyfikatów, poczynając od Twojego certyfikatu i kończąc na certyfikacie głównym. Wygląda to następująco:
 
@@ -112,45 +109,49 @@ Po wyświetleniu monitu określ hasło eksportu. To hasło będzie później uż
 
 Jeśli używasz usług IIS lub programu _Certreq.exe_ do wygenerowania swojego żądania certyfikatu, zainstaluj certyfikat na komputerze lokalnym, a następnie [wyeksportuj certyfikat do pliku PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
-### <a name="upload-your-ssl-certificate"></a>Przekazywanie certyfikatu protokołu SSL
+Wszystko jest teraz gotowy Przekaż certyfikat do usługi App Service.
 
-Aby przekazać certyfikat protokołu SSL, kliknij pozycję **Ustawienia protokołu SSL** w lewym obszarze nawigacyjnym aplikacji.
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-Kliknij pozycję **Przekaż certyfikat**. 
+<a name="upload"></a>
+
+## <a name="secure-a-custom-domain"></a>Zabezpieczanie domenę niestandardową
+
+> [!TIP]
+> Jeśli potrzebujesz niestandardowego certyfikatu protokołu SSL, możesz pobrać go bezpośrednio w witrynie Azure Portal i powiązać ze swoją aplikacją. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
+
+Aby zabezpieczyć [domeny niestandardowej](app-service-web-tutorial-custom-domain.md) certyfikatem innej firmy, możesz przekazać [przygotowane certyfikatu prywatnego](#prepare-a-private-certificate) i następnie powiązać go z domeny niestandardowej, ale usługi App Service upraszcza proces. Wykonaj następujące czynności:
+
+Kliknij przycisk **domen niestandardowych** w lewym obszarze nawigacji aplikacji, następnie kliknij przycisk **Dodaj powiązanie** w domenie, które chcesz zabezpieczyć. Jeśli nie widzisz **Dodaj powiązanie** dla domeny, następnie jest już bezpieczne i powinny mieć **bezpiecznego** stan SSL.
+
+![Dodaj powiązanie do domeny](./media/app-service-web-tutorial-custom-ssl/secure-domain-launch.png)
+
+Kliknij pozycję **Przekaż certyfikat**.
 
 W pozycji **Plik PFX certyfikatu** wybierz swój plik PFX. W polu **Hasło certyfikatu** wpisz hasło, które zostało utworzone podczas eksportowania pliku PFX.
 
 Kliknij pozycję **Przekaż**.
 
-![Przekaż certyfikat](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
+![Przekaż certyfikat dla domeny](./media/app-service-web-tutorial-custom-ssl/secure-domain-upload.png)
 
-Po zakończeniu przekazywania certyfikatu przez usługę App Service zostanie on wyświetlony na stronie **Ustawienia protokołu SSL**.
+Poczekaj, aż platformy Azure, aby przekazać certyfikat i Uruchom okno dialogowe powiązania SSL.
 
-![Przekazano certyfikat](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
-
-### <a name="bind-your-ssl-certificate"></a>Wiązanie certyfikatu protokołu SSL
-
-W sekcji **Powiązania SSL** kliknij pozycję **Dodaj powiązanie**.
-
-Na stronie **Dodawanie powiązania protokołu SSL** użyj list rozwijanych, aby wybrać nazwę domeny do zabezpieczenia i certyfikat do używania.
+W oknie dialogowym powiązania SSL wybierz certyfikat przekazany i typ protokołu SSL, a następnie kliknij przycisk **Dodawanie powiązania**.
 
 > [!NOTE]
-> Jeśli certyfikat został przekazany, ale nie widzisz nazw domen na liście rozwijanej **Nazwa hosta**, spróbuj odświeżyć stronę przeglądarki.
+> Obsługiwane są następujące typy protokołu SSL:
 >
->
+> - **[Połączenie SSL oparte na SNI](https://en.wikipedia.org/wiki/Server_Name_Indication)**  -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).
+> - **Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Aby zabezpieczyć wiele domen, musisz zabezpieczyć je wszystkie przy użyciu tego samego certyfikatu protokołu SSL. Jest to tradycyjna opcja dla powiązania protokołu SSL.
 
-W obszarze **Typ protokołu SSL** wybierz, czy ma być używane **[Oznaczanie nazwy serwera (SNI, Server Name Indication)](https://en.wikipedia.org/wiki/Server_Name_Indication)**, czy też protokół SSL oparty na protokole IP.
+![Powiązanie SSL do domeny](./media/app-service-web-tutorial-custom-ssl/secure-domain-bind.png)
 
-- **SNI SSL** — można dodać wiele powiązań rozszerzenia SNI SSL. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).
-- **Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Aby zabezpieczyć wiele domen, musisz zabezpieczyć je wszystkie przy użyciu tego samego certyfikatu protokołu SSL. Jest to tradycyjna opcja dla powiązania protokołu SSL.
+Teraz należy je zmienić stan SSL domeny **bezpiecznego**.
 
-Kliknij przycisk **Dodaj powiązanie**.
+![Domeny chronione](./media/app-service-web-tutorial-custom-ssl/secure-domain-finished.png)
 
-![Wiązanie certyfikatu protokołu SSL](./media/app-service-web-tutorial-custom-ssl/bind-certificate.png)
-
-Gdy usługa App Service zakończy przekazywanie Twojego certyfikatu, zostanie on wyświetlony w sekcjach **Powiązania protokołu SSL**.
-
-![Wiązanie certyfikatu z aplikacją internetową](./media/app-service-web-tutorial-custom-ssl/certificate-bound.png)
+> [!NOTE]
+> A **bezpiecznego** stanu w **domen niestandardowych** oznacza, że jest zabezpieczony za pomocą certyfikatu, ale usługi App Service nie zostanie zaewidencjonowane, jeśli certyfikat z podpisem własnym lub wygasła, na przykład, które mogą również spowodować, że w przeglądarkach Pokaż błąd lub ostrzeżenie.
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Ponowne mapowanie rekordu A dla połączenia SSL z adresu IP
 
@@ -175,8 +176,6 @@ Teraz pozostało tylko upewnienie się, że protokół HTTPS działa dla domeny 
 >
 > Jeśli tak nie jest, certyfikaty pośrednie mogły zostać pominięte podczas eksportowania certyfikatu do pliku PFX.
 
-<a name="bkmk_enforce"></a>
-
 ## <a name="renew-certificates"></a>Odnawianie certyfikatów
 
 Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania, nawet jeśli to powiązanie jest oparte na adresie IP. Jest to szczególnie ważne podczas odnawiania certyfikatu, który już znajduje się w powiązaniu opartym na adresie IP. Aby uniknąć zmian w adresie IP aplikacji, wykonaj kolejno następujące kroki:
@@ -185,13 +184,15 @@ Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania,
 2. Powiąż nowy certyfikat z wybraną domeną niestandardową bez usuwania starego certyfikatu. Ta akcja zastępuje powiązanie zamiast usuwania go.
 3. Usuń stary certyfikat. 
 
-## <a name="enforce-https"></a>Wymuszaj HTTPS
+<a name="bkmk_enforce"></a>
+
+## <a name="enforce-https"></a>Wymuszanie protokołu HTTPS
 
 Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
 
 Na stronie aplikacji w obszarze nawigacji po lewej stronie wybierz pozycję **Ustawienia protokołu SSL**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
 
-![Wymuszaj HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
+![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
 Po zakończeniu operacji przejdź do dowolnego adresu URL protokołu HTTP, który wskazuje Twoją aplikację. Na przykład:
 
@@ -217,32 +218,32 @@ Tworzenie powiązań protokołu SSL dla Twojej aplikacji możesz zautomatyzować
 
 Następujące polecenie przekazuje wyeksportowany plik PFX i pobiera odcisk palca.
 
-```bash
+```azurecli-interactive
 thumbprint=$(az webapp config ssl upload \
-    --name <app_name> \
-    --resource-group <resource_group_name> \
-    --certificate-file <path_to_PFX_file> \
-    --certificate-password <PFX_password> \
+    --name <app-name> \
+    --resource-group <resource-group-name> \
+    --certificate-file <path-to-PFX-file> \
+    --certificate-password <PFX-password> \
     --query thumbprint \
     --output tsv)
 ```
 
 Następujące polecenie dodaje powiązanie SNI SSL, używając odcisku palca z poprzedniego polecenia.
 
-```bash
+```azurecli-interactive
 az webapp config ssl bind \
-    --name <app_name> \
-    --resource-group <resource_group_name>
+    --name <app-name> \
+    --resource-group <resource-group-name>
     --certificate-thumbprint $thumbprint \
     --ssl-type SNI \
 ```
 
 Następujące polecenie wymusza minimalną wersję 1.2 protokołu TLS.
 
-```bash
+```azurecli-interactive
 az webapp config set \
-    --name <app_name> \
-    --resource-group <resource_group_name>
+    --name <app-name> \
+    --resource-group <resource-group-name>
     --min-tls-version 1.2
 ```
 
@@ -261,12 +262,10 @@ New-AzWebAppSSLBinding `
     -CertificatePassword <PFX_password> `
     -SslState SniEnabled
 ```
-## <a name="public-certificates-optional"></a>Certyfikaty publiczne (opcjonalnie)
-Jeśli aplikacja wymaga dostępu do zasobów zdalnych jako klient, a zasób zdalny wymaga uwierzytelniania certyfikatów, możesz przekazać do aplikacji [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/). Certyfikaty publiczne nie są wymagane dla powiązań SSL aplikacji.
 
-Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md). Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów, należy skorzystać z aplikacji w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [Jak skonfigurować certyfikaty publiczne dla aplikacji usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+## <a name="use-certificates-in-your-code"></a>Użyj certyfikatów w kodzie
 
-![Przekaż certyfikat publiczny](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
+Jeśli Twoja aplikacja wymaga nawiązania połączenia z zasobami zdalnymi, a zasób zdalny wymaga uwierzytelniania certyfikatu, możesz przekazać certyfikaty publiczne lub prywatne, do swojej aplikacji. Nie potrzebujesz powiązać te certyfikaty do dowolnej domeny niestandardowej w swojej aplikacji. Aby uzyskać więcej informacji, zobacz [Use an SSL certificate in your application code in Azure App Service (Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service)](app-service-web-ssl-cert-load.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -276,7 +275,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Uaktualnienie warstwy cenowej aplikacji
 > * Wiązanie niestandardowego certyfikatu z usługą App Service
 > * Odnawianie certyfikatów
-> * Wymuszaj HTTPS
+> * Wymuszanie protokołu HTTPS
 > * Wymuszanie protokołu TLS 1.1/1.2
 > * Automatyzacja zarządzania protokołami TLS za pomocą skryptów
 

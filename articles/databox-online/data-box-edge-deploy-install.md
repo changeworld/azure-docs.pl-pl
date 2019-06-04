@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/20/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924536"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476944"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Samouczek: Instalowanie usługi Azure Data Box krawędzi
 
@@ -50,7 +50,7 @@ Przed wdrożeniem urządzenia:
 - Sprawdź, czy lokacja, w której chcesz zamontować urządzenie, ma:
     - standardowe zasilanie prądem przemiennym z niezależnego źródła
 
-        — Lub —
+        -LUB-
     - jednostkę dystrybucji zasilania na stojaku (PDU, rack power distribution unit) z zasilaczem UPS
     - Dostępne gniazdo 1U w stojaku, na którym zamierzasz zainstalować urządzenie
 
@@ -70,7 +70,7 @@ To urządzenie jest dostarczane w jednym pudełku. Aby rozpakować urządzenie, 
 1. Umieść pudełko na płaskiej, poziomej powierzchni.
 2. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Skontaktuj się z pomocą techniczną firmy Microsoft, która pomoże Ci ustalić, czy urządzenie znajduje się w dobrym stanie umożliwiającym prawidłowe działanie.
 3. Rozpakuj zawartość pudełka. Po rozpakowaniu upewnij się, że masz:
-    - jedno urządzenie Edge w pojedynczej obudowie,
+    - Jedno urządzenie krawędź pola danych pojedynczego obudowy
     - dwa przewody zasilania,
     - Szyny jeden zestaw zestawu
     - Broszury bezpieczeństwa, środowiska i informacje prawne
@@ -100,7 +100,7 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 1. II ReadyRails Dell A7 w dwóch przedłużanie zestawy szyny
 2. Dwa taśm hook i pętli
 
-![Identyfikacji zawartości zestawu szyny](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
+    ![Identyfikacji zawartości zestawu szyny](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Instalowanie i usuwanie narzędzi rails (dziura kwadratowy lub stojakami round dziura)
 
@@ -109,10 +109,10 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 
 1. Umieść elementy end szyny lewy i prawy etykietą **FRONT** skierowany do wewnątrz i poznaniu każdego z nich zakończenia stanowisko w otwory na przedniej stronie stopka stelażu pionowym.
 2. Wyrównaj do każdego elementu end otworów dołu i od góry żądaną U miejsca do magazynowania.
-3. Angażowanie zaplecza szyny dopóki nie jest w pełni stanowisk na listwie stelażu pionowym i kliknięć zatrzaśnięcia w miejscu. Powtórz te kroki, aby ustawić położenie i stanowisko element frontonu na listwie stelażu pionowym.
+3. Angażowanie zaplecza szyny dopóki nie jest w pełni stanowisk na listwie stelażu pionowym i kliknięć zatrzaśnięcia w miejscu. Powtórz te kroki, aby ustawić położenie i stanowisko frontonu fragmentu na listwie stelażu pionowym.
 4. Aby usunąć rails, ściągnięcia zatrzaśnięcia przycisku wydania w środkowym element end i Wyjmij urządzenie każdego szyny.
 
-![Instalowanie i usuwanie narzędzi platformy rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
+    ![Instalowanie i usuwanie narzędzi platformy rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalowanie i usuwanie tooled rails (Zhierarchizowany dziura stojakami)
 
@@ -124,7 +124,7 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 3. Dołączanie po lewej stronie i bezpośrednio instalowanie platformy rails, aby przy użyciu dwóch par śruby stopka frontonu stojak pionowy.
 4. Przesuń wstecz lewy i prawy nawiasy kwadratowe przekazywania względem stopka tylnej stojak pionowych i dołącz je przy użyciu dwóch par śruby.
 
-![Instalowanie i usuwanie tooled rails](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Instalowanie i usuwanie tooled rails](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>Zainstaluj system w stojaku
 
@@ -133,7 +133,7 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 3. Wypychanie systemu do wewnątrz do momentu dźwigni blokady kliknij w miejscu.
 4. Naciśnij przycisk blokady wersji slajdów zarówno platformy rails, jak i slajdów system w stojaku.
 
-![Zainstaluj system w stojaku](./media/data-box-edge-deploy-install/installing-system-rack.png)
+    ![Zainstaluj system w stojaku](./media/data-box-edge-deploy-install/installing-system-rack.png)
 
 ### <a name="remove-the-system-from-the-rack"></a>Usuwanie systemu stojaku
 
@@ -141,7 +141,7 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 2. Uzyskaj dostęp do każdego suwaka obracając do pozycji jego wersji.
 3. Mocno niejasny boki systemu, a następnie przeciągnij ją do przodu, aż standoffs szyny znajdują się na początku gniazd "j". Przenoszenie system w górę i w kierunku od stojaku i umieść go na poziomie powierzchni.
 
-![Usuń system z stojaku](./media/data-box-edge-deploy-install/removing-system-rack.png)
+    ![Usuń system z stojaku](./media/data-box-edge-deploy-install/removing-system-rack.png)
 
 ### <a name="engage-and-release-the-slam-latch"></a>Angażowanie i zwolnij zatrzaśnięcia slam
 
@@ -152,7 +152,7 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 2. Zamków angażować się automatycznie jako system jest równoznaczne z wypchnięciem w stojaku i są wydawane przez pobieranie na zatrzaśnięcia.
 3. Do zabezpieczenia systemu do wydania w stojaku lub w innych środowiskach niestabilny, zlokalizuj gwintowanym twarde instalacji w ramach każdego zatrzaśnięcia i podwyższenie poziomu każdego gwintowanym z #2 krzyżakowy.
 
-![Angażowanie i zwolnij slam zatrzaśnięcie](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+    ![Angażowanie i zwolnij slam zatrzaśnięcie](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
 ### <a name="route-the-cables"></a>Kable
 
@@ -164,16 +164,16 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 3. Wątek punktu zaczepienia i pętla taśm za pośrednictwem gniazd na zewnętrzne nawiasy CMA po każdej stronie systemu, aby zabezpieczyć pakiety kabel.
 
 
-![Kable](./media/data-box-edge-deploy-install/routing-cables.png)
+    ![Kable](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>Podłączanie kabli urządzenia
 
-Poniższe procedury opisują sposób podłączania kabli urządzenia Edge do zasilania i sieci.
+Poniższe procedury dotyczą sposobu podłączanie kabli do urządzenia krawędź pola danych do zasilania i sieci.
 
 Aby można było rozpocząć podłączanie kabli urządzenia, potrzebne są następujące elementy:
 
-- Urządzenie fizyczne Edge, rozpakowane i zamontowane na stojaku.
-- Dwa kable zasilające. 
+- Urządzenie fizyczne krawędź pola danych, dopiero i stojaku.
+- Dwa kable zasilające.
 - Co najmniej jeden kabel sieciowy 1-GbE RJ-45 służący do łączenia z interfejsem zarządzania. Istnieją dwa interfejsy sieciowe 1-GbE: jeden do zarządzania i drugi stanowiący interfejs danych w urządzeniu.
 - Jeden miedziany kabel 25-GbE SFP+ dla każdego interfejsu sieciowego danych do skonfigurowania. Co najmniej jeden sieciowy interfejs danych — PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 — musi być połączony z Internetem (umożliwiając łączność z platformą Azure).  
 - Dostęp do dwóch jednostek dystrybucji zasilania (zalecane).
@@ -181,34 +181,46 @@ Aby można było rozpocząć podłączanie kabli urządzenia, potrzebne są nast
 > [!NOTE]
 > - Jeśli łączysz tylko jeden interfejs sieciowy danych zaleca się korzystanie z interfejsu sieciowych/25 10 GbE, takie jak PORT 3, 4 portu, portu 5 lub 6 portu do wysyłania danych do platformy Azure. 
 > - Aby uzyskiwać najlepszą wydajność i obsługiwać duże ilości danych, rozważ połączenie wszystkich portów danych.
-> - Urządzenie Edge powinno być połączone z siecią centrum danych, aby mogło pozyskiwać dane z serwerów źródła danych.
+> - Urządzenie brzegowe pole danych powinny być połączone z siecią centrum danych, tak, aby go mogą pozyskiwać dane z serwerów źródłowych danych.
 
-Urządzenie Edge jest wyposażone w 8 dysków SSD NVMe. Na przednim panelu znajdują się diody LED stanu i przyciski zasilania. Z tyłu urządzenia znajdują się nadmiarowe zasilacze. Urządzenie ma sześć interfejsów sieciowych:
+Na urządzeniu z systemem krawędź pola danych:
 
-- Dwa interfejsy 1 GB/s
-- Cztery 25 GB interfejsy, które może również służyć jako interfejsy 10 GB/s.
-- Kontroler zarządzania płytą główną (BMC). 
+- Panelu przedniego ma stacji dysków i przycisk zasilania.
 
-Zidentyfikuj różne porty na tylnym panelu montażowym urządzenia.
- 
-  ![Płyta montażowa okablowanego urządzenia](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    - Brak 10 miejsca na dysku uzyskać urządzenia.
+    - Gniazda 0 ma dysk SATA 240 GB używany jako dysk systemu operacyjnego. Gniazda 1 jest pusta i gniazda 2 do 9 są dyski SSD NVMe używanych jako dyski z danymi.
+- Płaszczyzna wstecz zawiera nadmiarowe zasilanie dostaw jednostki (PSUs).
+- Płaszczyzna wstecz ma sześć interfejsów sieciowych:
 
-Urządzenie ma dwie karty sieciowe, odpowiadający 6 portów: 
+    - Dwa interfejsy 1 GB/s.
+    - Cztery 25 GB interfejsy, które może również służyć jako interfejsy 10 GB/s.
+    - Kontroler zarządzania płytą główną (BMC).
 
- - QLogic FastLinQ 41264
- - QLogic FastLinQ 41262
+- Płaszczyzna wstecz ma dwie karty sieciowe, odpowiadający 6 portów:
+
+    - QLogic FastLinQ 41264
+    - QLogic FastLinQ 41262
 
 Aby uzyskać pełną listę obsługiwanych kable, przełączniki i należy w tych kartach sieciowych, przejdź do [Cavium FastlinQ 41000 serii współdziałanie macierzy](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
  
 Wykonaj poniższe kroki, aby podłączyć kable urządzenia do sieci i zasilania.
 
-1. Podłącz kable zasilające do poszczególnych zasilaczy w obudowie. Aby zapewnić wysoką dostępność, zainstaluj i podłącz oba zasilacze do różnych źródeł zasilania.
+1. Określ różne porty na płaszczyźnie wstecz urządzenia.
 
-2. Podłącz kable zasilające do jednostek dystrybucji zasilania stojaka. Upewnij się, że dwa zasilacze korzystają z oddzielnych źródeł zasilania.
+    ![Tworzenie kopii płaszczyzny okablowana między urządzeniami](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
-3. Połącz interfejs sieciowy 1 GbE PORT 1 z komputerem używanym do konfigurowania urządzenia fizycznego. PORT 1 jest dedykowanym interfejsem zarządzania.
+2. Znajdź miejsc dysku i przycisk zasilania na pierwszej stronie urządzenia.
 
-4. Co najmniej jeden PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 łączący z Internetem/siecią centrum danych. W przypadku łączenia za pomocą portu PORT 2 użyj kabla sieciowego RJ-45. W przypadku interfejsów sieciowych 10/25 GbE Użyj kable SFP + miedzianego.  
+    ![Płaszczyzna frontonu urządzenia](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
+
+3. Podłącz kable zasilające do poszczególnych zasilaczy w obudowie. Aby zapewnić wysoką dostępność, zainstaluj i podłącz oba zasilacze do różnych źródeł zasilania.
+4. Podłącz kable zasilające do jednostek dystrybucji zasilania stojaka. Upewnij się, że dwa zasilacze korzystają z oddzielnych źródeł zasilania.
+5. Naciśnij przycisk zasilania, aby włączyć w urządzeniu.
+6. Połącz interfejs sieciowy 1 GbE PORT 1 z komputerem używanym do konfigurowania urządzenia fizycznego. PORT 1 jest dedykowanym interfejsem zarządzania.
+7. Co najmniej jeden PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 łączący z Internetem/siecią centrum danych.
+
+    - W przypadku łączenia za pomocą portu PORT 2 użyj kabla sieciowego RJ-45.
+    - W przypadku interfejsów sieciowych 10/25 GbE Użyj kable SFP + miedzianego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -223,5 +235,3 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak nawiązać połącz
 
 > [!div class="nextstepaction"]
 > [Nawiązywanie połączenia z urządzeniem Data Box Edge i konfigurowanie go](./data-box-edge-deploy-connect-setup-activate.md)
-
-

@@ -1,11 +1,11 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia Projectplace | Dokumentacja firmy Microsoft'
-description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Projectplace.
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Projectplace.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 298059ca-b652-4577-916a-c31393d53d7a
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,178 +13,131 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2019
+ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 17fbc6bc4f022a15c34c5ca7b9465be392cdc639
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aae6de49a3df3f1e648b99aa9936d6af85fc020f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560629"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497302"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia Projectplace
+# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Samouczek: Integracja narzędzia Projectplace przy użyciu usługi Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Projectplace w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Projectplace w usłudze Azure Active Directory (Azure AD). W ramach Projectplace integracji z usługą Azure AD, możesz wykonywać następujące czynności:
 
-Ta integracja zapewnia następujące korzyści:
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do narzędzia Projectplace.
+* Umożliwianie użytkownikom można automatycznie zalogowany Projectplace przy użyciu konta usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Użytkownicy mogą być udostępniane Projectplace automatycznie.
 
-* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do narzędzia Projectplace.
-* Aby umożliwić użytkownikom automatyczne logowanie do Projectplace (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
-
-Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Jeśli nie masz subskrypcji platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą narzędzia Projectplace, potrzebne są:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz zarejestrować się w celu [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/) subskrypcji.
-* Subskrypcja narzędzia Projectplace, która ma logowanie jednokrotne włączone.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Projectplace logowania jednokrotnego (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje Projectplace **dodatkiem SP oraz dostawców tożsamości** zainicjowane logowania jednokrotnego i obsługuje **Just In Time** Inicjowanie obsługi użytkowników.
 
-* Projectplace obsługuje logowanie Jednokrotne zainicjowane przez SP.
-
-## <a name="add-projectplace-from-the-gallery"></a>Dodaj Projectplace z galerii
+## <a name="adding-projectplace-from-the-gallery"></a>Dodawanie Projectplace z galerii
 
 Aby skonfigurować integrację z narzędziem projectplace firmy w usłudze Azure AD, należy dodać Projectplace z galerii z listą zarządzanych aplikacji SaaS.
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
-
-    ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
-
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
-
-3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
-
-    ![Wybierz nową aplikację](common/add-new-app.png)
-
-4. W polu wyszukiwania wprowadź **Projectplace**. Wybierz **Projectplace** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
-
-     ![Wyniki wyszukiwania](common/search-new-app.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **Projectplace** w polu wyszukiwania.
+1. Wybierz **Projectplace** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne za pomocą narzędzia Projectplace przy użyciu użytkownika testu o nazwie Britta Simon.
-Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w Projectplace.
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą narzędzia Projectplace, za pomocą użytkownika testu o nazwie **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Projectplace.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą narzędzia Projectplace, należy wykonać następujące czynności:
+Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą narzędzia Projectplace, wykonaj poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
-2. **[Konfigurowanie narzędzia Projectplace logowania jednokrotnego](#configure-projectplace-single-sign-on)**  na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
-5. **[Tworzenie użytkownika testowego Projectplace](#create-a-projectplace-test-user)**  połączony na reprezentację w postaci usługi Azure AD użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie narzędzia Projectplace](#configure-projectplace)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego Projectplace](#create-projectplace-test-user)**  taki odpowiednik B. Simon w narzędzia Projectplace, połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą narzędzia Projectplace, wykonaj następujące czynności:
+1. W [witryny Azure portal](https://portal.azure.com/)na **Projectplace** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Projectplace** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**:
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
+1. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, aplikacja jest wstępnie skonfigurowana i wymaganych adresów URL już są wstępnie wypełniane przy użyciu platformy Azure . Użytkownik musi zapisać konfigurację, klikając **Zapisz** przycisku.
 
-2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://service.projectplace.com`
 
-3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj **ikonę** do skopiowania **adres Url metadanych Federacji aplikacji** , zgodnie z wymaganiami, a następnie zapisz go w Notatniku.
 
-    ![Ikona edycji](common/edit-urls.png)
+   ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
-4. W **podstawową konfigurację protokołu SAML** dialogowym **adres URL logowania** wprowadź adres URL, w tym wzorcu:
+1. Na **Konfigurowanie Projectplace** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    `https://<company>.projectplace.com`
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-   ![Podstawowy plik konfiguracji SAML, okno dialogowe](common/sp-signonurl.png)
-    > [!NOTE]
-    > Ta wartość jest symbolem zastępczym. Należy użyć rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Projectplace](https://success.planview.com/Projectplace/Support) można uzyskać wartość. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okno dialogowe, w witrynie Azure portal.
+### <a name="configure-projectplace"></a>Konfigurowanie narzędzia Projectplace
 
-5. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **Pobierz** łącze obok **XML metadanych Federacji** , zgodnie z wymaganiami, a następnie Zapisz certyfikat na komputerze:
-
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
-
-6. W **Konfigurowanie Projectplace** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań.
-
-    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
-
-    1. **Adres URL logowania**.
-
-    1. **Usługa Azure AD identyfikator**.
-
-    1. **Adres URL wylogowania**.
-
-### <a name="configure-projectplace-single-sign-on"></a>Konfigurowanie narzędzia Projectplace logowania jednokrotnego
-
-Aby skonfigurować logowanie jednokrotne na **Projectplace** stronie, musisz wysłać pobrany **XML metadanych Federacji** certyfikatu i adresów URL, które zostały skopiowane z portalu Azure w celu [ Zespół pomocy technicznej Projectplace](https://success.planview.com/Projectplace/Support). Ten zespół gwarantuje, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Projectplace** stronie, musisz wysłać skopiowany **adres Url metadanych Federacji aplikacji** w witrynie Azure portal do [zespołem pomocy technicznej Projectplace](https://success.planview.com/Projectplace/Support) . Ten zespół gwarantuje, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
 
 >[!NOTE]
->Jednej konfiguracji logowania jednokrotnego musi być wykonywane przez [zespołem pomocy technicznej Projectplace](https://success.planview.com/Projectplace/Support). Otrzymasz powiadomienie, zaraz po zakończeniu konfiguracji.
+>Jednej konfiguracji logowania jednokrotnego musi być wykonywane przez [zespołem pomocy technicznej Projectplace](https://success.planview.com/Projectplace/Support). Otrzymasz powiadomienie, zaraz po zakończeniu konfiguracji. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
 
-1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
-
-    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
-
-2. Wybierz **nowego użytkownika** w górnej części ekranu:
-
-    ![Wybierz nowego użytkownika](common/new-user.png)
-
-3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
-
-    ![Okno dialogowe użytkownika](common/user-properties.png)
-
-    1. W polu **Nazwa** wpisz **BrittaSimon**.
-  
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
-
-    1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
-
-    1. Wybierz pozycję **Utwórz**.
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Britta Simon korzystać z usługi Azure AD logowania jednokrotnego przez udostępnienie jej Projectplace.
+W tej sekcji można udostępnić Simon B. do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do narzędzia Projectplace.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **Projectplace**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **Projectplace**.
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **Projectplace**.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Lista aplikacji](common/all-applications.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**:
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
+### <a name="create-projectplace-test-user"></a>Tworzenie użytkownika testowego Projectplace
 
-4. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+>[!NOTE]
+>W przypadku inicjowania obsługi administracyjnej w Projectplace włączone, można pominąć ten krok. Możesz poprosić [zespołem pomocy technicznej Projectplace](https://success.planview.com/Projectplace/Support) umożliwia inicjowanie obsługi administracyjnej elementu, gdy użytkownicy gotowe, zostanie utworzony w Projectplace podczas pierwszego logowania.
 
-    ![Wybieranie pozycji Dodaj użytkownika](common/add-assign-user.png)
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do narzędzia Projectplace, należy dodać je do narzędzia Projectplace. Należy je dodać ręcznie.
 
-5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu ekranu.
-
-6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
-
-### <a name="create-a-projectplace-test-user"></a>Tworzenie użytkownika testowego Projectplace
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do narzędzia Projectplace, należy dodać je do narzędzia Projectplace. Należy dodać je ręcznie.
-
-Aby utworzyć konto użytkownika, wykonaj następujące czynności:
+**Aby utworzyć konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej **Projectplace** witryny firmy jako administrator.
 
@@ -209,15 +162,14 @@ Aby utworzyć konto użytkownika, wykonaj następujące czynności:
 >[!NOTE]
 >Umożliwia także inne narzędzie do tworzenia konta użytkownika lub interfejsów API dostarczonych przez narzędzia Projectplace, aby dodać konta użytkowników usługi Azure AD.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
+### <a name="test-sso"></a>Test SSO
 
-Po wybraniu kafelka Projectplace w panelu dostępu, możesz powinny być automatycznie zalogowany do wystąpienia narzędzia Projectplace, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po wybraniu kafelka Projectplace w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze narzędzia Projectplace, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

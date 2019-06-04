@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/28/2019
+ms.date: 05/31/2019
 ms.author: pafarley
-ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1c9e68f643f27f70190b5847225692d554cc5480
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306547"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475443"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalowanie i uruchamianie kontenerów aparatu rozpoznawania formularza
 Aparat rozpoznawania formularza ma zastosowanie technologii uczenia maszynowego, aby zidentyfikować i prowadzenie formularzy pary klucz wartość i tabel. Go kojarzy wartości i wpisy tabeli, aby je, a następnie wysyła dane ze strukturą, który zawiera relacje w oryginalnym pliku. Możesz wywołać niestandardowy model rozpoznawania formularza przy użyciu prostego interfejsu API REST w celu zredukowania złożoności i łatwo zintegrować ją w proces automatyzacji przepływu pracy lub innych aplikacji. Tylko pięć dokumentów (lub pusty formularz) są potrzebne, więc można uzyskać wyniki, szybko, dokładnie i być dostosowane do określonych zawartości, bez dużych ręcznej interwencji lub wiele różnych danych do analizy doświadczenia. Nie wymaga danych etykietowania lub adnotacji danych.
@@ -114,9 +114,9 @@ Zastąp parametry te wartości w poniższym przykładzie `docker run` polecenia.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
@@ -142,6 +142,8 @@ Uruchamianie pierwszego kontenera na porcie 5000.
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+--mount type=bind,source=c:\input,target=/input  \
+--mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
@@ -275,7 +277,7 @@ Kontener zawiera punkt końcowy REST API, który można znaleźć [tutaj](https:
 
 Po uruchomieniu kontenera, korzysta z kontenera **stdout** i **stderr** o danych wyjściowych, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera.
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Wyślij kontenerów aparatu rozpoznawania formularza rozliczeń informacje na platformie Azure, przy użyciu _rozpoznawania formularza_ zasobów dla konta systemu Azure.
 

@@ -43,8 +43,6 @@
       items:
         - name: Jak działa uwierzytelnianie wieloskładnikowe
           href: concept-mfa-howitworks.md
-        - name: Jaka wersja jest odpowiednia?
-          href: concept-mfa-whichversion.md
         - name: Licencjonowanie użytkowników
           href: concept-mfa-licensing.md
         - name: Zarządzanie dostawcą uwierzytelniania

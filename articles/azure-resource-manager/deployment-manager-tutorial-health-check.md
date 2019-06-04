@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790124"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479177"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -50,18 +50,18 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 * Pełne [użycia Azure Deployment Manager przy użyciu szablonów usługi Resource Manager](./deployment-manager-tutorial.md).
-* Pobierz [szablonów i artefaktów](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) używanego w ramach tego samouczka. 
+* Pobierz [szablonów i artefaktów](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) używanego w ramach tego samouczka.
 
 ## <a name="create-a-health-check-service-simulator"></a>Utworzyć usługi symulatora sprawdzania kondycji
 
-W środowisku produkcyjnym zazwyczaj używa się co najmniej jeden dostawców monitorowania. W celu integracji kondycji tak proste, jak to możliwe, Microsoft pracował nad z niektórymi monitorowania firmy mogą udostępniać prostego kopiowania/wklejania rozwiązania do integracji kontroli kondycji z wdrożeniami kondycji najważniejszych usług. Aby uzyskać listę tych firm, zobacz [dostawców monitorowania kondycji](./deployment-manager-health-check.md#health-monitoring-providers). Na potrzeby tego samouczka utworzysz [funkcji platformy Azure](/azure/azure-functions/) do symulacji monitorowania usługi kondycji. Ta funkcja przyjmuje kod stanu i zwraca ten sam kod. Szablon Azure Deployment Manager używa kod stanu, aby określić jak przystąpić do wdrażania. 
+W środowisku produkcyjnym zazwyczaj używa się co najmniej jeden dostawców monitorowania. W celu integracji kondycji tak proste, jak to możliwe, Microsoft pracował nad z niektórymi monitorowania firmy mogą udostępniać prostego kopiowania/wklejania rozwiązania do integracji kontroli kondycji z wdrożeniami kondycji najważniejszych usług. Aby uzyskać listę tych firm, zobacz [dostawców monitorowania kondycji](./deployment-manager-health-check.md#health-monitoring-providers). Na potrzeby tego samouczka utworzysz [funkcji platformy Azure](/azure/azure-functions/) do symulacji monitorowania usługi kondycji. Ta funkcja przyjmuje kod stanu i zwraca ten sam kod. Szablon Azure Deployment Manager używa kod stanu, aby określić jak przystąpić do wdrażania.
 
 Następujące dwa pliki są używane do wdrażania funkcji platformy Azure. Nie trzeba pobierać te pliki do wykonywania kroków samouczka.
 
-* Szablon usługi Resource Manager znajduje się w [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Możesz wdrożyć ten szablon służy do tworzenia funkcji platformy Azure.  
-* Plik zip kodu źródłowego funkcji platformy Azure, [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). Tego pliku zip o nazwie jest wywoływana przez szablon usługi Resource Manager.
+* Szablon usługi Resource Manager znajduje się w [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Możesz wdrożyć ten szablon służy do tworzenia funkcji platformy Azure.
+* Plik zip kodu źródłowego funkcji platformy Azure, [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tego pliku zip o nazwie jest wywoływana przez szablon usługi Resource Manager.
 
-Aby wdrożyć funkcję platformy Azure, wybierz **wypróbuj** aby otworzyć usługa Azure Cloud shell, a następnie wklej poniższy skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy w oknie shell, a następnie wybierz pozycję **Wklej**. 
+Aby wdrożyć funkcję platformy Azure, wybierz **wypróbuj** aby otworzyć usługa Azure Cloud shell, a następnie wklej poniższy skrypt do okna powłoki.  Aby wkleić kod, kliknij prawym przyciskiem myszy w oknie shell, a następnie wybierz pozycję **Wklej**.
 
 > [!IMPORTANT]
 > **projectName** w programie PowerShell skrypt służy do generowania nazwy dla usług platformy Azure, które są wdrażane w ramach tego samouczka. Różne usługi platformy Azure mają różne wymagania dotyczące nazw. Aby upewnić się, że wdrożenie zakończy się pomyślnie, wybierz nazwę zawierającą mniej niż 12 znaków tylko z małych liter i cyfr.
@@ -81,7 +81,7 @@ Aby sprawdzić i przetestować funkcję platformy Azure:
 1. Otwórz [portal Azure](https://portal.azure.com).
 1. Otwórz grupę zasobów.  Domyślna nazwa jest nazwą projektu, przy użyciu **rg** dołączane.
 1. Wybierz usługi app service z grupy zasobów.  Domyślna nazwa usługi app service jest nazwą projektu, przy użyciu **aplikacji sieci Web** dołączane.
-1. Rozwiń **funkcje**, a następnie wybierz pozycję **HttpTrigger1**. 
+1. Rozwiń **funkcje**, a następnie wybierz pozycję **HttpTrigger1**.
 
     ![Sprawdzenie kondycji usługi platformy Azure Deployment Manager funkcji platformy Azure](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
@@ -178,7 +178,7 @@ Ta sekcja ma na celu pokazują, jak dołączyć kroku sprawdzenia kondycji szabl
     },
     ```
 
-    Na podstawie definicji, wdrażanie będzie kontynuowane, jeśli stan kondycji *dobrej kondycji* lub *ostrzeżenie*. 
+    Na podstawie definicji, wdrażanie będzie kontynuowane, jeśli stan kondycji *dobrej kondycji* lub *ostrzeżenie*.
 
 1. Aktualizacja **dependsON** definicji wdrożenia obejmujący kroku sprawdzenia kondycji nowo zdefiniowane:
 
@@ -189,7 +189,7 @@ Ta sekcja ma na celu pokazują, jak dołączyć kroku sprawdzenia kondycji szabl
     ],
     ```
 
-1. Aktualizacja **stepGroups** obejmujący kroku sprawdzenia kondycji. **HealthCheckStep** jest wywoływana w **postDeploymentSteps** z **stepGroup2**. **stepGroup3** i **stepGroup4** są wdrażane tylko, jeśli stan kondycji *dobrej kondycji* lub *ostrzeżenie*. 
+1. Aktualizacja **stepGroups** obejmujący kroku sprawdzenia kondycji. **HealthCheckStep** jest wywoływana w **postDeploymentSteps** z **stepGroup2**. **stepGroup3** i **stepGroup4** są wdrażane tylko, jeśli stan kondycji *dobrej kondycji* lub *ostrzeżenie*.
 
     ```json
     "stepGroups": [
@@ -265,7 +265,7 @@ Opcja **Pokaż ukryte typy** musi być zaznaczona, aby wyświetlić zasoby.
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Wdrażanie wdrożenie w stanie złej kondycji
 
-Aby uprościć samouczka, szablon wprowadzania poprawione jest udostępniony w następującej lokalizacji tak, aby nie trzeba przygotować swoją własną kopią. Jeśli chcesz użyć własnego, postępuj zgodnie z instrukcjami [samouczka: Azure Deployment Manager za pomocą szablonów usługi Resource Manager](./deployment-manager-tutorial.md).
+Aby uprościć samouczka, szablon wprowadzania poprawione jest udostępniony w następujących lokalizacjach, dzięki czemu nie trzeba przygotować swoją własną kopią. Jeśli chcesz użyć własnego, postępuj zgodnie z instrukcjami [samouczka: Azure Deployment Manager za pomocą szablonów usługi Resource Manager](./deployment-manager-tutorial.md).
 
 * Szablon topologii: https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
 * Magazyn artefaktów: https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
@@ -394,7 +394,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
     * **&lt;namePrefix>ServiceWUSrg**: zawiera zasoby zdefiniowane przez usługę ServiceWUS.
     * **&lt;namePrefix>ServiceEUSrg**: zawiera zasoby zdefiniowane przez usługę ServiceEUS.
     * Grupa zasobów dla tożsamości zarządzanej zdefiniowanej przez użytkownika.
-3. Wybierz nazwę grupy zasobów.  
+3. Wybierz nazwę grupy zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 5. Powtórz dwa ostatnie kroki, aby usunąć inne grupy zasobów utworzone w ramach tego samouczka.
 

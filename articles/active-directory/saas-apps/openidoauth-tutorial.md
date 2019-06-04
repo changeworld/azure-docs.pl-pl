@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713e4e7874b2ca650ab669d52f9d3026b5e80899
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 166452b052313397f1ec17adb59cad3c20fab1f9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780987"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497357"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurowanie aplikacji uwierzytelniania OpenID/OAuth z galerii aplikacji usługi Azure AD
 
@@ -28,15 +28,15 @@ ms.locfileid: "57780987"
 
 1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**. 
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png))
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png))
 
 2. Przejdź do pozycji **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Wybierz pozycję **Nowa aplikacja** u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz nazwę aplikacji. Wybierz żądaną aplikację z panelu wyników i zarejestruj ją.
 
@@ -98,7 +98,25 @@ Interfejs API programu Graph umożliwia również dostęp do użytkowników i gr
 
 Poniższe kroki pokazują, jak środowisko wyrażania zgody działa dla deweloperów aplikacji i użytkownika:
 
-1. Załóżmy, że masz internetową aplikację kliencką, który wymaga zażądania konkretnego uprawnienia na potrzeby dostępu do zasobu lub interfejsu API. Witryna Azure Portal jest używana do deklarowania żądań dotyczących uprawnień podczas konfigurowania. Podobnie jak inne ustawienia konfiguracji, staną się one częścią rejestracji aplikacji w usłudze Azure AD:
+1. Załóżmy, że masz internetową aplikację kliencką, który wymaga zażądania konkretnego uprawnienia na potrzeby dostępu do zasobu lub interfejsu API. Witryna Azure Portal jest używana do deklarowania żądań dotyczących uprawnień podczas konfigurowania. Podobnie jak inne ustawienia konfiguracji mogą stać się częścią rejestracji usługi Azure AD aplikacji. Ścieżka żądania uprawnień należy wykonaj następujące czynności:
+
+    a. Kliknij pozycję **rejestracje aplikacji** z lewej strony, menu i Otwórz aplikację, wpisując jej nazwę w polu wyszukiwania.
+
+    ![Interfejs API programu Graph](./media/openidoauth-tutorial/application.png)
+
+    b. Kliknij przycisk **wyświetlanie uprawnień interfejsu API**.
+
+    ![Interfejs API programu Graph](./media/openidoauth-tutorial/api-permission.png)
+
+    c. Kliknij pozycję **Dodaj uprawnienia**.
+
+    ![Interfejs API programu Graph](./media/openidoauth-tutorial/add-permission.png)
+
+    d. Kliknij pozycję **programu Microsoft Graph**.
+
+    ![Interfejs API programu Graph](./media/openidoauth-tutorial/microsoft-graph.png)
+
+    e. Wybierz wymagane opcje z **delegowane uprawnienia** i **uprawnienia aplikacji**.
 
     ![Interfejs API programu Graph](./media/openidoauth-tutorial/graphapi.png)
 
@@ -118,12 +136,12 @@ Zwykły użytkownik może wyrazić zgodę na niektóre uprawnienia. Pozostałe u
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Różnica między zgodą administratora i zgodą użytkownika
 
-Jako administrator możesz także wyrazić zgodę na uprawnienia delegowane aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgoda administratora zapobiega wyświetlaniu okna dialogowego zgody dla każdego użytkownika w dzierżawie. Użytkownicy z rolą administratora mogą wyrazić zgodę w witrynie Azure Portal. Na stronie **Ustawienia** aplikacji wybierz pozycję **Wymagane uprawnienia** > **Udziel uprawnień**.
+Jako administrator możesz także wyrazić zgodę na uprawnienia delegowane aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgoda administratora zapobiega wyświetlaniu okna dialogowego zgody dla każdego użytkownika w dzierżawie. Użytkownicy z rolą administratora mogą wyrazić zgodę w witrynie Azure Portal. Z **ustawienia** strona aplikacji, wybierz pozycję **wymagane uprawnienia** > **udzielić zgody administratora**.
 
 ![Przycisk Udziel uprawnień](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Jawne wyrażenie zgody przez użycie przycisku **Udziel uprawnień** jest teraz wymagane dla aplikacji jednostronicowych, które używają pliku ADAL.js. W przeciwnym przypadku wystąpi błąd aplikacji przy żądaniu tokenu dostępu.
+> Udzielanie wyraźnej zgody przy użyciu **udzielić zgody administratora** przycisk jest obecnie wymagane dla aplikacji jednostronicowych (źródła), które używają ADAL.js. W przeciwnym przypadku wystąpi błąd aplikacji przy żądaniu tokenu dostępu.
 
 Uprawnienia dotyczące tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli aplikacja żąda uprawnienia dotyczącego tylko aplikacji, a użytkownik spróbuje zalogować się do aplikacji, zostanie wyświetlony komunikat o błędzie. Komunikat informuje, że użytkownik nie jest w stanie wyrazić zgody.
 
