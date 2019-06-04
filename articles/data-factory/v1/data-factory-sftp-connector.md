@@ -54,7 +54,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 | type | Właściwość type musi być równa `Sftp`. |Yes |
 | host | Nazwa lub adres IP serwera SFTP. |Yes |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
-| Element authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **Podstawowe**, **SshPublicKey**. <br><br> Zapoznaj się [uwierzytelnianie podstawowe użycie](#using-basic-authentication) i [przy użyciu protokołu SSH uwierzytelnianie klucza publicznego](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady kodu JSON. |Yes |
+| authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **Podstawowe**, **SshPublicKey**. <br><br> Zapoznaj się [uwierzytelnianie podstawowe użycie](#using-basic-authentication) i [przy użyciu protokołu SSH uwierzytelnianie klucza publicznego](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady kodu JSON. |Yes |
 | skipHostKeyValidation | Określ, czy pominąć sprawdzanie poprawności klucza hosta. | Nie. Wartość domyślna: false |
 | hostKeyFingerprint | Określ odcisk palca klucza hosta. | Tak, jeśli `skipHostKeyValidation` jest ustawiona na wartość false.  |
 | gatewayName |Nazwa bramy zarządzania danymi, aby nawiązać połączenie z lokalnym serwerem SFTP. | Tak, jeśli kopiowanie danych z lokalnego serwera SFTP. |
@@ -66,7 +66,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| nazwa użytkownika | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
+| username | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
 | password | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
 #### <a name="example-basic-authentication"></a>Przykład: Uwierzytelnianie podstawowe
@@ -116,7 +116,7 @@ Aby użyć uwierzytelniania klucza publicznego SSH, ustaw `authenticationType` j
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| nazwa użytkownika |Użytkownik, który ma dostęp do serwera SFTP |Yes |
+| username |Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego może dostęp do tej bramy. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. <br><br> Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego serwera SFTP. |
 | privateKeyContent | Ciąg serializacji treści klucza prywatnego. Kreator kopiowania można odczytać pliku klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używane są wszystkie inne narzędzia/zestawu SDK, należy użyć właściwości privateKeyPath. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. |
 | passPhrase | Określ — dostęp próbny frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza, który jest chroniony przez frazę. | Tak, czy plik klucza prywatnego jest chroniony przez frazę. |
@@ -177,7 +177,7 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zesta
 | fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Na przykład folderPath sparametryzowane za każdą godzinę danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ czy używać trybu binarnego transferu. Wartość true na false kodów ASCII i binarny trybu. Wartość domyślna: True. Ta właściwość jest używana tylko w przypadku, gdy skojarzonej połączonej usługi, typ jest typem: FtpServer. |Nie |
 
 > [!NOTE]
