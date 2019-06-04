@@ -269,7 +269,7 @@ Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplik
 
 | Klucz | Wartość |
 | --- | ----- |
-| nazwa użytkownika | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |
@@ -317,7 +317,7 @@ Skonstruuj wywołanie metody POST, tak jak pokazano poniżej. Użyj informacji w
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| zasób | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Zastąp `application-id` identyfikatorem aplikacji z *ROPC_Auth_app* rejestracji.
