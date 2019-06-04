@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 037c323b2ef9e0a2d264e3fd5f7655456c30a1be
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417467"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475268"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: Uczenie modelu rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST za pomocą programu cURL
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
 - Dostęp ograniczony dostęp do aparatu rozpoznawania formularza w wersji zapoznawczej. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza.
 - [cURL](https://curl.haxx.se/windows/) zainstalowane.
-- Zestaw co najmniej pięć metod tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
+- Zestaw co najmniej pięć metod tego samego typu. Użyjesz tych danych do nauczenia modelu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż dane do głównego konta usługi Azure Blob Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Utwórz zasób rozpoznawania formularza
 
@@ -47,7 +47,7 @@ Po zakończeniu wdrażania zasobu rozpoznawania formularza Znajdź i wybierz go 
 
 ## <a name="train-a-form-recognizer-model"></a>Wytrenuj model rozpoznawania formularza
 
-Po pierwsze należy zestaw danych szkoleniowych w rozszerzeniu Azure Storage blob. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Ewentualnie można użyć jednej formy puste. Nazwa pliku formularza musi zawierać słowo "pusty".
+Po pierwsze należy zestaw danych szkoleniowych w rozszerzeniu Azure Storage blob. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Lub za pomocą pojedynczego pusty formularz dwie formy wypełnione. Nazwa pliku pusty formularz musi zawierać słowo "empty".
 
 Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze obiektów blob platformy Azure, należy wywołać **szkolenie** interfejsu API, uruchamiając polecenie programu cURL, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
 

@@ -1,11 +1,11 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą OutSystems | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i OutSystems.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą usługi Azure AD OutSystems | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i OutSystems usługi Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: cf6f99b7-0604-4db2-a72e-0d1a1d643a08
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,197 +13,138 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/102019
+ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5768b8f7c368e57d55656f0e82b199995be150
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0ff4f8f45bee86013b3f3603ba12fc121de9d7ce
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780949"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475687"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-outsystems"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą OutSystems
+# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Samouczek: Integracja OutSystems usługi Azure AD z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować OutSystems w usłudze Azure Active Directory (Azure AD).
-Integrowanie OutSystems z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować OutSystems usługi Azure AD z usługą Azure Active Directory (Azure AD). Po zintegrowaniu OutSystems usługi Azure AD z usługą Azure AD, możesz wykonywać następujące czynności:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do OutSystems.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do OutSystems (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolowanie w usłudze Azure AD, kto ma dostęp do OutSystems usługi Azure AD.
+* Umożliwianie użytkownikom można automatycznie zalogowany do OutSystems usługi Azure AD za pomocą kont usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą OutSystems, potrzebne są następujące elementy:
+Aby rozpocząć pracę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* OutSystems pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+* OutSystems usługi Azure AD logowania jednokrotnego (SSO) włączone subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje usługi AD OutSystems Azure **dodatkiem SP oraz dostawców tożsamości** zainicjowane logowania jednokrotnego i obsługuje **Just In Time** aprowizacji użytkowników.
 
-* Obsługuje OutSystems **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>Dodawanie OutSystems usługi Azure AD za pomocą galerii
 
-* Obsługuje OutSystems **Just In Time** aprowizacji użytkowników
+Aby skonfigurować integrację OutSystems usługi Azure AD w usłudze Azure AD, należy dodać OutSystems usługi Azure AD za pomocą galerii z listą zarządzanych aplikacji SaaS.
 
-## <a name="adding-outsystems-from-the-gallery"></a>Dodawanie OutSystems z galerii
-
-Aby skonfigurować integrację OutSystems w usłudze Azure AD, należy dodać OutSystems z galerii z listą zarządzanych aplikacji SaaS.
-
-**Aby dodać OutSystems z galerii, wykonaj następujące czynności:**
-
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
-
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **OutSystems**, wybierz opcję **OutSystems** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
-
-    ![OutSystems na liście wyników](common/search-new-app.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
+1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz **nową aplikację**.
+1. W **Dodaj z galerii** sekcji, wpisz **OutSystems usługi Azure AD** w polu wyszukiwania.
+1. Wybierz **OutSystems usługi Azure AD** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą OutSystems w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w OutSystems musi zostać ustanowione.
+Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą OutSystems o nazwie usługi Azure AD za pomocą użytkownika testowego **B. Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w OutSystems usługi Azure AD.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą OutSystems, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą OutSystems usługi Azure AD, wykonaj poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie OutSystems logowania jednokrotnego](#configure-outsystems-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego OutSystems](#create-outsystems-test-user)**  — aby odpowiednikiem Britta Simon w OutSystems połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie usługi Azure AD OutSystems](#configure-outsystems-azure-ad)**  do konfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą B. Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Simon B. korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego OutSystems usługi Azure AD](#create-outsystems-azure-ad-test-user)**  mieć odpowiednikiem B. Simon OutSystems usługi Azure AD jest połączony z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-sso)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z OutSystems, wykonaj następujące czynności:
+1. W [witryny Azure portal](https://portal.azure.com/)na **OutSystems usługi Azure AD** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
+1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
+1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **OutSystems** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    ![OutSystems domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `http://<YOURBASEURL>/IdP`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<YOURBASEURL>/IdP/SSO.aspx`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    ![OutSystems domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<YOURBASEURL>`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta OutSystems](mailto:support@outsystems.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **XML metadanych Federacji** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+   ![Link pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Konfigurowanie OutSystems** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. Na **Konfigurowanie usługi Azure AD OutSystems** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
-
-    b. Identyfikator usługi Azure AD
-
-    c. Adres URL wylogowywania
-
-### <a name="configure-outsystems-single-sign-on"></a>Konfigurowanie OutSystems logowanie jednokrotne
+### <a name="configure-outsystems-azure-ad"></a>Konfigurowanie OutSystems usługi Azure AD
 
 Aby skonfigurować logowanie jednokrotne na **OutSystems** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołupomocytechnicznejOutSystems](mailto:support@outsystems.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B. Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. W **użytkownika** właściwości, wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do OutSystems.
+W tej sekcji można udostępnić Simon B. do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do OutSystems usługi Azure AD.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **OutSystems**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **OutSystems usługi Azure AD**.
+1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **OutSystems**.
+1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Link OutSystems na liście aplikacji](common/all-applications.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B. Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-outsystems-test-user"></a>Tworzenie użytkownika testowego OutSystems
+### <a name="create-outsystems-azure-ad-test-user"></a>Tworzenie użytkownika testowego OutSystems usługi Azure AD
 
 W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w OutSystems. OutSystems obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w OutSystems, nowy katalog jest tworzony po uwierzytelnieniu.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-sso"></a>Test SSO
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka OutSystems w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze OutSystems, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka OutSystems usługi Azure AD w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze OutSystems Azure AD, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

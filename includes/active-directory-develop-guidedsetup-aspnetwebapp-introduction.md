@@ -14,26 +14,26 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 86113246fab399e8364653198e9a6971317e3f2c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46247d42837f8ac181d33216d2b93d28e2533c09
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121669"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482331"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
 Ten przewodnik demonstruje sposób implementacji logowania z firmą Microsoft przy użyciu rozwiązania platformy ASP.NET MVC przy użyciu tradycyjnych aplikacji sieci web opartej na przeglądarce przy użyciu protokołu OpenID Connect.
 
-Na końcu tego przewodnika aplikacja będzie akceptować logowania konta osobiste (w tym outlook.com, live.com i inne) oraz pracy i służbowego konta z firmy lub organizacji, która została zintegrowana z usługą Azure Active Directory.
+Na końcu tego przewodnika będzie mógł akceptować logowania konta osobiste, na przykład outlook.com, live.com i innych aplikacji. Te konta również uwzględnia niezbędne prace naprawcze kont służbowych z firmy lub organizacji, która została zintegrowana z usługą Azure Active Directory.
 
-> Ten przewodnik wymaga programu Visual Studio 2017.  Nie masz tego programu?  [Pobierz bezpłatnie program Visual Studio 2017](https://www.visualstudio.com/downloads/)
+> Ten przewodnik wymaga programu Visual Studio 2019 r.  Nie masz tego programu?  [Pobierz bezpłatnie program Visual Studio 2019 r.](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa przykładowej aplikacji wygenerowane przez ten przewodnik
 
-![Przedstawia, jak przykładowa aplikacja wygenerowany przez ta działa samouczki](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.svg)
+![Pokazuje, jak działa przykładowej aplikacji wygenerowanych w ramach tego samouczka](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.svg)
 
-Przykładowa aplikacja utworzona w tym przewodniku opiera się na scenariuszu, gdy użytkownik korzysta przeglądarki, aby dostęp do żądania użytkownika do uwierzytelniania za pomocą przycisku logowania w witrynie internetowej ASP.NET. W tym scenariuszu większość działań związanych z renderowaniem strony internetowej odbywa się po stronie serwera.
+Przykładowej aplikacji, które możesz utworzyć opiera się na scenariuszu, gdzie użyj przeglądarki, aby otworzyć witrynę sieci web platformy ASP.NET, żądający na uwierzytelnianie za pomocą przycisku logowania. W tym scenariuszu większość działań związanych z renderowaniem strony internetowej odbywa się po stronie serwera.
 
 ## <a name="libraries"></a>Biblioteki
 

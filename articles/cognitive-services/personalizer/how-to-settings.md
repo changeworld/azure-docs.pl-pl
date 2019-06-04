@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj ustawienia
+title: Konfigurowanie ustawień
 titleSuffix: Azure Cognitive Services
 description: Konfiguracja usługi zawiera, jak usługa traktuje korzyści, jak często usługa analizuje, jak często model jest retrained i jak dużo danych jest przechowywany.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834293"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478578"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizer
 
@@ -63,7 +63,9 @@ Po zmianie tego ustawienia, pamiętaj wybrać **Zapisz**.
 
 ### <a name="model-update-frequency"></a>Częstotliwość aktualizacji modelu
 
-**Częstotliwość aktualizacji modelu** ustawia się, jak często jest retrained nowy model Personalizer. 
+Najnowszy model, uczony z wywołania interfejsu API za wynagrodzeniem z każdego aktywnego zdarzenia nie jest automatycznie używany przez wywołanie rangi Personalizer. **Częstotliwości aktualizacji modelu** ustawia się, jak często aktualizowane, model wyczerpaniu przez wywołanie rangi. 
+
+Częstotliwości aktualizacji modelu wysokiej są przydatne w sytuacjach, w którym chcesz dokładnie śledzić zmiany w zachowania użytkowników. Przykłady obejmują lokacji z uruchomionymi na wiadomości na żywo, wirusowe zawartości lub ofert produktów na żywo. Częstotliwość 15-minutowy można użyć w następujących scenariuszach. W większości przypadków użycia stosuje się mniejszą częstotliwością aktualizacji. Co minutę częstotliwości aktualizacji są przydatne podczas debugowania kodu aplikacji przy użyciu Personalizer, wykonując pokazów lub interaktywnie testowania machine learning aspektów.
 
 ![Częstotliwość aktualizacji modelu określa, jak często jest retrained nowy model Personalizer.](media/settings/configure-model-update-frequency-settings.png)
 
@@ -77,7 +79,7 @@ Po zmianie tego ustawienia, pamiętaj wybrać **Zapisz**.
 
 ## <a name="export-the-personalizer-model"></a>Eksportowanie modelu Personalizer
 
-W sekcji Zarządzanie zasobami dla **modelu i zasady**, przejrzyj tworzenia modelu i Data ostatniej aktualizacji i wyeksportować bieżącego modelu.
+W sekcji Zarządzanie zasobami dla **modelu i zasady**, przejrzyj tworzenia modelu i Data ostatniej aktualizacji i wyeksportować bieżącego modelu. Aby wyeksportować plik modelu w celu jego archiwizacji, można użyć witryny Azure portal lub interfejsów API Personalizer. 
 
 ![Eksportuj bieżący model Personalizer](media/settings/export-current-personalizer-model.png)
 

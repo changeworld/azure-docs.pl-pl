@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521370"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478623"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Szybki start: Personalizowanie zawartości przy użyciuC# 
 
@@ -40,7 +40,9 @@ Wprowadzenie do Personalizer obejmuje następujące czynności:
 
 ## <a name="change-the-model-update-frequency"></a>Zmiana częstotliwości aktualizacji modelu
 
-W zasobie Personalizer w witrynie Azure portal, należy zmienić **częstotliwości aktualizacji modelu** to 10 sekund. To spowoduje nauczenia usługi szybko, dzięki czemu możesz widzieć, jak zmienia się akcja najważniejsze dla każdej iteracji
+W zasobie Personalizer w witrynie Azure portal, należy zmienić **częstotliwości aktualizacji modelu** to 10 sekund. To spowoduje nauczenia usługi szybko, dzięki czemu możesz widzieć, jak zmienia się akcja najważniejsze dla każdej iteracji.
+
+Gdy osobną pętli Personalizer nie zostanie wzór, ponieważ nie było żadnych nagradzania interfejsu API do szkolenia z. Wywołania rangi zwróci równy prawdopodobieństwa dla każdego elementu. Aplikacja powinna nadal zawsze priorytetyzować zawartości przy użyciu danych wyjściowych RewardActionId.
 
 ![Zmiana częstotliwości aktualizacji modelu](./media/settings/configure-model-update-frequency-settings.png)
 
