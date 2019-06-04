@@ -70,7 +70,7 @@ Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplik
 
 | Klucz | Wartość |
 | --- | ----- |
-| nazwa użytkownika | leadiocl@outlook.com |
+| username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
@@ -113,7 +113,7 @@ Utworzyć wywołanie metody POST, tak jak pokazano tutaj z informacjami w poniż
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| zasób | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* i *zasobów* są wartościami, które zanotowaną wcześniej jako identyfikator aplikacji. *Refresh_token* jest token, który trafiła uwierzytelniającego wymienionych wcześniej.
