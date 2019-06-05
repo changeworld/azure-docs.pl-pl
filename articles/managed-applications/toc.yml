@@ -39,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: Testowanie interfejsu portalu
           href: test-createuidefinition.md
+        - name: Żądanie dostępu just in time
+          href: request-just-in-time-access.md
         - name: Aktualizowanie zarządzanych zasobów
           href: update-managed-resources.md
         - name: Publikowanie definicji aplikacji przy użyciu portalu
@@ -51,6 +53,8 @@
       items:
         - name: Monitorowanie aplikacji zarządzanych
           href: monitor-managed-application-portal.md
+        - name: Zatwierdzanie dostępu just in time
+          href: approve-just-in-time-access.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

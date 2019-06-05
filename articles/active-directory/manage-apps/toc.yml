@@ -74,7 +74,11 @@
         - name: Konfigurowanie szyfrowania tokenu języka SAML (wersja zapoznawcza)
           href: howto-saml-token-encryption.md
     - name: Logowanie jednokrotne
-      href: what-is-single-sign-on.md
+      items:
+        - name: Co to jest logowanie jednokrotne
+          href: what-is-single-sign-on.md
+        - name: Planowanie wdrożenia logowania jednokrotnego
+          href: plan-sso-deployment.md
     - name: Portale użytkowników końcowych
       href: end-user-experiences.md
 - name: Przewodniki z instrukcjami
@@ -93,7 +97,9 @@
           href: application-proxy-configure-for-claims-aware-applications.md
         - name: Rejestrowanie łącznika — instalacja dyskretna
           href: application-proxy-register-connector-powershell.md
-        - name: Konfigurowanie aplikacji klienta natywnego
+        - name: Udzielanie aplikacjom mobilnym i klasycznym dostępu do lokalnych interfejsów API
+          href: application-proxy-secure-api-access.md
+        - name: Konfigurowanie mobilnych i klasycznych aplikacji klienckich
           href: application-proxy-configure-native-client-application.md
         - name: Konfigurowanie niestandardowej strony głównej
           href: application-proxy-configure-custom-home-page.md

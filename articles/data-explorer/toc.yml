@@ -7,34 +7,10 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie klastra i bazy danych
-      items:
-        - name: Portal Azure
-          href: create-cluster-database-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: create-cluster-database-cli.md
-        - name: PowerShell
-          href: create-cluster-database-powershell.md
-        - name: 'C#'
-          href: create-cluster-database-csharp.md
-        - name: Python
-          href: create-cluster-database-python.md
-    - name: Pozyskiwanie danych
-      items:
-        - name: Dane przesyłane strumieniowo — centrum zdarzeń
-          href: ingest-data-event-hub.md
-        - name: Dane przesyłane strumieniowo — Event Grid
-          href: ingest-data-event-grid.md
-        - name: Dane przesyłane strumieniowo — platforma Kafka
-          href: ingest-data-kafka.md
-        - name: Dane dzielone na partie — język Python
-          href: python-ingest-data.md
-        - name: Dane dzielone na partie — zestaw Node SDK
-          href: node-ingest-data.md
-        - name: Dane dzielone na partie — zestaw .NET Standard SDK
-          href: net-standard-ingest-data.md
-        - name: Dane dzielone na partie — narzędzie Logstash
-          href: ingest-data-logstash.md
+    - name: Tworzenie klastra i bazy danych — Azure Portal
+      href: create-cluster-database-portal.md
+    - name: Pozyskiwanie przykładowych danych
+      href: ingest-sample-data.md
     - name: Zapytania o dane
       items:
         - name: Interfejs użytkownika sieci Web
@@ -52,12 +28,38 @@
     - name: Omówienie pozyskiwania danych
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
+    - name: Omówienie wizualizacji danych
+      href: viz-overview.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Rozpoczęcie pracy
+    - name: Tworzenie klastra i bazy danych
       items:
-        - name: Pozyskiwanie przykładowych danych
-          href: ingest-sample-data.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+    - name: Pozyskiwanie danych
+      items:
+        - name: Centrum zdarzeń
+          href: ingest-data-event-hub.md
+        - name: Event Grid
+          href: ingest-data-event-grid.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Python
+          href: python-ingest-data.md
+        - name: Zestaw SDK dla języka Node
+          href: node-ingest-data.md
+        - name: Zestaw .NET Standard SDK
+          href: net-standard-ingest-data.md
+        - name: Logstash
+          href: ingest-data-logstash.md
+        - name: Kopiowanie danych za pomocą usługi Azure Data Factory
+          href: data-factory-load-data.md
     - name: Wdrażanie
       items:
         - name: Zadanie metodyki DevOps
@@ -82,10 +84,14 @@
               href: power-bi-imported-query.md
             - name: Zapytanie SQL
               href: power-bi-sql-query.md
+        - name: Łącznik ODBC
+          href: connect-odbc.md
         - name: Sisense
           href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: Tableau
+          href: tableau.md
     - name: Zarządzanie
       items:
         - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
@@ -104,7 +110,7 @@
       items:
         - name: Monitorowanie kondycji klastra przy użyciu metryk
           href: using-metrics.md
-    - name: Praca z innymi narzędziami
+    - name: Integracja z innymi narzędziami
       items:
         - name: Łącznik Apache Spark
           href: spark-connector.md
@@ -112,10 +118,6 @@
           href: connect-from-databricks.md
         - name: Analizowanie danych w rozwiązaniach Jupyter Notebooks i Kqlmagic
           href: kqlmagic.md
-        - name: Kopiowanie danych za pomocą usługi Azure Data Factory
-          href: data-factory-load-data.md
-        - name: Łączenie z bazą danych ODBC
-          href: connect-odbc.md
     - name: Rozwiązywanie problemów
       items:
         - name: Tworzenie klastra

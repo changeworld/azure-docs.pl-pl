@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentacja zarządzania urządzeniami usługi Azure AD
+title: Dokumentacja zarządzania tożsamościami urządzeń usługi Azure AD
 metadata:
   document_id: null
-  title: 'Dokumentacja zarządzania urządzeniami usługi Azure Active Directory — samouczki, pojęcia, materiały informacyjne | Microsoft Docs'
-  description: 'Dowiedz się, jak skonfigurować i przetestować zarządzanie urządzeniami usługi Azure Active Directory.'
+  title: 'Dokumentacja zarządzania tożsamościami urządzeń usługi Azure Active Directory — samouczki, pojęcia, materiały informacyjne | Microsoft Docs'
+  description: 'Dowiedz się, jak skonfigurować tożsamości urządzeń i zarządzać nimi w usłudze Azure AD.'
   services: active-directory
   ms.subservice: devices
   author: MicrosoftGuyJFlo
@@ -16,7 +16,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: joflore
 abstract:
-  description: 'Za pomocą urządzeń użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić zasoby firmowe, administrator IT chce mieć kontrolę nad tymi urządzeniami. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.<br>Zarządzanie urządzeniami stanowi również podstawę w przypadku dostępu warunkowego opartego na urządzeniach. Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.'
+  description: 'Za pomocą urządzeń w usłudze Azure AD użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić zasoby firmowe, administrator IT chce zarządzać tymi tożsamościami urządzeń w usłudze Azure AD. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.<br>Zarządzanie tożsamościami urządzeń stanowi również podstawę w przypadku dostępu warunkowego opartego na urządzeniach. Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.'
 sections:
   - title: Samouczki krok po kroku
     items:

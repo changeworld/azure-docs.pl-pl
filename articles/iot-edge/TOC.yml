@@ -43,7 +43,7 @@
       items:
         - name: Filtrowanie danych przy użyciu usługi Azure Functions
           href: tutorial-deploy-function.md
-        - name: Wyszukiwanie wartości średnich przy użyciu kolekcji ASA
+        - name: Wyszukiwanie wartości średnich przy użyciu usługi Azure Stream Analytics
           href: tutorial-deploy-stream-analytics.md
         - name: Ocenianie danych przy użyciu usługi Azure Machine Learning
           href: tutorial-deploy-machine-learning.md

@@ -70,6 +70,8 @@
           href: waf-front-door-create-portal.md
         - name: Konfigurowanie zasad zapory aplikacji internetowej — Azure PowerShell
           href: waf-front-door-custom-rules-powershell.md
+        - name: Konfigurowanie ochrony przed botami
+          href: waf-front-door-policy-configure-bot-protection.md
         - name: Konfigurowanie niestandardowego kodu odpowiedzi
           href: waf-front-door-configure-custom-response-code.md
         - name: Konfigurowanie ograniczeń adresów IP

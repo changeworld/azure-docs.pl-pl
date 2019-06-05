@@ -13,6 +13,9 @@
       href: quick-backup-vm-powershell.md
     - name: Tworzenie kopii zapasowej maszyny wirtualnej — interfejs wiersza polecenia
       href: quick-backup-vm-cli.md
+    - name: Tworzenie kopii zapasowej — szablon usługi Resource Manager
+      displayName: ARM
+      href: quick-backup-vm-template.md
 - name: Samouczki
   items:
     - name: Tworzenie kopii zapasowej maszyn wirtualnych platformy Azure w dużej skali
@@ -249,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: Oprogramowanie SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Stan systemu
+          href: backup-azure-system-state-troubleshoot.md
     - name: Monitorowanie obciążeń usługi Azure Backup
       items:
         - name: Korzystanie z witryny Azure Portal

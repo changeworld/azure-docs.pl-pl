@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ce7e7aa471017fba7632018db116f7855a50d32e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: bc052b749724a76df3df3572913f4bcbc146df17
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357556"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497069"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1372,6 +1372,12 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <a href="/azure/blockchain-workbench">
                                                 <img src="media/index/blockchain-workbench.svg" alt="" />
                                                 <p>Blockchain Workbench</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/azure-app-configuration/">
+                                                <img src="media/index/azure-appconf.svg" alt="" />
+                                                <p>Konfiguracja aplikacji</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -5297,6 +5303,25 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 <div class="cardText">
                                                     <h3>Blockchain Workbench</h3>
                                                     <p>Bez wysiłku połącz łańcuch bloków z chmurą</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/azure-app-configuration/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-appconf.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Konfiguracja aplikacji</h3>
+                                                    <p>Szybki i skalowalny magazyn parametrów na potrzeby usługi App Configuration</p>
                                                 </div>
                                             </div>
                                         </div>

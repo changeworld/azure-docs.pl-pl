@@ -34,6 +34,8 @@
       href: tutorials/08-pre-trained-entities.md
     - name: Funkcje rozpoznawania jednostek
       href: tutorials/09-entity-resolvers.md
+    - name: Jednostki wyliczeń
+      href: tutorials/tutorial-enum-set-entity.md
     - name: Alternatywne dane wejściowe
       href: tutorials/10-alternative-inputs.md
     - name: Rejestrowanie dialogów

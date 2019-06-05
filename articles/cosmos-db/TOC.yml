@@ -600,6 +600,8 @@
       items:
         - name: Porady dotyczące wydajności
           items:
+            - name: Pobieranie metryk wykonywania zapytań
+              href: profile-sql-api-query.md
             - name: Dostosowywanie wydajności zapytań
               href: sql-api-query-metrics.md
             - name: Porady dotyczące wydajności dla zestawu.NET SDK

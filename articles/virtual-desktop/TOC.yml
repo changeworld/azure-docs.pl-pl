@@ -64,6 +64,8 @@
       href: troubleshoot-client-connection.md
     - name: Program PowerShell dla usługi Windows Virtual Desktop
       href: troubleshoot-powershell.md
+    - name: Diagnozowanie problemów z wydajnością grafiki
+      href: remotefx-graphics-performance-counters.md
 - name: Dokumentacja
   items:
     - name: PowerShell

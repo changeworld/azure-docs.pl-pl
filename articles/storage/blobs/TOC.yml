@@ -33,7 +33,9 @@
               href: storage-quickstart-blobs-nodejs-v10.md
             - name: Python
               href: storage-quickstart-blobs-python.md
-            - name: JS/HTML
+            - name: Używanie zestawu SDK w wersji 10 w środowisku JS/HTML
+              href: storage-quickstart-blobs-javascript-client-libraries-v10.md
+            - name: Używanie zestawu SDK w wersji 2 w środowisku JS/HTML
               href: storage-quickstart-blobs-javascript-client-libraries.md
             - name: Przejdź
               href: storage-quickstart-blobs-go.md

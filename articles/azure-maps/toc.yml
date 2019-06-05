@@ -164,6 +164,8 @@
       items:
         - name: Kontrolka mapy
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Narzędzia do rysowania
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Moduł usługi
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: Szablon usługi Resource Manager
