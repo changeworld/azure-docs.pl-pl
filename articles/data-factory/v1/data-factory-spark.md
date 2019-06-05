@@ -336,7 +336,7 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON.
 | rootPath | Kontener obiektów blob i folder zawierający plik platformy Spark. Nazwa pliku jest uwzględniana wielkość liter. | Yes |
 | entryFilePath | Względna ścieżka do folderu głównego kodu lub pakietu platformy Spark. | Yes |
 | className | Główna klasa platformy Java lub Spark aplikacji. | Nie |
-| argumenty | Lista argumentów wiersza polecenia do programu platformy Spark. | Nie |
+| arguments | Lista argumentów wiersza polecenia do programu platformy Spark. | Nie |
 | proxyUser | Konto użytkownika do personifikacji, aby wykonać program platformy Spark. | Nie |
 | sparkConfig | Określ wartości dla właściwości konfiguracji aparatu Spark na liście [Spark konfiguracji: Właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie |
 | getDebugInfo | Określa, kiedy Spark pliki dziennika są kopiowane do miejsca używanego przez klaster HDInsight (lub) określony przez sparkJobLinkedService. Dozwolone wartości to None, zawsze lub błąd. Wartość domyślna to Brak. | Nie |
