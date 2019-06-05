@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
-ms.date: 04/30/2019
+ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: 19144ae40e67127b656cedd61199b732b1c05e86
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236611"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688890"
 ---
-# <a name="content-moderator-api-reference"></a>Dokumentacja interfejsu API usługi Content Moderator
+# <a name="content-moderator-api-reference"></a>Odwołanie do interfejsu API Moderator zawartości
 
-Rozpoczynanie pracy z interfejsów API usługi Azure Content Moderator, w następujący sposób:
+Możesz rozpocząć pracę z interfejsami API usługi Azure Content Moderator w następujący sposób:
 
 - W witrynie Azure portal [subskrybować zawartości API Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
 - Zobacz [spróbuj pakietu Content Moderator w sieci web](quick-start.md) zarejestrować się za pomocą [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/).
@@ -28,7 +28,7 @@ Rozpoczynanie pracy z interfejsów API usługi Azure Content Moderator, w nastę
 
 Następujące interfejsy API Content Moderator umożliwia konfigurowanie przepływów pracy po moderowania.
 
-| Opis | Odwołanie |
+| Opis | Tematy pomocy |
 | -------------------- |-------------|
 | **Interfejs API moderowania obrazów**<br /><br />Skanowanie obrazów i wykrywania potencjalnych wyszukania zawartości erotycznej i przeznaczonej dla osób dorosłych za pomocą tagów, oceny zaufania i inne informacje wyodrębnione. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania. <br /><br />| [Dokumentacja interfejsu API moderowania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "dokumentacja interfejsu API moderowania obrazów")   |
 | **Interfejs API moderowania tekstu**<br /><br />Skanowanie zawartości tekstowej. Warunki wulgaryzmów i dane osobiste są zwracane. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania.<br /><br /> | [Dokumentacja interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "dokumentacja interfejsu API moderowania tekstu")   |
@@ -37,9 +37,9 @@ Następujące interfejsy API Content Moderator umożliwia konfigurowanie przepł
 
 ## <a name="review-apis"></a>Przegląd interfejsów API
 
-Przegląd interfejsu API zawiera następujące składniki:
+Przegląd interfejsów API mają następujące składniki:
 
-| Opis | Odwołanie |
+| Opis | Tematy pomocy |
 | -------------------- |-------------|
 | **Zadania**<br /><br /> Zainicjuj Moderowanie skanowania i Przejrzyj przepływy pracy na potrzeby zawartości tekstowych i obrazów. Zadanie Moderowanie skanowanie zawartości przy użyciu interfejsu API moderowania obrazów i interfejs API moderowania tekstu. Moderowanie zadań użyj zdefiniowane i domyślnych przepływów pracy w celu wygenerowania przeglądów. <br /><br />Po ludzi moderator przejrzał automatycznie przypisane tagi i dane prognozowania i przesłane decyzji moderowanie zawartości, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.<br /><br /> | [Zadania, odwołanie](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "zadania, odwołanie")   |
 | **Przeglądy**<br /><br />Narzędzie do przeglądu umożliwiają bezpośrednio utworzyć przeglądy image lub text dla moderatorów ludzi.<br /><br /> Po ludzi moderator przejrzał automatycznie przypisane tagi i dane prognozowania i przesłane decyzji moderowanie zawartości, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.<br /><br /> | [Przejrzyj odwołanie](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Przejrzyj odwołania")   |
