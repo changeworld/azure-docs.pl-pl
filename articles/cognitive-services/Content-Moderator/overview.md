@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551318"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688856"
 ---
 # <a name="what-is-azure-content-moderator"></a>Czym jest usługa Azure Content Moderator?
 
@@ -25,11 +25,14 @@ Interfejs API usługi Azure Content Moderator to usługa poznawcza, która spraw
 
 Poniżej przedstawiono kilka scenariuszy, w których deweloper lub zespół ds. oprogramowania będą używać pakietu Content Moderator:
 
-- Platformy handlowe online moderujące katalogi produktów i inną zawartość wygenerowaną przez użytkowników
-- Firmy produkujące gry moderujące artefakty w grze wygenerowane przez użytkownika i pokoje rozmów
-- Platformy społecznościowe moderujące obrazy, teksty i filmy wideo dodawane przez użytkowników
-- Firmy oferujące multimedia dla przedsiębiorstw, implementujące scentralizowane moderowanie zawartości
-- Dostawcy rozwiązań dla szkół podstawowych i średnich, filtrujący zawartość nieodpowiednią dla uczniów i nauczycieli
+- Rynki online średni wykazami różnych produktów i innych o zawartość wygenerowaną przez użytkowników.
+- Prowadzenie rozgrywki firmach, w których średni wygenerowaną przez użytkowników artefaktów gier i pokoje rozmów.
+- Społecznościowych platform obsługi komunikatów, które Moderowanie obrazów, tekstu i filmów wideo dodawanych przez ich użytkowników.
+- Firmom nośnika, które implementują scentralizowane Moderowanie ich zawartości.
+- Filtrowanie zawartości, która jest nieodpowiedni dla uczniów i nauczycieli dostawców rozwiązań K-12 instytucji edukacyjnych.
+
+> [!NOTE]
+> Za pomocą pakietu Content Moderator nie można wykryć niedozwolony podrzędnych wykorzystywania obrazów. Jednak kwalifikowaną organizacje mogą używać [usługi w chmurze PhotoDNA](https://www.microsoft.com/photodna "usługi firmy Microsoft w chmurze PhotoDNA") do ekranu dla tego typu zawartości.
 
 ## <a name="what-it-includes"></a>Co zawiera
 

@@ -199,7 +199,6 @@
         - name: Za pomocą sprawdzania pisowni Bing w wersji 7
           href: luis-tutorial-bing-spellcheck.md
         - name: Za pomocą usługi rozpoznawania mowy
-          maintainContext: true
           href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
         - name: Za pomocą bota
           items:

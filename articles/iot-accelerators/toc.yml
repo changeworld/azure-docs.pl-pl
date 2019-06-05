@@ -147,16 +147,12 @@
       items:
         - name: Architektura bliźniaczej reprezentacji OPC
           href: overview-opc-twin-architecture.md
-        - name: Architektura połączonej fabryki
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: Przewodniki z instrukcjami
       items:
         - name: Połączona fabryka
           items:
             - name: Korzystanie z pulpitu nawigacyjnego
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Wdrażanie bramy
-              href: iot-accelerators-connected-factory-gateway-deployment.md
             - name: Korzystanie z wydawcy OPC
               href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: Konfigurowanie akceleratora rozwiązań

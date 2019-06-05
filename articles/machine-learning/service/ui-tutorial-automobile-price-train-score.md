@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 52b5291e4b56b5065b9dddd5b8908ade0c1a8387
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66019838"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515628"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Samouczek: Prognozowanie cen samochodów za pomocą interfejsu wizualnego
 
@@ -80,11 +80,11 @@ Jeśli nie możesz ukończyć tego przewodnika Szybki Start, wykonaj następują
 
 1. Tworzenie nowego eksperymentu, wybierając **+ nowy** w dolnej części okna interfejsu wizualnego.
 
-1. Wybierz pozycję **EXPERIMENT** (EKSPERYMENT) >  **Blank Experiment** (Pusty eksperyment).
+1. Wybierz **eksperymentów** >  **Blank Experiment**.
 
 1. Wybierz domyślną nazwę eksperymentu **"badawcze, mające utworzone na...** "w górnej części obszaru roboczego i zmień jego nazwę na bardziej opisową nazwę. Na przykład **Prognozowanie cen samochodów**. Nazwa nie musi być unikatowa.
 
-1. Z lewej strony obszaru roboczego eksperymentu znajduje się paleta zawierająca zestawy danych i moduły. Aby znaleźć modułów, użyj pola wyszukiwania w górnej części palety modułów. Typ **samochodów** w polu wyszukiwania, aby znaleźć zestaw danych z etykietą **danych dotyczących cen samochodów (Raw)**. Przeciągnij ten zestaw danych do obszaru roboczego eksperymentu.
+1. Z lewej strony obszaru roboczego eksperymentu znajduje się paleta zawierająca zestawy danych i moduły. Aby znaleźć modułów, użyj pola wyszukiwania w górnej części palety modułów. Typ **samochodów** w polu wyszukiwania, aby znaleźć zestaw danych z etykietą **danych dotyczących cen samochodów (Raw)** . Przeciągnij ten zestaw danych do obszaru roboczego eksperymentu.
 
     ![Zrzut ekranu jak znaleźć zestaw danych cen samochodów](./media/ui-tutorial-automobile-price-train-score/automobile-dataset.png)
 
@@ -167,7 +167,7 @@ Skoro już uczony model przy użyciu danych do 70 procent, służy do oceniania 
 
 1. Typ **score model** w polu wyszukiwania, aby znaleźć **Score Model** moduł i przeciągnij moduł do obszaru roboczego eksperymentu. Połącz wyjście **Train Model** portem wejściowym modułu po lewej stronie **Score Model**. Połącz wyjście danych testowych (prawy port) z **podziału danych** portem wejściowym modułu po prawej stronie **Score Model**.
 
-1. Typ **oceny** w polu wyszukiwania, aby znaleźć **Evaluate Model** i przeciągnij it modułu do obszaru roboczego eksperymentu. Połącz wyjście **Score Model** wejściem modułu po lewej stronie **Evaluate Model**. Końcowy eksperyment powinien wyglądać następująco:
+1. Typ **oceny** w polu wyszukiwania, aby znaleźć **Evaluate Model** i przeciągnij moduł do obszaru roboczego eksperymentu. Połącz wyjście **Score Model** wejściem modułu po lewej stronie **Evaluate Model**. Końcowy eksperyment powinien wyglądać następująco:
 
     ![Zrzut ekranu przedstawiający końcowego prawidłowej konfiguracji eksperymentu.](./media/ui-tutorial-automobile-price-train-score/final-graph.png)
 
@@ -183,8 +183,8 @@ Skoro już uczony model przy użyciu danych do 70 procent, służy do oceniania 
 
 Dla modelu, wyświetlane są następujące statystyki:
 
-* **Średni bezwzględny błąd (dostosowania)**: Średnia bezwzględnych błędów (błąd występuje różnica między wartością prognozowaną a wartością rzeczywistą).
-* **Średnia głównego kwadrat błąd (RMSE)**: pierwiastek kwadratowy ze średniej kwadratów błędów prognoz dla zestawu danych testowych.
+* **Średni bezwzględny błąd (dostosowania)** : Średnia bezwzględnych błędów (błąd występuje różnica między wartością prognozowaną a wartością rzeczywistą).
+* **Średnia głównego kwadrat błąd (RMSE)** : pierwiastek kwadratowy ze średniej kwadratów błędów prognoz dla zestawu danych testowych.
 * **Względny błąd absolutny**: iloraz średniej błędów absolutnych i bezwzględnej wartości różnicy między wartościami rzeczywistymi a średnią wszystkich wartości rzeczywistych.
 * **Błąd względny średniokwadratowy**: iloraz średniej kwadratów błędów i kwadratu różnicy między wartościami rzeczywistymi a średnią wszystkich wartości rzeczywistych.
 * **Współczynnik determinacji**: Znany także jako wartość R-kwadrat, to jest miarą statystyczną wskazujący, jak dobrze pasuje do modelu danych.

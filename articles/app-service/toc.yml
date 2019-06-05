@@ -19,16 +19,6 @@
       href: app-service-web-get-started-dotnet-framework.md
     - name: Tworzenie aplikacji Node.js
       href: app-service-web-get-started-nodejs.md
-    - name: Tworzenie aplikacji Node.js przy użyciu programu Visual Studio Code
-      items:
-        - name: Wprowadzenie
-          href: tutorial-javascript-vscode-get-started.md
-        - name: Tworzenie aplikacji
-          href: tutorial-javascript-vscode-create-app.md
-        - name: Wdrażanie witryny internetowej
-          href: tutorial-javascript-vscode-deploy-app.md
-        - name: Wyświetlanie dzienników
-          href: tutorial-javascript-vscode-tail-logs.md
     - name: Tworzenie aplikacji PHP
       href: app-service-web-get-started-php.md
     - name: Tworzenie aplikacji Java

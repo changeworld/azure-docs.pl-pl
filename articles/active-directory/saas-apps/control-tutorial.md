@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą kontrolki | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i kontroli.
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i kontroli ciągłość działalności biznesowej.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,18 +16,18 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 569021d79e74bc7a5a2582741109e1094ba90de8
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: aa66ae77ccc271e475d61b286e0f236429e40feb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65862696"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507503"
 ---
-# <a name="tutorial-integrate-control-with-azure-active-directory"></a>Samouczek: Integracja kontroli przy użyciu usługi Azure Active Directory
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Samouczek: Integracja kontroli ciągłości działania za pomocą usługi Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować kontroli przy użyciu usługi Azure Active Directory (Azure AD). Gdy kontrolka jest integracja z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować ciągłości Sterowanie (Sterowanie) z usługą Azure Active Directory (Azure AD). Gdy kontrolka jest integracja z usługą Azure AD, możesz wykonywać następujące czynności:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do formantu.
+* Zarządzanie w usłudze Azure AD, kto ma dostęp do formantu.
 * Umożliwianie użytkownikom można automatycznie zalogowany do formantu za pomocą kont usługi Azure AD.
 * Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
 
@@ -83,7 +83,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta sterowania](mailto:help@continuity.net) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość za pomocą poprawną domenę podrzędną. Poddomena usługi logowania jednokrotnego można skonfigurować na [strategii uwierzytelniania kontroli](https://control.continuity.net/settings/account_profile#tab/security). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
@@ -93,19 +93,13 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     ![Kopiowanie wartości Odcisk palca](common/copy-thumbprint.png)
 
-1. Na **skonfigurować kontrolę** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. Na **skonfigurować kontrolę** sekcji, skopiuj adres URL logowania i zapisz go na komputerze.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
-
-    b. Identyfikator usługi Azure AD
-
-    c. Adres URL wylogowywania
-
 ### <a name="configure-control-sso"></a>Konfiguruj kontrolę logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **kontroli** stronie, musisz wysłać **wartość odcisku palca** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej kontroli](mailto:help@continuity.net). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować logowanie jednokrotne na **kontroli** stronie, musisz zaktualizować ustawienia uwierzytelniania rejestracji jednokrotnej w [strategii uwierzytelniania kontroli](https://control.continuity.net/settings/account_profile#tab/security). Aktualizacja **adres URL logowania jednokrotnego SAML** z **adres URL logowania** i **odcisk palca certyfikatu** z **wartość odcisku palca** w witrynie Azure portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -139,7 +133,7 @@ W tej sekcji można udostępnić Britta Simon do udzielania dostępu do kontrolk
 
 ### <a name="create-control-test-user"></a>Tworzenie kontrolki użytkownika testowego
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w formancie. Praca z [zespołem pomocy technicznej kontroli](mailto:help@continuity.net) Aby dodać użytkowników na platformie kontroli. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w formancie. Praca z [zespołem pomocy technicznej kontroli](mailto:help@continuity.net) Aby dodać użytkowników na platformie kontroli. Użyj Britta Simon usługi Azure AD **nazwa_użytkownika** do wypełnienia jej **identyfikator użytkownika dostawcy tożsamości** w formancie. Użytkowników musi zostać utworzona, a ich **identyfikator użytkownika dostawcy tożsamości** ustawiony w formancie, zanim rozpoczną korzystanie z logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Test SSO
 

@@ -55,11 +55,11 @@
     - name: Samouczki
       items:
         - name: Włączanie dostawcy zasobów
-          href: 'https://docs.azure.cloudsimple.com/enable-cloudsimple-service/'
+          href: enable-cloudsimple-service.md
         - name: Tworzenie usługi CloudSimple
-          href: 'https://docs.azure.cloudsimple.com/create-cloudsimple-service/'
+          href: create-cloudsimple-service.md
         - name: Uzyskiwanie dostępu do portalu CloudSimple
-          href: 'https://docs.azure.cloudsimple.com/access-cloudsimple-portal/'
+          href: access-cloudsimple-portal.md
         - name: Zarządzanie węzłami
           items:
             - name: Kupowanie węzłów

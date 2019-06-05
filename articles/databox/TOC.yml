@@ -123,6 +123,10 @@
           items:
             - name: Co to jest usługa Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Przewodniki Szybki start
+          items:
+            - name: Konfigurowanie — Azure Portal
+              href: data-box-heavy-quickstart-portal.md
         - name: Samouczki
           items:
             - name: 1 — zamawianie

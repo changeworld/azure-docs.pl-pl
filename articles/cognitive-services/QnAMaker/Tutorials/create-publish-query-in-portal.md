@@ -1,7 +1,7 @@
 ---
-title: Tworzenie i publikowanie bazy wiedzy oraz odpowiadanie w usłudze QnA Maker
+title: Tworzenie, publikowanie i odpowiedzi w usługi QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Tworzenie nowej bazy wiedzy za pomocą pytań i odpowiedzi z publicznych opartej na sieci web — często zadawane pytania. Zapisz, uczenie i publikowanie bazy wiedzy knowledge base. Po opublikowaniu bazy wiedzy knowledge base pytanie Wyślij i odbierz odpowiedź przy użyciu polecenia CURL. Utwórz bota i przetestować botów za pomocą tego samego zapytania.
+description: Tworzenie nowej bazy wiedzy za pomocą pytań i odpowiedzi z publicznych opartej na sieci web — często zadawane pytania. Zapisz, uczenie i publikowanie bazy wiedzy knowledge base. Po opublikowaniu bazy wiedzy knowledge base pytanie Wyślij i odbierz odpowiedź przy użyciu polecenia cURL. Utwórz bota i przetestować botów za pomocą tego samego zapytania.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,26 +11,27 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: a13e0cb0e594571344b16d007ef13475b384b73d
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65594153"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692999"
 ---
-# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: Tworzenie bazy wiedzy w portalu narzędzia QnA Maker
+# <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: Tworzenie bazy wiedzy w portalu narzędzia QnA Maker
 
-Tworzenie nowej bazy wiedzy za pomocą pytań i odpowiedzi z publicznych opartej na sieci web — często zadawane pytania. Zapisz, uczenie i publikowanie bazy wiedzy knowledge base. Po opublikowaniu bazy wiedzy knowledge base pytanie Wyślij i odbierz odpowiedź przy użyciu polecenia Curl. Utwórz bota i przetestować botów za pomocą tego samego zapytania. 
+Tworzenie nowej bazy wiedzy za pomocą pytań i odpowiedzi z publicznych opartej na sieci web — często zadawane pytania. Zapisz, uczenie i publikowanie bazy wiedzy knowledge base. Po opublikowaniu bazy wiedzy knowledge base pytanie Wyślij i odbierz odpowiedź przy użyciu polecenia cURL. Utwórz bota i przetestować botów za pomocą tego samego zapytania. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
-> * Tworzenie bazy wiedzy w portalu usługi QnA Maker
-> * Przegląd, zapisywanie i uczenie bazy wiedzy
-> * Publikowanie bazy wiedzy
-> * Używanie programu Curl do wykonywania zapytań w bazie wiedzy
-> * Tworzenie botów
-> 
+> * Tworzenie bazy wiedzy w portalu narzędzia QnA Maker.
+> * Przejrzyj, zapisywania i uczenie bazy wiedzy knowledge base.
+> * Publikowanie bazy wiedzy knowledge base.
+> * Korzystanie z programu cURL, aby wysłać zapytanie w bazie wiedzy knowledge base.
+> * Utwórz bota.
+ 
+
 > [!NOTE]
 > Wersja programowa tego samouczka jest dostępna z kompletnym rozwiązaniem w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
@@ -44,25 +45,25 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
 
 1. Wybierz pozycję **Tworzenie bazy wiedzy** z górnego menu.
 
-    ![Krok 1 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
 
-1. Pomiń pierwszy krok, ponieważ będziesz używać istniejącej usługi QnA Maker. 
+1. Pomiń pierwszy krok, ponieważ będzie używać istniejącej usługi QnA Maker. 
 
-1. W następnym kroku wybierz istniejące ustawienia:  
+1. Wybierz z istniejących ustawień:  
 
     |Ustawienie|Przeznaczenie|
     |--|--|
-    |Identyfikator katalogu platformy Microsoft Azure|Twoje _identyfikator usługi Microsoft Azure Directory_ jest skojarzony z kontem używanym do logowania się do witryny Azure portal i portalem usługi QnA Maker. |
-    |Identyfikator subskrypcji platformy Azure|Twoje konto billingowe, w ramach którego utworzono zasób usługi QnA Maker.|
+    |Identyfikator katalogu platformy Microsoft Azure|Ten identyfikator jest skojarzony z kontem, którego używasz do logowania się do witryny Azure portal i portalem usługi QnA Maker. |
+    |Identyfikator subskrypcji platformy Azure|Konto rozliczeniowe, w którym został utworzony zasób usługi QnA Maker.|
     |Usługa Azure QnA|Istniejący zasób usługi QnA Maker.|
 
-    ![Krok 2 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
-1. W następnym kroku wprowadź nazwę bazy wiedzy, `My Tutorial kb`.
+1. Wprowadź nazwę bazy wiedzy knowledge base, `My Tutorial kb`.
 
-    ![Krok 3 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
 
-1. W następnym kroku wypełnij swoją bazę wiedzy przy użyciu następujących ustawień:  
+1. Wypełniania bazy wiedzy z następującymi ustawieniami:  
 
     |Nazwa ustawienia|Wartość ustawienia|Przeznaczenie|
     |--|--|--|
@@ -70,49 +71,49 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
     |Plik |_nieużywane w tym samouczku_|Służy do przekazywania plików dla pytań i odpowiedzi. |
     |Osobowość dla konwersacji|Przyjazne|Dzięki temu, przyjazne i dorywczy [osobowość](../Concepts/best-practices.md#chit-chat) do typowych pytań i odpowiedzi. Później można edytować te pytania i odpowiedzi. |
 
-    ![Krok 4 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
 1. Wybierz pozycję **Tworzenie bazy wiedzy**, aby zakończyć proces tworzenia.
 
-    ![Krok 5 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
 
-## <a name="review-kb-save-and-train"></a>Przegląd bazy wiedzy, zapisywanie i uczenie
+## <a name="review-save-and-train-the-knowledge-base"></a>Przegląd, zapisywanie i uczenie bazy wiedzy
 
 1. Przejrzyj pytania i odpowiedzi. Pierwsza strona zawiera pytania i odpowiedzi z adresu URL. 
 
-    ![Zapisywanie i szkolenie](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
 
 1. Wybierz ostatnią stronę pytań i odpowiedzi u dołu tabeli. Na tej stronie wyświetlane są pytania i odpowiedzi od osobowości dla konwersacji. 
 
-1. Na pasku narzędzi powyżej listy pytań i odpowiedzi, wybierz **wyświetlić opcje** ikony, następnie wybierz pozycję **Pokaż metadanych**. Spowoduje to wyświetlenie tagów metadanych dla każdego pytania i odpowiedzi. Pytania dla konwersacji mają już ustawione metadane **redakcyjny: konwersacja**. Te metadane są zwracane do aplikacji klienckiej wraz z wybraną odpowiedzią. Aplikacja kliencka, na przykład czatbot, może używać tych filtrowanych metadanych w celu określenia dodatkowego przetwarzania lub interakcji z użytkownikiem.
+1. Na pasku narzędzi powyżej listy pytań i odpowiedzi, wybierz **wyświetlić opcje** ikonę, a następnie wybierz **Pokaż metadanych**. Spowoduje to wyświetlenie tagów metadanych dla każdego pytania i odpowiedzi. Pytania dla konwersacji mają już ustawione metadane **redakcyjny: konwersacja**. Te metadane są zwracane do aplikacji klienckiej, wraz z wybranej odpowiedzi. Aplikacja kliencka, na przykład czatbot, może używać tych filtrowanych metadanych w celu określenia dodatkowego przetwarzania lub interakcji z użytkownikiem.
 
-    ![! [Wyświetl znaczniki — metadane] (.. / media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
+    ![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. Wybierz pozycję **Zapisywanie i szkolenie** na górnym pasku menu.
 
-## <a name="publish-to-get-kb-endpoints"></a>Publikowanie w celu pobrania punktów końcowych bazy wiedzy
+## <a name="publish-to-get-knowledge-base-endpoints"></a>Publikować można pobrać punktów końcowych w bazie wiedzy knowledge base
 
-Wybierz przycisk **Publikuj** z górnego menu. Na stronie publikowania wybierz przycisk **Publikuj** obok przycisku **Anuluj**.
+Wybierz przycisk **Publikuj** z górnego menu. Na stronie publikowania wybierz pozycję **Publikuj**.
 
-![Opublikuj](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
+![Zrzut ekranu usługi QnA Maker w witrynie portal](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
 
-Po opublikowaniu bazy wiedzy wyświetlany jest punkt końcowy
+Po opublikowaniu bazy wiedzy knowledge base, punkt końcowy jest wyświetlany.
 
-![Ustawienia punktu końcowego strony publikowania](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
+![Zrzut ekranu przedstawiający ustawienia punktu końcowego](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-Nie zamykaj tego **Publikuj** stronie użyjesz go do utworzenia robotów w dalszej części tego samouczka. 
+Nie zamykaj tego **Publikuj** strony. Będą potrzebne w dalszej części samouczka, aby utworzyć robota. 
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>Za pomocą programu Curl zapytania dla odpowiedzi na często zadawane pytania
+## <a name="use-curl-to-query-for-an-faq-answer"></a>Korzystanie z programu cURL, aby wykonać zapytanie dla odpowiedzi na często zadawane pytania
 
 1. Wybierz kartę **Curl**. 
 
-    ![Polecenie narzędzia Curl](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
+    ![Zrzut ekranu Curl kartę](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Skopiuj tekst z karty **Curl** i wykonaj go w terminalu lub wierszu polecenia z włączoną obsługą narzędzia Curl. Wartość nagłówka autoryzacji zawiera tekst `Endpoint` ze spacją końcową, po której następuje klucz.
+1. Skopiuj tekst z **Curl** , a następnie uruchom go z włączonym programu cURL, terminal lub wiersza polecenia. Wartość nagłówka autoryzacji zawiera tekst `Endpoint`, za pomocą spacji, a następnie klawisz.
 
 1. Zastąp element `<Your question>` pytaniem `How large can my KB be?`. Jest ono podobne do pytania `How large a knowledge base can I create?`, ale nie identyczne. Usługa QnA Maker stosuje przetwarzanie języka naturalnego w celu określenia, czy dwa pytania są takie same.     
 
-1. Wykonanie polecenia Curl, a otrzymasz odpowiedź JSON, takich jak ocena i odpowiedzi. 
+1. Uruchom polecenie programu cURL i odbierać odpowiedź JSON, takich jak ocena i odpowiedzi. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -136,11 +137,11 @@ Nie zamykaj tego **Publikuj** stronie użyjesz go do utworzenia robotów w dalsz
 
     Usługa QnA Maker jest dość pewna odpowiedzi (ocena 42,81%).  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Za pomocą programu Curl zapytania odpowiedzi czatu Chit
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Korzystanie z programu cURL do wykonywania zapytań w odpowiedzi czatu Chit
 
-1. W terminalu włączone Curl Zastąp `How large can my KB be?` z instrukcją bot zakończenia konwersacji przez użytkownika, takie jak `Thank you`.   
+1. W terminalu włączone cURL Zastąp `How large can my KB be?` z instrukcją bot zakończenia konwersacji przez użytkownika, takie jak `Thank you`.   
 
-1. Wykonanie polecenia Curl, a otrzymasz odpowiedź JSON, takich jak ocena i odpowiedzi. 
+1. Uruchom polecenie programu cURL i odbierać odpowiedź JSON, takich jak ocena i odpowiedzi. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -174,15 +175,15 @@ Nie zamykaj tego **Publikuj** stronie użyjesz go do utworzenia robotów w dalsz
    
     ```
 
-    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). Usługa QnA Maker zwróciła także wszystkie powiązane pytania oraz właściwość metadanych zawierającą informacje o tagu metadanych konwersacji.  
+    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). Usługa QnA Maker jest także zwracany powiązane pytania, jak również właściwość metadanych zawierającego informacje o tagu metadanych Chit rozmowy.  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>Za pomocą programu Curl zapytania odpowiedź domyślną
+## <a name="use-curl-to-query-for-the-default-answer"></a>Korzystanie z programu cURL do zapytania odpowiedź domyślną
 
-Każde pytanie, w przypadku którego usługa QnA Maker nie jest pewna odpowiedzi, otrzymuje odpowiedź domyślną. Ta odpowiedź jest skonfigurowana w witrynie Azure portal. 
+Każde pytanie, usługa QnA Maker nie będący wątpliwości, czy otrzyma odpowiedź domyślną. Ta odpowiedź jest skonfigurowana w witrynie Azure portal. 
 
-1. W terminalu z włączoną obsługą narzędzia Curl zastąp tekst `Thank you` znakiem `x`. 
+1. W terminalu włączone cURL Zastąp `Thank you` z `x`. 
 
-1. Wykonanie polecenia Curl, a otrzymasz odpowiedź JSON, takich jak ocena i odpowiedzi. 
+1. Uruchom polecenie programu cURL i odbierać odpowiedź JSON, takich jak ocena i odpowiedzi. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -200,7 +201,7 @@ Każde pytanie, w przypadku którego usługa QnA Maker nie jest pewna odpowiedzi
     }
     ```
     
-    Usługa QnA Maker zwrócony wynik `0`, co oznacza nie zaufania, ale także zwracany odpowiedzi domyślnej. 
+    Usługa QnA Maker zwrócony wynik `0`, co oznacza, że nie obaw. Zwrócony odpowiedzi domyślnej. 
 
 ## <a name="create-a-knowledge-base-bot"></a>Utwórz bota bazy wiedzy
 
@@ -210,11 +211,11 @@ Aby uzyskać więcej informacji, zobacz [tworzenie czatbot za pomocą tej wiedzy
 
 Po zakończeniu z botami w bazie wiedzy knowledge base, Usuń grupę zasobów, `my-tutorial-rg`, aby usunąć wszystkie zasoby platformy Azure utworzone w procesie botów.
 
-Po wykonaniu tych czynności w bazie wiedzy, w portalu narzędzia QnA Maker wybierz **moich baz wiedzy**, następnie wybierz pozycję bazy wiedzy knowledge base, **kb Moje samouczek**, następnie wybierz ikonę Usuń po prawej stronie w tym wierszu.  
+Po wykonaniu tych czynności w bazie wiedzy, w portalu narzędzia QnA Maker wybierz **moich baz wiedzy**. Następnie wybierz pozycję bazy wiedzy knowledge base, **kb Moje samouczek**i wybierz ikonę Usuń po prawej stronie w tym wierszu.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji, zobacz [źródła danych obsługiwane](../Concepts/data-sources-supported.md) Aby uzyskać więcej informacji na temat formatów plików pomocy technicznej. 
+Zobacz [Obsługiwane źródła danych](../Concepts/data-sources-supported.md), aby uzyskać więcej informacji na temat obsługiwanych formatów plików. 
 
 Dowiedz się więcej o rozmowy [osobowościach](../Concepts/best-practices.md#chit-chat) dla konwersacji.
 
