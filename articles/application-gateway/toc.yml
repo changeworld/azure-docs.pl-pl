@@ -73,6 +73,8 @@
           href: waf-overview.md
         - name: Konfiguracja zapory aplikacji internetowej
           href: application-gateway-waf-configuration.md
+        - name: Reguły niestandardowe
+          href: custom-waf-rules-overview.md
     - name: Monitorowanie kondycji
       items:
         - name: Sonda kondycji
@@ -141,6 +143,12 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: application-gateway-customize-waf-rules-cli.md
+    - name: Reguły niestandardowe zapory aplikacji internetowej
+      items:
+        - name: Przykłady reguł niestandardowych
+          href: create-custom-waf-rules.md
+        - name: Konfigurowanie zapory aplikacji internetowej za pomocą reguł niestandardowych
+          href: configure-waf-custom-rules.md
     - name: Kierowanie według adresu URL
       items:
         - name: Azure PowerShell

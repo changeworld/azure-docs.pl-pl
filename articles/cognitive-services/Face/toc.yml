@@ -63,6 +63,8 @@
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Określanie modelu rozpoznawania twarzy
       href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Określanie modelu wykrywania twarzy
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Korzystanie z funkcji na dużą skalę
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: Analizowanie klipów wideo w czasie rzeczywistym

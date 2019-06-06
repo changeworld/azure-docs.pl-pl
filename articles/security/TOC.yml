@@ -226,6 +226,8 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
+        - name: Usługi platformy Azure według zakresu inspekcji
+          href: ./compliance/azure-services-in-fedramp-auditscope.md
         - name: Analiza danych
           href: ./blueprints/fedramp-analytics-overview.md
         - name: Magazyn danych

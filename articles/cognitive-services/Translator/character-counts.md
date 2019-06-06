@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/04/2019
 ms.author: v-pawal
-ms.openlocfilehash: 157b809c1f1707cdaa561ab09486cf4886fff4e0
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: eccd0c47c1bfc071f43a6329406cd14f704d019e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389224"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514291"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Jak interfejs API tekstu usługi Translator liczby znaków
 
@@ -35,7 +35,7 @@ Co jest liczone są:
 
 W przypadku skryptów oparte na ideogramów, takich jak chiński i japoński Kanji interfejsu API tłumaczenia tekstu będzie nadal liczby punkty kodowe Unicode, jeden znak na ideogram. Wystąpił wyjątek: Surogaty Unicode liczba jako dwa znaki.
 
-Liczba żądań, słowa lub zdania bajtów jest bez znaczenia w liczbie znaków. 
+Liczba żądań, słowa lub zdania bajtów jest bez znaczenia w liczbie znaków.
 
 Wywołania metod wykrywania i BreakSentence nie są wliczane do użycia znaku. Jednak oczekujemy, że wywołania do metod wykrywania i BreakSentence znajdują się w rozsądnej proporcji do korzystania z innych funkcji, które są uwzględniane. Jeśli liczba wywołań wykrywanie lub BreakSentence, wprowadzone przekracza liczbę innych metod zliczono przez firmę Microsoft 100 razy zastrzega sobie prawo do ograniczenia używania metod wykrywania i BreakSentence.
 

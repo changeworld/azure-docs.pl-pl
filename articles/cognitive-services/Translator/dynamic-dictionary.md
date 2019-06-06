@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: v-pawal
-ms.openlocfilehash: 72c23270d6e8cdef55f07d0b702fd1858a7710f8
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: d3a77ee9273e9f587b6157bb6ed2294865b1fca5
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389550"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514255"
 ---
-# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-translator-text-api"></a>Jak używać funkcji dynamiczny słownik interfejs API tekstu usługi Translator
+# <a name="how-to-use-a-dynamic-dictionary"></a>Jak używać dynamiczny słownik
 
 Jeśli znasz już tłumaczeń, które mają zostać zastosowane do wyrazu lub frazy, możesz podać go jako kod znaczników w żądaniu. Dynamiczny słownik jest tylko bezpieczne dla rzeczowniki złożone, np. prawidłowe nazwy i nazwy produktu.
 

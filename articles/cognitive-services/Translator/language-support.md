@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: v-pawal
-ms.openlocfilehash: 1cfe4038ff422ecba68f110707e9535226ccd4a5
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 924324b11f49a50bfb5f00e117b33c0cc572e3bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472109"
+ms.locfileid: "66514982"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -35,7 +35,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 * Domyślnie neuronowej: Neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
 * Neuronowych tylko: Tylko tłumaczenie neuronowe jest dostępna.
 
-**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. 
+**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych.
 
 > [!NOTE]
 > Obecnie podzbioru języków neuronowych są dostępne w niestandardowych w usłudze Translator i stopniowo dodajemy także dodatkowe. [Wyświetl języków jest obecnie dostępna w niestandardowych w usłudze Translator](#customization).

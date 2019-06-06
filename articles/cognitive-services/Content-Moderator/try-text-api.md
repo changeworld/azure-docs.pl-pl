@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.openlocfilehash: edf4a3e9d9e9b51ac44f839cababa9d14bc0d17a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 05/29/2019
+ms.openlocfilehash: 21209548d1cfe7b6eebb1757e817a12c797e78a9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228049"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688840"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderowanie tekstu z poziomu konsoli interfejsu API
 
-Użyj [interfejs API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) w usłudze Azure Content Moderator do skanowania zawartości tekstu. Operacja skanowania zawartości pod kątem wulgarności i porównuje zawartość względem udostępnionej i niestandardowych list elementów zabronionych.
+Użyj [interfejs API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) w usłudze Azure Content Moderator do skanowania zawartości tekstu pod kątem wulgarności i porównać niestandardowy i udostępnianie list.
 
 ## <a name="get-your-api-key"></a>Uzyskaj klucz interfejsu API
 
@@ -49,7 +49,7 @@ Wybierz parametry zapytania, które ekranie tekst. Na przykład użyj wartości 
 >
 > Dla **warunki wulgaryzmów** wykrywania, użyj [kod ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) z obsługiwanych języków, które są wymienione w tym artykule, lub pozostawić je puste.
 
-Dla **Autokorekty**, **dane osobowe**, i **klasyfikowania (wersja zapoznawcza)**, wybierz opcję **true**. Pozostaw **ListId** pole puste.
+Dla **Autokorekty**, **dane osobowe**, i **klasyfikowania (wersja zapoznawcza)** , wybierz opcję **true**. Pozostaw **ListId** pole puste.
 
   ![Tekst — parametry zapytania konsoli ekranu](images/text-api-console-inputs.PNG)
 

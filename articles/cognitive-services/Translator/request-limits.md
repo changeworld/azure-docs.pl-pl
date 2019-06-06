@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796911"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514652"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu w usłudze Translator
 
@@ -38,7 +38,7 @@ Następujące tabeli listy tablicy znaków i element limity dla każdej operacji
 
 ## <a name="character-limits-per-hour"></a>Limity znak na godzinę
 
-Limit znaków na godzinę jest oparty na warstwę subskrypcji tekstu usługi Translator. Limit godzinny powinny być wykorzystywane równomiernie w ciągu godziny. Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka część kwoty w krótkim czasie, prawdopodobnie otrzymasz poza limit przydziału odpowiedzi. 
+Limit znaków na godzinę jest oparty na warstwę subskrypcji tekstu usługi Translator. Limit godzinny powinny być wykorzystywane równomiernie w ciągu godziny. Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka część kwoty w krótkim czasie, prawdopodobnie otrzymasz poza limit przydziału odpowiedzi.
 
 | Warstwa | Maksymalna liczba znaków |
 |------|-----------------|
@@ -69,7 +69,7 @@ Korzystając z [BreakSentence](https://docs.microsoft.com/azure/cognitive-servic
 | Portugalski | pt | 290 |
 | Hiszpański | es | 280 |
 | Włoski | it | 280 |
-| Tajlandzki | . | 258 |
+| Tajlandzki | TH | 258 |
 
 > [!NOTE]
 > To ograniczenie nie ma zastosowania do tłumaczenia.

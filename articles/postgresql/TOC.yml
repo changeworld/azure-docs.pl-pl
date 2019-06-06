@@ -188,6 +188,10 @@
           href: howto-configure-server-parameters-using-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-configure-server-parameters-using-cli.md
+    - name: Automatyczne zwiększanie rozmiaru magazynu
+      items:
+        - name: Portal Azure
+          href: howto-auto-grow-storage-portal.md
     - name: Dzienniki dostępu serwera
       items:
         - name: Azure Portal
@@ -214,7 +218,7 @@
           href: howto-manage-vnet-using-cli.md
     - name: Ponowne uruchamianie serwera
       items:
-        - name: Azure Portal
+        - name: Portal Azure
           href: howto-restart-server-portal.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: howto-restart-server-cli.md

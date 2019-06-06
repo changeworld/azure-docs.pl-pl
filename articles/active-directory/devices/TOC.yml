@@ -1,8 +1,8 @@
-- name: Dokumentacja zarządzania urządzeniami
+- name: Dokumentacja tożsamości urządzeń
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest zarządzanie urządzeniami w usłudze Azure AD?
+    - name: Co to jest tożsamość urządzenia?
       href: overview.md
     - name: Co to jest roaming stanu dla przedsiębiorstw?
       href: enterprise-state-roaming-overview.md
@@ -29,7 +29,7 @@
 - name: Przewodniki z instrukcjami
   expanded: true
   items:
-    - name: Zarządzanie urządzeniami przy użyciu witryny Azure Portal
+    - name: Zarządzanie tożsamością urządzenia
       href: device-management-azure-portal.md
     - name: Zarządzanie nieodświeżonymi urządzeniami
       href: manage-stale-devices.md
