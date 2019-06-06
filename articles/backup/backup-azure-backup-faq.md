@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: a0a2bc58603a81ba23ff3f1feb05f4d2350cfe72
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551377"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688732"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
 
-## <a name="recovery-services-vault"></a>Magazyn usług Recovery Services
+## <a name="recovery-services-vault"></a>Magazyn usługi Recovery Services
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Czy istnieje ograniczenie liczby magazynów, które można utworzyć w poszczególnych subskrypcjach platformy Azure?
 Tak. Możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na obsługiwany region usługi Azure Backup na subskrypcję. Jeśli potrzebna jest większa liczba magazynów, należy utworzyć dodatkową subskrypcję.
@@ -182,8 +182,8 @@ Architektura magazynu usługi Azure Backup oferuje zalety obu rozwiązań dzięk
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Czy istnieje ograniczenie liczby punktów odzyskiwania, które można utworzyć?
 Możesz utworzyć maksymalnie 9999 punktów odzyskiwania na każde pojedyncze chronione wystąpienie. Chronione wystąpienie to komputer, serwer (fizyczny lub wirtualny) lub obciążenia, który tworzy kopie zapasowe na platformie Azure.
 
-- Dowiedz się więcej o [i przechowywania kopii zapasowych](./backup-introduction-to-azure-backup.md#backup-and-retention).
-- Dowiedz się więcej o [chronionego wystąpienia](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
+- Dowiedz się więcej o [i przechowywania kopii zapasowych](./backup-overview.md#backup-and-retention).
+
 
 ### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Ile razy mogę dane odzyskiwania, która jest wykonywana kopia zapasowa na platformie Azure?
 Nie ma ograniczenia liczby operacji odzyskiwania z usługi Azure Backup.

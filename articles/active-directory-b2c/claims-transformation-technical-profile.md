@@ -2,20 +2,20 @@
 title: Definiowanie profilu technicznego przekształcania oświadczeń w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Definiowanie profilu technicznego przekształcania oświadczeń w zasadach niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a2904bec34978a33d25534c9e9b32552191ad88
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fd2f77200741c54d1ed10f0a0eec1da76462b0a0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705324"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511619"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego przekształcania oświadczeń w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64705324"
 
 Profil techniczny przekształcania oświadczeń umożliwia wywoływanie oświadczeń danych wyjściowych przekształceń do manipulowania wartością oświadczenia, weryfikowania oświadczeń lub ustawić wartości domyślne dla zestawu oświadczeń wyjściowych.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 **Nazwa** atrybutu **protokołu** element musi być równa `Proprietary`. **Obsługi** atrybutu musi zawierać w pełni kwalifikowaną nazwę zestawu obsługi protokołu, który jest używany przez usługę Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 

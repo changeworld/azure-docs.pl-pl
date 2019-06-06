@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5044567396d832d3c3b2b46e3c3e90e053834595
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: d31bde1a33d622c2c0b7aa716cbbbfbc8ef42ecf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417898"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514575"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -407,7 +407,7 @@ Mogą wykonywać typowe zadania związane z rozliczeniami takie jak aktualizowan
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 
 ### <a name="desktop-analytics-administrator"></a>Administrator usługi Analytics pulpitu
-Można uzyskać dostęp i zarządzać nimi, Zarządzanie pulpitem narzędzi i usług, w tym w usłudze Intune.
+Można zarządzać analizy pulpitu i dostosowywanie pakietu Office i zasady dotyczące usług. Analiza pulpitu obejmuje to możliwość wyświetlania spisu zasobów, tworzenie planów wdrożenia, wyświetlić stan wdrożenia i kondycji. Dostosowywanie pakietu Office i zasady dotyczące usługi ta rola umożliwia użytkownikom zarządzanie zasadami pakietu Office.
 
   > [!NOTE]
   > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.

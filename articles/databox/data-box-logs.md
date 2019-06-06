@@ -1,43 +1,43 @@
 ---
-title: Śledzenie i rejestrowanie zdarzeń usługi Azure Data Box | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak śledzenie i rejestrowanie zdarzeń na różnych etapach Twoje zamówienie urządzenia Azure Data Box.
+title: Śledzenie i rejestrować urządzenia Azure Data Box, Azure Data Box mocno zdarzeń | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak śledzenie i rejestrowanie zdarzeń na różnych etapach Twoje zamówienie urządzenia Azure Data Box i Azure Data Box duże.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7a6adc72c1dfbe67311ae2ca98d5b07dfab41719
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806509"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495821"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box"></a>Śledzenie i rejestrowanie zdarzeń dla usługi Azure Data Box
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Śledzenie i rejestrowanie zdarzeń dla usługi Azure Data Box i Azure Data Box duże
 
-Zamówienie urządzenia Data Box przechodzi przez następujące kroki: kolejność, konfigurowanie, dane skopiuj wróć, przekazać na platformę Azure i sprawdzić i usuwania danych. Odpowiadający każdego kroku w kolejności, można wykonywać wiele akcji do kontrolowania dostępu do zamówienia, przeprowadź inspekcję zdarzeń, śledzenie kolejności i interpretowanie różnych dzienników, które są generowane.
+Zamówienie urządzenia Data Box lub duże pole danych przechodzi przez następujące kroki: kolejność, konfigurowanie, dane skopiuj wróć, przekazać na platformę Azure i sprawdzić i usuwania danych. Odpowiadający każdego kroku w kolejności, można wykonywać wiele akcji do kontrolowania dostępu do zamówienia, przeprowadź inspekcję zdarzeń, śledzenie kolejności i interpretowanie różnych dzienników, które są generowane.
 
-W poniższej tabeli przedstawiono podsumowanie kroków zamówienie urządzenia Data Box i narzędzia umożliwiające śledzenie i inspekcję kolejności podczas każdego kroku.
+W poniższej tabeli przedstawiono podsumowanie kroki zamówienie urządzenia Data Box lub duże pole danych i narzędzia umożliwiające śledzenie i inspekcję kolejności podczas każdego kroku.
 
 | Etap zlecenia pole danych       | Narzędzie do śledzenia i inspekcji                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Utwórz zamówienie               | [Konfigurowanie kontroli dostępu w kolejności przy użyciu RBAC](#set-up-access-control-on-the-order)                                                    |
 | Kolejność przetwarzania            | [Śledzenie kolejność](#track-the-order) za pośrednictwem <ul><li> Azure Portal </li><li> Wysyłanie operatora witryny sieci Web </li><li>Powiadomienia e-mail</ul> |
 | Konfigurowanie urządzenia              | Urządzenie poświadczeń dostępu zalogowany [dzienników aktywności](#query-activity-logs-during-setup)                                              |
-| Kopiowanie danych do urządzenia        | [Widok *error.xml* pliki](#view-error-log-during-data-copy-to-data-box) do kopiowania danych                                                             |
-| Przygotowywanie do wysłania            | [Przeglądanie plików BOM](#inspect-bom-during-prepare-to-ship) lub pliki manifestu na urządzeniu                                      |
+| Kopiowanie danych do urządzenia        | [Widok *error.xml* pliki](#view-error-log-during-data-copy) do kopiowania danych                                                             |
+| Przygotowanie do wysłania            | [Przeglądanie plików BOM](#inspect-bom-during-prepare-to-ship) lub pliki manifestu na urządzeniu                                      |
 | Przekazywanie danych do platformy Azure       | [Przegląd *copylogs* ](#review-copy-log-during-upload-to-azure) błędów w trakcie dane należy przekazać w centrum danych platformy Azure                         |
 | Usunięcie danych z urządzenia   | [Wyświetlanie łańcucha dowodowego dzienniki](#get-chain-of-custody-logs-after-data-erasure) tym dzienniki inspekcji i kolejność historii                                                   |
 
-W tym artykule opisano szczegółowo w różnych mechanizmów lub narzędzia dostępne do śledzenia i inspekcji zamówienie urządzenia Data Box.
+W tym artykule opisano szczegółowo w różnych mechanizmów lub narzędzia dostępne do śledzenia i inspekcji zamówienie urządzenia Data Box lub duże pole danych. Informacje przedstawione w tym artykule dotyczą zarówno Data Box, jak i duże pole danych. W kolejnych sekcjach wszelkie odwołania do urządzenia Data Box dotyczą również duże pole danych.
 
 ## <a name="set-up-access-control-on-the-order"></a>Konfigurowanie kontroli dostępu w kolejności
 
 Można kontrolować, kto ma dostęp do zamówienia, podczas tworzenia zamówienia. Konfigurowanie ról kontroli dostępu opartej na rolach (RBAC) w różnych zakresach do kontrolowania dostępu do zamówienie urządzenia Data Box. Rola RBAC Określa typ dostępu — odczytu i zapisu, tylko do odczytu, odczytu i zapisu do podzbioru operacji.
 
-Dwie role urządzenia Data Box, które mogą być definiowane są:
+Dostępne są dwie role, które mogą być definiowane dla usługi Azure Data Box:
 
 - **Czytnik pole danych** -mają dostęp tylko do odczytu do zamówień, zgodnie z definicją w zakresie. Mogą jedynie wyświetlać szczegóły wybranego zamówienia. Nie można ich dostęp inne szczegóły związane z kontami magazynu lub edytować szczegóły zamówienia, takie jak adres i tak dalej.
 - **Współautora usługi Data Box** — można tworzyć tylko zamówienie na przesyłanie danych do danego konta magazynu *Jeśli już mają dostęp do zapisu do konta magazynu*. Jeśli nie masz dostępu do konta magazynu, nie można nawet utworzyć zamówienie urządzenia Data Box w celu kopiowania danych do konta. Ta rola nie definiuje wszystkich kont magazynu związane z uprawnieniami, ani nie udziela dostępu do kont magazynu.  
@@ -70,9 +70,9 @@ Możliwe jest śledzenie zamówienia w witrynie Azure portal i za pośrednictwem
 
 - Każdy Zaloguj się do urządzenia Data Box jest rejestrowane czasu rzeczywistego. Jednakże, informacja ta jest dostępna tylko w [dzienniki inspekcji](#audit-logs) po pomyślnym zakończeniu kolejności.
 
-## <a name="view-error-log-during-data-copy-to-data-box"></a>Wyświetl dziennik błędów podczas kopiowania danych do urządzenia Data Box
+## <a name="view-error-log-during-data-copy"></a>Wyświetl dziennik błędów podczas kopiowania danych
 
-Podczas kopiowania danych do urządzenia Data Box pliku błędu jest generowany, jeśli występują problemy z danymi kopiowane.
+Podczas kopiowania danych na urządzenie Data Box lub duże pole danych generowany jest plik błędu w przypadku jakichkolwiek problemów z danych, w której są kopiowane.
 
 ### <a name="errorxml-file"></a>Plik Error.XML
 
@@ -147,7 +147,7 @@ Poniżej przedstawiono przykładowe *error.xml* różnych błędów podczas kopi
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-We wszystkich powyższych przypadkach napraw błędy, zanim przejdziesz do kolejnego kroku. Aby uzyskać więcej informacji na temat błędów odebranych podczas kopiowania danych do urządzenia Data Box za pomocą protokołów SMB lub NFS, przejdź do [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md). Aby uzyskać informacje na temat błędów odebranych podczas kopiowania danych na urządzenie Data Box za pośrednictwem interfejsu REST, przejdź do [problemów z magazynowaniem Rozwiązywanie problemów z pola obiektu Blob danych](data-box-troubleshoot-rest.md).
+We wszystkich powyższych przypadkach napraw błędy, zanim przejdziesz do kolejnego kroku. Aby uzyskać więcej informacji na temat błędów odebranych podczas kopiowania danych do urządzenia Data Box za pomocą protokołów SMB lub NFS, przejdź do [problemy rozwiązywanie problemów z urządzenia Data Box i duże pole danych](data-box-troubleshoot.md). Aby uzyskać informacje na temat błędów odebranych podczas kopiowania danych na urządzenie Data Box za pośrednictwem interfejsu REST, przejdź do [problemów z magazynowaniem Rozwiązywanie problemów z pola obiektu Blob danych](data-box-troubleshoot-rest.md).
 
 ## <a name="inspect-bom-during-prepare-to-ship"></a>Sprawdzanie BOM podczas przygotowania do wydania
 
@@ -157,7 +157,7 @@ Podczas przygotowania do wysłania listy plików, znana jako zestawienie materia
 - Aby sprawdzić względem rzeczywiste rozmiary plików, należy użyć tego pliku.
 - Upewnij się, że *crc64* odpowiada ciągowi różna od zera. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Aby uzyskać więcej informacji na temat błędów odebranych podczas przygotowania do wysłania, przejdź do [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md).
+Aby uzyskać więcej informacji na temat błędów odebranych podczas przygotowania do wysłania, przejdź do [problemy rozwiązywanie problemów z urządzenia Data Box i duże pole danych](data-box-troubleshoot.md).
 
 ### <a name="bom-or-manifest-file"></a>Znak BOM lub manifest pliku
 
@@ -253,7 +253,7 @@ Po dane są usuwane z dysków Data Box, zgodnie z wytycznymi poprawka 1 SP NIST 
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 
-Dzienniki inspekcji zawierają informacji na temat włączania zasilania i udostępnić dostęp do urządzenia Data Box, gdy znajduje się poza centrum danych platformy Azure. Te dzienniki znajdują się w lokalizacji: `storage-account/azuredatabox-chainofcustodylogs`
+Dzienniki inspekcji zawierają informacji na temat włączania zasilania i udostępnić dostęp do urządzenia Data Box lub duże pole danych, gdy znajduje się poza centrum danych platformy Azure. Te dzienniki znajdują się w lokalizacji: `storage-account/azuredatabox-chainofcustodylogs`
 
 Poniżej przedstawiono przykładowy dziennik inspekcji z urządzenia Data Box:
 
@@ -308,9 +308,9 @@ The authentication information fields provide detailed information about this sp
 ```
 
 
-## <a name="download-order-history"></a>Pobierz historię zamówień
+## <a name="download-order-history"></a>Pobieranie historii zamówienia
 
-Historia zamówień jest dostępna w witrynie Azure portal. Kolejność jest pełne i czyszczenie urządzenia (usunięcie danych z dysków) zostało ukończone, należy przejść do **zamówienie urządzenia Data Box > Szczegóły zamówienia**. ** Pobieranie historii zamówień** opcja jest dostępna. Aby uzyskać więcej informacji, zobacz [pobrać historii zamówień](data-box-portal-admin.md#download-order-history).
+Historia zamówień jest dostępna w witrynie Azure portal. Jeśli kolejność jest kompletny i zakończeniu czyszczenia urządzenia (usunięcie danych z dysków), przejdź do Twoje zamówienie urządzenia i przejdź do **szczegóły zamówienia**. ** Pobieranie historii zamówień** opcja jest dostępna. Aby uzyskać więcej informacji, zobacz [pobrać historii zamówień](data-box-portal-admin.md#download-order-history).
 
 Możesz przewijać historii zamówień, zobacz:
 
@@ -324,7 +324,7 @@ Poniżej przedstawiono przykładowy dziennik historii kolejności z witryny Azur
 -------------------------------
 Microsoft Data Box Order Report
 -------------------------------
-Name                                               : gus-pinto                              
+Name                                               : gus-poland                              
 StartTime(UTC)                              : 9/19/2018 8:49:23 AM +00:00                       
 DeviceType                                     : DataBox                                           
 -------------------
@@ -362,11 +362,11 @@ Time(UTC)                 | Activity                       | Status          | D
 Data Box Log Links
 ------------------
 Account Name         : gusacct
-Copy Logs Path       : databoxcopylog/gus-pinto_<Device-serial-no>_CopyLog_<GUID>.xml
+Copy Logs Path       : databoxcopylog/gus-poland_<Device-serial-no>_CopyLog_<GUID>.xml
 Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [Rozwiązywanie problemów na Twoje urządzenie Data Box](data-box-troubleshoot.md).
+- Dowiedz się, jak [Rozwiązywanie problemów na urządzenie Data Box i duże pole danych](data-box-troubleshoot.md).

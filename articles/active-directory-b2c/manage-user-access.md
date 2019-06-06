@@ -2,20 +2,20 @@
 title: Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak identyfikować osoby nieletnie, zbieraj daty urodzenia i kraju/regionu danych i uzyskać Akceptacja warunków użytkowania w aplikacji za pomocą usługi Azure AD B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f4f2b93316c87a5e8ba572ca2b584dbd13f6536c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 6aead01ec0084eb75ea385a67f7c85ea185b017a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956954"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510568"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Oto przykładowy przepływ użytkownika w celu zbierania zgody rodziców:
 
 2. Aplikacja przetwarza JSON token i zawiera ekran z pomocnicze, informacją o tym, że wymagana jest zgoda rodzica i żądanie wyrażenia zgody przez nadrzędne w trybie online. 
 
-3. Usługa Azure AD B2C pokazuje podróż Zaloguj się, że użytkownik zalogować się w zwykły sposób i wystawia token do aplikacji, która jest ustawiona w celu uwzględnienia **legalAgeGroupClassification = "minorWithParentalConsent"**. Aplikacja umożliwia zbieranie informacji o adres e-mail elementu nadrzędnego i sprawdza, czy element nadrzędny jest osobą dorosłą. Aby to zrobić, używa zaufanego źródła, takich jak national identyfikator pakietu office, weryfikacja licencji lub dowód karty kredytowej. Jeśli weryfikacja zakończy się pomyślnie, aplikacja wyświetli pomocnicza do logowania za pomocą przepływu użytkownika usługi Azure AD B2C. Jeśli zgoda zostanie odrzucona (na przykład, jeśli **legalAgeGroupClassification = "minorWithoutParentalConsent"**), usługi Azure AD B2C zwraca token JSON (nie logowania) do aplikacji w celu ponownego uruchomienia procesu zgody. Użytkownik może opcjonalnie można dostosowywać przepływ użytkownika, tak aby drobnych lub osobę dorosłą mogli odzyskać dostęp do konta pomocnicze, wysyłając kodu rejestracyjnego do jego adres e-mail lub adres e-mail osoby dorosłej w rekordzie.
+3. Usługa Azure AD B2C pokazuje podróż Zaloguj się, że użytkownik zalogować się w zwykły sposób i wystawia token do aplikacji, która jest ustawiona w celu uwzględnienia **legalAgeGroupClassification = "minorWithParentalConsent"** . Aplikacja umożliwia zbieranie informacji o adres e-mail elementu nadrzędnego i sprawdza, czy element nadrzędny jest osobą dorosłą. Aby to zrobić, używa zaufanego źródła, takich jak national identyfikator pakietu office, weryfikacja licencji lub dowód karty kredytowej. Jeśli weryfikacja zakończy się pomyślnie, aplikacja wyświetli pomocnicza do logowania za pomocą przepływu użytkownika usługi Azure AD B2C. Jeśli zgoda zostanie odrzucona (na przykład, jeśli **legalAgeGroupClassification = "minorWithoutParentalConsent"** ), usługi Azure AD B2C zwraca token JSON (nie logowania) do aplikacji w celu ponownego uruchomienia procesu zgody. Użytkownik może opcjonalnie można dostosowywać przepływ użytkownika, tak aby drobnych lub osobę dorosłą mogli odzyskać dostęp do konta pomocnicze, wysyłając kodu rejestracyjnego do jego adres e-mail lub adres e-mail osoby dorosłej w rekordzie.
 
 4. Aplikacja udostępnia opcję do pomocnicze, aby można było odwołać zgody.
 

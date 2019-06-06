@@ -2,20 +2,20 @@
 title: Samouczek — Dodawanie dostawcy tożsamości do aplikacji — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak dodać dostawców tożsamości do aplikacji w usłudze Azure Active Directory B2C w witrynie Azure portal.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c1bd78442f6a7218dde3710236766117816c42fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710130"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512194"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawcy tożsamości do aplikacji w usłudze Azure Active Directory B2C
 
@@ -95,7 +95,7 @@ Po utworzeniu aplikacji dostawcy tożsamości, który chcesz dodać, możesz dod
 2. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 3. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
 4. Wprowadź **nazwa**. Na przykład, wprowadź *firmy Contoso w usłudze Azure AD*.
-5. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Open ID Connect (wersja zapoznawcza)**, a następnie kliknij przycisk **OK**.
+5. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Open ID Connect (wersja zapoznawcza)** , a następnie kliknij przycisk **OK**.
 6. Kliknij przycisk **skonfiguruj tego dostawcę tożsamości**
 7. Aby uzyskać **adres url metadanych**, wprowadź adres URL następujących, zastępując `your-AD-tenant-domain` z nazwą domeny dzierżawy usługi Azure AD.
 
@@ -130,7 +130,7 @@ Po utworzeniu aplikacji dostawcy tożsamości, który chcesz dodać, możesz dod
 
 W tym samouczku ukończono jako część wymagań wstępnych utworzono przepływ użytkownika dla rejestracji i logowania o nazwie *B2C_1_signupsignin1*. W tej sekcji dodasz dostawców tożsamości do *B2C_1_signupsignin1* przepływu użytkownika.
 
-1. Wybierz **przepływy użytkownika (zasady)**, a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
+1. Wybierz **przepływy użytkownika (zasady)** , a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
 2. Wybierz **dostawców tożsamości**, wybierz opcję **Facebook** i **firmy Contoso w usłudze Azure AD** dostawców tożsamości, które zostały dodane.
 3. Wybierz pozycję **Zapisz**.
 

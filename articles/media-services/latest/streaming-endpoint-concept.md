@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149231"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515740"
 ---
-# <a name="streaming-endpoints-origin"></a>Punkty końcowe przesyłania strumieniowego (źródła)
+# <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego 
 
 W usłudze Microsoft Azure Media Services [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) reprezentuje dynamiczny (just-in-time) pakowania i pochodzenia usługę która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta, przy użyciu jednej z wspólnych protokołów przesyłania strumieniowego multimediów (HLS lub DASH). Ponadto **punkt końcowy przesyłania strumieniowego** zapewnia szyfrowania dynamicznego (just-in-time) do branży protokołów DRM.
 
@@ -41,7 +41,7 @@ Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standa
 
 Tabela zawiera opis typów:  
 
-|Type|Jednostki skalowania|Opis|
+|Typ|Jednostki skalowania|Opis|
 |--------|--------|--------|  
 |**Standardowa**|0|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** wpisz, można zmienić typu Premium, dostosowując `scaleUnits`.|
 |**Premium**|>0|**Premium** punkty końcowe przesyłania strumieniowego są odpowiednie dla zaawansowanych obciążeń i zapewniają dedykowaną i skalowalną przepustowość. Przenieś do **Premium** typu, dostosowując `scaleUnits` (jednostek przesyłania strumieniowego). `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |
@@ -55,14 +55,14 @@ Aby uzyskać informacje o umowie SLA, zobacz [cennik i umowy SLA](https://azure.
 
 Cecha|Standardowa (Standard)|Premium
 ---|---|---
-Pierwsze 15 dni wolne <sup>1</sup>| Yes |Nie
+Pierwsze 15 dni wolne <sup>1</sup>| Tak |Nie
 Przepływność |Do 600 MB/s i zapewnia znacznie większą przepływność skuteczne stosowania sieci CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Zapewnia znacznie większą przepływność skuteczne, stosowania sieci CDN.
 CDN|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
-Szyfrowanie dynamiczne|Yes|Yes
-Dynamiczne tworzenie pakietów|Yes|Yes
+Szyfrowanie dynamiczne|Tak|Tak
+Dynamiczne tworzenie pakietów|Tak|Yes
 Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe SUs
-Host filtrowanie/G20/Custom IP <sup>2</sup>|Yes|Yes
+Host filtrowanie/G20/Custom IP <sup>2</sup>|Tak|Yes
 Pobierania progresywnego|Yes|Yes
 Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional.
 

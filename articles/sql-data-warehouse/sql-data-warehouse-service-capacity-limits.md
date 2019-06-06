@@ -2,20 +2,20 @@
 title: Limity pojemności — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 11/14/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f3c2ecbb4c83132b674b4c296adc1339027f5215
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62213ca1910ff26287bcd398d89fe7f8caf3cfac
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797782"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514681"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
@@ -33,8 +33,8 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 ## <a name="database-objects"></a>Obiekty bazy danych
 | Category | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Database (Baza danych) |Maks. rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca na bazę danych tempdb lub dziennika, a w związku z tym ta przestrzeń jest dedykowany do tablic stałych.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia bazy danych do około 1 PB, w przypadku wszystkich tabel klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn tabel magazynu kolumn |
-| Tabela |Maks. rozmiar |60 TB skompresowane na dysku |
+| Database (Baza danych) |Maksymalny rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca na bazę danych tempdb lub dziennika, a w związku z tym ta przestrzeń jest dedykowany do tablic stałych.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia bazy danych do około 1 PB, w przypadku wszystkich tabel klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn tabel magazynu kolumn |
+| Tabela |Maksymalny rozmiar |60 TB skompresowane na dysku |
 | Tabela |Tabele dla bazy danych | 100,000 |
 | Tabela |Kolumn w tabeli |1024 kolumn |
 | Tabela |Liczba bajtów na kolumnę |Zależne od kolumny [— typ danych](sql-data-warehouse-tables-data-types.md). Limit wynosi 8000 dla typów danych char, 4000 nvarchar, czy za 2 GB dla typów danych MAX. |
@@ -45,9 +45,9 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | Indeks |Indeksy klastrowane na tabelę. |1<br><br/>Ma zastosowanie do tabel zarówno magazynu wierszy, jak i magazynu kolumn. |
 | Indeks |Rozmiar klucza indeksu. |900 bajtów.<br/><br/>Dotyczy tylko indeksów magazynu wierszy.<br/><br/>Indeksy w kolumnach varchar o maksymalnym rozmiarze więcej niż 900 bajtów mogą być tworzone, jeśli podczas tworzenia indeksu, istniejące dane w kolumnach nie przekraczać 900 bajtów. Jednak później WSTAWIĆ lub akcji aktualizacji dla kolumn, które powodują całkowity rozmiar przekracza 900 bajtów zakończy się niepowodzeniem. |
 | Indeks |Kolumny klucza indeksu. |16<br/><br/>Dotyczy tylko indeksów magazynu wierszy. Klastrowane indeksy magazynu kolumn, Uwzględnij wszystkie kolumny. |
-| Statystyka |Rozmiar wartości w kolumnach połączone. |900 bajtów. |
-| Statystyka |Kolumny dla każdego obiektu statystyk. |32 |
-| Statystyka |Statystyka utworzone dla kolumn w tabeli. |30,000 |
+| Statystyki |Rozmiar wartości w kolumnach połączone. |900 bajtów. |
+| Statystyki |Kolumny dla każdego obiektu statystyk. |32 |
+| Statystyki |Statystyka utworzone dla kolumn w tabeli. |30,000 |
 | Procedury składowane |Maksymalnej liczby poziomów zagnieżdżenia. |8 |
 | Widok |Kolumn w widoku |1,024 |
 
@@ -63,7 +63,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | Zapytanie |Zapytania jednoczesne w widokach systemu. |100 |
 | Zapytanie |Umieszczonych w kolejce zapytań na widoki systemu |1000 |
 | Zapytanie |Maksymalna parametrów |2098 |
-| Wsadowe |Maksymalny rozmiar |65,536*4096 |
+| Batch |Maksymalny rozmiar |65,536*4096 |
 | Wybierz wyniki |Kolumn w wierszach |4096<br/><br/>Nigdy nie może mieć więcej niż 4096 kolumn w wierszach, w wynikach wybierz. Nie ma żadnej gwarancji, że zawsze masz 4096. Jeśli w planie zapytania wymaga tabeli tymczasowej, 1024 kolumn dla tabeli maksymalna mogą być stosowane. |
 | SELECT |Zagnieżdżonych podzapytań |32<br/><br/>Nigdy nie mogą istnieć więcej niż 32 zagnieżdżonych podzapytań w instrukcji SELECT. Nie ma żadnej gwarancji, że zawsze może mieć 32. Na przykład sprzężenia można wprowadzać podzapytania do planu zapytania. Liczbę podzapytania może być ona ograniczona przez ilość dostępnej pamięci. |
 | SELECT |Kolumn na sprzężenia |1024 kolumn<br/><br/>Program może nigdy nie więcej niż 1024 kolumn sprzężenia. Nie ma żadnej gwarancji, że zawsze masz 1024. Jeśli plan sprzężenia wymaga tabelę tymczasową przy użyciu więcej kolumn niż wynik sprzężenia, limitu 1024 stosuje się do tabeli tymczasowej. |

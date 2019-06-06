@@ -2,20 +2,20 @@
 title: Konfigurowanie zachowania sesji — w przypadku usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Skonfiguruj zachowanie sesji w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7bfa34f44ca8ba53b89e4218303a7cd77cd0add9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3167a63be46e0d777fbec0c6a3301684fb7636bd
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700981"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512562"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Skonfiguruj zachowanie sesji w usłudze Azure Active Directory B2C
 
@@ -51,10 +51,10 @@ Następujące przypadki użycia są włączone, przy użyciu tych właściwości
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera dzierżawy usługi Azure AD B2C.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz **przepływy użytkownika (zasady)**.
+4. Wybierz **przepływy użytkownika (zasady)** .
 5. Otwórz przepływ użytkownika, która została wcześniej utworzona. 
 6. Wybierz **właściwości**.
-7. Konfigurowanie **aplikacji sieci Web okres istnienia sesji (w minutach)**, **limit czasu sesji aplikacji sieci Web**, **konfiguracji rejestracji jednokrotnej**, i **wymaga tokenu Identyfikatora w żądaniach wylogowania**  zgodnie z potrzebami.
+7. Konfigurowanie **aplikacji sieci Web okres istnienia sesji (w minutach)** , **limit czasu sesji aplikacji sieci Web**, **konfiguracji rejestracji jednokrotnej**, i **wymaga tokenu Identyfikatora w żądaniach wylogowania**  zgodnie z potrzebami.
 
     ![Konfigurowanie zachowania sesji](./media/session-behavior/session-behavior.png)
     

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61231988"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688901"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -30,7 +30,7 @@ Wymagania wstępne w tym artykule: subskrypcji platformy Azure, magazyn usługi 
 
 Monitorowanie alertów lub przeglądać dane zarządzania dotyczące magazynu usługi Recovery Services, należy otworzyć Magazyn.
 
-1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
 
 2. W portalu, kliknij przycisk **wszystkich usług**.
 
@@ -100,9 +100,9 @@ Domyślnie wszystkie szczegółowe informacje, z wyjątkiem **godzina ostatniego
 * Alerty
 * Element kopii zapasowej
 * Chroniony serwer
-* Ważność
+* Severity
 * Czas trwania
-* Czas utworzenia
+* Godzina utworzenia
 * Stan
 * Godzina ostatniego wystąpienia
 
@@ -156,7 +156,7 @@ Wybierz ważność alertu (krytyczny lub ostrzegawczy) używany do generowania w
 
 ## <a name="manage-backup-items"></a>Zarządzanie elementy kopii zapasowej
 
-Magazyn usługi Recovery Services zawiera wiele typów danych kopii zapasowej. Aby uzyskać pełną listę typów kopii zapasowych, zobacz [której aplikacje i obciążenia, można utworzyć kopię](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use). Aby zarządzać różnych serwerów, komputerów, baz danych i obciążeń, kliknij **elementy kopii zapasowej** Kafelek, aby wyświetlić zawartość magazynu.
+Magazyn usługi Recovery Services zawiera wiele typów danych kopii zapasowej. [Dowiedz się więcej](backup-overview.md#what-can-i-back-up) o czym można utworzyć kopię. Aby zarządzać różnych serwerów, komputerów, baz danych i obciążeń, kliknij **elementy kopii zapasowej** Kafelek, aby wyświetlić zawartość magazynu.
 
 ![Kafelek elementów kopii zapasowych](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -226,18 +226,18 @@ Możesz wyświetlić jedną operację lub wszystkie operacje. Nie można wybrać
 * Backup
 * Przywracanie
 * Wyłącz kopię zapasową
-* Usuń dane kopii zapasowej
+* Usuwanie danych kopii zapasowej
 
 #### <a name="status"></a>Stan
 
 Można wyświetlić stan wszystkich lub jednego. Nie można wybrać dwie lub trzy stany. Dostępne są następujące stany:
 
 * Wszystkie stany
-* Zakończone
+* Ukończone
 * W toku
 * Niepowodzenie
 * Anulowane
-* Zakończone z ostrzeżeniami
+* Została zakończona z ostrzeżeniami
 
 #### <a name="start-time"></a>Godzina rozpoczęcia
 

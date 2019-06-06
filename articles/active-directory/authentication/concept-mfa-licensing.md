@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 06/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765b9aff898cbea763d66a20db91b3390cc48bb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a1ee55dd3aebca869da47bbc994f546aa4fe528
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415688"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496771"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak uzyskać usługę Azure Multi-Factor Authentication
 
@@ -32,9 +32,9 @@ W poniższej tabeli opisano różnice między trzy wersje usługi Multi-Factor a
 
 | Wersja | Opis |
 | --- | --- |
-| Usługa Multi-Factor Authentication dla usługi Office 365 <br> Microsoft 365 Business |Ta wersja działa wyłącznie z aplikacjami usługi Office 365 i jest zarządzana z portalu usługi Office 365 lub Microsoft 365. Administratorzy mogą [zabezpieczanie zasobów usługi Office 365 za pomocą weryfikacji dwuetapowej](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ta wersja jest częścią subskrypcji usługi Office 365 lub Microsoft 365 Business. |
-| Uwierzytelnianie wieloskładnikowe dla administratorów usługi Azure AD | Użytkownicy z przypisaną rolą administratora globalnego usługi Azure AD w dzierżawach usługi Azure AD można włączyć weryfikację dwuetapową, bez ponoszenia dodatkowych kosztów.|
-| Azure Multi-Factor Authentication | Często określane jako "pełnej" wersji, uwierzytelnianie wieloskładnikowe systemu Azure oferuje wizje możliwości. Zapewnia dodatkowe opcje konfiguracji za pomocą [witryny Azure portal](https://portal.azure.com), zaawansowane raportowanie i obsługuje szeroką gamę lokalnych i aplikacji w chmurze. Usługa Azure Multi-Factor Authentication to funkcja [usługi Azure Active Directory — wersja Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features)i którą można wdrożyć w chmurze lub lokalnie. |
+| Usługa Multi-Factor Authentication dla usługi Office 365 <br> Microsoft 365 Business | Ta wersja jest zarządzana z portalu usługi Office 365 lub Microsoft 365. Administratorzy mogą [zabezpieczanie zasobów usługi Office 365 za pomocą weryfikacji dwuetapowej](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Ta wersja jest częścią subskrypcji usługi Office 365 lub Microsoft 365 Business. |
+| Uwierzytelnianie wieloskładnikowe dla administratorów usługi Azure AD | Użytkownicy z przypisaną rolą administratora globalnego usługi Azure AD w dzierżawach usługi Azure AD można włączyć weryfikację dwuetapową, bez ponoszenia dodatkowych kosztów. |
+| Azure Multi-Factor Authentication | Często określane jako "pełnej" wersji, uwierzytelnianie wieloskładnikowe systemu Azure oferuje wizje możliwości. Zapewnia dodatkowe opcje konfiguracji za pomocą [witryny Azure portal](https://portal.azure.com), zaawansowane raportowanie i obsługuje szeroką gamę lokalnych i aplikacji w chmurze. Usługa Azure Multi-Factor Authentication to funkcja [usługi Azure Active Directory — wersja Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features). |
 
 > [!NOTE]
 > Nowi klienci nie mogą kupować usługi Azure Multi-Factor Authentication jako autonomiczny oferty od 1 września 2018 r. Uwierzytelnianie wieloskładnikowe, będą w dalszym ciągu być dostępna jako funkcja w licencji usługi Azure AD Premium.
@@ -55,7 +55,7 @@ Poniższa tabela zawiera listę funkcji, które są dostępne w różnych wersja
 | Wiadomość SMS jako drugi składnik |● |● |● |
 | Hasła aplikacji dla klientów, którzy nie obsługują usługi MFA |● |● |● |
 | Kontrola administracyjna nad metod weryfikacji |● |● |● |
-| Ochrona konta bez uprawnień administratora za pomocą usługi MFA |● (tylko dla aplikacji usługi Office 365) | |● |
+| Ochrona konta bez uprawnień administratora za pomocą usługi MFA |● | |● |
 | Tryb numeru PIN | | |● |
 | Alert dotyczący wykrycia oszustwa | | |● |
 | Raporty usługi MFA | | |● |
@@ -75,17 +75,13 @@ Użytkownicy z przypisaną rolą administratora globalnego w dzierżawach usług
 
 ## <a name="how-to-purchase-azure-multi-factor-authentication"></a>Jak kupić usługę Azure Multi-Factor Authentication
 
-Jeśli chcesz pełny zestaw funkcji oferowanych przez usługę Azure Multi-Factor Authentication, dostępnych jest kilka opcji:
+Zakup licencji, które obejmują usługi Azure Multi-Factor Authentication, takich jak Azure Active Directory — wersja Premium lub pakietu licencji, która obejmuje usługi Azure AD Premium lub dostępu warunkowego, a następnie przypisać je do użytkowników w usłudze Azure Active Directory.
 
-### <a name="option-1---licenses-that-include-mfa"></a>Opcja 1 — licencji, które obejmują uwierzytelnianie wieloskładnikowe
+### <a name="consumption-based-licensing"></a>Licencjonowanie na podstawie użycia
 
-Zakup licencji, które obejmują usługi Azure Multi-Factor Authentication, takich jak Azure Active Directory — wersja Premium lub pakietu licencji, która obejmuje usługi Azure AD Premium i przypisać je do użytkowników w usłudze Azure Active Directory.
+Licencjonowanie na podstawie użycia nie jest już dostępna dla nowych klientów od 1 września 2018 r.
 
-### <a name="option-2---mfa-consumption-based-model"></a>Opcja 2 — model na podstawie użycia usługi MFA
-
-Ta opcja nie jest już dostępne dla nowych klientów od 1 września 2018 r.
-
-Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
+Od 1 września 2018 r. nowe dostawców uwierzytelniania nie jest już może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
 
 Korzystając z dostawcę usługi Azure Multi-Factor Authentication, istnieją dwa modele użycia, dostępności, które są rozliczane w ramach subskrypcji platformy Azure:
 

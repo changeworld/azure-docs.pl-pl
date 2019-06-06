@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 3/26/2019
+ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238219"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66689115"
 ---
 | Resource | Domyślne/maksymalny limit | Uwaga |
 | --- | --- | --- |
@@ -37,5 +37,6 @@ ms.locfileid: "66238219"
 | Maksymalny rozmiar przekazywanych plików, standardowy |2 GB | |
 | Maksymalny przekazywania rozmiar zapory aplikacji sieci Web |Średnie bramy zapory aplikacji sieci Web, 100 MB<br>Duże bramy zapory aplikacji sieci Web, 500 MB| |
 | Limit rozmiaru treści zapory aplikacji sieci Web, bez plików|128 KB||
+|Maksymalna niestandardowych reguł zapory aplikacji sieci Web|100||
 
 <sup>1</sup> w przypadku jednostek SKU dla komputerów z obsługą zapory aplikacji sieci Web, zaleca się ograniczenie liczby zasobów, na 40 pod kątem optymalnej wydajności.

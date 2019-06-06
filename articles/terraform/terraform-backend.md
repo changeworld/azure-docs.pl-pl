@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 89108f02957990ad1c7eb736f39de89537f06db5
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: a88ad25e335026d5172c7997f62629d5ada46f6e
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297916"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693298"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Stan programu Terraform Store w usłudze Azure Storage
 
@@ -102,7 +102,7 @@ Teraz zainicjować konfiguracji z *Terraform init* , a następnie uruchom konfig
 
 Korzystając z usługi Azure Storage Blob do przechowywania stanów, obiekt blob zostanie automatycznie zablokowane przed dowolną operacją, która zapisuje stan. Taka konfiguracja zapobiega wiele operacji współbieżnych stanu, co może powodować uszkodzenie. Aby uzyskać więcej informacji, zobacz [stan blokowania] [ terraform-state-lock] o dokumentacji programu Terraform.
 
-Blokady są widoczne podczas badania obiekt blob do witryny Azure portal lub inne narzędzie do zarządzania platformy Azure.
+Blokady są widoczne podczas badania obiektów blob za pośrednictwem witryny Azure portal lub inne narzędzie do zarządzania platformy Azure.
 
 ![Obiektów blob platformy Azure z blokadą](media/terraform-backend/lock.png)
 

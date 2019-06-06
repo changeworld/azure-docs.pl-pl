@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255604"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497164"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -37,7 +37,7 @@ Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jed
 
 Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 
-![Niepowodzenia](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
+![błędy](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
@@ -60,9 +60,12 @@ Aby przejść z powrotem do środowiska — omówienie, po prostu wybierz opcję
 
 ![Przycisk — omówienie](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Jeśli wybierzesz **Konfigurowanie ustawień kafelków** i Ustaw niestandardowy zakres czasu przekraczające 31 dni pulpitu nawigacyjnego nie będą wyświetlane poza 31 dni dla danych, nawet w przypadku przechowywania danych domyślne 90 dni. Obecnie nie ma sposobu obejścia tego zachowania.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Lejki](../../azure-monitor/app/usage-funnels.md)
 - [Przechowywanie](../../azure-monitor/app/usage-retention.md)
 - [User Flows (Przepływy użytkowników)](../../azure-monitor/app/usage-flows.md)
-- [Pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md)

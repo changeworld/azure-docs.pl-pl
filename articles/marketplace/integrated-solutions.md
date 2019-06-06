@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4cbc0b399bddbaebd4cb951dcd116e090c2e0c09
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938027"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515617"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Zintegrowane rozwiązania w portalu Azure Marketplace i AppSource
 
@@ -30,6 +30,15 @@ Zalety zintegrowanego podejścia są następujące:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odnajdywanie zintegrowanych rozwiązań, a potem połączyć z partnerami, te wartości do sekcji usług doradczych dotyczących [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+Poznaj zintegrowane rozwiązania i łączyć się z tych partnerów cenionym, odwiedzając ich ofert, w tym miejscu:
+
+* [Aplikacja Customer 360 działającemu Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Szybkie Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Analiza środków](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Stos zabezpieczeń chmury opieki zdrowotnej](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [Aparat przyspieszanie operacji deweloperskich](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+
+a także odwiedzając sekcję usług doradczych dotyczących [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
 
 ---

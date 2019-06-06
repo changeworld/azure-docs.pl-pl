@@ -9,19 +9,19 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851435"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515292"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 
 Usługi mogą wymagać niektóre hasłach, parametry połączenia i innych wpisów tajnych, takich jak do baz danych lub innych usług platformy Azure bezpieczne. Przez ustawienie wartości tych kluczy tajnych w plikach konfiguracji, można udostępnić je w swoim kodzie jako zmienne środowiskowe.  Te muszą być obsługiwane z rozwagą, aby uniknąć zagrożenia dla bezpieczeństwa kluczy tajnych.
 
-Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywania wpisów tajnych: w pliku values.dev.yaml i wbudowane bezpośrednio w azds.yaml. Nie zaleca się przechowywanie wpisów tajnych w values.yaml.
- 
+Azure Dev spacje są dostępne dwie opcje zalecane, zoptymalizowany, przechowywania wpisów tajnych w wykresów rozwiązania Helm wygenerowanych przez klienta usługi Azure Dev miejsca do magazynowania, narzędzia: w pliku values.dev.yaml i wbudowane bezpośrednio w azds.yaml. Nie zaleca się przechowywanie wpisów tajnych w values.yaml. Poza dwa podejścia do narzędzia Helm wykresy wygenerowanych przez klienta narzędzi zdefiniowane w tym artykule, jeśli tworzysz wykresu Helm, można użyć wykresu Helm bezpośrednio do przechowywania wpisów tajnych i zarządzania nimi.
+
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: values.dev.yaml
 1. Otwórz program VS Code z projektem, który jest włączony dla usługi Azure Dev miejsca do magazynowania.
 2. Dodaj plik o nazwie _values.dev.yaml_ w tym samym folderze co istniejące _azds.yaml_ i zdefiniuj klucz tajny i wartości, jak w poniższym przykładzie:

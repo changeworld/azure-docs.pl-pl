@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0bc74ac0fe45f2502064340a0c3ce5b82694b06
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245702"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687914"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Skopiuj dane z zasobników Amazon S3 za pomocą narzędzia AzCopy
 
-AzCopy to narzędzie wiersza polecenia używanej do kopiowania obiektów blob lub plików, do lub z konta magazynu. Ten artykuł pomoże Ci skopiowania obiektów, folderów i zasobników S3 usługi Amazon Web Services (AWS) do usługi Azure blob storage za pomocą narzędzia AzCopy.
+AzCopy to narzędzie wiersza polecenia używanej do kopiowania obiektów blob lub plików, do lub z konta magazynu. Ten artykuł pomoże Ci skopiowania obiektów, katalogów i zasobników S3 usługi Amazon Web Services (AWS) do usługi Azure blob storage za pomocą narzędzia AzCopy.
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Wybierz, jak zapewnisz poświadczenia autoryzacji
 
@@ -46,7 +46,7 @@ Zbierz swój klucz dostępu AWS i klucz dostępu do kluczy tajnych, a następnie
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-folders-and-buckets"></a>Kopiuje obiekty, folderów i przedziałów
+## <a name="copy-objects-directories-and-buckets"></a>Kopiuje obiekty, katalogów i przedziałów
 
 Korzysta z narzędzia AzCopy [umieścić blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsu API, dzięki czemu dane są kopiowane bezpośrednio między AWS S3, a serwery pamięci masowej. Przepustowość sieci na komputerze nie należy używać tych operacji kopiowania.
 
@@ -64,12 +64,12 @@ Korzysta z narzędzia AzCopy [umieścić blok z adresu URL](https://docs.microso
 >
 > Aby dowiedzieć się więcej o hostingu wirtualnego zasobników, zobacz [wirtualnego hostingu z zasobników]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-folder"></a>Skopiuj folder
+### <a name="copy-a-directory"></a>Kopiowanie katalogu
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<folder-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<folder-name>" --recursive=true` |
-| **Przykład** | `azcopy cp "https://s3.amazonaws.com/mybucket/myfolder" "https://mystorageaccount.blob.core.windows.net/mycontainer/myfolder" --recursive=true` |
+| **Składnia** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
+| **Przykład** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Skopiuj koszyka
 

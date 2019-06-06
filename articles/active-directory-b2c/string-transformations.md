@@ -2,20 +2,20 @@
 title: Ciąg przykłady przekształcania oświadczeń tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Ciąg oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707465"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512582"
 ---
 # <a name="string-claims-transformations"></a>Ciąg oświadczeń przekształcenia
 
@@ -476,7 +476,7 @@ Pobiera część domeny adresu e-mail.
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | emailAddress | string | Typ oświadczenia, który zawiera adres e-mail. |
-| oświadczenie outputClaim | domena | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane — domeny. |
+| oświadczenie outputClaim | Domeny | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane — domeny. |
 
 Użyj oświadczeń to przekształcenie, które można przeanalizować nazwy domeny po symbolu użytkownika @. Może to być przydatne podczas usuwania identyfikowalne dane osobowe (PII) z danych inspekcji. Następujące przekształcania oświadczeń pokazuje, jak można przeanalizować nazwy domeny z **e-mail** oświadczenia.
 
@@ -582,9 +582,9 @@ Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli warto
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **claimToMatch**: Podrzędna
+    - **claimToMatch**: Pomocnicza
 - Parametry wejściowe:
-    - **matchTo**: Podrzędna
+    - **matchTo**: Pomocnicza
     - **stringComparison**: ordinalIgnoreCase 
     - **outputClaimIfMatched**:  B2C_V1_90001
 - Oświadczeń danych wyjściowych:

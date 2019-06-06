@@ -7,13 +7,13 @@ ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+manager: philmea
+ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467807"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693191"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -139,7 +139,7 @@ W poniższych krokach opisano ten proces bardziej szczegółowo. Kroki różnią
 
 1. Podłączone urządzenie początkowo jest wyświetlany jako **urządzenia nieskojarzone** na **Device Explorer** strony. Na urządzeniu, stan aprowizacji **zarejestrowanej**. **Skojarz** urządzenia do szablonu odpowiedniego urządzenia i zatwierdzić urządzenia podłączyć się do Twojej aplikacji IoT Central. Urządzenie można pobrać parametry połączenia z Centrum IoT i rozpocząć wysyłanie danych. Inicjowanie obsługi administracyjnej urządzeń zostaje zakończony, a stan aprowizacji jest teraz **Aprowizowana**.
 
-## <a name="provisioning-status"></a>Stan obsługi administracyjnej
+## <a name="provisioning-status"></a>Stan aprowizacji
 
 Gdy rzeczywiste urządzenie łączy się z aplikacji IoT Central, jej udostępniania stan zmienia się w następujący sposób:
 

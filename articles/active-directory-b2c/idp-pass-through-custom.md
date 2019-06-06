@@ -2,20 +2,20 @@
 title: Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak można przekazać tokenu dostępu dla dostawców tożsamości OAuth 2.0 jako oświadczenia za pomocą niestandardowych zasad do aplikacji w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d752af1860d76e59df045907c11d16b4e1d20b0c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9420398c012b8da18e3b035cb845db6ce8c942d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702949"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511063"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C
 
@@ -94,7 +94,7 @@ Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma
 7. Kliknij pozycję **Przekaż**.
 8. Powtórz kroki od 5 do 7 dla jednostki uzależnionej pliku innych firm, takich jak *SignUpOrSignIn.xml*.
 
-### <a name="run-the-policy"></a>Uruchom zasady
+### <a name="run-the-policy"></a>Uruchamianie zasad
 
 1. Otwórz zasady, który został zmodyfikowany. Na przykład *B2C_1A_signup_signin*.
 2. Aby uzyskać **aplikacji**, wybierz swoją aplikację, która została wcześniej zarejestrowana. Aby wyświetlić token w poniższym przykładzie **adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.

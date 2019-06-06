@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 6fbbdb67478d0b45a2cc2ecb8a44fac140e72da5
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 06/03/2019
+ms.openlocfilehash: 42ef03d604caacf5ba18773b88e892237b5f0eae
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851857"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688531"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Użyj narzędzi Data Lake Tools for Visual Studio, aby nawiązać połączenie z usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive
 
@@ -33,10 +33,10 @@ Do wykonania kroków tego samouczka i korzystania z narzędzi Data Lake Tools w 
 
 * Klaster usługi Azure HDInsight. Aby utworzyć klaster usługi HDInsight, zobacz [Rozpoczynanie pracy przy użyciu technologii Apache Hadoop w usłudze Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Aby uruchomić interakcyjne zapytania usługi Apache Hive, potrzebujesz [interaktywnego zapytania HDInsight](../interactive-query/apache-interactive-query-get-started.md) klastra.  
 
-* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 lub nowsza).  [Programu Visual Studio Community edition](https://visualstudio.microsoft.com/vs/community/) jest bezpłatna.  Zobacz też [instalacji programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 lub nowsza).  [Programu Visual Studio Community edition](https://visualstudio.microsoft.com/vs/community/) jest bezpłatna.  Zobacz też [instalacji programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Istnieją różnice nieznaczne interfejs za pomocą programu Visual Studio 2019 r.
 
   > [!IMPORTANT]  
-  > Narzędzia Data Lake Tools nie jest już obsługiwana dla programu Visual Studio 2013. 
+  > Narzędzia Data Lake Tools nie jest już obsługiwana dla programu Visual Studio 2013.
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Instalacja narzędzi Data Lake Tools for Visual Studio  
 <a name="install-or-update-data-lake-tools-for-visual-studio"></a>
@@ -85,7 +85,7 @@ Aby nawiązać połączenie z subskrypcją platformy Azure:
 
    ![Zrzut ekranu listy klastrów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Lista serwerów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio")
 
-5. Rozwiń węzeł klastra usługi HDInsight. Zostaną wyświetlone **Bazy danych programu Hive**, domyślne konto magazynu, połączone konta magazynu i **Dziennik usługi Hadoop**. Jednostki można rozwinąć.
+5. Rozwiń węzeł klastra usługi HDInsight. **Bazy danych programu hive**, domyślne konto magazynu, połączone konta magazynu, a **dziennik usługi Hadoop** są wyświetlane. Jednostki można rozwinąć.
 
 Po nawiązaniu połączenia z subskrypcją platformy Azure, można wykonać poniższe zadania.
 
@@ -93,19 +93,20 @@ Nawiązywanie połączenia z witryną Azure Portal w programie Visual Studio:
 
 1. Z poziomu Eksploratora serwera, przejdź do **Azure** > **HDInsight** i wybierz klaster.
 
-2. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz pozycję **Zarządzaj klastrem w witrynie Azure Portal**.
+2. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz pozycję **Zarządzaj klastrem w portalu Azure [SKI]** .
 
 Aby zadawać pytania i/lub wyrażanie opinii w programie Visual Studio:
 
 1. Z poziomu Eksploratora serwera, przejdź do **Azure** > **HDInsight**.
 
 2. Kliknij prawym przyciskiem myszy **HDInsight** i wybierz opcję **forum MSDN dotyczącym** zadawać pytania, lub **Prześlij opinię** przesłać opinię.
+
 ## <a name="link-a-cluster"></a>Połącz klaster
 Można połączyć klaster, klikając prawym przyciskiem myszy **HDInsight** polecenie **połączenia klastra HDInsight**. Wprowadź **adresu Url składnika połączenia**, **nazwa_użytkownika** i **hasło**, kliknij przycisk **dalej** następnie **Zakończ**, klastra powinny być wymienione w węźle HDInsight się pomyślnie.
 
 ![Zrzut ekranu z narzędzi Data Lake Tools dla programu Visual Studio łącze klastra z okna dialogowego](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-Kliknij prawym przyciskiem myszy na klastrze połączone, wybierz opcję **Edytuj**, użytkownik może zaktualizować informacje o klastrze. Należy pamiętać, że klaster HDInsight Dodaj obsługuje tylko gałąź teraz.
+Kliknij prawym przyciskiem myszy na klastrze połączone, wybierz opcję **Edytuj**, użytkownik może zaktualizować informacje o klastrze. Dodawanie klastra usługi HDInsight obsługuje tylko gałąź teraz.
 
 ![Zrzut ekranu z narzędzi Data Lake Tools dla programu Visual Studio łącze klastra aktualizacji](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
@@ -170,7 +171,14 @@ Aby utworzyć i uruchamianie zapytań ad hoc:
 
 1. Kliknij prawym przyciskiem myszy klaster, w którym chcesz uruchomić zapytanie, a następnie wybierz pozycję **Napisz zapytanie Hive**.  
 
-2. Wprowadź zapytania Hive.  
+2. Wprowadź następujące zapytanie programu Hive:
+
+    ```sql
+    SELECT devicemodel, COUNT(devicemodel) AS deviceCount
+    FROM hivesampletable
+    GROUP BY devicemodel
+    ORDER BY devicemodel
+    ```
 
     Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład, jeśli wpiszesz `SELECT * FROM`, funkcja IntelliSense wyświetla wszystkie sugerowane nazwy tabeli. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF.
 
@@ -204,7 +212,7 @@ Tworzenie i uruchamianie rozwiązania Hive:
 
 1. Na pasku menu, przejdź do **pliku** > **New** > **projektu...** .
 
-2. W okienku po lewej stronie przejdź do **zainstalowane** > **usługi Azure Data Lake** > **HIVE (HDInsight)**.  
+2. W okienku po lewej stronie przejdź do **zainstalowane** > **usługi Azure Data Lake** > **HIVE (HDInsight)** .  
 
 3. W środkowym okienku wybierz opcję **Aplikacja Hive**. Wprowadź właściwości, a następnie wybierz opcję **OK**.
 
@@ -266,7 +274,7 @@ Aby wyświetlić zadania Hive:
 
 1. Na pasku menu, przejdź do **pliku** > **New** > **projektu...** .
 
-2. W okienku po lewej stronie przejdź do **zainstalowane** > **usługi Azure Data Lake** > **Pig (HDInsight)**.  
+2. W okienku po lewej stronie przejdź do **zainstalowane** > **usługi Azure Data Lake** > **Pig (HDInsight)** .  
 
 3. W środkowym okienku wybierz **aplikacji Pig**. Wprowadź właściwości, a następnie wybierz opcję **OK**.
 

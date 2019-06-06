@@ -2,20 +2,20 @@
 title: Uwagi dla deweloperów dla niestandardowych zasad — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Uwagi dla deweloperów, od konfigurowania i konserwowania usługi Azure AD B2C za pomocą zasad niestandardowych.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1093f1882328604819d5fbab33d87b26f1af2886
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1d0be4ec2ed8feb308839377e0494ef2f4b78368
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703241"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510212"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Uwagi dla deweloperów dla zasad niestandardowych w usłudze Azure Active Directory B2C
 

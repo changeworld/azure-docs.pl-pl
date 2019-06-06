@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c8907f1b1c8069a3a3e92d01a5fa6341c06ec952
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953791"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688806"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -48,8 +48,8 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwanych zestawów SDK  |Port usługi/interfejsu API  |
      |---------|---------|---------|---------|
      |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Bezpośrednie    |    HTTPS     |  Zestaw SDK platformy .NET i Java    |   Porty w zakresie 20 000 10 000 operacji    |
-     |Bezpośrednie    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 20 000 10 000 operacji |
+     |Direct    |    HTTPS     |  Zestaw SDK platformy .NET i Java    |   Porty w zakresie 20 000 10 000 operacji    |
+     |Direct    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 20 000 10 000 operacji |
 
      Usługa Azure Cosmos DB oferuje proste i Otwórz model programowania RESTful przy użyciu protokołu HTTPS. Ponadto oferuje wydajne protokołu TCP, który jest również zgodne ze specyfikacją REST swój model komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno w przypadku bezpośredniego połączenia TCP, jak i protokołu HTTPS na użytek SSL początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
 
@@ -137,13 +137,21 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
    <a id="tune-page-size"></a>
 1. **Dostosuj rozmiar strony dla źródeł danych zapytania/odczytu w celu zapewnienia lepszej wydajności**
 
-    Podczas wykonywania masowego odczytywania dokumentów za pomocą odczytu zestawienia (na przykład ReadDocumentFeedAsync) lub, wydając zapytania SQL, wyniki są zwracane w sposób segmentu, jeśli zestaw wyników jest za duży. Domyślnie wyniki są zwracane we fragmentach po 100 elementów lub 1 MB, jednego z tych limitów zostanie osiągnięty jako pierwszy.
+   Podczas wykonywania masowego odczytywania dokumentów za pomocą odczytu zestawienia (na przykład ReadDocumentFeedAsync) lub, wydając zapytania SQL, wyniki są zwracane w sposób segmentu, jeśli zestaw wyników jest za duży. Domyślnie wyniki są zwracane we fragmentach po 100 elementów lub 1 MB, jednego z tych limitów zostanie osiągnięty jako pierwszy.
 
-    Aby zmniejszyć liczbę rund sieci, wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć, używając rozmiaru strony [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) nagłówek żądania do 1000. W przypadkach, w których należy wyświetlić tylko kilka wyników, na przykład, jeśli użytkownik interfejsu lub aplikacji interfejsu API zwróci tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10, aby ograniczyć przepustowość używana dla odczytów i zapytań.
+   Aby zmniejszyć liczbę rund sieci, wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć, używając rozmiaru strony [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) nagłówek żądania do 1000. W przypadkach, w których należy wyświetlić tylko kilka wyników, na przykład, jeśli użytkownik interfejsu lub aplikacji interfejsu API zwróci tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10, aby ograniczyć przepustowość używana dla odczytów i zapytań.
 
-    Możesz też ustawić rozmiar strony, przy użyciu dostępnych zestawów SDK usługi Azure Cosmos DB.  Na przykład:
+   > [!NOTE] 
+   > Nie można użyć właściwości maxItemCount tylko w celu dzielenia na strony. Jest głównym użycia go, aby poprawić wydajność zapytań, zmniejszając maksymalną liczbę elementów zwracanych w jednej strony.  
 
-        IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   Można również ustawić rozmiar strony, przy użyciu dostępnych zestawów SDK usługi Azure Cosmos DB. [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) właściwość FeedOptions pozwala ustawić maksymalną liczbę elementów, które mają być zwracane w operacji enmuration. Gdy `maxItemCount` jest ustawiona na wartość -1, zestaw SDK automatycznie znajduje najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Na przykład:
+    
+   ```csharp
+    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   ```
+    
+   Po wykonaniu zapytania wynikowe dane są wysyłane w pakiecie protokołu TCP. Jeśli określono zbyt niską wartość `maxItemCount`, liczba wymaganą do przesyłania danych w ramach pakietu TCP są wysokie, która wpływa na wydajność. Jeśli nie masz pewności, jaka wartość do ustawienia dla `maxItemCount` właściwości, najlepiej jest równa -1 i umożliwić zestawowi SDK, wybierz wartość domyślną. 
+
 10. **Zwiększ liczbę wątków/zadań**
 
     Zobacz [zwiększyć liczbę wątków/zadań](#increase-threads) w sekcji sieci.

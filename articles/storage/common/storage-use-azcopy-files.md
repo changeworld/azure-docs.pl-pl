@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 5d11d5c0da350b9abf2e2b06a11a1690cf3f6922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 69d7136396c3d989e63b8956d3e703cc7f9666c8
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247112"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687937"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Transferowanie danych za pomocą narzędzia AzCopy oraz plików magazynu 
 
@@ -32,13 +32,13 @@ Możesz użyć narzędzia AzCopy `make` polecenie, aby utworzyć udział plików
 
 ## <a name="upload-files"></a>Przekazywanie plików
 
-Możesz użyć narzędzia AzCopy `copy` polecenie, aby przekazać pliki i foldery z komputera lokalnego.
+Możesz użyć narzędzia AzCopy `copy` polecenie, aby przekazać pliki i katalogi z komputera lokalnego.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
 > * Przekazywanie pliku
-> * Przekazywanie folderu
+> * Przekaż katalogu
 > * Przekazywanie plików przy użyciu symboli wieloznacznych
 
 > [!NOTE]
@@ -49,46 +49,46 @@ Ta sekcja zawiera następujące przykłady:
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy cp "<local-file-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name>?<SAS-token>"` |
-| **Przykład** | `azcopy copy "C:\myFolder\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **Przykład** | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
-### <a name="upload-a-folder"></a>Przekazywanie folderu
+### <a name="upload-a-directory"></a>Przekaż katalogu
 
-W tym przykładzie kopiuje folder (i wszystkich plików w tym folderze) do udziału plików. Wynik jest folderu w udziale plików o tej samej nazwie.
-
-|    |     |
-|--------|-----------|
-| **Składnia** | `azcopy copy "<local-folder-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
-| **Przykład** | `azcopy copy "C:\myFolder" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
-
-Aby skopiować do folderu w udziale plików, określ nazwę tego folderu, w ciągu polecenia.
+W tym przykładzie kopiuje katalog (i wszystkich plików w tym katalogu) do udziału plików. Wynik jest katalogiem w udziale plików o tej samej nazwie.
 
 |    |     |
 |--------|-----------|
-| **Przykład** | `azcopy copy "C:\myFolder" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
+| **Składnia** | `azcopy copy "<local-directory-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
+| **Przykład** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
 
-Jeśli określisz nazwę folderu, który nie istnieje w udziale plików, narzędzia AzCopy tworzy nowy folder o takiej nazwie.
-
-### <a name="upload-the-contents-of-a-folder"></a>Załaduj zawartość folderu
-
-Możesz przekazać zawartość folderu bez kopiowania folderu zawierającego za pomocą symbolu wieloznacznego (*).
+Aby skopiować do katalogu w udziale plików, określ nazwę tego katalogu w ciągu polecenia.
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy copy "<local-folder-path>/*" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<folder-path>?<SAS-token>` |
-| **Przykład** | `azcopy copy "C:\myFolder\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **Przykład** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
+
+Jeśli określisz nazwę katalogu, który nie istnieje w udziale plików, narzędzia AzCopy tworzy nowy katalog o tej nazwie.
+
+### <a name="upload-the-contents-of-a-directory"></a>Przekazywanie zawartości katalogu
+
+Możesz przekazać zawartość katalogu bez kopiowania sam katalog zawierający za pomocą symbolu wieloznacznego (*).
+
+|    |     |
+|--------|-----------|
+| **Składnia** | `azcopy copy "<local-directory-path>/*" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>` |
+| **Przykład** | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> Dołącz `--recursive` flagi, aby przekazać pliki w podfolderach, wszystkie.
+> Dołącz `--recursive` flagi, aby przekazać pliki we wszystkich katalogach podrzędnych.
 
 ## <a name="download-files"></a>Pobieranie plików
 
-Możesz użyć narzędzia AzCopy `copy` polecenie, aby pobrać plików, folderów i plików udziałów na komputerze lokalnym.
+Możesz użyć narzędzia AzCopy `copy` polecenie, aby pobrać pliki, katalogów i plików udziałów na komputerze lokalnym.
 
 Ta sekcja zawiera następujące przykłady:
 
 > [!div class="checklist"]
 > * Pobieranie pliku
-> * Folder pobierania
+> * Pobierz katalog
 > * Pobieranie plików przy użyciu symboli wieloznacznych
 
 > [!NOTE]
@@ -99,28 +99,28 @@ Ta sekcja zawiera następujące przykłady:
 |    |     |
 |--------|-----------|
 | **Składnia** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path>?<SAS-token>" "<local-file-path>"` |
-| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder\myTextFile.txt"` |
+| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory\myTextFile.txt"` |
 
-### <a name="download-a-folder"></a>Folder pobierania
-
-|    |     |
-|--------|-----------|
-| **Składnia** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<folder-path>?<SAS-token>" "<local-folder-path>" --recursive` |
-| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder"  --recursive` |
-
-Ten przykład powoduje zwrócenie folder o nazwie `C:\myFolder\myFileShareFolder` zawierający wszystkie pobrane pliki.
-
-### <a name="download-the-contents-of-a-folder"></a>Pobierz zawartość folderu
-
-Możesz pobrać zawartość folderu bez kopiowania folderu zawierającego za pomocą symbolu wieloznacznego (*).
+### <a name="download-a-directory"></a>Pobierz katalog
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/*?<SAS-token>" "<local-folder-path>/"` |
-| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder"` |
+| **Składnia** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>" "<local-directory-path>" --recursive` |
+| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"  --recursive` |
+
+Ten przykład powoduje zwrócenie katalog o nazwie `C:\myDirectory\myFileShareDirectory` zawierający wszystkie pobrane pliki.
+
+### <a name="download-the-contents-of-a-directory"></a>Pobieranie zawartości katalogu
+
+Bez kopiowania sam katalog zawierający za pomocą symbolu wieloznacznego (*), można pobrać zawartości katalogu.
+
+|    |     |
+|--------|-----------|
+| **Składnia** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/*?<SAS-token>" "<local-directory-path>/"` |
+| **Przykład** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"` |
 
 > [!NOTE]
-> Dołącz `--recursive` flagi do pobierania plików we wszystkich podrzędnych folderów.
+> Dołącz `--recursive` flagę, aby pobrać pliki we wszystkich katalogach podrzędnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 8ed7d144b886cc29592418007b9103b4aa94e8ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331081"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477810"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -33,7 +33,7 @@ SQL Server uruchomiony na maszynie wirtualnej platformy Azure, również można 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Zarządzane przez usługę przezroczyste szyfrowanie danych
 
-Na platformie Azure domyślne ustawienie dla technologii transparent data encryption jest, że klucz szyfrowania bazy danych jest chroniony za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera. Jeśli baza danych jest w relacji replikacji geograficznej, zarówno podstawowej i pomocniczej geograficznej bazy danych są chronione przez klucz serwera nadrzędnego podstawowej bazy danych. Jeśli połączenie dwóch baz danych na tym samym serwerze, również udostępnić ten sam certyfikat wbudowanych. Microsoft automatycznie przełącza te certyfikaty niezgodne z zasadami bezpieczeństwa wewnętrznego i klucz główny jest chroniony przez Microsoft wewnętrznego magazynu wpisów tajnych.
+Na platformie Azure domyślne ustawienie dla technologii transparent data encryption jest, że klucz szyfrowania bazy danych jest chroniony za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera. Jeśli baza danych jest w relacji replikacji geograficznej, zarówno podstawowej i pomocniczej geograficznej bazy danych są chronione przez klucz serwera nadrzędnego podstawowej bazy danych. Jeśli połączenie dwóch baz danych na tym samym serwerze, również udostępnić ten sam certyfikat wbudowanych. Microsoft automatycznie przełącza te certyfikaty niezgodne z zasadami bezpieczeństwa wewnętrznego i klucz główny jest chroniony przez Microsoft wewnętrznego magazynu wpisów tajnych.  Klientom sprawdzenie zgodności bazy danych SQL z zasadami zabezpieczeń wewnętrznych w niezależnie od innych firm raportów dostępnych w [Microsoft Trust Center](https://servicetrust.microsoft.com/).
 
 Firma Microsoft również bezproblemowo przenosi i zarządza kluczami, zgodnie z potrzebami dla replikacji geograficznej i przywraca.
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2017
+ms.date: 06/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07d52544b584adb02cc60790b7cb63c8aee1e366
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130943"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514477"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
 
@@ -82,7 +82,7 @@ Utwórz nowy plik JSON — nazwiemy to `template1.json` w tym przykładzie. Skop
                     2
                 ],
                 "metadata": {
-                    "description": "1 = Basic, 2 = Enterprise"
+                    "description": "1 = Per GB (Basic), 2 = Per Node (Enterprise)"
                 }
             },
             "dailyQuota": {
@@ -200,8 +200,8 @@ Aby utworzyć zasób aplikacji usługi z planu cen w przedsiębiorstwie, przy u�
 
 |priceCode|Plan|
 |---|---|
-|1|Podstawowy|
-|2|Przedsiębiorstwo|
+|1|Podstawowa|
+|2|Enterprise|
 
 * Jeśli chcesz użyć domyślny plan cenowy podstawowa, można pominąć zasób CurrentBillingFeatures z szablonu.
 * Jeśli chcesz zmienić plan cenowy, po utworzeniu zasobu składnik, można użyć szablonu, które pomija zasobu "microsoft.insights/components". Ponadto, Pomiń `dependsOn` węzła z rozliczeń zasobów. 
@@ -452,4 +452,3 @@ Inne artykuły, automatyzacji:
 * [Wysyłanie Diagnostyki Azure do usługi Application Insights](powershell-azure-diagnostics.md)
 * [Wdrażanie na platformie Azure z usługi GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Utwórz adnotacji dotyczących wersji](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

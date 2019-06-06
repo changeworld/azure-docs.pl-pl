@@ -2,20 +2,20 @@
 title: Przekaż token dostępu za pośrednictwem przepływu użytkownika do aplikacji — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak można przekazać za pośrednictwem tokenu dostępu dla dostawców tożsamości OAuth 2.0 jako oświadczenia w przepływie użytkownika w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0270ef3ff74a219442a6800b67055deda7a0583f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705339"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510963"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pośrednictwem przepływu użytkownika do aplikacji w usłudze Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Usługa Azure AD B2C aktualnie obsługuje tylko przekazywanie tokenu dostępu [O
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Wybierz **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz **przepływy użytkownika (zasady)**, a następnie wybierz pozycję przepływ użytkownika. Na przykład **B2C_1_signupsignin1**.
+4. Wybierz **przepływy użytkownika (zasady)** , a następnie wybierz pozycję przepływ użytkownika. Na przykład **B2C_1_signupsignin1**.
 5. Wybierz pozycję **Oświadczenia aplikacji**.
 6. Włącz **tokenu dostępu do dostawcy tożsamości** oświadczenia.
 

@@ -2,20 +2,20 @@
 title: Przepływ kodu autoryzacji — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak tworzyć aplikacje sieci web przy użyciu protokołu uwierzytelniania usługi Azure AD B2C i OpenID Connect.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72111bc54691b340bcb0d8af8ef52bf0bd103a21
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7157682d7952529f9dfa98e8bc8707df9cfe944f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703589"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509240"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Przepływ kodu autoryzacji OAuth 2.0 w usłudze Azure Active Directory B2C
 
@@ -79,8 +79,8 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |Wymagane |Identyfikator URI aplikacji, w którym wysyłanych i odbieranych przez aplikację uwierzytelniania odpowiedzi przekierowania. Jego musi dokładnie odpowiadać jeden przekierowania identyfikatory URI, który został zarejestrowany w portalu, z tą różnicą, że musi być zakodowane w adresie URL. |
 | scope |Wymagane |Rozdzielonej spacjami listy zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure Active Directory (Azure AD) zarówno uprawnień, które są żądane. Przy użyciu Identyfikatora klienta, zgodnie z zakresem wskazuje, że Twoja aplikacja wymaga tokenu dostępu, który może zostać użyty dla własnych usług lub interfejsu API sieci web, reprezentowane przez ten sam identyfikator klienta.  `offline_access` Zakresu wskazuje, że Twoja aplikacja wymaga tokenu odświeżania długotrwałe dostępu do zasobów. Możesz również użyć `openid` zakresu do wysłania żądania tokenu Identyfikatora z usługi Azure AD B2C. |
 | response_mode |Zalecane |Metody, która umożliwia wysyłanie wynikowy kod autoryzacji z powrotem do aplikacji. Może być `query`, `form_post`, lub `fragment`. |
-| state |Zalecane |Wartość uwzględnione w żądaniu, który może być ciągiem dowolnej zawartości, którego chcesz używać. Zazwyczaj losowo generowany unikatową wartość jest używana, aby zapobiec atakom fałszowanie żądań między witrynami. Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strony, do której użytkownik był na lub przepływ użytkownika, które było wykonywane. |
-| p |Wymagane |Przepływ użytkownika, który jest wykonywany. To nazwa przepływu użytkownika, który jest tworzony w katalogu usługi Azure AD B2C. Wartość nazwy przepływu użytkownika powinien zaczynać się od **b2c\_1\_**. Aby uzyskać więcej informacji na temat przepływów użytkownika, zobacz [przepływy użytkownika usługi Azure AD B2C](active-directory-b2c-reference-policies.md). |
+| stan |Zalecane |Wartość uwzględnione w żądaniu, który może być ciągiem dowolnej zawartości, którego chcesz używać. Zazwyczaj losowo generowany unikatową wartość jest używana, aby zapobiec atakom fałszowanie żądań między witrynami. Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strony, do której użytkownik był na lub przepływ użytkownika, które było wykonywane. |
+| p |Wymagane |Przepływ użytkownika, który jest wykonywany. To nazwa przepływu użytkownika, który jest tworzony w katalogu usługi Azure AD B2C. Wartość nazwy przepływu użytkownika powinien zaczynać się od **b2c\_1\_** . Aby uzyskać więcej informacji na temat przepływów użytkownika, zobacz [przepływy użytkownika usługi Azure AD B2C](active-directory-b2c-reference-policies.md). |
 | wiersz |Optional (Opcjonalność) |Typ interakcji z użytkownikiem, który jest wymagany. Obecnie jest jedyną prawidłową wartością `login`, która wymusza użytkownika o wprowadzenie poświadczeń dla tego żądania. Logowanie jednokrotne nie zostanie zastosowana. |
 
 W tym momencie użytkownik jest proszony do ukończenia przepływu pracy przepływu użytkownika. Może to obejmować użytkownika wprowadzania nazwy użytkownika i hasła, logowanie się przy użyciu tożsamości społecznościowej, założeniem katalogu lub dowolną liczbę kroków. Akcje użytkownika, zależą od tego, jak jest zdefiniowany przepływu użytkownika.
@@ -97,8 +97,8 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 
 | Parametr | Opis |
 | --- | --- |
-| kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do wysłania żądania tokenu dostępu dla zasobu docelowego. Kody autoryzacji są bardzo krótkotrwałe. Zazwyczaj wygasają po upływie około 10 minut. |
-| state |Zobacz pełny opis tabeli w poprzedniej sekcji. Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
+| code |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do wysłania żądania tokenu dostępu dla zasobu docelowego. Kody autoryzacji są bardzo krótkotrwałe. Zazwyczaj wygasają po upływie około 10 minut. |
+| stan |Zobacz pełny opis tabeli w poprzedniej sekcji. Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
 
 Odpowiedzi na błędy również mogą być wysyłane do identyfikatora URI przekierowania, dzięki czemu aplikacja może je odpowiednio obsługiwać:
 
@@ -113,7 +113,7 @@ error=access_denied
 | --- | --- |
 | error |Ciąg kodu błędu, który służy do klasyfikowania typy błędów, które występują. Możesz również użyć ciągu, aby reagować na błędy. |
 | error_description |Komunikat błędu, który pomoże Ci identyfikować przyczyny błędu uwierzytelniania. |
-| state |Zobacz pełny opis w powyższej tabeli. Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
+| stan |Zobacz pełny opis w powyższej tabeli. Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
 
 ## <a name="2-get-a-token"></a>2. Pobierz token
 Teraz, gdy nabyciu kod autoryzacji, można zrealizować `code` dla tokenu do zasobu zamierzony przez wysłanie żądania POST na `/token` punktu końcowego. W usłudze Azure AD B2C tylko zasób, jakiej może żądać token dla jest własnych aplikacji zaplecza interfejsu API sieci web. Konwencji, który jest używany do żądania tokenu służącego do siebie jest użyć własnego Identyfikatora klienta aplikacji jako zakres:
@@ -133,7 +133,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [witryny Azure portal](https://portal.azure.com). |
 | grant_type |Wymagane |Rodzaj przyznanie. Przepływ kodu autoryzacji, musi być typu przydziału `authorization_code`. |
 | scope |Zalecane |Rozdzielonej spacjami listy zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure AD zarówno uprawnień, które są żądane. Przy użyciu Identyfikatora klienta, zgodnie z zakresem wskazuje, że Twoja aplikacja wymaga tokenu dostępu, który może zostać użyty dla własnych usług lub interfejsu API sieci web, reprezentowane przez ten sam identyfikator klienta.  `offline_access` Zakresu wskazuje, że Twoja aplikacja wymaga tokenu odświeżania długotrwałe dostępu do zasobów.  Możesz również użyć `openid` zakresu do wysłania żądania tokenu Identyfikatora z usługi Azure AD B2C. |
-| kod |Wymagane |Kod autoryzacji uzyskanego w pierwszej gałęzi przepływu. |
+| code |Wymagane |Kod autoryzacji uzyskanego w pierwszej gałęzi przepływu. |
 | redirect_uri |Wymagane |Identyfikator URI aplikacji, na którym odebrano kod autoryzacji przekierowania. |
 
 Odpowiedź oznaczająca Powodzenie tokenu wygląda następująco:

@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463490"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513665"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raport aktywności logowania 
 
@@ -181,6 +181,8 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |500121| Uwierzytelnianie nie powiodło się podczas wykonywania żądania silnego uwierzytelniania.|
 |500133| Potwierdzenie nie jest w zasięgu prawidłową godzinę. Upewnij się, nie wygasł token dostępu przed jego użyciem na potwierdzenie użytkownika lub uzyskać nowy token.|
 |530021|Aplikacja nie spełnia wymagań dotyczących dostępu warunkowego zatwierdzonych aplikacji.|
+|7000218|Treść żądania musi zawierać następujący parametr: "client_assertion" lub "client_secret".|
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

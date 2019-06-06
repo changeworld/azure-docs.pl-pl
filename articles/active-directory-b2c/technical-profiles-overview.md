@@ -2,20 +2,20 @@
 title: Informacje o profilach techniczne w zasadach niestandardowych usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej na temat profili sposobu techniczne są używane w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8865da2f39f574656fe7f018eb1f1900b913391c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b8969ba657506705db2b1a3bbc5b389d0a992c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710894"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512454"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach techniczne w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -57,7 +57,7 @@ Wszystkie typy profile techniczne współużytkować tę samą koncepcję. Wysy�
 4. **ValidationTechnicalProfiles** — [samodzielnie określonych profilu technicznego](self-asserted-technical-profile.md), można wywołać dane wejściowe [profilu technicznego weryfikacji](validation-technical-profile.md). Profil techniczny weryfikacji sprawdza poprawność danych profilowanych przez użytkownika i zwraca komunikat o błędzie, lub przycisk Ok, z lub bez oświadczeń danych wyjściowych. Na przykład zanim usługa Azure AD B2C utworzy nowe konto, sprawdza czy użytkownik istnieje już w usługach katalogowych. Możesz wywołać profilu technicznego interfejsu API REST, aby dodać własną logiką biznesową.<p>Zakres oświadczeń danych wyjściowych profilu technicznego sprawdzania poprawności jest ograniczone do profilu technicznego, wywołująca profilu technicznego sprawdzania poprawności i inne sprawdzania poprawności profile techniczne w ramach tego samego profilu technicznego. Korzystanie z oświadczeń danych wyjściowych w następnym kroku aranżacji, musisz dodać oświadczeń danych wyjściowych do profilu technicznego, wywołująca profilu technicznego sprawdzania poprawności.
 5. **OutputClaims** -oświadczenia są przywracane do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnym kroku aranżacji lub przekształcenia oświadczeń danych wyjściowych.
 6. **OutputClaimsTransformations** -wejściowych roszczenia, każdy danych wyjściowych [przekształcania oświadczeń](claimstransformations.md) są pobierane ze zbioru oświadczeń. Oświadczeń danych wyjściowych profilu technicznego z poprzednich kroków może być oświadczeń wejściowych przekształcenia oświadczeń danych wyjściowych. Po wykonaniu oświadczeń danych wyjściowych są ponownie umieszczane w zbiorze oświadczeń. Oświadczeń danych wyjściowych przekształcania oświadczeń danych wyjściowych może być również oświadczeń wejściowych przekształcania oświadczeń kolejne dane wyjściowe.
-7. **Single Zarządzanie sesjami logowania jednokrotnego (SSO)** - [Zarządzanie sesjami logowania jednokrotnego](active-directory-b2c-reference-sso-custom.md) kontrolki interakcji z użytkownikiem, po użytkownik już uwierzytelniony. Na przykład administrator może kontrolować, czy ma być wyświetlana wyboru dostawcy tożsamości lub tego, czy szczegóły konta lokalnego muszą zostać wprowadzone ponownie.
+7. **Single Zarządzanie sesjami logowania jednokrotnego (SSO)**  - [Zarządzanie sesjami logowania jednokrotnego](active-directory-b2c-reference-sso-custom.md) kontrolki interakcji z użytkownikiem, po użytkownik już uwierzytelniony. Na przykład administrator może kontrolować, czy ma być wyświetlana wyboru dostawcy tożsamości lub tego, czy szczegóły konta lokalnego muszą zostać wprowadzone ponownie.
 
 Profil techniczny może dziedziczyć z innego profilu technicznego, aby zmienić ustawienia, lub Dodaj nowe funkcje.  **IncludeTechnicalProfile** element jest odwołanie do bazowej profilu technicznego, z którego pochodzi profilu technicznego.  
 

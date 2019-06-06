@@ -2,20 +2,20 @@
 title: Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Zabezpieczanie usługi niestandardowe wymianą oświadczenia interfejsu API REST usługi Azure AD B2C przy użyciu certyfikatów klienta
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f184ddfc01260b203b0df4090f5f231f58d2cb80
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b007aa4619effbd34e4e969e4ce7b58f3b0c4cf6
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699015"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510540"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta
 

@@ -2,20 +2,20 @@
 title: Lokalizacja — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Określ element Localization zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2291bdd270a15c4932d79b124616400d2667c891
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705849"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510581"
 ---
 # <a name="localization"></a>Lokalizacja
 
@@ -56,7 +56,7 @@ ms.locfileid: "64705849"
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Yes | Język, który ma być używany jako domyślny dla zlokalizowanych zasobów. |
+| DefaultLanguage | Tak | Język, który ma być używany jako domyślny dla zlokalizowanych zasobów. |
 | MergeBehavior | Nie | Wartości wyliczenia wartości, które zostaną scalone razem z dowolnego typu oświadczenia obecne w zasadach nadrzędnego zawierających ten sam identyfikator. Podczas zastępowania oświadczenia określone w zasadach podstawowych, należy użyć tego atrybutu. Możliwe wartości: `Append`, `Prepend`, lub `ReplaceAll`. `Append` Wartość określa, że zbieranie danych jest obecny powinna zostać dołączona do końca kolekcji określonej w zasadach nadrzędnej. `Prepend` Wartość określa, że zbieranie danych jest obecny należy dodać przed określonej w zasadach nadrzędny kolekcji. `ReplaceAll` Wartość określa, że zbieranie danych, zdefiniowane w zasadach nadrzędnej mają być ignorowane, zamiast dane zdefiniowane w bieżących zasadach. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
@@ -96,8 +96,8 @@ ms.locfileid: "64705849"
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ElementType | Yes | Odwołuje się do elementu typu oświadczenia lub element interfejsu użytkownika w pliku zasad. |
-| ElementId | Yes | Ciąg, który zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema, która jest używana, gdy **ElementType** jest ustawiona na typ oświadczenia. |
+| ElementType | Tak | Odwołuje się do elementu typu oświadczenia lub element interfejsu użytkownika w pliku zasad. |
+| ElementId | Tak | Ciąg, który zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema, która jest używana, gdy **ElementType** jest ustawiona na typ oświadczenia. |
 | TargetCollection | Yes | Kolekcji docelowej. |
 
 **LocalizedCollection** element zawiera następujące elementy:
@@ -110,8 +110,8 @@ ms.locfileid: "64705849"
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Text | Yes | Ciąg wyświetlania przyjazny dla użytkownika, który ma być wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
-| Wartość | Yes | Ciąg oświadczenie wartość skojarzoną z wybraniu tej opcji. |
+| Text | Tak | Ciąg wyświetlania przyjazny dla użytkownika, który ma być wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
+| Wartość | Tak | Ciąg oświadczenie wartość skojarzoną z wybraniu tej opcji. |
 
 Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera dwa **LocalizedCollection** elementy, jeden dla języka angielskiego i inny dla języka hiszpańskiego. Jednocześnie ustawionych **ograniczeń** kolekcji oświadczenia `Gender` z listy elementów w języku angielskim i hiszpańskim.
 
@@ -146,8 +146,8 @@ Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera 
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ElementType | Yes | Odwołanie do elementu typu oświadczenia lub element interfejsu użytkownika w ramach zasad. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, lub. `ClaimType` Wartość jest używana do lokalizowania jeden z atrybutów oświadczenia, jak to określono w identyfikator ciągu. `UxElement` Wartość jest używana do lokalizowania jeden z elementów interfejsu użytkownika, jak to określono w identyfikator ciągu. `ErrorMessage` Wartość jest używana do lokalizowania komunikat o błędzie systemu, jak to określono w identyfikator ciągu. `Predicate` Wartość jest używana do lokalizowania jednego z [predykatu](predicates.md) komunikaty o błędach, jak to określono w identyfikator ciągu. `InputValidation` Wartość jest używana do lokalizowania jednego z [PredicateValidation](predicates.md) grupie komunikaty o błędach, jak to określono w identyfikator ciągu. |
-| ElementId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, `Predicate`, lub `InputValidation`, ten element zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema. | 
+| ElementType | Tak | Odwołanie do elementu typu oświadczenia lub element interfejsu użytkownika w ramach zasad. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, lub. `ClaimType` Wartość jest używana do lokalizowania jeden z atrybutów oświadczenia, jak to określono w identyfikator ciągu. `UxElement` Wartość jest używana do lokalizowania jeden z elementów interfejsu użytkownika, jak to określono w identyfikator ciągu. `ErrorMessage` Wartość jest używana do lokalizowania komunikat o błędzie systemu, jak to określono w identyfikator ciągu. `Predicate` Wartość jest używana do lokalizowania jednego z [predykatu](predicates.md) komunikaty o błędach, jak to określono w identyfikator ciągu. `InputValidation` Wartość jest używana do lokalizowania jednego z [PredicateValidation](predicates.md) grupie komunikaty o błędach, jak to określono w identyfikator ciągu. |
+| ElementId | Tak | Jeśli **ElementType** ustawiono `ClaimType`, `Predicate`, lub `InputValidation`, ten element zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema. | 
 | StringId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, ten element zawiera odwołanie do atrybutu typu oświadczenia. Możliwe wartości: `DisplayName`, `AdminHelpText`, lub `PatternHelpText`. `DisplayName` Wartość jest używana do ustawiania oświadczenia nazwy wyświetlanej. `AdminHelpText` Wartość jest używana do ustawiania Nazwa tekstu pomocy oświadczenia użytkownika. `PatternHelpText` Wartość jest używana do ustawiania tekst pomocy wzorzec oświadczenia. Jeśli **ElementType** ustawiono `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ustawiono `ErrorMessage`, ten element Określa identyfikator komunikatu o błędzie. Zobacz [ciągu lokalizacji identyfikatorów](localization-string-ids.md) szczegółowy wykaz `UxElement` identyfikatorów.|
 
 

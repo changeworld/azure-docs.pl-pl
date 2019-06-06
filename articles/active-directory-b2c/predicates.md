@@ -2,20 +2,20 @@
 title: Predykaty i PredicateValidations — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Konta społecznościowego oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eff8e2cedd6f9388d811002a622dbcdcd0e7ed6c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714170"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512964"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predykaty i PredicateValidations
 
@@ -42,7 +42,7 @@ Na poniższym diagramie przedstawiono relację między elementami:
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator | Yes | Identyfikator, który jest używany dla predykatu. Inne elementy, można użyć tego identyfikatora w zasadach. |
-| Metoda | Yes | Typ metody do użycia w celu weryfikacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, lub **IsDateRange**. **IsLengthRange** wartość sprawdza, czy długość wartości oświadczeń ciągu w zakresie minimalnej i maksymalnej parametry określone. **MatchesRegex** wartość sprawdza, czy wartość oświadczenia ciąg pasuje do wyrażenia regularnego. **IncludesCharacters** wartość sprawdza, czy wartość oświadczenia ciąg zawiera zestaw znaków. **IsDateRange** wartość sprawdza, czy wartość oświadczenia daty z zakresu określono parametry minimalną i maksymalną. |
+| Metoda | Tak | Typ metody do użycia w celu weryfikacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, lub **IsDateRange**. **IsLengthRange** wartość sprawdza, czy długość wartości oświadczeń ciągu w zakresie minimalnej i maksymalnej parametry określone. **MatchesRegex** wartość sprawdza, czy wartość oświadczenia ciąg pasuje do wyrażenia regularnego. **IncludesCharacters** wartość sprawdza, czy wartość oświadczenia ciąg zawiera zestaw znaków. **IsDateRange** wartość sprawdza, czy wartość oświadczenia daty z zakresu określono parametry minimalną i maksymalną. |
 
 **Predykatu** element zawiera następujące elementy:
 
@@ -183,7 +183,7 @@ Gdy predykaty zdefiniować weryfikacji sprawdzania typu oświadczenia **Predicat
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który służy do sprawdzania poprawności predykatu.  |
+| Identyfikator | Tak | Identyfikator, który służy do sprawdzania poprawności predykatu.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurowanie złożoność hasła

@@ -1,22 +1,22 @@
 ---
-title: 'Szybki start: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer'
-description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer z usługi Logstash.
+title: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
+description: W tym artykule dowiesz się, jak można pozyskać danych (załaduj) w Eksploratorze danych platformy Azure z programu Logstash
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/14/2019
-ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759371"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494539"
 ---
-# <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
+# <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
 
-[Logstash](https://www.elastic.co/products/logstash) to potok przetwarzania danych po stronie serwera typu open source, który pozyskuje dane z wielu źródeł jednocześnie, przekształca dane, a następnie wysyła dane do Twojej ulubionej „przechowalni”. W tym przewodniku Szybki start wyślesz dane do usługi Azure Data Explorer, szybkiej i wysoce skalowalnej usługi eksploracji danych na potrzeby danych dziennika i telemetrycznych. Na początku utworzysz tabelę i mapowanie danych w klastrze testowym, a następnie przekierujesz usługę Logstash w celu wysłania danych do tabeli, a następnie zweryfikowania wyników.
+[Logstash](https://www.elastic.co/products/logstash) to potok przetwarzania danych po stronie serwera typu open source, który pozyskuje dane z wielu źródeł jednocześnie, przekształca dane, a następnie wysyła dane do Twojej ulubionej „przechowalni”. W tym artykule będzie wysyłać dane do Eksploratora danych platformy Azure, czyli usługi eksploracji danych szybka i wysoce skalowalnych danych dzienników i danych telemetrycznych. Na początku utworzysz tabelę i mapowanie danych w klastrze testowym, a następnie przekierujesz usługę Logstash w celu wysłania danych do tabeli, a następnie zweryfikowania wyników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -146,5 +146,4 @@ Uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `logs`:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Pisanie zapytań](write-queries.md)
+* [Pisanie zapytań](write-queries.md)

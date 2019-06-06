@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a160591ef0a47eed097ce8db373878f32965de9b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 18dc3e224df18c900653e4549badcdd93f0df6ec
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247127"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688025"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie optymalizacji i rozwiązywanie problemów z narzędzia AzCopy
 
@@ -52,7 +52,7 @@ Użyj `azcopy env` do sprawdzania bieżącej wartości tej zmiennej.  Jeśli war
 
 ## <a name="change-the-location-of-the-log-files"></a>Zmień lokalizację plików dziennika
 
-Domyślnie pliki dziennika znajdują się w `%USERPROFILE\\.azcopy` folder Windows lub w `$HOME\\.azcopy` folderu na komputerach Mac i Linux. Jeśli potrzebujesz, za pomocą poniższych poleceń, można zmienić tę lokalizację.
+Domyślnie pliki dziennika znajdują się w `%USERPROFILE\\.azcopy` katalogu na Windows lub w `$HOME\\.azcopy` katalogu na komputerach Mac i Linux. Jeśli potrzebujesz, za pomocą poniższych poleceń, można zmienić tę lokalizację.
 
 | System operacyjny | Polecenie  |
 |--------|-----------|
@@ -74,7 +74,7 @@ Narzędzie AzCopy utworzy pliki dziennika i plan dla każdego zadania. Dzienniki
 
 Dzienniki będą zawierać stan błędu (`UPLOADFAILED`, `COPYFAILED`, i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę błędu.
 
-Domyślnie pliki dziennika i plan znajdują się w `%USERPROFILE\\.azcopy` folderu na Windows lub `$HOME\\.azcopy` folderu na komputerach Mac i Linux.
+Domyślnie pliki dziennika i plan znajdują się w `%USERPROFILE\\.azcopy` katalogu Windows lub `$HOME\\.azcopy` katalogu na komputerach Mac i Linux.
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do firmy Microsoft Support (lub tego problemu, obejmujące żadnym podmiotom trzecim), udostępnianie zostały zredagowane wersję polecenie, które chcesz wykonać. Gwarantuje to, że sygnatury dostępu Współdzielonego przypadkowo nie są udostępniane nikomu. Możesz znaleźć zostały zredagowane wersji na początku pliku dziennika.

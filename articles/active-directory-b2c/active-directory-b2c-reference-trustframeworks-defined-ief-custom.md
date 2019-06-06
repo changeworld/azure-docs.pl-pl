@@ -2,20 +2,20 @@
 title: Odwołanie — struktury zaufania w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Temat o zasadach niestandardowych usługi Azure Active Directory B2C i platformy środowiska tożsamości.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20767c8903cd6617db4d37b756c3d8ae95cfb6ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 47e45a7dac8abc65f414fedd0fd910e3a7a78113
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701203"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508822"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definiowanie relacji zaufania struktur za pomocą platformy środowiska tożsamości usługi Azure AD B2C
 
@@ -54,7 +54,7 @@ TFs są linchpins modelu Framework zaufania Otwórz tożsamości programu Exchan
 - **Techniczne zasad do produkcji i użycie informacji o tożsamości cyfrowej, a zatem pomiaru Dowaniu i LOP. Te zasady napisane zazwyczaj obejmują następujące kategorie zasad:**
     - Tożsamość sprawdzania zasad, na przykład: *Jak zdecydowanie jest sprawdzane informacje o tożsamości danej osoby?*
     - Zasady zabezpieczeń, na przykład: *Jak zdecydowanie są informacje o integralności i poufności chronione?*
-    - Zasady ochrony prywatności, na przykład: *Jaki formant użytkownika ma za pośrednictwem osobowe (PII)*?
+    - Zasady ochrony prywatności, na przykład: *Jaki formant użytkownika ma za pośrednictwem osobowe (PII)* ?
     - Przeżywalność zasady, na przykład: *Jeśli dostawca zaprzestaje operacje, jakie ciągłości działania i ochrony danych osobowych funkcji?*
 
 - **Profile techniczne dla celów produkcyjnych i użycie informacji o tożsamości cyfrowej. Tego typu profile uwzględniają:**

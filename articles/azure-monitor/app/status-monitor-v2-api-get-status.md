@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API w wersji 2 Monitora stanu platformy Azure: Pobierz stan | Dokumentacja firmy Microsoft'
-description: Stan monitora v2 interfejsu API odwołania Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
+title: 'Dokumentacja interfejsu API w wersji 2 usługi Azure Monitor stanu: Pobierz stan | Dokumentacja firmy Microsoft'
+description: Dokumentacja interfejsu API w wersji 2 Monitor stanu. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: ff61cf2bfb49a64d2f885cb13fd6c48e32c1f8f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416000"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514303"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Get-ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
 
-W tym dokumencie opisano polecenia cmdlet, który jest dostarczany jako członek [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 > [!IMPORTANT]
 > Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="description"></a>Opis
 
-To polecenie cmdlet jest udostępniana dla rozwiązywania problemów z modułu programu PowerShell w użyciu.
-To polecenie cmdlet będzie zgłaszać informacje o wersji i plików kluczy wymaganych na potrzeby monitorowania.
-Dodatkowe parametry zapewniają dodatkowe raporty dotyczące monitorowania bieżącego stanu.
+Umożliwia Rozwiązywanie problemów z modułu programu PowerShell, który jest używany.
+To polecenie cmdlet będzie zgłaszać informacje o wersji i informacji o plikach kluczy, wymaganych na potrzeby monitorowania.
+Dodatkowe parametry zapewniają dodatkowe raporty dotyczące stanu monitorowania.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
@@ -40,9 +40,9 @@ Dodatkowe parametry zapewniają dodatkowe raporty dotyczące monitorowania bież
 ## <a name="examples"></a>Przykłady
 
 
-### <a name="example-basic-information"></a>Przykład: podstawowe informacje
+### <a name="example-basic-information"></a>Przykład: Podstawowe informacje
 
-Uruchom polecenie: `Get-ApplicationInsightsMonitoringStatus` można pobrać informacji na temat tego modułu danych wyjściowych:
+Uruchom `Get-ApplicationInsightsMonitoringStatus` do wyświetlania informacji na temat bieżącego modułu:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus
@@ -77,11 +77,11 @@ Machine Identifier:
 0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
 ```
 
-### <a name="example-runtime-status"></a>Przykład: stan czasu wykonywania
+### <a name="example-runtime-status"></a>Przykład: Stan czasu wykonywania
 
 Można sprawdzić procesu na komputerze instrumentowane, aby sprawdzić, czy wszystkie biblioteki DLL są ładowane. Jeśli działa monitorowania, co najmniej 12 biblioteki DLL powinny być załadowane.
 
-- Cmd: `Get-ApplicationInsightsMonitoringStatus -InspectProcess`
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -115,19 +115,19 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-## <a name="parameters"></a>Parametry 
+## <a name="parameters"></a>Parametry
 
-### <a name="no-params"></a>(Nie parametrów)
+### <a name="no-parameters"></a>(Brak parametrów)
 
-Przez **domyślne**, to polecenie cmdlet informację o numerach wersji i ścieżki biblioteki DLL wymaganych na potrzeby monitorowania.
+Domyślnie to polecenie cmdlet będzie zgłaszać numery wersji i ścieżki biblioteki DLL wymaganych na potrzeby monitorowania.
 
 Użyj tej opcji, jeśli potrzebujesz do identyfikowania wersji dowolną biblioteką DLL, w tym zestaw SDK usługi Application Insights.
 
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Opcjonalnie**. To polecenie cmdlet zgłasza, jeśli usługi IIS są uruchomione.
-To polecenie cmdlet pobierze również zewnętrznych narzędzi, aby sprawdzić, jeśli odpowiednie biblioteki DLL są ładowane w czasie wykonywania usług IIS.
+**Opcjonalnie**. Użyj tego parametru, aby zgłosić, czy usługi IIS są uruchomione.
+Również pobierze zewnętrznych narzędzi, aby ustalić, czy odpowiednie biblioteki DLL są ładowane w czasie wykonywania usług IIS.
 
 
 Jeśli ten proces nie powiedzie się z jakiegokolwiek powodu, możesz ręcznie uruchom następujące polecenia:
@@ -138,10 +138,10 @@ Jeśli ten proces nie powiedzie się z jakiegokolwiek powodu, możesz ręcznie u
 
 ### <a name="-force"></a>-Force
 
-**Opcjonalnie**. Używany tylko z InspectProcess. Ten przełącznik pominie użytkownika po wyświetleniu monitu Pobierz dodatkowe narzędzia.
+**Opcjonalnie**. Używany tylko z InspectProcess. Aby pominąć monit użytkownika, który pojawia się przed są pobierane dodatkowe narzędzia, użyj tego przełącznika.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
  Wykonuj więcej zadań dzięki v2 Monitora stanu:
- - Użyj zapoznaj się z przewodnikiem [rozwiązywanie](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
+ - Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.

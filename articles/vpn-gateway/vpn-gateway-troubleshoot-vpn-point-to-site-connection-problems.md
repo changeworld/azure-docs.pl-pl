@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2018
+ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457480"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475959"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site
 
@@ -62,7 +62,7 @@ Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatu klient
 
 ### <a name="symptom"></a>Objaw
 
-Kiedy sprawdzasz i nawiązać połączenie z gteway sieci wirtualnej platformy Azure za pomocą protokołu IKEv2 w Windows, otrzymasz następujący komunikat o błędzie:
+Podczas próby połączenia z bramą sieci wirtualnej platformy Azure za pomocą protokołu IKEv2 w Windows, otrzymasz następujący komunikat o błędzie:
 
 **Nie można nawiązać połączenie sieciowe między komputerem a serwerem sieci VPN, ponieważ serwer zdalny nie odpowiada.**
 
@@ -305,7 +305,7 @@ Usuń połączenie sieci VPN typu punkt lokacja, a następnie ponownie zainstalo
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, Usuń stare pliki konfiguracji klienta sieci VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >**, a następnie ponownie uruchom Instalatora klienta sieci VPN .
+Aby rozwiązać ten problem, Usuń stare pliki konfiguracji klienta sieci VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** , a następnie ponownie uruchom Instalatora klienta sieci VPN .
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient sieci VPN typu punkt lokacja nie może rozpoznać nazwę FQDN zasobów w domenie lokalnej
 
