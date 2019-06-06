@@ -157,12 +157,12 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
+| data | obiekt | Dane zdarzenia magazynu obiektów blob. |
 | dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
@@ -173,18 +173,18 @@ Obiekt danych ma następujące właściwości:
 | id | string | Identyfikator zdarzenia. |
 | timestamp | string | Czas, w którym wystąpiło zdarzenie. |
 | action | string | Akcja, która obejmuje podanego zdarzenia. |
-| cel | obiekt | Obiekt docelowy zdarzenia. |
-| żądanie | obiekt | Żądanie, który wygenerował zdarzenie. |
+| target | obiekt | Obiekt docelowy zdarzenia. |
+| request | obiekt | Żądanie, który wygenerował zdarzenie. |
 
 Obiekt docelowy ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | mediaType | string | Typ MIME przywoływanego obiektu. |
-| rozmiar | liczba całkowita | Liczba bajtów treści. Taka sama jak długość pola. |
-| Podsumowanie | string | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
-| Długość | liczba całkowita | Liczba bajtów treści. Taka sama jak rozmiar pola. |
-| repozytorium | string | Nazwa repozytorium. |
+| size | liczba całkowita | Liczba bajtów treści. Taka sama jak długość pola. |
+| digest | string | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
+| length | liczba całkowita | Liczba bajtów treści. Taka sama jak rozmiar pola. |
+| repository | string | Nazwa repozytorium. |
 | tag | string | Nazwa tagu. |
 | name | string | Nazwa wykresu. |
 | version | string | Wersja wykresu. |
