@@ -104,12 +104,12 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| dane | obiekt | Dane zdarzenia wirtualnego Grodzenia. |
+| data | obiekt | Dane zdarzenia wirtualnego Grodzenia. |
 | dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
@@ -119,9 +119,9 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | apiCategory | string | Interfejs API kategorii zdarzenia. |
 | apiName | string | Nazwa interfejsu API zdarzenia. |
-| Problemy | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zwracane są wszystkie problemy, będą nie geometrii zwrócony z odpowiedzią. |
+| issues | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zwracane są wszystkie problemy, będą nie geometrii zwrócony z odpowiedzią. |
 | responseCode | numer | Kod odpowiedzi HTTP |
-| Geometrii | obiekt | Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
+| geometries | obiekt | Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
 
 Obiekt błąd jest zwracany, gdy wystąpi błąd w interfejsie API map. Obiekt błędu ma następujące właściwości:
 
@@ -133,7 +133,7 @@ Obiekt ErrorDetails jest zwracany, gdy wystąpi błąd w interfejsie API map. Sz
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| kod | string | Kod stanu HTTP. |
+| code | string | Kod stanu HTTP. |
 | message | string | Jeśli to możliwe, ludzi, czytelny opis błędu. |
 | innererror | InnerError | Jeśli to możliwe, obiekt zawierający informacje specyficzne dla usługi o błędzie. |
 
@@ -141,14 +141,14 @@ InnerError to obiekt zawierający informacje specyficzne dla usługi o błędzie
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| kod | string | Komunikat o błędzie. |
+| code | string | Komunikat o błędzie. |
 
 Obiekt geometrii wymieniono geometrii identyfikatory wirtualne ogrodzenia, wygasłych względem czasu użytkownika w żądaniu. Obiekt geometrii ma geometrii elementy z następującymi właściwościami: 
 
 | Właściwość | Typ | Opis |
 |:-------- |:---- |:----------- |
-| Identyfikator urządzenia | string | Identyfikator urządzenia. |
-| odległość | string | <p>Odległość od współrzędnych do najbliższej granicy wirtualnym ogrodzeniu. Wynik dodatni oznacza, że współrzędnych znajduje się poza wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się poza wirtualnego ogrodzenia, ale większa niż wartość searchBuffer daleko od najbliższej granicy wirtualnego ogrodzenia, wartość jest 999. Ujemna oznacza, że współrzędnych jest w wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się wewnątrz wielokąta, ale większa niż wartość searchBuffer daleko od najbliższej granicy geofencing, wartość jest-999 = sprawdzanie. Wartość 999 oznacza, że istnieje pewnie współrzędnych znajduje się również poza wirtualnym ogrodzeniu. Wartość oznacza-999 = sprawdzanie, czy jest pewnie współrzędnych jest również w wirtualnym ogrodzeniu.<p> |
+| deviceid | string | Identyfikator urządzenia. |
+| distance | string | <p>Odległość od współrzędnych do najbliższej granicy wirtualnym ogrodzeniu. Wynik dodatni oznacza, że współrzędnych znajduje się poza wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się poza wirtualnego ogrodzenia, ale większa niż wartość searchBuffer daleko od najbliższej granicy wirtualnego ogrodzenia, wartość jest 999. Ujemna oznacza, że współrzędnych jest w wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się wewnątrz wielokąta, ale większa niż wartość searchBuffer daleko od najbliższej granicy geofencing, wartość jest-999 = sprawdzanie. Wartość 999 oznacza, że istnieje pewnie współrzędnych znajduje się również poza wirtualnym ogrodzeniu. Wartość oznacza-999 = sprawdzanie, czy jest pewnie współrzędnych jest również w wirtualnym ogrodzeniu.<p> |
 | geometryid |string | Unikatowy identyfikator identyfikuje geometrii wirtualnym ogrodzeniu. |
 | nearestlat | numer | Szerokość najbliższy punkt geometrii. |
 | nearestlon | numer | Długość geograficzna najbliższego punktu geometrii. |
@@ -159,7 +159,7 @@ Obiekt danych ma następujące właściwości:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | ciąg] | Wyświetla identyfikator geometrii wirtualnego ogrodzenia, który wygasł względem czasu użytkownika w żądaniu. |
-| Geometrii | [] geometrii |Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
+| geometries | [] geometrii |Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
 | invalidPeriodGeofenceGeometryId | ciąg]  | Wyświetla identyfikator geometrii wirtualnego ogrodzenia, który jest nieprawidłowy okres względem czasu użytkownika w żądaniu. |
 | isEventPublished | wartość logiczna | Wartość true, jeśli co najmniej jednego zdarzenia są publikowane w subskrybent zdarzenia usługi Azure Maps, false, jeśli żadne zdarzenie jest publikowany subskrybent zdarzenia usługi Azure Maps. |
 
