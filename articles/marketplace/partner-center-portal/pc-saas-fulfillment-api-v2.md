@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ae477068e2413678d5dd755cb5a7334f85655c74
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259257"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474590"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Interfejsami API usług SaaS realizacji w wersji 2 
 
@@ -774,26 +774,35 @@ Wydawca musi implementować element webhook w tej usłudze SaaS w celu proaktywn
 
 ```json
 {
-    "operationId": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "offer1",
-    "publisherId": "contoso",
-    "planId": "silver",
-    "quantity": "20"  ,
-    "action": "Subscribe",
-    "timeStamp": "2018-12-01T00:00:00"
+  "id": "<this is a Guid operation id, you can call operations API with this to get status>",
+  "activityId": "<this is a Guid correlation id>",
+  "subscriptionId": "<Guid to uniquely identify this resource>",
+  "publisherId": "<this is the publisher’s name>",
+  "offerId": "<this is the offer name>",
+  "planId": "<this is the plan id>",
+  "quantity": "<the number of seats, will be null if not per-seat saas offer>",
+  "timeStamp": "2019-04-15T20:17:31.7350641Z",
+  "action": "Unsubscribe",
+  "status": "NotStarted"  
+
 }
 ```
+Gdy akcja może być jeden z nich: 
+- `Subscribe`, (Jeśli zasób został aktywowany)
+- `Unsubscribe`, (Jeśli zasób został usunięty)
+- `ChangePlan`, (Podczas operacji zmiany w planie została ukończona)
+- `ChangeQuantity`, (Gdy Zmień ilość operacja zostanie ukończona),
+- `Suspend`, (Gdy zasobu zostało zawieszone)
+- `Reinstate`, (Gdy zasobów zostały przywrócone po zawieszeniu)
 
-Gdy akcja może być jedną z następujących czynności: 
-- `Subscribe`  (Jeśli zasób został aktywowany)
-- `Unsubscribe` (Jeśli zasób został usunięty)
-- `ChangePlan` (Podczas operacji zmiany w planie została ukończona)
-- `ChangeQuantity` (Podczas operacji ilość zmian została ukończona)
-- `Suspend` (Jeśli zasób jest wstrzymane)
-- `Reinstate` (Gdy zasobów zostały przywrócone po zawieszeniu)
+Gdy stan może być jeden z nich: <br>
+        -NotStarted, <br>
+        — W toku, <br>
+        — Powiodło się, <br>
+        — Nie powiodło się, <br>
+        -Konflikt <br>
 
+Informacje z możliwością działania są Stany sukces i Niepowodzenie w powiadomieniu elementu webhook. Cykl życia operacji jest z NotStarted stan końcowy, takich jak powodzenie/niepowodzenie/konflikt. Jeśli pojawi się nie uruchomić lub w toku, Kontynuuj, aby wysłać żądanie dotyczące stanu za pośrednictwem operacji GET interfejsu API do momentu operacji osiągnie stan końcowy przed podjęciem działania. 
 
 ## <a name="mock-api"></a>Testowanie interfejsu API
 

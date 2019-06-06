@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0a6b48dbba232c06945b00d5107581d8d0c017b0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987694"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472416"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
@@ -110,14 +110,13 @@ Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 
 
 Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure Files przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, która znajduje się w tym samym centrum danych jako udziału plików. Upewnij się, że [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu. 
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Odmowa dostępu" podczas przeglądania do udziału plików platformy Azure w portalu
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Błąd autoryzacji" podczas przeglądania do udziału plików platformy Azure w portalu
 
 Po przejściu do udziału plików platformy Azure w portalu, może zostać wyświetlony następujący błąd:
 
-Odmowa dostępu  
-Nie masz dostępu  
-Prawdopodobnie nie masz dostępu do tej zawartości. Aby uzyskać dostęp, skontaktuj się z właścicielem.  
+Błąd autoryzacji  
+Nie masz dostępu
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Przyczyny 1: Twoje konto użytkownika nie ma dostępu do konta magazynu
 

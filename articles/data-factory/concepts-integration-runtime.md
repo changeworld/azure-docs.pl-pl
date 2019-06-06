@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232432"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427141"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -114,11 +114,11 @@ Lokalizacja IR definiuje lokalizację zaplecza obliczeniowego i w praktyce lokal
 ### <a name="azure-ir-location"></a>Lokalizacja środowiska IR Azure
 Dla środowiska IR Azure można ustawić konkretną lokalizację. W takim przypadku przenoszenie danych lub wysyłanie działania nastąpi w tym określonym regionie. 
 
-Jeśli użyjesz automatycznego określania dla środowiska IR Azure, co jest ustawieniem domyślnym, wystąpią następujące sytuacje: 
+Jeśli zdecydujesz się używać **automatyczne rozwiązanie środowiska Azure IR** co jest ustawieniem domyślnym 
 
 - W przypadku działania kopiowania usługa ADF automatycznie spróbuje jak najlepiej wykryć magazyn danych ujścia i źródła w celu wybrania najlepszej lokalizacji w tym samym regionie (jeśli jest dostępna) lub w najbliższym regionie w obrębie tego samego obszaru geograficznego. Jeśli tych obiektów nie da się wykryć, zostanie użyty region fabryki danych.
 
-- W przypadku wykonywania działania wyszukiwania/uzyskiwania metadanych i wysyłania działania przekształcania usługa ADF użyje środowiska IR w regionie fabryki danych.
+- Do wykonania działania Lookup/GetMetadata/usuwania (znany także jako działania potoku), działanie przekształcania wysyłki (znany także jako zewnętrzny działania) i tworzenie operacji (połączenie testowe, przeglądania listy folderów i listy tabel danych w wersji zapoznawczej), usługi ADF użyje środowiska IR w regionie fabryki danych.
 
 - Dla przepływu danych usługi ADF użyje środowiska IR w regionie fabryki danych. 
 

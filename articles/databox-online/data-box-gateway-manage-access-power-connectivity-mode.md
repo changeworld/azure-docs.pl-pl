@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 72d3455f37d0ccef0dd5b7d8882f70670de07572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44343f6bc6f48a6caa056f3336af55613a1e74d0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60755471"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476800"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Zarządzanie dostępem, power i tryb łączności bramy pola danych platformy Azure
 
@@ -54,6 +54,48 @@ Resetowanie przepływ pracy wymaga od użytkownika przywołać stare hasło i je
 
     ![Resetowanie hasła](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
+## <a name="manage-resource-access"></a>Zarządzanie dostępem do zasobów
+
+Aby utworzyć usługi bramy okno usługi Edge i dane pole danych, usługi IoT Hub i zasobu usługi Azure Storage, musisz mieć uprawnienia, jako współautora lub nowszej na poziomie grupy zasobów. Należy również odpowiednich dostawców zasobów do zarejestrowania. Wszelkie operacje, które obejmują klucz aktywacji i poświadczenia wymagane są również uprawnienia do interfejsu API usługi Azure Active Directory Graph. Te ustawienia zostały opisane w poniższych sekcjach.
+
+### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>Zarządzanie uprawnieniami Microsoft Azure Active Directory interfejsu API programu Graph
+
+Podczas generowania klucza aktywacji urządzenia krawędź pola danych lub wykonywanie żadnych operacji wymagających poświadczeń, musisz mieć uprawnienia do interfejsu API usługi Azure Active Directory Graph. Operacje, które są wymagane poświadczenia mogą być:
+
+-  Tworzenie udziału ze skojarzonego konta magazynu.
+-  Tworzenie użytkowników, którzy mogą uzyskiwać dostęp do udziałów na urządzeniu.
+
+Musisz mieć `User` dostępu w dzierżawie usługi Active Directory, ponieważ muszą mieć możliwość `Read all directory objects`. Nie może być użytkownikiem-gościem, ponieważ nie mają uprawnień do `Read all directory objects`. Jeśli jesteś gościa, a następnie operacje, takie jak generowanie klucza aktywacji tworzenia udziału na urządzeniu z systemem krawędź pola danych, tworzenia użytkownika wszystkie powiedzie się.
+
+Aby uzyskać więcej informacji na temat jak zapewnić dostęp użytkowników do interfejsu API usługi Azure Active Directory Graph, zobacz [domyślne dostępu dla administratorów, użytkowników i użytkowników-gości](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+
+### <a name="register-resource-providers"></a>Rejestrowanie dostawcy zasobów
+
+Aby udostępnić zasób na platformie Azure (w modelu usługi Azure Resource Manager), należy dostawcy zasobów, który obsługuje tworzenie tego zasobu. Na przykład aby udostępnić maszynę wirtualną, należy dostawcy zasobów "Microsoft.Compute" dostępnych w ramach subskrypcji.
+ 
+Dostawcy zasobów są rejestrowane na poziomie subskrypcji. Domyślnie wszystkie nowej subskrypcji platformy Azure jest wstępnie zarejestrowane przy użyciu listy dostawców powszechnie używanych zasobów. Dostawca zasobów dla "Microsoft.DataBoxEdge" nie znajduje się na tej liście.
+
+Nie musisz udzielić uprawnień dostępu do poziomu subskrypcji dla użytkowników można było utworzyć zasobów, takich jak "Microsoft.DataBoxEdge" w obrębie swojej grupy zasobów, które mają prawa właściciela, tak długo, jak dostawców zasobów dla tych zasobów jest już zarejestrowany.
+
+Przed przystąpieniem do tworzenia wszystkich zasobów, upewnij się, że dostawca zasobów jest zarejestrowany w ramach subskrypcji. Dostawca zasobów nie jest zarejestrowany, należy się upewnić, że użytkownik tworzący nowy zasób ma wystarczających praw, aby zarejestrować dostawcę wymaganych zasobów na poziomie subskrypcji. Jeśli nie masz jeszcze ustanowionego także, zostanie wyświetlony następujący błąd:
+
+*Subskrypcja <Subscription name> nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft.DataBoxEdge.*
+
+
+Aby uzyskać listę dostawców zarejestrowanych zasobów w bieżącej subskrypcji, uruchom następujące polecenie:
+
+```PowerShell
+Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
+```
+
+Dla urządzenia krawędź pola danych `Microsoft.DataBoxEdge` powinny być rejestrowane. Aby zarejestrować `Microsoft.DataBoxEdge`, administrator subskrypcji należy uruchomić następujące polecenie:
+
+```PowerShell
+Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
+```
+
+Aby uzyskać więcej informacji na temat sposobu rejestrowania dostawcy zasobów, zobacz [rozwiązać błędy rejestracji dostawcy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+
 ## <a name="manage-connectivity-mode"></a>Zarządzanie tryb łączności
 
 Oprócz to domyślny tryb normalny urządzenia można również uruchomić w trybie częściowo odłączone lub odłączony. Każde z tych trybów opisano poniżej:
@@ -80,7 +122,7 @@ Aby zmienić tryb urządzenia, wykonaj następujące kroki:
 
 ## <a name="manage-power"></a>Zarządzanie energią
 
-Można zamknąć lub ponownie uruchomić urządzenie fizyczne i wirtualne przy użyciu lokalnego Interfejsu w przeglądarce. Zaleca się, aby przed ponownym uruchomieniem przełączyć udziały w tryb offline na hoście, a następnie na urządzeniu. Ta akcja minimalizuje możliwości uszkodzenie danych.
+Można zamknąć lub ponownie uruchomić urządzenie wirtualne przy użyciu lokalnego Interfejsu w przeglądarce. Zaleca się, aby przed ponownym uruchomieniem przełączyć udziały w tryb offline na hoście, a następnie na urządzeniu. Ta akcja minimalizuje możliwości uszkodzenie danych.
 
 1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konserwacji > Ustawienia zasilania**.
 2. Kliknij przycisk **zamknięcia** lub **ponowne uruchomienie** w zależności od tego, co zamierzasz wykonać.

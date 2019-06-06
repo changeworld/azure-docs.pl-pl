@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0ff97eb17dcf2625e1bb75dabf3e4a9686b5b85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725712"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427843"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -39,8 +39,7 @@ Certyfikaty składają się z trzech zasoby powiązane ze sobą połączone ze s
 -   Proces wdrażania jako administratora IT, administrator infrastruktury kluczy publicznych lub każdy zarządzania kontami z urzędów certyfikacji dla danej firmy (np. Contoso) to warunek wstępny do korzystania z certyfikatów usługi Key Vault.  
     Następujące urzędy certyfikacji są bieżącego dostawcy utworzyły z usługą Key Vault:  
     -   Firmy DigiCert - Key Vault oferuje OV-SSL certyfikatów przy użyciu firmy DigiCert.  
-    -   GlobalSign - Key Vault oferuje OV-SSL certyfikatów za pomocą GlobalSign  
-    -   WoSign - Key Vault oferuje OV-SSL lub certyfikatów protokołu SSL z Weryfikacją z WoSign na podstawie ustawienia skonfigurowane przez klienta na jego koncie WoSign w portalu WoSign.  
+    -   Globaltrust - Key Vault oferuje OV-SSL certyfikatów za pomocą Globaltrust.  
 
 **Krok 2** — administrator konta dla dostawcy urzędu certyfikacji powoduje utworzenie poświadczenia do użycia przez usługę Key Vault, aby się zarejestrować, odnowienia i korzystać z certyfikatów protokołu SSL za pośrednictwem usługi Key Vault.
 

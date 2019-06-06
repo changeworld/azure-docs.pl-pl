@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872763"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496865"
 ---
 # <a name="vpn-gateways-overview"></a>Przegląd bram sieci VPN
 
@@ -36,6 +36,8 @@ Przypadki użycia dla sieci VPN typu lokacja lokacja, obejmują:
 * Korzystanie z usługi Active Directory w środowisku lokalnym jako źródła tożsamości vCenter.
 * Wygodne transfer szablony maszyn wirtualnych, obrazów ISO i innych plików z zasobów lokalnych do serwera vCenter chmury prywatnej.
 * Dostępność obciążeń w chmurze prywatnej z sieci lokalnej.
+
+![Topologii połączeń sieci VPN typu lokacja-lokacja](media/cloudsimple-site-to-site-vpn-connection.png)
 
 ### <a name="cryptographic-parameters"></a>Parametry kryptograficzne
 

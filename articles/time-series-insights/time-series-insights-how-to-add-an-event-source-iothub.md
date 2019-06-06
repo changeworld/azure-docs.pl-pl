@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79d2062f0e174eeb7550205f90c1650185e1623a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 955b0e36c63b181e2fe6d2f87e7b015196fceff9
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236985"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455606"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum IoT do środowiska usługi Time Series Insights
 
@@ -34,13 +34,13 @@ W tym artykule opisano sposób dodawania źródła zdarzeń, która odczytuje da
 
 ### <a name="add-a-consumer-group-to-your-iot-hub"></a>Dodaj grupę odbiorców do usługi IoT hub
 
-Aplikacje używać grupy odbiorców do pobierania danych z usługi Azure IoT Hub. Podaj dedykowanej grupy klientów, jest używany tylko przez to środowisko usługi Time Series Insights niezawodnie odczytu danych z usługi IoT hub.
+Aplikacje używać grupy odbiorców do pobierania danych z usługi Azure IoT Hub. Niezawodne odczytać danych z usługi IoT hub, podaj dedykowanej grupy klientów, które jest używane tylko przez to środowisko usługi Time Series Insights.
 
 Aby dodać nową grupę odbiorców do Centrum IoT:
 
 1. W witrynie Azure portal należy znaleźć i otworzyć Centrum IoT hub.
 
-1. W menu w obszarze **ustawienia**, wybierz opcję **wbudowanych punktach końcowych**, a następnie wybierz pozycję **zdarzenia** punktu końcowego.
+1. W obszarze **ustawienia**, wybierz opcję **wbudowanych punktach końcowych**, a następnie wybierz pozycję **zdarzenia** punktu końcowego.
 
    [![Na stronie punkty końcowe w kompilacji wybierz przycisk zdarzenia](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
 
@@ -65,36 +65,37 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
 1. Wybierz wartość dla **opcji importowania**:
 
    * Jeśli masz już Centrum IoT hub w jednej z Twoich subskrypcji, wybierz opcję **korzystanie z usługi IoT Hub z dostępnych subskrypcji**. Ta opcja jest to najłatwiejsza metoda.
-   * Jeśli usługi IoT hub jest zewnętrzne w stosunku do subskrypcji, lub jeśli chcesz wybrać opcje zaawansowane, wybierz **ustawienia Centrum IoT Hub zapewniają ręcznie**.
+   
+     [![Wybierz opcje w okienku źródło zdarzeń](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
 
-   [![Wybierz opcje w okienku źródło zdarzeń](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
+    * W poniższej tabeli opisano właściwości, które są wymagane dla **korzystanie z usługi IoT Hub z dostępnych subskrypcji** opcji:
 
-1. W poniższej tabeli opisano właściwości, które są wymagane dla **korzystanie z usługi IoT Hub z dostępnych subskrypcji** opcji:
+       [![Nowe okienko źródłowej zdarzenia - właściwości, aby ustawić w usłudze IoT Hub w korzystanie z opcji subskrypcje dostępne](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
 
-   [![Nowe okienko źródłowej zdarzenia - właściwości, aby ustawić w usłudze IoT Hub w korzystanie z opcji subskrypcje dostępne](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
+       | Właściwość | Opis |
+       | --- | --- |
+       | Identyfikator subskrypcji | Wybierz subskrypcję, w której utworzono Centrum IoT hub.
+       | Nazwa centrum IoT | Wybierz nazwę Centrum IoT hub.
+       | Nazwa zasad Centrum IoT | Wybierz zasady dostępu współdzielonego. Zasady dostępu współdzielonego można znaleźć na karcie Ustawienia Centrum IoT. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **połączenie z usługą** uprawnienia.
+       | Klucz zasad Centrum IoT | Klucz jest wypełniana wstępnie.
+       | Grupa konsumentów Centrum IoT | Grupa odbiorców odczytuje zdarzenia z usługi IoT hub. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia.
+       | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
+       | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do usługi IoT hub. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
 
-   | Właściwość | Opis |
-   | --- | --- |
-   | Identyfikator subskrypcji | Wybierz subskrypcję, w której utworzono Centrum IoT hub.
-   | Nazwa centrum IoT | Wybierz nazwę Centrum IoT hub.
-   | Nazwa zasad Centrum IoT | Wybierz zasady dostępu współdzielonego. Zasady dostępu współdzielonego można znaleźć na karcie Ustawienia Centrum IoT. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **połączenie z usługą** uprawnienia.
-   | Klucz zasad Centrum IoT | Klucz jest wypełniana wstępnie.
-   | Grupa konsumentów Centrum IoT | Grupa odbiorców odczytuje zdarzenia z usługi IoT hub. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia.
-   | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
-   | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do usługi IoT hub. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
+    * Jeśli usługi IoT hub jest zewnętrzne w stosunku do subskrypcji, lub jeśli chcesz wybrać opcje zaawansowane, wybierz **ustawienia Centrum IoT Hub zapewniają ręcznie**.
 
-1. W poniższej tabeli opisano wymaganych właściwości dla **ustawienia Centrum IoT Hub zapewniają ręcznie**:
+      W poniższej tabeli opisano wymaganych właściwości dla **ustawienia Centrum IoT Hub zapewniają ręcznie**:
 
-   | Właściwość | Opis |
-   | --- | --- |
-   | Identyfikator subskrypcji | Subskrypcja, w której utworzono Centrum IoT hub.
-   | Grupa zasobów | Nazwa grupy zasobów, w której utworzono Centrum IoT hub.
-   | Nazwa centrum IoT | Nazwa centrum IoT hub. Podczas tworzenia Centrum IoT hub, wprowadzono nazwę Centrum IoT.
-   | Nazwa zasad Centrum IoT | Zasady dostępu współdzielonego. Na karcie Ustawienia Centrum IoT, można utworzyć zasady dostępu współdzielonego. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **połączenie z usługą** uprawnienia.
-   | Klucz zasad Centrum IoT | Klucz dostępu współdzielonego, który jest używany do uwierzytelniania dostępu do przestrzeni nazw usługi Azure Service Bus. Wprowadź tutaj klucz podstawowy lub pomocniczy.
-   | Grupa konsumentów Centrum IoT | Grupa odbiorców odczytuje zdarzenia z usługi IoT hub. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia.
-   | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
-   | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do usługi IoT hub. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
+       | Właściwość | Opis |
+       | --- | --- |
+       | Identyfikator subskrypcji | Subskrypcja, w której utworzono Centrum IoT hub.
+       | Grupa zasobów | Nazwa grupy zasobów, w której utworzono Centrum IoT hub.
+       | Nazwa centrum IoT | Nazwa centrum IoT hub. Podczas tworzenia Centrum IoT hub, wprowadzono nazwę Centrum IoT.
+       | Nazwa zasad Centrum IoT | Zasady dostępu współdzielonego. Na karcie Ustawienia Centrum IoT, można utworzyć zasady dostępu współdzielonego. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **połączenie z usługą** uprawnienia.
+       | Klucz zasad Centrum IoT | Klucz dostępu współdzielonego, który jest używany do uwierzytelniania dostępu do przestrzeni nazw usługi Azure Service Bus. Wprowadź tutaj klucz podstawowy lub pomocniczy.
+       | Grupa konsumentów Centrum IoT | Grupa odbiorców odczytuje zdarzenia z usługi IoT hub. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia.
+       | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
+       | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do usługi IoT hub. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
 
 1. Dodanie dedykowane usługi Time Series Insights konsumenta grupy nazwy dodanego do usługi IoT hub.
 

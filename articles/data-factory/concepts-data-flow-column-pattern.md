@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5131329f6675bc86374f5a5c081e0aaa7d36c0fe
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155237"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430756"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Usługi Azure data factory mapowanie danych przepływów wzorców kolumny
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Kilka przekształcenia przepływ danych fabryki danych platformy Azure obsługuje pomysł wzorców"kolumny", w którym można utworzyć kolumny szablonu na podstawie wzorców zamiast nazwy ustalonych kolumn. Wzorce, aby dopasować kolumny dla transformacji zamiast zadania xact, nazwy określonego pola, można użyć tej funkcji w ramach Konstruktor wyrażeń. Wzorce są przydatne w przypadku przychodzących pola źródłowego zmieniają się często, szczególnie w przypadku zmiany kolumny w plikach tekstowych lub bazy danych NoSQL. Ten stan jest czasami określane jako "Schematu dryfu".
+Kilka przekształcenia przepływ danych fabryki danych platformy Azure obsługuje pomysł wzorców"kolumny", w którym można utworzyć kolumny szablonu na podstawie wzorców zamiast nazwy ustalonych kolumn. Można użyć tej funkcji w ramach Konstruktor wyrażeń wzorce, aby dopasować kolumny dla transformacji zamiast nazwy dokładnie tak samo, określonych pól. Wzorce są przydatne w przypadku przychodzących pola źródłowego zmieniają się często, szczególnie w przypadku zmiany kolumny w plikach tekstowych lub bazy danych NoSQL. Ten stan jest czasami określane jako "Schematu dryfu".
 
 ![wzorce kolumny](media/data-flow/columnpattern2.png "wzorców kolumny")
 
@@ -27,6 +27,6 @@ Podczas dodawania wyrażenia do transformacji, który akceptuje wzorców, wybier
 
 Podczas kompilowania wzorców kolumny szablonów, należy użyć `$$` w wyrażeniu do reprezentowania odwołań do każdego pola dopasowane ze strumienia danych wejściowych.
 
-Jeśli zdecydujesz się użyć jednej z funkcji wyrażenia regularnego Konstruktor wyrażeń, następnie później służy $1, 2 USD, $3... odwołania subpatterns dopasowane z z wyrażeniem regularnym.
+Jeśli zdecydujesz się użyć jednej z funkcji wyrażenia regularnego Konstruktor wyrażeń, następnie później można $1, 2 USD $3... można odwoływać się do podrzędnego wzorców zgodny z z wyrażeniem regularnym.
 
-Przykładem scenariusza wzorzec kolumny używa SUM z serią przychodzących pola. Łączny obliczenia SUM w agregacji są transformacji. Można następnie Suma na każdego dopasowania z typów pól tej dopasowania "integer" i następnie użyj $$, aby odwoływać się do każdego dopasowania w wyrażeniu.
+Przykładem scenariusza wzorzec kolumny używa SUM z serią przychodzących pola. Łączny obliczenia SUM w agregacji są transformacji. Następnie można suma każdego dopasowania typy pól, które odpowiada "integer", a następnie użyj $$ można odwoływać się do każdego dopasowania w wyrażeniu.

@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242533"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734515"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnozowanie i rozwiązywanie problemów w przypadku korzystania z usługi Azure Cosmos DB wyzwalacza w usłudze Azure Functions
 
@@ -88,6 +88,12 @@ Jeśli okaże się, że niektóre zmiany nie zostały w ogóle odebrane przez wy
 Ponadto można sprawdzić poprawności tego scenariusza, jeśli wiesz, ile wystąpień aplikacja funkcji platformy Azure masz uruchomiony. Jeśli sprawdzanie kontenera dzierżawy i liczby elementów dzierżawy w ramach odrębne wartości `Owner` właściwość w nich powinna być równa liczbie wystąpień aplikacji funkcji. W przypadku kolejnych właścicieli znanych wystąpień aplikacja funkcji platformy Azure, oznacza to, że tych dodatkowych właścicieli są jedną "kradzież" zmiany.
 
 Jeden łatwy sposób obejścia problemu tej sytuacji jest stosowanie `LeaseCollectionPrefix/leaseCollectionPrefix` do funkcji z nową/inną wartość lub alternatywnie testowanie za pomocą nowego kontenera dzierżawy.
+
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Powiązanie może być przeprowadzone wyłącznie z IReadOnlyList<Document> lub JArray
+
+Ten błąd występuje, jeśli projekt usługi Azure Functions (lub jakiegokolwiek projektu, do którego istnieje odwołanie) zawiera ręczne odwołanie NuGet do usługi Azure Cosmos DB SDK w innej wersji niż udostępniane przez [Azure Functions Cosmos DB Extension](./troubleshoot-changefeed-functions.md#dependencies).
+
+Aby obejść to sytuacji, Usuń ręczne odwołanie NuGet, który został dodany i pozwól odwołanie do zestawu SDK usługi Azure Cosmos DB rozwiązać za pomocą pakietu Azure Functions Cosmos DB Extension.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

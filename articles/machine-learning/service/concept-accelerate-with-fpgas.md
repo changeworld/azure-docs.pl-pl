@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9204b0d8513d4adbb9c93be94284d7d46de41e06
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851026"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479568"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Co to jest brama programowalny tablic (FPGA)
 
@@ -80,7 +80,7 @@ Aby rozpocząć wdrażanie przeszkolone modele DNN do układów FPGA w chmurze p
 
 Zapoznaj się z tych filmów wideo i blogach:
 
-+ [Sprzęt w Hiperskali: Uczenie Maszynowe na dużą skalę na platformie Azure i FPGA: Build 2018 (wideo)](https://www.youtube.com/watch?v=BMgQAHIx2eY)
++ [Sprzęt w Hiperskali: Uczenie Maszynowe na dużą skalę na platformie Azure i FPGA: Build 2018 (wideo)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
 + [W firmie Microsoft na układach FPGA konfigurowalnej chmury (wideo)](https://channel9.msdn.com/Events/Build/2017/B8063)
 

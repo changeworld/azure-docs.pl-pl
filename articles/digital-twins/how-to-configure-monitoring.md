@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 3c35633c9b25eafdb738ed591c7c7022fbd8149a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967825"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730318"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -40,17 +40,17 @@ Rejestrowanie aktywności bliźniaki cyfrowych platformy Azure jest domyślnie w
 1. Wybieranie wystąpienia Twins cyfrowych platformy Azure.
 1. Wybieranie **dziennika aktywności** Aby wyświetlić ekran w panelu:
 
-    ![Dziennik aktywności][1]
+    [![Dziennik aktywności](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 Aby uzyskać Zaawansowane rejestrowanie aktywności:
 
 1. Wybierz **dzienniki** opcję, aby wyświetlić **przegląd działań usługi Log Analytics**:
 
-    ![Zaznaczenie][2]
+    [![Wybór](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. **Przegląd działań usługi Log Analytics** podsumowuje dane dzienników aktywności podstawowe:
 
-    ![Przegląd działań usługi log analytics][3]
+    [![Przegląd działań usługi log analytics]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >Użyj **dzienników aktywności** dla szybki wgląd w zdarzenia na poziomie subskrypcji.
@@ -70,12 +70,12 @@ Aby włączyć dzienniki diagnostyczne na potrzeby wystąpienie:
 1. Przenieś zasób w witrynie Azure portal.
 1. Kliknij przycisk **ustawień diagnostycznych**:
 
-    ![Ustawienia diagnostyczne jeden][4]
+    [![Ustawienia diagnostyczne jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Kliknij przycisk **Włącz diagnostykę** do zbierania danych (jeśli wcześniej nie jest włączona).
 1. Wprowadź żądane pola i wybierz, jak i, w którym zostaną zapisane dane:
 
-    ![Ustawienia diagnostyczne dwóch][5]
+    [![Ustawienia diagnostyczne dwóch](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Dzienniki diagnostyczne często są zapisywane przy użyciu [usługi Azure File Storage](../storage/files/storage-files-deployment-guide.md) i udostępniane [dzienniki usługi Azure Monitor](../azure-monitor/log-query/get-started-portal.md). Można wybrać obu opcji.
 
@@ -99,24 +99,24 @@ Pełny dziennik zapytań jest oferowana w ramach [dzienniki usługi Azure Monito
 1. Wyszukaj **usługi Log Analytics** w witrynie Azure portal.
 1. Zostanie wyświetlony dostępnych **obszaru roboczego usługi Log Analytics** wystąpień. Wybierz jedną, a następnie wybierz pozycję **dzienniki** zapytania:
 
-    ![Analiza dziennika][6]
+    [![Usługa log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. Jeśli nie masz jeszcze **obszaru roboczego usługi Log Analytics** wystąpienia, możesz utworzyć obszar roboczy, klikając **Dodaj** przycisku:
 
-    ![Tworzenie pakietu OMS][7]
+    [![Tworzenie pakietu OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 Raz swoje **obszaru roboczego usługi Log Analytics** aprowizowano wystąpienie, możesz użyć zaawansowanych zapytań, aby odnaleźć wpisów w dziennikach wielokrotności lub wyszukiwanie przy użyciu kryteriów określonych za pomocą **Zarządzanie dziennikami**:
 
-   ![Zarządzanie dziennikami][8]
+   [![Zarządzanie dziennikami](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wprowadzenie do zapytań](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **obszaru roboczego usługi Log Analytics** po raz pierwszy.
 
-Dzienniki platformy Azure Monitor udostępnia również zaawansowane błąd i usług powiadomień o alertach, które można wyświetlić, klikając **diagnozowanie i rozwiązywanie problemów**:
+Dzienniki monitora platformy Azure udostępniają zaawansowane błędów i usług powiadomień o alertach, które można wyświetlić, klikając **diagnozowanie i rozwiązywanie problemów**:
 
-   ![Alert i błąd powiadomienia][9]
+   [![Alert i błąd powiadomienia](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Użyj **obszaru roboczego usługi Log Analytics** do historii dziennika zapytań dla wielu aplikacji funkcji, subskrypcji lub usług.
@@ -132,14 +132,3 @@ Twins cyfrowych platformy Azure obsługuje również specyficzne dla aplikacji, 
 - Dowiedz się więcej na konfiguracji ustawień diagnostyki platformy Azure, czytając [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 - Przeczytaj więcej na temat [dzienniki usługi Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
-
-<!-- Images -->
-[1]: media/how-to-configure-monitoring/activity-log.png
-[2]: media/how-to-configure-monitoring/activity-log-select.png
-[3]: media/how-to-configure-monitoring/log-analytics-overview.png
-[4]: media/how-to-configure-monitoring/diagnostic-settings-one.png
-[5]: media/how-to-configure-monitoring/diagnostic-settings-two.png
-[6]: media/how-to-configure-monitoring/log-analytics.png
-[7]: media/how-to-configure-monitoring/log-analytics-oms.png
-[8]: media/how-to-configure-monitoring/log-analytics-management.png
-[9]: media/how-to-configure-monitoring/log-analytics-notifications.png

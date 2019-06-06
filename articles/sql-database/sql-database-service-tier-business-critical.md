@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e9f40e749642f2025c5298df74f9d8ff87aec14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90989a9105405f1784b3be9ab59f55cd3433feaf
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709338"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479226"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Warstwa biznesowa krytyczne — usługi Azure SQL Database
 
@@ -49,6 +49,7 @@ Warstwy usług krytycznych biznesowych jest przeznaczona dla aplikacji, które w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- Znajdź właściwości zasobów (liczba rdzeni, we/wy, pamięć) warstwy krytyczne dla działania firmy w [wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedyncze bazy danych w [modelu rdzenia wirtualnego](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier) lub [modelu jednostek DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), lub elastyczne Pula w [modelu rdzenia wirtualnego](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) i [modelu jednostek DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
 - Dowiedz się więcej o [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [Hiperskali](sql-database-service-tier-hyperscale.md) warstw.
 - Dowiedz się więcej o [usługi Service Fabric](../service-fabric/service-fabric-overview.md).
 - Aby uzyskać więcej opcji wysokiej dostępności i odzyskiwania po awarii, zobacz [ciągłość prowadzenia działalności biznesowej](sql-database-business-continuity.md).

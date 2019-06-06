@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 8af545f5700e90303562174a3c27cc5438b28e24
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925879"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730466"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -56,7 +56,7 @@ W przypadku warstw podstawowa i standardowa usługi Notification Hubs prawidłow
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak uaktualnić lub obniżyć wersję mojego Centrum lub przestrzeni nazw do innej warstwy
 
-Przejdź do  **[Azure Portal]** > **przestrzenie nazw usługi Notification Hubs** lub **usługi Notification Hubs**. Wybierz zasób, aby zaktualizować, a następnie przejdź do **warstwy cenowej**. Należy uwzględnić następujące wymagania:
+Przejdź do  **[Azure Portal]**  > **przestrzenie nazw usługi Notification Hubs** lub **usługi Notification Hubs**. Wybierz zasób, aby zaktualizować, a następnie przejdź do **warstwy cenowej**. Należy uwzględnić następujące wymagania:
 
 * Zaktualizowano warstwę cenową dotyczy *wszystkich* centrów w przestrzeni nazw, pracujemy z użyciem.
 * Liczba Twoich urządzeń przekracza limit wynoszący warstwy której jesteś powrót do subskrypcji, należy usunąć urządzenia, zanim obniżanie poziomu.
@@ -69,13 +69,13 @@ Zestawy SDK serwera są dostępne dla platformy .NET, Java, Node.js, PHP i Pytho
 
 ### <a name="which-client-platforms-do-you-support"></a>Platformach klienckich, które są obsługiwane?
 
-Powiadomienia wypychane są obsługiwane w przypadku [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android — Chiny (przy użyciu usługi Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) i Android, [aplikacji dla programu Chrome](notification-hubs-chrome-push-notifications-get-started.md), i [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Aby uzyskać więcej informacji, przejdź do [Samouczki wprowadzenie centra powiadomień] strony.
+Powiadomienia wypychane są obsługiwane w przypadku [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android — Chiny (przy użyciu usługi Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) i Android, i [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Aby uzyskać więcej informacji, przejdź do [Samouczki wprowadzenie centra powiadomień] strony.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Są obsługiwane wiadomość SMS, wiadomości e-mail lub powiadomienia w sieci web?
 
 Usługa Notification Hubs jest przeznaczony głównie do wysyłania powiadomień do aplikacji mobilnych. Zapewnia ona e-mail lub SMS możliwości komunikatów. Jednak platformy innych firm, które dostarczają te możliwości można zintegrować z usługą Notification Hubs wysyłać natywne powiadomienia push przy użyciu [Mobile Apps].
 
-Usługa Notification Hubs nie udostępniają usługi dostarczania powiadomień wypychanych w przeglądarce, gotowe. Klienci mogą zaimplementować tę funkcję za pomocą biblioteki SignalR na obsługiwanych platformach po stronie serwera. Jeśli chcesz wysyłać powiadomienia do aplikacji przeglądarki w piaskownicy usługi dla programu Chrome, zobacz [samouczek aplikacji dla programu Chrome].
+Usługa Notification Hubs nie udostępniają usługi dostarczania powiadomień wypychanych w przeglądarce, gotowe. Klienci mogą zaimplementować tę funkcję za pomocą biblioteki SignalR na obsługiwanych platformach po stronie serwera. 
 
 ### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>W jaki sposób aplikacje mobilne i związane z usługi Azure Notification Hubs i kiedy ich używać?
 
@@ -210,7 +210,6 @@ Można także programowo uzyskać dostęp do metryk. Aby uzyskać więcej inform
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Usługa Notification Hubs interfejsów API REST]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Samouczki wprowadzenie centra powiadomień]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Samouczek aplikacji dla programu Chrome]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Wskazówki dotyczące rejestracji wewnętrznej bazy danych]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Wskazówki dotyczące rejestracji wewnętrznej bazy danych 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

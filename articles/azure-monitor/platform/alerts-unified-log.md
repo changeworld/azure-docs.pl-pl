@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 5/31/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 194fba3296359f5f7d29a37425a938fe08f1332b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae35c735cffeb8cd85af1f32bb2d14ede6dc6b69
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345898"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427418"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 
@@ -27,13 +27,13 @@ Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Wyszukiwania reguł alertów dzienników — definicja i typów
 
-Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w celu automatycznego wykonywania określonych zapytań dotyczących dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, jest tworzony rekord alertu. Reguła może wtedy automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md). [Współautor monitorowania platformy Azure](../../azure-monitor/platform/roles-permissions-security.md) roli do tworzenia, modyfikowania i aktualizowania alertów dzienników mogą być wymagane; wraz z dostępem i zapytania praw wykonywania dla cele analytics reguły alertu lub zapytanie alertu. Jeśli tworzenie użytkownika nie ma dostępu do wszystkich cele analytics reguły alertu lub zapytanie alertu — tworzenie reguł może zakończyć się niepowodzeniem lub reguł alertów dzienników będą wykonywane przy użyciu wyniki częściowe.
+Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w celu automatycznego wykonywania określonych zapytań dotyczących dzienników w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, jest tworzony rekord alertu. Reguła może wtedy automatycznie uruchomić jedną lub więcej akcji przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md). [Współautor monitorowania platformy Azure](../../azure-monitor/platform/roles-permissions-security.md) roli do tworzenia, modyfikowania i aktualizowania alertów dzienników mogą być wymagane; wraz z dostępem i zapytania praw wykonywania dla cele analytics reguły alertu lub zapytanie alertu. W przypadku, gdy tworzenie użytkownika nie ma dostępu do wszystkich cele analytics reguły alertu lub zapytanie alertu — tworzenie reguł może zakończyć się niepowodzeniem lub reguł alertów dzienników będą wykonywane przy użyciu wyniki częściowe.
 
 Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
 
 - **Zaloguj się zapytania**.  Zapytanie, które jest uruchamiane za każdym razem, gdy reguła alertu jest uruchamiana.  Rekordów zwróconych przez tę kwerendę są używane do określenia, czy alert jest wyzwalany. Zapytania usługi Analytics może być określony obszar roboczy usługi Log Analytics lub aplikacji usługa Application Insights i nawet rozciągać się na [wiele zasobów usługi Log Analytics i usługi Application Insights](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) podany użytkownik ma dostęp, a także prawa do wszystkich zapytań zasoby. 
     > [!IMPORTANT]
-    > Alert dziennika **nie** obsługuje [funkcje](../log-query/functions.md) ze względów bezpieczeństwa. Również [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) pomocy technicznej w alertów dzienników dla usługi Application Insights i log alertów dotyczących [usługi Log Analytics skonfigurowane za pomocą interfejsu API scheduledQueryRules](../../azure-monitor/platform/alerts-log-api-switch.md) tylko.
+    > [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) pomocy technicznej w alertów dzienników dla usługi Application Insights i log alertów dotyczących [usługi Log Analytics skonfigurowane za pomocą interfejsu API scheduledQueryRules](../../azure-monitor/platform/alerts-log-api-switch.md) tylko.
 
     Niektóre polecenia analitycznych i kombinacji są niezgodne z użycia w alertów dzienników; Aby wyświetlić więcej szczegółów, [rejestrowania alertów zapytań w usłudze Azure Monitor](../../azure-monitor/platform/alerts-log-query.md).
 
@@ -45,8 +45,8 @@ Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
 
 Reguły wyszukiwania dziennika można je [dzienników monitora platformy Azure](../../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), mogą być dwojakiego rodzaju. Każdy z tych typów opisano szczegółowo w kolejnych sekcjach.
 
-- **[Liczba wyników](#number-of-results-alert-rules)**. Pojedynczy alert utworzony, jeśli liczba rekordów zwracanych przez wyszukiwanie w dzienniku przekracza określoną liczbę.
-- **[Pomiar metryki](#metric-measurement-alert-rules)**.  Alert został utworzony dla każdego obiektu w wynikach wyszukiwania dziennika z wartościami, które przekracza określoną wartość progową.
+- **[Liczba wyników](#number-of-results-alert-rules)** . Pojedynczy alert utworzony, jeśli liczba rekordów zwracanych przez wyszukiwanie w dzienniku przekracza określoną liczbę.
+- **[Pomiar metryki](#metric-measurement-alert-rules)** .  Alert został utworzony dla każdego obiektu w wynikach wyszukiwania dziennika z wartościami, które przekracza określoną wartość progową.
 
 Dostępne są następujące różnice między typami reguły alertu.
 
@@ -76,7 +76,7 @@ Alert będzie uruchomi zapytanie co 5 minut, 30 minut danych — do wyszukiwania
 
 ### <a name="metric-measurement-alert-rules"></a>Reguły alertu pomiaru metryki
 
-**Pomiar metryki** reguł alertów Utwórz alert dla każdego obiektu w zapytaniu o wartości, który przekroczy określony próg.  Mają one różne następujące różnice względem **liczba wyników** reguły alertów.
+**Pomiar metryki** reguł alertów Utwórz alert dla każdego obiektu w zapytaniu o wartości, które przekracza określoną wartość progową, a określony warunek wyzwalacza. W odróżnieniu od **liczba wyników** reguły, alertów **pomiar metryki** reguł alertów działają, gdy wynik analizy udostępnia szeregów czasowych. Mają one różne następujące różnice względem **liczba wyników** reguły alertów.
 
 - **Funkcję agregacji**: Określa, obliczenia, które jest wykonywane i potencjalnie liczbową pola do zagregowania.  Na przykład **count()** zwraca liczbę rekordów w zapytaniu **avg(CounterValue)** zwraca średnią pola CounterValue dla interwału. Funkcja agregująca w zapytaniu muszą być o nazwie wywoływana: Elementy AggregatedValue i podaj wartość liczbową. 
 
@@ -127,16 +127,16 @@ Ponieważ alert jest skonfigurowany do wyzwalacza opartego na łączna liczba na
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Wyszukiwania reguł alertów dzienników — uruchomieniu którego i stanu
 
-Reguły alertów wyszukiwania dziennika działa na logice uzależniona przez użytkownika, zgodnie z konfiguracji i zapytania analizy niestandardowych używane. Od logiki dokładny stan lub powód, dlaczego należy reguła alertów wyzwalacza jest hermetyzowany w zapytania usługi Analytics — które mogą się różnić w poszczególnych reguł alertów dzienników. Alertów platformy Azure ma ograniczone informacje o określonej podstawowej przyczyny wewnątrz wyników dziennika, gdy warunek próg reguły alertów wyszukiwania dziennika jest osiągnięciu lub przekroczeniu. Dlatego alertów dzienników są określane na jak stanu bez i nastąpi za każdym razem, gdy wyniki wyszukiwania dziennika jest wystarczająca do przekracza próg określony w alertów dzienników z *liczba wyników* lub *pomiar metryki* typu warunku. I reguł alertów dzienników będą stale zachować wyzwalania, tak długo, jak warunek alertu jest spełnione dzięki wynik zapytania analizy niestandardowych; bez alert co wprowadzenie rozwiązane. Jako logikę dokładne przyczyny niepowodzenia monitorowania są wyświetlane jako znaki wewnątrz zapytania usługi analytics, dostarczone przez użytkownika; istnieje nie oznacza, że przez alerty platformy Azure do ostatecznie ustalić, czy wyniki wyszukiwania dziennika nie spełniają próg wskazuje rozwiązania problemu.
+Reguły alertów wyszukiwania dziennika działa na logice uzależniona przez użytkownika, zgodnie z konfiguracji i zapytania analizy niestandardowych używane. Ponieważ logikę monitorowania tym dokładny stan lub powód, dlaczego reguły alertów wyzwalanych jest hermetyzowany zapytania usługi analytics — które mogą się różnić w poszczególnych reguł alertów dzienników. Alerty platformy Azure ma deficytowe informacje o określonej podstawowej przyczyny (lub) scenariusza podczas warunkiem progu reguły alertów wyszukiwania dziennika jest osiągnięciu lub przekroczeniu obliczania. Ten sposób alertów dzienników są określane jako bez stanu. I reguł alertów dzienników będą nadal wyzwalania, tak długo, jak warunek alertu jest spełnione dzięki wynik zapytania niestandardowe analizy. Bez alert co wprowadzenie uda się rozwiązać, ponieważ logika dokładne przyczyny niepowodzenia monitorowania są wyświetlane jako znaki wewnątrz zapytania usługi analytics, dostarczone przez użytkownika. Nie, obecnie jest żaden mechanizm służący do usługi Azure Monitor Alerts ostatecznie ustalenie przyczyny są rozwiązane.
 
-Teraz załóżmy mamy reguł alertów dzienników o nazwie *Contoso-dziennika — Alert*, ponieważ na konfiguracji w [przykładu przewidzianego dla alertu dziennika typu Liczba wyników](#example-of-number-of-records-type-log-alert). 
-- O 13:05 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika uzyskane rekordy 0; poniżej progu i dlatego nie wyzwalania alertu. 
-- W następnej iteracji o 13:10 podczas Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 5; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](../../azure-monitor/platform/action-groups.md) skojarzone. 
-- O 13:15 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 2; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](../../azure-monitor/platform/action-groups.md) skojarzone.
-- Teraz w następnej iteracji o 13:20 po Contoso-dziennika — Alert został wykonany przez alert dotyczący platformy Azure, wyniki wyszukiwania dziennika udostępniany ponownie 0 rekordów poniżej progu i dlatego nie wyzwalania alertu.
+Pozwala nam Zobacz taki sam jak praktyczny przykład. Przyjęto założenie, mamy reguł alertów dzienników o nazwie *Alert w przypadku dziennika Contoso*, ponieważ na konfiguracji w [przykładu przewidzianego dla alertu dziennika typu Liczba wyników](#example-of-number-of-records-type-log-alert) — gdy niestandardowe zapytanie alertu jest przeznaczona do wyszukania 500 Kod wyniku w dziennikach.
 
-Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie może określić, podstawowych problemów, które wystąpienie 1:10 zostaną zachowane, a jeśli jest netto nowe błędy; kwerendy dostarczone przez użytkownika może biorąc pod uwagę wcześniej rekordów - alertów platformy Azure mogą być się. Dlatego aby błąd po stronie ostrożnie, Contoso-dziennika — Alert jest wykonywany o 13:15, skonfigurowany [grupy akcji](../../azure-monitor/platform/action-groups.md) jest uruchamiany ponownie. Teraz o 13:20 Jeśli żadne rekordy nie są widoczne — alertów platformy Azure nie może być pewność, że przyczyną rekordy ma został rozwiązany; Dlatego Contoso-dziennika — Alert będzie nie zmieni się na rozwiązany w pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysłane z informacją, rozpoznawanie alertu.
+- O 13:05 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika zwróciło zero rekordów z kodem wynik o 500. Ponieważ zero jest poniżej progu, a alert nie jest uruchamiany.
+- W następnej iteracji o 13:10 podczas Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika, należy podać pięć rekordów z kodem wynik jako 500. Ponieważ pięciu przekracza wartość progową, a alert jest wyzwalany przy użyciu skojarzonych z nimi działań wyzwalane.
+- O 13:15 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podać dwa rekordy z kodem 500 wynik. Ponieważ dwie przekracza wartość progową, a alert jest wyzwalany przy użyciu skojarzonych z nimi działań wyzwalane.
+- Teraz w następnej iteracji o 13:20 po Contoso-dziennika — Alert został wykonany przez alert dotyczący platformy Azure, wyniki wyszukiwania dziennika udostępniany ponownie zero rekordów z kodem 500 wynik. Ponieważ zero jest poniżej progu, a alert nie jest uruchamiany.
 
+Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie można określić czy podstawowych problemów, które wystąpienie 1:10 zostaną zachowane, a jeśli jest netto nowe błędy. Kwerendy dostarczone przez użytkownika może biorąc pod uwagę wcześniej rekordów - alertów platformy Azure mogą być się. Od logiki alertu jest hermetyzowany w zapytanie alertu — więc dwa rekordy z kodem 500 wynik widoczne o 13:15 może lub nie może być już widoczne o 13:10. Dlatego aby err boku ostrzeżenie, gdy Contoso-dziennika — Alert jest wykonywana o 13:15, skonfigurowanych akcji jest wyzwalane ponownie. Teraz o 13:20 po zero rekordy są widoczne kod wyniku 500 - alertów platformy Azure nie może mieć pewności, że przyczyną kod wyniku 500, które wystąpienie 1:10 PM i 13:15 czasu teraz został rozwiązany i alertów monitora platformy Azure bez obaw można wywnioskować problemów 500 Błąd nie występuje z tego samego powodu ponownie s. Dlatego Contoso-dziennika — Alert będzie nie zmieni się na rozwiązany w pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysłane z informacją, rozpoznawanie alertu. Zamiast tego użytkownika, który rozumie dokładnie warunku lub Przyczyna logiki osadzone w zapytania usługi analytics można [Oznacz alert jako zamknięty](alerts-managing-alert-states.md) zgodnie z potrzebami.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Cennik i rozliczenia alertów dziennika
 
@@ -154,6 +154,8 @@ Aby usunąć zasoby ukryte scheduleQueryRules utworzone dla Naliczanie opłat za
 
 - Albo użytkownik może [Przełącz preferencji interfejsu API za reguły alertów w obszarze roboczym usługi Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) i bez utraty ich reguł alertów i monitorowania przeniesienia do usługi Azure Resource Manager zgodne [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Dzięki temu wyeliminować pamięciach pseudo ukryte reguł alertów do rozliczeń.
 - Lub jeśli użytkownik nie chce przełączyć preferencji interfejsu API, użytkownik będzie musiał **Usuń** oryginalnego harmonogramu i przy użyciu akcji alertu [starszej wersji interfejsu API programu Log Analytics](api-alerts.md) lub usunąć w [witryny Azure portal oryginalny reguł alertów dzienników](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
+
+Dodatkowo dla zasobów ukryte scheduleQueryRules utworzonych dla Naliczanie opłat za reguły alertów za pomocą [starszej wersji interfejsu API programu Log Analytics](api-alerts.md), wszelkie operacja modyfikacji, takie jak PUT zakończy się niepowodzeniem. Jako `microsoft.insights/scheduledqueryrules` typu pseudo reguły mają zastosowanie do celu rozliczeń reguły alertów utworzone za pomocą [starszej wersji interfejsu API programu Log Analytics](api-alerts.md). Powinna być podejmowana z każdej modyfikacji reguły alertu przy użyciu [starszej wersji interfejsu API programu Log Analytics](api-alerts.md) (lub) użytkownik może [Przełącz preferencji interfejsu API dla reguł alertów](../../azure-monitor/platform/alerts-log-api-switch.md) używać [scheduledQueryRules interfejsu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) Zamiast tego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

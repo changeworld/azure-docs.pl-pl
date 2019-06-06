@@ -2,20 +2,20 @@
 title: Dodawanie oświadczenia i dostosowywanie z użytkownikiem za pomocą zasad niestandardowych — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak dostosować dane wejściowe użytkownika i Dodaj oświadczeń dla podróży rejestracji lub logowania w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768009"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507560"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie oświadczenia i dostosowywanie danych wejściowych za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C użytkownika
 
@@ -263,7 +263,7 @@ Następujące elementy są używane do definiowania oświadczenia:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera dzierżawy usługi Azure AD.
 3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **rejestracje aplikacji**.
-4. Wybierz **struktura środowiska tożsamości (wersja zapoznawcza)**.
+4. Wybierz **struktura środowiska tożsamości (wersja zapoznawcza)** .
 5. Wybierz **przekazywanie niestandardowych zasadach**, a następnie przekaż pliki dwóch zasad, które zostały zmienione.
 2. Wybierz zasady rejestracji lub logowania, które możesz przekazać i kliknąć pozycję **Uruchom teraz** przycisku.
 3. Powinien móc zarejestrować się przy użyciu adresu e-mail.

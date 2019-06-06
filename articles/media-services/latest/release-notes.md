@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385143"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688650"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -36,11 +36,18 @@ Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do prz
 
 ## <a name="may-2019"></a>Maja 2019 r
 
-### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS w wersji 4 lub nowszym pomocy technicznej w funkcji dynamicznego tworzenia pakietów 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Monitor Obsługa w usłudze Azure Media Services dzienniki diagnostyczne i metryki
 
-Dodano HLS (w wersji 4 lub nowszej) obsługuje w funkcji dynamicznego tworzenia pakietów dla zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków.
+Usługa Azure Monitor umożliwia teraz wyświetlanie danych telemetrycznych emmited danych przez usługę Media Services.
 
-Aby uzyskać więcej informacji, zobacz [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md).
+* Użyj dzienników diagnostycznych usługi Azure Monitor do monitorowania żądań wysyłanych przez punkt końcowy dostarczanie klucza usługi. 
+* Monitoruj metryki emitowane przez usługę Media Services [punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md).   
+
+Aby uzyskać więcej informacji, zobacz [usługi Media Services monitora, metryk i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md).
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Multi ścieżki audio obsługi w funkcji dynamicznego tworzenia pakietów 
+
+Podczas przesyłania strumieniowego zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków, [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) obsługuje teraz multi ścieżki audio HLS danych wyjściowych (w wersji 4 lub nowszy).
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea, pary regionalne jest otwarty dla usługi Media Services 
 

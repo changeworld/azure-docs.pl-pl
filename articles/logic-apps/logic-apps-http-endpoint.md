@@ -1,29 +1,25 @@
 ---
-title: Wywoływanie, wyzwalanie lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Wywoływanie, wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP — Azure Logic Apps
 description: Konfigurowanie punktów końcowych HTTP do wywołania wyzwalacza lub zagnieżdżanie przepływów pracy dla usługi Azure Logic Apps
 services: logic-apps
-keywords: przepływy pracy, punktów końcowych HTTP
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: integration
+author: ecfan
+ms.author: klam; LADocs
+ms.reviewer: jehollan, klam, LADocs
+manager: carmonm
+ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
+ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: klam; LADocs
-ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304280"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495053"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Wywoływanie, wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Wywołanie, wyzwalacza lub zagnieżdżonych przepływów pracy, za pomocą punktów końcowych HTTP w usłudze Azure Logic Apps
 
 Synchroniczne punktów końcowych HTTP należy udostępnić jako wyzwalacze aplikacji logiki natywnie, tak, aby może wyzwalać i wywoływanie aplikacji logiki przy użyciu adresu URL. Można także zagnieżdżać przepływów pracy aplikacji logiki, za pomocą wzorca wywoływalne punkty końcowe.
 
@@ -249,7 +245,7 @@ Odpowiedzi korzystać z tych właściwości:
 | --- | --- |
 | statusCode |Określa kod stanu HTTP do odpowiadania na żądania przychodzącego. Ten kod może być prawidłowym stanem kodu, który rozpoczyna się od 2xx, 4xx lub 5xx. Kody stanu 3xx nie są dozwolone. |
 | Nagłówki |Definiuje dowolną liczbę nagłówków do uwzględnienia w odpowiedzi. |
-| treść |Określa obiekt treści, która może być ciąg, obiekt JSON lub zawartości nawet binarnej przywoływany w poprzednim kroku. |
+| Treść |Określa obiekt treści, która może być ciąg, obiekt JSON lub zawartości nawet binarnej przywoływany w poprzednim kroku. |
 
 Oto jak schematu JSON wygląda teraz **odpowiedzi** akcji:
 

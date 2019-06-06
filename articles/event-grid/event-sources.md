@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257950"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735005"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w usłudze Azure Event Grid
 
@@ -140,6 +140,15 @@ Subskrybowanie zdarzeń usługi Azure Maps w celu reagowania na zdarzenia w wirt
 | [Reagowanie na zdarzenia usługi Azure Maps za pomocą usługi Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Przegląd integrowania usługi Azure Maps z usługi Event Grid. |
 | [Samouczek: Konfigurowanie wirtualnego ogrodzenia](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ten samouczek przeprowadzi Cię przez podstawowe kroki konfigurowania geofencingu przy użyciu usługi Azure Maps. Azure Event Grid umożliwia przesyłanie strumieniowe wyników wirtualnego ogrodzenia i skonfigurować powiadomienia na podstawie wyników w wirtualnym ogrodzeniu. |
 | [Schemat zdarzeń](event-schema-azure-maps.md) | Pokazuje pola w zdarzeniach usługi Azure Maps. |
+
+## <a name="app-configuration"></a>Konfiguracja aplikacji
+Subskrybowanie do zdarzeń konfiguracji aplikacji usługi Azure w celu reagowania na zdarzenia modyfikacji pary klucz wartość.
+
+|Stanowisko | Opis |
+|---------|---------|
+| [Reagowanie na zdarzenia konfiguracji aplikacji platformy Azure przy użyciu usługi Event Grid](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Omówienie integracji konfiguracji aplikacji platformy Azure z usługą Event Grid. |
+| [Szybki Start: kierowanie zdarzeń usługi konfiguracji aplikacji platformy Azure do niestandardowego internetowego punktu końcowego przy użyciu wiersza polecenia platformy Azure](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Pokazuje, jak wysyłać zdarzenia konfiguracji aplikacji platformy Azure do elementu WebHook przy użyciu wiersza polecenia platformy Azure. |
+| [Schemat zdarzeń](event-schema-app-configuration.md) | Pokazuje pola w zdarzeniach konfiguracji aplikacji platformy Azure. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 7631a2d6aef2efedf30c0b9015913c89949d4c29
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b149ba2bccb4bfb6f459b177096afcccbbfc3051
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506959"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742784"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
 
@@ -69,6 +69,7 @@ Działanie węzłów wirtualnej jest stopniu zależą od zestawu funkcji usługi
 * [Aliasy hosta](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenty](../container-instances/container-instances-exec.md#restrictions) dla exec w usłudze ACI
 * [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nie wdroży zasobników wirtualnego węzła
+* [Węzły systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS)](windows-container-cli.md) nie są obsługiwane razem z wirtualnych węzłów. Wirtualne węzły umożliwia planowanie kontenerów systemów Windows Server bez potrzeby węzłów systemu Windows Server w klastrze AKS.
 
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
@@ -280,7 +281,7 @@ Zainstaluj `curl` w zasobnik przy użyciu `apt-get`:
 apt-get update && apt-get install -y curl
 ```
 
-Teraz uzyskiwać dostęp do sieci za pomocą pod adres `curl`, takich jak *http://10.241.0.4*. Podaj własne wewnętrzny adres IP, które są wyświetlane w ciągu poprzednich `kubectl get pods` polecenia:
+Teraz uzyskiwać dostęp do sieci za pomocą pod adres `curl`, takich jak *http://10.241.0.4* . Podaj własne wewnętrzny adres IP, które są wyświetlane w ciągu poprzednich `kubectl get pods` polecenia:
 
 ```console
 curl -L http://10.241.0.4

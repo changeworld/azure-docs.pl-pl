@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61280421"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480298"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji sieci web opartych na usługach IIS
 
@@ -60,8 +60,8 @@ W przykładach w tym artykule używamy maszyn wirtualnych VMware za pomocą usł
 
 Scenariusz | Do lokacji dodatkowej | Na platformę Azure
 --- | --- | ---
-Funkcja Hyper-V | Yes | Yes
-VMware | Yes | Yes
+Funkcja Hyper-V | Yes | Tak
+VMware | Yes | Tak
 Serwer fizyczny | Nie | Yes
 Azure|Nie dotyczy|Yes
 
@@ -109,7 +109,7 @@ Jeśli parametry połączenia odwołuje się do maszyny wirtualnej bazy danych p
         </connectionStrings>
         </configuration>
 
-Aby zaktualizować parametry połączenia w warstwie sieci web, Dodaj [skrypt aktualizacji połączenia usług IIS](https://aka.ms/asr-update-webtier-script-classic) po 3 grupy w ramach planu odzyskiwania.
+Aby zaktualizować parametry połączenia w warstwie sieci web, Dodaj [skrypt aktualizacji połączenia usług IIS](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) po 3 grupy w ramach planu odzyskiwania.
 
 #### <a name="site-bindings-for-the-application"></a>Powiązania witryny dla aplikacji
 Każda witryna zawiera informacje o powiązaniu. Informacje o powiązaniu zawiera typ powiązania, adres IP, w którym na serwerze usług IIS nasłuchuje żądań dla witryny, numer portu i nazwy hostów dla witryny. Podczas pracy awaryjnej konieczne może być aktualizowanie tych powiązań, jeśli nie nastąpiła zmiana w adresie IP, która jest skojarzona z nimi.

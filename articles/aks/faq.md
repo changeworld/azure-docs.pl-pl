@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65887368"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514491"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -66,7 +66,7 @@ Jeśli tworzysz zasoby do korzystania z klastra usługi AKS, takich jak konta ma
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Czy mogę przekazać własną nazwę grupy zasobów infrastruktury usługi AKS
 
-Tak. Domyślnie dostawca zasobów usługi AKS automatycznie tworzy grupę zasobów pomocniczych (takich jak *MC_myResourceGroup_myAKSCluster_eastus*) podczas wdrażania. Aby zapewnić zgodność z zasadami firmowymi, zapewniają swoją własną nazwę dla tego klastra zarządzanego (*MC_*) grupy zasobów.
+Tak. Domyślnie dostawca zasobów usługi AKS automatycznie tworzy grupę zasobów pomocniczych (takich jak *MC_myResourceGroup_myAKSCluster_eastus*) podczas wdrażania. Aby zapewnić zgodność z zasadami firmowymi, zapewniają swoją własną nazwę dla tego klastra zarządzanego (*MC_* ) grupy zasobów.
 
 Aby określić własne nazwy grupy zasobów, należy zainstalować [podglądu usługi aks] [ aks-preview-cli] wiersza polecenia platformy Azure w wersji rozszerzenia *wersji 0.3.2* lub nowszej. Podczas tworzenia klastra usługi AKS przy użyciu [tworzenie az aks] [ az-aks-create] poleceń, użyj *— węzeł resource-group* parametru i określ nazwę grupy zasobów. Jeśli użytkownik [używania szablonu usługi Azure Resource Manager] [ aks-rm-template] wdrożyć klaster usługi AKS, można zdefiniować nazwę grupy zasobów za pomocą *nodeResourceGroup* właściwości.
 
@@ -120,7 +120,7 @@ Umowy poziomu usług (SLA) dostawca zgadza się zwrotu klienta kosztu usługi, j
 
 W usłudze AKS, można ustawić `maxPods` wartości podczas tworzenia klastra za korzystanie z szablonów interfejsu wiersza polecenia platformy Azure i usługi Azure Resource Manager. Jednak wymaga wtyczki Kubenet i wtyczki Azure CNI *minimalną wartość* (zweryfikowany w czasie tworzenia):
 
-| Networking | Minimum | Maksimum |
+| Networking | Minimalne | Maksimum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
@@ -128,6 +128,10 @@ W usłudze AKS, można ustawić `maxPods` wartości podczas tworzenia klastra za
 AKS to zarządzana usługa, możemy wdrożyć i zarządzać nią dodatki i zasobników w ramach klastra. W przeszłości, użytkownicy mogą definiować `maxPods` wartości mniejszej niż wartość, która zarządzanych zasobników wymagane do uruchomienia (na przykład, 30). Teraz AKS oblicza minimalną liczbę zasobników za pomocą następującej formuły: ((maxPods lub (maxPods * vm_count)) > minimum zasobników zarządzanych dodatku.
 
 Użytkownicy nie mogą przesłaniać minimum `maxPods` sprawdzania poprawności.
+
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Czy mogę zastosować rabaty rezerwacji platformy Azure do mojego węzłów agenta usługi AKS
+
+Węzły agenta AKS są rozliczane jako standardowe maszyny wirtualne platformy Azure, więc jeśli została zakupiona [Azure rezerwacje] [ reservation-discounts] dla rozmiaru maszyny Wirtualnej, którego używasz w usłudze AKS, których rabaty są automatycznie stosowane.
 
 <!-- LINKS - internal -->
 
@@ -145,6 +149,7 @@ Użytkownicy nie mogą przesłaniać minimum `maxPods` sprawdzania poprawności.
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 
 <!-- LINKS - external -->
 

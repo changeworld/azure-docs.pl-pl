@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978891"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475224"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
@@ -55,7 +55,7 @@ Zostanie wyświetlona strona zarządzania aplikacji usługi App Service.
 
 ### <a name="check-the-pricing-tier"></a>Sprawdzanie warstwy cenowej
 
-W lewym obszarze nawigacji na stronie aplikacji przewiń do sekcji **Ustawienia** i wybierz pozycję **Skaluj w górę (plan usługi App Service)**.
+W lewym obszarze nawigacji na stronie aplikacji przewiń do sekcji **Ustawienia** i wybierz pozycję **Skaluj w górę (plan usługi App Service)** .
 
 ![Menu skalowania w górę](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -118,7 +118,7 @@ Następnie wybierz odpowiednie opcje dla swojej domeny. Zobacz poniższą tabel�
 
 | Ustawienie | Sugerowana wartość | Opis |
 |-|-|-|
-|Ochrona prywatności | Włącz | Zgódź się na "Ochrona prywatności", która jest ujęta w cenie zakupu _za darmo_. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratorów, które nie obsługują ochrony prywatności i są one wyświetlane na **ochrony prywatności** strony. |
+|Ochrona prywatności | Włączenie | Zgódź się na "Ochrona prywatności", która jest ujęta w cenie zakupu _za darmo_. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratorów, które nie obsługują ochrony prywatności i są one wyświetlane na **ochrony prywatności** strony. |
 | Przypisz domyślne nazwy hostów | **www** i **\@** | Wybierz żądaną nazwą hosta powiązania, w razie potrzeby. Po zakończeniu operacji zakupu domeny aplikacji są dostępne w wybranej nazwy hostów. Jeśli aplikacja znajduje się za zaporą [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), widzisz opcję, aby przypisać domeny katalogu głównego (@), ponieważ usługa Traffic Manager jest nie rekordów A pomocy technicznej. Można zmienić przypisania nazwy hosta, po zakończeniu zakupu domen. |
 
 ### <a name="accept-terms-and-purchase"></a>Zaakceptuj warunki i zakupu
@@ -138,13 +138,17 @@ Ponownie **domeny usługi App Service** kliknij **OK**. Gdy trwa operacja, zosta
 
 ### <a name="test-the-hostnames"></a>Testowanie nazwy hostów
 
-Jeśli domyślne nazwy hostów zostały przypisane do aplikacji, zobaczysz również powiadomienie o powodzeniu, dla każdej wybranej nazwy hosta. 
+Jeśli domyślne nazwy hostów zostały przypisane do aplikacji, zobaczysz również powiadomienie o powodzeniu, dla każdej wybranej nazwy hosta.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Zobacz też wybranej nazwy hostów w **domen niestandardowych** strony w **niestandardowe nazwy hostów** sekcji. 
+Zobacz też wybranej nazwy hostów w **domen niestandardowych** strony w **niestandardowe nazwy hostów** sekcji.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+
+> [!NOTE]
+> A **Secure Uwaga** etykiety oznacza domenę niestandardową, że jeszcze nie jest on powiązany z certyfikatu SSL, a każde żądanie HTTPS z przeglądarki do domeny niestandardowej otrzyma i błąd lub ostrzeżenie, w zależności od przeglądarki. Aby skonfigurować powiązania SSL, zobacz [Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service](web-sites-purchase-ssl-web-site.md).
+>
 
 Aby przetestować nazwy hostów, przejdź do listy nazw hostów w przeglądarce. W przykładzie na poprzednim zrzucie ekranu, spróbuj przejść do _kontoso.net_ i _www\.kontoso.net_.
 
@@ -267,7 +271,7 @@ W witrynie Azure portal w menu po lewej stronie wybierz **wszystkich usług** > 
 
 Wybierz domenę dla Ciebie chcesz anulować lub usunąć. 
 
-### <a name="delete-hostname-bindings"></a>Usuń powiązania nazw hostów
+### <a name="delete-hostname-bindings"></a>Usuwanie powiązania nazwy hosta
 
 W menu po lewej stronie w domenie, wybierz **powiązania nazwy hosta**. Poniżej przedstawiono powiązania nazwy hosta z wszystkich usług platformy Azure.
 

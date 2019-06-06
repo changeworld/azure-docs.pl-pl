@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/31/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 865e0679ed05823d115baeb9eea3c01d7fb5f2a5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728025"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428463"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -111,7 +111,7 @@ Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę
 --- | --- | ---
 *.portal.azure.com | Dotyczy globalna platforma Azure. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
 *.portal.azure.us | Dotyczy tylko systemu Azure dla instytucji rządowych. Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Wymagany jest dostęp do adresów URL.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Musisz zainstalować moduł ręcznie na maszynie, która ma łączność z Internetem, a następnie skopiuj modułów do urządzenia. [Dowiedz się więcej, przechodząc do kroku nr 4 w tym przewodniku rozwiązywania problemów](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
+*.oneget.org:443<br/><br/> *.github.com/oneget/oneget<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.azure.microsoft.com<br/><br/> *.Azure.microsoft.com/en-us<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443<br/><br/> *.visualstudio.microsoft.com | Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Wymagany jest dostęp do adresów URL.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Musisz zainstalować moduł ręcznie na maszynie, która ma łączność z Internetem, a następnie skopiuj modułów do urządzenia. [Dowiedz się więcej, przechodząc do kroku nr 4 w tym przewodniku rozwiązywania problemów](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Zainstaluj ręcznie program VMware PowerCLI modułu
@@ -184,7 +184,7 @@ Pełną listę liczników VMware zebrane przez usługę Azure Migrate jest dost�
 
 **Kategoria** |  **Metadata** | **punkt danych vCenter**
 --- | --- | ---
-Szczegóły maszyny | Identyfikator maszyny wirtualnej | vm.Config.InstanceUuid
+Szczegóły maszyny | IDENTYFIKATOR MASZYNY WIRTUALNEJ | vm.Config.InstanceUuid
 Szczegóły maszyny | Nazwa maszyny wirtualnej | Maszyna wirtualna. Config.Name
 Szczegóły maszyny | Identyfikator serwera vCenter | VMwareClient.InstanceUuid
 Szczegóły maszyny |  Opis maszyn wirtualnych |  Maszyna wirtualna. Summary.Config.Annotation
@@ -198,7 +198,7 @@ Szczegóły maszyny | Liczba dysków | vm.Config.Hardware.Device.ToList().FindAl
 Szczegóły maszyny | Lista rozmiar dysku | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk)
 Szczegóły maszyny | Lista kart sieciowych | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualEthernetCard)
 Szczegóły maszyny | Użycie procesora CPU | cpu.usage.average
-Szczegóły maszyny | Użycie pamięci | mem.usage.average
+Szczegóły maszyny | Użycie pamięci przez program | mem.usage.average
 Szczegóły dysku (na dysku) | Wartość klucza na dysku | disk.Key
 Szczegóły dysku (na dysku) | Liczba jednostek dysku | disk.UnitNumber
 Szczegóły dysku (na dysku) | Wartość klucza kontrolera dysku | dysk. ControllerKey.Value

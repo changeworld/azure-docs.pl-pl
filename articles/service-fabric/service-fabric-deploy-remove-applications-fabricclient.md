@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: eb131e07b0cf561f3156744472660852bbd69ec4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b2d88004696515169ffde96b50d2771bcc1a669
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393291"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428133"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Wdrażanie i usunąć aplikacje przy użyciu FabricClient
 > [!div class="op_single_selector"]
@@ -39,15 +39,15 @@ Gdy [typu aplikacja została spakowana][10], jest gotowa do wdrożenia w klastrz
 3. Usuń pakiet aplikacji z magazynu obrazów
 4. Tworzenie instancji aplikacji
 
-Po wdrożeniu aplikacji i wystąpienie jest uruchomione w klastrze, możesz usunąć wystąpienie aplikacji i typu aplikacji. Aby całkowicie usunąć aplikację z klastra obejmuje następujące czynności:
+Po wdrażanie aplikacji i wystąpienie można uruchomić w klastrze, możesz usunąć wystąpienie aplikacji i typu aplikacji. Całkowicie usunąć aplikację z klastra, wykonując następujące czynności:
 
 1. Usuń (lub usuwać) uruchamianie wystąpienia aplikacji
 2. Wyrejestrować typ aplikacji, jeśli nie są już potrzebne
 
-Jeśli używasz programu Visual Studio umożliwiające wdrażanie i debugowanie aplikacji na lokalnego klastra projektowego powyższych kroków są obsługiwane automatycznie za pomocą skryptu programu PowerShell.  Ten skrypt znajduje się w *skrypty* folderu projektu aplikacji. W tym artykule podano ogólne informacje na ten skrypt czynności, aby wykonywać te same operacje poza programem Visual Studio. 
+Jeśli używasz programu Visual Studio umożliwiające wdrażanie i debugowanie aplikacji na lokalnego klastra projektowego powyższych kroków są obsługiwane automatycznie za pomocą skryptu programu PowerShell.  Ten skrypt znajduje się w *skrypty* folderu projektu aplikacji. W tym artykule podano ogólne informacje na ten skrypt czynności, aby zrobić tych samych operacji poza programem Visual Studio. 
  
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
-Łączenie z klastrem, tworząc [FabricClient](/dotnet/api/system.fabric.fabricclient) wystąpienia przed uruchomieniem dowolnych z przykładów kodu w tym artykule. Przykłady łączenia na lokalny klaster projektowy zdalnego klastra lub klastra zabezpieczone przy użyciu usługi Azure Active Directory, X509 certyfikatów lub usługi Windows Active Directory, zobacz [nawiązywanie połączenia z zabezpieczonym klastrem](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Aby połączyć z lokalnego klastra projektowego, uruchom następujące polecenie:
+Łączenie z klastrem, tworząc [FabricClient](/dotnet/api/system.fabric.fabricclient) wystąpienia przed uruchomieniem dowolnych z przykładów kodu w tym artykule. Przykłady łączenia na lokalny klaster projektowy zdalnego klastra lub klastra zabezpieczone przy użyciu usługi Azure Active Directory, X509 certyfikatów lub usługi Windows Active Directory, zobacz [nawiązywanie połączenia z zabezpieczonym klastrem](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Aby połączyć z lokalnego klastra projektowego, uruchom poniższy przykład:
 
 ```csharp
 // Connect to the local cluster.
@@ -55,9 +55,9 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Przekazywanie pakietu aplikacji
-Załóżmy, że zostanie utworzona i tworzenie pakietu aplikacji o nazwie *MyApplication* w programie Visual Studio. Domyślnie nazwa typu aplikacji, które są wymienione w ApplicationManifest.xml jest "MyApplicationType".  Pakiet aplikacji, który zawiera manifest aplikacji konieczne manifesty usługi i pakietów kodu/config/danych, znajduje się w *C:\Users\&lt; nazwa_użytkownika&gt;\Documents\Visual Studio 2017\Projects\ MyApplication\MyApplication\pkg\Debug*.
+Załóżmy, że zostanie utworzona i tworzenie pakietu aplikacji o nazwie *MyApplication* w programie Visual Studio. Domyślnie nazwa typu aplikacji, które są wymienione w ApplicationManifest.xml jest "MyApplicationType".  Pakiet aplikacji, który zawiera manifest aplikacji konieczne manifesty usługi i pakietów kodu/config/danych, znajduje się w *C:\Users\&lt; nazwa_użytkownika&gt;\Documents\Visual Studio 2019\Projects\ MyApplication\MyApplication\pkg\Debug*.
 
-Przekazywanie pakietu aplikacji umieszczane w lokalizacji, który jest dostępny dla wewnętrznych składników usługi Service Fabric. Usługa Service Fabric sprawdza pakiet aplikacji, podczas rejestracji pakietu aplikacji. Jeśli chcesz zweryfikować lokalnie za pomocą pakietu aplikacji (tj. przed przekazaniem), jednak użyć [ServiceFabricApplicationPackage testu](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) polecenia cmdlet.
+Przekazywanie pakietu aplikacji umieszczane w lokalizacji, który jest dostępny dla wewnętrznych składników usługi Service Fabric. Usługa Service Fabric sprawdza pakiet aplikacji, podczas rejestracji pakietu aplikacji. Jednak jeśli chcesz zweryfikować lokalnie za pomocą pakietu aplikacji (czyli przed przekazaniem), użyj [ServiceFabricApplicationPackage testu](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) polecenia cmdlet.
 
 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) interfejs API przekazuje pakiet aplikacji do magazynu obrazów klastra. 
 
@@ -83,7 +83,7 @@ Wiele wystąpień aplikacji mogą być tworzone dla dowolnej wersji danego typu 
 Aby zobaczyć, który o nazwie aplikacje i usługi są uruchomione w klastrze, uruchom [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) i [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) interfejsów API.
 
 ## <a name="create-a-service-instance"></a>Tworzenie wystąpienia usługi
-Można utworzyć wystąpienie usługi z typem usługi przy użyciu [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) interfejsu API.  Jeśli usługa jest zadeklarowany jako domyślnej usługi w manifeście aplikacji, usługa zostanie uruchomiony, jeśli aplikacja zostanie uruchomiony.  Wywoływanie [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) interfejs API usługi, który jest już uruchomiony zwróci wyjątek typu FabricException zawierający kod błędu z wartością FabricErrorCode.ServiceAlreadyExists.
+Można utworzyć wystąpienie usługi z typem usługi przy użyciu [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) interfejsu API.  Jeśli usługa jest zadeklarowany jako domyślnej usługi w manifeście aplikacji, usługa zostanie uruchomiony, jeśli aplikacja zostanie uruchomiony.  Wywoływanie [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) interfejs API usługi, który jest już uruchomiony zwróci wyjątek typu FabricException. Wyjątek będzie zawierać kod błędu z wartością FabricErrorCode.ServiceAlreadyExists.
 
 ## <a name="remove-a-service-instance"></a>Usuń wystąpienie usługi
 Gdy wystąpienie usługi nie jest już potrzebny, możesz go usunąć, uruchamianie wystąpienia aplikacji, wywołując [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) interfejsu API.  
@@ -98,7 +98,7 @@ Gdy wystąpienie aplikacji nie jest już potrzebny, można trwale usunąć ją z
 > Nie można cofnąć tej operacji i nie można odzyskać stan aplikacji.
 
 ## <a name="unregister-an-application-type"></a>Wyrejestrowanie typu aplikacji
-Gdy określoną wersję typu aplikacji nie jest już potrzebny, należy wyrejestrować tej konkretnej wersji typu aplikacji przy użyciu [ServiceFabricApplicationType Wyrejestruj](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) interfejsu API. Wyrejestrowywanie nieużywane wersje aplikacji typy zwalnia miejsca do magazynowania korzystają z magazynu obrazów. Można wyrejestrować wersję typu aplikacji, tak długo, jak aplikacje nie są tworzone dla danej wersji typu aplikacji i żadne uaktualnienia w oczekujących aplikacji odwołują się do tej wersji typu aplikacji.
+Gdy określoną wersję typu aplikacji nie jest już potrzebny, należy wyrejestrować tej konkretnej wersji typu aplikacji przy użyciu [ServiceFabricApplicationType Wyrejestruj](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) interfejsu API. Wyrejestrowywanie nieużywane wersje aplikacji typy zwalnia miejsca do magazynowania korzystają z magazynu obrazów. Można wyrejestrować wersję typu aplikacji, tak długo, jak aplikacje nie są tworzone dla danej wersji typu aplikacji. Typ aplikacji mogą mieć również, żadna aplikacja oczekujących uaktualnień odwołują się do tej wersji typu aplikacji.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage asks for an ImageStoreConnectionString
@@ -141,7 +141,7 @@ Jeśli komputer kliencki znajduje się w regionie innym niż klaster, należy wz
 
 Problem: Przekazywanie pakietu zostało ukończone pomyślnie, ale [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) upłynie limit czasu interfejsu API. Wypróbuj:
 - [Kompresowanie pakietu](service-fabric-package-apps.md#compress-a-package) przed skopiowaniem ich do magazynu obrazów.
-Kompresja zmniejsza rozmiar i liczba plików, który z kolei ogranicza ilość ruchu sieciowego i pracować z tej usługi Service Fabric, należy wykonać. Operacja przekazywania może być niższa, (zwłaszcza, Jeśli dołączysz podczas kompresji), ale rejestru i wyrejestrować typ aplikacji są realizowane szybciej.
+Kompresja zmniejsza rozmiar i liczba plików, który z kolei ogranicza ilość ruchu sieciowego i pracować z tej usługi Service Fabric, należy wykonać. Operacja przekazywania może być niższa, (zwłaszcza, Jeśli dołączysz podczas kompresji), ale rejestrowanie i wyrejestrowywanie aplikacji typu są realizowane szybciej.
 - Określ większego limitu czasu dla [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) interfejsu API za pomocą `timeout` parametru.
 
 ### <a name="deploy-application-package-with-many-files"></a>Wdrażanie pakietu aplikacji przy użyciu wielu plików
@@ -151,7 +151,7 @@ Wypróbuj:
 - Określ większego limitu czasu dla [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) z `timeout` parametru.
 
 ## <a name="code-example"></a>Przykładowy kod
-Poniższy przykład kopiuje pakietu aplikacji do magazynu obrazów, obsługuje typ aplikacji, tworzy wystąpienie aplikacji, tworzy wystąpienie usługi, spowoduje usunięcie wystąpienia aplikacji, przepisy wyrejestrować typ aplikacji i usuwa pakiet aplikacji z magazynu obrazów.
+Poniższy przykład kopiuje pakietu aplikacji do magazynu obrazów i obsługuje typ aplikacji. Następnie przykład tworzy wystąpienie aplikacji i tworzy wystąpienie usługi. Na koniec przykładzie spowoduje usunięcie wystąpienia aplikacji, Wstrzymuje obsługę administracyjną typ aplikacji i usuwa pakiet aplikacji z magazynu obrazów.
 
 ```csharp
 using System;
@@ -179,7 +179,7 @@ static void Main(string[] args)
     string serviceName = "fabric:/MyApplication/Stateless1";
     string imageStoreConnectionString = "file:C:\\SfDevCluster\\Data\\ImageStoreShare";
     string packagePathInImageStore = "MyApplication";
-    string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2017\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
+    string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2019\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
     string serviceType = "Stateless1Type";
 
     // Connect to the cluster.

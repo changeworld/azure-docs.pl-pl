@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 05/30/2019
-ms.openlocfilehash: 94309a019800b560cf6731d84cea324932e3f357
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4f1dd0bfc0637c6681b513860a63df2b8c35fe5e
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398547"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430854"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Model współdziałania z usługą Azure Machine Learning
 
@@ -462,7 +462,7 @@ Objaśnienie można wdrażać wraz z oryginalnym modelu i może służyć w czas
 
 Uczenie maszynowe automatycznych zawiera pakiety do interpretacji funkcji znaczenie w modelach skonfigurowanych pod kątem automatycznego. Ponadto scenariusze klasyfikacji umożliwiają pobieranie funkcję klasy na poziomie ważności. Istnieją dwie metody, aby włączyć to zachowanie, w ramach uczenia maszynowego automatyczne:
 
-* Aby włączyć funkcję znaczenie dla modelu uczonego zespołu, użyj [ `explain_model()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkcji.
+* Aby włączyć funkcję znaczenie dla modelu uczonego zespołu, użyj [ `explain_model()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkcji.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -471,7 +471,7 @@ Uczenie maszynowe automatycznych zawiera pakiety do interpretacji funkcji znacze
         per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
     ```
 
-* Aby włączyć funkcję znaczenie dla każdego indywidualnego uruchomienia przed szkolenia, ustaw `model_explainability` parametr `True` w `AutoMLConfig` obiektu wraz z dostarczania sprawdzania poprawności danych. Następnie użyj [ `retrieve_model_explanation()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkcji.
+* Aby włączyć funkcję znaczenie dla każdego indywidualnego uruchomienia przed szkolenia, ustaw `model_explainability` parametr `True` w `AutoMLConfig` obiektu wraz z dostarczania sprawdzania poprawności danych. Następnie użyj [ `retrieve_model_explanation()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkcji.
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation

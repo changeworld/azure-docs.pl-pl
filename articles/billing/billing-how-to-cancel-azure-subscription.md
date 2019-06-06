@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 06/03/2019
 ms.author: banders
-ms.openlocfilehash: 235d93de56289bb2daaa661ee9806732da3b6d6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8f4279d9ac085cdd1ded0dfdda4fad9d3fe12fb8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417608"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480222"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Anulowanie subskrypcji platformy Azure
 
@@ -29,6 +29,7 @@ Zanim anulujesz subskrypcję:
 * Zamknij usługi. Przejdź do [zasoby strony w portalu zarządzania](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), i **zatrzymać** dowolne uruchomione maszyny wirtualne, aplikacje lub innych usług.
 * Należy rozważyć migrację danych. Zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
 * Należy usunąć wszystkie zasoby oraz wszystkie grupy zasobów. Usuwanie, jest wymagany, zanim anulujesz subskrypcję. Każdej grupie zasobów, muszą zostać usunięte osobno. Podczas usuwania grupy zasobów musisz potwierdzić usunięcie, wpisując nazwę grupy zasobów.
+* W przypadku ról niestandardowych, które odwołują się tej subskrypcji w `AssignableScopes`, należy zaktualizować te role niestandardowe, aby usunąć subskrypcję. Próba aktualizacji roli niestandardowej po anulowaniu subskrypcji możesz otrzymać błąd. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów za pomocą ról niestandardowych](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) i [niestandardowych ról dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
 
 Jeśli anulujesz płatnego planu pomocy technicznej systemu Azure, nadal są rozliczane w pozostałej części okres obowiązywania subskrypcji. Aby uzyskać więcej informacji, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/).
 
@@ -43,11 +44,9 @@ Jeśli anulujesz płatnego planu pomocy technicznej systemu Azure, nadal są roz
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Co się stanie po mogę anulować moją subskrypcję?
 
-Anulowanie, rozliczanie kończy się natychmiast. Jednak może potrwać do 10 minut anulowania wyświetlić w portalu.
+Po anulowaniu, rozliczanie kończy się natychmiast. Jednak może potrwać do 10 minut anulowania wyświetlić w portalu. Jeśli anulujesz w trakcie okresu rozliczeniowego, możemy wysyłać łączny rachunek na Data faktury typowe po upływie okresu.
 
-Po tym usługi zostaną wyłączone. Oznacza to maszyny wirtualne są dezalokowany tymczasowe adresy IP są zwalniane, i magazynu jest tylko do odczytu.
-
-Jeśli anulujesz w trakcie okresu rozliczeniowego, możemy wysyłać łączny rachunek na Data faktury typowe po upływie okresu.
+Po anulowaniu, Twoje usługi zostały wyłączone. Oznacza to maszyny wirtualne są dezalokowany tymczasowe adresy IP są zwalniane, i magazynu jest tylko do odczytu.
 
 Poczekamy 90 dni przed trwałe usuwanie danych w przypadku, gdy trzeba uzyskać do niego dostęp, czy zmiany zdania. Nie opłata przechowywania danych. Aby dowiedzieć się więcej, zobacz [Microsoft Trust Center — jak Zarządzamy danych](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 

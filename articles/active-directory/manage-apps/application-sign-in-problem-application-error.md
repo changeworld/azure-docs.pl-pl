@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234fc94a0a2ad3d3bee49853cf1dfc6a805a0166
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: adfc96d2d7abf38c00f32a5d53615bb7c99c320e
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825407"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742384"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Błąd na stronie aplikacji po zalogowaniu
 
@@ -67,9 +67,11 @@ Aby dodać atrybut w konfiguracji usługi Azure AD w celu ich wysłania w odpowi
 
 Następnym razem użytkownik loguje się do aplikacji usługi Azure AD wysyłanie nowy atrybut w odpowiedzi SAML.
 
-## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>Aplikacja oczekuje na format lub inną wartość identyfikatora użytkownika
+## <a name="the-application-doesnt-identify-the-user"></a>Aplikacja nie identyfikacji użytkownika
 
-Logowanie do aplikacji kończy się niepowodzeniem, ponieważ odpowiedź SAML nie ma atrybutów, takich jak role lub aplikacja oczekuje na inny format dla atrybutu EntityID.
+Logowanie do aplikacji kończy się niepowodzeniem, ponieważ odpowiedź SAML nie ma atrybutów, takich jak role lub aplikacja oczekuje innego formatu lub wartość atrybutu EntityID.
+
+Jeśli używasz [usługi Azure AD automatyczna aprowizacja użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) do tworzenia, obsługa i usuwania użytkowników w aplikacji. Następnie sprawdź, czy użytkownik pomyślnie ustanowiono do aplikacji SaaS. Aby uzyskać więcej informacji, zobacz [żadni użytkownicy są aprowizowane do aplikacji galerii usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
 
 ## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Dodaj atrybut w konfiguracji aplikacji usługi Azure AD:
 
@@ -125,7 +127,7 @@ Aby zmienić, które części tokenu SAML są podpisane cyfrowo przez usługę A
 
    * Podpisz odpowiedź SAML
 
-   * Podpisz odpowiedź i potwierdzenie SAML
+   * Zaloguj się odpowiedź i potwierdzenie SAML
 
    * Podpisz potwierdzenie SAML
 

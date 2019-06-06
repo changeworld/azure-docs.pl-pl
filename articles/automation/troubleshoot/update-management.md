@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z zarządzaniem 
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bcc871ecc9413f02545e6aec4caa6342d563b44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787694"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474574"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -78,19 +78,48 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>Scenariusz: Aktualizowanie danych zarządzania, które nie są wyświetlane w dziennikach w usłudze Azure Monitor maszyny
+### <a name="nologs"></a>Scenariusz: Maszyny nie pojawiają się w portalu w obszarze Zarządzanie aktualizacjami
 
 #### <a name="issue"></a>Problem
 
-Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, widzą danych pulsu w dziennikach usługi Azure Monitor do hybrydowego procesu roboczego Runbook, ale nie do zarządzania aktualizacjami.
+Można uruchamiać w następujących scenariuszach:
+
+* Programy telewizyjne maszyny **nieskonfigurowane** w widoku Zarządzanie aktualizacjami maszyny wirtualnej
+
+* Maszyny są nieobecne w widoku zarządzania aktualizacjami konta usługi Automation
+
+* Masz maszyny, które pokazują, jak **nie oceniono** w obszarze **zgodności**, widzą danych pulsu w dziennikach usługi Azure Monitor do hybrydowego procesu roboczego Runbook, ale nie do zarządzania aktualizacjami.
 
 #### <a name="cause"></a>Przyczyna
 
+Może to być spowodowane przez potencjalne problemy z konfiguracją lokalnego lub nieprawidłowo skonfigurowane konfiguracji zakresu.
+
 Hybrydowy proces roboczy elementu Runbook może być konieczne może być ponownie zarejestrowane i ponowna instalacja.
+
+W obszarze roboczym, do której dane osiągnął i zatrzymywanie zapisywanie zostały zdefiniowane limit przydziału.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Wykonaj kroki opisane w temacie [wdrożenia Windows hybrydowego procesu roboczego Runbook](../automation-windows-hrw-install.md) ponowna instalacja hybrydowego procesu roboczego dla Windows lub [wdrożenia procesu roboczego elementu Runbook dla hybrydowych w systemie Linux](../automation-linux-hrw-install.md) dla systemu Linux.
+* Upewnij się, że na swojej maszynie wysyła raporty do prawidłowym obszarem roboczym. Sprawdź, jakie obszar roboczy raporty do komputera. Aby uzyskać instrukcje na temat to sprawdzić, zobacz [sprawdzić połączenie agenta z usługą Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Następnie upewnij się, że to jest obszar roboczy, który jest połączony z Twoim kontem usługi Azure Automation. Aby to sprawdzić, przejdź do swojego konta usługi Automation, a następnie kliknij przycisk **połączony obszar roboczy** w obszarze **powiązane zasoby**.
+
+* Sprawdź maszyn pojawiają się w obszarze roboczym usługi Log Analytics. Uruchom następujące zapytanie w obszarze roboczym usługi Log Analytics jest połączony z Twoim kontem usługi Automation. Jeśli nie widzisz swojej maszynie w wynikach zapytania, ten komputer nie jest przesyłanie interwałów pulsu, co oznacza, że prawdopodobnie występuje problem z konfiguracją lokalnego. Możesz uruchomić narzędzie do rozwiązywania problemów dla [Windows](update-agent-issues.md#troubleshoot-offline) lub [Linux](update-agent-issues-linux.md#troubleshoot-offline) w zależności od systemu operacyjnego, lub można [ponownie zainstalować agenta](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). Jeśli komputer zostaną wyświetlone w wynikach zapytania, a następnie należy bardzo konfiguracji zakresu określonego w następny.
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* Sprawdź, czy problemy z konfiguracją zakresu. [Zakres konfiguracji](../automation-onboard-solutions-from-automation-account.md#scope-configuration) określa Konfigurowanie maszyn dla rozwiązania. Jeśli komputer jest widoczna w obszarze roboczym, ale nie jest wyświetlane, użytkownik będzie musiał skonfigurować konfiguracji zakresu pod kątem maszyn. Aby dowiedzieć się, jak to zrobić, zobacz [dołączać maszyny w obszarze roboczym](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+
+* Jeśli powyższe czynności nie rozwiąże problemu, wykonaj czynności opisane w temacie [wdrożenia Windows hybrydowego procesu roboczego Runbook](../automation-windows-hrw-install.md) ponowna instalacja hybrydowego procesu roboczego dla Windows lub [wdrożenia procesu roboczego elementu Runbook dla hybrydowych w systemie Linux](../automation-linux-hrw-install.md) dla systemu Linux.
+
+* W obszarze roboczym uruchom następujące zapytanie. Jeśli zostanie wyświetlony wynik `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` mają przydział zdefiniowane w obszarze roboczym usługi zostanie osiągnięty, która została zatrzymana, dane są zapisywane. W obszarze roboczym, przejdź do **użycie i szacunkowe koszty** > **zarządzanie ilością danych** i sprawdź limitu przydziału lub Usuń limit przydziału, masz.
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
 
 ## <a name="windows"></a>Windows
 

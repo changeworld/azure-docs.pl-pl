@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693be80e493a0ba259d147f432dc9d6c07ba876d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502250"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427516"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Eksploracja i wizualizacja narzędzia danych na maszynie wirtualnej do nauki o danych
 
-Krok klucza do nauki o danych jest zrozumieć dane. Wizualizacja i narzędzi eksploracji danych pomagają w szybszym interpretacji danych. Poniżej przedstawiono niektóre narzędzia znajdujących się w dostępnym na maszyny DSVM, które ułatwiają ten krok klucza. 
+Krok klucza do nauki o danych jest zrozumieć dane. Wizualizacja i narzędzi eksploracji danych pomagają w szybszym interpretacji danych. Poniżej przedstawiono niektóre narzędzia na maszyny DSVM ułatwić ten krok klucza. 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -56,12 +56,12 @@ Krok klucza do nauki o danych jest zrozumieć dane. Wizualizacja i narzędzi eks
 | Zawiera linki do przykładów      | [Rattle](https://togaware.com/onepager/) |
 | Pokrewne narzędzia na maszyny DSVM      |LightGBM, Weka, Xgboost   |
 
-## <a name="powerbi-desktop"></a>PowerBI Desktop 
+## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Interaktywna Wizualizacja danych i narzędzia do analizy Biznesowej    |
 | Wersje maszyny DSVM obsługiwane      | Windows  |
 | Typowe zastosowania      |  Wizualizacja danych i tworzenie pulpitów nawigacyjnych   |
 | Jak używać / ją uruchomić?      | Skrót na pulpicie (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| Pokrewne narzędzia na maszyny DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |
+| Pokrewne narzędzia na maszyny DSVM      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

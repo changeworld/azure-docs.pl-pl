@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946809"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431305"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -57,7 +57,7 @@ Sieciowe grupy zabezpieczeń (NSG) są obsługiwane w usłudze Application Gatew
 
 - Ruch z **AzureLoadBalancer** tagów muszą być dozwolone.
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>Lista dozwolonych Application Gateway dostęp do kilku źródłowych adresów IP
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Dostęp do bramy Application Gateway kilka źródłowych adresów IP
 
 W tym scenariuszu należy używać sieciowych grup zabezpieczeń w podsieci bramy aplikacji. W tej podsieci, w kolejności priorytetów, należy umieścić następujące ograniczenia:
 
@@ -118,7 +118,7 @@ Wybierz adres IP frontonu, który ma zostać skojarzony z tym odbiornika. Odbior
 
 Wybierz port frontonu. Wybierz istniejącego portu lub Utwórz nową. Wybierz dowolną wartość z [dozwolony zakres portów](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Można użyć nie tylko dobrze znanych portów, np. 80 i 443, ale dozwolone port niestandardowy, który jest odpowiedni. Port może służyć do odbiorników publicznego lub przeznaczonych dla prywatnych odbiorników.
 
-### <a name="protocol"></a>Protokół
+### <a name="protocol"></a>Protocol
 
 Wybierz protokołu HTTP lub HTTPS:
 
@@ -209,13 +209,13 @@ Reguły na podstawie ścieżki należy dodać wiele ustawień HTTP zaplecza, kt�
 
 ### <a name="redirection-setting"></a>Ustawienie przekierowywania
 
-Jeśli skonfigurowano przekierowania podstawową regułę, wszystkie żądania na skojarzony odbiornik nastąpi przekierowanie do obiektu docelowego. Jest to *globalnego* przekierowania. Jeśli przekierowanie skonfigurowano regułę opartego na ścieżkach, nastąpi przekierowanie tylko żądania w obszarze określonej lokacji. Przykładem jest obszar koszyka zakupów jest wskazywane przez */cart/\**. Jest to *opartego na ścieżkach* przekierowania.
+Jeśli skonfigurowano przekierowania podstawową regułę, wszystkie żądania na skojarzony odbiornik nastąpi przekierowanie do obiektu docelowego. Jest to *globalnego* przekierowania. Jeśli przekierowanie skonfigurowano regułę opartego na ścieżkach, nastąpi przekierowanie tylko żądania w obszarze określonej lokacji. Przykładem jest obszar koszyka zakupów jest wskazywane przez */cart/\** . Jest to *opartego na ścieżkach* przekierowania.
 
 Aby uzyskać więcej informacji na temat przekierowania zobacz [Application Gateway redirect overview](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
 #### <a name="redirection-type"></a>Typ przekierowania
 
-Wybierz typ przekierowania wymagane: *Permanent(301)*, *Temporary(307)*, *Found(302)*, lub *Zobacz other(303)*.
+Wybierz typ przekierowania wymagane: *Permanent(301)* , *Temporary(307)* , *Found(302)* , lub *Zobacz other(303)* .
 
 #### <a name="redirection-target"></a>Miejsce docelowe przekierowania
 
@@ -232,7 +232,7 @@ Aby uzyskać więcej informacji na temat przekierowania HTTP do HTTPS zobacz:
 - [Przekierowywanie HTTP do HTTPS przy użyciu programu PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
 - [Przekierowywanie HTTP do HTTPS przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
-##### <a name="external-site"></a>Lokacja zewnętrzna
+##### <a name="external-site"></a>Witryny zewnętrznej
 
 Wybierz witryny zewnętrznej, jeśli chcesz przekierowywanie ruchu na odbiornik, który jest skojarzony z tą regułą do zewnętrznej witryny. Istnieje możliwość Dołącz ciąg zapytania z oryginalnego żądania w żądaniu, który jest przekazywany do obiektu docelowego przekierowania. Nie można przesłać dalej ścieżkę do witryny zewnętrznej, który oryginalne żądanie.
 
@@ -247,7 +247,7 @@ To ustawienie dodaje, usuwa lub aktualizuje nagłówki żądania i odpowiedzi HT
  - [Ponownie zapisuje nagłówki HTTP, omówienie](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [Konfigurowanie ponownego napisania nagłówka HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
 
-## <a name="http-settings"></a>Ustawienia protokołu HTTP
+## <a name="http-settings"></a>Ustawienia HTTP
 
 Usługa application gateway kieruje ruch do serwerów zaplecza przy użyciu konfiguracji, który określisz w tym miejscu. Po utworzeniu ustawienie protokołu HTTP, należy ją skojarzyć z co najmniej jedną regułę routingu żądań.
 
@@ -259,7 +259,7 @@ Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym
 
 Opróżniania połączenia pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji usługi planowane. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguł. Zapewnia, że wszystkie wystąpienia bez rejestrowania puli zaplecza nie otrzymasz żadnych nowych żądań. W tym samym czasie istniejącymi żądaniami mogą zakończyć w ciągu skonfigurowanego limitu czasu. Opróżniania połączenia ma zastosowanie do wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API. Ma również zastosowanie do wystąpień zaplecza, które są zgłaszane jako *złej kondycji* przez kondycji sondy.
 
-### <a name="protocol"></a>Protokół
+### <a name="protocol"></a>Protocol
 
 Usługa Application Gateway obsługuje protokołów HTTP i HTTPS do kierowania żądań do serwerów zaplecza. Jeśli wybierzesz HTTP, ruch do serwerów zaplecza jest niezaszyfrowany. Nieszyfrowana komunikacja nie jest dopuszczalna, jeśli protokół HTTPS.
 

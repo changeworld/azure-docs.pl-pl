@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128706"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497249"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,15 +26,14 @@ Ten artykuł wymaga istniejącego klastra AKS uruchomiony na Twoim koncie platfo
 
 Aby zebrać i przejrzeć dane z wielu źródeł, dzienniki usługi Azure Monitor udostępnia zapytania języka i aparat analityczny, które dają wgląd w danym środowisku. Obszar roboczy jest używana do sortowania i analizować dane i można integrować z innymi usługami platformy Azure, takich jak usługa Application Insights i Centrum zabezpieczeń. Aby użyć innej platformy do analizy dzienników, możesz zamiast tego Wyślij dzienniki diagnostyczne do Centrum konta lub zdarzenia usługi Azure storage. Aby uzyskać więcej informacji, zobacz [co to jest dzienniki usługi Azure Monitor?] [log-analytics-overview].
 
-Dzienniki platformy Azure Monitor jest włączony i zarządzane w witrynie Azure portal. Aby włączyć zbieranie dzienników dla składniki klastra AKS rozwiązania Kubernetes, otwórz Azure portal w przeglądarce sieci web, a następnie wykonaj następujące czynności:
+Dzienniki platformy Azure Monitor są włączone i zarządzane w witrynie Azure portal. Aby włączyć zbieranie dzienników dla składniki klastra AKS rozwiązania Kubernetes, otwórz Azure portal w przeglądarce sieci web, a następnie wykonaj następujące czynności:
 
 1. Wybierz grupę zasobów klastra usługi AKS, takich jak *myResourceGroup*. Nie wybieraj grupę zasobów, która zawiera poszczególne zasoby klastra AKS, takie jak *MC_myResourceGroup_myAKSCluster_eastus*.
 1. Po lewej stronie wybierz **ustawień diagnostycznych**.
-1. Wybierz klaster AKS, taką jak *myAKSCluster*, następnie **Włącz diagnostykę**.
-1. Wprowadź nazwę, taką jak *myAKSClusterLogs*, następnie wybierz opcję, aby **wysyłania do obszaru roboczego usługi Log Analytics**.
-    * Możliwość *Konfiguruj* obszaru roboczego usługi Log Analytics, a następnie wybierz istniejący obszar roboczy lub **Utwórz nowy obszar roboczy**.
-    * Jeśli musisz utworzyć obszar roboczy, podaj nazwę, grupę zasobów i lokalizacji.
-1. Na liście dostępnych dzienników wybierz dzienniki, które mają zostać włączone. Domyślnie *apiserver klastra kubernetes w usłudze*, *Menedżera klastra kubernetes w usłudze kontrolera*, i *klastra kubernetes w usłudze scheduler* dzienniki są włączone. Możesz włączyć dodatkowe dzienniki, takich jak *klastra kubernetes w usłudze inspekcji* i *skalowanie klastra*. Możesz wrócić i zmienić zebranych dzienników po włączeniu obszarów roboczych usługi Log Analytics.
+1. Wybierz klaster AKS, taką jak *myAKSCluster*, następnie **Dodaj ustawienie diagnostyczne**.
+1. Wprowadź nazwę, taką jak *myAKSClusterLogs*, następnie wybierz opcję, aby **wysyłanie do usługi Log Analytics**.
+1. Wybierz istniejący obszar roboczy lub Utwórz nową. Jeśli utworzysz obszar roboczy, podaj nazwę obszaru roboczego, grupę zasobów i lokalizacji.
+1. Na liście dostępnych dzienników wybierz dzienniki, które mają zostać włączone. Typowe dzienniki zawierają *apiserver klastra kubernetes w usłudze*, *Menedżera klastra kubernetes w usłudze kontrolera*, i *klastra kubernetes w usłudze scheduler*. Możesz włączyć dodatkowe dzienniki, takich jak *klastra kubernetes w usłudze inspekcji* i *skalowanie klastra*. Możesz wrócić i zmienić zebranych dzienników po włączeniu obszarów roboczych usługi Log Analytics.
 1. Gdy wszystko będzie gotowe, wybierz **Zapisz** Aby włączyć zbieranie dzienników wybrane.
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Dzienniki platformy Azure Monitor jest włączony i zarządzane w witrynie Azure
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
-W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnostycznych* okna, a następnie opcję, aby utworzyć obszar roboczy usługi Log Analytics:
+W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnostycznych* okna:
 
 ![Włącz obszar roboczy analizy dzienników dla usługi Azure Monitor dzienniki klastra AKS](media/view-master-logs/enable-oms-log-analytics.png)
 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 60cf37e5f6375d08e73241f6e357ac39ea665e9b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192532"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492753"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
@@ -34,9 +34,9 @@ Typowe zastosowania tej funkcji to:
 
 Niezmienny magazyn obsługuje następujące funkcje:
 
-- **[Obsługa zasad przechowywania na podstawie czasu](#time-based-retention)**: Użytkownicy mogą ustawić zasady przechowywania danych w określonym przedziale czasu. Podczas zasady przechowywania na podstawie czasu ustawiony, obiektów blob można utworzyć i odczytać, ale nie zmodyfikowane lub usunięte. Po upływie okresu przechowywania obiektów blob można usunąć, ale nie zostały zastąpione.
+- **[Obsługa zasad przechowywania na podstawie czasu](#time-based-retention)** : Użytkownicy mogą ustawić zasady przechowywania danych w określonym przedziale czasu. Podczas zasady przechowywania na podstawie czasu ustawiony, obiektów blob można utworzyć i odczytać, ale nie zmodyfikowane lub usunięte. Po upływie okresu przechowywania obiektów blob można usunąć, ale nie zostały zastąpione.
 
-- **[Obsługa zasad ze względów prawnych](#legal-holds)**: Jeśli okres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Jeśli ustawiono zasady prawnych, obiektów blob można utworzyć i odczytać, ale nie zmodyfikowane lub usunięte. Każdy prawnych jest skojarzony z zdefiniowanych przez użytkownika alfanumeryczne tag (na przykład identyfikator przypadku, Nazwa zdarzenia, itp.), który jest używany jako ciąg identyfikatora. 
+- **[Obsługa zasad ze względów prawnych](#legal-holds)** : Jeśli okres przechowywania nie jest znany, użytkownicy mogą ustawić archiwizacją ze względów prawnych do przechowywania danych immutably, dopóki nie zostanie wyczyszczona prawnych.  Jeśli ustawiono zasady prawnych, obiektów blob można utworzyć i odczytać, ale nie zmodyfikowane lub usunięte. Każdy prawnych jest skojarzony z zdefiniowanych przez użytkownika alfanumeryczne tag (na przykład identyfikator przypadku, Nazwa zdarzenia, itp.), który jest używany jako ciąg identyfikatora. 
 
 - **Pomoc techniczna dla wszystkich obiektów blob warstw**: ROBAK niezależnie od warstwy magazynu obiektów Blob platformy Azure i zasad dotyczą wszystkich warstwy: gorąca, chłodna i archiwum. Użytkownicy mogą przechodzą danych do warstwy większość optymalizacji kosztów dla swoich obciążeń przy zachowaniu danych niezmienności.
 
@@ -53,7 +53,7 @@ Kontener i usuwanie kont również nie są dozwolone w przypadku wszystkie obiek
 ### <a name="time-based-retention"></a>Na podstawie czasu przechowywania
 
 > [!IMPORTANT]
-> Zasady przechowywania na podstawie czasu musi być *zablokowane* dla obiektu blob w niezmienne (zapisu i usuwania chroniony) stanie 17a-4(f) s a innymi zgodność z przepisami. Zaleca się blokowanie zasady w rozsądnym czasie, zwykle w ciągu 24 godzin. Nie zalecamy używania *odblokowane* stanu w celu innym niż krótkoterminowej funkcji wersji próbnych.
+> Zasady przechowywania na podstawie czasu musi być *zablokowane* dla obiektu blob w zgodnych niezmienne (zapisu i usuwania chroniony) stanie 17a-4(f) s a innymi zgodność z przepisami. Zaleca się, że zablokujesz zasady w rozsądnym czasie, zwykle krócej niż 24 godziny. Początkowy stan zasady stosowane na podstawie czasu przechowywania jest *odblokowane*, dzięki czemu możesz przetestować funkcję i wprowadzanie zmian z zasadami, zanim je zablokować. Gdy *odblokowane* stanu zapewnia ochronę niezmienności, nie zalecamy używania *odblokowane* stanu w celu innym niż krótkoterminowej prób funkcji. 
 
 Stosowania zasad przechowywania na podstawie czasu na kontenerze wszystkich obiektów blob w kontenerze pozostaną niezmiennego stanu na czas trwania *skuteczne* okres przechowywania. Okres przechowywania obowiązujące dla istniejących obiektów blob jest równy różnicy czas modyfikacji obiektu blob i okres przechowywania określony przez użytkownika.
 
@@ -65,6 +65,8 @@ W przypadku nowych obiektów blob obowiązujący okres przechowywania jest równ
 > Istniejący obiekt blob w kontenerze, w tym _testblob1_, utworzono rok temu. Okres przechowywania skuteczne _testblob1_ jest 4 lata.
 >
 > Nowy obiekt blob _testblob2_, teraz zostanie przekazany do kontenera. Okres przechowywania obowiązywać dla tego nowy obiekt blob jest pięć lat.
+
+Zasady przechowywania na podstawie czasu odblokowane, zaleca się tylko do testowania funkcji i zasad musi być zablokowane w celu zapewnienia zgodności z 17a-4(f) s i innych zgodność z przepisami. Po zablokowaniu zasady przechowywania na podstawie czasu nie można usunąć zasad i dozwolone jest maksymalnie 5 zwiększają okres przechowywania skuteczne. Aby uzyskać więcej informacji na temat sposobu ustawiania i blokowanie zasady przechowywania na podstawie czasu, zobacz [wprowadzenie](#getting-started) sekcji.
 
 ### <a name="legal-holds"></a>Archiwizacja ze względów prawnych
 
@@ -124,7 +126,7 @@ Najnowsze wersje [witryny Azure portal](https://portal.azure.com), [wiersza pole
 
     Początkowy stan zasad jest odblokowany, dzięki czemu możesz przetestować funkcję i wprowadzanie zmian z zasadami, zanim je zablokować. Zasady blokowania ma zasadnicze znaczenie dla zgodności z przepisami, takich jak s 17a-4.
 
-5. Zablokuj zasady. Kliknij prawym przyciskiem myszy wielokropek (**...** ), i za pomocą dodatkowych akcji zostanie wyświetlone następujące menu:
+5. Zablokuj zasady. Kliknij prawym przyciskiem myszy wielokropek ( **...** ), i za pomocą dodatkowych akcji zostanie wyświetlone następujące menu:
 
     !["Blokowanie zasad" w menu](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
@@ -169,7 +171,7 @@ Podanych niżej bibliotek klienta obsługują niezmienny magazyn dla usługi Azu
 
 **Można podać dokumentacji ROBAK zgodności?**
 
-Tak. Zapewnienie zgodności dokumentu Microsoft przechowywane wiodące przedsiębiorstwa niezależną ocenę, która specjalizuje się w rekordy zarządzania i informacje infrastruktur Cohasset partnerów, aby ocenić niezmienny magazyn obiektów Blob platformy Azure i jego zgodność z wymaganiami określonymi w branży usług finansowych. Cohasset zweryfikować, czy Azure niezmienne magazynu obiektów Blob, gdy jest używana do przechowywania na podstawie czasu obiektów blob w stanie ROBAK spełnia wymagania magazynu odpowiednie reguły CFTC 1.31(c)-(d), 4511 reguły FINRA i reguły s 17a-4. Microsoft celem tego zestawu reguł, ponieważ stanowią one najbardziej wskazówki globalnie dla przechowywania rekordów dla instytucji finansowych. Raport Cohasset jest dostępny w [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage).
+Tak. Zapewnienie zgodności dokumentu Microsoft przechowywane wiodące przedsiębiorstwa niezależną ocenę, która specjalizuje się w rekordy zarządzania i informacje infrastruktur Cohasset partnerów, aby ocenić niezmienny magazyn obiektów Blob platformy Azure i jego zgodność z wymaganiami określonymi w branży usług finansowych. Cohasset zweryfikować, czy Azure niezmienne magazynu obiektów Blob, gdy jest używana do przechowywania na podstawie czasu obiektów blob w stanie ROBAK spełnia wymagania magazynu odpowiednie reguły CFTC 1.31(c)-(d), 4511 reguły FINRA i reguły s 17a-4. Microsoft celem tego zestawu reguł, ponieważ stanowią one najbardziej wskazówki globalnie dla przechowywania rekordów dla instytucji finansowych. Raport Cohasset jest dostępny w [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage). Aby zażądać literę zaświadczania od firmy Microsoft dotyczące zgodności ROBAK, skontaktuj się z pomocy technicznej platformy Azure.
 
 **Czy ta funkcja dotyczy tylko blokowe obiekty BLOB, lub na stronie obiektów blob i uzupełnialnych obiektów blob oraz?**
 
@@ -186,6 +188,10 @@ Tak, kontener może mieć zarówno prawnych, jak i zasad przechowywania na podst
 **Czy zasady prawnych tylko w przypadku postępowania, lub czy istnieją inne scenariusze użycia?**
 
 Nie, prawne przechowywania jest po prostu ogólny termin używany dla zasad przechowywania bez oparte na czasie. Nie musi być używane wyłącznie dla postępowań prawnych dotyczące postępowania. Prawne zasady blokady są przydatne do wyłączenie zastępowania i usuwania ochrony przedsiębiorstwa ważne dane ROBAK, gdy okres przechowywania jest nieznany. Może używać go jako zasady przedsiębiorstwa do ochrony Twojej obciążeń o znaczeniu krytycznym ROBAK lub użyj go jako zasad tymczasowych przed wyzwalacz zdarzenia niestandardowe wymaga użycia zasad przechowywania na podstawie czasu. 
+
+**Można usunąć *zablokowane* zasady przechowywania na podstawie czasu lub prawnych?**
+
+Można usunąć tylko zasady przechowywania na podstawie czasu odblokowane z kontenera. Po zablokowaniu zasady przechowywania na podstawie czasu nie można usunąć; okres przechowywania skuteczne rozszerzenia dozwolone są tylko. Tagi prawnych mogą zostać usunięte. Po usunięciu wszystkich znaczników prawne prawnych zostaną usunięte.
 
 **Co się stanie, jeśli spróbuję usunąć kontener z *zablokowanymi* zasadami przechowywania na podstawie czasu lub z ustawionym stanem archiwizacji ze względów prawnych?**
 
@@ -375,12 +381,12 @@ $policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
-Usuń zasady niezmienności (Dodaj - Force, aby zamknąć wiersz):
+Usuń zasady niezmienności odblokowane (Dodaj - Force, aby zamknąć wiersz):
 ```powershell
 # with an immutability policy object
 $policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 # with an account name or container name
 Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e491f0c452b7b51eac4e8cccab1cc7ed8430e49
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783442"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473777"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Zdalny dostęp do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -114,10 +114,10 @@ Aby skonfigurować ograniczonego delegowania protokołu Kerberos, wykonaj nastę
 
 Teraz, gdy skonfigurowano ograniczonego delegowania protokołu Kerberos, możesz przystąpić do konfigurowania serwera Proxy aplikacji usługi Azure AD.
 
-1. Publikowanie witryny programu SharePoint z następującymi ustawieniami. Aby uzyskać instrukcje krok po kroku, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md).
-   * **Wewnętrzny adres URL**: Program SharePoint wewnętrzny adres URL, który wybrano wcześniej, takich jak **<https://SharePoint/>**.
+1. Publikowanie witryny programu SharePoint z następującymi ustawieniami. Aby uzyskać instrukcje krok po kroku, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+   * **Wewnętrzny adres URL**: Program SharePoint wewnętrzny adres URL, który wybrano wcześniej, takich jak **<https://SharePoint/>** .
    * **Metoda wstępnego uwierzytelnienia**: Usługa Azure Active Directory
-   * **Przetłumacz URL w nagłówkach**: NIE
+   * **Przetłumacz URL w nagłówkach**: NO
 
    >[!TIP]
    >Program SharePoint używa _nagłówek hosta_ wartość do wyszukania w witrynie. Polecenie to generuje także łączy na podstawie tej wartości. Efektem sieciowym jest to dowolny link, który generuje programie SharePoint opublikowanego adresu URL, który jest prawidłowo skonfigurowany do używania zewnętrznego adresu URL. Ustawienie wartości **tak** umożliwia również łącznik aby przekazywać żądania do aplikacji zaplecza. Jednakże, ustawiając wartość na **nie** oznacza, że łącznik nie będzie wysyłać nazwę hosta wewnętrznego. Zamiast tego łącznika wysyła nagłówek hosta jako adres URL opublikowanej aplikacji zaplecza.

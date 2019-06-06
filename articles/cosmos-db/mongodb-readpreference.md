@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/26/2019
+ms.openlocfilehash: 8fc66d70b840578bff086519a7b39e5f389a3de3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929291"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479619"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globalnie dystrybuować odczytuje przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -75,7 +75,7 @@ readFromSecondaryfunc query completed!
 
 Protokół bazy danych MongoDB oferuje następujące tryby preferencji odczytu, aby klienci mogli używać:
 
-1. GŁÓWNY
+1. PODSTAWOWY
 2. PRIMARY_PREFERRED
 3. POMOCNICZY
 4. SECONDARY_PREFERRED

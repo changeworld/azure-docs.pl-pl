@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: d2312fac64515756f5ed2e0feb22fdc6b7205376
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125181"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735218"
 ---
-**Ostatnie dokumentowanie aktualizacji**: 14 maja 2019 10:00 czasu PST.
+**Ostatnie dokumentowanie aktualizacji**: 4 czerwca 2019 r 3:00 PM czasu Pacyficznego.
 
 Ujawnienie [nową klasę luk w zabezpieczeniach procesora CPU](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) nazywane ataków kanału po stronie wykonywania spekulacyjnego spowodowało pytania klientów poszukujących bardziej przejrzysty.  
 
@@ -48,8 +48,8 @@ Podczas aktualizacji systemu operacyjnego nie jest wymagany do izolowania aplika
 
 | Oferty | Zalecana akcja  |
 |----------|---------------------|
-| Azure Cloud Services  | Włącz [automatyczne aktualizowanie](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) lub upewnij się, są uruchomione najnowszych systemu operacyjnego gościa. |
-| Azure Linux Virtual Machines | Zainstaluj aktualizacje za pośrednictwem swojego usługodawcy systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Linux](#linux) w dalszej części tego dokumentu. |
+| Usług Azure Cloud Services  | Włącz [automatyczne aktualizowanie](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) lub upewnij się, są uruchomione najnowszych systemu operacyjnego gościa. |
+| Maszyny wirtualne systemu Linux platformy Azure | Zainstaluj aktualizacje za pośrednictwem swojego usługodawcy systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Linux](#linux) w dalszej części tego dokumentu. |
 | Maszyn wirtualnych Windows Azure  | Zainstaluj najnowszy pakiet zbiorczy zabezpieczeń.
 | Inne usługi PaaS platformy Azure | Nie ma akcji wymagane dla klientów korzystających z tych usług. Azure automatycznie aktualizuje swoje wersje systemów operacyjnych aktualne. |
 
@@ -77,7 +77,7 @@ Jeśli korzystasz z niezaufanego kodu, można włączyć dodatkowe funkcje zabez
 Aktualne, aby włączyć te dodatkowe funkcje zabezpieczeń muszą być docelowego systemu operacyjnego. Chociaż wiele z wykonywaniem spekulatywnym po stronie kanału środki zaradcze są domyślnie włączone, dodatkowe funkcje, które są opisane w tym miejscu musi być włączone ręczne i może spowodować, że wpływ na wydajność. 
 
 
-**Krok 1. Wyłącz wielowątkowość na maszynie Wirtualnej** — klienci korzystający z niezaufanego kodu na hyperthreaded, maszyna wirtualna będzie konieczne wyłączenie wielowątkowość lub przenieść do innego niż hyperthreaded rozmiar maszyny Wirtualnej. Sprawdź, czy maszyna wirtualna ma włączoną wielowątkowość, można znaleźć w temacie poniższego skryptu przy użyciu wiersza polecenia Windows z poziomu maszyny Wirtualnej.
+**Krok 1. Wyłącz funkcję hyper threading na maszynie Wirtualnej** — klienci korzystający z niezaufanego kodu na maszynie Wirtualnej funkcji hyper Threading należy wyłączyć funkcję hyper threading lub przenieść do innego niż hyper Threading rozmiar maszyny Wirtualnej. Odwołanie [tego dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/acu) listę rozmiarów maszyn wirtualnych funkcji hyper Threading (gdzie stosunek procesorów wirtualnych na rdzeń to 2:1). Aby sprawdzić, czy maszyna wirtualna ma funkcję hyper threading włączone, można znaleźć poniżej skrypt przy użyciu wiersza polecenia Windows z poziomu maszyny Wirtualnej.
 
 Typ `wmic` wprowadzenia interaktywny interfejs. Następnie wpisz poniżej, aby wyświetlić ilość fizycznych i logicznych procesorów na maszynie Wirtualnej.
 
@@ -85,7 +85,7 @@ Typ `wmic` wprowadzenia interaktywny interfejs. Następnie wpisz poniżej, aby w
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-Jeśli liczba procesorów logicznych jest większa niż procesorów fizycznych (rdzenie), wielowątkowość jest włączona.  Jeśli używasz hyperthreaded maszyny Wirtualnej, [skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) można pobrać wielowątkowość wyłączone.  Po wyłączeniu wielowątkowość **pomoc techniczna będzie wymagać pełne ponowne uruchomienie maszyny Wirtualnej**. 
+Jeśli liczba procesorów logicznych jest większa niż procesorów fizycznych (rdzenie), następnie funkcję hyper threading jest włączona.  Jeśli używasz maszyny Wirtualnej funkcji hyper Threading [skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) uzyskać funkcji hyper-threading wyłączony.  Po wyłączeniu funkcji hyper-threading **pomoc techniczna będzie wymagać pełne ponowne uruchomienie maszyny Wirtualnej**. Zapoznaj się [podstawowe liczba](#core-count) Aby zrozumieć, dlaczego zmniejszyła się liczba rdzeni Twojej maszyny Wirtualnej.
 
 
 **Krok 2**: Równolegle do kroku 1, postępuj zgodnie z instrukcjami [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby sprawdzić, zabezpieczenia są włączone, za pomocą [SpeculationControl](https://aka.ms/SpeculationControlPS) modułu programu PowerShell.
@@ -123,14 +123,14 @@ Jeśli dane wyjściowe pokazują `MDS mitigation is enabled: False`, [skontaktuj
 <a name="linux"></a>Włączanie zestaw dodatkowych funkcji zabezpieczeń wewnątrz wymaga docelowy system operacyjny aktualne. Niektóre środki zaradcze zostaną włączone domyślnie. W poniższej sekcji opisano funkcje, które są wyłączone, domyślnie i/lub na architekturze na pomoc techniczna dotycząca sprzętu (mikrokodu). Włączenie tych funkcji może spowodować negatywny wpływ na wydajność. Aby uzyskać dalsze instrukcje dokumentacji dostawcy systemu operacyjnego
 
 
-**Krok 1. Wyłącz wielowątkowość na maszynie Wirtualnej** — klienci korzystający z niezaufanego kodu na hyperthreaded z maszyny Wirtualnej będzie konieczne wyłączenie wielowątkowość lub przenieść do innego niż hyperthreaded maszyny Wirtualnej.  Aby sprawdzić, czy używasz hyperthreaded maszyny Wirtualnej, uruchom `lscpu` polecenia na maszynie Wirtualnej systemu Linux. 
+**Krok 1. Wyłącz funkcję hyper threading na maszynie Wirtualnej** — klienci korzystający z niezaufanego kodu na maszynie Wirtualnej funkcji hyper Threading należy przenieść do maszyny Wirtualnej bez hyper Threading lub wyłączyć funkcję hyper threading.  Odwołanie [tego dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/acu) listę rozmiarów maszyn wirtualnych funkcji hyper Threading (gdzie stosunek procesorów wirtualnych na rdzeń to 2:1). Aby sprawdzić, czy używasz maszyny Wirtualnej funkcji hyper Threading, uruchom `lscpu` polecenia na maszynie Wirtualnej systemu Linux. 
 
-Jeśli `Thread(s) per core = 2`, wówczas wielowątkowość został włączony. 
+Jeśli `Thread(s) per core = 2`, następnie funkcję hyper threading został włączony. 
 
-Jeśli `Thread(s) per core = 1`, a następnie ją wyłączono wielowątkowość. 
+Jeśli `Thread(s) per core = 1`, następnie funkcję hyper threading została wyłączona. 
 
  
-Przykład danych wyjściowych dla maszyny Wirtualnej z włączoną wielowątkowość: 
+Przykładowe dane wyjściowe dla maszyny Wirtualnej za pomocą funkcji hyper-threading włączone: 
 
 ```console
 CPU Architecture:      x86_64
@@ -145,7 +145,8 @@ NUMA node(s):          1
 
 ```
 
-Jeśli używasz hyperthreaded maszyny Wirtualnej, [skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) można pobrać wielowątkowość wyłączone.  Po wyłączeniu wielowątkowość **pomoc techniczna będzie wymagać pełne ponowne uruchomienie maszyny Wirtualnej**.
+Jeśli używasz maszyny Wirtualnej funkcji hyper Threading [skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) uzyskać funkcji hyper-threading wyłączony.  Po wyłączeniu funkcji hyper-threading **pomoc techniczna będzie wymagać pełne ponowne uruchomienie maszyny Wirtualnej**. Zapoznaj się [podstawowe liczba](#core-count) Aby zrozumieć, dlaczego zmniejszyła się liczba rdzeni Twojej maszyny Wirtualnej.
+
 
 
 **Krok 2**: Aby ograniczyć ryzyko ze znajdujących się poniżej związanego z wykonywaniem spekulatywnym kanału po stronie luk w zabezpieczeniach można znaleźć w dokumentacji dostawcy systemu operacyjnego:   
@@ -153,6 +154,11 @@ Jeśli używasz hyperthreaded maszyny Wirtualnej, [skontaktuj się z działem po
 - [RedHat i CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
+
+
+### <a name="core-count"></a>Liczba rdzeni
+
+Po utworzeniu maszyny Wirtualnej funkcji hyper Threading platforma Azure przydziela 2 wątków na każdy rdzeń — są to tak zwane procesorów wirtualnych. Po wyłączeniu funkcji hyper-threading Azure usuwa wątku i ujawniają się jednym wątków rdzeni (fizycznych). Stosunek procesorów wirtualnych do procesora CPU jest 2:1, więc jeden raz — Hiperwątkowość jest wyłączona, Procesor zliczania na maszynie wirtualnej zostanie wyświetlony jako spadły o połowę. Na przykład D8_v3 maszyny Wirtualnej jest maszyny Wirtualnej funkcji hyper Threading działającej na 8 wirtualnych procesorów CPU (2 wątków na podstawowe x 4 rdzeni).  Po wyłączeniu funkcji hyper-threading procesorów będzie się zmniejszać do 4 rdzeni fizycznych z 1 wątek na każdy rdzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

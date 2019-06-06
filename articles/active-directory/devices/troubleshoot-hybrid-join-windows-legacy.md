@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76177972cbd002793f5d9fc4ab8bbe6ef2121e91
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ce1d2aaed85f61e2e18f696d749219a1b951c862
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106695"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474272"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -87,7 +87,7 @@ Jeśli urządzenie nie było hybrydowe przyłączone do usługi Azure AD, można
     
   - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. To może być spowodowane brakiem lub nieprawidłowo skonfigurowany usług AD FS (w przypadku domen federacyjnych) lub brakuje lub zostały nieprawidłowo skonfigurowane usługi Azure AD bezproblemowego logowania jednokrotnego (w przypadku domen zarządzanych) lub problemy z siecią. 
     
-    - Może to być czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze usług AD FS. 
+    - Może to być czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMULTIAUTHN nie jest skonfigurowany na serwerze usług AD FS. 
      
     - Inną możliwością jest tej strony (HRD) odnajdowania obszaru macierzystego oczekuje na interakcję użytkownika, co uniemożliwia **autoworkplace.exe** w trybie dyskretnym żądania tokenu.
      

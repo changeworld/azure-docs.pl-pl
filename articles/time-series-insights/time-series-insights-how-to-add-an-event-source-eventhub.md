@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8040368f4cbd6d264070aa3db0a8e6b07a866480
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8b39001481764eb955ab4535e8c6ea1752e0c012
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239023"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475726"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum zdarzeń do środowiska usługi Time Series Insights
 
 W tym artykule opisano sposób dodawania źródła zdarzeń, która odczytuje dane z usługi Azure Event Hubs do środowiska usługi Azure Time Series Insights za pomocą witryny Azure portal.
 
 > [!NOTE]
-> Kroki opisane w tym artykule mają zastosowanie zarówno do środowisk czasu Series Insights w wersji zapoznawczej i czas serii szczegółowych informacji w wersji Ogólnodostępnej.
+> Kroki, które są opisane w tym artykule mają zastosowanie zarówno do środowisk czasu Series Insights w wersji zapoznawczej i czas serii szczegółowych informacji w wersji Ogólnodostępnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ W tym artykule opisano sposób dodawania źródła zdarzeń, która odczytuje da
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Dodaj grupę odbiorców do Centrum zdarzeń
 
-Aplikacje używać grupy odbiorców do pobierania danych z usługi Azure Event Hubs. Podaj dedykowanej grupy klientów, do użytku tylko przez to środowisko usługi Time Series Insights niezawodnie odczytu danych z Centrum zdarzeń.
+Aplikacje używać grupy odbiorców do pobierania danych z usługi Azure Event Hubs. Niezawodne odczytu danych z Centrum zdarzeń, podaj dedykowanej grupy klientów, które jest używane tylko przez to środowisko usługi Time Series Insights.
 
 Aby dodać nową grupę konsumentów Centrum zdarzeń:
 
@@ -64,38 +64,40 @@ Aby dodać nową grupę konsumentów Centrum zdarzeń:
 
 1. Wybierz odpowiednie wartości dla **opcji importowania**:
    - Jeśli masz już Centrum zdarzeń w jednej z Twoich subskrypcji wybierz **Użyj Centrum zdarzeń z dostępnych subskrypcji**. Ta opcja jest to najłatwiejsza metoda.
-   - Jeśli Centrum zdarzeń jest zewnętrzne w stosunku do subskrypcji, lub jeśli chcesz wybrać opcje zaawansowane, wybierz **ustawienia Centrum zdarzeń zapewnia ręcznie**.
 
-   [![W okienku nowe źródło zdarzenia wprowadź wartości dla pierwszych trzech parametrów](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
+       [![W okienku nowe źródło zdarzenia wprowadź wartości dla pierwszych trzech parametrów](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
-1. W poniższej tabeli opisano wymaganych właściwości dla **Użyj Centrum zdarzeń z dostępnych subskrypcji** opcji:
 
-   [![Szczegółowe informacje dotyczące subskrypcji i zdarzeń Centrum](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+       [![Szczegółowe informacje dotyczące subskrypcji i zdarzeń Centrum](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
-   | Właściwość | Opis |
-   | --- | --- |
-   | Identyfikator subskrypcji | Wybierz subskrypcję, w której został utworzony tym Centrum zdarzeń.
-   | Przestrzeń nazw magistrala usług | Wybierz przestrzeń nazw usługi Azure Service Bus, która zawiera Centrum zdarzeń.
-   | Nazwa centrum zdarzeń | Wybierz nazwę Centrum zdarzeń.
-   | Nazwa zasad Centrum zdarzeń | Wybierz zasady dostępu współdzielonego. Możesz utworzyć zasady dostępu współdzielonego w Centrum zdarzeń **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **odczytu** uprawnienia.
-   | Klucz zasad Centrum zdarzeń | Wartość klucza może być wstępnie wypełnione.
-   | Grupa konsumentów Centrum zdarzeń | Grupa odbiorców odczytuje zdarzenia z Centrum zdarzeń. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia. |
-   | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
-   | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do Centrum zdarzeń. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
+     W poniższej tabeli opisano wymaganych właściwości dla **Użyj Centrum zdarzeń z dostępnych subskrypcji** opcji:
 
-1. W poniższej tabeli opisano wymaganych właściwości dla **ustawienia Centrum zdarzeń zapewnia ręcznie** opcji:
+     | Właściwość | Opis |
+     | --- | --- |
+     | Identyfikator subskrypcji | Wybierz subskrypcję, w której został utworzony tym Centrum zdarzeń.
+     | Przestrzeń nazw magistrali usług | Wybierz przestrzeń nazw usługi Azure Service Bus, która zawiera Centrum zdarzeń.
+     | Nazwa centrum zdarzeń | Wybierz nazwę Centrum zdarzeń.
+     | Nazwa zasad Centrum zdarzeń | Wybierz zasady dostępu współdzielonego. Możesz utworzyć zasady dostępu współdzielonego w Centrum zdarzeń **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **odczytu** uprawnienia.
+     | Klucz zasad Centrum zdarzeń | Wartość klucza może być wstępnie wypełnione.
+     | Grupa konsumentów Centrum zdarzeń | Grupa odbiorców odczytuje zdarzenia z Centrum zdarzeń. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia. |
+     | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi mieć następujący format lub nie można odczytać danych. |
+     | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do Centrum zdarzeń. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
 
-   | Właściwość | Opis |
-   | --- | --- |
-   | Identyfikator subskrypcji | Subskrypcja, w której został utworzony tym Centrum zdarzeń.
-   | Grupa zasobów | Grupa zasobów, w której został utworzony tym Centrum zdarzeń.
-   | Przestrzeń nazw magistrala usług | Przestrzeń nazw usługi Service Bus to kontener dla zestawu jednostek do obsługi komunikatów. Podczas tworzenia nowego Centrum zdarzeń utworzonego również przestrzeni nazw usługi Service Bus.
-   | Nazwa centrum zdarzeń | Nazwa Centrum zdarzeń. Podczas tworzenia Centrum zdarzeń należy też nadać mu nazwę.
-   | Nazwa zasad Centrum zdarzeń | Zasady dostępu współdzielonego. W tym Centrum zdarzeń można utworzyć zasady dostępu współdzielonego **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **odczytu** uprawnienia.
-   | Klucz zasad Centrum zdarzeń | Klucz dostępu współdzielonego, który jest używany do uwierzytelniania dostępu do przestrzeni nazw usługi Service Bus. Wprowadź tutaj klucz podstawowy lub pomocniczy.
-   | Grupa konsumentów Centrum zdarzeń | Grupa odbiorców odczytuje zdarzenia z Centrum zdarzeń. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia.
-   | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi być w następującym formacie, lub żadne dane nie mogą być odczytywane. |
-   | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do Centrum zdarzeń. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
+    - Jeśli Centrum zdarzeń jest zewnętrzne w stosunku do subskrypcji, lub jeśli chcesz wybrać opcje zaawansowane, wybierz **ustawienia Centrum zdarzeń zapewnia ręcznie**.
+
+      W poniższej tabeli opisano wymaganych właściwości dla **ustawienia Centrum zdarzeń zapewnia ręcznie** opcji:
+ 
+      | Właściwość | Opis |
+      | --- | --- |
+      | Identyfikator subskrypcji | Subskrypcja, w której został utworzony tym Centrum zdarzeń.
+      | Grupa zasobów | Grupa zasobów, w której został utworzony tym Centrum zdarzeń.
+      | Przestrzeń nazw magistrali usług | Przestrzeń nazw usługi Service Bus to kontener dla zestawu jednostek do obsługi komunikatów. Podczas tworzenia nowego Centrum zdarzeń utworzonego również przestrzeni nazw usługi Service Bus.
+      | Nazwa centrum zdarzeń | Nazwa Centrum zdarzeń. Podczas tworzenia Centrum zdarzeń należy też nadać mu nazwę.
+      | Nazwa zasad Centrum zdarzeń | Zasady dostępu współdzielonego. W tym Centrum zdarzeń można utworzyć zasady dostępu współdzielonego **Konfiguruj** kartę. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia, ustaw i klucze dostępu. Zasady dostępu współdzielonego dla źródła zdarzenia *musi* mają **odczytu** uprawnienia.
+      | Klucz zasad Centrum zdarzeń | Klucz dostępu współdzielonego, który jest używany do uwierzytelniania dostępu do przestrzeni nazw usługi Service Bus. Wprowadź tutaj klucz podstawowy lub pomocniczy.
+      | Grupa konsumentów Centrum zdarzeń | Grupa odbiorców odczytuje zdarzenia z Centrum zdarzeń. Firma Microsoft zdecydowanie zaleca się Użyj dedykowanej grupy klientów dla źródła zdarzenia.
+      | Format serializacji zdarzeń | Obecnie JSON jest format serializacji jedyną dostępną. Komunikaty o zdarzeniach musi mieć następujący format lub nie można odczytać danych. |
+      | Nazwa właściwości sygnatury czasowej | Aby określić tę wartość, należy zrozumieć format wiadomości danych komunikatów, które są wysyłane do Centrum zdarzeń. Ta wartość jest **nazwa** właściwości określone zdarzenie w danych wiadomości, które chcesz użyć jako sygnatura czasowa zdarzenia. Wartość jest rozróżniana wielkość liter. Jeśli pole pozostanie puste, **czas umieścić w kolejce zdarzenia** w zdarzeniu źródłowego jest używana jako sygnatura czasowa zdarzenia. |
 
 1. Dodanie dedykowane usługi Time Series Insights konsumenta grupy nazwy dodanego do Centrum zdarzeń.
 

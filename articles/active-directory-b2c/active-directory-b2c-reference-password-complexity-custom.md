@@ -2,20 +2,20 @@
 title: Konfigurowanie złożoność hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Jak skonfigurować wymagania dotyczące złożoności hasła za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7fb90720b8ee3834a0451cc70b026099dadaf369
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 04a37e6faf51787457d7ca4ab8434fd253deb2ed
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682475"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509160"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie złożoność hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -119,7 +119,7 @@ Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma
 6. Wybierz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *SingUpOrSignInPasswordComplexity.xml* pliku.
 7. Kliknij pozycję **Przekaż**.
 
-### <a name="run-the-policy"></a>Uruchom zasady
+### <a name="run-the-policy"></a>Uruchamianie zasad
 
 1. Otwórz zasady, który został zmodyfikowany. Na przykład *B2C_1A_signup_signin_password_complexity*.
 2. Aby uzyskać **aplikacji**, wybierz swoją aplikację, która została wcześniej zarejestrowana. Aby wyświetlić token, **adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.

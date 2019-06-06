@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: e23b5ff9917eda7272e378aa70d6e2dd79f4b9f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5ed9dc595c537d8a923d3eb056dcb002cf225f7c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918966"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427112"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure
 
@@ -26,7 +26,7 @@ Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego s
 
 Rysunek 1 — pary regionalne platformy Azure
 
-| Współrzędne geograficzne | Sparowane regiony |  |
+| Lokalizacja geograficzna | Sparowane regiony |  |
 |:--- |:--- |:--- |
 | Azja |Azja Wschodnia |Azja Południowo-Wschodnia |
 | Australia |Australia Wschodnia |Australia Południowo-Wschodnia |
@@ -35,7 +35,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
 | Chiny |Chiny Północne 2 |Chiny Wschodnie 2|
-| Europa |Europa Północna |Europa Zachodnia |
+| Europa |Europa Północna (Irlandia) |Europa Zachodnia (Holandia) |
 | Francja |Francja Środkowa|Francja Południowa|
 | Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
 | Indie |Indie Środkowe |Indie Południowe |
@@ -48,7 +48,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
 | Republika Południowej Afryki | Republika Południowej Afryki (północ) | Republika Południowej Afryki (zachód)
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
-| Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Zjednoczone Emiraty Arabskie Centrum
+| Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie
 | Departamentu Obrony USA |US DoD — wschodnie stany |US DoD — środkowe stany |
 | Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
 | Rząd USA |US Gov Iowa |Administracja USA — Wirginia |

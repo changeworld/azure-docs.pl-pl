@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie klienta - kontenerów w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Konfigurowanie niestandardowego kontenera — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Informacje o sposobie konfigurowania aplikacji Node.js do pracy w usłudze Azure App Service
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9bfd6c34d81e193fe31610f840474f1e4c91170d
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919736"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430933"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurowanie niestandardowego kontenera systemu Linux dla usługi Azure App Service
 
@@ -28,7 +28,7 @@ Ten przewodnik zawiera podstawowe pojęcia i instrukcje dotyczące konteneryzacj
 
 ## <a name="configure-port-number"></a>Konfigurowanie numeru portu
 
-Serwer sieci web w obrazie niestandardowym może używać portu innego niż 80. Poinformuj platformę Azure o porcie, którego używa niestandardowych, przy użyciu `WEBSITES_PORT` ustawienia aplikacji. Na stronie usługi GitHub dotyczącej [przykładowego kodu w języku Python w tym samouczku](https://github.com/Azure-Samples/docker-django-webapp-linux) przedstawiono, co jest potrzebne, aby ustawić opcję `WEBSITES_PORT` na wartość _8000_. Można ją ustawić, uruchamiając [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) polecenia w usłudze Cloud Shell. Na przykład:
+Serwer sieci web w obrazie niestandardowym może używać portu innego niż 80. Poinformuj platformę Azure o porcie, którego używa niestandardowego kontenera, za pomocą `WEBSITES_PORT` ustawienia aplikacji. Na stronie usługi GitHub dotyczącej [przykładowego kodu w języku Python w tym samouczku](https://github.com/Azure-Samples/docker-django-webapp-linux) przedstawiono, co jest potrzebne, aby ustawić opcję `WEBSITES_PORT` na wartość _8000_. Można ją ustawić, uruchamiając [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) polecenia w usłudze Cloud Shell. Na przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000

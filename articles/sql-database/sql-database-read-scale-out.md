@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/19/2019
-ms.openlocfilehash: cbcdcfd151951334246a4e85d9f521a15bb6269d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 1b452fb0bac91429793f8d55e439c36c70784722
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146101"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492720"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Użyj tylko do odczytu repliki, aby równoważyć obciążenie obciążeń związanych z zapytaniami tylko do odczytu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 Jako część [architektura wysokiej dostępności](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability), każda baza danych w warstwie Premium, krytyczne dla działania firmy lub w Hiperskali zostanie automatycznie aprowizowana z repliki podstawowej i wiele replik pomocniczych. Repliki pomocnicze są aprowizowane za pomocą tego samego rozmiaru obliczeń jako repliki podstawowej. **Odczytu skalowalnego w poziomie** funkcja umożliwia równoważenie obciążenia bazy danych SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu nie udostępniały repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu, a nie ma wpływu na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza. Można ich także umożliwia czerpanie korzyści wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
 

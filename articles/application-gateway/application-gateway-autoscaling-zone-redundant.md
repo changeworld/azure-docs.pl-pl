@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/22/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986869"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431198"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
 
@@ -26,8 +26,8 @@ Nowe jednostki SKU w wersji 2 obejmuje następujące ulepszenia:
   Nadmiarowości strefy jest dostępna tylko, której strefy platformy Azure są dostępne. W innych regionach wszystkie inne funkcje są obsługiwane. Aby uzyskać więcej informacji, zobacz [co to są strefy dostępności na platformie Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statyczny adres VIP**: Application gateway w wersji 2 jednostki SKU obsługuje statycznego adresu VIP wpisz wyłącznie. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się do zarządzania cyklem życia wdrożenia, nawet po ponownym uruchomieniu.
 - **Napisz ponownie nagłówek**: Usługa Application Gateway umożliwia dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP z jednostką SKU v2. Aby uzyskać więcej informacji, zobacz [ponownie zapisuje nagłówki protokołu HTTP z usługą Application Gateway](rewrite-http-headers.md)
-- **Integracji magazynu kluczy (wersja zapoznawcza)**: Brama aplikacji w wersji 2 obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).
-- **Usługa Azure Kubernetes Service kontroler danych przychodzących w (wersja zapoznawcza)**: Usługa Application Gateway kontroler danych przychodzących w wersji 2 umożliwia usługi Azure Application Gateway ma być używany jako transferu danych przychodzących dla usługi Azure Kubernetes Service (AKS) nazywany klastrem AKS. Aby uzyskać więcej informacji, zobacz [stronę z dokumentacją dotyczącą](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Integracji magazynu kluczy (wersja zapoznawcza)** : Brama aplikacji w wersji 2 obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).
+- **Usługa Azure Kubernetes Service kontroler danych przychodzących w (wersja zapoznawcza)** : Usługa Application Gateway kontroler danych przychodzących w wersji 2 umożliwia usługi Azure Application Gateway ma być używany jako transferu danych przychodzących dla usługi Azure Kubernetes Service (AKS) nazywany klastrem AKS. Aby uzyskać więcej informacji, zobacz [stronę z dokumentacją dotyczącą](https://azure.github.io/application-gateway-kubernetes-ingress/).
 - **Ulepszenia wydajności**: V2, jednostki SKU oferty maksymalnie 5 X, lepsze SSL offload wydajność w porównaniu z jednostki SKU Standard/zapory aplikacji sieci Web.
 - **Krótszy czas wdrożenia i zaktualizuj** jednostki SKU w wersji 2 oferuje skrócić czas wdrażania i aktualizacji w porównaniu do jednostki SKU Standard/zapory aplikacji sieci Web. Obejmuje to zmian w konfiguracji zapory aplikacji sieci Web.
 
@@ -54,6 +54,8 @@ Obliczenia wskazówki jednostki:
 > [!NOTE]
 > Każde wystąpienie aktualnie obsługuje około 10 jednostek pojemności.
 > Liczba żądań, które może obsłużyć jednostek obliczeniowych, zależy od różnych kryteriów, takich jak rozmiar klucza certyfikatu TLS, algorytm wymiany kluczy, ponownego nagłówka, a w przypadku przychodzących rozmiar żądania zapory aplikacji sieci Web. Firma Microsoft zaleca wykonywać testy aplikacji w celu ustalenia liczby żądań według jednostek obliczeniowych. Jednostka obliczeniowa i jednostki pojemności zostanie udostępniona jako metryki przed rozliczeń rozpoczyna się.
+
+W poniższej tabeli przedstawiono przykład ceny i są wyłącznie w celach ilustracyjnych.
 
 **Ceny w wschodnie stany USA**:
 
@@ -122,7 +124,7 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 | Niestandardowe strony błędów                                | &#x2713; | &#x2713; |
 | Obsługa protokołu WebSocket                                 | &#x2713; | &#x2713; |
 | Obsługa protokołu HTTP/2                                    | &#x2713; | &#x2713; |
-| Opróżnianie połączenia                               | &#x2713; | &#x2713; |
+| Opróżnianie połączeń                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > Skalowanie automatyczne w wersji 2, obsługuje teraz jednostki SKU [sondy kondycji domyślne](application-gateway-probe-overview.md#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i wyróżnianie tych członków wewnętrznej bazy danych, które jest uznawana za złą. Domyślna sonda kondycji jest automatycznie konfigurowany dla zaplecza, które nie mają żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](application-gateway-probe-overview.md).
@@ -136,12 +138,15 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 |Zdefiniowaną przez użytkownika (UDR) w podsieci bramy aplikacji|Nieobsługiwane|
 |Sieciowa grupa zabezpieczeń dla zakresu portów dla ruchu przychodzącego| -65200 do 65535, aby uzyskać Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Metryki platformy Azure powinna być używana.|
-|Informacje billingowe|Rozliczenia zaplanowane do uruchomienia w dniu 1 lipca 2019 r.|
+|Rozliczenia|Rozliczenia zaplanowane do uruchomienia w dniu 1 lipca 2019 r.|
 |Tryb FIPS|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
 |Sieć, obserwator integracji|Nieobsługiwane.|
 |Integracja z Centrum pomocy technicznej platformy Azure|Nie jest jeszcze dostępna.
 
+## <a name="migrate-from-v1-to-v2"></a>Migrowanie z wersji 1 do wersji 2
+
+Skrypt programu Azure PowerShell jest dostępny w galerii programu PowerShell ułatwiające migrację z usługi v1 aplikacji brama/Zapora aplikacji sieci Web do automatycznego skalowania w wersji 2 jednostki SKU. Ten skrypt pomaga kopiować konfigurację z bramy w wersji 1. Ruch migracji nadal jest odpowiedzialny za. Aby uzyskać więcej informacji, zobacz [migracji usługi Azure Application Gateway z v1 na v2](migrate-v1-v2.md).
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: Ruchem internetowym bezpośredniego przy użyciu usługi Azure Application Gateway — witryna Azure portal](quick-create-portal.md)

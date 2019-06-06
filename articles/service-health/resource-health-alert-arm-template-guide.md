@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788469"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493396"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -442,5 +442,7 @@ Dowiedz się więcej na temat kondycji zasobu:
 -  [Omówienie usługi Azure Resource Health](Resource-health-overview.md)
 -  [Typy zasobów i kontrole kondycji dostępne w usłudze Azure Resource Health](resource-health-checks-resource-types.md)
 
+
 Utwórz alerty dotyczące kondycji usługi:
 -  [Konfigurowanie alertów w programie Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Usługa Azure schemat zdarzeń dziennika aktywności](../azure-monitor/platform/activity-log-schema.md)

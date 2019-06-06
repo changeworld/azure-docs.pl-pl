@@ -1,40 +1,32 @@
 ---
 title: Łączenie do Eksploratora danych platformy Azure z ODBC
-description: W tym instruktażu dowiesz się, jak skonfigurować połączenia ODBC do Eksploratora danych platformy Azure, a następnie wizualizowanie danych za pomocą Tableau za pomocą tego połączenia.
+description: W tym artykule dowiesz się, jak skonfigurować połączenie Open Database Connectivity (ODBC) do Eksploratora danych platformy Azure.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: d01c825e50e30e3545a0d47e432835c658d677af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60448456"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494843"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Łączenie do Eksploratora danych platformy Azure z ODBC
 
 Otwórz połączenie z bazą danych ([ODBC](/sql/odbc/reference/odbc-overview)) są powszechnie akceptowane interfejsu programowania aplikacji (API) dla dostępu do bazy danych. Używanie ODBC nawiązać połączenia z Eksploratora danych platformy Azure z poziomu aplikacji, które nie mają dedykowanych łącznika.
 
-W tle aplikacji wywołania funkcji w interfejsie ODBC, które są implementowane w modułach określonej bazy danych o nazwie *sterowniki*. Eksplorator danych usługi Azure obsługuje protokół komunikacyjny serwera SQL ([MS TDS](/azure/kusto/api/tds/)); w związku z tym może użyć sterownika ODBC dla programu SQL Server.
+W tle aplikacji wywołania funkcji w interfejsie ODBC, które są implementowane w modułach określonej bazy danych o nazwie *sterowniki*. Eksplorator danych usługi Azure obsługuje protokół komunikacyjny serwera SQL ([MS TDS](/azure/kusto/api/tds/)), dzięki czemu można użyć sterownika ODBC dla programu SQL Server.
 
-W tym artykule dowiesz się, jak używać sterownika SQL Server ODBC do połączenia się z Eksploratora danych platformy Azure z poziomu dowolnej aplikacji, która obsługuje ODBC. Można opcjonalnie połączyć do Eksploratora danych platformy Azure z Tableau i wyświetlić dane z klastra z próbki.
+W tym artykule dowiesz się, jak używać sterownika SQL Server ODBC do połączenia się z Eksploratora danych platformy Azure z poziomu dowolnej aplikacji, która obsługuje ODBC.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne są następujące polecenie, aby ukończyć ten sposób:
+Potrzebne są następujące elementy:
 
 * [Sterownik Microsoft ODBC dla programu SQL Server w wersji 17.2.0.1 lub nowszej](/sql/connect/odbc/download-odbc-driver-for-sql-server) systemu operacyjnego.
-
-* Jeśli chcesz postępuj zgodnie z naszym przykładzie Tableau, należy również:
-
-  * TABLEAU pulpitu, pełny lub [wersji próbnej](https://www.tableau.com/products/desktop/download) wersji.
-
-  * Klastra, który zawiera StormEvents przykładowych danych. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie klastra Eksplorator danych platformy Azure i bazy danych](create-cluster-database-portal.md) i [pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure](ingest-sample-data.md).
-
-    [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="configure-the-odbc-data-source"></a>Konfigurowanie źródła danych ODBC
 
@@ -56,7 +48,7 @@ Wykonaj następujące kroki, aby skonfigurować źródła danych ODBC, za pomoc�
 
 1. Wybierz **zintegrowane usługi Active Directory** następnie **dalej**.
 
-    ![Active Directory — zintegrowana](media/connect-odbc/active-directory-integrated.png)
+    ![Zintegrowane z usługą Active Directory](media/connect-odbc/active-directory-integrated.png)
 
 1. Następnie wybierz bazę danych z przykładowymi danymi **dalej**.
 
@@ -72,34 +64,6 @@ Wykonaj następujące kroki, aby skonfigurować źródła danych ODBC, za pomoc�
 
     ![Test zakończony pomyślnie](media/connect-odbc/test-succeeded.png)
 
-## <a name="visualize-data-in-tableau-optional"></a>Wizualizowanie danych w Tableau (opcjonalnie)
-
-Po zakończeniu konfigurowania ODBC, przykładowe dane można zapewnić Tableau.
-
-1. Na pulpicie Tableau, w menu po lewej stronie wybierz **inne bazy danych (ODBC)**.
-
-    ![Łączenie z bazą danych ODBC](media/connect-odbc/connect-odbc.png)
-
-1. Aby uzyskać **DSN**, wybierz źródło danych utworzone dla ODBC, a następnie wybierz **Sign In**.
-
-    ![Logowanie w ODBC](media/connect-odbc/odbc-sign-in.png)
-
-1. Aby uzyskać **bazy danych**, wybierz bazę danych w klastrze przykładowe, takie jak *TestDatabase*. Dla **schematu**, wybierz opcję *dbo*oraz **tabeli**, wybierz opcję *StormEvents* przykładowej tabeli.
-
-    ![Wybierz bazę danych i tabelę](media/connect-odbc/select-database-table.png)
-
-1. TABLEAU są teraz wyświetlane schematu dla przykładowych danych. Wybierz **Aktualizuj teraz** do przenoszenia danych do firmy Tableau.
-
-    ![Aktualizowanie danych](media/connect-odbc/update-data.png)
-
-    Po zaimportowaniu danych Tableau zawiera wiersze danych podobny do poniższej ilustracji.
-
-    ![Zestaw wyników](media/connect-odbc/result-set.png)
-
-1. Teraz możesz utworzyć wizualizacje w Tableau, w oparciu o dane pochodzące z Eksploratora danych usługi Azure. Aby uzyskać więcej informacji, zobacz [Tableau Learning](https://www.tableau.com/learn).
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
-
-[Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI](visualize-power-bi.md)
+* [Nawiązywanie połączenia Eksploratora danych platformy Azure z Tableau](tableau.md)

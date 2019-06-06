@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 4721d87ab932f2e61346af3a48193e7075128622
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 1f430454bf994f9aac4ad6c113937f3798392319
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872728"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492856"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kodowanie i testowanie usługi Azure Functions lokalnie
 
@@ -39,7 +39,7 @@ Każda z tych środowisk programowania lokalnego umożliwia tworzenie projektów
 ## <a name="next-steps"></a>Kolejne kroki
 
 + Aby dowiedzieć się więcej na temat rozwoju lokalnych skompilowany C# funkcji przy użyciu programu Visual Studio 2019 r, zobacz [Tworzenie usługi Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md).
-+ Aby dowiedzieć się więcej o lokalnym programowaniu funkcji na komputerze Mac, Linux lub Windows za pomocą programu VS Code, zobacz [dokumentacji programu VS Code dla usługi Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).
++ Aby dowiedzieć się więcej o lokalnym programowaniu funkcji na komputerze Mac, Linux lub Windows za pomocą programu VS Code, zobacz [dokumentacji programu VS Code dla usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started).
 + Aby dowiedzieć się więcej na temat tworzenia funkcji z wiersza polecenia lub terminalu, zobacz [pracy przy użyciu podstawowych narzędzi usługi Azure Functions](functions-run-local.md).
 
 <!-- LINKS -->

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie bezpiecznych aplikacji na platformie Azure | Dokumentacja firmy Microsoft
-description: Przewodnik, aby pomóc w tworzeniu bardziej bezpiecznych aplikacji dla chmury.
+title: Tworzenie aplikacji w bezpiecznej chmury na platformie Azure — platformy Microsoft Azure
+description: Przewodnik dotyczący pytania zabezpieczeń i kontroli do uwzględnienia w poszczególnych fazach cyklu życia tworzenia oprogramowania, podczas tworzenia aplikacji dla chmury.
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2018
+ms.date: 05/30/2019
 ms.author: terrylan
-ms.openlocfilehash: 4c4c2cc3356a10eacbb5460fae27a0a8a66ddd35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 710d7a12db3b38a6cecffb33ade6b60eb50d03c7
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587686"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428292"
 ---
-# <a name="develop-secure-applications-on-azure"></a>Tworzenie bezpiecznych aplikacji na platformie Azure
+# <a name="develop-secure-cloud-applications-on-azure"></a>Opracowywanie aplikacji w chmurze na platformie Azure
 ## <a name="abstract"></a>Abstrakcyjny
 Ten dokument jest ogólne wytyczne pytania zabezpieczające i kontrolek, które należy rozważyć w poszczególnych fazach cyklu życia tworzenia oprogramowania, podczas tworzenia aplikacji dla chmury. Implementowanie tych pojęć przed udostępnieniem produktu może ułatwić Tworzenie bezpieczniejszego oprogramowania. Zalecenia przedstawione w tym dokumencie pochodzą z naszego środowiska Dzięki zabezpieczeniom platformy Azure i procesy, przez naszych klientów.
 

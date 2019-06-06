@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2019
+ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258705"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480541"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
 
@@ -93,7 +93,7 @@ Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze 
 |USŁUGI FIM|✔|✔|✔|✔|✔|✔|Standardowa (Standard)|
 |Ocena szyfrowania dysku|✔|✔|X|✔|✔|X|Wolne|
 |Wdrożenie innych firm|✔|X|X|✔|X|X|Wolne|
-|Ocena sieciowych grup zabezpieczeń|✔|✔|X|✔|✔|X|Wolne|
+|Ocena sieciowej grupy zabezpieczeń|✔|✔|X|✔|✔|X|Wolne|
 |Wykrywanie zagrożeń fileless|✔|✔|✔|X|X|X|Standardowa (Standard)|
 |Mapa sieci|✔|✔|X|✔|✔|X|Standardowa (Standard)|
 |Kontrolki adaptacyjne sieci|✔|✔|X|✔|✔|X|Standardowa (Standard)|
@@ -112,7 +112,7 @@ Aby dowiedzieć się, jak podczas zalecenia są generowane dla każdego z tych �
 |------|------|-----|-----|
 | Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
 | System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (zobacz uwaga poniżej) | Za pomocą rozszerzenia | Tak |
-| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Tak |
+| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Yes |
 | Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
 | McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Tak |
 | Kaspersky| Rodzina systemów Windows Server  | Nie | Nie  |
@@ -129,7 +129,7 @@ Aby dowiedzieć się, jak podczas zalecenia są generowane dla każdego z tych �
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Usługa Azure Blob storage konta *|✔| ✔|
+|Konta usługi Azure Blob storage|✔| ✔|
 |Usługi aplikacji|✔| ✔|
 |Usługi w chmurze|✔| X|
 |Sieci wirtualne|✔| Nie dotyczy|
@@ -137,7 +137,6 @@ Aby dowiedzieć się, jak podczas zalecenia są generowane dla każdego z tych �
 |Karty interfejsów sieciowych|✔| Nie dotyczy|
 |Sieciowe grupy zabezpieczeń|✔| Nie dotyczy|
 |Subskrypcja|✔ **| ✔|
-|App Service|✔| Nie dotyczy|
 |Batch|✔| Nie dotyczy|
 |Service Fabric|✔| Nie dotyczy|
 |Konto usługi Automation|✔| Nie dotyczy|
@@ -147,14 +146,9 @@ Aby dowiedzieć się, jak podczas zalecenia są generowane dla każdego z tych �
 |Stream Analytics|✔| Nie dotyczy|
 |Centrum zdarzeń|✔| Nie dotyczy|
 |Aplikacje logiki|✔| Nie dotyczy|
-|Podsieć|✔| Nie dotyczy|
-|Sieć wirtualna|✔| Nie dotyczy|
 |Konto magazynu|✔| Nie dotyczy|
 |Redis|✔| Nie dotyczy|
-|SQL|✔| Nie dotyczy|
 |Usługa Data lake analytics|✔| Nie dotyczy|
-|Konto magazynu|✔| Nie dotyczy|
-|Subskrypcja|✔| Nie dotyczy|
 |Magazyn kluczy|✔| Nie dotyczy|
 
 

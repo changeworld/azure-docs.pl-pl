@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6140a8aea3fe0fe0a8f1c01cd1c97404c41f7a69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805984"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742414"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Rozszerzanie usługi Azure IoT Central za pomocą zasad niestandardowych, których wysyłanie powiadomień
 
@@ -41,12 +41,12 @@ Tworzenie aplikacji IoT Central [usługi Azure IoT Central — aplikacje](https:
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Plan płatności | Płatność zgodnie z rzeczywistym użyciem |
-| Szablon aplikacji | Przykład Contoso |
+| Szablon aplikacji | Przykład dotyczący firmy Contoso |
 | Nazwa aplikacji | Zaakceptuj wartości domyślne lub wybierz swoją własną nazwę |
 | Adres URL | Zaakceptuj wartości domyślne lub wybierz własny unikatowy prefiks adresu URL |
 | Katalog | Dzierżawy usługi Azure Active Directory |
 | Subskrypcja platformy Azure | Twoja subskrypcja platformy Azure |
-| Obszar | Wschodnie stany USA |
+| Region | Wschodnie stany USA |
 
 Przykłady i zrzuty ekranu, w tym artykule korzystają **wschodnie stany USA** regionu. Wybierz bliską lokalizację i upewnij się, że wszystkie zasoby zostały utworzone w tym samym regionie.
 
@@ -61,7 +61,7 @@ Użyj [witryny Azure portal do utworzenia przestrzeni nazw usługi Event Hubs](h
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Name (Nazwa)    | Wybierz nazwę przestrzeni nazw |
-| Warstwa cenowa | Podstawowy |
+| Warstwa cenowa | Podstawowa |
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | DetectStoppedDevices |
 | Lokalizacja | Wschodnie stany USA |
@@ -90,10 +90,10 @@ Użyj [witryny Azure portal, aby utworzyć aplikację funkcji](https://portal.az
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | DetectStoppedDevices |
 | System operacyjny | Windows |
-| Plan hostingu | Plan Zużycie |
+| Plan hostingu | Plan zużycia |
 | Lokalizacja | Wschodnie stany USA |
-| Stos środowiska uruchomieniowego | .NET |
-| Magazyn | Utwórz nowy |
+| Stosu środowiska uruchomieniowego | .NET |
+| Magazyn | Tworzenie nowego elementu |
 
 ### <a name="sendgrid-account"></a>Konto usługi SendGrid
 
@@ -102,7 +102,7 @@ Użyj [witryny Azure portal, aby utworzyć konto usługi SendGrid](https://porta
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Name (Nazwa)    | Wybierz nazwę swojego konta usługi SendGrid |
-| Hasło | Tworzenie hasła |
+| Hasło | Utwórz hasło |
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | DetectStoppedDevices |
 | Warstwa cenowa | Bezpłatna F1 |
@@ -242,7 +242,7 @@ To rozwiązanie wymaga zapytań usługi Stream Analytics, aby wykryć, kiedy urz
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Alias wejściowy | centraltelemetry |
+    | Alias danych wejściowych | centraltelemetry |
     | Subskrypcja | Twoja subskrypcja |
     | Przestrzeń nazw centrum zdarzeń | Przestrzeń nazw Centrum zdarzeń |
     | Nazwa centrum zdarzeń | Użyj istniejącej - **centralexport** |
@@ -252,7 +252,7 @@ To rozwiązanie wymaga zapytań usługi Stream Analytics, aby wykryć, kiedy urz
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Alias wyjściowy | EmailNotification |
+    | Alias danych wyjściowych | EmailNotification |
     | Subskrypcja | Twoja subskrypcja |
     | Aplikacja funkcji | Aplikacja funkcji |
     | Funkcja  | HttpTrigger1 |
@@ -312,7 +312,7 @@ Przejdź do [aplikacji IoT Central](https://aka.ms/iotcentral) utworzonym na pod
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa wyświetlana | Eksportuj do usługi Event Hubs |
+    | Nazwa wyświetlana | Eksportowanie do usługi Event Hubs |
     | Enabled (Włączony) | Włączone |
     | Przestrzeń nazw usługi Event Hubs | Nazwa przestrzeni nazw usługi Event Hubs |
     | Centrum zdarzeń | centralexport |
@@ -324,7 +324,7 @@ Przejdź do [aplikacji IoT Central](https://aka.ms/iotcentral) utworzonym na pod
 
 Zaczekaj, aż stan eksportu **systemem** przed kontynuowaniem.
 
-## <a name="test"></a>Testuj
+## <a name="test"></a>Testowanie
 
 Aby przetestować rozwiązanie, możesz wyłączyć ciągły Eksport danych z IoT Central symulowanych urządzeń zatrzymana:
 
@@ -353,4 +353,4 @@ W tym przewodniku przedstawiono sposób:
 * Utwórz kwerendę usługi Stream Analytics, która wykrywa, gdy urządzenie zostało zatrzymane, wysyłają dane.
 * Wyślij wiadomość e-mail z powiadomieniem za pomocą usługi Azure Functions i usługi SendGrid.
 
-Skoro już wiesz, jak utworzyć niestandardowe reguły i powiadomień, sugerowane następnym krokiem jest Dowiedz się, jak [Wizualizuj i Analizuj dane usługi Azure IoT Central, na pulpicie nawigacyjnym usługi Power BI](howto-connect-powerbi.md).
+Skoro już wiesz, jak utworzyć niestandardowe reguły i powiadomień, sugerowane następnym krokiem jest Dowiedz się, jak [rozszerzenie usługi Azure IoT Central przy użyciu niestandardowych analytics](howto-create-custom-analytics.md).

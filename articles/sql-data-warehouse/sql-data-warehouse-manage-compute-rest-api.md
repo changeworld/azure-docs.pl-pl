@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 658b35163e20d024118bc7a3142c86614540f00c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5b8652a0b08b426e708a909ff988e51eee9c0821
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105330"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476063"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Interfejsy API REST dla usługi Azure SQL Data Warehouse
 Interfejsy API REST zarządzania zasobów obliczeniowych w usłudze Azure SQL Data Warehouse.
@@ -51,6 +51,9 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ```
 
 ## <a name="check-database-state"></a>Sprawdź stan bazy danych
+
+> [!NOTE]
+> Obecnie Sprawdź stan bazy danych może zwrócić ONLINE, gdy baza danych jest kończonych przepływu pracy online, liczbę błędów połączenia. Konieczne może być dodawanie opóźnienia 2 – 3 minuty w kodzie aplikacji, jeśli używasz tego wywołania interfejsu API do wyzwolenia próby nawiązania połączenia.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1

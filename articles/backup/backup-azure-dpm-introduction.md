@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 82e4278a130bb67a1af61ead981259d7bb4e1aa7
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111269"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427442"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Przygotowanie do tworzenia kopii zapasowych obciążeń na platformę Azure za pomocą programu System Center DPM
 
@@ -54,6 +54,7 @@ Obsługiwane typy plików | Następujące typy plików można kopii zapasowej za
 Nieobsługiwane typy plików | Serwery w systemach plików rozróżniana wielkość liter; twarde linki (pomijane); (pomijane); punkty ponownej analizy zaszyfrowane i skompresowane (pomijane); zaszyfrowane i rozrzedzone (pomijane); Skompresowany strumień; Przeanalizuj strumień.
 Magazyn lokalny | Każda maszyna, który chcesz utworzyć kopię zapasową musi mieć lokalne ilość wolnego miejsca, który jest co najmniej 5% rozmiaru danych, która jest tworzona kopia zapasowa. Na przykład tworzenie kopii zapasowej 100 GB danych wymaga co najmniej 5 GB wolnego miejsca w lokalizacji pliki tymczasowe.
 Vault storage | Nie ma żadnego limitu ilości danych, które można wykonać kopię zapasową do magazynu usługi Azure Backup, ale rozmiar źródła danych (na przykład maszyny wirtualnej lub bazy danych) nie może przekraczać 54400 GB.
+Usługa ExpressRoute systemu Azure | Usługi Azure ExpressRoute jest skonfigurowany za pomocą komunikacji równorzędnej prywatnej lub firmy Microsoft, nie można wykonać kopię zapasową danych na platformie Azure.<br/><br/> Skonfigurowanie usługi Azure ExpressRoute w publicznej komunikacji równorzędnej może służyć do tworzenia kopii zapasowych danych na platformie Azure.<br/><br/> **Uwaga:** Publicznej komunikacji równorzędnej jest przestarzała w przypadku obwodów.
 Agent usługi Azure Backup | Jeśli program DPM jest uruchomiony w programie System Center 2012 SP1, należy zainstalować Rollup 2 lub nowszego, programu DPM z dodatkiem SP1. Jest to wymagane do instalacji agenta.<br/><br/> W tym artykule opisano, jak wdrożyć najnowszą wersję agenta usługi Azure Backup, znany także jako agenta usługi Microsoft Azure Recovery Service (MARS). Jeśli masz wcześniejszą wersję wdrożone, zaktualizuj do najnowszej wersji, aby upewnić się, że tej kopii zapasowej działa zgodnie z oczekiwaniami.
 
 Przed rozpoczęciem należy konto platformy Azure z włączoną funkcją kopia zapasowa Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Przeczytaj o [cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).

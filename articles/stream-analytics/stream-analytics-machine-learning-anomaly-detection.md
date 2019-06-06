@@ -1,5 +1,5 @@
 ---
-title: Wykrywanie anomalii w usłudze Azure Stream Analytics (wersja zapoznawcza)
+title: Wykrywanie anomalii w usłudze Azure Stream Analytics
 description: W tym artykule opisano sposób korzystania ze sobą usługi Azure Stream Analytics i Azure Machine Learning do wykrywania anomalii.
 services: stream-analytics
 author: mamccrea
@@ -7,14 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: 6f1b40e6224b9ed872700d526b954c605159d6bf
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/03/2019
+ms.openlocfilehash: fdf98a0c0c40010bb55955b54dc7b04db8e199f5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789626"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493260"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 

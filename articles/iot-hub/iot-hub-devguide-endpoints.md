@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fe913f057d00fd18b1b163f124d9dd0b83abf0de
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5854a795ba7ceeeb4512f1e2fd16d98826d55dd5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925894"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477993"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
@@ -82,13 +82,13 @@ Usługa IoT Hub obsługuje obecnie następujących usług platformy Azure jako d
 
 Limity liczby punktów końcowych, możesz dodać, zobacz [przydziałów i dławienia](iot-hub-devguide-quotas-throttling.md).
 
-Można użyć interfejsu API REST [kondycji punktu końcowego uzyskać](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) można pobrać stanu kondycji punktów końcowych. Firma Microsoft zaleca używanie [metryki usługi IoT Hub](iot-hub-metrics.md) związane z routingu opóźnienie wiadomości, aby zidentyfikować i debugować błędy, gdy punkt końcowy kondycji jest nieużywany lub w złej kondycji.
+Można użyć interfejsu API REST [kondycji punktu końcowego uzyskać](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) można pobrać stanu kondycji punktów końcowych. Firma Microsoft zaleca używanie [metryki usługi IoT Hub](iot-hub-metrics.md) związane z routingu opóźnienie wiadomości, aby zidentyfikować i debugować błędy, gdy punkt końcowy kondycji jest nieużywany lub w złej kondycji, oczekujemy, że opóźnienie, które mogą być wyższe, gdy punkt końcowy jest jednym z tych stanów.
 
-|Kondycja|Opis|
+|Stan kondycji|Opis|
 |---|---|
-|w dobrej kondycji|Punkt końcowy akceptuje komunikaty, zgodnie z oczekiwaniami.|
+|Dobrej kondycji|Punkt końcowy akceptuje komunikaty, zgodnie z oczekiwaniami.|
 |Złej kondycji|Punkt końcowy nie akceptuje komunikaty, zgodnie z oczekiwaniami i ponawia próbę wysyłania danych do tego punktu końcowego usługi IoT Hub. Będzie można zaktualizować stan złej kondycji punktu końcowego do dobrej kondycji, gdy usługa IoT Hub ustanowiła ostatecznie spójny stan kondycji.|
-|nieznane|Usługa IoT Hub nie ma nawiązać połączenie z punktem końcowym. Brak komunikatów zostały dostarczone do lub odrzucone z tego punktu końcowego.|
+|Nieznany|Usługa IoT Hub nie ma nawiązać połączenie z punktem końcowym. Brak komunikatów zostały dostarczone do lub odrzucone z tego punktu końcowego.|
 |Obsługa utraconych|Punkt końcowy nie akceptuje komunikaty, po usługi IoT Hub ponowiona wysyłanie wiadomości w okresie retrial.|
 
 ## <a name="field-gateways"></a>Bram działających w terenie

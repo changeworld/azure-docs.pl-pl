@@ -2,20 +2,20 @@
 title: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e44bb1ed6a7a090b4b1213ca14be2b42642475e4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717288"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510720"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika
 
@@ -60,7 +60,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 
 1. W programie Visual Studio Utwórz projekt, wybierając **pliku** > **New** > **projektu**.
 
-2. W **nowy projekt** wybierz **Visual C#** > **Web** > **aplikacji sieci Web platformy ASP.NET (.NET Framework)**.
+2. W **nowy projekt** wybierz **Visual C#**  > **Web** > **aplikacji sieci Web platformy ASP.NET (.NET Framework)** .
 
 3. W **nazwa** wpisz nazwę aplikacji (na przykład *Contoso.AADB2C.API*), a następnie wybierz pozycję **OK**.
 
@@ -72,7 +72,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 
 5. Upewnij się, że uwierzytelnianie jest ustawione na **bez uwierzytelniania**.
 
-6. Wybierz przycisk **OK**, aby utworzyć projekt.
+6. Wybierz **OK** do tworzenia projektu.
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Przygotowanie punktu końcowego interfejsu API REST
 
@@ -248,13 +248,13 @@ Dostawcy oświadczeń może mieć wiele profilów technicznych z różnych powod
 
 Poniższy fragment kodu XML zawiera węzeł dostawcy oświadczeń, dwa profile techniczne:
 
-* **Identyfikator profilu technicznego = "REST-API-SignUp"**: Definiuje usługi RESTful.
+* **Identyfikator profilu technicznego = "REST-API-SignUp"** : Definiuje usługi RESTful.
   * `Proprietary` jest określana jako protokół dla dostawcy usług na podstawie zgodne ze specyfikacją REST.
   * `InputClaims` Definiuje oświadczenia, które będą wysyłane z usługi Azure AD B2C do usługi REST.
 
     W tym przykładzie zawartość oświadczenie `givenName` wysyła do usługi REST jako `firstName`, zawartość oświadczenie `surname` wysyła do usługi REST jako `lastName`, i `email` wysyła się. `OutputClaims` Element definiuje oświadczenia, które są pobierane z usługi RESTful, wróć do usługi Azure AD B2C.
 
-* **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"**: Dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika.
+* **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"** : Dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika.
 
 Znajdź `<ClaimsProviders>` węzła, a następnie dodaj następujący fragment kodu XML w obszarze `<ClaimsProviders>` węzła:
 

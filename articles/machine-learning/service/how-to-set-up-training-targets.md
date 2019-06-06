@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236619"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475987"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu 
 
@@ -31,22 +31,22 @@ W tym artykule dowiesz się, jak używać różnych celów obliczeń do trenowan
 
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning w wersji 1.0.6.
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 1.0.39.
 
 ## <a name="compute-targets-for-training"></a>Obliczeniowych elementów docelowych na potrzeby szkolenia
 
 Usługa Azure Machine Learning obsługuje różne w różnych obliczeniowych elementów docelowych. Cykl projektowania modelu Typowa rozpoczyna się od dev/eksperymentów na niewielkiej ilości danych. Na tym etapie firma Microsoft zaleca używanie środowiska lokalnego. Na przykład komputera lokalnego lub maszyny Wirtualnej opartej na chmurze. Skalowanie w górę szkolenia na większych zestawów danych lub czy rozproszonego szkolenia, firma Microsoft zaleca obliczeniowego usługi Azure Machine Learning Tworzenie klastra przy użyciu jednego lub wielu node tego skalowania każdej próbie przesłania przebiegu. Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługi różnych scenariuszy mogą się różnić zależnie z poniższym opisem:
 
 
-|Obliczeniowego elementu docelowego na potrzeby szkolenia| Przyspieszanie procesora GPU | Automatyczne<br/> do strojenia hiperparametrycznego | Automatyczne<br/> Uczenie maszynowe | Potoków uczenia maszynowego Azure |
+|Szkolenie &nbsp;elementów docelowych| Obsługa procesora GPU |Zautomatyzowane uczenie maszynowe | Potoki uczenia maszynowego | Interfejs wizualny
 |----|:----:|:----:|:----:|:----:|
-|[Komputer lokalny](#local)| Być może | &nbsp; | ✓ | &nbsp; |
-|[Usługi Azure Machine Learning obliczeń](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
-|[Zdalnego maszyny Wirtualnej](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Komputer lokalny](#local)| Być może | tak | &nbsp; | &nbsp; |
+|[Usługi Azure Machine Learning obliczeń](#amlcompute)| tak | Tak & <br/>hiperparametrycznego&nbsp;dostrajania | tak | tak |
+|[Zdalnego maszyny Wirtualnej](#vm) |tak | Tak & <br/>do strojenia hiperparametrycznego | tak | &nbsp; |
+|[Azure&nbsp;usługi Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | tak | tak | &nbsp; |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | tak | &nbsp; |
+|[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | tak | &nbsp; |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | tak | &nbsp; |
 
 **Wszystkie zasoby obliczeniowe elementy docelowe mogą być ponownie używane dla wielu zadań szkoleniowych**. Na przykład po dołączeniu maszyny Wirtualnej z systemem zdalnym do swojego obszaru roboczego, można ponownie użyć go dla wielu zadań.
 

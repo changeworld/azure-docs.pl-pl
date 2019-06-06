@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: b51b9f08819a4c496e051d375f6d52aaa985c8e6
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394134"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734887"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak zintegrować wspólny schemat alertów za pomocą aplikacji logiki
 
 W tym artykule pokazano, jak utworzyć aplikację logiki, która korzysta z wspólnego schematu alertu do obsługi wszystkich alertów.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Wspólny schemat alertu](https://aka.ms/commonAlertSchemaDocs) zawiera standardowe i rozszerzalny schemat JSON dla wszystkich różnych typów alertów. Wspólny schemat alertu jest najbardziej przydatne, gdy wykorzystywane programowo — za pośrednictwem elementów webhook, elementów runbook i logic apps. W tym artykule pokażemy, jak można tworzyć aplikację logiki pojedynczego do obsługi wszystkich alertów. Te same zasady mogą dotyczyć innych metod programistycznych. Aplikację logiki, opisane w tym artykule tworzy dobrze zdefiniowane zmienne dla [pola "podstawowe"](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields), a także opisuje, jak można obsługiwać [typu alertu]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') logikę specyficzną dla.
+[Wspólny schemat alertu](https://aka.ms/commonAlertSchemaDocs) zawiera standardowe i rozszerzalny schemat JSON dla wszystkich różnych typów alertów. Wspólny schemat alertu jest najbardziej przydatne, gdy wykorzystywane programowo — za pośrednictwem elementów webhook, elementów runbook i logic apps. W tym artykule pokażemy, jak można tworzyć aplikację logiki pojedynczego do obsługi wszystkich alertów. Te same zasady mogą dotyczyć innych metod programistycznych. Aplikację logiki, opisane w tym artykule tworzy dobrze zdefiniowane zmienne dla [pola "podstawowe"](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields), a także opisuje, jak można obsługiwać [typu alertu](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) logikę specyficzną dla.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
@@ -125,7 +125,7 @@ W tym artykule założono, że czytelnik jest zapoznać się z
 
     ![Wyrażenie aplikacji logiki](media/alerts-common-schema-integrations/logic-app-expressions.png "wyrażenie aplikacji logiki")
     
-     [Pola "monitoringService"]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') służy do jednoznacznego identyfikowania typu alertu, oparte na którym możesz tworzyć logikę warunkową.
+     [Pola "monitoringService"](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) służy do jednoznacznego identyfikowania typu alertu, oparte na którym możesz tworzyć logikę warunkową.
 
     
     Na przykład poniżej fragment kodu sprawdza, czy alert usługi Application Insights na podstawie alertu dziennika, a jeśli tak drukuje wyniki wyszukiwania. W przeciwnym wypadku, wydrukowaniu "NA".

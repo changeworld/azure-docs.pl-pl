@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3f3b60c3744ce9dea61054b3fa0aaccfea27d784
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fa6b4d6d0db09f8c4955430d6dc227356416d915
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238702"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735967"
 ---
 W poniższej tabeli przedstawiono limity przydziału i limity specyficzne dla [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Aby uzyskać informacje na temat cen usługi Event Hubs, zobacz [cen usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -39,11 +39,11 @@ Event hubs w warstwie dedykowana oferta jest rozliczana w stałej miesięcznej c
 | --- | ---|
 | Przepustowość |  20 jednostek pojemności |
 | Przestrzenie nazw | 50 na jednostkę pojemności |
-| Event Hubs |  Brak limitu tematy centrów zdarzeń |
+| Event Hubs |  1000 na przestrzeń nazw |
 | Zdarzenia związane z transferem danych przychodzących | Dołączono |
 | Rozmiar komunikatu | 1 milion bajtów |
 | Partycje | 2000 na jednostkę pojemności |
 | Grupy odbiorców | Dopuszczalne na jednostkę pojemności, 1000 na Centrum zdarzeń |
 | Połączenia obsługiwane przez brokera | 100 tys. w cenie |
-| Przechowywanie komunikatów | 90 dni, 10 TB uwzględnione na jednostkę pojemności |
+| Przechowywanie komunikatów | Się do 7 dni (90-dniowa przechowywania wkrótce), 10 TB uwzględnione na jednostkę pojemności |
 | Przechwytywanie | Dołączono |

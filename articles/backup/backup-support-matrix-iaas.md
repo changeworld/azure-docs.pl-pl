@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f48e0d8b46684d067fe2e32f241e28d94c2edbd
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399678"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743176"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -54,6 +54,8 @@ Kopie zapasowe dziennie (przy użyciu programu DPM/MABS) | Dwa zaplanowane kopie
 Kopia zapasowa co miesiąc/rok   | Nie jest obsługiwana podczas wykonywania kopii zapasowej za pomocą rozszerzenia maszyny Wirtualnej platformy Azure. Obsługiwane jest tylko dziennego i tygodniowego.<br/><br/> Można ustawić zasady przechowywania kopii zapasowych codziennie/co tydzień na okres przechowywania co miesiąc/rok.
 Korekta automatyczna zegara | Nieobsługiwane.<br/><br/> Usługa Azure Backup nie automatycznie Dostosuj zmiany czasu letniego, podczas tworzenia kopii zapasowej maszyny Wirtualnej.<br/><br/>  Zmodyfikuj zasady ręcznego zgodnie z potrzebami.
 [Funkcje zabezpieczeń dla hybrydowych kopii zapasowych](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  Wyłączanie funkcji zabezpieczeń nie jest obsługiwane.
+Kopia zapasowa maszyny Wirtualnej, w których czas maszyny zostanie zmieniona. | Nieobsługiwane.<br/><br/> Jeśli czas maszyny jest zmieniana na przyszłe daty i godziny po włączeniu kopii zapasowej dla tej maszyny Wirtualnej; Jednak nawet jeśli zmiany czasu zostanie wycofana, pomyślne tworzenie kopii zapasowych nie jest gwarantowana.  
+
 
 ## <a name="operating-system-support-windows"></a>Obsługa systemu operacyjnego (Windows)
 
@@ -146,7 +148,7 @@ Tworzenie kopii zapasowych maszyn wirtualnych w [zestawów dostępności](https:
 Tworzenie kopii zapasowych maszyn wirtualnych w [strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nieobsługiwane.
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane przy użyciu [korzyść użycia hybrydowego (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Obsługiwane.
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrożone w [zestawu skalowania](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) |  Nieobsługiwane.
-Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Opublikowanych przez firmę Microsoft i innych firm) |  Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
+Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Opublikowanych przez firmę Microsoft i innych firm) |  Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny). Nie należy przywracać kopie jako maszyny wirtualne, jak o zakupach te potrzeby, ale tylko jako dyski maszyn wirtualnych portalu Marketplace platformy Azure.
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane na podstawie niestandardowego obrazu (innej firmy) |   Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
 Tworzenie kopii zapasowych maszyn wirtualnych, które są migrowane na platformie Azure  | Obsługiwane.<br/><br/> Aby utworzyć kopię zapasową maszyny Wirtualnej, musi być zainstalowany agent maszyny Wirtualnej, na zmigrowanej maszynie.
 Tworzenie kopii zapasowych wielu maszyn wirtualnych | Usługa Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.

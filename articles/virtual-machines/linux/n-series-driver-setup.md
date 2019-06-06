@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 769d3dda7b1e49612279c9bfa6a3dd586e50e4c2
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123949"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479105"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
@@ -187,8 +187,8 @@ Aby zainstalować sterowniki NVIDIA GRID NV lub maszyny wirtualne z serii NVv2, 
 
    sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
+   sudo apt-get install build-essential ubuntu-desktop -y
+   ```
 3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NVv2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
 
    ```

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/27/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921056"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474070"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie uprawnieniami w usłudze Azure AD? (wersja zapoznawcza)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie uprawnieniami w usłudze Azure AD? (Wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest obecnie w publicznej wersji zapoznawczej.
@@ -70,22 +70,13 @@ Poniżej przedstawiono typy zasobów, możesz zarządzać dostępem do zarządza
 
 - Grupy zabezpieczeń usługi Azure AD
 - Grupy usługi Office 365
-- Aplikacje dla przedsiębiorstw usługi Azure AD
-- Aplikacje SaaS
-- Aplikacje zintegrowane niestandardowe
-- Zbiory witryn usługi SharePoint Online
-- Witryny usługi SharePoint Online
+- Usługa Azure AD aplikacje dla przedsiębiorstw, w tym aplikacji SaaS i zintegrowane niestandardowe obsługujących aplikacji federacyjnych lub inicjowania obsługi administracyjnej
+- I SharePoint Online zbiorów witryn
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Można także kontrolować dostęp do innych zasobów, które korzystają z grup zabezpieczeń usługi Azure AD lub grup usługi Office 365.  Na przykład:
 
-Aby korzystać z usługi Azure AD Zarządzanie uprawnieniami (wersja zapoznawcza), musi mieć jeden z następujących licencji:
-
-- Usługa Azure AD — warstwa Premium P2
-- Enterprise Mobility + Security (EMS) E5 license
-
-Aby uzyskać więcej informacji, zobacz [Zarejestruj się w przypadku wersji usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) lub [pakietu Enterprise Mobility + Security E5 w wersji próbnej](https://aka.ms/emse5trial).
-
-Wyspecjalizowane chmury, takich jak platforma Azure Government, Azure (Niemcy) i Azure China 21Vianet nie są obecnie dostępne w tej wersji zapoznawczej.
+- Możesz nadać użytkownikom licencje usługi Microsoft Office 365 przy użyciu grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i konfigurowanie [Licencjonowanie na podstawie grupy](../users-groups-roles/licensing-groups-assign.md) dla tej grupy
+- Można umożliwić użytkownikom dostęp do zarządzania zasobami platformy Azure przy użyciu grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i utworzenie [przypisania roli Azure](../../role-based-access-control/role-assignments-portal.md) dla tej grupy
 
 ## <a name="what-are-access-packages-and-policies"></a>Co to są pakiety dostępu i zasad?
 
@@ -110,7 +101,7 @@ Na poniższym diagramie przedstawiono przykład różne elementy w przystawce Za
 
 ![Uprawnienie do zarządzania — omówienie](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Zewnętrzni użytkownicy
+## <a name="external-users"></a>Użytkownicy zewnętrzni
 
 Korzystając z [usługi Azure AD business-to-business (B2B)](../b2b/what-is-b2b.md) zaprosić doświadczenia, musi już wiedzieć, że adresy e-mail użytkowników zewnętrznego gościa chcesz przenieść do katalogu zasobów i pracować. Ta działa wspaniałe, gdy pracujesz nad projektem mniejszych lub krótkoterminowej i wiesz już, wszystkich uczestników, ale jest trudniejsze do zarządzania, jeśli masz wielu użytkowników, którą chcesz pracować, lub jeśli uczestników zmieniać wraz z upływem czasu.  Na przykład użytkownik może być Praca z innej organizacji i mieć jeden punkt kontaktu z tej organizacji, ale wraz z upływem czasu dodatkowe użytkownicy z organizacji będą także potrzebować dostępu.
 
@@ -132,12 +123,12 @@ Aby lepiej zrozumieć, zarządzanie uprawnieniami i jego dokumentacji, należy p
 | policy | Zestaw reguł definiuje cyklu życia dostępu, np. jak użytkownicy uzyskują dostęp, kto może zatwierdzać i jak długo użytkownicy mają dostęp. Przykładowe zasady umożliwiają dostęp pracowników i dostępu zewnętrznego. |
 | catalog | Kontener powiązane zasoby i dostęp do pakietów. |
 | Ogólne katalogu | Wbudowane wykaz, który jest zawsze dostępna. Aby dodać zasoby do katalogu ogólne wymaga pewnych uprawnień. |
-| zasób | Zasób lub usługę (np. grupy, aplikacji lub witryny), który użytkownik może mieć uprawnienia do. |
-| typ zasobu | Typ zasobu, który zawiera grupy, aplikacje i witryny usługi SharePoint Online. |
+| resource | Zasób lub usługę (np. grupy, aplikacji lub witryny), który użytkownik może mieć uprawnienia do. |
+| Typ zasobu | Typ zasobu, który zawiera grupy, aplikacje i witryny usługi SharePoint Online. |
 | zasób roli | Kolekcja uprawnień skojarzonych z zasobem. |
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępniania. |
 | przypisani użytkownicy | Przypisanie pakietu dostęp do użytkownika lub grupy. |
-| włącz | Proces udostępniania dla użytkowników zażądać dostępu do pakietu. |
+| Włącz | Proces udostępniania dla użytkowników zażądać dostępu do pakietu. |
 
 ## <a name="roles-and-permissions"></a>Role i uprawnienia
 
@@ -149,12 +140,12 @@ Zarządzanie uprawnieniami ma różne role, w oparciu o funkcję zadania.
 | Twórca katalogu | Tworzenie i Zarządzanie katalogami. Zazwyczaj administrator IT lub właściciel zasobu. Osoba, która automatycznie tworzy wykaz staje się pierwszym właściciela katalogu wykazu. |
 | Właściciel katalogu | Edytowanie i zarządzanie nią istniejących wykazów. Zazwyczaj administrator IT lub właściciel zasobu. |
 | Dostęp do Menedżera pakietów | Edytowanie i zarządzanie nią wszystkie istniejące pakiety dostępu w katalogu. |
-| Osoba zatwierdzająca | Zatwierdź żądania, uzyskiwania dostępu do pakietów. |
-| Żądający | Żądanie dostępu do pakietów. |
+| Osoby zatwierdzającej | Zatwierdź żądania, uzyskiwania dostępu do pakietów. |
+| Obiekt żądający | Żądanie dostępu do pakietów. |
 
 W poniższej tabeli wymieniono uprawnienia dla każdej z tych ról.
 
-| Zadanie | Administrator użytkownika | Twórca katalogu | Właściciel katalogu | Dostęp do Menedżera pakietów | Osoba zatwierdzająca |
+| Zadanie | Administrator użytkownika | Twórca katalogu | Właściciel katalogu | Dostęp do Menedżera pakietów | Osoby zatwierdzającej |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Utwórz nowy pakiet dostępu w wykazie ogólne](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
 | [Utwórz nowy pakiet dostępu w wykazie](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
@@ -173,6 +164,12 @@ W poniższej tabeli wymieniono uprawnienia dla każdej z tych ról.
 | [Dodawanie/Usuwanie zasobów z katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Dodawanie właścicieli katalogu ani uzyskać dostępu do menedżerów pakietów](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Edytowanie/usuwanie katalogu](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+
+## <a name="license-requirements"></a>Wymagania licencyjne
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Wyspecjalizowane chmury, takich jak platforma Azure Government, Azure (Niemcy) i Azure China 21Vianet nie są obecnie dostępne w tej wersji zapoznawczej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

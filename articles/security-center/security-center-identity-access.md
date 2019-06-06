@@ -3,7 +3,7 @@ title: Monitorowanie tożsamości i dostępu w usłudze Azure Security Center | 
 description: Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami i dostępem w usłudze Azure Security Center w celu monitorowania dostępu użytkowników i rozwiązywania problemów związanych z tożsamościami.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 5517bb59d168ffa8d9339d9e765c385cef6db4ce
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 05/30/2018
+ms.author: monhaber
+ms.openlocfilehash: 16548ae75567fa3ba6f8c9135d61945bd28d2db8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389492"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428424"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -42,7 +42,6 @@ Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować
 > [!NOTE]
 > Jeśli Twoja subskrypcja obejmuje ponad 600 kont, usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla Twojej subskrypcji. Zalecenia, które nie są uruchamiane są wyświetlane w obszarze "oceny niedostępne", które omówiono poniżej.
 Usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla agentów administratora partnerem Cloud Solution Provider (CSP).
->
 >
 
 Zobacz [zalecenia](security-center-identity-access.md#recommendations) listę zaleceń dotyczących tożsamości i dostępu dostarczone przez usługę Security Center.
@@ -111,23 +110,20 @@ Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zale
 
 |Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
 |----|----|----|----|
-|Subskrypcja|50|Włącz usługę MFA dla aplikacji platformy Azure do zarządzania konta z uprawnieniami właściciela subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
-|Subskrypcja|50|Włączyć usługę security center w subskrypcji |Włączyć usługę Security center na wszystkie swoje subskrypcje, umożliwienia zaawansowanego wykrywania zagrożeń, JIT, listę dozwolonych aplikacji i zalecenia dotyczące zaawansowanych |
-|Subskrypcja|50|Włącz security center w warstwie standardowa w ramach Twojej subskrypcji |Włączyć usługę Security center w warstwie standardowa na wszystkie swoje subskrypcje, umożliwienia zaawansowanego wykrywania zagrożeń, JIT, listę dozwolonych aplikacji i zalecenia dotyczące zaawansowanych.|
-|Subskrypcja|40|Włącz usługę MFA dla kont aplikacji do zarządzania platformy Azure z uprawnieniami do zapisu w ramach subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
-|Subskrypcja|30|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
-|Subskrypcja|30|Włącz usługę MFA dla kont aplikacji do zarządzania platformy Azure z uprawnieniami do odczytu w ramach subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
-|Subskrypcja|25|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
-|Subskrypcja|20|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji. Przestarzałe konta są kontami, dla których logowania został zablokowany w usłudze Azure AD.|
-|Subskrypcja|5|Usuń przestarzałe konta z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp do tylko bieżąca liczba użytkowników. Przestarzałe konta są kontami, dla których logowania został zablokowany w usłudze Azure AD.|
-|Subskrypcja|5|Wyznaczenie więcej niż jednego właściciela subskrypcji|Wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.|
-|Subskrypcja|5|Wyznacz maksymalnie 3 właścicieli w ramach subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
-|Magazyn kluczy|5|Włączanie dzienników diagnostycznych w usłudze Key Vault|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
-|Subskrypcja|15|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
-|Subskrypcja|1|Podawanie szczegółów dotyczących kontaktu ds. zabezpieczeń|Podaj informacje kontaktowe zabezpieczeń dla każdej subskrypcji. Informacje kontaktowe są e-mail adres i numer telefonu. Informacje są używane z Tobą, jeśli nasz zespół ds. zabezpieczeń wykryje, że Twoje zasoby zostały naruszone.|
+|Subskrypcja|50|Uwierzytelnianie wieloskładnikowe powinno być włączone dla kont z uprawnieniami właściciela subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
+|Subskrypcja|40|Uwierzytelnianie wieloskładnikowe powinna być włączona dla konta subskrypcji z uprawnieniami do zapisu|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
+|Subskrypcja|30|Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
+|Subskrypcja|30|Uwierzytelnianie wieloskładnikowe powinna być włączona dla konta subskrypcji z uprawnieniami do odczytu|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
+|Subskrypcja|25|Zewnętrzne konta z zapisu czy uprawnienia powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
+|Subskrypcja|20|Przestarzałe konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
+|Subskrypcja|5|Przestarzałe konta powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp do tylko bieżąca liczba użytkowników. |
+|Subskrypcja|5|Powinna istnieć więcej niż jeden właściciel został przypisany do Twojej subskrypcji|Wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.|
+|Subskrypcja|5|Maksymalnie 3 właścicieli należy wyznaczyć dla Twojej subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
+|Magazyn kluczy|5|Dzienniki diagnostyczne w usłudze Key Vault powinno być włączone.|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|Subskrypcja|15|Zewnętrzne konta z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
 
-> ! [UWAGA] Jeśli utworzono zasady dostępu warunkowego, który wymaga uwierzytelniania Wieloskładnikowego, ale ma wykluczenia Ustaw oceny zalecenia usługi Security Center MFA uwzględnia zasady niezgodne, ponieważ umożliwia niektórzy użytkownicy zalogować się do platformy Azure bez użycia usługi MFA.
->
+> [!NOTE]
+> Jeśli utworzono zasady dostępu warunkowego, który wymaga uwierzytelniania Wieloskładnikowego, ale ma wykluczenia Ustaw oceny zalecenia usługi Security Center MFA uwzględnia zasady niezgodne, ponieważ umożliwia niektórzy użytkownicy zalogować się do platformy Azure bez użycia usługi MFA.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:

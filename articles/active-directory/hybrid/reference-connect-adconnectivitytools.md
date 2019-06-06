@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318f21beffb401053c56576ccd9e641dc89cf559
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298803"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473788"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADConnectivityTools
 
@@ -35,7 +35,8 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 
 ### <a name="description"></a>OPIS
 
-Uruchamia testy lokalnych łączność Dns. Aby skonfigurować łącznik usługi Active Directory, użytkownik musi mieć zarówno rozpoznawania nazw w lesie, próbuje połączyć się także, jak kontrolery domeny dla tego lasu.
+Uruchamia testy lokalnych łączność Dns.
+Aby skonfigurować łącznik usługi Active Directory, użytkownik musi mieć zarówno resolutionthe Nazwa lasu jest próby połączyć się także, jak kontrolery domeny dla tego lasu.
 
 ### <a name="examples"></a>PRZYKŁADY
 
@@ -309,7 +310,7 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Jeśli użytkownik nie korzysta z usług DNS udostępnianych przez witrynę AD / kontrolera domeny logowania, a następnie ich może chcesz pominąć sprawdzanie, czy port 53.
-Użytkownik musi być nadal w stanie rozpoznać _.ldap._tcp. \<forestfqdn\> w kolejności dla konfiguracji łącznika usługi Active Directory została wykonana pomyślnie.
+Użytkownik musi nadal móc rozpoznać _.ldap._tcp. \<forestfqdn\> w kolejności dla konfiguracji łącznika usługi Active Directory została wykonana pomyślnie.
 
 ```yml
 Type: SwitchParameter

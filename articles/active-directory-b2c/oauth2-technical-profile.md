@@ -2,20 +2,20 @@
 title: Definiowanie profilu technicznego OAuth2 w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować profil techniczny OAuth2.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683887"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512953"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth2 w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64683887"
 
 Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości protokołu OAuth2. OAuth2 jest podstawowy protokół autoryzacji i uwierzytelnianie delegowane. Aby uzyskać więcej informacji, zobacz [RFC 6749 OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). Z profilu technicznego OAuth2 może tworzyć federacje ze dostawcę tożsamości na podstawie protokołu OAuth2, takie jak Facebook. Federowanie za pomocą dostawcy tożsamości umożliwia użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 **Nazwa** atrybutu **protokołu** element musi być równa `OAuth2`. Na przykład protokół **uwierzytelniania Facebook OAUTH** profilu technicznego jest `OAuth2`:
 
@@ -81,7 +81,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
 | IdTokenAudience | Nie | Odbiorcy id_token. Jeśli zostanie określony, usługi Azure AD B2C sprawdza, czy token jest oświadczenie zwrócona przez dostawcę tożsamości i jest taki sam, jak określona. |
 | authorization_endpoint | Yes | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 6749. |
-| AccessTokenEndpoint | Yes | Adres URL punktu końcowego tokenu zgodnie z RFC 6749. |  
+| AccessTokenEndpoint | Tak | Adres URL punktu końcowego tokenu zgodnie z RFC 6749. |  
 | ClaimsEndpoint | Yes | Adres URL punktu końcowego informacji użytkownika zgodnie z RFC 6749. | 
 | AccessTokenResponseFormat | Nie | Format wywołanie punktu końcowego tokenu dostępu. Na przykład Facebook wymaga metody HTTP GET, ale odpowiedzi tokenu dostępu jest w formacie JSON. |
 | AdditionalRequestQueryParameters | Nie | Żądanie dodatkowe parametry zapytania. Na przykład można wysłać dodatkowe parametry do dostawcy tożsamości. Może zawierać wiele parametrów przy użyciu ogranicznika przecinkami. | 

@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113476"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734566"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -31,14 +31,13 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Usługa Azure AD — warstwa Premium P2
-- [Przeglądy dostępu włączone](access-reviews-overview.md)
 - Administrator globalny lub administrator użytkowników
 
 Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Utwórz co najmniej jeden przeglądów dostępu
 
-1. Zaloguj się w witrynie Azure portal i Otwórz [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Zaloguj się w witrynie Azure portal i Otwórz [strony zarządzania tożsamościami oraz](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 1. W menu po lewej stronie kliknij **przeglądów dostępu**.
 

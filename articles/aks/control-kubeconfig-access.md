@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d4d3d9a3ff57a7a388e9703d0d145d8ce6eafd12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143022"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475611"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Użyj kontroli dostępu opartej na rolach na platformie Azure, aby definiują dostęp użytkownika do pliku konfiguracji platformy Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ W tym artykule pokazano, jak przypisać role RBAC, ten limit, który można pobr
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.53 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="available-cluster-roles-permissions"></a>Uprawnienia ról klastra dostępny
 
@@ -45,9 +45,9 @@ Te role RBAC można zastosować do usługi Azure Active Directory (AD) użytkown
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>Przypisywanie uprawnień roli do użytkownika lub grupy
 
-Aby przypisać jedną z dostępnych ról, należy uzyskać identyfikator zasobu klastra usługi AKS i identyfikator konta użytkownika usługi Azure AD lub grupy. Następujące przykładowe polecenia wykonaj następujące czynności:
+Aby przypisać jedną z dostępnych ról, należy uzyskać identyfikator zasobu klastra usługi AKS i identyfikator konta użytkownika usługi Azure AD lub grupy. Następujące przykładowe polecenia:
 
-* Pobiera, używając Identyfikatora zasobu klastra [az aks show] [ az-aks-show] polecenie, aby uzyskać klaster o nazwie *myAKSCluster* w *myResourceGroup* Grupa zasobów. Podaj własną nazwę klastra i zasobów grupy, zgodnie z potrzebami.
+* Pobierz, używając Identyfikatora zasobu klastra [az aks show] [ az-aks-show] polecenie, aby uzyskać klaster o nazwie *myAKSCluster* w *myResourceGroup* Grupa zasobów. Podaj własną nazwę klastra i zasobów grupy, zgodnie z potrzebami.
 * Używa [Pokaż konta az] [ az-account-show] i [az ad użytkownika show] [ az-ad-user-show] poleceń, aby uzyskać identyfikator użytkownika.
 * Na koniec przypisuje rolę przy użyciu [utworzenia przypisania roli az] [ az-role-assignment-create] polecenia.
 
@@ -69,7 +69,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Jeśli chcesz przypisać uprawnienia do grupy usługi Azure AD, należy zaktualizować `--assignee` parametrem identyfikator obiektu dla grupy, a nie przez użytkownika, jak pokazano w poprzednim przykładzie. Aby uzyskać identyfikator obiektu dla grupy, użyj [Pokaż grupy ad az] [ az-ad-group-show] polecenia. Poniższy przykład pobiera identyfikator obiektu grupy usługi Azure AD o nazwie *appdev*: `az ad group show --group appdev --query objectId -o tsv`
+> Jeśli chcesz przypisać uprawnienia do grupy usługi Azure AD, należy zaktualizować `--assignee` pokazano w poprzednim przykładzie o identyfikatorze obiektu dla parametru *grupy* zamiast *użytkownika*. Aby uzyskać identyfikator obiektu dla grupy, użyj [Pokaż grupy ad az] [ az-ad-group-show] polecenia. Poniższy przykład pobiera identyfikator obiektu grupy usługi Azure AD o nazwie *appdev*: `az ad group show --group appdev --query objectId -o tsv`
 
 Możesz zmienić poprzednie przypisanie do *roli użytkownika klastra* zgodnie z potrzebami.
 

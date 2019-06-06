@@ -8,16 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e88977cc4d99df176116e6be7d8e06adb6297782
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9d29445054848d798476fed8184b89f9b6c1210f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209578"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497571"
 ---
 # <a name="vlans-and-subnets-overview"></a>Omówienie sieci VLAN i podsieci
 
 CloudSimple zapewnia sieci, na którym wdrożono usługę CloudSimple region.  Sieć jest w jednej przestrzeni adresowej TCP warstwy 3 routingu, domyślnie włączone.  Wszystkich chmur prywatnych i podsieci, utworzone w tym regionie mogą komunikować się ze sobą bez przeprowadzania dodatkowej konfiguracji.  Można utworzyć grupy portów rozproszone na serwer vCenter za pomocą sieci VLAN.
+
+![CloudSimple Network Topology](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>Sieci VLAN
 
@@ -34,6 +36,10 @@ Wszystkie podsieci mogą komunikować się ze sobą domyślnie zmniejszenie konf
 Chmura prywatna jest tworzona jako izolowanych stos oprogramowania VMware (hosty ESXi, vCenter, sieć vSAN i NSX) środowiska zarządzanego przez serwer vCenter.  Składniki zarządzania są wdrażane w sieć wybrana dla **vSphere/sieć vSAN podsieci CIDR**.  Zakres CIDR sieci odbywa się w różnych podsieciach podczas wdrażania.
 
 Minimalna vSphere/sieć vSAN podsieci CIDR zakresu prefiksu: **/24** maksymalna vSphere/sieć vSAN podsieci CIDR zakresu prefiksu:   **/21**
+
+> [!CAUTION]
+> Adresy IP z zakresu CIDR vSphere/sieć vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej. Nie używaj adresu IP z tego zakresu, na dowolnej maszynie wirtualnej.
+
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/sieć vSAN podsieci CIDR zakresu
 

@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 12fb9dc67e8afae3dcb9ade97dd61ab438e0fac5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304393"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475408"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżących ograniczeń dotyczących pule węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -45,6 +45,7 @@ AKS dotyczą następujące ograniczenia nadrzędnego dla kontenerów systemu Win
 Następujące dodatkowe ograniczenia do pomocy technicznej pulę węzłów systemu Windows Server w usłudze AKS:
 
 - Klaster AKS zawsze zawiera pulę węzłów systemu Linux jako pierwszy pulę węzłów. Nie można usunąć tej pierwszej puli węzeł opartych na systemie Linux, chyba że sam klaster AKS zostanie usunięty.
+- Obecnie usługa AKS obsługuje tylko podstawowego modułu równoważenia obciążenia, który dopuszcza tylko jedna pula zaplecza, domyślna pula węzłów systemu Linux. W wyniku zawsze będzie ruch wychodzący z zasobników Windows [translacji do usługi Azure managed publiczny adres IP][azure-outbound-traffic]. Ponieważ ten adres IP nie jest konfigurowalne, nie jest obecnie możliwe do listy dozwolonych adresów, ruch z zasobników Windows. 
 - Klastry usługi AKS, należy użyć modelu wtyczki Azure CNI (zaawansowane) w sieci.
     - Sieć z wtyczki Kubenet (basic) nie jest obsługiwane. Nie można utworzyć klaster AKS, która korzysta z wtyczki kubenet. Aby uzyskać więcej informacji na temat różnic w modelach sieci, zobacz [sieci pojęcia związane z aplikacjami w usłudze AKS][azure-network-models].
     - Model sieciowych wtyczki Azure CNI wymaga dodatkowego planowania i zagadnień dotyczących zarządzania adresami IP. Aby uzyskać więcej informacji na temat sposobu planowania i implementacji wtyczki Azure CNI, zobacz [wtyczki Azure CNI konfigurowania sieci w usłudze AKS][configure-azure-cni].
@@ -87,3 +88,4 @@ Aby rozpocząć pracę z kontenerami systemu Windows Server w usłudze AKS, [utw
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat

@@ -6,40 +6,38 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 06/05/2019
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 455e78c63960103f5facae764aff3d2b3b2a590d
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60924860"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735201"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak można debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
-Ten artykuł zawiera podsumowanie jak diagnozować i debugować funkcje zdefiniowane przez użytkownika. Następnie identyfikuje niektóre z najbardziej typowych scenariuszy podczas debugowania ich.
+Ten artykuł zawiera podsumowanie jak diagnozować i debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure. Następnie identyfikuje niektóre z najbardziej typowych scenariuszy podczas debugowania ich.
 
 >[!TIP]
 > Odczyt [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md) Aby dowiedzieć się więcej o konfigurowaniu narzędzia debugowania w cyfrowych bliźniaczych reprezentacji platformy Azure przy użyciu dzienników aktywności, dzienniki diagnostyczne i usługi Azure Monitor.
 
 ## <a name="debug-issues"></a>Debugowanie błędów
 
-Wiedza, jak diagnozować problemy, które powstają w ramach wystąpienia Twins cyfrowych platformy Azure pomaga zidentyfikować problem, przyczyna problemu i rozwiązanie.
+Wiedza, jak diagnozować problemy w reprezentacji urządzeń cyfrowych platformy Azure pozwala na efektywne analizowania problemów ustalenie przyczyn tych problemów i zapewnia odpowiednie rozwiązania dla nich.
 
-### <a name="enable-log-analytics-for-your-instance"></a>Włączanie analizy dzienników dla wystąpienia usługi
+Szereg rejestrowania, Analityki i narzędzi diagnostycznych znajdują się w tym celu.
 
-Dzienniki i metryki dla wystąpienia Twins cyfrowych platformy Azure są wyświetlane w usłudze Azure Monitor. Ta dokumentacja przyjęto utworzono [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md) obszar roboczy za pomocą [witryny Azure Portal](../azure-monitor/learn/quick-create-workspace.md)za pośrednictwem [wiersza polecenia platformy Azure](../azure-monitor/learn/quick-create-workspace-cli.md), lub za pomocą [ Program PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+### <a name="enable-logging-for-your-instance"></a>Włącz rejestrowanie dla swojego wystąpienia
 
-> [!NOTE]
-> Podczas wysyłania zdarzeń do usługi Azure Monitor dzienników po raz pierwszy, może występować opóźnienie 5 minut.
+Twins cyfrowych platformy Azure obsługuje niezawodne rejestrowanie, monitorowanie i analizy. Rozwiązania deweloperzy mogą używać usługi Azure Monitor dzienników, dzienniki diagnostyczne, dzienniki aktywności i innych usług, do obsługi złożonych potrzeb monitorowania aplikacji IoT. Opcje rejestrowania można łączyć z zapytania lub wyświetla rekordy w kilku usługach oraz zapewniają szczegółowe rejestrowanie pokrycie dla wielu usług.
 
-Aby skonfigurować monitorowanie i rejestrowanie dla zasobów Twins cyfrowych platformy Azure, przeczytaj [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
+* Konfiguracja rejestrowania specyficzne dla bliźniaczych reprezentacji cyfrowych platformy Azure, można znaleźć [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
+* Zapoznaj się z [usługi Azure Monitor](../azure-monitor/overview.md) Przegląd informacje dotyczące ustawień zaawansowanych dziennika, włączana za pomocą usługi Azure Monitor.
+* Zapoznaj się z artykułem [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md) dotyczących konfigurowania ustawienia dziennika diagnostycznego Twins cyfrowych platformy Azure za pośrednictwem witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
 
-Przeczytaj artykuł [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md) dotyczących konfigurowania ustawienia dziennika diagnostycznego Twins cyfrowych platformy Azure za pośrednictwem witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
-
->[!IMPORTANT]
-> Upewnij się, że wybrano wszystkie kategorie dzienników, metryk i obszaru roboczego usługi Azure Log Analytics.
+Po skonfigurowaniu będzie mogła wybierz wszystkie kategorie dzienników, metryk i użycie obszary robocze usługi zaawansowane monitorowanie usługi Azure log analytics do wspierania wysiłków debugowania.
 
 ### <a name="trace-sensor-telemetry"></a>Telemetria śledzenia usługi czujnika
 
@@ -47,7 +45,7 @@ Przeczytaj artykuł [zbieranie i używanie dane dzienników z zasobów platformy
 
 Aby dopasować komunikaty telemetryczne czujnik, jego odpowiednich dzienniki, można określić identyfikator korelacji na dane zdarzenia są wysyłane. Aby to zrobić, należy ustawić `x-ms-client-request-id` właściwość identyfikatora GUID.
 
-Po wysłaniu danych telemetrycznych, otwórz log analytics, aby zapytanie o dzienniki przy użyciu zestawu identyfikator korelacji:
+Po wysłaniu danych telemetrycznych, Otwórz program log analytics, aby zapytanie o dzienniki przy użyciu zestawu identyfikator korelacji:
 
 ```Kusto
 AzureDiagnostics
@@ -209,4 +207,6 @@ Po włączeniu ustawienia diagnostyczne, mogą wystąpić następujące typowe w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak włączyć [monitorowania i dzienniki](../azure-monitor/platform/activity-logs-overview.md) w reprezentacji urządzeń cyfrowych platformy Azure.
+- Dowiedz się, jak włączyć [monitorowania i dzienniki](./how-to-configure-monitoring.md) w reprezentacji urządzeń cyfrowych platformy Azure.
+
+- Odczyt [dziennik aktywności — omówienie platformy Azure](../azure-monitor/platform/activity-logs-overview.md) artykułu, aby uzyskać więcej opcji platformy Azure rejestrowania.

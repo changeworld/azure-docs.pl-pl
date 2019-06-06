@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463629"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430795"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 
@@ -42,6 +42,7 @@ Zanim można skojarzyć lub dodać subskrypcję, należy wykonać następujące 
     - Użytkownicy, które zostały przypisane do ról za pomocą funkcji RBAC spowoduje utratę dostępu
     - Administrator usługi i Współadministratorzy utracą dostęp
     - Jeśli masz żadnych magazynów kluczy, będą niedostępne i trzeba będzie je naprawić po dokonaniu skojarzenia
+    - Jeśli masz żadnych zarządzanych tożsamości do zasobów takich jak maszyny wirtualne lub Logic Apps, należy ponownie włączyć, lub utwórz je ponownie po dokonaniu skojarzenia
     - Jeśli masz zarejestrowane usługi Azure Stack, musisz ponownie zarejestrować po dokonaniu skojarzenia
 
 1. Zaloguj się przy użyciu konta, które:
@@ -76,7 +77,9 @@ Po skojarzeniu subskrypcję z innym katalogiem, może to być dodatkowe kroki, k
 
 1. Jeśli masz żadnych magazynów kluczy, należy zmienić identyfikator dzierżawy magazynu kluczy Aby uzyskać więcej informacji, zobacz [zmiana Identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji](../../key-vault/key-vault-subscription-move-fix.md).
 
-2. Jeśli została zarejestrowana przy użyciu tej subskrypcji usługi Azure Stack, należy ponownie zarejestrować. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z platformą Azure](/azure-stack/operator/azure-stack-registration).
+2. Jeśli używano przypisany systemowo tożsamości zarządzanych zasobów, należy je ponownie włączyć. Jeśli była używana zarządzanych tożsamości przypisanych przez użytkownika, możesz je ponownie utworzyć. Po ponownym włączeniem lub ponowne utworzenie tożsamości zarządzanych, należy ponownie ustanowić uprawnienia przypisane do tych tożsamości. Aby uzyskać więcej informacji, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).
+
+3. Jeśli została zarejestrowana przy użyciu tej subskrypcji usługi Azure Stack, należy ponownie zarejestrować. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z platformą Azure](/azure-stack/operator/azure-stack-registration).
 
 
 

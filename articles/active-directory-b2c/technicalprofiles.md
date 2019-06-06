@@ -2,20 +2,20 @@
 title: Profili Technicalprofile | Dokumentacja firmy Microsoft
 description: Określ element profili Technicalprofile zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711054"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512280"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -76,7 +76,7 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 
 | Atrybut | Wymagane | Opis |
 |---------|---------|---------|
-| Identyfikator | Yes | Unikatowy identyfikator profilu technicznego. Profil techniczny można się odwoływać przy użyciu tego identyfikatora, od innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
+| Identyfikator | Tak | Unikatowy identyfikator profilu technicznego. Profil techniczny można się odwoływać przy użyciu tego identyfikatora, od innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
 
 **Profilu technicznego** zawiera następujące elementy:
 
@@ -85,7 +85,7 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 | Domain | 0:1 | Nazwa domeny dla profilu technicznego. Na przykład jeśli profilu technicznego określa dostawcę tożsamości usługi Facebook, nazwa domeny jest Facebook.com. |
 | Nazwa wyświetlana | 0:1 | Nazwa profilu technicznego, który może być widoczny dla użytkowników. |
 | Opis | 0:1 | Opis profilu technicznego, który może być widoczny dla użytkowników. |
-| Protokół | 0:1 | Protokół używany do komunikacji z drugiej strony. |
+| Protocol | 0:1 | Protokół używany do komunikacji z drugiej strony. |
 | Metadane | 0:1 | Kolekcja par klucz/wartość, które są wykorzystywane przez protokół komunikacji z punktem końcowym w toku transakcji. |
 | InputTokenFormat | 0:1 | Format wejściowy tokenu. Możliwe wartości: `JSON`, `JWT`, `SAML11`, lub `SAML2`. `JWT` Wartość reprezentuje tokenu sieci Web JSON zgodnie z Specyfikacja IETF. `SAML11` Wartość reprezentuje token zabezpieczeń SAML 1.1, zgodnie z specyfikacją języka OASIS.  `SAML2` Wartość reprezentuje token zabezpieczeń SAML 2.0, zgodnie z specyfikacją języka OASIS. |
 | OutputTokenFormat | 0:1 | Format tokenu danych wyjściowych. Możliwe wartości: `JSON`, `JWT`, `SAML11`, lub `SAML2`. |
@@ -102,13 +102,13 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 | UseTechnicalProfileForSessionManagement | 0:1 | Inny profil techniczny służący do zarządzania sesjami. |
 |EnabledForUserJourneys| 0:1 |Kontroluje, czy profil techniczny jest wykonywany w podróży użytkownika.  |
 
-### <a name="protocol"></a>Protokół
+### <a name="protocol"></a>Protocol
 
 **Protokołu** element zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
+| Name | Tak | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
 | Program obsługi | Nie | Jeśli nazwa protokołu jest równa `Proprietary`, określ w pełni kwalifikowana nazwa zestawu, który jest używany przez usługę Azure AD B2C do określenia programu obsługi protokołu. |
 
 ### <a name="metadata"></a>Metadane
@@ -125,7 +125,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Klucz | Yes | Klucz metadanych. Zobacz każdego typu profilu technicznego dla listy elementów metadanych. |
+| Klucz | Tak | Klucz metadanych. Zobacz każdego typu profilu technicznego dla listy elementów metadanych. |
 
 ### <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -142,7 +142,7 @@ A **metadanych** element zawiera następujące elementy:
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator | Nie | Unikatowy identyfikator określonej pary kluczy przywoływany z innych elementów w pliku zasad. |
-| StorageReferenceId | Yes | Identyfikator kontenera klucza magazynu przywoływany z innych elementów w pliku zasad. |
+| StorageReferenceId | Tak | Identyfikator kontenera klucza magazynu przywoływany z innych elementów w pliku zasad. |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
@@ -158,7 +158,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
+| Identyfikator odwołania | Tak | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
 
 ### <a name="inputclaims"></a>InputClaims
 
@@ -174,7 +174,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
+| ClaimTypeReferenceId | Tak | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
 | defaultValue | Nie | Wartość domyślną, służące do tworzenia oświadczeń, jeśli oświadczenie wskazywanym przez ClaimTypeReferenceId nie istnieje, tak aby wynikowe oświadczenia mogą być używane jako oświadczenie InputClaim przez profil techniczny. |
 | PartnerClaimType | Nie | Identyfikator typu oświadczenia partnera zewnętrznych zasad określony typ oświadczenia mapuje. Jeśli nie określono atrybutu PartnerClaimType zasad określony typ oświadczenia jest mapowany na typ roszczenia partnera o takiej samej nazwie. Tej właściwości należy użyć, gdy Twoja nazwa typ oświadczenia różni się od innych firm. Na przykład imię oświadczeń jest "imię" oświadczenie o nazwie "imię" jest używana przez partnera. |
 
@@ -210,7 +210,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
+| ClaimTypeReferenceId | Tak | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
 | defaultValue | Nie | Wartość domyślną, służące do tworzenia oświadczeń, jeśli oświadczenie wskazywanym przez ClaimTypeReferenceId nie istnieje, tak aby wynikowe oświadczenia mogą być używane jako oświadczenie InputClaim przez profil techniczny. |
 |AlwaysUseDefaultValue |Nie |Wymusić użycie wartości domyślnej.  |
 | PartnerClaimType | Nie | Identyfikator typu oświadczenia partnera zewnętrznych zasad określony typ oświadczenia mapuje. Jeśli nie określono atrybutu PartnerClaimType zasad określony typ oświadczenia jest mapowany na typ roszczenia partnera o takiej samej nazwie. Tej właściwości należy użyć, gdy Twoja nazwa typ oświadczenia różni się od innych firm. Na przykład imię oświadczeń jest "imię" oświadczenie o nazwie "imię" jest używana przez partnera. |
@@ -245,7 +245,7 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
+| Identyfikator odwołania | Tak | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
 
 ###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
 

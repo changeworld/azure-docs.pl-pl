@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720472"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479163"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -26,12 +26,12 @@ Ten artykuł zawiera omówienie tych typów magazynów i ich unikatowych funkcji
 
 Poniższa tabela zawiera podsumowanie usług Azure Storage, które są obsługiwane z użyciem różnych wersji HDInsight:
 
-| Usługa magazynu | Typ konta | Typ Namespace | Obsługiwane usługi | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane | Wersja usługi HDInsight | Typ klastra |
+| Usługa Storage | Typ konta | Typ Namespace | Obsługiwane usługi | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane | Wersja usługi HDInsight | Typ klastra |
 |---|---|---|---|---|---|---|---|
 |Usługa Azure Data Lake Storage 2. generacji| Ogólnego przeznaczenia w wersji 2 | Hierarchiczne (system plików) | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
 |Azure Storage| Ogólnego przeznaczenia w wersji 2 | Object | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
 |Azure Storage| Ogólnego przeznaczenia w wersji 1 | Object | Obiekt blob | Standardowa (Standard) | ND | Wszyscy | Wszyscy |
-|Azure Storage| Obiekt blob magazynu ** | Object | Blokowy obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | Wszyscy | Wszyscy |
+|Azure Storage| Obiekt blob magazynu ** | Object | Blokowe obiekty Blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | Wszyscy | Wszyscy |
 |Usługa Azure Data Lake Storage 1. generacji| ND | Hierarchiczne (system plików) | ND | ND | ND | Tylko 3.6 | Wszystkie regiony z wyjątkiem HBase |
 
 ** W przypadku klastrów HDInsight mogą być tylko konta magazynu pomocniczego typu magazynu obiektów blob.
@@ -42,16 +42,16 @@ Aby uzyskać więcej informacji na temat warstw dostępu do magazynu Azure, zoba
 
 Można utworzyć klastra przy użyciu różnych kombinacji usług podstawowych i opcjonalnie magazynu pomocniczego. Poniższa tabela zawiera podsumowanie konfiguracji magazynu klastra, które są obecnie obsługiwane w HDInsight:
 
-| Wersja usługi HDInsight | Magazyn podstawowy | Magazyn pomocniczy | Obsługiwane |
+| Wersja usługi HDInsight | Podstawowy magazyn | Magazyn pomocniczy | Obsługiwane |
 |---|---|---|---|
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
 | 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 2. generacji | Nie |
-| 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 1. generacji | Yes |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Yes |
+| 3.6 & 4.0 | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 | Usługa Data Lake Storage 1. generacji | Tak |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Usługa Data Lake Storage 2. generacji | Tak |
 | 3.6 & 4.0 | Data Lake Storage Gen2* | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
 | 3.6 & 4.0 | Usługa Data Lake Storage 2. generacji | Usługa Data Lake Storage 1. generacji | Nie |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 1. generacji | Yes |
-| 3.6 | Usługa Data Lake Storage 1. generacji | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Yes |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 z magazynu obiektów blob (blokowych obiektów blob) | Tak |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 2. generacji | Nie |
 | 4.0 | Usługa Data Lake Storage 1. generacji | Dowolne | Nie |
 
@@ -137,7 +137,7 @@ Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest
 
 Za pomocą HDInsight uzyskujesz również dostęp do danych w usłudze Azure Storage. Składnia jest następująca:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Korzystając z konta usługi Azure Storage z klastrami HDInsight, należy wziąć pod uwagę następujące zasady:
 

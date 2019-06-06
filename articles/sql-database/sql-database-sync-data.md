@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f83eb87d2eecb91aa18b1caceb42f9d8bd6c2a0e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: cfa94fc1c75bcd1eaa9a076cfe63369f60ce5f1c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939585"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693085"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -129,6 +129,7 @@ Zastrzeganie i cofanie zastrzegania podczas Tworzenie grupy synchronizacji, aktu
 - Nazwy obiektów (baz danych, tabel i kolumn) nie może zawierać znaków drukowalnych kropki (.), lewego nawiasu kwadratowego ([) lub prawo kwadratowa nawiasu (]).
 - Uwierzytelnianie usługi Azure Active Directory nie jest obsługiwana.
 - Tabele z tej samej nazwie, ale innego schematu (na przykład dbo.customers i sales.customers) nie są obsługiwane.
+- Kolumn zawierających typy danych zdefiniowane przez użytkownika nie są obsługiwane.
 
 #### <a name="unsupported-data-types"></a>Nieobsługiwane typy danych
 

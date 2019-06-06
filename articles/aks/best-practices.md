@@ -2,18 +2,17 @@
 title: Najlepsze rozwiązania dla usługi Azure Kubernetes Service (AKS)
 description: Zbiór klastra operatora i deweloperów najlepszych rozwiązań do tworzenia aplikacji i zarządzanie nimi w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-origin.date: 12/07/2018
-ms.date: 03/04/2019
-ms.author: v-yeche
-ms.openlocfilehash: c73f2fea808944847fab6a675914ee57e537560b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/07/2018
+ms.author: iainfou
+ms.openlocfilehash: 20922f0fb6932191b8e522e4640b1ba4fecd5ca4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467157"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514558"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Operator klastra i dla deweloperów najważniejsze wskazówki dotyczące tworzenia aplikacji i zarządzanie nimi w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,21 +26,21 @@ Jako operatora klastra współdziałały właścicieli aplikacji i deweloperów,
 
 **Wielodostęp**
 
-* [Najlepsze rozwiązania dotyczące izolacji klastra](operator-best-practices-cluster-isolation.md)
+* [Najlepsze rozwiązania związane z izolacją klastra](operator-best-practices-cluster-isolation.md)
     * Zawiera składniki podstawowe wielodostępu i izolacji logicznej z przestrzeniami nazw.
-* [Najlepsze rozwiązania dotyczące harmonogramu podstawowe funkcje](operator-best-practices-scheduler.md)
+* [Najlepsze rozwiązania dotyczące podstawowych funkcji usługi Scheduler](operator-best-practices-scheduler.md)
     * Obejmuje przy użyciu limity przydziałów zasobów i zasobnika przerw w działaniu budżetu.
-* [Najlepsze rozwiązania dotyczące harmonogramu zaawansowane funkcje](operator-best-practices-advanced-scheduler.md)
+* [Najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler](operator-best-practices-advanced-scheduler.md)
     * Obejmuje przy użyciu nasłonecznieniem i tolerations, selektory węzła i koligacji i koligację między zasobnika i konfiguracji zapobiegającej koligacji.
 * [Najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji](operator-best-practices-identity.md)
     * Obejmuje integrację z usługą Azure Active Directory przy użyciu kontroli dostępu opartej na rolach (RBAC) i tożsamości zasobników.
 
-**Bezpieczeństwo**
+**Zabezpieczenia**
 
-* [Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnienia](operator-best-practices-cluster-security.md)
+* [Najlepsze rozwiązania dotyczące zabezpieczeń i uaktualnień klastra](operator-best-practices-cluster-security.md)
     * Obejmuje zabezpieczanie dostępu do serwera interfejsu API, ograniczanie dostępu do kontenera oraz zarządzania nimi, uaktualnienia i ponownym uruchomieniu węzła.
 * [Najlepsze rozwiązania dotyczące zarządzania obrazami kontenera i zabezpieczeń](operator-best-practices-container-image-management.md)
-    * Obejmuje zabezpieczanie obrazu i środowisk wykonawczych, przy użyciu rejestrów zaufanych i kompilacje automatyczne aktualizacje obrazu podstawowego...
+    * Obejmuje zabezpieczanie obrazu i środowisk wykonawczych i kompilacje automatyczne aktualizacje obrazu podstawowego.
 * [Najlepsze rozwiązania dotyczące zabezpieczeń zasobników](developer-best-practices-pod-security.md)
     * Obejmuje zabezpieczanie dostępu do zasobów, ograniczanie widoczności poświadczeń i przy użyciu tożsamości zasobników i cyfrowe magazynów kluczy.
 
@@ -49,7 +48,7 @@ Jako operatora klastra współdziałały właścicieli aplikacji i deweloperów,
 
 * [Najlepsze rozwiązania dotyczące łączności sieciowej](operator-best-practices-network.md)
     * Obejmuje modele innej sieci, przy użyciu zapory aplikacji sieci web i transferu danych przychodzących (WAF) i zabezpieczania dostępu SSH z węzłem.
-* [Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych](operator-best-practices-storage.md)
+* [Najlepsze rozwiązania dotyczące przechowywania i tworzenia kopii zapasowych](operator-best-practices-storage.md)
     * Obejmuje, wybierając odpowiedni typ i języka node rozmiar magazynu, dynamiczne aprowizowanie woluminy i kopie zapasowe danych.
 
 **Uruchamianiu obciążeń liczonych w przedsiębiorstwach**
@@ -61,7 +60,7 @@ Jako operatora klastra współdziałały właścicieli aplikacji i deweloperów,
 
 Jako deweloper lub właściciela aplikacji, można uproszczenie środowiska programowania i zdefiniować wymagają potrzeb związanych z wydajnością aplikacji.
 
-* [Najlepsze rozwiązania dla deweloperów aplikacji do zarządzania zasobami](developer-best-practices-resource-management.md)
+* [Najlepsze rozwiązania dotyczące zarządzania zasobami dla deweloperów aplikacji](developer-best-practices-resource-management.md)
     * Obejmuje Definiowanie zasobników żądania zasobów i limity, Konfigurowanie narzędzi do tworzenia i sprawdzania pod kątem problemów z aplikacjami.
 * [Najlepsze rozwiązania dotyczące zabezpieczeń zasobników](developer-best-practices-pod-security.md)
     * Obejmuje zabezpieczanie dostępu do zasobów, ograniczanie widoczności poświadczeń i przy użyciu tożsamości zasobników i cyfrowe magazynów kluczy.

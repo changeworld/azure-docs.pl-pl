@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484089"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479513"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Wybierz rozwiązanie na platformie Azure do transferu danych
 
@@ -63,6 +63,11 @@ Należy odpowiedzieć na następujące pytania, aby ułatwić wybór rozwiązani
 - Szukasz transfer danych w toku, zapewniająca ciągłą?
 
     Jeśli tak, użyj opcji w [Scenariusz 4: Okresowe transfery](storage-solution-periodic-data-transfer.md).
+ 
+
+## <a name="data-transfer-feature-in-azure-portal"></a>Transfer danych funkcji w witrynie Azure portal
+
+Możesz również przejść do konta usługi Azure Storage w witrynie Azure portal i wybierz **transferu danych** funkcji. Podaj przepustowości sieci w danym środowisku, rozmiar danych, którą chcesz przenieść, a częstotliwość transferu danych. Zobaczysz optymalne transferu rozwiązania odpowiadający informacje, które zostały podane danych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

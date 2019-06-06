@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 15232c92e60d21d759bec59597cb161480b8c2ea
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258503"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743227"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami w usłudze Azure Security Center
 
@@ -44,10 +44,6 @@ Te możliwości są teraz dostępne w usłudze Azure Security Center:
 - **Szczegółowe badanie maszyny**: Usługa Azure Security Center klientom dostęp do konsoli usługi Windows Defender ATP w celu wykonania szczegółowe badania, aby odkryć zakresu naruszenia.
 
 ![Azure Security Center, wyświetlanie alertów i ogólnych informacji dotyczących poszczególnych alertów](media/security-center-wdatp/image1.png)
-
-Możesz [badania alertu dotyczącego](security-center-investigation.md) w usłudze Azure Security Center:
-
-![Pulpit nawigacyjny badania alertu w usłudze Azure Security Center](media/security-center-wdatp/image2.png)
 
 Możesz badać alertu, przez przestawianie w usłudze Windows Defender ATP. Można przeglądać dodatkowe informacje takie jak drzewo procesów alertu i zdarzeń wykresu. Widać również szczegółowe osi czasu, pokazujący każdego zachowanie historycznych okres sześciu miesięcy.
 

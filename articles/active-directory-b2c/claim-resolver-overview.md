@@ -2,20 +2,20 @@
 title: Około oświadczenia rozpoznawania nazw w zasadach niestandardowych usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o rozwiązujący oświadczeń używanych w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f4bb5deb0c30ba113f315c69393e92bddfe0d27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a13d4b0b44c51f78a068b1619fe083a08756af6b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703472"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511601"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Temat rozwiązujący oświadczenia w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ W poniższych sekcjach wymieniono dostępne oświadczenia rozpoznawania nazw.
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | Dwuliterowa kod ISO dla języka. | pl |
-| {Kultury: LCID}   | Identyfikator LCID kod języka. | 21 |
+| {Kultury: LCID}   | Identyfikator LCID kod języka. | 1033 |
 | {Kultury: RegionName} | Dwuliterowa kod ISO dla regionu. | USA |
 | {Culture:RFC5646} | Kod języka RFC5646. | en-US |
 

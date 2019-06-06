@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2af8ef7d29d1ac506ddca654544bc938758aa0d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 0050745ea9d624adb6b7a28d5db91924d1c54b0a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149867"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479449"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące automatycznego dostrajania
 
@@ -40,7 +40,7 @@ Aby korzystać z usługi Azure Automation, pierwszym krokiem jest utworzenie kon
 Wykonaj następujące kroki, aby utworzyć konto usługi Azure Automation za pośrednictwem metody wyboru i konfigurowanie aplikacji usługi Automation z witryny Marketplace:
 
 - Zaloguj się do witryny Azure portal
-- Kliknij pozycję "**+ Utwórz zasób**" w lewym górnym rogu
+- Kliknij pozycję " **+ Utwórz zasób**" w lewym górnym rogu
 - Wyszukaj "**automatyzacji**" (naciśnij klawisz enter)
 - Kliknij aplikację automatyzacji w wynikach wyszukiwania
 
@@ -59,14 +59,9 @@ Jeśli masz kilka subskrypcji platformy Azure, dla których chcesz się tego sam
 
 ## <a name="update-azure-automation-modules"></a>Aktualizowanie modułów usługi Azure Automation
 
-Skrypt programu PowerShell, aby pobrać zalecenia dostrajania automatycznego używa [Get AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) i [Get AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) poleceń, dla których aktualizacja modułów platformy Azure w wersji 4 i powyżej jest wymagana.
+Skrypt programu PowerShell, aby pobrać zalecenia dostrajania automatycznego używa [Get AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) i [Get AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) polecenia dla modułu, którego platformy Azure w wersji 4 lub nowszy jest wymagany.
 
-Wykonaj następujące kroki, aby zaktualizować moduły programu Azure PowerShell:
-
-- Dostęp do okienka automatyzacji aplikacji, a następnie wybierz pozycję "**modułów**" w menu po lewej stronie (Przewiń w dół, ponieważ ten element menu jest w obszarze udostępnionych zasobów).
-- W okienku modułów, kliknij pozycję "**aktualizacja modułów platformy Azure**" u góry i zaczekaj, aż zostanie wyświetlony komunikat "zostały zaktualizowane moduły platformy Azure". Ten proces może potrwać kilka minut.
-
-![Aktualizowanie modułów usługi Azure automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
+- W przypadku, gdy moduły platformy Azure wymagają aktualizacji, zobacz [Az Obsługa modułu w usłudze Azure Automation](../automation/az-modules.md).
 
 ## <a name="create-azure-automation-runbook"></a>Tworzenie elementu Runbook usługi Azure Automation
 
@@ -76,7 +71,7 @@ Wykonaj następujące kroki, aby utworzyć nowy element runbook usługi Azure Au
 
 - Dostęp do konta usługi Azure Automation, utworzonej w poprzednim kroku
 - Jeden raz w okienku konta automatyzacji kliknij pozycję "**elementów Runbook**" z menu po lewej stronie, aby utworzyć nowy element runbook usługi Azure Automation za pomocą skryptu programu PowerShell. Aby dowiedzieć się więcej na temat tworzenia elementów runbook usługi automation, zobacz [Tworzenie nowego elementu runbook](../automation/manage-runbooks.md#create-a-runbook).
-- Aby dodać nowy element runbook, kliknij "**+ Dodaj element runbook**" opcję menu, a następnie kliknij pozycję "**szybkie tworzenie — Utwórz nowy element runbook**".
+- Aby dodać nowy element runbook, kliknij " **+ Dodaj element runbook**" opcję menu, a następnie kliknij pozycję "**szybkie tworzenie — Utwórz nowy element runbook**".
 - W okienku elementu Runbook, wpisz nazwę elementu runbook (na potrzeby tego przykładu "**AutomaticTuningEmailAutomation**" jest używany), wybierz typ elementu runbook jako **PowerShell** i podaj opis Ten element runbook do opisania jej przeznaczenie.
 - Kliknij pozycję **Utwórz** przycisk, aby zakończyć tworzenie nowego elementu runbook
 
@@ -199,7 +194,7 @@ Aby dowiedzieć się więcej o możliwościach, Microsoft Flow, zobacz [Rozpoczy
 Warunkiem wstępnym tego kroku jest do zarejestrowania się w [Microsoft Flow](https://flow.microsoft.com) konto i zaloguj się. Raz wewnątrz rozwiązanie, wykonaj następujące kroki, aby skonfigurować **nowy przepływ**:
 
 - Dostęp "**moje przepływy**" elementu menu.
-- Wewnątrz moje przepływy, wybierz pozycję "**+ Utwórz z pustego**" link u góry strony
+- Wewnątrz moje przepływy, wybierz pozycję " **+ Utwórz z pustego**" link u góry strony
 - Kliknij link "**wyszukiwanie setki łączników i wyzwalaczy**" w dolnej części strony
 - W polu wyszukiwania wpisz "**cyklu**" i wybierz pozycję "**harmonogram — cyklicznie**" z wyników wyszukiwania, aby zaplanować uruchomienie zadania dostarczania poczty e-mail.
 - W okienku cyklu w polu Częstotliwość wybierz częstotliwość planowania dla tego przepływu do wykonania, takie jak automatyczne wysyłanie wiadomości e-mail każdej minuty, godziny, dnia, tygodnia, itp.
@@ -208,14 +203,14 @@ Następnym krokiem jest można dodać trzy zadania (Tworzenie, Pobierz dane wyj�
 
 1. Utwórz akcję można wykonać skrypt programu PowerShell, aby uzyskać zalecenia dotyczące dostrajania
 
-   - Wybierz pozycję "**+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
+   - Wybierz pozycję " **+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
    - W polu wyszukiwania wpisz "**automatyzacji**"i wybierz pozycję"**usługi Azure Automation — Tworzenie zadania**" z wyników wyszukiwania
    - W okienku zadania Utwórz Skonfiguruj właściwości zadania. W przypadku tej konfiguracji należy szczegółowe informacje o Twojej subskrypcji platformy Azure identyfikator, grupy zasobów i konta usługi Automation **wcześniej zapisaną** na **okienku konta automatyzacji**. Aby dowiedzieć się więcej na temat opcji dostępnych w tej sekcji, zobacz [usługi Azure Automation — Utwórz zadanie](https://docs.microsoft.com/connectors/azureautomation/#create-job).
    - Ukończyć tworzenia tej akcji, klikając "**Zapisz przepływ**"
 
 2. Utwórz akcję, aby pobrać dane wyjściowe z wykonany skrypt programu PowerShell
 
-   - Wybierz pozycję "**+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
+   - Wybierz pozycję " **+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
    - W wyszukiwaniu pola typu "**automatyzacji**"i wybierz pozycję"**usługi Azure Automation — dane wyjściowe zadania Get**" z wyników wyszukiwania. Aby dowiedzieć się więcej na temat opcji dostępnych w tej sekcji, zobacz [usługi Azure Automation — dane wyjściowe zadania Get](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
    - Wypełnij pola wymagana (podobny do poprzedniego zadania tworzenia) — wypełnić Twojej subskrypcji platformy Azure identyfikator, grupy zasobów oraz konta usługi Automation (wprowadzoną w okienku konta automatyzacji)
    - Kliknij wewnątrz pola "**identyfikator zadania**" do "**zawartości dynamicznej**" menu do wyświetlenia. W ramach tego menu, zaznacz opcję "**identyfikator zadania**".
@@ -223,7 +218,7 @@ Następnym krokiem jest można dodać trzy zadania (Tworzenie, Pobierz dane wyj�
 
 3. Utwórz akcję wysyłania wiadomości e-mail za pomocą integracji z usługą Office 365
 
-   - Wybierz pozycję "**+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
+   - Wybierz pozycję " **+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
    - W wyszukiwaniu pola typu "**Wyślij wiadomość e-mail**"i wybierz pozycję"**usługi Office 365 Outlook — Wyślij wiadomość e-mail**" z wyników wyszukiwania
    - W "**do**" polu wpisz adres e-mail, do której należy wysłać wiadomość e-mail z powiadomieniem
    - W "**podmiotu**" w temacie wiadomości e-mail, na przykład "zalecenia dostrajania automatycznego email notification" typ pola

@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015266"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743264"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Zamówienie urządzenia zdarzenia połączeń z usługi Azure IoT Hub przy użyciu usługi Azure Cosmos DB
 
@@ -154,7 +154,7 @@ Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz usługi Event Gr
 
 4. W Projektancie aplikacji logiki przewiń w prawo aż zobaczysz typowe wyzwalacze. W obszarze **szablony**, wybierz **pusta aplikacja logiki** tak, aby tworzyć aplikacji logiki od podstaw.
 
-### <a name="select-a-trigger"></a>Wybierz wyzwalacz
+### <a name="select-a-trigger"></a>Wybieranie wyzwalacza
 
 Wyzwalacz to konkretne zdarzenie, które uruchamia aplikację logiki. W tym samouczku wyzwalacz, który uruchamia przepływ pracy, odbiera żądanie za pośrednictwem protokołu HTTP.
 
@@ -266,13 +266,13 @@ W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na
 
 4. Wypełnij **Szczegóły subskrypcji zdarzeń**: Wprowadź opisową nazwę, a następnie wybierz pozycję **schemat siatki zdarzeń**.
 
-5. Wypełnij **typy zdarzeń** pola. Usuń zaznaczenie pola wyboru **Subskrybuj wszystkie typy zdarzeń** i wybierz **urządzenie połączone** i **Urządzenie odłączone** z menu.
+5. Wypełnij **typy zdarzeń** pola. Na liście rozwijanej wybierz tylko **urządzenie połączone** i **Urządzenie odłączone** z menu. Kliknij, gdziekolwiek na ekranie, aby zamknąć listy i zapisać wybrane opcje.
 
    ![Określ takie typy zdarzeń do wyszukania](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
 6. Dla **szczegóły punktu końcowego**, wybierz typ punktu końcowego jako **Webhook** kliknij pozycję Wybierz punkt końcowy i wklej adres URL, który został skopiowany z aplikacją logiki i Potwierdź wybór.
 
-   ![Wybierz adres url punktu końcowego](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![Wybierz adres url punktu końcowego](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. Formularz powinien teraz wyglądać podobnie do poniższego przykładu:
 
@@ -302,11 +302,9 @@ Po skonfigurowaniu subskrypcji zdarzeń możemy przetestować, łącząc urządz
 
    ![Parametry połączenia dla urządzenia](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>Uruchom symulator urządzenia Raspberry Pi
 
-1. Użyjmy symulator internetowy urządzenia Raspberry Pi, aby zasymulować połączenie z urządzeniem.
+Użyjmy symulator internetowy urządzenia Raspberry Pi, aby zasymulować połączenie z urządzeniem.
 
 [Uruchom symulator urządzenia Raspberry Pi](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
@@ -340,7 +338,7 @@ Zamiast używania [witryny Azure portal](https://portal.azure.com), można wykon
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Użycie zasobów w tym samouczku powoduje naliczanie opłat w ramach Twojej subskrypcji platformy Azure. Gdy zakończysz testy w ramach tego samouczka, wyłącz lub usuń zasoby, które nie są potrzebne.
+Użycie zasobów w tym samouczku powoduje naliczanie opłat w ramach Twojej subskrypcji platformy Azure. Po zakończeniu wypróbowanie samouczka i testowania wyniki, wyłączyć lub usunąć zasoby, których nie chcesz zachować.
 
 Jeśli nie chcesz utracić efektów pracy z aplikacją logiki, nie usuwaj jej, tylko wyłącz.
 

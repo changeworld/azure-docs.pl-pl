@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 885c5266e80114b54007d05d2220fbf5ea5ab84e
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397637"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729480"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -78,9 +78,6 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Ubuntu 14.04 LTS, 16.04 LTS i 18.04 — x86/x64 64      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
-
-> [!NOTE]
-> Zestawy skalowania maszyn wirtualnych platformy Azure można zarządzać przy użyciu rozwiązania Update Management. Rozwiązanie Update Management działa na wystąpieniach samodzielnie i obrazu podstawowego. Należy zaplanować aktualizacje w sposób przyrostowe, aby nie aktualizować wszystkie wystąpienia maszyn wirtualnych jednocześnie.
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 
@@ -195,7 +192,7 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 Skanowanie odbywa się dwa razy dziennie w przypadku każdego zarządzanego komputera z Windows. Co 15 minut wywoływany jest interfejs API Windows Aby wykonać zapytanie o czas ostatniej aktualizacji ustalić, czy stan się zmienił. Jeśli stan się zmienił, inicjowane jest skanowanie pod kątem zgodności.
 
-Skanowanie jest przeprowadzane co 3 godziny, do każdego zarządzanego komputera z systemem Linux.
+Skanowanie jest wykonywane co godzinę, do każdego zarządzanego komputera z systemem Linux.
 
 Może upłynąć od 30 minut do 6 godzin dla pulpitu nawigacyjnego wyświetlić zaktualizowane dane z zarządzanych komputerów.
 
@@ -492,7 +489,7 @@ Update
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
 | where UpdateState=~"Needed" and Approved!=false
 | summarize by UpdateID, Classification )
-| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
 ```
 
 ##### <a name="computers-list"></a>Lista komputerów

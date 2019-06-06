@@ -1,34 +1,34 @@
 ---
-title: Zarządzanie urządzenia Azure Data Box za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób administrowania usługą Azure Data Box w witrynie Azure Portal.
+title: Zarządzanie urządzenia Azure Data Box, Azure dane pole mocno za pośrednictwem witryny Azure portal | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób użycia witryny Azure portal do administrowania urządzenia Azure Data Box i Azure Data Box duże.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950515"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427722"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Używanie witryny Azure portal do administrowania urządzenia Azure Data Box
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Użyj witryny Azure portal do administrowania urządzenia Azure Data Box i Azure Data Box duże
 
-W tym artykule opisano niektóre złożonych przepływów pracy i zadania zarządzania, które mogą być wykonywane w usłudze Azure Data Box. Usługą Data Box można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika.
+Ten artykuł dotyczy zarówno usługi Azure Data Box, jak i duże pole danych platformy Azure. W tym artykule opisano niektóre złożonych przepływów pracy i zadania zarządzania, które mogą być wykonywane na urządzenie Azure Data Box. Można zarządzać urządzenie Data Box w witrynie Azure portal lub za pomocą lokalnego interfejsu użytkownika sieci web.
 
-Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. W witrynie Azure Portal można zarządzać zamówieniami, zarządzać usługą Data Box oraz śledzić stan zamówienia na kolejnych etapach aż do ukończenia.
+Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. Użyj witryny Azure portal pozwala na zarządzanie zamówieniami oraz zarządzanie urządzenie Data Box i śledzić stan zamówienia, tak jak to przechodzi do zakończenia.
 
 
 ## <a name="cancel-an-order"></a>Anulowanie zamówienia
 
-Może się zdarzyć, że z różnych powodów będzie konieczne anulowanie złożonego zamówienia. Zamówienie można anulować tylko przed rozpoczęciem jego przetwarzania. Po przetworzeniu zamówienia i przygotowaniu usługi Data Box nie można już anulować zamówienia. 
+Może się zdarzyć, że z różnych powodów będzie konieczne anulowanie złożonego zamówienia. Zamówienie można anulować tylko przed rozpoczęciem jego przetwarzania. Gdy są przetwarzane w kolejności, a urządzenie Data Box jest gotowa, nie jest możliwe anulowanie zamówienia.
 
 Aby anulować zamówienie, wykonaj poniższe czynności.
 
-1.  Przejdź do pozycji **Przegląd > Anuluj**. 
+1.  Przejdź do pozycji **Przegląd > Anuluj**.
 
     ![Anulowanie zamówienia — 1](media/data-box-portal-admin/cancel-order1.png)
 
@@ -36,11 +36,11 @@ Aby anulować zamówienie, wykonaj poniższe czynności.
 
     ![Anulowanie zamówienia — 2](media/data-box-portal-admin/cancel-order2.png)
 
-3.  Po anulowaniu zamówienia jego stan w portalu zostanie zmieniony na **Anulowane**. 
+3.  Po anulowaniu zamówienia jego stan w portalu zostanie zmieniony na **Anulowane**.
 
 ## <a name="clone-an-order"></a>Klonowanie zamówienia
 
-Klonowanie jest przydatne w pewnych sytuacjach. Załóżmy na przykład, że użytkownik skorzystał z usługi Data Box do transferu danych. W związku z wygenerowaniem większej ilości danych pojawiła się potrzeba użycia kolejnej usługi Data Box do przesłania danych na platformę Azure. W takim przypadku można po prostu sklonować to samo zamówienie.
+Klonowanie jest przydatne w pewnych sytuacjach. Załóżmy na przykład, że użytkownik skorzystał z usługi Data Box do transferu danych. Wygenerowane większej ilości danych ma na potrzeby innego urządzenia Data Box do transferu danych na platformę Azure. W takim przypadku można po prostu sklonować to samo zamówienie.
 
 Aby sklonować zamówienie, wykonaj następujące czynności.
 
@@ -67,15 +67,15 @@ Można usuwać tylko zamówienia, które zostały zakończone lub anulowane. Aby
 
 3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij przycisk **Usuń**.
 
-## <a name="download-shipping-label"></a>Pobierz etykietę wysyłkową
+## <a name="download-shipping-label"></a>Pobieranie etykiety wysyłkowej
 
-Jeśli wyświetlacz E-ink urządzenia Data Box nie działa i nie wyświetla zwrotnej etykiety wysyłkowej, może być konieczne pobranie etykiety wysyłkowej. 
+Jeśli wyświetlacz E-ink urządzenia Data Box nie działa i nie wyświetla zwrotnej etykiety wysyłkowej, może być konieczne pobranie etykiety wysyłkowej. Nie ma żadnych wyświetlania pisma odręcznego E na duże pole danych, a więc ten przepływ pracy nie ma zastosowania do duże pole danych.
 
 Aby pobrać etykietę wysyłkową, wykonaj następujące czynności.
 
 1.  Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**. Ta opcja jest dostępna tylko po wysłaniu urządzenia. 
 
-    ![Pobierz etykietę wysyłkową](media/data-box-portal-admin/download-shipping-label.png)
+    ![Pobieranie etykiety wysyłkowej](media/data-box-portal-admin/download-shipping-label.png)
 
 2.  To spowoduje pobranie następującej zwrotnej etykiety wysyłkowej. Zapisz i wydrukuj etykietę. Złóż etykietę i włóż ją do przezroczystej koszulki na urządzeniu. Upewnij się, że etykieta jest widoczna. Usuń wszystkie znajdujące się na urządzeniu nalepki z poprzedniej wysyłki.
 
@@ -110,7 +110,7 @@ Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
     ![Edytowanie szczegółów powiadomienia — 2](media/data-box-portal-admin/edit-notification-details2.png)
 
 
-## <a name="download-order-history"></a>Pobierz historię zamówień
+## <a name="download-order-history"></a>Pobieranie historii zamówienia
 
 Po zakończeniu zamówienia dotyczącego urządzenia Data Box dane na dyskach urządzenia są wymazywane. Po zakończeniu czyszczenia urządzenia możesz pobrać historię zamówienia w witrynie Azure Portal.
 
@@ -120,7 +120,7 @@ Aby pobrać historię zamówienia, wykonaj poniższe kroki.
 
     ![Pobieranie historii zamówienia](media/data-box-portal-admin/download-order-history-1.png)
 
-2. Kliknij pozycję **Pobierz historię zamówienia**. W pobranej historii zostanie wyświetlony rekord dzienników śledzenia przewoźnika. Po przewinięciu do dołu tego dziennika możesz zobaczyć linki do następujących obiektów:
+2. Kliknij pozycję **Pobierz historię zamówienia**. W pobranej historii zostanie wyświetlony rekord dzienników śledzenia przewoźnika. Będzie dwa zestawy odpowiadający dwa węzły na duże pole danych dziennika. Po przewinięciu do dołu tego dziennika możesz zobaczyć linki do następujących obiektów:
     
    - **Dzienniki kopiowania** — lista plików, które wygenerowały błędy podczas kopiowania danych z urządzenia Data Box do Twojego konta usługi Azure Storage.
    - **Dzienniki inspekcji** — zawierają informacje o włączeniu i dostępie do udziału na urządzeniu Data Box, gdy znajduje się poza centrum danych platformy Azure.
@@ -204,15 +204,15 @@ Po zmianie stanu urządzenia w portalu otrzymasz powiadomienie pocztą e-mail.
 |Wysłane     | Zamówienie zostało wysłane. Skorzystaj z identyfikatora śledzenia wyświetlanego w zamówienia w portalu, aby śledzić wysyłkę.        |
 |Dostarczono     | Wysyłka została dostarczona na adres wskazany w zamówieniu.        |
 |Pobrane     |Twoja wysyłka zwrotna została pobrana i zeskanowana przez operatora.         |
-|Odebrane     | Twoje urządzenie zostało odebrane i zeskanowane w centrum danych platformy Azure. <br> Po sprawdzeniu wysyłki rozpocznie się przekazywanie urządzenia.      |
+|Odebrano     | Twoje urządzenie zostało odebrane i zeskanowane w centrum danych platformy Azure. <br> Po sprawdzeniu wysyłki rozpocznie się przekazywanie urządzenia.      |
 |Kopiowanie danych     | Kopiowanie danych jest w toku. Śledź postęp kopiowania w ramach Twojego zamówienia w witrynie Azure Portal. <br> Poczekaj na zakończenie kopiowania danych. |
 |Zakończone       |Zamówienie zostało pomyślnie zrealizowane.<br> Przed usunięciem danych lokalnych z serwerów upewnij się, że Twoje dane znajdują się na platformie Azure.         |
 |Zakończone z błędami| Kopiowanie danych zostało ukończone, ale podczas kopiowania wystąpiły błędy. <br> Przejrzyj dzienniki kopiowania, używając ścieżki wskazanej w witrynie Azure Portal.   |
-|Anulowano            |Twoje zamówienie zostało anulowane. <br> Zamówienie mogło zostać anulowane przez Ciebie lub, w przypadku wystąpienia błędu, przez usługę. Jeśli zamówienia nie można zrealizować w ciągu 90 dni, także zostanie ono anulowane, a Ty otrzymasz powiadomienie.     |
+|Anulowane            |Twoje zamówienie zostało anulowane. <br> Zamówienie mogło zostać anulowane przez Ciebie lub, w przypadku wystąpienia błędu, przez usługę. Jeśli zamówienia nie można zrealizować w ciągu 90 dni, także zostanie ono anulowane, a Ty otrzymasz powiadomienie.     |
 |Czyszczenie | Dane na dyskach urządzenia zostaną usunięte. Czyszczenie urządzenia uważa się za ukończone, gdy historia zamówienia jest dostępna do pobrania w witrynie Azure Portal.|
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [rozwiązywać problemy z usługą Data Box](data-box-faq.md).
+- Dowiedz się, jak [problemy rozwiązywanie problemów z urządzenia Data Box i duże pole danych](data-box-troubleshoot.md).

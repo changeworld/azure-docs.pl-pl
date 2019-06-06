@@ -41,7 +41,7 @@ sections:
           - title: Obszar powierzchni zaawansowane
             href: '/azure/sql-database/sql-database-managed-instance#sql-features-supported'
             html: <p>Prawie 100% funkcji zgodności z najnowszą wersją programu SQL Server Database Engine.</p>
-          - title: Integracja sieci wirtualnej
+          - title: Integracja z siecią wirtualną
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>Usługa bezpiecznego umieszczone w prywatnej sieci wirtualnej platformy Azure z prywatnymi adresami IP.</p>
           - title: Łatwa migracja
@@ -69,7 +69,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '(Wersja zapoznawcza) <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Strefy czasowej Konfiguruj</a> podczas tworzenia wystąpienia.'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurowanie strefy czasowej</a> podczas tworzenia wystąpienia.'
           - html: 'Tworzenie wystąpień przy użyciu <a href="https://aka.ms/managed-instance-collation">sortowanie na poziomie serwera wybranego</a>.'
           - html: 'Funkcja przywracania geograficznego umożliwia <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">przywrócić bazę danych do innego centrum danych przy użyciu programu PowerShell</a>.'
           - html: '(Wersja zapoznawcza) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Ponownie utworzyć usunięte bazy danych przy użyciu programu PowerShell</a>'
@@ -164,7 +164,7 @@ sections:
           - html: 'Więcej informacji na temat warstwy magazynowania w <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">warstwie przeznaczenie ogólne</a> i zastosować <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące warstwy usług ogólnego przeznaczenia</a>.'
           - html: 'Znajdź najlepsze rozwiązania i zalecenia dotyczące <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpieczania wystąpienia</a>.'
           - html: 'Dowiedz się więcej <a href="sql-database-howto-managed-instance.md">prowadzi instrukcje</a> , mogą być pomocne w konfigurowaniu wystąpienia zarządzanego.'
-  - title: Odwołanie
+  - title: Tematy pomocy
     items:
       - type: list
         style: cards

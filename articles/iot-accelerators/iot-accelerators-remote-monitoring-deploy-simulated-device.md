@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66143397"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427571"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Wdrażanie nowego urządzenia symulowanego
 
@@ -88,13 +88,14 @@ W tej sekcji skonfigurujesz Docker, aby załadować pliki modelu urządzenia z *
 1. Kopiowanie istniejących plików modelu urządzenia z kontenera do nowej lokalizacji. Po pierwsze Znajdź identyfikator kontenera dla kontenera symulacji urządzenia:
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     Następnie skopiuj pliki modelu urządzenia, aby **tmp** folder na maszynie wirtualnej. Następujące polecenia przyjęto założenie, identyfikator kontenera to c378d6878407 — Zastąp tę wartość za pomocą Identyfikatora kontenera symulacji urządzenia:
 
     ```sh
-    docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo chown -R azureuser /tmp/devicemodels/
     ```
 
     Zachowaj **bash** okna z poziomu sesji protokołu SSH, Otwórz.
@@ -116,13 +117,13 @@ W tej sekcji skonfigurujesz Docker, aby załadować pliki modelu urządzenia z *
     Jeśli chcesz wyświetlić stan uruchomione kontenery platformy Docker i ich identyfikatory kontenerów, użyj następującego polecenia:
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     Jeśli chcesz wyświetlić dziennik z kontenera symulacji urządzenia, uruchom następujące polecenie. Zastąp identyfikator kontenera identyfikator kontenera symulacji urządzenia:
 
     ```sh
-    docker logs -f 5d3f3e78822e
+    sudo docker logs -f 5d3f3e78822e
     ```
 
 ## <a name="run-simulation"></a>Uruchamianie symulacji

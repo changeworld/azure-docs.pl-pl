@@ -7,22 +7,34 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 461c9f3f3725ba27410088ca19f1ec050375adf2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806149"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474526"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Sprawdź stan publikowania oferty komercyjnej witryny Marketplace
 
 Możesz wyświetlić bieżących **stan publikowania** na **oferują Przegląd** karcie [portal Marketplace komercyjnych](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) Centrum partnerskiego.
 
+Jedną z następujących wskaźników stanu powinien być wyświetlany dla każdej oferty.
+
+| **Stan**    | **Opis**  |
+| :---------- | :-------------------|
+| **Wersja robocza** | Oferta została utworzona, ale nie są publikowane. |
+| **Publikowanie w toku** | Oferta/Plan pracuje w drodze kolejne kroki procesu publikowania. |
+| **Uwagi potrzebne** | Krytyczny problem został wykryty podczas certyfikacji przez firmę Microsoft lub dowolną z publikacji czynności. |
+| **Wersja zapoznawcza** | Oferta certyfikat firmy Microsoft, a teraz czeka ostatecznej weryfikacji przez wydawcę. Wybierz pozycję przejdź na żywo, aby oferty na żywo. |
+| **Live** | Oferta jest aktywna w portalu marketplace i mogą być wyświetlane i uzyskanych przez klientów. |
+| **Zatrzymaj oczekiwanie sprzedaży** | Wydawcy wybrane "Zatrzymaj sprzedaży" lub oferty, ale akcji, które nie zostało jeszcze zakończone. |
+| **Nie jest dostępna w witrynie marketplace** | Usunięto poprzednio opublikowanych/plan oferty w portalu marketplace. |
+
 ## <a name="automated-validation"></a>Automatyczne sprawdzanie poprawności
 
 Pierwszym krokiem w procesie publikowania to zbiór zautomatyzowanych operacji sprawdzania poprawności. Każdego kroku sprawdzania poprawności odpowiada to funkcja, której chcesz włączyć w przypadku tworzenia oferty. Jeśli nie włączono tę funkcję, sprawdzanie poprawności pomija dalej do kolejnego etapu publikowania. Każdy sprawdzenie poprawności, należy wykonać przed zatwierdzeniem stan publikowania.
 
-- **Oferty zakupu przepływu konfiguracji (> 10 min)**
+- **Oferty zakupu przepływu konfiguracji (< 10 min)**
 
 W tym kroku Upewniamy się, że Twoja oferta może zostać spełnione, kupowanych przez klientów za pośrednictwem witryny Azure portal. Ten krok ma zastosowanie tylko w przypadku ofert sprzedawany przez firmę Microsoft.
 
@@ -34,7 +46,7 @@ W tym kroku nam się zweryfikować danych, dostępne w wersji testowej sekcji ko
 
 W tym kroku po upewnieniu się, dane i funkcje wersji testowej w poprzednim kroku firma Microsoft wdrażanie i replikować wystąpienia wersji testowej, tak aby były gotowe do użycia klienta.  Ten krok dotyczy tylko w przypadku ofert za pomocą wersji testowej, włączone.
 
-- **Prowadzić weryfikacji zarządzania i rejestracji (> 15 min)**
+- **Prowadzić weryfikacji zarządzania i rejestracji (< 15 min)**
 
 W tym kroku będziemy upewnij się, że systemu zarządzania potencjalny klient może otrzymać potencjalnych klientów, w oparciu o informacje zawarte w Instalatorze oferty. Ten krok dotyczy tylko w przypadku ofert z włączonym zarządzaniem potencjalnego klienta.
 
@@ -101,7 +113,7 @@ Jeśli Twoja oferta jest już na żywo i dostępne publicznie w witrynie marketp
 
 Zaloguj się do Centrum partnerskiego i uzyskać dostęp do oferty. Nastąpi przekierowanie do **oferują Przegląd** strony. W górnej części tej strony, będzie widoczna opcja **emisji na żywo**. Wybierz **emisji na żywo,** i po potwierdzeniu, oferta rozpocznie się pobieranie opublikowane publicznie. Gdy oferta jest dostępna na żywo, otrzymają wiadomość e-mail z powiadomieniem.
 
-## <a name="publish"></a>Opublikuj
+## <a name="publish"></a>Publikowanie
 
 Teraz, gdy wybrano **emisji na żywo** z ofertą, udostępniając je w witrynie marketplace są szereg kontroli ostatecznej weryfikacji, które będzie zmieniana za pośrednictwem aby upewnić się, że oferty na żywo jest skonfigurowany tak samo jak korzystania z wersji zapoznawczej Wersja tej oferty.
 

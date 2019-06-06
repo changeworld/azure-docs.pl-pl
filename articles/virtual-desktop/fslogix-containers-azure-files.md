@@ -7,22 +7,22 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c3f31e8d260ea5e462e8782fadd9f61f34d03add
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307275"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497538"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
-Usługa Windows wirtualnego Desktop w wersji zapoznawczej zaleca FSLogix profilu kontenery jako rozwiązanie profilu użytkownika. FSLogix jest przeznaczony do mobilny dostęp do profilów w programie środowisk, takich jak Windows pulpitu wirtualnego. Profil użytkownika pełną jest przechowywana w jednym kontenerze. Podczas logowania kontener jest dynamicznie dołączony do środowiska komputerowego, za pomocą natywnego, gościa wirtualnego dysku twardego (VHD), a funkcja Hyper-V wirtualnych stwarza trudności dysku (VHDX) usług firmy Microsoft. Profil użytkownika jest natychmiast dostępna i jest widoczny w systemie, tak samo jak profil użytkownika natywnych.
+Usługa Windows wirtualnego Desktop w wersji zapoznawczej zaleca FSLogix profilu kontenery jako rozwiązanie profilu użytkownika. FSLogix jest przeznaczony do mobilny dostęp do profilów w programie środowisk, takich jak Windows pulpitu wirtualnego. Profil użytkownika pełną jest przechowywana w jednym kontenerze. Podczas logowania ten kontener jest dynamicznie dołączony do środowiska komputerowego, za pomocą natywnie obsługiwanych dysk wirtualny dysk twardy (VHD) i funkcji Hyper-V wirtualnych twardych (VHDX). Profil użytkownika jest natychmiast dostępna i jest widoczny w systemie, tak samo jak profil użytkownika natywnych.
 
 W tym artykule opiszemy kontenery profilu FSLogix używane z usługą Azure Files. Informacje znajdują się w kontekście pulpitu wirtualnego Windows, która była [ogłoszonych na 3/21](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/).
 
 ## <a name="user-profiles"></a>Profile użytkowników
 
-Profil użytkownika zawiera elementy danych dotyczących osoby, w tym informacje o konfiguracji, takie jak ustawienia pulpitu, trwałych połączeń sieciowych i ustawień aplikacji. Domyślnie Windows tworzy profil użytkownika lokalnego, który jest ściśle zintegrowany z systemem operacyjnym.
+Profil użytkownika zawiera elementy danych dotyczących osoby, w tym informacje o konfiguracji, takich jak ustawienia pulpitu, trwałych połączeń sieciowych i ustawień aplikacji. Domyślnie Windows tworzy profil użytkownika lokalnego, który jest ściśle zintegrowany z systemem operacyjnym.
 
 Profil użytkownika zdalnego udostępnia partycji między dane użytkownika i systemu operacyjnego. Umożliwia systemowi operacyjnemu można zastąpić lub zmienić bez wpływu na dane użytkownika. Host sesji usług pulpitu zdalnego (RDSH) i infrastruktury pulpitu wirtualnego (VDI) system operacyjny może zostać zastąpiony w następujących sytuacjach:
 
@@ -48,9 +48,9 @@ W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące poprzedniego 
 | Technologia | Ustawienia nowoczesny | Ustawienia systemu Win32 | Ustawienia systemu operacyjnego | Dane użytkowników | Obsługiwane na serwerze jednostki SKU | Magazynu zaplecza na platformie Azure | Magazynu zaplecza w środowisku lokalnym | Obsługa wersji | Kolejne logowania w czasie |Uwagi|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
 | **Dyski profilu użytkownika (UPD)** | Tak | Yes | Yes | Yes | Yes | Nie | Tak | Windows 7 + | Tak | |
-| **Mobilnego profilu użytkownika (RUP), trybu konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Tak | Windows 7 + | Nie | |
-| **(ESR) Roaming stanu dla przedsiębiorstw** | Yes | Nie | Yes | Nie | Zobacz uwagi | Yes | Nie | Win 10 | Nie | Funkcje na serwerze jednostki SKU, ale bez obsługi interfejsu użytkownika |
-| **Wirtualizacji środowiska użytkownika (wirtualizacji środowiska użytkownika)** | Tak | Yes | Yes | Nie | Yes | Nie | Tak | Windows 7 + | Nie |  |
+| **Mobilnego profilu użytkownika (RUP), trybu konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Yes | Windows 7 + | Nie | |
+| **(ESR) Roaming stanu dla przedsiębiorstw** | Tak | Nie | Yes | Nie | Zobacz uwagi | Yes | Nie | Win 10 | Nie | Funkcje na serwerze jednostki SKU, ale bez obsługi interfejsu użytkownika |
+| **Wirtualizacji środowiska użytkownika (wirtualizacji środowiska użytkownika)** | Tak | Yes | Yes | Nie | Yes | Nie | Yes | Windows 7 + | Nie |  |
 | **Plików w chmurze usługi OneDrive** | Nie | Nie | Nie | Yes | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Windows 10 RS3 | Nie | Nie przetestowane na serwerze jednostki SKU. Magazynu zaplecza na platformie Azure, zależy od klienta synchronizacji. Magazynu zaplecza środowiska lokalnego wymaga klienta synchronizacji. |
 
 #### <a name="performance"></a>Wydajność
@@ -67,7 +67,7 @@ Klastry S2D wymagają systemu operacyjnego, który jest zastosowana poprawka, ak
 
 ## <a name="fslogix-profile-containers"></a>Kontenery profilu FSLogix
 
-W dniu 19 listopada 2018 [Microsoft nabyte FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). Adresy FSLogix wiele profilów kontenera wyzwań, kluczy między nimi są:
+19 listopada 2018 r. [Microsoft nabyte FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix rozwiązuje wiele wyzwań kontenera profilu. Klucz między nimi są następujące:
 
 - **Wydajność:** [Kontenery profilu FSLogix](https://fslogix.com/products/profile-containers) to o wysokiej wydajności i rozwiąż problemy z wydajnością, które w przeszłości zablokowane trybu buforowanego programu exchange.
 - **OneDrive:** Bez FSLogix profilu kontenerów usługi OneDrive dla firm jest nieobsługiwana w nietrwałe środowiskach RDSH lub infrastruktury VDI. [W usłudze OneDrive dla firm i FSLogix najlepszych rozwiązań](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) w tym artykule opisano, jak mogą wchodzić w interakcje. Aby uzyskać więcej informacji, zobacz [na pulpitów wirtualnych za pomocą klienta synchronizacji](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).

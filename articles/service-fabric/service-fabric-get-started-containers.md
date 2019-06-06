@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: dbc8363052556f29633c069bcd82af5249a3406f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306874"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428116"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -38,7 +38,7 @@ Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Komputer dewelopera z następującym oprogramowaniem:
-  * Program Visual Studio 2015 lub Visual Studio 2017.
+  * Visual Studio 2015 lub Visual Studio 2019 r.
   * [Zestaw SDK usługi Service Fabric oraz narzędzia](service-fabric-get-started.md).
   *  Program Docker dla systemu Windows. [Pobierz program Docker CE dla systemu Windows (wersja stabilna)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po zainstalowaniu i uruchomieniu programu Docker kliknij prawym przyciskiem myszy jego ikonę na pasku zadań i wybierz pozycję **Switch to Windows containers** (Przełącz na kontenery systemu Windows). Ten krok jest wymagany do uruchomienia obrazów platformy Docker opartych na systemie Windows.
 
@@ -482,7 +482,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 Kontenery systemu Windows Server nie są zgodne we wszystkich wersjach systemu operacyjnego hosta. Na przykład:
  
 - Kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server w wersji 1709 nie działają na hoście z systemem Windows Server w wersji 2016. 
-- Kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server 2016 działa w trybie izolacji funkcji Hyper-v tylko na hoście z systemem Windows Server w wersji 1709. 
+- Kontenery systemu Windows Server utworzone przy użyciu systemu Windows Server 2016 działa w trybie izolacji funkcji Hyper-V tylko na hoście z systemem Windows Server w wersji 1709. 
 - Za pomocą kontenerów systemu Windows Server, utworzonych przy użyciu systemu Windows Server 2016 może być konieczne upewnić się, że poprawka kontener systemu operacyjnego i systemu operacyjnego hosta są takie same, podczas pracy w trybie izolacji procesu na hoście z systemem Windows Server 2016.
  
 Aby dowiedzieć się więcej, zobacz [zgodność wersji kontenerów Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).

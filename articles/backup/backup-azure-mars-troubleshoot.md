@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: f36442c5e26391f410eeb5e39a7485da7199bdad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d8a1d261808eb8f97d1e0dab78b767b37ae6802f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243450"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743138"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z Agent usług Microsoft Azure Recovery Services (MARS)
 
@@ -43,19 +43,19 @@ Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem R
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |
-| **Error** </br> *Podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub jest nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. (ID: 34513)* | <ul><li> Poświadczenia magazynu są nieprawidłowe (oznacza to, że zostały pobrane przed upływem terminu rejestracji więcej niż 48 godzin).<li>Agenta usług MARS nie może pobrać pliki do katalogu Windows Temp. <li>Poświadczenia magazynu znajdują się w lokalizacji sieciowej. <li>Protokół TLS 1.0 jest wyłączony.<li> Skonfigurowany serwer proxy blokuje połączenia. <br> |  <ul><li>Pobierz nowe poświadczenia magazynu. (**Uwaga**: Jeśli wiele plików poświadczenia magazynu zostaną pobrane wcześniej, tylko najnowsze pobrany plik jest prawidłowy w ciągu 48 godzin). <li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy**i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Następnie wybierz pozycję **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera. <li> Zgodna daty i godziny z komputera.<li>Jeśli otrzymasz komunikat o błędzie informujący, pobierania plików nie są dozwolone, jest prawdopodobne, że istnieją dużej liczby plików w katalogu C:/Windows/Temp.<li>Przejdź do C:/Windows/Temp, a następnie sprawdź, czy istnieją więcej niż 60 000 lub 65 000 pliki z rozszerzeniem .tmp. Jeśli istnieją, należy usunąć te pliki.<li>Upewnij się, że masz zainstalowane środowisko .NET framework 4.6.2. <li>Jeśli protokół TLS 1.0 zostało wyłączone z powodu zgodności ze standardami PCI, zapoznaj się z tym [strona rozwiązywania problemów](https://support.microsoft.com/help/4022913). <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, należy wyłączyć następujące pliki ze skanowania antywirusowego: <ul><li>CBengine.exe<li>CSC.exe, który jest powiązany z .NET Framework. Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET Framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** </br> *Podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub jest nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. (IDENTYFIKATOR: 34513)* | <ul><li> Poświadczenia magazynu są nieprawidłowe (oznacza to, że zostały pobrane przed upływem terminu rejestracji więcej niż 48 godzin).<li>Agenta usług MARS nie może pobrać pliki do katalogu Windows Temp. <li>Poświadczenia magazynu znajdują się w lokalizacji sieciowej. <li>Protokół TLS 1.0 jest wyłączony.<li> Skonfigurowany serwer proxy blokuje połączenia. <br> |  <ul><li>Pobierz nowe poświadczenia magazynu. (**Uwaga**: Jeśli wiele plików poświadczenia magazynu zostaną pobrane wcześniej, tylko najnowsze pobrany plik jest prawidłowy w ciągu 48 godzin). <li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy**i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Następnie wybierz pozycję **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera. <li> Zgodna daty i godziny z komputera.<li>Jeśli otrzymasz komunikat o błędzie informujący, pobierania plików nie są dozwolone, jest prawdopodobne, że istnieją dużej liczby plików w katalogu C:/Windows/Temp.<li>Przejdź do C:/Windows/Temp, a następnie sprawdź, czy istnieją więcej niż 60 000 lub 65 000 pliki z rozszerzeniem .tmp. Jeśli istnieją, należy usunąć te pliki.<li>Upewnij się, że masz zainstalowane środowisko .NET framework 4.6.2. <li>Jeśli protokół TLS 1.0 zostało wyłączone z powodu zgodności ze standardami PCI, zapoznaj się z tym [strona rozwiązywania problemów](https://support.microsoft.com/help/4022913). <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, należy wyłączyć następujące pliki ze skanowania antywirusowego: <ul><li>CBengine.exe<li>CSC.exe, który jest powiązany z .NET Framework. Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET Framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 ## <a name="unable-to-download-vault-credential-file"></a>Nie można pobrać pliku poświadczeń magazynu
 
 | Szczegóły błędu | Zalecane akcje |
 | ---     | ---    |
-|Nie można pobrać pliku poświadczeń magazynu. (ID: 403) | <ul><li> Spróbuj pobrać poświadczenia magazynu przy użyciu innej przeglądarki lub wykonaj następujące czynności: <ul><li> Uruchamianie programu Internet Explorer, naciśnij klawisz F12. </li><li> Przejdź do **sieci** kartę, aby wyczyścić pamięć podręczną programu IE i pliki cookie </li> <li> Odśwież stronę<br>(OR)</li></ul> <li> Sprawdź, czy subskrypcja jest wyłączona/wygasły<br>(OR)</li> <li> Sprawdź, czy wszystkie reguły zapory blokuje pobieranie pliku poświadczeń magazynu <br>(OR)</li> <li> Upewnij się, że możesz mieć nie został on wyczerpany limit magazynu (50 maszyn magazynu)<br>(OR)</li>  <li> Upewnij się, użytkownik posiada wymagane uprawnienia usługi Azure Backup do pobierania poświadczeń magazynu i Zarejestruj serwer w magazynie, zobacz [artykułu](backup-rbac-rs-vault.md)</li></ul> |
+|Nie można pobrać pliku poświadczeń magazynu. (IDENTYFIKATOR: 403) | <ul><li> Spróbuj pobrać poświadczenia magazynu przy użyciu innej przeglądarki lub wykonaj następujące czynności: <ul><li> Uruchamianie programu Internet Explorer, naciśnij klawisz F12. </li><li> Przejdź do **sieci** kartę, aby wyczyścić pamięć podręczną programu IE i pliki cookie </li> <li> Odśwież stronę<br>(OR)</li></ul> <li> Sprawdź, czy subskrypcja jest wyłączona/wygasły<br>(OR)</li> <li> Sprawdź, czy wszystkie reguły zapory blokuje pobieranie pliku poświadczeń magazynu <br>(OR)</li> <li> Upewnij się, że możesz mieć nie został on wyczerpany limit magazynu (50 maszyn magazynu)<br>(OR)</li>  <li> Upewnij się, użytkownik posiada wymagane uprawnienia usługi Azure Backup do pobierania poświadczeń magazynu i Zarejestruj serwer w magazynie, zobacz [artykułu](backup-rbac-rs-vault.md)</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Agent usługi Microsoft Azure Recovery Service nie mógł połączyć się z usługą Microsoft Azure Backup
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |
-| **Error** <br /><ol><li>*Agent usług Microsoft Azure Recovery Service nie może nawiązać połączenia z programem Kopia zapasowa Microsoft Azure. (ID: 100050) ustawienia sieciowe i upewnij się, że jesteś w stanie połączyć się z Internetem*<li>*(407) Wymagane jest uwierzytelnianie serwera proxy* |Serwer proxy blokuje połączenia. |  <ul><li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy** i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Wybierz **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera.<li> Jeśli komputer ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwer proxy zezwalać na te [adresy URL](backup-configure-vault.md#verify-internet-access) i [adresu IP](backup-configure-vault.md#verify-internet-access). <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, Wyklucz następujące pliki ze skanowania oprogramowania antywirusowego. <ul><li>CBEngine.exe (instead of dpmra.exe).<li>CSC.exe (powiązanego z .NET Framework). Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** <br /><ol><li>*Agent usług Microsoft Azure Recovery Service nie może nawiązać połączenia z programem Kopia zapasowa Microsoft Azure. (IDENTYFIKATOR: 100050) ustawienia sieciowe i upewnij się, że jesteś w stanie połączyć się z Internetem*<li>*(407) Wymagane jest uwierzytelnianie serwera proxy* |Serwer proxy blokuje połączenia. |  <ul><li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy** i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Wybierz **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera.<li> Jeśli komputer ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwer proxy zezwalać na te [adresy URL](backup-configure-vault.md#verify-internet-access) i [adresu IP](backup-configure-vault.md#verify-internet-access). <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, Wyklucz następujące pliki ze skanowania oprogramowania antywirusowego. <ul><li>CBEngine.exe (instead of dpmra.exe).<li>CSC.exe (powiązanego z .NET Framework). Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 
 
@@ -82,7 +82,15 @@ Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem R
 Jeśli zaplanowane kopie zapasowe nie wyzwalane automatycznie, podczas ręcznego tworzenia kopii zapasowych działać bez problemów, spróbuj wykonać następujące czynności:
 
 - Upewnij się, że harmonogram tworzenia kopii zapasowych systemu Windows Server nie powoduje konfliktu z platformy Azure harmonogram tworzenia kopii zapasowych plików i folderów.
-- Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**. Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**. Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę. Upewnij się, że stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru i kliknij przycisk **OK**. Na **ogólne** karty, wróć do **opcje zabezpieczeń** i upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **lokalne Grupa administratorów** na serwerze.
+
+- Upewnij się, stan kopii zapasowej Online jest ustawiony na **Włącz**. Aby sprawdzić stan wykonania poniżej:
+
+  - Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**.
+    - Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**.
+  - Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę.
+  - Sprawdź, jeśli stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru i kliknij przycisk **OK**.
+
+- Upewnij się, konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **grupy administratorów lokalnych** na serwerze. Aby zweryfikować konto użytkownika, przejdź do **ogólne** i sprawdź **opcje zabezpieczeń**.
 
 - Zobacz, jeśli program PowerShell 3.0 lub nowszej jest zainstalowane na serwerze. Aby sprawdzić wersję programu PowerShell, uruchom następujące polecenie i upewnij się, że *głównych* numer wersji jest równy lub większy niż 3.
 
@@ -98,6 +106,15 @@ Jeśli zaplanowane kopie zapasowe nie wyzwalane automatycznie, podczas ręcznego
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
 
+- Upewnij się, że serwer został uruchomiony ponownie po zakończeniu instalacji agenta usługi Kopia zapasowa
+
+- Upewnij się, nie ma żadnych brakujące lub uszkodzone **PowerShell** modułu **MSonlineBackup**. W przypadku, gdy istnieją jakieś brakujących lub uszkodzonych plików, aby rozwiązać problem, wykonaj poniższe:
+
+  - Z innego komputera (Windows 2008 R2) o agenta usług MARS działa prawidłowo, skopiuj folder MSOnlineBackup z *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* ścieżki.
+  - Wklej ją w problematyczne maszyny w tej samej ścieżce *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* .
+  - Jeśli **MSOnlineBackup** folder jest już istnieje na maszynie, Wklej/zastępowania plików zawartości wewnątrz niego.
+
+
 > [!TIP]
 > Aby upewnić się, że zmiany są stosowane spójnie, uruchom ponownie serwer po wykonaniu powyższych kroków.
 
@@ -108,7 +125,7 @@ Usługa Azure Backup nie może pomyślnie zainstalować woluminu odzyskiwania, n
 
 1.  Anuluj proces ciągłego instalacji, w przypadku, gdy została uruchomiona przez kilka minut.
 
-2.  Zobacz, jeśli używasz najnowszej wersji agenta kopii zapasowej. Aby dowiedzieć się, wersji, na **akcje** okienku konsoli MARS wybierz **o Recovery Agent usług Microsoft Azure**. Upewnij się, że **wersji** liczba jest większa lub równa wyższa niż wersja, o których wspomniano w [w tym artykule](https://go.microsoft.com/fwlink/?linkid=229525). Możesz pobrać najnowszą wersję z [tutaj](https://go.microsoft.com/fwLink/?LinkID=288905).
+2.  Zobacz, jeśli używasz najnowszej wersji agenta kopii zapasowej. Aby dowiedzieć się, wersji, na **akcje** okienku konsoli MARS wybierz **o Recovery Agent usług Microsoft Azure**. Upewnij się, że **wersji** liczba jest większa lub równa wyższa niż wersja, o których wspomniano w [w tym artykule](https://go.microsoft.com/fwlink/?linkid=229525). Najnowszą wersję możesz pobrać [tutaj](https://go.microsoft.com/fwLink/?LinkID=288905).
 
 3.  Przejdź do **Menedżera urządzeń** > **kontrolery magazynu**, a następnie zlokalizuj **inicjatora iSCSI firmy Microsoft**. Jeśli możesz znaleźć go, przejdź bezpośrednio do kroku 7.
 

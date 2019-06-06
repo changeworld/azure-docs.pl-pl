@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e55d596cfaf34c177f6dc43c27aaac37da87d2f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024854"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479938"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w usłudze Azure Blob Storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumentów programu Microsoft Office i kilka innych typowych formatów) przechowywanych w usłudze Azure Blob storage. Po pierwsze wyjaśnia podstawowe informacje dotyczące instalowania i konfigurowania indeksatora obiektów blob. Następnie oferuje bardziej zaawansowanej eksploracji zachowań, scenariuszy może wystąpić.
@@ -139,6 +139,7 @@ W zależności od [konfiguracji indeksatora](#PartsOfBlobToIndex), indeksatora o
   * **metadane\_magazynu\_ostatniego\_zmodyfikowane** (Edm.DateTimeOffset) - Ostatnia modyfikacja sygnaturę czasową dla obiektu blob. Usługa Azure Search używa tej sygnatury czasowej do identyfikowania zmienionych obiektów blob, aby uniknąć ponownego indeksowania wszystko po początkowej indeksowania.
   * **metadane\_magazynu\_rozmiar** (Edm.Int64) — obiekt blob rozmiar w bajtach.
   * **metadane\_magazynu\_zawartości\_md5** (Edm.String) — Skrót MD5 zawartość obiektu blob, jeśli jest dostępny.
+  * **metadane\_magazynu\_sygnatury dostępu współdzielonego\_tokenu** (Edm.String) - tymczasowe token, który może być używany przez [umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) uzyskanie odpowiedniego dostępu do obiektu blob. Ten token sygnatury dostępu współdzielonego nie powinien znajdować się w celu późniejszego użycia, jak ją mogą wygasnąć.
 * Metadane właściwości specyficzne dla każdego format dokumentu są wyodrębniane do pól na liście [tutaj](#ContentSpecificMetadata).
 
 Nie ma potrzeby definiowania wszystkich powyższych właściwości pola w indeksie wyszukiwania — po prostu Przechwytywanie właściwości, czego potrzebujesz do aplikacji.

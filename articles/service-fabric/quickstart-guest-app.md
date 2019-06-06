@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
-ms.openlocfilehash: 63630f5c4799e9272601f431671abc78ec86a238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd19aba68f8b847e8f4800d348197f9c2b1c1289
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622426"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428237"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostowanie aplikacji w technologii Node.js w usłudze Azure Service Fabric
 
@@ -27,7 +27,7 @@ Przewodnik Szybki start ułatwia wdrożenie istniejącej aplikacji (w tym przyk�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że masz [skonfigurowane środowisko programowania](service-fabric-get-started.md). Obejmuje to zainstalowanie zestawu SDK usługi Service Fabric i programu Visual Studio 2017 lub 2015.
+Przed rozpoczęciem upewnij się, że masz [skonfigurowane środowisko programowania](service-fabric-get-started.md). W tym zainstalowanie zestawu SDK usługi Service Fabric i programu Visual Studio 2019 lub 2015.
 
 Niezbędna jest również aplikacja Node.js do wdrożenia. Przewodnik Szybki Start używa prostej witryny sieci Web w technologii Node.js, którą można pobrać [stąd][download-sample]. W następnym kroku po utworzeniu projektu wyodrębnij ten plik do swojego folderu `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\`.
 
@@ -44,7 +44,7 @@ W oknie dialogowym **Nowy projekt** wybierz kolejno pozycje **Chmura > Aplikacja
 Nazwij aplikację **MyGuestApp** i naciśnij przycisk **OK**.
 
 >[!IMPORTANT]
->W technologii Node.js można łatwo obejść limit systemu Windows 260 znaków dla ścieżek. Użyj krótkiej ścieżki dla samego projektu, takiej jak **c:\code\svc1**. Opcjonalnie możesz wykonać **[te instrukcje](https://stackoverflow.com/a/41687101/1664231)**, aby włączyć długie ścieżki plików w systemie Windows 10.
+>W technologii Node.js można łatwo obejść limit systemu Windows 260 znaków dla ścieżek. Użyj krótkiej ścieżki dla samego projektu, takiej jak **c:\code\svc1**. Opcjonalnie możesz wykonać **[te instrukcje](https://stackoverflow.com/a/41687101/1664231)** , aby włączyć długie ścieżki plików w systemie Windows 10.
    
 ![Okno dialogowe nowego projektu w programie Visual Studio][new-project]
 
@@ -66,7 +66,7 @@ Naciśnij przycisk **OK**.
 
 Program Visual Studio utworzy projekt aplikacji i projekt usługi aktora, a następnie wyświetli je w Eksploratorze rozwiązań.
 
-Projekt aplikacji (**MyGuestApp**) nie zawiera bezpośrednio żadnego kodu. Zamiast tego odwołuje się do zestawu projektów usług. Ponadto zawiera trzy inne typy zawartości:
+Projekt aplikacji (**MyGuestApp**) nie zawiera bezpośrednio żadnego kodu. Projekt odwołuje się do zestawu projektów usług. Ponadto zawiera trzy inne typy zawartości:
 
 * **Profile publikowania**  
 Preferencje narzędzi dla różnych środowisk.
@@ -83,7 +83,7 @@ Aby zapoznać się z omówieniem zawartości projektu usługi, zobacz [Pierwsze 
 
 Wdrażana przykładowa aplikacja w technologii Node.js korzysta z portu **80** i dlatego trzeba poinformować usługę Service Fabric, że ten port musi być widoczny.
 
-Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu znajduje się blok `<Resources> \ <Endpoints>` z już zdefiniowanym wpisem. Zmodyfikuj ten wpis, aby dodać parametry `Port`, `Protocol`, i `Type`. 
+Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu Brak `<Resources> \ <Endpoints>` z już zdefiniowanym wpisem. Zmodyfikuj ten wpis, aby dodać parametry `Port`, `Protocol`, i `Type`. 
 
 ```xml
   <Resources>
@@ -98,9 +98,9 @@ Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu zn
 
 ## <a name="deploy-to-azure"></a>Wdrażanie na platformie Azure
 
-Po naciśnięciu klawisza **F5** i uruchomieniu projektu zostanie on wdrożony w lokalnym klastrze. Zamiast tego wdrożymy go jednak na platformie Azure.
+Jeśli użytkownik naciśnie klawisz **F5** i uruchomić projekt, jest wdrażana w klastrze lokalnym. Zamiast tego wdrożymy go jednak na platformie Azure.
 
-Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Publikuj...**. Zostanie otwarte okno dialogowe publikowania na platformie Azure.
+Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Publikuj...** . Zostanie otwarte okno dialogowe publikowania na platformie Azure.
 
 ![Okno dialogowe Publikuj na platformie Azure dla usługi Service Fabric][publish]
 
@@ -108,13 +108,13 @@ Wybierz docelowy profil **PublishProfiles\Cloud.xml**.
 
 Jeśli nie zostało to wykonane wcześniej, wybierz konto platformy Azure, na którym ma się odbyć wdrożenie. Jeśli nie masz jeszcze konta, [utwórz je][create-account].
 
-W obszarze **Punkt końcowy połączenia** wybierz klaster usługi Service Fabric do wdrożenia. Jeśli go nie masz, wybierz opcję **&lt;Utwórz nowy klaster...&gt;**. Spowoduje to otwarcie okna przeglądarki sieci Web z witryną Azure Portal. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia klastra w portalu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+W obszarze **Punkt końcowy połączenia** wybierz klaster usługi Service Fabric do wdrożenia. Jeśli nie masz, wybierz opcję **&lt;Utwórz nowy klaster... &gt;** spowoduje to otwarcie okna przeglądarki sieci web do witryny Azure portal. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia klastra w portalu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Podczas tworzenia klastra usługi Service Fabric upewnij się, że ustawienie **Niestandardowe punkty końcowe** ma wartość **80**.
 
 ![Konfiguracja typu węzła usługi sieci szkieletowej z niestandardowym punktem końcowym][custom-endpoint]
 
-Tworzenie nowego klastra usługi Service Fabric zajmuje trochę czasu. Po jego utworzeniu wróć do okna dialogowego publikowania i wybierz opcję **&lt;Odśwież&gt;**. Nowy klaster znajduje się w polu listy rozwijanej; wybierz go.
+Tworzenie nowego klastra usługi Service Fabric zajmuje trochę czasu. Po jego utworzeniu wróć do okna dialogowego publikowania i wybierz opcję **&lt;Odśwież&gt;** . Nowy klaster znajduje się w polu listy rozwijanej; wybierz go.
 
 Naciśnij przycisk **Publikuj** i poczekaj na zakończenie wdrożenia.
 
@@ -130,11 +130,11 @@ Sprawdź adres bloku omówienia usługi. Użyj nazwy domeny z właściwości _Pu
 
 ![Blok omówienia usługi sieci szkieletowej w witrynie Azure Portal][overview]
 
-Przejdź do tego adresu, gdy pojawi się odpowiedź `HELLO WORLD`.
+Przejdź do tego adresu, gdzie zobaczysz `HELLO WORLD` odpowiedzi.
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
-Pamiętaj, aby usunąć wszystkie zasoby, które zostały utworzone dla tego przewodnika Szybki start, ponieważ naliczane są za nie opłaty.
+Należy pamiętać usunąć wszystkie zasoby utworzone w tym przewodniku Szybki Start, ponieważ opłaty są naliczane dla tych zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj więcej na temat [plików wykonywalnych gościa](service-fabric-guest-executables-introduction.md).

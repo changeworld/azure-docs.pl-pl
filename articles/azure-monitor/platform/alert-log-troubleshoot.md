@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399182"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477861"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów dotyczących alertów dzienników w usłudze Azure Monitor  
 
 W tym artykule pokazano, jak rozwiązać typowe problemy, które może się zdarzyć, gdy konfigurujesz alertów dzienników w usłudze Azure Monitor. Zapewnia również rozwiązania typowych problemów z funkcją konfiguracji alertów dzienników. 
 
-Termin *alerty dzienników* opisuje alerty, że ognia na podstawie dziennika zapytania w [obszaru roboczego usługi Azure Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Azure Application Insights](../../azure-monitor/app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [alerty dzienników w usłudze Azure Monitor](../platform/alerts-unified-log.md).
+Termin *alerty dzienników* opisują zasady, że ognia na podstawie dziennika zapytania w [obszaru roboczego usługi Azure Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Azure Application Insights](../../azure-monitor/app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [alerty dzienników w usłudze Azure Monitor](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > W tym artykule nie bierze pod uwagę w przypadkach, gdy witryna Azure portal zawiera regułę alertu wyzwolona i powiadomienia nie jest wykonywane przez grupę skojarzone z akcją. W takich przypadkach się ze szczegółami [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](../platform/action-groups.md).

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 2d51699138914e4a8ad5d2a133161fcfce71e9fe
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074049"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431318"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -99,6 +99,8 @@ Podczas tworzenia usługi typu usługi równoważenia obciążenia jest tworzony
 W usłudze AKS możesz utworzyć zasób usługi transferu danych przychodzących przy użyciu polecenia podobnego NGINX lub użyć funkcji routing aplikacji protokołu HTTP w usłudze AKS. Po włączeniu routing aplikacji protokołu HTTP dla klastra usługi AKS, platforma Azure tworzy kontroler danych przychodzących i *DNS zewnętrznego* kontrolera. Podczas tworzenia nowych zasobów ruch przychodzący w usłudze Kubernetes wymagane rekordy A systemu DNS są tworzone w strefie DNS specyficzne dla klastra. Aby uzyskać więcej informacji, zobacz [wdrożenia, routing aplikacji protokołu HTTP][aks-http-routing].
 
 Kolejną funkcją typowych danych przychodzących jest kończenia żądań SSL/TLS. Dla aplikacji sieci web dużych dostępne za pośrednictwem protokołu HTTPS kończenie żądań protokołu TLS mogą być obsługiwane przez zasób danych przychodzących, a nie w samej aplikacji. Aby zapewnić automatyczne generowanie certyfikacji TLS i konfiguracji, można skonfigurować na korzystanie z dostawców takich jak umożliwia szyfrowanie zasobu transferu danych przychodzących. Aby uzyskać więcej informacji na temat konfigurowania kontrolera danych przychodzących NGINX za pomocą umożliwia szyfrowanie, zobacz [ruch przychodzący i protokół TLS][aks-ingress-tls].
+
+Można również skonfigurować kontroler danych przychodzących w taki sposób, aby zachować źródłowy adres IP klienta w odpowiedzi na żądania z kontenerami w klastrze AKS. Jeśli żądanie klienta jest kierowany do kontenera w klastrze usługi AKS przy użyciu sieci kontroler danych przychodzących, oryginalnego źródłowego adres ip tego żądania nie będą dostępne do kontenera docelowego. Po włączeniu *klienta źródłowego adresu IP zachowania*, źródłowy adres IP klienta znajduje się w nagłówku żądania, w obszarze *X-Forwarded-dla*. Jeśli używasz klienta źródłowego adresu IP konserwacji na kontrolerze transferu danych przychodzących, nie można użyć przekazywanego protokołu SSL. Zachowywanie adresu IP źródłowego klienta i przekazywanego SSL mogą być używane z innymi usługami, takie jak *modułu równoważenia obciążenia* typu.
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 

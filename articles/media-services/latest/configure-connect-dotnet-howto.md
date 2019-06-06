@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 464d01b7b818b461024737a83d88c78947453c37
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736143"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428487"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Łączenie z Media Services v3 API — .NET
 
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak połączyć się z zestawu .NET SDK usługi Azure M
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Upewnij się, że do zapamiętania nazwę grupy zasobów i nazwę konta usługi Media Services
-- Zainstaluj narzędzie, którego chcesz użyć podczas tworzenia aplikacji .NET. Kroki opisane w tym artykule pokazano, jak używać [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Możesz używać programu Visual Studio Code, zobacz [Praca z C# ](https://code.visualstudio.com/docs/languages/csharp). Alternatywnie można użyć edytora inny kod.
+- Zainstaluj narzędzie, którego chcesz użyć podczas tworzenia aplikacji .NET. Kroki opisane w tym artykule pokazano, jak używać [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Możesz używać programu Visual Studio Code, zobacz [Praca z C# ](https://code.visualstudio.com/docs/languages/csharp). Alternatywnie można użyć edytora inny kod.
 
 ## <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
@@ -142,7 +142,7 @@ namespace ConsoleApp1
 
 Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platformie .NET, należy utworzyć obiekt **AzureMediaServicesClient**. Aby utworzyć obiekt, należy podać poświadczenia wymagane do nawiązania połączenia z platformą Azure przez klienta przy użyciu usługi Azure AD. W poniższym kodzie funkcja GetCredentialsAsync tworzy obiekt ServiceClientCredentials oparte na poświadczeniach dostarczona w pliku konfiguracji lokalnej.
 
-1. Otwórz plik `Program.cs`.
+1. Otwórz `Program.cs`.
 1. Wklej następujący kod:
 
 ```csharp

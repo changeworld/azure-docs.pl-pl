@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 929a4ae2e954933bf00550770ba9d41319dc6241
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418042"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742956"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -97,7 +97,7 @@ Następujące obliczeniowych elementów docelowych, lub zasoby obliczeniowe, mog
 | [Usługa sieci web w lokalnych](#local) | Testowanie/debug | Dobre dla ograniczonej testowania i rozwiązywania problemów.
 | [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre dla niskiej skalowalności obciążeń opartych na CPU. |
-| [Usługi Azure Machine Learning obliczeń](how-to-run-batch-predictions.md) | (Wersja zapoznawcza) Wnioskowanie usługi Batch | Uruchom wsadowego oceniania na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
+| [Usługi Azure Machine Learning obliczeń](how-to-run-batch-predictions.md) | Wnioskowanie usługi Batch | Uruchom wnioskowania partii na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażanie i obsługiwać modele uczenia Maszynowego na urządzeniach IoT. |
 
 
@@ -130,8 +130,9 @@ Obecnie obsługiwane są następujące typy:
 Aby użyć generowanie schematu, dołącz `inference-schema` pakietu w pliku środowiska conda. W poniższym przykładzie użyto `[numpy-support]` ponieważ skrypt wejścia używa typ parametru numpy: 
 
 #### <a name="example-dependencies-file"></a>Przykładowy plik zależności
-Oto przykład pliku zależności Conda wnioskowania.
-```python
+Poniższego kodu YAML znajduje się przykład pliku zależności Conda wnioskowania.
+
+```YAML
 name: project_environment
 dependencies:
   - python=3.6.2
@@ -186,6 +187,48 @@ def run(data):
         return error
 ```
 
+#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Przykładowy skrypt z danymi wejściowymi słownika (zużycie pomocy technicznej usługi Power BI)
+
+Poniższy przykład ilustruje sposób definiowania danych wejściowych jako < klucz: wartość > słownika, przy użyciu ramki danych. Ta metoda jest obsługiwana, co umożliwia korzystanie z wdrożonej usługi sieci web w usłudze Power BI ([Dowiedz się więcej na temat sposobu korzystania z usługi sieci web w usłudze Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+
+```python
+import json
+import pickle
+import numpy as np
+import pandas as pd
+import azureml.train.automl
+from sklearn.externals import joblib
+from azureml.core.model import Model
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
+
+def init():
+    global model
+    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+input_sample = pd.DataFrame(data=[{
+              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
+              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
+              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
+            }])
+
+output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+
+@input_schema('data', PandasParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 Aby uzyskać więcej przykładowe skrypty zobacz następujące przykłady:
 
 * Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -281,7 +324,7 @@ Aby wyświetlić przydziału i regionu dostępność usługi ACI, zobacz [limity
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) klasy.
 
-### <a id="aks"></a>Usługa Azure Kubernetes Service (produkcja)
+### <a id="aks"></a>Azure Kubernetes Service (DEVTEST i produkcja)
 
 Można użyć istniejącego klastra AKS lub utworzyć nowe konto, przy użyciu zestawu SDK usługi Azure Machine Learning, interfejsu wiersza polecenia lub witryny Azure portal.
 
@@ -293,6 +336,9 @@ Jeśli masz już klaster AKS, dołączony, można wdrożyć do niego. Jeśli jes
 
   ```python
   aks_target = AksCompute(ws,"myaks")
+  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
+  # cores and memory to handle this deployment configuration. Note that memory is also used by
+  # things such as dependencies and AML components.
   deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
   service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
   service.wait_for_deployment(show_output = True)
@@ -315,16 +361,23 @@ Dowiedz się więcej na temat wdrażania usługi AKS i skalowanie automatyczne w
 #### Utwórz nowy klaster usługi AKS<a id="create-attach-aks"></a>
 **Szacowany czas:** Mniej więcej 5 minut.
 
-> [!IMPORTANT]
-> Tworzenie i dołączanie klaster AKS jest jeden raz przetwarzania dla obszaru roboczego. Można ponownie użyć klastra dla wielu wdrożeń. Jeśli usuniesz, klaster lub grupę zasobów, która ją zawiera, należy utworzyć nowy klaster przy następnym zajdzie potrzeba wdrożenia.
+Tworzenie i dołączanie klaster AKS jest jeden raz przetwarzania dla obszaru roboczego. Można ponownie użyć klastra dla wielu wdrożeń. Jeśli usuniesz, klaster lub grupę zasobów, która ją zawiera, należy utworzyć nowy klaster przy następnym zajdzie potrzeba wdrożenia. Może mieć wielu klastrów usługi AKS, dołączone do obszaru roboczego.
 
-Aby uzyskać więcej informacji na temat ustawień dotyczących `autoscale_target_utilization`, `autoscale_max_replicas`, i `autoscale_min_replicas`, zobacz [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-) odwołania.
+Jeśli chcesz utworzyć klaster usługi AKS do tworzenia, weryfikacji i testowania, musisz ustawić `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` przy użyciu [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py). Klaster, który został utworzony za pomocą tego ustawienia będzie mieć tylko jeden węzeł.
+
+> [!IMPORTANT]
+> Ustawienie `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` tworzy klaster usługi AKS, który nie jest przeznaczony do obsługi ruchu w środowisku produkcyjnym. Wnioskowanie o czas może być dłuższy niż w klastrze, który został utworzony w środowisku produkcyjnym. Odporność na uszkodzenia również nie jest gwarantowana w przypadku klastrów i testowania aplikacji.
+>
+> Zaleca się, że klastry utworzone na potrzeby tworzenia i testowania Użyj co najmniej dwa procesory wirtualne.
+
 Poniższy przykład przedstawia sposób tworzenia nowego klastra Azure Kubernetes Service:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Use the default configuration (you can also provide parameters to customize this)
+# Use the default configuration (you can also provide parameters to customize this).
+# For example, to create a dev/test cluster, use:
+# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
@@ -341,6 +394,7 @@ Aby uzyskać więcej informacji na temat tworzenia klastra usługi AKS w taki sp
 * [Tworzenie klastra AKS](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Tworzenie klastra AKS (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
+Aby uzyskać więcej informacji na temat `cluster_purpose` parametrów, zobacz [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) odwołania.
 
 > [!IMPORTANT]
 > Aby uzyskać [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), w przypadku wybrania wartości niestandardowe agent_count i vm_size, a następnie należy upewnić się, że agent_count pomnożona przez vm_size jest większa lub równa 12 procesorów wirtualnych. Na przykład jeśli używasz vm_size "Maszyna wirtualna Standard_D3_v2", która ma 4 procesory wirtualne, następnie należy wybrać agent_count 3 lub większą.
@@ -349,7 +403,16 @@ Aby uzyskać więcej informacji na temat tworzenia klastra usługi AKS w taki sp
 
 #### <a name="attach-an-existing-aks-cluster"></a>Dołączanie istniejącego klastra AKS
 
-Jeśli masz już klaster AKS w subskrypcji platformy Azure i jest wersja 1.12. ## i ma co najmniej 12 procesorów wirtualnych, służy do wdrażania obrazu systemu. Poniższy kod przedstawia sposób dołączania istniejącej 1.12 AKS. ## klastra do swojego obszaru roboczego:
+Jeśli masz już klaster AKS w subskrypcji platformy Azure i jest wersja 1.12. ##, służy do wdrażania obrazu systemu.
+
+> [!WARNING]
+> Podczas podłączania klaster AKS do obszaru roboczego, można zdefiniować sposób korzystania z klastra przez ustawienie `cluster_purpose` parametru.
+>
+> Jeśli nie ustawisz `cluster_purpose` parametru lub ustawienie `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, a następnie klaster musi mieć co najmniej 12 procesorów wirtualnych dostępne.
+>
+> Jeśli ustawisz `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, a następnie klastra musi mieć 12 procesorów wirtualnych. Jednak klastra, który jest skonfigurowany do tworzenia i testowania nie będzie odpowiednia dla ruchu na poziomie produkcyjnym i może zwiększyć czas wnioskowania.
+
+Poniższy kod przedstawia sposób dołączania istniejącej 1.12 AKS. ## klastra do swojego obszaru roboczego:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -357,11 +420,18 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attach the cluster to your workgroup
+# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
+# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+#                                         cluster_name = cluster_name,
+#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
+
+Aby uzyskać więcej informacji na temat `attack_configuration()`, zobacz [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) odwołania.
+
+Aby uzyskać więcej informacji na temat `cluster_purpose` parametrów, zobacz [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) odwołania.
 
 ## <a name="consume-web-services"></a>Korzystaj z usług sieci Web
 
@@ -395,7 +465,7 @@ print(response.json())
 Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji do używania usług sieci Web klienta](how-to-consume-web-service.md).
 
 
-### <a id="azuremlcompute"></a> Użycie usługi Batch
+### <a id="azuremlcompute"></a> Wnioskowanie usługi Batch
 Cele obliczeniowego usługi Machine Learning platformy Azure są tworzone i zarządzane przez usługę Azure Machine Learning. Służy do prognozowania usługi batch z potoków uczenia maszynowego Azure.
 
 Aby zapoznać się z przewodnikiem wnioskowania usługi batch przy użyciu obliczeniowego usługi Azure Machine Learning, przeczytaj [sposobu uruchamiania prognoz usługi Batch](how-to-run-batch-predictions.md) artykułu.

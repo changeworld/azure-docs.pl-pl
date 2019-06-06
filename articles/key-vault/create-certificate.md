@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7eb4d80933e06b9eceb072bee93e2b127cfa9ffe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67720256cfac68c350c800291653a4a0c1d7ee46
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727441"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427821"
 ---
 # <a name="certificate-creation-methods"></a>Metody tworzenia certyfikatów
 
@@ -82,7 +82,7 @@ Tworzenie certyfikatu może być ukończone ręcznie lub przy użyciu "Self" wys
 |Dostawca|Typ certyfikatu|  
 |--------------|----------------------|  
 |DigiCert|Usługa Key Vault oferuje OV lub Weryfikacją certyfikatów SSL z firmy DigiCert|
-|GlobalCert|Usługa Key Vault oferuje OV lub Weryfikacją certyfikatów SSL z GlobalSign|
+|GlobalCert|Usługa Key Vault oferuje OV lub Weryfikacją certyfikatów SSL z Globaltrust |
 
  Wystawca certyfikatu jest reprezentowana w usłudze Azure klucza magazynu (KV) jako zasób CertificateIssuer jednostki. Umożliwia podawanie informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczeń i inne szczegóły administracyjne.
 

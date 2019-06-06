@@ -2,20 +2,20 @@
 title: RelyingParty — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Określ element RelyingParty zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253771"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512853"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -104,7 +104,7 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator podróży użytkownika w ramach zasad. Aby uzyskać więcej informacji, zobacz [podróży użytkownika](userjourneys.md) |
+| Identyfikator odwołania | Yes | Identyfikator podróży użytkownika w ramach zasad. Aby uzyskać więcej informacji, zobacz [podróży użytkownika](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -133,12 +133,12 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Yes | Wartość musi być `ApplicationInsights`. | 
+| TelemetryEngine | Tak | Wartość musi być `ApplicationInsights`. | 
 | InstrumentationKey | Tak | Ciąg, który zawiera klucz instrumentacji dla elementu szczegółowych informacji w aplikacji. |
 | DeveloperMode | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, Application Insights przyspiesza dane telemetryczne za pośrednictwem potoku przetwarzania. To ustawienie jest dobry do tworzenia aplikacji, ale ograniczone w dużej ilości danych z dzienników aktywności szczegółowe są przeznaczone tylko do pomocy podczas tworzenia zasad niestandardowych. Nie należy używać trybu projektowania w środowisku produkcyjnym. Dzienniki zbierać wszystkie oświadczenia wysyłane do i z dostawcami tożsamości, podczas programowania. Jeśli używane w środowisku produkcyjnym, deweloper przyjmuje odpowiedzialność za dane osobowe (prywatnie osobowe) zebrane w dzienniku usługi App Insights, w której jest właścicielem. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest równa `true`.|
 | ClientEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła skrypt po stronie klienta usługi Application Insights do śledzenia błędów po stronie klienta i widoku strony. | 
-| ServerEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła istniejących JSON UserJourneyRecorder jako zdarzenie niestandardowe do usługi Application Insights. | 
-| TelemetryVersion | Yes | Wartość musi być `1.0.0`. | 
+| ServerEnabled | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła istniejących JSON UserJourneyRecorder jako zdarzenie niestandardowe do usługi Application Insights. | 
+| TelemetryVersion | Tak | Wartość musi być `1.0.0`. | 
 
 Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md)
 
@@ -170,7 +170,7 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- | 
-| Id | Tak | Wartość musi być `PolicyProfile`. |
+| Identyfikator | Tak | Wartość musi być `PolicyProfile`. |
 
 **Profilu technicznego** zawiera następujące elementy:
 
@@ -187,7 +187,7 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
+| Name | Tak | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -215,7 +215,7 @@ Za pomocą **SubjectNameingInfo** elementu, można kontrolować wartość tokenu
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ oświadczenia | Tak | Odwołanie do oświadczeń wychodzących **PartnerClaimType**. Dane wyjściowe oświadczenia, muszą być zdefiniowane w zasadach jednostki uzależnionej strona **OutputClaims** kolekcji. |
+| Typ oświadczenia | Yes | Odwołanie do oświadczeń wychodzących **PartnerClaimType**. Dane wyjściowe oświadczenia, muszą być zdefiniowane w zasadach jednostki uzależnionej strona **OutputClaims** kolekcji. |
 
 Poniższy przykład pokazuje jak zdefiniować, OpenId Connect jednostki zależnej. Informacje o nazwie podmiotu jest skonfigurowany jako `objectId`:
 

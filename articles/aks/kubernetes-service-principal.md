@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d8a8a2f005a92988158b3f9c36ce24936fb020b4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786394"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475633"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -91,7 +91,7 @@ Opcja `--scope` dla zasobu musi być pełnym identyfikatorem zasobu, takim jak *
 
 W poniższych sekcjach opisano typowe delegacje, które należy wykonać.
 
-### <a name="azure-container-registry"></a>Rejestr kontenerów platformy Azure
+### <a name="azure-container-registry"></a>Azure Container Registry
 
 Jeśli używasz usługi Azure Container Registry (ACR) jako magazynu obrazów kontenerów, należy udzielić uprawnień dla klastra usługi AKS do odczytywania i ściągania obrazów. Dla jednostki usługi klastra AKS należy delegować rolę *Czytelnik* w rejestrze. Aby uzyskać szczegółowe instrukcje, zobacz [Grant AKS access to ACR][aks-to-acr] (Udzielanie klastrowi AKS uprawnień do usługi ACR).
 
@@ -126,7 +126,7 @@ Podczas korzystania z jednostek usług AKS i Azure AD należy pamiętać o nast�
 
 - Jednostka usługi dla rozwiązania Kubernetes jest częścią konfiguracji klastra. Nie należy jednak używać tożsamości do wdrażania klastra.
 - Domyślnie poświadczenia nazwy głównej usługi są ważne przez jeden rok. Możesz [aktualizacji lub obrócić poświadczenia nazwy głównej usługi] [ update-credentials] w dowolnym momencie.
-- Każda jednostka usługi jest skojarzona z aplikacją usługi Azure AD. Jednostka usługi dla klastra Kubernetes może zostać skojarzona z dowolną prawidłową nazwą aplikacji usługi Azure AD (na przykład *https://www.contoso.org/example*). Adres URL dla aplikacji nie musi być rzeczywistym punktem końcowym.
+- Każda jednostka usługi jest skojarzona z aplikacją usługi Azure AD. Jednostka usługi dla klastra Kubernetes może zostać skojarzona z dowolną prawidłową nazwą aplikacji usługi Azure AD (na przykład *https://www.contoso.org/example* ). Adres URL dla aplikacji nie musi być rzeczywistym punktem końcowym.
 - Podczas określania **identyfikatora klienta** jednostki usługi użyj wartości `appId`.
 - W węźle agenta maszyny wirtualne w klastrze Kubernetes poświadczenia nazwy głównej usługi są przechowywane w pliku `/etc/kubernetes/azure.json`
 - Gdy używasz polecenia [az aks create][az-aks-create], aby automatycznie wygenerować jednostkę usługi, poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/aksServicePrincipal.json` na maszynie użytej do uruchomienia polecenia.
@@ -136,6 +136,24 @@ Podczas korzystania z jednostek usług AKS i Azure AD należy pamiętać o nast�
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
+
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
+
+Poświadczenia nazwy głównej usługi dla klastra usługi AKS są buforowane przez interfejs wiersza polecenia platformy Azure. Jeśli te poświadczenia mogły wygasnąć, wystąpią błędy podczas wdrażania klastrów usługi AKS. Następujący komunikat o błędzie podczas uruchamiania [tworzenie az aks] [ az-aks-create] może wskazywać na problem z poświadczenia nazwy głównej usługi pamięci podręcznej:
+
+```console
+Operation failed with status: 'Bad Request'.
+Details: The credentials in ServicePrincipalProfile were invalid. Please see https://aka.ms/aks-sp-help for more details.
+(Details: adal: Refresh request failed. Status Code = '401'.
+```
+
+Sprawdź wieku pliku poświadczeń, używając następującego polecenia:
+
+```console
+ls -la $HOME/.azure/aksServicePrincipal.json
+```
+
+Domyślny czas wygaśnięcia dla poświadczenia nazwy głównej usługi jest jeden rok. Jeśli Twoje *aksServicePrincipal.json* plik jest starszy niż rok, Usuń ten plik i spróbuj ponownie wdrożyć klaster usługi AKS.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

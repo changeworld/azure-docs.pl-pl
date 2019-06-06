@@ -2,20 +2,20 @@
 title: Przepływy użytkownika w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej na temat rozszerzalna struktura zasad usługi Azure Active Directory B2C oraz do tworzenia różnych przepływów użytkownika.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3bb7b5d4126cde854da01451fd62ba969e605c1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 54677dc0771f65b7636b4d1cac77f53f9c04a09d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703706"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508939"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Przepływy użytkownika w usłudze Azure Active Directory B2C
 

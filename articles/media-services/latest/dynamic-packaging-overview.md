@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c25aef76b5559b6d00ccf60675d61ea5ea346773
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299183"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494348"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -114,10 +114,10 @@ Dynamiczne tworzenie pakietów obsługuje pliki w formacie MP4, które zawieraj�
     * Używanie usług DTS Express (dtse)
     * DTS HD bezstratne (nie-rdzeniowe) (dtsl)
 
-### <a name="hls-support"></a>Obsługa protokołu HLS
+### <a name="multi-audio-tracks"></a>Multi ścieżki audio
 
-Dynamiczne tworzenie pakietów obsługuje HLS (w wersji 4 lub nowszej) dla zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków.
-
+Podczas przesyłania strumieniowego zasobów, które mają wiele ścieżki audio z wieloma koderów-dekoderów i języków, dynamicznego tworzenia pakietów obsługuje multi ścieżki audio HLS danych wyjściowych (w wersji 4 lub nowszy).
+ 
 ### <a name="not-supported"></a>Nieobsługiwane
 
 Dynamiczne tworzenie pakietów nie obsługuje plików, które zawierają [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) audio (AC3) (jest to starszy koder-dekoder).

@@ -12,28 +12,22 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/10/2018
+ms.date: 6/05/2019
 ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726591"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729860"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
 Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastra? Uruchamiając i testując aplikację i klaster nie musi oznaczać, że jest gotowa do użytku w środowisku produkcyjnym. Zachowaj aplikacji i klastra z systemem sprawnie, korzystając z poniższej listy kontrolnej. Zdecydowanie zaleca się te elementy powinny zostać zaznaczone. Oczywiście można użyć alternatywnych rozwiązań dla konkretnego elementu wiersza (na przykład własnych struktur diagnostyki).
 
 
-## <a name="pre-requisites-for-production"></a>Wymagania wstępne dla środowiska produkcyjnego
-1. [Zabezpieczenia usługi Service Fabric najlepszych rozwiązań dotyczących platformy Azure](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) są: 
-1. Używanie certyfikatów X.509
-1. Konfiguruj zasady zabezpieczeń
-1. Konfigurowanie certyfikatu SSL dla usługi Azure Service Fabric
-1. Izolacja sieci i zabezpieczeń za pomocą usługi Azure Service Fabric
-1. Konfigurowanie usługi Azure Key Vault dla zabezpieczeń
-1. Microsoft.Network/loadBalancersAssign użytkowników do ról
+## <a name="prerequisites-for-production"></a>Wymagania wstępne dla środowiska produkcyjnego
+1. Usługa Azure Service Fabric najlepsze rozwiązania: [Projekt aplikacji](./service-fabric-best-practices-applications.md), [zabezpieczeń](./service-fabric-best-practices-security.md), [sieć](./service-fabric-best-practices-networking.md), [do planowania wydajności i skalowania](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kod](./service-fabric-best-practices-infrastructure-as-code.md), i [monitorowania i diagnostyki](./service-fabric-best-practices-monitoring.md). 
 1. Implementuj konfiguracji zabezpieczeń elementów Reliable Actors przy użyciu aktorów model programowania
 1. Dla klastrów liczących więcej niż 20 rdzeni lub 10 węzłów utworzyć typ dedykowanych węzła podstawowego dla usług systemowych. Dodaj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) zarezerwować typu węzła podstawowego dla usług systemowych.
 1. Za pomocą D2v2 wyższej wersji jednostki SKU dla typu węzła podstawowego. Zalecane jest pobranie jednostki SKU o co najmniej 50 GB dysk twardy pojemności.

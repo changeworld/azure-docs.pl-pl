@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: b55685bc9cfdc8c31e6658050be94cbe49062f89
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869405"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472161"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpieczanie zasobów usługi Azure CDN przy użyciu tokenu uwierzytelniania
 
@@ -173,17 +173,17 @@ Następujące schemat blokowy opisano, jak usługi Azure CDN weryfikuje żądani
 3. W obszarze **HTTP dużych**, wybierz opcję **aparat reguł**. Aparat reguł służy do definiowania ścieżek, aby zastosować tę funkcję, włączyć funkcję uwierzytelnianie przy użyciu tokenów i włączyć dodatkowe funkcje tokenu związane z uwierzytelnianiem. Aby uzyskać więcej informacji, zobacz [dokumentacja aparatu reguł](cdn-rules-engine-reference.md).
 
    1. Wybierz istniejącą regułę, lub Utwórz nową regułę, aby zdefiniować zasób lub ścieżki, dla której chcesz zastosować uwierzytelnianie przy użyciu tokenów. 
-   2. Aby włączyć uwierzytelnianie przy użyciu tokenów związany z regułą, zaznacz **[tokenu uwierzytelniania](cdn-rules-engine-reference-features.md#token-auth)** z **funkcji** , a następnie wybierz **włączone**. Wybierz **aktualizacji** aktualizowania reguły lub **Dodaj** w przypadku tworzenia reguły.
+   2. Aby włączyć uwierzytelnianie przy użyciu tokenów związany z regułą, zaznacz **[tokenu uwierzytelniania](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** z **funkcji** , a następnie wybierz **włączone**. Wybierz **aktualizacji** aktualizowania reguły lub **Dodaj** w przypadku tworzenia reguły.
         
       ![Przykład włączyć uwierzytelnianie przy użyciu tokenów aparatu reguł sieci CDN](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. Aparat reguł można również włączyć dodatkowe funkcje tokenu związane z uwierzytelnianiem. Aby włączyć dowolne z następujących funkcji, wybierz go z **funkcji** , a następnie wybierz **włączone**.
     
-   - **[Token uwierzytelniania typu "odmowa" kodu](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: Określa typ odpowiedzi, która jest zwracana do użytkownika, jeśli żądanie zostanie odrzucone. Regułami ustawionymi tutaj zastąpić kod odpowiedzi w **niestandardowe odmowa obsługi** sekcji na stronie uwierzytelniania opartego na tokenach.
+   - **[Token uwierzytelniania typu "odmowa" kodu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** : Określa typ odpowiedzi, która jest zwracana do użytkownika, jeśli żądanie zostanie odrzucone. Regułami ustawionymi tutaj zastąpić kod odpowiedzi w **niestandardowe odmowa obsługi** sekcji na stronie uwierzytelniania opartego na tokenach.
 
-   - **[Token uwierzytelniania ignorowanie wielkości liter adresu URL](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Określa, czy adres URL używany do sprawdzania poprawności tokenu jest rozróżniana wielkość liter.
+   - **[Token uwierzytelniania ignorowanie wielkości liter adresu URL](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** : Określa, czy adres URL używany do sprawdzania poprawności tokenu jest rozróżniana wielkość liter.
 
-   - **[Token uwierzytelniania parametr](cdn-rules-engine-reference-features.md#token-auth-parameter)**: Zmienia nazwę parametru ciągu zapytania tokenu uwierzytelniania wyświetlany w żądany adres URL. 
+   - **[Token uwierzytelniania parametr](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** : Zmienia nazwę parametru ciągu zapytania tokenu uwierzytelniania wyświetlany w żądany adres URL. 
         
      ![Przykład ustawień uwierzytelniania tokenu aparatu reguł sieci CDN](./media/cdn-token-auth/cdn-rules-engine2.png)
 

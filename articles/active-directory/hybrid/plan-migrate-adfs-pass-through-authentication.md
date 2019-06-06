@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Migrowanie z Federacji na uwierzytelnianie przekazywane usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Migrowanie z Federacji na PTA dla usługi Azure AD'
 description: Ten artykuł zawiera informacje o przejściu do środowiska tożsamości hybrydowej z Federacji uwierzytelniania przekazywanego.
 services: active-directory
 author: billmath
@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb421442a7b45f3cd5925fd1475a0a69053c3113
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382784"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473385"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrowanie z Federacji na uwierzytelnianie przekazywane usługi Azure Active Directory
 
@@ -75,7 +75,7 @@ Aby dowiedzieć się, której metody należy użyć, wykonaj kroki opisane w pon
 2. Na **dodatkowe zadania** wybierz opcję **wyświetlanie bieżącej konfiguracji**, a następnie wybierz pozycję **dalej**.<br />
  
    ![Zrzut ekranu przedstawiający widok opcji konfiguracji bieżącego na stronie dodatkowe zadania](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Na **Przejrzyj swoje rozwiązanie** przewiń do **Active Directory Federation Services (AD FS)**.<br />
+3. Na **Przejrzyj swoje rozwiązanie** przewiń do **Active Directory Federation Services (AD FS)** .<br />
 
    * Jeśli Konfiguracja usług AD FS znajduje się w tej sekcji, można bezpiecznie przyjąć, że usług AD FS zostały pierwotnie skonfigurowane przy użyciu usługi Azure AD Connect. Można konwertować domen z tożsamości federacyjnej do tożsamości zarządzanej przy użyciu programu Azure AD Connect **zmiana użytkownika logowania** opcji. Aby uzyskać więcej informacji na temat procesu, zobacz sekcję **opcja 1: Konfigurowanie uwierzytelniania przekazywanego za pomocą usługi Azure AD Connect**.
    * Jeśli usługi AD FS nie jest wymieniony w bieżące ustawienia, należy ręcznie przekonwertować domen z tożsamości federacyjnej tożsamości zarządzanej przy użyciu programu PowerShell. Aby uzyskać więcej informacji na temat tego procesu, zobacz sekcję **opcja 2: Przełączyć się z federacyjnego uwierzytelniania przekazywanego za pomocą programu PowerShell i Azure AD Connect**.
@@ -124,7 +124,7 @@ W tej sekcji opisano zagadnienia dotyczące wdrażania i szczegółowe informacj
 
 Przed dokonaniem konwersji z tożsamości federacyjnej do tożsamości zarządzanej poznaniem jak obecnie używasz usługi AD FS dla usługi Azure AD, Office 365 i innych aplikacji (jednostki uzależnionej relacja zaufania jednostek uzależnionych). W szczególności należy wziąć pod uwagę scenariusze, które są opisane w poniższej tabeli:
 
-| Jeśli | Następnie |
+| Jeśli użytkownik | Następnie |
 |-|-|
 | Zamierzasz nadal korzystać z usług AD FS z innymi aplikacjami (innych niż Usługa Azure AD i Office 365). | Po przekonwertowaniu domen, użyjesz usługi Azure AD i usług AD FS. Należy wziąć pod uwagę doświadczenia użytkownika. W niektórych przypadkach użytkownikom może wymagać dwukrotnego uwierzytelnienia: raz do usługi Azure AD (w którym użytkownik otrzyma rejestracji Jednokrotnej dostęp do innych aplikacji, takich jak Office 365) oraz ponownie wszystkie aplikacje, które są nadal powiązane z usług AD FS jako zaufanie jednostki uzależnionej. |
 | Wystąpienia usług AD FS jest w dużym stopniu dostosowany i zależy od ustawienia dostosowania określone w pliku onload.js (na przykład, jeśli zmienisz środowisko logowania, aby użytkownicy używana będzie tylko **SamAccountName** format swoją nazwę użytkownika zamiast użytkownika głównej nazwy (UPN) lub Twoja organizacja ma intensywnie marki środowisko logowania). Nie można zduplikować pliku onload.js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD można spełniają wymagań dostosowania użytkownika bieżącego. Aby uzyskać więcej informacji i wskazówki zobacz sekcje na marki usług AD FS i dostosowania usług AD FS.|

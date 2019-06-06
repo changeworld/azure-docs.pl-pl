@@ -1,23 +1,18 @@
 ---
 title: Praktyki bezpiecznego wdrażania w wielu regionach — Azure Deployment Manager
 description: W tym artykule opisano, jak wdrożyć usługę w wielu regionach za pomocą usługi Azure Deployment Manager. Przedstawia on praktyki bezpiecznego wdrażania, aby sprawdzić stabilność wdrożenie, zanim zetknie się we wszystkich regionach.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/13/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595782"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431171"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -25,7 +20,7 @@ Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie 
 
 Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert. 
 
-Usługa Azure Deployment Manager jest w prywatnej wersji zapoznawczej. Aby korzystać z platformy Azure Deployment Manager, należy wykonać [formularz rejestracji](https://aka.ms/admsignup). Pomoc w górę poprawić działanie funkcji, zapewniając [opinii](https://aka.ms/admfeedback).
+Azure Deployment Manager jest w wersji zapoznawczej. Pomóż nam udoskonalać tę funkcję, zapewniając [opinii](https://aka.ms/admfeedback).
 
 Aby użyć programu Deployment Manager, należy utworzyć cztery pliki:
 

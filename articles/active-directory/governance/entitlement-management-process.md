@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab18c8f165fc30636cd05091be1181743f9972d
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: aede5e315141251026867f7028ebf989d44da4d5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873652"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473064"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Żądanie procesu i powiadomień e-mail w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
 
@@ -44,8 +44,8 @@ Użytkownik, który wymaga dostępu do pakietu dostępu można przesłać żąda
 | --- | --- |
 | Przesłano | Użytkownik przesyła żądanie. |
 | Oczekuje na zatwierdzenie | Jeśli zasady dostępu do pakietu wymaga zatwierdzenia, żądanie przenosi do oczekujących na zatwierdzenie. |
-| Wygaśnięcie | Jeśli żadne osoby zatwierdzające zapoznać się z żądaniem przed upływem limitu czasu żądania zatwierdzenia, żądanie wygaśnie. Aby ponowić próbę, użytkownik będzie musiał ponownie prześlij żądanie. |
-| Odmówiono | Osoba zatwierdzająca nie zezwala na żądanie. |
+| Wygaśnięcie | Jeśli żadne osoby zatwierdzające zatwierdzić żądanie przed upływem limitu czasu żądania zatwierdzenia, żądanie wygaśnie. Aby ponowić próbę, użytkownik będzie musiał ponownie prześlij żądanie. |
+| Odmowa dostępu | Osoba zatwierdzająca nie zezwala na żądanie. |
 | Approved (Zatwierdzono) | Osoba zatwierdzająca je zatwierdzi żądanie. |
 | Dostarczanie | Użytkownik ma **nie** został przypisany dostęp do wszystkich zasobów w pakiecie dostępu. Jeśli jest to użytkownik zewnętrzny, użytkownik jeszcze nie uzyskać dostępu do katalogu zasobów i zaakceptować monit o uprawnienia. |
 | Dostarczono | Użytkownikowi przypisano dostęp do wszystkich zasobów w pakiecie dostępu. |
@@ -64,14 +64,14 @@ Poniższa tabela zawiera szczegółowe informacje o każdej z tych powiadomień 
 | --- | --- | --- | --- |
 | 1 | Wymagana akcja: Przeglądanie żądania dostępu z *[obiektu żądającego]* do *[package dostępu]* przez *[date]* | Gdy obiekt żądający przesyła żądanie dostępu do pakietu | Wszystkie osoby zatwierdzające |
 | 2 | Wymagana akcja: Przeglądanie żądania dostępu z *[obiektu żądającego]* do *[package dostępu]* przez *[date]* | Limit czasu żądania X dni przed zatwierdzeniem | Wszystkie osoby zatwierdzające |
-| 3 | Powiadomienia o stanie: *[obiektu żądającego]* na żądanie dostępu do *[package dostępu]* utracił ważność | Gdy osób zatwierdzających nie Zatwierdź lub Odrzuć żądanie dostępu w ramach czas trwania żądania | Żądający |
+| 3 | Powiadomienia o stanie: *[obiektu żądającego]* na żądanie dostępu do *[package dostępu]* utracił ważność | Gdy osób zatwierdzających nie Zatwierdź lub Odrzuć żądanie dostępu w ramach czas trwania żądania | Obiekt żądający |
 | 4 | Powiadomienia o stanie: *[obiektu żądającego]* żądanie dostępu do *[package dostępu]* zostało ukończone | Podczas pierwszej osoby zatwierdzającej zatwierdza lub odrzuca żądanie dostępu | Wszystkie osoby zatwierdzające |
-| 5 | Odmowa dostępu do *[package dostępu]* | Gdy obiekt żądający odmówiono dostępu do pakietu dostępu | Żądający |
-| 6 | Masz teraz dostęp do *[package dostępu]*  | Gdy obiekt żądający udzielony dostęp do każdego zasobu w pakiecie dostępu | Żądający |
-| 7 | Dostęp do *[package dostępu]* wygaśnie po upływie X dni | X dni przed żądającego dostępu do pakietu dostępu wygasa | Żądający |
-| 8 | Dostęp do *[package dostępu]* utracił ważność | Kiedy wygaśnie żądającego dostępu do pakietów programu access | Żądający |
+| 5 | Odmowa dostępu do *[package dostępu]* | Gdy obiekt żądający odmówiono dostępu do pakietu dostępu | Obiekt żądający |
+| 6 | Masz teraz dostęp do *[package dostępu]*  | Gdy obiekt żądający udzielony dostęp do każdego zasobu w pakiecie dostępu | Obiekt żądający |
+| 7 | Dostęp do *[package dostępu]* wygaśnie po upływie X dni | X dni przed żądającego dostępu do pakietu dostępu wygasa | Obiekt żądający |
+| 8 | Dostęp do *[package dostępu]* utracił ważność | Kiedy wygaśnie żądającego dostępu do pakietów programu access | Obiekt żądający |
 
-### <a name="review-access-request-emails"></a>Przegląd dostępu żądania w wiadomości e-mail
+### <a name="access-request-emails"></a>Żądania dostępu w wiadomości e-mail
 
 Gdy obiekt żądający wyśle żądanie dostępu do pakietu dostępu, który jest skonfigurowany do żądania zatwierdzenia, wszystkie osoby zatwierdzające skonfigurowane w zasadach otrzymywać powiadomienia e-mail szczegółowe informacje o żądaniu. Szczegółowe informacje obejmują nazwę podmiotu żądającego, organizacji, dostęp datę początkową i końcową, jeśli podano uzasadnienie biznesowe, gdy żądanie zostało przesłane i w przypadku, gdy żądanie wygaśnie. Wiadomość e-mail zawiera link, w których osoby zatwierdzające mogli zatwierdzać lub odrzucać żądania dostępu. Poniżej przedstawiono przykładowe powiadomienie e-mail, który jest wysyłany do osoby zatwierdzającej, gdy obiekt żądający przesyła żądanie dostępu.
 
@@ -79,7 +79,7 @@ Gdy obiekt żądający wyśle żądanie dostępu do pakietu dostępu, który jes
 
 ### <a name="approved-or-denied-emails"></a>Wiadomości e-mail zatwierdzonych lub zabronionych
 
-Obiekty żądające są powiadamiani, gdy żądanie dostępu jest zatwierdzone i dostępne dla lub w przypadku, gdy ich żądanie dostępu zostało odrzucone. Gdy osoba zatwierdzająca przegląda żądanie dostępu przesłane przez obiekt żądający, oni mogli zatwierdzać lub odrzucać żądania dostępu. Konieczne będzie dodawanie uzasadnienie biznesowe dla ich decyzję osoby zatwierdzającej.
+Obiekty żądające są powiadamiani, gdy żądanie dostępu jest zatwierdzone i dostępne dla lub w przypadku, gdy ich żądanie dostępu zostało odrzucone. Gdy osoba zatwierdzająca otrzyma żądanie dostępu przesłane przez obiekt żądający, oni mogli zatwierdzać lub odrzucać żądania dostępu. Konieczne będzie dodawanie uzasadnienie biznesowe dla ich decyzję osoby zatwierdzającej.
 
 Po zatwierdzeniu żądania dostępu, zarządzanie uprawnieniami rozpoczyna się proces udzielania dostępu do obiektu żądającego do każdego z zasobów w pakiecie dostępu. Po osoby zgłaszającej żądanie ma zostać przyznany dostęp do wszystkich zasobów w pakiecie dostępu, wiadomość e-mail z powiadomieniem są wysyłane do osoby zgłaszającej żądanie, czy ich żądanie dostępu została zatwierdzona i że klienci mają teraz dostęp do pakietu dostępu. Poniżej przedstawiono przykładowe e-mail z powiadomieniem jest wysyłany do obiektu żądającego, gdy uzyska dostęp do pakietu dostępu.
 

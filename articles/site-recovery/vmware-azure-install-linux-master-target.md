@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602067"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479986"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -46,7 +46,7 @@ Utworzyć głównego elementu docelowego zgodnie z następujących wytycznych us
 - **Rozmiar dysku dodatkowy dysk przechowywania**: 1 TB
 - **Liczba rdzeni procesora CPU**: 4 rdzeni lub więcej
 
-Obsługiwane są następujące obsługiwanych jądra systemu Ubuntu.
+Obsługiwane są następujące jądra systemu Ubuntu.
 
 
 |Jądra serii  |Obsługuje maksymalnie  |
@@ -207,7 +207,7 @@ Aby pobrać go przy użyciu systemu Linux, wpisz:
 
 #### <a name="access-the-installer-from-the-process-server"></a>Dostęp do Instalatora z serwera przetwarzania
 
-1. Na serwerze przetwarzania, przejdź do **\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository C:\Program Files (x86)**.
+1. Na serwerze przetwarzania, przejdź do **\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository C:\Program Files (x86)** .
 
 2. Skopiuj plik Instalatora wymagane z serwera przetwarzania i zapisz go jako **latestlinuxmobsvc.tar.gz** w katalogu macierzystym.
 
@@ -245,7 +245,7 @@ Użyj następujących kroków, aby utworzyć dysk przechowywania:
 
     ![Identyfikator wielościeżkowych](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Sformatuj dysk, a następnie utwórz system plików na nowy dysk: **mkfs.ext4 /dev/mapowania/< dysk przechowywania wielościeżkowe identyfikator >**.
+3. Sformatuj dysk, a następnie utwórz system plików na nowy dysk: **mkfs.ext4 /dev/mapowania/< dysk przechowywania wielościeżkowe identyfikator >** .
     
     ![System plików](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 

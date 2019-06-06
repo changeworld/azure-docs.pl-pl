@@ -2,20 +2,20 @@
 title: Samouczek — Dostosowywanie interfejsu użytkownika środowiska — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak dostosować interfejs użytkownika aplikacji w usłudze Azure Active Directory B2C w witrynie Azure portal.
 services: B2C
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2a84bf72ab68937224ac93bd9ffd035e32c603d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c0fdbee2c5108dd3203217cb721576703b3faca
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702542"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512083"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu użytkownika środowiska w usłudze Azure Active Directory B2C
 
@@ -55,7 +55,7 @@ Mimo że można przechowywać pliki na wiele sposobów, w ramach tego samouczka,
 ### <a name="create-a-container"></a>Tworzenie kontenera
 
 1. Na stronie Przegląd konta usługi storage wybierz **obiektów blob**.
-2. Wybierz **kontenera**, wprowadź nazwę kontenera, wybierz pozycję **obiektów Blob (anonimowy dostęp do odczytu tylko dla obiektów blob.)**, a następnie kliknij przycisk **OK**.
+2. Wybierz **kontenera**, wprowadź nazwę kontenera, wybierz pozycję **obiektów Blob (anonimowy dostęp do odczytu tylko dla obiektów blob.)** , a następnie kliknij przycisk **OK**.
 
 ### <a name="enable-cors"></a>Włączanie mechanizmu CORS
 
@@ -138,7 +138,7 @@ W tym samouczku przechowujesz pliki, które utworzono w ramach konta magazynu, a
 ## <a name="update-the-user-flow"></a>Aktualizacja przepływu użytkownika
 
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-2. Wybierz **przepływy użytkownika (zasady)**, a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
+2. Wybierz **przepływy użytkownika (zasady)** , a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
 3. Wybierz **strony układów**, a następnie w obszarze **ujednolicona strona rejestracji lub logowania**, kliknij przycisk **tak** dla **niestandardową zawartość strony**.
 4. W **identyfikator URI strony niestandardowe**, wprowadź identyfikator URI *ui.html niestandardowe* pliku, który zapisaną wcześniej.
 5. W górnej części strony wybierz **Zapisz**.

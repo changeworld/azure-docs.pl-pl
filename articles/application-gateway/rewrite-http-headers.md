@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000969"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476035"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway
 
@@ -20,7 +20,7 @@ ms.locfileid: "66000969"
 
 Zezwalaj na nagłówki HTTP, klienta i serwera przekazać dodatkowe informacje z żądania lub odpowiedzi. Zapisując je ponownie tych nagłówków, można wykonywać ważne zadania, takie jak dodawanie pola nagłówka związanych z zabezpieczeniami, takich jak HSTS / X XSS ochrony, usunięcie pola nagłówka odpowiedzi, które może ujawnić informacje poufne i usuwanie informacji o porcie X-Forwarded-dla nagłówków.
 
-Usługa Application Gateway można dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP podczas żądania i pakietów odpowiedzi, przenoszenie między klientem a pule zaplecza. I pozwala na dodawanie warunków w celu zapewnienia, że określone nagłówki są przepisany tylko wtedy, gdy zostaną spełnione określone warunki.
+Usługa Application Gateway umożliwia dodawanie, usuwanie lub aktualizowanie nagłówków żądań i odpowiedzi HTTP podczas przenoszenia pakietów żądań i odpowiedzi między pulami klientów i zaplecza. Pozwala ona również na dodawanie warunków w celu zapewnienia, że określone nagłówki będą ponownie zapisywane tylko po spełnieniu pewnych warunków.
 
 Usługa Application Gateway obsługuje również kilka [zmiennych serwera](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) ułatwiające przechowywać dodatkowe informacje na temat żądań i odpowiedzi. Ułatwia tworzenie reguły ponownego zapisywania zaawansowane.
 
@@ -153,11 +153,11 @@ Możesz ocenić nagłówka żądania lub odpowiedzi HTTP na obecność zmiennej 
 
 ## <a name="limitations"></a>Ograniczenia
 
+- Jeśli odpowiedź ma więcej niż jeden nagłówki o takiej samej nazwie, wpisz ponownie wartość jednej z tych nagłówków spowoduje usunięcie innych nagłówków odpowiedzi. Zazwyczaj można to zrobić przy użyciu nagłówka Set-Cookie, ponieważ może mieć więcej niż jeden nagłówka Set-Cookie odpowiedzi. Taki scenariusz jest, gdy za pomocą usługi app service z usługą application gateway i skonfigurowano koligacja sesji na podstawie plików cookie w usłudze application gateway. W tym przypadku odpowiedź będzie zawierać 2 nagłówki Set-Cookie: używany przez usługę app service, czyli `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` i inny wpis dla koligacji bramy aplikacji, czyli `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. Ponowne napisanie jeden z nagłówków Set-Cookie, w tym scenariuszu może spowodować usunięcie innych nagłówka Set-Cookie z odpowiedzi.
+
 - Ponowne napisanie nagłówki połączenia, uaktualniania i hosta nie jest obecnie obsługiwane.
 
 - Nazwy nagłówków może zawierać żadnych znaków alfanumerycznych i określone symbole, zgodnie z definicją w [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Obecnie nie obsługujemy znaku podkreślenia (\_) znaków specjalnych w nazwy nagłówków.
-
-- Jeśli odpowiedź ma wiele nagłówków o takiej samej nazwie, wpisz ponownie wartość jednej z tych nagłówków spowoduje usunięcie innych nagłówków odpowiedzi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

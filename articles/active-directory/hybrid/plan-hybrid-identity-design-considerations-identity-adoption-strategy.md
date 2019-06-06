@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39495e11e42853bf3cf9481475d970667c56223f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c55dc0cbc175542d0b208bbe72566a0adb55a371
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919101"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496737"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla Twojego rozwiązania tożsamości hybrydowej w celu spełnienia wymagań biznesowych, które zostały omówione w:
@@ -199,8 +199,7 @@ Mimo że możesz mogą mieć rozliczane na rozwiązanie strategii, nadal należy
 | Lokalnej usługi AD |Serwer Multi-Factor Authentication |
 
 > [!NOTE]
-> Należy upewnić się, że zaznaczonej opcji projektu usługi Multi-Factor authentication obsługuje funkcje, które są wymagane dla projektu.  Aby uzyskać więcej informacji, przeczytaj [wybierz rozwiązania zabezpieczeń w usłudze Multi-Factor Authentication](../authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure).
-> 
+> Należy upewnić się, że zaznaczonej opcji projektu usługi Multi-Factor authentication obsługuje funkcje, które są wymagane dla projektu.  Aby uzyskać więcej informacji, przeczytaj [wybierz rozwiązania zabezpieczeń w usłudze Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 > 
 
 ## <a name="multi-factor-auth-provider"></a>Dostawcy usługi Multi-Factor Authentication

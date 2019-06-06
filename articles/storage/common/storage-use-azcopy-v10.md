@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: cc65d6d3f7e7dcc08ea29ecc8a299b556563135b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bfa3e5a943ee59b1ed335f45e113a60f62572675
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236318"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735030"
 ---
 # <a name="get-started-with-azcopy"></a>Wprowadzenie do narzędzia AzCopy
 
@@ -28,7 +28,7 @@ AzCopy to narzędzie wiersza polecenia używanej do kopiowania obiektów blob lu
 
 ## <a name="download-azcopy"></a>Pobierz narzędzia AzCopy
 
-Najpierw Pobierz plik wykonywalny V10 narzędzia AzCopy do dowolnego folderu na komputerze. Dla wygody należy rozważyć dodanie lokalizacji folderu Narzędzia AzCopy do ścieżki systemowej w celu ułatwienia.
+Najpierw Pobierz plik wykonywalny V10 narzędzia AzCopy do dowolnego katalogu na komputerze. 
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (docelowy)
@@ -39,13 +39,15 @@ Najpierw Pobierz plik wykonywalny V10 narzędzia AzCopy do dowolnego folderu na 
 
 ## <a name="run-azcopy"></a>Uruchom narzędzie AzCopy
 
-W wierszu polecenia przejdź do katalogu, w której pobrano plik.
+Dla wygody należy rozważyć dodanie lokalizację katalogu pliku wykonywalnego narzędzia AzCopy do ścieżki systemowej w celu ułatwienia. W ten sposób można wpisać `azcopy` z dowolnego katalogu, w tym systemie.
 
-Aby wyświetlić listę poleceń narzędzia AzCopy, wpisz `azCopy`, a następnie naciśnij klawisz ENTER.
+Jeśli nie chcesz dodać katalog narzędzia AzCopy do ścieżki, musisz Zmień katalogi na lokalizację pliku wykonywalnego narzędzia AzCopy i typ `azcopy` lub `.\azcopy` w wierszy polecenia programu Windows PowerShell.
 
-Aby dowiedzieć się więcej na temat określonego polecenia, wpisz `azCopy` następuje nazwa polecenia.
+Aby wyświetlić listę poleceń, wpisz `azcopy -h` i naciśnij klawisz ENTER.
 
-Na przykład, aby dowiedzieć się więcej na temat `copy` polecenia, wpisz `azcopy copy`, a następnie naciśnij klawisz ENTER.
+Aby uzyskać informacje dotyczące określonego polecenia, po prostu Dołącz nazwę polecenia (na przykład: `azcopy list -h`).
+
+![Wbudowanej pomocy](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
 Przed wykonaniem jakichkolwiek, które są istotne, za pomocą narzędzia AzCopy, musisz zdecydować, jak zapewnisz poświadczenia autoryzacji do usługi storage.
 
@@ -81,7 +83,7 @@ Te role można przypisać do tożsamości w jednym z tych zakresów:
 
 Aby dowiedzieć się, jak sprawdzić i przypisz role, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Nie musisz mieć jedną z tych ról, przypisane do tożsamości, jeśli swoją tożsamość zostanie dodany do listy kontroli dostępu (ACL) kontenera docelowego lub folderu. Na liście ACL swoją tożsamość musi zapisać uprawnienia do folderu docelowego i uprawnienia do wykonywania w kontenerze i każdy folder nadrzędny.
+Nie musisz mieć jedną z tych ról, przypisane do tożsamości, jeśli swoją tożsamość zostanie dodany do listy kontroli dostępu (ACL) kontenera docelowego lub katalogu. Na liście ACL swoją tożsamość musi uprawnienie do zapisu w katalogu docelowym, a także uprawnienia do wykonywania w kontenerze i każdy katalog nadrzędny.
 
 Aby dowiedzieć się więcej, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
@@ -102,7 +104,7 @@ Te role można przypisać do tożsamości w jednym z tych zakresów:
 
 Aby dowiedzieć się, jak sprawdzić i przypisz role, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Nie musisz mieć jedną z tych ról, przypisane do tożsamości, jeśli swoją tożsamość zostanie dodany do listy kontroli dostępu (ACL) kontenera docelowego lub folderu. Na liście ACL swoją tożsamość musi uprawnienie do odczytu w folderze docelowym, a także uprawnienia do wykonywania w kontenerze i każdy folder nadrzędny.
+Nie musisz mieć jedną z tych ról, przypisane do tożsamości, jeśli swoją tożsamość zostanie dodany do listy kontroli dostępu (ACL) kontenera docelowego lub katalogu. Na liście ACL swoją tożsamość musi uprawnienie do odczytu w katalogu docelowym, a także uprawnienia do wykonywania w kontenerze i każdy katalog nadrzędny.
 
 Aby dowiedzieć się więcej, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 

@@ -2,20 +2,20 @@
 title: Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688860"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733641"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie zasobów przepływ poświadczeń hasła właściciela w usłudze Azure Active Directory B2C za pomocą zasad niestandardowych
 
@@ -140,7 +140,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Di
     </TechnicalProfile>
     ```
 
-    Zastąp **DefaultValue** z **client_id** i **Identyfikator_zasobu_2** z Identyfikatorem aplikacji w aplikacji ProxyIdentityExperienceFramework, który został utworzony w samouczka dotyczącego wymagań wstępnych.
+    Zastąp **DefaultValue** z **client_id** z Identyfikatorem aplikacji w aplikacji ProxyIdentityExperienceFramework, który został utworzony w samouczka dotyczącego wymagań wstępnych. Następnie zastąp **DefaultValue** z **Identyfikator_zasobu_2** z Identyfikatorem aplikacji w aplikacji IdentityExperienceFramework tworzona samouczka dotyczącego wymagań wstępnych.  
 
 5. Dodaj następujące **ClaimsProvider** elementów przy użyciu ich profile techniczne do **ClaimsProviders** elementu:
 

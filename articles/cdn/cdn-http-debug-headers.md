@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736976"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475288"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Nagłówki HTTP X-WE-Debug dla usługi Azure CDN aparatu reguł
 Nagłówek żądania debugowania w pamięci podręcznej, `X-EC-Debug`, zawiera dodatkowe informacje na temat zasad pamięci podręcznej, które są stosowane do żądanego zasobu. Tych nagłówków są specyficzne dla **Azure CDN Premium from Verizon** produktów.
@@ -27,7 +27,7 @@ Nagłówek żądania debugowania w pamięci podręcznej, `X-EC-Debug`, zawiera d
 ## <a name="usage"></a>Sposób użycia
 Odpowiedź wysłana z serwerów POP do użytkownika zawiera `X-EC-Debug` nagłówka tylko wtedy, gdy są spełnione następujące warunki:
 
-- [Funkcja Debuguj pamięć podręczna nagłówki odpowiedzi](cdn-rules-engine-reference-features.md#debug-cache-response-headers) został włączony na aparat reguł dla określonego żądania.
+- [Funkcja Debuguj pamięć podręczna nagłówki odpowiedzi](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) został włączony na aparat reguł dla określonego żądania.
 - Określone żądanie definiuje zestaw nagłówków odpowiedzi pamięci podręcznej debugowania, które zostaną uwzględnione w odpowiedzi.
 
 ## <a name="requesting-debug-cache-information"></a>Żądanie pamięci podręcznej informacje o debugowaniu
@@ -54,7 +54,7 @@ Debugowanie odpowiedzi z pamięci podręcznej, który może zostać wyświetlony
 ## <a name="cache-status-code-information"></a>Informacje o kodzie stanu pamięci podręcznej
 Nagłówek odpowiedzi X WE debugowania można określić serwer i sposób jej obsługi odpowiedzi przez następujące dyrektywy:
 
-Nagłówek | Opis
+nagłówek | Opis
 -------|------------
 X-EC-Debug: x-ec-cache | Tego pliku nagłówkowego jest zgłaszany w każdym przypadku, gdy zawartość jest kierowany przez usługę CDN. Identyfikuje serwer protokołu POP, która zrealizowała żądanie.
 X-EC-Debug: x-ec-cache-remote | Tego pliku nagłówkowego jest zgłaszany tylko wtedy, gdy buforowano żądanej zawartości na serwer pochodzenia tarczy lub serwer bramy w sieci ADN.
@@ -118,7 +118,7 @@ Poniższy przykładowy nagłówek odpowiedzi wskazuje, czy żądana zawartość 
 ## <a name="cache-key-response-header"></a>Nagłówek odpowiedzi klucz pamięci podręcznej
 `X-EC-Debug: x-ec-cache-key` Nagłówek odpowiedzi wskazuje fizycznej pamięci podręcznej — klucz skojarzony z żądanej zawartości. Fizyczne klucz pamięci podręcznej składa się z ścieżką, która identyfikuje zasób usługi na potrzeby buforowania. Innymi słowy serwery będzie sprawdzał dostępność pamięci podręcznej wersji zasobu zgodnie z jego ścieżki, zgodnie z definicją według jego klucza pamięci podręcznej.
 
-To fizyczne klucz pamięci podręcznej rozpoczyna się od podwójnego ukośnika (/ /) i protokół używany do żądania zawartości (HTTP lub HTTPS). Ten protokół jest następuje ścieżkę względną do żądanego elementu zawartości, która rozpoczyna się od punktu dostępu do zawartości (na przykład _/000001/_).
+To fizyczne klucz pamięci podręcznej rozpoczyna się od podwójnego ukośnika (/ /) i protokół używany do żądania zawartości (HTTP lub HTTPS). Ten protokół jest następuje ścieżkę względną do żądanego elementu zawartości, która rozpoczyna się od punktu dostępu do zawartości (na przykład _/000001/_ ).
 
 Domyślnie platformami HTTP są skonfigurowane do używania *pamięci podręcznej standardu*, co oznacza, że ciągi zapytania są ignorowane przez mechanizm buforowania. Ten typ konfiguracji uniemożliwia klucz pamięci podręcznej w tym dane ciągu zapytania.
 
@@ -151,7 +151,7 @@ Terminy używane w powyższej składni nagłówek odpowiedzi są zdefiniowane w 
 
 - MATimePeriod: Konwertuje wartość max-age (czyli MASeconds) stanowiących wielokrotność większej jednostki (na przykład w dniach). 
 
-- UnixTime: Określa znacznik czasu pamięci podręcznej żądanej zawartości w programie time systemu Unix (zwane) POSIX — czas lub epoki Unix). Znacznik czasu: pamięć podręczna wskazuje, począwszy od daty/godziny z której będzie obliczana czas wygaśnięcia elementu zawartości. 
+- UnixTime: Określa znacznik czasu pamięci podręcznej żądanej zawartości w programie time systemu Unix (znany także jako POSIX czasu lub epoki Unix). Znacznik czasu: pamięć podręczna wskazuje, począwszy od daty/godziny z której będzie obliczana czas wygaśnięcia elementu zawartości. 
 
     Jeśli serwer pochodzenia nie używa HTTP innych firm, buforowanie serwera lub jeśli ten serwer nie zwraca nagłówek odpowiedzi wiek, następnie znacznik czasu pamięci podręcznej jest zawsze daty/godziny po pobierane lub ponownie sprawdzić poprawności nazwy zasobu. W przeciwnym razie serwerów POP użyje pola Wiek do obliczania czasu wygaśnięcia zasobu w następujący sposób: Pobieranie/RevalidateDateTime - wieku.
 

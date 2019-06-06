@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785856"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493750"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -170,6 +170,13 @@ Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania k
 7. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
 8. Aby przypisać dostęp, wyszukiwania, a następnie wybierz użytkownika.
 9. Kliknij pozycję **Zapisz**.
+
+## <a name="cross-tenant-authentication-issues"></a>Problemy z uwierzytelnianiem międzydzierżawowe
+
+Obecnie usługa Azure Cost Management ma ograniczoną obsługę uwierzytelniania w wielu dzierżawach. W pewnych okolicznościach podczas próby uwierzytelnienia dla dzierżaw, może zostać wyświetlony **odmowa dostępu** wystąpił błąd podczas analizy kosztów. Ten problem może wystąpić, jeśli Konfigurowanie kontroli dostępu opartej na rolach (RBAC) do innej dzierżawy subskrypcji, a następnie spróbuj wyświetlanie danych kosztów.
+
+*Aby obejść ten problem*: Po skonfigurowaniu funkcji RBAC w wielu dzierżawach, zaczekaj godzinę. Następnie spróbuj wyświetlić koszty analizy kosztów lub udzielić dostępu Cost Management dla użytkowników w obu dzierżaw.  
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242423"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480055"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -162,6 +162,9 @@ Po rozpoczęciu szkolenia, gdzie katalog źródłowy jest w nim program lokalneg
 ## <a name="snapshot"></a>Snapshot
 
 Po przesłaniu uruchomienie usługi Azure Machine Learning kompresuje katalogu, który zawiera skrypt jako plik zip i wysyła je do obliczeniowego elementu docelowego. Następnie został wyodrębniony plik zip, a skrypt jest uruchamiany istnieje. Usługa Azure Machine Learning są także przechowywane w pliku zip jako migawka jako część rekordu uruchomienia. Każda osoba mająca dostęp do obszaru roboczego można przeglądać rekordu uruchomienia i pobrać migawki.
+
+> [!NOTE]
+> Aby uniknąć niepotrzebnych plików zostaną uwzględnione w migawce, należy utworzyć plik Ignoruj (.gitignore lub .amlignore). Umieść ten plik w katalogu migawki i Dodaj nazwy plików do ignorowania w nim. Plik .amlignore używa tych samych [składni i wzorce jako plik .gitignore](https://git-scm.com/docs/gitignore). Jeśli oba pliki istnieją, pierwszeństwo ma plik .amlignore.
 
 ## <a name="activity"></a>Działanie
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 68f62a6945f3b651781414e3194104b6d2e6295c
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356428"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455814"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -58,7 +58,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 6.  Aby przygotować się na dysku, uruchom następujące polecenie. **W zależności od rozmiaru danych to może potrwać kilka godzin, dni.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite /enablecontentmd5 
     ```
     Plik dziennika jest tworzony w tym samym folderze, na którym uruchomiono narzędzie. Dwa inne pliki są również tworzone - *.xml* pliku (folder, w którym uruchamiasz narzędzie) i *manifest.xml dysku* pliku (gdzie znajdują się dane folder).
     
@@ -72,6 +72,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
     |/bk:     |Klucz funkcji BitLocker dla dysku. Jego hasło numeryczne z danych wyjściowych `manage-bde -protectors -get D:`      |
     |/srcdir:     |Następuje literę dysku, który ma zostać wysłane `:\`. Na przykład `D:\`.         |
     |/dstdir:     |Nazwa kontenera docelowego w usłudze Azure Storage.         |
+    |/blobtype:     |Ta opcja określa typ obiektów blob, który chcesz zaimportować dane. W przypadku blokowych obiektów blob jest `BlockBlob` i stronicowe obiekty BLOB, jest `PagaBlob`.         |
     |/skipwrite:     |Opcja, która określa, że nie istnieje żadne nowe dane wymagane do skopiowania i istniejące dane na dysku jest przygotowany.          |
     |/enablecontentmd5:     |Po włączeniu opcji gwarantuje, że MD5 jest obliczany w trakcie przekazywania blokowych obiektów blob na platformie Azure.          |
 7. Powtórz poprzedni krok dla każdego dysku, który ma zostać wysłane. Plik dziennika o podanej nazwie jest tworzony dla każdego uruchomienia wiersza polecenia.

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dfbbdf3f2414f7b00445b271b667ad761ba93df0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724372"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476105"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
 
@@ -59,10 +59,10 @@ Gdy tworzysz nowy klaster Spark, masz możliwość dokonania wyboru z usługi Az
 
 | Typ Store | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb [s]:**//url/ | **Standardowa** | Yes | Przejściowy klastra |
-| Azure Data Lake Storage Gen 2| **abfs [s]:**//url/ | **Faster** | Yes | Przejściowy klastra |
-| Azure Data Lake Storage Gen 1| **ADL:**//url/ | **Faster** | Yes | Przejściowy klastra |
-| Lokalny system plików HDFS | **hdfs:**//url/ | **Najszybszy** | Nie | Interaktywne klastra 24/7 |
+| Azure Blob Storage | **wasb:** //url/ | **Standardowa** | Tak | Przejściowy klastra |
+| Azure Data Lake Storage Gen 2| **abfs [s]:** //url/ | **Faster** | Tak | Przejściowy klastra |
+| Azure Data Lake Storage Gen 1| **ADL:** //url/ | **Faster** | Tak | Przejściowy klastra |
+| Lokalny system plików HDFS | **hdfs:** //url/ | **Najszybszy** | Nie | Interaktywne klastra 24/7 |
 
 ## <a name="use-the-cache"></a>Użycie pamięci podręcznej
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 32cad7005b2b4da830ac3febf6da847933967a3d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400026"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471443"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
@@ -37,10 +37,10 @@ Plan odzyskiwania pomaga zdefiniować proces odzyskiwania systematyczne, tworzą
 
 Można zaplanować i Utwórz grupę odzyskiwania, aby przechwycić właściwości specyficzne dla aplikacji. Na przykład rozważmy Typowa trójwarstwowa aplikacja za pomocą programu SQL server, wewnętrznej bazy danych, oprogramowanie pośredniczące i frontonu sieci web. Zazwyczaj planu odzyskiwania można dostosować tak, aby komputery w każdej warstwie start we właściwej kolejności po włączeniu trybu failover.
 
-    - Wewnętrznej bazy danych SQL powinna zaczynać się najpierw, oprogramowanie pośredniczące następnej, a na końcu frontonu sieci web.
-    - Ta kolejność start gwarantuje, że aplikacja działa przy uruchamianiu ostatnia maszyna.
-    - Ta kolejność gwarantuje, że jeśli oprogramowanie pośredniczące, które próbuje nawiązać połączenie z warstwy programu SQL Server, warstwy programu SQL Server jest już uruchomiony. 
-    - To zamówienie pomaga również zapewnić, że serwer frontonu uruchamia ostatniego, tak, aby użytkownicy końcowi nie Podłączaj się do adresu URL aplikacji, zanim wszystkie składniki są włączone i uruchomione oraz aplikacji jest gotowy do akceptowania żądań.
+- Wewnętrznej bazy danych SQL powinna zaczynać się najpierw, oprogramowanie pośredniczące następnej, a na końcu frontonu sieci web.
+- Ta kolejność start gwarantuje, że aplikacja działa przy uruchamianiu ostatnia maszyna.
+- Ta kolejność gwarantuje, że jeśli oprogramowanie pośredniczące, które próbuje nawiązać połączenie z warstwy programu SQL Server, warstwy programu SQL Server jest już uruchomiony. 
+- To zamówienie pomaga również zapewnić, że serwer frontonu uruchamia ostatniego, tak, aby użytkownicy końcowi nie Podłączaj się do adresu URL aplikacji, zanim wszystkie składniki są włączone i uruchomione oraz aplikacji jest gotowy do akceptowania żądań.
 
 Aby utworzyć to zamówienie, Dodaj grupy do grupy odzyskiwania i Dodaj maszyny do grup.
 - W przypadku, gdy zamówienie zostanie określony, używany jest sekwencjonowania. Akcje wykonywane równolegle, gdzie jest to odpowiednie poprawić odzyskiwania aplikacji cel czasu odzyskiwania.

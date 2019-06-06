@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 682b2266442f3aba6696385862844e1b4b93aa3d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 57a3ea73783af1edaee069bf2770d5c58f81772a
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702026"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496104"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
@@ -36,7 +36,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 1. Otwórz środowisko IntelliJ IDEA.
 
-2. Na ekranie powitalnym przejdź do pozycji **Configure (Konfiguruj)** > **Plugins (Wtyczki)**, aby otworzyć okno **Plugins (Wtyczki)**.
+2. Na ekranie powitalnym przejdź do pozycji **Configure (Konfiguruj)**  > **Plugins (Wtyczki)** , aby otworzyć okno **Plugins (Wtyczki)** .
    
     ![Włączanie wtyczki Scala](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin.png)
 
@@ -70,7 +70,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
     |Project name (Nazwa projektu)| Wprowadź nazwę.  W tym samouczku użyto regionu `myApp`.|  
     |Lokalizacja&nbsp;projektu| Wprowadź żądaną lokalizację do zapisania projektu.|
     |Zestaw SDK projektu| Może to być puste na pierwszym korzystanie z ROZWIĄZANIEM.  Wybierz pozycję **New...** (Nowy...) i przejdź do swojego zestawu JDK.|
-    |Wersja platformy Spark|Kreator tworzenia integruje poprawną wersję dla zestawów Spark SDK i Scala SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie używana jest wersja **Spark 2.3.0 (Scala 2.11.8)**.|
+    |Wersja platformy Spark|Kreator tworzenia integruje poprawną wersję dla zestawów Spark SDK i Scala SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie używana jest wersja **Spark 2.3.0 (Scala 2.11.8)** .|
 
     ![Wybieranie zestawu SDK platformy Spark](./media/apache-spark-intellij-tool-plugin/hdi-new-project.png)
 
@@ -130,20 +130,35 @@ Użytkownik może być [Zaloguj się do subskrypcji platformy Azure](#sign-in-to
    ![Łącze Eksploratora usługi Azure](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
 2. W Eksploratorze usługi Azure, kliknij prawym przyciskiem myszy **Azure** węzeł, a następnie wybierz **Sign In**.
+   
+   ![Łącze Eksploratora usługi Azure](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
-3. W **Azure Sign In** okno dialogowe, wybierz opcję **Zaloguj**, a następnie wprowadź swoje poświadczenia platformy Azure.
+
+3. W **Azure Sign In** okna dialogowego wybierz **logowanie do urządzenia**, a następnie wybierz pozycję **Zaloguj**.
 
     ![Okno dialogowe Azure Sign In](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
 
-4. Po użytkownik jest zalogowany, **subskrypcje wybierz** okno dialogowe wyświetla listę wszystkich subskrypcji platformy Azure, które są skojarzone z poświadczeniami. Wybierz swoją subskrypcję, a następnie wybierz pozycję **wybierz** przycisku.
+4. W **logowanie do urządzenia Azure** okno dialogowe, kliknij przycisk **Kopiuj & Otwórz**.
+   
+   ![Okno dialogowe Azure Sign In](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
+
+5. W interfejsie przeglądarki Wklej kod, a następnie kliknij przycisk **dalej**.
+   
+   ![Okno dialogowe Azure Sign In](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
+
+6. Wprowadź swoje poświadczenia platformy Azure, a następnie zamknij przeglądarkę.
+   
+   ![Okno dialogowe Azure Sign In](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
+
+7. Po użytkownik jest zalogowany, **subskrypcje wybierz** okno dialogowe wyświetla listę wszystkich subskrypcji platformy Azure, które są skojarzone z poświadczeniami. Wybierz swoją subskrypcję, a następnie wybierz pozycję **wybierz** przycisku.
 
     ![Okno dialogowe Wybieranie subskrypcji](./media/apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
 
-5. Z **Eksploratora usługi Azure**, rozwiń węzeł **HDInsight** do wyświetlania klastrów HDInsight Spark, które znajdują się w Twojej subskrypcji.
+8. Z **Eksploratora usługi Azure**, rozwiń węzeł **HDInsight** do wyświetlania klastry HDInsight Spark, które są w Twoich subskrypcjach.
 
     ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
 
-6. Aby wyświetlić zasoby (na przykład kont magazynu), które są skojarzone z klastrem, można rozwinąć węzła nazwy klastra.
+9.  Aby wyświetlić zasoby (na przykład kont magazynu), które są skojarzone z klastrem, można rozwinąć węzła nazwy klastra.
 
     ![Rozwinięty węzeł nazwy klastra](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
@@ -164,11 +179,11 @@ Możesz połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika sy
         |----|----|
         |Typ zasobu linku|Wybierz **klastra HDInsight** z listy rozwijanej.|
         |Nazwa/adres URL klastra| Wprowadź nazwę klastra.|
-        |Typ uwierzytelnienia| Pozostaw **uwierzytelnianie podstawowe**|
+        |Typ uwierzytelniania| Pozostaw **uwierzytelnianie podstawowe**|
         |Nazwa użytkownika| Wprowadź nazwę użytkownika klastra, wartość domyślna to administratora.|
         |Hasło| Wprowadź hasło dla nazwy użytkownika.|
     
-        ![okno dialogowe klastra usługi hdinsight łącza](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+        ![Połącz klaster usługi Hdinsight w oknie dialogowym](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Livy Service**  
   
@@ -178,17 +193,17 @@ Możesz połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika sy
         |Punkt końcowy usługi Livy| Wprowadź punkt końcowy usługi Livy|
         |Nazwa klastra| Wprowadź nazwę klastra.|
         |Punkt końcowy usługi yarn|Opcjonalny.|
-        |Typ uwierzytelnienia| Pozostaw **uwierzytelnianie podstawowe**|
+        |Typ uwierzytelniania| Pozostaw **uwierzytelnianie podstawowe**|
         |Nazwa użytkownika| Wprowadź nazwę użytkownika klastra, wartość domyślna to administratora.|
         |Hasło| Wprowadź hasło dla nazwy użytkownika.|
 
-        ![Łączenie usługi livy klastra w oknie dialogowym](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
+        ![Łączenie usługi Livy klastra w oknie dialogowym](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
 
-4. Możesz zobaczyć klastra połączonych z **HDInsight** węzła.
+1. Możesz zobaczyć klastra połączonych z **HDInsight** węzła.
 
    ![połączone klastra](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
-5. Możesz również można odłączyć elementy od klastra z **Eksploratora usługi Azure**.
+2. Możesz również można odłączyć elementy od klastra z **Eksploratora usługi Azure**.
 
    ![Odłączono klastra](./media/apache-spark-intellij-tool-plugin/unlink.png)
 
@@ -207,10 +222,10 @@ Po utworzeniu aplikacji w języku Scala, możesz go przesłać do klastra.
     |----|----|
     |Klastry Spark (tylko system Linux)|Wybierz klaster HDInsight Spark, na którym chcesz uruchomić aplikację.|
     |Wybierz artefakt do przesyłania|Pozostaw ustawienie domyślne.|
-    |Nazwa główna klasa|Wartość domyślna to główna klasa z wybranego pliku. Klasę można zmienić, wybierając wielokropek (**...** ) i wybierając inną klasę.|
+    |Nazwa główna klasa|Wartość domyślna to główna klasa z wybranego pliku. Klasę można zmienić, wybierając wielokropek ( **...** ) i wybierając inną klasę.|
     |Zadania konfiguracji|Można zmienić domyślne klucze i/lub wartości. Aby uzyskać więcej informacji, zobacz [interfejsu API REST usługi Livy Apache](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Argumenty wiersza polecenia|Można wprowadzić argumentów rozdzielonych miejsca dla klasy głównej, jeśli to konieczne.|
-    |Przywoływany w plikach JAR i pliki z odwołaniami|Ewentualne, możesz wprowadzić ścieżki odwołania plikach JAR i plików. Więcej informacji: [Konfiguracja platformy Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Zobacz też [sposób przekazywania zasobów do klastra](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
+    |Przywoływany w plikach JAR i pliki z odwołaniami|Ewentualne, możesz wprowadzić ścieżki odwołania plikach JAR i plików. Informacje dodatkowe: [Konfiguracja platformy Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Zobacz też [sposób przekazywania zasobów do klastra](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |Zadanie przekazywania magazynu|Rozwiń, aby wyświetlić dodatkowe opcje.|
     |Typ magazynu|Wybierz **używanie usługi Azure Blob do przekazania** z listy rozwijanej.|
     |Konto magazynu|Wprowadź nazwę konta magazynu.|
@@ -258,7 +273,7 @@ Za pomocą zestawu narzędzi platformy Azure dla środowiska IntelliJ, można wy
 
 ### <a name="start-the-ambari-portal"></a>Uruchom portal systemu Ambari
 
-1. Z poziomu Eksploratora usługi Azure, rozwiń węzeł **HDInsight**, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz **Otwórz klaster zarządzania Portal(Ambari)**.  
+1. Z poziomu Eksploratora usługi Azure, rozwiń węzeł **HDInsight**, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz **Otwórz klaster zarządzania Portal(Ambari)** .  
 
 2. Po wyświetleniu monitu wprowadź poświadczenia administratora dla klastra. Te poświadczenia są określane podczas procesu konfigurowania klastra.
 
@@ -277,7 +292,7 @@ Upewnij się, że zostały spełnione WINUTILS. Wymaganie wstępne EXE.
 
 1. Na pasku menu, przejdź do **Uruchom** > **Edycja konfiguracji...** .
 
-2. Z **konfiguracji uruchomienia/debugowania** okna, w okienku po lewej stronie przejdź do **platformy Apache Spark w HDInsight** > **myApp [Spark on HDInsight]**.
+2. Z **konfiguracji uruchomienia/debugowania** okna, w okienku po lewej stronie przejdź do **platformy Apache Spark w HDInsight** > **myApp [Spark on HDInsight]** .
 
 3. W oknie głównym wybierz **lokalnie uruchomić** kartę.
 
@@ -285,7 +300,7 @@ Upewnij się, że zostały spełnione WINUTILS. Wymaganie wstępne EXE.
 
     |Właściwość |Wartość |
     |----|----|
-    |Główna klasa zadania|Wartość domyślna to główna klasa z wybranego pliku. Klasę można zmienić, wybierając wielokropek (**...** ) i wybierając inną klasę.|
+    |Główna klasa zadania|Wartość domyślna to główna klasa z wybranego pliku. Klasę można zmienić, wybierając wielokropek ( **...** ) i wybierając inną klasę.|
     |Zmienne środowiskowe|Upewnij się, że wartość HADOOP_HOME jest poprawna.|
     |Lokalizacja WINUTILS.exe|Upewnij się, że ścieżka jest poprawna.|
 
@@ -311,7 +326,7 @@ Jest ona obsługiwana tylko na IntelliJ 2018.2 i 2018.3.
 
 1. Na pasku menu, przejdź do **Uruchom** > **Edycja konfiguracji...** .
 
-2. Z **konfiguracji uruchomienia/debugowania** okna, w okienku po lewej stronie przejdź do **platformy Apache Spark w HDInsight** > **myApp [Spark on HDInsight]**.
+2. Z **konfiguracji uruchomienia/debugowania** okna, w okienku po lewej stronie przejdź do **platformy Apache Spark w HDInsight** > **myApp [Spark on HDInsight]** .
 
 3. W oknie głównym wybierz **zdalnie uruchomić w klastrze** kartę.
 
@@ -320,7 +335,7 @@ Jest ona obsługiwana tylko na IntelliJ 2018.2 i 2018.3.
     |Właściwość |Wartość |
     |----|----|
     |Klastry Spark (tylko system Linux)|Wybierz klaster HDInsight Spark, na którym chcesz uruchomić aplikację.|
-    |Nazwa główna klasa|Wartość domyślna to główna klasa z wybranego pliku. Klasę można zmienić, wybierając wielokropek (**...** ) i wybierając inną klasę.|
+    |Nazwa główna klasa|Wartość domyślna to główna klasa z wybranego pliku. Klasę można zmienić, wybierając wielokropek ( **...** ) i wybierając inną klasę.|
 
     ![Konfiguracja zestawu interakcyjnej konsoli](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
 
@@ -338,13 +353,68 @@ Jest to wygodne, wysyłając jakiś kod w lokalnej konsoli lub usługi Livy inte
 
    ![Wyślij zaznaczenie do konsoli platformy Spark](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
+## <a name="reader-only-role"></a>Rola tylko do czytnika
+Gdy użytkownicy przesyłania zadania do klastra z uprawnieniami tylko do odczytywania roli, Ambari poświadczenia jest wymagana.
+
+### <a name="link-cluster-from-context-menu"></a>Połącz klaster z menu kontekstowego
+
+1. Zaloguj się przy użyciu konta roli Czytelnik — tylko.
+       
+2. Z **Eksploratora usługi Azure**, rozwiń węzeł **HDInsight** do wyświetlania klastrów HDInsight, które znajdują się w Twojej subskrypcji. Oznaczone jako klastry **"Rola: Czytelnik"** tylko mają uprawnienia tylko do odczytywania roli.
+
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
+
+3. Kliknij prawym przyciskiem myszy klaster z uprawnieniami tylko do odczytywania roli. Wybierz **połączyć ten klaster** z menu kontekstowego w celu połączenia klastra. Wprowadź nazwę użytkownika systemu Ambari i hasło.
+
+  
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
+
+4. Jeśli klaster został połączony pomyślnie, zostanie odświeżona HDInsight.
+   Etap klastra będzie stają się połączony.
+  
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
+
+
+
+### <a name="link-cluster-by-expanding-jobs-node"></a>Link klastra, rozwijając węzeł zadań
+
+1. Kliknij przycisk **zadania** węzła **klastra zadania dostępu** pojawi się okno.
+   
+2. Kliknij przycisk **połączyć ten klaster** celu połączenia klastra.
+   
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
+
+### <a name="link-cluster-from-rundebug-configurations-window"></a>Połącz klaster z okna konfiguracji uruchomienia/debugowania
+
+1. Tworzenie konfiguracji usługi HDInsight. Następnie wybierz pozycję **zdalnie uruchomić w klastrze**.
+   
+2. Wybierz klaster, który ma uprawnienia tylko do odczytywania roli dla **(tylko system Linux) klastry usługi Spark**. Pokazuje komunikat ostrzegawczy. Możesz kliknąć pozycję **połączyć ten klaster** celu połączenia klastra.
+   
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
+   
+### <a name="view-storage-accounts"></a>Widok kont magazynu
+
+* W przypadku klastrów z uprawnieniami tylko do odczytywania roli kliknij **kont magazynu** węzła **odmowa dostępu do magazynu** pojawi się okno. Możesz kliknąć pozycję **Otwórz Eksploratora usługi Azure Storage** aby otworzyć Eksploratora usługi Storage.
+     
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
+
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
+
+* Połączone klastrów, kliknij przycisk **kont magazynu** węzła **odmowa dostępu do magazynu** pojawi się okno. Możesz kliknąć pozycję **Otwórz w usłudze Azure Storage** aby otworzyć Eksploratora usługi Storage.
+     
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
+
+
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
+  
+
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Konwertowanie istniejących aplikacji IntelliJ IDEA, aby użyć zestawu narzędzi platformy Azure dla środowiska IntelliJ
 
 Można przekonwertować istniejących Spark Scala aplikacje utworzone w ramach IntelliJ IDEA, aby był zgodny z Azure Toolkit for IntelliJ. Następnie można wtyczki przesyłanie aplikacji do klastra usługi HDInsight Spark.
 
 1. Dla istniejących aplikacji Spark Scala, która została utworzona przy użyciu rozwiązania IntelliJ IDEA Otwórz plik .iml skojarzone.
 
-1. W katalogu głównym poziom jest **modułu** element podobnie do poniższego:
+2. W katalogu głównym poziom jest **modułu** element podobnie do poniższego:
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
 
@@ -352,7 +422,7 @@ Można przekonwertować istniejących Spark Scala aplikacje utworzone w ramach I
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
-1. Zapisz zmiany. Aplikacja powinno być teraz zgodne z Azure Toolkit for IntelliJ. Można ją przetestować, klikając prawym przyciskiem myszy nazwę projektu w projekcie. Dodano opcję menu podręcznym **przesyłanie aplikacji Spark HDInsight**.
+3. Zapisz zmiany. Aplikacja powinno być teraz zgodne z Azure Toolkit for IntelliJ. Można ją przetestować, klikając prawym przyciskiem myszy nazwę projektu w projekcie. Dodano opcję menu podręcznym **przesyłanie aplikacji Spark HDInsight**.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

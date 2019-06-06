@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508424"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497109"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -180,17 +180,18 @@ Tak. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli, wdrożone
 ## <a name="azure-services-that-connect-to-vnets"></a>Usługi platformy Azure, które łączą się z sieciami wirtualnymi
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Czy można używać usługi Azure App Service Web Apps, z siecią wirtualną?
-Tak. Możesz wdrażać aplikacje sieci Web w sieci wirtualnej przy użyciu środowisko ASE wewnętrznego (App Service Environment). W przypadku połączenia punkt lokacja skonfigurowanego dla sieci wirtualnej, wszystkie aplikacje sieci Web można bezpiecznie połączyć i uzyskiwać dostęp do zasobów w sieci wirtualnej. Aby uzyskać więcej informacji zobacz następujące artykuły:
+Tak. Można wdrażać aplikacje sieci Web w sieci wirtualnej przy użyciu środowisko ASE wewnętrznego (Środowisko usługi App Service), połączyć zaplecze aplikacji w Twoich sieciach wirtualnych za pomocą integracji sieci wirtualnej i blokowanie ruchu przychodzącego do aplikacji za pomocą punktów końcowych usługi. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
+* [Funkcje sieci usługi App Service](../app-service/networking-features.md)
 * [Tworzenie aplikacji sieci Web w środowisku usługi App Service](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Integrowanie aplikacji z siecią wirtualną platformy Azure](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Przy użyciu połączeń hybrydowych i integracja z siecią wirtualną z funkcją Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json#hybrid-connections-and-app-service-environments)
+* [Ograniczenia dostępu do usługi App Service](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Czy mogę wdrożyć usługi w chmurze przy użyciu ról sieć web i proces roboczy (PaaS) w sieci wirtualnej?
 Tak. (Opcjonalnie) można wdrożyć wystąpień roli usług Cloud Services w ramach sieci wirtualnych. Aby to zrobić, należy określić nazwę sieci wirtualnej i mapowania podsieć/roli w sekcji konfiguracji usługi w konfiguracji sieci. Nie trzeba do aktualizacji plików binarnych.
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-vmss-to-a-vnet"></a>Czy można połączyć zestawu skalowania maszyn wirtualnych (VMSS) do sieci wirtualnej?
-Tak. Zestawu skalowania maszyn wirtualnych należy połączyć z siecią wirtualną.
+### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Czy można połączyć maszyny wirtualnej zestawie skalowania do sieci wirtualnej?
+Tak. Musisz połączyć maszyny wirtualnej zestawie skalowania do sieci wirtualnej.
 
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Jest pełna lista Azure usług, czy mogę wdrożyć zasobów w sieci wirtualnej?
 Tak, aby uzyskać więcej informacji, zobacz [Integracja sieci wirtualnej dla usług platformy Azure](virtual-network-for-azure-services.md).
@@ -219,7 +220,7 @@ Tak. Aby uzyskać więcej informacji, zobacz [Omówienie zabezpieczeń sieci pla
 ## <a name="apis-schemas-and-tools"></a>Interfejsy API, schematów i narzędzia
 
 ### <a name="can-i-manage-vnets-from-code"></a>Z poziomu kodu może zarządzać sieciami wirtualnymi?
-Tak. Można użyć interfejsów API REST dla sieci wirtualnych w [usługi Azure Resource Manager](/rest/api/virtual-network) i [klasyczny (Zarządzanie usługami)](https://go.microsoft.com/fwlink/?LinkId=296833) modeli wdrażania.
+Tak. Można użyć interfejsów API REST dla sieci wirtualnych w [usługi Azure Resource Manager](/rest/api/virtual-network) i [klasycznego](https://go.microsoft.com/fwlink/?LinkId=296833) modeli wdrażania.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Czy istnieje obsługę narzędzi dla sieci wirtualnych?
 Tak. Dowiedz się więcej o korzystaniu z:
@@ -239,7 +240,7 @@ Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację rów
 Jeśli dwie sieci wirtualne znajdują się w innym regionie (globalnych wirtualnych sieci równorzędnych), nie można połączyć się z zasobami, które używają podstawowego modułu równoważenia obciążenia. Możesz połączyć do zasobów, które używają standardowego modułu równoważenia obciążenia.
 Podstawowe usługi równoważenia obciążenia, co oznacza, że nie może komunikować się do nich w globalnych wirtualnych sieci równorzędnych jest używany przez następujące zasoby:
 - Maszyny wirtualne za modułem równoważenia obciążenia podstawowe
-- Usługi VM Scale Sets z modułami równoważenia obciążenia podstawowe 
+- Zestawy skalowania maszyn wirtualnych przy użyciu podstawowych usług równoważenia obciążenia 
 - Pamięć podręczna Redis 
 - Usługa Application Gateway (wersja 1) jednostek SKU
 - Service Fabric
@@ -247,7 +248,7 @@ Podstawowe usługi równoważenia obciążenia, co oznacza, że nie może komuni
 - API Management
 - Active Directory Domain Service (ADDS)
 - Logic Apps
-- HD Insight
+- HDInsight
 -   Azure Batch
 - AKS
 - Środowisko usługi App Service
@@ -285,7 +286,7 @@ Nie. Przechodnie komunikacja równorzędna nie jest obsługiwana. Należy równo
 Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadnych ograniczeń przepustowości. Przepustowość jest ograniczona tylko maszyna wirtualna lub zasób obliczeniowy.
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Jak rozwiązywać problemy komunikacja równorzędna sieci wirtualnych
-Oto [przewodnik rozwiązywania problemów z] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) możesz wypróbować.
+Oto [przewodnik rozwiązywania problemów z](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) możesz wypróbować.
 
 ## <a name="virtual-network-tap"></a>Virtual Network TAP
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518886"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479462"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight przy użyciu akcji skryptu
 
@@ -58,7 +58,7 @@ Akcja skryptu jest skrypt powłoki Bash, działającego w węzłach w klastrze u
 
      * W przypadku klastrów z ESP:
          
-         * Wasb [s] :// lub http [s] :// identyfikatory URI są obsługiwane.
+         * Wasb: / / lub wasbs: / / lub http [s] :// identyfikatory URI są obsługiwane.
             
 * Można ograniczyć do uruchamiania w ramach określonych typów węzłów. Przykładami są węzłów głównych lub węzłów procesu roboczego.
 
@@ -146,9 +146,9 @@ HDInsight zapewnia skrypty dopasowane do zainstalowania następujących składni
 | Name (Nazwa) | Skrypt |
 | --- | --- |
 | Dodaj konto usługi Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobacz [dodawanie kolejnych kont magazynu do HDInsight](hdinsight-hadoop-add-storage.md). |
-| Zainstaluj program Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [instalacji i używania aplikacji Hue w usłudze HDInsight Hadoop clusters](hdinsight-hadoop-hue-linux.md). |
+| Instalowanie rozwiązania Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [instalacji i używania aplikacji Hue w usłudze HDInsight Hadoop clusters](hdinsight-hadoop-hue-linux.md). |
 | Zainstaluj skrypt Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobacz [instalacji i używania środowiska Presto na HDInsight opartych na usłudze Hadoop clusters](hdinsight-hadoop-install-presto.md). |
-| Zainstaluj program Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobacz [zainstalować system Giraph Apache na HDInsight Hadoop clusters](hdinsight-hadoop-giraph-install-linux.md). |
+| Zainstalować system Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobacz [zainstalować system Giraph Apache na HDInsight Hadoop clusters](hdinsight-hadoop-giraph-install-linux.md). |
 | Wstępne ładowanie bibliotek technologii Hive |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobacz [Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Za pomocą akcji skryptu, podczas tworzenia klastra
@@ -346,7 +346,7 @@ Na przykład zastosować skryptów do klastra przy użyciu zestawu .NET SDK, zob
 
 4. Wyświetla historię skrypty dla tego klastra w sekcji działania skryptu. Informacje te obejmują listę utrwalonych skryptów. Poniższy zrzut ekranu pokazuje, że skrypt Solr została uruchomiona na tym klastrze. Zrzut ekranu nie pokazuje żadnych utrwalonych skryptów.
 
-    ![Działania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![Akcje skryptu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
 5. Wybierz skrypt z historii, aby wyświetlić **właściwości** sekcji tego skryptu. W górnej części ekranu można ponownie uruchomić skrypt lub promowania go.
 

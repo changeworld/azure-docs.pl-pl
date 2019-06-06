@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967531"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730163"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio Code
 
@@ -62,13 +62,14 @@ dotnet build -c Release
 Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w programie Visual Studio Code:
 
 1. Uruchom program Visual Studio Code.
-1. Otwórz **azure-iot-pcs-remote-monitoring-dotnet** modułu na podstawie kopii lokalnej w programie VS Code.
-1. Skopiuj pliki **launch.json** i **tasks.json** z scripts\local\launch\idesettings\vscode\. Utwórz nowy folder **azure-iot-pcs-remote-monitoring-dotnet\.vscode** i Wklej w nim plików.
-1. Otwórz panel debugowania w programie VS Code i uruchom **Uruchom wszystkie mikrousługi** konfiguracji. Ta konfiguracja działa mikrousług symulacji urządzenia na platformie Docker i uruchamia innych mikrousług w debugerze.
+1. Otwórz w programie VS Code **azure-iot-pcs-remote-monitoring-dotnet** folderu.
+1. Utwórz nowy folder o nazwie **.vscode** w **azure-iot-pcs-remote-monitoring-dotnet** folderu.
+1. Skopiuj pliki **launch.json** i **tasks.json** z services\scripts\local\launch\idesettings\vscode do **.vscode** właśnie utworzony folder.
+1. Otwórz **panelu debugowania** w programie VS Code i uruchom **Uruchom wszystkie mikrousługi** konfiguracji. Ta konfiguracja działa mikrousług symulacji urządzenia na platformie Docker i uruchamia innych mikrousług w debugerze.
 
-Na przykład danych wyjściowych dla **uwierzytelniania** w **konsoli debugowania** wygląda podobnie do następującego:
+Dane wyjściowe uruchamianie **Uruchom wszystkie microsoervices** w konsoli debugowania wygląda podobnie do następującej:
 
-[![Deploy-Local-Auth-Service](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>Uruchom interfejs użytkownika sieci web
 

@@ -1,6 +1,6 @@
 ---
 title: Włącz szyfrowanie dysków Azure Service Fabric Windows klastrów | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób włączania szyfrowania dysku dla węzłów klastra usługi Service Fabric na platformie Azure przy użyciu usługi Azure Resource Manager, usługi Azure Key Vault.
+description: W tym artykule opisano sposób włączania szyfrowania dysku dla węzłów klastra usługi Azure Service Fabric przy użyciu usługi Azure Key Vault w usłudze Azure Resource Manager.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -13,47 +13,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
-ms.openlocfilehash: 2e9c41409c1f528947e3bef281e9a3c34da39e9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c31fc43729bcb58c755959db0c8bc5185b8197f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119165"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471417"
 ---
-# <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>Włącz szyfrowanie dysków dla węzłów klastra Windows fabric service 
+# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Włącz szyfrowanie dysków dla węzłów klastra usługi Azure Service Fabric w Windows 
 > [!div class="op_single_selector"]
 > * [Szyfrowanie dysków dla Windows](service-fabric-enable-azure-disk-encryption-windows.md)
 > * [Szyfrowanie dysków dla systemu Linux](service-fabric-enable-azure-disk-encryption-linux.md)
 >
 >
 
-Wykonaj poniższe kroki, aby włączyć szyfrowanie dysku w węzłach klastra Windows Fabric Service. Konieczne będzie wykonywane dla każdego węzła typy/wirtualnych zestawów skalowania. Szyfrowanie na węzłach, będziemy korzystać możliwości usługi Azure Disk Encryption na zestawach skalowania maszyn wirtualnych.
+W tym samouczku dowiesz się, jak włączyć szyfrowanie dysków w węzłach klastra usługi Service Fabric w Windows. Należy wykonać następujące kroki dla każdego z typów węzłów i zestawy skalowania maszyn wirtualnych. Szyfrowanie na węzłach, użyjemy funkcji usługi Azure Disk Encryption na zestawach skalowania maszyn wirtualnych.
 
-Przewodnik obejmuje następujące procedury:
+Przewodnik obejmuje następujące tematy:
 
-* Ustaw kluczowe założenia, które należy znać wyłączanie umożliwia włączenie szyfrowania dysku na skalowania maszyn wirtualnych klastra Windows usługi Service Fabric.
-* Wymagania wstępne instrukcje występować przed włączeniem szyfrowania dysków na zestaw skalowania maszyn wirtualnych klastra Windows usługi Service Fabric.
-* Ustaw kroki, aby wykonać umożliwia włączenie szyfrowania dysku na skalowania maszyn wirtualnych klastra Windows usługi Service Fabric.
+* Podstawowe pojęcia dotyczące pod uwagę podczas włączania szyfrowania dysków na skalowania maszyn wirtualnych z klastra usługi Service Fabric Ustawia w Windows.
+* Kroki, aby wykonać przed włączeniem szyfrowania dysków w usłudze Service Fabric węzły klastra w Windows.
+* Kroki, aby wykonać umożliwia włączenie szyfrowania dysku na węzłach klastra usługi Service Fabric w Windows.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Autorejestracja** — aby można było używać, maszyna wirtualna skalowanie zestawu dysków szyfrowania w wersji zapoznawczej wymaga rejestracji automatycznej
-* Mogą samodzielnie zarejestrować subskrypcję, uruchamiając następujące czynności: 
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-* Poczekaj około 10 minut, aż stan jako "Zarejestrowane". Stan możesz sprawdzić, uruchamiając następujące polecenie: 
-```powershell
-Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-* **Usługa Azure Key Vault** — Utwórz magazyn kluczy w tej samej subskrypcji i regionu, ponieważ skali ustawiony, a także ustawić zasady dostępu "EnabledForDiskEncryption" w magazynie kluczy, za pomocą polecenia cmdlet jego PS. Można też ustawić zasady za pomocą usługi KeyVault interfejsie użytkownika w witrynie Azure portal: 
-```powershell
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
-```
-* Zainstaluj najnowsze [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) , który udostępnia nowe polecenia szyfrowania.
-* Zainstaluj najnowszą wersję [zestawu Azure SDK za pomocą programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) wydania. ADE poleceń cmdlet, aby włączyć zestaw skalowania maszyn wirtualnych są następujące ([ustaw](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) szyfrowania, pobrać ([uzyskać](/powershell/module/az.compute/get-azvmssvmdiskencryption)) stanu szyfrowania i Usuń ([wyłączyć](/powershell/module/az.compute/disable-azvmssdiskencryption)) szyfrowanie w zestawie skalowania wystąpienie.
+
+**Autorejestracja** 
+
+Podgląd szyfrowania dysku dla zestawu skalowania maszyn wirtualnych wymaga rejestracji automatycznej. Wykonaj następujące czynności: 
+
+1. Po pierwsze uruchom następujące polecenie:
+    ```powershell
+    Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+    ```
+2. Odczekaj około 10 minut, aż stan odczytuje *zarejestrowanej*. Stan można sprawdzić, uruchamiając następujące polecenie: 
+    ```powershell
+    Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+    ```
+**Usługa Azure Key Vault** 
+
+1. Tworzenie magazynu kluczy w tej samej subskrypcji i regionie co zestaw skalowania, a następnie wybierz **EnabledForDiskEncryption** dostęp do zasad w magazynie kluczy przy użyciu jego polecenia cmdlet programu PowerShell. Można także ustawić zasady przy użyciu interfejsu użytkownika z magazynu Key w witrynie Azure portal, za pomocą następującego polecenia:
+    ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
+    ```
+2. Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli), który udostępnia nowe polecenia szyfrowania.
+3. Zainstaluj najnowszą wersję [zestawu Azure SDK za pomocą programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) wydania. Poniżej przedstawiono polecenia cmdlet usługi Azure Disk Encryption w celu włączenia zestawu skalowania maszyn wirtualnych ([ustaw](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) szyfrowania, pobrać ([uzyskać](/powershell/module/az.compute/get-azvmssvmdiskencryption)) stanu szyfrowania, a następnie usuń ([wyłączyć](/powershell/module/az.compute/disable-azvmssdiskencryption)) wystąpienie zestawu szyfrowania na skali.
 
 | Polecenie | Wersja |  Source  |
 | ------------- |-------------| ------------|
@@ -66,17 +72,17 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>Obsługiwane scenariusze dotyczące szyfrowania dysku
-* Szyfrowanie zestaw skali maszyny wirtualnej jest obsługiwana tylko w przypadku zestawów skalowania utworzonych za pomocą dysków zarządzanych, a nie jest obsługiwane dla zestawów skalowania dysku natywnego (lub niezarządzanego).
-* Szyfrowanie zestaw skali maszyny wirtualnej jest obsługiwana dla woluminów systemu operacyjnego i danych dla zestawu skalowania maszyn wirtualnych Windows. Wyłącz szyfrowanie jest obsługiwane w przypadku woluminów systemu operacyjnego i danych dla zestawu skalowania Windows.
-* Odtworzenia z obrazu maszyny Wirtualnej zestawu skalowania maszyn wirtualnych i uaktualniania przeprowadzanych nie są obsługiwane w bieżącej wersji zapoznawczej.
+* Szyfrowanie dla zestawów skalowania maszyn wirtualnych jest obsługiwana tylko w przypadku zestawów skalowania utworzonych za pomocą dysków zarządzanych. Nie jest obsługiwana dla zestawów skalowania dysku natywnego (lub niezarządzanego).
+* Szyfrowanie jest obsługiwane dla systemu operacyjnego i ilości danych w skali maszyny wirtualnej zestawy w Windows. Wyłącz szyfrowanie jest również obsługiwana dla systemu operacyjnego i woluminów danych na potrzeby skalowania maszyn wirtualnych zestawy w Windows.
+* Operacje odtworzenia z obrazu i uaktualnianie maszyny wirtualnej dla zestawów skalowania maszyn wirtualnych nie są obsługiwane w bieżącej wersji zapoznawczej.
 
 
-### <a name="create-new-cluster-and-enable-disk-encryption"></a>Tworzenie nowego klastra i włączanie szyfrowania dysków
+## <a name="create-a-new-cluster-and-enable-disk-encryption"></a>Tworzenie nowego klastra i włączanie szyfrowania dysków
 
-Użyj następujących poleceń, aby utworzyć klaster i włączyć szyfrowanie dysku przy użyciu szablonu usługi Azure Resource Manager i certyfikatu z podpisem własnym.
+Użyj następujących poleceń do utworzenia klastra i włączyć szyfrowanie dysku przy użyciu szablonu usługi Azure Resource Manager i certyfikatu z podpisem własnym.
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
-
+Zaloguj się przy użyciu następujących poleceń:
 ```powershell
 Login-AzAccount
 Set-AzContext -SubscriptionId <guid>
@@ -90,11 +96,11 @@ az account set --subscription $subscriptionId
 
 ```
 
-#### <a name="use-the-custom-template-that-you-already-have"></a>Użyj szablonu niestandardowego, która już istnieje 
+### <a name="use-the-custom-template-that-you-already-have"></a>Użyj szablonu niestandardowego, która już istnieje 
 
-Jeśli musisz utworzyć szablon niestandardowy zgodnie z potrzebami, zalecane jest rozpoczęcie od jednego z szablonów, które są dostępne na [przykłady szablonów usługi Usługa azure service fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Postępuj zgodnie z wskazówki i objaśnienia na [dostosowywania szablonu klastra] [ customize-your-cluster-template] poniższej sekcji.
+Jeśli musisz utworzyć szablon niestandardowy zgodnie z potrzebami, zdecydowanie zalecamy rozpoczęcie od jednego z szablonów, które są dostępne na [przykłady szablonów tworzenia klastra usługi Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) strony. Aby [dostosowywania szablonu klastra] [ customize-your-cluster-template] sekcji, zobacz poniższe wskazówki.
 
-Jeśli już masz szablonu niestandardowego, a następnie upewnij się, że wartości i sprawdź następujące nazwy wszystkich trzech związane z certyfikatem parametrów w szablonie i plik parametrów ma wartość null w następujący sposób.
+Jeśli masz już szablon niestandardowy, należy dokładnie sprawdzić następujące nazwy wszystkich trzech parametrów związane z certyfikatem w szablonu i pliku parametrów i że wartości są równe null w następujący sposób:
 
 ```Json
    "certificateThumbprint": {
@@ -143,11 +149,13 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ```
 
-#### <a name="deploy-application-to-windows-service-fabric-cluster"></a>Wdrażanie aplikacji w klastrze Windows Service Fabric
-Wykonaj kroki i wskazówki dotyczące [wdrożyć aplikację w klastrze](service-fabric-deploy-remove-applications.md)
+### <a name="deploy-an-application-to-a-service-fabric-cluster-in-windows"></a>Wdrażanie aplikacji w klastrze usługi Service Fabric na platformie Windows
+Aby wdrożyć aplikację w klastrze, wykonaj kroki i wskazówek dostępnych pod adresem [Wdróż i usunąć aplikacje przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md).
 
 
-#### <a name="enable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set-created-above"></a>Włącz szyfrowanie dysków dla utworzonego powyżej zestawu skalowania maszyn wirtualnych klastra usługi Service Fabric
+### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>Włącz szyfrowanie dysków dla zestawów skalowania maszyn wirtualnych utworzoną wcześniej
+
+Aby włączyć szyfrowanie dysków dla skalowania maszyn wirtualnych ustawia został utworzony przez poprzednie kroki, uruchom następujące polecenia:
  
 ```powershell
 
@@ -169,9 +177,8 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 ```
 
 
-#### <a name="validate-if-disk-encryption-enabled-for-windows-virtual-machine-scale-set"></a>Sprawdź, czy zestawu skalowania maszyn wirtualnych Windows jest włączone szyfrowanie dysków.
-Pobierz stan zestawu skalowania całej maszyny wirtualnej lub dowolnego wystąpienia w zestawie skalowania. Zobacz poniższe polecenia.
-Ponadto użytkownik może zalogować się do maszyny Wirtualnej w zestawie skalowania i upewnij się, że dyski są szyfrowane.
+### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-windows"></a>Sprawdź, czy ma włączone szyfrowanie dysku maszyny wirtualnej zestawu skalowania w Windows
+Pobierz stan zestawu skalowania całej maszyny wirtualnej lub dowolnego wystąpienia w zestawie skalowania za pomocą poniższych poleceń.
 
 ```powershell
 
@@ -190,8 +197,10 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 ```
 
 
-#### <a name="disable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set"></a>Wyłącz szyfrowanie dysków dla zestawu skalowania maszyn wirtualnych klastra usługi Service Fabric 
-Wyłącz szyfrowanie dysków ma zastosowanie do całej maszyny wirtualnej zestawu skalowania, a nie przez wystąpienia 
+Ponadto możesz zalogować się do zestawu skalowania maszyn wirtualnych i upewnij się, że dyski są szyfrowane.
+
+### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Wyłącz szyfrowanie dysków dla maszyny wirtualnej zestawu skalowania w klastrze usługi Service Fabric 
+Wyłącz szyfrowanie dysków dla maszyny wirtualnej zestawu skalowania, uruchamiając następujące polecenia. Należy pamiętać, że wyłączenie szyfrowania dysku ma zastosowanie do całej maszyny wirtualnej zestawu skalowania, a nie poszczególnych wystąpień.
 
 ```powershell
 
@@ -209,6 +218,6 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym momencie masz bezpiecznego klastra, jak włączyć/wyłączyć szyfrowanie dysków dla zestawu skalowania maszyn wirtualnych klastra usługi Service Fabric. Następnie [dysku szyfrowanie dla systemu Linux](service-fabric-enable-azure-disk-encryption-linux.md) 
+W tym momencie należy mieć zabezpieczonego klastra i wiedzieć, jak włączyć lub wyłączyć szyfrowanie dysków dla zestawów skalowania maszyn wirtualnych i węzłów klastra usługi Service Fabric. Podobne wskazówki w węzłach klastra usługi Service Fabric w systemie Linux, zobacz [Disk Encryption dla systemu Linux](service-fabric-enable-azure-disk-encryption-linux.md).
 
 [customize-your-cluster-template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure#creating-a-custom-arm-template

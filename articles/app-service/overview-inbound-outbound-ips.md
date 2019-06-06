@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de9ae8e5c0cbf0997811db9624f6c6b92e03a5df
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835298"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742932"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w usłudze Azure App Service
 
@@ -35,9 +35,17 @@ Bez względu na liczbę wystąpień skalowanych w poziomie każda aplikacja ma p
 - Usunięcie ostatniego aplikacji w grupie zasobów _i_ kombinacji region i utwórz go ponownie.
 - Usuń istniejące powiązanie SSL, takich jak podczas odnawiania certyfikatów (zobacz [odnawiania certyfikatów](app-service-web-tutorial-custom-ssl.md#renew-certificates)).
 
-## <a name="get-static-inbound-ip"></a>Uzyskaj statyczny adres IP dla ruchu przychodzącego
+## <a name="find-the-inbound-ip"></a>Znajdowanie ruchu przychodzącego adresu IP
 
-Czasami możesz zechcieć dedykowanych statycznego adresu IP dla swojej aplikacji. Aby uzyskać statyczny adres IP dla ruchu przychodzącego, należy skonfigurować [powiązania SSL opartego na protokole IP](app-service-web-tutorial-custom-ssl.md#bind-your-ssl-certificate). Jeśli funkcje protokołu SSL do zabezpieczania aplikacji nie jest potrzebna, można nawet przekazać certyfikat z podpisem własnym dla tego powiązania. Powiązania SSL opartego na protokole IP certyfikat jest powiązany z adresu IP, tak przepisy usługi App Service, statycznych adresów IP do Praca. 
+W terminalu lokalnym uruchom następujące polecenie:
+
+```bash
+nslookup <app-name>.azurewebsites.net
+```
+
+## <a name="get-a-static-inbound-ip"></a>Pobierz statycznego adresu IP dla ruchu przychodzącego
+
+Czasami możesz zechcieć dedykowanych statycznego adresu IP dla swojej aplikacji. Aby uzyskać statyczny adres IP dla ruchu przychodzącego, należy skonfigurować [powiązania SSL opartego na protokole IP](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain). Jeśli funkcje protokołu SSL do zabezpieczania aplikacji nie jest potrzebna, można nawet przekazać certyfikat z podpisem własnym dla tego powiązania. Powiązania SSL opartego na protokole IP certyfikat jest powiązany z adresu IP, tak przepisy usługi App Service, statycznych adresów IP do Praca. 
 
 ## <a name="when-outbound-ips-change"></a>Podczas zmiany wychodzące adresy IP
 

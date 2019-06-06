@@ -7,15 +7,15 @@ manager: shivamg
 keywords: Usługa log Analytics; Usługa Azure Backup; Alerty; Ustawienia diagnostyczne; Grupy akcji
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190500"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734860"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -46,7 +46,7 @@ Możesz wybrać obszar roboczy LA z innej subskrypcji, jako element docelowy. *W
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Wdrażanie rozwiązania do obszaru roboczego usługi Log Analytics
 
-Gdy dane znajdują się w obszarze roboczym LA [wdrażanie szablonu usługi github](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA umożliwiają wizualizację danych. Upewnij się, że nadasz tej samej grupie zasobów, nazwę obszaru roboczego i lokalizacji obszaru roboczego, prawidłowo identyfikować obszaru roboczego, a następnie zainstalować ten szablon na nim.
+Gdy dane znajdują się w obszarze roboczym LA [wdrażanie szablonu usługi GitHub](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA umożliwiają wizualizację danych. Upewnij się, że nadasz tej samej grupie zasobów, nazwę obszaru roboczego i lokalizacji obszaru roboczego, prawidłowo identyfikować obszaru roboczego, a następnie zainstalować ten szablon na nim.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Wyświetl dane usługi Azure Backup przy użyciu Log Analytics (LA)
 
@@ -242,13 +242,13 @@ Zastosuj filtry pokazano na poniższej ilustracji, aby sprawdzić, czy otrzymuje
 
 ![Dzienniki aktywności dla kopii zapasowych maszyn wirtualnych platformy Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-Po kliknięciu segmentu "JSON", aby uzyskać więcej szczegółów i go wyświetlać przez kopiowanie wklejanie go do edytora tekstów. Powinna zostać wyświetlona szczegóły magazynu i elementu, który wyzwolił działania logowania oznacza to, że element kopii zapasowej.
+Kliknij nazwę operacji będą wyświetlane, operacji i odpowiednie szczegóły.
 
-Następnie kliknij przycisk "Dodaj alert dziennika aktywności" do generowania alertów dla wszystkich tych dzienników.
+![Nowa reguła alertu](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Możesz kliknąć "Dodaj alert dziennika aktywności" powyżej, co spowoduje otwarcie ekranu tworzenia alertu, który przypomina ekran tworzenia alertu [zgodnie z powyższym opisem](#create-alerts-using-log-analytics).
+Kliknij przycisk **Nowa reguła alertu** otworzyć **Utwórz regułę** ekranu, w tym miejscu możesz utworzyć alert, wykonując kroki opisane w tym [artykułu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
-Oto zasób na sam magazyn RS i dlatego należy powtórzyć tę samą akcję dla wszystkich magazynów, w których chcesz powiadomienie za pośrednictwem dzienników aktywności. Warunek nie będzie żadnych wartości progowej, okres, częstotliwość to alertu opartego na zdarzeniach. Jak najszybciej zostanie wygenerowany dziennik odpowiednie działania, alert jest uruchamiany.
+W tym miejscu jest magazyn usługi Recovery Services, sam zasób i dlatego należy powtórzyć tę samą akcję dla wszystkich magazynów, w których chcesz powiadomienie za pośrednictwem dzienników aktywności. Warunek nie będzie żadnych wartości progowej, okres, częstotliwość to alertu opartego na zdarzeniach. Jak najszybciej zostanie wygenerowany dziennik odpowiednie działania, alert jest uruchamiany.
 
 ## <a name="recommendation"></a>Zalecenie
 

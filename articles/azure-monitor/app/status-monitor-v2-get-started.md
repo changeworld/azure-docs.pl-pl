@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor stanu v2 wprowadzenie | Dokumentacja firmy Microsoft
-description: Przewodnik Szybki Start dla monitora stanu w wersji 2. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
+title: Azure v2 Monitora stanu — wprowadzenie | Dokumentacja firmy Microsoft
+description: Przewodnik Szybki Start dla monitora stanu w wersji 2. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami sieci web platformy ASP.NET hostowanej lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,40 +12,42 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3dcd50c3aa516f2af40c1e28a36a8039773e069c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 4da9d8e8efd5f70718f18b2e8e35ea6b5adf6757
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255057"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734975"
 ---
-# <a name="getting-started-with-status-monitor-v2"></a>Wprowadzenie do Monitora stanu w wersji 2
+# <a name="get-started-with-status-monitor-v2"></a>Rozpoczynanie pracy z usługą Monitora stanu w wersji 2
 
-Ten dokument zawiera poleceń szybkiego startu, powinny działać w przypadku większości środowisk. Te instrukcje są zależne od galerii programu PowerShell w celu przeprowadzania dystrybucji aktualizacji. Te polecenia obsługi programu PowerShell `-Proxy` parametru.
+Ten artykuł zawiera poleceń szybkiego startu, powinny działać w przypadku większości środowisk.
+Instrukcje są zależne od galerii programu PowerShell w celu przeprowadzania dystrybucji aktualizacji.
+Te polecenia obsługi programu PowerShell `-Proxy` parametru.
 
-Przejrzyj nasze [szczegółowe instrukcje](status-monitor-v2-detailed-instructions.md) strony objaśnienia dotyczące tych poleceń, instrukcje dotyczące sposobu dostosowywania i jak rozwiązywać problemy.
+Objaśnienia dotyczące tych poleceń, instrukcje dotyczące dostosowywania i informacji dotyczących rozwiązywania problemów, zobacz [szczegółowe instrukcje](status-monitor-v2-detailed-instructions.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
 > Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="download--install-via-powershell-gallery"></a>Pobieranie i instalowanie za pomocą galerii programu PowerShell
+## <a name="download-and-install-via-powershell-gallery"></a>Pobierz i zainstaluj za pomocą galerii programu PowerShell
 
 ### <a name="install-prerequisites"></a>Instalacja wymagań wstępnych
-Uruchom program PowerShell jako Administrator
+Uruchom program PowerShell jako administrator.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PowerShellGet -Force
 ``` 
-Exit PowerShell
+Zamknij program PowerShell.
 
 ### <a name="install-status-monitor-v2"></a>Stan instalacji monitorowanie v2
-Uruchom program PowerShell jako Administrator
+Uruchom program PowerShell jako administrator.
 ```powershell   
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
@@ -58,13 +60,13 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 ```
     
         
-## <a name="download--install-manually-offline-option"></a>Pobierz i zainstaluj ręcznie (opcja w trybie offline)
-### <a name="manual-download"></a>Pobieranie ręczne
-Ręcznie Pobierz najnowszą wersję modułu na podstawie: https://www.powershellgallery.com/packages/Az.ApplicationMonitor
+## <a name="download-and-install-manually-offline-option"></a>Pobierz i zainstaluj ręcznie (opcja w trybie offline)
+### <a name="download-the-module"></a>Pobierz moduł
+Ręcznie Pobierz najnowszą wersję modułu na podstawie [galerii programu PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 
 ### <a name="unzip-and-install-status-monitor-v2"></a>Rozpakowywanie i instalowanie Monitora stanu w wersji 2
 ```powershell
-$pathToNupkg = "C:\Users\t\Desktop\Az.ApplicationMonitor.0.2.1-alpha.nupkg"
+$pathToNupkg = "C:\Users\t\Desktop\Az.ApplicationMonitor.0.3.0-alpha.nupkg"
 $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
 $pathToNupkg | rename-item -newname $pathToZip
 $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\Az.ApplicationMonitor"
@@ -81,18 +83,18 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  Wyświetlanie telemetrii:
 
-- [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
-- [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów
-- [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
-- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md)
+- [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) do monitorowania wydajności i użycia.
+- [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów.
+- [Korzystanie z analizy](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań.
+- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md).
 
  Dodawanie kolejnych funkcji telemetrii:
 
 - [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.
-- [Dodawanie telemetrii klienta sieci web](../../azure-monitor/app/javascript.md) aby zobaczyć wyjątki pochodzące z kodu strony sieci web i umożliwić wstawianie wywołań śladu.
-- [Dodawanie zestawu SDK usługi Application Insights do kodu](../../azure-monitor/app/asp-net.md) tak, aby wstawić ślad i rejestrować wywołania
+- [Dodawanie telemetrii klienta sieci web](../../azure-monitor/app/javascript.md) aby zobaczyć wyjątki pochodzące z kodu strony sieci web i umożliwić wywołania śledzenia.
+- [Dodaj zestaw Application Insights SDK do kodu](../../azure-monitor/app/asp-net.md) dzięki czemu można wstawić ślad i rejestrować wywołania.
 
 Wykonuj więcej zadań dzięki v2 Monitora stanu:
 
-- Przegląd [szczegółowe instrukcje](status-monitor-v2-detailed-instructions.md) objaśnienia dotyczące poleceń, w tym przewodniku.
-- Użyj zapoznaj się z przewodnikiem [rozwiązywanie](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
+- Przegląd [szczegółowe instrukcje](status-monitor-v2-detailed-instructions.md) objaśnienia dotyczące poleceń znaleźć tutaj.
+- Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.

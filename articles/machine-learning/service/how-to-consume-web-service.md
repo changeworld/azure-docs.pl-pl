@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4aaf56a00669dbf7e312e2a6f8787ccc664d1190
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8fd7af7c2a075258e337b51c3aaca3da9e3d497f
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023815"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692862"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -30,7 +30,7 @@ Jest ogólny przepływ pracy tworzenia klienta, który używa usługi machine le
 1. Określ typ żądania danych używanego przez model.
 1. Utwórz aplikację, która wywołuje usługę sieci web.
 
-## <a name="connection-information"></a>Informacje o połączeniu
+## <a name="connection-information"></a>informacje o połączeniu
 
 > [!NOTE]
 > Użyj zestawu SDK usługi Azure Machine Learning, aby uzyskać informacje o usłudze sieci web. To jest zestaw SDK języka Python. Można użyć dowolnego języka, można utworzyć klienta dla usługi.
@@ -486,3 +486,11 @@ Zwrócone wyniki są podobne do następujących dokumentów JSON:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+## <a name="consume-the-service-from-power-bi"></a>Korzystanie z usługi z usługi Power BI
+
+Usługa Power BI obsługuje użycia usług sieci web Azure Machine Learning w celu wzbogacenia danych w usłudze Power BI przy użyciu prognozy. 
+
+Aby wygenerować usługę internetową, która jest obsługiwana w przypadku użycia w usłudze Power BI, schemat musi obsługiwać formacie, który jest wymagany przez usługę Power BI. [Dowiedz się, jak utworzyć schemat obsługiwanych w usłudze Power BI](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#Example-script-with-dictionary-input-Support-consumption-from-Power-BI).
+
+Po wdrożeniu usługi sieci web jest może być używany przez przepływy danych usługi Power BI. [Dowiedz się, jak korzystać z usługi sieci web Azure Machine Learning w usłudze Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2019
 ms.author: alsin
-ms.openlocfilehash: 89cbf220c9ae32c7f63da4941ced1bdbfa1e5293
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 440d917c2ee4a51f2c8ba4b134b50508bdaf4bcb
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835038"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735260"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified program inicjujący, który prawdopodobnie jest pierwszą rzeczą, jaką będzie wyświetlany po rozruchem maszyny Wirtualnej. Ponieważ wyświetla zanim został uruchomiony system operacyjny, nie jest dostępny za pośrednictwem protokołu SSH. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -184,7 +184,7 @@ Program GRUB dostępu w systemie SLES wymaga konfiguracji programu rozruchowego 
 Użytkownik zostanie automatycznie usunięty do awaryjnego shell Jeśli SLES nie normalny rozruch. Aby ręcznie wprowadzić awaryjnego powłoki, użyj poniższych instrukcji:
 
 1. Program GRUB naciśnij klawisze "e", aby edytować wpis rozruchu (wpis w systemie SLES)
-1. Zwróć uwagę na wiersz jądra, który rozpoczyna się od `linux`
+1. Wyszukaj wiersz jądra — rozpoczyna się od `linux`
 1. Dołącz `systemd.unit=emergency.target` do końca wiersza
 1. Naciśnij klawisze Ctrl + X ponowny rozruch przy użyciu tych ustawień, a następnie wprowadź awaryjnego powłoki
    > Należy pamiętać, że użytkownik zostanie porzucony w do awaryjnego shell przy użyciu _tylko do odczytu_ systemu plików. Jeśli chcesz wprowadzić zmiany do wszystkich plików, należy ponownie zainstalować system plików z uprawnieniami do odczytu i zapisu. Aby to zrobić, należy wprowadzić `mount -o remount,rw /` powłokę

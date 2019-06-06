@@ -8,22 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 05/31/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 5368ed8d1e60a646366065e2cf617fb2f3735b53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4ba6cca679ce4910ea941d9578939721514b2ec
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459763"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478971"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Zapora aplikacji sieci web platformy Azure, monitorowanie i rejestrowanie 
 
 Rejestrowanie i monitorowanie umożliwiającymi zainstalowanie zapory aplikacji sieci web platformy Azure są dostarczane Dzięki rejestrowaniu i integracji z usługą Azure Monitor i Azure Monitor dzienniki.
-
-> [!IMPORTANT]
-> Zapora aplikacji sieci Web, które są monitorowanie, rejestrowanie funkcji Azure drzwiami frontowymi jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

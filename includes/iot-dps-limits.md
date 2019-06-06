@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 610f5fcf80db8ffa0c7207d459b98087cbb4773b
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238523"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66455180"
 ---
 W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów usługi Azure IoT Hub Device Provisioning Service.
 
@@ -20,6 +20,7 @@ W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów us
 | Maksymalna liczba rejestracji | 1 000 000 |
 | Maksymalna liczba grup rejestracji | 100 |
 | Maksymalna liczba urzędy certyfikacji | 25 |
+| Maksymalny rozmiar komunikatu | 96 KB|
 
 > [!NOTE]
 > Aby zwiększyć liczbę wystąpień w ramach subskrypcji, skontaktuj się z pomocą [Microsoft Support](https://azure.microsoft.com/support/options/).

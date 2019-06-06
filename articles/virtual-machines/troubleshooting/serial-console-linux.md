@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a561d29f462d44eb6bc440bb6110430cc5c51688
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389018"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735244"
 ---
 # <a name="azure-serial-console-for-linux"></a>Serial konsoli platformy Azure dla systemu Linux
 
@@ -47,6 +47,7 @@ Aby uzyskać dokumentację konsoli szeregowej dla Windows, zobacz [Windows dla k
 
 - Ustawienia specyficzne dla dystrybucji systemu Linux, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
 
+- Wystąpienia zestawu skalowania maszyny Wirtualnej lub maszyny wirtualnej musi być skonfigurowany serial danych wyjściowych na `ttys0`. Jest to flaga domyślna dla obrazów systemu Azure, ale warto Sprawdź to na obrazach niestandardowych. Szczegóły [poniżej](#custom-linux-images).
 
 
 ## <a name="get-started-with-the-serial-console"></a>Wprowadzenie do konsoli szeregowej
@@ -84,6 +85,9 @@ Konsola szeregowa jest dostępna na podstawie poszczególnych wystąpień dla ze
 ## <a name="serial-console-linux-distribution-availability"></a>Serial dostępności dystrybucji systemu Linux z konsoli
 Na konsoli szeregowej działała poprawnie system operacyjny gościa, należy określić do odczytywania i zapisywania komunikatów konsoli do portu szeregowego. Większość [dystrybucje zalecane dla systemu Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) zostały skonfigurowane domyślnie konsoli szeregowej. Wybieranie **konsoli szeregowej** w **pomoc techniczna i rozwiązywanie problemów z** części witryny Azure portal zapewnia dostęp do konsoli szeregowej.
 
+> [!NOTE]
+> Jeśli nie widzisz żadnych czynności w konsoli szeregowej, upewnij się, że ten Diagnostyka rozruchu jest włączona na maszynie Wirtualnej. Naciśnięcie **Enter** często rozwiąże problemy z którym nic nie jest wyświetlane w konsoli szeregowej.
+
 Dystrybucja      | Dostęp do konsoli szeregowej
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Domyślnie dostęp do konsoli szeregowej.
@@ -92,10 +96,13 @@ Ubuntu      | Domyślnie dostęp do konsoli szeregowej.
 CoreOS      | Domyślnie dostęp do konsoli szeregowej.
 SUSE        | Nowsze obrazy w systemie SLES dostępne na platformie Azure mają dostęp do konsoli szeregowej, domyślnie włączone. Jeśli używasz starszych wersji w systemie SLES (10 lub starszy) na platformie Azure, zobacz [artykuł bazy wiedzy](https://www.novell.com/support/kb/doc.php?id=3456486) umożliwiające konsoli szeregowej.
 Oracle Linux        | Domyślnie dostęp do konsoli szeregowej.
-Niestandardowych obrazów systemu Linux     | Aby włączyć konsoli szeregowej niestandardowego obrazu maszyny Wirtualnej systemu Linux, Włącz dostęp do konsoli w pliku */etc/inittab* systemem terminalu `ttyS0`. Na przykład: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Aby uzyskać więcej informacji na temat prawidłowo tworzenia obrazów niestandardowych, zobacz [tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd). Jeśli tworzysz niestandardowy jądra, należy rozważyć włączenie tych flag jądra: `CONFIG_SERIAL_8250=y` i `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Plik konfiguracji znajduje się w */boot/* ścieżki.
 
-> [!NOTE]
-> Jeśli nie widzisz żadnych czynności w konsoli szeregowej, upewnij się, że ten Diagnostyka rozruchu jest włączona na maszynie Wirtualnej. Naciśnięcie **Enter** często rozwiąże problemy z którym nic nie jest wyświetlane w konsoli szeregowej.
+### <a name="custom-linux-images"></a>Niestandardowych obrazów systemu Linux
+Aby włączyć konsoli szeregowej niestandardowego obrazu maszyny Wirtualnej systemu Linux, Włącz dostęp do konsoli w pliku */etc/inittab* systemem terminalu `ttyS0`. Na przykład: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
+
+Należy również dodać ttys0 jako miejsce docelowe danych wyjściowych szeregowe. Aby uzyskać więcej informacji na temat konfigurowania obrazu niestandardowego do pracy z konsoli szeregowej, zobacz wymagania systemowe ogólne na [tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+
+Jeśli tworzysz niestandardowy jądra, należy rozważyć włączenie tych flag jądra: `CONFIG_SERIAL_8250=y` i `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Plik konfiguracji znajduje się w */boot/* ścieżki. |
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej
 
@@ -201,6 +208,7 @@ Tekst konsoli szeregowej wymaga tylko część rozmiaru ekranu (często po nim z
 Wklejanie ciągów długich nie działa. | Konsoli szeregowej ogranicza długość ciągów w terminalu, aby 2048 znaków, aby zapobiec przeciążeniu przepustowość portu szeregowego.
 Konsola szeregowa nie działa z zaporą konta magazynu. | Konsola szeregowa zgodnie z projektem nie może działać z zapór konta usługi storage na konto magazynu diagnostyki rozruchu włączona.
 Konsola szeregowa nie działa z kontem magazynu za pomocą usługi Azure Data Lake Storage Gen2 hierarchiczne przestrzenie nazw. | Jest to znany problem z hierarchicznej przestrzeni nazw. Aby rozwiązać problem, upewnij się, czy konto magazynu diagnostyki rozruchu maszyny Wirtualnej nie został utworzony przy użyciu usługi Azure Data Lake Storage Gen2. Tę opcję można ustawić tylko podczas tworzenia konta magazynu. Może być konieczne utworzenie konta magazynu diagnostyki rozruchu oddzielne bez Azure Data Lake Storage Gen2 włączone, aby rozwiązać ten problem.
+Błędne klawiatury w obrazach SLES BYOS. Tylko sporadycznie rozpoznano danych wprowadzonych z klawiatury. | Jest to problem z pakietem Plymouth. Plymouth nie należy uruchamiać na platformie Azure, nie potrzebujesz ekran powitalny i Plymouth koliduje z możliwością platformy przy użyciu konsoli szeregowej. Usuń Plymouth z `sudo zypper remove plymouth` , a następnie wykonaj ponowny rozruch. Alternatywnie zmodyfikować wiersz jądra swojej konfiguracji CHODNIKÓW, dodając `plymouth.enable=0` do końca wiersza. Można to zrobić, [edycji wpisu rozruchu w czasie rozruchu](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles), lub też edytując wiersz GRUB_CMDLINE_LINUX w `/etc/default/grub`, ponowne tworzenie CHODNIKÓW z `grub2-mkconfig -o /boot/grub2/grub.cfg`, a następnie ponowne uruchomienie.
 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania

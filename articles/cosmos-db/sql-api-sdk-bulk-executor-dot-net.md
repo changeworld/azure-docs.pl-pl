@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74eddadd7fd967daa1eebb9d7cb223fdc708025f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627154"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471425"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: Pobieranie informacji 
 
@@ -42,6 +42,18 @@ ms.locfileid: "60627154"
 
 ## <a name="release-notes"></a>Informacje o wersji
 
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+
+* Dodanie obsługi dla wykonawcy zbiorcze wykresu do akceptowania ttl dla wierzchołków i krawędzi
+
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+
+* Rozwiązano problem, który spowodował wyjątki podczas elastyczne skalowanie usługi Azure Cosmos DB, podczas pracy w trybie bramy. Ta poprawka sprawia, że funkcjonalnym odpowiednikiem 1.4.1 wydania.
+
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+
+* Usuwania zbiorczego dodano obsługę interfejsu API SQL kont do akceptowania krotek identyfikatora dokumentu, można usunąć klucza partycji. Ta zmiana sprawia, że funkcjonalnym odpowiednikiem 1.4.0 wydania.
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * W tym MongoBulkExecutor do działu pomocy technicznej .NET Standard 2.0. Ta funkcja sprawia, że funkcjonalnym odpowiednikiem 1.3.0 wersji z dodatkiem obsługi .NET Standard 2.0 jako platformę docelową.
@@ -50,10 +62,24 @@ ms.locfileid: "60627154"
 
 * Dodano .NET Standard 2.0 jako jednej platformy docelowej, aby biblioteka BulkExecutor pracy z aplikacjami .NET Core.
 
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* Zaktualizowano wykonawca zbiorczo, można teraz używać najnowszej wersji usługi Azure Cosmos DB .NET SDK (2.4.0)
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+
+* Dodanie obsługi dla wykonawcy zbiorcze wykresu do akceptowania ttl dla wierzchołków i krawędzi
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+* Rozwiązano problem, który spowodował wyjątki podczas elastyczne skalowanie usługi Azure Cosmos DB, podczas pracy w trybie bramy.
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+* Usuwania zbiorczego dodano obsługę interfejsu API SQL kont do akceptowania krotek identyfikatora dokumentu, można usunąć klucza partycji.
+
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* Dodano przeciążenia dla operacji usuwania zbiorczego dla konta interfejsu API SQL do akceptowania krotek identyfikatora dokumentu, można usunąć klucza partycji.
-* Dodano przeciążenia dla operacji usuwania zbiorczego dla konta interfejsu API SQL do akceptowania RequestOptions zawierającej klucz partycji, określając wartość klucza partycji, tylko jako filtru w zapytaniu danych wejściowych, określania dokumentów do usunięcia.
 * Rozwiązano problem, który spowodował problem formatowania w agencie użytkownika używane przez BulkExecutor.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0

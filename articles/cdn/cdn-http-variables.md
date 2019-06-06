@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d572da27cee33cf546933e55a59c27dac4c1efd9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709924"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475209"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Zmienne HTTP dla usługi Azure CDN aparatu reguł
 Zmienne HTTP udostępniają oznacza, że za pomocą którego można pobrać metadanych żądań i odpowiedzi HTTP. Następnie można te metadane dynamicznie zmieniać żądania lub odpowiedzi. Używanie zmiennych HTTP jest ograniczone do następujących funkcje aparatu reguł:
 
-- [Napisz ponownie klucz pamięci podręcznej](cdn-rules-engine-reference-features.md#cache-key-rewrite)
-- [Modyfikowanie nagłówek żądania klienta](cdn-rules-engine-reference-features.md#modify-client-request-header)
-- [Modyfikowanie nagłówek odpowiedzi klienta](cdn-rules-engine-reference-features.md#modify-client-response-header)
-- [Adres URL przekierowania](cdn-rules-engine-reference-features.md#url-redirect)
-- [Ponowne zapisywanie adresów URL](cdn-rules-engine-reference-features.md#url-rewrite)
+- [Napisz ponownie klucz pamięci podręcznej](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [Modyfikowanie nagłówek żądania klienta](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [Modyfikowanie nagłówek odpowiedzi klienta](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [Adres URL przekierowania](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [Ponowne zapisywanie adresów URL](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>Definicje
 W poniższej tabeli opisano obsługiwane zmienne HTTP. Po geograficznie metadanych (na przykład, kod pocztowy) nie są dostępne dla poszczególnych żądań, zwracana jest wartość pusta.
@@ -102,7 +102,7 @@ Ograniczniki są opisane w poniższej tabeli.
 | / | Rozgranicza zmienną HTTP lub wzorzec. |
 | // | Znajdź i Zamień wszystkie wystąpienia określonego wzorca. |
 | /= | Znajdź, a następnie skopiuj i Zapisz ponownie wszystkie wystąpienia określonego wzorca. |
-| ,  | Konwertuj wartość skojarzona ze zmienną HTTP na małe litery. |
+| , | Konwertuj wartość skojarzona ze zmienną HTTP na małe litery. |
 | ^ | Konwertuj wartość skojarzona ze zmienną HTTP na wielkie litery. |
 | ,, | Przekonwertuj wszystkie wystąpienia określony znak w wartości skojarzone ze zmienną HTTP na małe litery. |
 | ^^ | Przekonwertuj wszystkie wystąpienia określony znak w wartości skojarzone ze zmienną HTTP na wielkie litery. |
@@ -113,10 +113,10 @@ W poniższej tabeli opisano okoliczności, w których określony tekst nie jest 
 | Warunek | Opis | Przykład |
 | --------- | ----------- | --------|
 | Anulowania zapewnianego element % symboli | Symbol procentu można wyjściowym przy użyciu ukośnik odwrotny. <br />Przykładowa wartość po prawej stronie będzie traktowana jako wartość literału, a nie zmienną HTTP.| \%{host} |
-| Nieznany zmiennych | Pusty ciąg jest zawsze zwracane nieznany zmiennych. | % {unknownvariable} |
+| Nieznany zmiennych | Pusty ciąg jest zawsze zwracane nieznany zmiennych. | % {unknown_variable} |
 | Nieprawidłowe znaki lub nieprawidłowa składnia | Zmienne, które zawierają nieprawidłowe znaki lub nieprawidłowa składnia są traktowane jako wartości literału. <br /><br />Przykład #1: Określona wartość zawiera nieprawidłowy znak (na przykład-). <br /><br />Przykład #2: Określona wartość zawiera zbiór podwójne nawiasy klamrowe. <br /><br />Przykład #3: Określona wartość Brak nawiasu zamykającego nawiasu klamrowego.<br /> | Przykład #1: % {resp_user agenta} <br /><br />Przykład #2: % {{hosta}} <br /><br />Przykład #3: % {hosta |
 | Brak nazwy zmiennej | Zawsze zostanie zwrócona wartość NULL, jeśli zmienna nie zostanie określony. | %{} |
-| Tylko | Znaki, które końcu zmiennej są traktowane jako wartości literału. <br />Przykładowa wartość po prawej stronie zawiera końcowe nawiasów klamrowych, który będzie traktowane jako wartości literału. | %{host}} |
+| Znaki końcowe | Znaki, które końcu zmiennej są traktowane jako wartości literału. <br />Przykładowa wartość po prawej stronie zawiera końcowe nawiasów klamrowych, który będzie traktowane jako wartości literału. | %{host}} |
 
 ## <a name="setting-default-header-values"></a>Ustawienie domyślne wartości nagłówka
 Wartość domyślną można przypisać do nagłówka, gdy spełnia dowolne z następujących warunków:
@@ -127,9 +127,9 @@ W poniższej tabeli opisano sposób definiowania wartości domyślnej.
 
 | Warunek | Składnia | Przykład | Opis |
 | --------- | ------ | --------| ----------- |
-| Ustaw nagłówek w wartości domyślnej spełnia dowolne z następujących warunków: <br /><br />-Brak nagłówka <br /><br />-Header wartość jest równa NULL.| % {Zmiennej: = wartość} | %{http_referer:=unspecified} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* po go lub nie jest ustawiona na wartość NULL. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
-| Nagłówek należy ustawić wartość domyślną, gdy jest Brak. | % {Zmiennej = wartość} | %{http_referer=unspecified} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* gdy jest Brak. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
-| Ustaw nagłówek na wartość domyślną, gdy go nie spełnia żadnego z następujących warunków: <br /><br />-Brak<br /><br /> -Ustawienia na wartość NULL. | % {Zmiennej: + wartość} | % {http_referer: + nieokreślony} | Nagłówka Odnośnik będzie można ustawić tylko *nieokreślony* po wartości zostały przypisane do niego. Żadna akcja będzie miała miejsce, jeśli go lub nie jest ustawiona na wartość NULL. |
+| Ustaw nagłówek w wartości domyślnej spełnia dowolne z następujących warunków: <br /><br />-Brak nagłówka <br /><br />-Header wartość jest równa NULL.| % {Zmiennej: = wartość} | %{http_referrer:=unspecified} | Nagłówka odnośnika będzie można ustawić tylko *nieokreślony* po go lub nie jest ustawiona na wartość NULL. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
+| Nagłówek należy ustawić wartość domyślną, gdy jest Brak. | % {Zmiennej = wartość} | %{http_referrer=unspecified} | Nagłówka odnośnika będzie można ustawić tylko *nieokreślony* gdy jest Brak. Żadna akcja będzie mieć miejsce, jeśli został ustawiony. |
+| Ustaw nagłówek na wartość domyślną, gdy go nie spełnia żadnego z następujących warunków: <br /><br />-Brak<br /><br /> -Ustawienia na wartość NULL. | % {Zmiennej: + wartość} | % {http_referrer: + nieokreślony} | Nagłówka odnośnika będzie można ustawić tylko *nieokreślony* po wartości zostały przypisane do niego. Żadna akcja będzie miała miejsce, jeśli go lub nie jest ustawiona na wartość NULL. |
 
 ## <a name="manipulating-variables"></a>Manipulowanie zmiennych
 Zmienne można manipulować w następujący sposób:

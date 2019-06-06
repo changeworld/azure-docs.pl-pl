@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0db341a9e36d61761321821de5631a564adea050
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322054"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428171"
 ---
 # <a name="report-and-check-service-health"></a>Tworzenie raportów i sprawdzanie kondycji usług
 W przypadku wystąpienia problemów z usług możliwość odpowiedzieć i rozwiązać zdarzenia i awarii zależy od możliwości, aby szybko wykrywać problemy. Jeśli raportów problemów i błędów do Menedżera kondycji usługi Azure Service Fabric z poziomu kodu usługi, możesz użyć standardowego kondycji narzędzia, które Usługa Service Fabric udostępnia, aby sprawdzić stan kondycji monitorowania.
@@ -37,7 +37,7 @@ W tym artykule przedstawiono przykład, w którym Raporty kondycji z kodem usłu
 ## <a name="prerequisites"></a>Wymagania wstępne
 Musisz mieć zainstalowane następujące oprogramowanie:
 
-* Program Visual Studio 2015 lub Visual Studio 2017
+* Visual Studio 2015 lub Visual Studio 2019 r.
 * Zestaw SDK usługi Service Fabric
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>Aby utworzyć klaster lokalny dev bezpiecznego
@@ -65,7 +65,7 @@ Musisz mieć zainstalowane następujące oprogramowanie:
 Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przykładowy kod. Poniższe kroki pokazują, jak zgłosić zdarzenia dotyczące kondycji niestandardowych w kodzie usługi. Raporty takie będą automatycznie wyświetlane w standardowych narzędzi w celu monitorowania kondycji, że Usługa Service Fabric udostępnia narzędzia Service Fabric Explorer, widok kondycji portalu platformy Azure i programu PowerShell.
 
 1. Otwórz ponownie aplikację, który został wcześniej utworzony w programie Visual Studio lub Utwórz nową aplikację za pomocą **usługa stanowa** szablonu programu Visual Studio.
-1. Otwórz plik Stateful1.cs i Znajdź `myDictionary.TryGetValueAsync` wywołania `RunAsync` metody. Widać, że ta metoda zwraca `result` zawierający bieżącą wartość licznika klucza logiki w tej aplikacji jest liczyć uruchomiona. Gdyby to rzeczywistej aplikacji, a brak wyniku reprezentowane awarię, będzie chciała Flaga tego zdarzenia.
+1. Otwórz plik Stateful1.cs i Znajdź `myDictionary.TryGetValueAsync` wywołania `RunAsync` metody. Widać, że ta metoda zwraca `result` zawierający bieżącą wartość licznika klucza logiki w tej aplikacji jest liczyć uruchomiona. Jeśli ta aplikacja była rzeczywistej aplikacji i braku wyniku reprezentowane awarię, będzie chciała Flaga tego zdarzenia.
 1. Aby zgłosić zdarzenie kondycji, jeśli brak wyniku reprezentuje błąd, należy dodać następujące kroki.
    
     a. Dodaj `System.Fabric.Health` przestrzeni nazw do pliku Stateful1.cs.
@@ -124,7 +124,7 @@ Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przyk
     }
     ```
    Ten kod jest uruchamiany raport o kondycji każdorazowo `RunAsync` wykonuje. Po wprowadzeniu zmian, naciśnij klawisz **F5** do uruchomienia aplikacji.
-1. Po uruchomieniu aplikacji Otwórz narzędzia Service Fabric Explorer, aby sprawdzić kondycję aplikacji. Tym razem narzędzia Service Fabric Explorer pokazuje, że aplikacja jest w złej kondycji. Jest to ze względu na błąd, który został zgłoszony z kodu, że dodane wcześniej.
+1. Po uruchomieniu aplikacji Otwórz narzędzia Service Fabric Explorer, aby sprawdzić kondycję aplikacji. Tym razem narzędzia Service Fabric Explorer pokazuje, że aplikacja jest w złej kondycji. Aplikacja przedstawiono jako w złej kondycji, ponieważ błąd to zgłoszone od kodu, który dodano wcześniej.
    
     ![Aplikacja w złej kondycji w narzędziu Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
 1. Jeśli wybierzesz repliki podstawowej w narzędziu Service Fabric Explorer, w widoku drzewa, zostanie wyświetlone **stan kondycji** wskazuje błąd, zbyt. Narzędzie Service Fabric Explorer wyświetla również szczegóły raportu kondycji, które zostały dodane do `HealthInformation` parametru w kodzie. Możesz zobaczyć tych samych raportów kondycji w programie PowerShell i witryny Azure portal.

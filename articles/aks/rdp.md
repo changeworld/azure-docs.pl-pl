@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/04/2019
 ms.author: twhitney
-ms.openlocfilehash: 6b5ebbab717a3db7c9b50549d2762df61c274131
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307350"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688639"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu RDP do usługi Azure Kubernetes Service (AKS) węzłach systemu Windows Server z powodu konserwacji lub rozwiązywania problemów
 
@@ -32,7 +32,18 @@ Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.61 lub p
 
 Węzły systemu Windows Server klastra usługi AKS nie mają dostępną z zewnątrz adresów IP. Aby utworzyć połączenie RDP, można wdrożyć maszynę wirtualną z publicznie dostępny adres IP tej samej podsieci co węzły systemu Windows Server.
 
-Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* w *myResourceGroup* grupy zasobów. Zastąp *$SUBNET_ID* z Identyfikatorem w podsieci używanej przez pula węzłów systemu Windows Server.
+Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* w *myResourceGroup* grupy zasobów.
+
+Najpierw pobierz podsieci używane przez pula węzłów systemu Windows Server. Aby uzyskać identyfikator podsieci, potrzebna jest nazwa podsieci. Aby uzyskać nazwę podsieci, potrzebna jest nazwa sieci wirtualnej. Wykonywanie zapytań klastra dla listy sieci, aby uzyskać nazwę sieci wirtualnej. Aby wysłać zapytanie do klastra, potrzebna jest jego nazwa. Możesz uzyskać wszystkie te, wykonując następujące czynności w usłudze Azure Cloud Shell:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+VNET_NAME=$(az network vnet list -g $CLUSTER_RG --query [0].name -o tsv)
+SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME --query [0].name -o tsv)
+SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
+```
+
+Teraz, gdy masz SUBNET_ID, uruchom następujące polecenie w tym samym oknie usługi Azure Cloud Shell, aby utworzyć maszynę Wirtualną:
 
 ```azurecli-interactive
 az vm create \

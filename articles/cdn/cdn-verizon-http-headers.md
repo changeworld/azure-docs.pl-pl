@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
-ms.openlocfilehash: 7ce845fb272cea1d621e8ccc18203e3a071e8c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9f7a5332c8529753f2e22efd6af3d04cb3f44b6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323289"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479754"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Nagłówki HTTP specyficzne dla firmy Verizon dla usługi Azure CDN aparatu reguł
 
 Aby uzyskać **Azure CDN Premium from Verizon** produktów, gdy żądania HTTP są wysyłane do serwera pochodzenia serwera (POP) typu "punktu obecność" dodać co najmniej jeden zastrzeżony nagłówki (lub serwera proxy specjalnych nagłówków) w żądaniu klienta do POP. Tych nagłówków w niniejszym dokumencie stanowią standardowy przekazywania odebrane nagłówki. Aby uzyskać informacji o nagłówkach żądań standardowych, zobacz [żądania pola](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
 
-Jeśli chcesz uniemożliwić dodanie w żądaniu POP usługi Azure CDN (Content Delivery Network) do serwera pochodzenia przez jeden z tych nagłówków zarezerwowane, należy utworzyć regułę za pomocą [funkcji specjalnych nagłówków Proxy](cdn-rules-engine-reference-features.md#proxy-special-headers) przez aparat reguł. W tej regule Wyklucz nagłówkiem którego chcesz usunąć z domyślną listę nagłówków w polu nagłówków. Po włączeniu [funkcja Debuguj pamięć podręczna nagłówki odpowiedzi](cdn-rules-engine-reference-features.md#debug-cache-response-headers), pamiętaj dodać niezbędne `X-EC-Debug` nagłówków. 
+Jeśli chcesz uniemożliwić dodanie w żądaniu POP usługi Azure CDN (Content Delivery Network) do serwera pochodzenia przez jeden z tych nagłówków zarezerwowane, należy utworzyć regułę za pomocą [funkcji specjalnych nagłówków Proxy](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) przez aparat reguł. W tej regule Wyklucz nagłówkiem którego chcesz usunąć z domyślną listę nagłówków w polu nagłówków. Po włączeniu [funkcja Debuguj pamięć podręczna nagłówki odpowiedzi](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers), pamiętaj dodać niezbędne `X-EC-Debug` nagłówków. 
 
 Na przykład, aby usunąć `Via` nagłówka, pola nagłówków reguły powinien zawierać następującą listę nagłówków: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
 
@@ -42,7 +42,7 @@ X-Host | Wskazuje nazwy hosta żądania. | cdn.mydomain.com
 X Midgress | Wskazuje, czy żądanie zostało przekazywane za pośrednictwem dodatkowy serwer usługi CDN. Na przykład serwer protokołu POP tarczy źródła serwera lub serwer bramy z serwera do sieci ADN POP. <br />Tego pliku nagłówkowego jest dodawana do żądania tylko wtedy, gdy ruch midgress ma miejsce. W tym przypadku nagłówek jest równa 1, aby wskazać, że żądanie zostało przekazywane za pośrednictwem dodatkowy serwer usługi CDN.| 1
 [Host](#host-request-header) | Identyfikuje hosta i port, gdzie można znaleźć żądanej zawartości. | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN: Umożliwia określenie listy trybu failover serwerów bramy sieci ADN przypisanych do źródłem klienta. <br />Tarczy źródła: Wskazuje zestaw serwerów tarczy pochodzenia przypisanych do źródłem klienta. | `icn1,hhp1,hnd1`
-X-EC-_&lt;name&gt;_ | Nagłówki żądania, które zaczynają się od *WE X* (na przykład X-WE-Tag [X-WE-Debug](cdn-http-debug-headers.md)) są zarezerwowane do użytku przez usługę CDN.| Zapora aplikacji sieci Web produkcji
+X-EC- _&lt;name&gt;_ | Nagłówki żądania, które zaczynają się od *WE X* (na przykład X-WE-Tag [X-WE-Debug](cdn-http-debug-headers.md)) są zarezerwowane do użytku przez usługę CDN.| Zapora aplikacji sieci Web produkcji
 
 ## <a name="via-request-header"></a>Za pomocą nagłówka żądania
 Format za pomocą którego `Via` żądania nagłówek identyfikuje serwer protokołu POP określono za pomocą następującej składni:
@@ -62,7 +62,7 @@ Terminy używane w składni są zdefiniowane w następujący sposób:
 
 - POP: Wskazuje [POP](cdn-pop-abbreviations.md) , obsługi żądania. 
 
-- Identyfikator: Tylko do użytku wewnętrznego.
+- ID: Tylko do użytku wewnętrznego.
 
 ### <a name="example-via-request-header"></a>Przykład za pomocą nagłówka żądania
 

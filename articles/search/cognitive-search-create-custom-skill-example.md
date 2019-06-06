@@ -10,36 +10,36 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: efa85491f4b183a044ec5d9e5e6e3d11eebedbe3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023624"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428435"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowych umiejętności, przy użyciu interfejsu API tłumaczenia tekstu
 
-W tym przykładzie Dowiedz się, jak utworzyć sieć web umiejętności niestandardowego interfejsu API, która akceptuje tekstu w dowolnym języku i przekształca je do języka angielskiego. W przykładzie użyto [funkcji platformy Azure](https://azure.microsoft.com/services/functions/) opakowywać [tłumaczenia interfejsu API tłumaczenia tekstu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) tak, aby go implementuje interfejs umiejętności niestandardowe.
+W tym przykładzie Dowiedz się, jak utworzyć umiejętności niestandardowego interfejsu API sieci web. To umiejętności będzie akceptować tekstu w dowolnym języku i tłumaczy je na język angielski. W przykładzie użyto [funkcji platformy Azure](https://azure.microsoft.com/services/functions/) opakowywać [tłumaczenia interfejsu API tłumaczenia tekstu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) tak, aby go implementuje interfejs umiejętności niestandardowe.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Przeczytaj o [interfejsu umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) artykułu, jeśli użytkownik nie jest zaznajomiony z interfejsem wejścia/wyjścia, która powinna implementować niestandardowe umiejętności.
++ Przeczytaj o [interfejsu umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) artykułu, jeśli nie jesteś zaznajomiony z interfejsem wejścia/wyjścia, która powinna implementować niestandardowe umiejętności.
 
 + [Załóż konto interfejsu API tłumaczenia tekstu](../cognitive-services/translator/translator-text-how-to-signup.md)i Uzyskaj klucz interfejsu API można pobrać go.
 
-+ Zainstaluj [programu Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/) lub później, np. obciążenie programowanie na platformie Azure.
++ Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/vs/) lub później, np. obciążenie programowanie na platformie Azure.
 
 ## <a name="create-an-azure-function"></a>Tworzenie funkcji platformy Azure
 
-Chociaż ten przykład używa funkcji platformy Azure do hostowania interfejsu API sieci web, nie jest wymagany.  Tak długo, jak spełniasz [interfejsu wymagania dotyczące cognitive umiejętności](cognitive-search-custom-skill-interface.md), podejścia jest bez znaczenia. Usługa Azure Functions, jednak ułatwiają tworzenie umiejętności niestandardowe.
+Chociaż ten przykład używa funkcji platformy Azure do hostowania interfejsu API sieci web, nie jest to wymagane.  Tak długo, jak spełniasz [interfejsu wymagania dotyczące cognitive umiejętności](cognitive-search-custom-skill-interface.md), podejścia jest bez znaczenia. Usługa Azure Functions, jednak ułatwiają tworzenie umiejętności niestandardowe.
 
 ### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
 1. W programie Visual Studio, wybierz **New** > **projektu** za pomocą menu Plik.
 
-1. W oknie dialogowym Nowy projekt, wybierz **zainstalowane**, rozwiń węzeł **Visual C#** > **chmury**, wybierz opcję **usługi Azure Functions**, wpisz Nazwa projektu, a następnie wybierz pozycję **OK**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
+1. W oknie dialogowym Nowy projekt, wybierz **zainstalowane**, rozwiń węzeł **Visual C#**  > **chmury**, wybierz opcję **usługi Azure Functions**, wpisz Nazwa projektu, a następnie wybierz pozycję **OK**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
 
-1. Wybierz **usługi Azure Functions w wersji 2 (.NET Core)**. Można też zrobić to z wersją 1, ale kod napisany poniżej jest oparty na szablonie v2.
+1. Wybierz **usługi Azure Functions w wersji 2 (.NET Core)** . Można też zrobić to z wersją 1, ale kod napisany poniżej jest oparty na szablonie v2.
 
 1. Wybierz typ jako **wyzwalacz HTTP**
 
@@ -235,13 +235,13 @@ Powinny pojawić się odpowiedź podobna do poniższego przykładu:
 
 ## <a name="publish-the-function-to-azure"></a>Publikowanie funkcji na platformie Azure
 
-Gdy jesteś zadowolony z zachowaniem funkcji, możesz opublikować go.
+Gdy jesteś zadowolony z zachowanie funkcji, możesz opublikować go.
 
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz **tworzenia nowych** > **publikowania**.
 
 1. Jeśli nie zostało jeszcze połączone programu Visual Studio do konta platformy Azure, wybierz opcję **Dodaj konto...**
 
-1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Należy określić konto platformy Azure, grupę zasobów, plan hostingu i konto magazynu, którego chcesz użyć. Jeśli nie masz jeszcze te można utworzyć nową grupę zasobów, nowy plan hostingu i konta magazynu. Po zakończeniu wybierz pozycję **Create**
+1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Użytkownik jest proszony o określenie konta platformy Azure, grupę zasobów, plan hostingu i konto magazynu, którego chcesz użyć. Jeśli nie masz jeszcze te można utworzyć nową grupę zasobów, nowy plan hostingu i konta magazynu. Po zakończeniu wybierz pozycję **Create**
 
 1. Po zakończeniu wdrożenia należy zauważyć, adres URL witryny. Jest adresem aplikacji funkcji na platformie Azure. 
 
@@ -270,7 +270,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
 }
 ```
 
-To powinno to dawać wynik podobny do tego, które zostały wcześniej użyte podczas działania funkcji w środowisku lokalnym.
+W tym przykładzie powinno to dawać wynik podobny do tego, które zostały wcześniej użyte podczas działania funkcji w środowisku lokalnym.
 
 ## <a name="connect-to-your-pipeline"></a>Nawiązać połączenie z potokiem
 Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojego zestawu umiejętności. W poniższym przykładzie przedstawiono sposób wywoływania umiejętności. Ponieważ umiejętności nie obsługuje partii, Dodaj instrukcję maksymalny rozmiar partii to po prostu ```1``` wysyłać dokumenty pojedynczo.

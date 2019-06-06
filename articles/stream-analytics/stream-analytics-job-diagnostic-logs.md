@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826575"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515917"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych
 
@@ -46,7 +46,7 @@ Dzienniki aktywności są domyślnie włączone i zapewniają wysokiego poziomu 
 
    ![Stream podsumowaniu operacji dziennika aktywności usługi Analytics](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Przewiń w dół do **właściwości** sekcji JSON, która zawiera szczegółowe informacje o błędzie, który spowodował niepowodzenie operacji. W tym przykładzie błąd środowiska uruchomieniowego, przebywając za wartości szerokości geograficznej powiązanej przyczyną niepowodzenia.
+4. Przewiń w dół do **właściwości** sekcji JSON, która zawiera szczegółowe informacje o błędzie, który spowodował niepowodzenie operacji. W tym przykładzie błąd środowiska uruchomieniowego, przebywając za wartości szerokości geograficznej powiązanej przyczyną niepowodzenia. Różnice w danych, który jest przetwarzany przez zadanie usługi Stream Analytics powoduje błąd danych. Informacje na temat różnych [dane wejściowe i wyjściowe, błędy, oraz dlaczego ich](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
    ![Szczegóły błędu w formacie JSON](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -103,7 +103,7 @@ time | Sygnatura czasowa (w formacie UTC) dziennika.
 resourceId | Identyfikator zasobu, że operacja miało miejsce, napisane wielkimi literami. Zawiera identyfikator subskrypcji, grupy zasobów i nazwę zadania. Na przykład   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategoria, zaloguj się albo **wykonywania** lub **tworzenie**.
 operationName | Nazwa operacji, który jest zalogowany. Na przykład **wysyłać zdarzenia: Błąd zapisu danych wyjściowych SQL do mysqloutput**.
-stan | Stan operacji. Na przykład **niepowodzenie** lub **Powodzenie**.
+status | Stan operacji. Na przykład **niepowodzenie** lub **Powodzenie**.
 poziom | Poziom dziennika. Na przykład **błąd**, **ostrzeżenie**, lub **komunikat o charakterze informacyjnym**.
 properties | Szczegóły konkretnego wpisu dziennika, zserializowanym w formacie ciągu JSON. Aby uzyskać więcej informacji zobacz następujące sekcje w tym artykule.
 

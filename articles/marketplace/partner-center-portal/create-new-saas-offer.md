@@ -7,27 +7,28 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243303"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455636"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
-Aby przystąpić do tworzenia oprogramowania jako usługa (SaaS) zapewnia, upewnij się, pierwszy [utworzyć konto w Centrum partnerskim](./create-account.md) , a następnie otwórz [pulpit nawigacyjny handlowe Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), za pomocą **oferuje** wybraną kartą. 
+Aby przystąpić do tworzenia oprogramowania jako usługa (SaaS) zapewnia, upewnij się, pierwszy [utworzyć konto w Centrum partnerskim](./create-account.md) , a następnie otwórz [pulpit nawigacyjny handlowe Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), za pomocą **—Omówienie** wybraną kartą.
 
-![Komercyjne pulpitu nawigacyjnego portalu Marketplace Centrum partnerskiego](./media/commercial-marketplace-offers.png)
+![Komercyjne pulpitu nawigacyjnego portalu Marketplace Centrum partnerskiego](./media/new-offer-overview.png)
 
 Wybierz pozycję + **Utwórz nową...** przycisk, a następnie wybierz **oprogramowanie jako usługa** elementu menu. 
 
 Po wybraniu jednej z innych typów ofert, nastąpi przekierowanie do starszej wersji [portalu Cloud Partner](https://cloudpartner.azure.com/).  Tylko oferty SaaS są dostępne w portalu Marketplace komercyjnych w Centrum partnerskim w tej chwili. 
 
-![Utwórz okno oferty w Centrum partnerskiego](./media/new-offer.png)
+![Utwórz okno oferty w Centrum partnerskiego](./media/new-offer-click.png)
 
+**Nowa oferta** zostanie wyświetlone okno dialogowe. 
 
-**Nowa oferta** zostanie wyświetlone okno dialogowe. ![Okno dialogowe Nowy oferty](./media/new-offer-popup.png)
+![Okno dialogowe Nowy oferty](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-name"></a>Identyfikator oferty i nazwy

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234159"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475651"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — automatyczne skalowanie klastra, aby spełniać wymagania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,11 +28,11 @@ W tym artykule pokazano, jak włączyć i zarządzać nimi skalowanie klastra w 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.55 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia w wersji zapoznawczej usługi aks
 
-Klastry AKS, które obsługują skalowanie klastra należy użyć zestawów skalowania maszyn wirtualnych i uruchamianie wersję rozwiązania Kubernetes *1.12.4* lub nowszej. Ta obsługa zestawu skalowania jest w wersji zapoznawczej. Aby włączyć i tworzenie klastrów, które używają zestawów skalowania, należy najpierw zainstalować *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w następującym przykład:
+Klastry AKS, które obsługują skalowanie klastra należy użyć zestawów skalowania maszyn wirtualnych i uruchamianie wersję rozwiązania Kubernetes *1.12.7* lub nowszej. Ta obsługa zestawu skalowania jest w wersji zapoznawczej. Aby włączyć i tworzenie klastrów, które używają zestawów skalowania, należy najpierw zainstalować *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w następującym przykład:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -63,9 +63,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>Ograniczenia
 
-Poniższe ograniczenia mają zastosowanie, gdy tworzenie i zarządzanie klastrami usługi AKS, które używają zestawów skalowania maszyn wirtualnych:
+Poniższe ograniczenia mają zastosowanie, gdy tworzenie i zarządzanie klastrami usługi AKS, korzystających z skalowanie klastra:
 
 * Nie można używać dodatku routing aplikacji protokołu HTTP.
+* Obecnie nie można używać wielu pul węzłów (obecnie dostępna w wersji zapoznawczej w usłudze AKS).
 
 ## <a name="about-the-cluster-autoscaler"></a>Skalowanie klastra — informacje
 

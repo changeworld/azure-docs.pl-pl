@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 06/05/2019
 ms.author: v-adgera
-ms.openlocfilehash: 797dfc44b9897920f9fd74346ee01e4b157a4ce8
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 31944c08bad503c20832ea7e4e682c0063ab0f9f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967787"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735048"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Konfigurowanie narzędzia Postman bliźniaki cyfrowych platformy Azure
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób konfigurowania klienta REST narzędzia Postman do
 
 Rozpocznij pracę w reprezentacji urządzeń cyfrowych platformy Azure przy użyciu narzędzia klienta REST takiego jak [Postman](https://www.getpostman.com/) przygotowanie lokalnego środowiska testowego. Klient narzędzia Postman ułatwia szybkie tworzenie złożonych żądań HTTP. Pobierz klasycznej wersji klienta programu Postman, przechodząc do [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[Postman](https://www.getpostman.com/) REST testuje narzędzia, która lokalizuje kluczowych funkcjach żądania HTTP do przydatne pulpitu i na podstawie wtyczki graficznego interfejsu użytkownika. 
+[Postman](https://www.getpostman.com/) REST testuje narzędzia, która lokalizuje kluczowych funkcjach żądania HTTP do przydatne pulpitu i na podstawie wtyczki graficznego interfejsu użytkownika.
 
 Za pomocą klienta programu Postman deweloperzy rozwiązań można określić rodzaj żądania HTTP (*WPIS*, *UZYSKAĆ*, *aktualizacji*, *PATCH*i  *Usuń*), punkt końcowy interfejsu API w celu wywołania i korzystania z protokołu SSL. Postman obsługuje również dodawanie nagłówków żądań HTTP, parametry, dane formularza i treści.
 
@@ -39,15 +39,15 @@ Konfigurowanie aplikacji usługi Azure Active Directory, aby korzystać z tego p
 
 1. W obszarze **wymagane uprawnienia**, wybierz opcję **Dodaj** i wprowadź **Twins cyfrowego Azure** w obszarze **dostępu Dodaj interfejs API**. Jeśli wyszukiwanie nie znajdzie interfejsu API, zamiast tego wyszukaj frazę **Azure Smart Spaces**. Następnie wybierz **Udziel uprawnień > delegowane uprawnienia** i **gotowe**.
 
-    ![Rejestracje aplikacji w usłudze Azure Active Directory dodawania interfejsu api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
+    [![Rejestracje aplikacji w usłudze Azure Active Directory dodawania interfejsu api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. Kliknij przycisk **manifestu** otworzyć manifest aplikacji dla aplikacji. Ustaw *oauth2AllowImplicitFlow* do `true`.
 
-      ![Usługa Azure Active Directory niejawny przepływ][1]
+    [![Usługa Azure Active Directory niejawny przepływ](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
 1. Konfigurowanie **adres URL odpowiedzi** do `https://www.getpostman.com/oauth2/callback`.
 
-      ![Adres URL odpowiedzi usługa Azure Active Directory][2]
+    [![Adres URL odpowiedzi usługa Azure Active Directory](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
 1. Skopiuj i Zachowaj **identyfikator aplikacji** aplikacji usługi Azure Active Directory. Jest używany w kolejnych krokach.
 
@@ -80,7 +80,7 @@ Następnie instalowanie i Konfigurowanie narzędzia Postman w celu uzyskania tok
 
 1. Klient powinien pojawiają się jako:
 
-   ![Przykład klienta narzędzia postman][3]
+    [![Przykład klienta narzędzia postman](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Wybierz **wysłania żądania tokenu**.
 
@@ -98,13 +98,13 @@ Po wykonaniu poprzednich kroków, konfigurowanie programu Postman nawiązać uwi
 
 1. W obszarze **nagłówka** kartę, należy dodać klucz nagłówka żądania HTTP **Content-Type** wartością `multipart/mixed`.
 
-   ![Typ zawartości wieloczęściowy/mieszany][4]
+   [![Typ zawartości wieloczęściowy/mieszany](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializowanie danych innych niż tekst w plikach. Dane JSON zostaną zapisane w formacie JSON.
 1. W obszarze **treści** kartę, należy dodać każdy plik, przypisując **klucz** nazwę, wybierając `file` lub `text`.
 1. Następnie zaznacz każdy plik za pomocą **wybierz plik** przycisku.
 
-   ![Przykład klienta narzędzia postman][5]
+   [![Przykład klienta narzędzia postman](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * Klient narzędzia Postman nie wymaga posiadania ręcznie przypisanymi fragmentów wieloczęściowej wiadomości **Content-Type** lub **Content-Disposition**.
@@ -120,10 +120,3 @@ Po wykonaniu poprzednich kroków, konfigurowanie programu Postman nawiązać uwi
 - Użyj wieloczęściowego żądania [Dodaj obiekty BLOB Azure cyfrowego bliźniaczych reprezentacji jednostek](./how-to-add-blobs.md).
 
 - Aby dowiedzieć się więcej o uwierzytelnianiu przy użyciu interfejsów API Management, przeczytaj [Uwierzytelnij za pomocą interfejsów API](./security-authenticating-apis.md).
-
-<!-- Images -->
-[1]: media/how-to-configure-postman/implicit-flow.png
-[2]: media/how-to-configure-postman/reply-url.png
-[3]: media/how-to-configure-postman/postman-oauth-token.png
-[4]: media/how-to-configure-postman/content-type.png
-[5]: media/how-to-configure-postman/form-body.png

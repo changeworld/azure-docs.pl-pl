@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242301"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492697"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plan usługi Azure Functions — wersja Premium (wersja zapoznawcza)
 
@@ -56,7 +56,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Łączność sieci prywatnej
 
-Usługa Azure Functions wdrożyć plan w warstwie Premium wykorzystuje [nową opcję integracji sieci wirtualnej dla aplikacji sieci web](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration).  Po skonfigurowaniu aplikacja może komunikować się z zasobami w sieci wirtualnej lub zabezpieczone za pomocą punktów końcowych usługi.  Ograniczenia adresów IP są również dostępne w aplikacji, aby ograniczyć ruch przychodzący.
+Usługa Azure Functions wdrożyć plan w warstwie Premium wykorzystuje [nową opcję integracji sieci wirtualnej dla aplikacji sieci web](../app-service/web-sites-integrate-with-vnet.md).  Po skonfigurowaniu aplikacja może komunikować się z zasobami w sieci wirtualnej lub zabezpieczone za pomocą punktów końcowych usługi.  Ograniczenia adresów IP są również dostępne w aplikacji, aby ograniczyć ruch przychodzący.
 
 Podczas przypisywania podsieci do aplikacji funkcji w ramach planu Premium, należy podsieci z wystarczającą liczbę adresów IP dla każdego potencjalnego wystąpienia. Chociaż maksymalna liczba wystąpień, mogą się różnić w trakcie okresu zapoznawczego, wymagamy blok z co najmniej 100 dostępnymi adresami IP.
 

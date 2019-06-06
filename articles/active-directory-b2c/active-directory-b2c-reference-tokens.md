@@ -2,20 +2,20 @@
 title: Przegląd tokenów — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat tokeny używane w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681891"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509078"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Przegląd tokenów w usłudze Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ A [zarejestrowana aplikacja](tutorial-register-applications.md) odbiera tokenów
 
 Tokeny zabezpieczające, które Twoja aplikacja otrzymuje z usługi Azure AD B2C mogą pochodzić z `/authorize` lub `/token` punktów końcowych. Gdy tokeny Identyfikatora są uzyskanych z `/authorize` punktu końcowego, są realizowane za pomocą [niejawny przepływ](active-directory-b2c-reference-spa.md), która jest często używana dla użytkowników, logując się do aplikacji sieci web opartych na język javascript. Gdy tokeny Identyfikatora są uzyskanych z `/token` punktu końcowego, są realizowane za pomocą [przepływu poufnych kod](active-directory-b2c-reference-oidc.md), co pozwala token ukryty za pomocą przeglądarki.
 
-## <a name="claims"></a>Oświadczenia
+## <a name="claims"></a>oświadczenia
 
 Gdy używasz usługi Azure AD B2C, masz szczegółową kontrolę nad zawartością tokenów. Można skonfigurować [przepływy użytkownika](active-directory-b2c-reference-policies.md) i [zasady niestandardowe](active-directory-b2c-overview-custom.md) do wysyłania oświadczeń, które są wymagane dla badanej aplikacji niektórych zestawów danych użytkownika. Te oświadczenia mogą zawierać właściwości standardowe takie jak **displayName** i **emailAddress**. Twoje aplikacje mogą używać tych oświadczeń do bezpiecznego uwierzytelniania użytkowników i żądania. 
 
@@ -65,7 +65,7 @@ Poniższa tabela zawiera listę oświadczeń można oczekiwać w tokenach identy
 | Odwołania do klasy kontekstu uwierzytelniania | `acr` | Nie dotyczy | Używany tylko w przypadku starszych zasad. |
 | Framework zasady zaufania | `tfp` | `b2c_1_signupsignin1` | Nazwa zasad, które zostało użyte do uzyskania tokenu Identyfikatora. |
 | Czas uwierzytelniania | `auth_time` | `1438535543` | Czas, jaką wprowadzone przez użytkownika ostatniej poświadczeń, reprezentowany w czasie uniksowym. |
-| Zakres | `scp` | `Read`| Uprawnienia przyznane zasobu dla tokenu dostępu. Wiele udzielone uprawnienia są oddzielone spacją. |
+| Scope | `scp` | `Read`| Uprawnienia przyznane zasobu dla tokenu dostępu. Wiele udzielone uprawnienia są oddzielone spacją. |
 | Autoryzowane innych firm | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | **Identyfikator aplikacji** aplikacji klienta, który zainicjował żądanie. |
 
 ## <a name="configuration"></a>Konfigurowanie

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a295dfa1f7f2c58b3e45036212434837ac4bfb4d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235755"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475453"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — tworzenie i zarządzanie nimi wiele pul węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -74,6 +74,7 @@ Podczas tworzenia i zarządzania klastrami usługi AKS, które obsługują wiele
 * Nie można usunąć puli pierwszy węzeł.
 * Nie można używać dodatku routing aplikacji protokołu HTTP.
 * Nie można już pule węzłów Dodawanie/aktualizowanie/usuwanie, podobnie jak w przypadku większości operacji przy użyciu istniejącego szablonu usługi Resource Manager. Zamiast tego [korzystanie z oddzielnych szablonu usługi Resource Manager](#manage-node-pools-using-a-resource-manager-template) do wprowadzania zmian w pule węzłów w klastrze AKS.
+* Nie można użyć skalowanie klastra (obecnie dostępna w wersji zapoznawczej w usłudze AKS).
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, następujące dodatkowe ograniczenia:
 
@@ -222,7 +223,7 @@ Trwa kilka minut, aby usunąć węzły i pulę węzłów.
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>Określ rozmiar maszyny Wirtualnej dla puli węzłów
 
-W poprzednich przykładach, aby utworzyć pulę węzłów domyślny rozmiar maszyny Wirtualnej został użyty dla węzłów utworzone w klastrze. Bardziej typowy scenariusz jest dla Ciebie utworzyć pule węzłów z różnych rozmiarów maszyn wirtualnych i możliwości. Może na przykład utworzyć pulę węzłów, który zawiera węzły z dużą ilością pamięci lub procesora CPU lub pulę węzłów, który zapewnia obsługę procesora GPU. W następnym kroku Ci [nasłonecznieniem użycia i tolerations][#schedule-pods-using-taints-and-tolerations] informowanie o harmonogramu Kubernetes, jak ograniczyć dostęp do zasobników, można uruchomić na tych węzłach.
+W poprzednich przykładach, aby utworzyć pulę węzłów domyślny rozmiar maszyny Wirtualnej został użyty dla węzłów utworzone w klastrze. Bardziej typowy scenariusz jest dla Ciebie utworzyć pule węzłów z różnych rozmiarów maszyn wirtualnych i możliwości. Może na przykład utworzyć pulę węzłów, który zawiera węzły z dużą ilością pamięci lub procesora CPU lub pulę węzłów, który zapewnia obsługę procesora GPU. W następnym kroku zostanie [nasłonecznieniem i tolerations](#schedule-pods-using-taints-and-tolerations) informowanie o harmonogramu Kubernetes, jak ograniczyć dostęp do zasobników, które można uruchomić na tych węzłach.
 
 W poniższym przykładzie, należy utworzyć pulę węzłów opartą na procesorze GPU, który używa *maszyna wirtualna Standard_NC6* rozmiar maszyny Wirtualnej. Te maszyny wirtualne są obsługiwane przez procesory GPU NVIDIA Tesla K80 karty. Aby uzyskać informacji na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych systemu Linux na platformie Azure][vm-sizes].
 
@@ -332,7 +333,7 @@ Można zaplanować tylko zasobników, które mają tej zmiany barwy zastosowane 
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Zarządzanie pulami węzła przy użyciu szablonu usługi Resource Manager
 
-Gdy używasz szablonu usługi Azure Resource Manager do tworzenia i zarządzanych zasobów, zazwyczaj można zaktualizować ustawień w szablonie i ponowne wdrażanie na aktualizację zasobu. Za pomocą nodepools w usłudze AKS nie można zaktualizować profilu nodepool początkowej, po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejący szablon usługi Resource Manager, wprowadzić zmiany w pule węzłów i ponownego wdrażania. Zamiast tego należy utworzyć oddzielne szablonu usługi Resource Manager, która aktualizuje tylko pule agentów do istniejącego klastra usługi AKS.
+Gdy używasz szablonu usługi Azure Resource Manager do tworzenia i zarządzanych zasobów, zazwyczaj można zaktualizować ustawień w szablonie i ponowne wdrażanie na aktualizację zasobu. Dzięki pulom węzła w usłudze AKS nie można zaktualizować profilu puli węzeł początkowy, po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejący szablon usługi Resource Manager, wprowadzić zmiany w pule węzłów i ponownego wdrażania. Zamiast tego należy utworzyć oddzielne szablonu usługi Resource Manager, która aktualizuje tylko pule agentów do istniejącego klastra usługi AKS.
 
 Tworzenie szablonu, takich jak `aks-agentpools.json` i wklej następujące manifest przykładu. Ten przykładowy szablon konfiguruje następujące ustawienia:
 

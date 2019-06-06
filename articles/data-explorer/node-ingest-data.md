@@ -1,28 +1,28 @@
 ---
-title: 'Szybki start: Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer'
-description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer za pomocą środowiska Node.js.
+title: Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer
+description: W tym artykule dowiesz się, jak w celu pozyskiwania danych (załaduj) do Eksploratora danych Azure przy użyciu środowiska Node.js.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/25/2018
-ms.openlocfilehash: 42a4d2e34eab3679f98d5a62099ab57e5924fcc3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800419"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494497"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Szybki start: Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia dwie biblioteki klienckie dla środowiska Node: [bibliotekę pozyskiwania](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) i [bibliotekę danych](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym przewodniku Szybki start najpierw utworzysz tabelę i mapowanie danych w klastrze testowym. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia dwie biblioteki klienckie dla środowiska Node: [bibliotekę pozyskiwania](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) i [bibliotekę danych](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym artykule należy najpierw utworzyć tabelę i mapowanie danych klastra testowego. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego przewodnika Szybki start, oprócz subskrypcji platformy Azure, potrzebne są następujące elementy:
+Oprócz subskrypcji platformy Azure potrzebne są następujące polecenie, aby zakończyć w tym artykule:
 
 * [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
@@ -158,7 +158,7 @@ Uruchom następujące polecenie, aby wyświetlić stan wszystkich operacji pozys
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zamierzasz skorzystać z naszych pozostałych przewodników Szybki start i samouczków, zachowaj utworzone zasoby. W przeciwnym razie uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `StormEvents`.
+Jeśli planujesz wykonać nasze inne artykuły, zachować zasoby, które utworzono. W przeciwnym razie uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `StormEvents`.
 
 ```Kusto
 .drop table StormEvents
@@ -166,5 +166,4 @@ Jeśli zamierzasz skorzystać z naszych pozostałych przewodników Szybki start 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Pisanie zapytań](write-queries.md)
+* [Pisanie zapytań](write-queries.md)

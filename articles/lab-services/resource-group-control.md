@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 1001e6aec7ba2f6ce62eb267d218149296048bb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394362"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476089"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Określ grupę zasobów dla maszyn wirtualnych laboratorium Azure DevTest Labs
 
@@ -29,6 +29,9 @@ Jako właściciel laboratorium możesz skonfigurować maszyny wirtualne laborato
 - Konsolidacja wszystkich zasobów laboratorium w ramach pojedynczej grupy zasobów ułatwiają śledzenie tych zasobów i stosowanie [zasady](../governance/policy/overview.md) do zarządzania zasobami na poziomie grupy zasobów.
 
 Dzięki tej funkcji można użyć skryptu do określenia nowej lub istniejącej grupy zasobów w ramach subskrypcji platformy Azure dla wszystkich laboratorium, maszyny wirtualne. Obecnie usługa Azure DevTest Labs obsługuje tę funkcję za pomocą interfejsu API.
+
+> [!NOTE]
+> Po utworzeniu laboratoria DevTest Labs, mają zastosowanie wszystkie limity subskrypcji. Laboratorium można traktować jako innych zasobów w ramach subskrypcji. W przypadku grup zasobów wynoszący [980 grup zasobów na subskrypcję](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 Wykonaj następujące kroki, aby określić grupę zasobów dla wszystkich maszyn wirtualnych tworzonych w środowisku laboratoryjnym. 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e0f2d3491db24ecbb49c189232dbc7f698e09fb1
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200616"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430774"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Przekazywać strumienie zadania i stan zadania z usługi Automation do dzienników usługi Azure Monitor
 
@@ -96,7 +96,7 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w dziennikach w u
 | Caller_s |Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań. |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
-| ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>-Nowych<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>-Ukończone |
+| ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>-Nowych<br>-Utworzone<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>-Ukończone |
 | Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
 | Resource | Nazwa konta usługi Automation |

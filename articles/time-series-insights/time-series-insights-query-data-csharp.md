@@ -10,18 +10,18 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e91c6fb4949a4902194bb95f98e49327434cdbfd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 250dd691c3ef3146d6768123de52bf0628b10e42
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244113"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728966"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Wykonywanie zapytań dotyczących danych w środowisku Azure czas serii szczegółowych informacji w wersji Ogólnodostępnej przy użyciuC#
 
-To C# przykład pokazuje, jak wykonywać zapytania o dane ze środowiska Azure czas serii szczegółowych informacji w wersji Ogólnodostępnej. 
+To C# przykład pokazuje, jak wykonywać zapytania o dane ze środowiska Azure czas serii szczegółowych informacji w wersji Ogólnodostępnej.
 
 Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API zapytań:
 
@@ -31,7 +31,7 @@ Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API 
 1. Przykładem żądania gniazda sieci Web może być żądanie danych agregowania zdarzeń dla odpowiedniego środowiska. Żądanie danych obejmuje cały zakres czasu dostępności.
 
 > [!NOTE]
-> Przykładowy kod znajduje się w temacie [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).
+> Przykładowy kod znajduje się w temacie [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Zależności projektu
 

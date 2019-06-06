@@ -13,70 +13,72 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9418c72ec9aad02d848d8b40c3f0152f656fdea8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 48f162e5e6eb29e4a658000826ccf25389086342
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571142"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730436"
 ---
-# <a name="how-to-manage-devices-using-the-azure-portal"></a>Jak zarządzać urządzeniami przy użyciu witryny Azure portal
+# <a name="manage-device-identity-using-the-azure-portal"></a>Zarządzanie tożsamościami urządzeń przy użyciu witryny Azure portal
 
-Zarządzanie urządzeniami w usłudze Azure Active Directory (Azure AD) pozwala zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące zabezpieczeń i zgodności. 
+Zarządzanie tożsamościami urządzeń w usłudze Azure Active Directory (Azure AD) można zagwarantować, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności.
 
 W tym artykule:
 
-- Przyjęto założenie, że czytelnik zna [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md)
+- Przyjęto założenie, że czytelnik zna [wprowadzenie do zarządzania tożsamościami urządzeń w usłudze Azure Active Directory](overview.md)
+- Udostępnia informacje o zarządzaniu tożsamości urządzenia za pomocą portalu usługi Azure AD
 
-- Zawiera informacje na temat zarządzania urządzeniami przy użyciu witryny Azure portal
+## <a name="manage-device-identities"></a>Zarządzanie tożsamościami urządzeń
 
-## <a name="manage-devices"></a>Zarządzanie urządzeniami 
-
-Witryna Azure portal udostępnia centralne miejsce do zarządzania urządzeniami. Można uzyskać w tym miejscu, za pomocą [bezpośredni link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) lub ręcznie wykonaj następujące czynności:
+W portalu usługi Azure AD zapewnia centralne miejsce do zarządzania tożsamościami Twojego urządzenia. Można uzyskać w tym miejscu, za pomocą [bezpośredni link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) lub ręcznie wykonaj następujące czynności:
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator.
-
 2. Na lewym pasku nawigacyjnym kliknij **usługi Active Directory**.
 
-    ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/01.png)
+   ![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/01.png)
 
 3. W **Zarządzaj** kliknij **urządzeń**.
 
-    ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/74.png)
+   ![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/74.png)
 
 **Urządzeń** strony umożliwia:
 
-- Konfiguruj ustawienia zarządzania urządzeniami
-
+- Skonfiguruj ustawienia urządzenia
 - Lokalizowanie urządzeń
-
-- Wykonywanie zadań zarządzania urządzeniami
-
-- Przegląd zarządzania urządzeniami, związane z dziennikami inspekcji  
+- Wykonywanie zadań zarządzania tożsamościami urządzeń
+- Przeglądać dzienniki inspekcji dotyczące urządzeń  
   
-## <a name="configure-device-settings"></a>Konfiguruj ustawienia urządzenia
+## <a name="configure-device-settings"></a>Konfigurowanie ustawień urządzenia
 
-Do zarządzania urządzeniami przy użyciu portalu Azure, urządzenie musi być on [zarejestrowany lub dołączonych do](overview.md#getting-devices-under-the-control-of-azure-ad) do usługi Azure AD. Jako administrator można dostosować proces rejestracji i dołączenie urządzeń, konfigurując ustawienia urządzenia. 
+Aby zarządzać tożsamości urządzenia za pomocą portalu usługi Azure AD, urządzenie musi być on [zarejestrowany lub dołączonych do](overview.md) do usługi Azure AD. Jako administrator można dostosować proces rejestracji i dołączenie urządzeń, konfigurując ustawienia urządzenia.
 
-![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/22.png)
+![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/22.png)
 
 Na stronie ustawień urządzenia można skonfigurować:
 
 ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/21.png)
 
-- **Użytkownicy mogą dołączać urządzania do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą [dołączać urządzenia](overview.md#azure-ad-joined-devices) do usługi Azure AD. Wartość domyślna to **wszystkich**. To ustawienie ma zastosowanie tylko do usługi Azure AD Join w systemie Windows 10.
+- **Użytkownicy mogą dołączać urządzania do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą zarejestrować swoje urządzenia jako [dołączać urządzenia w usłudze Azure AD](overview.md#azure-ad-joined-devices). Wartość domyślna to **wszystkich**.
+
+>[!NOTE]
+> **Użytkownicy mogą dołączać urządzania do usługi Azure AD** ustawienie ma zastosowanie tylko do dołączania do usługi Azure AD w systemie Windows 10.
 
 - **Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD** — możesz wybrać użytkowników, którzy mają prawa administratora lokalnego na urządzeniu. Użytkowników dodanych w tym miejscu są dodawane do *Administratorzy urządzenia* roli w usłudze Azure AD. Administratorzy globalni w usłudze Azure AD i właścicielom urządzeń są domyślnie udzielone prawa administratora lokalnego. Ta opcja jest dostępna za pośrednictwem produktów, takich jak Azure AD Premium lub Enterprise Mobility Suite (EMS) możliwości w wersji premium.
+- **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić urządzeniom osobiste, iOS, Android i macOs systemu Windows 10 jako [zarejestrowany](overview.md#azure-ad-registered-devices) z usługą Azure AD. Jeśli wybierzesz **Brak**, urządzenia nie są dozwolone do rejestracji w usłudze Azure AD. Rejestracja w usłudze Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla usługi Office 365 wymaga rejestracji. Jeśli skonfigurowano którąś z tych usług **wszystkich** jest zaznaczone i **NONE** nie jest dostępna.
+- **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz wybrać, czy użytkownicy muszą zapewnić drugi składnik uwierzytelniania w celu [sprzężenia](overview.md#azure-ad-joined-devices) swojego urządzenia do usługi Azure AD. Wartość domyślna to **nie**. Zaleca się wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi, musisz zapewnić, że skonfigurowano uwierzytelniania wieloskładnikowego dla użytkowników, które rejestrują swoje urządzenia. Aby uzyskać więcej informacji na temat usług innej usługi Azure Multi-Factor authentication, zobacz [wprowadzenie do usługi Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). 
 
-- **Użytkownicy mogą rejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić urządzeniom na być [zarejestrowany](overview.md#azure-ad-registered-devices) z usługą Azure AD. Jeśli wybierzesz **Brak**, urządzenia nie są dozwolone do rejestru, jeśli nie są one przyłączony Azure AD lub hybrydowe przyłączone do usługi Azure AD. Rejestracja w usłudze Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla usługi Office 365 wymaga rejestracji. Jeśli skonfigurowano którąś z tych usług **wszystkich** jest zaznaczone i **NONE** nie jest dostępna.
+>[!NOTE]
+> **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** ustawienie nie ma zastosowania do urządzeń z hybrydowego przyłączony Azure AD.
 
-- **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz wybrać, czy użytkownicy muszą zapewnić drugi składnik uwierzytelniania w celu [sprzężenia](overview.md#azure-ad-joined-devices) swojego urządzenia do usługi Azure AD. Wartość domyślna to **nie**. Zaleca się wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi, musisz zapewnić, że skonfigurowano uwierzytelniania wieloskładnikowego dla użytkowników, które rejestrują swoje urządzenia. Aby uzyskać więcej informacji na temat usług innej usługi Azure Multi-Factor authentication, zobacz [wprowadzenie do usługi Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). To ustawienie nie ma wpływu na dołączenie do hybrydowej dla systemu Windows 10 lub Windows 7. To ma zastosowanie tylko do usługi Azure AD Join w systemie Windows 10 i ang. rejestrację urządzeń dla systemu Windows 10, iOS i Android.
+- **Maksymalna liczba urządzeń** — to ustawienie umożliwia wybranie maksymalną liczbę urządzeń, które użytkownik może mieć w usłudze Azure AD. Jeśli użytkownik osiągnie ten limit przydziału, są one być nie mógł dodać dodatkowych urządzeń dopóki jedna lub więcej istniejących urządzeń są usuwane. Przydział urządzenie jest liczone dla wszystkich urządzeń, które są dołączone do usługi Azure AD lub Azure AD zarejestrowane już dziś. Wartość domyślna to **20**.
 
-- **Maksymalna liczba urządzeń** — to ustawienie umożliwia wybranie maksymalną liczbę urządzeń, które użytkownik może mieć w usłudze Azure AD. Jeśli użytkownik osiągnie ten limit przydziału, są one być nie mógł dodać dodatkowych urządzeń dopóki jedna lub więcej istniejących urządzeń są usuwane. Oferta urządzenie jest liczone dla wszystkich urządzeń, które są dołączone do usługi Azure AD lub usługi Azure AD obecnie zarejestrowane. Wartość domyślna to **20**. *To ograniczenie nie ma zastosowania do hybrydowej usługi Azure AD urządzeń w miejscu pracy.*
+>[!NOTE]
+> **Maksymalna liczba urządzeń** ustawienie nie ma zastosowania do urządzeń z hybrydowego przyłączony Azure AD.
 
 - **Użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach** — domyślnie to ustawienie ma wartość **NONE**. Wybranie określonych użytkowników lub grup lub wszystkie umożliwia użytkownika ustawień i danych aplikacji na synchronizacje przez urządzeń z systemem Windows 10. Dowiedz się więcej na temat działania synchronizacji w systemie Windows 10.
 Ta opcja jest możliwość premium, dostępna za pośrednictwem produktów, takich jak Azure AD Premium lub Enterprise Mobility Suite (EMS).
@@ -87,37 +89,34 @@ Masz dwie opcje można znaleźć urządzenia zarejestrowane i przyłączone do:
 
 - **Wszystkie urządzenia** w **Zarządzaj** części **urządzeń** strony  
 
-    ![Wszystkie urządzenia](./media/device-management-azure-portal/41.png)
+   ![Wszystkie urządzenia](./media/device-management-azure-portal/41.png)
 
 - **Urządzenia** w **Zarządzaj** części **użytkownika** strony
 
-    ![Wszystkie urządzenia](./media/device-management-azure-portal/43.png)
+   ![Wszystkie urządzenia](./media/device-management-azure-portal/43.png)
 
 Za pomocą obu opcji można uzyskać do widoku, który:
 
 - Umożliwia wyszukiwanie urządzeń przy użyciu nazwy wyświetlanej jako filtr.
-
 - Zawiera szczegółowe omówienie urządzenia zarejestrowane i przyłączone do
-
 - Umożliwia wykonywanie typowych zadań zarządzania urządzeniami
 
 ![Wszystkie urządzenia](./media/device-management-azure-portal/51.png)
 
-Niektóre urządzenia z systemem iOS nazwy urządzenia, zawierające apostrofy mogą za pomocą różnych znaków, które wyglądają w apostrofy. Dlatego wyszukiwania dla takich urządzeń jest trudna — Jeśli nie widzisz wyniki wyszukiwania poprawnie, należy upewnić się, czy ciąg wyszukiwania zawiera znak apostrofu dopasowania.
+Niektóre urządzenia z systemem iOS nazwy urządzenia, zawierające apostrofy mogą za pomocą różnych znaków, które wyglądają w apostrofy. Dlatego wyszukiwania dla takich urządzeń jest trudna — Jeśli nie widzisz wyniki wyszukiwania poprawnie, upewnij się, że ciąg wyszukiwania zgodnego apostrof.
 
-## <a name="device-management-tasks"></a>Zadania dotyczące zarządzania urządzeniami
+## <a name="device-identity-management-tasks"></a>Zadania związane z zarządzaniem tożsamościami urządzeń
 
 Jako administrator globalny lub administrator urządzenia w chmurze można zarządzać zarejestrowane lub dołączonym do urządzenia. Administratorzy usługi Intune mogą:
 
 - Aktualizacja urządzenia — przykłady są codziennych operacji, takich jak włączanie/wyłączanie urządzeń
-
 - Usuwanie urządzeń — w przypadku, gdy urządzenie jest wycofywane i należy go usunąć w usłudze Azure AD
 
-Ta sekcja zawiera informacje na temat typowych zadań zarządzania dla urządzenia.
+Ta sekcja zawiera informacje na temat typowych zadań zarządzania tożsamości urządzenia.
 
 ### <a name="manage-an-intune-device"></a>Zarządzanie urządzeniami usługi Intune
 
-Jeśli jesteś administratorem usługi Intune, możesz zarządzać urządzeniami, oznaczone jako **Microsoft Intune**. 
+Jeśli jesteś administratorem usługi Intune, możesz zarządzać urządzeniami, oznaczone jako **Microsoft Intune**.
 
 ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/31.png)
 
@@ -127,16 +126,16 @@ Aby włączyć / wyłączyć urządzenie, masz dwie opcje:
 
 - Menu zadania ("...") **urządzeniom** strony
 
-    ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/71.png)
+   ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/71.png)
 
 - Pasek narzędzi na **urządzeń** strony
 
-    ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/32.png)
+   ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/32.png)
 
 **Uwagi:**
 
 - Musisz być administratorem globalnym lub administrator urządzenia w chmurze w usłudze Azure AD, aby włączyć / wyłączyć urządzenie. 
-- Wyłączenie urządzenia powoduje urządzenia z pomyślnym uwierzytelnieniu w usłudze Azure AD, zapobiegając w ten sposób urządzeniu dostęp do zasobów usługi Azure AD, na które będą chronione przez urządzenie urzędu certyfikacji lub przy użyciu poświadczeń WH4B. 
+- Wyłączenie urządzenia powoduje urządzenia z pomyślnym uwierzytelnieniu w usłudze Azure AD, zapobiegając w ten sposób urządzeniu dostęp do zasobów usługi Azure AD, na które będą chronione przez urządzenie urzędu certyfikacji lub przy użyciu poświadczeń WH4B.
 
 ### <a name="delete-an-azure-ad-device"></a>Usuwanie urządzenia z usługi Azure AD
 
@@ -144,17 +143,17 @@ Aby usunąć urządzenie, masz dwie opcje:
 
 - Menu zadania ("...") **urządzeniom** strony
 
-    ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/72.png)
+   ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/72.png)
 
 - Pasek narzędzi na **urządzeń** strony
 
-    ![Usuwanie urządzenia](./media/device-management-azure-portal/34.png)
+   ![Usuwanie urządzenia](./media/device-management-azure-portal/34.png)
 
 **Uwagi:**
 
 - Musisz być administratorem globalnym lub administratorem usługi Intune w usłudze Azure AD, aby usunąć urządzenie.
 - Usuwanie urządzenia:
-   - Urządzenie uniemożliwia dostęp do zasobów usługi Azure AD. 
+   - Urządzenie uniemożliwia dostęp do zasobów usługi Azure AD.
    - Usuwa wszystkie szczegółowe informacje, które są dołączone do urządzenia, na przykład, klucze funkcji BitLocker dla urządzeń Windows.  
    - Reprezentuje nieodwracalny działania i nie jest zalecane, chyba że jest to wymagane.
 
@@ -174,23 +173,21 @@ Można przeglądać i kopiowanie kluczy funkcji BitLocker, aby ułatwić użytko
 
 Aby wyświetlić lub skopiować klucze funkcji BitLocker, musisz być właścicielem urządzenia lub użytkownika, który ma co najmniej jedną z następujących ról, które są przypisane:
 
-- Administratorzy globalni
-- Również administratorów pomocy technicznej
-- Administratorzy zabezpieczeń
-- Czytelnicy zabezpieczeń
-- Administratorzy usługi Intune
+- Administrator globalny
+- Administrator pomocy technicznej
+- Administrator zabezpieczeń
+- Czytelnik zabezpieczeń
+- Administrator usługi Intune
 
 > [!NOTE]
 > Urządzeń z systemem Windows 10 przyłączonych do hybrydowej usługi Azure AD nie ma właściciela. Tak Jeśli szukasz urządzenia przez właściciela, a nie znaleziono jej wyszukiwanie według identyfikatora urządzenia.
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
-Działania urządzenia są dostępne za pośrednictwem dzienników aktywności. Dane te obejmują działania wyzwolone przez usługę rejestracji urządzeń i użytkowników:
+Działania urządzenia są dostępne za pośrednictwem dzienników aktywności. Dzienniki te obejmują działania wyzwolone przez usługę rejestracji urządzeń i użytkowników:
 
 - Tworzenie urządzenia i dodawanie właścicieli / użytkowników na urządzeniu
-
 - Zmiany w ustawieniach urządzenia
-
 - Operacje dotyczące urządzenia, takie jak usuwanie i aktualizowanie urządzenia
 
 Jest punktem wejścia do danych inspekcji **dzienniki inspekcji** w **działania** części **urządzeń** strony.
@@ -200,11 +197,8 @@ Jest punktem wejścia do danych inspekcji **dzienniki inspekcji** w **działania
 Dziennik inspekcji zawiera domyślny widok listy, który pokazuje:
 
 - Data i godzina wystąpienia
-
 - Obiekty docelowe
-
 - Inicjatora / aktora (kto) działania
-
 - Działanie (co)
 
 ![Dzienniki inspekcji](./media/device-management-azure-portal/63.png)
@@ -219,8 +213,8 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, możesz odfiltrować dan
 - Typ zasobu działania
 - Działanie
 - Zakres dat
-- Środowisko docelowe
-- Zainicjowane przez (aktor)
+- Cel
+- Zainicjowane przez (Aktor)
 
 Oprócz filtrów możesz wyszukać określonych wpisów.
 
@@ -228,4 +222,4 @@ Oprócz filtrów możesz wyszukać określonych wpisów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md)
+[Jak zarządzać urządzeniami starych w usłudze Azure AD](manage-stale-devices.md)

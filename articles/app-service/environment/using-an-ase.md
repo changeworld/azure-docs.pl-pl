@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d536e9d14edfa17e890480c07951eccb70e9eb9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c34d3cfd5ce9bb3a8f9a9072f2843331065100
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228341"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496520"
 ---
 # <a name="use-an-app-service-environment"></a>Użyj środowiska usługi App Service #
-
-## <a name="overview"></a>Omówienie ##
 
 Usługa Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Składa się z:
 
@@ -62,18 +60,15 @@ Aby utworzyć aplikację w środowisku ASE:
 
 1. Wybierz system operacyjny. 
 
-    * Hosting aplikacji systemu Linux w środowisku ASE jest nowa funkcja w wersji zapoznawczej, więc zaleca się, że nie należy dodawać aplikacje systemu Linux w środowisku ASE, które jest aktualnie uruchomione obciążenia produkcyjne. 
-    * Dodawanie aplikacji systemu Linux w środowisku ASE oznacza, że środowisko ASE również będzie w trybie podglądu. 
-
 1. Wybierz istniejący plan usługi App Service w środowisku ASE lub Utwórz nową, wykonując następujące czynności:
 
     a. Wybierz **tworzenia nowych**.
 
     b. Wprowadź nazwę dla planu usługi App Service.
 
-    c. Wybierz środowisko ASE w **lokalizacji** listy rozwijanej. Hosting aplikacji systemu Linux w środowisku ASE jest aktywne tylko w 6 regionów, w tym momencie: **Zachodnie stany USA, wschodnie stany USA, zachodnie Europa, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
-
-    d. Wybierz **izolowany** warstwy cenowej. Wybierz przycisk **Wybierz**.
+    c. Wybierz środowisko ASE w **lokalizacji** listy rozwijanej. 
+    
+    d. Wybierz **izolowany** warstwy cenowej. Wybierz **wybierz**.
 
     e. Kliknij przycisk **OK**.
     

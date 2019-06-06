@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768183"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425608"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +79,7 @@ Informacje, które należy zwrócić uwagę:
 
 ## <a name="data-integration-units"></a>Jednostki integracji danych
 
-A **jednostki integracji danych (DIU)** (wcześniej znana pod nazwą jednostek przenoszenia danych w chmurze DMU) jest miarą, który reprezentuje możliwości (kombinację procesora CPU, pamięci i alokacji zasobów sieciowych) w pojedynczą jednostkę w usłudze Data Factory. **DIU ma zastosowanie tylko do [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**, ale nie [własne środowisko IR](concepts-integration-runtime.md#self-hosted-integration-runtime).
+A **jednostki integracji danych (DIU)** (wcześniej znana pod nazwą jednostek przenoszenia danych w chmurze DMU) jest miarą, który reprezentuje możliwości (kombinację procesora CPU, pamięci i alokacji zasobów sieciowych) w pojedynczą jednostkę w usłudze Data Factory. **DIU ma zastosowanie tylko do [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)** , ale nie [własne środowisko IR](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
 **Minimalny jednostek integracji danych, przeznaczonych dla uruchomienia działania kopiowania wynosi dwa.** Jeśli nie zostanie określony, w poniższej tabeli wymieniono DIUs domyślne używane w scenariuszach różnych kopii:
 
@@ -93,7 +93,7 @@ Aby zastąpić to ustawienie domyślne, należy określić wartość dla **dataI
 Możesz zobaczyć faktycznie używanych jednostek integracji danych dla poszczególnych kopii, uruchom w działaniu kopiowania danych wyjściowych w przypadku uruchomienia działania monitorowania. Dowiedz się, szczegółowe informacje z [skopiuj Monitorowanie działania](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Ustawienie DIUs **większy niż 4** obecnie działa tylko wtedy, gdy użytkownik **skopiować wielu plików z magazynu obiektów Blob/Data Lake Storage/przechowuje Amazon S3/w chmurze FTP/w chmurze z serwera SFTP do innych danych w chmurze.**.
+> Ustawienie DIUs **większy niż 4** obecnie ma zastosowanie tylko wtedy, gdy użytkownik **skopiować wielu plików z usługi Azure Storage/Data Lake Storage/Amazon S3/Google Cloud Storage/w chmurze FTP/w chmurze SFTP do wszelkich innych magazynami danych w chmurze**.
 >
 
 **Przykład:**

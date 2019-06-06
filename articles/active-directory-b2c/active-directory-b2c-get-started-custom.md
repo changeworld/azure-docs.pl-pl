@@ -2,20 +2,20 @@
 title: Wprowadzenie do zasad niestandardowych — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozpocząć pracę przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f4ecc01f42d491f5d9d967b9983e773c1df22298
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2929c033b4744ea89f8e3d711a5e2e0df6301c14
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986827"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730012"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -71,7 +71,7 @@ Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiaj
 ### <a name="register-the-identityexperienceframework-application"></a>Rejestrowanie aplikacji IdentityExperienceFramework
 
 1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal Wyszukaj i wybierz pozycję **usługi Azure Active Directory**.
-2. Wybierz z menu **rejestracje aplikacji (starsza wersja)**.
+2. Wybierz z menu **rejestracje aplikacji (starsza wersja)** .
 3. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 4. Aby uzyskać **nazwa**, wprowadź `IdentityExperienceFramework`.
 5. Aby uzyskać **typ aplikacji**, wybierz **aplikacji/interfejs API sieci Web**.
@@ -80,10 +80,10 @@ Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiaj
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Rejestrowanie aplikacji ProxyIdentityExperienceFramework
 
-1. W **rejestracje aplikacji (starsza wersja)**, wybierz opcję **rejestrowanie nowej aplikacji**.
+1. W **rejestracje aplikacji (starsza wersja)** , wybierz opcję **rejestrowanie nowej aplikacji**.
 2. Aby uzyskać **nazwa**, wprowadź `ProxyIdentityExperienceFramework`.
 3. Aby uzyskać **typ aplikacji**, wybierz **natywnych**.
-4. Aby uzyskać **identyfikator URI przekierowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `yourtenant` jest Twoja dzierżawa usługi Azure AD B2C.
+4. Aby uzyskać **identyfikator URI przekierowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `your-tenant-name` jest Twoja dzierżawa usługi Azure AD B2C.
 5. Kliknij pozycję **Utwórz**. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
 6. Na stronie ustawień wybierz **wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**.
 7. Wybierz **wybierz interfejs API**, wyszukiwanie i wybieranie **IdentityExperienceFramework**, a następnie kliknij przycisk **wybierz**.

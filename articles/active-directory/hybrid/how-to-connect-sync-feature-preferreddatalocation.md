@@ -1,5 +1,5 @@
 ---
-title: 'Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla wielu regionów geograficznych możliwości w usłudze Office 365 | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365'
 description: W tym artykule opisano, jak umieścić swoje zasoby użytkowników usługi Office 365 blisko użytkowników za pomocą synchronizacji programu Azure Active Directory Connect.
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348251"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473029"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -45,7 +45,7 @@ Obszarach geograficznych w usłudze Office 365 dostępne dla wielu regionów geo
 | Azja i Pacyfik | APC |
 | Australia | JEDNOSTKI ALOKACJI |
 | Kanada | MOŻNA |
-| Unia Europejska | EUR |
+| Unii Europejskiej | EUR |
 | Francja | FRA |
 | Indie | IND |
 | Japonia | JPN |
@@ -131,13 +131,13 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą
     | Połączonego systemu | *Wybierz łącznik usługi Active Directory w środowisku lokalnym* |  |
     | Połączony System typu obiektu | **Użytkownik** |  |
     | Typ obiektu Metaverse | **Osoby** |  |
-    | Typ linku | **Dołącz** |  |
+    | Typ łącza | **Join** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Zachowaj **filtru Scoping** puste, aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie filtru określania zakresu, zgodnie z wdrożenia usługi Azure AD Connect.
 6. Przejdź do **kartę przekształcania**i zaimplementować następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     |Direct | preferredDataLocation | Wybierz atrybut źródłowy | Niezaznaczone | Aktualizacja |
 
@@ -160,7 +160,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* ||
     | Połączony System typu obiektu | **Użytkownik** ||
     | Typ obiektu Metaverse | **Osoby** ||
-    | Typ linku | **Dołącz** ||
+    | Typ łącza | **Join** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do **filtru Scoping** karta i Dodaj pojedynczą grupę filtrów określania zakresu przy użyciu dwóch klauzul:
@@ -174,7 +174,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
 6. Przejdź do **przekształcania** kartę i wdrożenie następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     | Direct | preferredDataLocation | preferredDataLocation | Niezaznaczone | Aktualizacja |
 

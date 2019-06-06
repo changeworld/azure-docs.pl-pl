@@ -8,15 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 03/04/2019
-ms.author: v-junlch
-ms.openlocfilehash: 6d5f9b171a4efc5e52d281655de143ac9d40d437
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/18/2019
+ms.author: cshoe
+ms.openlocfilehash: 8372becd614e35bead9e98e405e2694f3f16db4a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437892"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472333"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Przykład usłudze Azure Functions wyzwalacz i powiązania
 
@@ -136,10 +135,9 @@ public class Person
 }
 ```
 
-Masz teraz funkcja pracy, który jest wyzwalany przez usługi Azure Table storage, która wysyła dane do kolejki.
+Funkcja pracy, która jest wywoływana za pomocą kolejki platformy Azure i wysyła dane do usługi Azure Table storage jest teraz dostępna.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Usługa Azure Functions powiązania wzorców wyrażeń](./functions-bindings-expressions-patterns.md)
-

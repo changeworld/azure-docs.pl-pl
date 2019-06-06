@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827334"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742548"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
 
@@ -29,7 +29,9 @@ W tym artykule również założono, że mają podwyższony poziom dostępu na m
 
 Aktywacja współużytkowanego komputera umożliwia wdrażanie usługi Office 365 ProPlus do komputera w Twojej organizacji, która jest dostępna przez wielu użytkowników. Aby uzyskać więcej informacji na temat aktywacji na komputerze udostępnionym zobacz [Omówienie aktywacji na komputerze udostępnionym dla usługi Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
 
-Użyj [narzędzia wdrażania pakietu Office](https://www.microsoft.com/download/details.aspx?id=49117) do zainstalowania pakietu Office. Wiele sesji systemu Windows 10 Enterprise obsługuje tylko usługi Office 365 ProPlus.
+Użyj [narzędzia wdrażania pakietu Office](https://www.microsoft.com/download/details.aspx?id=49117) do zainstalowania pakietu Office. Wiele sesji systemu Windows 10 Enterprise obsługuje tylko następujące wersje pakietu Office:
+- Office 365 ProPlus
+- Office 365 Business, który pochodzi z subskrypcją Microsoft 365 Business
 
 Narzędzia wdrażania pakietu Office wymaga pliku XML konfiguracji. Aby dostosować poniższego przykładu, zobacz [opcji konfiguracji dla narzędzia wdrażania pakietu Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
 
@@ -132,7 +134,7 @@ Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie poszczegó
 
 2. Pobierz OneDriveSetup.exe do lokalizacji przygotowanych za pomocą tego łącza: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Po zainstalowaniu pakietu office z usługą OneDrive, pomijając  **\<ExcludeApp ID = "OneDrive" /\>**, odinstaluj wszelkie istniejące instalacje na użytkownika OneDrive z wiersza polecenia z podwyższonym poziomem uprawnień, uruchamiając następujące polecenie:
+3. Po zainstalowaniu pakietu office z usługą OneDrive, pomijając  **\<ExcludeApp ID = "OneDrive" /\>** , odinstaluj wszelkie istniejące instalacje na użytkownika OneDrive z wiersza polecenia z podwyższonym poziomem uprawnień, uruchamiając następujące polecenie:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

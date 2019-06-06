@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 527e9979b624970dd55b4300fe63c27386640ac4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a293f0b656c075ae3b21ccf98e602e43ed761958
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560489"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428461"
 ---
 # <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Samouczek: Zlokalizowanych powiadomień wypychanych do urządzeń z systemem iOS przy użyciu usługi Azure Notification Hubs
 
@@ -27,7 +27,7 @@ ms.locfileid: "60560489"
 > * [Sklep Windows — C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-W tym samouczku dowiesz się, jak używać [szablony](notification-hubs-templates-cross-platform-push-messages.md) funkcji usługi Azure Notification Hubs wysyłać powiadomienia o najważniejszych informacjach, które zostały zlokalizowane według języka i urządzenia. W tym samouczku zaczniesz od aplikacji dla systemu iOS utworzone w [Wysyłanie najważniejszych wiadomości przy użyciu usługi Notification Hubs]. Po zakończeniu możesz zarejestrować się w kategorii, który Cię interesuje, określ język, w którym będą odbierane powiadomienia i otrzymywać tylko powiadomienia wypychane dla wybranych kategorii, w tym języku.
+W tym samouczku dowiesz się, jak używać [szablony](notification-hubs-templates-cross-platform-push-messages.md) funkcji usługi Azure Notification Hubs wysyłać powiadomienia o najważniejszych informacjach, które zostały zlokalizowane według języka i urządzenia. W tym samouczku zaczniesz od aplikacji dla systemu iOS utworzone w [Wysyłanie najważniejszych wiadomości przy użyciu usługi Notification Hubs]. Po zakończeniu rejestrowania dla kategorii, które interesują Cię, określ język, w której chcesz otrzymywać powiadomienia i otrzymywać tylko powiadomienia wypychane dla wybranych kategorii, w tym języku.
 
 Istnieją dwie części do tego scenariusza:
 
@@ -49,7 +49,7 @@ W [Wysyłanie najważniejszych wiadomości przy użyciu usługi Notification Hub
 > [!NOTE]
 > Jednym ze sposobów na wysyłanie powiadomień zlokalizowanych jest utworzenie wielu wersji każdego znacznika. Na przykład, aby zapewnić obsługę angielski, francuski i mandaryński, będziesz potrzebować trzech różnych znaczników dla wiadomości ze świata: "world_en", "world_fr" i "world_ch". Następnie trzeba wysłać zlokalizowaną wersję wiadomości ze świata do każdego z tych znaczników. W tym temacie umożliwia szablony uniknąć rozprzestrzenianie tagów i konieczności wysyłania wielu wiadomości.
 
-Na wysokim poziomie szablony są sposób określania, jak określonego urządzenia powinien otrzymywać powiadomienie o. Szablon określa dokładny format ładunku, odwołując się do właściwości stanowiących część komunikatu wysyłanego przez zaplecze aplikacji. W Twoim przypadku należy wysłać wiadomość niezależne od ustawień regionalnych, zawierającą wszystkie obsługiwane języki:
+Szablony są sposób określania, jak określonego urządzenia powinien otrzymywać powiadomienie o. Szablon określa dokładny format ładunku, odwołując się do właściwości stanowiących część komunikatu wysyłanego przez zaplecze aplikacji. W Twoim przypadku należy wysłać wiadomość niezależne od ustawień regionalnych, zawierającą wszystkie obsługiwane języki:
 
 ```json
 {
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji dotyczących szablonów, zobacz [szablony](notif
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Wykonaj [powiadomienia wypychane do urządzeń z systemem iOS w określonych](notification-hubs-ios-xplat-segmented-apns-push-notification.md) samouczek i mieć kod jest dostępny, ponieważ ten samouczek opiera się bezpośrednio na kod.
-* Program Visual Studio 2017 jest opcjonalne.
+* Visual Studio 2019 r jest opcjonalne.
 
 ## <a name="update-the-app-user-interface"></a>Aktualizowanie interfejsu użytkownika aplikacji
 
@@ -90,7 +90,7 @@ Następnie upewnij się dodać IBOutlet w swojej ViewController.h, jak pokazano 
 
 ## <a name="build-the-ios-app"></a>Tworzenie aplikacji dla systemu iOS
 
-1. W swojej `Notification.h` Dodaj `retrieveLocale` metody i modyfikowanie magazynu i subskrybowanie metody, jak pokazano w poniższym kodzie:
+1. W swojej `Notification.h`, Dodaj `retrieveLocale` metody i modyfikowanie magazynu i subskrybowanie metody, jak pokazano w poniższym kodzie:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;

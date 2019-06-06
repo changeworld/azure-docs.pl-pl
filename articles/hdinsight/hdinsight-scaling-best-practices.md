@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.openlocfilehash: 622261d0f7e602635aa6a638357278a9c63a6ecd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/03/2019
+ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990516"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479280"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skaluj klastry HDInsight
 
@@ -34,7 +34,7 @@ Firma Microsoft udostępnia następujące narzędzia, które skalowanie klastró
 |[Interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)|zmiany rozmiaru klastra usługi Azure hdinsight \<Nazwa_klastra > \<liczba wystąpień docelowy > |
 |[Azure Portal](https://portal.azure.com)|Otwórz okienko klastra usługi HDInsight, wybierz opcję **rozmiar klastra** w menu po lewej stronie, a następnie w okienku rozmiaru klastra, wpisz liczbę węzłów procesu roboczego i wybierz przycisk Zapisz.|  
 
-![Skaluj klaster](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Skalowanie klastra](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
 Przy użyciu dowolnej z tych metod, można skalować klastra usługi HDInsight w górę lub w dół w ciągu kilku minut.
 
@@ -60,11 +60,10 @@ Aby uniknąć uruchomionych zadań się nie powieść podczas operacja skalowani
 
 Aby wyświetlić listę oczekujące i uruchomione zadania, należy użyć usługi YARN **interfejsu użytkownika Menedżera zasobów**, wykonaj następujące czynności:
 
-1. Zaloguj się w [portalu Azure](https://portal.azure.com).
-2. Z lewej strony, przejdź do **wszystkich usług** > **Analytics** > **klastry HDInsight**, a następnie wybierz klaster.
-3. W widoku głównego, przejdź do **pulpity nawigacyjne klastra** > **Ambari macierzystego**. Wprowadź swoje poświadczenia klastra.
-4. Wybierz z interfejsu użytkownika Ambari **YARN** na liście usług, w menu po lewej stronie.  
-5. Na stronie usługi YARN wybierz **szybkich łączy** i umieść kursor nad aktywnego węzła głównego, a następnie wybierz **interfejsu użytkownika Menedżera zasobów**.
+1. Z [witryny Azure portal](https://portal.azure.com/), wybierz klaster.  Zobacz [listy i wyświetlaniu klastrów](./hdinsight-administer-use-portal-linux.md#showClusters) Aby uzyskać instrukcje. Klaster zostanie otwarty na nowej stronie portalu.
+2. W widoku głównego, przejdź do **pulpity nawigacyjne klastra** > **Ambari macierzystego**. Wprowadź swoje poświadczenia klastra.
+3. Wybierz z interfejsu użytkownika Ambari **YARN** na liście usług, w menu po lewej stronie.  
+4. Na stronie usługi YARN wybierz **szybkich łączy** i umieść kursor nad aktywnego węzła głównego, a następnie wybierz **interfejsu użytkownika Menedżera zasobów**.
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 

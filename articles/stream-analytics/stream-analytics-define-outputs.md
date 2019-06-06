@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/25/2019
-ms.custom: seodec18
-ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/31/2019
+ms.openlocfilehash: b29f3168b7ecc1ec8f783a7ce7a6dea83318fa14
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205528"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455699"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
+
 W tym artykule opisano typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Korzystając z danych wyjściowych, możesz zrobić dalszych analiz biznesowych i danych magazynu danych.
 
 Podczas projektowania zapytania usługi Stream Analytics, zapoznaj się nazwę wyjściowego przy użyciu [Klauzula INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Można użyć pojedynczego wyjścia poszczególne zadania lub wielu wyjść na zadanie przesyłania strumieniowego (w razie potrzeby), zapewniając wiele klauzul INTO w zapytaniu.
@@ -26,28 +26,18 @@ Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych
 Obsługa typów niektóre dane wyjściowe [partycjonowanie](#partitioning). [Dane wyjściowe rozmiary partii](#output-batch-size) różnią się w celu zoptymalizowania przepływności.
 
 
-## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Stream Analytics obsługuje [usługi Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store to repozytorium w hiperskali dla przedsiębiorstw na potrzeby obciążeń analizy danych big data. Data Lake Store służy do przechowywania danych o dowolnym rozmiarze, typie i szybkości pozyskiwania analizy operacyjnej i rozpoznawczej. Stream Analytics musi mieć możliwość dostępu Data Lake Store.
+## <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-Wyjście usługi Azure Data Lake Store z usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
+Stream Analytics obsługuje [usługi Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md). Usługi Azure Data Lake Storage jest całego przedsiębiorstwa, ogromne repozytorium do przechowywania obciążeń wynikających z analizy danych big data. Magazyn usługi Data Lake umożliwia przechowywanie danych o dowolnym rozmiarze, typie i szybkości pozyskiwania analizy operacyjnej i rozpoznawczej. Stream Analytics musi mieć możliwość dostępu do usługi Data Lake Storage.
 
-### <a name="authorize-an-azure-data-lake-store-account"></a>Autoryzacja konta usługi Azure Data Lake Store
+Usługa Azure Data Lake Storage dane wyjściowe usługi Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
 
-1. Po wybraniu Data Lake Store jako dane wyjściowe w witrynie Azure portal, zostanie wyświetlony monit autoryzacji połączenia do istniejącego wystąpienia programu Data Lake Store.
-
-   ![Autoryzuj połączenie, aby Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)
-
-2. Jeśli masz już dostęp do programu Data Lake Store, wybierz opcję **autoryzować teraz**. Strona pojawia się co oznacza **przekierowywanie do autoryzacji**. Po autoryzacji zakończy się pomyślnie, zobaczysz stronę, która pozwala na konfigurowanie danych wyjściowych Data Lake Store.
-
-3. Po utworzeniu konta Data Lake Store uwierzytelnionego, można skonfigurować właściwości dla danych wyjściowych usługi Data Lake Store.
-
-   ![Data Lake Store jest definiowana jako dane wyjściowe usługi Stream Analytics](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)
-
-W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Data Lake Store.   
+W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Data Lake Storage Gen 1.   
 
 | Nazwa właściwości | Opis |
 | --- | --- |
 | Alias danych wyjściowych | Przyjazna nazwa używana w zapytaniach do kierowania danych wyjściowych kwerendy Data Lake Store. |
+| Subskrypcja | Subskrypcja, która zawiera konta usługi Azure Data Lake Storage. |
 | Nazwa konta | Nazwa konta Data Lake Store, w której są wysyłane dane wyjściowe. Zobaczysz listę rozwijaną listę kont Data Lake Store, które są dostępne w Twojej subskrypcji. |
 | Wzorzec prefiksu ścieżki | Ścieżka pliku, który jest używany do zapisywania plików w ramach określonego konta Data Lake Store. Można określić co najmniej jedno wystąpienie {date} i {time} zmiennych:<br /><ul><li>Przykład 1: folder1/dzienniki / {date} / {time}</li><li>Przykład 2: folder1/dzienniki / {date}</li></ul><br />Sygnatura czasowa struktury utworzony folder jest zgodna UTC, a nie czas lokalny.<br /><br />Jeśli wzorzec ścieżki plików nie zawiera ukośnika (/), ostatni wzorca w polu Ścieżka pliku jest traktowany jako prefiksu nazwy pliku. <br /><br />W takiej sytuacji zostaną utworzone nowe pliki:<ul><li>Zmiany w schemacie danych wyjściowych</li><li>Zewnętrznego lub wewnętrznego ponownego uruchomienia zadania</li></ul> |
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiksu, można wybrać format daty, w której pliki są uporządkowane. Przykład: RRRR/MM/DD |
@@ -56,24 +46,10 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurow
 | Kodowanie | Jeśli używasz formatu CSV lub JSON, należy określić kodowania. UTF-8 to jedyny obsługiwany obecnie format kodowania.|
 | Ogranicznik | Dotyczy tylko serializacji woluminów CSV. Stream Analytics obsługuje różne ograniczniki dla serializacji danych CSV. Obsługiwane wartości to przecinek, średnik, miejsca, kartę i pionowy pasek.|
 | Format | Dotyczy tylko serializacji JSON. **Rozdzielone** Określa, że dane wyjściowe są formatowane przez każdy obiekt JSON, oddzielone znakiem nowego wiersza. **Tablica** Określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. Ta tablica jest zamknięty, tylko wtedy, gdy zadanie zostanie zatrzymane lub usługi Stream Analytics została przeniesiona następny przedział czasu. Ogólnie rzecz biorąc zaleca się przy użyciu formatu JSON rozdzielonych wiersza, ponieważ nie wymaga żadnej specjalnej obsługi, gdy nadal trwa zapisywanie pliku wyjściowego do.|
-
-### <a name="renew-data-lake-store-authorization"></a>Odnów autoryzację Data Lake Store
-Musisz ponownie uwierzytelniać konta Data Lake Store, jeśli jego hasło zmieniła się od zadania utworzenia lub ostatniego uwierzytelnienia. Jeśli nie ponownego uwierzytelnienia, zadanie nie dawać wyników danych wyjściowych i pokazuje błąd, który wskazuje na konieczność ponownej w dziennikach operacji. 
-
-Obecnie token uwierzytelniania wymaga ręcznego odświeżenia co 90 dni, dla wszystkich zadań z danymi wyjściowymi Data Lake Store. To ograniczenie, można rozwiązać [uwierzytelniania za pomocą zarządzanych tożsamości (wersja zapoznawcza)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls).
-
-Aby odnowić autoryzacji:
-
-1. Wybierz **zatrzymać** można zatrzymać zadania.
-1. Przejdź do usługi Data Lake Store danych wyjściowych, a następnie wybierz pozycję **Odnów autoryzację** łącza.
-
-   Przez krótki czas wskazuje stronę wyskakującego **przekierowywanie do autoryzacji**. Jeśli autoryzacja zakończy się pomyślnie, wskazuje stronę **autoryzacja została pomyślnie odnowiona** i automatycznie zamknięty. 
-   
-1. Wybierz **Zapisz** w dolnej części strony. Następnie uruchom ponownie zadanie z **ostatniego zatrzymana** na uniknięcie utraty danych.
-
-![Odnów autoryzację Data Lake Store w danych wyjściowych](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)
+| Tryb uwierzytelniania | Możesz autoryzować dostęp do konta usługi Data Lake Storage za pomocą [tożsamości zarządzanej](stream-analytics-managed-identities-adls.md) lub tokenu użytkownika. Gdy udzielisz jej dostępu, możesz odwołać dostęp, zmieniając hasło konta użytkownika, usuwanie danych wyjściowych usługi Data Lake Storage dla tego zadania lub usuwanie zadania usługi Stream Analytics. |
 
 ## <a name="sql-database"></a>SQL Database
+
 Możesz użyć [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako dane wyjściowe dla danych relacyjnych z natury lub aplikacje, które są zależne od zawartości jest hostowana w relacyjnej bazie danych. Zadania usługi Stream Analytics zapisu do istniejącej tabeli w bazie danych SQL. Schemat tabeli musi dokładnie odpowiadać, pola i ich typy w danych wyjściowych zadania. Można również określić [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) jako dane wyjściowe za pośrednictwem bazy danych SQL, dane wyjściowe opcji. Aby uzyskać informacje dotyczące sposobów na ulepszenie przepływność zapisu, zobacz [usługi Stream Analytics z usługą Azure SQL Database jako dane wyjściowe](stream-analytics-sql-output-perf.md) artykułu. 
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisy tworzenia wyjście bazy danych SQL.
@@ -90,11 +66,11 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy tworzenia wyjśc
 |Liczba partii dopasowania| Zalecany limit liczby rekordów wysyłane z każdego zbiorczego Wstaw transakcję.|
 
 > [!NOTE]
-> Aktualnie obsługiwana jest oferty usługi Azure SQL Database, dane wyjściowe zadania w usłudze Stream Analytics. Maszynę wirtualną platformy Azure, programem SQL Server z bazą danych dołączone nie jest obsługiwana. To może ulec zmianie w przyszłych wersjach.
->
+> Azure SQL Database oferty jest obsługiwana w przypadku zadań, danych wyjściowych usługi Stream Analytics, ale maszynie wirtualnej platformy Azure, programem SQL Server z bazą danych dołączone nie jest obsługiwane.
 
 ## <a name="blob-storage"></a>Blob Storage
-Usługa Azure storage Blob oferuje ekonomiczne i skalowalne rozwiązanie do przechowywania dużych ilości danych bez struktury w chmurze. Aby zapoznać się z wprowadzeniem magazynu obiektów Blob i jego użycia, zobacz [jak obiekty BLOB są odpowiednie](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+
+Usługa Azure storage Blob oferuje ekonomiczne i skalowalne rozwiązanie do przechowywania dużych ilości danych bez struktury w chmurze. Aby zapoznać się z wprowadzeniem magazynu obiektów Blob i jego użycia, zobacz [przekazywanie, pobieranie i wyświetlanie listy obiektów blob w witrynie Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisów tworzenia wyjściowego obiektu blob.
 
@@ -124,6 +100,7 @@ Podczas korzystania z usługi Blob storage jako dane wyjściowe, tworzony jest n
 * Jeśli dane wyjściowe jest podzielona na partycje pole niestandardowe, w którym partycję kluczy Kardynalność przekracza 8000, a nowy obiekt blob jest tworzony na klucz partycji.
 
 ## <a name="event-hubs"></a>Event Hubs
+
 [Usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) service to wysoce skalowalna publikowania/subskrybowania o dużych możliwościach skalowania zdarzeń. Może ona zbierać miliony zdarzeń na sekundę. Jednym z zastosowań Centrum zdarzeń jako dane wyjściowe jest, gdy dane wyjściowe zadania usługi Stream Analytics staje się dane wejściowe zadania przesyłania strumieniowego innego.
 
 Konieczne jest kilku parametrów, aby skonfigurować strumienie danych z usługi event hubs jako dane wyjściowe.
@@ -143,23 +120,12 @@ Konieczne jest kilku parametrów, aby skonfigurować strumienie danych z usługi
 | Kolumny właściwości | Opcjonalny. Kolumny rozdzielonych przecinkami, które musi zostać dołączony jako użytkownika właściwości komunikatu wychodzącego zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [niestandardowe właściwości metadanych dla danych wyjściowych](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
+
 Możesz użyć [usługi Power BI](https://powerbi.microsoft.com/) jako dane wyjściowe zadania usługi Stream Analytics, zapewnienie rozbudowanego środowiska wizualizacji wyników analiz. Ta funkcja służy do operacyjne pulpity nawigacyjne, generowania raportu i raportowanie oparte na metrykę.
 
 Wyjście usługi Power BI z usługą Stream Analytics nie jest obecnie dostępna w regionach platformy Azure w Niemczech (T-Systems International) i Azure — Chiny (21Vianet).
 
-### <a name="authorize-a-power-bi-account"></a>Autoryzacja konta usługi Power BI
-1. Po wybraniu usługi Power BI jako dane wyjściowe w witrynie Azure portal, zostanie wyświetlony monit, aby zezwolić istniejącym użytkownikiem usługi Power BI lub Utwórz nowe konto usługi Power BI.
-   
-   ![Autoryzacja użytkownika usługi Power BI, aby skonfigurować dane wyjściowe](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
-
-2. Utwórz nowe konto, jeśli nie jeszcze masz, a następnie wybierz pozycję **autoryzować teraz**. Zostanie wyświetlona następująca strona:
-   
-   ![Uwierzytelnianiu w usłudze Power BI z kontem platformy Azure](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)
-
-3. Podaj konto służbowe lub szkolne do autoryzowania danych wyjściowych usługi Power BI. Jeśli jeszcze nie masz konta usługi Power BI, wybierz opcję **Zarejestruj się teraz**. Konto służbowe lub szkolne, którego używasz dla usługi Power BI może się różnić od konta subskrypcji platformy Azure, na którym użytkownik jest obecnie zalogowany.
-
-### <a name="configure-the-power-bi-output-properties"></a>Konfigurowanie właściwości danych wyjściowych usługi Power BI
-Po utworzeniu konta usługi Power BI uwierzytelniony, można skonfigurować właściwości dla danych wyjściowych usługi Power BI. W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Power BI.
+W poniższej tabeli wymieniono nazwy właściwości i ich opisy, aby skonfigurować dane wyjściowe usługi Power BI.
 
 | Nazwa właściwości | Opis |
 | --- | --- |
@@ -167,8 +133,9 @@ Po utworzeniu konta usługi Power BI uwierzytelniony, można skonfigurować wła
 | Obszar roboczy grupy |Aby umożliwić udostępnianie danych innym użytkownikom usługi Power BI, możesz wybrać grupy wewnątrz konta usługi Power BI lub wybierz **Mój obszar roboczy** Jeśli nie chcesz zapisać do grupy. Aktualizowanie istniejącej grupy wymaga, ponowne uwierzytelnianie w usłudze Power BI. |
 | Nazwa zestawu danych |Podaj nazwę zestawu danych, który chcesz, aby użyć danych wyjściowych usługi Power BI. |
 | Nazwa tabeli |Podaj nazwę tabeli w zestawie danych, danych wyjściowych usługi Power BI. Obecnie usługa Power BI dane wyjściowe zadania usługi Stream Analytics może mieć tylko jedną tabelę w zestawie danych. |
+| Autoryzowanie połączenia | Należy przeprowadzić autoryzację w usłudze Power BI można skonfigurować ustawienia wyjścia. Gdy udzielisz jej dostępu to dane wyjściowe do pulpitu nawigacyjnego usługi Power BI, możesz odwołać dostęp, zmienianie hasła konta użytkownika, usuwając dane wyjściowe zadania lub usuwanie zadania usługi Stream Analytics. | 
 
-Aby zapoznać się z przewodnikiem konfigurowania danych wyjściowych usługi Power BI i pulpitów nawigacyjnych, zobacz [usługi Azure Stream Analytics i usługą Power BI](stream-analytics-power-bi-dashboard.md) artykułu.
+Aby zapoznać się z przewodnikiem konfigurowania danych wyjściowych usługi Power BI i pulpitów nawigacyjnych, zobacz [usługi Azure Stream Analytics i usługą Power BI](stream-analytics-power-bi-dashboard.md) samouczka.
 
 > [!NOTE]
 > Nie tworzą jawnie zestaw danych i tabeli na pulpicie nawigacyjnym usługi Power BI. Zestaw danych i tabeli są wypełniane automatycznie podczas uruchamiania zadania i zadania, uruchamia przekazujący dane wyjściowe do usługi Power BI. Jeśli zapytanie zadania nie generuje żadnych wyników, nie tworzy zestaw danych i tabeli. Jeśli usługa Power BI ma już zestaw danych i tabeli o takiej samej nazwie, jak podano w ramach tego zadania usługi Stream Analytics, istniejące dane są zastępowane.
@@ -203,19 +170,10 @@ Poprzednie/bieżąca | Int64 | Ciąg | Data/godzina | Podwójne
 Int64 | Int64 | Ciąg | Ciąg | Podwójne
 Podwójne | Podwójne | Ciąg | Ciąg | Podwójne
 Ciąg | Ciąg | Ciąg | Ciąg | Ciąg 
-Data/godzina | Ciąg | Ciąg |  Data/godzina | Ciąg
-
-
-### <a name="renew-power-bi-authorization"></a>Odnów autoryzację BI zasilania
-Jeśli hasło konta usługi Power BI zmieni się po utworzenia lub ostatniego uwierzytelnienia zadania usługi Stream Analytics, musisz ponownie uwierzytelniać usługi Stream Analytics. Jeśli usługi Azure Multi-Factor Authentication jest skonfigurowany w dzierżawie usługi Azure Active Directory (Azure AD), należy odnowić autoryzację usługi Power BI, co dwa tygodnie. Objawem tego problemu jest nie danych wyjściowych zadań i "Uwierzytelnianie użytkownika error" w dziennikach operacji:
-
-  ![Usługa Power BI uwierzytelniania błąd użytkownika](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)
-
-Aby rozwiązać ten problem, Zatrzymaj uruchomione zadania, a następnie przejdź do usługi Power BI danych wyjściowych. Wybierz **Odnów autoryzację** połączyć, a następnie uruchom ponownie zadanie z **ostatniego zatrzymana** na uniknięcie utraty danych.
-
-  ![Odnów autoryzację usługi Power BI dla danych wyjściowych](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)
+Data/godzina | Ciąg | Ciąg |  Data/godzina | String
 
 ## <a name="table-storage"></a>Magazyn tabel
+
 [Usługa Azure Table storage](../storage/common/storage-introduction.md) oferuje magazyn o wysokiej dostępności, skalowalności, dzięki czemu aplikacja może automatycznie skalować w celu spełnienia określonych wymagań użytkownika. Magazyn tabel to magazyn klucz atrybut NoSQL firmy Microsoft, który służy do ustrukturyzowanych danych za pomocą mniejszej liczby ograniczenia schematu. Usługa Azure Table storage może służyć do przechowywania danych dla stanu trwałego i efektywne pobieranie.
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisów tworzenia tabeli danych wyjściowych.
@@ -231,7 +189,8 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisów tworzenia tabe
 | Rozmiar partii |Liczba rekordów do operacji przetwarzania wsadowego. Wartość domyślna (100) jest wystarczające dla większości zadań. Zobacz [Specyfikacja operacji zbiorczej tabeli](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) Aby uzyskać więcej informacji na temat modyfikowania tego ustawienia. |
 
 ## <a name="service-bus-queues"></a>Kolejki usługi Service Bus
-[Kolejki usługi Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) oferty do co najmniej jeden konkurujący odbiorcy dostarczania komunikatów FIFO. Zazwyczaj komunikaty są odbierane i przetwarzane przez odbiorców w kolejności, w jakiej zostały dodane do kolejki. Każdy komunikat jest odbierany i przetwarzany przez tylko jednego odbiorcę komunikatów.
+
+[Kolejki usługi Service Bus](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) oferty do co najmniej jeden konkurujący odbiorcy dostarczania komunikatów FIFO. Zazwyczaj komunikaty są odbierane i przetwarzane przez odbiorców w kolejności, w jakiej zostały dodane do kolejki. Każdy komunikat jest odbierany i przetwarzany przez tylko jednego odbiorcę komunikatów.
 
 W poniższej tabeli wymieniono nazwy właściwości i ich opisów tworzenia kolejki dane wyjściowe.
 
@@ -288,7 +247,7 @@ W poniższej tabeli opisano właściwości do utworzenia dane wyjściowe usługi
 | Identyfikator konta | Nazwa lub identyfikator URI konta usługi Azure Cosmos DB punktu końcowego. |
 | Klucz konta | Klucz dostępu współdzielonego dla konta usługi Azure Cosmos DB. |
 | Database (Baza danych) | Nazwa bazy danych Azure Cosmos DB. |
-| Wzorzec nazw kolekcji | Nazwa kolekcji lub wzorzec dla kolekcji, który ma być używany. <br />Format nazw kolekcji można skonstruować przy użyciu opcjonalnego tokenu {partition}, gdzie partycje zaczynają się od 0. Dwa przykłady:  <br /><ul><li> _MyCollection_: Musi istnieć jedna kolekcja o nazwie "MyCollection".</li>  <li> _MyCollection{partition}_: Oparte na kolumny partycjonowania.</li></ul> Partycjonowania kolekcji kolumn muszą być spełnione: "MyCollection0," "MyCollection1", "MyCollection2", i tak dalej. |
+| Wzorzec nazw kolekcji | Nazwa kolekcji lub wzorzec dla kolekcji, który ma być używany. <br />Format nazw kolekcji można skonstruować przy użyciu opcjonalnego tokenu {partition}, gdzie partycje zaczynają się od 0. Dwa przykłady:  <br /><ul><li> _MyCollection_: Musi istnieć jedna kolekcja o nazwie "MyCollection".</li>  <li> _MyCollection{partition}_ : Oparte na kolumny partycjonowania.</li></ul> Partycjonowania kolekcji kolumn muszą być spełnione: "MyCollection0," "MyCollection1", "MyCollection2", i tak dalej. |
 | Klucz partycji | Opcjonalny. Jest to potrzebne tylko wtedy, gdy używasz tokenu {partition} w Twojej wzorzec nazw kolekcji.<br /> Klucz partycji jest nazwą pola w zdarzeniach wyjściowych, który służy do określenia klucza do partycjonowania danych wyjściowych w kolekcjach.<br /> Dla danych wyjściowych w jedną kolekcję można użyć dowolnej kolumny dowolne dane wyjściowe. Przykładem jest identyfikatora partycji. |
 | Identyfikator dokumentu |Opcjonalny. Nazwa pola w zdarzeniach wyjściowych, który jest używany do określenia klucza podstawowego, na które insert nebo update bazują operacje.
 
@@ -316,8 +275,8 @@ Ponadto w sytuacji, gdy istnieje żadne zdarzenie kierowanych do przedział czas
 Zapytanie kolumn jako właściwości użytkownika można dołączyć do wiadomości wychodzących. Kolumny te nie są kierowane do ładunku. Właściwości są obecne w formie słownika komunikatu wyjściowego. *Klucz* jest nazwą kolumny i *wartość* jest wartość kolumny ze słownika właściwości. Wszystkie typy danych usługi Stream Analytics są obsługiwane z wyjątkiem rekordu i tablicy.  
 
 Obsługiwane dane wyjściowe: 
-* Kolejka magistrali usług 
-* Temat magistrali usług 
+* Kolejki usługi Service Bus 
+* Tematu usługi Service Bus 
 * Centrum zdarzeń 
 
 W poniższym przykładzie dodamy dwa pola `DeviceId` i `DeviceStatus` metadanych. 
@@ -336,15 +295,15 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 
 | Typ wyjścia | Partycjonowanie pomocy technicznej | Klucz partycji  | Liczba modułów zapisywania danych wyjściowych |
 | --- | --- | --- | --- |
-| Azure Data Lake Store | Yes | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
-| Azure SQL Database | Yes | Oparte na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepszej przepływności wydajność zapisu podczas ładowania danych do usługi Azure SQL Database, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). |
-| Azure Blob Storage | Yes | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. Dane wyjściowe obiektu blob można podzielić na partycje atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
+| Azure Data Lake Store | Tak | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
+| Azure SQL Database | Tak | Oparte na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepszej przepływności wydajność zapisu podczas ładowania danych do usługi Azure SQL Database, zobacz [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). |
+| Azure Blob Storage | Tak | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty — RRRR/MM/DD, DD/MM/RRRR lub MM-DD-RRRR. HH jest używany dla formatu godziny. Dane wyjściowe obiektu blob można podzielić na partycje atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Yes | Yes | Różni się w zależności od wyrównania partycji.<br /> Liczba modułów zapisujących klucza partycji dla danych wyjściowych Centrum zdarzeń jest równie powiązana z nadrzędnego krok zapytania (poprzednia wersja), jest taka sama jak liczba partycji w danych wyjściowych Centrum zdarzeń. Każdy moduł zapisujący używa [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. <br /> Liczba modułów zapisujących klucza partycji dla danych wyjściowych Centrum zdarzeń nie jest wyrównana z nadrzędnego krok zapytania (poprzednia wersja), jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa [klasy SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) w **EventHubClient** do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. |
 | Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
-| Usługa Azure tematu usługi Service Bus | Yes | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w temacie dotyczącym danych wyjściowych.  |
+| Usługa Azure tematu usługi Service Bus | Tak | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w temacie dotyczącym danych wyjściowych.  |
 | Kolejki usługi Service Bus platformy Azure | Yes | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w kolejki wyjściowej. |
-| Azure Cosmos DB | Yes | Użyj tokenu {partition} w wzorzec nazw kolekcji. Wartość {partition} opiera się na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
+| Azure Cosmos DB | Tak | Użyj tokenu {partition} w wzorzec nazw kolekcji. Wartość {partition} opiera się na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
 | Azure Functions | Nie | Brak | Nie dotyczy. |
 
 Jeśli karty danych wyjściowych nie jest podzielona na partycje, Brak danych w jednej partycji danych wejściowych spowoduje opóźnienie maksymalnie późnego przybycia ilość czasu. W takich przypadkach dane wyjściowe są scalane do jednego elementu zapisującego, co może spowodować wąskie gardła w potoku. Aby dowiedzieć się więcej na temat późnego przybycia zasad, zobacz [zagadnienia dotyczące kolejności zdarzeń usługi Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).

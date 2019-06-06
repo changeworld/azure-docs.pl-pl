@@ -1,24 +1,24 @@
 ---
-title: 'Szybki start: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer'
-description: W tym przewodniku Szybki Start dowiesz się, jak wysyłać dane do konta magazynu do Eksploratora danych Azure przy użyciu subskrypcji usługi Event Grid.
+title: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer
+description: W tym artykule dowiesz się, jak wysyłać dane do konta magazynu do Eksploratora danych Azure przy użyciu subskrypcji usługi Event Grid.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/30/2019
-ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 7d9c21b46f760055846194f52f1594f25b1ee989
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446452"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494745"
 ---
-# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Szybki start: Przesyłanie obiektów blob do Eksploratora danych usługi Azure dzięki subskrypcji usługi Event Grid powiadomienia
+# <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Przesyłanie obiektów blob do Eksploratora danych usługi Azure dzięki subskrypcji usługi Event Grid powiadomienia
 
 Eksplorator danych usługi Azure to usługa eksploracji danych szybkich i skalowalnych danych dzienników i danych telemetrycznych. Oferuje ona ciągłe wprowadzanie (Ładowanie danych) z obiektów blob, zapisywane w kontenerach obiektów blob. 
 
-W tym przewodniku Szybki Start dowiesz się, jak ustawić [usługi Azure Event Grid](/azure/event-grid/overview) subskrypcji i kierowanie zdarzeń do Eksploratora danych platformy Azure za pośrednictwem Centrum zdarzeń. Aby rozpocząć, należy mieć konto magazynu z subskrypcji usługi event grid wysyłającego powiadomienia o usłudze Azure Event Hubs. Następnie utworzysz połączenie danych usługi Event Grid i wyświetlić dane przepływu w całym systemie.
+W tym artykule dowiesz się, jak ustawić [usługi Azure Event Grid](/azure/event-grid/overview) subskrypcji i kierowanie zdarzeń do Eksploratora danych platformy Azure za pośrednictwem Centrum zdarzeń. Aby rozpocząć, należy mieć konto magazynu z subskrypcji usługi event grid wysyłającego powiadomienia o usłudze Azure Event Hubs. Następnie utworzysz połączenie danych usługi Event Grid i wyświetlić dane przepływu w całym systemie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -50,7 +50,7 @@ W tym przewodniku Szybki Start dowiesz się, jak ustawić [usługi Azure Event G
 
 1. Wybierz kartę **Dodatkowe funkcje**, jeśli chcesz śledzić pliki z określonego kontenera. Filtry dla powiadomień ustaw w następujący sposób:
     * **Podmiotu zaczyna się od** pole jest *literału* prefiksu określonego kontenera obiektów blob. Wzorzec stosowany jest *startswith*, mogą znajdować się wiele kontenerów. Symbole wieloznaczne nie są dozwolone.
-     Ustawienie *musi* wyglądać następująco: *`/blobServices/default/containers/`*[prefiks kontenera]
+     Ustawienie *musi* wyglądać następująco: *`/blobServices/default/containers/`* [prefiks kontenera]
     * **Temat kończy się na** — to pole jest sufiksem *literału* obiektu blob. Symbole wieloznaczne nie są dozwolone.
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Tworzenie tabeli docelowej w usłudze Azure Data Explorer
@@ -157,7 +157,7 @@ Zapisz dane w pliku i przekaż go za pomocą tego skryptu:
 > [!NOTE]
 > Eksplorator usługi Azure Data ma zasady agregacji (przetwarzanie wsadowe) w celu pozyskiwania danych opracowana w celu optymalizacji procesu pozyskiwania.
 Domyślna zasada jest skonfigurowana na 5 minut.
-Będzie można zmienić zasady w późniejszym czasie, jeśli to konieczne. W tym przewodniku Szybki start można spodziewać się opóźnienia trwającego kilka minut.
+Będzie można zmienić zasady w późniejszym czasie, jeśli to konieczne. W tym artykule można spodziewać się opóźnienia za kilka minut.
 
 1. W witrynie Azure Portal w obszarze siatki zdarzeń zobaczysz wzrost aktywności, gdy aplikacja jest uruchomiona.
 
@@ -196,5 +196,4 @@ Jeśli nie zamierzasz ponownie używać siatki zdarzeń, wyczyść grupę zasob�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)
+* [Wykonywanie zapytań dotyczących danych w Eksploratorze danych platformy Azure](web-query-data.md)

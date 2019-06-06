@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782926"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431214"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -132,7 +132,7 @@ Konwertuje obiekt JSON reprezentacji base64.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |string |Reprezentacji base64, który można przekonwertować na obiekt JSON. |
+| base64Value |Tak |string |Reprezentacji base64, który można przekonwertować na obiekt JSON. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -197,7 +197,7 @@ Konwertuje ciąg reprezentacji base64.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |string |Reprezentacji base64 do przekonwertowania na ciąg. |
+| base64Value |Tak |string |Reprezentacji base64 do przekonwertowania na ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -262,7 +262,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica lub ciąg |Pierwsza wartość łączenia. |
+| arg1 |Tak |tablica lub ciąg |Pierwsza wartość łączenia. |
 | dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -349,8 +349,8 @@ Sprawdza, czy tablica zawiera wartość, obiekt zawiera klucz lub ciąg zawiera 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| kontener |Yes |Array, obiekt lub ciągu |Wartość, która zawiera wartość do znalezienia. |
-| itemToFind |Yes |ciąg lub int |Wartość do znalezienia. |
+| container |Yes |Array, obiekt lub ciągu |Wartość, która zawiera wartość do znalezienia. |
+| itemToFind |Tak |ciąg lub int |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -430,7 +430,7 @@ Konwertuje wartość identyfikatora URI danych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Yes |string |Wartość do przekonwertowania na dane identyfikatora URI. |
+| stringToConvert |Tak |string |Wartość do przekonwertowania na dane identyfikatora URI. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -485,7 +485,7 @@ Konwertuje danych URI sformatowana wartość na ciąg.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Yes |string |Dane wartości identyfikatora URI do przekonwertowania. |
+| dataUriToConvert |Tak |string |Dane wartości identyfikatora URI do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -671,7 +671,7 @@ Zwraca pierwszy znak ciągu lub pierwszy element tablicy.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Wartość można pobrać pierwszy element lub znak. |
+| arg1 |Tak |tablicy lub ciągu |Wartość można pobrać pierwszy element lub znak. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -724,7 +724,7 @@ Tworzy ciąg formatowania na podstawie wartości wejściowych.
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | formatString | Yes | string | Ciąg formatu złożonego. |
-| arg1 | Yes | ciąg, liczba całkowita lub atrybut typu wartość logiczna | Wartość, aby uwzględnić w sformatowanym ciągu. |
+| arg1 | Tak | ciąg, liczba całkowita lub atrybut typu wartość logiczna | Wartość, aby uwzględnić w sformatowanym ciągu. |
 | dodatkowe argumenty | Nie | ciąg, liczba całkowita lub atrybut typu wartość logiczna | Dodatkowe wartości, aby uwzględnić w sformatowanym ciągu. |
 
 ### <a name="remarks"></a>Uwagi
@@ -780,7 +780,7 @@ Tworzy wartość w formacie Unikatowy identyfikator globalny na podstawie warto�
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć identyfikator GUID. |
+| baseString |Tak |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć identyfikator GUID. |
 | dodatkowe parametry zgodnie z potrzebami |Nie |string |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
@@ -851,7 +851,7 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu jest rozróżniana w
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToSearch |Tak |string |Wartość, która zawiera element, aby znaleźć. |
 | stringToFind |Yes |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -964,8 +964,8 @@ Zwraca pozycję ostatniego wartości w ciągu. W porównaniu jest rozróżniana 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |string |Wartość, która zawiera element, aby znaleźć. |
-| stringToFind |Yes |string |Wartość do znalezienia. |
+| stringToSearch |Tak |string |Wartość, która zawiera element, aby znaleźć. |
+| stringToFind |Tak |string |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1015,7 +1015,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-## <a name="length"></a>Długość
+## <a name="length"></a>length
 
 `length(string)`
 
@@ -1025,7 +1025,7 @@ Zwraca liczbę znaków w ciągu lub elementów w tablicy.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablicy lub ciągu |Tablica do użycia w celu uzyskania liczba elementów lub ciąg do użycia w celu uzyskania liczby znaków. |
+| arg1 |Tak |tablicy lub ciągu |Tablica do użycia w celu uzyskania liczba elementów lub ciąg do użycia w celu uzyskania liczby znaków. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1181,7 +1181,7 @@ Zwraca ciąg wyrównany do prawej, dodając znaków z lewej strony aż do osiąg
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |ciąg lub int |Wartość do wyrównanie do prawej. |
+| valueToPad |Tak |ciąg lub int |Wartość do wyrównanie do prawej. |
 | totalLength |Yes |int |Całkowita liczba znaków w zwracanym ciągu. |
 | paddingCharacter |Nie |pojedynczy znak |Znak do użytku dopełnienie po lewej stronie, aż do osiągnięcia całkowita długość. Wartość domyślna to miejsce. |
 
@@ -1231,8 +1231,8 @@ Zwraca nowy ciąg ze wszystkimi wystąpieniami jednego ciągu, zastąpiona przez
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalString |Yes |string |Wartość, która zawiera wszystkie wystąpienia jednego ciągu, zastąpiona przez innego ciągu. |
-| Staryciąg |Yes |string |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
+| originalString |Tak |string |Wartość, która zawiera wszystkie wystąpienia jednego ciągu, zastąpiona przez innego ciągu. |
+| Staryciąg |Tak |string |Ciąg, który ma zostać usunięty z oryginalnego ciągu. |
 | newString |Yes |string |Ciąg, który można dodać zamiast usunięto ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -1259,7 +1259,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
         },
-        "secodeOutput": {
+        "secondOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
@@ -1272,9 +1272,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
-| secodeOutput | String | 123-123-xxxx |
+| secondOutput | String | 123-123-xxxx |
 
-## <a name="skip"></a>pomiń
+## <a name="skip"></a>Pomiń
 
 `skip(originalValue, numberToSkip)`
 
@@ -1284,8 +1284,8 @@ Zwraca ciąg zawierający wszystkie znaki po określonej liczbie znaków lub tab
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
-| numberToSkip |Yes |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
+| originalValue |Tak |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
+| numberToSkip |Tak |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1352,8 +1352,8 @@ Zwraca tablicę ciągów, zawierającą podciągi ciągu wejściowym są rozdzie
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |string |Ciągu do podzielenia. |
-| Ogranicznik |Yes |ciąg lub tablicę ciągów |Ogranicznik służące do dzielenia ciągu. |
+| inputString |Tak |string |Ciągu do podzielenia. |
+| Ogranicznik |Tak |ciąg lub tablicę ciągów |Ogranicznik służące do dzielenia ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1477,7 +1477,7 @@ Konwertuje określoną wartość na ciąg.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes | Dowolne |Wartość do przekonwertowania na ciąg. Można przekonwertować wartość dowolnego typu, w tym obiekty i tablice. |
+| valueToConvert |Tak | Dowolne |Wartość do przekonwertowania na ciąg. Można przekonwertować wartość dowolnego typu, w tym obiekty i tablice. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1548,9 +1548,9 @@ Zwraca podciąg, który rozpoczyna się od określonej pozycji znaku i zawiera o
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Yes |string |Oryginalny ciąg znaków, z której jest wyodrębniany podciąg. |
+| stringToParse |Tak |string |Oryginalny ciąg znaków, z której jest wyodrębniany podciąg. |
 | startIndex |Nie |int |Liczony od zera znaku pozycja początkowa podciąg. |
-| Długość |Nie |int |Liczba znaków podciąg. Musi odwoływać się do lokalizacji w ciągu. Musi mieć wartość zero lub większą. |
+| length |Nie |int |Liczba znaków podciąg. Musi odwoływać się do lokalizacji w ciągu. Musi mieć wartość zero lub większą. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1610,7 +1610,7 @@ Zwraca ciąg zawierający określoną liczbę znaków od początku ciągu lub ta
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Yes |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
-| numberToTake |Yes |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
+| numberToTake |Tak |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1677,7 +1677,7 @@ Konwertuje określony ciąg na małe litery.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |string |Wartość do przekonwertowania na małe litery. |
+| stringToChange |Tak |string |Wartość do przekonwertowania na małe litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1825,7 +1825,7 @@ Tworzy ciąg deterministyczne wyznaczania wartości skrótu na podstawie wartoś
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć unikatowy ciąg. |
+| baseString |Tak |string |Wartość używana w funkcji wyznaczania wartości skrótu, aby utworzyć unikatowy ciąg. |
 | dodatkowe parametry zgodnie z potrzebami |Nie |string |Możesz dodać dowolną liczbę ciągów, w razie potrzeby można utworzyć wartości, który określa poziom unikatowości. |
 
 ### <a name="remarks"></a>Uwagi
@@ -1893,7 +1893,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="uri"></a>identyfikator URI
+## <a name="uri"></a>Identyfikator URI
 
 `uri (baseUri, relativeUri)`
 
@@ -1903,8 +1903,8 @@ Tworzy bezwzględny identyfikator URI, łącząc baseUri i ciąg relativeUri.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Yes |string |Ciąg podstawowy identyfikator uri. |
-| relativeUri |Yes |string |Względny identyfikator uri ciąg do dodania do ciągu podstawowy identyfikator uri. |
+| baseUri |Tak |string |Ciąg podstawowy identyfikator uri. |
+| relativeUri |Tak |string |Względny identyfikator uri ciąg do dodania do ciągu podstawowy identyfikator uri. |
 
 Wartość **baseUri** parametr może zawierać określonego pliku, ale tylko ścieżki podstawowej stosowane jest przy konstruowaniu identyfikatora URI. Na przykład przekazanie `http://contoso.com/resources/azuredeploy.json` jako parametr baseUri skutkuje podstawowy identyfikator URI `http://contoso.com/resources/`.
 
@@ -1967,7 +1967,7 @@ Koduje identyfikatora URI.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Yes |string |Wartość do zakodowania. |
+| stringToEncode |Tak |string |Wartość do zakodowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 

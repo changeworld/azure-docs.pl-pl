@@ -1,25 +1,25 @@
 ---
-title: Administrowanie urządzeniem Microsoft Azure Data Box za pomocą lokalnego internetowego interfejsu użytkownika | Microsoft Docs — dane
-description: W tym artykule opisano sposób administrowania urządzeniem Data Box za pomocą lokalnego internetowego interfejsu użytkownika.
+title: Lokalnego internetowego interfejsu użytkownika administracji dla usługi Azure Data Box, Azure Data Box mocno | Dokumentacja firmy Microsoft
+description: Opisuje sposób używania lokalnego internetowego interfejsu użytkownika do administrowania urządzenia Data Box i duże pole danych
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 02/01/2019
+ms.topic: article
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327361"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496263"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Administrowanie urządzeniem Data Box za pomocą lokalnego internetowego interfejsu użytkownika
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Użyj lokalnego internetowego interfejsu użytkownika na potrzeby administrowania urządzenia Data Box i duże pole danych
 
-W tym artykule opisano niektóre zadania związane z konfigurowaniem i zarządzaniem, które można wykonywać na urządzeniu Data Box. Urządzeniem Data Box można zarządzać za pomocą interfejsu użytkownika witryny Azure Portal oraz za pomocą lokalnego internetowego interfejsu użytkownika dla urządzenia. Ten artykuł dotyczy zadań, które można wykonywać za pomocą lokalnego internetowego interfejsu użytkownika.
+W tym artykule opisano niektóre z zadań konfiguracji i zarządzania, które mogą być wykonywane na urządzenia Data Box i duże pole danych. Możesz zarządzać urządzenia Data Box i duże pole danych, za pośrednictwem interfejsu użytkownika witryny Azure portal i lokalnego internetowego interfejsu użytkownika dla tego urządzenia. Ten artykuł dotyczy zadań, które można wykonywać za pomocą lokalnego internetowego interfejsu użytkownika.
 
-Lokalny internetowy interfejs użytkownika dla urządzenia Data Box jest używany na potrzeby konfiguracji początkowej urządzenia. Lokalnego internetowego interfejsu użytkownika można również używać do zamykania lub ponownego uruchamiania urządzenia Data Box, wykonywania testów diagnostycznych, aktualizacji oprogramowania, wyświetlania dzienników kopiowania i generowania pakietu dziennika dla pomocy technicznej firmy Microsoft.
+Lokalnego internetowego interfejsu użytkownika do urządzenia Data Box i duże pole danych jest używany dla początkowej konfiguracji urządzenia. Można również użyć lokalnego Interfejsu w przeglądarce zamknięty lub ponownie uruchomić urządzenie, wykonaj testy diagnostyczne, aktualizacji oprogramowania, wyświetlić dzienniki kopiowania i wygenerować pakiet dziennika dla Microsoft Support. Na urządzeniu duże pole danych z dwoma węzłami niezależne są dostępne dwa oddzielne lokalnego internetowego interfejsów użytkownika odpowiadającego do każdego węzła urządzenia.
 
 W tym artykule zawarto następujące samouczki:
 
@@ -27,7 +27,7 @@ W tym artykule zawarto następujące samouczki:
 - Zamykanie lub ponowne uruchamianie urządzenia
 - Pobieranie zestawienia komponentów lub plików manifestu
 - Wyświetlanie dostępnej pojemności urządzenia
-- Pomijanie weryfikacji sumy kontrolnej 
+- Pomijanie weryfikacji sumy kontrolnej
 
 ## <a name="generate-support-package"></a>Generowanie pakietu dla pomocy technicznej
 
@@ -52,9 +52,9 @@ Jeśli napotkasz jakiekolwiek problemy z urządzeniem, możesz utworzyć pakiet 
 
 ## <a name="shut-down-or-restart-your-device"></a>Zamykanie lub ponowne uruchamianie urządzenia
 
-Urządzenie Data Box można zamknąć lub ponownie uruchomić przy użyciu lokalnego internetowego interfejsu użytkownika. Zaleca się, aby przed ponownym uruchomieniem przełączyć udziały w tryb offline na hoście, a następnie na urządzeniu. Minimalizuje to ryzyko uszkodzenia danych. Upewnij się, że kopiowanie danych nie jest w toku podczas wyłączania urządzenia.
+Można zamknąć lub ponownie urządzenie przy użyciu lokalnego Interfejsu w przeglądarce. Zaleca się, aby przed ponownym uruchomieniem przełączyć udziały w tryb offline na hoście, a następnie na urządzeniu. Minimalizuje to ryzyko uszkodzenia danych. Upewnij się, że kopiowanie danych nie jest w toku podczas wyłączania urządzenia.
 
-Aby zamknąć urządzenie Data Box, wykonaj następujące czynności.
+Aby wyłączyć urządzenie, wykonaj następujące kroki.
 
 1. W lokalnym internetowym interfejsie użytkownika przejdź do pozycji **Zamknij lub uruchom ponownie**.
 2. Kliknij przycisk **Zamknij**.
@@ -80,11 +80,11 @@ Aby ponownie uruchomić urządzenie Data Box, wykonaj następujące czynności.
 
 ## <a name="download-bom-or-manifest-files"></a>Pobieranie zestawienia komponentów lub plików manifestu
 
-Zestawienie komponentów (BOM, Bill of Material) lub pliki manifestu zawierają listę plików, które są kopiowane na urządzenie Data Box. Pliki te są generowane podczas przygotowywania urządzenia Data Box do wysyłki.
+Zestawienie materiałów (BOM) lub pliki manifestu zawierają listę plików, które są kopiowane do urządzenia Data Box lub duże pole danych. Pliki te są generowane podczas przygotowywania urządzenia do wysłania.
 
-Zanim zaczniesz, upewnij się, że dla urządzenia Data Box ukończono krok **Przygotowywanie do wysłania**. Wykonaj następujące kroki, aby pobrać zestawienie komponentów lub pliki manifestu:
+Przed rozpoczęciem upewnij się, że urządzenie zostało zakończone **przygotowywanie do wysłania** kroku. Wykonaj następujące kroki, aby pobrać zestawienie komponentów lub pliki manifestu:
 
-1. Przejdź do lokalnego internetowego interfejsu użytkownika dla urządzenia Data Box. Zobaczysz, że dla urządzenia Data Box ukończono przygotowywanie do wysłania. Po zakończeniu przygotowywania urządzenia stan urządzenia ma wartość **Gotowe do wysyłki**.
+1. Przejdź do lokalnego internetowego interfejsu użytkownika dla danego urządzenia. Zobaczysz, że urządzenie zostało zakończone przygotowanie do wysłania. Po zakończeniu przygotowywania urządzenia stan urządzenia ma wartość **Gotowe do wysyłki**.
 
     ![Urządzenie gotowe do wysyłki](media/data-box-portal-admin/ready-to-ship.png)
 
@@ -109,6 +109,9 @@ Zanim zaczniesz, upewnij się, że dla urządzenia Data Box ukończono krok **Pr
     |mydbmdrg2_MDisk-BOM.txt     |Dysk zarządzany         |SMB/NFS         |
 
 Ta lista umożliwia weryfikację plików przekazanych do konta usługi Azure Storage po powrocie urządzenia Data Box do centrum danych platformy Azure. Poniżej przedstawiono przykładowy plik manifestu.
+
+> [!NOTE]
+> W danych pole bardzo duże dwa zestawy listy plików (BOM) są obecne, odpowiadający z dwoma węzłami na urządzeniu.
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -150,25 +153,24 @@ Ta lista umożliwia weryfikację plików przekazanych do konta usługi Azure Sto
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Ten plik zawiera listę wszystkich plików, które zostały skopiowane na urządzenie Data Box. W tym pliku wartość *crc64* odnosi się do sumy kontrolnej wygenerowanej dla odpowiadającego jej pliku.
+Ten plik zawiera listę wszystkich plików, które zostały skopiowane na urządzenie Data Box lub duże pole danych. W tym pliku wartość *crc64* odnosi się do sumy kontrolnej wygenerowanej dla odpowiadającego jej pliku.
 
 ## <a name="view-available-capacity-of-the-device"></a>Wyświetlanie dostępnej pojemności urządzenia
 
-Aby wyświetlić dostępną i używaną pojemność urządzenia, można użyć jego pulpitu nawigacyjnego. 
+Aby wyświetlić dostępną i używaną pojemność urządzenia, można użyć jego pulpitu nawigacyjnego.
 
 1. W lokalnym internetowym interfejsie użytkownika przejdź do pozycji **Wyświetl pulpit nawigacyjny**.
 2. W obszarze **Połącz i skopiuj** jest wyświetlane wolne i zajęte miejsce na urządzeniu.
 
     ![Wyświetlanie dostępnej pojemności](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
-
 ## <a name="skip-checksum-validation"></a>Pomijanie weryfikacji sumy kontrolnej
 
-Suma kontrolna jest generowana domyślnie dla danych podczas przygotowywania do wysłania. W niektórych rzadkich przypadkach, w zależności od typu danych (małe rozmiary plików), wydajność może zostać zmniejszona. W takich przypadkach można pominąć generowanie sumy kontrolnej. 
+Suma kontrolna jest generowana domyślnie dla danych podczas przygotowywania do wysłania. W niektórych rzadkich przypadkach, w zależności od typu danych (małe rozmiary plików), wydajność może zostać zmniejszona. W takich przypadkach można pominąć generowanie sumy kontrolnej.
 
 Zdecydowanie zaleca się, aby nie wyłączać sumy kontrolnej, chyba że jej generowanie ma znaczny wpływ na wydajność.
 
-1. W prawym górnym rogu lokalnego internetowego interfejsu użytkownika urządzenia przejdź do pozycji Ustawienia.
+1. W prawym górnym rogu lokalnego internetowego interfejsu użytkownika urządzenia, przejdź do **ustawienia**.
 
     ![Wyłączanie sumy kontrolnej](media/data-box-local-web-ui-admin/disable-checksum.png)
 
@@ -177,5 +179,5 @@ Zdecydowanie zaleca się, aby nie wyłączać sumy kontrolnej, chyba że jej gen
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, w jaki sposób [zarządzać urządzeniem Data Box w witrynie Azure Portal](data-box-portal-admin.md).
+- Dowiedz się, jak [zarządzania urządzenia Data Box i duże pole danych za pośrednictwem witryny Azure portal](data-box-portal-admin.md).
 

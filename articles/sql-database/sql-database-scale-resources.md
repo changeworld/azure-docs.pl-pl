@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e476f27e2a1945135bd90435078d5bcd47c4b3de
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073137"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743107"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych, przy minimalnych przestojach
 
@@ -55,6 +55,9 @@ Wszystkich trzech wersjach usługi Azure SQL Database oferuje możliwość ich d
 - Za pomocą [pojedynczej bazy danych](sql-database-single-database-scale.md), można użyć dowolnego [jednostek DTU](sql-database-dtu-resource-limits-single-databases.md) lub [— rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) modele, aby określić maksymalną ilość zasobów, które zostaną przypisane do każdej bazy danych.
 - A [wystąpienia zarządzanego](sql-database-managed-instance.md) używa [rdzeni wirtualnych](sql-database-managed-instance.md#vcore-based-purchasing-model) tryb i pozwala na zdefiniowanie maksymalna liczba rdzeni procesora CPU i maksymalnej pamięci przydzielonej do wystąpienia. Wszystkie bazy danych w ramach wystąpienia będą współdzielić zasobów przydzielonych dla wystąpienia.
 - [Pule elastyczne](sql-database-elastic-pool-scale.md) umożliwiają zdefiniowanie limit maksymalny zasobów dla grupy baz danych w puli.
+
+> [!NOTE]
+> Można oczekiwać, że podziału krótki połączenia podczas skalowania w górę/dół procesu zostało zakończone. Jeśli zaimplementowano [Logika ponawiania próby dla błędów przejściowych standardowa](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), można nie zauważyć przełączenie w tryb failover.
 
 ## <a name="alternative-scale-methods"></a>Skala alternatywnych metod
 

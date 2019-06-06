@@ -2,20 +2,20 @@
 title: Skonfiguruj polecenie logowania za pomocą konta LinkedIn, za pomocą zasad niestandardowych — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Konfigurowanie logowania za pomocą konta LinkedIn w usłudze Azure Active Directory B2C, za pomocą zasad niestandardowych.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d927c2bf9344f2dc93cfe992e87457a0747f605
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b336428592a4897319725782c994c3fae26bfae0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190742"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510411"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Skonfiguruj polecenie logowania za pomocą konta LinkedIn, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -238,7 +238,7 @@ W istniejącym **metadanych** elementu **profilu technicznego**, zaktualizuj nas
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-Do:
+Aby:
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -264,7 +264,7 @@ W istniejącym **OutputClaims** z **profilu technicznego**, zaktualizuj następu
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-Do:
+Aby:
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

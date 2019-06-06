@@ -1,20 +1,18 @@
 ---
-title: Narzędzia usługi Azure HDInsight — na użytek programu Visual Studio Code Hive, LLAP lub PySpark | Dokumentacja firmy Microsoft
+title: Narzędzia usługi Azure HDInsight — na użytek programu Visual Studio Code Hive, LLAP lub PySpark
 description: Dowiedz się, jak używać narzędzi HDInsight systemu Azure dla programu Visual Studio Code do tworzenia i przesyłania zapytań i skryptów.
-Keywords: Program Visual Studio Code, narzędzia Azure HDInsight, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktywne usługi Hive, interakcyjnych zapytań
-documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/30/2019
+ms.openlocfilehash: d114a1e62ae0d28e7d4a3ad453d5d7bd3e1d5b7a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681762"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427692"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 
@@ -71,12 +69,12 @@ Przed przesłaniem skryptów w klastrach HDInsight z programu Visual Studio Code
 
     ![HDInsight Tools for Visual Studio Code logowania](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. Postępuj zgodnie z instrukcjami rejestrowania w **dane wyjściowe** okienka.
+2. Postępuj zgodnie z logowania zgodnie z instrukcjami w **dane wyjściowe** okienka.
     + Dla środowiska globalnej platformy Azure **HDInsight: Zaloguj się** wywoła polecenie **logowanie do platformy Azure** akcji w Eksploratorze HDInsight i na odwrót.
 
         ![Zaloguj się instrukcje dotyczące platformy azure](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
-    + W innych środowiskach postępuj zgodnie z instrukcjami dotyczącymi logowania.
+    + W innych środowiskach postępuj zgodnie z logowania w instrukcjach.
 
         ![Sign in instructions for innego środowiska logowania](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
@@ -219,7 +217,7 @@ Za pomocą narzędzi HDInsight dla programu Visual Studio Code możesz przesła�
 
 8. Obsługuje także narzędzie **klauzuli SQL** zapytania.
 
-   ![Przedstawia wynik zadania Python](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Stan przesyłania pojawia się po lewej stronie stanu dolny pasek po uruchomieniu zapytania. Nie przesyłaj inne zapytania, jeśli jest w stanie **jądra PySpark (zajęty)**.  
+   ![Przedstawia wynik zadania Python](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Stan przesyłania pojawia się po lewej stronie stanu dolny pasek po uruchomieniu zapytania. Nie przesyłaj inne zapytania, jeśli jest w stanie **jądra PySpark (zajęty)** .  
 
 >[!NOTE]  
 >Klastry można zachować informacje o sesji. Zdefiniowanej zmiennej, funkcji i odpowiadające im wartości są przechowywane w tej sesji, dzięki czemu mogą być przywoływane przez wiele wywołań usługi dla tego samego klastra. 
@@ -306,7 +304,7 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
     **POST /batches**   
     Treść żądania
 
-    | name | description | type | 
+    | name | description | — typ | 
     | :- | :- | :- | 
     | plik | Plik zawierający wykonywanie aplikacji | Ścieżka (wymagane) | 
     | proxyUser | Personifikację podczas uruchamiania zadania | string | 
@@ -314,27 +312,27 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
     | args | Argumenty wiersza polecenia dla aplikacji | Lista ciągów | 
     | plikach JAR | jars ma być używany w ramach tej sesji | Lista parametrów | 
     | pyFiles | Pliki języka Python do użycia w ramach tej sesji | Lista parametrów |
-    | plików | pliki, które zostaną użyte w tej sesji | Lista parametrów |
+    | — pliki | pliki, które zostaną użyte w tej sesji | Lista parametrów |
     | driverMemory | Ilość pamięci na potrzeby procesu sterownika | string |
     | driverCores | Liczba rdzeni do użycia dla procesu sterownika | int |
     | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | string |
     | executorCores | Liczba rdzeni do użycia dla każdej funkcji wykonawczej | int |
     | numExecutors | Liczbie funkcji wykonawczych, aby uruchomić dla tej sesji | int |
     | Archiwa | Archiwa ma być używany w ramach tej sesji | Lista parametrów |
-    | kolejka | Nazwa kolejki YARN, do której przesłano | string |
+    | kolejki | Nazwa kolejki YARN, do której przesłano | string |
     | name | Nazwa tej sesji | string |
     | potwierdzenie | Właściwości konfiguracji aparatu Spark | Mapa klucza = val |
 
     Treść odpowiedzi   
     Utworzony obiekt usługi Batch.
 
-    | name | description | type | 
+    | name | description | — typ | 
     | :- | :- | :- | 
     | id | Identyfikator sesji | int | 
     | appId | Identyfikator aplikacji dla tej sesji |  String |
     | appInfo | Informacje o szczegółowe aplikacji | Mapa klucza = val |
-    | dziennik | Wiersze dziennika | Lista ciągów |
-    | state |   Stan usługi batch | string |
+    | log | Wiersze dziennika | Lista ciągów |
+    | stan |   Stan usługi batch | string |
 
 >[!NOTE]
 >Przypisanej konfiguracji usługi livy będą wyświetlane w okienku danych wyjściowych po Prześlij skrypt.
@@ -360,7 +358,7 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
 
 HDInsight dla programu Visual Studio Code obsługuje następujące funkcje:
 
-- **Automatyczne uzupełnianie IntelliSense**. Sugestie wyskakujące — słowo kluczowe, metody, zmienne i tak dalej. Różne ikony reprezentują różne typy obiektów.
+- **Automatycznego uzupełniania IntelliSense**. Sugestie wyskakujące — słowo kluczowe, metody, zmienne i tak dalej. Różne ikony reprezentują różne typy obiektów.
 
     ![Narzędzia HDInsight Tools for typy obiektów funkcji IntelliSense kodu Visual Studio](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
 - **Znacznik błędów funkcji IntelliSense**. Usługa językowa podkreśla błędy edycji skryptu Hive.     
@@ -380,7 +378,7 @@ HDInsight dla programu Visual Studio Code obsługuje następujące funkcje:
 
 ## <a name="logout"></a>Logout  
 
-Na pasku menu wskaż **widoku** > **paleta poleceń...** , a następnie wprowadź **HDInsight: Wylogowywanie**.  Okno podręczne w będzie informacją dolnym rogu **wylogowania pomyślnie!**.
+Na pasku menu wskaż **widoku** > **paleta poleceń...** , a następnie wprowadź **HDInsight: Wylogowywanie**.  Okno podręczne w będzie informacją dolnym rogu **wylogowania pomyślnie!** .
 
 
 ## <a name="next-steps"></a>Kolejne kroki

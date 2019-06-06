@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c27d47a918939d012abee3c2317eba39587d734
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243581"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475144"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — bezpieczny dostęp do serwera interfejsu API przy użyciu autoryzowane zakresy adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -74,8 +74,6 @@ Podczas konfigurowania zakresów adresów IP serwera autoryzacji interfejsu API,
 Serwer interfejsu API rozwiązania Kubernetes jest o tym, jak podstawowych interfejsów API rozwiązania Kubernetes są widoczne. Ten składnik zapewnia interakcji dla narzędzia do zarządzania, takich jak `kubectl` lub pulpit nawigacyjny platformy Kubernetes. AKS zapewnia głównego klastra pojedynczej dzierżawy, za pomocą dedykowanego serwera interfejsu API. Domyślnie serwera interfejsu API jest przypisany publiczny adres IP, a powinien mieć kontrolę dostępu przy użyciu kontroli dostępu opartej na rolach (RBAC).
 
 Aby zabezpieczyć dostęp do warstwą kontroli w przeciwnym razie jest dostępny publicznie AKS / serwera interfejsu API, można włączyć i używać autoryzowane zakresy adresów IP. Te zakresy adresów IP autoryzowanych Zezwalaj tylko na określonych zakresów adresów IP do komunikacji z serwerem interfejsu API. Żądanie skierowane do serwera interfejsu API z adresu IP, który nie jest częścią te zakresy adresów IP autoryzowanych jest zablokowany. Można nadal następnie autoryzować użytkowników i akcje, które żądają przy użyciu kontroli RBAC.
-
-Przy użyciu funkcji autoryzowanych zakresu adresów IP, publiczny adres IP jest uwidaczniany w puli węzłów, wdrażając podstawowej usługi serwera NGINX. Serwer interfejs API komunikuje się z pulą węzłów za pomocą tego upoważniony publicznego adresu IP. Następnie zdefiniuj dodatkowych zakresów adresów IP, które mają dostęp do serwera interfejsu API.
 
 Aby uzyskać więcej informacji na temat serwera interfejsu API i inne składniki klastra, zobacz [Kubernetes podstawowe pojęcia dla usługi AKS][concepts-clusters-workloads].
 

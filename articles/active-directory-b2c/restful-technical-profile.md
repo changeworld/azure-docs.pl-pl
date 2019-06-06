@@ -2,20 +2,20 @@
 title: Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować RESTful profilu technicznego.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705304"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512739"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Zasady mogą wysyłać oświadczenia wejściowego do interfejsu API REST. Interf
 - **Profil techniczny weryfikacji** -profilu technicznego weryfikacji wywołań usługi RESTful. Profil techniczny weryfikacji sprawdza poprawność danych wprowadzonych przez użytkownika przed kontynuacją podróży użytkownika. Z profilu technicznego sprawdzania poprawności komunikat o błędzie jest wyświetlana na stronie samodzielnie i zwracany w danych wyjściowych oświadczeń.
 - **Wymiana oświadczeń** -wywołanie usługi RESTful za pomocą kroku aranżacji. W tym scenariuszu istnieje bez interfejsu użytkownika, do renderowania komunikatu o błędzie. Jeśli Twój interfejs API REST zwraca błąd, użytkownik jest przekierowany z powrotem do aplikacji jednostki uzależnionej z komunikatem o błędzie.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 **Nazwa** atrybutu **protokołu** element musi być równa `Proprietary`. **Obsługi** atrybutu musi zawierać w pełni kwalifikowaną nazwę zestawu obsługi protokołu, który jest używany przez usługę Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
@@ -86,7 +86,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Yes | Adres URL punktu końcowego interfejsu API REST. | 
-| AuthenticationType | Yes | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
+| AuthenticationType | Tak | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
 | SendClaimsIn | Nie | Określa, jak oświadczeń wejściowych są wysyłane do dostawcy oświadczeń typu RESTful. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń przychodzących, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń przychodzących, który będzie wysyłany w ciągu zapytania żądania. | 
 | ClaimsFormat | Nie | Określa format dla oświadczeń danych wyjściowych. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń wychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w ciągu zapytania żądania. | 
 | Element DebugMode | Nie | Uruchamia profil techniczny w trybie debugowania. W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję zwracanie komunikatu błędu. | 
@@ -111,7 +111,7 @@ Jeśli ustawiono typ uwierzytelniania `Basic`, **CryptographicKeys** element zaw
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Yes | Nazwa użytkownika, który jest używany do uwierzytelniania. | 
+| BasicAuthenticationUsername | Tak | Nazwa użytkownika, który jest używany do uwierzytelniania. | 
 | BasicAuthenticationPassword | Yes | Hasło, które służy do uwierzytelniania. |
 
 Poniższy przykład przedstawia profilu technicznego z uwierzytelnianiem podstawowym:
@@ -136,7 +136,7 @@ Jeśli ustawiono typ uwierzytelniania `ClientCertificate`, **CryptographicKeys**
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClientCertificate | Yes | X509 certyfikat (zestawu kluczy RSA) ma być używany do uwierzytelniania. | 
+| ClientCertificate | Tak | X509 certyfikat (zestawu kluczy RSA) ma być używany do uwierzytelniania. | 
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,11 +159,11 @@ Interfejs API REST może być konieczne zwrócić komunikat o błędzie, takie j
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| version | Yes | 1.0.0 | 
-| status | Yes | 409 | 
-| kod | Nie | Kod błędu z dostawcy typu RESTful punktu końcowego, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
+| version | Tak | 1.0.0 | 
+| status | Tak | 409 | 
+| code | Nie | Kod błędu z dostawcy typu RESTful punktu końcowego, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
 | requestId | Nie | Identyfikator żądania od dostawcy punktem końcowym RESTful, które jest wyświetlane, gdy `DebugMode` jest włączona. | 
-| userMessage | Yes | Komunikat o błędzie, który jest wyświetlany użytkownikowi. | 
+| userMessage | Tak | Komunikat o błędzie, który jest wyświetlany użytkownikowi. | 
 | developerMessage | Nie | Szczegółowy opis problemu i jak rozwiązać problem, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
 | moreInfo | Nie | Identyfikator URI, który wskazuje, aby uzyskać dodatkowe informacje, które jest wyświetlane, gdy `DebugMode` jest włączona. | 
 

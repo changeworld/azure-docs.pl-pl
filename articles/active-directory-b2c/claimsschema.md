@@ -2,20 +2,20 @@
 title: ClaimsSchema — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Określ element ClaimsSchema zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 81df3532ee466f32ee42f0010de9aa74dbeb6d85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721746"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511864"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -44,7 +44,7 @@ ms.locfileid: "64721746"
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla typu oświadczenia. Inne elementy, można użyć tego identyfikatora w zasadach. |
+| Identyfikator | Tak | Identyfikator, który jest używany dla typu oświadczenia. Inne elementy, można użyć tego identyfikatora w zasadach. |
 
 **Oświadczenia** element zawiera następujące elementy:
 
@@ -65,7 +65,7 @@ PredicateValidationReference| 0:1 | Odwołanie do **PredicateValidationsInput** 
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Protokół | 0: n | Listę protokołów z ich domyślne partnera Przejmij Nazwa typu. |
+| Protocol | 0: n | Listę protokołów z ich domyślne partnera Przejmij Nazwa typu. |
 
 **Protokołu** element zawiera następujące atrybuty:
 
@@ -161,8 +161,8 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Text | Yes | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
-|Wartość | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
+| Text | Tak | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
+|Wartość | Tak | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
 Poniższy przykład umożliwia skonfigurowanie **Miasto** lista rozwijana lista oświadczeń z wartością domyślną wartość `New York`:
@@ -354,7 +354,7 @@ Usługa Azure AD B2C obsługuje wiele typów danych wejściowych użytkownika, t
 ```
 
 
-### <a name="paragraph"></a>Akapit
+### <a name="paragraph"></a>Akapitu
 
 **Akapitu** typ danych wejściowych użytkownika służy do zapewnienia pola, które zawiera tekst tylko w tagu akapitu. Na przykład &lt;p&gt;tekstu&lt;/p&gt;.
 

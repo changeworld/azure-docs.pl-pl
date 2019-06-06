@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955744"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475869"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpieczenia w usłudze Azure App Service
 
@@ -113,7 +113,6 @@ Alternatywnie można zintegrować aplikację usługi App Service przy użyciu [u
 
 Z wyjątkiem **izolowany** warstwy cenowej, dla wszystkich warstw uruchamiaj swoje aplikacje w udostępnionej infrastrukturze sieciowej w usłudze App Service. Na przykład publiczne adresy IP i równoważenia obciążenia frontonu są współużytkowane z innymi dzierżawami. **Izolowany** warstwy zapewnia izolację sieci pełną, uruchamiając swoje aplikacje w dedykowanej [środowiska App Service environment](environment/intro.md). Środowiska usługi App Service uruchamia wystąpienia programu [Azure Virtual Network](/azure/virtual-network/). Dzięki temu można: 
 
-- Ograniczanie dostępu do sieci za pomocą [sieciowe grupy zabezpieczeń](../virtual-network/virtual-networks-dmz-nsg.md). 
 - Obsługiwać swoje aplikacje za pomocą dedykowanego publicznego punktu końcowego, za pomocą dedykowanego frontonów.
 - Obsługiwać wewnętrznej aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB), która zezwala na dostęp tylko z wewnątrz sieci wirtualnej platformy Azure. Wewnętrznego modułu równoważenia obciążenia ma adres IP z podsieci prywatnej, co zapewnia pełną izolację aplikacji z Internetu.
 - [Użyj wewnętrznego modułu równoważenia obciążenia za zaporą aplikacji sieci web (WAF)](environment/integrate-with-application-gateway.md). Zapora aplikacji sieci Web zapewnia ochronę klasy korporacyjnej w aplikacjach publicznego, takie jak ochrona przed atakami DDoS, filtrowanie identyfikatora URI i zapobiegania iniekcji SQL.

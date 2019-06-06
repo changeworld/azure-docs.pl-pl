@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 84069fb80ac751cbde53b0febdac451b54cd2b29
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544644"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688757"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak i dlaczego aplikacje są dodawane do usługi Azure AD
 
@@ -32,9 +32,9 @@ Istnieją dwa oświadczenia aplikacji w usłudze Azure AD:
 * [Jednostki usług](app-objects-and-service-principals.md#service-principal-object) — jest uznawana za wystąpienie aplikacji. Nazwy główne usług ogólnie odwołują się do obiektu aplikacji, a jeden obiekt aplikacji mogą być przywoływane przez wielu jednostek usługi w różnych katalogach.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Jakie są obiekty aplikacji i gdzie pochodzą z?
-Możesz zarządzać [obiekty aplikacji](app-objects-and-service-principals.md#application-object) w witrynie Azure portal, za pośrednictwem [rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) środowiska. Obiekty aplikacji opisują aplikacji do usługi Azure AD i jest uznawana za definicję aplikacji, dzięki czemu usługa pozwalający na wystawianie tokenów dla aplikacji na podstawie jej ustawień. Obiekt aplikacji będzie istniało tylko w jego katalogu macierzystego, nawet jeśli jest on aplikacji z wieloma dzierżawami, Obsługa jednostki usługi w innych katalogach. Obiekt aplikacji może zawierać znaków poniżej (niewymienione tutaj również dodatkowych informacji):
+Możesz zarządzać [obiekty aplikacji](app-objects-and-service-principals.md#application-object) w witrynie Azure portal, za pośrednictwem [rejestracje aplikacji](https://aka.ms/appregistrations) środowiska. Obiekty aplikacji opisują aplikacji do usługi Azure AD i jest uznawana za definicję aplikacji, dzięki czemu usługa pozwalający na wystawianie tokenów dla aplikacji na podstawie jej ustawień. Obiekt aplikacji będzie istniało tylko w jego katalogu macierzystego, nawet jeśli jest on aplikacji z wieloma dzierżawami, Obsługa jednostki usługi w innych katalogach. Obiekt aplikacji może zawierać znaków poniżej (niewymienione tutaj również dodatkowych informacji):
 * Nazwy, logo i wydawcy
-* Adresy URL odpowiedzi
+* Identyfikatory URI przekierowania
 * Wpisy tajne (symetrycznego i/lub asymetrycznego klucze używane do uwierzytelniania w aplikacji)
 * Interfejs API zależności (OAuth)
 * Opublikowane interfejsy API/zasobów/zakresy (OAuth)
@@ -74,7 +74,7 @@ Podobnie jak obiekty aplikacji jednostki usługi mogą być tworzone za pomocą 
   * Po zasubskrybowaniu usługi Office 365 lub Rozpocznij okres próbny nazwy główne usług są tworzone w katalogu reprezentująca różne usługi, które są używane do dostarczania, wszystkie funkcje związane z usługą Office 365.
   * Niektóre usługi Office 365, takich jak SharePoint tworzenie jednostek usługi w sposób ciągły, aby umożliwić bezpieczną komunikację między składnikami, włącznie z przepływami pracy.
 * Gdy administrator dodaje aplikację z galerii aplikacji (to spowoduje również utworzenie podstawowego obiektu aplikacji)
-* Dodawanie aplikacji do użycia [serwera Proxy aplikacji usługi Azure AD](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Dodawanie aplikacji do użycia [serwera Proxy aplikacji usługi Azure AD](/azure/active-directory/manage-apps/application-proxy)
 * Łączenie aplikacji do rejestracji jednokrotnej na temat korzystania z języka SAML lub hasło logowania jednokrotnego (SSO)
 * Programowo za pośrednictwem usługi Azure AD interfejsu API programu Graph lub programu PowerShell
 
@@ -101,8 +101,8 @@ Aplikacje, które możesz dodać siebie (reprezentowana jako **aplikacji (Twojej
   * Reguły przekształcania oświadczeń
   * Mapowania atrybutów (Inicjowanie obsługi użytkowników)
 * Aby uzyskać szczegółowe informacje dotyczące nazwy głównej usługi i obiekty aplikacji Zobacz Dokumentacja referencyjna interfejsu API REST usługi Azure AD Graph:
-  * [Aplikacja](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Nazwa główna usługi](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Aplikacja](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Nazwa główna usługi](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Dlaczego aplikacje są zintegrować z usługą Azure AD?
 Aplikacje są dodawane do usługi Azure AD, korzystanie z co najmniej jedną z usług oferowanych przez nią w tym:

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2de945d2ef1d87b47ea81aac034916466d3c9bda
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258852"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735166"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacenia komunikatu dla komunikatów przesyłanych z chmury do urządzenia usługi IoT Hub (wersja zapoznawcza)
 
@@ -49,6 +49,8 @@ Komunikaty mogą pochodzić z dowolnego źródła danych obsługiwane przez [rou
 
 Możesz dodać wzbogacenia wiadomości, które mają wbudowany punkt końcowy usługi IoT Hub lub wiadomości, które są rozsyłane do niestandardowych punktów końcowych, takich jak magazyn Azure Blob, kolejki usługi Service Bus lub tematu usługi Service Bus.
 
+Wzbogacenia można również dodać do wiadomości, które są publikowane do usługi Event Grid, wybierając opcję punkt końcowy jako usługi Event Grid. Aby uzyskać więcej informacji, zobacz [usługi Iot Hub i Event Grid](iot-hub-event-grid.md).
+
 Wzbogacenia są stosowane na punkt końcowy. Jeśli określisz pięć wzbogacenia do opatrzone dla określonego punktu końcowego, wszystkie komunikaty, przechodząc do tego punktu końcowego są oznaczone zgodnie z tych samych pięciu wzbogacenia.
 
 Aby zobaczyć, jak możesz wypróbować wzbogacenia wiadomości, zobacz [samouczek wzbogacenia wiadomości](tutorial-message-enrichments.md)
@@ -75,7 +77,7 @@ Wzbogacenia komunikat dostępnych bez dodatkowej opłaty. Obecnie opłaty są na
 
 ## <a name="availability"></a>Dostępność
 
-Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
+Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

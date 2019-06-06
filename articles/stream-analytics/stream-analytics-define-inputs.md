@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 05/30/2019
+ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159287"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455619"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
 Stream Analytics ma najwyższej jakości Integracja ze strumieniami danych na platformie Azure jako dane wejściowe z trzech rodzajów zasobów:
+
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
@@ -26,10 +26,12 @@ Stream Analytics ma najwyższej jakości Integracja ze strumieniami danych na pl
 Te zasoby danych wejściowych może znajdować się w tej samej subskrypcji platformy Azure jako zadania usługi Stream Analytics lub w innej subskrypcji.
 
 ### <a name="compression"></a>Kompresja
-Stream Analytics obsługuje kompresję dla wszystkich źródeł danych wejściowych strumienia danych. Kompresja obecnie obsługiwane typy to: Brak GZip i kompresji Deflate. Obsługa kompresji nie jest dostępna dla danych referencyjnych. Jeśli format wejściowy to dane Avro jest skompresowany, zapewniona jest obsługa sposób niewidoczny dla użytkownika. Nie musisz określić typ kompresji serializacji Avro. 
+
+Stream Analytics obsługuje kompresję dla wszystkich źródeł danych wejściowych strumienia danych. Kompresja obsługiwane typy to: Brak GZip i kompresji Deflate. Obsługa kompresji nie jest dostępna dla danych referencyjnych. Jeśli format wejściowy to dane Avro jest skompresowany, zapewniona jest obsługa sposób niewidoczny dla użytkownika. Nie musisz określić typ kompresji serializacji Avro. 
 
 ## <a name="create-edit-or-test-inputs"></a>Tworzenie, edytowanie i testowanie danych wejściowych
-Możesz użyć [witryny Azure portal](https://portal.azure.com) do [Utwórz nowe dane wejściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) i Wyświetl lub Edytuj istniejące dane wejściowe zadania przesyłania strumieniowego. Można również Testuj połączenia wejściowe i [zapytania testowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) z przykładowymi danymi. Podczas pisywania zapytania spowoduje wyświetlenie listy danych wejściowych w klauzuli FROM. Można uzyskać listę dostępnych danych wejściowych z **zapytania** strony w portalu. Jeśli użytkownik chce używać wielu danych wejściowych, możesz to zrobić `JOIN` je lub zapisać wiele `SELECT` zapytania.
+
+Możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md), [programu Visual Studio](stream-analytics-quick-create-vs.md), i [programu Visual Studio Code](quick-create-vs-code.md) można dodawać i przeglądać lub edytować istniejące dane wejściowe zadania przesyłania strumieniowego. Można również Testuj połączenia wejściowe i [zapytania testowe](stream-analytics-manage-job.md#test-your-query) z przykładowych danych w witrynie Azure portal, [programu Visual Studio](stream-analytics-vs-tools-local-run.md), i [programu Visual Studio Code](vscode-local-run.md). Podczas pisywania zapytania jest listy danych wejściowych w klauzuli FROM. Można uzyskać listę dostępnych danych wejściowych z **zapytania** strony w portalu. Jeśli użytkownik chce używać wielu danych wejściowych, możesz to zrobić `JOIN` je lub zapisać wiele `SELECT` zapytania.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Przesyłanie strumieniowe danych z usługi Event Hubs
@@ -38,10 +40,12 @@ Usługa Azure Event Hubs oferuje wysoce skalowalną publikowania/subskrybowania 
 
 `EventEnqueuedUtcTime` jest to sygnatura czasowa odebrania zdarzeń w Centrum zdarzeń i jest to domyślny sygnatura czasowa zdarzenia pochodzące z usługi Event Hubs do usługi Stream Analytics. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe.
 
-### <a name="consumer-groups"></a>Grupy odbiorców
-Należy skonfigurować każdy Centrum zdarzeń usługi Stream Analytics, danych wejściowych w celu ma swoje własne grupy odbiorców. Gdy zadanie zawiera samosprzężenie lub ma wielu danych wejściowych, niektórych danych wejściowych może przeczytać przez więcej niż jeden czytnik podrzędne. Taka sytuacja wpływa na liczbę czytników w grupie jednego konsumenta. Aby zapobiec przekroczeniu limitu usługi Event Hubs pięć czytników dla każdej grupy odbiorców dla każdej partycji, jest najlepszym rozwiązaniem, aby wyznaczyć grupy odbiorców dla każdego zadania usługi Stream Analytics. Istnieje również limit 20 grup odbiorców dla Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics w danych wejściowych](stream-analytics-troubleshoot-input.md).
+### <a name="event-hubs-consumer-groups"></a>Grupy konsumentów centrów zdarzeń
 
-### <a name="stream-data-from-event-hubs"></a>Przesyłanie strumieniowe danych z usługi Event Hubs
+Należy skonfigurować każdy Centrum zdarzeń usługi Stream Analytics, danych wejściowych w celu ma swoje własne grupy odbiorców. Gdy zadanie zawiera samosprzężenie lub ma wielu danych wejściowych, niektórych danych wejściowych może przeczytać przez więcej niż jeden czytnik podrzędne. Taka sytuacja wpływa na liczbę czytników w grupie jednego konsumenta. Aby zapobiec przekroczeniu limitu usługi Event Hubs pięć czytników dla każdej grupy odbiorców dla każdej partycji, jest najlepszym rozwiązaniem, aby wyznaczyć grupy odbiorców dla każdego zadania usługi Stream Analytics. Istnieje również limit 20 grup odbiorców Centrum zdarzeń warstwy standardowa. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics w danych wejściowych](stream-analytics-troubleshoot-input.md).
+
+### <a name="create-an-input-from-event-hubs"></a>Utwórz dane wejściowe z usługi Event Hubs
+
 W poniższej tabeli opisano każdej właściwości w **nowe dane wejściowe** strony w witrynie Azure portal do strumienia danych wejściowych z Centrum zdarzeń:
 
 | Właściwość | Opis |
@@ -79,14 +83,17 @@ FROM Input
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Stream dane z usługi IoT Hub
-Usługa Azure Iot Hub to wysoko skalowalna publikowania/subskrybowania o dużych możliwościach skalowania zdarzeń zoptymalizowane pod kątem scenariuszy IoT.
+
+Usługa Azure IoT Hub to wysoko skalowalna publikowania/subskrybowania o dużych możliwościach skalowania zdarzeń zoptymalizowane pod kątem scenariuszy IoT.
 
 Domyślne sygnatura czasowa zdarzenia pochodzące z usługi IoT Hub w usłudze Stream Analytics jest sygnatura czasowa, która zdarzenie dostarczone w usłudze IoT Hub, który jest `EventEnqueuedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe.
 
-### <a name="consumer-groups"></a>Grupy odbiorców
+### <a name="iot-hub-consumer-groups"></a>Grupy konsumentów Centrum iot
+
 Należy skonfigurować każdy Stream Analytics usługi IoT Hub jako wejście do ma swoje własne grupy odbiorców. Kiedy zadanie zawiera samosprzężenie lub ma on wiele danych wejściowych, dane wejściowe mogą odczytać przez więcej niż jeden czytnik podrzędne. Taka sytuacja wpływa na liczbę czytników w grupie jednego konsumenta. Aby uniknąć przekracza limit usługi Azure IoT Hub pięć czytników dla każdej grupy odbiorców dla każdej partycji, jest najlepszym rozwiązaniem, aby wyznaczyć grupy odbiorców dla każdego zadania usługi Stream Analytics.
 
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>Konfigurowanie usługi IoT Hub jako strumienia danych wejściowych
+
 W poniższej tabeli opisano każdej właściwości w **nowe dane wejściowe** strony w witrynie Azure portal po skonfigurowaniu usługi IoT Hub jako strumienia danych wejściowych.
 
 | Właściwość | Opis |
@@ -124,13 +131,10 @@ Przetwarzania dziennika to powszechnie używany scenariusz dotyczące korzystani
 
 Domyślne sygnatura czasowa zdarzenia usługi Blob storage w usłudze Stream Analytics jest sygnatura czasowa czy ostatniej modyfikacji obiektu blob, który jest `BlobLastModifiedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe. Zadanie usługi Stream Analytics pobiera dane z usługi Azure Blob storage w danych wejściowych co sekundę Jeśli pliku obiektu blob jest dostępna. Plik obiektu blob jest niedostępny, czy wykładniczego wycofywania z opóźnieniem maksymalny czas w 90 sekund.
 
-Wejść w formacie CSV *wymagają* wiersz nagłówka do definiowania pól dla zestawu danych i wszystkie pola wiersz nagłówka musi być unikatowa.
-
-Stream Analytics nie obsługuje obecnie deserializacji komunikaty AVRO, generowane przez Przechwytywanie Centrum zdarzeń lub niestandardowy punkt końcowy kontenera magazynu Azure Centrum IoT.
+Wejść w formacie CSV wymagają wiersz nagłówka do definiowania pól dla zestawu danych, a wszystkie pola wiersz nagłówka musi być unikatowa.
 
 > [!NOTE]
 > Stream Analytics nie obsługuje dodawania zawartości do istniejącego pliku obiektu blob. Stream Analytics będzie wyświetlać każdy plik tylko raz, a wszelkie zmiany, które występują w pliku, gdy zadanie ma odczytywać dane nie są przetwarzane. Najlepszym rozwiązaniem jest przekazywanie wszystkich danych na potrzeby plik obiektów blob na raz, a następnie dodaj dodatkowe nowszych zdarzeń na plik obiektów blob innego, nowe.
-> 
 
 Przekazywanie dużej liczby obiektów blob na raz może spowodować pomijają odczytywanie kilka obiektów blob w rzadkich przypadkach w usłudze Stream Analytics. Zalecane jest przekazywanie obiektów blob co najmniej 2 sekundy od siebie do magazynu obiektów Blob. Jeśli ta opcja nie jest możliwe, można użyć usługi Event Hubs do dużych woluminów strumienia zdarzeń. 
 

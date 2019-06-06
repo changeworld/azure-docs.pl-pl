@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96442a9d49581da6841fa7acb8329354ec727f60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918473"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473134"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Typowe scenariusze w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Istnieje kilka sposobów, że możesz skonfigurować zarządzanie uprawnieniami 
 > | **2.** [Dodawanie ról zasobów w celu dostępu do pakietu](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>Grupy</li><li>Aplikacje</li><li>Witryny programu SharePoint</li></ul> | ![Dodawanie ról zasobów](./media/entitlement-management-scenarios/resource-roles.png) |
 > | **3.** [Dodawanie zasad](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>Dla użytkowników w katalogu</li><li>Wymagaj zatwierdzenia</li><li>Ustawienia wygasania</li></ul> | ![Dodawanie zasad](./media/entitlement-management-scenarios/policy.png) |
 
-### <a name="i-want-to-allow-users-from-my-business-partners-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Chcę umożliwić użytkownikom Moje partnerów biznesowych (w tym użytkownicy nie są jeszcze w moim katalogu), aby zażądać dostępu do grup, aplikacji lub witryny programu SharePoint
+### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Chcę umożliwić użytkownikom w katalogu partnerów biznesowych (w tym użytkownicy nie są jeszcze w moim katalogu), aby zażądać dostępu do grup, aplikacji lub witryny programu SharePoint
 
 > [!div class="mx-tableFixed"]
 > | Kroki | Przykład |
@@ -91,7 +91,7 @@ Istnieje kilka sposobów, że możesz skonfigurować zarządzanie uprawnieniami 
 > | Kroki | Przykład |
 > | --- | --- |
 > | **1.** [Otwórz zapytanie w portalu Moje dostępu](entitlement-management-request-approve.md#open-request) | [![Ikona portalu Moje dostępu](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** [Zatwierdź żądanie dostępu](entitlement-management-request-approve.md#approve-or-deny-request) | ![Zatwierdź dostęp](./media/entitlement-management-scenarios/approve-access.png) |
+> | **2.** [Zatwierdź żądanie dostępu](entitlement-management-request-approve.md#approve-or-deny-request) | ![Zatwierdzić dostęp](./media/entitlement-management-scenarios/approve-access.png) |
 
 ## <a name="requestors"></a>Obiekty żądające
 
@@ -124,4 +124,4 @@ Istnieje kilka sposobów, że możesz skonfigurować zarządzanie uprawnieniami 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: Utworzenie pierwszego pakietu dostępu](entitlement-management-access-package-first.md)
-- [Edytowanie i zarządzanie nią istniejący pakiet dostępu](entitlement-management-access-package-edit.md)
+- [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)

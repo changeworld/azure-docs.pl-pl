@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 76d18b6a942ed9b8c6871b0ff7cbc1c83917ada4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c84c3eb74d214a5c98aabef7b2e2987dfdf67c0f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66130464"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472607"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — omówienie
 
@@ -39,7 +39,8 @@ Przed rozpoczęciem upewnij się, że rozumiesz, informacje w poniższych sekcja
 
 Usługa Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy usługi Log Analytics w następujących regionach:
 
-- Zachodnio-środkowe stany USA
+- Środkowo-zachodnie stany USA
+- Zachodnie stany USA 2<sup>1</sup>
 - Wschodnie stany USA
 - Canada Central<sup>1</sup>
 - UK South<sup>1</sup>
@@ -74,7 +75,7 @@ Aby skonfigurować obszar roboczy dla scenariusza na dużą skalę, można skonf
 
 W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które są obsługiwane z usługą Azure Monitor dla maszyn wirtualnych. Pełną listę, która szczegóły wersji systemu operacyjnego Linux głównych i pomocniczych i obsługiwane wersje jądra później znajduje się w tej sekcji.
 
-|Wersja systemu operacyjnego |Wydajność |Maps |Zdrowie |
+|Wersja systemu operacyjnego |Wydajność |Maps |Health |
 |-----------|------------|-----|-------|
 |Windows Server 2019 | X | X | X |
 |System Windows Server 2016 1803 | X | X | X |
@@ -163,7 +164,7 @@ Agent zależności można pobrać z następujących lokalizacji:
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
 
-## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
+## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
 Aby włączyć i funkcje w usłudze Azure Monitor są dostępne dla maszyn wirtualnych, musisz mieć przypisane następujące role dostępu:
 

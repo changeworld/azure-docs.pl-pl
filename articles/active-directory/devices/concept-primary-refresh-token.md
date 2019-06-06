@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ecf6d04056a91f1f9dd62a5238f60177d2bf59
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 16e4a5f63ba80b02a967888ad76fedf165a576c8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420591"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473404"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co to jest podstawowym tokenu odświeżania?
 
@@ -111,8 +111,11 @@ Gdy użytkownik inicjuje interakcji z przeglądarką, hosta klienta natywnego mo
 PRT mogą uzyskać oświadczenia uwierzytelniania wieloskładnikowego (MFA) w określonych scenariuszach. Gdy PRT na podstawie uwierzytelniania Wieloskładnikowego jest używany do żądania tokenów dla aplikacji, oświadczenia usługi MFA jest przekazywana do tych tokenów aplikacji. Ta funkcja zapewnia bezproblemową obsługę użytkowników poprzez uniemożliwienie żądania uwierzytelniania MFA dla każdej aplikacji, który go wymaga. PRT można uzyskać oświadczenia usługi MFA w następujący sposób:
 
 * **Zaloguj się przy użyciu Windows Hello dla firm**: Windows Hello dla firm zastępuje haseł i używa kluczy kryptograficznych w celu zapewnienia silnego uwierzytelniania dwuskładnikowego. Windows Hello dla firm są specyficzne dla użytkownika na urządzeniu, a sama MFA wymaga, aby aprowizować. Gdy użytkownik zaloguje się przy użyciu Windows Hello dla firm, PRT użytkownika pobiera oświadczenia usługi MFA. Ten scenariusz dotyczy również użytkowników logujących się przy użyciu kart inteligentnych, jeśli uwierzytelnienie karty inteligentnej generuje oświadczenia usługi MFA w usługach AD FS.
+   * Jak Windows Hello dla firm zostanie uznany za uwierzytelnianie wieloskładnikowe, oświadczenia usługi MFA jest aktualizowana po odświeżeniu PRT, samego, dlatego stale rozszerzy czas trwania usługi MFA, gdy użytkownicy logują się przy użyciu funkcji WIndows Hello dla firm
 * **Uwierzytelnianie wieloskładnikowe podczas WAM interakcyjnego logowania**: Podczas żądania tokenu za pośrednictwem WAM Jeśli użytkownik jest wymagane uwierzytelnianie wieloskładnikowe, aby uzyskać dostęp do aplikacji PRT, który jest odnowiona w trakcie ta interakcja jest nadrukowany z oświadczenia usługi MFA.
+   * W tym przypadku oświadczenia usługi MFA nie jest ciągle aktualizowana, więc czas trwania MFA opiera się na okres istnienia ustawiony w katalogu.
 * **Uwierzytelnianie wieloskładnikowe podczas rejestracji urządzenia**: Jeśli administrator skonfigurował ustawienia ich urządzenia w usłudze Azure AD [wymagać uwierzytelniania Wieloskładnikowego zarejestrować urządzenia](device-management-azure-portal.md#configure-device-settings), użytkownik musi wykonać uwierzytelnianie wieloskładnikowe w celu ukończenia rejestracji. W trakcie tego procesu PRT, wydawanego użytkownikowi zawiera oświadczenia usługi MFA uzyskanego podczas rejestracji. Ta funkcja ma zastosowanie tylko do użytkownika, który wykonał operacji join nie do innych użytkowników, którzy Zaloguj się na tym urządzeniu.
+   * Podobnie jak WAM interakcyjnego logowania, oświadczenia usługi MFA nie jest aktualizowana w sposób ciągły, więc czas trwania MFA opiera się na okres istnienia ustawiony w katalogu.
 
 Windows 10 przechowuje listę partycjonowane PRTs dla każdego poświadczenia. Dlatego jest PRT dla każdej usługi Windows Hello dla firm, hasła lub karty inteligentnej. Tej partycji gwarantuje, że oświadczenia usługi MFA są izolowane oparte na poświadczenia używane i nie zostały zamienione podczas żądania tokenu.
 

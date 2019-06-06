@@ -1,26 +1,18 @@
 ---
-title: Przykłady programu PowerShell bramy aplikacji platformy Azure | Dokumentacja firmy Microsoft
+title: Przykłady programu PowerShell bramy aplikacji platformy Azure
 description: Przykłady programu PowerShell bramy aplikacji platformy Azure
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-origin.date: 01/29/2018
-ms.date: 07/02/2018
-ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 1616d153dbf27912757eb88fdfc6c4196f3d3a87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/7/2019
+ms.author: victorh
+ms.openlocfilehash: 4f747bd570f02d90718766b5cf35d363c08594e4
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715711"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743078"
 ---
 # <a name="azure-application-gateway-powershell-samples"></a>Przykłady programu Azure PowerShell bramy aplikacji
 
@@ -30,6 +22,5 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |---|---|
 | [Zarządzanie ruchem internetowym](./scripts/create-vmss-powershell.md) | Tworzy bramę aplikacji i wszystkich powiązanych zasobów.|
 | [Ograniczanie ruchu internetowego](./scripts/create-vmss-waf-powershell.md) | Tworzy bramę aplikacji, które ogranicza ruch przy użyciu reguł OWASP.|
+|[Niestandardowe reguły zapory aplikacji sieci Web](scripts/waf-custom-rules-powershell.md)|Tworzy niestandardowe reguły zapory aplikacji sieci Web usługi Application Gateway.
 | | |
-
-

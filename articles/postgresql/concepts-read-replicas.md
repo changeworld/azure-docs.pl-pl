@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/05/2019
+ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242294"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734649"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytu replik w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -60,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 W wierszu polecenia wprowadź hasło dla konta użytkownika.
 
 ## <a name="monitor-replication"></a>Monitorowanie replikacji
-Azure Database for PostgreSQL oferuje **opóźnienie między maksymalna liczba replik** metryki w usłudze Azure Monitor. Ta metryka jest dostępna na serwerze głównym tylko. Metryka przedstawia opóźnienie w bajtach między główną i repliką większość opóźnione. 
+Usługa Azure Database for PostgreSQL udostępnia dwie metryki monitorowania replikacji. Dwie metryki są **opóźnienie między maksymalna liczba replik** i **Lag repliki**. Aby dowiedzieć się, jak wyświetlić tych metryk, zobacz **monitorowanie repliki** części [zapoznaj się z artykułami porad repliki](howto-read-replicas-portal.md).
 
-Usługa Azure Database for PostgreSQL udostępnia również **Lag repliki** metryki w usłudze Azure Monitor. Ta metryka jest dostępna tylko replik. 
+**Opóźnienie między maksymalna liczba replik** Metryka przedstawia opóźnienie w bajtach między główną i repliką większość opóźnione. Ta metryka jest dostępna na serwerze głównym tylko.
 
-Metryka jest obliczana na podstawie `pg_stat_wal_receiver` widoku:
+**Lag repliki** pomiar przedstawia czas od czasu ostatniego powtórzone transakcji. Jeśli nie ma żadnych transakcji, pojawiają się na serwerze głównym, metryki odzwierciedla to opóźnienie czasowe. Ta metryka jest dostępna dla tylko serwerów repliki. Opóźnienie repliki jest obliczana na podstawie `pg_stat_wal_receiver` widoku:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-Metryka Lag repliki przedstawia czas od ostatniej transakcji powtórzony. Jeśli nie ma żadnych transakcji, pojawiają się na serwerze głównym, metryki odzwierciedla to opóźnienie czasowe.
 
 Ustaw alert informujący o tym, gdy opóźnienie repliki osiągnie wartość, która nie jest dopuszczalne dla obciążenia. 
 

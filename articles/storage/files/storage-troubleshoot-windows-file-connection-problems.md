@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9658ed46e1a46aa3fc2c7fe251fd73b2ef0a13dd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991368"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480308"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -54,8 +54,8 @@ Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na k
 
 Podczas próby instalacji udziału plików ze środowiska lokalnego lub z innego centrum danych, może pojawić się następujące błędy:
 
-- Wystąpił błąd systemowy 53. Nie można odnaleźć ścieżki sieciowej.
-- Wystąpił błąd systemowy 67. Nie można odnaleźć nazwy sieci.
+- Wystąpił błąd systemowy 53. Nie można znaleźć ścieżki sieciowej.
+- Wystąpił błąd systemowy 67. Nie można znaleźć nazwy sieciowej.
 - Wystąpił błąd systemowy 87. Parametr jest nieprawidłowy.
 
 ### <a name="cause-1-port-445-is-blocked"></a>Przyczyny 1: Port 445 jest zablokowany
@@ -136,14 +136,13 @@ Błąd 1816 ma miejsce, gdy osiągną górny limit współbieżnych otwartych do
 
 Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uchwyty, a następnie spróbuj ponownie. Aby uzyskać więcej informacji, zobacz [Lista kontrolna wydajności i skalowalności usługi Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Odmowa dostępu" podczas przeglądania do udziału plików platformy Azure w portalu
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Błąd autoryzacji" podczas przeglądania do udziału plików platformy Azure w portalu
 
 Po przejściu do udziału plików platformy Azure w portalu, może zostać wyświetlony następujący błąd:
 
-Odmowa dostępu  
-Nie masz dostępu  
-Prawdopodobnie nie masz dostępu do tej zawartości. Aby uzyskać dostęp, skontaktuj się z właścicielem.  
+Błąd autoryzacji  
+Nie masz dostępu 
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Przyczyny 1: Twoje konto użytkownika nie ma dostępu do konta magazynu
 
@@ -225,7 +224,7 @@ Dyski są instalowane dla poszczególnych użytkowników. Jeśli Twoja aplikacja
 
 ### <a name="solution"></a>Rozwiązanie
 
-Zastosuj jedno z następujących rozwiązań:
+Użyj jednej z następujących rozwiązań:
 
 -   Zainstaluj dysk z tego samego konta użytkownika, który zawiera aplikację. Można użyć narzędzia, takiego jak narzędzie PsExec.
 - Przekazać nazwę konta magazynu i klucz w polu Nazwa użytkownika i hasło Parametry sieci, użyj polecenia.

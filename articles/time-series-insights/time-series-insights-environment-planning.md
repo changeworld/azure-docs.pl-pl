@@ -1,6 +1,6 @@
 ---
 title: Planowanie skali środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak wykonać najważniejsze wskazówki podczas planowania środowisku usługi Azure Time Series Insights, w tym pojemność magazynu, przechowywanie danych, pojemność zdarzeń przychodzących, monitorowania i firm odzyskiwania po awarii (BCDR).
+description: W tym artykule opisano, jak wykonać najważniejsze wskazówki podczas planowania środowiska usługi Azure Time Series Insights. Obszary, które są objęte obejmują pojemność magazynu, przechowywanie danych, pojemność zdarzeń przychodzących, monitorowania i firm ciągłości działania i odzyskiwania po awarii (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c6e8ef9effdb5cf31aee1603de28bed0d894cbb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d9f9b7fe7aafa927f023e1d4e30e079a26f7fab
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239092"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431023"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planowanie środowiska Azure czas serii szczegółowych informacji w wersji Ogólnodostępnej
 
@@ -25,31 +25,37 @@ W tym artykule opisano planowanie środowiska ogólnodostępnej (GA) usługa Azu
 
 ## <a name="video"></a>Połączenia wideo
 
-### <a name="learn-more-about-data-retention-in-azuretime-series-insights-and-how-to-plan-for-itbr"></a>Dowiedz się więcej o przechowywaniu danych w AzureTime Series Insights oraz sposobu planowania dla niego.</br>
+**Obejrzyj ten film wideo, aby dowiedzieć się więcej o przechowywaniu danych w usłudze Azure Time Series Insights oraz sposobu planowania jego**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Aby rozpocząć korzystanie z usługi Time Series Insights, najlepiej Jeśli wiesz, jak dużo danych, które chcą wypchnąć za minutę, a także, jak długo ma być do przechowywania danych.  
+Aby rozpocząć korzystanie z usługi Time Series Insights, najlepiej Jeśli wiesz, jak dużo danych, które chcą wypchnąć przez minutę i czas potrzebny do przechowywania danych.  
 
 Aby uzyskać więcej informacji o wydajności i przechowywania dla jednostki SKU zarówno czas serii szczegółowych informacji, zobacz [cennik usługi Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
-Weź pod uwagę następujące atrybuty do planu najlepsze środowisko dla długoterminowym sukcesie:
+Aby najlepiej zaplanować środowiska usługi Time Series Insights z długoterminowym sukcesie, należy wziąć pod uwagę następujące atrybuty:
 
-- <a href="#understand-storage-capacity">Pojemność magazynu</a>
-- <a href="#understand-data-retention">Okres przechowywania danych</a>
-- <a href="#understand-ingress-capacity">Pojemność zdarzeń przychodzących</a>
+- <a href="#storage-capacity">Pojemność magazynu</a>
+- <a href="#data-retention">Okres przechowywania danych</a>
+- <a href="#ingress-capacity">Pojemność zdarzeń przychodzących</a>
 - <a href="#shape-your-events">Kształtowanie zdarzeń</a>
-- <a href="#ensure-you-have-reference-data">Sprawdzając, czy dane referencyjne w miejscu</a>
+- <a href="#ensure-that-you-have-reference-data">Zapewnienia, że mają dane referencyjne w miejscu</a>
 
-## <a name="understand-storage-capacity"></a>Zrozumienie pojemność magazynu
+## <a name="storage-capacity"></a>Pojemność magazynu
 
-Domyślnie usługa Azure Time Series Insights zachowuje danych, w oparciu o ilość miejsca w magazynie, które zostały aprowizowane (jednostki czasu ilość miejsca na jednostkę) i ruch przychodzący.
+Domyślnie usługi Time Series Insights przechowuje dane, w oparciu o ilość miejsca w magazynie obsługi administracyjnej (jednostki &#215; wielkość magazynu na jednostkę) i ruch przychodzący.
 
-## <a name="understand-data-retention"></a>Omówienie przechowywania danych
+## <a name="data-retention"></a>Przechowywanie danych
 
-Można skonfigurować środowisko usługi Time Series Insights **czas przechowywania danych** ustawienia, umożliwiając maksymalnie 400 dni przechowywania. Usługa Time Series Insights ma dwa tryby, taki, który optymalizuje zapewniających środowiska ma najbardziej aktualne dane (na domyślnie) i drugiego, który jest zoptymalizowany do zapewnienia przechowywania limitów, gdzie ruch przychodzący jest wstrzymany, jeśli ogólną pojemność magazynu środowisko zostanie osiągnięty.  Można dostosować, przechowywania i przełączania między dwoma trybami na stronie konfiguracji środowiska w witrynie Azure portal.
+Możesz zmienić **czas przechowywania danych** ustawienie w danym środowisku usługi Time Series Insights. Można włączyć do 400 dni przechowywania. 
+
+Usługa Time Series Insights ma dwa tryby. Jeden tryb optymalizuje za zapewnienie, że w środowisku zawierającym najbardziej aktualne dane. Ten tryb jest włączona, domyślnie. 
+
+Inny tryb optymalizuje za zapewnienie, że spełnione są limity przechowywania. W trybie drugi ruch przychodzący jest wstrzymany, po spełnieniu łączna pojemność magazynu środowiska. 
+
+Można dostosować, przechowywania i przełączania między dwoma trybami na stronie konfiguracji środowiska w witrynie Azure portal.
 
 Można skonfigurować maksymalnie 400 dni przechowywania danych w środowisku usługi Time Series Insights.
 
@@ -57,62 +63,65 @@ Można skonfigurować maksymalnie 400 dni przechowywania danych w środowisku us
 
 1. W [witryny Azure portal](https://portal.azure.com), wybierz środowisko usługi Time Series Insights.
 
-1. Na **strony środowiska usługi Time Series Insights**w obszarze **ustawienia** nagłówka, wybierz **Konfiguruj**.
+1. W **środowiska usługi Time Series Insights** okienku w obszarze **ustawienia**, wybierz opcję **Konfiguruj**.
 
-1. W **czas przechowywania danych (w dniach)** wprowadź wartość z zakresu od 1 do 400.
+1. W **czas przechowywania danych (w dniach)** pole, wprowadź wartość zawierającą od 1 do 400.
 
    [![Skonfigurowanie okresu przechowywania](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
-> Dowiedz się więcej na temat wdrażania zasad przechowywania odpowiednie dane, przeglądając [sposobu konfigurowania przechowywania](./time-series-insights-how-to-configure-retention.md).
+> Aby dowiedzieć się więcej o tym, jak można zaimplementować zasady przechowywania danych, zobacz [sposobu konfigurowania przechowywania](./time-series-insights-how-to-configure-retention.md).
 
-## <a name="understand-ingress-capacity"></a>Zrozumienie pojemność zdarzeń przychodzących
+## <a name="ingress-capacity"></a>Pojemność zdarzeń przychodzących
 
-W obszarze inne skoncentrować się na potrzeby planowania ma pojemność zdarzeń przychodzących, która jest pochodną alokacji na minutę.
+Drugi skoncentrować się na Planowanie środowiska usługi Time Series Insights ma pojemność zdarzeń przychodzących. Pojemność zdarzeń przychodzących jest pochodną alokacji na minutę.
 
-Z punktu widzenia ograniczania pakiet ingressed danych o rozmiarze pakietów wynosi 32 KB jest traktowane jako 32 zdarzenia, każdy o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB; pakiety danych większe niż 32 KB są obcinane.
+Z punktu widzenia ograniczania pakiet ingressed danych, który ma rozmiar pakietu wynosi 32 KB jest traktowane jako 32 zdarzenia, każdy rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB. Pakiety danych większe niż 32 KB są obcinane.
 
-Poniższa tabela podsumowuje pojemność zdarzeń przychodzących dla każdej jednostki SKU:
+Poniższa tabela podsumowuje pojemność zdarzeń przychodzących na jednostkę dla każdego SKU usługi Time Series Insights:
 
-|SKU  |Liczba zdarzeń / miesiąc / jednostkę  |Rozmiar zdarzenia / miesiąc / jednostkę  |Liczba zdarzeń na minutę / jednostkę  | Rozmiar / minutę / jednostkę   |
+|SKU  |Liczba zdarzeń miesięcznie  |Rozmiar zdarzenia na miesiąc  |Liczba zdarzeń na minutę  |Rozmiar zdarzenia na minutę  |
 |---------|---------|---------|---------|---------|
 |S1     |   30 mln     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 milionów    |   300 GB   | 7,200   | 7200 KB  |
 
-Można zwiększyć pojemność S1 lub S2 SKU do 10 jednostek w ramach jednego środowiska. Nie można migrować ze środowiska S1, s2 lub ze środowiska S2 do S1.
+Można zwiększyć pojemność S1 lub S2 SKU do 10 jednostek w ramach jednego środowiska. Nie można migrować ze środowiska S1, s2. Nie można migrować ze środowiska S2 do S1.
 
-Ruch przychodzący pojemności najpierw należy określić łączny ruch przychodzący, które są wymagane na co miesiąc. Następnie należy określić co użytkownika na minutę wymaga się, jak jest to, gdzie ograniczania przepustowości i opóźnienia odtwarzanie roli.
+Pojemność transferu danych przychodzących należy najpierw określić łączny ruch przychodzący, które są wymagane na co miesiąc. Następnie należy określić, jakie usługi na minutę wymaga są. 
 
-W przypadku kolekcji w swoje dane przychodzące trwające krócej niż 24 godziny, usługi Time Series Insights można "— Wyrównywanie" szybkości transferu danych przychodzących, 2 x stawek wymienionych powyżej.
+Ograniczanie przepływności i opóźnień odtwarzanie roli pojemność na minutę. W przypadku kolekcji w swojej transferu danych przychodzących trwa mniej niż 24 godziny, usługi Time Series Insights może "Łap" stawki transferu danych przychodzących dwa razy stawek wymienionych w powyższej tabeli.
 
-Na przykład w przypadku pojedynczej jednostki SKU S1 i danych przychodzących z szybkością 720 zdarzeń na minutę, kolekcji przez mniej niż 1 godzinę z szybkością 1440 zdarzeń lub mniej, może istnieć nie zauważalnego opóźnienia dla danego środowiska. Jednak jeśli przekroczysz zdarzenia 1440 minutę w przypadku więcej niż jedna godzina, będzie prawdopodobnie wystąpią opóźnienia z danymi, które ułatwia wizualizowanie i dostępne dla zapytania w danym środowisku.
+Na przykład jeśli masz pojedynczy SKU S1, dane transferu danych przychodzących z szybkością 720 zdarzeń na minutę, a szybkość danych gwałtowne wzrosty przez mniej niż godzinę z szybkością 1440 zdarzeń lub mniej, występuje nie zauważalnego opóźnienia w danym środowisku. Jednak po przekroczeniu 1440 zdarzenia na minutę dla więcej niż jedna godzina, prawdopodobnie wystąpią opóźnienia w danych, które są wizualizowany i dostępne dla zapytania w danym środowisku.
 
-Może nie wiedzieć z wyprzedzeniem jak dużo danych oczekujesz, że do wypychania. W takim przypadku można znaleźć danych telemetrii dla [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) i [usługi Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) w witrynie Azure portal. Tych danych telemetrycznych może pomóc w określeniu, jak aprowizować środowiska. Użyj **metryki** strony w witrynie Azure portal dla źródła zdarzenia odpowiednich wyświetlić jego dane telemetryczne. Jeśli zrozumiesz metryk źródła zdarzeń, bardziej efektywne zaplanować i aprowizować środowiska usługi Time Series Insights.
+Możesz nie znać wcześniej jak dużo danych oczekujesz, że wypychanie. W takim przypadku można znaleźć danych telemetrii dla [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) i [usługi Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) w portalu subskrypcji platformy Azure. Dane telemetryczne może pomóc w określeniu, jak aprowizować środowiska. Użyj **metryki** okienko w witrynie Azure portal dla źródła zdarzenia odpowiednich wyświetlić jego dane telemetryczne. Jeśli zrozumiesz metryk źródła zdarzeń, bardziej efektywne zaplanować i aprowizować środowiska usługi Time Series Insights.
 
 ### <a name="calculate-ingress-requirements"></a>Obliczyć wymagania dotyczące ruchu przychodzącego
 
-- Upewnij się, pojemności ruch przychodzący jest powyżej średniej stawka za minutę i czy środowisko jest wystarczająco duży, aby obsłużyć Twojego przewidywanego transferu danych przychodzących równoważna 2 x pojemności dla mniej niż 1 godzinę.
+Aby obliczyć wymagania transferu danych przychodzących:
 
-- Jeśli występują skoki transferu danych przychodzących, ostatniej dłużej niż 1 godzina, użyj współczynnik kolekcji Twoja średnia i aprowizować środowiska z możliwością obsługi szybkość, z kolekcji.
+- Zweryfikuj swoje pojemność zdarzeń przychodzących powyżej średniej stawka za minutę i czy środowisko jest wystarczająco duży, aby obsłużyć Twojego przewidywanego ruchu przychodzącego odpowiednikiem dwa razy pojemności przez mniej niż godzinę.
+
+- Jeśli występują skoki transferu danych przychodzących, używających ostatniej dłużej niż 1 godzina, szybkość, z kolekcji jako Twoja średnia. Aprowizować środowiska z możliwością obsługi szybkość, z kolekcji.
 
 ### <a name="mitigate-throttling-and-latency"></a>Eliminowanie ograniczania przepustowości i opóźnienia
 
-Aby dowiedzieć się, jak zapobiec ograniczania przepustowości i opóźnienia, uzyskać informacje dotyczące sposobu [zmniejszyć opóźnienia i ograniczania przepustowości](time-series-insights-environment-mitigate-latency.md).
+Aby uzyskać informacji na temat sposobu zapobiegania ograniczania przepustowości i opóźnienia, zobacz [zmniejszyć opóźnienia i ograniczania przepustowości](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shape-your-events"></a>Kształt zdarzeń
 
-Jest ważne upewnić się, w sposób wysyłania zdarzeń do usługi TSI obsługuje rozmiar środowiska, w przypadku udostępniania (i odwrotnie, można mapować rozmiar środowiska, ile zdarzeń odczytuje TSI i rozmiar każdego zdarzenia). Podobnie należy wziąć pod uwagę atrybuty, które chcesz dokonać fragmentacji i Filtruj według podczas wykonywania zapytania o dane.
+Należy upewnić się, że sposób wysyłania zdarzeń do usługi Time Series Insights obsługuje rozmiar środowiska, które są Inicjowanie obsługi administracyjnej. (I odwrotnie, można mapować rozmiar środowiska, ile zdarzeń usługi Time Series Insights odczytuje i rozmiar każdego zdarzenia.) Należy również wziąć pod uwagę te atrybuty, które warto używać filtrowania według podczas wysyłania zapytania danych.
 
 > [!TIP]
 > Przejrzyj JSON kształtowania w dokumentacji [wysyłanie zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).
 
-## <a name="ensure-you-have-reference-data"></a>Upewnij się, że dane referencyjne
+## <a name="ensure-that-you-have-reference-data"></a>Upewnij się, że dane referencyjne
 
-A **zestawu danych referencyjnych** jest kolekcją elementów, które polepszają zdarzenia ze źródła zdarzenia. Aparat transferu danych przychodzących Series Insights czasu łączy każde zdarzenie ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych referencyjnych. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. To połączenie jest oparte na kolumny klucza podstawowego, zdefiniowane w zestawie danych referencyjnych.
+A *odwoływać się do zestawu danych* jest kolekcją elementów, które polepszają zdarzenia ze źródła zdarzenia. Aparat transferu danych przychodzących usługi Time Series Insights łączy każde zdarzenie ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych odwołania. Rozszerzone zdarzenie jest dostępna dla zapytania. Sprzężenia opiera się na **klucz podstawowy** kolumn, które są zdefiniowane w zestawie danych odwołania.
 
-Należy zauważyć, że w danych referencyjnych nie jest częścią wstecznie. Oznacza to, że tylko danych przychodzących bieżących i przyszłych jest dopasowane i przyłączone do odwołania zestawu daty, po jego skonfigurowaniu i przekazać.  Jeśli planujesz wysyłać dużej ilości danych historycznych TSI i nie przekazywania lub Utwórz dane referencyjne w usłudze TSI najpierw, a następnie może być konieczne ponowne wykonywać swoją pracę (podpowiedzi, nie było przyjemne).  
+> [!NOTE]
+> Dane referencyjne nie jest przyłączona wstecznie. Tylko ruch przychodzący z obecnym i przyszłym dane są dopasowane i połączone z zestawem danych odwołania po skonfigurować i przekazać. Jeśli użytkownik chce wysyłać dużych ilości danych historycznych usługi Time Series Insights i nie pierwszy przekazywania lub Utwórz dane referencyjne w usłudze Time Series Insights, może być konieczne ponowne wykonywanie pracy (Wskazówka: nie było przyjemne).  
 
-Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i Zarządzaj danymi w usłudze TSI odwołania, przejdź do naszego [dokumentacji zestawu danych](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i Zarządzaj danymi odwołania w usługi Time Series Insights, zobacz nasze [dokumentacji zestawu danych](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
@@ -120,6 +129,6 @@ Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i Zarząd
 
 - Zacznij od utworzenia [nowego środowiska usługi Time Series Insights w witrynie Azure portal](time-series-insights-get-started.md).
 
-- Dowiedz się, jak [dodawania źródła zdarzeń Centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md) do usługi Time Series Insights.
+- Dowiedz się, jak [dodawania źródła zdarzeń usługi Event Hubs](time-series-insights-how-to-add-an-event-source-eventhub.md) do usługi Time Series Insights.
 
 - Uzyskać informacje dotyczące sposobu [skonfigurować źródła zdarzeń usługi IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md).

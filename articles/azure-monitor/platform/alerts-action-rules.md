@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620002"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734921"
 ---
 # <a name="action-rules-preview"></a>Akcja reguły (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Mimo że reguły alertów umożliwiają definiowanie grupy akcji, która urucham
 
 ## <a name="configuring-an-action-rule"></a>Konfigurowanie reguły akcji
 
-Można uzyskać dostępu do funkcji, wybierając **zarządzać akcjami** z alertów, strona docelowa w usłudze Azure Monitor. Następnie wybierz pozycję **akcji reguł (wersja zapoznawcza)**. Mogli je, wybierając **akcji reguł (wersja zapoznawcza)** z poziomu pulpitu nawigacyjnego stroną docelową dla alertów.
+Można uzyskać dostępu do funkcji, wybierając **zarządzać akcjami** z alertów, strona docelowa w usłudze Azure Monitor. Następnie wybierz pozycję **akcji reguł (wersja zapoznawcza)** . Mogli je, wybierając **akcji reguł (wersja zapoznawcza)** z poziomu pulpitu nawigacyjnego stroną docelową dla alertów.
 
 ![Akcja reguły na stronie docelowej usługi Azure Monitor](media/alerts-action-rules/action-rules-landing-page.png)
 
@@ -67,7 +67,7 @@ Dostępne są następujące filtry:
 * **Identyfikator reguły alertu**: Umożliwia filtrowanie dla określonych reguł alertów przy użyciu usługi Resource Manager Identyfikatora reguły alertu.
 * **Monitorowanie stanu**: Filtr dla wystąpień alertów za pomocą "Fired" lub "Rozwiązane" jako warunek monitora.
 * **Opis**: Wyrażenie regularne dopasowywania w opisie zdefiniowane jako część reguły alertu.
-* **Kontekst alertu (ładunku)**: Wyrażenie regularne dopasowywania w [kontekst alertu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) pola wystąpienia alertu.
+* **Kontekst alertu (ładunku)** : Wyrażenie regularne dopasowywania w [kontekst alertu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) pola wystąpienia alertu.
 
 Te filtry są stosowane w połączeniu ze sobą. Na przykład, jeśli ustawić "Resource type" = "Maszyny wirtualne" i "Waga" = "Sev0", to czy mogę mieć filtrowanie dla wszystkich alertów "Sev0" tylko maszyny wirtualne. 
 
@@ -80,13 +80,13 @@ Skonfiguruj reguły akcji dla pomijania alertów lub obsługa grupy akcji. Nie m
 #### <a name="suppression"></a>Pomijanie
 
 Jeśli wybierzesz **pomijanie**, skonfiguruj czas trwania pomijanie działania i powiadomienia. Wybierz jedną z następujących czynności:
-* **Od teraz (zawsze)**: Pomija wszystkie powiadomienia na czas nieokreślony.
+* **Od teraz (zawsze)** : Pomija wszystkie powiadomienia na czas nieokreślony.
 * **W zaplanowanym czasie**: Pomiń powiadomienia w ramach ograniczonego czasu trwania.
 * **Z cyklem**: Pomiń na harmonogramie cyklu, który może być codziennie, co tydzień lub co miesiąc.
 
 ![Akcja reguły pominięć](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
 
-#### <a name="action-group"></a>Grupa akcji
+#### <a name="action-group"></a>grupy akcji
 
 Jeśli wybierzesz **grupy akcji** w przełącznika, Dodaj istniejące grupy akcji lub Utwórz nową. 
 
@@ -128,12 +128,15 @@ Firma Contoso chce Pomiń powiadomienia, aby rejestrować wszystkie alerty gener
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scenariusz 3: Grupa akcji zdefiniowane w grupie zasobów
 
-Firmy Contoso jest zdefiniowany [alert dotyczący metryki na poziomie subskrypcji](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), ale chce zdefiniowania akcji, które wyzwalają alerty oddzielnie dla swojej grupy zasobów "ContosoRG".
+Firmy Contoso jest zdefiniowany [alert dotyczący metryki na poziomie subskrypcji](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), ale chce do zdefiniowania akcji, które mogą powodować specjalnie dla alertów generowanych w swojej grupie zasobów "ContosoRG".
 
 **Rozwiązanie:** Tworzenie reguły za pomocą akcji
 * Zakres = "ContosoRG"
 * Brak filtrów
 * Grupy akcji ustawiony na wartość "ContosoActionGroup"
+
+> [!NOTE]
+> **Grupy akcji zdefiniowanych w regułach akcji oraz reguł alertów współpracy niezależnie, nie deduplikacja**. W tym scenariuszu opisano powyżej, jeśli istnieje grupa akcji zdefiniowane dla reguły alertu, wywoła w połączeniu z grupą akcji zdefiniowane w regule akcji. 
 
 ## <a name="managing-your-action-rules"></a>Zarządzanie regułami akcji
 
@@ -143,7 +146,7 @@ Można wyświetlać i zarządzać regułami akcji z widoku listy, jak pokazano p
 
 W tym miejscu możesz regułami akcji Włącz/Wyłącz/usuwania na dużą skalę, wybierając pole wyboru obok nich. Kliknięcie dowolnej reguły akcji otwiera jego strony konfiguracji, dzięki czemu możesz aktualizować definicję i Włącz/Wyłącz ją.
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Alerty utworzone za pomocą dzienników ["Liczba wyników"](alerts-unified-log.md) opcja Wygeneruj **pojedyncze wystąpienie alertu** przy użyciu wynik wyszukiwania całego, (która może być na przykład na wielu komputerach). W tym scenariuszu jeśli reguły akcji używa filtru "Kontekst alertu (ładunku)", będzie ona działać w wystąpieniu alertu tak długo, jak są zgodne. W scenariuszu 2 zgodnie z opisem w poprzedniej sekcji, jeśli wyniki wyszukiwania dla alertu dziennika wygenerowany zawierają "Komputer-01" i "Komputer-02" cały powiadomień jest pominięte (to znaczy, jest bez powiadomienia generowane dla "Komputer-02" na wszystkich).
 

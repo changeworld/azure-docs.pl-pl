@@ -1,6 +1,6 @@
 ---
 title: Wymuszaj zasady nazewnictwa grup w grupach usługi Office 365 — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak skonfigurować zasady nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
+description: Jak skonfigurować zasady nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605549"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734787"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory
 
@@ -73,15 +73,15 @@ Wybranym administratorom można wykluczone z tych zasad we wszystkich obciąże�
 - Administrator globalny
 - Pomoc techniczna dla partnerów warstwy 1
 - Pomoc techniczna dla partnerów warstwy 2
-- Administrator użytkownika
+- Administrator użytkowników
 - Zapisywanie katalogów
 
-## <a name="configure-naming-policy-in-azure-portal-preview"></a>Skonfiguruj zasady nazewnictwa w witrynie Azure portal (wersja zapoznawcza)
+## <a name="configure-naming-policy-in-azure-portal"></a>Skonfiguruj zasady nazewnictwa w witrynie Azure portal
 
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora użytkowników.
 1. Wybierz **grup**, a następnie wybierz **zasady nazewnictwa** aby otworzyć stronę Zasady nazewnictwa.
 
-    ![Otwórz stronę Zasady nazewnictwa w Centrum administracyjnym](./media/groups-naming-policy/policy-preview.png)
+    ![Otwórz stronę Zasady nazewnictwa w Centrum administracyjnym](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Wyświetl lub Edytuj zasady nazewnictwa prefiksu i sufiksu
 
@@ -94,7 +94,7 @@ Wybranym administratorom można wykluczone z tych zasad we wszystkich obciąże�
 
 1. Na **zasady nazewnictwa** wybierz opcję **zablokowane wyrazy**.
 
-    ![edytować i przekazywać listy zablokowanych słowa dla zasady nazewnictwa](./media/groups-naming-policy/blockedwords-preview.png)
+    ![edytować i przekazywać listy zablokowanych słowa dla zasady nazewnictwa](./media/groups-naming-policy/blockedwords.png)
 
 1. Wyświetlenie lub Edycja bieżącą listę zablokowanych podasz niestandardowe wyrazy, wybierając **Pobierz**.
 1. Przekaż nową listę zablokowanych podasz niestandardowe wyrazy, wybierając ikonę pliku.
@@ -198,7 +198,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>Usuń zasady nazewnictwa
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Usuń zasady nazewnictwa przy użyciu witryny Azure portal (wersja zapoznawcza)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Usuń zasady nazewnictwa przy użyciu witryny Azure portal
 
 1. Na **zasady nazewnictwa** wybierz opcję **usuwanie zasady**.
 1. Po użytkownik potwierdzi usunięcie zasad nazewnictwa zostanie usunięty, w tym wszystkie sufiks prefiks nazwy zasad i wszystkie zablokowane podasz niestandardowe wyrazy.
@@ -233,7 +233,7 @@ Po ustawieniu zasady nazewnictwa grup w usłudze Azure AD, gdy użytkownik tworz
 Obciążenie | Zgodność
 ----------- | -------------------------------
 Usługa Azure Active Directory portali | W portalu usługi Azure AD i portalu panelu dostępu Pokaż nazwy wymuszona zasada po użytkownik wpisuje nazwę grupy, podczas tworzenia lub edytowania grupy. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie z zablokowanego wyrazu jest wyświetlana tak, aby je usunąć użytkownika.
-Outlook Web Access (OWA) | W programie Outlook Web Access zawiera zasady nazewnictwa wymuszane nazwa, gdy użytkownik wpisuje nazwę grupy lub alias grupy. Kiedy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany w Interfejsie użytkownika wraz z zablokowanego wyrazu, aby je usunąć użytkownika.
+Program Outlook Web Access (OWA) | W programie Outlook Web Access zawiera zasady nazewnictwa wymuszane nazwa, gdy użytkownik wpisuje nazwę grupy lub alias grupy. Kiedy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany w Interfejsie użytkownika wraz z zablokowanego wyrazu, aby je usunąć użytkownika.
 Aplikacja klasyczna Outlook | Grupy utworzone w aplikacja klasyczna Outlook są zgodne z ustawieniami zasad nazewnictwa. Aplikacja klasyczna Outlook jeszcze nie wyświetla nazwę grupy wymuszone w wersji zapoznawczej i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy. Jednak zasady nazewnictwa jest automatycznie stosowane podczas tworzenia lub edytowania grupy i użytkownicy widzą komunikaty o błędach, jeśli podasz niestandardowe wyrazy zablokowane w grupie nazwę lub alias.
 Microsoft Teams | Microsoft Teams zawiera grupy nazewnictwa nazwa_zasad wymuszane, gdy użytkownik wprowadzi nazwę zespołu. Po użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany wraz z zablokowanego wyrazu tak, aby je usunąć użytkownika.
 Sharepoint  |  Program SharePoint jest wyświetlana nazwa nazewnictwa wymuszona zasada po użytkownik wpisze w witrynie nazwę lub adres e-mail grupy. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany, wraz z zablokowanego wyrazu tak, aby je usunąć użytkownika.
