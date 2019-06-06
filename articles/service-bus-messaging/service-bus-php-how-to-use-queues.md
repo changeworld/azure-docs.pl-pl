@@ -163,7 +163,7 @@ catch(ServiceException $e){
 }
 ```
 
-Komunikaty wysłane do (i otrzymane z) usługi Service Bus kolejki są wystąpieniami [BrokeredMessage] [ BrokeredMessage] klasy. [BrokeredMessage] [ BrokeredMessage] obiekty mają zestaw standardowych metod i właściwości, które są używane do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść dowolnych danych aplikacji.
+Komunikaty wysłane do (i otrzymane z) usługi Service Bus kolejki są wystąpieniami [BrokeredMessage][BrokeredMessage] klasy. [BrokeredMessage][BrokeredMessage] obiekty mają zestaw standardowych metod i właściwości, które są używane do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść dowolnych danych aplikacji.
 
 Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ta górny limit na rozmiar kolejki jest 5 GB.
 
