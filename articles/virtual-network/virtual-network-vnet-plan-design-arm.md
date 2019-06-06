@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575427"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478592"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnej
 
 Tworzenie sieci wirtualnej, aby eksperymentować z jest dość proste, ale jest szansa, wraz z upływem czasu do obsługi potrzeb produkcyjnych w organizacji będzie wdrożenie wielu sieci wirtualnych. Przy planowaniu, można wdrożyć sieci wirtualnych i połączyć zasoby, których potrzebujesz bardziej efektywnie. Informacje przedstawione w tym artykule jest najbardziej przydatne, jeśli już znasz sieci wirtualnych i ma pewne doświadczenie w pracy z nimi. Jeśli nie znasz sieci wirtualnych, zalecane jest przeczytanie [Omówienie usługi Virtual network](virtual-networks-overview.md).
 
-## <a name="naming"></a>Nazewnictwo
+## <a name="naming"></a>Nadawanie nazw
 
 Wszystkie zasoby platformy Azure ma nazwy. Nazwa musi być unikatowa w obrębie zakresu, który może być inna dla każdego typu zasobu. Na przykład nazwa sieci wirtualnej musi być unikatowa w obrębie [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale mogą być zduplikowane w ramach [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) lub na platformie Azure [region](https://azure.microsoft.com/regions/#services). Definiowanie konwencji nazewnictwa, która umożliwia spójne podczas nadawania nazw zasobów jest przydatne podczas zarządzania zasobami sieci w kilku wraz z upływem czasu. Aby uzyskać sugestie, zobacz [konwencje nazewnictwa](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
@@ -77,7 +77,7 @@ Można filtrować ruch sieciowy do i z zasobami w sieci wirtualnej przy użyciu 
 - Jeśli zasady zabezpieczeń zastosowanych do nich różnych maszyn wirtualnych w podsieci, można skojarzyć interfejsu sieciowego w maszynie Wirtualnej na co najmniej jedną grupę zabezpieczeń aplikacji. W jego źródło i miejsce docelowe, reguły zabezpieczeń można określić grupy zabezpieczeń aplikacji. Tej reguły następnie dotyczy tylko do interfejsów sieciowych, które są członkami grupy zabezpieczeń aplikacji. Dowiedz się więcej o [sieciowe grupy zabezpieczeń](security-overview.md) i [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups).
 - Platforma Azure utworzy domyślną kilka reguł zabezpieczeń w każdej grupie zabezpieczeń sieci. Jedna domyślna reguła zezwala na cały ruch przepływ między wszystkimi zasobami w sieci wirtualnej. Aby zmienić to zachowanie, należy użyć zabezpieczeń sieci groups, niestandardowego routingu do kierowania ruchu do urządzenia WUS i / lub. Zalecane jest, zapoznaj się ze wszystkimi Azure [domyślnych regułach zabezpieczeń](security-overview.md#default-security-rules) i zrozumieć, jak reguły sieciowej grupy zabezpieczeń są stosowane do zasobu.
 
-Możesz wyświetlić przykładowe projekty do implementowania sieci obwodowej (DMZ) między platformą Azure i z Internetu za pomocą [urządzenie WUS](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) lub [sieciowe grupy zabezpieczeń](virtual-networks-dmz-nsg.md).
+Możesz wyświetlić przykładowe projekty do implementowania sieci obwodowej (DMZ) między platformą Azure i z Internetu za pomocą [urządzenie WUS](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
 
 ### <a name="traffic-routing"></a>Routing ruchu
 

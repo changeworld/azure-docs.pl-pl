@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6ec85e840f8e61c46e86b0fa8fb947fb763a4265
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518858"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515902"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration
 
@@ -81,7 +81,7 @@ Te informacje są widoczne w [witryny Azure portal](../../automation/automation-
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-Nazwa konfiguracji węzła upewnij się, czy przy użyciu nazwy *konfiguracji węzła* i nie konfiguracji.
+Nazwa konfiguracji węzła upewnij się, że istnieje konfiguracja węzła w konfiguracji stanu platformy Azure.  Jeśli tak nie jest dostępne, wdrożenie rozszerzenie zwróci błąd.  Upewnij się, czy przy użyciu nazwy również *konfiguracji węzła* i nie konfiguracji.
 Konfiguracja jest zdefiniowany w skrypcie, który jest używany [do kompilacji konfiguracji węzła (plik MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 Nazwa będzie zawsze konfiguracji następuje kropka `.` i `localhost` lub określonej nazwy komputera.
 

@@ -12,20 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245038"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475652"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory
 
-Usługa Azure Data Factory pozwala przenieść bogate dane organizacji w usługi Office 365 dzierżawy na platformę Azure w sposób skalowalny i kompilowanie aplikacji do analizowania i wyodrębnić szczegółowe informacje, w oparciu o te zasoby cennych danych. Integracja z usługą Privileged Access Management zapewnia kontrolę bezpiecznego dostępu do cennych danych nadzorowanych w usłudze Office 365.  Aby uzyskać więcej informacji dotyczących danych programu Microsoft Graph connect, zapoznaj się [ten link](https://docs.microsoft.com/graph/data-connect-concept-overview).
+Usługa Azure Data Factory integruje się z [łączenie danych programu Microsoft Graph](https://docs.microsoft.com/graph/data-connect-concept-overview), co pozwala na używanie bogate dane organizacji w usługi Office 365 dzierżawy na platformę Azure w sposób skalowalny i tworzenia aplikacji do analizowania i wyciągać wnioski na podstawie te zasoby cennych danych. Integracja z usługą Privileged Access Management zapewnia kontrolę bezpiecznego dostępu do cennych danych nadzorowanych w usłudze Office 365.  Zapoznaj się [ten link](https://docs.microsoft.com/graph/data-connect-concept-overview) omówienie danych programu Microsoft Graph łączenie i odnoszą się do [ten link](https://docs.microsoft.com/graph/data-connect-policies#licensing) informacje na temat licencjonowania.
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi Office 365. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+Łącznik usługi Office 365 dla usługi ADF i danych programu Microsoft Graph Łączenie pozwala na skalowanie pozyskiwanie pomiarów dotyczących różnych typów zestawów danych z skrzynek poczty E-mail programu Exchange, włączone kontaktów z książki adresowej, zdarzeniami kalendarza, wiadomości e-mail, informacje o użytkowniku, ustawienia skrzynki pocztowej i itd.  Zapoznaj się [tutaj](https://docs.microsoft.com/graph/data-connect-datasets) aby zobaczyć pełną listę dostępnych zestawów danych.
 
 Teraz wewnątrz działania elementu pojedynczej kopii można jedynie **kopiowanie danych z usługi Office 365 do [usługi Azure Blob Storage](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), i [usługi Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) w formacie JSON** (typ setOfObjects). Jeśli chcesz załadować usługi Office 365 do innych typów magazynów danych lub w innych formatach, można połączyć w łańcuch pierwsze działanie kopiowania z działaniem kopiowania kolejnych do dalszego ładowania danych do dowolnego [obsługiwane magazyny docelowego ADF](copy-activity-overview.md#supported-data-stores-and-formats) (zobacz" obsługiwany jako obiekt sink"kolumna w tabeli"Obsługiwane magazyny danych i formatów").
 
@@ -79,8 +80,8 @@ Następujące właściwości są obsługiwane dla usługi Office 365, połączon
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Office365** | Tak |
-| office365TenantId | Identyfikator dzierżawy usługi Azure, do której należy konto usługi Office 365. | Tak |
-| servicePrincipalTenantId | Określ informacje o dzierżawy, pod którą znajduje się aplikacja sieci web usługi Azure AD. | Yes |
+| office365TenantId | Identyfikator dzierżawy usługi Azure, do której należy konto usługi Office 365. | Yes |
+| servicePrincipalTenantId | Określ informacje o dzierżawy, pod którą znajduje się aplikacja sieci web usługi Azure AD. | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. | Tak |
 | connectVia | Integration Runtime, który ma być używany do łączenia się z magazynem danych.  Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie |
@@ -118,7 +119,7 @@ Aby skopiować dane z usługi Office 365, obsługiwane są następujące właśc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **Office365Table** | Yes |
+| type | Właściwość typu elementu dataset musi być równa: **Office365Table** | Tak |
 | tableName | Nazwa zestawu danych w celu wyodrębnienia z usługi Office 365. Zapoznaj się [tutaj](https://docs.microsoft.com/graph/data-connect-datasets#datasets) listę zestawów danych w usłudze Office 365 dostępne do wyodrębnienia. | Tak |
 | allowedGroups | Predykat wyboru grupy.  Użyj tej właściwości, aby wybrać maksymalnie 10 grup użytkowników, dla których będzie można odzyskać danych.  Jeśli nie określono żadnych grup, dane zostaną zwrócone dla całej organizacji. | Nie |
 | userScopeFilterUri | Gdy `allowedGroups` właściwość nie zostanie określona, można użyć predykatu wyrażenie, które są stosowane w całej dzierżawie, aby filtrować określonych wierszy w celu wyodrębnienia z usługi Office 365. Format predykatu powinny odpowiadać format kwerendy interfejsów API programu Microsoft Graph, np. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nie |

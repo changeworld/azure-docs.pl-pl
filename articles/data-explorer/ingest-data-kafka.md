@@ -1,20 +1,20 @@
 ---
-title: 'Szybki start: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer'
-description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer z platformy Kafka.
+title: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
+description: W tym artykule dowiesz się, jak w celu pozyskiwania danych (załaduj) do Eksploratora danych platformy Azure z platformy Kafka.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901028"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497284"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
  
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z platformy Kafka. Kafka to rozproszona platforma przesyłania strumieniowego umożliwiająca tworzenie potoków danych przesyłania strumieniowego w czasie rzeczywistym, które niezawodnie przenoszą dane między systemami lub aplikacjami.
  
@@ -36,7 +36,7 @@ Kafka Connect to narzędzie służące do skalowalnego i niezawodnego przesyłan
 
 Platforma Kafka może załadować plik `.jar` jako wtyczkę, która będzie działać jako łącznik niestandardowy. Aby utworzyć taki plik `.jar`, sklonujemy kod lokalnie i skompilujemy go przy użyciu narzędzia Maven. 
 
-#### <a name="clone"></a>Klonuj
+#### <a name="clone"></a>Klonowanie
 
 ```bash
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
@@ -57,7 +57,7 @@ W katalogu głównym *kafka-sink-azure-kusto* uruchom następujące polecenie:
 mvn clean compile assembly:single
 ```
 
-### <a name="deploy"></a>Wdróż 
+### <a name="deploy"></a>Wdrażanie 
 
 Załaduj wtyczkę do platformy Kafka. Przykład wdrożenia za pomocą platformy Docker można znaleźć pod adresem [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>Kolejne kroki
  
-> [!div class="nextstepaction"]
-> [Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)
+* [Wykonywanie zapytań dotyczących danych w Eksploratorze danych platformy Azure](web-query-data.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8a3c9a4fb1b43c1d00d66fee3548ccd10a1e075e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5a659da4bcc86544c31d7a789779253a0f571f34
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969375"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497548"
 ---
 # <a name="monitor-site-recovery"></a>Monitor Usługa Site Recovery
 
@@ -39,7 +39,7 @@ Sekcja zreplikowane elementy nie pokazuje kondycję wszystkich maszyn, które ma
 --- | ---
 W dobrej kondycji | Zwykle jest wykonywana replikacja. Nie błąd lub ostrzeżenie objawów są wykrywane.
 Ostrzeżenie | Objawy ostrzeżenia, które mogą mieć wpływ na replikację są wykrywane.
-Krytyczne | Wykryto co najmniej jeden objawy błąd replikacji krytycznej.<br/><br/> Następujące objawy błędu są zazwyczaj wskaźniki replikacja została zablokowana lub nie postępuje, tak szybko, jak współczynnik zmian danych.
+Krytyczny | Wykryto co najmniej jeden objawy błąd replikacji krytycznej.<br/><br/> Następujące objawy błędu są zazwyczaj wskaźniki replikacja została zablokowana lub nie postępuje, tak szybko, jak współczynnik zmian danych.
 Nie dotyczy | Serwery, które nie są obecnie powinien być replikacji. Może to obejmować maszyn, które zostały przełączone w tryb failover.
 
 ## <a name="monitor-test-failovers"></a>Monitor testu pracy w trybie Failover
@@ -98,9 +98,9 @@ Aktualizacje oprogramowania | Dostępność nowych aktualizacji oprogramowania o
     **Scenariusz** | **State**  | **Wyświetl dostępne?**
     --- |--- | ---
     **Replikacja między lokacjami lokalnymi** | Wszystkie stany | Nie 
-    **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure**  | Replikacja włączona początkowej replikacji w toku | Tak
+    **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure**  | Replikacja włączona początkowej replikacji w toku | Yes
     **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure** | W trybie Failover / powrotu po awarii | Nie   
-    **Replikacja VMware do platformy Azure** | Replikacja włączona początkowej replikacji w toku | Tak     
+    **Replikacja VMware do platformy Azure** | Replikacja włączona początkowej replikacji w toku | Yes     
     **Replikacja VMware do platformy Azure** | Nie można ponownie w tryb failover lub nie powiodła się | Nie      
     **Replikacja funkcji Hyper-V do platformy Azure** | Nie można ponownie w tryb failover lub nie powiodła się | Nie
 
@@ -190,7 +190,7 @@ Można subskrybować otrzymywanie powiadomień e-mail dla tych zdarzeń krytyczn
 
 Subskrybuj w następujący sposób:
 
-W magazynie > **monitorowanie i raporty** kliknij **zdarzeń usługi Site Recovery**.
+W magazynie > **monitorowanie** kliknij **zdarzeń usługi Site Recovery**.
 1. Kliknij przycisk **wiadomości E-mail z powiadomieniami**.
 1. W **powiadomienia E-mail**włączymy powiadomienia i określić, kto wysyłać. Możesz wysłać wysłane do wszystkich administratorów subskrypcji powiadomień i adresy opcjonalnie określonej wiadomości e-mail.
 

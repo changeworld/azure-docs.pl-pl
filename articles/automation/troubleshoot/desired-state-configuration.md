@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087272"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514461"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z Desired State Configuration (DSC)
 
@@ -145,6 +145,25 @@ Użyto poświadczeń w konfiguracji, ale nie zapewniają odpowiedniego **Configu
 #### <a name="resolution"></a>Rozwiązanie
 
 * Upewnij się przekazać właściwego **ConfigurationData** można ustawić **PSDscAllowPlainTextPassword** na wartość true dla każdej konfiguracji węzła, który jest wymieniony w konfiguracji. Aby uzyskać więcej informacji, zobacz [zasobów w usłudze Azure Automation DSC](../automation-dsc-compile.md#assets).
+
+### <a name="failure-processing-extension"></a>Scenariusz: Dołączanie z rozszerzenia dsc, błąd "Wystąpił błąd podczas przetwarzania rozszerzenia"
+
+#### <a name="issue"></a>Problem
+
+Podczas dołączania za pomocą rozszerzenia DSC, błąd występuje, zawierające błąd:
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd zazwyczaj występuje, gdy węzeł zostanie przypisany Nazwa konfiguracji węzła, który nie istnieje w usłudze.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+* Upewnij się, że w przypadku przypisywania węzeł z nazwa konfiguracji węzła, który dokładnie pasuje do nazwy w usłudze.
+* Użytkownik może nie zawierać nazwa konfiguracji węzła, co spowoduje, że dołączania węzła, ale nie przypisywanie konfiguracji węzła
 
 ## <a name="next-steps"></a>Kolejne kroki
 

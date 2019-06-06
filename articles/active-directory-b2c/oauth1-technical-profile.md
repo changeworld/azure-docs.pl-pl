@@ -2,20 +2,20 @@
 title: Definiowanie profilu technicznego OAuth1 w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Definiowanie profilu technicznego OAuth1 w zasadach niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 993fc8b2e318b59775f61de391ac75fa765485f0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699825"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513115"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth1 w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64699825"
 
 Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [protokołu OAuth 1.0](https://tools.ietf.org/html/rfc5849) dostawcy tożsamości. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Z profilu technicznego OAuth1 może tworzyć federacje z dostawcą tożsamości na podstawie OAuth1, takich jak serwis Twitter. Federowanie za pomocą dostawcy tożsamości umożliwia użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 **Nazwa** atrybutu **protokołu** element musi być równa `OAuth1`. Na przykład protokół **Twitter OAUTH1** profilu technicznego jest `OAuth1`.
 
@@ -72,8 +72,8 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
 | request_token_endpoint | Yes | Adres URL punktu końcowego tokenu żądania zgodnie z RFC 5849. |
-| authorization_endpoint | Yes | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 5849. |
-| access_token_endpoint | Yes | Adres URL punktu końcowego tokenu zgodnie z RFC 5849. |
+| authorization_endpoint | Tak | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 5849. |
+| access_token_endpoint | Tak | Adres URL punktu końcowego tokenu zgodnie z RFC 5849. |
 | ClaimsEndpoint | Nie | Adres URL punktu końcowego informacji użytkownika. | 
 | ClaimsResponseFormat | Nie | Format odpowiedzi oświadczeń.|
 

@@ -2,20 +2,20 @@
 title: Przełączanie do dzierżawy B2C w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Jak przełączyć się do kontekstu dzierżawy usługi Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 4/13/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ee6d85788211315412b7cbd3c82532dcd45162f7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d1580931a94b58e772f9f11cb7b9948216e9063a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697703"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509890"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Przełączanie się do dzierżawy usługi Azure AD B2C
 

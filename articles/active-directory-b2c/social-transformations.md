@@ -2,20 +2,20 @@
 title: Konta społecznościowego przykłady przekształcania oświadczeń tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Konta społecznościowego oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f6da199beb292f193d97eee309ca40dd74f81f8e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c1a718539259a284e1d48fe48a3741a676bd4040
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697720"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512484"
 ---
 # <a name="social-accounts-claims-transformations"></a>Przekształcenia oświadczeń kont społecznościowych
 
@@ -75,8 +75,8 @@ Dodaje `AlternativeSecurityId` do `alternativeSecurityIdCollection` oświadczeni
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | Element | string | Oświadczenia, które mają zostać dodane do oświadczeń wychodzących. |
-| Oświadczenie InputClaim | kolekcja | alternativeSecurityIdCollection | ClaimTypes, używanych przez przekształcania oświadczeń, jeśli są dostępne w zasadach. Jeśli nie dostarczono, przekształcania oświadczeń dodaje `item` na końcu kolekcji. |
-| oświadczenie outputClaim | kolekcja | alternativeSecurityIdCollection | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Nowa kolekcja, który zawiera elementy z danych wejściowych `collection` i `item`. |
+| Oświadczenie InputClaim | Kolekcja | alternativeSecurityIdCollection | ClaimTypes, używanych przez przekształcania oświadczeń, jeśli są dostępne w zasadach. Jeśli nie dostarczono, przekształcania oświadczeń dodaje `item` na końcu kolekcji. |
+| oświadczenie outputClaim | Kolekcja | alternativeSecurityIdCollection | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Nowa kolekcja, który zawiera elementy z danych wejściowych `collection` i `item`. |
 
 Poniższy przykład łączy nowej tożsamości społecznościowych, przy użyciu istniejącego konta. Aby utworzyć link nowej tożsamości społecznościowych:
 1. W **AAD UserReadUsingAlternativeSecurityId** i **AAD UserReadUsingObjectId** profile techniczne, dane wyjściowe użytkownika **alternativeSecurityIds** oświadczenia.
@@ -139,8 +139,8 @@ Usuwa **AlternativeSecurityId** z **alternativeSecurityIdCollection** oświadcze
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | identityProvider | string | Typ oświadczenia, który zawiera nazwę dostawcy tożsamości, aby były usuwane z kolekcji. |
-| Oświadczenie InputClaim | kolekcja | alternativeSecurityIdCollection | ClaimTypes, używanych przez przekształcania oświadczeń. Przekształcanie oświadczeń usuwa dostawca tożsamości z kolekcji. |
-| oświadczenie outputClaim | kolekcja | alternativeSecurityIdCollection | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Nowa kolekcja, po dostawca tożsamości został usunięty z kolekcji. |
+| Oświadczenie InputClaim | Kolekcja | alternativeSecurityIdCollection | ClaimTypes, używanych przez przekształcania oświadczeń. Przekształcanie oświadczeń usuwa dostawca tożsamości z kolekcji. |
+| oświadczenie outputClaim | Kolekcja | alternativeSecurityIdCollection | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Nowa kolekcja, po dostawca tożsamości został usunięty z kolekcji. |
 
 Poniższy przykład rozłączysz jednej tożsamości społecznościowych, przy użyciu istniejącego konta. Aby odłączyć tożsamości społecznościowych:
 1. W **AAD UserReadUsingAlternativeSecurityId** i **AAD UserReadUsingObjectId** profile techniczne, dane wyjściowe użytkownika **alternativeSecurityIds** oświadczenia.

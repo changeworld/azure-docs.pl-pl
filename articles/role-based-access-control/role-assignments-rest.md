@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 05/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357074"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472732"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu API REST
 
@@ -38,7 +38,7 @@ RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań ról.
 
-    | Scope | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -52,9 +52,9 @@ RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę 
 
     | Filtr | Opis |
     | --- | --- |
-    | `$filter=atScope()` | Lista przypisań ról tylko określonym zakresie, nie wliczając przypisań ról w subscopes. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Lista przypisań ról dla określonego użytkownika, grupy lub jednostki usługi. |
-    | `$filter=assignedTo('{objectId}')` | Lista przypisań ról dla określonego użytkownika, a także dziedziczone z grupy. |
+    | `$filter=atScope()` | Wyświetla listę tylko określonym zakresie, nie wliczając przypisań ról w subscopes przypisań ról. |
+    | `$filter=principalId%20eq%20'{objectId}'` | Wyświetla listę przypisań ról dla określonego użytkownika, grupy lub jednostki usługi. |
+    | `$filter=assignedTo('{objectId}')` | Wyświetla listę przypisań ról dla określonego użytkownika lub nazwy głównej usługi. Jeśli użytkownik jest członkiem grupy, która ma przypisania roli, znajduje się również przypisanie tej roli. Ten filtr jest przechodnia dla grup, co oznacza, że jeśli użytkownik jest członkiem grupy, tej grupy jest elementem członkowskim innej grupy, która ma przypisania roli tego przypisania roli jest również dostępna. Ten filtr akceptuje tylko identyfikator obiektu użytkownika lub nazwy głównej usługi. Nie można przekazać identyfikator obiektu dla grupy. |
 
 ## <a name="grant-access"></a>Udzielanie dostępu
 
@@ -81,7 +81,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
     
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem przypisania roli.
 
-    | Scope | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -109,7 +109,7 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* w zakresie usuwania przypisania roli.
 
-    | Scope | Type |
+    | Scope | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |

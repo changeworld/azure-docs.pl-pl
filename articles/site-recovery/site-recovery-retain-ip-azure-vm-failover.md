@@ -6,12 +6,12 @@ ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b7772bad5bb1c5b43a4bcc8d727a22c82547043
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61277306"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479965"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Podczas pracy awaryjnej należy zachować adresy IP
 
@@ -43,7 +43,7 @@ Poniżej przedstawiono architekturę przed włączeniem trybu failover.
         - Azja Wschodnia ma sieci wirtualnej (**źródłowa sieć wirtualna**) przy użyciu 10.1.0.0/16 przestrzeni adresowej.
         - Azja Wschodnia ma obciążeń podzielić na trzy podsieci w sieci wirtualnej:
             - **Podsieć 1**: 10.1.1.0/24
-            - **Podsieć 2**: 10.1.2.0/24,
+            - **Podsieć 2**: 10.1.2.0/24
             - **Podsieci 3**: 10.1.3.0/24
     - Region pomocniczy (docelowy) to Azure Południowo-Wschodnia Azja
         - Azja południowo-wschodnia ma odzyskiwania sieci wirtualnej (**sieć odzyskiwania**) taka sama jak **źródłowa sieć wirtualna**.
@@ -131,11 +131,11 @@ Oto jak wygląda architektura sieci przed włączeniem trybu failover.
 - Azja Wschodnia ma sieci wirtualnej (**źródłowa sieć wirtualna**) przy użyciu 10.1.0.0/16 przestrzeni adresowej.
   - Azja Wschodnia ma obciążeń podzielić na trzy podsieci w **źródłowa sieć wirtualna**:
     - **Podsieć 1**: 10.1.1.0/24
-    - **Podsieć 2**: 10.1.2.0/24,
-    - **Podsieci 3**: 10.1.3.0/24utilizing siecią wirtualną platformy Azure przy użyciu 10.1.0.0/16 przestrzeni adresowej. Ta sieć wirtualna ma nazwę **źródłowa sieć wirtualna**
+    - **Podsieć 2**: 10.1.2.0/24
+    - **Podsieci 3**: 10.1.3.0/24 przy użyciu sieci wirtualnej platformy Azure przy użyciu 10.1.0.0/16 przestrzeni adresowej. Ta sieć wirtualna ma nazwę **źródłowa sieć wirtualna**
       - Region pomocniczy (docelowy) to Azure, Azja południowo-wschodnia:
   - Azja południowo-wschodnia ma odzyskiwania sieci wirtualnej (**sieć odzyskiwania**) taka sama jak **źródłowa sieć wirtualna**.
-- Maszyny wirtualne w Azja Wschodnia są połączone z lokalnym centrum danych za pomocą usługi Azure ExpressRoute lub sieci lokacji do lokacji VPN.
+- Maszyny wirtualne w Azja Wschodnia, są połączone z lokalnego centrum danych za pomocą usługi Azure ExpressRoute lub sieci VPN typu lokacja lokacja.
 - Aby zmniejszyć czas RTO, firmy B aprowizuje bramy w sieci wirtualnej odzyskiwania w usłudze Azure Azja południowo-wschodnia przed trybu failover.
 - Firma B przypisuje/sprawdza docelowych adresów IP dla replikowanych maszyn wirtualnych. Docelowy adres IP jest taki sam jak źródłowy adres IP dla każdej maszyny Wirtualnej.
 

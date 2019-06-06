@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65850527"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514526"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -70,7 +70,7 @@ Można uruchamiać aplikacje i usługi pomocnicze, potrzebujesz rozwiązania Kub
 
 Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę procesorów CPU, ilości pamięci i rozmiar i typ magazynu (takich jak SSD o wysokiej wydajności lub regularnych HDD). Jeśli przewidujesz potrzebę aplikacje, które wymagają dużej ilości procesora CPU i pamięci lub magazynu o wysokiej wydajności, należy odpowiednio zaplanować rozmiar węzła. Możesz również skalować w górę liczby węzłów w klastrze usługi AKS w taki sposób, aby zaspokajać zapotrzebowanie.
 
-Obraz maszyny Wirtualnej dla węzłów w klastrze w usłudze AKS, obecnie opiera się na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
+Obraz maszyny Wirtualnej dla węzłów w klastrze w usłudze AKS, obecnie opiera się na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania. Węzły agenta są rozliczane jako standardowe maszyny wirtualne, więc wszelkie zniżki trzeba od rozmiaru maszyny Wirtualnej używasz (w tym [Azure rezerwacje][reservation-discounts]) są automatycznie stosowane.
 
 Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` wydania funkcji i udostępnia opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz użyć innego niż Moby kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
 
@@ -270,3 +270,4 @@ W tym artykule omówiono niektóre z podstawowych składników platformy Kuberne
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md

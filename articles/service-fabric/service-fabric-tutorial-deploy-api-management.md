@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306813"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428059"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integracja usługi API Management z usługą Service Fabric na platformie Azure
 
@@ -43,7 +43,7 @@ Przed rozpoczęciem:
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Zainstaluj [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) w sieciowej grupie zabezpieczeń.
-* W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com), a następnie zainstaluj obciążenia **Programowanie na platformie Azure**, **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych** oraz **Programowanie dla wielu platform w środowisku .NET Core**.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
+* W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj [Visual Studio 2019](https://www.visualstudio.com) i **programowanie na platformie Azure**, **ASP.NET i tworzenie aplikacji internetowych**, i **programowanie dla wielu platform .NET Core**obciążeń.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Topologia sieci
 
@@ -88,7 +88,7 @@ Uruchom program Visual Studio jako administrator i utwórz usługę ASP.NET Core
     </Resources>
     ```
 
-    Usuwanie portu pozwala usłudze Service Fabric dynamicznie wskazać port z zakresu portów aplikacji, otwartego za pomocą sieciowej grupy zabezpieczeń sieci w szablonie usługi Resource Manager klastra, co umożliwia przepływ ruchu z usługi API Management do tego portu.
+    Usuwanie portu pozwala usłudze Service Fabric określić port dynamicznie z zakresu portów aplikacji, otwartego za pomocą sieciowej grupy zabezpieczeń w szablonie usługi Resource Manager dla klastra, dzięki czemu przepływ ruchu do niej z usługi API Management.
 
  6. W programie Visual Studio naciśnij klawisz F5, aby sprawdzić, czy internetowy interfejs API jest dostępny lokalnie.
 

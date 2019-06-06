@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602082"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472578"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych umożliwia zbieranie informacji o wydajności i metryki połączeń, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -43,8 +43,8 @@ Poniższe pola i konwencje dotyczą zarówno VMConnection, jak i VMBoundPort:
 
 - Komputer: W pełni kwalifikowaną nazwę domeny z raportowaniem daje używanie maszyny 
 - AgentID: Unikatowy identyfikator dla komputera z agentem usługi Log Analytics  
-- Komputer: Nazwa zasobu usługi Azure Resource Manager dla maszyny, udostępnianych przez ServiceMap. Ma on postać *m-{GUID}*, gdzie *GUID* jest tego samego identyfikatora GUID jako identyfikator agenta  
-- Proces: Nazwa zasobu usługi Azure Resource Manager dla procesu udostępnianych przez ServiceMap. Ma on postać *p-{ciąg szesnastkowy}*. Proces jest unikatowa w zakresie maszyny i można wygenerować unikatowy identyfikator procesu na komputerach, należy połączyć maszyny i proces pól. 
+- Maszyny: Nazwa zasobu usługi Azure Resource Manager dla maszyny, udostępnianych przez ServiceMap. Ma on postać *m-{GUID}* , gdzie *GUID* jest tego samego identyfikatora GUID jako identyfikator agenta  
+- Proces: Nazwa zasobu usługi Azure Resource Manager dla procesu udostępnianych przez ServiceMap. Ma on postać *p-{ciąg szesnastkowy}* . Proces jest unikatowa w zakresie maszyny i można wygenerować unikatowy identyfikator procesu na komputerach, należy połączyć maszyny i proces pól. 
 - ProcessName: Nazwa pliku wykonywalnego procesu raportowania.
 - Wszystkie adresy IP są ciągami w formacie kanonicznym IPv4, na przykład *13.107.3.160* 
 
@@ -125,13 +125,6 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 ### <a name="ports"></a>Porty 
 Porty na maszynie, które aktywnie akceptuje ruch przychodzący lub potencjalnie może akceptować ruch, ale są w stanie bezczynności raportowania przedziale czasu, są zapisywane w tabeli VMBoundPort.  
 
->[!NOTE]
->Usługa Azure Monitor dla maszyn wirtualnych nie obsługuje gromadzenia i rejestrowania danych portu w obszarze roboczym usługi Log Analytics w następujących regionach:  
->- Wschodnie stany USA  
->- Europa Zachodnia
->
-> Zbieranie tych danych jest włączone w drugim [obsługiwane regiony](vminsights-enable-overview.md#log-analytics) monitora platformy Azure dla maszyn wirtualnych. 
-
 Każdy rekord w VMBoundPort jest identyfikowane za pomocą następujących pól: 
 
 | Właściwość | Opis |
@@ -162,7 +155,7 @@ Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z ag
 
 | Właściwość | Opis |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
+| Typ | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | Unikatowy identyfikator dla maszyny w obszarze roboczym |
 | ResourceName_s | Unikatowy identyfikator dla maszyny w obszarze roboczym |
@@ -187,7 +180,7 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone 
 
 | Właściwość | Opis |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
+| Typ | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | Unikatowy identyfikator procesu wewnątrz obszaru roboczego |
 | ResourceName_s | Unikatowy identyfikator procesu na maszynie, na którym jest uruchomiony|

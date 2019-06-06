@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: sogup
-ms.openlocfilehash: b345f5e7f6f32d7fbb76d4f0227c8f4f925ff884
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9fba7d679b7d0edb3c99207c99b23f9616c6fa0e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400299"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477574"
 ---
 # <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
@@ -76,7 +76,7 @@ Usługa Azure Backup automatycznie obsługuje magazynu dla magazynu. Należy okr
    - Dowiedz się więcej o [geograficznie](../storage/common/storage-redundancy-grs.md) i [lokalnego](../storage/common/storage-redundancy-lrs.md) nadmiarowości.
 
 > [!NOTE]
-> Po wybraniu **typ replikacji magazynu** z **magazynu geograficznie nadmiarowego** do **lokalnie nadmiarowy**, nie można przywrócić ponownie.
+> Zmiana **typu replikacji magazynu** (lokalnie nadmiarowy / geograficznie nadmiarowy) dla magazynu usług Recovery services musi odbywać się przed rozpoczęciem konfigurowania kopii zapasowych w magazynie. Po skonfigurowania kopii zapasowej, opcja modyfikowania jest wyłączona i nie można zmienić **typu replikacji magazynu**. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

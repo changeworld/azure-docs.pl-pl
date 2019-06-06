@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60237619"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427363"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
 
@@ -82,6 +82,15 @@ W tym artykule wymieniono różne serwerów i obciążeń, które można chroni�
 |Maszyny wirtualne VMware|VMware vCenter/vSphere ESX/ESXi licencjonowane 5.5/6.0/6.5 wersji |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Tak|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
 |Maszyny wirtualne VMware|[Oprogramowania VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Nie|Maszyny wirtualne VMware na udostępnione woluminy klastra (CSV), systemu plików NFS, a Magazyn sieci SAN<br /> Odzyskiwanie na poziomie elementu plików i folderów są dostępne tylko dla maszyn wirtualnych Windows, oprogramowania vApps VMware nie są obsługiwane.|
 |Linux|System Linux uruchomiony jako gość funkcji Hyper-V lub VMware|Serwer fizyczny <br/>Lokalna maszyna wirtualna funkcji Hyper-V, <br/> Windows maszyn wirtualnych programu VMware|Tak|Tak|Funkcji Hyper-V musi działać w systemie Windows Server 2012 R2 lub Windows Server 2016. Ochrona: Całą maszynę wirtualną<br /><br />Odzyskiwanie: Całą maszynę wirtualną <br/><br/> Aby uzyskać pełną listę obsługiwanych dystrybucjach systemu Linux i wersji, zobacz artykuł [systemu Linux na dystrybucje zalecane dla platformy Azure](../virtual-machines/linux/endorsed-distros.md).|
+
+## <a name="azure-expressroute-support"></a>Pomoc techniczna dla usługi ExpressRoute platformy Azure
+
+Usługi Azure ExpressRoute jest skonfigurowany za pomocą komunikacji równorzędnej prywatnej lub firmy Microsoft, nie można wykonać kopię zapasową danych na platformie Azure.
+
+Skonfigurowanie usługi Azure ExpressRoute w publicznej komunikacji równorzędnej może służyć do tworzenia kopii zapasowych danych na platformie Azure.
+
+>[!NOTE]
+>Publicznej komunikacji równorzędnej jest przestarzała w przypadku obwodów.
 
 ## <a name="cluster-support"></a>Obsługa klastrów
 Usługa Azure Backup Server, chronić dane w następujących aplikacjach klastrowanych:

@@ -2,20 +2,20 @@
 title: Podróży użytkowników | Dokumentacja firmy Microsoft
 description: Określ element podróży użytkowników zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f5e56d4953eecdb488d5dadd4497b1c42b932f35
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d2e6ad9aa9692efa4ea5633dff78b262bb1917be
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812576"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512025"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -37,7 +37,7 @@ Aby zdefiniować trasach użytkownika obsługiwany przez zasady, **podróży uż
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator podróży użytkownika, którego można odwołać się do niego z innych elementów w zasadach. **DefaultUserJourney** elementu [jednostki uzależnionej zasad firmy](relyingparty.md) wskazuje tego atrybutu. |
+| Identyfikator | Tak | Identyfikator podróży użytkownika, którego można odwołać się do niego z innych elementów w zasadach. **DefaultUserJourney** elementu [jednostki uzależnionej zasad firmy](relyingparty.md) wskazuje tego atrybutu. |
 
 **UserJourney** element zawiera następujące elementy:
 
@@ -93,14 +93,14 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | `Type` | Tak | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
-| `ExecuteActionsIf` | Tak | Użyj testu prawda lub FAŁSZ, aby zdecydować, jeśli można wykonać akcje w warunku wstępnym. | 
+| `ExecuteActionsIf` | Yes | Użyj testu prawda lub FAŁSZ, aby zdecydować, jeśli można wykonać akcje w warunku wstępnym. | 
 
 **Wstępnym** elementy zawierają następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
 | Wartość | 1: n | ClaimTypeReferenceId zostać wykonane zapytanie dla. Inny element wartość zawiera wartość do sprawdzenia.</li></ul>|
-| action | 1:1 | Akcja, która powinna być wykonywana, jeśli sprawdzanie warunku wstępnego w ramach kroku aranżacji ma wartość true. Jeśli wartość `Action` ustawiono `SkipThisOrchestrationStep`, skojarzonego `OrchestrationStep` nie powinien być wykonywany. | 
+| Akcja | 1:1 | Akcja, która powinna być wykonywana, jeśli sprawdzanie warunku wstępnego w ramach kroku aranżacji ma wartość true. Jeśli wartość `Action` ustawiono `SkipThisOrchestrationStep`, skojarzonego `OrchestrationStep` nie powinien być wykonywany. | 
 
 #### <a name="preconditions-examples"></a>Przykłady warunków wstępnych
 
@@ -224,5 +224,5 @@ W poniższym kroku aranżacji użytkownika można zalogować się przy użyciu u
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator kroku exchange oświadczeń. Identyfikator jest używana do odwołania, wymiana oświadczeń spośród dostawcy oświadczeń krok w ramach zasad. | 
+| Identyfikator | Yes | Identyfikator kroku exchange oświadczeń. Identyfikator jest używana do odwołania, wymiana oświadczeń spośród dostawcy oświadczeń krok w ramach zasad. | 
 | TechnicalProfileReferenceId | Tak | Identyfikator profilu technicznego, który ma zostać wykonana. |

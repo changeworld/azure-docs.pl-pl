@@ -2,20 +2,20 @@
 title: Zdefiniuj samodzielnie profilu technicznego w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować samodzielnie profilu technicznego.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c728660f1a77c02f1e4b5fdeb467a7dbba4e36a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691023"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512662"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj samodzielnie profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64691023"
 
 Wszystkie interakcje w usługi Azure Active Directory (Azure AD) B2C, gdzie użytkownik powinien zapewniać dane wejściowe są oceniane pod własnym profile techniczne. Na przykład strony resetowania zapisywania strony, strony logowania lub hasło.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 **Nazwa** atrybutu **protokołu** element musi być równa `Proprietary`. **Obsługi** atrybutu musi zawierać w pełni kwalifikowaną nazwę zestawu obsługi protokołu, który jest używany przez usługi Azure AD B2C własnym potwierdzone: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
@@ -132,7 +132,7 @@ Możesz również wywołanie interfejsu API REST profilu technicznego z logikę 
 | setting.showContinueButton | Nie | Wyświetla przycisk Kontynuuj. Możliwe wartości: `true` (ustawienie domyślne) lub `false` |
 | setting.showCancelButton | Nie | Wyświetla przycisk Anuluj. Możliwe wartości: `true` (ustawienie domyślne) lub `false` |
 | setting.operatingMode | Nie | Na stronie logowania ta właściwość określa zachowanie pola Nazwa użytkownika, na przykład sprawdzenie poprawności danych wejściowych i komunikaty o błędach. Oczekiwane wartości: `Username` lub `Email`. |
-| ContentDefinitionReferenceId | Yes | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym profilem Technical Preview. |
+| ContentDefinitionReferenceId | Tak | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym profilem Technical Preview. |
 | EnforceEmailVerification | Nie | Do tworzenia konta lub edytowania profilu, wymusza Weryfikacja adresu e-mail. Możliwe wartości: `true` (ustawienie domyślne) lub `false`. | 
 | setting.showSignupLink | Nie | Wyświetla przycisk tworzenia konta. Możliwe wartości: `true` (ustawienie domyślne) lub `false` |
 | setting.retryLimit | Nie | Określa, ile razy użytkownik może próbować udostępniania danych, które jest sprawdzana względem profilu technicznego sprawdzania poprawności. Na przykład użytkownik próbuje zarejestrować się przy użyciu konta, które już istnieje i utrzymuje podjęcie próby, aż do osiągnięcia limitu.
