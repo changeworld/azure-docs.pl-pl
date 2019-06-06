@@ -9,18 +9,18 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 07b86138a95853673b5d54e272b40af41d58f418
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545025"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475947"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Szybki start: Przygotowanie i wizualizowanie danych bez konieczności pisania kodu w usłudze Azure Machine Learning
 
-Przygotowanie i wizualizowanie danych w interfejsie visual przeciąganie i upuszczanie (wersja zapoznawcza) dla usługi Azure Machine Learning. Dane, które będą używane zawiera wpisy dla różnych samochodów, na przykład informacji takich jak marka, model, przedstawiono dane techniczne i ceny.  
+Przygotowanie i wizualizowanie danych w interfejsie visual przeciąganie i upuszczanie (wersja zapoznawcza) dla usługi Azure Machine Learning. Dane, które będą używane zawiera wpisy dla różnych samochodów, na przykład informacji takich jak marka, model, przedstawiono dane techniczne i ceny. Po ukończeniu tego przewodnika Szybki Start będzie gotowa do użycia tych danych do prognozowania cen samochodów. 
 
-W tym przewodniku Szybki Start możesz eksplorować i przygotowywania danych:
+Przed uczyć się model uczenia maszynowego, musisz zrozumieć i przygotuj dane.  W tym przewodniku Szybki Start będzie:
 
 - Tworzenie pierwszego eksperymentu, aby dodać, a także wyświetlić podgląd danych
 - Przygotowywanie danych, usuwając brakujące wartości
@@ -66,7 +66,7 @@ Narzędzie interfejs graficzny zapewnia interaktywny, wizualny miejsce do łatwe
 
 ## <a name="add-data"></a>Dodawanie danych
 
-Pierwszą rzeczą, jaką należy dla usługi machine learning są dane. Istnieje kilka przykładowych zestawów danych w tym interfejsie, którego można używać, lub możesz zaimportować dane z wielu źródeł. W tym przykładzie użyjemy przykładowego zestawu danych **danych dotyczących cen samochodów (Raw)**. 
+Pierwszą rzeczą, jaką należy dla usługi machine learning są dane. Istnieje kilka przykładowych zestawów danych w tym interfejsie, którego można używać, lub możesz zaimportować dane z wielu źródeł. W tym przykładzie użyjemy przykładowego zestawu danych **danych dotyczących cen samochodów (Raw)** . 
 
 1. Z lewej strony obszaru roboczego eksperymentu znajduje się paleta zawierająca zestawy danych i moduły. Wybierz **zapisane zestawów danych** polecenie **przykłady** do wyświetlania dostępnych przykładowych zestawów danych.
 
@@ -131,7 +131,7 @@ Teraz, gdy uruchomiono początkowej eksperymentu, możesz wizualizować dane, ab
 
      ![Wyświetl podgląd danych](./media/ui-quickstart-run-experiment/preview-data.gif)
 
-1. Kliknij przycisk dotyczących poszczególnych kolumn, aby dowiedzieć się więcej na temat zestawu danych.
+1. Kliknij przycisk dotyczących poszczególnych kolumn, aby dowiedzieć się więcej o zestaw danych i zastanów się, czy te kolumny będą przydatne do prognozowania cen samochodów.
 
 ## <a name="prepare-data"></a>Przygotowywanie danych
 
@@ -176,7 +176,7 @@ Najpierw należy usunąć **kolumny znormalizowane straty** kolumny całkowicie.
 
 ### <a name="clean-missing-data"></a>Wyczyść brakujące dane
 
-Teraz Dodaj inny moduł, który usunie wszystkie pozostałe wiersze z brakującymi danymi.
+Ucząc model trzeba zrobić coś o danych, które nie istnieje.  W takim przypadku należy dodać moduł, który chcesz usunąć wszystkie pozostałe wiersze z brakującymi danymi.  
 
 1. Typ **czysty** w polu wyszukiwania, aby znaleźć **Clean Missing Data** modułu.
 
@@ -216,7 +216,7 @@ Od wprowadzenia zmian do modułów w eksperymencie, stan został zmieniony na "R
 
     Istnieją teraz 193 wierszy i kolumn 25.
 
-    Po kliknięciu **num z drzwi** Zobacz środki, nieopłacone 2 unikatowe wartości, ale ma teraz 0 brakuje wartości.  
+    Po kliknięciu **num z drzwi** Zobacz środki, nieopłacone 2 unikatowe wartości, ale ma teraz 0 brakuje wartości. Klikaj elementy pozostałe kolumny, aby zobaczyć, że nie istnieją żadne brakujące wartości, które pozostanie w zestawie danych. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -228,7 +228,7 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 - Tworzenie pierwszego eksperymentu, aby dodać, a także wyświetlić podgląd danych
 - Przygotowywanie danych, usuwając brakujące wartości
-- Wizualizowanie danych
+- Wizualizuj przygotowanych danych
 
 Przejdź do samouczka, aby użyć tych danych do prognozowania cen samochodów.
 

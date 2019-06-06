@@ -166,6 +166,8 @@
           href: event-schema-service-bus.md
         - name: Azure Maps
           href: event-schema-azure-maps.md
+        - name: Konfiguracja aplikacji
+          href: event-schema-app-configuration.md
     - name: Zasoby szablonu
       items:
         - name: Subskrypcje zdarzeń

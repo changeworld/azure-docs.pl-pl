@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31c2846c628553e74eff5ea9a9627c871f4f810c
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891521"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734548"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Szybki start: tworzenie aplikacji Node.js za pomocą konta interfejsu API języka Gremlin dla usługi Azure Cosmos DB
 
@@ -140,13 +140,9 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 2. W pliku config.js przypisz kluczowi `config.endpoint` wartość **Identyfikator URI Gremlin** ze strony **Przegląd** w witrynie Azure Portal. 
 
-    `config.endpoint = "GRAPHENDPOINT";`
+    `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
     ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, blok Klucze](./media/create-graph-nodejs/gremlin-uri.png)
-
-   Jeśli wartość **Identyfikator URI Gremlin** jest pusta, można wygenerować wartość ze strony **Klucze** w portalu. Użyj wartości **URI**, usuń ciąg https:// i zmień wartość documents na wartość gremlin.cosmosdb. Jeśli konto programu Graph zostało utworzone przed 20 grudnia 2017 zmień wartość documents na wartość graphs. 
-
-   Punkt końcowy Gremlin musi być samą nazwą hosta, bez protokołu/numeru portu, czyli powinien mieć postać `mygraphdb.gremlin.cosmosdb.azure.com` (a nie `https://mygraphdb.gremlin.cosmosdb.azure.com` lub `mygraphdb.gremlin.cosmosdb.azure.com:433`).
 
 3. W pliku config.js przypisz elementowi config.primaryKey wartość z pola **Klucz podstawowy** na stronie **Klucze** w witrynie Azure Portal. 
 
@@ -162,7 +158,7 @@ Oto przykład wypełnionego pliku config.js:
 var config = {}
 
 // Note that this must not have HTTPS or the port number
-config.endpoint = "testgraphacct.gremlin.cosmosdb.azure.com";
+config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"

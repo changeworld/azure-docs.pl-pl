@@ -90,6 +90,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: Sieć wirtualna
               href: concepts-data-access-and-security-vnet.md
+            - name: Architektura łączności
+              href: concepts-connectivity-architecture.md
         - name: Ciągłość działalności biznesowej
           items:
             - name: Omówienie

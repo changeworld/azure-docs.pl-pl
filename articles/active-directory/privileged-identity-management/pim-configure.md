@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Privileged Identity Management? — Azure Active Directory | Microsoft Docs
+title: Co to jest Privileged Identity Management? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
 description: Omówienie usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60289128"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473681"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
 
@@ -41,15 +41,6 @@ Usługa PIM zasadniczo pomaga w zarządzaniu obszarami „kto, co, kiedy, gdzie 
 - Otrzymywanie **powiadomień** o aktywowaniu ról uprzywilejowanych
 - Przeprowadzanie **przeglądów dostępu** w celu upewnienia się, że użytkownicy nadal potrzebują ról
 - Pobieranie **historii inspekcji** w celu przeprowadzenia inspekcji wewnętrznej lub zewnętrznej
-
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Aby korzystać z usługi PIM, musisz mieć jedną z następujących płatnych lub próbnych licencji. Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory?](../fundamentals/active-directory-whatis.md).
-
-- Usługa Azure AD — warstwa Premium P2
-- Enterprise Mobility + Security (EMS) E5
-
-Aby uzyskać informacje o licencjach dla użytkowników, zobacz [Wymagania licencyjne dotyczące korzystania z usługi PIM](subscription-requirements.md).
 
 ## <a name="terminology"></a>Terminologia
 
@@ -104,6 +95,12 @@ Usługa PIM obsługuje następujące scenariusze:
 - Żądanie aktywacji roli wymagającej zatwierdzenia
 - Wyświetlanie stanu żądania uaktywnienia
 - Wykonywanie zadania w usłudze Azure AD w przypadku zatwierdzenia uaktywnienia
+
+## <a name="license-requirements"></a>Wymagania licencyjne
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Aby uzyskać informacje o licencjach dla użytkowników, zobacz [Wymagania licencyjne dotyczące korzystania z usługi PIM](subscription-requirements.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

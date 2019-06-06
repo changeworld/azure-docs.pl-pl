@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540145"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734483"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -85,14 +85,11 @@ Poniższy diagram przedstawia uproszczoną platformą Microsoft identity, inicjo
 
 Ten przepływ aprowizowania składa się z następujących etapów:
 
-|   |   |
-|---|---|
-| 1 | Użytkownik w dzierżawie B próbuje zalogować się przy użyciu aplikacji |
-| 2 | Poświadczenia użytkownika są odbierane i weryfikowane. |
-| 3 | Użytkownik jest monitowany o wyrażenie zgody na przyznanie aplikacji dostępu do dzierżawy B. |
-| 4 | Platforma tożsamości firmy Microsoft używa obiektu aplikacji A jako planu tworzenia usługi głównej w dzierżawie B |
-| 5 | Użytkownik otrzymuje żądany token. |
-|   |   |
+1. Użytkownik dzierżawy, który B próbuje zalogować się przy użyciu aplikacji, punkt końcowy autoryzacji żądania tokenu dla aplikacji.
+1. Poświadczenia użytkownika są uzyskane i sprawdzane pod kątem uwierzytelniania
+1. Użytkownik jest monitowany o podanie wyrażania zgody dla aplikacji w celu uzyskania dostępu do dzierżawy B
+1. Platforma Microsoft identity korzysta obiekt aplikacji w dzierżawie A jako planu tworzenia usługi głównej w dzierżawie B
+1. Użytkownik otrzymuje żądany token.
 
 Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Dzierżawy A zachowuje plan dla aplikacji (obiekt aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [aplikacji i obiektów nazw głównych usług na platformie tożsamości firmy Microsoft](app-objects-and-service-principals.md).
 
@@ -109,10 +106,10 @@ Oświadczenia obecne w dowolnym tokenie zabezpieczającym są zależne od typu t
 
 Krótki opis każdego typu oświadczenia wyemitowane przez platforma tożsamości usługi Microsoft znajduje się w poniższej tabeli. Aby uzyskać więcej informacji, zobacz [tokeny dostępu](access-tokens.md) i [tokeny Identyfikatora](id-tokens.md) wystawiony przez platforma tożsamości firmy Microsoft.
 
-| Oświadczenie | Opis |
+| Claim | Opis |
 | --- | --- |
 | Identyfikator aplikacji | Określa aplikację, która korzysta z tokenu. |
-| Odbiorcy | Identyfikuje zasób odbiorcy, dla którego jest przeznaczony token. |
+| Grupy odbiorców | Identyfikuje zasób odbiorcy, dla którego jest przeznaczony token. |
 | Application Authentication Context Class Reference | Wskazuje, jak klient został uwierzytelniony (klient publiczny lub klient poufny). |
 | Błyskawiczne uwierzytelnianie | Rejestruje datę i godzinę wystąpienia uwierzytelniania. |
 | Metoda uwierzytelniania | Wskazuje, jak podmiot tokenu został uwierzytelniony (hasło, certyfikat itp.). |

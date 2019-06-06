@@ -142,10 +142,6 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: Uwierzytelnianie oparte na certyfikacie na urządzeniach z systemem iOS
               href: active-directory-certificate-based-authentication-ios.md
-    - name: Programowanie
-      items:
-        - name: Wbudowywanie uwierzytelniania wieloskładnikowego w aplikacje niestandardowe
-          href: howto-mfa-sdk.md
     - name: Raportowanie
       items:
         - name: Raporty samoobsługowego resetowania hasła

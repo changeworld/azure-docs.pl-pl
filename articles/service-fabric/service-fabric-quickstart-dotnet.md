@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d7c0f19d6680eef7492faaaab0d45e0c70011f01
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773217"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428084"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
 
@@ -33,7 +33,7 @@ W tym przewodniku Szybki start pokazano, jak wdrożyć pierwszą aplikację plat
 Korzystając z tej aplikacji, nauczysz się wykonywać następujące czynności:
 
 * Tworzenie aplikacji przy użyciu platformy .NET i usługi Service Fabric
-* Używanie platformy ASP.NET Core jako frontonu sieci Web
+* Używanie platformy ASP.NET core jako frontonu sieci web
 * Przechowywanie danych aplikacji w usłudze stanowej
 * Debugowanie aplikacji lokalnie
 * Skalowanie aplikacji w poziomie na wiele węzłów
@@ -43,7 +43,7 @@ Korzystając z tej aplikacji, nauczysz się wykonywać następujące czynności:
 
 Aby ukończyć ten przewodnik Szybki start:
 
-1. [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/) z obciążeniami **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
+1. [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) z **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 2. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
 3. [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. Uruchom następujące polecenie, aby umożliwić programowi Visual Studio wdrażanie w lokalnym klastrze usługi Service Fabric:
@@ -91,7 +91,7 @@ Kliknij prawym przyciskiem myszy ikonę programu Visual Studio w menu Start i wy
 
 Otwórz rozwiązanie **Voting.sln** programu Visual Studio ze sklonowanego repozytorium.
 
-Domyślnie aplikacja do głosowania nasłuchuje na porcie 8080.  Port aplikacji jest ustawiony w pliku */VotingWeb/PackageRoot/ServiceManifest.xml*.  Port aplikacji możesz zmienić, aktualizując atrybut **Port** elementu **Punkt końcowy**.  Aby wdrożyć i uruchomić aplikację lokalnie, port aplikacji musi być otwarty i dostępny na komputerze.  Jeśli zmieniono port aplikacji, podstaw nową wartość portu aplikacji za wartość „8080” w tym artykule.
+Domyślnie aplikacja do głosowania nasłuchuje na porcie 8080.  Port aplikacji jest ustawiony w pliku */VotingWeb/PackageRoot/ServiceManifest.xml*.  Port aplikacji możesz zmienić, aktualizując atrybut **Port** elementu **Punkt końcowy**.  Aby wdrożyć i uruchomić aplikację lokalnie, port aplikacji musi być otwarty i dostępny na komputerze.  Jeśli zmienisz port aplikacji, zastąp wartość portu aplikacji dla "8080" w tym artykule.
 
 Aby wdrożyć aplikację, naciśnij klawisz **F5**.
 
@@ -123,7 +123,7 @@ Podczas głosowania w aplikacji występują następujące zdarzenia:
 
 ## <a name="debug-in-visual-studio"></a>Debugowanie w programie Visual Studio
 
-Aplikacja powinna być uruchomiona, ale przy użyciu debugera można zobaczyć, jak działają kluczowe części aplikacji. Podczas debugowania aplikacji w programie Visual Studio używany jest lokalny klaster projektowy usługi Service Fabric. Możesz opcjonalnie dostosować środowisko debugowania do danego scenariusza. W tej aplikacji dane są przechowywane w usłudze zaplecza przy użyciu niezawodnego słownika. Program Visual Studio domyślnie usuwa aplikację po zatrzymaniu debugera. Usunięcie aplikacji spowoduje, że dane w usłudze zaplecza także zostaną usunięte. Aby zachować dane między sesjami debugowania, możesz zmienić **Tryb debugowania aplikacji** jako właściwość w projekcie **Voting (Głosowanie)** w programie Visual Studio.
+Aplikacja powinna być uruchomiona, ale przy użyciu debugera można zobaczyć, jak działają kluczowe części aplikacji. Podczas debugowania aplikacji w programie Visual Studio, używasz lokalny klaster projektowy usługi Service Fabric. Można dostosować środowisko debugowania do danego scenariusza. W tej aplikacji dane są przechowywane w usłudze zaplecza przy użyciu niezawodnego słownika. Program Visual Studio domyślnie usuwa aplikację po zatrzymaniu debugera. Usunięcie aplikacji spowoduje, że dane w usłudze zaplecza także zostaną usunięte. Aby zachować dane między sesjami debugowania, możesz zmienić **Tryb debugowania aplikacji** jako właściwość w projekcie **Voting (Głosowanie)** w programie Visual Studio.
 
 Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 
@@ -132,23 +132,23 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 2. Otwórz plik **/VotingData/Controllers/VoteDataController.cs** i ustaw punkt przerwania w metodzie **Put** tego internetowego interfejsu API (wiersz 54).
 
 3. Wróć do przeglądarki i kliknij opcję głosowania lub dodaj nową opcję głosowania. Zostanie trafiony pierwszy punkt przerwania w kontrolerze interfejsu API frontonu internetowego.
-   * Jest to punkt, w którym skrypt JavaScript w przeglądarce wysyła żądanie do kontrolera internetowego interfejsu API w usłudze frontonu.
+   * Ten krok jest, gdy kod JavaScript w przeglądarce wysyła żądanie do kontrolera interfejsu API sieci web w usłudze frontonu.
 
-     ![Dodawanie usługi frontonu Vote (Głosowanie)](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     ![Dodawanie usługi frontonu Vote](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-   * Najpierw skonstruuj adres URL do elementu ReverseProxy dla naszej usługi zaplecza **(1)**.
-   * Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)**.
-   * Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
+   * Najpierw skonstruuj adres URL do elementu ReverseProxy dla naszej usługi zaplecza **(1)** .
+   * Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)** .
+   * Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)** .
 
 4. Naciśnij klawisz **F5**, aby kontynuować
    - Jeśli przeglądarka wyświetli monit, przyznaj grupie ServiceFabricAllowedUsers uprawnienia do odczytu i wykonywania dla trybu debugowania.
-   - Jesteś teraz w punkcie przerwania w usłudze zaplecza.
+   - Teraz możesz w punkcie przerwania w usłudze zaplecza.
 
      ![Dodawanie usługi zaplecza Vote](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
    - W pierwszym wierszu metody **(1)** element `StateManager` pobiera lub dodaje niezawodny słownik o nazwie `counts`.
    - Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
-   - W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
+   - W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)** . Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
 5. Naciśnij klawisz **F5**, aby kontynuować
 
 Aby zatrzymać sesję debugowania, naciśnij klawisze **Shift+F5**.
@@ -173,11 +173,11 @@ Aby uaktualnić aplikację, wykonaj następujące czynności:
 
     ![Okno dialogowe publikowania — ustawienie uaktualnienia](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
-10. Kliknij przycisk **Opublikuj**.
+10. Kliknij przycisk **publikowania**.
 
     Podczas uaktualniania można nadal korzystać z aplikacji. Ponieważ masz dwa wystąpienia usługi uruchomione w klastrze, niektóre żądania mogą trafiać do uaktualnionej wersji aplikacji, podczas gdy inne mogą nadal otrzymywać starą wersję.
 
-11. Otwórz przeglądarkę i przejdź do adresu klastra na porcie 19080. Na przykład: `http://localhost:19080/`.
+11. Otwórz przeglądarkę i przejdź do adresu klastra na porcie 19080. Na przykład `http://localhost:19080/`.
 12. W widoku drzewa kliknij węzeł **Aplikacje**, a następnie kliknij pozycję **Uaktualnienia w toku** w okienku po prawej stronie. Możesz zobaczyć, jak uaktualnienie jest wprowadzane w domenach uaktualnienia w klastrze, upewniając się, że każda domena jest w dobrej kondycji przed przejściem do następnej. Domena uaktualnienia na pasku postępu będzie wyświetlana w kolorze zielonym po zweryfikowaniu kondycji domeny.
     ![Widok uaktualniania w narzędziu Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
@@ -188,7 +188,7 @@ Aby uaktualnić aplikację, wykonaj następujące czynności:
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
 * Tworzenie aplikacji przy użyciu platformy .NET i usługi Service Fabric
-* Używanie platformy ASP.NET Core jako frontonu sieci Web
+* Używanie platformy ASP.NET core jako frontonu sieci web
 * Przechowywanie danych aplikacji w usłudze stanowej
 * Debugowanie aplikacji lokalnie
 * Skalowanie aplikacji w poziomie na wiele węzłów

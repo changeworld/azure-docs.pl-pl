@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: b96c1ada1ebb1bc53f7f55311c69a3cdc04f7574
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b99ee8e6a379a1e86eaf37bb232176c3ca13c0d9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956417"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687951"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Szybki start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -238,7 +238,7 @@ Aby wyświetlić działającą aplikację Azure Vote, otwórz zewnętrzny adres 
 
 Podczas tworzenia klastra usługi AKS włączono usługę Azure Monitor dla kontenerów, aby przechwycić metryki kondycji dla zasobników i węzłów klastra. Te metryki kondycji są dostępne w witrynie Azure Portal.
 
-Aby wyświetlić bieżący stan, czas pracy i użycie zasobów na potrzeby zasobników aplikacji Azure Vote, wykonaj następujące czynności:
+Aby wyświetlić bieżący stan, czas pracy i użycie zasobów na potrzeby zasobników głosowania platformy Azure, wykonaj następujące czynności:
 
 1. Otwórz witrynę Azure Portal [https://portal.azure.com][azure-portal] w przeglądarce internetowej.
 1. Wybierz grupę zasobów, taką jak *myResourceGroup*, a następnie wybierz klaster AKS, taki jak *myAKSCluster*.
@@ -251,11 +251,11 @@ Zostaną wyświetlone kontenery *azure-vote-back* i *azure-vote-front*, jak poka
 
 ![Wyświetlanie kondycji uruchomionych kontenerów w usłudze AKS](media/kubernetes-walkthrough/monitor-containers.png)
 
-Na przeglądanie dzienników dla `azure-vote-front` zasobników, wybierz opcję, aby **Wyświetl w obszarze analiza**, a następnie wybierz **wyświetlanie dzienników kontenera** łącza po prawej stronie na liście kontenerów. Dzienniki te obejmują strumienie *stdout* i *stderr* z kontenera.
+Na przeglądanie dzienników dla `azure-vote-back` zasobników, wybierz opcję, aby **Wyświetl w obszarze analiza**, następnie kliknij przycisk **wyświetlanie dzienników kontenera** łącza po prawej stronie na liście kontenerów. Dzienniki te obejmują strumienie *stdout* i *stderr* z kontenera.
 
 ![Wyświetlanie dzienników kontenerów w usłudze AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
 
-## <a name="delete-cluster"></a>Usuń klaster
+## <a name="delete-the-cluster"></a>Usuwanie klastra
 
 Gdy klaster nie będzie już potrzebny, usuń grupę zasobów, usługę kontenera i wszystkie pokrewne zasoby za pomocą polecenia [az group delete][az-group-delete].
 

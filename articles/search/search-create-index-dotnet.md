@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/16/2019
-ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0392cc6334aaf383f43d55134fa65f82c44270c3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795814"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428407"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Szybki start: 1 — Tworzenie indeksu usługi Azure Search wC#
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "65795814"
 > * [Postman](search-fiddler.md)
 >*
 
-Ten artykuł przeprowadzi Cię przez proces tworzenia [indeksu usługi Azure Search](search-what-is-an-index.md) przy użyciu C# i [zestawu .NET SDK](https://aka.ms/search-sdk). To jest pierwszą lekcją ćwiczenie 3 części do tworzenia, ładowania i zapytania indeksu. Tworzenie indeksu odbywa się przez wykonanie następujących zadań:
+Ten artykuł przeprowadzi Cię przez proces tworzenia [indeksu usługi Azure Search](search-what-is-an-index.md) przy użyciu C# i [zestawu .NET SDK](https://aka.ms/search-sdk). Ten przewodnik Szybki Start jest pierwszą lekcją wykonywania trzyczęściowej do tworzenia, ładowania i zapytania indeksu. Tworzenie indeksu odbywa się przez wykonanie następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) obiekt, aby nawiązać połączenie z usługą wyszukiwania.
@@ -39,7 +39,7 @@ Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki
 
 + [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start.
 
-+ [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), w każdej wersji. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
+[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), w każdej wersji. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
 
 + [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) zawiera przykładowe rozwiązanie zapisane aplikacji konsoli .NET Core C#, który znajduje się w repozytorium GitHub przykładów dla platformy Azure. Pobierz i Wyodrębnij rozwiązania. Domyślnie rozwiązania są tylko do odczytu. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wyczyść atrybut tylko do odczytu, dzięki czemu mogą modyfikować pliki. Dane są uwzględnione w rozwiązaniu.
 
@@ -61,17 +61,15 @@ Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane
 
 1. W pliku appsettings.json, zastąp domyślną zawartość w poniższym przykładzie, a następnie podaj nazwę usługi i administratora klucz api-key dla Twojej usługi. 
 
-
    ```json
    {
        "SearchServiceName": "Put your search service name here (not the full URL)",
        "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
     }
    ```
+   Dla nazwy usługi wystarczy sama nazwa. Na przykład, jeśli adres URL jest https://mydemo.search.windows.net, Dodaj `mydemo` do pliku JSON.
 
-  Dla nazwy usługi wystarczy sama nazwa. Na przykład, jeśli adres URL jest https://mydemo.search.windows.net, Dodaj `mydemo` do pliku JSON.
-
-1. Naciśnij klawisz F5, aby skompilować rozwiązanie i uruchomić aplikację konsoli. Pozostałe kroki w tym ćwiczeniu oraz te, które należy wykonać to omówienie sposobu działania tego kodu. 
+1. Naciśnij klawisz F5, aby skompilować rozwiązanie i uruchomić aplikację konsoli. Pozostałe kroki w tym ćwiczeniu i te kroki, które należy wykonać to omówienie sposobu działania tego kodu. 
 
 Alternatywnie, możesz zapoznać się z [jak używać usługi Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md) bardziej szczegółowe pokrycia zachowania zestawu SDK. 
 
@@ -108,7 +106,7 @@ Pojedyncze wywołanie `Indexes.Create` metoda tworzy indeks. Ta metoda przyjmuje
 
 1. Ustaw właściwość `Name` obiektu `Index` na nazwę Twojego indeksu.
 
-2. Ustaw właściwość `Fields` obiektu `Index` na tablicę obiektów `Field`. Najłatwiejszym sposobem tworzenia obiektów `Field` jest wywołanie metody `FieldBuilder.BuildForType` z przekazaniem klasy modelu jako parametru typu. Właściwości klasy modelu są mapowane na pola indeksu. Umożliwia to powiązanie dokumentów z indeksu wyszukiwania z wystąpieniami klasy modelu.
+2. Ustaw właściwość `Fields` obiektu `Index` na tablicę obiektów `Field`. Najłatwiejszym sposobem tworzenia obiektów `Field` jest wywołanie metody `FieldBuilder.BuildForType` z przekazaniem klasy modelu jako parametru typu. Właściwości klasy modelu są mapowane na pola indeksu. To mapowanie umożliwia powiązanie dokumentów z indeksu wyszukiwania z wystąpieniami klasy modelu.
 
 > [!NOTE]
 > Jeśli nie zamierzasz używać klasy modelu, nadal możesz zdefiniować indeks poprzez bezpośrednie utworzenie obiektów `Field`. Możesz podać nazwę pola konstruktorowi wraz z typem danych (lub analizatorem w przypadku pól ciągów). Można również ustawić inne właściwości, takie jak `IsSearchable`, `IsFilterable`, kilka.
@@ -175,7 +173,7 @@ public partial class Hotel
 
 Dla każdej właściwości starannie wybraliśmy atrybuty, kierując się tym, jak naszym zdaniem będą używane w aplikacji. Na przykład istnieje duże prawdopodobieństwo, że osoby szukające hoteli będzie interesować dopasowanie słów kluczowych w polu `description`, dlatego włączyliśmy wyszukiwanie pełnotekstowe dla tego pola przez dodanie atrybutu `IsSearchable` do właściwości `Description`.
 
-Zwróć uwagę, że dokładnie jedno pole typu `string` w Twoim indeksie musi być wyznaczone jako pole *klucza* przez dodanie atrybutu `Key` (zobacz właściwość `HotelId` w powyższym przykładzie).
+Należy pamiętać, że dokładnie jedno pole w indeksie typu `string` musi być wyznaczone jako *klucz* pola przez dodanie `Key` atrybutu (patrz `HotelId` w powyższym przykładzie).
 
 W powyższej definicji indeksu użyto analizatora języków dla pola `description_fr`, ponieważ jest ono przeznaczone do przechowywania tekstu w języku francuskim. Aby uzyskać więcej informacji, zobacz [dodać analizatory języka do indeksu usługi Azure Search](index-add-language-analyzers.md).
 
@@ -184,7 +182,7 @@ W powyższej definicji indeksu użyto analizatora języków dla pola `descriptio
 > 
 > 
 
-Zdefiniowaliśmy już klasę modelu, dlatego z łatwością możemy utworzyć definicję indeksu:
+Teraz, gdy zdefiniowaliśmy już klasę modelu, firma Microsoft można łatwo utworzyć definicję indeksu:
 
 ```csharp
 var definition = new Index()

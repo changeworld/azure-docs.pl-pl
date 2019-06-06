@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 962955a405d12365f69519b004ea8f95d529a97c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475561"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742857"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service
 
@@ -119,7 +119,7 @@ W przykładzie znajdującym się w tym samouczku dodasz rekord CNAME dla poddome
 
 #### <a name="create-the-cname-record"></a>Tworzenie rekordu CNAME
 
-Dodaj rekord CNAME, aby zmapować poddomenę na domyślną nazwę hosta aplikacji (`<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji).
+Dodaj rekord CNAME, aby zmapować poddomenę na aplikacji domyślnej nazwy domeny (`<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji).
 
 W przypadku przykładowej domeny `www.contoso.com` dodaj rekord CNAME, który zmapuje nazwę `www` na `<app_name>.azurewebsites.net`.
 
@@ -129,13 +129,13 @@ Po dodaniu tego rekordu CNAME strona rekordów DNS wygląda podobnie jak w nast�
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Włączanie mapowania rekordów CNAME na platformie Azure
 
-W lewym obszarze nawigacji na stronie aplikacji w witrynie Azure Portal wybierz pozycję **Domeny niestandardowe**. 
+W lewym obszarze nawigacji na stronie aplikacji w witrynie Azure Portal wybierz pozycję **Domeny niestandardowe**.
 
 ![Menu domen niestandardowych](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 Na stronie **Domeny niestandardowe** aplikacji dodaj do listy w pełni kwalifikowaną niestandardową nazwę DNS (`www.contoso.com`).
 
-Wybierz ikonę **+** obok pozycji **Dodaj nazwę hosta**.
+Wybierz **+** ikona obok pozycji **Dodaj domenę niestandardową**.
 
 ![Dodawanie nazwy hosta](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -143,15 +143,15 @@ Wpisz w pełni kwalifikowaną nazwę domeny, dla której dodano rekord CNAME, na
 
 Wybierz przycisk **Weryfikuj**.
 
-Zostanie wyświetlona strona **Dodawanie nazwy hosta**. 
+**Dodaj domenę niestandardową** strona jest wyświetlana.
 
 Upewnij się, że **typ rekordu nazwy hosta** ustawiono **CNAME (www\.example.com lub dowolna poddomena)** .
 
-Wybierz przycisk **Dodaj nazwę hosta**.
+Wybierz pozycję **Dodaj domenę niestandardową**.
 
 ![Dodawanie nazwy DNS do aplikacji](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona na stronie **Domeny niestandardowe** aplikacji. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
+Może upłynąć trochę czasu dla nowej domeny niestandardowej, które zostaną odzwierciedlone w aplikacji **domen niestandardowych** strony. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
 
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -191,7 +191,7 @@ Na stronie **Domeny niestandardowe** skopiuj adres IP aplikacji.
 Aby móc zmapować rekord A na aplikację, usługa App Service wymaga **dwóch** rekordów DNS:
 
 - Rekord **A** do zmapowania adresu IP aplikacji.
-- Rekord **TXT** do zmapowania domyślnej nazwy hosta aplikacji `<app_name>.azurewebsites.net`. Usługa App Service używa tego rekordu tylko podczas konfiguracji, aby sprawdzić, czy jesteś właścicielem domeny niestandardowej. Po zweryfikowaniu i skonfigurowaniu domeny niestandardowej w usłudze App Service możesz usunąć ten rekord TXT.
+- A **TXT** rekordu do mapowania na aplikacja domyślna nazwa domeny `<app_name>.azurewebsites.net`. Usługa App Service używa tego rekordu tylko podczas konfiguracji, aby sprawdzić, czy jesteś właścicielem domeny niestandardowej. Po zweryfikowaniu i skonfigurowaniu domeny niestandardowej w usłudze App Service możesz usunąć ten rekord TXT.
 
 Dla przykładowej domeny `contoso.com` utwórz rekordy A i TXT zgodnie z wartościami z poniższej tabeli (`@` zazwyczaj reprezentuje domenę katalogu głównego).
 
@@ -219,23 +219,23 @@ Po dodaniu tych rekordów strona rekordów DNS wygląda podobnie jak w następuj
 
 Ponownie na stronie **Domeny niestandardowe** aplikacji w witrynie Azure Portal dodaj do listy w pełni kwalifikowaną niestandardową nazwę DNS (na przykład `contoso.com`).
 
-Wybierz ikonę **+** obok pozycji **Dodaj nazwę hosta**.
+Wybierz **+** ikona obok pozycji **Dodaj domenę niestandardową**.
 
-![Dodawanie nazwy hosta](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
+![Dodawanie nazwy hosta](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Wpisz w pełni kwalifikowaną nazwę domeny, dla której skonfigurowano rekord A, na przykład `contoso.com`.
 
 Wybierz przycisk **Weryfikuj**.
 
-Zostanie wyświetlona strona **Dodawanie nazwy hosta**. 
+**Dodaj domenę niestandardową** strona jest wyświetlana.
 
 Upewnij się, że opcja **Typ rekordu nazwy hosta** jest ustawiona na wartość **Rekord A (example.com)** .
 
-Wybierz przycisk **Dodaj nazwę hosta**.
+Wybierz pozycję **Dodaj domenę niestandardową**.
 
 ![Dodawanie nazwy DNS do aplikacji](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona na stronie **Domeny niestandardowe** aplikacji. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
+Może upłynąć trochę czasu dla nowej domeny niestandardowej, które zostaną odzwierciedlone w aplikacji **domen niestandardowych** strony. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
 
 ![Dodany rekord A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
@@ -258,7 +258,7 @@ W przykładzie znajdującym się w tym samouczku zmapujesz [wieloznaczną nazwę
 
 #### <a name="create-the-cname-record"></a>Tworzenie rekordu CNAME
 
-Dodaj rekord CNAME, aby zmapować wieloznaczną nazwę na domyślną nazwę hosta aplikacji (`<app_name>.azurewebsites.net`).
+Dodaj rekord CNAME, aby zmapować wieloznaczną nazwę do aplikacji domyślnej nazwy domeny (`<app_name>.azurewebsites.net`).
 
 Dla przykładowej domeny `*.contoso.com` rekord CNAME zmapuje nazwę `*` na nazwę `<app_name>.azurewebsites.net`.
 
@@ -274,23 +274,23 @@ W lewym obszarze nawigacji na stronie aplikacji w witrynie Azure Portal wybierz 
 
 ![Menu domen niestandardowych](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Wybierz ikonę **+** obok pozycji **Dodaj nazwę hosta**.
+Wybierz **+** ikona obok pozycji **Dodaj domenę niestandardową**.
 
 ![Dodawanie nazwy hosta](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Wpisz w pełni kwalifikowany nazwę domeny, która pasuje do domeny z symbolami wieloznacznymi (na przykład `sub1.contoso.com`), a następnie wybierz przycisk **Weryfikuj**.
 
-Zostanie aktywowany przycisk **Dodaj nazwę hosta**. 
+**Dodaj domenę niestandardową** zostanie aktywowany przycisk.
 
 Upewnij się, że **typ rekordu nazwy hosta** ustawiono **rekord CNAME (www\.example.com lub dowolna poddomena)** .
 
-Wybierz przycisk **Dodaj nazwę hosta**.
+Wybierz pozycję **Dodaj domenę niestandardową**.
 
 ![Dodawanie nazwy DNS do aplikacji](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona na stronie **Domeny niestandardowe** aplikacji. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
+Może upłynąć trochę czasu dla nowej domeny niestandardowej, które zostaną odzwierciedlone w aplikacji **domen niestandardowych** strony. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
 
-Wybierz ponownie ikonę **+** , aby dodać inną nazwę hosta zgodną z domeną z symbolami wieloznacznymi. Na przykład dodaj nazwę `sub2.contoso.com`.
+Wybierz **+** ikonę ponownie, aby dodać inny domeny niestandardowej, która pasuje do domeny z symbolami wieloznacznymi. Na przykład dodaj nazwę `sub2.contoso.com`.
 
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 

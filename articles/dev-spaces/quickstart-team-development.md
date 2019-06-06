@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Zespołowe programowanie usługi Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 74ed1981ba6bf62413d7d7bfd51282eb04afd403
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393396"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480364"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Zespołowe programowanie na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
 
@@ -92,6 +92,8 @@ cd charts/
 helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
 ```
+> [!Note]
+> **Jeśli używasz klastra z włączoną funkcją RBAC**, należy skonfigurować [konto usługi dla Tiller](https://helm.sh/docs/using_helm/#role-based-access-control). W przeciwnym razie `helm` polecenia zakończy się niepowodzeniem.
 
 `helm install` Polecenia może potrwać kilka minut. Dane wyjściowe polecenia pokazuje stan wszystkich usług, które je wdrożyć w klastrze, po zakończeniu:
 

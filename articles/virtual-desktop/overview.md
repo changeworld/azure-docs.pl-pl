@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 05/31/2019
 ms.author: helohr
-ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 296ea271e88dfbbd91b901dc1b24d49fc31c139e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965717"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476728"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
@@ -26,6 +26,12 @@ Oto, co można zrobić podczas uruchamiania pulpitu wirtualnego Windows na platf
 * Przenieść istniejących usług pulpitu zdalnego (RDS) i komputerów stacjonarnych z systemem Windows Server oraz aplikacje na dowolnym komputerze
 * Wirtualizacja zarówno pulpity nawigacyjne i aplikacje
 * Zarządzania komputerami stacjonarnymi z systemem Windows 10, Windows Server i Windows 7 i aplikacje ze środowiskiem ujednolicone zarządzanie
+
+## <a name="introductory-video"></a>Klip wideo
+
+W poniższym klipie wideo Scott Manchester pokazano niektóre z funkcji pulpitu wirtualnego Windows:
+
+<br></br><iframe src="https://www.youtube-nocookie.com/embed/30dOLcZ4_9U" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
@@ -93,7 +99,6 @@ Następujący klienci usług pulpitu zdalnego obsługuje pulpitu wirtualnego Win
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-
 ## <a name="supported-virtual-machine-os-image"></a>Obraz maszyny wirtualnej obsługiwanych systemów operacyjnych
 
 Pulpit wirtualny w Windows obsługuje następujące obrazy systemu operacyjnego:
@@ -101,7 +106,7 @@ Pulpit wirtualny w Windows obsługuje następujące obrazy systemu operacyjnego:
 * Wiele sesji systemu Windows 10 Enterprise
 * Windows Server 2016
 
-## <a name="provide-feedback"></a>Przesyłanie opinii
+## <a name="provide-feedback"></a>Przekazywanie opinii
 
 Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) w celu omówienia usługi Windows pulpitu wirtualnego przy użyciu zespół pracujący nad produktem i elementów członkowskich aktywnej społeczności użytkowników. Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpitu wirtualnego jest dostępna w wersji zapoznawczej.
 

@@ -4,16 +4,16 @@ description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę prz
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 11/21/2018
+ms.date: 06/03/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 7762a48fd34973872fe4d0b00906a03a18d52867
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 4efb8aa21622abddca1add3d8b2fcb523cf45da5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123619"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493391"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal
 
@@ -82,7 +82,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
 
 2. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.  
 
-3. Z listy wyników wybierz pozycję **Dane + analiza** > **Zadanie usługi Stream Analytics**.  
+3. Wybierz **Analytics** > **zadania usługi Stream Analytics** z listy wyników.  
 
 4. Wypełnij stronę zadania usługi Stream Analytics następującymi informacjami:
 
@@ -93,13 +93,13 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
    |Grupa zasobów   |   asaquickstart-resourcegroup  |   Wybierz tę samą grupę zasobów, w której znajduje się centrum IoT Hub. |
    |Lokalizacja  |  \<Wybierz region, który jest najbliżej Twoich użytkowników\> | Wybierz lokalizację geograficzną, w której możesz hostować swoje zadania usługi Stream Analytics. Użyj lokalizacji, która jest najbliżej Twoich użytkowników, aby zapewnić lepszą wydajność i zmniejszyć koszty transferu danych. |
    |Jednostki przesyłania strumieniowego  | 1  |   Jednostki przesyłania strumieniowego reprezentują zasoby obliczeniowe, które są wymagane do wykonania zadania. Domyślnie to ustawienie ma wartość 1. Aby dowiedzieć się więcej na temat skalowania jednostek przesyłania strumieniowego, zobacz artykuł [Understanding and adjusting streaming units (Opis i dostosowywanie jednostek przesyłania strumieniowego)](stream-analytics-streaming-unit-consumption.md).   |
-   |Środowisko hostingu  |  Chmura  |   Zadania usługi Stream Analytics można wdrożyć w chmurze lub na urządzeniu brzegowym. Wartość Chmura umożliwia wdrożenie w usłudze Azure Cloud, a Urządzenie brzegowe umożliwia wdrożenie na urządzeniu usługi IoT Edge. |
+   |Środowisko hostingu  |  Chmura  |   Zadania usługi Stream Analytics można wdrożyć w chmurze lub na urządzeniu brzegowym. Dzięki chmurze możesz wdrożyć w chmurze platformy Azure i usługi Edge pozwala na wdrożenie na urządzeniu usługi IoT Edge. |
 
    ![Tworzenie zadania](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
 5. Zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego**, aby umieścić zadanie na pulpicie nawigacyjnym, a następnie kliknij pozycję **Utwórz**.  
 
-6. W prawym górnym rogu okna przeglądarki powinno być widoczne powiadomienie *Wdrażanie jest w toku...*. 
+6. W prawym górnym rogu okna przeglądarki powinno być widoczne powiadomienie *Wdrażanie jest w toku...* . 
 
 ## <a name="configure-job-input"></a>Konfigurowanie danych wejściowych zadania
 
@@ -187,7 +187,7 @@ Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zas
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start proste zadanie usługi Stream Analytics zostało wdrożone przy użyciu witryny Azure Portal. Możesz też wdrażać zadania usługi Stream Analytics przy użyciu programów [PowerShell](stream-analytics-quick-create-powershell.md) i [Visual Studio](stream-analytics-quick-create-vs.md).
+W tym przewodniku Szybki start proste zadanie usługi Stream Analytics zostało wdrożone przy użyciu witryny Azure Portal. Można także wdrożyć zadania usługi Stream Analytics przy użyciu [PowerShell](stream-analytics-quick-create-powershell.md), [programu Visual Studio](stream-analytics-quick-create-vs.md), i [programu Visual Studio Code](quick-create-vs-code.md).
 
 Aby dowiedzieć się więcej o konfigurowaniu innych źródeł danych wejściowych i wykonywaniu wykrywania w czasie rzeczywistym, zapoznaj się z następującym artykułem:
 

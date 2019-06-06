@@ -2,22 +2,18 @@
 title: Omówienie usługi Azure Resource Manager | Microsoft Docs
 description: Opis wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.assetid: 76df7de1-1d3b-436e-9b44-e1b3766b3961
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/24/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ad87c776bbbab9959f7c90a8d006ae7f62bde79
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225914"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514337"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
@@ -51,13 +47,15 @@ Usługa Resource Manager zapewnia kilka korzyści:
 * Możliwość dodawania tagów do zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
 * Możliwość wyjaśniania rozliczeń w organizacji przez wyświetlanie kosztów dla grupy zasobów korzystających z tego samego tagu.
 
-## <a name="understand-management-scope"></a>Zrozumieć zakres zarządzania
+## <a name="understand-scope"></a>Objaśnienie zakresu
 
-System Azure oferuje cztery poziomy zakresem zarządzania: [grup zarządzania](../governance/management-groups/index.md), subskrypcji, [grup zasobów](#resource-groups)i zasobów. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
+System Azure oferuje cztery poziomy zakresu: [grup zarządzania](../governance/management-groups/index.md), subskrypcji, [grup zasobów](#resource-groups)i zasobów. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 
-Ustawienia zarządzania są stosowane na dowolnych z tych poziomów zakresu. Zasięg zastosowania ustawienia jest określany na podstawie wybranego poziomu. Niższe poziomy dziedziczą ustawienia z wyższych poziomów. Na przykład, po zastosowaniu [zasad](../governance/policy/overview.md) do subskrypcji, zasady są stosowane do wszystkich grup zasobów i zasobów w ramach subskrypcji. Po zastosowaniu zasad w grupie zasobów, które zasady są stosowane grupy zasobów i wszystkie jej zasoby. Jednak innej grupy zasobów nie ma tego przypisania zasad.
+Ustawienia zarządzania są stosowane na dowolnych z tych poziomów zakresu. Zasięg zastosowania ustawienia jest określany na podstawie wybranego poziomu. Niższe poziomy dziedziczą ustawienia z wyższych poziomów. Na przykład, po zastosowaniu [zasad](../governance/policy/overview.md) do subskrypcji, zasady są stosowane do wszystkich grup zasobów i zasobów w ramach subskrypcji. Po zastosowaniu zasad w grupie zasobów, które zasady są stosowane grupy zasobów i wszystkie jej zasoby. Jednak w innej grupie zasobów nie ma tego przypisania zasad.
+
+Szablony można wdrażać do grup zarządzania, subskrypcji lub grupy zasobów.
 
 ## <a name="guidance"></a>Wskazówki
 
@@ -85,7 +83,7 @@ Definiując grupę zasobów, należy wziąć pod uwagę pewne ważne czynniki:
 
 Podczas tworzenia grupy zasobów, należy podać lokalizację dla danej grupy zasobów. Być może zastanawiasz się, „Dlaczego grupa zasobów wymaga określenia lokalizacji? Ponadto dlaczego lokalizacja grupy zasobów jest w ogóle istotna, skoro zasoby mogą znajdować się w innej lokalizacji niż grupa zasobów?” Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określając lokalizację dla grupy zasobów, określasz miejsce, w którym przechowywane są metadane. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
 
-Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można zaktualizować. Aby zminimalizować ryzyko, Znajdź swoją grupę zasobów i zasobów, w tym samym regionie.
+Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można zaktualizować. Aby uzyskać więcej informacji na temat tworzenia niezawodnych aplikacji, zobacz [projektowania niezawodnych aplikacji Azure](/azure/architecture/reliability/).
 
 ## <a name="resource-providers"></a>Dostawcy zasobów
 

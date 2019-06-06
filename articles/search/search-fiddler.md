@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eaf594286e5ffc101ad2d24e808fcb806998d053
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793537"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471566"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Szybki start: Zapoznaj się z wyszukiwania interfejsów API REST Azure przy użyciu narzędzia Postman
 > [!div class="op_single_selector"]
@@ -73,13 +73,13 @@ W narzędziu Postman Sformułuj żądanie wygląda jak poniższy zrzut ekranu. W
 
 W usłudze Azure Search zazwyczaj Utwórz indeks przed załadowaniem danych. [Utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index) jest używany dla tego zadania. 
 
-Adres URL jest rozszerzona, aby uwzględnić `hotel` nazwę indeksu.
+Adres URL jest rozszerzona, aby uwzględnić `hotels` nazwę indeksu.
 
 Aby to zrobić w narzędziu Postman:
 
 1. Zmień zlecenie na **umieścić**.
 
-2. Skopiuj ten adres URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`.
+2. Skopiuj ten adres URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
 
 3. Należy podać definicję indeksu (pokazana poniżej) w treści żądania.
 
@@ -257,7 +257,7 @@ Dla elementu docelowego skopiuj w zmodyfikowanej wersji tego adresu URL: `https:
 
 ### <a name="1---create-an-index"></a>1 — Tworzenie indeksu
 
-Zmień zlecenie na **umieścić**. Skopiuj zmodyfikowanej wersji tego adresu URL: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Skopiuj definicję indeksu podanych powyżej do treści żądania. Strona powinien wyglądać podobnie do poniższej zrzut ekranu. Kliknij przycisk **Execute** u góry po prawej stronie, aby wysłać zakończone żądanie.
+Zmień zlecenie na **umieścić**. Skopiuj zmodyfikowanej wersji tego adresu URL: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`. Skopiuj definicję indeksu podanych powyżej do treści żądania. Strona powinien wyglądać podobnie do poniższej zrzut ekranu. Kliknij przycisk **Execute** u góry po prawej stronie, aby wysłać zakończone żądanie.
 
 ![Treść żądania narzędzia Fiddler][7]
 
@@ -281,7 +281,7 @@ Poniższe przykładowe zapytanie pochodzi z [interfejs API REST wyszukiwania dok
 
 ### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Porady dotyczące wyświetlania statystyki indeksu w narzędziu Fiddler
 
-W narzędziu Fiddler kliknij kartę **Inspectors (Inspektorzy)**, potem kliknij kartę **Headers (Nagłówki)**, a następnie wybierz format JSON. Powinny zostać wyświetlone informacje o liczbie dokumentów i rozmiarze magazynu (w KB).
+W narzędziu Fiddler kliknij kartę **Inspectors (Inspektorzy)** , potem kliknij kartę **Headers (Nagłówki)** , a następnie wybierz format JSON. Powinny zostać wyświetlone informacje o liczbie dokumentów i rozmiarze magazynu (w KB).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

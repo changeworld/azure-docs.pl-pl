@@ -91,6 +91,8 @@
               href: howto-export-data-blob-storage.md
         - name: Tworzenie reguł niestandardowych
           href: howto-create-custom-rules.md
+        - name: Tworzenie niestandardowych analiz
+          href: howto-create-custom-analytics.md
         - name: Wizualizacja danych w usłudze Power BI
           href: howto-connect-powerbi.md
         - name: Łączenie innych chmur IoT

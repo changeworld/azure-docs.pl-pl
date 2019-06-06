@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2a4bdaba45c466b7f1f6fb8e91033f9a7665e034
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253074"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730549"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -113,6 +113,8 @@ Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i ty
 Gdy użytkownik resetuje swoje hasło na ekranie logowania urządzenia z systemem Windows 10, tworzone jest tymczasowe konto o niskim poziomie uprawnień i nazwie „defaultuser1”. To konto jest używane, aby zapewnić bezpieczeństwo procesu resetowania hasła. Samo konto ma losowo wygenerowane hasło, nie jest widoczne dla logowania urządzenia i zostanie automatycznie usunięte po zresetowaniu hasła użytkownika. Może istnieć wiele profilów „defaultuser”, ale można je bezpiecznie zignorować.
 
 ## <a name="limitations"></a>Ograniczenia
+
+Odblokowywanie kont, powiadomienie aplikacji mobilnej i kodu aplikacji mobilnej nie są obsługiwane przez Samoobsługowe Resetowanie HASEŁ w systemie Windows 10.
 
 Podczas testowania tej funkcjonalności za pomocą funkcji Hyper-V link „Resetuj hasło” nie jest wyświetlany.
 

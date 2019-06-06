@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 79697d44ea3e5126d43169f36c550046af3bc366
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0d4bba41170408b640b4e8d3809c77b7a6443c6a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170602"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480038"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -23,7 +23,9 @@ Brama sieci VPN to specyficzny typ bramy sieci wirtualnej, który służy do wys
 
 Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych, które są wdrażane w utworzonej przez Ciebie podsieci nazywanej *podsiecią bramy*. Maszyny wirtualne, które znajdują się w podsieci bramy, są tworzone podczas tworzenia bramy sieci wirtualnej. Maszyny wirtualne bramy sieci wirtualnej są skonfigurowane w taki sposób, aby zawierały tabele routingu oraz specyficzne dla siebie usługi bramy. Nie można bezpośrednio skonfigurować maszyn wirtualnych, które są częścią bramy sieci wirtualnej, i nie należy nigdy wdrażać dodatkowych zasobów w podsieci bramy.
 
-Tworzenie bramy sieci wirtualnej może potrwać do 45 minut. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Skonfigurować możesz między innymi typ bramy. Typ bramy „vpn” określa, że utworzona brama sieci wirtualnej jest bramą sieci VPN. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Możesz również utworzyć połączenie sieci VPN typu punkt-lokacja (sieć VPN przez protokół IKEv2 lub SSTP), które umożliwia nawiązanie połączenia z siecią wirtualną z lokalizacji zdalnej, na przykład konferencji lub domu.
+Bramy sieci VPN można wdrażać w strefach dostępności platformy Azure. To zapewniają elastyczność, skalowalność i większą dostępność bramy sieci wirtualnej. Wdrażanie bramy w strefach dostępności Azure fizycznie i logicznie dzieli bramy w danym regionie, przy jednoczesnej ochronie łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy. zobacz [o bramach sieci wirtualnej strefowo nadmiarowy w strefach dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
+
+Tworzenie bramy sieci wirtualnej może potrwać do 45 minut. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Skonfigurować możesz między innymi typ bramy. Typ bramy „vpn” określa, że utworzona brama sieci wirtualnej jest bramą sieci VPN. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Można również utworzyć połączenie sieci VPN typu punkt-lokacja (sieć VPN przez OpenVPN, protokół IKEv2 lub SSTP), która pozwala na połączenie z siecią wirtualną z lokalizacji zdalnej, np. z konferencji lub domu.
 
 ## <a name="configuring"></a>Konfigurowanie bramy VPN Gateway
 
@@ -83,7 +85,7 @@ Ten typ połączenia jest odmianą połączenia typu lokacja-lokacja. W tym przy
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="P2S"></a>Punkt-lokacja (sieć VPN przez protokół IKEv2 lub SSTP)
+## <a name="P2S"></a>Sieci VPN typu punkt lokacja
 
 Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne połączenie z siecią wirtualną z indywidualnego komputera klienckiego. Połączenie typu punkt-lokacja jest ustanawiane przez uruchomienie z komputera klienckiego. To rozwiązanie jest przydatne dla osób pracujących zdalnie, które chcą łączyć się z sieciami wirtualnymi platformy Azure z lokalizacji zdalnej, na przykład z domu lub sali konferencyjnej. Połączenie sieci VPN typu punkt-lokacja jest również przydatne zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną.
 

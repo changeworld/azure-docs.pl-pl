@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864513"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496565"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP w systemie Azure
 
@@ -92,7 +92,7 @@ Pakiety rozszerzeń ułatwia dodawanie rozszerzeń powiązania w dół po drodze
 
 Teraz można dodać funkcji do projektu.
 
-## <a name="create-a-function"></a>Utwórz funkcję
+## <a name="create-a-function"></a>Tworzenie funkcji
 
 Aby dodać funkcję do projektu, uruchom następujące polecenie:
 
@@ -175,7 +175,7 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 ```
 
 > [!NOTE]
-> Aplikacje dla systemu Linux i Windows, nie mogą być hostowane w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` za pomocą aplikacji funkcji Windows lub aplikacji sieci web, należy użyć innej grupy zasobów.
+> Usługa Azure Functions planu zużycie dla systemu Linux jest obecnie w wersji zapoznawczej i jest dostępna tylko w następujących regionach: Zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Azja Wschodnia. Ponadto aplikacje dla systemu Linux i Windows, nie mogą być hostowane w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` za pomocą aplikacji funkcji Windows lub aplikacji sieci web, należy użyć innej grupy zasobów.
 
 Teraz możesz przystąpić do opublikowania projektu funkcji lokalnych do aplikacji funkcji na platformie Azure.
 

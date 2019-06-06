@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: 979ca857a4410a8efd1b211afc09a0563d76a1ba
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 155e36bf4198eb18f5505483ea13a287f88a5022
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158660"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733269"
 ---
-Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować już utworzone zasoby i użyć ich ponownie.
+Jeśli planujesz kontynuować do następnego artykułu, zalecane, można przechowywać i ponownie zasoby, które zostały już utworzone.
 
-W przeciwnym razie możesz usunąć zasoby platformy Azure utworzone w tym artykule, aby uniknąć naliczania opłat. 
+W przeciwnym razie Aby uniknąć opłat, możesz usunąć zasoby platformy Azure, które zostały utworzone w tym artykule. 
 
 > [!IMPORTANT]
-> Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub grupy zasobów. Jeśli usługa IoT Hub została utworzona wewnątrz istniejącej grupy zasobów zawierającej zasoby, które chcesz zachować, zamiast usuwać całą grupę zasobów, usuń tylko zasób usługi IoT Hub.
+> Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub niewłaściwej grupy zasobów. Jeśli utworzono Centrum IoT hub wewnątrz istniejącej grupy zasobów, która zawiera zasoby, które chcesz zachować, Usuń tylko IoT hub zasób, nie w grupie zasobów.
 >
 
 Aby usunąć grupę zasobów na podstawie nazwy:
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com), a następnie wybierz pozycję **Grupy zasobów**.
 
-2. W polu tekstowym **Filtruj według nazwy** wpisz nazwę grupy zasobów zawierającej usługę IoT Hub. 
+1. W **Filtruj według nazwy** wprowadź nazwę grupy zasobów, który zawiera usługi IoT hub. 
 
-3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+1. Na liście wyników, po prawej stronie grupy zasobów, wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Usuń grupę zasobów**.
 
-    ![Usuń](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
+    ![Przycisk "Usuń grupę zasobów"](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
 
-4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
+1. Aby potwierdzić usunięcie grupy zasobów, wprowadź nazwę grupy zasobów, a następnie wybierz **Usuń**. Po kilku chwilach grupy zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.

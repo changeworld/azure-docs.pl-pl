@@ -1,21 +1,17 @@
 ---
 title: Omówienie usługi Azure Managed Applications | Microsoft Docs
 description: Opis pojęć związanych z usługą Azure Managed Applications
-services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 48bb241a7871d2a209636f66837fb2afd95fd22c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001798"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479827"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -47,7 +43,7 @@ Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych d
 
 Aby dowiedzieć się, jak opublikować aplikację zarządzaną w wykazie usług, zobacz [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md).
 
-### <a name="marketplace"></a>Marketplace
+### <a name="marketplace"></a>Portal Marketplace
 
 Dostawcy, którzy oferują płatne usługi, mogą udostępniać aplikacje zarządzane w witrynie Azure Marketplace. Opublikowana aplikacja jest dostępna dla użytkowników spoza organizacji. Dzięki temu dostawcy usług zarządzanych (MSP), niezależni dostawcy oprogramowania (ISV) oraz integratorzy systemów (SI) mogą oferować swoje rozwiązania wszystkim klientom platformy Azure.
 
@@ -55,7 +51,9 @@ Aby uzyskać informacje dotyczące publikowania aplikacji zarządzanych w witryn
 
 ## <a name="resource-groups-for-managed-applications"></a>Grupy zasobów aplikacji zarządzanych
 
-Zasoby aplikacji zarządzanej zazwyczaj znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Ograniczanie dostępu do [operacji na danych](../role-based-access-control/role-definitions.md) nie jest obecnie obsługiwane dla wszystkich dostawców danych na platformie Azure.
+Zazwyczaj zasoby dla zarządzanych aplikacji znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Wydawcy mogą żądać albo trwałe przypisania roli, lub [dostępu just in time](request-just-in-time-access.md) dla zadania które ma ograniczenie w danym okresie.
+
+Ograniczanie dostępu do [operacji na danych](../role-based-access-control/role-definitions.md) nie jest obecnie obsługiwane dla wszystkich dostawców danych na platformie Azure.
 
 Na poniższej ilustracji przedstawiono scenariusz, w którym wydawca żąda roli właściciela zarządzanej grupy zasobów. Na tę grupę zasobów wydawca nakłada blokadę tylko do odczytu. Tożsamości wydawcy, które mają dostęp do zarządzanej grupy zasobów, są wykluczone z blokady.
 
@@ -69,7 +67,7 @@ Klient, który ma pełny dostęp do grupy zasobów, zarządza cyklem życia apli
 
 ### <a name="managed-resource-group"></a>Zarządzana grupa zasobów
 
-Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów.
+Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów. Dostęp jest stałe lub ograniczone do określonej godzinie.
 
 Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej grupy zasobów.
 

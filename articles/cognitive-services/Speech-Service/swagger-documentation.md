@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 04/12/2019
 ms.author: erhopf
-ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cf3ab6480900aa763598120e6ff7e308f5044e1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461667"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743220"
 ---
 # <a name="swagger-documentation"></a>Dokumentacja platformy Swagger
 
@@ -26,7 +26,7 @@ Usługi mowy oferują Specyfikacja Swagger do interakcji z kilku interfejsów AP
 
 ## <a name="generating-code-from-the-swagger-specification"></a>Generowanie kodu z specyfikacją struktury Swagger
 
-[Specyfikacji Swager](https://cris.ai/swagger/ui/index) zawiera opcje, które pozwalają na szybkie testowanie dla różnych ścieżek. Jednak czasami jest pożądane, aby wygenerować kod dla wszystkich ścieżek, jedna biblioteka wywołań, które przyszłe rozwiązania można oprzeć na tworzenie. Przyjrzyjmy się tego procesu, aby wygenerować bibliotekę języka Python.
+[Specyfikacjami struktury Swagger](https://cris.ai/swagger/ui/index) zawiera opcje, które pozwalają na szybkie testowanie dla różnych ścieżek. Jednak czasami jest pożądane, aby wygenerować kod dla wszystkich ścieżek, jedna biblioteka wywołań, które przyszłe rozwiązania można oprzeć na tworzenie. Przyjrzyjmy się tego procesu, aby wygenerować bibliotekę języka Python.
 
 Należy ustawić struktury Swagger do tego samego regionu co w przypadku subskrypcji usługa rozpoznawania mowy. Możesz potwierdzić swój region w witrynie Azure portal w ramach zasobu usług przetwarzania mowy. Aby uzyskać pełną listę obsługiwanych regionów, zobacz [regionów](regions.md).
 

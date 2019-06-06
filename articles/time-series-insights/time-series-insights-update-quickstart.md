@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: e35d46607e0a186c8a3a38669c68a6ea52711b51
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0bbab2acc9bf9e22e1d3c36336aa9dad04b0b73a
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242086"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688493"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki start: Poznawanie środowiska pokazowego usługi Azure Time Series Insights w wersji zapoznawczej
 
-Ten przewodnik Szybki Start ułatwia rozpoczęcie pracy z wersji zapoznawczej Azure czas serii szczegółowych informacji. Bezpłatne pokazu będzie poznasz najważniejsze funkcje, które zostały dodane w serii czasu Insights (wersja zapoznawcza).
+Ten przewodnik Szybki Start ułatwia rozpoczęcie pracy ze środowiskiem Azure czas Series Insights w wersji zapoznawczej. Bezpłatne pokazu służy do poznasz najważniejsze funkcje, które zostały dodane do czasu Series Insights w wersji zapoznawczej.
 
-Środowisko wersji demonstracyjnej (wersja zapoznawcza) zawiera scenariusz firmie Contoso, operującą dwóch farm turbiny wiatru każdy z 10 turbiny. Każda turbina jest wyposażona w 20 czujników raportujących dane co minutę do usługi Azure IoT Hub. Czujników zebrać informacje dotyczące warunków pogodowych, gęstość bloku i yaw pozycji. Ponadto wydajność generator, zachowanie skrzynia i bezpieczeństwa monitoruje.
+Środowisko wersji demonstracyjnej czasu Series Insights w wersji zapoznawczej zawiera scenariusz firmy, Contoso, operującą dwóch farm turbiny wiatru. Każdą farmę ma turbiny 10. Każda turbina jest wyposażona w 20 czujników raportujących dane co minutę do usługi Azure IoT Hub. Czujników zebrać informacje dotyczące warunków pogodowych, gęstość bloku i yaw pozycji. Informacje dotyczące zachowania skrzynia, monitory bezpieczeństwa i wydajności generator jest zarejestrowany.
 
- Dowiesz się, że na potrzeby usługi Time Series Insights, aby znaleźć szczegółowe informacje w danych firmy Contoso. Będzie także przeprowadzanie analizy krótki przyczyny, aby lepiej przewiduj błędy krytyczne i przeprowadzania konserwacji.
+W tym przewodniku Szybki Start dowiesz się, jak używać usługi Time Series Insights można znaleźć szczegółowe informacje w danych firmy Contoso. Ponadto należy przeprowadzić krótki główną przyczynę występowania lepiej przewiduj błędy krytyczne i przeprowadzania konserwacji.
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Poznawanie eksploratora usługi Time Series Insights w środowisku pokazowym
 
 W Eksploratorze czasu Series Insights w wersji zapoznawczej pokazuje dane historyczne i głównych przyczyn analizy. Aby rozpocząć pracę:
 
-1. Tworzenie [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Jeśli nie zostało utworzone.
+1. Tworzenie [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Jeśli nie masz.
 
 1. Przejdź do [pokaz farmy wiatru Contoso](https://insights.timeseries.azure.com/preview/samples) środowiska.  
 
@@ -38,62 +38,62 @@ W Eksploratorze czasu Series Insights w wersji zapoznawczej pokazuje dane histor
 
 ## <a name="work-with-historical-data"></a>Praca z danych historycznych
 
-1. Przyjrzyj się turbiny wiatru **W7** w **1 zakładu produkcyjnego firmy Contoso**.  
+1. W **1 zakładu produkcyjnego firmy Contoso**, Przyjrzyj się turbiny wiatru **W7**.  
 
-    * Aktualizuj zakres widoku do **1/1/17 20:00 do 17-3/10 20:00 (czas UTC)** .
-    * Wybierz **roślin Contoso 1** > **W7** > **Generator System** > **GeneratorSpeed** czujnik. Następnie sprawdź wartości wynikowe.
+   1. Zmiana zakresu widoku do **1/1/17 20:00 do 17-3/10 20:00 (czas UTC)** .
+   1. Aby wybrać czujnik, wybierz **1 zakładu produkcyjnego firmy Contoso** > **W7** > **Generator System** > **GeneratorSpeed** . Następnie przejrzyj wartości, które są wyświetlane.
 
       [![W7 w zakładzie Contoso 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-1. Niedawno firma Contoso wykryła pożar w turbinie **W7**. Opinie różnią się o zbliżeniowa przyczynę pożaru zostało. W trakcie ściślejszej kontroli widzimy, że czujnik alertu fire została aktywowana podczas ognia.
+1. Niedawno firma Contoso wykryła pożar w turbinie **W7**. Informacje o przyczynie pożaru różnią się w opinie. W usłudze Time Series Insights widać, że czujnik alertu fire została aktywowana podczas ognia.
 
-    * Aktualizuj zakres widoku do **3/9/17 20:00 do 17-3/10 20:00 (czas UTC)** .
-    * Wybierz **bezpieczeństwa systemu** > **FireAlert** czujnika.
+   1. Zmiana zakresu widoku do **3/9/17 20:00 do 17-3/10 20:00 (czas UTC)** .
+   1. Wybierz **bezpieczeństwa systemu** > **FireAlert**.
 
       [![Znaleziono pożar w turbiny wiatru W7 firmy Contoso](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
 1. Przeglądać inne zdarzenia w czasie zbliżonym do czasu uruchomienia, aby zrozumieć, co wydarzyło. Wykorzystanie ropa naftowa i aktywnych ostrzeżeń stwierdzone tuż przed ognia.
 
-    * Wybierz **System pomysłu** > **HydraulicOilPressure** czujnika.
-    * Wybierz **System pomysłu** > **ActiveWarning** czujnika.
+   1. Wybierz **Zawodowcom systemu** > **HydraulicOilPressure**.
+   1. Wybierz **Zawodowcom systemu** > **ActiveWarning**.
 
       [![Przeglądać inne zdarzenia, w tym samym czasie](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
-1. Wykorzystanie ropa naftowa i aktywnych czujników ostrzeżenie stwierdzone bezpośrednio poprzedzający ognia. Rozwiń szeregów czasowych wyświetlanych, aby zobaczyć inne znaki obecne prowadzących do ognia. Zarówno czujników podlegała wahaniom spójnie wraz z upływem czasu wskazujący wzorzec trwałe i budzi.
+1. Wykorzystanie ropa naftowa i aktywnych czujników ostrzeżenie stwierdzone bezpośrednio poprzedzający ognia. Rozwiń szeregów czasowych wyświetlanych, aby zobaczyć inne znaki, które były widoczne, prowadzących do uruchomienia. Zarówno czujników podlegała wahaniom spójnie wraz z upływem czasu. Wahania wskazują trwałe i budzi wzorca.
 
-    * Aktualizuj zakres widoku do **2/24/17 20:00 do 17-3/10 20:00 (czas UTC)** .
+    * Zmiana zakresu widoku do **2/24/17 20:00 do 17-3/10 20:00 (czas UTC)** .
 
       [![Wykorzystanie ropa naftowa i aktywnych czujników ostrzeżenie również stwierdzone](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
-1. Badanie dwa lata dane historyczne, co spowoduje wyświetlenie inne zdarzenie fire przy użyciu tego samego wahania czujnika.
+1. Badanie dwa lata dane historyczne, co spowoduje wyświetlenie inne zdarzenie pożaru, który ma ten sam wahania czujnika.
 
-    * Aktualizuj zakres widoku do **1/1/16 do 12/31/17** (wszystkie dane).
+    * Zmiana zakresu widoku do **1/1/16 do 12/31/17** (wszystkie dane).
 
       [![Znajduj wzorce historycznych](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-Korzystając z usługi Azure Time Series Insights oraz nasza telemetria czujnik, Odkryliśmy trend długoterminowego i problematyczne ukryte w naszych danych historycznych. Te nowe wnioski możemy:
+Korzystając z usługi Time Series Insights oraz nasza telemetria czujnik, Odkryliśmy trend długoterminowego i problematyczne ukryte w danych historycznych. Te nowe wnioski możemy:
 
 > [!div class="checklist"]
 > * Wyjaśniono, co faktycznie wystąpił.
 > * Rozwiąż problem.
 > * Systemy powiadomień o alertach wyższego poziomu należy umieścić w miejscu.
 
-## <a name="root-cause-analysis"></a>Analiza przyczyn źródłowych
+## <a name="root-cause-analysis"></a>Analiza głównej przyczyny
 
-1. Niektóre scenariusze wymagają zaawansowane analizy, aby odkryć subtelne wskazówek w danych. Wybierz Wiatrak **W6** w dniu **6/25**
+1. Niektóre scenariusze wymagają zaawansowane analizy, aby odkryć subtelne wskazówek w danych. Wybierz Wiatrak **W6** w dniu **6/25**.
 
-    * Aktualizuj zakres widoku do **6/1/17 20:00 do 7/1/17 20:00 (czas UTC)** .
-    * Następnie wybierz pozycję **1 zakładu produkcyjnego firmy Contoso** > **W6** > **bezpieczeństwa systemu** > **VoltageActuatorSwitchWarning**  czujnika.
+    1. Zmiana zakresu widoku do **6/1/17 20:00 do 7/1/17 20:00 (czas UTC)** .
+    1. Wybierz **roślin Contoso 1** > **W6** > **bezpieczeństwa systemu** > **VoltageActuatorSwitchWarning**.
 
-      [![Aktualizuj zakres widoku, a następnie wybierz pozycję W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![Zmiana zakresu widoku, a następnie wybierz pozycję W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. To ostrzeżenie wskazuje na problem z napięciem wyjściowym generatora. Całkowita moc wyjściowa generatora działa w ramach normalnych parametrów nasz bieżący interwał. Zwiększając interwał naszych, wynika innego wzorzec: Brak nadania określony.
+1. To ostrzeżenie wskazuje na problem z napięciem wyjściowym generatora. Całkowita moc wyjściowa generatora działa w ramach normalnych parametrów w bieżącym interwale. Zwiększenie naszych interwał, wynika, inny wzorzec. Określony nadania jest oczywiste.
 
-    * Usuń **VoltageActuatorSwitchWarning** czujnika.
-    * Wybierz **Generator System** > **ActivePower** czujnika.
-    * Interwał do aktualizacji **3d**.
+    1. Usuń **VoltageActuatorSwitchWarning** czujnika.
+    1. Wybierz **Generator System** > **ActivePower**.
+    1. Zmienianie interwału **3d**.
 
-      [![Interwał aktualizacji na 3d](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![Zmiana interwału 3d](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
 1. Rozszerzając zakres czasu, możemy określić, czy problem został zatrzymany lub czy będzie kontynuowane.
 
@@ -101,24 +101,24 @@ Korzystając z usługi Azure Time Series Insights oraz nasza telemetria czujnik,
 
       [![Rozszerz zakres czasu do 60 dni](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
-1. Aby zapewnić doskonałe kontekst można dodać inne punkty danych czujnika. Więcej czujników możemy wyświetlić, pełniejszego zrozumienie problemu. Ustawmy znacznik, aby zobaczyć rzeczywiste wartości. 
+1. Aby zapewnić większą kontekst można dodać inne punkty danych czujnika. Więcej czujniki, możemy wyświetlić, pełniejszego zrozumienie problemu. Ustawmy znacznik, aby zobaczyć rzeczywiste wartości. 
 
-    * Wybierz **Generator System** > **GridVoltagePhase1**, **GridVoltagePhase2**, i **GridVoltagePhase3** czujników .
-    * Ustaw znacznik na ostatnim punkcie danych w widocznym obszarze.
+    1. Wybierz **Generator System**, a następnie wybierz trzy czujniki: **GridVoltagePhase1**, **GridVoltagePhase2**, i **GridVoltagePhase3**.
+    1. Ustaw znacznik na ostatnim punkcie danych w widocznym obszarze.
 
-      [![Upuść znacznik](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![Upuść znacznik](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
 
-    Czujnikami napięcia trzy działają porównywalnie i w ramach normalnych parametrów. Wygląda ono **GridVoltagePhase3** czujnik jest przyczyna nadmiernego.
+    Dwa czujnikami napięcia działają porównywalnie i w ramach normalnych parametrów. Wygląda ono **GridVoltagePhase3** czujnik jest przyczyna nadmiernego.
 
-1. Za pomocą wysoce kontekstowych danych dodanych nadania Faza 3 pojawia się jeszcze bardziej jako problem. Teraz jesteśmy gotowi do odwoływania się problem do działu obsługi z dobrej potencjalnego klienta w tym ostrzeżenia.  
+1. Za pomocą wysoce kontekstowych danych dodanych nadania Faza 3 pojawia się jeszcze bardziej się problem. Teraz mamy dobrą potencjalnego klienta na komputerze Przyczyna ostrzeżenia. Możemy przystąpić do odwoływania się problem do działu obsługi.  
 
-    * Aktualizuj wyświetlany obraz do nakładki wszystkie **Generator System** czujników na tym samym wykresie skali.
+    * Zmień sposób wyświetlania do nakładki wszystkie **Generator System** czujników na tym samym wykresie skali.
 
-       [![Aktualizuj wyświetlany obraz do uwzględnienia wszystkich danych](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![Zmień sposób wyświetlania w celu uwzględnienia wszystkich danych](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz możesz utworzyć własne środowisko usługi Time Series Insights w wersji zapoznawczej:
+Możesz przystąpić do tworzenia środowiska czasu Series Insights w wersji zapoznawczej. Aby rozpocząć:
 
 > [!div class="nextstepaction"]
 > [Planowanie środowiska usługi Time Series Insights w wersji zapoznawczej](time-series-insights-update-plan.md)

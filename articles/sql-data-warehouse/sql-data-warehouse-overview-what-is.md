@@ -1,28 +1,29 @@
 ---
 title: Co to jest Azure SQL Data Warehouse? | Microsoft Docs
-description: Rozproszona baza danych klasy korporacyjnej, która może przetwarzać woluminy zawierające petabajty danych relacyjnych i nierelacyjnych. Jest to pierwszy magazyn danych w chmurze w branży, którym umożliwia powiększanie, zmniejszanie i wstrzymanie w ciągu kilku sekund.
+description: Klasy korporacyjnej, rozproszona baza danych, która może przetwarzać woluminy zawierające petabajty danych relacyjnych i nierelacyjnych. Jest w branży pierwszy magazyn danych w chmurze z możliwością zwiększania i zmniejszania oraz wstrzymywania w kilka sekund.
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: nicw
+ms.date: 05/30/2019
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 29296d703e59cb234177349ca477c3fdab74ee61
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+mscustom: sqlfreshmay19
+ms.openlocfilehash: a9126e9023091dd8c3df71f2aa2558a01227a8be
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790852"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428034"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Co to jest Azure SQL Data Warehouse?
 
-Usługa SQL Data Warehouse to oparty na chmurze magazyn danych przedsiębiorstwa (EDW), który wykorzystuje architekturę MPP (Massively Parallel Processing) do szybkiego uruchamiania złożonych zapytań obejmujących petabajty danych. Użyj usługi SQL Data Warehouse jako głównego składnika rozwiązania danych big data. Zaimportuj dane big data do usługi SQL Data Warehouse przy użyciu prostego [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) zapytań T-SQL, a następnie użyj zaawansowanych funkcji architektury MPP do uruchomienia analizy o wysokiej wydajności. Podczas integracji i analizy hurtownia danych stanie się pojedynczym źródłem danych, na którym Twoja firma może polegać przy szukaniu szczegółowych informacji.  
-
+Usługa SQL Data Warehouse jest oparta na chmurze Enterprise danych magazynu (EDW), który używa masowego równoległego przetwarzania (MPP) do szybkiego uruchamiania złożonych zapytań obejmujących petabajty danych. Użyj usługi SQL Data Warehouse jako głównego składnika rozwiązania danych big data. Zaimportuj dane big data do usługi SQL Data Warehouse przy użyciu prostego [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) zapytań T-SQL, a następnie użyj zaawansowanych funkcji architektury MPP do uruchomienia analizy o wysokiej wydajności. Podczas integracji i analizy hurtownia danych stanie się pojedynczym źródłem danych, na którym Twoja firma może polegać przy szukaniu szczegółowych informacji.  
 
 ## <a name="key-component-of-big-data-solution"></a>Kluczowy składnik rozwiązania danych big data
+
 Usługa SQL Data Warehouse to kluczowy składnik całościowego rozwiązania danych big data w chmurze.
 
 ![Rozwiązanie magazynu danych](media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
@@ -33,19 +34,21 @@ Usługa SQL Data Warehouse przechowuje dane w tabelach relacyjnych z magazynem k
 
 Wyniki analizy można odnieść do ogólnoświatowych baz danych raportowania lub aplikacji. Analitycy biznesowi mogą zatem uzyskiwać wyniki analizy w celu świadomego podejmowania decyzji biznesowych.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, możesz dowiedzieć się, jak szybko [utworzyć bazę danych w usłudze SQL Data Warehouse][create a SQL Data Warehouse] i [ładowanie danych przykładowych][load sample data]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
 
-* [Historie sukcesu klientów]
-* [Blogi]
-* [Żądania funkcji]
-* [Filmy wideo]
-* [Blogi zespołu doradczego klientów]
+- Zapoznaj się z [architektury usługi Azure SQL Data Warehouse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- Szybko [utworzyć magazyn danych SQL][create a SQL Data Warehouse]
+- [Ładowanie danych przykładowych][load sample data].
+- Zapoznaj się z [filmów wideo](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+
+Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
+* Wyszukiwanie [blogi]
+* Prześlij [Żądania funkcji]
+* Wyszukiwanie [blogi zespołu doradczego klientów]
 * [Tworzenie biletu pomocy technicznej]
-* [Forum MSDN]
-* [Forum Stack Overflow]
-* [Twitter]
+* Wyszukiwanie [Forum MSDN]
+* Wyszukiwanie [forum Stack Overflow]
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
@@ -63,14 +66,13 @@ Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, mo
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Historie sukcesu klientów]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Blogi]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [Blogi zespołu doradczego klientów]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Forum MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Forum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
