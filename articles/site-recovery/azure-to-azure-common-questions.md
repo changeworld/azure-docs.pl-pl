@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgan
-ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925668"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753775"
 ---
-# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: Odzyskiwanie po awarii Azure – Azure
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: odzyskiwanie po awarii z platformy Azure do platformy Azure
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu [Site Recovery](site-recovery-overview.md). 
 
@@ -143,7 +143,7 @@ Tak. Jeśli zwiększysz okres przechowywania z 24 godzin do 72 godzin, Usługa S
 Oznacza to, upewniając się, że punkt odzyskiwania są spójne dla wszystkich replikowanych maszyn wirtualnych.
 Usługa Site Recovery udostępnia opcję "Spójności wielu maszyn wirtualnych,", który po wybraniu, tworzy grupę replikacji replikacji ze sobą wszystkich komputerów, które są częścią grupy.
 Wszystkie maszyny wirtualne będą udostępniane punkty odzyskiwania spójne na poziomie awarii i spójny na poziomie aplikacji, gdy masz przełączone w tryb failover.
-Zapoznaj się z artykułem samouczka, aby [włączyć spójność wielu maszyn wirtualnych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
+Zapoznaj się z artykułem samouczka, aby [włączyć spójność wielu maszyn wirtualnych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Czy mogę trybu failover jednej maszyny wirtualnej w grupie replikacji spójności wielu maszyn wirtualnych?
 Wybranie opcji "-spójność wielu maszyn wirtualnych" są informujący, że aplikacja ma zależności na wszystkich maszynach wirtualnych w grupie. W związku z tym tryb failover jednej maszyny wirtualnej jest niedozwolona.

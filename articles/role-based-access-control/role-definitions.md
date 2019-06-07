@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2019
+ms.date: 06/06/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 5a08c2ae0b82841fd15aac4af06a8874cf64ba53
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 04ceac3b06972687ef6cdeac4dad1f07fea611cb
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949990"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754891"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Zrozumienie definicje ról na potrzeby zasobów platformy Azure
 
@@ -136,7 +136,7 @@ Właściciel
 &nbsp;&nbsp;&nbsp;&nbsp;Akcje<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Współautor danych obiektu blob usługi Storage
+Współautor danych obiektu Blob magazynu
 
 &nbsp;&nbsp;&nbsp;&nbsp;Akcje<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -157,7 +157,7 @@ Aby uzyskać więcej informacji na temat zarządzania i bezpieczeństwo płaszcz
 
 Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie poprawne wersje narzędzia i zestawy SDK:
 
-| Tool  | Wersja  |
+| Narzędzie  | Wersja  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 lub nowszy |
 | [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) | 2.0.30 lub nowszej |
@@ -187,7 +187,7 @@ Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzani
 | `Microsoft.Compute/virtualMachines/*` | Przyznaje dostęp do wszystkich operacji maszyn wirtualnych i jego podrzędnych typów zasobów.|
 | `microsoft.web/sites/restart/Action` | Przyznaje dostęp do ponownego uruchomienia aplikacji sieci web.|
 
-## <a name="notactions"></a>NotActions
+## <a name="notactions"></a>notActions
 
 `NotActions` Uprawnień określa operacje zarządzania, które są wykluczone z dozwolonych `Actions`. Użyj `NotActions` uprawnienia, jeśli zestaw operacji, które chcesz zezwolić na łatwiejsze jest definiowany przez ograniczone operacje z wyjątkiem. Dostęp udzielany przez rolę (czynne uprawnienia) jest obliczana przez odjęcie ilości `NotActions` operacje z `Actions` operacji.
 
@@ -216,7 +216,7 @@ Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzani
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` Właściwość określa zakresy (subskrypcji, grupy zasobów lub zasobów), że rola jest dostępne do przypisania. Możesz udostępnić rolę do przypisania tylko do subskrypcji lub grupy zasobów, które wymagają, a nie użytkownika zaśmiecania środowisko dla pozostałych grup zasobów lub subskrypcji. Należy użyć co najmniej jednej subskrypcji, grupy zasobów lub identyfikator zasobu.
+`AssignableScopes` Właściwość określa, które mają ta definicja roli dostępne zakresy (subskrypcji, grupy zasobów lub zasobów). Można udostępnić rolę do przypisania w subskrypcji lub grupy zasobów, które tego wymagają, a nie zbliżyć do siebie te czynności użytkownika dla pozostałej części grup zasobów lub subskrypcji. Należy użyć co najmniej jednej subskrypcji, grupy zasobów lub identyfikator zasobu.
 
 Role wbudowane mają `AssignableScopes` Ustaw zakres głównego (`"/"`). Zakres głównego wskazuje, że rola jest dostępne do przypisania we wszystkich zakresach. Przykłady prawidłowe zakresy możliwe do przypisania:
 

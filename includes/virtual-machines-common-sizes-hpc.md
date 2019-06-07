@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: jonbeck7
+author: vermagit
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/26/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145826"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755190"
 ---
 Seria H maszyn wirtualnych (VM) są przeznaczone do klasy kierownicze wydajność, skalowalność MPI i ekonomiczność dla różnych obciążeń HPC w rzeczywistych warunkach.
 
@@ -27,7 +27,11 @@ Maszyny wirtualne z serii H są zoptymalizowane pod kątem aplikacje o wysokiej 
 
 ## <a name="hb-series"></a>Seria HB
 
-Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Obsługiwane
+ACU: 199-216
+
+Magazyn w warstwie Premium: Obsługiwane
+
+Buforowanie Premium Storage: Obsługiwane
 
 | Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -37,7 +41,11 @@ Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Ob
 
 ## <a name="hc-series"></a>Seria HC
 
-Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Obsługiwane
+ACU: 297-315
+
+Magazyn w warstwie Premium: Obsługiwane
+
+Buforowanie Premium Storage: Obsługiwane
 
 
 | Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
@@ -57,13 +65,13 @@ Buforowanie Premium Storage:  Nieobsługiwane
 
 | Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standardowa_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
-| Standardowa_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
-| Standardowa_H8m | 8 | Intel Xeon E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
-| Standardowa_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standardowa_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standardowa_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standardowa_H8m | 8 | Intel Xeon E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standardowa_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 | Maszyna wirtualna standard_h16r — <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 | Maszyna wirtualna standard_h16mr — <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 
-<sup>1</sup> w przypadku aplikacji MPI dedykowana sieć zaplecza RDMA jest włączane przez sieć FDR InfiniBand, która zapewnia bardzo ultraniskie opóźnienia i wysoką przepustowość.
+<sup>1</sup> w przypadku aplikacji MPI dedykowana sieć zaplecza RDMA jest włączane przez sieć FDR InfiniBand.
 
 <br>

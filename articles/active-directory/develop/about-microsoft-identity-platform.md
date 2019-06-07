@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ead81dfec5c98e810abfe4b88accb9aa9092fc90
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472717"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751920"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Ewolucja platformy tożsamości firmy Microsoft
 
@@ -58,7 +58,7 @@ Integracja z usługą Azure AD B2C (podczas uwierzytelniania tożsamości społe
 
 ### <a name="msal-libraries"></a>Biblioteki MSAL
 
-Biblioteka MSAL służy do tworzenia aplikacji, które przeprowadzają uwierzytelnianie wszystkich tożsamości firmy Microsoft. Biblioteki MSAL na platformie .NET są ogólnie dostępne. Biblioteki MSAL dla języka JavaScript, iOS i Android są w wersji zapoznawczej i jest odpowiedni do użytku w środowisku produkcyjnym. Firma Microsoft zapewnia ten sam poziom obsługi produkcji dla biblioteki MSAL w wersji zapoznawczej, tak jak w przypadku wersji biblioteki MSAL i biblioteki ADAL, które są ogólnie dostępne.
+Biblioteka MSAL służy do tworzenia aplikacji, które przeprowadzają uwierzytelnianie wszystkich tożsamości firmy Microsoft. Biblioteka MSAL bibliotek programu .NET i języka JavaScript są ogólnie dostępne. Biblioteki MSAL dla systemów iOS i Android są w wersji zapoznawczej i jest odpowiedni do użytku w środowisku produkcyjnym. Firma Microsoft zapewnia ten sam poziom obsługi produkcji dla biblioteki MSAL w wersji zapoznawczej, tak jak w przypadku wersji biblioteki MSAL i biblioteki ADAL, które są ogólnie dostępne.
 
 Biblioteki MSAL umożliwia również zintegrować aplikację z usługi Azure AD B2C.
 

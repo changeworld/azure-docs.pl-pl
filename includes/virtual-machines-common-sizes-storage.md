@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 5123ee3f65744f3d0c255712efe990b01be58e26
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420691"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66755618"
 ---
 Magazyn zoptymalizowanych rozmiarów maszyn wirtualnych zapewniają Wysoka przepływność dysku i we/wy oraz idealnie nadają się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych.  Przykłady obejmują bazy danych Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu lokalnego dla każdego rozmiaru zoptymalizowane.
 
@@ -57,7 +57,7 @@ Buforowanie Premium Storage: Nieobsługiwane
 - SLES 12 z dodatkiem SP2 lub nowszym
 - RHEL lub CentOS wersji 6.7 do 6.10 4.3.1 pakietem LIS firmy Microsoft (lub nowszym) zainstalowane
 - RHEL lub CentOS w wersji 7.3, przy użyciu pakietu Microsoft-LIS 4.2.1 (lub nowszym) zainstalowane
-- RHEL lub CentOS w wersji 7.4 lub nowszej
+- W wersji RHEL lub CentOS 7.6 lub nowszej
 - Oracle Linux z UEK4 lub nowszym
 - 9 debian backports jądra, Debian, 10 lub nowszym
 - CoreOS z 4.14 jądra lub nowszym

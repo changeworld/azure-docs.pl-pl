@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 05/22/2019
-ms.openlocfilehash: 7ff8405bba39e274c4f9f0cbacb7c295564c877e
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ef431754db222554c6543e12e4cb6cf0431f7b51
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303210"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755048"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Omówienie usługi Azure SQL Database managed wystąpienia limity zasobów
 
@@ -38,8 +38,8 @@ Wystąpienie zarządzane usługi Azure SQL Database można wdrożyć w obu gener
 | --- | --- | --- |
 | Sprzęt | Intel E5-2673 v3 procesorów 2,4 GHz (Haswell), dołączony dysk SSD — rdzeń wirtualny = 1 PP (fizycznych rdzeni) | Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów, szybkie dyski SSD NVMe, — rdzeń wirtualny = LP 1 (hyper wątek) |
 | rdzenie wirtualne | 8, 16, 24 rdzenie wirtualne | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
-| Memory (Pamięć) | 7 GB na rdzeń wirtualny | 5.1 GB na rdzeń wirtualny |
-| Maksymalna liczba OLTP w pamięci pamięci | 3 GB na rdzeń wirtualny | 2.6 GB na rdzeń wirtualny |
+| Pamięć (ilość pamięci/rdzeń) | 7 GB na rdzeń wirtualny | 5.1 GB na rdzeń wirtualny |
+| Maksymalna liczba OLTP w pamięci pamięci | Limit wystąpienie: 3 GB na rdzeń wirtualny<br/>Limity bazy danych:<br/> -8-rdzeniowy: 8GB na bazę danych<br/> — 16 rdzeni: 20GB dla jednej bazy danych<br/> -24-core: 36GB na bazę danych | Limit wystąpienie: 2,5 GB na rdzeń wirtualny<br/>Limity bazy danych:<br/> -8-rdzeniowy: 13GB na bazę danych<br/> — 16 rdzeni: 32GB na bazę danych |
 | Maksymalny rozmiar wystąpienia magazynu (ogólnego przeznaczenia) |  8 TB | 8 TB |
 | Maksymalna pojemność magazynu wystąpienia (krytyczne dla działania firmy) | 1 TB | 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
 
@@ -50,14 +50,14 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania** |
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych\* | Gen4: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Pamięć) | Gen4: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5. generacji: 40.8 GB – 408 GB (5.1 GB/rdzeń wirtualny) | Gen4: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5. generacji: 40.8 GB – 408 GB (5.1 GB/rdzeń wirtualny) |
+| Pamięć (ilość pamięci/rdzeń) | Gen4: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5. generacji: 40.8 GB – 408 GB (5.1 GB/rdzeń wirtualny) | Gen4: 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5. generacji: 40.8 GB – 408 GB (5.1 GB/rdzeń wirtualny) |
 | Maksymalny rozmiar magazynu wystąpień | 8 TB | Gen4: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
 | Danych/dziennika operacji We/Wy (w przybliżeniu) | 500 — 7500 operacji na pliku<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11-110 tys. obr (1375/rdzeń wirtualny) |
 | Przepływność dziennika | 3 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 22 MB/s na wystąpienie | 4 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48 MB/s na wystąpienie|
-| Przepływność danych (w przybliżeniu) | 100 - 250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
+| Przepływność danych (w przybliżeniu) | 100 - 250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | ND |
 | We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
 | Maksymalny rozmiar bazy danych tempDB | 192 - 1,920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
 | Maksymalna liczba sesji | 30000 | 30000 |

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916376"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751982"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
 
@@ -59,7 +59,8 @@ Począwszy od wersji wydana po sierpnia 2018 wprowadzamy następujące zmiany do
 * Nowe wersje AMI nie są obsługiwane.  
 * Tylko te wersje, z systemem SSL 1.x domyślnie są obsługiwane.
 
-Jeśli używasz dostępnych dla określonych dystrybucji lub wersji, który nie jest obecnie obsługiwane i nie są wyrównywane do nasz model pomocy technicznej, zaleca się rozwidlenie tego repozytorium, potwierdzając, że pomocy technicznej firmy Microsoft, nie będą umożliwiać pomocy z agentem rozwidlone wersji.
+>[!NOTE]
+>Jeśli używasz dostępnych dla określonych dystrybucji lub wersji, który nie jest obecnie obsługiwane i nie są wyrównywane do nasz model pomocy technicznej, zaleca się rozwidlenie tego repozytorium, potwierdzając, że pomocy technicznej firmy Microsoft, nie będą umożliwiać pomocy z agentem rozwidlone wersji.
 
 * Linux Amazon 2017.09 (x 64)
 * CentOS Linux — x86/x64 64 6 i 7 (x 64)  
@@ -73,6 +74,21 @@ Jeśli używasz dostępnych dla określonych dystrybucji lub wersji, który nie 
 >OpenSSL 1.1.0 jest obsługiwana tylko na platformach x86_x64 (64-bitowa) i OpenSSL wcześniej niż 1.x nie jest obsługiwane na dowolnej platformie.
 >
 
+### <a name="agent-prerequisites"></a>Wymagania wstępne dotyczące agenta
+
+W poniższej tabeli wymieniono pakiety wymagane dla obsługiwanych dystrybucjach systemu Linux, które agent zostanie zainstalowany na.
+
+|Wymagany pakiet |Opis |Minimalna wersja |
+|-----------------|------------|----------------|
+|Glibc |    Biblioteka C GNU | 2.5-12 
+|Openssl    | Biblioteki OpenSSL | 1.0.x lub 1.1.x |
+|Curl | Klient sieci web programu cURL | 7.15.5 |
+|Ctypes języka Python | | 
+|PAM | Podłączane moduły uwierzytelniania | | 
+
+>[!NOTE]
+>Rsyslog lub syslog-ng są wymagane do zbierania komunikaty dziennika systemowego. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Do zbierania danych z serwera syslog z tej wersji tych dystrybucji, demona rsyslog powinien być zainstalowany i skonfigurowany tak, aby zastąpić sysklog.
+
 ## <a name="tls-12-protocol"></a>Protokół TLS 1.2
 Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Azure Monitor dzienników, zdecydowanie zachęcamy do konfigurowania agenta do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
@@ -81,10 +97,10 @@ Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych inform
 
 |Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Wychodzący|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Wychodzący|Yes |  
-|*.blob.core.windows.net |Port 443 |Wychodzący|Yes |  
-|*.azure-automation.net |Port 443 |Wychodzący|Yes |  
+|*.ods.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
+|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Yes |  
+|*.blob.core.windows.net |Port 443 |Wychodzące|Tak |  
+|*.azure-automation.net |Port 443 |Wychodzące|Tak |  
 
 Uzyskać zapory wymagane dla platformy Azure Government, zobacz [zarządzania platformy Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 

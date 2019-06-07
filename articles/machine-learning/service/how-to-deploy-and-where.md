@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89539509e759da7f041ce0216397b1a9c8ff1f16
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742956"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753095"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -92,14 +92,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [klasa model
 
 Następujące obliczeniowych elementów docelowych, lub zasoby obliczeniowe, mogą być używane do obsługi wdrożenia usługi sieci web. 
 
-| Obliczeniowego elementu docelowego | Sposób użycia | Opis |
-| ----- | ----- | ----- |
-| [Usługa sieci web w lokalnych](#local) | Testowanie/debug | Dobre dla ograniczonej testowania i rozwiązywania problemów.
-| [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
-| [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre dla niskiej skalowalności obciążeń opartych na CPU. |
-| [Usługi Azure Machine Learning obliczeń](how-to-run-batch-predictions.md) | Wnioskowanie usługi Batch | Uruchom wnioskowania partii na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
-| [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażanie i obsługiwać modele uczenia Maszynowego na urządzeniach IoT. |
-
+[!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="prepare-to-deploy"></a>Przygotowywanie do wdrożenia
 

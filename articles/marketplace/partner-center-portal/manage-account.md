@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.openlocfilehash: 935d2e1c96705506636c2883113a64bb70c39336
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806194"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752827"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnych portalu Marketplace w Centrum partnerskim 
 
@@ -149,7 +149,7 @@ Aby uzyskać więcej informacji, zobacz [Azure śledzenia użycia przez klientó
 
 Centrum partnerskie wykorzystuje [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) dostęp użytkowników z wieloma kontami i zarządzania. Twoja organizacja usługi Azure AD jest automatycznie kojarzony z konta w Centrum partnerskim w ramach procesu rejestracji. 
 
-## <a name="manage-users"></a>Zarządzaj użytkownikami
+## <a name="manage-users"></a>Zarządzanie użytkownikami
 
 **Użytkowników** sekcji Centrum partnerskiego (w obszarze **ustawienia konta**) użyjemy usługi Azure AD do zarządzania użytkownikami, grupami i aplikacji usługi Azure AD, które mają dostęp do konta w Centrum partnerskim. Należy pamiętać, że aby zarządzać użytkownikami, użytkownik musi być zalogowany przy użyciu usługi [konto służbowe](./company-work-accounts.md) (dzierżawy skojarzone usługi Azure AD). Zarządzanie użytkownikami w ramach konta pracy / dzierżawy, musisz się wylogować, a następnie zaloguj się ponownie jako użytkownik z **Menedżera** uprawnienia, konto służbowe / dzierżawy. 
 
@@ -223,7 +223,7 @@ Jeśli jeden z użytkowników wymaga zmiany hasła, mogą to zrobić samodzielni
 3.  Wyświetlanie danych logowania dotyczących użytkownika, w tym hasło tymczasowe zostanie wyświetlona strona potwierdzenia. Pamiętaj wydrukować lub skopiuj te informacje i przekazać go do użytkownika, ponieważ nie będzie można uzyskać dostępu do tymczasowego hasła, po opuścisz tę stronę.
 
 
-## <a name="manage-groups"></a>Zarządzaj grupami
+## <a name="manage-groups"></a>Zarządzanie grupami
 
 Grupy umożliwiają kontrolowanie wielu ról użytkowników i uprawnień razem.
 
@@ -279,7 +279,7 @@ Jeśli chcesz udzielić dostępu do Centrum partnerskiego na zupełnie nowym pla
 1.  Z **użytkowników** strony (w obszarze **ustawienia konta**), wybierz opcję **Dodaj aplikacje usługi Azure AD**.
 2.  Na następnej stronie wybierz **nowej usługi Azure AD aplikacji**.
 3.  Wprowadź **adres URL odpowiedzi** dla nowej aplikacji usługi Azure AD. To jest adres URL, w którym użytkownicy mogą zarejestrować się w i korzystania z aplikacji usługi Azure AD (czasami nazywany także adres URL aplikacji lub adres URL logowania). **Adres URL odpowiedzi** nie może być dłuższa niż 256 znaków i musi być unikatowa w katalogu.
-4.  Wprowadź **identyfikator URI Identyfikatora aplikacji** dla nowej aplikacji usługi Azure AD. Jest to identyfikator logiczny dla aplikacji Azure AD, które są prezentowane w przypadku pojedynczego żądania logowania są wysyłane do usługi Azure AD. Należy pamiętać, że **identyfikator URI Identyfikatora aplikacji** musi być unikatowa dla każdej aplikacji usługi Azure AD w katalogu. Ten identyfikator nie może być dłuższa niż 256 znaków. Aby uzyskać więcej informacji na temat identyfikator URI Identyfikatora aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#changing-the-application-registration-to-support-multi-tenant).
+4.  Wprowadź **identyfikator URI Identyfikatora aplikacji** dla nowej aplikacji usługi Azure AD. Jest to identyfikator logiczny dla aplikacji Azure AD, które są prezentowane w przypadku pojedynczego żądania logowania są wysyłane do usługi Azure AD. Należy pamiętać, że **identyfikator URI Identyfikatora aplikacji** musi być unikatowa dla każdej aplikacji usługi Azure AD w katalogu. Ten identyfikator nie może być dłuższa niż 256 znaków. Aby uzyskać więcej informacji na temat identyfikator URI Identyfikatora aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
 5.  W **role** sekcji, określ ról lub uprawnień niestandardowych dla aplikacji Azure AD.
 6.  Wybierz pozycję **Zapisz**.
 
@@ -313,9 +313,9 @@ Należy zauważyć, że role dzierżawy usługi Azure Active Directory (AAD) obe
 |      |• Tworzyć bilety pomocy technicznej dla Centrum partnerskiego
 ||• Wyświetlanie umów, cenniki i oferty
 ||• Wyświetlanie, tworzenie i zarządzanie nimi użytkowników z firm partnerskich|
-|Kierownik|• Mogą korzystać ze wszystkich funkcji konta Microsoft, z wyjątkiem ustawienia opodatkowanie, a informacje dotyczące wypłat
+|maszyny wirtualnej|• Mogą korzystać ze wszystkich funkcji konta Microsoft, z wyjątkiem ustawienia opodatkowanie, a informacje dotyczące wypłat
 |      |• Można zarządzać użytkownikami, ról i pracować kont (dzierżawcy)|
-|Deweloper|• Przekaż pakiety, przesłać aplikacje i dodatki i wyświetlić raport użycia, aby uzyskać szczegółowe informacje z danych telemetrycznych
+|Developer|• Przekaż pakiety, przesłać aplikacje i dodatki i wyświetlić raport użycia, aby uzyskać szczegółowe informacje z danych telemetrycznych
 |      |• Nie można uzyskać dostępu finansowych ustawienia konta lub informacji|
 |Współautor biznesowych|• Mogą uzyskiwać dostęp do informacji finansowych i Ustaw szczegóły cennika
 |      |• Nie można utworzyć lub Prześlij nowe aplikacje i dodatki|

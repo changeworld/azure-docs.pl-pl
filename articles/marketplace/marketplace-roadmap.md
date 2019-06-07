@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 881d62cd7b7b9d4434a807a2aab62b75e9a8e97b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 5e20d65160e66937668d9f504245a8c042d58fee
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937776"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751651"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Harmonogram działania dla usług Azure Marketplace i AppSource
 
@@ -21,12 +21,15 @@ Ten dokument zapewnia wgląd w przyszłość w portalu Azure Marketplace, usług
 
 Chętnie poznamy Twoje propozycje! Dołącz do rozmowy [społeczności partnerów firmy Microsoft](https://www.microsoftpartnercommunity.com/) celu uzyskania najnowszych aktualizacji na nowe możliwości, programów i zdarzenia.
 
+
 ## <a name="roadmap"></a>Harmonogram działania
 ![](./media/marketplace-publishers-guide/roadmap.png)
+
 
 ## <a name="recent-releases"></a>Najnowsze wersje
 
 Gdy funkcja jest aktywna, zostaną usunięte z planu. Następujące funkcje, który został dodany do portalu Marketplace.
+
 
 ### <a name="for-march-2019"></a>Do marca 2019 r
 
@@ -34,12 +37,11 @@ Gdy funkcja jest aktywna, zostaną usunięte z planu. Następujące funkcje, kt�
 * [Publikowanie ofert dotyczących do kanału dostawcy usług Kryptograficznych (ISV)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
 * [Odsprzedaży ofert portalu Marketplace (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
 * [Kontrakt standardowy](https://docs.microsoft.com/azure/marketplace/standard-contract)
-* [Realizacja SaaS interfejsu API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis)
+* [Realizacja SaaS interfejsu API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-apis)
 * [Portal Marketplace w obszarach geograficznych i waluty](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 * [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) strony.
-
----

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024797"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755088"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indeks usługi Azure Table storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w usłudze Azure Table storage.
@@ -114,6 +114,8 @@ Po utworzeniu indeksu i źródła danych, możesz przystąpić do tworzenia inde
 Ten indeksator jest uruchamiane co dwie godziny. (Interwał harmonogramu jest ustawiony na "PT2H"). Aby uruchomić indeksatora co 30 minut, należy ustawić interwał o "PT30M". Najkrótszy obsługiwany interwał wynosi pięć minut. Harmonogram jest opcjonalna. w przypadku pominięcia indeksatora jest uruchamiany tylko raz, po jego utworzeniu. Można jednak uruchomić indeksatora, na żądanie w dowolnym momencie.   
 
 Aby uzyskać więcej informacji na temat tworzenia interfejsu API indeksatora, zobacz [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+
+Aby uzyskać więcej informacji na temat definiowania harmonogramy indeksatora zobacz [sposób tworzenia harmonogramu indeksatorów usługi Azure Search](search-howto-schedule-indexers.md).
 
 ## <a name="deal-with-different-field-names"></a>Zajmuje o nazwach innego pola
 Czasami nazwy pól w indeksie istniejących różnią się od nazwy właściwości w tabeli. Mapowania pól służy do mapowania nazw właściwości z tabeli nazw pól w indeksie wyszukiwania. Aby dowiedzieć się więcej na temat mapowań pól, zobacz [mapowań pól indeksator usługi Azure Search zestawiania różnice między źródeł danych i wyszukiwania indeksów](search-indexer-field-mappings.md).

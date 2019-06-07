@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 368bc0402e56479ad8696ca9ed0702f246a670bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 954bbc22e42865991ca7f38fbf3f6f0e8e78a437
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240615"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754028"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Szybki start: Tworzenie projektu w środowisku niestandardowym
 
@@ -43,7 +43,7 @@ Projektu w notesach Azure to zbiór plików, takich jak notesów, pliki danych, 
     - **Projekt publicznych**: (usunięty)
     - **Utwórz plik README.md**: (usunięty)
 
-1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając **+ nowy** listy rozwijanej (może wystąpić tylko jako **+**), a następnie wybierając pozycję **notesu**.
+1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając **+ nowy** listy rozwijanej (może wystąpić tylko jako **+** ), a następnie wybierając pozycję **notesu**.
 
 1. Nazwij Notes takich jak *environment.ipynb niestandardowe*, wybierz opcję **środowiska Python 3.6** dla języka, a następnie wybierz **New**.
 

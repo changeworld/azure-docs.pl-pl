@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f369f899d4a383205ad124e4fcd8dabf9f92f63f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480055"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753196"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -27,7 +27,7 @@ Więcej informacji na temat architektury, pojęcia i przepływ pracy dla usługi
 
 Ogólnie maszyny uczenie się przepływu pracy przebiega w następującej kolejności:
 
-1. Tworzenie usługi machine learning szkolenia skryptów w **Python**.
+1. Tworzenie usługi machine learning szkolenia skryptów w **Python** lub za pomocą interfejsu wizualnego.
 1. Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.
 1. **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkolenia, skrypty można odczytać lub zapisać do **datastore**. I rekordy wykonywania są zapisywane jako **uruchamia** w **obszaru roboczego** i zgrupowane w obszarze **eksperymentów**.
 1. **Zapytanie eksperymentu** dla zarejestrowanych metryk z bieżącej i wcześniejszych przebiegów. Jeśli metryki nie wskazują żądanego wyniku, pętli, wróć do kroku 1 i powtarzanie czynności w skryptach.
@@ -107,34 +107,7 @@ Użyj interfejsu API zestawu SDK języka Python lub interfejsu wiersza polecenia
 
 ## <a name="compute-target"></a>Obliczeniowego elementu docelowego
 
-Cel obliczenia jest zasobu obliczeniowego, używanej do uruchomienia skryptu w języku szkolenia lub hosta wdrożenia swojej usługi. Są obsługiwane obliczeniowych elementów docelowych:
-
-| Obliczeniowego elementu docelowego | Szkolenia | Wdrożenie |
-| ---- |:----:|:----:|
-| Komputer lokalny | ✓ | &nbsp; |
-| Obliczeniowe platformy Azure Machine Learning | ✓ | &nbsp; |
-| Maszyny Wirtualnej z systemem Linux na platformie Azure</br>(na przykład maszyna wirtualna do nauki o danych) | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Platforma Apache Spark dla HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | &nbsp; | ✓ |
-| Azure Kubernetes Service | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| Tablica programowalny bramy (FPGA) | &nbsp; | ✓ |
-
-Obliczeniowych elementów docelowych są dołączone do obszaru roboczego. Obliczeniowe elementy docelowe, innym niż komputer lokalny są udostępniane przez użytkowników obszaru roboczego.
-
-### <a name="managed-and-unmanaged-compute-targets"></a>Zarządzane i niezarządzane obliczeniowych elementów docelowych
-
-* **Zarządzane**: Obliczeniowych elementów docelowych, które są tworzone i zarządzane przez usługę Azure Machine Learning. Te obliczenia obiekty docelowe są zoptymalizowane dla obciążeń learning maszyn. Obliczeniowy uczenie maszynowe systemu Azure to jedyny zarządzanych obliczeniowego elementu docelowego w dniu 4 grudnia 2018 r. Dodatkowe zasoby obliczeniowe zarządzane obiekty docelowe mogą być dodawane w przyszłości.
-
-    Można utworzyć usługi machine learning obliczeń wystąpienia bezpośrednio za pomocą obszaru roboczego przy użyciu witryny Azure portal, Machine Learning zestawu SDK usługi Azure lub interfejsu wiersza polecenia platformy Azure. Wszystkie inne obliczeniowych elementów docelowych muszą być tworzone spoza obszaru roboczego i następnie jest podłączone do niego.
-
-* **Niezarządzane**: Obliczeniowych elementów docelowych, które są *nie* zarządzane przez usługę Azure Machine Learning. Może być konieczne, utwórz je poza usługi Azure Machine Learning, a następnie dołącz je do swojego obszaru roboczego przed użyciem. Niezarządzane obliczeniowych elementów docelowych może wymagać dodatkowych kroków służących do obsługi lub w celu poprawy wydajności dla obciążeń learning maszyn.
-
-Aby uzyskać informacji o wybieraniu obliczeniowego elementu docelowego dla szkolenia, zobacz [wybierz, a następnie użyć obliczeniowego elementu docelowego na podstawie uczyć modele](how-to-set-up-training-targets.md).
-
-Aby uzyskać informacji o wybieraniu obliczeniowego elementu docelowego dla wdrożenia, zobacz [Wdrażaj modele za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+A [obliczeniowego elementu docelowego](concept-compute-target.md) umożliwia określenie zasobu obliczeniowego, w którym jest uruchamiane hosta lub skrypt szkoleniowy wdrożenia swojej usługi. Ta lokalizacja może być komputer lokalny lub zasób mocą obliczeniową opartą na chmurze. Obliczeniowych elementów docelowych ułatwiają Zmień środowisko obliczeniowe bez wprowadzania zmian w kodzie. 
 
 ## <a name="training-script"></a>Skrypt szkoleniowy
 

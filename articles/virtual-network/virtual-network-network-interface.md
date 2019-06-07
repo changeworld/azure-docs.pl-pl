@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: a3cb6e1b20e405cedddae8684a4b91fcb8a5514a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f25840c21ec64ca8d8e9e17eb39637cff7524c76
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695350"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755246"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -49,12 +49,12 @@ Podczas tworzenia maszyny wirtualnej przy użyciu witryny Azure portal, w portal
 
     |Ustawienie|Wymagana?|Szczegóły|
     |---|---|---|
-    |Name (Nazwa)|Yes|Nazwa musi być unikatowa w obrębie grupy zasobów, którą wybierzesz. Wraz z upływem czasu prawdopodobnie masz kilka interfejsów sieciowych w ramach subskrypcji platformy Azure. Podczas tworzenia konwencji nazewnictwa sugestii w zakresie Zarządzanie łatwiejsze kilka interfejsów sieciowych, można zobaczyć [konwencje nazewnictwa](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). Nie można zmienić nazwę, po utworzeniu interfejsu sieciowego.|
-    |Sieć wirtualna|Yes|Wybierz sieć wirtualną dla interfejsu sieciowego. Interfejs sieciowy można przypisać tylko do sieci wirtualnej, która znajduje się w tej samej subskrypcji i lokalizacji co interfejs sieciowy. Po utworzeniu karty sieciowej nie można zmienić sieci wirtualnej, z którego jest przypisany. Maszynę wirtualną, którą możesz dodać interfejsu sieciowego musi także istnieć w tej samej lokalizacji i subskrypcji co interfejs sieciowy.|
-    |Podsieć|Yes|Wybierz podsieć w sieci wirtualnej, który wybrano. Można zmienić podsieci, w której interfejs sieciowy jest przypisany do, po jego utworzeniu.|
-    |Przypisanie prywatnego adresu IP|Yes| W tym ustawieniu wybrać metodę przypisywania dla adresu IPv4. Wybierz jedną z następujących metod przypisania: **Dynamiczne:** Po wybraniu tej opcji, Azure automatycznie przypisuje następny dostępny adres z przestrzeni adresowej podsieci, w której wybrano. **Statyczna:** Po wybraniu tej opcji, należy ręcznie przypisać dostępne z adresu IP w przestrzeni adresowej podsieci, w której wybrano. Nie należy zmieniać adresów statycznych i dynamicznych, aż do ich zmiany lub usunięcia interfejsu sieciowego. Można zmienić metodę przypisywania po utworzeniu interfejsu sieciowego. Serwer Azure DHCP przypisuje ten adres z interfejsem sieciowym, w ramach systemu operacyjnego maszyny wirtualnej.|
+    |Name (Nazwa)|Tak|Nazwa musi być unikatowa w obrębie grupy zasobów, którą wybierzesz. Wraz z upływem czasu prawdopodobnie masz kilka interfejsów sieciowych w ramach subskrypcji platformy Azure. Podczas tworzenia konwencji nazewnictwa sugestii w zakresie Zarządzanie łatwiejsze kilka interfejsów sieciowych, można zobaczyć [konwencje nazewnictwa](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). Nie można zmienić nazwę, po utworzeniu interfejsu sieciowego.|
+    |Sieć wirtualna|Tak|Wybierz sieć wirtualną dla interfejsu sieciowego. Interfejs sieciowy można przypisać tylko do sieci wirtualnej, która znajduje się w tej samej subskrypcji i lokalizacji co interfejs sieciowy. Po utworzeniu karty sieciowej nie można zmienić sieci wirtualnej, z którego jest przypisany. Maszynę wirtualną, którą możesz dodać interfejsu sieciowego musi także istnieć w tej samej lokalizacji i subskrypcji co interfejs sieciowy.|
+    |Podsieć|Tak|Wybierz podsieć w sieci wirtualnej, który wybrano. Można zmienić podsieci, w której interfejs sieciowy jest przypisany do, po jego utworzeniu.|
+    |Przypisanie prywatnego adresu IP|Tak| W tym ustawieniu wybrać metodę przypisywania dla adresu IPv4. Wybierz jedną z następujących metod przypisania: **Dynamiczne:** Po wybraniu tej opcji, Azure automatycznie przypisuje następny dostępny adres z przestrzeni adresowej podsieci, w której wybrano. **Statyczna:** Po wybraniu tej opcji, należy ręcznie przypisać dostępne z adresu IP w przestrzeni adresowej podsieci, w której wybrano. Nie należy zmieniać adresów statycznych i dynamicznych, aż do ich zmiany lub usunięcia interfejsu sieciowego. Można zmienić metodę przypisywania po utworzeniu interfejsu sieciowego. Serwer Azure DHCP przypisuje ten adres z interfejsem sieciowym, w ramach systemu operacyjnego maszyny wirtualnej.|
     |Sieciowa grupa zabezpieczeń|Nie| Pozostaw wartość **Brak**, wybierz istniejącą [sieciowej grupy zabezpieczeń](security-overview.md), lub [Utwórz sieciową grupę zabezpieczeń](tutorial-filter-network-traffic.md). Sieciowe grupy zabezpieczeń umożliwiają do filtrowania ruchu sieciowego do i z interfejsem sieciowym. Zero lub jeden sieciowej grupy zabezpieczeń można stosować do interfejsu sieciowego. Zero lub jedna grupa zabezpieczeń sieci można również będą stosowane do podsieci, w której interfejs sieciowy jest przypisany do. Gdy sieciowa grupa zabezpieczeń jest stosowana do karty sieciowej i podsieci, w której interfejs sieciowy jest przypisany do, występuje czasami nieoczekiwane wyniki. Aby rozwiązać problemy sieciowe grupy zabezpieczeń stosowane do interfejsów sieciowych i podsieci, zobacz [Rozwiązywanie problemów z sieciowymi grupami zabezpieczeń](diagnose-network-traffic-filter-problem.md).|
-    |Subskrypcja|Yes|Wybierz jedną z subskrypcji platformy Azure [subskrypcje](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Maszyny wirtualnej, dołączenie do interfejsu sieciowego i sieci wirtualnej, z którymi są nawiązywane połączenia muszą istnieć w tej samej subskrypcji.|
+    |Subskrypcja|Tak|Wybierz jedną z subskrypcji platformy Azure [subskrypcje](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Maszyny wirtualnej, dołączenie do interfejsu sieciowego i sieci wirtualnej, z którymi są nawiązywane połączenia muszą istnieć w tej samej subskrypcji.|
     |Prywatny adres IP (IPv6)|Nie| Jeśli zaznaczysz to pole wyboru, adres IPv6 jest przypisany do interfejsu sieciowego, oprócz adres IPv4 przypisany do interfejsu sieciowego. Zobacz sekcję IPv6 w tym artykule, aby uzyskać ważne informacje na temat używania protokołu IPv6 z interfejsami sieciowymi. Nie można wybrać metodę przypisywania adresów IPv6. Jeśli chcesz przypisać adresu IPv6 jest przypisana metoda dynamiczna.
     |Nazwa IPv6 (pojawia się wtedy kiedy **prywatny adres IP (IPv6)** pole wyboru jest zaznaczone) |Tak, jeśli **prywatny adres IP (IPv6)** po zaznaczeniu pola wyboru.| Ta nazwa jest przypisany do pomocniczej konfiguracji adresów IP dla interfejsu sieciowego. Aby dowiedzieć się więcej na temat konfiguracji adresu IP, zobacz [wyświetlić ustawienia interfejsu sieciowego](#view-network-interface-settings).|
     |Grupa zasobów|Yes|Wybierz istniejącą [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) lub utworzyć nowe. Interfejs sieciowy może znajdować się w grupie zasobów w tej samej lub innej niż maszyna wirtualna, które można dołączyć, lub sieć wirtualną można ją połączyć.|
@@ -69,7 +69,7 @@ Portal nie udostępnia opcję, aby przypisać interfejs sieciowy do grup zabezpi
 
 **Polecenia**
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
@@ -96,7 +96,7 @@ Można wyświetlić i zmienić większość ustawień dla interfejsu sieciowego 
 
 Jeśli adres IPv6 jest przypisany do interfejsu sieciowego, dane wyjściowe programu PowerShell zwraca fakt, że przypisany adres, ale nie zwraca przypisany adres. Podobnie, interfejsu wiersza polecenia zwraca fakt, że adres jest przypisane, ale zwraca *null* w danych wyjściowych dla adresu.
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Lista kart sieciowych sieci az](/cli/azure/network/nic) wyświetlić interfejsy sieciowe w ramach subskrypcji; [az sieci nic show](/cli/azure/network/nic) Aby wyświetlić ustawienia interfejsu sieciowego|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) do wyświetlania interfejsów sieciowych w ustawieniach subskrypcji lub widoku dla interfejsu sieciowego|
@@ -111,11 +111,13 @@ Serwer DNS jest przypisany przez serwer DHCP platformy Azure z interfejsem sieci
 4. Wybierz opcję:
    - **Dziedzicz z sieci wirtualnej**: Wybierz tę opcję, aby dziedziczyć ustawienia serwera DNS, które są zdefiniowane dla sieci wirtualnej, przypisanej do interfejsu sieciowego. Na poziomie sieci wirtualnej niestandardowego serwera DNS lub serwer DNS platformy Azure jest zdefiniowana. Serwer DNS platformy Azure może rozpoznać nazwy hostów dla zasobów przydzielonych do tej samej sieci wirtualnej. Nazwy FQDN musi być używana do rozpoznawania dla zasobów przydzielonych do różnych sieci wirtualnych.
    - **Niestandardowy**: Można skonfigurować własnego serwera DNS do rozpoznawania nazw między wieloma sieciami wirtualnymi. Wprowadź adres IP serwera, który ma być używany jako serwer DNS. Adres serwera DNS, które określisz są przypisane tylko do tego interfejsu sieciowego i zastępuje wszelkie ustawienia DNS dla sieci wirtualnej, przypisanej do interfejsu sieciowego.
+     >[!Note]
+     >Jeśli maszyna wirtualna używa interfejsu Sieciowego, który jest częścią zestawu dostępności, wszystkie serwery DNS, które są określone dla poszczególnych maszyn wirtualnych na podstawie wszystkich kart sieciowych, które są częścią zestawu dostępności będą dziedziczone.
 5. Wybierz pozycję **Zapisz**.
 
 **Polecenia**
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -136,7 +138,7 @@ Ustawienie musi być włączona dla każdego interfejsu sieciowego, który jest 
 
 **Polecenia**
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -156,7 +158,7 @@ Można zmienić podsieci, ale nie sieci wirtualnej, przypisana do karty sieciowe
 
 **Polecenia**
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -170,7 +172,7 @@ Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej gru
 
 **Polecenia**
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -202,7 +204,7 @@ Podczas usuwania interfejsu sieciowego, wszystkie adresy MAC lub adres IP przypi
 
 **Polecenia**
 
-|Tool|Polecenie|
+|Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Usuń kartę sieciową sieci az](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|

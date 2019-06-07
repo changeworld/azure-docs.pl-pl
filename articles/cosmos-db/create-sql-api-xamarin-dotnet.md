@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e0d439edc35e70bc8ac477cf56a6bc25e41df083
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860881"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754728"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji z listą zadań do wykonania za pomocą platformy Xamarin przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Jeśli używasz komputera Mac, możesz pobrać **bezpłatny** program [Visual St
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Dodawanie kolekcji
+## <a name="add-a-container"></a>Dodawanie kontenera
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -184,7 +184,7 @@ Teraz dokonamy szybkiego przeglądu sposobu komunikowania się aplikacji z usłu
     }
     ```
 
-    Tutaj potrzebny jest nowy identyfikator URI w celu jednoznacznego zidentyfikowania dokumentu do zastąpienia. Jest on uzyskiwany przy użyciu funkcji `UriFactory.CreateDocumentUri` i przekazaniu do niej nazwy bazy danych i kolekcji oraz identyfikatora dokumentu.
+    W tym miejscu nowy identyfikator URI jest niezbędne do jednoznacznego zidentyfikowania dokumentu do zastąpienia jest on uzyskiwany za pomocą `UriFactory.CreateDocumentUri` i przekazanie do niej nazwy bazy danych i kolekcji oraz Identyfikatora dokumentu.
 
     Funkcja `DocumentClient.ReplaceDocumentAsync` zastępuje dokument identyfikowany przez identyfikator URI dokumentem określonym jako parametr.
 
@@ -243,9 +243,9 @@ W poniższych krokach zademonstrowano sposób uruchamiania aplikacji przy użyci
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, tworzenia kolekcji za pomocą Eksploratora danych i budowania oraz wdrażania aplikacji platformy Xamarin. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Azure Cosmos DB.
+W tym przewodniku Szybki Start wyjaśniono sposób tworzenia konta usługi Azure Cosmos, Utwórz kontener za pomocą Eksploratora danych i tworzenie i wdrażanie aplikacji platformy Xamarin. Możesz teraz zaimportować dodatkowe dane do swojego konta usługi Azure Cosmos.
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)

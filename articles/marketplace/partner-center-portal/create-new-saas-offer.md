@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455636"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751901"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
@@ -74,7 +74,7 @@ Aby wyświetlić listę oprogramowania jako usługi (SaaS) oferuje komercyjnych 
 
 - Oferty muszą być zgodne z klientami platformy Azure. (Często uzyskać najlepszą wydajność i zgodność aplikacji SaaS również są obsługiwane na platformie Azure, ale nie jest wymagane.) 
 - Należy użyć oferty [usługi Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) do uwierzytelniania i zarządzania tożsamościami.
-- Należy użyć oferty [interfejsami API usług SaaS realizacji](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2) do integracji z portalu Azure Marketplace.
+- Należy użyć oferty [interfejsami API usług SaaS realizacji](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) do integracji z portalu Azure Marketplace.
 
 #### <a name="billing-infrastructure-costs"></a>Rozliczenia kosztów infrastruktury
 W przypadku ofert SaaS, jako wydawca, należy uwzględnić opłaty za użycie infrastruktury platformy Azure i opłat licencyjnych jako element pojedynczy koszt. Ten koszt jest przedstawiana jako płaskie miesięcznej opłaty za do klienta. Użycie infrastruktury platformy Azure zarządzane i rozliczane w przypadku partnera, bezpośrednio. Opłaty za użycie rzeczywistej infrastruktury nie są widoczne dla klienta. Wydawcy zazwyczaj zdecydować się na pakietu opłaty za użycie infrastruktury platformy Azure do ich ceny licencji oprogramowania. 

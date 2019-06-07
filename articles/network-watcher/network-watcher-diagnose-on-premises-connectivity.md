@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 95c6e1f015e519bd1e753fce9a2c6f064a854456
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713773"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754065"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnozowanie połączeń lokalnych za pośrednictwem bram sieci VPN
 
@@ -36,7 +36,7 @@ Aby skonfigurować połączenie lokacja lokacja między platformą Azure i w śr
 
 1. Brama sieci wirtualnej — bramy sieci VPN na platformie Azure
 1. Brama sieci lokalnej — [lokalnej bramy sieci VPN (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) reprezentacji w chmurze platformy Azure
-1. Połączenia lokacja lokacja (trasy na podstawie) - [połączenia między bramą sieci VPN i router lokalny](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
+1. Połączenia lokacja lokacja (trasy na podstawie) - [połączenia między bramą sieci VPN i router lokalny](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [Konfigurowanie FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 Szczegółowe wskazówki krok po kroku dotyczące konfigurowania konfiguracji lokacja-lokacja można znaleźć, odwiedzając: [Tworzenie sieci wirtualnej z połączeniem typu lokacja-lokacja przy użyciu witryny Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
@@ -45,7 +45,7 @@ Jedną z czynności konfiguracyjnych krytyczne służy do konfigurowania paramet
 
 ### <a name="ike-phase-1-setup"></a>Ustawienia fazy 1 IKE
 
-| **Właściwość** | **PolicyBased** | **Bramy typu RouteBased i standardowa lub sieci VPN o wysokiej wydajności** |
+| **Property** | **PolicyBased** | **Bramy typu RouteBased i standardowa lub sieci VPN o wysokiej wydajności** |
 | --- | --- | --- |
 | Wersja IKE |IKEv1 |IKEv2 |
 | Grupa Diffie’ego-Hellmana |Grupa 2 (1024 bity) |Grupa 2 (1024 bity) |
@@ -81,9 +81,9 @@ Usługa Azure Network Watcher Rozwiązywanie problemów z funkcją umożliwia di
 
 ### <a name="gateway"></a>Brama
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Reason | Log|
 |---|---|---|
-| NoFault | Po wykryciu braku błędów. |Yes|
+| NoFault | Po wykryciu braku błędów. |Tak|
 | GatewayNotFound | Nie można odnaleźć bramy lub bramy nie jest obsługiwana administracyjnie. |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacji zmiany rozmiaru. | Nie |
@@ -91,26 +91,26 @@ Usługa Azure Network Watcher Rozwiązywanie problemów z funkcją umożliwia di
 | PlatformInActive | Występuje problem z platformą. | Nie|
 | ServiceNotRunning | Usługa podstawowy nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Nawiązywanie połączeń nie istnieje w bramie. Jest to tylko ostrzeżenie.| Nie|
-| ConnectionsNotConnected | Brak połączenia są połączone. Jest to tylko ostrzeżenie.| Yes|
-| GatewayCPUUsageExceeded | Bieżące użycie bramy użycie procesora CPU jest > 95%. | Yes |
+| ConnectionsNotConnected | Brak połączenia są połączone. Jest to tylko ostrzeżenie.| Tak|
+| GatewayCPUUsageExceeded | Bieżące użycie bramy użycie procesora CPU jest > 95%. | Tak |
 
 ### <a name="connection"></a>Połączenie
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Reason | Log|
 |---|---|---|
-| NoFault | Po wykryciu braku błędów. |Yes|
+| NoFault | Po wykryciu braku błędów. |Tak|
 | GatewayNotFound | Nie można odnaleźć bramy lub bramy nie jest obsługiwana administracyjnie. |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacji zmiany rozmiaru.  | Nie |
 | VipUnResponsive | Nie można nawiązać połączenia podstawowego wystąpienia bramy. Zdarza się, gdy sonda kondycji nie powiodło się. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia. | Nie |
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "odłączony." |Nie|
-| ConnectionNotConfiguredOnGateway | Usłudze podstawowej nie ma skonfigurowanego połączenia. | Yes |
-| ConnectionMarkedStandby | Usłudze podstawowej jest oznaczana w stanie wstrzymania.| Yes|
-| Authentication | Wstępny niezgodność klucza. | Yes|
-| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Yes|
-| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
-| WfpParse Error | Wystąpił błąd podczas analizowania dziennika wywołanie. |Yes|
+| ConnectionNotConfiguredOnGateway | Usłudze podstawowej nie ma skonfigurowanego połączenia. | Tak |
+| ConnectionMarkedStandby | Usłudze podstawowej jest oznaczana w stanie wstrzymania.| Tak|
+| Authentication | Wstępny niezgodność klucza. | Tak|
+| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Tak|
+| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
+| WfpParse Error | Wystąpił błąd podczas analizowania dziennika wywołanie. |Tak|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

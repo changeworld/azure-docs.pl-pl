@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735166"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754547"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacenia komunikatu dla komunikatów przesyłanych z chmury do urządzenia usługi IoT Hub (wersja zapoznawcza)
 
@@ -77,7 +77,7 @@ Wzbogacenia komunikat dostępnych bez dodatkowej opłaty. Obecnie opłaty są na
 
 ## <a name="availability"></a>Dostępność
 
-Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
+Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

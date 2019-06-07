@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
 manager: jeconnoc
-ms.openlocfilehash: 7b463be143ed3f89c1b10424dafc7a0e841ecbfc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69f5bdd80e4cf10db6a530ddfa08a1f26cd42ca0
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686983"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754419"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business ciągłości działania i odzyskiwania po awarii w Azure Dev miejsca do magazynowania
 
@@ -27,7 +27,7 @@ Usługa Azure Dev spacji jest funkcją Azure Kubernetes Service (AKS). Należy m
 
 Włączanie tworzenia miejsca do magazynowania w klastrach usługi AKS w różnych regionach pozwala wznowić działanie przy użyciu standardowego miejsca do magazynowania, natychmiast po niepowodzeniu regionu świadczenia usługi Azure.
 
-Aby uzyskać ogólne informacje dotyczące wdrażania usługi AKS w wielu regionach, zobacz [zaplanować wdrożenie w wielu regionach](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multi-region-deployment)
+Aby uzyskać ogólne informacje dotyczące wdrażania usługi AKS w wielu regionach, zobacz [zaplanować wdrożenie w wielu regionach](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
 Aby uzyskać informacji dotyczących wdrażania klastra usługi AKS, zgodny z usługi Azure Dev miejsca do magazynowania, zobacz [tworzenia klastra Kubernetes za pomocą usługi Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
 

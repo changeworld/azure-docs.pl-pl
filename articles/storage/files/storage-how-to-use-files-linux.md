@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427925"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754822"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 
@@ -75,7 +75,10 @@ ms.locfileid: "66427925"
 
     Inne dystrybucje używać Menedżera odpowiedniego pakietu lub [kompilacji ze źródła](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **Podejmij decyzję uprawnień pliku lub katalogu zainstalowanego udziału**: W przykładach poniżej uprawnienia `0777` jest używany, aby dać odczytu, zapisu i wykonywania uprawnień dla wszystkich użytkowników. Można zastąpić go z innymi [uprawnienia chmod](https://en.wikipedia.org/wiki/Chmod) zgodnie z potrzebami.
+* **Podejmij decyzję uprawnień pliku lub katalogu zainstalowanego udziału**: W przykładach poniżej uprawnienia `0777` jest używany, aby dać odczytu, zapisu i wykonywania uprawnień dla wszystkich użytkowników. Można zastąpić go z innymi [uprawnienia chmod](https://en.wikipedia.org/wiki/Chmod) zgodnie z potrzebami, mimo że oznacza to, potencjalnie ograniczanie dostępu. Jeśli używasz innych uprawnień, należy rozważyć również, aby zachować dostęp do grup lokalnych w wybranym przy użyciu identyfikatorów uid i gid.
+
+> [!NOTE]
+> Jeśli nie przypisuj jawne uprawnienia plików i katalogów o dir_mode i file_mode, zostaną domyślnie 0755.
 
 * **Otwarty port 445**: Protokół SMB komunikuje się za pośrednictwem portu TCP 445. Upewnij się, że Twoja zapora nie blokuje portów TCP 445 z komputera klienckiego.
 
@@ -89,7 +92,7 @@ ms.locfileid: "66427925"
     mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Instalowanie udziału plików platformy Azure za pomocą polecenia instalacji**: Pamiętaj, aby zastąpić **< nazwa_konta_magazynu >** , **< nazwa_udziału >** , **< smb_version >** , **< klucz_konta_magazynu >** , i **< mount_point >** odpowiednimi informacjami dla danego środowiska. Jeśli danej dystrybucji systemu Linux obsługuje protokół SMB 3.0 za pomocą szyfrowania (zobacz [wymagania dotyczące klienta SMB zrozumieć](#smb-client-reqs) Aby uzyskać więcej informacji), użyj **3.0** dla **< smb_version >** . Dystrybucje systemu Linux, które nie obsługują przy użyciu szyfrowania protokołu SMB 3.0, należy użyć **2.1** dla **< smb_version >** . Udział plików platformy Azure można instalować tylko poza region platformy Azure (w tym w środowisku lokalnym lub w innym regionie platformy Azure) z protokołem SMB 3.0. 
+1. **Instalowanie udziału plików platformy Azure za pomocą polecenia instalacji**: Pamiętaj, aby zastąpić **< nazwa_konta_magazynu >** , **< nazwa_udziału >** , **< smb_version >** , **< klucz_konta_magazynu >** , i **< mount_point >** odpowiednimi informacjami dla danego środowiska. Jeśli danej dystrybucji systemu Linux obsługuje protokół SMB 3.0 za pomocą szyfrowania (zobacz [wymagania dotyczące klienta SMB zrozumieć](#smb-client-reqs) Aby uzyskać więcej informacji), użyj **3.0** dla **< smb_version >** . Dystrybucje systemu Linux, które nie obsługują przy użyciu szyfrowania protokołu SMB 3.0, należy użyć **2.1** dla **< smb_version >** . Udział plików platformy Azure można instalować tylko poza region platformy Azure (w tym w środowisku lokalnym lub w innym regionie platformy Azure) z protokołem SMB 3.0. Jeśli chcesz możesz zmienić uprawnienia plików i katalogów zainstalowanego udziału, ale może oznaczać to ograniczenie dostępu.
 
     ```bash
     sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino

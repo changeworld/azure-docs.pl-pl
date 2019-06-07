@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 567f32cba76aaf2d1657b2476c4d11596d44dec5
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523089"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753962"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie Azure Search przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 
@@ -227,7 +227,7 @@ Aby utworzyć aplikację AAD w portalu:
 
 1. [Utworzenie aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. [Pobierz aplikację Identyfikatora i klucza uwierzytelniania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) jako będą wymagane do utworzenia zaszyfrowanego indeksu. Należy podać wartości obejmują **identyfikator aplikacji** i **klucz uwierzytelniania**.
+1. [Pobierz aplikację Identyfikatora i klucza uwierzytelniania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) jako będą wymagane do utworzenia zaszyfrowanego indeksu. Należy podać wartości obejmują **identyfikator aplikacji** i **klucz uwierzytelniania**.
 
 >[!Important]
 > Podejmując decyzję o na korzystanie z aplikacji usługi AAD, uwierzytelniania zamiast tożsamości zarządzanej, należy wziąć pod uwagę fakt, że usługa Azure Search nie ma uprawnień do zarządzania aplikacją usługi AAD w Twoim imieniu i jest maksymalnie umożliwia zarządzanie aplikacją usługi AAD, takie jak okresowe obrotu klucz uwierzytelniania aplikacji.

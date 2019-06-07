@@ -7,18 +7,14 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 62259749e04d66d78206a0bba77ce88f2c08c82f
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66689004"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752032"
 ---
 # <a name="custom-rules-for-web-application-firewall"></a>Niestandardowych reguł zapory aplikacji sieci Web
-
-> [!IMPORTANT]
-> Reguły niestandardowe brama aplikacji zapory aplikacji internetowych usługi Azure jest obecnie w publicznej wersji zapoznawczej. **Reguły niestandardowe są dostępne tylko dla jednostki SKU WAF_v2**.
-> Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) jest powiązana z wstępnie skonfigurowane, zarządzane przez platformę reguł, który zapewnia ochronę z wielu różnych rodzajów ataków. Te ataki to site scripting, wstrzykiwanie kodu SQL i innych. Jeśli jesteś administratorem zapory aplikacji sieci Web, warto napisania własne reguły, aby rozszerzyć reguły core ustawiać reguły (CRS). Reguł można zablokować lub zezwolić na żądany ruchu w oparciu o kryteria dopasowywania.
 

@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które mogą zos
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 5/17/2019
+ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcac557f29a987ea732744c1b82f90f858623ec5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872550"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752356"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 W tym artykule wymieniono, czy typ zasobu platformy Azure obsługuje operacji przenoszenia. Mimo że typ zasobu obsługuje operację przenoszenia, może to być warunki, które uniemożliwiają przenoszonego zasobu. Aby uzyskać szczegółowe informacje o warunkach, które wpływają na operacji przenoszenia, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
@@ -31,12 +31,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| actionrules | Tak | Tak |
+| actionrules | Yes | Tak |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| serwerów | Tak | Tak |
+| Serwery | Yes | Yes |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -46,7 +46,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| configurationstores | Tak | Tak |
+| configurationstores | Yes | Yes |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -64,8 +64,8 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | automationaccounts | Tak | Tak |
-| automationaccounts/configurations | Tak | Tak |
-| automationaccounts/elementów runbook | Tak | Tak |
+| automationaccounts/configurations | Yes | Tak |
+| automationaccounts/elementów runbook | Yes | Tak |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -85,15 +85,15 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| batchaccounts | Tak | Tak |
+| batchaccounts | Yes | Tak |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | Klastry | Nie | Nie |
 | fileservers | Nie | Nie |
-| zadania | Nie | Nie |
-| obszary robocze | Nie | Nie |
+| Zadania | Nie | Nie |
+| Obszary robocze | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -108,7 +108,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| blockchainmembers | Tak | Tak |
+| blockchainmembers | Yes | Tak |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -118,28 +118,28 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| botservices | Tak | Tak |
+| botservices | Tak | Yes |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| Redis Cache | Tak | Tak |
+| Redis Cache | Tak | Yes |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | Profile | Tak | Tak |
-| Profile/punktów końcowych | Tak | Tak |
+| Profile/punktów końcowych | Tak | Yes |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| zamówień certyfikatów | Tak | Tak |
+| zamówień certyfikatów | Yes | Tak |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| domainnames | Tak | Nie |
+| domainnames | Yes | Nie |
 | maszyn wirtualnych | Tak | Nie |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
@@ -152,31 +152,31 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| storageaccounts | Tak | Nie |
+| storageaccounts | Yes | Nie |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| availabilitysets | Tak | Tak |
-| dyski | Tak | Tak |
+| availabilitysets | Yes | Tak |
+| Dyski | Tak | Tak |
 | Galerie | Nie | Nie |
 | galerie/obrazów | Nie | Nie |
 | Galerie/obrazy/wersji | Nie | Nie |
 | hostgroups | Nie | Nie |
 | hostgroups/hosts | Nie | Nie |
-| obrazy | Tak | Tak |
+| images | Tak | Tak |
 | proximityplacementgroups | Nie | Nie |
 | restorepointcollections | Nie | Nie |
 | sharedvmimages | Nie | Nie |
 | sharedvmimages/wersji | Nie | Nie |
-| migawki | Tak | Tak |
+| Migawki | Tak | Tak |
 | maszyn wirtualnych | Tak | Tak |
-| maszyn wirtualnych/rozszerzenia | Tak | Tak |
+| maszyn wirtualnych/rozszerzenia | Tak | Yes |
 | virtualmachinescalesets | Tak | Tak |
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
@@ -192,9 +192,9 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| rejestry | Tak | Tak |
+| rejestry | Yes | Yes |
 | rejestry/buildtasks | Tak | Tak |
-| rejestry/replikacji | Tak | Tak |
+| rejestry/replikacji | Yes | Tak |
 | rejestry/zadań | Tak | Tak |
 | rejestry/elementów webhook | Tak | Tak |
 
@@ -213,12 +213,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+| accounts | Nie | Nie |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| łączniki | Tak | Tak |
+| przedsiębiorstw | Tak | Tak |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -228,7 +228,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| zadania | Nie | Nie |
+| Zadania | Nie | Nie |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -238,12 +238,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| obszary robocze | Nie | Nie |
+| Obszary robocze | Nie | Nie |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| katalogi | Tak | Tak |
+| katalogi | Yes | Tak |
 | datacatalogs | Nie | Nie |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
@@ -254,7 +254,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| pakiety | Nie | Nie |
+| Pakiety | Nie | Nie |
 | Plany | Nie | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -271,12 +271,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+| accounts | Tak | Tak |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+| accounts | Tak | Tak |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -288,37 +288,37 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| serwerów | Tak | Tak |
+| Serwery | Tak | Tak |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| serwerów | Tak | Tak |
+| Serwery | Tak | Yes |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | servergroups | Nie | Nie |
-| serwerów | Tak | Tak |
-| serversv2 | Tak | Tak |
+| Serwery | Yes | Yes |
+| serversv2 | Tak | Yes |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| artifactsources | Tak | Tak |
+| artifactsources | Yes | Tak |
 | Wprowadzanie | Tak | Tak |
-| servicetopologies | Tak | Tak |
-| servicetopologies/usługi | Tak | Tak |
-| servicetopologies/services/serviceunits | Tak | Tak |
-| kroki | Tak | Tak |
+| servicetopologies | Yes | Yes |
+| servicetopologies/usługi | Tak | Yes |
+| servicetopologies/services/serviceunits | Yes | Tak |
+| kroki | Yes | Tak |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | elasticpools | Nie | Nie |
 | elasticpools/iothubtenants | Nie | Nie |
-| iothubs | Tak | Tak |
-| provisioningservices | Tak | Tak |
+| iothubs | Yes | Yes |
+| provisioningservices | Tak | Yes |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -331,7 +331,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | labcenters | Nie | Nie |
 | Warsztaty | Tak | Nie |
 | laboratoria/środowisk | Tak | Tak |
-| laboratoria/servicerunners | Tak | Tak |
+| laboratoria/servicerunners | Tak | Yes |
 | laboratoria/maszyn wirtualnych | Tak | Nie |
 | Harmonogramy | Tak | Tak |
 
@@ -351,49 +351,49 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| databaseaccounts | Tak | Tak |
+| databaseaccounts | Tak | Yes |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| domeny | Tak | Tak |
+| domeny | Yes | Tak |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| services | Tak | Tak |
+| services | Tak | Yes |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | domeny | Tak | Tak |
-| Tematy | Tak | Tak |
+| Tematy | Yes | Yes |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | Klastry | Tak | Tak |
-| przestrzenie nazw | Tak | Tak |
+| Przestrzenie nazw | Yes | Yes |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+| accounts | Nie | Nie |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| hanainstances | Tak | Tak |
+| hanainstances | Yes | Yes |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| Klastry | Tak | Tak |
+| Klastry | Yes | Tak |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| services | Tak | Tak |
+| services | Tak | Yes |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -408,46 +408,46 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| zadania | Tak | Tak |
+| Zadania | Tak | Tak |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
-| actiongroups | Tak | Tak |
+| accounts | Nie | Nie |
+| actiongroups | Tak | Yes |
 | alerty dziennika aktywności | Nie | Nie |
-| alertrules | Tak | Tak |
-| wartość autoscalesettings | Tak | Tak |
-| Składniki | Tak | Tak |
+| alertrules | Yes | Tak |
+| wartość autoscalesettings | Yes | Yes |
+| Składniki | Yes | Tak |
 | guestdiagnosticsettings | Nie | Nie |
 | metricalerts | Nie | Nie |
 | notificationgroups | Nie | Nie |
 | notificationrules | Nie | Nie |
-| scheduledqueryrules | Nie | Nie |
-| testy internetowe | Tak | Tak |
-| skoroszyty | Tak | Tak |
+| scheduledqueryrules | Tak | Yes |
+| testy internetowe | Tak | Yes |
+| Skoroszyty | Tak | Tak |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| iotapps | Tak | Tak |
+| iotapps | Yes | Yes |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | checknameavailability | Tak | Tak |
-| wykres | Tak | Tak |
+| graph | Yes | Yes |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | hsmpools | Nie | Nie |
-| Magazyny | Tak | Tak |
+| Magazyny | Yes | Tak |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| Klastry | Tak | Tak |
+| Klastry | Yes | Tak |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -457,28 +457,28 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+| accounts | Nie | Nie |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | hostingenvironments | Nie | Nie |
-| integrationaccounts | Tak | Tak |
+| integrationaccounts | Yes | Tak |
 | integrationserviceenvironments | Nie | Nie |
 | isolatedenvironments | Nie | Nie |
-| Przepływy pracy | Tak | Tak |
+| Przepływy pracy | Yes | Tak |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| commitmentplans | Tak | Tak |
+| commitmentplans | Yes | Tak |
 | usługi sieci Web | Tak | Nie |
-| obszary robocze | Tak | Tak |
+| Obszary robocze | Yes | Tak |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -488,7 +488,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+| accounts | Nie | Nie |
 | konta/obszarów roboczych | Nie | Nie |
 | obszary robocze/kont/projektów | Nie | Nie |
 | teamaccounts | Nie | Nie |
@@ -498,7 +498,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+| accounts | Yes | Tak |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -508,7 +508,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| obszary robocze | Nie | Nie |
+| Obszary robocze | Nie | Nie |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -518,7 +518,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+| accounts | Tak | Yes |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -528,9 +528,9 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftmedia"></a>Microsoft.Media
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| mediaservices | Tak | Tak |
-| mediaservices/liveevents | Tak | Tak |
-| mediaservices/punkty | Tak | Tak |
+| mediaservices | Tak | Yes |
+| mediaservices/liveevents | Yes | Tak |
+| mediaservices/punkty | Yes | Tak |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -553,73 +553,73 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | ------------- | ----------- | ---------- |
 | applicationgateways | Nie | Nie |
 | applicationgatewaywebapplicationfirewallpolicies | Nie | Nie |
-| applicationsecuritygroups | Tak | Tak |
-| azurefirewalls | Tak | Tak |
+| applicationsecuritygroups | Yes | Yes |
+| azurefirewalls | Tak | Yes |
 | bastionhosts | Nie | Nie |
-| połączenia | Tak | Tak |
-| ddoscustompolicies | Tak | Tak |
+| Połączenia | Tak | Tak |
+| ddoscustompolicies | Yes | Tak |
 | ddosprotectionplans | Nie | Nie |
-| dnszones | Tak | Tak |
+| dnszones | Yes | Yes |
 | expressroutecircuits | Nie | Nie |
 | expressroutecrossconnections | Nie | Nie |
 | expressroutegateways | Nie | Nie |
 | expressrouteports | Nie | Nie |
-| usługi Frontdoor | Tak | Tak |
-| frontdoorwebapplicationfirewallpolicies | Tak | Tak |
-| loadbalancers | Tak | Tak |
+| frontdoors | Tak | Yes |
+| frontdoorwebapplicationfirewallpolicies | Tak | Yes |
+| loadbalancers | Yes | Tak |
 | localnetworkgateways | Tak | Tak |
-| natgateways | Tak | Tak |
+| natgateways | Tak | Yes |
 | networkintentpolicies | Tak | Tak |
 | interfejsy | Tak | Tak |
 | networkprofiles | Nie | Nie |
 | networksecuritygroups | Tak | Tak |
 | networkwatchers | Tak | Tak |
-| networkwatchers/connectionmonitors | Tak | Tak |
+| networkwatchers/connectionmonitors | Tak | Yes |
 | networkwatchers/obiektywów | Tak | Tak |
 | networkwatchers/pingmeshes | Tak | Tak |
 | p2svpngateways | Nie | Nie |
-| privatednszones | Tak | Tak |
-| privatednszones/virtualnetworklinks | Tak | Tak |
+| privatednszones | Yes | Yes |
+| privatednszones/virtualnetworklinks | Yes | Tak |
 | privateendpoints | Nie | Nie |
 | privatelinkservices | Nie | Nie |
 | publicipaddresses | Tak | Tak |
-| publicipprefixes | Tak | Tak |
+| publicipprefixes | Yes | Tak |
 | routefilters | Nie | Nie |
-| routetables | Tak | Tak |
+| routetables | Tak | Yes |
 | securegateways | Tak | Tak |
-| serviceendpointpolicies | Tak | Tak |
-| trafficmanagerprofiles | Tak | Tak |
+| serviceendpointpolicies | Tak | Yes |
+| trafficmanagerprofiles | Yes | Yes |
 | virtualhubs | Nie | Nie |
-| virtualnetworkgateways | Tak | Tak |
+| virtualnetworkgateways | Yes | Tak |
 | virtualnetworks | Tak | Tak |
 | virtualnetworktaps | Nie | Nie |
 | virtualwans | Nie | Nie |
 | vpngateways | Nie | Nie |
 | vpnsites | Nie | Nie |
-| webapplicationfirewallpolicies | Tak | Tak |
+| webapplicationfirewallpolicies | Tak | Yes |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| przestrzenie nazw | Tak | Tak |
+| Przestrzenie nazw | Tak | Tak |
 | przestrzenie nazw/notificationhubs | Tak | Tak |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| obszary robocze | Tak | Tak |
+| Obszary robocze | Tak | Tak |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | managementconfigurations | Tak | Tak |
 | rozwiązania | Tak | Tak |
-| wyświetlenia | Tak | Tak |
+| Widoki | Tak | Tak |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| komunikacje równorzędne | Nie | Nie |
+| Komunikacja równorzędna | Nie | Nie |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -634,7 +634,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| workspacecollections | Tak | Tak |
+| workspacecollections | Yes | Tak |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -644,7 +644,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+| accounts | Nie | Nie |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -654,7 +654,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| przestrzenie nazw | Tak | Tak |
+| Przestrzenie nazw | Tak | Yes |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -664,13 +664,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| przepływy | Tak | Tak |
+| przepływy | Tak | Yes |
 | kolekcjach | Tak | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| searchservices | Tak | Tak |
+| searchservices | Tak | Yes |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -686,34 +686,34 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| przestrzenie nazw | Tak | Tak |
+| Przestrzenie nazw | Tak | Tak |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | aplikacje | Nie | Nie |
-| Klastry | Tak | Tak |
+| Klastry | Yes | Tak |
 | containergroups | Nie | Nie |
 | containergroupsets | Nie | Nie |
 | edgeclusters | Nie | Nie |
 | Sieci | Nie | Nie |
 | secretstores | Nie | Nie |
-| woluminy | Nie | Nie |
+| volumes | Nie | Nie |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| aplikacje | Tak | Tak |
+| aplikacje | Yes | Tak |
 | containergroups | Nie | Nie |
-| Bramy | Tak | Tak |
-| Sieci | Tak | Tak |
-| wpisy tajne | Tak | Tak |
-| woluminy | Tak | Tak |
+| Bramy | Yes | Yes |
+| Sieci | Tak | Yes |
+| wpisy tajne | Yes | Tak |
+| volumes | Tak | Tak |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| signalr | Tak | Tak |
+| signalr | Yes | Yes |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -732,13 +732,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| instancepools | Tak | Tak |
-| managedinstances | Tak | Tak |
+| instancepools | Yes | Yes |
+| managedinstances | Tak | Yes |
 | managedinstances/baz danych | Tak | Tak |
-| serwerów | Tak | Tak |
-| serwery/baz danych | Tak | Tak |
-| servers/elasticpools | Tak | Tak |
-| virtualclusters | Tak | Tak |
+| Serwery | Tak | Tak |
+| serwery/baz danych | Yes | Tak |
+| servers/elasticpools | Yes | Yes |
+| virtualclusters | Yes | Yes |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -754,7 +754,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| storageaccounts | Tak | Tak |
+| storageaccounts | Yes | Tak |
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -764,7 +764,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| storagesyncservices | Tak | Tak |
+| storagesyncservices | Yes | Tak |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -799,7 +799,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | providerregistrations | Nie | Nie |
-| zasoby | Nie | Nie |
+| Zasoby | Nie | Nie |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -821,29 +821,29 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| konto | Tak | Tak |
-| konta i rozszerzeń | Tak | Tak |
-| konto lub projekt docelowy | Tak | Tak |
+| account | Tak | Yes |
+| konta i rozszerzeń | Tak | Yes |
+| konto lub projekt docelowy | Yes | Yes |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| dedicatedcloudnodes | Tak | Tak |
+| dedicatedcloudnodes | Yes | Tak |
 | dedicatedcloudservices | Tak | Tak |
-| maszyn wirtualnych | Tak | Tak |
+| maszyn wirtualnych | Tak | Yes |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| Certyfikaty | Nie | Tak |
-| connectiongateways | Tak | Tak |
-| połączenia | Tak | Tak |
+| Certyfikaty | Nie | Yes |
+| connectiongateways | Yes | Tak |
+| Połączenia | Yes | Tak |
 | customapis | Tak | Tak |
 | hostingenvironments | Nie | Nie |
-| farm serwerów | Tak | Tak |
-| lokacje | Tak | Tak |
-| sites/premieraddons | Tak | Tak |
-| Lokacje/miejsca | Tak | Tak |
+| farm serwerów | Yes | Tak |
+| Lokacje | Tak | Yes |
+| sites/premieraddons | Yes | Tak |
+| Lokacje/miejsca | Yes | Tak |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -855,7 +855,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | ------------- | ----------- | ---------- |
 | applicationgroups | Nie | Nie |
 | hostpools | Nie | Nie |
-| obszary robocze | Nie | Nie |
+| Obszary robocze | Nie | Nie |
 
 ## <a name="third-party-services"></a>Usługi innych firm
 

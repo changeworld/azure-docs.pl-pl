@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2eaf819870e2b70cc6238af6d1e9fa1dcb5caab8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236742"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754991"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -62,7 +62,11 @@ Mimo, że kont ogólnego przeznaczenia v2 są zalecane w większości przypadkó
 
 ### <a name="block-blob-storage-accounts"></a>Blok konta usługi blob storage
 
-Konto usługi block blob storage to specjalne konto magazynu do przechowywania danych obiektów bez struktury jako blokowe obiekty BLOB lub uzupełnialnych obiektów blob. Blok konta usługi blob storage oferują wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
+Konto usługi block blob storage to specjalne konto magazynu do przechowywania danych obiektów bez struktury jako blokowe obiekty BLOB. To konto magazynu typu obsługuje blokowe obiekty BLOB i uzupełnialnych obiektów blob, ale nie stronicowe obiekty BLOB, tabel lub kolejek.
+
+W porównaniu z ogólnego przeznaczenia v2 i konta usługi blob storage, bloku konta usługi blob storage zapewnia niski i spójnych opóźnień i wyższej stawki za transakcje.
+
+Blok konta usługi blob storage nie obsługują obecnie obsługą warstw pozwalająca na warstwę gorąca, chłodna lub archiwalna dostępu.
 
 ### <a name="filestorage-preview-storage-accounts"></a>Konta magazynu FileStorage (wersja zapoznawcza)
 
@@ -75,12 +79,16 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 - Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
 - Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Każde konto magazynu musi mieć inną nazwę.
 
-## <a name="general-purpose-performance-tiers"></a>Warstwy wydajności ogólnego przeznaczenia
+## <a name="performance-tiers"></a>Warstwy wydajności
 
 Kont magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
 * Warstwa wydajności warstwy standardowa do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyny wirtualnej platformy Azure.
 * Warstwa wydajności premium do przechowywania tylko dysków niezarządzanych maszyn wirtualnych.
+
+Blok konta usługi blob storage zapewnia warstwa wydajności premium do przechowywania blokowych obiektów blob i uzupełnialnych obiektów blob.
+
+Konta magazynu FileStorage (wersja zapoznawcza) umożliwiają warstwa wydajności premium, udziałów plików platformy Azure.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Warstwy dostępu dla bloku danych obiektu blob
 
@@ -88,9 +96,9 @@ Usługa Azure Storage udostępnia różne opcje do uzyskiwania dostępu do danyc
 
 Są warstwy dostępu:
 
-* **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
+* **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a wyższe koszty magazynowania. Nowe konta usługi storage są domyślnie tworzone w warstwie gorąca.
 * **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być bardziej kosztowne niż dostęp do danych w warstwie gorąca.
-* **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorąca lub chłodna.
+* **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorących i chłodnych warstwach.
 
 W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalna dostępu](../blobs/storage-blob-storage-tiers.md).
 
@@ -119,7 +127,7 @@ Na przykład, jeśli nosi nazwę konta magazynu ogólnego przeznaczenia *mystora
 * Usługa Azure Files: http://*mystorageaccount*. file.core.windows.net
 
 > [!NOTE]
-> Konto magazynu obiektów Blob przedstawia tylko punkt końcowy usługi Blob.
+> Blokowe obiekty blob i konta usługi blob storage uwidaczniają tylko punkt końcowy usługi blob.
 
 Adres URL dla dostępu do obiektu na koncie magazynu jest tworzony przez dodanie lokalizacji obiektu na koncie magazynu do punktu końcowego. Przykładowo adres obiektu Blob może mieć następujący format: http://*mojekontomagazynu*.blob.core.windows.net/*mojkontener*/*mojblob*.
 
@@ -177,5 +185,6 @@ Usługa Import/Export można również przenoszenia danych z usługi Azure Blob 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się, jak utworzyć konto usługi Azure storage, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
+* Aby dowiedzieć się, jak utworzyć konto magazynu ogólnego przeznaczenia platformy Azure, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
+* Aby dowiedzieć się, jak utworzyć konto usługi block blob storage, zobacz [Tworzenie konta magazynu blokowych obiektów blob](../blobs/storage-blob-create-account-block-blob.md).
 * Aby zarządzać, lub usunąć istniejące konto magazynu, zobacz [kontach magazynu Azure zarządzać](storage-account-manage.md).

@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257963"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754746"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -288,7 +288,7 @@ Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opła
 
 ## <a name="expressroute-local"></a>Lokalne usługi ExpressRoute
 ### <a name="what-is-expressroute-local"></a>Co to jest lokalne usługi ExpressRoute?
-Lokalne usługi ExpressRoute jest obwodu jednostki SKU usługi ExpressRoute. Kluczową funkcją lokalny jest, lokalne obwodu na zapewnia lokalizacji komunikacji równorzędnej usługi ExpressRoute dostępu do tylko do jednego lub dwóch regionach platformy Azure w lub w pobliżu tej samej metro. Z kolei obwód standardowy umożliwia dostęp do wszystkich regionów platformy Azure, w obszarze geopolitycznych i obwodu Premium we wszystkich regionach platformy Azure globalnie. 
+Lokalne usługi ExpressRoute jest obwodu jednostki SKU usługi ExpressRoute, dostępne na [ExpressRoute bezpośrednio](expressroute-erdirect-about.md). Kluczową funkcją lokalny jest, lokalne obwodu na zapewnia lokalizacji komunikacji równorzędnej usługi ExpressRoute dostępu do tylko do jednego lub dwóch regionach platformy Azure w lub w pobliżu tej samej metro. Z kolei obwód standardowy umożliwia dostęp do wszystkich regionów platformy Azure, w obszarze geopolitycznych i obwodu Premium we wszystkich regionach platformy Azure globalnie. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Jakie są korzyści z lokalnej usługi ExpressRoute?
 Gdy trzeba płacić transfer danych wychodzących dla obwodu Standard lub Premium usługi ExpressRoute, transfer danych wychodzących nie płać oddzielnie dla obwodu usługi ExpressRoute lokalne. Innymi słowy ceny lokalne usługi ExpressRoute zawiera opłat za transfer danych. Lokalne usługi ExpressRoute jest to bardziej ekonomiczne rozwiązanie, jeśli mają ogromne ilości danych do przesłania i Ty przenosisz dane za pośrednictwem połączenia prywatnego do lokalizacji komunikacji równorzędnej usługi ExpressRoute, obok żądanego regionów świadczenia usługi Azure. 

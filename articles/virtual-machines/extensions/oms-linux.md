@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2019
+ms.date: 06/06/2019
 ms.author: roiyz
-ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743602"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755156"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej platformy Azure Monitor dla systemu Linux
 
@@ -53,11 +53,27 @@ Rozszerzenia Log Analytics Agent mogą być uruchamiane względem tych dystrybuc
 >Niższa niż wersja biblioteki OpenSSL 1.x nie jest obsługiwane na dowolnej platformie i wersji 1.10 jest obsługiwana tylko na platformach x86_64 (64-bitowe).  
 >
 
+### <a name="agent-prerequisites"></a>Wymagania wstępne dotyczące agenta
+
+W poniższej tabeli wymieniono pakiety wymagane dla obsługiwanych dystrybucjach systemu Linux, które agent zostanie zainstalowany na.
+
+|Wymagany pakiet |Opis |Minimalna wersja |
+|-----------------|------------|----------------|
+|Glibc |    Biblioteka C GNU | 2.5-12 
+|Openssl    | Biblioteki OpenSSL | 1.0.x lub 1.1.x |
+|Curl | Klient sieci web programu cURL | 7.15.5 |
+|Ctypes języka Python | | 
+|PAM | Podłączane moduły uwierzytelniania | | 
+
+>[!NOTE]
+>Rsyslog lub syslog-ng są wymagane do zbierania komunikaty dziennika systemowego. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Do zbierania danych z serwera syslog z tej wersji tych dystrybucji, demona rsyslog powinien być zainstalowany i skonfigurowany tak, aby zastąpić sysklog.
+
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
 Poniższa tabela zawiera mapowanie wersję rozszerzenia maszyny Wirtualnej platformy Azure Monitor i pakietu agenta usługi Log Analytics dla każdej wersji. Link do wersji agenta usługi Log Analytics w wersji pakietu jest dołączony. Informacje o wersji zawierają szczegółowe informacje na temat poprawki i nowe funkcje dostępne w wersji danego agenta.  
 
 | Wersja rozszerzenia usługi Azure Monitor maszyny Wirtualnej z systemem Linux | Wersja pakietu agenta analizy dziennika | 
 |--------------------------------|--------------------------|
+|1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 

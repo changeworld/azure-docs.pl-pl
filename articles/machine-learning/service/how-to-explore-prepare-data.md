@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146297"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753060"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Eksploruj i przygotować dane za pomocą klasy zestawu danych (wersja zapoznawcza)
 
@@ -63,13 +63,13 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|...|
+||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
 -|--|-----------|----|-----|----|------------|---
-0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|...
-1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|...
-2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|...
-3|10519591|HZ261534|4/15/2016 9:00|113XX APISZ PIESKÓW|1120|PRAKTYKI OSZUKAŃCZYM|...
-4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|...
+0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|Przyciski ...
+1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
+2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|Przyciski ...
+3|10519591|HZ261534|4/15/2016 9:00|113XX APISZ PIESKÓW|1120|PRAKTYKI OSZUKAŃCZYM|Przyciski ...
+4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
 
 ### <a name="simple-random-sample"></a>Proste losowej próbki
 
@@ -80,11 +80,11 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|...|
+||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
 -|--|-----------|----|-----|----|------------|---
-0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|...
-1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|...
-2|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|...
+0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
+1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|Przyciski ...
+2|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
 
 ### <a name="stratified-sample"></a>Przykładowe stratyfikowana
 
@@ -103,11 +103,11 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|...|
+||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Przyciski ...|
 -|--|-----------|----|-----|----|------------|---
-0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|...
-1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|...
-2|10535059|HZ278872|4/15/2016 4:30|004XX APISZ KILBOURN|810|PRZED KRADZIEŻĄ|...
+0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
+1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
+2|10535059|HZ278872|4/15/2016 4:30|004XX APISZ KILBOURN|810|PRZED KRADZIEŻĄ|Przyciski ...
 
 ## <a name="explore-with-summary-statistics"></a>Zapoznaj się ze statystykami podsumowania
 
@@ -117,7 +117,7 @@ sample_dataset.to_pandas_dataframe()
 dataset.get_profile()
 ```
 
-||Type|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
+||Typ|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Liczba przypadków|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -127,14 +127,14 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 Typ podstawowy|FieldType.STRING|PRAKTYKI OSZUKAŃCZYM|PRZED KRADZIEŻĄ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Opis|FieldType.STRING|SFAŁSZOWANY WYBORU|ZA POŚREDNICTWEM 500 USD|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Opis lokalizacji|FieldType.STRING||SZKOŁY, PUBLICZNEJ I TWORZENIE|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
-Aresztowania|FieldType.BOOLEAN|Fałsz|Fałsz|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Krajowych|FieldType.BOOLEAN|Fałsz|Fałsz|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Aresztowania|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Krajowych|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Sygnał|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
-Okręg|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
+Dystrykt|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
 Lej|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 Obszar społeczności|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 FBI kodu|FieldType.INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2.36643|5.6|-0.702685|-1.59582
-Współrzędna X|FieldType.INTEGER|1.16309e + 06|1.18336e + 06|10.0|7.0|3.0|0.7|0.0|0.0|1.16309e + 06|1.16309e + 06|1.16309e + 06|1.16401e + 06|1.16678e + 06|1.17921e+06|1.18336e + 06|1.18336e + 06|1.18336e + 06|1.17108e + 06|10793.5|1.165e + 08|0.335126|-2.33333
+Współrzędna x|FieldType.INTEGER|1.16309e + 06|1.18336e + 06|10.0|7.0|3.0|0.7|0.0|0.0|1.16309e + 06|1.16309e + 06|1.16309e + 06|1.16401e + 06|1.16678e + 06|1.17921e+06|1.18336e + 06|1.18336e + 06|1.18336e + 06|1.17108e + 06|10793.5|1.165e + 08|0.335126|-2.33333
 Współrzędna Y|FieldType.INTEGER|1.8315e + 06|1.908e + 06|10.0|7.0|3.0|0.7|0.0|0.0|1.8315e + 06|1.8315e + 06|1.8315e + 06|1.83614e + 06|1.85005e + 06|1.89352e + 06|1.908e + 06|1.908e + 06|1.908e + 06|1.86319e + 06|39905.2|1.59243e + 09|0.293465|-2.33333
 Rok|FieldType.INTEGER|2016|2016|10.0|0.0|10.0|0.0|0.0|0.0|2016|2016|2016|2016|2016|2016|2016|2016|2016|2016|0|0|NaN|NaN
 Aktualizacja:|FieldType.DATE|2016-05-11 15:48:00+00:00|2016-05-27 15:45:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -148,7 +148,7 @@ W zestawach danych wartości null, NaN firmy i wartości, które mają zawartoś
 
 Z profilu zestawu danych, wygenerowane w poprzedniej sekcji, widzimy, że `Latitude` i `Longitude` kolumny mają wysoki odsetek brakujących wartości. W tym przykładzie możemy obliczyć średnią i przypisują brakujących wartości dla tych dwóch kolumn.
 
-Najpierw pobierz najnowsze definicje zestawu danych za pomocą [ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) i okrojenia danych za pomocą [ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow), dzięki czemu możemy jedynie wyświetlać kolumn chcemy adresu.
+Najpierw pobierz najnowsze definicje zestawu danych za pomocą [ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) i okrojenia danych za pomocą [ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#keep-columns-columns--multicolumnselection--validate-column-exists--bool---false-----azureml-dataprep-api-dataflow-dataflow), dzięki czemu możemy jedynie wyświetlać kolumn chcemy adresu.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -164,9 +164,9 @@ ds_def.head(3)
 
 ||ID|Aresztowania| Szerokość geograficzna|Długość geograficzna|
 -|---------|-----|---------|----------|
-|0|10498554|Fałsz|41.692834|-87.604319|
-|1|10516598|Fałsz| 41.744107 |-87.664494|
-|2|10519196|Fałsz| NaN|NaN|
+|0|10498554|False|41.692834|-87.604319|
+|1|10516598|False| 41.744107 |-87.664494|
+|2|10519196|False| NaN|NaN|
 
 Następnie sprawdź `MEAN` wartość szerokości kolumn za pomocą [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) funkcji. Ta funkcja akceptuje tablica kolumn w `group_by_columns` parametru do określenia poziomu agregacji. `summary_columns` Akceptuje parametr `SummaryColumnsValue` funkcji, która określa bieżący nazwa kolumny, Nowa nazwa pola obliczeniowego i `SummaryFunction` do wykonania.
 
@@ -181,7 +181,7 @@ lat_mean.head(1)
 
 ||Aresztowania|Latitude_MEAN|
 --|-----|--------|
-|0|Fałsz|41.780049|
+|0|False|41.780049|
 
 Po możemy sprawdzić wartości, które mają przypisują, użyj [ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) się wyrażenie stałej, które imputes kolumny albo obliczeniowego `MIN`, `MAX`, `MEAN` wartość lub `CUSTOM` wartość. Gdy `group_by_columns` jest określony, brakujące wartości zostaną kalkulacyjnych przez grupę przy użyciu `MIN`, `MAX`, i `MEAN` obliczane dla każdej grupy.
 
@@ -217,9 +217,9 @@ Jak pokazano w poniższej tabeli danych wyjściowych, brak szerokość była kal
 
 ||ID|Aresztowania|Szerokość geograficzna|Długość geograficzna
 -|---------|-----|---------|----------
-0|10498554|Fałsz|41.692834|-87.604319
-1|10516598|Fałsz|41.744107|-87.664494
-2|10519196|Fałsz|41.780049|-87.000000
+0|10498554|False|41.692834|-87.604319
+1|10516598|False|41.744107|-87.664494
+2|10519196|False|41.780049|-87.000000
 
 Aktualizowanie definicji zestawu danych, [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) zapewnienie kroków wykonywanych transformacji.
 
@@ -230,9 +230,9 @@ dataset.head(3)
 
 ||ID|Aresztowania|Szerokość geograficzna|Długość geograficzna
 -|---------|-----|---------|----------
-0|10498554|Fałsz|41.692834|-87.604319
-1|10516598|Fałsz|41.744107|-87.664494
-2|10519196|Fałsz|41.780049|-87.000000
+0|10498554|False|41.692834|-87.604319
+1|10516598|False|41.744107|-87.664494
+2|10519196|False|41.780049|-87.000000
 
 ## <a name="create-assertion-rules"></a>Tworzenie reguł asercji
 
@@ -256,10 +256,10 @@ ds_def = ds_def.assert_value('Longitude', (value <= 180) & (value >= -87), error
 ds_def.get_profile()
 ```
 
-||Type|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
+||Typ|Min.|Maks.|Liczba|Liczba brakujących|Liczba niebrakujących|Odsetek brakujących|Liczba błędów|Liczba pustych|Kwantyl 0,1%|Kwantyl 1%|Kwantyl 5%|Kwantyl 25%|Kwantyl 50%|Kwantyl 75%|Kwantyl 95%|Kwantyl 99%|Kwantyl 99,9%|Średnia|Odchylenie standardowe|Wariancja|Skośność|Kurtoza
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
-Aresztowania|FieldType.BOOLEAN|Fałsz|Fałsz|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Aresztowania|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szerokość geograficzna|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1,05
 Długość geograficzna|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|NaN|NaN
 
@@ -288,13 +288,13 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|Liczba przypadków|Date|Blokuj|...|
+||ID|Liczba przypadków|Date|Blokuj|Przyciski ...|
 -|---------|-----|---------|----|---
-0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
-1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
-2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|...
+0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|Przyciski ...
+1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|Przyciski ...
+2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|Przyciski ...
 
-Powiedz, przekształcić na format daty i godziny na "2016-04-04 22: 00 - 00: 00". W [ `derive_column_by_example()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow) argument, zawierają przykłady żądane dane wyjściowe w `example_data` parametr w następującym formacie: *(oryginalne dane wyjściowe, żądany element wyjściowy)*.
+Powiedz, przekształcić na format daty i godziny na "2016-04-04 22: 00 - 00: 00". W [ `derive_column_by_example()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow) argument, zawierają przykłady żądane dane wyjściowe w `example_data` parametr w następującym formacie: *(oryginalne dane wyjściowe, żądany element wyjściowy)* .
 
 Poniższy kod zawiera dwa przykłady żądanego wyniku, ("2016--04 04 23:56:00", "2016--04 04 10 PM-12 AM") i ("2016-04-15 17:00:00", "2016-04-15, 16: 00 - 18: 00")
 
@@ -335,13 +335,13 @@ dataset = Dataset.auto_read_files('./data/city.json')
 dataset.head(5)
 ```
 
-||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|...|
+||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|Przyciski ...|
 -|-----|-------------------------|------------|--|---
-0|16162|Rupia Foods Ezee-Quick-N|3861 24th St|SF|...
-1|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|...
-2|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|...
-3|68701|Grindz|832 clement St|SF|...
-4|69186|Świadcząc usługi Premier & zdarzenia, Inc.|St 22 1255|S.F.|...
+0|16162|Rupia Foods Ezee-Quick-N|3861 24th St|SF|Przyciski ...
+1|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|Przyciski ...
+2|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|Przyciski ...
+3|68701|Grindz|832 clement St|SF|Przyciski ...
+4|69186|Świadcząc usługi Premier & zdarzenia, Inc.|St 22 1255|S.F.|Przyciski ...
 
 Użyjmy [ `fuzzy_group_column()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#fuzzy-group-column-source-column--str--new-column-name--str--similarity-threshold--float---0-8--similarity-score-column-name--str---none-----azureml-dataprep-api-dataflow-dataflow) metodę, aby dodać kolumnę z automatycznie wykrytymi forma kanoniczna "San Francisco". Argumenty `source_column` i `new_column_name` są wymagane. Istnieje również możliwość:
 
@@ -359,13 +359,13 @@ ds_def = ds_def.fuzzy_group_column(source_column='inspections.business.city',
 ds_def.head(5)
 ```
 
-||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|city_grouped|similarity_score|...|
+||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|city_grouped|similarity_score|Przyciski ...|
 -|-----|-------------------------|------------|--|---|---|---
-0|16162|Rupia Foods Ezee-Quick-N|3861 24th St|SF|San Francisco|0.814806|...
-1|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|San Francisco|1.000000|...
-2|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|San Francisco|1.000000|...
-3|68701|Grindz|832 clement St|SF|San Francisco|0.814806|...
-4|69186|Świadcząc usługi Premier & zdarzenia, Inc.|St 22 1255|S.F.|San Francisco|0.814806|...
+0|16162|Rupia Foods Ezee-Quick-N|3861 24th St|SF|San Francisco|0.814806|Przyciski ...
+1|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|San Francisco|1.000000|Przyciski ...
+2|67565|King Cafe klusek tajski|1541 TARAVAL St|SAN FRANCISCO|San Francisco|1.000000|Przyciski ...
+3|68701|Grindz|832 clement St|SF|San Francisco|0.814806|Przyciski ...
+4|69186|Świadcząc usługi Premier & zdarzenia, Inc.|St 22 1255|S.F.|San Francisco|0.814806|Przyciski ...
 
 Wynikowy definicji zestawu danych wszystkich możliwych kombinacji reprezentować "San Francisco" w danych był znormalizowany sam ciąg "San Francisco".
 

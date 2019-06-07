@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: cb4ad20067783d8d6bd649710950fea51a22a454
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: c97b974919c5aec4c902867604d207cda11e8594
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979137"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754299"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji w języku Java za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -26,7 +26,7 @@ ms.locfileid: "65979137"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-W tym przewodniku Szybki start przedstawiono sposób tworzenia zasobów konta [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB i zarządzanie nimi przy użyciu aplikacji Java. Na początku zostaną wykonane następujące czynności: utworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu witryny Azure Portal, utworzenie aplikacji Java za pomocą [zestawu SDK Java usługi SQL](sql-api-sdk-async-java.md) oraz dodanie zasobów do konta usługi Cosmos DB przy użyciu aplikacji Java. Instrukcje podane w tym przewodniku Szybki start można wykonać w dowolnym systemie operacyjnym, w którym można uruchomić oprogramowanie Java. Realizując ten przewodnik Szybki start, zaznajomisz się z tworzeniem i modyfikowaniem kolekcji i baz danych usługi Cosmos DB z wykorzystaniem interfejsu użytkownika lub programowo, zgodnie z preferencjami.
+W tym przewodniku Szybki start przedstawiono sposób tworzenia zasobów konta [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB i zarządzanie nimi przy użyciu aplikacji Java. Na początku zostaną wykonane następujące czynności: utworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu witryny Azure Portal, utworzenie aplikacji Java za pomocą [zestawu SDK Java usługi SQL](sql-api-sdk-async-java.md) oraz dodanie zasobów do konta usługi Cosmos DB przy użyciu aplikacji Java. Instrukcje podane w tym przewodniku Szybki start można wykonać w dowolnym systemie operacyjnym, w którym można uruchomić oprogramowanie Java. Po ukończeniu tego przewodnika Szybki Start można zapoznać się z tworzeniem i modyfikowaniem baz danych Cosmos DB, kontenery w Interfejsie użytkownika lub programowo, nastąpi z preferencjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,7 @@ Przed utworzeniem bazy danych dokumentów należy utworzyć konto interfejsu API
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Dodawanie kolekcji
+## <a name="add-a-container"></a>Dodawanie kontenera
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -75,7 +75,7 @@ Teraz przejdźmy do pracy z kodem. Sklonujmy aplikację interfejsu API SQL z ser
 
 Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Uruchamianie aplikacji](#run-the-app). 
 
-* Inicjowanie klienta `AsyncDocumentClient`. Element [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) zapewnia logiczną reprezentację usługi bazy danych Azure Cosmos DB po stronie klienta. Ten klient jest używany do konfigurowania i wykonywania żądań dotyczących usługi.
+* Inicjowanie klienta `AsyncDocumentClient`. [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) zapewnia logiczną reprezentację usługi bazy danych Azure Cosmos po stronie klienta. Ten klient jest używany do konfigurowania i wykonywania żądań dotyczących usługi.
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -202,9 +202,9 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji za pomocą Eksploratora danych oraz uruchamiania aplikacji w celu wykonania tych samych czynności w sposób programowy. Teraz możesz zaimportować dodatkowe dane do kolekcji usługi Azure Cosmos DB. 
+W tym przewodniku Szybki Start wyjaśniono sposób tworzenia konta usługi Azure Cosmos, bazy danych dokumentów i kontener za pomocą Eksploratora danych i uruchom aplikację, aby zrobić to samo programowo. Teraz możesz zaimportować dodatkowe dane do kontenera usługi Azure Cosmos. 
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)

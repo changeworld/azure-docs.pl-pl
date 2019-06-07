@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 6ab6ec6a88dbba066be9ecf9919be876090cfdff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: edadb369461bb3865dd6894c3329e7079fa9d13f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121505"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752557"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -279,7 +279,7 @@ Poniższej tabeli wymieniono i opisano scenariusze integracji:
 |[Mapa aplikacji](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Składniki Twojej aplikacji wraz z kluczowymi metrykami i alertami.|
 |[Na przykład wyszukiwanie diagnostyki danych](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Wyszukiwanie i filtrowanie zdarzeń, takich jak żądania, wyjątki, wywołania zależności, dzienniki śledzenia i wyświetlenia stron.|
 |[Eksplorator metryk dla danych zagregowanych](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Eksploruj, filtruj i segmentuj zagregowane dane, takie jak liczby żądań, błędów i wyjątków, czasy reakcji, czasy ładowania stron.|
-|[Pulpity nawigacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Połącz dane z wielu zasobów i udostępnij innym osobom. Opcja ta doskonale nadaje się dla aplikacji wieloskładnikowych i ciągłego wyświetlania w pomieszczeniu zespołu.|
+|[Pulpity nawigacyjne](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)|Połącz dane z wielu zasobów i udostępnij innym osobom. Opcja ta doskonale nadaje się dla aplikacji wieloskładnikowych i ciągłego wyświetlania w pomieszczeniu zespołu.|
 |[Stream metryki na żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Podczas wdrażania nowej kompilacji obejrzyj te wskaźniki wydajności prawie w czasie rzeczywistym, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.|
 |[Analiza](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|Odpowiedz na trudne pytania dotyczące wydajności i użycia Twojej aplikacji za pomocą tego zaawansowanego języka zapytań.|
 |[Alerty automatyczne i ręczne](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Alerty automatyczne dostosowanie się do normalnych wzorców telemetrii Twojej aplikacji i są wyzwalane, gdy wystąpi coś poza zwykłym wzorcem. Możesz też ustawić alerty dla konkretnych poziomów metryk niestandardowych lub standardowych.|
@@ -330,7 +330,7 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 
 | Usługa | Typ zasobu | Dzienniki | Metryki | Rozwiązanie |
 | :------ | :------------ | :--- | :------ | :------- |
-|Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnostyka|Diagnostyka|    [Aplikacja Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [analizy bramy](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnostyka|Diagnostyka|    [Aplikacja Azure](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics) [analizy bramy](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics#azure-application-gateway-analytics-solution-in-azure-monitor)|
 |Application Insights||     Łącznik|  Łącznik|  [Usługa Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [łącznik (wersja zapoznawcza)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Konta usługi Azure Automation| Microsoft.Automation/<br>AutomationAccounts|    Diagnostyka||       [Więcej informacji](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Konta usługi Azure Batch|  Microsoft.Batch/<br>batchAccounts|  Diagnostyka|    Diagnostyka||
@@ -338,26 +338,26 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 |Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnostyka|||
 |Azure Data Lake Analytics| Microsoft.DataLakeAnalytics/<br>accounts|   Diagnostyka|||
 |Azure Data Lake Store| Microsoft.DataLakeStore/<br>accounts|   Diagnostyka|||
-|Przestrzeń nazw Centrum zdarzeń platformy Azure| Microsoft.EventHub/<br>przestrzenie nazw|  Diagnostyka|    Diagnostyka||
+|Przestrzeń nazw Centrum zdarzeń platformy Azure| Microsoft.EventHub/<br>Przestrzenie nazw|  Diagnostyka|    Diagnostyka||
 |Azure IoT Hub| Microsoft.Devices/<br>IotHubs||     Diagnostyka||
 |W usłudze Azure Key Vault|   Microsoft.KeyVault/<br>Magazyny|  Diagnostyka  || [Analiza usługi Key Vault](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Azure Load Balancer|   Microsoft.Network/<br>loadBalancers|    Diagnostyka|||
 |Azure Logic Apps|  Microsoft.Logic/<br>Przepływy pracy|  Diagnostyka|    Diagnostyka||
 ||Microsoft.Logic/<br>integrationAccounts||||
-|Grupy zabezpieczeń sieci|   Microsoft.Network/<br>networksecuritygroups|Diagnostyka||   [Analiza sieciowej grupy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
+|Grupy zabezpieczeń sieci|   Microsoft.Network/<br>networksecuritygroups|Diagnostyka||   [Analiza sieciowej grupy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics#azure-application-gateway-and-network-security-group-analytics)|
 |Magazyny usługi Recovery|   Microsoft.RecoveryServices/<br>Magazyny|||[Usługa Azure Recovery Services — analiza (Podgląd)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Usługi wyszukiwania|   Microsoft.Search/<br>searchServices|    Diagnostyka|    Diagnostyka||
-|Przestrzeń nazw magistrali usług| Microsoft.ServiceBus/<br>przestrzenie nazw|    Diagnostyka|Diagnostyka|    [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Przestrzeń nazw magistrali usług| Microsoft.ServiceBus/<br>Przestrzenie nazw|    Diagnostyka|Diagnostyka|    [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Magazyn||    [Analiza usługi Service Fabric (wersja zapoznawcza)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>serwery /<br>bazy danych||       Diagnostyka||
 ||Microsoft.Sql/<br>serwery /<br>elasticPools||||
 |Magazyn|||         Skrypt| [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Azure Virtual Machines|    Microsoft.Compute/<br>maszyn wirtualnych|  Wewnętrzny|  Wewnętrzny||
+|Usługa Azure Virtual Machines|    Microsoft.Compute/<br>maszyn wirtualnych|  Wewnętrzny|  Wewnętrzny||
 ||||Diagnostyka||
 |Zestawy skalowania maszyn wirtualnych|    Microsoft.Compute/<br>maszyn wirtualnych    ||Diagnostyka||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>maszyn wirtualnych||||
 |Farmach serwerów sieci Web|Microsoft.Web/<br>farm serwerów||   Diagnostyka
-|Witryny internetowe|  Microsoft.Web/<br>lokacje ||      Diagnostyka|    [Więcej informacji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
+|Witryny internetowe|  Microsoft.Web/<br>Lokacje ||      Diagnostyka|    [Więcej informacji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>Lokacje /<br>gniazda||||
 
 
@@ -373,8 +373,8 @@ Integracja dzienników obecnie obsługuje integrację Dzienniki aktywności plat
 
 | Typ dziennika | Usługa Azure Monitor rejestruje pomocnicze JSON (Splunk ArcSight i IBM QRadar) |
 | :------- | :-------------------------------------------------------- |
-|Dzienniki inspekcji usługi Azure AD|   Yes|
-|Dzienniki aktywności| Yes|
+|Dzienniki inspekcji usługi Azure AD|   Tak|
+|Dzienniki aktywności| Tak|
 |Alertów usługi Security Center |Yes|
 |Dzienniki diagnostyczne (Dzienniki zasobów)|  Yes|
 |Dzienniki maszyny Wirtualnej|   Tak, za pomocą zdarzenia przesyłane dalej, a nie za pomocą pliku JSON|

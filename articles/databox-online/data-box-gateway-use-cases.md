@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924391"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754181"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Przypadki użycia dla bramy pola danych platformy Azure
 
@@ -50,7 +50,7 @@ Przed rozpoczęciem upewnij się, że uruchomione urządzenie bramy pola danych.
 - Po przekazaniu danych należy przenieść ją do warstwy archiwum. Możesz ustawić warstwę obiektu blob na dwa sposoby: Skrypt programu Azure PowerShell lub zasady zarządzania cyklem życia magazynu platformy Azure.  
     - Jeśli przy użyciu programu Azure PowerShell, postępuj zgodnie z tymi [kroki](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) przenoszenia danych do warstwy archiwum.
     - Jeśli za pomocą zarządzania cyklem życia platformy Azure, wykonaj następujące kroki, aby przenieść dane do warstwy archiwum.
-        - [Zarejestruj](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) skorzystania z wersji zapoznawczej usługę zarządzania cyklem życia obiektów Blob pod kątem używania archiwum warstwy.
+        - [Zarejestruj](/azure/storage/common/storage-lifecycle-management-concepts) skorzystania z wersji zapoznawczej usługę zarządzania cyklem życia obiektów Blob pod kątem używania archiwum warstwy.
         - Użyj następujących zasad do [pozyskiwania danych archiwum na](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - Po obiekty BLOB są oznaczone jako archiwum, ich można już nie można modyfikować przez bramę, chyba że są one przenoszone do warstwy gorąca lub zimnych. Jeśli plik znajduje się w magazynie lokalnym, wszelkie zmiany wprowadzone do lokalnej kopii (w tym usuwa) nie są przekazywane do warstwy archiwum.
 - Do odczytywania danych w magazynie archiwalnym, należy wypełnienia przez zmianę warstwy obiektu blob na gorącą lub chłodną. [Odświeżanie udziału](data-box-gateway-manage-shares.md#refresh-shares) w bramie nie przywrócenia z magazynu trwałego obiektu blob.

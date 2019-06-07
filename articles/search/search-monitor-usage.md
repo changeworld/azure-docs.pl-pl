@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797381"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755058"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitoruj aktywność zużycia i kwerendy zasobów w usłudze Azure Search
 
@@ -175,7 +175,7 @@ Zarówno w przypadku interfejsu API REST usługi Azure Search, jak i zestawu .NE
 * [Liczba dokumentów](/rest/api/searchservice/count-documents)
 * [Pobierz stan indeksatora](/rest/api/searchservice/get-indexer-status)
 
-Aby włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+Aby włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

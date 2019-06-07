@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/20/2019
-ms.openlocfilehash: 432ddf6e0fea0d6de3c24dc853502dca303ce693
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/06/2019
+ms.openlocfilehash: e39440a46228d82b0722f7d9d349d11fb2417b42
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954561"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754610"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji internetowej platformy .NET przy użyciu konta interfejsu API SQL w usłudze Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Subskrypcja platformy Azure lub bezpłatnego konta wersji próbnej usługi Azure
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
-## <a name="create-an-azure-cosmos-db-account"></a>Utwórz konto usługi Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -52,33 +52,32 @@ Subskrypcja platformy Azure lub bezpłatnego konta wersji próbnej usługi Azure
 
 Eksplorator danych w witrynie Azure portal służy do tworzenia bazy danych i kolekcji. 
 
-1.  Wybierz **Eksplorator danych** w lewym obszarze nawigacji w usłudze Azure Cosmos DB konta strony, a następnie wybierz pozycję **Nowa kolekcja**. 
+1.  Wybierz **Eksplorator danych** w lewym obszarze nawigacji w usłudze Azure Cosmos DB konta strony, a następnie wybierz pozycję **nowy kontener**. 
     
-    Konieczne może być przewinięcie w prawo w celu wyświetlenia **Dodaj kolekcję** obszaru.
+    Konieczne może być przewinięcie w prawo w celu wyświetlenia **Dodaj kontener** okna.
     
     ![Eksplorator danych w witrynie Azure Portal, okienko Dodaj kolekcję](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  Na stronie **Dodaj kolekcję** wprowadź ustawienia dla nowej kolekcji.
+1.  W **Dodaj kontener** okienku, wprowadź ustawienia dla nowej kolekcji.
     
     |Ustawienie|Sugerowana wartość|Opis
     |---|---|---|
-    |**Identyfikator bazy danych**|ToDoList|Wprowadź *ToDoList* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu.|
-    |**Identyfikator kolekcji**|Elementy|Wprowadź *Elementy* jako nazwę nowej kolekcji. Identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jako nazwy bazy danych.|
-    |**Klucz partycji**| /category| W przykładzie opisanych w tym artykule użyto */category* jako klucza partycji.|
+    |**Identyfikator bazy danych**|ToDoList|Wprowadź *ToDoList* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź **Aprowizowanie przepływności bazy danych** opcji umożliwia udostępnianie przepływnością aprowizowaną do bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również zmniejszyć koszty. |
     |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 
+    |**Identyfikator kontenera**|Elementy|Wprowadź *Elementy* jako nazwę nowej kolekcji. Identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jako nazwy bazy danych.|
+    |**Klucz partycji**| /category| W przykładzie opisanych w tym artykule użyto */category* jako klucza partycji.|
+
     
     Nie dodawaj **unikatowe klucze** w tym przykładzie. Unikatowe klucze umożliwiają dodanie warstwy integralności danych w bazie danych, zapewniając zapewnić unikatowość co najmniej jedną wartość na klucz partycji. Aby uzyskać więcej informacji, zobacz [unikatowe klucze w usłudze Azure Cosmos DB](unique-keys.md).
     
-1.  Kliknij przycisk **OK**. 
-    W Eksploratorze danych zostanie wyświetlona nowa baza danych i kolekcja.
+1.  Kliknij przycisk **OK**. W Eksploratorze danych zostanie wyświetlona, nową bazę danych i kontener, który został utworzony.
     
-    ![Eksplorator danych w witrynie Azure Portal z widoczną nową bazą danych i kolekcją](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
 ## <a name="add-data-to-your-database"></a>Dodawanie danych do bazy danych
 
 Dodawanie danych do nowej bazy danych za pomocą Eksploratora danych.
 
-1. W **Eksplorator danych**, Nowa baza danych pojawia się w **kolekcje** okienka. Rozwiń **ToDoList** bazy danych, a następnie rozwiń **elementów** kolekcji, wybierz opcję **dokumentów**, a następnie wybierz pozycję **nowy dokument**. 
+1. W **Eksplorator danych**, rozwiń węzeł **ToDoList** bazy danych, a następnie rozwiń **elementów** kontenera. Następnie wybierz pozycję **elementów**, a następnie wybierz pozycję **nowy element**. 
    
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
@@ -108,7 +107,7 @@ Dodawanie danych do nowej bazy danych za pomocą Eksploratora danych.
 
 Aby zobaczyć, jak łatwo jest pracować programowo z danymi usługi Azure Cosmos DB, sklonuj przykładową aplikację sieci web .NET interfejsu API SQL z serwisu GitHub, zaktualizuj parametry połączenia, a następnie uruchom aplikację, aby zaktualizować dane. 
 
-Przy użyciu przykładowy kod .NET, można utworzyć bazę danych i kolekcję. Aby dowiedzieć się więcej, zobacz [Przegląd kodu .NET](#review-the-net-code).
+Przy użyciu przykładowy kod .NET, można utworzyć bazy danych i kontener. Aby dowiedzieć się więcej, zobacz [Przegląd kodu .NET](#review-the-net-code).
 
 ### <a name="clone-the-sample-app"></a>Klonowanie przykładowej aplikacji
 
@@ -148,7 +147,7 @@ Najpierw sklonuj C# [aplikacji interfejsu API SQL](https://github.com/Azure-Samp
       `<add key="authKey" value="19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==" />`
 
        
-1. Upewnij się, że wartości bazy danych i kolekcji w *web.config* odpowiadać nazwom została utworzona wcześniej. 
+1. Upewnij się, że bazy danych i kolekcji (nazywane również kontenera) wartości w *web.config* odpowiadać nazwom została utworzona wcześniej. 
 
    ```csharp
    <add key="database" value="ToDoList"/>
@@ -163,7 +162,7 @@ Najpierw sklonuj C# [aplikacji interfejsu API SQL](https://github.com/Azure-Samp
 
 1. W polu **Przeglądaj** pakietu NuGet wpisz ciąg *DocumentDB*.
 
-1. Na liście wyników, zainstaluj **Microsoft.Azure.DocumentDB** biblioteki, jeśli jeszcze nie zainstalowano. Spowoduje to zainstalowanie [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) pakietu oraz wszystkich zależności.
+1. Na liście wyników, zainstaluj **2.2.3 wersji** z **Microsoft.Azure.DocumentDB** biblioteki, jeśli jeszcze nie zainstalowano. Spowoduje to zainstalowanie [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) pakietu oraz wszystkich zależności.
    
    Jeśli Menedżer pakietów NuGet jest wyświetlany komunikat, że brakuje niektórych pakietów z rozwiązania, wybierz **przywrócić** mają być instalowane z wewnętrznych źródeł. 
 
@@ -177,7 +176,7 @@ Wróć do Eksploratora danych w witrynie Azure portal, aby wyświetlić, zapytan
 
 ## <a name="review-the-net-code"></a>Przegląd kodu platformy .NET
 
-Ten krok jest opcjonalny. W tym przewodniku Szybki Start utworzono bazę danych i kolekcji w witrynie Azure portal i dodaje przykładowych danych, korzystając z przykładu .NET. Jednak można utworzyć bazy danych i kolekcji, korzystając z przykładu .NET. Jeśli interesuje Cię jak zasoby bazy danych są tworzone w kodzie, należy przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z *DocumentDBRepository.cs* w pliku **todo** projektu.
+Ten krok jest opcjonalny. W tym przewodniku Szybki Start utworzono bazę danych i kontener w witrynie Azure portal i dodano przykładowych danych, korzystając z przykładu .NET. Jednak można utworzyć bazy danych i kontener, korzystając z przykładu .NET. Jeśli interesuje Cię jak zasoby bazy danych są tworzone w kodzie, należy przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z *DocumentDBRepository.cs* w pliku **todo** projektu.
 
 * Ten kod inicjalizuje `DocumentClient`: 
 
@@ -230,7 +229,7 @@ Ten krok jest opcjonalny. W tym przewodniku Szybki Start utworzono bazę danych 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki Start przedstawiono sposób tworzenia konta usługi Azure Cosmos DB, Utwórz bazę danych i kolekcji za pomocą Eksploratora danych i uruchamiania aplikacji internetowej platformy .NET, aby zaktualizować dane. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Azure Cosmos DB. 
+W tym przewodniku Szybki Start przedstawiono sposób tworzenia konta usługi Azure Cosmos DB, Utwórz bazę danych i kontener za pomocą Eksploratora danych i uruchamiania aplikacji internetowej platformy .NET, aby zaktualizować dane. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)

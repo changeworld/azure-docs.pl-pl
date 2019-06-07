@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475573"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752177"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — ruch wychodzący Limit dla węzłów klastra i kontrola dostępu do wymaganych portów i usług w usłudze Azure Kubernetes Service (AKS)
 
-Domyślnie klastry usługi AKS mają nieograniczony dostęp do Internetu wychodzących (dane wychodzące). Ten poziom dostępu do sieci umożliwia węzłów i usługi uruchomione na dostęp do zasobów zewnętrznych zgodnie z potrzebami. Jeśli chcesz ograniczyć ruch wychodzący ograniczoną liczbę portów i adresów muszą być dostępne do obsługi zadań konserwacji w dobrej kondycji klastra. Klaster jest następnie skonfigurowany do użycia tylko podstawowy system obrazy kontenera z rejestru kontenerów firmy Microsoft (MCR) lub Azure Container Registry (ACR), nie zewnętrzne z publicznych repozytoriów.
+Domyślnie klastry usługi AKS mają nieograniczony dostęp do Internetu wychodzących (dane wychodzące). Ten poziom dostępu do sieci umożliwia węzłów i usługi uruchomione na dostęp do zasobów zewnętrznych zgodnie z potrzebami. Jeśli chcesz ograniczyć ruch wychodzący ograniczoną liczbę portów i adresów muszą być dostępne do obsługi zadań konserwacji w dobrej kondycji klastra. Klaster jest następnie skonfigurowany do użycia tylko podstawowy system obrazy kontenera z rejestru kontenerów firmy Microsoft (MCR) lub Azure Container Registry (ACR), nie zewnętrzne z publicznych repozytoriów. Należy skonfigurować preferowanych reguły zapory i zabezpieczeń, aby zezwolić na te wymagane porty i adresy.
 
 Ten artykuł szczegółowo opisuje jakie porty sieciowe i w pełni kwalifikowanych nazw domen (FQDN) są wymagane i opcjonalne, jeśli można ograniczyć ruch wychodzący w klastrze AKS.  Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
@@ -28,7 +28,7 @@ Ten artykuł szczegółowo opisuje jakie porty sieciowe i w pełni kwalifikowany
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.66 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 Aby utworzyć klaster usługi AKS, które ogranicza ruch wychodzący, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Rejestracja funkcja umożliwia skonfigurowanie każdego klastra AKS, można utworzyć na podstawowy system obrazy kontenerów z MCR lub ACR. Aby zarejestrować *AKSLockingDownEgressPreview* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
 
@@ -54,7 +54,7 @@ Zarządzanie i cele operacyjne węzłów w klastrze AKS na potrzeby dostępu do 
 
 Aby zwiększyć bezpieczeństwo klastra usługi AKS, możesz ograniczyć ruch wychodzący. Klaster jest skonfigurowany do ściągania obrazów kontenera z MCR lub ACR podstawowego systemu. Blokować ruch wychodzący w ten sposób należy zdefiniować określone porty i nazw FQDN, aby umożliwić węzłów AKS do poprawnie komunikowania się z usługami zewnętrznymi wymagane. Bez tych autoryzowanych portów i FQDN węzłów AKS nie może komunikować się z serwerem interfejsu API lub zainstalować podstawowe składniki.
 
-Możesz użyć [zapory usługi Azure] [ azure-firewall] lub urządzenie zapory innych firm 3 do zabezpieczenia ruchu wychodzącego i zdefiniować te wymagane porty i adresy.
+Możesz użyć [zapory usługi Azure] [ azure-firewall] lub urządzenie zapory innych firm 3 do zabezpieczenia ruchu wychodzącego i zdefiniować te wymagane porty i adresy. AKS nie automatycznie tworzy te reguły. Następujące porty i adresy są dla odwołania i Utwórz odpowiednie zasady w zaporze sieciowej.
 
 W usłudze AKS istnieją dwa rodzaje portów i adresów:
 
@@ -70,23 +70,26 @@ Następujących portów wychodzących reguł sieci są wymagane dla klastra usł
 
 * TCP port *443*
 * TCP port *9000* i TCP port *22* dla tunelu zasobnik frontonu do komunikowania się z zakończeniem tunelu na serwerze interfejsu API.
+    * Aby uzyskać bardziej szczegółowe informacje, zobacz * *.hcp.\< Lokalizacja\>. azmk8s.io* i * *. tun.\< Lokalizacja\>. azmk8s.io* adresy w tabeli poniżej.
 
 Następujące nazwy FQDN / wymaganych reguł aplikacji:
 
-| NAZWA FQDN                      | Port      | Użycie      |
-|---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443,22,9000 | Ten adres jest punkt końcowy serwera interfejsu API. |
-| aksrepos.azurecr.io       | HTTPS:443 | Ten adres jest wymagane do dostępu do obrazów w usłudze Azure Container Registry (ACR). |
-| *.blob.core.windows.net   | HTTPS:443 | Ten adres jest magazynu zaplecza dla obrazów przechowywanych w rejestru Azure container Registry. |
-| mcr.microsoft.com         | HTTPS:443 | Ten adres jest wymagane do dostępu do obrazów w rejestrze kontenerów firmy Microsoft (MCR). |
-| management.azure.com      | HTTPS:443 | Ten adres jest wymagana do wykonania operacji Kubernetes GET/PUT. |
-| login.microsoftonline.com | HTTPS:443 | Ten adres jest wymagany do uwierzytelniania usługi Azure Active Directory. |
+| NAZWA FQDN                       | Port      | Użycie      |
+|----------------------------|-----------|----------|
+| *.hcp. \<lokalizacji\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punkt końcowy serwera interfejsu API. Zastąp *\<lokalizacji\>* z regionem, w którym jest wdrażany klaster AKS. |
+| *.tun.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punkt końcowy serwera interfejsu API. Zastąp *\<lokalizacji\>* z regionem, w którym jest wdrażany klaster AKS. |
+| aksrepos.azurecr.io        | HTTPS:443 | Ten adres jest wymagane do dostępu do obrazów w usłudze Azure Container Registry (ACR). |
+| *.blob.core.windows.net    | HTTPS:443 | Ten adres jest magazynu zaplecza dla obrazów przechowywanych w rejestru Azure container Registry. |
+| mcr.microsoft.com          | HTTPS:443 | Ten adres jest wymagane do dostępu do obrazów w rejestrze kontenerów firmy Microsoft (MCR). |
+| *.cdn.mscr.io              | HTTPS:443 | Ten adres jest wymagany dla MCR magazyn usługi Azure content delivery network (CDN). |
+| management.azure.com       | HTTPS:443 | Ten adres jest wymagana do wykonania operacji Kubernetes GET/PUT. |
+| login.microsoftonline.com  | HTTPS:443 | Ten adres jest wymagany do uwierzytelniania usługi Azure Active Directory. |
+| api.snapcraft.io           | HTTPS:443, HTTP:80 | Ten adres jest wymagany, aby zainstalować pakiety przystawki w węzłach systemu Linux. |
+| ntp.ubuntu.com             | UDP:123   | Ten adres jest wymagany do synchronizacji czasu NTP w węzłach systemu Linux. |
+| *.docker.io                | HTTPS:443 | Ten adres jest wymagany do ściągania obrazów kontenera wymagane do przodu tunelu. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Opcjonalnie zalecane adresy i porty w przypadku klastrów usługi AKS
 
-Następujących portów wychodzących / reguł sieci nie są wymagane w przypadku klastrów usługi AKS działał poprawnie, ale zalecane:
-
-* UDP port *123* do celów synchronizacji czasu NTP
 * UDP port *53* dla serwera DNS
 
 Następujące nazwy FQDN / reguł aplikacji są zalecane w przypadku klastrów usługi AKS do poprawnego działania:

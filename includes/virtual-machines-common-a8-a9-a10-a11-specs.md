@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: jonbeck7
+author: vermagit
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/29/2018
-ms.author: azcspmt;jonbeck;cynthn;danlep
+ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
 ms.custom: include file
-ms.openlocfilehash: c12fff63cdb7241d89e7511a3dac2ff9c1363ae6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5cbc19d5aade2bbcc8b8dca277352d1b17d1d35a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145843"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755187"
 ---
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 * **Subskrypcja platformy Azure** — Aby wdrożyć więcej niż kilka wystąpień obliczeniowych, należy wziąć pod uwagę subskrypcji zgodnie z rzeczywistym użyciem lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
@@ -29,11 +29,11 @@ ms.locfileid: "66145843"
 * **Zmiana rozmiaru** — ze względu na ich specjalistycznego sprzętu, można tylko zmienić rozmiar mocy obliczeniowej wystąpień w ramach tej samej rodziny rozmiaru (seria H lub mocy obliczeniowej serii A). Na przykład można tylko zmienić rozmiar Maszynie wirtualnej serii H z jednego wystąpienia serii H rozmiaru do innego. Ponadto zmiana rozmiaru z innych niż intensywnych obliczeń rozmiaru rozmiarowi intensywnych obliczeń nie jest obsługiwane.  
 
 ## <a name="rdma-capable-instances"></a>Wystąpienia z obsługą technologii RDMA
-Podzbiór wystąpień mocy obliczeniowej (H16r, H16mr, A8 i A9) są wyposażone w interfejs sieciowy, łączność dostępu (RDMA) zdalnego pamięci. (Rozmiary wybranych serii N oznaczone ciągiem "r", takich jak NC24r również są funkcją RDMA). Ten interfejs jest oprócz interfejsu standardowa sieci platformy Azure dostępne dla innych rozmiarów maszyn wirtualnych. 
+Podzbiór wystąpień obliczeniowych (A8, A9, H16r, H16mr, HB i HC) są wyposażone w interfejs sieciowy, łączność dostępu (RDMA) zdalnego pamięci. Wybrane rozmiary serii N oznaczone ciągiem "r", takich jak konfiguracja NC24rs (NC24rs_v2 i nc24rs_v3 w warstwie) są również funkcją RDMA. Ten interfejs jest oprócz interfejsu standardowa sieci platformy Azure dostępne dla innych rozmiarów maszyn wirtualnych. 
   
-Ten interfejs umożliwia obsługą dostępu RDMA wystąpień do komunikowania się za pośrednictwem sieci InfiniBand (IB), działające na stawki FDR H16r, H16mr i obsługą dostępu RDMA seria maszyn wirtualnych i QDR stawki za maszyny wirtualne A8 i A9. Te możliwości RDMA może zwiększyć skalowalność i wydajność niektórych aplikacji interfejsu przekazywania komunikatów (MPI).
+Ten interfejs umożliwia obsługą dostępu RDMA wystąpień do komunikowania się za pośrednictwem sieci InfiniBand (IB), operacyjne stawek EDR HB, połączenia Hybrydowego, przepustowości fdr wraz ze stawkami za usługi H16r, H16mr i obsługą dostępu RDMA seria maszyn wirtualnych i QDR stawki za maszyny wirtualne A8 i A9. Te możliwości RDMA może zwiększyć skalowalność i wydajność niektórych aplikacji interfejsu przekazywania komunikatów (MPI). Aby uzyskać więcej informacji o szybkości Zobacz szczegółowe informacje w tabelach na tej stronie.
 
 > [!NOTE]
-> IP over IB nie jest obsługiwana na platformie Azure. Tylko RDMA over IB jest obsługiwane.
+> Na platformie Azure IP over IB jest obsługiwane tylko dla maszyn wirtualnych, o których (obecnie HB i HC) z włączoną funkcję SR-IOV. RDMA za pośrednictwem IB jest obsługiwana dla wszystkich wystąpień z funkcją RDMA.
 >
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2018
+ms.date: 06/06/2019
 ms.author: Kumud
-ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735241"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754712"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i kondycji diagnostyki dla standardowego modułu równoważenia obciążenia
 
@@ -31,14 +31,14 @@ W tym artykule przedstawiono szybki przegląd tych możliwości, jak również s
 
 ## <a name = "MultiDimensionalMetrics"></a>Metryk wielowymiarowych
 
-Usługa Azure Load Balancer zapewnia nowych metryk wielowymiarowych za pomocą nowych metryk platformy Azure (wersja zapoznawcza) w witrynie Azure portal oraz pomaga analiz w czasie rzeczywistym diagnostycznych do obciążenia równoważenia zasobów. 
+Usługa Azure Load Balancer zapewnia nowych metryk wielowymiarowych za pomocą nowych metryk platformy Azure w witrynie Azure portal oraz pomaga analiz w czasie rzeczywistym diagnostycznych do obciążenia równoważenia zasobów. 
 
 Różne konfiguracje standardowego modułu równoważenia obciążenia zapewnia następujące metryki:
 
 | Metryka | Typ zasobu | Opis | Zalecane agregacji |
 | --- | --- | --- | --- |
-| Adres VIP dostępność (dostępność ścieżka danych) | Publiczny moduł równoważenia obciążenia | Stale Standard Load Balancer, która korzysta ze ścieżki danych z w obrębie regionu do frontonu modułu równoważenia obciążenia, aż do stosu SDN, który obsługuje Twoja maszyna wirtualna. Tak długo, jak utrzymać dobrej kondycji wystąpień, pomiar następuje taką samą ścieżkę ruchu ze zrównoważonym obciążeniem w danej aplikacji. Ścieżki danych, których używają Twoi klienci jest również sprawdzany. Miara jest niewidoczny dla aplikacji i nie kolidują z innymi operacjami.| Średnia |
-| Dostępność DIP (stan sondy kondycji) |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Standardowy moduł równoważenia obciążenia używa rozproszona usługa badania kondycji, która monitoruje kondycję swojej aplikacji punktu końcowego zgodnie z ustawieniami konfiguracji. Ta metryka zapewnia funkcję agregującą lub na punkt końcowy filtrowany widok każdego wystąpienia punktu końcowego puli modułu równoważenia obciążenia. Widać, jak moduł równoważenia obciążenia Wyświetla kondycję swojej aplikacji, jak wskazano w bieżącej konfiguracji sondy kondycji. |  Średnia |
+| Dane ścieżki dostępność (dostępność adresu VIP)| Publiczny moduł równoważenia obciążenia | Stale Standard Load Balancer, która korzysta ze ścieżki danych z w obrębie regionu do frontonu modułu równoważenia obciążenia, aż do stosu SDN, który obsługuje Twoja maszyna wirtualna. Tak długo, jak utrzymać dobrej kondycji wystąpień, pomiar następuje taką samą ścieżkę ruchu ze zrównoważonym obciążeniem w danej aplikacji. Ścieżki danych, których używają Twoi klienci jest również sprawdzany. Miara jest niewidoczny dla aplikacji i nie kolidują z innymi operacjami.| Średnia |
+| Stan sondy kondycji (dostępność DIP) |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Standardowy moduł równoważenia obciążenia używa rozproszona usługa badania kondycji, która monitoruje kondycję swojej aplikacji punktu końcowego zgodnie z ustawieniami konfiguracji. Ta metryka zapewnia funkcję agregującą lub na punkt końcowy filtrowany widok każdego wystąpienia punktu końcowego puli modułu równoważenia obciążenia. Widać, jak moduł równoważenia obciążenia Wyświetla kondycję swojej aplikacji, jak wskazano w bieżącej konfiguracji sondy kondycji. |  Średnia |
 | SYN (Synchronizuj) pakietów |  Publiczny moduł równoważenia obciążenia | Load Balancer w warstwie standardowa zakończyć połączenia Transmission Control Protocol (TCP) lub nie korzystać z protokołu TCP lub UDP przepływów pakietów. Przepływów i ich uzgodnienia są zawsze między źródłem i wystąpienie maszyny Wirtualnej. Aby lepiej rozwiązywać scenariuszy protokołu TCP, można skorzystać z SYN liczniki pakietów, aby zrozumieć, jak wiele połączeń TCP prób. Metryka zgłasza liczbę pakietów TCP SYN, które zostały odebrane.| Średnia |
 | Połączeń SNAT |  Publiczny moduł równoważenia obciążenia |Load Balancer w warstwie standardowa zgłasza liczbę przepływy wychodzące, które są masqueraded frontonie adres publiczny adres IP. Porty tłumaczenia (SNAT) adres sieci źródłowe są wyczerpującymi się zasobami. Ta metryka może stanowić wskazówkę stopnia aplikacji powołuje się na SNAT dla ruchu wychodzącego przepływów. Liczniki dla udane i nieudane przepływy wychodzące SNAT są zgłaszane i może służyć do rozwiązywania oraz zrozumieć kondycję swoich przepływów ruchu wychodzącego.| Średnia |
 | Liczniki bajtów |  Moduł równoważenia obciążenia publicznych i wewnętrznych | Load Balancer w warstwie standardowa raporty danych przetwarzanych na frontonie.| Średnia |
@@ -46,18 +46,18 @@ Różne konfiguracje standardowego modułu równoważenia obciążenia zapewnia 
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Wyświetlaj swoje metryki modułu równoważenia obciążenia w witrynie Azure portal
 
-Witryna Azure portal udostępnia metryki modułu równoważenia obciążenia za pośrednictwem strony metryki (wersja zapoznawcza), który jest dostępny na stronie usługi Azure Monitor i zarówno obciążenia równoważenia stronie zasobów dla określonego zasobu. 
+Witryna Azure portal udostępnia metryki modułu równoważenia obciążenia za pośrednictwem strony metryk, który jest dostępny na stronie zasobów modułu równoważenia obciążenia dla określonego zasobu i na stronie usługi Azure Monitor. 
 
 Aby wyświetlić metryki dla zasobów usługi Load Balancer w warstwie standardowa:
-1. Przejdź do strony metryki (wersja zapoznawcza), a następnie wykonaj jedną z następujących czynności:
+1. Przejdź do strony metryki i wykonaj jedną z następujących czynności:
    * Na stronie zasobów modułu równoważenia obciążenia wybierz typ metryki na liście rozwijanej.
    * Na stronie usługi Azure Monitor wybierz zasób modułu równoważenia obciążenia.
 2. Ustaw typ odpowiednich agregacji.
 3. Opcjonalnie można skonfigurować wymagane filtrowanie i grupowanie.
 
-![Metryki (wersja zapoznawcza) dla standardowego modułu równoważenia obciążenia](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
+    ![Metryki dla standardowego modułu równoważenia obciążenia](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
-*Rysunek: Dostępność DIP i kondycji sondowania stanu metryki dla standardowego modułu równoważenia obciążenia*
+    *Rysunek: Metryki dostępności ścieżki danych dla standardowego modułu równoważenia obciążenia*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Pobieranie metryk wielowymiarowych programowo za pośrednictwem interfejsów API
 
@@ -72,15 +72,15 @@ Metryki dostępności adresu VIP w tym artykule opisano kondycji ścieżki danyc
 - Szczegółowe informacje i zrozumieć platformy, na którym wdrożono usługę jest w dobrej kondycji, lub czy Twojego systemu operacyjnego gościa lub wystąpienie aplikacji jest w dobrej kondycji.
 - Wyizolować, czy zdarzenie dotyczy usługi podstawowej płaszczyzny danych. Nie należy mylić tej metryki ze stanem sondy kondycji ("DIP availability").
 
-Aby uzyskać dostępność adresu VIP dla zasobów usługi Load Balancer w warstwie standardowa:
+Aby uzyskać dostępność ścieżki danych dla zasobów usługi Load Balancer w warstwie standardowa:
 1. Upewnij się, że jest zaznaczona opcja zasobu modułu równoważenia obciążenia poprawne. 
-2. W **metryki** listy rozwijanej wybierz **dostępności VIP**. 
+2. W **metryki** listy rozwijanej wybierz **dostępność ścieżki danych**. 
 3. W **agregacji** listy rozwijanej wybierz **Avg**. 
-4. Ponadto Dodaj filtr na adres VIP lub port adresu VIP jako wymiar wymagany adres IP frontonu i portu frontonu i pogrupować je według wybranych wymiarów.
+4. Ponadto Dodaj filtr adresów IP frontonu lub port frontonu, jak wymiar o wymagany adres IP frontonu lub port frontonu i pogrupować je według wybranych wymiarów.
 
 ![Sondowanie adresów VIP](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Rysunek: Sondowanie szczegóły adresu VIP modułu równoważenia obciążenia*
+*Rysunek: Obciążenia równoważenia frontonu sondowania informacji*
 
 Metryka jest generowany przez aktywne, wewnątrzpasmowe miary. Usługa badania w obrębie regionu pochodzi ruch do pomiaru. Usługa została aktywowana, natychmiast Utwórz wdrożenie z publicznych frontonu i kontynuuje, dopóki nie usuniesz frontonu. 
 
@@ -93,7 +93,7 @@ Adres VIP dostępności nie powiodła się z następujących powodów:
 - Wdrożenie nie ma żadnych dobrej kondycji maszyn wirtualnych pozostających w puli zaplecza. 
 - Wystąpiła awaria infrastruktury.
 
-Do celów diagnostycznych, możesz użyć [metrykę dostępności adresu VIP, wraz z stanem sondy kondycji](#vipavailabilityandhealthprobes).
+Do celów diagnostycznych, możesz użyć [metryki dostępności ścieżki danych wraz z stanem sondy kondycji](#vipavailabilityandhealthprobes).
 
 Użyj **średni** jako agregacji w przypadku większości scenariuszy.
 
@@ -101,13 +101,9 @@ Użyj **średni** jako agregacji w przypadku większości scenariuszy.
 
 Metryki stanie sondy kondycji opisuje kondycji wdrożenia aplikacji, zgodnie z konfiguracją przez Ciebie, po skonfigurowaniu sondy kondycji modułu równoważenia obciążenia. Moduł równoważenia obciążenia używa stan sondę kondycji, aby określić, gdzie wysyłać nowych przepływów. Sondy kondycji pochodzą z adresu infrastruktury platformy Azure i są widoczne w systemie operacyjnym gościa maszyny wirtualnej.
 
-Aby uzyskać dostępność DIP dla zasobów usługi Load Balancer w warstwie standardowa:
-1. Wybierz **dostępności DIP** metryk z **Avg** typ agregacji. 
-2. Zastosuj filtr na wymagane Wirtualnego adresu IP lub portu (lub obu).
-
-![Dostępność DIP](./media/load-balancer-standard-diagnostics/LBMetrics-DIPAvailability.png)
-
-*Rysunek: Dostępność adresu VIP modułu równoważenia obciążenia*
+Aby wyświetlić stan sondy kondycji dla zasobów usługi Load Balancer w warstwie standardowa:
+1. Wybierz **stan sondy kondycji** metryk z **Avg** typ agregacji. 
+2. Zastosuj filtr na wymagany adres IP frontonu lub portu (lub obu).
 
 Sondy kondycji się nie powieść z następujących powodów:
 - Konfigurowanie sondy kondycji do portu, który jest nie nasłuchuje lub Agent nie odpowiada lub używa tej nazwy nieprawidłowy protokół. Jeśli usługa korzysta z bezpośredniego zwrotu z serwera (DSR, lub pływający adres IP) reguły, upewnij się, czy usługa nasłuchuje na adresie IP w konfiguracji adresu IP karty Sieciowej i nie tylko na sprzężenie zwrotne, którego skonfigurowano adres IP frontonu adresów.
@@ -165,13 +161,13 @@ Aby dowiedzieć się, jak Azure widoków kondycji wdrożenia zgodnie z konfigura
 
 Można zabrać krok dalej i Użyj metryki dostępności adresu VIP, aby uzyskać wgląd w sposób Azure widoków kondycji podstawowych płaszczyzny danych, który jest odpowiedzialny za szczególnego wdrożenia. Łącząc oba wskaźniki, można izolować gdzie mogą być usterki, jak pokazano w tym przykładzie:
 
-![Diagnostyka adresów VIP](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
+![Łącząc metryki dostępności ścieżki danych i stanu sondy kondycji](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
-*Rysunek: Łącząc metryki dostępności DIP i adresów VIP*
+*Rysunek: Łącząc metryki dostępności ścieżki danych i stanu sondy kondycji*
 
 Na wykresie kreślone są następujące informacje:
-- Infrastruktury, sama został dobrej kondycji infrastruktury hostingu maszyn wirtualnych był dostępny i więcej niż jedna maszyna wirtualna została umieszczona w wewnętrznej. Informacja ta jest wskazywany przez niebieski śledzenia dostępności adresu VIP, który wynosi 100 procent. 
-- Jednak stan sondy kondycji (dostępność DIP) wynosi 0 procent na początku wykresu, wskazane przez pomarańczowy śledzenia. Kółku obszar zielony najważniejsze funkcje, których stan (dostępność DIP) stało się dobrej kondycji, a w tym momencie wdrażania klienta mógł akceptować nowych przepływów.
+- Infrastruktury hostingu maszyn wirtualnych była niedostępna i na wartość 0 procent na początku wykresu. Później infrastruktura była w dobrej kondycji i maszyny wirtualne stanowiły dostępny i więcej niż jedna maszyna wirtualna została umieszczona w wewnętrznej. Informacja ta jest wskazywany przez niebieski śledzenia dostępności ścieżki danych (dostępność adresu VIP), będącą nowsze do 100 procent. 
+- Sondy stanu kondycji (dostępność DIP), wskazywane przez śledzenie purpurowy wynosi 0 procent na początku wykresu. Kółku obszar zielony najważniejsze funkcje, których stan sondy kondycji (dostępność DIP) stało się dobrej kondycji, a w tym momencie wdrażania klienta mógł akceptować nowych przepływów.
 
 Wykres umożliwia klientom Rozwiązywanie problemów z wdrożeniem w ich własnych bez konieczności odgadnięcia lub poproś pomocy technicznej, czy występują inne problemy. Usługa była niedostępna, ponieważ sond kondycji kończył się niepowodzeniem z powodu błędnej konfiguracji lub aplikacji nie powiodło się.
 
@@ -211,7 +207,7 @@ W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy:
 | --- | --- |
 | Dostępne | Zasób modułu równoważenia obciążenia standardowy publiczny jest w dobrej kondycji i dostępności. |
 | Niedostępny | Zasób modułu równoważenia obciążenia standardowy publiczny nie jest w dobrej kondycji. Diagnozowanie kondycji, wybierając **usługi Azure Monitor** > **metryki**.<br>(*Unavailable* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.) |
-| Nieznana | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
+| Nieznane | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

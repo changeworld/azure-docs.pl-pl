@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: f3f21f552add551ac2434618b184eb18c53ad5be
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417082"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752232"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów przez zadanie administratora w usłudze Azure Active Directory
 
@@ -56,6 +56,9 @@ Tworzenie, Odczyt, aktualizowanie i usuwanie atrybutów użytkownika | Administr
 Tworzenie, Odczyt, aktualizowanie i usuwanie użytkowników | Administrator globalny ([dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
 Przeczytaj całą konfigurację | Administrator globalny | 
 Dzienniki inspekcji B2C odczytu | Administrator globalny ([dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+
+> [!NOTE]
+> Administratorzy globalni usługi Azure AD B2C nie mają takie same uprawnienia jak Administratorzy globalni usługi Azure AD. Jeśli masz uprawnienia administratora globalnego usługi Azure AD B2C, upewnij się, że znajdują się w katalogu usługi Azure AD B2C, a nie katalog usługi Azure AD.
 
 ## <a name="company-branding"></a>Oznaczanie marką firmy
 

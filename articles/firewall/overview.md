@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 6/5/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b1763e7c24ea75a698c3718ab5e205dcc3e0c8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 4b33174b20cdf42e29cdb5b4786122513d2c6080
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495799"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753736"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -62,7 +62,7 @@ Wszystkie adresy IP wychodzącego ruchu sieciowego są tłumaczone na publiczny 
 
 ### <a name="inbound-dnat-support"></a>Obsługa technologii DNAT dla ruchu przychodzącego
 
-Ruch sieciowy przychodzący do publicznego adresu IP zapory jest przetwarzany przy użyciu technologii DNAT i filtrowany do prywatnych adresów IP w sieciach wirtualnych. 
+Ruch sieciowy przychodzący do publicznego adresu IP zapory jest przetwarzany przy użyciu technologii DNAT i filtrowany do prywatnych adresów IP w sieciach wirtualnych.
 
 ### <a name="azure-monitor-logging"></a>Rejestrowanie w usłudze Azure Monitor
 
@@ -82,8 +82,7 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Zakres portów w regułach sieci i aplikacji|Porty są ograniczone do 64 000, ponieważ porty o dużych numerach są zarezerwowane do zarządzania i sprawdzania kondycji. |Pracujemy nad złagodzenie tego ograniczenia.|
 |Może uzyskać maskowane alerty analizy zagrożeń|Reguły sieciowych z lokalizacją docelową 80/443 dla ruchu wychodzącego masek filtrowania zagrożeń analizy alertów w przypadku skonfigurowania do alertu tylko trybu.|Utwórz, filtrowanie ruchu wychodzącego dla 80/443 przy użyciu reguł aplikacji. Możesz też zmienić tryb analizy zagrożeń **alertów i odmawiać go**.|
 |Zapora usługi Azure używa usługi Azure DNS tylko do rozpoznawania nazw|Zaporę platformy Azure rozpoznaje tylko przy użyciu usługi Azure DNS nazwy FQDN. Niestandardowego serwera DNS nie jest obsługiwane. Ma to żadnego wpływu na rozpoznawanie nazw DNS w innych podsieciach.|Pracujemy nad złagodzenie tego ograniczenia.|
-|Usługa Azure zapory SNAT DNAT nie działa dla prywatnych adresów IP miejsc docelowych.|Pomoc techniczna platformy Azure zapory SNAT/DNAT jest ograniczona do Internetu ruchu wychodzącego/przychodzącego. SNAT/DNAT obecnie nie działa dla prywatnych adresów IP miejsc docelowych. Na przykład typu gwiazda szprychą.|To jest badana.
-
+|Usługa Azure zapory SNAT DNAT nie działa dla prywatnych adresów IP miejsc docelowych.|Pomoc techniczna platformy Azure zapory SNAT/DNAT jest ograniczona do Internetu ruchu wychodzącego/przychodzącego. SNAT/DNAT obecnie nie działa dla prywatnych adresów IP miejsc docelowych. Na przykład typu gwiazda szprychą.|Jest to na mapie drogowej dla przyszłej aktualizacji.
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal](tutorial-firewall-deploy-portal.md)

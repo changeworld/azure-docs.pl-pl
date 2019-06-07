@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 1d7e130d619f580aeb82939e19ea5abf680ff039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333620"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754462"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
 
 Podczas korzystania z usługi Azure Container Registry (ACR) przy użyciu usługi Azure Kubernetes Service (AKS), mechanizm uwierzytelniania musi zostać ustanowione. Ten artykuł szczegółowo opisuje zalecanym konfiguracjom dotyczącym uwierzytelniania między tymi dwoma usługami platformy Azure.
 
-W tym artykule przyjęto założenie, że utworzono już klaster AKS i będą mogli uzyskiwać dostęp do klastra za pomocą `kubectl` klienta wiersza polecenia. 
+Musisz skonfigurować jedną z następujących metod uwierzytelniania. Najbardziej typowym podejściem jest [udzielić dostępu przy użyciu jednostki usługi AKS](#grant-aks-access-to-acr). Jeśli użytkownik ma określone potrzeby, możesz opcjonalnie [udzielić dostępu przy użyciu kluczy tajnych Kubernetes](#access-with-kubernetes-secret).
+
+W tym artykule przyjęto założenie, że utworzono już klaster AKS i będą mogli uzyskiwać dostęp do klastra za pomocą `kubectl` klienta wiersza polecenia.
 
 ## <a name="grant-aks-access-to-acr"></a>AKS udzielanie dostępu do usługi ACR
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410569"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755134"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatyczne skalowanie hostów sesji
 
@@ -26,7 +26,7 @@ W tym artykule używa prosty skrypt skalowania automatycznego skalowania maszyn 
 
 - Dzierżawy pulpitu wirtualnego Windows i konta lub jednostki usługi przy użyciu uprawnień do wykonywania zapytań w tej dzierżawie (np. Współautor usług pulpitu zdalnego).
 - Sesja hosta puli maszyn wirtualnych skonfigurowane i zarejestrowane w usłudze Windows pulpitu wirtualnego.
-- Dodatkowe maszyny wirtualnej, która uruchamia zaplanowane zadanie za pomocą harmonogramu zadań i ma dostęp do sieci na hostach sesji. Są to omawianych w dalszej części dokumentu jako maszyny Wirtualnej programu scaler.
+- Dodatkowe maszyny wirtualnej, która uruchamia zaplanowane zadanie za pomocą harmonogramu zadań i ma dostęp do sieci na hostach sesji. To będzie można nazywane w dalszej części dokumentu programu scaler maszyny Wirtualnej.
 - [Modułu programu PowerShell usługi Microsoft Azure Resource Manager](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) zainstalowane na maszynie Wirtualnej, uruchamiając zaplanowane zadanie.
 - [Modułu programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) zainstalowane na maszynie Wirtualnej, uruchamiając zaplanowane zadanie.
 

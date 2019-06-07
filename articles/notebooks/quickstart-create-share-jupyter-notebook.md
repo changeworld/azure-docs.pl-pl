@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b1618e2ac997445606ce98fc72a1ec35ca1280be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239804"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751801"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Szybki start: Tworzenie i udostępnianie notesu
 
@@ -41,11 +41,11 @@ ms.locfileid: "60239804"
 
      ![Nowe popup projektu ze szczegółami wypełnione](media/quickstarts/new-project-popup.png)
 
-1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając **+ nowy** listy rozwijanej (może wystąpić tylko jako **+**), a następnie wybierając pozycję **notesu**:
+1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając **+ nowy** listy rozwijanej (może wystąpić tylko jako **+** ), a następnie wybierając pozycję **notesu**:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "Nowy, pusty projekt i dodać polecenie notesu")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. W **Utwórz nowy notes** okna podręcznego, który pojawia się, wprowadź nazwę notesu, takich jak *HelloWorldInPython.ipynb* (*.ipynb* oznacza notesu IronPython (Jupyter) ) i wybierz **środowiska Python 3.6** języka (nazywane także *jądra*):
+1. W **Utwórz nowy notes** okna podręcznego, który pojawia się, wprowadź nazwę notesu, takich jak *HelloWorldInPython.ipynb* ( *.ipynb* oznacza notesu IronPython (Jupyter) ) i wybierz **środowiska Python 3.6** języka (nazywane także *jądra*):
 
     ![Okno podręczne Tworzenie nowego notesu](media/quickstarts/new-notebook-popup.png)
 

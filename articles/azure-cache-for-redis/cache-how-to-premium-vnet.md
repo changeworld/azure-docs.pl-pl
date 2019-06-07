@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831067"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752063"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować Obsługa sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. Sieć wirtualna jest prywatna sieć w chmurze. Po skonfigurowaniu usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej nie jest adresowany publicznie i może zostać oceniony jedynie z maszyn wirtualnych i aplikacji w ramach sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla warstwy premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -112,15 +112,18 @@ Istnieje siedem wymagań wychodząca przez port.
 
 | Porty | Direction | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Wychodzący |TCP |Redis zależności w usłudze Azure Storage/infrastruktury kluczy publicznych (Internet) | (Redis podsieci) |* |
-| 53 |Wychodzący |TCP/UDP |Redis zależności w systemie DNS (Internet/sieć wirtualna) | (Redis podsieci) |* |
-| 8443 |Wychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) | (Redis podsieci) |
-| 10221-10231 |Wychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) | (Redis podsieci) |
-| 20226 |Wychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
-| 13000-13999 |Wychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
-| 15000-15999 |Wychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
-| 6379-6380 |Wychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
+| 80, 443 |Wychodzące |TCP |Redis zależności w usłudze Azure Storage/infrastruktury kluczy publicznych (Internet) | (Redis podsieci) |* |
+| 53 |Wychodzące |TCP/UDP |Redis zależności w systemie DNS (Internet/sieć wirtualna) | (Redis podsieci) | 168.63.129.16 i 169.254.169.254 <sup>1</sup> i dowolnego niestandardowego serwera DNS dla podsieci <sup>3</sup> |
+| 8443 |Wychodzące |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) | (Redis podsieci) |
+| 10221-10231 |Wychodzące |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) | (Redis podsieci) |
+| 20226 |Wychodzące |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
+| 13000-13999 |Wychodzące |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
+| 15000-15999 |Wychodzące |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
+| 6379-6380 |Wychodzące |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |
 
+<sup>1</sup> te adresy IP należące do firmy Microsoft są używane do adresowania hosta maszyny Wirtualnej, która służy usłudze Azure DNS.
+
+<sup>3</sup> nie wymagane dla pamięci podręczne, które Ignoruj niestandardowe DNS redis podsieci bez niestandardowego serwera DNS lub nowszej.
 
 #### <a name="inbound-port-requirements"></a>Wymagania dotyczące portów dla ruchu przychodzącego
 

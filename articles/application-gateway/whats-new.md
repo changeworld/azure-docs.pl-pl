@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: cdf2a1a730be657b41c7a4b2daf2f178661394b4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947108"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752021"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>What's new in Azure Application Gateway?
 
@@ -27,6 +27,7 @@ Usługa Azure Application Gateway jest aktualizowany na bieżąco. Aby uzyskać 
 
 |Cecha  |Opis  |Data dodania  |
 |---------|---------|---------|
+|Reguły niestandardowe zapory aplikacji internetowej |Application Gateway WAF_v2 obsługuje teraz reguł niestandardowych. Zobacz [reguły niestandardowe Application Gateway](custom-waf-rules-overview.md). |2019 czerwca |
 |Skalowanie automatyczne nadmiarowości strefy, statycznych adresów VIP Obsługa wersji ogólnie dostępnej |Ogólnie dla jednostek SKU v2, które skalowania automatycznego obsługuje nadmiarowości strefy, poprawić wydajność, statycznych adresów VIP, usługi Key Vault przepisać nagłówka. Zobacz [dokumentacji skalowania automatycznego usługi Application Gateway](application-gateway-autoscaling-zone-redundant.md). |2019 kwietnia |
 |Integracja magazynu kluczy |Usługa Application Gateway obsługuje teraz integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md). |2019 kwietnia |
 |Nagłówek CRUD/modyfikacji oprogramowania     |Teraz można przepisać nagłówków HTTP. Zobacz [samouczka: Tworzenie bramy aplikacji i ponownie zapisuje nagłówki HTTP](tutorial-http-header-rewrite-powershell.md) Aby uzyskać więcej informacji.|Grudzień 2018 r.|

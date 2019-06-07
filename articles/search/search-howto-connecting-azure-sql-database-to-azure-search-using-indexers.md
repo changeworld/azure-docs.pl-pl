@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025353"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755096"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
@@ -158,23 +158,7 @@ Można także porządkować indeksatora okresowe uruchamianie zgodnie z harmonog
 
 **Interwał** parametr jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch następujących po sobie indeksatora wykonań. Najmniejszy dozwolony interwał wynosi 5 minut; najdłuższej to jeden dzień. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Jest to wzorzec: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut `PT2H` co 2 godziny.
 
-Opcjonalny **startTime** wskazuje, kiedy należy rozpocząć zaplanowanego wykonania. Jeśli zostanie pominięty, używany jest bieżący czas UTC. Teraz można w przeszłości — w którym przypadku pierwszego wykonania jest zaplanowane tak, jakby działał nieprzerwanie od startTime indeksatora.  
-
-Tylko jedno wykonywanie indeksatora można uruchamiać jednocześnie. Jeśli indeksatora jest uruchomiona, gdy zaplanowano jego wykonanie, wykonanie jest odroczone do czasu następnego zaplanowanego czasu.
-
-Rozważmy przykład się to bardziej konkretne. Załóżmy, że firma Microsoft skonfigurowany harmonogram co godzinę następujące:
-
-    "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
-
-Oto, co się dzieje:
-
-1. Pierwsze wykonanie indeksatora rozpoczyna się o lub około 1 marca 2015 r. od 12:00 czasu UTC.
-2. Załóżmy, że to wykonywanie trwa 20 minut (lub w dowolnej chwili mniejsza niż 1 godzina).
-3. Wykonanie drugiej rozpoczyna się o lub około 1 marca 2015 r. 1:00:00
-4. Teraz załóżmy, że ma ponad godzinę — na przykład 70 minut — w tym wykonywania, więc zostanie zakończona około 2:10:00
-5. Jest teraz 2:00:00, czas wykonywania trzeci start. Jednak ponieważ drugi wykonywania od 01: 00 nadal działa, trzeci wykonanie zostało pominięte. Trzeci wykonywania rozpoczyna się od 3: 00.
-
-Dodać, zmienić lub usunąć harmonogram dla istniejącego indeksatora za pomocą **indeksatora PUT** żądania.
+Aby uzyskać więcej informacji na temat definiowania harmonogramy indeksatora zobacz [sposób tworzenia harmonogramu indeksatorów usługi Azure Search](search-howto-schedule-indexers.md).
 
 <a name="CaptureChangedRows"></a>
 

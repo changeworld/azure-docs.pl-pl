@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109331"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753866"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -85,7 +85,7 @@ Następujące technologie zapewniają tożsamość możliwości zarządzania w �
 - Za pomocą wykorzystaniu [usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) klienci mogą zostać wymuszone dodatkowych opcji zabezpieczeń dostępu do aplikacji lub użytkowników w swoich środowiskach, na podstawie określonych warunków, takich jak lokalizacji, urządzeń, stanu i logowanie ryzyko.
 - [Usługa Azure DDoS Protection](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) w połączeniu z najlepsze rozwiązania dotyczące projektowania aplikacji, zapewnia ochronę przed atakami DDoS, przy użyciu zawsze włączone monitorowanie ruchu i w czasie rzeczywistym zapobieganie typowych ataków na poziomie sieci. Dzięki architekturze PaaS platformy poziom ochrony przed atakami DDoS jest niewidoczne dla klienta i zarejestrowanych w platformę, ale jest należy pamiętać, odpowiedzialność projektowania zabezpieczeń aplikacji znajduje się u klienta.
 
-#### <a name="data-in-transit"></a>Przesyłane dane
+#### <a name="data-in-transit"></a>Dane przesyłane
 
 Dane są przesyłane z zewnątrz i między składnikami platformy Azure jest chroniony za pomocą [Transport Layer Security/Secure Sockets Layer (TLS/SSL)](https://www.microsoft.com/TrustCenter/Security/Encryption), który używa do szyfrowania komunikacji w miarę ich Kryptografia symetryczna w oparciu o wspólny klucz tajny przesyłane za pośrednictwem sieci. Domyślnie ruch sieciowy jest zabezpieczony za pomocą protokołu TLS 1.2.
 
@@ -99,7 +99,7 @@ Dane są przesyłane z zewnątrz i między składnikami platformy Azure jest chr
 
 ### <a name="paas-services-in-this-blueprint"></a>Usługi PaaS w tym planie
 
-#### <a name="azure-app-service"></a>Azure App Service
+#### <a name="azure-app-service"></a>Usługa Azure App Service
 
 Usługa Azure App Service oferuje w pełni zarządzane w Internecie środowiska dla aplikacji sieci web w języku Java, PHP, Node.js, Python, HTML i C# bez konieczności zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoka dostępność, obsługuje zarówno Windows, jak i Linux i umożliwia automatyczne wdrożeń z [DevOps platformy Azure](https://azure.microsoft.com/services/visual-studio-team-services/) lub dowolnym repozytorium opartych o Git.
 
@@ -191,7 +191,7 @@ Ten szablon używa następujących składników usługi Application Insights:
 
 #### <a name="azure-activity-logs"></a>Dzienniki aktywności platformy Azure
 
-[Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs#what-you-can-do-with-the-activity-log) inspekcji zdarzeń płaszczyznę kontroli dla subskrypcji. Przy użyciu dziennika aktywności, można określić "co, kto i kiedy" dla dowolnego zapisu (PUT, POST, DELETE) wykonywanych na zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości.
+[Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) inspekcji zdarzeń płaszczyznę kontroli dla subskrypcji. Przy użyciu dziennika aktywności, można określić "co, kto i kiedy" dla dowolnego zapisu (PUT, POST, DELETE) wykonywanych na zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości.
 
 #### <a name="azure-monitor"></a>Azure Monitor
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 72a72e385217178cb6afee237cc3a3e5c5d1248b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243592"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751641"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -53,7 +53,7 @@ Podmiot zabezpieczeń można skojarzyć z poziomu dostępu do plików i katalog�
 
 Jeśli rola jest przypisany do podmiotu zabezpieczeń na poziomie konta magazynu, można użyć listy kontroli dostępu przyznanie tego podmiotu zabezpieczeń z podwyższonym poziomem uprawnień dostępu do określonych plików i katalogów.
 
-Nie można użyć listy kontroli dostępu w celu zapewnienia poziomu dostępu, który jest niższy niż poziom przyznane przez przypisanie roli. Na przykład, jeśli przypisujesz [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview) roli podmiot zabezpieczeń, nie można użyć kontroli dostępu list, aby uniemożliwić zapisywanie w katalogu tego podmiotu zabezpieczeń.
+Nie można użyć listy kontroli dostępu w celu zapewnienia poziomu dostępu, który jest niższy niż poziom przyznane przez przypisanie roli. Na przykład, jeśli przypisujesz [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) roli podmiot zabezpieczeń, nie można użyć kontroli dostępu list, aby uniemożliwić zapisywanie w katalogu tego podmiotu zabezpieczeń.
 
 ### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Zestaw plików i katalogów poziomu uprawnień przy użyciu list kontroli dostępu
 

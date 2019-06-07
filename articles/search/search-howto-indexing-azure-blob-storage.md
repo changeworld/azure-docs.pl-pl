@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479938"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753983"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w usłudze Azure Blob Storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumentów programu Microsoft Office i kilka innych typowych formatów) przechowywanych w usłudze Azure Blob storage. Po pierwsze wyjaśnia podstawowe informacje dotyczące instalowania i konfigurowania indeksatora obiektów blob. Następnie oferuje bardziej zaawansowanej eksploracji zachowań, scenariuszy może wystąpić.
@@ -116,6 +116,8 @@ Ten indeksator będzie uruchamiany co dwie godziny (interwał harmonogramu jest 
 
 Aby uzyskać szczegółowe informacje na temat tworzenia interfejsu API indeksatora, zapoznaj się [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
+Aby uzyskać więcej informacji na temat definiowania harmonogramy indeksatora zobacz [sposób tworzenia harmonogramu indeksatorów usługi Azure Search](search-howto-schedule-indexers.md).
+
 ## <a name="how-azure-search-indexes-blobs"></a>Jak usługa Azure Search indeksuje obiektów blob
 
 W zależności od [konfiguracji indeksatora](#PartsOfBlobToIndex), indeksatora obiektów blob będzie mogła indeksować tylko metadane magazynu (przydatne, gdy tylko interesujące Cię metadane i nie wymagają do indeksowania zawartości obiektów blob), magazynu i zawartości metadanych lub zarówno metadane i Zawartość tekstowa. Domyślnie indeksator wyodrębnia metadane i zawartość.
@@ -139,7 +141,8 @@ W zależności od [konfiguracji indeksatora](#PartsOfBlobToIndex), indeksatora o
   * **metadane\_magazynu\_ostatniego\_zmodyfikowane** (Edm.DateTimeOffset) - Ostatnia modyfikacja sygnaturę czasową dla obiektu blob. Usługa Azure Search używa tej sygnatury czasowej do identyfikowania zmienionych obiektów blob, aby uniknąć ponownego indeksowania wszystko po początkowej indeksowania.
   * **metadane\_magazynu\_rozmiar** (Edm.Int64) — obiekt blob rozmiar w bajtach.
   * **metadane\_magazynu\_zawartości\_md5** (Edm.String) — Skrót MD5 zawartość obiektu blob, jeśli jest dostępny.
-  * **metadane\_magazynu\_sygnatury dostępu współdzielonego\_tokenu** (Edm.String) - tymczasowe token, który może być używany przez [umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) uzyskanie odpowiedniego dostępu do obiektu blob. Ten token sygnatury dostępu współdzielonego nie powinien znajdować się w celu późniejszego użycia, jak ją mogą wygasnąć.
+  * **metadane\_magazynu\_sygnatury dostępu współdzielonego\_tokenu** (Edm.String) - tymczasowe tokenu sygnatury dostępu Współdzielonego, który może być używany przez [umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) do uzyskania dostępu do obiektu blob. Ten token nie powinny być przechowywane do późniejszego użycia, ponieważ może ona wygaśnie.
+
 * Metadane właściwości specyficzne dla każdego format dokumentu są wyodrębniane do pól na liście [tutaj](#ContentSpecificMetadata).
 
 Nie ma potrzeby definiowania wszystkich powyższych właściwości pola w indeksie wyszukiwania — po prostu Przechwytywanie właściwości, czego potrzebujesz do aplikacji.

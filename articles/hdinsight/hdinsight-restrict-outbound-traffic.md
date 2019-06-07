@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 0e3a35c2ceed5f3bb08b2d332f05bbaf416c94b2
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 4ce3ca31163c286f54b9630e5d4779e2e47a032f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743249"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754588"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurowanie wychodzącego ruchu sieciowego w przypadku klastrów Azure HDInsight przy użyciu zapory (wersja zapoznawcza)
 
@@ -162,7 +162,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 Integrowanie zapory platformy Azure przy użyciu dzienników usługi Azure Monitor jest przydatne w przypadku, gdy najpierw pobierania aplikacji działać po użytkownik nie rozpoznają wszystkie zależności aplikacji. Dowiedz się więcej na temat dzienników usługi Azure Monitor z [Analizuj dane dzienników w usłudze Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="access-to-the-cluster"></a>Dostęp do klastra
-Po pomyślnym konfiguracji zapory, można użyć wewnętrznego punktu końcowego (https://<clustername>-int.azurehdinsight.net) do dostępu Ambari z w obrębie sieci Wirtualnej. Służące publicznym punktem końcowym (https://<clustername>. azurehdinsight.net) lub ssh punktu końcowego (<clustername>-ssh.azurehdinsight.net), upewnij się, masz prawo tras w tabeli tras i reguły sieciowej grupy zabezpieczeń Instalatora w celu uniknięcia asymetric problem z routingiem wyjaśniono [tutaj](https://docs.microsoft.com/azure/firewall/integrate-lb).
+Po pomyślnym konfiguracji zapory, można użyć wewnętrznego punktu końcowego (`https://<clustername>-int.azurehdinsight.net`) do dostępu Ambari z w obrębie sieci Wirtualnej. Aby użyć publicznego punktu końcowego (`https://<clustername>.azurehdinsight.net`) lub protokołu ssh punktu końcowego (`<clustername>-ssh.azurehdinsight.net`), upewnij się, masz prawo tras w tabeli tras i reguły sieciowej grupy zabezpieczeń Instalatora w celu uniknięcia problemu routingu asymetric wyjaśniono [tutaj](https://docs.microsoft.com/azure/firewall/integrate-lb).
 
 ## <a name="configure-another-network-virtual-appliance"></a>Skonfiguruj inną wirtualnego urządzenia sieciowego
 

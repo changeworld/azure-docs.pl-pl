@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817658"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752890"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi REST  
 > [!div class="op_single_selector"]
@@ -176,7 +176,7 @@ Teraz, gdy masz adres URL przesyłania, należy napisać kodu za pomocą interfe
 
 - [Za pomocą interfejsu API REST usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [WSTAWIENIE obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Przekazywanie obiektów blob do magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Przekazywanie obiektów blob do magazynu obiektów Blob](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Przekaż plik za pomocą narzędzia Postman
 
@@ -185,7 +185,7 @@ Na przykład używamy narzędzia Postman do przekazania plików MP4 małe. Być 
 Żądanie przekazania nie jest częścią **AzureMedia** kolekcji. 
 
 Tworzenie i konfigurowanie nowego żądania:
-1. Naciśnij klawisz **+**, aby utworzyć nową kartę żądanie.
+1. Naciśnij klawisz **+** , aby utworzyć nową kartę żądanie.
 2. Wybierz **umieścić** operacji i Wklej **{{UploadURL}}** w adresie URL.
 2. Pozostaw **autoryzacji** karcie, ponieważ jest (nie należy ustawiać na **tokenu elementu nośnego**).
 3. W **nagłówki** karcie, określ: **Klucz**: "x-ms-blob-type" i **wartość**: "BlockBlob".
