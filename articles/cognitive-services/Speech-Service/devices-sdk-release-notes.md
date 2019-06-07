@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: wellsi
-ms.openlocfilehash: fab23c86ee2e8f654ac4a9619c39d05ee4e9e4c1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237936"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751814"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji programu Cognitive Services zestawu Speech Devices SDK
 Następujące sekcje Lista zmian w najnowszych wersjach.
@@ -49,7 +49,7 @@ Następujące sekcje Lista zmian w najnowszych wersjach.
 
 **Fundamentalne zmiany** 
 
-*   [Instalowanie słowo aktywujące](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application) został uproszczony, jest teraz część aplikacji i nie wymaga oddzielnej instalacji na urządzeniu.
+*   [Instalowanie słowo aktywujące](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) został uproszczony, jest teraz część aplikacji i nie wymaga oddzielnej instalacji na urządzeniu.
 *   Rozpoznawanie word wznawiania została zmieniona, a obsługiwane są dwa zdarzenia.
     - RecognizingKeyword, wskazuje, że wynik mowy zawiera tekst (niezweryfikowanych) — słowo kluczowe.
     - RecognizedKeyword, wskazuje, że — słowo kluczowe rozpoznawania ukończone rozpoznawaniu dane słowo kluczowe.

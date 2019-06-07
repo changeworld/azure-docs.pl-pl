@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd8362748c39389139e8384d0bad7e84d20128a4
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539013"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751624"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Zamiana tekstu na mowę — często zadawane pytania
 
@@ -33,7 +33,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYT
 
 **Pyt.: Aby użyć dostosowany model głosowy, jest interfejs API taka sama jak ta, która jest używana do standardowego głosów?**
 
-**Odp.:** Po utworzeniu i wdrożeniu modelu niestandardowego głosu uzyskasz unikatowych punktów końcowych dla modelu. Aby za pomocą głosu głosu w aplikacjach, należy określić punkt końcowy w żądaniach HTTP. Te same funkcje, które są dostępne w interfejsie API REST usługi zamiany tekstu na mowę, jest dostępna dla niestandardowego punktu końcowego. Dowiedz się, jak [tworzenia i używania niestandardowego punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**Odp.:** Po utworzeniu i wdrożeniu modelu niestandardowego głosu uzyskasz unikatowych punktów końcowych dla modelu. Aby za pomocą głosu głosu w aplikacjach, należy określić punkt końcowy w żądaniach HTTP. Te same funkcje, które są dostępne w interfejsie API REST usługi zamiany tekstu na mowę, jest dostępna dla niestandardowego punktu końcowego. Dowiedz się, jak [tworzenia i używania niestandardowego punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
 
 **Pyt.: Należy przygotować danych szkoleniowych do tworzenia modeli usługi custom voice na własną rękę?**
 
@@ -41,7 +41,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYT
 
 Kolekcja danych mowy jest wymagana do utworzenia dostosowany model głosowy. Ta kolekcja składa się z zestawu plików audio, nagrań mowy i tekst pliku transkrypcji każdy plik dźwiękowy. Wynik Twojego głosu cyfrowego rolę odgrywa jakość danych szkoleniowych. Aby uzyskać dobre głosu zamiany tekstu na mowę, jest ważne, czy nagrania są przekazywane w pokoju cichy przy użyciu mikrofonu stałego wysokiej jakości. Wolumin spójne wypowiedzi szybkości i wypowiedzi pomysłu, nawet and consistency in i ekspresyjny mannerisms mowy są niezbędne do tworzenia wspaniałych głosu cyfrowych. Zdecydowanie zaleca się zapisywania głosy w studio rejestrowania.
 
-Obecnie firma Microsoft nie zapewniają obsługę rejestrowania w trybie online ani nie ma żadnych zaleceń dotyczących studio rejestrowania. Format wymagań, zobacz [sposób przygotowania, nagrania i transkrypcje](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+Obecnie firma Microsoft nie zapewniają obsługę rejestrowania w trybie online ani nie ma żadnych zaleceń dotyczących studio rejestrowania. Format wymagań, zobacz [sposób przygotowania, nagrania i transkrypcje](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
 
 **Pyt.: Jakie skryptów należy używać do rejestrowania danych mowy do trenowania niestandardowych voice?**
 

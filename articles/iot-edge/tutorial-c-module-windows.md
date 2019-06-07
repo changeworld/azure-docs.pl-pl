@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303890"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808760"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Tworzenie modułu C IoT Edge dla urządzeń Windows
 
@@ -104,29 +104,33 @@ Manifest wdrażania udziałów poświadczenia dla rejestru kontenerów za pomoc�
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Zapisz plik deployment.template.json. 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>Aktualizowanie modułu przy użyciu kodu niestandardowego
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Domyślny kod modułu odbiera komunikaty w kolejce wejściowej i przekazuje je za pośrednictwem kolejki wyjściowej. Dodajmy trochę kodu dodatkowe, tak aby moduł przetwarza wiadomości na urządzeniach brzegowych przed przekazaniem ich do usługi IoT Hub. Zaktualizuj moduł analizuje dane dotyczące temperatury w każdej wiadomości, a tylko wysyła komunikat do Centrum IoT Hub, gdy temperatura przekroczy określony próg. 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. Dane z czujnika w tym scenariuszu są dostępne w formacie JSON. Aby filtrować komunikaty w formacie JSON, należy zaimportować bibliotekę JSON dla języka C. W tym samouczku używana jest biblioteka Parson.
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. Pobierz [repozytorium Parson w usłudze GitHub](https://github.com/kgabis/parson). Kopiuj **parson.c** i **parson.h** pliki do **CModule** projektu.
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. W programie Visual Studio, otwórz **CMakeLists.txt** plik z folderu projektu CModule. Na początku zaimportuj pliki biblioteki Parson jako bibliotekę o nazwie **my_parson**.
 
       ```
-      add_library (my_parson parson.c parson.h)
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add **my_parson** to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. Dodaj **my_parson** do listy bibliotek w **target_link_libraries** sekcji pliku CMakeLists.txt.
 
-   4. Save the **CMakeLists.txt** file.
+   4. Zapisz plik **CMakeLists.txt**.
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. Otwórz **CModule** > **main.c**. W dolnej części listy instrukcji #include, Dodaj nowy, aby uwzględnić `parson.h` obsługi formatu JSON:
 
       ```c
       #include "parson.h"

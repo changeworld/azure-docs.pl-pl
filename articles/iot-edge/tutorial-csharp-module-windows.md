@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7678415b7ce505da7678a00a4bcf2d933e260530
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303975"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808772"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: Twórz C# moduł usługi IoT Edge dla urządzeń Windows
 
@@ -104,16 +104,17 @@ Manifest wdrażania udziałów poświadczenia dla rejestru kontenerów za pomoc�
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Zapisz plik deployment.template.json. 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>Aktualizowanie modułu przy użyciu kodu niestandardowego
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Domyślny kod modułu odbiera komunikaty w kolejce wejściowej i przekazuje je za pośrednictwem kolejki wyjściowej. Dodajmy trochę kodu dodatkowe, tak aby moduł przetwarza wiadomości na urządzeniach brzegowych przed przekazaniem ich do usługi IoT Hub. Zaktualizuj moduł analizuje dane dotyczące temperatury w każdej wiadomości, a tylko wysyła komunikat do Centrum IoT Hub, gdy temperatura przekroczy określony próg. 
 
-1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+1. W programie Visual Studio, otwórz **CSharpModule** > **Program.cs**.
 
-2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
+2. Na początku przestrzeni nazw **CSharpModule** dodaj trzy instrukcje **using** dla typów, które będą używane później:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

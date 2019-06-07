@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: a5790b5412023f06d9f9fd1d2ff61c11db4c53f3
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734663"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807479"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Samouczek: Wykrywanie anomalii w strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
-[Usługa Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) to usługa analizy szybkie, łatwe i współpracy oparte na platformie Apache Spark. Interfejs API wykrywanie anomalii, część usług Azure Cognitive Services, zapewnia sposób monitorowania danych szeregów czasowych. Użyj tego samouczka, aby uruchomić wykrywanie anomalii na strumieniu danych w czasie zbliżonym do rzeczywistego przy użyciu usługi Azure Databricks. Będziesz pozyskiwania danych z usługi twitter za pomocą usługi Azure Event Hubs, a następnie zaimportować je do usługi Azure Databricks służy łącznik Spark Event Hubs. Później użyjesz interfejsu API wykrywania anomalii w strumieniu danych. 
+[Usługa Azure Databricks](https://azure.microsoft.com/services/databricks/) to usługa analizy szybkie, łatwe i współpracy oparte na platformie Apache Spark. Interfejs API wykrywanie anomalii, część usług Azure Cognitive Services, zapewnia sposób monitorowania danych szeregów czasowych. Użyj tego samouczka, aby uruchomić wykrywanie anomalii na strumieniu danych w czasie zbliżonym do rzeczywistego przy użyciu usługi Azure Databricks. Będziesz pozyskiwania danych z usługi twitter za pomocą usługi Azure Event Hubs, a następnie zaimportować je do usługi Azure Databricks służy łącznik Spark Event Hubs. Później użyjesz interfejsu API wykrywania anomalii w strumieniu danych. 
 
 Poniższa ilustracja przedstawia przepływ aplikacji:
 
