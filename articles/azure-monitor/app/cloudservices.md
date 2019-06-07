@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1520b01826de2a80d8baeccf4913fa180d385644
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256303"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478330"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługi w chmurze usługi Application Insights dla platformy Azure
 [Usługa Application Insights] [ start] można monitorować [aplikacje usługi Azure cloud](https://azure.microsoft.com/services/cloud-services/) dostępność, wydajność, błędy i użycia przez połączenie danych z zestawów SDK Application Insights z [Diagnostyki azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) danych z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -194,18 +194,18 @@ Dla ról procesów roboczych można śledzić wyjątki na dwa sposoby:
 ## <a name="performance-counters"></a>Liczniki wydajności
 Domyślnie są zbierane następujące liczniki:
 
-    * \Process(??. APP_WIN32_PROC??)\% Czas procesora
-    * \Memory\Available Bytes
-    * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
-    * \Process(??APP_WIN32_PROC??)\Private Bytes
-    * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
-    * \Processor(_Total)\% Processor Time
+* \Process(??. APP_WIN32_PROC??)\% Czas procesora
+* \Memory\Available Bytes
+* \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
+* \Process(??APP_WIN32_PROC??)\Private Bytes
+* \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
+* \Processor(_Total)\% Processor Time
 
 Następujące liczniki są również zbierane dla ról sieci Web:
 
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
 Można określić dodatkowe niestandardowe lub inne liczniki wydajności Windows, edytując *plik ApplicationInsights.config* [jak pokazano w tym przykładzie](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
