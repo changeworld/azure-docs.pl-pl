@@ -121,6 +121,8 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Dostosowywanie środowiska deweloperów
       items:
+        - name: Uzyskiwanie dostępu do nowego portalu deweloperów i dostosowywanie go
+          href: api-management-howto-developer-portal.md
         - name: Modyfikowanie zawartości i układu strony
           href: api-management-modify-content-layout.md
         - name: Dostosowywanie stron systemowych za pomocą szablonów

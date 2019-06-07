@@ -137,6 +137,10 @@
               href: /rest/api/time-series-insights/preview-env
             - name: Wyrażenie i składnia szeregów czasowych
               href: /rest/api/time-series-insights/preview-tsx
+    - name: Zestaw SDK klienta
+      items:
+        - name: Zestaw SDK klienta środowiska JavaScript
+          href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: Powiązane
   items:
     - name: Rozwiązania

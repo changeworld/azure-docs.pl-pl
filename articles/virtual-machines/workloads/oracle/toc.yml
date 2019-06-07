@@ -1,7 +1,11 @@
 - name: Omówienie
   items:
-    - name: Uwagi dotyczące maszyn wirtualnych Oracle
-      href: oracle-considerations.md
+    - name: Omówienie rozwiązań firmy Oracle
+      href: oracle-overview.md
+    - name: Rozwiązania na maszynach wirtualnych platformy Azure
+      href: oracle-vm-solutions.md
+    - name: Rozwiązania z infrastrukturą OCI — wersja zapoznawcza
+      href: oracle-oci-overview.md
 - name: Przewodniki Szybki start
   items:
     - name: Tworzenie bazy danych Oracle
@@ -10,7 +14,7 @@
   items:
     - name: Konfigurowanie programu Oracle ASM
       href: configure-oracle-asm.md
-    - name: Konfigurowanie programu Oracle DataGuard
+    - name: Konfigurowanie środowiska Oracle Data Guard
       href: configure-oracle-dataguard.md
     - name: Konfigurowanie środowiska Oracle GoldenGate
       href: configure-oracle-golden-gate.md

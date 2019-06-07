@@ -2,8 +2,10 @@
   href: index.yml
 - name: Omówienie
   items:
-    - name: Informacje o zarządzaniu aplikacjami
+    - name: Co to jest zarządzanie aplikacjami?
       href: what-is-application-management.md
+    - name: Co to jest serwer proxy aplikacji?
+      href: what-is-application-proxy.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

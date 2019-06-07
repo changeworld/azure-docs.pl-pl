@@ -18,6 +18,10 @@
       href: tutorial-phs-backup.md
 - name: Pojęcia
   items:
+    - name: Tożsamość hybrydowa
+      items:
+        - name: Zarządzanie obciążeniami lokalnymi w chmurze
+          href: cloud-governed-management-for-on-premises.md
     - name: Programy Azure AD Connect i Connect Health
       items:
         - name: Co to są Azure AD Connect Health i Connect Health?

@@ -111,9 +111,7 @@
           items:
             - name: Zarządzanie za pośrednictwem witryny Azure Portal
               href: data-box-portal-ui-admin.md
-            - name: Przenoszenie danych do warstwy obiektu blob
-              href: data-box-how-to-set-data-tier.md
-            - name: Rozwiązywanie problemów z usługą Data Box Heavy
+            - name: Rozwiązywanie problemów z usługą Data Box Disk
               href: data-box-disk-troubleshoot.md
             - name: Kontakt z pomocą techniczną
               href: data-box-disk-contact-microsoft-support.md
@@ -155,12 +153,18 @@
               href: data-box-local-web-ui-admin.md
             - name: Rozwiązywanie problemów z urządzeniami
               href: data-box-troubleshoot.md
+            - name: Przenoszenie danych do warstwy obiektu blob
+              href: data-box-how-to-set-data-tier.md
             - name: Kontakt z pomocą techniczną
               href: data-box-disk-contact-microsoft-support.md
             - name: Migrate (Migracja)
               items:
+                - name: Do usługi SharePoint Online
+                  href: data-box-heavy-migrate-spo.md
                 - name: Do usługi Azure File Sync
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Z magazynu HDFS
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Zasoby
       items:
         - name: Produkt Data Box
