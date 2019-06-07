@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9a592533a92ec724c9a332bef5fdfcf385cb7b2c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730681"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754537"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -59,10 +59,10 @@ Następujące interfejsy API zostaną zmienione lub uznane za przestarzałe:
 - [ **/Configurations/ GET {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (usunięte poufne informacje)
     - Wcześniej używany do uzyskiwania konfiguracji poszczególnych typów (łącznie z wpisy tajne).
     - To wywołanie interfejsu API zwróci teraz konfiguracji poszczególnych typów przy użyciu kluczy tajnych pominięty. Aby uzyskać wszystkie konfiguracje, w tym wpisów tajnych, użyj nowe wywołanie /configurations POST. Aby uzyskać tylko ustawienia bramy, należy użyć nowe wywołanie /getGatewaySettings POST.
-- [**Pobierz /configurations** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (przestarzałe)
+- [**Pobierz /configurations** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (przestarzałe)
     - Wcześniej użyty do uzyskania wszystkich konfiguracji (łącznie z wpisy tajne)
     - To wywołanie interfejsu API będą już obsługiwane. Aby uzyskać wszystkie konfiguracje idąc dalej, użyj nowe wywołanie /configurations POST. Aby uzyskać konfiguracje z parametrami poufnych pominięty, należy użyć wywołania /configurations/ {configurationName} GET.
-- [**WPIS /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (przestarzałe)
+- [**WPIS /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (przestarzałe)
     - Wcześniej używane do aktualizowania poświadczeń bramy.
     - To wywołanie interfejsu API będzie przestarzały i nie jest już obsługiwana. Zamiast tego użyj nowego /updateGatewaySettings POST.
 

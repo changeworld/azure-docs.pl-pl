@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 365f017fe7d71500c17d0a9ccd9c5a0a26a78b75
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ab08c93662988655154cf300ac4ee3758fbc7872
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989565"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472803"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -78,7 +78,7 @@ Aby opublikować aplikację w środowisku lokalnym:
 1. Jeśli nie jest w ostatniej sekcji, zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) jako administrator aplikacji.
 2. Wybierz **aplikacje dla przedsiębiorstw** > **nową aplikację** > **aplikacje lokalne**. **Dodaj własną aplikację w środowisku lokalnym** zostanie wyświetlona strona.
 
-   ![Dodaj własną aplikację lokalną](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
+   ![Dodaj własną aplikację w środowisku lokalnym](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
 3. Wypełnij wymagane pola informacji o nowej aplikacji. Użyj wskazówek poniższych ustawień.
 
    > [!NOTE]
@@ -117,7 +117,7 @@ Następnie upewnij się, że Twojego przekierowania, który jest ustawiony adres
 
    ![Rejestracje aplikacji](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
 2. Wybierz swoją aplikację.
-3. Wybierz łącze obok **identyfikatory URI przekierowań**, którym wyświetlana jest liczba przekierowania URI zdefiniowana w sieci web i klientów publicznych.  **\<Nazwa aplikacji >-uwierzytelniania** zostanie wyświetlona strona.
+3. Wybierz łącze obok **identyfikatory URI przekierowań**, którym wyświetlana jest liczba przekierowania URI zdefiniowana w sieci web i klientów publicznych. **\<Nazwa aplikacji >-uwierzytelniania** zostanie wyświetlona strona.
 4. Sprawdź, czy zewnętrzny adres URL, przypisana do starszej aplikacji jest **identyfikatory URI przekierowań** listy. Jeśli nie, Dodaj zewnętrznego adresu URL teraz, przy użyciu przekierowania URI **Web**i wybierz **Zapisz**.
 
 Na koniec należy skonfigurować aplikację w środowisku lokalnym, aby użytkownicy mają dostęp do odczytu i inne aplikacje mają dostęp do odczytu/zapisu:
@@ -128,7 +128,7 @@ Na koniec należy skonfigurować aplikację w środowisku lokalnym, aby użytkow
 2. Wybierz **delegowane uprawnienia** > **użytkownika** > **User.Read**.
 3. Wybierz **uprawnienia aplikacji** > **aplikacji** > **Application.ReadWrite.All**.
 4. Wybierz **Dodaj uprawnienia**.
-5. W **uprawnienia do interfejsu API** wybierz opcję **udzielić zgody administratora, aby uzyskać \<swoją nazwę katalogu >**.
+5. W **uprawnienia do interfejsu API** wybierz opcję **udzielić zgody administratora, aby uzyskać \<swoją nazwę katalogu >** .
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>Gromadzenie informacji o krokach PingAccess
 
@@ -158,9 +158,9 @@ Do zebrania tych informacji:
 
 ### <a name="update-graphapi-to-send-custom-fields-optional"></a>Aktualizuj GraphAPI do wysyłania niestandardowych pól (opcjonalnie)
 
-Aby uzyskać listę tokeny zabezpieczające, które wysyła usługi Azure AD w celu uwierzytelniania, zobacz [tokeny Identyfikatora platforma tożsamości firmy Microsoft](../develop/id-tokens.md). Jeśli potrzebujesz niestandardowych oświadczenie, które wysyła innych tokenów, należy ustawić `acceptMappedClaims` pole aplikacji do `True`. Można jednak używać Eksploratora programu Graph lub manifest aplikacji portalu usługi Azure AD, aby wprowadzić tę zmianę.
+Jeśli potrzebujesz niestandardowych oświadczenie, które wysyła innych tokenów w access_token używane przez rozwiązanie PingAccess, ustaw `acceptMappedClaims` pole aplikacji do `True`. Można jednak używać Eksploratora programu Graph lub manifest aplikacji portalu usługi Azure AD, aby wprowadzić tę zmianę.
 
-W tym przykładzie użyto Graph Explorer:
+**W tym przykładzie użyto Graph Explorer:**
 
 ```
 PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
@@ -170,7 +170,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 
-W tym przykładzie użyto [portalu Azure Active Directory](https://aad.portal.azure.com/) można zaktualizować `acceptMappedClaims` pola:
+**W tym przykładzie użyto [portalu Azure Active Directory](https://aad.portal.azure.com/) można zaktualizować `acceptMappedClaims` pola:**
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) jako administrator aplikacji.
 2. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji**. Zostanie wyświetlona lista aplikacji.
@@ -179,7 +179,28 @@ W tym przykładzie użyto [portalu Azure Active Directory](https://aad.portal.az
 5. Wyszukaj `acceptMappedClaims` pola, a następnie zmień wartość na `True`.
 6. Wybierz pozycję **Zapisz**.
 
-### <a name="use-a-custom-claim-optional"></a>Użyj oświadczenia niestandardowego (opcjonalnie)
+
+### <a name="use-of-optional-claims-optional"></a>Korzystanie z oświadczeń opcjonalne (opcjonalnie)
+Opcjonalne oświadczeń umożliwia dodawanie standard-but-not-included-by-default oświadczenia, które ma co użytkowniku i dzierżawie. Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując manifest aplikacji. Aby uzyskać więcej informacji, zobacz [opis artykułu manifestu aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)
+
+Przykład dołączać adres e-mail do access_token, która zużyje PingAccess:
+```
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "email",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+```
+
+### <a name="use-of-claims-mapping-policy-optional"></a>Korzystanie z zasad (opcjonalnie) mapowanie oświadczeń
+[Oświadczenia mapowanie zasad (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) dla atrybutów, które nie należą do usługi Azure AD. Mapowanie oświadczeń pozwala na migrowanie starej aplikacji lokalnych do chmury, dodając dodatkowe oświadczenia niestandardowe, które są wspierane przez obiekty usług AD FS lub użytkownika
 
 Aby aplikacja oświadczenia niestandardowego i zawiera dodatkowe pola, upewnij się, masz także [utworzone oświadczenia niestandardowe mapowanie zasad i przypisać je do aplikacji](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
@@ -187,6 +208,16 @@ Aby aplikacja oświadczenia niestandardowego i zawiera dodatkowe pola, upewnij s
 > Aby użyć oświadczenia niestandardowego, musi również mieć zasad niestandardowych, zdefiniowanych i przypisane do aplikacji. Ta zasada powinna zawierać wszystkie wymagane atrybutów niestandardowych.
 >
 > Możesz tworzyć definicję zasad i przypisywania za pomocą programu PowerShell, usługi Azure AD Graph Explorer lub Microsoft Graph. Jeśli wykonujesz je w programie PowerShell, należy najpierw użyć `New-AzureADPolicy` i przypisz je do aplikacji przy użyciu `Add-AzureADServicePrincipalPolicy`. Aby uzyskać więcej informacji, zobacz [oświadczeń przypisania zasad mapowania](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+
+Przykład:
+```powershell
+$pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
+
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id 
+```
+
+### <a name="enable-pingaccess-to-use-custom-claims-optional-but-required-if-you-expect-the-application-to-consume-additional-claims"></a>Włącz rozwiązanie PingAccess korzystanie z niestandardowych oświadczeń (opcjonalne, ale wymagane, jeśli oczekujesz, że aplikacja do przyjmowania oświadczeń dodatkowe)
+Gdy skonfigurujesz rozwiązanie PingAccess w następnym kroku, sesji internetowej utworzysz (Ustawienia -> dostępu -> sesji w sieci Web) muszą mieć **żądania profilu** niezaznaczone i **Odśwież atrybuty użytkownika** Ustaw **nr**
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>Pobierz oprogramowanie PingAccess i konfigurowanie aplikacji
 
