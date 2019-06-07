@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0411e1ab76d010eae26142d681dc157a1eb776a8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481159"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752452"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Samouczek: Integracja Otsuka Shokai za pomocą usługi Azure Active Directory
 
@@ -79,14 +79,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
-
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.otsuka-shokai.co.jp/S000000100`
-
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.otsuka-shokai.co.jp/ResponseOffice365`
-
-    > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Shokai Otsuka](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+1. Na **Ustaw się logowanie jednokrotne z SAML** stronie aplikacja jest wstępnie skonfigurowana i wymaganych adresów URL już są wstępnie wypełniane przy użyciu platformy Azure. Użytkownik musi zapisać konfigurację, klikając **Zapisz** przycisku.
 
 1. Aplikacja Otsuka Shokai oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych w przypadku gdy **nameidentifier** jest zamapowana **user.userprincipalname**. Aplikacja Otsuka Shokai oczekuje **nameidentifier** mają być mapowane z **user.objectid**, więc należy edytować mapowanie atrybutów, klikając **Edytuj**  ikonę i zmień mapowanie atrybutu.
 
@@ -139,7 +132,7 @@ W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie 
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. W **użytkownika** właściwości, wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B. Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij pozycję **Utwórz**.
 
@@ -163,7 +156,7 @@ W tej sekcji można udostępnić Simon B. do używania platformy Azure logowanie
 
 ### <a name="create-otsuka-shokai-test-user"></a>Tworzenie użytkownika testowego Otsuka Shokai
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Otsuka Shokai. Praca z [zespołem pomocy technicznej Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) Aby dodać użytkowników na platformie Otsuka Shokai. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B.Simon w Otsuka Shokai. Praca z [zespołem pomocy technicznej Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) Aby dodać użytkowników na platformie Otsuka Shokai. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Test SSO
 

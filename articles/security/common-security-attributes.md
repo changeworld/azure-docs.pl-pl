@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 460d8756c437a1212aef054cf069be2bccac8c8a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 64accb70561d4c0282b3ee45935d955dba1c67c4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001360"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474534"
 ---
 # <a name="security-attributes-for-azure-services"></a>Atrybuty zabezpieczeń dla usług platformy Azure
 
@@ -32,7 +32,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | [Expressroute](../expressroute/index.yml) i sieci wirtualnej, szyfrowanie jest obsługiwane przez [sieci platformy Azure](../virtual-network/index.yml). |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie | Wszystkie klucze szyfrowania są za wystąpienie usługi i usługi zarządzane. |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
-| Wywołania interfejsu API szyfrowane| Tak | Wywołania płaszczyzny zarządzania odbywa się za pomocą [usługi Azure Resource Manager](../azure-resource-manager/index.yml) za pośrednictwem protokołu TLS. Nieprawidłowy token sieci web JSON (JWT) jest wymagana.  Wywołania płaszczyzny danych mogą być chronione przy użyciu protokołu TLS i jeden z mechanizmów uwierzytelniania obsługiwanych (np. certyfikat klienta lub JWT).
+| Wywołania interfejsu API szyfrowane| Yes | Wywołania płaszczyzny zarządzania odbywa się za pomocą [usługi Azure Resource Manager](../azure-resource-manager/index.yml) za pośrednictwem protokołu TLS. Nieprawidłowy token sieci web JSON (JWT) jest wymagana.  Wywołania płaszczyzny danych mogą być chronione przy użyciu protokołu TLS i jeden z mechanizmów uwierzytelniania obsługiwanych (np. certyfikat klienta lub JWT).
  |
 
 ### <a name="network-segmentation"></a>Segmentacji sieci
@@ -40,8 +40,8 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
 | Obsługa punktu końcowego usługi| Nie | |
-| Obsługa iniekcji sieci wirtualnej| Tak | |
-| Izolacja sieci i zapory pomocy technicznej| Tak | Przy użyciu sieciowych grup zabezpieczeń (NSG) i Azure Application Gateway (lub inne urządzenie programowe) odpowiednio. |
+| Obsługa iniekcji sieci wirtualnej| Yes | |
+| Izolacja sieci i zapory pomocy technicznej| Yes | Przy użyciu sieciowych grup zabezpieczeń (NSG) i Azure Application Gateway (lub inne urządzenie programowe) odpowiednio. |
 | Obsługa tunelowania wymuszonego| Tak | Sieć Azure udostępnia wymuszonym tunelowaniem. |
 
 ### <a name="detection"></a>Wykrywanie
@@ -78,9 +78,9 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie w spoczynku (na przykład szyfrowanie po stronie serwera, szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta i inne funkcje szyfrowania) | Tak | Zawartość pliku witryny sieci Web jest przechowywana w usłudze Azure Storage automatycznie szyfruje zawartość w stanie spoczynku. Zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).<br><br>Wpisy tajne klienta dostarczane są szyfrowane, gdy. Wpisy tajne są szyfrowane, gdy podczas przechowywane w bazach danych konfiguracji usługi App Service.<br><br>Lokalnie dołączonych dysków może opcjonalnie służyć jako tymczasowy magazyn przez witryny sieci Web (D:\local i % TMP %). Podłączone lokalnie dyski nie są szyfrowane w stanie spoczynku. |
+| Szyfrowanie w spoczynku (na przykład szyfrowanie po stronie serwera, szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta i inne funkcje szyfrowania) | Yes | Zawartość pliku witryny sieci Web jest przechowywana w usłudze Azure Storage automatycznie szyfruje zawartość w stanie spoczynku. Zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).<br><br>Wpisy tajne klienta dostarczane są szyfrowane, gdy. Wpisy tajne są szyfrowane, gdy podczas przechowywane w bazach danych konfiguracji usługi App Service.<br><br>Lokalnie dołączonych dysków może opcjonalnie służyć jako tymczasowy magazyn przez witryny sieci Web (D:\local i % TMP %). Podłączone lokalnie dyski nie są szyfrowane w stanie spoczynku. |
 | Szyfrowanie podczas transferu (np. szyfrowanie usługi ExpressRoute w sieci wirtualnej, szyfrowania i szyfrowania sieć wirtualna-sieć wirtualna)| Tak | Klienci mogą skonfigurować witryny sieci web w celu wymagania i używać protokołu HTTPS dla ruchu przychodzącego. Zobacz wpis w blogu [jak usługi Azure App Service tylko HTTPS](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/). |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Klienci mogą wybrać opcję przechowywania wpisów tajnych aplikacji w usłudze Key Vault i pobierać je w czasie wykonywania. Zobacz [odwołuje się do użycia magazynu kluczy dla usługi App Service i Azure Functions (wersja zapoznawcza)](../app-service/app-service-key-vault-references.md).|
+| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Yes | Klienci mogą wybrać opcję przechowywania wpisów tajnych aplikacji w usłudze Key Vault i pobierać je w czasie wykonywania. Zobacz [odwołuje się do użycia magazynu kluczy dla usługi App Service i Azure Functions (wersja zapoznawcza)](../app-service/app-service-key-vault-references.md).|
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
 | Wywołania interfejsu API szyfrowane| Tak | Występować wywołań zarządzania można konfigurować usługę App Service za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml) wywołań za pośrednictwem protokołu HTTPS. |
 
@@ -88,9 +88,9 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| Tak | Obecnie dostępne w wersji zapoznawczej dla usługi App Service. Zobacz [ograniczenia dostępu do usługi Azure App Service](../app-service/app-service-ip-restrictions.md). |
+| Obsługa punktu końcowego usługi| Yes | Obecnie dostępne w wersji zapoznawczej dla usługi App Service. Zobacz [ograniczenia dostępu do usługi Azure App Service](../app-service/app-service-ip-restrictions.md). |
 | Obsługa iniekcji sieci wirtualnej| Tak | Środowiska usługi App Service są implementacji prywatnej usługi App Service dedykowanego pojedynczemu klientowi, które są wstrzykiwane do sieci wirtualnej klienta. Zobacz [wprowadzenie do środowisk App Service Environment](../app-service/environment/intro.md). |
-| Izolacja sieci i Firewalling pomocy technicznej| Tak | Publiczne odmiany wielodostępnej usługi App Service klienci mogą skonfigurować listy ACL (ograniczenia adresów IP) do blokowania dozwolonego ruchu przychodzącego sieci.  Zobacz [ograniczenia dostępu do usługi Azure App Service](../app-service/app-service-ip-restrictions.md).  Środowiska usługi App Service są wdrażane bezpośrednio do sieci wirtualnych i dlatego mogą być chronione przy użyciu sieciowych grup zabezpieczeń. |
+| Izolacja sieci i Firewalling pomocy technicznej| Yes | Publiczne odmiany wielodostępnej usługi App Service klienci mogą skonfigurować listy ACL (ograniczenia adresów IP) do blokowania dozwolonego ruchu przychodzącego sieci.  Zobacz [ograniczenia dostępu do usługi Azure App Service](../app-service/app-service-ip-restrictions.md).  Środowiska usługi App Service są wdrażane bezpośrednio do sieci wirtualnych i dlatego mogą być chronione przy użyciu sieciowych grup zabezpieczeń. |
 | Obsługa tunelowania wymuszonego| Tak | Środowiska usługi App Service można wdrożyć w sieci wirtualnej klienta, gdy wymuszanie tunelowania jest konfigurowane. Klienci muszą postępuj zgodnie z instrukcjami [skonfigurować środowisko App Service Environment przy wymuszonego tunelowania](../app-service/environment/forced-tunnel-support.md). |
 
 ### <a name="detection"></a>Wykrywanie
@@ -103,8 +103,8 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | Klienci mogą tworzyć aplikacje w usłudze App Service, które integrują się automatycznie z [usługi Azure Active Directory (Azure AD)](../active-directory/index.md) oraz innych dostawców tożsamości zgodnych OAuth; zobacz [uwierzytelnianie i autoryzacja w Usługa Azure App Service](../app-service/overview-authentication-authorization.md). Zarządzanie dostępu do zasobów usługi App Service wszystkie dostęp jest kontrolowany przy użyciu kombinacji nazwy głównej usługi Azure AD uwierzytelniony i ról RBAC usługi Resource Manager platformy Azure. |
-| Autoryzacja| Tak | Zarządzanie dostępu do zasobów usługi App Service wszystkie dostęp jest kontrolowany przy użyciu kombinacji nazwy głównej usługi Azure AD uwierzytelniony i ról RBAC usługi Resource Manager platformy Azure.  |
+| Authentication| Yes | Klienci mogą tworzyć aplikacje w usłudze App Service, które integrują się automatycznie z [usługi Azure Active Directory (Azure AD)](../active-directory/index.yml) oraz innych dostawców tożsamości zgodnych OAuth; zobacz [uwierzytelnianie i autoryzacja w Usługa Azure App Service](../app-service/overview-authentication-authorization.md). Zarządzanie dostępu do zasobów usługi App Service wszystkie dostęp jest kontrolowany przy użyciu kombinacji nazwy głównej usługi Azure AD uwierzytelniony i ról RBAC usługi Resource Manager platformy Azure. |
+| Autoryzacja| Yes | Zarządzanie dostępu do zasobów usługi App Service wszystkie dostęp jest kontrolowany przy użyciu kombinacji nazwy głównej usługi Azure AD uwierzytelniony i ról RBAC usługi Resource Manager platformy Azure.  |
 
 
 ### <a name="audit-trail"></a>Dziennik inspekcji
@@ -127,11 +127,11 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak |  |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | HTTPS/TLS. |
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes |  |
+| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Yes | HTTPS/TLS. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| ND | Usługa Azure Resource Manager przechowuje żadnej zawartości klientów tylko danych formantu. |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| Tak | |
-| Wywołania interfejsu API szyfrowane| Tak | |
+| Wywołania interfejsu API szyfrowane| Yes | |
 
 ### <a name="network-segmentation"></a>Segmentacji sieci
 
@@ -176,7 +176,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak | Dzięki szyfrowaniu usługi storage dla kont magazynu. |
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes | Dzięki szyfrowaniu usługi storage dla kont magazynu. |
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Nie | Przy użyciu protokołu HTTPS. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie |  |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| Nie |  |
@@ -209,7 +209,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Tak | Dzienniki aktywności są rejestrowane wszystkie akcje klienta wyzwalane w witrynie Azure portal. |
+| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Yes | Dzienniki aktywności są rejestrowane wszystkie akcje klienta wyzwalane w witrynie Azure portal. |
 | Rejestrowanie płaszczyzny danych i inspekcji| Nie | Płaszczyzna danych w usłudze Azure Backup nie można nawiązać połączenia z bezpośrednio.  |
 
 ### <a name="configuration-management"></a>Zarządzanie konfiguracją
@@ -251,7 +251,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Authentication| Tak | Uwierzytelnianie jest za pomocą usługi Azure Active Directory. |
-| Autoryzacja| Tak | Za pomocą zasad dostępu magazynu kluczy. |
+| Autoryzacja| Yes | Za pomocą zasad dostępu magazynu kluczy. |
 
 
 ### <a name="audit-trail"></a>Dziennik inspekcji
@@ -261,12 +261,12 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 | Rejestrowanie i inspekcja na płaszczyźnie kontroli i zarządzania nimi.| Tak | Za pomocą usługi Log Analytics. |
 | Rejestrowanie płaszczyzny danych i inspekcji| Tak | Za pomocą usługi Log Analytics. |
 
-### <a name="access-controls"></a>Kontrole dostępu
+### <a name="access-controls"></a>Kontrola dostępu
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Kontroli dostępu do płaszczyzny zarządzania/kontroli | Tak | Kontrola dostępu oparta na rolach (RBAC) przy użyciu usługi Azure Resource Manager |
-| Kontroli dostępu do płaszczyzny danych (na każdym poziomie usługi) | Tak | Zasady dostępu magazynu kluczy |
+| Kontroli dostępu do płaszczyzny zarządzania/kontroli | Yes | Kontrola dostępu oparta na rolach (RBAC) przy użyciu usługi Azure Resource Manager |
+| Kontroli dostępu do płaszczyzny danych (na każdym poziomie usługi) | Yes | Zasady dostępu magazynu kluczy |
 
 ## <a name="azure-service-bus-messagingservice-bus-messagingservice-bus-messaging-security-attributesmd"></a>[Azure komunikaty usługi Service Bus](../service-bus-messaging/service-bus-messaging-security-attributes.md)
 
@@ -313,7 +313,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak | Obsługuje przechowywanie wersji dostawcy zasobu za pośrednictwem [interfejsu API usługi Azure Resource Manager](/rest/api/resources/).|
+| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Yes | Obsługuje przechowywanie wersji dostawcy zasobu za pośrednictwem [interfejsu API usługi Azure Resource Manager](/rest/api/resources/).|
 
 
 ## <a name="azure-service-bus-relayservice-bus-relayservice-bus-relay-security-attributesmd"></a>[Azure Service Bus Relay](../service-bus-relay/service-bus-relay-security-attributes.md)
@@ -340,7 +340,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | |
 
 ### <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
@@ -370,7 +370,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak | Klient jest właścicielem klastra i zestawu skalowania maszyn wirtualnych (VM), które klaster działa w oparciu. Usługa Azure disk encryption można włączyć dla zestawu skalowania maszyn wirtualnych. |
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes | Klient jest właścicielem klastra i zestawu skalowania maszyn wirtualnych (VM), które klaster działa w oparciu. Usługa Azure disk encryption można włączyć dla zestawu skalowania maszyn wirtualnych. |
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak |  |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Klient jest właścicielem klastra i zestawu skalowania maszyn wirtualnych (VM), które klaster działa w oparciu. Usługa Azure disk encryption można włączyć dla zestawu skalowania maszyn wirtualnych. |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND |  |
@@ -389,7 +389,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Korzystanie z platformy Azure, monitorowanie, obsługę i innych firm. |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Korzystanie z platformy Azure, monitorowanie, obsługę i innych firm. |
 
 ### <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
@@ -409,7 +409,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak | Konfiguracja usługi jest wersjonowane i wdrażane za pomocą wdrażania na platformie Azure. Kod (aplikacji i środowiska uruchomieniowego) jest wersjonowany, za pomocą usługi Azure kompilacji.
+| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Yes | Konfiguracja usługi jest wersjonowane i wdrażane za pomocą wdrażania na platformie Azure. Kod (aplikacji i środowiska uruchomieniowego) jest wersjonowany, za pomocą usługi Azure kompilacji.
  |
 
 ## <a name="azure-sql-databasesql-databasesql-database-security-attributesmd"></a>[Azure SQL Database](../sql-database/sql-database-security-attributes.md)
@@ -422,7 +422,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 | Szyfrowanie podczas przesyłania:<ul><li>Szyfrowanie usługi ExpressRoute</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Przy użyciu protokołu HTTPS. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Oferowana obsługa klucza zarządzanego przez usługę i zarządzane przez klienta (ostatnie za pośrednictwem [usługi Azure Key Vault](../key-vault/index.yml). |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| Tak | Za pomocą [Always Encrypted](../sql-database/sql-database-always-encrypted.md). |
-| Wywołania interfejsu API szyfrowane| Tak | Przy użyciu protokołu HTTPS/SSL. |
+| Wywołania interfejsu API szyfrowane| Yes | Przy użyciu protokołu HTTPS/SSL. |
 
 ### <a name="network-segmentation"></a>Segmentacji sieci
 
@@ -431,20 +431,20 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 | Obsługa punktu końcowego usługi| Tak | Dotyczy [pojedynczej bazy danych](../sql-database/sql-database-single-index.yml) tylko. |
 | Obsługa iniekcji sieci wirtualnej| Tak | Dotyczy [wystąpienia zarządzanego](../sql-database/sql-database-managed-instance.md) tylko. |
 | Izolacja sieci i zapory pomocy technicznej| Tak | Zapora w obu bazy danych i serwera poziomie; Izolacja sieci [wystąpienia zarządzanego](../sql-database/sql-database-managed-instance.md) tylko |
-| Obsługa tunelowania wymuszonego| Tak | [wystąpienie zarządzane](../sql-database/sql-database-managed-instance.md) za pośrednictwem [usługi Azure ExpressRoute](../expressroute/index.yml) sieci VPN |
+| Obsługa tunelowania wymuszonego| Yes | [wystąpienie zarządzane](../sql-database/sql-database-managed-instance.md) za pośrednictwem [usługi Azure ExpressRoute](../expressroute/index.yml) sieci VPN |
 
 ### <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Rozwiązanie SIEM innej firmy od firmy Imperva (SecureSphere) jest również obsługiwana, za pomocą [usługi Azure Event Hubs](../event-hubs/index.yml) integrację za pośrednictwem [inspekcji SQL](../sql-database/sql-database-auditing.md). |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Rozwiązanie SIEM innej firmy od firmy Imperva (SecureSphere) jest również obsługiwana, za pomocą [usługi Azure Event Hubs](../event-hubs/index.yml) integrację za pośrednictwem [inspekcji SQL](../sql-database/sql-database-auditing.md). |
 
 ### <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Authentication| Tak | Azure Active Directory. |
-| Autoryzacja| Tak |  |
+| Autoryzacja| Yes |  |
 
 
 ### <a name="audit-trail"></a>Dziennik inspekcji
@@ -464,9 +464,9 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Zapobiegawczych: Ocena luk w zabezpieczeniach | Tak | Zobacz [oceny luk w zabezpieczeniach SQL service pomaga zidentyfikować luki w zabezpieczeniach bazy danych](../sql-database/sql-vulnerability-assessment.md). |
+| Zapobiegawczych: Ocena luk w zabezpieczeniach | Yes | Zobacz [oceny luk w zabezpieczeniach SQL service pomaga zidentyfikować luki w zabezpieczeniach bazy danych](../sql-database/sql-vulnerability-assessment.md). |
 | Zapobiegawczych: danych, odnajdowanie i klasyfikację  | Tak | Zobacz [usługi Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych](../sql-database/sql-database-data-discovery-and-classification.md). |
-| Wykrywanie: wykrywanie zagrożeń | Tak | Zobacz [Zaawansowana ochrona przed zagrożeniami dla usługi Azure SQL Database](../sql-database/sql-database-threat-detection-overview.md). |
+| Wykrywanie: wykrywanie zagrożeń | Yes | Zobacz [Zaawansowana ochrona przed zagrożeniami dla usługi Azure SQL Database](../sql-database/sql-database-threat-detection-overview.md). |
 
 ## <a name="azure-storagestoragecommonstorage-security-attributesmd"></a>[Azure Storage](../storage/common/storage-security-attributes.md)
 
@@ -474,9 +474,9 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak |  |
+| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes |  |
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Obsługa standardowych mechanizmów HTTPS/TLS.  Użytkownicy mogą także szyfrować dane przed ich wysłaniem do usługi. |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
+| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Yes | Zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND |  |
 | Wywołania interfejsu API szyfrowane| Tak |  |
 
@@ -493,7 +493,7 @@ W tym artykule zbiera wspólne atrybuty zabezpieczeń dla wybranych usług syste
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Metryki usługi Azure Monitor dostępny teraz dzienniki począwszy od wersji zapoznawczej |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Metryki usługi Azure Monitor dostępny teraz dzienniki począwszy od wersji zapoznawczej |
 
 ### <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 

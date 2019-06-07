@@ -326,39 +326,6 @@
               href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: Oferta aplikacji SaaS
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: Wymagania wstępne
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: Tworzenie oferty aplikacji SaaS
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: Karta ustawień oferty
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: Karta informacji technicznych
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: Karta planów
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: Karta informacji z kanału
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: Karta Wersja testowa
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: Karta szczegółów sklepu
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: Karta kontaktów
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: Publikowanie oferty
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: Aktualizowanie istniejącej oferty
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: Interfejsy API realizacji SaaS
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: Rejestrowanie aplikacji SaaS
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: SaaS API v1 (przestarzałe)
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: SaaS API v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
         - name: Oferta maszyny wirtualnej
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:

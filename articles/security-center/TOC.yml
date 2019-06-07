@@ -61,19 +61,18 @@
       href: security-center-policies-overview.md
     - name: Porównanie planów bazowych przy użyciu monitorowania integralności plików
       href: security-center-file-integrity-monitoring-baselines.md
-      items:
-        - name: Zbieranie danych
-          href: security-center-enable-data-collection.md
-        - name: Wbudowane zasady zabezpieczeń
-          href: security-center-policy-definitions.md
-        - name: Powiadomienia e-mail
-          href: security-center-provide-security-contact-details.md
-        - name: Warstwa cenowa
-          href: security-center-pricing.md
-        - name: Konfiguracje zabezpieczeń
-          href: security-center-customize-os-security-config.md
-        - name: Widoczność w całej dzierżawie
-          href: security-center-management-groups.md
+    - name: Zbieranie danych
+      href: security-center-enable-data-collection.md
+    - name: Wbudowane zasady zabezpieczeń
+      href: security-center-policy-definitions.md
+    - name: Powiadomienia e-mail
+      href: security-center-provide-security-contact-details.md
+    - name: Warstwa cenowa
+      href: security-center-pricing.md
+    - name: Konfiguracje zabezpieczeń
+      href: security-center-customize-os-security-config.md
+    - name: Widoczność w całej dzierżawie
+      href: security-center-management-groups.md
     - name: Zalecenia dotyczące implementowania zabezpieczeń
       href: security-center-recommendations.md
       items:

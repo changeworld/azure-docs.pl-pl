@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 921505e7f470d337d9e9e491c6db79930d487eb5
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169517"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754379"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Samouczek: Monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 
@@ -50,7 +50,7 @@ Aby zobaczyć diagnostykę i metryki w akcji, potrzebujesz maszyny wirtualnej. N
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create). Następujący przykład umożliwia utworzenie maszyny wirtualnej o nazwie *myVM* i wygenerowanie kluczy SSH, jeśli jeszcze nie istnieją w folderze *~/.ssh/*:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create). Następujący przykład umożliwia utworzenie maszyny wirtualnej o nazwie *myVM* i wygenerowanie kluczy SSH, jeśli jeszcze nie istnieją w folderze *~/.ssh/* :
 
 ```azurecli-interactive
 az vm create \
@@ -126,7 +126,7 @@ Maszyna wirtualna z systemem Linux ma dedykowanego hosta na platformie Azure, z 
 Dostępne są podstawowe metryki hosta, ale wyświetlenie bardziej szczegółowych metryk właściwych dla danej maszyny wirtualnej wymaga zainstalowania rozszerzenia diagnostyki platformy Azure na maszynie wirtualnej. Rozszerzenie diagnostyki platformy Azure umożliwia pobieranie dodatkowych danych dotyczących monitorowania i diagnostyki z maszyny wirtualnej. Możesz wyświetlić te metryki wydajności i utworzyć alerty w oparciu o wydajność maszyny wirtualnej. Rozszerzenie diagnostyki jest instalowane za pośrednictwem witryny Azure Portal w następujący sposób:
 
 1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz pozycję **myResourceGroupMonitor**, a następnie na liście zasobów wybierz maszynę wirtualną **myVM**.
-1. Wybierz pozycję **Ustawienia diagnozy**. W menu rozwijanym *Wybierz konto magazynu* wybierz utworzone w poprzedniej sekcji konto *mydiagdata [1234]*, jeśli jeszcze nie zostało wybrane.
+1. Wybierz pozycję **Ustawienia diagnozy**. W menu rozwijanym *Wybierz konto magazynu* wybierz utworzone w poprzedniej sekcji konto *mydiagdata [1234]* , jeśli jeszcze nie zostało wybrane.
 1. Wybierz przycisk **Włącz monitorowanie na poziomie gościa**.
 
     ![Wyświetlanie metryki diagnostyki](./media/tutorial-monitoring/enable-diagnostics-extension.png)
@@ -147,7 +147,7 @@ Możesz utworzyć alerty w oparciu o konkretne metryki wydajności. Przykładowo
 Poniższy przykład tworzy alert dotyczący średniego użycia procesora.
 
 1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz pozycję **myResourceGroupMonitor**, a następnie na liście zasobów wybierz maszynę wirtualną **myVM**.
-2. Wybierz opcję **Alerty (klasyczne)**, następnie w górnej części okna alertów wybierz opcję **Dodaj alert metryki (klasyczny)**.
+2. Wybierz opcję **Alerty (klasyczne)** , następnie w górnej części okna alertów wybierz opcję **Dodaj alert metryki (klasyczny)** .
 3. Podaj **nazwę** alertu, np. *myAlertRule*
 4. Aby wyzwolić alert, gdy procent użycia procesora przekracza 1,0 przez pięć minut, pozostaw wybrane wszystkie inne wartości domyślne.
 5. Opcjonalnie zaznacz pole pozycji *Wyślij wiadomość e-mail do właścicieli, współautorów i czytelników*, aby wysłać powiadomienie w wiadomości e-mail. Domyślne działanie to prezentowanie powiadomienia w portalu.
@@ -201,28 +201,27 @@ Po włączeniu rozwiązania **Update Management** zostanie wyświetlony ekran **
 
 Aby zainstalować aktualizacje, zaplanuj wdrożenie zgodnie z harmonogramem wydawania i oknem obsługi. Możesz wybrać typy aktualizacji, które mają zostać uwzględnione we wdrożeniu. Możesz na przykład uwzględnić aktualizacje krytyczne lub aktualizacje zabezpieczeń i wykluczyć pakiety zbiorcze aktualizacji.
 
-Aby zaplanować nowe wdrożenie aktualizacji dla maszyny wirtualnej, wybierz pozycję **Zaplanuj wdrażanie aktualizacji** w górnej części ekranu **Update Management**. Na ekranie **Nowe wdrożenie aktualizacji** podaj następujące informacje:
+Zaplanuj nowe wdrożenie aktualizacji dla maszyny wirtualnej, klikając pozycję **Zaplanuj wdrażanie aktualizacji** w górnej części ekranu **Update Management**. Na ekranie **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
-* **Nazwa** — wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
-* **Klasyfikacja aktualizacji** — wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. Dostępne są następujące typy klasyfikacji:
-  * Aktualizacje krytyczne i zabezpieczeń
-  * Inne aktualizacje
-* **Aktualizacje do wykluczenia** — umożliwia określenie listy nazw pakietów, które należy pominąć podczas wdrażania aktualizacji. Nazwy pakietów obsługują symbole wieloznaczne (takie jak \*kernel\*).
+Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarta strona. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
 
-  ![Ekran ustawień harmonogramu aktualizacji](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
+| Właściwość | Opis |
+| --- | --- |
+| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+|System operacyjny| System Linux lub Windows|
+| Grupy aktualizacji |Dla maszyn należy zdefiniować zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. </br></br>W przypadku komputerów spoza platformy Azure wybierz istniejącą zapisanego wyszukiwania, aby wybrać grupę maszyn spoza platformy Azure w celu uwzględnione we wdrożeniu. </br></br>Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](../../automation/automation-update-management.md#using-dynamic-groups)|
+| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../../azure-monitor/platform/computer-groups.md) |
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](../../automation/automation-update-management.md#inclusion-behavior) |
+|Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
+| Skrypty przed i skryptu używanego po utworzeniu|Wybierz skrypty do uruchomienia przed i po wdrożeniu|
+| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut, a nie więcej niż 6 godzin |
+| Ponowne uruchomienie kontroli| Określa sposób obsługi jest uruchamiany ponownie. Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
 
-* **Ustawienia harmonogramu** — możesz zaakceptować domyślną datę i godzinę (30 minut po bieżącej godzinie) lub określić inny czas.
-  Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z ustawionym harmonogramem cyklicznym. Aby skonfigurować harmonogram cykliczny, w obszarze Cykl wybierz opcję Cyklicznie.
+Można także programowo tworzyć wdrożenia aktualizacji. Aby dowiedzieć się, jak utworzyć wdrożenie aktualizacji za pomocą interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania — tworzenie](/rest/api/automation/softwareupdateconfigurations/create). Istnieje również przykładowy element runbook, który może służyć do tworzenia tygodniowy wdrożenia aktualizacji. Aby dowiedzieć się więcej na temat tego elementu runbook, zobacz [utworzyć tygodniowy wdrożenie aktualizacji dla jednego lub więcej maszyn wirtualnych w grupie zasobów](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
-  ![Ekran ustawień harmonogramu aktualizacji](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
-
-* **Okno konserwacji (w minutach)** — podaj okres, w którym ma zostać przeprowadzone wdrażanie aktualizacji. Pozwala to zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
-
-Po ukończeniu konfigurowania harmonogramu wybierz przycisk **Utwórz**, aby wrócić do pulpitu nawigacyjnego stanu.
+Po ukończeniu konfigurowania harmonogramu kliknij przycisk **Utwórz**, aby wrócić do pulpitu nawigacyjnego stanu.
 Tabela **Zaplanowane** zawiera utworzony harmonogram wdrożenia.
-
-> [!WARNING]
-> W przypadku aktualizacji wymagających ponownego uruchomienia systemu maszyna wirtualna zostanie ponownie uruchomiona automatycznie.
 
 ### <a name="view-results-of-an-update-deployment"></a>Wyświetlanie wyników wdrażania aktualizacji
 
@@ -294,7 +293,7 @@ Możesz wykonywać bardziej zaawansowane monitorowanie swojej maszyny wirtualnej
 
 Z poziomu obszaru roboczego usługi Log Analytics, z którym jest połączona maszyna wirtualna, możesz także pobierać, konsolidować i analizować zebrane dane za pomocą [zaawansowanego języka zapytań](../../azure-monitor/log-query/log-query-overview.md). 
 
-![Obszar roboczy usługi Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Obszar roboczy usługi log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

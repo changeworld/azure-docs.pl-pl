@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e26f9d344a4c11c335d1ea34998c848cbe3598a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793739"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753751"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Przenoszenie maszyn wirtualnych platformy Azure do stref dostępności
-Strefy dostępności na platformie Azure chronić aplikacje i dane przed awariami centrum danych. Każda strefa dostępności obejmuje co najmniej jedno centrum danych wyposażone w niezależne zasilanie i chłodzenie oraz niezależną sieć. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczne rozdzielenie stref dostępności w obrębie regionu pomaga chronić aplikacje i dane przed awariami centrum danych. Dzięki strefom dostępności platforma Azure oferuje umowy poziomu usług (SLA) 99,99% dla przestojów maszyn wirtualnych (VM). Strefy dostępności są obsługiwane w wybranych regionach, jak wspomniano w [co to są strefy dostępności na platformie Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).
+Strefy dostępności na platformie Azure chronić aplikacje i dane przed awariami centrum danych. Każda strefa dostępności obejmuje co najmniej jedno centrum danych wyposażone w niezależne zasilanie i chłodzenie oraz niezależną sieć. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczne rozdzielenie stref dostępności w obrębie regionu pomaga chronić aplikacje i dane przed awariami centrum danych. Dzięki strefom dostępności platforma Azure oferuje umowy poziomu usług (SLA) 99,99% dla przestojów maszyn wirtualnych (VM). Strefy dostępności są obsługiwane w wybranych regionach, jak wspomniano w [co to są strefy dostępności na platformie Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
 
 W scenariuszu, w której maszyny wirtualne są wdrażane jako *pojedyncze wystąpienie* w określonym regionie, a chcesz poprawić poziomu dostępności przez przeniesienie tych maszyn wirtualnych w strefie dostępności, możesz to zrobić za pomocą usługi Azure Site Recovery. Dodatkowo można podzielić na tę akcję:
 
@@ -28,7 +28,7 @@ W scenariuszu, w której maszyny wirtualne są wdrażane jako *pojedyncze wystą
 
 ## <a name="check-prerequisites"></a>Sprawdź wymagania wstępne
 
-- Sprawdź, czy region docelowy ma [obsługę strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). Sprawdź, czy wybór [kombinacja region docelowy region źródła jest obsługiwana](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Podjąć świadomą decyzję w regionie docelowym.
+- Sprawdź, czy region docelowy ma [obsługę strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region). Sprawdź, czy wybór [kombinacja region docelowy region źródła jest obsługiwana](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Podjąć świadomą decyzję w regionie docelowym.
 - Przeanalizuj informacje o [składnikach i architekturze scenariusza](azure-to-azure-architecture.md).
 - Zapoznaj się z [ograniczeniami i wymaganiami dotyczącymi pomocy technicznej](azure-to-azure-support-matrix.md).
 - Sprawdź uprawnienia dla konta. Jeśli właśnie utworzone bezpłatnego konta platformy Azure, jesteś administratorem subskrypcji. Jeśli nie jesteś administratorem subskrypcji, należy skontaktować się z administratorem, aby przypisać uprawnienia, których potrzebujesz. Aby włączyć replikację dla maszyny Wirtualnej i ostatecznie kopiowanie danych do obiektu docelowego przy użyciu usługi Azure Site Recovery, musisz mieć:
@@ -86,7 +86,7 @@ Następujące kroki przeprowadzą Cię, korzystając z usługi Azure Site Recove
 
 1. W witrynie Azure portal wybierz **maszyn wirtualnych**i wybierz maszynę Wirtualną, którą chcesz przenieść w strefach dostępności.
 2. W **operacji**, wybierz opcję **odzyskiwania po awarii**.
-3. W **Konfigurowanie odzyskiwania po awarii** > **region docelowy**, wybierz region docelowy, do którego będą replikowane. Upewnij się, ten region [obsługuje](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones) stref dostępności.
+3. W **Konfigurowanie odzyskiwania po awarii** > **region docelowy**, wybierz region docelowy, do którego będą replikowane. Upewnij się, ten region [obsługuje](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region) stref dostępności.
 
     ![Wybór region docelowy](media/azure-vms-to-zones/enable-rep-1.PNG)
 
