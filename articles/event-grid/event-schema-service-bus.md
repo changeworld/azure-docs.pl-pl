@@ -82,12 +82,12 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
+| data | obiekt | Dane zdarzenia magazynu obiektów blob. |
 | dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
