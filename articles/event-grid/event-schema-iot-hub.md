@@ -151,11 +151,11 @@ Wszystkie zdarzenia zawierają te same dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| Dane | obiekt | Dane zdarzeń usługi IoT Hub.  |
+| data | obiekt | Dane zdarzeń usługi IoT Hub.  |
 | dataVersion | string | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
@@ -190,7 +190,7 @@ Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usł
 | -------- | ---- | ----------- |
 | twin | obiekt | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli chmury reprezentacja metadanych urządzenia w aplikacji. | 
 | deviceID | string | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
-| Element etag | string | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
+| etag | string | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
 | deviceEtag| string | Moduł weryfikacji dla zapewnienia spójności aktualizacji do rejestru urządzeń. Każdy deviceEtag może być unikatowy dla rejestru urządzeń. |
 | status | string | Bliźniacza reprezentacja urządzenia jest włączone czy wyłączone. | 
 | statusUpdateTime | string | Zaktualizuj ISO8601 sygnatura czasowa ostatniego stanu bliźniaczej reprezentacji urządzenia. |
@@ -203,7 +203,7 @@ Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usł
 | secondaryThumbprint | string | Pomocniczy odcisk palca dla x509 certyfikatu. | 
 | version | liczba całkowita | Liczba całkowita, która jest zwiększany o jeden każdy Godzina aktualizacji bliźniaczej reprezentacji. |
 | desired | obiekt | Część właściwości, które mogą być zapisywane tylko przez serwer zaplecza aplikacji i odczytywane przez urządzenie. | 
-| zgłoszone | obiekt | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez serwer zaplecza aplikacji. |
+| reported | obiekt | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez serwer zaplecza aplikacji. |
 | lastUpdated | string | Zaktualizuj ISO8601 sygnatura czasowa ostatniej właściwości bliźniaczej reprezentacji urządzenia. | 
 
 ## <a name="next-steps"></a>Kolejne kroki
