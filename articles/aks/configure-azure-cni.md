@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6516b11bf5d4d4c4e5406a3e6e0cce3189796d33
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 25ff618045c65371b1bddd8aeb32166b3e168a93
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956401"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497214"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -71,7 +71,7 @@ Maksymalna liczba zasobników w każdym węźle w klastrze AKS to 250. *Domyśln
 
 Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na możliwie jak 250 wartość węzła.
 
-| Networking | Minimum | Maksimum |
+| Networking | Minimalne | Maksimum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
@@ -170,8 +170,6 @@ Zestaw poniższych pytań i odpowiedzi dotyczą **wtyczki Azure CNI** konfigurac
   Nie jest to zalecane, ale ta konfiguracja jest możliwe. Zakres adresów usługi to zbiór wirtualnych adresów IP (VIP), który przypisuje wewnętrznych usług w klastrze Kubernetes. Sieci platformy Azure ma nie widoczność zakresu adresów IP usługi klastra Kubernetes. Ze względu na brak widoczność zakresu adresów usługi klastra jest możliwość później utworzyć nową podsieć w sieci wirtualnej klastra, która nakłada się na zakres adresów usługi. W przypadku nakładania się Kubernetes można przypisać usługi adres IP, który jest już używany przez inny zasób w podsieci, powodując nieprzewidywalne zachowanie lub awarie. Przez zapewnienie, że używasz zakresu adresów spoza sieci wirtualnej klastra, możesz uniknąć tego ryzyka nakładają się na siebie.
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-### <a name="networking-in-aks"></a>Obsługa sieci w usłudze AKS
 
 Dowiedz się więcej na temat sieci w usłudze AKS w następujących artykułach:
 

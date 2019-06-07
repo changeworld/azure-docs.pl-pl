@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/8/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460251"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479069"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Utwórz zasadę zapory aplikacji sieci Web Azure drzwiami frontowymi przy użyciu witryny Azure portal
 
@@ -48,7 +48,7 @@ Najpierw utwórz podstawowe zasady zapory aplikacji sieci Web przy użyciu zarz�
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Drzwi              | Wybierz nazwę profilu wejściu.|
-    | Host frontonu           | Wybierz nazwę hosta drzwi wejściowe, a następnie wybierz **Dodaj**.|
+    | Hosta serwera sieci Web           | Wybierz nazwę hosta drzwi wejściowe, a następnie wybierz **Dodaj**.|
     
     > [!NOTE]
     > Jeśli host frontonu jest skojarzony z zasadami zapory aplikacji sieci Web, wyświetlany jest jako wyszarzone. Najpierw usuń hosta serwera sieci Web ze skojarzonych zasad, a następnie ponowne kojarzenie hosta serwera sieci Web do nowych zasad zapory aplikacji sieci Web.
@@ -63,17 +63,19 @@ Aby zobaczyć zapory aplikacji sieci Web w działaniu, można zmienić ustawieni
 
  ![Tryb zasad zmiany zapory aplikacji sieci Web](./media/waf-front-door-create-portal/policy.png)
 
+### <a name="custom-rules"></a>Reguły niestandardowe
+
+Można utworzyć regułę niestandardową, wybierając **dodaj niestandardową regułę** w obszarze **reguły niestandardowe** sekcji. Spowoduje to uruchomienie na stronie konfiguracji reguły niestandardowej. Poniżej przedstawiono przykład konfigurowania niestandardowych regułę blokującą żądania, jeśli ciąg zapytania zawiera **blockme**.
+
+![Tryb zasad zmiany zapory aplikacji sieci Web](./media/waf-front-door-create-portal/customquerystring2.png)
+
 ### <a name="default-rule-set-drs"></a>Domyślny zestaw reguł (DRS)
 
 Usługi Azure managed ustawić reguły domyślne jest domyślnie włączona. Aby wyłączyć poszczególnych reguł w ramach grupy reguł, rozwiń węzeł reguł w tej grupie regułę, wybierz opcję **pole wyboru** przed numer reguły, a następnie wybierz pozycję **wyłączyć** na karcie powyżej. Aby zmienić typy akcji dla poszczególnych reguł w ramach reguły jest ustawiona, zaznacz pole wyboru przed numer reguły, a następnie wybierz **zmienić akcję** powyżej kartę.
 
- ![Zmień zestaw reguł zapory aplikacji sieci Web](./media/waf-front-door-create-portal/managed.png)
+ ![Zmień zestaw reguł zapory aplikacji sieci Web](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [zapory aplikacji sieci web platformy Azure](waf-overview.md).
 - Dowiedz się więcej o [Azure drzwiami frontowymi](front-door-overview.md).
-
-
-
-

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2e0c17b07f70d9b05ff9ea6c3af2e8dc26127cae
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 56a2b89277cbf8866c1992a6738bd80106ef3313
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906520"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480011"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Zapytanie Apache Hive za pośrednictwem sterownika JDBC w HDInsight
 
@@ -28,7 +28,6 @@ Aby uzyskać więcej informacji na temat interfejsu JDBC usługi Hive, zobacz [H
 * Klaster usługi HDInsight Hadoop. Aby go utworzyć, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) w wersji 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) lub nowszej.
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL jest aplikacją kliencką JDBC.
-
 
 ## <a name="jdbc-connection-string"></a>Parametry połączenia sterownika JDBC
 
@@ -54,20 +53,12 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
 1. Utwórz katalog zawiera określone pliki do skopiowania z klastrem.
 
-2. W poniższym skrypcie Zamień `sshuser` nazwą konta użytkownika SSH dla klastra.  Zastąp `CLUSTERNAME` o nazwie klastra HDInsight.  W wierszu polecenia wprowadź następujące polecenie, aby skopiować pliki z klastra usługi HDInsight:
+2. W poniższym skrypcie Zamień `sshuser` nazwą konta użytkownika SSH dla klastra.  Zastąp `CLUSTERNAME` o nazwie klastra HDInsight.  W wierszu polecenia Zmień katalog roboczy utworzonym w poprzednim kroku, a następnie wprowadź następujące polecenie, aby skopiować pliki z klastra usługi HDInsight:
 
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-codec*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libfb*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+    ```cmd
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar} .
+
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-1.2*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
 3. Uruchom aplikację SQuirreL SQL. W lewej części okna, wybierz **sterowniki**.
@@ -82,7 +73,7 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
     * **Nazwa**: Hive
     * **Przykładowy adres URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Bardzo klasy ścieżki**: Dodaj wszystkie pliki jar, pobrane wcześniej za pomocą przycisku Dodaj
+    * **Bardzo klasy ścieżki**: Użyj **Dodaj** przycisk, aby dodać wszystkie pliki JAR używane wcześniej pobrany
     * **Nazwa klasy**: org.apache.hive.jdbc.HiveDriver
 
    ![Dodaj okno dialogowe sterownika](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)

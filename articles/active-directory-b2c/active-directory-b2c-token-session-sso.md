@@ -2,20 +2,20 @@
 title: Sesja i jednej konfiguracji logowania jednokrotnego — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Sesja i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: daff37ca803a7eebdc07a78d6d02f5cee36de2f5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 472e494d445ae4a22c988076994649543ec1f7f8
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703815"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508118"
 ---
 # <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Sesja i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Ta funkcja umożliwia szczegółową kontrolę na [konkretnych użytkowników, p
 - Okres istnienia sesji aplikacji sieci web zarządzanych przez usługę Azure AD B2C.
 - Pojedynczy zachowanie logowania jednokrotnego (SSO) między wieloma aplikacje i przepływy użytkownika w dzierżawie usługi Azure AD B2C.
 
-## <a name="session-behavior"></a>Działanie sesji
+## <a name="session-behavior"></a>Zachowanie sesji
 
 Usługa Azure AD B2C obsługuje [protokołu uwierzytelniania OpenID Connect](active-directory-b2c-reference-oidc.md) włączania bezpiecznego logowania do aplikacji sieci web. Do zarządzania sesjami aplikacji sieci web, można użyć następujących właściwości:
 

@@ -1,136 +1,102 @@
 ---
-title: Kontrolowanie dołączenie do hybrydowej usługi Azure AD urządzeń | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kontrolować dołączenie do usługi Azure AD hybrydowej urządzeń w usłudze Azure Active Directory.
+title: Kontrolowana Walidacja hybrydowych usługi Azure AD join — usługa Azure AD
+description: Dowiedz się, jak to zrobić kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD przed jego włączeniem w całej organizacji do wszystkich naraz
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 05/30/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93afc6f748ca9f464261c59e037a603ab6113bf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd5b388f92a875fb2635037a6eae3ff3b6a95793
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353112"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513289"
 ---
-# <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>Kontrolowanie dołączania Twoich urządzeń do hybrydowej usługi Azure AD
+# <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
 
-Dołączenie do hybrydowej usługi Azure Active Directory (Azure AD) to proces automatycznego rejestrowania urządzeń przyłączonych do domeny lokalnej za pomocą usługi Azure AD. Istnieją przypadki, w których nie chcesz, wszystkie swoje urządzenia do zarejestrowania się automatycznie. Ta zasada obowiązuje, na przykład podczas początkowego wdrożenia, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami.
+Gdy wszystkie wymagania wstępne zostały spełnione, urządzenia Windows są automatycznie rejestrowane jako urządzenia w Twojej dzierżawie usługi Azure AD. Stan tych tożsamości urządzeń w usłudze Azure AD jest określane jako dołączenie do hybrydowej usługi Azure AD. Więcej informacji na temat pojęć omówione w tym artykule znajdują się w artykułach [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md) i [planowanie implementacji hybrydowej usługi Azure Active Directory join ](hybrid-azuread-join-plan.md).
 
-Ten artykuł zawiera wskazówki dotyczące metody kontrolowania urządzeń, dołączenie do usługi Azure AD hybrydowej. 
+Organizacje mogą chcieć wykonać kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD przed jego włączeniem w całej organizacji wszystkie na raz. W tym artykule wyjaśniono, jak wykonać kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD.
 
-
-## <a name="prerequisites"></a>Wymagania wstępne
-
-W tym artykule założono, że znasz:
-
--  [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
- 
--  [Planowanie implementacji z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)
-
--  [Konfigurowanie hybrydowej usługi Azure Active Directory join dla domen zarządzanych](hybrid-azuread-join-managed-domains.md) lub [Konfiguruj dołączenie do usługi Azure Active Directory hybrydowej przez domeny federacyjne](hybrid-azuread-join-federated-domains.md)
-
-
-
-## <a name="control-windows-current-devices"></a>Kontrolowanie bieżące urządzenia Windows
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Kontrolowana Walidacja hybrydowych usługi Azure AD join w Windows bieżące urządzenia
 
 Dla urządzeń z systemem Windows pulpitu systemu operacyjnego, obsługiwana wersja to Windows Update rozliczenia 10 (wersja 1607) lub nowszej. Najlepszym rozwiązaniem jest uaktualnienie do najnowszej wersji systemu Windows 10.
 
-Logowanie w Windows wszystkie bieżące urządzenia automatycznego rejestrowania w usłudze Azure AD na początku urządzenia lub użytkownika. To zachowanie można kontrolować przy użyciu obiektu zasad grupy (GPO) lub System Center Configuration Manager.
+Kontrolowana Walidacja hybrydowych usługi Azure AD join w bieżące urządzenia Windows celu należy:
 
-Aby kontrolować bieżące urządzenia Windows, należy: 
-
-
-1.  **Na wszystkich urządzeniach**: Wyłączenie automatycznej rejestracji urządzeń.
-2.  **Do wybranych urządzeń**: Włączanie automatycznej rejestracji urządzeń.
-
-Po upewnieniu się, że wszystko działa zgodnie z oczekiwaniami, możesz ponownie włączyć automatyczną rejestrację urządzeń dla wszystkich urządzeń.
+1. Wyczyść wpis punktu połączenia usługi (SCP) z usługi Active Directory (AD), jeśli istnieje
+1. Skonfiguruj ustawienia rejestru po stronie klienta dla punktu połączenia usługi na komputerach przyłączonych do domeny za pomocą obiektu zasad grupy (GPO)
+1. Jeśli używasz usług AD FS należy również skonfigurować ustawienia rejestru po stronie klienta dla punktu połączenia usługi na serwerze usług AD FS przy użyciu obiektu zasad grupy  
 
 
 
-### <a name="group-policy-object"></a>Obiekt zasad grupy 
+### <a name="clear-the-scp-from-ad"></a>Wyczyść punkt połączenia usługi z usługi AD
 
-Przez wdrożenie następujących zasad grupy, można kontrolować zachowanie rejestracji urządzenia z Twoich urządzeń: **Rejestrowanie komputerów przyłączonych do domeny jako urządzenia**.
+Umożliwia modyfikowanie obiektów punkt połączenia usługi w AD usług Edytor interfejsów Active Directory (Edytor ADSI).
 
-Aby ustawić obiekt zasad grupy:
+1. Uruchom **ADSI Edit** aplikację dwuwarstwową za pomocą i stacji roboczej administratora lub kontrolera domeny jako Administrator przedsiębiorstwa.
+1. Połączyć się z **kontekście nazewnictwa konfiguracji** domeny.
+1. Przejdź do **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN konfiguracji rejestracji urządzenia**
+1. Kliknij prawym przyciskiem myszy obiekt typu liść pod **CN konfiguracji rejestracji urządzenia** i wybierz **właściwości**
+   1. Wybierz **słowa kluczowe** z **Edytor atrybutów** oknie i kliknij przycisk **edycji**
+   1. Wybierz wartości **azureADId** i **azureADName** (po jednym naraz) i kliknij przycisk **Usuń**
+1. Zamknij **ADSI: Edycja**
 
-1.  Otwórz **Menedżera serwera**, a następnie przejdź do **narzędzia** > **Zarządzanie zasadami grupy**.
 
-2.  Przejdź do węzła domeny, która odnosi się do domeny, na którym chcesz wyłączyć lub włączyć automatyczną rejestrację.
+### <a name="configure-client-side-registry-setting-for-scp"></a>Skonfiguruj ustawienia rejestru po stronie klienta dla punktu połączenia usługi
 
-3.  Kliknij prawym przyciskiem myszy **obiekty zasad grupy**, a następnie wybierz pozycję **New**.
+Skorzystaj z następującego przykładu, aby utworzyć obiekt zasad grupy (GPO) do Wdróż ustawienie rejestru, konfigurowanie wpis punktu połączenia usługi w rejestrze urządzeń.
 
-4.  Wprowadź nazwę (na przykład **dołączenie do hybrydowej usługi Azure AD**) dla obiektu zasad grupy. 
+1. Otwórz konsolę zarządzania zasadami grupy i utworzyć nowy obiekt zasad grupy w domenie.
+   1. Podaj swoje nowo utworzony obiekt zasad grupy nazwę (na przykład ClientSideSCP).
+1. Edytowanie obiektu zasad grupy i Znajdź następującą ścieżkę: **Konfiguracja komputera** > **preferencje** > **ustawienia Windows** > **rejestru**
+1. Kliknij prawym przyciskiem myszy, rejestru i wybierz pozycję **New** > **element rejestru**
+   1. Na **ogólne** skonfiguruj następujące czynności
+      1. Akcja: **Aktualizacja**
+      1. Gałąź: **HKEY_LOCAL_MACHINE**
+      1. Ścieżka klucza: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Nazwa wartości: **Identyfikator dzierżawy**
+      1. Typ wartości: **REG_SZ**
+      1. Dane wartości: Identyfikator GUID lub **identyfikator katalogu** wystąpienia usługi Azure AD (tę wartość można znaleźć w **witryny Azure portal** > **usługi Azure Active Directory**  >   **Właściwości** > **identyfikator katalogu**)
+   1. Kliknij przycisk **OK**.
+1. Kliknij prawym przyciskiem myszy, rejestru i wybierz pozycję **New** > **element rejestru**
+   1. Na **ogólne** skonfiguruj następujące czynności
+      1. Akcja: **Aktualizacja**
+      1. Gałąź: **HKEY_LOCAL_MACHINE**
+      1. Ścieżka klucza: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Nazwa wartości: **tenantName**
+      1. Typ wartości: **REG_SZ**
+      1. Dane wartości: Twoje zweryfikowanych **nazwy domeny** w usłudze Azure AD (na przykład `contoso.onmicrosoft.com` lub inna nazwa zweryfikowanej domeny w katalogu)
+   1. Kliknij przycisk **OK**.
+1. Zamknij Edytor dla nowo utworzonego obiektu zasad grupy
+1. Połącz nowo utworzony obiekt zasad grupy do żądanej jednostki Organizacyjnej zawierającej komputery z przyłączonym do domeny, które należą do Twojej populacji kontrolowane wprowadzanie
 
-5.  Kliknij przycisk **OK**.
+### <a name="configure-ad-fs-settings"></a>Konfigurowanie ustawień usług AD FS
 
-6.  Kliknij prawym przyciskiem myszy nowy obiekt zasad grupy, a następnie wybierz **Edytuj**.
+Jeśli używasz usług AD FS, należy najpierw skonfigurować punkt połączenia usługi po stronie klienta przy użyciu instrukcji wymienionych powyżej, ale łączenia obiektu zasad grupy na serwerach usług AD FS. Ta konfiguracja jest wymagany dla usług AD FS do ustalenia źródła tożsamości urządzeń jako usługi Azure AD.
 
-7.  Przejdź do **konfiguracji komputera** > **zasady** > **Szablony administracyjne** > **Windows Składniki** > **rejestracja urządzeń w usłudze**. 
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrolowana Walidacja hybrydowych usługi Azure AD join w Windows niższego poziomu urządzeń
 
-8.  Kliknij prawym przyciskiem myszy **zarejestrować komputery przyłączone do domeny jako urządzenia**, a następnie wybierz pozycję **Edytuj**.
+Aby zarejestrować urządzenia niskiego poziomu Windows, należy zainstalować organizacje [Microsoft dołączania komputerów do systemu Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) dostępne w Microsoft Download Center.
 
-    > [!NOTE] 
-    > Ten szablon zasad grupy została zmieniona z wcześniejszych wersjach konsoli zarządzania zasadami grupy. Jeśli używasz starszej wersji konsoli, przejdź do strony **konfiguracji komputera** > **zasady** > **Szablony administracyjne**  >  **Składników Windows** > **rejestracja urządzeń w usłudze** > **rejestr domeny przyłączyć komputer jako urządzenie**. 
-
-9.  Wybierz jedną z następujących ustawień, a następnie wybierz **Zastosuj**:
-
-    - **Wyłączone**: Aby zapobiec automatycznej rejestracji urządzeń.
-    - **Włączone**: Aby włączyć automatycznej rejestracji urządzeń.
-
-10. Kliknij przycisk **OK**.
-
-Należy połączyć obiekt zasad grupy z wybraną lokalizację. Na przykład aby ustawić te zasady dla wszystkich przyłączonych do domeny bieżącego urządzeń w Twojej organizacji, należy połączyć obiekt zasad grupy do domeny. Przeprowadzenie wdrożenia kontrolowanego, należy ustawić te zasady na przyłączonym do domeny Windows bieżące urządzenia, które należą do jednostki organizacyjnej lub grupie zabezpieczeń.
-
-### <a name="configuration-manager-controlled-deployment"></a>Wdrożenie kontrolowane w programie Configuration Manager 
-
-Można kontrolować zachowanie rejestracji urządzenia bieżącego urządzeń, konfigurując następującego ustawienia klienta: **Automatycznego rejestrowania nowych urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory**.
-
-Aby skonfigurować ustawienia klienta:
-
-1.  Otwórz **programu Configuration Manager**, wybierz opcję **administracji**, a następnie przejdź do **ustawienia klienta**.
-
-2.  Otwórz właściwości **domyślne ustawienia klienta** i wybierz **usług w chmurze**.
-
-3.  W obszarze **ustawienia urządzenia**, wybierz jedną z następujących ustawień **automatycznego rejestrowania nowych urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory**:
-
-    - **Nie**: Aby zapobiec automatycznej rejestracji urządzeń.
-    - **Tak**: Aby włączyć automatycznej rejestracji urządzeń.
-
-4.  Kliknij przycisk **OK**.
-
-Należy połączyć to ustawienie klienta z wybraną lokalizację. Na przykład aby skonfigurować to ustawienie dla wszystkich urządzeń bieżącego Windows w organizacji klienta, należy połączyć ustawienia domeny klienta. Przeprowadzenie wdrożenia kontrolowanego, można skonfigurować ustawienie klienta umożliwiające Windows przyłączone do domeny bieżącego urządzenia, które należą do jednostki organizacyjnej lub grupie zabezpieczeń.
-
-> [!Important]
-> Mimo że tej konfiguracji zajmuje się istniejących urządzeń systemu Windows 10 przyłączonych do domeny, urządzenia, które są nowo dołączenia do domeny może nadal próbować wykonać dołączenie do hybrydowej usługi Azure AD, ze względu na potencjalne opóźnienia w stosowanie zasad grupy lub Ustawienia programu Configuration Manager na urządzeniach. 
->
-> Aby tego uniknąć, zalecamy utworzenie nowego obrazu Sysprep (jako przykład użyto metody inicjowania obsługi administracyjnej). Należy go utworzyć za pomocą urządzenia, który został wcześniej hybrydowe przyłączone do usługi Azure AD i że ma już zasad grupy ustawienie lub zastosowane ustawienia klienta programu Configuration Manager. Należy również użyć nowego obrazu do inicjowania obsługi nowych komputerach, które dołączenia do domeny w organizacji. 
-
-## <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu
-
-Aby zarejestrować urządzenia niskiego poziomu Windows, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania na [Microsoft dołączania komputerów do systemu Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) strony.
-
-Pakiet można wdrożyć za pomocą to system dystrybucji oprogramowania, takie jak [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Pakiet obsługuje opcje standardowej instalacji dyskretnej, za pomocą parametru cichy. Current branch programu Configuration Manager zapewnia korzyści w porównaniu ze starszymi wersjami, takich jak możliwość śledzenia rejestracji zakończonych.
+Pakiet można wdrożyć za pomocą to system dystrybucji oprogramowania, takie jak [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Pakiet obsługuje opcje standardowej instalacji dyskretnej, za pomocą parametru cichy. Current branch programu Configuration Manager zapewnia korzyści w porównaniu ze starszymi wersjami, takich jak możliwość śledzenia rejestracji zakończonych.
 
 Instalator jest utworzenie zaplanowanego zadania w systemie, który jest uruchamiany w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do Windows. Zadanie dyskretnie łączy urządzenie z usługą Azure AD przy użyciu poświadczeń użytkownika, po uwierzytelnieniu w usłudze Azure AD.
 
-Aby kontrolować rejestracji urządzeń, należy wdrożyć pakiet Instalatora Windows tylko dla wybranej grupy systemu Windows niższego poziomu urządzeń. Jeśli sprawdzono, że wszystko działa zgodnie z oczekiwaniami, możesz wdrożyć pakiet do wszystkich urządzeń niskiego poziomu.
+Aby kontrolować rejestracji urządzeń, należy wdrożyć pakiet Instalatora Windows do wybranej grupy systemu Windows niższego poziomu urządzeń.
 
+> [!NOTE]
+> Jeśli punkt połączenia usługi nie jest skonfigurowana w AD, a następnie należy wykonać to samo podejście, zgodnie z opisem na [skonfigurować ustawienie rejestru po stronie klienta dla punktu połączenia usługi](#configure-client-side-registry-setting-for-scp)) na komputerach przyłączonych do domeny za pomocą obiektu zasad grupy (GPO).
+
+
+Po upewnieniu się, że wszystko działa zgodnie z oczekiwaniami, można automatycznie zarejestrować pozostałe urządzenia bieżącej i wcześniejszych Windows z usługą Azure AD przez [konfigurowania punktu połączenia usługi przy użyciu usługi Azure AD Connect](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md)
-
-
-
+[Planowanie implementacji z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)

@@ -2,20 +2,20 @@
 title: Definiowanie profilu technicznego OpenId Connect w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Definiowanie profilu technicznego OpenId Connect w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710316"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512916"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OpenId Connect w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64710316"
 
 Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokół dostawcy tożsamości. Reprezentuje stan wiedzy w protokołach nowoczesnego uwierzytelniania OpenID Connect 1.0 i definiuje warstwę tożsamości na podstawie protokołu OAuth 2.0. Za pomocą protokołu OpenId Connect profilu technicznego może tworzyć federacje ze dostawcy OpenId Connect na podstawie tożsamości, takiego jak Azure AD. Federowanie za pomocą dostawcy tożsamości umożliwia użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 **Nazwa** atrybutu **protokołu** element musi być równa `OpenIdConnect`. Na przykład protokół **MSA OIDC** profilu technicznego jest `OpenIdConnect`:
 
@@ -77,7 +77,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | --------- | -------- | ----------- |
 | client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
 | IdTokenAudience | Nie | Odbiorcy id_token. Jeśli zostanie określony, usługi Azure AD B2C sprawdza, czy token jest oświadczenie zwrócona przez dostawcę tożsamości i jest taki sam, jak określona. |
-| METADANE | Yes | Adres URL wskazujący dokument konfiguracji JSON formatowana zgodnie ze specyfikacją odnajdywania protokołu OpenID Connect, która jest także znana jako punkt końcowy konfiguracji openid dobrze znane. |
+| METADANE | Tak | Adres URL wskazujący dokument konfiguracji JSON formatowana zgodnie ze specyfikacją odnajdywania protokołu OpenID Connect, która jest także znana jako punkt końcowy konfiguracji openid dobrze znane. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
 | response_types | Nie | Typ odpowiedzi zgodnie ze specyfikacją protokołu OpenID Connect 1.0 Core. Możliwe wartości: `id_token`, `code`, lub `token`. |
 | response_mode | Nie | Metody, która używa dostawcy tożsamości w celu wysłania wynik z powrotem do usługi Azure AD B2C. Możliwe wartości: `query`, `form_post` (ustawienie domyślne) lub `fragment`. |
@@ -94,7 +94,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz szyfrowania jest wymagany tylko wtedy, gdy **response_types** metadanych jest ustawiona na `code`. W tym przypadku usługi Azure AD B2C sprawia, że inne wywołanie wymienić kod autoryzacji do tokena dostępu. Jeśli ustawiono metadanych `id_token` można pominąć klucz kryptograficzny.  |  
+| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz szyfrowania jest wymagany tylko wtedy, gdy **response_types** metadanych jest ustawiona na `code`. W tym przypadku usługi Azure AD B2C sprawia, że inne wywołanie wymienić kod autoryzacji do tokena dostępu. Jeśli ustawiono metadanych `id_token` można pominąć klucz kryptograficzny.  |  
 
 ## <a name="redirect-uri"></a>Identyfikator Uri przekierowania
  

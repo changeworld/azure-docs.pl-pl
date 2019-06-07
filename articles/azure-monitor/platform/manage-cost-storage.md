@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/03/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417866"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496340"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użycia i kosztów za pomocą usługi Azure Monitor dzienników
 
@@ -58,6 +58,9 @@ Log Analytics opłaty są dodawane na rachunku dotyczącym platformy Azure. Aby 
 Możesz skonfigurować dzienny limit i ograniczyć dziennie pozyskiwanie informacji do obszaru roboczego, ale zachować ostrożność, ponieważ cel nie powinno być osiągnięty dzienny limit.  W przeciwnym razie możesz utracić dane na pozostałą część dnia, w którym mogą mieć wpływ na inne usługi platformy Azure i rozwiązania, którego funkcja może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W rezultacie możliwość obserwowania i otrzymywać powiadamia, gdy warunki zdrowia w zasobach obsługujących usługi IT ma wpływ.  Dzienny limit jest przeznaczona do użycia jako sposób na zarządzanie nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostają w zakupionym limicie lub gdy chcesz ograniczaniu nieplanowanych opłat za obszar roboczy.  
 
 Po osiągnięciu dziennego limitu kolekcję typów danych płatnych zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego usługi Log Analytics i zdarzenie operacji są wysyłane do *operacji* tabeli w ramach **LogManagement** kategorii. Zbieranie danych wznawia działanie po podczas resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Firma Microsoft zaleca, definiując reguły alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy został osiągnięty dzienny limit danych. 
+
+> [!NOTE]
+> Dzienny limit nie zatrzymuje zbieranie danych z usługi Azure Security Center.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować
 
@@ -105,7 +108,7 @@ Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowyw
 
 ## <a name="legacy-pricing-tiers"></a>Starsza wersja warstw cenowych
 
-Klienci z umową Enterprise Agreement podpisaną przed 1 lipca 2018 r. lub twórcę już obszar roboczy usługi Log Analytics w ramach subskrypcji, możesz nadal mieć dostęp do *bezpłatna* planu. Jeśli Twoja subskrypcja nie jest związany z istniejącą rejestracją umowy EA *bezpłatna* warstwa nie jest dostępna podczas tworzenia obszaru roboczego w nowej subskrypcji po 2 kwietnia 2018 r.  Dane są ograniczone do siedmiu dni przechowywania dla *bezpłatna* warstwy.  Dla starszego *autonomiczny* lub *na węzeł* warstwy, a także bieżący 2018 pojedynczą warstwę cenową, zebranych danych jest dostępna w ciągu ostatnich 31 dni. *Bezpłatna* warstwa ma dziennego limitu pozyskiwania 500 MB, a jeśli okaże się stale przekraczać kwoty dozwolone woluminu, można zmienić obszar roboczy do innego planu, aby zbierać dane powyżej tego limitu. 
+Subskrypcje, które zawiera obszar roboczy usługi Log Analytics lub zasób usługi Application Insights przed 2 kwietnia 2018 r., w lub są połączone z umową Enterprise Agreement, który uruchamiany przed 1 lutego 2019 roku będą w dalszym ciągu ma dostęp do starszych warstw cenowych: Bezpłatna, autonomiczna (za GB) i na węzeł (OMS).  Obszary robocze w warstwie cenowej bezpłatna będą mieć dziennie pozyskiwanie informacji dane ograniczona do 500 MB (z wyjątkiem bezpieczeństwa typów danych zbieranych przez usługę Azure Security Center) i przechowywanie danych jest ograniczony do 7 dni. Warstwy cenowej bezpłatna jest przeznaczona tylko do celów oceny. Obszary robocze w autonomicznych lub warstwami cenowymi węzłów na mieć dostęp do przechowywania danych do 2 lata. 
 
 > [!NOTE]
 > Aby używać uprawnień wynikających z zakupu pakietu OMS E1 zestawu, pakiet E2 OMS lub dodatku pakietu OMS dla programu System Center, wybierz usługi Log Analytics *na węzeł* warstwy cenowej.
@@ -131,7 +134,9 @@ Jeśli chcesz przenieść obszar roboczy do bieżąca warstwa cenowa, należy zm
 
 Jeśli znajdują się na warstwie cenowej bezpłatna starszej wersji i wysłane w ciągu dnia więcej niż 500 MB danych, zbierania danych nie będzie możliwy do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje. W polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i brakujące dane, uruchom następujące zapytanie: 
 
-`Operation | where OperationCategory == 'Data Collection Status'`
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
 
 Po zatrzymaniu zbierania danych jest OperationStatus **ostrzeżenie**. Podczas uruchamiania zbierania danych jest OperationStatus **Powodzenie**. W poniższej tabeli opisano powody, dla których zatrzymuje zbieranie danych i zalecaną akcję, aby wznowić zbieranie danych:  
 
@@ -153,51 +158,63 @@ Większe użycie jest spowodowane przez jedną lub obie z następujących przycz
 
 Aby poznać liczbę komputerów wysyłających Puls z każdego dnia w ciągu ostatniego miesiąca, użyj
 
-`Heartbeat | where TimeGenerated > startofday(ago(31d))
+```kusto
+Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
-| render timechart`
+| render timechart
+```
 
 Aby uzyskać listę komputerów, które będą rozliczane jako węzły, jeśli obszar roboczy jest w starszej wersji na warstwie cenowej węzła, odszukaj węzły wysyłające **rozliczane typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, należy użyć `_IsBillable` [właściwość](log-standard-properties.md#_isbillable) i używać skrajnie po lewej stronie pola w pełni kwalifikowaną nazwę domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczane:
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
 
 Można oszacować liczbę płatnych węzłów widoczne jako: 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| billableNodes=dcount(computerName)`
+| billableNodes=dcount(computerName)
+```
 
 > [!NOTE]
 > Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. To zapytanie zastąpi stary sposób wykonywania zapytań na komputerze informacji o typie danych użycia.  
 
 Bardziej precyzyjne obliczenie co faktycznie jest naliczana jest uzyskać liczbę komputerów, na godzinę, które wysyłają typy danych rozliczane. (W przypadku obszarów roboczych w starszej wersji warstwę cenową na węzeł, usługi Log Analytics oblicza liczbę węzłów, które będą musiały być rozliczane godzinowo). 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ## <a name="understanding-ingested-data-volume"></a>Ilość danych pozyskanych opis
 
 Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 Należy pamiętać, że klauzuli "gdzie IsBillable = true" odfiltrowuje typy danych, z niektórych rozwiązań, dla których nie są pobierane opłaty pozyskiwania. 
 
 Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danych, na przykład jeśli chcesz badanie danych z powodu dzienniki usług IIS:
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 ### <a name="data-volume-by-computer"></a>Objętość danych według komputera
 

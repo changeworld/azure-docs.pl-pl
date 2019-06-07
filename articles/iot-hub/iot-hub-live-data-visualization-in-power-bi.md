@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 7c770aced36e4c90f654de8d31c12d55ad80c8d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e932048b41e9af149f14a814a1c92d86bd26f29
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780125"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479871"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Wizualizowanie danych z czujników w czasie rzeczywistym z usługi Azure IoT Hub przy użyciu usługi Power BI
 
@@ -25,7 +25,7 @@ ms.locfileid: "60780125"
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
-Dowiesz się, jak wizualizować dane z czujników w czasie rzeczywistym, które usługi Azure IoT hub odbiera przy użyciu usługi Power BI. Jeśli chcesz wypróbować kółko wizualizowanie danych w usłudze IoT hub z usługą Web Apps, zobacz [użycia usługi Azure Web Apps w celu wizualizacji danych z czujników w czasie rzeczywistym z usługi Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
+Dowiesz się, jak wizualizować dane z czujników w czasie rzeczywistym, które usługi Azure IoT hub odbiera przy użyciu usługi Power BI. Jeśli chcesz wypróbować kółko wizualizowanie danych w usłudze IoT hub za pomocą aplikacji sieci web, zobacz [wizualizowanie danych czujników w czasie rzeczywistym z usługi Azure IoT Hub za pomocą aplikacji sieci web](iot-hub-live-data-visualization-in-web-apps.md).
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
@@ -43,7 +43,7 @@ Dowiesz się, jak wizualizować dane z czujników w czasie rzeczywistym, które 
   * Usługi Azure IoT hub w ramach Twojej subskrypcji.
   * Aplikacja kliencka, która wysyła komunikaty do usługi Azure IoT hub.
 
-* Konto usługi Power BI. ([Bezpłatnego wypróbowania usługi Power BI](https://powerbi.microsoft.com/))
+* A Power BI account. ([Bezpłatnego wypróbowania usługi Power BI](https://powerbi.microsoft.com/))
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
@@ -179,6 +179,6 @@ Firma Microsoft oferuje także [aplikacjach mobilnych Power BI](https://powerbi.
 
 Usługa Power BI została pomyślnie użyta, wizualizowanie danych z czujników w czasie rzeczywistym z usługi Azure IoT hub.
 
-Istnieje alternatywny sposób wizualizować dane z usługi Azure IoT Hub. Zobacz [użycia usługi Azure Web Apps w celu wizualizacji danych z czujników w czasie rzeczywistym z usługi Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
+Innym sposobem wizualizacji danych z usługi Azure IoT Hub, zobacz [wizualizowanie danych czujników w czasie rzeczywistym z usługi Azure IoT Hub za pomocą aplikacji sieci web](iot-hub-live-data-visualization-in-web-apps.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

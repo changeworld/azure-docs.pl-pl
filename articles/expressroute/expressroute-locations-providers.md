@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/28/2019
-ms.author: mialdrid
-ms.openlocfilehash: a86d3f44d3c2177185fa81602f953be4f726badb
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 05/31/2019
+ms.author: jaredr80
+ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257874"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478164"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -86,10 +86,10 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Chennai** | Tata Communications | Indie Południowe | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Chennai2** | Airtel | Indie Południowe | Airtel |
 | **Chicago** | Equinix | Środkowo-północne stany USA | Aryaka Networks, AT&T NetBond, Cologix, Comcast, Coresite, Equinix, InterCloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Global Limited, Sprint, Telia Carrier, Verizon, Zayo |
-| **Dallas** | Equinix | Nie dotyczy | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Verizon, Zayo|
+| **Dallas** | Equinix | Nie dotyczy | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | CoreSite | Środkowo-zachodnie stany USA | CoreSite, Megaport, Zayo |
 | **Dubai** | Zjednoczone Emiraty Arabskie Etisalat | Północne Zjednoczone Emiraty Arabskie | Zjednoczone Emiraty Arabskie Etisalat |
-| **Dubai2** | datamena jednostka bazy danych | Północne Zjednoczone Emiraty Arabskie | datamena jednostka bazy danych |
+| **Dubai2** | datamena jednostka bazy danych | Północne Zjednoczone Emiraty Arabskie | jednostka bazy danych datamena, Orixcom |
 | **Dublin** | Equinix | Europa Północna | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | Nie dotyczy | DE-CIX, Interxion |
 | **Hongkong SAR** | Equinix | Azja Wschodnia | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
@@ -100,13 +100,13 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Londyn2** | Telehouse | Południowe Zjednoczone Królestwo | IX Reach, Equinix |
 | **Los Angeles** | CoreSite | Nie dotyczy | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
 | **Marsylia** |Interxion | Francja Południowa | Interxion |
-| **Melbourne** | NextDC | Australia Południowo-Wschodnia | AARNet, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
+| **Melbourne** | NextDC | Australia Południowo-Wschodnia | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | Nie dotyczy | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | Nie dotyczy | Bell Canada, Cologix, Telus, Zayo |
 | **Mumbaj** | Tata Communications | Indie Zachodnie | Global CloudXchange (GCX), Reliance Jio, Sify, Tata Communications, Verizon |
 | **Mumbaj2** | Airtel | Indie Zachodnie | Airtel, Sify, Vodafone Idea |
 | **Nowy Jork** | Equinix | Nie dotyczy | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
-| **Newport (Walia)** | Dane nowej generacji | Zachodnie Zjednoczone Królestwo | British Telecom, Level 3 Communications, Next Generation Data |
+| **Newport (Walia)** | Dane nowej generacji | Zachodnie Zjednoczone Królestwo | British Telecom, Colt, Level 3 Communications, dane nowej generacji |
 | **Osaka** | Equinix | Japonia Zachodnia | Equinix, Internet Initiative Japan Inc. — IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Paryż** | Interxion | Francja Środkowa | Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | NextDC | Nie dotyczy | Megaport, NextDC |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297702"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480419"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapowanie wydajności przepływów danych i dostosowywania przewodnik
 
@@ -29,15 +29,28 @@ Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfej
 
 ![Debugowanie przycisk](media/data-flow/debugb1.png "debugowania")
 
+## <a name="monitor-data-flow-performance"></a>Monitorowanie wydajności przepływu danych
+
+Podczas projektowania usługi danych mapowania przepływy w przeglądarce, możesz test jednostkowy Każde przekształcenie poszczególnych, klikając kartę Podgląd danych, w dolnym okienku ustawienia dla każdego transformacji. Następnym krokiem, jakie należy podjąć jest testowanie usługi danych przepływ end-to-end w Projektancie potoku. Dodaj działanie wykonania przepływu danych i użyj przycisku debugowania do testowania wydajności przepływu danych. W dolnym okienku w oknie potok będzie widoczna ikona eyeglass w obszarze "Akcje":
+
+![Monitor przepływu danych](media/data-flow/mon002.png "Monitor 2 przepływ danych")
+
+Klikając tę ikonę, zostanie wyświetlona plan wykonywania i profil wydajności kolejnych przepływu danych. Te informacje można użyć do oszacowania wydajności przepływu danych z różnych wielkości źródeł danych. Należy pamiętać, że można założyć 1 minuta czasu konfiguracji wykonywania zadania dla klastra, w obliczeniach ogólnej wydajności i korzystania z domyślnego środowiska Azure Integration Runtime może być konieczne dodanie 5 minut czasu klastra w górę pokrętła także.
+
+![Monitorowanie przepływu danych](media/data-flow/mon003.png "Monitor 3 przepływ danych")
+
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optymalizacja dla usługi Azure SQL Database i Azure SQL Data Warehouse
 
 ![Źródło część](media/data-flow/sourcepart2.png "część źródła")
 
-### <a name="you-can-match-spark-data-partitioning-to-your-source-database-partitioning-based-on-a-database-table-column-key-in-the-source-transformation"></a>Można dopasować Spark partycjonowanie partycjonowania bazy danych źródła danych na podstawie bazy danych tabeli kolumna klucza w Przekształcenie źródła
+### <a name="partition-your-source-data"></a>Partycjonowanie danych źródłowych
 
 * Przejdź do "Optymalizuj" i wybierz pozycję "Źródło". Ustaw kolumnę określonej tabeli lub typu w zapytaniu.
 * Jeśli została wybrana opcja "kolumnę", następnie wybierz kolumny partycji.
 * Ponadto można ustawić maksymalną liczbę połączeń do bazy danych SQL Azure. Możesz spróbować wyższe ustawienie do uzyskania równoległych połączeń z bazą danych. Jednak czasami może spowodować szybsze działanie z ograniczoną liczbę połączeń.
+* Źródło tabel bazy danych nie trzeba być dzielony na partycje.
+* Ustawianie zapytania w swoją transformację źródłowego, który pasuje do schematu partycjonowania tabeli bazy danych umożliwi aparatu bazy danych źródła, wykorzystywać eliminacji partycji.
+* Jeśli źródło nie jest partycjonowany, ADF będą nadal używać partycjonowania w środowisku przekształcania platformy Spark na podstawie klucza wybranej podczas przekształcania źródła danych.
 
 ### <a name="set-batch-size-and-query-on-source"></a>Ustaw rozmiar partii i zapytania w źródle
 
@@ -51,7 +64,7 @@ Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfej
 
 ![Obiekt sink](media/data-flow/sink4.png "ujście")
 
-* Aby uniknąć przetwarzania wiersz po wierszu floes swoje dane, należy ustawić "rozmiar partii" w ustawieniach obiektu sink dla bazy danych SQL Azure. Informuje, że usługi ADF, aby proces bazy danych zapisuje w partiach, w zależności od rozmiaru, pod warunkiem.
+* Aby uniknąć przetwarzania wiersz po wierszu przepływów danych, należy ustawić "rozmiar partii" w ustawieniach obiektu sink dla bazy danych SQL Azure. Informuje, że usługi ADF, aby proces bazy danych zapisuje w partiach, w zależności od rozmiaru, pod warunkiem.
 
 ### <a name="set-partitioning-options-on-your-sink"></a>Ustaw opcje obiektu sink partycjonowanie
 
@@ -84,7 +97,7 @@ Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfej
 
 ### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Ładowanie danych zbiorczo za pomocą programu Polybase za pomocą przemieszczania
 
-* Aby uniknąć przetwarzania wiersz po wierszu floes swoje dane, należy ustawić opcję "Staging" w ustawieniach obiektu Sink tak, aby ADF dzięki technologii Polybase, aby uniknąć wstawia wiersz po wierszu do magazynu danych. Wydać polecenie usługi ADF, aby przy użyciu technologii Polybase, aby dane mogą być ładowane w trybie zbiorczym.
+* Aby uniknąć przetwarzania wiersz po wierszu przepływów danych, należy ustawić opcję "Staging" w ustawieniach obiektu Sink tak, aby ADF dzięki technologii Polybase, aby uniknąć wstawia wiersz po wierszu do magazynu danych. Wydać polecenie usługi ADF, aby przy użyciu technologii Polybase, aby dane mogą być ładowane w trybie zbiorczym.
 * Podczas wykonywania Twoje działanie przepływu danych w potoku, za pomocą przemieszczania jest włączona, będzie konieczne wybranie lokalizacji magazynu obiektów Blob, dane tymczasowe do ładowania zbiorczego.
 
 ### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zwiększ rozmiar usługi SQL data Warehouse platformy Azure
@@ -113,4 +126,4 @@ Zobacz inne artykuły, przepływ danych:
 
 - [Przegląd przepływu danych](concepts-data-flow-overview.md)
 - [Działanie przepływu danych](control-flow-execute-data-flow-activity.md)
-
+- [Monitorowanie wydajności przepływu danych](concepts-data-flow-monitoring.md)
