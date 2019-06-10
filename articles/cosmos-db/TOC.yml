@@ -533,8 +533,8 @@
           href: how-to-sql-subquery.md
     - name: Zestawienie zmian
       items:
-        - name: Dzienniki wyzwalacza usługi Azure Cosmos DB
-          href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Zasady połączeń wyzwalaczy usługi Azure Cosmos DB
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: Wiele wyzwalaczy usługi Azure Cosmos DB
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Rozwiązywanie problemów z wyzwalaczami usługi Azure Cosmos DB

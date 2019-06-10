@@ -163,24 +163,28 @@
       items:
         - name: Omówienie indeksatorów
           href: search-indexer-overview.md
-        - name: Indeksator usługi Blob Storage
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Indeksator usługi Table Storage
+        - name: Indeksator usługi Azure Table Storage
           href: search-howto-indexing-azure-tables.md
-        - name: Indeksator bazy danych SQL
+        - name: Indeksator usługi Azure SQL DB
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Indeksator usługi Cosmos DB
+        - name: Indeksator usługi Azure Cosmos DB
           href: search-howto-index-cosmosdb.md
-        - name: Indeksowanie obiektów blob jeden do wielu
-          href: search-howto-index-one-to-many-blobs.md
-        - name: Indeksowanie obiektów blob CSV
-          href: search-howto-index-csv-blobs.md
-        - name: Indeksowanie obiektów blob JSON
-          href: search-howto-index-json-blobs.md
+        - name: Indeksator usługi Azure Blob Storage
+          items:
+            - name: Konfigurowanie indeksatora obiektów blob
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: Indeksowanie obiektów blob typu „jeden do wielu”
+              href: search-howto-index-one-to-many-blobs.md
+            - name: Indeksowanie obiektów blob CSV
+              href: search-howto-index-csv-blobs.md
+            - name: Indeksowanie obiektów blob JSON
+              href: search-howto-index-json-blobs.md
+        - name: Planowanie indeksatorów
+          href: search-howto-schedule-indexers.md
+        - name: Mapowanie pól
+          href: search-indexer-field-mappings.md
         - name: Łączenie z maszynami wirtualnymi z programem SQL Server
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: Mapowania pól
-          href: search-indexer-field-mappings.md
         - name: Rozwiązywanie typowych problemów
           href: search-indexer-troubleshooting.md
     - name: Wzbogacanie o sztuczną inteligencję

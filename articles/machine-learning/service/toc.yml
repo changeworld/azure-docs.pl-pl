@@ -86,6 +86,9 @@
     - name: Obszar roboczy
       displayName: concept definitions architecture
       href: concept-workspace.md
+    - name: Docelowy zasób obliczeniowy
+      displayName: concept definitions architecture
+      href: concept-compute-target.md
     - name: Interfejs wizualny
       displayName: concept
       href: ui-concept-visual-interface.md
@@ -95,15 +98,15 @@
     - name: Zarządzanie modelami (MLOps)
       displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: Potoki uczenia maszynowego z możliwością ponownego użycia
+      href: concept-ml-pipelines.md
     - name: Możliwość interpretowania modelu
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: Przyspieszanie działania dzięki układom FPGA
+    - name: Omówienie układów FPGA
       href: concept-accelerate-with-fpgas.md
-    - name: Optymalizowanie za pomocą rozwiązania ONNX i środowiska uruchomieniowego ONNX
+    - name: Rozwiązanie ONNX i środowisko uruchomieniowe ONNX
       href: concept-onnx.md
-    - name: Potoki uczenia maszynowego
-      href: concept-ml-pipelines.md
     - name: Bezpieczeństwo
       items:
         - name: Przegląd zabezpieczeń przedsiębiorstwa
