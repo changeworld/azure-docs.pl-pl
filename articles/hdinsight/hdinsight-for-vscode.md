@@ -306,22 +306,22 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
 
     | name | description | — typ | 
     | :- | :- | :- | 
-    | plik | Plik zawierający wykonywanie aplikacji | Ścieżka (wymagane) | 
+    | file | Plik zawierający wykonywanie aplikacji | Ścieżka (wymagane) | 
     | proxyUser | Personifikację podczas uruchamiania zadania | string | 
     | className | Główna klasa platformy Java lub Spark aplikacji | string |
     | args | Argumenty wiersza polecenia dla aplikacji | Lista ciągów | 
-    | plikach JAR | jars ma być używany w ramach tej sesji | Lista parametrów | 
+    | jars | jars ma być używany w ramach tej sesji | Lista parametrów | 
     | pyFiles | Pliki języka Python do użycia w ramach tej sesji | Lista parametrów |
-    | — pliki | pliki, które zostaną użyte w tej sesji | Lista parametrów |
+    | files | pliki, które zostaną użyte w tej sesji | Lista parametrów |
     | driverMemory | Ilość pamięci na potrzeby procesu sterownika | string |
     | driverCores | Liczba rdzeni do użycia dla procesu sterownika | int |
     | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | string |
     | executorCores | Liczba rdzeni do użycia dla każdej funkcji wykonawczej | int |
     | numExecutors | Liczbie funkcji wykonawczych, aby uruchomić dla tej sesji | int |
-    | Archiwa | Archiwa ma być używany w ramach tej sesji | Lista parametrów |
-    | kolejki | Nazwa kolejki YARN, do której przesłano | string |
+    | archives | Archiwa ma być używany w ramach tej sesji | Lista parametrów |
+    | queue | Nazwa kolejki YARN, do której przesłano | string |
     | name | Nazwa tej sesji | string |
-    | potwierdzenie | Właściwości konfiguracji aparatu Spark | Mapa klucza = val |
+    | conf | Właściwości konfiguracji aparatu Spark | Mapa klucza = val |
 
     Treść odpowiedzi   
     Utworzony obiekt usługi Batch.
@@ -332,7 +332,7 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
     | appId | Identyfikator aplikacji dla tej sesji |  String |
     | appInfo | Informacje o szczegółowe aplikacji | Mapa klucza = val |
     | log | Wiersze dziennika | Lista ciągów |
-    | stan |   Stan usługi batch | string |
+    | state |   Stan usługi batch | string |
 
 >[!NOTE]
 >Przypisanej konfiguracji usługi livy będą wyświetlane w okienku danych wyjściowych po Prześlij skrypt.
