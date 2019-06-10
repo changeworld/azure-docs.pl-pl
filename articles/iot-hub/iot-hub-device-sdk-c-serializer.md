@@ -69,17 +69,17 @@ Następujące typy danych są obsługiwane w modelach utworzonych za pomocą **s
 | double |Podwójna precyzja liczb zmiennoprzecinkowych |
 | int |32-bitowa liczba całkowita |
 | float |Liczba zmiennoprzecinkowa pojedynczej precyzji |
-| długi |Liczba całkowita typu Long |
+| long |Liczba całkowita typu Long |
 | int8\_t |8-bitowa liczba całkowita |
 | int16\_t |16-bitową liczbę całkowitą |
 | int32\_t |32-bitowa liczba całkowita |
 | int64\_t |64-bitowa liczba całkowita |
 | bool |wartość logiczna |
 | ascii\_char\_ptr |Ciąg ASCII |
-| EDM\_DATA\_CZASU\_PRZESUNIĘCIA |Przesunięcie czasu daty |
+| EDM\_DATE\_TIME\_OFFSET |Przesunięcie czasu daty |
 | EDM\_GUID |Identyfikator GUID |
 | EDM\_BINARY |binary |
-| ZADEKLARUJ\_— STRUKTURA |Typ złożony danych |
+| DECLARE\_STRUCT |Typ złożony danych |
 
 Zacznijmy od ostatniego typu danych. **DECLARE\_struktury** można zdefiniować złożone typy danych, stanowiące inne typy pierwotne. Te grupy umożliwiają zdefiniowanie modelu, który wygląda w następujący sposób:
 
