@@ -35,14 +35,14 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| miejsce docelowe | obiekt | Obiekt, który definiuje punkt końcowy. |
-| filtr | obiekt | Opcjonalne pole do filtrowania typów zdarzeń. |
+| destination | obiekt | Obiekt, który definiuje punkt końcowy. |
+| filter | obiekt | Opcjonalne pole do filtrowania typów zdarzeń. |
 
 ### <a name="destination-object"></a>obiekt docelowy
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| EndpointType | ciąg | Typ punktu końcowego dla subskrypcji (webhook/HTTP, Centrum zdarzeń lub kolejki). | 
+| endpointType | ciąg | Typ punktu końcowego dla subskrypcji (webhook/HTTP, Centrum zdarzeń lub kolejki). | 
 | endpointUrl | ciąg | Docelowy adres URL zdarzenia w tej subskrypcji zdarzeń. | 
 
 ### <a name="filter-object"></a>obiekt filtru
