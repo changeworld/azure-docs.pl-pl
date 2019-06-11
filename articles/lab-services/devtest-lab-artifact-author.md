@@ -56,7 +56,7 @@ Poniższy przykład przedstawia sekcje, które tworzą podstawowa struktura plik
 | Nazwa elementu | Wymagana? | Opis |
 | --- | --- | --- |
 | $schema |Nie |Lokalizacja pliku schematu JSON. Plik schematu JSON może pomóc można sprawdzić poprawność pliku definicji. |
-| tytuł |Tak |Nazwa artefaktu wyświetlane w środowisku laboratoryjnym. |
+| title |Tak |Nazwa artefaktu wyświetlane w środowisku laboratoryjnym. |
 | description |Tak |Opis artefaktu wyświetlane w środowisku laboratoryjnym. |
 | iconUri |Nie |Identyfikator URI ikona wyświetlana w środowisku laboratoryjnym. |
 | targetOsType |Tak |System operacyjny maszyny wirtualnej, w którym zainstalowano artefaktu. Obsługiwane opcje to Windows i Linux. |
@@ -78,7 +78,7 @@ Aby zdefiniować parametry, należy użyć następującej strukturze:
 
 | Nazwa elementu | Wymagana? | Opis |
 | --- | --- | --- |
-| — typ |Tak |Typ wartości parametru. Przejrzyj następującą listę dozwolonych typów. |
+| type |Tak |Typ wartości parametru. Przejrzyj następującą listę dozwolonych typów. |
 | displayName |Tak |Nazwa parametru, który jest wyświetlany użytkownikowi w środowisku laboratoryjnym. |
 | description |Tak |Opis parametru, który jest wyświetlany w środowisku laboratoryjnym. |
 
