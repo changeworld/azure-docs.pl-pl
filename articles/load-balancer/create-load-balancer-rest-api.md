@@ -38,7 +38,7 @@ Użyj następujące żądanie HTTP PUT, aby utworzyć nowy Azure podstawowego mo
 |subscriptionId   |  ścieżka       |  True       |   ciąg      |  Poświadczenia subskrypcji, które jednoznacznie identyfikują subskrypcji Microsoft Azure. Identyfikator subskrypcji jest częścią identyfikatora URI, dla każdego wywołania usługi.      |
 |resourceGroupName     |     ścieżka    | True        |  ciąg       |   Nazwa grupy zasobów.     |
 |loadBalancerName     |  ścieżka       |      True   |    ciąg     |    Nazwa modułu równoważenia obciążenia.    |
-|wersja interfejsu API    |   query     |  True       |     ciąg    |  Wersja interfejsu API klienta.      |
+|api-version    |   query     |  True       |     ciąg    |  Wersja interfejsu API klienta.      |
 
 
 
