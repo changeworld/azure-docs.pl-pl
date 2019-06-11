@@ -191,10 +191,10 @@ Otwieranie definicji aplikacji logiki w widoku kodu, przejdź do **HTTP** sekcji
 | Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
 | tenant | Tak | Identyfikator GUID dla dzierżawy usługi Azure AD | 
-| Grupy odbiorców | Tak | Identyfikator GUID zasobu docelowego, którą chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci web lub aplikacji interfejsu API | 
+| audience | Tak | Identyfikator GUID zasobu docelowego, którą chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci web lub aplikacji interfejsu API | 
 | clientId | Tak | Identyfikator GUID dla klientów żądających dostępu, który jest identyfikator klienta z tożsamości aplikacji w aplikacji logiki | 
-| wpis tajny | Tak | Klucz lub hasło za pomocą tożsamości aplikacji klienta, który żąda tokenu dostępu | 
-| typ | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. | 
+| secret | Tak | Klucz lub hasło za pomocą tożsamości aplikacji klienta, który żąda tokenu dostępu | 
+| type | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. | 
 |||| 
 
 Na przykład:
@@ -236,7 +236,7 @@ W **autoryzacji** sekcji, podając ten wiersz:
 
 | Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
-| typ | Tak | Typ uwierzytelniania. Dla certyfikatów klientów SSL, wartość musi być `ClientCertificate`. | 
+| type | Tak | Typ uwierzytelniania. Dla certyfikatów klientów SSL, wartość musi być `ClientCertificate`. | 
 | password | Tak | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) | 
 | pfx | Tak | Zawartość algorytmem Base64 (plik PFX) certyfikatu klienta | 
 |||| 
@@ -253,7 +253,7 @@ W **autoryzacji** sekcji, podając ten wiersz:
 
 | Element | Wymagany | Opis | 
 | ------- | -------- | ----------- | 
-| typ | Tak | Typ uwierzytelniania, którego chcesz używać. Dla uwierzytelniania podstawowego, wartość musi być `Basic`. | 
+| type | Tak | Typ uwierzytelniania, którego chcesz używać. Dla uwierzytelniania podstawowego, wartość musi być `Basic`. | 
 | username | Tak | Nazwa użytkownika, która ma być używany do uwierzytelniania | 
 | password | Tak | Hasło, które ma być używany do uwierzytelniania | 
 |||| 
