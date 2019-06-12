@@ -75,7 +75,7 @@ Lub można ręcznie określić zasady ponawiania w `inputs` sekcji akcję lub wy
 |-------|------|-------------|
 | <*retry-policy-type*> | String | Typ zasad ponawiania, którego chcesz użyć: `default`, `none`, `fixed`, lub `exponential` | 
 | <*retry-interval*> | String | Interwał ponawiania, w którym należy użyć wartości [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimalna odbywa się domyślnie `PT5S` i maksymalny interwał `PT1D`. Gdy używasz zasady o interwale wykładniczym, można określić różne wartości minimalne i maksymalne. | 
-| <*retry-attempts*> | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
+| <*retry-attempts*> | Integer | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
 ||||
 
 *Opcjonalne*
