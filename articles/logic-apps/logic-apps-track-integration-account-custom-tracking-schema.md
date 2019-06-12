@@ -59,7 +59,7 @@ Ten artykuł zawiera kod niestandardowy, który można użyć w warstwach poza a
 | Właściwość | Typ | Opis |
 | --- | --- | --- |
 | sourceType |   | Typ uruchamiania źródła. Dozwolone wartości to **Microsoft.Logic/workflows** i **niestandardowe**. (Obowiązkowe) |
-| Element źródłowy |   | Jeśli typ źródła jest **Microsoft.Logic/workflows**, informacje o źródle musi wykonać tego schematu. Jeśli typ źródła jest **niestandardowe**, schemat jest JToken. (Obowiązkowe) |
+| source |   | Jeśli typ źródła jest **Microsoft.Logic/workflows**, informacje o źródle musi wykonać tego schematu. Jeśli typ źródła jest **niestandardowe**, schemat jest JToken. (Obowiązkowe) |
 | systemId | String | Identyfikator logiki aplikacji systemu. (Obowiązkowe) |
 | runId | String | Identyfikator przebiegu aplikacji logiki (Obowiązkowe) |
 | operationName | String | Nazwa operacji (na przykład akcję lub wyzwalacz). (Obowiązkowe) |
@@ -71,7 +71,7 @@ Ten artykuł zawiera kod niestandardowy, który można użyć w warstwach poza a
 | eventLevel |   | Poziom zdarzenia. (Obowiązkowe) |
 | eventTime |   | Czas w UTC w formacie RRRR-MM-DDTHH:MM:SS.00000Z wydarzenia. (Obowiązkowe) |
 | recordType |   | Typ rekordu śledzenia. Dozwolona wartość to **niestandardowe**. (Obowiązkowe) |
-| rekord |   | Typ rekordu niestandardowego. Dozwolony format to JToken. (Obowiązkowe) |
+| record |   | Typ rekordu niestandardowego. Dozwolony format to JToken. (Obowiązkowe) |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schematy śledzenia protokołu B2B
