@@ -61,9 +61,9 @@ Aby pomóc monitorować Powodzenie, błędy i właściwości wiadomości dla tra
 | senderPartnerName | String | Nazwa partnera nadawca komunikatu AS2. (Opcjonalnie) |
 | receiverPartnerName | String | Nazwa partnera odbiorca komunikatu AS2. (Opcjonalnie) |
 | as2To | String | Nazwa odbiorcy komunikat AS2, z nagłówków komunikatu AS2. (Obowiązkowe) |
-| użyciu nagłówków as2From | String | Nazwa nadawcy wiadomości AS2 z nagłówków komunikatu AS2. (Obowiązkowe) |
+| as2From | String | Nazwa nadawcy wiadomości AS2 z nagłówków komunikatu AS2. (Obowiązkowe) |
 | agreementName | String | Nazwa umowy AS2, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | String | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | String | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | messageId | String | Identyfikator komunikatu AS2, z nagłówków komunikatu AS2 (opcjonalnie) |
 | dispositionType |String | Wartość typu dyspozycji dyspozycji powiadomienia (powiadomienia MDN) wiadomości. (Opcjonalnie) |
 | fileName | String | Nazwa pliku z nagłówka komunikatu AS2. (Opcjonalnie) |
@@ -76,7 +76,7 @@ Aby pomóc monitorować Powodzenie, błędy i właściwości wiadomości dla tra
 | outgoingHeaders |Słownik JToken | Wychodzący szczegółowe informacje o nagłówku komunikatu AS2. (Opcjonalnie) |
 | isNrrEnabled | Boolean | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
 | isMdnExpected | Boolean | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
-| mdnType | Wyliczenia | Dozwolone wartości to **NotConfigured**, **synchronizacji**, i **Async**. (Obowiązkowe) |
+| mdnType | Enum | Dozwolone wartości to **NotConfigured**, **synchronizacji**, i **Async**. (Obowiązkowe) |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>Schemat śledzenia komunikatu MDN AS2
@@ -114,17 +114,17 @@ Aby pomóc monitorować Powodzenie, błędy i właściwości wiadomości dla tra
 | senderPartnerName | String | Nazwa partnera nadawca komunikatu AS2. (Opcjonalnie) |
 | receiverPartnerName | String | Nazwa partnera odbiorca komunikatu AS2. (Opcjonalnie) |
 | as2To | String | Nazwa partnera, który otrzymuje komunikat AS2. (Obowiązkowe) |
-| użyciu nagłówków as2From | String | Nazwa partnera, który wysyła komunikat AS2. (Obowiązkowe) |
+| as2From | String | Nazwa partnera, który wysyła komunikat AS2. (Obowiązkowe) |
 | agreementName | String | Nazwa umowy AS2, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek |String | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction |String | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | messageId | String | Identyfikator komunikatu AS2 (Opcjonalnie) |
 | originalMessageId |String | Identyfikator AS2 oryginalnego komunikatu. (Opcjonalnie) |
 | dispositionType | String | Wartość typu dyspozycji powiadomienia MDN. (Opcjonalnie) |
 | isMessageFailed |Boolean | Czy komunikat AS2 nie powiodło się. (Obowiązkowe) |
 | isMessageSigned |Boolean | Czy komunikat AS2 został podpisany. (Obowiązkowe) |
 | isNrrEnabled | Boolean | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
-| statusCode | Wyliczenia | Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
-| micVerificationStatus | Wyliczenia | Dozwolone wartości to **NotApplicable**, **zakończyło się pomyślnie**, **i**. (Obowiązkowe) |
+| statusCode | Enum | Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| micVerificationStatus | Enum | Dozwolone wartości to **NotApplicable**, **zakończyło się pomyślnie**, **i**. (Obowiązkowe) |
 | correlationMessageId | String | Identyfikator korelacji. Oryginalny messaged ID (identyfikator wiadomości, dla której skonfigurowano powiadomienia MDN). (Opcjonalnie) |
 | incomingHeaders | Słownik JToken | Wskazuje przychodzących szczegółowe informacje o nagłówku komunikatu. (Opcjonalnie) |
 | outgoingHeaders |Słownik JToken | Wskazuje wychodzących szczegółowe informacje o nagłówku komunikatu. (Opcjonalnie) |
