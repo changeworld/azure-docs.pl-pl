@@ -120,15 +120,15 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
    | Aplikacje logiki żądania pole nagłówka | Wartość | Type | Opis |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | fragmentaryczne | String | Wskazuje, że zawartość została przekazana we fragmentach |
-   | **x-ms-content-length** | <*content-length*> | Liczba całkowita | Całą zawartość rozmiar w bajtach przed dzielący na fragmenty |
+   | **x-ms-content-length** | <*content-length*> | Integer | Całą zawartość rozmiar w bajtach przed dzielący na fragmenty |
    ||||
 
 2. Punkt końcowy odpowiada za pomocą "200" pomyślny kod statusu i tych informacji opcjonalnych:
 
    | Pola nagłówka odpowiedzi punktu końcowego | Type | Wymagane | Opis |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Liczba całkowita | Nie | Rozmiar fragmentu sugerowane w bajtach |
-   | **Lokalizacja** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
+   | **x-ms-chunk-size** | Integer | Nie | Rozmiar fragmentu sugerowane w bajtach |
+   | **Location** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
    ||||
 
 3. Twoja aplikacja logiki tworzy i wysyła kolejnych komunikatów HTTP PATCH -, każdy z tych informacji:
@@ -140,8 +140,8 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
      | Aplikacje logiki żądania pole nagłówka | Wartość | Type | Opis |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | Zakres bajtów dla bieżącego fragmentu zawartości, łącznie z wartością początkową końcową wartość i łączny rozmiar zawartości, na przykład: "bajtów = 0-1023/10100" |
-     | **Typ zawartości** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
-     | **Długość zawartości** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
+     | **Content-Type** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
+     | **Content-Length** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
      |||||
 
 4. Po wykonaniu każdego żądania PATCH punktu końcowego potwierdza potwierdzenia dla każdego fragmentu odpowiedzi z kodem stanu "200".
