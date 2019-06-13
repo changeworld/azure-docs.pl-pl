@@ -95,17 +95,17 @@ W poniższej tabeli opisano elementy danych wyjściowych pliku JSON.
 | Element | Opis |
 | --- | --- |
 | Version |Odnosi się do wersji interfejsu API wideo. Bieżąca wersja to 2. |
-| Timescale |"Impulsów" na sekundę filmu wideo. |
+| Skala czasu |"Impulsów" na sekundę filmu wideo. |
 | Offset |Przesunięcie czasu dla sygnatury czasowe w "taktów." W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może ulec zmianie. |
 | Framerate |Liczba klatek na sekundę w wideo. |
 | Width, Height |Odnosi się do szerokości i wysokości wideo w pikselach. |
-| Start |Sygnatura czasowa rozpoczęcia w "taktach". |
-| Duration |Długość zdarzenia w "znaczników". |
+| Uruchamianie |Sygnatura czasowa rozpoczęcia w "taktach". |
+| Czas trwania |Długość zdarzenia w "znaczników". |
 | Interval |Interwał każdego wpisu w zdarzeniu w "taktach". |
 | Events |Każdy fragment zdarzeń zawiera ruchu wykryte w tym czas trwania. |
 | Type |W bieżącej wersji jest to zawsze "2" dla ogólnego ruchu. Dzięki temu etykiety interfejsów API Video elastyczność do kategoryzowania ruchu w przyszłych wersji. |
 | RegionID |Jak wyjaśniono powyżej, ta będzie zawsze równa 0 w tej wersji. Ta etykieta dostarcza interfejs API wideo elastyczność, aby znaleźć ruchu w różnych regionach w przyszłych wersjach. |
-| Regions |Odnosi się do obszaru w wideo, gdzie interesujące Cię ruchu. <br/><br/>-"id" reprezentuje obszar region — w tej wersji jest tylko jedna, identyfikator: 0. <br/>-"type" reprezentuje kształt obszaru interesujące Cię do ruchu. Obecnie są obsługiwane "prostokąt" i "polygon".<br/> Jeśli określono "prostokąt" region ma wymiarów w X, Y, szerokość i wysokość. Współrzędne X i Y reprezentują współrzędnych XY po lewej stronie górnego regionu na znormalizowaną skali od 0.0 do 1.0. Szerokość i wysokość reprezentuje rozmiar obszaru na znormalizowaną skali od 0.0 do 1.0. W bieżącej wersji X, Y, szerokość i wysokość są zawsze ustalone na poziomie 0, 0 i 1, 1. <br/>Jeśli określono "polygon" region ma wymiarów w punktach. <br/> |
+| Regiony |Odnosi się do obszaru w wideo, gdzie interesujące Cię ruchu. <br/><br/>-"id" reprezentuje obszar region — w tej wersji jest tylko jedna, identyfikator: 0. <br/>-"type" reprezentuje kształt obszaru interesujące Cię do ruchu. Obecnie są obsługiwane "prostokąt" i "polygon".<br/> Jeśli określono "prostokąt" region ma wymiarów w X, Y, szerokość i wysokość. Współrzędne X i Y reprezentują współrzędnych XY po lewej stronie górnego regionu na znormalizowaną skali od 0.0 do 1.0. Szerokość i wysokość reprezentuje rozmiar obszaru na znormalizowaną skali od 0.0 do 1.0. W bieżącej wersji X, Y, szerokość i wysokość są zawsze ustalone na poziomie 0, 0 i 1, 1. <br/>Jeśli określono "polygon" region ma wymiarów w punktach. <br/> |
 | Fragments |Metadane jest podzielony się w różnych segmentach fragmentów. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. Fragment ze zdarzeniami nie oznacza, że ruchu nie został wykryty podczas tej godziny rozpoczęcia i czas trwania. |
 | Nawiasy kwadratowe] |Każdy nawiasu reprezentuje jeden interwał w zdarzeniu. Puste nawiasy kwadratowe dla tego interwału oznacza, że ruch nie zostało wykryte. |
 | locations |Ten nowy wpis w obszarze zdarzenia zawiera listę lokalizacji, w którym wystąpił ruchu. Jest to bardziej szczegółowe niż stref wykrywania. |
