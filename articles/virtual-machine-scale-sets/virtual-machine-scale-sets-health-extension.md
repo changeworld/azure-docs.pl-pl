@@ -66,7 +66,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia kondycji aplikacji. Rozs
 | Name (Nazwa) | Wartość / przykład | Typ danych
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| Wydawcy | `Microsoft.ManagedServices` | string |
+| publisher | `Microsoft.ManagedServices` | string |
 | type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
@@ -74,7 +74,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia kondycji aplikacji. Rozs
 
 | Name (Nazwa) | Wartość / przykład | Typ danych
 | ---- | ---- | ----
-| protokół | `http` lub `tcp` | string |
+| protocol | `http` lub `tcp` | string |
 | port | Opcjonalnie, protokołu `http`obowiązujący protokołu `tcp` | int |
 | requestPath | Obowiązkowe protokołu `http`, niedozwolone, gdy protokół jest `tcp` | string |
 
