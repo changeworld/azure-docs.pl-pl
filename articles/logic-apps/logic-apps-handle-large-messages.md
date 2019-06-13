@@ -57,7 +57,7 @@ Jeśli punkt końcowy ma włączone segmentu pobieranie lub przekazywanie, akcje
 
 Ponadto jeśli akcji HTTP nie już włączone segmentu, należy również ustawić segmentu tego działania `runTimeConfiguration` właściwości. Można ustawić tę właściwość w akcji, bezpośrednio w edytorze widoku kodu, zgodnie z opisem w dalszej części lub w Projektancie aplikacji logiki zgodnie z opisem w tym miejscu:
 
-1. W akcji HTTP w prawym górnym rogu, wybierz przycisk wielokropka (**...** ), a następnie wybierz **ustawienia**.
+1. W akcji HTTP w prawym górnym rogu, wybierz przycisk wielokropka ( **...** ), a następnie wybierz **ustawienia**.
 
    ![W akcji należy otworzyć menu Ustawienia](./media/logic-apps-handle-large-messages/http-settings.png)
 
@@ -128,7 +128,7 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
    | Pola nagłówka odpowiedzi punktu końcowego | Type | Wymagane | Opis |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nie | Rozmiar fragmentu sugerowane w bajtach |
-   | **Location** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
+   | **Lokalizacja** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
    ||||
 
 3. Twoja aplikacja logiki tworzy i wysyła kolejnych komunikatów HTTP PATCH -, każdy z tych informacji:
@@ -140,8 +140,8 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
      | Aplikacje logiki żądania pole nagłówka | Wartość | Type | Opis |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | Zakres bajtów dla bieżącego fragmentu zawartości, łącznie z wartością początkową końcową wartość i łączny rozmiar zawartości, na przykład: "bajtów = 0-1023/10100" |
-     | **Content-Type** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
-     | **Content-Length** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
+     | **Typ zawartości** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
+     | **Długość zawartości** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
      |||||
 
 4. Po wykonaniu każdego żądania PATCH punktu końcowego potwierdza potwierdzenia dla każdego fragmentu odpowiedzi z kodem stanu "200".

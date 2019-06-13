@@ -60,7 +60,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| topic | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
