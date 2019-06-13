@@ -30,24 +30,24 @@ Tworzenie, usuwanie i zarządzanie aplikacjami i typami aplikacji.
 | --- | --- |
 | create | Tworzy aplikację usługi Service Fabric przy użyciu określonego opisu. |
 | delete | Usuwa istniejącą aplikację usługi Service Fabric. |
-| wdrożony | Pobiera informacje o aplikacji wdrożonej w węźle usługi Service Fabric. |
-| wdrożone kondycji | Pobiera informacje o kondycji aplikacji wdrożonej w węźle usługi Service Fabric. |
+| deployed | Pobiera informacje o aplikacji wdrożonej w węźle usługi Service Fabric. |
+| deployed-health | Pobiera informacje o kondycji aplikacji wdrożonej w węźle usługi Service Fabric. |
 | deployed-list | Pobiera listę aplikacji wdrożonych w węźle usługi Service Fabric. |
-| zdrowie | Pobiera kondycji aplikacji usługi Service fabric. |
-| informacje | Pobiera informacje o aplikacji usługi Service Fabric. |
+| health | Pobiera kondycji aplikacji usługi Service fabric. |
+| info | Pobiera informacje o aplikacji usługi Service Fabric. |
 | list | Pobiera listę aplikacji utworzonych w klastrze usługi Service Fabric, spełniające warunki określonych filtrów. |
-| ładowanie | Pobiera załadować informacji o aplikacji usługi Service Fabric. |
-| Manifest | Pobiera manifest opisujące typu aplikacji. |
-| aprowizacja | Przepisy lub rejestrów aplikacji usługi Service Fabric to typ klastra przy użyciu pakietu sfpkg z magazynu zewnętrznego lub przy użyciu pakietu aplikacji w magazynie obrazów. |
+| load | Pobiera załadować informacji o aplikacji usługi Service Fabric. |
+| manifest | Pobiera manifest opisujące typu aplikacji. |
+| provision | Przepisy lub rejestrów aplikacji usługi Service Fabric to typ klastra przy użyciu pakietu sfpkg z magazynu zewnętrznego lub przy użyciu pakietu aplikacji w magazynie obrazów. |
 | report-health | Wysyła raport o kondycji aplikacji usługi Service Fabric. |
 | type | Pobiera listę typów aplikacji w klastrze usługi Service Fabric dopasowania określonej nazwy. |
-| Lista typów | Pobiera listę typów aplikacji w klastrze usługi Service Fabric. |
-| Wstrzymanie obsługi administracyjnej | Usuwa lub wyrejestrowanie typu aplikacji usługi Service Fabric z klastra. |
-| uaktualnij | Rozpoczyna uaktualnianie aplikacji w klastrze usługi Service Fabric. |
-| Wznów uaktualnienia | Wznawia uaktualniania aplikacji w klastrze usługi Service Fabric. |
+| type-list | Pobiera listę typów aplikacji w klastrze usługi Service Fabric. |
+| unprovision | Usuwa lub wyrejestrowanie typu aplikacji usługi Service Fabric z klastra. |
+| upgrade | Rozpoczyna uaktualnianie aplikacji w klastrze usługi Service Fabric. |
+| upgrade-resume | Wznawia uaktualniania aplikacji w klastrze usługi Service Fabric. |
 | upgrade-rollback | Rozpoczyna się wycofywanie uaktualnienia obecnie w toku aplikacji w klastrze usługi Service Fabric. |
 | upgrade-status | Pobiera szczegóły najnowszą aktualizację, które są wykonywane w tej aplikacji. |
-| przekazywanie | Skopiuj pakiet aplikacji usługi Service Fabric do magazynu obrazów. |
+| upload | Skopiuj pakiet aplikacji usługi Service Fabric do magazynu obrazów. |
 
 ## <a name="sfctl-application-create"></a>Tworzenie aplikacji interfejsu sfctl
 Tworzy aplikację usługi Service Fabric przy użyciu określonego opisu.
