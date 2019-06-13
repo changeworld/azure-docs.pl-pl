@@ -63,10 +63,10 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | receiverPartnerName | String | X12 komunikatu nazwę partnera odbierającego firmy. (Opcjonalnie) |
 | senderQualifier | String | Wyślij kwalifikator partnera. (Obowiązkowe) |
 | senderIdentifier | String | Wyślij identyfikator partnera. (Obowiązkowe) |
-| Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
+| receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny wymiany. (Opcjonalnie) |
 | functionalGroupControlNumber | String | Numer kontrolny funkcjonalności. (Opcjonalnie) |
 | transactionSetControlNumber | String | Numer kontrolny zestawu transakcji. (Opcjonalnie) |
@@ -76,7 +76,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | isTechnicalAcknowledgmentExpected | Boolean | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
 | isFunctionalAcknowledgmentExpected | Boolean | Czy funkcjonalności potwierdzenia jest skonfigurowany w X12 umowy. (Obowiązkowe) |
 | needAk2LoopForValidMessages | Boolean | Czy pętla pętlę AK2 jest wymagany prawidłowy komunikat. (Obowiązkowe) |
-| segmentsCount | Liczba całkowita | Liczba segmentów w X12 zestawu transakcji. (Opcjonalnie) |
+| segmentsCount | Integer | Liczba segmentów w X12 zestawu transakcji. (Opcjonalnie) |
 ||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 schemat śledzenia potwierdzenia zestawu transakcji
@@ -119,10 +119,10 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | receiverPartnerName | String | X12 komunikatu nazwę partnera odbierającego firmy. (Opcjonalnie) |
 | senderQualifier | String | Wyślij kwalifikator partnera. (Obowiązkowe) |
 | senderIdentifier | String | Wyślij identyfikator partnera. (Obowiązkowe) |
-| Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
+| receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny potwierdzenia funkcjonalności wymiany. Wartość wypełnia tylko w przypadku stronie wysyłania, w którym otrzymania funkcjonalności potwierdzenia dla wiadomości wysyłanych do partnera. (Opcjonalnie) |
 | functionalGroupControlNumber | String | Numer kontrolny grupy funkcjonalnej funkcjonalności potwierdzenia. Wartość wypełnia tylko w przypadku stronie wysyłania, w którym otrzymania funkcjonalności potwierdzenia dla wiadomości wysyłanych do partnera. (Opcjonalnie) |
 | isaSegment | String | Segment ISA wiadomości. Wartość wypełnia tylko w przypadku stronie wysyłania, w którym otrzymania funkcjonalności potwierdzenia dla wiadomości wysyłanych do partnera. (Opcjonalnie) |
@@ -132,8 +132,8 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | respondingtransactionSetControlNumber | String | Numer kontrolny zestawu transakcji odpowiada. (Opcjonalnie) |
 | respondingTransactionSetId | String | Transakcja odpowiada Ustaw identyfikator, który mapuje AK201 w potwierdzeniu. (Opcjonalnie) |
 | statusCode | Boolean | Kod stanu potwierdzenia zestawu transakcji. (Obowiązkowe) |
-| segmentsCount | Wyliczenia | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
-| processingStatus | Wyliczenia | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
+| segmentsCount | Enum | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| processingStatus | Enum | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | CorrelationMessageId | String | Identyfikator korelacji wiadomości. Kombinacja {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Opcjonalnie) |
 | isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
 | ak2Segment | String | Potwierdzenie dla transakcji w grupie funkcjonalnej odebrane. (Opcjonalnie) |
@@ -177,10 +177,10 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | receiverPartnerName | String | X12 komunikatu nazwę partnera odbierającego firmy. (Opcjonalnie) |
 | senderQualifier | String | Wyślij kwalifikator partnera. (Obowiązkowe) |
 | senderIdentifier | String | Wyślij identyfikator partnera. (Obowiązkowe) |
-| Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
+| receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny wymiany. (Opcjonalnie) |
 | isaSegment | String | Segment ISA wiadomości. (Opcjonalnie) |
 | isTechnicalAcknowledgmentExpected | Boolean | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
@@ -228,16 +228,16 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | receiverPartnerName | String | X12 komunikatu nazwę partnera odbierającego firmy. (Opcjonalnie) |
 | senderQualifier | String | Wyślij kwalifikator partnera. (Obowiązkowe) |
 | senderIdentifier | String | Wyślij identyfikator partnera. (Obowiązkowe) |
-| Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
+| receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny potwierdzenia technicznych, odebrane od partnerów wymiany. (Opcjonalnie) |
 | isaSegment | String | Segment ISA na potwierdzenie technicznych, odebrane od partnerów. (Opcjonalnie) |
 | respondingInterchangeControlNumber |String | Numer kontrolny potwierdzenia technicznych, odebrane od partnerów wymiany. (Opcjonalnie) |
 | isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
-| statusCode | Wyliczenia | Wymiany kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
-| processingStatus | Wyliczenia | Stan potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
+| statusCode | Enum | Wymiany kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| processingStatus | Enum | Stan potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | ta102 | String | Wymiany daty. (Opcjonalnie) |
 | ta103 | String | Wymiany czasu. (Opcjonalnie) |
 | ta105 | String | Wymiany Uwaga kodu. (Opcjonalnie) |
@@ -281,10 +281,10 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | receiverPartnerName | String | X12 komunikatu nazwę partnera odbierającego firmy. (Opcjonalnie) |
 | senderQualifier | String | Wyślij kwalifikator partnera. (Obowiązkowe) |
 | senderIdentifier | String | Wyślij identyfikator partnera. (Obowiązkowe) |
-| Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
+| receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny wymiany. (Opcjonalnie) |
 | functionalGroupControlNumber | String | Numer kontrolny funkcjonalności. (Opcjonalnie) |
 | gsSegment | String | Segment komunikat GS. (Opcjonalnie) |
@@ -340,7 +340,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | Element receiverQualifier | String | Odbieranie kwalifikator partnera. (Obowiązkowe) |
 | receiverIdentifier | String | Otrzymać identyfikator partnera. (Obowiązkowe) |
 | agreementName | String | Nazwa X12 umowy, do której wiadomości są rozwiązane. (Opcjonalnie) |
-| kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
+| direction | Enum | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny wymiany, które wypełnia po stronie wysyłania po otrzymaniu potwierdzenia pomoc od partnerów. (Opcjonalnie) |
 | functionalGroupControlNumber | String | Numer kontrolny grupy funkcjonalnej potwierdzenia technicznych, które wypełnia po stronie wysyłania po otrzymaniu potwierdzenia pomoc od partnerów. (Opcjonalnie) |
 | isaSegment | String | Takie same jak wymiany kontrolować liczbę, ale wypełnione tylko w szczególnych przypadkach. (Opcjonalnie) |
