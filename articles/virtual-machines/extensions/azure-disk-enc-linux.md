@@ -75,7 +75,7 @@ Usługa Azure Disk Encryption dla systemu Linux wymaga łączności z Internetem
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.Azure.Security | string |
+| publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 (ZESTAWU SKALOWANIA MASZYN WIRTUALNYCH) | int |
 | AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
@@ -86,7 +86,7 @@ Usługa Azure Disk Encryption dla systemu Linux wymaga łączności z Internetem
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| Hasło | password | string | 
+| Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Systemu operacyjnego, danych, wszystkie | string |
 
