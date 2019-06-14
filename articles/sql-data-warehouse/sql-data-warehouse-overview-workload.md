@@ -2,20 +2,19 @@
 title: Dowiedz się więcej o operacjach usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: 'Elastyczność usługi SQL Data Warehouse pozwala powiększać, zmniejszać lub wstrzymywać moc obliczeniową przy użyciu ruchomej skali jednostek magazynu danych (jednostki DWU). W tym artykule opisano metryki magazynu danych i ich relacje z jednostkami DWU. '
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: kevinvngo
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-origin.date: 04/17/2018
-ms.date: 11/12/2018
-ms.author: v-jay
+ms.subservice: design
+ms.date: 04/17/2018
+ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531174"
 ---
 # <a name="data-warehouse-workload"></a>Obciążenie magazynu danych

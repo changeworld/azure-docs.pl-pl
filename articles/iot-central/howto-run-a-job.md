@@ -9,10 +9,10 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 manager: peterpr
 ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60519360"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Twórz i uruchamiaj zadanie w aplikacji centralnej IoT platformy Azure
@@ -74,7 +74,7 @@ Po utworzeniu zadania **stan** aktualizacje kolumn przy użyciu najnowszych komu
 
 | Komunikat o stanie       | Znaczenie stanu                                          |
 | -------------------- | ------------------------------------------------------- |
-| Zakończone            | To zadanie zostało wykonane na wszystkich urządzeniach.              |
+| Ukończone            | To zadanie zostało wykonane na wszystkich urządzeniach.              |
 | Niepowodzenie               | To zadanie ma nie powiodło się i nie są w pełni wykonane na urządzeniach.  |
 | Oczekujące              | To zadanie nie zostało jeszcze rozpoczęte wykonywania na urządzeniach.         |
 | Działanie              | To zadanie jest w trakcie wykonywania na urządzeniach.             |
@@ -93,7 +93,7 @@ Aby wyświetlić stan zadania i uwzględnionych urządzeń, wybierz zadanie. Aby
 
 | Komunikat o stanie       | Znaczenie stanu                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Zakończone            | Zadanie zostało wykonane na tym urządzeniu.                                     |
+| Ukończone            | Zadanie zostało wykonane na tym urządzeniu.                                     |
 | Niepowodzenie               | Zadanie nie powiodło się wykonanie na tym urządzeniu. Komunikat o błędzie zawiera więcej informacji.  |
 | Oczekujące              | Zadanie nie zostało jeszcze wykonane na tym urządzeniu.                                   |
 

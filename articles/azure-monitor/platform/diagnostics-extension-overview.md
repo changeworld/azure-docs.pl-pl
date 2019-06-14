@@ -8,10 +8,10 @@ ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236233"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
@@ -27,7 +27,7 @@ Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danyc
 | --- | --- |
 | Metryki licznika wydajności |System operacyjny i niestandardowych liczników wydajności |
 | Dzienniki aplikacji |Komunikaty śledzenia zapisywane przez aplikację |
-| Dzienniki zdarzeń systemu Windows |Informacje wysyłane do systemu Windows rejestrowania zdarzeń |
+| Dzienniki zdarzeń Windows |Informacje wysyłane do systemu Windows rejestrowania zdarzeń |
 | Rejestruje Element EventSource platformy .NET |Kod zapisywania zdarzeń za pomocą programu .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) klasy |
 | Dzienniki usług IIS |Informacji na temat witryny sieci web usług IIS |
 | [Manifest na podstawie dzienników zdarzeń systemu Windows](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Zdarzenia śledzenia dla Windows zdarzenia generowane przez żaden proces. (1) |

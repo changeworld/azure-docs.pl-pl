@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310936"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Omówienie usługi Service Fabric clusters na platformie Azure
@@ -31,9 +31,9 @@ Klaster usługi Service Fabric na platformie Azure jest zasobem platformy Azure 
 * Maszyny wirtualne i wirtualne karty sieciowe
 * zestawy skalowania maszyn wirtualnych
 * sieci wirtualnych
-* moduły równoważenia obciążenia
-* konta magazynu
-* publiczne adresy IP
+* Moduły równoważenia obciążenia
+* Konta magazynu
+* Publiczne adresy IP
 
 ![Klaster usługi Service Fabric][Image]
 
@@ -55,7 +55,7 @@ Zestawy skalowania można użyć do wdrożenia i zarządzania kolekcją maszyn w
 Aby uzyskać więcej informacji, przeczytaj [zestawów skalowania maszyn wirtualnych i typy węzłów usługi Service Fabric](service-fabric-cluster-nodetypes.md).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Wystąpienia maszyn wirtualnych są łączone za [równoważenia obciążenia platformy Azure](/azure/load-balancer/load-balancer-overview), który jest skojarzony z [publiczny adres IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) i etykiety DNS.  Podczas aprowizacji klastra z  *&lt;clustername&gt;*, nazwę DNS  *&lt;clustername&gt;.&lt; Lokalizacja&gt;. cloudapp.azure.com* jest etykieta DNS skojarzone z modułem równoważenia obciążenia przed zestawem skalowania.
+Wystąpienia maszyn wirtualnych są łączone za [równoważenia obciążenia platformy Azure](/azure/load-balancer/load-balancer-overview), który jest skojarzony z [publiczny adres IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) i etykiety DNS.  Podczas aprowizacji klastra z  *&lt;clustername&gt;* , nazwę DNS  *&lt;clustername&gt;.&lt; Lokalizacja&gt;. cloudapp.azure.com* jest etykieta DNS skojarzone z modułem równoważenia obciążenia przed zestawem skalowania.
 
 Maszyny wirtualne w klastrze mają tylko [prywatnych adresów IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Ruch związany z zarządzaniem i ruchu w ramach usługi są przesyłane za pośrednictwem publiczny moduł równoważenia obciążenia.  Ruch sieciowy jest kierowany do tych maszyn przy użyciu reguły translatora adresów Sieciowych (klienci łączą się z określonych węzłów/wystąpień) lub reguły równoważenia obciążenia (ruch jest przesyłany do maszyn wirtualnych działanie okrężne).  Moduł równoważenia obciążenia ma skojarzonego publicznego adresu IP z nazwą DNS, w formacie:  *&lt;clustername&gt;.&lt; Lokalizacja&gt;. cloudapp.azure.com*.  Publiczny adres IP jest inny zasób platformy Azure w grupie zasobów.  Jeśli zdefiniujesz wiele typów węzłów w klastrze równoważenia obciążenia jest tworzony dla każdego zestawu typu/skalowania węzła. Alternatywnie możesz skonfigurować moduł równoważenia obciążenia dla wielu typów węzłów.  Podstawowy typ węzła jest etykieta DNS  *&lt;clustername&gt;.&lt; Lokalizacja&gt;. cloudapp.azure.com*, inne typy węzłów mieć etykietę DNS  *&lt;clustername&gt;-&lt;nodetype&gt;.&lt; Lokalizacja&gt;. cloudapp.azure.com*.
 

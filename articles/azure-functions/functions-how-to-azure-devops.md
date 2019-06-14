@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990275"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050661"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Ciągłe dostarczanie za pomocą DevOps platformy Azure
 
@@ -36,9 +36,7 @@ Każdy język ma kroki konkretnej kompilacji, aby utworzyć artefaktów wdrożen
 Poniższy przykład służy do tworzenia pliku YAML, tworzenie aplikacji .NET.
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: 'VS2017-Win2016'
 steps:
 - script: |
@@ -69,9 +67,7 @@ steps:
 Poniższy przykład służy do tworzenia pliku YAML, do tworzenia aplikacji JavaScript:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04 # Use 'VS2017-Win2016' if you have Windows native +Node modules
 steps:
 - bash: |
@@ -99,9 +95,7 @@ steps:
 Poniższy przykład umożliwia tworzenie pliku YAML, do tworzenia aplikacji w języku Python, języka Python jest obsługiwana tylko w przypadku systemu Linux usługi Azure Functions:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
@@ -118,6 +112,25 @@ steps:
     source worker_venv/bin/activate
     pip3.6 install setuptools
     pip3.6 install -r requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    name: 'drop'
+```
+#### <a name="powershell"></a>PowerShell
+
+Poniższy przykład umożliwia tworzenie pliku YAML, aby spakować aplikację programu PowerShell, programu PowerShell jest obsługiwana tylko w przypadku systemu Windows Azure Functions:
+
+```yaml
+pool:
+      vmImage: 'VS2017-Win2016'
+steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -175,6 +188,10 @@ Po skonfigurowaniu źródła kodu, wyszukiwanie szablonów kompilacji usługi Az
 
 ![Szablony kompilacji dla usługi Azure Functions](media/functions-how-to-azure-devops/build-templates.png)
 
+W niektórych przypadkach artefaktów kompilacji mają strukturę określonego folderu i może być konieczne Sprawdź **nazwy folderu głównego Prepend do ścieżek archiwizacji** opcji.
+
+![Dodaj Folder główny](media/functions-how-to-azure-devops/prepend-root-folder.png)
+
 #### <a name="javascript-apps"></a>Aplikacji JavaScript
 
 Jeśli aplikacja języka JavaScript są zależne od modułów macierzystych Windows, musisz zaktualizować:
@@ -182,10 +199,6 @@ Jeśli aplikacja języka JavaScript są zależne od modułów macierzystych Wind
 - Wersja puli agentów do **hostowany program VS2017**
 
   ![Zmień agenta kompilacji systemu operacyjnego](media/functions-how-to-azure-devops/change-agent.png)
-
-- Skrypt w **kompilowania rozszerzeń** krok w szablonie, aby `IF EXIST *.csproj dotnet build extensions.csproj --output ./bin`
-
-  ![Skrypt zmian](media/functions-how-to-azure-devops/change-script.png)
 
 ### <a name="deploy-your-app"></a>Wdrażanie aplikacji
 
@@ -206,7 +219,7 @@ Wymagania wstępne dla tego polecenia są zależne od lokalizacji kodu:
 
     - Masz uprawnienia do tworzenia usługi GitHub osobisty Token dostępu z wystarczającymi uprawnieniami. [Wymagania dotyczące uprawnień osobisty token dostępu usługi GitHub.](https://aka.ms/azure-devops-source-repos)
 
-    - Masz uprawnienia do zatwierdzania do głównej gałęzi w repozytorium GitHub, aby zatwierdzić pliku YAML wygenerowany automatycznie.
+    - Masz uprawnienia do zatwierdzania do głównej gałęzi w repozytorium GitHub, aby zatwierdzić wygenerowany automatycznie plik YAML.
 
 - Jeśli swój kod w repozytoriach usługi Azure:
 

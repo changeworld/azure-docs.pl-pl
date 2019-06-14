@@ -14,14 +14,14 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309173"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenoszenie danych z usług Salesforce za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-salesforce-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-salesforce.md)
 
@@ -286,24 +286,24 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listę 
 
 | Typ Salesforce | . Typ opartej na sieci |
 | --- | --- |
-| Liczba automatycznie |String |
-| Zaznacz pole wyboru |Boolean |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Waluta |Decimal |
 | Date |DateTime |
 | Data/godzina |DateTime |
 | Email |String |
 | Identyfikator |String |
-| Relacje odnośników |String |
-| Lista wyboru wielokrotnego |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Liczba |Decimal |
 | Procent |Decimal |
 | Numer telefonu |String |
-| Listy wyboru |String |
+| Picklist |String |
 | Text |String |
-| Obszar tekstu |String |
-| Obszar tekstu (Long) |String |
-| Obszar tekstu (zaawansowane) |String |
-| Tekst (zaszyfrowane) |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | Adres URL |String |
 
 > [!NOTE]

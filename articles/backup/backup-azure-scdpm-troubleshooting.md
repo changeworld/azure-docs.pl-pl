@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236212"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Rozwiązywanie problemów z programem System Center Data Protection Manager
@@ -42,7 +42,7 @@ Aby rozwiązać ten problem, wykonaj następujące czynności:
 - Upewnij się, że dysk jest w dobrej kondycji i czy jest za mało miejsca dla replik.
 - Upewnij się, że nie istnieją zduplikowane zadania tworzenia kopii zapasowych uruchomionych jednocześnie.
 
-## <a name="error-online-recovery-point-creation-failed"></a>Błąd: Tworzenie punktu odzyskiwania w trybie online nie powiodło się
+## <a name="error-online-recovery-point-creation-failed"></a>Błąd: Niepowodzenie tworzenia punktu odzyskiwania w trybie online
 
 Aby rozwiązać ten problem, wykonaj następujące czynności:
 - Upewnij się, że używasz najnowszej wersji agenta usługi Azure Backup.

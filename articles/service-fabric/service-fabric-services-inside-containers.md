@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: caed77234646654d151b64d2c80b7231342f6d8c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050474"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Konteneryzowanie Twojego usług usługi Service Fabric Reliable Services i Reliable Actors w Windows
 
@@ -119,6 +119,16 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
    </ContainerHostPolicies>
    </Policies>
    ```
+
+> [!NOTE] 
+> Domyślnie aplikacje usługi Service Fabric mają dostęp do środowiska uruchomieniowego usługi Service Fabric, w postaci punkt końcowy, akceptując żądania specyficzne dla aplikacji. Rozważ wyłączenie dostępu, gdy aplikacja udostępnia niezaufanego kodu. Aby uzyskać więcej informacji, zobacz [najważniejsze wskazówki dotyczące zabezpieczeń w usłudze Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Aby wyłączyć dostęp do środowiska uruchomieniowego usługi Service Fabric, Dodaj następujące ustawienie w sekcji zasady manifest aplikacji odpowiadający manifestu usługi importowany, w następujący sposób:
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
 
 10. Aby przetestować tę aplikację, należy wdrożyć w klastrze, na którym uruchomiony jest w wersji 5.7 lub nowszej. Środowisko uruchomieniowe w wersji 6.1 lub niższe należy edytować i aktualizować ustawienia klastra, aby włączyć tę funkcję w wersji zapoznawczej. Wykonaj kroki opisane w tym [artykułu](service-fabric-cluster-fabric-settings.md) Aby dodać ustawienie pokazano dalej.
     ```

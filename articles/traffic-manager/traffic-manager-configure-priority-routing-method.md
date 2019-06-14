@@ -3,20 +3,21 @@ title: Konfigurowanie metody routingu ruchu priorytet przy użyciu usługi Azure
 description: W tym artykule wyjaśniono, jak skonfigurować metodę routingu ruchu priorytet w usłudze Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: 66c5bd9390d6fe0f26af66e18aed22c07a7da3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 259457a604727cba6e6964851ec4fcf4b13a20a6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048491"
 ---
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu ruchu priorytet w usłudze Traffic Manager
 
@@ -33,7 +34,7 @@ Typowy wzorzec dla usługi w tryb failover jest wysyłania ruchu do podstawowej 
     1. Aby uzyskać **ustawienia metody routingu ruchu**, sprawdź, czy metodę routingu ruchu **priorytet**. Jeśli nie, kliknij pozycję **priorytet** z listy rozwijanej.
     2. Ustaw **ustawienia monitora punktu końcowego** identyczne dla wszystkich każdego punktu końcowego w ramach tego profilu, w następujący sposób:
         1. Wybierz odpowiedni **protokołu**, a następnie określ **portu** numer. 
-        2. Aby uzyskać **ścieżki** wpisz ukośnik */*. Monitorowanie punktów końcowych, należy określić ścieżkę i nazwę pliku. A ukośnika "/" jest prawidłowym wpisem ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
+        2. Aby uzyskać **ścieżki** wpisz ukośnik */* . Monitorowanie punktów końcowych, należy określić ścieżkę i nazwę pliku. A ukośnika "/" jest prawidłowym wpisem ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
         3. W górnej części strony kliknij **Zapisz**.
 5. W **ustawienia** kliknij **punktów końcowych**.
 6. W **punktów końcowych** bloku, sprawdź kolejność priorytetów punktów końcowych. Po wybraniu **priorytet** metody routingu ruchu, kolejność jest ważna wybranych punktów końcowych. Sprawdź kolejność priorytetów punktów końcowych.  Podstawowy punkt końcowy jest u góry. Dokładnie sprawdź w kolejności, w której jest on wyświetlany. wszystkie żądania będą kierowane do pierwszego punktu końcowego i jeśli usługa Traffic Manager wykryje będącą w złej kondycji, ruch automatycznie przełącza się do następnego punktu końcowego. 

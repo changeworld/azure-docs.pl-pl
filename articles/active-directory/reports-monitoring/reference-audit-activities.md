@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285484"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
@@ -66,10 +66,10 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Przeglądy dostępu|Aktualizowanie przeglądu dostępu|
 |Przeglądy dostępu|Aktualizacja stanu dołączania przeglądów dostępu usługi Azure AD|
 |Przeglądy dostępu|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
-|Przeglądy dostępu|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
-|Przeglądy dostępu|Aktualizuj ustawienie czasu trwania (w dniach) cyklu przeglądu dostępu|
-|Przeglądy dostępu|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
-|Przeglądy dostępu|Aktualizuj ustawienie typu cyklu przeglądu dostępu|
+|Przeglądy dostępu|Ustawienia aktualizacji dostępu Przegląd cyklu licznika|
+|Przeglądy dostępu|Aktualizuj czas trwania cyklu przeglądu dostępu w dniach ustawienie|
+|Przeglądy dostępu|Aktualizacja cyklu zakończenia ustawienia typu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizacja ponownego ustawienia typu przeglądu dostępu|
 |Przeglądy dostępu|Aktualizowanie ustawień przypomnienia przeglądu dostępu|
 |Przeglądy dostępu|Aktualizowanie programu|
 |Przeglądy dostępu|Aktualizowanie zatwierdzenia żądania|
@@ -316,7 +316,7 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Resource|Aktualizowanie grupy|
 |Resource|Aktualizowanie ustawień grupy|
 |Resource|Dodaj członka|
-|Resource|Tworzenie grupy|
+|Resource|Utwórz grupę|
 |Resource|Usuń grupę|
 |Resource|Usuń członka|
 |Resource|Zaktualizuj grupę|
@@ -353,7 +353,7 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie jednostkami administracyjnymi|Pobieranie wszystkich typów zdarzeń o podwyższonym ryzyku|
 |Zarządzanie jednostkami administracyjnymi|Pobieranie zdarzeń o podwyższonym ryzyku dla użytkowników wersji bezpłatnych|
 |Zarządzanie jednostkami administracyjnymi|Pobieranie użytkowników oflagowanych w związku z ryzykiem|
-|Zarządzanie aplikacjami|Przetworzone zaproszenia zbiorcze |
+|Zarządzanie aplikacjami|Przetworzone zaproszenia zbiorcze|
 |Zarządzanie aplikacjami|Przekazane zaproszenia zbiorcze|
 |Zarządzanie aplikacjami|Dodawanie właściciela do zasad|
 |Zarządzanie aplikacjami|Dodawanie zasad|
@@ -518,10 +518,10 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie grupami|Przeglądanie żądania zatwierdzenia żądania|
 |Zarządzanie grupami|Aktualizowanie przeglądu dostępu|
 |Zarządzanie grupami|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
-|Zarządzanie grupami|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
-|Zarządzanie grupami|Aktualizuj ustawienie czasu trwania (w dniach) cyklu przeglądu dostępu|
-|Zarządzanie użytkownikami|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
-|Zarządzanie użytkownikami|Aktualizuj ustawienie typu cyklu przeglądu dostępu|
+|Zarządzanie grupami|Ustawienia aktualizacji dostępu Przegląd cyklu licznika|
+|Zarządzanie grupami|Aktualizuj czas trwania cyklu przeglądu dostępu w dniach ustawienie|
+|Zarządzanie użytkownikami|Aktualizacja cyklu zakończenia ustawienia typu przeglądu dostępu|
+|Zarządzanie użytkownikami|Aktualizacja ponownego ustawienia typu przeglądu dostępu|
 
 
 

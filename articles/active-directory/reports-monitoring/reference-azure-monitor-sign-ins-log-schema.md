@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285197"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretowanie schematu dzienniki logowania w usłudze Azure AD w usłudze Azure Monitor
@@ -150,7 +150,7 @@ W tym artykule opisano schemat rejestrowania w dzienniku usługi Azure Active Di
 | OperationName | Do logowania, ta wartość jest zawsze *logowań*. |
 | OperationVersion | Wersja interfejsu API REST, które są wymagane przez klienta. |
 | Category | Do logowania, ta wartość jest zawsze *SignIn*. | 
-| TenantId | Identyfikator GUID, który jest skojarzony z dziennikami dzierżawy. |
+| Identyfikator dzierżawy | Identyfikator GUID, który jest skojarzony z dziennikami dzierżawy. |
 | ResultType | Wynik operacji logowania może być *Powodzenie* lub *błąd*. | 
 | ResultSignature | Zawiera kod błędu dla operacji logowania. |
 | ResultDescription | Zawiera opis błędu dla operacji logowania. |

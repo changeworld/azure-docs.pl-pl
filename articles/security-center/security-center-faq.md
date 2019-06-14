@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: de652f508f6946219627b3a3d51b148cbee58dbf
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 300d96a792663a32a326d5d01f281b77ccf9c4bf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966869"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050512"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -126,8 +126,10 @@ Aby uzyskać więcej informacji, zobacz [automatycznej aprowizacji w przypadku i
 
 ### Co zrobić, jeśli użytkownik miał program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie, ale nie jako rozszerzenie (Agent bezpośredni)?<a name="directagentinstalled"></a>
 Program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), Centrum zabezpieczeń zainstaluje rozszerzenia Microsoft Monitoring Agent i mogą zostać uaktualnione do najnowszej wersji Microsoft Monitoring agent.
-Jest zainstalowany agent będzie kontynuował raportowanie do jego już skonfigurowanego obszarów roboczych, a ponadto będzie zgłaszać do obszaru roboczego skonfigurowane w usłudze Security Center (multihosting jest obsługiwane).
+Jest zainstalowany agent będzie kontynuował raportowanie do jego już skonfigurowanego obszarów roboczych, a ponadto będzie zgłaszać do obszaru roboczego skonfigurowane w usłudze Security Center (multihosting jest obsługiwana na maszynach Windows).
 Skonfigurowany obszar roboczy w przypadku obszaru roboczego użytkownika (nie Centrum zabezpieczeń domyślnego obszaru roboczego), będą musieli zainstalować "Security / rozwiązania"SecurityCenterFree"na nim usługi Security Center rozpocząć przetwarzanie zdarzeń z maszyn wirtualnych i komputerów, raportowanie, obszar roboczy.
+
+Dla maszyn z systemem Linux multihosting Agent nie jest jeszcze obsługiwane — w związku z tym, jeśli wykryto istniejącą instalację agenta, nie nastąpi automatyczne Inicjowanie obsługi administracyjnej i konfiguracji komputera nie zostanie zmienione.
 
 Dla istniejących maszyn w subskrypcji dołączono do usługi Security Center, przed 2019-03-17, gdy zostanie wykryty istniejącego agenta, rozszerzenia Microsoft Monitoring Agent nie zostanie zainstalowany, a komputer nie ma wpływu na. Dla tych maszyn Zobacz zalecenie "Monitorowanie problemów dotyczących kondycji agenta na maszynach Rozwiąż", aby rozwiązać problemy z instalacją agentów na tych maszynach
 

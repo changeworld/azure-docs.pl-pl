@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538247"
 ---
 # <a name="get-started-with-the-query-action"></a>Rozpoczynanie pracy za pomocą akcji zapytania
@@ -67,9 +67,9 @@ Akcja kwerendy jest dostarczany za pomocą jednej akcji można. W poniższych ta
 Dostępne są następujące pola wejściowe dla działania, co sprawia, że wychodzące żądania HTTP.
 A * oznacza, że jest polem wymaganym.
 
-| Nazwa wyświetlana | Nazwa właściwości | Opis |
+| `Display name` | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Z * |z |Tablica do filtrowania |
+| Z * |from |Tablica do filtrowania |
 | Warunek * |gdzie |Warunek do oceny dla każdego elementu |
 
 <br>

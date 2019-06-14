@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289995"
 ---
 # <a name="start-using-pim"></a>Rozpoczynanie korzystania z usługi PIM
@@ -56,7 +56,7 @@ Aby rozpocząć korzystanie z usługi PIM w katalogu, należy włączyć usług�
 
 1. Na liście kliknij **wyrazić zgodę na usługę PIM**.
 
-    ![Wyraź zgodę na usługę PIM](./media/pim-getting-started/consent-pim.png)
+    ![Zgoda na usługi PIM](./media/pim-getting-started/consent-pim.png)
 
 1. Kliknij przycisk **Zweryfikuj moją tożsamość** Aby zweryfikować swoją tożsamość za pomocą usługi Azure MFA. Użytkownik zostanie zapytany, aby wybrać konto.
 

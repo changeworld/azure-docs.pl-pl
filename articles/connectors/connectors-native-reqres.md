@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538128"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Wprowadzenie do składników żądań i odpowiedzi
@@ -86,9 +86,9 @@ W poniższych tabelach opisano pól wejściowych dla wyzwalacza i akcji, a odpow
 #### <a name="request-trigger"></a>Wyzwalacza żądania
 Poniżej znajduje się pole wejściowe dla wyzwalacza z przychodzącego żądania HTTP.
 
-| Nazwa wyświetlana | Nazwa właściwości | Opis |
+| `Display name` | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Schemat JSON |Schemat |Schemat JSON treści żądania HTTP |
+| Schemat JSON |schema |Schemat JSON treści żądania HTTP |
 
 <br>
 
@@ -104,11 +104,11 @@ Poniżej przedstawiono szczegóły danych wyjściowych dla żądania.
 #### <a name="response-action"></a>Akcja odpowiedzi
 Dostępne są następujące pola wejściowe dla akcji odpowiedzi HTTP. A * oznacza, że jest polem wymaganym.
 
-| Nazwa wyświetlana | Nazwa właściwości | Opis |
+| `Display name` | Nazwa właściwości | Opis |
 | --- | --- | --- |
 | Kod stanu * |statusCode |Kod stanu HTTP |
 | Nagłówki |Nagłówki |Obiekt JSON nagłówków odpowiedzi do uwzględnienia |
-| Treść |treść |Treść odpowiedzi |
+| Treść |Treść |Treść odpowiedzi |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz wypróbuj platformę i [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Możesz zapoznać się z innych dostępnych łączników w usłudze logic apps, analizując naszych [listy interfejsów API](apis-list.md).

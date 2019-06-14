@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6c0732b33608105009eda9bba2e4970e8e12e652
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050584"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -103,7 +103,7 @@ Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania
     sudo apt-get update
     ```
 
-    | Dystrybucja systemu Linux | Wersja |
+    | Dystrybucja systemu Linux | Version |
     | --------------- | ----------- |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -173,7 +173,7 @@ Aby uzyskać więcej informacji, zobacz [pojęcia powiązania i Wyzwalacze usłu
 
 ## <a name="local-settings-file"></a>Plik ustawień lokalnych
 
-Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączenia i ustawień dla podstawowych narzędzi usługi Azure Functions. Ustawienia w pliku local.settings.json są używane tylko przez funkcje narzędzia, podczas uruchamiania lokalnego. Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt zostanie opublikowany na platformie Azure. Użyj `--publish-local-settings` Przełącz [po opublikowaniu](#publish) się upewnić, że te ustawienia są dodawane do aplikacji funkcji na platformie Azure. Należy zauważyć, że wartości w **ConnectionStrings** nigdy nie są publikowane. Plik ma następującą strukturę:
+Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączenia i ustawień dla podstawowych narzędzi usługi Azure Functions. Ustawienia w pliku local.settings.json są używane tylko przez funkcje narzędzia, podczas uruchamiania lokalnego. Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt zostanie opublikowany na platformie Azure. Użyj `--publish-local-settings` Przełącz [po opublikowaniu](#publish) się upewnić, że te ustawienia są dodawane do aplikacji funkcji na platformie Azure. Wartości w **ConnectionStrings** nigdy nie są publikowane. Plik ma następującą strukturę:
 
 ```json
 {
@@ -419,43 +419,37 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Publikowanie na platformie Azure
 
-Podstawowe narzędzia obsługuje dwa typy wdrożenia, wdrażania funkcji pliki projektu bezpośrednio do aplikacji funkcji i wdrażanie niestandardowych kontenera systemu Linux, który jest obsługiwany tylko w wersji 2.x. Konieczne jest posiadanie już [utworzyliśmy aplikację funkcji w ramach subskrypcji Azure](functions-cli-samples.md#create).
+Podstawowe narzędzia usługi Azure Functions obsługuje dwa typy wdrożenia: Wdrażanie plików projektu funkcji bezpośrednio do aplikacji funkcji za pośrednictwem [Zip wdrażanie](functions-deployment-technologies.md#zip-deploy) i [wdrażania niestandardowego kontenera Docker](functions-deployment-technologies.md#docker-container). Konieczne jest posiadanie już [utworzyliśmy aplikację funkcji w ramach subskrypcji Azure](functions-cli-samples.md#create), do którego zostanie przedstawiony sposób wdrażania kodu. Projekty, które wymagają kompilacji powinny zostać skompilowane, tak aby pliki binarne, które mogą być wdrażane.
 
-W wersji 2.x, konieczne jest posiadanie [zarejestrowanych rozszerzeń](#register-extensions) w projekcie, przed opublikowaniem. Projekty, które wymagają kompilacji powinny zostać skompilowane, tak aby pliki binarne, które mogą być wdrażane.
+### <a name="project-file-deployment"></a>Wdrożenia (pliki projektu)
 
-### <a name="project-file-deployment"></a>Wdrażanie pliku projektu
-
-Najbardziej typowa metoda wdrażania obejmuje pakiet projektu aplikacji funkcji, pliki binarne i zależnościami i wdrożenie pakietu w aplikacji funkcji przy użyciu podstawowych narzędzi. Można opcjonalnie [uruchamiać swoje funkcje bezpośrednio z pakietu wdrożeniowego](run-functions-from-deployment-package.md).
-
-Aby opublikować projekt funkcje do aplikacji funkcji na platformie Azure, użyj `publish` polecenia:
+Aby opublikować lokalnego kodu do aplikacji funkcji na platformie Azure, użyj `publish` polecenia:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. Błąd występuje, gdy `<FunctionAppName>` nie istnieje w Twojej subskrypcji. Aby dowiedzieć się, jak utworzyć aplikację funkcji z wiersza polecenia lub okno terminalu przy użyciu wiersza polecenia platformy Azure, zobacz [tworzenie aplikacji funkcji do wykonywania bezserwerowego](./scripts/functions-cli-create-serverless.md).
-
-`publish` Polecenie przesyła zawartość katalogu projektu funkcji. W przypadku usunięcia plików lokalnie, `publish` polecenie nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzia Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [Azure Portal].
+To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. Jeśli spróbujesz opublikować, zostanie wyświetlony błąd `<FunctionAppName>` która nie istnieje w Twojej subskrypcji. Aby dowiedzieć się, jak utworzyć aplikację funkcji z wiersza polecenia lub okno terminalu przy użyciu wiersza polecenia platformy Azure, zobacz [tworzenie aplikacji funkcji do wykonywania bezserwerowego](./scripts/functions-cli-create-serverless.md). Domyślnie to polecenie spowoduje włączenie aplikacji do uruchamiania w [uruchomienia z pakietu](run-functions-from-deployment-package.md) trybu.
 
 >[!IMPORTANT]
 > Po utworzeniu aplikacji funkcji w witrynie Azure portal, używa wersji 2.x środowisko uruchomieniowe funkcji domyślnie. Aby funkcja aplikacji użyj wersji 1.x środowiska uruchomieniowego, postępuj zgodnie z instrukcjami [działać w wersji 1.x](functions-versions.md#creating-1x-apps).
 > Nie można zmienić wersji środowiska uruchomieniowego dla aplikacji funkcji, która ma istniejących funkcji.
 
-Opcje publikowania następującego projektu dotyczą zarówno wersji 1.x i 2.x:
+Poniższe opcje publikowania są stosowane dla wersji, wersji 1.x i 2.x:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Ustawienia publikowania w local.settings.json na platformie Azure, monitowanie o zastąpienie, jeżeli ustawienie już istnieje. Jeśli używasz emulatora magazynu, zmień ustawienie aplikacji, aby [połączenia rzeczywisty magazyn](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Pomija monit o zastąpienie ustawień aplikacji podczas `--publish-local-settings -i` jest używany.|
 
-Następujący projekt opcje publikowania są obsługiwane tylko w wersji 2.x:
+Następujące opcje publikowania są obsługiwane tylko w wersji 2.x:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  Tylko ustawienia publikowania i pominąć zawartości. Wartość domyślna to monitu. |
 |**`--list-ignored-files`** | Wyświetla listę plików, które są ignorowane podczas publikowania, który jest oparty na pliku .funcignore. |
 | **`--list-included-files`** | Wyświetla listę plików, które są publikowane, który jest oparty na pliku .funcignore. |
-| **`--nozip`** | Wyłącza domyślne `Run-From-Zip` wyłączony tryb. |
+| **`--nozip`** | Wyłącza domyślne `Run-From-Package` wyłączony tryb. |
 | **`--build-native-deps`** | Aplikacje funkcji umożliwia pominięcie generowania .wheels folderu podczas publikowania języka python. |
 | **`--additional-packages`** | Lista pakietów do zainstalowania podczas tworzenia zależności natywnych. Na przykład: `python3-dev libevent-dev`. |
 | **`--force`** | Ignoruj wstępnie publikowania weryfikacji w niektórych scenariuszach. |
@@ -463,9 +457,9 @@ Następujący projekt opcje publikowania są obsługiwane tylko w wersji 2.x:
 | **`--no-build`** | Pomiń kompilowanie funkcje dotnet. |
 | **`--dotnet-cli-params`** | Podczas publikowania skompilowany funkcji języka C# (.csproj), podstawowe narzędzia wywołuje "dotnet build--bin/publikowanie danych wyjściowych". Parametry przekazywane do tego zostanie dołączony do wiersza polecenia. |
 
-### <a name="custom-container-deployment"></a>Wdrażanie kontenerów niestandardowych
+### <a name="deployment-custom-container"></a>Wdrożenia (kontener niestandardowy)
 
-Funkcje umożliwia wdrażanie projektu funkcji w kontenerze systemu Linux niestandardowych. Aby uzyskać więcej informacji, zobacz [Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu](functions-create-function-linux-custom-image.md). W wersji 2.x podstawowych narzędzi obsługuje wdrażanie niestandardowego kontenera. Kontenerów niestandardowych musi mieć w pliku Dockerfile. Użyj opcji--plik dockerfile na `func init`.
+Usługa Azure Functions umożliwia wdrażanie projektu funkcji w [niestandardowego kontenera Docker](functions-deployment-technologies.md#docker-container). Aby uzyskać więcej informacji, zobacz [Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu](functions-create-function-linux-custom-image.md). Kontenerów niestandardowych musi mieć w pliku Dockerfile. Tworzenie aplikacji za pomocą pliku Dockerfile, użyj opcji--plik dockerfile na `func init`.
 
 ```bash
 func deploy

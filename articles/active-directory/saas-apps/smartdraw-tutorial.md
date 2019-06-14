@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d811cd69185e77f50749fc48974dee684fb7cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a2322636aab2e0f38e29063d958cb670b5e062f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65744704"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SmartDraw
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację SmartDraw w usłudze Azure AD, należy dodać Sma
 
 **Aby dodać SmartDraw z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SmartDraw, wykonaj 
     > [!NOTE]
     > Wartość adresu URL logowania nie jest prawdziwa. Ta wartość adresu URL logowania zostanie zaktualizowana przy użyciu rzeczywistego adresu URL logowania, co objaśniono w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Aplikacja SmartDraw oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+6. Aplikacja SmartDraw oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
 
     ![image](common/edit-attribute.png)
 
@@ -126,7 +126,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SmartDraw, wykonaj 
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Poczta e-mail | user.mail |
+    | Email | user.mail |
     | Grupy | User.groups |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
@@ -175,13 +175,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SmartDraw, wykonaj 
 
     a. W **Twojej domeny (na przykład acme.com)** polu tekstowym wpisz domenę.
 
-    b. Kopiuj **Your SP zainicjowane adres Url logowania będzie** wystąpienia i wklej go w polu tekstowym adres URL logowania, w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    b. Kopiuj **Your SP zainicjowane adres Url logowania będzie** wystąpienia i wklej go w polu tekstowym adres URL logowania, w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
     
     c. W **grupy zabezpieczeń, aby zezwolić na dostęp SmartDraw** polu tekstowym wpisz **wszyscy**.
 
     d. W **adres Url wystawcy SAML** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal.
 
-    e. W programie Notatnik, otwórz plik XML metadanych, który został pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **Your metadanych SAML** pole.
+    e. W programie Notatnik, otwórz plik XML metadanych, który został pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **Your metadanych SAML** pole.
 
     f. Kliknij przycisk **Zapisz konfigurację** 
 
@@ -246,7 +246,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka SmartDraw w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze SmartDraw, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

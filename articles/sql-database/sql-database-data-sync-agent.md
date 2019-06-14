@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: adb8917605a00208b328e7fd15f96d28c7838988
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60201667"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizacji danych do usługi Azure SQL Data Sync
@@ -157,7 +157,7 @@ Dowiedz się, że agent nie jest uruchomiona na komputerze, który jest hostem s
   1. Na **właściwości agenta synchronizacji danych programu SQL**, wybierz opcję **Zaloguj** kartę.
   1. W **hasło** wprowadź hasło.
   1. W **Potwierdź hasło** pole, wprowadź ponownie hasło.
-  1. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
+  1. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
   1. W **usług** okna, kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL** usługi, a następnie kliknij przycisk **Start**.
   1. Zamknij **usług** okna.
 

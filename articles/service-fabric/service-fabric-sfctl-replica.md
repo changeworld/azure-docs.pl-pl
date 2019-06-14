@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: d0a7199ff0e9cb17c3fbc179a9b37a6620f521f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544674"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
@@ -28,12 +28,12 @@ Zarządzaj replik, które należą do partycji usługi.
 
 |Polecenie|Opis|
 | --- | --- |
-| wdrożony | Pobiera szczegóły repliki wdrożone w węźle usługi Service Fabric. |
+| deployed | Pobiera szczegóły repliki wdrożone w węźle usługi Service Fabric. |
 | deployed-list | Pobiera listę replikami wdrożonymi w węźle usługi Service Fabric. |
-| zdrowie | Pobiera kondycji usługi Service Fabric usługi stanowej replik lub wystąpień usługi bezstanowej. |
-| informacje | Pobiera informacje o repliki partycji usługi Service Fabric. |
+| health | Pobiera kondycji usługi Service Fabric usługi stanowej replik lub wystąpień usługi bezstanowej. |
+| info | Pobiera informacje o repliki partycji usługi Service Fabric. |
 | list | Pobiera informacje o replikach partycji usługi Service Fabric. |
-| usuń | Usuwa replikę usługi uruchomione w węźle. |
+| Usuń | Usuwa replikę usługi uruchomione w węźle. |
 | report-health | Wysyła raport o kondycji w replice usługi Service Fabric. |
 | restart | Powoduje ponowne uruchomienie repliki usług utrwalonych usługi uruchomionej w węźle. |
 

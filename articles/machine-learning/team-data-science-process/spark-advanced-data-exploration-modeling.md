@@ -12,10 +12,10 @@ ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5f6145e581393d874871d214515a660f987d1d7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60253430"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Zaawansowane eksplorowanie i modelowanie danych za pomocą platformy Spark
@@ -196,7 +196,7 @@ Po wprowadzeniu danych do platformy Spark jest następnym krokiem w procesie nau
 Ten kod i kolejne fragmenty umożliwia magicznym wyrażeniem SQL zapytania próbki i magic lokalnych danych.
 
 * **Magicznym wyrażeniem SQL (`%%sql`)** jądra HDInsight PySpark obsługuje zapytania HiveQL łatwe wbudowane względem sqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako ramkę danych Pandas na serwerze programu Jupyter. Oznacza to, że jest on dostępny w trybie lokalnym.
-*  **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze programu Jupyter, który jest węzłem głównym klastra HDInsight. Zazwyczaj można użyć `%%local` magic po `%%sql -o` magic jest używany do uruchamiania kwerendy. Parametr -o będzie utrwalanie danych wyjściowych zapytania SQL lokalnie. A następnie `%%local` magic wyzwala kolejny zbiór fragmentów kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który lokalnie trwały. Dane wyjściowe są automatycznie wizualizowane po uruchomieniu kodu.
+* **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze programu Jupyter, który jest węzłem głównym klastra HDInsight. Zazwyczaj można użyć `%%local` magic po `%%sql -o` magic jest używany do uruchamiania kwerendy. Parametr -o będzie utrwalanie danych wyjściowych zapytania SQL lokalnie. A następnie `%%local` magic wyzwala kolejny zbiór fragmentów kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który lokalnie trwały. Dane wyjściowe są automatycznie wizualizowane po uruchomieniu kodu.
 
 To zapytanie pobiera rund według liczby pasażerów. 
 

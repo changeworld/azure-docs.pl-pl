@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527309"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Usługa Azure wersji schematu konfiguracji rozszerzenia diagnostyki i Historia
@@ -21,10 +21,10 @@ Indeksy tej strony wersje Schemat rozszerzenia diagnostyki Azure dostarczana jak
 
 > [!NOTE]
 > Rozszerzenie diagnostyki platformy Azure to składnik używany do zbierania liczników wydajności i innych danych statystycznych od:
-> - Azure Virtual Machines
+> - Usługa Azure Virtual Machines
 > - Zestawy skali maszyn wirtualnych
 > - Service Fabric
-> - Cloud Services
+> - Usługi w chmurze
 > - Grupy zabezpieczeń sieci
 >
 > Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.

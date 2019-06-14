@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60246334"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizacja programu Azure AD Connect: Omówienie aprowizacji deklaratywnej
@@ -42,13 +42,13 @@ Ten potok ma kilka różnych modułów. Każdy z nich jest odpowiedzialny za jed
 * [Pierwszeństwo](#precedence), rozwiązuje powodujące konflikt wkładów atrybutu
 * Cel, obiekt docelowy
 
-## <a name="scope"></a>Zakres
+## <a name="scope"></a>Scope
 Moduł zakresie ocenia, obiekt i określa reguły, które znajdują się w zakresie i powinny zostać uwzględnione w czasie przetwarzania. W zależności od wartości atrybutów obiektu reguły synchronizacji różnych są oceniane się w zakresie. Na przykład wyłączony użytkownik z nie skrzynki pocztowej programu Exchange mają różne reguły niż włączonego użytkownika ze skrzynki pocztowej.  
-![Zakres](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Zakres jest zdefiniowany jako grupy oraz klauzul. Klauzule znajdują się wewnątrz grupy. Operator logiczny oraz jest używane między wszystkie klauzule w grupie. Na przykład (dział IT i kraj = = Dania). Operator logiczny lub jest używany między grupami.
 
-![Zakres](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 Zakres na tej ilustracji powinny być odczytywane jako (Dział = dział IT i kraju = Dania) lub (kraj = Szwecja). Jeśli grupa 1 lub 2 grupy nie zostało ocenione na true, reguła znajduje się w zakresie.
 
 Moduł zakresu obsługuje następujące operacje.
@@ -66,7 +66,7 @@ Moduł zakresu obsługuje następujące operacje.
 | ISBITSET, ISNOTBITSET |Ocenia, jeśli ustawiono bit określonej. Na przykład może służyć do oceny, bity w kontroli konta użytkownika, aby zobaczyć, czy użytkownik jest włączone. |
 | ISMEMBEROF, ISNOTMEMBEROF |Wartość może zawierać nazwy domeny do grupy w przestrzeni łącznika. Jeśli obiekt jest członkiem grupy określonej, reguła jest w zakresie. |
 
-## <a name="join"></a>Join
+## <a name="join"></a>Dołączanie
 Moduł sprzężenia w potoku synchronizacji jest odpowiedzialny za znalezienie relację między obiektem w źródle i obiekt w elemencie docelowym. W przychodzącej regule ta relacja będzie obiektu w przestrzeni łącznika, znajdowanie relacji z obiektem w obiekcie metaverse.  
 ![Dołącz do między cs i mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 Celem jest, aby zobaczyć, jeśli istnieje obiekt już w magazynie metaverse utworzonych przez inny łącznik, powinna być skojarzona z. Na przykład w lesie zasobów dla konta użytkownika z lasu kont powinien być połączony z użytkownikiem w lesie zasobów.
