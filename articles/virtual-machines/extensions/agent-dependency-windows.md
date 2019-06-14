@@ -79,7 +79,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta zależności masz
 | Name (Nazwa) | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| Wydawcy | Microsoft.Azure.Monitoring.DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
