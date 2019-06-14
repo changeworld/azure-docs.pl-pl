@@ -264,7 +264,5 @@
   items:
     - name: Klastry systemu Windows
       items:
-        - name: Migrowanie klastrów systemu Windows do klastrów systemu Linux
-          href: ../hdinsight-migrate-from-windows-to-linux.md
         - name: Migrowanie rozwiązań .NET do klastrów z systemem Linux
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
