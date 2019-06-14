@@ -69,8 +69,8 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | connectionId          | Unikatowy identyfikator połączenia łańcucha bloków|
 | messageSchemaVersion  | Wersja schematu komunikatów |
 | messageName           | **CreateUserUpdate** |
-| stan                | Stan żądania utworzenia użytkownika.  Jeśli operacja się powiedzie, wartość jest **Powodzenie**. W przypadku awarii, wartość jest **błąd**.     |
-| AdditionalInformation | Dodatkowe informacje podane na podstawie stanu |
+| status                | Stan żądania utworzenia użytkownika.  Jeśli operacja się powiedzie, wartość jest **Powodzenie**. W przypadku awarii, wartość jest **błąd**.     |
+| additionalInformation | Dodatkowe informacje podane na podstawie stanu |
 
 Przykład pomyślnie **Utwórz użytkownika** odpowiedzi z aplikacji Blockchain Workbench:
 
