@@ -8,6 +8,7 @@
     - name: Przykładowe scenariusze dotyczące użytkowników
       href: text-analytics-user-scenarios.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Interfejs API REST
       items:
@@ -33,6 +34,8 @@
           href: quickstarts/go-sdk.md
         - name: Ruby
           href: quickstarts/ruby-sdk.md
+        - name: Node.js
+          href: quickstarts/nodejs-sdk.md
 - name: Samouczki
   items:
     - name: Integracja usługi Power BI w celu analizy opinii klientów

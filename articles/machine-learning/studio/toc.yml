@@ -7,8 +7,7 @@
       displayName: overview
       href: what-is-ml-studio.md
     - name: Porównanie naszych produktów do uczenia maszynowego
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: Samouczki
   items:
     - name: Tworzenie pierwszego eksperymentu

@@ -6,7 +6,7 @@ metadata:
   title: Traffic Manager
   meta.description: 'Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.'
   services: traffic-manager
-  author: KumudD
+  author: asudbring
   manager: twooley
   layout: LandingPage
   ms.service: traffic-manager
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/28/2019
-  ms.author: kumud
+  ms.author: allensu
 abstract:
   description: 'Dowiedz się, jak korzystać z usługi Traffic Manager. Przewodniki Szybki start, samouczki, przykłady i inne pomoce pokazują, jak zarządzać ruchem przychodzącym, aby uzyskać optymalną wydajność aplikacji, oraz jak dystrybuować ruch do platformy Azure lub zewnętrznych punktów końcowych usługi.'
 sections:
@@ -27,7 +27,7 @@ sections:
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
+            text: Portal Azure
             href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
           - image:
               src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
