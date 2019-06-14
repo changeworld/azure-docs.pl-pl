@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60416184"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory na podstawie certyfikatu uwierzytelniania w systemie Android
@@ -66,7 +66,7 @@ Najlepszym rozwiązaniem należy zaktualizować strony błędów usług AD FS w 
 
 Aby uzyskać więcej informacji, zobacz [dostosowywania stron AD FS Zaloguj](https://technet.microsoft.com/library/dn280950.aspx).
 
-Wyślij niektóre aplikacje pakietu Office (z włączoną nowoczesnego uwierzytelniania) "*= monit logowania*" do usługi Azure AD w żądaniu. Domyślnie program Azure AD tłumaczy "*= monit logowania*"w żądaniu usług AD FS jako"*wauth = usernamepassworduri*" (prosi usług AD FS w celu uwierzytelnienia użytkownik/hasło) i "*wfresh = 0*" (prosi usług AD FS do Ignoruj stanu logowania jednokrotnego i wykonać świeże uwierzytelnianie). Aby włączyć uwierzytelnianie oparte na certyfikatach dla tych aplikacji, należy zmodyfikować domyślne zachowanie usługi Azure AD. Ustaw "*PromptLoginBehavior*"w ustawieniach domeny federacyjnej do"*wyłączone*".
+Wyślij niektóre aplikacje pakietu Office (z włączoną nowoczesnego uwierzytelniania) " *= monit logowania*" do usługi Azure AD w żądaniu. Domyślnie program Azure AD tłumaczy " *= monit logowania*"w żądaniu usług AD FS jako"*wauth = usernamepassworduri*" (prosi usług AD FS w celu uwierzytelnienia użytkownik/hasło) i "*wfresh = 0*" (prosi usług AD FS do Ignoruj stanu logowania jednokrotnego i wykonać świeże uwierzytelnianie). Aby włączyć uwierzytelnianie oparte na certyfikatach dla tych aplikacji, należy zmodyfikować domyślne zachowanie usługi Azure AD. Ustaw "*PromptLoginBehavior*"w ustawieniach domeny federacyjnej do"*wyłączone*".
 Możesz użyć [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) polecenia cmdlet do wykonania tego zadania:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

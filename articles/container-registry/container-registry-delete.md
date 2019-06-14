@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: danlep
 ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60430812"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Usuwanie obrazów kontenerów w usłudze Azure Container Registry

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
 ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448053"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Poprawa ochrony przed zagrożeniami, integrując operacje zabezpieczeń za pomocą programu Microsoft Graph Security i Azure Logic Apps
@@ -60,11 +60,11 @@ Aby dowiedzieć się więcej na temat zabezpieczeń programu Microsoft Graph, zo
 
 1. Dla aplikacji logiki puste Dodaj wyzwalacz i żądane przed dodaniem akcji programu Microsoft Graph Security akcje.
 
-   — lub —
+   —lub—
 
    Dla istniejących aplikacji logiki w ostatnim kroku, którym chcesz dodać akcję zabezpieczeń programu Microsoft Graph wybierz **nowy krok**.
 
-   — lub —
+   —lub—
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
    Wybierz znak plus (+), który pojawia się, a następnie wybierz **Dodaj akcję**.
@@ -75,7 +75,7 @@ Aby dowiedzieć się więcej na temat zabezpieczeń programu Microsoft Graph, zo
 
 1. Podaj odpowiednie szczegóły wybranej akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
-## <a name="add-actions"></a>Dodaj akcje
+## <a name="add-actions"></a>Dodawanie akcji
 
 Poniżej przedstawiono bardziej szczegółowe informacje o korzystaniu z różnych dostępnych akcji za pomocą łącznika programu Microsoft Graph zabezpieczeń.
 

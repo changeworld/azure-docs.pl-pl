@@ -16,10 +16,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345145"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Wdrażaj usługi sieci web Azure Machine Learning Studio, korzystające z modułów importu i eksportu danych
@@ -67,7 +67,7 @@ Do odczytywania danych z tabeli Azure SQL:
 ## <a name="create-the-predictive-experiment"></a>Utworzyć eksperyment predykcyjny
 Następnie należy skonfigurować eksperyment predykcyjny, z której można wdrożyć usługi sieci web.
 
-1. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **ustawić usługę sieci Web** i wybierz **predykcyjne usługi sieci Web [zalecane]**.
+1. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **ustawić usługę sieci Web** i wybierz **predykcyjne usługi sieci Web [zalecane]** .
 2. Usuń *dane wejściowe usługi sieci Web* i *moduły danych wyjściowych usługi sieci Web* z eksperyment predykcyjny.
 3. W polu wyszukiwania składniki typu eksportu.
 4. Z listy wyników, należy dodać *Eksport danych* modułu do obszaru roboczego eksperymentu.
@@ -100,10 +100,10 @@ Można wdrożyć do klasycznego lub nowej usługi sieci web.
 Aby wdrożyć jako klasycznej usługi sieci Web i tworzenie aplikacji z jego:
 
 1. W dolnej części obszaru roboczego eksperymentu kliknij przycisk Uruchom.
-2. Gdy działanie zostało zakończone, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]**.
+2. Gdy działanie zostało zakończone, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]** .
 3. Zlokalizuj swój klucz interfejsu API na pulpicie nawigacyjnym usługi sieci web. Skopiuj i zapisz go do późniejszego użycia.
 4. W **domyślny punkt końcowy** tabelę, kliknij przycisk **wykonywanie wsadowe** link, aby otworzyć stronę pomocy interfejsu API.
-5. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
+5. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)** .
 6. Na stronie pomocy interfejsu API, należy znaleźć **przykładowy kod** sekcji w dolnej części strony.
 7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs i usunąć wszystkie odwołania do usługi blob storage.
 8. Zaktualizuj wartość *apiKey* zmiennej za pomocą klucza interfejsu API, zapisany wcześniej.
@@ -128,11 +128,11 @@ Po zakończeniu przebiegu zostanie dodana nowa tabela, z bazą danych zawierają
 Aby wdrożyć jako nową usługę sieci Web i tworzenie aplikacji z jego:
 
 1. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **Uruchom**.
-2. Gdy działanie zostało zakończone, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [New]**.
+2. Gdy działanie zostało zakończone, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [New]** .
 3. Na stronie wdrażanie eksperymentu, wprowadź nazwę usługi sieci web i wybrać planu cenowego, a następnie kliknij przycisk **Wdróż**.
 4. Na **Szybki Start** kliknij **zużywania**.
 5. W **przykładowy kod** kliknij **partii**.
-6. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
+6. W programie Visual Studio, należy utworzyć C# konsoli aplikacji: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)** .
 7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs.
 8. Zaktualizuj wartość *apiKey* zmiennej za pomocą **klucza podstawowego** znajduje się w **informacje podstawowe użycie** sekcji.
 9. Znajdź *scoreRequest* deklaracji i zaktualizuj wartości parametrów usługi sieci Web, które są przekazywane do *importu danych* i *Eksport danych* modułów. W tym przypadku użyj oryginalne zapytanie, ale zdefiniowanie nowej nazwy tabeli.

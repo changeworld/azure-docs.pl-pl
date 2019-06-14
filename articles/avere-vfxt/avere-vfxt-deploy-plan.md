@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
 ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60409895"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
@@ -46,7 +46,7 @@ Podczas planowania systemu vFXT Avere infrastruktury sieci, należy przestrzega�
   |----------|-----------|----------|
   | Grupa zasobów | Tak, jeśli jest pusty | Może być pusta| 
   | Konto magazynu | Tak, jeżeli połączenie istniejącego kontenera obiektów Blob po utworzeniu klastra <br/>  Nie w przypadku utworzenia nowego kontenera obiektów Blob podczas tworzenia klastra | Istniejący kontener obiektów Blob może być pusta <br/> &nbsp; |
-  | Sieć wirtualna | Yes | Musi zawierać punkt końcowy usługi storage, tworzeniu nowego kontenera obiektów Blob platformy Azure | 
+  | Sieć wirtualna | Tak | Musi zawierać punkt końcowy usługi storage, tworzeniu nowego kontenera obiektów Blob platformy Azure | 
   | Podsieć | Yes |   |
 
 ## <a name="ip-address-requirements"></a>Wymagania dotyczące adresów IP 
@@ -74,7 +74,7 @@ Maszyny wirtualne, które będzie służyć jako węzły klastra określają poj
 
 Każdy węzeł vFXT są identyczne. Oznacza to jeśli tworzysz klaster z trzema węzłami masz trzech maszyn wirtualnych z tego samego typu i rozmiaru. 
 
-| Typ wystąpienia | Procesory wirtualne vCPU | Memory (Pamięć)  | Lokalny magazyn SSD  | Maks. liczba dysków danych | Przepływność dysku bez buforowania | Karta sieciowa (licznik) |
+| Typ wystąpienia | procesorów wirtualnych | Memory (Pamięć)  | Lokalny magazyn SSD  | Maks. liczba dysków danych | Przepływność dysku bez buforowania | Karta sieciowa (licznik) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51,200 IOPS <br/> 768 MB/s | 16 000 MB/s (8)  |
 

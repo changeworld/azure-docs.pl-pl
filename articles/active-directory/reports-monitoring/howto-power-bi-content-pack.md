@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60437672"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak używać pakietu zawartości usługi Azure Active Directory usługi Power BI
@@ -112,7 +112,7 @@ Podczas pracy z pakietem zawartości, możliwe jest wystąpiły następujące b�
 
 Ogólną pomoc dotyczącą usługi Power BI można znaleźć w następujących [artykułach pomocy](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 
-### <a name="refresh-failed"></a>Niepowodzenie odświeżania 
+### <a name="refresh-failed"></a>Odświeżanie nie powiodło się 
  
 **Jak ten błąd jest udostępniane**: Wyślij wiadomość e-mail z usługi Power BI lub stan niepowodzenia w historii odświeżania. 
 

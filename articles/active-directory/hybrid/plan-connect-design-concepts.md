@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60382289"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
@@ -175,7 +175,7 @@ Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją Consis
 
 ![Dodawanie nowych katalogów do istniejącego wdrożenia](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Logowanie się w usłudze Azure AD
+## <a name="azure-ad-sign-in"></a>Usługa Azure AD logowania
 Podczas integracji katalogu lokalnego z usługą Azure AD, ważne jest, aby zrozumieć, jak ustawienia synchronizacji wpływa na sposób użytkownik jest uwierzytelniany. Usługa Azure AD używa userPrincipalName (UPN) do uwierzytelnienia użytkownika. Jednak po zsynchronizowaniu użytkowników, możesz wybrać atrybut, który ma być używany dla wartości userPrincipalName ostrożnie.
 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Wybieranie atrybut userPrincipalName

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60396430"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics w usłudze Azure Monitor
@@ -102,8 +102,8 @@ W poniższej tabeli przedstawiono około liczby agentów może komunikować się
 
 |Brama |Agenci obsługiwani (w przybliżeniu)|  
 |--------|----------------------------------|  
-|Procesor CPU: Intel Xeon procesora E5 2660 v3 \@ 2,6 GHz, 2 rdzenie<br> Pamięć: 4 GB<br> Przepustowość sieci: 1 Gb/s| 600|  
-|Procesor CPU: Intel Xeon procesora E5 2660 v3 \@ 2,6 GHz 4 rdzenie<br> Pamięć: 8 GB<br> Przepustowość sieci: 1 Gb/s| 1000|  
+|CPU: Intel Xeon procesora E5 2660 v3 \@ 2,6 GHz, 2 rdzenie<br> Pamięć: 4 GB<br> Przepustowość sieci: 1 Gb/s| 600|  
+|CPU: Intel Xeon procesora E5 2660 v3 \@ 2,6 GHz 4 rdzenie<br> Pamięć: 8 GB<br> Przepustowość sieci: 1 Gb/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Pobierz bramę usługi Log Analytics
 

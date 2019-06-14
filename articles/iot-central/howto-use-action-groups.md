@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
 ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60517217"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Wiele akcji, aby uruchamiała się z co najmniej jedną regułę grupy
@@ -37,7 +37,7 @@ Grupy akcji wykonywać następujące czynności:
 
 Poniższy zrzut ekranu przedstawia grupę akcji, który wysyła wiadomości e-mail i powiadomienia SMS, a następnie wywołuje element webhook:
 
-![Grupa akcji](media/howto-use-action-groups/actiongroup.png)
+![grupy akcji](media/howto-use-action-groups/actiongroup.png)
 
 Aby użyć grupy akcji w regule IoT Central, grupy akcji musi być w tej samej subskrypcji platformy Azure jako aplikację IoT Central.
 
@@ -57,7 +57,7 @@ Wybierz pozycję **Zapisz**. Grupa akcji pojawi się na liście Akcje do wykonan
 
 W poniższej tabeli przedstawiono informacje wysyłane do typów obsługiwanych akcji:
 
-| Typ akcji | Format wyjściowy |
+| Typ akcji | Format danych wyjściowych |
 | ----------- | -------------- |
 | Email       | Standardowy szablon wiadomości e-mail IoT Central |
 | SMS         | Alert usługi Azure IoT Central: ${applicationName} — "${ruleName}" wyzwolone przez "${deviceName}" na ${triggerDate}, ${triggerTime} |

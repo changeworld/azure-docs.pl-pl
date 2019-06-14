@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369230"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetl rezerwacje platformy Azure w witrynie Azure portal
@@ -49,7 +49,7 @@ Jeśli musisz zmienić zakres rezerwacji podziału rezerwacji lub zmiany, kto mo
 Aby wyświetlić transakcje rezerwacji w witrynie Azure portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-cm-billing-search.png)
 

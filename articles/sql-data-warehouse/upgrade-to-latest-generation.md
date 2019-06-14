@@ -11,10 +11,10 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310375"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
@@ -27,7 +27,7 @@ Możesz teraz rozpocząć płynnie do warstwy SQL dane magazynu obliczenia zopty
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>Dotyczy
+## <a name="applies-to"></a>Stosuje się do
 
 To uaktualnienie dotyczy magazyny danych warstwy obliczenia zoptymalizowane pod kątem Gen1 w [obsługiwane regiony](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
@@ -205,7 +205,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 4. Wybierz opcję **punkty przywracania na automatyczne** lub **zdefiniowanych przez użytkownika punktów przywracania**.
 
-    ![Automatyczne punkty przywracania](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Punkty przywracania na automatyczny](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Dla punktów przywracania User-defined **wybierz punkt przywracania** lub **utworzyć nowy punkt przywracania użytkownika**. Wybierz serwer w Gen2 obsługiwanym regionie geograficznym. 
 

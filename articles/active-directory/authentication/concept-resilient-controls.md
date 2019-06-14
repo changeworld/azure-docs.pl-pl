@@ -12,10 +12,10 @@ ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414957"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
@@ -80,12 +80,12 @@ Ten przykładowy zestaw zasad spowoduje przyznanie wybranych użytkowników w **
 * Zasady 1: Blokuj dostęp do osób spoza grupy docelowe
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz AppUsers CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Obejmują wszystkie aplikacje
-  * Warunki: (brak)
+  * Warunki: (Brak)
   * Grant Control: Blokuj
 * Zasady 2: Udzielanie dostępu do AppUsers wymaganie uwierzytelniania Wieloskładnikowego lub zaufanego urządzenia.
   * Użytkownicy i grupy: Obejmują AppUsers. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Obejmują wszystkie aplikacje
-  * Warunki: (brak)
+  * Warunki: (Brak)
   * Grant Control: Udzielanie dostępu, Wymagaj uwierzytelniania wieloskładnikowego, wymagać, aby było zgodne urządzenie. W przypadku wielu kontrolek: Wymagaj jednej z wybranych kontrolek.
 
 ### <a name="contingencies-for-user-lockout"></a>Warunkowych dla blokady użytkownika
@@ -145,28 +145,28 @@ Poniższy przykład: **Przykład A — zasady awaryjny urzędu certyfikacji do p
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Dowolne
   * Grant Control: Wymagają przyłączonych do domeny
-  * Stan: Disabled (Wyłączony)
+  * Stan: Wyłączone
 * Zasady 2: Blok platform innych niż Windows
   * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [2/4] - Exchange SharePoint — Blokuj dostęp z wyjątkiem Windows
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz Windows
   * Grant Control: Blokuj
-  * Stan: Disabled (Wyłączony)
+  * Stan: Wyłączone
 * Zasady 3: Blok z sieciami CorpNetwork
   * Nazwa: EM003 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [3/4] - Exchange SharePoint — Zablokuj dostęp poza siecią firmową
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Lokalizacje obejmują dowolnej lokalizacji, Wyklucz CorpNetwork
   * Grant Control: Blokuj
-  * Stan: Disabled (Wyłączony)
+  * Stan: Wyłączone
 * Zasady 4: Jawnie zablokować EAS
   * Nazwa: EM004 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [4/4] - Exchange - Block EAS dla wszystkich użytkowników
   * Użytkownicy i grupy: Zawierała wszystkich użytkowników
   * Aplikacje w chmurze: Obejmują Exchange Online
   * Warunki: Aplikacje klienckie: Program Exchange Active Sync
   * Grant Control: Blokuj
-  * Stan: Disabled (Wyłączony)
+  * Stan: Wyłączone
 
 Kolejność aktywacji:
 
@@ -187,14 +187,14 @@ W następnym przykładzie **przykład B — zasady dostępu Warunkowego awaryjny
   * Aplikacje w chmurze: Salesforce.
   * Warunki: Brak
   * Grant Control: Blokuj
-  * Stan: Disabled (Wyłączony)
+  * Stan: Wyłączone
 * Zasady 2: Blokuj zespół ds. sprzedaży z dowolnej platformy inne niż mobile (w celu zmniejszenia obszaru powierzchni ataku)
   * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu zgodności urządzenia [2/2] - Salesforce — Blokuj wszystkie platformy z wyjątkiem systemów iOS i Android
   * Użytkownicy i grupy: Obejmują SalesforceContingency. Wyklucz SalesAdmins
-  * Aplikacje w chmurze: SalesForce
+  * Aplikacje w chmurze: Salesforce
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz systemów iOS i Android
   * Grant Control: Blokuj
-  * Stan: Disabled (Wyłączony)
+  * Stan: Wyłączone
 
 Kolejność aktywacji:
 

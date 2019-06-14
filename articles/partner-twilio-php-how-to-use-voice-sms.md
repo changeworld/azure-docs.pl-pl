@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422359"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Jak używać usługi Twilio dla połączeń głosowych i SMS funkcji w języku PHP
@@ -44,16 +44,16 @@ Interfejs API korzysta z usługi Twilio zleceń; na przykład **&lt;Say&gt;** Tw
 
 Oto lista poleceń usługi Twilio. Dowiedz się więcej o innych poleceń i możliwości za pośrednictwem [dokumentacji usługi Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
-* **&lt;Wybierania&gt;**: Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
-* **&lt;Gather&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
-* **&lt;Rozłączanie&gt;**: Kończy wywołanie.
-* **&lt;Play&gt;**: Odtwarza plik audio.
-* **&lt;Pause&gt;**: Dyskretnie czeka określoną liczbę sekund.
-* **&lt;Rekord&gt;**: Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
-* **&lt;Redirect&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
-* **&lt;Reject&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń
-* **&lt;Powiedz&gt;**: Konwertuje tekst na mowę, który składa się na wywołanie.
-* **&lt;Sms&gt;**: Wysyła wiadomość SMS.
+* **&lt;Wybierania&gt;** : Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
+* **&lt;Gather&gt;** : Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
+* **&lt;Rozłączanie&gt;** : Kończy wywołanie.
+* **&lt;Play&gt;** : Odtwarza plik audio.
+* **&lt;Pause&gt;** : Dyskretnie czeka określoną liczbę sekund.
+* **&lt;Rekord&gt;** : Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
+* **&lt;Redirect&gt;** : Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
+* **&lt;Reject&gt;** : Odrzuca połączenie na numer Twilio bez możesz rozliczeń
+* **&lt;Powiedz&gt;** : Konwertuje tekst na mowę, który składa się na wywołanie.
+* **&lt;Sms&gt;** : Wysyła wiadomość SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML to zbiór opartych na języku XML instrukcje zleceń Twilio, które informują Twilio sposób przetwarzania wywołania lub wysyłać wiadomości SMS.
@@ -84,7 +84,7 @@ Można skonfigurować aplikację do używania biblioteki Twilio dla języka PHP 
 
 1. Pobierz biblioteki Twilio dla programów PHP i z usługi GitHub ([https://github.com/twilio/twilio-php][twilio_php]) i Dodaj **usług** katalogu aplikacji.
    
-    — Lub —
+    -LUB-
 2. Zainstaluj bibliotekę usługi Twilio dla programu PHP w pakiecie GRUSZKI. Można go zainstalować za pomocą następujących poleceń:
    
         $ pear channel-discover twilio.github.com/pear

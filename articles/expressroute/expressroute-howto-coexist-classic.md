@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370427"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja (wersja klasyczna)
@@ -23,7 +23,7 @@ ms.locfileid: "60370427"
 > 
 > 
 
-Ten artykuł pomaga skonfigurować współistniejące połączenia usługi ExpressRoute i połączenia sieci VPN typu lokacja-lokacja. Możliwość skonfigurowania sieci VPN typu lokacja-lokacja i usługi ExpressRoute niesie ze sobą pewne korzyści. Sieć VPN typu lokacja-lokacja można skonfigurować jako bezpieczną ścieżkę trybu failover dla usługi ExpressRoute lub użyć tej sieci do połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Dotyczy on klasycznego modelu wdrożenia. Ta konfiguracja nie jest dostępna w portalu.
+Ten artykuł ułatwia konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja, które współistnieć. Możliwość skonfigurowania sieci VPN typu lokacja-lokacja i usługi ExpressRoute niesie ze sobą pewne korzyści. Sieć VPN typu lokacja-lokacja można skonfigurować jako bezpieczną ścieżkę trybu failover dla usługi ExpressRoute lub użyć tej sieci do połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Dotyczy on klasycznego modelu wdrożenia. Ta konfiguracja nie jest dostępna w portalu.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -81,7 +81,7 @@ Istnieją dwa różne zestawy procedur do wyboru służące do konfigurowania po
 ## <a name="new"></a>Aby utworzyć nową sieć wirtualną i współistniejące połączenia
 Ta procedura zawiera instrukcje tworzenia sieci wirtualnej i połączeń typu lokacja-lokacja oraz usługi ExpressRoute, które będą współistnieć.
 
-1. Niezbędne jest zainstalowanie najnowszej wersji poleceń cmdlet programu Azure PowerShell.  Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu Azure PowerShell, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Pamiętaj, że polecenia cmdlet, które zostaną użyte do tej konfiguracji, mogą trochę różnić się od tych, które znasz. Koniecznie użyj poleceń cmdlet podanych w tych instrukcjach. 
+1. Niezbędne jest zainstalowanie najnowszej wersji poleceń cmdlet programu Azure PowerShell. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu Azure PowerShell, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Pamiętaj, że polecenia cmdlet, które zostaną użyte do tej konfiguracji, mogą trochę różnić się od tych, które znasz. Koniecznie użyj poleceń cmdlet podanych w tych instrukcjach. 
 2. Utwórz schemat dla sieci wirtualnej. Więcej informacji na temat schematu konfiguracji znajduje się w artykule [Azure Virtual Network configuration schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) (Schemat konfiguracji sieci wirtualnej Azure).
    
     Podczas tworzenia schematu pamiętaj, aby użyć następujących wartości:

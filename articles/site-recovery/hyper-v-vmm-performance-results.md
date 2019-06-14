@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60363551"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
@@ -152,7 +152,7 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 | Serwer plików |50 |1 |2 |552 |22 |
 | VDI |149 |.5 |1 |80 |6 |
 | Serwer sieci Web |149 |.5 |1 |80 |6 |
-| SUMA |470 | | |96.83 TB |4108 |
+| ŁĄCZNA LICZBA |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Ustawień usługi Site Recovery
 

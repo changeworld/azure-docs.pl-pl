@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60440639"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Wdrażanie usługi Azure AD Privileged Identity Management (PIM)
@@ -153,7 +153,7 @@ Aby zautomatyzować kroki 3 i 4, możesz użyć funkcji przeglądu dostępu w us
 
 ![Tworzenie przeglądu dostępu](./media/pim-deployment-plan/create-access-review.png)
 
-Należy ustawić recenzentów **członkowie (własny)**. Spowoduje to wysłanie wiadomość e-mail do wszystkich elementów członkowskich w roli można pobrać w celu sprawdzenia, czy potrzebują dostępu. Należy również włączyć **wymagana Przyczyna przy zatwierdzaniu** w zaawansowanych ustawieniach, dzięki czemu użytkownicy mogą podać Dlaczego muszą roli. Na podstawie tych informacji, można usunąć użytkowników z zbędne role i delegowanie bardziej szczegółowego ról administratora w przypadku administratorów globalnych.
+Należy ustawić recenzentów **członkowie (własny)** . Spowoduje to wysłanie wiadomość e-mail do wszystkich elementów członkowskich w roli można pobrać w celu sprawdzenia, czy potrzebują dostępu. Należy również włączyć **wymagana Przyczyna przy zatwierdzaniu** w zaawansowanych ustawieniach, dzięki czemu użytkownicy mogą podać Dlaczego muszą roli. Na podstawie tych informacji, można usunąć użytkowników z zbędne role i delegowanie bardziej szczegółowego ról administratora w przypadku administratorów globalnych.
 
 Przeglądy dostępu zależy od wiadomości e-mail, aby powiadomić użytkowników, aby zapoznać się z ich dostęp do tych ról. Jeśli ma uprzywilejowane konta, które nie zostały połączone w wiadomości e-mail, pamiętaj wypełnić pola pomocniczego adresu e-mail dla tych kont. Aby uzyskać więcej informacji, zobacz [proxyAddresses atrybutu w usłudze Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
@@ -179,14 +179,14 @@ Należy określić priorytety ochrony ról usługi Azure AD, które mają najwi�
 
 1. Administrator globalny
 1. Administrator zabezpieczeń
-1. Administrator użytkownika
+1. Administrator użytkowników
 1. Administrator programu Exchange
 1. Administrator programu SharePoint
 1. Administrator usługi Intune
 1. Czytelnik zabezpieczeń
 1. Administrator usługi
 1. Administrator rozliczeń
-1. Administrator programu Skype dla firm
+1. Skype dla firm administratora
 
 > [!TIP]
 > :heavy_check_mark: **Firma Microsoft zaleca** Zarządzanie wszyscy administratorzy globalni i Administratorzy zabezpieczeń za pomocą usługi PIM jako pierwszego kroku są tymi, które mogą wykonywać najbardziej szkód w przypadku naruszenia zabezpieczeń.
@@ -240,7 +240,7 @@ Przed zaimplementowaniem rozwiązania PIM jest dobrym rozwiązaniem do ustawień
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>Ustawień usługi PIM dla ról usługi Azure AD
 
-| Rola | Wymaganie usługi MFA | Powiadomienie | Bilet zdarzenia | Wymagaj zatwierdzenia | Osoba zatwierdzająca | Czas trwania aktywacji | Administratora trwałego |
+| Rola | Wymaganie usługi MFA | Powiadomienia | Bilet zdarzenia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administratora trwałego |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Administrator globalny | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Innych administratorów globalnych | 1 godzina | Kont dostępu awaryjnego |
 | Administrator programu Exchange | :heavy_check_mark: | :heavy_check_mark: | : x:. | : x:. | Brak | 2 Hour | Brak |
@@ -248,7 +248,7 @@ Przed zaimplementowaniem rozwiązania PIM jest dobrym rozwiązaniem do ustawień
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>Ustawień usługi PIM dla ról zasobów platformy Azure
 
-| Rola | Wymaganie usługi MFA | Powiadomienie | Wymagaj zatwierdzenia | Osoba zatwierdzająca | Czas trwania aktywacji | Administrator usługi Active | Aktywne wygaśnięcia | Kwalifikujące się wygaśnięcia |
+| Rola | Wymaganie usługi MFA | Powiadomienia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administrator usługi Active | Aktywne wygaśnięcia | Kwalifikujące się wygaśnięcia |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Właściciel subskrypcji krytyczne | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Innych właścicieli subskrypcji | 1 godzina | Brak | Nie dotyczy | 3-miesięczna |
 | Administrator dostępu użytkowników z mniej ważnych subskrypcji | :heavy_check_mark: | :heavy_check_mark: | : x:. | Brak | 1 godzina | Brak | Nie dotyczy | 3-miesięczna |
@@ -260,10 +260,10 @@ Poniższa tabela zawiera opis ustawienia.
 | --- | --- |
 | Rola | Nazwa roli którą definiujesz ustawienia. |
 | Wymaganie usługi MFA | Czy uprawniony użytkownik musi wykonać uwierzytelnianie wieloskładnikowe przed aktywowaniem roli.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wymuszanie uwierzytelniania Wieloskładnikowego dla wszystkich ról administratora, zwłaszcza, jeśli są użytkowników-gości. |
-| Powiadomienie | Jeśli ustawiona na wartość true, Administrator globalny, Administrator ról uprzywilejowanych, a Administrator zabezpieczeń w organizacji otrzyma wiadomość e-mail z powiadomieniem po uprawniony użytkownik aktywuje roli.<br/><br/>**Uwaga:** W niektórych organizacjach nie mają adres e-mail powiązany z ich konta administratora, aby otrzymywać te powiadomienia e-mail, należy go ustawić alternatywny adres e-mail, dzięki czemu administratorzy będą otrzymywać te wiadomości e-mail. |
+| Powiadomienia | Jeśli ustawiona na wartość true, Administrator globalny, Administrator ról uprzywilejowanych, a Administrator zabezpieczeń w organizacji otrzyma wiadomość e-mail z powiadomieniem po uprawniony użytkownik aktywuje roli.<br/><br/>**Uwaga:** W niektórych organizacjach nie mają adres e-mail powiązany z ich konta administratora, aby otrzymywać te powiadomienia e-mail, należy go ustawić alternatywny adres e-mail, dzięki czemu administratorzy będą otrzymywać te wiadomości e-mail. |
 | Bilet zdarzenia | Czy uprawniony użytkownik musi zarejestrować numeru biletu zdarzenia podczas aktywacji ich ról. To ustawienie pozwala organizacji identyfikowanie poszczególnych aktywacji z użyciem wewnętrzny numer zdarzenia eliminowanie niechciane aktywacji.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wykorzystując liczb biletów zdarzeń, aby powiązać PIM przy użyciu Twój system wewnętrzny. Jest to szczególnie przydatne dla osób zatwierdzających potrzebujących kontekstu aktywacji. |
 | Wymagaj zatwierdzenia | Czy uprawniony użytkownik musi uzyskać zatwierdzenia do aktywowania roli.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** można skonfigurować zatwierdzenia dla ról z najbardziej uprawnień. Na podstawie wzorców użycia wszystkich klientów usługi PIM, administratora globalnego, administratora użytkowników, Administrator programu Exchange, administratora zabezpieczeń i Administrator haseł są najbardziej typowe role o zatwierdzenie instalacji. |
-| Osoba zatwierdzająca | Jeśli zatwierdzenie jest wymagane do aktywowania kwalifikujących się ról, wyświetlić listę osób, które należy zatwierdzać żądania. Domyślnie usługi PIM ustawia osoby zatwierdzającej do wszystkich użytkowników, którzy są administratorami ról uprzywilejowanych, czy są one stałe lub kwalifikujące się.<br/><br/>**Uwaga:** Jeśli użytkownik należy zarówno kwalifikuje się do roli usługi Azure AD i osoba zatwierdzająca roli, nie będą mogły zatwierdzać samodzielnie.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wybranie osób zatwierdzających do osób, które są najbardziej odpowiednią wiedzę na temat konkretnej roli i jej użytkownikach, częste, a nie administratora globalnego. |
+| Osoby zatwierdzającej | Jeśli zatwierdzenie jest wymagane do aktywowania kwalifikujących się ról, wyświetlić listę osób, które należy zatwierdzać żądania. Domyślnie usługi PIM ustawia osoby zatwierdzającej do wszystkich użytkowników, którzy są administratorami ról uprzywilejowanych, czy są one stałe lub kwalifikujące się.<br/><br/>**Uwaga:** Jeśli użytkownik należy zarówno kwalifikuje się do roli usługi Azure AD i osoba zatwierdzająca roli, nie będą mogły zatwierdzać samodzielnie.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wybranie osób zatwierdzających do osób, które są najbardziej odpowiednią wiedzę na temat konkretnej roli i jej użytkownikach, częste, a nie administratora globalnego. |
 | Czas trwania aktywacji | Długość czasu, przez który użytkownik zostanie aktywowany w roli zostanie wygaśnięcia. |
 | Administratora trwałego | Listę użytkowników, którzy będą administrator trwały dla roli (nigdy nie musi aktywować).<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** ma zero administratora stałego dla wszystkich ról, z wyjątkiem administratorów globalnych. Przeczytaj więcej o nim w kto powinny kwalifikujących się oraz którzy użytkownicy powinni być trwale aktywne część tego planu. |
 | Administrator usługi Active | Dla zasobów platformy Azure administratora active znajduje się lista użytkowników, którzy nigdy nie będą musiały Aktywuj, aby korzystać z roli. To nie nazywa się administrator trwały, takich jak role usługi Azure AD, ponieważ można ustawić czas wygaśnięcia po użytkownik utraci tej roli. |
@@ -353,7 +353,7 @@ Gdy usługi PIM nie może działać zgodnie z oczekiwaniami w środowisku produk
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 1. Kliknij przycisk **ról usługi Azure AD** a następnie kliknij przycisk **role**.
-1. Dla każdej roli, który został skonfigurowany, kliknij przycisk wielokropka (**...** ) dla wszystkich użytkowników z kwalifikującego się przypisania.
+1. Dla każdej roli, który został skonfigurowany, kliknij przycisk wielokropka ( **...** ) dla wszystkich użytkowników z kwalifikującego się przypisania.
 1. Kliknij przycisk **były trwałe** opcję, aby były trwałe przypisania roli.
 
 #### <a name="azure-resource-roles"></a>Role zasobów platformy Azure
@@ -362,7 +362,7 @@ Gdy usługi PIM nie może działać zgodnie z oczekiwaniami w środowisku produk
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 1. Kliknij przycisk **zasobów platformy Azure** a następnie kliknij subskrypcję lub zasób ma zostać przywrócony.
 1. Kliknij przycisk **role**.
-1. Dla każdej roli, który został skonfigurowany, kliknij przycisk wielokropka (**...** ) dla wszystkich użytkowników z kwalifikującego się przypisania.
+1. Dla każdej roli, który został skonfigurowany, kliknij przycisk wielokropka ( **...** ) dla wszystkich użytkowników z kwalifikującego się przypisania.
 1. Kliknij przycisk **były trwałe** opcję, aby były trwałe przypisania roli.
 
 ## <a name="step-4-next-steps-after-deploying-pim"></a>Krok 4. Następne kroki po wdrożeniu usługi PIM

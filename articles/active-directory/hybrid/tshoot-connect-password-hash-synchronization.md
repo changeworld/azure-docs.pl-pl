@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/13/2017
-ms.date: 04/09/2019
+ms.date: 03/13/2017
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60383264"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją skrótów haseł z usługą Azure AD Connect sync
@@ -361,7 +360,7 @@ W kolumnie Stan może mieć następujące wartości:
 | TargetNotExportedToDirectory |Obiekt w obszarze łącznika usługi Azure AD nie została wyeksportowana. |
 | MigratedCheckDetailsForMoreInfo |Wpis dziennika został utworzony przed kompilacją 1.0.9125.0 i jest wyświetlany w stanie starszej wersji. |
 | Błąd |Usługa zwróciła nieznany błąd. |
-| Nieznana |Wystąpił błąd podczas próby przetworzenia partii skrótów haseł.  |
+| Nieznane |Wystąpił błąd podczas próby przetworzenia partii skrótów haseł.  |
 | MissingAttribute |Określone atrybuty (na przykład protokołu Kerberos skrót) wymagane przez usługi domenowe Azure AD nie są dostępne. |
 | RetryRequestedByTarget |Określone atrybuty (na przykład protokołu Kerberos skrót) wymagane przez usługi domenowe Azure AD nie były wcześniej dostępne. Zostanie podjęta próba ponowną synchronizację skrótów haseł przez użytkownika. |
 
@@ -372,7 +371,7 @@ W kolumnie Stan może mieć następujące wartości:
 ```powershell
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
-$aadConnectors = $connectors | Where-Object {$_.SubType -eq "Azure Active Directory (Microsoft)"}
+$aadConnectors = $connectors | Where-Object {$_.SubType -eq "Windows Azure Active Directory (Microsoft)"}
 $adConnectors = $connectors | Where-Object {$_.ConnectorTypeName -eq "AD"}
 if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
@@ -448,5 +447,3 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 * [Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](how-to-connect-password-hash-synchronization.md)
 * [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
-
-<!-- Update_Description: wording update -->

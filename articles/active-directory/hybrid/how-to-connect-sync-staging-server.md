@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381590"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Program Azure AD Connect: Serwer przejściowy i odzyskiwanie po awarii
@@ -65,9 +65,9 @@ Jeśli wprowadzono zmiany niestandardowy serwer podstawowy i chcesz porównać k
 
 #### <a name="import-and-synchronize"></a>Importuj i Synchronizuj
 1. Wybierz **łączników**i wybierz łącznik pierwszy z typem **Active Directory Domain Services**. Kliknij przycisk **Uruchom**, wybierz opcję **pełny import**, i **OK**. Wykonaj te czynności dla wszystkich łączników tego typu.
-2. Wybierz łącznik usługi z typem **usługi Azure Active Directory (Microsoft)**. Kliknij przycisk **Uruchom**, wybierz opcję **pełny import**, i **OK**.
+2. Wybierz łącznik usługi z typem **usługi Azure Active Directory (Microsoft)** . Kliknij przycisk **Uruchom**, wybierz opcję **pełny import**, i **OK**.
 3. Upewnij się, że nadal wybrana jest karta łączników. Dla każdego łącznika z typem **Active Directory Domain Services**, kliknij przycisk **Uruchom**, wybierz opcję **rozpoczynana jest synchronizacja przyrostowa**, i **OK**.
-4. Wybierz łącznik usługi z typem **usługi Azure Active Directory (Microsoft)**. Kliknij przycisk **Uruchom**, wybierz opcję **rozpoczynana jest synchronizacja przyrostowa**, i **OK**.
+4. Wybierz łącznik usługi z typem **usługi Azure Active Directory (Microsoft)** . Kliknij przycisk **Uruchom**, wybierz opcję **rozpoczynana jest synchronizacja przyrostowa**, i **OK**.
 
 Masz teraz przygotowane eksportu zmiany do usługi Azure AD i lokalnej usługi AD (Jeśli używasz wdrożenie hybrydowe programu Exchange). Następne kroki umożliwiają sprawdzanie, co ma zostać zmieniona, przed rozpoczęciem faktycznego eksportu do katalogów.
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60462592"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
@@ -62,7 +62,7 @@ Aby uzyskać informacji o dozwolone użycie i wyświetlania wyników, zobacz [u�
 ## <a name="headers"></a>Nagłówki
 Dostępne są następujące nagłówki, które mogą obejmować żądania i odpowiedzi.
 
-|Nagłówek|Opis|
+|nagłówek|Opis|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|Nagłówek odpowiedzi.<br /><br /> Rynek używany przez żądanie. Format jest następujący \<kod_języka\>-\<kod_kraju\>. Na przykład en-US.|
 |<a name="traceid" />BingAPIs-TraceId|Nagłówek odpowiedzi.<br /><br /> Identyfikator wpisu dziennika, który zawiera szczegółowe informacje o żądaniu. Gdy wystąpi błąd, przechwyć ten identyfikator. Jeśli nie możesz określić i rozwiązać problemu, dołącz ten identyfikator wraz z innymi informacjami, które podasz zespołowi pomocy technicznej.|
@@ -73,10 +73,10 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 ## <a name="query-parameters"></a>Parametry zapytania
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania. Zapytanie musi być bezwzględnym adresem URL za pomocą protokołu http lub https schematu; Firma Microsoft nie obsługuje względnych adresów URL lub innych systemów, takich jak ftp: / /
 
-|Name (Nazwa)|Wartość|Type|Wymagane|
+|Name (Nazwa)|Wartość|Typ|Wymagane|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko język angielski i położenia geograficznego w Stanach Zjednoczonych.<br /><br />|String|Yes|
-|<a name="query" />q|Adres URL, aby wyświetlić podgląd|String|Yes|
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko język angielski i położenia geograficznego w Stanach Zjednoczonych.<br /><br />|String|Tak|
+|<a name="query" />q|Adres URL, aby wyświetlić podgląd|String|Tak|
 |<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](https://json-ld.org/).|String|Nie|
 |<a name="safesearch"/>safeSearch|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = ograniczeniami: Tytuł i opis, adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |String|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.|
 
@@ -90,7 +90,7 @@ Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API w
 ### <a name="error"></a>Błąd
 Definiuje błąd, który wystąpił.
 
-|Element|Opis|Type|
+|Element|Opis|Typ|
 |-------------|-----------------|----------|
 |<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|String|
 |<a name="error-message" />Komunikat|Opis błędu.|String|
@@ -102,7 +102,7 @@ Definiuje błąd, który wystąpił.
 ### <a name="errorresponse"></a>ErrorResponse
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.
 
-|Name (Nazwa)|Wartość|Type|
+|Name (Nazwa)|Wartość|Typ|
 |----------|-----------|----------|
 |_type|Wskazówka typu.|String|
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|
@@ -110,7 +110,7 @@ Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy 
 ### <a name="webpage"></a>Strony sieci Web
 Określa informacje o stronie sieci Web w wersji zapoznawczej.
 
-|Name (Nazwa)|Wartość|Type|
+|Name (Nazwa)|Wartość|Typ|
 |----------|-----------|----------|
 |name|Tytuł strony, niekoniecznie tytuł HTML|String|
 |url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|String|
@@ -119,7 +119,7 @@ Określa informacje o stronie sieci Web w wersji zapoznawczej.
 |primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|String|
 
 ### <a name="identifiable"></a>Do zidentyfikowania
-|Name (Nazwa)|Wartość|Type|
+|Name (Nazwa)|Wartość|Typ|
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|String|
 
@@ -127,7 +127,7 @@ Określa informacje o stronie sieci Web w wersji zapoznawczej.
 
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
 
-|Kod stanu|Opis|
+|Kod stanu:|Opis|
 |-----------------|-----------------|
 |200|Powodzenie.|
 |400|To jeden z parametrów zapytania, lub jest on nieprawidłowy.|
@@ -172,8 +172,8 @@ Poniżej przedstawiono wartości możliwy błąd kodu i podrzędnego błędu kod
 
 |Kod|Podrzędnego|Opis
 |-|-|-
-|Błąd ServerError|UnexpectedError<br/>ResourceError<br/>Nie zaimplementowano|Kod stanu HTTP to 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
+|Błąd ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Kod stanu HTTP to 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowane|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
 |RateLimitExceeded|Nie kodów podrzędnych|Wyszukiwarka Bing zwróci RateLimitExceeded zawsze wtedy, gdy przekracza z zapytań na sekundę (QPS) lub zapytania na miesiąc (QPM) limitu przydziału.<br/><br/>Po przekroczeniu liczby zapytań na Sekundę, Wyszukiwarka Bing zwróci kod stanu HTTP 429, a Jeśli przekroczysz QPM, Wyszukiwarka Bing zwróci 403.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Wyszukiwarka Bing zwróci InvalidAuthorization, kiedy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje w przypadku określenia więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli ten błąd jest InvalidAuthorization, kod stanu HTTP jest 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Wyszukiwarka Bing zwróci InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Może to wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli ten błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.

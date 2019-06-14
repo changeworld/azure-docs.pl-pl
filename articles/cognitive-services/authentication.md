@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
 ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60336788"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
@@ -34,7 +34,7 @@ Możesz uzyskać klucz subskrypcji z [witryny Azure portal](cognitive-services-a
 
 Omówmy szybko nagłówki uwierzytelniania dostępne w połączeniu z usług Azure Cognitive Services.
 
-| Nagłówek | Opis |
+| nagłówek | Opis |
 |--------|-------------|
 | OCP-Apim-Subscription-Key | Użyj tego pliku nagłówkowego do uwierzytelniania za pomocą klucz subskrypcji dla określonej usługi lub klucz subskrypcji wielu usług. |
 | Ocp-Apim-Subscription-Region | Tego pliku nagłówkowego jest tylko wymagany w przypadku korzystania z kluczem subskrypcji wielu usług za pomocą [interfejsu API tłumaczenia tekstu](./Translator/reference/v3-0-reference.md). Użyj tego pliku nagłówkowego, aby określić region subskrypcji. |
@@ -161,5 +161,5 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="see-also"></a>Zobacz także
 
 * [Co to są usługi poznawcze Cognitive Services?](welcome.md)
-* [Cennik usług cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)
+* [Cennik usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)
 * [Create an account](cognitive-services-apis-create-account.md) (Tworzenie konta)

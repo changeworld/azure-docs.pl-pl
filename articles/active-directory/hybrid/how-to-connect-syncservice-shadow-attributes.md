@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/13/2017
-ms.date: 04/09/2019
+ms.date: 07/13/2017
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60384723"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Atrybuty w tle usługi Azure AD Connect sync
@@ -43,7 +42,7 @@ Użytkownik ma następujące wartości atrybutów w domenie zweryfikować:
 | --- | --- |
 | userPrincipalName w środowisku lokalnym | lee.sperry@fabrikam.com |
 | Usługa Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
-| UserPrincipalName usługi Azure AD | lee.sperry@fabrikam.partner.onmschina.cn |
+| UserPrincipalName usługi Azure AD | lee.sperry@fabrikam.onmicrosoft.com |
 
 Atrybut userPrincipalName jest wartością, która zostanie wyświetlony, gdy za pomocą programu PowerShell.
 
@@ -78,5 +77,3 @@ Atrybuty w tle są również używane w przypadku zduplikowanymi wartościami at
 ## <a name="see-also"></a>Zobacz także
 * [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).
-
-<!-- Update_Description: wording update -->

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60395874"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
@@ -89,7 +89,7 @@ W zależności od produktu ITSM, do którego jest nawiązywane wykonaj następuj
 
 Gdy masz przygotowany tak narzędziami ITSM, wykonaj poniższe kroki, aby utworzyć połączenie:
 
-1. Przejdź do **wszystkie zasoby**, poszukaj **ServiceDesk(YourWorkspaceName)**.
+1. Przejdź do **wszystkie zasoby**, poszukaj **ServiceDesk(YourWorkspaceName)** .
 2. W obszarze **źródła danych obszaru roboczego** w okienku po lewej stronie kliknij **połączenia narzędzia ITSM**.
    ![Połączenia narzędzia ITSM](media/itsmc-overview/itsm-connections.png)
 
@@ -116,7 +116,7 @@ Po utworzeniu połączenia narzędzia ITSM utworzone, można utworzyć elementy 
 
 Grupy akcji umożliwiają modułowego i wielokrotnego użytku programu wyzwolenie akcji w przypadku alertów platformy Azure. Można użyć grup akcji przy użyciu alertów dotyczących metryk i alertów dziennika aktywności i alertów usługi Azure Log Analytics w witrynie Azure portal.
 
-Postępuj zgodnie z następującą procedurą:
+Użyj poniższej procedury:
 
 1. W witrynie Azure portal kliknij **Monitor**.
 2. W okienku po lewej stronie kliknij **grup akcji**. **Dodaj grupę akcji** zostanie wyświetlone okno.
@@ -186,14 +186,14 @@ ServiceDeskWorkItemType_s="Incident"
 - Pilność
 - Wpływ
 - Priorytet
-- Eskalacja
+- Podwyższenie poziomu
 - Utworzone przez
 - Rozwiązany przez
 - Zamknięte przez
-- Element źródłowy
-- Przypisano do
+- source
+- Przypisane do
 - Category
-- Tytuł
+- Stanowisko
 - Opis
 - Data utworzenia
 - Data zamknięcia
@@ -211,19 +211,19 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Identyfikator pomocy technicznej
 - Utworzone przez
 - Zamknięte przez
-- Element źródłowy
-- Przypisano do
-- Tytuł
-- Type
+- source
+- Przypisane do
+- Stanowisko
+- Typ
 - Category
 - Stan
-- Eskalacja
+- Podwyższenie poziomu
 - Stan konfliktu
 - Pilność
 - Priorytet
 - Ryzyko
 - Wpływ
-- Przypisano do
+- Przypisane do
 - Data utworzenia
 - Data zamknięcia
 - Data ostatniej modyfikacji
@@ -245,14 +245,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Impact_s |Wpływ|
 | Priority_s | Priorytet |
 | CreatedBy_s | Otwarte przez |
-| ResolvedBy_s | Rozwiązane przez|
+| ResolvedBy_s | Rozwiązany przez|
 | ClosedBy_s  | Zamknięte przez |
 | Source_s| Typ kontaktu |
 | AssignedTo_s | Przypisane do  |
 | Category_s | Category |
 | Title_s|  Krótki opis |
 | Description_s|  Uwagi |
-| CreatedDate_t|  Otwierano |
+| CreatedDate_t|  Otwarte |
 | ClosedDate_t| Zamknięte|
 | ResolvedDate_t|Rozwiązane|
 | Computer (Komputer)  | Element konfiguracji |
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | Zamknięte przez |
 | AssignedTo_s | Przypisane do  |
 | Title_s|  Krótki opis |
-| Type_s|  Type |
+| Type_s|  Typ |
 | Category_s|  Category |
 | CRState_s|  Stan|
 | Urgency_s|  Pilność |

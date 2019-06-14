@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400618"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
@@ -37,11 +37,11 @@ Możesz nadawać [uprawnienia](#iot-hub-permissions) w następujący sposób:
 
 * **Centrum IoT na poziomie współużytkowane zasady dostępu**. Zasady dostępu współdzielonego może nadać dowolną kombinację [uprawnienia](#iot-hub-permissions). Można zdefiniować zasady w [witryny Azure portal](https://portal.azure.com), programowo przy użyciu [interfejsów API REST usługi IoT Hub zasobów](/rest/api/iothub/iothubresource), lub za pomocą [az iot hub zasad](/cli/azure/iot/hub/policy?view=azure-cli-latest) interfejsu wiersza polecenia. Nowo utworzone Centrum IoT ma następujące domyślne zasady:
   
-  | Zasady dostępu współużytkowanego | Uprawnienia |
+  | Zasady dostępu współdzielonego | Uprawnienia |
   | -------------------- | ----------- |
   | iothubowner | Uprawnienie all |
   | usługa | **ServiceConnect** uprawnień |
-  | urządzenie | **DeviceConnect** uprawnień |
+  | urządzenia | **DeviceConnect** uprawnień |
   | registryRead | **RegistryRead** uprawnień |
   | registryReadWrite | **RegistryRead** i **RegistryWrite** uprawnień |
 
@@ -108,7 +108,7 @@ Korzystając z mechanizmu SASL zwykły z obsługą protokołu AMQP, klienta nawi
 
 ## <a name="scope-iot-hub-level-credentials"></a>Zakres poświadczeń na poziomie Centrum IoT
 
-Można określić zakres zasad zabezpieczeń na poziomie Centrum IoT, tworząc tokenów z ograniczeniami identyfikator URI zasobu. Na przykład punkt końcowy, aby wysyłać komunikaty urządzenie chmura z urządzenia jest **/devices/ {deviceId} / komunikaty/zdarzenia**. Można również użyć zasad dostępu współdzielonego na poziomie Centrum IoT przy użyciu **DeviceConnect** uprawnień do podpisywania tokenu, którego identyfikator URI zasobu jest **/devices/ {deviceId}**. Ta metoda tworzy token, którego można używać do wysyłania wiadomości w imieniu urządzenia tylko **deviceId**.
+Można określić zakres zasad zabezpieczeń na poziomie Centrum IoT, tworząc tokenów z ograniczeniami identyfikator URI zasobu. Na przykład punkt końcowy, aby wysyłać komunikaty urządzenie chmura z urządzenia jest **/devices/ {deviceId} / komunikaty/zdarzenia**. Można również użyć zasad dostępu współdzielonego na poziomie Centrum IoT przy użyciu **DeviceConnect** uprawnień do podpisywania tokenu, którego identyfikator URI zasobu jest **/devices/ {deviceId}** . Ta metoda tworzy token, którego można używać do wysyłania wiadomości w imieniu urządzenia tylko **deviceId**.
 
 Mechanizm ten jest podobny do [zasad wydawcy usługi Event Hubs](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)i umożliwia Implementowanie niestandardowych metod uwierzytelniania.
 
@@ -242,7 +242,7 @@ Należy pamiętać, że wszystkie funkcje dostępne z urządzenia jest udostępn
 
 Punkty końcowe przeznaczonych dla urządzeń są (niezależnie od tego, protocol):
 
-| Endpoint | Funkcjonalność |
+| Endpoint | Funkcja |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |Wysyłanie komunikatów z urządzenia do chmury. |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |Odbieranie komunikatów z chmury do urządzeń. |
@@ -314,7 +314,7 @@ Składniki usługi może generować jedynie tokeny zabezpieczające, za pomocą 
 
 Poniżej przedstawiono funkcje usługi dostępne w punktach końcowych:
 
-| Endpoint | Funkcjonalność |
+| Endpoint | Funkcja |
 | --- | --- |
 | `{iot hub host name}/devices` |Tworzenie, aktualizowanie, pobieranie i usuwanie tożsamości urządzeń. |
 | `{iot hub host name}/messages/events` |Odbieranie komunikatów z urządzenia do chmury. |

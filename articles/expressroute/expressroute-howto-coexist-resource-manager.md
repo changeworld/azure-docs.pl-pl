@@ -9,10 +9,10 @@ ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 4a1f9556413df7ad8954171d2b446419d3bc2975
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60366592"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurowanie połączeń usługi ExpressRoute i lokacja-lokacja współistniejących przy użyciu programu PowerShell
@@ -22,7 +22,7 @@ ms.locfileid: "60366592"
 > 
 > 
 
-Ten artykuł pomaga skonfigurować współistniejące połączenia usługi ExpressRoute i połączenia sieci VPN typu lokacja-lokacja. Możliwość skonfigurowania sieci VPN typu lokacja-lokacja i usługi ExpressRoute niesie ze sobą pewne korzyści. Sieć VPN typu lokacja-lokacja można skonfigurować jako bezpieczną ścieżkę trybu failover dla usługi ExpressRoute lub użyć tej sieci do połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania usługi Resource Manager.
+Ten artykuł ułatwia konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja, które współistnieć. Możliwość skonfigurowania sieci VPN typu lokacja-lokacja i usługi ExpressRoute niesie ze sobą pewne korzyści. Sieć VPN typu lokacja-lokacja można skonfigurować jako bezpieczną ścieżkę trybu failover dla usługi ExpressRoute lub użyć tej sieci do połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania usługi Resource Manager.
 
 Konfigurowanie sieci VPN typu lokacja-lokacja i współistniejących połączeń usługi ExpressRoute ma kilka zalet:
 

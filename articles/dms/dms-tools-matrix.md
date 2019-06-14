@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 3b3bbe45c4850d1bb37a4d991e323d5f6d9a8a0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532426"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Usługi i narzędzia dostępne dla scenariuszy migracji danych
@@ -47,7 +47,7 @@ Poniższe tabele zidentyfikować usługi i narzędzia, które można użyć, aby
 | PostgreSQL | Azure DB dla PostgreSQL | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
 | RDS PostgreSQL | Azure DB dla PostgreSQL |  |  | [Kalkulator całkowitego kosztu posiadania](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |  |  |
-| Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |  |  |
+| Access | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |  |  |
 | Sybase | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |  |  |
 | | | | | |
 
@@ -71,7 +71,7 @@ Poniższe tabele zidentyfikować usługi i narzędzia, które można użyć, aby
 | PostgreSQL | Azure DB dla PostgreSQL |  |  |  |
 | RDS PostgreSQL | Azure DB dla PostgreSQL |  |  |  |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
-| Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
+| Access | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | | | | | |
 
@@ -95,7 +95,7 @@ Poniższe tabele zidentyfikować usługi i narzędzia, które można użyć, aby
 | PostgreSQL | Azure DB dla PostgreSQL | [PG zrzutu *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | RDS PostgreSQL | Azure DB dla PostgreSQL | [PG zrzutu *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
+| Access | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
 | Sybase | Usługi Azure SQL DB, MI, z maszyny Wirtualnej | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [PROGRAM SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Firmy Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | | | | | |
 
@@ -119,7 +119,7 @@ Poniższe tabele zidentyfikować usługi i narzędzia, które można użyć, aby
 | PostgreSQL | Azure DB dla PostgreSQL |  |
 | RDS PostgreSQL | Azure DB dla PostgreSQL |  |
 | DB2 | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |
-| Dostęp | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |
+| Access | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |
 | Sybase | Usługi Azure SQL DB, MI, z maszyny Wirtualnej |  |
 | | | |
 

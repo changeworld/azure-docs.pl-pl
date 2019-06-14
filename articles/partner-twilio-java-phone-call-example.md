@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422669"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak nawiązać połączenie telefoniczne w aplikacji Java na platformie Azure za pomocą usługi Twilio
@@ -183,7 +183,7 @@ Ten kod podano Wam podstawowe funkcje za pomocą usługi Twilio w języku Java n
 
 * Zamiast przy użyciu formularza sieci web, można użyć usługi Azure storage blob lub bazy danych SQL do przechowywania numerów telefonów i wywołać tekstu. Aby dowiedzieć się, jak za pomocą usługi Azure storage BLOB w języku Java, zobacz [sposób użycia usługi Blob Storage w języku Java][howto_blob_storage_java]. 
 * Można użyć **RoleEnvironment.getConfigurationSettings** można pobrać usługi Twilio identyfikator konta i uwierzytelniania tokenu z ustawień konfiguracji wdrożenia, zamiast kodować wartości w makecall.jsp. Aby uzyskać informacje o **RoleEnvironment** klasy, zobacz [przy użyciu biblioteki uruchomieniowej usługi platformy Azure w JSP] [ azure_runtime_jsp] oraz dokumentację pakietu środowiska uruchomieniowego usługi Azure w [ http://dl.windowsazure.com/javadoc][azure_javadoc].
-* Kod makecall.jsp przypisuje adres URL dostarczone do usługi Twilio, [ https://twimlets.com/message ] [ twimlet_message_url], **adresu Url** zmiennej. Ten adres URL zawiera odpowiedź Twilio Markup Language (TwiML), która informuje o sposobie kontynuować wywołanie usługi Twilio. Na przykład może zawierać TwiML, który jest zwracany **&lt;Say&gt;** zlecenie, powstałego w tekście jest używany do odbiorcy połączenia. Zamiast przy użyciu adresu URL dostarczone do usługi Twilio, można utworzyć usługi odpowie na żądanie firmy Twilio; Aby uzyskać więcej informacji, zobacz [sposobu użycia Twilio dla połączeń głosowych i SMS funkcji w języku Java][howto_twilio_voice_sms_java]. Więcej informacji na temat TwiML znajduje się w temacie [ https://www.twilio.com/docs/api/twiml ] [ twiml]i dowiedzieć się więcej o **&lt;Say&gt;** i innych poleceń usługi Twilio można znaleźć na stronie [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
+* Kod makecall.jsp przypisuje adres URL dostarczone do usługi Twilio, [ https://twimlets.com/message ] [ twimlet_message_url], **adresu Url** zmiennej. Ten adres URL zawiera odpowiedź Twilio Markup Language (TwiML), która informuje o sposobie kontynuować wywołanie usługi Twilio. Na przykład może zawierać TwiML, który jest zwracany **&lt;Say&gt;** zlecenie, powstałego w tekście jest używany do odbiorcy połączenia. Zamiast przy użyciu adresu URL dostarczone do usługi Twilio, można utworzyć usługi odpowie na żądanie firmy Twilio; Aby uzyskać więcej informacji, zobacz [sposobu użycia Twilio dla połączeń głosowych i SMS funkcji w języku Java][howto_twilio_voice_sms_java]. Więcej informacji na temat TwiML znajduje się w temacie [ https://www.twilio.com/docs/api/twiml ] [ twiml]i dowiedzieć się więcej o **&lt; Say&gt;** i innych poleceń usługi Twilio można znaleźć na stronie [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
 * Zapoznaj się ze wskazówkami zabezpieczeń Twilio na [ https://www.twilio.com/docs/security ] [ twilio_docs_security].
 
 Aby uzyskać dodatkowe informacje na temat usługi Twilio, zobacz [ https://www.twilio.com/docs ] [ twilio_docs].

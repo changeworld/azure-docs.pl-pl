@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/22/2019
 ms.author: cwatson
 ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370206"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Zrozumienie, jak Red Hat Linux Enterprise software plan rabatu związanego z rezerwacją jest stosowany dla platformy Azure
@@ -59,7 +59,7 @@ Nazwy witryny portalu Azure marketplace:
 - Red Hat Enterprise Linux 7.6
 - Red Hat Enterprise Linux 7 (lvm najnowsze)
 
-|Red Hat maszyny Wirtualnej | Identyfikator miernika| Współczynnik| Przykład rozmiar maszyny Wirtualnej|
+|Red Hat maszyny Wirtualnej | MeterId| Współczynnik| Przykład rozmiar maszyny Wirtualnej|
 | -------| ------------------------| --- |--- |
 |1 – 4 vCPU licencji maszyny Wirtualnej|077a07bb-20f8-4bc6-b596-ab7211a1e247|1|D4s_v3|
 |1 – 4 vCPU licencji maszyny Wirtualnej|2f96d035-3bac-46d6-b2bc-c6daa0938536|1|D4s_v3|
@@ -83,7 +83,7 @@ Nazwy witryny portalu Azure marketplace:
 
 Nazwa witryny portalu Azure marketplace:
 
-|Red Hat maszyny Wirtualnej | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|Red Hat maszyny Wirtualnej | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- | --- | ------------------------| --- | --- |
 |1 – 4 vCPU licencji maszyny Wirtualnej |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |5 + procesor vCPU licencji maszyny Wirtualnej|6dfb482b-23ea-487f-810c-e66360f025de|2.333333333|D8s_v3|
@@ -92,7 +92,7 @@ Nazwa witryny portalu Azure marketplace:
 
 Nazwy witryny portalu Azure marketplace:
 
-|Red Hat maszyny Wirtualnej | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|Red Hat maszyny Wirtualnej | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- |------------------------| --- | --- |
 |1 – 4 vCPU licencji maszyny Wirtualnej|e9711132-d9d9-450c-8203-25cfc4bce8de|1|D4s_v3|
 |5 + procesor vCPU licencji maszyny Wirtualnej|93954aa4-b55f-4b7b-844d-a119d6bf3c4e|2|D8s_v3|
@@ -106,7 +106,7 @@ Nazwy witryny portalu Azure marketplace:
 - Red Hat Enterprise Linux 7.4 for SAP
 - Red Hat Enterprise Linux w wersji 7.5 dla rozwiązania SAP
 
-|Red Hat maszyny Wirtualnej | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|Red Hat maszyny Wirtualnej | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- |------------------------| --- |--- |
 |1 Procesor wirtualny licencji maszyny Wirtualnej|25889e91-c740-42ac-bc52-6b8f73b98575|1|D2s_v3|
 |2 procesory vCPU licencji maszyny Wirtualnej|2a0c92c8-23a7-4dc9-a39c-c4a73a85b5da|1|D2s_v3|
@@ -134,7 +134,7 @@ Nazwy witryny portalu Azure marketplace:
 - Red Hat Enterprise Linux 7.2 for SAP HANA
 - Red Hat Enterprise Linux 7.3 platformy SAP Hana
 
-|Red Hat maszyny Wirtualnej | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|Red Hat maszyny Wirtualnej | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- |------------------------| --- |--- |
 |1 Procesor wirtualny licencji maszyny Wirtualnej|be0a59d1-eed7-47ec-becd-453267753793|1|D2s_v3|
 |2 procesory vCPU licencji maszyny Wirtualnej|3b97c9f5-f5d5-4fd3-a421-b78fca32a656|1|D2s_v3|

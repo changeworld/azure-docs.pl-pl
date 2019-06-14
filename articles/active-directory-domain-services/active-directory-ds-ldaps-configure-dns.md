@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: 122282d168246e34aaa4a6369f7433b167355887
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60416742"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Konfigurowanie systemu DNS, można uzyskać dostępu do domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
@@ -41,7 +41,7 @@ Skonfigurować zewnętrznego dostawcy usługi DNS, nazwę DNS domeny zarządzane
 
     ldaps.contoso100.com  -> 52.165.38.113
 
-Gotowe. Teraz możesz nawiązać połączenie z domeny zarządzanej przy użyciu protokołu secure LDAP przez internet.
+To wszystko! Teraz możesz nawiązać połączenie z domeny zarządzanej przy użyciu protokołu secure LDAP przez internet.
 
 > [!WARNING]
 > Należy pamiętać, że komputery klienckie muszą ufać wystawcy certyfikatu protokołu LDAPS, aby można było pomyślnie nawiązać połączenie z domeny zarządzanej przy użyciu protokołu LDAPS. Jeśli używane są publicznie zaufany urząd certyfikacji, nie musisz nic robić, ponieważ komputery klienckie zaufania tych wystawców certyfikatów. Jeśli używasz certyfikatu z podpisem własnym, należy zainstalować publiczną część certyfikatu z podpisem własnym do magazynu zaufanych certyfikatów na komputerze klienckim.

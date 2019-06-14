@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60458126"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure za pomocą serwera NPS do uwierzytelniania wieloskładnikowego 
@@ -55,7 +55,7 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
 2. Otwórz konsolę NSP, kliknij prawym przyciskiem myszy **klientów RADUIS**, a następnie wybierz pozycję **New**. Tworzenie klienta RADUIS, określając następujące ustawienia:
 
     - **Przyjazna nazwa**: Wpisz dowolną nazwę.
-    - **Adres (IP lub DNS)**: Wpisz podsieć bramy, który został utworzony w kroku 1.
+    - **Adres (IP lub DNS)** : Wpisz podsieć bramy, który został utworzony w kroku 1.
     - **Wspólny klucz tajny**: wpisz wszelkie klucz tajny i Zapamiętaj je w celu późniejszego użycia.
 
       ![Obraz informacje o ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)

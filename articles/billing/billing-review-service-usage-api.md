@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: erikre
 ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370989"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Sprawdź użycie zasobów platformy Azure przy użyciu interfejsu API REST
@@ -45,8 +45,8 @@ Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Typ zawartości:*| Wymagany. Ustaw `application/json`. |  
-|*Autoryzacja:*| Wymagany. Ustawić prawidłową `Bearer` tokenu. |
+|*Content-Type:*| Wymagany. Ustaw `application/json`. |  
+|*Authorization:*| Wymagany. Ustawić prawidłową `Bearer` tokenu. |
 
 Skonfiguruj parametry raportu w treści żądania HTTP. W poniższym przykładzie ustawiono raportu do wygenerowania każdego dnia, gdy aktywny, jest plikiem CSV zapisywane w kontenerze obiektów blob usługi Azure Storage i co godzinę zawiera informacje o kosztach dla wszystkich zasobów w grupie zasobów `westus`.
 
@@ -89,7 +89,7 @@ Skonfiguruj parametry raportu w treści żądania HTTP. W poniższym przykładzi
 }
 ```
 
-W
+Dla zasobu
 
 ## <a name="filtering-reports"></a>Filtrowanie raportów
 

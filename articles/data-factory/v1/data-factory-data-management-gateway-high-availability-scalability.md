@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60488950"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brama zarządzania danymi — wysokiej dostępności i skalowalności (wersja zapoznawcza)
@@ -165,7 +165,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 - Ten certyfikat, a także komputer klienta, na którym jest uruchomiony aplikacji Menedżer poświadczeń, muszą ufać każdej węzeł środowiska integration runtime. 
   > [!NOTE]
   > Aplikacji Menedżer poświadczeń jest używany podczas tworzenia bezpiecznego dostępu do poświadczeń za pomocą Kreatora kopiowania / witryny Azure Portal. I może to być aktywowany z dowolnego komputera w ramach tej samej sieci lokalnej / prywatnego magazynu danych.
-- Certyfikaty symbole wieloznaczne są obsługiwane. Jeśli nazwa FQDN jest **node1.domain.contoso.com**, możesz użyć ***. domain.contoso.com** jako nazwę podmiotu certyfikatu.
+- Certyfikaty symbole wieloznaczne są obsługiwane. Jeśli nazwa FQDN jest **node1.domain.contoso.com**, możesz użyć * **. domain.contoso.com** jako nazwę podmiotu certyfikatu.
 - Certyfikaty SAN nie są zalecane, ponieważ tylko ostatni element nazwy alternatywnej podmiotu, który będzie używany, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenia. Na przykład mieć certyfikat sieci SAN, w których SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, możesz użyć wyłącznie tego certyfikatu na komputerze, którego nazwa FQDN jest **node2.domain.contoso.com**.
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
 - Certyfikat przy użyciu CNG klucze nie są obsługiwane.
@@ -188,7 +188,7 @@ Właściwość monitorowania | Opis
 :------------------ | :---------- 
 Name (Nazwa) | Nazwa logicznej bramy i węzłów skojarzone z tą bramą.  
 Stan | Stan logicznej bramy i węzłów bramy. Przykład: Online/Offline/Limited/itd. Aby uzyskać informacji na temat tych stanów, zobacz [stan bramy](#gateway-status) sekcji. 
-Wersja | Wyświetla wersję logicznej bramy i każdy węzeł bramy. Wersja logicznej bramy jest określany na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnymi wersjami w Instalatorze logicznej bramy tylko węzły numerem wersji funkcji logicznej bramy prawidłowo. Innym jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku, gdy aktualizacje automatyczne nie powiedzie się). 
+Version | Wyświetla wersję logicznej bramy i każdy węzeł bramy. Wersja logicznej bramy jest określany na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnymi wersjami w Instalatorze logicznej bramy tylko węzły numerem wersji funkcji logicznej bramy prawidłowo. Innym jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku, gdy aktualizacje automatyczne nie powiedzie się). 
 Dostępna pamięć | Dostępna pamięć na węzeł bramy. Ta wartość jest niemal w czasie rzeczywistym migawki. 
 Użycie procesora CPU | Użycie procesora CPU węzeł bramy. Ta wartość jest niemal w czasie rzeczywistym migawki. 
 Sieć (We/Wy) | Wykorzystanie sieci węzła bramy. Ta wartość jest niemal w czasie rzeczywistym migawki. 

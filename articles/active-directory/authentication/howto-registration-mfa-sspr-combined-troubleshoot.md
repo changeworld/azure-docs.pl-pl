@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414629"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Rozwiązywanie problemów z połączone rejestracji informacje zabezpieczeń (wersja zapoznawcza)
@@ -35,7 +35,7 @@ Zdarzenia zarejestrowane dla rejestracji połączone znajdują się w kategorii 
 
 Poniższa tabela zawiera listę wszystkich zdarzeń inspekcji generowanych przez połączone rejestracji:
 
-| Działanie | Stan | Przyczyna | Opis |
+| Działanie | Stan | Reason | Opis |
 | --- | --- | --- | --- |
 | Użytkownik zarejestrowany wszystkie wymagane informacje zabezpieczające | Powodzenie | Użytkownik zarejestrowany wszystkie wymagane informacje zabezpieczające. | To zdarzenie występuje, gdy użytkownik zostanie pomyślnie zakończony rejestracji.|
 | Użytkownik zarejestrowany wszystkie wymagane informacje zabezpieczające | Niepowodzenie | Użytkownik anulował zabezpieczeń informacji o rejestracji. | To zdarzenie występuje, gdy użytkownik anuluje rejestracji z trybu przerwania.|

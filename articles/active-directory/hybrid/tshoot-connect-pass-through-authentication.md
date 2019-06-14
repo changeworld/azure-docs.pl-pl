@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60456179"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Rozwiązywanie problemów z usługi Azure Active Directory uwierzytelnianie przekazywane
@@ -133,7 +133,7 @@ Szczegółowe analizy Włącz dziennik "Sesja" (kliknij prawym przyciskiem myszy
 
 ### <a name="detailed-trace-logs"></a>Dzienniki śledzenia szczegółowe
 
-Aby rozwiązać problemy użytkownika logowań, wyszukaj dzienniki śledzenia w **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\\**. Dzienniki te obejmują powodów dlaczego określonego użytkownika logowania nie powiodła się przy użyciu funkcji uwierzytelniania przekazywanego. Te błędy, również są mapowane na podanych w powyższej tabeli przyczyn niepowodzenia logowania przyczyn błąd logowania. Poniżej przedstawiono przykładowy wpis dziennika:
+Aby rozwiązać problemy użytkownika logowań, wyszukaj dzienniki śledzenia w **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\\** . Dzienniki te obejmują powodów dlaczego określonego użytkownika logowania nie powiodła się przy użyciu funkcji uwierzytelniania przekazywanego. Te błędy, również są mapowane na podanych w powyższej tabeli przyczyn niepowodzenia logowania przyczyn błąd logowania. Poniżej przedstawiono przykładowy wpis dziennika:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

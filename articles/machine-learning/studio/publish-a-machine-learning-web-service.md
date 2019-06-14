@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334032"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Wdrażanie usługi sieci web Azure Machine Learning Studio
@@ -47,7 +47,7 @@ Proces tworzenia i zarządzania nimi eksperymenty szkolenia zostało omówione d
 * [Importowanie danych szkoleniowych do usługi Azure Machine Learning Studio](import-data.md)
 * [Zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio](manage-experiment-iterations.md)
 
-## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Konwertowanie eksperymentu trenowania w eksperyment predykcyjny
+## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Konwertowanie eksperymentu szkolenia na eksperyment predykcyjny
 
 Gdy już uczony model, możesz przystąpić do przekonwertowania eksperymentu szkolenia na eksperyment predykcyjny, aby oceniać nowe dane.
 
@@ -65,7 +65,7 @@ W poniższych krokach opisano wdrażanie eksperyment predykcyjny jako nową usł
 
 Teraz, gdy został przygotowany eksperyment predykcyjny, możesz go wdrożyć jako nową usługę internetową platformy Azure (w oparciu o usługi Resource Manager). Przy użyciu usługi sieci web, użytkownicy mogą wysyłać dane do modelu i model zwróci jego prognozy.
 
-Aby wdrożyć eksperyment predykcyjny, kliknij **Uruchom** w dolnej części obszaru roboczego eksperymentu. Po zakończeniu eksperymentu, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [Nowy]**.  Zostanie otwarta strona wdrożenia w portalu usługi internetowej Machine Learning Studio.
+Aby wdrożyć eksperyment predykcyjny, kliknij **Uruchom** w dolnej części obszaru roboczego eksperymentu. Po zakończeniu eksperymentu, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [Nowy]** .  Zostanie otwarta strona wdrożenia w portalu usługi internetowej Machine Learning Studio.
 
 > [!NOTE] 
 > Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
@@ -77,7 +77,7 @@ Wybierz plan cenowy. Jeśli masz istniejącego planu taryfowego, możesz ją wyb
 
 1. W **Plan cenowy** listę rozwijaną, wybierz istniejący plan lub **wybierz nowy plan** opcji.
 2. W **Nazwa planu**, wpisz nazwę, która będzie identyfikowała planu na rachunku.
-3. Wybierz jedną z **miesięcznego planu warstwy**. Plan domyślnie jest dzielony na warstwy planów dla domyślnego regionu, a usługi internetowe są wdrażane dla tego regionu.
+3. Wybierz jedną z **miesięcznego planu warstwy**. Plan domyślną warstwy planów domyślnym regionem i usługi sieci web jest wdrażane do tego regionu.
 
 Kliknij przycisk **Wdróż** i **Szybki Start** zostanie otwarta strona usługi sieci web.
 
@@ -167,13 +167,13 @@ Aby wdrożyć eksperyment predykcyjny, kliknij **Uruchom** w dolnej części eks
 
 Możesz przetestować usługę sieci web w portalu usług sieci Web programu Machine Learning Studio lub w usłudze Machine Learning Studio.
 
-Aby przetestować usługę sieci web w odpowiedzi na żądanie, kliknij pozycję **Test** przycisku w pulpicie nawigacyjnym usługi sieci web. Okno dialogowe pojawia się monit o podanie danych wejściowych dla usługi. Są to kolumn oczekiwany przez oceniania eksperymentu. Wprowadź zestaw danych, a następnie kliknij przycisk **OK**. Wyniki generowane przez usługę sieci web są wyświetlane w dolnej części pulpitu nawigacyjnego.
+Aby przetestować usługę sieci web w odpowiedzi na żądanie, kliknij pozycję **Test** przycisku w pulpicie nawigacyjnym usługi sieci web. Okno dialogowe pojawia się monit o podanie danych wejściowych dla usługi. Są to kolumn oczekiwany przez oceniania eksperymentu. Wprowadź zestawu danych, a następnie kliknij przycisk **OK**. Wyniki generowane przez usługę sieci web są wyświetlane w dolnej części pulpitu nawigacyjnego.
 
 Możesz kliknąć pozycję **Test** Podgląd łącza do testowania usługi w portalu usług sieci Web programu Azure Machine Learning Studio, jak pokazano wcześniej w sekcji usługi sieci web.
 
 Aby przetestować usługę wykonywania wsadowego, kliknij przycisk **Test** link (wersja zapoznawcza). Na stronie testu usługi Batch kliknij przycisk Przeglądaj, w obszarze dane wejściowe, a następnie wybierz plik CSV zawierający przykładowe odpowiednie wartości. Jeśli nie masz plik CSV i tworzenia eksperymentu predykcyjnego przy użyciu usługi Machine Learning Studio, możesz pobrać zestaw danych do eksperymentu predykcyjnego i jej używać.
 
-![Testowanie usługi internetowej](./media/publish-a-machine-learning-web-service/figure-3.png)
+![Test usługi sieci web](./media/publish-a-machine-learning-web-service/figure-3.png)
 
 Na **konfiguracji** strony, można zmienić nazwy wyświetlanej usługi i nadaj jej opis. Nazwa i opis jest wyświetlany w [witryny Azure portal](https://portal.azure.com/) gdzie zarządzania usługami sieci web.
 

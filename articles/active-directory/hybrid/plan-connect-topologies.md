@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60383761"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie obsługiwane w programie Azure AD Connect
@@ -165,7 +165,7 @@ Ta topologia ma następujące ograniczenia, w przeciwnym razie obsługiwane scen
 * Urządzenia z systemem Windows 10 może być skojarzony z tylko jedną dzierżawą usługi Azure AD.
 * Logowanie jednokrotne (SSO) opcja pojedyncze do uwierzytelniania przekazywanego i synchronizacji skrótu hasła może służyć z tylko jedną dzierżawą usługi Azure AD.
 
-Wymaganie wzajemnie wykluczającym się zestawie obiektów dotyczy również funkcję zapisywania zwrotnego. Niektórych funkcji zapisywania zwrotnego nie są obsługiwane przy użyciu tej topologii, ponieważ zakładają konfiguracji jednego środowiska lokalnego. Te funkcje obejmują:
+Wymaganie wzajemnie wykluczającym się zestawie obiektów dotyczy również funkcję zapisywania zwrotnego. Niektórych funkcji zapisywania zwrotnego nie są obsługiwane przy użyciu tej topologii, ponieważ zakładają konfiguracji jednego środowiska lokalnego. Między innymi są to następujące funkcje:
 
 * Grupa funkcji zapisywania zwrotnego o domyślnych konfiguracjach.
 * Zapisywanie zwrotne urządzeń.

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60415627"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Samoobsługowe resetowanie haseł usługi Azure AD
@@ -61,11 +61,11 @@ Strona resetowania odczytu przez następujące kroki, aby dowiedzieć się więc
 
 Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co najmniej jeden z następujących opcji dla metod uwierzytelniania. Czasami słyszysz te opcje określane jako "bramy". Zdecydowanie zalecamy możesz **wybierz dwa lub więcej metod uwierzytelniania** tak, aby użytkownicy mają większą elastyczność w przypadku, gdy są one nie można uzyskać dostępu do jednego, kiedy ich potrzebują. Dodatkowe szczegóły dotyczące metod wymienionych poniżej można znaleźć w artykule [metody uwierzytelniania?](concept-authentication-methods.md).
 
-* Powiadomienia w aplikacji mobilnej (wersja zapoznawcza)
+* Powiadomienia aplikacji mobilnej (wersja zapoznawcza)
 * Kod aplikacji mobilnej (wersja zapoznawcza)
 * Email
 * Telefon komórkowy
-* Telefon służbowy
+* Telefon biurowy
 * Pytania zabezpieczające
 
 Użytkownicy mogą zresetować swoje hasło tylko, jeśli mają one dane już obecne we metod uwierzytelniania, która została włączona przez administratora.

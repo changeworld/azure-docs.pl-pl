@@ -5,31 +5,31 @@ services: active-directory
 keywords: Usługi AD DS konta, konto usługi Active Directory, hasło
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 07/12/2017
-ms.date: 11/09/2018
-ms.component: hybrid
-ms.author: v-junlch
+ms.topic: conceptual
+ms.date: 07/12/2017
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60241588"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Zmienianie hasła konta usług AD DS
 Konto usług AD DS odnosi się do konta użytkownika, używany przez program Azure AD Connect do komunikowania się z usługą Active Directory w środowisku lokalnym. Jeśli zmienisz hasło do konta usług AD DS, należy zaktualizować usługi Azure AD Connect synchronizacji przy użyciu nowego hasła. W przeciwnym razie synchronizacji może już nie są poprawnie synchronizowane z usługą Active Directory w środowisku lokalnym i można napotkać następujące błędy:
 
-- W operacji Synchronization Service Manager, wszelkie importu lub eksportu przy użyciu lokalnej usługi AD zakończy się niepowodzeniem z **nie-start-credentials** błędu.
+* W operacji Synchronization Service Manager, wszelkie importu lub eksportu przy użyciu lokalnej usługi AD zakończy się niepowodzeniem z **nie-start-credentials** błędu.
 
-- W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6000 identyfikator zdarzenia** i komunikat **"agenta zarządzania"contoso.com"nie można uruchomić, ponieważ poświadczenia są nieprawidłowe"**.
+* W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6000 identyfikator zdarzenia** i komunikat **"agenta zarządzania"contoso.com"nie można uruchomić, ponieważ poświadczenia są nieprawidłowe"** .
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Jak zaktualizować usługę synchronizacji przy użyciu nowego hasła dla konta usługi AD DS
@@ -55,7 +55,6 @@ Aby zaktualizować usługę synchronizacji przy użyciu nowego hasła:
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-- [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
-- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
-
+* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358047"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdrażanie resetowania haseł bez wymagania rejestracji użytkowników końcowych
@@ -38,12 +38,12 @@ Jeśli używasz domyślne ustawienia Azure AD Connect zostały wprowadzone nast�
 
 | Lokalna usługa Active Directory | Azure AD |
 | --- | --- |
-| telephoneNumber | Telefon służbowy |
+| telephoneNumber | Telefon biurowy |
 | Telefon komórkowy | Telefon komórkowy |
 
 Gdy użytkownik zweryfikuje numeru telefonu komórkowego, pole telefonu w obszarze informacje kontaktowe uwierzytelniania w usłudze Azure AD również zostaną wypełnione przy użyciu tego numeru.
 
-## <a name="authentication-contact-info"></a>Informacje kontaktowe dotyczące uwierzytelniania
+## <a name="authentication-contact-info"></a>Informacje kontaktowe uwierzytelniania
 
 Administrator globalny, można ręcznie ustawić informacje kontaktowe uwierzytelniania użytkownika wyświetlane w poniższy zrzut ekranu.
 

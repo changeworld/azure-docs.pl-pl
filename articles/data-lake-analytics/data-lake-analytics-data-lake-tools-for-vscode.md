@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60509344"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Użyj usługi Azure Data Lake Tools for Visual Studio Code
@@ -170,7 +170,7 @@ Wygodny sposób, aby wyzwolić **ADL: Rejestrowanie zestawów** polecenie jest k
 
 **Aby zarejestrować się za pośrednictwem systemu plików ADL: Zarejestrować polecenia zestawu (zaawansowane)**
 1.  Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę poleceń.
-2.  Wprowadź **ADL: Rejestrowanie zestawów (zaawansowane)**. 
+2.  Wprowadź **ADL: Rejestrowanie zestawów (zaawansowane)** . 
 3.  Określ ścieżkę zestawu lokalnego. 
 4.  Zostanie wyświetlony plik JSON. Przejrzyj i zmodyfikuj zależności zestawów i parametry zasobu, jeśli to konieczne. Instrukcje są wyświetlane w **dane wyjściowe** okna. Aby przejść do rejestracji zestawów, Zapisz (Ctrl + S) w pliku JSON.
 
@@ -366,10 +366,10 @@ Możesz [monitorować stan przekazywania](#check-storage-tasks-status).
 
 
 ### <a name="download-a-file"></a>Pobieranie pliku 
-Można pobrać pliku za pomocą polecenia **ADL: Pobierz plik** lub **ADL: Pobierz plik (zaawansowane)**.
+Można pobrać pliku za pomocą polecenia **ADL: Pobierz plik** lub **ADL: Pobierz plik (zaawansowane)** .
 
 **Aby pobrać plik za pomocą systemu plików ADL: Pobierz plik (zaawansowane) — polecenie**
-1. Kliknij prawym przyciskiem myszy w Edytorze skryptów, a następnie wybierz **Pobierz plik (zaawansowane)**.
+1. Kliknij prawym przyciskiem myszy w Edytorze skryptów, a następnie wybierz **Pobierz plik (zaawansowane)** .
 2. Program VS Code Wyświetla plik w formacie JSON. Możesz podać ścieżki do plików i pobrać wiele plików w tym samym czasie. Instrukcje są wyświetlane w **dane wyjściowe** okna. Aby kontynuować, aby pobrać plik lub pliki, Zapisz (Ctrl + S) w pliku JSON.
 
     ![Plik JSON ze ścieżkami do pobierania plików](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
@@ -433,7 +433,7 @@ Przejdź do **Data Lake Store**:
 
    ![Polecenia menu skrótów dla węzła folder w Eksploratorze usługi Data Lake](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
-- Możesz kliknąć prawym przyciskiem myszy węzeł pliku, a następnie użyć **(wersja zapoznawcza)**, **Pobierz**, **Usuń**, **Utwórz skrypt WYODRĘBNIĆ** (dostępne tylko dla woluminów CSV TSV, a pliki TXT), **Kopiuj ścieżkę względną**, i **Kopiuj pełną ścieżkę** poleceń w menu skrótów.
+- Możesz kliknąć prawym przyciskiem myszy węzeł pliku, a następnie użyć **(wersja zapoznawcza)** , **Pobierz**, **Usuń**, **Utwórz skrypt WYODRĘBNIĆ** (dostępne tylko dla woluminów CSV TSV, a pliki TXT), **Kopiuj ścieżkę względną**, i **Kopiuj pełną ścieżkę** poleceń w menu skrótów.
 
    ![Polecenia menu skrótów dla węzła pliku w Eksploratorze usługi Data Lake](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 

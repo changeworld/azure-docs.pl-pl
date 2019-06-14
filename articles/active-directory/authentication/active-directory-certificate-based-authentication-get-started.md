@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359079"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Wprowadzenie do uwierzytelniania opartego na certyfikatach w usłudze Azure Active Directory
@@ -102,7 +102,7 @@ Aby nawiązać połączenie w swojej dzierżawie, użyj [Connect-AzureAD](/power
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Pobierz
+### <a name="retrieve"></a>Pobieranie
 
 Aby pobrać zaufanych urzędów certyfikacji, które są zdefiniowane w katalogu, użyj [Get AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) polecenia cmdlet.
 
@@ -119,7 +119,7 @@ Aby utworzyć zaufanego urzędu certyfikacji, należy użyć [New AzureADTrusted
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>Remove
+### <a name="remove"></a>Usuń
 
 Aby usunąć zaufany urząd certyfikacji, należy użyć [AzureADTrustedCertificateAuthority Usuń](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) polecenia cmdlet:
 

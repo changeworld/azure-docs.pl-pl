@@ -13,10 +13,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311669"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Przekształcanie danych przez uruchamianie notesu usługi Databricks
@@ -61,9 +61,9 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
 |---|---|---|
 |name|Nazwa działania w potoku.|Yes|
 |description|Tekst opisujący, co działanie robi.|Nie|
-|type|W przypadku działania notesu usługi Databricks typ działania jest DatabricksNotebook.|Yes|
-|linkedServiceName|Nazwa połączonej usługi, na którym działa notesu usługi Databricks usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
-|notebookPath|Ścieżka bezwzględna Notes do uruchomienia w obszarze roboczym usługi Databricks. Ta ścieżka musi zaczynać się od ukośnika.|Yes|
+|type|W przypadku działania notesu usługi Databricks typ działania jest DatabricksNotebook.|Tak|
+|linkedServiceName|Nazwa połączonej usługi, na którym działa notesu usługi Databricks usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Tak|
+|notebookPath|Ścieżka bezwzględna Notes do uruchomienia w obszarze roboczym usługi Databricks. Ta ścieżka musi zaczynać się od ukośnika.|Tak|
 |baseParameters|Tablica par klucz-wartość. Podstawowe parametry może służyć do uruchamiania każdego działania. Jeśli notes przyjmuje parametr, który nie jest określona, zostanie użyta wartość domyślna, z notesu. Znajdź więcej informacji na temat parametrów w [elementów Databricks notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nie|
 |Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica \<string, object >.|Nie|
 
@@ -112,7 +112,7 @@ Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Databricks](https:
 
 Aby uzyskać ścieżkę dbfs biblioteki dodać za pomocą interfejsu użytkownika, można użyć [interfejsu wiersza polecenia Databricks (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Zazwyczaj bibliotek Jar są przechowywane w dbfs: / FileStore/jars przy użyciu interfejsu użytkownika. Możesz wyświetlić listę wszystkich za pomocą interfejsu wiersza polecenia: *usługi databricks fs ls dbfs: plikachJAR/FileStore/*.
+Zazwyczaj bibliotek Jar są przechowywane w dbfs: / FileStore/jars przy użyciu interfejsu użytkownika. Możesz wyświetlić listę wszystkich za pomocą interfejsu wiersza polecenia: *usługi databricks fs ls dbfs: plikachJAR/FileStore/* .
 
 
 

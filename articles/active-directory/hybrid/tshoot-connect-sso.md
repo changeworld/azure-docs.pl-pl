@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381894"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowego logowania jednokrotnego
@@ -91,7 +91,7 @@ Poniższa lista kontrolna umożliwia rozwiązywanie problemów bezproblemowe log
 
 ### <a name="domain-controller-logs"></a>Dzienniki kontrolera domeny
 
-Po włączeniu inspekcji sukcesów na kontrolerze domeny, a następnie za każdym razem, gdy użytkownik loguje się za pośrednictwem bezproblemowe logowanie Jednokrotne, wpis zabezpieczeń są rejestrowane w dzienniku zdarzeń. Za pomocą następującego zapytania, można znaleźć te zdarzenia zabezpieczeń. (Poszukaj zdarzenia **4769** skojarzone z kontem komputera **AzureADSSOAcc$**.)
+Po włączeniu inspekcji sukcesów na kontrolerze domeny, a następnie za każdym razem, gdy użytkownik loguje się za pośrednictwem bezproblemowe logowanie Jednokrotne, wpis zabezpieczeń są rejestrowane w dzienniku zdarzeń. Za pomocą następującego zapytania, można znaleźć te zdarzenia zabezpieczeń. (Poszukaj zdarzenia **4769** skojarzone z kontem komputera **AzureADSSOAcc$** .)
 
 ```
     <QueryList>

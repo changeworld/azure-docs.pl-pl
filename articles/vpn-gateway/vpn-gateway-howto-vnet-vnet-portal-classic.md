@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: 48377f981e4d2c9ab480a1a734e6207a0246712a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60407988"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurowanie połączenia sieć wirtualna-sieć wirtualna (klasyczna)
@@ -80,7 +80,7 @@ W poniższej tabeli przedstawiono przykład sposobu definiowania sieci wirtualne
 
 **Przykład**
 
-| Virtual Network | Przestrzeń adresowa | Region | Nawiązanie połączenia z lokacją sieci lokalnej |
+| Sieć wirtualna | Przestrzeń adresowa | Region | Nawiązanie połączenia z lokacją sieci lokalnej |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Wschodnie stany USA |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Zachodnie stany USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -142,7 +142,7 @@ Na przykład sieci TestVNet1 łączy się z lokacją sieci lokalnej, którą two
 
 Lokalna witryna dla każdej sieci wirtualnej jest w innej sieci wirtualnej. Następujące przykładowe wartości są używane dla naszej konfiguracji:
 
-| Virtual Network | Przestrzeń adresowa | Region | Nawiązanie połączenia z lokacją sieci lokalnej |
+| Sieć wirtualna | Przestrzeń adresowa | Region | Nawiązanie połączenia z lokacją sieci lokalnej |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Wschodnie stany USA |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Zachodnie stany USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |

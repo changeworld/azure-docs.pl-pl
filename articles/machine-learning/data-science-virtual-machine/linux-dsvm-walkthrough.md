@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516856"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure

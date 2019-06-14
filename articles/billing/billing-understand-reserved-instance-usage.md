@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370360"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Opis rezerwacji platformy Azure dla Twojej subskrypcji zgodnie z rzeczywistym użyciem
@@ -36,7 +36,7 @@ Poniższe sekcje założono, że działają maszyny Wirtualnej z systemem Window
 | Pole | Wartość |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|Ilość |1|
+|Liczba |1|
 |SKU | Standardowa_DS1_v2|
 |Region | eastus |
 
@@ -44,7 +44,7 @@ Część sprzętu maszyny Wirtualnej zostało opisane, ponieważ wdrożonej masz
 
 ### <a name="statement-section-of-csv-file-for-vms"></a>Instrukcja części pliku CSV dla maszyn wirtualnych
 
-Ta sekcja pliku CSV zawiera łączne użycie rezerwacji. Zastosuj filtr według **Podkategoria miernika** pola, które zawiera **"Rezerwacji-"**. Zostanie wyświetlona zawartość podobna Poniższy zrzut ekranu:
+Ta sekcja pliku CSV zawiera łączne użycie rezerwacji. Zastosuj filtr według **Podkategoria miernika** pola, które zawiera **"Rezerwacji-"** . Zostanie wyświetlona zawartość podobna Poniższy zrzut ekranu:
 
 ![Zrzut ekranu przedstawiający filtrowane rezerwacji szczegóły użycia i opłat](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
@@ -71,7 +71,7 @@ Załóżmy, że używasz bazy danych SQL Gen 4 w regionie wschodnim regionie USA
 | Pole | Wartość |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
-|Ilość |2|
+|Liczba |2|
 |Product (Produkt)| Bazy danych SQL Database Gen 4 (2 rdzenie)|
 |Region | eastus |
 

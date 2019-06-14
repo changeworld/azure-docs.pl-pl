@@ -15,10 +15,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60350156"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operacje usługi Azure Active Directory Connect Health
@@ -67,7 +67,7 @@ Azure AD Connect Health dla usługi Active Directory Federation Services (AD FS)
 2. Na **serwera** bloku na pasku akcji kliknij **Usuń**.
 ![Zrzut ekranu programu Azure AD Connect Health usuwanie serwera](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potwierdź, wpisując nazwę serwera w okno dialogowe z potwierdzeniem.
-4. Kliknij polecenie **Usuń**.
+4. Kliknij przycisk **Usuń**.
 
 Azure AD Connect Health dla usług Azure Active Directory Domain Services:
 
@@ -75,7 +75,7 @@ Azure AD Connect Health dla usług Azure Active Directory Domain Services:
 2. Wybierz kontroler domeny, który ma zostać usunięty.
 3. Na pasku akcji kliknij **Usuń wybrane**.
 4. Potwierdź tę akcję można usunąć serwera.
-5. Kliknij polecenie **Usuń**.
+5. Kliknij przycisk **Usuń**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Usuń wystąpienie usługi z usługi Azure AD Connect Health
 W niektórych przypadkach można usunąć wystąpienia usługi. Oto, co musisz wiedzieć, aby usunąć wystąpienie usługi z usługi Azure AD Connect Health.
@@ -92,7 +92,7 @@ Gdy usuwane wystąpienia usługi, należy pamiętać o następujących czynnośc
 2. Na **usługi** bloku na pasku akcji kliknij **Usuń**. 
 ![Zrzut ekranu programu Azure AD Connect Health Usuń usługę](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Potwierdź, wpisując nazwę usługi w polu potwierdzenia (na przykład: sts.contoso.com).
-4. Kliknij polecenie **Usuń**.
+4. Kliknij przycisk **Usuń**.
    <br><br>
 
 [//]: # (Początek sekcji RBAC)

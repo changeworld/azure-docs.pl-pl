@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452827"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Usługa Azure Active Directory Identity Protection słownik
@@ -85,7 +85,7 @@ Działanie, aby zapobiec uszkodzeniu organizacji za pośrednictwem nadużycie to
 ### <a name="privileged-user"></a>Uprzywilejowany (użytkownik)
 Użytkownik, który w czasie zdarzenia o podwyższonym ryzyku, ma uprawnienia administratora stałych lub tymczasowych do jednego lub kilku zasobów usługi Azure Active Directory, takie jak Administrator globalny, Administrator rozliczeń, Administrator usługi, administrator użytkownika i hasło administratora. 
 
-### <a name="real-time"></a>Czas rzeczywisty
+### <a name="real-time"></a>W czasie rzeczywistym
 Zobacz wykrywania w czasie rzeczywistym.
 
 ### <a name="real-time-detection"></a>Wykrywanie w czasie rzeczywistym
@@ -145,7 +145,7 @@ Zdarzenia o podwyższonym ryzyku, wyzwalane, gdy użytkownik pomyślnie loguje s
 ### <a name="sign-in-risk"></a>Ryzyko logowania
 Zobacz ryzyka poziom (sign-in)
 
-### <a name="sign-in-risk-policy"></a>Zasady dotyczące ryzyka związanego z logowaniem
+### <a name="sign-in-risk-policy"></a>Zasady ryzyka logowania
 Zasady dostępu warunkowego, która ocenia ryzyko dla określonych logowania i stosuje ograniczenia na podstawie wstępnie zdefiniowanych warunków i zasad.
 
 ### <a name="user-compromise-risk"></a>Ryzyko naruszenia zabezpieczeń użytkownika
@@ -154,13 +154,13 @@ Zobacz ryzyka poziom (naruszenia zabezpieczeń użytkownika)
 ### <a name="user-risk"></a>Ryzyko związane z użytkownikiem
 Zobacz ryzyka poziom (naruszenia zabezpieczeń użytkownika).
 
-### <a name="user-risk-policy"></a>Zasady dotyczące ryzyka związanego z użytkownikiem
+### <a name="user-risk-policy"></a>Zasady dotyczące ryzyka związanego z użytkownika
 Zasady dostępu warunkowego, które uwzględnia logowania i stosuje ograniczenia na podstawie wstępnie zdefiniowanych warunków i zasad.
 
 ### <a name="users-flagged-for-risk"></a>Użytkownicy oflagowani w związku z ryzykiem
 Użytkownicy, którzy mają zdarzeń o podwyższonym ryzyku, które są aktywne lub wyeliminowane
 
-### <a name="vulnerability"></a>Luka w zabezpieczeniach
+### <a name="vulnerability"></a>Luki w zabezpieczeniach
 Konfiguracja lub warunku w usłudze Azure Active Directory, co sprawia, że katalog podatna na luki w zabezpieczeniach i zagrożeń.
 
 ## <a name="see-also"></a>Zobacz także

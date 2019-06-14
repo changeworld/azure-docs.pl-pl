@@ -16,10 +16,10 @@ ms.date: 05/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec0cfaaf0d4ae692581d63c7745660ffeacfb11f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60439730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu 23 wideo
@@ -44,7 +44,7 @@ Aby skonfigurować integrację usługi Azure AD z 23 wideo, potrzebne są nastę
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
+Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
@@ -60,7 +60,7 @@ Aby skonfigurować integrację 23 wideo w usłudze Azure AD, należy dodać 23 w
 
 **Aby dodać 23 wideo z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -68,7 +68,7 @@ Aby skonfigurować integrację 23 wideo w usłudze Azure AD, należy dodać 23 w
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -113,7 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/23video-tutorial/tutorial_23video_url.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.23video.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.23video.com`
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.23video.com/saml/trust/<uniqueid>`
 
@@ -124,7 +124,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/23video-tutorial/tutorial_23video_certificate.png) 
 
-5. Kliknij przycisk **Save** (Zapisz).
+5. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/23video-tutorial/tutorial_general_400.png)
 
@@ -132,14 +132,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/23video-tutorial/tutorial_23video_configure.png) 
 
-7. Aby skonfigurować logowanie jednokrotne na **23 wideo** stronie, musisz wysłać pobrany **certyfikat (Base64)**, **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL**do [23 zespołem pomocy technicznej wideo](mailto:support@23company.com). 
+7. Aby skonfigurować logowanie jednokrotne na **23 wideo** stronie, musisz wysłać pobrany **certyfikat (Base64)** , **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL**do [23 zespołem pomocy technicznej wideo](mailto:support@23company.com). 
 
 
 > [!TIP]
 > Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -177,7 +177,7 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w 23 wideo.
 
 1. Zaloguj się do witryny firmy 23 wideo jako administrator.
 
-2. Przejdź do obszaru **Settings** (Ustawienia).
+2. Przejdź do **ustawienia**.
  
 3. W **użytkowników** kliknij **Konfiguruj**.
    
@@ -233,7 +233,7 @@ Po kliknięciu kafelka wideo 23, w panelu dostępu, użytkownik powinien uzyska�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

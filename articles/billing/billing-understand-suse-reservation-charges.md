@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/12/2019
 ms.author: banders
 ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370245"
 ---
 # <a name="azure-software-plan-discount"></a>Rabat plan oprogramowania platformy Azure
@@ -71,7 +71,7 @@ Nazwa witryny portalu Azure marketplace:
 
 - SLES 12 z dodatkiem SP3 dla HPC (priorytet)
 
-|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | Identyfikator miernika| Współczynnik| Przykład rozmiar maszyny Wirtualnej|
+|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | MeterId| Współczynnik| Przykład rozmiar maszyny Wirtualnej|
 | -------| ------------------------| --- |--- |
 |System SLES dla HPC 1 – 2 procesorów wirtualnych Vcpu|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
 |System SLES dla HPC 3 – 4 Vcpu|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
@@ -83,7 +83,7 @@ Nazwa witryny portalu Azure marketplace:
 
 - SLES 12 z dodatkiem SP3 dla HPC
 
-|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- | --- | ------------------------| --- |
 |System SLES dla HPC 1 – 2 procesorów wirtualnych Vcpu |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
 |System SLES dla HPC 3 – 4 Vcpu|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1.92308|D4s_v3|
@@ -97,7 +97,7 @@ Nazwy witryny portalu Azure marketplace:
 - SLES for SAP 12 z dodatkiem SP3 (priorytet)
 - SLES for SAP 12 z dodatkiem SP2 (priorytet)
 
-|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- |------------------------| --- | --- |
 |Z systemem SLES for SAP o priorytecie 1 – 2 procesorów wirtualnych Vcpu|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
 |Z systemem SLES for SAP priorytet 3 – 4 Vcpu |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
@@ -111,7 +111,7 @@ Nazwy witryny portalu Azure marketplace:
 - SLES 12 z dodatkiem SP3 (priorytet)
 - SLES 11 z dodatkiem SP4 (priorytet)
 
-|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- |------------------------| --- |--- |
 |SLES 1 Procesor wirtualny vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
 |SLES 2 – 4 Vcpu |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
@@ -137,7 +137,7 @@ Nazwy witryny portalu Azure marketplace:
 - SLES 15 (standardowa)
 - SLES 12 z dodatkiem SP3 (standardowa)
 
-|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | Identyfikator miernika | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
+|MASZYNA WIRTUALNA Z SYSTEMEM SUSE | MeterId | Współczynnik|Przykład rozmiar maszyny Wirtualnej|
 | ------- |------------------------| --- |--- |
 |SLES 1 – 2 rdzeni wirtualnych procesorów CPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
 |SLES 3 do 4 rdzeni procesorów wirtualnych Vcpu |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
