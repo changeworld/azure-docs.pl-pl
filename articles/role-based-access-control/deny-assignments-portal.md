@@ -15,10 +15,10 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194369"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Wyświetl Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal
@@ -34,7 +34,7 @@ Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
 
 - `Microsoft.Authorization/denyAssignments/read` uprawnienie, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md).
 
-## <a name="view-deny-assignments"></a>Wyświetlanie przypisań odmowy
+## <a name="view-deny-assignments"></a>Wyświetl Odmów przypisania
 
 Wykonaj poniższe kroki, aby wyświetlić odmówić przypisania w zakresie grupy subskrypcji lub zarządzania.
 
@@ -42,7 +42,7 @@ Wykonaj poniższe kroki, aby wyświetlić odmówić przypisania w zakresie grupy
 
 1. Kliknij grupę zarządzania lub subskrypcji, którą chcesz wyświetlić.
 
-1. Kliknij pozycję **Kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
 1. Kliknij przycisk **Odmów przypisania** karty (lub kliknij przycisk **widoku** przycisk w widoku Odmów kafelka przypisania).
 

@@ -3,20 +3,21 @@ title: Konfigurowanie metody routingu ruchu sieciowego wielu wartości w usłudz
 description: W tym artykule opisano sposób konfigurowania usługi Traffic Manager na potrzeby kierowania ruchu do punktów końcowych A/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: kumud
-ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: allensu
+ms.openlocfilehash: 5db8e2932a43a2d6c6cb8a99c4f32b37a4a5a3f8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094807"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050899"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu dla wielu wartości w usłudze Traffic Manager
 
@@ -61,7 +62,7 @@ Dodaj dwa adresy IP jako zewnętrzne punkty końcowe, do profilu usługi Traffic
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Type                    | Zewnętrzny punkt końcowy                                   |
+    | Typ                    | Jest zewnętrzny punkt końcowy                                   |
     | Name (Nazwa)           | myEndpoint1                                        |
     | W pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP           | Wpisz publiczny adres IP punktu końcowego, który chcesz dodać do tego profilu usługi Traffic Manager                         |
     |        |           |

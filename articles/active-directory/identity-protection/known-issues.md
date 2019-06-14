@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 392b7a08d9422658c5620f60e9c1caca074bc85e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452688"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Często zadawane pytania i znane problemy związane z ochrony tożsamości (odświeżane) w usłudze Azure Active Directory
@@ -32,7 +32,7 @@ ms.locfileid: "60452688"
 **Odrzuć ryzyka związanego z użytkownikiem** w modelu klasycznym Identity Protection ustawia aktora w historii ryzyka użytkownika w Identity Protection (odświeżane) do **usługi Azure AD**.
 
 
-**Odrzuć ryzyka związanego z użytkownikiem** w Identity Protection (odświeżane) ustawia aktora w historii ryzyka użytkownika w Identity Protection (odświeżane) do **\<nazwę administratora przy użyciu hiperłącze wskazujące blok tego użytkownika\>**.
+**Odrzuć ryzyka związanego z użytkownikiem** w Identity Protection (odświeżane) ustawia aktora w historii ryzyka użytkownika w Identity Protection (odświeżane) do **\<nazwę administratora przy użyciu hiperłącze wskazujące blok tego użytkownika\>** .
 
 Brak bieżącego znany problem powoduje opóźnienia w przepływie zwolnienia ryzyka użytkownika. W przypadku "użytkowników o podwyższonym ryzyku policy" tych zasad zostanie zatrzymane, stosowanie do odrzuconych użytkowników w ciągu kilku minut, klikając polecenie "Ryzyka związanego z użytkownikiem Odrzuć". Jednak istnieją znane opóźnienia z UX odświeżanie "stan ryzyka" odrzuconych użytkowników. Jako obejście tego problemu należy odświeżyć stronę, na poziomie przeglądarki, aby zobaczyć najnowsze użytkownika "Stan ryzyka".
 
@@ -43,7 +43,7 @@ Zapytanie na **username** rozróżnia wielkość liter podczas kwerendy dotyczą
 
 Przełączanie **Pokaż daty jako** ukrywa **Ostatnia aktualizacja ryzyka** kolumny. Kliknij kolumnę ich **kolumn** w górnej części bloku ryzykownych użytkowników.
 
-**Odrzuć wszystkie zdarzenia** w modelu klasycznym Identity Protection umożliwia ustawienie stanu zdarzenia o podwyższonym ryzyku **zamknięte (rozwiązane)**.
+**Odrzuć wszystkie zdarzenia** w modelu klasycznym Identity Protection umożliwia ustawienie stanu zdarzenia o podwyższonym ryzyku **zamknięte (rozwiązane)** .
 
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Raport dotyczący ryzykownych logowań znane problemy
@@ -76,7 +76,7 @@ Mapowanie geolokalizacja IP jest wyzwaniem w całej branży. Jeśli uważasz, ż
 
 **Upewnij się, bezpieczne** (na klawiaturze logowania) — informuje usługa Azure AD Identity Protection, że logowanie zostało wykonane przez właściciela tożsamości i nie wskazuje na naruszenia zabezpieczeń.
 
-- Po otrzymaniu tej opinii, możemy przenieść logowania (nie użytkownika) o podwyższonym ryzyku stan **safe została potwierdzona** i poziom ryzyka do **-**.
+- Po otrzymaniu tej opinii, możemy przenieść logowania (nie użytkownika) o podwyższonym ryzyku stan **safe została potwierdzona** i poziom ryzyka do **-** .
 
 - Ponadto firma Microsoft zapewnia informacje do naszej usługi machine learning systemów przyszłe ulepszenia w ocenie ryzyka.
 

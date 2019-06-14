@@ -2,7 +2,7 @@
 title: Zdarzenie niepowodzenia zadania w usłudze Azure Batch | Dokumentacja firmy Microsoft
 description: Odwołanie do zadania usługi Batch nie zdarzeń.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/20/2017
-ms.date: 05/15/2018
-ms.author: v-junlch
+ms.date: 04/20/2017
+ms.author: lahugh
 ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60549992"
 ---
 # <a name="task-fail-event"></a>Zdarzenie niepowodzenia zadania
@@ -53,7 +52,7 @@ ms.locfileid: "60549992"
 }
 ```
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |jobId|String|Identyfikator zadania zawierającego zadanie.|
 |id|String|Identyfikator zadania.|
@@ -66,32 +65,30 @@ ms.locfileid: "60549992"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |poolId|String|Identyfikator puli, na którym uruchomiono zadanie podrzędne.|
 |nodeId|String|Identyfikator węzła, na którym uruchomiono zadanie podrzędne.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|Liczba węzłów obliczeń wymagana przez zadanie.|
 
 ###  <a name="constraints"></a> Ograniczenia
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|Maksymalna liczba przypadków, gdy zadanie może być ponawiane. Usługa partia zadań ponawia próbę zadania, jeśli jego kod zakończenia jest różny od zera.<br /><br /> Należy pamiętać, że ta wartość określa, w szczególności liczbę ponownych prób. Usługa Batch spróbuje zadanie raz, a może następnie podjąć kolejną próbę do tego limitu. Na przykład jeśli maksymalna liczba ponowień to 3, maksymalna liczba prób partii to zadanie maksymalnie 4 razy (jedna początkowa próba i 3 ponownych prób).<br /><br /> Jeśli maksymalna liczba ponowień to 0, usługa partia zadań nie ponów próbę wykonania zadania.<br /><br /> Jeśli maksymalna liczba ponowień to -1, usługa partia zadań ponawia próbę zadania bez ograniczeń.<br /><br /> Wartość domyślna to 0 (bez ponawiania).|
 
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Nazwa elementu|Type|Uwagi|
+|Nazwa elementu|Typ|Uwagi|
 |------------------|----------|-----------|
 |startTime|DateTime|Czas, w którym zadania został uruchomiony. "Uruchomiona" odnosi się do **systemem** stanu, więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, następnie czas rozpoczęcia uwzględnia czas, w którym zadanie zostanie uruchomione, pobierania lub ich wdrażania.  Jeśli zadanie został ponownie uruchomiony lub ponowione, to jest ostatni czas, w którym zadania został uruchomiony.|
 |endTime|DateTime|Czas, w którym zadanie jest ukończone.|
 |ExitCode|Int32|Kod zakończenia zadania.|
 |retryCount|Int32|Liczba przypadków, gdy zadanie było ponawiane przez usługę Batch. Zadanie zostanie ponowiony, jeśli kończy działanie z kodem zakończenia różny od zera, aż określony MaxTaskRetryCount.|
 |requeueCount|Int32|Liczba przypadków, gdy zadanie ma zostać ponownie umieszczone w kolejce przez usługę Batch w wyniku żądania użytkownika.<br /><br /> Gdy węzły Usuwa użytkownika z puli (przez zmianę rozmiaru lub zmniejszania puli) lub gdy zadanie jest wyłączone, użytkownik może określić, czy uruchamianie zadań w węzłach można ponownie umieszczone w kolejce do wykonania. Ta liczba śledzi, ile razy zadanie ma zostać ponownie umieszczone w kolejce z tych powodów.|
-
-<!-- Update_Description: update metedata properties -->

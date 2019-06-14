@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60356075"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
@@ -111,17 +111,17 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)**:
+4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** :
 
     a. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-    b. W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+    b. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
-5. W obszarze **kontrole dostępu**, wybierz opcję **wymagają zasad ochrony aplikacji (wersja zapoznawcza)**.
+5. W obszarze **kontrole dostępu**, wybierz opcję **wymagają zasad ochrony aplikacji (wersja zapoznawcza)** .
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
  
@@ -141,13 +141,13 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-4. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)**. 
+4. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
 
-    a. W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
+    a. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/92.png)
 
-    b. W obszarze **kontrole dostępu**, wybierz opcję **wymagają zasad ochrony aplikacji (wersja zapoznawcza)**.
+    b. W obszarze **kontrole dostępu**, wybierz opcję **wymagają zasad ochrony aplikacji (wersja zapoznawcza)** .
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
 
@@ -194,13 +194,13 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
      ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)**. 
+4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
  
     a. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-    b. W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+    b. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
@@ -230,9 +230,9 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-4. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)**. 
+4. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
 
-    W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
+    W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/92.png)
 
@@ -296,13 +296,13 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
      ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)**. 
+4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
  
     a. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-    b. W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+    b. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
@@ -332,9 +332,9 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-4. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)**. 
+4. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
 
-    W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
+    W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/92.png)
 
@@ -403,13 +403,13 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
      ![Dostęp warunkowy](./media/app-protection-based-conditional-access/02.png)
 
-4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)**. 
+4. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
  
     a. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-    b. W **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+    b. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 

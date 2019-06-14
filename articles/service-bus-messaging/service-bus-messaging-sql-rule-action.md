@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307482"
 ---
 # <a name="sqlruleaction-syntax"></a>Składnia elementu SQLRuleAction
@@ -197,7 +197,7 @@ Wartość logiczna stałe są reprezentowane przez słowa kluczowe `TRUE` lub `F
   
 Stałe typu String są ujęte w znaki pojedynczego cudzysłowu i zawierać żadnych prawidłowych znaków Unicode. Znak pojedynczego cudzysłowu osadzone w stałą typu string jest reprezentowany jako dwa pojedyncze cudzysłowy.  
   
-## <a name="function"></a>funkcja  
+## <a name="function"></a>— Funkcja  
   
 ```  
 <function> :=  

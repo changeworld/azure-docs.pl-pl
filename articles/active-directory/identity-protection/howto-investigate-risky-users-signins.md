@@ -18,10 +18,10 @@ ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296048"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Instrukcje: Badanie ryzykownych użytkowników i logowań 
@@ -52,11 +52,11 @@ Raport ryzykownych użytkowników ma domyślny widok, który pokazuje:
 
 - Poziom ryzyka
 
-- Szczegóły ryzyka
+- Szczegóły zagrożenia
 
 - Ostatnia aktualizacja ryzyka
 
-- Type
+- Typ
 
 - Stan
  
@@ -81,7 +81,7 @@ Przedstawia widok szczegółów:
 
 - Ostatnie ryzykowne logowania
 
-- Ryzykowne zdarzenia niepowiązane z logowaniem
+- Zdarzenia o podwyższonym ryzyku niepołączone z zalogowaniem się
 
 - Historia ryzyka
 
@@ -113,7 +113,7 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, mo�
 
 - Poziom ryzyka
 
-- Type
+- Typ
 
 - Stan
 
@@ -126,7 +126,7 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, mo�
 
 **Ryzyka stanu** filtr umożliwia wybranie:
 
-- Narażeni
+- Zagrożone
 - Skorygowane
 - Odrzucone
 
@@ -134,14 +134,14 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, mo�
 **Poziom ryzyka** filtr umożliwia wybranie:
 
 - Wysoka
-- Medium
+- Średni
 - Małe
 
 
 **Typu** filtr umożliwia wybranie:
 
 - Gość
-- Członek
+- Element członkowski
 
 **Stan** filtr umożliwia wybranie:
 
@@ -224,9 +224,9 @@ Przedstawia widok szczegółów:
 
 - Informacje o urządzeniu
 
-- Informacje o ryzyku
+- Informacje o podwyższonym ryzyku
 
-- Informacje o uwierzytelnianiu wieloskładnikowym
+- Informacje usługi MFA
 
 - Dostęp warunkowy
 
@@ -238,9 +238,9 @@ Ponadto możesz wykonywać następujące czynności:
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/13.png)
 
-- Potwierdź naruszenie zabezpieczeń 
+- Upewnij się, naruszenia zabezpieczeń 
 
-- Potwierdź bezpieczeństwo
+- Upewnij się, bezpieczne
 
 Aby uzyskać więcej informacji, zobacz [sposób zwiększania dokładności wykrywania](howto-improve-detection-accuracy.md).
 
@@ -278,9 +278,9 @@ Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 
 **Ryzyka stanu** filtr umożliwia wybranie:
 
-- Narażeni
-- Potwierdzono naruszenie zabezpieczeń
-- Potwierdzono bezpieczeństwo
+- Zagrożone
+- Potwierdzone naruszenia zabezpieczeń
+- Potwierdzone bezpieczne
 - Odrzucone
 - Skorygowane
 
@@ -288,13 +288,13 @@ Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 **(Agregacji) poziom ryzyka** filtr umożliwia wybranie:
 
 - Wysoka
-- Medium
+- Średni
 - Małe
 
 **(W czasie rzeczywistym) poziom ryzyka** filtr umożliwia wybranie:
 
 - Wysoka
-- Medium
+- Średni
 - Małe
 
 

@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237855"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
@@ -101,9 +101,9 @@ Element najwyższego poziomu w pliku konfiguracji diagnostyki.
 
 Atrybuty:
 
-|Atrybut  |Type   |Wymagane| Domyślne | Opis|  
+|Atrybut  |Typ   |Wymagane| Domyślne | Opis|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|czas trwania|Optional (Opcjonalność) | PT1M| Określa interwał, jaką monitor diagnostyczny sonduje zmiany konfiguracji diagnostycznych.|  
+|**configurationChangePollInterval**|Czas trwania|Optional (Opcjonalność) | PT1M| Określa interwał, jaką monitor diagnostyczny sonduje zmiany konfiguracji diagnostycznych.|  
 |**overallQuotaInMB**|unsignedInt|Optional (Opcjonalność)| 4000 MB. Jeśli podano wartość nie może przekraczać tę kwotę |Łączna kwota magazyn systemu plików przydzielony dla wszystkich buforów rejestrowania.|  
 
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs Element  
@@ -117,7 +117,7 @@ Atrybuty:
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
-|**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="logs-element"></a>Dzienniki elementu  
  Definiuje konfigurację buforu dla podstawowych dzienniki platformy Azure.
@@ -130,7 +130,7 @@ Atrybuty:
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
-|**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="directories-element"></a>Element katalogów  
 Definiuje konfigurację buforu dla dzienników opartych na plikach, które można zdefiniować.
@@ -143,7 +143,7 @@ Atrybuty:
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
  Określa katalog zrzuty awarii.
@@ -207,7 +207,7 @@ Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**path**|string|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
+|**Ścieżka**|string|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
 |**expandEnvironment**|wartość logiczna|Wymagany. Jeśli ustawiono **true**, zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
 
 ## <a name="localresource-element"></a>LocalResource Element  
@@ -219,7 +219,7 @@ Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwa**|string|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
+|**name**|string|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
 |**relativePath**|string|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
 
 ## <a name="performancecounters-element"></a>Performancecounters — Element  
@@ -233,7 +233,7 @@ Atrybuty:
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  Określa licznik wydajności do zbierania.
@@ -245,7 +245,7 @@ Atrybuty:
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|string|Wymagany. Ścieżka do liczników wydajności do zbierania.|  
-|**sampleRate**|czas trwania|Wymagany. Szybkość, licznik wydajności powinny być zbierane.|  
+|**sampleRate**|Czas trwania|Wymagany. Szybkość, licznik wydajności powinny być zbierane.|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  Definiuje dzienniki zdarzeń, aby monitorować.
@@ -258,7 +258,7 @@ Atrybuty:
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
-|**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="datasource-element"></a>Element źródła danych  
  Definiuje dziennika zdarzeń do monitorowania.
@@ -269,5 +269,5 @@ Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwa**|string|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
+|**name**|string|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
 

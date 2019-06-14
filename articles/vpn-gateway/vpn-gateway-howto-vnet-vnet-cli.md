@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60411835"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu interfejsu wiersza polecenia platformy Azure
@@ -232,7 +232,7 @@ Mamy teraz dwie sieci wirtualne z bramami sieci VPN. Następny krok polega na ut
    "ipConfigurations":
    ```
 
-   Skopiuj ujęte w cudzysłów wartości po elemencie **"id":**.
+   Skopiuj ujęte w cudzysłów wartości po elemencie **"id":** .
 
    ```
    "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
@@ -338,7 +338,7 @@ Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę c
 
 ### <a name="connections5"></a>Krok 8 — Tworzenie połączeń
 
-Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozbicie na dwie sesje interfejsu wiersza polecenia oznaczone jako **[Subskrypcja 1]** i **[Subskrypcja 5]**. Aby przełączać się między subskrypcjami użyj `az account list --all` Aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>` Aby przełączyć się do subskrypcji, do którego chcesz używać.
+Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozbicie na dwie sesje interfejsu wiersza polecenia oznaczone jako **[Subskrypcja 1]** i **[Subskrypcja 5]** . Aby przełączać się między subskrypcjami użyj `az account list --all` Aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>` Aby przełączyć się do subskrypcji, do którego chcesz używać.
 
 1. **[Subskrypcja 1]** Zaloguj się i połącz z Subskrypcją 1. Uruchom następujące polecenie, aby uzyskać nazwę i identyfikator bramy z danych wyjściowych:
 

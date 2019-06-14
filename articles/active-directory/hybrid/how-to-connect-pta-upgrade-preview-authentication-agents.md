@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60386775"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Uaktualnianie agentów uwierzytelniania w wersji zapoznawczej
@@ -69,7 +69,7 @@ Przed uaktualnieniem Agent uwierzytelniania na tym samym serwerze, należy uaktu
 
 1. **Uaktualnij program Azure AD Connect**: Postępuj zgodnie z tym [artykułu](how-to-upgrade-previous-version.md) i przeprowadź uaktualnienie do najnowszej wersji Azure AD Connect.
 2. **Odinstaluj wersję zapoznawczą agenta uwierzytelniania**: Pobierz [ten skrypt programu PowerShell](https://aka.ms/rmpreviewagent) i uruchom go jako Administrator na serwerze.
-3. **Pobierz najnowszą wersję agenta uwierzytelniania (wersje 1.5.389.0 lub nowszej)**: Zaloguj się do [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego dzierżawy. Wybierz **usługi Azure Active Directory -> Azure AD Connect -> uwierzytelniania przekazywanego -> Pobierz agenta**. Zaakceptuj [warunki użytkowania usługi](https://aka.ms/authagenteula) i Pobierz najnowszą wersję agenta uwierzytelniania. Możesz również pobrać agenta uwierzytelniania z [tutaj](https://aka.ms/getauthagent).
+3. **Pobierz najnowszą wersję agenta uwierzytelniania (wersje 1.5.389.0 lub nowszej)** : Zaloguj się do [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego dzierżawy. Wybierz **usługi Azure Active Directory -> Azure AD Connect -> uwierzytelniania przekazywanego -> Pobierz agenta**. Zaakceptuj [warunki użytkowania usługi](https://aka.ms/authagenteula) i Pobierz najnowszą wersję agenta uwierzytelniania. Możesz również pobrać agenta uwierzytelniania z [tutaj](https://aka.ms/getauthagent).
 4. **Zainstaluj najnowszą wersję agenta uwierzytelniania programu**: Uruchom plik wykonywalny pobrany w kroku 3. Podaj poświadczenia administratora globalnego swojej dzierżawy, po wyświetleniu monitu.
 5. **Sprawdź, czy zainstalowano najnowszą wersję**: Jak pokazano wcześniej, przejdź do **Panel sterowania -> programy -> programy i funkcje** i sprawdź, czy istnieje wpis dla "**agenta: Microsoft Azure AD Connect uwierzytelniania**".
 
@@ -81,7 +81,7 @@ Przed uaktualnieniem Agent uwierzytelniania na tym samym serwerze, należy uaktu
 Wykonaj następujące kroki, aby uaktualnić agentów uwierzytelniania na innych serwerach (gdzie program Azure AD Connect nie jest zainstalowany):
 
 1. **Odinstaluj wersję zapoznawczą agenta uwierzytelniania**: Pobierz [ten skrypt programu PowerShell](https://aka.ms/rmpreviewagent) i uruchom go jako Administrator na serwerze.
-2. **Pobierz najnowszą wersję agenta uwierzytelniania (wersje 1.5.389.0 lub nowszej)**: Zaloguj się do [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego dzierżawy. Wybierz **usługi Azure Active Directory -> Azure AD Connect -> uwierzytelniania przekazywanego -> Pobierz agenta**. Zaakceptuj warunki użytkowania usługi i Pobierz najnowszą wersję.
+2. **Pobierz najnowszą wersję agenta uwierzytelniania (wersje 1.5.389.0 lub nowszej)** : Zaloguj się do [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego dzierżawy. Wybierz **usługi Azure Active Directory -> Azure AD Connect -> uwierzytelniania przekazywanego -> Pobierz agenta**. Zaakceptuj warunki użytkowania usługi i Pobierz najnowszą wersję.
 3. **Zainstaluj najnowszą wersję agenta uwierzytelniania programu**: Uruchom plik wykonywalny pobrany w kroku 2. Podaj poświadczenia administratora globalnego swojej dzierżawy, po wyświetleniu monitu.
 4. **Sprawdź, czy zainstalowano najnowszą wersję**: Jak pokazano wcześniej, przejdź do **Panel sterowania -> programy -> programy i funkcje** i sprawdź, czy wpis o nazwie **agenta: Microsoft Azure AD Connect uwierzytelniania**.
 

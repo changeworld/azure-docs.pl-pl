@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60455788"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Prywatność użytkownika i program Azure AD Connect 
@@ -71,13 +71,13 @@ Wykonaj następujące kroki, aby zaplanować skrypt do uruchomienia każdego 48 
     ![System](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  W pozycji Narzędzia administracyjne kliknij **harmonogram zadań**.
-    ![Zadanie podrzędne](./media/reference-connect-user-privacy/gdpr3.png)
+    ![Zadanie](./media/reference-connect-user-privacy/gdpr3.png)
 3.  W harmonogramie zadań, kliknij prawym przyciskiem myszy **Biblioteka Harmonogramu zadań** i kliknij pozycję **utworzyć podstawowe zadania...**
 4.  Wprowadź nazwę dla nowego zadania, a następnie kliknij przycisk **dalej**.
 5.  Wybierz **codzienne** wyzwalacz zadania i kliknij pozycję **dalej**.
 6.  Wartość cyklu **2 dni** i kliknij przycisk **dalej**.
 7.  Wybierz **uruchomić program** jako akcji, a następnie kliknij pozycję **dalej**.
-8.  Typ **PowerShell** pole dla programu/skryptu i w polu etykietą **Dodaj argumenty (opcjonalne)**, wprowadź pełną ścieżkę do skryptu, który został utworzony wcześniej, a następnie kliknij przycisk **dalej**.
+8.  Typ **PowerShell** pole dla programu/skryptu i w polu etykietą **Dodaj argumenty (opcjonalne)** , wprowadź pełną ścieżkę do skryptu, który został utworzony wcześniej, a następnie kliknij przycisk **dalej**.
 9.  Następny ekran pokazuje, podsumowania zadania, które chcesz utworzyć. Sprawdź wartości, a następnie kliknij przycisk **Zakończ** do utworzenia zadania.
 
 

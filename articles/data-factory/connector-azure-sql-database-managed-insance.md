@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f29db5786c682188b4eadec12275df46ae3b547
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e68b522d5a0fe7c359d83fc436aa7a1fd2159198
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048594"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory
 
@@ -29,7 +29,7 @@ Możesz skopiować dane z wystąpienia zarządzanego Azure SQL Database, do dowo
 
 W szczególności ten łącznik wystąpienia zarządzanego Azure SQL Database obsługuje:
 
-- Kopiowanie danych przy użyciu uwierzytelniania SQL lub Windows.
+- Kopiowanie danych przy użyciu uwierzytelniania SQL.
 - Jako źródła pobierania danych przy użyciu zapytania SQL lub procedury składowanej.
 - Jako obiekt sink dołączanie danych do tabeli docelowej lub wywołanie procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
 
@@ -37,9 +37,9 @@ Program SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć kopiowania danych z bazy danych wystąpienia zarządzanego Azure SQL, który znajduje się w sieci wirtualnej, skonfiguruj Self-Hosted integration runtime, które mogą dostęp do bazy danych. Aby uzyskać więcej informacji, zobacz [może być samodzielnie hostowane środowisko IR](create-self-hosted-integration-runtime.md).
+Aby dostęp do wystąpienia zarządzanego Azure SQL Database  **[publiczny punkt końcowy](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)** , możesz użyć usługi ADF zarządzane Azure IR Upewnij się, nie tylko włączyć publiczny punkt końcowy, ale także na ruch publiczny punkt końcowy w sieciowej grupie zabezpieczeń umożliwiają ADF może się połączyć z bazą danych, postępując zgodnie z [Niniejsze wskazówki](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
 
-Alokowania swoje własne środowisko integration runtime w tej samej sieci wirtualnej jako wystąpienia zarządzanego upewnij się, że komputerze integration runtime jest w innej podsieci niż wystąpienie zarządzane. Aprowizujesz swoje własne środowisko integration runtime w innej sieci wirtualnej niż wystąpienie zarządzane umożliwia komunikację równorzędną sieci wirtualnej lub sieci wirtualnej w celu połączenia sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
+Aby dostęp do wystąpienia zarządzanego Azure SQL Database **prywatnych punktów końcowych**, skonfiguruj [może być samodzielnie hostowane środowisko IR](create-self-hosted-integration-runtime.md) z dostępem do bazy danych. Alokowania własnego środowiska integration runtime w tej samej sieci wirtualnej jako wystąpienia zarządzanego upewnij się, że komputerze integration runtime jest w innej podsieci niż wystąpienie zarządzane. Aprowizujesz swoje własne środowisko integration runtime w innej sieci wirtualnej niż wystąpienie zarządzane umożliwia komunikację równorzędną sieci wirtualnej lub sieci wirtualnej w celu połączenia sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -54,13 +54,8 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **SqlServer**. | Tak. |
-| connectionString |Ta właściwość określa informacje parametry połączenia, które jest wymagane do połączenia wystąpienia zarządzanego przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Aby uzyskać więcej informacji zobacz następujące przykłady. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Tak. |
-| userName |Ta właściwość określa nazwę użytkownika, jeśli używasz uwierzytelniania Windows. Na przykład **nazwa_domeny\\username**. |Nie. |
-| password |Ta właściwość określa hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Wybierz **SecureString** można bezpiecznie przechowywać informacji parametry połączenia w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie. |
-| connectVia | To [środowiska integration runtime](concepts-integration-runtime.md) służy do łączenia się z magazynem danych. Dostarczanie własnego środowiska integration runtime w tej samej sieci wirtualnej jako wystąpienia zarządzanego. |Tak. |
-
->[!TIP]
->Można napotkać "UserErrorFailedToConnectToSqlServer" z komunikatem, takich jak "limit sesji dla bazy danych jest XXX i osiągnięto". kod błędu: Jeśli ten błąd występuje, Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
+| connectionString |Ta właściwość określa informacje parametry połączenia, które jest wymagany do połączenia z wystąpienia zarządzanego przy użyciu uwierzytelniania SQL. Aby uzyskać więcej informacji zobacz następujące przykłady. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Tak. |
+| connectVia | To [środowiska integration runtime](concepts-integration-runtime.md) służy do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli wystąpienie zarządzane ma publiczny punkt końcowy i umożliwić usługi ADF, aby uzyskać dostęp). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Tak. |
 
 **Przykład 1: Użyj uwierzytelniania SQL**
 
@@ -72,7 +67,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+                "value": "Data Source=<servername:port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
             }
         },
         "connectVia": {
@@ -102,32 +97,6 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
                     "type": "LinkedServiceReference" 
                 }, 
                 "secretName": "<secretName>" 
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-**Przykład 3: Uwierzytelnianie Windows**
-
-```json
-{
-    "name": "AzureSqlMILinkedService",
-    "properties": {
-        "type": "SqlServer",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
-            },
-            "userName": "<domain\\username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
             }
         },
         "connectVia": {
@@ -278,6 +247,9 @@ GO
 
 ### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Wystąpienie usługi Azure SQL Database Managed jako obiekt sink
 
+> [!TIP]
+> Dowiedz się więcej na temat obsługiwanych zapisu zachowań, konfiguracji i najlepszym rozwiązaniem z [najlepsze praktyki dotyczące ładowania danych do wystąpienia zarządzanego Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
+
 Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy ustawić typ ujścia w działaniu kopiowania, aby **SqlSink**. W sekcji ujścia działania kopiowania, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
@@ -286,14 +258,11 @@ Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy us
 | writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/>Dozwolone wartości to liczby całkowite, liczby wierszy. Domyślnie Data Factory dynamiczne określanie rozmiar partii odpowiednie, w zależności od rozmiaru wiersza.  |Nie |
 | writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie przed upływem limitu czasu operacji wstawiania wsadowego.<br/>Dozwolone wartości to zakresu czasu. Na przykład "00: 30:00," który jest 30 minut. |Nie. |
 | preCopyScript |Ta właściwość określa zapytanie SQL, działanie kopiowania do wykonania przed zapisaniem danych do wystąpienia zarządzanego. Jest wywoływana tylko raz na kopiowania Uruchom. Ta właściwość umożliwia oczyszczania załadowanych danych. |Nie. |
-| sqlWriterStoredProcedureName |Ta nazwa jest procedury przechowywanej, która definiuje sposób stosowania źródła danych do tabeli docelowej. Przykłady procedury to zrobić za pomocą z własną logiką biznesową wykonuje operację UPSERT lub przekształcenia. <br/><br/>Procedura składowana jest *wywoływane na partię*. Do wykonania operacji, która jest uruchamiany tylko raz i nie ma nic wspólnego z danych źródłowych, na przykład, usunąć lub obciąć należy użyć `preCopyScript` właściwości. |Nie. |
+| sqlWriterStoredProcedureName |Ta nazwa jest procedury przechowywanej, która definiuje sposób stosowania źródła danych do tabeli docelowej. <br/>Procedura składowana jest *wywoływane na partię*. Do wykonania operacji, która jest uruchamiany tylko raz i nie ma nic wspólnego z danych źródłowych, na przykład, usunąć lub obciąć należy użyć `preCopyScript` właściwości. |Nie. |
 | storedProcedureParameters |Te parametry są używane dla procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie. |
 | sqlWriterTableType |Ta właściwość określa nazwę typu tabeli ma być używany w procedurze składowanej. Działanie kopiowania udostępnia dane jest przenoszony w tabeli tymczasowej w przypadku tego typu tabeli. Kod procedury składowanej można następnie scalić dane, które są kopiowane z istniejącymi danymi. |Nie. |
 
-> [!TIP]
-> Gdy dane są kopiowane do wystąpienia zarządzanego Azure SQL Database, działanie kopiowania dołącza dane do tabeli ujścia domyślnie. Aby przeprowadzić upsert lub dodatkowe reguły biznesowe, użyj procedury składowanej w SqlSink. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z ujścia SQL](#invoke-a-stored-procedure-from-a-sql-sink).
-
-**Przykład 1: Dołączanie danych**
+**Przykład 1: dołączanie danych**
 
 ```json
 "activities":[
@@ -325,9 +294,9 @@ Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy us
 ]
 ```
 
-**Przykład 2: Wywołaj procedurę składowaną podczas kopiowania dla upsert**
+**Przykład 2: wywoływanie procedury składowanej podczas kopiowania**
 
-Dowiedz się więcej szczegółów z [wywołaj procedurę składowaną z ujścia SQL](#invoke-a-stored-procedure-from-a-sql-sink).
+Dowiedz się więcej szczegółów z [wywołaj procedurę składowaną z ujścia SQL](#invoking-stored-procedure-for-sql-sink).
 
 ```json
 "activities":[
@@ -364,80 +333,69 @@ Dowiedz się więcej szczegółów z [wywołaj procedurę składowaną z ujścia
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>Kolumny tożsamości w docelowej bazie danych
+## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Najlepsze praktyki dotyczące ładowania danych do wystąpienia zarządzanego Azure SQL Database
 
-Poniższy przykład kopiuje dane z tabeli źródłowej, za pomocą żadnej kolumny tożsamości do docelowej tabeli z kolumną tożsamości.
+Podczas kopiowania danych do wystąpienia zarządzanego Azure SQL Database, mogą wymagać zachowanie różnych zapisu:
 
-**Tabela źródłowa**
+- **[Dołącz](#append-data)** : Moje źródło danych zawiera tylko nowe rekordy;
+- **[UPSERT](#upsert-data)** : Moje źródło danych zawiera zarówno wstawienia i aktualizacje;
+- **[Zastąp](#overwrite-entire-table)** : Czy chcesz ponownie załadować tabelę wymiarów całego każdorazowo;
+- **[Zapis za pomocą logiki niestandardowej](#write-data-with-custom-logic)** : Potrzebne są dodatkowe przetwarzania przed ostatnim wstawiania do tabeli docelowej.
+
+Zapoznaj się odpowiednio sekcje dotyczące sposobu konfigurowania w usłudze ADF i najlepszych rozwiązań.
+
+### <a name="append-data"></a>Dołączanie danych
+
+Jest to domyślne zachowanie tego łącznika ujścia wystąpienia zarządzanego Azure SQL Database, a następnie wykonaj ADF **wstawiania zbiorczego** można zapisać do tabeli wydajnie. Możesz po prostu skonfigurować źródła i ujścia odpowiednio w działaniu kopiowania.
+
+### <a name="upsert-data"></a>Wykonywanie operacji upsert dla danych
+
+**Opcja I** (sugerowany, szczególnie gdy korzystasz dużych ilości danych do skopiowania): **większość wydajne podejście** celu upsert jest następująca: 
+
+- Po pierwsze, wykorzystaj [tabeli tymczasowej](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) można wykonać ładowania zbiorczego, wszystkie rekordy, za pomocą działania kopiowania. Jak operacje wobec tabel tymczasowych nie są rejestrowane, należy załadować miliony rekordów, w ciągu kilku sekund.
+- Wykonaj działania procedury składowanej w usłudze ADF, aby zastosować [scalania](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (lub INSERT/UPDATE) instrukcji i używaj tymczasowej tabeli jako źródła do wykonywania wszystkich aktualizuje lub wstawia jako jedna transakcja, skracając natężenie ruchu i rejestrowanie operacji. Po zakończeniu działania procedury składowanej Tabela tymczasowa może być obcinana jest gotowy do następnego cyklu upsert. 
+
+Na przykład w usłudze Azure Data Factory, można utworzyć potoku za pomocą **działanie kopiowania, które** łańcuchowa przy użyciu **działania procedura składowana** w przypadku powodzenia. Pierwsza kopiuje dane z magazynu źródła do tabeli tymczasowej Załóżmy, że " **##UpsertTempTable**" jako nazwę tabeli w zestawie danych, następnie one wywołuje procedury składowanej, aby scalić źródła danych z tabeli tymczasowej do tabeli docelowej i oczyścić tabeli tymczasowej.
+
+![UPSERT](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+W bazie danych zdefiniuj procedury składowanej, wraz z logiką scalania, podobnie do poniższego, który jest wskazywany powyższe działania procedury składowanej. Zakładając, że docelowy **marketingu** tabelę zawierającą trzy kolumny: **ProfileID**, **stanu**, i **kategorii**, i wykonaj upsert na podstawie **ProfileID** kolumny.
 
 ```sql
-create table dbo.SourceTbl
-(
-    name varchar(100),
-    age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-**Tabela docelowa**
+**Opcja II:** Alternatywnie możesz [wywołaj procedurę składowaną w ramach działania kopiowania](#invoking-stored-procedure-for-sql-sink), podczas Uwaga to podejście jest wykonywane dla każdego wiersza w tabeli źródłowej zamiast wykorzystaniu zbiorcze Wstaw jako podejście domyślne w działaniu kopiowania dlatego nie mieści się na dużą skalę upsert.
 
-```sql
-create table dbo.TargetTbl
-(
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
-)
-```
+### <a name="overwrite-entire-table"></a>Zastąp całą tabelę
 
-Należy zauważyć, że tabela docelowa ma kolumny tożsamości.
+Można skonfigurować **preCopyScript** ujścia właściwości w działaniu kopiowania, w którym to przypadku dla każdego uruchomienia działania kopiowania usługi ADF wykonuje skrypt najpierw uruchom kopiowania, aby wstawić dane. Na przykład aby zastąpić całą tabelę przy użyciu najnowszych danych, można określić skrypt, aby usunąć wszystkie rekordy przed ładowania zbiorczego nowe dane ze źródła.
 
-**Definicja JSON zestawu danych źródłowych**
+### <a name="write-data-with-custom-logic"></a>Zapisywanie danych za pomocą logiki niestandardowej
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
+Podobnie, zgodnie z opisem w [danych Upsert](#upsert-data) sekcji, kiedy należy zastosować dodatkowe przetwarzania przed ostatnim wstawiania danych źródłowych do tabeli docelowej możesz) na dużą skalę, ładowanie do tabeli tymczasowej, a następnie wywołaj przechowywanego Procedura lub b) wywoływanie procedury składowanej podczas kopiowania.
 
-**Definicja JSON zestawu danych docelowego**
+## <a name="invoking-stored-procedure-for-sql-sink"></a> Wywołaj procedurę składowaną z SQL ujścia
 
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
+Po skopiowaniu danych do wystąpienia zarządzanego Azure SQL Database można również skonfigurować i wywoływać procedury składowanej określonych przez użytkownika z dodatkowych parametrów.
 
-Należy zauważyć, że tabela źródłowa i docelowa mają różne schemat. Tabela docelowa ma kolumny tożsamości. W tym scenariuszu należy określić właściwość "strukturę" w definicji zestawu danych docelowych, które nie zawiera kolumny tożsamości.
+> [!TIP]
+> Wywoływanie procedury składowanej przetwarza dane wiersz po wierszu zamiast operacji zbiorczej, która nie jest zalecane dla kopiowania na dużą skalę. Dowiedz się więcej z [najlepsze praktyki dotyczące ładowania danych do wystąpienia zarządzanego Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
 
-## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Wywołaj procedurę składowaną z SQL ujścia
-
-Gdy dane są kopiowane do wystąpienia zarządzanego Azure SQL Database, procedurę składowaną można konfigurować i wywoływane z dodatkowymi parametrami, które określisz.
-
-Podczas kopiowania wbudowane mechanizmy nie służą do celów, można użyć procedury składowanej. Jest ona zwykle używana, gdy upsert (aktualizacja + insert) lub dodatkowego przetwarzania musi odbywać się przed ostatnim wstawiania danych źródłowych w tabeli docelowej. Dodatkowe operacje mogą obejmować zadania, takie jak scalanie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do wielu tabel.
+Można użyć procedury składowanej, podczas kopiowania wbudowane mechanizmy nie służą do celów, np. Zastosuj dodatkowe przetwarzania przed ostatnim wstawiania danych źródłowych do tabeli docelowej. Niektóre przykłady dodatkowego przetwarzania są łączenie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do więcej niż jedną tabelą.
 
 Poniższy przykład pokazuje sposób użycia procedury składowanej w celu upsert do tabeli w bazie danych programu SQL Server. Przyjęto założenie, że dane wejściowe i obiekt sink **marketingu** każda tabela ma trzy kolumny: **ProfileID**, **stanu**, i **kategorii**. Czy upsert na podstawie **ProfileID** kolumny i zastosować je tylko dla określonej kategorii.
 
@@ -526,7 +484,7 @@ Gdy dane są kopiowane do i z wystąpienia zarządzanego Azure SQL Database, nas
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| Numeryczne |Decimal |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -534,12 +492,12 @@ Gdy dane są kopiowane do i z wystąpienia zarządzanego Azure SQL Database, nas
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
-| tekst |String, Char[] |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
-| Varbinary |Byte[] |
+| varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

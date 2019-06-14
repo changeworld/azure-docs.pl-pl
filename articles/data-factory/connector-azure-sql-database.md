@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 231f44612b5e87afdf84f31d86c80be644fb4484
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6ae1094a6e47d19af97fbbb1ce988d0756f33731
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048556"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, których można użyć:"]
 > * [Wersja 1](v1/data-factory-azure-sql-connector.md)
 > * [Bieżąca wersja](connector-azure-sql-database.md)
 
@@ -364,6 +364,9 @@ GO
 
 ### <a name="azure-sql-database-as-the-sink"></a>Usługa Azure SQL Database jako obiekt sink
 
+> [!TIP]
+> Dowiedz się więcej na temat obsługiwanych zapisu zachowań, konfiguracji i najlepszym rozwiązaniem z [najlepsze praktyki dotyczące ładowania danych do usługi Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database).
+
 Aby skopiować dane do usługi Azure SQL Database, należy ustawić **typu** właściwość w działaniu kopiowania zlew do **SqlSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
 | Właściwość | Opis | Wymagane |
@@ -372,14 +375,11 @@ Aby skopiować dane do usługi Azure SQL Database, należy ustawić **typu** wł
 | writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). Domyślnie Data Factory dynamiczne określanie rozmiar partii odpowiednie, w zależności od rozmiaru wiersza. | Nie |
 | writeBatchTimeout | Czas oczekiwania dla partii wstawić na zakończenie przed upływem limitu czasu operacji.<br/> Dozwolone wartości to **timespan**. Przykład: "00: 30:00" (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL, działanie kopiowania do uruchomienia przed zapisanie danych w usłudze Azure SQL Database. Jego jest wywoływana tylko po jednej kopii uruchomienia. Ta właściwość służy do oczyszczania załadowanych danych. | Nie |
-| sqlWriterStoredProcedureName | Nazwa procedury składowanej, który definiuje sposób stosowania źródła danych do tabeli docelowej. Przykładem jest wykonuje operację UPSERT lub przekształcić za pomocą z własną logiką biznesową. <br/><br/>Procedura składowana jest **wywoływane na partię**. W przypadku operacji, które są tylko uruchamiane raz i mają one nic wspólnego z danymi źródłowymi, użyj `preCopyScript` właściwości. Przykład operacje są delete i obcięcia. | Nie |
+| sqlWriterStoredProcedureName | Nazwa procedury składowanej, który definiuje sposób stosowania źródła danych do tabeli docelowej. <br/>Procedura składowana jest **wywoływane na partię**. W przypadku operacji, które są tylko uruchamiane raz i mają one nic wspólnego z danych źródłowych, na przykład, usunąć lub truncate, użyj `preCopyScript` właściwości. | Nie |
 | storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw i wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. | Nie |
 | sqlWriterTableType | Określ nazwę typu tabeli ma być używany w procedurze składowanej. Działanie kopiowania udostępnia dane jest przenoszony w tabeli tymczasowej w przypadku tego typu tabeli. Kod procedury składowanej można następnie scalić dane, w której są kopiowane z istniejącymi danymi. | Nie |
 
-> [!TIP]
-> Podczas kopiowania danych do usługi Azure SQL Database, działanie kopiowania dołącza dane do tabeli ujścia domyślnie. Aby wykonać upsert lub dodatkowe reguły biznesowe, należy użyć procedury składowanej w **SqlSink**. Dowiedz się więcej szczegółów z [wywoływanie procedury składowanej z SQL ujścia](#invoking-stored-procedure-for-sql-sink).
-
-#### <a name="append-data-example"></a>Dołącz przykładowe dane
+**Przykład 1: dołączanie danych**
 
 ```json
 "activities":[
@@ -411,7 +411,7 @@ Aby skopiować dane do usługi Azure SQL Database, należy ustawić **typu** wł
 ]
 ```
 
-#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>Wywołaj procedurę składowaną podczas kopiowania, na przykład upsert
+**Przykład 2: wywoływanie procedury składowanej podczas kopiowania**
 
 Dowiedz się więcej szczegółów z [wywoływanie procedury składowanej z SQL ujścia](#invoking-stored-procedure-for-sql-sink).
 
@@ -450,84 +450,69 @@ Dowiedz się więcej szczegółów z [wywoływanie procedury składowanej z SQL 
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>Kolumny tożsamości w docelowej bazie danych
+## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>Najlepsze praktyki dotyczące ładowania danych do usługi Azure SQL Database
 
-W tej sekcji pokazano, jak skopiować dane z tabeli źródłowej bez kolumny tożsamości do tabeli docelowej z kolumną tożsamości.
+Podczas kopiowania danych do usługi Azure SQL Database, mogą wymagać zachowanie różnych zapisu:
 
-#### <a name="source-table"></a>Tabela źródłowa
+- **[Dołącz](#append-data)** : Moje źródło danych zawiera tylko nowe rekordy;
+- **[UPSERT](#upsert-data)** : Moje źródło danych zawiera zarówno wstawienia i aktualizacje;
+- **[Zastąp](#overwrite-entire-table)** : Czy chcesz ponownie załadować tabelę wymiarów całego każdorazowo;
+- **[Zapis za pomocą logiki niestandardowej](#write-data-with-custom-logic)** : Potrzebne są dodatkowe przetwarzania przed ostatnim wstawiania do tabeli docelowej.
+
+Zapoznaj się odpowiednio sekcje dotyczące sposobu konfigurowania w usłudze ADF i najlepszych rozwiązań.
+
+### <a name="append-data"></a>Dołączanie danych
+
+Jest to domyślne zachowanie tego łącznika ujścia Azure SQL Database, a następnie wykonaj ADF **wstawiania zbiorczego** można zapisać do tabeli wydajnie. Możesz po prostu skonfigurować źródła i ujścia odpowiednio w działaniu kopiowania.
+
+### <a name="upsert-data"></a>Wykonywanie operacji upsert dla danych
+
+**Opcja I** (sugerowany, szczególnie gdy korzystasz dużych ilości danych do skopiowania): **większość wydajne podejście** celu upsert jest następująca: 
+
+- Po pierwsze, wykorzystaj [tabeli tymczasowej w zakresie bazy danych](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database) można wykonać ładowania zbiorczego, wszystkie rekordy, za pomocą działania kopiowania. Operacje w bazie danych o określonym zakresie tymczasowych tabel nie są rejestrowane, miliony rekordów można załadować w ciągu kilku sekund.
+- Wykonaj działania procedury składowanej w usłudze ADF, aby zastosować [scalania](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (lub INSERT/UPDATE) instrukcji i używaj tymczasowej tabeli jako źródła do wykonywania wszystkich aktualizuje lub wstawia jako jedna transakcja, skracając natężenie ruchu i rejestrowanie operacji. Po zakończeniu działania procedury składowanej Tabela tymczasowa może być obcinana jest gotowy do następnego cyklu upsert. 
+
+Na przykład w usłudze Azure Data Factory, można utworzyć potoku za pomocą **działanie kopiowania, które** łańcuchowa przy użyciu **działania procedura składowana** w przypadku powodzenia. Pierwszych kopiuje dane z magazynu źródła do tabeli tymczasowej bazy danych Azure SQL Database, załóżmy, że " **##UpsertTempTable**" jako nazwę tabeli w zestawie danych, następnie one wywołuje procedury składowanej, aby scalić źródła danych z tabeli tymczasowej do docelowej Tabela i wyczyścić tabeli tymczasowej.
+
+![UPSERT](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+W bazie danych zdefiniuj procedury składowanej, wraz z logiką scalania, podobnie do poniższego, który jest wskazywany powyższe działania procedury składowanej. Zakładając, że docelowy **marketingu** tabelę zawierającą trzy kolumny: **ProfileID**, **stanu**, i **kategorii**, i wykonaj upsert na podstawie **ProfileID** kolumny.
 
 ```sql
-create table dbo.SourceTbl
-(
-       name varchar(100),
-       age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-#### <a name="destination-table"></a>Tabela docelowa
+**Opcja II:** Alternatywnie możesz [wywołaj procedurę składowaną w ramach działania kopiowania](#invoking-stored-procedure-for-sql-sink), podczas Uwaga to podejście jest wykonywane dla każdego wiersza w tabeli źródłowej zamiast wykorzystaniu zbiorcze Wstaw jako podejście domyślne w działaniu kopiowania dlatego nie mieści się na dużą skalę upsert.
 
-```sql
-create table dbo.TargetTbl
-(
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
-)
-```
+### <a name="overwrite-entire-table"></a>Zastąp całą tabelę
 
-> [!NOTE]
-> Tabela docelowa ma kolumny tożsamości.
+Można skonfigurować **preCopyScript** ujścia właściwości w działaniu kopiowania, w którym to przypadku dla każdego uruchomienia działania kopiowania usługi ADF wykonuje skrypt najpierw uruchom kopiowania, aby wstawić dane. Na przykład aby zastąpić całą tabelę przy użyciu najnowszych danych, można określić skrypt, aby usunąć wszystkie rekordy przed ładowania zbiorczego nowe dane ze źródła.
 
-#### <a name="source-dataset-json-definition"></a>Definicja JSON zestawu danych źródłowych
+### <a name="write-data-with-custom-logic"></a>Zapisywanie danych za pomocą logiki niestandardowej
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " AzureSqlTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
-
-#### <a name="destination-dataset-json-definition"></a>Definicja JSON zestawu danych docelowego
-
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "AzureSqlTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
-
-> [!NOTE]
-> Tabela źródłowa i docelowa mają różne schemat. 
-
-Element docelowy ma dodatkową kolumnę z tożsamością. W tym scenariuszu należy określić **struktury** właściwości w definicji zestawu danych docelowego nie zawiera kolumny tożsamości.
+Podobnie, zgodnie z opisem w [danych Upsert](#upsert-data) sekcji, kiedy należy zastosować dodatkowe przetwarzania przed ostatnim wstawiania danych źródłowych do tabeli docelowej możesz) na dużą skalę, ładowanie do tabeli tymczasowej o zakresie bazy danych, a następnie wywołać Procedura składowana lub b) wywoływanie procedury składowanej podczas kopiowania.
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> Wywołaj procedurę składowaną z SQL ujścia
 
 Po skopiowaniu danych do usługi Azure SQL Database można również skonfigurować i wywoływać procedury składowanej określonych przez użytkownika z dodatkowych parametrów.
 
-Podczas kopiowania wbudowane mechanizmy nie służą do celów, można użyć procedury składowanej. Zazwyczaj są używane podczas upsert, insert oraz update lub dodatkowego przetwarzania, które należy wykonać przed ostatnim wstawiania danych źródłowych do tabeli docelowej. Niektóre przykłady dodatkowego przetwarzania są łączenie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do więcej niż jedną tabelą.
+> [!TIP]
+> Wywoływanie procedury składowanej przetwarza dane wiersz po wierszu zamiast operacji zbiorczej, która nie jest zalecane dla kopiowania na dużą skalę. Dowiedz się więcej z [najlepsze praktyki dotyczące ładowania danych do usługi Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database).
+
+Można użyć procedury składowanej, podczas kopiowania wbudowane mechanizmy nie służą do celów, np. Zastosuj dodatkowe przetwarzania przed ostatnim wstawiania danych źródłowych do tabeli docelowej. Niektóre przykłady dodatkowego przetwarzania są łączenie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do więcej niż jedną tabelą.
 
 Poniższy przykład pokazuje, jak zrobić upsert do tabeli w usłudze Azure SQL Database za pomocą procedury składowanej. Przyjęto założenie, że dane wejściowe i obiekt sink **marketingu** każda tabela ma trzy kolumny: **ProfileID**, **stanu**, i **kategorii**. Czy upsert na podstawie **ProfileID** kolumny i zastosować je tylko dla określonej kategorii.
 
@@ -620,7 +605,7 @@ Podczas kopiowania danych z lub do usługi Azure SQL Database, następujące map
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| Numeryczne |Decimal |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -628,12 +613,12 @@ Podczas kopiowania danych z lub do usługi Azure SQL Database, następujące map
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
-| tekst |String, Char[] |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
-| Varbinary |Byte[] |
+| varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

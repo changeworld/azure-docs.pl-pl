@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
 ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60401412"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
@@ -66,7 +66,7 @@ Koszty monitorowania łącze pojedynczej podsieci przez cały miesiąc, zobacz [
 Opłata za pozyskiwanie (przekazywanie danych do obszaru roboczego usługi Log Analytics, w usłudze Azure Monitor, przetwarzania i indeksowanie) jest dostępny na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla usługi Log Analytics w sekcji wprowadzanie danych. Opłata za przechowywanie danych (czyli dane zachowane w opcji klienta, poza pierwszym miesiącu) jest dostępna również na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/), w sekcji przechowywania danych.
 
 
-## <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
+## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
 **Jakie są opłaty za użycie przez Monitor usługi ExpressRoute?**
 

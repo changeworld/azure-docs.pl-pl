@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 02/26/2018
-ms.date: 04/09/2019
+ms.date: 02/26/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243550"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalowanie programu Azure AD Connect przy użyciu języka SQL delegowane uprawnienia administratora
@@ -45,7 +44,7 @@ Aby aprowizować bazę danych poza pasmem i zainstalować program Azure AD Conne
 >Chociaż nie jest wymagane, jest **zdecydowanie zaleca się** czy sortowania Latin1_General_CI_AS wybrano podczas tworzenia bazy danych.
 
 
-1. Tworzenie bazy danych ADSync sekwencji sortowania bez uwzględniania wielkości liter administratora SQL **(Latin1_General_CI_AS)**.  Baza danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawne wartości, gdy jest zainstalowany program Azure AD Connect.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie program Azure AD Connect spowoduje zablokowanie instalacji.  Aby odzyskać skojarzenia zabezpieczeń musi usunięcie i ponowne utworzenie bazy danych.
+1. Tworzenie bazy danych ADSync sekwencji sortowania bez uwzględniania wielkości liter administratora SQL **(Latin1_General_CI_AS)** .  Baza danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawne wartości, gdy jest zainstalowany program Azure AD Connect.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie program Azure AD Connect spowoduje zablokowanie instalacji.  Aby odzyskać skojarzenia zabezpieczeń musi usunięcie i ponowne utworzenie bazy danych.
  
    ![Sortowanie](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Przyznaj administrator usługi Azure AD Connect i konta usług domeny następujące uprawnienia:
@@ -68,5 +67,3 @@ W przypadku, gdy SQL Administrator został przywrócony bazy danych ADSync z pop
 - [Rozpoczynanie pracy z programem Azure AD Connect przy użyciu ustawień ekspresowych](how-to-connect-install-express.md)
 - [Niestandardowa instalacja programu Azure AD Connect](how-to-connect-install-custom.md)
 - [Instalowanie programu Azure AD Connect przy użyciu istniejącej bazy danych programu ADSync](how-to-connect-install-existing-database.md)  
-
-<!-- Update_Description: wording update -->

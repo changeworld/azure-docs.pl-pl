@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60500959"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Tworzenie kopii zapasowych farmy programu SharePoint w usłudze Azure Stack
@@ -21,7 +21,7 @@ Wykonywania kopii zapasowych farmy programu SharePoint w usłudze Azure Stack w 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Obsługiwane wersje programu SharePoint, a powiązane scenariusze ochrony
 Usługa Azure Backup dla serwera usługi Mab obsługuje następujące scenariusze:
 
-| Obciążenie | Wersja | Wdrażanie programu SharePoint | Ochrona i odzyskiwanie |
+| Obciążenie | Version | Wdrażanie programu SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- |
 | Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |SharePoint wdrożony jako maszyna wirtualna usługi Azure Stack <br> -------------- <br> Funkcji SQL AlwaysOn | Ochrona farmy programu SharePoint do odzyskania: Farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
 

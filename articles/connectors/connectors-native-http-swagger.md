@@ -12,10 +12,10 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448642"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Wywołaj punkty końcowe REST przy użyciu protokołu HTTP + Swagger łącznika w usłudze Azure Logic Apps
@@ -92,12 +92,12 @@ HTTP + Swagger łącznika, który jest dostarczany za pomocą jednej akcji to mo
 Podejmuj wychodzące żądania HTTP, dzięki pomocy metadanych struktury Swagger.
 Znak gwiazdki (*) oznacza, że wymagane pole.
 
-| Nazwa wyświetlana | Nazwa właściwości | Opis |
+| `Display name` | Nazwa właściwości | Opis |
 | --- | --- | --- |
 | Metoda * |method |Czasownik HTTP do użycia. |
-| IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI żądania HTTP. |
+| IDENTYFIKATOR URI * |Identyfikator URI |Identyfikator URI żądania HTTP. |
 | Nagłówki |Nagłówki |Obiekt JSON nagłówków HTTP do uwzględnienia. |
-| Treść |treść |Treść żądania HTTP. |
+| Treść |Treść |Treść żądania HTTP. |
 | Authentication |uwierzytelnianie |Uwierzytelniania dla żądania. Aby uzyskać więcej informacji, zobacz [łącznik protokołu HTTP](connectors-native-http.md#authentication). |
 
 **Szczegóły danych wyjściowych**
@@ -108,7 +108,7 @@ Odpowiedź HTTP
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki odpowiedzi |
 | Treść |obiekt |Obiekt odpowiedzi |
-| Kod stanu |int |Kod stanu HTTP |
+| Kod stanu: |int |Kod stanu HTTP |
 
 ### <a name="http-responses"></a>Odpowiedzi HTTP
 Podczas wykonywania wywołań do różnych działań, możesz otrzymać określone odpowiedzi. Poniżej znajduje się tabela, która przedstawia odpowiedniej odpowiedzi wraz z opisami.
@@ -116,11 +116,11 @@ Podczas wykonywania wywołań do różnych działań, możesz otrzymać określo
 | Name (Nazwa) | Opis |
 | --- | --- |
 | 200 |OK |
-| 202 |Zaakceptowany |
+| 202 |Zaakceptowane |
 | 400 |Nieprawidłowe żądanie |
 | 401 |Brak autoryzacji |
 | 403 |Zabroniony |
-| 404 |Nie znaleziono |
+| 404 |Nie można odnaleźć |
 | 500 |Wewnętrzny błąd serwera. Wystąpił nieznany błąd. |
 
 ## <a name="next-steps"></a>Kolejne kroki

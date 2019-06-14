@@ -16,10 +16,10 @@ ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60431760"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pola dla automatycznej aprowizacji użytkowników
@@ -41,8 +41,8 @@ Aby skonfigurować integrację usługi Azure AD z usługą Box, potrzebne są na
 
 Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska usługi Azure AD w wersji próbnej, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="assigning-users-to-box"></a>Przypisywanie użytkowników do usługi Box 
 
@@ -52,7 +52,7 @@ Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie uży
 
 [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-## <a name="assign-users-and-groups"></a>Przypisz użytkowników i grupy
+## <a name="assign-users-and-groups"></a>Przypisywanie użytkowników i grup
 **Pole > Użytkownicy i grupy** kartę w witrynie Azure portal umożliwia określenie, którzy użytkownicy i grupy może być przyznany dostęp do pola. Przypisywanie użytkowników lub grupy powoduje, że wystąpienia następujących czynności:
 
 * Usługa Azure AD umożliwia przypisany użytkownik (albo przez przypisania bezpośredniego lub członkostwa w grupie) do uwierzytelniania w usłudze Box. Jeśli użytkownik nie jest przypisany, usługi Azure AD nie zezwala na go o zalogowanie się do pola i zwraca błąd, na stronie logowania w usłudze Azure AD.
@@ -95,7 +95,7 @@ Jest celem tej sekcji opisano sposób włączyć aprowizację kont użytkownikó
 
 4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
 
-    ![aprowizowanie](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Inicjowanie obsługi administracyjnej](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. W obszarze **poświadczeń administratora** kliknij **Autoryzuj** aby otworzyć okno dialogowe logowania w nowym oknie przeglądarki.
 

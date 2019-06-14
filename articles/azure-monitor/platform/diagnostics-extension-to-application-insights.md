@@ -9,10 +9,10 @@ ms.date: 03/19/2016
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60396142"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Wysyłanie danych diagnostycznych usługi w chmurze, maszyny wirtualnej lub usługi Service Fabric do usługi Application Insights
@@ -67,7 +67,7 @@ Przykład konfiguracji obiekt sink dla usługi Application Insights:
 - **Kanały** elementu zawiera jeden lub więcej **kanału** elementów.
     - *Nazwa* jednoznacznie odnosi się do tego kanału.
     - *Loglevel* atrybut pozwala określić poziom rejestrowania, który umożliwia kanału. Dostępne są następujące poziomy dziennika dostępne w kolejności od najbardziej do najmniej informacji:
-        - Pełne
+        - Pełny
         - Informacje
         - Ostrzeżenie
         - Błąd

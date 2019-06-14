@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369966"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Zrozumienie warunki na fakturze Microsoft Azure
@@ -100,7 +100,7 @@ W poniższej tabeli opisano nagłówki kolumn opłaty za użycie na fakturze.
 | Termin |Opis |
 | --- | --- |
 | Name (Nazwa) |Określa usługę najwyższego poziomu do użycia |
-| Type |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
+| Typ |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
 | Resource |Określa jednostkę miary dla mierników, są używane |
 | Region |Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych |
 | Zużyte |Ilość miernika, używany w trakcie okresu rozliczeniowego |

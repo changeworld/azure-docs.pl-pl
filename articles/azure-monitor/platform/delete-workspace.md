@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
 ms.openlocfilehash: a6542838acba3143123dc90d96746179a2b4469b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236129"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Usuń obszar roboczy usługi Azure Log Analytics w witrynie Azure portal

@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288545"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról usługi Azure AD w usłudze PIM
@@ -69,7 +69,7 @@ W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról usługi Azure
 
 | | |
 | --- | --- |
-| **Ważność** | Medium |
+| **Ważność** | Średni |
 | **Dlaczego warto uzyskać ten alert?** | Konta w roli uprzywilejowanej, które nie uległy zmianie hasła w ciągu ostatnich 90 dni. Te konta może być usługa lub udostępnionych kont, które nie są obsługiwane i są narażone na ataki. |
 | **Jak naprawić?** | Przegląd konta na liście. Jeśli już nie potrzebują dostępu, należy je usunąć z ich ról uprzywilejowanych. |
 | **Zapobieganie** | Upewnij się, kont, które są udostępniane są obracanie silne hasła po zmiany użytkowników, którzy znać hasło. </br>Regularne przeglądy kont z ról uprzywilejowanych przy użyciu [przeglądów dostępu](pim-how-to-start-security-review.md) i usuwanie przypisań ról, które nie są już potrzebne. |

@@ -4,23 +4,23 @@ description: W tym artykule wyjaśniono deklaratywne wyrażenia inicjowania obs�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 07/18/2017
-ms.date: 11/08/2018
-ms.component: hybrid
-ms.author: v-junlch
+ms.topic: conceptual
+ms.date: 07/18/2017
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245501"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizacja programu Azure AD Connect: Opis wyrażeń związanych z aprowizacją deklaratywną
@@ -33,13 +33,13 @@ Aby uzyskać więcej informacji, zobacz [Witamy w języku Visual Basic for Skoro
 Atrybuty są silnie typizowane. Funkcja akceptuje tylko atrybuty poprawnego typu. Jest również wielkość liter. Zarówno nazwy funkcji, jak i nazwy atrybutu jest posiadanie odpowiedniej wielkości lub zostanie zgłoszony błąd.
 
 ## <a name="language-definitions-and-identifiers"></a>Język definicji i identyfikatory
-- Funkcje mają nazwę, oraz argumenty w nawiasach: FunctionName (argumentu 1, argument N).
-- Atrybuty są identyfikowane przez nawiasy kwadratowe: [attributeName]
-- Parametry są identyfikowane za pomocą procentu: ParameterName %
-- Stałe typu String są ujęte w cudzysłowy: Na przykład "Contoso" (Uwaga: należy użyć cudzysłowów prostych "" i nie inteligentne cudzysłowy "")
-- Wartości numeryczne są wyrażone bez znaków cudzysłowu i powinny być dziesiętną. Wartości szesnastkowe mają prefiks & H. Na przykład 98052 & HFF
-- Wartości logiczne są wyrażone za pomocą stałych: True, False.
-- Stałe wbudowanych i wszystkie literały są wyrażone za pomocą tylko nazwy: NULL, CRLF, IgnoreThisFlow
+* Funkcje mają nazwę, oraz argumenty w nawiasach: FunctionName (argumentu 1, argument N).
+* Atrybuty są identyfikowane przez nawiasy kwadratowe: [attributeName]
+* Parametry są identyfikowane za pomocą procentu: ParameterName %
+* Stałe typu String są ujęte w cudzysłowy: Na przykład "Contoso" (Uwaga: należy użyć cudzysłowów prostych "" i nie inteligentne cudzysłowy "")
+* Wartości numeryczne są wyrażone bez znaków cudzysłowu i powinny być dziesiętną. Wartości szesnastkowe mają prefiks & H. Na przykład 98052 & HFF
+* Wartości logiczne są wyrażone za pomocą stałych: True, False.
+* Stałe wbudowanych i wszystkie literały są wyrażone za pomocą tylko nazwy: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Funkcje
 Aprowizacja deklaratywna używa wiele funkcji, aby umożliwić możliwość przekształcania wartości atrybutów. Te funkcje mogą być zagnieżdżane, wynikiem funkcji jest przekazywana do innej funkcji.
@@ -71,11 +71,11 @@ Oto przykład, który wypełnia domena atrybut metaverse z nazwą netbios domeny
 ### <a name="operators"></a>Operatory
 Można używać następujących operatorów:
 
-- **Porównanie**: <, < = <>, =, >, > =
-- **Matematyce**: +, -, \*, -
-- **Ciąg**: & (konkatenacji)
-- **Logiczne**: & & (i), || (lub)
-- **Kolejność obliczania**:)
+* **Porównanie**: <, < = <>, =, >, > =
+* **Matematyce**: +, -, \*, -
+* **Ciąg**: & (konkatenacji)
+* **Logiczne**: & & (i), || (lub)
+* **Kolejność obliczania**:)
 
 Operatory są obliczane od lewej do prawej i mają ten sam priorytet oceny. Oznacza to, że \* (mnożnik) nie jest oceniany przed - (odejmowanie). 2\*(5 + 3) nie jest taka sama jak 2\*5 + 3. (Nawiasów) są używane do Zmień kolejność obliczania po lewej strony, aby kolejność obliczania prawo nie jest właściwe.
 
@@ -88,17 +88,16 @@ Na przykład:
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Wyszukaj adres SIP i usunąć go z wartości.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o modelu konfiguracji w [Aprowizacja Deklaratywna opis](concept-azure-ad-connect-sync-declarative-provisioning.md).
-- Zobacz, jak deklaratywne Inicjowanie obsługi administracyjnej jest używane out-of-box w [opis konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md).
-- Zobacz, jak zrobić praktyczne przy użyciu aprowizacja deklaratywna w [sposób wprowadzania zmian w domyślnej konfiguracji](how-to-connect-sync-change-the-configuration.md).
+* Dowiedz się więcej o modelu konfiguracji w [Aprowizacja Deklaratywna opis](concept-azure-ad-connect-sync-declarative-provisioning.md).
+* Zobacz, jak deklaratywne Inicjowanie obsługi administracyjnej jest używane out-of-box w [opis konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md).
+* Zobacz, jak zrobić praktyczne przy użyciu aprowizacja deklaratywna w [sposób wprowadzania zmian w domyślnej konfiguracji](how-to-connect-sync-change-the-configuration.md).
 
 **Tematy poglądowe**
 
-- [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
-- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
 **Tematy odwołań**
 
-- [Synchronizacja w programie Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
-
+* [Synchronizacja w programie Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
 

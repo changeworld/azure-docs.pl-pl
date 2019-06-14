@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60437043"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Często zadawane pytania dotyczące usługi Azure Active Directory raporty
@@ -139,7 +139,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **Pyt.: Jak rozpocząć pracę?**
 
-**Odp.:** Aby rozpocząć:
+**Odp.:** Aby rozpocząć pracę:
 
 * Przejdź do raportów logowania w [witryny Azure portal](https://portal.azure.com).
 * Polecenie logowania, które użytkownik chce Rozwiązywanie problemów.
@@ -150,14 +150,14 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 **Odp.:** Stan dostępu warunkowego może mieć następujące wartości:
 
 * **Niestosowane**: Oznacza to, że nie ma żadnych zasad dostępu Warunkowego za pomocą użytkownika i aplikacji w zakresie. 
-* **Success**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego zostały pomyślnie spełnione. 
+* **Powodzenie**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego zostały pomyślnie spełnione. 
 * **Błąd**: Oznacza to, że wystąpił zasad dostępu Warunkowego, użytkownika i aplikacji w zakresie i zasady dostępu Warunkowego nie zostały spełnione. 
     
 **Pyt.: Co to są wszystkie możliwe wartości dla wyników zasad dostępu warunkowego?**
 
 **Odp.:** Zasady dostępu warunkowego może mieć następujące wyniki:
 
-* **Success**: Zasady pomyślnie był spełniony.
+* **Powodzenie**: Zasady pomyślnie był spełniony.
 * **Błąd**: Zasady nie był spełniony.
 * **Niestosowane**: Może to być, ponieważ nie spełniały warunki zasady.
 * **Nie włączono**: Jest to spowodowane zasad w stanie wyłączenia. 

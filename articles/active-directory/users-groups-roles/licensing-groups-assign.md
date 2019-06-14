@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60471335"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
@@ -73,9 +73,9 @@ Podczas przypisywania licencji do grupy, usługi Azure AD przetwarza istniejący
 
 3. Zobacz więcej szczegółowych informacji dotyczących przetwarzania w ramach licencji **usługi Azure Active Directory** > **użytkowników i grup** > *Nazwa grupy*  >  **Dzienniki inspekcji**. Należy zwrócić uwagę następujących działań:
 
-   - Działanie: **Rozpocznij stosowanie licencji opartej na grupie użytkowników**. To jest rejestrowany, gdy system przejmie zmianę przypisania licencji dla grupy rozpoczyna się zastosowanie go do wszystkich elementów członkowskich użytkownika. Zawiera on informacje o zmianie, który został wykonany.
+   - Działania: **Rozpocznij stosowanie licencji opartej na grupie użytkowników**. To jest rejestrowany, gdy system przejmie zmianę przypisania licencji dla grupy rozpoczyna się zastosowanie go do wszystkich elementów członkowskich użytkownika. Zawiera on informacje o zmianie, który został wykonany.
 
-   - Działanie: **Kończenie stosowania licencji opartej na grupie użytkowników**. To jest rejestrowany, gdy system zakończy przetwarzanie wszystkich użytkowników w grupie. Zawiera on podsumowanie liczby użytkowników zostały pomyślnie przetworzone i ilu użytkowników nie można przypisać do grupy licencji.
+   - Działania: **Kończenie stosowania licencji opartej na grupie użytkowników**. To jest rejestrowany, gdy system zakończy przetwarzanie wszystkich użytkowników w grupie. Zawiera on podsumowanie liczby użytkowników zostały pomyślnie przetworzone i ilu użytkowników nie można przypisać do grupy licencji.
 
    [Przeczytaj tę sekcję](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) Aby dowiedzieć się więcej na temat sposobu dzienników inspekcji może służyć do analizowania zmian wprowadzonych przez usługę licencjonowania opartego na grupach.
 

@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452953"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Usługa Azure Active Directory Identity Protection — Omówienie zabezpieczeń
@@ -39,17 +39,17 @@ Omówienie zabezpieczeń szeroko jest podzielona na dwie sekcje:
   
 ## <a name="trends"></a>Trends
 
-### <a name="new-risky-users-detected"></a>Wykryto nowych ryzykownych użytkowników
+### <a name="new-risky-users-detected"></a>Wykryto nowe ryzykownych użytkowników
 
 Ten wykres przedstawia liczbę nowych ryzykownych użytkowników, które zostały wykryte w wybranym okresie. Można filtrować widok ten wykres przy poziomie ryzyka użytkownika (niskiej, średniej, wysokiej). Umieść kursor nad przyrosty daty UTC, aby wyświetlić liczbę ryzykowne wykryto użytkowników dla tego samego dnia. Kliknięcie na tym wykresie spowoduje wyświetlenie raportu "Ryzykownych użytkowników". Aby skorygować użytkowników, którzy są zagrożone, należy rozważyć zmianę hasła.
 
-### <a name="new-risky-sign-ins-detected"></a>Wykryto nowe ryzykowne logowania
+### <a name="new-risky-sign-ins-detected"></a>Nowe ryzykownych logowań wykryto
 
 Ten wykres przedstawia liczbę wykrytych w wybranym okresie ryzykowne logowania. Można filtrować widok ten wykres według typu ryzyka logowania (w czasie rzeczywistym lub agregacji) i poziomu ryzyka logowania (niskiej, średniej, wysokiej). Niechronione logowania są logowania pomyślne ryzyka w czasie rzeczywistym, które nie zostały MFA wezwaniem. (Uwaga: Nie można chronić sign-ins, które są ryzykowne z powodu wykrycia w trybie offline w czasie rzeczywistym przy użyciu zasad ryzyka logowania). Umieść kursor nad przyrosty daty UTC, aby wyświetlić liczbę logowań wykryte zagrożenie dla tego samego dnia. Kliknięcie na tym wykresie spowoduje wyświetlenie raportu "Ryzykowne logowania".
 
 ## <a name="tiles"></a>Kafelki
  
-### <a name="high-risk-users"></a>Użytkownicy wysokiego ryzyka
+### <a name="high-risk-users"></a>Użytkownicy o wysokim ryzyku
 
 Kafelek "użytkowników o wysokim ryzyku" pokazuje najnowsze liczba użytkowników z dużym prawdopodobieństwem naruszenia tożsamości. Powinny być priorytetowo do badania. Kliknij Kafelek "użytkowników o wysokim ryzyku" spowoduje przekierowanie do widok filtrowany raportu "Ryzykownych użytkowników", pokazujący tylko użytkownicy mający wysoki poziom ryzyka. Korzystając z tego raportu, możesz dowiedzieć się więcej i korygowanie tych użytkowników za pomocą funkcji resetowania hasła.
 
@@ -69,7 +69,7 @@ Kafelek "Niechronione ryzykownych logowań" pokazuje ostatniego tygodnia Liczba 
 Kafelek "Uwierzytelnianie starszych" pokazuje ostatniego tygodnia liczbę uwierzytelnień starszej wersji w Twojej organizacji. Protokoły uwierzytelniania starsze nie obsługują zabezpieczeń nowoczesnych metod, takich jak uwierzytelnianie wieloskładnikowe. Aby zapobiec uwierzytelniania starszej wersji, można zastosować zasady dostępu warunkowego. Kliknij Kafelek "Uwierzytelnianie starszych" nastąpi przekierowanie do "Tożsamość Secure wynik".
 
 
-### <a name="identity-secure-score"></a>Wskaźnik bezpieczeństwa tożsamości
+### <a name="identity-secure-score"></a>Wynik bezpiecznego tożsamości
 
 Wynik zabezpieczyć tożsamość miary i porównuje poziomu bezpieczeństwa do wzorców branży. Jeśli klikniesz Kafelek "Tożsamość Secure wynik (wersja zapoznawcza)", nastąpi przekierowanie do bloku "Tożsamość Secure wynik (wersja zapoznawcza)", gdzie można dowiedzieć się więcej o zwiększanie poziomu bezpieczeństwa.
 

@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610737"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-onprem-teradata-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-teradata.md)
 
@@ -67,7 +67,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla pr
 | type |Właściwość type musi być równa: **OnPremisesTeradata** |Yes |
 | server |Nazwa serwera programu Teradata. |Yes |
 | authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych Teradata w środowisku lokalnym. |Yes |
 
@@ -286,8 +286,8 @@ Podczas przenoszenia danych Teradata, następujące mapowania są używane z Ter
 | Typ bazy danych programu Teradata | Typ .NET framework |
 | --- | --- |
 | char |String |
-| CLOB |String |
-| Grafika |String |
+| Clob |String |
+| Graphic |String |
 | VarChar |String |
 | VarGraphic |String |
 | Obiekt blob |Byte[] |
@@ -302,27 +302,27 @@ Podczas przenoszenia danych Teradata, następujące mapowania są używane z Ter
 | SmallInt |Int16 |
 | Date |DateTime |
 | Time |TimeSpan |
-| Godzina ze strefą czasową |String |
+| Time With Time Zone |String |
 | Znacznik czasu |DateTime |
-| Sygnatura czasowa ze strefą czasową |DateTimeOffset |
-| Interwał dnia |TimeSpan |
-| Interwału dnia do godziny |TimeSpan |
-| Interwału dnia do minuty |TimeSpan |
-| Interwału dnia do sekundy |TimeSpan |
-| Interwał, godzinę |TimeSpan |
-| Godzina przedział na minutę |TimeSpan |
-| Godzina przedział na sekundę |TimeSpan |
-| Interwał minutę |TimeSpan |
-| Interwału minuty do sekundy |TimeSpan |
-| Interwał drugiego |TimeSpan |
-| Interwał roku |String |
-| Interwału roku do miesiąca |String |
-| Interwał miesiąca |String |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Interval Month |String |
 | Period(Date) |String |
 | Period(Time) |String |
-| Okres (godzina ze strefą czasową) |String |
-| Period(TimeStamp) |String |
-| Okres (sygnatura czasowa ze strefą czasową) |String |
+| Period(Time With Time Zone) |String |
+| Period(Timestamp) |String |
+| Period(Timestamp With Time Zone) |String |
 | Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn

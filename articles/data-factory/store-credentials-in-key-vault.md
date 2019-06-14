@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048516"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store poświadczeń w usłudze Azure Key Vault
 
@@ -32,7 +32,7 @@ Ta funkcja opiera się na tożsamości zarządzanych fabryki danych. Dowiedz si�
 
 Aby odwołać poświadczenia przechowywane w usłudze Azure Key Vault, musisz:
 
-1. **Pobieranie danych fabryki zarządzanych tożsamości** przez skopiowanie wartości "Identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką. Jeśli używasz usługi ADF tworzenia interfejsu użytkownika, identyfikator aplikacji tożsamości zarządzanej będą wyświetlane w oknie tworzenia połączonej usługi Azure Key Vault; można je również pobrać z witryny Azure portal, zapoznaj się [tożsamości zarządzanej usługi fabryka danych pobierania](data-factory-service-identity.md#retrieve-managed-identity).
+1. **Pobieranie danych fabryki zarządzanych tożsamości** kopiując wartość "Zarządzanych identyfikator aplikacji tożsamości" wygenerowane wraz z fabryką. Jeśli używasz usługi ADF tworzenia interfejsu użytkownika, identyfikator aplikacji tożsamości zarządzanej będą wyświetlane w oknie tworzenia połączonej usługi Azure Key Vault; można je również pobrać z witryny Azure portal, zapoznaj się [tożsamości zarządzanej usługi fabryka danych pobierania](data-factory-service-identity.md#retrieve-managed-identity).
 2. **Udzielić dostępu tożsamości zarządzanej do usługi Azure Key Vault.** W magazynie kluczy -> zasady -> dostępu Dodaj nowy -> search to zarządzane identyfikator aplikacji tożsamości, aby udzielić **uzyskać** uprawnienie na liście rozwijanej uprawnienia klucza tajnego. Umożliwia ona tej fabryce wyznaczone do dostępu do klucza tajnego w magazynie kluczy.
 3. **Tworzenie połączonej usługi wskazuje usłudze Azure Key Vault.** Zapoznaj się [usługę połączoną usługi Azure Key Vault](#azure-key-vault-linked-service).
 4. **Tworzenie połączonej usługi magazynu danych, wewnątrz której odwołanie odpowiadający mu klucz tajny przechowywanych w magazynie.** Zapoznaj się [odwołanie wpisu tajnego, przechowywanych w magazynie kluczy](#reference-secret-stored-in-key-vault).
@@ -48,7 +48,7 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej u
 
 **Korzystanie z tworzenia interfejsu użytkownika:**
 
-Kliknij przycisk **połączeń** -> **połączonych usług** -> **+ nowy** -> Wyszukaj "Usługi Azure Key Vault":
+Kliknij przycisk **połączeń** -> **połączonych usług** ->  **+ nowy** -> Wyszukaj "Usługi Azure Key Vault":
 
 ![Wyszukiwanie AKV](media/store-credentials-in-key-vault/search-akv.png)
 

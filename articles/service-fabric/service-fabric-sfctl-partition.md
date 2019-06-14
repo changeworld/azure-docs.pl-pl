@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: f7c9bcc51757100cb1fc957dee12213bc8bf2eec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556611"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
@@ -30,10 +30,10 @@ Zapytanie partycji i zarządzania nimi dla dowolnej usługi.
 | --- | --- |
 | utrata danych | Ten interfejs API będzie wywoływać utrata danych dla określonej partycji. |
 | data-loss-status | Pobiera postęp pracy przy użyciu interfejsu API StartDataLoss operacji utraty danych partycji. |
-| zdrowie | Pobiera kondycji określonej partycji usługi Service Fabric. |
-| informacje | Pobiera informacje o partycji usługi Service Fabric. |
+| health | Pobiera kondycji określonej partycji usługi Service Fabric. |
+| info | Pobiera informacje o partycji usługi Service Fabric. |
 | list | Pobiera listę partycji usługi Service Fabric. |
-| ładowanie | Pobiera informacje o ładowaniu określonej partycji usługi Service Fabric. |
+| load | Pobiera informacje o ładowaniu określonej partycji usługi Service Fabric. |
 | load-reset | Resetuje bieżącego obciążenia partycji usługi Service Fabric. |
 | quorum-loss | Wywołuje utraciła kworum dla partycji danej usługi stanowej. |
 | quorum-loss-status | Pobiera postępu operacji utratę kworum na pracę, przy użyciu interfejsu API StartQuorumLoss partycji. |

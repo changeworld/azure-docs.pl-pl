@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359045"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbieranie danych użytkownika w usłudze Azure Multi-Factor Authentication
@@ -35,14 +35,14 @@ Próby uwierzytelnienia (używane do raportowania i rozwiązywania problemów):
 - Imię
 - Nazwisko
 - Adres e-mail
-- Grupa użytkownika
+- Grupy użytkowników
 - Metoda uwierzytelniania (połączenie telefoniczne, Token OATH komunikatów, aplikacja mobilna tekst)
 - Tryb połączenia telefonicznego (standardowy, PIN)
 - Kierunek wiadomości tekstowej (jednokierunkowe, dwukierunkowe)
 - Tryb wiadomości tekstowej (OTP, uwierzytelnianie OTP + kod PIN)
 - Tryb aplikacji mobilnej (standardowy, PIN)
 - Tryb tokenu OATH (standardowy, PIN)
-- Typ uwierzytelnienia
+- Typ uwierzytelniania
 - Nazwa aplikacji
 - Wywołanie podstawowy numer kierunkowy kraju
 - Wywołanie podstawowego numeru telefonu
@@ -86,12 +86,12 @@ Bloki (używany do określenia stan blokady oraz raportowanie):
 - Blokuj znacznik czasu:
 - Blok według nazwy użytkownika
 - Nazwa użytkownika
-- Kod kraju
+- Numer kierunkowy kraju
 - Numer telefonu
 - Numer telefonu w formacie
 - Wewnętrzny
 - Czyszczenie rozszerzenia
-- Zablokowany
+- Zablokowane
 - Przyczyna blokady
 - Sygnatura czasowa zakończenia
 - Przyczyna zakończenia
@@ -106,7 +106,7 @@ Pomija (używane na potrzeby raportowania):
 - Liczba sekund obejścia
 - Obejście według nazwy użytkownika
 - Nazwa użytkownika
-- Kod kraju
+- Numer kierunkowy kraju
 - Numer telefonu
 - Numer telefonu w formacie
 - Wewnętrzny
@@ -122,12 +122,12 @@ Zmiany (używane do synchronizacji zmiany użytkowników serwera usługi MFA lub
 - Nazwa użytkownika
 - Nowy kod kraju
 - Nowy numer telefonu
-- Nowy numer wewnętrzny
+- Nowe rozszerzenie
 - Nowe zapasowy numer kierunkowy kraju
 - Nowe zapasowego numeru telefonu
 - Nowe rozszerzenie kopii zapasowej
-- Nowy kod PIN
-- Wymagana zmiana numeru PIN
+- Nowy numer PIN
+- Wymagana zmiana kodu PIN
 - Stary Token urządzenia
 - Token nowego urządzenia
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050647"
 ---
 # <a name="azure-functions-networking-options"></a>Usługa Azure Functions opcji sieciowych
 
@@ -25,13 +25,13 @@ Możesz hostować aplikacje funkcji na kilka sposobów:
 
 * Istnieje zestaw opcji plan, które są uruchamiane w wielodostępnej infrastrukturze, z różnymi poziomami sieciami wirtualnymi i opcje skalowania:
     * [Planu zużycie](functions-scale.md#consumption-plan), która skaluje się dynamicznie w odpowiedzi na obciążenia i oferuje opcje izolacji sieci minimalnej.
-    * [Plan w warstwie Premium](functions-scale.md#premium-plan-public-preview), które również skaluje się dynamicznie, jednocześnie oferując bardziej kompleksowe izolacji sieci.
+    * [Plan w warstwie Premium](functions-scale.md#premium-plan), które również skaluje się dynamicznie, jednocześnie oferując bardziej kompleksowe izolacji sieci.
     * Azure [planu usługi App Service](functions-scale.md#app-service-plan), który działa stały skalę i oferuje podobne izolacji sieciowej plan w warstwie Premium.
 * Możesz uruchamiać funkcje w [środowiska App Service Environment](../app-service/environment/intro.md). Ta metoda służy do wdrażania funkcji do sieci wirtualnej i zapewnia kontrolę całej sieci i izolacji.
 
 ## <a name="matrix-of-networking-features"></a>Macierz funkcji sieciowych
 
-|                |[Plan zużycia](functions-scale.md#consumption-plan)|[Plan w warstwie Premium (wersja zapoznawcza)](functions-scale.md#premium-plan-public-preview)|[Plan usługi App Service](functions-scale.md#app-service-plan)|[Środowisko usługi App Service](../app-service/environment/intro.md)|
+|                |[Plan zużycia](functions-scale.md#consumption-plan)|[Plan w warstwie Premium (wersja zapoznawcza)](functions-scale.md#premium-plan)|[Plan usługi App Service](functions-scale.md#app-service-plan)|[Środowisko usługi App Service](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Ograniczenia adresów IP dla ruchu przychodzącego](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Ograniczenia adresów IP ruchu wychodzącego](#private-site-access)|❌No| ❌No|❌No|✅Yes|

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 377ad49ae3a5ae0f61cd0fd93b68dd817d617397
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050822"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Pakiet cloud-init obsługę maszyn wirtualnych na platformie Azure
 W tym artykule opisano obsługę, która istnieje dla [pakietu cloud-init](https://cloudinit.readthedocs.io) Aby skonfigurować maszynę wirtualną (VM) lub maszyn wirtualnych zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure.  
@@ -79,7 +79,7 @@ Poniższy przykład tworzy Maszynę wirtualną o nazwie *centos74* i tworzy kluc
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
-  --image OpenLogic:CentOS:7-CI:latest \
+  --image OpenLogic:CentOS-CI:7-CI:latest \
   --custom-data cloud-init.txt \
   --generate-ssh-keys 
 ```

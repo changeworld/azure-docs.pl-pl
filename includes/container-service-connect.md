@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: container-service
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 06/05/2019
 ms.author: danlep
-ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb6dec606169eb0bf2bfbeff042700cff441560b
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202825"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808909"
 ---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Nawiązywanie zdalnego połączenia z klastrem Kubernetes, DC/OS lub Docker Swarm
 Po utworzeniu klastra usługi Azure Container Service należy połączyć się z klastrem, aby wdrożyć obciążenia i zarządzać nimi. W tym artykule opisano sposób nawiązywania połączenia z główną maszyną wirtualną klastra z komputera zdalnego. 
@@ -32,7 +32,7 @@ Wykonaj następujące kroki, aby zainstalować i skonfigurować narzędzie `kube
 > 
 
 ### <a name="install-kubectl"></a>Instalowanie narzędzia kubectl
-Jednym ze sposobów instalacji tego narzędzia jest użycie `az acs kubernetes install-cli` polecenia wiersza polecenia platformy Azure. Uruchom następujące polecenie, upewnij się, że możesz [zainstalowane](/cli/azure/install-az-cli2) najnowszą wersję interfejsu wiersza polecenia platformy Azure i jest zalogowany na koncie platformy Azure (`az login`).
+Jednym ze sposobów instalacji tego narzędzia jest użycie `az acs kubernetes install-cli` polecenia wiersza polecenia platformy Azure. Aby uruchomić to polecenie [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i logowanie się do konta platformy Azure przy użyciu `az login`.
 
 ```azurecli
 # Linux or macOS
@@ -78,7 +78,7 @@ kubectl proxy
 
 Interfejs użytkownika platformy Kubernetes jest obecnie dostępny pod adresem: `http://localhost:8001/ui`.
 
-Aby uzyskać więcej informacji, zobacz [Kubernetes — szybki start](http://kubernetes.io/docs/user-guide/quick-start/).
+Aby uzyskać więcej informacji, zobacz [szybkiego startu rozwiązania Kubernetes](http://kubernetes.io/docs/user-guide/quick-start/).
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>Nawiązywanie połączenia z klastrem DC/OS lub Swarm
 

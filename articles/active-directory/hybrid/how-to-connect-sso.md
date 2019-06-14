@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c34d8de3dfd06540dd50542ab19da0c1d9b1567
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242238"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
@@ -63,11 +63,11 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Tak\*|Nie|Yes|Tak\*\*\*|ND
-|Windows 8.1|Tak\*|ND|Yes|Tak\*\*\*|ND
+|Windows 10|Tak\*|Nie|Tak|Tak\*\*\*|ND
+|Windows 8.1|Tak\*|ND|Tak|Tak\*\*\*|ND
 |Windows 8|Tak\*|ND|Yes|Tak\*\*\*|ND
-|Windows 7|Tak\*|ND|Yes|Tak\*\*\*|ND
-|Windows Server 2012 R2 lub nowszy|Tak\*\*|ND|Yes|Tak\*\*\*|ND
+|Windows 7|Tak\*|ND|Tak|Tak\*\*\*|ND
+|Windows Server 2012 R2 lub nowszy|Tak\*\*|ND|Tak|Tak\*\*\*|ND
 |Mac OS X|ND|ND|Tak\*\*\*|Tak\*\*\*|Tak\*\*\*
 
 

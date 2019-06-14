@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c6104a977a02211dcab17a5f232991d0d9cbb852
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050723"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -89,7 +89,7 @@ Aby uzyskać więcej informacji, zobacz [projekt biblioteki klas funkcji](functi
 
 ## <a name="configure-the-project-for-local-development"></a>Konfigurowanie projektu dla rozwoju lokalnych
 
-Środowisko uruchomieniowe usługi Functions używa konta usługi Azure Storage wewnętrznie. W przypadku wyzwolenia wszystkich typów innych niż HTTP i elementy webhook, należy skonfigurować **Values.AzureWebJobsStorage** klucza prawidłowe parametry połączenia konta usługi Azure Storage. Aplikacja funkcji można również użyć [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) dla **AzureWebJobsStorage** połączenia ustawienie to znaczy wymagany przez projekt. Aby korzystać z emulatora, ustaw wartość **AzureWebJobsStorage** do `UseDevelopmentStorage=true`. Należy zmienić to ustawienie do połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia.
+Środowisko uruchomieniowe usługi Functions używa konta usługi Azure Storage wewnętrznie. W przypadku wyzwolenia wszystkich typów innych niż HTTP i elementy webhook, należy skonfigurować **Values.AzureWebJobsStorage** klucza prawidłowe parametry połączenia konta usługi Azure Storage. Aplikacja funkcji można również użyć [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) dla **AzureWebJobsStorage** połączenia ustawienie to znaczy wymagany przez projekt. Aby korzystać z emulatora, ustaw wartość **AzureWebJobsStorage** do `UseDevelopmentStorage=true`. To ustawienie można zmienić połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia.
 
 Aby ustawić parametry połączenia konta magazynu:
 
@@ -181,9 +181,13 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 Aby dowiedzieć się więcej na temat korzystania z podstawowych narzędzi usługi Azure Functions, zobacz [kodu i testowanie usługi Azure functions lokalnie](functions-run-local.md).
 
-## <a name="publish-to-azure"></a>Opublikuj na platformie Azure
+## <a name="publish-to-azure"></a>Publikowanie na platformie Azure
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
+
+### <a name="deployment-technology"></a>Technologia wdrażania
+
+Podczas publikowania z programu Visual Studio, jedną z dwóch technologii służy do przeprowadzania wdrożenia: [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy) i [Zip wdrażanie włączone uruchomienia z pakietu (zalecane)](functions-deployment-technologies.md#zip-deploy).
 
 ## <a name="function-app-settings"></a>Ustawienia aplikacji funkcji
 

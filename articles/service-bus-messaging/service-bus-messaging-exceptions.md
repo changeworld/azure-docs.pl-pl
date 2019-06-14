@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
 ms.openlocfilehash: b90e87310bf6dec505176b7f4d4cb9e15ac57c20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307781"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Wyjątki obsługi komunikatów w usłudze Service Bus
@@ -62,7 +62,7 @@ W poniższej tabeli wymieniono komunikatów typów wyjątków i powoduje, że or
 | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Próba wykonania operacji w transakcji, która jest w stanie wątpliwości, lub zostanie podjęta próba można zatwierdzić transakcji i transakcji staje się w stanie wątpliwości. |Aplikacja musi obsługiwać ten wyjątek (jako szczególny przypadek), jako transakcja może zostały już zatwierdzone. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
-Wyjątek [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) wskazuje, że przekroczono limit przydziału dla określonej jednostki.
+[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) wskazuje, że przekroczony został limit przydziału dla określonej jednostki.
 
 ### <a name="queues-and-topics"></a>Kolejki i tematy
 W przypadku kolejek i tematów często jest rozmiar kolejki. Właściwości komunikatu błędu zawiera dalsze szczegółowe informacje, jak w poniższym przykładzie:

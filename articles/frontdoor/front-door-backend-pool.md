@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60193717"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service drzwi
@@ -71,7 +71,7 @@ Usługa drzwiami frontowymi wysyła okresowe żądania sondowania HTTP/HTTPS do 
 
 - **Protokół**. Określa, czy wysyłać żądań sondy kondycji usługi wejściu do zaplecza przy użyciu protokołu HTTP lub HTTPS.
 
-- **Interwał (w sekundach)**. Określa częstotliwość sondy kondycji do zaplecza lub odstępach czasu, w których każdego z tych środowisk drzwiami frontowymi wysyła sondę.
+- **Interwał (w sekundach)** . Określa częstotliwość sondy kondycji do zaplecza lub odstępach czasu, w których każdego z tych środowisk drzwiami frontowymi wysyła sondę.
 
     >[!NOTE]
     >Dla szybszego przejścia w tryb failover należy ustawić interwał niższą wartość. Im niższa wartość, im większy wolumin sondy kondycji otrzymują zaplecza. Na przykład, jeśli interwał wynosi 30 sekund przy użyciu 90 drzwi wejściowe lub w środowiskach POP globalnie, każde zaplecze otrzyma o 3 – 5 sondowania żądań na sekundę.
@@ -85,7 +85,7 @@ Ustawienia równoważenia obciążenia dla puli zaplecza definiują, jak możemy
 
 - **Rozmiar próbki pomyślne**. Określa rozmiar próbki, jak wcześniej wspomniano, liczbę pomyślnych próbek potrzebne do wywoływania zaplecza w dobrej kondycji. Załóżmy na przykład, interwał sondy kondycji drzwiami frontowymi jest 30 sekund, rozmiar próbki jest 5 i rozmiar próbki pomyślne to 3. Zawsze możemy obliczyć kondycji sondy zaplecza, przyjrzymy się pięć ostatnich przykłady ponad 150 sekund (5 x 30). Co najmniej trzech pomyślne sondy są wymagane do deklarowania wewnętrznej bazy danych jako w dobrej kondycji.
 
-- **Czułość opóźnienia (dodatkowe opóźnienie)**. Określa, czy chcesz drzwiami frontowymi wysyłać żądania do zaplecza w zakresie poufności pomiaru opóźnienia lub przesłania żądania do najbliższego wewnętrznej bazy danych.
+- **Czułość opóźnienia (dodatkowe opóźnienie)** . Określa, czy chcesz drzwiami frontowymi wysyłać żądania do zaplecza w zakresie poufności pomiaru opóźnienia lub przesłania żądania do najbliższego wewnętrznej bazy danych.
 
 Aby uzyskać więcej informacji, zobacz [najmniejszego opóźnienia na podstawie metody routingu opartego na](front-door-routing-methods.md#latency).
 

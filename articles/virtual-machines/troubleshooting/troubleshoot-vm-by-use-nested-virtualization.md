@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60444371"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązać problem z maszyny Wirtualnej platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
@@ -116,7 +116,7 @@ Zainstaluj maszynę Wirtualną problemie, maszyna wirtualna ratownictwa musi spe
     ![Obraz dotyczący instaluje dysk](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
+17. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
 
 18. Kliknij dwukrotnie na maszynie Wirtualnej, a następnie uruchom go.
 

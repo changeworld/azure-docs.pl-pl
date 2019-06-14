@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368059"
 ---
 # <a name="detect-common-objects-in-images"></a>Wykryć wspólnych obiektów na obrazach
@@ -95,7 +95,7 @@ Należy zauważyć ograniczenia wykrywanie obiektów, co pozwala uniknąć lub �
 * Obiekty zazwyczaj nie są wykrywane, jeśli są ułożone ściśle ze sobą (stos talerzy, na przykład).
 * Obiekty nie są zróżnicowane według marki lub produktu nazwy (różnego rodzaju sodas na półce magazynu, na przykład). Jednak można uzyskać informacji na marki z obrazu za pomocą [oznaczyć wykrywania](concept-brand-detection.md) funkcji.
 
-## <a name="use-the-api"></a>Za pomocą interfejsu API
+## <a name="use-the-api"></a>Używanie interfejsu API
 
 Funkcja wykrywania obiektu jest częścią [analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Można wywołać tego interfejsu API za pomocą natywnego zestawu SDK lub wywołania REST. Obejmują `Objects` w **visualFeatures** parametr zapytania. Następnie, po otrzymaniu pełną odpowiedź JSON po prostu przeanalizować składni ciągu zawartości `"objects"` sekcji.
 

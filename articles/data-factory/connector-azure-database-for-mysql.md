@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 4c388f012cd52f0adea93ae62cc31832488fca74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387914"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Database for MySQL za pomocą usługi Azure Data Factory
@@ -110,7 +110,7 @@ Aby skopiować dane z usługi Azure Database for MySQL, należy ustawić właśc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **AzureMySqlTable** | Yes |
+| type | Właściwość typu elementu dataset musi być równa: **AzureMySqlTable** | Tak |
 | tableName | Nazwa tabeli w bazie danych MySQL. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -141,7 +141,7 @@ Aby skopiować dane z usługi Azure Database for MySQL, należy ustawić typ źr
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AzureMySqlSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AzureMySqlSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | queryCommandTimeout | Czas oczekiwania przed żądaniem zapytania upłynie limit czasu. Wartość domyślna to 120 minut (02: 00:00) | Nie |
 

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307904"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure dla Windows
@@ -70,10 +70,10 @@ Następujące dane JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej diag
 |   **Nazwa**   |**Wartość / przykład**|       **Opis**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Wersja interfejsu API.
-|Wydawcy|Microsoft.Azure.Performance.Diagnostics|Przestrzeń nazw wydawcy dla rozszerzenia.
+|publisher|Microsoft.Azure.Performance.Diagnostics|Przestrzeń nazw wydawcy dla rozszerzenia.
 |type|AzurePerformanceDiagnostics|Typ rozszerzenia maszyny Wirtualnej.
 |typeHandlerVersion|1.0|Wersja programu obsługi rozszerzenia.
-|performanceScenario|podstawowe|Scenariusz wydajności, do których chcesz przechwytywać dane. Prawidłowe wartości to: **podstawowe**, **vmslow**, **migracji**, i **niestandardowe**.
+|performanceScenario|Podstawowe|Scenariusz wydajności, do których chcesz przechwytywać dane. Prawidłowe wartości to: **podstawowe**, **vmslow**, **migracji**, i **niestandardowe**.
 |traceDurationInSeconds|300|Czas trwania ślady, jeśli wybrano dowolne spośród opcji śledzenia.
 |perfCounterTrace|p|Możliwość włączenia śledzenia licznika wydajności. Prawidłowe wartości to **p** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
 |networkTrace|n|Opcję, aby włączyć śledzenie sieci. Prawidłowe wartości to **n** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
@@ -109,11 +109,11 @@ Wykonaj te instrukcje, aby zainstalować rozszerzenie na maszynach wirtualnych W
     > [!NOTE]
     > Jest uruchamiane rozszerzenie podczas aprowizowania zakończyła się pomyślnie. W ciągu dwóch minut lub mniej, aby wykonać podstawowy scenariusz. W innych sytuacjach działa przez czas określony podczas instalacji.
 
-## <a name="remove-the-extension"></a>Usuwanie rozszerzenia
+## <a name="remove-the-extension"></a>Usuń rozszerzenie
 Aby usunąć rozszerzenie z maszyny wirtualnej, wykonaj następujące kroki:
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), wybierz maszynę wirtualną, z którego chcesz usunąć to rozszerzenie, a następnie wybierz **rozszerzenia** bloku. 
-2. Wybierz (**...** ) dla wpisu rozszerzenie diagnostyki wydajności z listy, a następnie wybierz pozycję **Odinstaluj**.
+2. Wybierz ( **...** ) dla wpisu rozszerzenie diagnostyki wydajności z listy, a następnie wybierz pozycję **Odinstaluj**.
 
     ![Zrzut ekranu rozszerzenia blok Odinstaluj wyróżniony](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
@@ -234,7 +234,7 @@ Narzędzie to program PerfInsights zbiera różne dzienniki, konfiguracji i dany
 
 ## <a name="view-and-share-the-results"></a>Wyświetlanie i udostępnianie wyników
 
-Dane wyjściowe z rozszerzenia można znaleźć w pliku zip, który przekazywane na konto magazynu określone podczas instalacji i udostępniane przez 30 dni, przy użyciu funkcji [dostępu sygnatury Współdzielonego](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Ten plik zip zawiera dzienniki diagnostyczne i raport o wyniki i zalecenia. Linku sygnatury dostępu Współdzielonego do pliku zip, dane wyjściowe można znaleźć w pliku tekstowym o nazwie *zipfilename*_saslink.txt w folderze **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<wersji >**. Każdy, kto posiada ten link jest w stanie pobrać plik zip.
+Dane wyjściowe z rozszerzenia można znaleźć w pliku zip, który przekazywane na konto magazynu określone podczas instalacji i udostępniane przez 30 dni, przy użyciu funkcji [dostępu sygnatury Współdzielonego](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Ten plik zip zawiera dzienniki diagnostyczne i raport o wyniki i zalecenia. Linku sygnatury dostępu Współdzielonego do pliku zip, dane wyjściowe można znaleźć w pliku tekstowym o nazwie *zipfilename*_saslink.txt w folderze **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<wersji >** . Każdy, kto posiada ten link jest w stanie pobrać plik zip.
 
 Aby ułatwić ze specjalistą pomocy technicznej nad biletu pomocy technicznej, firma Microsoft może używać tego linku sygnatury dostępu Współdzielonego można pobrać danych diagnostycznych.
 

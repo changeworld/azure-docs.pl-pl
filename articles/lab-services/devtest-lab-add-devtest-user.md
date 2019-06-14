@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311423"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Dodawanie właścicieli i użytkowników w usłudze Azure DevTest Labs
@@ -41,19 +41,19 @@ W poniższej tabeli przedstawiono akcje, które mogą być wykonywane przez uży
 | --- | --- | --- | --- |
 | **Zadania laboratorium** | | | |
 | Dodawanie użytkowników do laboratorium |Nie |Yes |Nie |
-| Aktualizowanie ustawień kosztów |Nie |Yes |Yes |
+| Aktualizowanie ustawień kosztów |Nie |Yes |Tak |
 | **Zadania podstawowej maszyny Wirtualnej** | | | |
-| Dodawanie i usuwanie niestandardowych obrazów |Nie |Yes |Yes |
-| Dodawanie, aktualizowanie i usuwanie formuły |Yes |Yes |Yes |
+| Dodawanie i usuwanie niestandardowych obrazów |Nie |Yes |Tak |
+| Dodawanie, aktualizowanie i usuwanie formuły |Yes |Yes |Tak |
 | Lista dozwolonych Azure Marketplace obrazów |Nie |Yes |Yes |
 | **Zadań maszyn wirtualnych** | | | |
-| Tworzenie maszyn wirtualnych |Yes |Yes |Yes |
+| Tworzenie maszyn wirtualnych |Yes |Yes |Tak |
 | Uruchamianie, zatrzymywanie i usuwanie maszyn wirtualnych |Tylko maszyny wirtualne utworzone przez użytkownika |Yes |Yes |
-| Zaktualizuj zasady maszyn wirtualnych |Nie |Yes |Yes |
-| Dodawanie/usuwanie dysków z danymi z maszyn wirtualnych |Tylko maszyny wirtualne utworzone przez użytkownika |Yes |Yes |
+| Zaktualizuj zasady maszyn wirtualnych |Nie |Yes |Tak |
+| Dodawanie/usuwanie dysków z danymi z maszyn wirtualnych |Tylko maszyny wirtualne utworzone przez użytkownika |Yes |Tak |
 | **Zadania artefaktu** | | | |
 | Dodawanie i usuwanie repozytoriów artefaktu |Nie |Yes |Yes |
-| Zastosuj artefaktów |Yes |Yes |Yes |
+| Zastosuj artefaktów |Yes |Yes |Tak |
 
 > [!NOTE]
 > Gdy użytkownik tworzy Maszynę wirtualną, ten użytkownik jest automatycznie przypisywana do **właściciela** roli utworzonej maszyny Wirtualnej.
@@ -131,7 +131,7 @@ Aby dodać właściciela do subskrypcji platformy Azure, wykonaj następujące k
 6. Na **wybierz rolę** bloku wybierz **właściciela**.
 7. Na **dodawania użytkowników** bloku, wprowadź adres e-mail lub nazwa użytkownika, które chcesz dodać jako właściciela. Jeśli użytkownik nie zostanie znaleziony, otrzymasz komunikat o błędzie wyjaśniający problem. Jeśli użytkownik zostanie znaleziony, ten użytkownik znajduje się w obszarze **użytkownika** pola tekstowego.
 8. Wybierz nazwę znajduje się użytkownik.
-9. Wybierz przycisk **Wybierz**.
+9. Wybierz **wybierz**.
 10. Wybierz **OK** zamknąć **Dodaj dostęp** bloku.
 11. Po powrocie do **użytkowników** bloku użytkownik został dodany jako właściciela. Ten użytkownik jest obecnie właścicielem dowolnego labs utworzonych w ramach tej subskrypcji, a ten sposób jest w stanie wykonywać zadania właściciela. 
 

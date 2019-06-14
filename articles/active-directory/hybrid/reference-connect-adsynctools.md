@@ -5,17 +5,16 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 10/19/2018
-ms.date: 03/15/2019
+ms.date: 10/19/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60454663"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncTools
@@ -23,10 +22,10 @@ Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Wyczyść mS-Ds-ConsistencyGuid użytkownika usługi AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Clear-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
@@ -70,10 +69,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Upewnij się, ADSyncToolsADModuleLoaded
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 {{Wypełnij streszczenie}}
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ADSyncToolsADModuleLoaded
@@ -93,10 +92,10 @@ PS C:\> {{ Add example code here }}
 
 ## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 {{Wypełnij streszczenie}}
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <String>] [[-UserName] <String>]
@@ -198,10 +197,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Eksportuj raport ConsistencyGuid
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipalName] <String>
@@ -291,10 +290,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 {{Wypełnij streszczenie}}
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
@@ -331,10 +330,10 @@ Accept wildcard characters: False
 
 ## <a name="get-adsynctoolsaduser"></a>Get-ADSyncToolsADuser
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Pobieranie użytkownika z usługi AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
@@ -378,10 +377,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Uzyskiwanie mS-Ds-ConsistencyGuid użytkownika usługi AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
@@ -425,10 +424,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Pobierz wartość ObjectGuid z użytkownika usługi AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsObjectGuid [-User] <Object> [<CommonParameters>]
@@ -472,10 +471,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Pobierz AAD Connect historii uruchamiania
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
@@ -519,10 +518,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zyskaj użytkowników z błędami SourceAnchor zmienione
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object> [<CommonParameters>]
@@ -585,10 +584,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 ImmutableID importowania z usługi AAD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFromRecycleBin]
@@ -649,10 +648,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 {{Wypełnij streszczenie}}
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] [<CommonParameters>]
@@ -708,10 +707,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Skrypt, aby usunąć wygasłe certyfikaty z atrybutu UserCertificate
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boolean>] [-ObjectClass] <String>
@@ -793,10 +792,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Krótki opis
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Repair-ADSyncToolsAutoUpgradeState
@@ -819,10 +818,10 @@ Another example of how to use this cmdlet
 
 ## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 {{Wypełnij streszczenie}}
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Resolve-ADSyncHostAddress [[-hostName] <String>]
@@ -859,10 +858,10 @@ Accept wildcard characters: False
 
 ## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 (ABY WYKONAĆ) Przywraca atrybutu AD UserCertificate z pliku certyfikatu
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Restore-ADSyncToolsExpiredCertificates
@@ -885,10 +884,10 @@ Another example of how to use this cmdlet
 
 ## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Nastavit mS-Ds-ConsistencyGuid użytkownika usługi AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncToolsConsistencyGuid [-User] <Object> [-Value] <Object> [<CommonParameters>]
@@ -947,10 +946,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 {{Wypełnij streszczenie}}
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
@@ -1002,10 +1001,10 @@ Accept wildcard characters: False
 
 ## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Tworzy plik śledzenia z i kroku importu usługi AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Trace-ADSyncToolsADImport [[-ADConnectorXML] <String>] [[-dc] <String>] [[-rootDN] <String>]
@@ -1126,10 +1125,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Krótki opis
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Trace-ADSyncToolsLdapQuery [-Context] <String> [-Server] <String> [-Port] <Int32> [-Filter] <String>
@@ -1219,10 +1218,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Aktualizuje użytkowników przy użyciu nowego ConsistencyGuid (ImmutableId)
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-ImmutableIdGUID] <String>
@@ -1340,5 +1339,3 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
-
-<!-- Update_Description: wording update -->

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243681"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start
@@ -83,7 +83,7 @@ Jeśli instalujesz program Azure AD Connect po raz pierwszy, wybierz opcję [nie
 
 Jeśli zainstalowano już Azure AD Connect przy użyciu [ekspresowa instalacja](how-to-connect-install-express.md) lub [instalacji niestandardowej](how-to-connect-install-custom.md) ścieżkę, wybierz opcję **zmiana użytkownika logowania** zadania w usłudze Azure AD Połącz, a następnie wybierz **dalej**. Następnie wybierz pozycję **uwierzytelniania przekazywanego** jako metodę logowania. Po pomyślnym zakończeniu agenta uwierzytelniania przekazywanego jest zainstalowany na tym samym serwerze co program Azure AD Connect, a ta funkcja jest włączona w dzierżawie.
 
-![Program Azure AD Connect: Zmień dane logowania użytkownika](./media/how-to-connect-pta-quick-start/changeusersignin.png)
+![Program Azure AD Connect: Zmiany logowania użytkownika](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
 >Uwierzytelnianie przekazywane jest funkcją poziomu dzierżawy. Włączanie logowania dla użytkowników w jej wpływa na _wszystkich_ domen zarządzanych w Twojej dzierżawie. Jeśli rozpoczynasz korzystanie z usługi Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego, należy poczekać co najmniej 12 godzin przed zamknięciem infrastruktury usług AD FS. Czas oczekiwania jest zapewnienie, że użytkownicy mogą zachować logowania się do programu Exchange ActiveSync podczas przejścia. Aby uzyskać więcej informacji na temat migracji z usług AD FS do uwierzytelniania przekazywanego, zapoznaj się z naszego planu wdrożenia są szczegółowo opublikowane [tutaj](https://aka.ms/adfstoptadpdownload).
@@ -140,7 +140,7 @@ Najpierw należy go interaktywnie, po prostu działa pobranego pliku wykonywalne
 Po drugie można tworzyć i uruchom skrypt instalacji nienadzorowanej wdrożenia. Jest to przydatne, jeśli chcesz od razu wdrażać wielu agentów uwierzytelniania lub zainstalować agentów uwierzytelniania na serwerach Windows, nie mają interfejsu użytkownika, włączone lub nie można uzyskać dostępu przy użyciu pulpitu zdalnego. Poniżej znajdują się instrukcje dotyczące sposobu używania tej metody:
 
 1. Uruchom następujące polecenie, aby zainstalować agenta uwierzytelniania: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Agent uwierzytelniania można zarejestrować za pomocą naszej usługi za pomocą programu Windows PowerShell. Utwórz obiekt poświadczeń PowerShell `$cred` zawierający nazwę i hasło użytkownika administratora globalnego dla dzierżawy. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>*:
+2. Agent uwierzytelniania można zarejestrować za pomocą naszej usługi za pomocą programu Windows PowerShell. Utwórz obiekt poświadczeń PowerShell `$cred` zawierający nazwę i hasło użytkownika administratora globalnego dla dzierżawy. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'

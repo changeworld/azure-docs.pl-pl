@@ -2,25 +2,25 @@
 title: Azure AD Connect — aktualizacja certyfikatu SSL dla farmy usług AD FS | Dokumentacja firmy Microsoft
 description: W tym dokumencie szczegółowe kroki, aby zaktualizować certyfikat SSL farmy usług AD FS przy użyciu usługi Azure AD Connect.
 services: active-directory
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
 ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 07/09/2018
-ms.date: 11/09/2018
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 07/09/2018
+ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
-ms.author: v-junlch
+ms.author: billmath
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60244681"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizacja certyfikatu SSL dla farmy usługi Active Directory Federation Services (AD FS)
@@ -38,8 +38,8 @@ Możesz wykonać całą operację aktualizacji certyfikatu SSL dla farmy usług 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Farma usług AD FS**: Upewnij się, że kolektyw serwerów usług AD FS systemu Windows Server 2012 R2 lub nowszym.
-- **Azure AD Connect**: Upewnij się, że wersja programu Azure AD Connect 1.1.553.0 lub nowszej. Użyjesz zadanie **aktualizacji usługi AD FS certyfikat**.
+* **Farma usług AD FS**: Upewnij się, że kolektyw serwerów usług AD FS systemu Windows Server 2012 R2 lub nowszym.
+* **Azure AD Connect**: Upewnij się, że wersja programu Azure AD Connect 1.1.553.0 lub nowszej. Użyjesz zadanie **aktualizacji usługi AD FS certyfikat**.
 
 ![Aktualizacja zadania protokołu SSL](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
@@ -85,23 +85,23 @@ Po zakończeniu konfigurowania, program Azure AD Connect wyświetla komunikat, k
 
 ## <a name="faqs"></a>Często zadawane pytania
 
-- **Co powinna być nazwa podmiotu certyfikatu dla nowego certyfikatu SSL usług AD FS?**
+* **Co powinna być nazwa podmiotu certyfikatu dla nowego certyfikatu SSL usług AD FS?**
 
     Program Azure AD Connect sprawdza, czy nazwa podmiotu nazwy/alternatywny podmiotu certyfikatu zawiera nazwa usługi federacyjnej. Na przykład jeśli nazwa usługi federacyjnej jest fs.contoso.com, nazwa podmiotu nazwy/alternatywny podmiotu musi być fs.contoso.com.  Symbol wieloznaczny certyfikatów również są akceptowane.
 
-- **Dlaczego pojawia się pytanie o poświadczenia ponownie na stronie serwer proxy aplikacji sieci Web?**
+* **Dlaczego pojawia się pytanie o poświadczenia ponownie na stronie serwer proxy aplikacji sieci Web?**
 
     Jeśli poświadczenia, których udzielasz do łączenia się z serwerami usług AD FS nie mają również uprawnienie do zarządzania serwerami proxy aplikacji sieci Web, program Azure AD Connect poprosi o podanie poświadczeń, które mają uprawnienia administracyjne na serwerach proxy aplikacji sieci Web.
 
-- **Serwer jest wyświetlany w trybie offline. Co zrobić?**
+* **Serwer jest wyświetlany w trybie offline. Co zrobić?**
 
     Program Azure AD Connect nie może wykonać żadnych operacji, jeśli serwer jest w trybie offline. Jeśli serwer jest częścią farmy usług AD FS, sprawdź łączność z serwerem. Po rozwiązaniu problemu, naciśnij ikonę odświeżenia, aby zaktualizować stan w kreatorze. Jeśli serwer był częścią farmy wcześniej, ale teraz już nie istnieje, kliknij przycisk **Usuń** go usunąć z listy serwerów ten program Azure AD Connect obsługuje. Usuwanie serwera z listy w programie Azure AD Connect nie powoduje zmian konfiguracji usług AD FS, sam. Jeśli używasz usług AD FS w systemie Windows Server 2016 lub nowszym, pozostaje serwera w ustawieniach konfiguracji i zostanie wyświetlony ponownie przy kolejnym uruchomieniu zadania.
 
-- **Czy mogę zaktualizować podzbiór serwerów w kolektywie serwerów przy użyciu nowego certyfikatu SSL?**
+* **Czy mogę zaktualizować podzbiór serwerów w kolektywie serwerów przy użyciu nowego certyfikatu SSL?**
 
     Tak. Będzie można uruchamiać zadania **Aktualizuj certyfikat SSL** ponownie, aby zaktualizować pozostałe serwery. Na **zostanie przeprowadzona aktualizacja certyfikatu Wybierz serwery do obsługi protokołu SSL** strony, można sortować listę serwerów na **Data ważności protokołu SSL** aby łatwo uzyskiwać dostęp do serwerów, które nie są jeszcze zaktualizowane.
 
-- **Po usunięciu serwera w poprzednim przebiegu, ale jej jest nadal są wyświetlane w trybie offline i wymienione na stronie serwery usług AD FS. Dlaczego jest w trybie offline serwer nadal istnieje, mimo on usunięty?**
+* **Po usunięciu serwera w poprzednim przebiegu, ale jej jest nadal są wyświetlane w trybie offline i wymienione na stronie serwery usług AD FS. Dlaczego jest w trybie offline serwer nadal istnieje, mimo on usunięty?**
 
     Usuwanie serwera z listy w programie Azure AD Connect nie powoduje usunięcia w konfiguracji usług AD FS. Program Azure AD Connect odwołuje się do żadnych informacji o farmie AD FS (Windows Server 2016 lub nowszy). Jeśli serwer jest nadal obecny w konfiguracji usług AD FS, będzie ono wyświetlane wstecz na liście.  
 

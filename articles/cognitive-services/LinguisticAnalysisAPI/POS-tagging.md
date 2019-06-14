@@ -11,10 +11,10 @@ ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394493"
 ---
 # <a name="part-of-speech-tagging"></a>Tagowanie części mowy
@@ -37,11 +37,11 @@ Należą do kategorii, takich jak *rzeczownik* (zazwyczaj reprezentujący osób,
 | '' | zamykającego znaku cudzysłowu | ' '' |
 | ( | Nawias otwierający | ( [ { |
 | ) | Nawias zamykający | ) ] } |
-| ,  | Przecinkami | ,  |
+| , | Przecinkami | , |
 | -- | kreska | -- |
 | . | terminator zdania | . ! ? |
 | : | dwukropek lub wielokropka | : ; ... |
-| DW | razem i koordynowania działań | a, ale lub jeszcze|
+| CC | razem i koordynowania działań | a, ale lub jeszcze|
 | CD | cyfry kardynalną | dziewięć 1980 20 96 " |
 | DT | determiner |wszystkie zarówno żadnego z tych celów|
 | EX | egzystencjalna miejsca | istnieje |
@@ -56,7 +56,7 @@ Należą do kategorii, takich jak *rzeczownik* (zazwyczaj reprezentujący osób,
 | NNP | rzeczownik, odpowiednie, liczbę pojedynczą | Kennedy Roosevelt Chicago Weehauken |
 | NNPS | rzeczownik, odpowiednie, w liczbie mnogiej | Krzewów Springfields |
 | NNS | rzeczownik, wspólnego, w liczbie mnogiej | elementy myszy pola |
-| (czas pacyficzny) | pre-determiner | wszystkie zarówno połowie wiele dość takich się, że to |
+| PDT | pre-determiner | wszystkie zarówno połowie wiele dość takich się, że to |
 | POS | genitive znacznika | "w |
 | PRP | zrozumieć osobistych | ona on ją I będziemy ich możesz |
 | PRP$ | zrozumieć dzierżawczego | Przekształca jego jego Moje naszych ich usługi |
@@ -65,7 +65,7 @@ Należą do kategorii, takich jak *rzeczownik* (zazwyczaj reprezentujący osób,
 | RBS | Parametr superlative | najlepsze największych bluntest Najwcześniejsza położony pierwszy najdalszego najtrudniejsze heartiest najwyższy największych najmniej mniej większość najbliższym najgorszy drugi najbardziej restrykcyjne metody |
 | JEDNOSTKI UZALEŻNIONEJ | Cząstka | Wyłącz na górę się o |
 | SYM | symbol | % & |
-| DO | "do" jako znacznik preposition lub infinitive | na |
+| ABY | "do" jako znacznik preposition lub infinitive | na |
 | NIESTETY | interjection | Niestety hura howdy hello |
 | VB | zlecenie, formularza podstawowego | Nadaj bieżąco Przypisz |
 | VBD | zlecenie, przeszłym | udostępniła przypisane poleciał |

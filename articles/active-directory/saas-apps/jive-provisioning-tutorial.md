@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60263374"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Jive dla automatycznej aprowizacji użytkowników
@@ -68,7 +68,7 @@ W ramach tej procedury wymagane jest zapewnienie tokenu zabezpieczeń użytkowni
 
 1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
 
-    ![aprowizowanie](./media/jive-provisioning-tutorial/provisioning.png)
+    ![Inicjowanie obsługi administracyjnej](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. W obszarze **poświadczeń administratora** sekcji, skonfiguruj następujące ustawienia konfiguracji:
    

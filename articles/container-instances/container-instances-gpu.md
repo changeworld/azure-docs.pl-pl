@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60583831"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów, które używają zasobów procesora GPU
@@ -45,7 +45,7 @@ Aby użyć procesorach GPU znajdujących się w wystąpieniu kontenera, określ 
 * **Liczba** -liczba procesorów GPU: **1**, **2**, lub **4**.
 * **Jednostka SKU** -jednostki SKU procesora GPU: **K80**, **P100**, lub **V100**. Każda jednostka SKU mapuje GPU NVIDIA Tesla w jednym następujących rodzin maszyn wirtualnych z obsługą procesorów GPU platformy Azure:
 
-  | SKU | Rodzina maszyn wirtualnych |
+  | SKU | Rodziny maszyn wirtualnych |
   | --- | --- |
   | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |

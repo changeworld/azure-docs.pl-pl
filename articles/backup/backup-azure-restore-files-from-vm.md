@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
 ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240057"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
@@ -93,7 +93,7 @@ Podczas uruchamiania pliku wykonywalnego systemu operacyjnego na komputerze inst
 
    ![Menu odzyskiwania plików](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-#### <a name="for-linux"></a>W przypadku systemu Linux
+#### <a name="for-linux"></a>For Linux
 
 W systemie Linux woluminy punktu odzyskiwania są instalowane w folderze, w którym skrypt jest uruchamiany. W związku z tym są wyświetlane dołączonych dysków, woluminów i odpowiadające im ścieżki instalacji. Zainstaluj te ścieżki są widoczne dla użytkowników mających dostęp na poziomie głównym. Przeglądaj woluminy wymienionych w danych wyjściowych skryptu.
 
@@ -213,11 +213,11 @@ W systemie Linux systemu operacyjnego komputera służące do przywrócenia plik
 
 Skrypt wymaga również składników języka Python i bash wykonanie i bezpieczne łączenie się z punktu odzyskiwania.
 
-|Składnik | Wersja  |
+|Składnik | Version  |
 | --------------- | ---- |
 | Bash | 4 i nowsze wersje |
 | python | 2.6.6 i nowsze wersje  |
-| Protokół TLS | 1.2 powinna być obsługiwana.  |
+| TLS | 1.2 powinna być obsługiwana.  |
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60605704"
 ---
 # <a name="use-case---product-recommendations"></a>Przypadek użycia — rekomendacje produktów
@@ -39,7 +39,7 @@ Trzeci musi być natychmiast wynajmowania użytkownikowi, aby zapewnić bezprobl
 
 Na koniec sprzedawcy detaliczni, muszą Zmierz efektywność swojego podejścia, śledząc ogólną dodatkowej i wiązanej sukcesów sprzedaży kliknij do konwersji i dostosowują się do ich zaleceń na przyszłość.
 
-## <a name="solution-overview"></a>Przegląd rozwiązania
+## <a name="solution-overview"></a>Omówienie rozwiązania
 Ten przypadek użycia przykład został rozwiązany i implementowany przez użytkowników rzeczywiste platformy Azure przy użyciu usługi Azure Data Factory i innymi usługami składników pakietu Cortana Intelligence, w tym [HDInsight](https://azure.microsoft.com/services/hdinsight/) i [usługi Power BI](https://powerbi.microsoft.com/).
 
 Sprzedawca online korzysta z magazynu obiektów Blob platformy Azure, programu SQL server w środowisku lokalnym, bazy danych SQL Azure i składnicy danych relacyjnych jako opcje przechowywania ich danych w całym przepływie pracy.  Magazyn obiektów blob zawiera informacje o klientach, dane zachowanie klienta i danych informacji o produkcie. Danych informacji produktu obejmuje informacje o produkcie marki i produktu przechowywane lokalnie w usłudze SQL data warehouse w katalogu. 

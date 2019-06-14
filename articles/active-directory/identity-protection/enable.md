@@ -18,19 +18,19 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d33c5c3fe970ee8e5d70e0ba358462d5bdf2bbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295113"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Włączanie usługi Azure Active Directory Identity Protection
 
-Usługa Azure Active Directory Identity Protection to funkcja usługi Azure Active Directory (Azure AD). Usługa Azure AD Identity Protection umożliwia:
+Usługa Azure Active Directory Identity Protection to funkcja usługi Azure Active Directory (Azure AD). Za pomocą usługi Azure AD Identity Protection możliwe jest:
 
-- uzyskanie skonsolidowanego widoku oflagowanych użytkowników i zdarzeń o podwyższonym ryzyku wykrytych za pomocą algorytmów usługi Machine Learning
-- ustawienie zasad dostępu warunkowego opartych na ryzykach w celu automatycznego chronienia użytkowników
-- polepszenie stanu bezpieczeństwa przez wykonywanie akcji na podstawie luk w zabezpieczeniach 
+- Uzyskanie skonsolidowanego widoku oflagowanych użytkowników i zdarzenia o podwyższonym ryzyku wykrywane przy użyciu algorytmów uczenia maszynowego
+- Zestaw opartych na ryzykach zasady dostępu warunkowego w celu automatycznego chronienia użytkowników
+- Polepszenie stanu bezpieczeństwa przez wykonywanie akcji na luki w zabezpieczeniach 
 
 Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

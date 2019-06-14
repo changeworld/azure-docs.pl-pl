@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
 ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60447238"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Tworzenie przepływów pracy opartych na zdarzenia lub akcje przy użyciu elementów webhook i usługi Azure Logic Apps
@@ -91,18 +91,18 @@ Poniżej przedstawiono więcej informacji o wyzwalacze i akcje obsługuje tego e
 #### <a name="http-webhook"></a>HTTP Webhook
 
 Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać adresu URL wyzwolenie aplikacji logiki zgodnie z potrzebami.
-* Oznacza, że wymagane pole.
+\* Oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
 | Subskrybuj metoda * |method |Metoda HTTP do użycia podczas żądania subskrypcji |
-| Subskrybuj URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania subskrypcji |
+| Subskrybuj URI * |Identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania subskrypcji |
 | Anulowanie subskrypcji — metoda * |method |Metoda HTTP do użycia podczas żądania anulowania |
-| Anulowanie subskrypcji identyfikatora URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
-| Subskrybuj treści |treść |Treść żądania HTTP dla subskrypcji |
+| Anulowanie subskrypcji identyfikatora URI * |Identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
+| Subskrybuj treści |Treść |Treść żądania HTTP dla subskrypcji |
 | Subskrybuj nagłówki |Nagłówki |Nagłówki żądania HTTP dla subskrypcji |
 | Subskrybuj uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia dla subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
-| Anulowanie subskrypcji treści |treść |Treść żądania HTTP do anulowania subskrypcji |
+| Anulowanie subskrypcji treści |Treść |Treść żądania HTTP do anulowania subskrypcji |
 | Anulowanie subskrypcji nagłówki |Nagłówki |Nagłówki żądania HTTP do anulowania subskrypcji |
 | Anulowanie subskrypcji uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP na potrzeby anulowania subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
 
@@ -114,7 +114,7 @@ Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać 
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki żądania elementu Webhook |
 | Treść |obiekt |Obiekt żądania elementu Webhook |
-| Kod stanu |int |Kod stanu żądania elementu Webhook |
+| Kod stanu: |int |Kod stanu żądania elementu Webhook |
 
 ## <a name="webhook-actions"></a>Akcje elementu Webhook
 
@@ -127,18 +127,18 @@ Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać 
 #### <a name="http-webhook"></a>HTTP Webhook
 
 Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać adres URL, aby wznowić krok przepływu pracy, zgodnie z potrzebami.
-* Oznacza, że wymagane pole.
+\* Oznacza, że wymagane pole.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
 | Subskrybuj metoda * |method |Metoda HTTP do użycia podczas żądania subskrypcji |
-| Subskrybuj URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania subskrypcji |
+| Subskrybuj URI * |Identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania subskrypcji |
 | Anulowanie subskrypcji — metoda * |method |Metoda HTTP do użycia podczas żądania anulowania |
-| Anulowanie subskrypcji identyfikatora URI * |identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
-| Subskrybuj treści |treść |Treść żądania HTTP dla subskrypcji |
+| Anulowanie subskrypcji identyfikatora URI * |Identyfikator URI |Identyfikator URI protokołu HTTP do użycia dla żądania anulowania |
+| Subskrybuj treści |Treść |Treść żądania HTTP dla subskrypcji |
 | Subskrybuj nagłówki |Nagłówki |Nagłówki żądania HTTP dla subskrypcji |
 | Subskrybuj uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP do użycia dla subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
-| Anulowanie subskrypcji treści |treść |Treść żądania HTTP do anulowania subskrypcji |
+| Anulowanie subskrypcji treści |Treść |Treść żądania HTTP do anulowania subskrypcji |
 | Anulowanie subskrypcji nagłówki |Nagłówki |Nagłówki żądania HTTP do anulowania subskrypcji |
 | Anulowanie subskrypcji uwierzytelniania |uwierzytelnianie |Uwierzytelnianie HTTP na potrzeby anulowania subskrypcji. [Zobacz łącznik protokołu HTTP](connectors-native-http.md#authentication) Aby uzyskać szczegółowe informacje |
 
@@ -150,7 +150,7 @@ Subskrybuj adres URL wywołania zwrotnego z usługą, który można wywoływać 
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki żądania elementu Webhook |
 | Treść |obiekt |Obiekt żądania elementu Webhook |
-| Kod stanu |int |Kod stanu żądania elementu Webhook |
+| Kod stanu: |int |Kod stanu żądania elementu Webhook |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

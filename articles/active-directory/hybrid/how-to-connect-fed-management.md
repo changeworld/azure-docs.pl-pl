@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353792"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowywanie Active Directory Federation Services przy użyciu usługi Azure AD Connect
@@ -172,7 +172,7 @@ To proste dodać domenę do sfederowania z usługą Azure AD za pomocą usługi 
 
 4. Na następnej stronie kreatora zawiera listę domen usługi Azure AD, które może tworzyć federacje z katalogu lokalnego. Wybierz domenę z listy.
 
-   ![Domena usługi Azure AD](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
     Po wybraniu domeny, Kreator udostępnia odpowiednie informacje na temat dalszych działań, przyjmujące kreatora i wpływu na konfigurację. W niektórych przypadkach po wybraniu domeny, która nie jest jeszcze zweryfikowane w usłudze Azure AD, Kreator przedstawiono informacje ułatwiające weryfikowanie domeny. Zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory-domains-add-azure-portal.md) Aby uzyskać więcej informacji.
 

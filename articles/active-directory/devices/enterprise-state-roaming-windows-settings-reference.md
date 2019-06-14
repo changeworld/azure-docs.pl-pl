@@ -18,10 +18,10 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353263"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
@@ -30,12 +30,12 @@ Oto Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub 
 ## <a name="devices-and-endpoints"></a>Urządzenia i punktów końcowych
 Poniższej tabeli przedstawiono podsumowanie urządzeń i typy kont, które są obsługiwane przez sync, kopia zapasowa i przywracanie struktura w systemie Windows 10.
 
-| Typ konta i operacji | Klasyczna | Komórkowy |
+| Typ konta i operacji | Pulpitu | Urządzenia przenośne |
 | --- | --- | --- |
-| Usługa Azure Active Directory: synchronizacja |Yes |Nie |
+| Usługa Azure Active Directory: synchronizacja |Tak |Nie |
 | Usługi Azure Active Directory: przywracania kopii zapasowej |Nie |Nie |
-| Konto Microsoft: synchronizacja |Yes |Yes |
-| Konto Microsoft: / przywracania kopii zapasowej |Nie |Yes |
+| Konto Microsoft: synchronizacja |Tak |Tak |
+| Konto Microsoft: / przywracania kopii zapasowej |Nie |Tak |
 
 ## <a name="what-is-backup"></a>Co to jest tworzenia kopii zapasowej?
 Ustawienia Windows ogólnie synchronizacji domyślnie, ale niektóre ustawienia są tylko kopii zapasowej, takie jak lista zainstalowanych aplikacji na urządzeniu. Kopia zapasowa jest dla urządzeń przenośnych tylko i obecnie nie są dostępne dla użytkowników, Roaming stanu dla przedsiębiorstw. Kopia zapasowa używa konta Microsoft i przechowuje ustawienia i dane aplikacji do usługi OneDrive. W przypadku wyłączenia przez użytkownika synchronizacji na urządzeniu, korzystając z aplikacji ustawienia danych aplikacji, które normalnie synchronizuje staje się kopii zapasowej tylko. Dane kopii zapasowej jest możliwy tylko za pośrednictwem operacji przywracania podczas pierwszego uruchomienia nowego urządzenia. Kopie zapasowe można wyłączyć za pomocą ustawień urządzenia i i można z niego usunięte za pomocą konta usługi OneDrive.
@@ -67,7 +67,7 @@ W poniższej tabeli, pozostałe wpisy w kolumnie grupa ustawień odwołuje się 
 Wewnętrzny wpisy w kolumnie ustawień grupy dotyczą ustawienia i aplikacje, które można wyłączyć tylko synchronizowanie w samej aplikacji lub przez wyłączenie synchronizacji dla całego urządzenia przy użyciu zarządzania urządzeniami przenośnymi (MDM) lub ustawień zasad grupy.
 Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć do grupy.
 
-| Ustawienia | Klasyczna | Komórkowy | Grupa |
+| Ustawienia | Pulpitu | Urządzenia przenośne | Grupa |
 | --- | --- | --- | --- |
 | **Konta**: obraz konta |Synchronizacja |X |Motyw |
 | **Konta**: inne ustawienia konta |X |X | |
@@ -145,25 +145,25 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Język**: sprawdzanie pisowni - Autokorekty i podświetl błędy pisowni. |Synchronizacja |kopia zapasowa |Język |
 | **Język**: Lista klawiatury |Synchronizacja |kopia zapasowa |Język |
 | **Blokuj ekran**: wszystkie blokady ekranu |X |X | |
-| **Program Lupa**: Włączanie/wyłączanie (Przełącz główny) |X |X |Ułatwienia dostępu |
-| **Program Lupa**: Włącz odwracanie kolorów lub Wyłącz (funkcja domyślnie wyłączona) |Synchronizacja |X |Ułatwienia dostępu |
-| **Program Lupa**: śledzenie - postępuj zgodnie z fokus klawiatury |Synchronizacja |X |Ułatwienia dostępu |
-| **Program Lupa**: śledzenie - postępuj zgodnie z kursora myszy |Synchronizacja |X |Ułatwienia dostępu |
-| **Program Lupa**: uruchomić, gdy użytkownicy logują się (funkcja domyślnie wyłączona) |Synchronizacja |X |Ułatwienia dostępu |
+| **Program Lupa**: Włączanie/wyłączanie (Przełącz główny) |X |X |łatwość dostępu |
+| **Program Lupa**: Włącz odwracanie kolorów lub Wyłącz (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
+| **Program Lupa**: śledzenie - postępuj zgodnie z fokus klawiatury |Synchronizacja |X |łatwość dostępu |
+| **Program Lupa**: śledzenie - postępuj zgodnie z kursora myszy |Synchronizacja |X |łatwość dostępu |
+| **Program Lupa**: uruchomić, gdy użytkownicy logują się (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
 | **Mysz**: zmiana rozmiaru kursora myszy |Synchronizacja |X |inne |
 | **Mysz**: Zmień kolor kursora myszy |Synchronizacja |X |inne |
 | **Mysz**: wszystkie inne ustawienia |X |X | |
-| **Narrator**: Szybkie uruchamianie |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: użytkownicy mogą zmieniać Narrator wypowiedzi pomysłu |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: użytkownicy mogą włączyć lub wyłączyć Narrator odczytywanie wskazówek dotyczących wspólne elementy (na domyślnie) |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: użytkownicy mogą włączyć lub wyłączyć tego, czy ich usłyszeć wpisane znaki (w domyślnym) |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: użytkownicy mogą włączyć lub wyłączyć tego, czy ich usłyszeć słowa wpisane (na domyślnie) |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: mają wstawiania kursora po Narrator (na domyślnie) |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: Włącz visual wyróżnienie kursora Narrator (na domyślnie) |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: odtwarzanie dźwięku podpowiedzi (na domyślnie) |Synchronizacja |X |Ułatwienia dostępu |
-| **Narrator**: Uaktywnij klawisze klawiatury dotykowej, gdy przenoszenie palca (funkcja domyślnie wyłączona) |Synchronizacja |X |Ułatwienia dostępu |
-| **Łatwość dostępu**: Ustaw grubość migający kursor |Synchronizacja |X |Ułatwienia dostępu |
-| **Łatwość dostępu**: Aby usunąć obrazy tła (funkcja domyślnie wyłączona) |Synchronizacja |X |Ułatwienia dostępu |
+| **Narrator**: Szybkie uruchamianie |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: użytkownicy mogą zmieniać Narrator wypowiedzi pomysłu |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: użytkownicy mogą włączyć lub wyłączyć Narrator odczytywanie wskazówek dotyczących wspólne elementy (na domyślnie) |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: użytkownicy mogą włączyć lub wyłączyć tego, czy ich usłyszeć wpisane znaki (w domyślnym) |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: użytkownicy mogą włączyć lub wyłączyć tego, czy ich usłyszeć słowa wpisane (na domyślnie) |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: mają wstawiania kursora po Narrator (na domyślnie) |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: Włącz visual wyróżnienie kursora Narrator (na domyślnie) |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: odtwarzanie dźwięku podpowiedzi (na domyślnie) |Synchronizacja |X |łatwość dostępu |
+| **Narrator**: Uaktywnij klawisze klawiatury dotykowej, gdy przenoszenie palca (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
+| **Łatwość dostępu**: Ustaw grubość migający kursor |Synchronizacja |X |łatwość dostępu |
+| **Łatwość dostępu**: Aby usunąć obrazy tła (funkcja domyślnie wyłączona) |Synchronizacja |X |łatwość dostępu |
 | **Zasilania i uśpienia**: wszystkie ustawienia |X |X | |
 | **Rozpocznij personalizacji ekranu**: akcent kolorów (tylko phone) |X |Synchronizacja |Motyw |
 | **Wpisywanie**: słownika |Synchronizacja |kopia zapasowa |Język |

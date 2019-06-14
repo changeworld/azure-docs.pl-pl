@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391365"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Utwórz maszynę wirtualną systemu Linux, która korzysta z uwierzytelniania SSH przy użyciu interfejsu API REST
@@ -54,8 +54,8 @@ Wymagane są następujące nagłówki:
 
 | Nagłówek żądania   | Opis |
 |------------------|-----------------|
-| *Typ zawartości:*  | Wymagany. Ustaw `application/json`. |
-| *Autoryzacja:* | Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Wymagany. Ustaw `application/json`. |
+| *Authorization:* | Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Aby uzyskać ogólne informacje na temat pracy z żądań interfejsu API REST, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -133,14 +133,14 @@ Aby uzyskać pełną listę dostępnych definicji w treści żądania, zobacz [m
 
 Można użyć klienta z preferencjami do wysłania tego żądania HTTP. Można także użyć [narzędzia w przeglądarce](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) , klikając **wypróbuj** przycisku.
 
-### <a name="responses"></a>Odpowiedzi
+### <a name="responses"></a>Responses
 
 Istnieją dwa pomyślne odpowiedzi dla operacji, które można utworzyć lub zaktualizować maszyny wirtualnej:
 
 | Name (Nazwa)        | Typ                                                                              | Opis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzone     |
+| 201 utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzono     |
 
 Skrócone *201 utworzono* odpowiedź z treści żądania przykład poprzedniej, która umożliwia utworzenie maszyny Wirtualnej wskazuje *vmId* przypisano i *provisioningState* jest *Tworzenie*:
 

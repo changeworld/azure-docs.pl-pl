@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296457"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Usługa Azure AD Connect użytkownika opcje logowania
@@ -128,7 +128,7 @@ Strony logowania usługi Azure AD wymieniono sufiksy nazw UPN, które są zdefin
 
 | Stan | Opis | Wymagana akcja |
 |:--- |:--- |:--- |
-| Zweryfikowano |Program Azure AD Connect znalezione dopasowania zweryfikowane domeny w usłudze Azure AD. Wszyscy użytkownicy w tej domenie może Zaloguj się przy użyciu ich poświadczeń lokalnych. |Żadna akcja nie jest wymagana. |
+| Zweryfikowano |Program Azure AD Connect znalezione dopasowania zweryfikowane domeny w usłudze Azure AD. Wszyscy użytkownicy w tej domenie może Zaloguj się przy użyciu ich poświadczeń lokalnych. |Jest wymagana żadna akcja. |
 | Nie zweryfikowano |Program Azure AD Connect można odnaleźć pasującego domeny niestandardowej w usłudze Azure AD, ale nie jest on weryfikowany. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. dodany sufiks onmicrosoft.com po synchronizacji, jeśli domena nie jest zweryfikowana. | [Weryfikowanie domeny niestandardowej w usłudze Azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nie dodano |Program Azure AD Connect nie znalazł domeny niestandardowej, która odpowiadał sufiks głównej nazwy użytkownika. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. Jeśli domena nie jest dodana i zweryfikowane w usłudze Azure dodany sufiks onmicrosoft.com. | [Dodanie i zweryfikowanie domeny niestandardowej, która odpowiada sufiks głównej nazwy użytkownika.](../fundamentals/add-custom-domain.md) |
 
@@ -175,7 +175,7 @@ W przypadku wybrania opcji logowania użytkownika **Federacja z usługami AD FS*
 ## <a name="changing-the-user-sign-in-method"></a>Zmiana metody logowania użytkownika
 Możesz zmienić metodę logowania użytkownika z Federacji, synchronizacji skrótów haseł lub uwierzytelniania przekazywanego, przy użyciu zadań, które są dostępne w programie Azure AD Connect po początkowej konfiguracji programu Azure AD Connect za pomocą kreatora. Uruchom ponownie kreatora Azure AD Connect, a zobaczysz listę zadań, które mogą wykonywać. Wybierz **zmiana użytkownika logowania** z listy zadań.
 
-![Zmień dane logowania użytkownika](./media/plan-connect-user-signin/changeusersignin.png)
+![Zmiany logowania użytkownika](./media/plan-connect-user-signin/changeusersignin.png)
 
 Na następnej stronie pojawi się prośba o podanie poświadczeń dla usługi Azure AD.
 

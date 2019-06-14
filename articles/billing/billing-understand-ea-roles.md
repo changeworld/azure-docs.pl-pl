@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
 ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370717"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Omówienie usługi Azure Enterprise Agreement ról administracyjnych na platformie Azure
 
 Ułatwiające zarządzanie organizacji użycia i wydatków Azure klienci z Enterprise Agreement (EA) można przypisać pięć różnych ról administracyjnych:
 
-- Administrator przedsiębiorstwa
+- Enterprise Administrator
 - Administrator przedsiębiorstwa (tylko odczyt)
 - Administrator działu
 - Administrator działu (tylko odczyt)
@@ -38,7 +38,7 @@ Poniższe sekcje opisują, ograniczenia i możliwości poszczególnych ról.
 
 |Rola| Limit użytkowników|
 |---|---|
-|Administrator przedsiębiorstwa|Nieograniczona liczba|
+|Enterprise Administrator|Nieograniczona liczba|
 |Administrator przedsiębiorstwa (tylko odczyt)|Nieograniczona liczba|
 |Administrator działu|Nieograniczona liczba|
 |Administrator działu (tylko odczyt)|Nieograniczona liczba|
@@ -48,7 +48,7 @@ Poniższe sekcje opisują, ograniczenia i możliwości poszczególnych ról.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Struktura organizacyjna i uprawnień według roli
 
-|Zadania| Administrator przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt)|Właściciel konta|
+|Zadania| Enterprise Administrator|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt)|Właściciel konta|
 |---|---|---|---|---|---|
 |Wyświetl administratorów przedsiębiorstwa|✔|✔|✘|✘|✘|
 |Dodaj lub usuń administratorów przedsiębiorstwa|✔|✘|✘|✘|✘|
@@ -67,7 +67,7 @@ Poniższe sekcje opisują, ograniczenia i możliwości poszczególnych ról.
 
 ## <a name="usage-and-costs-access-by-role"></a>Użycie i koszty dostępu według roli
 
-|Zadania| Administrator przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt) |Właściciel konta|
+|Zadania| Enterprise Administrator|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt) |Właściciel konta|
 |---|---|---|---|---|---|
 |Saldo środków widoku, łącznie z zobowiązania pieniężnego|✔|✔|✘|✘|✘|
 |Limity przydziału wydatków działu widoku|✔|✔|✘|✘|✘|
@@ -95,8 +95,8 @@ W poniższej tabeli przedstawiono relację między ról administratora umowy Ent
 |---|---|---|---|
 |Właściciel konta lub administratora działu|✔ Enabled|Właściciel|Cennik usługi organizacji EA|
 |Właściciel konta lub administratora działu|✘ Wyłączone|Właściciel|Ceny detalicznej|
-|Właściciel konta lub administratora działu|✔ Enabled |brak|Nie ceny|
-|Właściciel konta lub administratora działu|✘ Wyłączone |brak|Nie ceny|
+|Właściciel konta lub administratora działu|✔ Enabled |Brak|Nie ceny|
+|Właściciel konta lub administratora działu|✘ Wyłączone |Brak|Nie ceny|
 |Brak|Nie dotyczy |Właściciel|Ceny detalicznej|
 
 Ustaw rolę administratora przedsiębiorstwa i wyświetlanie opłat zasady w witrynie Enterprise portal. Rola RBAC, może zostać zaktualizowana w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md).

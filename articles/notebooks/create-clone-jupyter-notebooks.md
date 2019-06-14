@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237515"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
@@ -78,10 +78,10 @@ Następujące słowa zastrzeżone nie może pełnić samodzielnie identyfikator�
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| informacje | account | Administracja | api | blog | klasy |
+| — informacje | account | Administracja | api | blog | klasy |
 | content | pulpit nawigacyjny | Zapoznaj się z | faq | pomoc | html |
-| strona główna | Import | Biblioteka | zarządzanie | nowe | notebook |
-| Notesów | pdf | wersja zapoznawcza | cennik | profil | szukaj |
+| Strona główna | Import | Biblioteka | zarządzanie | nowe | notebook |
+| Notesów | pdf | wersja zapoznawcza | cennik | Profil | search |
 | status | pomoc techniczna | test | | | |
 
 Jeśli spróbujesz użyć jednej z tych słów jako identyfikator projektu **Utwórz nowy projekt** i **ustawienia projektu** wskazują okna podręczne, "Identyfikator biblioteki jest zastrzeżony identyfikatora."
@@ -120,7 +120,7 @@ Klonowanie projektu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
+- [Eksploruj przykładowe notesów](azure-notebooks-samples.md)
 - [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
 - [Instrukcje: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
 - [Instrukcje: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)

@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 60f2edf0adbfd740ce552449125ae69ab50a8586
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051086"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych Azure SQL Database
 
@@ -87,7 +87,7 @@ W środowisku SMSS połącz się z serwerem usługi Azure SQL Database.
 
 5. Aby wyświetlić obiekty bazy danych, rozwiń listę **Bazy danych**, a następnie rozwiń węzeł **mojaPrzykladowaBazaDanych**.
 
-   ![wyświetlanie obiektów bazy danych](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase obiektów](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Zapytania o dane
 
@@ -106,7 +106,7 @@ Uruchom następujący kod z instrukcją [SELECT](https://msdn.microsoft.com/libr
 
 3. Na pasku narzędzi wybierz pozycję **Wykonaj**, aby pobrać dane z tabel `Product` i `ProductCategory`.
 
-    ![zapytanie do pobierania danych z dwóch tabel](./media/sql-database-connect-query-ssms/query2.png)
+    ![Pobieranie danych z tabeli produktu i ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Wstawianie danych
 
@@ -133,7 +133,7 @@ Uruchom następujący kod z instrukcją [INSERT](https://msdn.microsoft.com/libr
            ,GETDATE() );
    ```
 
-2. Wybierz polecenie **Wykonaj**, aby wstawić nowy wiersz do tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
+2. Wybierz polecenie **Wykonaj**, aby wstawić nowy wiersz do tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)** .
 
 ## <a name="view-the-result"></a>Wyświetlanie wyniku
 
@@ -146,7 +146,7 @@ Uruchom następujący kod z instrukcją [INSERT](https://msdn.microsoft.com/libr
 
 2. Wybierz pozycję **Wykonaj**. Zostanie wyświetlone następujące wyniki.
 
-   ![wynik](./media/sql-database-connect-query-ssms/result.png)
+   ![wynik zapytania tabeli produktu](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Aktualizowanie danych
 
@@ -160,7 +160,7 @@ Uruchom to [aktualizacji](https://msdn.microsoft.com/library/ms177523.aspx) kod 
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wybierz polecenie **Wykonaj**, aby zaktualizować określony wiersz w tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
+2. Wybierz polecenie **Wykonaj**, aby zaktualizować określony wiersz w tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)** .
 
 ## <a name="delete-data"></a>Usuwanie danych
 
@@ -173,7 +173,7 @@ Uruchom następujący kod z instrukcją [DELETE](https://msdn.microsoft.com/libr
    WHERE Name = 'myNewProduct';
    ```
 
-2. Wybierz polecenie **Wykonaj**, aby usunąć określony wiersz z tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
+2. Wybierz polecenie **Wykonaj**, aby usunąć określony wiersz z tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)** .
 
 ## <a name="next-steps"></a>Kolejne kroki
 

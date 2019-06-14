@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611334"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania technologii Pig w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Działania przekształcania"]
 > * [Działanie technologii hive](data-factory-hive-activity.md) 
 > * [Działania technologii pig](data-factory-pig-activity.md)
 > * [Działania technologii MapReduce](data-factory-map-reduce.md)
@@ -92,7 +92,7 @@ Działanie HDInsight Pig w usłudze Data Factory [potoku](data-factory-create-pi
 | outputs |Co najmniej jeden dane wyjściowe, generowane przez działanie technologii Pig |Yes |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
 | script |Określ wbudowany skrypt Pig |Nie |
-| Ścieżka skryptu |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
+| script path |Store skrypt programu Pig w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |
 | defines |Określ parametry jako pary klucz/wartość do odwoływania się do skryptu języka Pig |Nie |
 
 ## <a name="example"></a>Przykład

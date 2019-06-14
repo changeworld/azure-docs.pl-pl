@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048701"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -155,8 +155,7 @@ Domyślnie Azure generuje dziennik aktywności. Dzienniki są zachowywane przez 
 
 ### <a name="access-log"></a>Dziennik dostępu
 
-Dziennik dostępu jest generowany tylko wtedy, gdy włączono w każdym wystąpieniu bramy aplikacji, zgodnie z opisem w poprzednich krokach. Dane są przechowywane na koncie magazynu, który określiłeś, gdy włączono rejestrowanie. Każdy dostęp do usługi Application Gateway jest rejestrowany w formacie JSON, jak pokazano w poniższym przykładzie:
-
+Dziennik dostępu jest generowany tylko wtedy, gdy włączono w każdym wystąpieniu bramy aplikacji, zgodnie z opisem w poprzednich krokach. Dane są przechowywane na koncie magazynu, który określiłeś, gdy włączono rejestrowanie. Każdy dostęp do usługi Application Gateway jest rejestrowany w formacie JSON, jak pokazano w poniższym przykładzie dla wersji 1:
 
 |Wartość  |Opis  |
 |---------|---------|
@@ -196,6 +195,58 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono w każdym wystąpi
     }
 }
 ```
+Usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 dzienniki przedstawiają nieco więcej informacji:
+
+|Wartość  |Opis  |
+|---------|---------|
+|instanceId     | Wystąpienia bramy aplikacji, który obsłużył żądanie.        |
+|clientIP     | Źródłowy adres IP dla żądania.        |
+|clientPort     | Port źródłowy dla żądania.       |
+|HttpMethod     | Metoda HTTP używana przez żądanie.       |
+|requestUri     | Identyfikator URI odebrane żądanie.        |
+|RequestQuery     | **Serwer routingu**: Wystąpienie puli zaplecza, do którego wysłano żądanie.</br>**X-AzureApplicationGateway-LOG-ID**: Identyfikator korelacji użyta dla żądania. Może służyć do rozwiązywania problemów ruch na serwerach zaplecza. </br>**STAN SERWERA**: Kod odpowiedzi HTTP bramy Application Gateway otrzymany z zaplecza.       |
+|UserAgent     | Agent użytkownika w nagłówku żądania HTTP.        |
+|httpStatus     | Kod stanu HTTP zwracany do klienta z bramy aplikacji.       |
+|httpVersion     | Wersja protokołu HTTP żądania.        |
+|ReceivedBytes     | Rozmiar pakietu odebranych w bajtach.        |
+|SentBytes| Rozmiar pakietów wysyłanych w bajtach.|
+|Właściwość timeTaken| Długość czasu (w milisekundach) potrzebny do przetworzenia żądania i odpowiedzi przez punkt końcowy do wysłania. To jest obliczana jako interwału od czasu, gdy usługa Application Gateway odbiera pierwszy bajt żądania HTTP do chwili, gdy odpowiedź wysyłania zakończy operację. Należy zauważyć, że pole Time-Taken zawiera zwykle czas żądania i odpowiedzi pakiety są przesyłane przez sieć. |
+|sslEnabled| Czy komunikacji z pul zaplecza używany protokół SSL. Prawidłowe wartości to włączać i wyłączać.|
+|sslCipher| Mechanizmy szyfrowania używanych na potrzeby komunikacji SSL (jeśli jest włączony protokół SSL).|
+|sslProtocol| Protokół SSL używany (jeśli jest włączony protokół SSL).|
+|serverRouted| Serwer wewnętrznej bazy danych tej bramy application gateway kieruje żądanie.|
+|serverStatus| Kod stanu HTTP serwera wewnętrznej bazy danych.|
+|serverResponseLatency| Opóźnienie odpowiedzi z serwera wewnętrznej bazy danych.|
+|host| Adres na liście nagłówek hosta żądania.|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "ApplicationGatewayRole_IN_0",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off"
+        "sslCipher": "",
+        "sslProtocol": "",
+        "serverRouted": "104.41.114.59:80",
+        "serverStatus": "200",
+        "serverResponseLatency": "0.023",
+        "host": "52.231.230.101"
+    }
+}
+```
 
 ### <a name="performance-log"></a>Dziennik wydajności
 
@@ -208,7 +259,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy została włączona w każ
 |healthyHostCount     | Liczba hosty o dobrej kondycji w puli zaplecza.        |
 |unHealthyHostCount     | Liczba hostów złej kondycji w puli zaplecza.        |
 |requestCount     | Liczba żądań, które są obsługiwane.        |
-|opóźnienie | Średnie opóźnienie (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
+|Czas oczekiwania | Średnie opóźnienie (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
 |throughput| Średnia przepływność od czasu ostatniego dziennika, mierzone w bajtach na sekundę.|
 
@@ -249,9 +300,9 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 |ruleSetVersion     | Wersja używanego zestawu reguł. Dostępne wartości to 2.2.9 i 3.0.     |
 |ruleId     | Identyfikator reguły wyzwalającą zdarzenie.        |
 |message     | Przyjazny dla użytkownika komunikat wyzwalająca zdarzenia. Szczegółowe informacje znajdują się w sekcji szczegółów.        |
-|akcja     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
-|witryna     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
-|szczegóły     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
+|action     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
+|Witryny     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
+|Szczegółowe informacje     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
 |details.Message     | Opis reguły.        |
 |details.data     | Odnaleziony w żądaniu, który jest zgodny z reguły określonych danych.         |
 |details.file     | Plik konfiguracji, który zawierał reguły.        |

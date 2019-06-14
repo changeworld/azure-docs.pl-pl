@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387324"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Wymagane porty i protokoły dotyczące tożsamości hybrydowej
@@ -31,10 +31,10 @@ Ten dokument jest dokumentacja techniczna wymagane porty i protokoły dotyczące
 ## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>Tabela 1 - usługi Azure AD Connect i lokalnej usługi AD
 W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji między serwerem usługi Azure AD Connect i lokalnej usługi AD.
 
-| Protokół | Porty | Opis |
+| Protocol | Porty | Opis |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |Wyszukiwanie DNS w lesie docelowym. |
-| Kerberos |88 (TCP/UDP) |Uwierzytelnianie Kerberos z lasem usługi AD. |
+| Protokołu Kerberos |88 (TCP/UDP) |Uwierzytelnianie Kerberos z lasem usługi AD. |
 | MS-RPC |135 (TCP/UDP) |Używane podczas wstępnej konfiguracji kreatora Azure AD Connect, podczas nawiązywania połączenia z lasem AD, a także podczas synchronizacji haseł. |
 | LDAP |389 (TCP/UDP) |Używane do importowania danych z usługi AD. Dane są szyfrowane za pomocą protokołu Kerberos logowania & zamknięcia. |
 | SMB | 445 (TCP/UDP) |Używane przez bezproblemowe logowanie Jednokrotne, aby utworzyć konto komputera w lesie usługi AD. |
@@ -44,7 +44,7 @@ W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji mię
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>Tabela 2 - usługi Azure AD Connect a usługą Azure AD
 W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji między serwerem usługi Azure AD Connect a usługą Azure AD.
 
-| Protokół | Porty | Opis |
+| Protocol | Porty | Opis |
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |Używane do pobierania listy CRL (list odwołania certyfikatów) aby zweryfikować certyfikaty SSL. |
 | HTTPS |443(TCP/UDP) |Używane do synchronizacji z usługą Azure AD. |
@@ -54,7 +54,7 @@ Aby uzyskać listę adresów URL i IP adresów, należy otworzyć w zaporze, pat
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tabela 3 — Usługa Azure AD Connect i AD FS federacyjnych serwerów/WAP
 W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji między serwerem usługi Azure AD Connect i serwery usługi AD FS federacyjne/WAP.  
 
-| Protokół | Porty | Opis |
+| Protocol | Porty | Opis |
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |Używane do pobierania listy CRL (list odwołania certyfikatów) aby zweryfikować certyfikaty SSL. |
 | HTTPS |443(TCP/UDP) |Używane do synchronizacji z usługą Azure AD. |
@@ -63,14 +63,14 @@ W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji mię
 ## <a name="table-4---wap-and-federation-servers"></a>Tabela 4 - proxy aplikacji sieci Web i serwery federacyjne
 W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji między serwerami federacyjnymi i serwerami proxy aplikacji sieci Web.
 
-| Protokół | Porty | Opis |
+| Protocol | Porty | Opis |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Używany do uwierzytelniania. |
 
 ## <a name="table-5---wap-and-users"></a>Tabela 5 - proxy aplikacji sieci Web i użytkownicy
 W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji między użytkownikami i serwerów proxy aplikacji sieci Web.
 
-| Protokół | Porty | Opis |
+| Protocol | Porty | Opis |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Używany do uwierzytelniania urządzeń. |
 | TCP |49443 (TCP) |Używany do uwierzytelniania certyfikatu. |
@@ -79,7 +79,7 @@ W tej tabeli opisano porty i protokoły, które są wymagane do komunikacji mię
 W poniższej tabeli opisano porty i protokoły, które są wymagane do komunikacji między program Azure AD Connect a usługą Azure AD.
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>Tabela 6a - uwierzytelniania przekazywanego przy użyciu logowania jednokrotnego
-|Protokół|Numer portu|Opis
+|Protocol|Numer portu|Opis
 | --- | --- | ---
 |HTTP|80|Zezwolenie na wychodzący ruch protokołu HTTP do weryfikacji zabezpieczeń, takich jak protokół SSL. Również wymagane dla funkcji automatycznej aktualizacji łącznik działa prawidłowo.
 |HTTPS|443| Zezwolenie na wychodzący ruch protokołu HTTPS dla operacji takich jak włączanie i wyłączanie funkcji, rejestrowanie łączników, pobieranie aktualizacji łącznika i obsługuje wszystkie żądania logowania użytkowników.
@@ -88,7 +88,7 @@ Ponadto program Azure AD Connect potrzebuje mogli nawiązywać połączenia IP b
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>Tabela 6b — synchronizacja skrótów haseł przy użyciu logowania jednokrotnego
 
-|Protokół|Numer portu|Opis
+|Protocol|Numer portu|Opis
 | --- | --- | ---
 |HTTPS|443| Zezwolenie na zarejestrowanie logowania jednokrotnego (wymagane tylko dla procesu rejestracji logowania jednokrotnego).
 
@@ -100,10 +100,10 @@ W poniższych tabelach opisano punkty końcowe, portów i protokołów, które s
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabela 7a — porty i protokoły dla programu Azure AD Connect Health agent dla (AD FS/Sync) i Azure AD
 Ta tabela zawiera opis następujących portów wychodzących i protokołów, które są wymagane do komunikacji między agentami programu Azure AD Connect Health i usługa Azure AD.  
 
-| Protokół | Porty | Opis |
+| Protocol | Porty | Opis |
 | --- | --- | --- |
-| HTTPS |443(TCP/UDP) |Wychodzący |
-| Azure Service Bus |5671 (TCP/UDP) |Wychodzący |
+| HTTPS |443(TCP/UDP) |Wychodzące |
+| Azure Service Bus |5671 (TCP/UDP) |Wychodzące |
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b — punkty końcowe dla usługi Azure AD Connect Health agent dla (AD FS/Sync) i Azure AD
 Aby uzyskać listę punktów końcowych, zobacz [w sekcji wymagań dla agenta programu Azure AD Connect Health](how-to-connect-health-agent-install.md#requirements).

@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245709"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Zarządzania relacjami zaufania usług AD FS z usługą Azure AD za pomocą usługi Azure AD Connect
@@ -48,7 +48,7 @@ Program Azure AD Connect zarządza **tylko** ustawienia związane z zaufania us�
 | Reguły przekształcania wystawiania | Istnieją liczby reguł oświadczeń, które są potrzebne w celu uzyskania optymalnej wydajności funkcji usługi Azure AD w środowisku federacyjnym. Program Azure AD Connect zapewnia się, że zawsze Konfiguracja zaufania usługi Azure AD przy użyciu odpowiedniego zestawu reguł zalecanych oświadczeń. |
 | Alternate-id | Jeśli synchronizacja jest skonfigurowany do używania alternatywny identyfikator, program Azure AD Connect umożliwia skonfigurowanie usług AD FS do uwierzytelniania przy użyciu alternatywnego identyfikatora. |
 | Metadane automatycznej aktualizacji | Zaufania z usługą Azure AD jest skonfigurowana dla aktualizacji automatycznych metadanych. Usługi AD FS okresowo sprawdza dostępność metadanych relacji zaufania usługi Azure AD i wciąż aktualne w przypadku, gdy zmienia się po stronie usługi Azure AD. |
-| Zintegrowane uwierzytelnianie systemu Windows | Podczas operacji tworzenia sprzężenia hybrydowej usługi Azure AD IWA jest włączone dla rejestracji urządzeń, które ułatwiają dołączanie do hybrydowej usługi Azure AD dla urządzeń z niskiego poziomu |
+| Uwierzytelnianie zintegrowane Windows (IWA) | Podczas operacji tworzenia sprzężenia hybrydowej usługi Azure AD IWA jest włączone dla rejestracji urządzeń, które ułatwiają dołączanie do hybrydowej usługi Azure AD dla urządzeń z niskiego poziomu |
 
 ## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Wykonanie przepływów i ustawienia Federacji skonfigurowane przy użyciu usługi Azure AD Connect
 
@@ -59,7 +59,7 @@ Usługa Azure AD connect nie aktualizuje wszystkie ustawienia dla zaufania usłu
 | Pierwsza instalacja — dostęp próbny (express) | Brak |
 | Najpierw przejść instalacji (nowej farmy usług AD FS) | Utworzono nową farmę usług AD FS i relację zaufania z usługą Azure AD jest tworzona od podstaw. |
 | Najpierw przejść instalacji (istniejącej farmy usług AD FS, istniejącą relację zaufania usługi Azure AD) | Identyfikator relacji zaufania usługi Azure AD, reguły przekształcania wystawiania, punktów końcowych usługi Azure AD, alternatywny identyfikator (w razie potrzeby), aktualizacji automatycznych metadanych |
-| Resetuj relację zaufania usługi Azure AD | Token podpisywania certyfikatu podpisywania algorytmu, identyfikator relacji zaufania usługi Azure AD, przekształcania wystawiania tokenu reguł, punktów końcowych usługi Azure AD, alternatywny identyfikator (w razie potrzeby), aktualizacji automatycznych metadanych |
+| Zresetuj relację zaufania usługi Azure AD | Token podpisywania certyfikatu podpisywania algorytmu, identyfikator relacji zaufania usługi Azure AD, przekształcania wystawiania tokenu reguł, punktów końcowych usługi Azure AD, alternatywny identyfikator (w razie potrzeby), aktualizacji automatycznych metadanych |
 | Dodawanie serwera federacyjnego | Brak |
 | Dodaj serwer proxy aplikacji sieci Web | Brak |
 | Opcje urządzenia | Reguły przekształcania wystawiania, IWA rejestracji urządzeń |

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381149"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach
@@ -78,11 +78,11 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może działać wyłącznie w
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **Wielokrotne** | | | | |
 | [zawiera](#contains) |[Liczba](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
-| [Dołącz](#join) |[RemoveDuplicates](#removeduplicates) |[Podziel](#split) | | |
+| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Podziel](#split) | | |
 | **Przepływ programu** | | | | |
-| [Error](#error) |[IIF](#iif) |[Wybierz](#select) |[Przełącznik](#switch) | |
+| [Error](#error) |[IIF](#iif) |[Select](#select) |[Przełącznik](#switch) | |
 | [Where](#where) |[With](#with) | | | |
-| **Tekst** | | | | |
+| **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [po lewej stronie](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
 | [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Zastąp](#replace) | |
@@ -363,7 +363,7 @@ Funkcja CGuid konwertuje ciąg reprezentujący identyfikator GUID, na jego repre
 * Ciąg sformatowany w tym wzorcu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx lub {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 - - -
-### <a name="contains"></a>Contains
+### <a name="contains"></a>zawiera
 **Opis:**  
 Funkcja zawiera umożliwia znalezienie ciągu wewnątrz atrybutu wielowartościowego
 
@@ -396,13 +396,13 @@ Funkcja ConvertFromBase64 konwertuje wartość określonego zakodowane w formaci
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Źródło: Ciąg zakodowany w formacie Base64  
-* Kodowanie: Unicode, ASCII, UTF8
+* Encoding: Unicode, ASCII, UTF8
 
 **Przykład**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Oba przykłady zwrócą "*Witaj świecie!*"
+Oba przykłady zwrócą "*Witaj świecie!* "
 
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
@@ -420,7 +420,7 @@ Ten format jest używany przez usługę Azure Active Directory jako nazwa Wyró�
 
 **Przykład:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-Zwraca "*Witaj świecie!*"
+Zwraca "*Witaj świecie!* "
 
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -451,7 +451,7 @@ Format danych wyjściowych z tej funkcji jest używany przez usługę Azure Acti
 Zwraca 48656C6C6F20776F726C6421
 
 - - -
-### <a name="count"></a>Licznik
+### <a name="count"></a>Count
 **Opis:**  
 Count — funkcja zwraca liczbę elementów w atrybutu wielowartościowego
 
@@ -846,7 +846,7 @@ Funkcja ItemOrNull przydaje się wraz z funkcji zawiera od czasu ostatniego funk
 Jeśli indeks jest poza granicami, funkcja zwraca wartość Null.
 
 - - -
-### <a name="join"></a>Join
+### <a name="join"></a>Dołączanie
 **Opis:**  
 Funkcja sprzężenia przyjmuje parametry wielowartościowe i zwraca ciąg jednowartościowych przy użyciu określonego separatora wstawiany między poszczególne elementy.
 
@@ -877,7 +877,7 @@ Funkcja LCase konwertuje wszystkie znaki w ciągu na małe litery.
 Zwraca "test".
 
 - - -
-### <a name="left"></a>Do lewej
+### <a name="left"></a>po lewej stronie
 **Opis:**  
 Po lewej stronie funkcja zwraca określoną liczbę znaków z lewej strony ciągu.
 
@@ -956,7 +956,7 @@ Zwraca wartość "czy hn".
 Zwraca wartość "Doe"
 
 - - -
-### <a name="now"></a>Teraz
+### <a name="now"></a>teraz
 **Opis:**  
 Teraz funkcja zwraca wartość typu DateTime, określając aktualnej daty i godziny, zgodnie z systemowej daty i godziny na komputerze.
 
@@ -1128,7 +1128,7 @@ Zwraca Raksmorgas
 Zwraca "ONeil" jeden znacznik jest zdefiniowana ma zostać usunięty.
 
 - - -
-### <a name="right"></a>Do prawej
+### <a name="right"></a>Prawe
 **Opis:**  
 Right — funkcja zwraca określoną liczbę znaków z prawej strony (Zakończ) w ciągu.
 
@@ -1166,7 +1166,7 @@ Funkcja RTrim usuwa spacje końcowe z ciągu.
 Zwraca wartość "Test".
 
 - - -
-### <a name="select"></a>Wybierz pozycję
+### <a name="select"></a>Wybierz
 **Opis:**  
 Wszystkie wartości w atrybutu wielowartościowego (lub danych wyjściowych wyrażenia) na podstawie funkcji określony proces.
 
@@ -1246,7 +1246,7 @@ Wartość może być również funkcję błędu, co zwróciłoby niestandardowy 
 Zwraca język używany w niektórych głównych miast, w przeciwnym razie zwraca błąd.
 
 - - -
-### <a name="trim"></a>Przytnij
+### <a name="trim"></a>TRIM
 **Opis:**  
 Funkcja przycinania usuwa wiodące i końcowe białe znaki z ciągu.
 
@@ -1295,7 +1295,7 @@ Zwraca wartości certyfikatu w userCertificate atrybutu wielowartościowego, kt�
 **Opis:**  
 Funkcja With udostępnia uproszczenie złożone wyrażenie, przy użyciu zmiennej do reprezentowania Podwyrażenie, który pojawia się jeden lub więcej razy w złożonych wyrażeń.
 
-**Składnia:**
+**Składnia:** 
 `With(var variable, exp subExpression, exp complexExpression)`  
 * Zmienna: Reprezentuje Podwyrażenie.
 * Podwyrażenie: Podwyrażenie reprezentowany przez zmienną.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311711"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Dodawanie repozytorium Git do przechowywania niestandardowych artefaktów i szablonów usługi Resource Manager
@@ -74,7 +74,7 @@ Aby dodać repozytorium do środowiska laboratoryjnego, należy najpierw Pobierz
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **więcej usług**, a następnie wybierz pozycję **DevTest Labs** z listy usług.
 3. Zaznacz na liście laboratoriów środowiska laboratoryjnego. 
-4. Wybierz **konfiguracji i zasad** > **repozytoriów** > **+ Dodaj**.
+4. Wybierz **konfiguracji i zasad** > **repozytoriów** >  **+ Dodaj**.
 
     ![Przycisk Dodaj repozytorium](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. W drugiej **repozytoriów** określ następujące informacje:

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240847"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>SYSLOG źródeł danych w usłudze Azure Monitor
@@ -34,7 +34,7 @@ Następujące obiekty są obsługiwane przez moduł Syslog:
 
 * Kerning
 * Użytkownik
-* mail (poczta)
+* poczta
 * Demon
 * uwierzytelnianie
 * syslog
@@ -54,7 +54,7 @@ Agenta usługi Log Analytics dla systemu Linux tylko będzie zbierać zdarzenia 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurowanie usługi Syslog w witrynie Azure portal
 Konfigurowanie usługi Syslog z [menu danych w zaawansowanych ustawieniach](agent-data-sources.md#configuring-data-sources). Ta konfiguracja jest dostarczana do pliku konfiguracji na każdym agencie systemu Linux.
 
-Można dodawać nowych funkcji, wpisując jej nazwę, a następnie klikając polecenie **+**. Dla każdego obiektu zostanie pobrana tylko komunikaty z wybranej ważności.  Zaznacz ważności dla określonego obiektu, które mają być zbierane. Nie zawiera żadnych dodatkowych kryteriów filtrowania wiadomości.
+Można dodawać nowych funkcji, wpisując jej nazwę, a następnie klikając polecenie **+** . Dla każdego obiektu zostanie pobrana tylko komunikaty z wybranej ważności.  Zaznacz ważności dla określonego obiektu, które mają być zbierane. Nie zawiera żadnych dodatkowych kryteriów filtrowania wiadomości.
 
 ![Konfigurowanie usługi Syslog](media/data-sources-syslog/configure.png)
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60244041"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Zmiany w konfiguracji domyślnej
@@ -71,7 +71,7 @@ Najbardziej typowe zmiany dotyczą przepływy atrybutów. Dane w katalogu źród
    ![Reguła filtru określania zakresu ruchu przychodzącego](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    W tej sekcji służy do definiowania, aby obiekty, które powinno być stosowane reguły. Jeśli pozostanie puste, reguła będzie stosowana do wszystkie obiekty użytkowników. Jednak Obejmowałoby to sale konferencyjne, konta usług i innych obiektów użytkownika innych osób.
 4. Na **Dołącz zasady** strony, pozostaw pole puste.
-5. Na **przekształcenia** strony, zmień **dla przepływu** do **wyrażenie**. Aby uzyskać **atrybut docelowy**, wybierz opcję **givenName**. I **źródła**, wprowadź **PCase([givenName])**.
+5. Na **przekształcenia** strony, zmień **dla przepływu** do **wyrażenie**. Aby uzyskać **atrybut docelowy**, wybierz opcję **givenName**. I **źródła**, wprowadź **PCase([givenName])** .
    ![Przekształcenia reguły dla ruchu przychodzącego](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    Aparat synchronizacji jest rozróżniana wielkość liter, zarówno nazwę funkcji, jak i nazwę atrybutu. Jeśli wpiszesz coś niewłaściwego pojawić się ostrzeżenie podczas dodawania reguły. Można zapisać i kontynuować, ale musisz ponownie otworzyć i Popraw regułę.
 6. Kliknij przycisk **Dodaj** można zapisać reguły.
@@ -273,7 +273,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
     | Połączonego systemu | *Wybierz lokalny łącznik usługi AD* |  |
     | Połączony System typu obiektu | **Użytkownik** |  |
     | Typ obiektu Metaverse | **Osoby** |  |
-    | Typ linku | **Dołącz** |  |
+    | Typ łącza | **Join** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do **filtru Scoping** karta i Dodaj **pojedynczą grupę filtrów określania zakresu** z następującą klauzulę:
@@ -286,13 +286,13 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
 
 6. Przejdź do **przekształcania** kartę i zaimplementować reguły odpowiednie przekształcenie. Na przykład, jeśli został wyznaczony nieużywane w środowisku lokalnym atrybutu usługi AD (na przykład extensionAttribute1) jako atrybut źródłowy dla UserType, można zaimplementować przepływ atrybutu bezpośrednie:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     | Direct | UserType | extensionAttribute1 | Niezaznaczone | Aktualizacja |
 
     W kolejnym przykładzie chcesz dziedziczyć wartość atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako gościa, jeśli ich w środowisku lokalnym atrybut userPrincipalName AD kończy się część domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenia następująco:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     | Wyrażenie | UserType | IIf(IsPresent([userPrincipalName]),IIf(CBool(InStr(LCase([userPrincipalName])"@partners.fabrikam123.org")=0) "Elementu członkowskiego", "Gość"), błąd ("UserPrincipalName nie jest obecna, aby określić UserType")) | Niezaznaczone | Aktualizacja |
 
@@ -315,7 +315,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
     | Połączonego systemu | *Wybierz łącznik usługi AAD* ||
     | Połączony System typu obiektu | **Użytkownik** ||
     | Typ obiektu Metaverse | **Osoby** ||
-    | Typ linku | **Dołącz** ||
+    | Typ łącza | **Join** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 – 99* | 1 – 99 jest zarezerwowana dla reguły synchronizacji niestandardowych. Nie wybierz wartość, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do **filtru Scoping** karta i Dodaj **pojedynczą grupę filtrów określania zakresu** z dwóch klauzul:
@@ -329,7 +329,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
 6. Przejdź do **przekształcania** kartę i zaimplementować następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
+    | Typ przepływu | Atrybut docelowy | source | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
     | Direct | UserType | UserType | Niezaznaczone | Aktualizacja |
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60441136"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
@@ -30,10 +30,10 @@ W przypadku raportów z usługi Azure Active Directory (Azure AD) możesz uzyska
 
 Architektura raportowania składa się z następujących składników:
 
-- **Działanie** 
+- **Aktywność** 
     - **Operacje logowania** — [raporcie logowań](concept-sign-ins.md) zawiera informacje na temat użycia zarządzanych aplikacji i użytkownika działań logowania.
     - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Przykłady dzienników inspekcji zmiany wprowadzone do wszystkich zasobów w usłudze Azure AD, takie jak dodawanie lub usuwanie użytkowników, aplikacji, grup, ról i zasad.
-- **Bezpieczeństwo** 
+- **Zabezpieczenia** 
     - **Ryzykowne logowania** — [ryzykowne logowania](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogły zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. 
     - **Użytkownicy oflagowani w związku z ryzykiem** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, który może być zabezpieczenia mogły zostać naruszone.
 
@@ -82,7 +82,7 @@ Można filtrować dane inspekcji na następujące pola:
 - Category
 - Działanie
 - Stan
-- Środowisko docelowe
+- Cel
 - Zainicjowane przez (aktor)
 - Zakres dat
 
@@ -98,7 +98,7 @@ Można filtrować dane inspekcji na następujące pola:
 - B2C
 - Dostęp warunkowy
 - Katalog podstawowy
-- Zarządzanie upoważnieniami
+- Zarządzanie uprawnieniami
 - Identity Protection
 - Zaproszeni użytkownicy
 - PIM
@@ -113,7 +113,7 @@ Można filtrować dane inspekcji na następujące pola:
 - ApplicationManagement
 - Authentication
 - Autoryzacja
-- Kontakt
+- Skontaktuj się z
 - Urządzenie
 - Konfiguracja urządzenia
 - DirectoryManagement
@@ -127,7 +127,7 @@ Można filtrować dane inspekcji na następujące pola:
 
 **Działania** filtru jest oparty na kategorii i działań wybór typów zasobów wprowadzeniu. Możesz wybrać konkretne działanie, które chcesz zobaczyć, lub wybrać wszystkie działania. 
 
-Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejsu API programu Graph https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, gdzie $tenantdomain to nazwa Twojej domeny. Jest ona również przedstawiona w artykule [Zdarzenia raportów inspekcji](reference-audit-activities.md).
+Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejsu API programu Graph https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta, gdzie $tenantdomain to nazwa Twojej domeny. Jest ona również przedstawiona w artykule [Zdarzenia raportów inspekcji](reference-audit-activities.md).
 
 **Stan** filtr umożliwia filtrowanie na podstawie stanu operacji inspekcji. Stan może być jednym z następujących czynności:
 

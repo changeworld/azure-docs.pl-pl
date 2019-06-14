@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296320"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming ustawień i danych — często zadawane pytania
@@ -76,7 +76,7 @@ W listopadzie 2015 lub nowszej wersje systemu Windows 10 Roaming stanu dla przed
 W przypadku wielu usługi Azure AD konta za pośrednictwem różnych dzierżaw usługi Azure AD znajdują się na tym samym urządzeniu, należy zaktualizować rejestr urządzenia w celu komunikowania się z usługą Azure Rights Management dla każdej dzierżawy usługi Azure AD.  
 
 1. Znajdź identyfikator GUID dla każdego dzierżawcy usługi Azure AD. Otwórz witrynę Azure portal i wybierz dzierżawę usługi Azure AD. Identyfikator GUID dla dzierżawy znajduje się na stronie właściwości dla wybranej dzierżawy (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), oznaczone **identyfikator katalogu**. 
-2. Po utworzeniu identyfikatora GUID, musisz dodać klucz rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<dzierżawy identyfikator GUID >**.
+2. Po utworzeniu identyfikatora GUID, musisz dodać klucz rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<dzierżawy identyfikator GUID >** .
    Z **dzierżawy identyfikator GUID** klucza, Utwórz nową wartość ciągu wielokrotnego (REG-MULTI-SZ) o nazwie **AllowedRMSServerUrls**. W przypadku własnych danych należy określić licencjonowania punktu dystrybucji, adresy URL z innych dzierżaw usługi Azure, do których uzyskuje dostęp urządzenia.
 3. Adresy URL licencjonowania punktu dystrybucji można znaleźć, uruchamiając **Get-AadrmConfiguration** polecenia cmdlet w module AADRM. Jeśli wartości **LicensingIntranetDistributionPointUrl** i **LicensingExtranetDistributionPointUrl** są różne, określ obie wartości. Jeśli wartości są takie same, określ wartość tylko raz.
 

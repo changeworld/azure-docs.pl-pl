@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556376"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -36,18 +36,18 @@ Tworzenie, usuwanie i zarządzać usługą, typy usług i pakietów usługi.
 | wdrożony — — lista typów | Pobiera listę zawierającą informacje o typach usługi z poziomu aplikacji wdrożonych w węźle w klastrze usługi Service Fabric. |
 | description | Pobiera opis istniejącej usługi Service Fabric. |
 | get-container-logs | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric. |
-| zdrowie | Pobiera kondycji określonej usługi Service Fabric. |
-| informacje | Pobiera informacje o określonej usługi należące do aplikacji usługi Service Fabric. |
+| health | Pobiera kondycji określonej usługi Service Fabric. |
+| info | Pobiera informacje o określonej usługi należące do aplikacji usługi Service Fabric. |
 | list | Pobiera informacje o wszystkich usług należących do aplikacji, określonego przez identyfikator aplikacji. |
-| Manifest | Pobiera manifest opisujące typ usługi. |
+| manifest | Pobiera manifest opisujące typ usługi. |
 | package-deploy | Pobiera pakiety skojarzone z określoną usługą manifestu do pamięci podręcznej obrazów w określonym węźle. |
 | package-health | Pobiera informacje o kondycji usług pakietu dla określonej aplikacji wdrożone dla węzła usługi Service Fabric i aplikacji. |
 | package-info | Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric dopasowania określonej nazwy. |
 | package-list | Pobiera listę pakietów usług wdrożonych w węźle usługi Service Fabric. |
 | Odzyskiwanie | Klaster usługi Service Fabric wskazywać, że ma podejmować do odzyskania z określonej usługi, który jest obecnie zablokowany utraciła kworum. |
 | report-health | Wysyła raport o kondycji usługi Service Fabric. |
-| rozwiąż | Rozwiąż partycji usługi Service Fabric. |
-| Lista typów | Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ aplikacji aprowizowanych w klastrze usługi Service Fabric. |
+| resolve | Rozwiąż partycji usługi Service Fabric. |
+| type-list | Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ aplikacji aprowizowanych w klastrze usługi Service Fabric. |
 | update | Aktualizuje określonej usługi przy użyciu opisu danej aktualizacji. |
 
 ## <a name="sfctl-service-app-name"></a>Nazwa aplikacji interfejsu sfctl usługi

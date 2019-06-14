@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
 ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60407748"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Tworzenie połączenia typu lokacja-lokacja w witrynie Azure Portal
@@ -54,7 +54,7 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
 * **Publiczny adres IP:** VNet1GWIP
 * **Typ sieci VPN:** Oparte na trasach
-* **Typ połączenia:** Lokacja-lokacja (IPsec)
+* **Typ połączenia:** Lokacja lokacja (IPsec)
 * **Typ bramy:** Sieć VPN
 * **Nazwa bramy sieci lokalnej:** Site1
 * **Nazwa połączenia:** VNet1toSite1

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358200"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Usługa Azure AD ochrony hasłem procedury operacyjne
@@ -32,7 +32,7 @@ Postępuj zgodnie ze wskazówkami w artykule [Konfigurowanie listy zakazanych ha
 1. Ustaw **włączenia ochrony haseł usługi Active Directory systemu Windows Server** do **tak**
 1. Jak wspomniano w [przewodnik wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), zalecane jest początkowo ustawiona **tryb** do **inspekcji**
    * Po masz doświadczenia z tej funkcji, można przełączać się **tryb** do **wymuszone**
-1. Kliknij pozycję **Zapisz**
+1. Kliknij polecenie **Zapisz**.
 
 ![Włączanie składników ochrony haseł usługi Azure AD w witrynie Azure portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 

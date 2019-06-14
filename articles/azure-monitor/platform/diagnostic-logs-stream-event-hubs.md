@@ -9,10 +9,10 @@ ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237705"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
@@ -24,7 +24,7 @@ Oto kilka sposobów, można na przykład możliwość przesyłania strumienioweg
 * **Stream dzienniki 3 systemach innych firm rejestrowania i dane telemetryczne** — przesyłanie strumieniowe wszystkich dzienników diagnostycznych do jednego Centrum zdarzeń do potoku danych dziennika narzędzia analizy rozwiązania SIEM lub dziennika innych firm.
 * **Aby wyświetlić kondycję usługi, przesyłania strumieniowego "Ścieżka aktywna" dane do usługi Power BI** — przy użyciu usługi Event Hubs, Stream Analytics i Power BI, można łatwo przekształcać dane diagnostyczne w prawie w czasie rzeczywistym szczegółowych informacji dotyczących usług platformy Azure. [Ten artykuł dokumentacji zawiera wszechstronne omówienie sposobu konfigurowania usługi Event Hubs, przetwarzanie danych za pomocą usługi Stream Analytics i używaj usługi Power BI jako dane wyjściowe](../../stream-analytics/stream-analytics-power-bi-dashboard.md). Poniżej przedstawiono kilka porad dotyczących pobierania skonfigurować przy użyciu dzienników diagnostycznych:
 
-  * Centrum zdarzeń dla kategorii dzienników diagnostycznych jest tworzona automatycznie po zaznaczeniu opcji w portalu lub ją włączyć za pomocą programu PowerShell, tak, aby wybrać Centrum zdarzeń w przestrzeni nazw o nazwie, która rozpoczyna się od **insights -**.
+  * Centrum zdarzeń dla kategorii dzienników diagnostycznych jest tworzona automatycznie po zaznaczeniu opcji w portalu lub ją włączyć za pomocą programu PowerShell, tak, aby wybrać Centrum zdarzeń w przestrzeni nazw o nazwie, która rozpoczyna się od **insights -** .
   * Poniższy kod SQL jest przykładowe zapytanie usługi Stream Analytics, którego można użyć do analizowania wszystkie dane dziennika w tabeli usługi Power BI:
 
     ```sql
@@ -181,7 +181,7 @@ Poniżej przedstawiono przykładowe dane wyjściowe z usługi Event Hubs:
 
 | Nazwa elementu | Opis |
 | --- | --- |
-| rekordy |Tablica wszystkich zdarzeń dziennika, w tym ładunku. |
+| Rekordy |Tablica wszystkich zdarzeń dziennika, w tym ładunku. |
 | time |Czas, w którym wystąpiło zdarzenie. |
 | category |Kategoria dziennika dla tego zdarzenia. |
 | resourceId |Identyfikator zasobu zasób, który wygenerował zdarzenie. |

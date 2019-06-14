@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e228e73283685988247c8d419ba0a97b8c7b2974
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24576a46b47b22ef447793b4105730ed2755701d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050634"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Aprowizowanie węzłów obliczeniowych systemu Linux w pulach usługi Batch
 
@@ -48,7 +48,7 @@ Podczas konfigurowania odwołanie do obrazu maszyny wirtualnej, należy określi
 | Wydawca |Canonical |
 | Oferta |UbuntuServer |
 | SKU |14.04.4-LTS |
-| Wersja |najnowsza |
+| Version |najnowsza |
 
 > [!TIP]
 > Dowiedz się więcej na temat tych właściwości i sposób wyświetlenia listy obrazów z witryny Marketplace w [wybierz obrazów maszyn wirtualnych systemu Linux na platformie Azure przy użyciu interfejsu wiersza polecenia lub programu PowerShell i Navigate](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Należy pamiętać, że nie wszystkie obrazy z Marketplace są obecnie zgodna z usługą Batch. Aby uzyskać więcej informacji, zobacz [jednostkę SKU węzła agenta](#node-agent-sku).
@@ -91,8 +91,8 @@ node_count = 1
 
 # Initialize the Batch client
 creds = batchauth.SharedKeyCredentials(account, key)
-config = batch.BatchServiceClientConfiguration(creds, base_url = batch_url)
-client = batch.BatchServiceClient(config)
+config = batch.BatchServiceClientConfiguration(creds, batch_url)
+client = batch.BatchServiceClient(creds, batch_url)
 
 # Create the unbound pool
 new_pool = batchmodels.PoolAddParameter(id = pool_id, vm_size = vm_size)
@@ -214,7 +214,7 @@ Poniższa tabela zawiera listę obrazów maszyn wirtualnych portalu Marketplace,
 >
 >
 
-| **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agenta węzła identyfikator jednostki SKU** |
+| **Publisher** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agenta węzła identyfikator jednostki SKU** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
 | partia | rendering-centos73 | Renderowanie | najnowsza | batch.node.centos 7 |
 | partia | rendering-windows2016 | Renderowanie | najnowsza | Batch.node.Windows amd64 |

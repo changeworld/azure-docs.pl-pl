@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414804"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Usługa Azure AD ochrona za pomocą hasła monitorowanie i rejestrowanie
@@ -65,7 +65,7 @@ Kluczowe informacje o zdarzeniach powiązanych sprawdzania poprawności hasła s
 
 |   |Zmiana hasła |Ustawianie hasła|
 | --- | :---: | :---: |
-|Powodzenie |10014 |10015|
+|— Dostęp próbny |10014 |10015|
 |Niepowodzenie (ze względu na zasady haseł klienta)| 10016, 30002| 10017, 30003|
 |Niepowodzenie (ze względu na zasady haseł firmy Microsoft)| 10016, 30004| 10017, 30005|
 |Niepowodzenie (z powodu połączone firmy Microsoft i klienta zasady haseł)| 10016, 30026| 10017, 30027|

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2ff3e530dae3a6db4b7c84292a25e83c11000baf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60286764"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Rozpoczynanie pracy z usługą Azure Active Directory, interfejsu API raportowania
@@ -58,7 +58,7 @@ Ponadto można użyć [zdarzeń o podwyższonym ryzyku Identity Protection API](
 
 Możesz użyć [MSGraph explorer](https://developer.microsoft.com/graph/graph-explorer) w celu sprawdzenia logowania i inspekcji danych interfejsu API. Upewnij się, że Zaloguj się do swojego konta przy użyciu zarówno przycisków logowania w Interfejsie użytkownika programu Graph Explorer i ustaw **AuditLog.Read.All** i **Directory.Read.All** uprawnienia dla swojej dzierżawy, jak pokazano.   
 
-![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
+![Eksplorator programu Graph](./media/concept-reporting-api/graph-explorer.png)
 
 ![Modyfikowanie uprawnień interfejsu użytkownika](./media/concept-reporting-api/modify-permissions.png)
 

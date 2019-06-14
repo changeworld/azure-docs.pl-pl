@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60367275"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurowanie trybu transportu IPsec dla prywatnej komunikacji równorzędnej usługi ExpressRoute
@@ -176,7 +176,7 @@ Utwórz listę filtrów, który określa zaszyfrowany ruch HTTP do portu docelow
 7. Na **typ protokołu IP** wybierz opcję **TCP**. Następnie kliknij przycisk **Dalej**.
 
    [![30]][30]
-8. Na **Port protokołu IP** wybierz opcję **z dowolnego portu** i **z tym portem:**. Typ **8080** w polu tekstowym. Te ustawienia określają, że będą szyfrowane tylko ruch HTTP na porcie docelowym 8080. Następnie kliknij przycisk **Dalej**.
+8. Na **Port protokołu IP** wybierz opcję **z dowolnego portu** i **z tym portem:** . Typ **8080** w polu tekstowym. Te ustawienia określają, że będą szyfrowane tylko ruch HTTP na porcie docelowym 8080. Następnie kliknij przycisk **Dalej**.
 
    [![31]][31]
 9. Wyświetl listę filtrów IP.  Konfiguracja lista filtru IP **HTTP8080-azure opłacanie** wyzwala szyfrowania dla całego ruchu, które spełniają następujące kryteria:
@@ -252,7 +252,7 @@ Dodawanie zasad IPsec **lista filtru IP** i **akcji filtrowania** skonfigurowan�
 6. Wybierz istniejącą akcję filtru **myEncryption** utworzonego wcześniej.
 
    [![46]][46]
-7. Windows obsługuje cztery różne rodzaje uwierzytelnienia: Protokół Kerberos, certyfikaty, NTLMv2 i klucz wstępny. Ponieważ pracujemy z hostami przyłączonych do domeny, wybierz **domyślne usługi Active Directory (protokół Kerberos V5)**, a następnie kliknij przycisk **dalej**.
+7. Windows obsługuje cztery różne rodzaje uwierzytelnienia: Protokół Kerberos, certyfikaty, NTLMv2 i klucz wstępny. Ponieważ pracujemy z hostami przyłączonych do domeny, wybierz **domyślne usługi Active Directory (protokół Kerberos V5)** , a następnie kliknij przycisk **dalej**.
 
    [![47]][47]
 8. Nowe zasady tworzy reguły zabezpieczeń: **HTTP8080-azure opłacanie**. Kliknij przycisk **OK**.

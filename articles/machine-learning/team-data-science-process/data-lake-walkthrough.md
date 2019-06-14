@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60399962"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Analiza danych skalowalna usługa Azure Data Lake: Przewodnik end-to-end
@@ -148,7 +148,7 @@ Do wykonania U-SQL, Otwórz program Visual Studio, kliknij przycisk **Plik--> Ne
 
 ### <a name="ingest"></a>Pozyskiwanie danych: Odczyt danych z publicznego obiektu blob
 
-Lokalizacja danych w usłudze Azure blob jest określany jako **wasb://container\_nazwa\@obiektu blob\_magazynu\_konta\_name.blob.core.windows.net/blob_name**i wyodrębnić za pomocą **Extractors.Csv()**. Podstawić własną nazwę kontenera i nazwy konta magazynu w następujących skryptów dla kontenera\_nazwa\@blob\_magazynu\_konta\_nazwę w polu adres wasb. Ponieważ nazwy plików znajdują się w tym samym formacie, jest możliwe użycie **podróży\_danych\_\{\*\}CSV** odczytać we wszystkich plikach 12 podróży.
+Lokalizacja danych w usłudze Azure blob jest określany jako **wasb://container\_nazwa\@obiektu blob\_magazynu\_konta\_name.blob.core.windows.net/blob_name**i wyodrębnić za pomocą **Extractors.Csv()** . Podstawić własną nazwę kontenera i nazwy konta magazynu w następujących skryptów dla kontenera\_nazwa\@blob\_magazynu\_konta\_nazwę w polu adres wasb. Ponieważ nazwy plików znajdują się w tym samym formacie, jest możliwe użycie **podróży\_danych\_\{\*\}CSV** odczytać we wszystkich plikach 12 podróży.
 
     ///Read in Trip data
     @trip0 =

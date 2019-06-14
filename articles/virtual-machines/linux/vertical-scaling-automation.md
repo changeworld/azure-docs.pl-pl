@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d9bf155f24c947f8a27a38af01aedcf0b041b94
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d0d0c3683d8855418bdafa204325525c4cd3943c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050785"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Skalowanie w pionie maszyny wirtualnej systemu Linux platformy Azure z usługą Azure Automation
 Skalowanie w pionie polega na zwiększenie lub zmniejszenie zasoby maszyny w odpowiedzi na obciążenie. Na platformie Azure można to zrobić, zmieniając rozmiar maszyny wirtualnej. Może to pomóc w następujących scenariuszach
@@ -83,6 +83,7 @@ Kontur kroki osiągnąć ten cel jest jako poniżej
 > | Standard_ND6s |Standard_ND24s |
 > | Standardowa_NV6 |Standardowa_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Konfigurowanie usługi Azure Automation, dostęp do sieci maszyn wirtualnych
 Pierwszą rzeczą, jaką należy wykonać jest utworzyć konto usługi Azure Automation, które będzie hostować elementy runbook umożliwia skalowanie wystąpień zestawu skalowania maszyn wirtualnych. Ostatnio usługi Automation wprowadza funkcję "Uruchom jako konto", co sprawia, że ustawienia zapasowej jednostki usługi do automatycznego uruchamiania elementów runbook w imieniu użytkownika bardzo proste. Możesz dowiedzieć się więcej o tym w poniższym artykule:

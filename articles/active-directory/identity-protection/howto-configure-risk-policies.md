@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295797"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Instrukcje: Konfigurowanie zasad usługi o podwyższonym ryzyku ochronę tożsamości usługi Azure Active Directory (odświeżyć)
@@ -64,7 +64,7 @@ Po skonfigurowaniu zasad ryzyka logowania, należy ustawić:
 
 - Typ dostępu, który ma być wymuszane, gdy poziom ryzyka logowania zostaną spełnione:  
 
-    ![Dostęp](./media/howto-configure-risk-policies/13.png)
+    ![Access](./media/howto-configure-risk-policies/13.png)
 
 - Stan zasad:
 
@@ -127,7 +127,7 @@ Zasady ryzyka użytkownika jest automatycznej odpowiedzi skonfigurowanych dla ok
    
 Zasady ryzyka użytkownika znajduje się w **Konfiguruj** sekcji na [strony usługi Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
    
-![Zasady dotyczące ryzyka związanego z użytkownikiem](./media/howto-configure-risk-policies/11014.png)
+![Zasady dotyczące ryzyka związanego z użytkownika](./media/howto-configure-risk-policies/11014.png)
 
 
 
@@ -145,7 +145,7 @@ Po skonfigurowaniu zasad ryzyka użytkownika, musisz ustawić:
 
 - Typ dostępu, który ma być wymuszane, gdy poziom ryzyka logowania zostaną spełnione:  
 
-    ![Dostęp](./media/howto-configure-risk-policies/113.png)
+    ![Access](./media/howto-configure-risk-policies/113.png)
 
 - Stan zasad:
 

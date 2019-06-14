@@ -10,10 +10,10 @@ ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370751"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Zrozumienie, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB
@@ -67,9 +67,9 @@ Rabat związany z rezerwacją jest stosowany do kosztów przepustowości godzina
 |Azure Cosmos DB — 100 RU/s/godz. — Australia Wschodnia|     Australia Wschodnia    |   1.15       |
 |Azure Cosmos DB — 100 RU/s/godz. — Kanada Środkowa|  Kanada Środkowa       |   1.2       |
 |Azure Cosmos DB — 100 RU/s/godz. — Francja środkowa|   Francja Środkowa      |    1.25      |
-|Azure Cosmos DB — 100 RU/s/godz. — Brazylia Południowa|  Brazylia Południowa       |   1.5      |
-|Azure Cosmos DB — 100 RU/s/godz. — Australia Środkowa|   Australia Środkowa      |   1.5      |
-|Azure Cosmos DB — 100 RU/s/godz. — Australia Środkowa 2| Australia Środkowa 2        |    1.5     |
+|Azure Cosmos DB — 100 RU/s/godz. — Brazylia Południowa|  Brazylia Południowa       |   1,5      |
+|Azure Cosmos DB — 100 RU/s/godz. — Australia Środkowa|   Australia Środkowa      |   1,5      |
+|Azure Cosmos DB — 100 RU/s/godz. — Australia Środkowa 2| Australia Środkowa 2        |    1,5     |
 |Azure Cosmos DB — 100 RU/s/godz. — Francja Południowa|    Francja Południowa     |    1.625     |
 
 ## <a name="scenarios-that-show-how-the-reservation-discount-is-applied"></a>Scenariusze, które pokazują, jak stosowany jest rabat związany z rezerwacją

@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25e67a5a6c3abebbac2e0489ff636ca1457b62ea
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476272"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807734"
 ---
 Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Po odłączeniu dysku od maszyny wirtualnej nie zostanie on usunięty z magazynu. Jeśli chcesz ponownie użyć danych znajdujących się na dysku, możesz dołączyć go ponownie do tej samej lub innej maszyny wirtualnej.  
 
@@ -19,7 +19,7 @@ Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, moż
 ## <a name="find-the-disk"></a>Wyszukiwanie dysku
 Przed odłączeniem dysku od maszyny wirtualnej należy określić numer LUN, który jest identyfikatorem dysku do odłączenia. W tym celu wykonaj następujące kroki:
 
-1. Otwórz interfejs wiersza polecenia platformy Azure i [połącz się ze swoją subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli). Upewnij się, że jesteś w trybie usługi Azure Service Management (`azure config mode asm`).
+1. Otwórz interfejs wiersza polecenia platformy Azure i [nawiązać połączenie z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli). Upewnij się, że jesteś w trybie usługi Azure Service Management (`azure config mode asm`).
 2. Dowiedz się, które dyski są dołączone do maszyny wirtualnej. Następujący przykład umożliwia wyświetlenie dysków maszyny wirtualnej o nazwie `myVM`:
 
     ```azurecli

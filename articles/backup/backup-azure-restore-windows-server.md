@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
 ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238626"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Przywracanie plików do Windows za pomocą modelu wdrażania usługi Azure Resource Manager
@@ -44,7 +44,7 @@ Jeśli przypadkowo usunięty plik i chcesz je przywrócić na tym samym komputer
 
     ![Zrzut ekranu z usługi Azure Backup, za pomocą odzyskać dane, które są wyróżnione](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Na **wprowadzenie** wybierz stronę, aby przywrócić dane w tym samym serwerze lub komputerze, **ten serwer (`<server name>`)** > **dalej**.
+3. Na **wprowadzenie** wybierz stronę, aby przywrócić dane w tym samym serwerze lub komputerze, **ten serwer (`<server name>`)**  > **dalej**.
 
     ![Zrzut ekranu z odzyskać dane kreatora Getting Started page](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 

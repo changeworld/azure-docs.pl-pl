@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311016"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Rozproszonego śledzenia i korelacji, za pomocą komunikatów usługi Service Bus
@@ -139,7 +139,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 W tym przykładzie odbiornik rejestruje czas trwania, wynik, unikatowy identyfikator i czas rozpoczęcia dla każdej operacji usługi Service Bus.
 
-#### <a name="events"></a>Zdarzenia
+#### <a name="events"></a>Events
 
 Dla każdej operacji dwa zdarzenia są wysyłane: "Start" i "Stop". Najbardziej prawdopodobnie interesuje Cię tylko zdarzenia "Stop". One zwraca wynik operacji, a także godzina rozpoczęcia, czas trwania jako właściwości działania.
 

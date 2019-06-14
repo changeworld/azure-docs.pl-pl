@@ -15,10 +15,10 @@ ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60349985"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Zdiagnozować i rozwiązać błędy synchronizacji zduplikowanym atrybutem
@@ -71,7 +71,7 @@ W witrynie Azure portal należy wykonać kilka kroków, aby zidentyfikować konk
 | ------------------ | -----------------|
 | Nie uruchomiono | Jeszcze nie odwiedził tego procesu diagnostyki. W zależności od wyniki diagnostyki istnieje potencjalne sposób, aby naprawić błąd synchronizacji bezpośrednio z portalu. |
 | Wymagane jest ręczne wprowadzenie poprawki | Ten błąd nie mieści się kryteria dostępne poprawki z poziomu portalu. Albo wybierane powodujące konflikt nie użytkowników, lub już przeszło czynności diagnostycznych i podejmowania żadnych działań poprawka była dostępna z poziomu portalu. W tym ostatnim przypadku poprawkę ze strony w środowisku lokalnym jest nadal jedno z rozwiązań. [Dowiedz się więcej na temat poprawek lokalnych](https://support.microsoft.com/help/2647098). | 
-| Oczekuje na synchronizację | Poprawka została zastosowana. Portal czeka na następny cykl synchronizacji wyczyścić błąd. |
+| Oczekiwanie na synchronizację | Poprawka została zastosowana. Portal czeka na następny cykl synchronizacji wyczyścić błąd. |
 
   >[!IMPORTANT]
   > W kolumnie Stan diagnostyczne zostaną zresetowane po każdym cyklu synchronizacji. 

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60627273"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Jak zarządzać rejestracjami urządzeń przy użyciu SDK usługi aprowizacji urządzeń platformy Azure
@@ -21,7 +21,7 @@ A *rejestracji urządzeń* tworzy rekord pojedynczego urządzenia lub grupy urz�
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Uzyskaj parametry połączenia z wystąpienia usługi Device Provisioning.
 * Uzyskiwanie urządzenia artefaktów zabezpieczeń na potrzeby [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) używane:
-    * [**Trusted Platform Module (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
+    * [**Trusted Platform Module (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Rejestracja indywidualna: Identyfikator rejestracji i kluczem poręczenia modułu TPM z urządzenia fizycznego lub symulatora modułu TPM.
         * Grupy rejestracji nie ma zastosowania do zaświadczenia modułu TPM.
     * [**X.509**](/azure/iot-dps/concepts-security):

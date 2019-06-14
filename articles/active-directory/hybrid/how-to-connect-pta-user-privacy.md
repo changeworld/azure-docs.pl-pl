@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242381"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Uwierzytelnianie przekazywane usługi Active Directory rozwiązania prywatność użytkownika i na platformie Azure
@@ -98,7 +98,7 @@ Aby zaplanować uruchomienie tego skryptu co 48 godzin, wykonaj następujące kr
 6.  Wybierz pozycję "**codzienne**" dla **wyzwalacz zadania** i kliknij przycisk **dalej**.
 7.  Wartość cyklu dwa dni, a następnie kliknij przycisk **dalej**.
 8.  Wybierz pozycję "**uruchomić program**" jako akcję i kliknij przycisk **dalej**.
-9.  Typ "**PowerShell**"w polu dla programu/skryptu i w polu z etykietą"**Dodaj argumenty (opcjonalne)**", wprowadź pełną ścieżkę do skryptu, który został utworzony wcześniej, a następnie kliknij przycisk **dalej**.
+9.  Typ "**PowerShell**"w polu dla programu/skryptu i w polu z etykietą"**Dodaj argumenty (opcjonalne)** ", wprowadź pełną ścieżkę do skryptu, który został utworzony wcześniej, a następnie kliknij przycisk **dalej**.
 10. Następny ekran pokazuje, podsumowania zadania, które chcesz utworzyć. Sprawdź wartości, a następnie kliknij przycisk **Zakończ** do utworzenia zadania:
  
 ### <a name="note-about-domain-controller-logs"></a>Należy pamiętać o dziennikach kontrolera domeny

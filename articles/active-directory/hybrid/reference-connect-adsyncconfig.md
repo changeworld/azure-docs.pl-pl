@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381199"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncConfig
@@ -23,10 +23,10 @@ Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell
 
 ## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Pobiera nazwę konta i domeny, która jest skonfigurowana w każdym łączniku AD
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncADConnectorAccount
@@ -44,10 +44,10 @@ Get-ADSyncADConnectorAccount
 
 ## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Pobiera obiekty usługi AD za pomocą dziedziczenia uprawnień wyłączone
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
@@ -117,10 +117,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zainicjuj lasu usługi Active Directory i domeny dla podstawowych uprawnień do odczytu.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -290,10 +290,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zainicjuj lasu usługi Active Directory i domeny dla funkcji hybrydowego programu Exchange.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -457,10 +457,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zainicjuj lasu usługi Active Directory i domeny dla funkcji folderu publiczne poczty programu Exchange.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -619,10 +619,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Inicjowanie usługi Active Directory lasu i domeny, mS-DS-ConsistencyGuid funkcji.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -780,10 +780,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zainicjuj lasu usługi Active Directory i domeny do synchronizacji skrótów haseł.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -901,10 +901,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zainicjuj lasu usługi Active Directory i domeny do zapisywania zwrotnego haseł z usługi Azure AD.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -1066,12 +1066,12 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Podwyższenie poziomu uprawnień do obiektu usługi AD, w przeciwnym razie nieuwzględnione w dowolnej grupie chronionych zabezpieczeń AD.
 Typowym przykładem jest automatycznie tworzone przez usługę AAD Connect konta AD Connect (MSOL).
 To konto ma uprawnienia replikacji na wszystkich domen, jednak można zabezpieczenia można łatwo złamać, ponieważ nie jest chroniony.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential>
@@ -1197,10 +1197,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zainicjuj lasu usługi Active Directory i domeny dla zapisu zwrotnego grup z usługi Azure AD.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -1359,10 +1359,10 @@ Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (htt
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
-### <a name="synopsis"></a>STRESZCZENIE
+### <a name="synopsis"></a>SYNOPSIS
 Zawiera uprawnienia określonego obiektu usługi AD.
 
-### <a name="syntax"></a>SKŁADNIA
+### <a name="syntax"></a>SYNTAX
 
 ```
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]

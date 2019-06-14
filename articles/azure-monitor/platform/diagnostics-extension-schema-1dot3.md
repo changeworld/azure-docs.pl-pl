@@ -10,19 +10,19 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238051"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostyka 1.3 i nowsze schemat konfiguracji
 > [!NOTE]
 > Rozszerzenie diagnostyki platformy Azure to składnik używany do zbierania liczników wydajności i innych danych statystycznych od:
-> - Azure Virtual Machines
+> - Usługa Azure Virtual Machines
 > - Zestawy skali maszyn wirtualnych
 > - Service Fabric
-> - Cloud Services
+> - Usługi w chmurze
 > - Grupy zabezpieczeń sieci
 >
 > Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.
@@ -545,7 +545,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Opcjonalny atrybut:<br/><br/> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
-|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Event**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 
 
@@ -555,7 +555,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
-|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Event**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 
 
@@ -564,7 +564,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Umożliwia generowanie tabeli liczników wydajności, która jest zoptymalizowana pod kątem zapytań. Każdego licznika wydajności, która jest zdefiniowana w **liczniki wydajności** elementu są przechowywane w tabeli metryk, oprócz tabeli licznika wydajności.  
 
- **ResourceId** atrybut jest wymagany.  Identyfikator zasobu maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych są wdrażane diagnostyki platformy Azure. Pobierz **resourceID** z [witryny Azure portal](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** -> **< nazwa\>**. Kliknij przycisk **właściwości** kafelka, a następnie skopiuj wartość z **identyfikator** pola.  
+ **ResourceId** atrybut jest wymagany.  Identyfikator zasobu maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych są wdrażane diagnostyki platformy Azure. Pobierz **resourceID** z [witryny Azure portal](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** ->  **< nazwa\>** . Kliknij przycisk **właściwości** kafelka, a następnie skopiuj wartość z **identyfikator** pola.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
@@ -644,9 +644,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwa**|string|Ciąg identyfikujący sinkname.|  
+|**name**|string|Ciąg identyfikujący sinkname.|  
 
-|Element|Type|Opis|  
+|Element|Typ|Opis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|Używany tylko w przypadku wysyłania danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, który ma dostęp do.|  
 |**Channels**|string|Jeden dla każdego dodatkowego filtrowanie strumienia|  
@@ -658,7 +658,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiuje filtry dla strumieni danych dziennika przechodzi przez obiekt sink.  
 
-|Element|Type|Opis|  
+|Element|Typ|Opis|  
 |-------------|----------|-----------------|  
 |**Channel**|string|Zobacz opis w innym miejscu na tej stronie.|  
 
@@ -669,10 +669,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiuje lokalizacjach w celu wysyłania danych diagnostycznych. Na przykład usługi Application Insights.  
 
-|Atrybuty|Type|Opis|  
+|Atrybuty|Typ|Opis|  
 |----------------|----------|-----------------|  
 |**logLevel**|**ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**Nazwa**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
+|**name**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236906"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Źródła danych dziennika zdarzeń Windows w usłudze Azure Monitor
@@ -28,7 +28,7 @@ Dzienniki zdarzeń Windows są jedną z najbardziej typowych [źródeł danych](
 ## <a name="configuring-windows-event-logs"></a>Dzienniki konfigurowanie zdarzeń Windows
 Skonfiguruj dzienniki zdarzeń Windows z [menu danych w zaawansowanych ustawieniach](agent-data-sources.md#configuring-data-sources).
 
-Usługa Azure Monitor zbiera tylko zdarzenia z dzienników zdarzeń Windows, które są określone w ustawieniach.  Możesz dodać dziennik zdarzeń przez wpisanie nazwy dziennika, a następnie klikając polecenie **+**.  Dla każdego dziennika są zbierane tylko zdarzenia o ważności wybranych.  Zaznacz ważności dla określonego dziennika, które mają być zbierane.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
+Usługa Azure Monitor zbiera tylko zdarzenia z dzienników zdarzeń Windows, które są określone w ustawieniach.  Możesz dodać dziennik zdarzeń przez wpisanie nazwy dziennika, a następnie klikając polecenie **+** .  Dla każdego dziennika są zbierane tylko zdarzenia o ważności wybranych.  Zaznacz ważności dla określonego dziennika, które mają być zbierane.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
 
 Podczas wpisywania nazwy dziennika zdarzeń, usługi Azure Monitor zapewnia sugestie dotyczące nazw pospolitych dziennika zdarzeń. Jeśli dziennik, który chcesz dodać, nie ma na liście, możesz je dodać, wpisując pełną nazwę dziennika. Pełna nazwa dziennika można znaleźć za pomocą Podglądu zdarzeń. W Podglądzie zdarzeń, otwórz *właściwości* strony dziennika i skopiuj ciąg z *imię i nazwisko* pola.
 
@@ -56,7 +56,7 @@ Rekordy zdarzeń Windows mają typ **zdarzeń** i mają właściwości podane w 
 | ParameterXml |Wartości parametrów zdarzenia w formacie XML. |
 | ManagementGroupName |Nazwa grupy zarządzania agentów programu System Center Operations Manager.  W innych agentów ta wartość to `AOI-<workspace ID>` |
 | RenderedDescription |Opis zdarzenia przy użyciu wartości parametrów |
-| Element źródłowy |Źródło zdarzenia. |
+| source |Źródło zdarzenia. |
 | SourceSystem |Typ agenta, które zostały zebrane zdarzenia. <br> Łączenie OpsManager — Windows agent, bezpośrednio lub zarządzania programu Operations Manager <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
 | TimeGenerated |Data i godzina utworzenia zdarzenia w Windows. |
 | UserName |Nazwa użytkownika konta, które są rejestrowane zdarzenia. |

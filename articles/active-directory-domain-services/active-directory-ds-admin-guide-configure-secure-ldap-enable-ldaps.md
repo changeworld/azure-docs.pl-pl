@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359866"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Włączanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
@@ -31,7 +31,7 @@ Pełne [zadanie 2 — certyfikat secure LDAP do eksportowania. Plik PFX](active-
 ## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>Zadanie 3. Włączanie protokołu secure LDAP dla domeny zarządzanej przy użyciu witryny Azure portal
 Aby włączyć protokół secure LDAP, wykonaj następujące kroki konfiguracji:
 
-1. Przejdź do  **[witryny Azure portal](https://portal.azure.com)**.
+1. Przejdź do  **[witryny Azure portal](https://portal.azure.com)** .
 
 2. Wyszukaj termin "domain services" w **Wyszukaj zasoby** pola wyszukiwania. Wybierz **usług domenowych Azure AD** z wyników wyszukiwania. **Usług domenowych Azure AD** strona zawiera listę Twojej domeny zarządzanej.
 
