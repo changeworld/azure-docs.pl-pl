@@ -79,10 +79,10 @@ Poniżej przedstawiono opisy właściwości:
 | name | string | --- | Unikatowa nazwa rozszerzenia |
 | type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode | --- | Identyfikuje system operacyjny usługi Service Fabric jest uruchamianie do |
 | autoUpgradeMinorVersion | wartość PRAWDA lub FAŁSZ | --- | Włącz automatyczne uaktualnianie środowiska uruchomieniowego SF wersje pomocnicze |
-| Wydawcy | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy rozszerzenie usługi Service Fabric |
+| publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy rozszerzenie usługi Service Fabric |
 | clusterEndpont | string | --- | URI:port do punktu końcowego zarządzania |
-| elementu nodeTypeRef | string | --- | Nazwa elementu nodeType |
-| wartość durabilityLevel | brązowy, srebrny, złoty platynowy | --- | czas, mogą wstrzymać niezmienna infrastruktura platformy Azure |
+| nodeTypeRef | string | --- | Nazwa elementu nodeType |
+| durabilityLevel | brązowy, srebrny, złoty platynowy | --- | czas, mogą wstrzymać niezmienna infrastruktura platformy Azure |
 | enableParallelJobs | wartość PRAWDA lub FAŁSZ | --- | Włącz ParallelJobs obliczeniowe, takie jak usuwanie maszyny Wirtualnej i uruchom ponownie maszynę Wirtualną w tej samej skali ustawiony w sposób równoległy |
 | nicPrefixOverride | string | --- | Prefiks podsieci, takich jak "10.0.0.0/24" |
 | commonNames | ciąg] | --- | Nazwy pospolite certyfikatów zainstalowanych klastra |
