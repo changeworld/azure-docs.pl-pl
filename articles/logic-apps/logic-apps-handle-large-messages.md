@@ -140,8 +140,8 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
      | Aplikacje logiki żądania pole nagłówka | Wartość | Type | Opis |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | Zakres bajtów dla bieżącego fragmentu zawartości, łącznie z wartością początkową końcową wartość i łączny rozmiar zawartości, na przykład: "bajtów = 0-1023/10100" |
-     | **Typ zawartości** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
-     | **Długość zawartości** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
+     | **Content-Type** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
+     | **Content-Length** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
      |||||
 
 4. Po wykonaniu każdego żądania PATCH punktu końcowego potwierdza potwierdzenia dla każdego fragmentu odpowiedzi z kodem stanu "200".
