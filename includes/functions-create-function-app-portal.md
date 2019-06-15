@@ -9,10 +9,10 @@ ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66131579"
 ---
 1. Wybierz **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure portal, następnie wybierz opcję **obliczenia** > **aplikacji funkcji**.

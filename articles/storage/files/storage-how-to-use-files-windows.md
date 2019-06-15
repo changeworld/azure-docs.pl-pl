@@ -9,10 +9,10 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926273"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
@@ -24,15 +24,15 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
 | Wersja systemu Windows        | Wersja protokołu SMB | Możliwa instalacja na maszynie wirtualnej platformy Azure | Możliwa instalacja w środowisku lokalnym |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server 2016    | SMB 3.0     | Yes                   | Yes                  |
-| Windows 8.1            | SMB 3.0     | Yes                   | Yes                  |
-| Windows Server 2012 R2 | SMB 3.0     | Yes                   | Yes                  |
-| Windows Server 2012    | SMB 3.0     | Yes                   | Yes                  |
+| Windows Server 2019    | SMB 3.0 | Tak | Tak |
+| Windows 10<sup>1</sup> | SMB 3.0 | Tak | Yes |
+| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Tak | Yes |
+| Windows Server 2016    | SMB 3.0     | Tak                   | Tak                  |
+| Windows 8.1            | SMB 3.0     | Tak                   | Tak                  |
+| Windows Server 2012 R2 | SMB 3.0     | Tak                   | Tak                  |
+| Windows Server 2012    | SMB 3.0     | Yes                   | Tak                  |
 | Windows 7              | SMB 2.1     | Yes                   | Nie                   |
-| Windows Server 2008 R2 | SMB 2.1     | Yes                   | Nie                   |
+| Windows Server 2008 R2 | SMB 2.1     | Tak                   | Nie                   |
 
 <sup>1</sup>Windows 10, wersje 1507, 1607, 1703, 1709, 1803 i 1809.  
 <sup>2</sup>Windows Server, wersje 1709 i 1803.
@@ -234,9 +234,9 @@ W poniższej tabeli zebrano szczegółowe informacje dotyczące stanu protokołu
 
 | Wersja systemu Windows                           | Domyślny stan protokołu SMB 1 | Metoda wyłączenia lub usunięcia       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019 (wersja zapoznawcza)             | Disabled (Wyłączony)             | Usunięcie za pomocą funkcji systemu Windows |
-| Windows Server w wersjach 1709+            | Disabled (Wyłączony)             | Usunięcie za pomocą funkcji systemu Windows |
-| Windows 10 w wersjach 1709+                | Disabled (Wyłączony)             | Usunięcie za pomocą funkcji systemu Windows |
+| Windows Server 2019 (wersja zapoznawcza)             | Wyłączone             | Usunięcie za pomocą funkcji systemu Windows |
+| Windows Server w wersjach 1709+            | Wyłączone             | Usunięcie za pomocą funkcji systemu Windows |
+| Windows 10 w wersjach 1709+                | Wyłączone             | Usunięcie za pomocą funkcji systemu Windows |
 | Windows Server 2016                       | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows |
 | Windows 10 w wersjach 1507, 1607 i 1703 | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows |
 | Windows Server 2012 R2                    | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows | 

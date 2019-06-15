@@ -9,10 +9,10 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244931"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
@@ -112,10 +112,10 @@ Ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akc
 ### <a name="property-descriptions"></a>Opisy właściwości
 | Nazwa elementu | Opis |
 | --- | --- |
-| Autoryzacja |Obiekt blob RBAC właściwości zdarzenia. Zazwyczaj zawiera właściwości "action", "roli" i "scope". |
+| authorization |Obiekt blob RBAC właściwości zdarzenia. Zazwyczaj zawiera właściwości "action", "roli" i "scope". |
 | Obiekt wywołujący |Adres e-mail użytkownika, który wykonał operację, oświadczenia nazwy UPN lub nazwy SPN oświadczenia na podstawie dostępności. |
 | kanały |Jeden z następujących wartości: "Admin", "Operacja" |
-| oświadczenia |Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
+| claims |Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
 | description |Statyczny tekst opisu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
@@ -354,7 +354,7 @@ Ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest 
 | --- | --- |
 | Obiekt wywołujący | Zawsze Microsoft.Insights/alertRules |
 | kanały | Zawsze "Admin, operacji" |
-| oświadczenia | Obiekt blob JSON z typem nazwy SPN (główna nazwa usługi) lub zasobu, aparat alertów. |
+| claims | Obiekt blob JSON z typem nazwy SPN (główna nazwa usługi) lub zasobu, aparat alertów. |
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Opis statyczny tekst alertu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia alertów. |
@@ -464,7 +464,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat s
 | --- | --- |
 | Obiekt wywołujący | Always Microsoft.Insights/autoscaleSettings |
 | kanały | Zawsze "Admin, operacji" |
-| oświadczenia | Obiekt blob JSON z typem nazwy SPN (główna nazwa usługi) lub zasobu, aparat skalowania automatycznego. |
+| claims | Obiekt blob JSON z typem nazwy SPN (główna nazwa usługi) lub zasobu, aparat skalowania automatycznego. |
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Statyczny tekst opisu zdarzenia skalowania automatycznego. |
 | eventDataId |Unikatowy identyfikator zdarzenia skalowania automatycznego. |
@@ -743,10 +743,10 @@ Ta kategoria zawiera rekordy wszystkich efekt działania operacji wykonywanych p
 
 | Nazwa elementu | Opis |
 | --- | --- |
-| Autoryzacja | Tablica RBAC właściwości zdarzenia. Dla nowych zasobów jest to akcja i zakres żądania, która wyzwoliła oceny. Dla istniejących zasobów akcja jest "Microsoft.Resources/checkPolicyCompliance/read". |
+| authorization | Tablica RBAC właściwości zdarzenia. Dla nowych zasobów jest to akcja i zakres żądania, która wyzwoliła oceny. Dla istniejących zasobów akcja jest "Microsoft.Resources/checkPolicyCompliance/read". |
 | Obiekt wywołujący | Dla nowych zasobów, tożsamość, która zainicjowała wdrożenia. Dla istniejących zasobów, identyfikator GUID RP szczegółowych informacji programu Microsoft Azure zasad. |
 | kanały | Zdarzenia dotyczące zasad można użyć tylko kanału "Działania". |
-| oświadczenia | Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
+| claims | Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
 | correlationId | Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
 | description | To pole jest puste w przypadku zdarzenia dotyczące zasad. |
 | eventDataId | Unikatowy identyfikator zdarzenia. |

@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 247d959abadc92d70bdd60555a090986743e9322
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002070"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Nawiązać połączenie z kontem Google Cloud Platform
@@ -63,7 +63,7 @@ Aby zebrać informacje użycia i zasobów, Cloudyn musi następujące Google Clo
 
 1. Otwórz Cloudyn portal z witryny Azure portal lub przejdź do [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) i zaloguj się.
 2. Kliknij przycisk **ustawienia** (symbol koła zębatego), a następnie wybierz **kont w chmurze**.
-3. W **Zarządzanie kontami**, wybierz opcję **kont Google** kartę, a następnie kliknij przycisk **Dodaj nowe +**.
+3. W **Zarządzanie kontami**, wybierz opcję **kont Google** kartę, a następnie kliknij przycisk **Dodaj nowe +** .
 4. W **nazwa konta Google**, wprowadź adres e-mail konta rozliczeniowego, a następnie kliknij przycisk **dalej**.
 5. W oknie dialogowym uwierzytelniania Google, wybierz lub wprowadź konto Google i następnie **Zezwalaj** cloudyn.com dostęp do Twojego konta.
 6. Dodaj informacje o projekcie żądania zauważyć, że mamy poprzedniego. Obejmują one **identyfikator projektu**, **projektu** nazwy **rozliczeń** Nazwa zasobnika i **rozliczeń pliku** prefiks raportu, a następnie kliknij przycisk  **Zapisz**.  

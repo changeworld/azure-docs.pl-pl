@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66154351"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Skonfiguruj rozwiązanie Oracle ASM na maszynie wirtualnej z systemem Linux na platformie Azure  
@@ -529,8 +529,8 @@ Aby skonfigurować instalację programu Oracle ASM, wykonaj następujące czynno
 
 5. W **Utwórz grupę dysku** okno dialogowe:
 
-   - Wprowadź nazwę grupy dysków **(FRA)**.
-   - W obszarze **nadmiarowości**, wybierz opcję **zewnętrzne (Brak)**.
+   - Wprowadź nazwę grupy dysków **(FRA)** .
+   - W obszarze **nadmiarowości**, wybierz opcję **zewnętrzne (Brak)** .
    - W obszarze **Wybierz dyski elementu członkowskiego**, wybierz opcję **ORCL_FRA**.
    - W obszarze **rozmiar jednostki alokacji**, wybierz opcję **4**.
    - Kliknij przycisk `ok` do utworzenia grupy dysków.

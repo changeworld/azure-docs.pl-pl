@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc81f0a5c75d9aeee39f0633521d692c8d30c474
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111807"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -77,7 +77,7 @@ Zasady można użyć, aby ustawić czas, po pierwszym tokenu sesji został wysta
 Zasady okres istnienia tokenu jest typem obiektu zasad, który zawiera reguły okres istnienia tokenu. Właściwości zasady umożliwiają kontrolowanie określonego okresów istnienia tokenu. Jeśli żadna zasada jest ustawiona, system wymusza domyślną wartość okresu istnienia.
 
 ### <a name="configurable-token-lifetime-properties"></a>Właściwości można skonfigurować okres istnienia tokenu
-| Właściwość | Ciąg właściwości zasad | Dotyczy | Domyślne | Minimum | Maksimum |
+| Właściwość | Ciąg właściwości zasad | Dotyczy | Domyślne | Minimalne | Maksimum |
 | --- | --- | --- | --- | --- | --- |
 | Okres istnienia tokenu dostępu |AccessTokenLifetime |Tokeny dostępu, tokeny Identyfikatora, SAML2 tokenów |1 godzina |10 minut |1 dzień |
 | Odświeżanie tokenu maksymalny czas nieaktywny |MaxInactiveTime |Tokenów odświeżania |90 dni |10 minut |90 dni |
@@ -91,7 +91,7 @@ Zasady okres istnienia tokenu jest typem obiektu zasad, który zawiera reguły o
 ### <a name="exceptions"></a>Wyjątki
 | Właściwość | Dotyczy | Domyślne |
 | --- | --- | --- |
-| Odświeżanie tokenu maksymalny wiek (wydane dla użytkowników federacyjnych, posiadający odwołanie za mało informacji<sup>1</sup>) |Tokenów odświeżania (wydane dla użytkowników federacyjnych, posiadający odwołanie za mało informacji<sup>1</sup>) |12 godzin |
+| Odświeżanie tokenu maksymalny wiek (wydane dla użytkowników federacyjnych, posiadający odwołanie za mało informacji<sup>1</sup>) |Tokenów odświeżania (wydane dla użytkowników federacyjnych, posiadający odwołanie za mało informacji<sup>1</sup>) |12 godz. |
 | Odświeżanie tokenu czas nieaktywności Max (wystawiony dla poufnych klientów) |Odśwież tokeny (wystawione dla poufnych klientów) |90 dni |
 | Odświeżanie tokenu maksymalny wiek (wystawiony dla poufnych klientów) |Odśwież tokeny (wystawione dla poufnych klientów) |Until-revoked |
 

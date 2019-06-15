@@ -9,10 +9,10 @@ ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
 ms.openlocfilehash: 63f59d59712d851f9bb7ace27335fe665a598f9f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66477921"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
@@ -184,7 +184,7 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 | resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem. |
 | properties |Zestaw `<Key, Value>` pary (czyli `Dictionary<String, String>`) zawierającą szczegółowe informacje o zdarzeniu. |
 | zdarzenie |Element, który zawiera metadane dotyczące zdarzenia. |
-| Autoryzacja |Kontrola dostępu oparta na rolach właściwości zdarzenia. Zazwyczaj są to właściwości akcji, roli i zakresu. |
+| authorization |Kontrola dostępu oparta na rolach właściwości zdarzenia. Zazwyczaj są to właściwości akcji, roli i zakresu. |
 | category |Kategoria zdarzenia. Obsługiwane wartości to administracyjne, alertów, zabezpieczeń, ServiceHealth i zalecenia. |
 | Obiekt wywołujący |Adres e-mail użytkownika, który wykonał operację, oświadczenia nazwy UPN lub nazwy SPN oświadczenia na podstawie dostępności. Może mieć wartości null dla niektórych wywołań systemowych. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia przy użyciu correlationId należą do tego samego działania większych i zazwyczaj udostępnianie correlationId. |

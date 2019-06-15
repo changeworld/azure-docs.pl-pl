@@ -9,10 +9,10 @@ ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755618"
 ---
 Magazyn zoptymalizowanych rozmiarów maszyn wirtualnych zapewniają Wysoka przepływność dysku i we/wy oraz idealnie nadają się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych.  Przykłady obejmują bazy danych Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu lokalnego dla każdego rozmiaru zoptymalizowane.

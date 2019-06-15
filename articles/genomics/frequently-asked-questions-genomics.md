@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
 ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792632"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Często zadawane pytania
@@ -74,7 +74,7 @@ Klucz konta magazynu jest używane do tworzenia krótkoterminowych tokenów dost
 
 Te odwołania są obsługiwane:
 
- |Odwołanie              | Wartość `-pa/--process-args` |
+ |Tematy pomocy              | Wartość `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -91,7 +91,7 @@ modułu msgen rozumie pliki konfiguracyjne w następującym formacie:
 
   |argument wiersza polecenia            | Wiersz w pliku konfiguracji |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
+  |`-u/--api-url-base https://url`  | *api_url_base: https://url*    |
   |`-k/--access-key KEY`            | *access_key:key*              |      
   |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 

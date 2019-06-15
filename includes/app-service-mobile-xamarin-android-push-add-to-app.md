@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140227"
 ---
 1. Utwórz nową klasę w projekcie o nazwie `ToDoBroadcastReceiver`.
@@ -66,7 +66,7 @@ ms.locfileid: "66140227"
     Należy zauważyć, że ta klasa jest pochodną **GcmServiceBase** i **usługi** należy zastosować atrybut do tej klasy.
 
     > [!NOTE]
-    > **GcmServiceBase** klasy implementuje **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** i  **OnError()** metody. Konieczne jest przesłonięcie tych metod w **PushHandlerService** klasy.
+    > **GcmServiceBase** klasy implementuje **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** i  **OnError()** metody. Konieczne jest przesłonięcie tych metod w **PushHandlerService** klasy.
 
 6. Dodaj następujący kod do **PushHandlerService** klasę, która zastępuje **OnRegistered** programu obsługi zdarzeń.
 

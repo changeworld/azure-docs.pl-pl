@@ -11,10 +11,10 @@ ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236578"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
@@ -27,7 +27,7 @@ A *migawki magazynu danych* tworzy punkt przywracania, można wykorzystać, aby 
 
 A *przywracania z magazynu danych* nowego magazynu danych, który jest tworzony z punktu przywracania do istniejącego lub usunięty magazyn danych. Przywracanie magazynu danych jest fundamentalna część każdej strategii odzyskiwania firmy, jak ciągłość działalności biznesowej i odzyskiwanie po awarii, ponieważ ponownie tworzy dane po przypadkowym uszkodzeniem lub usunięciem. Magazyn danych jest również zaawansowanym mechanizmem służącym do tworzenia kopii magazynu danych do celów testowych lub badawczych.  Usługa SQL Data Warehouse przywracania stawki mogą się różnić w zależności od rozmiaru bazy danych i lokalizacji magazynu danych źródłowych i docelowych. Średnio w tym samym regionie szybkości przywracania zwykle po około 20 minut. 
 
-## <a name="automatic-restore-points"></a>Automatyczne punkty przywracania
+## <a name="automatic-restore-points"></a>Punkty przywracania na automatyczny
 
 Migawki to wbudowana funkcja usług, który tworzy punktów przywracania. Nie masz umożliwiających włączenie tej funkcji. Obecnie automatyczne punkty przywracania nie można usunąć przez użytkowników, których używa usługi, przywracania wskazuje Obsługa umowy SLA dla odzyskiwania.
 
@@ -42,7 +42,7 @@ order by run_id desc
 ;
 ```
 
-## <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
+## <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowanych przez użytkownika
 
 Ta funkcja umożliwia ręcznie wyzwalacza migawki do utworzenia punktów przywracania z magazynu danych, przed i po duże zmiany. Ta funkcja zapewnia, że punkty przywracania są logicznie spójnego zapewniającą dodatkowej ochrony danych w przypadku dowolnego obciążenia przerw i błędy użytkowników dla czasu Szybkie odzyskiwanie. Punkty przywracania na zdefiniowanych przez użytkownika są dostępne przez siedem dni i są automatycznie usuwane w Twoim imieniu. Nie można zmienić okres przechowywania punktów przywracania zdefiniowanych przez użytkownika. **punkty przywracania 42 zdefiniowanych przez użytkownika** jest gwarantowana w dowolnym momencie w czasie, więc muszą być [usunięte](https://go.microsoft.com/fwlink/?linkid=875299) przed utworzeniem innego punktu przywracania. Możesz wyzwolić migawki do utworzenia punktów przywracania zdefiniowanych przez użytkownika za pośrednictwem [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) lub witrynie Azure portal.
 

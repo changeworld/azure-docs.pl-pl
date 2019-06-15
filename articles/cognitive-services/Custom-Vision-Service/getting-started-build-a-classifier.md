@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
 ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66497304"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
@@ -70,8 +70,8 @@ Aby skutecznie nauczenia modelu, należy używać obrazów z różnymi visual. W
 * Tło
 * Styl wizualny
 * osoba/pogrupowane subject(s)
-* Rozmiar
-* — typ
+* size
+* type
 
 Dodatkowo należy upewnić się, że wszystkie Twoje uczone obrazy spełniają następujące kryteria:
 * format JPG, PNG lub bmp

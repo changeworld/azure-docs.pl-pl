@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967956"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
@@ -126,11 +126,11 @@ Można skojarzyć wiele węzłów, instalując oprogramowanie Self-Hosted integr
 
 ### <a name="scale-considerations"></a>Zagadnienia dotyczące skalowania
 
-#### <a name="scale-out"></a>Skaluj w poziomie
+#### <a name="scale-out"></a>Skalowanie w poziomie
 
 Gdy ilość dostępnej pamięci na własne środowisko IR jest niska, a użycie procesora CPU jest wysokie, dodanie nowego węzła ułatwia skalowanie obciążenia między maszynami. Jeśli działania kończą się niepowodzeniem, ponieważ jesteś limit czasu lub ponieważ samodzielnie hostowany węzeł IR jest w trybie offline, pomaga Jeśli dodasz węzeł do bramy.
 
-#### <a name="scale-up"></a>Skaluj w górę
+#### <a name="scale-up"></a>Skalowanie w górę
 
 Gdy ilość dostępnej pamięci i procesora CPU nie mogą być wykorzystane dobrze, ale wykonanie równoczesnych zadań zbliża się limit, powinien skalowanie w górę, zwiększając liczbę współbieżnych zadań, które można uruchomić w węźle. Można również skalować w górę, gdy działania przekraczają limit, ponieważ własne środowisko IR jest przeciążony. Jak pokazano na poniższej ilustracji, można zwiększyć maksymalną pojemność dla węzła:  
 

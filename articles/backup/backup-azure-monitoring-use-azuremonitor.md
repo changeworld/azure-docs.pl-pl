@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734860"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808526"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -257,7 +257,7 @@ W tym miejscu jest magazyn usługi Recovery Services, sam zasób i dlatego nale�
 Powiadomienia za pomocą dzienników aktywności można zastosować, ***usługi Azure Backup zdecydowanie zaleca się na potrzeby monitorowania w skali i nie Dzienniki aktywności z następujących powodów LA***.
 
 - **Ograniczonej liczbie scenariuszy:** Dotyczy tylko tworzenia kopii zapasowych maszyn wirtualnych platformy Azure i należy powtórzyć dla każdego magazynu RS.
-- **Definicja dopasowania:** Zaplanowane działania tworzenia kopii zapasowej nie mieści się przy użyciu najnowszej definicji dzienników aktywności i zgodne z [dzienniki diagnostyczne](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). To doprowadzić do nieoczekiwanego wpływ po zmianie danych przekazywanie za pośrednictwem kanału dzienników aktywności jako wskaźnik poniżej.
+- **Definicja dopasowania:** Zaplanowane działania tworzenia kopii zapasowej nie mieści się przy użyciu najnowszej definicji dzienników aktywności i zgodne z [dzienniki diagnostyczne](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). To doprowadzić do nieoczekiwanego wpływ po zmianie danych przekazywanie za pośrednictwem kanału dzienników aktywności jako wskaźnik poniżej.
 - **Problemy z kanałem dziennik aktywności:** Został przeniesiony do nowego modelu programu Przekazywanie dzienników aktywności usługi Azure Backup na magazynów usługi Recovery Services. Niestety przeniesienie ma wpływ na generowanie dzienników aktywności w chmurach suwerennych platformy Azure. Jeśli użytkownicy suwerennych w chmurze platformy Azure utworzona lub skonfigurowany alerty od dzienników aktywności za pośrednictwem usługi Azure Monitor, nie będą one wyzwolone. Ponadto w przypadku wszystkich publicznych regionach platformy Azure, jeśli użytkownika jest zbieranie dzienników aktywności usługi odzyskiwania do obszaru roboczego analizy dzienników, jak wspomniano wcześniej [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), te dzienniki również nie było wyświetlane.
 
 Dlatego zdecydowanie zaleca się używać obszaru roboczego analizy dzienników na potrzeby monitorowania i alertów na dużą skalę dla kopii zapasowej Azure chronionych obciążeń.

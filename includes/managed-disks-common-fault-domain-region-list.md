@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
 ms.openlocfilehash: 0ee40c3ad692deccbc185fa7f8e51dd25eeaf95d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66164515"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Liczba domen błędów na region
 
-| Obszar              | Maksymalna liczba domen błędów  |
+| Region              | Maksymalna liczba domen błędów  |
 |---------------------|-------------------------|
 | Wschodnie stany USA             | 3                       |
 | Wschodnie stany USA 2           | 3                       |
@@ -21,14 +21,14 @@ ms.locfileid: "66164515"
 | Zachodnie stany USA 2           | 2                       |
 | Środkowe stany USA          | 3                       |
 | Środkowo-północne stany USA    | 3                       |
-| Południowo-środkowe stany USA    | 3                       |
-| Zachodnio-środkowe stany USA     | 2                       |
+| Środkowo-południowe stany USA    | 3                       |
+| Środkowo-zachodnie stany USA     | 2                       |
 | Kanada Środkowa      | 3                      |
 | Kanada Wschodnia         | 2                       |
 |                     |                         |
 | Europa Północna        | 3                       |
 | Europa Zachodnia         | 3                       |
-| Zjednoczone Królestwo (południe)            | 2                       |
+| Południowe Zjednoczone Królestwo            | 2                       |
 | Zachodnie Zjednoczone Królestwo             | 2                       |
 |                     |                         |
 | Azja Wschodnia           | 2                       |
@@ -46,8 +46,8 @@ ms.locfileid: "66164515"
 |                     |                         |
 | Brazylia Południowa        | 2                       |
 |                     |                         |
-| US Gov Wirginia     | 2                       |
-| US Gov Teksas        | 2                       |
-| US Gov Arizona      | 2                       |
-| Środkowe stany USA — DoD      | 2                       |
-| Wschodnie stany USA — DoD         | 2                       |
+| Administracja USA — Wirginia     | 2                       |
+| Administracja USA — Teksas        | 2                       |
+| Administracja USA — Arizona      | 2                       |
+| US DoD — środkowe stany      | 2                       |
+| US DoD — wschodnie stany         | 2                       |

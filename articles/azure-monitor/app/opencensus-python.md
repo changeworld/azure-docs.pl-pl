@@ -10,10 +10,10 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957246"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Zbierać ślady rozproszonych za pomocą języka Python (wersja zapoznawcza)
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
+## <a name="create-application-insights-resource"></a>Utwórz zasób usługi Application Insights
 
 Najpierw należy utworzyć zasób usługi Application Insights, który generuje key(ikey) instrumentacji. Klucz Instrumentacji jest następnie używany do konfigurowania lokalnego usługi przesyłania dalej wysyłanie rozproszone śledzenie z OpenCensus instrumentacji aplikacji do usługi Application Insights.   
 

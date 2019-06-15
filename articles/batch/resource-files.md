@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
 ms.openlocfilehash: 113faffb0ebac50a67c96ce21e0ee2c1564bb4fc
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65405639"
 ---
 # <a name="creating-and-using-resource-files"></a>Tworzenie i używanie plików zasobów
@@ -80,7 +80,7 @@ Za pomocą połączonego konta magazynu, nie trzeba tworzyć i konfigurować adr
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 ```
 
-### <a name="web-endpoint"></a>Internetowy punkt końcowy
+### <a name="web-endpoint"></a>Punkt końcowy sieci Web
 
 Dane, które nie są przekazywane do usługi Azure Storage, nadal może służyć do tworzenia plików zasobów. Możesz określić każdy prawidłowy adres HTTP URL zawierających dane wejściowe. Adres URL jest dostarczany do interfejsu API usługi Batch, a następnie dane jest używane do utworzenia pliku zasobów.
 

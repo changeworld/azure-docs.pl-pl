@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1985b7bbcfdaab2aa303f67a9b1d090c85eedd5d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825207"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
@@ -61,7 +61,7 @@ Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość
 
 
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres zwrotny jest niezgodny z adresami zwrotnymi skonfigurowanymi dla aplikacji
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres, który jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji
 
 *Błąd AADSTS50011: Adres zwrotny "https:\//contoso.com" jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji*
 
@@ -146,7 +146,7 @@ Po krótkim czasie użytkowników, dla których wybrano będą mogli uruchamiać
 Usługa Azure AD nie obsługuje żądania języka SAML wysłanego przez aplikację na potrzeby logowania jednokrotnego. Niektóre typowe problemy to:
 
 -   Brak wymaganych pól w żądaniu języka SAML
--   Zakodowana metoda żądania SAML
+-   SAML zakodowana metoda żądania
 
 **Rozdzielczość**
 
@@ -263,7 +263,7 @@ Usuń adresy URL odpowiedzi nieużywane, skonfigurowane dla aplikacji.
 
 6.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7.  Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)**, Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po załadowaniu aplikacji otwórz **podstawową konfigurację protokołu SAML**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)** , Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problem podczas dostosowywania oświadczenia języka SAML wysyłane do aplikacji
 

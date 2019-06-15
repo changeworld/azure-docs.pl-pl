@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: absha
 ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963732"
 ---
-# <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
+# <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
 Można użyć możliwości usługi Azure Monitor usługi ExpressRoute w [rozwiązania Network Performance Monitor](network-performance-monitor.md) do monitorowania łączności end-to-end i wydajności między oddziałami i platformy Azure, za pośrednictwem usługi Azure ExpressRoute. Dostępne są następujące kluczowe korzyści: 
 
@@ -28,7 +28,7 @@ Można użyć możliwości usługi Azure Monitor usługi ExpressRoute w [rozwią
 - Śledzenie wykorzystania przepustowości, strat i opóźnień w poziomie obwodu, komunikacji równorzędnej i siecią wirtualną platformy Azure dla usługi ExpressRoute.
 - Odnajdywanie topologii sieci dla obwodów usługi ExpressRoute.
 
-![Monitor usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-intro.png)
+![ExpressRoute Monitor](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfigurowanie 
 Aby otworzyć konfigurację rozwiązania Network Performance Monitor, otwórz [rozwiązania Network Performance Monitor](network-performance-monitor.md) i wybierz **Konfiguruj**.

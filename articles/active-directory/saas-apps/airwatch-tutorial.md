@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 301d008c8ebdb66a58674876937b13dcfa15c79d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899201"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją AirWatch
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji AirWatch z usługą Azure AD, musisz do
 
 **Aby dodać aplikację AirWatch z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -282,7 +282,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji AirWat
   
    ![Użytkownicy](./media/airwatch-tutorial/ic791929.png "Użytkownicy")
 
-3. W menu **Users** (Użytkownicy) kliknij pozycję **List View** (Widok listy), a następnie kliknij pozycję **Add (Dodaj) \> Add User (Dodaj użytkownika)**.
+3. W menu **Users** (Użytkownicy) kliknij pozycję **List View** (Widok listy), a następnie kliknij pozycję **Add (Dodaj) \> Add User (Dodaj użytkownika)** .
   
    ![Dodawanie użytkownika](./media/airwatch-tutorial/ic791930.png "Dodawanie użytkownika")
 
@@ -303,7 +303,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka AirWatch w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji AirWatch, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
