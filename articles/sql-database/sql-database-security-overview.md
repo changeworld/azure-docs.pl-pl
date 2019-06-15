@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6b9a5ca350377777beebda24e52bc678c976ad19
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070198"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -100,7 +100,7 @@ Usługa SQL Database zabezpiecza dane klienta dzięki szyfrowaniu danych w ruchu
 
 SQL Server wymusza szyfrowania (SSL/TLS) na wszystkie godziny dla wszystkich połączeń. Dzięki temu wszystkie dane są szyfrowane "przesyłanych" między klientem i serwerem, niezależnie od ustawienia **Szyfruj** lub **TrustServerCertificate** w parametrach połączenia.
 
-Najlepszym rozwiązaniem, zalecamy w połączeniu aplikacji ciągu możesz określić szyfrowanego połączenia i _**nie**_ ufać certyfikatowi serwera. Zmusza to aplikację, aby zweryfikować certyfikat serwera i uniemożliwia aplikacji jest narażony na ataki typu man w atakach typu środkowej.
+Najlepszym rozwiązaniem, zalecamy w połączeniu aplikacji ciągu możesz określić szyfrowanego połączenia i _**nie**_ ufać certyfikatowi serwera. To wymusi aplikację, aby zweryfikować certyfikat serwera i uniemożliwia aplikacji jest narażony na ataki typu man w atakach typu środkowej.
 
 Na przykład używając sterownika ADO.NET jest to realizowane za pośrednictwem **Encrypt = True** i **TrustServerCertificate = False**. Parametry połączenia można uzyskać w witrynie Azure portal, mają prawidłowe ustawienia.
 

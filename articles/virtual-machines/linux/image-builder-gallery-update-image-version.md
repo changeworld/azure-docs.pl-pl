@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: 31ef53abcf9b416500ee70e42cc3cbd12cb11f35
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65159543"
 ---
 # <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Wersja zapoznawcza: Utwórz nową wersję obrazu z istniejącą wersję obrazu za pomocą Kreatora obrazów platformy Azure

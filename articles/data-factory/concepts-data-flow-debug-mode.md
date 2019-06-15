@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.openlocfilehash: a50778db5fd57202c17f05407045259371912586
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66239188"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Tryb debugowania przepływu danych mapowania
@@ -22,7 +22,7 @@ Azure Data Factory mapowania przepływ danych ma tryb debugowania, które mogą 
 
 ![Debugowanie przycisk](media/data-flow/debugbutton.png "przycisk debugowania")
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Gdy tryb debugowania jest włączona, interaktywnie utworzysz przepływ danych z aktywnego klastra Spark. Sesja zostanie zamknięte po wyłączeniu debugowania w usłudze Azure Data Factory. Należy pamiętać o godzinowe opłaty naliczane przez usługi Azure Databricks w czasie, czy masz włączony sesji debugowania.
 
 W większości przypadków jest dobrą praktyką jest tworzenie przepływu danych w trybie debugowania, tak że można sprawdzać poprawność logiki biznesowej i wyświetlić przekształceń danych, przed opublikowaniem swoją pracę w usłudze Azure Data Factory. Należy również użyj przycisku "Debugowanie" na panelu potoku na przetestowanie przepływu danych w potoku.

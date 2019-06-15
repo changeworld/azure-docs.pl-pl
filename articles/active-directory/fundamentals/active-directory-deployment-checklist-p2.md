@@ -1,5 +1,5 @@
 ---
-title: Lista kontrolna wdrażania usługi Azure AD
+title: Lista kontrolna dotycząca wdrażania usługi Azure AD
 description: Usługa Azure Active Directory funkcji listy kontrolnej dotyczącej wdrożenia
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b0844030d069fba40bfd2fdf55252d8b9e3b1c2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e668a5238859d8cd8c2a7797200a12197ce72be9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110470"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Przewodnik wdrażania funkcji w usłudze Azure Active Directory
 

@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523070"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
@@ -93,7 +93,7 @@ Poświęć chwilę, aby przejrzeć wybrane opcje. Po uruchomieniu kreatora, stru
 
    ![Definicja indeksu obiektu blob](media/search-howto-index-json/import-wizard-json-index.png)
 
-### <a name="6---create-indexer"></a>6. Tworzenie indeksatora
+### <a name="6---create-indexer"></a>6\. Tworzenie indeksatora
 
 W pełni określona, Kreator tworzy trzy różne obiekty w usłudze wyszukiwania. Obiekt źródła danych i indeksu obiektu są zapisywane jako o nazwie zasoby w usłudze Azure Search. Ostatnim krokiem tworzy obiekt indeksatora. Nazewnictwo indeksatora umożliwia mu istnieje jako zasób autonomicznych, której możliwe jest planowanie i zarządzanie nimi niezależnie od obiektu źródłowego indeksu i danych, tworzone po kolei kreatora.
 

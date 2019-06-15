@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80680de6602b26488a8bade8a69fdd85b7f83ed1
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9246d7bd48579def171986606e88c09593029aa2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729945"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108153"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory
 
@@ -41,7 +41,7 @@ Istnieją cztery główne typy aplikacji, które można dodać do swojej **aplik
 -   **Aplikacje spoza galerii** — Przenoszenie własnych aplikacji! Obsługuje logowanie jednokrotne dla innych aplikacji przez dodanie ich do usługi Azure AD. Można zintegrować dowolny link sieci web, który ma lub dowolnej aplikacji, która renderuje pole nazwy użytkownika i hasła, obsługuje protokoły SAML lub OpenID Connect lub obsługuje standard SCIM. Aby uzyskać więcej informacji, zobacz [skonfigurować logowanie jednokrotne dla aplikacji spoza galerii](configure-single-sign-on-non-gallery-applications.md).
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Zarządzanie ryzykiem przy użyciu zasad dostępu warunkowego
-Sprzężenia Azure AD logowania jednokrotnego (SSO) przy użyciu [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) zapewnia wysoki poziom zabezpieczeń do uzyskiwania dostępu do aplikacji. Możliwości zabezpieczeń obejmują ochronę tożsamości w skali chmury, kontrolę dostępu opartą na ryzyku, natywne uwierzytelnianie wieloskładnikowe oraz zasady dostępu warunkowego. Te funkcje pozwalają na stosowanie zasad szczegółowej kontroli w oparciu o aplikacje lub grupy, które potrzebują wyższego poziomu zabezpieczeń.
+Sprzężenia Azure AD logowania jednokrotnego (SSO) przy użyciu [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) zapewnia wysoki poziom zabezpieczeń do uzyskiwania dostępu do aplikacji. Funkcje zabezpieczeń obejmują ochronę tożsamości w skali chmury, kontrola dostępu oparta na ryzyko, natywne uwierzytelnianie wieloskładnikowe i zasady dostępu warunkowego. Te funkcje pozwalają na stosowanie zasad szczegółowej kontroli w oparciu o aplikacje lub grupy, które potrzebują wyższego poziomu zabezpieczeń.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Zwiększanie produktywności dzięki logowaniu jednokrotnemu
 Włączenie logowania jednokrotnego w aplikacjach i usłudze Office 365 zapewnia doskonałe środowisko logowania dla istniejących użytkowników dzięki ograniczeniu lub wyeliminowaniu monitów dotyczących logowania. Środowisko użytkownika wydaje się bardziej spójne i mniej rozpraszające bez wielu monitów i potrzeby zarządzania wieloma hasłami. Grupa biznesowa może zarządzać dostępem i zatwierdzać go za pośrednictwem samoobsługi i członkostwa dynamicznego. Zezwolenie odpowiednim osobom osób w firmie na zarządzanie dostępem do aplikacji zwiększa bezpieczeństwo systemu tożsamości.

@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791905"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
@@ -66,14 +66,14 @@ Można skonfiguruj baz danych Azure SQL i wystąpienie bazy danych, aby zebrać 
 | :------------------- | ----- | ----- |
 | [Podstawowe metryki](#basic-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Tak | Nie |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Tak | Tak |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany) są takie procesora CPU, DZIENNIKÓW i blokowanie. | Tak | Tak |
-| [Błędy](#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Tak | Tak |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu bazy danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Tak | Nie |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany) są takie procesora CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
+| [Błędy](#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Tak | Yes |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu bazy danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
 | [Limity czasu](#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Tak | Nie |
-| [Bloki](#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Tak | Nie |
+| [Bloki](#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
 | [Zakleszczenie](#deadlocks-dataset): Zawiera informacje o zdarzeniach zakleszczenie w bazie danych. | Tak | Nie |
 | [AutomaticTuning](#automatic-tuning-dataset): Zawiera informacje dotyczące automatycznego zalecenia dotyczące dostrajania bazy danych. | Tak | Nie |
-| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Tak | Tak |
+| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Tak | Yes |
 
 > [!IMPORTANT]
 > Pule elastyczne i zarządzanych wystąpień przez mają swoje własne dane oddzielne diagnostyczne i telemetryczne z baz danych, które zawierają. Jest to należy zwrócić uwagę jako dane diagnostyczne i telemetryczne skonfigurowano oddzielnie dla każdej z tych zasobów, zgodnie z opisem poniżej.
@@ -438,16 +438,16 @@ W poniższych tabelach opisano szczegóły telemetria dostępna dla wszystkich d
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: ResourceUsageStats |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: MANAGEDINSTANCES |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa wystąpienia zarządzanego |
 |ResourceId|Identyfikator URI zasobu |
 |SKU_s|Jednostka SKU produktu wystąpienia zarządzanego |
@@ -463,17 +463,17 @@ W poniższych tabelach opisano szczegóły telemetria dostępna dla wszystkich d
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: QueryStoreRuntimeStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreRuntimeStatisticsEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -514,17 +514,17 @@ Dowiedz się więcej o [danych statystyki czasu wykonywania zapytania Store](htt
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: QueryStoreWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreWaitStatisticsEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -552,17 +552,17 @@ Dowiedz się więcej o [Query Store oczekiwania dane statystyk](https://docs.mic
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQ |
 |Category|Nazwa kategorii. Zawsze: Błędy |
 |OperationName|Nazwa operacji. Zawsze: ErrorEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -581,17 +581,17 @@ Dowiedz się więcej o [komunikaty o błędach programu SQL Server](https://msdn
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: DatabaseWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: DatabaseWaitStatisticsEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -610,17 +610,17 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: Limity czasu |
 |OperationName|Nazwa operacji. Zawsze: TimeoutEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -633,17 +633,17 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: bloki |
 |OperationName|Nazwa operacji. Zawsze: BlockEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -657,17 +657,17 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC] |Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: Zakleszczenia |
 |OperationName|Nazwa operacji. Zawsze: DeadlockEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |
 |DatabaseName_s|Nazwa bazy danych |
@@ -678,16 +678,16 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|TenantId|Identyfikator dzierżawy |
+|Identyfikator dzierżawy|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Category|Nazwa kategorii. Zawsze: AutomaticTuning |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji dla bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |LogicalDatabaseName_s|Nazwa bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej bazy danych, jeśli istnieje |

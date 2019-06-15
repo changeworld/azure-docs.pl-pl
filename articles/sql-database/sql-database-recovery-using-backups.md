@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/30/2019
 ms.openlocfilehash: 47bf59adb33f3685b31430c652b31880d383833e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232649"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
@@ -97,7 +97,7 @@ Można przywrócić usuniętą bazę danych do czasu usunięcia lub wcześniejsz
 > [!TIP]
 > Aby uzyskać przykładowy skrypt programu PowerShell przedstawiająca sposób przywrócić usuniętą bazę danych, zobacz [przywrócić bazę danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 > [!IMPORTANT]
-> Jeśli usuniesz wystąpienia serwera usługi Azure SQL Database, jego baz danych również zostaną usunięte i nie można go odzyskać. Obecnie nie jest obsługiwane dla przywracanie usuniętych serwera.
+> Jeśli usuniesz wystąpienia serwera usługi Azure SQL Database, jego baz danych również zostaną usunięte i nie można go odzyskać. Obecnie nie jest obsługiwane przywracanie usuniętego serwera.
 
 ### <a name="deleted-database-restore-using-the-azure-portal"></a>Przywracanie usuniętej bazy danych przy użyciu witryny Azure portal
 

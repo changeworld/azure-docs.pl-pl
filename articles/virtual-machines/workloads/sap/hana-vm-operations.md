@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/05/2019
+ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 156bb4cbf43dc71627f9db785dba574f25139285
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077639"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfiguracje infrastruktury SAP HANA i operacje na platformie Azure
 Ten dokument zawiera wskazówki dotyczące konfigurowania infrastruktury platformy Azure i obsługi systemów SAP HANA, które zostały wdrożone na natywnych maszynach wirtualnych platformy Azure (maszyny wirtualne). Dokument zawiera również informacje o konfiguracji dla oprogramowania SAP HANA skalowalnego w poziomie dla jednostki SKU maszyny Wirtualnej M128s. Ten dokument nie jest przeznaczona do zastąpienia dokumentacji SAP standardowa obejmuje następującą zawartością:
@@ -66,6 +66,11 @@ Wdrażanie maszyn wirtualnych na platformie Azure przy użyciu:
 - Interfejs wiersza polecenia platformy Azure.
 
 Możesz również wdrożyć pełną zainstalowanej platformy SAP HANA w usługach maszyny Wirtualnej platformy Azure za pośrednictwem [platforma usług w chmurze SAP](https://cal.sap.com/). Proces instalacji został opisany w [wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) lub za pomocą usługi automation wydane [tutaj](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
+
+>[!IMPORTANT]
+> Aby można było używać M208xx_v2 maszyn wirtualnych, musisz należy zachować ostrożność, wybierając obrazu systemu SUSE Linux z galerii obrazów maszyn wirtualnych platformy Azure. Aby uzyskać szczegółowe informacje, przeczytaj artykuł [rozmiarów maszyn wirtualnych zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series). Red Hat nie jest jeszcze obsługiwana dla Mv2 rodziny maszyn wirtualnych przy użyciu platformy HANA. Planowanie bieżącej jest zapewnienie wsparcia dla firmy Red Hat wersje oprogramowania HANA w rodzinie maszyn wirtualnych Mv2 w kwartale 4/CY2019 
+> 
+
 
 ### <a name="storage-configuration-for-sap-hana"></a>Konfiguracja usługi Storage dla oprogramowania SAP HANA
 Dla konfiguracji magazynu i typy magazynu do użycia z platformą SAP HANA na platformie Azure, przeczytaj dokument [konfiguracje magazynu maszyny wirtualnej SAP HANA Azure](./hana-vm-operations-storage.md)

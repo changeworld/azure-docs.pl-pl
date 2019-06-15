@@ -14,10 +14,10 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39b359ef7feeaec541ba17e98a5d1e9b74c6403a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65958003"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Zamknij konto służbowe lub szkolne w katalogu niezarządzanego
@@ -39,7 +39,7 @@ Przed zamknięciem Twoje konto, należy się upewnić, następujące elementy:
 > [!WARNING]
 > Zamykanie konta usługi jest nieodwracalne. Po zamknięciu konta zostaną usunięte wszystkie dane osobowe. Nie jest już mają dostęp do swojego konta i danych skojarzonych z Twoim kontem.
 
-## <a name="close-your-account"></a>Zamknij swoje konto
+## <a name="close-your-account"></a>Zamknij konto
 
 Aby zamknąć niezarządzane pracy lub konta służbowego, wykonaj następujące kroki:
 

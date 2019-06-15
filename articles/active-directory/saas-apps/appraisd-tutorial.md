@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee7e58aa6298977b279d0d538fefb24da657388
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 90a484224c35abd492db2409e6ec8e91c398d71a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357022"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106795"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Samouczek: Integracja Appraisd za pomocą usługi Azure Active Directory
 
@@ -201,7 +201,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji Apprai
 
 Po wybraniu kafelka Appraisd w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Appraisd, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

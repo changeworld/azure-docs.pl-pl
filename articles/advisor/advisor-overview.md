@@ -10,18 +10,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467990"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069682"
 ---
 # <a name="introduction-to-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
 Dowiedz się więcej na temat kluczowych funkcji usługi Azure Advisor i Uzyskaj odpowiedzi na często zadawane pytania.
 
-## <a name="what-is-advisor"></a>Co to jest usługa Advisor?
+## <a name="what-is-advisor"></a>Co to jest Advisor?
 Advisor to spersonalizowany konsultant ds. chmury, który ułatwia stosowanie najlepszych rozwiązań do optymalizacji wdrożeń platformy Azure. Analizuje konfigurację zasobów i dane telemetryczne dotyczące użycia, a następnie zaleca rozwiązania, które mogą pomóc w zapewnieniu wysokiej dostępności, bezpieczeństwa, wydajności i efektywności kosztowej zasobów platformy Azure.
 
 Usługa Advisor można wykonywać następujące czynności:
@@ -61,7 +61,9 @@ Możesz uzyskać dostęp zalecenia usługi Advisor jako *właściciela*, *Wspó�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jakie zasoby usługi Advisor zapewnia zalecenia dotyczące?
 
-Usługa Advisor udostępnia zalecenia dotyczące maszyn wirtualnych, zestawy dostępności, bramy application Gateway, usługi aplikacji, serwerów SQL i pamięć podręczna systemu Azure dla usługi Redis.
+Usługa Advisor udostępnia zalecenia dla usługi Application Gateway, App Services, zestawy dostępności, usługi Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database dla usługi Azure ExpressRoute MariaDB, usługi Azure Cosmos DB publicznej platformy Azure Adresy IP, usługa SQL Data Warehouse, serwerami programu SQL Server, kont magazynu, profile usługi Traffic Manager i maszyn wirtualnych.
+
+Usługa Azure Advisor zawiera także zalecenia z [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) które mogą zawierać zalecenia dotyczące dodatkowe typy zasobów.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Można odroczyć lub odrzucić zalecenie?
 

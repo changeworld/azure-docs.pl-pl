@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9a6f162a10408469669cf40b29efc6d2903944
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 612bdd2a5813237f05e9a30a0c90c3b643ece4b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546046"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111432"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -51,7 +51,7 @@ Aby uzyskać więcej informacji na temat przy użyciu platformy MSAL.NET interak
 
 Aby uzyskać więcej informacji na temat wywołań interakcyjnego w MSAL.js, przeczytaj [monit o zachowanie w MSAL.js interaktywnych żądań](msal-js-prompt-behavior.md)
 
-## <a name="implicit-grant"></a>Niejawne przyznanie
+## <a name="implicit-grant"></a>Przyznawanie niejawne
 
 Biblioteka MSAL obsługuje [protokołu OAuth 2 niejawne udzielić przepływu](v2-oauth2-implicit-grant-flow.md), który umożliwia aplikacji uzyskiwanie tokenów z platformą Microsoft identity bez przeprowadzania serwera wewnętrznej bazy danych programu exchange poświadczeń. Umożliwia to aplikacji, loguje użytkownika, zachować sesję i uzyskiwanie tokenów do innych interfejsów API sieci web w klienta kodu JavaScript.
 
@@ -138,10 +138,10 @@ Za pomocą przepływu kodu urządzenia, aplikacji uzyskuje tokenów przejdziesz 
   - ewentualnie wszelkie oraz do kont służbowych (`https://login.microsoftonline.com/organizations/`).
 - Osobistych kont Microsoft nie są jeszcze obsługiwane przez punkt końcowy usługi Azure AD w wersji 2.0 (nie można użyć `/common` lub `/consumers` dzierżaw).
 
-## <a name="integrated-windows-authentication"></a>Zintegrowane uwierzytelnianie systemu Windows
+## <a name="integrated-windows-authentication"></a>Uwierzytelnianie zintegrowane Windows
 Biblioteka MSAL obsługuje zintegrowane Windows Authentication (Zintegrowane) dla pulpitu lub aplikacji uruchamianych na przyłączonych do domeny lub usługi Azure AD dla urządzeń przenośnych przyłączony komputer Windows. Za pomocą IWA, te aplikacje mogą uzyskiwać token w trybie dyskretnym (bez żadnej interfejsu użytkownika interakcji ze strony użytkownika). 
 
-![Zintegrowane uwierzytelnianie systemu Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
+![Uwierzytelnianie zintegrowane Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 1. Uzyskuje token przy użyciu zintegrowanego uwierzytelniania Windows.
 2. Używa tokenu do wysyłania żądań zasobu.

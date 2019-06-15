@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: 79dbee33928fbc7560d0ea27be3af25cc510e996
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 894ca0e78dfb75dffc124d3d25aa7a8e72adf627
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132274"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065561"
 ---
 ## <a name="create-an-azure-functions-project"></a>Tworzenie projektu usługi Azure Functions
 
@@ -26,6 +26,9 @@ Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliw
 
 1. Wybierz język dla projektu aplikacji funkcji. W tym artykule użyto języka JavaScript.
     ![Wybieranie języka projektu](./media/functions-create-function-app-vs-code/create-function-app-project-language.png)
+
+1. Wybierz szablon dla pierwszej funkcji w projekcie. Podaj nazwę funkcji.
+    ![Wybierz pierwszą funkcję](./media/functions-create-function-app-vs-code/create-function-app-project-first-function.png)
 
 1. Po wyświetleniu monitu wybierz pozycję **Add to workspace** (Dodaj do obszaru roboczego).
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: bac61342f39821b6181a6a0e61bf0b11fb311007
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 06a7623fed0205d927fca9406469737faeda3a4b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076804"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
@@ -70,6 +70,9 @@ Ponadto istnieje kilka rzeczy, które może być konieczne w niektórych sytuacj
  Po utworzeniu magazynu pojawi się na liście magazynów usługi Recovery Services. Jeśli nie widzisz swojego magazynu wybierz **Odśwież**.
 
 ![Lista magazynów kopii zapasowych](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
+
+> [!NOTE]
+> Usługa Azure Backup tworzy oddzielnej grupy zasobów (innej niż grupa zasobów maszyny Wirtualnej) do przechowywania migawek z formatem nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów, które będą przechowywane przez czas trwania w dniach, jak to określono w *Zachowaj natychmiastowe odzyskiwanie migawki* części zasad kopii zapasowej maszyny wirtualnej platformy Azure.  Stosowanie blokady do tej grupy zasobów może powodować błędy kopii zapasowych.
 
 ### <a name="modify-storage-replication"></a>Modyfikowanie replikacji magazynu
 

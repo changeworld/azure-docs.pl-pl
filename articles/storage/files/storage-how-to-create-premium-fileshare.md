@@ -9,10 +9,10 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190095"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Jak utworzyć udział plików platformy Azure — wersja premium
@@ -47,8 +47,8 @@ Każde konto magazynu musi należeć do grupy zasobów platformy Azure. Grupa za
 1. Następnie wprowadź nazwę konta magazynu. Wybrana nazwa musi być unikatowa w obrębie całej platformy Azure. Ponadto nazwa musi mieć długość od 3 do 24 znaków i może zawierać tylko cyfry i małe litery.
 1. Wybierz lokalizację konta magazynu lub użyj lokalizacji domyślnej.
 1. Aby uzyskać **wydajności** wybierz **Premium**.
-1. Wybierz **rodzaj konta** i wybierz polecenie **FileStorage (wersja zapoznawcza)**.
-1. Pozostaw **replikacji** ustawiona na wartość domyślną **magazyn lokalnie nadmiarowy (LRS)**.
+1. Wybierz **rodzaj konta** i wybierz polecenie **FileStorage (wersja zapoznawcza)** .
+1. Pozostaw **replikacji** ustawiona na wartość domyślną **magazyn lokalnie nadmiarowy (LRS)** .
 
     ![Jak utworzyć konto magazynu dla udziału plików — wersja premium](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
 
@@ -59,7 +59,7 @@ Po utworzeniu zasobu konta magazynu, przejdź do niego.
 
 ### <a name="create-a-premium-file-share"></a>Tworzenie udziału plików w warstwie Premium
 
-1. W menu po lewej stronie konta magazynu, przewiń do **usługi plików** sekcji, a następnie wybierz **pliki (wersja zapoznawcza)**.
+1. W menu po lewej stronie konta magazynu, przewiń do **usługi plików** sekcji, a następnie wybierz **pliki (wersja zapoznawcza)** .
 1. Wybierz **+ udział plików** można utworzyć udziału plików — wersja premium.
 1. Wprowadź nazwę i żądany limit przydziału udziału plików, a następnie wybierz **Utwórz**.
 

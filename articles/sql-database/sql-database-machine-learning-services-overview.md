@@ -12,10 +12,10 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
 ms.openlocfilehash: fe472b8a19b45d7f7b00a8f858c9179d6ee51999
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951583"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza)

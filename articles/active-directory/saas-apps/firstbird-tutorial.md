@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bc1ff022b1639c11ca244b5ea97118a0f06e7cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f192b402aebcaeb87e068a4248c0794484e6c313
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278636"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Firstbird
 
@@ -62,7 +62,7 @@ Aby skonfigurować integrację aplikacji Firstbird z usługą Azure AD, należy 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise_applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Przycisk Nowa aplikacja](common/add_new_app.png)
 
@@ -79,10 +79,10 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z apli
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Firstbird](#configure-firstbird-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Firstbird](#create-firstbird-test-user)** — aby Britta Simon miała swojego odpowiednika w aplikacji Firstbird połączonego z reprezentacją użytkownika usługi Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -178,7 +178,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user_properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
 
     b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com

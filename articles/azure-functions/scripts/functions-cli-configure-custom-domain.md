@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 790d095cfb1b59aed1b9014fc474f9ad6e1b3328
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 19fd73dff045d6d784dd70d1f3ad539a22faf413
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131306"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075465"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Mapowanie domeny niestandardowej na aplikację funkcji
 
-Ten przykładowy skrypt tworzy aplikację funkcji w ramach planu usługi App Service, a następnie mapuje ją na podaną przez Ciebie domenę niestandardową. Gdy aplikacja funkcji znajduje się w [plan w warstwie Premium](../functions-scale.md#premium-plan-public-preview) lub [planu usługi App Service](../functions-scale.md#app-service-plan), można mapować domenę niestandardową przy użyciu rekordu A lub CNAME. Dla aplikacji funkcji w [planie Zużycie](../functions-scale.md#consumption-plan) obsługiwana jest tylko opcja CNAME. Ten przykład tworzy plan usługi App Service i wymaga rekordu A, aby mapować domenę. 
+Ten przykładowy skrypt tworzy aplikację funkcji w ramach planu usługi App Service, a następnie mapuje ją na podaną przez Ciebie domenę niestandardową. Gdy aplikacja funkcji znajduje się w [plan w warstwie Premium](../functions-scale.md#premium-plan) lub [planu usługi App Service](../functions-scale.md#app-service-plan), można mapować domenę niestandardową przy użyciu rekordu A lub CNAME. Dla aplikacji funkcji w [planie Zużycie](../functions-scale.md#consumption-plan) obsługiwana jest tylko opcja CNAME. Ten przykład tworzy plan usługi App Service i wymaga rekordu A, aby mapować domenę. 
 
 Aby uruchomić ten przykładowy skrypt, w domenie niestandardowej musisz już mieć skonfigurowany rekord A, który wskazuje domyślną nazwę domeny aplikacji internetowej. Aby uzyskać więcej informacji, zobacz [Instrukcje mapowania domeny niestandardowej dla usługi Azure App Service](https://aka.ms/appservicecustomdns). 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ae44872f209550b1387a5c7e99ee4e0a07c558a0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061020"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -41,7 +41,10 @@ Ten samouczek obejmuje następujące zadania:
 > * Weryfikacja wdrożenia wdrożenia
 > * Oczyszczanie zasobów
 
-Dokumentację interfejsu REST API usługi Azure Deployment Manager można znaleźć [tutaj](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Dodatkowe zasoby:
+
+- [Odwołanie do interfejsu REST API usługi Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Próbka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 

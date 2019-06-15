@@ -3,20 +3,21 @@ title: Konfigurowanie metody routingu ruchu w ważone działanie okrężne przy 
 description: W tym artykule wyjaśniono, jak Równoważenie obciążenia ruchem przy użyciu metody działanie okrężne w usłudze Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: ef39c09d4fc411937fdd6f4b5b5aec491efd0c5f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: allensu
+ms.openlocfilehash: 4ca43bf958606a71911bf5d35f31e4fe0b342601
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071271"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu ważonego ruchu w usłudze Traffic Manager
 
@@ -34,7 +35,7 @@ Typowym wzorcem metody routingu ruchu jest udostępniają zestaw identyczne punk
     1. Aby uzyskać **ustawienia metody routingu ruchu**, sprawdź, czy metodę routingu ruchu **ważona**. Jeśli nie, kliknij pozycję **ważona** z listy rozwijanej.
     2. Ustaw **ustawienia monitora punktu końcowego** identyczne dla wszystkich każdego punktu końcowego w ramach tego profilu, w następujący sposób:
         1. Wybierz odpowiedni **protokołu**, a następnie określ **portu** numer. 
-        2. Aby uzyskać **ścieżki** wpisz ukośnik */*. Monitorowanie punktów końcowych, należy określić ścieżkę i nazwę pliku. A ukośnika "/" jest prawidłowym wpisem ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
+        2. Aby uzyskać **ścieżki** wpisz ukośnik */* . Monitorowanie punktów końcowych, należy określić ścieżkę i nazwę pliku. A ukośnika "/" jest prawidłowym wpisem ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
         3. W górnej części strony kliknij **Zapisz**.
 5. Przetestuj zmiany w konfiguracji w następujący sposób:
     1.  Paska wyszukiwania portalu, wyszukaj nazwę profilu usługi Traffic Manager, a następnie kliknij pozycję profil usługi Traffic Manager w taki sposób, w wynikach, wyświetlana.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fe8f97368531ed572083834256d84cd1ed6dd8a1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3ef5362c4d97b8d805212f9cf813c7bc9c8c18c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687235"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059444"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight
 
@@ -39,9 +39,6 @@ Aby uzyskać **opartych na systemie Linux klastrów**: [https://hdiconfigactions
 
 Aby uzyskać **klastrów Windows**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
-
 **Wymagania**
 
 * Skrypty muszą być stosowane do obu **węzłami głównymi** i **węzłów procesu roboczego**.
@@ -50,7 +47,7 @@ Aby uzyskać **klastrów Windows**: [https://hdiconfigactions.blob.core.windows.
 
 * Konto magazynu zawierające biblioteki pliki jar **musi** można połączyć w klaster HDInsight podczas tworzenia. Musi to być domyślne konto magazynu lub konto dodane za pośrednictwem __opcjonalna konfiguracja__.
 
-* Ścieżka WASB do kontenera należy określić jako parametru akcji skryptu. Na przykład, jeśli w plikach JAR są przechowywane w kontenerze o nazwie **libs** na koncie magazynu o nazwie **mój_magazyn**, wartość parametru może być **wasb://libs\@ mystorage.blob.Core.Windows.NET/**.
+* Ścieżka WASB do kontenera należy określić jako parametru akcji skryptu. Na przykład, jeśli w plikach JAR są przechowywane w kontenerze o nazwie **libs** na koncie magazynu o nazwie **mój_magazyn**, wartość parametru może być **wasb://libs\@ mystorage.blob.Core.Windows.NET/** .
 
   > [!NOTE]  
   > W tym dokumencie przyjęto założenie, że masz już utworzone konto magazynu, kontener obiektów blob, a przekazać pliki do niego.
@@ -78,7 +75,7 @@ Aby uzyskać **klastrów Windows**: [https://hdiconfigactions.blob.core.windows.
 
    * **ZOOKEEPER**: Pozostaw to pole puste.
 
-   * **PARAMETRY**: Wprowadź adres WASB kontener i konto magazynu zawierającego plikach JAR. Na przykład **wasb://libs\@mystorage.blob.core.windows.net/**.
+   * **PARAMETRY**: Wprowadź adres WASB kontener i konto magazynu zawierającego plikach JAR. Na przykład **wasb://libs\@mystorage.blob.core.windows.net/** .
 
 3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację.
 

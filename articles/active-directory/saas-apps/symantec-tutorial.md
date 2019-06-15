@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b9fdc6bf46cff1f3a38d40a4e7abad5bfe56c47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95ce68547ca13d2395fcd447990c42c48c04eb5f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Symantec Web Security Service (WSS)
 
@@ -56,7 +56,7 @@ Aby skonfigurować integrację usługi Symantec Web Security Service (WSS) z us�
 
 **Aby dodać usługę Symantec Web Security Service (WSS) z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -68,7 +68,7 @@ Aby skonfigurować integrację usługi Symantec Web Security Service (WSS) z us�
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Symantec Web Security Service (WSS)**, wybierz pozycję **Symantec Web Security Service (WSS)** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Symantec Web Security Service (WSS)** , wybierz pozycję **Symantec Web Security Service (WSS)** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
      ![Usługa Symantec Web Security Service (WSS) na liście wyników](common/search-new-app.png)
 
@@ -152,7 +152,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 W tej sekcji włączysz możliwość logowania jednokrotnego na platformie Azure dla użytkownika Britta Simon, udzielając dostępu do usługi Symantec Web Security Service (WSS).
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Symantec Web Security Service (WSS)**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Symantec Web Security Service (WSS)** .
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -187,7 +187,7 @@ W tej sekcji przetestujesz funkcję logowania jednokrotnego, mając skonfigurowa
 
 Po skonfigurowaniu przeglądarki internetowej w celu kierowania za pośrednictwem serwera proxy ruchu do usługi WSS, kiedy otworzysz przeglądarkę internetową i spróbujesz przejść do witryny, nastąpi przekierowanie do strony logowania platformy Azure. Wprowadź poświadczenia testowego użytkownika końcowego, który został aprowizowany w usłudze Azure AD (czyli BrittaSimon), oraz skojarzone hasło. Po uwierzytelnieniu będzie można przejść do wybranej witryny internetowej. Jeśli utworzysz regułę zasad po stronie usługi WSS, aby uniemożliwić użytkownikowi BrittaSimon przejście do określonej witryny, to gdy spróbujesz przejść do tej witryny jako użytkownik BrittaSimon, powinna zostać wyświetlona strona blokowania usługi WSS.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

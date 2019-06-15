@@ -3,7 +3,7 @@ title: Pomiarów rzeczywistego użytkownika usługi Azure Traffic Manager ze str
 description: Konfigurowanie stron sieci web, aby wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d044457df80f16a6e8073e7f3253a611f74d8a8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884108"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071217"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Azure Traffic Manager za pomocą stron sieci web
 
@@ -26,7 +26,7 @@ Można skonfigurować stron sieci web w taki sposób, aby wysyłanie pomiarów r
 
 ## <a name="obtain-a-real-user-measurements-key"></a>Uzyskaj klucz pomiarów rzeczywistego użytkownika
 
-Pomiary zająć i wysyłanie do usługi Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę za pomocą unikatowy ciąg o nazwie **klucza rzeczywistego użytkownika pomiarów (RUM)**. Można uzyskać klucz uruchamianie przy użyciu witryny Azure portal, interfejsu API REST lub przy użyciu programu PowerShell lub wiersza polecenia platformy Azure.
+Pomiary zająć i wysyłanie do usługi Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę za pomocą unikatowy ciąg o nazwie **klucza rzeczywistego użytkownika pomiarów (RUM)** . Można uzyskać klucz uruchamianie przy użyciu witryny Azure portal, interfejsu API REST lub przy użyciu programu PowerShell lub wiersza polecenia platformy Azure.
 
 Aby uzyskać klucz RUM przy użyciu witryny Azure portal:
 1. Z poziomu przeglądarki Zaloguj się do witryny Azure portal. Jeśli nie masz jeszcze konta, możesz zarejestrować się w bezpłatnej wersji próbnej jednego miesiąca.

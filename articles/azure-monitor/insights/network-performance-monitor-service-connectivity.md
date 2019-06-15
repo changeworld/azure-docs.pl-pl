@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: absha
-ms.openlocfilehash: 5b1c0212205575f1d40f320fb959d98e55d87fb9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052092"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -129,7 +129,7 @@ Jeśli zauważysz nieprawidłowości, wykonaj następujące kroki:
 * Jeśli aplikacja działa wolno, należy określić, czy niską wydajność aplikacji jest ze względu na problem, po stronie dostawcy aplikacji lub sieci.
 
 ## <a name="gcc-office-urls-for-us-government-customers"></a>Adresy URL z pakietu Office GCC dla klientów rządowych USA
-Dla regionu US Government Wirginia wyłącznie adresy URL DOD są wbudowane NPM. Klienci korzystający z adresów URL GCC konieczne tworzenie niestandardowych testów i Dodaj każdy inidividually adresu URL.
+Dla regionu US Government Wirginia wyłącznie adresy URL DOD są wbudowane NPM. Klienci korzystający z adresów URL GCC konieczne tworzenie niestandardowych testów i Dodaj każdy adres URL indywidualnie.
 
 | Pole | GCC |
 |:---   |:--- |

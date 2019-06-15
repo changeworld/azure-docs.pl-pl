@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 4c22c9c202e6de3b31b99803dce4a07d38287a92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057288"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -36,6 +36,7 @@ Po ta funkcja działa w trybie inspekcji odpowiednim czasie, można przełącza�
 
 ## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
 
+* Wymagania dotyczące licencjonowania dla ochrona za pomocą hasła usługi Azure AD można znaleźć w artykule [eliminowanie nieprawidłowych haseł w organizacji](concept-password-ban-bad.md#license-requirements).
 * Wszystkie kontrolery domeny, które Agent kontrolera domeny usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 lub nowszym. To wymaganie nie oznacza, że domeny usługi Active Directory lub lasu również musi występować w systemie Windows Server 2012 domeny lub lasu poziom funkcjonalności. Jak wspomniano w [zasady projektowania](concept-password-ban-bad-on-premises.md#design-principles), nie ma żadnych minimalna DFL ani FFL wymagane dla dowolnego kontrolera domeny agenta lub serwera proxy oprogramowania do uruchomienia.
 * Wszystkie maszyny, które zainstalowana Usługa agenta kontrolera domeny musi mieć zainstalowane w .NET 4.5.
 * Wszystkie maszyny, które serwer proxy usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 R2 lub nowszym.
@@ -282,7 +283,7 @@ Nie ma żadnych dodatkowych wymagań, aby wdrożyć ochrona za pomocą hasła us
 
 Hasło zmiany/zestawy są przetwarzane i nie utrwalony na kontrolerach domeny tylko do odczytu (RODC). Są one przekazywane do kontrolerów domeny z możliwością zapisu. Dlatego nie trzeba zainstalować oprogramowanie agenta kontrolera domeny na kontrolery RODC.
 
-## <a name="high-availability"></a>Duża dostępność
+## <a name="high-availability"></a>Wysoka dostępność
 
 Kwestią dostępność głównego ochrony hasłem jest dostępność serwerów proxy, gdy kontrolery domeny w lesie próbuje pobrać nowe zasady lub inne dane z platformy Azure. Każdy Agent kontrolera domeny używa prosty algorytm działanie okrężne stylu przy podejmowaniu decyzji, którego serwera proxy do wywołania. Agent pomija serwerów proxy, które nie odpowiadają. Dla najbardziej pełni połączone wdrożeniach usługi Active Directory, które mają dobrej kondycji replikacji katalogu i folderu sysvol stanu folderu dwa serwery proxy jest wystarczający, aby zapewnić dostępność. Powoduje to szybkie pobieranie nowych zasad oraz inne dane. Jednak można wdrożyć serwery proxy dodatkowe.
 

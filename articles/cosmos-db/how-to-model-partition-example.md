@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4bb99c8cbec88d23f9297dcbe8b13cc69cd0006c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241002"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070683"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model i partycji danych w usłudze Azure Cosmos DB przy użyciu przykładu rzeczywistych
 
@@ -479,7 +479,7 @@ Dlatego w celu zoptymalizowania tego ostatniego żądania, wprowadzeniu trzeci k
 
 Ten kontener jest podzielona na partycje według `type`, który będzie zawsze `post` w naszych elementów. Sposób, który zapewnia, że wszystkie elementy w tym kontenerze będzie znajdują się w tej samej partycji.
 
-Aby osiągnąć denormalizacja, mamy po prostu utworzenie punktu zaczepienia w przypadku zmiany źródła danych potoku wprowadziliśmy wcześniej wysyłania wpisy do tego nowego kontenera. Istotnym aspektem bez pamiętać jest potrzebujemy upewnić się, że przechowujemy tylko 100 najnowsze wpisy; w przeciwnym razie zawartość kontenerów może rosnąć poza maksymalny rozmiar partycji. Jest to realizowane przez wywołanie [po wyzwalacza](stored-procedures-triggers-udfs.md#triggers) za każdym razem, gdy dokument zostanie dodany do kontenera:
+Aby osiągnąć denormalizacja, mamy po prostu utworzenie punktu zaczepienia w przypadku zmiany źródła danych potoku wprowadziliśmy wcześniej wysyłania wpisy do tego nowego kontenera. Istotnym aspektem pamiętać jest potrzebujemy upewnić się, że przechowujemy tylko 100 najnowsze wpisy; w przeciwnym razie zawartość kontenerów może rosnąć poza maksymalny rozmiar partycji. Jest to realizowane przez wywołanie [po wyzwalacza](stored-procedures-triggers-udfs.md#triggers) za każdym razem, gdy dokument zostanie dodany do kontenera:
 
 ![Denormalizing wpisy do źródła danych kontenera.](./media/how-to-model-partition-example/denormalization-3.png)
 

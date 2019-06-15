@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991913"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
@@ -76,7 +76,7 @@ Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia tr
 > Usługa Media Services jest wycofanie obsługi klucze uwierzytelniania usługi Azure Access Control Service. 22 czerwca 2018 r. nie będzie można uwierzytelniać z zapleczem usługi Media Services za pomocą kodu za pomocą kluczy usługi kontroli dostępu. Należy zaktualizować swój kod, aby usługa Azure Active Directory (Azure AD) na [uwierzytelnianie na podstawie usługi AD systemu Azure](media-services-use-aad-auth-to-access-ams-api.md). Obserwuj ostrzeżenia dotyczące tej zmiany w witrynie Azure portal.
 
 ### <a name="updates-for-october-2017"></a>Aktualizacje dla października 2017 r.
-#### <a name="sdks"></a>SDK
+#### <a name="sdks"></a>Zestawy SDK
 * Zestaw .NET SDK został zaktualizowany do obsługi uwierzytelniania usługi Azure AD. Obsługa uwierzytelniania usługa Access Control Service została usunięta z najnowszy zestaw SDK platformy .NET w witrynie Nuget.org, aby zachęcić szybsza migracja do usługi Azure AD. 
 * Zestaw JAVA SDK został zaktualizowany do obsługi uwierzytelniania usługi Azure AD. Obsługa uwierzytelniania usługi Azure AD została dodana do zestawu SDK języka Java. Aby uzyskać informacje na temat korzystania z zestawu SDK Java za pomocą usługi Media Services, zobacz [Rozpoczynanie pracy z zestawem SDK klienta Java dla usługi Azure Media Services](media-services-java-how-to-use.md)
 
@@ -504,7 +504,7 @@ Poprawki dotyczące problemów znalezionych w listopad 2012 SDK:
 ## <a id="november_changes_12"></a>Listopad 2012 release
 Zmiany opisane w tej sekcji zostały aktualizacjach listopad 2012 (w wersji 2.0.0.0 lub nowszej) zestawu SDK. Te zmiany mogą wymagać każdy kod napisany dla czerwca 2012 r. (wersja zapoznawcza) wersji zestawu SDK modyfikację lub przepisany.
 
-* Zasoby
+* Elementy zawartości
   
     * Jest IAsset.Create(assetName) *tylko* funkcję tworzenia zasobów. IAsset.Create już przekazuje pliki jako część wywołania metody. Na użytek IAssetFile przekazywania.
     * Metoda IAsset.Publish i wartość wyliczenia AssetState.Publish zostały usunięte z zestawu SDK usługi. Muszą zostać przepisane wszelki kod, który opiera się na tę wartość.
@@ -538,7 +538,7 @@ Nowość w wersji listopada zestawu SDK został następujące funkcje:
   
     * Dodano obsługę asynchroniczną wszystkich metod.
 
-## <a name="provide-feedback"></a>Przesyłanie opinii
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

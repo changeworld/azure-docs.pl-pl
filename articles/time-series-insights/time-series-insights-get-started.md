@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1018b449047e40a67ea843e8506fb43f6e1093a6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9e074282b477fe620170cd8672dc3d050fce6afe
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061646"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 
@@ -51,7 +51,7 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
    Warstwa cenowa | S1 | Wybierz potrzebną przepustowość. Najniższe koszty i pojemność starter wybierz pozycję S1.
    Pojemność | 1 | Pojemność jest mnożnik odnosi się do szybkości transferu danych przychodzących, pojemność i koszt związany z wybrana jednostka SKU.  Wydajność środowiska można zmienić po jego utworzeniu. W przypadku najniższe koszty wybrać o pojemności 1. 
   
-1. Sprawdź **Przypnij do pulpitu nawigacyjnego** najlepiej łatwo uzyskać dostęp do Twojego środowiska usługi Time Series w przyszłości.
+1. Sprawdź **Przypnij do pulpitu nawigacyjnego** aby łatwo uzyskiwać dostęp do Twojego środowiska usługi Time Series w przyszłości.
 
    ![Przypinanie usługi Time Series Insights do pulpitu nawigacyjnego](media/time-series-insights-get-started/3-pin-create.png)
 

@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 4b4f1563aa0437cd45c297b95a83119318a24624
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307040"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109587"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest zarządzanie usługi Azure AD Identity?
 
@@ -68,7 +68,7 @@ W przeszłości uprzywilejowanego dostępu został opisany przez innych dostawc�
 
 ![Cykl życia uprzywilejowanego dostępu](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-Usługa Azure AD Privileged Identity Management (PIM) zapewnia dodatkową kontrolę, które dostosowane do zabezpieczania dostępu prawa do zasobów, w usłudze Azure AD platformy Azure i innych Microsoft Online Services.  Dostęp just in time, a zmiana roli alerty funkcjami oferowanymi przez usługi Azure AD PIM, oprócz uwierzytelniania wieloskładnikowego i dostęp warunkowy, zapewnić kompleksowy zestaw formantów nadzoru, aby ułatwić bezpiecznych zasobów firmy (katalog, Usługi Office 365, a role zasobów platformy Azure). Podobnie jak w przypadku innych form dostępu organizacje mogą używać przeglądów dostępu, aby skonfigurować cyklicznego wystawiły dostępu dla wszystkich użytkowników w rolach administratora.
+Usługa Azure AD Privileged Identity Management (PIM) zapewnia dodatkową kontrolę, które dostosowane do zabezpieczania dostępu prawa do zasobów, w usłudze Azure AD platformy Azure i innych Microsoft Online Services.  Dostęp just in time i rolę zmienić alerty funkcjami oferowanymi przez usługi Azure AD PIM, oprócz uwierzytelniania wieloskładnikowego i dostępu warunkowego, zapewnić kompleksowy zestaw formantów nadzoru, aby ułatwić bezpiecznych zasobów firmy (katalog, Usługi Office 365, a role zasobów platformy Azure). Podobnie jak w przypadku innych form dostępu organizacje mogą używać przeglądów dostępu, aby skonfigurować cyklicznego wystawiły dostępu dla wszystkich użytkowników w rolach administratora.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

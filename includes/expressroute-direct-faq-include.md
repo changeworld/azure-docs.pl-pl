@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170707"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133619"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co to jest usługa ExpressRoute bezpośrednio?
 
@@ -28,7 +28,6 @@ Klienci będą musieli pracować z ich lokalnej operatorów i dostawcy kolokacji
 Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, aby wyświetlić pojemności. Lokalizacje uwzględnienia i *podlegają zmianom w zależności od dostępności*:
 
 * Amsterdam
-* Canberra
 * Chicago
 * Waszyngton
 * Dallas 
@@ -37,7 +36,7 @@ Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, a
 * Los Angeles
 * New York City
 * Paryż
-* Pert
+* Perth
 * Toronto
 * San Antonio
 * Seattle

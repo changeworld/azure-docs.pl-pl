@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
 ms.openlocfilehash: fe86c758dbf05f91d53cb918b7794c12ab3f39bc
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518755"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
@@ -59,7 +59,7 @@ Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 | **Jednostki** | **Limit komputera** |
 | ---------- | ----------------- |
 | Projekt    | 1,500             |
-| Odnajdowanie  | 1,500             |
+| Odnajdywanie  | 1,500             |
 | Ocena | 1,500             |
 
 Należy pamiętać następujące kwestie:
@@ -102,7 +102,7 @@ Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i ni
 
 Jeśli wszystko jest gotowe w planie, możesz następnie rozpocząć odnajdowanie lokalnych maszyn wirtualnych:
 
-### <a name="create-a-project"></a>Utwórz projekt
+### <a name="create-a-project"></a>Tworzenie projektu
 
 Utwórz projekt usługi Azure Migrate, zgodnie z wymaganiami:
 

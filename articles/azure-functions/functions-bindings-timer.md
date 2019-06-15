@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 3b4ed6d1ba83e2adb96bcfac986381dccbbef56f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 0a202621a9da031815ebbff3b121ea7f5e1eccfe
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062187"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -45,8 +45,9 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)
 * [F#](#f-example)
-* [JavaScript](#javascript-example)
 * [Java](#java-example)
+* [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>Przykład w języku C#
 
@@ -117,6 +118,21 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
     log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
+### <a name="java-example"></a>Przykładzie w języku Java
+
+Poniższy przykład funkcja wyzwala i wykonuje co pięć minut. `@TimerTrigger` Adnotacja dla funkcji definiuje harmonogramu przy użyciu tego samego formatu ciągu jako [wyrażeń CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 ### <a name="javascript-example"></a>Przykład JavaScript
 
 W poniższym przykładzie pokazano wyzwalacza czasomierza, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja zapisuje dziennik wskazującą, czy to wywołanie funkcji jest ze względu na wystąpienie harmonogramu brakujących. A [obiektu timer](#usage) jest przekazywany do funkcji.
@@ -148,19 +164,37 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="java-example"></a>Przykładzie w języku Java
+### <a name="python-example"></a>Przykładem w języku Python
 
-Poniższy przykład funkcja wyzwala i wykonuje co pięć minut. `@TimerTrigger` Adnotacja dla funkcji definiuje harmonogramu przy użyciu tego samego formatu ciągu jako [wyrażeń CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+W poniższym przykładzie użyto wyzwalacza czasomierza, powiązanie, którego konfiguracja jest opisana w *function.json* pliku. Rzeczywiste [funkce Pythonu](functions-reference-python.md) , używa powiązanie, jest opisana w  *__init__PY* pliku. Typ obiektu przekazanego do funkcji to [obiektu azure.functions.TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logiki funkcji zapisuje w dziennikach, wskazującą, czy bieżące wywołanie jest ze względu na wystąpienie brakujących harmonogramu. 
 
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
+Oto powiązanie danych w *function.json* pliku:
+
+```json
+{
+    "name": "mytimer",
+    "type": "timerTrigger",
+    "direction": "in",
+    "schedule": "0 */5 * * * *"
 }
+```
+
+Poniżej przedstawiono kod języka Python:
+
+```python
+import datetime
+import logging
+
+import azure.functions as func
+
+def main(mytimer: func.TimerRequest) -> None:
+    utc_timestamp = datetime.datetime.utcnow().replace(
+        tzinfo=datetime.timezone.utc).isoformat()
+
+    if mytimer.past_due:
+        logging.info('The timer is past due!')
+
+    logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
 ## <a name="attributes"></a>Atrybuty
@@ -226,7 +260,7 @@ Usługa Azure Functions korzysta [NCronTab](https://github.com/atifaziz/NCrontab
 
 Każde pole może mieć jedną z następujących typów wartości:
 
-|Type  |Przykład  |Po wyzwoleniu  |
+|Typ  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
 |Określona wartość |<nobr>"0 5 * * * *"</nobr>|w hh:05:00, gdzie hh oznacza co godzinę (co godzinę)|
 |Wszystkie wartości (`*`)|<nobr>"0 * 5 * * *"</nobr>|w 5:mm: 00 każdego dnia, gdzie jest mm co minutę godziny (60 razy dziennie)|

@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d2c587129f9f9f09c8f3871748449dc7b1755b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474032"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109259"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrowanie z Federacji na synchronizację skrótów haseł usługi Azure Active Directory
 
@@ -139,7 +139,7 @@ Przed dokonaniem konwersji z tożsamości federacyjnej do tożsamości zarządza
 |-|-|
 | Zamierzasz nadal korzystać z usług AD FS z innymi aplikacjami (innych niż Usługa Azure AD i Office 365). | Po przekonwertowaniu domen, użyjesz usługi Azure AD i usług AD FS. Należy wziąć pod uwagę doświadczenia użytkownika. W niektórych przypadkach użytkownikom może wymagać dwukrotnego uwierzytelnienia: raz do usługi Azure AD (w którym użytkownik otrzyma rejestracji Jednokrotnej dostęp do innych aplikacji, takich jak Office 365) oraz ponownie wszystkie aplikacje, które są nadal powiązane z usług AD FS jako zaufanie jednostki uzależnionej. |
 | Wystąpienia usług AD FS jest w dużym stopniu dostosowany i zależy od ustawienia dostosowania określone w pliku onload.js (na przykład, jeśli zmienisz środowisko logowania, aby użytkownicy używana będzie tylko **SamAccountName** format swoją nazwę użytkownika zamiast użytkownika głównej nazwy (UPN) lub Twoja organizacja ma intensywnie marki środowisko logowania). Nie można zduplikować pliku onload.js w usłudze Azure AD. | Przed kontynuowaniem należy sprawdzić, czy usługa Azure AD można spełniają wymagań dostosowania użytkownika bieżącego. Aby uzyskać więcej informacji i wskazówki zobacz sekcje na marki usług AD FS i dostosowania usług AD FS.|
-| Aby zablokować wcześniejszych wersjach klientów uwierzytelniania jest używanie usług AD FS.| Rozważ zastąpienie kontrolek usług AD FS, które blokują wcześniejszych wersjach klientów uwierzytelniania przy użyciu kombinacji [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta Exchange Online](https://aka.ms/EXOCAR). |
+| Aby zablokować wcześniejszych wersjach klientów uwierzytelniania jest używanie usług AD FS.| Rozważ zastąpienie kontrolek usług AD FS, które blokują wcześniejszych wersjach klientów uwierzytelniania przy użyciu kombinacji [kontroluje dostęp warunkowy](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) i [reguł dostępu klienta Exchange Online](https://aka.ms/EXOCAR). |
 | Możesz wymagać od użytkowników wykonywać uwierzytelnianie wieloskładnikowe, względem rozwiązania z serwerem usługi Multi-Factor authentication w środowisku lokalnym, gdy użytkownicy są uwierzytelniani do usług AD FS.| W domenie zarządzanej tożsamości nie można wstrzyknąć uwierzytelnienia Multi-Factor Authentication za pośrednictwem lokalnego rozwiązania usługi Multi-Factor authentication do przepływu uwierzytelniania. Jednak można użyć usługi Azure Multi-Factor Authentication do uwierzytelniania wieloskładnikowego, po przekonwertowaniu domeny.<br /><br /> Jeśli użytkownicy obecnie nie używasz usługi Azure Multi-Factor Authentication, etapu rejestracji jednorazowej użytkownika jest wymagana. Należy przygotować się do i komunikacji planowane rejestracji dla użytkowników. |
 | Obecnie używają zasad kontroli dostępu (reguł autoryzacji) w usługach AD FS do kontrolowania dostępu do usługi Office 365.| Należy wziąć pod uwagę, zastępując zasady równoważne usługi Azure AD [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) i [reguł dostępu klienta Exchange Online](https://aka.ms/EXOCAR).|
 
@@ -155,7 +155,7 @@ Problemy z usług AD FS **InsideCorporateNetwork** oświadczenia, jeśli użytko
 
 Po skonfigurowaniu nazwane lokalizacje, należy zaktualizować wszystkie zasady dostępu warunkowego, które zostały skonfigurowane, aby uwzględnić lub wykluczyć sieci **wszystkie zaufane lokalizacje** lub **zaufane adresy IP usługi MFA** wartości odzwierciedlały nowe lokalizacje z nazwą.
 
-Aby uzyskać więcej informacji na temat **lokalizacji** warunku dostępu warunkowego, zobacz [lokalizacji dostępu warunkowego usługi Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+Aby uzyskać więcej informacji na temat **lokalizacji** warunku dostępu warunkowego, zobacz [lokalizacjami Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Hybrydowe przyłączone do usługi AD urządzenia w usłudze Azure
 

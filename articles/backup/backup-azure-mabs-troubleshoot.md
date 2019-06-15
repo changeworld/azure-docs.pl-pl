@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: kasinh
 ms.openlocfilehash: 06faed8ceca77edc20b67f73a76d885839aa7dbc
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304335"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
@@ -83,7 +83,7 @@ Zalecane jest wykonanie poniżej sprawdzania poprawności, przed rozpoczęciem r
 | --- | --- | --- |
 | Wypychanie agentów do serwerów chronionych | Poświadczenia, które są określone dla serwera są nieprawidłowe. | **Jeśli Zalecana akcja, która jest wyświetlana w ramach produktu nie rozwiąże problemu, wykonaj następujące kroki**: <br> Spróbuj ręcznie zainstalować agenta ochrony na serwerze produkcyjnym, jak to określono w [w tym artykule](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual).|
 | Agent usługi Azure Backup nie mogła nawiązać połączenia z usługą Azure Backup (identyfikator: 100050) | Agenta usługi Azure Backup nie mogła nawiązać połączenia z usługą Azure Backup. | **Jeśli Zalecana akcja, która jest wyświetlana w ramach produktu nie rozwiąże problemu, wykonaj następujące kroki**: <br>1. Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Spowoduje to otwarcie okna programu Internet Explorer. <br/> 2. Przejdź do **narzędzia** > **Opcje internetowe** > **połączeń** > **ustawienia sieci LAN**. <br/> 3. Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera.<br/> 4. Jeśli komputer ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwer proxy zezwalać na te [adresy URL](backup-configure-vault.md#verify-internet-access) i [adresu IP](backup-configure-vault.md#verify-internet-access).|
-| Instalowanie agenta usługi Kopia zapasowa Azure nie powiodło się | Instalacja usług Microsoft Azure Recovery Services nie powiodła się. Wszystkie zmiany wprowadzone w systemie przez instalację usługi Microsoft Azure Recovery Services zostały wycofane. (ID: 4024) | Ręcznie zainstaluj agenta platformy Azure.
+| Instalowanie agenta usługi Kopia zapasowa Azure nie powiodło się | Instalacja usług Microsoft Azure Recovery Services nie powiodła się. Wszystkie zmiany wprowadzone w systemie przez instalację usługi Microsoft Azure Recovery Services zostały wycofane. (IDENTYFIKATOR: 4024) | Ręcznie zainstaluj agenta platformy Azure.
 
 
 ## <a name="configuring-protection-group"></a>Konfigurowanie grupy ochrony

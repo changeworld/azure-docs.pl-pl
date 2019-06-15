@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: e3f5cb726dddbdbfbd1b1f48c800ac681e7a174c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056736"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Odczytywanie i zapisywanie danych w bazie danych Apache HBase za pomocą platformy Apache Spark
 
@@ -21,11 +21,11 @@ Bazy danych Apache HBase jest zazwyczaj badane za pomocą jego niskiego poziomu 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dwa osobne klastry HDInsight, jednej bazy danych HBase i Spark jednym z co najmniej Spark 2.1 (HDInsight 3.6) zainstalowane.
-* Klaster Spark musi komunikować się bezpośrednio z klastra HBase z minimalnym opóźnieniem, więc to zalecana konfiguracja jest wdrożenie zarówno klastrów w tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).
-* Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) do obsługi klastrów magazynu podstawowego. Takie rozwiązanie byłoby wasb: / / usługi Azure Blob Storage, abfs: / / dla usługi Azure Data Lake Storage Gen2 lub systemu plików adl: / / dla usługi Azure Data Lake Storage Gen1. Bezpieczny transfer jest włączona dla usługi Blob Storage lub Data Lake Storage Gen2, identyfikator URI będzie mieć wasbs: / / lub abfss: / / odpowiednio Zobacz też [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
+* Dwa oddzielne klastry HDInsight wdrożonych w tej samej sieci wirtualnej. Jednej bazy danych HBase, a drugi platformy Spark za pomocą co najmniej Spark 2.1 (HDInsight 3.6) zainstalowane. Aby uzyskać więcej informacji, zobacz [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
+* Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* [Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) do obsługi klastrów magazynu podstawowego. Takie rozwiązanie byłoby wasb: / / usługi Azure Blob Storage, abfs: / / dla usługi Azure Data Lake Storage Gen2 lub systemu plików adl: / / dla usługi Azure Data Lake Storage Gen1. Bezpieczny transfer jest włączona dla usługi Blob Storage lub Data Lake Storage Gen2, identyfikator URI będzie mieć wasbs: / / lub abfss: / / odpowiednio Zobacz też [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Ogólny proces
 
@@ -40,38 +40,47 @@ Ogólny proces włączania klastra Spark do wykonywania zapytań klastra usługi
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>Przygotowanie przykładowych danych w bazy danych Apache HBase
 
-W tym kroku możesz utworzyć i wypełnić prostej tabeli w bazie danych HBase Apache, który można następnie wykonywać zapytania za pomocą platformy Spark.
+W tym kroku, Utwórz i Wypełnij tabelę w bazie danych HBase Apache, który można następnie wykonywać zapytania za pomocą platformy Spark.
 
-1. Łączenie z węzłem głównym klastra HBase przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia przy użyciu protokołu SSH HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).  Edytować poniższe polecenie, zastępując `HBASECLUSTER` nazwą klastra usługi HBase `sshuser` przy użyciu protokołu ssh użytkownika nazwa konta, a następnie wprowadź polecenie.
+1. Użyj `ssh` polecenie, aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `HBASECLUSTER` nazwą swojej bazy danych HBase klastra, a następnie wpisz polecenie:
 
-    ```
+    ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Wprowadź poniższe polecenie, aby uruchomić z poziomu powłoki HBase:
+2. Użyj `hbase shell` polecenia do uruchamiania interaktywnej powłoki HBase. Wprowadź następujące polecenie, w związku z protokołu SSH:
 
-        hbase shell
+    ```bash
+    hbase shell
+    ```
 
-3. Wprowadź poniższe polecenie, aby utworzyć `Contacts` tabelę z rodziny kolumn `Personal` i `Office`:
+3. Użyj `create` polecenie, aby utworzyć tabelę HBase z dwiema rodzinami kolumn. Wprowadź następujące polecenie:
 
-        create 'Contacts', 'Personal', 'Office'
+    ```hbase
+    create 'Contacts', 'Personal', 'Office'
+    ```
 
-4. Wpisz poniższe polecenia, aby załadować kilka wierszy przykładowych danych:
+4. Użyj `put` polecenie, aby wstawić wartości w określonej kolumnie w określonym wierszu określonej tabeli. Wprowadź następujące polecenie:
 
-        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-        put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
-        put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```hbase
+    put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+    put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+    put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+    put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+    put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
+    put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```
 
-5. Wprowadź poniższe polecenie, aby wyjść z poziomu powłoki HBase:
+5. Użyj `exit` polecenie, aby zatrzymać interaktywnej powłoki HBase. Wprowadź następujące polecenie:
 
-        exit 
+    ```hbase
+    exit
+    ```
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopiowanie bazy danych hbase-site.xml do klastra Spark
+
 Kopiowanie bazy danych hbase-site.xml z magazynu lokalnego do katalogu głównego magazynu domyślnego klastra Spark.  Edytować poniższe polecenie, aby odpowiadały konfiguracji.  Następnie z otwartych sesji SSH z klastrem HBase, wpisz polecenie:
 
 | Wartość składni | Nowa wartość|
@@ -80,9 +89,11 @@ Kopiowanie bazy danych hbase-site.xml z magazynu lokalnego do katalogu główneg
 |`SPARK_STORAGE_CONTAINER`|Zamień na nazwę domyślnego kontenera magazynu używane dla klastra Spark.|
 |`SPARK_STORAGE_ACCOUNT`|Zamień domyślna nazwa konta magazynu używane dla klastra Spark.|
 
-```
+```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
+
+Następnie Zakończ działanie sieci protokołu ssh połączenie z klastrem HBase.
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Umieść site.xml bazy danych hbase w klastrze Spark
 
@@ -90,13 +101,15 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 2. Wprowadź poniższe polecenie, aby skopiować `hbase-site.xml` z klastrem Spark domyślnego magazynu do folderu konfiguracji Spark 2 klastra lokalnego magazynu:
 
-        sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```bash
+    sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Uruchom powłokę aparatu Spark odwołujące się do łącznika usługi Spark bazy danych HBase
 
 1. Z otwartego sesji SSH do klastra Spark wprowadź poniższe polecenie, aby uruchomić powłoki spark:
 
-    ```
+    ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
     ```  
 
@@ -185,12 +198,14 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
 
 9. Powinny zostać wyświetlone wyniki, takie jak te:
 
-        +-------------+--------------------+
-        | personalName|       officeAddress|
-        +-------------+--------------------+
-        |    John Dole|1111 San Gabriel Dr.|
-        |  Calvin Raji|5415 San Gabriel Dr.|
-        +-------------+--------------------+
+    ```output
+    +-------------+--------------------+
+    | personalName|       officeAddress|
+    +-------------+--------------------+
+    |    John Dole|1111 San Gabriel Dr.|
+    |  Calvin Raji|5415 San Gabriel Dr.|
+    +-------------+--------------------+
+    ```
 
 ## <a name="insert-new-data"></a>Wstaw nowe dane
 
@@ -229,13 +244,21 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
 
 5. Powinny pojawić się następujące dane wyjściowe:
 
-        +------+--------------------+--------------+------------+--------------+
-        |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
-        +------+--------------------+--------------+------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
-        | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+------------+--------------+
+    ```output
+    +------+--------------------+--------------+------------+--------------+
+    |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
+    +------+--------------------+--------------+------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
+    | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+------------+--------------+
+    ```
+
+6. Zamknij powłoki spark, wprowadzając następujące polecenie:
+
+    ```scala
+    :q
+    ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

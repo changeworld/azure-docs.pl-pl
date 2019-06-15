@@ -7,14 +7,14 @@ author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 06/11/2019
 ms.author: garye
-ms.openlocfilehash: 831f1d22c4da215bed3ed55b659332aa3b57472b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1149cc6bd4fa41514056342a06d31016123eb88c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145937"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062143"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal
 
@@ -105,4 +105,4 @@ Zanotuj lokalizację i kluczy. Klucze można uzyskać, wybierając **klucze** w 
 * [Szybki start: Wyodrębnianie tekstu odręcznego z obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)
 * [Samouczek: Utwórz aplikację, aby wykryć i ramek twarzy na obrazie](https://docs.microsoft.com/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial)
 * [Tworzenie strony sieci Web wyszukiwania niestandardowego](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)
-* [Integrowanie Language Understanding (LUIS) z botem przy użyciu platformy Bot Framework](https://docs.microsoft.com/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample)
+* [Integrowanie Language Understanding (LUIS) z botem przy użyciu platformy Bot Framework](https://docs.microsoft.com/azure/cognitive-services/luis/luis-nodejs-tutorial-bf-v4)

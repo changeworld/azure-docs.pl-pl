@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d68ffe6561da6a23c288dfabd1d3eb6b34099bb3
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003114"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Atrybuty zabezpieczeń dla komunikatów usługi Azure Service Bus
@@ -30,7 +30,7 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowanych w komunikatów usługi
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Obsługuje standardowego mechanizmu HTTPS/TLS. |
 | Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie |   |
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
-| Wywołania interfejsu API szyfrowane| Tak | Wywołania interfejsu API odbywa się za pomocą [usługi Azure Resource Manager](../azure-resource-manager/index.yml) i HTTPS. |
+| Wywołania interfejsu API szyfrowane| Yes | Wywołania interfejsu API odbywa się za pomocą [usługi Azure Resource Manager](../azure-resource-manager/index.yml) i HTTPS. |
 
 ## <a name="network-segmentation"></a>Segmentacji sieci
 
@@ -45,13 +45,13 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowanych w komunikatów usługi
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Obsługiwane za pośrednictwem [usługa Azure Monitor i alerty](service-bus-metrics-azure-monitor.md). |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Obsługiwane za pośrednictwem [usługa Azure Monitor i alerty](service-bus-metrics-azure-monitor.md). |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | Zarządzane za pośrednictwem [usługi Azure Active Directory tożsamości usługi zarządzanej](service-bus-managed-service-identity.md); zobacz [usługi Service Bus, uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md).|
+| Authentication| Yes | Zarządzane za pośrednictwem [usługi Azure Active Directory tożsamości usługi zarządzanej](service-bus-managed-service-identity.md); zobacz [usługi Service Bus, uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md).|
 | Autoryzacja| Tak | Obsługuje autoryzację za pośrednictwem [RBAC](service-bus-role-based-access-control.md) (wersja zapoznawcza) i tokenu sygnatury dostępu Współdzielonego, zobacz [usługi Service Bus, uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md). |
 
 

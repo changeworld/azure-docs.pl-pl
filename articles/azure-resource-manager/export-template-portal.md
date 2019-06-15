@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
 ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65515387"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Eksportowanie pojedynczych i wielu zasobów do szablonu w witrynie Azure portal
@@ -72,7 +72,7 @@ Aby wyeksportować jeden zasób:
 
 1. Wybierz zasób do wyeksportowania.
 
-   ![Wybieranie zasobu](./media/export-template-portal/select-link-resource.png)
+   ![Wybierz zasób](./media/export-template-portal/select-link-resource.png)
 
 1. Dla tego zasobu, wybierz **Eksportuj szablon** w okienku po lewej stronie.
 
@@ -88,7 +88,7 @@ Aby wyeksportować jeden zasób:
 
 1. Po pomyślnym sprawdzania poprawności, ale przed rozpoczęciem wdrażania, wybierz **Pobierz szablon do automatyzacji**.
 
-   ![Pobierz szablon](./media/export-template-portal/download-before-deployment.png)
+   ![Pobieranie szablonu](./media/export-template-portal/download-before-deployment.png)
 
 1. Szablon jest wyświetlany i jest dostępny do pobrania.
 

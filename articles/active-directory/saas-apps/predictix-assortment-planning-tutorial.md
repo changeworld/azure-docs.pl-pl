@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c14362a220cc60b0b8956ca41950faecd0563b3e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bc3ea2f6fddc233a69d96c0c885ab310ed1e77c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Samouczek: Integracja usługi Azure Active Directory z planowaniem asortymentu Predictix
 
@@ -94,7 +94,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z planowaniem asortym
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
@@ -159,7 +159,7 @@ W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >** . (Na przykład BrittaSimon@contoso.com.)
 
     1. Wybierz **hasło Show**i zanotuj wartość, która znajduje się w **hasło** pole.
 

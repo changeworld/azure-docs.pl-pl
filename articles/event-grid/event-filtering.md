@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66305058"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Omówienie zdarzeń filtrowania dla subskrypcji usługi Event Grid
@@ -107,7 +107,7 @@ Wszystkie porównania ciągów są insensitve przypadek.
 
 W przypadku zdarzeń w schemacie usługi Event Grid Użyj następujących wartości dla klucza:
 
-* Id
+* Identyfikator
 * Temat
 * Subject
 * Typ zdarzenia
@@ -117,7 +117,7 @@ W przypadku zdarzeń w schemacie usługi Event Grid Użyj następujących warto�
 W przypadku zdarzeń w schemacie zdarzeń w chmurze Użyj następujących wartości dla klucza:
 
 * Identyfikator zdarzenia
-* Source
+* source
 * Typ zdarzenia
 * eventTypeVersion
 * Dane zdarzenia (na przykład Data.key1)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: cfa6a363725c35083b32d6de1dd1371777f91907
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240302"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji klienta i serwera w funkcji Mobile Apps i Mobile Services
@@ -52,7 +52,7 @@ Użytkownik może zrezygnować z wersji sprawdzanie przez ustawienie wartości *
 ### <a name="MobileAppsClients"></a> Mobile *aplikacje* zestawów SDK klienta
 Sprawdzanie wersji został wprowadzony w następujących wersjach zestawu SDK klienta dla **usługi Azure Mobile Apps**:
 
-| Platforma klienta | Wersja | Wartość nagłówka wersji |
+| Platforma klienta | Version | Wartość nagłówka wersji |
 | --- | --- | --- |
 | Klient zarządzany (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |

@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18350337ba44d969173d518a4bc8dfe40185de21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112718"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanego dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
@@ -35,7 +35,7 @@ W tym artykule przy użyciu programu CURL w celu wykonywania wywołań do punktu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)**.
+- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Jeśli używasz Windows, zainstaluj [podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal.
 - [Instalowanie lokalnej konsoli wiersza polecenia platformy Azure](/cli/azure/install-azure-cli), jeśli używasz [podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub [dystrybucji systemu Linux, OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
@@ -83,7 +83,7 @@ Aby utworzyć Maszynę wirtualną platformy Azure z przypisany systemowo zarząd
    
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
    
    **Treść żądania**
@@ -172,7 +172,7 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
    
    **Treść żądania**
@@ -204,7 +204,7 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -239,7 +239,7 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -282,7 +282,7 @@ Aby wyłączyć przypisany systemowo tożsamości zarządzanej maszyny wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -341,7 +341,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -422,7 +422,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -534,7 +534,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        |
  
    **Treść żądania**
@@ -566,7 +566,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -602,7 +602,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -641,7 +641,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -682,7 +682,7 @@ Aby usunąć tożsamości przypisanych przez użytkownika do maszyny Wirtualnej,
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.
  
    Jeśli masz zarządzane tożsamości przypisanych do maszyny Wirtualnej, są one wymienione w odpowiedzi `identity` wartość.
@@ -705,7 +705,7 @@ Aby usunąć tożsamości przypisanych przez użytkownika do maszyny Wirtualnej,
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -737,7 +737,7 @@ Aby usunąć tożsamości przypisanych przez użytkownika do maszyny Wirtualnej,
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
 
    **Treść żądania**
@@ -767,7 +767,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+|*Content-Type*     | Wymagany. Ustaw `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
 **Treść żądania**
@@ -794,7 +794,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+|*Content-Type*     | Wymagany. Ustaw `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.| 
 
 **Treść żądania**

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2b92b7673ed852e203ca0926421be6ee8cf977d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058176"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Usługa Azure odzyskiwanie po awarii geograficznego usługi Service Bus
 
@@ -49,7 +49,7 @@ W tym artykule są używane następujące terminy:
 
 -  *Tryb failover*: Proces aktywowanie pomocniczej przestrzeni nazw.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 Poniższa sekcja to Przegląd — Konfiguracja parowanie między obszarami nazw.
 
@@ -120,7 +120,7 @@ Należy zwrócić uwagę następujące kwestie, które należy uwzględnić w te
 
 2. Fakt, że żadne dane nie są replikowane oznacza, że obecnie aktywnych sesji nie są replikowane. Ponadto wykrywania duplikatów i zaplanowane komunikaty mogą nie działać. Nowej sesji, nowe zaplanowane wiadomości i nowe duplikaty będą działać. 
 
-3. Przechodzenie w tryb failover złożonych rozproszonej infrastruktury powinny być [rehearsed](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) co najmniej raz.
+3. Przechodzenie w tryb failover złożonych rozproszonej infrastruktury powinny być [rehearsed](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) co najmniej raz.
 
 4. Synchronizowanie jednostek może zająć trochę czasu około 50 – 100 jednostek na minutę. Subskrypcje i reguł również liczone jako jednostki.
 

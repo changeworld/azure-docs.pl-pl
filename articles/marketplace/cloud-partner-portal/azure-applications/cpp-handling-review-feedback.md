@@ -7,25 +7,25 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 57efbfe12df8072d619cf71f4b08da2e2e5be3ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068951"
 ---
 # <a name="handling-review-feedback"></a>Obsługa opinii dla przeglądu
 
 W tym artykule wyjaśniono, jak uzyskiwać dostęp do środowiska DevOps platformy Azure używane przez zespół usługi Microsoft Azure Marketplace przeglądu.  Jeśli krytycznych problemów znajdują się w ofercie usługi Azure application podczas **przeglądu Microsoft** krok, użytkownik może zalogować się do tego systemu Aby wyświetlić szczegółowe informacje na temat tych problemów (Przejrzyj opinię).  Po rozwiązaniu tych problemów muszą ponownie przesłać oferty w taki sposób, aby kontynuować, opublikuj go w portalu Azure Marketplace.  Na poniższym diagramie przedstawiono, jak ten proces opinii odnosi się do publikowania.
 
-![Kroki publikowania opinii w usłudze VSTS](./media/pub-flow-vsts-access.png)
+![Kroki publikowania opinii DevOps platformy Azure](./media/pub-flow-vsts-access.png)
 
 Zwykle Przejrzyj problemy są przywoływane jako żądania ściągnięcia (PR).  Każdego żądania Ściągnięcia jest połączony z online [DevOps platformy Azure](https://azure.microsoft.com/services/devops/) (poprzednia nazwa programu Visual Studio Team Services (VSTS)) elementu, który zawiera szczegółowe informacje o problemie.  Poniższa ilustracja przedstawia przykład odwołania do przeglądu żądania Ściągnięcia.  Dla złożonych sytuacjach zespoły przeglądu i pomocy technicznej może również wiadomość e-mail. 
 
 ![Stan karty zawierające opinii](./media/status-tab-ms-review.png)
 
 
-## <a name="vsts-access"></a>Dostęp do usługi VSTS
+## <a name="azure-devops-access"></a>Dostęp roli DevOps platformy Azure
 
 Aby wyświetlić elementy żądania Ściągnięcia, do którego odwołuje się opinii, wydawcy muszą najpierw zostać przyznane odpowiednią autoryzacją.  W przeciwnym razie odbieranie nowych wydawców `401 - Not Authorized` strony odpowiedzi podczas próby wyświetlenia żądania ściągnięcia.  Aby zażądać dostępu do tego repozytorium DevOps platformy Azure, wykonaj następujące czynności:
 
@@ -40,7 +40,7 @@ Aby wyświetlić elementy żądania Ściągnięcia, do którego odwołuje się o
     ![Kategoria bilet pomocy technicznej](./media/support-incident1.png)
 
 4. W **krok 1 z 2** strony, podaj swoje informacje kontaktowe i wybierz **Kontynuuj**.
-5. W **krok 2 z 2** Określ tytuł zdarzenia (na przykład `Request VSTS access`) i podaj informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz **przesyłania**.
+5. W **krok 2 z 2** Określ tytuł zdarzenia (na przykład `Request Azure DevOps access`) i podaj informacje zebrane w pierwszym kroku (powyżej).  Przeczytaj i zaakceptuj umowę, a następnie wybierz **przesyłania**.
 
 Jeśli tworzenie zdarzenia zakończyło się pomyślnie, zostanie wyświetlona strona potwierdzenia.  Na tej stronie, na której można się odwołać, należy zapisać informacji o potwierdzenie.  Zespół pomocy technicznej firmy Microsoft należy odpowiedzieć na Twoje żądanie dostępu w ciągu kilku dni roboczych.
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ab73b501fc9dbe6209a92fff6f6e19de03fcdc1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5c5c133fe728126ea07834c8ff5b02b1203ec326
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768079"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112684"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?
 
@@ -46,7 +46,7 @@ Użytkownicy-goście logują się do aplikacji i usług za pomocą własnych to�
 ![Zrzut ekranu przedstawiający stronę przeglądu uprawnienia](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Bezpieczne udostępnianie aplikacji i usług przy użyciu zasad
-Zasady autoryzacji umożliwiają ochronę zawartości firmowej. Zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe, można wymuszać:
+Zasady autoryzacji umożliwiają ochronę zawartości firmowej. Można wymusić zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe:
 - Na poziomie dzierżawy.
 - Na poziomie aplikacji.
 - W przypadku określonych gości w celu ochrony aplikacji i danych firmowych.

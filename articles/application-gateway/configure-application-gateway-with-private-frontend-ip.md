@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66134627"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji z punktem końcowym usługi wewnętrznego load balancer (ILB)
@@ -55,7 +55,7 @@ Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirt
     ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
 10. Przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **OK** do tworzenia zasobów sieciowych i bramy aplikacji. Może upłynąć kilka minut w usłudze application gateway można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
 
-## <a name="add-backend-pool"></a>Dodaj pulę zaplecza
+## <a name="add-backend-pool"></a>Dodawanie puli zaplecza
 
 Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej bazy danych, które będą obsługująca żądanie. Zaplecze może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. W tym przykładzie użyjemy maszyny wirtualne jako docelowego w wewnętrznej bazie danych. Możemy użyć istniejących maszyn wirtualnych lub utworzyć nowe. W tym przykładzie utworzymy dwie maszyny wirtualne, które platforma Azure używa jako serwery zaplecza w usłudze application gateway. Aby to zrobić, obejmuje następujące czynności:
 
@@ -63,7 +63,7 @@ Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej baz
 2. Zainstaluj usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 3. Dodawanie serwerów wewnętrznej bazy danych do puli zaplecza.
 
-### <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 1. Kliknij przycisk **Nowy**.
 2. Kliknij pozycję **Compute** (Wystąpienia obliczeniowe), a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.

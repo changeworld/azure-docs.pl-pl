@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496865"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083399"
 ---
 # <a name="vpn-gateways-overview"></a>Przegląd bram sieci VPN
 
@@ -52,7 +52,7 @@ Połączenia sieci VPN typu lokacja lokacja używa następujących parametrów k
 | Wersja IKE | IKEv1 | IKEv1 | IKEv1 |
 | Szyfrowanie | AES 128 | AES 256 | AES 256 |
 | Algorytm wyznaczania wartości skrótu| SHA 256 | SHA 256 | SHA 1 |
-| Grupa Diffie-Hellman (Grupa DH) | 1 | 1 | 1 |
+| Grupa Diffie-Hellman (Grupa DH) | 2 | 2 | 2 |
 | Okres istnienia | 28 800 sekund | 28 800 sekund | 28 800 sekund |
 | Rozmiar danych | 4 GB | 4 GB | 4 GB |
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66305271"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
 
 W tym artykule opisano główne pojęcia w usłudze Azure Event Grid.
 
-## <a name="events"></a>Zdarzenia
+## <a name="events"></a>Events
 
 Zdarzenie jest najmniejsza ilość informacje opisujące pełni coś, co wydarzyło się w systemie. Każde zdarzenie zawiera wspólne informacje, takie jak: źródło zdarzenia, czas zdarzenia miały miejsce i unikatowy identyfikator. Każde zdarzenie ma również określone informacje, których dotyczy tylko określonych typach zdarzenia. Na przykład zdarzenie o nowy plik tworzonych w usłudze Azure Storage zawiera szczegóły dotyczące pliku, takie jak `lastTimeModified` wartość. Lub zdarzenie usługi Event Hubs ma adres URL pliku przechwytywania. 
 

@@ -1,20 +1,19 @@
 ---
-title: Konfigurowanie alertów dotyczących kondycji usługi platformy Azure przy użyciu OpsGenie | Dokumentacja firmy Microsoft
+title: Wysyłanie alertów dotyczących kondycji usługi platformy Azure za pomocą OpsGenie przy użyciu elementów webhook
 description: Uzyskaj Spersonalizowane powiadomienia dotyczące zdarzenia usługi service health do swojego wystąpienia OpsGenie.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.workload: Supportability
-ms.date: 11/14/2017
-ms.openlocfilehash: 79a77fff206831c0f9b3bb73ad33f951d99e2c81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782217"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067166"
 ---
-# <a name="configure-service-health-alerts-with-opsgenie"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu OpsGenie
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Wysyłanie alertów dotyczących kondycji usługi platformy Azure za pomocą OpsGenie przy użyciu elementów webhook
 
 W tym artykule pokazano, jak skonfigurować alerty dotyczące kondycji usługi platformy Azure za pomocą OpsGenie przy użyciu elementu webhook. Za pomocą [OpsGenie](https://www.opsgenie.com/)firmy integracji kondycji usługi platformy Azure, w przypadku przekazywania alertów usługi Azure Service Health, aby OpsGenie. OpsGenie można określić odpowiednie osoby do powiadomienia oparte na dyżurów harmonogramy, za pomocą poczty e-mail, wiadomości tekstowych (SMS), połączenia telefoniczne, iOS i powiadomienia wypychane w systemie Android i zamocowaniem alertów, dopóki ten alert zostanie potwierdzone lub zamknięte.
 

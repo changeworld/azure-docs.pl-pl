@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d84a7060fadcb3f3d80b7fbbff9d91f8812388b2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 10ebe796f5aed827a4934a94d568aedbef704503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088229"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą języka T & E Express
 
@@ -29,7 +29,7 @@ Integrowanie T & E Express z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do T & E Express.
 * Aby umożliwić użytkownikom można automatycznie zalogowany do T & E Express (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -53,7 +53,7 @@ Aby skonfigurować integrację T & E Express w usłudze Azure AD, należy dodać
 
 **Aby dodać T & E Express z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,27 +61,27 @@ Aby skonfigurować integrację T & E Express w usłudze Azure AD, należy dodać
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **T & E Express**, wybierz opcję **T & E Express** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![T & E Express na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowania jednokrotnego przy użyciu języka T & E Express w oparciu o nazwie użytkownika testowego **Britta Simon**.
 Logowanie jednokrotne do pracy, relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w T & E Express powinien być określony.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą języka T & E Express, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[K & E Express logowania jednokrotnego](#configure-te-express-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego T & E Express](#create-te-express-test-user)**  — mieć odpowiednikiem Britta Simon w T & E Express, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +91,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą języka T 
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **T & E Express** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -114,7 +114,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą języka T 
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 6. Na **Konfigurowanie T & E Express** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
@@ -134,7 +134,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą języka T 
 
     ![Konfigurowanie logowania jednokrotnego](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Wybierz **Activar(Activate)** opcję **nie** do **SI(Yes)**. W **metadanych dostawcy tożsamości** pola tekstowego, Wklej metadane XML, który został pobrany z witryny Azure portal.
+1. Wybierz **Activar(Activate)** opcję **nie** do **SI(Yes)** . W **metadanych dostawcy tożsamości** pola tekstowego, Wklej metadane XML, który został pobrany z witryny Azure portal.
 
     ![Konfigurowanie logowania jednokrotnego](./media/tyeexpress-tutorial/tyeAdmin.png)
 

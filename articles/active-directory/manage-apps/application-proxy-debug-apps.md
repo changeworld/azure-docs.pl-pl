@@ -12,10 +12,10 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: d0a12bde119e9dae3f950603fac4bce060bb5f91
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66172268"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Debugowanie problemów z aplikacjami serwera Proxy aplikacji 
@@ -39,7 +39,7 @@ Ten schemat blokowy przeprowadzi Cię przez kroki do debugowania, niektóre najb
 
 ![Schemat blokowy przedstawiający kroki dotyczące debugowania aplikacji](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | action | Opis | 
+|  | Akcja | Opis | 
 |---------|---------|---------|
 |1 | Otwórz przeglądarkę, uzyskać dostęp do aplikacji i wprowadź swoje poświadczenia | Spróbuj zalogować się do aplikacji i sprawdź błędy związane z użytkownikiem, jak przy użyciu poświadczeń [nie można uzyskać dostępu do tej aplikacji firmowej](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | Sprawdź przypisania użytkownika do aplikacji | Upewnij się, Twoje konto użytkownika ma uprawnienia do dostępu do aplikacji z wewnątrz sieci firmowej, a następnie przetestuj logowanie do aplikacji, wykonując kroki opisane w [przetestować aplikację](application-proxy-add-on-premises-application.md#test-the-application). Jeśli problemy dotyczące logowania będą się powtarzać, zobacz [jak rozwiązywać problemy z błędami logowania](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-troubleshoot-sign-in-errors).  |

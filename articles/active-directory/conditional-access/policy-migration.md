@@ -1,8 +1,8 @@
 ---
-title: Co to jest migracja zasad dostępu warunkowego usługi Azure Active Directory? | Microsoft Docs
+title: Co to jest migracji zasad w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
 description: Dowiedz się, co musisz wiedzieć, by Migrowanie zasad klasycznych w witrynie Azure portal.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,17 +18,17 @@ ms.date: 07/24/2018
 ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 25161a6317392274ccce8865f7cc0071f0ec89b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60301680"
+ms.locfileid: "67112179"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co to jest migracja zasad dostępu warunkowego usługi Azure Active Directory? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co to jest migracji zasad w usłudze Azure Active Directory dostępu warunkowego? 
 
 
-[Dostęp warunkowy](../active-directory-conditional-access-azure-portal.md) jest to funkcja usługi Azure Active directory (Azure AD), która umożliwia kontrolowanie sposobu autoryzowany dostęp użytkownikom aplikacje w chmurze. Gdy celem jest nadal takie same, wydanie nowej witryny Azure portal wprowadził znaczne ulepszenia w sposobie działania dostępu warunkowego.
+[Dostęp warunkowy](../active-directory-conditional-access-azure-portal.md) jest to funkcja usługi Azure Active directory (Azure AD), która umożliwia kontrolowanie sposobu autoryzowany dostęp użytkownikom aplikacje w chmurze. Gdy celem jest nadal takie same, wydanie nowej witryny Azure portal wprowadził znaczne ulepszenia do działania dostępu warunkowego.
 
 Należy rozważyć Migrowanie zasad, które nie zostały utworzone w witrynie Azure portal ponieważ:
 
@@ -80,9 +80,9 @@ Zmieniając wybranych grup lub wykluczanie określonych grup można sprawdzić w
 
 
 
-## <a name="azure-ad-conditional-access-policies"></a>Zasady dostępu warunkowego w usłudze Azure AD
+## <a name="azure-ad-conditional-access-policies"></a>Zasady dostępu warunkowego usługi AD Azure
 
-Przy użyciu dostępu warunkowego w witrynie Azure portal można zarządzać w jednej centralnej lokalizacji wszystkich zasad. Ponieważ implementacja jak dostęp warunkowy znacznie zmieniła się, należy zapoznać się z podstawowe pojęcia, przed przeprowadzeniem migracji zasad klasycznych.
+Przy użyciu dostępu warunkowego w witrynie Azure portal można zarządzać w jednej centralnej lokalizacji wszystkich zasad. Ponieważ implementacji znacznie zmian dostępu warunkowego, należy zapoznać się z podstawowych pojęć przed przeprowadzeniem migracji zasad klasycznych.
 
 Zobacz:
 
@@ -90,7 +90,7 @@ Zobacz:
 
 - [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md) Aby uzyskać wskazówki dotyczące wdrażania dostępu warunkowego w Twojej organizacji.
 
-- [Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md) możliwość zapoznania się z interfejsem użytkownika w witrynie Azure portal.
+- [Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md) możliwość zapoznania się z interfejsem użytkownika w witrynie Azure portal.
 
 
  
@@ -171,6 +171,6 @@ W nowych zasad, musisz wybrać [platform urządzeń](technical-reference.md#devi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
 
-- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 
+- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 

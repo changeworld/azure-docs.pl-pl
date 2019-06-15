@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
 ms.openlocfilehash: 41e9d88df49d153089e6dc7a12c5873ccc167279
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209458"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Omówienie usługi Azure DDoS Protection standardowe
@@ -64,7 +64,7 @@ Usługa DDoS Protection standardowe funkcje obejmują:
 
 Standard ochrony przed atakami DDoS monitoruje wykorzystanie rzeczywisty ruch i stale porównuje ją z progów zdefiniowane w zasadach przed atakami DDoS. Po przekroczeniu progu ruchu ataki DDOS jest inicjowany automatycznie. Gdy ruch zwraca niższy od wartości progowej, środki zaradcze zostaną usunięte.
 
-![Ograniczanie ryzyka](./media/ddos-protection-overview/mitigation.png)
+![Środki zaradcze](./media/ddos-protection-overview/mitigation.png)
 
 Podczas środki zaradcze ruch wysyłany do chronionego zasobu jest przekierowywane przez usługi DDoS protection i kilka są sprawdzane, takie jak następujące testy:
 

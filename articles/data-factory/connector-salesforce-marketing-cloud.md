@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: de472cd25997b0c48f258927b2617c2399b2bb21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70ce03834910447e92f0272fc67034caa59c43f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405447"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074081"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z usług Salesforce: Marketing Cloud przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 Możesz skopiować dane z usługi Salesforce Marketing Cloud, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Łącznik Salesforce Marketing Cloud obsługuje uwierzytelnianie za pomocą protokołu OAuth 2. Jest on oparty na [interfejsu API usługi Salesforce Marketing Cloud REST](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
 >Ten łącznik nie obsługuje pobierania obiektów niestandardowych lub niestandardowe rozszerzenia danych.
@@ -113,7 +113,7 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić typ �
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SalesforceMarketingCloudSource** | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SalesforceMarketingCloudSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

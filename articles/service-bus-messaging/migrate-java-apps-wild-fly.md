@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
 ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158713"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>Migrowanie aplikacji w języku Java enterprise edition (EE) na platformę Azure
@@ -932,7 +932,7 @@ Picked up _JAVA_OPTIONS: -Djava.net.preferIPv4Stack=true
     0cb1ce311a79:/home# cat config.xml | grep "SBF"
                         <connection-definition class-name=\"org.jboss.resource.adapter.jms.JmsManagedConnectionFactory\" jndi-name=\"java:/jms/SBF\" pool-name=\"sbf-cd\">
     ```
-### <a name="additional-information"></a>Informacje dodatkowe
+### <a name="additional-information"></a>Dodatkowe informacje
 
 Aby uzyskać dodatkowe informacje można znaleźć: 
  

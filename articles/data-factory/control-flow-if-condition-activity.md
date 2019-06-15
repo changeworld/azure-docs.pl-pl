@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153472"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w usłudze Azure Data Factory
@@ -67,7 +67,7 @@ Działanie If Condition pełni taką samą rolę, co instrukcja if w językach p
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania warunku if. | String | Tak
-typ | Musi być równa **IfCondition** | String | Tak
+type | Musi być równa **IfCondition** | String | Yes
 expression | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Tak
 ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Tablica | Tak
 ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Tablica | Tak

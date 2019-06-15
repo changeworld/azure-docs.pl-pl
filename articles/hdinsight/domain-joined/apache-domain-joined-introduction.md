@@ -6,14 +6,14 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: b7228fdf1bb67ff8029412174a883a3a0b123cfc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243949"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126201"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Co to jest pakiet Enterprise Security w usłudze Azure HDInsight
 
@@ -21,10 +21,9 @@ W przeszłości, Azure HDInsight obsługuje tylko jednego użytkownika: administ
 
 Klaster usługi HDInsight można utworzyć za pomocą Enterprise pakietu zabezpieczeń (ESP), który jest przyłączony do domeny usługi Active Directory. Następnie można skonfigurować listę pracowników przedsiębiorstwa, którzy mogą uwierzytelniać się za pośrednictwem usługi Azure Active Directory, aby zarejestrować się w klastrze HDInsight. Nikt z poza firmę Zaloguj, lub uzyskać dostęp do klastra HDInsight. 
 
-Administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Apache Hive za pomocą [struktury Apache Ranger](https://hortonworks.com/apache/ranger/). Konfigurowanie funkcji RBAC ogranicza dostęp do danych tylko potrzebne elementy. Na koniec administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu. Administrator może następnie osiągnąć wysoki stopień nadzoru nad zasobami firmy.
+Administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Apache Hive za pomocą [struktury Apache Ranger](https://ranger.apache.org/). Konfigurowanie funkcji RBAC ogranicza dostęp do danych tylko potrzebne elementy. Na koniec administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu. Administrator może następnie osiągnąć wysoki stopień nadzoru nad zasobami firmy.
 
-> [!NOTE]  
-> Apache Oozie jest teraz włączony w klastrach ESP. Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, należy włączyć użytkowników [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md).
+Apache Oozie jest teraz włączony w klastrach ESP. Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, należy włączyć użytkowników [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Zabezpieczenia przedsiębiorstwa składają się czterech głównych filarów: zabezpieczenia brzegowe, uwierzytelnianie, autoryzacja i szyfrowanie.
 
@@ -43,25 +42,22 @@ W przypadku takiej konfiguracji pracownicy przedsiębiorstwa zalogować się do 
 ## <a name="authorization"></a>Autoryzacja
 Najlepszym rozwiązaniem należy wykonać większość przedsiębiorstw jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów organizacji. Analogicznie administrator może zdefiniować zasady kontroli dostępu opartej na rolach dla zasobów klastra. 
 
-Na przykład administrator może skonfigurować środowisko [Apache Ranger](https://hortonworks.com/apache/ranger/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia, że pracownicy mogą uzyskać dostęp tylko tych danych, musi być skutecznego wykonywania swoich zadań. Dostęp protokołu SSH z klastrem również jest ograniczony do tylko przez administratora.
+Na przykład administrator może skonfigurować środowisko [Apache Ranger](https://ranger.apache.org/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia, że pracownicy mogą uzyskać dostęp tylko tych danych, musi być skutecznego wykonywania swoich zadań. Dostęp protokołu SSH z klastrem również jest ograniczony do tylko przez administratora.
 
 ## <a name="auditing"></a>Inspekcja
 Inspekcja wszystkich dostępu do zasobów klastra i danych, jest niezbędne do śledzenia prób nieautoryzowanego lub niezamierzonego dostępu do zasobów. Jest tak ważna jak ochrona zasobów klastra HDInsight przed nieautoryzowanymi użytkownikami oraz zabezpieczaniem danych. 
 
 Administrator można przeglądać i raportować wszystkie przypadki dostępu do danych i zasobów klastra usługi HDInsight. Administrator można przeglądać i raportować wszystkie zmiany wprowadzane do zasad kontroli dostępu, które są tworzone w struktury Apache Ranger obsługiwanych punktów końcowych. 
 
-Klaster HDInsight przy użyciu ESP używa znanego użytkownika Apache Ranger do wyszukiwania dzienników inspekcji. Na zapleczu, środowisko Ranger używa [Apache Solr](https://hortonworks.com/apache/solr/) do przechowywania i wyszukiwania dzienników.
+Klaster HDInsight przy użyciu ESP używa znanego użytkownika Apache Ranger do wyszukiwania dzienników inspekcji. Na zapleczu, środowisko Ranger używa [Apache Solr](http://lucene.apache.org/solr/) do przechowywania i wyszukiwania dzienników.
 
 ## <a name="encryption"></a>Szyfrowanie
 Ochrona danych jest ważne dla spotkania zabezpieczeń i zgodności wymagań organizacyjnych. Poza ograniczaniem dostępu do danych nieautoryzowanych pracowników, należy go zaszyfrować. 
 
-Magazyny danych, zarówno w przypadku klastrów HDInsight — usługi Azure Blob storage i Azure Data Lake magazynu Gen1/Gen2 — obsługę przezroczystego po stronie serwera [szyfrowanie danych](../../storage/common/storage-service-encryption.md) magazynowanych. Zabezpieczonych klastrów HDInsight funkcjonuje bezproblemowo przy użyciu tej funkcji po stronie serwera szyfrowanie danych magazynowanych.
+Magazyny danych, zarówno w przypadku klastrów HDInsight, Azure Blob storage i Azure Data Lake Storage Gen1/Gen2, obsługują przezroczyste po stronie serwera [szyfrowanie danych](../../storage/common/storage-service-encryption.md) magazynowanych. Zabezpieczonych klastrów HDInsight funkcjonuje bezproblemowo przy użyciu tej funkcji po stronie serwera szyfrowanie danych magazynowanych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Planowanie z klastrami HDInsight przy użyciu ESP](apache-domain-joined-architecture.md)
 * [Konfigurowanie klastrów HDInsight przy użyciu ESP](apache-domain-joined-configure.md)
 * [Zarządzanie klastrami HDInsight przy użyciu ESP](apache-domain-joined-manage.md)
-* [Konfigurowanie zasad usługi Apache Hive dla klastrów HDInsight przy użyciu ESP](apache-domain-joined-run-hive.md)
-* [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
-

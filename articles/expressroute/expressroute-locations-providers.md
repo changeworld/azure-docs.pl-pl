@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jaredr80
-ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: f7006a8162aab87bc36f3dae034f10daa3f37ac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115451"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -92,14 +92,14 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 | **Dubai2** | datamena jednostka bazy danych | Północne Zjednoczone Emiraty Arabskie | jednostka bazy danych datamena, Orixcom |
 | **Dublin** | Equinix | Europa Północna | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | Nie dotyczy | DE-CIX, Interxion |
-| **Hongkong SAR** | Equinix | Azja Wschodnia | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
+| **Hongkong SAR** | Equinix | Azja Wschodnia | Aryaka Networks, British Telecom, Chief Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **Johannesburg** | Teraco | Republika Południowej Afryki (północ) | Internet Solutions — Cloud Connect, Liquid Telecom, Teraco |
 | **Kuala Lumpur** | TIME dotCom | Nie dotyczy | TIME dotCom |
 | **Las Vegas** | Przełącznik | Nie dotyczy | CenturyLink Cloud Connect, Megaport |
 | **Londyn** | Equinix | Południowe Zjednoczone Królestwo | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions — Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse — KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **Londyn2** | Telehouse | Południowe Zjednoczone Królestwo | IX Reach, Equinix |
 | **Los Angeles** | CoreSite | Nie dotyczy | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
-| **Marsylia** |Interxion | Francja Południowa | Interxion |
+| **Marsylia** |Interxion | Francja Południowa | Interxion, Jaguar Network |
 | **Melbourne** | NextDC | Australia Południowo-Wschodnia | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | Nie dotyczy | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | Nie dotyczy | Bell Canada, Cologix, Telus, Zayo |
@@ -180,29 +180,30 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
 | **Lokalizacja** | **Exchange** | **Dostawcy połączeń** |
 | --- | --- | --- |
 | **Amsterdam** | Equinix, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S.p.A, Gulf Bridge International, MainOne, Nianet, Post, Proximus, Telecom Italia Sparkle, Telia |
+| **Atlanta** | Equinix| Firma Castle korony
 | **Kapsztad** | Teraco | MTN |
-| **Chicago** | Equinix | Lightower, Spectrum Enterprise, Windstream |
-| **Dallas** | Equinix, Megaport | Axtel, C3ntro Telecom, Cox Business, Data Foundry, Spectrum Enterprise, Transtelco |
+| **Chicago** | Equinix | Windstream Castle korony, przedsiębiorstw o szerokim zakresie funkcji |
+| **Dallas** | Equinix, Megaport | Axtel, C3ntro Telecom, Cox Business, Crown Castle, Data Foundry, Spectrum Enterprise, Transtelco |
 | **Frankfurt** | Telecity | BICS, Cinia, Nianet, QSC AG |
 | **Hamburg** | Equinix | Cinia |
 | **Hongkong SAR** | Equinix | Chief, Macroview Telecom |
 | **Johannesburg** | Teraco | MTN |
 | **Londyn** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
-| **Los Angeles** | Equinix |Spectrum Enterprise, Transtelco |
+| **Los Angeles** | Equinix |Transtelco Castle korony, przedsiębiorstw o szerokim zakresie funkcji |
 | **Madryt** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Cogeco Peer 1, Rogers, Zirro |
-| **Nowy Jork** |Equinix, Megaport | Przedsiębiorstw o szerokim zakresie funkcji biznesowych, Lightower, Altice, Webair |
+| **Nowy Jork** |Equinix, Megaport | Altice, Castle korony o szerokim zakresie funkcji przedsiębiorstwa, Webair |
 | **Paryż** | Equinix | Proximus |
 | **Miasto Quebec** | Megaport | Fibrenoire |
 | **Sao Paulo** | Equinix | Venha Pra Nuvem |
 | **Seattle** |Equinix | Alaska Communications |
-| **Dolina Krzemowa** |Equinix | Windstream Business, Enterprise spektrum Cox |
+| **Dolina Krzemowa** |Coresite, Equinix | Cox biznesowych o szerokim zakresie funkcji przedsiębiorstwa, Windstream, X2nsat Inc. |
 | **Singapur** |Equinix |1CLOUDSTAR, BICS, Epsilon Telecommunications Limited, LGA Telecom, United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **Sydney** | Megaport | Macquarie Telecom Group|
 | **Tokio** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
-| **Toronto** | Equinix | Airgate Technologies, Inc. Cogeco Peer 1, IVedha Inc, Rogers, Thinktel, Zirro|
-| **Waszyngton** |Equinix | Altice Business, BICS, Cox Business, Gtt Communications Inc, Epsilon Telecommunications Limited, Lightower, Masergy, Windstream |
+| **Toronto** | Equinix, Megaport | Airgate Technologies Inc., Beanfield Metroconnect, Cogeco element równorzędny 1, IVedha Inc, Rogers, Thinktel, Zirro|
+| **Waszyngton** |Equinix | Windstream Limited, firmę Masergy, telekomunikacyjnych Epsilon Altice biznesowych, BICS, Cox biznesowych, korony Castle, Gtt komunikacji Inc, |
 
 ## <a name="expressroute-system-integrators"></a>Integratorzy systemu ExpressRoute
 Włączanie prywatnej łączności do własnych potrzeb może być wyzwaniem w zależności od skali sieci. Możesz pracować z dowolnymi integratorami systemu wymienionymi w poniższej tabeli, którzy ułatwiają dołączanie do usługi ExpressRoute.

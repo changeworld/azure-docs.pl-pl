@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
 ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231121"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
@@ -115,7 +115,7 @@ Poniższa lista zagrożeń STRIDE i zapewnia niektóre przykład środki zaradcz
 | --- | --- | --- |
 | Fałszowanie zawartości | Authentication | Wymaga połączenia HTTPS. |
 | Manipulowanie | Integralność | Sprawdzanie poprawności certyfikatów SSL. |
-| odrzucenie | Weryfikacja tożsamości | Włączanie usługi Azure [monitorowania i diagnostyki](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
+| odrzucenie | Niemożność wyparcia się | Włączanie usługi Azure [monitorowania i diagnostyki](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
 | Ujawnienie informacji | Poufność | Szyfruj poufne dane podczas przechowywania przy użyciu [usługi certyfikatów](https://docs.microsoft.com/rest/api/appservice/certificates). |
 | Odmowa usługi | Dostępność | Monitoruj metryki wydajności dla potencjalnych warunków typu "odmowa usługi". Implementuje filtry połączenia. |
 | Podniesienie uprawnień | Autoryzacja | Użyj [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md). |
@@ -169,7 +169,7 @@ W tym artykule skupiliśmy się na korzyści związane z bezpieczeństwem wdroż
 - [Usługa Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL Database i Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
 - [Azure Storage](security-paas-applications-using-storage.md)
-- Usługa Azure Cache for Redis
+- Azure Cache for Redis
 - Azure Service Bus
 - Zapory aplikacji sieci Web
 

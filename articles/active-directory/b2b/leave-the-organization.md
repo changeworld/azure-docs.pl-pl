@@ -5,22 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/13/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5164130c5850b37d1e1323d172f9f9c46b4b30
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 26d9eb883cc014c1bea092a12e22b6d144a37994
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768294"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112991"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Opuścić organizację jako użytkownika-gościa
 
 Użytkownik-Gość usługi Azure Active Directory (Azure AD) B2B można zdecyduję się opuścić organizacji w dowolnym momencie, jeśli nie są już potrzebne, korzystanie z aplikacji z tej organizacji lub zachowanie skojarzenia. Użytkownik może pozostać organizacji samodzielnie, bez konieczności kontaktowania się z administratorem.
+
+> [!NOTE]
+> Użytkownik-Gość nie może opuścić organizacji, jeśli konta zostały wyłączone w głównej dzierżawy i dzierżawy zasobów. Wyłączenie konta użytkownika gościa należy skontaktować się z administratorem dzierżawy, który można usunąć konta gościa lub włączenia konta gościa, dzięki czemu użytkownik może narazić organizację.
 
 ## <a name="leave-an-organization"></a>Opuszczanie organizacji
 
@@ -44,7 +47,7 @@ Aby opuścić organizację, wykonaj następujące kroki.
 
 ## <a name="account-removal"></a>Usuwanie konta
 
-Gdy użytkownik opuszcza organizację, usunięcia konta użytkownika "soft" w katalogu. Domyślnie obiekt użytkownika przenosi do **usuniętych użytkowników** obszar w usłudze Azure AD ale nie jest trwale usunięte przez 30 dni. Ta usuwania nietrwałego umożliwia administratorowi przywrócić konto użytkownika (w tym grupy i uprawnienia), jeśli użytkownik wysyła żądanie, aby przywrócić konto w ramach 30-dniowego okresu.
+Gdy użytkownik opuszcza organizację, usunięcia konta użytkownika "soft" w katalogu. Domyślnie obiekt użytkownika przenosi do **usuniętych użytkowników** obszaru w usłudze Azure AD, ale nie jest trwale usunięte przez 30 dni. Ta usuwania nietrwałego umożliwia administratorowi przywrócić konto użytkownika (w tym grupy i uprawnienia), jeśli użytkownik wysyła żądanie, aby przywrócić konto w ramach 30-dniowego okresu.
 
 Jeśli to konieczne, administrator dzierżawy trwale usunąć to konto w dowolnym momencie w trakcie 30-dniowego okresu. W tym celu:
 

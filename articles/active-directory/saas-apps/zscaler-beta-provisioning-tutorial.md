@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 54cf2924a94dda1d29baf048c866f019b82e1402
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256842"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67049994"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler Beta dla automatycznej aprowizacji użytkowników
 
@@ -49,7 +49,7 @@ Przed skonfigurowaniem rozwiązania Zscaler Beta dla użytkownika automatyczne I
 
 **Aby dodać rozwiązania Zscaler w wersji Beta z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -57,9 +57,9 @@ Przed skonfigurowaniem rozwiązania Zscaler Beta dla użytkownika automatyczne I
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Zscaler Beta**, wybierz pozycję **Zscaler Beta** na panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 

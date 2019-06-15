@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1871fee2734d347ff54d6aa70d90d1c28bd1f6f1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062389"
 ---
 # <a name="filters-in-azure-search"></a>Filtry w usłudze Azure Search 
 
@@ -158,11 +158,11 @@ Ciągi tekstowe jest rozróżniana wielkość liter. Istnieje nie małe-wielkoś
 
 ### <a name="approaches-for-filtering-on-text"></a>Podejścia do filtrowania według tekstu
 
-| Podejście | Opis | Kiedy stosować | 
+| Podejście | Opis | Kiedy stosować |
 |----------|-------------|-------------|
-| [search.in](query-odata-filter-orderby-syntax.md) | Funkcja, która pasuje do pola względem przecinkami lista ciągów. | Zalecane w przypadku [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i wszelkie filtry, w których wielu wartości w tekście nieprzetworzonym muszą zostać dopasowane do pola ciągu. **Search.in** funkcji zaprojektowano pod kątem szybkości i jest znacznie wyższa niż jawne porównanie pola względem każdego ciągu przy użyciu `eq` i `or`. | 
-| [search.ismatch](query-odata-filter-orderby-syntax.md) | Funkcja, która pozwala łączyć operacji wyszukiwania pełnotekstowego przy użyciu operacji ściśle logiczna filtrów w tym samym wyrażeniu filtru. | Użyj **search.ismatch** (lub równoważnym oceniania **search.ismatchscoring**), aby wiele kombinacji filtr wyszukiwania w jednym żądaniu. Można również użyć go do *zawiera* filtr do filtru na częściowe ciągu w dłuższym ciągu. |
-| [$filter = ciąg operator pola](query-odata-filter-orderby-syntax.md) | Wyrażenie zdefiniowanych przez użytkownika, składa się z pola, operatory i wartości. | Użyj go, jeśli chcesz znaleźć dokładnie takie same pola ciągu i wartość ciągu. |
+| [`search.in`](search-query-odata-search-in-function.md) | Funkcja, która pasuje do pola względem przecinkami lista ciągów. | Zalecane w przypadku [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i wszelkie filtry, w których wielu wartości w tekście nieprzetworzonym muszą zostać dopasowane do pola ciągu. **Search.in** funkcji zaprojektowano pod kątem szybkości i jest znacznie wyższa niż jawne porównanie pola względem każdego ciągu przy użyciu `eq` i `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkcja, która pozwala łączyć operacji wyszukiwania pełnotekstowego przy użyciu operacji ściśle logiczna filtrów w tym samym wyrażeniu filtru. | Użyj **search.ismatch** (lub równoważnym oceniania **search.ismatchscoring**), aby wiele kombinacji filtr wyszukiwania w jednym żądaniu. Można również użyć go do *zawiera* filtr do filtru na częściowe ciągu w dłuższym ciągu. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Wyrażenie zdefiniowanych przez użytkownika, składa się z pola, operatory i wartości. | Użyj go, jeśli chcesz znaleźć dokładnie takie same pola ciągu i wartość ciągu. |
 
 ## <a name="numeric-filter-fundamentals"></a>Podstawowe informacje dotyczące filtru liczbowego
 

@@ -13,10 +13,10 @@ ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595560"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
@@ -44,7 +44,7 @@ Są obsługiwane w następujących środowiskach:
 
 Jeśli włączono rozszerzenie Snapshot Debugger, ale nie widać migawki, Sprawdź nasze [przewodnik rozwiązywania problemów](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
-## <a name="grant-permissions"></a>Udziel uprawnień
+## <a name="grant-permissions"></a>Udzielenie uprawnień
 
 Dostęp do migawek są chronione przez kontroli dostępu opartej na rolach (RBAC). Aby przeprowadzić inspekcję migawki, możesz należy najpierw dodać do roli wymagane przez właściciela subskrypcji.
 
@@ -54,7 +54,7 @@ Dostęp do migawek są chronione przez kontroli dostępu opartej na rolach (RBAC
 Właściciele subskrypcji należy przypisać `Application Insights Snapshot Debugger` ról do użytkowników, którzy będą inspekcji migawki. Tę rolę można przypisać do poszczególnych użytkowników lub grupy według właścicieli subskrypcji dla elementu docelowego zasobu usługi Application Insights lub grupy zasobów lub subskrypcji.
 
 1. Przejdź do zasobu usługi Application Insights w witrynie Azure portal.
-1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 1. Kliknij przycisk **+ Dodaj przypisanie roli** przycisku.
 1. Wybierz **Application Insights Snapshot Debugger** z **role** listy rozwijanej.
 1. Wyszukaj, a następnie wprowadź nazwę użytkownika do dodania.

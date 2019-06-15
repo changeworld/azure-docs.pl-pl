@@ -17,17 +17,17 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962407"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Aplikacja mobilna, że wywołania sieci web interfejsy API — rejestrowanie aplikacji
 
 Ten artykuł zawiera instrukcje rejestracji aplikacji do tworzenia aplikacji mobilnych.
 
-## <a name="supported-account-types"></a>Obsługiwane typy kont
+## <a name="supported-account-types"></a>Obsługiwane typy konta
 
 Typy kont, obsługiwane w aplikacjach mobilnych zależą od tego, środowisko, które chcesz włączyć i użytkowników, dla których jest przeznaczona aplikacja.
 
@@ -43,7 +43,7 @@ Jeśli chcesz ręcznie skonfigurować identyfikator URI przekierowania, możesz 
 - ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Wyznaczania wartości skrótu podpisu dla systemu Android mogą być generowane przy użyciu kluczy wydania lub debugowania za pomocą polecenia KeyTool.
 
-## <a name="api-permissions"></a>Uprawnienia interfejsu API
+## <a name="api-permissions"></a>Uprawnienia do interfejsu API
 
 Aplikacje mobilne wywoływania interfejsów API w imieniu zalogowanego użytkownika. Twoja aplikacja wymaga zażądać uprawnień delegowanych, nazywana także zakresów. W zależności od założenie można to zrobić statycznie za pośrednictwem witryny Azure portal lub dynamicznie w czasie wykonywania. Statycznie zarejestrowanie uprawnień umożliwia administratorom łatwe zatwierdzić aplikację i jest zalecane.
 

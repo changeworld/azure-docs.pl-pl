@@ -3,20 +3,20 @@ title: Kontenerów Docker
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Kontener usługi LUIS spowoduje załadowanie aplikacji uczonego lub opublikowane w kontenerze platformy docker i zapewnia dostęp do przewidywania zapytania z punktów końcowych interfejsu API kontenera.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 02ac7b91622a3c8fe877ea9bcbc7224a67eb0ae5
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 68ff6a156e0d159816b184452f1f945cbce65216
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306627"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052025"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -108,8 +108,8 @@ Katalog instalacji danych wejściowych może zawierać **produkcji**, **przemies
 
 |Typ pakietu|Punkt końcowy interfejsu API zapytań|Dostępność zapytań|Format nazwy pliku pakietu|
 |--|--|--|--|
-|Szkolone|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Przemieszczanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
+|Przeszkoleni|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Przygotowanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
 |Produkcja|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -272,12 +272,12 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|
-|Opublikowano|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczania<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]<br>|
-|Szkolone|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
+|Opublikowane|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczania<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]<br>|
+|Przeszkoleni|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
-|Parametr zapytania|Type|Przeznaczenie|
+|Parametr zapytania|Typ|Przeznaczenie|
 |--|--|--|
 |`q`|string|Wypowiedź użytkownika.|
 |`timezoneOffset`|numer|TimezoneOffset umożliwia [Zmień strefę czasową](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) posługują się datetimeV2 wstępnie utworzone jednostki.|
@@ -337,7 +337,7 @@ Do zamykania w kontenerze, w środowisko wiersza polecenia, na którym działa k
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](luis-container-configuration.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Wysyła kontenera usługi LUIS rozliczeń informacje na platformie Azure, przy użyciu _usług Cognitive Services_ zasobów dla konta systemu Azure. 
 
