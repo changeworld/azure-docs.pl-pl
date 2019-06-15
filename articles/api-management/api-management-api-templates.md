@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60657858"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Szablony interfejsu API w usłudze Azure API Management
@@ -352,7 +352,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu AP
 |`operation`|[Operacja](api-management-template-data-model-reference.md#Operation)|Obecnie wyświetlany limit czasu operacji.|  
 |`sampleUrl`|string|Adres URL dla bieżącej operacji.|  
 |`operationMenu`|[Operacja menu](api-management-template-data-model-reference.md#Menu)|Menu operacji dla tego interfejsu API.|  
-|`consoleUrl`|URI|Identyfikator URI dla **wypróbuj** przycisku.|  
+|`consoleUrl`|Identyfikator URI|Identyfikator URI dla **wypróbuj** przycisku.|  
 |`samples`|Kolekcja [przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostek.|Przykłady kodu dla bieżącej operacji...|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60729923"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Rozwiązania do transferu danych okresowe
@@ -60,7 +60,7 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 | Format danych                                   | Obiekty BLOB platformy Azure, usługa Azure Files   | Obiekty BLOB platformy Azure, usługa Azure Files | [Obsługuje 70 łączników danych dla magazynów danych i formatów](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | Przetwarzanie wstępne danych                           | Nie                         | Tak, za pośrednictwem obliczeń brzegowych    | Yes                                                           |
 | Lokalna pamięć podręczna<br>(na potrzeby przechowywania danych lokalnych)    | Yes                        | Yes                      | Nie                                                            |
-| Transfer z innych chmur                    | Nie                         | Nie                       | Yes                                                           |
+| Transfer z innych chmur                    | Nie                         | Nie                       | Tak                                                           |
 | Cennik                                       | [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Cennik](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Kolejne kroki

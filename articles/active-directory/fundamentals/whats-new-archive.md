@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55d11fa44aca65e2d4e487852bd242a4ba75a5f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43b5a051913ac762fe6b5a0ad11776ae911df864
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110364"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -177,7 +177,7 @@ Aby uzyskać więcej informacji o używaniu właściwości rozszerzenia niestand
 
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla systemu Azure dostępu warunkowego opartego na aplikacji usługi AD
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** Dostęp warunkowy  
@@ -191,7 +191,7 @@ Następujące aplikacje są na liście [zatwierdzonych aplikacji klienckich](htt
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -439,7 +439,7 @@ Aby uzyskać więcej informacji o tych nowych funkcjach, zobacz nasz blog [Dzien
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Informacje o dostępie warunkowym dodany do raportów logowania usługi Azure AD
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Warunkowy dostęp do informacji dodany do raportów logowania usługi Azure AD
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Raportowanie  
@@ -707,7 +707,7 @@ Aby uzyskać więcej informacji, zobacz [Azure Active Directory — warunki doty
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Nowy szablon zasad dostępu warunkowego "niestandardowy" utworzone podczas warunki Użyj tworzenia
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Nowy "niestandardowy" szablon zasad dostępu warunkowego utworzone podczas warunki Użyj tworzenia
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Warunki użytkowania  
@@ -891,7 +891,7 @@ Aby uzyskać więcej informacji o ofercie swoją aplikację w galerii aplikacji 
 **Kategoria usług:** Inne  
 **Możliwości produktu:** Katalog
  
-Nowy, krok po kroku wskazówki dotyczące wdrażania usługi Azure Active Directory (Azure AD), takie jak Samoobsługowe resetowanie haseł (SSPR), pojedynczego logowania jednokrotnego (SSO), dostępu warunkowego (CA), serwer proxy aplikacji, aprowizacja Active Directory Federation Services (ADFS) do użytkowników Uwierzytelnianie przekazywane (PTA) i usług AD FS do synchronizacji skrótów haseł (wersji).
+Nowe, szczegółowe wskazówki dotyczące wdrażania usługi Azure Active Directory (Azure AD), łącznie z haseł resetowania (SSPR), logowanie jednokrotne (SSO), warunkowego dostępu do urzędu certyfikacji, serwer proxy aplikacji, aprowizacja Active Directory Federation Services (ADFS) do użytkowników Uwierzytelnianie przekazywane (PTA) i usług AD FS do synchronizacji skrótów haseł (wersji).
 
 Aby wyświetlić wskazówki dotyczące wdrażania, przejdź do [wskazówki dotyczące wdrażania tożsamości](https://aka.ms/DeploymentPlans) repozytorium w witrynie GitHub. Aby przekazać opinię na temat wskazówki dotyczące wdrażania, użyj [wdrożenia planu forum z opiniami](https://aka.ms/deploymentplanfeedback). Jeśli masz jakieś pytania dotyczące wskazówki dotyczące wdrażania, skontaktuj się z nami pod adresem [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
@@ -1034,7 +1034,7 @@ Teraz można określić organizacji partnerskich, który ma być udostępnianie 
 
 Dzięki temu można kontrolować dostęp do zasobów, umożliwiając bezproblemowe środowisko dla zatwierdzonych użytkowników jednocześnie.
 
-Ta funkcja współpracy B2B jest dostępna dla wszystkich klientów usługi Azure Active Directory i może służyć w połączeniu z funkcji usługi Azure AD Premium, takich jak warunkowe ochrony dostępu i tożsamości uzyskać większą kontrolę nad kiedy i jak firm zewnętrznych użytkowników w i uzyskać dostęp.
+Ta funkcja współpracy B2B jest dostępna dla wszystkich klientów usługi Azure Active Directory i może służyć w połączeniu z funkcjami usługi Azure AD Premium, takie jak ochrona dostępu warunkowego i tożsamości uzyskać większą kontrolę nad kiedy i jak firm zewnętrznych użytkowników w i uzyskać dostęp.
 
 Aby uzyskać więcej informacji, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
 
@@ -1137,7 +1137,7 @@ Aby uzyskać więcej informacji, zobacz [czym jest współpraca B2B w usłudze A
  
 ---
 
-### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Ogranicz dostęp za pomocą przeglądarki przy użyciu usługi Intune Managed Browser przy użyciu dostępu warunkowego opartego na aplikacji usługi Azure AD dla systemów iOS i Android
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Ogranicz dostęp za pomocą przeglądarki przy użyciu usługi Intune Managed Browser przy użyciu usługi Azure AD na podstawie aplikacji dostępu warunkowego dla systemów iOS i Android
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Dostęp warunkowy  
@@ -1147,7 +1147,7 @@ Aby uzyskać więcej informacji, zobacz [czym jest współpraca B2B w usłudze A
 
 **Intune Managed Browser logowania jednokrotnego:** Pracownikom służy logowanie jednokrotne z klientów natywnych (takich jak Microsoft Outlook) i Intune Managed Browser dla wszystkich aplikacji platformy Azure podłączonej do usługi AD.
 
-**Obsługa dostępu warunkowego w przeglądarce zarządzane przez usługę Intune:** Możesz teraz wymagać pracownikom korzystać z usługi Intune Managed browser, za pomocą zasad dostępu warunkowego opartego na aplikacji.
+**Obsługa dostępu warunkowego w przeglądarce zarządzane przez usługę Intune:** Możesz teraz wymagać pracownikom korzystać z usługi Intune Managed browser, za pomocą zasad dostępu warunkowego na podstawie aplikacji.
 
 Dowiedz się więcej w naszym [wpis w blogu](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
@@ -1494,7 +1494,7 @@ Ta wersja ma następujące aktualizacje i zmiany:
 
 ---
  
-### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Aplikacje dodane obsługi zasad ochrony aplikacji usługi Intune za pomocą dostępu warunkowego opartego na aplikacji usługi Azure AD
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Aplikacje obsługujące zasady ochrony aplikacji usługi Intune, dodane do użycia z usługą Azure AD na podstawie aplikacji dostępu warunkowego
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Dostęp warunkowy  
@@ -1513,7 +1513,7 @@ Następujące aplikacje zostaną dodane do końca lutego:
 Aby uzyskać więcej informacji, zobacz:
 
 - [Wymaganie aplikacji zatwierdzone klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1793,11 +1793,11 @@ Już dziś dostęp jest zablokowany, korzystając z tego warunku. Po udostępnie
 
 Poszukaj tej funkcji i dodatkowe informacje w nadchodzących o naszych blogach i wersji. 
 
-Aby uzyskać więcej informacji, zobacz [dostęp warunkowy w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
+Aby uzyskać więcej informacji, zobacz [dostępu warunkowego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla systemu Azure dostępu warunkowego opartego na aplikacji usługi AD
 
 **Typ:** Planowanie zmian  
 **Kategoria usług:** Dostęp warunkowy  
@@ -1811,7 +1811,7 @@ Następujące aplikacje są na liście [zatwierdzonych aplikacji klienckich](htt
 Aby uzyskać więcej informacji, zobacz:
 
 - [Wymaganie aplikacji zatwierdzone klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1842,13 +1842,13 @@ Aby uzyskać więcej informacji, zobacz [integracji lokalnego](https://docs.micr
 
 ---
 
-### <a name="azure-ad-app-based-conditional-access"></a>Usługa Azure AD oparty na aplikacji dostępu warunkowego 
+### <a name="azure-ad-app-based-conditional-access"></a>Dostęp warunkowy oparty na aplikacji usługi Azure AD 
  
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Azure AD  
 **Możliwości produktu:** Tożsamość, zabezpieczenia i ochrona
 
-Teraz można ograniczyć dostęp do usługi Office 365 i innych aplikacji połączonych AD chmury platformy Azure do [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) obsługujące zasady ochrony aplikacji usługi Intune przy użyciu [dostępu warunkowego opartego na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zasady ochrony aplikacji usługi Intune służą do konfigurowania i ochrony danych firmy na tych aplikacji klienckich.
+Teraz można ograniczyć dostęp do usługi Office 365 i innych aplikacji połączonych AD chmury platformy Azure do [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) obsługujące zasady ochrony aplikacji usługi Intune przy użyciu [Azure dostępu warunkowego opartego na aplikacji usługi AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zasady ochrony aplikacji usługi Intune służą do konfigurowania i ochrony danych firmy na tych aplikacji klienckich.
 
 Łącząc [opartego na aplikacji](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) z [opartego na urządzeniach](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) zasady dostępu warunkowego, masz możliwość ochrony danych osobistych i urządzeniach firmy.
 
@@ -1867,7 +1867,7 @@ Następujące warunki i kontrolki są teraz dostępne do użycia przy użyciu do
 
 - Wymagaj zatwierdzonej aplikacji klienckiej
 
-Aby uzyskać więcej informacji, zobacz [dostępu warunkowego opartego na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
+Aby uzyskać więcej informacji, zobacz [Azure dostępu warunkowego opartego na aplikacji usługi AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
  
 ---
 
@@ -1888,7 +1888,7 @@ Aby uzyskać więcej informacji, zobacz [zarządzania urządzeniami za pomocą w
 
 ---
 
-### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Obsługa dla systemu macOS jako platformę urządzenia dla dostępu warunkowego usługi Azure AD 
+### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Obsługa dostępu warunkowego usługi Azure AD dla systemu macOS jako platformy urządzeń 
 
 **Typ:** Nowa funkcja    
 **Kategoria usług:** Dostęp warunkowy  
@@ -1898,7 +1898,7 @@ Można teraz włączyć (lub wyłączyć) z systemem macOS jako warunek platform
 
 - **Rejestrowanie i zarządzanie urządzeniami z systemem macOS przy użyciu usługi Intune.** Podobnie jak w innych platform, takich jak systemy iOS i Android, aplikację portalu firmy jest dostępna dla systemu macOS ujednoliconego rejestracji. Nowa aplikacja portal firmy dla systemu macOS można użyć do rejestrowania urządzenia w usłudze Intune i zarejestrowanie go za pomocą usługi Azure AD.
 - **Upewnij się, że urządzenia z systemem macOS stosować się do zasad zgodności w organizacji, określone w usłudze Intune.** W usłudze Intune w witrynie Azure portal możesz teraz skonfigurować zasady zgodności dla urządzeń z systemem macOS. 
-- **Ogranicz dostęp do aplikacji w usłudze Azure AD tylko urządzeń zgodnych z systemem macOS.** Tworzenie zasad dostępu warunkowego ma z systemem macOS jako opcji platformy oddzielnym urządzeniu. Teraz można tworzyć zasady dostępu warunkowego specyficzne dla systemu macOS dla aplikacji docelowej, ustaw na platformie Azure.
+- **Ogranicz dostęp do aplikacji w usłudze Azure AD tylko urządzeń zgodnych z systemem macOS.** Dostęp warunkowy zasad tworzenia ma z systemem macOS jako opcji platformy oddzielnym urządzeniu. Teraz można tworzyć zasady dostępu warunkowego specyficzne dla systemu macOS dla zestawu docelowego aplikacji na platformie Azure.
 
 Aby uzyskać więcej informacji, zobacz:
 
@@ -1942,7 +1942,7 @@ W Centrum administracyjnym usługi Azure AD możesz teraz:
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla systemu Azure dostępu warunkowego opartego na aplikacji usługi AD
  
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Dostęp warunkowy  
@@ -1956,7 +1956,7 @@ Następujące aplikacje zostały dodane do listy [zatwierdzonych aplikacji klien
 Aby uzyskać więcej informacji, zobacz:
 
 - [Wymaganie aplikacji zatwierdzone klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1966,9 +1966,9 @@ Aby uzyskać więcej informacji, zobacz:
 **Kategoria usług:** Dostęp warunkowy  
 **Możliwości produktu:** Tożsamość, zabezpieczenia i ochrona
  
-Możesz teraz użyć "lub" (wymaga jednej z wybranych kontrolek) dla kontroli dostępu warunkowego. Ta funkcja służy do tworzenia zasad za pomocą "OR" między kontroli dostępu. Na przykład można użyć tej funkcji, aby utworzyć zasadę, która wymaga od użytkownika, zaloguj się przy użyciu usługi Multi-Factor Authentication "OR" włączenia zgodnego urządzenia.
+Możesz teraz użyć "lub" (wymaga jednej z wybranych kontrolek) dla formantów dostępu warunkowego. Ta funkcja służy do tworzenia zasad za pomocą "OR" między kontroli dostępu. Na przykład można użyć tej funkcji, aby utworzyć zasadę, która wymaga od użytkownika, zaloguj się przy użyciu usługi Multi-Factor Authentication "OR" włączenia zgodnego urządzenia.
 
-Aby uzyskać więcej informacji, zobacz [kontroli dostępu warunkowego usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
+Aby uzyskać więcej informacji, zobacz [kontrolek w funkcji dostępu warunkowego usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
  
 ---
 

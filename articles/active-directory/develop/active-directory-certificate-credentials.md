@@ -19,10 +19,10 @@ ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001230"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certyfikat poświadczeń do uwierzytelniania aplikacji
@@ -34,7 +34,7 @@ Jeden formularz poświadczenie, które aplikacja może użyć do uwierzytelniani
 ## <a name="assertion-format"></a>Format asercji
 Do obliczenia potwierdzenie, można użyć jednego z wielu [JSON Web Token](https://jwt.ms/) bibliotek w wybranym języku. Informacje przekazane przez token są następujące:
 
-### <a name="header"></a>Nagłówek
+### <a name="header"></a>nagłówek
 
 | Parametr |  Uwagi |
 | --- | --- |

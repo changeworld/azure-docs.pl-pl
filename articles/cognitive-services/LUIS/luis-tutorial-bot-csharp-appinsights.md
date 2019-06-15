@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 56ceb48be9d5cc9d1cdceed7505e2e3e918a7286
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 6dbaa24df8b2917dd3f68d3851ca4662554ad00a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053270"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z botem wC#
 
 W tym samouczku dodaje informacje o odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub Power BI, aby analizować, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
 
-Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x. A [platformy Bot Framework 4.x, za pomocą usługi LUIS samouczka](luis-csharp-tutorial-bf-v4.md) jest również dostępna.
+Bot został utworzony za pomocą platformy Bot Framework 4.x i bot aplikacji sieci Web platformy Azure. A [platformy Bot Framework 4.x, za pomocą usługi LUIS samouczka](luis-csharp-tutorial-bf-v4.md) jest również dostępna.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Twój bot aplikacji sieci web usługi LUIS z **[poprzedniego samouczka](luis-csharp-tutorial-build-bot-framework-sample.md)** za pomocą usługi Application Insights włączona.
+* Bot aplikacji sieci web usługi LUIS z **tutorial](luis-csharp-tutorial-bf-v4.md)** za pomocą usługi Application Insights włączona.
 * [Program Visual Studio 2017](https://www.visualstudio.com/downloads/) zainstalowane lokalnie na komputerze.
 
 > [!Tip]
@@ -43,7 +43,7 @@ Cały kod w tym samouczku jest dostępny na [repozytorium GitHub Azure-Samples](
 
 ## <a name="review-luis-web-app-bot"></a>Przejrzyj bot aplikacji sieci web usługi LUIS
 
-W tym samouczku założono, masz kod, który wygląda podobnie do następujących, lub że zostały wykonane [innym samouczku](luis-csharp-tutorial-build-bot-framework-sample.md):
+W tym samouczku założono, masz kod, który wygląda podobnie do następujących, lub że zostały wykonane [innym samouczku](luis-csharp-tutorial-bf-v4.md):
 
    [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575356"
 ---
 # <a name="glossary"></a>Słownik
@@ -37,11 +37,11 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="antimeridian"></a> **Antimeridian**: Nazywane również 180<sup>th</sup> południków to punkt, gdy spełniają stopnie-180 oraz 180 stopni długości geograficznej. Jest to przeciwne południków prime na całym świecie.
 
-<a name="application-programming-interface-api"></a> **Interfejs programowania aplikacji (API)**: Specyfikacja, która umożliwia deweloperom tworzenie aplikacji.
+<a name="application-programming-interface-api"></a> **Interfejs programowania aplikacji (API)** : Specyfikacja, która umożliwia deweloperom tworzenie aplikacji.
 
 <a name="api-key"></a> **Klucz interfejsu API**: Zobacz klucza usługi Azure Maps.
 
-<a name="area-of-interest-aoi"></a> **Obszar zainteresowania (AOI)**: Zakres używany do definiowania obszar koncentracji uwagi dla mapy albo bazy danych środowiska produkcyjnego.
+<a name="area-of-interest-aoi"></a> **Obszar zainteresowania (AOI)** : Zakres używany do definiowania obszar koncentracji uwagi dla mapy albo bazy danych środowiska produkcyjnego.
 
 <a name="asset-tracking"></a> **Śledzenie zasobów**: Proces śledzenie lokalizacji elementu zawartości, takich jak osoby, pojazdu lub innego obiektu.
 
@@ -51,7 +51,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="autosuggest"></a> **Automatyczne sugerowanie**: Funkcja w aplikacji przewiduje logiczne możliwości co wpisywany przez użytkownika.
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)**: Poprzednia nazwa usługi Azure Maps podczas w wersji zapoznawczej.
+<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** : Poprzednia nazwa usługi Azure Maps podczas w wersji zapoznawczej.
 
 <a name="azure-maps-key"></a> **Klucz usługi Azure Maps**: Klucz mapy platformy Azure jest unikatowy ciąg, który jest używany do uwierzytelniania aplikacji usługi Azure Maps przez użytkownika lub żądania obsługi. 
 
@@ -107,9 +107,9 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="datum"></a> **Datum**: System współrzędnych do specyfikacji systemu pomiarowego, umieszcza na powierzchni (poziomy datum) lub wysokości powyżej lub poniżej powierzchni (datum pionowych).
 
-<a name="dbf-file"></a> **Plik DBF;**: Format pliku bazy danych, który jest używany w połączeniu z pliki kształtów (SHP).
+<a name="dbf-file"></a> **Plik DBF;** : Format pliku bazy danych, który jest używany w połączeniu z pliki kształtów (SHP).
 
-<a name="degree-minutes-seconds-dms"></a> **Stopień minut sekund (DMS)**: Jednostka miary do opisywania szerokości i długości geograficznej. Stopień to 1/360<sup>th</sup> koła. Stopień jest podzielona na 60 minut, a minuta jest podzielony na 60 sekund.
+<a name="degree-minutes-seconds-dms"></a> **Stopień minut sekund (DMS)** : Jednostka miary do opisywania szerokości i długości geograficznej. Stopień to 1/360<sup>th</sup> koła. Stopień jest podzielona na 60 minut, a minuta jest podzielony na 60 sekund.
 
 <a name="delaunay-triangulation"></a> **Triangulacja Delaunay**: Techniki tworzenia siatki trójkąty ciągłe, nienakładające się z zestawu danych punktów. Okrąg circumscribing każdego trójkąta nie zawiera punktów z zestawu danych w jego wewnętrznych.
 
@@ -117,7 +117,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="destination"></a> **Miejsce docelowe**: Punkt końcowy lub lokalizacji, w którym jest ktoś podróżującym na.
 
-<a name="digital-elevation-model-dem"></a> **Cyfrowy podniesienia uprawnień modelu (DEM)**: Zestaw wartości związane z powierzchni, przechwycone przez obszar w regularnych odstępach czasu przy użyciu typowych datum podniesienia uprawnień. DEMs są zwykle używane do reprezentowania zwolnienia terenu.
+<a name="digital-elevation-model-dem"></a> **Cyfrowy podniesienia uprawnień modelu (DEM)** : Zestaw wartości związane z powierzchni, przechwycone przez obszar w regularnych odstępach czasu przy użyciu typowych datum podniesienia uprawnień. DEMs są zwykle używane do reprezentowania zwolnienia terenu.
 
 <a name="dijkstra's-algorithm"></a> **Algorytm firmy Dijkstra**: Algorytm, który sprawdza łączność sieci, aby najkrótsze ścieżki między dwoma punktami.
 
@@ -185,7 +185,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="great-circle-distance"></a> **Najkrótszej odległości**: Najkrótszy odległość między dwoma punktami na powierzchni kuli.
 
-<a name="greenwich-mean-time-gmt"></a> **Czas uniwersalny Greenwich (GMT)**: Czas na południków prime, który jest uruchamiany za pośrednictwem Centrum Royal w Greenwich w Anglii.
+<a name="greenwich-mean-time-gmt"></a> **Czas uniwersalny Greenwich (GMT)** : Czas na południków prime, który jest uruchamiany za pośrednictwem Centrum Royal w Greenwich w Anglii.
 
 <a name="guid"></a> **IDENTYFIKATOR GUID**: Unikatowy identyfikator globalny. Ciąg używany do jednoznacznego identyfikowania interfejsu, klasy, biblioteki typów, kategorii składników lub rekordu.
 
@@ -273,7 +273,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="point"></a> **Punkt**: Geometrię, która reprezentuje pojedynczy położeniu na mapie. 
 
-<a name="points-of-interest-poi"></a> **Punktów orientacyjnych (punktów POI)**: Praca, charakterystycznych elementów krajobrazu lub wspólnym miejscu zainteresowania.
+<a name="points-of-interest-poi"></a> **Punktów orientacyjnych (punktów POI)** : Praca, charakterystycznych elementów krajobrazu lub wspólnym miejscu zainteresowania.
 
 <a name="polygon"></a> **Wielokąt**: Geometria niezawodnej, który reprezentuje obszar na mapie. 
 
@@ -297,7 +297,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="quadtree"></a> **Obszaru Quadtree**: Struktura danych, w którym każdy węzeł ma dokładnie cztery elementy podrzędne. System fragmentacji, używane w usługi Azure Maps używa struktury obszaru quadtree taki sposób, że jako użytkownik powiększa się o jeden poziom, każdy Kafelek mapy dzielony na cztery Kafelki podrzędnych.  Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md) dokumentacji, aby uzyskać więcej informacji.
 
-<a name="queries-per-second-qps"></a> **Zapytania na sekundę (QPS)**: Liczba zapytań lub żądań, które mogą być wykonane w ciągu sekundy do usługi lub platformy. 
+<a name="queries-per-second-qps"></a> **Zapytania na sekundę (QPS)** : Liczba zapytań lub żądań, które mogą być wykonane w ciągu sekundy do usługi lub platformy. 
 
 ## <a name="r"></a>R
 
@@ -321,7 +321,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="route"></a> **Trasy**: Ścieżka między co najmniej dwóch lokalizacjach, które również mogą zawierać dodatkowe informacje, takie jak instrukcje dotyczące waypoints wzdłuż trasy.
 
-<a name="requests-per-second-rps"></a> **Żądań na sekundę (RPS)**: Zobacz [zapytań na sekundę (QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a> **Żądań na sekundę (RPS)** : Zobacz [zapytań na sekundę (QPS)](#queries-per-second-qps). 
 
 <a name="rss"></a> **FUNKCJA RSS**: Akronim naprawdę proste syndykacji, Podsumowanie witryny Framework opis zasobu (RDF) lub rozbudowane Podsumowanie witryny, w zależności od źródła. Proste, ze strukturą format XML na potrzeby udostępniania zawartości między różnych witrynach sieci Web. Funkcja RSS dokumenty zawierają metadanych klucza elementów, takich jak tworzenie, Data, tytuł, krótki opis i łącze hipertekstowe. Dzięki temu informacje użytkownika (lub usługi wydawcy RSS) zdecydować, materiałów są warte dalszych badań.
 
@@ -329,9 +329,9 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="satellite-imagery"></a> **Satelitarne obrazach**: Aplikacje, które zostały przechwycone przez płaszczyzn i satelity skierowana bezpośrednio w dół.
 
-<a name="software-development-kit-sdk"></a> **Zestaw Software development kit (SDK)**: Kolekcja dokumentację, przykładowy kod i przykładowych aplikacji, aby ułatwić zastosowanie dla deweloperów do tworzenia aplikacji interfejsu API.
+<a name="software-development-kit-sdk"></a> **Zestaw Software development kit (SDK)** : Kolekcja dokumentację, przykładowy kod i przykładowych aplikacji, aby ułatwić zastosowanie dla deweloperów do tworzenia aplikacji interfejsu API.
 
-<a name="shapefile-shp"></a> **Plik kształtu (SHP)**: Znany także jako plik kształtu ESRI jest wektor formatu przechowywania danych do przechowywania lokalizacji, kształt i atrybutów funkcji geograficznego. Plik kształtu, który jest przechowywany w zestawu powiązanych plików.
+<a name="shapefile-shp"></a> **Plik kształtu (SHP)** : Znany także jako plik kształtu ESRI jest wektor formatu przechowywania danych do przechowywania lokalizacji, kształt i atrybutów funkcji geograficznego. Plik kształtu, który jest przechowywany w zestawu powiązanych plików.
 
 <a name="spherical-mercator-projection"></a> **Kulistego projekcji Mercator**: Zobacz [Web Mercator](#web-mercator). 
 
@@ -364,7 +364,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="transformation"></a> **Przekształcenie**: Proces konwersji danych między różnymi systemami współrzędnych geograficznych. Może na przykład mieć niektóre dane, które zostały przechwycone w Wielkiej Brytanii, a następnie oparte na układ współrzędnych geograficznych OSGB 1936. Usługa Azure Maps korzysta [EPSG:3857](https://epsg.io/3857) wariant system współrzędnych odwołanie WGS84. Jako takie do poprawnego wyświetlania danych, będzie musiała mieć współrzędnych przekształcone z jednego systemu do innego.
 
-<a name="traveling-salesmen-problem-tsp"></a> **Problem sprzedawców Traveling (TSP)**:  Hamiltonian problem obwodu, w którym sprzedawcy musi znaleźć najbardziej efektywny sposób, aby przejść do serii zostanie ono zatrzymane, następnie wróć do lokalizacja początkowa.  
+<a name="traveling-salesmen-problem-tsp"></a> **Problem sprzedawców Traveling (TSP)** :  Hamiltonian problem obwodu, w którym sprzedawcy musi znaleźć najbardziej efektywny sposób, aby przejść do serii zostanie ono zatrzymane, następnie wróć do lokalizacja początkowa.  
 
 <a name="trilateration"></a> **Trilateration**: Proces określające położenie punktu na kuli ziemskiej w odniesieniu do dwóch innych punktów przez dokonywanie pomiarów odległości między wszystkie trzy punkty.
 
@@ -376,7 +376,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="vector-tile"></a> **Wektor, Kafelek**: Specyfikacja otwartej obsługi danych do przechowywania danych wektorowych dane geograficzne przy użyciu tego samego systemu kafelków jako formantu mapy. Zobacz też [warstwę kafelków](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Problemu z routingiem pojazdu (VRP)**: Klasa problemów, w których zestawu uporządkowanych tras dla pojazdów floty jest obliczana, biorąc pod uwagę jako zestaw ograniczeń. Te ograniczenia może obejmować elementy, takie jak okna czasowe dostarczania, wiele możliwości trasy, a ograniczenia czasu trwania podróży.
+<a name="vehicle-routing-problem-vrp"></a> **Problemu z routingiem pojazdu (VRP)** : Klasa problemów, w których zestawu uporządkowanych tras dla pojazdów floty jest obliczana, biorąc pod uwagę jako zestaw ograniczeń. Te ograniczenia może obejmować elementy, takie jak okna czasowe dostarczania, wiele możliwości trasy, a ograniczenia czasu trwania podróży.
 
 <a name="voronoi-diagram"></a> **Voronoi diagram**: Rozkład miejsca do obszarów lub komórki otaczające zestaw obiektów geometrycznego (zazwyczaj funkcje punktów). Te komórki lub wiersze i wielokątów, musi spełniać kryteria Delaunay trójkąty. Wszystkie lokalizacje w regionie są bliżej obiektu, który otacza niż do jakiegokolwiek innego obiektu w zestawie. Diagramy Voronoi są często używane do odróżnić obszarów wpływ wokół funkcji geograficznego. 
 
@@ -386,7 +386,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="waypoint-optimization"></a> **Punkt nawigacyjny optymalizacji**: Proces zmiany kolejności zbiór waypoints, aby zminimalizować podróży czas lub przebieg musieli przechodzi przez wszystkie podane waypoints. Często określane jako [Problem sprzedawców Traveling](#traveling-salesmen-problem-tsp) lub [problemu routingu pojazdu](#vehicle-routing-problem-vrp) w zależności od złożoności optymalizacji.
 
-<a name="web-map-service-wms"></a> **Web Service dla Map (WMS)**: Usługi WMS do obsługi jest standardem Otwórz konsorcjum geograficznych (OGC), który definiuje opartej na obrazie mapy usług. Usługi WMS do obsługi usługi zapewniają obrazy mapy dla szczególnych obszarów w obrębie mapy na żądanie. Obrazy zawierają wstępnie renderowana Symbolika i może być renderowana w jednym z kilku nazwanych stylów, zdefiniowane przez usługę.
+<a name="web-map-service-wms"></a> **Web Service dla Map (WMS)** : Usługi WMS do obsługi jest standardem Otwórz konsorcjum geograficznych (OGC), który definiuje opartej na obrazie mapy usług. Usługi WMS do obsługi usługi zapewniają obrazy mapy dla szczególnych obszarów w obrębie mapy na żądanie. Obrazy zawierają wstępnie renderowana Symbolika i może być renderowana w jednym z kilku nazwanych stylów, zdefiniowane przez usługę.
 
 <a name="web-mercator"></a> **Web Mercator**: Nazywane również kulistego Mercator jest niewielkie wariant projekcji Mercator, jeden używane głównie w programach mapowanie oparte na sieci Web. Używa tych samych formuł jako standardowa projekcji Mercator jako używane w przypadku map na małą skalę. Jednak używa Web Mercator kulistego formuły skaluje na wszystkich, natomiast na dużą skalę Mercator mapuje zwykle formularz ellipsoidal projekcji. Niezgodność jest imperceptible na skalę globalną, ale powoduje, że mapy lokalne obszary, które różni się nieco od wartość true, ellipsoidal Mercator mapy w tej samej skali.
 

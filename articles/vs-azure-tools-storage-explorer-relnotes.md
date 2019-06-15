@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620494"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
@@ -40,7 +40,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 * W Windows narzędzia AzCopy pliki do pobrania zakończy się niepowodzeniem, jeśli został on pobrany pojedynczego pliku lub folderu i nazwę pliku lub folderu miało znak, który jest nieprawidłowy dla ścieżki Windows. Ten problem został rozwiązany. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
 * W bardzo rzadkich przypadkach podczas wykonywania zmiany nazwy udziału plików lub zmiany nazwy w udziale plików, jeśli kopie do zmiany nazwy nie powiodło się lub zapoznaj się z magazynu nie może potwierdzić pomyślne kopie z platformą Azure, było możliwości Eksploratora usługi Storage można usunąć wyjścia pliki achowaj przed zakończeniem miał kopii. Ten problem został rozwiązany.
 
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Zintegrowaną wersję narzędzia AzCopy został zaktualizowany do wersji 10.1.0.
 * CTRL / Cmd + R, teraz może służyć do odświeżania edytora mającym aktualnie fokus. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
@@ -136,7 +136,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 - [Eksplorator usługi Azure Storage 1.8.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Eksplorator usługi Azure Storage 1.8.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Zintegrowaną wersję narzędzia AzCopy został zaktualizowany do wersji 10.1.0.
 * CTRL / Cmd + R, teraz może służyć do odświeżania edytora mającym aktualnie fokus. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
@@ -193,7 +193,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 - [Eksplorator usługi Azure Storage 1.7.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Eksplorator usługi Azure Storage 1.7.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Teraz można zmienić właściciela i grupy będącej właścicielem, podczas zarządzania dostępem dla kontenera usługi ADLS Gen2, pliku lub folderu.
 * W Windows aktualizowanie Eksploratora usługi Storage z poziomu produktu jest teraz przyrostowej instalacji. Powinno to spowodować szybsze działanie aktualizacji. Jeśli użytkownik sobie tego życzy czysta instalacja, a następnie możesz pobrać [Instalatora](https://azure.microsoft.com/features/storage-explorer/) samodzielnie, a następnie zainstalować ręcznie. #1089
@@ -275,7 +275,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 * Narzędzie AzCopy może zakończyć się niepowodzeniem podczas próby pobrania folderu z kontenera usługi Azure Data Lake Store Gen2 Blob, gdyby spacje w nazwie folderu. Ten problem został rozwiązany. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * Edytor bazy danych cosmos DB zostało uszkodzone w 1.6.0. Teraz jest to stała. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
 * Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
@@ -344,7 +344,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 * Narzędzie AzCopy może zakończyć się niepowodzeniem podczas próby pobrania folderu z kontenera usługi Azure Data Lake Store Gen2 Blob, gdyby spacje w nazwie folderu. Ten problem został rozwiązany. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * Edytor bazy danych cosmos DB zostało uszkodzone w 1.6.0. Teraz jest to stała. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
 * Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
@@ -399,7 +399,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 ## <a name="version-160"></a>W wersji 1.6.0
 12/5/2018
 
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
 * Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
@@ -454,7 +454,7 @@ Ten artykuł zawiera informacje o wersji dla wersji 1.8.1 Eksploratora usługi A
 ## <a name="version-150"></a>Wersja 1.5.0
 10 29 2018
 
-### <a name="new"></a>Nowe
+### <a name="new"></a>Nowa
 
 * Teraz możesz używać [AzCopy v10 (wersja zapoznawcza)](https://github.com/Azure/azure-storage-azcopy) do przekazywania i pobierania obiektów blob. Aby włączyć tę funkcję przejdź do menu "Eksperymentalne", a następnie kliknij przycisk "Użyj narzędzia AzCopy dla ulepszone obiektu Blob przekazywania i pobierania". Po włączeniu narzędzia AzCopy można używać w następujących scenariuszach:
    * Przekazywanie folderów i pliki do kontenerów obiektów blob za pomocą paska narzędzi lub przeciągnij i upuść.

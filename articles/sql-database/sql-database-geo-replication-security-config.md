@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8a2a2fffa9ed3a4dae3c0768291b7585be4bfc6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341951"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64690833"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurowanie i zarządzanie nimi zabezpieczeń usługi Azure SQL Database funkcja przywracania geograficznego lub pracy awaryjnej
 
@@ -89,7 +89,9 @@ Ostatnim krokiem jest przejdź do serwera docelowego lub serwerów i generować 
 > [!NOTE]
 > Jeśli chcesz udzielić użytkownikowi dostępu do regionu pomocniczego, ale nie do podstawowej, możesz zrobić to przez zmianę nazwy logowania użytkownika na serwerze podstawowym, przy użyciu następującej składni.
 >
-> ALTER LOGIN <login name> WYŁĄCZONE
+> ```sql
+> ALTER LOGIN <login name> DISABLE
+> ```
 >
 > Wyłącz nie powoduje zmiany hasła, dzięki czemu zawsze można włączyć je w razie potrzeby.
 

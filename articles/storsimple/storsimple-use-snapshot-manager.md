@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: v-sharos
 ms.custom: ''
 ms.openlocfilehash: 46225e5a332e035e4d1cc256e71c4b5d8686fd47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845277"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Użyj przystawki StorSimple Snapshot Manager interfejsu użytkownika do zarządzania zadania tworzenia kopii zapasowych i wykazem kopii zapasowych
@@ -56,7 +56,7 @@ Kliknij dowolny element widoczny na pasku menu, aby wyświetlić listę dostępn
 
 ![Menu Widok wybrane](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
-### <a name="file-menu"></a>Menu Plik
+### <a name="file-menu"></a>menu Plik
 **Pliku** menu zawiera standardowe polecenia programu Microsoft Management Console (MMC).
 
 #### <a name="menu-access"></a>Dostęp do menu
@@ -71,7 +71,7 @@ W poniższej tabeli opisano elementy, które pojawiają się na **pliku** menu.
 |:--- |:--- |
 | Nowa |Kliknij przycisk **New** do utworzenia nowej konsoli, na podstawie Menedżera migawek StorSimple. |
 | Otwarty |Kliknij przycisk **Otwórz** otworzyć istniejącej konsoli. |
-| Zapisz |Kliknij przycisk **Zapisz** można zapisać bieżącą konsolę. |
+| Zapisanie |Kliknij przycisk **Zapisz** można zapisać bieżącą konsolę. |
 | Zapisz jako |Kliknij przycisk **Zapisz jako** do utworzenia wystąpienia nowego, których nazwy zostały zmienione z bieżącej konsoli. Użyj **Zapisz jako** opcję, aby dostosować widok i zapisać go do nowszej pobierania. Na przykład można utworzyć przystawki StorSimple Snapshot Manager, które odwołują się do określonych serwerów. |
 | Dodawanie/Usuwanie przystawki |Kliknij przycisk **Dodaj/Usuń przystawkę** Dodawanie lub usuwanie przystawek i organizowania węzłów na **zakres** okienka. Aby uzyskać więcej informacji, przejdź do [Dodaj, Usuń oraz Organizuj przystawki i rozszerzenia w programie MMC 3.0](https://technet.microsoft.com/library/cc722035.aspx). |
 | Opcje |Kliknij przycisk **opcje** Aby zmienić ikonę konsoli, określ tryby dostępu do użytkowników i uprawnienia lub usunąć pliki konsoli w celu zwiększenia dostępnego miejsca na dysku. |
@@ -118,9 +118,9 @@ Poniższa tabela zawiera alfabetyczną listę akcji programu StorSimple Snapshot
 | Szczegóły |Kliknij przycisk **urządzeń** węzła, a następnie kliknij prawym przyciskiem myszy urządzenie w **wyniki** okienka. |Kliknij przycisk **szczegóły** Aby wyświetlić szczegóły konfiguracji urządzenia. |
 | Edytuj |Kliknij przycisk **zasady tworzenia kopii zapasowych**, a następnie kliknij prawym przyciskiem myszy zasadę w **wyniki** okienka. |Kliknij przycisk **Edytuj** Aby zmienić harmonogram tworzenia kopii zapasowej grupy woluminu. |
 | Eksportuj listę |Kliknij dowolny węzeł lub wynik (ten element będzie wyświetlany na wszystkich **akcji** menu i **akcje** okienek.) |Kliknij przycisk **Eksportuj listę** można zapisać listę w pliku wartości rozdzielanych przecinkami (CSV). Następnie można zaimportować ten plik do arkusza kalkulacyjnego aplikacji do analizy. |
-| Pomoc |Kliknij dowolny węzeł lub wynik. (Ten element będzie wyświetlany na wszystkich **akcji** menu i **akcje** okienek.) |Kliknij przycisk **pomocy** otworzyć Pomoc online w osobnym oknie przeglądarki. |
+| Help |Kliknij dowolny węzeł lub wynik. (Ten element będzie wyświetlany na wszystkich **akcji** menu i **akcje** okienek.) |Kliknij przycisk **pomocy** otworzyć Pomoc online w osobnym oknie przeglądarki. |
 | Nowe okno, w tym miejscu |Kliknij dowolny węzeł lub wynik (ten element będzie wyświetlany na wszystkich **akcji** menu i **akcje** okienek.) |Kliknij przycisk **nowe okno, w tym miejscu** otworzyć nowe okno programu StorSimple Snapshot Manager. |
-| Odświeżanie |Kliknij dowolny węzeł lub wynik (ten element będzie wyświetlany na wszystkich **akcji** menu i **akcje** okienek.) |Kliknij przycisk **Odśwież** można zaktualizować aktualnie wyświetlane okna programu StorSimple Snapshot Manager. |
+| Odśwież |Kliknij dowolny węzeł lub wynik (ten element będzie wyświetlany na wszystkich **akcji** menu i **akcje** okienek.) |Kliknij przycisk **Odśwież** można zaktualizować aktualnie wyświetlane okna programu StorSimple Snapshot Manager. |
 | Odśwież urządzenie |Kliknij przycisk **urządzeń** węzeł i kliknij prawym przyciskiem myszy urządzenie w **wyniki** okienka. |Kliknij przycisk **Odśwież urządzenie** do synchronizacji określonego urządzenia połączone za pomocą przystawki StorSimple Snapshot Manager. |
 | Odśwież urządzenia |Kliknij prawym przyciskiem myszy **urządzeń** węzła. |Kliknij przycisk **Odśwież urządzeń** do synchronizacji listy urządzeń połączonych z programu StorSimple Snapshot Manager. |
 | Skanuj ponownie woluminów |Kliknij prawym przyciskiem myszy **woluminów** węzła. |Kliknij przycisk **Skanuj ponownie woluminy** można zaktualizować listę woluminów, które pojawia się w **wyniki** okienka. |
@@ -142,7 +142,7 @@ W poniższej tabeli opisano elementy, które pojawiają się na **widoku** menu.
 | Element menu | Opis |
 |:--- |:--- |
 | Dodawanie/usuwanie kolumn |Kliknij przycisk **Dodaj/Usuń kolumny** Dodawanie lub usuwanie kolumn w **wyniki** okienka. |
-| Dostosowywanie |Kliknij przycisk **Dostosuj** pokazać lub ukryć elementy w oknie konsoli programu StorSimple Snapshot Manager. |
+| Dostosuj |Kliknij przycisk **Dostosuj** pokazać lub ukryć elementy w oknie konsoli programu StorSimple Snapshot Manager. |
 
 ### <a name="favorites-menu"></a>Menu Ulubione
 Użyj **ulubione** menu dodawania, usuwania i organizowanie wyświetleń stron i zadania, które są często używane. 
@@ -340,7 +340,7 @@ W poniższej tabeli opisano klucze, które można użyć do nawigacji interfejsu
 | Klucz nawigacji | Akcja |
 |:--- |:--- |
 | Strzałka w dół |Klawisz strzałki w dół umożliwia przeniesienie w pionie do następnego elementu w menu lub okienka. |
-| Wprowadź |Naciśnij klawisz Enter, aby ukończyć akcji, a następnie przejść do następnego kroku. Można na przykład, naciśnij klawisz Enter, aby wybrać **dalej**, **OK**, lub **Utwórz**, a następnie przejdź do następnego kroku w kreatorze. |
+| Enter |Naciśnij klawisz Enter, aby ukończyć akcji, a następnie przejść do następnego kroku. Można na przykład, naciśnij klawisz Enter, aby wybrać **dalej**, **OK**, lub **Utwórz**, a następnie przejdź do następnego kroku w kreatorze. |
 | Esc |Naciśnij klawisz Esc, aby zamknąć menu lub Anuluj i zamknij stronę. |
 | F1 |Naciśnij klawisz F1, aby wyświetlić tematu pomocy dla aktualnie aktywnego okna. |
 | F5 |Naciśnij klawisz F5, aby odświeżyć węzeł. |

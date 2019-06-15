@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712395"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Szczegółowe informacje — zaawansowane analizy
@@ -23,7 +23,7 @@ HDInsight zapewnia możliwość uzyskania wartościowy wgląd w informacje z du�
 
 ## <a name="advanced-analytics-process"></a>Proces zaawansowanej analizy
 
-![Przetwórz](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Po zidentyfikowaliśmy problem biznesowy i zostały uruchomione, zbierania i przetwarzania danych, należy utworzyć model, który reprezentuje pytanie chcesz przewidzieć. Model użyje jednego lub więcej algorytmów uczenia maszynowego Zmień typ prognozowania, który najlepiej spełnia Twoje potrzeby biznesowe.  Większość danych należy używać do nauczenia modelu, z użyciem usług rest używany w celu przetestowania lub ewaluacji go. 
 

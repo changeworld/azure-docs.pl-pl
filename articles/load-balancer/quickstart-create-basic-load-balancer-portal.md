@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727583"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: Tworzenie podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
@@ -43,11 +43,11 @@ Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy u�
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | Wybierz pozycję **Publiczna**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz pozycję **Podstawowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | *MyPublicIP*   |
-    | Przypisanie| Statyczny|
+    | Przypisanie| Static|
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
 

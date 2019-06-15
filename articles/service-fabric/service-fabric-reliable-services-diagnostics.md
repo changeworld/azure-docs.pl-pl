@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772962"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
@@ -29,7 +29,7 @@ Nazwa źródła zdarzeń dla klasy niezawodne StatefulServiceBase usług stanowy
 
 Narzędzia i technologie, które pomagają w zbieraniu i/lub wyświetlanie zdarzeń EventSource przykłady [narzędzia PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics.md)i [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Zdarzenia
+## <a name="events"></a>Events
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Opis zdarzenia |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Informacyjne |Emitowane po uruchomieniu zadania RunAsync usługi |
@@ -119,8 +119,8 @@ W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest ciąg repr
 | --- | --- |
 | Liczba elementów | Liczba elementów w magazynie.|
 | Rozmiar dysku | Rozmiar całkowitego miejsca na dysku wyrażony w bajtach, plików punktu kontrolnego dla magazynu.|
-| Zapis pliku punktu kontrolnego B/s | Liczba bajtów zapisanych na sekundę dla najnowszych pliku punktu kontrolnego.|
-| Transfer kopiowania dysku w B/s | Liczba bajtów dysku odczytu (w replice podstawowej) lub zapisany (w replice pomocniczej) na sekundę podczas kopiowania magazynu.|
+| Bajty zapisu pliku punktu kontrolnego/s | Liczba bajtów zapisanych na sekundę dla najnowszych pliku punktu kontrolnego.|
+| Skopiuj bajty transferu dysku/s | Liczba bajtów dysku odczytu (w replice podstawowej) lub zapisany (w replice pomocniczej) na sekundę podczas kopiowania magazynu.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 [EventSource dostawców w PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

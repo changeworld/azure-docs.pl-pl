@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: 12042b853682efcff2de285a97508b8a81b1d647
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610079"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-uk-nhs"></a>Zabezpieczenia platformy Azure i zgodności planu: Magazyn danych dla NHS Zjednoczone Królestwo
@@ -55,7 +55,7 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegółowe inf
 - Azure Load Balancer
 - Azure Storage
 - Azure Automation
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) host bastionu
     - (2) kontrolera domeny active Directory
     - (2) węzeł klastra serwera SQL

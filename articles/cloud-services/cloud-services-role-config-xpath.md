@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527289"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Udostępnianie ustawień konfiguracji roli jako zmienną środowiskową za pomocą wyrażenia XPath
@@ -29,7 +29,7 @@ Dostępne są także te wartości XPath [Microsoft.WindowsAzure.ServiceRuntime](
 ## <a name="app-running-in-emulator"></a>Aplikacja uruchomiona w emulatorze
 Wskazuje, że aplikacja jest uruchomiona w emulatorze.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | Kod |var x = RoleEnvironment.IsEmulated; |
@@ -37,7 +37,7 @@ Wskazuje, że aplikacja jest uruchomiona w emulatorze.
 ## <a name="deployment-id"></a>Identyfikator wdrożenia
 Pobiera identyfikator wdrożenia dla tego wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | Kod |var deploymentId = RoleEnvironment.DeploymentId; |
@@ -45,7 +45,7 @@ Pobiera identyfikator wdrożenia dla tego wystąpienia.
 ## <a name="role-id"></a>Identyfikator roli
 Pobiera bieżący identyfikator roli dla tego wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | Kod |Identyfikator var = RoleEnvironment.CurrentRoleInstance.Id; |
@@ -53,7 +53,7 @@ Pobiera bieżący identyfikator roli dla tego wystąpienia.
 ## <a name="update-domain"></a>Aktualizowanie domeny
 Pobiera domena aktualizacji wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | Kod |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
@@ -61,7 +61,7 @@ Pobiera domena aktualizacji wystąpienia.
 ## <a name="fault-domain"></a>Domena błędów
 Pobiera wystąpienia domeny błędów.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | Kod |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
@@ -69,7 +69,7 @@ Pobiera wystąpienia domeny błędów.
 ## <a name="role-name"></a>Nazwa roli
 Pobiera nazwę roli wystąpień.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | Kod |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
@@ -77,7 +77,7 @@ Pobiera nazwę roli wystąpień.
 ## <a name="config-setting"></a>Ustawienia konfiguracji
 Pobiera wartość ustawienia konfiguracji.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
 | Kod |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
@@ -85,7 +85,7 @@ Pobiera wartość ustawienia konfiguracji.
 ## <a name="local-storage-path"></a>Ścieżka magazynu lokalnego
 Pobiera ścieżkę magazynu lokalnego dla tego wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@path" |
 | Kod |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). Właściwość RootPath; |
@@ -93,7 +93,7 @@ Pobiera ścieżkę magazynu lokalnego dla tego wystąpienia.
 ## <a name="local-storage-size"></a>Rozmiar magazynu lokalnego
 Pobiera informacje o rozmiarze magazynu lokalnego dla tego wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@sizeInMB" |
 | Kod |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
@@ -101,7 +101,7 @@ Pobiera informacje o rozmiarze magazynu lokalnego dla tego wystąpienia.
 ## <a name="endpoint-protocol"></a>Punkt końcowy protokołu
 Pobiera protokół punktu końcowego dla tego wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@protocol" |
 | Kod |Port var = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokół; |
@@ -109,7 +109,7 @@ Pobiera protokół punktu końcowego dla tego wystąpienia.
 ## <a name="endpoint-ip"></a>Punkt końcowy IP
 Pobiera określony punkt końcowy adres IP.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@address" |
 | Kod |adres var = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
@@ -117,7 +117,7 @@ Pobiera określony punkt końcowy adres IP.
 ## <a name="endpoint-port"></a>Port punktu końcowego
 Pobiera port punktu końcowego dla tego wystąpienia.
 
-| Type | Przykład |
+| Typ | Przykład |
 | --- | --- |
 | XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@port" |
 | Kod |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |

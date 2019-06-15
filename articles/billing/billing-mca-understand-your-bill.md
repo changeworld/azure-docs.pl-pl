@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372181"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Informacje o opłatach na fakturze umowy klienta firmy Microsoft
@@ -53,7 +53,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
     |Jednostka sku produktu     | Unikatowy kod, który identyfikuje wystąpienia produktu |
     |Ilość     |  Liczba transakcji      |
     |Sekcja faktury     | Transakcja pojawia się w tej sekcji rozliczeń faktury w profilu |
-    |Profil rozliczeniowy     | Transakcja pojawia się na fakturze profil rozliczeniowy |
+    |Karta profilu     | Transakcja pojawia się na fakturze profil rozliczeniowy |
 
 5. Wyszukaj identyfikator faktury do filtrowania transakcji dla faktury.
 

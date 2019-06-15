@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
 ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773937"
 ---
 # <a name="exclude-disks-from-replication"></a>Wykluczanie dysków z replikacji
@@ -22,7 +22,7 @@ W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczen
 
 **Funkcja** | **Z programu VMware do platformy Azure** | **Z funkcji Hyper-V do platformy Azure** | **Z platformy Azure do platformy Azure**| **Z funkcji Hyper-V do funkcji Hyper-V** 
 --|--|--|--|--
-Wykluczanie dysku | Yes | Yes | Nie | Nie
+Wykluczanie dysku | Tak | Yes | Nie | Nie
 
 ## <a name="why-exclude-disks-from-replication"></a>Dlaczego wykluczać dyski z replikacji?
 Wykluczenie dysków z replikacji jest często konieczne, ponieważ:

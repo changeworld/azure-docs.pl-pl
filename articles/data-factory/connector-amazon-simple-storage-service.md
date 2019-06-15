@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: a04dc76a110b1d126d5d826761e2e0c09c6aac47
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520237"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z Amazon Simple Storage Service przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 >
 > * [Wersja 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Bieżąca wersja](connector-amazon-simple-storage-service.md)
@@ -42,7 +42,7 @@ W szczególności ten łącznik Amazon S3 obsługuje kopiowania plików jako —
 
 Aby skopiować dane z usługi Amazon S3, upewnij się, że przyznano następujące uprawnienia:
 
-- **Do wykonania działania kopiowania:**: `s3:GetObject` i `s3:GetObjectVersion` Amazon S3 obiektu operacji.
+- **Do wykonania działania kopiowania:** : `s3:GetObject` i `s3:GetObjectVersion` Amazon S3 obiektu operacji.
 - **Do tworzenia fabryki danych graficznego interfejsu użytkownika**: `s3:ListAllMyBuckets` i `s3:ListBucket` / `s3:GetBucketLocation` Amazon S3 zasobnika operacji Ponadto wymagane są uprawnienia, dla operacji, takich jak połączenie testowe i Przeglądaj/Przejdź ścieżki plików. Jeśli nie chcesz przyznać te uprawnienia, Pomiń Testuj połączenie na stronie tworzenia połączonej usługi i określ ścieżkę bezpośrednio w ustawieniach zestawu danych.
 
 Aby uzyskać szczegółowe informacje o pełną listę uprawnień Amazon S3, zobacz [określanie uprawnień w zasadach](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).

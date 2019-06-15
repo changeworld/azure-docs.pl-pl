@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2e3e39ef24d82393d981c0ce276b3338419e0b2d
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65521766"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Rozwiązywanie problemów z usługi Azure Monitor dla kontenerów
@@ -34,7 +34,7 @@ Można też ręcznie przyznać tej roli w witrynie Azure portal, wykonując nast
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Kubernetes**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **Azure Kubernetes**.
 3. Na liście klastrów Kubernetes wybierz ją z listy.
-2. W menu po lewej stronie kliknij **kontrola dostępu (IAM)**.
+2. W menu po lewej stronie kliknij **kontrola dostępu (IAM)** .
 3. Wybierz **+ Dodaj** Dodaj przypisanie roli i wybierz **wydawcy metryki monitorowania** roli i w obszarze **wybierz** wpisz **AKS** do Filtr wyników na tylko klastry usług podmiotów zabezpieczeń zdefiniowane w ramach subskrypcji. Wybierz jeden z listy, które są specyficzne dla tego klastra.
 4. Wybierz **Zapisz** zakończenie przypisanie roli. 
 

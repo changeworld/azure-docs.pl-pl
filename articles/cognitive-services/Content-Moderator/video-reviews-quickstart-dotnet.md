@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c8572e6bc7fdedb68527cad4e7ea4109838089b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608743"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726835"
 ---
 # <a name="create-video-reviews-using-net"></a>Utwórz przeglądy wideo przy użyciu platformy .NET
 
@@ -174,7 +174,7 @@ Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVid
 - **Stan**. Ustaw wartość na "Nieopublikowane." Jeśli nie zostanie zdefiniowany, wartość domyślna, jako "Oczekujące", co oznacza, że przegląd wideo został opublikowany i oczekujące przeglądu przez ludzi. Po opublikowaniu wideo przeglądu klatki wideo, transkrypcji lub wynik Moderowanie transkrypcji można już dodać do niego.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca interfejs IList<string>. Każdy z tych ciągów zawiera identyfikator wideo przeglądu. Te identyfikatory są identyfikatory GUID i nie są takie same jak wartość **ContentId** właściwości. 
+> **CreateVideoReviews** zwraca interfejs IList\<ciągu >. Każdy z tych ciągów zawiera identyfikator wideo przeglądu. Te identyfikatory są identyfikatory GUID i nie są takie same jak wartość **ContentId** właściwości. 
 
 Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
 

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: dce90d911085c1f7330a2e0952bb9576c1d765fa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029298"
 ---
 # <a name="remove-duplicate-rows-module"></a>Usuń zduplikowane wiersze moduł
@@ -30,8 +30,8 @@ Załóżmy na przykład dane wygląda podobnie do następującej i reprezentuje 
 |1|F.M.| M| 53| Sty|
 |2| F.A.M.| M| 53| Sty|
 |3| F.A.M.| M| 24| Sty|
-|3| F.M.| M| 24| Lut|
-|4| F.M.| M| 23| Lut|
+|3| F.M.| M| 24| Lutego|
+|4| F.M.| M| 23| Lutego|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| NaN| |

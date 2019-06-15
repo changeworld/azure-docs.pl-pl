@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65408776"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Przygotowanie infrastruktury platformy Azure do SAP wysokiej dostępności przy użyciu klastra pracy awaryjnej Windows i udostępnionego dysku dla SAP ASCS/SCS.
@@ -204,7 +204,7 @@ _**Rysunek 1:** Ustaw parametry programu SAP o wysokiej dostępności usługi Az
     * \<SAPSystemSID\>-nic-ascs-\<Number\>
     * \<SAPSystemSID\>-nic-db-\<Number\>
 
-  * **Konta usługi Azure storage (tylko w przypadku dysków niezarządzanych)**:
+  * **Konta usługi Azure storage (tylko w przypadku dysków niezarządzanych)** :
 
   * **Grupy dostępności** dla:
     * Maszyny wirtualne serwera aplikacji SAP: \<SAPSystemSID\>-avset-di
@@ -431,7 +431,7 @@ W tym przykładzie mamy tych maszyn wirtualnych i statyczne adresy IP:
 | --- | --- | --- | --- |
 | Pierwsze wystąpienie serwera aplikacji SAP |PR1-di-0 |PR1-karta sieciowa di-0 |10.0.0.50 |
 | Drugie wystąpienie serwera aplikacji SAP |pr1-di-1 |PR1-karta sieciowa di-1 |10.0.0.51 |
-| ... |... |... |... |
+| Przyciski ... |Przyciski ... |Przyciski ... |Przyciski ... |
 | Ostatnie wystąpienie serwera aplikacji SAP |PR1-di-5 |PR1-karta sieciowa di-5 |10.0.0.55 |
 | Pierwszym węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
 | Drugim węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
@@ -551,7 +551,7 @@ Usługa Azure Load Balancer ma wewnętrznego modułu równoważenia obciążenia
 
 Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, najpierw dodaj te wpisy rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (Decimal) |
@@ -562,7 +562,7 @@ Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, na
 
 Następnie dodaj ten wpis rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (Decimal) |

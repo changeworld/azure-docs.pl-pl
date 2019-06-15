@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
 ms.openlocfilehash: 9085d5ee21b1e955b7d9416a379ee730ba26ad3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150084"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Łączenie bramy sieci VPN platformy Azure do wielu lokalnych na podstawie zasad urządzeń sieci VPN przy użyciu programu PowerShell
@@ -41,7 +41,7 @@ Obecnie platforma Azure obsługuje oba tryby bram sieci VPN: oparta na trasach b
 
 |                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**               |
 | ---                      | ---                         | ---                                      |
-| **Jednostka SKU bramy platformy Azure**    | Podstawowy                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2 i VpnGw3 |
+| **Jednostka SKU bramy platformy Azure**    | Podstawowa                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2 i VpnGw3 |
 | **Wersja IKE**          | IKEv1                       | IKEv2                                    |
 | **Maksymalna liczba. Połączeń S2S** | **1**                       | Podstawowa/standardowa: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |

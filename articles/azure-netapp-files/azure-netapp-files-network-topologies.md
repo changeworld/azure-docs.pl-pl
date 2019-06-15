@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826445"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
@@ -52,10 +52,10 @@ W poniższej tabeli opisano topologie sieci, obsługiwane przez usługi Azure Fi
 
 |    Topologie    |    jest obsługiwany    |     Obejście    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Tak    |         |
+|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Yes    |         |
 |    Łączność z woluminu w skomunikowanej równorzędnie sieci wirtualnej (tym samym regionie)    |    Tak    |         |
 |    Łączność z woluminu w wirtualnych sieciach równorzędnych (Cross regionu lub globalnej komunikacji równorzędnej)    |    Nie    |    Brak    |
-|    Łączność z woluminem przez bramę usługi ExpressRoute    |    Tak    |         |
+|    Łączność z woluminem przez bramę usługi ExpressRoute    |    Yes    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej przez bramę usługi ExpressRoute i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Nie    |    Utwórz podsieć delegowanego w piastą (sieć wirtualną platformy Azure za pomocą bramy)    |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN    |    Tak    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Tak    |         |

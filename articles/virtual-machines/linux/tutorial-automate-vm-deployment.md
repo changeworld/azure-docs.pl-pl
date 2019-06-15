@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2543ffb20c4e7da840201cfd3be04505515458a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a65b7becc4ec60290670819799e9f8731d55058
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67114267"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
@@ -45,7 +45,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 
 Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i uruchamiany w obrazach, których dostarczają na platformie Azure. W poniższej tabeli przedstawiono bieżącą dostępność pakietu cloud-init w obrazach na platformie Azure:
 
-| Alias | Wydawca | Oferta | SKU | Wersja |
+| Alias | Wydawca | Oferta | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |najnowsza |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |
@@ -110,7 +110,7 @@ Zanim będzie można utworzyć maszynę wirtualną, utwórz grupę zasobów za p
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create). Użyj parametru `--custom-data` do przekazania w pliku konfiguracji cloud-init. Podaj pełną ścieżkę do pliku konfiguracji *cloud-init.txt*, jeśli plik został zapisany poza aktualnym katalogiem roboczym. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myAutomatedVM*:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create). Użyj parametru `--custom-data` do przekazania w pliku konfiguracji cloud-init. Podaj pełną ścieżkę do pliku konfiguracji *cloud-init.txt*, jeśli plik został zapisany poza aktualnym katalogiem roboczym. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*:
 
 ```azurecli-interactive
 az vm create \
@@ -183,7 +183,7 @@ vm_secret=$(az vm secret format --secret "$secret")
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Tworzenie konfiguracji cloud-init do zabezpieczenia serwera NGINX
-Podczas tworzenia maszyny wirtualnej certyfikaty i klucze są przechowywane w chronionym katalogu */var/lib/agentawaagent/*. Aby zautomatyzować dodawanie certyfikatu do maszyny wirtualnej i konfigurowanie serwera NGINX, możesz użyć zaktualizowanego pliku konfiguracji cloud-init z poprzedniego przykładu.
+Podczas tworzenia maszyny wirtualnej certyfikaty i klucze są przechowywane w chronionym katalogu */var/lib/agentawaagent/* . Aby zautomatyzować dodawanie certyfikatu do maszyny wirtualnej i konfigurowanie serwera NGINX, możesz użyć zaktualizowanego pliku konfiguracji cloud-init z poprzedniego przykładu.
 
 Utwórz plik o nazwie *cloud-init-secured.txt* i wklej następującą konfigurację. Jeśli używasz powłoki Cloud Shell, utwórz plik konfiguracji cloud-init w tej powłoce, a nie na maszynie lokalnej. Użyj pliku `sensible-editor cloud-init-secured.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Upewnij się, że skopiowano cały plik cloud-init chmury, a szczególnie pierwszy wiersz:
 

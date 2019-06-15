@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60780846"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Przesyłanie przepływu pracy przy użyciu pliku wejściowego BAM
@@ -21,7 +21,7 @@ ms.locfileid: "60780846"
 W tym artykule przedstawiono sposób przesyłania przepływu pracy do usługi Microsoft Genomics, jeśli plik wejściowy to pojedynczy plik BAM. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli zostało pomyślnie przesłane przepływu pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuować z tego artykułu. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Konfiguracja: Przekazywanie pliku BAM do usługi Azure storage
-Załóżmy, że mamy jeden plik BAM, *reads.bam*, oraz że przekazano go do konta magazynu *myaccount* na platformie Azure jako obiekt **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Załóżmy, że mamy jeden plik BAM, *reads.bam*, oraz że przekazano go do konta magazynu *myaccount* na platformie Azure jako obiekt **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** . Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
 
 
 

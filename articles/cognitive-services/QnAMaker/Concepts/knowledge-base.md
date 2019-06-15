@@ -12,10 +12,10 @@ ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379363"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co to jest usługa QnA Maker wiedzy?
@@ -36,7 +36,7 @@ Pojedynczy QnA, reprezentowany przez identyfikator numeryczny pytań i odpowiedz
 
 Po sformatowanej zawartości jest pozyskiwania w bazie wiedzy, narzędzie QnA Maker próbuje przekonwertować zawartości markdown. Odczyt [to](https://aka.ms/qnamaker-docs-markdown-support) blog, aby zrozumieć języku znaczników markdown formatuje zrozumiały dla większości klientów rozmowy.
 
-Pola metadanych składają się z pary klucz wartość oddzielone dwukropkiem **(produkt: strzępiarka)**. Klucz i wartość musi być tylko tekst. Klucza metadanych nie może zawierać spacji. Metadane obsługuje tylko jedną wartość na klucz.
+Pola metadanych składają się z pary klucz wartość oddzielone dwukropkiem **(produkt: strzępiarka)** . Klucz i wartość musi być tylko tekst. Klucza metadanych nie może zawierać spacji. Metadane obsługuje tylko jedną wartość na klucz.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

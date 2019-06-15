@@ -11,10 +11,10 @@ manager: yuvalm
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60687371"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Dev miejsca do magazynowania
@@ -43,7 +43,7 @@ Utwórz nowy obszar o nazwie _dev_ przy użyciu `azds space select` polecenia. _
 azds space select -n dev
 ```
 
-Po wyświetleniu monitu o wybranie nadrzędnej przestrzeni deweloperskiej wybierz pozycję _\<none\>_.
+Po wyświetleniu monitu o wybranie nadrzędnej przestrzeni deweloperskiej wybierz pozycję _\<none\>_ .
 
 Po utworzeniu obszaru dev, należy określić sufiks hosta. Użyj `azds show-context` polecenia w celu wyświetlenia sufiks hosta kontrolera danych przychodzących usługi Azure Dev miejsca do magazynowania.
 

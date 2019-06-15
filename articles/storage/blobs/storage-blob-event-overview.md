@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826493"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
@@ -39,19 +39,19 @@ Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.m
 > |`Microsoft.Storage.BlobCreated`|Wywoływane, gdy obiekt blob zostanie utworzony lub zastąpiony przez `PutBlob`, `PutBlockList`, lub `CopyBlob` operacji|
 > |`Microsoft.Storage.BlobDeleted`|Wywoływane, gdy obiekt blob jest usuwane przez `DeleteBlob` operacji|
 
-## <a name="event-schema"></a>Schemat zdarzenia
+## <a name="event-schema"></a>Schemat zdarzeń
 Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowania na zmiany w danych.  Można zidentyfikować zdarzenia magazynu obiektów Blob, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Storage". Dodatkowe informacje na temat użycia właściwości zdarzeń usługi Event Grid jest udokumentowany w [schematu zdarzeń usługi Event Grid](../../event-grid/event-schema.md).  
 
 > |Właściwość|Typ|Opis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |temat|string|Pełny identyfikator usługi Azure Resource Manager konta magazynu, który emituje zdarzenia.|
-> |temat|string|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
+> |topic|string|Pełny identyfikator usługi Azure Resource Manager konta magazynu, który emituje zdarzenia.|
+> |subject|string|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
 > |eventTime|string|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
 > |eventType|string|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
-> |Id|string|Unikatowy identyfikator, jeśli to zdarzenie|
+> |Identyfikator|string|Unikatowy identyfikator, jeśli to zdarzenie|
 > |dataVersion|string|Wersja schematu dla obiektu danych.|
 > |metadataVersion|string|Wersja schematu właściwości najwyższego poziomu.|
-> |dane|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|
+> |data|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|
 > |data.contentType|string|Typ zawartości obiektu blob, ponieważ do zwrócenia w nagłówku Content-Type z obiektu blob|
 > |data.contentLength|numer|Rozmiar obiektu blob, tak jak w liczbę całkowitą reprezentującą liczbę bajtów, ponieważ do zwrócenia w nagłówku Content-Length z obiektu blob.  Wysyłane z BlobCreated zdarzenia, ale nie z BlobDeleted.|
 > |data.url|string|Adres url obiektu, który jest przedmiotem zdarzenia|

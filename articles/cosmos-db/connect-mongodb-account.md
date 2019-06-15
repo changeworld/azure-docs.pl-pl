@@ -9,10 +9,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: dabce19d60a380b47d3583dedb5c11303f416ce7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978720"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji bazy danych MongoDB w usłudze Azure Cosmos DB
@@ -32,7 +32,7 @@ Ten samouczek zawiera dwa sposoby, aby pobrać informacje o parametrach połącz
 1. W przeglądarce internetowej, zaloguj się do [witryny Azure portal](https://portal.azure.com).
 2. W **usługi Azure Cosmos DB** bloku wybierz interfejs API. 
 3. W okienku po lewej stronie bloku konta kliknij **— szybki start**. 
-4. Wybierz platformę (**.NET**, **Node.js**, **powłoka MongoDB**, **Java**, **Python**). Jeśli nie widzisz, sterownik lub narzędzie na liście, nie martw się — stale dokumentujemy kolejne fragmentu kodu połączenia. Skomentuj poniżej na chcesz zobaczyć. Aby dowiedzieć się, jak tworzyć własne połączenia, przeczytaj [uzyskać informacje o parametrach połączenia dla konta](#GetCustomConnection).
+4. Wybierz platformę ( **.NET**, **Node.js**, **powłoka MongoDB**, **Java**, **Python**). Jeśli nie widzisz, sterownik lub narzędzie na liście, nie martw się — stale dokumentujemy kolejne fragmentu kodu połączenia. Skomentuj poniżej na chcesz zobaczyć. Aby dowiedzieć się, jak tworzyć własne połączenia, przeczytaj [uzyskać informacje o parametrach połączenia dla konta](#GetCustomConnection).
 5. Skopiuj i Wklej fragment kodu w aplikacji bazy danych MongoDB.
 
     ![Bloku szybki start](./media/connect-mongodb-account/QuickStartBlade.png)

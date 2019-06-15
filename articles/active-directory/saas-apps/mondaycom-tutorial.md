@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc142bf02a44ea85861f4cc648fd7ee8602c7520
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08108a1718ee917a317b4864de81959ae139eaa5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mondaycom"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą monday.com
 
@@ -154,7 +154,7 @@ W tej sekcji skonfigurujesz usługi Azure AD logowanie jednokrotne za pomocą mo
 
        ![Zarządzaj oświadczenia użytkownika](common/new-attribute-details.png)
 
-1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku w obszarze **certyfikat podpisywania SAML**, wybierz opcję **Pobierz** obok **certyfikat (Base64)**. Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
+1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku w obszarze **certyfikat podpisywania SAML**, wybierz opcję **Pobierz** obok **certyfikat (Base64)** . Wybierz opcję pobierania, w zależności od wymagań. Zapisz certyfikat na komputerze.
 
     ![Opcja pobierania certyfikat (Base64)](common/certificatebase64.png)
 
@@ -186,7 +186,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< Rozszerzenia >**. Na przykład **brittasimon\@contoso.com**.
+    1. W **nazwa_użytkownika** wprowadź **brittasimon\@\<Twojej domeny firmy >.\< Rozszerzenia >** . Na przykład **brittasimon\@contoso.com**.
 
     1. Wybierz **hasło Show** pole wyboru. Zanotuj wartość, która jest wyświetlana w **hasło** pole.
 

@@ -14,15 +14,15 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60488224"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-copy-activity-performance.md)
 > * [Wersja 2 (bieżąca wersja)](../copy-activity-performance.md)
 
@@ -414,7 +414,7 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 
 ![Scenariusz 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Tematy pomocy
 Poniżej przedstawiono monitorowanie wydajności i dostosowywania odwołania dla niektórych obsługiwanych magazynów danych:
 
 * Usługa Azure Storage (w tym magazyn obiektów Blob i Table storage): [Cele skalowalności usługi Azure Storage](../../storage/common/storage-scalability-targets.md) i [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../../storage/common/storage-performance-checklist.md)

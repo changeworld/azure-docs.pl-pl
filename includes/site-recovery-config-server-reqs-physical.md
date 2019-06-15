@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160364"
 ---
 **Wymagania dotyczące serwera konfiguracji/przetwarzania replikacji serwera fizycznego**
@@ -33,7 +33,7 @@ Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
 Role systemu Windows Server | Nie włączaj tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
 Zasady grupy | Nie włączaj tych zasad grupy: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br> — Logika zaufania dla plików załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Brak przeniosła istniejące wcześniej domyślnej witryny sieci Web <br> -Brak przeniosła istniejące wcześniej witryny sieci Web/aplikacja nasłuchuje na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie.
-Typ adresu IP | Statyczny 
+Typ adresu IP | Static 
 | 
 **USTAWIENIA DOSTĘPU** | 
 MYSQL | MySQL, należy zainstalować na serwerze konfiguracji. Można zainstalować ręcznie lub Usługa Site Recovery można zainstalować go podczas wdrażania. Usługi Site Recovery zainstalować, sprawdź, czy komputer może osiągnąć http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi.

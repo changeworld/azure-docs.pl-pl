@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410709"
 ---
 # <a name="create-a-custom-voice"></a>Tworzenie niestandardowych Voice
@@ -47,8 +47,8 @@ W poniższej tabeli przedstawiono stany przetwarzania dla zaimportowanych zestaw
 | Stan | Znaczenie |
 | ----- | ------- |
 | Przetwarzanie | Zestaw danych zostało odebrane i Trwa przetwarzanie. |
-| Udane | Zestaw danych został zweryfikowany i może teraz służyć do tworzenia modeli głosowych. |
-| Błąd | Zestaw danych nie powiodła się podczas przetwarzania z powodu wielu przyczyn, na przykład błędy w pliku danych problemy lub problemy z siecią. |
+| Powodzenie | Zestaw danych został zweryfikowany i może teraz służyć do tworzenia modeli głosowych. |
+| Niepowodzenie | Zestaw danych nie powiodła się podczas przetwarzania z powodu wielu przyczyn, na przykład błędy w pliku danych problemy lub problemy z siecią. |
 
 Po zakończeniu sprawdzania poprawności widać łączną liczbę wypowiedzi dopasowane do wszystkich zestawów danych w **wypowiedzi** kolumny. Jeśli typ danych, który wybrano wymaga długich audio segmentacji, ta kolumna tylko odzwierciedla wypowiedzi, które firma Microsoft ma segmentowanych dla Ciebie albo na podstawie Twojej transkrypcji lub za pośrednictwem usługi transkrypcja mowy. Dodatkowo można pobrać weryfikowane tak, aby wyświetlić szczegółowe wyniki wypowiedzi zostały pomyślnie zaimportowane i ich zapisy mapowanie zestawu danych. Wskazówka: long-audio segmentacji może potrwać ponad godzinę na zakończenie przetwarzania danych.
 
@@ -89,8 +89,8 @@ Stan, który jest wyświetlany odzwierciedla proces konwersji zestawu danych do 
 | Stan | Znaczenie |
 | ----- | ------- |
 | Przetwarzanie | Trwa tworzenie modelu głosu. |
-| Udane | Model głos został utworzony i którą można wdrożyć. |
-| Błąd | Model głosu nie powiodła się w szkolenia, ze względu na wiele przyczyn, na przykład niewidzianych danych problemy lub problemy z siecią. |
+| Powodzenie | Model głos został utworzony i którą można wdrożyć. |
+| Niepowodzenie | Model głosu nie powiodła się w szkolenia, ze względu na wiele przyczyn, na przykład niewidzianych danych problemy lub problemy z siecią. |
 
 Szkolenie czasu różni się zależnie od ilości przetworzonych danych audio. Typowy czas do zakresu od o setki wypowiedzi na 30 minut do 40 godzin wypowiedzi 20 000. Gdy instalacja się powiodła szkolenia modelu można uruchomić ją przetestować.
 

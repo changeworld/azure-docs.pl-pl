@@ -13,10 +13,10 @@ ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60783714"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostyka ujednoliconego transakcji między składnikami
@@ -102,4 +102,4 @@ Osie czasu są dopasowane do wynikających z przesunięcia czasowego zegara na w
 
 *Dlaczego nowe środowisko brakuje większość zapytań powiązanych elementów?*
 
-Jest to celowe. Wszystkie elementy powiązane, dotyczące wszystkich składników, są już dostępne po lewej stronie (z góry i u dołu sekcji). Nowe środowisko ma dwa powiązane elementy, które nie obejmują po lewej stronie: wszystkie dane telemetryczne w ciągu pięciu minut przed i po nim to zdarzenie i oś czasu użytkownika.
+To jest celowe. Wszystkie elementy powiązane, dotyczące wszystkich składników, są już dostępne po lewej stronie (z góry i u dołu sekcji). Nowe środowisko ma dwa powiązane elementy, które nie obejmują po lewej stronie: wszystkie dane telemetryczne w ciągu pięciu minut przed i po nim to zdarzenie i oś czasu użytkownika.

@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 499854bcf6774c3e4eee350c1dd4a2204885f3b1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058533"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
-Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
+Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. Publiczny aplikacji, punkt końcowy jest dostępny dla wszystkich użytkowników, który ma swoje własne Azure [usługi cognitive Services](../cognitive-services-apis-create-account.md) lub [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) zasobu, i zawiera identyfikator aplikacji publicznych. 
 
 ## <a name="access-to-authoring"></a>Dostęp do tworzenia
 Dostęp do aplikacji z [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web lub [Tworzenie interfejsów API](https://go.microsoft.com/fwlink/?linkid=2092087) jest kontrolowana przez właściciela aplikacji. 

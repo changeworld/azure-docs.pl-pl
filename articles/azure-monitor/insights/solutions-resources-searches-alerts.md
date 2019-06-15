@@ -14,10 +14,10 @@ ms.date: 02/27/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0975b23a8f96da6fc2dfcc8bd9ad046847a68aa9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104834"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
@@ -79,11 +79,11 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 | Właściwość | Opis |
 |:--- |:--- |
 | category | Kategoria dla zapisanego wyszukiwania.  Wszystkie zapisane wyszukiwania, w tym samym rozwiązaniu często współużytkują jednej kategorii, dzięki czemu są one zgrupowane razem w konsoli. |
-| displayname | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
+| Nazwa wyświetlana | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
-> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON. Na przykład, jeśli zapytanie zostało **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"**.
+> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON. Na przykład, jeśli zapytanie zostało **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** , powinny być zapisywane w pliku rozwiązania jako **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"** .
 
 ## <a name="alerts"></a>Alerty
 [Alerty dzienników platformy Azure](../../azure-monitor/platform/alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu. Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../../azure-monitor/platform/action-groups.md).
@@ -124,8 +124,8 @@ Właściwości harmonogramu zasoby są opisane w poniższej tabeli.
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | enabled       | Yes | Określa, czy alert jest włączony podczas jego tworzenia. |
-| interval      | Yes | Jak często zapytanie działa w ciągu kilku minut. |
-| queryTimeSpan | Yes | Długość czasu w minutach, względem którego ma zostać ocena wyników. |
+| interval      | Tak | Jak często zapytanie działa w ciągu kilku minut. |
+| queryTimeSpan | Tak | Długość czasu w minutach, względem którego ma zostać ocena wyników. |
 
 Zasób harmonogramu powinna zależeć od zapisane wyszukiwanie, tak, aby jest tworzony przed harmonogramu.
 > [!NOTE]
@@ -176,10 +176,10 @@ Właściwości dla akcji alertu zasoby są opisane w poniższych tabelach.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Type | Yes | Typ akcji.  Jest to **Alert** dla akcje alertu. |
-| Name (Nazwa) | Yes | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
+| Typ | Tak | Typ akcji.  Jest to **Alert** dla akcje alertu. |
+| Name (Nazwa) | Tak | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
 | Opis | Nie | Opcjonalny opis alertu. |
-| Ważność | Yes | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
+| Severity | Tak | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
 
 
 #### <a name="threshold"></a>Próg
@@ -198,7 +198,7 @@ Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| TriggerCondition | Yes | Określa, czy próg całkowitą liczbę naruszeń lub kolejne naruszenia spośród następujących wartości:<br><br>**Łączna liczba<br>kolejnych** |
+| TriggerCondition | Tak | Określa, czy próg całkowitą liczbę naruszeń lub kolejne naruszenia spośród następujących wartości:<br><br>**Łączna liczba<br>kolejnych** |
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
 | Wartość | Yes | Liczba przypadków, które muszą zostać spełnione kryteria do wyzwolenia alertu. |
 
@@ -217,7 +217,7 @@ Dla użytkownika, który został rozszerzony alerty na platformie Azure — harm
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| AzNsNotification | Yes | Identyfikator zasobu do grupy akcji platformy Azure do skojarzenia z alertem pobierania odpowiednie działania, po spełnieniu kryteriów alertu. |
+| AzNsNotification | Tak | Identyfikator zasobu do grupy akcji platformy Azure do skojarzenia z alertem pobierania odpowiednie działania, po spełnieniu kryteriów alertu. |
 | CustomEmailSubject | Nie | Wiersz tematu niestandardowego wiadomości e-mail wysłanych na wszystkie adresy określone w grupie skojarzone z akcją. |
 | CustomWebhookPayload | Nie | Ładunek dostosowane do wysłania do wszystkich elementów webhook punktów końcowych zdefiniowanych w grupie skojarzone z akcją. Format zależy od tego, co element webhook oczekuje i powinna być prawidłowym kodem JSON serializacji. |
 
@@ -242,8 +242,8 @@ Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby element runbook mo
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| RunbookName | Yes | Nazwa elementu runbook, aby rozpocząć. |
-| WebhookUri | Yes | Identyfikator URI elementu webhook dla elementu runbook. |
+| RunbookName | Tak | Nazwa elementu runbook, aby rozpocząć. |
+| WebhookUri | Tak | Identyfikator URI elementu webhook dla elementu runbook. |
 | Expiry | Nie | Data i godzina wygaśnięcia korygowania. |
 
 ##### <a name="webhook-actions"></a>Akcje elementu Webhook
@@ -271,9 +271,9 @@ W poniższych tabelach opisano właściwości zasobów akcji elementu Webhook.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| type | Yes | Typ akcji. Jest to **elementu Webhook** przypadku akcji elementów webhook. |
-| name | Yes | Nazwa wyświetlana dla akcji. To nie jest wyświetlana w konsoli. |
-| webhookUri | Yes | Identyfikator URI dla elementu webhook. |
+| type | Tak | Typ akcji. Jest to **elementu Webhook** przypadku akcji elementów webhook. |
+| name | Tak | Nazwa wyświetlana dla akcji. To nie jest wyświetlana w konsoli. |
+| webhookUri | Tak | Identyfikator URI dla elementu webhook. |
 | customPayload | Nie | Niestandardowy ładunek do wysłania do elementu webhook. Format zależy od tego, czego oczekuje elementu webhook. |
 
 ## <a name="sample"></a>Sample
@@ -282,7 +282,7 @@ Poniżej przedstawiono przykładowe rozwiązania, które zawiera następujące z
 
 - Zapisane wyszukiwanie
 - Harmonogram
-- Grupa akcji
+- grupy akcji
 
 W przykładzie użyto [parametry standardowe rozwiązanie]( solutions-solution-file.md#parameters) zmiennych, które często będzie używana w ramach rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
 

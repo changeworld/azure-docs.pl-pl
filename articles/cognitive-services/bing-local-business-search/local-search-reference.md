@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796743"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
@@ -49,7 +49,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ## <a name="headers"></a>Nagłówki  
 Dostępne są następujące nagłówki, które mogą obejmować żądania i odpowiedzi.  
   
-|Nagłówek|Opis|  
+|nagłówek|Opis|  
 |------------|-----------------|  
 |Zaakceptuj|Opcjonalny nagłówek żądania.<br /><br /> Domyślny typ nośnika jest application/json. Aby określić, czy odpowiedź korzystać [JSON-LD](https://json-ld.org/), ustaw nagłówek Accept application/ld + json.|  
 |<a name="acceptlanguage" />Accept-Language|Opcjonalny nagłówek żądania.<br /><br /> Rozdzielana przecinkami lista języków dla ciągów interfejsu użytkownika. Lista jest zorganizowana w malejącym porządku preferencji. Aby uzyskać więcej informacji, łącznie z oczekiwanym formatem, zobacz [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ten nagłówek i parametr zapytania [setLang](#setlang) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Jeśli ustawisz ten nagłówek, należy także określić parametr zapytania DW. Aby ustalić rynek, dla którego mają zostać zwrócone wyniki, usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście i łączy go z wartością parametru `cc`. Jeśli lista nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie, lub używa rynku zagregowanego bądź domyślnego. Aby sprawdzić, jakiego rynku użyła usługa Bing, zobacz nagłówek BingAPIs-Market.<br /><br /> Używaj tego nagłówka i parametru zapytania `cc` tylko wtedy, gdy określasz wiele języków. W przeciwnym razie użyj parametrów zapytania [mkt](#mkt) i [setLang](#setlang).<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|  
@@ -70,7 +70,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania.  
   
   
-|Name (Nazwa)|Wartość|Type|Wymagane|  
+|Name (Nazwa)|Wartość|Typ|Wymagane|  
 |----------|-----------|----------|--------------|
 |<a name="count" />Liczba|Liczba wyników do zwrócenia, począwszy od indeksu określonego przez `offset` parametru.|String|Nie|   
 |<a name="localCategories" />localCategories|Lista opcji, które definiują wyszukiwania według kategorii biznesowych.  Zobacz [wyszukiwania lokalnych firm kategorii](local-categories.md)|String|Nie|  
@@ -94,7 +94,7 @@ Poniżej przedstawiono obiekty odpowiedzi JSON, które mogą obejmować odpowied
 ### <a name="error"></a>Błąd  
 Definiuje błąd, który wystąpił.  
   
-|Element|Opis|Type|  
+|Element|Opis|Typ|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|String|  
 |<a name="error-message" />Komunikat|Opis błędu.|String|  
@@ -107,7 +107,7 @@ Definiuje błąd, który wystąpił.
 ### <a name="errorresponse"></a>ErrorResponse  
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu.|String|  
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|  
@@ -117,7 +117,7 @@ Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy 
 ### <a name="license"></a>Licencja  
 Definiuje licencji w ramach której można użyć typu text lub zdjęć.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |name|Nazwa licencji.|String|  
 |url|Adres URL witryny sieci Web, gdzie użytkownik może uzyskać więcej informacji o licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|String|  
@@ -126,7 +126,7 @@ Definiuje licencji w ramach której można użyć typu text lub zdjęć.
 ### <a name="link"></a>Łącze  
 Określa składniki hiperłącza.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu.|String|  
 |tekst|Tekst wyświetlany.|String|  
@@ -140,7 +140,7 @@ Określa wydawcę.
   
 Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web lub obu tych.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |name|Nazwa wydawcy.|String|  
 |url|Adres URL witryny sieci Web wydawcy.<br /><br /> Należy pamiętać, wydawca nie mogą zawierać witryny sieci Web.|String|  
@@ -150,10 +150,10 @@ Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web
 ### <a name="place"></a>Miejsce  
 Definiuje informacje o lokalnych firmach, takich jak restauracji lub hotelu.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |_type|Wskazówka typ może być ustawiona na jedną z następujących czynności:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restauracja</ul><li>|String|  
-|adres|Adres pocztowy, z którym znajduje się jednostka.|PostalAddress|  
+|address|Adres pocztowy, z którym znajduje się jednostka.|PostalAddress|  
 |entityPresentationInfo|Dodatkowe informacje o jednostce, takiej jak wskazówek, które można użyć w celu określenia typu jednostki. Na przykład czy jest to restauracji lub hotelu. `entityScenario` Pole jest ustawione na element listy.|entityPresentationInfo|  
 |name|Nazwa jednostki.|String|  
 |Telefon|Numer telefonu jednostki.|String|  
@@ -164,7 +164,7 @@ Definiuje informacje o lokalnych firmach, takich jak restauracji lub hotelu.
 ### <a name="querycontext"></a>QueryContext  
 Definiuje kontekst zapytania, które Bing użyta dla żądania.  
   
-|Element|Opis|Type|  
+|Element|Opis|Typ|  
 |-------------|-----------------|----------|  
 |adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Boolean|  
 |alterationOverrideQuery|Ciąg zapytania do użycia, aby wymusić Bing w celu użycia oryginalny ciąg. Na przykład, jeśli ciąg zapytania jest *saling downwind*, zastąpienie ciągu zapytania będą *+ saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, co skutkuje *% 2Bsaling + downwind*.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
@@ -174,21 +174,21 @@ Definiuje kontekst zapytania, które Bing użyta dla żądania.
 
 ### <a name="identifiable"></a>Do zidentyfikowania
 
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |-------------|-----------------|----------|
-|identyfikator|Identyfikator zasobu|String|
+|id|Identyfikator zasobu|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupy w wynikach wyszukiwania, takie jak mainline.
 
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |-------------|-----------------|----------|
 |items|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania, aby wyświetlić.
 
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |-------------|-----------------|----------|
 |resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Integer|
 |answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|String|
@@ -209,7 +209,7 @@ Definiuje obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie 
   
 Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie zakończy się pomyślnie (kod stanu HTTP jest 200 OK); jednak treści odpowiedzi jest pusta.  
   
-|Name (Nazwa)|Wartość|Type|  
+|Name (Nazwa)|Wartość|Typ|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu jest ustawiona na SearchResponse.|String|  
 |Miejsca|Listę jednostek, które są istotne dla zapytania wyszukiwania.|Obiekt JSON|  
@@ -220,7 +220,7 @@ Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie za
 
 Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.  
   
-|Kod stanu|Opis|  
+|Kod stanu:|Opis|  
 |-----------------|-----------------|  
 |200|Powodzenie.|  
 |400|To jeden z parametrów zapytania, lub jest on nieprawidłowy.|  
@@ -262,8 +262,8 @@ Poniżej przedstawiono wartości możliwy błąd kodu i podrzędnego błędu kod
 
 |Kod|Podrzędnego|Opis
 |-|-|-
-|Błąd ServerError|UnexpectedError<br/>ResourceError<br/>Nie zaimplementowano|Kod stanu HTTP to 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
+|Błąd ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Kod stanu HTTP to 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowane|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
 |RateLimitExceeded|Nie kodów podrzędnych|Wyszukiwarka Bing zwróci RateLimitExceeded zawsze wtedy, gdy przekracza z zapytań na sekundę (QPS) lub zapytania na miesiąc (QPM) limitu przydziału.<br/><br/>Po przekroczeniu liczby zapytań na Sekundę, Wyszukiwarka Bing zwróci kod stanu HTTP 429, a Jeśli przekroczysz QPM, Wyszukiwarka Bing zwróci 403.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Wyszukiwarka Bing zwróci InvalidAuthorization, kiedy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje w przypadku określenia więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli ten błąd jest InvalidAuthorization, kod stanu HTTP jest 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Wyszukiwarka Bing zwróci InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Może to wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli ten błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.

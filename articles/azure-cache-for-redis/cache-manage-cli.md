@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119082"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak utworzyć i zarządzać pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
@@ -49,13 +49,13 @@ Następujące właściwości są używane podczas tworzenia i aktualizowania pam
 | name |-n,--name |Nazwa Azure pamięci podręcznej Redis. |
 | grupa zasobów |-g,--grupy zasobów |Nazwa grupy zasobów. |
 | location |-l,--lokalizacji |Lokalizacja, aby utworzyć pamięć podręczną. |
-| rozmiar |-z, — rozmiar |Rozmiar pamięci podręcznej platformy Azure dla usługi Redis. Prawidłowe wartości: [C0 C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| size |-z, — rozmiar |Rozmiar pamięci podręcznej platformy Azure dla usługi Redis. Prawidłowe wartości: [C0 C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Usługa redis jednostki SKU. Powinien być jednym z: [podstawowa, standardowa, Premium] |
 | EnableNonSslPort |-e,--enable bez protokołu ssl — portu |Właściwość EnableNonSslPort pamięci podręcznej Azure redis Cache. Dodaj tę flagę, jeśli chcesz włączyć Port bez protokołu SSL dla pamięci podręcznej |
 | Konfigurowanie pamięci podręcznej redis |-c, — konfiguracja pamięci podręcznej redis |Konfigurowanie pamięci podręcznej redis. Wprowadź ciąg formatu JSON konfiguracji kluczy i wartości w tym miejscu. Format: "{" ":""," ":" "}" |
 | Konfigurowanie pamięci podręcznej redis |-f, — plik w przypadku konfiguracji pamięci podręcznej redis |Konfigurowanie pamięci podręcznej redis. Wprowadź ścieżkę pliku zawierającego kluczy i wartości w tym miejscu konfiguracji. Format wpisu pliku: {"": "","": ""} |
 | Liczba fragmentów |-r,--liczba fragmentów |Liczba fragmentów, aby utworzyć na Cache klaster w warstwie Premium z usługą klastrowania. |
-| Virtual Network |-v,--sieci wirtualnej |W przypadku hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia usługi Azure Cache dla Redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Sieć wirtualna |-v,--sieci wirtualnej |W przypadku hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia usługi Azure Cache dla Redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Typ klucza |-t, — typ klucza |Typ klucza do odnowienia. Prawidłowe wartości: [podstawowego, pomocniczego] |
 | StaticIP |-p,--static ip \<static ip\> |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. |
 | Podsieć |t, — podsieci \<podsieci\> |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. |
@@ -94,7 +94,7 @@ Aby wyświetlić wszystkie Azure pamięci podręcznej Redis poleceń i ich param
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="create-an-azure-cache-for-redis"></a>Tworzenie usługi Azure Cache for Redis
+## <a name="create-an-azure-cache-for-redis"></a>Tworzenie pamięci podręcznej Azure dla usługi Redis
 Aby utworzyć pamięć podręczna systemu Azure dla usługi Redis, użyj następującego polecenia:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]

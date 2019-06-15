@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d0960c749d74903acc778c0f21d5c49f380195ae
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734197"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074157"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Stan monitora v2: Szczegółowe instrukcje
 
@@ -204,7 +204,7 @@ Aby uzyskać więcej informacji, zobacz [Instalowanie modułu programu PowerShel
 
 ### <a name="option-2-unzip-and-import-nupkg-manually"></a>Opcja 2: Rozpakuj i ręcznie zaimportować nupkg
 Zainstaluj ręcznie pobranego modułu programu PowerShell do katalogu programu PowerShell, będą wykrywalny przez sesji programu PowerShell.
-Aby uzyskać więcej informacji, zobacz [Instalowanie modułu programu PowerShell](https://docs.mircrosoft.com/powershell/developer/module/installing-a-powershell-module).
+Aby uzyskać więcej informacji, zobacz [Instalowanie modułu programu PowerShell](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
 Instalowania modułu do żadnego innego katalogu, należy ręcznie zaimportować moduł za pomocą [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
 

@@ -15,13 +15,13 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7d403c284eefc1351aabb632977832f2bf11757a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60477126"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715834"
 ---
-# <a name="sizing"></a>Ustalanie rozmiaru
+# <a name="sizing"></a>Zmiany rozmiaru
 
 Ustalanie rozmiaru dla dużych wystąpień HANA nie różni się od ogólnie rzecz biorąc ustalania rozmiaru dla platformy HANA. Dla istniejących i wdrażane systemy, które chcesz przenieść z innych RDBMS do platformy HANA, SAP udostępnia szereg raportów, które działają w istniejących systemów SAP. Jeśli baza danych zostanie przeniesiony do platformy HANA, te raporty, sprawdź dane i obliczyć wymagania dotyczące pamięci dla wystąpienia platformy HANA. Aby uzyskać więcej informacji na temat sposobu uruchamiania tych raportów i uzyskać ich najnowsze poprawki lub wersji należy przeczytać następujące uwagi SAP:
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.openlocfilehash: 6ae271fc464e2a5735ef95a428b3070066058ddc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696143"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks
@@ -49,7 +49,7 @@ W tej sekcji utworzysz przykładowy projekt Scala przy użyciu rozwiązania Inte
 
 1. Otwórz IntelliJ IDEA na komputerze. W **nowy projekt** okna dialogowego pole, wykonaj następujące kroki:
 
-   1. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)**.
+   1. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)** .
    2. W **narzędzia do kompilowania** listy, wybierz jedną z poniższych pozycji w oparciu o Twojego scenariusza:
 
       * **Narzędzie maven**: Kreator tworzenia projektu Scala pomocy technicznej.
@@ -144,7 +144,7 @@ Aby przesłać projekt w emulatorze:
     1. W **klastra Spark (tylko system Linux)** listy rozwijanej wybierz swoje lokalne Piaskownicą Hortonworks.
     2. W **Nazwa klasy Main** wybierz lub wprowadź nazwę klasy głównego. W tym samouczku nazwa jest **GroupByTest**.
 
-3. Wybierz pozycję **Prześlij**. Dzienniki przesyłania zadań są wyświetlane w oknie narzędzia przesyłania platformy Spark.
+3. Wybierz **przesłać**. Dzienniki przesyłania zadań są wyświetlane w oknie narzędzia przesyłania platformy Spark.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

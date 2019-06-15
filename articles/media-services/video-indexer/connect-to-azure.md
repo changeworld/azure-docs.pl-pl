@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 33493f1bdff6071737aad4bfb8c7d0e5e22896db
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799840"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
@@ -139,10 +139,10 @@ W oknie dialogowym podaj następujące informacje:
 
 |Ustawienie|Opis|
 |---|---|
-|Region konta usługi Video Indexer|Nazwa regionu konta Video Indexer. Aby uzyskać lepszą wydajność i obniżyć koszty zaleca do określenia nazwy regionu, w którym znajdują się zasobów usługi Azure Media Services i konto usługi Azure Storage. |
+|Region konta usługi wideo indeksatora|Nazwa regionu konta Video Indexer. Aby uzyskać lepszą wydajność i obniżyć koszty zaleca do określenia nazwy regionu, w którym znajdują się zasobów usługi Azure Media Services i konto usługi Azure Storage. |
 |Dzierżawa usługi Azure Active Directory (AAD)|Nazwa dzierżawy usługi Azure AD, na przykład "contoso.onmicrosoft.com". W witrynie Azure portal można pobrać informacji o dzierżawie. Umieść kursor na nazwie użytkownika zalogowanego w prawym górnym rogu. Znajdowanie nazwy po prawej stronie **domeny**.|
 |Identyfikator subskrypcji|Subskrypcja platformy Azure, w którym można utworzyć tego połączenia. Identyfikator subskrypcji można pobrać z witryny Azure portal. Kliknij pozycję **wszystkich usług** w panelu po lewej stronie i wyszukaj "subskrypcje". Wybierz **subskrypcje** i wybierz żądany identyfikator z listy subskrypcji.|
-|Nazwa grupy zasobów usługi Azure Media Services|Nazwa grupy zasobów, w którym utworzono konto usługi Media Services.|
+|Nazwa grupy zasobów w usłudze Azure Media Services|Nazwa grupy zasobów, w którym utworzono konto usługi Media Services.|
 |Nazwa zasobu usługi multimediów|Nazwa konta usługi Azure Media Services, który został utworzony w poprzedniej sekcji.|
 |Identyfikator aplikacji|Usługa Azure AD identyfikator aplikacji (z uprawnieniami określonego konta usługi Media Services) utworzonego w poprzedniej sekcji.|
 |Klucz aplikacji|Klucz aplikacji usługi Azure AD, który został utworzony w poprzedniej sekcji. |

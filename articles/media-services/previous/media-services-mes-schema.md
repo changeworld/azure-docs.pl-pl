@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 837235e04ce190a4481e1f19789d8e9ff9cb7578
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61131585"
 ---
 # <a name="media-encoder-standard-schema"></a>Schemat usługi Media Encoder Standard
@@ -38,7 +38,7 @@ Definiuje ustawienie wstępne kodowania.
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Wersja**<br/><br/> Wymagane |**xs: dziesiętne** |Wersja wstępnie zdefiniowane. Obowiązują następujące ograniczenia: wartość xs:fractionDigits = wartość "1" i xs:minInclusive = "1", na przykład **wersji = "1.0"**. |
+| **Wersja**<br/><br/> Wymagane |**xs: dziesiętne** |Wersja wstępnie zdefiniowane. Obowiązują następujące ograniczenia: wartość xs:fractionDigits = wartość "1" i xs:minInclusive = "1", na przykład **wersji = "1.0"** . |
 
 ## <a name="Encoding"></a> Kodowanie
 Zawiera sekwencję następujące elementy:  
@@ -61,7 +61,7 @@ Zawiera sekwencję następujące elementy:
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:Boolean** |Aktualnie obsługiwana jest tylko jeden przebieg kodowania. |
 | **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs: Time** |Określa stały odstęp między IDR ramki w jednostkach czasu w sekundach. Również określany jako czas trwania GOP. Zobacz **SceneChangeDetection** do kontrolowania, czy kodera można różni się od tej wartości. |
 | **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs: wartość logiczna** |Jeśli ustawiona na wartość true, koder próbuje wykryć zmianę sceny w filmie wideo i wstawia IDR ramkę. |
-| **Złożoność**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:String** |Kontroluje kompromis między kodowanie szybkość i wideo w jakości. Może być jedną z następujących wartości: **Szybkość**, **równoważenia**, lub **jakości**<br/><br/> Domyślne: **Zrównoważone** |
+| **Złożoność**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:String** |Kontroluje kompromis między kodowanie szybkość i wideo w jakości. Może być jedną z następujących wartości: **Szybkość**, **równoważenia**, lub **jakości**<br/><br/> Wartość domyślna: **Zrównoważone** |
 | **SyncMode**<br/><br/> minOccurs="0" | |Funkcja zostaną ujawnione w przyszłej wersji. |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Kolekcja warstw wideo w danych wyjściowych. |
 
@@ -124,7 +124,7 @@ Domyślnie Jeśli wyślesz dane wejściowe do kodera, który zawiera tylko audio
 
 ### <a name="groups"></a>Grupy
 
-| Informacje ogólne | Opis |
+| Tematy pomocy | Opis |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |Zobacz opis [AudioGroup](media-services-mes-schema.md#AudioGroup) wiedzieć odpowiednią liczbę kanałów, częstotliwość próbkowania i szybkość transmisji bitów, które można ustawić dla każdego profilu. |
 
@@ -135,7 +135,7 @@ Aby uzyskać szczegółowe informacje o jakie wartości są prawidłowe dla każ
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Channels**<br/><br/> minOccurs="0" |**xs: int** |Liczba kanałów audio zakodowany. Poniżej przedstawiono prawidłowe opcje: 1, 2, 5, 6, 8.<br/><br/> Domyślne: 2. |
+| **Channels**<br/><br/> minOccurs="0" |**xs: int** |Liczba kanałów audio zakodowany. Poniżej przedstawiono prawidłowe opcje: 1, 2, 5, 6, 8.<br/><br/> Wartość domyślna: 2. |
 | **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |Częstotliwość próbkowania audio określone w Hz. |
 | **Szybkość transmisji bitów**<br/><br/> minOccurs="0" |**xs: int** |Szybkość transmisji bitów związanych z kodowaniem audio, określonej w KB/s. |
 
@@ -143,9 +143,9 @@ Aby uzyskać szczegółowe informacje o jakie wartości są prawidłowe dla każ
 
 Audio Codec|Szczegóły  
 -----------------|---  
-**AACLC** |1.<br/><br/> - 11025: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> - 12000: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> - 16000: 8 &lt;= szybkości transmisji bitów &lt;32<br/><br/>- 22050: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> - 24000: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> - 32000: 32 &lt;= szybkości transmisji bitów &lt;= 192<br/><br/> - 44100: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 48000: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 88200 : 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 96000 : 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> 2.<br/><br/> - 11025: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> - 12000: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> - 16000: 16 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 22050: 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 24000 : 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 32000:  40 &lt;= szybkości transmisji bitów &lt;= 384<br/><br/> - 44100: 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 48000 : 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 88200: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 96000: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000: 160 &lt;= szybkości transmisji bitów &lt;= 896<br/><br/> - 44100: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 48000: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 88200: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 96000: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 44100 : 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 48000: 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 88200: 896 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 96000: 896 &lt;= szybkości transmisji bitów &lt;= 1024  
-**HEAACV1** |1.<br/><br/> -22050 b: szybkość transmisji bitów = 8<br/><br/> - 24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -88200 b: szybkość transmisji bitów = 64<br/><br/> 2.<br/><br/> - 32000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 44100: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 48000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 88200 : 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 96000: 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 44100: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 48000: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 88200 : 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 96000: 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> 8:<br/><br/> - 32000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 44100: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 48000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 88200: 384 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 96000: 384 &lt;= szybkości transmisji bitów &lt;= 448  
-**HEAACV2** |2.<br/><br/> - 22050: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 88200: 64 &lt;= szybkości transmisji bitów &lt;= 64  
+**AACLC** |1:<br/><br/> - 11025: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> - 12000: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> - 16000: 8 &lt;= szybkości transmisji bitów &lt;32<br/><br/>- 22050: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> - 24000: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> - 32000: 32 &lt;= szybkości transmisji bitów &lt;= 192<br/><br/> - 44100: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 48000: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 88200 : 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 96000 : 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> 2:<br/><br/> - 11025: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> - 12000: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> - 16000: 16 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 22050: 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 24000 : 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 32000:  40 &lt;= szybkości transmisji bitów &lt;= 384<br/><br/> - 44100: 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 48000 : 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 88200: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 96000: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000: 160 &lt;= szybkości transmisji bitów &lt;= 896<br/><br/> - 44100: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 48000: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 88200: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 96000: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 44100 : 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 48000: 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 88200: 896 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 96000: 896 &lt;= szybkości transmisji bitów &lt;= 1024  
+**HEAACV1** |1:<br/><br/> -22050 b: szybkość transmisji bitów = 8<br/><br/> - 24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -88200 b: szybkość transmisji bitów = 64<br/><br/> 2:<br/><br/> - 32000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 44100: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 48000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 88200 : 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 96000: 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 44100: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 48000: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 88200 : 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 96000: 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> 8:<br/><br/> - 32000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 44100: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 48000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 88200: 384 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 96000: 384 &lt;= szybkości transmisji bitów &lt;= 448  
+**HEAACV2** |2:<br/><br/> - 22050: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 88200: 64 &lt;= szybkości transmisji bitów &lt;= 64  
   
 ## <a name="Clip"></a> Klipu
 ### <a name="attributes"></a>Atrybuty
@@ -160,7 +160,7 @@ Audio Codec|Szczegóły
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **FileName** |**xs:String** |Nazwa pliku wyjściowego.<br/><br/> Makra, które opisano w poniższej tabeli można użyć do tworzenia nazw plików wyjściowych. Na przykład:<br/><br/> **"Wyjście": [{"Nazwa_pliku": "{Basename}*{rozpoznawania}* MP4 {szybkości transmisji bitów}", "Format": {"Type": "MP4Format"}}]** |
+| **FileName** |**xs:String** |Nazwa pliku wyjściowego.<br/><br/> Makra, które opisano w poniższej tabeli można użyć do tworzenia nazw plików wyjściowych. Na przykład:<br/><br/> **"Wyjście": [{"Nazwa_pliku": "{Basename} *{rozpoznawania}* MP4 {szybkości transmisji bitów}", "Format": {"Type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makra
 
@@ -180,7 +180,7 @@ Audio Codec|Szczegóły
 
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Rozpocznij** |**xs:String** | |
+| **Start** |**xs:String** | |
 | **Step** |**xs:String** | |
 | **Range** |**xs:String** | |
 | **PreserveResolutionAfterRotation** |**xs:Boolean** |Aby uzyskać szczegółowe informacje na ten temat zobacz następującą sekcję: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |

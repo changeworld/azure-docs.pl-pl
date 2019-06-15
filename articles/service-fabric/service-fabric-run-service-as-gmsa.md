@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837746"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Uruchamianie usługi za pomocą zarządzanego konta usługi grupy
 W klastrze systemu Windows Server autonomiczny można uruchomić usługi jako zarządzanego konta usługi (gMSA) przy użyciu polecenia Uruchom jako zasad grupy.  Domyślnie aplikacje usługi Service Fabric uruchamiana na koncie, zgodną z procesu Fabric.exe. Uruchamianie aplikacji w ramach różnych kont, nawet w środowisku współdzielonym hostowanej sprawia, że jest ich bardziej bezpieczne od siebie nawzajem. Należy pamiętać, że używane są usługi Active Directory w środowisku lokalnym w ramach domeny i nie usługi Azure Active Directory (Azure AD). Za pomocą gMSA, nie ma hasła lub zaszyfrowanego hasła przechowywane w manifeście aplikacji.  Można również uruchomić usługę jako [użytkownika usługi Active Directory lub grupie](service-fabric-run-service-as-ad-user-or-group.md).
 
-Poniższy przykład pokazuje, jak utworzyć konto gMSA, o nazwie *svc-Test$*; sposobu wdrażania tego konta usługi zarządzanej do węzłów klastra; oraz konfigurowania głównej nazwy użytkownika.
+Poniższy przykład pokazuje, jak utworzyć konto gMSA, o nazwie *svc-Test$* ; sposobu wdrażania tego konta usługi zarządzanej do węzłów klastra; oraz konfigurowania głównej nazwy użytkownika.
 
 Wymagania wstępne:
 - Domena musi mieć klucz główny KDS.

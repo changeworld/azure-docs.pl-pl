@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
 ms.openlocfilehash: 361d7683790128aafb11d6581c6e672b68ad893f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609219"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web IaaS dla PCI DSS
@@ -50,7 +50,7 @@ To rozwiązanie korzysta z poniższych usług platformy Azure. Szczegóły archi
 - Azure Security Center
 - Azure Storage
     - (7) konta dla magazynu geograficznie nadmiarowego
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) zarządzania/bastionu (Windows Server 2016 Datacenter)
     - (2) usługi active Directory kontrolera domeny (Windows Server 2016 Datacenter)
     - (2) węzeł klastra programu SQL Server (SQL Server 2017 w systemie Windows Server 2016)
@@ -90,7 +90,7 @@ Każdej z tych podsieci ma dedykowanej grupy zabezpieczeń sieci:
 - 1 sieciowej grupy zabezpieczeń dla serwerów SQL i monitor w chmurze (SQLNSG)
 - Grupa 1 zabezpieczeń sieci dla warstwy internetowej (WEBNSG)
 
-### <a name="data-in-transit"></a>Przesyłane dane
+### <a name="data-in-transit"></a>Dane przesyłane
 
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Ponadto wszystkie transakcje w usłudze Azure Storage za pośrednictwem witryny Azure portal występować za pośrednictwem protokołu HTTPS.
 

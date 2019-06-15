@@ -11,10 +11,10 @@ ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
 ms.openlocfilehash: 5f82c654b443d58c9ce38c2fb0f48c1654daeb34
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922249"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu protokołu SSH i Azure Logic Apps
@@ -92,14 +92,14 @@ Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i ł
 
 1. Puste logic apps, w polu wyszukiwania wprowadź "sftp ssh" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-   — lub —
+   —lub—
 
    Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**. 
    W polu wyszukiwania wpisz "sftp ssh" jako filtr. 
    W obszarze listy akcji wybierz akcję, którą chcesz.
 
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 1. Podaj odpowiednie szczegóły połączenia.
 
@@ -138,7 +138,7 @@ Jeśli wyzwalacz wykryje nowy plik, wyzwalacz sprawdzi, czy nowy plik jest pełn
 
 Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz pliki większe niż 15 MB. Aby pobrać pliki większe niż 15 MB, należy korzystać z tego wzoru: 
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
 * Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -154,7 +154,7 @@ Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, gdy plik zostan
 
 Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz pliki większe niż 15 MB. Aby pobrać pliki większe niż 15 MB, należy korzystać z tego wzoru: 
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
 * Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -166,7 +166,7 @@ Ta akcja pobiera zawartość z pliku na serwer SFTP. Na przykład można dodać 
 
 Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz pliki większe niż 15 MB. Aby pobrać pliki większe niż 15 MB, należy korzystać z tego wzoru: 
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)** .
 
 * Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 

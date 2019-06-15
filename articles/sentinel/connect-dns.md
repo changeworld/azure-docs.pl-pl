@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 6429568b33ece3ed4f26614e55e8c3069dd65d71
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204404"
 ---
 # <a name="connect-your-domain-name-server"></a>Połączyć swój serwer nazwy domeny
@@ -51,7 +51,7 @@ Połączenie DNS odbywa się przez zainstalowanie agenta na komputerze DNS. Agen
 
 2. Jeśli maszyna DNS nie jest w Maszynie wirtualnej platformy Azure:
     1. Kliknij przycisk **Pobierz i zainstaluj agenta maszyn nienależących do platformy Azure Windows**.
-    1. W **agent bezpośredni** okna, wybierz opcję **Pobierz Windows agent (64-bitowy)** lub **Pobierz Windows agent (32-bitowa)**.
+    1. W **agent bezpośredni** okna, wybierz opcję **Pobierz Windows agent (64-bitowy)** lub **Pobierz Windows agent (32-bitowa)** .
     1. Zainstaluj agenta na komputerze DNS. Kopiuj **identyfikator obszaru roboczego**, **klucza podstawowego**, i **klucz pomocniczy** i korzystania z nich po wyświetleniu monitu podczas instalacji.
 
 3. Aby użyć odpowiednich schematu w usłudze Log Analytics dla dzienników DNS, możesz wyszukać **DnsEvents**.

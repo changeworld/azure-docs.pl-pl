@@ -13,17 +13,17 @@ ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60899293"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Telemetria śledzenia usługi: Model danych usługi Application Insights
 
 Śledzenie danych telemetrycznych (w [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentuje `printf` stylu instrukcji śledzenia, które są przeszukiwane tekstu. `Log4Net`, `NLog`, i innych wpisy w pliku tekstowym dziennika są tłumaczone na wystąpień tego typu. Śledzenie nie ma miar jako rozszerzalności.
 
-## <a name="message"></a>Komunikat
+## <a name="message"></a>Message
 
 Komunikat śledzenia.
 

@@ -3,16 +3,16 @@ title: Pojęcia dotyczące urządzeń w aprowizacji urządzeń na platformie Azu
 description: W tym artykule opisano specyficzne dla urządzeń z usługą Device Provisioning i IoT Hub koncepcje dotyczące aprowizacji urządzeń
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60745982"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Pojęcia dotyczące urządzeń IoT Hub Device Provisioning Service

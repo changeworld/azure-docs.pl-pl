@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61434107"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie protokołu SSL dla aplikacji na platformie Azure
@@ -40,7 +40,7 @@ Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL 
 
 * Certyfikat musi zawierać klucz prywatny.
 * Certyfikat musi zostać utworzona na potrzeby wymiany kluczy, który można eksportować do pliku wymiany informacji osobistych (pfx).
-* Nazwa podmiotu certyfikatu musi odpowiadać domena używana do uzyskania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Należy uzyskać niestandardową nazwę domeny do użycia podczas dostęp do usługi. Gdy w przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardowej nazwy domeny umożliwia dostęp do Twoich aplikacji. Na przykład, jeśli nazwa domeny niestandardowej jest **contoso.com** może zażądać certyfikatu z urzędu certyfikacji dla ***. contoso.com** lub **www\.contoso.com**.
+* Nazwa podmiotu certyfikatu musi odpowiadać domena używana do uzyskania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Należy uzyskać niestandardową nazwę domeny do użycia podczas dostęp do usługi. Gdy w przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardowej nazwy domeny umożliwia dostęp do Twoich aplikacji. Na przykład, jeśli nazwa domeny niestandardowej jest **contoso.com** może zażądać certyfikatu z urzędu certyfikacji dla * **. contoso.com** lub **www\.contoso.com**.
 * Certyfikat należy użyć co najmniej szyfrowanie 2048-bitowe.
 
 Do celów testowych możesz [tworzenie](cloud-services-certs-create.md) i używania certyfikatu z podpisem własnym. Certyfikat z podpisem własnym nie został uwierzytelniony przy użyciu urzędu certyfikacji i przy użyciu domeny cloudapp.net jako adres URL witryny sieci Web. Na przykład następujące zadanie używa certyfikatu z podpisem własnym jest nazwa pospolita (CN) użyta w certyfikacie **sslexample.cloudapp.net**.

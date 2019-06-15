@@ -11,10 +11,10 @@ ms.topic: hub-page
 ms.date: 01/29/2019
 ms.author: magoedte
 ms.openlocfilehash: ced88f973ff26f7c8990c1c80bf8532949ef9ae8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60640110"
 ---
 <div id="main" class="v2">
@@ -112,7 +112,7 @@ ms.locfileid: "60640110"
                                                             <a href="/azure/azure-monitor/platform/data-sources-json">Niestandardowe dane JSON</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-collectd">Zebrane dane wydajności</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix">Alerty programów Nagios i Zabbix</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-sources-syslog">Dziennik systemu</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources-syslog">Syslog</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-iis-logs">Dzienniki usług IIS</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-custom-logs">Niestandardowe dzienniki</a><br/>
                                                             <a href="/azure/azure-monitor/platform/custom-fields">Niestandardowe pola</a><br/>

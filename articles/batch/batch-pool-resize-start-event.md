@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 63abeaca5a9c87945671e79a9c8d7a2512d0d777
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60774237"
 ---
 # <a name="pool-resize-start-event"></a>Zdarzenie rozpoczęcia zmiany rozmiaru puli
@@ -36,7 +36,7 @@ ms.locfileid: "60774237"
 }
 ```
 
-|Element|Type|Uwagi|
+|Element|Typ|Uwagi|
 |-------------|----------|-----------|
 |poolId|String|Identyfikator puli.|
 |nodeDeallocationOption|String|Określa, kiedy węzłów może zostać usunięty z puli, jeśli zmniejsza się rozmiar puli.<br /><br /> Możliwe wartości:<br /><br /> **ponownego dodania do kolejki** — Zakończ uruchomione zadania podrzędne i umieścić je. Zadania zostaną uruchomione ponownie, gdy zadanie jest włączone. Usuwanie węzłów, tak szybko, jak zadania zostaną zakończone.<br /><br /> **Zakończenie** — Zakończ uruchomione zadania podrzędne. Zadania nie zostaną uruchomione ponownie. Usuwanie węzłów, tak szybko, jak zadania zostaną zakończone.<br /><br /> **taskcompletion** — Zezwalaj na aktualnie wykonywanych zadań do wykonania. Nie planuj nowych zadań podczas oczekiwania. Usuwanie węzłów, gdy wszystkie zadania zostały ukończone.<br /><br /> **Retaineddata** — Zezwalaj na aktualnie wykonywanych zadań do wykonania, a następnie zaczekaj na zakończenie wszystkich zadań okresów przechowywania danych wygaśnie. Nie planuj nowych zadań podczas oczekiwania. Usuwanie węzłów, gdy wygasły wszystkich okresów przechowywania zadań.<br /><br /> Wartość domyślna to ponownego dodania do kolejki.<br /><br /> Jeśli jest zwiększenie rozmiaru puli, a następnie wartość jest równa **nieprawidłowy**.|

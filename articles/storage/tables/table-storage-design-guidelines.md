@@ -2,18 +2,17 @@
 title: Wskazówki dotyczące usługi Azure storage table projekt | Dokumentacja firmy Microsoft
 description: Projektowanie usługi Azure table, aby efektywnie obsługiwać operacje odczytu.
 services: storage
-author: WenJason
+author: SnehaGunda
 ms.service: storage
 ms.topic: article
-origin.date: 04/23/2018
-ms.date: 12/10/2018
-ms.author: v-jay
-ms.component: tables
+ms.date: 04/23/2018
+ms.author: sngun
+ms.subservice: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269851"
 ---
 # <a name="guidelines-for-table-design"></a>Wytyczne dotyczące projektu tabel

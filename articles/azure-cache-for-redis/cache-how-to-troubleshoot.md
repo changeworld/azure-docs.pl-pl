@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
 ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60830011"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usługi Redis
@@ -202,12 +202,12 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
 | --- | --- |
 | instrukcje powrotu |W ostatnim przedziału czasu: 0 polecenia zostały wydane. |
 | mgr |Działania Menedżera gniazda `socket.select`, co oznacza, że jest zapytaniem systemu operacyjnego w celu wskazania gniazda, które ma coś zrobić. Czytnik nie jest aktywnie odczytu z sieci, ponieważ on nie wydaje się, że jest coś zrobić |
-| kolejka |Istnieją 73 łączna liczba operacji w toku |
+| queue |Istnieją 73 łączna liczba operacji w toku |
 | qu |6 operacji w toku znajdują się w kolejce niewysłane i jeszcze nie zostały zapisane do sieciowego ruchu wychodzącego |
 | qs |67 operacji w toku zostały wysłane do serwera, ale odpowiedź nie jest jeszcze dostępna. Odpowiedzi mogą być `Not yet sent by the server` lub `sent by the server but not yet processed by the client.` |
 | qc |Zauważyliśmy już odpowiedzi na 0 lub operacji w toku, ale jeszcze nie zostało oznaczone jako ukończone, ponieważ czeka na zakończenie pętli |
 | wr |Ma aktywnego modułu zapisującego (co oznacza, że 6 niewysłane żądania nie są ignorowane) bajty/activewriters |
-| wejście |Nie ma żadnych aktywnych czytelników i zero bajtów dostępnych do odczytu na NIC bajty/activereaders |
+| W |Nie ma żadnych aktywnych czytelników i zero bajtów dostępnych do odczytu na NIC bajty/activereaders |
 
 ### <a name="steps-to-investigate"></a>Kroki, aby zbadać
 

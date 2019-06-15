@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956934"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108884"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co to jest Azure Active Directory Identity Protection (odświeżane)?
 
@@ -56,7 +56,7 @@ Aby odpowiedzieć na te zagrożenia, Azure AD Identity Protection umożliwia:
 
  
 
-Usługa Azure AD Identity Protection to funkcja usługi Azure Active Directory Premium P2, która umożliwia skonfigurowanie zasad, automatycznie odpowiadać, jeśli zostanie naruszony tożsamości użytkownika lub gdy ktoś jest inne niż właściciel konta próbuje zalogować się przy użyciu ich tożsamość. Te zasady, oprócz innymi kontrolami dostępu warunkowego, udostępniane przez usługę Azure AD można albo automatycznie Blokuj dostęp i działania łagodzące inicjowania, takie jak resetowanie haseł lub wymuszanie uwierzytelniania wieloskładnikowego. Ponadto Identity Protection udostępnia możliwości monitorowania i raportowania w celu uzyskania bardziej szczegółowych informacji o podwyższonym ryzyku i potencjalnych kompromisów w Twojej organizacji. 
+Usługa Azure AD Identity Protection to funkcja usługi Azure Active Directory Premium P2, która umożliwia skonfigurowanie zasad, automatycznie odpowiadać, jeśli zostanie naruszony tożsamości użytkownika lub gdy ktoś jest inne niż właściciel konta próbuje zalogować się przy użyciu ich tożsamość. Te zasady, oprócz innych kontrolek dostępu warunkowego, dostarczone przez usługę Azure AD, albo można automatycznie Blokuj dostęp lub działania łagodzące inicjowania, takie jak resetowanie haseł lub wymuszanie uwierzytelniania wieloskładnikowego. Ponadto Identity Protection udostępnia możliwości monitorowania i raportowania w celu uzyskania bardziej szczegółowych informacji o podwyższonym ryzyku i potencjalnych kompromisów w Twojej organizacji. 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
@@ -69,11 +69,11 @@ Usługa Azure AD Identity Protection wykrywa następujące zdarzenia o podwyższ
 
 | Typ zdarzenia o podwyższonym ryzyku | Opis | Typ wykrywania |
 | ---             | ---         | ---            |
-| Nietypowa podróż | Zaloguj się z nietypowych lokalizacji oparte na ostatnich operacji logowania użytkownika. | Offline |
-| Anonimowy adres IP | Zaloguj się za pomocą anonimowego adresu IP (na przykład: Tor przeglądarki, anonymizer sieci VPN). | Czas rzeczywisty |
-| Nieznane właściwości logowania | Zaloguj się przy użyciu właściwości, które nie okazały z ostatnio dla danego użytkownika. | Czas rzeczywisty |
-| Adres IP połączony ze złośliwym oprogramowaniem | Zaloguj się za pomocą adresu IP połączone złośliwego oprogramowania | Offline |
-| Ujawnione poświadczenia | To zdarzenie ryzyka wskazuje, że ujawniono prawidłowe poświadczenia użytkownika | Offline |
+| Nietypowa podróży | Zaloguj się z nietypowych lokalizacji oparte na ostatnich operacji logowania użytkownika. | Offline |
+| Anonimowego adresu IP | Zaloguj się za pomocą anonimowego adresu IP (na przykład: Tor przeglądarki, anonymizer sieci VPN). | W czasie rzeczywistym |
+| Nieznane właściwości logowania | Zaloguj się przy użyciu właściwości, które nie okazały z ostatnio dla danego użytkownika. | W czasie rzeczywistym |
+| Złośliwe oprogramowanie połączone adresu IP | Zaloguj się za pomocą adresu IP połączone złośliwego oprogramowania | Offline |
+| Ujawnione poświadczenia | To zdarzenie o podwyższonym ryzyku oznacza, że prawidłowe poświadczenia użytkownika zostały ujawnione | Offline |
 
 
 
@@ -153,7 +153,7 @@ Spójrzmy na przykład pracownik firmy Contoso.
 
 2. Usługa Azure AD wykryje, że pracownik loguje się z anonimowego adresu IP, wyzwalając poziomu średniego ryzyka logowania. 
 
-3. Pracownik jest kwestionowana przez wiersz MFA, ponieważ administrator IT firmy Contoso skonfigurowane zasady dostępu warunkowego ryzyka logowania Identity Protection. Zasady wymagają usługi MFA na ryzyko logowania o średnim lub nowszej. 
+3. Pracownik jest kwestionowana przez wiersz MFA, ponieważ administrator IT firmy Contoso skonfigurowany Identity Protection ryzyka logowania zasady dostępu warunkowego. Zasady wymagają usługi MFA na ryzyko logowania o średnim lub nowszej. 
 
 4. Pracownik przekazuje wiersza MFA i uzyskuje dostęp do usługi Exchange Online, a ich poziom ryzyka użytkownika nie jest zmieniany. 
 
@@ -212,11 +212,11 @@ Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w u
 
 | Możliwości | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Podstawowa/bezpłatne usługi Azure AD |
 | --- | --- | --- | --- |
-| Zasady dotyczące ryzyka związanego z użytkownikiem | Tak | Nie | Nie |
-| Zasady dotyczące ryzyka związanego z logowaniem | Tak | Nie | Nie |
+| Zasady dotyczące ryzyka związanego z użytkownika | Tak | Nie | Nie |
+| Zasady ryzyka logowania | Tak | Nie | Nie |
 | Raport ryzykownych użytkowników | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
 | Raport dotyczący ryzykownych logowań | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
-| Zasady rejestracji w usłudze MFA | Tak | Nie | Nie |
+| Zasady rejestracji usługi MFA | Tak | Nie | Nie |
 
 
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704585"
 ---
 # <a name="use-firewall-rules"></a>Użyj reguł zapory
@@ -54,7 +54,7 @@ Reguły filtrowania adresów IP są stosowane w kolejności i pierwszej reguły,
 > - Azure Data Explorer
 >
 > Poniżej Microsoft usług są wymagane w sieci wirtualnej
-> - Azure App Service
+> - Usługa Azure App Service
 > - Azure Functions
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie wirtualnej sieci i reguła zapory przy użyciu szablonów usługi Azure Resource Manager
@@ -72,7 +72,7 @@ Parametry szablonu:
 > Choć Brak reguł odmowy, możliwe, szablon usługi Azure Resource Manager jest domyślna akcja równa **"Zezwalaj"** która nie stanowi ograniczenia połączeń.
 > Podczas tworzenia reguł sieci wirtualnej lub zapory, możemy zmienić ***"defaultAction"***
 > 
-> z
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
 ms.openlocfilehash: 16e0bdfa0fc70d5239cb4127e61891a013bf54a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615897"
 ---
 # <a name="azure-consumption-api-overview"></a>Użycie platformy Azure, interfejsu API — Przegląd 
@@ -109,7 +109,7 @@ Ten interfejs API obejmuje:
 
 -   **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) lub [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić, które Użytkownicy lub aplikacje mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure. 
 -   **Filtrowanie** — Dostosowywanie wyników zalecenie przy użyciu następujących filtrów:
-    - Zakres
+    - Scope
     - Okres Lookback
 -   **Informacje o rezerwacji dla typów inną ofertę** — informacje o rezerwacji jest obecnie dostępna dla klientów korzystających z przedsiębiorstwa i bezpośredni klienci sieci Web.
 

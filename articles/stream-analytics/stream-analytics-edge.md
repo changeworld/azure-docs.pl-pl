@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 4/2/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60803977"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
  
-Usługa Azure Stream Analytics (ASA) na usługi IoT Edge umożliwia deweloperom wdrażanie niemal w czasie rzeczywistym bliżej analitycznych analizy na urządzeniach IoT, dzięki czemu mogą odblokować pełną wartość danych generowanych przez urządzenie. Usługę Azure Stream Analytics zaprojektowano pod kątem małych opóźnień, odporności, wydajnego wykorzystywania przepustowości i zgodności. Przedsiębiorstwom teraz wdrożyć logiki formantu blisko operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
+Usługa Azure Stream Analytics (ASA) na usługi IoT Edge umożliwia deweloperom wdrażanie niemal w czasie rzeczywistym bliżej analitycznych analizy na urządzeniach IoT, dzięki czemu mogą odblokować pełną wartość danych generowanych przez urządzenie. Usługa Azure Stream Analytics jest przeznaczona dla małych opóźnień, odporności, efektywne wykorzystanie przepustowości i zgodności. Przedsiębiorstwom teraz wdrożyć logiki formantu blisko operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
 
 Azure Stream Analytics w usłudze IoT Edge jest uruchamiany w ramach [usługi Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) framework. Po utworzeniu zadania w ASA można wdrażać i zarządzać nią za pomocą usługi IoT Hub.
 

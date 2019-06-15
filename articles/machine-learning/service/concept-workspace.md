@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 2f3d9eeca1404fcae121ae5fead222cbde4037b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388953"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059263"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co to jest obszar roboczy usługi Azure Machine Learning?
 
@@ -32,16 +32,16 @@ Na diagramie przedstawiono następujące składniki obszaru roboczego:
 
 + Obszar roboczy może zawierać [maszyn wirtualnych z notesu](quickstart-run-cloud-notebook.md), zasobów skonfigurowano środowisko Python niezbędne do uruchomienia usługi Azure Machine Learning w chmurze.
 + [Role użytkowników](how-to-assign-roles.md) umożliwiają udostępnianie obszaru roboczego innym użytkownikom, zespoły lub projekty.
-+ [Celów obliczeń](concept-azure-machine-learning-architecture.md#compute-target) są używane do uruchamiania eksperymentów.
++ [Celów obliczeń](concept-azure-machine-learning-architecture.md#compute-targets) są używane do uruchamiania eksperymentów.
 + Po utworzeniu obszaru roboczego [zasoby skojarzone z](#resources) są również tworzone dla Ciebie.
-+ [Eksperymenty](concept-azure-machine-learning-architecture.md#experiment) są przebiegów szkoleniowych, które umożliwia tworzenie modeli.  Możesz tworzyć i uruchamiać eksperymenty z
++ [Eksperymenty](concept-azure-machine-learning-architecture.md#experiments) są przebiegów szkoleniowych, które umożliwia tworzenie modeli.  Możesz tworzyć i uruchamiać eksperymenty z
     + [Usługi Azure Machine Learning zestawu SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
     + [Zautomatyzowane eksperymenty uczenia maszynowego (wersja zapoznawcza)](how-to-create-portal-experiments.md) sekcji w witrynie Azure portal.
     + [Interfejs graficzny (wersja zapoznawcza)](ui-concept-visual-interface.md).
-+ [Potoki](concept-azure-machine-learning-architecture.md#pipeline) są przepływów danych wielokrotnego użytku celów szkoleniowych i ponownego szkolenia modelu.
-+ [Zestawy danych](concept-azure-machine-learning-architecture.md#dataset) pomoc w zarządzaniu danych używasz do tworzenia potoku i szkolenie modelu.
-+ Po utworzeniu modelu, którą chcesz wdrożyć, możesz utworzyć [zarejestrowanego modelu](concept-azure-machine-learning-architecture.md#model-registry).
-+ Umożliwia tworzenie zarejestrowanego modelu i skrypt oceniania [wdrożenia](concept-azure-machine-learning-architecture.md#image-registry).
++ [Potoki](concept-azure-machine-learning-architecture.md#ml-pipelines) są przepływów danych wielokrotnego użytku celów szkoleniowych i ponownego szkolenia modelu.
++ [Zestawy danych](concept-azure-machine-learning-architecture.md#datasets-and-datastores) pomoc w zarządzaniu danych używasz do tworzenia potoku i szkolenie modelu.
++ Po utworzeniu modelu, który chcesz wdrożyć, utworzysz zarejestrowanego modelu.
++ Umożliwia tworzenie zarejestrowanego modelu i skrypt oceniania [wdrożenia](concept-azure-machine-learning-architecture.md#deployment).
 
 ## <a name="tools-for-workspace-interaction"></a>Narzędzia do interakcji z obszaru roboczego
 

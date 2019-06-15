@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61448133"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Wizualizuj dane monitorowania zdalnego, za pomocą usługi Power BI
@@ -42,7 +42,7 @@ Ten samouczek przeprowadzi Cię jak monit o podłączenie dane rozwiązanie moni
 
 5. W panelu po lewej stronie kliknij sekcję "Klucze" i zwróć uwagę na następujące wartości do użycia w usłudze Power BI:
 
-   - URI
+   - Identyfikator URI
    - Klucz podstawowy
 
      ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
@@ -59,7 +59,7 @@ Ten samouczek przeprowadzi Cię jak monit o podłączenie dane rozwiązanie moni
   
 3. Wprowadź informacje, które zostały zarejestrowane powyżej:
 
-    * URI
+    * Identyfikator URI
     * Klucz podstawowy
 
 4. Zaznacz wszystkie tabele do zaimportowania do usługi Power BI. Ta akcja spowoduje uruchomienie ładowania danych. Już rozwiązania zostały uruchomione, tym dłużej może potrwać danych do załadowania (do kilku godzin). 

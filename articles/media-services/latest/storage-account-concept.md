@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/11/2019
 ms.author: juliako
 ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65550143"
 ---
 # <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
@@ -54,14 +54,14 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 
 ## <a name="storage-account-errors"></a>Błędy konta magazynu
 
-Stan "Disconnected" dla konta usługi Media Services wskazuje, że konto ma już dostęp do jednego lub większej liczby kont dołączonego magazynu z powodu zmiany kluczy dostępu do magazynu. Klucze dostępu do magazynu aktualne są wymagane przez usługę Media Services do wykonywania wielu zadań w ramach konta.
+Stan „odłączone” dla konta usługi Media Services wskazuje, że konto nie ma już dostępu do co najmniej jednego dołączonego konta magazynu z powodu zmiany kluczy dostępu do magazynu. Aktualne klucze dostępu do magazynu są wymagane przez usługę Media Services do wykonywania wielu zadań na koncie.
 
-Poniżej przedstawiono podstawowe scenariusze, które mogłyby spowodować konto usługi Media Services nie mają dostępu do kont magazynu dołączone. 
+Poniżej przedstawiono podstawowe scenariusze, które mogłyby spowodować, że konto usługi Media Services nie będzie mieć dostępu do dołączonych kont magazynu. 
 
 |Problem|Rozwiązanie|
 |---|---|
-|Konto usługi Media Services lub kont magazynu dołączone zostały poddane migracji do oddzielania subskrypcji. |Migrowanie kont magazynu lub konta usługi Media Services, aby były one w tej samej subskrypcji. |
-|Konto usługi Media Services używa dołączone konto magazynu w innej subskrypcji, jak konto usługi Media Services wczesne gdzie to obsługiwane. Wszystkie wcześniejsze konta usługi Media Services zostały przekonwertowane na nowoczesnych konta platformy Azure zasoby Manager (ARM) na podstawie, zostanie rozłączony. |Migruj konto magazynu lub konta usługi Media Services, aby były one w tej samej subskrypcji.|
+|Konto usługi Media Services lub dołączone konta magazynu zostały poddane migracji do oddzielnych subskrypcji. |Przeprowadź migrację kont magazynu lub konta usługi Media Services, aby wszystkie były w tej samej subskrypcji. |
+|Konto usługi Media Services używa dołączonego konta magazynu w innej subskrypcji, ponieważ było to wcześniejsze konto usługi Media Services, na którym było to obsługiwane. Wszystkie wcześniejsze konta usługi Media Services zostały przekonwertowane na nowoczesne konta platformy Azure Resource Manager (ARM) i są w stanie „odłączone”. |Przeprowadź migrację kont magazynu lub konta usługi Media Services, aby wszystkie były w tej samej subskrypcji.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

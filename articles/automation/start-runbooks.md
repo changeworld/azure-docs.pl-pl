@@ -10,17 +10,17 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60880197"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Uruchamianie elementu runbook w usłudze Azure Automation
 
 Poniższa tabela pozwala określić metodę, aby uruchomić element runbook w usłudze Azure Automation, która jest najbardziej odpowiednie dla danego scenariusza. Ten artykuł zawiera szczegółowe informacje na temat uruchamianie elementu runbook za pomocą witryny Azure portal i za pomocą programu Windows PowerShell. Szczegółowe informacje na temat innych metod znajdują się w dokumentacji, która z poniższych linków.
 
-| **Metoda** | **Właściwości** |
+| **— Metoda** | **Właściwości** |
 | --- | --- |
 | [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Najprostszą metodą przy użyciu interfejsu użytkownika interaktywnego.<br> <li>Formularz, aby podać wartości parametrów proste.<br> <li>Łatwo śledzić stan zadania.<br> <li>Dostęp uwierzytelniony przy użyciu konta platformy Azure w. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell.<br> <li>Mogą być dołączane zautomatyzowane rozwiązanie z wielu kroków.<br> <li>Żądanie jest uwierzytelniane za pomocą certyfikatu lub użytkownika OAuth głównej / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone.<br> <li>Śledzić stan zadania.<br> <li>Oprogramowanie klienckie wymagane do obsługi poleceń cmdlet programu PowerShell. |
@@ -84,7 +84,7 @@ Usługa sieci web usługi Azure Automation zawiera specjalne funkcje dotyczące 
 
 ### <a name="named-values"></a>Nazwane wartości
 
-Jeśli parametr jest typem danych [object], wówczas można użyć następującego formatu JSON do wysłania listy nazwanych wartości: *{Name1: "Wartość1", Nazwa2: "Wartość2", nazwa3: 'Wartość3'}*. Te wartości muszą być typu prostego. Element runbook otrzymuje jako parametr [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) z właściwościami, które odpowiadają każdej nazwanej wartości.
+Jeśli parametr jest typem danych [object], wówczas można użyć następującego formatu JSON do wysłania listy nazwanych wartości: *{Name1: "Wartość1", Nazwa2: "Wartość2", nazwa3: 'Wartość3'}* . Te wartości muszą być typu prostego. Element runbook otrzymuje jako parametr [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) z właściwościami, które odpowiadają każdej nazwanej wartości.
 
 Rozważmy następujący tekstowy element runbook, który akceptuje parametr o nazwie użytkownika.
 
@@ -121,7 +121,7 @@ Smith
 
 ### <a name="arrays"></a>Tablice
 
-Jeśli parametr jest tablicą, taką jak [array] lub [string []], wówczas można użyć następującego formatu JSON do wysłania listy wartości: *[Wartość1, wartość2, Wartość3]*. Te wartości muszą być typu prostego.
+Jeśli parametr jest tablicą, taką jak [array] lub [string []], wówczas można użyć następującego formatu JSON do wysłania listy wartości: *[Wartość1, wartość2, Wartość3]* . Te wartości muszą być typu prostego.
 
 Rozważmy następujący tekstowy element runbook, który akceptuje parametr o nazwie *użytkownika*.
 

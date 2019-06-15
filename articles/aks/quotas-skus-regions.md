@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: iainfou
 ms.openlocfilehash: 8d4ed8f791858747814972bcf16a9672a7f12610
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65901454"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Limity przydziału, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionów w usłudze Azure Kubernetes Service (AKS)
@@ -45,7 +45,7 @@ Każdy węzeł w klastrze AKS zawiera ustaloną ilość zasobów obliczeniowych,
 
 Aby uzyskać więcej informacji o typach maszyn wirtualnych i ich zasoby obliczeniowe, zobacz [rozmiary maszyn wirtualnych na platformie Azure][vm-skus].
 
-## <a name="region-availability"></a>Dostępność regionalna
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Najbardziej aktualną listę, gdzie można wdrożyć i uruchamiaj klastry, zobacz [dostępność w poszczególnych regionach AKS][region-availability].
 

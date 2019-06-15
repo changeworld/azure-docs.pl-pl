@@ -17,10 +17,10 @@ ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: ab04d1288eb3a851774128b8aaaae03868c2ffa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60839015"
 ---
 # <a name="azure-app-service-plan-overview"></a>Omówienie planu usługi Azure App Service
@@ -81,7 +81,7 @@ Z wyjątkiem **bezpłatna** warstwy, plan usługi App Service niesie ze sobą op
 - W **Shared** warstwy, każda aplikacja odbiera przydziału minut procesora CPU, więc _każdej aplikacji_ jest naliczana co godzinę dla limitu przydziału procesora CPU.
 - W dedykowanym obliczeniowych warstwy (**podstawowe**, **standardowa**, **Premium**, **PremiumV2**), plan usługi App Service definiuje liczbę maszyn wirtualnych wystąpienia, które aplikacje są skalowane, dzięki czemu _każdego wystąpienia maszyny Wirtualnej_ w usłudze App Service plan ma opłata za godziny. Te wystąpienia maszyn wirtualnych są rozliczane według tych samych aplikacji niezależnie od tego, ile działają na nich. Aby uniknąć nieoczekiwanych opłat, zobacz [wyczyścić plan usługi App Service](app-service-plan-manage.md#delete).
 - W **izolowany** warstwy, środowisko usługi App Service definiuje liczbę izolowane pracowników w swoje aplikacje i _każdemu procesowi roboczemu_ jest naliczana co godzinę. Ponadto, istnieje co godzinę opłata podstawowa za usługę App Service Environment sam. 
-- (Tylko w przypadku funkcji platformy azure) **Zużycie** warstwy dynamicznie przydziela wystąpień maszyn wirtualnych do obsługi obciążenia aplikacji funkcji i jest naliczana dynamicznie na sekundę przez platformę Azure. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+- (Tylko w przypadku funkcji platformy azure) **Zużycie** warstwy dynamicznie przydziela wystąpień maszyn wirtualnych do obsługi obciążenia aplikacji funkcji i jest naliczana dynamicznie na sekundę przez platformę Azure. Aby uzyskać więcej informacji, zobacz [cennika usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 Nie jest naliczana za korzystanie z funkcji usługi App Service, które są dostępne dla użytkownika (Konfigurowanie domen niestandardowych, certyfikaty SSL, miejsc wdrożenia, kopie zapasowe itp.). Dostępne są następujące wyjątki:
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
 ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336521"
 ---
 # <a name="similarity-method"></a>Metoda podobieństwa
@@ -31,8 +31,8 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 
 Parametr        |Typ danych      |Wymagane | Opis
 ----------|----------|----------|------------
-**s1**        |String   |Yes  |Ciąg * do porównania
-**s2**        |String   |Yes  |Ciąg * do porównania
+**s1**        |String   |Tak  |Ciąg * do porównania
+**s2**        |String   |Tak  |Ciąg * do porównania
 
 <sub> * Ciągi do porównania ma maksymalną długość 1MB. </sub>
 <br>
@@ -47,12 +47,12 @@ Name (Nazwa) | Opis
 
 ## <a name="successerror-conditions"></a>Powodzenie/warunków błędów
 
-Stan HTTP | Przyczyna | Odpowiedź
+Stan HTTP | Reason | Odpowiedź
 -----------|----------|--------
 **200**         |Powodzenie | Liczba zmiennoprzecinkowa
 **400**         | Nieprawidłowe żądanie lub nieprawidłowe żądanie | Komunikat o błędzie      
 **500**         |Wewnętrzny błąd serwera | Komunikat o błędzie
-**Upłynął limit czasu**     | Upłynął limit czasu żądania.  | Komunikat o błędzie
+**Upłynął limit czasu**     | Przekroczono limit czasu żądania.  | Komunikat o błędzie
 
 <br>
 

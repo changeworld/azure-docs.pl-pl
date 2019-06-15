@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60598273"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Proces instalacji usługi mobilności z System Center Configuration Manager
@@ -192,7 +192,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 1. W konsoli programu Configuration Manager, kliknij prawym przyciskiem myszy pakiet, a następnie wybierz **Dystrybuuj zawartość**.
    ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Wybierz **[punktów dystrybucji](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** , do którego powinny zostać skopiowane pakiety.
-3. Wykonaj kroki kreatora. Pakiet uruchamia następnie replikowanie do określonych punktów dystrybucji.
+3. Ukończ pracę kreatora. Pakiet uruchamia następnie replikowanie do określonych punktów dystrybucji.
 4. Po zakończeniu dystrybucji pakietu, kliknij prawym przyciskiem myszy pakiet, a wybierz **Wdróż**.
    ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Wybierz kolekcję urządzeń systemu Windows Server utworzoną w sekcji wymagania wstępne jako kolekcję docelową dla wdrożenia.
@@ -210,7 +210,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 > [!TIP]
 > Aby uniknąć niepotrzebnego ponownego uruchamiania, należy zaplanować instalacji pakietu aktualizacji podczas Twojej comiesięcznej konserwacji lub okna aktualizacji oprogramowania.
 
-Postęp wdrażania można monitorować za pomocą konsoli programu Configuration Manager. Przejdź do **monitorowanie** > **wdrożeń** > *[nazwa Twojego pakietu]*.
+Postęp wdrażania można monitorować za pomocą konsoli programu Configuration Manager. Przejdź do **monitorowanie** > **wdrożeń** >  *[nazwa Twojego pakietu]* .
 
   ![Zrzut ekranu programu Configuration Manager opcję, aby monitorować wdrożenia](./media/vmware-azure-mobility-install-configuration-mgr/report.PNG)
 
@@ -415,7 +415,7 @@ cd /tmp
 1. W konsoli programu Configuration Manager, kliknij prawym przyciskiem myszy pakiet, a następnie wybierz **Dystrybuuj zawartość**.
    ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Wybierz **[punktów dystrybucji](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** , do którego powinny zostać skopiowane pakiety.
-3. Wykonaj kroki kreatora. Pakiet uruchamia następnie replikowanie do określonych punktów dystrybucji.
+3. Ukończ pracę kreatora. Pakiet uruchamia następnie replikowanie do określonych punktów dystrybucji.
 4. Po zakończeniu dystrybucji pakietu, kliknij prawym przyciskiem myszy pakiet, a wybierz **Wdróż**.
    ![Zrzut ekranu programu Configuration Manager console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Wybierz kolekcję urządzeń Linux Server utworzoną w sekcji wymagania wstępne jako kolekcję docelową dla wdrożenia.

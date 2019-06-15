@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424661"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wiele zasobów usługi Azure Monitor Application Insights 
@@ -103,14 +103,14 @@ W poniższej tabeli przedstawiono różnice w schemacie między usługi Log Anal
 | ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | : ItemCount |
-| AvailabilityDuration | czas trwania |
+| AvailabilityDuration | Czas trwania |
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
 | Przeglądarka | client_browser |
-| Miasto | client_city |
+| Miejscowość | client_city |
 | ClientIP | client_IP |
 | Computer (Komputer) | cloud_RoleInstance | 
 | Kraj | client_CountryOrRegion | 
@@ -127,11 +127,11 @@ W poniższej tabeli przedstawiono różnice w schemacie między usługi Log Anal
 | OperationName | operation_Name | 
 | System operacyjny | client_OS | 
 | PageViewCount | : ItemCount |
-| PageViewDuration | czas trwania | 
+| PageViewDuration | Czas trwania | 
 | PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | : ItemCount | 
-| RequestDuration | czas trwania | 
+| RequestDuration | Czas trwania | 
 | Identyfikator żądania | id | 
 | RequestName | name | 
 | RequestSuccess | powodzenie | 

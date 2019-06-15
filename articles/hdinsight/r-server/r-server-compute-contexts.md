@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681781"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>COMPUTE context options obliczeniowego usługi ML w HDInsight
@@ -55,7 +55,7 @@ Które z trzech opcji możesz wybrać, które zapewniają, równoległego wykony
 
 Poniższe sekcje, biorąc pod uwagę te zasady, oferują pewne ogólne reguły akceptacji służąca do wybierania kontekstu obliczeniowego.
 
-### <a name="local"></a>Lokalna
+### <a name="local"></a>Lokalny
 * Jeśli ilość danych w celu przeanalizowania jest mały i nie wymaga oczekiwanego, następnie prześlij go strumieniowo bezpośrednio do procedur analizy przy użyciu *lokalnego* lub *localpar*.
 * Jeśli ilość danych w celu przeanalizowania jest małych i średnich i wymaga powtarzanych analizy, następnie skopiuj go do lokalnego systemu plików, zaimportuj go do XDF i analizować go za pomocą *lokalnego* lub *localpar*.
 

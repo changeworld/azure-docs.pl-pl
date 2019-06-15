@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425138"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk do wykonywania zapytań w usłudze Azure Monitor dziennika
@@ -30,14 +30,14 @@ W poniższej tabeli porównano pojęcia i struktur danych między dzienniki Splu
 
  | Pojęcie  | Splunk | Azure Monitor |  Komentarz
  | --- | --- | --- | ---
- | Jednostki wdrożenia  | klaster |  klaster |  Usługa Azure Monitor umożliwia dowolnego krzyżowe kwerend klastra. Splunk — nie. |
+ | Jednostki wdrożenia  | Klastra |  Klastra |  Usługa Azure Monitor umożliwia dowolnego krzyżowe kwerend klastra. Splunk — nie. |
  | Pamięci podręcznej danych |  przedziałów  |  Zasady buforowania i przechowywania |  Określa okres i buforowanie poziomie dla danych. To ustawienie, bezpośrednio wpływa na wydajność zapytań i obniżyć koszty wdrożenia. |
- | Partycja logiczna danych  |  indeks  |  baza danych  |  Pozwala logicznie rozdzielić dane. Zezwalaj na obu implementacjach, Unii i dołączenie na te partycje. |
- | Metadane strukturalne zdarzeń | ND | tabela |  Splunk nie ma koncepcji narażonych na język wyszukiwania metadanych zdarzenia. Dzienniki platformy Azure Monitor korzysta z koncepcji tabeli, która zawiera kolumny. Każde wystąpienie zdarzenia jest zamapowana na wiersz. |
- | Rekord danych | event | wiersz |  Tylko zmiana terminologii. |
+ | Partycja logiczna danych  |  index  |  baza danych  |  Pozwala logicznie rozdzielić dane. Zezwalaj na obu implementacjach, Unii i dołączenie na te partycje. |
+ | Metadane strukturalne zdarzeń | ND | table |  Splunk nie ma koncepcji narażonych na język wyszukiwania metadanych zdarzenia. Dzienniki platformy Azure Monitor korzysta z koncepcji tabeli, która zawiera kolumny. Każde wystąpienie zdarzenia jest zamapowana na wiersz. |
+ | Rekord danych | zdarzenie | wiersz |  Tylko zmiana terminologii. |
  | Atrybut rekord danych | Pole |  Kolumny |  W usłudze Azure Monitor to wstępnie zdefiniowane jako część struktury tabeli. W usłudze Splunk każde zdarzenie ma swój własny zestaw pól. |
  | Typy | Typ danych |  Typ danych |  Usługa Azure Monitor typy danych są dokładniejsze w taki sposób, jak są one ustawione dla kolumn. Mają możliwość współpracy dynamicznie do typów danych i mniej więcej odpowiednikami zestawu typów danych, łącznie z obsługą notacji JSON. |
- | Zapytania i wyszukiwanie  | szukaj | query |  Pojęcia dotyczące zasadniczo są takie same, od usługi Azure Monitor i Splunk. |
+ | Zapytania i wyszukiwanie  | search | query |  Pojęcia dotyczące zasadniczo są takie same, od usługi Azure Monitor i Splunk. |
  | Czas trwania zdarzenia pozyskiwania | System Time | ingestion_time() |  W usłudze Splunk każde zdarzenie pobiera sygnatura czasowa systemu na czas, który został zindeksowany zdarzenia. W usłudze Azure Monitor można zdefiniować zasady o nazwie ingestion_time, który udostępnia kolumna systemowa, która może znajdować się za pośrednictwem funkcji ingestion_time(). |
 
 ## <a name="functions"></a>Funkcje
@@ -55,10 +55,10 @@ W poniższej tabeli określono funkcji w usłudze Azure Monitor, które są rów
 | substr | substring() | (1)<br>Należy również zauważyć, że Splunk używa liczonego od jednego indeksów. Usługa Azure Monitor — informacje o indeksy od zera. |
 | tolower |  tolower() | (1) |
 | toupper | toupper() | (1) |
-| dopasowanie | pasuje do wyrażenia regularnego |  (2)  |
+| Dopasowanie | pasuje do wyrażenia regularnego |  (2)  |
 | regex | pasuje do wyrażenia regularnego | W usłudze Splunk `regex` jest operator. W usłudze Azure Monitor jest operator relacyjny. |
 | searchmatch | == | W usłudze Splunk `searchmatch` umożliwia wyszukiwanie dokładnie taki ciąg znaków.
-| losowo | rand()<br>RAND(n) | Funkcja firmy Splunk zwraca liczbę od 0 do 2<sup>31</sup>-1. Usługa Azure Monitor "zwraca liczbę z zakresu od 0,0 do 1,0, lub jeśli parametr podany w przedziale od 0 do n-1.
+| losowe | rand()<br>RAND(n) | Funkcja firmy Splunk zwraca liczbę od 0 do 2<sup>31</sup>-1. Usługa Azure Monitor "zwraca liczbę z zakresu od 0,0 do 1,0, lub jeśli parametr podany w przedziale od 0 do n-1.
 | teraz | now() | (1)
 | relative_time | totimespan() | (1)<br>W usłudze Azure Monitor firmy Splunk wielokrotność relative_time (datetimeVal, offsetVal) jest datetimeVal + totimespan(offsetVal).<br>Na przykład <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> staje się <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
@@ -158,7 +158,7 @@ Zobacz [agregacji w usłudze Azure Monitor rejestrowania zapytań](aggregations.
 
 
 
-### <a name="join"></a>Join
+### <a name="join"></a>Dołączanie
 Sprzężenia w usłudze Splunk ma znaczące ograniczenia. Podzapytanie limitem 10000 wyników (ustawiona w pliku konfiguracyjnym wdrożenia) i ma ograniczoną liczbę sprzężenia odmian.
 
 | |  | |

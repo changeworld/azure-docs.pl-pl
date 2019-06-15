@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759189"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Zarządzanie udziałami na krawędzi sieci Azure Data Box za pomocą witryny Azure portal
@@ -150,7 +150,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby usunąć udział.
 
     ![Wybieranie udziału](media/data-box-edge-manage-shares/delete-share-1.png)
 
-2. Kliknij polecenie **Usuń**.
+2. Kliknij przycisk **Usuń**.
 
     ![Klikanie polecenia Usuń](media/data-box-edge-manage-shares/delete-share-2.png)
 

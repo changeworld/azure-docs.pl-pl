@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628918"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Azure Monitor 
@@ -52,7 +52,7 @@ Wpisy w pliku uwierzytelniania są opisane w poniższej tabeli.
 |:--|:--|
 | Port | Reprezentuje bieżący port, który nasłuchuje wystąpienie programu MySQL. Port 0 określa, że właściwości po są używane domyślne wystąpienie. |
 | Bind-Address| Bieżącego powiązania MySQL-adresu. |
-| nazwa użytkownika| Użytkownik programu MySQL używane na potrzeby monitorowania wystąpienia serwera MySQL. |
+| username| Użytkownik programu MySQL używane na potrzeby monitorowania wystąpienia serwera MySQL. |
 | Hasło kodowany w formacie Base64| Hasło użytkownika monitorowania MySQL zakodowane w formacie Base64. |
 | AutoUpdate| Określa, czy ponownego skanowania dla zmian w pliku my.cnf i nadpisać plik uwierzytelniania OMI MySQL, po uaktualnieniu dostawcy OMI bazy danych MySQL. |
 

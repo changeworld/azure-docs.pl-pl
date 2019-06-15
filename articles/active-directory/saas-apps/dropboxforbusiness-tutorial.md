@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2109c3f67a666d0c379cc188c07968c8b31d6a1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 591d8d28be5fc9322de8cf4886dc5924f53b1deb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989676"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103780"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Samouczek: Integrowanie usługi Dropbox dla firm z usługą Azure Active Directory
 
@@ -189,7 +189,7 @@ W tej sekcji w aplikacji Dropbox dla Firm jest tworzony użytkownik o nazwie Bri
 
 Po wybraniu Dropbox dla firm kafelka w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze Dropbox dla firm, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

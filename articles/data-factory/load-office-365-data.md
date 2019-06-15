@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60548104"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Ładowanie danych z usługi Office 365 za pomocą usługi Azure Data Factory
@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak używać usługi Data Factory _ładowanie danyc
       
    ![Strona Nowa fabryka danych](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Nazwa**: Wprowadź unikatową w skali globalnej nazwę fabryki danych platformy Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadFromOffice365Demo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_**LoadFromOffice365Demo**. Spróbuj ponownie utworzyć fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
+    * **Nazwa**: Wprowadź unikatową w skali globalnej nazwę fabryki danych platformy Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadFromOffice365Demo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_ **LoadFromOffice365Demo**. Spróbuj ponownie utworzyć fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
     * **Subskrypcja**: Wybieranie subskrypcji platformy Azure, w której chcesz utworzyć fabrykę danych. 
     * **Grupa zasobów**: Wybierz istniejącą grupę zasobów z listy rozwijanej lub **Utwórz nową** opcji, a następnie wprowadź nazwę grupy zasobów. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
     * **Wersja**: Wybierz **V2**.
@@ -119,7 +119,7 @@ Można również wyświetlić kod JSON skojarzony z potokiem, klikając kodu w p
 
 Na górnym pasku narzędzi wybierz **Opublikuj wszystkie**. Ta akcja powoduje opublikowanie utworzonych jednostek (zestawy danych i potok) w usłudze Data Factory.
 
-![Opublikuj zmiany](./media/load-office-365-data/publish-changes.png) 
+![Publikowanie zmian](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>Ręczne wyzwalanie potoku
 
@@ -137,7 +137,7 @@ Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybie
 
 Jeśli po raz pierwszy są wnioskujące o udostępnienie danych dla tego kontekstu (kombinację danych, które tabeli jest dostęp, lokalizację docelową konta znajdują się dane są ładowane i tożsamości użytkownika, który osiągnął dane żądanie dostępu), zostanie wyświetlony działania kopiowania stan jako "**w toku**", i tylko wtedy, gdy kliknij na "Szczegóły" łącze w kolumnie akcje, będzie wyświetlany jest stan jako "**RequesetingConsent**".  Członek grupy osoba zatwierdzająca dostęp do danych musi zatwierdzić żądanie w zarządzania dostępem uprzywilejowanym, wyodrębnianie danych mógł kontynuować działanie.
 
-_Stan jako żądanie zgody:_
+_Stan jako żądanie zgody:_ 
 ![szczegóły wykonania działania — żądanie zgody](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Stan jako wyodrębnianie danych:_

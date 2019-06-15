@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62096270"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Uaktualnij konfigurację klastra na platformie Azure 
@@ -36,7 +36,7 @@ W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieleto
 Klastry platformy Azure można skonfigurować przy użyciu szablonu usługi Resource Manager w formacie JSON. Aby dowiedzieć się więcej o różnych ustawieniach, zobacz [ustawienia konfiguracji dla klastrów](service-fabric-cluster-fabric-settings.md). Na przykład poniższe kroki pokazują, jak dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji przy użyciu usługi Azure Resource Explorer.
 
 1. Przejdź do strony https://resources.azure.com
-2. Przejdź do swojej subskrypcji, rozwijając **subskrypcje** -> **\<Twoja subskrypcja >** -> **resourceGroups**  ->   **\<Your grupa zasobów >** -> **dostawców** -> **Microsoft.ServiceFabric**  ->  **klastrów** -> **\<Your Nazwa_klastra >**
+2. Przejdź do swojej subskrypcji, rozwijając **subskrypcje** ->  **\<Twoja subskrypcja >**  -> **resourceGroups**  ->   **\<Your grupa zasobów >**  -> **dostawców** -> **Microsoft.ServiceFabric**  ->  **klastrów** ->  **\<Your Nazwa_klastra >**
 3. W prawym górnym rogu, wybierz **odczytu/zapisu.**
 4. Wybierz **Edytuj** i zaktualizuj `fabricSettings` elementu JSON i Dodaj nowy element:
 

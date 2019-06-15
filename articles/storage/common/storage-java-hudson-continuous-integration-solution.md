@@ -10,10 +10,10 @@ ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154338"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
@@ -111,7 +111,7 @@ Do celów instrukcji najpierw musimy utworzyć zadanie, które będzie utworzyć
 8. Kliknij przycisk **upublicznić domyślnie nowy kontener** w tym przykładzie. (Jeśli chcesz użyć kontenera prywatnych, należy utworzyć sygnaturę dostępu współdzielonego, aby zezwolić na dostęp. Który wykracza poza zakres tego artykułu. Dowiedz się więcej na temat sygnatur dostępu współdzielonego w [za pomocą sygnatur dostępu udostępnionego (SAS)](../storage-dotnet-shared-access-signature-part-1.md).)
 9. [Opcjonalnie] Kliknij przycisk **czyste kontenera przed przekazaniem** Jeśli chcesz, aby kontener do wyczyszczenia zawartości przed artefakty kompilacji są przekazywane (pozostaw to pole niezaznaczone, jeśli nie chcesz wyczyścić zawartość kontenerów).
 10. Aby uzyskać **listy artefakty do przekazania**, wprowadź **tekst/*.txt**.
-11. Dla **wspólnej ścieżki wirtualnej dla przekazanych artefaktów**, wprowadź **${kompilacji\_identyfikator} / ${kompilacji\_numer}**.
+11. Dla **wspólnej ścieżki wirtualnej dla przekazanych artefaktów**, wprowadź **${kompilacji\_identyfikator} / ${kompilacji\_numer}** .
 12. Kliknij przycisk **Zapisz** można zapisać ustawień.
 13. Na pulpicie nawigacyjnym rozwiązania Hudson kliknij **Kompiluj teraz** do uruchomienia **MyJob**. Sprawdź dane wyjściowe konsoli z stanu. Komunikaty o stanie dla usługi Azure Storage będą uwzględniane w danych wyjściowych konsoli, po uruchomieniu akcji wykonywanych po kompilacji, można przekazać artefaktów kompilacji.
 14. Po pomyślnym zakończeniu zadania można sprawdzić artefaktów kompilacji, otwierając publicznego obiektu blob.
@@ -134,7 +134,7 @@ Poniższe kroki pokazują sposób konfigurowania kroku kompilacji można pobrać
 1. W **kompilacji** sekcji konfiguracji zadania kliknij **Dodaj krok kompilacji** i wybierz polecenie **pobierać z usługi Azure Blob storage**.
 2. Aby uzyskać **nazwa konta magazynu**, wybierz konto magazynu do użycia.
 3. Aby uzyskać **nazwa kontenera**, określ nazwę kontenera, który zawiera obiekty BLOB, którą chcesz pobrać. Można używać zmiennych środowiskowych.
-4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\\*** należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
+4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\\** * należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
 5. [Opcjonalnie] Aby uzyskać **ścieżkę pobierania**, określ ścieżkę na maszynie Hudson, które chcesz pobrać pliki z usługi Azure Blob storage. Można także zmienne środowiskowe. (Jeśli nie zostanie określona wartość **ścieżkę pobierania**, zostaną pobrane pliki z usługi Azure Blob storage z obszarem roboczym zadania.)
 
 Jeśli masz dodatkowe elementy, które chcesz pobrać z usługi Azure Blob storage, możesz utworzyć dodatkowych kroków kompilacji.
@@ -153,7 +153,7 @@ Poniżej zawiera omówienie składników usługi obiektów Blob.
   
     (Format powyżej ma zastosowanie do chmury publicznej platformy Azure. Jeśli używasz innej chmurze platformy Azure, użyj punktu końcowego w ramach [witryny Azure Portal](https://portal.azure.com) Aby określić adres URL punktu końcowego.)
   
-    W powyższym formacie `storageaccount` reprezentuje nazwę konta magazynu `container_name` reprezentuje nazwę kontenera, i `blob_name` reprezentuje nazwę obiektu blob, odpowiednio. W ramach nazwa kontenera może mieć wiele ścieżek oddzielonych ukośnikiem, **/**. Przykładowa nazwa kontenera, w tym samouczku został **MyJob**, i **${kompilacji\_identyfikator} / ${kompilacji\_numer}** został użyty podczas wspólnej ścieżki wirtualnej skutkuje o adresie URL obiektu blob następującą postać:
+    W powyższym formacie `storageaccount` reprezentuje nazwę konta magazynu `container_name` reprezentuje nazwę kontenera, i `blob_name` reprezentuje nazwę obiektu blob, odpowiednio. W ramach nazwa kontenera może mieć wiele ścieżek oddzielonych ukośnikiem, **/** . Przykładowa nazwa kontenera, w tym samouczku został **MyJob**, i **${kompilacji\_identyfikator} / ${kompilacji\_numer}** został użyty podczas wspólnej ścieżki wirtualnej skutkuje o adresie URL obiektu blob następującą postać:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 

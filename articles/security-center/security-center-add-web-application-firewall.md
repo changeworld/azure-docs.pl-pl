@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
 ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60706241"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Dodawanie zapory aplikacji sieci web w usłudze Azure Security Center
@@ -59,7 +59,7 @@ Usługa Security Center zaleca obsługi administracyjnej zapory aplikacji sieci 
 2. Wybierz **finalizowanie ochrony aplikacji**. Zostanie otwarty nowy blok. Widać, że jest aplikacją sieci web, która musi mieć ruch skierowany.
 3. Wybierz aplikację sieci web. Zostanie otwarty blok zawierający kroki dla finalizowanie konfiguracji zapory aplikacji sieci web. Wykonaj kroki, a następnie wybierz **ograniczania ruchu**. Usługa Security Center następnie wykonuje okablowania up.
 
-   ![Ogranicz ruch][6]
+   ![Ograniczanie ruchu][6]
 
 > [!NOTE]
 > Możesz chronić wiele aplikacji sieci web w usłudze Security Center, dodając te aplikacje do istniejących wdrożeń zapory aplikacji sieci Web.

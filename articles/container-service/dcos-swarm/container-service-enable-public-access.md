@@ -10,10 +10,10 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457388"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(PRZESTARZAŁE) Włączanie dostępu publicznego do aplikacji usługi Azure Container Service
@@ -74,9 +74,9 @@ Następnie należy dodać regułę zabezpieczeń, która kieruje ruch z naszych 
    | --- | --- |
    | Name (Nazwa) |Opisowa nazwa reguły zapory. |
    | Priorytet |Ranga priorytet reguły. Im mniejsza liczba wyższy priorytet. |
-   | Element źródłowy |Ogranicz przychodzące zakres adresów IP, aby być dozwolony lub odrzucany przez tę regułę. Użyj **wszelkie** aby nie określać ograniczenia. |
+   | source |Ogranicz przychodzące zakres adresów IP, aby być dozwolony lub odrzucany przez tę regułę. Użyj **wszelkie** aby nie określać ograniczenia. |
    | Usługa |Wybierz zestaw wstępnie zdefiniowanych usług, których dotyczy ta reguła zabezpieczeń. W przeciwnym razie użyj **niestandardowe** utworzyć własny. |
-   | Protokół |Ograniczanie ruchu na podstawie **TCP** lub **UDP**. Użyj **wszelkie** aby nie określać ograniczenia. |
+   | Protocol |Ograniczanie ruchu na podstawie **TCP** lub **UDP**. Użyj **wszelkie** aby nie określać ograniczenia. |
    | Zakres portów |Gdy **usługi** jest **niestandardowe**, określa zakres portów, których dotyczy ta reguła. Można użyć pojedynczy port, taki jak **80**, lub zakres, takich jak **1024 1500**. |
    | Akcja |Zezwolenie lub zablokowanie ruchu sieciowego, która spełnia kryteria. |
 

@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770793"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Samouczek: Zapytanie SQL Server Linux narzędziem w sieci wirtualnej z notesu usługi Azure Databricks
@@ -64,12 +64,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |Element źródłowy|Adresy IP|Adresy IP określa, że ruch przychodzący z określonego źródła, adres IP będzie dozwolony lub odrzucany przez tę regułę.|
-    |Źródłowe adresy IP|< adres ip\>|Wprowadź swój publiczny adres IP. Swój publiczny adres IP można znaleźć, odwiedzając [bing.com](https://www.bing.com/) i wyszukując **"Mój adres IP"**.|
+    |source|Adresy IP|Adresy IP określa, że ruch przychodzący z określonego źródła, adres IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Źródłowe adresy IP|< adres ip\>|Wprowadź swój publiczny adres IP. Swój publiczny adres IP można znaleźć, odwiedzając [bing.com](https://www.bing.com/) i wyszukując **"Mój adres IP"** .|
     |Zakresy portów źródłowych|*|Zezwalać na ruch z dowolnego portu.|
-    |Element docelowy|Adresy IP|Adresy IP określa, że ruch wychodzący do określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Miejsce docelowe|Adresy IP|Adresy IP określa, że ruch wychodzący do określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
     |Docelowe adresy IP|< publiczny adres ip swojej maszyny wirtualnej\>|Wprowadź publiczny adres IP maszyny wirtualnej. Można je znaleźć na **Przegląd** strony maszyny wirtualnej.|
-    |Zakresy portów docelowych|22|Otwórz port 22 dla protokołu SSH.|
+    |Docelowe zakresy portów|22|Otwórz port 22 dla protokołu SSH.|
     |Priorytet|290|Nadaj regule priorytet.|
     |Name (Nazwa)|ssh-databricks-tutorial-vm|Nadaj regule nazwę.|
 
@@ -80,12 +80,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |Element źródłowy|Adresy IP|Adresy IP określa, że ruch przychodzący z określonego źródła, adres IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |source|Adresy IP|Adresy IP określa, że ruch przychodzący z określonego źródła, adres IP będzie dozwolony lub odrzucany przez tę regułę.|
     |Źródłowe adresy IP|10.179.0.0/16|Wprowadź zakres adresów sieci wirtualnej.|
     |Zakresy portów źródłowych|*|Zezwalać na ruch z dowolnego portu.|
-    |Element docelowy|Adresy IP|Adresy IP określa, że ruch wychodzący do określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
+    |Miejsce docelowe|Adresy IP|Adresy IP określa, że ruch wychodzący do określonego źródłowego adresu IP będzie dozwolony lub odrzucany przez tę regułę.|
     |Docelowe adresy IP|< publiczny adres ip swojej maszyny wirtualnej\>|Wprowadź publiczny adres IP maszyny wirtualnej. Można je znaleźć na **Przegląd** strony maszyny wirtualnej.|
-    |Zakresy portów docelowych|1433|Otwórz port 22 dla programu SQL Server.|
+    |Docelowe zakresy portów|1433|Otwórz port 22 dla programu SQL Server.|
     |Priorytet|300|Nadaj regule priorytet.|
     |Name (Nazwa)|sql-databricks-tutorial-vm|Nadaj regule nazwę.|
 

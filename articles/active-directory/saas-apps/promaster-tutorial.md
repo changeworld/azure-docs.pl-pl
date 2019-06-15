@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 66393ffa5e8837b104e42df03ab3af5d6deea936
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0a1f58705a64a973bb91e47e6e9fce87a48ce99
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868770"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ProMaster (przez Inlogik)
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację ProMaster (przez Inlogik) w usłudze Azure AD, na
 
 **Aby dodać ProMaster (przez Inlogik) z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -65,7 +65,7 @@ Aby skonfigurować integrację ProMaster (przez Inlogik) w usłudze Azure AD, na
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **ProMaster (przez Inlogik)**, wybierz opcję **ProMaster (przez Inlogik)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **ProMaster (przez Inlogik)** , wybierz opcję **ProMaster (przez Inlogik)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
      ![ProMaster (przez Inlogik) na liście wyników](common/search-new-app.png)
 
@@ -172,11 +172,11 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do ProMaster (przez Inlogik).
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **ProMaster (przez Inlogik)**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **ProMaster (przez Inlogik)** .
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **ProMaster (przez Inlogik)**.
+2. Na liście aplikacji wybierz **ProMaster (przez Inlogik)** .
 
     ![Łącze ProMaster (przez Inlogik) na liście aplikacji](common/all-applications.png)
 
@@ -204,7 +204,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka ProMaster (przez Inlogik) w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze ProMaster (przez Inlogik), dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

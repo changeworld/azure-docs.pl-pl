@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: bb7d6531da330bcfbf6de786ffb19984cfd1964e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487216"
 ---
 # <a name="use-case---customer-profiling"></a>Przypadek użycia — profilowanie klientów
@@ -52,7 +52,7 @@ Wszystko, czego potrzebujesz, aby otworzyć i wypróbować ten prosty przypadek 
 
     ![Blok Fabryka danych](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
-## <a name="solution-overview"></a>Przegląd rozwiązania
+## <a name="solution-overview"></a>Omówienie rozwiązania
 Ten prosty przypadek użycia może służyć jako przykładu sposobu użycia usługi Azure Data Factory w celu pozyskiwania, przygotowywania, przekształcania, analizowanie i publikować dane.
 
 ![Kompletny przepływ pracy](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)

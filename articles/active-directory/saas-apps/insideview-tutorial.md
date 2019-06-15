@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fdabd237fa128326673d84e889387d03f184b00
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą InsideView
 
@@ -94,7 +94,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z InsideView, wykonaj
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
@@ -143,13 +143,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z InsideView, wykonaj
 
     1. Otwórz pierwotne certyfikatu, który został pobrany z witryny Azure portal. Skopiuj zawartość certyfikatu do Schowka, a następnie wklej zawartość do **certyfikatu usługi STS** pole.
 
-    1. W **mapowanie identyfikatora użytkownika Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    1. W **mapowanie identyfikatora użytkownika Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-    1. W **mapowanie E-mail Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    1. W **mapowanie E-mail Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-    1. W **mapowanie imię Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    1. W **mapowanie imię Crm** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
 
-    1. W **Crm lastName mapowanie** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.  
+    1. W **Crm lastName mapowanie** wprowadź **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .  
 
     1. Wybierz pozycję **Zapisz**.
 

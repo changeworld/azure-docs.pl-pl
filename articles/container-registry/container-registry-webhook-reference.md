@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
 ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61331345"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Dokumentacja elementu webhook w usłudze Azure Container Registry
@@ -40,7 +40,7 @@ Element Webhook jest wyzwalany, gdy obraz kontenera zostanie przypisany do repoz
 
 ### <a name="push-event-payload"></a>Wypychanie ładunek zdarzenia
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |-------------|----------|-----------|
 |`id`|String|Identyfikator zdarzenia elementu webhook.|
 |`timestamp`|DateTime|Godzina, o której zostało wyzwolone zdarzenie elementu webhook.|
@@ -50,7 +50,7 @@ Element Webhook jest wyzwalany, gdy obraz kontenera zostanie przypisany do repoz
 
 ### <a name="target"></a>target
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |------------------|----------|-----------|
 |`mediaType`|String|Typ MIME przywoływanego obiektu.|
 |`size`|Int32|Liczba bajtów treści. Taka sama jak długość pola.|
@@ -61,7 +61,7 @@ Element Webhook jest wyzwalany, gdy obraz kontenera zostanie przypisany do repoz
 
 ### <a name="request"></a>request
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |------------------|----------|-----------|
 |`id`|String|Identyfikator żądania, który zainicjował zdarzenie.|
 |`host`|String|Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta HTTP na żądań przychodzących.|
@@ -104,7 +104,7 @@ Element Webhook jest wyzwalany, gdy wykresu Helm są wypychane do repozytorium.
 
 ### <a name="chart-push-event-payload"></a>Ładunek zdarzenia wypychania wykresu
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |-------------|----------|-----------|
 |`id`|String|Identyfikator zdarzenia elementu webhook.|
 |`timestamp`|DateTime|Godzina, o której zostało wyzwolone zdarzenie elementu webhook.|
@@ -113,7 +113,7 @@ Element Webhook jest wyzwalany, gdy wykresu Helm są wypychane do repozytorium.
 
 ### <a name="helm_target"></a>target
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |------------------|----------|-----------|
 |`mediaType`|String|Typ MIME przywoływanego obiektu.|
 |`size`|Int32|Liczba bajtów treści.|
@@ -154,7 +154,7 @@ Wyzwalana przez element Webhook, gdy repozytorium obrazów lub manifest został 
 
 ### <a name="delete-event-payload"></a>Usuń ładunek zdarzenia
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |-------------|----------|-----------|
 |`id`|String|Identyfikator zdarzenia elementu webhook.|
 |`timestamp`|DateTime|Godzina, o której zostało wyzwolone zdarzenie elementu webhook.|
@@ -164,7 +164,7 @@ Wyzwalana przez element Webhook, gdy repozytorium obrazów lub manifest został 
 
 ### <a name="delete_target"></a> Docelowy
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |------------------|----------|-----------|
 |`mediaType`|String|Typ MIME przywoływanego obiektu.|
 |`digest`|String|Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru.|
@@ -172,7 +172,7 @@ Wyzwalana przez element Webhook, gdy repozytorium obrazów lub manifest został 
 
 ### <a name="delete_request"></a> Żądanie
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |------------------|----------|-----------|
 |`id`|String|Identyfikator żądania, który zainicjował zdarzenie.|
 |`host`|String|Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta HTTP na żądań przychodzących.|
@@ -216,7 +216,7 @@ Gdy wykresu Helm wyzwalana przez element Webhook lub repozytorium zostanie usuni
 
 ### <a name="chart-delete-event-payload"></a>Ładunek zdarzenia Usuń wykres
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |-------------|----------|-----------|
 |`id`|String|Identyfikator zdarzenia elementu webhook.|
 |`timestamp`|DateTime|Godzina, o której zostało wyzwolone zdarzenie elementu webhook.|
@@ -225,7 +225,7 @@ Gdy wykresu Helm wyzwalana przez element Webhook lub repozytorium zostanie usuni
 
 ### <a name="chart_delete_target"></a> Docelowy
 
-|Element|Type|Opis|
+|Element|Typ|Opis|
 |------------------|----------|-----------|
 |`mediaType`|String|Typ MIME przywoływanego obiektu.|
 |`size`|Int32|Liczba bajtów treści.|

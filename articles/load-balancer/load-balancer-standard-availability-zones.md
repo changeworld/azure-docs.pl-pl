@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
 ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734460"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
@@ -39,7 +39,7 @@ Zarówno public i internal Load Balancer, która obsługuje scenariusze strefowo
 
 Samego zasobu modułu równoważenia obciążenia jest regionalnych i strefowych nigdy nie.  I sieci wirtualnej i podsieci są zawsze regionalnych i strefowych nigdy nie.
 
-### <a name="frontend"></a>Fronton
+### <a name="frontend"></a>Frontonu
 
 Fronton modułu równoważenia obciążenia jest konfiguracja adresu IP frontonu, odwoływanie się do zasobu publicznego adresu IP lub prywatnego adresu IP w obrębie podsieci zasobu sieci wirtualnej.  Wchodzi w skład punkt końcowy o zrównoważonym obciążeniu gdzie usługa jest widoczna.
 
@@ -156,7 +156,7 @@ Równoważenie obciążenia między strefami jest możliwość osiągnięcia pun
 
 Jeśli chcesz się i gwarantuje wdrożenia w jednej strefie Wyrównaj strefowych frontonu i zaplecza strefowych zasobów do tej samej strefie. Nie są wymagane żadne dalsze działania.
 
-### <a name="backend"></a>Zaplecze
+### <a name="backend"></a>Wewnętrznej bazy danych
 
 Moduł równoważenia obciążenia działa z maszynami wirtualnymi.  Dowolnej maszyny Wirtualnej w pojedynczej sieci wirtualnej mogą być częścią puli zaplecza, niezależnie od tego, czy został gwarantowane do strefy lub która strefa została gwarantowane.
 

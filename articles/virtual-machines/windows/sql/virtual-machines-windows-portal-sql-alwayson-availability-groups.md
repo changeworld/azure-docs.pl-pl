@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129557"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Skonfiguruj w usłudze Azure Virtual Machines zawsze włączonych grup dostępności automatycznie: Resource Manager
@@ -206,7 +206,7 @@ Dla protokołu RDP do programu SQL Server wykonaj następujące kroki:
 1. Na pulpicie nawigacyjnym platformy Azure portal Sprawdź, czy wdrożenia zakończyła się pomyślnie.
 2. Kliknij przycisk **zasobów**.
 3. W **zasobów** bloku kliknij **sqlserver 0**, czyli nazwę komputera w jednej z maszyn wirtualnych, na których działa program SQL Server.
-4. W bloku **sqlserver 0**, kliknij przycisk **Connect**. Przeglądarka pyta, czy chcesz otworzyć lub zapisać obiekt połączenia zdalnego. Kliknij przycisk **Open** (Otwórz).
+4. W bloku **sqlserver 0**, kliknij przycisk **Connect**. Przeglądarka pyta, czy chcesz otworzyć lub zapisać obiekt połączenia zdalnego. Kliknij przycisk **Otwórz**.
 5. **Podłączanie pulpitu zdalnego** może ostrzega użytkownika, że nie można zidentyfikować wydawcy tego połączenia zdalnego. Kliknij przycisk **Połącz**.
 6. Zabezpieczenia Windows wyświetli monit o wprowadzenie swoje poświadczenia, aby nawiązać połączenie z adresu IP z podstawowego kontrolera domeny. Kliknij przycisk **Użyj innego konta**. Aby uzyskać **nazwa_użytkownika**, typ **contoso\DomainAdmin**. To konto jest skonfigurowane, gdy ustawiona nazwa użytkownika administratora w szablonie. Użyj złożone hasło, które zostały wybrane podczas konfigurowania szablonu.
 7. **Pulpit zdalny** może ostrzega użytkownika, że nie można uwierzytelnić komputera zdalnego z powodu problemów z jego certyfikatem zabezpieczeń. Przedstawia on nazwę certyfikatu zabezpieczeń. Jeśli wykonano samouczka jest nazwa **sqlserver 0.contoso.com**. Kliknij przycisk **Yes** (Tak).

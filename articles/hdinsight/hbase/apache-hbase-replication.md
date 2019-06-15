@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707974"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
@@ -105,7 +105,7 @@ W ostatniej sekcji ten szablon tworzy maszynę wirtualną Ubuntu w każdej z dwi
 Aby zainstalować powiązania, yon, należy znaleźć publiczny adres IP z dwóch maszyn wirtualnych DNS.
 
 1. Otwórz [portal Azure](https://portal.azure.com).
-2. Otwórz DNS maszyny wirtualnej, wybierając **grupy zasobów > [Nazwa grupy zasobów] > [vnet1DNS]**.  Nazwa grupy zasobów jest ten, który zostanie utworzony w poprzedniej procedurze. Domyślne nazwy maszyny wirtualnej DNS są *vnet1DNS* i *vnet2NDS*.
+2. Otwórz DNS maszyny wirtualnej, wybierając **grupy zasobów > [Nazwa grupy zasobów] > [vnet1DNS]** .  Nazwa grupy zasobów jest ten, który zostanie utworzony w poprzedniej procedurze. Domyślne nazwy maszyny wirtualnej DNS są *vnet1DNS* i *vnet2NDS*.
 3. Wybierz **właściwości** aby otworzyć stronę właściwości sieci wirtualnej.
 4. Zapisz **publiczny adres IP**, a także sprawdzić **prywatny adres IP**.  Prywatny adres IP jest **10.1.0.4** dla vnet1DNS i **10.2.0.4** dla vnet2DNS.  
 5. Zmień serwery DNS dla obu sieci wirtualnych do korzystania z serwerów domyślne (DNS platformy Azure) umożliwia dostęp ruchu przychodzącego i wychodzącego pobrać pakiety do zainstalowania powiązania w poniższych krokach.
@@ -288,7 +288,7 @@ Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure porta
 5. Wybierz lub wprowadź następujące informacje:
 
    1. **Nazwa**: Wprowadź **włączyć replikację**.
-   2. **Adres URL skryptu programu bash**: Wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   2. **Adres URL skryptu programu bash**: Wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
    3. **HEAD**: Upewnij się, że ta opcja jest zaznaczona. Wyczyść typy węzłów.
    4. **Parametry**: Następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
 
@@ -360,7 +360,7 @@ Możesz wykonać tę samą procedurę opisaną w [włączyć replikację](#enabl
 
 ### <a name="scenarios"></a>Scenariusze
 
-- **Skopiuj określonych tabel (test1 test2 i test3) we wszystkich wierszach edytować do tej pory (bieżąca sygnatura czasowa)**:
+- **Skopiuj określonych tabel (test1 test2 i test3) we wszystkich wierszach edytować do tej pory (bieżąca sygnatura czasowa)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
   lub:
@@ -390,7 +390,7 @@ Aby wyłączyć replikację, użyj innego skryptu akcji skryptu [GitHub](https:/
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
-- **Wyłącz replikację na określonych tabel (table1, table2 i Tabela3)**:
+- **Wyłącz replikację na określonych tabel (table1, table2 i Tabela3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 

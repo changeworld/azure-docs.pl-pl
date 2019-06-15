@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/09/2018
-ms.date: 03/15/2019
+ms.date: 10/09/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60350494"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Program Azure AD Connect a federacja
@@ -56,5 +55,3 @@ Ten temat jest miejsce, w którym informacji na temat funkcji związanych z fede
 * [Federowanie dwie usługi Azure AD z jednym usług AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
 * [Wdrożenie usług AD FS na platformie Azure](how-to-connect-fed-azure-adfs.md)
 * [Wysoka dostępność geograficznie rozproszonych AD FS wdrożenie na platformie Azure przy użyciu usługi Azure Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-
-<!-- Update_Description: update metedata properties -->

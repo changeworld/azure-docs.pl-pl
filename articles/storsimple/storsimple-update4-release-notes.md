@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60530993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64698638"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 Series Update 4 — informacje o wersji
 
@@ -68,12 +68,12 @@ Poniższa tabela zawiera podsumowanie problemów, które zostały rozwiązane w 
 
 | Nie | Cecha | Problem | Stosuje się do urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
 | --- | --- | --- | --- | --- |
-| 1 |Tryb failover |W poprzedniej wersji po włączeniu trybu failover, wystąpił problem związany z oczyszczaniem zaobserwowane w lokacji klienta. Ten problem jest rozwiązany w tej wersji. |Yes |Yes |
-| 2 |Lokalnie przypięte woluminy |W poprzedniej wersji wystąpił problem do tworzenia powiązanych woluminu dla woluminów przypiętych lokalnie, które mogłyby spowodować błędy tworzenia woluminu. Ten problem został spowodowany przez główny i rozwiązane w tej wersji. |Yes |Nie |
+| 1 |Tryb failover |W poprzedniej wersji po włączeniu trybu failover, wystąpił problem związany z oczyszczaniem zaobserwowane w lokacji klienta. Ten problem jest rozwiązany w tej wersji. |Tak |Yes |
+| 2 |Lokalnie przypięte woluminy |W poprzedniej wersji wystąpił problem do tworzenia powiązanych woluminu dla woluminów przypiętych lokalnie, które mogłyby spowodować błędy tworzenia woluminu. Ten problem został spowodowany przez główny i rozwiązane w tej wersji. |Tak |Nie |
 | 3 |Pakiet dla pomocy technicznej |W poprzedniej wersji wystąpiły problemy związane z pakietu dla pomocy technicznej, które mogłyby spowodować wyjątek System.OutOfMemory lub inne błędy uniemożliwiające tworzenie pakietu pomocy technicznej. Te błędy są rozwiązane w tej wersji. |Yes |Yes |
 | 4 |Monitorowanie |W poprzedniej wersji istnieje problem związany z monitorowaniem wykresy lokalnie przypięte woluminy gdzie zużycie został wyświetlony w EB. Ten problem zostanie rozwiązany w tej wersji. |Yes |Yes |
-| 5 |Migracja |W poprzedniej wersji wystąpiły problemy kilka niezawodności migracji z serii 5000 – 7000 do urządzenia z serii 8000. W tej wersji rozwiązano tych problemów. |Yes |Yes |
-| 6 |Aktualizacja |W poprzednich wersjach, jeśli wystąpił błąd aktualizacji, kontrolery przejdzie do trybu odzyskiwania i dlatego nie można kontynuować aktualizacji użytkownika, a musi skontaktować się z Microsoft Support. <br> To zachowanie zostało zmienione w tej wersji. Jeśli użytkownik ma Niepowodzenie aktualizacji po oba kontrolery są uruchomiona ta sama wersja (aktualizacji Update 4), kontrolery nie przejdą w tryb odzyskiwania. Jeśli użytkownik napotka tego błędu, firma Microsoft zaleca, poczekaj, aż bitu, a następnie ponów próbę aktualizacji. Ponowienie próby może zakończyć się pomyślnie. Jeśli ponowienie próby nie powiedzie się, następnie mogą kontaktować się Microsoft Support. |Yes |Yes |
+| 5 |Migracja |W poprzedniej wersji wystąpiły problemy kilka niezawodności migracji z serii 5000 – 7000 do urządzenia z serii 8000. W tej wersji rozwiązano tych problemów. |Tak |Yes |
+| 6 |Aktualizacja |W poprzednich wersjach, jeśli wystąpił błąd aktualizacji, kontrolery przejdzie do trybu odzyskiwania i dlatego nie można kontynuować aktualizacji użytkownika, a musi skontaktować się z Microsoft Support. <br> To zachowanie zostało zmienione w tej wersji. Jeśli użytkownik ma Niepowodzenie aktualizacji po oba kontrolery są uruchomiona ta sama wersja (aktualizacji Update 4), kontrolery nie przejdą w tryb odzyskiwania. Jeśli użytkownik napotka tego błędu, firma Microsoft zaleca, poczekaj, aż bitu, a następnie ponów próbę aktualizacji. Ponowienie próby może zakończyć się pomyślnie. Jeśli ponowienie próby nie powiedzie się, następnie mogą kontaktować się Microsoft Support. |Yes |Tak |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Znane problemy w aktualizacji Update 4 z poprzednich wersji

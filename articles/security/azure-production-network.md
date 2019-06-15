@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611357"
 ---
 # <a name="the-azure-production-network"></a>Sieć platformy Azure środowiska produkcyjnego
@@ -54,7 +54,7 @@ Azure implementuje niezawodne oprogramowania zabezpieczeniami i funkcjami zapory
 ### <a name="azure-security-features"></a>Funkcje zabezpieczeń platformy Azure
 Azure implementuje zapory oprogramowania opartych na hoście w sieci produkcyjnej. Kilka podstawowych zabezpieczeń i funkcjami zapory znajdują się w podstawowej środowiska platformy Azure. Te funkcje zabezpieczeń odzwierciedlają strategii ochronę w głębi w środowisku platformy Azure. Dane klientów na platformie Azure są chronione przez następujące zapory:
 
-**Zapory funkcji hypervisor (filtr pakietów)**: Ta zapora została zaimplementowana w funkcji hypervisor i skonfigurowana przez agenta kontrolera (FC) sieci szkieletowej. Ta Zapora chroni dzierżawy, który działa wewnątrz maszyny Wirtualnej przed nieautoryzowanym dostępem. Domyślnie po utworzeniu maszyny Wirtualnej cały ruch jest blokowany, a następnie FC agent dodaje regułami i wyjątkami w filtrze zezwalające na ruch autoryzowany.
+**Zapory funkcji hypervisor (filtr pakietów)** : Ta zapora została zaimplementowana w funkcji hypervisor i skonfigurowana przez agenta kontrolera (FC) sieci szkieletowej. Ta Zapora chroni dzierżawy, który działa wewnątrz maszyny Wirtualnej przed nieautoryzowanym dostępem. Domyślnie po utworzeniu maszyny Wirtualnej cały ruch jest blokowany, a następnie FC agent dodaje regułami i wyjątkami w filtrze zezwalające na ruch autoryzowany.
 
 Dwie kategorie reguł są w tym miejscu programowane:
 

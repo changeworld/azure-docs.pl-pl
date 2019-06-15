@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60728053"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurowanie elementów Reliable Actors — dostawcy KVSActorStateProvider
@@ -69,7 +69,7 @@ Domyślna konfiguracja jest generowany przez szablon programu Visual Studio i po
 ### <a name="configuration-names"></a>Nazwy konfiguracji
 | Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
-| MaxAsyncCommitDelayInMilliseconds |Milisekundy |200 |Ustawia maksymalny interwał zatwierdzenia trwałego magazynu lokalnego dzielenia na partie. |
+| MaxAsyncCommitDelayInMilliseconds |MS |200 |Ustawia maksymalny interwał zatwierdzenia trwałego magazynu lokalnego dzielenia na partie. |
 | MaxVerPages |Liczba stron |16384 |Maksymalna liczba stron w wersji lokalnej przechowywania bazy danych. Określa maksymalną liczbę oczekujących transakcji. |
 
 ## <a name="sample-configuration-file"></a>Przykładowy plik konfiguracji

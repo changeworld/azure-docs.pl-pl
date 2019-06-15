@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61258955"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Planowanie fabryki danych i wykonywanie
@@ -186,9 +186,9 @@ W poniższej tabeli opisano właściwości można używać w **dostępności** s
 
 | Właściwość | Opis | Wymagane | Domyślne |
 | --- | --- | --- | --- |
-| frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Yes |Nie dotyczy |
-| interval |Określa mnożnik częstotliwości<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany.<br/><br/>Zestaw danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość co minutę, zaleca się ustawić interwał wynoszący nie mniej niż 15 |Yes |Nie dotyczy |
-| Styl |Określa, czy wycinek powinny być tworzone na początku/końca zakresu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
+| frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Tak |Nie dotyczy |
+| interval |Określa mnożnik częstotliwości<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany.<br/><br/>Zestaw danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość co minutę, zaleca się ustawić interwał wynoszący nie mniej niż 15 |Tak |Nie dotyczy |
+| style |Określa, czy wycinek powinny być tworzone na początku/końca zakresu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
 | anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime części daty, które są bardziej szczegółowe niż częstotliwość bardziej szczegółowego części są ignorowane. <br/><br/>Na przykład jeśli <b>interwał</b> jest <b>co godzinę</b> (frequency: hour, interval: (1) i <b>AnchorDateTime</b> zawiera <b>minuty i sekundy</b>, a następnie <b>minuty i sekundy</b> części AnchorDateTime są ignorowane. |Nie |01/01/0001 |
 | offset |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączone shift. |Nie |Nie dotyczy |
 
@@ -232,9 +232,9 @@ Zestaw danych może mieć zdefiniowane zasady walidacji określający, jak dane 
 
 **Zasad** sekcji w definicji zestawu danych definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych. W poniższej tabeli opisano właściwości można używać w **zasad** sekcji:
 
-| Policy Name (Nazwa zasad) | Opis | Dotyczy | Wymagane | Domyślne |
+| Nazwa zasad | Opis | Dotyczy | Wymagane | Domyślne |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Sprawdza, czy dane w **obiektów blob platformy Azure** spełnia wymagania minimalny rozmiar (w megabajtach). |Obiekt bob Azure |Nie |Nie dotyczy |
+| minimumSizeMB | Sprawdza, czy dane w **obiektów blob platformy Azure** spełnia wymagania minimalny rozmiar (w megabajtach). |Obiekt blob platformy Azure |Nie |Nie dotyczy |
 | minimumRows | Sprawdza, czy dane w **bazy danych Azure SQL** lub **tabeli platformy Azure** zawiera minimalną liczbę wierszy. |<ul><li>Azure SQL Database</li><li>Tabela platformy Azure</li></ul> |Nie |Nie dotyczy |
 
 #### <a name="examples"></a>Przykłady
@@ -270,7 +270,7 @@ Zasady wpływają na zachowania w czasie wykonywania działania, w szczególnoś
 
 | Właściwość | Dozwolone wartości | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| Współbieżność |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę wykonań działania równoległego, które mogą być uruchomione na różnych wycinki. Na przykład jeśli działanie musi przechodzić przez duży zestaw dostępnych danych, o wartości większej współbieżności przyspiesza przetwarzanie danych. |
+| concurrency |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę wykonań działania równoległego, które mogą być uruchomione na różnych wycinki. Na przykład jeśli działanie musi przechodzić przez duży zestaw dostępnych danych, o wartości większej współbieżności przyspiesza przetwarzanie danych. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinki danych, które są przetwarzane.<br/><br/>Na przykład jeśli masz 2 dzieli (jeden występuje o 16: 00 i inną o 17: 00), a oba są oczekiwanie na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, jest przetwarzana najpierw wycinek o 17: 00. Podobnie jeśli ustawisz executionPriorityORder jako OldestFIrst, następnie wycinka u 16: 00 jest przetwarzany. |
 | retry |Liczba całkowita<br/><br/>Maksymalna wartość może wynosić 10 |0 |Liczba ponownych prób zanim przetwarzania danych dla wycinka jest oznaczony jako niepowodzenie. Wykonania działania dla wycinka danych zostanie ponowiony do określonej liczby ponownych prób. Ponowienie próby jest wykonywane tak szybko, jak to możliwe po niepowodzeniu. |
 | timeout |TimeSpan |00:00:00 |Limit czasu działania. Przykład: 00:10:00 (oznacza limit czasu 10 minut)<br/><br/>Jeśli wartość nie została określona lub ma wartość 0, limit czasu jest nieskończona.<br/><br/>Jeśli czas przetwarzania danych na wycinek przekracza wartość limitu czasu, zostanie anulowane, a system podejmuje próbę przetwarzania. Liczba ponownych prób, zależy od właściwości ponownych prób. W przypadku przekroczenia limitu czasu stan jest ustawiony na przekroczenie limitu czasu. |

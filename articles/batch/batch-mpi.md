@@ -15,10 +15,10 @@ ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7a4184fa361ba863cdaf916ef4853eda8b6e8188
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595948"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Zadania obejmujące wiele wystąpień umożliwiają uruchamianie aplikacji interfejsu przekazywania komunikatów (MPI) w usłudze Batch
@@ -279,7 +279,7 @@ await subtasks.ForEachAsync(async (subtask) =>
 >
 >
 
-### <a name="execution"></a>Wykonywanie
+### <a name="execution"></a>Wykonanie
 1. Pobierz [azure-batch-samples] [ github_samples_zip] z usługi GitHub.
 2. Otwórz MultiInstanceTasks **rozwiązania** w Visual Studio 2019 r. `MultiInstanceTasks.sln` Plik rozwiązania znajduje się w:
 

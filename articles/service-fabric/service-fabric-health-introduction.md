@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60949168"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Wprowadzenie do monitorowania kondycji usługi Service Fabric
@@ -211,7 +211,7 @@ Aby wysłać dane dotyczące kondycji w magazynie kondycji, reportera musi ziden
 * **RemoveWhenExpired**. Wartość logiczna. Jeśli ustawiono wartość true, raport o kondycji wygasłe zostanie automatycznie usunięty z magazynu kondycji i raport nie ma wpływu na ocenę kondycji jednostki. Używane raportu jest prawidłowa w określonym przedziale czasu tylko wtedy, gdy zgłaszającą nie trzeba jawnie wyczyszczenie go. Również służy do usuwania raportów z magazynu kondycji (na przykład strażnika zostanie zmieniony i przestaje wysyłać raporty z poprzedniego źródła i właściwości). Może wysłać raport o krótkie TimeToLive wraz z RemoveWhenExpired w celu wyczyszczenia dowolnego poprzedniego stanu z magazynu kondycji. Jeśli wartość jest ustawiona na wartość false, wygasłych raportu jest traktowana jako błąd na ocenę kondycji. Wartość false sygnały w magazynie kondycji, czy źródło powinien wysyłać raporty okresowo dla tej właściwości. Jeśli nie, następnie musi istnieć problem ze strażnika. Kondycja strażnika są przechwytywane, biorąc pod uwagę zdarzeń jako błąd.
 * **SequenceNumber**. Dodatnia liczba całkowita, która musi być coraz większej, reprezentuje kolejność raportów. W sklepie kondycji służy do wykrywania stare raportów, które są odbierane opóźnienia z powodu opóźnienia sieci lub innych kwestiach. Raport zostanie odrzucone, jeśli numer sekwencyjny jest mniejsza niż lub równe wykorzystanie ostatnio zastosowane numer dla tej samej jednostki, źródła i właściwości. Jeśli nie zostanie określony, numer sekwencji jest generowany automatycznie. Należy umieścić w numer sekwencji, tylko wtedy, gdy raportowanie przy zmianie stanu. W takiej sytuacji źródła musi zapamiętać raportów, których wysłanie go i zachowywanie informacji odzyskiwania w trybie failover.
 
-Te cztery elementy informacji — SourceId, identyfikator jednostki, właściwości i HealthState — są wymagane dla każdego raportu o kondycji. Można uruchomić z prefiksem nie może być ciągiem SourceId "**systemu.**", który jest zarezerwowany dla raportów systemu. Dla tej samej jednostki jest tylko jeden raport dla tego samego źródła i właściwości. Wiele raportów dla tego samego źródła i właściwości przesłaniają się wzajemnie, kondycji po stronie klienta (jeśli są przetwarzane wsadowo) lub na kondycji przechowywane po stronie. Zastąpienie opiera się na numery sekwencyjne; nowsze raportów (o wyższych numerach) Zastąp starszych raportach.
+Te cztery elementy informacji — SourceId, identyfikator jednostki, właściwości i HealthState — są wymagane dla każdego raportu o kondycji. Można uruchomić z prefiksem nie może być ciągiem SourceId "**systemu.** ", który jest zarezerwowany dla raportów systemu. Dla tej samej jednostki jest tylko jeden raport dla tego samego źródła i właściwości. Wiele raportów dla tego samego źródła i właściwości przesłaniają się wzajemnie, kondycji po stronie klienta (jeśli są przetwarzane wsadowo) lub na kondycji przechowywane po stronie. Zastąpienie opiera się na numery sekwencyjne; nowsze raportów (o wyższych numerach) Zastąp starszych raportach.
 
 ### <a name="health-events"></a>Zdarzenia dotyczące kondycji
 Wewnętrznie, utrzymuje magazynu kondycji [zdarzenia dotyczące kondycji](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent), które zawierają wszystkie informacje z raportów i dodatkowe metadane. Metadane obejmują czas, który raport został przekazany klientowi kondycji i czas, który został zmodyfikowany po stronie serwera. Zdarzenia dotyczące kondycji, są zwracane przez [zapytania o kondycję](service-fabric-view-entities-aggregated-health.md#health-queries).

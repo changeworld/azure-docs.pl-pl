@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 3/13/2019
 ms.author: banders
 ms.openlocfilehash: b910cb3061b1451ea80b9843e2aa4047a784548f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918839"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej lub debetowej dla platformy Azure
@@ -35,7 +35,7 @@ W witrynie Azure portal możesz dodać nową kartę kredytową, aktualizowanie i
 ## <a name="add-a-new-credit-or-debit-card-to-an-azure-subscription"></a>Dodaj nową kartę kredytową lub debetową z subskrypcją platformy Azure
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) stanowisku administratora konta.
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący wyszukiwania](./media/billing-how-to-change-credit-card/search.png)
 
@@ -44,12 +44,12 @@ W witrynie Azure portal możesz dodać nową kartę kredytową, aktualizowanie i
 
     ![Zrzut ekranu przedstawiający wybraną opcją metody płatności Zarządzanie.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
-1. W lewym górnym rogu wybierz pozycję "+", aby dodać kartę. Po prawej stronie zostanie wyświetlony formularz karty kredytowej.
+1. W lewym górnym rogu wybierz pozycję „+”, aby dodać kartę. Po prawej stronie zostanie wyświetlony formularz karty kredytowej.
 1. Wprowadź szczegółowe informacje o karcie kredytowej lub debetowej.
 
     ![Zrzut ekranu przedstawiający dodawanie nowej karty.](./media/billing-how-to-change-credit-card/sub-add-new-x.png)
 
-1. Aby to kart aktywną formę płatności, zaznacz pole wyboru obok pozycji **Ustaw jako moją aktywną formę płatności** powyżej formularza. Ta karta staną się aktywne instrumentu płatniczego dla wszystkich subskrypcji przy użyciu tej samej karty jako wybranej subskrypcji.
+1. Aby to kart aktywną formę płatności, zaznacz pole wyboru obok pozycji **Ustaw jako moją aktywną formę płatności** powyżej formularza. Ta karta stanie się aktywnym instrumentem płatniczym dla wszystkich subskrypcji używających tej karty jako wybranej subskrypcji.
 
 1. Wybierz opcję **Dalej**.
 
@@ -60,7 +60,7 @@ Jeśli wystąpi błąd, po dodaniu karty kredytowej, zobacz [karty kredytowej od
 W przypadku odnowienia pobiera dane karty kredytowej i numer pozostaje taka sama, należy zaktualizować istniejące dane karty kredytowej, takie jak Data wygaśnięcia. Jeśli zmiany numeru karty kredytowej ponieważ karty zostaną utracone, skradzione lub uznawane za wygasłe, postępuj zgodnie z instrukcjami w [Dodaj karty kredytowej jako metody płatności](#addcard) sekcji. Nie musisz zaktualizować CVV.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) stanowisku administratora konta.
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący wyszukiwania](./media/billing-how-to-change-credit-card/search.png)
 
@@ -68,11 +68,11 @@ W przypadku odnowienia pobiera dane karty kredytowej i numer pozostaje taka sama
 
     ![Zrzut ekranu przedstawiający wybraną opcją metody płatności Zarządzanie.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
-1. Kliknij kredytowej lub debetowej, który chcesz edytować. Po prawej stronie zostanie wyświetlony formularz karty kredytowej.
+1. Kliknij kartę kredytową lub debetową, który chcesz edytować. Po prawej stronie zostanie wyświetlony formularz karty kredytowej.
 
     ![Zrzut ekranu pokazujący wybrana karta kredytowa lub debetowa.](./media/billing-how-to-change-credit-card/edit-card-x.png)
 
-1. Aktualizuj szczegóły karty kredytowej lub debetowej.
+1. Zaktualizuj szczegółowe informacje o karcie kredytowej lub debetowej.
 1. Wybierz pozycję **Zapisz**.
 
 ## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Użyj innej karty kredytowej dla subskrypcji platformy Azure
@@ -80,7 +80,7 @@ W przypadku odnowienia pobiera dane karty kredytowej i numer pozostaje taka sama
 Jeśli masz więcej niż jednej z Twoich subskrypcji tego samego aktywną formę płatności, następnie zmieniając aktywną formę płatności na każdą z tych subskrypcji aktualizuje również aktywną formę płatności na inne.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) stanowisku administratora konta.
-1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący wyszukiwania](./media/billing-how-to-change-credit-card/search.png)
 
@@ -105,7 +105,7 @@ Jeśli masz więcej niż jednej z Twoich subskrypcji tego samego aktywną formę
     ![Zrzut ekranu przedstawiający wybraną opcją metody płatności Zarządzanie.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
 1. Zaznacz pole wyboru obok kart, które chcesz usunąć.
-1. Kliknij polecenie **Usuń**.
+1. Kliknij przycisk **Usuń**.
 
 Jeśli karta kredytowa jest aktywną formę płatności dla żadnej z Twoich subskrypcji firmy Microsoft, nie możesz usunąć go z kontem platformy Azure. Zmień aktywną formę płatności dla wszystkich subskrypcji, połączone z tym karta kredytowa lub debetowa i spróbuj ponownie
 <!-- # Add, update, or remove a credit or debit card for Azure

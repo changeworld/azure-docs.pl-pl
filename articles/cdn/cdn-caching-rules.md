@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
 ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679207"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Kontrola Azure działanie buforowania usługi CDN przy użyciu reguł buforowania
@@ -75,7 +75,7 @@ Dla globalnych i niestandardowych regułach buforowania można określić czas w
 
 Dla reguły niestandardowej pamięci podręcznej dostępne są dopasowanie dwa warunki:
  
-- **Ścieżka**: Ten warunek odpowiada Ścieżka adresu URL, z wyjątkiem nazwy domeny i obsługuje symbol wieloznaczny (\*). Na przykład _/myfile.html_, _/Moje/folder / *_, i _/my/images/*.jpg_. Maksymalna długość wynosi 260 znaków.
+- **Ścieżka**: Ten warunek odpowiada Ścieżka adresu URL, z wyjątkiem nazwy domeny i obsługuje symbol wieloznaczny (\*). Na przykład _/myfile.html_, _/Moje/folder / *_ , i _/my/images/*.jpg_. Maksymalna długość wynosi 260 znaków.
 
 - **Rozszerzenie**: Ten stan zastępuje rozszerzenie pliku żądanego pliku. Możesz podać listę rozszerzeń plików rozdzielanych przecinkami do dopasowania. Na przykład _.jpg_, _.mp3_, lub _.png_. Maksymalna liczba rozszerzeń wynosi 50, a maksymalna liczba znaków w rozszerzeniu to 16. 
 
@@ -92,7 +92,7 @@ Globalne i niestandardowych regułach buforowania są przetwarzane w następują
    - Czas wygasania pamięci podręcznej: 1 dzień
 
 - Buforowanie niestandardowe reguły #1:
-   - Warunek dopasowania: **Ścieżka**
+   - Warunek dopasowania: **Path**
    - Odpowiada wartości:   _/home / *_
    - Zachowanie buforowania: **zastąpienie**
    - Czas wygasania pamięci podręcznej: 2 dni

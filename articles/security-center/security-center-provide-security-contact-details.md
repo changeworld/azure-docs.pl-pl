@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 1/9/2018
 ms.author: rkarlin
 ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60909297"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Podawanie szczegółów dotyczących kontaktu zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center zaleci, podaj szczegóły dotyczące kontaktu zabezpieczeń dla subskrypcji platformy Azure, jeśli jeszcze nie. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. MSRC wykonuje monitorowania zabezpieczeń wybierz sieć platformy Azure i infrastrukturą i odbiera skarg analizy i nadużyć zagrożenia pochodzące od innych firm.
 
-Wiadomość e-mail z powiadomieniem są wysyłane na pierwsze wystąpienie codzienne alertu i tylko w przypadku alertów o wysokiej ważności. Preferencje poczty e-mail można konfigurować tylko dla zasad subskrypcji. Grupy zasobów w ramach subskrypcji będą dziedziczyć te ustawienia. 
+Powiadomienie e-mail jest wysyłane po pierwszym wystąpieniu alertu w ciągu dnia i tylko w przypadku alertów o wysokiej ważności. Preferencje poczty e-mail można konfigurować tylko dla zasad subskrypcji. Grupy zasobów w ramach subskrypcji będą dziedziczyć te ustawienia. 
 
-Wiadomość e-mail z alertem powiadomienia są wysyłane:
+Powiadomienia e-mail o alertach są wysyłane:
 - Tylko w przypadku alertów o wysokiej ważności
-- Do adresata jedną wiadomość e-mail na typ alertu na dzień  
+- Do pojedynczego adresata wiadomości e-mail na każdy typ alertu dziennie  
 - Nie więcej niż 3 wiadomości e-mail są wysyłane do jednego adresata w jednym dniu
-- Każda wiadomość e-mail zawiera pojedynczy alert nie Agregacja alertów
+- Każda wiadomość e-mail zawiera jeden alert, a nie agregację alertów
  
-Na przykład jeśli powiadamiał o atak przez protokół RDP, już została wysłana wiadomość e-mail, nie otrzymasz kolejną wiadomość e-mail o atak przez protokół RDP na tego samego dnia, nawet wtedy, gdy kolejny alert zostanie wywołany. 
+Jeśli na przykład została już wysłana wiadomość e-mail z powiadomieniem o ataku przez protokół RDP, tego samego dnia nie otrzymasz kolejnej wiadomości e-mail o ataku przez protokół RDP, nawet jeśli zostanie wyzwolony kolejny alert. 
  
 
 > [!NOTE]

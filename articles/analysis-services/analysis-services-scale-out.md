@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192306"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
@@ -113,9 +113,9 @@ Zwróć kodów stanu:
 |-1     |  Nieprawidłowy       |
 |0     | Replikowanie        |
 |1     |  Ponownego wypełniania       |
-|2     |   Zakończone       |
+|2     |   Ukończone       |
 |3     |   Niepowodzenie      |
-|4     |    Kończenie     |
+|4     |    Finalizowanie     |
 |||
 
 

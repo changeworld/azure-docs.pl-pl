@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
 ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698398"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Użyj programu Windows PowerShell dla usługi StorSimple do administrowania urządzeniem
@@ -58,13 +58,13 @@ Upewnij się, użyj następujących ustawień programu PuTTY nawiązać połącz
 1. W programie PuTTY **ponownej konfiguracji** dialogowym **kategorii** okienku wybierz **klawiatury**.
 2. Upewnij się, że wybrane są następujące opcje (są to domyślne ustawienia w przypadku rozpoczęcia nowej sesji).
    
-   | Element klawiatury | Wybierz pozycję |
+   | Element klawiatury | Wybierz |
    | --- | --- |
    | Klawisz BACKSPACE |Kontrolka-? (127) |
    | Strona główna i na końcu kluczy |Standardowa (Standard) |
    | Funkcja klucze i klawiatury numerycznej |ESC [n ~ |
-   | Początkowy stan klawisze kursora |Normalna |
-   | Początkowy stan numerycznej |Normalna |
+   | Początkowy stan klawisze kursora |Normalne |
+   | Początkowy stan numerycznej |Normalne |
    | Włączanie funkcji dodatkowej klawiatury |Kontrolka Alt różni się od AltGr |
    
     ![Obsługiwane ustawienia programu Putty](./media/storsimple-windows-powershell-administration/IC740877.png)

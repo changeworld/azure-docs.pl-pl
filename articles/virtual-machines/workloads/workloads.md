@@ -12,20 +12,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 02/21/2019
+ms.date: 06/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 98bc10377dff8f06cd02d4a384ca14b364a73e74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 167370a4eebded3dba898ed47dede7a36900d976
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808218"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Obciążenia na maszynach wirtualnych platformy Azure
 
 Maszyny wirtualne na platformie Azure może obsłużyć wielu obciążeń. Każde obciążenie może mieć wyspecjalizowane wskazówki dotyczące optymalne projektowania do wdrożenia na maszynach wirtualnych na platformie Azure. Poniżej przedstawiono wskazówki, oferowaną w przypadku obciążeń specjalne.
 
-
+- [Obliczenia o wysokiej wydajności](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) w usłudze Azure używa procesora CPU lub GPU maszyny wirtualne oferujące zoptymalizowane do rozwiązywania problemów złożonych, mocy obliczeniowej. 
 - [SAP](./sap/get-started.md) na platformie Azure można uruchomić scenariuszy i obciążeń o znaczeniu krytycznym SAP na platformie skalowalne, zgodne i sprawdzonym działaniu w przedsiębiorstwach.
 - [Oracle](./oracle/oracle-considerations.md) obsługuje uruchamianie Oracle DB 12.1 Standard i Enterprise na platformie Azure obrazów maszyn wirtualnych na podstawie w systemie Oracle Linux. 
 - [Rehostowanie komputera mainframe](./mainframe-rehosting/overview.md) 

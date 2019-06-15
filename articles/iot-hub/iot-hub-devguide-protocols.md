@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626183"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Odwołania — wybór protokołu komunikacyjnego
@@ -29,7 +29,7 @@ Aby uzyskać informacje o współpracy tych protokołów określonych funkcji us
 
 Poniższa tabela zawiera ogólne zalecenia dotyczące wybranego protokołu:
 
-| Protokół | Kiedy należy wybrać ten protokół |
+| Protocol | Kiedy należy wybrać ten protokół |
 | --- | --- |
 | MQTT <br> MQTT za pośrednictwem protokołu WebSocket |Użyj tej opcji na wszystkich urządzeniach, które nie wymagają nawiązać połączenie za pośrednictwem tego samego połączenia TLS między wieloma urządzeniami (każdy z jej własnych poświadczeń na urządzenie). |
 | AMQP <br> Protokół AMQP przez WebSocket |Aby móc korzystać z połączenia Multipleksowanie między urządzeniami w systemie bramy pola i w chmurze. |
@@ -54,7 +54,7 @@ W przypadku wybrania usługi protokołu komunikacji po stronie urządzenia, nale
 
 Urządzenia mogą komunikować się z usługą IoT Hub na platformie Azure przy użyciu różnych protokołów. Zazwyczaj wybranego protokołu są sterowane określonych wymagań rozwiązania. Poniższa tabela zawiera listę portów wychodzących, które muszą być otwarte dla urządzenia można było korzystać z określonym protokołem:
 
-| Protokół | Port |
+| Protocol | Port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT za pośrednictwem obiektów WebSocket |443 |

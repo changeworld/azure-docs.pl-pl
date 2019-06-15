@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60593378"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Samouczek: Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
@@ -75,7 +75,7 @@ Po ukończeniu wymagania wstępne, pierwszym krokiem jest do utworzenia klastra 
 
    | Strona | Ustawienia |
    | --- | --- |
-   | Przed rozpoczęciem |Użyj domyślnych |
+   | Przed rozpoczęciem |Użyj wartości domyślnych |
    | Wybierz serwery |Wpisz nazwę pierwszego programu SQL Server w **wprowadź nazwę serwera** i kliknij przycisk **Dodaj**. |
    | Ostrzeżenie dotyczące sprawdzania poprawności |Wybierz **nie. nie jest wymagana obsługa firmy Microsoft dotyczącej tego klastra, a w związku z tym nie chcesz uruchomić testy weryfikacyjne. Po kliknięciu przycisku Dalej kontynuacja procesu tworzenia klastra**. |
    | Punkt dostępu do administrowania klastrem |Wpisz nazwę klastra, na przykład **SQLAGCluster1** w **nazwy klastra**.|
@@ -299,7 +299,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności wykonując nast�
 
     ![Kreatora nowej grupy dostępności, wybierz początkową synchronizację danych](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. W **Wybierz początkową synchronizację danych** wybierz **pełne** i określ udostępnionej lokalizacji sieciowej. W przypadku lokalizacji, użyj [udziału kopii zapasowej, który został utworzony](#backupshare). W przykładzie, mógł on  **\\ \\ \<pierwszego serwera SQL\>\Backup\\**. Kliknij przycisk **Dalej**.
+8. W **Wybierz początkową synchronizację danych** wybierz **pełne** i określ udostępnionej lokalizacji sieciowej. W przypadku lokalizacji, użyj [udziału kopii zapasowej, który został utworzony](#backupshare). W przykładzie, mógł on  **\\ \\ \<pierwszego serwera SQL\>\Backup\\** . Kliknij przycisk **Dalej**.
 
    >[!NOTE]
    >Pełna synchronizacja ma pełną kopię zapasową bazy danych w pierwszym wystąpieniu programu SQL Server i przywrócenie go do drugiego wystąpienia. Pełna synchronizacja w przypadku dużych baz danych nie jest zalecane, ponieważ może potrwać dłuższy czas. Teraz można zmniejszyć ręcznie wykonywanie kopii zapasowej bazy danych i przywracanie jej przy użyciu `NO RECOVERY`. Jeśli baza danych jest już przywrócona z `NO RECOVERY` na drugim serwerze SQL przed rozpoczęciem konfigurowania grupy dostępności, wybierz **tylko Dołącz**. Jeśli chcesz wykonać kopię zapasową po skonfigurowaniu grupy dostępności, wybierz polecenie **Pomiń początkową synchronizację danych**.
@@ -320,7 +320,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności wykonując nast�
 
 ### <a name="check-the-availability-group"></a>Sprawdź grupy dostępności
 
-1. W **Eksplorator obiektów**, rozwiń węzeł **wysokiej dostępności (AlwaysOn)**, następnie rozwiń **grup dostępności**. Powinien zostać wyświetlony nowej grupy dostępności, w tym kontenerze. Kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij przycisk **wyświetlić pulpit nawigacyjny**.
+1. W **Eksplorator obiektów**, rozwiń węzeł **wysokiej dostępności (AlwaysOn)** , następnie rozwiń **grup dostępności**. Powinien zostać wyświetlony nowej grupy dostępności, w tym kontenerze. Kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij przycisk **wyświetlić pulpit nawigacyjny**.
 
    ![Pokaż pulpit nawigacyjny grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/76-showdashboard.png)
 
@@ -359,10 +359,10 @@ Usługi Azure Load Balancer może być standardowego modułu równoważenia obci
    | Ustawienie | Pole |
    | --- | --- |
    | **Nazwa** |Na przykład użyj nazwy tekstu dla modułu równoważenia obciążenia **sqlLB**. |
-   | **Typ** |Wewnętrzny |
+   | **Typ** |Wewnętrzne |
    | **Sieć wirtualna** |Użyj nazwy sieci wirtualnej platformy Azure. |
    | **Podsieć** |Użyj nazwy podsieci, należącym do maszyny wirtualnej.  |
-   | **Przypisywanie adresów IP** |Statyczny |
+   | **Przypisywanie adresów IP** |Static |
    | **Adres IP** |Użyj adresu dostępne z podsieci. Ten adres na użytek z odbiornikiem grupy dostępności. Należy pamiętać, że to różni się od adresu IP klastra.  |
    | **Subskrypcja** |Użyj tej samej subskrypcji co maszyna wirtualna. |
    | **Lokalizacja** |Użyj tej samej lokalizacji co maszyna wirtualna. |
@@ -405,7 +405,7 @@ Aby skonfigurować moduł równoważenia obciążenia, musisz utworzyć pulę za
    | **Nazwa** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokół** | Wybierz protokół TCP | TCP |
    | **Port** | Wszelkie nieużywanego portu | 59999 |
-   | **Interwał**  | Czas między próbami sondy w sekundach |5 |
+   | **Interval**  | Czas między próbami sondy w sekundach |5 |
    | **Próg złej kondycji** | Liczba kolejnych niepowodzeń sondy musi wystąpić na maszynie wirtualnej zostały uznane za złej kondycji  | 2 |
 
 1. Kliknij przycisk **OK** można ustawić sondy kondycji.
@@ -448,7 +448,7 @@ Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia
    | **Nazwa** | Text | WSFCEndPointProbe |
    | **Protokół** | Wybierz protokół TCP | TCP |
    | **Port** | Wszelkie nieużywanego portu | 58888 |
-   | **Interwał**  | Czas między próbami sondy w sekundach |5 |
+   | **Interval**  | Czas między próbami sondy w sekundach |5 |
    | **Próg złej kondycji** | Liczba kolejnych niepowodzeń sondy musi wystąpić na maszynie wirtualnej zostały uznane za złej kondycji  | 2 |
 
 1. Kliknij przycisk **OK** można ustawić sondy kondycji.

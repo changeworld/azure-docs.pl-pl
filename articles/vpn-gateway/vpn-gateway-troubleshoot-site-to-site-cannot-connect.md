@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 01729971169011002fa4231f043f82f105f81cdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3919243569035be41293ddc97c76a9f964cda7cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64688501"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Rozwiązywanie problemów: Połączenia sieci VPN typu lokacja lokacja platformy Azure nie można nawiązać połączenia i przestaje działać
 
@@ -102,7 +102,10 @@ Wyszukaj i Usuń routing zdefiniowany przez użytkownika (UDR) lub grupy zabezpi
 2. Kliknij ostrzeżenie o certyfikacie.
 3. Jeśli pojawi się odpowiedź bramy sieci VPN jest uważany za dobrej kondycji. Jeśli nie otrzymasz odpowiedzi, brama może nie być w dobrej kondycji lub sieciowej grupy zabezpieczeń w ramach bramy podsieci jest przyczyną problemu. Poniższy tekst to przykładowej odpowiedzi:
 
-    &lt;? wersji xml = "1.0"? > <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">podstawowe wystąpienie: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6 < / string&gt;
+    ```xml
+    <?xml version="1.0"?>
+    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string>
+    ```
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>Krok 8. Sprawdź, czy lokalne urządzenie sieci VPN ma włączoną funkcję doskonałe utajnienie przekazywania
 

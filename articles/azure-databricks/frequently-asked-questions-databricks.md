@@ -10,10 +10,10 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60784711"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
@@ -99,7 +99,7 @@ Klastry usługi Databricks używają jeden publiczny adres IP w każdym węźle.
 #### <a name="error-message"></a>Komunikat o błędzie
 
 "Niepowodzenie uruchomienia dostawcy w chmurze: Podczas konfigurowania klastra wystąpił błąd dostawcy chmury. Aby uzyskać więcej informacji zobacz Przewodnik po usłudze Databricks.
-Kod błędu systemu Azure: Komunikat o błędzie platformy MissingSubscriptionRegistration Azure: Subskrypcja nie jest zarejestrowana do używania przestrzeni nazw „Microsoft.Compute”. Zobacz https://aka.ms/rps-not-found na temat rejestrowania subskrypcji. "
+Kod błędu systemu Azure: Komunikat o błędzie platformy MissingSubscriptionRegistration Azure: Subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw "Microsoft.Compute". Zobacz https://aka.ms/rps-not-found na temat rejestrowania subskrypcji. "
 
 #### <a name="solution"></a>Rozwiązanie
 

@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61420381"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdowanie i stosowanie zaleceń dotyczących wydajności
@@ -42,7 +42,7 @@ Zalecenia są sortowane według ich potencjalny wpływ na wydajność na następ
 | Wpływ | Opis |
 |:--- |:--- |
 | Wysoka |Zalecenia o dużym znaczeniu powinien zapewnić najbardziej znaczącego wpływu na wydajność. |
-| Medium |Średni wpływ zalecenia należy poprawić wydajność, ale nie w znacznym stopniu. |
+| Średni |Średni wpływ zalecenia należy poprawić wydajność, ale nie w znacznym stopniu. |
 | Małe |Mały wpływ zalecenia należy zapewnić lepszą wydajność bez, ale ulepszenia może nie być istotne. |
 
 
@@ -135,8 +135,8 @@ Stosowanie zalecenia nie może być realizowane natychmiast. Portal zawiera szcz
 | Sprawdzanie poprawności |Zalecenie zostało pomyślnie zastosowane i usługa jest mierzenie korzyści. |
 | Powodzenie |Zalecenie zostało pomyślnie zastosowane i zostały zmierzone korzyści. |
 | Błąd |Wystąpił błąd w trakcie procesu stosowania zalecenia. Może to być przejściowy problem lub prawdopodobnie schematu zmiany do tabeli i skrypt nie jest już prawidłowy. |
-| Cofanie |Zalecenia zostały zastosowane, ale został uznany za wydajne niż i zostanie automatycznie przywrócona. |
-| Cofnięte |Zalecenie zostało wycofane. |
+| Przywracanie |Zalecenia zostały zastosowane, ale został uznany za wydajne niż i zostanie automatycznie przywrócona. |
+| Przywrócono |Zalecenie zostało wycofane. |
 
 Kliknij przycisk rekomendacji w trakcie z listy, aby uzyskać więcej informacji:
 

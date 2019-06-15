@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773268"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Pobierz metryki użycia maszyny wirtualnej przy użyciu interfejsu API REST
@@ -23,7 +23,7 @@ W tym przykładzie pokazano, jak pobrać wykorzystaniu Procesora dotyczące [mas
 
 Pełna dokumentacja i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Tworzenie żądania
+## <a name="build-the-request"></a>Żądanie kompilacji
 
 Użyj następującego żądania GET do zbierania [metryki procentowe użycie procesora CPU](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) z maszyny wirtualnej
 
@@ -37,8 +37,8 @@ Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Typ zawartości:*|Wymagany. Ustaw `application/json`.|  
-|*Autoryzacja:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
+|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identyfikatora URI
 
@@ -48,7 +48,7 @@ Wymagane są następujące nagłówki:
 | resourceGroupName | Nazwa grupy zasobów platformy Azure skojarzone z zasobem. Tę wartość można uzyskać z interfejsu API usługi Azure Resource Manager, interfejsu wiersza polecenia lub portalu. |
 | vmname | Nazwa maszyny wirtualnej platformy Azure. |
 | metricnames | Rozdzielana przecinkami lista prawidłowe [metryk modułu równoważenia obciążenia](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| wersja interfejsu API | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2018-01-01`zawarte w powyższym adresie URL.  |
+| api-version | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2018-01-01`zawarte w powyższym adresie URL.  |
 | TimeSpan | Ciąg o następującym formacie `startDateTime_ISO/endDateTime_ISO` definiuje przedział czasu zwracane metryki. Ten parametr opcjonalny jest ustawiony do zwrócenia dnia, przez które dane w przykładzie. |
 | &nbsp; | &nbsp; |
 

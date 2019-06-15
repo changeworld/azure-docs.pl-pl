@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70ca1e2f4fd831619cc3cd443d98018a35f4e1ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963077"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
@@ -29,7 +29,7 @@ Usługa Azure Active Directory obejmuje [konta użytkownika usługi aprowizacji]
 
 W tym artykule opisano, jak sprawdzić stan zadań inicjowania obsługi administracyjnej po zostało skonfigurowane i jak rozwiązywać problemy z inicjowania obsługi poszczególnych użytkowników i grup.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Inicjowania obsługi administracyjnej łączniki są, konfigurowanie i skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), postępując zgodnie z [podano dokumentację](../saas-apps/tutorial-list.md) dla obsługiwanych aplikacji. Po skonfigurowaniu i uruchomiona, inicjowanie obsługi administracyjnej zadania mogą zostać zgłoszone przy użyciu jednej z dwóch metod:
 
@@ -135,7 +135,7 @@ Inicjowania obsługi administracyjnej podsumowania raport i dzienniki inspekcji 
 Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatycznej aprowizacji użytkowników w temacie [problemy z konfigurowaniem i aprowizowaniem użytkowników z aplikacją](application-provisioning-config-problem.md).
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](what-is-single-sign-on.md)

@@ -9,10 +9,10 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 2c8b3b4671fd14f9b10b8491861ae2c652f0188b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461658"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Tworzenie wirtualnej sieci WAN tabeli tras Centrum dla urządzeń WUS: Azure Portal
@@ -85,7 +85,7 @@ Utwórz połączenie z każdej szprysze pośrednich sieci wirtualnej (sieć VNet
 
 | Nazwa sieci wirtualnej| Nazwa połączenia|
 | --- | --- |
-| Sieć wirtualna 1 | testconnection1 |
+| VNet1 | testconnection1 |
 | Sieć VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 

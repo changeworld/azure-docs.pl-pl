@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
 ms.openlocfilehash: 21c49ad0d73721dd204a7a3899d11cf10d43521b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942072"
 ---
 # <a name="managing-users-on-the-cloud-partner-portal"></a>Zarządzanie użytkownikami w portalu Cloud Partner
@@ -28,7 +28,7 @@ Wykonaj następujące kroki, aby dodać użytkowników i przypisać role do publ
     ![Na karcie Użytkownicy](./media/userstab.png)
 
 
-2. Kliknij pozycję **Add User** (Dodaj użytkownika).
+2. Kliknij przycisk **Dodaj użytkownika**.
 
     ![Wybieranie pozycji Dodaj użytkownika](./media/adduser.png)
 
@@ -40,7 +40,7 @@ Wykonaj następujące kroki, aby dodać użytkowników i przypisać role do publ
     - Dodaj "Grupa/zespołu wiadomość e-mail alias/grupy zabezpieczeń" w celu ochrony przed poszczególnych opuszczania organizacji.
     - Upewnij się, że poczty e-mail podanego w portalu Cloud Partner identyfikatory są monitorowane pod kątem jakiejkolwiek korespondencji od firmy Microsoft.
     
-    ![Przypisz rolę](./media/assignrole.png)
+    ![Przypisanie roli](./media/assignrole.png)
 
     **Rola**: Można znaleźć w poniższej tabeli, aby zidentyfikować użytkownika odpowiedni typ roli.
 

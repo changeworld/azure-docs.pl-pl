@@ -11,10 +11,10 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646711"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Tworzenie usługi Azure magazyn usługi Recovery Services za pomocą interfejsu API REST
@@ -35,8 +35,8 @@ Wymagane są następujące nagłówki:
 
 | Nagłówek żądania   | Opis |
 |------------------|-----------------|
-| *Typ zawartości:*  | Wymagany. Ustaw `application/json`. |
-| *Autoryzacja:* | Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Wymagany. Ustaw `application/json`. |
+| *Authorization:* | Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Aby uzyskać więcej informacji o tym, jak utworzyć żądanie, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -68,14 +68,14 @@ Treść poniższy przykład umożliwia utworzenie magazynu w "Zachodnie stany US
 }
 ```
 
-## <a name="responses"></a>Odpowiedzi
+## <a name="responses"></a>Responses
 
 Istnieją dwa pomyślne odpowiedzi dla operacji, które można utworzyć lub zaktualizować magazynu usługi Recovery Services:
 
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |   [Magazyn](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 utworzono     | [Magazyn](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Utworzone      |
+|201 utworzono     | [Magazyn](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Utworzono      |
 
 Aby uzyskać więcej informacji na temat odpowiedzi interfejsu API REST, zobacz [przetworzyć komunikatu odpowiedzi](/rest/api/azure/#process-the-response-message).
 

@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574105"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
@@ -93,7 +93,7 @@ Kontrola źródła wymaga niektóre minimalne uprawnienia osobiste tokeny dostę
 
 Aby uzyskać więcej informacji na temat tworzenia osobistego tokenu dostępu w usłudze GitHub, odwiedź stronę [Tworzenie osobistego tokenu dostępu dla wiersza polecenia](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Zakres  |Opis  |
+|Scope  |Opis  |
 |---------|---------|
 |**repozytorium**     |         |
 |repozytorium: stan     | Stan zatwierdzania dostępu         |
@@ -107,7 +107,7 @@ Aby uzyskać więcej informacji na temat tworzenia osobistego tokenu dostępu w 
 
 Aby uzyskać więcej informacji o tworzeniu osobistego tokenu dostępu w repozytoriach usługi Azure, odwiedź stronę [uwierzytelniania dostępu za pomocą osobiste tokeny dostępu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Zakres  |
+|Scope  |
 |---------|
 |Kod (odczyt)     |
 |Projekt i zespół (odczyt)|
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji o tworzeniu osobistego tokenu dostępu w repozyt
 
 <sup>1</sup> uprawnień połączenia usługi jest tylko wymagane, jeśli włączono autosync.
 
-## <a name="syncing"></a>Synchronizowanie
+## <a name="syncing"></a>Trwa synchronizowanie
 
 Wybierz źródło z tabeli na **kontroli źródła** strony. Kliknij przycisk **Rozpocznij synchronizację** można uruchomić procesu synchronizacji.
 

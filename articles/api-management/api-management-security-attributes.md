@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001086"
 ---
 # <a name="security-attributes-for-api-management"></a>Atrybuty zabezpieczeń dla usługi API Management
@@ -38,7 +38,7 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowaną w usługi API Managemen
 |---|---|--|
 | Obsługa punktu końcowego usługi| Nie | |
 | Obsługa iniekcji sieci wirtualnej| Tak | |
-| Izolacja sieci i zapory pomocy technicznej| Tak | Przy użyciu sieciowych grup zabezpieczeń (NSG) i Azure Application Gateway (lub inne urządzenie programowe) odpowiednio. |
+| Izolacja sieci i zapory pomocy technicznej| Yes | Przy użyciu sieciowych grup zabezpieczeń (NSG) i Azure Application Gateway (lub inne urządzenie programowe) odpowiednio. |
 | Obsługa tunelowania wymuszonego| Tak | Sieć Azure udostępnia wymuszonym tunelowaniem. |
 
 ## <a name="detection"></a>Wykrywanie
@@ -59,19 +59,19 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowaną w usługi API Managemen
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Tak | [Dzienniki aktywności w usłudze Azure Monitor](../azure-monitor/platform/activity-logs-overview.md) |
+| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Yes | [Dzienniki aktywności w usłudze Azure Monitor](../azure-monitor/platform/activity-logs-overview.md) |
 | Rejestrowanie płaszczyzny danych i inspekcji| Tak | [Dzienniki diagnostyczne platformy Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md) i (opcjonalnie) [usługi Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak | Za pomocą [usługi Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) |
+| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Yes | Za pomocą [usługi Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) |
 
 ## <a name="vulnerability-scans-false-positives"></a>Luki w zabezpieczeniach skanuje wyników fałszywie dodatnich
 
 W tej sekcji omówiono powszechnych luk w zabezpieczeniach, które nie dotyczą usługi Azure API Management.
 
-| Luka w zabezpieczeniach               | Opis                                                                                                                                                                                                                                                                                                               |
+| Luki w zabezpieczeniach               | Opis                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed Usterka w implementacji znaleziono w przypadku niektórych produktów F5 rozszerzenia TLS SessionTicket. Umożliwia ona wyciek ("jest") do 31 bajtów danych z niezainicjowanej pamięci. Jest to spowodowane przez stos protokołu TLS dopełnienie identyfikator sesji, przekazywane z klienta z danymi, aby stał się 32 bity długości. |

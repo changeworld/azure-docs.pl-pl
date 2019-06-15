@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cba13012bf165a097bd1382da8ef9897b0584d28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233905"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066875"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji dla Windows wirtualnego pulpitu (wersja zapoznawcza)
 
@@ -73,7 +73,7 @@ Przed przystąpieniem do wykonywania [Pobierz i zaimportuj moduł programu Power
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób tworzenia grupy aplikacji, wypełniona RemoteApps i przypisywanie użytkowników do grupy aplikacji. Aby dowiedzieć się więcej o tym, jak zalogować się do wirtualnego pulpitu Windows, przejdź do nawiązywania połączenia z wirtualnego How-tos pulpitu Windows.
+W tym samouczku przedstawiono sposób tworzenia grupy aplikacji, wypełniona RemoteApps i przypisywanie użytkowników do grupy aplikacji. Aby dowiedzieć się, jak utworzyć pulę hosta sprawdzania poprawności, która umożliwia monitorowanie aktualizacji usługi przed zarządzeniem do środowiska produkcyjnego, zobacz Tworzenie puli hosta do sprawdzania poprawności samouczek aktualizacji usługi.
 
-- [Nawiązać połączenie z klienta pulpitu zdalnego na Windows 7 i Windows 10](connect-windows-7-and-10.md)
-- [Nawiązywać połączenia z klientem w sieci web Windows wirtualnego pulpitu (wersja zapoznawcza)](connect-web.md)
+> [!div class="nextstepaction"]
+> [Utwórz pulę hosta do sprawdzania poprawności samouczek aktualizacji usługi](./create-validation-host-pool.md)

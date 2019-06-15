@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
 ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776528"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Użyj wystąpień RDMA lub procesora GPU w pulach usługi Batch
@@ -110,7 +110,7 @@ Aby uruchamiać aplikacje CUDA w puli, węzłów kontrolera sieci Windows, musis
 | Ustawienie | Wartość |
 | ---- | ----- | 
 | **Typ obrazu** | Witryna Marketplace (Linux/Windows) |
-| **Wydawca** | MicrosoftWindowsServer |
+| **Publisher** | MicrosoftWindowsServer |
 | **Oferta** | WindowsServer |
 | **Jednostka SKU** | 2016-Datacenter |
 | **Rozmiar węzła** | NC6 Standard |
@@ -165,7 +165,7 @@ Za pomocą interfejsów API usługi Batch lub witrynie Azure portal utworzyć pu
 | Ustawienie | Wartość |
 | ---- | ---- |
 | **Typ obrazu** | Witryna Marketplace (Linux/Windows) |
-| **Wydawca** | OpenLogic |
+| **Publisher** | OpenLogic |
 | **Oferta** | CentOS-HPC |
 | **Jednostka SKU** | 7.4 |
 | **Rozmiar węzła** | Standardowa H16r |

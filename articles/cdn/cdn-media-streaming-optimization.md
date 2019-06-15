@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636247"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Multimediów strumieniowych Optymalizacja przy użyciu usługi Azure CDN 
@@ -84,10 +84,10 @@ Jeśli **Azure CDN Standard from Akamai** wykryje, że element zawartości jest 
 Krótki czas buforowania ujemna jest przydatna do odciążania źródła, gdy wielu użytkowników żądają fragmentu, który jeszcze nie istnieje. Przykładem jest strumień na żywo, gdzie pakiety nie są dostępne ze źródła tego drugiego. Interwał jest już w pamięci podręcznej pomaga również odciążania żądań ze źródła, ponieważ zawartość wideo zwykle nie jest modyfikowana.
  
 
-|   | Ogólne dostarczanie w sieci Web | Ogólne transmisje strumieniowe multimediów | Przesyłanie strumieniowe multimediów wideo na żądanie  
+|   | Ogólne dostarczanie w Internecie | Ogólne transmisje strumieniowe multimediów | Przesyłanie strumieniowe multimediów wideo na żądanie  
 --- | --- | --- | ---
-Pamięć podręczna: Pozytywna <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |365 dni | 365 dni   
-Pamięć podręczna: Negatywna <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda | 1 sekunda
+Pamięć podręczna: Dodatnie <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |365 dni | 365 dni   
+Pamięć podręczna: Ujemne <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Dotyczy błąd źródła  
 

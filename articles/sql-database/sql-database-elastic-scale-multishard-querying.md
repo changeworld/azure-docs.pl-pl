@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 35759f03d7cf09a4114ca6dca74bd3ee92fdcbfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60761696"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Wieloma fragmentami zapytań, za pomocą narzędzi elastycznych baz danych
@@ -61,7 +61,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 Najważniejszą różnicą składa się wieloma fragmentami połączeń. Gdzie **SqlConnection** operuje na poszczególnych baz danych, **MultiShardConnection** przyjmuje ***zbiór fragmentów*** jako dane wejściowe. Wypełnianie kolekcji fragmentów z mapy fragmentów. Następnie wykonywania zapytania w kolekcji przy użyciu fragmentów **UNION ALL** semantyki gromadzi pojedynczy wynik ogólny. Opcjonalnie można dodać nazwę fragmentu wiersza, z której pochodzi do danych wyjściowych przy użyciu **ExecutionOptions** właściwość polecenia.
 
-Należy pamiętać, wywołanie **myShardMap.GetShards()**. Ta metoda umożliwia pobranie wszystkich fragmentów z mapy fragmentów i zapewnia łatwy sposób uruchamiania zapytania dla wszystkich odpowiednich baz danych. Zbiór fragmentów dla zapytań wieloma fragmentami może być dostosowany dalsze, wykonując zapytanie LINQ na kolekcji zwrócony z wywołania **myShardMap.GetShards()**. W połączeniu z zasadami wyniki częściowe bieżące możliwości badania wieloma fragmentami został zaprojektowany do działania oraz dziesiątki do setek fragmentów.
+Należy pamiętać, wywołanie **myShardMap.GetShards()** . Ta metoda umożliwia pobranie wszystkich fragmentów z mapy fragmentów i zapewnia łatwy sposób uruchamiania zapytania dla wszystkich odpowiednich baz danych. Zbiór fragmentów dla zapytań wieloma fragmentami może być dostosowany dalsze, wykonując zapytanie LINQ na kolekcji zwrócony z wywołania **myShardMap.GetShards()** . W połączeniu z zasadami wyniki częściowe bieżące możliwości badania wieloma fragmentami został zaprojektowany do działania oraz dziesiątki do setek fragmentów.
 
 Ograniczenie z wieloma fragmentami zapytań jest obecnie brak sprawdzania poprawności dla fragmentów i podfragmentów, który jest badane są tabele. Chociaż routingu zależnego od danych sprawdza, czy dany fragment część mapowania fragmentów w czasie wykonywania zapytań, zapytania z wieloma fragmentami nie należy wykonywać tego sprawdzenia. Może to prowadzić do uruchamiania w bazach danych, które zostały usunięte z mapy fragmentów zapytania z wieloma fragmentami.
 

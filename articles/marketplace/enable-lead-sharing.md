@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938689"
 ---
 # <a name="enable-lead-sharing"></a>Włącz udostępnianie potencjalnego klienta
@@ -39,7 +39,7 @@ Odsetek klientów na następujących listach pokazują, potencjalnymi klientami:
 
 | Witryna sklepu | Wyświetlanie listy |
 |:--- |:--- |
-| AppSource | <table> <tr><td>aplikacja</td></tr> <tr><td>Usługi doradcze</td></tr> </table> |
+| AppSource | <table> <tr><td>Aplikacja</td></tr> <tr><td>Usługi doradcze</td></tr> </table> |
 | Azure Marketplace | <table> <tr><td>Oferta</td></tr> <tr><td>Technologia</td></tr> </table> |
 
 Proces powinien mieć w miejscu, aby wykonać kolejne czynności z potencjalnymi klientami zgodnie z opisem w poniższej tabeli:

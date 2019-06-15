@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
 ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636813"
 ---
 # <a name="how-caching-works"></a>Jak działa buforowanie
@@ -124,9 +124,9 @@ Aby uzyskać **Azure CDN w warstwie standardowa firmy Microsoft** buforowania do
 
 W poniższej tabeli opisano domyślne zachowanie dla produktów Azure CDN i ich optymalizacji buforowania.
 
-|    | Microsoft: Ogólne dostarczanie w sieci Web | Verizon: Ogólne dostarczanie w sieci Web | Verizon: DSA | Akamai: Ogólne dostarczanie w sieci Web | Akamai: DSA | Akamai: Pobieranie dużych plików | Akamai: ogólne lub strumieniowego przesyłania multimediów wideo na żądanie |
+|    | Microsoft: Ogólne dostarczanie w Internecie | Verizon: Ogólne dostarczanie w Internecie | Verizon: DSA | Akamai: Ogólne dostarczanie w Internecie | Akamai: DSA | Akamai: Pobieranie dużych plików | Akamai: ogólne lub strumieniowego przesyłania multimediów wideo na żądanie |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Honoruj źródła**       | Yes    | Yes   | Nie   | Yes    | Nie   | Yes   | Yes    |
+| **Honoruj źródła**       | Tak    | Yes   | Nie   | Yes    | Nie   | Yes   | Tak    |
 | **Czas trwania pamięci podręcznej usługi CDN** | 2 dni |7 dni | Brak | 7 dni | Brak | 1 dzień | 1 rok |
 
 **Uwzględnić pochodzenia**: Określa, czy uwzględnić obsługiwanych nagłówki z dyrektywami, jeśli istnieją w odpowiedzi HTTP z serwera pochodzenia.

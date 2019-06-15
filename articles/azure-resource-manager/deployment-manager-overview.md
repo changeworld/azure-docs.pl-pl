@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066822"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
 Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie z oczekiwaniami w każdym regionie, Azure Deployment Manager służy do koordynowania etapowe wdrażanie usługi. Tak jak w przypadku wszystkich wdrożeń platformy Azure dla usługi w określają zasoby [szablonów usługi Resource Manager](resource-group-authoring-templates.md). Po utworzeniu szablonów umożliwia Deployment Manager opisano topologii dla Twojej usługi i jak ona powinny być udostępniona.
 
-Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert. 
+Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert.
 
 Azure Deployment Manager jest w wersji zapoznawczej. Pomóż nam udoskonalać tę funkcję, zapewniając [opinii](https://aka.ms/admfeedback).
 
@@ -31,7 +31,12 @@ Aby użyć programu Deployment Manager, należy utworzyć cztery pliki:
 
 Szablon topologii wdrażania przed wdrożeniem szablon wprowadzania.
 
-Dokumentację interfejsu REST API usługi Azure Deployment Manager można znaleźć [tutaj](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Dodatkowe zasoby:
+
+- [Odwołanie do interfejsu REST API usługi Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Samouczek: Azure Deployment Manager za pomocą szablonów usługi Resource Manager](./deployment-manager-tutorial.md).
+- [Samouczek: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+- [Próbka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Tożsamość i dostęp
 
@@ -191,7 +196,7 @@ W szablonie wdrożenia tworzenia źródła artefaktu dla danych binarnych, czego
 
 ### <a name="steps"></a>Kroki
 
-Można zdefiniować krok do wykonania przed lub po operacji wdrożenia. Obecnie tylko `wait` kroku i krok "test kondycji" są dostępne. 
+Można zdefiniować krok do wykonania przed lub po operacji wdrożenia. Obecnie tylko `wait` kroku i krok "test kondycji" są dostępne.
 
 Krok oczekiwania wstrzymuje wdrożenia przed kontynuowaniem. Umożliwia zweryfikowanie, że usługa jest uruchomiona, zgodnie z oczekiwaniami przed wdrożeniem następnej jednostki usługi. Poniższy kod przedstawia ogólny format kroku oczekiwania.
 
@@ -262,13 +267,13 @@ Aby uzyskać więcej informacji, zobacz [odwołanie do szablonu wprowadzanie](/a
 
 ## <a name="parameter-file"></a>Plik parametrów
 
-Należy utworzyć dwa pliki parametrów. Jeden plik parametrów jest używana podczas wdrażania topologii usługi, a drugi jest używany do wdrażania wdrożenia. Brak niektórych wartości, musisz upewnić się, są takie same, w obu plikach parametru.  
+Należy utworzyć dwa pliki parametrów. Jeden plik parametrów jest używana podczas wdrażania topologii usługi, a drugi jest używany do wdrażania wdrożenia. Brak niektórych wartości, musisz upewnić się, są takie same, w obu plikach parametru.
 
 ## <a name="containerroot-variable"></a>Zmienna containerRoot
 
 W przypadku wdrożeń numerów wersji ścieżkę do artefaktów zmienia się z każdym wydaniu nowej wersji. Przy pierwszym uruchomieniu wdrożenia ścieżki mogą być `https://<base-uri-blob-container>/binaries/1.0.0.0`. Może być po raz drugi `https://<base-uri-blob-container>/binaries/1.0.0.1`. Program Deployment Manager ułatwia uzyskiwanie ścieżki katalogu poprawny głównego dla bieżącego wdrożenia przy użyciu `$containerRoot` zmiennej. Ta wartość zmienia się z każdą wersją i nie jest znana przed przystąpieniem do wdrożenia.
 
-Użyj `$containerRoot` zmiennej w pliku parametrów szablonu do wdrażania zasobów platformy Azure. W czasie wdrażania ta zmienna jest zastępowana rzeczywistymi wartościami z wdrożenia. 
+Użyj `$containerRoot` zmiennej w pliku parametrów szablonu do wdrażania zasobów platformy Azure. W czasie wdrażania ta zmienna jest zastępowana rzeczywistymi wartościami z wdrożenia.
 
 Na przykład podczas wprowadzania utworzyć źródła artefaktu dla binarnego artefaktów.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60698988"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Korzystanie z systemu Apache Ambari w celu optymalizacji konfiguracje klastrów HDInsight
@@ -176,10 +176,10 @@ Zadania Hadoop są zazwyczaj bottlenecked we/wy. Skompresowanie danych można pr
 
 Kompresja dostępne typy to:
 
-| Format | Tool | Algorytm | Rozszerzenie pliku | Podzielne? |
+| Format | Narzędzie | Algorytm | Rozszerzenie pliku | Podzielne? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | KORYGOWANIA | .gz | Nie |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | Tak |
 | LZO | Lzop | LZO | .lzo | Tak, jeśli indeksowane |
 | Snappy | ND | Snappy | Snappy | Nie |
 

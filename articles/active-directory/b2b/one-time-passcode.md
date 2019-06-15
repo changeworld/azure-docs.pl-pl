@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952849"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
@@ -74,7 +74,7 @@ Może upłynąć kilka minut, zanim Akcja zgłoszenie zgody na uczestnictwo w za
 2.  W okienku nawigacji wybierz **usługi Azure Active Directory**.
 3.  W obszarze **Zarządzaj**, wybierz opcję **relacje w organizacji**.
 4.  Wybierz **ustawienia**.
-5.  W obszarze **Włącz E-mail jednorazowego kodu dostępu dla gości (wersja zapoznawcza)**, wybierz opcję **tak**.
+5.  W obszarze **Włącz E-mail jednorazowego kodu dostępu dla gości (wersja zapoznawcza)** , wybierz opcję **tak**.
  
 ### <a name="to-opt-in-using-powershell"></a>Aby zapoznać się przy użyciu programu PowerShell
 
@@ -141,7 +141,7 @@ Może upłynąć kilka minut, zanim Akcja rezygnacji z zaczęły obowiązywać. 
 2.  W okienku nawigacji wybierz **usługi Azure Active Directory**.
 3.  W obszarze **Zarządzaj**, wybierz opcję **relacje w organizacji**.
 4.  Wybierz **ustawienia**.
-5.  W obszarze **Włącz E-mail jednorazowego kodu dostępu dla gości (wersja zapoznawcza)**, wybierz opcję **nie**.
+5.  W obszarze **Włącz E-mail jednorazowego kodu dostępu dla gości (wersja zapoznawcza)** , wybierz opcję **nie**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Aby wyłączyć przy użyciu programu PowerShell w wersji zapoznawczej
 Zainstaluj najnowszy moduł AzureADPreview, jeśli nie masz go jeszcze (zobacz [wymagań wstępnych: Zainstaluj najnowszy moduł AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) powyżej). Następnie sprawdź, czy istnieją obecnie zasady (wersja zapoznawcza) jednorazowy kod dostępu, uruchamiając następujące:

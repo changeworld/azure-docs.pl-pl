@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
 ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023854"
 ---
 # <a name="custom-web-api-skill"></a>Niestandardowy interfejs API sieci Web umiejętności
@@ -38,7 +38,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| identyfikator URI | Identyfikator URI interfejsu API sieci Web, do którego _JSON_ ładunku będą wysyłane. Tylko **https** schemat identyfikatora URI jest dozwolone. |
+| Identyfikator URI | Identyfikator URI interfejsu API sieci Web, do którego _JSON_ ładunku będą wysyłane. Tylko **https** schemat identyfikatora URI jest dozwolone. |
 | HttpMethod | Metoda do użycia podczas wysyłania ładunku. Dozwolone metody to `PUT` lub `POST` |
 | httpHeaders | Kolekcja par klucz wartość, gdzie klucze reprezentują nagłówek nazwy i wartości reprezentują wartości nagłówka, które będą wysyłane do internetowego interfejsu API wraz z ładunku. Następujące nagłówki mają zakaz znajdujące się w tej kolekcji: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | (Opcjonalnie) Jeśli zostanie określony, wskazuje limit czasu wywołania interfejsu API klienta http. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Na przykład `PT60S` 60 sekund. Jeśli nie zostanie wybrany zestaw wartości domyślnej równej 30 sekund. Limit czasu można ustawić maksymalnie 90 sekund i co najmniej 1 sekundę. |

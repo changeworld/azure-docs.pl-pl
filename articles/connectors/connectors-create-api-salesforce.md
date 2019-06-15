@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106019"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie zasobami usługi Salesforce za pomocą usługi Azure Logic Apps
@@ -48,7 +48,7 @@ Możesz użyć wyzwalaczy usługi Salesforce, które uzyskiwanie odpowiedzi z us
    * Puste logic apps w polu wyszukiwania wprowadź "salesforce" jako filtr. 
    W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-     — lub —
+     —lub—
 
    * Dla istniejących aplikacji logiki w ramach kroku, w której chcesz dodać akcję, wybierz **nowy krok**. W polu wyszukiwania wprowadź "salesforce" jako filtr. W obszarze listy akcji wybierz akcję, którą chcesz.
 

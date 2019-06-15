@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
 ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938412"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Utwórz zasoby techniczne dla oferty maszyny wirtualnej
 
 W tej sekcji opisano proces tworzenia i konfigurowania zasoby techniczne dla oferty maszyny wirtualnej (VM) w portalu Azure Marketplace.  Maszyna wirtualna zawiera dwa składniki: rozwiązanie wirtualnego dysku twardego (VHD) i opcjonalnych skojarzone dysków danych.  
 
-- *Wirtualne dyski twarde (VHD)*, zawierający system operacyjny i rozwiązania, zostanie wdrożony z ofertą Azure Marketplace. Proces przygotowywania wirtualnego dysku twardego, który różni się w zależności od tego, czy jest oparty na systemie Linux, systemem Windows lub maszyny Wirtualnej na podstawie niestandardowego.
+- *Wirtualne dyski twarde (VHD)* , zawierający system operacyjny i rozwiązania, zostanie wdrożony z ofertą Azure Marketplace. Proces przygotowywania wirtualnego dysku twardego, który różni się w zależności od tego, czy jest oparty na systemie Linux, systemem Windows lub maszyny Wirtualnej na podstawie niestandardowego.
 - *Dyski z danymi* dedykowane, trwałe reprezentować pamięć masową dla maszyny wirtualnej. Czy *nie* korzystanie z odpowiedniego rozwiązania wirtualnego dysku twardego (na przykład `C:` dysku) do przechowywania informacji o trwałych.
 
 Obraz maszyny Wirtualnej zawiera dysk z jednego systemu operacyjnego i zero lub więcej dysków danych. Jeden wirtualny dysk twardy jest wymagany na dysku. Puste dyski z danymi wymagają wirtualny dysk twardy ma zostać utworzony.
@@ -52,9 +52,9 @@ Ponadto zaleca się dodanie następujących narzędzi do swojego środowiska pro
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Numer wewnętrzny: [Narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Numer wewnętrzny: [Upiększanie](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Numer wewnętrzny: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Rozszerzenie: [Narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Rozszerzenie: [Upiększanie](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Rozszerzenie: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Także podpowiedzieć dostępne narzędzia w [narzędzi deweloperskich platformy Azure](https://azure.microsoft.com/tools/) strony i, jeśli używasz programu Visual Studio [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 

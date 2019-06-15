@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
 ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594200"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Wiele frontonów dla modułu równoważenia obciążenia platformy Azure
@@ -30,7 +30,7 @@ Podczas definiowania usługi Azure Load Balancer frontonu i konfigurację puli z
 
 Poniższa tabela zawiera niektóre przykładowe konfiguracje frontonu:
 
-| Fronton | Adres IP | protokół | port |
+| Frontonu | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -54,7 +54,7 @@ Te scenariusze dalsze — omówimy, zaczynając od zachowanie domyślne.
 
 W tym scenariuszu frontonów są skonfigurowane w następujący sposób:
 
-| Fronton | Adres IP | protokół | port |
+| Frontonu | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | ![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![purpurowa frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -65,12 +65,12 @@ Zdefiniowano dwie reguły:
 
 | Reguła | Mapowanie frontonu | Do puli zaplecza |
 | --- | --- | --- |
-| 1 |![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![Wewnętrznej bazy danych](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Wewnętrznej bazy danych](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Wewnętrznej bazy danych](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Wewnętrznej bazy danych](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Pełne mapowania w module równoważenia obciążenia Azure jest teraz w następujący sposób:
 
-| Reguła | Adres IP frontonu | protokół | port | Element docelowy | port |
+| Reguła | Adres IP frontonu | protocol | port | Miejsce docelowe | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Reguła zielony](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Adres DIP |80 |
 | ![purpurowa reguły](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Adres DIP |81 |
@@ -104,21 +104,21 @@ W tym scenariuszu każda maszyna wirtualna w puli zaplecza ma trzy interfejsy si
 
 Załóżmy, że taką samą konfigurację frontonu, jak w poprzednim scenariuszu:
 
-| Fronton | Adres IP | protokół | port |
+| Frontonu | Adres IP | protocol | port |
 | --- | --- | --- | --- |
 | ![zielony frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![purpurowa frontonu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 Zdefiniowano dwie reguły:
 
-| Reguła | Fronton | Mapowanie do puli zaplecza |
+| Reguła | Frontonu | Mapowanie do puli zaplecza |
 | --- | --- | --- |
-| 1 |![zasada](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![Wewnętrznej bazy danych](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (w VM1 i VM2) |
-| 2 |![zasada](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Wewnętrznej bazy danych](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (w VM1 i VM2) |
+| 1 |![Reguły](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (w VM1 i VM2) |
+| 2 |![Reguły](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![zaplecze](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (w VM1 i VM2) |
 
 W poniższej tabeli przedstawiono pełną mapowania w module równoważenia obciążenia:
 
-| Reguła | Adres IP frontonu | protokół | port | Element docelowy | port |
+| Reguła | Adres IP frontonu | protocol | port | Miejsce docelowe | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Reguła zielony](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |takie same jak serwera sieci Web (65.52.0.1) |takie same jak serwera sieci Web (80) |
 | ![purpurowa reguły](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |takie same jak serwera sieci Web (65.52.0.2) |takie same jak serwera sieci Web (80) |

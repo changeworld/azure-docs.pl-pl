@@ -1,39 +1,31 @@
 ---
 title: Archiwizuj dzienniki diagnostyczne platformy Azure
 description: Dowiedz się, jak archiwizowanie dzienników diagnostycznych platformy Azure do długoterminowego przechowywania danych na koncie magazynu.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: bc1804e547bb1a29fc0dc680b948f1bb31af8307
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8ab8a0bcf0c2c00515e46f3e2bbdb55b42ff7a2a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244916"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071549"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST do archiwizacji swoje [dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dzienników diagnostycznych z zasadami przechowywania opcjonalne inspekcji, analizę statyczną lub kopii zapasowej. Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
 
-> [!WARNING]
-> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem należy [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) do której można zarchiwizować dzienników diagnostycznych. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie swoje dziennika aktywności i metrykach diagnostycznych na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla dzienników diagnostycznych w także.
 
-> [!NOTE]
->  Obecnie nie można zarchiwizować dane do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
-
 ## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 
-Aby archiwizowanie dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne zasobu definiuje kategorie dzienników i metryk dane wysyłane do miejsca docelowego (konto magazynu, obszaru nazw usługi Event Hubs lub obszar roboczy usługi Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń w każdej kategorii dzienników i metryk — dane przechowywane na koncie magazynu. Jeśli zasady przechowywania jest ustawiony na wartość zero, zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony (to znaczy powiedzieć nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni z zakresu od 1 do 2147483647. [Możesz dowiedzieć się więcej o konfiguracji ustawień diagnostyki tutaj](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
+Aby archiwizowanie dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne zasobu definiuje kategorie dzienników i metryk dane wysyłane do miejsca docelowego (konto magazynu, obszaru nazw usługi Event Hubs lub obszar roboczy usługi Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń w każdej kategorii dzienników i metryk — dane przechowywane na koncie magazynu. Jeśli zasady przechowywania jest ustawiony na wartość zero, zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony (to znaczy powiedzieć nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni z zakresu od 1 do 365. [Możesz dowiedzieć się więcej o konfiguracji ustawień diagnostyki tutaj](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
@@ -71,17 +63,17 @@ Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla teg
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ```
-Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Category networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
 | ResourceId |Yes |Identyfikator zasobu zasobu, na którym jest ustawienie diagnostyczne. |
 | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, do którego powinny być zapisywane dzienniki diagnostyczne. |
-| Categories |Nie |Rozdzielana przecinkami lista kategorie dziennika, aby włączyć. |
+| Category |Nie |Rozdzielana przecinkami lista kategorie dziennika, aby włączyć. |
 | Enabled (Włączony) |Yes |Wartość logiczna wskazująca, czy diagnostyki włączone lub wyłączone w przypadku tego zasobu. |
 | RetentionEnabled |Nie |Wartość logiczna wskazująca, czy zasady przechowywania są włączone dla tego zasobu. |
-| RetentionInDays |Nie |Liczba dni, dla których ma być przechowywana zdarzeń, od 1 do 2147483647. Dzienniki na wartość zero są przechowywane w nieskończoność. |
+| RetentionInDays |Nie |Liczba dni, dla których zdarzenia powinny być przechowywane z zakresu od 1 do 365. Dzienniki na wartość zero są przechowywane w nieskończoność. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Archiwizowanie dzienników diagnostycznych za pomocą wiersza polecenia platformy Azure
 

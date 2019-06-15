@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 44d5ce3e194c873a564039934f518cb3a0e142e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2387f2546afa9d5af2cb909a1e6a2179548e3b5a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497174"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053332"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrowanie z usługi Azure Application Gateway i zapory aplikacji z v1 na v2
 
@@ -117,11 +117,11 @@ Aby uruchomić skrypt:
 
       Aby utworzyć listę obiektów PSApplicationGatewayTrustedRootCertificate, zobacz [New AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [String]: Opcjonalnie**. Określony prywatny adres IP, którą chcesz skojarzyć do nowej bramy w wersji 2.  Musi to być w tej samej sieci wirtualnej, można przydzielić nowej bramy w wersji 2. Jeśli to nie jest określona, skrypt przydziela prywatny adres IP dla bramy w wersji 2.
-    * **publicIpResourceId: [String]: Opcjonalnie**. Identyfikator zasobu dla publicznego zasobu adresu IP w ramach subskrypcji, którą chcesz przydzielić do nowej bramy w wersji 2. Jeśli nie zostanie określony, skrypt przydziela nowy publiczny adres IP w tej samej grupie zasobów. Nazwa jest nazwą bramy v2 z *- IP* dołączane.
+    * **publicIpResourceId: [String]: Opcjonalnie**. ResourceId publicznego zasobu adresu (standardowej jednostki SKU) adresu IP w ramach subskrypcji, którą chcesz przydzielić do nowej bramy w wersji 2. Jeśli to nie jest określona, skrypt przydziela nowy publiczny adres IP w tej samej grupie zasobów. Nazwa jest nazwą bramy v2 z *- IP* dołączane.
    * **validateMigration: [Przełącz]: Opcjonalnie**. Użyj tego parametru, jeśli chcesz, aby przez skrypt niektórych konfiguracji podstawowej porównywania, sprawdzania poprawności po utworzenie bramy w wersji 2 i kopii konfiguracji. Domyślnie nie jest sprawdzana.
    * **enableAutoScale: [Przełącz]: Opcjonalnie**. Użyj tego parametru, jeśli chcesz, aby skrypt, aby włączyć Skalowanie automatyczne na nową bramę v2, po jego utworzeniu. Domyślnie automatyczne skalowanie jest wyłączone. Można zawsze ręcznie włączyć go później bramy nowo utworzoną w wersji 2.
 
-1. Uruchom skrypt, za pomocą odpowiednich parametrów.
+1. Uruchom skrypt, za pomocą odpowiednich parametrów. Może potrwać 5 – 7 minut na zakończenie.
 
     **Przykład**
 
@@ -176,7 +176,11 @@ Nie. Skrypt programu Azure PowerShell migruje wyłącznie konfiguracji. Rzeczywi
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Ma nową bramę v2, utworzone przez skrypt programu Azure PowerShell odpowiedni rozmiar do obsługi całego ruchu, który jest aktualnie obsługiwany przez mojej bramy v1?
 
-Skrypt programu Azure PowerShell tworzy nową bramę v2 z rozmiarem odpowiedniego do obsługi ruchu w istniejącej bramie V1. Automatyczne skalowanie jest domyślnie wyłączona, ale można włączyć Skalowanie automatyczne, po uruchomieniu skryptu.
+Skrypt programu Azure PowerShell tworzy nową bramę v2 z rozmiarem odpowiedniego do obsługi ruchu w istniejącej bramie v1. Automatyczne skalowanie jest domyślnie wyłączona, ale można włączyć Skalowanie automatyczne, po uruchomieniu skryptu.
+
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Po skonfigurowaniu mojej bramy w wersji 1, aby wysłać dzienniki do usługi Azure storage. Czy skrypt jest replikowany tej konfiguracji, a także w wersji 2?
+
+Nie. Skrypt nie są replikowane tej konfiguracji w wersji 2. Konfigurację dziennika należy dodać do bramy w wersji 2 migrowanych oddzielnie.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Czy mogę napotkał problemy przy użyciu tego skryptu. Jak uzyskać pomoc?
   

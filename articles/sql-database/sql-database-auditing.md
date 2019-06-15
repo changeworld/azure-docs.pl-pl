@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827769"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
@@ -100,7 +100,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
 7. Aby skonfigurować zapisywanie inspekcji dzienniki do obszaru roboczego usługi Log Analytics, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy usługi Log Analytics, której będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
 
-    ![Obszar roboczy usługi Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Obszar roboczy usługi log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Aby skonfigurować zapisywanie inspekcji dzienników do Centrum zdarzeń, wybierz opcję **Centrum zdarzeń (wersja zapoznawcza)** , a następnie otwórz **szczegóły Centrum zdarzeń**. Wybierz Centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Pamiętaj, że Centrum zdarzeń znajduje się w tym samym regionie, co bazy danych i serwera.
 
@@ -231,7 +231,7 @@ W środowisku produkcyjnym prawdopodobnie okresowo odświeżyć klucze magazynu.
 
 ## <a id="subheading-7"></a>Zarządzanie inspekcji usługi SQL database przy użyciu programu Azure PowerShell
 
-**Polecenia cmdlet programu PowerShell (w tym obsługa klauzuli WHERE filtrowania dodatkowych)**:
+**Polecenia cmdlet programu PowerShell (w tym obsługa klauzuli WHERE filtrowania dodatkowych)** :
 
 - [Tworzenie lub aktualizowanie bazy danych inspekcji zasad (zestaw AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
 - [Utwórz lub zaktualizuj zasady inspekcji serwera (zestaw AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)

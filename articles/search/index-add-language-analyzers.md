@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790901"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Dodać analizatory języka do indeksu usługi Azure Search
@@ -67,13 +67,13 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Create 
 |Baskijski||eu.lucene|  
 |Bułgarski|bg.microsoft|BG.lucene|  
 |Kataloński|ca.microsoft|CA.lucene|  
-|Chiński (uproszczony)|zh-Hans.microsoft|zh-Hans.lucene|  
+|Chiński uproszczony|zh-Hans.microsoft|zh-Hans.lucene|  
 |Chiński tradycyjny|zh-Hant.microsoft|zh-Hant.lucene|  
 |Chorwacki|hr.microsoft||  
 |Czeski|cs.microsoft|cs.lucene|  
 |Duński|da.microsoft|da.lucene|  
 |Holenderski|nl.microsoft|nl.lucene|  
-|Angielski|en.microsoft|EN.lucene|  
+|Polski|en.microsoft|EN.lucene|  
 |Estoński|et.microsoft||  
 |Fiński|fi.microsoft|fi.lucene|  
 |Francuski|fr.microsoft|fr.lucene|  
@@ -104,7 +104,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Create 
 |Pendżabski|pa.microsoft||  
 |Rumuński|ro.microsoft|ro.lucene|  
 |Rosyjski|ru.microsoft|ru.lucene|  
-|Serbski (cyrylica)|sr-cyrillic.microsoft||  
+|Serbski (Cyrylica)|sr-cyrillic.microsoft||  
 |Serbski (łaciński)|sr-latin.microsoft||  
 |Słowacki|sk.microsoft||  
 |Słoweński|sl.microsoft||  

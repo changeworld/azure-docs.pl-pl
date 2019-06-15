@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153632"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorowanie konta magazynu w witrynie Azure portal
@@ -94,7 +94,7 @@ Metryki wybranym **diagnostyki** Określa rozdzielczość metryki, które są do
 
 Możesz utworzyć alerty, aby otrzymywać powiadomienia, gdy zostały osiągnięte progi dla metryk zasobów usługi storage.
 
-1. Aby otworzyć **bloku reguł alertów**, przewiń w dół do **monitorowanie** części **bloku Menu** i wybierz **alerty (klasyczne)**.
+1. Aby otworzyć **bloku reguł alertów**, przewiń w dół do **monitorowanie** części **bloku Menu** i wybierz **alerty (klasyczne)** .
 2. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)** otworzyć **Dodawanie reguły alertów** bloku
 3. Wprowadź **nazwa** i **opis** nowej reguły alertu.
 4. Wybierz **metryki** dla której chcesz dodać alert, alert **warunek**, a **próg**. Jednostka próg wprowadź zmiany w zależności od wybranej metryki. Na przykład "licznik" jest typem jednostki *ContainerCount*, podczas gdy jednostki dla *wartości PercentNetworkError* metryka jest wartością procentową.

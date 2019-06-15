@@ -11,10 +11,10 @@ manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
 ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60684094"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
@@ -54,7 +54,7 @@ Ta przykładowa aplikacja logiki wysyła codzienne podsumowanie kanału informac
 2. Między RSS wyzwalania oraz akcję wysyłania wiadomości e-mail, Dodaj pętlę "Foreach". 
 
    1. Aby dodać pętlę między krokami, wskaźnik myszy nad strzałką znajdującą się między tymi krokami. 
-   Wybierz **znak plus** (**+**), zostanie wyświetlone, następnie wybierz pozycję **Dodaj akcję**.
+   Wybierz **znak plus** ( **+** ), zostanie wyświetlone, następnie wybierz pozycję **Dodaj akcję**.
 
       ![Wybierz pozycję "Dodaj akcję"](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -126,7 +126,7 @@ Jeśli pracujesz w widoku kodu aplikacji logiki, można zdefiniować `Foreach` p
 
 Domyślnie cykle w pętli "Foreach" Uruchom równolegle. Aby uruchomić każdy cykl po kolei, należy ustawić pętli **sekwencyjnego** opcji. Pętli "Foreach" musi działać po kolei po można zagnieżdżać pętli lub zmienne wewnątrz pętli, w których spodziewasz przewidywalne wyniki. 
 
-1. W pętli w prawym górnym rogu wybierz **wielokropek** (**...** ) > **Ustawienia**.
+1. W pętli w prawym górnym rogu wybierz **wielokropek** ( **...** ) > **Ustawienia**.
 
    ![W pętli "Foreach" Wybierz "..." > "Ustawienia"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
@@ -179,7 +179,7 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
    | Właściwość | Wartość |
    | -------- | ----- |
-   | **Interwał** | 1 | 
+   | **Interval** | 1 | 
    | **Częstotliwość** | Dzień |
    | **W tych godzinach** | 8 |
    ||| 
@@ -196,7 +196,7 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
    | Właściwość | Wartość | Opis |
    | -------- | ----- | ----------- |
    | **Nazwa** | Limit | Nazwa zmiennej użytkownika | 
-   | **Typ** | Liczba całkowita | Typ danych zmiennej użytkownika | 
+   | **Typ** | Integer | Typ danych zmiennej użytkownika | 
    | **Wartość** | 0 | Zmiennej przez wartość początkowa | 
    |||| 
 

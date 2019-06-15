@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814471"
 ---
 # <a name="semantic-interpretation"></a>Interpretacja semantyczna
@@ -33,7 +33,7 @@ Zmienna jest określona za pomocą identyfikator nazwy, który rozpoczyna się o
 
 Poniżej znajduje się lista aktualnie obsługiwanych typów danych:
 
-|Type|Opis|Przykłady|
+|Typ|Opis|Przykłady|
 |----|----|----|
 |String|Sekwencja 0 lub więcej znaków|"Hello World!"<br/>""|
 |Bool|Wartość logiczna|true<br/>false|

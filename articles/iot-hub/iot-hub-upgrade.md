@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61440237"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Jak uaktualnić Centrum IoT hub
@@ -39,7 +39,7 @@ Te przykłady są przeznaczone do pomóc Ci zrozumieć, jak dostosować zmiany r
 
 2. Wybierz **ceny i Skala**.
 
-   ![Ceny i skala](./media/iot-hub-upgrade/pricing-scale.png)
+   ![Ceny i Skala](./media/iot-hub-upgrade/pricing-scale.png)
 
 3. Aby zmienić warstwę Centrum, wybierz **ceny i warstwa skalowania**. Wybierz nową warstwę, a następnie kliknij przycisk **wybierz**.
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714423"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
@@ -35,13 +35,13 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
 - Dane telemetryczne, obejmuje następujące pomiary zbieranych urządzenia:
   - Wilgotność
   - Temperatura
-  - Ciśnienie
+  - Wykorzystanie
   - Magnetometrów (X, Y, Z)
   - Accelerometer (X, Y, Z)
   - Żyroskop (X, Y, Z)
 - Ustawienia
   - Napięcie
-  - Bieżący
+  - bieżący
   - Wentylator szybkości
   - Przełącz Podczerwieni.
 - Właściwości
@@ -340,21 +340,21 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
+| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika
 
-| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
+| `Display name` | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
-| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Typ            | `Display name` | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Text            | Lokalizacja     | location   | ND       |

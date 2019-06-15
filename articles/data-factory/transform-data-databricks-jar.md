@@ -13,10 +13,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860991"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania Jar w usłudze Azure Databricks
@@ -60,7 +60,7 @@ W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
 |:--|---|:-:|
 |name|Nazwa działania w potoku.|Yes|
 |description|Tekst opisujący, co działanie robi.|Nie|
-|type|Typ działania jest DatabricksSparkJar Jar działania usługi Databricks.|Yes|
+|— typ|Typ działania jest DatabricksSparkJar Jar działania usługi Databricks.|Tak|
 |linkedServiceName|Nazwa połączonej usługi, w którym uruchamiany jest plik Jar działania usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
 |mainClassName|Pełna nazwa klasy zawierającej metodę głównego, do wykonania. Ta klasa musi być zawarty w pliku JAR w bibliotece.|Yes|
 |parameters|Parametry, które zostaną przekazane do metody głównej.  Jest to tablica ciągów.|Nie|

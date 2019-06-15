@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65145130"
 ---
 # <a name="algorithm--module-reference-overview"></a>Omówienie algorytmów i modułów
@@ -29,7 +29,7 @@ Każdy moduł reprezentuje zestaw kodu, która może działać niezależnie i wy
 
 Moduły są uporządkowane według funkcji:
 
-| Funkcjonalność | Opis | Moduł |
+| Funkcja | Opis | Moduł |
 | --- |--- | ---- |
 | Konwersje formatów danych | Konwertuj dane między różne formaty plików używanych w uczenia maszynowego, | [Konwertuj do formatu CSV](convert-to-csv.md) |
 | Dane wejściowe i wyjściowe | Przenoszenie danych ze źródeł w chmurze do eksperymentu. Zapis z wyników lub danych pośrednich do usługi Azure Storage, bazy danych SQL lub Hive, podczas uruchamiania eksperymentu, lub wymiany danych między eksperymentów za pomocą magazynu w chmurze.  | [Importowanie danych](import-data.md)<br/>[Eksportowanie danych](export-data.md)<br/>[Ręcznie wprowadź dane jednostki](enter-data-manually.md) |

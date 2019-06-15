@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882418"
 ---
 # <a name="replicas-and-instances"></a>Repliki i wystąpienia 
@@ -116,11 +116,11 @@ Rola repliki nie jest odpowiednie w stan wstrzymania.
 ## <a name="replica-role"></a>Rola repliki 
 Rola repliki określa jego funkcję zestawu replik:
 
-- **Podstawowy (P)**: Istnieje podstawowego zestawu replik, który jest odpowiedzialny za wykonanie operacji odczytu i zapisu. 
-- **ActiveSecondary (S)**: Są to replik, które otrzymują aktualizacje stanu z serwera podstawowego, stosować je, a następnie wyślij potwierdzeń Wstecz. Istnieje wiele aktywne pomocnicze bazy danych w zestawie. Liczba tych aktywne pomocnicze bazy danych określa liczbę błędów, których usługa może obsługiwać.
-- **IdleSecondary (I)**: Te repliki są kompilowane przez podstawową. Są one odbiera stanu z serwera podstawowego, zanim może być podwyższony do aktywnej pomocniczej. 
-- **Brak (N)**: Te repliki nie mają za zadanie w zestawie.
-- **Nieznany (U)**: Jest to początkowej Rola repliki przed jej odbiera wszelkie **ChangeRole** wywołania interfejsu API z usługi Service Fabric.
+- **Podstawowy (P)** : Istnieje podstawowego zestawu replik, który jest odpowiedzialny za wykonanie operacji odczytu i zapisu. 
+- **ActiveSecondary (S)** : Są to replik, które otrzymują aktualizacje stanu z serwera podstawowego, stosować je, a następnie wyślij potwierdzeń Wstecz. Istnieje wiele aktywne pomocnicze bazy danych w zestawie. Liczba tych aktywne pomocnicze bazy danych określa liczbę błędów, których usługa może obsługiwać.
+- **IdleSecondary (I)** : Te repliki są kompilowane przez podstawową. Są one odbiera stanu z serwera podstawowego, zanim może być podwyższony do aktywnej pomocniczej. 
+- **Brak (N)** : Te repliki nie mają za zadanie w zestawie.
+- **Nieznany (U)** : Jest to początkowej Rola repliki przed jej odbiera wszelkie **ChangeRole** wywołania interfejsu API z usługi Service Fabric.
 
 Na poniższym diagramie przedstawiono przejścia do roli repliki i niektóre przykładowe scenariusze, w których może wystąpić:
 

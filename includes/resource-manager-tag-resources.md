@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128820"
 ---
 1. Aby wyświetlić tagi dla zasobu lub grupy zasobów, szuka istniejących tagów w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
@@ -33,7 +33,7 @@ ms.locfileid: "66128820"
    
 1. Aby usunąć tag, wybierz ikonę Kosza na śmieci. Następnie wybierz pozycję **Zapisz**.
 
-     ![Usuwanie tagu](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Usuń tag](./media/resource-manager-tag-resources/delete-tag.png)
 
 
 Aby zbiorczo przypisać tagi do wielu zasobów:
@@ -44,9 +44,9 @@ Aby zbiorczo przypisać tagi do wielu zasobów:
 
 1. Wybierz **Przypisz tagi**
 
-     ![Przypisywanie tagów](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Przypisz tagi](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. Po każdej nazwy i wartości, wybierz **+**. Po zakończeniu wybierz pozycję **przypisać**.
+1. Po każdej nazwy i wartości, wybierz **+** . Po zakończeniu wybierz pozycję **przypisać**.
 
      ![Wybierz opcję Przypisz](./media/resource-manager-tag-resources/select-assign.png)
 

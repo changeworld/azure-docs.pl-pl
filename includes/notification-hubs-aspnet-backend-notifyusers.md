@@ -9,10 +9,10 @@ ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156791"
 ---
 ## <a name="create-the-webapi-project"></a>Tworzenie projektu interfejsu WebAPI
@@ -40,7 +40,7 @@ Utwórz nowe zaplecze interfejsu WebAPI na platformie ASP.NET, wykonując nastę
 2. Wybierz pozycję **Eksplorator serwera** i zaloguj się do konta platformy Azure. Aby tworzyć zasoby witryny internetowej na swoim koncie, musisz się zalogować.
 
 3. W programie Visual Studio kliknij prawym przyciskiem myszy rozwiązanie programu Visual Studio, wskaż polecenie **Dodaj** i kliknij pozycję **Nowy projekt**.
-4. Rozwiń węzeł **Visual C#**, wybierz pozycję **Internet**i kliknij pozycję **Aplikacja internetowa ASP.NET**.
+4. Rozwiń węzeł **Visual C#** , wybierz pozycję **Internet**i kliknij pozycję **Aplikacja internetowa ASP.NET**.
 
 5. W polu **Nazwa** wpisz ciąg **AppBackend**, a następnie wybierz przycisk **OK**.
 

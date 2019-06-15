@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808853"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Działanie wykonywania potoku w usłudze Azure Data Factory
@@ -62,9 +62,9 @@ Działanie Execute Pipeline umożliwia potokowi usługi Data Factory wywoływani
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania potoku wykonywania. | String | Yes
-type | Musi być ustawione na: **ExecutePipeline**. | String | Yes
-potok | Odwołanie do zależnego potoku, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **referenceName** i **typu**. Właściwość referenceName Określa nazwę potoku odwołania. Właściwość type musi być równa PipelineReference. | PipelineReference | Yes
+name | Nazwa działania potoku wykonywania. | String | Tak
+type | Musi być ustawione na: **ExecutePipeline**. | String | Tak
+Potok | Odwołanie do zależnego potoku, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **referenceName** i **typu**. Właściwość referenceName Określa nazwę potoku odwołania. Właściwość type musi być równa PipelineReference. | PipelineReference | Tak
 parameters | Parametry do przekazania do wywoływanej potoku | Obiekt JSON, który mapuje nazwy parametru wartości argumentów | Nie
 waitOnCompletion | Określa, czy wykonywania działania ma oczekiwać na wykonywanie potoku zależnych zakończyć. Wartość domyślna to false. | Boolean | Nie
 

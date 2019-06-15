@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
 ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60647449"
 ---
 # <a name="azure-backup-architecture"></a>Architektura usługi Azure Backup
@@ -49,8 +49,8 @@ Magazyny usługi Recovery Services oferują następujące funkcje:
 - Można monitorować elementy kopii zapasowej w magazynie, łącznie z maszyn wirtualnych platformy Azure i lokalnej maszyny.
 - Dostęp za pomocą platformy Azure można zarządzać [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 - Należy określić, jak dane w magazynie jest replikowana w celu zapewnienia nadmiarowości:
-    - **Magazyn lokalnie nadmiarowy (LRS)**: Aby chronić przed awariami w centrum danych, można użyć magazynu LRS. LRS replikuje dane do jednostki skali magazynu. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-    - **Magazyn geograficznie nadmiarowy (GRS)**: Aby chronić przed awariami, można użyć GRS. Magazyn GRS replikuje dane do regionu pomocniczego. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
+    - **Magazyn lokalnie nadmiarowy (LRS)** : Aby chronić przed awariami w centrum danych, można użyć magazynu LRS. LRS replikuje dane do jednostki skali magazynu. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+    - **Magazyn geograficznie nadmiarowy (GRS)** : Aby chronić przed awariami, można użyć GRS. Magazyn GRS replikuje dane do regionu pomocniczego. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
     - Domyślnie magazynów usługi Recovery Services używają GRS. 
 
 ## <a name="backup-agents"></a>Agenci kopii zapasowej
@@ -99,10 +99,10 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 
 **Funkcja** | **Maszyny z systemem Windows Server w środowisku lokalnym (direct)** | **Maszyny wirtualne platformy Azure** | **Maszyny lub aplikacji za pomocą programu DPM/serwera usługi Mab**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej do magazynu | ![Yes][green] | ![Yes][green] | ![Yes][green] 
-Tworzenie kopii zapasowej na dysku programu DPM/serwera usługi Mab, następnie na platformie Azure | | | ![Yes][green] 
-Kompresuj dane przesyłane do utworzenia kopii zapasowej | ![Yes][green] | Kompresja nie jest używana podczas transferu danych. Magazyn jest nieco zwiększony, ale przywracania jest szybsze.  | ![Yes][green] 
-Uruchamianie tworzenia przyrostowych kopii zapasowych |![Yes][green] |![Yes][green] |![Yes][green] 
+Tworzenie kopii zapasowej do magazynu | ![Tak][green] | ![Yes][green] | ![Tak][green] 
+Tworzenie kopii zapasowej na dysku programu DPM/serwera usługi Mab, następnie na platformie Azure | | | ![Tak][green] 
+Kompresuj dane przesyłane do utworzenia kopii zapasowej | ![Yes][green] | Kompresja nie jest używana podczas transferu danych. Magazyn jest nieco zwiększony, ale przywracania jest szybsze.  | ![Tak][green] 
+Uruchamianie tworzenia przyrostowych kopii zapasowych |![Tak][green] |![Yes][green] |![Yes][green] 
 Wykonywanie kopii zapasowych deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> Dla programu DPM/serwera usługi Mab serwery wdrożone tylko lokalnie. 
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)
@@ -178,7 +178,7 @@ Aby uzyskać więcej informacji o dysku i typy dostępnego miejsca na dysku dla 
 
 Korzystając z usługi premium storage z usługą Azure Backup można tworzyć kopie zapasowe maszyn wirtualnych platformy Azure:
 
-- Podczas procesu tworzenia kopii zapasowych maszyn wirtualnych dzięki usłudze premium storage usługa Backup tworzy tymczasową lokalizację, o nazwie *AzureBackup -*, w ramach konta magazynu. Rozmiar lokalizacji przejściowej jest równy rozmiar migawki punktu odzyskiwania.
+- Podczas procesu tworzenia kopii zapasowych maszyn wirtualnych dzięki usłudze premium storage usługa Backup tworzy tymczasową lokalizację, o nazwie *AzureBackup -* , w ramach konta magazynu. Rozmiar lokalizacji przejściowej jest równy rozmiar migawki punktu odzyskiwania.
 - Upewnij się, że konta usługi premium storage ma odpowiednią ilością wolnego miejsca do obsługi tymczasowej lokalizacji przejściowej. [Dowiedz się więcej](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Nie należy modyfikować lokalizacji tymczasowej.
 - Po zakończeniu zadania tworzenia kopii zapasowej Lokalizacja tymczasowa zostanie usunięta.
 - Cena przestrzeni dyskowej użytej do lokalizacji tymczasowej jest zgodna z [cennikiem usługi premium storage](../virtual-machines/windows/disks-types.md#billing).

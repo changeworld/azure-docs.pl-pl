@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 64eb89612765f9a47d0eaac2b9cbceb6341c4155
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64681280"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla systemu Windows Server umożliwia użycie licencji na system Windows Server w środowisku lokalnym i uruchamianie maszyn wirtualnych Windows na platformie Azure, przy niższych kosztach. Azure korzyści użycia hybrydowego dla systemu Windows Server służy do wdrażania nowych maszyn wirtualnych z systemem operacyjnym Windows. W tym artykule przechodzi przez instrukcje dotyczące sposobu wdrażania nowych maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oraz jak zaktualizować istniejące uruchamianie maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oszczędności licencjonowania i kosztów, zobacz [strony licencjonowania platformy Azure korzyści użycia hybrydowego dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -36,7 +36,7 @@ Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla sy
 > Dla klasycznych maszyn wirtualnych jest obsługiwane tylko Wdrażanie nowej maszyny Wirtualnej z na obrazach niestandardowych lokalnie. Aby móc korzystać z funkcji obsługiwanych w tym artykule, należy najpierw przeprowadzić migrację maszyn wirtualnych w klasycznym modelu usługi Resource Manager.
 >
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Sposoby korzystania z platformy Azure korzyści użycia hybrydowego dla systemu Windows Server
 Istnieje kilka sposobów na maszynach wirtualnych Windows za pomocą korzyści użycia hybrydowego platformy Azure:

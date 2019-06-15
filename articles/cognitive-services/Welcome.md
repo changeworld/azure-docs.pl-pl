@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: nitinme
 ms.openlocfilehash: d5a3226050901f6feb17c4d9d6a6582cb622618b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65020186"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co to są usługi Azure Cognitive Services?
@@ -50,7 +50,7 @@ Usługi Azure Cognitive Services są interfejsy API, zestawów SDK i usług dost
 |[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Tekst usługi Translator zapewnia tłumaczenia tekstu opartych na maszynach w czasie zbliżonym do rzeczywistego.|
 |[Usługa Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "indeksator wideo")|Usługa Video Indexer umożliwia prowadzenie analiz wideo.|
 
-## <a name="search-apis"></a>interfejsy API wyszukiwania
+## <a name="search-apis"></a>Interfejsy API wyszukiwania
 
 |Nazwa usługi|Opis usługi|
 |:-----------|:------------------|

@@ -17,10 +17,10 @@ ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66742489"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
@@ -665,7 +665,7 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
    ![][2]
    *Rysunek 6: Konfigurowanie inicjowania obsługi w witrynie Azure portal*
     
-1. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego usługi Standard SCIM udostępnianych przez internet. Wpis jest podobny do http://testmachine.contoso.com:9000 lub http://\<adres ip >: 9000 /, gdzie \<adres ip > jest internet udostępniane IP adresów. 
+1. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego usługi Standard SCIM udostępnianych przez internet. Wpis jest podobny do http://testmachine.contoso.com:9000 lub http://\< adres ip >: 9000 /, gdzie \< adres ip > jest internet udostępniane IP adresów. 
 
 1. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. 
 1. Wybierz **Testuj połączenie** mają podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM usługi Azure Active Directory. Jeśli próba nie powiedzie się, informacje o błędzie jest wyświetlany.  
@@ -823,7 +823,7 @@ Do obsługi usługi w ramach Internetowe usługi informacyjne, deweloper będzie
    ```
 
 ### <a name="handling-endpoint-authentication"></a>Obsługa punktu końcowego uwierzytelniania
-Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa odbiera żądanie, powinna uwierzytelniać wystawcy jako usługi Azure Active Directory dla z oczekiwaną dzierżawą usługi Azure Active Directory w celu uzyskania dostępu do usługi sieci web usługi Azure Active Directory Graph.  W tokenie wystawca jest identyfikowany przez oświadczenie iss, takich jak "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres bazowy wartość oświadczenia https://sts.windows.net, identyfikuje usługi Azure Active Directory jako wystawca, podczas gdy względny adres segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, to unikatowy identyfikator dzierżawy usługi Azure Active Directory której token został wystawiony.  Jeśli token został wystawiony na potrzeby uzyskiwania dostępu do usługi sieci web usługi Azure Active Directory Graph, identyfikator tej usługi, 00000002-0000-0000-c000-000000000000, powinien być w wartości oświadczenia aud tokenu.  Każdej z aplikacji, które są zarejestrowane w jednej dzierżawie może pojawić się taki sam `iss` oświadczenia za pomocą żądań Standard SCIM.
+Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa odbiera żądanie, powinna uwierzytelniać wystawcy jako usługi Azure Active Directory dla z oczekiwaną dzierżawą usługi Azure Active Directory w celu uzyskania dostępu do usługi sieci web usługi Azure Active Directory Graph.  W tokenie wystawca jest identyfikowany przez oświadczenie iss, takich jak "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ ".  W tym przykładzie adres bazowy wartość oświadczenia https://sts.windows.net , identyfikuje usługi Azure Active Directory jako wystawca, podczas gdy względny adres segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, to unikatowy identyfikator dzierżawy usługi Azure Active Directory której token został wystawiony.  Jeśli token został wystawiony na potrzeby uzyskiwania dostępu do usługi sieci web usługi Azure Active Directory Graph, identyfikator tej usługi, 00000002-0000-0000-c000-000000000000, powinien być w wartości oświadczenia aud tokenu.  Każdej z aplikacji, które są zarejestrowane w jednej dzierżawie może pojawić się taki sam `iss` oświadczenia za pomocą żądań Standard SCIM.
 
 Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane przez firmę Microsoft do tworzenia usługi Standard SCIM może uwierzytelnić żądania z usługi Azure Active Directory przy użyciu pakietu Microsoft.Owin.Security.ActiveDirectory, wykonując następujące czynności: 
 

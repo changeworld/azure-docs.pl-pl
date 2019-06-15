@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
 ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60717076"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Wizualnego monitorowania fabryki danych platformy Azure
@@ -47,7 +47,7 @@ Widok listy z poszczególnymi uruchomieniami potoków fabryki danych w wersji 2.
 | Stan | Nie powiodło się, zakończyło się pomyślnie w toku |
 | Parametry | Parametry (nazwa, wartość pary) uruchomienia potoku |
 | Błąd | Uruchomienie potoku błędu (jeśli/any) |
-| Identyfikator uruchomienia | Identyfikator uruchomienia potoku |
+| Identyfikator przebiegu | Identyfikator uruchomienia potoku |
 
 ![Monitorowanie uruchomień potoku](media/monitor-visually/pipeline-runs.png)
 
@@ -57,7 +57,7 @@ Widok listy z uruchomieniami działań odpowiadającymi poszczególnym uruchomie
 | **Nazwa kolumny** | **Opis** |
 | --- | --- |
 | Nazwa działania | Nazwa działania w potoku. |
-| Typ aktywności | Typ działania, takich jak kopiowanie, HDInsightSpark, HDInsightHive itp. |
+| Typ działania | Typ działania, takich jak kopiowanie, HDInsightSpark, HDInsightHive itp. |
 | Uruchom Start | Uruchomienia działania start Data i godzina (MM/DD/RRRR GG: mm: SS AM/PM) |
 | Czas trwania | Czas trwania (: mm: ss) |
 | Stan | Nie powiodło się, zakończyło się pomyślnie w toku |
@@ -70,7 +70,7 @@ Widok listy z uruchomieniami działań odpowiadającymi poszczególnym uruchomie
 > [!IMPORTANT]
 > Należy kliknąć przycisk **"Odśwież"** ikonę u góry, aby odświeżyć listę uruchomień potoków i działań. Automatyczne odświeżanie nie jest obecnie obsługiwane.
 
-![Odświeżanie](media/monitor-visually/refresh.png)
+![Odśwież](media/monitor-visually/refresh.png)
 
 ## <a name="select-a-data-factory-to-monitor"></a>Wybierz fabrykę danych do monitorowania
 Umieść kursor na **usługi Data Factory** ikony w lewym górnym rogu. Kliknij ikonę "Strzałki" Aby wyświetlić listę azure subskrypcje i fabryk danych, które można monitorować.

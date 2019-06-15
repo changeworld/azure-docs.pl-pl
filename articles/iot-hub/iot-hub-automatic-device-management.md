@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61333659"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatyczne zarządzanie urządzeniami IoT na dużą skalę przy użyciu witryny Azure portal
@@ -62,7 +62,7 @@ Istnieje pięć kroków, aby utworzyć konfigurację. Poniższe sekcje przeprowa
 
 1. Nadaj konfigurację unikatową nazwę, która jest maksymalnie 128 małe litery. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
 
-2. Dodaj etykiety służące do śledzenia Twojej konfiguracji. Etykiety są **nazwa**, **wartość** pary, które opisują konfigurację. Na przykład: `HostPlatform, Linux` lub `Version, 3.0.1`.
+2. Dodaj etykiety służące do śledzenia Twojej konfiguracji. Etykiety są **nazwa**, **wartość** pary, które opisują konfigurację. Na przykład `HostPlatform, Linux` lub `Version, 3.0.1`.
 
 3. Wybierz **dalej** można przenieść do następnego kroku. 
 
@@ -111,7 +111,7 @@ Ponieważ wiele konfiguracji mogą odnosić się do tego samego urządzenia, nal
 
 1. Wprowadź dodatnią liczbę całkowitą dla konfiguracji **priorytet**. Najwyższą wartość liczbową, jest uznawana za najwyższy priorytet. Jeśli dwie konfiguracje mają ten sam numer priorytet, ten, który został utworzony w większości ostatnio wins. 
 
-2. Wprowadź **warunek docelowy** do określenia urządzeń, które będą objęte przy użyciu tej konfiguracji. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład: `tags.environment='test'` lub `properties.reported.chillerProperties.model='4000x'`. Można określić `*` pod kątem wszystkich urządzeń.
+2. Wprowadź **warunek docelowy** do określenia urządzeń, które będą objęte przy użyciu tej konfiguracji. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.chillerProperties.model='4000x'`. Można określić `*` pod kątem wszystkich urządzeń.
 
 3. Wybierz **dalej** można przenieść do ostatniego kroku.
 

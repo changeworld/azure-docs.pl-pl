@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097740"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurowanie odbiornika ILB dla zawsze włączonych grup dostępności na platformie Azure
@@ -105,7 +105,7 @@ Utwórz punkt końcowy z równoważeniem obciążenia dla każdej maszyny Wirtua
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Po ustawieniu zmiennych, skopiuj skrypt w edytorze tekstowym do sesji środowiska PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter, ponownie, aby upewnić się, że uruchomieniu skryptu.
+13. Po ustawieniu zmiennych, skopiuj skrypt w edytorze tekstowym do sesji środowiska PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>** , naciśnij klawisz Enter, ponownie, aby upewnić się, że uruchomieniu skryptu.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Sprawdź, czy KB2854082 jest zainstalowana w razie potrzeby
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ Utwórz odbiornik grupy dostępności w dwóch krokach. Najpierw utwórz zasób 
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Po ustawieniu zmiennych, Otwórz okno programu Windows PowerShell z podwyższonym, wklej skrypt w edytorze tekstowym do sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter, ponownie, aby upewnić się, że skrypt uruchamiania.
+3. Po ustawieniu zmiennych, Otwórz okno programu Windows PowerShell z podwyższonym, wklej skrypt w edytorze tekstowym do sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>** , naciśnij klawisz Enter, ponownie, aby upewnić się, że skrypt uruchamiania.
 
 4. Powtórz te czynności dla każdej maszyny Wirtualnej.  
     Ten skrypt konfiguruje się zasobu adresu IP przy użyciu adresu IP usługi w chmurze i ustawia inne parametry, takie jak port sondy. Jeśli zasób adresu IP w tryb online, mogą odpowiadać na sondowanie na porcie sondowania z równoważeniem obciążenia punktu końcowego utworzonego wcześniej.

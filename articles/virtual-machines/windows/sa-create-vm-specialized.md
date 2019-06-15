@@ -17,11 +17,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: f2110a749c41f59b11a6d400faa2e42e751305fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251075"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693812"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego wirtualnego dysku twardego w ramach konta magazynu
 
@@ -126,7 +126,7 @@ Cofnij Przydział maszyny Wirtualnej, co zwalnia wirtualnego dysku twardego do s
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-**Stan** dla maszyny Wirtualnej w witrynie Azure portal zmieni się z **zatrzymane** do **zatrzymane (cofnięty przydział)**.
+**Stan** dla maszyny Wirtualnej w witrynie Azure portal zmieni się z **zatrzymane** do **zatrzymane (cofnięty przydział)** .
 
 ### <a name="get-the-storage-account-urls"></a>Uzyskaj adresy URL konta magazynu
 Należy adresy URL konta magazynu źródłowego i docelowego. Jak wygląda adresów URL: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Jeśli znasz już nazwę konta i kontenera magazynu, można po prostu zastąpić informacji między nawiasami, aby utworzyć adres URL. 
@@ -153,7 +153,7 @@ Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGrou
 ### <a name="copy-the-vhd"></a>Skopiuj wirtualny dysk twardy
 Można kopiować pliki między kontami magazynu przy użyciu narzędzia AzCopy. Kontenera docelowego jeśli określony kontener nie istnieje, jego zostanie utworzony dla Ciebie. 
 
-Aby użyć narzędzia AzCopy, otwórz wiersz polecenia na komputerze lokalnym, a następnie przejdź do folderu, w którym zainstalowano narzędzia AzCopy. Będą wyglądać mniej więcej *\Microsoft SDKs\Azure\AzCopy C:\Program Files (x86)*. 
+Aby użyć narzędzia AzCopy, otwórz wiersz polecenia na komputerze lokalnym, a następnie przejdź do folderu, w którym zainstalowano narzędzia AzCopy. Będą wyglądać mniej więcej *\Microsoft SDKs\Azure\AzCopy C:\Program Files (x86)* . 
 
 Aby skopiować wszystkie pliki znajdujące się w kontenerze, należy użyć **/S** przełącznika. To może służyć do skopiowania wirtualnego dysku twardego systemu operacyjnego i dyski danych, jeśli są w tym samym kontenerze. W tym przykładzie pokazano, jak skopiować wszystkie pliki w kontenerze **mysourcecontainer** na koncie magazynu **mysourcestorageaccount** do kontenera **mydestinationcontainer**w **mydestinationstorageaccount** konta magazynu. Nazwy kont magazynu i kontenerów Zastąp własnymi. Zastąp `<sourceStorageAccountKey1>` i `<destinationStorageAccountKey1>` za pomocą własnych kluczy.
 

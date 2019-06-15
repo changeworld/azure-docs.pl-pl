@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 103e09a0e2b9dd409fa2ddaff1c5311ef9936d22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61422173"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Jak konfigurować parametry serwera w usłudze Azure Database for MySQL za pomocą witryny Azure portal
@@ -39,26 +39,26 @@ Pula buforów aparatu InnoDB i maksymalna liczba połączeń nie są konfigurowa
 
 |**Warstwa cenowa**| **Generacja obliczeń**|**rdzenie wirtualne:**|**Pula buforów aparatu InnoDB (MB)**| **Maksymalna liczba połączeń**|
 |---|---|---|---|--|
-|Podstawowa| 4. generacja| 1| 960| 50|
-|Podstawowa| 4. generacja| 2| 2560| 100|
-|Podstawowa| 5. generacja| 1| 960| 50|
-|Podstawowa| 5. generacja| 2| 2560| 100|
-|Ogólne zastosowanie| 4. generacja| 2| 3584| 300|
-|Ogólne zastosowanie| 4. generacja| 4| 7680| 625|
-|Ogólne zastosowanie| 4. generacja| 8| 15360| 1250|
-|Ogólne zastosowanie| 4. generacja| 16| 31232| 2500|
-|Ogólne zastosowanie| 4. generacja| 32| 62976| 5000|
-|Ogólne zastosowanie| 5. generacja| 2| 3584| 300|
-|Ogólne zastosowanie| 5. generacja| 4| 7680| 625|
-|Ogólne zastosowanie| 5. generacja| 8| 15360| 1250|
-|Ogólne zastosowanie| 5. generacja| 16| 31232| 2500|
-|Ogólne zastosowanie| 5. generacja| 32| 62976| 5000|
-|Ogólne zastosowanie| 5. generacja| 64| 125952| 10 000|
-|Pamięć| 5. generacja| 2| 7168| 600|
-|Pamięć| 5. generacja| 4| 15360| 1250|
-|Pamięć| 5. generacja| 8| 30720| 2500|
-|Pamięć| 5. generacja| 16| 62464| 5000|
-|Pamięć| 5. generacja| 32| 125952| 10 000|
+|Podstawowa| 4\. generacja| 1| 960| 50|
+|Podstawowa| 4\. generacja| 2| 2560| 100|
+|Podstawowa| 5\. generacja| 1| 960| 50|
+|Podstawowa| 5\. generacja| 2| 2560| 100|
+|Ogólne zastosowanie| 4\. generacja| 2| 3584| 300|
+|Ogólne zastosowanie| 4\. generacja| 4| 7680| 625|
+|Ogólne zastosowanie| 4\. generacja| 8| 15360| 1250|
+|Ogólne zastosowanie| 4\. generacja| 16| 31232| 2500|
+|Ogólne zastosowanie| 4\. generacja| 32| 62976| 5000|
+|Ogólne zastosowanie| 5\. generacja| 2| 3584| 300|
+|Ogólne zastosowanie| 5\. generacja| 4| 7680| 625|
+|Ogólne zastosowanie| 5\. generacja| 8| 15360| 1250|
+|Ogólne zastosowanie| 5\. generacja| 16| 31232| 2500|
+|Ogólne zastosowanie| 5\. generacja| 32| 62976| 5000|
+|Ogólne zastosowanie| 5\. generacja| 64| 125952| 10 000|
+|Pamięć| 5\. generacja| 2| 7168| 600|
+|Pamięć| 5\. generacja| 4| 15360| 1250|
+|Pamięć| 5\. generacja| 8| 30720| 2500|
+|Pamięć| 5\. generacja| 16| 62464| 5000|
+|Pamięć| 5\. generacja| 32| 125952| 10 000|
 
 Te parametry dodatkowy serwer nie są konfigurowane w systemie:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 20f0d6a88fead155225cff69ab89635de587a46d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66455165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056486"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -40,11 +40,11 @@ Obsługiwane są następujące systemy operacyjne klientów:
 
 Platforma Azure obsługuje trzy typy opcji sieci VPN typu punkt lokacja:
 
-* Protokół Secure Socket Tunneling Protocol (SSTP). Protokół SSTP jest własnym rozwiązaniem firmy Microsoft bazującym na protokole SSL. Może przechodzić przez zapory, ponieważ większość zapór otwiera port TCP 443, z którego korzysta protokół SSL.
+* Protokół Secure Socket Tunneling Protocol (SSTP). Protokół SSTP to rozwiązanie firmy Microsoft własności opartym na protokole SSL może przechodzić przez zapory, ponieważ większość zapór otwiera ruchu wychodzącego portu TCP, który używa protokołu SSL 443.
 
-* OpenVPN. OpenVPN jest rozwiązaniem opartym na protokole SSL, może przechodzić przez zapory, ponieważ większość zapór otwiera port TCP, który używa protokołu SSL 443.
+* OpenVPN. OpenVPN jest rozwiązaniem opartym na protokole SSL, może przechodzić przez zapory, ponieważ większość zapór otwiera ruchu wychodzącego portu TCP, który używa protokołu SSL 443.
 
-* Sieć VPN z protokołem IKEv2. Sieć VPN z protokołem IKEv2 to oparte na standardach rozwiązanie sieci VPN IPsec, które korzysta z portów UDP 500 i 4500 i protokołu IP nr 50. Zapory nie zawsze otwierają te porty, więc istnieje możliwość, że sieć VPN z protokołem IKEv2 nie będzie mogła nawiązywać połączeń przez serwery proxy i zapory.
+* Sieć VPN z protokołem IKEv2. Protokół IKEv2 sieci VPN jest oparte na standardach rozwiązanie sieci VPN IPsec, korzystającą z wychodzących porty UDP 500 i 4500 i protokołu IP nie. 50. Zapory nie zawsze otwierają te porty, więc istnieje możliwość, że sieć VPN z protokołem IKEv2 nie będzie mogła nawiązywać połączeń przez serwery proxy i zapory.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Czy w przypadku ponownego uruchomienia komputera klienckiego skonfigurowanego pod kątem połączenia typu punkt-lokacja połączenie z siecią VPN zostanie nawiązane automatycznie?
 

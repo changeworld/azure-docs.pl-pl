@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585512"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Wdrażanie usługi dzielenia i scalania do przenoszenia danych między bazami danych podzielonych na fragmenty
@@ -142,7 +142,7 @@ Jeśli swojej roli procesu roboczego nie przechodzi do trybu online, ale roli si
    Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30
    ```
 
-* Upewnij się, że nazwa serwera nie zaczyna się od **https://**.
+* Upewnij się, że nazwa serwera nie zaczyna się od **https://** .
 * Upewnij się, że serwer bazy danych SQL Azure pozwala nawiązać z nim usług systemu Azure. Aby to zrobić, Otwórz swoją bazę danych w portalu i upewnij się, że **zezwolić na dostęp do usług platformy Azure** jest ustawiana ** na ***.
 
 ## <a name="test-the-service-deployment"></a>Testowanie wdrażania usługi

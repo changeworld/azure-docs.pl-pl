@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure services
-origin.date: 08/03/2017
-ms.date: 02/26/2019
-ms.author: v-junlch
+ms.date: 08/03/2017
+ms.author: amsriva
 ms.openlocfilehash: 46a823e4e230656b53a93a97f195d0879fd08bf2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122238"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Omówienie zasad SSL bramy aplikacji
@@ -65,9 +64,9 @@ Jeśli wstępnie zdefiniowanych zasad protokołu SSL musi być skonfigurowany zg
  
 ### <a name="ssl-protocol-versions"></a>Wersji protokołu SSL
 
-- Protokół SSL 2.0 i 3.0 są domyślnie wyłączone dla wszystkich bram aplikacji. Te wersje protokołu nie są konfigurowalne.
-- Niestandardowe zasady protokołu SSL daje możliwość wybrania jednej z następujących trzech protokołów jako minimalnej wersji protokołu SSL dla bramy: TLS 1_0, TLS 1_1 i TLS 1_2.
-- Jeśli żadna zasada SSL nie jest zdefiniowana, wszystkie trzy protokoły (TLS 1_0, TLS 1_1 i TLS 1_2) są włączone.
+* Protokół SSL 2.0 i 3.0 są domyślnie wyłączone dla wszystkich bram aplikacji. Te wersje protokołu nie są konfigurowalne.
+* Niestandardowe zasady protokołu SSL daje możliwość wybrania jednej z następujących trzech protokołów jako minimalnej wersji protokołu SSL dla bramy: TLS 1_0, TLS 1_1 i TLS 1_2.
+* Jeśli żadna zasada SSL nie jest zdefiniowana, wszystkie trzy protokoły (TLS 1_0, TLS 1_1 i TLS 1_2) są włączone.
 
 ### <a name="cipher-suites"></a>Mechanizmy szyfrowania
 
@@ -106,5 +105,3 @@ Usługa Application Gateway obsługuje następujące mechanizmów szyfrowania, z
 ## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz dowiedzieć się, jak skonfigurować zasady protokołu SSL, zobacz [Konfigurowanie zasad protokołu SSL w bramie aplikacji](application-gateway-configure-ssl-policy-powershell.md).
-
-<!-- Update_Description: wording update -->

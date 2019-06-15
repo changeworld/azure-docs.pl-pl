@@ -1,25 +1,17 @@
 ---
 title: Azure IoT Hub opracowywanie zawartości dla ograniczonego urządzeń przy użyciu zestawu SDK C usługi IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — wskazówki dotyczące sposobu tworzenia przy użyciu zestawów SDK usługi Azure IoT dla urządzeń z ograniczeniami.
-services: iot-hub
-documentationcenter: c
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: 979136db-c92d-4288-870c-f305e8777bdd
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 05/24/2018
-ms.date: 04/29/2019
-ms.author: v-yiso
+services: iot-hub
+ms.topic: conceptual
+ms.date: 05/24/2018
+ms.author: yizhon
 ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61320946"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Opracowywanie zawartości dla ograniczonego urządzeń przy użyciu zestawu SDK C usługi Azure IoT
@@ -52,6 +44,7 @@ cmake -Duse_amqp=OFF -Duse_http=OFF <Path_to_cmake>
 ### <a name="remove-sdk-logging-capability"></a>Usuń możliwość rejestrowania zestawu SDK
 
 Zestawu SDK języka C zapewnia rozbudowane rejestrowanie w całym pomocy w debugowaniu. Możesz usunąć rejestrować urządzeń produkcyjnych przy użyciu następującego polecenia cmake:
+
 ```
 cmake -Dno_logging=OFF <Path_to_cmake>
 ```
@@ -87,15 +80,7 @@ Zestaw SDK języka C obsługuje dwa modele programowania. Jeden zestaw ma interf
 Inny zestaw interfejsów API bez _LL_ indeksu jest wywoływana warstwy wygodne, gdy wątek roboczy zostanie automatycznie rozszerzona. Na przykład warstwa wygody interfejsów API klienta urządzenia, można znaleźć w tym [plik nagłówkowy klienta urządzenia IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). Dla urządzeń ograniczone, gdzie każdy dodatkowy wątek może zająć znaczną procent zasobów systemowych, należy wziąć pod uwagę przy użyciu _LL_ interfejsów API.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat architektury zestawu SDK C usługi Azure IoT:
-- [Kod źródłowy zestawu SDK C usługi IoT platformy Azure](https://github.com/Azure/azure-iot-sdk-c/)
-- [Azure zestaw SDK urządzeń IoT dla języka C wprowadzenie](iot-hub-device-sdk-c-intro.md)
 
-------
-[lnk-cmake]: https://cmake.org/
-[lnk-devbox-setup]:  https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
-[lnk-choosing-protocol]: iot-hub-devguide-protocols.md
-[lnk-hub-file-upload]: iot-hub-devguide-file-upload.md
-[lnk-strip]: https://en.wikipedia.org/wiki/Strip_(Unix)
-[lnk-serializer]: https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer
-[lnk-parson]: https://github.com/kgabis/parson
+Aby dowiedzieć się więcej na temat architektury zestawu SDK C usługi Azure IoT:
+-   [Kod źródłowy zestawu SDK C usługi IoT platformy Azure](https://github.com/Azure/azure-iot-sdk-c/)
+-   [Azure zestaw SDK urządzeń IoT dla języka C wprowadzenie](iot-hub-device-sdk-c-intro.md)

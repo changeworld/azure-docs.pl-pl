@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617450"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64405873"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (Python)
 
@@ -35,13 +35,13 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
 - Dane telemetryczne, obejmuje następujące pomiary zbieranych urządzenia:
   - Wilgotność
   - Temperatura
-  - Ciśnienie
+  - Wykorzystanie
   - Magnetometrów (X, Y, Z)
   - Accelerometer (X, Y, Z)
   - Żyroskop (X, Y, Z)
 - Ustawienia
   - Napięcie
-  - Bieżący
+  - bieżący
   - Wentylator szybkości
   - Przełącz Podczerwieni.
 - Właściwości
@@ -94,24 +94,24 @@ Utworzone na podstawie aplikacji **Devkits przykładowe** szablon aplikacji zawi
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
+| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika
 
-| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
+| `Display name` | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
-| Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Typ            | `Display name` | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
-| Tekst            | Lokalizacja     | location   | ND       |
+| Text            | Lokalizacja     | location   | ND       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

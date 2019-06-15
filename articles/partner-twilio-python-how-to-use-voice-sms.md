@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457672"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Jak za pomocą usługi Twilio dla połączeń głosowych i SMS funkcji w języku Python
@@ -46,17 +46,17 @@ Interfejs API korzysta z usługi Twilio zleceń; na przykład **&lt;Say&gt;** Tw
 
 Oto lista poleceń usługi Twilio. Dowiedz się więcej o innych poleceń i możliwości za pośrednictwem [dokumentacji usługi Twilio Markup Language][twiml].
 
-* **&lt;Wybierania&gt;**: Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
-* **&lt;Gather&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
-* **&lt;Rozłączanie&gt;**: Kończy wywołanie.
-* **&lt;Pause&gt;**: Dyskretnie czeka określoną liczbę sekund.
-* **&lt;Play&gt;**: Odtwarza plik audio.
-* **&lt;Queue&gt;**: Dodaj do kolejki obiekty wywołujące.
-* **&lt;Rekord&gt;**: Rejestruje głosu obiektu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
-* **&lt;Redirect&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
-* **&lt;Reject&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń.
-* **&lt;Powiedz&gt;**: Konwertuje tekst na mowę, który składa się na wywołanie.
-* **&lt;Sms&gt;**: Wysyła wiadomość SMS.
+* **&lt;Wybierania&gt;** : Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
+* **&lt;Gather&gt;** : Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
+* **&lt;Rozłączanie&gt;** : Kończy wywołanie.
+* **&lt;Pause&gt;** : Dyskretnie czeka określoną liczbę sekund.
+* **&lt;Play&gt;** : Odtwarza plik audio.
+* **&lt;Queue&gt;** : Dodaj do kolejki obiekty wywołujące.
+* **&lt;Rekord&gt;** : Rejestruje głosu obiektu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
+* **&lt;Redirect&gt;** : Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
+* **&lt;Reject&gt;** : Odrzuca połączenie na numer Twilio bez możesz rozliczeń.
+* **&lt;Powiedz&gt;** : Konwertuje tekst na mowę, który składa się na wywołanie.
+* **&lt;Sms&gt;** : Wysyła wiadomość SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML to zbiór opartych na języku XML instrukcje zleceń Twilio, które informują Twilio sposób przetwarzania wywołania lub wysyłać wiadomości SMS.
@@ -103,7 +103,7 @@ Można skonfigurować aplikację do używania biblioteki Twilio dla języka Pyth
    
         $ pip install twilio
 
-    — Lub —
+    -LUB-
 
 * Pobierz biblioteki Twilio dla języka Python z usługi GitHub ([https://github.com/twilio/twilio-python][twilio_python]) i zainstaluj go w następujący sposób:
 

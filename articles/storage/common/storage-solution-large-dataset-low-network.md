@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60730694"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Transfer danych w przypadku dużych zestawów danych za pomocą niski lub nie przepustowość sieci
@@ -51,13 +51,13 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 |    Typ danych                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    Współczynnik postaci                      |    5 dysków SSD na zamówienie zlecenie             |    1 x 50-modułów równoważenia obciążenia. rozmiar pulpitu urządzenia na zamówienie zlecenie    |    Kg — 1 X ~ 500. duże urządzenia na zamówienie zlecenie    |    Do 10 dysków twardych/SSD na zamówienie zlecenie        |
 |    Czas początkowej konfiguracji               |    Małe <br>(15 min)            |    Działania niskiej lub średniej <br> (< 30 minut)               |    Średnia<br>(1 – 2 godziny)               |    Moderowanie trudne do<br>(zmienna) |
-|    Wysyłanie danych do platformy Azure               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
-|    Eksportowanie danych z platformy Azure           |    Nie                           |    Nie                                            |    Nie                                    |    Yes                                 |
+|    Wysyłanie danych do platformy Azure               |    Tak                          |    Yes                                           |    Yes                                   |    Tak                                 |
+|    Eksportowanie danych z platformy Azure           |    Nie                           |    Nie                                            |    Nie                                    |    Tak                                 |
 |    Szyfrowanie                       |    AES 128-bitowy                  |    AES 256-bitowy                                   |    AES 256-bitowy                           |    AES 128-bitowy                         |
 |    Sprzęt                         |     Podany firmy Microsoft          |    Podany firmy Microsoft                            |    Podany firmy Microsoft                    |    Dostarcza użytkownik                   |
 |    Interfejs sieciowy                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
 |    Integracja z partnerami              |    Niektóre                         |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Niektóre                                |
-|    Wysyłka                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
+|    Wysyłki                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
 | Stosowane, gdy dane są przenoszone         |W granicach handlowych|W granicach handlowych|W granicach handlowych|W granicach geograficznych, np. nam UE|
 |    Cennik                          |    [Cennik](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Cennik](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 

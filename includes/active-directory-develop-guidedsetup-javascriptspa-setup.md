@@ -14,49 +14,49 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: a00bc7a05af9e329494a11f9bee444827cbebf38
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5ce0f18c1ec7a0fcb6465ab20e774976552687f1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121814"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133686"
 ---
-## <a name="setting-up-your-web-server-or-project"></a>Konfigurowanie serwera sieci web lub projektu
+## <a name="set-up-your-web-server-or-project"></a>Konfigurowanie serwera sieci web lub projektu
 
-> Chcesz zamiast tego Pobierz ten przykładowy projekt?
-> - [Pobierz pliki projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) do uruchamiania z lokalnego serwera internetowego, takie jak węzeł
+> Chcesz zamiast tego Pobierz ten przykładowy projekt? Wykonaj jedną z następujących czynności:
+> 
+> - Aby uruchomić projekt za pomocą lokalnego serwera internetowego, takich jak Node.js, [pobierania plików projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
-> lub
-> - (Opcjonalnie) [Pobrać projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip) do uruchamiania przy użyciu serwera usług IIS
+> - (Opcjonalnie) Aby uruchomić projekt na serwerze usług IIS [pobrać projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 >
-> A następnie przejdź do [kroku konfiguracji](#register-your-application) do skonfigurowania przykładowego kodu przed jej wykonanie.
+> A następnie skonfigurować przykładowego kodu, zanim ją wykonać, przejdź do [kroku konfiguracji](#register-your-application).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Serwer sieci web w lokalnych, takich jak [Node.js](https://nodejs.org/en/download/), [platformy .NET Core](https://www.microsoft.com/net/core), lub usług IIS Express integracji z usługą [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) jest wymagany do uruchomienia w tym samouczku.
 
-Jeśli przy użyciu środowiska Node.js, aby uruchomić projekt, zainstaluj zintegrowane środowisko projektowe takich jak [programu Visual Studio Code](https://code.visualstudio.com/download) edytowania plików projektu.
+* Aby uruchomić ten samouczek, konieczne lokalnego serwera internetowego, takich jak [Node.js](https://nodejs.org/en/download/), [platformy .NET Core](https://www.microsoft.com/net/core), lub usług IIS Express integracji z usługą [programu Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
-Instrukcje w tym przewodniku są oparte na technologii Node.js i programu Visual Studio 2017, ale możesz użyć dowolnego środowiska programowania lub serwer sieci Web.
+* Jeśli używasz środowiska Node.js, aby uruchomić projekt, zainstaluj zintegrowanym środowisku programistycznym (IDE), takie jak [programu Visual Studio Code](https://code.visualstudio.com/download), aby edytować pliki projektu.
+
+* Instrukcje w tym przewodniku są oparte na technologii Node.js i programu Visual Studio 2017, ale można użyć dowolnego środowiska programowania lub serwer sieci web.
 
 ## <a name="create-your-project"></a>Utwórz projekt
 
-> ### <a name="option-1-node-other-web-servers"></a>Opcja 1: Węzeł / inne serwery sieci web
-> Upewnij się, że zainstalowano [Node.js](https://nodejs.org/en/download/), następnie wykonaj kroki opisane poniżej:
+> ### <a name="option-1-nodejs-or-other-web-servers"></a>Opcja 1: Node.js lub inne serwery sieci web
+> Upewnij się, że zainstalowano [Node.js](https://nodejs.org/en/download/), a następnie wykonaj następujące czynności:
 > - Utwórz folder do hostowania aplikacji.
-
-<p><!-- -->
-
+>
 > ### <a name="option-2-visual-studio"></a>Opcja 2: Visual Studio
-> Jeśli używasz programu Visual Studio i tworzenia nowego projektu, wykonaj poniższe kroki, aby utworzyć nowe rozwiązanie programu Visual Studio:
-> 1.    W programie Visual Studio:  **Plik > Nowy > Projekt**
-> 2.    W obszarze **Visual C# \Web**, wybierz opcję **aplikacji sieci Web platformy ASP.NET (.NET Framework)**
-> 3.    Wprowadź nazwę aplikacji i wybierz **OK**
-> 4.    W obszarze **Nowa aplikacja internetowa ASP.NET**, wybierz opcję **pusty**
+> Jeśli używasz programu Visual Studio i tworzenia nowego projektu, wykonaj następujące czynności:
+> 1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**.
+> 1. W pozycji **Visual C#\Internet** wybierz opcję **Aplikacja internetowa ASP.NET (.NET Framework)** .
+> 1. Wprowadź nazwę aplikacji, a następnie wybierz **OK**.
+> 1. W obszarze **Nowa aplikacja internetowa ASP.NET**, wybierz opcję **pusty**.
 
-## <a name="create-your-single-page-applications-ui"></a>Tworzenie interfejsu użytkownika aplikacji jednostronicowej
-1. Utwórz `index.html` swoje SPA JavaScript w pliku. Jeśli używasz programu Visual Studio wybierz projekt (folder główny projektu), kliknij prawym przyciskiem myszy i wybierz: **Dodaj > Nowy element > stronę HTML** i nadaj mu nazwę index.html.
+## <a name="create-the-spa-ui"></a>Tworzenie interfejsu użytkownika SPA
+1. Tworzenie *index.html* swoje SPA JavaScript w pliku. Jeśli używasz programu Visual Studio wybierz projekt (folder główny projektu), kliknij prawym przyciskiem myszy i wybierz **Dodaj** > **nowy element** > **strony HTML**, i Nadaj plikowi nazwę *index.html*.
 
-2. Dodaj następujący kod do strony:
+1. W *index.html* plików, Dodaj następujący kod:
+
    ```html
    <!DOCTYPE html>
    <html>
@@ -78,4 +78,4 @@ Instrukcje w tym przewodniku są oparte na technologii Node.js i programu Visual
    ```
 
    > [!TIP]
-   > Wersja MSAL.js w powyżej skryptu można zastąpić najnowszą wersję oficjalną w obszarze [zwalnia MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+   > Wersja MSAL.js w poprzednim skrypcie można zastąpić najnowszą wersję oficjalną w obszarze [zwalnia MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).

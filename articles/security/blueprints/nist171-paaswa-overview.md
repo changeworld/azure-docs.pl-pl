@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: f9773c3b372ab22cbcd99828e147d23c185c4eb6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127331"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla publikacji specjalne NIST 800-171
@@ -42,7 +42,7 @@ Usługa Application Insights zapewnia zarządzania wydajnością aplikacji w cza
 
 To rozwiązanie korzysta z poniższych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [architektura wdrożenia](#deployment-architecture) sekcji.
 
-- Azure Virtual Machines
+- Usługa Azure Virtual Machines
     - (1) zarządzania/bastionu (Windows Server 2016 Datacenter)
 - Azure Virtual Network
     - (((1) /16 sieci
@@ -118,7 +118,7 @@ Każdy z sieciowych grup zabezpieczeń ma określone porty i protokoły Otwórz 
 
 **Usługa Azure Load Balancer**: [Moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) może być używany przez klientów do skalowania swoich aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego. Zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP.
 
-### <a name="data-in-transit"></a>Przesyłane dane
+### <a name="data-in-transit"></a>Dane przesyłane
 Azure szyfruje cała komunikacja do i z centrów danych platformy Azure, domyślnie. Wszystkie transakcje w usłudze Azure Storage za pośrednictwem witryny Azure portal występują za pośrednictwem protokołu HTTPS.
 
 ### <a name="data-at-rest"></a>Dane magazynowane

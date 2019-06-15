@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: daab3c3b2a5b756686a4867350478faaa1142279
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726855"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
@@ -66,7 +66,7 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 Następujące elementy są wymagane do wykonania czynności przedstawionych w samouczku.
 
 * Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. 
-  Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+  Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Kamera internetowa i koder, który może wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów.
 
@@ -167,7 +167,7 @@ Jeśli klikniesz pozycję **Zakończ transmisję na żywo**, wszystkie wydarzeni
 ## <a name="watch-the-event"></a>Oglądanie wydarzenia
 Aby oglądać wydarzenie, kliknij przycisk **Oglądaj** w witrynie Azure Portal lub skopiuj adres URL przesyłania strumieniowego i użyj wybranego odtwarzacza. 
 
-![Utworzone](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![Utworzono](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 Po zatrzymaniu wydarzenia na żywo wydarzenie jest automatycznie konwertowane na zawartość na żądanie.
 

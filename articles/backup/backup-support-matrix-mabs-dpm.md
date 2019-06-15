@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 704bb409d2b21e2ae258dbb2d627b1c088d80db7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254651"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Macierz obsługi dla narzędzia Kopia zapasowa Microsoft Azure Backup Server lub programu System Center DPM
@@ -46,7 +46,7 @@ Kopię zapasową przy użyciu programu DPM/serwera usługi Mab i Azure Backup dz
 1. Agent usługi Microsoft Azure Recovery Services (MARS) jest zainstalowany na program DPM server/serwera usługi MAB.
 1. Agenta usług MARS tworzy kopie zapasowe dysków DPM/serwera usługi Mab do tworzenia kopii zapasowej magazynu usługi Recovery Services na platformie Azure przy użyciu usługi Azure Backup.
 
-Więcej informacji:
+Informacje dodatkowe:
 
 - [Dowiedz się więcej](backup-architecture.md#architecture-back-up-to-dpmmabs) o architekturze serwera usługi MAB.
 - [Sprawdź, jakie operacje są obsługiwane](backup-support-matrix-mars-agent.md) dla agenta usług MARS.

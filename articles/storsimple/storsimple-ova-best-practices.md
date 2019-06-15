@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630142"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Najlepsze rozwiązania StorSimple Virtual Array
@@ -44,7 +44,7 @@ Podczas aprowizowania macierzy wirtualnej, należy zaimplementować następując
 | **Typ dysku danych** |Aprowizowanie jako **dynamicznie powiększających się**.<br></br> **Ustalony rozmiar** zajmuje dużo czasu. <br></br> Nie używaj **różnicowych** opcji. |Użyj **alokowanych aprowizowanie** opcji. |
 | **Modyfikowanie dysku danych** |Rozszerzenie lub zmniejszania nie jest dozwolone. Próby takiego przydzielenia spowoduje utratę danych lokalnych na urządzeniu. |Rozszerzenie lub zmniejszania nie jest dozwolone. Próby takiego przydzielenia spowoduje utratę danych lokalnych na urządzeniu. |
 
-### <a name="sizing"></a>Ustalanie rozmiaru
+### <a name="sizing"></a>Zmiany rozmiaru
 Podczas zmiany rozmiaru rozwiązania StorSimple Virtual Array, należy wziąć pod uwagę następujące czynniki:
 
 * Zarezerwowane miejsce lokalne dla woluminy lub udziały. Około 12% wolnego miejsca jest zarezerwowana w warstwie lokalnego dla każdego elastycznie warstwowego woluminu lub udziału. Około 10% wolnego miejsca, również jest zarezerwowana dla woluminu przypiętego lokalnie dla systemu plików.

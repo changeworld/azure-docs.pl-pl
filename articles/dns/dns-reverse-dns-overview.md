@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
 ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60192986"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Omówienie odwrotnego DNS i pomocy technicznej na platformie Azure
@@ -40,7 +40,7 @@ Po przypisaniu blok adresów IP w organizacji, również uzyskać prawa do odpow
 > [!NOTE]
 > Wyszukiwania do przodu DNS i wyszukiwania wstecznego DNS są implementowane w oddzielnych, równoległe hierarchii DNS. Wyszukiwanie wsteczne "www.contoso.com" jest **nie** hostowanych w strefie "contoso.com", zamiast jest ona hostowana na strefy ARPA odpowiedni blok adresów IP. Bloki adresów IPv4 i IPv6 są używane osobne strefy.
 
-### <a name="ipv4"></a>Protokół IPv4
+### <a name="ipv4"></a>IPv4
 
 Nazwa strefy wyszukiwania wstecznego IPv4 powinny być w następującym formacie: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
@@ -85,7 +85,7 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 ```
 Wyszukiwanie wsteczne dla zapytania "192.0.2.129" adres IP rekordu PTR systemu o nazwie "129.2.0.192.in-addr.arpa". To zapytanie jest rozpoznawany jako przy użyciu rekordu CNAME w strefie nadrzędnej, aby rekord PTR w strefie podrzędnej.
 
-### <a name="ipv6"></a>Protokół IPv6
+### <a name="ipv6"></a>IPv6
 
 Nazwa strefy wyszukiwania wstecznego IPv6 powinien znajdować się w następującej postaci: `<IPv6 network prefix in reverse order>.ip6.arpa`
 

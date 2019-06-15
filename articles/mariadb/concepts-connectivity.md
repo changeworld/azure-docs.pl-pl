@@ -8,10 +8,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: f5f5915e6fdb240fa519ee10526c935a524cb5b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61042220"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Obsługa błędów przejściowych łączności dla usługi Azure Database dla serwera MariaDB
@@ -46,4 +46,4 @@ Upewnij się, że można przetestować Logika ponawiania próby. Na przykład sp
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Rozwiązywanie problemów z połączeniem do usługi Azure Database dla serwera MariaDB](howto-troubleshoot-common-connection-issues.md)
+* [Rozwiązywanie problemów z połączeniem z usługą Azure Database for MariaDB](howto-troubleshoot-common-connection-issues.md)
