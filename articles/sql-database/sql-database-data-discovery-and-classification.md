@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/22/2019
 ms.openlocfilehash: e451b7837a1cff4bbeaecd1573dc860524caf4d3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142652"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Usługa Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych
@@ -119,7 +119,7 @@ Po zdefiniowaniu zasad obowiązujących w całej dzierżawy możesz kontynuować
 
 8. Aby zakończyć klasyfikacji i trwałe etykiety kolumn (tagów) bazy danych z nowymi metadanymi klasyfikacji, kliknij **Zapisz** w menu u góry okna.
 
-   ![Zapisz](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
+   ![Zapisanie](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a id="subheading-3"></a>Inspekcja dostępu do poufnych danych
 

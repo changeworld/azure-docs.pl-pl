@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 4/29/2019
 ms.openlocfilehash: 219899c2e336f544ff6572589cc79f84f555490d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233833"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Usługa Azure HDInsight Accelerated zapisy do bazy danych Apache HBase
@@ -36,7 +36,7 @@ Funkcja przyspieszonej zapisuje rozwiązuje problem z większych opóźnień zap
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak włączyć Accelerated zapisuje do bazy danych HBase w HDInsight
 
-Do utworzenia nowego klastra HBase z funkcją przyspieszonej zapisuje, wykonaj kroki opisane w [konfigurowanie klastrów w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) aż **kroku 3, magazynu**. W obszarze **ustawienia magazynu metadanych**, kliknij pole wyboru obok pozycji **Włącz Accelerated zapisuje (wersja zapoznawcza)**. Następnie kontynuuj pozostałe kroki w celu utworzenia klastra.
+Do utworzenia nowego klastra HBase z funkcją przyspieszonej zapisuje, wykonaj kroki opisane w [konfigurowanie klastrów w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) aż **kroku 3, magazynu**. W obszarze **ustawienia magazynu metadanych**, kliknij pole wyboru obok pozycji **Włącz Accelerated zapisuje (wersja zapoznawcza)** . Następnie kontynuuj pozostałe kroki w celu utworzenia klastra.
 
 ![Włącz opcję jej jako przyspieszonej zapisu dla bazy danych Apache HDInsight HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 

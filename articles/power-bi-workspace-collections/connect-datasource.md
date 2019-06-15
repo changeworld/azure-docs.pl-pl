@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 721458c5725e912d801b307ac05f3fde0776580e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708761"
 ---
 # <a name="connect-to-a-data-source"></a>Łączenie ze źródłem danych
@@ -39,7 +39,7 @@ Tryb **DirectQuery**
 * Baza danych Azure SQL Database
 * Azure SQL Data Warehouse
 
-**Importowanie**
+**Importujuj**
 
 Można zaimportować za pomocą wszystkich źródeł danych dostępnych w programie Power BI Desktop. Wykonasz **nie** można było odświeżyć dane w kolekcji obszarów roboczych usługi Power BI. Musisz przekazać zmiany do pliku PBIX do kolekcji obszarów roboczych usługi Power BI. Jest to spowodowane dostępnej bramy.
 

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/07/2019
+ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: d15b61c70f1587cdd1c0d76d2e3eab81294674fc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4ab30f5f737b0f5188958c4686f82a0084c3ac35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059360"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API Apache Ambari REST
 
@@ -22,9 +22,11 @@ ms.locfileid: "64721253"
 Dowiedz się, jak używać interfejsu API Apache Ambari REST do zarządzania i monitorowania klastrów Apache Hadoop w usłudze Azure HDInsight.
 
 ## <a id="whatis"></a>Co to jest Apache Ambari
+
 [Apache Ambari](https://ambari.apache.org) upraszcza zarządzania i monitorowania klastrów platformy Hadoop, udostępniając łatwy w użyciu interfejs użytkownika wspierany przez sieci web jego [interfejsów API REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari znajduje się domyślnie z klastrami HDInsight opartych na systemie Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 * **Klaster Hadoop w HDInsight**. Zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 * **Bash on Ubuntu on Windows 10**.  Przykłady w niniejszym artykule Użyj powłoki Bash w systemie Windows 10. Zobacz [podsystemu Windows dla systemu Linux instalacji Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) dla czynności instalacyjne.  Inne [powłoki systemu Unix](https://www.gnu.org/software/bash/) będzie działać tak dobrze.  Przykłady, za pomocą pewne niewielkie modyfikacje mogą pracować w wierszu polecenia Windows.  Alternatywnie można użyć programu Windows PowerShell.
@@ -35,7 +37,7 @@ Dowiedz się, jak używać interfejsu API Apache Ambari REST do zarządzania i m
 
 ## <a name="base-uri-for-ambari-rest-api"></a>Podstawowy identyfikator URI dla interfejsu API Rest systemu Ambari
 
- Podstawowy identyfikator URI dla interfejsu API REST Ambari w HDInsight jest `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, gdzie `CLUSTERNAME` jest nazwą klastra.  Nazwy klastra w identyfikatory URI są **liter**.  W trakcie bez uwzględniania wielkości liter nazwy klastra, w pełni kwalifikowaną nazwę (FQDN) część identyfikatora URI (CLUSTERNAME.azurehdinsight.net) innych wystąpień w identyfikatorze URI jest rozróżniana wielkość liter.
+ Podstawowy identyfikator URI (Uniform Resource) interfejsu API REST Ambari w HDInsight jest `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, gdzie `CLUSTERNAME` jest nazwą klastra.  Nazwy klastra w identyfikatory URI są **liter**.  Podczas gdy nazwa klastra, w pełni kwalifikowaną nazwę (FQDN) części identyfikatora URI (`CLUSTERNAME.azurehdinsight.net`) nie uwzględnia wielkości liter, inne wystąpienia w identyfikatorze URI jest rozróżniana wielkość liter.
 
 ## <a name="authentication"></a>Authentication
 
@@ -60,11 +62,9 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Określ nazwę klastra poprawnie z uwzględnieniem wielkości liter
-Rzeczywiste wielkość liter w wyrazie nazwa klastra może być inny niż oczekujesz, że w zależności od sposobu utworzenia klastra.  Opisane w tym miejscu wyświetlić rzeczywiste małych i wielkich liter, a następnie zapisać ją w zmiennej o kolejne przykłady.
+Rzeczywiste wielkość liter w wyrazie nazwy klastra mogą być inne, niż jest to oczekiwane, w zależności od sposobu utworzenia klastra.  Opisane w tym miejscu wyświetlić rzeczywiste małych i wielkich liter, a następnie zapisać ją w zmiennej o kolejne przykłady.
 
 Edytuj skrypty poniżej, aby zastąpić `CLUSTERNAME` nazwą klastra. Następnie wprowadź polecenie. (Nazwa klastra dla nazwy FQDN nie jest rozróżniana wielkość liter).
-
-**A. Bash**  
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -95,7 +95,7 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
     -Credential $creds -UseBasicParsing
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
-```   
+```
 
 ### <a name="example-get-the-fqdn-of-cluster-nodes"></a> Uzyskaj nazwę FQDN węzłów klastra
 
@@ -105,7 +105,7 @@ Podczas pracy z HDInsight, trzeba znać w pełni kwalifikowana nazwa domeny (FQD
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" \
-| jq '.items[].Hosts.host_name'
+| jq -r '.items[].Hosts.host_name'
 ```  
 
 ```powershell
@@ -119,7 +119,7 @@ $respObj.items.Hosts.host_name
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/NAMENODE" \
-| jq '.host_components[].HostRoles.host_name'
+| jq -r '.host_components[].HostRoles.host_name'
 ```
 
 ```powershell
@@ -133,7 +133,7 @@ $respObj.host_components.HostRoles.host_name
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/DATANODE" \
-| jq '.host_components[].HostRoles.host_name'
+| jq -r '.host_components[].HostRoles.host_name'
 ```
 
 ```powershell
@@ -147,7 +147,7 @@ $respObj.host_components.HostRoles.host_name
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
-| jq ".host_components[].HostRoles.host_name"
+| jq -r ".host_components[].HostRoles.host_name"
 ```
 
 ```powershell
@@ -195,7 +195,7 @@ Poniższe przykłady pobrać domyślnej konfiguracji magazynu z klastra:
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
-| jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+| jq -r '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
 ```
 
 ```powershell
@@ -210,7 +210,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Wartość zwracana jest podobny do jednego z poniższych przykładów:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — Ta wartość wskazuje, że klaster używa konta usługi Azure Storage do magazynu domyślnego. `ACCOUNTNAME` Wartością jest nazwa konta magazynu. `CONTAINER` Fragment to nazwa kontenera obiektów blob na koncie magazynu. Kontener jest katalog główny systemu plików HDFS zgodną z magazynem klastra.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — Ta wartość wskazuje, że klaster używa konta usługi Azure Storage do magazynu domyślnego. `ACCOUNTNAME` Wartością jest nazwa konta magazynu. `CONTAINER` Fragment to nazwa kontenera obiektów blob na koncie magazynu. Kontener jest katalog główny systemu plików HDFS zgodną z magazynem klastra.
 
 * `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage Gen2 do magazynu domyślnego. `ACCOUNTNAME` i `CONTAINER` wartości mają takie same znaczenia, jak wspomniano wcześniej w usłudze Azure Storage.
 
@@ -220,7 +220,7 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
 
     ```bash
     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
-    | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
+    | jq -r '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
     ```powershell
@@ -236,7 +236,7 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
 
     ```bash
     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
-    | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
+    | jq -r '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```  
 
     ```powershell
@@ -250,7 +250,6 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
 
 > [!NOTE]  
 > [Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) udostępniane przez polecenia cmdlet [programu Azure PowerShell](/powershell/azure/overview) zwraca też wartość informacji magazynu dla klastra.
-
 
 ### <a name="get-all-configurations"></a> Pobierz wszystkie konfiguracje
 
@@ -267,7 +266,7 @@ $respObj.Content
 ```
 
 W tym przykładzie zwraca dokument JSON zawierający bieżącą konfigurację (identyfikowane przez *tag* wartość) składniki zainstalowane w klastrze. Poniższy przykład jest fragment danych zwracanych przez typ klastra Spark.
-   
+
 ```json
 "jupyter-site" : {
   "tag" : "INITIAL",
@@ -311,10 +310,9 @@ W tym przykładzie zwraca dokument JSON zawierający bieżącą konfigurację `l
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
-
      ```
 
-     **B. programu powershell**  
+     **B. PowerShell**  
      Skrypt programu PowerShell używa [jq](https://stedolan.github.io/jq/).  Edytuj `C:\HD\jq\jq-win64` poniżej, aby odzwierciedlają rzeczywistej ścieżce i wersji [jq](https://stedolan.github.io/jq/).
 
      ```powershell
@@ -402,7 +400,6 @@ W tym momencie możesz wyświetlić interfejs użytkownika sieci web Ambari, us�
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo": {"context": "turning on maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}'
-    $resp.Content
     ```
 
 2. Sprawdź tryb konserwacji  
@@ -428,16 +425,16 @@ W tym momencie możesz wyświetlić interfejs użytkownika sieci web Ambari, us�
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
-    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
-    "https://girouxSpark.azurehdinsight.net/api/v1/clusters/girouxspark/services/SPARK2"
+    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
-        -Credential $creds `
+        -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
-        -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}'
+        -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}'
     $resp.Content
     ```
 
@@ -454,7 +451,7 @@ W tym momencie możesz wyświetlić interfejs użytkownika sieci web Ambari, us�
     ```
 
     > [!IMPORTANT]  
-    > `href` Wartość zwrócona przez ten identyfikator URI jest używany wewnętrzny adres IP w węzła klastra. Aby korzystać z poza klastrem, Zastąp fragment "10.0.0.18:8080" nazwy FQDN klastra.  
+    > `href` Wartość zwrócona przez ten identyfikator URI jest używany wewnętrzny adres IP w węzła klastra. Aby użyć go z poza klastrem, Zastąp `10.0.0.18:8080` część z wykorzystaniem nazwy FQDN klastra.  
 
 4. Sprawdź żądanie.  
     Edytuj poniższe polecenie, zastępując `29` z rzeczywistą wartością dla `id` zwrócony z poprzedniego kroku.  Następujące polecenia powodują pobranie stan żądania:
@@ -475,10 +472,10 @@ W tym momencie możesz wyświetlić interfejs użytkownika sieci web Ambari, us�
     Odpowiedź `COMPLETED` wskazuje, że żądanie zostało zakończone.
 
 5. Po ukończeniu poprzedniego żądania, użyj następującego polecenia można uruchomić usługi Spark2.
-   
+
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
-    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
+    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.START.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
     "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
 
@@ -487,7 +484,8 @@ W tym momencie możesz wyświetlić interfejs użytkownika sieci web Ambari, us�
         -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
-        -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
+        -Body '{"RequestInfo":{"context":"_PARSE_.START.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
+    $resp.Content
     ```
 
     Usługa używa nowej konfiguracji.
@@ -506,10 +504,8 @@ W tym momencie możesz wyświetlić interfejs użytkownika sieci web Ambari, us�
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
-
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać pełną dokumentację interfejsu API REST, zobacz [Apache Ambari API odwołania V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
-

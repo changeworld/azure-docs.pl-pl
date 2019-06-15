@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126665"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka funkcje trwałe na platformie Azure
@@ -35,7 +35,7 @@ Każde zdarzenie cyklu życia wystąpienia aranżacji wygenerowanie zdarzenia ś
 * **Nazwa aplikacji**: Nazwa aplikacji funkcji. Jest to przydatne, jeśli masz wiele aplikacji funkcyjnych, udostępnianie tego samego wystąpienia usługi Application Insights.
 * **slotName**: [Miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) w bieżącej aplikacji funkcji, który działa. Jest to przydatne, gdy korzystanie z mechanizmów miejsc wdrożenia do wersji.
 * **functionName**: Nazwa funkcji programu orchestrator lub działania.
-* **functiontype —**: Typ funkcji, takich jak **Orchestrator** lub **działania**.
+* **functiontype —** : Typ funkcji, takich jak **Orchestrator** lub **działania**.
 * **instanceId**: Unikatowy identyfikator wystąpienia aranżacji.
 * **Stan**: Stan wykonywania cyklu życia wystąpienia. Prawidłowe wartości to:
   * **Zaplanowane**: Funkcja została zaplanowana do wykonania, ale nie zostało rozpoczęte jeszcze uruchomiona.

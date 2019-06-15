@@ -12,10 +12,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167175"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
@@ -50,7 +50,7 @@ Aby użyć *certyfikatu publicznego* w usłudze logic apps, które mają możliw
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | <*certificate-name*> | Nazwa certyfikatu, który jest "publicCert", w tym przykładzie | 
-   | **Typ certyfikatu** | Publiczna | Typ certyfikatu |
+   | **Typ certyfikatu** | Public | Typ certyfikatu |
    | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. |
    ||||
 

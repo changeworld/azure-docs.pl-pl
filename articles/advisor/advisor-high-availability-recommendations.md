@@ -9,10 +9,10 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254663"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
@@ -30,7 +30,7 @@ Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch m
 
 Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Użycie usługi Managed Disks w celu poprawy niezawodności dotyczącej danych
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Korzystanie z funkcji Dyski zarządzane w celu zwiększania niezawodności danych
 
 Maszyny wirtualne, które znajdują się w zestaw dostępności z dyskami współużytkującymi konta magazynu lub jednostki skali magazynu nie są odporne na błędy jednostki skali magazynu jednego podczas awarii. Klasyfikator zidentyfikuje te zestawy dostępności i zaleca się migrację do usługi Azure Managed Disks. Pozwoli to zagwarantować, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane pod kątem uniknięcia pojedynczego punktu awarii. 
 
@@ -60,7 +60,7 @@ Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego rou
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Użyj usuwania nietrwałego na swoim koncie magazynu platformy Azure w celu zapisania i odzyskiwanie danych po przypadkowym zastępowania lub usuwania
 
-Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na swoim koncie magazynu, aby usunąć obiekty BLOB przejście do stanu usunięcia nietrwałego zamiast trwale usunięte. Gdy dane są zastępowane, nietrwałe Usunięto migawkę jest generowany ma być zapisany stan zastąpione danych. Korzystanie z miękkiego usuwania umożliwia odzyskiwanie w przypadku przypadkowym lub zastępuje. Advisor ustala kont usługi Azure Storage, które nie mają włączone usuwanie nietrwałe i sugeruje, że można ją włączyć.
+Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na swoim koncie magazynu, aby usunąć obiekty BLOB przejście do stanu usunięcia nietrwałego zamiast trwale usunięte. Gdy dane są zastępowane, generowana jest migawka usuwania nietrwałego w celu zapisania stanu zastąpionych danych. Korzystanie z miękkiego usuwania umożliwia odzyskiwanie w przypadku przypadkowym lub zastępuje. Advisor ustala kont usługi Azure Storage, które nie mają włączone usuwanie nietrwałe i sugeruje, że można ją włączyć.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurowanie bramy sieci VPN w taki sposób, aby aktywne aktywne dla połączeń
 
@@ -72,7 +72,7 @@ Usługa Azure Advisor sprawdzi dla bram sieci VPN, które są podstawowej jednos
 
 ## <a name="repair-invalid-log-alert-rules"></a>Napraw reguł alertów dzienników nieprawidłowy
 
-Usługa Azure Advisor wykryje reguł alertów, które mają nieprawidłowe zapytania określony w sekcji warunków. Reguł alertów dzienników są tworzone w usłudze Azure Monitor i są używane do uruchamiania zapytań analitycznych w określonych odstępach czasu. Wyniki zapytania określają, czy alert ma być wyzwalane. Zapytania analityczne może stać się nadgodzinach nieprawidłowa z powodu zmian w odwołania do zasobów, tabel lub poleceń. Klasyfikator oferuje rekomendacje dotyczące poprawisz zapytania w regule alertu, aby uniemożliwić wyłączone automatycznego pobierania i zapewnić pokrycie monitorowania zasobów na platformie Azure. [Dowiedz się więcej na temat rozwiązywania problemów reguły alertów](https://aka.ms/aa_logalerts_queryrepair)
+Usługa Azure Advisor wykryje reguł alertów, które mają nieprawidłowe zapytania określony w sekcji warunków. Reguły alertów dziennika są tworzone w usłudze Azure Monitor i służą do uruchamiania zapytań analitycznych w określonych odstępach czasu. Wyniki zapytania określają, czy trzeba wyzwolić alert. Zapytania analityczne z upływem czasu mogą stać się nieprawidłowe z powodu zmian w zasobach, tabelach lub poleceniach, do których się odwołują. Klasyfikator oferuje rekomendacje dotyczące poprawisz zapytania w regule alertu, aby uniemożliwić wyłączone automatycznego pobierania i zapewnić pokrycie monitorowania zasobów na platformie Azure. [Dowiedz się więcej na temat rozwiązywania problemów reguły alertów](https://aka.ms/aa_logalerts_queryrepair)
 
 ## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurowanie spójnego trybu indeksowania w kolekcji usługi Cosmos DB
 
@@ -82,15 +82,15 @@ Kontenery usługi Azure Cosmos DB skonfigurowaną z opóźnieniem tryb indeksowa
 
 Usługa Azure Advisor będzie identyfikować niepartycjonowana kolekcji usługi Azure Cosmos DB, które są zbliża się limit przydziału aprowizowanego magazynu. Oferuje rekomendacje, migracja tych kolekcji do nowej kolekcji z definicją klucza partycji, tak, aby ich automatycznie można skalować w poziomie przez usługę. [Dowiedz się więcej o wybór klucza partycji](https://aka.ms/cosmosdb/choose-partitionkey)
 
-## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Uaktualnienie do najnowszej wersji Nuget zestawu SDK .NET usługi Azure Cosmos DB
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Uaktualnianie zestawu .NET SDK dla usługi Azure Cosmos DB do najnowszej wersji z narzędzia Nuget
 
 Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które korzystają z starsze wersje zestawu SDK platformy .NET i zaleca się uaktualnienie do najnowszej wersji z pakietów Nuget dla najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej o Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
-## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uaktualnij do najnowszej wersji zestawu SDK Java usługi Azure Cosmos DB, z narzędzia Maven
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uaktualnianie zestawu Java SDK dla usługi Azure Cosmos DB do najnowszej wersji z programu Maven
 
 Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które używają starej wersji zestawu SDK języka Java i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
-## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Łącznik platformy Spark usługi Azure Cosmos DB uaktualnienie do najnowszej wersji narzędzia Maven
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Uaktualnianie łącznika platformy Spark dla usługi Azure Cosmos DB do najnowszej wersji z programu Maven
 
 Usługa Azure Advisor będzie identyfikować kont usługi Azure Cosmos DB, które są używane przez łącznik usługi Cosmos DB Spark stare wersje i zaleca się uaktualnienie do najnowszej wersji z narzędzia Maven najnowszych poprawek, ulepszenia wydajności i nowe możliwości funkcji. [Dowiedz się więcej na temat łącznika usługi Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
 

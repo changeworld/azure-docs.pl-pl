@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165880"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059243"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -53,7 +53,7 @@ Utwórz zasoby wymagane do uruchomienia potoku:
 
 * Konfigurowanie `DataReference` obiektów do punktów danych, który znajduje się w przeciwnym razie jest dostępny w magazynie danych.
 
-* Konfigurowanie [celów obliczeń](concept-azure-machine-learning-architecture.md#compute-target) uruchamiania etapów potoku.
+* Konfigurowanie [celów obliczeń](concept-azure-machine-learning-architecture.md#compute-targets) uruchamiania etapów potoku.
 
 ### <a name="set-up-a-datastore"></a>Skonfiguruj Magazyn danych
 Magazyn danych przechowuje dane dla potoku w celu uzyskania dostępu do. Każdy obszar roboczy ma domyślny magazyn danych. Możesz zarejestrować dodatkowe magazynów danych. 
@@ -296,7 +296,7 @@ Po przesłaniu potoku usługi Azure Machine Learning sprawdza zależności dla k
 > [!IMPORTANT]
 > Aby uniemożliwić dołączanie w migawce pliki, należy utworzyć [.gitignore](https://git-scm.com/docs/gitignore) lub `.amlignore` plików w katalogu i Dodaj pliki do niego. `.amlignore` Plików używa tej samej składni i wzorce jako [.gitignore](https://git-scm.com/docs/gitignore) pliku. Jeśli oba pliki istnieją, `.amlignore` plik ma pierwszeństwo.
 >
-> Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshot).
+> Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshots).
 
 ```python
 # Submit the pipeline to be run
@@ -366,7 +366,7 @@ response = requests.post(published_pipeline1.endpoint,
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
-## <a name="view-results"></a>Wyświetl wyniki
+## <a name="view-results"></a>Wyświetlanie wyników
 
 Zobacz listę wszystkich potoków i ich szczegóły przebiegu:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).  

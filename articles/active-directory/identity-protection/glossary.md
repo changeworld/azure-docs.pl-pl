@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452827"
+ms.locfileid: "67109006"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Usługa Azure Active Directory Identity Protection słownik
 ### <a name="at-risk-user"></a>Zagrożone (użytkownik)
@@ -35,7 +35,7 @@ Zaloguj się za pomocą lokalizacji geograficznej, który nie jest typowe dla ok
 Moduł zabezpieczeń usługi Azure Active Directory, która zapewnia skonsolidowany wgląd w zdarzenia o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach mające wpływ na tożsamości w organizacji.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
-Zasady dotyczące zabezpieczania dostępu do zasobów. Zasady dostępu warunkowego są przechowywane w usłudze Azure Active Directory i są oceniane przez usługę Azure AD przed udzieleniem im dostępu do zasobu.  Przykład reguły obejmują, ograniczanie dostępu na podstawie lokalizacji użytkownika, kondycja urządzenia lub metoda uwierzytelniania użytkowników.
+Zasady dotyczące zabezpieczania dostępu do zasobów. Reguły dostępu warunkowego są przechowywane w usłudze Azure Active Directory i są oceniane przez usługę Azure AD przed udzieleniem im dostępu do zasobu.  Przykład reguły obejmują, ograniczanie dostępu na podstawie lokalizacji użytkownika, kondycja urządzenia lub metoda uwierzytelniania użytkowników.
 
 ### <a name="credentials"></a>Poświadczenia
 Informacje, które obejmują identyfikator i potwierdzenie, które jest używane do uzyskiwania dostępu do lokalnych i zasobów sieciowych. Przykładami poświadczeń są nazwy użytkownika i hasła, karty inteligentne i certyfikaty.

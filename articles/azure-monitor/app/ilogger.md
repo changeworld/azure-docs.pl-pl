@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955339"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058594"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider dla platformy .NET Core ILogger dzienników
 
@@ -106,6 +106,9 @@ public class ValuesController : ControllerBase
 ```
 
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Przechwytywanie dzienniki ILogger z pliku Startup.cs i Program.cs w aplikacji platformy ASP.NET Core
+
+> [!NOTE]
+> W programie ASP.NET Core 3.0 i nowszych wersjach, nie jest już możliwe iniekcję `ILogger` w pliku Startup.cs i pliku Program.cs. Zobacz https://github.com/aspnet/Announcements/issues/353 Aby uzyskać więcej informacji.
 
 Nowe ApplicationInsightsLoggerProvider można przechwycić dzienników z wczesnym etapie procesu uruchamiania aplikacji. Mimo że ApplicationInsightsLoggerProvider jest automatycznie włączone w usłudze Application Insights (począwszy od wersji 2.7.0-beta3), nie ma klucza instrumentacji, aż później skonfigurować potok. Dlatego tylko dzienniki z **kontrolera**/ będzie można przechwycić innych klas. Do przechwytywania każdego dziennika, począwszy od **Program.cs** i **Startup.cs** , musisz jawnie włączyć klucz instrumentacji dla ApplicationInsightsLoggerProvider. Ponadto *TelemetryConfiguration* nie zostało w pełni skonfigurowane podczas logowania z **Program.cs** lub **Startup.cs** sam. Dlatego te dzienniki mają minimalnej konfiguracji, korzystającą z InMemoryChannel, nie próbkowanie i nie inicjatory standardowa telemetria lub procesorów.
 
@@ -450,7 +453,7 @@ Jeśli wolisz zawsze wysyłaj TraceTelemetry, za pomocą tego fragmentu kodu: ``
 
 Rozszerzenie usługi Application Insights w usłudze Azure Web Apps używa starego dostawcy usług. Można zmodyfikować reguły filtrowania w *appsettings.json* pliku dla aplikacji. Aby skorzystać z nowego dostawcę, należy użyć Instrumentacja w czasie kompilacji biorąc pod uwagę zależności NuGet zestawu SDK. Ten artykuł zostanie zaktualizowany, gdy rozszerzenie jest przełączany na używanie nowego dostawcę.
 
-### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Za pomocą pakietu autonomicznego Microsoft.Extensions.Logging.ApplicationInsights i włączanie dostawcy usługi Application Insights, wywołując **konstruktora. AddApplicationInsights("ikey")**. Czy istnieje możliwość uzyskania klucza Instrumentacji z konfiguracji?
+### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Za pomocą pakietu autonomicznego Microsoft.Extensions.Logging.ApplicationInsights i włączanie dostawcy usługi Application Insights, wywołując **konstruktora. AddApplicationInsights("ikey")** . Czy istnieje możliwość uzyskania klucza Instrumentacji z konfiguracji?
 
 
 Zmodyfikuj plik Program.cs i appsettings.json:

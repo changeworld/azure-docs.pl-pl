@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957320"
 ---
 # <a name="clustering-point-data"></a>Klastrowanie punktu danych
@@ -84,9 +84,9 @@ Zobacz pióra <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>klastra ważona
 
 Po wystąpieniu zdarzenia myszy na warstwy, która zawiera punkty danych klastrowanych, punktu danych klastra zostanie przywrócony do zdarzenia jako obiekt funkcji punktu GeoJSON. Ta funkcja punktu mają następujące właściwości:
 
-| Nazwa właściwości | Type | Opis |
+| Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| klaster | wartość logiczna | Wskazuje, czy funkcja reprezentuje klastra. |
+| Klastra | wartość logiczna | Wskazuje, czy funkcja reprezentuje klastra. |
 | cluster_id | string | Unikatowy identyfikator dla klastra, który może być używany z źródła danych `getClusterExpansionZoom`, `getClusterChildren`, i `getClusterLeaves` metody. |
 | point_count | numer | Liczba punktów, znajdujących się w klastrze. |
 | point_count_abbreviated | string | Ciąg, który wyświetla trzyliterowy skrót `point_count` wartość, jeśli jest za długa. (na przykład 4000 staje się 4K) |

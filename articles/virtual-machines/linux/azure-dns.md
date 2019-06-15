@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127093"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opcje rozpoznawania nazw DNS dla maszyn wirtualnych systemu Linux na platformie Azure
@@ -72,7 +72,7 @@ Buforowanie pakietów, takich jak dnsmasq, na kilka różnych DNS są dostępne.
 **Ubuntu (używa resolvconf)**
   * Zainstaluj pakiet dnsmasq ("" sudo "apt-get install dnsmasq").
 
-**SUSE (używa netconf)**:
+**SUSE (używa netconf)** :
 1. Zainstaluj pakiet dnsmasq ("" sudo "zypper instalacji dnsmasq").
 2. Włącz usługę dnsmasq ("Włącz dnsmasq.service systemctl").
 3. Uruchom usługę dnsmasq ("start systemctl dnsmasq.service").
