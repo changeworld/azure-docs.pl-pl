@@ -9,18 +9,18 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0b35ef5ca3aaa7ad4169f99e2830ebea76d2759e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752976"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074946"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu 
 
-Za pomocą usługi Azure Machine Learning można uczenie modelu na wielu różnych zasobów lub środowisk, zbiorczo określany jako [ __celów obliczeń__](concept-azure-machine-learning-architecture.md#compute-target). Cel obliczenia może być komputer lokalny lub zasobem w chmurze, takich jak Azure obliczeniowego usługi Machine Learning, Azure HDInsight lub zdalnego maszyny wirtualnej.  Można również utworzyć obliczeniowych elementów docelowych dla modelu wdrożenia, zgodnie z opisem w ["gdzie i jak wdrożyć swoje modele"](how-to-deploy-and-where.md).
+Za pomocą usługi Azure Machine Learning można uczenie modelu na wielu różnych zasobów lub środowisk, zbiorczo określany jako [ __celów obliczeń__](concept-azure-machine-learning-architecture.md#compute-targets). Cel obliczenia może być komputer lokalny lub zasobem w chmurze, takich jak Azure obliczeniowego usługi Machine Learning, Azure HDInsight lub zdalnego maszyny wirtualnej.  Można również utworzyć obliczeniowych elementów docelowych dla modelu wdrożenia, zgodnie z opisem w ["gdzie i jak wdrożyć swoje modele"](how-to-deploy-and-where.md).
 
 Można tworzyć i zarządzać obliczeniowego elementu docelowego przy użyciu Azure Machine Learning zestawu SDK w witrynie Azure portal, rozszerzenie interfejsu wiersza polecenia platformy Azure lub usługi Azure Machine Learning programu VS Code. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
  
@@ -75,7 +75,7 @@ Poniższy kod przedstawia przykład Konfigurowanie przebiegów szkoleniowych w �
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
   
-## <a name="set-up-compute-targets-with-python"></a>Konfigurowanie celów obliczeń przy użyciu języka Python
+## <a name="set-up-in-python"></a>Konfigurowanie języka Python
 
 Użyj celów obliczeń poniżej, aby skonfigurować te sekcje:
 
@@ -271,7 +271,7 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-compute-in-the-azure-portal"></a>Konfigurowanie zasobów obliczeniowych w witrynie Azure portal
+## <a name="set-up-in-azure-portal"></a>Konfigurowanie w witrynie Azure portal
 
 Możesz uzyskać dostęp do celów obliczeń, które są skojarzone z obszarem roboczym w witrynie Azure portal.  Można użyć portalu:
 
@@ -357,7 +357,7 @@ Wykonaj kroki opisane wcześniej, aby wyświetlić listę obliczeniowych element
 1. Wybierz __dołączyć__. 
 1. Wyświetl stan operacji dołączania, wybierając obliczeniowego elementu docelowego z listy.
 
-## <a name="set-up-compute-with-the-cli"></a>Konfigurowanie obliczeniowe przy użyciu interfejsu wiersza polecenia
+## <a name="set-up-with-cli"></a>Konfigurowanie przy użyciu interfejsu wiersza polecenia
 
 Możesz uzyskać dostęp obliczeniowych elementów docelowych, które są skojarzone z sieci za pomocą obszaru roboczego [rozszerzenie interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) dla usługi Azure Machine Learning.  Możesz użyć interfejsu wiersza polecenia do:
 
@@ -367,7 +367,7 @@ Możesz uzyskać dostęp obliczeniowych elementów docelowych, które są skojar
 
 Aby uzyskać więcej informacji, zobacz [zarządzania zasobami](reference-azure-machine-learning-cli.md#resource-management).
 
-## <a name="set-up-compute-with-vs-code"></a>Konfigurowanie obliczeniowe przy użyciu programu VS Code
+## <a name="set-up-with-vs-code"></a>Konfigurowanie przy użyciu programu VS Code
 
 Można uzyskać dostęp, tworzyć i zarządzać obliczeniowych elementów docelowych, które są skojarzone z sieci za pomocą obszaru roboczego [rozszerzenie programu VS Code](how-to-vscode-tools.md#create-and-manage-compute-targets) dla usługi Azure Machine Learning.
 
@@ -384,7 +384,7 @@ Po utworzeniu konfiguracji uruchamiania, użyj do uruchamiania eksperymentu.  Wz
 >
 > Aby uniemożliwić dołączanie w migawce pliki, należy utworzyć [.gitignore](https://git-scm.com/docs/gitignore) lub `.amlignore` plików w katalogu i Dodaj pliki do niego. `.amlignore` Plików używa tej samej składni i wzorce jako [.gitignore](https://git-scm.com/docs/gitignore) pliku. Jeśli oba pliki istnieją, `.amlignore` plik ma pierwszeństwo.
 > 
-> Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshot).
+> Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshots).
 
 ### <a name="create-an-experiment"></a>Tworzenie eksperymentu
 

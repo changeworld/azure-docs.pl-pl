@@ -13,10 +13,10 @@ ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484458"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS baza danych dzierżawy wzorców
@@ -33,8 +33,8 @@ Poinformowanie płacenia nadrzędne, każda dzierżawa uzyskuje dostęp do skła
 
 Termin *modelu dzierżawy* odwołuje się do organizowania dzierżawców przechowywanych danych:
 
-- *Jednym dzierżawy:*&nbsp; Każda baza danych przechowuje dane z tylko jedną dzierżawą.
-- *Wielodostępność:*&nbsp; Każda baza danych przechowuje dane z wielu oddzielnych dzierżaw (z mechanizmy ochrony prywatności danych).
+- *Jednym dzierżawy:* &nbsp; Każda baza danych przechowuje dane z tylko jedną dzierżawą.
+- *Wielodostępność:* &nbsp; Każda baza danych przechowuje dane z wielu oddzielnych dzierżaw (z mechanizmy ochrony prywatności danych).
 - Dostępne są również modele dzierżawy hybrydowej.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak wybrać model odpowiednich dzierżawców
@@ -47,9 +47,9 @@ Ogólnie rzecz biorąc model dzierżawy nie ma wpływu na funkcji aplikacji, ale
     - Magazyn w agregacji.
     - Obciążenie.
 
-- **Izolacja dzierżawy:**&nbsp; Izolacja danych i wydajności (czy obciążenie jednej dzierżawy ma wpływ na inne osoby).
+- **Izolacja dzierżawy:** &nbsp; Izolacja danych i wydajności (czy obciążenie jednej dzierżawy ma wpływ na inne osoby).
 
-- **Koszt dla dzierżawcy:**&nbsp; Koszty bazy danych.
+- **Koszt dla dzierżawcy:** &nbsp; Koszty bazy danych.
 
 - **Złożoność programowania:**
     - Zmiany schematu.
@@ -61,7 +61,7 @@ Ogólnie rzecz biorąc model dzierżawy nie ma wpływu na funkcji aplikacji, ale
     - Przywracanie dzierżawy.
     - Odzyskiwanie sprawności systemu po awarii.
 
-- **Dostosowywalności:**&nbsp; Łatwość obsługi dostosowania schematu, które są specyficzne dla dzierżawy lub swoiste dla klas dzierżawy.
+- **Dostosowywalności:** &nbsp; Łatwość obsługi dostosowania schematu, które są specyficzne dla dzierżawy lub swoiste dla klas dzierżawy.
 
 Omówienie dzierżawy koncentruje się na *danych* warstwy.  Jednak należy wziąć pod uwagę na chwilę *aplikacji* warstwy.  Warstwa aplikacji jest traktowane jako monolityczny jednostki.  Jeśli dzielisz aplikacji na wiele małych składników wybranych przez siebie model dzierżawy mogą ulec zmianie.  Niektóre składniki można traktować inaczej niż inne, zarówno dzierżawy, jak i technologii magazynowania lub platforma używana.
 
@@ -126,9 +126,9 @@ Inny wzorzec dostępne jest przechowywanie wielu dzierżaw w wielodostępnej baz
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Jest to konieczne izolacji dzierżawcy
 
-*Dane:*&nbsp; Wielodostępną bazą danych zawsze zwiększa izolacji dzierżawy.  Dane z wielu dzierżaw jest przechowywane razem w jednej bazie danych.  Podczas tworzenia aplikacji upewnij się, że zapytania nigdy nie uwidocznić dane z więcej niż jednej dzierżawy.  Usługa SQL Database obsługuje [zabezpieczenia][docu-sql-svr-db-row-level-security-947w], które mogą zostać wymuszone te dane zwrócone przez zapytanie zakresu do pojedynczej dzierżawy.
+*Dane:* &nbsp; Wielodostępną bazą danych zawsze zwiększa izolacji dzierżawy.  Dane z wielu dzierżaw jest przechowywane razem w jednej bazie danych.  Podczas tworzenia aplikacji upewnij się, że zapytania nigdy nie uwidocznić dane z więcej niż jednej dzierżawy.  Usługa SQL Database obsługuje [zabezpieczenia][docu-sql-svr-db-row-level-security-947w], które mogą zostać wymuszone te dane zwrócone przez zapytanie zakresu do pojedynczej dzierżawy.
 
-*Przetwarzanie:*&nbsp; Wielodostępną bazą danych współużytkuje zasobów obliczeniowych i magazynu dla wszystkich swoich dzierżaw.  Baza danych jako całość można monitorować w taki sposób, aby upewnić się, że jest akceptowalne.  Jednak Azure system nie ma wbudowanej możliwości monitorowania lub zarządzania wykorzystaniem tych zasobów przez pojedynczą dzierżawę.  W związku z tym wielodostępną bazą danych niesie ze sobą zwiększone ryzyko napotkania sąsiadów generujące dużo alertów, gdy obciążenie jednej dzierżawy overactive ma wpływ na środowisko wydajność innych dzierżawców w tej samej bazy danych.  Dodatkowe monitorowanie na poziomie aplikacji można monitorować wydajność na poziomie dzierżawy.
+*Przetwarzanie:* &nbsp; Wielodostępną bazą danych współużytkuje zasobów obliczeniowych i magazynu dla wszystkich swoich dzierżaw.  Baza danych jako całość można monitorować w taki sposób, aby upewnić się, że jest akceptowalne.  Jednak Azure system nie ma wbudowanej możliwości monitorowania lub zarządzania wykorzystaniem tych zasobów przez pojedynczą dzierżawę.  W związku z tym wielodostępną bazą danych niesie ze sobą zwiększone ryzyko napotkania sąsiadów generujące dużo alertów, gdy obciążenie jednej dzierżawy overactive ma wpływ na środowisko wydajność innych dzierżawców w tej samej bazy danych.  Dodatkowe monitorowanie na poziomie aplikacji można monitorować wydajność na poziomie dzierżawy.
 
 #### <a name="lower-cost"></a>Niższy koszt
 
@@ -186,8 +186,8 @@ Poniższa tabela zawiera podsumowanie różnic między modelami głównej dzier�
 
 | Miara | Aplikacja autonomiczna | Bazy danych dla dzierżawcy | Podzielonej na fragmenty wielodostępnych |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Skalowanie | Medium<br />1 100s | Bardzo wysokie<br />1 100,000s | Nieograniczona liczba<br />1-1 000 000 |
-| Izolacji dzierżawcy | Bardzo wysokie | Wysoka | Niska; z wyjątkiem wszelkich pojedynczej dzierżawy (dotyczy to tylko w bazie danych MT). |
+| Skalowanie | Średni<br />1 100s | Bardzo duże<br />1 100,000s | Nieograniczona liczba<br />1-1 000 000 |
+| Izolacji dzierżawcy | Bardzo duże | Wysoka | Niska; z wyjątkiem wszelkich pojedynczej dzierżawy (dotyczy to tylko w bazie danych MT). |
 | Koszt bazy danych na dzierżawę | Wysoki; rozmiar jest szczytów wyrażonych w godzinach. | Niska; pul użytych. | LOWEST, małych dzierżaw w MT baz danych. |
 | Zarządzania i monitorowania wydajności | Dla dzierżawcy tylko | Wartość zagregowana + dla dzierżawcy | Wartość zagregowana; Mimo że jest dla dzierżawy tylko w przypadku wybiera. |
 | Złożoność rozwoju | Małe | Małe | Średnia; ze względu na dzielenie na fragmenty. |

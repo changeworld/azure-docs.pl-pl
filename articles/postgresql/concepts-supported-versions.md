@@ -5,18 +5,24 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4dcbaf159fce6b5f5495a6a25a2a3420cad9e5e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.openlocfilehash: 0fc4eb90d9bed3877b4618fd839d9e8bf1608718
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65067258"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063739"
 ---
 # <a name="supported-postgresql-database-versions"></a>Obsługiwane wersje bazy danych PostgreSQL
 Cele firmy Microsoft do obsługi n-2 wersje aparatu PostgreSQL w usłudze Azure Database for PostgreSQL — pojedynczy serwer. Wersje byłoby bieżącej wersji głównej na platformie Azure (n) i dwóch starszych wersjach głównych (-2).
 
 Usługa Azure Database for postgresql w warstwie obecnie obsługuje następujące wersje:
+
+## <a name="postgresql-version-112"></a>Wersja PostgreSQL 11.2
+Zapoznaj się [dokumentacji PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-2.html) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji pomocniczej.
+
+>[!NOTE]
+> PostgreSQL w wersji 11 jest dostępna w wersji zapoznawczej. Obsługa tworzenia przy użyciu portalu Azure jest wdrażana i mogą jeszcze być niedostępne w Twoim regionie. Możesz użyć [wiersza polecenia platformy Azure](quickstart-create-server-database-azure-cli.md) utworzyć serwer Postgres 11 w dowolnym regionie. Na przykład `az postgres server create -g group -n server -u username -p password -l westeurope --sku-name GP_Gen5_2 --version 11`.
 
 ## <a name="postgresql-version-107"></a>Wersja PostgreSQL 10,7
 Zapoznaj się [dokumentacji PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-7.html) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji pomocniczej.

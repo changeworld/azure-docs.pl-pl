@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
 ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098866"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie usługi Azure Backup Server
@@ -277,11 +277,11 @@ Po sprawdzeniu stanu łączność platformy Azure i subskrypcji platformy Azure,
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Tworzenie kopii zapasowej dysku | Przywracanie z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
-| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Połączono |Aktywne |Dozwolone |Dozwolone |Dozwolone |Dozwolone |
+| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
 | Połączono |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
-| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
-| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
+| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
 | Utraty łączności > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie z utraty łączności
@@ -290,8 +290,8 @@ Jeśli zapora lub serwer proxy, który uniemożliwia dostęp do platformy Azure,
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
 * \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* \*. microsoftonline.com
+* \*. windows.net
 
 Gdy łączność na platformie Azure została przywrócona do komputera serwera usługi Azure Backup, operacje, które mogą być wykonywane są określane przez stan subskrypcji platformy Azure. Powyższej tabeli zawiera informacje o operacjach dozwolona komputera to "Połączono".
 

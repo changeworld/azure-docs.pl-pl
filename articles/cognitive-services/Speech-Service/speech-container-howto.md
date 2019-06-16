@@ -3,19 +3,19 @@ title: Zainstaluj kontenery mowy
 titleSuffix: Azure Cognitive Services
 description: Instalowanie i uruchamianie kontenerów mowy. Zamiany mowy na tekst transcribes strumieni audio na tekst w czasie rzeczywistym, które aplikacje, narzędzia lub urządzenia używają lub wyświetlić. Zamiana tekstu na mowę konwertuje tekst wejściowy przypominającej ludzką syntezatora mowy.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 763e7bc9298eee1ab602968360bbc79a58243e5b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 93ae5dd00a7be929f7aa4ac8c35a30b856f0b3ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072471"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -23,7 +23,7 @@ Kontenery mowy Umożliwiaj klientom tworzenie jednego Architektura aplikacji mow
 
 Kontenery mowy dwa są **mowy na tekst** i **zamiany tekstu na mowę**. 
 
-|Funkcja|Funkcje|Najpóźniejsza|
+|Funkcja|Funkcje|najnowsze|
 |-|-|--|
 |Zamiany mowy na tekst| <li>Transcribes ciągłej w czasie rzeczywistym mowy lub partii nagrania audio na tekst za pomocą wyników pośrednich.|1.1.1|
 |Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. dane wejściowe w postaci zwykłego tekstu lub mowy syntezy Markup Language (SSML). |1.1.0|
@@ -71,14 +71,13 @@ W poniższej tabeli opisano minimalne i zalecane rdzeni procesora CPU i pamięci
 
 * Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
 
-
 Rdzeni i pamięci odpowiadają `--cpus` i `--memory` ustawienia, które są używane jako część `docker run` polecenia.
 
 **Uwaga**; Minimalne i zalecane opierają się poza granice Docker *nie* host machine zasobów. Na przykład kontenery mowy na tekst pamięci mapy fragmentów modelu języka dużych, a to _zalecane_ cały plik mieści się w pamięci, co jest dodatkowe 4 – 6 GB. Ponadto przy pierwszym uruchomieniu dowolnego kontenera może trwać dłużej, ponieważ modele są są stronicowane do pamięci.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera przy użyciu `docker pull`
 
-Dostępne są obrazy kontenerów dla rozpoznawania mowy. 
+Dostępne są obrazy kontenerów dla rozpoznawania mowy.
 
 | Kontener | Repozytorium |
 |-----------|------------|
@@ -89,7 +88,7 @@ Dostępne są obrazy kontenerów dla rozpoznawania mowy.
 
 ### <a name="language-locale-is-in-container-tag"></a>Ustawienia regionalne język znajduje się w tagu kontenera
 
-`latest` Tag ściąga `en-us` ustawień regionalnych i `jessarus` głosu. 
+`latest` Tag ściąga `en-us` ustawień regionalnych i `jessarus` głosu.
 
 #### <a name="speech-to-text-locales"></a>Zamiana mowy na tekst w ustawieniach regionalnych
 
@@ -118,7 +117,6 @@ Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **mowy
 |Koreański|`ko-kr`|
 |Portugalski|`pt-br`|
 |Hiszpański|`es-es`<br>`es-mx`|
-
 
 #### <a name="text-to-speech-locales"></a>Ustawienia regionalne zamiany tekstu na mowę
 
@@ -171,8 +169,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 Gdy kontener będzie na [komputerze-hoście](#the-host-computer), użyj następującego procesu do pracy z kontenerem.
 
-1. [Uruchom kontener](#run-the-container-with-docker-run), przy użyciu ustawień rozliczeń wymagany, lecz nie jest używany. Więcej [przykłady](speech-container-configuration.md#example-docker-run-commands) z `docker run` polecenia są dostępne. 
-1. [Zapytanie do endpoint prognoz kontenera](#query-the-containers-prediction-endpoint). 
+1. [Uruchom kontener](#run-the-container-with-docker-run), przy użyciu ustawień rozliczeń wymagany, lecz nie jest używany. Więcej [przykłady](speech-container-configuration.md#example-docker-run-commands) z `docker run` polecenia są dostępne.
+1. [Zapytanie do endpoint prognoz kontenera](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą `docker run`
 
@@ -194,7 +192,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 ### <a name="speech-to-text"></a>Zamiany mowy na tekst
@@ -204,7 +202,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 To polecenie:
@@ -212,7 +210,7 @@ To polecenie:
 * Uruchamia kontener mowy z obrazu kontenera
 * Przydziela 2 rdzeni procesora CPU i 2 gigabajty (GB) pamięci
 * Uwidacznia TCP port 5000 i przydziela pseudo-TTY kontenera
-* Automatycznie usuwa kontener po jej zakończenia. Obraz kontenera jest nadal dostępna na komputerze-hoście. 
+* Automatycznie usuwa kontener po jej zakończenia. Obraz kontenera jest nadal dostępna na komputerze-hoście.
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
@@ -241,7 +239,9 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 Aby to wywołanie, przy użyciu punktu końcowego kontenera:
 
 ```C#
-var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1", "YourSubscriptionKey");
+var config = SpeechConfig.FromEndpoint(
+    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
+    "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>Dla języka Python
@@ -262,9 +262,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 
 Kontener zawiera punkt końcowy REST API, który można znaleźć [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) i przykładów można znaleźć [tutaj](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
 
-
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
 
 ## <a name="stop-the-container"></a>Zastavit kontejner
 
@@ -272,11 +270,11 @@ Kontener zawiera punkt końcowy REST API, który można znaleźć [tutaj](https:
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Po uruchomieniu kontenera, korzysta z kontenera **stdout** i **stderr** o danych wyjściowych, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
+Po uruchomieniu kontenera, korzysta z kontenera **stdout** i **stderr** o danych wyjściowych, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera.
 
 ## <a name="billing"></a>Rozliczenia
 
-Wyślij kontenery mowy, rozliczeń, informacje na platformie Azure, przy użyciu _mowy_ zasobów dla konta systemu Azure. 
+Wyślij kontenery mowy, rozliczeń, informacje na platformie Azure, przy użyciu _mowy_ zasobów dla konta systemu Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

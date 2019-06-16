@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3be09c998399cdca886f207bf5fc621bf51d8dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099597"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ITRP
 
@@ -94,7 +94,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z ITRP, wykonaj nast�
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 

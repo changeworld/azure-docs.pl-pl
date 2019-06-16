@@ -11,10 +11,10 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646779"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure przy użyciu usługi Azure Backup przy użyciu interfejsu API REST
@@ -41,7 +41,7 @@ Identyfikator URI WPIS ma `{subscriptionId}`, `{vaultName}`, `{vaultresourceGrou
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Odpowiedzi
+#### <a name="responses"></a>Responses
 
 Operacja "Odśwież" jest [operację asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy inną operację, która musi być śledzona oddzielnie.
 
@@ -50,7 +50,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |204 No Content     |         |  OK bez zawartości zwracane      |
-|202 zaakceptowano     |         |     Zaakceptowany    |
+|202 zaakceptowano     |         |     Zaakceptowane    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -108,7 +108,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *UZYSKAĆ* identyfikator URI ma wszystkie wymagane parametry. Nie treści żądania dodatkowych jest wymagana.
 
-#### <a name="responses"></a>Odpowiedzi
+#### <a name="responses"></a>Responses
 
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
@@ -208,7 +208,7 @@ Następującą treść żądania określa właściwości wymagane do utworzenia 
 
 `{sourceResourceId}` Jest `{virtualMachineId}` wymienionych powyżej z [odpowiedzi listy elementów podlegających](#example-responses-1).
 
-#### <a name="responses"></a>Odpowiedzi
+#### <a name="responses"></a>Responses
 
 Tworzenie chronionego elementu jest [operację asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy inną operację, która musi być śledzona oddzielnie.
 
@@ -217,7 +217,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 zaakceptowano     |         |     Zaakceptowany    |
+|202 zaakceptowano     |         |     Zaakceptowane    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -319,7 +319,7 @@ Następującą treść żądania określa właściwości wymagane w celu wyzwole
 }
 ```
 
-### <a name="responses"></a>Odpowiedzi
+### <a name="responses"></a>Responses
 
 Wyzwolenie tworzenia kopii zapasowej na żądanie jest [operację asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy inną operację, która musi być śledzona oddzielnie.
 
@@ -327,7 +327,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
-|202 zaakceptowano     |         |     Zaakceptowany    |
+|202 zaakceptowano     |         |     Zaakceptowane    |
 
 #### <a name="example-responses"></a>Przykładowe odpowiedzi
 
@@ -439,7 +439,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Odpowiedzi
+### <a name="responses"></a>Responses
 
 *Usuń* ochrona jest [operację asynchroniczną](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Oznacza to, że ta operacja tworzy inną operację, która musi być śledzona oddzielnie.
 
@@ -448,7 +448,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 zaakceptowano     |         |     Zaakceptowany    |
+|202 zaakceptowano     |         |     Zaakceptowane    |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

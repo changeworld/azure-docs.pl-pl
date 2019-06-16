@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610720"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie konfiguracją | Środki zaradcze 
@@ -36,7 +36,7 @@ ms.locfileid: "60610720"
 
 ## <a id="csp-js"></a>Implementowanie zasad zabezpieczeń zawartości (CSP), a następnie wyłącz javascript wbudowane
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -68,7 +68,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="xss-filter"></a>Włącz filtr XSS przeglądarki
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -79,7 +79,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="trace-deploy"></a>Aplikacje ASP.NET, należy wyłączyć śledzenie i debugowanie przed wdrożeniem
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -90,7 +90,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="js-trusted"></a>Skrypty JavaScript innych firm na dostęp tylko z zaufanych źródeł
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -101,7 +101,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="ui-defenses"></a>Upewnij się, że uwierzytelnionego strony ASP.NET zestawowi Redressing interfejsu użytkownika lub miejsca kliknij mechanizmów obronnych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -136,7 +136,7 @@ Kod pliku Web.config dla witryny, które powinny być tylko obramowane przez str
 
 ## <a id="cors-aspnet"></a>Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS w aplikacji sieci Web ASP.NET
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -167,7 +167,7 @@ Należy pamiętać, że jest krytyczne, aby upewnić się, że lista źródeł w
 
 ## <a id="validate-aspnet"></a>Włącz atrybut parametr ValidateRequest na stronach ASP.NET
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -193,7 +193,7 @@ lub na poziomie aplikacji
 
 ## <a id="local-js"></a>Użyj lokalnie hostowanych najnowsze wersje bibliotek JavaScript
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -204,7 +204,7 @@ lub na poziomie aplikacji
 
 ## <a id="mime-sniff"></a>Wyłącz automatyczne wykrywanie MIME
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -269,7 +269,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="standard-finger"></a>Usuwanie nagłówków standardowy serwer witryny sieci Web na Windows Azure w celu uniknięcia odcisków
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -280,7 +280,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="firewall-db"></a>Konfigurowanie zapory Windows dla dostępu aparatu bazy danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -291,7 +291,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="cors-api"></a>Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS interfejsu API sieci Web platformy ASP.NET
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -387,7 +387,7 @@ public class ResourcesController : ApiController
 }
 ```
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -479,7 +479,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="config-sensitive"></a>Szyfruj sekcje internetowego interfejsu API plików konfiguracyjnych, które zawierają dane poufne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Wdrożenie |  
@@ -490,7 +490,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="admin-strong"></a>Upewnij się, że wszystkie interfejsów administracyjnych są zabezpieczone przy użyciu silnych poświadczeń
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -501,7 +501,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="unknown-exe"></a>Upewnij się, że nieznany kod nie można wykonać na urządzeniach
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -512,7 +512,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="partition-iot"></a>Szyfrowanie systemu operacyjnego i dodatkowe partycje urządzeń IoT za pomocą skrytki bitowe
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -523,7 +523,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="min-enable"></a>Upewnij się, że tylko minimalne usług/funkcji są włączone na urządzeniach
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -534,7 +534,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="field-bit-locker"></a>Szyfrowanie systemu operacyjnego i dodatkowe partycje bramy w terenie IoT przy użyciu bitowego skrytki
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -545,7 +545,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="default-change"></a>Upewnij się, że poświadczenia logowania domyślnej bramy pola zostały zmienione podczas instalacji
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -556,7 +556,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="cloud-firmware"></a>Upewnij się, że bramy w chmurze implementuje proces aktualizowania oprogramowania układowego połączonych urządzeń
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  
@@ -567,7 +567,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="controls-policies"></a>Upewnij się, że urządzenia mają skonfigurowane zgodnie z zasadami organizacji kontroli zabezpieczeń punktu końcowego
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -578,7 +578,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="secure-keys"></a>Upewnij się, bezpieczne zarządzanie kluczami dostępu do magazynu platformy Azure
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Wdrożenie |  
@@ -589,7 +589,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="cors-storage"></a>Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS w usłudze Azure storage
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -600,7 +600,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="throttling"></a>Włączanie usługi WCF w funkcji ograniczania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -623,7 +623,7 @@ Poniżej przedstawiono przykładową konfigurację po zastosowaniu ograniczania 
 
 ## <a id="info-metadata"></a>Ujawnienie informacji programu WCF za pomocą metadanych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  

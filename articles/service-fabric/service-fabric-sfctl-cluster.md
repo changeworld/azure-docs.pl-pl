@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837332"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -30,18 +30,18 @@ Wybierz, zarządzanie i działają z klastrami usługi Service Fabric.
 | --- | --- |
 | wersje kodu | Pobiera listę sieci szkieletowej wersje kodu, które są udostępniane w klastrze usługi Service Fabric. |
 | config-versions | Pobiera listę sieci szkieletowej wersji konfiguracji, które są udostępniane w klastrze usługi Service Fabric. |
-| zdrowie | Pobiera kondycji klastra usługi Service Fabric. |
-| Manifest | Pobierz manifest klastra usługi Service Fabric. |
+| health | Pobiera kondycji klastra usługi Service Fabric. |
+| manifest | Pobierz manifest klastra usługi Service Fabric. |
 | Anuluj operację | Anuluje operację błędów wywołane przez użytkownika. |
 | Lista operacji | Pobiera listę błędów wywołane przez użytkownika działań filtrowane według podane dane wejściowe. |
-| aprowizacja | Aprowizuj pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
+| provision | Aprowizuj pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
 | recover-system | Klaster usługi Service Fabric wskazywać, że powinien podejmować próbę odzyskiwania usług systemowych, które są aktualnie zablokowane utraciła kworum. |
 | report-health | Wysyła raport o kondycji w klastrze usługi Service Fabric. |
-| zaznacz | Nawiązanie połączenia z punktem końcowym klastra usługi Service Fabric. |
+| Wybierz pozycję | Nawiązanie połączenia z punktem końcowym klastra usługi Service Fabric. |
 | show-connection | Pokaż klaster usługi Service Fabric, w którym to wystąpienie interfejsu sfctl jest połączony z. |
-| Wstrzymanie obsługi administracyjnej | Wstrzymaj obsługę administracyjną pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
-| uaktualnij | Uruchom uaktualnianie wersji kodu lub konfiguracji klastra usługi Service Fabric. |
-| Wznów uaktualnienia | Należy przejść do następnej domeny uaktualnienia uaktualniania klastra. |
+| unprovision | Wstrzymaj obsługę administracyjną pakiety kodu lub konfiguracji klastra usługi Service Fabric. |
+| upgrade | Uruchom uaktualnianie wersji kodu lub konfiguracji klastra usługi Service Fabric. |
+| upgrade-resume | Należy przejść do następnej domeny uaktualnienia uaktualniania klastra. |
 | upgrade-rollback | Wycofywanie uaktualnienia klastra usługi Service Fabric. |
 | upgrade-status | Pobiera postęp bieżącego uaktualniania klastra. |
 | Aktualizacja dla uaktualnienie | Zaktualizuj parametry uaktualniania uaktualniania klastra usługi Service Fabric. |

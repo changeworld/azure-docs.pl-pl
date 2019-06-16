@@ -2,7 +2,7 @@
 title: Instrukcje ustawiania wymogu uwierzytelniania wieloskładnikowego (MFA) dla dostępu z niezaufanymi sieciami przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować zasady dostępu warunkowego w usłudze Azure Active Directory (Azure AD) do podejmowania prób dostępu z niezaufanymi sieciami.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 12/10/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: fa9760c44df13c33687c279478935600325dd085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60301127"
+ms.locfileid: "67111878"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Instrukcje: Wymagać uwierzytelniania Wieloskładnikowego, aby uzyskać dostęp z niezaufanymi sieciami przy użyciu dostępu warunkowego   
 

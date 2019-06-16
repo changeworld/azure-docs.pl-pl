@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836589"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Wdrażanie oprogramowania SAP IDES EHP7 SP3 dla oprogramowania SAP ERP 6.0 na platformie Azure
@@ -104,7 +104,7 @@ Pomyślnie utworzono konto SAP CAL, który jest w stanie:
 
     c.  Wprowadź wzorzec **hasło** dla rozwiązania, jak pokazano:
 
-    ![SAP CAL Basic tryb: Utwórz wystąpienie](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL Basic tryb: Tworzenie wystąpienia](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Kliknij pozycję **Utwórz**. Po pewnym czasie w zależności od rozmiaru i złożoność rozwiązania (SAP CAL zapewnia oszacowanie), zostanie wyświetlony stan jako aktywne i gotowe do użycia: 
 

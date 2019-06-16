@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833263"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytowanie i zarządzanie nią istniejący pakiet dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
@@ -146,7 +146,7 @@ Usługi Azure AD można automatycznie przypisywać użytkownikom dostęp do witr
 
 1. Lista ról zasobów zawiera rolę zasobu, który chcesz usunąć.
 
-1. Kliknij przycisk wielokropka (**...** ) a następnie kliknij przycisk **Usuń zasób roli**.
+1. Kliknij przycisk wielokropka ( **...** ) a następnie kliknij przycisk **Usuń zasób roli**.
 
     Każdy użytkownik z istniejących przypisań do dostępu do pakietu, będą automatycznie dostępne ich odwoływane do tej roli zasobu, gdy zostanie on usunięty.
 
@@ -326,7 +326,7 @@ Dostęp do pakietów są wykrywalni domyślnie. Oznacza to, jeśli zasady umożl
 
     Jeśli ustawiono **tak**, pakiet dostępu, nie będą wyświetlane w portalu Moje dostępu użytkownika. Jedynym sposobem, użytkownik może wyświetlić pakiet dostępu jest, czy mają one bezpośrednio **link do portalu Moje dostępu** do dostępu do pakietu.
 
-## <a name="delete"></a>Usuń
+## <a name="delete"></a>Usuwanie
 
 Pakiet dostępu można usunąć tylko, jeśli go nie ma aktywnego użytkownika przypisań.
 

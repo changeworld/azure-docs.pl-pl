@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 30882899e5be4101ae3d77f9840d8bdef567e53f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 8c7bb080b350742d0722cdb4e07b82a6881ba05b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66676986"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073666"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Uzyskiwanie dostępu do rozwiązań VMware przez portal CloudSimple z witryny Azure portal
 
 Logowanie jednokrotne jest obsługiwana dla dostępu do portalu CloudSimple. Po zalogowaniu się do witryny Azure portal są dostępne w portalu CloudSimple bez ponownego logowania. Po raz pierwszy możesz uzyskać dostęp do portalu CloudSimple, zostanie wyświetlony monit autoryzować [CloudSimple usługi autoryzacji](#consent-to-cloudsimple-service-authorization-application) aplikacji.  Autoryzacja to akcja jednorazowa.
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+Tylko użytkownicy z wbudowanej **właściciela** i **Współautor** role mogą uzyskiwać dostęp do portalu CloudSimple.  Role musi być skonfigurowany w ramach subskrypcji.  Aby uzyskać więcej informacji na temat sprawdzania swojej roli, zobacz [wyświetlania przypisań roli](https://docs.microsoft.com/azure/role-based-access-control/check-access) artykułu.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

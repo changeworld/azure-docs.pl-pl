@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7da382a644c1db92b9915f1d3f1f3a459e8893b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712220"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Przegląd stref i rekordów DNS
 
@@ -28,7 +28,7 @@ Ta strona wyjaśniono kluczowe pojęcia związane z domen, stref DNS i rekordów
 
 ## <a name="domain-names"></a>Nazwy domen
 
-System nazw domen (DNS, Domain Name System) jest hierarchią domen. Hierarchia rozpoczyna się od domeny głównej, której nazwa to po prostu „**.**”.  Poniżej są domeny najwyższego poziomu, takie jak „com”, „net”, „org”, „uk” lub „jp”.  Pod nimi są domeny drugiego poziomu, takie jak „org.uk” lub „co.jp”. Domeny w hierarchii DNS są globalnie rozproszone, hostowane przez serwery DNS na całym świecie.
+System nazw domen (DNS, Domain Name System) jest hierarchią domen. Hierarchia rozpoczyna się od domeny głównej, której nazwa to po prostu „ **.** ”.  Poniżej są domeny najwyższego poziomu, takie jak „com”, „net”, „org”, „uk” lub „jp”.  Pod nimi są domeny drugiego poziomu, takie jak „org.uk” lub „co.jp”. Domeny w hierarchii DNS są globalnie rozproszone, hostowane przez serwery DNS na całym świecie.
 
 Rejestratora nazw domen jest organizacja, która umożliwia zakup nazwy domeny, taką jak "contoso.com".  Zakup nazwy domeny zapewnia prawo do kontrolowania hierarchię DNS w ramach tej samej nazwie, na przykład umożliwiając bezpośrednie nazwy "www.contoso.com" do witryny sieci web firmy. Rejestrator może hostowanie domeny w jego własnej serwery nazw w Twoim imieniu lub pozwalają na określenie alternatywnej nazwy serwerów.
 
@@ -111,7 +111,7 @@ Nie należy mylić wielu ciągów w rekordzie DNS z wielu rekordów TXT w zestaw
 
 ## <a name="tags-and-metadata"></a>Znaczniki i metadane
 
-### <a name="tags"></a>Tagi
+### <a name="tags"></a>`Tags`
 
 Tagi są listą par nazwa wartość i są używane przez usługę Azure Resource Manager do oznaczania zasobów etykietami.  Usługa Azure Resource Manager używa tagów, aby umożliwić filtrowane widoki rachunku dotyczącym platformy Azure i umożliwia także ustawić zasady, na którym tagi są wymagane. Aby uzyskać więcej informacji na temat tagów, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -131,10 +131,10 @@ Domyślnie Azure DNS PowerShell używa elementów etag zablokować równoczesnyc
 
 Na poziomie interfejsu API REST usługi Azure DNS elementów etag są określane przy użyciu nagłówków HTTP.  Ich zachowanie znajduje się w poniższej tabeli:
 
-| Nagłówek | Zachowanie |
+| nagłówek | Zachowanie |
 | --- | --- |
 | Brak |Umieść zawsze powiedzie się (nie sprawdzeń element Etag) |
-| If-match <etag> |Umieść powiedzie się tylko, jeśli zasób istnieje i element Etag jest zgodny |
+| If-match \<etag> |Umieść powiedzie się tylko, jeśli zasób istnieje i element Etag jest zgodny |
 | IF-match * |Umieść powiedzie się tylko, jeśli istnieje zasób |
 | IF-none-match * |Umieść powiedzie się tylko, jeśli zasób nie istnieje. |
 

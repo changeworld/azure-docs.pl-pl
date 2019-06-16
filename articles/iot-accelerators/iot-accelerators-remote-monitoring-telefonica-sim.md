@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442243"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrowanie danych SIM w rozwiązaniu do zdalnego monitorowania
@@ -55,7 +55,7 @@ Gdy konto Telefónica jest prawidłowo skonfigurowane i urządzenie jest podłą
 Następujące parametry połączenia są publikowane:
 
 * ICCID
-* Adres IP
+* IP
 * Dostęp do sieci
 * Stan SIM
 * Lokalizacji sieciowej

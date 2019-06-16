@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
 ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61099082"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Przyrostowe kopiowanie nowych plików, na podstawie czasu partycjonowane nazwy pliku przy użyciu narzędzia do kopiowania danych
@@ -48,7 +48,7 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
     ![Przekazywanie plików](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
-    > Dostosuj nazwy folderu przy użyciu czasu UTC.  Na przykład, jeśli bieżący czas UTC jest 14:03:00 w 26 lutego 2019 r możesz utworzyć jako ścieżkę do folderu **źródło/2019 r/02/26/14/** przez regułę z **źródło / {Year} / {Month} / {Day} / {godzina} /**.
+    > Dostosuj nazwy folderu przy użyciu czasu UTC.  Na przykład, jeśli bieżący czas UTC jest 14:03:00 w 26 lutego 2019 r możesz utworzyć jako ścieżkę do folderu **źródło/2019 r/02/26/14/** przez regułę z **źródło / {Year} / {Month} / {Day} / {godzina} /** .
 
 2. Utwórz kontener o nazwie **docelowy**. Do wykonania tych zadań możesz użyć różnych narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
 
@@ -66,7 +66,7 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
    
    ![Komunikat o błędzie dotyczący nowej fabryki danych](./media/tutorial-copy-data-tool/name-not-available-error.png)
    
-   Jeśli zostanie wyświetlony komunikat o błędzie dotyczącym wartości nazwy, wprowadź inną nazwę dla fabryki danych. Na przykład użyj nazwy _**twojanazwa**_**ADFTutorialDataFactory**. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
+   Jeśli zostanie wyświetlony komunikat o błędzie dotyczącym wartości nazwy, wprowadź inną nazwę dla fabryki danych. Na przykład użyj nazwy _**twojanazwa**_ **ADFTutorialDataFactory**. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
 3. Wybierz **subskrypcję** platformy Azure, w której utworzysz nową fabrykę danych. 
 4. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
      
@@ -184,7 +184,7 @@ Przygotuj usługi Blob storage na potrzeby samouczka, wykonując następujące k
     ![Monitorowanie uruchomień potoku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
     > [!NOTE]
-    > Należy pamiętać, że nowa ścieżka folderu jest wymagane do utworzenia. Dostosuj nazwy folderu przy użyciu czasu UTC.  Na przykład, jeśli bieżący czas UTC jest 3:20 PM 26 lutego 2019 r możesz utworzyć jako ścieżkę do folderu **źródło/2019 r/02/26/15/** przez regułę z **{Year} / {Month} / {Day} / {godzina} /**.
+    > Należy pamiętać, że nowa ścieżka folderu jest wymagane do utworzenia. Dostosuj nazwy folderu przy użyciu czasu UTC.  Na przykład, jeśli bieżący czas UTC jest 3:20 PM 26 lutego 2019 r możesz utworzyć jako ścieżkę do folderu **źródło/2019 r/02/26/15/** przez regułę z **{Year} / {Month} / {Day} / {godzina} /** .
     
 13. Aby wrócić do **uruchomienia potoku** widoku, wybierz opcję **wszystkie uruchomienia potoków**i czeka na potok tego samego ponownie wyzwolona automatycznie po inną godzinę.  
 

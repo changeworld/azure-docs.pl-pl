@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: b5a13254fc9dfd58db83a1bc8b9dd071cfbbdab2
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 9d872a6d753a206dcfb03761e50e5854db4f146e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071589"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Zrozumienie sposobu działania narzędzia migracji
 
@@ -55,10 +55,11 @@ Oprócz alertów dotyczących tych metryk można poddać migracji wszystkich ale
 - Wartości PercentTimeoutError
 - AnonymousThrottlingError
 - SASThrottlingError
+- ThrottlingError
 
 Klasyczny alert zasad dotyczących metryki procent muszą być migrowane na podstawie [mapowanie między metryk magazynowania stare i nowe](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Wartości progowe, będzie konieczne odpowiednio można modyfikować, ponieważ nowy dostępnych metryk jest bezwzględna.
 
-Klasyczne reguły alertów na AnonymousThrottlingError i SASThrottlingError musi zostać podzielony na dwa nowe alerty, ponieważ nie istnieje żadne połączone metrykę, która zawiera te same funkcje. Progi musi być odpowiednio dostosowane.
+Klasyczne reguły alertów na AnonymousThrottlingError, SASThrottlingError i ThrottlingError musi zostać podzielony na dwa nowe alerty, ponieważ nie istnieje żadne połączone metrykę, która zawiera te same funkcje. Progi musi być odpowiednio dostosowane.
 
 ## <a name="rollout-phases"></a>Etapy wdrażania
 
@@ -106,7 +107,7 @@ Każdy użytkownik mający wbudowana rola Współautor monitorowania na poziomie
 
 Po zakończeniu [wyzwolić migracji](alerts-using-migration-tool.md), otrzymasz wiadomość e-mail na adresy podane informujące, że migracja została zakończona lub jeśli wymaga żadnych akcji ze strony użytkownika. W tej sekcji opisano niektóre typowe problemy i radzenia sobie z nimi.
 
-### <a name="validation-failed"></a>Nie można sprawdzić poprawności
+### <a name="validation-failed"></a>Walidacja nie powiodła się
 
 Ze względu na pewne ostatnie zmiany klasyczne reguły alertów w ramach subskrypcji nie można zmigrować subskrypcji. Ten problem jest tymczasowy. Możesz ponownie uruchomić migrację po przechodzi w stan migracji **gotowe do migracji** w ciągu kilku dni.
 

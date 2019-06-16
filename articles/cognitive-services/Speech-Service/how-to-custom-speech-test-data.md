@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3e77a8ec46ae18cb9daa855d842969cc2ba4bb9
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237952"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137257"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotowuje dane do Custom Speech
 
@@ -25,11 +25,11 @@ Czy testujesz Zobacz jak dokładny rozpoznawanie mowy firmy Microsoft jest lub s
 
 Poniższa tabela zawiera listę akceptowane typy danych, podczas każdego typu danych powinny być używane, a zalecana ilość. Nie każdy typ danych jest wymagany do tworzenia modelu. Wymagania dotyczące danych różnią się w zależności od tego, czy podczas tworzenia testu lub uczenia modelu.
 
-| Typ danych | Używane do testowania | Ilość | Używany na potrzeby szkolenia | Ilość |
+| Typ danych | Używane do testowania | Liczba | Używany na potrzeby szkolenia | Liczba |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Tak<br>Używane do inspekcji wizualnego | pliki audio 5 + | Nie | n/d |
-| [Transkrypcje audio i oznaczone przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Używane do oceny dokładności | 0,5 - 5 godzin audio | Tak | 1 – 1000 godzin danych audio |
-| [Dowolny tekst związany z](##related-text-data-for-training) | Nie | n/d | Tak | 1 – 200 MB dowolny tekst związany z |
+| [Audio](#audio-data-for-testing) | Yes<br>Używane do inspekcji wizualnego | pliki audio 5 + | Nie | n/d |
+| [Transkrypcje audio i oznaczone przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Używane do oceny dokładności | 0,5 - 5 godzin audio | Tak | 1 – 1000 godzin danych audio |
+| [Dowolny tekst związany z](##related-text-data-for-training) | Nie | n/d | Yes | 1 – 200 MB dowolny tekst związany z |
 
 Pliki powinny pogrupowane według typu do zestawu danych i przekazać w formie pliku zip. Każdy zestaw danych może zawierać tylko jednego typu danych.
 
@@ -44,7 +44,7 @@ Każdy zestaw danych, które zostaną przesłane, musi spełniać wymagania dla 
 Po przekazaniu zestawu danych, możesz skorzystać z kilku opcji:
 
 * Możesz przejść do **testowania** karcie oraz wizualnie badać tylko audio lub danych transkrypcji audio i oznaczone przez człowieka.
-* Możesz przejść do **szkolenia** kartę i nam danych transkrypcji audio + przez człowieka lub dowolny tekst związany z danych do nauczenia modelu niestandardowego.
+* Możesz przejść do **szkolenia** karty i korzystać z danych transkrypcji audio + przez człowieka lub dowolny tekst związany z danych do nauczenia modelu niestandardowego.
 
 ## <a name="audio-data-for-testing"></a>Dane audio do testowania
 
@@ -138,11 +138,11 @@ W przypadku nietypowych warunków bez wymowy standardowych, które użytkownicy 
 
 Obejmuje to przykłady prowadzone wypowiedź i Wymowa niestandardowe dla każdego:
 
-| Mówionej formy | Rozpoznany wyświetlony formularz |
+| Rozpoznany wyświetlony formularz | Mówionej formy |
 |--------------|--------------------------|
-| o trzy p c | 3CPO |  
-| k k, n t | CNTK |
-| mogę potrójne e | IEEE |
+| 3CPO | o trzy p c |  
+| CNTK | k k, n t |
+| IEEE | mogę potrójne e |
 
 Mówionej formy jest sekwencja fonetycznych województw. Mogą się składać list, słów, sylab lub kombinacji tych trzech miejsc.
 
@@ -150,7 +150,7 @@ Wymowa dostosowane jest dostępna w języku angielskim (en US) i niemiecki (de-D
 
 | Język | Ustawienia regionalne | Znaki |
 |----------|--------|------------|
-| Angielski | en-US | , b, c, d, e, f, g, h, i, "j", k, l, m, n, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
+| Polski | en-US | , b, c, d, e, f, g, h, i, "j", k, l, m, n, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
 | Niemiecki | de-DE. | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Upewnij się, jest poprawnie sformatowany plik powiązanych danych dla wymowy przy użyciu tej tabeli. Wymowa pliki są małe i nie powinna przekraczać kilka artykułów bazy wiedzy.

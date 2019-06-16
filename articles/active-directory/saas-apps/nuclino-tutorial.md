@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 4788b65201792292d79cd8c4d1b22f22c5e67eb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9081e2962a225f15b64545b1db7aa18538a20b22
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870729"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Nuclino
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację Nuclino w usłudze Azure AD, należy dodać Nucli
 
 **Aby dodać Nuclino z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Nuclino, wykonaj na
 
     ![Konfiguracja Nuclino](./media/nuclino-tutorial/configure4.png)
 
-    a. Wybierz **opartej na SAML logowania jednokrotnego (SSO)**.
+    a. Wybierz **opartej na SAML logowania jednokrotnego (SSO)** .
 
     b. Kopiuj **adres URL usługi ACS (musisz skopiować i wkleić do dostawcy logowania jednokrotnego)** wartość i wklej go w **adres URL odpowiedzi** pole tekstowe z **podstawową konfigurację protokołu SAML** sekcję na platformie Azure Portal.
 
@@ -263,7 +263,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Nuclino w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Nuclino, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

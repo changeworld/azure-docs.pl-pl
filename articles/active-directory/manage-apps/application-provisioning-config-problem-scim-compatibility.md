@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963177"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD
@@ -38,10 +38,10 @@ W tym artykule opisano bieżącej i wcześniejszych problemów z użytkownikiem 
 
 | **Problem ze zgodnością w wersji 2.0 Standard SCIM** |  **Naprawiono?** | **Napraw daty**  |  
 |---|---|---|
-| Usługa Azure AD wymaga "/ Standard scim" w katalogu głównym aplikacji przez adres URL punktu końcowego Standard SCIM  | Tak  |  18 grudnia 2018 r. | 
+| Usługa Azure AD wymaga "/ Standard scim" w katalogu głównym aplikacji przez adres URL punktu końcowego Standard SCIM  | Yes  |  18 grudnia 2018 r. | 
 | Atrybuty rozszerzenia używać znaku kropki "."notacji przed nazwami atrybutów zamiast średnikami":" notacji |  Tak  | 18 grudnia 2018 r.  | 
 |  Atrybuty wielowartościowe w żądaniach Patch zawiera nieprawidłową ścieżkę składnia filtru | Tak  |  18 grudnia 2018 r.  | 
-|  Żądania tworzenia grupy zawierają nieprawidłowy schemat identyfikatora URI | Tak  |  18 grudnia 2018 r.  |  
+|  Żądania tworzenia grupy zawierają nieprawidłowy schemat identyfikatora URI | Yes  |  18 grudnia 2018 r.  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zostały poprawki usługi opisane, automatycznie stosowane do mojej istniejących aplikacji Standard SCIM?
 

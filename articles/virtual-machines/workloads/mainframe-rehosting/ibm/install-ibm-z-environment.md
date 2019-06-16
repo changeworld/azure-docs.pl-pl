@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60859345"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalowanie IBM zD & T, środowisko programistyczne/testowe na platformie Azure
@@ -58,7 +58,7 @@ W tym artykule dowiesz się, jak skonfigurować Z programowania i środowiska te
 
 3. Uzyskiwanie poświadczeń SSH, wyświetlane na **Przegląd** bloku maszyny Wirtualnej za pomocą **Connect** przycisku. Wybierz **SSH** kartę, a następnie skopiuj polecenie logowania SSH do Schowka.
 
-4. Zaloguj się do [powłokę Bash](/azure/cloud-shell/quickstart) z Twojego komputera lokalnego i Wklej polecenie. Będzie on w formie **ssh\<identyfikator użytkownika\>\@\<adresu IP\>**. Po wyświetleniu monitu o podanie poświadczeń, wprowadź je do nawiązania połączenia z katalogiem w domu.
+4. Zaloguj się do [powłokę Bash](/azure/cloud-shell/quickstart) z Twojego komputera lokalnego i Wklej polecenie. Będzie on w formie **ssh\<identyfikator użytkownika\>\@\<adresu IP\>** . Po wyświetleniu monitu o podanie poświadczeń, wprowadź je do nawiązania połączenia z katalogiem w domu.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Skopiuj plik instalacyjny na serwer
 

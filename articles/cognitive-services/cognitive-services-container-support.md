@@ -3,19 +3,19 @@ title: Obsługa kontenerów
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak kontenery platformy Docker można bliżej Cognitive Services do swoich danych.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 8faa524d7d88f09835d26439b772b8d57c84cc73
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122238"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -82,7 +82,7 @@ Ponadto niektóre kontenery są obsługiwane w usługach Cognitive Services [ **
 Kontenery usługi Azure Cognitive Services są publicznie dostępne w ramach subskrypcji platformy Azure i mogą być ściągane obrazów kontenerów platformy Docker z rejestru kontenerów firmy Microsoft lub z usługi Docker Hub. Możesz użyć [polecenie docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru odpowiednie.
 
 > [!IMPORTANT]
-> Obecnie musi przejść proces rejestracji dostęp do następujących kontenerów, w których Wypełnij i Prześlij kwestionariusza w razie pytań dotyczących, firmy i przypadek użycia, dla której chcesz zaimplementować kontenerów. Gdy jesteś uzyskuje dostęp i podano poświadczenia, wtedy mogła ściągać obrazy kontenerów dla kontenerów twarzy i rozpoznawanie tekstu z prywatnego rejestru kontenerów hostowanej przez usługę Azure Container Registry.
+> Obecnie musi przejść proces rejestracji dostęp do następujących kontenerów, w których Wypełnij i Prześlij kwestionariusza w razie pytań dotyczących, firmy i przypadek użycia, dla której chcesz zaimplementować kontenerów. Gdy jesteś uzyskuje dostęp i podano poświadczenia, wtedy mogła ściągać obrazy kontenera z prywatnego rejestru kontenerów hostowanej przez usługę Azure Container Registry.
 > * [Dectector anomalii](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Twarzy](Face/face-how-to-install-containers.md)
 > * [Aparat rozpoznawania formularza](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)

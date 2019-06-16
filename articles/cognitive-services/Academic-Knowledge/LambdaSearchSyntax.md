@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 4d4c540e00794bfdf1df265457798cc13530c828
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61337792"
 ---
 # <a name="lambda-search-syntax"></a>Składnia wyszukiwania lambda
@@ -33,13 +33,13 @@ FollowEdge(params string[] edgeTypes)
 > [!NOTE]
 > Jeśli firma Microsoft nie są istotne typów parametrów w czasie do wykonania, po prostu pominąć *FollowEdge()* między dwoma węzłami: zapytanie przeprowadzi wszystkich możliwych krawędzi między tymi dwoma węzłami.
 
-Można określić akcje Przechodzenie do wykonania w węźle za pomocą *VisitNode()*, oznacza to, czy można zatrzymać w tym węźle i zwracać bieżącą ścieżkę w wyniku lub w dalszym ciągu zrozumienie wykresu.  Typ wyliczeniowy *akcji* definiuje dwa rodzaje działań: *Action.Return* i *Action.Continue*. Możemy przekazać wartość wyliczenia bezpośrednio do *VisitNode()*, lub łączyć je przy użyciu bitowego operatora- i operator 'i'. Połączeniu dwa działania, oznacza to, że obie akcje zostaną wykonane. Uwaga: nie używaj bitowe — lub operatora "|" w akcji. To spowoduje, że zapytanie, aby zakończyć bez zwracania niczego. Pomijanie *VisitNode()* między dwoma *FollowEdge()* wywołania spowoduje, że kwerenda bezwarunkowo zrozumienie wykresu po wprowadzeniu na węzeł.
+Można określić akcje Przechodzenie do wykonania w węźle za pomocą *VisitNode()* , oznacza to, czy można zatrzymać w tym węźle i zwracać bieżącą ścieżkę w wyniku lub w dalszym ciągu zrozumienie wykresu.  Typ wyliczeniowy *akcji* definiuje dwa rodzaje działań: *Action.Return* i *Action.Continue*. Możemy przekazać wartość wyliczenia bezpośrednio do *VisitNode()* , lub łączyć je przy użyciu bitowego operatora- i operator 'i'. Połączeniu dwa działania, oznacza to, że obie akcje zostaną wykonane. Uwaga: nie używaj bitowe — lub operatora "|" w akcji. To spowoduje, że zapytanie, aby zakończyć bez zwracania niczego. Pomijanie *VisitNode()* między dwoma *FollowEdge()* wywołania spowoduje, że kwerenda bezwarunkowo zrozumienie wykresu po wprowadzeniu na węzeł.
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
 ```
 
-Dla *VisitNode()*, możemy również przekazać w wyrażeniu lambda typu *wyrażenie\<Func\<węzeł i, Akcja\>\>*, który przyjmuje *Węzeł i* i zwraca przechodzenia przez akcję:
+Dla *VisitNode()* , możemy również przekazać w wyrażeniu lambda typu *wyrażenie\<Func\<węzeł i, Akcja\>\>* , który przyjmuje *Węzeł i* i zwraca przechodzenia przez akcję:
 
 ```
 VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = null)
@@ -65,11 +65,11 @@ Informuje, czy pole o podanej nazwie istnieje w bieżącym węźle.
 
 ##### <a name="string-getstring-fieldname"></a>ciąg Pobierz (nazwa pola ciągu)
 
-Działa jak *GetField\<ciąg\>(NazwaPola)*. Jednak go nie generuje wyjątków, gdy pole nie zostanie znaleziony, zwraca pusty string("") zamiast tego.
+Działa jak *GetField\<ciąg\>(NazwaPola)* . Jednak go nie generuje wyjątków, gdy pole nie zostanie znaleziony, zwraca pusty string("") zamiast tego.
 
 ##### <a name="bool-hasstring-fieldname"></a>bool ma (nazwa pola ciągu)
 
-Informuje, czy dana właściwość istnieje w bieżącym węźle. Taki sam jak *ContainsField(fieldName)*.
+Informuje, czy dana właściwość istnieje w bieżącym węźle. Taki sam jak *ContainsField(fieldName)* .
 
 ##### <a name="bool-hasstring-fieldname-string-value"></a>bool ma (Nazwa ciągu, pola wartości ciągu)
 

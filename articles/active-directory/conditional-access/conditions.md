@@ -1,8 +1,8 @@
 ---
-title: Jakie są warunki dostępu warunkowego usługi Azure Active Directory? | Microsoft Docs
-description: Dowiedz się, jak używane warunków do wyzwolenia zasad dostępu warunkowego usługi Azure Active Directory.
+title: Jakie są warunki w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
+description: Dowiedz się, jak warunki są używane w usłudze Azure Active Directory dostępu warunkowego do wyzwolenia zasad.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 83263b3536100ce16819002c833754d18ac12816
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861543"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112610"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory?
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki w usłudze Azure Active Directory dostępu warunkowego?
 
 Można kontrolować sposób dostępu użytkowników do aplikacji w chmurze przy użyciu [dostępu warunkowego usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). W zasadach dostępu warunkowego, zdefiniuj odpowiedź ("następnie to zrobić") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku").
 
@@ -73,7 +73,7 @@ Organizacje mogą wybrać spośród następujących:
 > [!NOTE]
 > Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp.
 
-**Akcje użytkownika** zadania, które mogą być wykonywane przez użytkownika. Jedyną akcją, aktualnie obsługiwany jest **zarejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza)**, co pozwala zasad dostępu warunkowego, gdy użytkownicy, którzy są włączone dla rejestracji połączone próbować zarejestrować ich zabezpieczeń informacje. Więcej informacji można znaleźć w artykule [Włącz zabezpieczenia informacji o rejestracji (wersja zapoznawcza) w połączeniu](../authentication/howto-registration-mfa-sspr-combined.md).
+**Akcje użytkownika** zadania, które mogą być wykonywane przez użytkownika. Jedyną akcją, aktualnie obsługiwany jest **zarejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza)** , co pozwala zasad dostępu warunkowego, gdy użytkownicy, którzy są włączone dla rejestracji połączone próbować zarejestrować ich zabezpieczeń informacje. Więcej informacji można znaleźć w artykule [Włącz zabezpieczenia informacji o rejestracji (wersja zapoznawcza) w połączeniu](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ## <a name="sign-in-risk"></a>Ryzyko logowania
 
@@ -117,7 +117,7 @@ Ten warunek jest przydatne, gdy zasady dotyczą tylko niezarządzanego urządzen
 
 Korzystając z lokalizacji, można zdefiniować warunków opartych na których podjęto próbę połączenia. 
 
-![Skonfiguruj lokalizacje](./media/conditions/25.png)
+![Konfiguruj lokalizacje](./media/conditions/25.png)
 
 Typowe przypadki użycia dla tego warunku są zasady za pomocą następujących ochrony:
 
@@ -125,7 +125,7 @@ Typowe przypadki użycia dla tego warunku są zasady za pomocą następujących 
 
 - Zablokuj dostęp dla użytkowników uzyskujących dostęp do usługi z określonych krajów lub regionów. 
 
-Aby uzyskać więcej informacji, zobacz [co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+Aby uzyskać więcej informacji, zobacz [co to jest warunek lokalizacji w usłudze Azure Active Directory dostępu warunkowego?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 
 ## <a name="client-apps"></a>Aplikacje klienckie
@@ -182,15 +182,15 @@ Można jedynie docelowy to ustawienie, aby użytkownicy i grupy. Nie obsługuje 
 
  Aby uzyskać więcej informacji, zobacz:
 
-- [Konfigurowanie usługi SharePoint Online i usługi Exchange Online dla dostępu warunkowego usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
+- [Konfigurowanie usługi SharePoint Online i usługi Exchange Online dla usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
-- [Usługa Azure Active Directory na podstawie aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
+- [Dostęp warunkowy oparty na aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Szybki Start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Aby dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Szybki Start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
 
 - Aby skonfigurować zasady dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
 

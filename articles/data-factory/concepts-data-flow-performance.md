@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480419"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057952"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapowanie wydajności przepływów danych i dostosowywania przewodnik
 
@@ -41,7 +41,7 @@ Klikając tę ikonę, zostanie wyświetlona plan wykonywania i profil wydajnośc
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optymalizacja dla usługi Azure SQL Database i Azure SQL Data Warehouse
 
-![Źródło część](media/data-flow/sourcepart2.png "część źródła")
+![Źródło część](media/data-flow/sourcepart3.png "część źródła")
 
 ### <a name="partition-your-source-data"></a>Partycjonowanie danych źródłowych
 
@@ -122,8 +122,8 @@ Klikając tę ikonę, zostanie wyświetlona plan wykonywania i profil wydajnośc
 * Aby uniknąć wyczerpaniem zasobów obliczeniowych, w węźle, zachowaj domyślne lub jawnego schematu partycjonowania w usłudze ADF, który optymalizuje wydajność, a następnie dodaj kolejne działania kopiowania w potoku, który łączy wszystkie części pliki z folderu danych wyjściowych do pojedynczego nowe plik. Zasadniczo ta technika oddziela akcji transformacji z scalanie plików i osiąga ten sam wynik jako ustawienie "dane wyjściowe do pojedynczego pliku".
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne artykuły, przepływ danych:
+Zobacz inne przepływ danych artykuły związane z wydajnością:
 
-- [Przegląd przepływu danych](concepts-data-flow-overview.md)
+- [Zakładka Optymalizuj przepływ danych](concepts-data-flow-optimize-tab.md)
 - [Działanie przepływu danych](control-flow-execute-data-flow-activity.md)
 - [Monitorowanie wydajności przepływu danych](concepts-data-flow-monitoring.md)

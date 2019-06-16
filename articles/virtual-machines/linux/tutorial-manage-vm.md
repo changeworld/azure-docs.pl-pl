@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdb01802ec5b20ce57955a4e74e9de8108f4d96d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171850"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077009"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -50,11 +50,11 @@ az group create --name myResourceGroupVM --location eastus
 
 Grupa zasobów jest określana podczas tworzenia lub modyfikowania maszyn wirtualnych, co zostało przedstawione w tym samouczku.
 
-## <a name="create-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm). 
 
-Podczas tworzenia maszyny wirtualnej masz dostęp do kilku opcji, takich jak obraz systemu operacyjnego, ustalanie rozmiaru dysku i poświadczenia administracyjne. W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM*, na której działa system Ubuntu Server. Na maszynie wirtualnej zostanie utworzone konto użytkownika o nazwie *azureuser* i zostaną wygenerowane klucze SSH, jeśli nie istnieją w domyślnej lokalizacji kluczy (*~/.ssh*):
+Podczas tworzenia maszyny wirtualnej masz dostęp do kilku opcji, takich jak obraz systemu operacyjnego, ustalanie rozmiaru dysku i poświadczenia administracyjne. W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM*, na której działa system Ubuntu Server. Na maszynie wirtualnej zostanie utworzone konto użytkownika o nazwie *azureuser* i zostaną wygenerowane klucze SSH, jeśli nie istnieją w domyślnej lokalizacji kluczy ( *~/.ssh*):
 
 ```azurecli-interactive
 az vm create \
@@ -155,14 +155,14 @@ Rozmiar maszyny wirtualnej określa ilość zasobów obliczeniowych, takich jak 
 
 W poniższej tabeli przedstawiono kategorie rozmiarów podzielone według przypadków użycia.  
 
-| Type                     | Rozmiary           |    Opis       |
+| Typ                     | Typowe rozmiary           |    Opis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Zastosowania ogólne](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0–7| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
-| [Optymalizacja pod kątem obliczeń](sizes-compute.md)   | Fs, F             | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
-| [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
-| [Optymalizacja pod kątem magazynu](../virtual-machines-windows-sizes-storage.md)      | Ls                | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
-| [Procesor GPU](sizes-gpu.md)          | NV, NC            | Maszyny wirtualne wyspecjalizowane pod kątem intensywnego renderowania grafiki i edytowania materiałów wideo.       |
-| [Wysoka wydajność](sizes-hpc.md) | H, A8-11          | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). 
+| [Zastosowania ogólne](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
+| [Optymalizacja pod kątem obliczeń](sizes-compute.md)   | Fsv2          | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
+| [Optymalizacja pod kątem pamięci](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Duża ilość pamięci na rdzeń. Opcja bardzo dobra w przypadku relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
+| [Optymalizacja pod kątem magazynu](sizes-storage.md)      | Lsv2, Ls              | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
+| [Procesor GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Maszyny wirtualne wyspecjalizowane pod kątem intensywnego renderowania grafiki i edytowania materiałów wideo.       |
+| [Wysoka wydajność](sizes-hpc.md) | H        | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). |
 
 
 ### <a name="find-available-vm-sizes"></a>Wyszukiwanie dostępnych rozmiarów maszyn wirtualnych
@@ -305,7 +305,7 @@ az vm stop --resource-group myResourceGroupVM --name myVM
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-### <a name="delete-resource-group"></a>Usuń grupę zasobów
+### <a name="delete-resource-group"></a>Usuwanie grupy zasobów
 
 Usunięcie grupy zasobów spowoduje również usunięcie wszystkich znajdujących się w niej zasobów, takich jak maszyna wirtualna, sieć wirtualna i dysk. Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61341714"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
@@ -36,7 +36,7 @@ Można skonfigurować wszystkie ustawienia interfejsu OpenAPI na **definicji int
 > [!NOTE]
 > Funkcja definicji interfejsu API nie jest obecnie obsługiwana dla środowiska uruchomieniowego w wersji beta.
 
-Aby umożliwić wygenerowanie dyrektyw hostowanej definicji interfejsu OpenAPI i definicję przewodnika Szybki Start, należy ustawić **źródło definicji interfejsu API** do **— funkcja (wersja zapoznawcza)**. **Zewnętrzny adres URL** umożliwia funkcję, aby użyć definicji interfejsu OpenAPI, która ma hostowaną w innym miejscu.
+Aby umożliwić wygenerowanie dyrektyw hostowanej definicji interfejsu OpenAPI i definicję przewodnika Szybki Start, należy ustawić **źródło definicji interfejsu API** do **— funkcja (wersja zapoznawcza)** . **Zewnętrzny adres URL** umożliwia funkcję, aby użyć definicji interfejsu OpenAPI, która ma hostowaną w innym miejscu.
 
 ## <a name="generate-definition"></a>Generuj szkielet struktury Swagger z metadanych funkcji
 Szablon może pomóc rozpocząć pisanie pierwszego definicja interfejsu OpenAPI. Funkcja szablonu definicji tworzy rozrzedzoną definicję interfejsu OpenAPI za pomocą wszystkie metadane w pliku function.json dla poszczególnych funkcji wyzwalacza HTTP. Musisz podać więcej informacji na temat interfejsu API z [specyfikacji interfejsu OpenAPI](https://swagger.io/specification/), takie jak szablony żądań i odpowiedzi.
@@ -58,7 +58,7 @@ Poniższa tabela reprezentuje ustawienia portalu Azure i odpowiadające im dane 
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**Ustawienia aplikacji funkcji** > **ustawień usługi App Service** > **Przegląd** > **adresu URL**|*Nie istnieje*
 |[Ścieżki](https://swagger.io/specification/#paths-object-29)|**Integracja** > **wybrane metody HTTP**|Powiązania: Trasa
 |[Ścieżka elementu](https://swagger.io/specification/#path-item-object-32)|**Integracja** > **szablon trasy**|Powiązania: Metody
-|[Bezpieczeństwo](https://swagger.io/specification/#security-scheme-object-112)|**klucze**|*Nie istnieje*|
+|[Zabezpieczenia](https://swagger.io/specification/#security-scheme-object-112)|**klucze**|*Nie istnieje*|
 |operationID *|**Trasy + dozwolone czasowniki**|Trasy i dozwolonych poleceń|
 
 \*Identyfikator operacji jest wymagany tylko w celu integracji z usługami PowerApps i Flow.

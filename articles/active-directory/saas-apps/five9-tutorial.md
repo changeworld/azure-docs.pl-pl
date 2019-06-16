@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: daec6e169805c193b48781dfecbabd9349bdc59b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd4eab2d8e877cac468097c0a6ed6aa3cfb750b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278665"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Samouczek: Integracja usługi Azure Active Directory Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)
 
@@ -29,7 +29,7 @@ Integrowanie Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) z usług
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Five9 oraz karty sieciowej (CTI, skontaktuj się z Centrum agentów).
 * Umożliwia użytkownikom można automatycznie zalogowany do Five9 oraz karty sieciowej (CTI, skontaktuj się z Centrum agentów) (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -53,7 +53,7 @@ Aby skonfigurować integrację Five9 oraz karty (CTI, skontaktuj się z Centrum 
 
 **Aby dodać Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,27 +61,27 @@ Aby skonfigurować integrację Five9 oraz karty (CTI, skontaktuj się z Centrum 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)**, wybierz opcję **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** , wybierz opcję **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
      ![Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) w oparciu o nazwie użytkownika testowego **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Five9 oraz karty (CTI, skontaktuj się z Centrum agentów), należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) logowanie jednokrotne](#configure-five9-plus-adapter-cti-contact-center-agents-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)](#create-five9-plus-adapter-cti-contact-center-agents-test-user)**  — aby odpowiednikiem Britta Simon Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) połączoną usługę Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +91,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Five9 oraz karty (C
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -123,7 +123,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Five9 oraz karty (C
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 7. Na **Konfigurowanie Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
@@ -173,11 +173,11 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Five9 oraz karty sieciowej (CTI, skontaktuj się z Centrum agentów).
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** .
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)**.
+2. Na liście aplikacji wybierz **Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)** .
 
     ![Łącze Five9 oraz karty (CTI, skontaktuj się z Centrum agentów) na liście aplikacji](common/all-applications.png)
 
@@ -197,7 +197,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-five9-plus-adapter-cti-contact-center-agents-test-user"></a>Tworzenie użytkownika testowego Five9 oraz karty (CTI, skontaktuj się z Centrum agentów)
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon Five9 oraz karty (CTI, skontaktuj się z Centrum agentów). Praca z [zespołu pomocy technicznej Five9 oraz kart (CTI, skontaktuj się z Centrum agentów)](https://www.five9.com/about/contact) Aby dodać użytkowników na platformie Five9 oraz karty (CTI, skontaktuj się z Centrum agentów). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon Five9 oraz karty (CTI, skontaktuj się z Centrum agentów). Praca z [zespołu pomocy technicznej Five9 oraz kart (CTI, skontaktuj się z Centrum agentów)](https://www.five9.com/about/contact) Aby dodać użytkowników na platformie Five9 oraz karty (CTI, skontaktuj się z Centrum agentów). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

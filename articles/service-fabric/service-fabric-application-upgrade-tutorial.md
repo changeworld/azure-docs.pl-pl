@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615155"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Samouczek uaktualniania aplikacji usługi Service Fabric za pomocą programu Visual Studio
@@ -43,7 +43,7 @@ Wybranie **publikowania** wyświetlenie wyskakującego okienka, a użytkownik mo
 
 Teraz możesz kliknąć pozycję **Publikuj** w oknie dialogowym. Możesz użyć [narzędzia Service Fabric Explorer, aby wyświetlić klaster i aplikacja](service-fabric-visualizing-your-cluster.md). Aplikacja obiektów wizualnych ma usługi sieci web, które możesz przejść do, wpisując [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) na pasku adresu przeglądarki.  Powinien zostać wyświetlony 10 zmiennoprzecinkowy obiektów wizualnych poruszanie się na ekranie.
 
-**UWAGA:** Jeśli wdrażana `Cloud.xml` profilu (usługi Azure Service Fabric), aplikacja powinna być dostępna na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/**. Upewnij się, że masz `8081/TCP` skonfigurowany w module równoważenia obciążenia (Znajdź modułu równoważenia obciążenia w tej samej grupie zasobów, gdy wystąpienie usługi Service Fabric).
+**UWAGA:** Jeśli wdrażana `Cloud.xml` profilu (usługi Azure Service Fabric), aplikacja powinna być dostępna na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/** . Upewnij się, że masz `8081/TCP` skonfigurowany w module równoważenia obciążenia (Znajdź modułu równoważenia obciążenia w tej samej grupie zasobów, gdy wystąpienie usługi Service Fabric).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Aktualizacja przykładu obiektów wizualnych
 Może się okazać, że z wersją, która została wdrożona w kroku 1, obiektów wizualnych nie Obróć. Teraz uaktualnić tę aplikację do jednego gdzie również obrócić obiektów wizualnych.

@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbf27ca6f5b58d5c3cebb28698304c130381a7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ad2b3075ae9d5ccd7e32f039fbbbc8583cde73c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055961"
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Zaawansowane scenariusze obejmujące usługę Azure Multi-Factor Authentication i rozwiązania VPN innych firm
 
 Usługa Azure Multi-Factor Authentication może służyć do bezproblemowe łączenie różnych rozwiązań sieci VPN innych firm. Ten artykuł koncentruje się na urządzenie sieci VPN oprogramowania Cisco® ASA, urządzenie sieci VPN protokołu SSL NetScaler firmy Citrix i Juniper sieci bezpieczny dostęp/Pulse Secure połączyć bezpiecznego protokołu SSL urządzenie sieci VPN. Utworzyliśmy przewodniki konfiguracji, aby rozwiązać te trzy typowe urządzenia. Serwer Multi-Factor Authentication można również zintegrować z najbardziej innymi systemami, które używają usługi RADIUS, LDAP, usług IIS lub uwierzytelniania opartego na oświadczeniach z usługami AD FS. Można znaleźć więcej szczegółów w [konfiguracji serwera usługi MFA](howto-mfaserver-deploy.md#next-steps).
+
+> [!IMPORTANT]
+> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Urządzenie sieci VPN ASA Cisco i usługi Azure Multi-Factor Authentication
 Uwierzytelnianie wieloskładnikowe systemu Azure integruje się z urządzeniem sieci VPN oprogramowania Cisco® ASA w celu zapewnienia dodatkowych zabezpieczeń sieci VPN oprogramowania Cisco AnyConnect® logowania i dostępu do portalu.  Możesz użyć protokołu LDAP lub serwera RADIUS.  Wybierz jedną z następujących czynności, aby pobrać przewodniki szczegółowe instrukcje krok po kroku konfiguracji.

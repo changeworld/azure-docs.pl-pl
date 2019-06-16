@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951715"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Ramka zabezpieczeń: Uwierzytelnianie | Środki zaradcze 
@@ -48,7 +48,7 @@ ms.locfileid: "65951715"
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| Szczegóły | <p>Uwierzytelnianie jest proces jednostki, w przypadku gdy okaże się swoją tożsamość, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło. Brak dostępnych wiele protokołów uwierzytelniania, które mogą być uważane za. Poniżej wymieniono niektóre z nich:</p><ul><li>Certyfikaty klienta</li><li>Na bazie systemu Windows</li><li>Oparte na formularzach</li><li>Federacyjna - usług AD FS</li><li>Federacyjna — usługa Azure AD</li><li>Federacyjna - tożsamości serwera</li></ul><p>Należy wziąć pod uwagę przy użyciu mechanizmu uwierzytelniania standardowego do identyfikowania procesu źródła</p>|
+| Szczegóły | <p>Uwierzytelnianie jest proces jednostki, w przypadku gdy okaże się swoją tożsamość, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło. Brak dostępnych wiele protokołów uwierzytelniania, które mogą być uważane za. Poniżej wymieniono niektóre z nich:</p><ul><li>Certyfikaty klienta</li><li>Systemem Windows</li><li>Oparte na formularzach</li><li>Federacyjna - usług AD FS</li><li>Federacyjna — usługa Azure AD</li><li>Federacyjna - tożsamości serwera</li></ul><p>Należy wziąć pod uwagę przy użyciu mechanizmu uwierzytelniania standardowego do identyfikowania procesu źródła</p>|
 
 ## <a id="handle-failed-authn"></a>Aplikacje musi bezpiecznie obsługiwać scenariusze uwierzytelniania nie powiodło się
 
@@ -133,7 +133,7 @@ ms.locfileid: "65951715"
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | SQL Azure |
+| **Odpowiednich technologii** | Usługi SQL Azure |
 | **Atrybuty**              | Wersja SQL - V12 |
 | **Odwołania**              | [Łączenie z bazą danych SQL przy użyciu uwierzytelniania usługi Azure Active Directory](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
 | **Kroki** | **Minimalna wersja:** Usługa Azure SQL Database V12 wymagany w celu umożliwienia usłudze Azure SQL Database do użycia uwierzytelnianie usługi AAD w usłudze Microsoft Directory |
@@ -340,7 +340,7 @@ Konfigurowanie usługi MSMQ, aby wymagać domeny Windows lub uwierzytelniania ce
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Uwierzytelnianie i autoryzacja w składniku ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [zewnętrznych usług uwierzytelniania przy użyciu interfejsu API sieci Web platformy ASP.NET (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
-| **Kroki** | <p>Uwierzytelnianie jest proces jednostki, w przypadku gdy okaże się swoją tożsamość, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło. Brak dostępnych wiele protokołów uwierzytelniania, które mogą być uważane za. Poniżej wymieniono niektóre z nich:</p><ul><li>Certyfikaty klienta</li><li>Na bazie systemu Windows</li><li>Oparte na formularzach</li><li>Federacyjna - usług AD FS</li><li>Federacyjna — usługa Azure AD</li><li>Federacyjna - tożsamości serwera</li></ul><p>Linków w sekcji odwołań zawierają szczegóły niskiego poziomu dotyczące jak wszystkich schematów uwierzytelniania zaimplementowane do zabezpieczania internetowego interfejsu API.</p>|
+| **Kroki** | <p>Uwierzytelnianie jest proces jednostki, w przypadku gdy okaże się swoją tożsamość, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło. Brak dostępnych wiele protokołów uwierzytelniania, które mogą być uważane za. Poniżej wymieniono niektóre z nich:</p><ul><li>Certyfikaty klienta</li><li>Systemem Windows</li><li>Oparte na formularzach</li><li>Federacyjna - usług AD FS</li><li>Federacyjna — usługa Azure AD</li><li>Federacyjna - tożsamości serwera</li></ul><p>Linków w sekcji odwołań zawierają szczegóły niskiego poziomu dotyczące jak wszystkich schematów uwierzytelniania zaimplementowane do zabezpieczania internetowego interfejsu API.</p>|
 
 ## <a id="authn-aad"></a>Użyj uwierzytelniania standardowego scenariusze obsługiwane przez usługę Azure Active Directory
 
@@ -490,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-  #### <a name="sas-token"></a>Token SAS
+  #### <a name="sas-token"></a>Token sygnatury dostępu Współdzielonego
 * Pobiera wewnętrznie generowane, gdy przy użyciu klucza symetrycznego, ale możemy wygenerować i używać go także jawnie
 * Zdefiniuj protokół: `var Http = require('azure-iot-device-http').Http;`
 * Utwórz token sygnatury dostępu współdzielonego:

@@ -3,21 +3,20 @@ title: Kopiowanie danych z Netezza za pomocą usługi Azure Data Factory | Dokum
 description: Dowiedz się, jak skopiować dane z Netezza do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 02/01/2019
+ms.author: jingwang
 ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61399931"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopiowanie danych z Netezza za pomocą usługi Azure Data Factory
@@ -50,7 +49,7 @@ Typowe parametry połączenia jest `Server=<server>;Port=<port>;Database=<databa
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| SecurityLevel | Poziom zabezpieczeń (SSL/TLS), sterownik używany dla połączenia z magazynem danych. Przykład: `SecurityLevel=preferredSecured`. Obsługiwane są następujące wartości:<br/>- **Tylko niezabezpieczone** (**onlyUnSecured**): Sterownik nie używa protokołu SSL.<br/>- **Preferowane niezabezpieczone (preferredUnSecured) (ustawienie domyślne)**: Jeśli serwer umożliwia wybranie, sterownik nie używa protokołu SSL. <br/>- **Preferowane zabezpieczone (preferredSecured)**: Jeśli serwer umożliwia wybranie, sterownik używa protokołu SSL. <br/>- **Tylko zabezpieczane (onlySecured)**: Sterownik nie połączyć, o ile nie jest dostępne połączenie SSL. | Nie |
+| SecurityLevel | Poziom zabezpieczeń (SSL/TLS), sterownik używany dla połączenia z magazynem danych. Przykład: `SecurityLevel=preferredSecured`. Obsługiwane są następujące wartości:<br/>- **Tylko niezabezpieczone** (**onlyUnSecured**): Sterownik nie używa protokołu SSL.<br/>- **Preferowane niezabezpieczone (preferredUnSecured) (ustawienie domyślne)** : Jeśli serwer umożliwia wybranie, sterownik nie używa protokołu SSL. <br/>- **Preferowane zabezpieczone (preferredSecured)** : Jeśli serwer umożliwia wybranie, sterownik używa protokołu SSL. <br/>- **Tylko zabezpieczane (onlySecured)** : Sterownik nie połączyć, o ile nie jest dostępne połączenie SSL. | Nie |
 | CaCertFile | Pełna ścieżka do certyfikatu SSL, który jest używany przez serwer. Przykład: `CaCertFile=<cert path>;`| Tak, jeśli jest włączony protokół SSL |
 
 **Przykład**

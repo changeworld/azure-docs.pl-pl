@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff5ff12f18d1f85b3ca53adb42fee41e19fb4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865790"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088291"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Trello
 
@@ -93,7 +93,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy u�
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
 > [!NOTE]
-> Dostawca aplikacji Trello powinien dostarczyć Ci element slug **\<enterprise\>**. Jeśli nie masz wartość informacji o pracy, skontaktuj się z [zespołem pomocy technicznej usługi Trello](mailto:support@trello.com) można pobrać informacji o pracy w przedsiębiorstwie.
+> Dostawca aplikacji Trello powinien dostarczyć Ci element slug **\<enterprise\>** . Jeśli nie masz wartość informacji o pracy, skontaktuj się z [zespołem pomocy technicznej usługi Trello](mailto:support@trello.com) można pobrać informacji o pracy w przedsiębiorstwie.
 
 Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu usługi Trello, wykonaj następujące czynności:
 
@@ -142,7 +142,7 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu usług
 
     ![Okno dialogowe oświadczenia użytkownika](common/new-save-attribute.png)
 
-    ![Zarządzanie oświadczeniami użytkownika](common/new-attribute-details.png)
+    ![Zarządzanie oświadczenia użytkownika](common/new-attribute-details.png)
 
     b. W **nazwa** wprowadź nazwę atrybutu, która jest wyświetlana dla tego wiersza.
 

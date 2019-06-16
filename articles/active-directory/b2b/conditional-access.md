@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3bfe067b7a927f800f88958ee2ffca09711c10
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c012ebfb00b57079e43b74b4f6570744db980860
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812813"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113157"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Dostęp warunkowy dla użytkowników współpracy B2B
 
@@ -89,9 +89,9 @@ W związku z tym zalecenie dla usługi MFA dla użytkowników B2B jest zawsze na
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Dostępu warunkowego opartego na urządzeniach, na podstawie lokalizacji i oparty na ryzyku dla użytkowników B2B
 
-Contoso włącza zasady dostępu warunkowego opartego na urządzeniach dla danych firmowych, dostęp jest uniemożliwił urządzeń, które nie są zarządzane przez firmę Contoso i nie są zgodne z zasadami urządzeń firmy Contoso.
+Contoso włącza zasady dostępu warunkowego opartego na urządzeniach, które danych firmowych, dostęp jest uniemożliwił urządzeń, które nie są zarządzane przez firmę Contoso ale nie jest zgodne z zasadami urządzeń firmy Contoso.
 
-Jeśli urządzenie użytkownika B2B nie są zarządzane przez firmę Contoso, dostępu użytkowników B2B z organizacji partnerskich jest zablokowany w kontekście, niezależnie od te zasady są wymuszane. Jednak firmy Contoso, można utworzyć listy wykluczeń zawierających użytkowników partnera, aby wykluczyć je z zasad dostępu warunkowego opartego na urządzeniach.
+Jeśli urządzenie użytkownika B2B nie są zarządzane przez firmę Contoso, dostępu użytkowników B2B z organizacji partnerskich jest zablokowany w kontekście, niezależnie od te zasady są wymuszane. Jednak Contoso można utworzyć listy wykluczeń zawierających użytkowników partnera, aby wykluczyć je z zasad dostępu warunkowego opartego na urządzeniach.
 
 #### <a name="location-based-conditional-access-for-b2b"></a>Dostęp warunkowy na podstawie lokalizacji, dla modelu B2B
 

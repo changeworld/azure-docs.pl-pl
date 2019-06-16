@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
 ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813300"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie za pomocą 1000 wypowiedzi w portalu usługi LUIS usługi Batch
@@ -32,10 +32,10 @@ Prześlij plik wsadowy w wypowiedzi, znane jako *dataset*, do testowania usługi
 
 |**reguły**|
 |--|
-|* Nie zduplikowane wypowiedzi|
+|\* Nie zduplikowane wypowiedzi|
 |wyrażenia o 1000 lub mniej|
 
-* Duplikaty są traktowane jako zgodne dokładnie taki ciąg znaków, nie dopasowania, które są najpierw stokenizowanego. 
+\* Duplikaty są traktowane jako zgodne dokładnie taki ciąg znaków, nie dopasowania, które są najpierw stokenizowanego. 
 
 ## <a name="entities-allowed-in-batch-tests"></a>Dozwolone w partii testów jednostek
 

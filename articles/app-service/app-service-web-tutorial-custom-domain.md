@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89034b04c6b38c0873f890e55693c6e15e6a8d93
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069396"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service
 
@@ -68,7 +68,7 @@ W lewym menu wybierz pozycję **App Services**, a następnie wybierz nazwę swoj
 
 Zostanie wyświetlona strona zarządzania aplikacji usługi App Service.  
 
-<a name="checkpricing"></a>
+<a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>Sprawdzanie warstwy cenowej
 
@@ -82,7 +82,7 @@ Bieżąca warstwa aplikacji jest wyróżniona niebieskim obramowaniem. Upewnij s
 
 Jeśli plan usługi App Service nie znajduje się w warstwie **F1**, zamknij stronę **Skalowanie w górę** i przejdź od razu do sekcji [Mapowanie rekordu CNAME](#cname).
 
-<a name="scaleup"></a>
+<a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Skalowanie w górę planu usługi App Service
 
@@ -96,7 +96,7 @@ Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalow
 
 ![Potwierdzenie operacji skalowania](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-<a name="cname"></a>
+<a name="cname" aria-hidden="true"></a>
 
 ## <a name="map-your-domain"></a>Mapowanie domeny
 
@@ -162,7 +162,7 @@ Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej
 
 ![Błąd weryfikacji](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-<a name="a"></a>
+<a name="a" aria-hidden="true"></a>
 
 ### <a name="map-an-a-record"></a>Mapowanie rekordu A
 
@@ -213,7 +213,7 @@ Po dodaniu tych rekordów strona rekordów DNS wygląda podobnie jak w następuj
 
 ![Strona rekordów DNS](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-<a name="enable-a"></a>
+<a name="enable-a" aria-hidden="true"></a>
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>Włączanie mapowania rekordu A w aplikacji
 
@@ -246,7 +246,7 @@ Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej
 
 ![Błąd weryfikacji](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
-<a name="wildcard"></a>
+<a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Mapowanie domeny z symbolami wieloznacznymi
 
@@ -310,7 +310,7 @@ Jeśli podczas przechodzenia do adresu URL domeny niestandardowej występuje bł
 - W skonfigurowanej domenie niestandardowej brakuje rekordu A i/lub rekordu CNAME.
 - Klient przeglądarki umieścił w pamięci podręcznej stary adres IP Twojej domeny. Wyczyść pamięć podręczną i ponownie przetestuj rozpoznawanie nazwy DNS. Do czyszczenia pamięci podręcznej na komputerze z systemem Windows należy użyć polecenia `ipconfig /flushdns`.
 
-<a name="virtualdir"></a>
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="migrate-an-active-domain"></a>Migrowanie aktywnej domeny
 

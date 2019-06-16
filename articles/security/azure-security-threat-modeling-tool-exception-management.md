@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610712"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie wyjątkami | Środki zaradcze 
@@ -30,7 +30,7 @@ ms.locfileid: "60610712"
 
 ## <a id="servicedebug"></a>Usługi WCF — nie uwzględniaj serviceDebug węzła w pliku konfiguracji
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -54,7 +54,7 @@ Wyłącz informacji o debugowaniu w usłudze. Można to osiągnąć, usuwając `
 
 ## <a id="servicemetadata"></a>Usługi WCF — nie uwzględniaj węzła serviceMetadata w pliku konfiguracji
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -65,7 +65,7 @@ Wyłącz informacji o debugowaniu w usłudze. Można to osiągnąć, usuwając `
 
 ## <a id="exception"></a>Upewnij się, że odpowiednie wyjątków odbywa się w Web API platformy ASP.NET
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -183,7 +183,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="messages"></a>Nie ujawniaj informacji zabezpieczeń w komunikatach o błędach
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -194,7 +194,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="default"></a>Implementowanie obsługi strony błędów domyślne
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -205,7 +205,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="deployment"></a>Set, metoda wdrażania na detaliczną w usługach IIS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Wdrożenie |  
@@ -216,7 +216,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 
 ## <a id="fail"></a>Wyjątki powinna zakończyć się niepowodzeniem bezpiecznie
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  

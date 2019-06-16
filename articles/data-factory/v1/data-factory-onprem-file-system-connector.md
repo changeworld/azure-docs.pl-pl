@@ -14,14 +14,14 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 40086924731876dc44d9651ca46814149dba52f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122449"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopiowanie danych do i z systemu plików w środowisku lokalnym za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-onprem-file-system-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-file-system.md)
 
@@ -130,7 +130,7 @@ W sekcji typeProperties różni się dla każdego typu zestawu danych. Zawiera i
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Tak |
+| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku znajduje się w następującym formacie: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
 | fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "obiektu fileFilter": "* .log"<br/>Przykład 2: "obiektu fileFilter": 2014 - 1-?. txt"<br/><br/>Należy zauważyć, że tego obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. |Nie |
 | partitionedBy |PartitionedBy służy do określania dynamiczne folderPath/nazwę pliku do danych szeregów czasowych. Przykładem jest folderPath sparametryzowane za każdą godzinę danych. |Nie |

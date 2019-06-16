@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 758ed2e44718da709acec1379cfc79936c8b7cdf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444235"
+ms.locfileid: "67083633"
 ---
 # <a name="azure-identity-management-security-overview"></a>Omówienie zabezpieczeń zarządzania tożsamościami platformy Azure
 
- Zarządzanie tożsamościami to proces uwierzytelniania i autoryzowania [podmiotów zabezpieczeń](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals). Obejmuje to także kontrolowanie informacji na temat tych jednostek (tożsamości). Podmioty zabezpieczeń (tożsamości) może obejmować usług, aplikacji, użytkowników, grup itp. Microsoft tożsamości i dostępu do zarządzania rozwiązania pomagają działowi IT chronić dostęp do aplikacji i zasobów w firmowym centrum danych i w chmurze. Taka ochrona umożliwia dodatkowe poziomy walidacji, takimi jak uwierzytelnianie wieloskładnikowe i zasady dostępu warunkowego. Monitorowania podejrzanych działań przy użyciu zaawansowanych zabezpieczeń, raportowanie, inspekcji i alerty, że pomaga jej uniknąć potencjalnych problemów z zabezpieczeniami. [Usługa Azure Active Directory — wersja Premium](../active-directory/active-directory-editions.md) umożliwia logowanie jednokrotne (SSO) do tysięcy oprogramowaniu w chmurze jako usługi (SaaS) i uzyskać dostęp do aplikacji sieci web, jak uruchomić lokalnie.
+ Zarządzanie tożsamościami to proces uwierzytelniania i autoryzowania [podmiotów zabezpieczeń](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals). Obejmuje to także kontrolowanie informacji na temat tych jednostek (tożsamości). Podmioty zabezpieczeń (tożsamości) może obejmować usług, aplikacji, użytkowników, grup itp. Microsoft tożsamości i dostępu do zarządzania rozwiązania pomagają działowi IT chronić dostęp do aplikacji i zasobów w firmowym centrum danych i w chmurze. Taka ochrona umożliwia dodatkowe poziomy walidacji, takimi jak zasady uwierzytelniania wieloskładnikowego i dostępu warunkowego. Monitorowania podejrzanych działań przy użyciu zaawansowanych zabezpieczeń, raportowanie, inspekcji i alerty, że pomaga jej uniknąć potencjalnych problemów z zabezpieczeniami. [Usługa Azure Active Directory — wersja Premium](../active-directory/active-directory-editions.md) umożliwia logowanie jednokrotne (SSO) do tysięcy oprogramowaniu w chmurze jako usługi (SaaS) i uzyskać dostęp do aplikacji sieci web, jak uruchomić lokalnie.
  
 Dzięki wykorzystaniu zalet usługi Azure Active Directory (Azure AD), możesz wykonywać następujące czynności:
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6f9064c6027499fff3a8551ee60722cd66c54dc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60877699"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Tworzenie klastrów HDInsight za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal
@@ -56,7 +56,7 @@ W tej sekcji tworzysz klaster HDInsight przy użyciu konta Data Lake Storage Gen
     ![Dodaj jednostkę usługi z klastrem HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dodaj jednostkę usługi z klastrem HDInsight")
 
     - **Wybierz opcję Data Lake Store konta**: Wybierz istniejące konto Data Lake Storage Gen1. Istniejące konta Data Lake Storage Gen1 jest wymagany.  Zobacz [Wymagania wstępne](#prerequisites).
-    - **Ścieżka katalogu głównego**: Wprowadź ścieżkę, w którym mają być przechowywane pliki dotyczące klastra. Na zrzucie ekranu jest __/klastrów/myhdiadlcluster/__, w którym __/klastrów__ folder musi istnieć i Portal tworzy *myhdicluster* folderu.  *Myhdicluster* jest nazwą klastra.
+    - **Ścieżka katalogu głównego**: Wprowadź ścieżkę, w którym mają być przechowywane pliki dotyczące klastra. Na zrzucie ekranu jest __/klastrów/myhdiadlcluster/__ , w którym __/klastrów__ folder musi istnieć i Portal tworzy *myhdicluster* folderu.  *Myhdicluster* jest nazwą klastra.
     - **Data Lake Store dostępu**: Konfigurowanie dostępu między konta Data Lake Storage Gen1 oraz klastra HDInsight. Aby uzyskać instrukcje, zobacz skonfigurować Data Lake Storage Gen1 dostępu.
     - **Dodatkowe konta magazynu**: Dodawanie konta usługi Azure storage jako dodatkowe konta magazynu dla klastra. Aby dodać dodatkowe konta Data Lake Storage Gen1 odbywa się przez nadanie uprawnień do klastra na danych w kolejnych kont Data Lake Storage Gen1 podczas konfigurowania konta Data Lake Storage Gen1 jako typ podstawowy magazyn. Zobacz Konfigurowanie Data Lake Storage Gen1 dostęp.
 

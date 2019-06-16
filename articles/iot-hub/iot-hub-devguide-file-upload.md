@@ -8,16 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60950384"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080416"
 ---
 # <a name="upload-files-with-iot-hub"></a>Przekazywanie plików za pomocą usługi IoT Hub
 
-Jak wyjaśniono w [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md) artykułu, urządzenie można uruchomić przekazywanie pliku przez wysyłanie powiadomień za pośrednictwem punktu końcowego dostępnego z urządzenia (**/devices/ {deviceId} / pliki**). Gdy urządzenie usługi IoT Hub powiadamia o zakończeniu przekazywania, usługi IoT Hub wysyła komunikat z powiadomieniem przekazywanie plików za pośrednictwem **/messages/servicebound/filenotifications** przeznaczonych dla usług punktu końcowego.
+Jak wyjaśniono w [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md) artykułu, urządzenie można uruchomić przekazywanie pliku przez wysyłanie powiadomień za pośrednictwem punktu końcowego dostępnego z urządzenia ( **/devices/ {deviceId} / pliki**). Gdy urządzenie usługi IoT Hub powiadamia o zakończeniu przekazywania, usługi IoT Hub wysyła komunikat z powiadomieniem przekazywanie plików za pośrednictwem **/messages/servicebound/filenotifications** przeznaczonych dla usług punktu końcowego.
 
 Zamiast pośrednictwa wiadomości za pomocą samej usługi IoT Hub IoT Hub zamiast działa jako wysyłający do skojarzonego konta usługi Azure Storage. Urządzenie wymaga tokenu magazynu z usługi IoT Hub, które są specyficzne dla pliku, który chce przekazać urządzenia. Urządzenie używa identyfikatora URI sygnatury dostępu Współdzielonego można przekazać pliku do magazynu, a po zakończeniu przekazywania urządzenie wysyła powiadomienie o zakończeniu do usługi IoT Hub. Usługa IoT Hub umożliwia sprawdzenie, przekazywanie pliku zostało ukończone, a następnie dodaje komunikat z powiadomieniem przekazywania pliku, do punktu końcowego powiadomienia dla plików przeznaczonych dla usługi.
 
@@ -95,7 +95,7 @@ W poniższych tematach odwołania udostępnić więcej informacji na temat przek
 
 Opcjonalnie gdy urządzenie usługi IoT Hub powiadamia o zakończeniu przekazywania, usługi IoT Hub generuje komunikat z powiadomieniem. Ten komunikat zawiera nazwy i magazynu lokalizację pliku.
 
-Jak wyjaśniono w [punktów końcowych](iot-hub-devguide-endpoints.md), IoT Hub dostarczy powiadomienia o przekazywanie plików za pośrednictwem punktu końcowego usługi skierowaną (**/messages/servicebound/fileuploadnotifications**) jako komunikaty. Semantyka odbierania powiadomień przekazywania pliku są takie same jak w przypadku komunikatów z chmury do urządzeń i mają taką samą [cykl życia komunikatów](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle). Każdy komunikat pobierane z punktu końcowego powiadomienia przekazywania plików jest rekordem JSON z następującymi właściwościami:
+Jak wyjaśniono w [punktów końcowych](iot-hub-devguide-endpoints.md), IoT Hub dostarczy powiadomienia o przekazywanie plików za pośrednictwem punktu końcowego usługi skierowaną ( **/messages/servicebound/fileuploadnotifications**) jako komunikaty. Semantyka odbierania powiadomień przekazywania pliku są takie same jak w przypadku komunikatów z chmury do urządzeń i mają taką samą [cykl życia komunikatu](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle). Każdy komunikat pobierane z punktu końcowego powiadomienia przekazywania plików jest rekordem JSON z następującymi właściwościami:
 
 | Właściwość | Opis |
 | --- | --- |
@@ -125,10 +125,10 @@ Każde Centrum IoT hub ma następujące opcje konfiguracji dla pliku przekazywan
 
 | Właściwość | Opis | Zakres i domyślne |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Określa, czy powiadomienia o przekazywania plików są zapisywane w pliku punktu końcowego powiadomienia. |Bool. Domyślne: True. |
-| **fileNotifications.ttlAsIso8601** |Domyślny czas wygaśnięcia pliku przekazywania powiadomień. |ISO_8601 interwał maksymalnie 48 godz. (minimalna 1 minuta). Domyślne: 1 godzinę. |
-| **fileNotifications.lockDuration** |Czas trwania blokady kolejki powiadomień przekazywania plików. |5-300 sekund (minimalna 5 sekund). Domyślne: 60 sekund. |
-| **fileNotifications.maxDeliveryCount** |Maksymalna liczba prób dostarczenia pliku przekazać kolejka powiadomień. |1 do 100. Domyślne: 100. |
+| **enableFileUploadNotifications** |Określa, czy powiadomienia o przekazywania plików są zapisywane w pliku punktu końcowego powiadomienia. |Bool. Wartość domyślna: True. |
+| **fileNotifications.ttlAsIso8601** |Domyślny czas wygaśnięcia pliku przekazywania powiadomień. |ISO_8601 interwał maksymalnie 48 godz. (minimalna 1 minuta). Wartość domyślna: 1 godzinę. |
+| **fileNotifications.lockDuration** |Czas trwania blokady kolejki powiadomień przekazywania plików. |5-300 sekund (minimalna 5 sekund). Wartość domyślna: 60 sekund. |
+| **fileNotifications.maxDeliveryCount** |Maksymalna liczba prób dostarczenia pliku przekazać kolejka powiadomień. |1 do 100. Wartość domyślna: 100. |
 
 ## <a name="additional-reference-material"></a>Dodatkowe materiały
 

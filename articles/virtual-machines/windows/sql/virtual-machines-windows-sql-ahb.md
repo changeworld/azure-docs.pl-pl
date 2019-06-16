@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1fb67600ea01629e7bf3ab4c7c470e4727b0e923
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 667a696e96234aca33981946a5b063ab5bfb080b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075876"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure
 W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure za pomocą nowego dostawcę zasobów maszyny Wirtualnej SQL — **Microsoft.SqlVirtualMachine**. Istnieją dwa modele dla maszyny wirtualnej (VM) hostowany program SQL Server — zgodnie z rzeczywistym użyciem, licencjonowanie i model dostarczania własnej licencji (BYOL). A teraz, przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell można zmodyfikować model licencjonowania, który korzysta z maszyny Wirtualnej programu SQL Server. 
@@ -58,11 +58,14 @@ Użycie dostawcy zasobów maszyny Wirtualnej SQL wymaga rozszerzenie SQL IaaS. J
 
 ## <a name="with-the-azure-portal"></a>Z witryną Azure Portal
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Możesz zmodyfikować model licencjonowania bezpośrednio z portalu. 
 
-1. Przejdź do maszyny Wirtualnej programu SQL Server w ramach [witryny Azure portal](https://portal.azure.com). 
-1. Wybierz **konfiguracji programu SQL Server** w **ustawienia** okienka. 
-1. Wybierz **Edytuj** w **licencja programu SQL Server** okienku, zmodyfikuj licencję. 
+1. Otwórz [witryny Azure portal](https://portal.azure.com) i uruchom [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) dla maszyny Wirtualnej programu SQL Server. 
+1. Wybierz **skonfigurować** w obszarze **ustawienia**. 
+1. Wybierz **korzyść użycia hybrydowego platformy Azure** opcji i upewnij się, że masz licencję programu SQL Server z pakietem Software Assurance. 
+1. Wybierz **Zastosuj** w dolnej części **Konfiguruj** strony. 
 
 ![AHB w portalu](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
@@ -75,7 +78,7 @@ Aby zmienić model licencjonowania, można użyć wiersza polecenia platformy Az
 
 Poniższy fragment kodu zmienia licencji zgodnie z rzeczywistym użyciem modelu BYOL (lub za pomocą korzyści użycia hybrydowego platformy Azure):
 
-```azurecli
+```azurecli-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 # example: az sql vm update -n AHBTest -g AHBTest --license-type AHUB
 
@@ -84,18 +87,19 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 
 Poniższy fragment kodu zmienia swój model bring-your-own-license na płatność za rzeczywiste użycie: 
 
-```azurecli
+```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 # example: az sql vm update -n AHBTest -g AHBTest --license-type PAYG
 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
+
 ## <a name="with-powershell"></a>Z programem PowerShell
 Można użyć programu PowerShell, aby zmienić model licencjonowania.
 
 Poniższy fragment kodu zmienia licencji zgodnie z rzeczywistym użyciem modelu BYOL (lub za pomocą korzyści użycia hybrydowego platformy Azure):
 
-```powershell
+```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
@@ -109,7 +113,7 @@ $SqlVm | Set-AzResource -Force
 
 Poniższy fragment kodu zmienia modelu BYOL na płatność za rzeczywiste użycie:
 
-```powershell
+```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
@@ -144,7 +148,7 @@ Poniższe kroki, będą rejestrować dostawcy zasobów bazy danych SQL do subskr
 #### <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
 Poniższy fragment kodu będzie Zarejestruj dostawcę zasobów maszyny Wirtualnej SQL z subskrypcją platformy Azure. 
 
-```azurecli
+```azurecli-interactive
 # Register the new SQL resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
@@ -153,7 +157,7 @@ az provider register --namespace Microsoft.SqlVirtualMachine
 
 Poniższy fragment kodu spowoduje zarejestrowanie dostawcy zasobów bazy danych SQL do subskrypcji platformy Azure.
 
-```powershell
+```powershell-interactive
 # Register the new SQL resource provider to your subscription
 Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
@@ -162,16 +166,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 Po zarejestrowaniu dostawcy zasobów maszyny Wirtualnej SQL do Twojej subskrypcji można zarejestrować maszyny Wirtualnej programu SQL Server za pomocą dostawcy zasobów przy użyciu wiersza polecenia platformy Azure. 
 
 #### <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
-Zarejestruj maszynę Wirtualną SQL Server przy użyciu wiersza polecenia platformy Azure za pomocą poniższej wstawki kodu: 
 
-```azurecli
+Zarejestruj maszynę Wirtualną SQL Server przy użyciu wiersza polecenia platformy Azure przy użyciu poniższych fragmentu kodu: 
+
+```azurecli-interactive
 # Register your existing SQL Server VM with the new resource provider
-az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
+az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation> --license-type <AHUB or PAYG>
 ```
+
 #### <a name="with-powershell"></a>Z programem PowerShell
 Zarejestruj maszynę Wirtualną SQL Server z poniższego fragmentu kodu przy użyciu programu PowerShell:
 
-```powershell
+```powershell-interactive
 # Register your existing SQL Server VM with the new resource provider
 # example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
 $vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
@@ -209,7 +215,7 @@ $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
 
 Użyj poniższego kodu, aby sprawdzić posiadaną wersję programu Azure PowerShell:
 
-```powershell
+```powershell-interactive
 Get-Module -ListAvailable -Name Azure -Refresh
 ```
 

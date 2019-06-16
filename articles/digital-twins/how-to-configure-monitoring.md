@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730318"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118784"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -68,11 +68,11 @@ Przykłady rejestrowania diagnostycznego:
 Aby włączyć dzienniki diagnostyczne na potrzeby wystąpienie:
 
 1. Przenieś zasób w witrynie Azure portal.
-1. Kliknij przycisk **ustawień diagnostycznych**:
+1. Wybierz **ustawień diagnostycznych**:
 
     [![Ustawienia diagnostyczne jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Kliknij przycisk **Włącz diagnostykę** do zbierania danych (jeśli wcześniej nie jest włączona).
+1. Wybierz **Włącz diagnostykę** do zbierania danych (jeśli wcześniej nie jest włączona).
 1. Wprowadź żądane pola i wybierz, jak i, w którym zostaną zapisane dane:
 
     [![Ustawienia diagnostyczne dwóch](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -101,7 +101,7 @@ Pełny dziennik zapytań jest oferowana w ramach [dzienniki usługi Azure Monito
 
     [![Usługa log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Jeśli nie masz jeszcze **obszaru roboczego usługi Log Analytics** wystąpienia, możesz utworzyć obszar roboczy, klikając **Dodaj** przycisku:
+1. Jeśli nie masz jeszcze **obszaru roboczego usługi Log Analytics** wystąpienia, można utworzyć obszaru roboczego, wybierając **Dodaj** przycisku:
 
     [![Tworzenie pakietu OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
@@ -114,7 +114,7 @@ Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wp
 > [!NOTE]
 > Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **obszaru roboczego usługi Log Analytics** po raz pierwszy.
 
-Dzienniki monitora platformy Azure udostępniają zaawansowane błędów i usług powiadomień o alertach, które można wyświetlić, klikając **diagnozowanie i rozwiązywanie problemów**:
+Dzienniki monitora platformy Azure udostępniają zaawansowane błędów i usług powiadomień o alertach, które można wyświetlić, wybierając **diagnozowanie i rozwiązywanie problemów**:
 
    [![Alert i błąd powiadomienia](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 

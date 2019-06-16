@@ -17,10 +17,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506239"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>SSH szczegółowe kroki rozwiązywania problemów dotyczących problemy z połączeniem do maszyny Wirtualnej z systemem Linux na platformie Azure
@@ -40,7 +40,7 @@ Poniższe kroki pomogą Ci wyizolować źródła błędów i ustalić rozwiązan
 
 2. Wybierz **ustawienia** zbadanie punktów końcowych, adresy IP, sieciowe grupy zabezpieczeń i inne ustawienia.
 
-   Maszyna wirtualna powinna mieć punkt końcowy zdefiniowany dla ruchu protokołu SSH, który można wyświetlić w **punktów końcowych** lub  **[sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md)**. Punkty końcowe na maszynach wirtualnych, które zostały utworzone przy użyciu usługi Resource Manager są przechowywane w sieciowej grupie zabezpieczeń. Sprawdź, czy zasady zostały zastosowane do sieciowej grupy zabezpieczeń i do których istnieją odwołania w tej podsieci.
+   Maszyna wirtualna powinna mieć punkt końcowy zdefiniowany dla ruchu protokołu SSH, który można wyświetlić w **punktów końcowych** lub  **[sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md)** . Punkty końcowe na maszynach wirtualnych, które zostały utworzone przy użyciu usługi Resource Manager są przechowywane w sieciowej grupie zabezpieczeń. Sprawdź, czy zasady zostały zastosowane do sieciowej grupy zabezpieczeń i do których istnieją odwołania w tej podsieci.
 
 Aby sprawdzić łączność sieciową, sprawdź skonfigurowane punkty końcowe i zobacz, jeśli możesz połączyć z maszyną wirtualną za pomocą protokołu innego, takiego jak HTTP lub innej usługi.
 

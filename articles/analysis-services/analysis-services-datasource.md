@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142559"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w usługach Azure Analysis Services
@@ -24,7 +24,7 @@ ms.locfileid: "66142559"
 |Źródło danych  |W pamięci  |Tryb DirectQuery  |
 |---------|---------|---------|
 |Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Tak      |    Tak      |
-|Azure SQL Data Warehouse     |   Tak      |   Tak       |
+|Azure SQL Data Warehouse     |   Yes      |   Yes       |
 |Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Tak       |    Nie      |
 |Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Tak       |    Nie      |
 |Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Tak        |  Nie        |
@@ -82,7 +82,7 @@ Nawiązywanie połączenia z lokalnych źródeł danych z i serwera usług Azure
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
 |SharePoint List<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
-|Baza danych programu Sybase     |  
+|Sybase Database     |  
 |Plik TXT  |
 |Tabele XML<sup>[1](#tab1400b)</sup>    |  
 ||
@@ -92,7 +92,7 @@ Nawiązywanie połączenia z lokalnych źródeł danych z i serwera usług Azure
 
 ## <a name="specifying-a-different-provider"></a>Określenie innego dostawcy
 
-Modele danych w usługach Azure Analysis Services może wymagać danych różnych dostawców, podczas nawiązywania połączenia ze źródłami danych, niektórych. W niektórych przypadkach modele tabelaryczne łączenie ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11) może zostać zwrócony błąd. Jeśli przy użyciu natywnych dostawców innych niż SQLOLEDB, mogą pojawić się komunikat o błędzie: **Dostawca "SQLNCLI11.1" nie jest zarejestrowana**. Lub, jeśli mają model zapytania bezpośredniego połączenia ze źródłami danych lokalnie i korzystać z natywnych dostawców, może zostać wyświetlony komunikat o błędzie: **Wystąpił błąd podczas tworzenia zestawu wierszy OLE DB. Błędna składnia w pobliżu "LIMIT"**.
+Modele danych w usługach Azure Analysis Services może wymagać danych różnych dostawców, podczas nawiązywania połączenia ze źródłami danych, niektórych. W niektórych przypadkach modele tabelaryczne łączenie ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11) może zostać zwrócony błąd. Jeśli przy użyciu natywnych dostawców innych niż SQLOLEDB, mogą pojawić się komunikat o błędzie: **Dostawca "SQLNCLI11.1" nie jest zarejestrowana**. Lub, jeśli mają model zapytania bezpośredniego połączenia ze źródłami danych lokalnie i korzystać z natywnych dostawców, może zostać wyświetlony komunikat o błędzie: **Wystąpił błąd podczas tworzenia zestawu wierszy OLE DB. Błędna składnia w pobliżu "LIMIT"** .
 
 Podczas migracji modelu tabelarycznego usług SQL Server Analysis Services do środowiska lokalnego do usług Azure Analysis Services, może być konieczna zmiana dostawcy.
 

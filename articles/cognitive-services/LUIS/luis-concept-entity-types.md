@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141040"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080041"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -98,7 +98,7 @@ Gdy jednostki są wyodrębniane, dane jednostki można reprezentowane jako pojed
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
-|Mieszany||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
+|Mieszane||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regular Expression**](#regular-expression-entity)|Używa wyrażeń regularnych w celu dopasowania tekstu.|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
@@ -108,6 +108,30 @@ Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykład
 Jednostki pattern.any muszą być oznaczone w [wzorzec](luis-how-to-model-intent-pattern.md) przykłady szablonów, nie przykłady intencji użytkownika. 
 
 Mieszane jednostki używają kombinacji metod wykrywania jednostki.
+
+## <a name="machine-learned-entities-use-context"></a>Maszyny do opanowania jednostek używać kontekstu
+
+Dowiedz się, że maszyna do opanowania jednostek z kontekstu w wypowiedź. Dzięki temu odmiany położenia w przykładzie wypowiedzi znaczące. 
+
+## <a name="non-machine-learned-entities-dont-use-context"></a>Jednostki — przedstawiono maszyny nie należy używać kontekstu
+
+Następująca innych niż maszyna przedstawiono jednostki nie uwzględnia kontekstu wypowiedź podczas dopasowywania jednostki: 
+
+* [Wstępnie utworzonych jednostek](#prebuilt-entity)
+* [Wyrażenie regularne jednostek](#regular-expression-entity)
+* [Lista jednostek](#list-entity) 
+
+Te jednostki, które nie wymagają etykietowania lub uczenia modelu. Gdy dodasz lub konfigurować jednostkę, są wyodrębniane jednostki. Jego wadą jest to, czy te jednostki mogą być overmatched, gdzie czy kontekst została wzięta pod uwagę, dopasowanie może nie wprowadzono. 
+
+Dzieje się przy użyciu listy jednostek na nowe modele często. Tworzenie i testowanie modelu z jednostką listy, ale po opublikowaniu modelu i odbierać zapytań z punktu końcowego uznasz, że model jest overmatching z powodu braku kontekstu. 
+
+Jeśli chcesz dopasować słów i fraz i uwzględnia kontekstu, masz dwie opcje. Pierwszy jest używać prostych jednostki, z listy fraz. Lista fraz nie będą używane do dopasowania, ale zamiast tego pomoże sygnału stosunkowo podobne słowa (Lista wymienne). Jeśli dokładne dopasowanie, zamiast listy fraz odmiany, użyj obiektami listy z określoną rolą, opisane poniżej.
+
+### <a name="context-with-non-machine-learned-entities"></a>Kontekst z jednostkami przedstawiono maszyny
+
+Chcąc kontekstu wypowiedź mają znaczenie dla jednostek nauczony-machine, należy używać [role](luis-concept-roles.md).
+
+Istnienie przedstawiono maszyny jednostki, takie jak [ze wstępnie utworzonych jednostek](#prebuilt-entity), [wyrażenia regularnego](#regular-expression-entity) jednostek lub [listy](#list-entity) jednostek, które jest zgodny poza wystąpienia, należy wziąć pod uwagę Tworzenie jednej jednostki przy użyciu dwóch ról. Jedną rolę będzie przechwytywać, czego szukasz, a jedna rola zostanie przechwycony, co nie potrzebujesz. Obie wersje będą musieli oznaczone etykietą w przykładzie wypowiedzi.  
 
 ## <a name="composite-entity"></a>Złożone jednostki
 
@@ -133,8 +157,9 @@ Lista jednostek reprezentują zbiór powiązanych słów, wraz z ich synonimy st
 Jednostka jest bardzo dopasowania, gdy dane tekstowe:
 
 * Są znanego zestawu.
+* Nie zmieniają się często. Jeśli potrzebujesz często zmieniać listy lub ma na liście, aby rozwinąć własnym jednostki prostej wzmocnione z listą frazy jest lepszym rozwiązaniem. 
 * Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Analiza słowotwórcza, liczba mnoga i inne różnice nie są rozpoznawane z jednostką listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
+* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Dopasowywania rozmytego, ignorowanie, analiza słowotwórcza, liczba mnoga i inne różnice nie są rozpoznawane za pomocą jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
 
 ![Lista jednostek](./media/luis-concept-entities/list-entity.png)
 
@@ -158,10 +183,11 @@ W poniższej tabeli każdy wiersz zawiera dwie wersje wypowiedź. Najważniejsze
 
 |Wypowiedź|
 |--|
-|"Dotyczyło Man kto Mistook His żoną Hat i innych kontrolne Clinical napisane przez amerykański tego roku?<br>Został **Man kto Mistook His żoną Hat i innych kontrolne Clinical** napisane przez amerykański tego roku?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
+|Ataki typu Man kto Mistook His żoną Hat i innych kontrolne Clinical napisał American tego roku?<br><br>Został **Man kto Mistook His żoną Hat i innych kontrolne Clinical** napisane przez amerykański tego roku?|
+|Była połowa uśpione w Pajamas żab napisane przez amerykański tego roku?<br><br>Został **połowa uśpione w Pajamas żab** napisane przez amerykański tego roku?|
+|Został określonego smutek z Tort Tarta: Nowe, napisane przez amerykański tego roku?<br><br>Został **określonego smutek z Tort Tarta: Powieść** napisane przez amerykański tego roku?|
+|To, że Wocket w mojej Pocket! napisane przez amerykański tego roku?<br><br>Został **w mojej Pocket jest Wocket!** napisane przez amerykański tego roku?|
+||
 
 ## <a name="prebuilt-entity"></a>Wstępnie utworzone jednostki
 
@@ -225,6 +251,18 @@ Jednostka jest bardzo dopasowania, gdy:
 
 [Samouczek](luis-quickstart-intents-regex-entity.md)<br>
 [Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+
+Wyrażenia regularne może odpowiadać więcej niż oczekujesz, że do dopasowania. Na przykład jest liczbowe word dopasowywania, takich jak `one` i `two`. Są to na przykład poniższe wyrażenie regularne, która jest zgodna z liczbą `one` oraz inne liczby:
+
+```javascript
+(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
+``` 
+
+To wyrażenie wyrażenia regularnego dopasowuje również wszystkie wyrazy, które kończą się te liczby, takich jak `phone`. Aby rozwiązać problemy, takie jak ta, upewnij się, że pasuje do wyrażenia regularnego bierze pod uwagę granicy słowa. Wyrażenie regularne, aby użyć granicy słowa w tym przykładzie jest używany w następujących wyrażeń regularnych:
+
+```javascript
+\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
+```
 
 ## <a name="simple-entity"></a>Prosta jednostka 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 70469a9e8737a9df18628951a061c97081c74080
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127382"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udzielanie uprawnień użytkownika do zasad określonych laboratorium
@@ -28,7 +28,7 @@ W tym artykule pokazano, jak udzielić uprawnień użytkowników do zasad wymaga
 ## <a name="policies-as-resources"></a>Zasady jako zasoby
 Zgodnie z opisem w [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md) artykułu, RBAC umożliwia precyzyjne zarządzanie dostępem zasobów na platformie Azure. Przy użyciu funkcji RBAC, można segregować obowiązki w obrębie zespołu DevOps i udzielać uprawnień dostępu do użytkowników, które są im niezbędne do wykonywania swoich zadań.
 
-W usłudze DevTest Labs zasady jest typ zasobu, który umożliwia działanie RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Wszystkie zasady laboratorium jest zasobem w typie zasób zasad i mogą być przypisane jako zakres do roli RBAC.
+W usłudze DevTest Labs zasady jest typ zasobu, który umożliwia działanie RBAC **Microsoft.DevTestLab/labs/policySets/policies/** . Wszystkie zasady laboratorium jest zasobem w typie zasób zasad i mogą być przypisane jako zakres do roli RBAC.
 
 Na przykład, aby przyznać użytkownikom uprawnienia odczytu/zapisu do **dozwolone rozmiary maszyn wirtualnych** zasady, należy utworzyć rolę niestandardową, która współdziała z **Microsoft.DevTestLab/labs/policySets/policies/** akcji , a następnie przypisz odpowiednich użytkowników do tej roli niestandardowej w zakresie **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 

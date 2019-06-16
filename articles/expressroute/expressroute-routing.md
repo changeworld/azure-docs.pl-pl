@@ -2,18 +2,18 @@
 title: 'Routing wymagania — ExpressRoute: Azure | Microsoft Docs'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania routingu oraz zarządzania nim na potrzeby obwodów usługi ExpressRoute.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.author: ganesr
+ms.date: 06/12/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9a4b99e311a65435595c9cb0455b0411b7c09324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd5f01c915c658903e87a91992753065c59dfa63
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883117"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054271"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -154,47 +154,53 @@ Zapoznaj się ze stroną [ExpressRoute partners and peering locations](expressro
 
 Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolityczny. Wiele ofert połączeń daje znaczące korzyści w zakresie wysokiej dostępności z powodu nadmiarowości geograficznej. W przypadkach, w którym masz wiele obwodów usługi ExpressRoute otrzymasz ten sam zestaw prefiksów anonsowanych z firmy Microsoft dotyczące komunikacji równorzędnej firmy Microsoft i publicznej komunikacji równorzędnej ścieżki. Oznacza to, że będziesz mieć wiele ścieżek ze swojej sieci do firmy Microsoft. Może to teoretycznie spowodować podjęcie nieoptymalnych decyzji w zakresie routingu w ramach sieci. W efekcie połączenia z różnymi usługami mogą nie być optymalne. Wartości społeczności gwarantują, że zostaną podjęte odpowiednie decyzje w kwestii routingu i klienci będą mieli zapewniony [optymalny routing do użytkowników](expressroute-optimize-routing.md).
 
-| **Region platformy Microsoft Azure** | **Regionalne społeczności BGP** | **Magazyn społeczności BGP** | **Społeczności SQL BGP** | 
-| --- | --- | --- | --- |
+| **Region platformy Microsoft Azure** | **Regionalne społeczności BGP** | **Magazyn społeczności BGP** | **Społeczności SQL BGP** | **Cosmos DB protokołu BGP społeczności** |
+| --- | --- | --- | --- | --- |
 | **Ameryka Północna** | |
-| Wschodnie stany USA | 12076:51004 | 12076:52004 | 12076:53004 |
-| Wschodnie stany USA 2 | 12076:51005 | 12076:52005 | 12076:53005 |
-| Zachodnie stany USA | 12076:51006 | 12076:52006 | 12076:53006 |
-| Zachodnie stany USA 2 | 12076:51026 | 12076:52026 | 12076:53026 |
-| Środkowo-zachodnie stany USA | 12076:51027 | 12076:52027 | 12076:53027 |
-| Środkowo-północne stany USA | 12076:51007 | 12076:52007 | 12076:53007 |
-| Środkowo-południowe stany USA | 12076:51008 | 12076:52008 | 12076:53008 |
-| Środkowe stany USA | 12076:51009 | 12076:52009 | 12076:53009 |
-| Kanada Środkowa | 12076:51020 | 12076:52020 | 12076:53020 |
-| Kanada Wschodnia | 12076:51021 | 12076:52021 | 12076:53021 |
+| Wschodnie stany USA | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| Wschodnie stany USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| Zachodnie stany USA | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| Zachodnie stany USA 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| Środkowo-zachodnie stany USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| Środkowo-północne stany USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| Środkowo-południowe stany USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Środkowe stany USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Kanada Środkowa | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Kanada Wschodnia | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Ameryka Południowa** | |
-| Brazylia Południowa | 12076:51014 | 12076:52014 | 12076:53014 |
+| Brazylia Południowa | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Europa** | |
-| Europa Północna | 12076:51003 | 12076:52003 | 12076:53003 |
-| Europa Zachodnia | 12076:51002 | 12076:52002 | 12076:53002 |
-| Południowe Zjednoczone Królestwo | 12076:51024 | 12076:52024 | 12076:53024 |
-| Zachodnie Zjednoczone Królestwo | 12076:51025 | 12076:52025 | 12076:53025 |
-| Francja Środkowa | 12076:51030 | 12076:52030 | 12076:53030 |
-| Francja Południowa | 12076:51031 | 12076:52031 | 12076:53031 |
+| Europa Północna | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
+| Europa Zachodnia | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
+| Południowe Zjednoczone Królestwo | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| Zachodnie Zjednoczone Królestwo | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Francja Środkowa | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
+| Francja Południowa | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | **Azja i Pacyfik** | |
-| Azja Wschodnia | 12076:51010 | 12076:52010 | 12076:53010 |
-| Azja Południowo-Wschodnia | 12076:51011 | 12076:52011 | 12076:53011 |
+| Azja Wschodnia | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
+| Azja Południowo-Wschodnia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japonia** | |
-| Japonia Wschodnia | 12076:51012 | 12076:52012 | 12076:53012 |
-| Japonia Zachodnia | 12076:51013 | 12076:52013 | 12076:53013 |
+| Japonia Wschodnia | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
+| Japonia Zachodnia | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
 | **Australia** | |
-| Australia Wschodnia | 12076:51015 | 12076:52015 | 12076:53015 |
-| Australia Południowo-Wschodnia | 12076:51016 | 12076:52016 | 12076:53016 |
+| Australia Wschodnia | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
+| Australia Południowo-Wschodnia | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
 | **Australia — instytucje rządowe** | |
-| Australia Środkowa | 12076:51032 | 12076:52032 | 12076:53032 |
-| Australia Środkowa 2 | 12076:51033 | 12076:52033 | 12076:53033 |
+| Australia Środkowa | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
+| Australia Środkowa 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
 | **Indie** | |
-| Indie Południowe | 12076:51019 | 12076:52019 | 12076:53019 |
-| Indie Zachodnie | 12076:51018 | 12076:52018 | 12076:53018 |
-| Indie Środkowe | 12076:51017 | 12076:52017 | 12076:53017 |
+| Indie Południowe | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 |
+| Indie Zachodnie | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
+| Indie Środkowe | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
 | **Korea** | |
-| Korea Południowa | 12076:51028 | 12076:52028 | 12076:53028 |
-| Korea Środkowa | 12076:51029 | 12076:52029 | 12076:53029 |
+| Korea Południowa | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
+| Korea Środkowa | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| **Republika Południowej Afryki**| |
+| Republika Południowej Afryki (północ) | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Republika Południowej Afryki (zachód) | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| **ZJEDNOCZONE EMIRATY ARABSKIE**| |
+| Północne Zjednoczone Emiraty Arabskie | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| Środkowe Zjednoczone Emiraty Arabskie | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 Wszystkie trasy anonsowane przez firmę Microsoft zostaną oznaczone odpowiednią wartością społeczności. 
@@ -215,7 +221,7 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Usługa Azure globalnego usług * | 12076:5050 |
 | Inne usługi online Office 365 | 12076:5100 |
 
-* Azure Global Services zawiera tylko DevOps platformy Azure, w tym momencie.
+\* Azure Global Services zawiera tylko DevOps platformy Azure, w tym momencie.
 
 
 > [!NOTE]

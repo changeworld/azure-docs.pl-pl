@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.openlocfilehash: dead1fae9bc3287ed0fc80c6120914e965ef96dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61341933"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Azure Monitor
@@ -56,7 +56,7 @@ Listę części zapytania Wyświetla listę zapytań log. Możesz wybrać każde
 | Ustawienie | Opis |
 |:--- |:--- |
 | **Ogólne** | |
-| Tytuł |Tekst, który jest wyświetlany u góry widoku. |
+| Stanowisko |Tekst, który jest wyświetlany u góry widoku. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Wstępnie wybrane filtry |Rozdzielana przecinkami lista właściwości, które mają zostać objęte okienko filtru po lewej stronie, po wybraniu zapytania. |
 | Tryb renderowania |Widok początkowy jest wyświetlane, gdy zostanie wybrane zapytanie. Po otwarciu kwerendy, można wybrać żadnych dostępnych widoków. |
@@ -75,14 +75,14 @@ Nagłówek przedstawia jeden numer, który pokazuje liczbę rekordów w wyniku z
 | Tytuł grupy |Tekst, który jest wyświetlany u góry widoku. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
-| Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
+| Użyj ikony |Wybierz ten link, aby wyświetlić ikonę. |
 | **Tytuł** | |
 | Legenda |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Zapytanie |Zapytanie do uruchamiania dla nagłówka. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | Nawigacja za pomocą kliknięć | Działania wykonywane po kliknięciu nagłówka.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Pierwsze dwie właściwości dla pierwszych dziesięciu rekordów w wynikach są wyświetlane. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. Paski są tworzone automatycznie, które są oparte na względnej wartości kolumny liczbowej.<br><br>Użyj `Sort` polecenia w zapytaniu, aby sortować rekordy na liście. Aby uruchomić zapytanie i zwraca wszystkie rekordy, można wybrać **holograficznych**. |
-| Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
+| Ukryj Graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Kolor |Kolor słupków lub wykresy przebiegu w czasie. |
 | Separator nazw i wartości |Ogranicznik pojedynczych znaków, które można użyć do analizowania właściwość text na wiele wartości. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
@@ -104,7 +104,7 @@ Nagłówek ma dwie liczby, które wyświetla liczbę rekordów z oddzielnych dzi
 | Tytuł grupy |Tekst, który jest wyświetlany u góry widoku. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
-| Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
+| Użyj ikony |Wybierz ten link, aby wyświetlić ikonę. |
 | **Tytuł nawigacji** | |
 | Nawigacja za pomocą kliknięć | Działania wykonywane po kliknięciu nagłówka.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Tytuł** | |
@@ -112,7 +112,7 @@ Nagłówek ma dwie liczby, które wyświetla liczbę rekordów z oddzielnych dzi
 | Zapytanie |Zapytanie do uruchamiania dla nagłówka. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Pierwsze dwie właściwości dla pierwszych dziesięciu rekordów w wynikach są wyświetlane. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. Paski są tworzone automatycznie w oparciu o względnej wartości kolumny liczbowej.<br><br>Użyj `Sort` polecenia w zapytaniu, aby sortować rekordy na liście. Aby uruchomić zapytanie i zwraca wszystkie rekordy, można wybrać **holograficznych**. |
-| Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
+| Ukryj Graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Kolor |Kolor słupków lub wykresy przebiegu w czasie. |
 | Operacja |Operacja do wykonania dla wykresu przebiegu w czasie. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
@@ -135,9 +135,9 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 | Tytuł grupy |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
-| Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
+| Użyj ikony |Wybierz ten link, aby wyświetlić ikonę. |
 | **Nagłówek** | |
-| Tytuł |Tekst, który jest wyświetlany w górnej części nagłówka. |
+| Stanowisko |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części nagłówka. |
 | **Wykres pierścieniowy** | |
 | Zapytanie |Zapytanie do uruchamiania na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. |
@@ -153,7 +153,7 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 | Kolor |Wybierz kolor unikatowe pola. |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
-| Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
+| Ukryj Graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Kolor |Kolor słupków lub wykresy przebiegu w czasie. |
 | Operacja |Operacja do wykonania dla wykresu przebiegu w czasie. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
@@ -176,7 +176,7 @@ Nagłówek przedstawia wyniki dwóch zapytań log wraz z upływem czasu jako wyk
 | Tytuł grupy |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
-| Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
+| Użyj ikony |Wybierz ten link, aby wyświetlić ikonę. |
 | **Tytuł nawigacji** | |
 | Nawigacja za pomocą kliknięć | Działania wykonywane po kliknięciu nagłówka.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Najpierw wykresu<br>drugi wykres** | |
@@ -186,7 +186,7 @@ Nagłówek przedstawia wyniki dwóch zapytań log wraz z upływem czasu jako wyk
 | Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Suma: Suma wartości wszystkich rekordów.</li><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Ostatnia próbka: Wartość od ostatniego interwału, który znajduje się na wykresie.</li><li>Pierwszy przykład: Wartość od pierwszego interwału, który znajduje się na wykresie.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li></ul> |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
-| Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
+| Ukryj Graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Kolor |Kolor słupków lub wykresy przebiegu w czasie. |
 | Operacja |Operacja do wykonania dla wykresu przebiegu w czasie. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
@@ -213,9 +213,9 @@ Nagłówek Wyświetla tekst statyczny oraz opcjonalnie łącza. Zostanie wyświe
 | Label |Tekst, który jest wyświetlany w nagłówku. |
 | **Nagłówek** |**> Link** |
 | Label |Tekst łącza. |
-| Url |Adres Url dla tego połączenia. |
+| Adres URL |Adres Url dla tego połączenia. |
 | **Elementy informacji** | |
-| Tytuł |Tekst, który jest wyświetlany jako tytuł każdego elementu. |
+| Stanowisko |Tekst, który jest wyświetlany jako tytuł każdego elementu. |
 | Zawartość |Tekst, który jest wyświetlany dla każdego elementu. |
 
 ## <a name="line-chart-callout-and-list-part"></a>Wykres liniowy, objaśnienie i listy
@@ -229,16 +229,16 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | Tytuł grupy |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
-| Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
+| Użyj ikony |Wybierz ten link, aby wyświetlić ikonę. |
 | **Nagłówek** | |
-| Tytuł |Tekst, który jest wyświetlany w górnej części nagłówka. |
+| Stanowisko |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części nagłówka. |
 | **Wykres liniowy** | |
 | Zapytanie |Zapytanie, aby uruchomić wykresu liniowego. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. Jeśli zapytanie używa *interwał* — słowo kluczowe, osi x wykresu używa tego przedziału czasu. Jeśli zapytanie nie obejmuje *interwał* — słowo kluczowe, odstępów godzinowych używa osi x. |
 | Nawigacja za pomocą kliknięć | Działania wykonywane po kliknięciu nagłówka.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Wykres liniowy** |**> Objaśnienie** |
 | Tytuł objaśnienia |Tekst, który jest wyświetlany powyżej wartości objaśnienia. |
-| Nazwa serii. |Wartość właściwości serii, aby użyć wartości objaśnienia. Jeśli seria nie zostanie podany, używane są wszystkie rekordy z zapytania. |
+| Nazwa serii |Wartość właściwości serii, aby użyć wartości objaśnienia. Jeśli seria nie zostanie podany, używane są wszystkie rekordy z zapytania. |
 | Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncze wartości objaśnienia.<ul><li>Średnia: Średnią wartości wszystkich rekordów.</li><li>Liczba: Liczba wszystkich rekordów, które są zwracane przez zapytanie.</li><li>Ostatnia próbka: Wartość od ostatniego interwału, który znajduje się na wykresie.</li><li>Maks.: Maksymalna wartość z interwałów, które znajdują się na wykresie.</li><li>Minimalna: Minimalna wartość z interwałów, które znajdują się na wykresie.</li><li>Suma: Suma wartości wszystkich rekordów.</li></ul> |
 | **Wykres liniowy** |**> Oś y** |
 | Użyj skali logarytmicznej |Wybierz ten link, aby użyć skali logarytmicznej dla osi y. |
@@ -246,7 +246,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | Etykieta niestandardowa |Tekst, który jest wyświetlany na osi y obok etykiety *jednostki* typu. Jeśli żadna etykieta nie zostanie określona, tylko *jednostki* typ jest wyświetlany. |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
-| Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
+| Ukryj Graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Kolor |Kolor słupków lub wykresy przebiegu w czasie. |
 | Operacja |Operacja do wykonania dla wykresu przebiegu w czasie. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
@@ -269,9 +269,9 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | Tytuł grupy |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
-| Ikona użycia |Wybierz ten link, aby wyświetlić ikonę. |
+| Użyj ikony |Wybierz ten link, aby wyświetlić ikonę. |
 | **Nagłówek** | |
-| Tytuł |Tekst, który jest wyświetlany w górnej części nagłówka. |
+| Stanowisko |Tekst, który jest wyświetlany w górnej części nagłówka. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części nagłówka. |
 | **Wykres liniowy** | |
 | Zapytanie |Zapytanie, aby uruchomić wykresu liniowego. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. Jeśli zapytanie używa *interwał* — słowo kluczowe, osi x wykresu używa tego przedziału czasu. Jeśli zapytanie nie obejmuje *interwał* — słowo kluczowe, odstępów godzinowych używa osi x. |
@@ -282,7 +282,7 @@ Nagłówek przedstawia wykres liniowy z wielu serii, w wyniku zapytania dziennik
 | Etykieta niestandardowa |Tekst, który jest wyświetlany na osi y obok etykiety *jednostki* typu. Jeśli żadna etykieta nie zostanie określona, tylko *jednostki* typ jest wyświetlany. |
 | **Lista** | |
 | Zapytanie |Zapytanie do uruchamiania na liście. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
-| Ukryj graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
+| Ukryj Graf |Wybierz ten link, aby wyłączyć wykres z prawej strony kolumny liczbowej. |
 | Włącz wykresy przebiegu w czasie |Wybierz ten link, aby wyświetlić wykres przebiegu w czasie zamiast poziomy pasek. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Kolor |Kolor słupków lub wykresy przebiegu w czasie. |
 | Operacja |Operacja do wykonania dla wykresu przebiegu w czasie. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
@@ -306,7 +306,7 @@ Stos wykres liniowy przedstawia trzy oddzielne wykresy, przy użyciu wielu serii
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Ikona |Plik obrazu, który jest wyświetlany obok wynik w nagłówku. |
 | **Wykres 1<br>wykresu 2<br>wykresu 3** |**> Nagłówek** |
-| Tytuł |Tekst, który jest wyświetlany w górnej części wykresu. |
+| Stanowisko |Tekst, który jest wyświetlany w górnej części wykresu. |
 | Podtytuł |Tekst, który jest wyświetlany w obszarze tytułu w górnej części wykresu. |
 | **Wykres 1<br>wykresu 2<br>wykresu 3** |**Wykres liniowy** |
 | Zapytanie |Zapytanie, aby uruchomić wykresu liniowego. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. Jeśli zapytanie używa *interwał* — słowo kluczowe, osi x wykresu używa tego przedziału czasu. Jeśli zapytanie nie obejmuje *interwał* — słowo kluczowe, odstępów godzinowych używa osi x. |
@@ -332,7 +332,7 @@ W poniższej tabeli opisano ustawienia dla nawigacji za pomocą kliknięć.
 | Ustawienie           | Opis |
 |:--|:--|
 | Rejestruj wyszukiwanie (automatycznie) | Dziennik zapytań do uruchomienia po wybraniu elementu nagłówka.  Jest to samo zapytanie dziennika, na podstawie elementu.
-| Przeszukiwanie dzienników        | Dziennik zapytań do uruchomienia po wybraniu elementu na liście.  Wpisz zapytanie do **zapytanie nawigacji** pole.   Użyj *{wybranego elementu}* obejmujący składni dla elementu, który użytkownik zaznaczył.  Na przykład, jeśli zapytanie zawiera kolumnę o nazwie *komputera* i zapytanie nawigacji *{wybranego elementu}*, zapytanie takie jak *komputer = "Mój komputer"* jest uruchamiany po wybraniu komputer. Jeśli zapytanie nawigacji jest *typu = {wybranego elementu} zdarzeń*, zapytanie *typu = zdarzeń komputer = "Mój komputer"* jest uruchamiany. |
+| Przeszukiwanie dzienników        | Dziennik zapytań do uruchomienia po wybraniu elementu na liście.  Wpisz zapytanie do **zapytanie nawigacji** pole.   Użyj *{wybranego elementu}* obejmujący składni dla elementu, który użytkownik zaznaczył.  Na przykład, jeśli zapytanie zawiera kolumnę o nazwie *komputera* i zapytanie nawigacji *{wybranego elementu}* , zapytanie takie jak *komputer = "Mój komputer"* jest uruchamiany po wybraniu komputer. Jeśli zapytanie nawigacji jest *typu = {wybranego elementu} zdarzeń*, zapytanie *typu = zdarzeń komputer = "Mój komputer"* jest uruchamiany. |
 | Widok              | Widok, który chcesz otworzyć, po wybraniu elementu nagłówka lub element na liście.  Wybierz nazwę widoku w obszarze roboczym w **nazwy widoku** pole. |
 
 

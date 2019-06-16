@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31df4cb9163e598bfde0c491d8088398c3204119
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e72ec4f9c512f6525f790d555794c1a120ac07c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407991"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Qlik Sense Enterprise
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację usługi Qlik Sense Enterprise z usługą Azure AD
 
 **Aby dodać usługę Qlik Sense Enterprise z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -183,9 +183,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense 
 
     e. Pole **SAML IdP metadata** (Metadane dostawcy tożsamości SAML) określa plik edytowany wcześniej w sekcji **Edytowanie metadanych federacji z konfiguracji usługi Azure AD**.  **Przed przekazaniem metadanych dostawcy tożsamości plik należy zmodyfikować**, aby usunąć informacje w celu zapewnienia odpowiedniego współdziałania usługi Azure AD i serwera Qlik Sense.  **Zapoznaj się z instrukcjami powyżej, jeśli plik nie został jeszcze zmodyfikowany.**  Jeśli plik został już zmodyfikowany, kliknij przycisk Browse (Przeglądaj) i wybierz edytowany plik metadanych, aby przekazać go do konfiguracji wirtualnego serwera proxy.
 
-    f. Podaj nazwę atrybutu lub odwołanie do schematu dla atrybutu SAML reprezentującego wartość **UserID** wysyłaną przez usługę Azure AD do serwera Qlik Sense.  Informacje o odwołaniu do schematu są dostępne na ekranach aplikacji platformy Azure wyświetlanych po konfiguracji.  Aby użyć nazwy atrybutu, podaj ciąg `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Podaj nazwę atrybutu lub odwołanie do schematu dla atrybutu SAML reprezentującego wartość **UserID** wysyłaną przez usługę Azure AD do serwera Qlik Sense.  Informacje o odwołaniu do schematu są dostępne na ekranach aplikacji platformy Azure wyświetlanych po konfiguracji.  Aby użyć nazwy atrybutu, podaj ciąg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    g. Podaj wartość dla **katalogu użytkownika**, który będzie dołączany do użytkowników po uwierzytelnieniu względem serwera Qlik Sense za pomocą usługi Azure AD.  Zapisane na stałe wartości muszą być ujęte w **nawiasy kwadratowe — []**.  Aby użyć atrybutu wysyłanego w asercji SAML usługi Azure AD, wpisz nazwę atrybutu w tym polu tekstowym **bez** nawiasów kwadratowych.
+    g. Podaj wartość dla **katalogu użytkownika**, który będzie dołączany do użytkowników po uwierzytelnieniu względem serwera Qlik Sense za pomocą usługi Azure AD.  Zapisane na stałe wartości muszą być ujęte w **nawiasy kwadratowe — []** .  Aby użyć atrybutu wysyłanego w asercji SAML usługi Azure AD, wpisz nazwę atrybutu w tym polu tekstowym **bez** nawiasów kwadratowych.
 
     h. Pole **SAML signing algorithm** (Algorytm podpisywania SAML) umożliwia ustawienie podpisywania certyfikatu dostawcy usług (w tym przypadku serwera Qlik Sense) dla konfiguracji wirtualnego serwera proxy.  Jeśli serwer Qlik Sense używa certyfikatu zaufanego wygenerowanego za pomocą dostawcy Microsoft Enhanced RSA and AES Cryptographic Provider, zmień algorytm podpisywania SAML na **SHA-256**.
 
@@ -304,7 +304,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Qlik Sense Enterprise na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Qlik Sense Enterprise, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

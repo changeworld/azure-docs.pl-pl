@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: b736bb5549b7d236e746ba7b161cde79209e927b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60906584"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ograniczanie dostępu przez punkty końcowe łączące dostępnego z Internetu w usłudze Azure Security Center
@@ -34,7 +34,7 @@ To zalecenie jest generowany dla dowolnego portu innego niż w sieci web zawiera
 ## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
 1. W **blok zalecenia**, wybierz opcję **ograniczyć dostęp za pośrednictwem punktu końcowego z Internetem**.
 
-   ![Ogranicz dostęp za pośrednictwem punktu końcowego mającego połączenie z Internetem][1]
+   ![Ogranicz dostęp za pośrednictwem punktu końcowego z Internetem][1]
 2. Spowoduje to otwarcie bloku **ograniczyć dostęp za pośrednictwem punktu końcowego z Internetem**. Ten blok zawiera listę maszyn wirtualnych (VM) za pomocą reguł ruchu przychodzącego, które tworzyć potencjalny problem z zabezpieczeniami. Wybierz maszynę Wirtualną.
 
    ![Wybierz maszynę Wirtualną][2]

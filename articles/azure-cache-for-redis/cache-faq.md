@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6b27b27fedf622908fa5c06bd2562d9049a4366b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052058"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
@@ -167,8 +167,8 @@ Tak, pamięci podręcznej Azure redis Cache jest dostępna w chmurze Azure Gover
 
 | Chmura   | Sufiks DNS dla usługi Redis            |
 |---------|---------------------------------|
-| Publiczna  | *.redis.cache.windows.net       |
-| US Gov  | *.redis.cache.usgovcloudapi.net |
+| Public  | *.redis.cache.windows.net       |
+| Rząd USA  | *.redis.cache.usgovcloudapi.net |
 | Niemcy | *.redis.cache.cloudapi.de       |
 | Chiny   | *.redis.cache.chinacloudapi.cn  |
 
@@ -251,7 +251,7 @@ Można użyć dowolnego polecenia wymienione pod [polecenia Redis](https://redis
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Narzędzia wiersza polecenia usługi Redis nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis (wersja zapoznawcza) Wersja](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
+> Narzędzia wiersza polecenia usługi Redis nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [jak za pomocą narzędzia wiersza polecenia usługi Redis pamięć podręczna systemu Azure dla usługi Redis ](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) artykułu.
 >
 >
 
@@ -403,7 +403,7 @@ void Application_Start(object sender, EventArgs e)
 ```
 
   > [!NOTE]
-  > Wartość określona przez tę metodę jest ustawienie globalne wpływu na cały element AppDomain. Na przykład, jeśli masz maszyny 4-rdzeniową i chcesz ustawić *minWorkerThreads* i *minIoThreads* do 50 na procesor CPU w czasie wykonywania, należy użyć **ThreadPool.SetMinThreads (200, 200)**.
+  > Wartość określona przez tę metodę jest ustawienie globalne wpływu na cały element AppDomain. Na przykład, jeśli masz maszyny 4-rdzeniową i chcesz ustawić *minWorkerThreads* i *minIoThreads* do 50 na procesor CPU w czasie wykonywania, należy użyć **ThreadPool.SetMinThreads (200, 200)** .
 
 * Istnieje również możliwość określić minimalną liczbę wątków ustawienie przy użyciu [ *minIoThreads* lub *minWorkerThreads* ustawienie konfiguracji](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) w obszarze `<processModel>` element konfiguracji w `Machine.config`zwykle znajdujący się w folderze `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **Ustawianie liczby minimalną liczbę wątków w ten sposób ogólnie nie jest zalecane, ponieważ jest on ustawienie poziomie systemu.**
 
@@ -469,7 +469,7 @@ Poniżej przedstawiono niektóre z najczęstszych przyczyn Rozłącz pamięci po
 >
 >
 
-### <a name="azure-cache-for-redis"></a>Usługa Azure Cache for Redis
+### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Pamięć podręczna systemu Azure dla usługi Redis jest ogólnie dostępna w rozmiarach do 53 GB i ma dostępność na poziomie 99,9%. Nowy [w warstwie premium](cache-premium-tier-intro.md) oferuje rozmiarach do 530 GB i pomoc techniczna dla klastra sieć Wirtualną i trwałości, z umową SLA 99,9%.
 
 Pamięć podręczna systemu Azure dla usługi Redis zapewnia klientom możliwość korzystania z bezpiecznej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft. Ta oferta umożliwia skorzystanie z do rozbudowanego zestawu funkcji i ekosystemu udostępnianego udostępnianych przez Redis oraz niezawodnych oraz hostingu i monitorowania od firmy Microsoft.

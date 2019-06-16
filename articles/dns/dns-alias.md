@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ff71eb7d1386226e29b3f0846e0894a553f978e5
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754237"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059686"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -53,7 +53,7 @@ Ten scenariusz jest podobny do poprzedniego. Być może aplikacja zostanie przen
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Hostowanie aplikacji ze zrównoważonym obciążeniem w wierzchołku strefy
 
-Protokół DNS uniemożliwia przypisania rekordów CNAME w wierzchołku strefy. Na przykład jeśli Twoja domena to contoso.com; można utworzyć rekordy CNAME dla somelable.contoso.com; ale nie można utworzyć rekordu CNAME dla domeny contoso.com, sam.
+Protokół DNS uniemożliwia przypisania rekordów CNAME w wierzchołku strefy. Na przykład jeśli Twoja domena to contoso.com; można utworzyć rekordy CNAME dla somelabel.contoso.com; ale nie można utworzyć rekordu CNAME dla domeny contoso.com, sam.
 Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Ponieważ za pomocą profilu usługi Traffic Manager wymaga utworzenia rekordu CNAME, nie jest możliwe wskazywała na profil usługi Traffic Manager w wierzchołku strefy.
 
 Ten problem został rozwiązany, przy użyciu rekordów aliasów. W przeciwieństwie do rekordów CNAME rekordów aliasów są tworzone w wierzchołku strefy i właścicieli aplikacji może użyć go do profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe wskazują ich rekordów w wierzchołku strefy. Właściciele aplikacji wskaż taki sam jak profil usługi Traffic Manager służy do innej domeny w swojej strefie DNS.

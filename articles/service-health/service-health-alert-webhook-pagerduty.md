@@ -1,19 +1,19 @@
 ---
-title: Konfigurowanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi PagerDuty | Dokumentacja firmy Microsoft
+title: Wysyłanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi PagerDuty przy użyciu elementów webhook
 description: Uzyskaj Spersonalizowane powiadomienia dotyczące zdarzenia usługi service health do swojego wystąpienia usługi PagerDuty.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621022"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067152"
 ---
-# <a name="configure-service-health-alerts-with-pagerduty"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu usługi PagerDuty
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Wysyłanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi PagerDuty przy użyciu elementów webhook
 
 W tym artykule pokazano, jak skonfigurować powiadomienia o kondycji usługi platformy Azure za pośrednictwem usługi PagerDuty przy użyciu elementu webhook. Za pomocą [PagerDuty](https://www.pagerduty.com/)firmy niestandardowego typu integracji Microsoft Azure, alerty dotyczące kondycji usługi bez wysiłku można dodać do nowej lub istniejącej usługi PagerDuty.
 

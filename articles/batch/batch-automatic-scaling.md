@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118115"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego skalowania węzłów obliczeniowych w puli usługi Batch
@@ -297,7 +297,7 @@ Możesz użyć metryki zasobu i zadania podczas definiowania formuły. Docelowa 
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Zadanie podrzędne</b></td>
+    <td><b>Zadanie</b></td>
     <td><p>Metryki zadania są na podstawie stanu zadań, takich jak aktywny, oczekujący i zakończone. Następujące zmienne zdefiniowane przez usługę są przydatne, aby wprowadzić zmiany rozmiaru puli na podstawie metryk zadań:</p>
     <p><ul>
       <li>$ActiveTasks</li>

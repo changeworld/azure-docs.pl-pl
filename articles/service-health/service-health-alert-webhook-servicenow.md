@@ -1,23 +1,24 @@
 ---
-title: Konfigurowanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi ServiceNow | Dokumentacja firmy Microsoft
+title: Wysyłanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi ServiceNow przy użyciu elementów webhook
 description: Uzyskaj Spersonalizowane powiadomienia dotyczące zdarzenia usługi service health do swojego wystąpienia usługi ServiceNow.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067118"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurowanie alertów dotyczących kondycji usługi przy użyciu usługi ServiceNow
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Wysyłanie alertów dotyczących kondycji usługi platformy Azure przy użyciu usługi ServiceNow przy użyciu elementów webhook
 
 W tym artykule pokazano, jak integrować alerty dotyczące kondycji usługi platformy Azure przy użyciu usługi ServiceNow przy użyciu elementu webhook. Po skonfigurowaniu integrację elementów webhook z wystąpieniem usługi ServiceNow, możesz otrzymywać alerty za pomocą istniejącej infrastruktury powiadomień, gdy napotkasz problemy z usług platformy Azure. Za każdym razem, gdy zostanie wyzwolony alert danych usługi Azure Service Health, wywołuje element webhook przy użyciu interfejsu API REST dla usługi ServiceNow inicjowanych przez skrypty.
 
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Tworzenie inicjowanych przez skrypty interfejsu API REST w usługi ServiceNow
+
 1.  Upewnij się, podpisali i zalogowano się do Twojej [ServiceNow](https://www.servicenow.com/) konta.
 
 1.  Przejdź do **usług sieci Web systemu** sekcji usługi ServiceNow, a następnie wybierz pozycję **inicjowanych przez skrypty interfejsów API REST**.
@@ -30,7 +31,7 @@ W tym artykule pokazano, jak integrować alerty dotyczące kondycji usługi plat
 
 1.  Dodaj **nazwa** do interfejsu API REST i zestawu **identyfikator interfejsu API** do `azureservicehealth`.
 
-1.  Wybierz pozycję **Prześlij**.
+1.  Wybierz **przesłać**.
 
     !["Ustawienia interfejsu API REST" w usługi ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 

@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: e770beb0470b54d8e13493bca4790323b2e96ce1
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076350"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schemat zdarzeń Azure Event Grid dla Centrum IoT Hub
 
@@ -35,7 +35,7 @@ Usługa Azure IoT Hub emituje następujące typy zdarzeń:
 | Microsoft.Devices.DeviceDisconnected | Gdy urządzenie jest odłączony od usługi IoT hub opublikowany. | 
 | Microsoft.Devices.DeviceTelemetry | Opublikowana, gdy komunikaty telemetryczne są wysyłane do usługi IoT hub. |
 
-Wszystkie zdarzenia urządzenia, z wyjątkiem zdarzeń telemetrii urządzenia są ogólnie dostępne we wszystkich regionach obsługiwanych przez usługę Event Grid. Zdarzenia telemetrii urządzenia jest w publicznej wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
+Wszystkie zdarzenia urządzenia, z wyjątkiem zdarzeń telemetrii urządzenia są ogólnie dostępne we wszystkich regionach obsługiwanych przez usługę Event Grid. Zdarzenia telemetrii urządzenia jest w publicznej wersji zapoznawczej i jest dostępna we wszystkich regionach z wyjątkiem wschodnie stany USA, zachodnie stany USA, Europa Zachodnia, [Azure dla instytucji rządowych](../azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome), i [Azure (Niemcy)](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="example-event"></a>Przykład zdarzenia
 
@@ -156,7 +156,7 @@ Wszystkie zdarzenia zawierają te same dane najwyższego poziomu:
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | data | obiekt | Dane zdarzeń usługi IoT Hub.  |
-| dataVersion | string | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Dla wszystkich zdarzeń usługi IoT Hub obiekt danych zawiera następujące właściwości:

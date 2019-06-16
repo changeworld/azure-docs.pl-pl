@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125732"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 
@@ -34,22 +34,22 @@ ms.locfileid: "66754822"
 
     Obsługa szyfrowania protokołu SMB 3.0 została wprowadzona w systemie Linux wersja jądra 4.11 i został backported do starszych wersji jądra dla popularnych dystrybucji systemu Linux. W chwili opublikowania tego dokumentu poniższe dystrybucje z poziomu galerii Azure obsługuje opcję instalowania określonego w nagłówki tabeli. 
 
-* **Minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (wersja protokołu SMB 2.1 vs wersja protokołu SMB 3.0)**    
+### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>Minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (wersja protokołu SMB 2.1 vs wersja protokołu SMB 3.0)
 
-    |   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje z lokalnie i między regionami) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+|   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje z lokalnie i między regionami) |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ |   |
+| openSUSE | 13.2+ | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-    Jeśli danej dystrybucji systemu Linux nie ma na liście, można sprawdzić wersji jądra systemu Linux za pomocą następującego polecenia:
+Jeśli danej dystrybucji systemu Linux nie ma na liście, można sprawdzić wersji jądra systemu Linux za pomocą następującego polecenia:
 
-   ```bash
-   uname -r
-   ```
+```bash
+uname -r
+```
 
 * <a id="install-cifs-utils"></a>**Pakiet cifs utils jest zainstalowany.**  
     Można zainstalować pakiet cifs utils przy użyciu Menedżera pakietów w wybranej dystrybucji systemu Linux. 
@@ -75,7 +75,7 @@ ms.locfileid: "66754822"
 
     Inne dystrybucje używać Menedżera odpowiedniego pakietu lub [kompilacji ze źródła](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **Podejmij decyzję uprawnień pliku lub katalogu zainstalowanego udziału**: W przykładach poniżej uprawnienia `0777` jest używany, aby dać odczytu, zapisu i wykonywania uprawnień dla wszystkich użytkowników. Można zastąpić go z innymi [uprawnienia chmod](https://en.wikipedia.org/wiki/Chmod) zgodnie z potrzebami, mimo że oznacza to, potencjalnie ograniczanie dostępu. Jeśli używasz innych uprawnień, należy rozważyć również, aby zachować dostęp do grup lokalnych w wybranym przy użyciu identyfikatorów uid i gid.
+* **Podejmij decyzję uprawnień pliku lub katalogu zainstalowanego udziału**: W przykładach poniżej uprawnienia `0777` jest używany, aby dać odczytu, zapisu i wykonywania uprawnień dla wszystkich użytkowników. Można zastąpić go z innymi [uprawnienia chmod](https://en.wikipedia.org/wiki/Chmod) zgodnie z potrzebami, mimo że oznacza to, potencjalnie ograniczanie dostępu. Jeśli używasz innych uprawnień, należy rozważyć, również przy użyciu identyfikatorów uid i gid, aby zachować dostęp dla lokalnych użytkowników i grup wybranych przez użytkownika.
 
 > [!NOTE]
 > Jeśli nie przypisuj jawne uprawnienia plików i katalogów o dir_mode i file_mode, zostaną domyślnie 0755.

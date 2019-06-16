@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "58861883"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Tworzenie niestandardowej sondy dla bramy aplikacji platformy Azure (model klasyczny) przy użyciu programu PowerShell
@@ -153,7 +153,7 @@ Parametry konfiguracji są następujące:
 |**Nazwa** |Nazwa odwołania dla niestandardowej sondy. |
 | **Protokół** | Protokół używany (możliwe wartości to HTTP lub HTTPS).|
 | **Host** i **ścieżki** | Pełna ścieżka adresu URL, które jest wywoływane przez usługę application gateway w celu określenia kondycji wystąpienia. Na przykład, jeśli masz http witryny sieci Web:\//contoso.com/, a następnie niestandardowej sondy można skonfigurować dla "http:\//contoso.com/path/custompath.htm" dla sonda sprawdza mieć pomyślnej odpowiedzi HTTP.|
-| **Interwał** | Konfiguruje sprawdzanie interwału sondowania w ciągu kilku sekund.|
+| **Interval** | Konfiguruje sprawdzanie interwału sondowania w ciągu kilku sekund.|
 | **limit czasu** | Określa limit czasu sondy sprawdzanie odpowiedzi HTTP.|
 | **UnhealthyThreshold** | Liczba zakończonych niepowodzeniem odpowiedzi HTTP, potrzebne do wystąpienia zaplecza jako *złej kondycji*.|
 

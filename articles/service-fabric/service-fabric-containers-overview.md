@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/8/2018
 ms.author: aljo
 ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60881426"
 ---
 # <a name="service-fabric-and-containers"></a>Usługa Service Fabric i kontenery
@@ -80,7 +80,7 @@ Poniżej przedstawiono typowe przykłady gdy kontener jest dobrym wyborem:
 
 * **Mieszanie kontenerów oraz mikrousług usługi Service Fabric**: Użyj istniejącego obrazu kontenera dla części aplikacji. Na przykład, można na przykład [kontener NGINX](https://hub.docker.com/_/nginx/) dla frontonu sieci web, aplikacji i usług stanowych bardziej intensywnie korzystających z obliczeń zaplecza.
 
-* **Ograniczenia wpływu usługi "hałaśliwym sąsiadów"**: Możliwości zarządzania zasób kontenerów umożliwia ograniczanie zasobów używanych przez usługi na hoście. Jeśli usługi mogą używać wielu zasobów i wpłynąć na wydajność innych osób (na przykład operacji długotrwałych, podobne do zapytania), należy rozważyć umieszczenie tych usług do kontenerów, które mają nadzór nad zasobami.
+* **Ograniczenia wpływu usługi "hałaśliwym sąsiadów"** : Możliwości zarządzania zasób kontenerów umożliwia ograniczanie zasobów używanych przez usługi na hoście. Jeśli usługi mogą używać wielu zasobów i wpłynąć na wydajność innych osób (na przykład operacji długotrwałych, podobne do zapytania), należy rozważyć umieszczenie tych usług do kontenerów, które mają nadzór nad zasobami.
 
 ## <a name="service-fabric-support-for-containers"></a>Obsługa usługi Service Fabric dla kontenerów
 

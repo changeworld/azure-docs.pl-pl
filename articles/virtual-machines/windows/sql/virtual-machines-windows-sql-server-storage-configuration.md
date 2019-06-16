@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 360ffb3d2c682d6bd2344cb3ae95447ff3df278d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477459"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076869"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja usługi Storage dla maszyn wirtualnych programu SQL Server
 
@@ -55,7 +55,7 @@ Oparte na wybrane opcje, platforma Azure przeprowadza następujących zadań kon
 * Kojarzy puli magazynu z nowego dysku na maszynie wirtualnej.
 * Optymalizuje tego nowego dysku na podstawie Twojego typu określonego obciążenia (magazynowanie danych, przetwarzanie transakcji, lub ogólne).
 
-Aby uzyskać więcej szczegółowych informacji dotyczących sposobu Azure konfiguruje ustawienia magazynu, zobacz [sekcji konfiguracji magazynu](#storage-configuration). Pełne instrukcje dotyczące sposobu tworzenia maszyny Wirtualnej programu SQL Server w witrynie Azure Portal, zobacz [samouczku dotyczącym aprowizacji](virtual-machines-windows-portal-sql-server-provision.md).
+Aby uzyskać więcej szczegółowych informacji dotyczących sposobu Azure konfiguruje ustawienia magazynu, zobacz [sekcji konfiguracji magazynu](#storage-configuration). Pełne instrukcje dotyczące sposobu tworzenia maszyny Wirtualnej programu SQL Server w witrynie Azure portal, zobacz [samouczku dotyczącym aprowizacji](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="resource-manage-templates"></a>Szablony zarządzania zasobów
 
@@ -67,24 +67,24 @@ Korzystając z poniższych szablonów usługi Resource Manager, domyślnie, bez 
 
 ## <a name="existing-vms"></a>Istniejące maszyny wirtualne
 
-Dla istniejących maszyn wirtualnych programu SQL Server można zmodyfikować niektóre ustawienia magazynu w witrynie Azure portal. Wybierz maszynę Wirtualną, przejdź do obszaru Ustawienia, a następnie wybierz konfigurację serwera SQL. Konfiguracja programu SQL Server blok bieżące użycie magazynu maszyny wirtualnej. Wszystkie dyski, które istnieją na maszynie Wirtualnej są wyświetlane na tym wykresie. Dla każdego dysku miejsca do magazynowania jest wyświetlany w cztery sekcje:
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Dla istniejących maszyn wirtualnych programu SQL Server można zmodyfikować niektóre ustawienia magazynu w witrynie Azure portal. Otwórz swoje [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)i wybierz **Przegląd**. Na stronie Omówienie programu SQL Server znajdują się bieżące użycie magazynu maszyny wirtualnej. Wszystkie dyski, które istnieją na maszynie Wirtualnej są wyświetlane na tym wykresie. Dla każdego dysku miejsca do magazynowania jest wyświetlany w cztery sekcje:
 
 * Dane SQL
 * Dziennik SQL
 * Inne (magazyn-SQL)
 * Dostępne
 
-![Konfigurowanie magazynu dla istniejącej maszyny Wirtualnej serwera SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
+Aby zmodyfikować ustawienia magazynu, wybierz **Konfiguruj** w obszarze **ustawienia**. 
 
-Aby skonfigurować magazynu, aby dodać nowy dysk lub rozszerzyć istniejący dysk, kliknij link Edytuj powyżej wykresu.
+![Konfigurowanie magazynu dla istniejącej maszyny Wirtualnej serwera SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
 Opcje konfiguracji, które widzisz różni się w zależności od tego, czy używasz tej funkcji przed. Korzystając z po raz pierwszy, można określić wymagań dotyczących magazynu dla nowego dysku. Jeśli wcześniej używano tej funkcji w celu utworzenia dysku, można rozszerzyć magazynu tego dysku.
 
 ### <a name="use-for-the-first-time"></a>Użyj po raz pierwszy
 
 Jeśli po raz pierwszy przy użyciu tej funkcji, można określić limity rozmiaru i wydajności magazynu dla nowego dysku. To środowisko jest podobny do zobaczysz na czas obsługi administracyjnej. Główną różnicą jest to, że nie masz uprawnień do określania typu obciążenia. To ograniczenie zapobiega zakłóca żadnych istniejących konfiguracji programu SQL Server na maszynie wirtualnej.
-
-![Konfigurowanie programu SQL Server magazynu suwaki](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
 Platforma Azure tworzy nowy dysk, na podstawie Twojej specyfikacji. W tym scenariuszu platforma Azure przeprowadza następujących zadań konfiguracji magazynu:
 
@@ -99,19 +99,17 @@ Aby uzyskać więcej szczegółowych informacji dotyczących sposobu Azure konfi
 
 Jeśli już skonfigurowano magazynu na maszynie Wirtualnej programu SQL Server, rozszerzając magazynu powoduje wyświetlenie dwóch nowych opcji. Pierwsza opcja jest Dodaj nowy dysk, co może zwiększyć poziom wydajności maszyny wirtualnej.
 
-![Dodaj nowy dysk do maszyny Wirtualnej SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
-
 Jednak po dodaniu dysku, należy wykonać pewne dodatkowe czynności konfiguracyjne do osiągnięcia wzrost wydajności.
 
 ### <a name="extend-the-drive"></a>Rozszerz dysk
 
-Inną opcją dotyczące rozszerzania magazynu jest rozszerzenie istniejącego dysku. Spowoduje to zwiększenie dostępnego magazynu na dysku, ale nie zwiększa wydajność. Pule magazynu nie można zmienić liczbę kolumn, po utworzeniu puli magazynu. Liczba kolumn określa liczbę równoległych zapisy, które mogą być rozłożone na dyski z danymi. W związku z tym wszystkie dyski dodane dane nie może zwiększyć wydajność. Więcej pamięci masowej mogą podać tylko dla zapisywanych danych. To ograniczenie oznacza również, że podczas rozszerzania dysku, liczbę kolumn określa minimalną liczbę dysków z danymi, które można dodać. Dlatego po utworzeniu puli magazynu z cztery dyski danych, liczba kolumn jest również cztery. Zawsze, gdy rozszerzenie magazynu, należy dodać co najmniej cztery dyski danych.
+Inną opcją dotyczące rozszerzania magazynu jest rozszerzenie istniejącego dysku. Spowoduje to zwiększenie dostępnego magazynu na dysku, ale nie zwiększa wydajność. Pule magazynu nie można zmienić liczbę kolumn, po utworzeniu puli magazynu. Liczba kolumn określa liczbę równoległych zapisy, które mogą być rozłożone na dyski z danymi. W związku z tym wszystkie dyski dodane dane nie może zwiększyć wydajność. Więcej pamięci masowej mogą podać tylko dla zapisywanych danych. To ograniczenie oznacza również, że podczas rozszerzania dysku, liczbę kolumn określa minimalną liczbę dysków z danymi, które można dodać. Dlatego po utworzeniu puli magazynu z cztery dyski danych, liczba kolumn jest również cztery. Za każdym razem, gdy możesz rozszerzyć magazynu, należy dodać co najmniej cztery dyski danych.
 
 ![Rozszerzanie dysku dla maszyny Wirtualnej SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>Konfiguracja usługi Storage
 
-Ta sekcja zawiera odwołanie do zmiany konfiguracji magazynu, które platforma Azure automatycznie przeprowadza podczas aprowizowania maszyn wirtualnych SQL lub konfiguracji w witrynie Azure Portal.
+Ta sekcja zawiera odwołanie do zmiany konfiguracji magazynu, które platforma Azure automatycznie przeprowadza podczas aprowizowania maszyn wirtualnych SQL lub konfiguracji w witrynie Azure portal.
 
 * Mniej niż 2 TB magazynu zaznaczenie dla maszyny Wirtualnej platformy Azure nie powoduje utworzenia puli magazynów.
 * Jeśli wybrano co najmniej dwóch TB magazynu dla maszyny Wirtualnej, platforma Azure konfiguruje pulę magazynu. Następna sekcji tego tematu zawiera szczegółowe informacje o konfiguracji puli magazynu.
@@ -143,7 +141,7 @@ Platforma Azure stosuje następujące ustawienia, aby utworzyć pulę magazynu n
 
 W poniższej tabeli opisano dostępne opcje typu trzy obciążenia i ich odpowiednich optymalizacje:
 
-| Typ obciążenia | Opis | Optymalizacje |
+| Typ obciążeń | Opis | Optymalizacje |
 | --- | --- | --- |
 | **Ogólne** |Ustawienie domyślne obsługujące większość obciążeń |Brak |
 | **Przetwarzanie transakcyjne** |Optymalizuje magazyn dla tradycyjnych baz danych obciążeń OLTP |Flaga śledzenia 1117<br/>Flaga śledzenia 1118 |

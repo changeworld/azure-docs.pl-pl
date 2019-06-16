@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60864136"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurowanie aktywnej replikacji geograficznej dla usługi Azure SQL Database w witrynie Azure portal i zainicjuj tryb failover
@@ -70,7 +70,7 @@ Pomocniczej bazy danych można dostosować do roli podstawowej.
 2. W bloku bazy danych SQL zaznaczyć **wszystkie ustawienia** > **geografickou replikaci**.
 3. W **pomocnicze bazy danych** , wybierz bazę danych do nowej podstawowej, a następnie kliknij pozycję na liście **trybu Failover**.
 
-    ![tryb failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![Tryb failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kliknij przycisk **tak** do rozpoczęcia pracy w trybie failover.
 
 Polecenie natychmiast zmienia pomocniczej bazy danych do roli podstawowej. Zwykle ten proces powinno zakończyć się w ciągu 30 sekund lub mniej.

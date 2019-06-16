@@ -17,18 +17,18 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822336"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Skonfiguruj dzienniki diagnostyczne na potrzeby Centrum zdarzeń platformy Azure
 
 Możesz wyświetlić dwa typy dzienników dla usługi Azure Event Hubs:
 
-* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)**: Te dzienniki mają informacji na temat operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md)**: Dzienniki diagnostyczne na potrzeby bardziej rozbudowane widok wszystko, czego zachodzącej można skonfigurować za pomocą zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
+* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)** : Te dzienniki mają informacji na temat operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
+* **[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md)** : Dzienniki diagnostyczne na potrzeby bardziej rozbudowane widok wszystko, czego zachodzącej można skonfigurować za pomocą zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
 
 ## <a name="enable-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 

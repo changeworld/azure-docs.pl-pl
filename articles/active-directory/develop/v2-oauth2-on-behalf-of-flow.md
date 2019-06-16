@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0c1c4dcf7e4ff0c82157af83aa15544cf092e2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1bdd91f8ee1228febe71244530a63fe992df56d9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544747"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110858"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i przepływ OAuth 2.0 "w imieniu"
 
@@ -201,11 +201,11 @@ W przypadku aplikacji, którzy muszą tylko zarejestrować się w pracy lub szko
 
 W tej chwili system osobistych kont Microsoft nie obsługuje połączonych zgody, a więc takie podejście nie działa w przypadku aplikacji, które mają się w szczególności w ramach kont osobistych. Osobistych kont Microsoft, używane jako konta gościa w dzierżawie są obsługiwane w systemie usługi Azure AD i można przejść przez połączone zgody.
 
-#### <a name="pre-authorized-applications"></a>Wstępnie autoryzowane aplikacje
+#### <a name="pre-authorized-applications"></a>Wstępnie autoryzowanych aplikacjach
 
 Funkcja portalu aplikacji jest "wstępnie autoryzowane aplikacje". W ten sposób zasobu może wskazywać, że zawsze danej aplikacji ma uprawnienia do odbierania określonych zakresów. Jest to głównie przydatne nawiązywanie połączeń między klientem frontonu i zaplecza zasób bezproblemowa. Zasób może zadeklarować wiele wstępnie autoryzowanych aplikacjach — takich aplikacji mogą żądać tych uprawnień w OBO przepływu i odbierać je bez użytkownika zgodę.
 
-#### <a name="admin-consent"></a>Zgoda administratora
+#### <a name="admin-consent"></a>zgoda administratora
 
 Administrator dzierżawy może zagwarantować, że aplikacje mają uprawnienia do wywołania ich wymaganych interfejsów API, zapewniając zgody administratora dla aplikacji warstwy środkowej. Aby to zrobić, administrator może znaleźć aplikacji warstwy środkowej w ramach ich dzierżawy, otwórz stronę wymaganych uprawnień, a następnie wybierz udzielić uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat zgody administratora, zobacz [dokumentacji uprawnienia i zgody](v2-permissions-and-consent.md).
 

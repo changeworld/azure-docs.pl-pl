@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55dc0cbc175542d0b208bbe72566a0adb55a371
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109330"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla Twojego rozwiązania tożsamości hybrydowej w celu spełnienia wymagań biznesowych, które zostały omówione w:

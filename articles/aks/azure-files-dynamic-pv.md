@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ed9be9f3ecc7a14a0aa0210ee34f9323126be085
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061100"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i trwały wolumin za pomocą usługi Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Klasa magazynu jest używane do definiowania sposobu tworzenia udziału plików 
 * *Standard_RAGRS* — dostęp do odczytu magazynu geograficznie nadmiarowego magazynu w warstwie standardowa (RA-GRS)
 
 > [!NOTE]
-> W usłudze pliki Azure obecnie tylko pracę z magazynu w warstwie standardowa. Jeśli używasz usługi Premium storage, woluminu nie powiodło się aprowizacji.
+> Usługa pliki systemu Azure obsługuje usługę premium storage w klastrach usługi AKS, systemem Kubernetes 1.13 lub nowszej.
 
 Aby uzyskać więcej informacji na temat klasy magazynu w usłudze Kubernetes dla usługi Azure Files, zobacz [klasy magazynu w usłudze Kubernetes][kubernetes-storage-classes].
 

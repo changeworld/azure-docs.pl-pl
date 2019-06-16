@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 8cf9dc6cbfc96448462aac3a64807f8beb6036ad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 016dcf32f2f846e43362f17bc9f4627113908352
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156913"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075147"
 ---
-# <a name="get-started-with-custom-voice"></a>Rozpoczynanie pracy z usługą Custom Voice
+# <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
 
 Custom Voice to zestaw narzędzi online, które pozwalają tworzyć mówiącą, jeden z rodzajem głosu dla Twojej marki. Wszystko, czego potrzebny na rozpoczęcie pracy jest kilka przydatnych plików audio i skojarzone transkrypcji. Skorzystaj z linków poniżej, aby rozpocząć tworzenie niestandardowego środowiska zamiany tekstu na mowę.
 
@@ -29,13 +29,13 @@ Na poniższym diagramie prezentuje kroki, aby utworzyć model niestandardowych v
 
 ![Diagram architektury usługi niestandardowych Voice](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Subskrypcja i Utwórz projekt](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#set-up-your-azure-account) — Tworzenie konta platformy Azure i utworzyć subskrypcję usług przetwarzania mowy. Ta subskrypcja ujednoliconego zapewnia dostęp do zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenie mowy i portalu usługi Custom Voice. Następnie przy użyciu posiadanej subskrypcji usług przetwarzania mowy, Utwórz swój pierwszy projekt Custom Voice.
+1.  [Subskrypcja i Utwórz projekt](#set-up-your-azure-account) — Tworzenie konta platformy Azure i utworzyć subskrypcję usług przetwarzania mowy. Ta subskrypcja ujednoliconego zapewnia dostęp do zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenie mowy i portalu usługi Custom Voice. Następnie przy użyciu posiadanej subskrypcji usług przetwarzania mowy, Utwórz swój pierwszy projekt Custom Voice.
 
-2.  [Przekazywanie danych](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#upload-your-datasets) — przekazywanie danych (audio i tekst) przy użyciu niestandardowych Voice portal lub interfejsu API usługi Custom Voice. Z poziomu portalu można zbadać i ocenić wyniki Wymowa i współczynniki sygnał do szumu. Aby uzyskać więcej informacji, zobacz [sposób przygotowania danych dla niestandardowych Voice](how-to-custom-voice-prepare-data.md).
+2.  [Przekazywanie danych](how-to-custom-voice-create-voice.md#upload-your-datasets) — przekazywanie danych (audio i tekst) przy użyciu niestandardowych Voice portal lub interfejsu API usługi Custom Voice. Z poziomu portalu można zbadać i ocenić wyniki Wymowa i współczynniki sygnał do szumu. Aby uzyskać więcej informacji, zobacz [sposób przygotowania danych dla niestandardowych Voice](how-to-custom-voice-prepare-data.md).
 
-3.  [Uczenie modelu](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#build-your-voice-font) — korzystanie z Twoich danych w celu utworzenia modelu niestandardowych voice zamiany tekstu na mowę. Możesz uczyć modelu w różnych językach. Po szkoleniu Testowanie modelu, a jeśli jesteś zadowolony z wyników, należy wdrożyć model.
+3.  [Uczenie modelu](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) — korzystanie z Twoich danych w celu utworzenia modelu niestandardowych voice zamiany tekstu na mowę. Możesz uczyć modelu w różnych językach. Po szkoleniu Testowanie modelu, a jeśli jesteś zadowolony z wyników, należy wdrożyć model.
 
-4.  [Model jest wdrażany](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#create-and-use-a-custom-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosowego zamiany tekstu na mowę i użyć jej do synteza mowy produktów, narzędzi i aplikacji.
+4.  [Model jest wdrażany](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosowego zamiany tekstu na mowę i użyć jej do synteza mowy produktów, narzędzi i aplikacji.
 
 ## <a name="set-up-your-azure-account"></a>Konfigurowanie konta platformy Azure
 
@@ -55,7 +55,7 @@ Po utworzeniu konta platformy Azure i Subskrypcja usług przetwarzania mowy, mus
 
 Zawartości, takie jak danych, modele, testy i punktów końcowych są podzielone na **projektów** w portalu usługi Custom Voice. Każdy projekt jest specyficzne dla kraju/języka i płeć głosu, który chcesz utworzyć. Na przykład mogą utworzyć projekt w przypadku głosu żeńskiego dla botów rozmowy z Centrum telefonicznej, korzystających z języka angielskiego na terenie Stanów Zjednoczonych (en US).
 
-Aby utworzyć swój pierwszy projekt, wybierz **Text-to-Speech/Custom Voice** , a następnie kliknij **nowy projekt**. Postępuj zgodnie z instrukcjami kreatora do tworzenia projektu. Po utworzeniu projektu są wyświetlane cztery karty: **Dane**, **szkolenia**, **testowania**, i **wdrożenia**. Użyć linków dostępnych w [następne kroki](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#next-steps) dowiesz się, jak używać każdej karty.
+Aby utworzyć swój pierwszy projekt, wybierz **Text-to-Speech/Custom Voice** , a następnie kliknij **nowy projekt**. Postępuj zgodnie z instrukcjami kreatora do tworzenia projektu. Po utworzeniu projektu są wyświetlane cztery karty: **Dane**, **szkolenia**, **testowania**, i **wdrożenia**. Użyć linków dostępnych w [następne kroki](#next-steps) dowiesz się, jak używać każdej karty.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

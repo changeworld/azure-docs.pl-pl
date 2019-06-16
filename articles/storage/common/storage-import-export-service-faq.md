@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478576"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
@@ -22,7 +22,7 @@ Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas prz
 - Przygotowywanie dysków dla usługi import/export
 - Zadania importu/eksportu
 - Wysyłanie dysków
-- Różne postanowienia 
+- Różne 
 
 ## <a name="about-importexport-service"></a>O usłudze Import/Export
 
@@ -109,7 +109,7 @@ Niektóre lokalizacji konta magazynu są mapowane do lokalizacji alternatywnej w
 Numer telefonu i kontroler domeny adresów jest dostępna w ramach zadania tworzenia.
 
 
-## <a name="miscellaneous"></a>Różne postanowienia
+## <a name="miscellaneous"></a>Różne
 
 ### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Co się stanie, jeśli wymagania obsługiwanej przypadkowo wysyła dysk twardy, który nie jest zgodny?
 

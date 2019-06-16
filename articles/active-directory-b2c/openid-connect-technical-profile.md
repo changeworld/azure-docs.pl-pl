@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512916"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OpenId Connect w zasadach niestandardowych usługi Azure Active Directory B2C
@@ -77,7 +77,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | --------- | -------- | ----------- |
 | client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
 | IdTokenAudience | Nie | Odbiorcy id_token. Jeśli zostanie określony, usługi Azure AD B2C sprawdza, czy token jest oświadczenie zwrócona przez dostawcę tożsamości i jest taki sam, jak określona. |
-| METADANE | Tak | Adres URL wskazujący dokument konfiguracji JSON formatowana zgodnie ze specyfikacją odnajdywania protokołu OpenID Connect, która jest także znana jako punkt końcowy konfiguracji openid dobrze znane. |
+| METADANE | Yes | Adres URL wskazujący dokument konfiguracji JSON formatowana zgodnie ze specyfikacją odnajdywania protokołu OpenID Connect, która jest także znana jako punkt końcowy konfiguracji openid dobrze znane. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
 | response_types | Nie | Typ odpowiedzi zgodnie ze specyfikacją protokołu OpenID Connect 1.0 Core. Możliwe wartości: `id_token`, `code`, lub `token`. |
 | response_mode | Nie | Metody, która używa dostawcy tożsamości w celu wysłania wynik z powrotem do usługi Azure AD B2C. Możliwe wartości: `query`, `form_post` (ustawienie domyślne) lub `fragment`. |

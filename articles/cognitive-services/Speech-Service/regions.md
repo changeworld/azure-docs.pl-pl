@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 83cea56cecf9792c829e062965fe39b63201af3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 518f1048224a97943756c5b51b83cd509f82e11e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072496"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -80,12 +80,12 @@ Usługa rozpoznawania mowy udostępnia również punkty końcowe REST dla żąda
 
 ### <a name="speech-to-text"></a>Zamiany mowy na tekst
 
-Aby uzyskać dokumentację referencyjną mowy na tekst, zobacz [interfejsów API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Aby uzyskać dokumentację referencyjną mowy na tekst, zobacz [interfejsu API REST mowy na tekst](rest-speech-to-text.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
-Aby uzyskać dokumentację referencyjną zamiany tekstu na mowę, zobacz [interfejsów API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Aby uzyskać dokumentację referencyjną zamiany tekstu na mowę, zobacz [interfejsu API REST zamiany tekstu na mowę](rest-text-to-speech.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
 ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110927"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Połączenie zdalne wystąpienie zestawu skalowania maszyny wirtualnej lub węzła klastra
@@ -28,7 +28,7 @@ Aby znaleźć adres IP i port, który służy do zdalnego łączenia z określon
 
 1. Pobierz reguły dla ruchu przychodzącego translatora adresów Sieciowych dla protokołu RDP (Remote Desktop).
 
-    Zazwyczaj każdy zdefiniowany typ węzła w klastrze ma swój własny wirtualnego adresu IP i modułu równoważenia obciążenia dedykowanych. Domyślnie moduł równoważenia obciążenia dla typu węzła nosi nazwę w następującym formacie: *LB-{nazwa klastra}-{typ węzła}*, na przykład *mycluster-LB-FrontEnd*. 
+    Zazwyczaj każdy zdefiniowany typ węzła w klastrze ma swój własny wirtualnego adresu IP i modułu równoważenia obciążenia dedykowanych. Domyślnie moduł równoważenia obciążenia dla typu węzła nosi nazwę w następującym formacie: *LB-{nazwa klastra}-{typ węzła}* , na przykład *mycluster-LB-FrontEnd*. 
     
     Na stronie modułu równoważenia obciążenia w witrynie Azure portal wybierz **ustawienia** > **reguły NAT ruchu przychodzącego**: 
 

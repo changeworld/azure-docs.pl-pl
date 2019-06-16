@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456eac4a8d3a6cb8cbaca13ad4e4f3b2ae0309bc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110272"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125596"
 ---
 # <a name="service-fabric-networking-patterns"></a>Wzorce sieci usługi Service Fabric
 Klaster usługi Azure Service Fabric można zintegrować z inne funkcje sieci platformy Azure. W tym artykule pokazujemy, jak tworzyć klastry, korzystających z następujących funkcji:
@@ -268,7 +268,7 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
                     ],
     ```
 
-7. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` do nazwy FQDN DNS statyczny adres IP. Jeśli używasz zabezpieczonego klastra upewnij się, możesz zmienić *http://* do *https://*. (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
+7. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` do nazwy FQDN DNS statyczny adres IP. Jeśli używasz zabezpieczonego klastra upewnij się, możesz zmienić *http://* do *https://* . (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
 
     ```json
                     "fabricSettings": [],
@@ -370,7 +370,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
                     ],
     ```
 
-6. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` wskaż adres usługi równoważenia obciążenia wewnętrznego. Jeśli korzystasz z zabezpieczonym klastrem, upewnij się, możesz zmienić *http://* do *https://*. (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
+6. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` wskaż adres usługi równoważenia obciążenia wewnętrznego. Jeśli korzystasz z zabezpieczonym klastrem, upewnij się, możesz zmienić *http://* do *https://* . (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
 
     ```json
                     "fabricSettings": [],
@@ -606,10 +606,7 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 Po wdrożeniu możesz zobaczyć dwa moduły równoważenia obciążenia w grupie zasobów. Jeśli możesz przeglądać modułów równoważenia obciążenia, zostanie wyświetlony publicznego adresu IP adres i zarządzania punktów końcowych (porty 19000 i 19080) przypisany publiczny adres IP. Widać również statyczne wewnętrzny adres i aplikacji punktu końcowego adresu IP (port 80) przypisany do wewnętrznego modułu równoważenia obciążenia. Oba moduły równoważenia obciążenia, użyj tej samej puli zaplecza zestawu skalowania maszyn wirtualnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Tworzenie klastra](service-fabric-cluster-creation-via-arm.md) ternalLB.json
-    ```
+[Tworzenie klastra](service-fabric-cluster-creation-via-arm.md)
 
 Po wdrożeniu możesz zobaczyć dwa moduły równoważenia obciążenia w grupie zasobów. Jeśli możesz przeglądać modułów równoważenia obciążenia, zostanie wyświetlony publicznego adresu IP adres i zarządzania punktów końcowych (porty 19000 i 19080) przypisany publiczny adres IP. Widać również statyczne wewnętrzny adres i aplikacji punktu końcowego adresu IP (port 80) przypisany do wewnętrznego modułu równoważenia obciążenia. Oba moduły równoważenia obciążenia, użyj tej samej puli zaplecza zestawu skalowania maszyn wirtualnych.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Tworzenie klastra](service-fabric-cluster-creation-via-arm.md)

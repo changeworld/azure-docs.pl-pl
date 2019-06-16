@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78901524392c575fcb9e821650b392dcea28c8b1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a78252a48ba8e3d69c6931da688f6ad692d96f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898203"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Heroku
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji Heroku w usłudze Azure AD, należy dod
 
 **Aby dodać aplikację Heroku z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -139,7 +139,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Heroku, wy
 
 5. Po pomyślnym skonfigurowaniu ustawień administratorom jest wyświetlane okno dialogowe potwierdzenia, a użytkownikom końcowym — adres URL logowania jednokrotnego.
 
-6. Skopiuj wartości **Heroku Login URL** (Adres URL logowania Heroku) i **Heroku Entity ID** (Identyfikator jednostki Heroku), a następnie wróć do sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal i wklej te wartości w polach tekstowych **Adres URL logowania** i **Identyfikator (identyfikator jednostki)**.
+6. Skopiuj wartości **Heroku Login URL** (Adres URL logowania Heroku) i **Heroku Entity ID** (Identyfikator jednostki Heroku), a następnie wróć do sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal i wklej te wartości w polach tekstowych **Adres URL logowania** i **Identyfikator (identyfikator jednostki)** .
 
     ![Konfigurowanie logowania jednokrotnego](./media/heroku-tutorial/tutorial_heroku_52.png)
 
@@ -211,7 +211,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Heroku w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Heroku, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

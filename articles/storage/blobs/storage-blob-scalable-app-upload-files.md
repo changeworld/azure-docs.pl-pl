@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071421"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Równoległe przekazywanie dużych ilości danych losowych do usługi Azure Storage
 
@@ -31,7 +31,7 @@ Część druga serii zawiera informacje na temat wykonywania następujących czy
 
 Usługa Azure Blob Storage to skalowalna usługa do przechowywania danych. Aby zagwarantować maksymalną wydajność aplikacji, warto wiedzieć, jak działa magazyn obiektów blob. Warto znać ograniczenia obiektów blob na platformie Azure, które opisano w temacie [Blob storage scalability targets (Wartości docelowe skalowalności usługi Blob Storage)](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
 
-[Nazewnictwo partycji](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) to kolejny ważny czynnik, który należy wziąć pod uwagę, opracowując aplikacje o wysokiej wydajności, korzystające z obiektów blob. Podczas skalowania i równoważenia obciążenia w usłudze Azure Storage używany jest schemat partycjonowania na podstawie zakresów. Ta konfiguracja oznacza, że pliki z podobną konwencją nazewnictwa lub podobnymi prefiksami są umieszczane w tej samej partycji. Ta logika dotyczy także nazwy kontenera, do którego przekazywane są pliki. W tym samouczku używane są pliki, których nazwa zawiera identyfikator GUID, a ich zawartość jest generowana losowo. Są one przekazywane do pięciu różnych kontenerów o losowych nazwach.
+[Nazewnictwo partycji](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) to kolejny potencjalnie ważny czynnik, opracowując aplikacje o wysokiej wydajności przy użyciu obiektów blob. Dla rozmiary bloków większa lub równa cztery MiB [o wysokiej przepływności blokowych obiektów blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) są używane i partycji nazw nie ma wpływu na wydajność. Blok rozmiary mniej niż cztery MiB schematu partycjonowania opartej na zakresie do skalowania i równoważenia obciążenia używa usługi Azure storage. Ta konfiguracja oznacza, że pliki z podobną konwencją nazewnictwa lub podobnymi prefiksami są umieszczane w tej samej partycji. Ta logika dotyczy także nazwy kontenera, do którego przekazywane są pliki. W tym samouczku używane są pliki, których nazwa zawiera identyfikator GUID, a ich zawartość jest generowana losowo. Są one przekazywane do pięciu różnych kontenerów o losowych nazwach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -71,7 +71,7 @@ Oprócz skonfigurowania ustawień wątków oraz limitu połączeń, opcje [BlobR
 
 |Właściwość|Wartość|Opis|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| To ustawienie dzieli obiekt blob na bloki na potrzeby przekazywania. Aby osiągnąć najwyższą wydajność, ta wartość powinna być 8-krotnością liczby rdzeni. |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| To ustawienie dzieli obiekt blob na bloki na potrzeby przekazywania. Aby osiągnąć najwyższą wydajność ta wartość powinna być 8-krotnością liczby rdzeni. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ta właściwość wyłącza sprawdzanie skrótu MD5 przekazanej zawartości. Wyłączenie sprawdzania poprawności skrótu MD5 zwiększa szybkość transferu. Jednak poprawność i integralność przekazywanych plików nie jest wtedy sprawdzana.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ta właściwość określa, czy skrót MD5 jest obliczany i przechowywany w pliku.   |
 | [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| Czas wycofania: 2 sekundy, maksymalna liczba ponawianych prób: 10 |Określa zasady ponawiania żądań. Połączenia zakończone niepowodzeniem są ponawianie. W tym przykładzie skonfigurowano zasadę [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) z 2-sekundowych wycofaniem, a maksymalna liczba prób wynosi 10. To ustawienie jest istotne, jeśli aplikacja zbliży się do osiągnięcia [docelowych wartości skalowalności usługi Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |

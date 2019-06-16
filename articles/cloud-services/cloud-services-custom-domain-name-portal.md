@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e210882cb773718f68e9178cbbce6874c2729744
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337480"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063611"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze platformy Azure
-Podczas tworzenia usługi w chmurze, platforma Azure przypisuje go do domeny podrzędnej **cloudapp.net**. Na przykład, jeśli usługa w chmurze ma nazwę "contoso", użytkownicy będą mogli korzystać z aplikacji na adres URL podobny http://contoso.cloudapp.net. Platforma Azure przypisuje także wirtualnego adresu IP.
+Podczas tworzenia usługi w chmurze, platforma Azure przypisuje go do domeny podrzędnej **cloudapp.net**. Na przykład, jeśli usługa w chmurze ma nazwę "contoso", użytkownicy będą mogli korzystać z aplikacji na adres URL podobny `http://contoso.cloudapp.net`. Platforma Azure przypisuje także wirtualnego adresu IP.
 
 Jednak również udostępnić aplikację na własną nazwę domeny, takich jak **contoso.com**. W tym artykule wyjaśniono, jak zarezerwować lub konfigurowanie niestandardowej nazwy domeny dla ról sieci web usługi w chmurze.
 
@@ -78,7 +78,7 @@ Aby utworzyć rekord CNAME, należy dodać nowy wpis w tabeli DNS dla domeny nie
      Zapisz nazwę domeny używanej w adresie URL zwrócone przez jednej z metod, ponieważ będzie on potrzebny podczas tworzenia rekordu CNAME.
 2. Zaloguj się do rejestratora DNS witryny sieci Web i przejdź do strony zarządzania DNS. Znajdź łącza lub obszarów witryny oznaczone jako **nazwy domeny**, **DNS**, lub **Zarządzanie serwerem nazw**.
 3. Teraz można znaleźć, gdzie wybierz lub wprowadź firmy CNAME. Może być konieczne wybierz typ rekordu, z listy rozwijanej lub przejdź do strony ustawień zaawansowanych. Należy szukać wyrazy **CNAME**, **Alias**, lub **poddomen**.
-4. Należy również podać domeny lub poddomeny alias dla tego rekordu CNAME, takich jak **www** Jeśli chcesz utworzyć alias **www\.customdomain.com**. Jeśli chcesz utworzyć alias dla domeny głównej, może być dostępna jako "**\@**" symbol w narzędziach DNS u rejestratora swojej firmy.
+4. Należy również podać domeny lub poddomeny alias dla tego rekordu CNAME, takich jak **www** Jeśli chcesz utworzyć alias **www\.customdomain.com**. Jeśli chcesz utworzyć alias dla domeny głównej, może być dostępna jako " **\@** " symbol w narzędziach DNS u rejestratora swojej firmy.
 5. Następnie musisz podać nazwę kanoniczną hosta, którego Twoja aplikacja **cloudapp.net** domeny, w tym przypadku.
 
 Na przykład, następujący rekord CNAME przekazuje cały ruch z **www\.contoso.com** do **contoso.cloudapp.net**, nazwa domeny niestandardowej w Twojej wdrożonej aplikacji:
@@ -113,7 +113,7 @@ Aby utworzyć rekord A, możesz znaleźć wirtualnego adresu IP usługi w chmurz
 3. Teraz można znaleźć, którym można wybrać lub wprowadzić rekord. Może być konieczne wybierz typ rekordu, z listy rozwijanej lub przejdź do strony ustawień zaawansowanych.
 4. Wybierz lub wprowadź domeny lub poddomeny, który będzie używał tego rekordu A. Na przykład wybierz **www** Jeśli chcesz utworzyć alias **www\.customdomain.com**. Jeśli chcesz utworzyć wpis symboli wieloznacznych dla wszystkich domen podrzędnych, wprowadź "***". Wszystkimi domenami podrzędnymi będzie on zawierał takie jak **mail.customdomain.com**, **login.customdomain.com**, i **www\.customdomain.com**.
 
-    Jeśli chcesz utworzyć rekord A dla domeny katalogu głównego, może być wyświetlany jako "**\@**" symbol w narzędziach DNS u rejestratora swojej firmy.
+    Jeśli chcesz utworzyć rekord A dla domeny katalogu głównego, może być wyświetlany jako " **\@** " symbol w narzędziach DNS u rejestratora swojej firmy.
 5. Wprowadź adres IP, usługi w chmurze, w polu podana. Skojarzenie wpis domeny używane w rekordzie o adresie IP wdrażania usługi w chmurze.
 
 Na przykład następujący rekord przekazuje cały ruch z **contoso.com** do **137.135.70.239**, adres IP Twojej wdrożonej aplikacji:

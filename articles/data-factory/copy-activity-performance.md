@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3ae6966ed3fa8ee57e0ac85fe34866dcbde0fb9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077248"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](v1/data-factory-copy-activity-performance.md)
 > * [Bieżąca wersja](copy-activity-performance.md)
 
@@ -306,7 +306,7 @@ Pamiętaj, że źródłowy magazyn danych nie jest przeciążony innych obciąż
 
 Magazyny danych firmy Microsoft, można znaleźć [monitorowania i dostrajania tematy](#performance-reference) specyficznych dla magazynów danych. Te tematy mogą pomóc zrozumieć charakterystyki wydajności magazynu danych oraz jak zminimalizować czas reakcji i zmaksymalizowania wydajności.
 
-* Po skopiowaniu danych **z magazynu obiektów Blob w usłudze SQL Data Warehouse**, należy rozważyć użycie **PolyBase** do poprawienia wydajności. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) Aby uzyskać szczegółowe informacje.
+* Po skopiowaniu danych **wszelkie dane magazynu do usługi Azure SQL Data Warehouse**, należy rozważyć użycie **PolyBase** do poprawienia wydajności. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) Aby uzyskać szczegółowe informacje.
 * Po skopiowaniu danych **z systemu plików HDFS do usługi Azure Blob/Azure Data Lake Store**, należy rozważyć użycie **DistCp** do poprawienia wydajności. Zobacz [DistCp użycia w celu skopiowania danych z systemu plików HDFS](connector-hdfs.md#use-distcp-to-copy-data-from-hdfs) Aby uzyskać szczegółowe informacje.
 * Po skopiowaniu danych **z usługi Redshift do usługi Azure SQL danych Warehouse/Azure obiekt BLob/Azure Data Lake Store**, należy rozważyć użycie **zwolnienie** do poprawienia wydajności. Zobacz [zwolnienie Użyj, aby skopiować dane z usługi Amazon Redshift](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift) Aby uzyskać szczegółowe informacje.
 
@@ -317,10 +317,8 @@ Magazyny danych firmy Microsoft, można znaleźć [monitorowania i dostrajania t
 
 ### <a name="relational-data-stores"></a>Magazyny danych relacyjnych
 
-* **Skopiuj zachowanie**: W zależności od właściwości ustawiono dla **sqlSink**, działanie kopiowania zapisuje dane do docelowej bazy danych na różne sposoby.
-  * Domyślnie używa usługi przenoszenia danych interfejsu API kopiowania zbiorczego wstawiania danych w Dołącz trybu, który zapewnia najlepszą wydajność.
-  * Jeśli skonfigurujesz procedury składowanej w ujściu bazy danych stosuje się jeden wiersz danych w czasie zamiast jako ładowania zbiorczego. Wydajności znacznie spada. Jeśli zestaw danych jest duży, jeśli ma to zastosowanie, rozważ przejście na **preCopyScript** właściwości.
-  * Jeśli skonfigurujesz **preCopyScript** uruchomić właściwości dla każdego działania kopiowania, usługa wyzwala skrypt i następnie wstawić dane za pomocą interfejsu API kopiowania zbiorczego. Na przykład aby zastąpić całą tabelę przy użyciu najnowszych danych, można określić skrypt, aby usunąć wszystkie rekordy przed ładowania zbiorczego nowe dane ze źródła.
+* **Skopiuj domniemanie zachowanie i wydajność**: Istnieją różne sposoby zapisywania danych na SQL ujścia, Dowiedz się więcej z [najlepsze praktyki dotyczące ładowania danych do usługi Azure SQL Database](connector-azure-sql-database.md#best-practice-for-loading-data-into-azure-sql-database).
+
 * **Rozmiar danych wzorca i batch**:
   * Schemat tabeli ma wpływ na przepływność kopiowania. Aby skopiować podobną ilość danych, rozmiaru duży wiersz zapewnia lepszą wydajność niż rozmiar wiersza małych ponieważ bazy danych można efektywniej zatwierdzić mniejszej liczby partii danych.
   * Działanie kopiowania wstawia dane z serii partii. Możesz ustawić liczbę wierszy w zadaniu wsadowym, używając **writeBatchSize** właściwości. Jeśli dane zawierają małe wiersze, możesz ustawić **writeBatchSize** właściwość o wyższej wartości do korzystania z mniejszy narzut partii i wyższej przepływności. Jeśli rozmiar wiersza danych jest duży, należy zachować ostrożność, wraz ze zwiększeniem **writeBatchSize**. O wysokiej wartości może prowadzić do awarii kopiowania spowodowane przeciążeniem bazy danych.

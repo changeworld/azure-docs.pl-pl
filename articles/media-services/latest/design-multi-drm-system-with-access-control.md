@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734211"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu 
@@ -329,7 +329,7 @@ Aby zarejestrować i skonfigurować aplikację wskaźnika w usłudze Azure AD, w
 
 3. Aktualizacja pliku manifestu aplikacji, tak aby właściwość groupMembershipClaims ma wartość "groupMembershipClaims": "Wszystkie".
 
-4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]**. Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
+4. W aplikacji usługi Azure AD, która wskazuje na odtwarzaczu aplikacji sieci web, w sekcji **uprawnień dotyczących innych aplikacji**, Dodaj aplikacji zasobu, który został dodany w kroku 1. W obszarze **delegowane uprawnienia**, wybierz opcję **dostępu [resource_name]** . Ta opcja zapewnia uprawnienia aplikacji sieci web do tworzenia tokenów dostępu, uzyskujących dostęp do aplikacji zasobu. W tym lokalnych i wdrożonych wersji aplikacji sieci web w przypadku tworzenia przy użyciu programu Visual Studio i aplikacji sieci web platformy Azure.
 
 Token JWT wystawione przez usługę Azure AD jest token dostępu, które umożliwiają dostęp do zasobów wskaźnika.
 

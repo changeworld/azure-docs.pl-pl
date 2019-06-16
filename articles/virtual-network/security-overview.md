@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ee976f163bdb00511e2a8f85906aa59aaebbfa47
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056543"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -81,6 +81,7 @@ Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla siec
 * **ServiceFabric** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi ServiceFabric. Jeśli określisz *ServiceFabric* wartości, ruch jest dozwolony lub zablokowany do ServiceFabric. 
 * **AzureMachineLearning** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi AzureMachineLearning. Jeśli określisz *AzureMachineLearning* wartości, ruch jest dozwolony lub zablokowany do AzureMachineLearning. 
 * **BatchNodeManagement** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi platformy Azure BatchNodeManagement. Jeśli określisz *BatchNodeManagement* wartości, ruch jest dozwolony lub zablokowany z usługą Batch w węzłach obliczeniowych.
+* **AzureBackup**(tylko model Resource Manager): ten tag określa prefiksy adresów usługi AzureBackup. Jeśli określisz AzureBackup wartości ruch dozwolony lub blokowany do AzureBackup.
 
 > [!NOTE]
 > Tagi usług platformy Azure określają prefiksy adresów określonych chmur, które są używane. 
@@ -96,19 +97,19 @@ Platforma Azure tworzy następujące reguły domyślne w każdej tworzonej grupi
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priorytet|Source|Porty źródłowe|Miejsce docelowe|Porty docelowe|Protocol|Access|
+|Priorytet|source|Porty źródłowe|Miejsce docelowe|Porty docelowe|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Wszyscy|Zezwalaj|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priorytet|Source|Porty źródłowe|Miejsce docelowe|Porty docelowe|Protocol|Access|
+|Priorytet|source|Porty źródłowe|Miejsce docelowe|Porty docelowe|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Wszyscy|Zezwalaj|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priorytet|Source|Porty źródłowe|Miejsce docelowe|Porty docelowe|Protocol|Access|
+|Priorytet|source|Porty źródłowe|Miejsce docelowe|Porty docelowe|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Wszyscy|Zablokuj|
 
@@ -116,19 +117,19 @@ Platforma Azure tworzy następujące reguły domyślne w każdej tworzonej grupi
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priorytet|Source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
+|Priorytet|source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Wszyscy | Zezwalaj |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priorytet|Source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
+|Priorytet|source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Wszyscy | Zezwalaj |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priorytet|Source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
+|Priorytet|source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Wszyscy | Zablokuj |
 
@@ -148,7 +149,7 @@ Na poprzedniej ilustracji interfejsy sieciowe *NIC1* i *NIC2* są elementami cz�
 
 Ta reguła jest potrzebna w celu zezwolenia na ruch z Internetu do serwerów internetowych. Ponieważ ruch przychodzący z Internetu jest blokowany przez domyślną regułę zabezpieczeń [DenyAllInbound](#denyallinbound), dodatkowa reguła nie jest potrzebna w przypadku grup zabezpieczeń aplikacji *AsgLogic* i *AsgDb*.
 
-|Priorytet|Source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
+|Priorytet|source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Zezwalaj |
 
@@ -156,7 +157,7 @@ Ta reguła jest potrzebna w celu zezwolenia na ruch z Internetu do serwerów int
 
 Ponieważ domyślna reguła zabezpieczeń [AllowVNetInBound](#allowvnetinbound) zezwala na całą komunikację między zasobami w tej samej sieci wirtualnej, ta zasada jest potrzebna w celu blokowania ruchu ze wszystkich zasobów.
 
-|Priorytet|Source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
+|Priorytet|source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Wszyscy | Zablokuj |
 
@@ -164,7 +165,7 @@ Ponieważ domyślna reguła zabezpieczeń [AllowVNetInBound](#allowvnetinbound) 
 
 Ta reguła zezwala na ruch z grupy zabezpieczeń aplikacji *AsgLogic* do grupy zabezpieczeń aplikacji *AsgDb*. Priorytet tej reguły jest wyższy niż priorytet reguły *Deny-Database-All*. W rezultacie ta reguła jest przetwarzana przed regułą *Deny-Database-All*, a więc ruch z grupy zabezpieczeń aplikacji *AsgLogic* jest dozwolony, natomiast cały pozostały ruch jest blokowany.
 
-|Priorytet|Source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
+|Priorytet|source|Porty źródłowe| Miejsce docelowe | Porty docelowe | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Zezwalaj |
 

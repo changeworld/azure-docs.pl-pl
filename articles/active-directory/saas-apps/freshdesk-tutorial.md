@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4bdeecc5682eb09ac0a65d3834ad1770258c4e0
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3ed903e71a019d0bdb1b62503913bd696e9d8a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898438"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją FreshDesk
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji FreshDesk z usługą Azure AD, należy 
 
 **Aby dodać aplikację FreshDesk z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -179,7 +179,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji FreshDesk,
 
     d. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
-    e. W polu tekstowym **Security Certificate Fingerprint** (Odcisk palca certyfikatu cyfrowego) wklej uzyskaną wcześniej wartość **Cert Hash(sha256)**.
+    e. W polu tekstowym **Security Certificate Fingerprint** (Odcisk palca certyfikatu cyfrowego) wklej uzyskaną wcześniej wartość **Cert Hash(sha256)** .
   
     f. Kliknij pozycję **Zapisz**.
 

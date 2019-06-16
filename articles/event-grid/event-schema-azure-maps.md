@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: v-musehg
 ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861858"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schemat zdarzeń Azure Event Grid dla usługi Azure Maps
@@ -127,7 +127,7 @@ Obiekt błąd jest zwracany, gdy wystąpi błąd w interfejsie API map. Obiekt b
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| error | Szczegóły błędu |Ten obiekt jest zwracany, gdy wystąpi błąd w interfejsie API map  |
+| error | ErrorDetails |Ten obiekt jest zwracany, gdy wystąpi błąd w interfejsie API map  |
 
 Obiekt ErrorDetails jest zwracany, gdy wystąpi błąd w interfejsie API map. Szczegóły błędu lub obiekt ma następujące właściwości:
 

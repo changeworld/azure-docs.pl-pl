@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: 158b229c2c45a14ed0fd5433d1903eca92f32401
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851645"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w usłudze SQL Data Warehouse
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 Po uruchomieniu zapytania, które można rozpocząć Spójrz na dane i przeanalizować wyniki. W następującej tabeli opisano, gdzie jej szukać w analizy grupy wierszy.
 
-| Kolumnowy | Jak używać tych danych |
+| Kolumna | Jak używać tych danych |
 | --- | --- |
 | [table_partition_count] |Jeśli tabela jest podzielona na partycje, może oczekiwać zobaczyć, że liczba wyższej grupy Otwórz wiersz. Każda partycja w dystrybucji może teoretycznie istnieje grupa Otwórz wiersz skojarzonych z nim. Należy wziąć to do analizy. Małej tabeli, który jest podzielony na partycje można można zoptymalizować, usuwając całkowicie partycjonowania, ponieważ może to poprawić kompresji. |
 | [row_count_total] |Całkowita liczba wierszy w tabeli. Na przykład można użyć tej wartości do obliczania wartości procentowej wierszy w skompresowanym stanie. |

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: d43cdec9e906087c98759a478ebc0c86beaa1354
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693275"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077510"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Samouczek: Tworzenie skojarzenia usługi ExpressRoute przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
@@ -47,8 +47,8 @@ Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować sw
 
 **Zagadnienia dotyczące wersji zapoznawczej:**
 
-Obwód usługi ExpressRoute musi być włączona w kraju/regionu, który obsługuje [zasięgu globalnym ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
-Obwód usługi ExpressRoute musi być obwodu — wersja Premium, aby nawiązać połączenie wirtualnej sieci WAN Centrum. 
+  * Obwód usługi ExpressRoute musi być włączona w kraju/regionu, który obsługuje [zasięgu globalnym ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
+  * Obwód usługi ExpressRoute musi być obwodu Premium, aby można było połączyć się z Centrum wirtualne sieci WAN. 
 
 ## <a name="vnet"></a>1. Tworzenie sieci wirtualnej
 

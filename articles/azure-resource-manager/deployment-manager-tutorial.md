@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bf21e8cb69091c222b73bb939b3a36caf097c299
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238851"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144155"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: Azure Deployment Manager za pomocą szablonów usługi Resource Manager (publiczna wersja zapoznawcza)
 
-Dowiedz się, jak używać usługi [Azure Deployment Manager](./deployment-manager-overview.md), aby wdrażać aplikacje w wielu regionach. Aby użyć usługi Deployment Manager, musisz utworzyć dwa szablony:
+Dowiedz się, jak używać usługi [Azure Deployment Manager](./deployment-manager-overview.md), aby wdrażać aplikacje w wielu regionach. Jeśli wolisz podejście szybciej [Szybki Start Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart) tworzy wymagane konfiguracje w ramach subskrypcji i dostosowuje artefaktów, aby wdrożyć aplikację w wielu regionach. Samouczek Szybki Start wykonuje te same zadania co w tym samouczku.
+
+Aby użyć usługi Deployment Manager, musisz utworzyć dwa szablony:
 
 * **Szablon topologii**: opisuje zasoby platformy Azure składające się na aplikację oraz miejsce ich wdrożenia.
 * **Szablon wprowadzania**: opisuje kroki do wykonania podczas wdrażania aplikacji.
@@ -44,7 +46,10 @@ Ten samouczek obejmuje następujące zadania:
 > * Wdrażanie nowszej wersji
 > * Oczyszczanie zasobów
 
-Dokumentację interfejsu REST API usługi Azure Deployment Manager można znaleźć [tutaj](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Dodatkowe zasoby:
+
+* [Odwołanie do interfejsu REST API usługi Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Samouczek: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 

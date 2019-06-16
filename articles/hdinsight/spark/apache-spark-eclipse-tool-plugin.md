@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 1ae585322316a9c215fc32cc2f8ffba2f332ff61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cd5839520a5b85f31cbe677ad6691a3d6bacd0b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066354"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
@@ -93,7 +93,7 @@ Możesz połączyć normalny klaster przy użyciu nazwy użytkownika systemu Amb
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Konfigurowanie projektu Spark Scala dla klastra usługi HDInsight Spark
 
 1. W obszarze roboczym środowiska IDE programu Eclipse wybierz **pliku**, wybierz opcję **nowy**, a następnie wybierz pozycję **projektu**. 
-1. W Kreatorze nowego projektu, rozwiń **HDInsight**, wybierz opcję **Spark on HDInsight (Scala)**, a następnie wybierz pozycję **dalej**.
+1. W Kreatorze nowego projektu, rozwiń **HDInsight**, wybierz opcję **Spark on HDInsight (Scala)** , a następnie wybierz pozycję **dalej**.
 
    ![Wybieranie platformy Spark w projekcie HDInsight (Scala)](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 1. Kreator tworzenia projektu w języku Scala automatycznie wykrywa, czy zainstalowany Scala wtyczki. Wybierz **OK** można kontynuować pobieranie Scala wtyczki, a następnie postępuj zgodnie z instrukcjami, aby ponownie uruchomić środowiska Eclipse.
@@ -191,7 +191,7 @@ Za pomocą narzędzi HDInsight, takich jak uzyskiwanie dostępu do danych wyjśc
 1. Na pulpicie nawigacyjnym serwer historii platformy Spark Nazwa aplikacji jest służy do wyszukiwania dla aplikacji, w właśnie został uruchomiony. W poprzednim kodzie, należy określić nazwę aplikacji przy użyciu `val conf = new SparkConf().setAppName("MyClusterApp")`. Dlatego został nazwę swojej aplikacji Spark **MyClusterApp**.
 
 ### <a name="start-the-apache-ambari-portal"></a>Uruchom portal Apache Ambari
-1. W Eksploratorze usługi Azure, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz **Otwórz Portal zarządzania klastrem (Ambari)**. 
+1. W Eksploratorze usługi Azure, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz **Otwórz Portal zarządzania klastrem (Ambari)** . 
 1. Po wyświetleniu monitu wprowadź poświadczenia administratora dla klastra. Określono je podczas inicjowania obsługi klastra.
 
 ### <a name="manage-azure-subscriptions"></a>Zarządzanie subskrypcjami platformy Azure
@@ -212,7 +212,7 @@ Aby rozwiązać ten problem, musisz mieć [Pobierz plik wykonywalny](https://pub
 1. Uruchom środowisko Eclipse i Utwórz projekt. W **nowy projekt** okno dialogowe, wybierz następujące opcje, a następnie wybierz pozycję **dalej**.
    
    * W lewym okienku wybierz opcję **HDInsight**.
-   * W okienku po prawej stronie wybierz **Spark on HDInsight lokalnego Uruchom próbkę (Scala)**.
+   * W okienku po prawej stronie wybierz **Spark on HDInsight lokalnego Uruchom próbkę (Scala)** .
 
    ![Okno dialogowe Nowy projekt](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
    
@@ -226,6 +226,60 @@ Aby rozwiązać ten problem, musisz mieć [Pobierz plik wykonywalny](https://pub
    
    ![Aplikacja Spark lokalnego uruchomienia wyniku](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
+## <a name="reader-only-role"></a>Rola tylko do czytnika
+Gdy użytkownicy przesyłania zadania do klastra z uprawnieniami tylko do odczytywania roli, Ambari poświadczenia jest wymagana.
+
+### <a name="link-cluster-from-context-menu"></a>Połącz klaster z menu kontekstowego
+
+1. Zaloguj się przy użyciu konta roli Czytelnik — tylko.
+       
+2. Z **Eksploratora usługi Azure**, rozwiń węzeł **HDInsight** do wyświetlania klastrów HDInsight, które znajdują się w Twojej subskrypcji. Oznaczone jako klastry **"Rola: Czytelnik"** tylko mają uprawnienia tylko do odczytywania roli.
+
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+
+3. Kliknij prawym przyciskiem myszy klaster z uprawnieniami tylko do odczytywania roli. Wybierz **połączyć ten klaster** z menu kontekstowego w celu połączenia klastra. Wprowadź nazwę użytkownika systemu Ambari i hasło.
+
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+
+4. Jeśli klaster został połączony pomyślnie, zostanie odświeżona HDInsight.
+   Etap klastra będzie stają się połączony.
+  
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+
+
+
+### <a name="link-cluster-by-expanding-jobs-node"></a>Link klastra, rozwijając węzeł zadań
+
+1. Kliknij przycisk **zadania** węzła **klastra zadania dostępu** pojawi się okno.
+   
+2. Kliknij przycisk **połączyć ten klaster** celu połączenia klastra.
+   
+    ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+
+### <a name="link-cluster-from-spark-submission-window"></a>Link klastra z poziomu okna przesyłania platformy Spark
+
+1. Utwórz projekt HDInsight.
+
+2. Kliknij prawym przyciskiem myszy pakiet. Następnie wybierz pozycję **przesyłanie aplikacji Spark HDInsight**.
+   
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+
+3. Wybierz klaster, który ma uprawnienia tylko do odczytywania roli dla **nazwy klastra**. Pokazuje komunikat ostrzegawczy. Możesz kliknąć pozycję **połączyć ten klaster** celu połączenia klastra.
+   
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   
+### <a name="view-storage-accounts"></a>Widok kont magazynu
+
+* W przypadku klastrów z uprawnieniami tylko do odczytywania roli kliknij **kont magazynu** węzła **odmowa dostępu do magazynu** pojawi się okno. 
+     
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+
+* Połączone klastrów, kliknij przycisk **kont magazynu** węzła **odmowa dostępu do magazynu** pojawi się okno. 
+     
+   ![Klastry HDInsight Spark, w Eksploratorze usługi Azure](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+
 ## <a name="known-problems"></a>Znane problemy
 Gdy połączenie klastra, I sugerować, musisz podać poświadczenia magazynu.
 
@@ -236,9 +290,6 @@ Istnieją dwa tryby można przesłać zadania. Jeśli nie podano poświadczeń m
 ![Błąd Eclipse po klastra zajęty](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
 
 ![Błąd Eclipse po klastra zajęty](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
-
-## <a name="feedback"></a>Opinia
-Jeśli masz opinię lub występują inne problemy, korzystając z tego narzędzia, Wyślij do nas wiadomość e-mail na hdivstool@microsoft.com.
 
 ## <a name="seealso"></a>Zobacz też
 * [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
@@ -257,7 +308,6 @@ Jeśli masz opinię lub występują inne problemy, korzystając z tego narzędzi
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](apache-spark-intellij-tool-plugin.md)
 * [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem protokołu SSH przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Korzystanie z notesów Apache Zeppelin na HDInsight klastra Apache Spark](apache-spark-zeppelin-notebook.md)
 * [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)

@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: f0ae734ac8814cc605ce03756fde5545c77c837d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063872"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka PHP
 
@@ -51,7 +51,23 @@ Jedynym wymaganiem dla tworzenia aplikacji w języku PHP, który uzyskuje dostę
 W tym artykule opisano, jak korzystać z funkcji usługi, które mogą być wywoływane w ramach aplikacji PHP lokalnie lub w kodzie, w ramach roli sieci web platformy Azure, rola procesu roboczego lub witryny sieci Web.
 
 ## <a name="get-the-azure-client-libraries"></a>Pobierz biblioteki klienta usługi Azure
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+
+### <a name="install-via-composer"></a>Instalowanie za pomocą Composer (kompozytor)
+1. Utwórz plik o nazwie **composer.json** w katalogu głównym projektu i dodać do niego następujący kod:
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. Pobierz **[composer.phar] [composer phar]** w katalogu głównym projektu.
+3. Otwórz wiersz polecenia i uruchom następujące polecenie w katalogu głównym projektu
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
 Aby użyć interfejsów API usługi Service Bus:
@@ -67,7 +83,7 @@ Poniższy przykład pokazuje, jak to plik automatycznej ładowarki i odwołania 
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 

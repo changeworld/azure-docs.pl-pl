@@ -17,12 +17,12 @@ ms.date: 06/27/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60294382"
+ms.locfileid: "67108840"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Podręcznik usługi Azure Active Directory Identity Protection
 
@@ -135,7 +135,7 @@ Aby uzyskać więcej informacji, zobacz temat [How To: Configure the user risk p
 6. Podniesienie poziomu ryzyka użytkownika konta testowego, na przykład, symulując jednego ze zdarzeń o podwyższonym ryzyku kilka razy.
 7. Poczekaj kilka minut, a następnie sprawdź, czy poziom użytkownika dla użytkownika to średni. W przeciwnym razie symulować więcej zdarzeń o podwyższonym ryzyku dla użytkownika.
 8. Jako **wymuszanie zasad**, wybierz opcję **na**.
-9. Teraz możesz przetestować dostęp warunkowy na podstawie ryzyka użytkownika, logując się przy użyciu poziom ryzyka związanego z podwyższonym poziomem uprawnień użytkownika.
+9. Teraz możesz przetestować użytkownika dostępu warunkowego na podstawie ryzyka, logując się przy użyciu poziom ryzyka związanego z podwyższonym poziomem uprawnień użytkownika.
     
     
 

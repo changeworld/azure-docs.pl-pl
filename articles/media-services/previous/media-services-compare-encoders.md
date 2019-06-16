@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: bb827b80f79a53f30074b9230efe3e2049471051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465715"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Porównanie platformy Azure na żądanie koderów multimediów  
@@ -31,13 +31,13 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 
 |Możliwości|Usługa Media Encoder Standard|Przepływ pracy usługi Media Encoder w warstwie Premium|
 |---|---|---|
-|Zastosuj logikę warunkową podczas kodowania<br/>(na przykład, jeśli dane wejściowe są HD, następnie zakodować 5.1 audio)|Nie|Yes|
+|Zastosuj logikę warunkową podczas kodowania<br/>(na przykład, jeśli dane wejściowe są HD, następnie zakodować 5.1 audio)|Nie|Tak|
 |Podpisy kodowane|Nie|[Tak](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® Professional Loudness Correction](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> za pomocą Intelligence™ dialogu|Nie|Yes|
+|[Dolby® Professional Loudness Correction](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> za pomocą Intelligence™ dialogu|Nie|Tak|
 |Usuwania przeplotu, odwrotność telecine|Podstawowa|Jakości odpowiedniej do emisji|
-|Wykrywania i usuwania czarne obramowanie <br/>(pillarboxes letterboxes)|Nie|Yes|
+|Wykrywania i usuwania czarne obramowanie <br/>(pillarboxes letterboxes)|Nie|Tak|
 |Generowanie miniatur|[Tak](media-services-dotnet-generate-thumbnail-with-mes.md)|[Tak](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
-|Wycinka/przycinania i łączenie — wideo|[Tak](media-services-advanced-encoding-with-mes.md#trim_video)|Yes|
+|Wycinka/przycinania i łączenie — wideo|[Tak](media-services-advanced-encoding-with-mes.md#trim_video)|Tak|
 |Nakładki audio lub wideo|[Tak](media-services-advanced-encoding-with-mes.md#overlay)|[Tak](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
 |Nakładki grafiki|Od źródła obrazu|Ze źródeł tekstowych i obrazów|
 |Wielu wersji językowych audio|Ograniczone|[Tak](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
@@ -51,92 +51,92 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 ## <a name="input-containerfile-formats"></a>Dane wejściowe formaty kontenerów/plików
 | Dane wejściowe formaty kontenerów/plików | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Yes |Yes |
-| MXF/SMPTE 377M |Yes |Yes |
-| GXF |Yes |Yes |
-| Strumienie transportu MPEG-2 |Yes |Yes |
-| Strumienie programu MPEG-2 |Yes |Yes |
-| MPEG-4/MP4 |Yes |Yes |
-| Windows Media/ASF |Yes |Yes |
-| AVI (nieskompresowany 8-bitowy/10-bitowy) |Yes |Yes |
+| Adobe® Flash® F4V |Tak |Yes |
+| MXF/SMPTE 377M |Yes |Tak |
+| GXF |Yes |Tak |
+| Strumienie transportu MPEG-2 |Yes |Tak |
+| Strumienie programu MPEG-2 |Tak |Yes |
+| MPEG-4/MP4 |Tak |Tak |
+| Windows Media/ASF |Tak |Yes |
+| AVI (nieskompresowany 8-bitowy/10-bitowy) |Tak |Tak |
 | 3GPP/3GPP2 |Yes |Nie |
-| Bezproblemowe przesyłania strumieniowego Format pliku (PIFF 1.3) |Yes |Nie |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Yes |Nie |
-| Matroska/WebM |Yes |Nie |
+| Bezproblemowe przesyłania strumieniowego Format pliku (PIFF 1.3) |Tak |Nie |
+| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Tak |Nie |
+| Matroska/WebM |Tak |Nie |
 | QuickTime (.mov) |Yes |Nie |
 
 ## <a name="input-video-codecs"></a>Dane wejściowe koderów-dekoderów wideo
 | Dane wejściowe koderów-dekoderów wideo | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
-| AVC 8-bitowy/10-bitowy, maksymalnie 4:2:2, wraz z AVCIntra |8-bitowy 4:2:0 oraz 4:2:2 |Yes |
+| AVC 8-bitowy/10-bitowy, maksymalnie 4:2:2, wraz z AVCIntra |8-bitowy 4:2:0 oraz 4:2:2 |Tak |
 | Avid DNxHD (in MXF) |Yes |Yes |
-| DVCPro/DVCProHD (in MXF) |Yes |Yes |
-| JPEG2000 |Yes |Yes |
-| MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Maksymalnie profil 422 |Yes |
-| MPEG-1 |Yes |Yes |
-| Windows Media Video/VC-1 |Yes |Yes |
+| DVCPro/DVCProHD (in MXF) |Tak |Tak |
+| JPEG2000 |Yes |Tak |
+| MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Maksymalnie profil 422 |Tak |
+| MPEG-1 |Yes |Tak |
+| Windows Media Video/VC-1 |Tak |Tak |
 | Canopus Centrali/HQX |Nie |Nie |
-| MPEG-4 Part 2 |Yes |Nie |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |Nie |
+| MPEG-4 Part 2 |Tak |Nie |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Tak |Nie |
 | Apple ProRes 422 |Yes |Nie |
 | Apple ProRes 422 LT |Yes |Nie |
-| Apple ProRes 422 Centralą |Yes |Nie |
-| Apple ProRes Proxy |Yes |Nie |
-| Apple ProRes 4444 |Yes |Nie |
+| Apple ProRes 422 Centralą |Tak |Nie |
+| Apple ProRes Proxy |Tak |Nie |
+| Apple ProRes 4444 |Tak |Nie |
 | XQ 4444 ProRes firmy Apple |Yes |Nie |
 | HEVC/H.265|Główny profil|Główne i profilu Main 10|
 
 ## <a name="input-audio-codecs"></a>Dane wejściowe audio kodery-dekodery
 | Dane wejściowe Audio kodery-dekodery | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
-| AES (SMPTE 331 M oraz 302 M, AES3-2003) |Nie |Yes |
-| Dolby® E |Nie |Yes |
+| AES (SMPTE 331 M oraz 302 M, AES3-2003) |Nie |Tak |
+| Dolby® E |Nie |Tak |
 | Dolby® Digital (AC3) |Nie |Yes |
 | Dolby® Digital Plus (E-AC3) |Nie |Yes |
-| AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Yes |Yes |
-| MPEG Layer 2 |Yes |Yes |
-| Mp3 (MPEG-1 Audio warstwa 3) |Yes |Yes |
-| Program Windows Media Audio |Yes |Yes |
+| AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Tak |Tak |
+| MPEG Layer 2 |Tak |Yes |
+| Mp3 (MPEG-1 Audio warstwa 3) |Tak |Yes |
+| Program Windows Media Audio |Tak |Tak |
 | WAV/PCM |Yes |Yes |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Yes |Nie |
-| [Dziele](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Yes |Nie |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Tak |Nie |
+| [Dziele](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Tak |Nie |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |Nie |
 
 ## <a name="output-containerfile-formats"></a>Formaty kontenerów/plików danych wyjściowych
 | Formaty kontenerów/plików danych wyjściowych | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Nie |Yes |
-| MXF (OP1a, XDCAM i AS02) |Nie |Yes |
-| DPP (w tym AS11) |Nie |Yes |
-| GXF |Nie |Yes |
-| MPEG-4/MP4 |Yes |Yes |
-| MPEG-TS |Yes |Yes |
-| Windows Media/ASF |Nie |Yes |
-| AVI (nieskompresowany 8-bitowy/10-bitowy) |Nie |Yes |
-| Bezproblemowe przesyłania strumieniowego Format pliku (PIFF 1.3) |Nie |Yes |
+| Adobe® Flash® F4V |Nie |Tak |
+| MXF (OP1a, XDCAM i AS02) |Nie |Tak |
+| DPP (w tym AS11) |Nie |Tak |
+| GXF |Nie |Tak |
+| MPEG-4/MP4 |Yes |Tak |
+| MPEG-TS |Yes |Tak |
+| Windows Media/ASF |Nie |Tak |
+| AVI (nieskompresowany 8-bitowy/10-bitowy) |Nie |Tak |
+| Bezproblemowe przesyłania strumieniowego Format pliku (PIFF 1.3) |Nie |Tak |
 
 ## <a name="output-video-codecs"></a>Dane wyjściowe koderów-dekoderów wideo
 | Dane wyjściowe koderów-dekoderów wideo | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
-| AVC (H.264; 8-bitową; do profilu wysokiego poziomu 5.2; 4 K najwyższej jakości HD; Wewnątrz AVC) |Tylko 8-bitowy 4:2:0 |Yes |
-| — HEVC (H.265; 8-bitową i 10-bitowy)  |Nie |Yes |
-| Avid DNxHD (in MXF) |Nie |Yes |
-| MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Nie |Yes |
+| AVC (H.264; 8-bitową; do profilu wysokiego poziomu 5.2; 4 K najwyższej jakości HD; Wewnątrz AVC) |Tylko 8-bitowy 4:2:0 |Tak |
+| — HEVC (H.265; 8-bitową i 10-bitowy)  |Nie |Tak |
+| Avid DNxHD (in MXF) |Nie |Tak |
+| MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Nie |Tak |
 | MPEG-1 |Nie |Yes |
-| Windows Media Video/VC-1 |Nie |Yes |
+| Windows Media Video/VC-1 |Nie |Tak |
 | Tworzenie miniatur JPEG |Yes |Yes |
 | Tworzenie miniatur PNG |Yes |Yes |
-| Tworzenie miniatur BMP |Yes |Nie |
+| Tworzenie miniatur BMP |Tak |Nie |
 
 ## <a name="output-audio-codecs"></a>Kodery-dekodery audio w danych wyjściowych
 | Kodery-dekodery Audio w danych wyjściowych | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
 | AES (SMPTE 331 M oraz 302 M, AES3-2003) |Nie |Yes |
 | Dolby® Digital (AC3) |Nie |Yes |
-| Dolby® Digital Plus (E-AC3) do 7.1 |Nie |Yes |
-| AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Yes |Yes |
-| MPEG Layer 2 |Nie |Yes |
-| Mp3 (MPEG-1 Audio warstwa 3) |Nie |Yes |
+| Dolby® Digital Plus (E-AC3) do 7.1 |Nie |Tak |
+| AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Tak |Tak |
+| MPEG Layer 2 |Nie |Tak |
+| Mp3 (MPEG-1 Audio warstwa 3) |Nie |Tak |
 | Program Windows Media Audio |Nie |Yes |
 
 >[!NOTE]

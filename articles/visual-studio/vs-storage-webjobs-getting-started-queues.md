@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391237"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Wprowadzenie do usługi Azure Queue storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 Zestaw SDK automatycznie serializuje obiekt do formatu JSON. Komunikatu w kolejce zawsze jest tworzony, nawet jeśli obiekt ma wartość null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Utwórz wiele wiadomości lub funkcje asynchroniczne
-Aby utworzyć wiele wiadomości, należy typu parametru dla kolejki wyjściowej **ICollector<T>**  lub **IAsyncCollector<T>**, jak pokazano w poniższym przykładzie.
+Aby utworzyć wiele wiadomości, należy typu parametru dla kolejki wyjściowej **ICollector<T>**  lub **IAsyncCollector<T>** , jak pokazano w poniższym przykładzie.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -342,7 +342,7 @@ Komunikaty, w których zawartość powoduje, że funkcja nie powiedzie się, są
 ### <a name="automatic-poison-message-handling"></a>Obsługa automatycznego, zarządzanie skażonymi komunikatami
 Zestaw SDK wywoła funkcję maksymalnie 5 razy do przetwarzania komunikatu w kolejce. W przypadku awarii spróbuj piąty wiadomość zostanie przeniesiona do kolejki skażone. Możesz dowiedzieć się, jak skonfigurować maksymalną liczbę ponownych prób w [jak ustawić opcje konfiguracji](#how-to-set-configuration-options).
 
-Nosi nazwę kolejki skażone *{originalqueuename}*-skażone. Można napisać, że funkcja przetwarzania komunikatów z kolejki zanieczyszczone przez rejestrowania ich lub wysyłania powiadomienia, że ręczne uwagi jest wymagana.
+Nosi nazwę kolejki skażone *{originalqueuename}* -skażone. Można napisać, że funkcja przetwarzania komunikatów z kolejki zanieczyszczone przez rejestrowania ich lub wysyłania powiadomienia, że ręczne uwagi jest wymagana.
 
 W poniższym przykładzie **CopyBlob** funkcja zakończy się niepowodzeniem, gdy komunikatu w kolejce zawiera nazwę obiektu blob, który nie istnieje. Jeśli tak się stanie, wiadomość zostanie przeniesiona do kolejki copyblobqueue poison z kolejki copyblobqueue. **ProcessPoisonMessage** następnie logują się zarządzanie skażonymi komunikatami.
 
@@ -544,7 +544,7 @@ Na pulpicie nawigacyjnym zestawu SDK usługi WebJobs najbardziej aktualne 100 wi
 
 ![Przełącz dane wyjściowe](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-Ciągłe zadanie WebJob Dzienniki aplikacji widoczne w/data/zadania/ciągłe/*{webjobname}*/job_log.txt w systemie plików aplikacji sieci web.
+Ciągłe zadanie WebJob Dzienniki aplikacji widoczne w/data/zadania/ciągłe/ *{webjobname}* /job_log.txt w systemie plików aplikacji sieci web.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

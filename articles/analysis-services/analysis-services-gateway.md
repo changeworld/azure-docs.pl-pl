@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062240"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Nawiązywanie połączenia z lokalnymi źródłami danych za pomocą lokalnej bramy danych
 Lokalna brama danych zapewnia bezpieczny transfer danych między lokalnymi źródłami danych i serwerami usług Azure Analysis Services w chmurze. Oprócz Praca z wieloma serwerami usług Azure Analysis Services, w tym samym regionie, najnowszą wersję bramy współpracuje również z usługi Azure Logic Apps, usługa Power BI, Power Apps i Microsoft Flow. Można skojarzyć wiele usług w tej samej subskrypcji i tym samym regionie za pośrednictwem jednej bramy. 
 
 Pobieranie Instalatora bramy po raz pierwszy jest procesem czteroczęściową:
 
-- **Pobierz i uruchom Instalatora** — ta czynność powoduje zainstalowanie usługi bramy na komputerze w organizacji. Możesz też zarejestrować się w na platformie Azure przy użyciu konta w swojej [dzierżawcy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) usługi Azure AD. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane.
+- **Pobierz i uruchom Instalatora** — ta czynność powoduje zainstalowanie usługi bramy na komputerze w organizacji. Możesz też zarejestrować się w na platformie Azure przy użyciu konta w swojej [dzierżawcy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) usługi Azure AD. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane.
 
 - **Zarejestrować bramę** — w tym kroku należy określić nazwę i odzyskiwanie klucza dla bramy i wybierz region, rejestrowanie bramy przy użyciu usługi bramy w chmurze. Zasób bramy można zarejestrować w każdym regionie, ale zaleca się znajdować się w tym samym regionie jako serwery usług Analysis Services. 
 

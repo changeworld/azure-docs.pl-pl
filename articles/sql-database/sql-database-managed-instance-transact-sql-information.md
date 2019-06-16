@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070353"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -276,6 +276,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.
 
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
 
+- Włączanie i wyłączanie agenta programu SQL Server jest obecnie nieobsługiwane w wystąpienia zarządzanego. Agent SQL zawsze działa.
 - Ustawienia programu SQL Server Agent jest tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym. 
 - Zadania
   - Kroki w zadaniu języka T-SQL są obsługiwane.
@@ -456,13 +457,13 @@ Broker usług dla wielu wystąpień nie jest obsługiwane:
 - `Extended stored procedures` nie są obsługiwane w tym `sp_addextendedproc`  i `sp_dropextendedproc`. Zobacz [rozszerzonych procedur składowanych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`, i `sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
-## <a name="Environment"></a>Ograniczenia Environmet
+## <a name="Environment"></a>Ograniczenia środowiska
 
 ### <a name="subnet"></a>Podsieć
 - W podsieci, zarezerwowane wystąpienia zarządzanego nie można umieścić inne zasoby (na przykład maszyny wirtualne). Umieszczenie tych zasobów w innych podsieciach.
 - Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimalna to 16, chociaż zaleca się mieć co najmniej 32 adresów IP w podsieci.
 - [Punkty końcowe usługi nie może być skojarzony z podsieci wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, wyłączenia opcji punktów końcowych usługi podczas tworzenia sieci wirtualnej.
-- Liczba i typy wystąpień, które można umieścić w podsieci mają też [ograniczenia i limity](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Liczba rdzeni wirtualnych i typy wystąpień, które można wdrożyć w regionie występować [ograniczenia i limity](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Istnieją pewne [reguł zabezpieczeń, które muszą zostać zastosowane w danej podsieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
 ### <a name="vnet"></a>Sieć wirtualna

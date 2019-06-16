@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217508"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Tworzenie usługi Azure Functions z usługą Media Services
@@ -64,11 +64,11 @@ Po wdrożeniu aplikacji funkcji można znaleźć wśród **App Services** usług
 2. Wybierz **C#** języka i **przetwarzania danych** scenariusza.
 3. Wybierz **BlobTrigger** szablonu. Ta funkcja jest wyzwalane, gdy obiekt blob zostanie przekazany do **wejściowych** kontenera. **Wejściowych** nazwa została określona w **ścieżki**, w następnym kroku.
 
-    ![plików](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Po wybraniu **BlobTrigger**, niektóre dodatkowe formanty są wyświetlane na stronie.
 
-    ![plików](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Kliknij pozycję **Utwórz**. 
 
@@ -76,7 +76,7 @@ Po wdrożeniu aplikacji funkcji można znaleźć wśród **App Services** usług
 
 Funkcji platformy Azure jest skojarzony z plików kodu i innych plików, które są opisane w tej sekcji. Podczas tworzenia funkcji za pomocą witryny Azure portal **function.json** i **run.csx** są tworzone automatycznie. Należy dodać lub przekazać **project.json** pliku. Pozostała część tej sekcji zawiera krótki opis każdego pliku i wyświetla ich definicje.
 
-![plików](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 

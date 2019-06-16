@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061600"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i środowiska Node.js
 
@@ -106,7 +106,7 @@ Uzyskaj połączenie `connectionstring` wartość z [Azure Portal] , wykonując 
 - **Ładunek** -JSON lub nieprzetworzonego ciągu ładunek komunikatu.
 - **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać więcej informacji o formacie ładunek, zobacz **ładunku** części [Implementowanie serwera GCM](https://developer.android.com/google/gcm/server.html#payload) dokumentu.
+Aby uzyskać więcej informacji o formacie ładunek, zobacz **ładunku** części [Implementowanie serwera GCM](https://developers.google.com/cloud-messaging/) dokumentu.
 
 Poniższy kod używa `GcmService` wystąpienia udostępnianych przez `NotificationHubService` do wysyłania powiadomień wypychanych do wszystkich zarejestrowanych klientów.
 
@@ -198,9 +198,9 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 Przykładowe fragmenty kodu powyżej umożliwiają łatwe tworzenie infrastruktury usługi do dostarczania powiadomień wypychanych do szerokiej gamy urządzeń. Teraz, kiedy znasz już podstawy używania usługi Notification Hubs przy użyciu środowiska node.js, skorzystaj z poniższych linków, aby dowiedzieć się więcej o jak rozszerzyć możliwości dalszego.
 
 - Zobacz dokumentacja MSDN [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
-- Odwiedź stronę [Zestaw Azure SDK dla węzła] repozytorium w serwisie GitHub, aby uzyskać więcej przykładów i szczegółów implementacji.
+- Odwiedź stronę [Zestaw Azure SDK dla platformy Node] repozytorium w serwisie GitHub, aby uzyskać więcej przykładów i szczegółów implementacji.
 
-[Zestaw Azure SDK dla węzła]: https://github.com/WindowsAzure/azure-sdk-for-node
+[Zestaw Azure SDK dla platformy Node]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
 [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
 [Create a Service Namespace]: #create-a-service-namespace

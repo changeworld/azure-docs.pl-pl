@@ -14,14 +14,14 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60823984"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z bazy danych Cassandra w środowisku lokalnym za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-onprem-cassandra-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-cassandra.md)
 
@@ -66,13 +66,13 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla ro
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesCassandra** |Yes |
+| type |Właściwość type musi być równa: **OnPremisesCassandra** |Tak |
 | host |Jeden lub więcej adresów IP lub nazw hostów serwerów bazy danych Cassandra.<br/><br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, połączyć się z wszystkich serwerów jednocześnie. |Yes |
 | port |Port TCP, którego serwer Cassandra korzysta do nasłuchiwania połączeń klientów. |Nie, wartość domyślna: 9042 |
-| Element authenticationType |Podstawowe lub anonimowe |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
+| authenticationType |Podstawowe lub anonimowe |Tak |
+| username |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
 | password |Określ hasło dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
-| gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra w środowisku lokalnym. |Yes |
+| gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra w środowisku lokalnym. |Tak |
 | encryptedCredential |Poświadczenie szyfrowane przez bramę. |Nie |
 
 >[!NOTE]
@@ -265,16 +265,16 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy w
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
 | INET |String |
 | INT |Int32 |
-| TEKST |String |
-| SYGNATURA CZASOWA |DateTime |
+| TEXT |String |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
-| IDENTYFIKATOR UUID |Guid |
+| UUID |Guid |
 | VARCHAR |String |
 | VARINT |Decimal |
 

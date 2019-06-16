@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b6b28b9f55623fbdff6ab80c889141c8815600f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616861"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071528"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurowanie lub wyłączanie dostępu zdalnego do węzłów obliczeniowych w puli usługi Azure Batch
 
@@ -27,7 +27,7 @@ Konfiguracja punktu końcowego, który składa się z co najmniej jeden [pule tr
 Każda Konfiguracja puli translatora adresów Sieciowych zawiera co najmniej jedną [reguł Sieciowej grupy zabezpieczeń sieciowych](/rest/api/batchservice/pool/add#networksecuritygrouprule). Każda reguła sieciowej grupy zabezpieczeń zezwala lub nie konkretnego ruchu sieciowego do punktu końcowego. Można wybrać udzielić lub odmówić cały ruch, ruch identyfikowane przez [tag usługi](../virtual-network/security-overview.md#service-tags) (na przykład "Internet"), lub ruchu z określonych adresów IP lub podsieci.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
-* Konfiguracja punktu końcowego puli jest częścią puli [konfiguracji sieci](/rest/api/batchservice/pool/add#NetworkConfiguration). Konfiguracja sieci może opcjonalnie obejmować ustawienia do dołączenia do puli aby [sieci wirtualnej platformy Azure](batch-virtual-network.md). Po skonfigurowaniu puli w sieci wirtualnej można utworzyć reguły sieciowej grupy zabezpieczeń, które używają ustawień adresów w sieci wirtualnej.
+* Konfiguracja punktu końcowego puli jest częścią puli [konfiguracji sieci](/rest/api/batchservice/pool/add#networkconfiguration). Konfiguracja sieci może opcjonalnie obejmować ustawienia do dołączenia do puli aby [sieci wirtualnej platformy Azure](batch-virtual-network.md). Po skonfigurowaniu puli w sieci wirtualnej można utworzyć reguły sieciowej grupy zabezpieczeń, które używają ustawień adresów w sieci wirtualnej.
 * Po skonfigurowaniu puli translatora adresów Sieciowych, można skonfigurować wiele reguł sieciowej grupy zabezpieczeń. Reguły są sprawdzane według ważności. Gdy reguła ma zastosowanie, żadne inne reguły nie są sprawdzane pod kątem dopasowania.
 
 

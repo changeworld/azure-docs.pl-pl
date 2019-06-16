@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 06/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ee6b2dd07a89de4f5347e82bde19990dbb6c995
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460222"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077541"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co to jest usługa Azure Virtual WAN?
 
-Usługa Azure wirtualne sieci WAN jest sieci usługi, która zapewnia łączność zoptymalizowane i zautomatyzowanych oddziału, aby i za pośrednictwem platformy Azure. Koncentratorów, które można wybrać opcję połączenia gałęziach, aby pełnić rolę regionów świadczenia usługi Azure. Gdy gałęzie, które są połączone, mogą korzystać z sieci szkieletowej platformy Azure do ustanowienia połączenia gałęzi między sieciami wirtualnymi i gałęzi do gałęzi. Aby uzyskać listę partnerzy i lokalizacje, które obsługują wirtualnej VPN w sieci WAN, zobacz [wirtualne sieci WAN partnerzy i lokalizacje](virtual-wan-locations-partners.md) artykułu.
+Usługa Azure wirtualne sieci WAN jest sieci usługi, która zapewnia łączność zoptymalizowane i zautomatyzowanych oddziału, aby i za pośrednictwem platformy Azure. Koncentratorów, które można wybrać opcję połączenia gałęziach, aby pełnić rolę regionów świadczenia usługi Azure. Możesz korzystać z sieci szkieletowej platformy Azure również łączenie gałęzi i korzystaj ze łączności gałęzi między sieciami wirtualnymi. Mamy listę partnerów, które obsługują automatyzacji łączności z wirtualnej sieci WAN sieci VPN platformy Azure. Aby uzyskać więcej informacji, zobacz [wirtualne sieci WAN partnerzy i lokalizacje](virtual-wan-locations-partners.md) artykułu.
 
 Usługa Azure wirtualne sieci WAN łączy wiele usług łączności chmury platformy Azure, takich jak site-to-site VPN (dostępne ogólnie), usługi ExpressRoute (wersja zapoznawcza), użytkownik point-to-site VPN (wersja zapoznawcza) w jednym interfejsie operacyjnej. Łączność z sieciami wirtualnymi platformy Azure została ustanowiona przy użyciu połączenia sieć wirtualna.
 

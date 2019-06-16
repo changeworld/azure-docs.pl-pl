@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e408439c4868a9fadfd15ab8ae303b2d881c481e
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069433"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Ograniczenia dostępu do usługi Azure App Service #
 
@@ -48,27 +48,27 @@ Z poziomu interfejsu użytkownika ograniczenia dostępu możesz przejrzeć list�
 
 Na liście zostaną wyświetlone wszystkie bieżące ograniczenia, które znajdują się w aplikacji. Jeśli masz ograniczeń sieci wirtualnej w swojej aplikacji, tabeli zostaną wyświetlone, jeśli punkty końcowe usługi są włączone dla Microsoft.Web. Jeśli nie ma ograniczeń zdefiniowanych w aplikacji, aplikacja nie będzie dostępny z dowolnego miejsca.  
 
+## <a name="adding-ip-address-rules"></a>Dodawanie reguły dotyczące adresów IP
+
 Możesz kliknąć **[+] Dodaj** można dodać nowej reguły ograniczeń dostępu. Jeśli dodasz regułę, jego zostanie zaczynają obowiązywać natychmiast. Zasady są wymuszane w kolejności priorytetów, począwszy od najniższej liczbie i przedsiębiorstw. Istnieje niejawna odmowa wszystko, co jest aktywna, po dodaniu jednej reguły.
-
-### <a name="adding-ip-address-rules"></a>Dodawanie reguły dotyczące adresów IP
-
-![Dodaj regułę ograniczeń dostępu do adresów IP](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
 Podczas tworzenia reguły należy wybrać zezwalania/niezezwalania, a także typ reguły. Wymagane są także zapewnienie, że wartość priorytetu i co to jest ograniczenie dostępu do.  Możesz opcjonalnie dodać nazwę i opis reguły.  
 
+![Dodaj regułę ograniczeń dostępu do adresów IP](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
+
 Aby ustawić adres IP na podstawie reguły, wybierz typ protokołu IPv4 lub IPv6. Notacja adres IP musi być określona w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć podobny 1.2.3.4/32 gdzie pierwsze cztery oktety reprezentują adresu IP, a /32 to maski. Notacja IPv4 CIDR dla wszystkich adresów jest 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, możesz przeczytać [Bezklasowego routingu międzydomenowego](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
-### <a name="service-endpoints"></a>Punkty końcowe usługi
+## <a name="service-endpoints"></a>Punkty końcowe usługi
+
+Punkty końcowe usługi można ograniczyć dostęp do podsieci wybranej sieci wirtualnej platformy Azure. Aby ograniczyć dostęp do określonej podsieci, należy utworzyć regułę ograniczenie z typem sieci wirtualnej. Możesz wybrać subskrypcję, sieć wirtualną i podsieć, którą chcesz udzielić lub odmówić dostępu za pomocą. Jeśli punkty końcowe usługi nie są już włączone za pomocą Microsoft.Web dla podsieci, które wybrano, jego zostaną automatycznie włączone dla Ciebie, jeśli nie zaznaczysz pole zapytaniem w tym celu. Sytuacja, w którym chcesz ją włączyć w aplikacji, ale nie podsieci jest powiązana z dużym stopniu, jeśli masz uprawnienia, aby włączyć punkty końcowe usługi w podsieci, czy nie. Jeśli potrzebujesz uzyskać osoby, aby włączyć punkty końcowe usługi w podsieci można zaznacz pole wyboru i aplikacji skonfigurowany dla punktów końcowych usługi w oczekiwaniu go później włączane w podsieci. 
 
 ![Dodaj regułę ograniczeń dostępu do sieci wirtualnej](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
-
-Aby ograniczyć dostęp do wybranej podsieci, wybierz typ sieci wirtualnej. Poniżej można wybrać subskrypcję, sieć wirtualną i podsieć, którą chcesz udzielić lub odmówić dostępu za pomocą. Jeśli punkty końcowe usługi nie są już włączone za pomocą Microsoft.Web dla podsieci, które wybrano, jego zostaną automatycznie włączone dla Ciebie, jeśli nie zaznaczysz pole zapytaniem w tym celu. Sytuacja, w którym chcesz ją włączyć w aplikacji, ale nie podsieci jest powiązana z dużym stopniu, jeśli masz uprawnienia, aby włączyć punkty końcowe usługi w podsieci, czy nie. Jeśli potrzebujesz uzyskać osoby, aby włączyć punkty końcowe usługi w podsieci można zaznacz pole wyboru i aplikacji skonfigurowany dla punktów końcowych usługi w oczekiwaniu go później włączane w podsieci. 
 
 Punkty końcowe usługi nie można ograniczyć dostęp do aplikacji działających w środowisku usługi App Service. Jeśli aplikacja znajduje się w środowisku usługi App Service, umożliwia kontrolę dostępu do aplikacji przy użyciu reguły dostępu do adresów IP. 
 
 Punkty końcowe usługi można skonfigurować swoją aplikację przy użyciu bramy aplikacji lub innych urządzeń zapory aplikacji sieci Web. Można również skonfigurować aplikacje wielowarstwowe z bezpiecznego zaplecza. Aby uzyskać szczegółowe informacje na temat niektórych możliwości, przeczytaj [funkcje sieci i usługi App Service](networking-features.md).
 
-### <a name="managing-access-restriction-rules"></a>Zarządzanie regułami ograniczeń dostępu
+## <a name="managing-access-restriction-rules"></a>Zarządzanie regułami ograniczeń dostępu
 
 Kliknięcie dowolnego wiersza, aby edytować istniejącą regułę ograniczeń dostępu. Zmiany zaczynają obowiązywać, natychmiast łącznie ze zmianami w kolejności priorytetu.
 
@@ -82,7 +82,7 @@ Aby usunąć regułę, kliknij przycisk **...**  na swoje zasady, a następnie k
 
 ![Usuń regułę ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-### <a name="blocking-a-single-ip-address"></a>Blokowanie pojedynczego adresu IP ##
+## <a name="blocking-a-single-ip-address"></a>Blokowanie pojedynczego adresu IP ##
 
 Podczas dodawania pierwszego reguły ograniczenia adresów IP, usługa zostanie dodany jawnego **Odmawiaj wszystkim** reguła z priorytetem 2147483647. W praktyce jawne **Odmawiaj wszystkim** reguła będzie ostatnia reguła wykonywane i spowoduje zablokowanie dostępu do dowolnego adresu IP, który nie jest jawnie dozwolone przy użyciu **Zezwalaj** reguły.
 
@@ -90,7 +90,7 @@ W scenariuszu, gdzie użytkownicy chcą jawnie blokować pojedynczego adresu IP 
 
 ![adres ip jednego bloku](media/app-service-ip-restrictions/block-single-address.png)
 
-### <a name="scm-site"></a>Witryny SCM 
+## <a name="scm-site"></a>Witryny SCM 
 
 Oprócz możliwości kontrolowania dostępu do aplikacji, można również ograniczyć dostęp do witryny scm, używanych przez aplikację. Witryny scm jest, narzędzie web deploy punktu końcowego, a także do konsoli Kudu. Oddzielnie można przypisać ograniczenia dostępu do witryny scm z aplikacji lub używać tego samego zestawu dla witryny scm i aplikacji. Jeśli zaznaczysz to pole, aby te same ograniczenia co aplikacja, wszystko jest wygaszony. Jeśli usuniesz zaznaczenie pola wyboru pola są stosowane niezależnie od ustawienia była wcześniej w witryny scm. 
 
