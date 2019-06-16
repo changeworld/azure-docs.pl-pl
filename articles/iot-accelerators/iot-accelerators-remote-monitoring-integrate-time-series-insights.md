@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61443035"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
@@ -88,14 +88,14 @@ Utwórz nowe źródło zdarzeń, aby nawiązać połączenie z Centrum IoT hub. 
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa źródła zdarzenia | Poniższy zrzut ekranu używa nazwy **contosorm-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
-    | Element źródłowy | **IoT Hub** |
+    | Nazwy źródła zdarzeń | Poniższy zrzut ekranu używa nazwy **contosorm-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
+    | source | **IoT Hub** |
     | Opcja importu | **Użyj usługi IoT Hub z dostępnych subskrypcji** |
     | Identyfikator subskrypcji | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
-    | Nazwa centrum IoT | **contosorma57a6**. Użyj nazwy Centrum IoT hub z rozwiązania do monitorowania zdalnego. |
-    | Nazwa zasad centrum IoT | **iothubowner** upewnij się, zasady, stosowane są zasady właściciela. |
-    | Klucz zasad centrum IoT | To pole jest wypełniane automatycznie. |
-    | Grupa odbiorców centrum IoT | **timeseriesinsights** |
+    | Nazwa centrum iot | **contosorma57a6**. Użyj nazwy Centrum IoT hub z rozwiązania do monitorowania zdalnego. |
+    | Nazwa zasad Centrum iot | **iothubowner** upewnij się, zasady, stosowane są zasady właściciela. |
+    | Klucz zasad Centrum iot | To pole jest wypełniane automatycznie. |
+    | Grupa konsumentów Centrum iot | **timeseriesinsights** |
     | Format serializacji zdarzeń | **JSON**     | 
     | Nazwa właściwości sygnatury czasowej | Pozostaw puste |
 
@@ -136,7 +136,7 @@ Następnym krokiem jest skonfigurować mikrousług usługi Azure Stream Analytic
 
 1. Wybierz **ContosoRM** grupy zasobów.
 
-1. Znajdowanie usługi Azure Stream Analytics (ASA) zadanie na liście zasobów przesyłania strumieniowego. Nazwa zasobu, który rozpoczyna się od **streamingjobs -**.
+1. Znajdowanie usługi Azure Stream Analytics (ASA) zadanie na liście zasobów przesyłania strumieniowego. Nazwa zasobu, który rozpoczyna się od **streamingjobs -** .
 
 1. U góry strony kliknij przycisk, aby zatrzymać ASA zadań przesyłania strumieniowego.
 

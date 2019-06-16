@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60684806"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Tworzenie instrukcji warunkowych, które kontrolują akcji przepływu pracy w usłudze Azure Logic Apps
@@ -39,7 +39,7 @@ Na przykład załóżmy, że masz aplikację logiki, która wysyła zbyt dużo �
 
 1. Dodaj warunek w dowolnej lokalizacji. 
 
-   Aby dodać warunek między krokami, przesuń wskaźnik nad strzałką znajdującą się, w której chcesz dodać warunek. Wybierz **znak plus** (**+**) wyświetlany, wybierz **Dodaj akcję**. Na przykład:
+   Aby dodać warunek między krokami, przesuń wskaźnik nad strzałką znajdującą się, w której chcesz dodać warunek. Wybierz **znak plus** ( **+** ) wyświetlany, wybierz **Dodaj akcję**. Na przykład:
 
    ![Dodawanie akcji między krokami](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 

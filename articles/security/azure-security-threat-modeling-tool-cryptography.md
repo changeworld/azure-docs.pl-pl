@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121218"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Ramka zabezpieczeń: Kryptografia | Środki zaradcze 
@@ -35,7 +35,7 @@ ms.locfileid: "62121218"
 
 ## <a id="cipher-length"></a>Użyj tylko zatwierdzonych symetrycznego blok, szyfrowania i długości kluczy
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -46,7 +46,7 @@ ms.locfileid: "62121218"
 
 ## <a id="vector-ciphers"></a>Użyj zatwierdzone tryby szyfrowania bloku i wektory inicjacji dla mechanizmów szyfrowania symetrycznego
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -57,7 +57,7 @@ ms.locfileid: "62121218"
 
 ## <a id="padding"></a>Użyj zatwierdzone asymetrycznych algorytmów, długości kluczy i dopełnienie
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -68,7 +68,7 @@ ms.locfileid: "62121218"
 
 ## <a id="numgen"></a>Użyj zatwierdzone generatorów liczb losowych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -79,7 +79,7 @@ ms.locfileid: "62121218"
 
 ## <a id="stream-ciphers"></a>Nie należy używać szyfrowania symetrycznego strumienia
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -90,7 +90,7 @@ ms.locfileid: "62121218"
 
 ## <a id="mac-hash"></a>Użyj zatwierdzone algorytmy wyznaczania wartości skrótu MAC/HMAC/opartych na kluczach
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -101,7 +101,7 @@ ms.locfileid: "62121218"
 
 ## <a id="hash-functions"></a>Użyj tylko zatwierdzonych funkcji mieszania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -112,7 +112,7 @@ ms.locfileid: "62121218"
 
 ## <a id="strong-db"></a>Użyj algorytmów silnego szyfrowania do szyfrowania danych w bazie danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -123,7 +123,7 @@ ms.locfileid: "62121218"
 
 ## <a id="ssis-signed"></a>Powinien być zaszyfrowany i podpisany cyfrowo pakietów usług SSIS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -134,7 +134,7 @@ ms.locfileid: "62121218"
 
 ## <a id="securables-db"></a>Dodaj podpis cyfrowy do obiektów zabezpieczanych krytyczne bazy danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -145,7 +145,7 @@ ms.locfileid: "62121218"
 
 ## <a id="ekm-keys"></a>Użyj programu SQL server EKM do ochrony kluczy szyfrowania
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -156,7 +156,7 @@ ms.locfileid: "62121218"
 
 ## <a id="keys-engine"></a>Funkcja AlwaysEncrypted klucze szyfrowania, nie powinien uzyskać dostęp do aparatu bazy danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -167,7 +167,7 @@ ms.locfileid: "62121218"
 
 ## <a id="keys-iot"></a>Bezpiecznie Store klucze szyfrowania na urządzeniu IoT
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -190,7 +190,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 ## <a id="random-hub"></a>Wygeneruje losowy klucz symetryczny wystarczającej długości do uwierzytelniania w usłudze IoT Hub
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  
@@ -201,7 +201,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 ## <a id="pin-remote"></a>Upewnij się, że zasady zarządzania urządzeniami jest w miejscu, wymagane jest użycie numeru PIN, która zezwala na zdalne czyszczenie danych
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM Mobile Client | 
 | **Faza SDL**               | Wdrożenie |  
@@ -212,7 +212,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 ## <a id="bitlocker"></a>Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją BitLocker)
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Klient programu Outlook usługi Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
@@ -223,7 +223,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 ## <a id="rolled-server"></a>Upewnij się, że klucze podpisywania są przenoszone podczas korzystania z tożsamości serwera
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Tożsamość serwera | 
 | **Faza SDL**               | Wdrożenie |  
@@ -234,7 +234,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 ## <a id="client-server"></a>Upewnij się, że identyfikator klienta silną kryptograficznie, klucz tajny klienta używany na serwerze tożsamości
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Tożsamość serwera | 
 | **Faza SDL**               | Kompilacja |  

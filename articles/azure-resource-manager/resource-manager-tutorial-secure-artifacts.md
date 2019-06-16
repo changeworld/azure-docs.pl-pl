@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fd68edcc727ab08ed9d3ba765bbe795e88de5fc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069270"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Samouczek: Zabezpieczanie artefaktów w przypadku wdrożeń szablonów usługi Azure Resource Manager
 
@@ -75,9 +75,9 @@ Pobierz [plik BACPAC](https://armtutorials.blob.core.windows.net/sqlextensionbac
 
     * **Subskrypcja**: Wybierz swoją subskrypcję platformy Azure.
     * **Grupa zasobów**: Wybierz pozycję **Utwórz nową** i nadaj nowej grupie nazwę. Grupa zasobów jest kontenerem zasobów platformy Azure używanym na potrzeby zarządzania. W tym samouczku możesz użyć tej samej grupy zasobów dla konta magazynu i bazy danych Azure SQL Database. Zanotuj nazwę tej grupy zasobów, ponieważ będzie ona później potrzebna podczas tworzenia bazy danych Azure SQL Database w następnych samouczkach.
-    * **Lokalizacja**: Wybierz region. Na przykład **Środkowe stany USA**. 
+    * **Lokalizacja**: Wybierz region. Na przykład **Środkowe stany USA**.
     * **Typ konta magazynu**: użyj wartości domyślnej — **Standard_LRS**.
-    * **Lokalizacja**: Użyj wartości domyślnej — **[resourceGroup().location]**. Oznacza to, że używasz lokalizacji grupy zasobów dla konta magazynu.
+    * **Lokalizacja**: Użyj wartości domyślnej — **[resourceGroup().location]** . Oznacza to, że używasz lokalizacji grupy zasobów dla konta magazynu.
     * **Wyrażam zgodę na powyższe warunki i postanowienia**: (zaznaczone)
 3. Wybierz pozycję **Kup**.
 4. Wybierz ikonę powiadomienia (ikonę dzwonka) w prawym górnym rogu portalu, aby wyświetlić stan wdrożenia.
@@ -87,7 +87,7 @@ Pobierz [plik BACPAC](https://armtutorials.blob.core.windows.net/sqlextensionbac
 
 ### <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
 
-Kontener obiektów blob jest wymagany, aby można było przekazywać pliki. 
+Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
 
 1. Wybierz konto magazynu, aby je otworzyć. W grupie zasobów zobaczysz tylko jedno konto magazynu. Nazwa Twojego konta magazynu będzie inna niż ta pokazana na poniższym zrzucie ekranu.
 
@@ -99,8 +99,8 @@ Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
 3. Wybierz pozycję **+ Kontener** w górnej części ekranu, aby utworzyć nowy kontener.
 4. Wprowadź następujące wartości:
 
-    * **Nazwa**: wprowadź **sqlbacpac**. 
-    * **Poziom dostępu publicznego**: użyj wartości domyślnej **Prywatny (bez dostępu anonimowego)**.
+    * **Nazwa**: wprowadź **sqlbacpac**.
+    * **Poziom dostępu publicznego**: użyj wartości domyślnej **Prywatny (bez dostępu anonimowego)** .
 5. Kliknij przycisk **OK**.
 6. Wybierz pozycję **sqlbacpac**, aby otworzyć nowo utworzony kontener.
 
@@ -136,13 +136,13 @@ Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
 
 W tej sesji zmodyfikujesz szablon utworzony w artykule [Samouczek: Importowanie plików BACPAC bazy danych SQL za pomocą szablonów usługi Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) w celu wywołania pliku BACPAC przy użyciu tokenu SAS.  Szablon opracowany w samouczku dotyczącym rozszerzenia SQL jest udostępniany w pliku [ https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json ](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json).
 
-1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
+1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
     https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json
     ```
-3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
+3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
 
     W tym szablonie zdefiniowano pięć zasobów:
 
@@ -222,7 +222,7 @@ Aby uzyskać wartości elementów _artifactsLocation, _artifactsLocationSasToken
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-W portalu wybierz bazę danych SQL z nowo wdrożonej grupy zasobów. Wybierz pozycję **Edytor zapytań (wersja zapoznawcza)**, a następnie wprowadź poświadczenia administratora. Zobaczysz dwie tabele zaimportowane do bazy danych:
+W portalu wybierz bazę danych SQL z nowo wdrożonej grupy zasobów. Wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** , a następnie wprowadź poświadczenia administratora. Zobaczysz dwie tabele zaimportowane do bazy danych:
 
 ![Plik BACPAC umożliwiający wdrażanie rozszerzeń SQL usługi Azure Resource Manager](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
@@ -237,7 +237,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC przy użyciu tokenu SAS. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure w wielu regionach i jak stosować praktyki bezpiecznego wdrażania, zobacz
+W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC przy użyciu tokenu SAS. Aby dowiedzieć się, jak utworzyć potok usługi Azure stale tworzenie i wdrażanie szablonów usługi Resource Manager, zobacz
 
 > [!div class="nextstepaction"]
-> [Używanie usługi Azure Deployment Manager](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Ciągła Integracja z usługą Azure potoku](./resource-manager-tutorial-use-azure-pipelines.md)

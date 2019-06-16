@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60696038"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi harmonogramy dla laboratorium na potrzeby zajęć w usłudze Azure Lab Services 
@@ -35,7 +35,7 @@ Harmonogramy umożliwiają konfigurowanie laboratorium na potrzeby zajęć w tak
 3. Aby uzyskać **zaplanować daty (wymagane)** wprowadź datę lub wybierz ikonę kalendarza, aby wybrać datę. 
 4. Aby uzyskać **czas rozpoczęcia**, wybierz czas, kiedy zechcesz, maszyny wirtualne, które ma zostać uruchomiony. Czas rozpoczęcia jest wymagany, jeśli nie ustawiono czas przestoju. Wybierz **Usuń zdarzenie początkowe** Jeśli chcesz określić tylko godzina zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączona, wybierz **Dodaj zdarzenie rozpoczęcia** obok listy rozwijanej, aby go włączyć. 
 5. Aby uzyskać **czas zakończenia**, wybierz czas, kiedy zechcesz, maszyny wirtualne na zamykanie. Czas przestoju jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz **zdarzenie stop usuwania** Jeśli chcesz określić tylko godziny rozpoczęcia. Jeśli **czas zakończenia** jest wyłączona, wybierz **zdarzenia zatrzymania Dodaj** obok listy rozwijanej, aby go włączyć.
-6. Aby uzyskać **strefy czasowej (wymagane)**, wybierz strefę czasową uruchomienia i zatrzymania razy określono. 
+6. Aby uzyskać **strefy czasowej (wymagane)** , wybierz strefę czasową uruchomienia i zatrzymania razy określono. 
 7. Aby uzyskać **uwagi**, wprowadź opis lub notatki dla harmonogramu. 
 8. Wybierz pozycję **Zapisz**. 
 
@@ -47,12 +47,12 @@ Harmonogramy umożliwiają konfigurowanie laboratorium na potrzeby zajęć w tak
 
     ![Dodaj przycisk harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
 2. Na **harmonogramu Dodaj** strony, przełącz się do **tygodniowy** u góry. 
-3. Aby uzyskać **zaplanować dni (wymagane)**, wybierz dni, w których ma harmonogram, aby zastosować zmiany. W poniższym przykładzie wybrano od poniedziałku do piątku. 
+3. Aby uzyskać **zaplanować dni (wymagane)** , wybierz dni, w których ma harmonogram, aby zastosować zmiany. W poniższym przykładzie wybrano od poniedziałku do piątku. 
 4. Dla **z** wprowadź **zaplanować Data rozpoczęcia** lub wybierz datę, wybierając **kalendarza** przycisku. To pole jest wymagane. 
 5. Aby uzyskać **Data zakończenia harmonogramu**wprowadź lub wybierz datę zakończenia, w którym maszyny wirtualne mają być zamknięty. 
 6. Aby uzyskać **czas rozpoczęcia**, wybierz godzinę maszyn wirtualnych ma zostać uruchomiony. Czas rozpoczęcia jest wymagany, jeśli nie ustawiono czas przestoju. Wybierz **Usuń zdarzenie początkowe** Jeśli chcesz określić tylko godzina zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączona, wybierz **Dodaj zdarzenie rozpoczęcia** obok listy rozwijanej, aby go włączyć. 
 7. Aby uzyskać **czas zakończenia**, wybierz godzinę maszyn wirtualnych można zamknąć. Czas przestoju jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz **zdarzenie stop usuwania** Jeśli chcesz określić tylko godziny rozpoczęcia. Jeśli **czas zakończenia** jest wyłączona, wybierz **zdarzenia zatrzymania Dodaj** obok listy rozwijanej, aby go włączyć.
-8. Aby uzyskać **strefy czasowej (wymagane)**, wybierz strefę czasową uruchomienia i zatrzymania razy określono.  
+8. Aby uzyskać **strefy czasowej (wymagane)** , wybierz strefę czasową uruchomienia i zatrzymania razy określono.  
 9. Aby uzyskać **uwagi**, wprowadź opis lub notatki dla harmonogramu. 
 10. Wybierz pozycję **Zapisz**. 
 

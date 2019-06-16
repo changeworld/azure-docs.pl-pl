@@ -10,10 +10,10 @@ ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 44944955019fcf81fb0d296592577e2b00a15928
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299505"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-sliding-window-trigger-in-azure-logic-apps"></a>Tworzenie, planowanie i uruchamianie zadań cyklicznych i przepływów pracy za pomocą wyzwalacza przesuwanego okna, w usłudze Azure Logic Apps
@@ -51,10 +51,10 @@ Różnice między tego wyzwalacza i wyzwalacza lub więcej informacji o planowan
 
    ![Ustaw interwał i częstotliwość](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Właściwość | Wymagane | Nazwa JSON | Type | Opis |
+   | Właściwość | Wymagane | Nazwa JSON | Typ | Opis |
    |----------|----------|-----------|------|-------------|
-   | **Interval** | Yes | interval | Integer | Dodatnia liczba całkowita, która opisuje, jak często przepływu pracy jest uruchamiana na podstawie częstotliwości. Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Hour", cykl jest co 6 godzin. |
-   | **Częstotliwość** | Yes | frequency | String | Jednostka czasu cyklu: **Drugi**, **minutę**, lub **godzinę** |
+   | **Interval** | Tak | interval | Integer | Dodatnia liczba całkowita, która opisuje, jak często przepływu pracy jest uruchamiana na podstawie częstotliwości. Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Hour", cykl jest co 6 godzin. |
+   | **Częstotliwość** | Tak | frequency | String | Jednostka czasu cyklu: **Drugi**, **minutę**, lub **godzinę** |
    ||||||
 
    ![Zaawansowane opcje cyklu](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
@@ -62,7 +62,7 @@ Różnice między tego wyzwalacza i wyzwalacza lub więcej informacji o planowan
    Aby wyświetlić więcej opcji cyklu Otwórz **dodano nowy parametr** listy. 
    Wszystkie opcje, które można wybierać są wyświetlane w przypadku wyzwalacza po zaznaczeniu.
 
-   | Właściwość | Wymagane | Nazwa JSON | Type | Opis |
+   | Właściwość | Wymagane | Nazwa JSON | Typ | Opis |
    |----------|----------|-----------|------|-------------|
    | **Delay** | Nie | delay | String | Czas trwania opóźnienia, za pomocą każdego cyklu [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
    | **Strefa czasowa** | Nie | timeZone | String | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Wybierz strefę czasową, który chcesz zastosować. |

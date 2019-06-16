@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60815143"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
@@ -80,9 +80,9 @@ Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki 
 |-----------------|----------------------------|
 | `<grammarFile>` | Ścieżka gramatyki binarnych danych wejściowych         |
 | `<indexFile>`   | Ścieżka danych wejściowych binarnego indeksu           |
-| `--port <port>` | Numer portu lokalnego.  Domyślne: 8000 |
+| `--port <port>` | Numer portu lokalnego.  Wartość domyślna: 8000 |
 
-Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki adresu URL do obiektów blob platformy Azure.  Usługa sieci web będzie hostowany pod http://localhost:&lt; jest to port&gt;/.  Zobacz [interfejsów API sieci Web](WebAPI.md) Aby uzyskać listę obsługiwanych operacji.
+Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki adresu URL do obiektów blob platformy Azure.  Usługa sieci web będzie hostowany pod http://localhost:&lt ; jest to port&gt; /.  Zobacz [interfejsów API sieci Web](WebAPI.md) Aby uzyskać listę obsługiwanych operacji.
 
 Spoza platformy Azure środowiska, lokalnie hostowanych usług są ograniczone do indeksowania plików w rozmiarze, 10 żądań na sekundę i 1000 łączna liczba wywołań do 1 MB.  Aby wyeliminować te ograniczenia, uruchom **host_service** wewnątrz maszyny Wirtualnej platformy Azure, lub wdrożyć na usługi platformy Azure w chmurze przy użyciu **deploy_service**.
 

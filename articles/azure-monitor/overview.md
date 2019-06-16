@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
 ms.openlocfilehash: c72ac62b55b2b08be5aaad563933bcb2b703cba9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66245077"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
@@ -25,7 +25,7 @@ Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji, zapew
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środku diagramu są magazynów danych dla metryki i dzienniki, które są dwa podstawowe typy danych używany przez usługi Azure Monitor. Po lewej stronie są [źródła danych monitorowania](platform/data-sources.md) , wypełnić te [magazyny danych](platform/data-platform.md). Po prawej stronie są różne funkcje, które usługi Azure Monitor wykonuje się za pomocą tego zebranych danych, takich jak analiza, alertów i przesyłania strumieniowego z systemami zewnętrznymi.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]

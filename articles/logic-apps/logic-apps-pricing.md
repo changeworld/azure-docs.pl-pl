@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299103"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075059"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
@@ -89,7 +89,7 @@ Po wyłączeniu aplikację logiki obecnie uruchomione wystąpienia może potrwa�
 
 ## <a name="integration-accounts"></a>Konta integracji
 
-Ceny za korzystanie z dotyczy [kont integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie możesz eksplorować, opracowywania i testowania [B2B i EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) funkcji w usłudze Azure Logic Apps, bez dodatkowych kosztów.
+Naprawiono modelu cen, który ma zastosowanie do [kont integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie możesz eksplorować, opracowywania i testowania [B2B i EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) funkcji w usłudze Azure Logic Apps, bez dodatkowych kosztów.
 W każdym regionie platformy Azure, możesz mieć jedno konto integracji. Każde konto integracji można przechowywać w do określonych [liczby artefaktów](../logic-apps/logic-apps-limits-and-config.md), które obejmują handlowymi partnerów, umów, mapy, schematów, zestawy, certyfikaty, konfiguracji partii i tak dalej.
 
 Usługa Azure Logic Apps oferuje bezpłatna, podstawowa i standardowa konta integracji. Warstwy Basic i Standard są obsługiwane przez Logic Apps umowy poziomu usług (SLA) w warstwie bezpłatna nie jest obsługiwana przez umowy SLA i ma limity przepływności i użycia.

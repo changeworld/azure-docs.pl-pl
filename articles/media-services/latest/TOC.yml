@@ -27,6 +27,7 @@
       items:
         - name: Przy użyciu platformy .NET
           href: stream-live-tutorial-with-api.md
+          displayName: 'Live Events, Live Outputs, ingest'
     - name: Analizowanie filmu wideo
       items:
         - name: Przy użyciu platformy .NET
@@ -122,6 +123,7 @@
           href: live-streaming-overview.md
         - name: Wydarzenia i dane wyjściowe na żywo
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: Zalecane kodery na żywo
           href: recommended-on-premises-live-encoders.md
         - name: Korzystanie z funkcji DVR w chmurze

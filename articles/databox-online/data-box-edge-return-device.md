@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65468607"
 ---
 # <a name="return-your-azure-data-box-edge-device"></a>Zwróć urządzenia usługi Azure Data Box Edge
@@ -38,7 +38,7 @@ Aby zresetować urządzenie przy użyciu lokalnego Interfejsu w przeglądarce, w
 1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konserwacji > zresetować urządzenie**.
 2. Wybierz **resetowania urządzenia**.
 
-    ![Zresetuj urządzenie](media/data-box-edge-return-device/device-reset-1.png)
+    ![Resetowanie urządzenia](media/data-box-edge-return-device/device-reset-1.png)
 
 3. Po wyświetleniu monitu o potwierdzenie przejrzyj ostrzeżenie i wybierz pozycję **tak** aby kontynuować.
 
@@ -102,7 +102,7 @@ Wykonaj następujące kroki, aby usunąć urządzenie i zasobów w witrynie Azur
 
 2. W **Usuń urządzenie** bloku, wpisz nazwę urządzenia, które chcesz usunąć, a następnie wybierz pozycję **Usuń**.
 
-    ![Potwierdź usuwanie](media/data-box-edge-return-device/delete-resource-2.png)
+    ![Potwierdzenie usunięcia](media/data-box-edge-return-device/delete-resource-2.png)
 
 Otrzymasz powiadomienie po urządzenia i skojarzony zasób został pomyślnie usunięty.
 

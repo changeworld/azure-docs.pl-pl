@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831796"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
@@ -704,7 +704,7 @@ Aby uzyskać listę powiązania gama artykułów, zobacz "Obsługiwane powiązan
 
 [ `Disable` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) Atrybut umożliwia kontrolowanie, czy funkcja może być uruchamiane. 
 
-W poniższym przykładzie Jeśli ustawienie aplikacji `Disable_TestJob` ma wartość `1` lub `True` (wielkich liter), funkcja nie będzie działać. W takim przypadku środowisko uruchomieniowe tworzy komunikat dziennika *jest wyłączona funkcja "Functions.TestJob"*.
+W poniższym przykładzie Jeśli ustawienie aplikacji `Disable_TestJob` ma wartość `1` lub `True` (wielkich liter), funkcja nie będzie działać. W takim przypadku środowisko uruchomieniowe tworzy komunikat dziennika *jest wyłączona funkcja "Functions.TestJob"* .
 
 ```cs
 [Disable("Disable_TestJob")]

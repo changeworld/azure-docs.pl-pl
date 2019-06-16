@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
 ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683177"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterowników procesora GPU NVIDIA dla systemu Linux
@@ -35,7 +35,7 @@ Rozszerzenie jest również dostępna do zainstalowania sterowników procesora G
 
 To rozszerzenie obsługuje poniższe dystrybucje systemu operacyjnego, w zależności od obsługi sterowników dla określonej wersji systemu operacyjnego.
 
-| Dystrybucja | Wersja |
+| Dystrybucja | Version |
 |---|---|
 | W systemie Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
 | W systemie Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -74,8 +74,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| publisher | Microsoft.HpcCompute | string |
+| — typ | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Ustawienia

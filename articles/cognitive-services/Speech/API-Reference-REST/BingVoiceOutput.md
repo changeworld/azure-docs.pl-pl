@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515423"
 ---
 # <a name="bing-text-to-speech-api"></a>Tekst do API rozpoznawania mowy Bing
@@ -43,7 +43,7 @@ Informacje nagłówka wymagane dla tokenu dostępu jest w następujący sposób.
 
 Name (Nazwa)| Format | Opis
 ----|----|----
-OCP-Apim-Subscription-Key | ASCII | Twój klucz subskrypcji
+OCP-Apim-Subscription-Key | ASCII | Klucz subskrypcji
 
 Zwraca wartość usługi tokenu JWT token dostępu jako `text/plain`. Następnie tokenu JWT jest przekazywany jako `Base64 access_token` na punkt końcowy rozpoznawania mowy jako nagłówek autoryzacji prefiksem ciągu `Bearer`. Na przykład:
 
@@ -60,7 +60,7 @@ Klienci muszą używać następujący punkt końcowy dostępu do zamiany tekstu 
 
 W poniższej tabeli przedstawiono nagłówki HTTP, które są używane na potrzeby syntezy polecenia głosowe.
 
-Nagłówek |Wartość |Komentarze
+nagłówek |Wartość |Komentarze
 ----|----|----
 Content-Type | Aplikacja/ssml + xml | Typ zawartości danych wejściowych.
 X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** pierwotne-16 khz-16-bitowych-mono-pcm <br>**3.** audio-16 khz-16 KB/s-mono-siren <br> **4.** riff-16 khz-16 KB/s-mono-siren <br> **5.** riff-16 khz-16-bitowych-mono-pcm <br> **6.** audio-16 khz-128kbitrate-mono-mp3 <br> **7.** audio-16 khz-64kbitrate-mono-mp3 <br> **8.** audio-16 khz-32kbitrate-mono-mp3 | Format danych wyjściowych audio.
@@ -271,7 +271,7 @@ zh-TW | Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW, Yating, Apol
 zh-TW | Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW HanHanRUS)"
 zh-TW | Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-TW, Zhiwei, Apollo)"
 
- * ar np obsługuje nowoczesnych standardowa arabski (MSA).
+ \* ar np obsługuje nowoczesnych standardowa arabski (MSA).
 
 > [!NOTE]
 > Należy pamiętać, że poprzedniej nazwy usług **Microsoft Server mowy tekstu na głos mowy (cs-CZ, Vit)** i **Microsoft Server mowy tekstu na głos mowy (en-IE, Shaun)** staną się przestarzałe po 3/31 stycznia 2018 r. w kolejność, aby zoptymalizować funkcje API rozpoznawania mowy Bing. Zaktualizuj swój kod przy użyciu zaktualizowanych nazw.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723871"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Kopia zapasowa i przywracanie usług Reliable Services i Reliable Actors
@@ -106,7 +106,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 W powyższym przykładzie `ExternalBackupStore` jest przykładową klasę, która jest używana do interfejsu z usługi Azure Blob storage i `UploadBackupFolderAsync` to metoda, która kompresuje folder i umieszcza je w magazynie obiektów Blob platformy Azure.
 
-Należy pamiętać, że:
+Należy pamiętać o następujących kwestiach:
 
   - Może istnieć tylko jedna operacja tworzenia kopii zapasowej śledząc na replikę w danym momencie. Więcej niż jeden `BackupAsync` rozmowy w czasie spowoduje zgłoszenie `FabricBackupInProgressException` ograniczyć porządkowych tworzenia kopii zapasowych do jednego.
   - Jeśli replika ulegnie awarii za pośrednictwem, gdy tworzenie kopii zapasowej jest w toku, tworzenie kopii zapasowej może nie zostały zakończone. Dlatego po zakończeniu trybu failover jest odpowiedzialność za usługi, aby ponownie uruchomić tworzenie kopii zapasowej za pomocą wywołania `BackupAsync` zgodnie z potrzebami.
@@ -175,7 +175,7 @@ Jeśli nie masz pewności, których kopie zapasowe są uszkodzone, można wdroż
 
 Teraz kroki opisane w "usunięty lub utracony usługi" sekcji może służyć do przywrócenia stanu usługi do stanu przed pracowały kodu uszkodzony stan.
 
-Należy pamiętać, że:
+Należy pamiętać o następujących kwestiach:
 
   - Po przywróceniu, istnieje możliwość utworzenia kopii zapasowej jest starsza niż stan partycji, zanim dane zostały utracone. W związku z tym należy przywrócić tylko w ostateczności odzyskać jak najwięcej danych.
   - Ciąg, który reprezentuje ścieżkę do folderu kopii zapasowej i ścieżki plików w folderze kopii zapasowej może być większa niż 255 znaków, w zależności od tego, czy ścieżka FabricDataRoot i długość nazwy typu aplikacji. Może to spowodować niektóre metody .NET, takie jak `Directory.Move`, aby zgłosić `PathTooLongException` wyjątku. Jeden obejście polega na bezpośrednio wywoływać interfejsy API kernel32, takich jak `CopyFile`.

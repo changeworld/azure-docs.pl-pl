@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60703170"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Intelligent Insights usługi Azure SQL Database
@@ -98,7 +98,7 @@ W zależności od problem z wydajnością wykryte, szczegółowe informacje zwr�
 
 Wpływ (wpływ na), że właściwość określa, ile wykryte zachowanie przyczyniły się do problemu, które występują w bazie danych. Wpływ na środowisko w zakresie od 1 do 3, 3 jako największym wkładem pracy, 2, jak Średni i 1 jako udział najniższy. Wartość wpływu można użyć jako danych wejściowych dla alertów Automatyzacja niestandardowa, w zależności od określonych potrzeb. Zapytania dotyczące właściwości których to dotyczy (QueryHashes) zawierają listę zapytanie skróty, które miały wpływ określonego wykrywania.
 
-### <a name="impacted-queries"></a>Zapytania, na które ma to wpływ
+### <a name="impacted-queries"></a>Zapytania objęte wpływem
 
 Następna sekcja dziennik Intelligent Insights zawiera informacje dotyczące określonego zapytania, które miały wpływ problemy z wydajnością wykryte. Jako tablica obiektów osadzonych we właściwości impact_s ujawnienia informacji. Właściwość wpływ składa się z jednostek i metryki. Jednostki dotyczą określone zapytanie (typ: Zapytanie). Skrót unikatowy zapytania są ujawniane w obszarze właściwości value (wartość). Ponadto każda kwerenda ujawnione następuje metrykę i wartości, które wskazują problem z wydajnością wykryte.
 

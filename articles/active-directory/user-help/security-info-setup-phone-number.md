@@ -13,10 +13,10 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60474997"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) do użycia połączeń telefonicznych
@@ -86,11 +86,11 @@ Jeśli chcesz połączenia telefoniczne jako domyślną metodę używaną podcza
 
     ![Łącze Zmień domyślną metodę logowania](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Wybierz **Phone — wywołania (*_your_phone_number_*)** z listy rozwijanej dostępnych metod, a następnie wybierz **Potwierdź**.
+2. Wybierz **Phone — wywołania ( *_your_phone_number_* )** z listy rozwijanej dostępnych metod, a następnie wybierz **Potwierdź**.
 
     ![Wybierz metodę logowania domyślne](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    Domyślną metodą używane do logowania zmiany **Phone — wywołania (*_your_phone_number_*)**.
+    Domyślną metodą używane do logowania zmiany **Phone — wywołania ( *_your_phone_number_* )** .
 
 ## <a name="additional-security-info-methods"></a>Dodatkowe informacje o metody zabezpieczeń
 Masz dodatkowe opcje jak kontakty organizacji możesz zweryfikować swoją tożsamość, oparte na tym, co możesz próby wykonania. Dostępne są następujące opcje:

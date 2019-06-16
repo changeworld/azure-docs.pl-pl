@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095493"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
@@ -122,7 +122,7 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* |
     | Połączony System typu obiektu | **Użytkownik** | |
     | Typ obiektu Metaverse | **Osoby** | |
-    | Typ linku | **Dołącz** | |
+    | Typ łącza | **Join** | |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | Wybrana liczba nie mogą być używane przez istniejące reguły synchronizacji i ma niższą wartość (i w związku z tym, wyższy priorytet) niż istniejące reguły synchronizacji. |
 
 3. Przejdź do **filtru Scoping** kartę i wdrożenie tego samego filtru określania zakresu używa istniejącej reguły synchronizacji.

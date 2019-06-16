@@ -7,16 +7,16 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 0e67a56e3d723874ed93fc8dcad91e3063d923ed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818021"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076188"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Samouczek: Stream Analytics i usługa Power BI: Pulpit nawigacyjny analizy w czasie rzeczywistym dla danych przesyłanych strumieniowo
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics i usługa Power BI: Pulpit nawigacyjny analizy w czasie rzeczywistym dla danych przesyłanych strumieniowo
+
 Usługa Azure Stream Analytics umożliwia korzystanie z zalet jednej z wiodących narzędzi analizy biznesowej, [Microsoft Power BI](https://powerbi.com/). W tym artykule dowiesz się, jak utworzyć narzędzia do analizy biznesowej za pomocą usługi Power BI jako dane wyjściowe dla zadań usługi Azure Stream Analytics. Poznasz również sposób tworzenia i używania pulpitu nawigacyjnego w czasie rzeczywistym.
 
 W tym artykule jest kontynuowane od usługi Stream Analytics [wykrywanie oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md) samouczka. Do niej opiera się na przepływ pracy utworzone w tym samouczku, usługa Power BI, dane wyjściowe, dzięki czemu możesz wizualizować fałszywych połączeń telefonicznych, które są wykrywane przez zadanie usługi Stream Analytics. 
@@ -38,41 +38,31 @@ W tym samouczku wykrywanie oszustw w czasie rzeczywistym dane wyjściowe są wys
 
 1. W witrynie Azure portal Otwórz zadanie usługi Stream Analytics, które została utworzona wcześniej. Jeśli używasz sugerowanej nazwy, zadanie o nazwie `sa_frauddetection_job_demo`.
 
-2. Wybierz **dane wyjściowe** polu w środku pulpitu nawigacyjnego zadań, a następnie wybierz pozycję **+ Dodaj**.
+2. W menu po lewej stronie wybierz **dane wyjściowe** w obszarze **topologia zadań**. Następnie wybierz **+ Dodaj** i wybierz polecenie **usługi Power BI** z menu rozwijanego.
 
-3. Aby uzyskać **Alias wyjściowy**, wprowadź `CallStream-PowerBI`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj je, ponieważ nazwa będą potrzebne później. 
+3. Wybierz pozycję **+ Dodaj** > **Power BI**. Następnie wypełnij formularz przy użyciu poniższych wartości i wybierz pozycję **Autoryzuj**:
 
-4. W obszarze **ujścia**, wybierz opcję **usługi Power BI**.
+   |**Ustawienie**  |**Sugerowana wartość**  |
+   |---------|---------|
+   |Alias danych wyjściowych  |  CallStream-PowerBI  |
+   |Nazwa zestawu danych  |   sa-dataset  |
+   |Nazwa tabeli |  fraudulent-calls  |
 
-   ![Tworzenie danych wyjściowych dla usługi Power BI](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
+   ![Konfigurowanie danych wyjściowych usługi Stream Analytics](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
-5. Kliknij przycisk **autoryzować**.
+   > [!WARNING]
+   > Jeśli usługa Power BI zawiera zestaw danych i tabelę, która ma takie same nazwy te, które określisz w zadaniu Stream Analytics, istniejące zostaną zastąpione.
+   > Zaleca się, że nie jawnie utworzysz ten zestaw danych i tabeli na koncie usługi Power BI. Są one tworzone automatycznie podczas uruchamiania zadania usługi Stream Analytics, a zadanie zostanie uruchomione przekazujący dane wyjściowe do usługi Power BI. Jeśli zapytanie dotyczące zadań nie zwraca żadnych wyników, zestaw danych i tabeli nie są tworzone.
+   >
 
-    Zostanie otwarte okno, którym można podać swoje poświadczenia platformy Azure dla konta firmowego lub szkolnego. 
-
-    ![Wprowadź poświadczenia dla dostępu do usługi Power BI](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
-
-6. Wprowadź swoje poświadczenia. Należy pamiętać, a następnie po wprowadzeniu poświadczeń, również przygotowujesz uprawnienia do zadania usługi Stream Analytics do dostępu do obszaru usługi Power BI.
-
-7. Gdy następuje powrót do **nowe dane wyjściowe** bloku, wprowadź następujące informacje:
-
-   * **Obszar roboczy grupy**: Wybierz obszar roboczy w dzierżawie usługi Power BI, w której chcesz utworzyć zestaw danych.
-   * **Nazwa zestawu danych**:  Wprowadź polecenie `sa-dataset`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj go na później.
-   * **Nazwa tabeli**: Wprowadź polecenie `fraudulent-calls`. Obecnie usługa Power BI dane wyjściowe zadania usługi Stream Analytics może mieć tylko jedną tabelę w zestawie danych.
-
-     ![Zestaw danych do programu Power BI obszaru roboczego i tabeli](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
-
-     > [!WARNING]
-     > Jeśli usługa Power BI zawiera zestaw danych i tabelę, która ma takie same nazwy te, które określisz w zadaniu Stream Analytics, istniejące zostaną zastąpione.
-     > Zaleca się, że nie jawnie utworzysz ten zestaw danych i tabeli na koncie usługi Power BI. Są one tworzone automatycznie podczas uruchamiania zadania usługi Stream Analytics, a zadanie zostanie uruchomione przekazujący dane wyjściowe do usługi Power BI. Jeśli zapytanie dotyczące zadań nie zwraca żadnych wyników, zestaw danych i tabeli nie są tworzone.
-     >
+4. Po wybraniu pozycji **Autoryzuj** zostanie otwarte okno podręczne i zostanie wyświetlona prośba o podanie poświadczeń w celu uwierzytelnienia na koncie usługi Power BI. Kiedy autoryzacja zakończy się pomyślnie, **zapisz** ustawienia.
 
 8. Kliknij pozycję **Utwórz**.
 
 Zestaw danych jest tworzony z następującymi ustawieniami:
 
-* **defaultRetentionPolicy: BasicFIFO**: Dane są FIFO, z maksymalnie 200 000 wierszy.
-* **defaultMode: pushStreaming**: Zestaw danych obsługuje zarówno Kafelki przesyłania strumieniowego i tradycyjne wizualizacje na podstawie raportu (zwane) Wypychanie).
+* **defaultRetentionPolicy: BasicFIFO** — dane są FIFO, z maksymalnie 200 000 wierszy.
+* **defaultMode: pushStreaming** — zestaw danych obsługuje zarówno Kafelki przesyłania strumieniowego i tradycyjne wizualizacje na podstawie raportu (znany także jako push).
 
 Obecnie nie można utworzyć zestawy danych przy użyciu innych flag.
 
@@ -90,54 +80,52 @@ Aby uzyskać więcej informacji na temat zestawów danych usługi Power BI, zoba
     >[!NOTE]
     >Jeśli dane wejściowe, nie nazwy `CallStream` w tym samouczku wykrywanie oszustw, zastąp nazwę `CallStream` w **FROM** i **Dołącz** klauzule w zapytaniu.
 
-        ```SQL
-        /* Our criteria for fraud:
-        Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
+   ```SQL
+   /* Our criteria for fraud:
+   Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-        SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
-        INTO "CallStream-PowerBI"
-        FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
-        JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+   SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+   INTO "CallStream-PowerBI"
+   FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+   JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
 
-        /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
-        ON CS1.CallingIMSI = CS2.CallingIMSI
+   /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+   ON CS1.CallingIMSI = CS2.CallingIMSI
 
-        /* ...and date between CS1 and CS2 is between one and five seconds */
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
+   /* ...and date between CS1 and CS2 is between one and five seconds */
+   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-        /* Where the switch location is different */
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        GROUP BY TumblingWindow(Duration(second, 1))
-        ```
+   /* Where the switch location is different */
+   WHERE CS1.SwitchNum != CS2.SwitchNum
+   GROUP BY TumblingWindow(Duration(second, 1))
+   ```
 
 4. Kliknij pozycję **Zapisz**.
 
 
 ## <a name="test-the-query"></a>Testovat dotaz
+
 Ta sekcja jest opcjonalna, ale zalecana. 
 
 1. Jeżeli aplikacja TelcoStreaming nie jest obecnie uruchomiona, należy ją uruchomić, wykonując następujące czynności:
 
-    * Otwórz okno polecenia.
+    * Otwórz wiersz polecenia.
     * Przejdź do folderu, w których telcogenerator.exe i telcodatagen.exe.config zmodyfikowanych plików.
     * Uruchom następujące polecenie:
 
        `telcodatagen.exe 1000 .2 2`
 
-2. W **zapytania** bloku kliknij kropki obok `CallStream` dane wejściowe, a następnie wybierz pozycję **przykładowe dane z danych wejściowych**.
+2. Na **zapytania** stronie zadania usługi Stream Analytics, kliknij obok kropki `CallStream` dane wejściowe, a następnie wybierz pozycję **przykładowe dane z danych wejściowych**.
 
 3. Określ, czy program przechowuje trzy minuty danych i kliknij przycisk **OK**. Poczekaj, aż otrzymasz powiadomienie, że próbka danych została przygotowana.
 
-4. Kliknij przycisk **Testuj** i upewnij się, że wyświetlane są wyniki.
-
+4. Kliknij przycisk **testu** i przejrzyj wyniki.
 
 ## <a name="run-the-job"></a>Uruchamianie zadania
 
 1. Upewnij się, że aplikacja TelcoStreaming jest uruchomiona.
 
-2. Zamknij **zapytania** bloku.
-
-3. W bloku zadania kliknij **Start**.
+2. Przejdź do **Przegląd** strony dla zadania usługi Stream Analytics i wybierz **Start**.
 
     ![Uruchamianie zadania usługi Stream Analytics](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 

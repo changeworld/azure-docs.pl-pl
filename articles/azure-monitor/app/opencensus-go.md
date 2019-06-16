@@ -10,10 +10,10 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60577908"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Zbierać ślady rozproszonego z rzeczywistym użyciem (wersja zapoznawcza)
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
+## <a name="create-application-insights-resource"></a>Utwórz zasób usługi Application Insights
 
 Najpierw należy utworzyć zasób usługi Application Insights, który generuje klucz Instrumentacji (klucz Instrumentacji). Klucz Instrumentacji jest następnie używany do konfigurowania lokalnego usługi przesyłania dalej wysyłanie rozproszone śledzenie z OpenCensus instrumentacji aplikacji do usługi Application Insights.   
 

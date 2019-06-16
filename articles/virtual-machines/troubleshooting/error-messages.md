@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711207"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Zrozumienie typowe komunikaty o błędach, gdy można zarządzać maszynami wirtualnymi na platformie Azure
@@ -69,9 +69,9 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  BadRequest  |  Operacja "{0}"nie jest obsługiwana dla zasobu"{1}" z dyskami zarządzanymi.  |
 |  CertificateImproperlyFormatted  |  Reprezentacja JSON klucza tajnego pobierane {0} ma pole danych, który nie jest poprawnie sformatowanym plikiem PFX lub podane hasło nie dekoduje prawidłowo pliku PFX.  |
 |  CertificateImproperlyFormatted  |  Dane pobrane z {0} nie da się rozszeregować na formacie JSON.  |
-|  Konflikt  |  Zmiana rozmiaru dysku jest dozwolona tylko podczas tworzenia maszyny wirtualnej lub po cofnięciu jej przydziału.  |
+|  Konflikt  |  Zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej.  |
 |  ConflictingUserInput  |  Dysk "{0}"nie można dołączyć, ponieważ dysk jest już własnością maszyny Wirtualnej"{1}".  |
-|  ConflictingUserInput  |  Źródłowa grupa zasobów jest taka sama jak docelowa.  |
+|  ConflictingUserInput  |  Źródłowej i docelowej grupy zasobów są takie same.  |
 |  ConflictingUserInput  |  Konta magazynu źródłowego i docelowego dla dysku {0} są różne.  |
 |  ContainerAlreadyOnLease  |  Istnieje już dzierżawa na kontenerze magazynu przechowującym obiekt blob z identyfikatorem URI {0}.  |
 |  CrossSubscriptionMoveWithKeyVaultResources  |  Żądanie przeniesienia zasobów zawiera zasoby KeyVault, które są przywoływane przez co najmniej jeden {0}s w żądaniu. Jest to nieobsługiwane obecnie w obejmującej wiele subskrypcji przenoszenia. Sprawdź, czy szczegóły błędu dla identyfikatorów zasobów KeyVault.  |
@@ -95,17 +95,17 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  InternalOperationError  |  Wystąpił błąd podczas weryfikowania profil sieci maszyny wirtualnej "{0}".  |
 |  InvalidAccountType  |  AccountType {0} jest nieprawidłowy.  |
 |  InvalidParameter  |  Wartość parametru {0} jest nieprawidłowy.  |
-|  InvalidParameter  |  Określone hasło administratora jest niedozwolone.  |
+|  InvalidParameter  |  Określone hasło administratora nie jest dozwolone.  |
 |  InvalidParameter  |  "Podane hasło musi składać się {0}-{1} znaków i musi spełniać co najmniej {2} o wymagania dotyczące złożoności hasła z następujących wartości: <ol><li> Zawiera wielką literę</li><li>Zawiera małą literę</li><li>Zawiera zawierać cyfrę</li><li>Zawiera znaki specjalne.</li></ol>  |
-|  InvalidParameter  |  Określona nazwa użytkownika administratora jest niedozwolona.  |
-|  InvalidParameter  |  Nie można podłączyć istniejącego dysku z systemem operacyjnym, jeśli maszyna wirtualna jest utworzona z obrazu użytkownika lub platformy.  |
+|  InvalidParameter  |  Określona nazwa użytkownika administratora jest niedozwolone.  |
+|  InvalidParameter  |  Nie można dołączyć istniejącego dysku systemu operacyjnego, jeśli maszyna wirtualna jest tworzona z obrazu użytkownika lub platformy.  |
 |  InvalidParameter  |  Nazwa kontenera {0} jest nieprawidłowy. Nazwa kontenera musi mieć długość 3 – 63 znaków i może zawierać tylko małe znaki alfanumeryczne i łącznik. Łącznik musi być poprzedzony i następuje znak alfanumeryczny.  |
 |  InvalidParameter  |  Nazwa kontenera {0} w adresie URL {1} jest nieprawidłowy. Nazwa kontenera musi mieć długość 3 – 63 znaków i może zawierać tylko małe znaki alfanumeryczne i łącznik. Łącznik musi być poprzedzony i następuje znak alfanumeryczny.  |
 |  InvalidParameter  |  Nazwa obiektu blob w adresie URL {0} zawiera ukośnik odwrotny. Nie jest to obecnie obsługiwane w przypadku dysków.  |
 |  InvalidParameter  |  Identyfikator URI {0} nie wygląda na prawidłowy identyfikator URI obiektu blob.  |
 |  InvalidParameter  |  Dysk o nazwie "{0}" używa już tego samego numeru LUN: {1}.  |
 |  InvalidParameter  |  Dysk o nazwie "{0}" już istnieje.  |
-|  InvalidParameter  |  Nie można określić elementów przesłaniających obraz użytkownika dla dysku, który zdefiniowano w określonym odwołaniu do obrazu.  |
+|  InvalidParameter  |  Nie można określić przesłaniających obraz użytkownika dla dysku, który zdefiniowano w określonym odwołaniu do obrazu.  |
 |  InvalidParameter  |  Dysk o nazwie "{0}" używa już tego samego adresu URL wirtualnego dysku twardego {1}.  |
 |  InvalidParameter  |  Liczba domen błędów określonego {0} musi należeć do zakresu {1} do {2}.  |
 |  InvalidParameter  |  Typ licencji {0} jest nieprawidłowy. Prawidłowy typ licencji to: Windows_Client lub Windows_Server, z uwzględnieniem wielkości liter.  |
@@ -129,7 +129,7 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  MoveResourcesNotFound  |  Żądanie przeniesienia zasobów zawiera zasoby, których nie można znaleźć. Sprawdź szczegóły identyfikatorów tych zasobów.  |
 |  NetworkingInternalOperationError  |  Nieznany błąd alokacji sieci.  |
 |  NetworkingInternalOperationError  |  Nieznany błąd alokacji sieci  |
-|  NetworkingInternalOperationError  |  Wystąpił błąd podczas przetwarzania profilu sieciowego maszyny wirtualnej.  |
+|  NetworkingInternalOperationError  |  Wystąpił błąd wewnętrzny podczas przetwarzania profilu sieciowego maszyny wirtualnej.  |
 |  NotFound  |  Zestaw dostępności {0} nie można odnaleźć.  |
 |  NotFound  |  Źródłowej maszyny wirtualnej "{0}" określony w żądaniu nie istnieje w tej lokalizacji platformy Azure.  |
 |  NotFound  |  Dzierżawy o identyfikatorze {0} nie można odnaleźć.  |
@@ -137,13 +137,13 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  NotSupported  |  Typ licencji to {0}, ale obiekt blob obrazu {1} nie pochodzi ze środowiska lokalnego.  |
 |  OperationNotAllowed  |  Zestaw dostępności {0} nie można jej usunąć. Przed usunięciem zestawu dostępności upewnij się, że nie zawiera żadnych maszyn wirtualnych.  |
 |  OperationNotAllowed  |  Zmienianie zestawu dostępności jednostki SKU z "Wyrównanej" do "Classic" jest niedozwolone.  |
-|  OperationNotAllowed  |  Nie można modyfikować rozszerzeń w maszynie wirtualnej, kiedy maszyna wirtualna nie działa.  |
+|  OperationNotAllowed  |  Nie można modyfikować rozszerzeń w maszynie Wirtualnej, gdy maszyna wirtualna nie jest uruchomiony.  |
 |  OperationNotAllowed  |  Akcja przechwytywania jest obsługiwana tylko na maszynie wirtualnej z dyskami opartymi na obiektach blob. Użyj interfejsów API zasobu "Image", aby utworzyć obraz z zarządzanej maszyny wirtualnej.  |
 |  OperationNotAllowed  |  Zasób {0} nie można utworzyć za pomocą obrazu {1} aż obraz został pomyślnie utworzony.  |
 |  OperationNotAllowed  |  Aktualizacje do elementu encryptionSettings nie jest dozwolone, gdy maszyna wirtualna jest przydzielany, spróbuj ponownie po cofnięciu przydziału maszyny Wirtualnej  |
-|  OperationNotAllowed  |  Dodanie zarządzanego dysku do maszyny wirtualnej z dyskami opartymi na obiektach blob nie jest obsługiwane.  |
+|  OperationNotAllowed  |  Dodawanie dysku zarządzanego do maszyny Wirtualnej z dyskami opartymi na obiektach blob nie jest obsługiwana.  |
 |  OperationNotAllowed  |  Maksymalna liczba dysków danych dozwolonych do podłączenia do maszyny Wirtualnej tego rozmiaru to {0}.  |
-|  OperationNotAllowed  |  Dodanie dysku opartego na obiektach blob do maszyny wirtualnej z dyskami zarządzanymi nie jest obsługiwane.  |
+|  OperationNotAllowed  |  Dodanie dysku opartymi na obiektach blob do maszyny Wirtualnej z dyskami zarządzanymi nie jest obsługiwana.  |
 |  OperationNotAllowed  |  Operacja "{0}"jest niedozwolone w obrazie"{1}", ponieważ obraz jest oznaczony do usunięcia. Możesz tylko ponowić próbę wykonania operacji usunięcia (lub odczekać trwającą do ukończenia).  |
 |  OperationNotAllowed  |  Operacja "{0}"nie jest dozwolona na maszynie Wirtualnej"{1}", ponieważ maszyna wirtualna jest uogólniona.  |
 |  OperationNotAllowed  |  Operacja "{0}"nie jest dozwolona jako kolekcję punktów przywracania"{1}" jest oznaczona do usunięcia.  |
@@ -157,14 +157,14 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  OperationNotAllowed  |  Operacja "{0}"nie jest dozwolona na maszynie Wirtualnej"{1}", ponieważ maszyna wirtualna ma rozszerzenie"{2}" ze stanem wskazującym niepowodzenie.  |
 |  OperationNotAllowed  |  Operacja "{0}"nie jest dozwolona na maszynie Wirtualnej"{1}", ponieważ inna operacja jest w toku.  |
 |  OperationNotAllowed  |  Operacja "{0}"wymaga aby maszyna wirtualna"{1}" była uogólniona.  |
-|  OperationNotAllowed  |  Operacja wymaga uruchomienia maszyny wirtualnej (lub ustawienia jej w celu uruchomienia).  |
+|  OperationNotAllowed  |  Operacja wymaga maszyny Wirtualnej jest uruchomiona (lub jest ustawiony na uruchomienie).  |
 |  OperationNotAllowed  |  Dysk o rozmiarze {0}GB, który jest mniejszy niż rozmiar {1}GB odpowiadającego mu dysku w obrazie, jest niedozwolone.  |
 |  OperationNotAllowed  |  Rozszerzenia zestawu skali maszyny Wirtualnej programu obsługi "{0}" można dodać tylko w momencie tworzenia zestawu skalowania maszyn wirtualnych.  |
 |  OperationNotAllowed  |  Rozszerzenia zestawu skali maszyny Wirtualnej programu obsługi "{0}" można usunąć tylko w momencie usuwania zestawu skali maszyny Wirtualnej.  |
 |  OperationNotAllowed  |  Maszyna wirtualna "{0}" jest już używane dyski zarządzane.  |
 |  OperationNotAllowed  |  Maszyna wirtualna "{0}"należy do zestawu dostępności "Classic" "{1}". Zaktualizuj zestaw dostępności, aby używać "Wyrównanej" jednostki SKU, a następnie ponów próbę konwersji.  |
 |  OperationNotAllowed  |  Maszyna wirtualna utworzona na podstawie obrazu nie może mieć dyski opartymi na obiektach blob. Wszystkie dyski muszą być dyskami zarządzanymi.  |
-|  OperationNotAllowed  |  Nie można ukończyć operacji przechwytywania, ponieważ to nie jest uogólniona maszyna wirtualna.  |
+|  OperationNotAllowed  |  Przechwytywanie nie można ukończyć operacji, ponieważ nie jest uogólniona maszyna wirtualna.  |
 |  OperationNotAllowed  |  Operacje zarządzania na maszynie Wirtualnej "{0}" są niedozwolone, ponieważ dyski maszyny Wirtualnej są konwertowane na dyski zarządzane.  |
 |  OperationNotAllowed  |  Trwająca operacja powoduje zmianę stanu zasilania maszyny wirtualnej {0} do {1}. Wykonaj operację {2} po pewnym czasie.  |
 |  OperationNotAllowed  |  Nie można dodać ani zaktualizować maszyny Wirtualnej. Żądany rozmiar maszyny Wirtualnej {0} mogą nie być dostępne w istniejącej jednostce alokacji. Więcej informacji na maszyn wirtualnych, zmiana rozmiaru w strategii https://aka.ms/azure-resizevm.  |
@@ -190,7 +190,7 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  StorageAccountTooBusy  |  Konto magazynu "{0}" jest obecnie zbyt zajęte. Należy wziąć pod uwagę przy użyciu innego konta.  |
 |  StorageAccountTypeNotSupported  |  Dysk {0} używa {1} czyli konta usługi Blob storage. Spróbuj ponownie przy użyciu konta magazynu ogólnego przeznaczenia.  |
 |  StorageAccountTypeNotSupported  |  Konto magazynu {0} jest {1} typu. Obsługuje diagnostyki rozruchu {2} typy kont magazynu.  <ul><li>Ten błąd występuje, jeśli używasz konta usługi premium storage dla diagnostyki rozruchu. Aby uzyskać więcej informacji, zobacz [sposób używania diagnostyki rozruchu](boot-diagnostics.md). </li></ul> |
-|  SubscriptionNotAuthorizedForImage  |  Subskrypcja nie została autoryzowana.  |
+|  SubscriptionNotAuthorizedForImage  |  Subskrypcja nie ma autoryzacji.  |
 |  TargetDiskBlobAlreadyExists  |  Obiekt blob {0} już istnieje. Podaj inny identyfikator URI, aby utworzyć nowy pusty dysk danych obiektu blob "{1}".  |
 |  TargetDiskBlobAlreadyExists  |  Przechwytywanie nie można kontynuować operacji, ponieważ obiekt blob obrazu docelowego {0} już istnieje i nie jest ustawiona flaga, aby zastępować obiekty BLOB dysków VHD. Usuń obiekt blob lub ustawić flagę, aby zastąpić obiekty BLOB dysków VHD, a następnie spróbuj ponownie.  |
 |  TargetDiskBlobAlreadyExists  |  Przechwytywanie nie można kontynuować operacji, ponieważ obiekt blob obrazu docelowego {0} ma aktywną dzierżawę.   |
@@ -198,8 +198,8 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  TooManyVMRedeploymentRequests  |  Odebrano zbyt wiele żądań ponownego wdrożenia, dla maszyny Wirtualnej "{0}" lub maszyn wirtualnych w tej samej availabilityset, z tą maszyną Wirtualną. Spróbuj ponownie później.  |
 |  VHDSizeInvalid  |  Określona wartość rozmiaru dysku z {0} dla dysku "{1}" z obiektem blob {2} jest nieprawidłowy. Rozmiar dysku musi należeć do zakresu od {3} i {4}.  |
 |  VMAgentStatusCommunicationError  |  Maszyna wirtualna "{0}" nie zgłosił stan agenta maszyny Wirtualnej lub rozszerzenia. Sprawdź, czy maszyna wirtualna ma działającego agenta maszyny Wirtualnej i może nawiązywać wychodzące połączenia do usługi Azure storage.  |
-|  VMArtifactRepositoryInternalError  |  Podczas komunikacji z repozytorium artefaktów w celu pobrania szczegółów artefaktu maszyny wirtualnej wystąpił błąd.  |
-|  VMArtifactRepositoryInternalError  |  Wystąpił błąd wewnętrzny podczas pobierania danych artefaktu maszyny wirtualnej z repozytorium artefaktów.  |
+|  VMArtifactRepositoryInternalError  |  Wystąpił błąd podczas komunikowania się z repozytorium artefaktów w celu pobrania szczegółów artefaktu maszyny Wirtualnej.  |
+|  VMArtifactRepositoryInternalError  |  Wystąpił błąd wewnętrzny podczas pobierania danych artefaktu maszyny Wirtualnej z repozytorium artefaktów.  |
 |  VMExtensionHandlerNonTransientError  |  Procedura obsługi "{0}"zgłosiła błąd dla rozszerzenia maszyny Wirtualnej"{1}"z kodem błędu terminala"{2}" i komunikat o błędzie: "{3}"  |
 |  VMExtensionManagementInternalError  |  Wystąpił błąd wewnętrzny podczas przetwarzania rozszerzenia maszyny Wirtualnej "{0}".  |
 |  VMExtensionManagementInternalError  |  Wystąpiło wiele błędów podczas przygotowywania rozszerzeń maszyny Wirtualnej. Zobacz widok wystąpienia rozszerzenia maszyny Wirtualnej, aby uzyskać szczegółowe informacje.  |

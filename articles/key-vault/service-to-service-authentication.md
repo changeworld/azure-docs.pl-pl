@@ -10,10 +10,10 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.openlocfilehash: defb67c7e100a50a81d55afee03aa84be8e1e8e9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722476"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Usługa Usługa uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
@@ -177,7 +177,7 @@ Do korzystania z certyfikatu, aby zalogować się do usługi Azure AD:
           CertificateStoreLocation={CertificateStore}
     ```
  
-    Zastąp *{AppId}*, *{identyfikator dzierżawy}*, i *{Thumbprint}* wartościami utworzoną w kroku 1. Zastąp *{CertificateStore}* z oboma `LocalMachine` lub `CurrentUser`zgodnie z planu wdrożenia usługi.
+    Zastąp *{AppId}* , *{identyfikator dzierżawy}* , i *{Thumbprint}* wartościami utworzoną w kroku 1. Zastąp *{CertificateStore}* z oboma `LocalMachine` lub `CurrentUser`zgodnie z planu wdrożenia usługi.
 
 4. Uruchom aplikację. 
 
@@ -191,7 +191,7 @@ Aby zalogować się przy użyciu usługi Azure AD udostępnione wpisu tajnego po
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret} 
     ```
 
-    Zastąp _{AppId}_, _{identyfikator dzierżawy}_, i _{ClientSecret}_ wartościami utworzoną w kroku 1.
+    Zastąp _{AppId}_ , _{identyfikator dzierżawy}_ , i _{ClientSecret}_ wartościami utworzoną w kroku 1.
 
 3. Uruchom aplikację. 
 
@@ -212,9 +212,9 @@ Obsługiwane są następujące opcje:
 | `RunAs=CurrentUser` | Lokalne programowanie | AzureServiceTokenProvider wykorzystuje zintegrowane uwierzytelnianie usługi Azure AD do pobrania tokenu. |
 | `RunAs=App` | [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider korzysta z tożsamości zarządzanej można uzyskać tokenu. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Tożsamości przypisanych przez użytkownika dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider używa tożsamości przypisanych przez użytkownika w celu uzyskania tokenu. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Jednostka usługi | `AzureServiceTokenProvider` używa certyfikatu, aby uzyskać token z usługi Azure AD. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Jednostka usługi | `AzureServiceTokenProvider` Aby uzyskać token z usługi Azure AD, używa certyfikatu|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Jednostka usługi |`AzureServiceTokenProvider` używa tajnego klucza, aby uzyskać token z usługi Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Nazwa główna usługi | `AzureServiceTokenProvider` używa certyfikatu, aby uzyskać token z usługi Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Nazwa główna usługi | `AzureServiceTokenProvider` Aby uzyskać token z usługi Azure AD, używa certyfikatu|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Nazwa główna usługi |`AzureServiceTokenProvider` używa tajnego klucza, aby uzyskać token z usługi Azure AD. |
 
 
 

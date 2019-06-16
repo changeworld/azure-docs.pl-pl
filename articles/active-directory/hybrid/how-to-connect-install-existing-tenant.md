@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571378"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Program Azure AD Connect: Jeśli masz dzierżawę celowe
@@ -34,7 +34,7 @@ W chmurze, możesz zarządzać niektórych użytkowników lokalnych i innych. Ty
 Jeśli rozpoczęto do zarządzania użytkownikami w usłudze Azure AD, które są również w lokalnej usługi AD i później chcesz użyć Connect, istnieją pewne dodatkowe kwestie, które należy wziąć pod uwagę.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronizacja istniejących użytkowników w usłudze Azure AD
-Podczas instalowania programu Azure AD Connect i rozpoczęciem tej synchronizacji, usługa synchronizacji Azure AD (w usłudze Azure AD) sprawdza każdy nowy obiekt i spróbuj znaleźć istniejącego obiektu do dopasowania. Istnieją trzy atrybuty używane dla tego procesu: **userPrincipalName**, **proxyAddresses**, i **sourceAnchor**/**immutableID** . Dopasowanie w **userPrincipalName** i **proxyAddresses** jest znany jako **dopasowanie słabe**. Dopasowanie w **sourceAnchor** jest znany jako **twardych dopasowanie**. Dla **proxyAddresses** tylko wartość za pomocą atrybutu **SMTP:**, która jest podstawowym adresem e-mail, jest używana do oceny.
+Podczas instalowania programu Azure AD Connect i rozpoczęciem tej synchronizacji, usługa synchronizacji Azure AD (w usłudze Azure AD) sprawdza każdy nowy obiekt i spróbuj znaleźć istniejącego obiektu do dopasowania. Istnieją trzy atrybuty używane dla tego procesu: **userPrincipalName**, **proxyAddresses**, i **sourceAnchor**/**immutableID** . Dopasowanie w **userPrincipalName** i **proxyAddresses** jest znany jako **dopasowanie słabe**. Dopasowanie w **sourceAnchor** jest znany jako **twardych dopasowanie**. Dla **proxyAddresses** tylko wartość za pomocą atrybutu **SMTP:** , która jest podstawowym adresem e-mail, jest używana do oceny.
 
 Dopasowanie jest oceniane tylko dla nowych obiektów pochodzące z witryny Connect. Jeśli zmienisz istniejącego obiektu, dzięki czemu jest on zgodny te atrybuty, następnie zostanie wyświetlony błąd zamiast tego.
 

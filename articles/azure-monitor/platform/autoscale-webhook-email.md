@@ -9,10 +9,10 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787315"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach w usłudze Azure Monitor
@@ -62,7 +62,7 @@ Korzystając z interfejsu API REST lub Menedżera zasobów szablonu, obejmują e
 
 | Pole | Obowiązkowe? | Opis |
 | --- | --- | --- |
-| operacja |tak |Wartość musi być "Skalowanie" |
+| Operacja |tak |Wartość musi być "Skalowanie" |
 | sendToSubscriptionAdministrator |tak |musi mieć wartość "true" lub "false" |
 | sendToSubscriptionCoAdministrators |tak |musi mieć wartość "true" lub "false" |
 | customEmails |tak |wartość może być null [] lub tablicę ciągów, wiadomości e-mail |
@@ -106,19 +106,19 @@ Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane
 | Pole | Obowiązkowe? | Opis |
 | --- | --- | --- |
 | status |tak |Stan, który wskazuje, że zostało wygenerowane akcji skalowania automatycznego |
-| operacja |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
+| Operacja |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
 | Kontekst |tak |Kontekst akcji skalowania automatycznego |
 | timestamp |tak |Sygnaturę czasową, gdy akcja skalowania automatycznego została wyzwolona |
-| id |Yes |Identyfikator Menedżera zasobów Ustawienia skalowania automatycznego |
+| id |Tak |Identyfikator Menedżera zasobów Ustawienia skalowania automatycznego |
 | name |Yes |Nazwa ustawienia automatycznego skalowania |
-| szczegóły |Yes |Opis akcji, która miała usługi skalowania automatycznego i zmianę liczby wystąpień |
-| subscriptionId |Yes |Identyfikator zasobu docelowego, który wykonywane jest skalowanie subskrypcji |
+| Szczegółowe informacje |Yes |Opis akcji, która miała usługi skalowania automatycznego i zmianę liczby wystąpień |
+| subscriptionId |Tak |Identyfikator zasobu docelowego, który wykonywane jest skalowanie subskrypcji |
 | resourceGroupName |Yes |Nazwa grupy zasobów zasobu docelowego, który wykonywane jest skalowanie |
-| resourceName |Yes |Nazwa zasobu docelowego, który wykonywane jest skalowanie |
+| resourceName |Tak |Nazwa zasobu docelowego, który wykonywane jest skalowanie |
 | Typ zasobu |Yes |Trzy obsługiwane wartości: "microsoft.classiccompute/domainnames/slots/roles" - role usługi w chmurze, "microsoft.compute/virtualmachinescalesets" — Virtual Machine Scale Sets i "Microsoft.Web/serverfarms" - aplikacji sieci Web |
-| resourceId |Yes |Identyfikator zasobu docelowego, który wykonywane jest skalowanie usługi Resource Manager |
+| resourceId |Tak |Identyfikator zasobu docelowego, który wykonywane jest skalowanie usługi Resource Manager |
 | portalLink |Yes |Link do portalu Azure na stronie Podsumowanie zasób docelowy |
-| oldCapacity |Yes |Bieżąca (stare) liczba wystąpień podczas automatycznego skalowania trwało akcji skalowania |
-| newCapacity |Yes |Skalowanie automatyczne skalowanie zasobów do nowej liczba wystąpień |
+| oldCapacity |Tak |Bieżąca (stare) liczba wystąpień podczas automatycznego skalowania trwało akcji skalowania |
+| newCapacity |Tak |Skalowanie automatyczne skalowanie zasobów do nowej liczba wystąpień |
 | Właściwości |Nie |Opcjonalny. Zestaw < klucz, wartość > pary (na przykład, Dictionary < String, String >). Pole właściwości jest opcjonalne. W przypadku niestandardowego interfejsu użytkownika lub przepływu pracy aplikacji logiki można wprowadzić klucze i wartości, które można przekazać za pomocą ładunku. Alternatywny sposób, aby przekazywać niestandardowe właściwości wychodzące wywołanie elementu webhook jest użycie elementu webhook identyfikator URI sam (jako parametry zapytania) |
 

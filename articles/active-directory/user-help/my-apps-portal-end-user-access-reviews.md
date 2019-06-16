@@ -14,10 +14,10 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 551bbe4e994e15688c59fd395ab762e14927dfda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60482884"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Wykonywanie przeglądu dostępu z poziomu portalu Moje aplikacje
@@ -63,7 +63,7 @@ Jeśli administrator przyznał Ci uprawnienia do wykonywania własnych przegląd
 
     ![Dostęp do przeglądu strona, wyświetlająca pole przyczyny z przykładowym tekstem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Wybierz pozycję **Prześlij**.
+7. Wybierz **przesłać**.
 
     Dostęp do zapoznania się z nimi zostało ukończone i powrócić do **Moje aplikacje** portalu.
 

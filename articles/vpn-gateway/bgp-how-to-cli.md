@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209504"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Jak skonfigurować protokół BGP w bramie sieci VPN platformy Azure przy użyciu interfejsu wiersza polecenia
@@ -225,7 +225,7 @@ Należy się upewnić, że przestrzeń adresów IP nowej sieci wirtualnej TestVN
 
 W tym przykładzie sieci wirtualne należą do tej samej subskrypcji. Można skonfigurować połączenia sieć wirtualna-sieć wirtualna między różnymi subskrypcjami. Aby dowiedzieć się więcej, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](vpn-gateway-howto-vnet-vnet-cli.md). Upewnij się, że dodano `-EnableBgp $True` podczas tworzenia połączeń, aby włączyć protokół BGP.
 
-#### <a name="1-create-a-new-resource-group"></a>1. Utwórz nową grupę zasobów
+#### <a name="1-create-a-new-resource-group"></a>1. Utworzenie nowej grupy zasobów
 
 ```azurecli
 az group create -n TestBGPRG2 -l westus

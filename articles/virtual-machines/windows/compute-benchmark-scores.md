@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
 ms.openlocfilehash: 041906120ea156a00d272e2d3da15dc5174b6585
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866279"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Wyniki testów porównawczych wystąpień obliczeniowych dla maszyn wirtualnych Windows
@@ -27,7 +27,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 
 
 ## <a name="av2---general-compute"></a>Av2 - General obliczeń
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_A1_v2 | 1 | 1 | Intel(R) Xeon(R) E5 procesora CPU — 2660 0 @ 2,20 GHz | 12 | 14.2 | 0.3 | 
 | Standardowa_A1_v2 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 9 | 13.2 | Update 0.6 | 
@@ -52,7 +52,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standardowa_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) E5 procesora CPU — 2660 0 @ 2,20 GHz | 13 | 111.6 | 2.3 | 
 
 ## <a name="b---burstable"></a>B - z możliwością zwiększania wydajności
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 9 | 6.3 | 0.2 | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 47 | 6.4 | 0.2 | 
@@ -65,7 +65,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - General obliczeń i magazynu w warstwie Premium
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 10 | 40.8 | 2.3 | 
 | Standardowa_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 52 | 43.3 | 2.1 | 
@@ -80,7 +80,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 35 | 1070.6 | 2.4 | 
 
 ## <a name="dv3---general-compute"></a>Dv3 - General obliczeń
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_D2_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 10 | 38.6 | 1.8 | 
 | Standardowa_D2_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 24 | 41.8 | 3.3 | 
@@ -95,7 +95,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 32 | 1070.6 | 12.4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 — zoptymalizowane pod kątem magazynu
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_DS1_v2 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 12 | 33.0 | 1.1 | 
 | Standardowa_DS1_v2 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 37 | 33.8 | 2.5 | 
@@ -132,7 +132,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standardowa_ds15_v2 | 20 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 45 | 546.1 | 10.5 | 
 
 ## <a name="dv2---general-compute"></a>Dv2 — General obliczeń
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_D1_v2 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 30 | 33.5 | 1.7 | 
 | Standardowa_D1_v2 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 31 | 34.7 | 2.5 | 
@@ -156,7 +156,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Maszyna wirtualna Standard_D15_v2 | 20 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 37 | 558.8 | 8.4 | 
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 — zoptymalizowane pod kątem pamięci i magazynu w warstwie Premium
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_E2s_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 39 | 42.5 | 2.2 | 
 | Standardowa_E4s_v3 | 4 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 28 | 81.4 | 3.3 | 
@@ -172,16 +172,16 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_E32-16s_v3 | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 41 | 307.1 | 8.7 | 
 | Standard_E4-2s_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 65 | 41.9 | 2.4 | 
 | Standardowa_E64s_v3 | 64 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 1 | 1080.0 | 0.0 | 
-| Standard_E64-16s_v3 | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 3 | 334.3 | 1.5 | 
+| Standard_E64-16s_v3 | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 3 | 334.3 | 1,5 | 
 | Standard_E64-32s_v3 | 32 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 592.5 | 4.4 | 
 
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 — - Opt pamięci i magazynu w warstwie Premium (izolowany)
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64is_v3 | 64 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 28 | 1073.9 | 5.7 | 
 
 ## <a name="ev3---memory-optimized"></a>Ev3 — zoptymalizowane pod kątem pamięci
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_E2_v3 | 2 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 41 | 41.2 | 2.4 | 
 | Standardowa_E4_v3 | 4 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 43 | 81.4 | 5.3 | 
@@ -192,12 +192,12 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standardowa_E64_v3 | 64 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 31 | 1080.0 | 11.3 | 
 
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 — — Optymalizacja pod kątem pamięci (izolowany)
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Warstwie standardowa_e64i_v3 | 64 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 28 | 1081.4 | 11.1 | 
 
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - obliczeń i zoptymalizowane pod kątem magazynu
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F2s_v2 | 2 | 1 | Intel(R) Xeon(R) Procesora Platinum 8168 @ 2,70 GHz | 46 | 56.5 | 2.4 | 
 | Standard_F4s_v2 | 4 | 1 | Intel(R) Xeon(R) Procesora Platinum 8168 @ 2,70 GHz | 60 | 110.2 | 4.7 | 
@@ -208,7 +208,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_F72s_v2 | 72 | 2 | Intel(R) Xeon(R) Procesora Platinum 8168 @ 2,70 GHz | 29 | 1372.1 | 8.2 | 
 
 ## <a name="fs---compute-and-storage-optimized"></a>FS — zasoby obliczeniowe i Magazyn zoptymalizowany pod kątem
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_F1s | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 31 | 33.2 | 1.0 | 
 | Standardowa_F1s | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 41 | 35.1 | 2.0 | 
@@ -222,7 +222,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standardowa_F16s | 16 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 36 | 471.8 | 7.5 | 
 
 ## <a name="f---compute-optimized"></a>F — zoptymalizowane pod kątem obliczeń
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_F1 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 15 | 32.8 | 1.8 | 
 | Standardowa_F1 | 1 | 1 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 13 | 33.3 | 2.0 | 
@@ -237,7 +237,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standardowa_F16 | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 6 | 472.3 | 13.2 | 
 
 ## <a name="gs---storage-optimized"></a>GS - zoptymalizowane pod kątem magazynu
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_GS1 | 2 | 1 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 29 | 63.6 | 4.7 | 
 | Standardowa_GS2 | 4 | 1 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 29 | 122.3 | 6.9 | 
@@ -250,7 +250,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_GS5-16 | 16 | 2 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 31 | 447.9 | 4.0 | 
 
 ## <a name="g---compute-optimized"></a>G - zoptymalizowane pod kątem obliczeń
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_G1 | 2 | 1 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 29 | 64.7 | 9.2 | 
 | Standardowa_G2 | 4 | 1 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 30 | 127.9 | 12.2 | 
@@ -259,17 +259,17 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Maszyna wirtualna Standard_G5 | 32 | 2 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 31 | 774.1 | 4.1 | 
 
 ## <a name="h---high-performance-compute-hpc"></a>H - obliczenia o wysokiej wydajności (HPC)
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_H8 | 8 | 1 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 31 | 296.1 | 1.4 | 
-| Standardowa_H8m | 8 | 1 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 34 | 295.1 | 1.5 | 
+| Standardowa_H8m | 8 | 1 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 34 | 295.1 | 1,5 | 
 | Standardowa_H16 | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 19 | 563.5 | 4.3 | 
 | Standardowa_H16m | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 19 | 562.9 | 3.3 | 
 | Maszyna wirtualna standard_h16mr — | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 18 | 563.6 | 3.7 | 
 | Maszyna wirtualna standard_h16r — | 16 | 2 | Intel(R) Xeon(R) Procesora E5-2667 v3 3,20 GHz | 17 | 562.2 | 4.2 | 
 
 ## <a name="ls---storage-optimized"></a>Ls — zoptymalizowane pod kątem magazynu
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_L4s | 4 | 1 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 29 | 122.7 | 6.6 | 
 | Standardowa_L8s | 8 | 1 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 30 | 223.3 | 7.5 | 
@@ -277,7 +277,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standardowa_L32s | 32 | 2 | Intel(R) Xeon(R) v3 2,00 GHz E5-2698B procesora CPU | 31 | 766.1 | 3,5 | 
 
 ## <a name="m---memory-optimized"></a>M - zoptymalizowanych pod kątem pamięci
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_M8-2ms | 2 | 1 | Intel(R) Xeon(R) Procesora E7-8890 v3 o częstotliwości kosztuje 2,50 GHz | 15 | 42.1 | 2.1 | 
 | Standard_M8-4ms | 4 | 1 | Intel(R) Xeon(R) Procesora E7-8890 v3 o częstotliwości kosztuje 2,50 GHz | 13 | 81.6 | 2.9 | 
@@ -306,7 +306,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Warstwie standardowa_m8ms | 8 | 1 | Intel(R) Xeon(R) Procesora E7-8890 v3 o częstotliwości kosztuje 2,50 GHz | 13 | 158.2 | 5.5 | 
 
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 - procesora GPU
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v3 | 6 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 6 | 230.2 | 1.6 | 
 | Standard_NC12s_v3 | 12 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 7 | 425.0 | 3.6 | 
@@ -314,7 +314,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_NC24s_v3 | 24 | 2 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 3 | 809.3 | 2.3 | 
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 - procesora GPU
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v2 | 6 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 11 | 227.0 | 6.2 | 
 | Standard_NC12s_v2 | 12 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 9 | 427.3 | 1.3 | 
@@ -322,7 +322,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_NC24s_v2 | 24 | 2 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 11 | 811.5 | 4.4 | 
 
 ## <a name="nc---gpu-enabled"></a>NC - procesora GPU
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_NC6 | 6 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v3 o częstotliwości 2,60 GHz | 27 | 209.6 | 4.4 | 
 | Standardowa_NC12 | 12 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v3 o częstotliwości 2,60 GHz | 28 | 394.4 | 3.8 | 
@@ -330,7 +330,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Maszyna wirtualna Standard_NC24r | 24 | 2 | Intel(R) Xeon(R) E5 Procesora 2690 v3 o częstotliwości 2,60 GHz | 27 | 752.9 | 3.4 | 
 
 ## <a name="nds--gpu-enabled"></a>Włączone usługi NDs procesorami GPU
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_ND6s | 6 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 8 | 230.1 | 1.2 | 
 | Standard_ND12s | 12 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 11 | 426.5 | 1.4 | 
@@ -338,7 +338,7 @@ Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeni
 | Standard_ND24s | 24 | 2 | Intel(R) Xeon(R) E5 Procesora 2690 v4 @ 2,60 GHz | 11 | 812.6 | 4.4 | 
 
 ## <a name="nv---gpu-enabled"></a>NV — procesora GPU
-| Rozmiar | Procesory wirtualne vCPU | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
+| Rozmiar | procesorów wirtualnych | Węzły NUMA | Procesor CPU | Uruchomienia | Stawka podstawowa średnia | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standardowa_NV6 | 6 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v3 o częstotliwości 2,60 GHz | 28 | 210.5 | 6.1 | 
 | Standardowa_NV12 | 12 | 1 | Intel(R) Xeon(R) E5 Procesora 2690 v3 o częstotliwości 2,60 GHz | 28 | 394.5 | 2.3 | 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636755"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optymalizacja pobierania dużych plików za pomocą usługi Azure CDN
@@ -110,8 +110,8 @@ Optymalizacja dużych plików korzysta inny domyślny czas wygaśnięcia pamięc
 
 |    | Ogólne sieci web | Optymalizacja dużych plików 
 --- | --- | --- 
-Pamięć podręczna: Pozytywna <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |1 dzień  
-Pamięć podręczna: Negatywna <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda 
+Pamięć podręczna: Dodatnie <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |1 dzień  
+Pamięć podręczna: Ujemne <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda 
 
 ### <a name="deal-with-origin-failure"></a>Dotyczy błąd źródła
 

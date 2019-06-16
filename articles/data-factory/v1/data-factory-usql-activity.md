@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61248151"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL w usłudze Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-usql-activity.md)
 > * [Wersja 2 (bieżąca wersja)](../transform-data-using-data-lake-analytics.md)
 
@@ -48,7 +48,7 @@ Poniższa tabela zawiera opisy ogólne właściwości używane w definicji JSON.
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **type** |Właściwość type powinna być równa: **AzureDataLakeAnalytics**. |Yes |
+| **type** |Właściwość type powinna być równa: **AzureDataLakeAnalytics**. |Tak |
 | **accountName** |Nazwa konta usługi Azure Data Lake Analytics. |Yes |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nie |
 | **subscriptionId** |Identyfikator subskrypcji platformy Azure |Nie (Jeśli nie zostanie określony, używany subskrypcji usługi data factory). |
@@ -64,9 +64,9 @@ Użyj uwierzytelniania jednostki usługi, określając następujące właściwo�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Yes |
+| **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Tak |
 | **servicePrincipalKey** | Określ klucz aplikacji. | Yes |
-| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes |
+| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -92,8 +92,8 @@ Alternatywnie można użyć uwierzytelniania poświadczeń użytkownika usługi 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **Autoryzacja** | Kliknij przycisk **Autoryzuj** znajdujący się w edytorze fabryki danych i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Yes |
-| **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i mogą być użyte tylko raz. To ustawienie jest generowany automatycznie, korzystając z edytora fabryki danych. | Yes |
+| **Autoryzacja** | Kliknij przycisk **Autoryzuj** znajdujący się w edytorze fabryki danych i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Tak |
+| **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i mogą być użyte tylko raz. To ustawienie jest generowany automatycznie, korzystając z edytora fabryki danych. | Tak |
 
 **Przykład: Uwierzytelnienia poświadczeń użytkownika**
 ```json
@@ -118,7 +118,7 @@ Kod autoryzacji wygenerowany przy użyciu **Autoryzuj** przycisk wygasa po upły
 
 | Typ użytkownika | Wygasa po |
 |:--- |:--- |
-| Konta użytkowników, które nie są zarządzane przez usługę Azure Active Directory (@hotmail.com, @live.comitp.) |12 godzin |
+| Konta użytkowników, które nie są zarządzane przez usługę Azure Active Directory (@hotmail.com, @live.comitp.) |12 godz. |
 | Konta użytkowników zarządzanych przez usługę Azure Active Directory (AAD) |Uruchom 14 dni od ostatniego wycinka. <br/><br/>90 dni, jeśli wycinek oparte na podstawie OAuth połączonej usługi działa co najmniej raz na 14 dni. |
 
 Aby uniknąć/rozwiązania tego błędu, ponownie autoryzować przy użyciu **autoryzacji** przycisk, kiedy **wygaśnięcia ważności tokenu** i ponownie wdrożyć połączoną usługę. Możesz również generować wartości **sessionId** i **autoryzacji** właściwości programowo przy użyciu kodu w następujący sposób:
@@ -208,13 +208,13 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 
 | Właściwość            | Opis                              | Wymagane                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | Właściwość type musi być równa **DataLakeAnalyticsU SQL**. | Yes                                      |
-| linkedServiceName   | Odwołanie do usługi Azure Data Lake Analytics zarejestrowany jako połączonej usługi w usłudze Data Factory | Yes                                      |
+| — typ                | Właściwość type musi być równa **DataLakeAnalyticsU SQL**. | Yes                                      |
+| linkedServiceName   | Odwołanie do usługi Azure Data Lake Analytics zarejestrowany jako połączonej usługi w usłudze Data Factory | Tak                                      |
 | scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. Nazwa pliku jest uwzględniana wielkość liter. | Nie (Jeśli używany jest skrypt)                   |
 | scriptLinkedService | Połączonej usługi, która łączy magazyn, który zawiera skrypt w usłudze data factory | Nie (Jeśli używany jest skrypt)                   |
 | skrypt              | Określ zamiast określania scriptPath i element scriptLinkedService wykonanie wbudowanego skryptu. Na przykład: `"script": "CREATE DATABASE test"`. | Nie (Jeśli używasz scriptPath i element scriptLinkedService) |
 | degreeOfParallelism | Maksymalna liczba węzłów równocześnie używane do uruchamiania zadania. | Nie                                       |
-| priority            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie                                       |
+| priorytet            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie                                       |
 | parameters          | Parametry skryptu U-SQL          | Nie                                       |
 | runtimeVersion      | Wersja środowiska uruchomieniowego aparatu U-SQL do użycia | Nie                                       |
 | compilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości:</p> <ul><li>**Semantyczne:** Należy wykonać tylko semantycznego testy i wykonuje niezbędne testów.</li><li>**Pełna:** Wykonywanie pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp.</li><li>**SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox.</li></ul><p>Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. </p> | Nie                                       |

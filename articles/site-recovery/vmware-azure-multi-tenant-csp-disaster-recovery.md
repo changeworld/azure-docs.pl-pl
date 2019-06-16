@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461031"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie odzyskiwania po awarii programu VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
@@ -52,7 +52,7 @@ Można uzyskać dostępu do subskrypcji dzierżawcy przy użyciu pulpicie nawiga
 
 1. Na **klientów** kliknij nazwę konta dzierżawy.
 2. W **subskrypcje** strona konta dzierżawy, możesz monitorować istniejące subskrypcje z konta i dodawać więcej subskrypcje, zgodnie z potrzebami.
-3. Aby zarządzać operacji odzyskiwania po awarii dzierżawy, wybierz pozycję **wszystkie zasoby (witryna Azure portal)**. Spowoduje to przydzielenie dostępu do subskrypcji platformy Azure dla dzierżawy.
+3. Aby zarządzać operacji odzyskiwania po awarii dzierżawy, wybierz pozycję **wszystkie zasoby (witryna Azure portal)** . Spowoduje to przydzielenie dostępu do subskrypcji platformy Azure dla dzierżawy.
 
     ![Łączy wszystkie zasoby](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
@@ -76,7 +76,7 @@ Można teraz wykonać i zarządzać operacjami usługi Site Recovery wszystkie d
     
     c) po utworzeniu nowego użytkownika, wróć do witryny Azure portal. W **subskrypcji** wybierz odpowiednie subskrypcji.
 
-    d) wybierz **kontrola dostępu (IAM)**, a następnie kliknij przycisk **przypisań ról**.
+    d) wybierz **kontrola dostępu (IAM)** , a następnie kliknij przycisk **przypisań ról**.
 
     (e) kliknij **Dodaj przypisanie roli** można dodać użytkownika z poziomem dostępu istotne. Użytkownicy, które zostały utworzone za pośrednictwem portalu dostawcy usług Kryptograficznych są wyświetlane na karcie przypisania roli.
 
@@ -93,7 +93,7 @@ Istnieją trzy główne modele wielodostępne:
 
 * **Dostawca usług hostingu w wersji dedykowanej**: Partner jest właścicielem infrastruktury fizycznej, ale używa dedykowanych zasobów (wiele vCenters, fizycznych magazynów danych i tak dalej) do obsługi każdego dzierżawcy maszyny wirtualne, w osobnej infrastruktury. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana lub dzierżawcy mogą jej właścicielem jako rozwiązanie samoobsługi.
 
-* **Zarządzane usługi dostawcy (MSP)**: Klient jest właścicielem infrastruktury fizycznej, który jest hostem maszyny wirtualne, a partner zapewnia możliwości odzyskiwania po awarii i zarządzanie.
+* **Zarządzane usługi dostawcy (MSP)** : Klient jest właścicielem infrastruktury fizycznej, który jest hostem maszyny wirtualne, a partner zapewnia możliwości odzyskiwania po awarii i zarządzanie.
 
 Konfigurując subskrypcji dzierżawy zgodnie z opisem w tym artykule, możesz szybko rozpocząć pozwala klientom w żadnej z odpowiednich modeli wielodostępnych. Dowiedz się więcej o różnych modeli z wieloma dzierżawami i lokalnych kontroli dostępu [tutaj](vmware-azure-multi-tenant-overview.md).
 

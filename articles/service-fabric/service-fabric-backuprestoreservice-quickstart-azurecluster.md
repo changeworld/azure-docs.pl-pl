@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059183"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Usługa Service Fabric udostępnia zestaw interfejsów API, aby osiągnąć nast
 - Zarządzanie przechowywania kopii zapasowych (nadchodzących)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Klaster usługi Service Fabric za pomocą Service Fabric w wersji 6.2 i nowszych. Należy skonfigurować klaster w systemie Windows Server. Zapoznaj się z tym [artykułu](service-fabric-cluster-creation-via-arm.md) kroki umożliwiające utworzenie usługi Service Fabric klastra za pomocą szablonu zasobów platformy Azure.
+* Klaster usługi Service Fabric za pomocą Service Fabric w wersji 6.4 lub nowszej. Zapoznaj się z tym [artykułu](service-fabric-cluster-creation-via-arm.md) kroki umożliwiające utworzenie usługi Service Fabric klastra za pomocą szablonu zasobów platformy Azure.
 * Certyfikat X.509 do szyfrowania wymagane do połączenia z magazynem kluczy tajnych do przechowywania kopii zapasowych. Zapoznaj się [artykułu](service-fabric-cluster-creation-via-arm.md) wiedzieć, jak pobrać lub utworzyć certyfikat X.509.
 * Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych dla platformy .NET Core 2.0, aplikacja powinna utworzona przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
 * Utwórz konto usługi Azure Storage do przechowywania kopii zapasowych aplikacji.

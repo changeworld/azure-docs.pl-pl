@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
 ms.openlocfilehash: e38e1479c1e094f691e8f22f0a48f9342cae5cf3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475081"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Atrybuty zabezpieczeń dla usługi Azure App Service
@@ -28,7 +28,7 @@ W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure 
 |---|---|--|
 | Szyfrowanie w spoczynku (na przykład szyfrowanie po stronie serwera, szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta i inne funkcje szyfrowania) | Yes | Zawartość pliku witryny sieci Web jest przechowywana w usłudze Azure Storage automatycznie szyfruje zawartość w stanie spoczynku. Zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).<br><br>Wpisy tajne klienta dostarczane są szyfrowane, gdy. Wpisy tajne są szyfrowane, gdy podczas przechowywane w bazach danych konfiguracji usługi App Service.<br><br>Lokalnie dołączonych dysków może opcjonalnie służyć jako tymczasowy magazyn przez witryny sieci Web (D:\local i % TMP %). Podłączone lokalnie dyski nie są szyfrowane w stanie spoczynku. |
 | Szyfrowanie podczas transferu (np. szyfrowanie usługi ExpressRoute w sieci wirtualnej, szyfrowania i szyfrowania sieć wirtualna-sieć wirtualna)| Tak | Klienci mogą skonfigurować witryny sieci web w celu wymagania i używać protokołu HTTPS dla ruchu przychodzącego. Zobacz wpis w blogu [jak usługi Azure App Service tylko HTTPS](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/). |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Klienci mogą wybrać opcję przechowywania wpisów tajnych aplikacji w usłudze Key Vault i pobierać je w czasie wykonywania. Zobacz [odwołuje się do użycia magazynu kluczy dla usługi App Service i Azure Functions (wersja zapoznawcza)](app-service-key-vault-references.md).|
+| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Yes | Klienci mogą wybrać opcję przechowywania wpisów tajnych aplikacji w usłudze Key Vault i pobierać je w czasie wykonywania. Zobacz [odwołuje się do użycia magazynu kluczy dla usługi App Service i Azure Functions (wersja zapoznawcza)](app-service-key-vault-references.md).|
 | Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
 | Wywołania interfejsu API szyfrowane| Tak | Występować wywołań zarządzania można konfigurować usługę App Service za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml) wywołań za pośrednictwem protokołu HTTPS. |
 
@@ -45,7 +45,7 @@ W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure 
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Usługa App Service integruje się z usługą Application Insights dla języków, które obsługują usługi Application Insights (pełny program .NET Framework, .NET Core, Java i Node.JS).  Zobacz [wydajności monitorowania usługi Azure App Service](../azure-monitor/app/azure-web-apps.md). Usługa App Service wysyła również metryki aplikacji w usłudze Azure Monitor. Zobacz [monitorować aplikacje w usłudze Azure App Service](web-sites-monitor.md). |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Usługa App Service integruje się z usługą Application Insights dla języków, które obsługują usługi Application Insights (pełny program .NET Framework, .NET Core, Java i Node.JS).  Zobacz [wydajności monitorowania usługi Azure App Service](../azure-monitor/app/azure-web-apps.md). Usługa App Service wysyła również metryki aplikacji w usłudze Azure Monitor. Zobacz [monitorować aplikacje w usłudze Azure App Service](web-sites-monitor.md). |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 

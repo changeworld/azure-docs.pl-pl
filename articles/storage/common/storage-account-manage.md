@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: tamram
 ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484278"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Zarządzanie ustawieniami konta magazynu w witrynie Azure portal
@@ -27,7 +27,7 @@ Usługa Azure Storage obsługuje uwierzytelnianie przy użyciu usługi Azure Act
 > [!NOTE]
 > Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z innej metody autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Nadal m ożna również udzielić szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego. 
 
-## <a name="tags"></a>Tagi
+## <a name="tags"></a>`Tags`
 
 Usługa Azure Storage obsługuje tagi usługi Azure Resource Manager służący do organizowania zasobów platformy Azure dostosowanych taksonomii. Znaczniki można dodawać do swoich kont magazynu, dzięki czemu grupy w ramach Twojej subskrypcji w logiczny sposób. 
 
@@ -35,7 +35,7 @@ W przypadku kont magazynu Nazwa tagu jest ograniczona do 128 znaków, a wartoś�
 
 Aby uzyskać więcej informacji, zobacz [organizowania zasobów platformy Azure za pomocą tagów](../../azure-resource-manager/resource-group-using-tags.md).
 
-## <a name="access-keys"></a>Klawisze dostępu
+## <a name="access-keys"></a>Klucze dostępu
 
 Podczas tworzenia konta magazynu platformy Azure generuje dwa klucze dostępu do konta magazynu 512-bitowe. Te klucze może służyć do autoryzowania dostępu do konta magazynu za pomocą klucza wspólnego. Można obracać i ponownie wygenerować klucze produktu bez przeszkód do aplikacji, a firma Microsoft zaleca się, że możesz to zrobić regularnie.
 

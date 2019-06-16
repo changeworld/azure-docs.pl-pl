@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486519"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Usługa Azure Data Factory — funkcje i zmienne systemowe
@@ -30,10 +30,10 @@ Ten artykuł zawiera informacje dotyczące funkcji i zmiennych obsługiwane prze
 
 | Nazwa zmiennej | Opis | Zakres obiektów | Zakres JSON i przypadki użycia |
 | --- | --- | --- | --- |
-| WindowStart |Początek przedział czasowy na potrzeby uruchamiania okna bieżącego działania |działanie |<ol><li>Określ zapytaniach wyboru danych. Zobacz artykuły łącznika, do którego odwołuje się [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu.</li> |
-| WindowEnd |Koniec przedział czasowy na potrzeby uruchamiania okna bieżącego działania |działanie |taka sama jak WindowStart. |
-| SliceStart |Początek przedziału czasu dla wycinka danych, generowany |działanie<br/>Zestaw danych |<ol><li>Określ folder dynamiczne ścieżki i nazwy plików podczas pracy z [obiektów Blob platformy Azure](data-factory-azure-blob-connector.md) i [zestawów danych w systemie plików](data-factory-onprem-file-system-connector.md).</li><li>Określ zależności wejściowe z funkcji usługi fabryka danych w kolekcji danych wejściowych działania.</li></ol> |
-| SliceEnd |Koniec przedział czasu dla bieżącego wycinka danych. |działanie<br/>Zestaw danych |taka sama jak parametru SliceStart. |
+| WindowStart |Początek przedział czasowy na potrzeby uruchamiania okna bieżącego działania |Działanie |<ol><li>Określ zapytaniach wyboru danych. Zobacz artykuły łącznika, do którego odwołuje się [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu.</li> |
+| WindowEnd |Koniec przedział czasowy na potrzeby uruchamiania okna bieżącego działania |Działanie |taka sama jak WindowStart. |
+| SliceStart |Początek przedziału czasu dla wycinka danych, generowany |Działanie<br/>Zestaw danych |<ol><li>Określ folder dynamiczne ścieżki i nazwy plików podczas pracy z [obiektów Blob platformy Azure](data-factory-azure-blob-connector.md) i [zestawów danych w systemie plików](data-factory-onprem-file-system-connector.md).</li><li>Określ zależności wejściowe z funkcji usługi fabryka danych w kolekcji danych wejściowych działania.</li></ol> |
+| SliceEnd |Koniec przedział czasu dla bieżącego wycinka danych. |Działanie<br/>Zestaw danych |taka sama jak parametru SliceStart. |
 
 > [!NOTE]
 > Obecnie fabryki danych wymaga, że harmonogramu określonego w działaniu dokładnie jest zgodny z harmonogramem określonym w dostępności zestawu danych wyjściowych. W związku z tym WindowStart, WindowEnd i SliceStart i SliceEnd są zawsze mapowane na tym samym okresie czasu i wycinek pojedynczego wyjścia.
@@ -82,7 +82,7 @@ W poniższej tabeli wymieniono wszystkie funkcje w usłudze Azure Data Factory:
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Dodaje Y godzin do chwili X. <br/><br/>Przykład: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |Dodaje Y minut x.<br/><br/>Przykład: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: DateTime |Pobiera godzinę rozpoczęcia, godzinę, reprezentowane przez składnik godziny wartości X. <br/><br/>Przykład: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |StartOfHour(X) |X: Datetime |Pobiera godzinę rozpoczęcia, godzinę, reprezentowane przez składnik godziny wartości X. <br/><br/>Przykład: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Date |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |Dodaje Y dni x. <br/><br/>Przykład: 9/15/2013 12:00:00: 00 + 2 dni = 9/17/2013 12:00:00 PM.<br/><br/>Odejmij dni zbyt, określając Y jako liczba ujemna.<br/><br/>Przykład: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Date |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |Dodaje miesięcy Y, x.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Możesz zbyt Odejmij miesięcy, określając Y jako liczba ujemna.<br/><br/>Przykład: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Date |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |Dodaje Y * X 3 miesięcy.<br/><br/>Przykład: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |

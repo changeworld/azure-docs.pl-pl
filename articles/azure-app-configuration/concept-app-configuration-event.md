@@ -8,10 +8,10 @@ ms.date: 05/30/2019
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 601124aef37d2b285db71130f5c63b3620c7768f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735649"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagowanie na zdarzenia konfiguracji aplikacji platformy Azure
@@ -40,7 +40,7 @@ Konfiguracja aplikacji Azure — wydarzenia zawierają wszystkie informacje potr
 > |Właściwość|Typ|Opis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |topic|string|Pełny identyfikator usługi Azure Resource Manager konfiguracji aplikacji, który emituje zdarzenia.|
-> |topic|string|Identyfikator URI klucz wartość, która jest przedmiotem zdarzenia.|
+> |subject|string|Identyfikator URI klucz wartość, która jest przedmiotem zdarzenia.|
 > |eventTime|string|Data/Godzina wygenerowania zdarzenia, w formacie ISO 8601.|
 > |eventType|string|"Microsoft.AppConfiguration.KeyValueModified" or "Microsoft.AppConfiguration.KeyValueDeleted".|
 > |Identyfikator|string|Unikatowy identyfikator tego zdarzenia.|

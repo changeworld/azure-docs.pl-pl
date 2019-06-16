@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477148"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Użyj usługi Azure Storage dla programu SQL Server z kopii zapasowej i przywracania
@@ -51,14 +51,14 @@ Następujące składniki platformy Azure są używane podczas wykonywania kopii 
 | --- | --- |
 | **Konto magazynu** |Konto magazynu jest punktem wyjścia dla wszystkich usług magazynu. Aby uzyskać dostęp do usługi Azure Blob Storage, należy najpierw utworzyć konto usługi Azure Storage. Aby uzyskać więcej informacji na temat usługi Azure Blob storage, zobacz [jak używać usługi Azure Blob Storage](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **Kontener** |Kontener zawiera grupowanie zestawu obiektów blob i może przechowywać nieograniczoną liczbę obiektów blob. Do zapisu w programu SQL Server kopii zapasowej do usługi obiektów Blob platformy Azure, możesz musi mieć co najmniej kontener głównego tworzone. |
-| **Obiekt blob** |Plik dowolnego typu i rozmiaru. Obiekty BLOB są adresy, przy użyciu następującego formatu adresu URL: **https://[storage account].blob.core.windows.net/[container]/[blob]**. Aby uzyskać więcej informacji na temat stronicowych obiektów blob, zobacz [omówienie blokowych i stronicowych obiektów blob](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
+| **Obiekt blob** |Plik dowolnego typu i rozmiaru. Obiekty BLOB są adresy, przy użyciu następującego formatu adresu URL: **https://[storage account].blob.core.windows.net/[container]/[blob]** . Aby uzyskać więcej informacji na temat stronicowych obiektów blob, zobacz [omówienie blokowych i stronicowych obiektów blob](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
 
 ## <a name="sql-server-components"></a>Składniki programu SQL Server
 Następujące składniki programu SQL Server są używane podczas wykonywania kopii zapasowej do usługi Azure Blob storage.
 
 | Składnik | Opis |
 | --- | --- |
-| **Adres URL** |Adres URL określa jednolity identyfikator (URI) do unikatowego pliku kopii zapasowej. Adres URL jest używany do zapewnienia lokalizację i nazwę pliku kopii zapasowej programu SQL Server. Adres URL musi wskazywać na rzeczywistych obiektów blob nie tylko kontenera. Jeśli obiekt blob nie istnieje, zostanie utworzony. Jeśli istniejący obiekt blob jest określona, kopii zapasowej zakończy się niepowodzeniem, chyba że > określono opcji klauzuli WITH FORMAT. Oto przykład adres URL należy określić w poleceniu BACKUP: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]**. HTTPS jest zalecane, ale nie jest wymagane. |
+| **Adres URL** |Adres URL określa jednolity identyfikator (URI) do unikatowego pliku kopii zapasowej. Adres URL jest używany do zapewnienia lokalizację i nazwę pliku kopii zapasowej programu SQL Server. Adres URL musi wskazywać na rzeczywistych obiektów blob nie tylko kontenera. Jeśli obiekt blob nie istnieje, zostanie utworzony. Jeśli istniejący obiekt blob jest określona, kopii zapasowej zakończy się niepowodzeniem, chyba że > określono opcji klauzuli WITH FORMAT. Oto przykład adres URL należy określić w poleceniu BACKUP: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]** . HTTPS jest zalecane, ale nie jest wymagane. |
 | **Poświadczenie** |Informacje, który jest wymagany do nawiązywania połączenia i uwierzytelniania usługi Azure Blob storage są przechowywane jako poświadczenie.  Aby dla programu SQL Server do zapisywania obiektów Blob platformy Azure lub przywracania kopii zapasowych z niego można utworzyć poświadczeń programu SQL Server. Aby uzyskać więcej informacji, zobacz [poświadczeń serwera SQL](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]

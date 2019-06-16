@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: b83368b913bf1303b49e3a56e3a15248af222cbe
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002049"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetl klucz koszt metryki za pomocą pulpitów nawigacyjnych
@@ -42,7 +42,7 @@ Aby szybko rozpocząć pracę z niestandardowego pulpitu nawigacyjnego można zd
 
 Aby utworzyć niestandardowego pulpitu nawigacyjnego:
 
-1. Na stronie głównej kliknij **Dodaj nowe +**. Zostanie wyświetlona strona Mój pulpit nawigacyjny.  
+1. Na stronie głównej kliknij **Dodaj nowe +** . Zostanie wyświetlona strona Mój pulpit nawigacyjny.  
     ![Moje strony pulpitu nawigacyjnego, w którym dodawane są nowe raporty](./media/dashboards/my-dashboard.png)
 2. Kliknij przycisk **Dodaj nowy raport**. Zostanie wyświetlone okno dodawania raportu.
 3. Wybierz raport, który chcesz dodać do elementu widget pulpitu nawigacyjnego. Widżet zostanie dodana do pulpitu nawigacyjnego.

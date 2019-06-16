@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91ee8b6e614cf12deccd1429ad67323c277954a0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061486"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Często zadawane pytania dotyczące zapory aplikacji sieci web platformy Azure
 
@@ -31,9 +31,6 @@ Zasadę zapory aplikacji internetowych platformy Azure można zastosować do apl
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Co to jest zapory aplikacji sieci Web dla usługi Azure Service drzwiami frontowymi? 
 
 Azure drzwiami frontowymi jest wysoce skalowalną, globalnie rozproszonych aplikacji, a usługa content delivery network. Azure zapory aplikacji sieci Web, po zintegrowaniu z usługą drzwiami frontowymi zatrzymuje typu "odmowa usługi", a celem ataków aplikacji na granicy sieci platformy Azure, blisko źródła ataku, zanim wejdzie do sieci wirtualnej, zapewnia ochronę bez obniżania oczekiwanego poziomu wydajności.
-
-## <a name="how-will-i-be-charged-for-azure-waf-for-front-door"></a>Jak będzie rozliczany Zapora aplikacji sieci Web platformy Azure dla drzwiami frontowymi?
-W publicznej wersji zapoznawczej zapory aplikacji sieci Web użycia na wejściu są bezpłatne. Zwróć uwagę, że opłata za wejściu dodatkowe. Zobacz cennik usługi drzwiami frontowymi [tutaj](https://azure.microsoft.com/pricing/details/frontdoor/).
 
 ## <a name="does-azure-waf-support-https"></a>Zapora aplikacji sieci Web w usłudze Azure obsługuje protokół HTTPS?
 

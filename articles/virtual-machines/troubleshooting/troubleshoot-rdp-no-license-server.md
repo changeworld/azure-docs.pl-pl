@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318956"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Serwer licencji usług pulpitu zdalnego nie jest dostępna, po nawiązaniu połączenia z Maszyną wirtualną platformy Azure
@@ -63,7 +63,7 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
     Jeśli nie możesz połączyć z maszyną wirtualną przy użyciu sesji administracyjnej, możesz użyć [Konsola szeregowa maszyny wirtualnej na platformie Azure](serial-console-windows.md) na dostęp do maszyny Wirtualnej w następujący sposób:
 
-    1. Dostęp do konsoli szeregowej, wybierając **pomoc techniczna i rozwiązywanie problemów** > **Konsola szeregowa (wersja zapoznawcza)**. Jeśli ta funkcja jest włączona na maszynie Wirtualnej, możesz połączyć maszynę Wirtualną pomyślnie.
+    1. Dostęp do konsoli szeregowej, wybierając **pomoc techniczna i rozwiązywanie problemów** > **Konsola szeregowa (wersja zapoznawcza)** . Jeśli ta funkcja jest włączona na maszynie Wirtualnej, możesz połączyć maszynę Wirtualną pomyślnie.
 
     2. Utwórz nowy kanał dla wystąpienia CMD. Wprowadź **CMD** Uruchom kanał i uzyskać nazwę kanału.
 
@@ -127,6 +127,6 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
 4. Jeśli serwer licencji usług pulpitu zdalnego jest skonfigurowany i działa prawidłowo, upewnij się, że serwer licencji usług pulpitu zdalnego jest aktywowana z licencji CAL.
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można rozwiązać swój problem.

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
 ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60398709"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Obsługa Platform do usługi Azure IoT SDK
@@ -89,7 +89,7 @@ Istnieje kilka obsługiwane platformy.
 
 Klienci mogą rozszerzyć nasze wsparcie platformy przez przenoszenie C zestawu SDK Azure IoT, w szczególności, Tworzenie warstwy abstrakcji platformy (PAL) zestawu SDK. Firma Microsoft współpracuje z partnerami w celu zapewnienia wsparcia dodatkowego. Lista partnerów ma przenoszone zestawu SDK języka C na wielu platformach i utrzymywanie listy PAL.
 
-| Partner             | Urządzenia                            | Link                     | Pomoc techniczna |
+| Partner             | Urządzenia                            | Łącze                     | Pomoc techniczna |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT modemu     | [LTE Qualcomm dla zestawu SDK usługi IoT](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |

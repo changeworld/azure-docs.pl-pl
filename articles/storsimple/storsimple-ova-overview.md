@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630373"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do macierzy wirtualnej StorSimple
@@ -76,8 +76,8 @@ Podsumowanie obsługiwanych obciążeń StorSimple jest przedstawione w poniższ
 
 |Scenariusz     |Obciążenie     |Obsługiwane      |Ograniczenia               | Odpowiednie wersje|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Office zdalnych biurach/oddziałach (ROBO)  |Udostępnianie plików     |Yes      |Zobacz [maksymalny limit dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
-|Trwa archiwizowanie w chmurze  |Udostępnianie plików archiwizacji     |Yes      |Zobacz [maksymalny limit dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
+|Office zdalnych biurach/oddziałach (ROBO)  |Udostępnianie plików     |Tak      |Zobacz [maksymalny limit dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
+|Trwa archiwizowanie w chmurze  |Udostępnianie plików archiwizacji     |Tak      |Zobacz [maksymalny limit dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
 
 Macierz wirtualna StorSimple jest najlepszym rozwiązaniem w przypadku rzadko używanych danych. Chociaż macierzy wirtualnej ma lokalnej pamięci podręcznej w celu zwiększania wydajności, użytkowników należy przyjąć, że urządzenie usługi plików w najniższej warstwy magazynu (chmura). Każdą macierz wirtualną można zapisu i odczytu do usługi Azure storage w około 100 MB/s. Ten link jest współużytkowany przez wszystkich żądań przychodzących do urządzenia i mogą stać się wąskim gardłem, jak pokazano na poniższym diagramie.
 
@@ -87,7 +87,7 @@ Gdy jednoczesną pracę wielu użytkowników, dostęp do macierzy wirtualnej, ws
 
 Macierz wirtualna StorSimple nie jest odpowiednia dla obciążeń wymagających wysokiej dostępności. Macierz wirtualna to urządzenie o jednym węźle, który wystąpi przestój podczas instalowania aktualizacji oprogramowania. Administratorzy, należy zaplanować na okno obsługi, 30 minut 3 - 4 razy w roku.
 
-## <a name="workflows"></a>Przepływy
+## <a name="workflows"></a>Przepływy pracy
 
 Rozwiązania StorSimple Virtual Array jest szczególnie przydatny w przypadku następujących przepływów:
 

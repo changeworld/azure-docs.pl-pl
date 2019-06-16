@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a66aefec69a0551f85b11a380c90d1915bd776
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f57b0189708f48d1dc403ce778f5f9693b6dc702
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110393"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -357,13 +357,13 @@ Aby uzyskać więcej informacji, zobacz [sposób wymagać zasad ochrony aplikacj
 
 ---
 
-### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nowa funkcja obsługi usługi Azure AD pojedynczego logowania jednokrotnego i warunkowego dostępu w programie Microsoft Edge (publiczna wersja zapoznawcza)
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nowa funkcja obsługi usługi Azure AD logowanie jednokrotne i dostęp warunkowy w programie Microsoft Edge (publiczna wersja zapoznawcza)
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Dostęp warunkowy  
 **Możliwości produktu:** Ochrona i zabezpieczanie tożsamości
 
-Ulepszyliśmy nasze obsługę usługi Azure AD dla programu Microsoft Edge, umieszczając nowa funkcja obsługi pojedynczego logowania jednokrotnego i warunkowego dostępu usługi Azure AD. Jeśli wcześniej używano Microsoft Intune Managed Browser, możesz teraz użyć Microsoft Edge.
+Ulepszyliśmy nasze obsługę usługi Azure AD dla programu Microsoft Edge, w tym oferuje obsługę nowej usługi Azure AD logowanie jednokrotne i dostęp warunkowy. Jeśli wcześniej używano Microsoft Intune Managed Browser, możesz teraz użyć Microsoft Edge.
 
 Aby uzyskać więcej informacji na temat konfigurowania i zarządzania urządzeniami i aplikacjami przy użyciu dostępu warunkowego, zobacz [wymagają zarządzanych urządzeń, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) i [wymagają zatwierdzonych aplikacji klienckich dla chmury dostęp do aplikacji przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Aby uzyskać więcej informacji o zarządzaniu dostępem przy użyciu Microsoft Edge zasady w usłudze Microsoft Intune, zobacz [zarządzanie dostępem do Internetu za pomocą usługi Microsoft Intune chronione przez zasady przeglądarki](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
@@ -477,7 +477,7 @@ Aby uzyskać więcej informacji o nowym **dzienniki inspekcji** stronie, zobacz 
 **Kategoria usług:** Dostęp warunkowy  
 **Możliwości produktu:** Ochrona i zabezpieczanie tożsamości
 
-Aby zapobiec Administratorzy przed zablokowaniem sobie przypadkowo poza dzierżawcom przy użyciu nieprawidłowej konfiguracji zasad dostępu warunkowego, utworzyliśmy nowe ostrzeżenia oraz zaktualizowano wskazówki w witrynie Azure portal. Aby uzyskać więcej informacji na temat nowych wytycznych, zobacz [zależności usług co to są usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
+Aby zapobiec Administratorzy przed zablokowaniem sobie przypadkowo poza dzierżawcom przy użyciu nieprawidłowej konfiguracji zasad dostępu warunkowego, utworzyliśmy nowe ostrzeżenia oraz zaktualizowano wskazówki w witrynie Azure portal. Aby uzyskać więcej informacji na temat nowych wytycznych, zobacz [co to są zależności usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
 ---
 
