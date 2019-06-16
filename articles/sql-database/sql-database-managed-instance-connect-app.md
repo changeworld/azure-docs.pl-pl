@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
 ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297091"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację do wystąpienia zarządzanego Azure SQL Database
@@ -138,7 +138,7 @@ Aby informacje o rozwiązywaniu problemów z połączeniem, sprawdź następują
 
 Jeśli chcesz nawiązać połączenie z wystąpieniem zarządzanym, zaleca się następujące minimalne wersje narzędzia i sterowniki:
 
-| Narzędzie/sterownika | Wersja |
+| Narzędzie/sterownika | Version |
 | --- | --- |
 |.NET Framework | 4.6.1 (lub platformy .NET Core) |
 |Sterownik ODBC| v17 |

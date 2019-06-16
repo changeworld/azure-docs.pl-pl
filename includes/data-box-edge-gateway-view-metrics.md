@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161350"
 ---
 Można również wyświetlić metryki do monitorowania wydajności urządzenia i w niektórych przypadkach, aby informacje o rozwiązywaniu problemów z urządzeniami.
@@ -17,7 +17,7 @@ Wykonaj następujące kroki w witrynie Azure portal, aby utworzyć wykres metryk
 
 1. Dla zasobu w witrynie Azure portal, przejdź do **monitorowanie > metryki** i wybierz **Dodaj metrykę**.
 
-    ![Dodaj metrykę](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
+    ![Dodawanie metryki](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
 2. Zasób jest wypełniane automatycznie.  
 
@@ -65,4 +65,4 @@ Wykonaj następujące kroki w witrynie Azure portal, aby utworzyć wykres metryk
 
 8. Eksportuj dane wykresu do arkusza kalkulacyjnego programu Excel lub Utwórz link pozwalający wykres, który można udostępniać, wybierz opcję udostępniania na pasku poleceń.
 
-    ![Eksportuj dane](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)
+    ![Eksportowanie danych](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

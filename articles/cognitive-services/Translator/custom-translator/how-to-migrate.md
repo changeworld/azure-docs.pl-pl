@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
 ms.openlocfilehash: 901b5312d216c241331b90a6b61d263437ab5c70
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389300"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrowanie centrum obszaru roboczego i projekty do niestandardowych w usłudze Translator
@@ -137,7 +137,7 @@ Ta tabela zawiera zestawienie funkcji między centrum w usłudze Translator firm
 | Dostosowywanie SMT | Yes   | Nie |
 | Dostosowywanie NMT | Nie    | Yes |
 | Nowe ujednolicone dostosowywanie usług mowy | Nie    | Yes |
-| Bez śledzenia | Yes | Yes |
+| Bez śledzenia | Yes | Tak |
 
 ## <a name="new-languages"></a>Nowe języki
 

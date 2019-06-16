@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
 ms.openlocfilehash: 18f84062bcaf2766ee0abd5248f876c3d8acef3f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304019"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Przepływ pracy w trybie offline z kopii zapasowej programu DPM i serwer usługi Azure Backup
@@ -24,7 +24,7 @@ Proces rozmieszczania offline usługi Azure Backup jest ściśle zintegrowany z 
 > Proces kopii zapasowej Offline dla agenta usługi Microsoft Azure Recovery Services (MARS) różni się od programu System Center DPM i serwer usługi Azure Backup. Aby uzyskać informacje na temat korzystania z kopii zapasowej Offline za pomocą agenta usług MARS, zobacz [w tym artykule](backup-azure-backup-import-export.md). Kopia zapasowa offline nie jest obsługiwana dla kopii zapasowych stanu systemu, odbywa się za pomocą agenta usługi Azure Backup.
 >
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Dzięki możliwości rozmieszczania offline usługi Azure Backup i Azure Import/Export jest prosty do przekazania danych w trybie offline na platformę Azure przy użyciu dysków. Proces kopii zapasowej Offline obejmuje następujące kroki:
 
 > [!div class="checklist"]

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
 ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60588166"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Usługa Azure DDoS Protection: Najlepsze rozwiązania i architektury referencyjne
@@ -182,7 +182,7 @@ Cyberbezpieczeństwa wymaga stałej innowacji w obrony. Usługa Azure Standard p
 
 Ataków DDoS, który jest przeznaczony dla zasobów platformy Azure, zwykle wymaga minimalnej interwencji z punktu widzenia użytkownika. Mimo dołączanie przed atakami DDoS środki zaradcze w ramach strategii reagowania na zdarzenia pomaga zminimalizować wpływ na ciągłość prowadzenia działalności biznesowej.
 
-### <a name="microsoft-threat-intelligence"></a>Analiza zagrożeń firmy Microsoft
+### <a name="microsoft-threat-intelligence"></a>Analizy zagrożeń firmy Microsoft
 
 Firma Microsoft dysponuje siecią analizy zagrożeń rozbudowane. Ta sieć używa wiedzy zbiorczej o społeczności rozszerzone zabezpieczenia, który obsługuje usługi online firmy Microsoft, partnerów firmy Microsoft i relacje w branży zabezpieczeń internet. 
 

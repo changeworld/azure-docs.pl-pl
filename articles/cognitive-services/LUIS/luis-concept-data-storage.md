@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: diberry
 ms.openlocfilehash: a1093c2a6303b453a17a52058303913de5ecfa8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60812942"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Magazyn danych i usuwania w usługach Cognitive Services Language Understanding (LUIS)
@@ -40,7 +40,7 @@ Usuń wypowiedzi przykład używane na potrzeby szkolenia [LUIS](luis-reference-
 
 ### <a name="delete-utterances-in-review-from-active-learning"></a>Usuwanie wypowiedzi w przeglądzie aktywne uczenie
 
-Wypowiedzi można usunąć z listy wypowiedzi użytkowników usługi LUIS sugeruje w  **[stronie wypowiedzi punkt końcowy Przegląd](luis-how-to-review-endpoint-utterances.md)**. Usuwanie wypowiedzi z tej listy zapobiega sugerowane, ale nie powoduje usunięcia ich z dzienników.
+Wypowiedzi można usunąć z listy wypowiedzi użytkowników usługi LUIS sugeruje w  **[stronie wypowiedzi punkt końcowy Przegląd](luis-how-to-review-endpoint-utterances.md)** . Usuwanie wypowiedzi z tej listy zapobiega sugerowane, ale nie powoduje usunięcia ich z dzienników.
 
 Jeśli nie chcesz wypowiedzi aktywne uczenie, możesz to zrobić [Wyłącz aktywne uczenie](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Również wyłączenie aktywna nauka powoduje wyłączenie rejestrowania.
 

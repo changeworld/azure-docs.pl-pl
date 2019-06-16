@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160285"
 ---
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
@@ -23,8 +23,8 @@ ms.locfileid: "66160285"
     ![Aktualizowanie maszyny Wirtualnej](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
 4. **Stan** zmienia się na *od* jako maszyna wirtualna zostanie uruchomiona na nowego hosta platformy Azure, jak pokazano w poniższym przykładzie:
    
-    ![Uruchamianie maszyny wirtualnej](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
+    ![Uruchamianie maszyny Wirtualnej](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
 5. Po maszyny Wirtualnej kończy proces rozruchu **stan** powraca do *systemem*, wskazującą, maszyna wirtualna ma zostały pomyślnie wdrożono ponownie:
    
-    ![Działająca maszyna wirtualna](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
+    ![Uruchamianie maszyny Wirtualnej](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 

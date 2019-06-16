@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
 ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726386"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Wprowadzenie do elementów Reliable Actors
@@ -50,11 +50,11 @@ Utworzony projekt zawiera następującą strukturę:
 
 Rozwiązanie zawiera trzy projekty:
 
-* **Projekt aplikacji (MyApplication)**. Pakiety tego projektu, wszystkich usług razem do wdrożenia. Zawiera on *ApplicationManifest.xml* i skryptów programu PowerShell do zarządzania aplikacji.
+* **Projekt aplikacji (MyApplication)** . Pakiety tego projektu, wszystkich usług razem do wdrożenia. Zawiera on *ApplicationManifest.xml* i skryptów programu PowerShell do zarządzania aplikacji.
 
-* **Projekt interfejsu (HelloWorld.Interfaces)**. Ten projekt zawiera definicję interfejsu aktora. W każdym projekcie o dowolnej nazwie można zdefiniować interfejsów aktora.  Interfejs definiuje kontrakt aktora udostępniany implementacji aktora i klientom wywołującym aktora.  Ponieważ projektów klienckich mogą od niej zależne, zazwyczaj warto zdefiniować go w zestawie, który jest oddzielony od implementacji aktora.
+* **Projekt interfejsu (HelloWorld.Interfaces)** . Ten projekt zawiera definicję interfejsu aktora. W każdym projekcie o dowolnej nazwie można zdefiniować interfejsów aktora.  Interfejs definiuje kontrakt aktora udostępniany implementacji aktora i klientom wywołującym aktora.  Ponieważ projektów klienckich mogą od niej zależne, zazwyczaj warto zdefiniować go w zestawie, który jest oddzielony od implementacji aktora.
 
-* **Projekt usługi aktora (HelloWorld)**. Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementację aktora to klasa, która pochodzi od typu podstawowego `Actor` i implementuje interfejsy zdefiniowane w *MyActor.Interfaces* projektu. Klasa aktora musi implementować też Konstruktor, który akceptuje `ActorService` wystąpienia i `ActorId` i przekazuje je do podstawy `Actor` klasy.
+* **Projekt usługi aktora (HelloWorld)** . Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementację aktora to klasa, która pochodzi od typu podstawowego `Actor` i implementuje interfejsy zdefiniowane w *MyActor.Interfaces* projektu. Klasa aktora musi implementować też Konstruktor, który akceptuje `ActorService` wystąpienia i `ActorId` i przekazuje je do podstawy `Actor` klasy.
     
     Ten projekt zawiera także *Program.cs*, który rejestruje przy użyciu środowiska uruchomieniowego usługi Service Fabric aktora klasy `ActorRuntime.RegisterActorAsync<T>()`. `HelloWorld` Klasa jest już zarejestrowany. Wszelkie implementacji aktora dodatkowe dodany do projektu, również musi być zarejestrowana w `Main()` metody.
 
@@ -97,7 +97,7 @@ Tworzenie prostej aplikacji konsolowej do wywołania usługi aktora.
 
 1. Kliknij prawym przyciskiem myszy na rozwiązanie w Eksploratorze rozwiązań > **Dodaj** > **nowy projekt...** .
 
-2. W obszarze **platformy .NET Core** typów projektów, wybierz polecenie **Aplikacja konsoli (.NET Core)**.  Nadaj projektowi nazwę *ActorClient*.
+2. W obszarze **platformy .NET Core** typów projektów, wybierz polecenie **Aplikacja konsoli (.NET Core)** .  Nadaj projektowi nazwę *ActorClient*.
     
     ![Dodaj okno dialogowe Nowy projekt][6]    
     

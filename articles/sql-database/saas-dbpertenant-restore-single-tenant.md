@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60326345"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Przywracanie pojedynczej dzierżawy w przypadku aplikacji SaaS database dla dzierżawcy
@@ -76,7 +76,7 @@ Aby zademonstrować tych scenariuszy odzyskiwania, najpierw "przypadkowo" Usuń 
 
 1. W środowisku PowerShell ISE Otwórz... \\Learning Modules\\ciągłość biznesową i odzyskiwanie po awarii\\RestoreTenant\\*RestoreTenant.ps1 pokaz*i Ustaw następującą wartość:
 
-   * **$DemoScenario** = **1**, *usuwania ostatniego zdarzenia (z bez sprzedaży biletów)*.
+   * **$DemoScenario** = **1**, *usuwania ostatniego zdarzenia (z bez sprzedaży biletów)* .
 2. Naciśnij klawisz F5, aby uruchomić skrypt i usunąć ostatniego zdarzenia. Zostanie wyświetlony następujący komunikat potwierdzający:
 
    ```Console

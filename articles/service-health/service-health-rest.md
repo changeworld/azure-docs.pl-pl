@@ -8,10 +8,10 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790916"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Pobierz kondycję zasobów przy użyciu interfejsu API REST 
@@ -20,7 +20,7 @@ W tym artykule przykład pokazuje, jak pobrać listę zdarzenia dotyczące kondy
 
 Pełna dokumentacja i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Tworzenie żądania
+## <a name="build-the-request"></a>Żądanie kompilacji
 
 Należy użyć następującego `GET` żądania HTTP, aby wyświetlić listę zdarzenia kondycji dla Twojej subskrypcji dla zakresu czasu między `2018-05-16` i `2018-06-20`.
 
@@ -34,15 +34,15 @@ Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Typ zawartości:*|Wymagany. Ustaw `application/json`.|  
-|*Autoryzacja:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
+|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identyfikatora URI
 
 | Name (Nazwa) | Opis |
 | :--- | :---------- |
 | subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| wersja interfejsu API | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2015-04-01`zawarte w powyższym adresie URL.  |
+| api-version | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2015-04-01`zawarte w powyższym adresie URL.  |
 | $filter | Opcję filtrowania, aby zmniejszyć zestaw wyników zwrócony. Dostępne są dozwolone wzorce dla tego parametru [w odwołaniu dla operacji dzienników aktywności](/rest/api/monitor/activitylogs/list#uri-parameters). Przykład pokazany rejestruje wszystkie zdarzenia w zakresie czasu między 2018-05-16 i 2018-06-20 |
 | &nbsp; | &nbsp; |
 

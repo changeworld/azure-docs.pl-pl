@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400854"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów urządzenie chmura usługi Azure IoT za pomocą rozproszonego śledzenia (wersja zapoznawcza)
@@ -191,7 +191,7 @@ Aby zmienić wartość procentową wiadomości, które mają być śledzone w ch
 
 1. Kliknij swoje urządzenie.
 
-1. Wyszukaj **włączenie rozproszonego śledzenia (wersja zapoznawcza)**, a następnie wybierz **Włącz**.
+1. Wyszukaj **włączenie rozproszonego śledzenia (wersja zapoznawcza)** , a następnie wybierz **Włącz**.
 
     ![Włącz rozproszonego śledzenia w witrynie Azure portal](./media/iot-hub-distributed-tracing/azure-portal.png)
 
@@ -213,7 +213,7 @@ Aby zmienić wartość procentową wiadomości, które mają być śledzone w ch
 
 1. Otwórz program VS Code i [skonfigurować parametry połączenia Centrum IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
-1. Rozwiń węzeł urządzenia i poszukaj **rozproszonego śledzenia ustawienie (wersja zapoznawcza)**. Kliknij pozycję **rozproszonego śledzenia ustawienie aktualizacji (wersja zapoznawcza)** węzła podrzędnego.
+1. Rozwiń węzeł urządzenia i poszukaj **rozproszonego śledzenia ustawienie (wersja zapoznawcza)** . Kliknij pozycję **rozproszonego śledzenia ustawienie aktualizacji (wersja zapoznawcza)** węzła podrzędnego.
 
     ![Włącz rozproszonego śledzenia w usłudze Azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
@@ -242,8 +242,8 @@ Aby zaktualizować konfigurację rozproszonego śledzenia próbkowania dla wielu
 
 | Nazwa elementu | Wymagane | Typ | Opis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Yes | Liczba całkowita | Dwie wartości tryb są obecnie obsługiwane włączyć próbkowanie włączać i wyłączać. `1` znajduje się na oraz `2` jest wyłączona. |
-| `sampling_rate` | Yes | Liczba całkowita | Ta wartość jest procentem. Tylko wartości z kolekcji `0` do `100` (włącznie) są dozwolone.  |
+| `sampling_mode` | Tak | Integer | Dwie wartości tryb są obecnie obsługiwane włączyć próbkowanie włączać i wyłączać. `1` znajduje się na oraz `2` jest wyłączona. |
+| `sampling_rate` | Tak | Integer | Ta wartość jest procentem. Tylko wartości z kolekcji `0` do `100` (włącznie) są dozwolone.  |
 
 ## <a name="query-and-visualize"></a>Zapytania i wizualizacji
 

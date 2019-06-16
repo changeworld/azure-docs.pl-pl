@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/01/2019
 tags: connectors
 ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312562"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Przekazywanie plików i zarządzanie nimi w usłudze Dropbox za pomocą usługi Azure Logic Apps
@@ -31,7 +31,7 @@ W tym artykule pokazano, jak nawiązać połączenie usługi Dropbox z aplikacji
 
 * Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). W tym przykładzie należy pustej aplikacji logiki.
 
-## <a name="add-trigger"></a>Dodaj wyzwalacz
+## <a name="add-trigger"></a>Dodawanie wyzwalacza
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -57,7 +57,7 @@ Z listy akcji wybierz następującą akcję: **Pobierz zawartość pliku przy u�
 
 1. Jeśli już nie został autoryzowany Azure Logic Apps, aby dostęp do usługi Dropbox, teraz Autoryzowanie dostępu.
 
-1. Aby przejść do ścieżki pliku, którego chcesz użyć obok **ścieżka pliku** , wybierz wielokropek (**...** ) przycisku. 
+1. Aby przejść do ścieżki pliku, którego chcesz użyć obok **ścieżka pliku** , wybierz wielokropek ( **...** ) przycisku. 
 
    Możesz również kliknąć wewnątrz **ścieżka pliku** , a z listy zawartości dynamicznej wybierz **ścieżka pliku**, którego wartość jest dostępna jako dane wyjściowe z wyzwalacza dodany w poprzedniej sekcji.
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736585"
 ---
 # <a name="health-probes"></a>Sondy kondycji
@@ -29,7 +29,7 @@ Drzwiami frontowymi obsługuje sondy do wysyłania za pośrednictwem protokołó
 
 ## <a name="health-probe-responses"></a>Odpowiedzi sond kondycji
 
-| Odpowiedzi  | Opis | 
+| Responses  | Opis | 
 | ------------- | ------------- |
 | Określanie kondycji  |  Kod stanu 200 OK wskazuje, że wewnętrznej bazy danych jest w dobrej kondycji. Cała reszta jest uznawany za błąd. Jeśli z jakiegokolwiek powodu (łącznie z awarii sieci) prawidłową odpowiedź HTTP nie została odebrana sondowania, sondy jest traktowana jako błąd.|
 | Pomiary opóźnienia  | Opóźnienie to czas zegarowy mierzony od momentu bezpośrednio przed wykonaniem możemy wysłać do momentu, gdy firma Microsoft otrzyma ostatniego bajtu odpowiedzi na żądania sondowania. Używamy nowego połączenia protokołu TCP dla każdego żądania, więc ten pomiar nie jest ukierunkowane zaplecza przy użyciu istniejących połączeń bez wyłączania zasilania.  |
