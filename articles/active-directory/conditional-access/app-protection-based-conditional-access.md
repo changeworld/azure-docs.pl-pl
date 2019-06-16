@@ -2,7 +2,7 @@
 title: Wymagaj zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wymagać zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w usłudze Azure Active Directory.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
+keywords: Dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 4/4/2019
 ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 51d209eceec2c7172cf34dc689079e669760149e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60356075"
+ms.locfileid: "67112742"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Za pomocą [dostępu warunkowego usługi Azure AD](overview.md), można dostosow
 
 Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy. Zasady ochrony aplikacji usługi Intune nie wymagają rozwiązania do zarządzania (urządzeniami przenośnymi MDM) urządzenia przenośnego. Możesz chronić swoje dane firmowe z lub bez rejestracji urządzeń w rozwiązaniu do zarządzania urządzeniami.
 
-Dostęp warunkowy usługi Azure Active Directory ogranicza dostęp do aplikacji w chmurze dla aplikacji klienckich, które usługa Intune zgłosił do usługi Azure AD jako otrzymywanie zasad ochrony aplikacji. Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune.
+Usługa Azure Active Directory dostępu warunkowego ogranicza dostęp do aplikacji w chmurze dla aplikacji klienckich, które usługa Intune zgłosił do usługi Azure AD jako otrzymywanie zasad ochrony aplikacji. Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune.
 
 W terminologii dostępu warunkowego, te aplikacje klienckie są znane jako chroniony za pomocą zasad *zasad ochrony aplikacji*.  
 
@@ -45,7 +45,7 @@ W terminologii dostępu warunkowego, te aplikacje klienckie są znane jako chron
 
 Aby uzyskać listę aplikacji chronionej przez zasady klienta, zobacz [wymaganie dotyczące zasad ochrony aplikacji](technical-reference.md#approved-client-app-requirement).
 
-Można połączyć zasad dostępu warunkowego na podstawie ochrony aplikacji przy użyciu innych zasad, takich jak [zasady dostępu warunkowego opartego na urządzeniach](require-managed-devices.md). W ten sposób można zapewnić większą elastyczność w sposobie ochrony danych dla urządzeń osobistych i firmowych.
+Można połączyć app protection na podstawie zasad dostępu warunkowego przy użyciu zasad usługi, takie jak [zasady dostępu warunkowego opartego na urządzeniach](require-managed-devices.md). W ten sposób można zapewnić większą elastyczność w sposobie ochrony danych dla urządzeń osobistych i firmowych.
 
 ## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>Zalety wymagania dostępu warunkowego na podstawie ochrony aplikacji
 
@@ -68,7 +68,7 @@ W tym artykule założono, że znasz:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby utworzyć zasady dostępu warunkowego opartego na ochronę aplikacji, musisz mieć:
+Aby utworzyć zasady dostępu warunkowego na podstawie ochrony aplikacji, musisz mieć:
 
 - Mieć pakietu Enterprise Mobility + Security lub subskrypcję usługi Azure Active Directory premium + usługi Intune.
 - Upewnij się, że użytkownicy są licencjonowane na potrzeby rozwiązania Enterprise Mobility + Security lub usługi Azure AD i Intune.
@@ -77,7 +77,7 @@ Aby utworzyć zasady dostępu warunkowego opartego na ochronę aplikacji, musisz
 
 ## <a name="app-protection-based-policy-for-exchange-online"></a>Zasady ochrony na podstawie aplikacji dla usługi Exchange Online
 
-Ten scenariusz składa się z zasad dostępu warunkowego opartego na ochronę aplikacji dla dostępu do usługi Exchange Online.
+Ten scenariusz składa się z ochrony na podstawie zasad dostępu warunkowego aplikacji do uzyskiwania dostępu do usługi Exchange Online.
 
 ### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
 
@@ -163,7 +163,7 @@ Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze M
 
 ## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>Zasady ochrony lub być zgodne urządzenie aplikacji dla usługi Exchange Online
 
-Ten scenariusz składa się z zasad dostępu warunkowego aplikacji ochrony lub być zgodne urządzenie do uzyskiwania dostępu do usługi Exchange Online.
+Ten scenariusz składa się z aplikacji ochrony lub być zgodne urządzenia z systemem zasad dostępu warunkowego dostępu do usługi Exchange Online.
 
 
 ### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
@@ -261,7 +261,7 @@ Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze M
 
 ## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>Zasady ochrony i zgodnego urządzenia aplikacji dla usługi Exchange Online
 
-Ten scenariusz składa się z zasad dostępu warunkowego opartego na ochronę aplikacji i zgodnego urządzenia do uzyskiwania dostępu do usługi Exchange Online.
+Ten scenariusz składa się na podstawie ochrony aplikacji i zgodne urządzenia zasady dostępu warunkowego na dostęp do usługi Exchange Online.
 
 
 ### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
@@ -384,7 +384,7 @@ Przed uzyskaniem dostępu do danych firmowych, żadne zasady ochrony aplikacji u
 
 **Uwagi**
 
-- W tym scenariuszu można użyć, jeśli chcesz obsługiwać obie zasady ochrony, jak i oparty na aplikacji dostępu warunkowego aplikacji.
+- W tym scenariuszu można użyć, jeśli chcesz obsługiwać zarówno ochrony jak i oparty na aplikacji zasad dostępu warunkowego.
 - W tym *lub* zasad i aplikacji z wymaganiami zasady ochrony aplikacji są obliczane dla dostępu przed wymagane aplikacje zatwierdzone klienta.
 
 ### <a name="configuration"></a>Konfigurowanie
@@ -436,5 +436,5 @@ Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze M
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
 - Jeśli wszystko będzie gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 

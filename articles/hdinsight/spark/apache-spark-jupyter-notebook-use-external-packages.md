@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
 ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715154"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach platformy Apache Spark w HDInsight
@@ -67,7 +67,7 @@ Należy dysponować następującymi elementami:
    
     ![Korzystanie z zewnętrznych pakietów z notesem Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "korzystanie z zewnętrznych pakietów z notesu programu Jupyter")
    
-    c. Łączenie z trzech wartości, rozdzielone średnikiem (**:**).
+    c. Łączenie z trzech wartości, rozdzielone średnikiem ( **:** ).
    
         com.databricks:spark-csv_2.10:1.4.0
 

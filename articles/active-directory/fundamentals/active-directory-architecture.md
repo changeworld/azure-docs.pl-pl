@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055701"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co to jest architektura usługi Azure Active Directory?
 Usługa Azure Active Directory (Azure AD) umożliwia bezpieczne zarządzanie dostępem do usług i zasobów platformy Azure dla użytkowników. W ramach usługi Azure AD można skorzystać z pełnego zestawu możliwości zarządzania tożsamościami. Aby uzyskać więcej informacji na temat funkcji usługi Azure AD, zobacz [Co to jest usługa Azure Active Directory?](active-directory-whatis.md)
@@ -95,7 +95,7 @@ Model katalogu to jeden z ostateczną wyborami. Jednym z typowych problemów z s
 
 Usługa Azure AD zapewnia spójność odczytu i zapisu dla aplikacji działających w ramach repliki pomocniczej, kierując jej operacje zapisu do repliki podstawowej i synchronicznie pobierając operacje zapisu do repliki pomocniczej.
 
-Operacje zapisu aplikacji wykonywane za pomocą interfejsu API programu Graph usługi Azure AD są odseparowane od operacji zapewniania koligacji z repliką katalogu w celu zapewnienia spójności odczytu i zapisu. Usługa Azure AD Graph obsługuje sesję logiczną będącą w koligacji z repliką pomocniczą używaną do operacji odczytu; koligacja jest przechwytywana w ramach „tokenu repliki” buforowanego przez usługę Graph za pomocą rozproszonej pamięci podręcznej. Token ten jest następnie używany na potrzeby kolejnych operacji w ramach tej samej sesji logicznej. 
+Operacje zapisu aplikacji wykonywane za pomocą interfejsu API programu Graph usługi Azure AD są odseparowane od operacji zapewniania koligacji z repliką katalogu w celu zapewnienia spójności odczytu i zapisu. Usługa Azure AD Graph obsługuje sesję logiczną będącą w koligacji do repliki pomocniczej, używaną do operacji odczytu; koligacja jest przechwytywana w ramach "tokenu repliki", czy usługa programu graph zapisuje w pamięci podręcznej za pomocą rozproszonej pamięci podręcznej w centrum danych repliki pomocniczej. Token ten jest następnie używany na potrzeby kolejnych operacji w ramach tej samej sesji logicznej. Aby nadal korzystać z tej samej sesji logicznej, kolejne żądania muszą być kierowane do tego samego centrum danych usługi Azure AD. Nie jest możliwe kontynuować sesję logiczną, jeśli klient directory żądania są rozsyłane do wielu usługi Azure AD centrach danych; w takim przypadku klient ma wiele sesji logiczne, które mają niezależne wyborami odczytu i zapisu.
 
  >[!NOTE]
  >Operacje zapisu są natychmiast replikowane do repliki pomocniczej, dla której zostały utworzone operacje odczytu sesji logicznej.

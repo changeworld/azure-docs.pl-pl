@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 06/12/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: dc43e2ad2668a7d3a808e398857cbf1d28c9aa1c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e9cca4cd113115a1acf676b46cc65dc4ed7021fa
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150876"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144069"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -50,7 +50,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz temat [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
 
-Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
+Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md) 
+
+> [!IMPORTANT]
+> Zarządzane w sieci CDN certyfikaty nie są dostępne dla domeny katalogu głównego lub wierzchołku. Jeśli domenę niestandardową Azure CDN jest domeną katalogu głównego lub wierzchołku, należy użyć Przynieś własną funkcję certyfikatu. 
+>
 
 ---
 
@@ -80,7 +84,7 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 
 4. W obszarze typu zarządzania certyfikatem wybierz pozycję **Zarządzany przez usługę CDN**.
 
-5. Wybierz pozycję **Wł.**, aby włączyć protokół HTTPS.
+5. Wybierz pozycję **Wł.** , aby włączyć protokół HTTPS.
 
     ![Stan protokołu HTTPS domeny niestandardowej](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
@@ -151,7 +155,7 @@ Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych)
     - Certyfikaty (klucze tajne) dla wybranego magazynu kluczy. 
     - Dostępne wersje certyfikatów. 
  
-5. Wybierz pozycję **Wł.**, aby włączyć protokół HTTPS.
+5. Wybierz pozycję **Wł.** , aby włączyć protokół HTTPS.
   
 6. Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation).
 
@@ -178,7 +182,7 @@ Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie reko
 
 Jeśli rekord CNAME na poprawny format, firma DigiCert weryfikuje nazwę domeny niestandardowej i tworzy dedykowany certyfikat dla nazwy domeny. Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
 
-Automatyczna walidacja przeważnie trwa kilka minut. Jeśli w ciągu godziny nie zobaczysz zweryfikowanej domeny, otwórz bilet pomocy technicznej.
+Automatyczna Walidacja przeważnie trwa kilka godzin. Jeśli nie widzisz swojej domeny zweryfikowane w ciągu 24 godzin, otwórz bilet pomocy technicznej.
 
 >[!NOTE]
 >Jeśli u swojego dostawcy DNS masz rekord autoryzacji urzędu certyfikacji (CAA, Certificate Authority Authorization), musi on zawierać firmę DigiCert jako prawidłowy urząd certyfikacji. Rekord CAA umożliwia właścicielom domen określanie za pomocą dostawców DNS, które urzędy certyfikacji będą upoważnione do wystawiania certyfikatów dla danej domeny. Jeśli urząd certyfikacji otrzymuje zamówienie na certyfikat dla domeny, która ma rekord CAA, a ten urząd certyfikacji nie jest wymieniony jako autoryzowany wystawca, nie może wystawić certyfikatu dla tej domeny ani domeny podrzędnej. Informacje o zarządzaniu rekordami CAA można znaleźć w temacie [Manage CAA records (Zarządzanie rekordami CAA)](https://support.dnsimple.com/articles/manage-caa-record/). Informacje o narzędziu obsługi rekordów CAA można znaleźć w temacie [CAA Record Helper (Pomocnik rekordów CAA)](https://sslmate.com/caa/).
@@ -197,9 +201,9 @@ Po przesłaniu żądania, aby włączyć protokół HTTPS w domenie niestandardo
 Firma DigiCert wysyła również weryfikacyjną wiadomość e-mail na dodatkowe adresy e-mail. Jeśli informacje o rejestratorze WHOIS są prywatne, sprawdź, czy możesz zatwierdzić bezpośrednio z jednego z następujących adresów:
 
 admin@&lt;nazwa-domeny.com&gt;  
-administrator@&lt;nazwa-domeny.com&gt;  
-webmaster@&lt;nazwa-domeny.com&gt;  
-hostmaster@&lt;nazwa-domeny.com&gt;  
+administrator@&lt;your-domain-name.com&gt;  
+webmaster@&lt;your-domain-name.com&gt;  
+hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;nazwa-domeny.com&gt;  
 
 W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, dodaj admin@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
@@ -266,7 +270,7 @@ W poprzednich krokach protokół HTTPS został włączony w domenie niestandardo
 
     ![Lista domen niestandardowych](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. Kliknij pozycję **Wył.**, aby wyłączyć protokół HTTPS, a następnie kliknij pozycję **Zastosuj**.
+4. Kliknij pozycję **Wył.** , aby wyłączyć protokół HTTPS, a następnie kliknij pozycję **Zastosuj**.
 
     ![Okno niestandardowego protokołu HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 

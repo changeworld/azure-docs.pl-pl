@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939997"
 ---
 # <a name="hosted-test-drive"></a>Hostowana wersja testowa
@@ -41,7 +41,7 @@ Podaj następujące pola \'konfiguracji technicznej\' sekcji:
 
 - **Typ wersji testowej**: Wybierz \'Hosted firmy Microsoft (np. Dynamics 365 for Customer Engagement) "opcji. Oznacza to, że firma Microsoft hosta i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji.
 - **Wersji testowych maksymalnej liczby równoczesnych**: Ustawienie to pole liczby równoczesnych użytkowników, które mogą mieć aktywne wersji testowej w dowolnym czasie. Każdy użytkownik zużyje licencją Dynamics podczas ich wersji testowej jest aktywny, więc należy upewnić się, że masz co najmniej następującą liczbę licencji Dynamics dostępne dla użytkowników wersji testowej. Zalecanej wartości wynoszącej 3 – 5.
-- **Dysk czas trwania testu (godziny)**: Ustaw to pole do liczby godzin wersji testowej zostanie uaktywniona dla użytkowników. Po tym wiele godzin użytkownik będzie można anulować aprowizację z dzierżawy. Zalecana wartość 2 – 24 godzin w zależności od złożoności aplikacji. Użytkownik może zażądać zawsze innej wersji testowej, gdyby zabrakło czasu i chcesz ponownie uzyskać dostęp w wersji testowej.
+- **Dysk czas trwania testu (godziny)** : Ustaw to pole do liczby godzin wersji testowej zostanie uaktywniona dla użytkowników. Po tym wiele godzin użytkownik będzie można anulować aprowizację z dzierżawy. Zalecana wartość 2 – 24 godzin w zależności od złożoności aplikacji. Użytkownik może zażądać zawsze innej wersji testowej, gdyby zabrakło czasu i chcesz ponownie uzyskać dostęp w wersji testowej.
 - **Adres URL wystąpienia**: Podaj adres URL, który użytkownika wersji testowej początkowo nastąpi przejście po uruchomieniu wersji testowej. Zazwyczaj jest to adres URL wystąpienia usługi Dynamics 365, która aplikacja ma i przykładowe dane są zainstalowane na urządzeniu. Przykładowa wartość: https:\//testdrive.crm.dynamics.com
 - **Identyfikator dzierżawy usługi Azure AD**: Podaj identyfikator dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Do pobierania tej wartości, zaloguj się do witryny Azure portal i przejdź do \'usługi Azure Active Directory\'  - \> wybierz właściwości z menu bloku -\> skopiuj nazwę katalogu. Przykładowa wartość: 72f988bf-86f1-41af-91ab-2d7cd0111234
 - **Identyfikator aplikacji w usłudze Azure AD**: Identyfikator aplikacji usługi Azure AD został utworzony w kroku 7. \ Przykładowa wartość: 53852862-a2ae-4e43-9461-faa49650a096

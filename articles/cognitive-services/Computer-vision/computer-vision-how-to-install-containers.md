@@ -3,20 +3,20 @@ title: Jak zainstalować i uruchamiać kontenery - przetwarzania obrazów
 titlesuffix: Azure Cognitive Services
 description: Jak pobrać, zainstalować i uruchamiaj kontenery dla przetwarzania obrazów w tym samouczku wskazówki.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
+ms.date: 06/10/2019
+ms.author: IEvangelist
 ms.custom: seodec18
-ms.openlocfilehash: 10e5060c06e1ebc591c7245ae588b5352a3328ca
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49e3af546ffcf5be47c73bfe633223a4d968d887
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060928"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 
@@ -149,7 +149,7 @@ Możesz użyć `POST /vision/v2.0/recognizeTextDirect` operacji synchronicznie, 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](./computer-vision-resource-container-config.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Wyślij kontenery Rozpoznaj tekst rozliczeń informacje na platformie Azure, przy użyciu _Rozpoznaj tekst_ zasobów dla konta systemu Azure. 
 

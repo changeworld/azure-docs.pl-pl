@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570644"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
@@ -143,7 +143,7 @@ Aby działać poprawnie, w tym scenariuszu, serwer NPS musi być zarejestrowany 
 
 2. W Menedżerze serwera wybierz **narzędzia**, a następnie wybierz pozycję **serwer zasad sieciowych**.
 
-3. W konsoli serwera zasad sieciowych, kliknij prawym przyciskiem myszy **serwer NPS (lokalny)**, a następnie wybierz pozycję **Zarejestruj serwer w usłudze Active Directory**. Wybierz **OK** dwa razy.
+3. W konsoli serwera zasad sieciowych, kliknij prawym przyciskiem myszy **serwer NPS (lokalny)** , a następnie wybierz pozycję **Zarejestruj serwer w usłudze Active Directory**. Wybierz **OK** dwa razy.
 
     ![Zarejestruj serwer w opcji menu usługi Active Directory](./media/howto-mfa-nps-extension-vpn/image2.png)
 
@@ -153,7 +153,7 @@ Aby działać poprawnie, w tym scenariuszu, serwer NPS musi być zarejestrowany 
 
 Można użyć standardowego (opartej na kreatorze) lub zaawansowanych opcji konfiguracji, aby skonfigurować serwer usługi RADIUS. W tej sekcji założono, że używasz opcji opartej na Kreatorze konfiguracji standardowej.
 
-1. W konsoli serwera zasad sieciowych wybierz **serwer NPS (lokalny)**.
+1. W konsoli serwera zasad sieciowych wybierz **serwer NPS (lokalny)** .
 
 2. W obszarze **standardowej konfiguracji**, wybierz opcję **serwera RADIUS dla połączeń sieci VPN lub Dial-Up**, a następnie wybierz pozycję **Konfigurowanie sieci VPN lub Dial-Up**.
 
@@ -230,7 +230,7 @@ W tej sekcji skonfigurujesz serwer sieci VPN do użycia uwierzytelnianie usługi
 
 2. W Menedżerze serwera wybierz **narzędzia**, a następnie wybierz pozycję **Routing i dostęp zdalny**.
 
-3. W **Routing i dostęp zdalny** okna, kliknij prawym przyciskiem myszy  **\<nazwa serwera > (local)**, a następnie wybierz pozycję **właściwości**.
+3. W **Routing i dostęp zdalny** okna, kliknij prawym przyciskiem myszy  **\<nazwa serwera > (local)** , a następnie wybierz pozycję **właściwości**.
 
 4. W  **\<nazwa serwera > (local) właściwości** wybierz **zabezpieczeń** kartę.
 
@@ -269,7 +269,7 @@ W tej sekcji, potwierdzasz, że klient sieci VPN jest uwierzytelnione i autoryzo
 
 4. Wybierz **dodać połączenie VPN**.
 
-5. W **dodać połączenie VPN** okna w **dostawcy sieci VPN** wybierz opcję **Windows (wbudowane)**, wykonaj pozostałe pola, zgodnie z potrzebami, a następnie wybierz **Zapisz**.
+5. W **dodać połączenie VPN** okna w **dostawcy sieci VPN** wybierz opcję **Windows (wbudowane)** , wykonaj pozostałe pola, zgodnie z potrzebami, a następnie wybierz **Zapisz**.
 
     ![W oknie "Dodawanie połączenia VPN"](./media/howto-mfa-nps-extension-vpn/image17.png)
 
@@ -372,7 +372,7 @@ Aby użyć skryptu, należy podać rozszerzenie przy użyciu poświadczeń admin
 
 1. Uruchom program Windows PowerShell jako administrator.
 
-2. W wierszu polecenia programu PowerShell wprowadź **dysk cd "c:\Program Files\Microsoft\AzureMfa\Config"**, a następnie naciśnij klawisz Enter.
+2. W wierszu polecenia programu PowerShell wprowadź **dysk cd "c:\Program Files\Microsoft\AzureMfa\Config"** , a następnie naciśnij klawisz Enter.
 
 3. W następnym wierszu polecenia wprowadź **.\AzureMfaNpsExtnConfigSetup.ps1**, a następnie naciśnij klawisz Enter. Skrypt sprawdza, czy jest zainstalowany moduł Azure AD PowerShell. Jeśli nie jest zainstalowany, skrypt zainstaluje moduł.
 

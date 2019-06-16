@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7e9b7c8f2cf86245322679198b84b50d2c5edce8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464669"
 ---
 # <a name="module-k-means-clustering"></a>Moduł: Klastrowanie metodą k-średnich
@@ -75,7 +75,7 @@ Podczas przetwarzania danych szkoleniowych, algorytm K-średnich rozpoczyna się
 
          Ta metoda jest również nazywany *losowych partycji* metody.  
   
-    -   **K — oznacza, że ++**: To jest domyślną metodą inicjowanie klastrów.  
+    -   **K — oznacza, że ++** : To jest domyślną metodą inicjowanie klastrów.  
   
          **K — oznacza, że ++** algorytm został zaproponowany w 2007 David Arthur i Sergei Vassilvitskii, aby uniknąć niską klastrowania przez standardowy algorytm K-średnich. **K — oznacza, że ++** poprawia standardowa K-średnich przy użyciu innej metody do wybierania centra klastra.  
   

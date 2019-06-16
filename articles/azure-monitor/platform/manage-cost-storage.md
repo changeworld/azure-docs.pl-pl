@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061040"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użycia i kosztów za pomocą usługi Azure Monitor dzienników
 
@@ -108,10 +108,12 @@ Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowyw
 
 ## <a name="legacy-pricing-tiers"></a>Starsza wersja warstw cenowych
 
-Subskrypcje, które zawiera obszar roboczy usługi Log Analytics lub zasób usługi Application Insights przed 2 kwietnia 2018 r., w lub są połączone z umową Enterprise Agreement, który uruchamiany przed 1 lutego 2019 roku będą w dalszym ciągu ma dostęp do starszych warstw cenowych: Bezpłatna, autonomiczna (za GB) i na węzeł (OMS).  Obszary robocze w warstwie cenowej bezpłatna będą mieć dziennie pozyskiwanie informacji dane ograniczona do 500 MB (z wyjątkiem bezpieczeństwa typów danych zbieranych przez usługę Azure Security Center) i przechowywanie danych jest ograniczony do 7 dni. Warstwy cenowej bezpłatna jest przeznaczona tylko do celów oceny. Obszary robocze w autonomicznych lub warstwami cenowymi węzłów na mieć dostęp do przechowywania danych do 2 lata. 
+Subskrypcje, które zawiera obszar roboczy usługi Log Analytics lub zasób usługi Application Insights przed 2 kwietnia 2018 r., w lub są połączone z umową Enterprise Agreement, który uruchamiany przed 1 lutego 2019 roku będą w dalszym ciągu ma dostęp do starszych warstw cenowych: **Bezpłatne**, **autonomiczna (za GB)** i **na węzeł (OMS)** .  Obszary robocze w warstwie cenowej bezpłatna będą mieć dziennie pozyskiwanie informacji dane ograniczona do 500 MB (z wyjątkiem bezpieczeństwa typów danych zbieranych przez usługę Azure Security Center) i przechowywanie danych jest ograniczony do 7 dni. Warstwy cenowej bezpłatna jest przeznaczona tylko do celów oceny. Obszary robocze w autonomicznych lub warstwami cenowymi węzłów na mają przechowywania maksymalnie 2 lat w konfigurowanych przez użytkownika. 
 
 > [!NOTE]
 > Aby używać uprawnień wynikających z zakupu pakietu OMS E1 zestawu, pakiet E2 OMS lub dodatku pakietu OMS dla programu System Center, wybierz usługi Log Analytics *na węzeł* warstwy cenowej.
+
+Najwcześniejsza wdrażający platformę usługi Log Analytics również mieć dostęp do oryginalnego warstw cenowych **standardowa** i **Premium**, który został rozwiązany przechowywanie danych od 30 do 365 dni odpowiednio. 
 
 ## <a name="changing-pricing-tier"></a>Zmiana warstwy cenowej
 
@@ -410,6 +412,11 @@ Podczas tworzenia alertu dla drugiego zapytania dotyczącego przypadku, w który
 Określ istniejącą [grupę akcji](action-groups.md) lub utwórz nową, tak aby otrzymywać powiadomienie, gdy alert dziennika spełni kryteria.
 
 Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwiązać problemy związane z większym niż oczekiwano użyciem.
+
+## <a name="limits-summary"></a>Podsumowanie ograniczeń
+
+Istnieją pewne dodatkowe ograniczenia usługi Log Analytics, niektóre z nich zależy od warstwy cenowej w usłudze Log Analytics. Zostały one opisane [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits).
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

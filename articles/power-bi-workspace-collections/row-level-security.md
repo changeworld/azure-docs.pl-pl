@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715197"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpieczenia na poziomie wierszy przy użyciu kolekcji obszarów roboczych usługi Power BI
@@ -48,7 +48,7 @@ Poniżej przedstawiono kilka istotnych kwestii dotyczących tego schematu:
 
 * Wszystkie miary, takie jak **Total Sales**, są przechowywane w **sprzedaży** tabeli faktów.
 * Istnieją cztery dodatkowe powiązane tabele wymiarów: **Element**, **czasu**, **Store**, i **District**.
-* Strzałki w liniach relacji wskazują którędy filtry mogą przepływać z jednej tabeli do innej. Na przykład, jeśli filtr zostanie umieszczony na **Time [Date]**, w bieżącym schemacie będzie filtrować wyłącznie wartości w **sprzedaży** tabeli. Żadne inne tabele będzie mieć wpływ ten filtr, ponieważ wszystkie strzałki w liniach relacji wskazują do tabeli sprzedaży, a nie od niej.
+* Strzałki w liniach relacji wskazują którędy filtry mogą przepływać z jednej tabeli do innej. Na przykład, jeśli filtr zostanie umieszczony na **Time [Date]** , w bieżącym schemacie będzie filtrować wyłącznie wartości w **sprzedaży** tabeli. Żadne inne tabele będzie mieć wpływ ten filtr, ponieważ wszystkie strzałki w liniach relacji wskazują do tabeli sprzedaży, a nie od niej.
 * **District** tabela wskazuje, który menedżera każdego regionu:
   
   ![Wiersze tabeli District](media/row-level-security/district-table-4.png)

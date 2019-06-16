@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 9/24/2018
 ms.author: cherylmc
 ms.openlocfilehash: cb91c1364a91c101ecf8362acd7aab01440143fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685266"
 ---
 # <a name="office-365-control-plane-in-virtual-wan"></a>Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
 
@@ -26,7 +26,7 @@ Wirtualne sieci WAN klientom wybierz urządzenia SDWAN zasady można skonfigurow
 Dzięki tej funkcji w wirtualnej sieci WAN klientów teraz określić kategorie ruchu usługi Office 365, które są zaufane dla bezpośredniego podgrupach internet. To zaufana O365 ruch będzie pomijania proxy i wyznaczać trasy bezpośrednio z lokalizacji użytkownika do najbliższej POP firmy Microsoft. Umożliwia to uniknięcie ciągnięcia wstecz ruchu i włosów pining, dlatego zapewnienie poprawić komfort oraz minimalizując koszty sieci WAN. 
 
 ### <a name="what-are-the-office-365-traffic-categories"></a>Co to są kategorie ruchu usługi Office 365?
-Punkty końcowe usługi Office 365 reprezentują adresy sieciowe i podsieci. Punkty końcowe mogą być adresami URL, zakresów adresów IP lub adres IP. Adresy URL mogą być nazwy FQDN, takich jak *account.office.net*, lub adres URL symboli wieloznacznych, takich jak **. office365.com*. Punkty końcowe są można podzielić na trzy kategorie — **Optymalizacja**, **Zezwalaj**, i **domyślne**zgodnie z ich poziomu krytyczności. Więcej informacji o kategoriach punktu końcowego [tutaj](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories).
+Punkty końcowe usługi Office 365 reprezentują adresy sieciowe i podsieci. Punkty końcowe mogą być adresami URL, zakresów adresów IP lub adres IP. Adresy URL mogą być nazwy FQDN, takich jak *account.office.net*, lub adres URL symboli wieloznacznych, takich jak * *. office365.com*. Punkty końcowe są można podzielić na trzy kategorie — **Optymalizacja**, **Zezwalaj**, i **domyślne**zgodnie z ich poziomu krytyczności. Więcej informacji o kategoriach punktu końcowego [tutaj](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories).
 
 ### <a name="which-office-365-traffic-category-is-recommended-by-microsoft-for-direct-internet-breakout"></a>Jakiej kategorii ruchu usługi Office 365 jest zalecane przez firmę Microsoft w przypadku bezpośredniego podgrupach Internetu?
 **Optymalizacja** kategoria jest najważniejsze punkty końcowe sieci i jest wymagana do obejścia SSL podziału i kontroli i innych urządzeń zabezpieczeń sieciowych. Powinien mieć bezpośrednie wyjście internetowe blisko użytkowników. Te punkty końcowe reprezentują scenariuszy usługi Office 365, które są najbardziej poufnych wydajności, opóźnienia i dostępności sieci. Ta kategoria obejmuje (rzędu kilku ~ 10) niewielka część klucza adresy URL i zdefiniowany zestaw podsieci IP w wersji dedykowanej do obciążeń podstawowe usługi Office 365, takich jak Exchange Online, SharePoint Online, Skype dla firm Online i Microsoft Teams. 

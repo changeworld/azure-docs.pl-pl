@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335338"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Przenoszenie danych z Amazon Simple Storage Service za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-amazon-simple-storage-service-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-amazon-simple-storage-service.md)
 
@@ -65,8 +65,8 @@ Połączona usługa łączy magazyn danych do usługi data factory. Tworzenie po
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |string |Yes |
-| secretAccessKey |Sam klucz dostępu do kluczy tajnych. |Zaszyfrowanego ciągu wpisu tajnego |Yes |
+| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |string |Tak |
+| secretAccessKey |Sam klucz dostępu do kluczy tajnych. |Zaszyfrowanego ciągu wpisu tajnego |Tak |
 
 >[!NOTE]
 >Ten łącznik wymaga klucze dostępu dla konta zarządzania tożsamościami i Dostępem w celu skopiowania danych z usługi Amazon S3. [Tymczasowe poświadczeń zabezpieczeń](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nie jest obsługiwane.
@@ -94,12 +94,12 @@ Sekcje, takie jak struktury, dostępność i zasady są podobne dla wszystkich t
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| bucketName |Nazwa zasobnika S3. |String |Yes |
+| bucketName |Nazwa zasobnika S3. |String |Tak |
 | key |Klucz obiektu usługi S3. |String |Nie |
-| Prefiks |Prefiks klucza obiektu S3. Zostaną zaznaczone obiekty, których klucze rozpoczynały od tego prefiksu. Ma zastosowanie tylko wtedy, gdy klucz jest pusty. |String |Nie |
+| prefix |Prefiks klucza obiektu S3. Zostaną zaznaczone obiekty, których klucze rozpoczynały od tego prefiksu. Ma zastosowanie tylko wtedy, gdy klucz jest pusty. |String |Nie |
 | version |Wersja obiektu S3, jeśli jest włączone w wersji S3. |String |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz skopiować pliki — jest między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie | |
-| Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie | |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie | |
 
 
 > [!NOTE]
@@ -175,7 +175,7 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| cykliczne |Określa, czy rekursywnie lista S3 obiektów w katalogu. |PRAWDA/FAŁSZ |Nie |
+| recursive |Określa, czy rekursywnie lista S3 obiektów w katalogu. |PRAWDA/FAŁSZ |Nie |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>Przykład kodu JSON: Kopiowanie danych z usługi Amazon S3 w usłudze Azure Blob storage
 Niniejszy przykład pokazuje, jak skopiować dane z usługi Amazon S3 do usługi Azure Blob storage. Jednakże, możesz skopiować dane bezpośrednio do [dowolnego ujścia, które są obsługiwane](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych.

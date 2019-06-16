@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f91e6ab1fb12132068b839e66fafd3ab1bc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 061b8a9f16396841c3f0d650ccc2f2c4a907aab3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65543961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111305"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Przy użyciu przeglądarki sieci web w platformy MSAL.NET
 Przeglądarki sieci Web są wymagane, aby przeprowadzić uwierzytelnianie interakcyjne. Domyślnie obsługuje platformy MSAL.NET [przeglądarki sieci web systemu](#system-web-browser-on-xamarinios-and-xamarinandroid) na Xamarin.iOS i [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser). Ale [można również włączyć przeglądarki sieci Web osadzone](#enable-embedded-webviews) w zależności od wymagań (UX potrzeby logowania jednokrotnego (SSO) zabezpieczeń) w [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) i [platformy Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) aplikacje. A może nawet [wybierz dynamicznie](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) używanej przeglądarki sieci web do użycia na podstawie obecności Chrome lub przeglądarki, Obsługa niestandardowych kart dla programu Chrome w systemie Android.
@@ -33,7 +33,7 @@ Jest ważne dowiedzieć się, że podczas uzyskiwania tokenu interaktywnie, zawa
 
 - Hasło (jeśli jest to jeden został wpisany) nigdy nie jest przechowywany przez aplikację, ani biblioteki uwierzytelniania.
 - Umożliwia przekierowywanie do innych dostawców tożsamości, (na przykład logowanie w za pomocą konto służbowe lub osobiste konta przy użyciu biblioteki MSAL lub za pomocą konta społecznościowego za pomocą usługi Azure AD B2C).
-- Umożliwia usługi STS, kontrolować dostęp warunkowy, na przykład przez użytkownika wielu uwierzytelniania wieloskładnikowego (MFA) w fazie uwierzytelniania (numerem pin Windows Hello lub wywoływana na telefon lub w aplikacji uwierzytelniania na telefon). W przypadkach, gdzie uwierzytelniania współczynnik multi wymagane nie ustawiono go jeszcze użytkownika można ustawić go dokładnie na czas, w tym samym oknie dialogowym.  Użytkownik wprowadza numeru telefonu komórkowego i kieruje do zainstalowania aplikacji uwierzytelniania i skanowania, tagu QR, aby dodać swoje konto. Ten serwer opartych na interakcję to doskonałe środowisko!
+- Umożliwia usługi STS kontrolować dostęp warunkowy, na przykład przez użytkownika wielu uwierzytelniania wieloskładnikowego (MFA) w fazie uwierzytelniania (numerem pin Windows Hello lub wywoływana na telefon lub w aplikacji uwierzytelniania na telefon). W przypadkach, gdzie uwierzytelniania współczynnik multi wymagane nie ustawiono go jeszcze użytkownika można ustawić go dokładnie na czas, w tym samym oknie dialogowym.  Użytkownik wprowadza numeru telefonu komórkowego i kieruje do zainstalowania aplikacji uwierzytelniania i skanowania, tagu QR, aby dodać swoje konto. Ten serwer opartych na interakcję to doskonałe środowisko!
 - Zezwala użytkownikowi na zmiany hasła w tym samym oknie dialogowym, gdy hasło wygasło (zapewnia dodatkowe pola stare hasło i nowe hasło).
 - Włącza znakowanie dzierżawy lub aplikacji (obrazy) i kontrolowane przez administratora dzierżawy usługi Azure AD / właściciela aplikacji.
 - Umożliwia użytkownikom na wyrażanie zgody, aby umożliwić aplikacji dostęp do zasobów / zakresów w swojej nazwie zaraz po uwierzytelniania.

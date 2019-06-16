@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478049"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Wyświetlanie stanu zadania usługi Azure Import/Export
@@ -31,11 +31,11 @@ Zostanie wyświetlony jeden z następujących stanów zadań w zależności od t
 | Stan zadania | Opis |
 |:--- |:--- |
 | Tworzenie | Po utworzeniu zadania, jego stan jest ustawiony na **tworzenie**. Podczas wykonywania zadania w **tworzenie** stanu usługi Import/Export przyjęto założenie, dyski nie zostały wysłane do centrum danych. Zadanie może pozostać w tym stanie przez maksymalnie dwa tygodnie, po których jest on automatycznie usunięty przez usługę. |
-| Wysyłka | Po wysyłasz pakietu, należy zaktualizować informacje o śledzeniu w witrynie Azure portal.  Spowoduje to włączenie zadania do **wysyłania** stanu. Zadanie pozostanie w **wysyłania** stanie do dwóch tygodni. 
+| Wysyłki | Po wysyłasz pakietu, należy zaktualizować informacje o śledzeniu w witrynie Azure portal.  Spowoduje to włączenie zadania do **wysyłania** stanu. Zadanie pozostanie w **wysyłania** stanie do dwóch tygodni. 
 | Odebrano | Po wszystkie dyski są odbierane w centrum danych, stan zadania jest ustawiana na **odebrane**. |
-| Transferowanie | Po co najmniej jeden dysk rozpoczął przetwarzanie, stan zadania jest ustawiony na **transferowanie**. Aby uzyskać więcej informacji, przejdź do [stany stacji](#view-drive-status). |
+| Przeniesienie | Po co najmniej jeden dysk rozpoczął przetwarzanie, stan zadania jest ustawiony na **transferowanie**. Aby uzyskać więcej informacji, przejdź do [stany stacji](#view-drive-status). |
 | Tworzenie pakietów | Po wszystkich dysków przetwarzania, zadanie jest umieszczona w **pakowania** stan do momentu dyski są wysyłane do Ciebie. |
-| Zakończone | Po wszystkie dyski są dostarczane do Ciebie, jeśli zadanie zostało ukończone bez błędów, następnie zadanie jest ustawiana na **Ukończono**. Zadania są automatycznie usuwane po 90 dniach w **Ukończono** stanu. |
+| Ukończone | Po wszystkie dyski są dostarczane do Ciebie, jeśli zadanie zostało ukończone bez błędów, następnie zadanie jest ustawiana na **Ukończono**. Zadania są automatycznie usuwane po 90 dniach w **Ukończono** stanu. |
 | Zamknięte | Po wszystkie dyski są dostarczane do Ciebie, jeśli wystąpiły błędy podczas przetwarzania zadania, zadanie jest ustawiana na **zamknięte**. Zadania są automatycznie usuwane po 90 dniach w **zamknięte** stanu. |
 
 ## <a name="view-drive-status"></a>Wyświetlanie stanu dysku
@@ -49,8 +49,8 @@ W poniższej tabeli opisano każdy stan, który każdego dysku, w ramach zadania
 | Określona | Do zadania importu, gdy zadanie jest tworzone w witrynie Azure portal, stan początkowy dla dysku jest **określone**. Przez zadanie eksportu, ponieważ dysk nie zostanie określony po utworzeniu zadania dysk początkowy stan jest **odebrane**. |
 | Odebrano | Dysk przechodzi do **odebrane** stanu, gdy usługa Import/Export został przetworzony dysków, które zostały odebrane z firmą transportową do zadania importu. Przez zadanie eksportu jest stan stacji początkowej **odebrane** stanu. |
 | NeverReceived | Dysk przechodzi do **NeverReceived** stanu po odebraniu pakietu do danego zadania, ale pakiet nie zawiera dysku. Dysk zostanie przesunięta w ten stan została już dwa tygodnie, ponieważ usługa otrzymała informacje o wysyłce, ale pakiet nie dotarła jeszcze w centrum danych. |
-| Transferowanie | Dysk przechodzi do **transferowanie** stan, kiedy usługa zaczyna się na przesyłanie danych z dysku do usługi Azure Storage. |
-| Zakończone | Dysk przechodzi do **Ukończono** stanu, gdy usługa została pomyślnie przeniesiona wszystkie dane bez błędów.
+| Przeniesienie | Dysk przechodzi do **transferowanie** stan, kiedy usługa zaczyna się na przesyłanie danych z dysku do usługi Azure Storage. |
+| Ukończone | Dysk przechodzi do **Ukończono** stanu, gdy usługa została pomyślnie przeniesiona wszystkie dane bez błędów.
 | CompletedMoreInfo | Dysk przechodzi do **CompletedMoreInfo** stanu, gdy Usługa napotkała problemy podczas kopiowania danych z lub na dysku. Informacje mogą zawierać błędy, ostrzeżenia lub komunikaty informacyjne o zastępowaniu obiektów blob.
 | ShippedBack | Dysk przechodzi do **ShippedBack** stan, gdy zostały wysłane z centrum danych na powrót do adres zwrotny. |
 

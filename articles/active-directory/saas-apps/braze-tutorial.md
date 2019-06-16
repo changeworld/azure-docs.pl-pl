@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69dac57118d7876ba08a562f5478b19465b37e07
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 670319eb3fb79742d2946f5fc45ca8904e8c1dd9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Braze
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację Braze w usłudze Azure AD, należy dodać Braze z
 
 **Aby dodać Braze z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Braze, wykonaj nast
 
     | Name (Nazwa) | Atrybut źródłowy|
     | -----| --------------- |
-    | wyślij wiadomość e-mail | user.userprincipalname |
+    | email | user.userprincipalname |
     | first_name| user.givenname|
     | last_name| user.surname|
     | logowanie| user.mail|
@@ -226,7 +226,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Braze w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Braze, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

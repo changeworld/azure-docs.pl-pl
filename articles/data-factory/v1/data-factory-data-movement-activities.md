@@ -14,14 +14,14 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486943"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Przenoszenie danych za pomocą działania kopiowania
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-data-movement-activities.md)
 > * [Wersja 2 (bieżąca wersja)](../copy-activity-overview.md)
 
@@ -197,7 +197,7 @@ Zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](d
 ## <a name="fault-tolerance"></a>Odporność na uszkodzenia
 Domyślnie, działanie kopiowania zostanie zatrzymane, skopiowanie danych i zwrócenie błędu kiedy wystąpi niezgodne dane między źródła i ujścia; Mimo że jawnie możesz skonfigurować na tymczasowe pominięcie i rejestrowanie niezgodnych wierszy i tylko kopii tych danych zgodne, aby wykonać kopię zakończyło się pomyślnie. Zobacz [działania kopiowania odporności na uszkodzenia](data-factory-copy-activity-fault-tolerance.md) na więcej szczegółów.
 
-## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 Zobacz [zagadnienia dotyczące zabezpieczeń](data-factory-data-movement-security-considerations.md), która opisuje infrastruktura zabezpieczeń, używanego przez usługi przenoszenia danych w usłudze Azure Data Factory do zabezpieczenia danych.
 
 ## <a name="scheduling-and-sequential-copy"></a>Kopiuj planowania i sekwencyjnych

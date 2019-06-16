@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463376"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Strumieniowa na żywo za pomocą koderów lokalnych przy użyciu witryny Azure portal
@@ -130,7 +130,7 @@ Więcej szczegółowych informacji dotyczących kanałów przekazujących można
 ## <a name="get-ingest-urls"></a>Pobieranie adresów URL pozyskiwania
 Po utworzeniu kanału można pobrać adresy URL pozyskiwania, które należy udostępnić koderowi na żywo. Koder używa tych adresów URL do wprowadzenia strumienia na żywo.
 
-![Utworzone](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Utworzono](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Oglądanie wydarzenia
 Aby oglądać wydarzenie, kliknij przycisk **Oglądaj** w witrynie Azure Portal lub skopiuj adres URL przesyłania strumieniowego i użyj wybranego odtwarzacza. 

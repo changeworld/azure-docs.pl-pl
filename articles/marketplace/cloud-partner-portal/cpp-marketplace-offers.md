@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
 ms.openlocfilehash: 2d440adc5111db11486d1fc606abbda0ffae9595
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942540"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Platforma Azure i oferty w witrynie Marketplace usługi AppSource

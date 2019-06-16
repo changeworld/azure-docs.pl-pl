@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
 ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938513"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurowanie usługi WinRM po utworzeniu maszyny wirtualnej
@@ -26,7 +26,7 @@ W tym artykule opisano sposób konfigurowania istniejącej hostowanymi na platfo
 
 Usługa WinRM za pośrednictwem protokołu HTTPS korzysta z portu 5896, która nie jest włączona domyślnie na wstępnie skonfigurowanych Windows maszyn wirtualnych oferowanych w portalu Azure Marketplace. Aby włączyć ten protokół, użyj następujące czynności można dodać nowej reguły do sieciowej grupy zabezpieczeń (NSG), za pomocą [witryny Azure portal](https://portal.azure.com).  Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  Przejdź do bloku **maszyny wirtualne >**  <*nazwa_maszyny_wirtualnej*>  **> Ustawienia/sieci**.
+1.  Przejdź do bloku **maszyny wirtualne >**   <*nazwa_maszyny_wirtualnej*>   **> Ustawienia/sieci**.
 2.  Kliknij nazwę sieciową grupę zabezpieczeń (w tym przykładzie **testvm11002**) aby wyświetlić jego właściwości:
 
     ![Właściwości grupy zabezpieczeń sieci](./media/nsg-properties.png)

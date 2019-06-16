@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935328"
 ---
 <a name="retrieve-offers"></a>Pobieranie oferty
@@ -28,11 +28,11 @@ Pobiera jest skrócona lista ofert w ramach danego obszaru nazw wydawcy.
 | **Nazwa**         |  **Opis**                         |  **Typ danych** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Identyfikator wydawcy, na przykład `contoso` |   String    |
-|  wersja interfejsu API     | Najnowszą wersję interfejsu API                    |    Date        |
+|  api-version     | Najnowszą wersję interfejsu API                    |    Date        |
 |  |  |
 
 
-<a name="header"></a>Nagłówek
+<a name="header"></a>nagłówek
 ------
 
 |  **Nazwa**        |         **Wartość**       |
@@ -73,7 +73,7 @@ Pobiera jest skrócona lista ofert w ramach danego obszaru nazw wydawcy.
 |  status         | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz [status oferty](#offer-status) poniżej.                         |
 |  id             | Identyfikator GUID, który unikatowo identyfikuje oferty w przestrzeni nazw wydawcy.                                                    |
 |  version        | Bieżąca wersja oferty. Nie można zmodyfikować właściwości wersji przez klienta. Ten numer jest zwiększany po każdym opublikowaniu. |
-|  definicja     | Zawiera widok podsumowania definicji rzeczywistego obciążenia. Aby uzyskać szczegółowe definicji, użyj [pobieranie daną ofertą](./cloud-partner-portal-api-retrieve-specific-offer.md) interfejsu API. |
+|  Definicja     | Zawiera widok podsumowania definicji rzeczywistego obciążenia. Aby uzyskać szczegółowe definicji, użyj [pobieranie daną ofertą](./cloud-partner-portal-api-retrieve-specific-offer.md) interfejsu API. |
 |  changedTime    | Czas UTC ostatniej modyfikacji tej oferty                                                                              |
 |  |  |
 

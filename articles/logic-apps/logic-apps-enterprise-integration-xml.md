@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
 ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60996581"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wiadomości XML i pliki proste w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
@@ -30,7 +30,7 @@ Zawiera pakiet integracyjny dla przedsiębiorstw:
 * [Płaskie pliku kodowania i dekodowania pliku prostego](logic-apps-enterprise-integration-flatfile.md "więcej informacji na temat kodowania/dekodowanie pliku prostego") — kodowania i dekodowania pliku prostego. Na przykład SAP akceptuje i wysyła IDOC pliki w formacie pliku prostego. Integracja z wieloma platformami utworzyć wiadomości XML, łącznie z aplikacji logiki. Tak można utworzyć aplikację logiki, która używa kodera pliku prostego do "konwersji" pliki XML do plików prostych. 
 * [Wyrażenie XPath](https://msdn.microsoft.com/library/mt643789.aspx) — wzbogacanie komunikat i prowadzenie określonych właściwości wiadomości. Wyodrębnione właściwości służy następnie do rozsyłania wiadomości do miejsca docelowego lub pośredniczący punktu końcowego.
 
-## <a name="try-it-out"></a>Testowanie
+## <a name="try-it-out"></a>Wypróbuj
 [Wdrażanie aplikacji logiki w pełni funkcjonalne](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (przykład GitHub) przy użyciu funkcji XML w usłudze Azure Logic Apps.
 
 ## <a name="learn-more"></a>Dowiedz się więcej

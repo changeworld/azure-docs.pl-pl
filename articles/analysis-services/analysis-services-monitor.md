@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61065067"
 ---
 # <a name="monitor-server-metrics"></a>Monitorowanie metryk serwera
@@ -40,14 +40,14 @@ Ta tabela służy do określenia, które metryki są najlepsze w przypadku daneg
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|
 |---|---|---|---|---|
-|CommandPoolJobQueueLength|Długość kolejki zadań puli polecenia|Licznik|Średnia|Liczba zadań w kolejce puli wątków poleceń.|
-|Wartości CurrentConnections|Połączenie: Bieżąca liczba połączeń|Licznik|Średnia|Bieżąca liczba ustanowionych połączeń klientów.|
+|CommandPoolJobQueueLength|Długość kolejki zadań puli polecenia|Count|Średnia|Liczba zadań w kolejce puli wątków poleceń.|
+|Wartości CurrentConnections|Połączenie: Bieżąca liczba połączeń|Count|Średnia|Bieżąca liczba ustanowionych połączeń klientów.|
 |CurrentUserSessions|Bieżące sesje użytkowników|Licznik|Średnia|Bieżąca liczba ustanowionych sesji użytkowników.|
 |mashup_engine_memory_metric|Pamięć aparatu M|Bajty|Średnia|Użycie pamięci przez procesy aparatu mashupów|
-|mashup_engine_qpu_metric|Jednostka QPU aparatu M|Licznik|Średnia|Użycie jednostek QPU przez procesy aparatu mashupów|
+|mashup_engine_qpu_metric|Jednostka QPU aparatu M|Count|Średnia|Użycie jednostek QPU przez procesy aparatu mashupów|
 |memory_metric|Memory (Pamięć)|Bajty|Średnia|Ilość pamięci. Należeć do zakresu 0 – 25 GB dla S1, 0 – 50 GB dla S2 oraz 0 – 100 GB dla S4|
 |memory_thrashing_metric|Przeładowywanie pamięci|Procent|Średnia|Średnie przeładowywanie pamięci.|
-|CleanerCurrentPrice|Pamięć: Bieżąca cena oczyszczarki|Licznik|Średnia|Bieżąca cena pamięci $/ bajty/czas, znormalizowana do 1000.|
+|CleanerCurrentPrice|Pamięć: Bieżąca cena oczyszczarki|Count|Średnia|Bieżąca cena pamięci $/ bajty/czas, znormalizowana do 1000.|
 |CleanerMemoryNonshrinkable|Pamięć: Pamięć oczyszczarki|Bajty|Średnia|Ilość pamięci w bajtach, niepodlegająca przeczyszczaniu przez w tle czyszcząca.|
 |CleanerMemoryShrinkable|Pamięć: Pamięć oczyszczarki zmniejszania|Bajty|Średnia|Ilość pamięci w bajtach, podlegająca przeczyszczaniu przez w tle czyszcząca.|
 |MemoryLimitHard|Pamięć: Stały Limit pamięci|Bajty|Średnia|Stały limit pamięci z pliku konfiguracji.|
@@ -56,32 +56,32 @@ Ta tabela służy do określenia, które metryki są najlepsze w przypadku daneg
 |MemoryLimitVertiPaq|Pamięć: Limit pamięci aparatu VertiPaq|Bajty|Średnia|Limit w pamięci z pliku konfiguracji.|
 |MemoryUsage|Pamięć: Użycie pamięci|Bajty|Średnia|Użycie pamięci przez proces serwera używane podczas obliczania cena oczyszczarki pamięci. Równe licznikowi Process\PrivateBytes plus rozmiar danych zamapowanych w pamięci, ignorowanie wszelkich pamięci zamapowanej lub przydzielonej przez aparat analizy w pamięci (VertiPaq) powyżej limitu pamięci aparatu.|
 |Przydział|Pamięć: Przydział|Bajty|Średnia|Bieżący limit przydziału pamięci, w bajtach. Limit przydziału pamięci jest również nazywany rezerwacji pamięci lub przydział pamięci.|
-|QuotaBlocked|Pamięć: Zablokowany limit przydziału|Licznik|Średnia|Bieżąca liczba żądań dotyczących limitu przydziału blokowanych do czasu są zwalniane innych limitów przydziału pamięci.|
+|QuotaBlocked|Pamięć: Zablokowany limit przydziału|Count|Średnia|Bieżąca liczba żądań dotyczących limitu przydziału blokowanych do czasu są zwalniane innych limitów przydziału pamięci.|
 |VertiPaqNonpaged|Pamięć: VertiPaq Nonpaged|Bajty|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
 |VertiPaqPaged|Pamięć: VertiPaq Paged|Bajty|Średnia|Bajty stronicowanej pamięci dla danych w pamięci.|
-|ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Licznik|Średnia|Liczba zadań innych niż we/wy w kolejce puli wątków przetwarzania.|
-|RowsConvertedPerSec|W toku: Wiersze przekonwertowane na sekundę|CountPerSecond|Średnia|Współczynnik wierszy przekonwertowanych podczas przetwarzania.|
-|RowsReadPerSec|W toku: Odczytane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|
-|RowsWrittenPerSec|W toku: Zapisane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy zapisanych podczas przetwarzania.|
+|ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Count|Średnia|Liczba zadań innych niż we/wy w kolejce puli wątków przetwarzania.|
+|RowsConvertedPerSec|Przetwarzanie: Wiersze przekonwertowane na sekundę|CountPerSecond|Średnia|Współczynnik wierszy przekonwertowanych podczas przetwarzania.|
+|RowsReadPerSec|Przetwarzanie: Odczytane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|
+|RowsWrittenPerSec|Przetwarzanie: Zapisane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy zapisanych podczas przetwarzania.|
 |qpu_metric|QPU|Licznik|Średnia|QPU. Zakres 0 – 100 dla S1, 0 – 200 dla S2 oraz 0 – 400 dla S4|
 |QueryPoolBusyThreads|Zajęte wątki puli zapytania|Licznik|Średnia|Liczba zajętych wątków w puli wątków zapytania.|
 |SuccessfullConnectionsPerSec|Udane połączenia na sekundę|CountPerSecond|Średnia|Współczynnik pomyślnie zakończonych połączeń.|
 |CommandPoolBusyThreads|Wątki: Zajęte wątki puli polecenia|Licznik|Średnia|Liczba zajętych wątków w puli wątków poleceń.|
-|CommandPoolIdleThreads|Wątki: Bezczynne wątki puli polecenia|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków poleceń.|
-|LongParsingBusyThreads|Wątki: Długotrwałej analizie zajęte wątki|Licznik|Średnia|Liczba zajętych wątków w puli wątków o długotrwałej analizie.|
-|LongParsingIdleThreads|Wątki: Długotrwałej analizie bezczynne wątki|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków o długotrwałej analizie.|
-|LongParsingJobQueueLength|Wątki: Długotrwałej analizie długość kolejki zadań|Licznik|Średnia|Liczba zadań w kolejce puli wątków o długotrwałej analizie.|
+|CommandPoolIdleThreads|Wątki: Bezczynne wątki puli polecenia|Count|Średnia|Liczba bezczynnych wątków w puli wątków poleceń.|
+|LongParsingBusyThreads|Wątki: Długotrwałej analizie zajęte wątki|Count|Średnia|Liczba zajętych wątków w puli wątków o długotrwałej analizie.|
+|LongParsingIdleThreads|Wątki: Długotrwałej analizie bezczynne wątki|Count|Średnia|Liczba bezczynnych wątków w puli wątków o długotrwałej analizie.|
+|LongParsingJobQueueLength|Wątki: Długotrwałej analizie długość kolejki zadań|Count|Średnia|Liczba zadań w kolejce puli wątków o długotrwałej analizie.|
 |ProcessingPoolIOJobQueueLength|Wątki: Długość kolejki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba zadań we/wy w kolejce puli wątków przetwarzania.|
-|ProcessingPoolBusyIOJobThreads|Wątki: Zajęte wątki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba wątków uruchamiających zadania we/wy w puli wątków przetwarzania.|
-|ProcessingPoolBusyNonIOThreads|Wątki: Zajęte wątki zadań innych we/wy puli przetwarzania|Licznik|Średnia|Liczba wątków uruchomionych zadań innych niż we/wy w puli wątków przetwarzania.|
-|ProcessingPoolIdleIOJobThreads|Wątki: Bezczynne wątki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
-|ProcessingPoolIdleNonIOThreads|Wątki: Bezczynne wątki innego niż we/wy puli przetwarzania|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków przetwarzania dedykowanych dla zadań innych niż we/wy.|
+|ProcessingPoolBusyIOJobThreads|Wątki: Zajęte wątki zadań we/wy puli przetwarzania|Count|Średnia|Liczba wątków uruchamiających zadania we/wy w puli wątków przetwarzania.|
+|ProcessingPoolBusyNonIOThreads|Wątki: Zajęte wątki zadań innych we/wy puli przetwarzania|Count|Średnia|Liczba wątków uruchomionych zadań innych niż we/wy w puli wątków przetwarzania.|
+|ProcessingPoolIdleIOJobThreads|Wątki: Bezczynne wątki zadań we/wy puli przetwarzania|Count|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
+|ProcessingPoolIdleNonIOThreads|Wątki: Bezczynne wątki innego niż we/wy puli przetwarzania|Count|Średnia|Liczba bezczynnych wątków w puli wątków przetwarzania dedykowanych dla zadań innych niż we/wy.|
 |QueryPoolIdleThreads|Wątki: Bezczynne wątki puli zapytań|Licznik|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|
-|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Licznik|Średnia|Liczba zadań w kolejce puli wątków zapytania.|
-|ShortParsingBusyThreads|Wątki: Krótkie analizy zajęte wątki|Licznik|Średnia|Liczba zajętych wątków w puli wątków krótkotrwałej analizie.|
-|ShortParsingIdleThreads|Wątki: Krótkie analizy bezczynne wątki|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków krótkotrwałej analizie.|
-|ShortParsingJobQueueLength|Wątki: Krótkie analizy długość kolejki zadań|Licznik|Średnia|Liczba zadań w kolejce puli wątków krótkotrwałej analizie.|
-|TotalConnectionFailures|Łączna liczba błędów połączenia|Licznik|Średnia|Łączna liczba nieudanych prób nawiązania połączenia.|
+|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Count|Średnia|Liczba zadań w kolejce puli wątków zapytania.|
+|ShortParsingBusyThreads|Wątki: Krótkie analizy zajęte wątki|Count|Średnia|Liczba zajętych wątków w puli wątków krótkotrwałej analizie.|
+|ShortParsingIdleThreads|Wątki: Krótkie analizy bezczynne wątki|Count|Średnia|Liczba bezczynnych wątków w puli wątków krótkotrwałej analizie.|
+|ShortParsingJobQueueLength|Wątki: Krótkie analizy długość kolejki zadań|Count|Średnia|Liczba zadań w kolejce puli wątków krótkotrwałej analizie.|
+|TotalConnectionFailures|Łączna liczba błędów połączenia|Count|Średnia|Łączna liczba nieudanych prób nawiązania połączenia.|
 |TotalConnectionRequests|Łączna liczba żądań połączenia|Licznik|Średnia|Łączna liczba żądań połączenia. |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258730"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -30,10 +30,10 @@ Zarządzaj węzły, które tworzą klaster.
 | --- | --- |
 | Wyłącz | Dezaktywuj z zamiarem dezaktywacji określony węzeł klastra usługi Service Fabric. |
 | Włącz | Aktywuj węzeł klastra usługi Service Fabric, który jest obecnie wyłączona. |
-| zdrowie | Pobiera kondycji węzła usługi Service Fabric. |
-| Informacje o | Pobiera informacje dotyczące określonego węzła w klastrze usługi Service Fabric. |
+| health | Pobiera kondycji węzła usługi Service Fabric. |
+| info | Pobiera informacje dotyczące określonego węzła w klastrze usługi Service Fabric. |
 | list | Pobiera listę węzłów w klastrze usługi Service Fabric. |
-| ładowanie | Pobiera informacje o ładowaniu węzła usługi Service Fabric. |
+| load | Pobiera informacje o ładowaniu węzła usługi Service Fabric. |
 | remove-state | Powiadamia usługi Service Fabric, że stan utrwalony w węźle trwale ani nie usunięto utracone. |
 | report-health | Wysyła raport o kondycji w węźle usługi Service Fabric. |
 | restart | Powoduje ponowne uruchomienie węzła klastra usługi Service Fabric. |

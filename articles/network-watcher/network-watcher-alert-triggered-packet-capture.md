@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 37e42b05046be27254d2ceb15a59fbdb931ae161
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711912"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktywne monitorowanie sieci za pomocą alertów i usługi Azure Functions na użytek przechwycenie pakietu
@@ -84,7 +84,7 @@ Pierwszym krokiem jest tworzenie funkcji platformy Azure do przetwarzania alertu
     |**Lokalizacja**|Środkowe stany USA| Region, w której chcesz utworzyć aplikację funkcji.|
     |**Konto magazynu**|{automatycznie wygenerowany}| Konto magazynu, które wymaga usługi Azure Functions na potrzeby magazynu ogólnego przeznaczenia.|
 
-3. Na **aplikacje funkcji PacketCaptureExample** bloku wybierz **funkcje** > **funkcja niestandardowa**  >  **+**.
+3. Na **aplikacje funkcji PacketCaptureExample** bloku wybierz **funkcje** > **funkcja niestandardowa**  >  **+** .
 
 4. Wybierz **HttpTrigger-Powershell**, a następnie wprowadź pozostałe informacje. Na koniec, aby utworzyć funkcję, wybierz **Utwórz**.
 
@@ -208,7 +208,7 @@ Identyfikator klienta jest identyfikator aplikacji dla aplikacji w usłudze Azur
    > [!NOTE]
    > Hasło używane podczas tworzenia aplikacji przez powinny być tego samego hasła, który został utworzony wcześniej, podczas zapisywania pliku klucza.
 
-1. W witrynie Azure portal wybierz **subskrypcje**. Wybierz subskrypcję, a następnie wybierz pozycję **kontrola dostępu (IAM)**.
+1. W witrynie Azure portal wybierz **subskrypcje**. Wybierz subskrypcję, a następnie wybierz pozycję **kontrola dostępu (IAM)** .
 
     ![Funkcje zarządzania tożsamościami i Dostępem][functions9]
 

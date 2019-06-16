@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121327"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Bezpieczeństwo komunikacji | Środki zaradcze 
@@ -40,7 +40,7 @@ ms.locfileid: "62121327"
 
 ## <a id="comm-ssltls"></a>Zabezpieczanie komunikacji z Centrum zdarzeń za pomocą certyfikatu SSL/TLS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Centrum zdarzeń Azure | 
 | **Faza SDL**               | Kompilacja |  
@@ -51,7 +51,7 @@ ms.locfileid: "62121327"
 
 ## <a id="priv-aspnet"></a>Sprawdź uprawnienia konta usługi i sprawdź, czy niestandardowych usług lub stron ASP.NET przestrzegają zabezpieczeń firmy CRM
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
@@ -62,7 +62,7 @@ ms.locfileid: "62121327"
 
 ## <a id="sqlserver-factory"></a>Użyj bramy zarządzania danymi podczas nawiązywania połączenia z lokalnego programu SQL Server w usłudze Azure Data Factory
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Data Factory | 
 | **Faza SDL**               | Wdrożenie |  
@@ -73,7 +73,7 @@ ms.locfileid: "62121327"
 
 ## <a id="identity-https"></a>Upewnij się, że cały ruch do serwera tożsamości za pośrednictwem połączenia HTTPS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Tożsamość serwera | 
 | **Faza SDL**               | Wdrożenie |  
@@ -84,7 +84,7 @@ ms.locfileid: "62121327"
 
 ## <a id="x509-ssltls"></a>Sprawdź X.509 certyfikaty używane do uwierzytelniania połączenia protokołu SSL, TLS i DTLS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -95,7 +95,7 @@ ms.locfileid: "62121327"
 
 ## <a id="ssl-appservice"></a>Konfigurowanie certyfikatu SSL dla domeny niestandardowej w usłudze Azure App Service
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -106,7 +106,7 @@ ms.locfileid: "62121327"
 
 ## <a id="appservice-https"></a>Wymuszenie całego ruchu do usługi Azure App Service za pośrednictwem połączenia HTTPS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -139,7 +139,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="http-hsts"></a>Włącz zabezpieczenia Strict transportu HTTP (HSTS)
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -150,7 +150,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="sqlserver-validation"></a>Upewnij się, program SQL server szyfrowania i certyfikat sprawdzania poprawności połączenia
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -161,7 +161,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="encrypted-sqlserver"></a>Wymuszaj zaszyfrowane komunikacji z serwerem SQL
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -172,7 +172,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="comm-storage"></a>Upewnij się, że komunikacja z usługi Azure Storage przy użyciu protokołu HTTPS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Wdrożenie |  
@@ -183,7 +183,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="md5-https"></a>Sprawdzenie skrótu MD5 po pobraniu obiektu blob, jeśli nie można włączyć protokołu HTTPS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -194,7 +194,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="smb-shares"></a>Upewnij się, szyfrowanie danych podczas przesyłania do udziałów plików platformy Azure za pomocą protokołu SMB 3.0 zgodne klienta
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Mobile Client | 
 | **Faza SDL**               | Kompilacja |  
@@ -205,7 +205,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 
 ## <a id="cert-pinning"></a>Implementowanie przypinania certyfikatu
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -282,7 +282,7 @@ namespace CertificatePinningExample
 
 ## <a id="https-transport"></a>Włącz protokół HTTPS — należy zabezpieczyć kanał transportu
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -293,7 +293,7 @@ namespace CertificatePinningExample
 
 ## <a id="message-protection"></a>WCF: Zabezpieczenia komunikatów poziom ochrony ma wartość EncryptAndSign
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -322,7 +322,7 @@ string GetData(int value);
 
 ## <a id="least-account-wcf"></a>WCF: Użyj najmniej uprzywilejowane konto uruchamiania usługi WCF
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -333,7 +333,7 @@ string GetData(int value);
 
 ## <a id="webapi-https"></a>Wymuszenie całego ruchu do interfejsów API sieci Web za pośrednictwem połączenia HTTPS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -374,7 +374,7 @@ public class ValuesController : ApiController
  
 ## <a id="redis-ssl"></a>Upewnij się, że komunikacja pamięć podręczna systemu Azure dla usługi Redis za pośrednictwem protokołu SSL
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Cache for Redis | 
 | **Faza SDL**               | Kompilacja |  
@@ -387,7 +387,7 @@ Należy pamiętać, że Redis jest przeznaczona do uzyskiwał dostęp do zaufany
 
 ## <a id="device-field"></a>Zabezpieczenia urządzenia do bramy w terenie komunikacji
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -398,7 +398,7 @@ Należy pamiętać, że Redis jest przeznaczona do uzyskiwał dostęp do zaufany
 
 ## <a id="device-cloud"></a>Zabezpieczenia urządzenia komunikację bramy w chmurze przy użyciu protokołu SSL/TLS
 
-| Tytuł                   | Szczegóły      |
+| Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  

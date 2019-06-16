@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: dab0b11a350a10a209d67ddc69db5531a2cc292c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481477"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080767"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Usługa Azure CDN from funkcje aparatu reguł Premium firmy Verizon
 
@@ -338,7 +338,7 @@ Aby zduplikować zachowanie, na stronie buforowanie ciągu zapytania buforowania
 
 Następujące przykładowe zastosowanie dla tej funkcji zawiera przykładowe żądanie i klucza pamięci podręcznej domyślne:
 
-- **Przykładowe żądanie:** http://wpc.0001.&lt; domeny&gt;język & /800001/Origin/folder/asset.htm?sessionid=1234 = pl & userid = 01
+- **Przykładowe żądanie:** http://wpc.0001.&lt ; domeny&gt; język & /800001/Origin/folder/asset.htm?sessionid=1234 = pl & userid = 01
 - **Domyślny klucz pamięci podręcznej:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Obejmują
@@ -516,8 +516,8 @@ Format do określania nagłówków żądania i odpowiedzi jest zdefiniowana w na
 
 Typ nagłówka|Format|Przykłady
 -|-|-
-Nagłówek żądania|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
-Nagłówek odpowiedzi|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
+Nagłówek żądania|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
+Nagłówek odpowiedzi|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 Informacje o kluczu:
 
@@ -999,7 +999,7 @@ Informacje o kluczu:
     - server
     - Zwiastuny —
     - kodowanie transferu
-    - Uaktualnienie
+    - upgrade
     - różnią się
     - za pomocą
     - ostrzeżenie

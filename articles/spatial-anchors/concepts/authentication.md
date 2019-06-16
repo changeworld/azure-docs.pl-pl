@@ -8,18 +8,18 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e641025d49dd42125aa692925c0697235489b1db
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b3f4cf4099459b655fc0e370935ddc8079de810
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073936"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Uwierzytelnianie i autoryzację do kotwic przestrzenne platformy Azure
 
 W tej sekcji omówimy różne sposoby, które można wybrać metodę uwierzytelniania Azure kotwic przestrzennych z aplikacji lub usługi sieci web i sposoby, w którym można użyć kontroli dostępu opartej na rolach w usłudze Azure Directory (Azure AD) możesz kontrolować dostęp do kont przestrzenne zakotwiczenia.  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 ![Omówienie uwierzytelniania kotwic przestrzenne platformy Azure](./media/spatial-anchors-authentication-overview.png)
 
@@ -56,7 +56,7 @@ Po zakończeniu tej operacji, zestaw SDK obsłuży wymiany klucza konta, aby uzy
 
 ## <a name="azure-ad-user-authentication"></a>Uwierzytelnianie użytkownika usługi Azure AD
 
-Dla aplikacji przeznaczonych dla użytkowników usługi Azure Active Directory, zalecanym podejściem jest użycie tokenu usługi Azure AD dla użytkownika, który można uzyskać za pomocą biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: https://docs.microsoft.com/azure/active-directory/develop/v1-overview; powinny wykonaj następujące kroki w obszarze "Szybkiego uruchamiania", który obejmuje następujące czynności:
+Dla aplikacji przeznaczonych dla użytkowników usługi Azure Active Directory, zalecanym podejściem jest użycie tokenu usługi Azure AD dla użytkownika, który można uzyskać za pomocą biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); użytkownik powinny wykonaj następujące kroki w obszarze "Szybkiego uruchamiania", które obejmują:
 
 1. Konfiguracja w witrynie Azure portal
     1.  Zarejestruj swoją aplikację w usłudze Azure AD jako **aplikacji natywnej**. W ramach rejestracji należy określić, czy aplikacji powinny być wielodostępne, ani nie zapewniają przekierowania, dozwolone adresy URL aplikacji.  
@@ -89,7 +89,7 @@ Jest to zalecana opcja, jak wdrażać aplikacje, wykorzystując kotwic przestrze
 
 W tym miejscu, zakłada się, że aplikacja używa własny mechanizm (na przykład: Konto Microsoft, platformy PlayFab, Facebook, Google identyfikator, niestandardowe nazwy użytkownika/hasła, itp.) Uwierzytelnianie na jej usługą zaplecza. Po uwierzytelnieniu użytkowników do usługi zaplecza service do pobrania tokenu usługi Azure AD wymiany dla tokenu dostępu, for Azure przestrzenne kotwic i zwrócić go do aplikacji klienckiej.
 
-Token dostępu usługi Azure AD jest pobierany za pomocą biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: https://docs.microsoft.com/azure/active-directory/develop/v1-overview; należy wykonać kroki opisane w obszarze "Szybkiego uruchamiania", które obejmują:
+Token dostępu usługi Azure AD jest pobierany za pomocą biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); należy wykonać kroki opisane w obszarze "Szybkiego uruchamiania", które obejmują:
 
 1.  Konfiguracja w witrynie Azure portal:
     1.  Rejestrowanie aplikacji w usłudze Azure AD:

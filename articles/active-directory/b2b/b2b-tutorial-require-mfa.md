@@ -12,16 +12,16 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb26a5056ba4cec14218af70f1561c17e637102c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 16a2438133f545c57d1046a0c4db94135f8a426d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113195"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Samouczek: wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników-gości B2B
 
-W przypadku współpracy z zewnętrznymi użytkownikami-gośćmi B2B dobrym pomysłem jest ochrona aplikacji za pomocą zasad uwierzytelniania wieloskładnikowego (MFA). W takiej sytuacji nazwa użytkownika i hasło nie wystarczą użytkownikom zewnętrznym do uzyskania dostępu do Twoich zasobów. W usłudze Azure Active Directory (Azure AD) można osiągnąć ten cel przy użyciu zasad dostępu warunkowego, które do uzyskania dostępu wymagają zastosowania usługi MFA. Zasady MFA można wymuszać na poziomie dzierżawy, aplikacji lub pojedynczego użytkownika-gościa, tak samo jak są one włączane dla członków w Twojej organizacji.
+W przypadku współpracy z zewnętrznymi użytkownikami-gośćmi B2B dobrym pomysłem jest ochrona aplikacji za pomocą zasad uwierzytelniania wieloskładnikowego (MFA). W takiej sytuacji nazwa użytkownika i hasło nie wystarczą użytkownikom zewnętrznym do uzyskania dostępu do Twoich zasobów. W usłudze Azure Active Directory (Azure AD) można osiągnąć ten cel przy użyciu zasad dostępu warunkowego, które wymaga uwierzytelniania Wieloskładnikowego na potrzeby dostępu. Zasady MFA można wymuszać na poziomie dzierżawy, aplikacji lub pojedynczego użytkownika-gościa, tak samo jak są one włączane dla członków w Twojej organizacji.
 
 Przykład:
 
@@ -36,9 +36,9 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Testowanie środowiska logowania przed uruchomieniem instalacji usługi MFA.
-> * Tworzenie zasad dostępu warunkowego, które wymagają użycia usługi MFA w celu uzyskania dostępu do aplikacji w chmurze w środowisku. W tym samouczku użyjemy aplikacji Microsoft Azure Management, aby zilustrować ten proces.
+> * Tworzenie zasad dostępu warunkowego, która wymaga uwierzytelniania Wieloskładnikowego do uzyskiwania dostępu do aplikacji w chmurze w środowisku. W tym samouczku użyjemy aplikacji Microsoft Azure Management, aby zilustrować ten proces.
 > * Symulacja logowania w usłudze MFA zostanie przeprowadzona przy użyciu narzędzia What If.
-> * Testowanie zasad dostępu warunkowego.
+> * Przetestuj zasady dostępu warunkowego.
 > * Czyszczenie użytkownika testowego i zasad.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -47,7 +47,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
 
- - **Dostęp do usługi Azure AD — wersja Premium**, który obejmuje możliwości zasad dostępu warunkowego. Aby wymusić użycie usługi MFA, musisz utworzyć zasady dostępu warunkowego usługi Azure AD. Pamiętaj, że zasady MFA są zawsze wymuszane w organizacji, niezależnie od tego, czy partner ma możliwość obsługi usługi MFA. W przypadku konfigurowania usługi MFA w organizacji trzeba upewnić się, że masz wystarczającą liczbę licencji usługi Azure AD Premium dla usługi użytkowników-gości. 
+ - **Dostęp do usługi Azure AD — wersja Premium**, która obejmuje możliwości zasad dostępu warunkowego. Aby wymusić uwierzytelnianie wieloskładnikowe, musisz utworzyć zasady dostępu warunkowego usługi Azure AD. Pamiętaj, że zasady MFA są zawsze wymuszane w organizacji, niezależnie od tego, czy partner ma możliwość obsługi usługi MFA. W przypadku konfigurowania usługi MFA w organizacji trzeba upewnić się, że masz wystarczającą liczbę licencji usługi Azure AD Premium dla usługi użytkowników-gości. 
  - **Prawidłowe zewnętrzne konto e-mail**, które można dodać do katalogu dzierżawy jako użytkownika-gościa i którego można używać do logowania. Jeśli nie wiesz, jak utworzyć konto gościa, zobacz [Add a B2B guest user in the Azure portal (Dodawanie użytkownika-gościa B2B w witrynie Azure Portal)](add-users-administrator.md).
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>Dodawanie testowego użytkownika-gościa w usłudze Azure AD
@@ -71,14 +71,14 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 2.  Zwróć uwagę, że do uzyskania dostępu do witryny Azure Portal wystarczą Ci poświadczenia logowania. Dodatkowe uwierzytelnianie nie jest wymagane.
 3.  Wyloguj się.
 
-## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Tworzenie zasad dostępu warunkowego, które wymagają użycia usługi MFA
+## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Tworzenie zasad dostępu warunkowego, która wymaga uwierzytelniania Wieloskładnikowego
 1.  Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com/) jako administrator zabezpieczeń lub administrator dostępu warunkowego.
 2.  W witrynie Azure Portal wybierz pozycję **Azure Active Directory**. 
-3.  Na stronie **Azure Active Directory** w sekcji **Zabezpieczenia** wybierz pozycję **Dostęp warunkowy**.
+3.  Na **usługi Azure Active Directory** stronie **zabezpieczeń** zaznacz **dostępu warunkowego**.
 4.  Na stronie **Dostęp warunkowy** na pasku narzędzi w górnej części wybierz pozycję **Nowe zasady**.
 5.  Na stronie **Nowe** w polu tekstowym **Nazwa** wpisz frazę **Wymagaj usługi MFA do dostępu do portalu B2B**.
 6.  W sekcji **Przypisania** wybierz pozycję **Użytkownicy i grupy**.
-7.  Na stronie **Użytkownicy i grupy** wybierz pozycję **Wybierz użytkowników i grupy**, a następnie wybierz pozycję **Wszyscy użytkownicy-goście (wersja zapoznawcza)**.
+7.  Na stronie **Użytkownicy i grupy** wybierz pozycję **Wybierz użytkowników i grupy**, a następnie wybierz pozycję **Wszyscy użytkownicy-goście (wersja zapoznawcza)** .
 
     ![Zrzut ekranu przedstawiający Wybieranie wszyscy użytkownicy-goście](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9.  Wybierz pozycję **Done** (Gotowe).
@@ -105,7 +105,7 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>Symulowanie logowania przy użyciu opcji What If
 
-1.  Na stronie **Dostęp warunkowy — zasady** wybierz pozycję **What If**. 
+1.  Na **dostępu warunkowego — zasady** wybierz opcję **co zrobić, jeśli**. 
 
     ![Zrzut ekranu przedstawiający miejsce, zaznacz co, jeśli opcja](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
@@ -132,7 +132,7 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 3.  Wyloguj się.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy użytkownik testowy i testowe zasady dostępu warunkowego nie będą już potrzebne, usuń je.
+Gdy nie jest już potrzebny, Usuń użytkownika testowego i testowania zasad dostępu warunkowego.
 1.  Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) jako administrator usługi Azure AD.
 2.  W lewym okienku wybierz pozycję **Azure Active Directory**.
 3.  W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
@@ -142,4 +142,4 @@ Gdy użytkownik testowy i testowe zasady dostępu warunkowego nie będą już po
 7.  Na liście **Nazwa zasad** wybierz menu kontekstowe (…) dla zasad testowych, a następnie wybierz pozycję **Usuń**. Wybierz pozycję **Tak**, aby potwierdzić.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku utworzono zasady dostępu warunkowego, które wymagają od użytkowników-gości używania uwierzytelniania wieloskładnikowego podczas logowania do jednej z aplikacji w chmurze. Aby dowiedzieć się więcej na temat dodawania użytkowników-gości do współpracy, zobacz [Add Azure Active Directory B2B collaboration users in the Azure portal (Dodawanie użytkowników współpracy usługi Azure Active Directory B2B w witrynie Azure Portal)](add-users-administrator.md).
+W tym samouczku utworzono zasady dostępu warunkowego, które wymagają użytkowników-gości używać uwierzytelniania Wieloskładnikowego podczas logowania się do jednej z Twoich aplikacji w chmurze. Aby dowiedzieć się więcej na temat dodawania użytkowników-gości do współpracy, zobacz [Add Azure Active Directory B2B collaboration users in the Azure portal (Dodawanie użytkowników współpracy usługi Azure Active Directory B2B w witrynie Azure Portal)](add-users-administrator.md).

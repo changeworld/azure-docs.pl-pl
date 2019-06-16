@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 46fa1c5a4874508cf8e2d288a99c908744347b69
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/04/2019
+ms.openlocfilehash: 4bfbce7dd985f3ebf67fde671d83acf30623b641
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055396"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -223,7 +223,7 @@ Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do kondycji HDI
 
 ![Diagram jednostek HDInsight utworzone w sieci Wirtualnej platformy Azure niestandardowe](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-### <a id="hdinsight-ip"></a> HDInsight przy użyciu sieciowych grup zabezpieczeń
+### <a name="hdinsight-with-network-security-groups"></a>HDInsight przy użyciu sieciowych grup zabezpieczeń
 
 Jeśli planujesz użycie **sieciowe grupy zabezpieczeń** do sterowania ruchem sieciowym, wykonaj następujące czynności przed zainstalowaniem HDInsight:
 
@@ -291,11 +291,11 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     | &nbsp; | Indie Południowe | 104.211.223.67<br/>104.211.216.210 | \*:443 | Przychodzący |
     | Japonia | Japonia Wschodnia | 13.78.125.90</br>13.78.89.60 | \*:443 | Przychodzący |
     | &nbsp; | Japonia Zachodnia | 40.74.125.69</br>138.91.29.150 | \*:443 | Przychodzący |
-    | Korea | Korea Środkowa | 52.231.39.142</br>52.231.36.209 | \*:433 | Przychodzący |
+    | Korea | Korea Środkowa | 52.231.39.142</br>52.231.36.209 | \*:443 | Przychodzący |
     | &nbsp; | Korea Południowa | 52.231.203.16</br>52.231.205.214 | \*:443 | Przychodzący
     | Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | 51.141.13.110</br>51.141.7.20 | \*:443 | Przychodzący |
     | &nbsp; | Południowe Zjednoczone Królestwo | 51.140.47.39</br>51.140.52.16 | \*:443 | Przychodzący |
-    | Stany Zjednoczone | Środkowe stany USA | 13.67.223.215</br>40.86.83.253 | \*:443 | Przychodzący |
+    | Stany Zjednoczone | Środkowe stany USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Przychodzący |
     | &nbsp; | Wschodnie stany USA | 13.82.225.233</br>40.71.175.99 | \*:443 | Przychodzący |
     | &nbsp; | Środkowo-północne stany USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Przychodzący |
     | &nbsp; | Środkowo-zachodnie stany USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Przychodzący |
@@ -328,28 +328,29 @@ Następujący szablon funkcji zarządzania zasobami tworzy sieć wirtualną, kt�
 
 * [Wdrażanie zabezpieczonej sieci wirtualnej platformy Azure oraz klaster usługi HDInsight Hadoop](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
-> [!IMPORTANT]  
-> Zmień adresy IP używane w tym przykładzie, aby dopasować regionu platformy Azure, którego używasz. Można znaleźć te informacje w [HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika](#hdinsight-ip) sekcji.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Poniższy skrypt programu PowerShell umożliwia tworzenie sieci wirtualnej, która ogranicza ruch przychodzący i zezwala na ruch z adresów IP w regionie Europa Północna.
 
 > [!IMPORTANT]  
-> Zmień adresy IP używane w tym przykładzie, aby dopasować regionu platformy Azure, którego używasz. Można znaleźć te informacje w [HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika](#hdinsight-ip) sekcji.
+> Zmiana adresów IP dla `hdirule1` i `hdirule2` w tym przykładzie, aby dopasować region platformy Azure, której używasz. Można znaleźć te informacje w [HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika](#hdinsight-ip) sekcji.
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
+
 # Get the Virtual Network object
 $vnet = Get-AzVirtualNetwork `
     -Name $vnetName `
     -ResourceGroupName $resourceGroupName
+
 # Get the region the Virtual network is in.
 $location = $vnet.Location
+
 # Get the subnet object
 $subnet = $vnet.Subnets | Where-Object Name -eq $subnetName
+
 # Create a Network Security Group.
 # And add exemptions for the HDInsight health and management services.
 $nsg = New-AzNetworkSecurityGroup `
@@ -422,8 +423,10 @@ $nsg = New-AzNetworkSecurityGroup `
         -Access Allow `
         -Priority 305 `
         -Direction Inbound `
+
 # Set the changes to the security group
 Set-AzNetworkSecurityGroup -NetworkSecurityGroup $nsg
+
 # Apply the NSG to the subnet
 Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
@@ -433,14 +436,12 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-> [!IMPORTANT]  
-> W tym przykładzie przedstawiono sposób dodawania reguły zezwalające na ruch przychodzący na wymaganych adresów IP. Nie zawiera zasadę, aby ograniczyć dostęp dla ruchu przychodzącego z innych źródeł.
->
-> Poniższy przykład ilustruje sposób umożliwić dostęp SSH z Internetu:
->
-> ```powershell
-> Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
-> ```
+W tym przykładzie przedstawiono sposób dodawania reguły zezwalające na ruch przychodzący na wymaganych adresów IP. Nie zawiera zasadę, aby ograniczyć dostęp dla ruchu przychodzącego z innych źródeł. Poniższy kod ilustruje sposób umożliwić dostęp SSH z Internetu:
+
+```powershell
+Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
+Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
+```
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -457,7 +458,7 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną, która ogranicza ru
 2. Aby dodać reguły do nowej grupy zabezpieczeń sieci, dzięki czemu komunikacji dla ruchu przychodzącego na porcie 443 z usługi kondycji i zarządzania usługi Azure HDInsight, należy użyć następującego. Zastąp `RESOURCEGROUP` nazwą grupy zasobów, która zawiera Azure Virtual Network.
 
     > [!IMPORTANT]  
-    > Zmień adresy IP używane w tym przykładzie, aby dopasować regionu platformy Azure, którego używasz. Można znaleźć te informacje w [HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika](#hdinsight-ip) sekcji.
+    > Zmiana adresów IP dla `hdirule1` i `hdirule2` w tym przykładzie, aby dopasować region platformy Azure, której używasz. Można znaleźć te informacje w [HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika](#hdinsight-ip) sekcji.
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -471,14 +472,12 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną, która ogranicza ru
 3. Aby pobrać Unikatowy identyfikator dla tej grupy zabezpieczeń sieci, użyj następującego polecenia:
 
     ```azurecli
-    az network nsg show -g RESOURCEGROUP -n hdisecure --query 'id'
+    az network nsg show -g RESOURCEGROUP -n hdisecure --query "id"
     ```
 
     To polecenie zwraca wartość podobny do następującego tekstu:
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
-
-    Użyj podwójnych cudzysłowów wokół `id` w poleceniu, jeśli nie otrzymujesz oczekiwanych wyników.
 
 4. Użyj następującego polecenia, aby zastosować sieciową grupę zabezpieczeń do podsieci. Zastąp `GUID` i `RESOURCEGROUP` zwracane wartości, które z nich, które w poprzednim kroku. Zastąp `VNETNAME` i `SUBNETNAME` o nazwie sieci wirtualnej i nazwę podsieci, która ma zostać utworzona.
 
@@ -488,14 +487,14 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną, która ogranicza ru
 
     Po wykonaniu tego polecenia można zainstalować HDInsight w sieci wirtualnej.
 
-> [!IMPORTANT]  
-> Te kroki otwierać tylko dostęp do usługi HDInsight kondycji i zarządzania w chmurze Azure. Wszystkie inne dostęp do klastra HDInsight z spoza sieci wirtualnej jest zablokowany. Aby włączyć dostęp spoza sieci wirtualnej, należy dodać dodatkowe reguły sieciowej grupy zabezpieczeń.
->
-> Poniższy przykład ilustruje sposób umożliwić dostęp SSH z Internetu:
->
-> ```azurecli
-> az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
-> ```
+
+Te kroki otwierać tylko dostęp do usługi HDInsight kondycji i zarządzania w chmurze Azure. Wszystkie inne dostęp do klastra HDInsight z spoza sieci wirtualnej jest zablokowany. Aby włączyć dostęp spoza sieci wirtualnej, należy dodać dodatkowe reguły sieciowej grupy zabezpieczeń.
+
+Poniższy kod ilustruje sposób umożliwić dostęp SSH z Internetu:
+
+```azurecli
+az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
+```
 
 ## <a id="example-dns"></a> Przykład: Konfiguracja usługi DNS
 
@@ -658,7 +657,7 @@ Po wykonaniu tych kroków, można połączyć się z zasobami w sieci wirtualnej
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby uzyskać przykład end-to-end konfigurowania HDInsight, aby nawiązać połączenie między siecią lokalną, zobacz [Connect HDInsight z siecią lokalną](./connect-on-premises-network.md).
-* Podczas konfigurowania klastrów Apache Hbase w sieci wirtualnej platformy Azure, zobacz [tworzenie bazy danych Apache HBase klastrów HDInsight w usłudze Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
+* Podczas konfigurowania klastrów Apache HBase w sieci wirtualnej platformy Azure, zobacz [tworzenie bazy danych Apache HBase klastrów HDInsight w usłudze Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
 * Do konfigurowania replikacji geograficznej bazy danych Apache HBase, zobacz [Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure](hbase/apache-hbase-replication.md).
 * Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 

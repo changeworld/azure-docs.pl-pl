@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2b57ec7727e8f5b648bcb97e5fae26c63724411c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153240"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127206"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Identity Management i kontrolę dostępu najlepsze rozwiązania dotyczące zabezpieczeń
 W tym artykule omawiane jest kolekcją usługi Azure identity management i najlepsze rozwiązania zabezpieczeń kontroli dostępu. Następujące najlepsze rozwiązania są uzyskiwane z naszych doświadczeniach z [usługi Azure AD](../active-directory/fundamentals/active-directory-whatis.md) i procesy, przez klientów, takich jak samodzielnie.
@@ -113,7 +113,7 @@ Organizacje, które nie należy tworzyć wspólną tożsamość do ustalenia log
 
 Użytkownicy mogą uzyskiwać dostęp do zasobów organizacji przy użyciu różnych urządzeń i aplikacji z dowolnego miejsca. Jako administrator IT chcesz upewnić się, że te urządzenia spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Po prostu koncentrujących się na kto ma dostęp do zasobu nie wystarcza już.
 
-Równoważyć, zabezpieczenia i wydajność, należy wziąć pod uwagę sposób dostępu do zasobu przed dokonaniem decyzji dotyczących kontroli dostępu. Funkcja dostępu warunkowego w usłudze Azure AD pozwala sprostać temu wymaganiu. Przy użyciu dostępu warunkowego można wprowadzać automatyczny dostęp decyzji dotyczących kontroli na podstawie warunków do uzyskiwania dostępu do aplikacji w chmurze.
+Równoważyć, zabezpieczenia i wydajność, należy wziąć pod uwagę sposób dostępu do zasobu przed dokonaniem decyzji dotyczących kontroli dostępu. Przy użyciu dostępu warunkowego usługi Azure AD można rozwiązać tego wymagania. Przy użyciu dostępu warunkowego można wprowadzać automatyczny dostęp decyzji dotyczących kontroli na podstawie warunków do uzyskiwania dostępu do aplikacji w chmurze.
 
 **Najlepsze rozwiązanie**: Zarządzanie i kontrola dostępu do zasobów firmy.  
 **Szczegóły**: Konfigurowanie usługi Azure AD [dostępu warunkowego](../active-directory/active-directory-conditional-access-azure-portal.md) bazujący na grupie, lokalizacji i ważności aplikacji dla aplikacji SaaS i aplikacje platformy Azure połączonej usługi AD.

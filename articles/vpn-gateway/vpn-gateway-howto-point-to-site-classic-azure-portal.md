@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845599"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurowanie połączenia typu punkt-lokacja przy użyciu uwierzytelniania certyfikatu (wersja klasyczna)
@@ -191,8 +191,8 @@ Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze
 
 2. Na stronie **Połączenie sieci VPN typu punkt-lokacja** wybierz pakiet pobierania, który odpowiada systemowi operacyjnemu klienta, w którym zostanie zainstalowany:
 
-   * Dla klientów 64-bitowych wybierz pakiet **Klient sieci VPN (64-bitowy)**.
-   * Dla klientów 32-bitowych wybierz pakiet **Klient sieci VPN (32-bitowy)**.
+   * Dla klientów 64-bitowych wybierz pakiet **Klient sieci VPN (64-bitowy)** .
+   * Dla klientów 32-bitowych wybierz pakiet **Klient sieci VPN (32-bitowy)** .
 
    ![Pobieranie pakietu konfiguracji klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 

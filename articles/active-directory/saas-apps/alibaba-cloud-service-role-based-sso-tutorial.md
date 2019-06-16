@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d4b154b8ce55c381f1398c696bc439067dccfab
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bdfd19d9a0e928e26ad6f01ba4b9c3f493aacb0c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899750"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Samouczek: Integracja usługi Azure Active Directory z usługą w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach)
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację firmę Alibaba usługi w chmurze (Role-based SSO)
 
 **Aby dodać firmę Alibaba usługi w chmurze (Role-based SSO) z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -66,7 +66,7 @@ Aby skonfigurować integrację firmę Alibaba usługi w chmurze (Role-based SSO)
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **firmę Alibaba usługi w chmurze (Role-based SSO)**, wybierz opcję **firmę Alibaba usługi w chmurze (Role-based SSO)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
+4. W polu wyszukiwania wpisz **firmę Alibaba usługi w chmurze (Role-based SSO)** , wybierz opcję **firmę Alibaba usługi w chmurze (Role-based SSO)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
 
     ![Usługa w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) na liście wyników](common/search-new-app.png)
 
@@ -282,11 +282,11 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach).
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **firmę Alibaba usługi w chmurze (Role-based SSO)**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **firmę Alibaba usługi w chmurze (Role-based SSO)** .
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **firmę Alibaba usługi w chmurze (Role-based SSO)**.
+2. Na liście aplikacji wybierz **firmę Alibaba usługi w chmurze (Role-based SSO)** .
 
     ![Link firmę Alibaba usługi w chmurze (Role-based SSO) na liście aplikacji](common/all-applications.png)
 
@@ -333,7 +333,7 @@ Po ukończeniu poprzedniego konfiguracje testu firmę Alibaba usługi w chmurze 
 
     ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

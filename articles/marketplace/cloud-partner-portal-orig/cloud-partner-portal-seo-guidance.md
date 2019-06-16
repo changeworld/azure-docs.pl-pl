@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
 ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935151"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Wskazówki dotyczące optymalizacji dla aparatów wyszukiwania w portalu Marketplace platformy Azure
@@ -27,13 +27,13 @@ Ogólnie rzecz biorąc cały tekst pola kategorii i branżach każdego typu i na
 Poniżej przedstawiono najbardziej odpowiednie pola, aby wziąć pod uwagę.
 
  
-|  Pole                   | Ważność | Wskazówki                                                                                            |
+|  Pole                   | Znaczenie | Wskazówki                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
 | Nazwa oferty               |  Wysoka      | Dokładnie lub blisko pełne dopasowanie z usługą search zapytania umożliwia uzyskanie wysokiego szczebla.                       |
 | Nazwa wydawcy           |  Wysoka      | Dokładnie lub blisko pełne dopasowanie z usługą search zapytania umożliwia uzyskanie wysokiego szczebla.                       |
-| Krótki opis        |  Medium    | Podanej nazwy aplikacji i wydawcy nazwy prawie gwarantuje wysokiego szczebla, nie może być najbardziej odpowiednie. W tym przypadku krótki opis jest krytyczny. Zachowaj tekst zwięzły i w punkcie. Słowa kluczowe i oczekiwanego wyszukiwane terminy powinny zostać uwzględnione w najlepszych wyników.  Na przykład "to jest najlepsze punktu sprzedaży detalicznej zainstalowanych w miejscach do w pełni Dynamics 365" jest mniej skuteczna, niż "punktu sprzedaży detalicznej (punktu sprzedaży) for Dynamics 365".  | 
+| Krótki opis        |  Średni    | Podanej nazwy aplikacji i wydawcy nazwy prawie gwarantuje wysokiego szczebla, nie może być najbardziej odpowiednie. W tym przypadku krótki opis jest krytyczny. Zachowaj tekst zwięzły i w punkcie. Słowa kluczowe i oczekiwanego wyszukiwane terminy powinny zostać uwzględnione w najlepszych wyników.  Na przykład "to jest najlepsze punktu sprzedaży detalicznej zainstalowanych w miejscach do w pełni Dynamics 365" jest mniej skuteczna, niż "punktu sprzedaży detalicznej (punktu sprzedaży) for Dynamics 365".  | 
 | Długi opis         |  Małe       | Opis elementu pozwala na bardziej szczegółowo. Najbardziej efektywne opisy są uzasadnione długości i słowa kluczowe są używane.  Opisy do punktu, przy użyciu słów kluczowych będą mogli korzystać więcej niż długi długi tekst. Upewnij się, że klucza warunków, takich jak "IoT", znajdują się w opisie.  |
-| Kategorie produktów       | Medium     |  Kategorie produktów są określone przez kombinację opcji wydawcy i firmy Microsoft. Te kategorie wybierz odpowiednią opcję, aby użytkownicy mogli łatwo znajdować aplikacje prawidłową kategorię. |
+| Kategorie produktów       | Średni     |  Kategorie produktów są określone przez kombinację opcji wydawcy i firmy Microsoft. Te kategorie wybierz odpowiednią opcję, aby użytkownicy mogli łatwo znajdować aplikacje prawidłową kategorię. |
 |  |  |  |
 
 

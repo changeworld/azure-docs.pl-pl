@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61259730"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopiowanie danych do lub z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB przy użyciu usługi Azure Data Factory
@@ -115,7 +115,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość źródła działania kopiowania musi być równa **CosmosDbMongoDbApiSource**. |Yes |
-| filtr | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, pominięcie tego parametru lub przekazać pusty dokument ({}). | Nie |
+| filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, pominięcie tego parametru lub przekazać pusty dokument ({}). | Nie |
 | cursorMethods.project | Określa pól do zwrócenia w dokumentach projekcji. Aby zwrócić wszystkie pola w pasujących dokumentów, Pomiń ten parametr. | Nie |
 | cursorMethods.sort | Określa kolejność, w którym zapytanie zwraca pasujących dokumentów. Zapoznaj się [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |
 | cursorMethods.limit | Określa maksymalną liczbę dokumentów zwracanych przez serwer. Zapoznaj się [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nie | 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe436632eee12157dde2b082a5c77e67e7977cc
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 114d29d11e51209d5ac788ae25413b5b989b84f4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957170"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Samouczek: Integracja usługi Azure Active Directory z platformą Boomi
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację platformy Boomi z usługą Azure AD, musisz doda�
 
 **Aby dodać platformę Boomi z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -237,7 +237,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do platformy Boomi
 
     ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_001.png "Użytkownicy")
 
-3. Kliknij ikonę **+**, aby otworzyć okno dialogowe **Add/Maintain User Roles** (Dodawanie/obsługa ról użytkowników).
+3. Kliknij ikonę **+** , aby otworzyć okno dialogowe **Add/Maintain User Roles** (Dodawanie/obsługa ról użytkowników).
 
     ![Użytkownicy](./media/boomi-tutorial/tutorial_boomi_002.png "Użytkownicy")
 
@@ -264,7 +264,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Boomi w panelu dostępu powinno nastąpić automatyczne zalogowanie do platformy Boomi, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

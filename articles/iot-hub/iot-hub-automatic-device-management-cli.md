@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61322604"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatyczne zarządzanie urządzeniami IoT na dużą skalę przy użyciu wiersza polecenia platformy Azure
@@ -105,7 +105,7 @@ Aby utworzyć konfigurację, użyj następującego polecenia:
 
 * --**Nazwa koncentratora** — nazwy Centrum IoT, w którym zostanie utworzona konfiguracja. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
 
-* --**warunek docelowy** -Podaj warunek docelowy, aby ustalić, urządzeń, które będą objęte przy użyciu tej konfiguracji. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub żądane właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład: `tags.environment='test'` lub `properties.desired.devicemodel='4000x'`. 
+* --**warunek docelowy** -Podaj warunek docelowy, aby ustalić, urządzeń, które będą objęte przy użyciu tej konfiguracji. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub żądane właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.desired.devicemodel='4000x'`. 
 
 * --**priorytet** -dodatnią liczbą całkowitą. W przypadku, gdy co najmniej dwóch konfiguracji są przeznaczone dla tego samego urządzenia, zostaną zastosowane konfiguracji o najwyższej wartości liczbowe dla priorytetu.
 
@@ -176,7 +176,7 @@ az iot hub configuration update --config-id [configuration id] \
 
     * etykiety 
 
-    * priority
+    * priorytet
 
 ## <a name="delete-a-configuration"></a>Usuwanie konfiguracji
 

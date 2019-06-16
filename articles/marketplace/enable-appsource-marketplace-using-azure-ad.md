@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
 ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938082"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory
@@ -38,7 +38,7 @@ Różne [opcje listowania ilości pamięci i stanowią typy](https://docs.micros
 | Maszyna wirtualna | ND | Nie | Nie | Nie |
 | Aplikacje platformy Azure (szablon rozwiązania)  | ND | ND | ND | ND |
 | Aplikacje zarządzane  | ND | ND | ND | Nie |
-| SaaS  | Nie | Yes | Yes | Yes |
+| SaaS  | Nie | Yes | Yes | Tak |
 | Containers  | ND | ND | ND | Nie |
 | Usługi doradcze  | Nie | ND | ND | ND |
 

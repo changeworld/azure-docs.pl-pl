@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726543"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Wprowadzenie do języka R, w języku programowania w usłudze Azure Machine Learning Studio
@@ -930,7 +930,7 @@ outframe
 
 Pierwszy wiersz kodu jest nieco trudne i opisy mogą pomóc Ci zrozumieć jej. Praca ze środka na zewnątrz mamy dysponować następującymi elementami:
 
-1. "**[[**"Operator z argumentem"**1**" wybiera wektor korelacji na spowolnienia od pierwszego elementu listy obiektów KKS.
+1. " **[[** "Operator z argumentem"**1**" wybiera wektor korelacji na spowolnienia od pierwszego elementu listy obiektów KKS.
 2. `do.call()` Funkcja ma zastosowanie `rbind()` nad elementami listy gettotalsize() zwróciło przez `lapply()`.
 3. `data.frame()` Funkcja wymusza traktowanie wyniku zwracany przez `do.call()` do ramkę danych.
 

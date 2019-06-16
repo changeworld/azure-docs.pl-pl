@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956674"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TurboRater
 
@@ -111,7 +111,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z TurboRater, wykonaj
 
        | Środowisko | Adres URL |
        | ---------------| --------------- |
-       | Testuj  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Testowanie  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Na żywo  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
@@ -151,7 +151,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     1. W **nazwa** wprowadź **BSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **BSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >**. Na przykład **BSimon\@contoso.com**.
+    1. W **nazwa_użytkownika** wprowadź **BSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >** . Na przykład **BSimon\@contoso.com**.
 
     1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 

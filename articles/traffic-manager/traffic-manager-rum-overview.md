@@ -3,21 +3,21 @@ title: Pomiary rzeczywistego użytkownika w usłudze Azure Traffic Manager
 description: Wprowadzenie do pomiarów rzeczywistego użytkownika w usłudze Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: fd37ef739522955ae8227db39a41aecf199d65c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbde96f135aa52ada9bb10b47ca81687992e5833
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329585"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070981"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Omówienie pomiarów rzeczywistego użytkownika Menedżera ruchu
 

@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 06/07/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284956"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807525"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Rozwiązywanie problemów z działanie usługi Azure Active Directory rejestruje błędy pakietu zawartości 
 
@@ -39,7 +39,7 @@ Podczas pracy z pakietu zawartości usługi Power BI dla usługi Azure Active Di
 
 Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te błędy.
  
-## <a name="refresh-failed"></a>Niepowodzenie odświeżania 
+## <a name="refresh-failed"></a>Odświeżanie nie powiodło się 
  
 **Jak ten błąd jest udostępniane**: Wyślij wiadomość e-mail z usługi Power BI lub stan niepowodzenia w historii odświeżania. 
 
@@ -47,7 +47,7 @@ Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te 
 | Przyczyna | Jak naprawić |
 | ---   | ---        |
 | Odśwież błędu, który może być spowodowane błędy, jeśli poświadczenia użytkowników, nawiązywania połączenia z pakietem zawartości zostały resetowania, ale nie są aktualizowane w ustawieniach połączenia pakietu zawartości. | W usłudze Power BI, Znajdź zestaw danych, odpowiadający pulpitu nawigacyjnego dzienników aktywności usługi Azure AD (**rejestruje działanie usługi Azure Active Directory**), wybierz harmonogram odświeżania, a następnie wprowadź swoje poświadczenia usługi Azure AD. |
-| Odświeżanie może zakończyć się niepowodzeniem z powodu problemów z danych podstawowych pakietu zawartości. | [Bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Odświeżanie może zakończyć się niepowodzeniem z powodu dużych zestawów danych. | Obecnie platforma Azure AD zawartości pakietu z usługą Power BI może obsługiwać tylko niewielkich zestawów danych (mniej niż 500,00 wierszy) ze względu na pewne ograniczenia dotyczące limitów czasu w usłudze Power BI. Jeśli wystąpią błędy ograniczania przepływności lub odświeżanie zakończy się niepowodzeniem z powodu przekroczenia limitu czasu problemów, to może podejmowana próba pobrania duży zestaw danych. Skróć okres czasu, w zapytaniu i spróbuj ponownie.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Nie można zaktualizować poświadczeń źródła danych 

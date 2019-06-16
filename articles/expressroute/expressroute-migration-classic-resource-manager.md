@@ -2,18 +2,18 @@
 title: 'Migracja sieci wirtualnej z klasycznej do usługi Resource Manager — usługi ExpressRoute: Azure: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Ta strona opisano, jak przeprowadzić migrację do usługi Resource Manager po przeniesieniu obwodu usługi ExpressRoute skojarzonych sieci wirtualnych.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.author: ganesr;cherylmc
+ms.date: 06/13/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 2e33454ac0ee97385386043706f4b8b73090f57a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 9f15431015e847d882e51b8d88c5b8a8c121d0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60363856"
+ms.locfileid: "67115424"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrowanie usługi ExpressRoute skojarzonych sieci wirtualnych z wersji klasycznej do usługi Resource Manager
 
@@ -23,7 +23,7 @@ W tym artykule wyjaśniono, jak przeprowadzić migrację usługi ExpressRoute sk
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Sprawdź, czy masz najnowszą wersję modułów programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+* Sprawdź, czy masz najnowsze wersje modułów programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). Aby zainstalować moduł PowerShell Service Management (który jest wymagany w przypadku klasycznego modelu wdrażania), zobacz [Instalowanie modułu zarządzania usługi programu Azure PowerShell](/powershell/azure/servicemanagement/install-azure-ps).
 * Upewnij się, że użytkownik przejrzał [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
 * Zapoznaj się z informacjami, który znajduje się w obszarze [przenoszenie obwodu usługi ExpressRoute z modelu klasycznego do usługi Resource Manager](expressroute-move.md). Upewnij się, że w pełni rozumiesz limity i ograniczenia.
 * Sprawdź, że obwód jest w pełni funkcjonalne w klasycznym modelu wdrażania.

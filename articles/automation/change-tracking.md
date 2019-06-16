@@ -11,10 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4f917c45030ad70a2ab76fed877bd822d1902f82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927285"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
@@ -36,7 +36,7 @@ Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Wi
 
 Oficjalnie obsługiwane są poniższe dystrybucje systemu Linux. Jednak agenta systemu Linux może być również uruchomić na inne dystrybucje nie na liście. Jeśli nie określono inaczej, wszystkie wersje pomocnicze są obsługiwane w przypadku wszystkich wersji głównych, na liście.  
 
-### <a name="64-bit"></a>64-bitowa
+### <a name="64-bit"></a>64-bitowy
 
 * CentOS 6 i 7
 * Amazon Linux 2017.09
@@ -46,7 +46,7 @@ Oficjalnie obsługiwane są poniższe dystrybucje systemu Linux. Jednak agenta s
 * Ubuntu Linux 14.04 LTS, 16.04 LTS i 18.04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32-bitowa
+### <a name="32-bit"></a>32-bitowy
 
 * CentOS 6
 * Oracle Linux 6
@@ -169,7 +169,7 @@ W poniższej tabeli przedstawiono częstotliwość zbierania danych dla typów z
 | Rejestr Windows | 50 minut |
 | Plik Windows | 30 minut |
 | Plików w systemie Linux | 15 minut |
-| Usługi systemu Windows | 10 sekund na 30 minut</br> Domyślne: 30 minut |
+| Usługi systemu Windows | 10 sekund na 30 minut</br> Wartość domyślna: 30 minut |
 | Demony systemu Linux | 5 minut |
 | Oprogramowanie Windows | 30 minut |
 | Oprogramowania w systemie Linux | 5 minut |
@@ -263,7 +263,7 @@ Kliknięcie zmiany lub zdarzenie, wyświetlenie szczegółowych informacji na te
 
 ![Obraz przedstawiający Szczegóły śledzenia zmian](./media/change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Przeszukiwanie dzienników
+## <a name="search-logs"></a>Dzienniki wyszukiwania
 
 Oprócz szczegółów, które znajdują się w portalu wyszukiwania można wykonać względem dzienników. Za pomocą **Change Tracking** otwarty, kliknij **usługi Log Analytics**, spowoduje to otwarcie **dzienniki** strony.
 

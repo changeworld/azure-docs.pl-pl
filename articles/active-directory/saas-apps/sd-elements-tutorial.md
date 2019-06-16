@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e6deb8b31559b8c5add06f1771cd69df0c1f136
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867549"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Samouczek: Integracja usługi Azure Active Directory z elementami SD
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację SD Elements w usłudze Azure AD, należy dodać S
 
 **Aby dodać SD Elements z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w SD Elements
 
     ![Tworzenie użytkownika testowego SD Elements](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
 
-    a. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    a. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com** .
 
     b. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, na przykład **Britta**.
 
@@ -265,7 +265,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka SD Elements w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze SD Elements, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

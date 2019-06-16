@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: ac56f86bad132f3e00a4b5c2507d65c0722c628c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935489"
 ---
 <a name="go-live"></a>Rozpocznij na żywo
@@ -28,11 +28,11 @@ Ten interfejs API rozpoczyna się proces wypychania aplikacji do środowiska pro
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | Identyfikator wydawcy, oferty pobrać, na przykład `contoso`       |  String       |
 | offerId        | Oferuje identyfikator oferty do pobrania                                   |  String       |
-| wersja interfejsu API    | Najnowszą wersję interfejsu API                                                   |  Date         |
+| api-version    | Najnowszą wersję interfejsu API                                                   |  Date         |
 |  |  |  |
 
 
-<a name="header"></a>Nagłówek
+<a name="header"></a>nagłówek
 ------
 
 |  **Nazwa**       |     **Wartość**       |

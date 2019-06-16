@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059420"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów usługi Apache Hadoop przy użyciu interfejsu API REST platformy Azure
 
@@ -22,9 +22,6 @@ ms.locfileid: "64707340"
 Dowiedz się, jak utworzyć klaster usługi HDInsight przy użyciu szablonu usługi Azure Resource Manager i interfejsu API REST platformy Azure.
 
 Interfejs API REST platformy Azure umożliwia wykonywanie operacji zarządzania w usługach hostowanych na platformie Azure, w tym tworzenia nowych zasobów, takich jak klastry HDInsight.
-
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 > [!NOTE]  
 > Kroki opisane w tej dokumentów użyj [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) narzędzie w celu komunikowania się z interfejsu API REST platformy Azure.
@@ -215,7 +212,7 @@ W tym przykładzie jest używany w krokach w tym dokumencie. Zastąp przykład *
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="log-in-to-your-azure-subscription"></a>Logowanie się do subskrypcji platformy Azure
+## <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do Twojej subskrypcji platformy Azure.
 
 Wykonaj kroki opisane w temacie [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) i nawiąż połączenie z subskrypcją za pomocą `az login` polecenia.
 

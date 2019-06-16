@@ -17,10 +17,10 @@ ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918691"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji dotyczących rozliczeń dla platformy Azure
@@ -71,7 +71,7 @@ Funkcja Czytelnik rozliczenia jest w wersji zapoznawczej i nie obsługuje jeszcz
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Wybierz swoją subskrypcję z [bloku Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure Portal.
 
-1. Wybierz **kontrola dostępu (IAM)**.
+1. Wybierz **kontrola dostępu (IAM)** .
 1. Wybierz **przypisań ról** Aby wyświetlić wszystkie przypisania roli dla tej subskrypcji.
 1. Wybierz **Dodaj przypisanie roli**.
 1. W **roli** listy rozwijanej wybierz **Czytelnik rozliczenia**.

@@ -12,23 +12,24 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2019
+ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: 520961fb4bd126ef878a779c10fb5689b8692c73
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f1e7428bc0665cdd3f981bb9c2e7b1f564598f40
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074252"
 ---
-# <a name="eventstore-service-overview"></a>Omówienie usługi bazy danych EventStore
+# <a name="eventstore-overview"></a>Omówienie bazy danych EventStore
 
 >[!NOTE]
 >Począwszy od usługi Service Fabric w wersji 6.4. interfejsy API bazy danych EventStore są dostępne tylko w przypadku klastrów Windows działających na platformie Azure, tylko. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
 
 ## <a name="overview"></a>Omówienie
 
-Wprowadzona w wersji 6.2, usługa bazy danych EventStore jest opcji monitorowania w usłudze Service Fabric. Bazy danych EventStore zapewnia sposób, aby sprawdzić stan klastra lub obciążeń w danym punkcie w czasie. Bazy danych EventStore jest stanowej usługi Service Fabric, która utrzymuje zdarzenia z klastra. Zdarzenia są udostępniane za pośrednictwem narzędzia Service Fabric Explorer, REST i interfejsów API. Bazy danych EventStore zapytań klastra bezpośrednio po to, aby uzyskać dane diagnostyczne w dowolnej jednostce w klastrze i powinny być używane do pomocy:
+Wprowadzona w wersji 6.2, usługa bazy danych EventStore jest opcji monitorowania w usłudze Service Fabric. Bazy danych EventStore zapewnia sposób, aby sprawdzić stan klastra lub obciążeń w danym punkcie w czasie.
+Bazy danych EventStore jest stanowej usługi Service Fabric, która utrzymuje zdarzenia z klastra. Zdarzenia są udostępniane za pośrednictwem narzędzia Service Fabric Explorer, REST i interfejsów API. Bazy danych EventStore zapytań klastra bezpośrednio po to, aby uzyskać dane diagnostyczne w dowolnej jednostce w klastrze i powinny być używane do pomocy:
 
 * Diagnozuj problemy z tworzenia i testowania lub gdy być może używasz potoku monitorowania
 * Upewnij się, że akcje zarządzania, które są tworzone w klastrze są przetwarzane prawidłowo
@@ -39,7 +40,7 @@ Wprowadzona w wersji 6.2, usługa bazy danych EventStore jest opcji monitorowani
 Aby wyświetlić pełną listę zdarzeń, które są dostępne w bazie danych EventStore, zobacz [zdarzenia usługi Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
 >[!NOTE]
->Począwszy od usługi Service Fabric w wersji 6.2. interfejsy API bazy danych EventStore są obecnie dostępne w klastrach Windows działających na platformie Azure tylko w wersji zapoznawczej. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
+>Począwszy od usługi Service Fabric w wersji 6.4. interfejsy API bazy danych EventStore i środowiska użytkownika są ogólnie dostępne w przypadku klastrów Windows Azure. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
 
 Usługa bazy danych EventStore można wykonywać zapytania, zdarzenia, które są dostępne dla każdej jednostki i typu jednostki w klastrze. Oznacza to, że można wyszukiwać zdarzenia na następujących poziomach:
 * Klastra: zdarzenia specyficzne dla klastra, sama (np. uaktualnienie klastra)
@@ -70,9 +71,21 @@ W [fabricSettings.json w klastrze](service-fabric-cluster-fabric-settings.md)Dod
     ],
 ```
 
-### <a name="azure-cluster"></a>Klaster usługi Azure
+### <a name="azure-cluster-version-65"></a>Klaster usługi Azure w wersji 6.5 +
+Jeśli klastrem platformy Azure pobiera uaktualniony do wersji 6.5 lub nowszej, bazy danych EventStore zostaną automatycznie włączone w klastrze. Aby zrezygnować, należy zaktualizować szablonu klastra z następujących czynności:
 
-W szablonie usługi Azure Resource Manager klastra, można włączyć usługę bazy danych EventStore, wykonując [uaktualnienie konfiguracji klastra](service-fabric-cluster-config-upgrade-azure.md) i dodając następujący kod, można użyć PlacementConstraints umieszczenie replik bazy danych EventStore Usługa na określonego elementu NodeType np. NodeType dedykowany dla usług systemowych. `upgradeDescription` Sekcji konfiguruje uaktualnienia config wyzwalanie ponownego uruchomienia w węzłach. Usuń z sekcji, w innym update.
+* Użyj wersji interfejsu API `2019-03-01` lub nowszej 
+* Dodaj następujący kod do sekcji właściwości w klastrze
+  ```json  
+    "fabricSettings": [
+      …
+    ],
+    "eventStoreEnabled": false
+  ```
+
+### <a name="azure-cluster-version-64"></a>Wersja klastra Azure 6.4
+
+Jeśli używasz wersji 6.4, możesz edytować szablon usługi Azure Resource Manager, aby włączyć usługę bazy danych EventStore. Jest to realizowane przez wykonanie [uaktualnienie konfiguracji klastra](service-fabric-cluster-config-upgrade-azure.md) i dodając następujący kod, umożliwia PlacementConstraints umieścić repliki bazy danych EventStore usługi na określonym NodeType np. NodeType dedykowany dla usług systemu . `upgradeDescription` Sekcji konfiguruje uaktualnienia config wyzwalanie ponownego uruchomienia w węzłach. Usuń z sekcji, w innym update.
 
 ```json
     "fabricSettings": [

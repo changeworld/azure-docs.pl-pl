@@ -1,25 +1,25 @@
 ---
 title: Dzienniki serwera usługi Azure Database for MySQL
-description: W tym artykule opisano dzienników dostępnych w usłudze Azure Database for MySQL i dostępne parametry włączenie rejestrowania różnych poziomów.
+description: W tym artykule opisano dzienniki wolnych zapytań dostępnych w usłudze Azure Database for MySQL i dostępne parametry włączenie rejestrowania różnych poziomów.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/29/2019
+ms.openlocfilehash: 1a8956d40ef30e8d52fbdded3448019e14ab16a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525840"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062407"
 ---
-# <a name="server-logs-in-azure-database-for-mysql"></a>Dzienniki serwera w usłudze Azure Database for MySQL
-W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów. 
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Wolnych zapytań dzienników w usłudze Azure Database for MySQL
+W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
 
 Więcej informacji na temat w dzienniku wolnych zapytań MySQL na ten temat można znaleźć w podręczniku odwołanie MySQL [wolne sekcji dziennika zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 
-## <a name="access-server-logs"></a>Dzienniki dostępu serwera
-Można wyświetlić listę i Pobierz — Azure Database dla MySQL dzienniki serwera przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure.
+## <a name="access-slow-query-logs"></a>Uzyskiwanie dostępu do dzienników wolnych zapytań
+Można wyświetlić listę i Pobierz — Azure Database for MySQL dzienniki wolnych zapytań przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure.
 
 W witrynie Azure portal wybierz usługi Azure Database for MySQL server. W obszarze **monitorowanie** nagłówka, wybierz **dzienniki serwera** strony.
 
@@ -30,8 +30,7 @@ Dzienniki są dostępne przez maksymalnie siedem dni od ich tworzenia. Jeśli ca
 
 Dzienniki zostały obrócone co 24 godziny lub 7 GB, zależnie co nastąpi wcześniej.
 
-
-## <a name="configure-logging"></a>Konfigurowanie rejestrowania 
+## <a name="configure-slow-query-logging"></a>Skonfigurować rejestrowanie wolnych zapytań 
 Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw slow_query_log na wartość ON.
 
 Inne parametry, które można dostosować obejmują:
@@ -51,7 +50,7 @@ Usługa Azure Database for MySQL jest zintegrowany z dzienników diagnostycznych
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od danych wyjściowych metody, pola, znajdujące się i kolejność, w jakiej są wyświetlane mogą się różnić.
 
-| **Właściwość** | **Opis** |
+| **Property** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |

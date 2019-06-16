@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067289"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Konfigurowanie alertów dotyczących metryk usługi Azure Database for PostgreSQL — pojedynczy serwer za pomocą witryny Azure portal
@@ -66,11 +66,11 @@ Można skonfigurować i uzyskać informacje na temat reguł alertów za pomocą:
 
     Wybierz **OK** po zakończeniu.
 
-    ![Grupa akcji](./media/howto-alert-on-metric/10-action-group-type.png)
+    ![grupy akcji](./media/howto-alert-on-metric/10-action-group-type.png)
 
 11. Określ nazwę reguły alertu, opis i ważności.
 
-    ![Grupa akcji](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    ![grupy akcji](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
 12. Wybierz **Utwórz regułę alertu** do utworzenia alertu.
 

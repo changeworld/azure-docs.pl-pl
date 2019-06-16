@@ -10,12 +10,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: d527c4fed9c43e62d815078c049d4d8e6f8a46b7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 04c19c9a8603fee46914eb94b50c4f97e34e9c42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787712"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070211"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -29,10 +29,9 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 |Przybliżona liczba unikatowych|Aby uzyskać informacje, zobacz [przybliżony Count Distinct](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Tryb partii na magazynu wierszy (równy podanemu poziomowi zgodności 150)|Aby uzyskać informacje, zobacz [tryb usługi Batch na magazynu wierszy](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
 | Odnajdowanie i klasyfikacja danych  |Aby uzyskać informacje, zobacz [usługi Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md).|
-| Zadania Elastic Database | Aby uzyskać informacje, zobacz [tworzenie, konfigurowanie i zarządzanie nimi zadań elastycznych](elastic-jobs-overview.md). |
+| Zadania elastycznych baz danych | Aby uzyskać informacje, zobacz [tworzenie, konfigurowanie i zarządzanie nimi zadań elastycznych](elastic-jobs-overview.md). |
 | Zapytania elastyczne | Aby uzyskać informacje, zobacz [omówienie zapytania elastycznego](sql-database-elastic-query-overview.md). |
 | Transakcje elastyczne | [Transakcje rozproszone w bazach danych w chmurze](sql-database-elastic-transactions-overview.md). |
-| Sortowania wystąpienia za pomocą wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Użyj programu PowerShell przy użyciu szablonu usługi Azure Resource Manager, aby utworzyć wystąpienie zarządzane usługi Azure SQL Database](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
 |Zwrotna przydziału pamięci (w trybie wiersza) (równy podanemu poziomowi zgodności 150)|Aby uzyskać informacje, zobacz [zwrotna przydziału pamięci (w trybie wiersza)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | Edytor zapytań w witrynie Azure portal |Aby uzyskać informacje, zobacz [używać edytora zapytań SQL w witrynie Azure portal do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](sql-database-connect-query-portal.md).|
 | R services / usługi machine learning za pomocą pojedynczych baz danych i pul elastycznych |Aby uzyskać informacje, zobacz [usługi Machine Learning w usłudze Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
@@ -42,9 +41,20 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 |SQL Analytics|Aby uzyskać informacje, zobacz [usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Tabela zmiennych odroczone kompilacji (na poziomie zgodności 150)|Aby uzyskać informacje, zobacz [kompilacji odroczone w zmiennej tabeli](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | Wykrywanie zagrożeń za pomocą wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Konfigurowanie wykrywania zagrożeń w usłudze Azure SQL Database, wystąpienia zarządzanego](sql-database-managed-instance-threat-detection.md).|
-| Obsługa strefy czasowej dla wystąpienia zarządzanego|Aby uzyskać więcej informacji, zobacz [strefę czasową w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-timezone.md).|
 | Przezroczyste szyfrowanie danych (TDE) przy użyciu Bring Your Own Key (BYOK) z wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Azure przezroczyste szyfrowanie danych SQL za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault: Bring Your Own Key obsługi](transparent-data-encryption-byok-azure-sql.md).|
 | &nbsp; |
+
+## <a name="june-2019"></a>2019 czerwca
+
+### <a name="service-improvements"></a>Udoskonalenia usługi
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+| 4 rdzenie wirtualne wystąpienia zarządzanego na generacja sprzętu do 5. generacji| Aby uzyskać więcej informacji, zobacz https://aka.ms/four-cores-sql-mi-update. |
+| Wystąpienie zarządzane — Obsługa subskrypcji przy użyciu platformy Azure, miesięczne środki dla subskrybentów programu Visual Studio | Aby uzyskać więcej informacji, zobacz https://aka.ms/sql-mi-visual-studio-subscribers. |
+|Większe limity regionalne dla wystąpienia zarządzanego| Aby uzyskać więcej informacji, zobacz [ograniczenia zasobów regionalnych](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
+| &nbsp; |
+
 
 ## <a name="may-2019"></a>Maja 2019 r
 
@@ -54,6 +64,8 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 | --- | --- |
 |Warstwy usługi w Hiperskali, teraz ogólnie dostępna| Aby uzyskać więcej informacji, zobacz [warstwy usług w Hiperskali dla maksymalnie 100 TB](sql-database-service-tier-hyperscale.md) i [Pobierz o wysokiej wydajności, skalowanie na potrzeby obciążeń bazy danych Azure przy użyciu Hiperskali](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/).|
 |Warstwa bezserwerowe środowisko obliczeniowe, wydana w publicznej wersji zapoznawczej | Aby uzyskać więcej informacji, zobacz [bez użycia serwera bazy danych SQL Database (wersja zapoznawcza)](sql-database-serverless.md).|
+|Obsługa strefy czasowej dla wystąpienia zarządzanego, teraz ogólnie dostępna |Aby uzyskać więcej informacji, zobacz [strefę czasową w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-timezone.md).|
+|Sortowania wystąpienia za pomocą wystąpienia zarządzanego, teraz ogólnie dostępna |Aby uzyskać informacje, zobacz [Użyj programu PowerShell przy użyciu szablonu usługi Azure Resource Manager, aby utworzyć wystąpienie zarządzane usługi Azure SQL Database](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
 | Dla baz danych przy użyciu modelu zakupu opartego na rdzeniach wirtualnych zwiększona stawki dziennika transakcji oraz docelowy operacji We/Wy| Aby uzyskać więcej informacji, zobacz [zasobów limitów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeniach wirtualnych](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) i [zasobów limitów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases).
 | &nbsp; |
 

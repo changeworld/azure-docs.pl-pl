@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f47735a6e41ae14cb439e10803b82c0dbd3e64d7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015283"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115032"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu
 
@@ -84,10 +84,12 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 1. Wybierz plik **01.run experiment.ipynb**, aby otworzyć notes.
 
+1. Jeśli zostanie wyświetlony alert "Jądra nie można odnaleźć", wybierz jądra **3.6 języka Python — Azure ml** (około połowie sposób, w dół na liście) i ustaw jądra.
+
 1. Kliknij przycisk do pierwszej komórki kodu, a następnie wybierz pozycję **Uruchom**.
 
     > [!NOTE]
-    > Komórki kodu mają nawiasy przed nimi. Jeśli nawiasy kwadratowe są puste (__[__), kod nie został uruchomiony. Gdy kod jest uruchomiona, zobaczysz znak gwiazdki (__[*]__). Po zakończeniu kod, liczbą **[1]** pojawia się.  Liczba informuje kolejność, w którym uruchomiono komórki.
+    > Komórki kodu mają nawiasy przed nimi. Jeśli nawiasy kwadratowe są puste ( __[__ ), kod nie został uruchomiony. Gdy kod jest uruchomiona, zobaczysz znak gwiazdki ( __[*]__ ). Po zakończeniu kod, liczbą **[1]** pojawia się.  Liczba informuje kolejność, w którym uruchomiono komórki.
     >
     > Użyj **wprowadź Shift** jako skrót, aby uruchomić komórkę.
 
@@ -95,7 +97,7 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 1. Uruchom drugie komórkę kodu. Jeśli widzisz instrukcjami w celu uwierzytelnienia, skopiuj kod i skorzystaj z linku do logowania. Po zalogowaniu przeglądarce zapamięta tego ustawienia.  
 
-    ![Uwierzytelnij](media/quickstart-run-cloud-notebook/authenticate.png)
+    ![Uwierzytelnianie](media/quickstart-run-cloud-notebook/authenticate.png)
 
 1. Po zakończeniu, liczby komórek __[2]__ pojawia się.  Gdyby trzeba było Zaloguj się, zobaczysz komunikat o stanie pomyślnym uwierzytelnieniu.   Jeśli nie masz do logowania, nie zobaczysz żadnych danych wyjściowych dla tej komórki, tylko numer pojawi się pomyślnie uruchomiono komórki.
 

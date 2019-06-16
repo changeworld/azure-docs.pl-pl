@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: ebed76c82b647d11e34a17ae94edf208929f8c56
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e799e4ae745d2dc2dea91aa0094b5ffb79ae6f77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475257"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063889"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST przy użyciu języka Python
 
@@ -127,7 +127,7 @@ Uwaga `"modelId"` wartość. Będzie potrzebny dla następujących kroków.
 Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wartość i tabel. Wywołaj **modelu — analizowanie** interfejsu API, uruchamiając skrypt w języku Python, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
 
 1. Zastąp `<Endpoint>` przy użyciu punktu końcowego, który został uzyskany z kluczem subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
-1. Zastąp `<File Path>` przy użyciu ścieżki pliku lub adres URL lokalizacji formularza, z którego mają zostać wyodrębnione dane.
+1. Zastąp `<path to your form>` ze ścieżką pliku formularza (na przykład C:\temp\file.pdf).
 1. Zastąp `<modelID>` o identyfikatorze modelu odebrane w poprzedniej sekcji.
 1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: pdf, image/jpeg, image/png.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
@@ -138,7 +138,7 @@ Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wart
     
     # Endpoint URL
     base_url = r"<Endpoint>" + "/formrecognizer/v1.0-preview/custom"
-    file_path = r"<File Path>"
+    file_path = r"<path to your form>"
     model_id = "<modelID>"
     headers = {
         # Request headers

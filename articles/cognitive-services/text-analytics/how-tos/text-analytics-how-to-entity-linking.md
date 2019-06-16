@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231424"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu
@@ -33,35 +33,35 @@ O nazwie rozpoznawanie jednostek (NER) to zdolność do identyfikacji różnych 
 
 W analizy tekstu [w wersji 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
 
-### <a name="language-support"></a>Obsługa języka
+### <a name="language-support"></a>Obsługa języków
 
 Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu odpowiedniej wiedzy w każdym języku. W przypadku usługi entity linking w analizy tekstu, oznacza to każdy język, który jest obsługiwany przez `entities` punktu końcowego połączy się z odpowiedniego korpus Wikipedia, w tym języku. Ponieważ rozmiar korpusy różni się między językami oczekuje się, czy usługi entity linking odwołań w funkcji również będą się różnić.
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Obsługiwane typy dla rozpoznawanie jednostek znaku
 
-| Type  | SubType | Przykład |
+| Typ  | SubType | Przykład |
 |:-----------   |:------------- |:---------|
-| Osoba        | N/D\*         | "Jan", "Billa Gatesa"     |
-| Lokalizacja      | N/D\*         | "Redmond w stanie Waszyngton", "Paryż"  |
-| Organizacja  | N/D\*         | "Microsoft"   |
-| Ilość      | Liczba        | "6", "6"     | 
-| Ilość      | Wartość procentowa    | "50%", "percent pięćdziesiąt"| 
-| Ilość      | Liczba porządkowa       | "2", "drugi"     | 
-| Ilość      | NumberRange   | "od 4 do 8"     | 
-| Ilość      | Wiek           | "90 dni temu" lub "30 lat"    | 
-| Ilość      | Waluta      | "$10.99"     | 
-| Ilość      | Wymiar     | "10 mil", "40 cm"     | 
-| Ilość      | Temperatura   | "stopni 32"    |
-| DateTime      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
-| DateTime      | Date          | "2nd maja 2017", "2017-05-02"   | 
+| Person (Osoba)        | N/D\*         | "Jan", "Billa Gatesa"     |
+| Lokalizacja      | N/D\*         | „Redmond, Washington”, „Paris”  |
+| Organizacja  | N/D\*         | „Microsoft”   |
+| Liczba      | Liczba        | „6”, „six”     | 
+| Liczba      | Wartość procentowa    | „50%”, „fifty percent”| 
+| Liczba      | Liczba porządkowa       | „2nd”, „second”     | 
+| Liczba      | Zakres liczb   | „4 to 8”     | 
+| Liczba      | Wiek           | "90 dni temu" lub "30 lat"    | 
+| Liczba      | Waluta      | „$10,99”     | 
+| Liczba      | Wymiar     | „10 miles”, „40 cm”     | 
+| Liczba      | Temperatura   | „32 degrees”    |
+| DateTime      | N/D\*         | „6:30PM February 4, 2012”      | 
+| DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   | 
 | DateTime      | Time          | "8: 00", "8:00"  | 
-| DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
-| DateTime      | TimeRange     | "18: 00 – 19: 00"     | 
-| DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
-| DateTime      | Zestaw           | "każdy wtorek"     | 
+| DateTime      | Zakres dat     | „May 2nd to May 5th”    | 
+| DateTime      | Zakres czasu     | „6pm to 7pm”     | 
+| DateTime      | Czas trwania      | „1 minute and 45 seconds”   | 
+| DateTime      | Zestaw           | „every Tuesday”     | 
 | DateTime      | Strefa czasowa      |    | 
 | Adres URL           | N/D\*         | "https:\//www.bing.com"    |
-| Poczta e-mail         | N/D\*         | "support@contoso.com" |
+| Email         | N/D\*         | "support@contoso.com" |
 
 \* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.  Wszystkie wymienione typy obsługiwane jednostki są dostępne tylko w przypadku angielski, chiński uproszczony, francuskim, niemieckim i hiszpańskim językach.
 
@@ -109,7 +109,7 @@ Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 10
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
-## <a name="step-3-view-results"></a>Krok 3. Wyświetl wyniki
+## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
 
 Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 

@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 2a02b56c2fa0f99166cfde0f0089273ed2af4cb9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073207"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii iC# 
 
@@ -61,7 +61,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć korzystanie z dwóch trybó
 
 2. Utwórz zmienne dla swój klucz subskrypcji i punktu końcowego usługi. Poniżej przedstawiono identyfikatory URI, można użyć do wykrywania anomalii. Te będą dołączane do punktu końcowego usługi później, aby utworzyć interfejs API adresów URL żądania.
 
-    |Metoda wykrywania  |URI  |
+    |Metoda wykrywania  |Identyfikator URI  |
     |---------|---------|
     |Wykrywanie usługi Batch    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |Wykrywanie na najnowszy punkt danych     | `/anomalydetector/v1.0/timeseries/last/detect`        |

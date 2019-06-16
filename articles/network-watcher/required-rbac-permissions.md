@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
 ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685696"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Uprawnienia kontroli dostępu opartej na rolach, trzeba używać możliwościach usługi Network Watcher
@@ -33,14 +33,14 @@ Kontrola dostępu oparta na rolach na platformie Azure (RBAC) umożliwia przypis
 | Microsoft.Network/networkWatchers/write                             | Utwórz lub zaktualizuj usługi network watcher                             |
 | Microsoft.Network/networkWatchers/delete                            | Usunąć obserwatora sieciowego                                       |
 
-## <a name="nsg-flow-logs"></a>Dzienniki przepływów sieciowych grup zabezpieczeń
+## <a name="nsg-flow-logs"></a>Dzienniki przepływu sieciowych grup zabezpieczeń
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Konfiguruj przepływ dziennika                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Kwerenda o stan dziennika przepływu                                    |
 
-## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniem
+## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniami
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |

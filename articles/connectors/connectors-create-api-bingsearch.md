@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60952667"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Znajdź wiadomości za pomocą wyszukiwania w usłudze Bing i Azure Logic Apps
@@ -89,7 +89,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
    ![Dodaj akcję](./media/connectors-create-api-bing-search/add-action.png)
 
    Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. 
-   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
 
 3. W polu wyszukiwania wprowadź "Wyszukiwanie Bing" jako filtr.
 Z listy akcji wybierz akcję, którą chcesz.

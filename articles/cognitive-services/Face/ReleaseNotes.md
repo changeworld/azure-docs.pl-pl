@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: 63f705061db7c89a80578e741d02ab8f8b1041c2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a7667f94d3f4dea2901c4b4b0e2b2c893b9f535e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917095"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074095"
 ---
 # <a name="face-api-release-notes"></a>Informacje o wersji interfejsu API rozpoznawania twarzy
 
 Ten artykuł odnosi się do usługi interfejsu API rozpoznawania twarzy w wersji 1.0.
+
+### <a name="release-changes-in-june-2019"></a>Zmiany wersji w czerwcu 2019 r
+
+* Dodano nowy model wykrywania twarzy z polepszenia dokładności na małe, Wyświetl bocznych, zamknięte i rozmyty twarzy. Używać go za pośrednictwem [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) i [Osoba LargePersonGroup — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) przez podanie nowej nazwy modelu wykrywania twarzy `detection_02` w `detectionModel` parametru. Więcej szczegółów w [jak określić model wykrywania](Face-API-How-to-Topics/specify-detection-model.md).
 
 ### <a name="release-changes-in-april-2019"></a>Zmiany wersji w kwietniu 2019 r
 

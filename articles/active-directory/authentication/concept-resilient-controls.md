@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414957"
+ms.locfileid: "67113488"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -37,7 +37,7 @@ Niniejszy dokument zawiera wskazówki dotyczące strategii wiadomość organizac
 Istnieją cztery najważniejsze wnioski, w tym dokumencie:
 
 * Należy unikać blokowania administratora za pomocą kont dostępu awaryjnego.
-* Implementowanie uwierzytelniania Wieloskładnikowego przy użyciu dostępu warunkowego (CA), zamiast usługi MFA na użytkownika.
+* Implementowanie uwierzytelniania Wieloskładnikowego przy użyciu dostępu warunkowego (CA), a nie usługi MFA na użytkownika.
 * Eliminowanie blokady użytkownika za pomocą wielu kontrolek dostępu warunkowego (CA).
 * Eliminowanie blokady użytkownika, aprowizując wielu metod uwierzytelniania lub odpowiedniki dla każdego użytkownika.
 
@@ -109,7 +109,7 @@ Opis usługi ekspozycji podczas przerw w działaniu pozwala zmniejszyć ryzyko i
 
 #### <a name="microsoft-recommendations"></a>Zalecenia firmy Microsoft
 
-Zasady dostępu warunkowego awaryjny **zasady wyłączone** , pomija formantów opartych na ryzykach lub na podstawie urządzeń usługi Azure MFA, MFA innych firm. Następnie gdy organizacja postanawia aktywować plan awaryjny, Administratorzy mogą włączyć zasady i wyłączyć regularne zasad opartych na kontroli.
+Awaryjny zasady dostępu warunkowego są **zasady wyłączone** , pomija formantów opartych na ryzykach lub na podstawie urządzeń usługi Azure MFA, MFA innych firm. Następnie gdy organizacja postanawia aktywować plan awaryjny, Administratorzy mogą włączyć zasady i wyłączyć regularne zasad opartych na kontroli.
 
 >[!IMPORTANT]
 > Wyłączanie zasad, które wymuszają zabezpieczeń użytkowników, nawet tymczasowo spowoduje obniżenie poziomu bezpieczeństwa gdy plan awaryjny są używane.
@@ -268,5 +268,5 @@ Jeśli Twoja organizacja korzysta z zasad starszej wersji usługi MFA na użytko
 * [Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowe](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Przewodnik wdrażania funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Wskazówki dotyczące haseł — badań firmy Microsoft](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Jakie są warunki dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [Jakie są warunki w usłudze Azure Active Directory dostępu warunkowego?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

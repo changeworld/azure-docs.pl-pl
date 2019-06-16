@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: fa15a91a6b82a8858bf46a08e8a9dbe11a51d8d1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900036"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Brightidea
 
@@ -56,7 +56,7 @@ Aby skonfigurować integrację aplikacji Brightidea z usługą Azure AD, musisz 
 
 **Aby dodać aplikację Brightidea z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -145,7 +145,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea
 
 1. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Brightidea przy użyciu poświadczeń administratora.
 
-2. Aby uzyskać dostęp do funkcji logowania jednokrotnego w systemie Brightidea, wybierz pozycję **Enterprise Setup (Konfiguracja przedsiębiorstwa)** -> **kartę Authentication (Uwierzytelnianie)**. Zobaczysz dwie karty podrzędne: Auth Selection (Wybór uwierzytelniania) i SAML Profiles (Profile SAML).
+2. Aby uzyskać dostęp do funkcji logowania jednokrotnego w systemie Brightidea, wybierz pozycję **Enterprise Setup (Konfiguracja przedsiębiorstwa)**  -> **kartę Authentication (Uwierzytelnianie)** . Zobaczysz dwie karty podrzędne: Auth Selection (Wybór uwierzytelniania) i SAML Profiles (Profile SAML).
 
     ![Konfiguracja aplikacji Brightidea](./media/brightidea-tutorial/configure1.png)
 
@@ -237,7 +237,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Brightidea na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Brightidea, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

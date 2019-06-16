@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: aljo, subramar
 ms.openlocfilehash: e011554e61411fddca034f024c30c2270593e07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772539"
 ---
 # <a name="resource-governance"></a>Nadzór nad zasobami
@@ -58,7 +58,7 @@ Istnieją dwie sytuacje, w których inne procesy mogą będą konkurować o proc
 
 * *Łączenie usług zarządzanych i niezarządzanych i kontenery*: Użytkownik tworzy usługi bez żadnych nadzór nad zasobami określone, środowisko uruchomieniowe uznaje korzysta z nie zasobów i można umieścić w węźle, w tym przykładzie. W takim przypadku ten nowy proces zużywa skutecznie niektóre Procesora kosztem usług, które zostały już uruchomione w węźle. Istnieją dwa rozwiązania tego problemu. Nie Mieszaj usług zarządzanych i niezarządzanych, w tym samym klastrze, albo użyj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) tak, że te dwa typy usług nie znajdą się na tym samym zestawie węzłów.
 
-* *Po uruchomieniu inny proces na węźle, poza usługi Service Fabric (na przykład usługa systemu operacyjnego)*: W takiej sytuacji proces poza usługi Service Fabric również twierdzi dla Procesora z istniejącymi usługami. Rozwiązanie tego problemu jest skonfigurować węzła zdolności produkcyjnych poprawnie kontu obciążenie systemu operacyjnego, jak pokazano w następnej sekcji.
+* *Po uruchomieniu inny proces na węźle, poza usługi Service Fabric (na przykład usługa systemu operacyjnego)* : W takiej sytuacji proces poza usługi Service Fabric również twierdzi dla Procesora z istniejącymi usługami. Rozwiązanie tego problemu jest skonfigurować węzła zdolności produkcyjnych poprawnie kontu obciążenie systemu operacyjnego, jak pokazano w następnej sekcji.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Konfiguracja klastra umożliwiające zarządzanie zasobami
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbdccf3b7a3ba1b8e55befa0fdc24eeff3e403da
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 315aba8ac8617f8bf2db71784ec0f9a8dec66cf7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782933"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108364"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpią błędy podczas uzyskiwania dostępu do opublikowanej aplikacji lub publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji programu Microsoft Azure AD działa prawidłowo:
@@ -91,7 +91,7 @@ Jeśli wystąpi błąd lub problem z aplikacji serwera Proxy Azure AD, nie ma na
 * [Włącz serwer Proxy aplikacji usługi Azure Active Directory](application-proxy-add-on-premises-application.md)
 * [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-add-on-premises-application.md)
 * [Włącz logowanie jednokrotne](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Włączanie dostępu warunkowego](application-proxy-integrate-with-sharepoint-server.md)
+* [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

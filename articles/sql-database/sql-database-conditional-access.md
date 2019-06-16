@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/29/2019
-ms.openlocfilehash: 79d15a46affb2a6b7159ba080d4235073c59919c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b2a4a8f7de7e23997b2d8ba0c1c35dfd97f2541
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61413687"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118762"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) przy użyciu usługi Azure SQL Database i Data Warehouse  
 
@@ -34,13 +34,13 @@ Poniższe kroki pokazują sposób konfigurowania bazy danych SQL do wymuszania z
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurowanie urzędu certyfikacji dla bazy danych/magazyn danych Azure SQL  
 1. Zaloguj się do portalu, wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **dostępu warunkowego**. Aby uzyskać więcej informacji, zobacz [informacje techniczne dotyczące usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-   ![w bloku dostępu warunkowego](./media/sql-database-conditional-access/conditional-access-blade.png) 
+   ![W bloku dostępu warunkowego](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2. W **zasady dostępu warunkowego** bloku kliknij **nowe zasady**, podaj nazwę, a następnie kliknij przycisk **reguły**.  
-3. W obszarze **przypisania**, wybierz opcję **użytkowników i grup**, sprawdź **Wybieranie użytkowników i grup**, a następnie wybierz użytkownika lub grupy, aby dostęp warunkowy. Kliknij przycisk **wybierz**, a następnie kliknij przycisk **gotowe** aby zaakceptować wybór.  
+3. W obszarze **przypisania**, wybierz opcję **użytkowników i grup**, sprawdź **Wybieranie użytkowników i grup**, a następnie wybierz użytkownika lub grupy dla dostępu warunkowego. Kliknij przycisk **wybierz**, a następnie kliknij przycisk **gotowe** aby zaakceptować wybór.  
    ![Wybierz użytkowników i grupy](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
-4. Wybierz **aplikacje w chmurze**, kliknij przycisk **Wybierz aplikacje**. Możesz wyświetlać wszystkie aplikacje dostępne dla dostępu warunkowego. Wybierz **usługi Azure SQL Database**, kliknij u dołu **wybierz**, a następnie kliknij przycisk **gotowe**.  
+4. Wybierz **aplikacje w chmurze**, kliknij przycisk **Wybierz aplikacje**. Zobaczysz wszystkie aplikacje dostępne dla dostępu warunkowego. Wybierz **usługi Azure SQL Database**, kliknij u dołu **wybierz**, a następnie kliknij przycisk **gotowe**.  
    ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
    Jeśli nie możesz znaleźć **usługi Azure SQL Database** wymienione w poniższym zrzucie ekranu trzeci, wykonaj następujące czynności:   
    - Zaloguj się do swojego wystąpienia bazy danych/magazyn danych SQL Azure przy użyciu narzędzia SSMS przy użyciu konta administratora usługi AAD.  

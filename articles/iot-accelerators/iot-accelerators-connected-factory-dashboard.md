@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: 05befc72f512f502456f798f25b6c72571451363
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82045ddcc204fe369b7330fe9b3c2a8cadd56d88
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450984"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067934"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Używanie funkcji na pulpicie nawigacyjnym akcelerator rozwiązania połączonej fabryki
 
@@ -42,7 +42,7 @@ Można filtrować dane wyświetlane na pulpicie nawigacyjnym albo w **lokalizacj
 
 ## <a name="browse-an-opc-ua-server"></a>Przeglądanie serwera OPC UA
 
-Podczas wdrażania akceleratora rozwiązania automatycznie aprowizujesz zestaw symulowanych serwerów OPC UA, które można przeglądać z poziomu pulpitu nawigacyjnego. Symulowane serwery ułatwiają eksperymentowanie z akceleratora rozwiązań bez konieczności wdrażania serwerów rzeczywistych. Jeśli chcesz połączyć prawdziwy serwer OPC UA z rozwiązaniem, zobacz [łączenie urządzenia OPC UA do akcelerator rozwiązania połączonej fabryki](iot-accelerators-connected-factory-gateway-deployment.md) samouczka.
+Podczas wdrażania akceleratora rozwiązania automatycznie aprowizujesz zestaw symulowanych serwerów OPC UA, które można przeglądać z poziomu pulpitu nawigacyjnego. Symulowane serwery ułatwiają eksperymentowanie z akceleratora rozwiązań bez konieczności wdrażania serwerów rzeczywistych.
 
 1. Kliknij przycisk **ikonę przeglądarki** na pasku nawigacyjnym pulpitu nawigacyjnego:
 
@@ -111,6 +111,5 @@ Gdy wszystko będzie gotowe, możesz usunąć akcelerator rozwiązań z subskryp
 
 Teraz, kiedy został wdrożony akcelerator rozwiązania, który działa, możesz kontynuować poznawanie akceleratorów rozwiązań IoT, czytając następujące artykuły:
 
-* [Połączone Przewodnik po akceleratorze rozwiązań fabryki](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Podłączanie urządzenia do akceleratora rozwiązania połączonej fabryki](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Konfigurowanie akcelerator rozwiązania połączonej fabryki](iot-accelerators-connected-factory-configure.md)
 * [Uprawnienia w witrynie azureiotsolutions.com](iot-accelerators-permissions.md)

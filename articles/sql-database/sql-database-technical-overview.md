@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073612"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
@@ -39,11 +39,11 @@ Poniższa ilustracja przedstawia te opcje wdrażania:
 
 Usługa SQL Database współdzieli swój kod podstawowy z [aparatem bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. Aby uzyskać informacje dotyczące nowych możliwości w miarę ich publikowania, zobacz:
 
-- **[Plan usługi Azure SQL Database](https://azure.microsoft.com/roadmap/?category=databases)**:
+- **[Plan usługi Azure SQL Database](https://azure.microsoft.com/roadmap/?category=databases)** :
 
   Miejsce, aby dowiedzieć się, co nowego i co będzie dalej.
 
-- **[Blog usługi Azure SQL Database](https://azure.microsoft.com/blog/topics/database)**:
+- **[Blog usługi Azure SQL Database](https://azure.microsoft.com/blog/topics/database)** :
 
   Miejsce, gdzie blogu elementów członkowskich, temat wiadomości bazy danych SQL i funkcje zespołu produktu SQL Server.
 
@@ -110,20 +110,20 @@ Strefy dostępności platformy Azure jest play na problem wysokiej dostępności
 
 W rzeczywistości, Umowa dotycząca poziomu usług platformy Azure w branży wiodących 99,99% dostępności [(SLA)](https://azure.microsoft.com/support/legal/sla/), obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24/7. Platforma Azure w pełni zarządza każdej bazy danych i gwarantuje brak utraty danych i wysoki odsetek dostępność danych. Platforma Azure automatycznie obsługuje stosowanie poprawek, tworzenie kopii zapasowych, replikację, wykrywanie błędów, bazowe potencjalne awarie sprzętu, oprogramowania lub sieci, wdrażanie poprawek usterek, przełączanie w tryb failover, uaktualnianie bazy danych oraz inne zadania konserwacji. Dostępność w warstwie Standardowa jest osiągana przez oddzielenie warstw obliczeń i magazynu. Premium dostępność jest osiągana integracji zasobów obliczeniowych i magazynu na jednym węźle wydajności, a następnie wdrażania technologii podobne do zawsze włączonych grup dostępności w sposób niewidoczny. Aby uzyskać pełne omówienie możliwości wysokiej dostępności usługi Azure SQL Database, zobacz [dostępności bazy danych SQL](sql-database-high-availability.md). Ponadto usługa SQL Database oferuje wbudowane funkcje [zapewnienia ciągłości działalności biznesowej i globalnej skalowalności](sql-database-business-continuity.md), takie jak:
 
-- **[Automatyczne kopie zapasowe](sql-database-automated-backups.md)**:
+- **[Automatyczne kopie zapasowe](sql-database-automated-backups.md)** :
 
   SQL Database automatycznie wykonuje pełne, różnicowe kopie zapasowe oraz kopie zapasowe dziennika transakcji baz danych Azure SQL Database umożliwia przywracanie do dowolnego punktu w czasie. Dla pojedynczych baz danych i baz danych w puli można skonfigurować bazy danych SQL do przechowywania tworzenia pełnych kopii zapasowych do magazynu platformy Azure w celu długoterminowego przechowywania kopii zapasowych. Dla wystąpienia zarządzanego można również wykonać kopie zapasowe tylko do kopiowania długoterminowego przechowywania kopii zapasowych.
 
-- **[W momencie przywracania](sql-database-recovery-using-backups.md)**:
+- **[W momencie przywracania](sql-database-recovery-using-backups.md)** :
 
   Wszystkich opcjach wdrażania bazy danych SQL Database obsługuje odzyskiwanie do dowolnego punktu w czasie w okresie przechowywania automatycznych kopii zapasowych dla dowolnej bazy danych Azure SQL.
-- **[Aktywna replikacja geograficzna](sql-database-active-geo-replication.md)**:
+- **[Aktywna replikacja geograficzna](sql-database-active-geo-replication.md)** :
 
   Pojedynczą bazę danych i baz danych w puli pozwala na skonfigurowanie maksymalnie czterech odczytu pomocniczych baz danych w jednym centrów danych platformy Azure w tej samej lub w globalnie rozproszonych.  Na przykład, jeśli masz aplikację SaaS z bazą danych katalogu charakteryzującą się dużą liczbą równoczesnych transakcji tylko do odczytu, włącz aktywną replikację geograficzną, aby umożliwić globalne skalowanie odczytu i pozbyć się wąskich gardeł w podstawowej bazie danych, spowodowanych obciążeniami odczytu. Dla wystąpienia zarządzanego przy użyciu grup automatyczny tryb failover.
-- **[Automatyczny tryb failover grupy](sql-database-auto-failover-group.md)**:
+- **[Automatyczny tryb failover grupy](sql-database-auto-failover-group.md)** :
 
   Wszystkich opcjach wdrażania bazy danych SQL Database umożliwiają używanie grupy trybu failover, aby włączyć wysoką dostępność i równoważenie obciążeń w skali globalnej, w tym przezroczystą replikację geograficzną i tryb failover dla dużych zestawów baz danych, pul elastycznych i wystąpienia zarządzanego. Grupy trybu failover umożliwiają tworzenie globalnie rozproszonych aplikacji SaaS przy minimalnych nakładach na administrację obciążenie opuszczania wszystkich złożonego monitorowania, routing i organizację trybu failover do usługi SQL Database.
-- **[Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)**:
+- **[Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)** :
 
   SQL Database umożliwia aprowizowanie — wersja premium lub krytyczny biznes lub pul elastycznych w wielu strefach dostępności. Ponieważ te bazy danych oraz elastyczne pule mają wiele nadmiarowych replik zapewniających wysoką dostępność, umieszczenie tych replik w wielu strefach dostępności zapewnia wyższą niezawodność, w tym możliwość automatycznego odzyskania po awarii w skali centrum danych bez utraty danych.
 
@@ -191,16 +191,16 @@ Usługa SQL Database jest poddawana regularnym inspekcjom i ma certyfikat kilku 
 
 Dzięki usłudze SQL Database tworzenie i konserwowanie aplikacji jest łatwiejsze i bardziej produktywne. Usługa SQL Database pozwala Ci skoncentrować się na tym, co robisz najlepiej: tworzeniu wspaniałych aplikacji. W usłudze SQL Database możesz zarządzać i projektować, korzystając z narzędzi i umiejętności, które już masz.
 
-- **[Witryna Azure portal](https://portal.azure.com/)**:
+- **[Witryna Azure portal](https://portal.azure.com/)** :
 
   Aplikacja sieci web do zarządzania wszystkich usług platformy Azure
-- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**:
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** :
 
   Bezpłatna, dostępna do pobrania aplikacja kliencka do zarządzania dowolną infrastrukturą SQL — od programu SQL Server do usługi SQL Database
-- **[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
+- **[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** :
 
   Bezpłatna, dostępna do pobrania aplikacja kliencka do projektowania relacyjnych baz danych programu SQL Server, bazy danych Azure SQL, pakiety usług Integration Services, modele danych usług Analysis Services i raporty usług Reporting Services.
-- **[Visual Studio Code](https://code.visualstudio.com/docs)**:
+- **[Visual Studio Code](https://code.visualstudio.com/docs)** :
 
   Edytor kodu bezpłatny, dostępny do pobrania, typu open source dla Windows, macOS i Linux obsługujący rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace) do wykonywania zapytań programu Microsoft SQL Server, usługi Azure SQL Database i SQL Data Warehouse.
 

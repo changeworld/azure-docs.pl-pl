@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
 ms.openlocfilehash: 4da82b2f6aaa3fc664d2e91b80722329533b0cd0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938659"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Pobieranie identyfikatora URI sygnatury dostępu współdzielonego dla obrazu maszyny Wirtualnej
@@ -88,7 +88,7 @@ Wykonaj następujące kroki, aby wygenerować identyfikator URI sygnatury dostę
 
 1. Pobrać i zainstalować program [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 2. Otwórz Eksploratora, a następnie na pasku menu po lewej stronie, kliknij pozycję **Dodaj konto** ikony.  **Łączenie z usługą Azure Storage** zostanie wyświetlone okno dialogowe.
-3. Wybierz pozycję **Dodaj konto platformy Azure**, a następnie kliknij pozycję **Zaloguj się...**.  Kontynuuj czynności wymagane do logowania się do konta platformy Azure.
+3. Wybierz pozycję **Dodaj konto platformy Azure**, a następnie kliknij pozycję **Zaloguj się...** .  Kontynuuj czynności wymagane do logowania się do konta platformy Azure.
 4. W lewym **Explorer** okienko, przejdź do swojej **kont magazynu** i rozwiń ten węzeł.
 5. Kliknij prawym przyciskiem myszy na wirtualny dysk twardy i wybierz **Uzyskaj sygnaturę dostępu udziału** z menu kontekstowego. 
 

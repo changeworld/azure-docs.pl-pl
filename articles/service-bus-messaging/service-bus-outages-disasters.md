@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
 ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589741"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolacji aplikacji w ramach usługi Service Bus wyłączeń i awarii
@@ -27,7 +27,7 @@ Po awarii jest zdefiniowany jako trwałą utratę jednostki skalowania usługi S
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Ochrona przed wyłączeń i awarii — usługi Service Bus w warstwie Premium
 Wysoka dostępność i odzyskiwanie awaryjne pojęcia wbudowanych warstwy usługi Azure Service Bus w warstwie Premium, zarówno w tym samym regionie (przy użyciu stref dostępności) i w różnych regionach (za pośrednictwem Geo-Disaster Recovery).
 
-### <a name="geo-disaster-recovery"></a>Geograficzne odzyskiwanie po awarii
+### <a name="geo-disaster-recovery"></a>Odzyskiwanie po awarii geograficznie
 
 Service Bus w warstwie Premium obsługuje odzyskiwanie po awarii geograficznie, na poziomie przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii geograficznej usługi Azure Service Bus](service-bus-geo-dr.md). Funkcja odzyskiwania po awarii, dostępne dla [jednostki SKU Premium](service-bus-premium-messaging.md) tylko implementuje odzyskiwanie po awarii metadane i opiera się na przestrzeni nazw odzyskiwania po awarii podstawowego i pomocniczego.
 

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 06/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e875108e0349c0ab08a7217074e2afe23bcacc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 79718b14210bfdf139bca76db91c57c38a791434
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052252"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu urządzenia OAuth 2.0
 
@@ -31,9 +31,11 @@ ms.locfileid: "65544923"
 Obsługuje platformy tożsamości firmy Microsoft [przyznawania kodu urządzenia](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), co pozwala użytkownikom na logowanie się do ograniczonych danych wejściowych urządzeń, takich jak telewizor smart TV, urządzenia IoT lub drukarki.  Aby włączyć ten przepływ, do urządzenia przypisano użytkownika odwiedź strony sieci Web w przeglądarce na innym urządzeniu, aby zalogować się.  Gdy użytkownik się zaloguje, urządzenie jest w stanie uzyskiwanie tokenów dostępu i tokenów odświeżania, zgodnie z potrzebami.  
 
 > [!IMPORTANT]
-> W tej chwili punktu końcowego platformy tożsamości firmy Microsoft obsługuje przepływ urządzenia tylko dla dzierżaw usługi Azure AD, ale nie osobistych kont.  Oznacza to, że punkt końcowy skonfigurowany jako dzierżawca, należy użyć lub `organizations` punktu końcowego.  
+> W tej chwili punktu końcowego platformy tożsamości firmy Microsoft obsługuje przepływ urządzenia tylko dla dzierżaw usługi Azure AD, ale nie osobistych kont.  Oznacza to, że punkt końcowy skonfigurowany jako dzierżawca, należy użyć lub `organizations` punktu końcowego.  Ta funkcja zostanie wkrótce włączona. 
 >
 > Konta osobiste, które są zaproszeni do dzierżawy usługi Azure AD będzie używać grant flow urządzenia, ale tylko w kontekście dzierżawy.
+>
+> Jako dodatkowa Uwaga `verification_uri_complete` pole odpowiedzi nie jest dołączony lub w tej chwili obsługiwane.  
 
 > [!NOTE]
 > Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy usługi Azure Active Directory i funkcji. Aby ustalić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
@@ -77,8 +79,7 @@ Odpowiedź oznaczająca Powodzenie będzie obiektem JSON zawierającym wymagane 
 | ---              | --- | --- |
 |`device_code`     | String | Długi ciąg używany do sprawdzenia sesji między klientem a serwerem autoryzacji. Klient używa tego parametru do wysłania żądania tokenu dostępu z serwera autoryzacji. |
 |`user_code`       | String | Krótkiego ciągu widocznym dla użytkownika, który jest używany do identyfikowania sesji na urządzeniach pomocniczych.|
-|`verification_uri`| URI | Identyfikator URI, użytkownik powinien przejdź do widoku `user_code` Aby móc się zalogować. |
-|`verification_uri_complete`| URI | Identyfikator URI, który łączy `user_code` i `verification_uri`, który jest używany do transmisji tekstowej dla użytkownika (na przykład za pośrednictwem połączenia Bluetooth na urządzeniu lub za pomocą kodu QR).  |
+|`verification_uri`| Identyfikator URI | Identyfikator URI, użytkownik powinien przejdź do widoku `user_code` Aby móc się zalogować. |
 |`expires_in`      | int | Liczba sekund przed `device_code` i `user_code` wygaśnie. |
 |`interval`        | int | Liczba sekund, które klient powinien upłynąć między żądaniami sondowania. |
 | `message`        | String | Ciąg czytelny dla człowieka z instrukcjami dla użytkownika. To może być lokalizowana umieszczając **parametr zapytania** w żądaniu formularza `?mkt=xx-XX`, napełniania w kodzie kultury odpowiedni język. |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61345758"
 ---
 # <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
@@ -139,7 +139,7 @@ Zestaw danych to silnie typizowany parametr oraz jednostki, do której można po
 
 Połączona usługa to również silnie typizowany parametr zawierający informacje o połączeniu z magazynu danych lub środowiskiem obliczeniowym. Jest również jednostki, do której można ponownie użyć lub odwołania.
 
-### <a name="control-flows"></a>Przepływów sterowania
+### <a name="control-flows"></a>Przepływy sterowania
 Przepływów sterowania organizowanie działań potoku, które obejmują tworzenie łańcuchów działań w sekwencję, rozgałęzienia, parametry są zdefiniowane na poziomie potoku oraz argumenty przekazywane podczas wywołania potoku na żądanie lub przy użyciu wyzwalacza. Przepływów sterowania obejmują również przekazywanie stanów niestandardowych oraz tworzenie pętli kontenerów (to znaczy Iteratory foreach).
 
 

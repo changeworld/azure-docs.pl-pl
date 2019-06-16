@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 8ab24d478efa0d0006cff618d7760d4396d0e45e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495295"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069248"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Samouczek: wyodrębnianie danych o formacie swobodnym za pomocą jednostki Pattern.any
 
@@ -65,24 +65,20 @@ Różna długość zawiera wyrazy, które mogą wprowadzać usługę LUIS w bł�
 |{FormName} is published in French[?] (Czy {Nazwa_formularza} jest publikowany w języku francuskim [?])|
 
 ## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Wykonaj następujące czynności:
+1. Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
+1. W [portal usługi LUIS](https://www.luis.ai)na **Moje aplikacje** strony, zaimportuj plik JSON do nowej aplikacji.
 
-2. Zaimportuj plik JSON do nowej aplikacji.
-
-3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
+1. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
 ## <a name="add-example-utterances"></a>Dodawanie przykładowych wypowiedzi 
-Usuń wstępnie utworzoną jednostkę keyPhrase, jeśli jest trudna do utworzenia, i oznacz etykietą jednostkę FormName (Nazwa_formularza). 
 
 1. Wybierz pozycję **Build** (Kompiluj) na górnym pasku nawigacyjnym i wybierz pozycję **Intents** (Intencje) na lewym pasku nawigacyjnym.
 
-2. Z listy intencji wybierz pozycję **FindForm** (Znajdź formularz).
+1. Z listy intencji wybierz pozycję **FindForm** (Znajdź formularz).
 
-3. Dodaj przykładowe wypowiedzi:
+1. Dodaj przykładowe wypowiedzi:
 
     |Przykładowa wypowiedź|
     |--|
@@ -94,13 +90,13 @@ Usuń wstępnie utworzoną jednostkę keyPhrase, jeśli jest trudna do utworzeni
     Bez jednostki Pattern.any usługa LUIS może mieć trudność ze zrozumieniem, gdzie kończy się tytuł formularza ze względu na wiele różnych nazw formularzy.
 
 ## <a name="create-a-patternany-entity"></a>Tworzenie jednostki Pattern.any
-Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko we wzorcu, ponieważ wzorzec oznacza początek i koniec jednostki. Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](luis-concept-patterns.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem. 
+Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko we wzorcu, ponieważ wzorzec oznacza początek i koniec jednostki.  
 
 1. Wybierz pozycję **Entities** (Jednostki) na lewym pasku nawigacyjnym.
 
-2. Wybierz polecenie **Create new entity** (Utwórz nową jednostkę), wprowadź nazwę `FormName` i wybierz jednostkę **Pattern.any** jako typ. Wybierz pozycję **Done** (Gotowe). 
+1. Wybierz polecenie **Create new entity** (Utwórz nową jednostkę), wprowadź nazwę `FormName` i wybierz jednostkę **Pattern.any** jako typ. Wybierz pozycję **Done** (Gotowe). 
 
-    Jednostki w intencji nie można oznaczyć etykietą, ponieważ jednostka Pattern.any obowiązuje tylko we wzorcu. 
+    Jednostki w wypowiedzi przykład celem nie etykiety, ponieważ Pattern.any obowiązuje tylko we wzorcu. 
 
     Jeśli chcesz, aby wyodrębnione dane uwzględniały inne jednostki, takie jak liczba lub jednostka datetimeV2, musisz utworzyć złożoną jednostkę, która obejmuje jednostkę Pattern.any, a także liczbę i jednostkę datetimeV2.
 
@@ -108,9 +104,9 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 1. Wybierz pozycję **Patterns** (Wzorce) na lewym pasku nawigacyjnym.
 
-2. Wybierz intencję **FindForm** (Znajdź formularz).
+1. Wybierz intencję **FindForm** (Znajdź formularz).
 
-3. Wprowadź następujące wypowiedzi szablonu, które używają nowej jednostki:
+1. Wprowadź następujące wypowiedzi szablonu, które używają nowej jednostki:
 
     |Wypowiedzi szablonu|
     |--|
@@ -121,8 +117,6 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
     Jeśli chcesz uwzględnić różne warianty w formularzu, takie jak pojedyncze cudzysłowy zamiast cudzysłowów podwójnych lub kropka zamiast znaku zapytania, utwórz nowy wzór dla każdego wariantu.
 
-4. Jeśli usunięto jednostkę keyPhrase, należy dodać ją z powrotem do aplikacji. 
-
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
@@ -130,15 +124,20 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testowanie nowego wzorca do wyodrębnienia danych o formacie swobodnym
 1. Na górnym pasku wybierz pozycję **Test** (Testuj), aby otworzyć panel testu. 
 
-2. Wprowadź następującą wypowiedź: 
+1. Wprowadź następującą wypowiedź: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. W obszarze wyniku wybierz pozycję **Inspect** (Sprawdź), aby zobaczyć wyniki testu jednostki i intencji.
+1. W obszarze wyniku wybierz pozycję **Inspect** (Sprawdź), aby zobaczyć wyniki testu jednostki i intencji.
 
     Najpierw znaleziono jednostkę `FormName`, następnie znaleziono wzorzec określający intencję. Jeśli otrzymano wynik testu, w którym jednostki nie zostały wykryte, a w związku z tym nie znaleziono wzorca, należy dodać więcej przykładowych wypowiedzi do intencji (nie wzorca).
 
-4. Zamknij panel testu, wybierając przycisk **Test** (Testuj) na górnym pasku nawigacyjnym.
+1. Zamknij panel testu, wybierając przycisk **Test** (Testuj) na górnym pasku nawigacyjnym.
+
+## <a name="using-an-explicit-list"></a>Używanie jawnych list
+
+Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](luis-concept-patterns.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem.
+
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

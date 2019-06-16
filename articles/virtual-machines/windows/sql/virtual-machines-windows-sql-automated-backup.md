@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99439c2b6bd4fdd271dda7a49850c5b6f44330b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d30d044a26e6a092eba267f223be9b10c3a238b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075869"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Zautomatyzowane tworzenie kopii zapasowej dla maszyn wirtualnych programu SQL Server 2014 (Resource Manager)
 
@@ -77,21 +77,19 @@ Aby skonfigurować automatyczne kopie zapasowe, podczas udostępniania lub dla m
 
 Użyj witryny Azure portal, aby skonfigurować automatyczne kopie zapasowe, podczas tworzenia nowej maszyny wirtualnej 2014 serwera SQL w modelu wdrażania usługi Resource Manager.
 
-W **ustawień programu SQL Server** okienku wybierz **automatyczne tworzenie kopii zapasowych**. Ilustruje poniższy zrzut ekranu na portalu Azure **automatyczne kopie zapasowe SQL** ustawienia.
+W **ustawień programu SQL Server** karty, przewiń w dół do **automatyczne tworzenie kopii zapasowych** i wybierz **Włącz**. Można również określić okres przechowywania i konto magazynu, a także włączanie szyfrowania, tworzenia kopii zapasowej bazy danych systemu i konfigurowanie harmonogramu tworzenia kopii zapasowych.  Ilustruje poniższy zrzut ekranu na portalu Azure **automatyczne kopie zapasowe SQL** ustawienia.
 
 ![Konfiguracja SQL automatyczne kopie zapasowe w witrynie Azure portal](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
 ## <a name="configure-existing-vms"></a>Konfigurowanie istniejących maszyn wirtualnych
 
-W przypadku istniejących maszyn wirtualnych programu SQL Server należy wybrać maszyny wirtualnej programu SQL Server. Następnie wybierz pozycję **konfiguracji programu SQL Server** sekcji maszyna wirtualna **ustawienia**.
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Dla istniejących maszyn wirtualnych programu SQL Server, przejdź do [zasobów maszyn wirtualnych SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) , a następnie wybierz **kopie zapasowe**. 
 
 ![SQL automatyczne kopie zapasowe dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
-W **konfiguracji programu SQL Server** okienku kliknij **Edytuj** przycisku w sekcji automatycznych kopii zapasowych.
-
-![Skonfiguruj automatyczne kopie zapasowe SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-configuration.png)
-
-Po zakończeniu kliknij przycisk **OK** przycisk w dolnej części **konfiguracji programu SQL Server** ustawienia, aby zapisać zmiany.
+Po zakończeniu wybierz pozycję **Zastosuj** przycisk w dolnej części **kopie zapasowe** strony, aby zapisać zmiany.
 
 Jeśli włączasz automatyczne kopie zapasowe po raz pierwszy, Azure konfiguruje agenta IaaS programu SQL Server w tle. W tym czasie witryny Azure portal może nie pokazać, że skonfigurowano automatyczne kopie zapasowe. Poczekaj kilka minut, zanim agent, który ma zostać zainstalowane, skonfigurowane. Po tym witryny Azure portal będzie odzwierciedlać nowych ustawień.
 
@@ -119,7 +117,7 @@ $resourcegroupname = "resourcegroupname"
 
 Jeśli zainstalowano rozszerzenie agenta IaaS programu SQL Server, powinien być widoczny czy jest ono wyświetlane jako "SqlIaaSAgent" lub "SQLIaaSExtension". **ProvisioningState** dla rozszerzenia powinien również wyświetlać "Powodzenie".
 
-Jeśli nie jest zainstalowana lub nie może być obsługiwana, możesz zainstalować go za pomocą następującego polecenia. Oprócz maszyny Wirtualnej nazwy i grupy zasobów, należy także określić region (**$region**) maszyny Wirtualnej znajdujący się w.
+Jeśli nie jest zainstalowana lub nie może być obsługiwana, możesz zainstalować go za pomocą następującego polecenia. Oprócz maszyny Wirtualnej nazwy i grupy zasobów, należy także określić region ( **$region**) maszyny Wirtualnej znajdujący się w.
 
 ```powershell
 $region = "EASTUS2"

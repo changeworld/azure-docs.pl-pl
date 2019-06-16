@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: b45fb5cbfbef334b40ccadecd32f65fa9a59a610
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685666"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058563"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacja i korzyści
 
@@ -21,7 +21,7 @@ Ten artykuł jest pierwszy w serii na najlepsze rozwiązania dotyczące migracji
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Dlaczego do migracji do usługi Azure HDInsight
 
-Usługa Azure HDInsight jest dystrybucją w chmurze składniki platformy Hadoop z [Hortonworks Data Platform(HDP)](https://hortonworks.com/products/data-center/hdp/). Usługa Azure HDInsight ułatwia i przyspiesza przetwarzanie ogromnych ilości danych przy jednoczesnej minimalizacji kosztów. HDInsight obejmuje najbardziej popularnych struktur open source, takie jak:
+Usługa Azure HDInsight jest dystrybucją w chmurze składniki platformy Hadoop. Usługa Azure HDInsight ułatwia i przyspiesza przetwarzanie ogromnych ilości danych przy jednoczesnej minimalizacji kosztów. HDInsight obejmuje najbardziej popularnych struktur open source, takie jak:
 
 - Apache Hadoop
 - Apache Spark
@@ -90,19 +90,18 @@ Ta sekcja zawiera kwestionariuszy szablonów ułatwiających zbieranie ważne in
 | **Pytanie** | **Przykład** | **Odpowiedź** |
 |---|---|---|
 |**temat**: **Środowisko**|||
-|Typ dystrybucji klastra|Hortonworks, Cloudera, MapR| |
 |Wersja dystrybucji klastra|HDP 2.6.5, CDH 5.7|
 |Dużych składników ekosystemu danych|Systemu plików HDFS, Yarn, Hive, LLAP, Impala, Kudu, bazy danych HBase, Spark, MapReduce, Kafka, dozorcy, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Typy klastrów|Solr jednowarstwową platformy Kafka, Storm, Hadoop, Spark,|
 |Liczba klastrów|4|
-|Liczba węzłów wzorca|2|
+|Liczba węzłów głównych|2|
 |Liczba węzłów procesu roboczego|100|
 |Liczba węzłów brzegowych| 5|
 |Całkowita ilość miejsca na dysku|100 TB|
 |Konfiguracja węzła głównego|m/y, procesora cpu, dysku itp.|
 |Konfiguracja węzły danych|m/y, procesora cpu, dysku itp.|
 |Konfiguracja węzłów brzegowych|m/y, procesora cpu, dysku itp.|
-|Szyfrowanie systemu plików HDFS?|Yes|
+|Szyfrowanie systemu plików HDFS?|Tak|
 |Wysoka dostępność|Wysokiej dostępności z systemu plików HDFS i magazynu metadanych wysokiej dostępności|
 |Odzyskiwanie po awarii / tworzenie kopii zapasowej|Klaster kopii zapasowej?|  
 |Systemy, które są zależne od klastra|SQL Server, Teradata, usługa Power BI, bazy danych MongoDB|
@@ -167,8 +166,8 @@ Ta sekcja zawiera kwestionariuszy szablonów ułatwiających zbieranie ważne in
 |**temat**: **Infrastruktura** |||
 |---|---|---|
 |**Pytanie**|**Przykład**|**Odpowiedź**|
-| Preferowany region|Wschodnie stany USA||
-|Preferowanych sieci wirtualnej?|Yes||
+| Preferowany Region|Wschodnie stany USA||
+|Preferowanych sieci wirtualnej?|Tak||
 |Wysoka dostępność / odzyskiwanie po awarii potrzebne?|Yes||
 |Integracja z innymi usługami w chmurze?|ADF, CosmosDB||
 |**temat**:   **Przenoszenie danych**  |||
@@ -178,28 +177,27 @@ Ta sekcja zawiera kwestionariuszy szablonów ułatwiających zbieranie ważne in
 |**temat**:   **Monitorowanie i alerty** |||
 |Za pomocą monitorowania platformy Azure i integracja programu Vs alertów monitorowania innych firm|Korzystanie z systemu Azure, monitorowanie i alerty||
 |**temat**:   **Preferencje zabezpieczeń** |||
-|Potok danych prywatnych i chronionych?|Yes||
-|Klastra dołączono do domeny (ESP)?|     Yes||
-|W środowisku lokalnym AD Sync do chmury?|     Yes||
+|Potok danych prywatnych i chronionych?|Tak||
+|Klastra dołączono do domeny (ESP)?|     Tak||
+|W środowisku lokalnym AD Sync do chmury?|     Tak||
 |Nie. użytkowników usługi AD do synchronizacji?|          100||
-|OK, aby zsynchronizować hasła do chmury?|    Yes||
-|Użytkownicy tylko w chmurze?|                 Yes||
+|OK, aby zsynchronizować hasła do chmury?|    Tak||
+|Użytkownicy tylko w chmurze?|                 Tak||
 |Wymagane uwierzytelnianie wieloskładnikowe?|                       Nie|| 
 |Wymagania dotyczące autoryzacji danych?|  Yes||
-|Kontrola dostępu oparta na rolach?|        Yes||
+|Kontrola dostępu oparta na rolach?|        Tak||
 |Inspekcja potrzebne?|                  Yes||
-|Szyfrowanie danych w spoczynku?|          Yes||
+|Szyfrowanie danych w spoczynku?|          Tak||
 |Szyfrowanie danych podczas przesyłania?|       Yes||
 |**temat**:   **Preferencje RE architektury** |||
 |Pojedynczy klaster, a określone typy klastrów|Określone typy klastrów||
 |Wspólnie przechowywane Vs zdalnego magazynu?|Magazyn zdalny||
 |Mniejszy rozmiar klastra jako dane są przechowywane zdalnie?|Mniejszy rozmiar klastra||
 |Korzystać z wielu mniejszych klastrów, a nie pojedynczego dużego klastra?|Użyj wielu mniejszych klastrów||
-|Użyj zdalnego magazynu metadanych?|Yes||
-|Udostępnianie magazyny metadanych między różnymi klastrami?|Yes||
+|Użyj zdalnego magazynu metadanych?|Tak||
+|Udostępnianie magazyny metadanych między różnymi klastrami?|Tak||
 |Dekonstruować obciążenia?|Zastąp zadań Hive za pomocą zadań platformy Spark||
 |Na użytek ADF organizowanie danych?|Nie||
-|HDInsight vs Hortonworks Data Platform w usłudze IaaS?|HDInsight||
 
 ## <a name="next-steps"></a>Kolejne kroki
 

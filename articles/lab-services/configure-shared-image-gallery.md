@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: fba969b70ae052c928f33888d3c93eb7683ae9f7
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: de857498aeb51c9b3711c90338d983e85b61cb70
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455713"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065432"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurowanie galerii obrazów udostępnionych w usłudze Azure DevTest Labs
-Obsługuje teraz DevTest Labs [galerii obrazów współdzielona](/virtual-machines/windows/shared-image-galleries.md) funkcji. Umożliwia ona użytkownikom laboratorium dostęp do obrazów z udostępnionej lokalizacji podczas tworzenia zasobów laboratorium. Ułatwia też dostosowanie struktury i organizacji do obrazów maszyn wirtualnych zarządzanych w niestandardowy sposób. Funkcja galerii obrazów współdzielona obsługuje systemy:
+Obsługuje teraz DevTest Labs [galerii obrazów współdzielona](../virtual-machines/windows/shared-image-galleries.md) funkcji. Umożliwia ona użytkownikom laboratorium dostęp do obrazów z udostępnionej lokalizacji podczas tworzenia zasobów laboratorium. Ułatwia też dostosowanie struktury i organizacji do obrazów maszyn wirtualnych zarządzanych w niestandardowy sposób. Funkcja galerii obrazów współdzielona obsługuje systemy:
 
 - Zarządzana replikacja globalna obrazów
 - Obsługa wersji i grupowanie obrazów w celu ułatwienia zarządzania

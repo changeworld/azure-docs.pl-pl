@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: roaror
 ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61330871"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Przed migracją kroki migracji danych z bazy danych MongoDB do interfejsu API usługi Azure Cosmos DB, bazy danych mongodb
@@ -60,7 +60,7 @@ W usłudze Azure Cosmos DB przepływność jest aprowizowany z wyprzedzeniem i j
 Inaczej niż w przypadku maszyn wirtualnych lub na serwerach lokalnych (RUS) można łatwo skalować w górę i w dół w dowolnym momencie. Liczba zainicjowanych jednostek zarezerwowanych można zmienić w ciągu kilku sekund, a opłaty są naliczane tylko za maksymalną liczbę jednostek żądań, które zarezerwować dla danego okresu jednej godziny. Aby uzyskać więcej informacji, zobacz [jednostki żądań w usłudze Azure Cosmos DB](request-units.md).
 
 Poniżej przedstawiono kluczowe czynniki, które wpływają na liczbę wymaganych jednostek zarezerwowanych:
-- **Rozmiar elementu (tzn. dokument)**: W miarę zwiększania rozmiaru elementu/dokumentu, liczbę jednostek zarezerwowanych używane do odczytu lub zapisu elementu/dokumentu również się zwiększa.
+- **Rozmiar elementu (tzn. dokument)** : W miarę zwiększania rozmiaru elementu/dokumentu, liczbę jednostek zarezerwowanych używane do odczytu lub zapisu elementu/dokumentu również się zwiększa.
 - **Element właściwości liczba**: Zakładając, że [indeksowania domyślne](index-overview.md) wszystkich właściwości, liczbę jednostek zarezerwowanych używane do zapisania elementu zwiększa się wraz ze wzrostem liczby właściwości elementu. Użycie jednostek żądania dla operacji zapisu, można zmniejszyć [ograniczenie liczby właściwości indeksowanych](index-policy.md).
 - **Równoczesne wykonywanie operacji**: Żądanie zużywanych jednostek zależy również od częstotliwość, z których różnych operacji CRUD (na przykład operacje zapisu, operacji odczytu, aktualizacji i usuwa) i bardziej złożone zapytania są wykonywane. Możesz użyć [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) służący do wypełniania wyjściowego na potrzeby współbieżności bieżących danych bazy danych MongoDB.
 - **Zapytanie wzorców**: Złożoność zapytania ma wpływ na liczbę jednostek żądania są używane przez zapytanie.

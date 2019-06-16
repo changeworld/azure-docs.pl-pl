@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577348"
 ---
 # <a name="firewall-tables-overview"></a>Omówienie tabel zapory
@@ -53,11 +53,11 @@ Dodatkowe zasady mogą być wymagane dla przepływu ruchu w odwrotnym kierunku. 
 
 Następujące reguły domyślne są tworzone w każdej tabeli zapory.
 
-|Priorytet|Name (Nazwa)|Śledzenie stanu|Direction|Typ ruchu|Protokół|Element źródłowy|Port źródłowy|Element docelowy|Port docelowy|Akcja|
+|Priorytet|Name (Nazwa)|Śledzenie stanu|Direction|Typ ruchu|Protocol|source|Port źródłowy|Element docelowy|Port docelowy|Akcja|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Stanowe|Wychodzący|Ruch publiczny adres IP lub internet|Wszyscy|Dowolne|Dowolne|Dowolne|Dowolne|Zezwalaj|
+|65000|allow-all-to-internet|Stanowe|Wychodzące|Ruch publiczny adres IP lub internet|Wszyscy|Dowolne|Dowolne|Dowolne|Dowolne|Zezwalaj|
 |65001|deny-all-from-internet|Stanowe|Przychodzący|Ruch publiczny adres IP lub internet|Wszyscy|Dowolne|Dowolne|Dowolne|Dowolne|Zablokuj|
-|65002|allow-all-to-intranet|Bezstanowe|Wychodzący|Chmura prywatna wewnętrznego lub ruchu sieci VPN|Wszyscy|Dowolne|Dowolne|Dowolne|Dowolne|Zezwalaj|
+|65002|allow-all-to-intranet|Bezstanowe|Wychodzące|Chmura prywatna wewnętrznego lub ruchu sieci VPN|Wszyscy|Dowolne|Dowolne|Dowolne|Dowolne|Zezwalaj|
 |65003|allow-all-from-intranet|Bezstanowe|Przychodzący|Chmura prywatna wewnętrznego lub ruchu sieci VPN|Wszyscy|Dowolne|Dowolne|Dowolne|Dowolne|Zezwalaj|
 
 ## <a name="next-steps"></a>Kolejne kroki

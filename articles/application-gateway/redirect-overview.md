@@ -11,26 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/19/2018
-ms.date: 04/17/2019
-ms.author: v-junlch
+ms.date: 3/19/2018
+ms.author: amsriva
 ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715817"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway redirect — omówienie
 
-Usługa application gateway umożliwia przekierowywanie ruchu.  Ma ona mechanizm ogólnego przekierowania, który umożliwia przekierowywanie ruchu odbieranego u jednego odbiornika do innego odbiornika lub zewnętrznej witryny. Upraszcza to konfigurację aplikacji, optymalne wykorzystanie zasobów i obsługuje nowe scenariusze przekierowywania w tym globalnym i opartego na ścieżkach przekierowania.
+Usługa application gateway umożliwia przekierowywanie ruchu.  Ma ona mechanizm ogólnego przekierowywania, który umożliwia przekierowywanie ruchu odbieranego przez jeden odbiornik do innego odbiornika lub do witryny zewnętrznej. Upraszcza to konfigurację aplikacji, optymalne wykorzystanie zasobów i obsługuje nowe scenariusze przekierowywania w tym globalnym i opartego na ścieżkach przekierowania.
 
 Typowy scenariusz przekierowania w przypadku wielu aplikacji sieci web jest do obsługi automatycznego HTTP do przekierowania protokołu HTTPS do upewnij się, że cała komunikacja między aplikacją i jej użytkownikami odbywa się za pośrednictwem ścieżką zaszyfrowane. W przeszłości klienci wykorzystali technik, takich jak tworzenie puli zaplecza dedykowane, którego jedynym celem jest Przekierowywanie żądań otrzymywanych od protokołu HTTP do HTTPS. Dzięki obsłudze przekierowania w usłudze Application Gateway można to zrobić poprzez dodawanie nowej konfiguracji przekierowania do reguły routingu i określając inny odbiornik przy użyciu protokołu HTTPS jako odbiornik docelowy.
 
 Obsługiwane są następujące typy przekierowania:
 
 - 301 Stałe przekierowanie
-- 302 — Znaleziono
+- Znaleziono 302
 - 303 Zobacz inne
 - Przekierowanie tymczasowe 307
 
@@ -51,5 +50,3 @@ Dzięki tej zmianie klienci muszą utworzyć nowy obiekt konfiguracji przekierow
 ### <a name="next-steps"></a>Kolejne kroki
 
 [Konfigurowanie przekierowania URL w bramie aplikacji](tutorial-url-redirect-powershell.md)
-
-<!-- Update_Description: wording update -->

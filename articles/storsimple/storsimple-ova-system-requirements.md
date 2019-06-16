@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629309"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
@@ -94,13 +94,13 @@ Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, a
 
 | **Nr portu<sup>1</sup>** | **Wewnątrz lub na zewnątrz** | **Zakres portów** | **Wymagane** | **Uwagi** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Wyjście |Sieć WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| TCP 443 (HTTPS) |Wyjście |Sieć WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| UDP 53 (DNS) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
-| UDP 123 (NTP) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
-| TCP 80 (HTTP) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. <br></br> Należy pamiętać, uzyskiwanie dostępu do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP spowoduje automatyczne przekierowanie do protokołu HTTPS. |
-| TCP 443 (HTTPS) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. |
-| TCP 3260 (iSCSI) |W |Sieć LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
+| TCP 80 (HTTP) |limit |WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| TCP 443 (HTTPS) |limit |WAN |Tak |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| UDP 53 (DNS) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
+| UDP 123 (NTP) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
+| TCP 80 (HTTP) |W |LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. <br></br> Należy pamiętać, uzyskiwanie dostępu do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP spowoduje automatyczne przekierowanie do protokołu HTTPS. |
+| TCP 443 (HTTPS) |W |LAN |Tak |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. |
+| TCP 3260 (iSCSI) |W |LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
 
 <sup>1</sup> nie portów przychodzących, które muszą być otwarte w publicznym Internecie.
 

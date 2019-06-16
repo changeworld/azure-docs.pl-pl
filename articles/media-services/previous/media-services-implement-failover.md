@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f09391bf18910bf9151c99b8df91f92b2582e823
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea5238df50ff050140453ce655ea041669f6080c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051653"
 ---
 # <a name="implement-failover-streaming-with-media-services"></a>Implementowanie trybu failover przesyłania strumieniowego za pomocą usługi Media Services 
 
@@ -409,8 +409,7 @@ W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
         {
 
             var ismAssetFiles = asset.AssetFiles.ToList().
-                        Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase))
-                        .ToArray();
+                        Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase));
 
             if (ismAssetFiles.Count() != 1)
                 throw new ArgumentException("The asset should have only one, .ism file");
@@ -421,15 +420,12 @@ W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
 
         public static IAssetFile GetPrimaryFile(IAsset asset)
         {
-            var theManifest =
-                    from f in asset.AssetFiles
-                    where f.Name.EndsWith(".ism")
-                    select f;
-
             // Cast the reference to a true IAssetFile type. 
-            IAssetFile manifestFile = theManifest.First();
+        IAssetFile theManifest = asset.AssetFiles.ToList().
+                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).
+                FirstOrDefault();   
 
-            return manifestFile;
+            return theManifest;
         }
 
         public static IAsset RefreshAsset(CloudMediaContext context, IAsset asset)

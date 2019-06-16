@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą przesączyć
 
@@ -95,7 +95,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą przesączy
 
 2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
 
 3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą przesączy
 
     ![Przesączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/preintegrated.png)
 
-5. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Ustaw dodatkowe adresy URL** i w **adres URL logowania** wprowadź **https://percolate.com/app/login**:
+5. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Ustaw dodatkowe adresy URL** i w **adres URL logowania** wprowadź **https://percolate.com/app/login** :
 
    ![Przesączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
 6. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **kopiowania** ikonę, aby skopiować **adres Url metadanych Federacji aplikacji** . Zapisz ten adres URL.
@@ -168,7 +168,7 @@ W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure
 
     1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >** . (Na przykład BrittaSimon@contoso.com.)
 
     1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
 

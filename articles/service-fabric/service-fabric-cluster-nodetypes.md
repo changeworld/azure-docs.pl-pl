@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
 ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684691"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych i typy węzłów usługi Service Fabric platformy Azure
@@ -34,7 +34,7 @@ Jak pokazano na poprzednim rysunku, wystąpień zestawu skalowania rozpoczynają
 Skalowanie w górę zestaw skalowania, tworzone jest nowe wystąpienie. Nazwa nowego wystąpienia zestawu skalowania jest zazwyczaj zestawu skalowania, nazwy i dalej liczby wystąpień. W naszym przykładzie jest BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Mapowanie usługi równoważenia obciążenia zestawu skalowania na typy węzłów i zestawów skalowania
-Jeśli wdrożeniu klastra w witrynie Azure portal lub użyć przykładowego szablonu usługi Azure Resource Manager, są wyświetlane wszystkie zasoby w grupie zasobów. Możesz zobaczyć modułów równoważenia obciążenia dla każdego zestawu lub węzeł typu skali. Nazwa modułu równoważenia obciążenia używa następującego formatu: **LB -&lt;Nazwa typu węzła&gt;**. Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższej ilustracji:
+Jeśli wdrożeniu klastra w witrynie Azure portal lub użyć przykładowego szablonu usługi Azure Resource Manager, są wyświetlane wszystkie zasoby w grupie zasobów. Możesz zobaczyć modułów równoważenia obciążenia dla każdego zestawu lub węzeł typu skali. Nazwa modułu równoważenia obciążenia używa następującego formatu: **LB -&lt;Nazwa typu węzła&gt;** . Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższej ilustracji:
 
 ![Zasoby][Resources]
 
@@ -81,8 +81,8 @@ Poniżej przedstawiono opisy właściwości:
 | autoUpgradeMinorVersion | wartość PRAWDA lub FAŁSZ | --- | Włącz automatyczne uaktualnianie środowiska uruchomieniowego SF wersje pomocnicze |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy rozszerzenie usługi Service Fabric |
 | clusterEndpont | string | --- | URI:port do punktu końcowego zarządzania |
-| nodeTypeRef | string | --- | Nazwa elementu nodeType |
-| durabilityLevel | brązowy, srebrny, złoty platynowy | --- | czas, mogą wstrzymać niezmienna infrastruktura platformy Azure |
+| elementu nodeTypeRef | string | --- | Nazwa elementu nodeType |
+| wartość durabilityLevel | brązowy, srebrny, złoty platynowy | --- | czas, mogą wstrzymać niezmienna infrastruktura platformy Azure |
 | enableParallelJobs | wartość PRAWDA lub FAŁSZ | --- | Włącz ParallelJobs obliczeniowe, takie jak usuwanie maszyny Wirtualnej i uruchom ponownie maszynę Wirtualną w tej samej skali ustawiony w sposób równoległy |
 | nicPrefixOverride | string | --- | Prefiks podsieci, takich jak "10.0.0.0/24" |
 | commonNames | ciąg] | --- | Nazwy pospolite certyfikatów zainstalowanych klastra |

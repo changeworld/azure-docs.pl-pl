@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901286"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106947"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją AnswerHub
 
@@ -112,7 +112,7 @@ W tej sekcji skonfigurujesz logowanie jednokrotne usługi Azure AD w witrynie Az
     > [!NOTE]
     > To nie są rzeczywiste wartości. Zaktualizuj te wartości, używając rzeczywistego identyfikatora i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej aplikacji AnswerHub](mailto:success@answerhub.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz** obok pozycji **Certyfikat (Base64)**, zgodnie z wymaganiami, a następnie zapisz certyfikat na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz** obok pozycji **Certyfikat (Base64)** , zgodnie z wymaganiami, a następnie zapisz certyfikat na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
@@ -184,7 +184,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     a. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wprowadź **brittasimon\@< yourcompanydomain.extension >**.  
+    b. W **nazwa_użytkownika** wprowadź **brittasimon\@< yourcompanydomain.extension >** .  
     Na przykład BrittaSimon@contoso.com.
 
     c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.

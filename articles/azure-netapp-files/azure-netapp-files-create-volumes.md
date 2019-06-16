@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/23/2019
+ms.date: 6/6/2019
 ms.author: b-juche
-ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 657bacc153b5721d5a9f34792eaf4796cb477755
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719441"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808882"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Tworzenie woluminu dla usługi Azure NetApp Files
 
@@ -90,34 +90,36 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
 Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połączenia usługi Active Directory przed dodaniem woluminie SMB. 
 
+### <a name="requirements-for-active-directory-connections"></a>Wymagania dotyczące połączenia usługi Active Directory
+
+ Wymagania dotyczące połączenia usługi Active Directory są następujące: 
+
+* Konto administratora, którego używasz, musi umożliwiać do utworzenia konta komputera w ścieżce jednostki organizacyjnej (OU), który zostanie określony.  
+
+* Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
+    Wymagane porty są następujące: 
+
+    |     Usługa           |     Port     |     Protocol     |
+    |-----------------------|--------------|------------------|
+    |    Usługi sieci Web usługi AD    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    ND       |    Odpowiedzi echa    |
+    |    Protokołu Kerberos           |    464       |    TCP           |
+    |    Protokołu Kerberos           |    464       |    UDP           |
+    |    Protokołu Kerberos           |    88        |    TCP           |
+    |    Protokołu Kerberos           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    Nazwa NetBIOS       |    138       |    UDP           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    UDP           |
+    |    Protokół Secure LDAP        |    636       |    TCP           |
+    |    Protokół Secure LDAP        |    3269      |    TCP           |
+    |    usługa W32time            |    123       |    UDP           |
+
 ### <a name="create-an-active-directory-connection"></a>Utwórz połączenie usługi Active Directory
-
-1. Upewnij się, że spełniasz następujące requiements: 
-
-    * Konto administratora, którego używasz, musi umożliwiać do utworzenia konta komputera w ścieżce jednostki organizacyjnej (OU), który zostanie określony.
-    * Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
-        Wymagane porty są następujące: 
-
-        |     Usługa           |     Port     |     Protokół     |
-        |-----------------------|--------------|------------------|
-        |    Usługi sieci Web usługi AD    |    9389      |    TCP           |
-        |    DNS                |    53        |    TCP           |
-        |    DNS                |    53        |    UDP           |
-        |    ICMPv4             |    ND       |    Odpowiedzi echa    |
-        |    Kerberos           |    464       |    TCP           |
-        |    Kerberos           |    464       |    UDP           |
-        |    Kerberos           |    88        |    TCP           |
-        |    Kerberos           |    88        |    UDP           |
-        |    LDAP               |    389       |    TCP           |
-        |    LDAP               |    389       |    UDP           |
-        |    LDAP               |    3268      |    TCP           |
-        |    Nazwa NetBIOS       |    138       |    UDP           |
-        |    SAM/LSA            |    445       |    TCP           |
-        |    SAM/LSA            |    445       |    UDP           |
-        |    Secure LDAP        |    636       |    TCP           |
-        |    Secure LDAP        |    3269      |    TCP           |
-        |    usługa W32time            |    123       |    UDP           |
-
 
 1. Z Twojego konta rozwiązania NetApp kliknij **połączenia usługi Active Directory**, następnie kliknij przycisk **Dołącz**.  
 
@@ -125,10 +127,10 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
 
 2. W oknie Dołącz do usługi Active Directory Podaj następujące informacje:
 
-    * **Podstawowy serwer DNS**   
-        Jest to adres IP kontrolera domeny preferowanych Active Directory Domain Services do użycia z usługą Azure Files NetApp. 
-    * **Pomocniczy serwer DNS**  
-        Jest to adres IP kontrolera domeny dla dodatkowej Active Directory Domain Services do użycia z usługą Azure Files NetApp. 
+    * **Podstawowy serwer DNS**  
+        Jest to DNS, który jest wymagany dla przyłączanie do domeny usługi Active Directory i operacje uwierzytelniania protokołu SMB. 
+    * **Pomocniczy serwer DNS**   
+        Jest to pomocniczy serwer DNS zapewniające usługi nazw nadmiarowe. 
     * **Domeny**  
         Jest to nazwa domeny usługi Active Directory Domain Services, którą chcesz przyłączyć.
     * **Prefiks serwera (konto komputera) protokołu SMB**  
@@ -142,7 +144,7 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
         Jest to ścieżka LDAP dla jednostki organizacyjnej (OU), której zostanie utworzona kont komputerów serwera SMB. Oznacza to, OU = drugiego poziomu, OU = pierwszy poziom. 
     * Poświadczenia, w tym usługi **username** i **hasła**
 
-    ![Połącz usługę Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Dołącz do usługi Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Kliknij pozycję **Dołącz**.  
 
@@ -204,5 +206,5 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
 ## <a name="next-steps"></a>Kolejne kroki  
 
 * [Zainstalowanie lub odinstalowanie woluminu dla maszyn wirtualnych Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Konfigurowanie zasad eksportu dla woluminu systemu plików NFS](azure-netapp-files-configure-export-policy.md)
+* [Konfigurowanie zasad eksportu dla woluminu NFS](azure-netapp-files-configure-export-policy.md)
 * [Informacje o integracji z siecią wirtualną dla usług platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

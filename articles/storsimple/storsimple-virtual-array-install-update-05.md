@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61445424"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalowanie aktualizacji Update 0.5 na rozwiązania StorSimple Virtual Array
@@ -67,7 +67,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
    
     ![Przeszukiwanie wykazu](./media/storsimple-virtual-array-install-update-05/download1.png)
 
-4. Kliknij pozycję **Pobierz**. 
+4. Kliknij przycisk **Pobierz**. 
 
 5. Powinien zostać wyświetlony dwa pliki do pobrania, *msu* i *cab* pliku. Pobierz każdego z tych plików do folderu. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
 

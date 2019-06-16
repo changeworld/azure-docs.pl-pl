@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66754065"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnozowanie połączeń lokalnych za pośrednictwem bram sieci VPN
@@ -92,7 +92,7 @@ Usługa Azure Network Watcher Rozwiązywanie problemów z funkcją umożliwia di
 | ServiceNotRunning | Usługa podstawowy nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Nawiązywanie połączeń nie istnieje w bramie. Jest to tylko ostrzeżenie.| Nie|
 | ConnectionsNotConnected | Brak połączenia są połączone. Jest to tylko ostrzeżenie.| Tak|
-| GatewayCPUUsageExceeded | Bieżące użycie bramy użycie procesora CPU jest > 95%. | Tak |
+| GatewayCPUUsageExceeded | Bieżące użycie bramy użycie procesora CPU jest > 95%. | Yes |
 
 ### <a name="connection"></a>Połączenie
 
@@ -108,9 +108,9 @@ Usługa Azure Network Watcher Rozwiązywanie problemów z funkcją umożliwia di
 | ConnectionNotConfiguredOnGateway | Usłudze podstawowej nie ma skonfigurowanego połączenia. | Tak |
 | ConnectionMarkedStandby | Usłudze podstawowej jest oznaczana w stanie wstrzymania.| Tak|
 | Authentication | Wstępny niezgodność klucza. | Tak|
-| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Tak|
-| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
-| WfpParse Error | Wystąpił błąd podczas analizowania dziennika wywołanie. |Tak|
+| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Yes|
+| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
+| WfpParse Error | Wystąpił błąd podczas analizowania dziennika wywołanie. |Yes|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

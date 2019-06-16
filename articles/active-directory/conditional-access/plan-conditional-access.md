@@ -13,12 +13,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 44a64611d4e31767b4705f41e47234af7b0848c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112222"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
 
@@ -31,23 +31,23 @@ Dostęp warunkowy można traktować jako strukturę, która pozwala na kontrolow
 
 Jeśli wymagane są dodatkowe funkcje, również może być konieczne uzyskanie licencji powiązane. Na przykład dostęp warunkowy jest funkcją usługi Azure AD Premium P1, ochrony tożsamości wymaga licencji usługi Azure AD Premium P2.
 
-Istnieją dwa typy zasad dostępu warunkowego: linii bazowej i standard. A [bazowymi zasadami](baseline-protection.md) zasady dostępu warunkowego wstępnie zdefiniowane. Celem tych zasad jest upewnij się, że masz co najmniej poziom odniesienia z włączoną obsługą zabezpieczeń. Zasady linii bazowej. Zasady linii bazowej są dostępne we wszystkich wersjach programu Azure AD i zapewniają tylko opcje dostosowywania ograniczone. Jeśli scenariusz wymaga większej elastyczności, wyłączyć zasady w linii bazowej i implementowanie wymagań w przypadku standardowych zasad niestandardowych.
+Istnieją dwa typy zasad dostępu warunkowego: linii bazowej i standard. A [bazowymi zasadami](baseline-protection.md) jest wstępnie zdefiniowanych zasad dostępu warunkowego. Celem tych zasad jest upewnij się, że masz co najmniej poziom odniesienia z włączoną obsługą zabezpieczeń. Zasady linii bazowej. Zasady linii bazowej są dostępne we wszystkich wersjach programu Azure AD i zapewniają tylko opcje dostosowywania ograniczone. Jeśli scenariusz wymaga większej elastyczności, wyłączyć zasady w linii bazowej i implementowanie wymagań w przypadku standardowych zasad niestandardowych.
 
-W zasadach dostępu warunkowego standardowego możesz dostosować wszystkie ustawienia, aby dostosować zasady aby Twoje wymagania biznesowe. Standardowe zasady wymaga licencji usługi Azure AD Premium P1.
+W standardowych zasad dostępu warunkowego można dostosować wszystkie ustawienia, aby dostosować zasady aby Twoje wymagania biznesowe. Standardowe zasady wymaga licencji usługi Azure AD Premium P1.
 
 
 
 
 ## <a name="draft-policies"></a>Zasady narzędzia draft
 
-Dostęp warunkowy usługi Azure Active Directory umożliwia zebranie ochrony aplikacji w chmurze na nowy poziom. W tym nowy poziom uzyskać dostęp aplikacji w chmurze opiera się na oceniania zasady dynamicznego, zamiast konfiguracji statycznej dostępu. Za pomocą zasad dostępu warunkowego, możesz zdefiniować odpowiedzi (**to**) do warunku dostępu (**w takim przypadku**).
+Usługa Azure Active Directory dostępu warunkowego umożliwia zebranie ochrony aplikacji w chmurze na nowy poziom. W tym nowy poziom uzyskać dostęp aplikacji w chmurze opiera się na oceniania zasady dynamicznego, zamiast konfiguracji statycznej dostępu. Za pomocą zasad dostępu warunkowego, możesz zdefiniować odpowiedzi (**to**) do warunku dostępu (**w takim przypadku**).
 
 ![Przyczyna i odpowiedzi](./media/plan-conditional-access/10.png)
 
 Definiowanie zasad dostępu warunkowego, co potrzebne do wdrożenia przy użyciu tego modelu planowania. Ćwiczenie planowania:
 
 - Pomaga w odpowiedzi i warunki dla każdej zasady.
-- Wyniki w wykazie zasad dostępu warunkowego dobrze udokumentowane dla Twojej organizacji. 
+- Wyniki w dobrze udokumentowane katalogu zasad dostępu warunkowego dla Twojej organizacji. 
 
 Twój wykaz służy do oceny, czy implementacji zasad odzwierciedla wymagania biznesowe Twojej organizacji. 
 
@@ -55,16 +55,16 @@ Użyj następującego przykładowego szablonu, aby utworzyć zasady dostępu war
 
 |Gdy *to* się dzieje:|Następnie wykonaj *to*:|
 |-|-|
-|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Blokuj dostęp do aplikacji|
-|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Udzielanie dostępu z (i):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
-|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Udzielanie dostępu z (lub):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
+|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze *<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Blokuj dostęp do aplikacji|
+|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze *<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Udzielanie dostępu z (i):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
+|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze *<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Udzielanie dostępu z (lub):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
 
-Co najmniej **w takim przypadku** definiuje podmiotu zabezpieczeń (**kto**) który próbuje uzyskać dostęp aplikacji w chmurze (**co**). Jeśli to konieczne, możesz również uwzględnić **jak** odbywa się próba dostępu. W funkcji dostępu warunkowego, elementy definiują kto, co się stanie i jak są znane jako warunki. Aby uzyskać więcej informacji, zobacz [jakie są warunki dostępu warunkowego usługi Azure Active Directory?](conditions.md) 
+Co najmniej **w takim przypadku** definiuje podmiotu zabezpieczeń (**kto**) który próbuje uzyskać dostęp aplikacji w chmurze (**co**). Jeśli to konieczne, możesz również uwzględnić **jak** odbywa się próba dostępu. W funkcji dostępu warunkowego, elementy definiują kto, co się stanie i jak są znane jako warunki. Aby uzyskać więcej informacji, zobacz [jakie są warunki w usłudze Azure Active Directory dostępu warunkowego?](conditions.md) 
 
-Za pomocą **to zrobić**, zdefiniuj odpowiedź zasad do warunku dostępu. W odpowiedzi można zablokować lub przyznać dostęp z dodatkowymi wymaganiami, na przykład uwierzytelnianie wieloskładnikowe (MFA). Aby uzyskać pełny przegląd zobacz [co to są dostępu kontroluje dostępu warunkowego usługi Azure Active Directory?](controls.md)  
+Za pomocą **to zrobić**, zdefiniuj odpowiedź zasad do warunku dostępu. W odpowiedzi można zablokować lub przyznać dostęp z dodatkowymi wymaganiami, na przykład uwierzytelnianie wieloskładnikowe (MFA). Aby uzyskać pełny przegląd zobacz [co to jest dostęp do formantów w usłudze Azure Active Directory dostępu warunkowego?](controls.md)  
  
 
-Kombinacja warunków i mechanizmów kontroli dostępu tworzy zasadę dostępu warunkowego.
+Kombinacja warunków przy użyciu usługi kontroli dostępu reprezentuje zasady dostępu warunkowego.
 
 ![Przyczyna i odpowiedzi](./media/plan-conditional-access/51.png)
 
@@ -211,18 +211,18 @@ Zarządzanie zasadami dostępu warunkowego jest zadanie ręczne. W witrynie Azur
 ![Dostęp warunkowy](media/plan-conditional-access/03.png)
 
 
-Jeśli chcesz dowiedzieć się więcej na temat sposobu tworzenia zasad dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md). Ten przewodnik Szybki Start pomaga:
+Jeśli chcesz dowiedzieć się więcej na temat sposobu tworzenia zasad dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md). Ten przewodnik Szybki Start pomaga:
 
 - Zapoznanie się z interfejsem użytkownika.
-- Uzyskaj pierwsze wrażenie sposobie działania dostępu warunkowego. 
+- Uzyskaj pierwsze wrażenie działania dostępu warunkowego. 
 
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowania
 
-Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działają one zgodnie z oczekiwaniami. Pierwszym krokiem używać dostępu warunkowego [co zrobić, jeśli narzędzie zasad](what-if-tool.md) do symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.
+Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem używać dostępu warunkowego [co zrobić, jeśli narzędzie zasad](what-if-tool.md) do symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.
 
 >[!NOTE]
-> Uruchomienie symulowanego daje wyobrażenie wpływu zasad dostępu warunkowego, nie zastępuje rzeczywiste przebiegu testu.
+> Uruchom symulowane daje wyobrażenie wpływu, jaki ma zasady dostępu warunkowego, nie zastępuje rzeczywiste przebiegu testu.
 
 
 ### <a name="test-your-policy"></a>Testowanie zasad
@@ -273,7 +273,7 @@ W razie potrzeby można wycofać nowo wdrożonych zasad można wycofać należy 
 
 1. **Wyłącz zasady** — wyłączanie zasad zapewnia, że nie ma zastosowania, gdy użytkownik próbuje się zalogować. Zawsze możesz wrócić i włączyć zasady, jeśli chcesz z niego korzystać.
 
-    ![Wyłącz zasady](media/plan-conditional-access/07.png)
+    ![Wyłączanie zasad](media/plan-conditional-access/07.png)
 
 2. **Wykluczanie użytkownika / grupy z zasad** — Jeśli użytkownik nie może uzyskać dostęp do aplikacji, możesz wykluczyć użytkowników z zasad
 

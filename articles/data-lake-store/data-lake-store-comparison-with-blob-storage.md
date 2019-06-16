@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 478c261bb909cbc931a7dbbaa9cb6c61152970e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878974"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Storage Gen1 i usługi Azure Blob Storage
@@ -33,7 +33,7 @@ Tabela, w tym artykule zawiera podsumowanie różnic między usługi Azure Data 
 | Struktura |Hierarchiczny system plików |Magazyn obiektów przy użyciu prosty obszar nazw |
 | Interfejs API |Interfejs API REST przy użyciu protokołu HTTPS |Interfejs API REST za pośrednictwem protokołu HTTP/HTTPS |
 | Interfejs API po stronie serwera |[Interfejs API REST zgodnych z WebHDFS](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Interfejs API REST magazynu obiektów Blob platformy Azure](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Klient systemu plików usługi Hadoop |Yes |Yes |
+| Klient systemu plików usługi Hadoop |Tak |Tak |
 | Operacje na danych — uwierzytelnianie |Na podstawie [tożsamości usługi Azure Active Directory](../active-directory/develop/authentication-scenarios.md) |Oparte na wspólne klucze tajne — [kluczy dostępu do konta](../storage/common/storage-account-manage.md#access-keys) i [klucze dostępu współużytkowanego w podpisie](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Operacje na danych — protokół uwierzytelniania |OAuth 2.0. Wywołania musi zawierać prawidłowy token JWT (JSON Web Token) wystawione przez usługę Azure Active Directory |Kod uwierzytelniania wiadomości bazujących na skrótach (HMAC). Wywołania musi zawierać wartości skrótu SHA-256 algorytmem Base64 nad częścią żądania HTTP. |
 | Operacje na danych — autoryzacji |Listy kontroli dostępu POSIX (kontroli dostępu ACL).  Listy ACL w oparciu o usługi Azure Active Directory tożsamości można ustawić na poziomie plików i folderów. |W przypadku zezwolenia na poziomie konta — użyj [kluczy dostępu do konta](../storage/common/storage-account-manage.md#access-keys)<br>W przypadku konta, kontenera lub obiektu blob autoryzacji — użyj [udostępnione klucze sygnatur dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |

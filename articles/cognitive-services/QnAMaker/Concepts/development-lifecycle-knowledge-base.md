@@ -12,10 +12,10 @@ ms.date: 04/16/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 3f78b8a2566137d596f4ab3f083e1d14289365c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379366"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia wiedzy, w usługi QnA Maker
@@ -31,7 +31,7 @@ Usługa QnA Maker punktu końcowego z bazy wiedzy knowledge base (KB) zapewnia n
 Baza wiedzy jest gotowe do testowania, gdy jest on wypełniany zawartości, przez jej tradycyjne zredagowanie lub za pomocą automatycznego wyodrębniania. Interaktywne testowania może odbywać się w portalu narzędzia QnA Maker za pośrednictwem **testu** panelu, wprowadzając typowych zapytań użytkownika i weryfikowanie, czy zwrócone odpowiedzi z prawidłową odpowiedź i współczynnik ufności wystarczające. 
 
 * **Aby rozwiązać problem niskiej ufności wyniki**: Dodaj alternatywne pytania. 
-* **Jeśli zapytanie zwraca niepoprawnie [Domyślna odpowiedź](confidence-score.md#change-default-answer)**: Dodaj nowe odpowiedzi na prawidłowe zapytania. 
+* **Jeśli zapytanie zwraca niepoprawnie [Domyślna odpowiedź](confidence-score.md#change-default-answer)** : Dodaj nowe odpowiedzi na prawidłowe zapytania. 
 
 Tej pętli aktualizacji testu będzie kontynuowane, dopóki nie jesteś zadowolony z wyników. Dowiedz się, jak [test bazy wiedzy](../How-To/test-knowledge-base.md).
 

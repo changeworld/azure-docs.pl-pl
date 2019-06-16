@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61222061"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
@@ -47,7 +47,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Konfigurowanie potoku do automatyc
 >
 >Aby uzyskać więcej informacji, zobacz [instrukcje tworzenia potoku kompilacji](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Zaloguj się do Twojej organizacji DevOps platformy Azure (**https:\/organizacji /dev.azure.com/{your} /**), a następnie otwórz projekt, który zawiera repozytorium rozwiązania usługi IoT Edge.
+1. Zaloguj się do Twojej organizacji DevOps platformy Azure (**https:\/organizacji /dev.azure.com/{your} /** ), a następnie otwórz projekt, który zawiera repozytorium rozwiązania usługi IoT Edge.
 
    W tym artykule, utworzyliśmy repozytorium o nazwie **IoTEdgeRepo**. Tego repozytorium zawiera **IoTEdgeSolution** który ma kod dla modułu o nazwie **filtermodule**. 
 
@@ -77,7 +77,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Konfigurowanie potoku do automatyc
     
      ![Konfigurowanie puli agentów kompilacji](./media/how-to-ci-cd/configure-env.png)
 
-5. Potok jest wstępnie skonfigurowana za pomocą zadania o nazwie **zadania agenta 1**. Wybierz znak plus (**+**) można dodać trzy zadania dla zadania: **Usługa Azure IoT Edge** dwa razy, a **publikowanie artefaktów kompilacji** po. (Kursor na nazwie każdego zadania, aby zobaczyć **Dodaj** przycisku.)
+5. Potok jest wstępnie skonfigurowana za pomocą zadania o nazwie **zadania agenta 1**. Wybierz znak plus ( **+** ) można dodać trzy zadania dla zadania: **Usługa Azure IoT Edge** dwa razy, a **publikowanie artefaktów kompilacji** po. (Kursor na nazwie każdego zadania, aby zobaczyć **Dodaj** przycisku.)
 
    ![Dodaj zadanie usługi Azure IoT Edge](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -89,7 +89,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Konfigurowanie potoku do automatyc
 
    * **Nazwa wyświetlana**: Zaakceptuj wartość domyślną **usługi Azure IoT Edge — obrazy modułu kompilacji**.
    * **Akcja**: Zaakceptuj wartość domyślną **kompilowanie obrazów modułu**. 
-   * **. plik template.json**: Wybierz przycisk wielokropka (**...** ) i przejdź do **deployment.template.json** pliku w repozytorium, który zawiera rozwiązania usługi IoT Edge. 
+   * **. plik template.json**: Wybierz przycisk wielokropka ( **...** ) i przejdź do **deployment.template.json** pliku w repozytorium, który zawiera rozwiązania usługi IoT Edge. 
    * **Domyślna Platforma**: Wybierz odpowiednią platformę dla moduły oparte na urządzenie docelowe urządzenie usługi IoT Edge. 
    * **Zmienne wyjściowe**: Zmienne wyjściowe zawierają nazwę odniesienia, która służy do konfigurowania ścieżki pliku gdzie zostanie wygenerowany plik deployment.json. Ustaw nazwę odwołania coś zapamiętania, takich jak **krawędzi**. 
 
@@ -98,7 +98,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Konfigurowanie potoku do automatyc
    * **Nazwa wyświetlana**: Nazwa wyświetlana jest automatycznie aktualizowany po zmianie pola akcji. 
    * **Akcja**: Użyj listy rozwijanej, aby wybrać **wypychanie obrazów modułu**. 
    * **Typ rejestru kontenerów**: Wybierz typ rejestru kontenerów, którego używasz do przechowywania obrazów modułu. W zależności od typu rejestru możesz wybrać, zmian w formularzu. Jeśli wybierzesz **usługi Azure Container Registry**, użyj list rozwijanych, aby wybrać subskrypcję platformy Azure i nazwę rejestru kontenerów. Jeśli wybierzesz **ogólnego Container Registry**, wybierz opcję **New** do utworzenia połączenia z usługą rejestru. 
-   * **. plik template.json**: Wybierz przycisk wielokropka (**...** ) i przejdź do **deployment.template.json** pliku w repozytorium, który zawiera rozwiązania usługi IoT Edge. 
+   * **. plik template.json**: Wybierz przycisk wielokropka ( **...** ) i przejdź do **deployment.template.json** pliku w repozytorium, który zawiera rozwiązania usługi IoT Edge. 
    * **Domyślna Platforma**: Wybierz tę samą platformę jako moduł wbudowanych obrazów.
 
    Jeśli masz wiele rejestry kontenerów do hostowania obrazów modułu, musisz zduplikowane to zadanie, wybierz inny rejestr kontenerów, a następnie użyj **obejścia moduły** w ustawieniach zaawansowanych, aby pominąć obrazów, które nie są w tym określonego rejestru.
@@ -152,7 +152,7 @@ Utwórz nowy potok, a następnie skonfiguruj jego pierwszego etapu wdrożeń kon
 
 8. Na etapie kontroli jakości, powinien zostać wyświetlony domyślny **zadania agenta**. Można skonfigurować szczegółowe informacje dotyczące zadania agenta, ale zadania wdrażania jest niezależnych od platformy, dlatego można użyć dowolnego **hostowany program VS2017** lub **hostowanych 1604 Ubuntu** w **puli agenta**(lub innych agentów zarządzanych przez siebie). 
 
-9. Wybierz znak plus (**+**) aby dodać jedno zadanie. Wyszukaj i Dodaj **usługi Azure IoT Edge**. 
+9. Wybierz znak plus ( **+** ) aby dodać jedno zadanie. Wyszukaj i Dodaj **usługi Azure IoT Edge**. 
 
     ![Dodaj zadania dla pytań i odpowiedzi](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -210,7 +210,7 @@ Aby wyzwolić zadanie kompilacji, możesz wypchnięciu zatwierdzenia do repozyto
 
 3. Wybierz zadanie kompilacji, aby obserwować jego postęp. Jeśli proces kompilacji zakończy się powodzeniem, wyzwala wydanie do **QA** etapu. 
 
-    ![Dzienniki kompilacji](./media/how-to-ci-cd/build-logs.png)
+    ![Kompilacja dzienników](./media/how-to-ci-cd/build-logs.png)
 
 4. Pomyślne wdrożenie do **QA** etapu wyzwala powiadomienia do osoby zatwierdzającej. Sprawdź, moduły wdrożony pomyślnie na urządzeniu lub na urządzeniach, które objęte z etapem pytań i odpowiedzi. Następnie przejdź do potoku wydania i zgody w wersji przejść do etapu produkcji, wybierając **PROD** przycisk, a następnie wybierając **Zatwierdź**. 
 

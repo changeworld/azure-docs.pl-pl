@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511864"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -72,7 +72,7 @@ PredicateValidationReference| 0:1 | Odwołanie do **PredicateValidationsInput** 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Name | Yes | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
-| PartnerClaimType | Yes | Nazwa typu oświadczenia, która ma być używany. |
+| PartnerClaimType | Tak | Nazwa typu oświadczenia, która ma być używany. |
 
 W poniższym przykładzie, gdy struktura środowiska tożsamości korzysta z dostawcy tożsamości SAML2 lub aplikacji jednostki uzależnionej **nazwisko** oświadczeń jest mapowany na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, za pomocą OpenIdConnect i protokołu OAuth2 jest oświadczenie mapowany do `family_name`.
 
@@ -161,7 +161,7 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Text | Tak | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
+| Text | Yes | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
 |Wartość | Tak | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
@@ -190,7 +190,7 @@ Lista rozwijana lista miasta z wartością domyślną, ustaw Nowy Jork:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| RegularExpression | Yes | Wyrażenie regularne oświadczeń tego typu muszą być zgodne, aby był prawidłowy. |
+| RegularExpression | Tak | Wyrażenie regularne oświadczeń tego typu muszą być zgodne, aby był prawidłowy. |
 | HelpText | Nie | Wzorzec lub wyrażenie regularne dla tego oświadczenia. |
 
 Poniższy przykład umożliwia skonfigurowanie **e-mail** oświadczenia za pomocą wyrażeń regularnych wejściowy weryfikacji i tekst pomocy:

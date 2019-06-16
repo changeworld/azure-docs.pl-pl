@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: clausjor
 ms.subservice: blobs
 ms.openlocfilehash: 8e9e27f14c4ccd6f5822033baa21aaafcf96c428
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148510"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Usługa Azure Blob storage: gorąca, chłodna i archiwalna dostępu
@@ -89,7 +89,7 @@ Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy da
 
 Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Jeśli obiekt blob znajduje się w warstwie archiwum, go nie można zastąpić, więc przekazanie tego samego obiektu blob nie jest dozwolona w tym scenariuszu. Może spowodować zastąpienie obiektu blob w gorącej lub chłodnej warstwy, w których przypadku nowy obiekt blob dziedziczy warstwę obiektu blob, który został zastąpiony.
 
-Obiekty BLOB we wszystkich warstwach dostępu trzy mogą współistnieć w obrębie tego samego konta. Obiekt blob bez jawnie przypisanej warstwy korzysta z warstwy zgodnie z ustawieniem warstwy dostępu konta. Jeśli warstwa dostępu jest wnioskowana z konta, możesz zobaczyć **wywnioskowana Warstwa dostępu** obiektu blob właściwość ustawioną na wartość "true", a obiekt blob **warstwy dostępu** właściwość obiektu blob jest zgodna z warstwą konta. W witrynie Azure portal wywnioskowana Warstwa dostępu, właściwości jest wyświetlana z warstwą dostępu obiektu blob (na przykład **gorąca (wywnioskowana)** lub **chłodna (wywnioskowana)**).
+Obiekty BLOB we wszystkich warstwach dostępu trzy mogą współistnieć w obrębie tego samego konta. Obiekt blob bez jawnie przypisanej warstwy korzysta z warstwy zgodnie z ustawieniem warstwy dostępu konta. Jeśli warstwa dostępu jest wnioskowana z konta, możesz zobaczyć **wywnioskowana Warstwa dostępu** obiektu blob właściwość ustawioną na wartość "true", a obiekt blob **warstwy dostępu** właściwość obiektu blob jest zgodna z warstwą konta. W witrynie Azure portal wywnioskowana Warstwa dostępu, właściwości jest wyświetlana z warstwą dostępu obiektu blob (na przykład **gorąca (wywnioskowana)** lub **chłodna (wywnioskowana)** ).
 
 > [!NOTE]
 > Magazyn Archiwum i funkcja obsługi warstw na poziomie obiektów blob obsługują tylko blokowe obiekty blob. Nie można także zmienić warstwy blokowego obiektu blob, który ma migawki.
@@ -119,7 +119,7 @@ W przypadku przełączania warstwy konta z Gorąca na Chłodna opłaty zostaną 
 
 Oprócz opłaty miesięcznej za GB, każdy obiekt blob przenoszony do warstwy Chłodna (tylko konta GPv2) jest objęty okresem wcześniejszego usunięcia z warstwy Chłodna przez 30 dni, a każdy obiekt przenoszony do warstwy Archiwum jest objęty okresem wcześniejszego usunięcia z warstwy Chłodna przez 180 dni. Ta opłata jest naliczana proporcjonalnie. Jeśli na przykład obiekt blob zostanie przeniesiony do warstwy Archiwum, a następnie usunięty lub przeniesiony do warstwy Gorąca po 45 dniach, zostanie naliczona opłata za wczesne usunięcie odpowiadająca 135 (180 minus 45) dniom przechowywania tego obiektu blob w archiwum.
 
-Wcześniejsze usunięcie może obliczyć przy użyciu właściwość obiektu blob **czas utworzenia**, jeśli wystąpił brak dostępu do zmiany warstwy. W przeciwnym razie można skorzystać w przypadku warstwy dostępu do ostatniej modyfikacji się do warstwy chłodna lub archiwalna, wyświetlając właściwość obiektu blob: **Zmień czas, dostęp do warstwy w-**. Aby uzyskać więcej informacji na temat właściwości obiektu blob, zobacz [uzyskać właściwości obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
+Wcześniejsze usunięcie może obliczyć przy użyciu właściwość obiektu blob **czas utworzenia**, jeśli wystąpił brak dostępu do zmiany warstwy. W przeciwnym razie można skorzystać w przypadku warstwy dostępu do ostatniej modyfikacji się do warstwy chłodna lub archiwalna, wyświetlając właściwość obiektu blob: **Zmień czas, dostęp do warstwy w-** . Aby uzyskać więcej informacji na temat właściwości obiektu blob, zobacz [uzyskać właściwości obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
 
 ## <a name="comparing-block-blob-storage-options"></a>Porównanie opcji magazynu obiektów blob bloku
 

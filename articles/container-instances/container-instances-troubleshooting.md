@@ -10,10 +10,10 @@ ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65070864"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
@@ -24,11 +24,11 @@ W tym artykule pokazano, jak rozwiązywać typowe problemy dotyczące zarządzan
 
 Podczas definiowania specyfikacji usługi kontenera, niektóre parametry wymagają gotowość do ograniczenia nazewnictwa. Poniżej przedstawiono tabelę z określonych wymagań dotyczących kontenera właściwości grupy. Aby uzyskać więcej informacji na temat konwencji nazewnictwa platformy Azure, zobacz [konwencje nazewnictwa] [ azure-name-restrictions] w Centrum architektury platformy Azure.
 
-| Zakres | Długość | Wielkość liter | Prawidłowe znaki | Sugerowany wzorzec | Przykład |
+| Scope | Długość | Wielkość liter | Prawidłowe znaki | Sugerowany wzorzec | Przykład |
 | --- | --- | --- | --- | --- | --- |
 | Nazwa grupy kontenerów | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Porty kontenera | Od 1 do 65535 |Liczba całkowita |Liczba całkowita od 1 do 65535 |`<port-number>` |`443` |
+| Porty kontenera | Od 1 do 65535 |Integer |Liczba całkowita od 1 do 65535 |`<port-number>` |`443` |
 | Etykieta nazwy DNS | 5-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`frontend-site1` |
 | Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i podkreślenia (_) w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`MY_VARIABLE` |
 | Nazwa woluminu | 5-63 |Bez uwzględniania wielkości liter |Małe litery i cyfry i łączniki w dowolnym miejscu poza pierwszym ani ostatnim znakiem. Nie może zawierać dwóch łączników pod rząd. |`<name>` |`batch-output-volume` |

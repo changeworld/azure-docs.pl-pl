@@ -17,12 +17,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: aff00978178f63b7324168e9aca765b77decf2b4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5eaae4a919a1675f6f936403c5cde6f81ec61c6b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67130705"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Samouczek — zarządzanie dyskami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -105,7 +105,7 @@ Aby utworzyć i dołączyć nowy dysk do istniejącej maszyny wirtualnej, użyj 
 az vm disk attach \
     --resource-group myResourceGroupDisk \
     --vm-name myVM \
-    --disk myDataDisk \
+    --name myDataDisk \
     --size-gb 128 \
     --sku Premium_LRS \
     --new
@@ -254,7 +254,7 @@ Dołącz dysk za pomocą polecenia [az vm disk attach](/cli/azure/vm/disk#az-vm-
 az vm disk attach \
    –g myResourceGroupDisk \
    --vm-name myVM \
-   --disk $datadisk
+   --name $datadisk
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

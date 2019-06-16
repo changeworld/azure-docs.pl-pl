@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e927aa4b407103b1efed33a4305532c590780d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69b15cefc3280b4fc6006a2e492cfcbc9eed88e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60282326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Brightspace by Desire2Learn
 
@@ -29,7 +29,7 @@ Zintegrowanie aplikacji Brightspace by Desire2Learn z usługą Azure AD zapewnia
 
 * Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Brightspace by Desire2Learn.
 * Swoim użytkownikom możesz zezwolić na automatyczne logowanie do aplikacji Brightspace by Desire2Learn (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Brightspace by Desire2Learn z usługą 
 
 **Aby dodać aplikację Brightspace by Desire2Learn z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,27 +61,27 @@ Aby skonfigurować integrację aplikacji Brightspace by Desire2Learn z usługą 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Brightspace by Desire2Learn**, wybierz pozycję **Brightspace by Desire2Learn** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
      ![Aplikacja Brightspace by Desire2Learn na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Brightspace by Desire2Learn, korzystając z danych testowego użytkownika **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Brightspace by Desire2Learn.
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Brightspace by Desire2Learn, należy ukończyć poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Brightspace by Desire2Learn](#configure-brightspace-by-desire2learn-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Brightspace by Desire2Learn](#create-brightspace-by-desire2learn-test-user)** — aby mieć odpowiednik użytkownika Britta Simon w aplikacji Brightspace by Desire2Learn, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +91,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Brightspace by Desire2Learn** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -119,7 +119,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 6. W sekcji **Konfigurowanie aplikacji Brightspace by Desire2Learn** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -133,7 +133,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu aplika
 
 ### <a name="configure-brightspace-by-desire2learn-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Brightspace by Desire2Learn
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Brightspace by Desire2Learn**, musisz wysłać [zespołowi pomocy technicznej aplikacji Brightspace by Desire2Learn](https://www.d2l.com/contact/) pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal. Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Brightspace by Desire2Learn**, musisz wysłać [zespołowi pomocy technicznej aplikacji Brightspace by Desire2Learn](https://www.d2l.com/contact/) pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal. Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -188,7 +188,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="create-brightspace-by-desire2learn-test-user"></a>Tworzenie użytkownika testowego aplikacji Brightspace by Desire2Learn
 
-W tej sekcji utworzysz w aplikacji Brightspace by Desire2Learn użytkownika o nazwie Britta Simon. We współpracy z  [zespołem pomocy technicznej aplikacji Brightspace by Desire2Learn](https://www.d2l.com/contact/) dodaj użytkowników na platformie Brightspace by Desire2Learn. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz w aplikacji Brightspace by Desire2Learn użytkownika o nazwie Britta Simon. We współpracy z  [zespołem pomocy technicznej aplikacji Brightspace by Desire2Learn](https://www.d2l.com/contact/) dodaj użytkowników na platformie Brightspace by Desire2Learn. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 > [!NOTE]
 > Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników aplikacji Brightspace by Desire2Learn oferowanych przez tę aplikację.

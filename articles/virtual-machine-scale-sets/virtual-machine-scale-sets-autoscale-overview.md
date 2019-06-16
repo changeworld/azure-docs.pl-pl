@@ -17,10 +17,10 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60883674"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania przy użyciu skali maszyny wirtualnej platformy Azure
@@ -56,7 +56,7 @@ Reguły automatycznego skalowania, można użyć metryki z jednego z następują
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Bieżący zestaw skalowania    | Aby uzyskać metryki oparte na hoście, które nie wymagają dodatkowych agentów, które mają być zainstalowane lub skonfigurowane.                                  |
 | Konto magazynu      | Rozszerzenie diagnostyki platformy Azure zapisuje metryki wydajności do usługi Azure storage, która jest następnie używane do wyzwalania reguły automatycznego skalowania. |
-| Kolejka usługi Service Bus    | Aplikacja lub inne składniki mogą przesyłać komunikaty w kolejce usługi Azure Service Bus z regułami wyzwalacza.                   |
+| Kolejki usługi Service Bus    | Aplikacja lub inne składniki mogą przesyłać komunikaty w kolejce usługi Azure Service Bus z regułami wyzwalacza.                   |
 | Application Insights | Pakiet instrumentacji, zainstalowane w Twojej aplikacji, strumienie metryk bezpośrednio z aplikacji.                         |
 
 
@@ -70,10 +70,10 @@ Następujące metryki oparte na hoście są dostępne do użycia podczas tworzen
 | Sieć — wyjście               |
 | Bajty odczytane z dysku           |
 | Bajty zapisane na dysku          |
-| Operacje odczytu dysku/s  |
+| Dysku, operacje odczytu/s  |
 | Operacje zapisu dysku/s |
-| Pozostałe środki na procesory CPU     |
-| Wykorzystane środki na procesory CPU      |
+| Pozostałe środki na korzystanie z procesora CPU     |
+| Środki na procesory CPU wykorzystany      |
 
 Podczas tworzenia reguł skalowania automatycznego w celu monitorowania danej metryki reguły Przyjrzyj się jedną z następujących czynności agregacji metryk:
 
@@ -92,10 +92,10 @@ Reguły skalowania automatycznego następnie są wyzwalane, gdy metryki są por�
 |--------------------------|
 | Większe niż             |
 | Większe niż lub równe |
-| Mniej niż                |
+| Mniejsze niż                |
 | Mniejsze niż lub równe    |
-| Równe                 |
-| Różne od             |
+| Równa się                 |
+| Nie równa się             |
 
 
 ### <a name="actions-when-rules-trigger"></a>Akcje w przypadku wyzwolenia reguły

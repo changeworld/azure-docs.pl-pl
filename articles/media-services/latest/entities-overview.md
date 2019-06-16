@@ -13,10 +13,10 @@ ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60732369"
 ---
 # <a name="filtering-ordering-paging-of-media-services-entities"></a>Stronicowanie filtrowania, sortowania, jednostek usługi Media Services
@@ -170,7 +170,7 @@ while (currentPage.NextPageLink != null)
 
 POZOSTAŁE przykłady można znaleźć [zasady kluczy zawartości — lista](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 
 ### <a name="filteringordering"></a>Filtrowanie porządkowanie
 
@@ -236,7 +236,7 @@ W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwoś
 |properties.startTime   |||
 |properties.streamingLocatorId  |||
 |properties.streamingPolicyName |||
-|type   |||
+|— typ   |||
 
 ### <a name="pagination"></a>Paginacja
 
@@ -292,7 +292,7 @@ while (currentPage.NextPageLink != null)
 
 POZOSTAŁE przykłady można znaleźć [przesyłania strumieniowego zasad — Lista](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
 
-## <a name="transform"></a>Przekształcanie
+## <a name="transform"></a>Transformacja
 
 ### <a name="filteringordering"></a>Filtrowanie porządkowanie
 

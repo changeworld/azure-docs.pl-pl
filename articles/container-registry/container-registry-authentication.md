@@ -10,10 +10,10 @@ ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61333881"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelnianie przy użyciu prywatnego rejestru kontenerów platformy Docker
@@ -36,7 +36,7 @@ Aby uzyskać dostęp do rejestru, token używany przez `az acr login` nadaje si�
 
 Za pomocą `az acr login` tożsamości platformy Azure zapewnia [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md). W niektórych scenariuszach możesz zalogować się do rejestru za pomocą indywidualne tożsamości w usłudze Azure AD. W scenariuszach między usługami lub aby sprostać wymaganiom grupy roboczej, w których nie chcesz zarządzać dostępem do poszczególnych możesz również zalogować się przy użyciu [tożsamości zarządzanej dla zasobów platformy Azure](container-registry-authentication-managed-identity.md).
 
-## <a name="service-principal"></a>Jednostka usługi
+## <a name="service-principal"></a>Nazwa główna usługi
 
 Jeśli przypiszesz [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md) do rejestru, Twoja aplikacja lub usługa może być użyty do bezobsługowego uwierzytelniania. Zezwalaj na nazwy główne usług [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) do rejestru, i może przypisywać wiele jednostek usługi do rejestru. Wiele jednostek usługi umożliwiają definiowanie różny dostęp do różnych aplikacji.
 

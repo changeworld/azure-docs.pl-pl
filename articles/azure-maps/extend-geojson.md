@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60799151"
 ---
 # <a name="extending-geojson-geometries"></a>Rozszerzanie GeoJSON geometrii
@@ -40,10 +40,10 @@ Ten artykuł zawiera szczegółowy opis sposobu rozszerza usługi Azure Maps [Sp
 
 A `Circle` geometrii reprezentowane za pomocą `GeoJSON Feature` obiektu __musi__ zawiera następujące czynności:
 
-1. Do środka
+1. Centrum
    >Centrum koła jest reprezentowane za pomocą `GeoJSON Point` typu.
 
-2. RADIUS
+2. Usługi RADIUS
    >Koła `radius` jest reprezentowane za pomocą `GeoJSON Feature`jego właściwości. Wartość radius ma _liczniki_ i musi być typu `double`.
 
 3. SubType

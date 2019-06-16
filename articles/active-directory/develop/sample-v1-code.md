@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b14dcb5f5af971b10c83ea7fd9064a08cde3ab35
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1858b3e8d659d8810c54cab96566d03c24c92adf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111279"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punkt końcowy w wersji 1.0)
 
@@ -86,7 +86,7 @@ Mobile (UWP)            | .![.NET/C#/UWP](media/sample-v2-code/logo_Windows.png)
 Mobile (Android, iOS, UWP)   | ![.NET / C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktywne | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobile (Android)           | ![Android / Java](media/sample-v2-code/logo_Android.png) | Interaktywne |   [android](https://github.com/Azure-Samples/active-directory-android) |
 Mobile (iOS)           | ![dla systemu iOS / Objective C lub swift.](media/sample-v2-code/logo_iOS.png) | Interaktywne |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-Pulpitu (Konsola)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Nazwa użytkownika / hasło </p>  Zintegrowane uwierzytelnianie systemu Windows | | [polecenia DotNet-native bezobsługowego](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+Pulpitu (Konsola)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Nazwa użytkownika / hasło </p>  Uwierzytelnianie zintegrowane Windows | | [polecenia DotNet-native bezobsługowego](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Pulpitu (Konsola)          | ![Konsola języka Java](media/sample-v2-code/logo_Java.png) | Nazwa użytkownika / hasło | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
 Pulpitu (Konsola)           | ![.NET core / C#](media/sample-v2-code/logo_NETcore.png) | Przepływ kodu urządzenia | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 

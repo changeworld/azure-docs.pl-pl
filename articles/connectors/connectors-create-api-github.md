@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 0d2ff9368bc244a5afd6fafc40cf476b90a80a52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462605"
 ---
 # <a name="connect-to-github"></a>Łączenie z usługą GitHub
@@ -30,7 +30,7 @@ Do korzystania z łącznika usługi GitHub w aplikacji logiki, należy najpierw 
 
 | Właściwość | Wymagane | Opis | 
 | -------- | -------- | ----------- | 
-| Token | Yes | Wprowadź swoje poświadczenia usługi GitHub. |
+| Token | Tak | Wprowadź swoje poświadczenia usługi GitHub. |
 
 Po utworzeniu połączenia, można wykonać akcje i nasłuchiwanie wyzwalaczy opisanych w tym artykule.
 

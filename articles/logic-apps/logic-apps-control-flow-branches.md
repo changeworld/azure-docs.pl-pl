@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685160"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Utwórz lub przyłącz gałęzi równoległej dla akcji przepływu pracy w usłudze Azure Logic Apps
@@ -44,7 +44,7 @@ Twoja aplikacja logiki czeka, aż wszystkie gałęzie zakończyć działanie prz
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. Umieść wskaźnik nad strzałką znajdującą się powyżej kroku, w której chcesz dodać gałęzi równoległych. Wybierz **oraz** logowania (**+**) pojawia się, a następnie wybierz **Dodaj gałąź równoległą**. 
+1. Umieść wskaźnik nad strzałką znajdującą się powyżej kroku, w której chcesz dodać gałęzi równoległych. Wybierz **oraz** logowania ( **+** ) pojawia się, a następnie wybierz **Dodaj gałąź równoległą**. 
 
    ![Dodaj gałąź równoległą](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -56,7 +56,7 @@ Twoja aplikacja logiki czeka, aż wszystkie gałęzie zakończyć działanie prz
 
    ![Znajdź i wybierz akcję, którą chcesz](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Teraz w każdej gałęzi równoległych, należy dodać kroki, które chcesz. Aby dodać kolejną akcję do gałęzi, wskaźnik myszy w obszarze akcji gdzie chcesz dodać kolejne działania. Wybierz **oraz** (**+**) znak, który pojawia się, a następnie wybierz **Dodaj akcję**.
+1. Teraz w każdej gałęzi równoległych, należy dodać kroki, które chcesz. Aby dodać kolejną akcję do gałęzi, wskaźnik myszy w obszarze akcji gdzie chcesz dodać kolejne działania. Wybierz **oraz** ( **+** ) znak, który pojawia się, a następnie wybierz **Dodaj akcję**.
 
    ![Dodawanie kolejnych akcji do gałęzi równoległych](media/logic-apps-control-flow-branches/add-sequential-action.png)
 

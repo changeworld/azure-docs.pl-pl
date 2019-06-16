@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738485"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
@@ -32,7 +32,7 @@ W poniższej tabeli przedstawiono zasady przechowywania dla różnych zasobów.
 | Elementy zawartości |Trwale usunięte po upływie 90 dni po usunięciu elementu zawartości przez użytkownika lub 90 dni od konta, który przechowuje, że zasób zostanie usunięty przez użytkownika. |
 | Moduły |Trwale usunięte po upływie 90 dni po usunięciu przez użytkownika modułu lub 90 dni od konta, które przechowuje moduł zostanie usunięty przez użytkownika. |
 | Elementy Runbook |Trwale usunięte po upływie 90 dni po usunięciu zasobu przez użytkownika lub 90 dni od konta, który przechowuje, że zasób zostanie usunięty przez użytkownika. |
-| Stanowiska |Usunięte i trwale usunięte 90 dni po ostatnio modyfikowany. Może to być po zadanie kończy, został zatrzymany lub jest wstrzymana. |
+| Zadania |Usunięte i trwale usunięte 90 dni po ostatnio modyfikowany. Może to być po zadanie kończy, został zatrzymany lub jest wstrzymana. |
 | Pliki MOF/konfiguracji węzła |Starej konfiguracji węzła jest trwale usunięte 90 dni, po wygenerowaniu nową konfigurację węzła. |
 | Węzły DSC |Trwale usunięte 90 dni po węzeł, który jest wyrejestrowywany z konta usługi Automation przy użyciu witryny Azure portal lub [AzureRMAutomationDscNode Wyrejestruj](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) polecenia cmdlet programu Windows PowerShell. Węzły są również trwale usunięte 90 dni od konta, które zawiera węzeł jest usunięte przez użytkownika. |
 | Raporty węzła |Trwale usunięte 90 dni, po wygenerowaniu nowego raportu dla tego węzła |

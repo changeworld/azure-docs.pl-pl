@@ -10,10 +10,10 @@ ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
 ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728304"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
@@ -86,14 +86,14 @@ Poniższa tabela zawiera podsumowanie operacji kontenera, które akceptowanie na
 
 | Operacja | Zwraca wartość elementu ETag kontenera | Akceptuje nagłówki warunkowe |
 |:--- |:--- |:--- |
-| Tworzenie kontenera |Yes |Nie |
+| Tworzenie kontenera |Tak |Nie |
 | Pobierz właściwości kontenera |Yes |Nie |
-| Pobranie metadanych kontenera |Yes |Nie |
-| Metadane kontenera zestawu |Yes |Yes |
-| Pobieranie listy ACL kontenera |Yes |Nie |
-| Ustaw ACL kontenera |Yes |Tak (*) |
-| Usuwanie kontenera |Nie |Yes |
-| Dzierżawa kontenera |Yes |Yes |
+| Pobranie metadanych kontenera |Tak |Nie |
+| Metadane kontenera zestawu |Tak |Tak |
+| Pobieranie listy ACL kontenera |Tak |Nie |
+| Ustaw ACL kontenera |Tak |Tak (*) |
+| Usuwanie kontenera |Nie |Tak |
+| Dzierżawa kontenera |Tak |Tak |
 | Wyświetlanie listy obiektów blob |Nie |Nie |
 
 (*) Uprawnienia określone przez SetContainerACL są buforowane i aktualizacji tych uprawnień potrwać 30 sekund do propagowania okresie, które aktualizacje są nie musi być zgodne.  
@@ -102,20 +102,20 @@ W poniższej tabeli przedstawiono operacje obiektów blob, które akceptowanie n
 
 | Operacja | Zwraca wartość elementu ETag | Akceptuje nagłówki warunkowe |
 |:--- |:--- |:--- |
-| Put Blob |Yes |Yes |
-| Get Blob |Yes |Yes |
+| Put Blob |Tak |Tak |
+| Get Blob |Yes |Tak |
 | Pobierz właściwości obiektu Blob |Yes |Yes |
 | Ustaw właściwości obiektu Blob |Yes |Yes |
-| Pobierz metadane obiektu blob |Yes |Yes |
+| Pobierz metadane obiektu Blob |Tak |Yes |
 | Ustaw metadane obiektu Blob |Yes |Yes |
-| Dzierżawienie obiektu Blob (*) |Yes |Yes |
-| Wykonywanie migawki obiektu Blob |Yes |Yes |
+| Dzierżawienie obiektu Blob (*) |Tak |Yes |
+| Wykonywanie migawki obiektu Blob |Tak |Tak |
 | Copy Blob |Yes |Tak (w przypadku źródłowego i docelowego obiektu blob) |
 | Przerwij obiektu Blob kopiowania |Nie |Nie |
-| Usuwanie obiektu Blob |Nie |Yes |
+| Usuwanie obiektu Blob |Nie |Tak |
 | Umieść bloku |Nie |Nie |
-| Umieść zablokowanych |Yes |Yes |
-| Pobierz listę zablokowanych |Yes |Nie |
+| Umieść zablokowanych |Tak |Tak |
+| Pobierz listę zablokowanych |Tak |Nie |
 | Umieść strony |Yes |Yes |
 | Pobieranie zakresów stron |Yes |Yes |
 
@@ -163,7 +163,7 @@ Następujące operacje obiektów blob umożliwia zarządzanie Współbieżność
 * Get Blob
 * Pobierz właściwości obiektu Blob
 * Ustaw właściwości obiektu Blob
-* Pobierz metadane obiektu blob
+* Pobierz metadane obiektu Blob
 * Ustaw metadane obiektu Blob
 * Usuwanie obiektu Blob
 * Umieść bloku
@@ -238,12 +238,12 @@ W poniższej tabeli przedstawiono, jak operacje jednostki tabeli używać warto�
 | Operacja | Zwraca wartość elementu ETag | Wymaga nagłówka żądania If-Match |
 |:--- |:--- |:--- |
 | Wykonywanie zapytań dotyczących jednostek |Yes |Nie |
-| Wstaw jednostkę |Yes |Nie |
-| Aktualizuj jednostki |Yes |Yes |
-| Scal jednostkę |Yes |Yes |
+| Wstaw jednostki |Tak |Nie |
+| Aktualizuj jednostki |Tak |Tak |
+| Merge Entity |Tak |Tak |
 | Usuń jednostkę |Nie |Yes |
-| Wstaw lub zastąp jednostkę |Yes |Nie |
-| Wstaw lub scal jednostkę |Yes |Nie |
+| Wstawianie lub zastępowanie jednostki |Yes |Nie |
+| Wstawianie lub scalić jednostki |Yes |Nie |
 
 Należy pamiętać, że **Insert lub Zastąp jednostki** i **Insert lub scalić jednostki** wykonaj operacje *nie* wykonać wszystkie testy współbieżności, ponieważ nie wysyłaj wartość elementu ETag do tabeli Usługa.  
 

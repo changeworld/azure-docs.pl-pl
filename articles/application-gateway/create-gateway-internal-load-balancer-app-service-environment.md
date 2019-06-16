@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: baed2b23a321c53a614303d3085fbb3a4bf6ad0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831099"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certyfikat serwera zaplecza nie jest umieszczona na białej liście dla bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service
@@ -31,14 +31,14 @@ Po utworzeniu bramy aplikacji przy użyciu wewnętrznego modułu równoważenia 
 
 **Konfiguracja bramy aplikacji:**
 
-- **Odbiornik:** Wiele lokacji
+- **Odbiornik:** Połączenia obejmujące wiele lokacji
 - **Port:** 443
 - **Nazwa hosta:** test.appgwtestase.com
 - **Certyfikat SSL:** CN=test.appgwtestase.com
 - **Pula zaplecza:** Adres IP lub nazwa FQDN
-- **Adres IP:**: 10.1.5.11
+- **Adres IP:** : 10.1.5.11
 - **Ustawienia HTTP:** HTTPS
-- **Port:**: 443
+- **Port:** : 443
 - **Niestandardowe sondy:** Hostname – test.appgwtestase.com
 - **Certyfikat uwierzytelniania:** cer test.appgwtestase.com
 - **Kondycja wewnętrznej bazy danych:** Zła — certyfikatu serwera wewnętrznej bazy danych nie jest na liście dozwolonych usługi Application Gateway.
@@ -70,6 +70,6 @@ Gdy używasz w pełni kwalifikowaną nazwę domeny (FQDN) na dostęp do wewnętr
 
 Aby zmniejszyć obciążenie, możesz przekazać certyfikat wewnętrznego modułu równoważenia obciążenia w ustawieniach protokołu HTTP, aby ścieżka sondy pracy. (Ten krok jest tylko na potrzeby umieszczania na białej liście. Nie będzie używany do komunikacji SSL.) Możesz pobrać certyfikat wewnętrznego modułu równoważenia obciążenia, uzyskując dostęp do wewnętrznego modułu równoważenia obciążenia przy użyciu jego adresu IP, z poziomu przeglądarki przy użyciu protokołu HTTPS, a następnie eksportowanie certyfikatu protokołu SSL w Base-64 kodowany w formacie CER i przekazywanie certyfikatu na odpowiednie ustawienia protokołu HTTP.
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: b8113552edf9dd2f886b5752b2ebc69afc0fda08
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064316"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Wyświetl stan publikowania ofert w portalu Azure Marketplace i AppSource
 
@@ -39,7 +39,7 @@ Następny przykład **stan** kartę Usługa doradcza przedstawiający zgłoszony
 
 ![Stan karty błąd przedstawiający usługi doradcze](./media/consulting-service-error.png)
 
-Stan końcowy przykład aplikacji platformy Azure pokazuje krytyczny problem przeglądu firmy Microsoft.  Zawiera ona popularnego łącza do elementu VSTS, który zawiera szczegółowe informacje o tym problemie przeglądu.  Aby uzyskać więcej informacji, zobacz [opublikować ofertę platformy Azure aplikacja](cpp-publish-offer.md).
+Stan końcowy przykład aplikacji platformy Azure pokazuje krytyczny problem przeglądu firmy Microsoft.  Zawiera ona popularne łącze do elementu DevOps platformy Azure, który zawiera szczegółowe informacje o tym problemie przeglądu.  Aby uzyskać więcej informacji, zobacz [opublikować ofertę platformy Azure aplikacja](cpp-publish-offer.md).
 
 ![Karta Stan dla aplikacji platformy Azure, przedstawiający Przegląd problemu](../azure-applications/media/status-tab-ms-review.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64736968"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67113543"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -178,10 +178,10 @@ Poniżej przedstawiono przykład obliczenie operacje We/Wy i przepływność/prz
 
 | Wymagania aplikacji | Rozmiar operacji We/Wy | Operacje wejścia/wyjścia | Przepustowość/przepływność |
 | --- | --- | --- | --- |
-| Maks. IOPS |8 KB |5000 |40 MB na sekundę |
+| Maksymalna liczba operacji We/Wy |8 KB |5,000 |40 MB na sekundę |
 | Maksymalna przepływność |1024 KB |200 |200 MB na sekundę |
 | Maksymalna przepływność + wysokiej operacje We/Wy |64 KB |3,200 |200 MB na sekundę |
-| Maksymalna liczba operacji We/Wy i Wysoka przepływność |32 KB |5000 |160 MB na sekundę |
+| Maksymalna liczba operacji We/Wy i Wysoka przepływność |32 KB |5,000 |160 MB na sekundę |
 
 Aby uzyskać operacje We/Wy i przepustowości jest większa niż maksymalna wartość dysku magazynu premium w jednym, należy użyć wielu dysków w warstwie premium rozłożony jednocześnie. Na przykład stripe dwa dyski P30 Pobierz połączone operacje We/Wy z 10 000 operacji We/Wy lub łączna przepływność 400 MB na sekundę. Jak wyjaśniono w następnej sekcji, należy użyć rozmiaru maszyny Wirtualnej, który obsługuje połączonych operacji We/Wy i przepływność dysku.
 
@@ -236,7 +236,7 @@ Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiar
 | Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32 767 giB (32 TiB)    |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15,000              | 20,000              |
 | Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | MiB 100 na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
 
 Jak wiele dysków, możesz wybrać, zależy od dysku rozmiar wybrane. Można użyć pojedynczego dysku P50 lub wiele dysków P10, zgodnie z wymaganiami aplikacji. Należy uwzględnić wymienione poniżej, dokonując wyboru uwagi dotyczące konta.
@@ -271,7 +271,7 @@ Należy włączyć pamięć podręczną dla odpowiedniego zestawu dysków. Czy n
 
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
-| Dysk systemu operacyjnego |Odczyt/zapis |
+| Dysk systemu operacyjnego |Odczytu i zapisu |
 | Dysk z danymi |ReadOnly |
 
 Poniżej przedstawiono ustawienia pamięci podręcznej dysków zalecany w przypadku dysków danych
@@ -280,7 +280,7 @@ Poniżej przedstawiono ustawienia pamięci podręcznej dysków zalecany w przypa
 | --- | --- |
 | Brak |Skonfiguruj pamięci podręcznej hosta jako Brak w przypadku dysków tylko do zapisu i procesów. |
 | ReadOnly |Konfigurowanie pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i odczytu i zapisu. |
-| Odczyt/zapis |Konfigurowanie pamięci podręcznej hosta jako odczytu i zapisu, tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych w pamięci podręcznej dysków trwałych, w razie potrzeby. |
+| Odczytu i zapisu |Konfigurowanie pamięci podręcznej hosta jako odczytu i zapisu, tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych w pamięci podręcznej dysków trwałych, w razie potrzeby. |
 
 *ReadOnly*  
 Konfigurując tylko do odczytu pamięci podręcznej danych usługi Premium Storage dysków, można osiągnąć małe opóźnienia odczytu i uzyskać bardzo duże operacje odczytu We/Wy i przepływność aplikacji. Jest to ze względu na dwóch przyczyn
@@ -313,7 +313,7 @@ Poniższe dystrybucje systemu Linux zostały zweryfikowane dla dysków SSD w war
 
 Najnowsze usługi LIS (Linux Integration), wersja 4.0, niektóre wersje wymagają dla platformy Azure. Aby pobrać i zainstalować dystrybucji, postępuj zgodnie z łączy wymienionych w poniższej tabeli. Obrazy możemy dodać do listy, podczas wykonywania sprawdzania poprawności. Nasze walidacji pokazują, że wydajność zmienia się dla każdego obrazu. Wydajność zależy od charakterystyki i ustawienia obrazu. Obrazy różnych dostosowanych do różnych rodzajów obciążeń.
 
-| Dystrybucja | Wersja | Obsługiwane jądra | Szczegóły |
+| Dystrybucja | Version | Obsługiwane jądra | Szczegóły |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |

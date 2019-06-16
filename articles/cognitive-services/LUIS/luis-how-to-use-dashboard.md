@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
 ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66236943"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Jak korzystać z pulpitu nawigacyjnego na ulepszenie aplikacji
@@ -33,7 +33,7 @@ Dostępne są następujące trzy problemy, które zostały rozwiązane w pulpici
 |Problem|Kolor wykresu|Wyjaśnienie|
 |--|--|--|
 |Brak równowagi danych|-|Dzieje się tak, gdy ilość wypowiedzi przykład różni się znacznie. Wszystkie opcje, które muszą mieć _około_ taką samą liczbę wypowiedzi przykład — z wyjątkiem sytuacji żadne intencji. 10-15% całkowitej ilości wypowiedzi powinien mieć tylko w aplikacji.<br><br> Jeśli dane są imbalanced, ale intencji dokładność przekracza określony próg, to nierównowagi nie został zgłoszony jako problem.<br><br>**Rozpocznij z tym problemem — może być przyczyny inne problemy.**|
-|Prognozy niejasny|Pomarańczowy|Ten błąd występuje podczas najważniejsze intencji i dalej intencji wyniki są na tyle bliskie, że może Przerzuć na szkolenie dalej w ze względu na [ujemna próbkowania](luis-how-to-train.md#train-with-all-data) lub więcej wypowiedzi przykładzie dodano na intencje. |
+|Prognozy niejasny|Orange|Ten błąd występuje podczas najważniejsze intencji i dalej intencji wyniki są na tyle bliskie, że może Przerzuć na szkolenie dalej w ze względu na [ujemna próbkowania](luis-how-to-train.md#train-with-all-data) lub więcej wypowiedzi przykładzie dodano na intencje. |
 |Niepoprawne prognozy|Czerwony|Dzieje się tak, gdy nie przewiduje się wypowiedź przykład dla oznaczonych intencji (przeznaczenie, w którym się).|
 
 Poprawne prognozy są reprezentowane przez kolor niebieski.

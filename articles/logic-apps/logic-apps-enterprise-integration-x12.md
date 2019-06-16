@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
 ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728747"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymiana X12 komunikatów B2B integracji przedsiębiorstwa w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
@@ -122,7 +122,7 @@ Wybierz schemat dla każdego typu transakcji (ST1) i aplikację nadawcy (GS2). P
 
 | Właściwość | Opis |
 | --- | --- |
-| Wersja |Wybierz X12 wersję |
+| Version |Wybierz X12 wersję |
 | Typ transakcji (ST01) |Wybierz typ transakcji |
 | Aplikacja nadawcy (GS02) |Wybierz aplikację nadawcy |
 | Schemat |Wybierz plik schematu, który chcesz użyć. Schematy są dodawane do Twojego konta integracji. |
@@ -130,7 +130,7 @@ Wybierz schemat dla każdego typu transakcji (ST1) i aplikację nadawcy (GS2). P
 > [!NOTE]
 > Skonfiguruj wymagane [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) przekazany do usługi [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-### <a name="envelopes"></a>Koperty
+### <a name="envelopes"></a>Kopert
 
 ![Określ separatora w zestawie transakcji: standardowy identyfikator lub Separator powtórzeń](./media/logic-apps-enterprise-integration-x12/x12-34.png)
 
@@ -144,11 +144,11 @@ Wybierz schemat dla każdego typu transakcji (ST1) i aplikację nadawcy (GS2). P
 
 | Właściwość | Opis |
 | --- | --- |
-| Nie zezwalaj na duplikaty numeru kontrolnego wymiany |Blokuj wymian duplikatów. Sprawdza, czy numer kontrolny wymiany odebrany numer kontrolny wymiany (ISA13). Jeśli zostanie wykryte dopasowanie potoku odbioru nie przetwarza wymiany. Można określić liczbę dni w przypadku sprawdzania, zapewniając wartość *Sprawdzaj duplikaty ISA13 co (dni)*. |
+| Nie zezwalaj na duplikaty numeru kontrolnego wymiany |Blokuj wymian duplikatów. Sprawdza, czy numer kontrolny wymiany odebrany numer kontrolny wymiany (ISA13). Jeśli zostanie wykryte dopasowanie potoku odbioru nie przetwarza wymiany. Można określić liczbę dni w przypadku sprawdzania, zapewniając wartość *Sprawdzaj duplikaty ISA13 co (dni)* . |
 | Nie zezwalaj na duplikaty numerów kontrolnych grupy |Blok wymiany przy użyciu numerów kontrolnych grupy. |
 | Nie zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Blok wymiany przy użyciu numerów kontrolnych zestawu transakcji duplikatów. |
 
-### <a name="validations"></a>Walidacje
+### <a name="validations"></a>Liczba ocen
 
 ![Ustawić właściwości sprawdzania poprawności odebranej wiadomości](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -156,9 +156,9 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ wiadomości |Wybierz typ komunikatu EDI. |
+| Typ komunikatu |Wybierz typ komunikatu EDI. |
 | Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
-| Rozszerzona walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
+| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
 | Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
 | Przycinaj zera wiodące/kończące |Usuń wiodących ani końcowych zero i znaków spacji. |
 | Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie odebrane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** do akceptowania wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** podczas wymiany musi mieć końcowe ograniczniki i separatorów. |
@@ -171,10 +171,10 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 | --- | --- |
 | Konwertuj domyślny format dziesiętny "Nn" do podstawowej wartości liczbowej 10 |Konwertuje liczbę EDI, który jest określony za pomocą formatu "Nn" na wartość liczbową base 10 |
 | Utwórz puste tagi XML, jeśli dozwolone są separatory kończące |Zaznacz to pole wyboru, aby mieć nadawcy wymiany zawierają puste tagi XML dla końcowych separatorów. |
-| Rozdziel wymianę na zestawy transakcji — zawieś zestawy transakcji w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując koperty odpowiedni zestaw transakcji. Wstrzymuje działanie tylko transakcje, gdy sprawdzanie poprawności nie powiedzie się. |
-| Rozdziel wymianę na zestawy transakcji — zawieś wymianę w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując odpowiednie koperty. Wstrzymuje działanie całej wymiany, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. | 
+| Podziel wymiany na zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując koperty odpowiedni zestaw transakcji. Wstrzymuje działanie tylko transakcje, gdy sprawdzanie poprawności nie powiedzie się. |
+| Rozdziel wymianę na zestawy transakcji — Zawieś wymianę w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując odpowiednie koperty. Wstrzymuje działanie całej wymiany, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. | 
 | Zachowaj wymianę — Zawieś zestawy transakcji w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymuje zestawów transakcji, które powodują Niepowodzenie weryfikacji przerywając przetwarzania wszystkich innych zestawów transakcji. |
-| Zachowaj wymianę — zawieś wymianę w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymuje działanie całej wymiany, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. |
+| Zachowaj wymianę — Zawieś wymianę w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymuje działanie całej wymiany, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Skonfiguruj sposób umowie wysyłania wiadomości
 
@@ -216,14 +216,14 @@ Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne
 
 | Właściwość | Opis |
 | --- | --- |
-| Wersja |Wybierz X12 wersję |
+| Version |Wybierz X12 wersję |
 | Typ transakcji (ST01) |Wybierz typ transakcji |
 | SCHEMA |Wybierz schemat używany. Schematy znajdują się na koncie integracji. Jeśli wybierzesz schematu pierwszy, automatycznie konfiguruje transakcji i wersji typu  |
 
 > [!NOTE]
 > Skonfiguruj wymagane [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) przekazany do usługi [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-### <a name="envelopes"></a>Koperty
+### <a name="envelopes"></a>Kopert
 
 ![Określ separatora w zestawie transakcji: standardowy identyfikator lub Separator powtórzeń](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
 
@@ -251,7 +251,7 @@ Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne
 | Numer kontrolny grupy (GS06) |Wymagane, wprowadź zakres numerów dla numeru kontrolnego grupy. Podaj wartość liczbową z co najmniej 1 i maksymalnej 999999999 |
 | Numer kontrolny zestawu transakcji (ST02) |Wymagane, wprowadź zakres numerów numer kontrolny zestawu transakcji. Wprowadź zakres wartości liczbowych z co najmniej 1 i maksymalnej 999999999 |
 | Prefiks |Opcjonalne wyznaczony dla zakresu numerów kontrolnych zestawu transakcji używanych w potwierdzeniu. Wprowadź wartość liczbową dla środkowej dwa pola, a wartością alfanumeryczną (w razie potrzeby) dla pól prefiksem i sufiksem. Środkowy pola są wymagane i zawierają minimalne i maksymalne wartości dla numeru kontrolnego |
-| Sufiks |Opcjonalne wyznaczony dla zakresu numerów kontrolnych zestawu transakcji używanych w potwierdzeniu. Wprowadź wartość liczbową dla środkowej dwóch pól i wartości alfanumeryczne (w razie potrzeby) dla pól prefiksem i sufiksem. Środkowy pola są wymagane i zawierają minimalne i maksymalne wartości dla numeru kontrolnego |
+| Suffix |Opcjonalne wyznaczony dla zakresu numerów kontrolnych zestawu transakcji używanych w potwierdzeniu. Wprowadź wartość liczbową dla środkowej dwóch pól i wartości alfanumeryczne (w razie potrzeby) dla pól prefiksem i sufiksem. Środkowy pola są wymagane i zawierają minimalne i maksymalne wartości dla numeru kontrolnego |
 
 ### <a name="character-sets-and-separators"></a>Zestawy znaków i separatory
 
@@ -267,8 +267,8 @@ Inne niż zestaw znaków, dla każdego typu komunikatu można wprowadzić innego
 | Separator składników |Do oddzielania elementów danych złożonych, wprowadź jeden znak. |
 | Separator elementów danych |Do oddzielania elementów prostych danych w obrębie danych złożonych elementów, wprowadź jeden znak. |
 | Znak zastępczy |Wprowadź znak zastępczy, używany do zastępowania wszystkie znaki separatora w ładunku danych podczas generowania X12 wychodzących wiadomości. |
-| Element końcowy segmentu |Aby wskazać koniec segmentu EDI, wprowadź jeden znak. |
-| Sufiks |Wybierz znak, który jest używany z identyfikatora segmentu. Po wyznaczeniu sufiksu, element danych terminator segmentu może być pusta. Terminator segmentu jest puste, należy określić sufiks. |
+| Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź jeden znak. |
+| Suffix |Wybierz znak, który jest używany z identyfikatora segmentu. Po wyznaczeniu sufiksu, element danych terminator segmentu może być pusta. Terminator segmentu jest puste, należy określić sufiks. |
 
 > [!TIP]
 > Aby podać wartości znaków specjalnych, Edytuj Umowę w formacie JSON i podaj wartość ASCII znaki specjalne.
@@ -281,9 +281,9 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ wiadomości |Wybierz typ komunikatu EDI. |
+| Typ komunikatu |Wybierz typ komunikatu EDI. |
 | Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
-| Rozszerzona walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
+| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
 | Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
 | Przycinaj zera wiodące/kończące |Usuń początkowe lub końcowe zero znaków. |
 | Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie wysłane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** wysyłać wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** Jeśli wysłane wymiany musi mieć końcowe ograniczniki i separatorów. |

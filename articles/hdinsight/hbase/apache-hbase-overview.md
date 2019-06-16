@@ -5,23 +5,21 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/23/2019
+ms.topic: overview
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 358b835b42862bd0ceb1a5c4a48ba4b18a567f4d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: b41c34d4dcbfa4107383318cd9665a41edee79f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67120467"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Co to jest Apache HBase w usłudze Azure HDInsight
 
 [Apache HBase](https://hbase.apache.org/) jest baza danych NoSQL typu open source, która jest oparta na [Apache Hadoop](https://hadoop.apache.org/) i modelowanych po [bazie danych Google BigTable](https://cloud.google.com/bigtable/). Baza danych HBase zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury w bezschematowej bazie danych zorganizowanej według rodzin kolumn.
 
 Z perspektywy użytkownika bazy danych HBase jest podobne do bazy danych. Dane są przechowywane w wierszy i kolumn w tabeli, a dane w wierszu są pogrupowane według rodziny kolumn. HBase jest bezschematową bazą danych, co oznacza, że ani kolumny, ani typy danych w nich przechowywanych nie muszą być zdefiniowane przed użyciem. Kod typu open source zapewnia skalowanie liniowe, umożliwiając obsługę petabajtów danych na tysiącach węzłów. Baza może wykorzystywać nadmiarowość danych, przetwarzanie wsadowe i inne funkcje, które są dostarczane przez aplikacje rozproszone w ekosystemie Hadoop.
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ## <a name="how-is-apache-hbase-implemented-in-azure-hdinsight"></a>Jak Apache HBase jest zaimplementowana w usłudze Azure HDInsight?
 
@@ -51,13 +49,8 @@ Przypadek użycia, które BigTable (a przy użyciu rozszerzenia, bazy danych HBa
   
     Aplikacje mogą działać w bazie danych HBase, wykorzystując ją jako magazyn danych. Przykłady obejmują Phoenix, [OpenTSDB](http://opentsdb.net/), Kiji i Titan. Aplikacje można również integrować z bazą danych HBase. Przykłady obejmują [Apache Hive](https://hive.apache.org/), [Apache Pig](https://pig.apache.org/), [Solr](https://lucene.apache.org/solr/), [Apache Storm](https://storm.apache.org/), [Apache Flume](https://flume.apache.org/), [ Apache Impala](https://impala.apache.org/), [platformy Apache Spark](https://spark.apache.org/) , [Ganglia](http://ganglia.info/), i [Apache Drill](https://drill.apache.org/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
+
 * [Rozpoczynanie pracy z usługą Apache Hadoop w HDInsight przy użyciu bazy danych Apache HBase](./apache-hbase-tutorial-get-started-linux.md)
 * [Create HDInsight clusters on Azure Virtual Network](./apache-hbase-provision-vnet.md) (Tworzenie klastrów usługi HDInsight w usłudze Azure Virtual Network)
 * [Konfigurowanie replikacji bazy danych Apache HBase w HDInsight](apache-hbase-replication.md)
-* [Tworzenie aplikacji Java za pomocą usług bazy danych Apache HBase HDInsight (Hadoop) przy użyciu narzędzia Apache Maven](./apache-hbase-build-java-maven-linux.md)
-
-## <a name="see-also"></a>Zobacz też
-* [Apache HBase](https://hbase.apache.org/)
-* [Apache HBase Podręcznik](https://hbase.apache.org/book.html)
-* [Bigtable: Rozproszony System przechowywania danych strukturalnych](https://research.google.com/archive/bigtable.html)

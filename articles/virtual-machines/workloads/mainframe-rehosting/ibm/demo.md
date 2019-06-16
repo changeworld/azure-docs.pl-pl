@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925692"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Ustaw się aplikacja deweloperów kontrolowane dystrybucji (ADCD) w IBM zD & T w wersji 1
@@ -165,7 +165,7 @@ Po ukończeniu poprzedniego kroku konfiguracji **utworzyć obraz przy użyciu sk
 
 7. Na następnym ekranie wprowadź swoje poświadczenia dla maszyny Wirtualnej (czyli nie ztadmin poświadczeń).
 
-8. W okienku właściwości wprowadź liczbę **centralnej procesorów (CPs)**, ilość **pamięci systemowej (GB)** i **katalogu wdrażania** uruchamianie obrazu. Ponieważ jest to pokaz, zachowywanie małych.
+8. W okienku właściwości wprowadź liczbę **centralnej procesorów (CPs)** , ilość **pamięci systemowej (GB)** i **katalogu wdrażania** uruchamianie obrazu. Ponieważ jest to pokaz, zachowywanie małych.
 
 9. Upewnij się, że pole jest zaznaczone dla **automatyczne wdrażanie polecenia IPL problemu z/OS, po**.
 

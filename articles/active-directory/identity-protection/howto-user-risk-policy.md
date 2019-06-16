@@ -17,23 +17,23 @@ ms.date: 03/14/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b94e9b7267c956c07f4171f8cce46c6159affd90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 942f7e43a549b5aa1a21284949ffc12ef3c8d75f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60459787"
+ms.locfileid: "67108931"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Instrukcje: Konfigurowanie zasad ryzyka użytkowników
 
-Za pomocą ryzyka związanego z użytkownikiem usługi Azure AD wykrywa prawdopodobieństwo, że konto użytkownika zostało naruszone. Jako administrator można skonfigurować zasady dostępu warunkowego ryzyka użytkownika, automatycznie odpowiadać na poziom ryzyka określonego użytkownika.
+Za pomocą ryzyka związanego z użytkownikiem usługi Azure AD wykrywa prawdopodobieństwo, że konto użytkownika zostało naruszone. Jako administrator możesz skonfigurować ryzyka związanego z użytkownikiem zasady dostępu warunkowego, automatycznie odpowiadać na poziom ryzyka określonego użytkownika.
  
 Ten artykuł zawiera informacje potrzebne do skonfigurowania zasad ryzyka dla użytkownika.
 
 
 ## <a name="what-is-a-user-risk-policy"></a>Co to jest zasad ryzyka dla użytkownika?
 
-Usługa Azure AD analizuje każdego logowania użytkownika. Cel analizy jest wykrywa podejrzane akcje, które pochodzą wraz z logowania. W usłudze Azure AD podejrzane działania, które system może wykrywać znane są również jako zdarzeń o podwyższonym ryzyku. Podczas gdy pewne ryzyko zdarzeń może zostać wykryte w czasie rzeczywistym, chociaż są również zdarzeń o podwyższonym ryzyku wymagające jeszcze raz. Na przykład aby wykryć niemożliwa podróż do nietypowych lokalizacji, systemu wymaga wstępny okres uczenia wynoszący 14 dni, aby dowiedzieć się więcej na temat regularnych zachowania użytkownika. Dostępnych jest kilka opcji, które można rozpoznać zdarzenia ryzyka wykryte. Na przykład można rozwiązać zdarzenia o podwyższonym ryzyku w poszczególnych ręcznie lub ich rozwiązać za pomocą ryzyka logowania lub zasady dostępu warunkowego ryzyka użytkownika.
+Usługa Azure AD analizuje każdego logowania użytkownika. Cel analizy jest wykrywa podejrzane akcje, które pochodzą wraz z logowania. W usłudze Azure AD podejrzane działania, które system może wykrywać znane są również jako zdarzeń o podwyższonym ryzyku. Podczas gdy pewne ryzyko zdarzeń może zostać wykryte w czasie rzeczywistym, chociaż są również zdarzeń o podwyższonym ryzyku wymagające jeszcze raz. Na przykład aby wykryć niemożliwa podróż do nietypowych lokalizacji, systemu wymaga wstępny okres uczenia wynoszący 14 dni, aby dowiedzieć się więcej na temat regularnych zachowania użytkownika. Dostępnych jest kilka opcji, które można rozpoznać zdarzenia ryzyka wykryte. Na przykład można rozwiązać zdarzenia o podwyższonym ryzyku w poszczególnych ręcznie lub ich rozwiązać za pomocą ryzyka logowania i ryzyka związanego z użytkownikiem zasad dostępu warunkowego.
 
 Wszystkie zdarzenia o podwyższonym ryzyku, które zostały wykryte dla użytkownika i nie można rozwiązać, są znane jako zdarzenia aktywnego ryzyka. Zdarzenia aktywnego ryzyka, które są skojarzone z użytkownikami są nazywane ryzyka związanego z użytkownikiem. Usługi Azure AD, oparte na ryzyko związane z użytkownikiem, oblicza prawdopodobieństwo (niskiej, średniej, wysokiej), że użytkownik został złamany. Prawdopodobieństwo, że jest nazywany poziomie ryzyka użytkownika.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61131819"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analiza multimediów za pomocą witryny Azure Portal 
@@ -53,7 +53,7 @@ W tym temacie omówiono sposób przetwarzania multimediów procesory multimedió
 ### <a name="language"></a>Język
 Język naturalny rozpoznawany w pliku multimedialnego. Na przykład w językach angielskim i hiszpańskim. 
 
-### <a name="captions"></a>Podpisy
+### <a name="captions"></a>podpisy
 Możesz wybrać format etykiety, które zostaną wygenerowane z zawartością. Zadania można wygenerować plików z napisami w następujących formatach:  
 
 * **SAMI**
@@ -65,7 +65,7 @@ Zamknięte podpisu (DW) plików w tych formatach można udostępnić pliki audio
 ### <a name="aib-file"></a>Plik AIB
 Wybierz tę opcję, jeśli chcesz wygenerować plik obiektu Blob indeksu Audio do użycia z niestandardowych IFilter serwera SQL. Aby uzyskać więcej informacji, zobacz [to](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blogu.
 
-### <a name="keywords"></a>Słowa kluczowe
+### <a name="keywords"></a>słowa kluczowe
 Wybierz tę opcję, jeśli chcesz wygenerować plik XML słów kluczowych. Ten plik zawiera słowa kluczowe wyodrębnione z zawartości mówionej o częstotliwości i przesunięciu informacji.
 
 ### <a name="job-name"></a>Nazwa zadania
@@ -136,7 +136,7 @@ To procesor pomaga wykrywać potencjalne dorosłych i zawartości erotycznej w k
 
 ![Umiarkowany filmów wideo](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>Wersja 
+### <a name="version"></a>Version 
 Use "2.0".
 
 ### <a name="mode"></a>Tryb

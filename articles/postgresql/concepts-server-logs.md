@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067378"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer
@@ -37,10 +37,10 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 
 |**Pole** | **Opis** |
 |---|---|
-| TenantId | Identyfikator dzierżawy |
+| Identyfikator dzierżawy | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| Type | Typ dziennika. zawsze `AzureDiagnostics` |
+| Typ | Typ dziennika. zawsze `AzureDiagnostics` |
 | SubscriptionId | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
 | ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORPOSTGRESQL` |
@@ -50,10 +50,10 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | Zmienna środowiskowa errorLevel | Przykład poziomu rejestrowania: DZIENNIK BŁĘDÓW, POWIADOMIENIA |
-| Komunikat | Komunikat w dzienniku podstawowego | 
+| Message | Komunikat w dzienniku podstawowego | 
 | Domain | Wersja serwera, na przykład: postgres 10 |
-| Szczegół | Komunikat w dzienniku dodatkowej (jeśli dotyczy) |
-| ColumnName | Nazwa kolumny (jeśli dotyczy) |
+| Szczegóły | Komunikat w dzienniku dodatkowej (jeśli dotyczy) |
+| NazwaKolumny | Nazwa kolumny (jeśli dotyczy) |
 | SchemaName | Nazwa schematu (jeśli dotyczy) |
 | DatatypeName | Nazwa typu danych (jeśli dotyczy) |
 | LogicalServerName | Nazwa serwera | 

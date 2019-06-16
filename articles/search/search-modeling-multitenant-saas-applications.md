@@ -11,10 +11,10 @@ ms.date: 07/30/2018
 ms.author: liamca
 ms.custom: seodec2018
 ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61288725"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i usługa Azure Search
@@ -39,7 +39,7 @@ Dodawanie i usuwanie partycji i replik w umożliwi pojemność usługi wyszukiwa
 ### <a name="service-and-index-limits-in-azure-search"></a>Limity usług i indeksu w usłudze Azure Search
 Istnieje kilka różnych [warstw cenowych](https://azure.microsoft.com/pricing/details/search/) w usłudze Azure Search w każdej z warstw są różne w różnych [limity przydziału i ograniczenia](search-limits-quotas-capacity.md). Niektóre z tych limitów są na poziomie usługi, niektóre są na poziomie indeksu, a niektóre są na poziomie partycji.
 
-|  | Podstawowa | Standard1 | Standardowa 2 | Standardowa 3 | Wysoka gęstość standardowa 3 |
+|  | Podstawowa | Standard1 | Standard2 | Standardowa 3 | Wysoka gęstość standardowa 3 |
 | --- | --- | --- | --- | --- | --- |
 | Maksymalna replik na usługę |3 |12 |12 |12 |12 |
 | Maksymalna partycje na usługę |1 |12 |12 |12 |3 |

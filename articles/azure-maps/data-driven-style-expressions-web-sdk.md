@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60904979"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Styl opartych na danych wyrażeń (zestaw SDK sieci Web)
@@ -754,7 +754,7 @@ Wyrażenia wiązania zmiennej przechowywanie wyników obliczeń w zmiennej, tak,
 | Wyrażenie | Zwracany typ | Opis |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa1: ciąg<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wartość1:,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa2: ciąg<br/>&nbsp;&nbsp;&nbsp;&nbsp;wartość2:,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Co najmniej jednej wartości są przechowywane jako zmienne do użytku przez `var` wyrażenia w wyrażeniu podrzędne, które zwraca wynik. |
-| `['var', name: string]` | dowolne | Odwołuje się do zmiennej, która została utworzona za pomocą `let` wyrażenia. |
+| `['var', name: string]` | Wszystkie | Odwołuje się do zmiennej, która została utworzona za pomocą `let` wyrażenia. |
 
 **Przykład**
 

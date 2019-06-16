@@ -76,7 +76,7 @@ sections:
           - html: '(Wersja zapoznawcza) Nowe Online programu SQL Server 2019 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">kompilacji</a> i skompiluj ponownie operacje indeksów klastrowanego magazynu kolumn.'
           - html: '(Wersja zapoznawcza) Nowe <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">usługi Azure SQL Database usługi Machine Learning (przy użyciu języka R)</a>.'
           - html: '(Wersja zapoznawcza) Nowe <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">warstwy bezserwerowe środowisko obliczeniowe</a> zapewnia obliczeń automatycznego skalowania i rachunków na sekundę użytych zasobów obliczeniowych.'
-  - title: 5 minutowych przewodników Szybki Start
+  - title: Pięciominutowe przewodniki Szybki start
     items:
       - type: paragraph
         text: 'Usługa Azure SQL Database można wykonywać podstawowe zadania zarządzania przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. Dowiedz się, jak wykonywać podstawowe zadania zarządzania, korzystając z poniższych przykładów Szybki Start:'

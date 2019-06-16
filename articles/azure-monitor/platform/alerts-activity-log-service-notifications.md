@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3157cef6952f01d689d3cb4a30c9d7c843095809
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405696"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071693"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
 ## <a name="overview"></a>Omówienie
@@ -92,7 +92,7 @@ Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejącyc
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>Alert o istniejącej grupy akcji przy użyciu witryny Azure portal
 
-1. Wykonaj kroki od 1 do 7 w poprzedniej sekcji, aby utworzyć powiadomienia usługi kondycji. 
+1. Wykonaj kroki od 1 do 6 w poprzedniej sekcji, aby utworzyć powiadomienia usługi kondycji. 
 
 1. W obszarze **zdefiniuj grupę akcji**, kliknij przycisk **grupy akcji wybierania** przycisku. Wybierz grupę odpowiednie działania.
 

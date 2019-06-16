@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff1718211fa298e4daee694795a0b2438033fe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 808564f291328450b17db8eb7ea299c194c66400
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65861954"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103524"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Egnyte
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Egnyte z usługą Azure AD, musisz doda
 
 **Aby dodać aplikację Egnyte z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -132,11 +132,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Egnyte, w
    
     ![Ustawienia](./media/egnyte-tutorial/ic787819.png "Ustawienia")
 
-3. W menu kliknij pozycję **Settings (Ustawienia)**.
+3. W menu kliknij pozycję **Settings (Ustawienia)** .
 
     ![Ustawienia](./media/egnyte-tutorial/ic787820.png "Ustawienia")
 
-4. Kliknij kartę **Configuration (Konfiguracja)**, a następnie kliknij pozycję **Security (Zabezpieczenia)**.
+4. Kliknij kartę **Configuration (Konfiguracja)** , a następnie kliknij pozycję **Security (Zabezpieczenia)** .
 
     ![Zabezpieczenia](./media/egnyte-tutorial/ic787821.png "Zabezpieczenia")
 
@@ -148,15 +148,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Egnyte, w
    
     b. Dla pozycji **Identity provider (Dostawca tożsamości)** wybierz pozycję **AzureAD**.
    
-    c. Wklej **adres URL logowania** skopiowany z witryny Azure Portal do pola tekstowego **Identity provider login URL (Adres URL logowania dostawcy tożsamości)**.
+    c. Wklej **adres URL logowania** skopiowany z witryny Azure Portal do pola tekstowego **Identity provider login URL (Adres URL logowania dostawcy tożsamości)** .
    
-    d. Wklej **identyfikator usługi Azure AD** skopiowany z witryny Azure Portal do pola tekstowego **Identity provider entity ID (Identyfikator jednostki dostawcy tożsamości)**.
+    d. Wklej **identyfikator usługi Azure AD** skopiowany z witryny Azure Portal do pola tekstowego **Identity provider entity ID (Identyfikator jednostki dostawcy tożsamości)** .
       
-    e. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64 pobrany z witryny Azure Portal, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Identity provider certificate (Certyfikat dostawcy tożsamości)**.
+    e. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64 pobrany z witryny Azure Portal, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Identity provider certificate (Certyfikat dostawcy tożsamości)** .
    
-    f. Dla pozycji **Default user mapping (Domyślne mapowanie użytkownika)** wybierz pozycję **Email address (Adres e-mail)**.
+    f. Dla pozycji **Default user mapping (Domyślne mapowanie użytkownika)** wybierz pozycję **Email address (Adres e-mail)** .
    
-    g. Dla pozycji **Use domain-specific issuer value (Użyj wartości wystawcy specyficznej dla domeny)** wybierz pozycję **disabled (wyłączone)**.
+    g. Dla pozycji **Use domain-specific issuer value (Użyj wartości wystawcy specyficznej dla domeny)** wybierz pozycję **disabled (wyłączone)** .
    
     h. Kliknij pozycję **Zapisz**.
 
@@ -219,9 +219,9 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Egnyt
 
 1. Zaloguj się do swojej firmowej witryny aplikacji **Egnyte** jako administrator.
 
-2. Przejdź do pozycji **Settings (Ustawienia) \> Users & Groups (Użytkownicy i grupy)**.
+2. Przejdź do pozycji **Settings (Ustawienia) \> Users & Groups (Użytkownicy i grupy)** .
 
-3. Kliknij pozycję **Add New User (Dodaj nowego użytkownika)**, a następnie wybierz typ użytkownika, którego chcesz dodać.
+3. Kliknij pozycję **Add New User (Dodaj nowego użytkownika)** , a następnie wybierz typ użytkownika, którego chcesz dodać.
    
     ![Użytkownicy](./media/egnyte-tutorial/ic787824.png "Użytkownicy")
 
@@ -233,7 +233,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Egnyt
 
     b. W polu tekstowym **Username (Nazwa użytkownika)** wprowadź nazwę użytkownika, na przykład **Brittasimon**.
 
-    c. Wybierz pozycję **Single Sign-On (Logowanie jednokrotne)** dla pozycji **Authentication Type (Typ uwierzytelniania)**.
+    c. Wybierz pozycję **Single Sign-On (Logowanie jednokrotne)** dla pozycji **Authentication Type (Typ uwierzytelniania)** .
    
     d. Kliknij pozycję **Zapisz**.
     
@@ -251,7 +251,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Egnyte na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Egnyte, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

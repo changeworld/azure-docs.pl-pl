@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935775"
 ---
 <a name="retrieve-operations"></a>Pobieranie operacji
@@ -37,11 +37,11 @@ Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną ope
 |  offerId           |  Identyfikator oferty                                                                                              |  String       |
 |  operationId       |  Identyfikator GUID, który unikatowo identyfikuje operacji w przypadku oferty. Identyfikatorowi operationId może zostać pobrane za pomocą tego interfejsu API i jest także zwracany w nagłówku HTTP w odpowiedzi na wszelkie długotrwałej operacji, takich jak [publikacji oferty](./cloud-partner-portal-api-publish-offer.md) interfejsu API.  |   Guid   |
 |  filteredStatus    | Parametr opcjonalny zapytania używane do filtrowania według stanu (na przykład `running`) w zbiorze zwróconym przez ten interfejs API.  |   String |
-|  wersja interfejsu API       | Najnowszą wersję interfejsu API                                                                                           |    Date      |
+|  api-version       | Najnowszą wersję interfejsu API                                                                                           |    Date      |
 |  |  |  |
 
 
-<a name="header"></a>Nagłówek
+<a name="header"></a>nagłówek
 ------
 
 |  **Nazwa**          |  **Wartość**           |

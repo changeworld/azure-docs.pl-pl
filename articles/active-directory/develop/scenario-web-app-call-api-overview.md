@@ -16,13 +16,13 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65076303"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>Scenariusz: Aplikacja internetowa wywołuje interfejsy API sieci web
+# <a name="scenario-web-app-that-calls-web-apis"></a>Scenariusz: Aplikacja internetowa wywołująca internetowe interfejsy API
 
 Dowiedz się, jak utworzyć aplikację sieci web użytkownikom logowanie się na platformie tożsamości firmy Microsoft i która wywołuje interfejsy API sieci web w imieniu zalogowanego użytkownika.
 
@@ -39,7 +39,7 @@ W tym scenariuszu supposes już przeszli następujący scenariusz:
 
 Możesz dodać uwierzytelnianie do aplikacji sieci Web, w związku z tym można logowania użytkowników, która wywołuje internetowy interfejs API w imieniu zalogowanego użytkownika.
 
-![Aplikacja internetowa wywołuje interfejsy API sieci web](./media/scenario-webapp/web-app.svg)
+![Aplikacja internetowa wywołująca internetowe interfejsy API](./media/scenario-webapp/web-app.svg)
 
 Aplikacje sieci Web, która wywołuje interfejsy API sieci web:
 

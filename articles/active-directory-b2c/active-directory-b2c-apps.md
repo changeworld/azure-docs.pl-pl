@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4a9931fa6e2edf8989036eb8dbfbef3638cbbe0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 9ae2894f9f442bca1e6029b7e7d8e07824abf7fb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051728"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -98,7 +98,7 @@ Interfejs API sieci web może odbierać tokeny od wielu typów klientów, w tym 
 6. `access_token` i `refresh_token` są zwracane do serwera sieci web.
 7. Internetowy interfejs API jest wywoływana z `access_token` w nagłówku autoryzacji.
 8. Interfejs API sieci web sprawdza poprawność tokenu.
-9. Zabezpieczanie danych jest zwracana do serwera sieci web.
+9. Zabezpieczanie danych jest zwracana do aplikacji sieci web.
 
 Aby dowiedzieć się więcej o kodach autoryzacji, tokenach odświeżania i krokach uzyskiwania tokenów, zapoznaj się z informacjami na temat [protokołu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).
 
